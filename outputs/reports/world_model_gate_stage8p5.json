@@ -1,0 +1,54 @@
+{
+  "stage": "8.5",
+  "gates": [
+    {
+      "name": "Pedestrian/Drone Data Gate",
+      "passed": true,
+      "evidence": "loaded pedestrian/drone sources=['trajnet', 'eth_ucy']",
+      "next_fix": "Provide local SDD/OpenTraj if this is empty."
+    },
+    {
+      "name": "Long-Horizon Gate",
+      "passed": false,
+      "evidence": "verified t50/t100 pedestrian/drone sources=[]",
+      "next_fix": "If false, do not claim pedestrian long-horizon world model."
+    },
+    {
+      "name": "Scene-Gold Gate",
+      "passed": true,
+      "evidence": "gold+silver scenes=20",
+      "next_fix": "Upgrade rule-confirmed silver to human-confirmed gold where possible."
+    },
+    {
+      "name": "Per-Agent Episode Gate",
+      "passed": true,
+      "evidence": "per-agent episodes with >=2 agents=320",
+      "next_fix": "Do not train multi-agent world model. Episodes are not truly multi-agent."
+    },
+    {
+      "name": "GoalBench-Gold Gate",
+      "passed": true,
+      "evidence": "official gold/silver records=1530",
+      "next_fix": "If below 50, GoalBench remains diagnostic only."
+    },
+    {
+      "name": "No Leakage Gate",
+      "passed": true,
+      "evidence": "candidate goals train-only; future endpoint labels eval/train only; central velocity not used",
+      "next_fix": "Repair candidate-goal split policy."
+    },
+    {
+      "name": "Stage 9 Readiness Gate",
+      "passed": true,
+      "evidence": "ready",
+      "next_fix": "Pass data, scene, per-agent, no-leakage gates first."
+    }
+  ],
+  "passed": 6,
+  "total": 7,
+  "stage9_ready": true,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 75,
+  "verdict": "stage8p5_ready_for_stage9_per_agent_training"
+}

@@ -194,3 +194,56 @@ smc_ready = false
 Main conclusion:
 
 Stage 8 made the pipeline more world-model-shaped, but the evidence is still not strong enough. Multi-agent episodes and GoalBench-Gold now exist, but the scene annotations are still inferred-only, no real pedestrian/drone t+50/t+100 source is verified, Stage 8 failure prediction does not beat Stage 7, goal-conditioned residuals do not improve BaselineFailureBench or HardBench by the required margin, and interaction remains diagnostic. Do not enter Stage 5C or enable SMC.
+
+## Stage 8.5 Result
+
+Latest Stage 8.5 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage8p5_results`
+
+Stage 8.5 is a data/annotation/per-agent preparation sprint. It does not train new residual models, does not enable latent generative modeling, and does not enable SMC:
+
+```text
+loaded_pedestrian_drone_sources = trajnet, eth_ucy
+verified_pedestrian_drone_t50_or_t100_sources = 0
+gold_scenes = 0
+silver_scenes = 20
+inferred_only_scenes = 7
+per_agent_multi_agent_episodes_ge2 = 320
+GoalBench_Gold_v2_official_records = 1530
+stage8p5_gates = 6 / 7
+expert_audit_score = 75 / 100
+verdict = stage8p5_ready_for_stage9_per_agent_training
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+Stage 8.5 successfully moves the project from primary-agent windows toward per-agent multi-agent preparation. It creates rule-confirmed silver scene annotations from train-only endpoints, builds per-agent multi-agent episodes, and creates enough official GoalBench-Gold v2 records for Stage 9. It still does not solve pedestrian/drone long-horizon t+50/t+100, and the silver labels are not human gold annotations. Stage 9 per-agent multi-agent training is now allowed; Stage 5C latent generative modeling and SMC remain disabled.
+
+## Stage 9 Result
+
+Latest Stage 9 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage9_results`
+
+Stage 9 trains deterministic per-agent multi-agent scene-grounded residual models. It predicts all active agents, not only a primary agent. It still does not enable latent generative modeling or SMC:
+
+```text
+per_agent_multiagent_training = complete
+predicts_all_agents = true
+official_target_horizon = t+10
+verified_pedestrian_drone_t50_or_t100_sources = 0
+stage9_gates = 3 / 11
+expert_audit_score = 75 / 100
+full_model_all_test_mean_improvement = -0.001592
+full_model_hard_failure_best_improvement = 0.000537
+verdict = stage9_per_agent_training_done_not_stage5c_ready
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+Stage 9 successfully trains and evaluates per-agent all-agent deterministic models, but the full scene+goal+interaction model does not beat the strongest causal baseline. Interaction and scene/goal features remain unproven for trajectory lift, easy preservation is not sufficiently assessable in the current split, and pedestrian/drone t+50/t+100 is still missing. Do not enter Stage 5C or enable SMC.

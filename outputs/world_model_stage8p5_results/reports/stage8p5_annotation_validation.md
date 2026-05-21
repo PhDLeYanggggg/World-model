@@ -1,0 +1,31 @@
+# Stage 8.5 Annotation Validation
+
+| dataset | scene | quality | valid | errors |
+| --- | --- | --- | --- | --- |
+| eth_ucy | eth_ucy_biwi_hotel | silver | True | [] |
+| trajnet | trajnet_bookstore_0 | silver | True | [] |
+| trajnet | trajnet_bookstore_1 | silver | True | [] |
+| trajnet | trajnet_bookstore_2 | silver | True | [] |
+| trajnet | trajnet_bookstore_3 | silver | True | [] |
+| trajnet | trajnet_coupa_3 | silver | True | [] |
+| trajnet | trajnet_deathCircle_0 | silver | True | [] |
+| trajnet | trajnet_deathCircle_1 | silver | True | [] |
+| trajnet | trajnet_deathCircle_2 | inferred_only | True | [] |
+| trajnet | trajnet_deathCircle_3 | silver | True | [] |
+| trajnet | trajnet_deathCircle_4 | inferred_only | True | [] |
+| trajnet | trajnet_gates_0 | silver | True | [] |
+| trajnet | trajnet_gates_1 | silver | True | [] |
+| trajnet | trajnet_gates_3 | silver | True | [] |
+| trajnet | trajnet_gates_4 | silver | True | [] |
+| trajnet | trajnet_gates_5 | inferred_only | True | [] |
+| trajnet | trajnet_gates_6 | inferred_only | True | [] |
+| trajnet | trajnet_gates_7 | inferred_only | True | [] |
+| trajnet | trajnet_gates_8 | silver | True | [] |
+| trajnet | trajnet_hyang_4 | silver | True | [] |
+| trajnet | trajnet_hyang_5 | silver | True | [] |
+| trajnet | trajnet_hyang_6 | silver | True | [] |
+| trajnet | trajnet_hyang_7 | inferred_only | True | [] |
+| trajnet | trajnet_hyang_9 | inferred_only | True | [] |
+| trajnet | trajnet_nexus_0 | silver | True | [] |
+| trajnet | trajnet_nexus_1 | silver | True | [] |
+| trajnet | trajnet_nexus_2 | silver | True | [] |

@@ -1,0 +1,559 @@
+{
+  "stage": "9",
+  "datasets": {
+    "eth_ucy": {
+      "episodes": 31,
+      "strongest_causal_baseline": "scene_clamped_baseline",
+      "target_horizon": 10,
+      "strongest_metrics": {
+        "dataset": "eth_ucy",
+        "model": "scene_clamped_baseline",
+        "episodes": 31,
+        "horizons": {
+          "1": {
+            "per_agent_ADE": 0.789101,
+            "per_agent_FDE": 0.789101,
+            "all_agent_scene_FDE": 0.760941,
+            "physical_validity": 1.0
+          },
+          "5": {
+            "per_agent_ADE": 1.794282,
+            "per_agent_FDE": 2.732957,
+            "all_agent_scene_FDE": 2.504166,
+            "physical_validity": 0.922581
+          },
+          "10": {
+            "per_agent_ADE": 3.019982,
+            "per_agent_FDE": 5.17126,
+            "all_agent_scene_FDE": 4.810711,
+            "physical_validity": 0.920161
+          }
+        },
+        "target_horizon": 10,
+        "target_FDE": 5.17126,
+        "hard_subset_FDE": 3.014861,
+        "baseline_failure_subset_FDE": 3.024436,
+        "easy_subset_FDE": 1.804947
+      },
+      "all_baselines": {
+        "constant_position": {
+          "dataset": "eth_ucy",
+          "model": "constant_position",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.07771,
+              "per_agent_FDE": 1.07771,
+              "all_agent_scene_FDE": 0.931779,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 2.544089,
+              "per_agent_FDE": 3.847166,
+              "all_agent_scene_FDE": 2.870842,
+              "physical_validity": 0.983871
+            },
+            "10": {
+              "per_agent_ADE": 4.120857,
+              "per_agent_FDE": 6.718985,
+              "all_agent_scene_FDE": 5.358678,
+              "physical_validity": 0.983871
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 6.718985,
+          "hard_subset_FDE": 3.96445,
+          "baseline_failure_subset_FDE": 4.039899,
+          "easy_subset_FDE": 3.105103
+        },
+        "constant_velocity_causal_fd": {
+          "dataset": "eth_ucy",
+          "model": "constant_velocity_causal_fd",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 0.800876,
+              "per_agent_FDE": 0.800876,
+              "all_agent_scene_FDE": 0.772743,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 1.825373,
+              "per_agent_FDE": 2.779841,
+              "all_agent_scene_FDE": 2.549627,
+              "physical_validity": 0.922581
+            },
+            "10": {
+              "per_agent_ADE": 3.075198,
+              "per_agent_FDE": 5.260332,
+              "all_agent_scene_FDE": 4.897776,
+              "physical_validity": 0.920161
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 5.260332,
+          "hard_subset_FDE": 3.061068,
+          "baseline_failure_subset_FDE": 3.076903,
+          "easy_subset_FDE": 1.882539
+        },
+        "damped_velocity": {
+          "dataset": "eth_ucy",
+          "model": "damped_velocity",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 0.801076,
+              "per_agent_FDE": 0.801076,
+              "all_agent_scene_FDE": 0.772694,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 1.827192,
+              "per_agent_FDE": 2.782968,
+              "all_agent_scene_FDE": 2.540832,
+              "physical_validity": 0.925806
+            },
+            "10": {
+              "per_agent_ADE": 3.082096,
+              "per_agent_FDE": 5.254281,
+              "all_agent_scene_FDE": 4.856221,
+              "physical_validity": 0.921774
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 5.254281,
+          "hard_subset_FDE": 3.057531,
+          "baseline_failure_subset_FDE": 3.074374,
+          "easy_subset_FDE": 1.90617
+        },
+        "constant_acceleration_causal": {
+          "dataset": "eth_ucy",
+          "model": "constant_acceleration_causal",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 0.814902,
+              "per_agent_FDE": 0.814902,
+              "all_agent_scene_FDE": 0.778716,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 2.030878,
+              "per_agent_FDE": 3.262929,
+              "all_agent_scene_FDE": 2.678741,
+              "physical_validity": 0.903226
+            },
+            "10": {
+              "per_agent_ADE": 3.620121,
+              "per_agent_FDE": 6.522586,
+              "all_agent_scene_FDE": 5.544901,
+              "physical_validity": 0.933065
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 6.522586,
+          "hard_subset_FDE": 3.625343,
+          "baseline_failure_subset_FDE": 3.6413,
+          "easy_subset_FDE": 2.67601
+        },
+        "constant_turn_rate_velocity": {
+          "dataset": "eth_ucy",
+          "model": "constant_turn_rate_velocity",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 0.847144,
+              "per_agent_FDE": 0.847144,
+              "all_agent_scene_FDE": 0.806016,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 2.03434,
+              "per_agent_FDE": 3.173342,
+              "all_agent_scene_FDE": 2.731569,
+              "physical_validity": 0.874194
+            },
+            "10": {
+              "per_agent_ADE": 3.522924,
+              "per_agent_FDE": 6.209241,
+              "all_agent_scene_FDE": 5.450646,
+              "physical_validity": 0.9125
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 6.209241,
+          "hard_subset_FDE": 3.51341,
+          "baseline_failure_subset_FDE": 3.564663,
+          "easy_subset_FDE": 2.443898
+        },
+        "goal_directed_baseline": {
+          "dataset": "eth_ucy",
+          "model": "goal_directed_baseline",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.166791,
+              "per_agent_FDE": 1.166791,
+              "all_agent_scene_FDE": 1.033865,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 2.658328,
+              "per_agent_FDE": 3.938767,
+              "all_agent_scene_FDE": 3.162456,
+              "physical_validity": 0.832258
+            },
+            "10": {
+              "per_agent_ADE": 4.15588,
+              "per_agent_FDE": 6.616188,
+              "all_agent_scene_FDE": 5.556798,
+              "physical_validity": 0.835887
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 6.616188,
+          "hard_subset_FDE": 3.960031,
+          "baseline_failure_subset_FDE": 4.092992,
+          "easy_subset_FDE": 3.414615
+        },
+        "scene_clamped_baseline": {
+          "dataset": "eth_ucy",
+          "model": "scene_clamped_baseline",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 0.789101,
+              "per_agent_FDE": 0.789101,
+              "all_agent_scene_FDE": 0.760941,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 1.794282,
+              "per_agent_FDE": 2.732957,
+              "all_agent_scene_FDE": 2.504166,
+              "physical_validity": 0.922581
+            },
+            "10": {
+              "per_agent_ADE": 3.019982,
+              "per_agent_FDE": 5.17126,
+              "all_agent_scene_FDE": 4.810711,
+              "physical_validity": 0.920161
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 5.17126,
+          "hard_subset_FDE": 3.014861,
+          "baseline_failure_subset_FDE": 3.024436,
+          "easy_subset_FDE": 1.804947
+        },
+        "nearest_goal_baseline_diagnostic": {
+          "dataset": "eth_ucy",
+          "model": "nearest_goal_baseline_diagnostic",
+          "episodes": 31,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.166791,
+              "per_agent_FDE": 1.166791,
+              "all_agent_scene_FDE": 1.033865,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 2.658328,
+              "per_agent_FDE": 3.938767,
+              "all_agent_scene_FDE": 3.162456,
+              "physical_validity": 0.832258
+            },
+            "10": {
+              "per_agent_ADE": 4.15588,
+              "per_agent_FDE": 6.616188,
+              "all_agent_scene_FDE": 5.556798,
+              "physical_validity": 0.835887
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 6.616188,
+          "hard_subset_FDE": 3.960031,
+          "baseline_failure_subset_FDE": 4.092992,
+          "easy_subset_FDE": 3.414615
+        }
+      }
+    },
+    "trajnet": {
+      "episodes": 30,
+      "strongest_causal_baseline": "damped_velocity",
+      "target_horizon": 10,
+      "strongest_metrics": {
+        "dataset": "trajnet",
+        "model": "damped_velocity",
+        "episodes": 30,
+        "horizons": {
+          "1": {
+            "per_agent_ADE": 1.434547,
+            "per_agent_FDE": 1.434547,
+            "all_agent_scene_FDE": 1.363605,
+            "physical_validity": 1.0
+          },
+          "5": {
+            "per_agent_ADE": 6.438319,
+            "per_agent_FDE": 10.375013,
+            "all_agent_scene_FDE": 9.655869,
+            "physical_validity": 0.886667
+          },
+          "10": {
+            "per_agent_ADE": 11.610846,
+            "per_agent_FDE": 20.771859,
+            "all_agent_scene_FDE": 19.398923,
+            "physical_validity": 0.906667
+          }
+        },
+        "target_horizon": 10,
+        "target_FDE": 20.771859,
+        "hard_subset_FDE": 10.860473,
+        "baseline_failure_subset_FDE": 10.962336,
+        "easy_subset_FDE": null
+      },
+      "all_baselines": {
+        "constant_position": {
+          "dataset": "trajnet",
+          "model": "constant_position",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.654055,
+              "per_agent_FDE": 1.654055,
+              "all_agent_scene_FDE": 1.400305,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 6.983388,
+              "per_agent_FDE": 11.190592,
+              "all_agent_scene_FDE": 9.738965,
+              "physical_validity": 0.89
+            },
+            "10": {
+              "per_agent_ADE": 12.365798,
+              "per_agent_FDE": 21.775667,
+              "all_agent_scene_FDE": 19.455195,
+              "physical_validity": 0.901667
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 21.775667,
+          "hard_subset_FDE": 11.540105,
+          "baseline_failure_subset_FDE": 11.660223,
+          "easy_subset_FDE": null
+        },
+        "constant_velocity_causal_fd": {
+          "dataset": "trajnet",
+          "model": "constant_velocity_causal_fd",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.434528,
+              "per_agent_FDE": 1.434528,
+              "all_agent_scene_FDE": 1.363431,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 6.439239,
+              "per_agent_FDE": 10.376044,
+              "all_agent_scene_FDE": 9.652486,
+              "physical_validity": 0.886667
+            },
+            "10": {
+              "per_agent_ADE": 11.613711,
+              "per_agent_FDE": 20.778793,
+              "all_agent_scene_FDE": 19.394954,
+              "physical_validity": 0.91
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 20.778793,
+          "hard_subset_FDE": 10.863122,
+          "baseline_failure_subset_FDE": 10.965127,
+          "easy_subset_FDE": null
+        },
+        "damped_velocity": {
+          "dataset": "trajnet",
+          "model": "damped_velocity",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.434547,
+              "per_agent_FDE": 1.434547,
+              "all_agent_scene_FDE": 1.363605,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 6.438319,
+              "per_agent_FDE": 10.375013,
+              "all_agent_scene_FDE": 9.655869,
+              "physical_validity": 0.886667
+            },
+            "10": {
+              "per_agent_ADE": 11.610846,
+              "per_agent_FDE": 20.771859,
+              "all_agent_scene_FDE": 19.398923,
+              "physical_validity": 0.906667
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 20.771859,
+          "hard_subset_FDE": 10.860473,
+          "baseline_failure_subset_FDE": 10.962336,
+          "easy_subset_FDE": null
+        },
+        "constant_acceleration_causal": {
+          "dataset": "trajnet",
+          "model": "constant_acceleration_causal",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.456486,
+              "per_agent_FDE": 1.456486,
+              "all_agent_scene_FDE": 1.369838,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 6.67865,
+              "per_agent_FDE": 10.90507,
+              "all_agent_scene_FDE": 9.755244,
+              "physical_validity": 0.896667
+            },
+            "10": {
+              "per_agent_ADE": 12.259697,
+              "per_agent_FDE": 22.189527,
+              "all_agent_scene_FDE": 19.672329,
+              "physical_validity": 0.915
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 22.189527,
+          "hard_subset_FDE": 11.517028,
+          "baseline_failure_subset_FDE": 11.662105,
+          "easy_subset_FDE": null
+        },
+        "constant_turn_rate_velocity": {
+          "dataset": "trajnet",
+          "model": "constant_turn_rate_velocity",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.481083,
+              "per_agent_FDE": 1.481083,
+              "all_agent_scene_FDE": 1.372212,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 6.640962,
+              "per_agent_FDE": 10.751608,
+              "all_agent_scene_FDE": 9.789116,
+              "physical_validity": 0.866667
+            },
+            "10": {
+              "per_agent_ADE": 12.012881,
+              "per_agent_FDE": 21.492451,
+              "all_agent_scene_FDE": 19.631122,
+              "physical_validity": 0.881667
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 21.492451,
+          "hard_subset_FDE": 11.241714,
+          "baseline_failure_subset_FDE": 11.35582,
+          "easy_subset_FDE": null
+        },
+        "goal_directed_baseline": {
+          "dataset": "trajnet",
+          "model": "goal_directed_baseline",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.710236,
+              "per_agent_FDE": 1.710236,
+              "all_agent_scene_FDE": 1.375797,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 7.11445,
+              "per_agent_FDE": 11.376946,
+              "all_agent_scene_FDE": 9.452609,
+              "physical_validity": 0.866667
+            },
+            "10": {
+              "per_agent_ADE": 12.528047,
+              "per_agent_FDE": 21.952103,
+              "all_agent_scene_FDE": 19.093341,
+              "physical_validity": 0.85
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 21.952103,
+          "hard_subset_FDE": 11.679761,
+          "baseline_failure_subset_FDE": 11.793745,
+          "easy_subset_FDE": null
+        },
+        "scene_clamped_baseline": {
+          "dataset": "trajnet",
+          "model": "scene_clamped_baseline",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.434528,
+              "per_agent_FDE": 1.434528,
+              "all_agent_scene_FDE": 1.363431,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 6.439239,
+              "per_agent_FDE": 10.376044,
+              "all_agent_scene_FDE": 9.652486,
+              "physical_validity": 0.886667
+            },
+            "10": {
+              "per_agent_ADE": 11.613509,
+              "per_agent_FDE": 20.778676,
+              "all_agent_scene_FDE": 19.395035,
+              "physical_validity": 0.91
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 20.778676,
+          "hard_subset_FDE": 10.863083,
+          "baseline_failure_subset_FDE": 10.96508,
+          "easy_subset_FDE": null
+        },
+        "nearest_goal_baseline_diagnostic": {
+          "dataset": "trajnet",
+          "model": "nearest_goal_baseline_diagnostic",
+          "episodes": 30,
+          "horizons": {
+            "1": {
+              "per_agent_ADE": 1.710236,
+              "per_agent_FDE": 1.710236,
+              "all_agent_scene_FDE": 1.375797,
+              "physical_validity": 1.0
+            },
+            "5": {
+              "per_agent_ADE": 7.11445,
+              "per_agent_FDE": 11.376946,
+              "all_agent_scene_FDE": 9.452609,
+              "physical_validity": 0.866667
+            },
+            "10": {
+              "per_agent_ADE": 12.528047,
+              "per_agent_FDE": 21.952103,
+              "all_agent_scene_FDE": 19.093341,
+              "physical_validity": 0.85
+            }
+          },
+          "target_horizon": 10,
+          "target_FDE": 21.952103,
+          "hard_subset_FDE": 11.679761,
+          "baseline_failure_subset_FDE": 11.793745,
+          "easy_subset_FDE": null
+        }
+      }
+    }
+  }
+}
