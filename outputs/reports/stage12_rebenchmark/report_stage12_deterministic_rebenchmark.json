@@ -1,0 +1,56 @@
+{
+  "stage": "12",
+  "model_type": "deterministic_per_agent_scene_grounded_rebenchmark",
+  "datasets": [
+    "aerialmpt",
+    "eth_ucy",
+    "eth_ucy_ewap",
+    "trajnet"
+  ],
+  "episodes": 660,
+  "episodes_ge2": 660,
+  "verified_t10": 655,
+  "verified_t50": 320,
+  "verified_t100": 320,
+  "predicts_all_agents": true,
+  "latent_enabled": false,
+  "smc_enabled": false,
+  "best_by_dataset": {
+    "aerialmpt": {
+      "variant": "per_agent_no_scene",
+      "horizon": "5",
+      "FDE": 2.746454,
+      "baseline_FDE": 2.735528,
+      "improvement": -0.003994
+    },
+    "eth_ucy": {
+      "variant": "per_agent_scene_only",
+      "horizon": "10",
+      "FDE": 5.157833,
+      "baseline_FDE": 5.17126,
+      "improvement": 0.002596
+    },
+    "eth_ucy_ewap": {
+      "variant": "per_agent_no_scene",
+      "horizon": "100",
+      "FDE": 5.460224,
+      "baseline_FDE": 5.460224,
+      "improvement": 0.0
+    },
+    "trajnet": {
+      "variant": "per_agent_goal_only",
+      "horizon": "10",
+      "FDE": 20.748859,
+      "baseline_FDE": 20.771859,
+      "improvement": 0.001107
+    }
+  },
+  "datasets_with_5pct_win": {},
+  "deterministic_gate_passed": false,
+  "limitations": [
+    "This is deterministic re-benchmarking, not latent generative modeling.",
+    "Only ETH/UCY EWAP currently provides verified pedestrian long-horizon t+50/t+100.",
+    "AerialMPT remains pixel-space because no homography or metric scale is available.",
+    "SMC remains disabled."
+  ]
+}

@@ -303,3 +303,42 @@ best_trajnet_improvement = 0.001107
 Main conclusion:
 
 Stage 11 proves the local visual annotation path works: AerialMPT frames are inspected into `ai_visual_silver` scene packs with visible image previews, observed pedestrian passage regions, and boundary-prior candidate goals. The model trains on Stage 10 self/silver labels plus AerialMPT visual-silver labels, but improvements over strongest causal baselines are tiny and AerialMPT is slightly worse than baseline. AerialMPT is pixel-space only because no homography or meter scale is present. This is not a pedestrian/drone long-horizon world model yet; verified t+50/t+100 remains missing.
+
+## Stage 12 Result
+
+Latest Stage 12 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage12_results`
+
+Stage 12 adds a real pedestrian long-horizon source from the local ETH/UCY EWAP bundle, expands annotation/scene packs/GoalBench, and runs a deterministic re-benchmark. It still does not enable latent generative modeling or SMC:
+
+```text
+loaded_pedestrian_drone_sources = eth_ucy_ewap, aerialmpt, full_trajnet_original_quick
+verified_pedestrian_drone_t50_or_t100_sources = eth_ucy_ewap
+human_confirmed_scenes = 3
+silver_rule_confirmed_scenes = 33
+scene_packs_with_goals = 43
+multi_agent_episodes_ge2 = 660
+verified_t50_episodes = 320
+verified_t100_episodes = 320
+GoalBench_v4_official_records = 5574
+stage12_gates = 9 / 10
+expert_audit_score = 83 / 100
+stage13_ready = true
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Deterministic re-benchmark:
+
+```text
+aerialmpt_best_improvement = -0.003994
+eth_ucy_best_improvement = 0.002596
+eth_ucy_ewap_t100_best_improvement = 0.0
+trajnet_best_improvement = 0.001107
+deterministic_5pct_gate = false
+```
+
+Main conclusion:
+
+Stage 12 finally fixes the verified pedestrian long-horizon data blocker by adding `eth_ucy_ewap` with verified t+50/t+100. The data/annotation/GoalBench gates now allow Stage 13 deterministic training. However, the deterministic residual model still does not beat strongest causal baselines by 5%, including on EWAP t+100 where it only matches baseline. Do not enter Stage 5C or enable SMC yet.
