@@ -1,0 +1,82 @@
+{
+  "stage": "10",
+  "gates": [
+    {
+      "name": "Pedestrian/Drone Data Gate",
+      "passed": true,
+      "status": "pass",
+      "evidence": "loaded=['trajnet', 'eth_ucy']",
+      "next_fix": "Load at least one real pedestrian/drone source."
+    },
+    {
+      "name": "Long-Horizon Gate",
+      "passed": false,
+      "status": "fail",
+      "evidence": "verified_t50_or_t100=[]",
+      "next_fix": "Cannot claim pedestrian long-horizon world model until this passes."
+    },
+    {
+      "name": "Human/Silver Annotation Gate",
+      "passed": false,
+      "status": "partial",
+      "evidence": "human_confirmed=0, silver_rule_confirmed=20",
+      "next_fix": "Need at least 3 gold_human or silver_human_confirmed scenes."
+    },
+    {
+      "name": "Scene Pack Gate",
+      "passed": true,
+      "status": "pass",
+      "evidence": "walkable=27, goals=27",
+      "next_fix": "Need usable walkable + goal scene packs."
+    },
+    {
+      "name": "Multi-Agent Episode Gate",
+      "passed": false,
+      "status": "partial",
+      "evidence": ">=2_agent_episodes=320",
+      "next_fix": "Need 500 multi-agent episodes or mark partial."
+    },
+    {
+      "name": "Hard/Failure Episode Gate",
+      "passed": true,
+      "status": "pass",
+      "evidence": "hard_plus_failure=546",
+      "next_fix": "Need at least 100 hard/failure episodes."
+    },
+    {
+      "name": "GoalBench v3 Gate",
+      "passed": true,
+      "status": "pass",
+      "evidence": "official_records=1530, inferred_only_records=0",
+      "next_fix": "Need 500 official non-inferred records."
+    },
+    {
+      "name": "No Leakage Gate",
+      "passed": true,
+      "status": "pass",
+      "evidence": "train-only candidate goals; no future endpoint input; causal velocity",
+      "next_fix": "Repair leakage flags."
+    },
+    {
+      "name": "Stage 11 Readiness Gate",
+      "passed": false,
+      "status": "fail",
+      "evidence": "not_ready",
+      "next_fix": "Pass data, human annotation, scene pack, GoalBench and no-leakage gates."
+    },
+    {
+      "name": "Stage 5C Readiness Gate",
+      "passed": false,
+      "status": "fail",
+      "evidence": "Stage 10 is data/annotation only; latent generative remains forbidden.",
+      "next_fix": "Keep disabled."
+    }
+  ],
+  "passed": 5,
+  "total": 10,
+  "stage11_ready": false,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 78,
+  "verdict": "stage10_data_annotation_package_partial_not_stage11_ready"
+}

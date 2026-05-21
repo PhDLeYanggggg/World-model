@@ -247,3 +247,32 @@ smc_ready = false
 Main conclusion:
 
 Stage 9 successfully trains and evaluates per-agent all-agent deterministic models, but the full scene+goal+interaction model does not beat the strongest causal baseline. Interaction and scene/goal features remain unproven for trajectory lift, easy preservation is not sufficiently assessable in the current split, and pedestrian/drone t+50/t+100 is still missing. Do not enter Stage 5C or enable SMC.
+
+## Stage 10 Result
+
+Latest Stage 10 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage10_results`
+
+Stage 10 is a data acquisition, human-in-the-loop annotation, and benchmark packaging stage. It does not train a new model, does not enable latent generative modeling, and does not enable SMC:
+
+```text
+loaded_pedestrian_drone_sources = trajnet, eth_ucy
+verified_pedestrian_drone_t50_or_t100_sources = 0
+human_confirmed_scenes = 0
+silver_rule_confirmed_scenes = 20
+scene_packs_with_goals = 27
+multi_agent_episodes_ge2 = 320
+hard_failure_records = 309
+GoalBench_v3_official_records = 1530
+stage10_gates = 5 / 10
+expert_audit_score = 78 / 100
+verdict = stage10_data_annotation_package_partial_not_stage11_ready
+stage11_ready = false
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+Stage 10 packages the current pedestrian-like data, annotation tasks, scene packs, multi-agent episodes, hard/failure records, and GoalBench v3 for the next data sprint. It still does not solve verified pedestrian/drone t+50/t+100, and the annotations are still rule-confirmed silver rather than human-confirmed gold/silver. Stage 11 training is not allowed until at least three scenes are human-confirmed and the multi-agent/hard-failure data is expanded. Stage 5C latent generative modeling and SMC remain disabled.
