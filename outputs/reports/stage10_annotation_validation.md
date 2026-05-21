@@ -3,9 +3,9 @@
 | dataset_name | scene_id | annotation_quality | human_confirmed | valid | errors |
 | --- | --- | --- | --- | --- | --- |
 | eth_ucy | eth_ucy_biwi_hotel | silver_rule_confirmed | False | True | [] |
-| trajnet | trajnet_bookstore_0 | silver_rule_confirmed | False | True | [] |
-| trajnet | trajnet_bookstore_1 | silver_rule_confirmed | False | True | [] |
-| trajnet | trajnet_bookstore_2 | silver_rule_confirmed | False | True | [] |
+| trajnet | trajnet_bookstore_0 | silver_human_confirmed | True | True | [] |
+| trajnet | trajnet_bookstore_1 | silver_human_confirmed | True | True | [] |
+| trajnet | trajnet_bookstore_2 | silver_human_confirmed | True | True | [] |
 | trajnet | trajnet_bookstore_3 | silver_rule_confirmed | False | True | [] |
 | trajnet | trajnet_coupa_3 | silver_rule_confirmed | False | True | [] |
 | trajnet | trajnet_deathCircle_0 | silver_rule_confirmed | False | True | [] |

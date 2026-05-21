@@ -3,9 +3,9 @@
 | dataset_name | scene_id | annotation_quality | goal_count | requires_human_review |
 | --- | --- | --- | --- | --- |
 | eth_ucy | eth_ucy_biwi_hotel | silver_rule_confirmed | 6 | True |
-| trajnet | trajnet_bookstore_0 | silver_rule_confirmed | 6 | True |
-| trajnet | trajnet_bookstore_1 | silver_rule_confirmed | 6 | True |
-| trajnet | trajnet_bookstore_2 | silver_rule_confirmed | 6 | True |
+| trajnet | trajnet_bookstore_0 | silver_human_confirmed | 6 | False |
+| trajnet | trajnet_bookstore_1 | silver_human_confirmed | 6 | False |
+| trajnet | trajnet_bookstore_2 | silver_human_confirmed | 6 | False |
 | trajnet | trajnet_bookstore_3 | silver_rule_confirmed | 6 | True |
 | trajnet | trajnet_coupa_3 | silver_rule_confirmed | 6 | True |
 | trajnet | trajnet_deathCircle_0 | silver_rule_confirmed | 6 | True |
@@ -31,7 +31,7 @@
 | trajnet | trajnet_nexus_2 | silver_rule_confirmed | 6 | True |
 
 gold_human scenes: 0
-silver_human_confirmed scenes: 0
-silver_rule_confirmed scenes: 20
+silver_human_confirmed scenes: 3
+silver_rule_confirmed scenes: 17
 inferred_only scenes: 7
-Annotation tasks are not counted as human-confirmed labels until reviewed.
+Annotation report is refreshed from current scene_annotation.json files during validation.

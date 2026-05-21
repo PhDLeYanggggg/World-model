@@ -3,9 +3,9 @@
 | dataset_name | scene_id | annotation_quality | metric_status | goals | obstacles | human_confirmed |
 | --- | --- | --- | --- | --- | --- | --- |
 | eth_ucy | eth_ucy_biwi_hotel | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
-| trajnet | trajnet_bookstore_0 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
-| trajnet | trajnet_bookstore_1 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
-| trajnet | trajnet_bookstore_2 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
+| trajnet | trajnet_bookstore_0 | silver_human_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | True |
+| trajnet | trajnet_bookstore_1 | silver_human_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | True |
+| trajnet | trajnet_bookstore_2 | silver_human_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | True |
 | trajnet | trajnet_bookstore_3 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
 | trajnet | trajnet_coupa_3 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
 | trajnet | trajnet_deathCircle_0 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
@@ -31,8 +31,8 @@
 | trajnet | trajnet_nexus_2 | silver_rule_confirmed | non_metric_or_dataset_coordinate | 6 | 0 | False |
 
 gold_human_scenes: 0
-silver_human_confirmed_scenes: 0
-silver_rule_confirmed_scenes: 20
+silver_human_confirmed_scenes: 3
+silver_rule_confirmed_scenes: 17
 inferred_only_scenes: 7
 scenes_with_homography: 0
 scenes_with_metric_scale: 0
@@ -40,4 +40,4 @@ scenes_with_walkable: 27
 scenes_with_goals: 27
 scenes_with_obstacles: 0
 scenes_eligible_for_official_goalbench: 20
-scenes_eligible_for_stage11_training: 0
+scenes_eligible_for_stage11_training: 3
