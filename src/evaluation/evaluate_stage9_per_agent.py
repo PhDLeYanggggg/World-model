@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -13,7 +14,7 @@ from src.models.stage9_per_agent_world_model import Stage9PerAgentWorldModel
 from src.training.train_stage9_per_agent import select_features, stage9_feature_vector
 
 
-REPORT_DIR = Path("outputs/reports")
+REPORT_DIR = Path(os.environ.get("STAGE9_REPORT_DIR", "outputs/reports"))
 
 
 def load_baselines() -> Dict:
@@ -83,9 +84,9 @@ def subset_match(ep: Dict, subset: str) -> bool:
     if subset == "baseline_failure":
         return bool(meta.get("baseline_failure_proxy"))
     if subset == "goalbench_official":
-        return meta.get("annotation_quality") in {"gold", "silver"}
+        return meta.get("annotation_quality") in {"gold", "silver", "gold_human", "silver_human_confirmed", "silver_rule_confirmed", "ai_visual_silver"}
     if subset == "silver":
-        return meta.get("annotation_quality") == "silver"
+        return meta.get("annotation_quality") in {"silver", "silver_human_confirmed", "silver_rule_confirmed", "ai_visual_silver"}
     if subset == "inferred_only":
         return meta.get("annotation_quality") == "inferred_only"
     if subset == "ge2":

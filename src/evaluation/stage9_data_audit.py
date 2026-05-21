@@ -1,14 +1,15 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Dict, List
 
 import numpy as np
 
 
-EP_ROOT = Path("data/stage8p5_per_agent_episodes")
-REPORT_DIR = Path("outputs/reports")
+EP_ROOT = Path(os.environ.get("STAGE9_EP_ROOT", "data/stage8p5_per_agent_episodes"))
+REPORT_DIR = Path(os.environ.get("STAGE9_REPORT_DIR", "outputs/reports"))
 
 
 def load_episode(path: Path) -> Dict:

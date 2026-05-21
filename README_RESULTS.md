@@ -259,20 +259,47 @@ Stage 10 is a data acquisition, human-in-the-loop annotation, and benchmark pack
 ```text
 loaded_pedestrian_drone_sources = trajnet, eth_ucy
 verified_pedestrian_drone_t50_or_t100_sources = 0
-human_confirmed_scenes = 0
-silver_rule_confirmed_scenes = 20
+human_confirmed_scenes = 3
+silver_rule_confirmed_scenes = 17
 scene_packs_with_goals = 27
 multi_agent_episodes_ge2 = 320
 hard_failure_records = 309
 GoalBench_v3_official_records = 1530
-stage10_gates = 5 / 10
-expert_audit_score = 78 / 100
-verdict = stage10_data_annotation_package_partial_not_stage11_ready
-stage11_ready = false
+stage10_gates = 7 / 10
+expert_audit_score = 79 / 100
+verdict = stage10_ready_for_stage11_training
+stage11_ready = true
 latent_stage5c_ready = false
 smc_ready = false
 ```
 
 Main conclusion:
 
-Stage 10 packages the current pedestrian-like data, annotation tasks, scene packs, multi-agent episodes, hard/failure records, and GoalBench v3 for the next data sprint. It still does not solve verified pedestrian/drone t+50/t+100, and the annotations are still rule-confirmed silver rather than human-confirmed gold/silver. Stage 11 training is not allowed until at least three scenes are human-confirmed and the multi-agent/hard-failure data is expanded. Stage 5C latent generative modeling and SMC remain disabled.
+Stage 10 packages the current pedestrian-like data, annotation tasks, scene packs, multi-agent episodes, hard/failure records, and GoalBench v3 for the next data sprint. Three scenes have been promoted to `silver_human_confirmed`, so Stage 11 deterministic training is allowed. It still does not solve verified pedestrian/drone t+50/t+100, and these annotations are not human gold. Stage 5C latent generative modeling and SMC remain disabled.
+
+## Stage 11 Result
+
+Latest Stage 11 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage11_results`
+
+Stage 11 adds AI visual-silver scene annotation from local AerialMPT image/video frames and trains a deterministic self-labeled per-agent residual model. It does not enable latent generative modeling or SMC:
+
+```text
+datasets = aerialmpt, eth_ucy, trajnet
+aerialmpt_visual_silver_scenes = 14
+stage11_multi_agent_episodes_ge2 = 340
+verified_t10_episodes = 335
+verified_t50_episodes = 0
+verified_t100_episodes = 0
+predicts_all_agents = true
+latent_stage5c_ready = false
+smc_ready = false
+best_aerialmpt_improvement = -0.003994
+best_eth_ucy_improvement = 0.002596
+best_trajnet_improvement = 0.001107
+```
+
+Main conclusion:
+
+Stage 11 proves the local visual annotation path works: AerialMPT frames are inspected into `ai_visual_silver` scene packs with visible image previews, observed pedestrian passage regions, and boundary-prior candidate goals. The model trains on Stage 10 self/silver labels plus AerialMPT visual-silver labels, but improvements over strongest causal baselines are tiny and AerialMPT is slightly worse than baseline. AerialMPT is pixel-space only because no homography or meter scale is present. This is not a pedestrian/drone long-horizon world model yet; verified t+50/t+100 remains missing.

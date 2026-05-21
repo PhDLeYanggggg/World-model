@@ -1,0 +1,46 @@
+{
+  "stage": "11",
+  "model_type": "self_labeled_per_agent_deterministic_residual",
+  "datasets": [
+    "aerialmpt",
+    "eth_ucy",
+    "trajnet"
+  ],
+  "episodes": 340,
+  "episodes_ge2": 340,
+  "verified_t10": 335,
+  "verified_t50": 0,
+  "verified_t100": 0,
+  "predicts_all_agents": true,
+  "latent_enabled": false,
+  "smc_enabled": false,
+  "best_by_dataset": {
+    "aerialmpt": {
+      "variant": "per_agent_no_scene",
+      "horizon": "5",
+      "FDE": 2.746454,
+      "baseline_FDE": 2.735528,
+      "improvement": -0.003994
+    },
+    "eth_ucy": {
+      "variant": "per_agent_scene_only",
+      "horizon": "10",
+      "FDE": 5.157833,
+      "baseline_FDE": 5.17126,
+      "improvement": 0.002596
+    },
+    "trajnet": {
+      "variant": "per_agent_goal_only",
+      "horizon": "10",
+      "FDE": 20.748859,
+      "baseline_FDE": 20.771859,
+      "improvement": 0.001107
+    }
+  },
+  "limitations": [
+    "AerialMPT visual labels are AI visual silver, not human gold.",
+    "AerialMPT is pixel-space because no homography or metric scale is available.",
+    "Pedestrian/drone t+50/t+100 remains unavailable.",
+    "Stage 11 is deterministic; latent generative and SMC remain disabled."
+  ]
+}

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -16,8 +17,8 @@ from src.models.stage9_residual_decoder import fit_logistic, fit_ridge, sigmoid
 from src.models.stage9_scene_encoder import encode_scene, load_scene_pack
 
 
-REPORT_DIR = Path("outputs/reports")
-CKPT_DIR = Path("outputs/checkpoints/stage9")
+REPORT_DIR = Path(os.environ.get("STAGE9_REPORT_DIR", "outputs/reports"))
+CKPT_DIR = Path(os.environ.get("STAGE9_CKPT_DIR", "outputs/checkpoints/stage9"))
 VARIANTS = {
     "per_agent_no_scene": "no_scene",
     "per_agent_scene_only": "scene_only",

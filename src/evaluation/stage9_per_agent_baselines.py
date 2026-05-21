@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 
@@ -10,7 +11,7 @@ import numpy as np
 from src.evaluation.stage9_data_audit import available_stage9_datasets, load_stage9_episodes
 
 
-REPORT_DIR = Path("outputs/reports")
+REPORT_DIR = Path(os.environ.get("STAGE9_REPORT_DIR", "outputs/reports"))
 BASELINES = [
     "constant_position",
     "constant_velocity_causal_fd",
@@ -83,8 +84,13 @@ def load_goal_centers(ep: Dict) -> np.ndarray:
 
 
 def load_boundary(ep: Dict) -> Tuple[float, float, float, float] | None:
-    scene = Path("data/stage8p5_scene_gold_packs") / ep["meta"]["dataset_name"] / ep["meta"]["scene_id"] / "scene_gold_pack.json"
-    if not scene.exists():
+    root = Path(os.environ.get("STAGE9_SCENE_PACK_ROOT", "data/stage8p5_scene_gold_packs"))
+    candidates = [
+        root / ep["meta"]["dataset_name"] / ep["meta"]["scene_id"] / "scene_gold_pack.json",
+        root / ep["meta"]["dataset_name"] / ep["meta"]["scene_id"] / "scene_pack.json",
+    ]
+    scene = next((p for p in candidates if p.exists()), None)
+    if scene is None:
         return None
     pack = json.loads(scene.read_text(encoding="utf-8"))
     pts = np.asarray(pack.get("boundary_polygon", []), dtype=float)

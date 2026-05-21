@@ -2,14 +2,15 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from pathlib import Path
 from typing import Dict, List
 
 from src.evaluation.evaluate_stage9_per_agent import evaluate_checkpoint
 
 
-REPORT_DIR = Path("outputs/reports")
-CKPT_DIR = Path("outputs/checkpoints/stage9")
+REPORT_DIR = Path(os.environ.get("STAGE9_REPORT_DIR", "outputs/reports"))
+CKPT_DIR = Path(os.environ.get("STAGE9_CKPT_DIR", "outputs/checkpoints/stage9"))
 
 
 def checkpoint_paths() -> List[Path]:

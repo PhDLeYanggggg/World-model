@@ -1,14 +1,22 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import numpy as np
 
 
 def load_scene_pack(dataset: str, scene_id: str) -> dict:
-    p = Path("data/stage8p5_scene_gold_packs") / dataset / scene_id / "scene_gold_pack.json"
-    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    root = Path(os.environ.get("STAGE9_SCENE_PACK_ROOT", "data/stage8p5_scene_gold_packs"))
+    candidates = [
+        root / dataset / scene_id / "scene_gold_pack.json",
+        root / dataset / scene_id / "scene_pack.json",
+    ]
+    for p in candidates:
+        if p.exists():
+            return json.loads(p.read_text(encoding="utf-8"))
+    return {}
 
 
 def encode_scene(pack: dict, position: np.ndarray) -> np.ndarray:
@@ -24,8 +32,8 @@ def encode_scene(pack: dict, position: np.ndarray) -> np.ndarray:
         dist, inside, scale = 0.0, 0.0, 1.0
     return np.asarray(
         [
-            1.0 if quality == "gold" else 0.0,
-            1.0 if quality == "silver" else 0.0,
+            1.0 if quality in {"gold", "gold_human"} else 0.0,
+            1.0 if quality in {"silver", "silver_human_confirmed", "silver_rule_confirmed", "ai_visual_silver"} else 0.0,
             1.0 if quality == "inferred_only" else 0.0,
             inside,
             float(np.clip(dist / scale, -1.0, 1.0)),
