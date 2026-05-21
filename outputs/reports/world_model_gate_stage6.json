@@ -1,0 +1,71 @@
+{
+  "stage": "6",
+  "gates": [
+    {
+      "name": "Pedestrian/Drone Long-Horizon Gate",
+      "passed": false,
+      "evidence": "0 actual pedestrian/drone sources support verified t+50/t+100",
+      "next_fix": "No pedestrian long-horizon claim without this."
+    },
+    {
+      "name": "HardBench Reliability Gate",
+      "passed": true,
+      "evidence": "HardBench-v1 hard episodes=53, eligibility=official",
+      "next_fix": "Need at least 50 official hard episodes."
+    },
+    {
+      "name": "BaselineFailureBench Gate",
+      "passed": true,
+      "evidence": "failure_samples=48, train_ok=True, eval_ok=True",
+      "next_fix": "Need enough failure samples for train/test."
+    },
+    {
+      "name": "Failure Predictor Gate",
+      "passed": true,
+      "evidence": "AUROC=0.899098, AUPRC=0.694048, positive_rate=0.302632",
+      "next_fix": "Improve causal failure predictor."
+    },
+    {
+      "name": "Alpha Calibration Gate",
+      "passed": true,
+      "evidence": "easy=0.004620422647958356, hard=0.03775980526559732, failure=0.04468315373365586, corr=0.07206179273714433",
+      "next_fix": "Alpha should increase from easy to hard to failure."
+    },
+    {
+      "name": "Failure-Aware Improvement Gate",
+      "passed": false,
+      "evidence": "best failure subset improvements={'eth_ucy': 0.098915, 'tgsim': -0.0048, 'tgsim_i90': 0.013633, 'trajnet': 0.0}",
+      "next_fix": "Need >=10% improvement on BaselineFailureBench."
+    },
+    {
+      "name": "Easy Preservation Gate",
+      "passed": true,
+      "evidence": "best easy improvements={'eth_ucy': 0.0, 'trajnet': 0.0}",
+      "next_fix": "Do not degrade easy cases."
+    },
+    {
+      "name": "Verified Long-Horizon Gate",
+      "passed": false,
+      "evidence": "verified long-horizon improvements={'tgsim': -0.010211, 'tgsim_i90': 0.011623}",
+      "next_fix": "Need >=5% improvement on verified t+50/t+100."
+    },
+    {
+      "name": "Interaction Gate",
+      "passed": false,
+      "evidence": "no_interaction=0.109813, interaction=0.117277",
+      "next_fix": "Interaction features must help hard/failure subsets."
+    },
+    {
+      "name": "Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Do not enter Stage 5C. Deterministic failure-aware gates did not pass.",
+      "next_fix": "Pass Stage 6 deterministic gates first."
+    }
+  ],
+  "passed": 5,
+  "total": 10,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 70,
+  "verdict": "stage6_failure_bench_built_but_not_stage5c_ready"
+}

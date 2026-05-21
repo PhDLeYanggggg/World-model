@@ -1,0 +1,72 @@
+{
+  "stage": "5B.5",
+  "gates": [
+    {
+      "name": "Pedestrian / Drone Data Gate",
+      "passed": false,
+      "evidence": "0 pedestrian/drone sources support raw t+50/t+100; audit documents why current TrajNet/ETH fallback cannot",
+      "next_fix": "Prepare SDD/full OpenTraj/real long pedestrian tracks."
+    },
+    {
+      "name": "Hard Subset Gate",
+      "passed": true,
+      "evidence": "3 datasets have enough hard examples for evaluation",
+      "next_fix": "Mine more hard examples or increase real data."
+    },
+    {
+      "name": "No Leakage Gate",
+      "passed": true,
+      "evidence": "4/4 leakage audits passed",
+      "next_fix": "Fix split/causal feature issues."
+    },
+    {
+      "name": "Deterministic Model Gate",
+      "passed": false,
+      "evidence": "temporal model beats strongest baseline by >=5% on 1 dataset target horizons",
+      "next_fix": "Improve deterministic model before Stage 5C."
+    },
+    {
+      "name": "Hard Interaction Gate",
+      "passed": false,
+      "evidence": "temporal model beats strongest baseline by >=10% on 1 hard subsets",
+      "next_fix": "Improve interaction modeling and hard training."
+    },
+    {
+      "name": "Long Horizon Gate",
+      "passed": true,
+      "evidence": "temporal model beats strongest baseline by >=5% on 1 verified t+100 sources",
+      "next_fix": "Need at least one robust verified t+100 win."
+    },
+    {
+      "name": "Physical Validity Gate",
+      "passed": true,
+      "evidence": "No collision/speed/acceleration degradation measured in this single-agent quick benchmark",
+      "next_fix": "Add multi-agent physical validity once multi-agent episodes return."
+    },
+    {
+      "name": "Stability Gate",
+      "passed": true,
+      "evidence": "max residual magnitude=0.631496, max gate alpha=0.45",
+      "next_fix": "Keep residual clipping/gating; reject exploding rollout."
+    },
+    {
+      "name": "Cross Dataset Gate",
+      "passed": true,
+      "evidence": "diagnostic cross-dataset report exists",
+      "next_fix": "Run leave-one-dataset-out once model is real."
+    },
+    {
+      "name": "Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Do not enter Stage 5C latent generative. Deterministic interaction model is not strong enough.",
+      "next_fix": "Pass Gates 1-8 first."
+    }
+  ],
+  "passed": 6,
+  "total": 10,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 70,
+  "verdict": "stage5b5_hard_benchmark_built_but_deterministic_gate_failed",
+  "torch_backend_completed": true
+}

@@ -1,0 +1,71 @@
+{
+  "stage": "5B.6",
+  "gates": [
+    {
+      "name": "Hard Reliability Gate",
+      "passed": false,
+      "evidence": "0 hard subsets are official gate eligible (>=50 hard episodes)",
+      "next_fix": "Collect more hard episodes; do not gate on one-episode wins."
+    },
+    {
+      "name": "Pedestrian / Drone Horizon Gate",
+      "passed": false,
+      "evidence": "0 pedestrian/drone sources have verified t+50/t+100",
+      "next_fix": "Prepare SDD/full OpenTraj/long AerialMPT with legal access."
+    },
+    {
+      "name": "No Leakage Gate",
+      "passed": true,
+      "evidence": "4/4 leakage audits passed",
+      "next_fix": "Keep official features causal."
+    },
+    {
+      "name": "Gated Residual Gate",
+      "passed": false,
+      "evidence": "gated residual beats strongest baseline by >=5% on 1 dataset target horizons",
+      "next_fix": "Improve baseline failure detection and residual training."
+    },
+    {
+      "name": "Hard Interaction Gate",
+      "passed": false,
+      "evidence": "gated residual beats strongest baseline by >=10% on 0 official hard subsets",
+      "next_fix": "Need reliable hard subsets and stronger interaction model."
+    },
+    {
+      "name": "Alpha Calibration Gate",
+      "passed": true,
+      "evidence": "corr=0.207346, easy_alpha=0.029783, hard_alpha=0.091664",
+      "next_fix": "Alpha should rise when baseline likely fails and stay low on easy segments."
+    },
+    {
+      "name": "Interaction Encoder Gate",
+      "passed": false,
+      "evidence": "hard improvement no_interaction=0.04006, graph=-0.013418",
+      "next_fix": "Graph interaction must beat no-interaction on hard subsets."
+    },
+    {
+      "name": "Verified Long-Horizon Gate",
+      "passed": false,
+      "evidence": "0 verified t+100 sources beat strongest baseline by >=5%",
+      "next_fix": "Need at least one robust long-horizon win."
+    },
+    {
+      "name": "Physical Validity Gate",
+      "passed": true,
+      "evidence": "minimum physical validity remains >=0.95",
+      "next_fix": "Bound residual and add validity losses."
+    },
+    {
+      "name": "Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Do not enter Stage 5C. Deterministic gated interaction model is not strong enough.",
+      "next_fix": "Pass deterministic reliability gates first."
+    }
+  ],
+  "passed": 3,
+  "total": 10,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 68,
+  "verdict": "stage5b6_reliability_repaired_but_deterministic_gate_failed"
+}

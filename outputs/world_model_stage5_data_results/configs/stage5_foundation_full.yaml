@@ -1,0 +1,16 @@
+mode: full
+requires_explicit_user_command: true
+model:
+  hidden_dim: 256
+  latent_enabled: false
+training:
+  max_steps: 250000
+  batch_size: 256
+  teacher_forcing_start: 1.0
+  teacher_forcing_end: 0.3
+  curriculum: [10, 25, 50, 100]
+gate:
+  require_data_lake_gate: true
+  require_verified_horizon_gate: true
+  require_baseline_gate: true
+  require_no_leakage_gate: true

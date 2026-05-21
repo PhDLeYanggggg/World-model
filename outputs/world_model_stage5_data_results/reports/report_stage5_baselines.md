@@ -1,0 +1,330 @@
+# Stage 5 Baselines
+
+```json
+{
+  "status": "quick_partial",
+  "official_note": "Only TGSIM is converted in this quick run; registry-only datasets are not benchmarked.",
+  "datasets": {
+    "TGSIM Foggy Bottom": {
+      "strongest_causal_baseline": "constant_turn_rate_velocity",
+      "metrics": {
+        "available": true,
+        "branch_count": 1,
+        "horizons": {
+          "1": {
+            "ADE": 0.00057,
+            "FDE": 0.00057,
+            "minADE@1": 0.00057,
+            "minFDE@1": 0.00057
+          },
+          "10": {
+            "ADE": 0.00675,
+            "FDE": 0.01397,
+            "minADE@1": 0.00675,
+            "minFDE@1": 0.01397
+          },
+          "25": {
+            "ADE": 0.01571,
+            "FDE": 0.02698,
+            "minADE@1": 0.01571,
+            "minFDE@1": 0.02698
+          },
+          "50": {
+            "ADE": 0.02573,
+            "FDE": 0.0379,
+            "minADE@1": 0.02573,
+            "minFDE@1": 0.0379
+          },
+          "100": {
+            "ADE": 0.03398,
+            "FDE": 0.0482,
+            "minADE@1": 0.03398,
+            "minFDE@1": 0.0482
+          }
+        },
+        "coverage_FDE_lt_1m": 1.0,
+        "coverage_FDE_lt_2m": 1.0,
+        "coverage_FDE_lt_5m": 1.0,
+        "coverage_FDE_lt_10m": 1.0,
+        "collision_violation_rate": 0.0,
+        "physical_validity_rate": 1.0,
+        "speed_violation_rate": 0.0,
+        "acceleration_violation_rate": 0.0,
+        "boundary_violation_rate": null
+      },
+      "all_baselines": {
+        "constant_velocity_causal_fd": {
+          "available": true,
+          "branch_count": 1,
+          "horizons": {
+            "1": {
+              "ADE": 0.00053,
+              "FDE": 0.00053,
+              "minADE@1": 0.00053,
+              "minFDE@1": 0.00053
+            },
+            "10": {
+              "ADE": 0.0056,
+              "FDE": 0.01143,
+              "minADE@1": 0.0056,
+              "minFDE@1": 0.01143
+            },
+            "25": {
+              "ADE": 0.01501,
+              "FDE": 0.03036,
+              "minADE@1": 0.01501,
+              "minFDE@1": 0.03036
+            },
+            "50": {
+              "ADE": 0.03267,
+              "FDE": 0.06399,
+              "minADE@1": 0.03267,
+              "minFDE@1": 0.06399
+            },
+            "100": {
+              "ADE": 0.06245,
+              "FDE": 0.12288,
+              "minADE@1": 0.06245,
+              "minFDE@1": 0.12288
+            }
+          },
+          "coverage_FDE_lt_1m": 1.0,
+          "coverage_FDE_lt_2m": 1.0,
+          "coverage_FDE_lt_5m": 1.0,
+          "coverage_FDE_lt_10m": 1.0,
+          "collision_violation_rate": 0.0,
+          "physical_validity_rate": 1.0,
+          "speed_violation_rate": 0.0,
+          "acceleration_violation_rate": 0.0,
+          "boundary_violation_rate": null
+        },
+        "constant_acceleration_causal": {
+          "available": true,
+          "branch_count": 1,
+          "horizons": {
+            "1": {
+              "ADE": 0.00039,
+              "FDE": 0.00039,
+              "minADE@1": 0.00039,
+              "minFDE@1": 0.00039
+            },
+            "10": {
+              "ADE": 0.00752,
+              "FDE": 0.02084,
+              "minADE@1": 0.00752,
+              "minFDE@1": 0.02084
+            },
+            "25": {
+              "ADE": 0.0508,
+              "FDE": 0.14989,
+              "minADE@1": 0.0508,
+              "minFDE@1": 0.14989
+            },
+            "50": {
+              "ADE": 0.21353,
+              "FDE": 0.64402,
+              "minADE@1": 0.21353,
+              "minFDE@1": 0.64402
+            },
+            "100": {
+              "ADE": 0.86724,
+              "FDE": 2.57365,
+              "minADE@1": 0.86724,
+              "minFDE@1": 2.57365
+            }
+          },
+          "coverage_FDE_lt_1m": 0.0,
+          "coverage_FDE_lt_2m": 0.33333,
+          "coverage_FDE_lt_5m": 1.0,
+          "coverage_FDE_lt_10m": 1.0,
+          "collision_violation_rate": 0.0,
+          "physical_validity_rate": 1.0,
+          "speed_violation_rate": 0.13531,
+          "acceleration_violation_rate": 0.0,
+          "boundary_violation_rate": null
+        },
+        "damped_velocity": {
+          "available": true,
+          "branch_count": 1,
+          "horizons": {
+            "1": {
+              "ADE": 0.00053,
+              "FDE": 0.00053,
+              "minADE@1": 0.00053,
+              "minFDE@1": 0.00053
+            },
+            "10": {
+              "ADE": 0.00538,
+              "FDE": 0.0107,
+              "minADE@1": 0.00538,
+              "minFDE@1": 0.0107
+            },
+            "25": {
+              "ADE": 0.0135,
+              "FDE": 0.02598,
+              "minADE@1": 0.0135,
+              "minFDE@1": 0.02598
+            },
+            "50": {
+              "ADE": 0.02698,
+              "FDE": 0.04785,
+              "minADE@1": 0.02698,
+              "minFDE@1": 0.04785
+            },
+            "100": {
+              "ADE": 0.04265,
+              "FDE": 0.07066,
+              "minADE@1": 0.04265,
+              "minFDE@1": 0.07066
+            }
+          },
+          "coverage_FDE_lt_1m": 1.0,
+          "coverage_FDE_lt_2m": 1.0,
+          "coverage_FDE_lt_5m": 1.0,
+          "coverage_FDE_lt_10m": 1.0,
+          "collision_violation_rate": 0.0,
+          "physical_validity_rate": 1.0,
+          "speed_violation_rate": 0.0,
+          "acceleration_violation_rate": 0.0,
+          "boundary_violation_rate": null
+        },
+        "constant_turn_rate_velocity": {
+          "available": true,
+          "branch_count": 1,
+          "horizons": {
+            "1": {
+              "ADE": 0.00057,
+              "FDE": 0.00057,
+              "minADE@1": 0.00057,
+              "minFDE@1": 0.00057
+            },
+            "10": {
+              "ADE": 0.00675,
+              "FDE": 0.01397,
+              "minADE@1": 0.00675,
+              "minFDE@1": 0.01397
+            },
+            "25": {
+              "ADE": 0.01571,
+              "FDE": 0.02698,
+              "minADE@1": 0.01571,
+              "minFDE@1": 0.02698
+            },
+            "50": {
+              "ADE": 0.02573,
+              "FDE": 0.0379,
+              "minADE@1": 0.02573,
+              "minFDE@1": 0.0379
+            },
+            "100": {
+              "ADE": 0.03398,
+              "FDE": 0.0482,
+              "minADE@1": 0.03398,
+              "minFDE@1": 0.0482
+            }
+          },
+          "coverage_FDE_lt_1m": 1.0,
+          "coverage_FDE_lt_2m": 1.0,
+          "coverage_FDE_lt_5m": 1.0,
+          "coverage_FDE_lt_10m": 1.0,
+          "collision_violation_rate": 0.0,
+          "physical_validity_rate": 1.0,
+          "speed_violation_rate": 0.0,
+          "acceleration_violation_rate": 0.0,
+          "boundary_violation_rate": null
+        },
+        "identity_hand_physics": {
+          "available": true,
+          "branch_count": 1,
+          "horizons": {
+            "1": {
+              "ADE": 0.00053,
+              "FDE": 0.00053,
+              "minADE@1": 0.00053,
+              "minFDE@1": 0.00053
+            },
+            "10": {
+              "ADE": 0.0056,
+              "FDE": 0.01143,
+              "minADE@1": 0.0056,
+              "minFDE@1": 0.01143
+            },
+            "25": {
+              "ADE": 0.01501,
+              "FDE": 0.03036,
+              "minADE@1": 0.01501,
+              "minFDE@1": 0.03036
+            },
+            "50": {
+              "ADE": 0.03267,
+              "FDE": 0.06399,
+              "minADE@1": 0.03267,
+              "minFDE@1": 0.06399
+            },
+            "100": {
+              "ADE": 0.06245,
+              "FDE": 0.12288,
+              "minADE@1": 0.06245,
+              "minFDE@1": 0.12288
+            }
+          },
+          "coverage_FDE_lt_1m": 1.0,
+          "coverage_FDE_lt_2m": 1.0,
+          "coverage_FDE_lt_5m": 1.0,
+          "coverage_FDE_lt_10m": 1.0,
+          "collision_violation_rate": 0.0,
+          "physical_validity_rate": 1.0,
+          "speed_violation_rate": 0.0,
+          "acceleration_violation_rate": 0.0,
+          "boundary_violation_rate": null
+        },
+        "tuned_hand_physics": {
+          "available": true,
+          "branch_count": 1,
+          "horizons": {
+            "1": {
+              "ADE": 0.00053,
+              "FDE": 0.00053,
+              "minADE@1": 0.00053,
+              "minFDE@1": 0.00053
+            },
+            "10": {
+              "ADE": 0.0056,
+              "FDE": 0.01143,
+              "minADE@1": 0.0056,
+              "minFDE@1": 0.01143
+            },
+            "25": {
+              "ADE": 0.01501,
+              "FDE": 0.03036,
+              "minADE@1": 0.01501,
+              "minFDE@1": 0.03036
+            },
+            "50": {
+              "ADE": 0.03267,
+              "FDE": 0.06399,
+              "minADE@1": 0.03267,
+              "minFDE@1": 0.06399
+            },
+            "100": {
+              "ADE": 0.06245,
+              "FDE": 0.12288,
+              "minADE@1": 0.06245,
+              "minFDE@1": 0.12288
+            }
+          },
+          "coverage_FDE_lt_1m": 1.0,
+          "coverage_FDE_lt_2m": 1.0,
+          "coverage_FDE_lt_5m": 1.0,
+          "coverage_FDE_lt_10m": 1.0,
+          "collision_violation_rate": 0.0,
+          "physical_validity_rate": 1.0,
+          "speed_violation_rate": 0.0,
+          "acceleration_violation_rate": 0.0,
+          "boundary_violation_rate": null
+        }
+      }
+    }
+  }
+}
+```

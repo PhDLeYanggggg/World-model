@@ -1,0 +1,36 @@
+seed: 42
+dataset:
+  velocity_source: causal_fd
+  dt_source: dataset_time
+  use_central_fd_for_prediction: false
+  use_native_velocity_for_official_score: false
+physics:
+  use_scene_geometry: false
+  use_goal_force: false
+  use_social_force: false
+  use_obstacle_force: false
+  use_boundary_clamp: false
+  damping: 0.0
+  goal_force_weight: 0.0
+  social_force_weight: 0.0
+  obstacle_force_weight: 0.0
+  boundary_force_weight: 0.0
+  repulsion_radius: 2.3
+grid_search:
+  goal_force_weight: [0.0]
+  social_force_weight: [0.0, 0.05, 0.1]
+  damping: [0.0, 0.01, 0.03]
+  max_speed: [4.0, 8.0, 15.0]
+  max_acceleration: [2.0, 4.0, 8.0]
+  repulsion_radius: [1.0, 2.3]
+training:
+  history_steps: 6
+  teacher_forcing_start: 1.0
+  teacher_forcing_end: 0.5
+  quick_train_windows: 1600
+  full_train_windows: 12000
+  multistep_horizons: [5, 10, 25]
+evaluation:
+  horizons: [1, 10, 25, 50, 100]
+  quick_episodes: 12
+  quick_smc_particles: 16

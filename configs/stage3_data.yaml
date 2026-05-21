@@ -1,0 +1,54 @@
+seed: 20260521
+output_dir: outputs
+external_data_dir: data/external
+
+preferred_sources:
+  - tgsim_foggy_bottom
+  - stanford_drone_dataset
+  - opentraj_bundle
+  - eth_ucy
+  - trajnet_plus_plus
+  - opendd
+  - ind
+
+stage3_variables:
+  kinematic:
+    - speed_mps
+    - acceleration_mps2
+    - jerk_mps3
+    - heading_rate_radps
+    - stopping_probability_proxy
+  interaction:
+    - nearest_neighbor_distance_m
+    - time_to_collision_s
+    - gap_m
+    - closing_speed_mps
+    - front_density_people_per_m2
+    - rear_density_people_per_m2
+    - left_density_people_per_m2
+    - right_density_people_per_m2
+  scene:
+    - region_id
+    - lane_or_area_type
+    - distance_to_crosswalk_m
+    - distance_to_intersection_m
+    - distance_to_exit_m
+    - obstacle_tangent_x
+    - obstacle_tangent_y
+    - bottleneck_score
+  intent:
+    - goal_region_distribution
+    - velocity_goal_alignment
+    - route_choice_entropy
+    - dwell_time_frames
+    - intent_change_flag
+  uncertainty:
+    - observation_noise_sigma_m
+    - track_age_frames
+    - missing_observation_count
+    - calibration_quality_score
+
+reports:
+  data_sources: outputs/reports/data_sources_stage3.md
+  data_sources_json: outputs/reports/data_sources_stage3.json
+  variable_schema: outputs/reports/world_variable_schema_stage3.md

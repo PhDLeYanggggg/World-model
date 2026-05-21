@@ -1,0 +1,146 @@
+{
+  "stage": "5B",
+  "gates": [
+    {
+      "name": "Actual Data Conversion Gate",
+      "passed": true,
+      "evidence": "4 actual converted datasets",
+      "next_fix": "Convert at least three real datasets."
+    },
+    {
+      "name": "Verified t+100 Gate",
+      "passed": true,
+      "evidence": "2 datasets have actual verified t+100",
+      "next_fix": "Add a second true long-horizon source."
+    },
+    {
+      "name": "No Leakage Gate",
+      "passed": true,
+      "evidence": "4/4 leakage audits passed",
+      "next_fix": "Fix split or causal feature flags."
+    },
+    {
+      "name": "Baseline Gate",
+      "passed": true,
+      "evidence": "4 datasets have baseline metrics",
+      "next_fix": "Run Stage 5B baseline benchmark."
+    },
+    {
+      "name": "Deterministic Learned Gate",
+      "passed": false,
+      "evidence": "learned residual beats strongest causal baseline by >=5% on 1 datasets",
+      "next_fix": "Improve deterministic model before latent/SMC."
+    },
+    {
+      "name": "Long-Horizon Gate",
+      "passed": false,
+      "evidence": "multistep better on 1/4 comparable datasets",
+      "next_fix": "Make multi-step training improve t+50/t+100."
+    },
+    {
+      "name": "Physical Validity Gate",
+      "passed": true,
+      "evidence": "linear residual model has no scene projection and reports kinematic validity only",
+      "next_fix": "Do not degrade physical validity."
+    },
+    {
+      "name": "Cross-Dataset Gate",
+      "passed": true,
+      "evidence": "cross-dataset report exists",
+      "next_fix": "Run cross-dataset evaluation."
+    },
+    {
+      "name": "Data Card Gate",
+      "passed": true,
+      "evidence": "data_card_stage5b.md exists",
+      "next_fix": "Create data cards for converted datasets."
+    },
+    {
+      "name": "Model Card Gate",
+      "passed": true,
+      "evidence": "model_card_stage5b.md exists",
+      "next_fix": "Create deterministic model card."
+    }
+  ],
+  "passed": 8,
+  "total": 10,
+  "actual_converted_real_sources": 4,
+  "actual_verified_t100_sources": 2,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 68,
+  "verdict": "stage5b_usable_data_lake_but_deterministic_gate_failed",
+  "learned_gate_evidence": {
+    "wins": 1,
+    "evidence": [
+      {
+        "variant": "one_step",
+        "dataset": "eth_ucy",
+        "target_horizon": "10",
+        "baseline_fde": 0.713643,
+        "learned_fde": 0.717423,
+        "improvement": -0.005296766030073868
+      },
+      {
+        "variant": "one_step",
+        "dataset": "tgsim",
+        "target_horizon": "100",
+        "baseline_fde": 6.062032,
+        "learned_fde": 6.060675,
+        "improvement": 0.00022385233202340348
+      },
+      {
+        "variant": "one_step",
+        "dataset": "tgsim_i90",
+        "target_horizon": "100",
+        "baseline_fde": 10.327657,
+        "learned_fde": 10.329037,
+        "improvement": -0.00013362178856242714
+      },
+      {
+        "variant": "one_step",
+        "dataset": "trajnet",
+        "target_horizon": "10",
+        "baseline_fde": 1.434586,
+        "learned_fde": 1.439945,
+        "improvement": -0.0037355724926913508
+      },
+      {
+        "variant": "multistep",
+        "dataset": "eth_ucy",
+        "target_horizon": "10",
+        "baseline_fde": 0.713643,
+        "learned_fde": 0.575894,
+        "improvement": 0.19302228144884767
+      },
+      {
+        "variant": "multistep",
+        "dataset": "tgsim",
+        "target_horizon": "100",
+        "baseline_fde": 6.062032,
+        "learned_fde": 7.266007,
+        "improvement": -0.1986091462400726
+      },
+      {
+        "variant": "multistep",
+        "dataset": "tgsim_i90",
+        "target_horizon": "100",
+        "baseline_fde": 10.327657,
+        "learned_fde": 10.618509,
+        "improvement": -0.028162438005057605
+      },
+      {
+        "variant": "multistep",
+        "dataset": "trajnet",
+        "target_horizon": "10",
+        "baseline_fde": 1.434586,
+        "learned_fde": 1.990041,
+        "improvement": -0.3871883595685446
+      }
+    ],
+    "multistep_better": false,
+    "multistep_evidence": "multistep better on 1/4 comparable datasets",
+    "physical_validity_ok": true,
+    "physical_evidence": "linear residual model has no scene projection and reports kinematic validity only"
+  }
+}

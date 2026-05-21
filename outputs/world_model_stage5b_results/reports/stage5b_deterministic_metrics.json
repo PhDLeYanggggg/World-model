@@ -1,0 +1,191 @@
+{
+  "config": "configs/stage5b_deterministic_quick.yaml",
+  "one_step": {
+    "mode": "one_step",
+    "checkpoint": "outputs/checkpoints/stage5b/deterministic_residual_one_step.json",
+    "learned_metrics": {
+      "eth_ucy": {
+        "model": "deterministic_residual_one_step",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 6,
+        "horizons": {
+          "1": {
+            "ADE": 0.096994,
+            "FDE": 0.096994
+          },
+          "10": {
+            "ADE": 0.403,
+            "FDE": 0.717423
+          }
+        },
+        "physical_validity_rate": 1.0
+      },
+      "tgsim": {
+        "model": "deterministic_residual_one_step",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 4,
+        "horizons": {
+          "1": {
+            "ADE": 0.000545,
+            "FDE": 0.000545
+          },
+          "10": {
+            "ADE": 0.041949,
+            "FDE": 0.110946
+          },
+          "25": {
+            "ADE": 0.256304,
+            "FDE": 0.751694
+          },
+          "50": {
+            "ADE": 0.980838,
+            "FDE": 2.627925
+          },
+          "100": {
+            "ADE": 2.65841,
+            "FDE": 6.060675
+          }
+        },
+        "physical_validity_rate": 1.0
+      },
+      "tgsim_i90": {
+        "model": "deterministic_residual_one_step",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 6,
+        "horizons": {
+          "1": {
+            "ADE": 0.006963,
+            "FDE": 0.006963
+          },
+          "10": {
+            "ADE": 0.110281,
+            "FDE": 0.272324
+          },
+          "25": {
+            "ADE": 0.593072,
+            "FDE": 1.598024
+          },
+          "50": {
+            "ADE": 1.863351,
+            "FDE": 4.549229
+          },
+          "100": {
+            "ADE": 4.694303,
+            "FDE": 10.329037
+          }
+        },
+        "physical_validity_rate": 1.0
+      },
+      "trajnet": {
+        "model": "deterministic_residual_one_step",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 7,
+        "horizons": {
+          "1": {
+            "ADE": 0.082095,
+            "FDE": 0.082095
+          },
+          "10": {
+            "ADE": 0.828221,
+            "FDE": 1.439945
+          }
+        },
+        "physical_validity_rate": 1.0
+      }
+    }
+  },
+  "multistep": {
+    "mode": "multistep",
+    "checkpoint": "outputs/checkpoints/stage5b/deterministic_residual_multistep.json",
+    "learned_metrics": {
+      "eth_ucy": {
+        "model": "deterministic_residual_multistep",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 6,
+        "horizons": {
+          "1": {
+            "ADE": 0.179029,
+            "FDE": 0.179029
+          },
+          "10": {
+            "ADE": 0.340796,
+            "FDE": 0.575894
+          }
+        },
+        "physical_validity_rate": 1.0
+      },
+      "tgsim": {
+        "model": "deterministic_residual_multistep",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 4,
+        "horizons": {
+          "1": {
+            "ADE": 1.227956,
+            "FDE": 1.227956
+          },
+          "10": {
+            "ADE": 0.871699,
+            "FDE": 1.333936
+          },
+          "25": {
+            "ADE": 1.070455,
+            "FDE": 1.970345
+          },
+          "50": {
+            "ADE": 1.775799,
+            "FDE": 3.805504
+          },
+          "100": {
+            "ADE": 3.44708,
+            "FDE": 7.266007
+          }
+        },
+        "physical_validity_rate": 1.0
+      },
+      "tgsim_i90": {
+        "model": "deterministic_residual_multistep",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 6,
+        "horizons": {
+          "1": {
+            "ADE": 3.1418,
+            "FDE": 3.1418
+          },
+          "10": {
+            "ADE": 1.647004,
+            "FDE": 3.01023
+          },
+          "25": {
+            "ADE": 1.564773,
+            "FDE": 2.866788
+          },
+          "50": {
+            "ADE": 2.207726,
+            "FDE": 4.456309
+          },
+          "100": {
+            "ADE": 4.871069,
+            "FDE": 10.618509
+          }
+        },
+        "physical_validity_rate": 1.0
+      },
+      "trajnet": {
+        "model": "deterministic_residual_multistep",
+        "baseline_prior": "constant_velocity_causal_fd",
+        "episodes": 7,
+        "horizons": {
+          "1": {
+            "ADE": 1.187613,
+            "FDE": 1.187613
+          },
+          "10": {
+            "ADE": 1.56834,
+            "FDE": 1.990041
+          }
+        },
+        "physical_validity_rate": 1.0
+      }
+    }
+  }
+}

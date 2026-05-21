@@ -1,0 +1,4499 @@
+{
+  "name": "SyntheticPhysicalCrowd2.5D",
+  "dt": 0.4,
+  "frames": 160,
+  "episodes": [
+    {
+      "episode_id": 0,
+      "split": "train",
+      "frames": 160,
+      "agents": 17,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0000.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 1,
+      "split": "train",
+      "frames": 160,
+      "agents": 46,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0001.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 2,
+      "split": "train",
+      "frames": 160,
+      "agents": 50,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0002.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 3,
+      "split": "train",
+      "frames": 160,
+      "agents": 31,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0003.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 4,
+      "split": "train",
+      "frames": 160,
+      "agents": 17,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0004.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 5,
+      "split": "train",
+      "frames": 160,
+      "agents": 22,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0005.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 6,
+      "split": "train",
+      "frames": 160,
+      "agents": 28,
+      "scene_name": "bottleneck_corridor",
+      "event_hint": "congestion",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0006.npz",
+      "scene": {
+        "name": "bottleneck_corridor",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.6,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.4,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 9.0,
+            "y1": 2.0,
+            "x2": 13.0,
+            "y2": 7.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 29.0,
+            "y1": 18.0,
+            "x2": 34.5,
+            "y2": 23.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          },
+          {
+            "rect": [
+              16.0,
+              22.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "congestion"
+      }
+    },
+    {
+      "episode_id": 7,
+      "split": "train",
+      "frames": 160,
+      "agents": 48,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0007.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 8,
+      "split": "train",
+      "frames": 160,
+      "agents": 15,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0008.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 9,
+      "split": "train",
+      "frames": 160,
+      "agents": 18,
+      "scene_name": "bottleneck_corridor",
+      "event_hint": "congestion",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0009.npz",
+      "scene": {
+        "name": "bottleneck_corridor",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.6,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.4,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 9.0,
+            "y1": 2.0,
+            "x2": 13.0,
+            "y2": 7.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 29.0,
+            "y1": 18.0,
+            "x2": 34.5,
+            "y2": 23.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          },
+          {
+            "rect": [
+              16.0,
+              22.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "congestion"
+      }
+    },
+    {
+      "episode_id": 10,
+      "split": "train",
+      "frames": 160,
+      "agents": 17,
+      "scene_name": "bottleneck_corridor",
+      "event_hint": "congestion",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0010.npz",
+      "scene": {
+        "name": "bottleneck_corridor",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.6,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.4,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 9.0,
+            "y1": 2.0,
+            "x2": 13.0,
+            "y2": 7.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 29.0,
+            "y1": 18.0,
+            "x2": 34.5,
+            "y2": 23.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          },
+          {
+            "rect": [
+              16.0,
+              22.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "congestion"
+      }
+    },
+    {
+      "episode_id": 11,
+      "split": "train",
+      "frames": 160,
+      "agents": 46,
+      "scene_name": "bottleneck_corridor",
+      "event_hint": "congestion",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0011.npz",
+      "scene": {
+        "name": "bottleneck_corridor",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.6,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.4,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 9.0,
+            "y1": 2.0,
+            "x2": 13.0,
+            "y2": 7.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 29.0,
+            "y1": 18.0,
+            "x2": 34.5,
+            "y2": 23.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          },
+          {
+            "rect": [
+              16.0,
+              22.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "congestion"
+      }
+    },
+    {
+      "episode_id": 12,
+      "split": "train",
+      "frames": 160,
+      "agents": 35,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0012.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 13,
+      "split": "train",
+      "frames": 160,
+      "agents": 40,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0013.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 14,
+      "split": "train",
+      "frames": 160,
+      "agents": 35,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0014.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 15,
+      "split": "train",
+      "frames": 160,
+      "agents": 44,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0015.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 16,
+      "split": "train",
+      "frames": 160,
+      "agents": 16,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0016.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 17,
+      "split": "train",
+      "frames": 160,
+      "agents": 20,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0017.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 18,
+      "split": "train",
+      "frames": 160,
+      "agents": 38,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0018.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 19,
+      "split": "train",
+      "frames": 160,
+      "agents": 42,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0019.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 20,
+      "split": "train",
+      "frames": 160,
+      "agents": 28,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0020.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 21,
+      "split": "train",
+      "frames": 160,
+      "agents": 39,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0021.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 22,
+      "split": "train",
+      "frames": 160,
+      "agents": 20,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0022.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 23,
+      "split": "train",
+      "frames": 160,
+      "agents": 28,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "train_episode_0023.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 24,
+      "split": "val",
+      "frames": 160,
+      "agents": 20,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "val_episode_0024.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 25,
+      "split": "val",
+      "frames": 160,
+      "agents": 15,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "val_episode_0025.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 26,
+      "split": "val",
+      "frames": 160,
+      "agents": 19,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "val_episode_0026.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 27,
+      "split": "val",
+      "frames": 160,
+      "agents": 10,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "val_episode_0027.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 28,
+      "split": "val",
+      "frames": 160,
+      "agents": 26,
+      "scene_name": "bottleneck_corridor",
+      "event_hint": "congestion",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "val_episode_0028.npz",
+      "scene": {
+        "name": "bottleneck_corridor",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.6,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.4,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 9.0,
+            "y1": 2.0,
+            "x2": 13.0,
+            "y2": 7.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 29.0,
+            "y1": 18.0,
+            "x2": 34.5,
+            "y2": 23.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          },
+          {
+            "rect": [
+              16.0,
+              22.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "congestion"
+      }
+    },
+    {
+      "episode_id": 29,
+      "split": "val",
+      "frames": 160,
+      "agents": 11,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "val_episode_0029.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 30,
+      "split": "test",
+      "frames": 160,
+      "agents": 25,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0030.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 31,
+      "split": "test",
+      "frames": 160,
+      "agents": 43,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0031.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 32,
+      "split": "test",
+      "frames": 160,
+      "agents": 12,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0032.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    },
+    {
+      "episode_id": 33,
+      "split": "test",
+      "frames": 160,
+      "agents": 13,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0033.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 34,
+      "split": "test",
+      "frames": 160,
+      "agents": 33,
+      "scene_name": "bottleneck_corridor",
+      "event_hint": "congestion",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0034.npz",
+      "scene": {
+        "name": "bottleneck_corridor",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.6,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.4,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 9.0,
+            "y1": 2.0,
+            "x2": 13.0,
+            "y2": 7.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 29.0,
+            "y1": 18.0,
+            "x2": 34.5,
+            "y2": 23.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          },
+          {
+            "rect": [
+              16.0,
+              22.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "congestion"
+      }
+    },
+    {
+      "episode_id": 35,
+      "split": "test",
+      "frames": 160,
+      "agents": 34,
+      "scene_name": "merge_to_exit",
+      "event_hint": "merge",
+      "event_label": "congestion",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0035.npz",
+      "scene": {
+        "name": "merge_to_exit",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 12.0,
+            "y1": 9.0,
+            "x2": 30.0,
+            "y2": 11.5,
+            "kind": "barrier"
+          },
+          {
+            "x1": 12.0,
+            "y1": 14.5,
+            "x2": 30.0,
+            "y2": 17.0,
+            "kind": "barrier"
+          },
+          {
+            "x1": 31.5,
+            "y1": 0.0,
+            "x2": 34.0,
+            "y2": 9.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 31.5,
+            "y1": 17.0,
+            "x2": 34.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              2.0,
+              2.0,
+              12.0,
+              8.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              2.0,
+              18.0,
+              12.0,
+              24.0
+            ],
+            "goal": "east",
+            "weight": 0.45
+          },
+          {
+            "rect": [
+              35.0,
+              11.0,
+              41.0,
+              15.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "merge"
+      }
+    },
+    {
+      "episode_id": 36,
+      "split": "test",
+      "frames": 160,
+      "agents": 26,
+      "scene_name": "split_around_obstacle",
+      "event_hint": "detour",
+      "event_label": "detour",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0036.npz",
+      "scene": {
+        "name": "split_around_obstacle",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 17.0,
+            "y1": 7.0,
+            "x2": 25.0,
+            "y2": 19.0,
+            "kind": "large_booth"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.75
+          },
+          {
+            "rect": [
+              34.0,
+              4.0,
+              41.0,
+              10.0
+            ],
+            "goal": "west",
+            "weight": 0.15
+          },
+          {
+            "rect": [
+              34.0,
+              17.0,
+              41.0,
+              23.0
+            ],
+            "goal": "west",
+            "weight": 0.1
+          }
+        ],
+        "event_hint": "detour"
+      }
+    },
+    {
+      "episode_id": 37,
+      "split": "test",
+      "frames": 160,
+      "agents": 11,
+      "scene_name": "crossing_flows",
+      "event_hint": "split",
+      "event_label": "split-flow",
+      "state_columns": [
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "ax",
+        "ay",
+        "radius",
+        "goal_x",
+        "goal_y",
+        "desired_speed",
+        "active"
+      ],
+      "diagnostic_columns": [
+        "min_gap_m",
+        "attempted_collision_count",
+        "collision_count_after_projection",
+        "projection_cost_m",
+        "obstacle_violation_count",
+        "boundary_violation_m",
+        "density_people_per_m2",
+        "reached_fraction"
+      ],
+      "npz": "test_episode_0037.npz",
+      "scene": {
+        "name": "crossing_flows",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.38
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.22
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "split"
+      }
+    }
+  ]
+}

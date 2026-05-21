@@ -1,0 +1,51 @@
+seed: 20260520
+device: cpu
+output_dir: outputs
+synthetic_dir: data/synthetic
+
+world:
+  dt: 0.4
+  frames: 200
+  quick_frames: 160
+  min_agents: 10
+  max_agents: 50
+  quick_max_agents: 18
+  max_speed_mps: 2.2
+  max_accel_mps2: 3.0
+  body_radius_min_m: 0.24
+  body_radius_max_m: 0.40
+
+dataset:
+  train_episodes: 200
+  val_episodes: 40
+  test_episodes: 40
+  quick_train_episodes: 20
+  quick_val_episodes: 5
+  quick_test_episodes: 5
+
+training:
+  history_steps: 6
+  batch_size: 512
+  epochs: 8
+  quick_epochs: 3
+  learning_rate: 0.0018
+  weight_decay: 0.0005
+
+inference:
+  horizons: [1, 10, 25, 50, 100]
+  particles: 64
+  quick_particles: 16
+  quick_eval_episodes: 4
+  obs_likelihood_sigma_m: 1.25
+  latent_goal_keep_probability: 0.48
+  latent_goal_exit_probability: 0.32
+  latent_goal_noise_m: 2.2
+  latent_goal_rejuvenation_probability: 0.08
+
+reports:
+  audit_path: outputs/reports/model_audit_stage2.md
+  metrics_json: outputs/reports/metrics_stage2.json
+  metrics_csv: outputs/reports/metrics_stage2.csv
+  metrics_table: outputs/reports/metrics_table_stage2.md
+  report_path: outputs/reports/report_stage2.md
+  data_sources_path: outputs/reports/data_sources_stage2.md

@@ -1,0 +1,13 @@
+mode: quick
+model:
+  hidden_dim: 64
+  latent_enabled: false
+training:
+  max_steps: 100
+  batch_size: 8
+  teacher_forcing_start: 1.0
+  teacher_forcing_end: 0.5
+  curriculum: [10]
+gate:
+  require_data_lake_gate: false
+  require_baseline_gate: true

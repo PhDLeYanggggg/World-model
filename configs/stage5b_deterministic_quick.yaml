@@ -1,0 +1,14 @@
+seed: 7
+mode: quick
+model:
+  type: deterministic_linear_residual_over_strongest_causal_baseline
+  latent_enabled: false
+  smc_enabled: false
+training:
+  ridge: 0.001
+  variants:
+    - one_step
+    - multistep
+official_inputs:
+  velocity_source: causal_fd
+  central_difference_allowed: diagnostic_only

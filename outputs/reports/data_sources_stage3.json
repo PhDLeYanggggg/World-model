@@ -1,0 +1,184 @@
+{
+  "sources": [
+    {
+      "key": "tgsim_foggy_bottom",
+      "name": "TGSIM Foggy Bottom Trajectories",
+      "url": "https://catalog.data.gov/dataset/third-generation-simulation-data-tgsim-foggy-bottom-trajectories",
+      "license_note": "Public data.gov dataset; check resource terms before redistribution.",
+      "coordinate_quality": "meter-scale coordinates; published conversion factor from pixels to meters",
+      "scene_geometry": "aerial reference image plus 49 polygon boundaries for road/crosswalk/intersection regions",
+      "agent_types": [
+        "pedestrian",
+        "bicycle",
+        "scooter",
+        "vehicle",
+        "bus",
+        "truck"
+      ],
+      "available_variables": [
+        "position_m",
+        "speed_mps",
+        "acceleration_mps2",
+        "width_m",
+        "length_m",
+        "road_user_type",
+        "region_polygon_id",
+        "aerial_reference_image"
+      ],
+      "t100_readiness": "strong: 0.1s records over a 2-hour window, enough for many t+100 windows",
+      "size_note": "main CSV around 350 MB plus reference image and region annotations",
+      "priority": 1,
+      "why_it_matters": "Best immediate upgrade for physical world modeling because it includes acceleration, object size, meters, and scene polygons.",
+      "loader_status": "stage3 adapter planned; no auto-download in this run"
+    },
+    {
+      "key": "stanford_drone_dataset",
+      "name": "Stanford Drone Dataset",
+      "url": "https://cvgl.stanford.edu/projects/uav_data/",
+      "license_note": "Creative Commons BY-NC-SA 3.0 on official page.",
+      "coordinate_quality": "image-space trajectories; scene-specific scale/homography must be estimated or supplied",
+      "scene_geometry": "top-view videos/reference frames; no full metric scene graph by default",
+      "agent_types": [
+        "pedestrian",
+        "bicyclist",
+        "skateboarder",
+        "cart",
+        "car",
+        "bus"
+      ],
+      "available_variables": [
+        "track_id",
+        "bbox",
+        "agent_type",
+        "image_position",
+        "scene_name",
+        "video_id"
+      ],
+      "t100_readiness": "medium-strong: long videos, but metric evaluation needs calibration",
+      "size_note": "official Stanford Campus download is large, about 69 GB",
+      "priority": 2,
+      "why_it_matters": "Large top-view campus interactions with multiple agent classes; good for social navigation and mixed-agent priors.",
+      "loader_status": "metadata/catalog only; avoid automatic 69 GB download"
+    },
+    {
+      "key": "opentraj_bundle",
+      "name": "OpenTraj Dataset Toolkit",
+      "url": "https://github.com/crowdbotp/OpenTraj",
+      "license_note": "MIT toolkit; individual dataset licenses vary.",
+      "coordinate_quality": "mixed; includes world-2D datasets such as ETH, inD, DUT, VRU, and image-space datasets",
+      "scene_geometry": "mixed; some datasets include maps or context, many do not",
+      "agent_types": [
+        "pedestrian",
+        "cyclist",
+        "vehicle",
+        "robot/person depending on dataset"
+      ],
+      "available_variables": [
+        "position",
+        "track_id",
+        "dataset_name",
+        "fps",
+        "coordinate_system"
+      ],
+      "t100_readiness": "medium: unified loaders help, but every source needs horizon/scene validation",
+      "size_note": "toolkit small; datasets vary",
+      "priority": 3,
+      "why_it_matters": "Fastest way to compare multiple pedestrian trajectory datasets under one API.",
+      "loader_status": "adapter planned through optional external OpenTraj install"
+    },
+    {
+      "key": "eth_ucy",
+      "name": "ETH / UCY Pedestrian Trajectories",
+      "url": "https://vision.ee.ethz.ch/datsets.html and https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "license_note": "Academic benchmark; verify each archive before redistribution.",
+      "coordinate_quality": "commonly used world/pixel pedestrian benchmark coordinates",
+      "scene_geometry": "limited; homographies often available through benchmark preprocessing",
+      "agent_types": [
+        "pedestrian"
+      ],
+      "available_variables": [
+        "position",
+        "track_id",
+        "scene",
+        "frame"
+      ],
+      "t100_readiness": "medium: good benchmark, but trajectories are shorter and less scene-rich",
+      "size_note": "small compared with SDD/TGSIM",
+      "priority": 4,
+      "why_it_matters": "Canonical social trajectory benchmark for sanity-checking learned dynamics.",
+      "loader_status": "adapter planned"
+    },
+    {
+      "key": "trajnet_plus_plus",
+      "name": "TrajNet++",
+      "url": "https://www.epfl.ch/labs/vita/datasets/",
+      "license_note": "Challenge/benchmark terms apply.",
+      "coordinate_quality": "trajectory benchmark coordinates, interaction-centric",
+      "scene_geometry": "usually trajectory-only; scene geometry sparse",
+      "agent_types": [
+        "pedestrian"
+      ],
+      "available_variables": [
+        "position",
+        "track_id",
+        "interaction_category"
+      ],
+      "t100_readiness": "medium: interaction benchmark, but standard horizons may differ from t+100",
+      "size_note": "benchmark-sized",
+      "priority": 5,
+      "why_it_matters": "Useful for stress-testing social interaction and collision-aware forecasting.",
+      "loader_status": "adapter planned"
+    },
+    {
+      "key": "opendd",
+      "name": "OpenDD Roundabout Drone Dataset",
+      "url": "https://l3pilot.eu/data/opendd.html",
+      "license_note": "CC BY-ND 4.0 on official page.",
+      "coordinate_quality": "trajectory database with HD map information",
+      "scene_geometry": "HD map, shapefiles, geo-referenced drone images",
+      "agent_types": [
+        "pedestrian",
+        "vehicle",
+        "cyclist"
+      ],
+      "available_variables": [
+        "trajectory",
+        "bounding_box",
+        "agent_type",
+        "hd_map",
+        "utm_coordinates"
+      ],
+      "t100_readiness": "strong for mixed traffic; pedestrian-only subset must be checked",
+      "size_note": "large multi-part dataset, 62+ hours according to official page",
+      "priority": 6,
+      "why_it_matters": "Excellent for map-aware constraints and mixed-agent physical interaction.",
+      "loader_status": "later-stage adapter; license restricts derived redistribution"
+    },
+    {
+      "key": "ind",
+      "name": "inD Intersection Drone Dataset",
+      "url": "https://www.ind-dataset.com/",
+      "license_note": "leveLX/inD terms; verify before download/use.",
+      "coordinate_quality": "world-2D trajectories at German intersections",
+      "scene_geometry": "intersection layouts and recording metadata",
+      "agent_types": [
+        "pedestrian",
+        "bicyclist",
+        "vehicle"
+      ],
+      "available_variables": [
+        "position",
+        "velocity",
+        "heading",
+        "agent_type",
+        "track_id"
+      ],
+      "t100_readiness": "strong for mixed-agent intersections; pedestrian subset can evaluate long windows",
+      "size_note": "moderate/large; access may require registration",
+      "priority": 7,
+      "why_it_matters": "Good mixed-agent interaction data but less immediately convenient than public TGSIM.",
+      "loader_status": "later-stage adapter"
+    }
+  ],
+  "recommended_next": "tgsim_foggy_bottom"
+}

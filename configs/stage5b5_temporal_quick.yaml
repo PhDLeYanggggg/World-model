@@ -1,0 +1,17 @@
+seed: 7
+mode: quick
+latent_generative_enabled: false
+smc_enabled: false
+model:
+  type: deterministic_temporal_interaction_residual
+  history_encoder: GRU
+  interaction_encoder: nearest_neighbor_features
+  residual_clip: 4.0
+  residual_gate: true
+training:
+  epochs: 120
+  gradient_clip_norm: 1.0
+  hard_subset_weighting: true
+official_inputs:
+  velocity_source: causal_fd
+  central_difference: diagnostic_only

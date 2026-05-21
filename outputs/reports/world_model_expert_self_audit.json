@@ -1,0 +1,98 @@
+{
+  "score": 58.0,
+  "max_score": 100,
+  "verdict": "prototype_with_major_failures",
+  "model_type": "pseudo-3D physics-informed learned residual state-space world model",
+  "passed_gates": 4,
+  "total_gates": 10,
+  "gates": [
+    {
+      "name": "synthetic_t100_protocol",
+      "passed": true,
+      "score": 10.0,
+      "evidence": "horizon_100_present=True; report_states_verified_synthetic_t100=True",
+      "fix": "Keep synthetic t+100 as verified evaluation and never mix it with real-data free-run metrics.",
+      "severity": "critical"
+    },
+    {
+      "name": "no_real_t100_overclaim",
+      "passed": true,
+      "score": 10.0,
+      "evidence": "free_run_warning=True; suspicious_real_t100_metric=False",
+      "fix": "Keep AerialMPT t+100 qualitative-only until a real long sequence is loaded.",
+      "severity": "critical"
+    },
+    {
+      "name": "long_horizon_accuracy",
+      "passed": false,
+      "score": 6.0,
+      "evidence": "hybrid_SMC ADE@100=4.216m; FDE@100=7.766m; target ADE<2m and FDE<5m",
+      "fix": "Train on larger/diverse synthetic data, add explicit goal inference, and tune model against rollout loss not only one-step residual.",
+      "severity": "critical"
+    },
+    {
+      "name": "learned_dynamics_beats_hand_physics",
+      "passed": false,
+      "score": 5.0,
+      "evidence": "deterministic_gain=0.03%; hybrid_SMC_gain=-38.25%; required >=10%",
+      "fix": "Use multi-step rollout loss, residual dropout, event-balanced minibatches, and learned goal posterior instead of only one-step residual acceleration.",
+      "severity": "critical"
+    },
+    {
+      "name": "stochastic_multibranch_coverage",
+      "passed": false,
+      "score": 4.0,
+      "evidence": "branch_count=16.0; coverage@64=0.25; best_FDE@100=7.005m",
+      "fix": "Make SMC particles represent latent goals/intents, report actual best-of-N, and run true 64-particle evaluation after runtime stabilizes.",
+      "severity": "critical"
+    },
+    {
+      "name": "physical_consistency",
+      "passed": true,
+      "score": 12.0,
+      "evidence": "collision=0.0; boundary=0.00835; obstacle=0.0; min_gap=0.019m",
+      "fix": "Make projection cost visible in weights, add stronger wall-aware path planning, and penalize boundary drift in rollout not just one-step training.",
+      "severity": "critical"
+    },
+    {
+      "name": "constraints_reduce_violations",
+      "passed": true,
+      "score": 8.0,
+      "evidence": "collision_reduction=0.50990; boundary_reduction=0.15996",
+      "fix": "Keep physical projection, but separate correction from likelihood so invalid proposals are not silently sanitized.",
+      "severity": "major"
+    },
+    {
+      "name": "terminal_semantic_diversity",
+      "passed": false,
+      "score": 3.0,
+      "evidence": "cluster_diversity=0.74448; semantic_event_accuracy=0.0",
+      "fix": "Cluster over intent, density, pass time, split/merge, detour, and jam features; evaluate event-balanced episodes and avoid endpoint-only semantics.",
+      "severity": "major"
+    },
+    {
+      "name": "smc_adds_predictive_value",
+      "passed": false,
+      "score": 0.0,
+      "evidence": "det_FDE@100=7.021; hybrid_best_FDE@100=7.855; learned_SMC_FDE@100=14.340; hand_FDE@100=6.830",
+      "fix": "Use learned proposal as residual around physics, not standalone acceleration; add observation/state likelihood on synthetic and latent-goal rejuvenation.",
+      "severity": "major"
+    },
+    {
+      "name": "real_world_readiness",
+      "passed": false,
+      "score": 0.0,
+      "evidence": "real_data_limits_acknowledged=True; next_data_named=True; no calibrated long real-data loader yet",
+      "fix": "Build a long real-data loader, calibrated scene geometry, and verified t+100 real benchmark before claiming real-world readiness.",
+      "severity": "critical"
+    }
+  ],
+  "priority_actions": [
+    "Train on larger/diverse synthetic data, add explicit goal inference, and tune model against rollout loss not only one-step residual.",
+    "Use multi-step rollout loss, residual dropout, event-balanced minibatches, and learned goal posterior instead of only one-step residual acceleration.",
+    "Make SMC particles represent latent goals/intents, report actual best-of-N, and run true 64-particle evaluation after runtime stabilizes.",
+    "Build a long real-data loader, calibrated scene geometry, and verified t+100 real benchmark before claiming real-world readiness.",
+    "Cluster over intent, density, pass time, split/merge, detour, and jam features; evaluate event-balanced episodes and avoid endpoint-only semantics.",
+    "Use learned proposal as residual around physics, not standalone acceleration; add observation/state likelihood on synthetic and latent-goal rejuvenation."
+  ]
+}

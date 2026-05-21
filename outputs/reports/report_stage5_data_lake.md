@@ -1,0 +1,50 @@
+# Stage 5 Data Lake
+
+```json
+{
+  "tgsim": {
+    "world_state_rows": 50000,
+    "episode_summary": {
+      "dataset_name": "tgsim",
+      "episodes": 32,
+      "t100_episodes": 32,
+      "train": 19,
+      "val": 6,
+      "test": 7
+    },
+    "metadata": {
+      "dataset_name": "TGSIM Foggy Bottom",
+      "source_path": "https://data.transportation.gov/resource/brzy-6zfh.csv?$limit=50000",
+      "coordinate_unit": "meter",
+      "whether_metric_coordinates": true,
+      "whether_scene_geometry_available": false,
+      "scene_geometry_note": "TGSIM publishes region polygons, but this loader currently consumes trajectory CSV only unless polygons are provided separately.",
+      "default_velocity_source": "causal_fd",
+      "velocity_columns": [
+        "native_vx",
+        "native_vy",
+        "causal_vx",
+        "causal_vy",
+        "central_vx",
+        "central_vy"
+      ],
+      "dt_note": "dt is inferred from consecutive native TGSIM time values per agent; dense frame_id is only an index.",
+      "columns_inferred": {
+        "agent_id": "id",
+        "time": "time",
+        "x": "xloc_kf",
+        "y": "yloc_kf",
+        "speed": null,
+        "acceleration": null,
+        "vx": "speed_kf_x",
+        "vy": "speed_kf_y",
+        "ax": "acceleration_kf_x",
+        "ay": "acceleration_kf_y",
+        "width": "width_smoothed",
+        "length": "length_smoothed",
+        "agent_type": "type_most_common"
+      }
+    }
+  }
+}
+```

@@ -1,0 +1,76 @@
+{
+  "report": {
+    "full_test_episodes": 5,
+    "evaluated_test_episodes": 4,
+    "evaluated_episode_ids": [
+      26,
+      25,
+      27,
+      29
+    ],
+    "evaluated_event_labels": [
+      "corridor_jam",
+      "obstacle_detour",
+      "obstacle_detour",
+      "obstacle_detour"
+    ],
+    "horizon": 100,
+    "particles_requested": 64,
+    "particles_used_in_this_run": 16,
+    "quick_mode": true,
+    "eval_selection": "event-balanced quick subset, not smallest-agent-only selection",
+    "future_leakage": "No future states are used by proposals or weights; ground truth is used only for metrics and cluster scoring."
+  },
+  "metrics_stage2_json": "outputs/reports/metrics_stage2.json",
+  "report_stage2_md": "outputs/reports/report_stage2.md",
+  "figures": "outputs/figures/stage2",
+  "synthetic_t100": {
+    "constant_velocity_baseline": {
+      "ADE@100": 4.2531,
+      "FDE@100": 9.0362,
+      "coverage@64": 0.0,
+      "event_acc": 0.0
+    },
+    "hand_physics_baseline": {
+      "ADE@100": 3.0493,
+      "FDE@100": 6.8297,
+      "coverage@64": 0.25,
+      "event_acc": 0.0
+    },
+    "deterministic_neural_residual": {
+      "ADE@100": 3.0483,
+      "FDE@100": 7.0215,
+      "coverage@64": 0.25,
+      "event_acc": 0.0
+    },
+    "stochastic_neural_residual": {
+      "ADE@100": 3.0364,
+      "FDE@100": 7.0366,
+      "coverage@64": 0.25,
+      "event_acc": 0.0
+    },
+    "hand_physics_SMC": {
+      "ADE@100": 4.5345,
+      "FDE@100": 7.6402,
+      "coverage@64": 0.0,
+      "event_acc": 0.5
+    },
+    "learned_neural_SMC": {
+      "ADE@100": 7.4974,
+      "FDE@100": 14.3396,
+      "coverage@64": 0.0,
+      "event_acc": 0.0
+    },
+    "physics_plus_neural_residual_SMC": {
+      "ADE@100": 4.2157,
+      "FDE@100": 7.766,
+      "coverage@64": 0.0,
+      "event_acc": 0.0
+    }
+  },
+  "aerialmpt_t100": "qualitative free-run only; not accuracy-evaluable on current bauma3 slice",
+  "self_audit": {
+    "score": 58.0,
+    "verdict": "prototype_with_major_failures"
+  }
+}

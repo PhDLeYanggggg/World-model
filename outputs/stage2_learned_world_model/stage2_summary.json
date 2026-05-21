@@ -1,0 +1,396 @@
+{
+  "stage": "stage2_learned_2_5d_world_model",
+  "runtime_s": 864.429,
+  "dataset": {
+    "name": "SyntheticPhysicalCrowd2.5D",
+    "episodes": 38,
+    "frames_per_episode": 160,
+    "dt_seconds": 0.4,
+    "agents_per_episode_min": 10,
+    "agents_per_episode_max": 50,
+    "state_columns": "x, y, vx, vy, ax, ay, radius, goal_x, goal_y, desired_speed, active",
+    "train_episodes": 24,
+    "train_agents_mean": 30.83,
+    "val_episodes": 6,
+    "val_agents_mean": 16.83,
+    "test_episodes": 8,
+    "test_agents_mean": 24.62,
+    "scene_templates": "bottleneck_corridor, crossing_flows, merge_to_exit, split_around_obstacle",
+    "storage": "/Users/yangyue/Downloads/World/outputs/stage2_learned_world_model/synthetic_dataset"
+  },
+  "model": {
+    "architecture": {
+      "entity_encoder": "Linear + LayerNorm + GELU",
+      "neighbor_interaction_encoder": "MLP over world-space neighbor/social features",
+      "obstacle_feature_encoder": "MLP over nearest obstacle and boundary features",
+      "temporal_module": "GRU over K-frame per-entity history",
+      "stochastic_latent_intention": "4D sampled z injected into transition head during rollout",
+      "transition_head": "MLP predicting residual acceleration in m/s^2",
+      "collision_projection_layer": "post-transition world-space projection for disks and scene constraints"
+    },
+    "training": {
+      "train_samples": 113960,
+      "val_samples": 15554,
+      "epochs": 8,
+      "best_val_smooth_l1_scaled": 0.3054,
+      "history": [
+        {
+          "epoch": 1,
+          "train_smooth_l1": 0.33619,
+          "val_smooth_l1": 0.30715
+        },
+        {
+          "epoch": 2,
+          "train_smooth_l1": 0.32873,
+          "val_smooth_l1": 0.30602
+        },
+        {
+          "epoch": 3,
+          "train_smooth_l1": 0.32599,
+          "val_smooth_l1": 0.30601
+        },
+        {
+          "epoch": 4,
+          "train_smooth_l1": 0.32455,
+          "val_smooth_l1": 0.30588
+        },
+        {
+          "epoch": 5,
+          "train_smooth_l1": 0.32324,
+          "val_smooth_l1": 0.30592
+        },
+        {
+          "epoch": 6,
+          "train_smooth_l1": 0.32188,
+          "val_smooth_l1": 0.3054
+        },
+        {
+          "epoch": 7,
+          "train_smooth_l1": 0.32072,
+          "val_smooth_l1": 0.30548
+        },
+        {
+          "epoch": 8,
+          "train_smooth_l1": 0.31948,
+          "val_smooth_l1": 0.30586
+        }
+      ],
+      "target_residual_std_mps2": [
+        0.141,
+        0.1195
+      ]
+    }
+  },
+  "synthetic_evaluation": {
+    "physics": {
+      "horizons": {
+        "1": {
+          "ADE_m": 0.04,
+          "FDE_m": 0.04,
+          "best_of_64_ADE_m": 0.042,
+          "best_of_64_FDE_m": 0.042
+        },
+        "10": {
+          "ADE_m": 0.111,
+          "FDE_m": 0.2,
+          "best_of_64_ADE_m": 0.115,
+          "best_of_64_FDE_m": 0.206
+        },
+        "25": {
+          "ADE_m": 0.294,
+          "FDE_m": 0.728,
+          "best_of_64_ADE_m": 0.298,
+          "best_of_64_FDE_m": 0.704
+        },
+        "50": {
+          "ADE_m": 0.975,
+          "FDE_m": 2.409,
+          "best_of_64_ADE_m": 0.962,
+          "best_of_64_FDE_m": 2.298
+        },
+        "100": {
+          "ADE_m": 2.5,
+          "FDE_m": 5.55,
+          "best_of_64_ADE_m": 2.431,
+          "best_of_64_FDE_m": 5.186
+        }
+      },
+      "coverage_t100_fde_lt_2m": 0.25,
+      "collision_violation_rate": 0.04196,
+      "obstacle_violation_rate": 0.0,
+      "boundary_violation_rate": 0.07395,
+      "max_speed_violation_rate": 0.0,
+      "acceleration_violation_rate": 0.0,
+      "trajectory_smoothness_mean_jerk": 0.5295,
+      "endpoint_nll_t100": 29.37075,
+      "semantic_event_accuracy_top_cluster": 0.0,
+      "cluster_diversity_score": 0.524
+    },
+    "neural": {
+      "horizons": {
+        "1": {
+          "ADE_m": 0.062,
+          "FDE_m": 0.062,
+          "best_of_64_ADE_m": 0.062,
+          "best_of_64_FDE_m": 0.062
+        },
+        "10": {
+          "ADE_m": 0.384,
+          "FDE_m": 0.832,
+          "best_of_64_ADE_m": 0.384,
+          "best_of_64_FDE_m": 0.832
+        },
+        "25": {
+          "ADE_m": 1.45,
+          "FDE_m": 3.607,
+          "best_of_64_ADE_m": 1.45,
+          "best_of_64_FDE_m": 3.607
+        },
+        "50": {
+          "ADE_m": 4.136,
+          "FDE_m": 9.611,
+          "best_of_64_ADE_m": 4.136,
+          "best_of_64_FDE_m": 9.611
+        },
+        "100": {
+          "ADE_m": 8.846,
+          "FDE_m": 16.378,
+          "best_of_64_ADE_m": 8.798,
+          "best_of_64_FDE_m": 15.962
+        }
+      },
+      "coverage_t100_fde_lt_2m": 0.0,
+      "collision_violation_rate": 0.26493,
+      "obstacle_violation_rate": 0.0,
+      "boundary_violation_rate": 0.43966,
+      "max_speed_violation_rate": 0.0,
+      "acceleration_violation_rate": 0.0,
+      "trajectory_smoothness_mean_jerk": 0.277,
+      "endpoint_nll_t100": 104.719,
+      "semantic_event_accuracy_top_cluster": 0.0,
+      "cluster_diversity_score": 0.0
+    },
+    "hybrid": {
+      "horizons": {
+        "1": {
+          "ADE_m": 0.043,
+          "FDE_m": 0.043,
+          "best_of_64_ADE_m": 0.049,
+          "best_of_64_FDE_m": 0.049
+        },
+        "10": {
+          "ADE_m": 0.116,
+          "FDE_m": 0.208,
+          "best_of_64_ADE_m": 0.123,
+          "best_of_64_FDE_m": 0.211
+        },
+        "25": {
+          "ADE_m": 0.305,
+          "FDE_m": 0.759,
+          "best_of_64_ADE_m": 0.3,
+          "best_of_64_FDE_m": 0.729
+        },
+        "50": {
+          "ADE_m": 0.997,
+          "FDE_m": 2.444,
+          "best_of_64_ADE_m": 0.967,
+          "best_of_64_FDE_m": 2.324
+        },
+        "100": {
+          "ADE_m": 2.651,
+          "FDE_m": 5.972,
+          "best_of_64_ADE_m": 2.498,
+          "best_of_64_FDE_m": 5.503
+        }
+      },
+      "coverage_t100_fde_lt_2m": 0.0,
+      "collision_violation_rate": 0.0608,
+      "obstacle_violation_rate": 0.0,
+      "boundary_violation_rate": 0.06884,
+      "max_speed_violation_rate": 0.0,
+      "acceleration_violation_rate": 0.0,
+      "trajectory_smoothness_mean_jerk": 0.49525,
+      "endpoint_nll_t100": 29.92,
+      "semantic_event_accuracy_top_cluster": 0.0,
+      "cluster_diversity_score": 0.0
+    }
+  },
+  "synthetic_evaluation_meta": {
+    "full_test_episodes": 8,
+    "evaluated_test_episodes": 4,
+    "evaluated_episode_ids": [
+      37,
+      32,
+      33,
+      30
+    ],
+    "reason": "64-particle t+100 SMC is expensive; this run evaluates a clearly marked smallest-agent test subset.",
+    "event_label_note": "Synthetic event labels were corrected after audit to avoid over-labeling all dense scenes as collision-risk; evaluated episodes now contain split-flow and congestion true labels."
+  },
+  "terminal_clusters": {
+    "physics": {
+      "cluster_diversity_score": 0.524,
+      "clusters": [
+        {
+          "semantic_label": "collision-risk",
+          "mean_probability": 0.96762,
+          "episodes_present": 4,
+          "mean_ADE_m": 2.563,
+          "mean_FDE_m": 5.648,
+          "mean_physical_violation_rate": 0.10872,
+          "credible_fraction": 0.5,
+          "naming_reason": "Minimum gap is close to or below the combined body radii."
+        },
+        {
+          "semantic_label": "stalled",
+          "mean_probability": 0.12954,
+          "episodes_present": 1,
+          "mean_ADE_m": 1.108,
+          "mean_FDE_m": 2.187,
+          "mean_physical_violation_rate": 0.0,
+          "credible_fraction": 1.0,
+          "naming_reason": "Agents spend a large fraction of time nearly stopped."
+        }
+      ]
+    },
+    "neural": {
+      "cluster_diversity_score": -0.0,
+      "clusters": [
+        {
+          "semantic_label": "collision-risk",
+          "mean_probability": 1.0,
+          "episodes_present": 4,
+          "mean_ADE_m": 8.85,
+          "mean_FDE_m": 16.416,
+          "mean_physical_violation_rate": 0.47447,
+          "credible_fraction": 0.0,
+          "naming_reason": "Minimum gap is close to or below the combined body radii."
+        }
+      ]
+    },
+    "hybrid": {
+      "cluster_diversity_score": -0.0,
+      "clusters": [
+        {
+          "semantic_label": "collision-risk",
+          "mean_probability": 1.0,
+          "episodes_present": 4,
+          "mean_ADE_m": 2.727,
+          "mean_FDE_m": 6.099,
+          "mean_physical_violation_rate": 0.12937,
+          "credible_fraction": 0.5,
+          "naming_reason": "Minimum gap is close to or below the combined body radii."
+        }
+      ]
+    }
+  },
+  "aerialmpt_real_data": {
+    "available": true,
+    "dataset": {
+      "source": "AerialMPT official DLR dataset",
+      "scene": "bauma3",
+      "frames_available": 16,
+      "frame_min": 1,
+      "frame_max": 16,
+      "start_frame": 4,
+      "max_observed_horizon": 12,
+      "requested_free_run_horizon": 100,
+      "t100_ground_truth_available": false,
+      "note": "t+100 is free-run only for this scene because the sequence has fewer than 101 future frames."
+    },
+    "calibration_quality": {
+      "has_real_camera_calibration": false,
+      "has_homography_control_points": false,
+      "estimated_meter_per_pixel": 0.105,
+      "meter_per_pixel_range_from_dataset_gsd": [
+        0.08,
+        0.13
+      ],
+      "scale_uncertainty": 0.2381,
+      "projection_error_px": null,
+      "algebraic_roundtrip_error_px": 0.0,
+      "assumption": "Weak homography from AerialMPT GSD only; no true camera intrinsics/extrinsics or control points were provided.",
+      "H_ground_to_image": [
+        [
+          9.523809523809524,
+          0.0,
+          305.5
+        ],
+        [
+          0.0,
+          9.523809523809524,
+          276.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "H_inv_image_to_ground": [
+        [
+          0.105,
+          0.0,
+          -32.0775
+        ],
+        [
+          0.0,
+          0.105,
+          -28.98
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "t12_free_run_metrics": {
+      "mode": "free-run world rollout",
+      "horizon": 12,
+      "ADE_px": 13.325,
+      "ADE_m": 1.399,
+      "FDE_px": 21.199,
+      "FDE_m": 2.226,
+      "centroid_error_px": 6.334,
+      "centroid_error_m": 0.665,
+      "speed_error_mps": 0.696,
+      "heading_error_deg": 18.657,
+      "min_gap_m": 0.547,
+      "collision_count": 0,
+      "boundary_violation_m": 0.0,
+      "obstacle_violation_count": 0,
+      "ESS": 88.837,
+      "terminal_modes": 3
+    },
+    "t100_status": "free-run only; no ground truth in selected AerialMPT sequence",
+    "cluster_limitation": "stage-1 AerialMPT terminal clusters were all jammed/east-shifted, so semantic diversity was insufficient."
+  },
+  "conclusions": {
+    "is_now_learned_world_model": true,
+    "synthetic_t100_reliability": "measurable on synthetic test; reliability depends on the reported ADE/FDE, coverage, and event accuracy rather than assumption.",
+    "real_t12_reliability": "limited but measurable on AerialMPT bauma3 through stage-1 weak homography metrics.",
+    "real_t100_status": "trend-only free-run; not accuracy-evaluable on bauma3.",
+    "learned_residual_vs_physics": "hybrid residual did not beat hand-coded physics on t+100 ADE",
+    "neural_vs_hybrid": "hybrid beats neural-only",
+    "smc_coverage": {
+      "physics": 0.25,
+      "neural": 0.0,
+      "hybrid": 0.0
+    },
+    "physical_constraints_effect": "collision/wall metrics should be read directly; projection is active in all three proposal types.",
+    "terminal_cluster_diversity": {
+      "physics": 0.524,
+      "neural": 0.0,
+      "hybrid": 0.0
+    },
+    "largest_failure_case": "semantic terminal clustering collapsed mostly to collision-risk, while corrected true synthetic events include split-flow and congestion.",
+    "next_real_data_needed": [
+      "real long trajectories with at least 100 future frames",
+      "camera calibration or ground-plane control points",
+      "scene walkability and obstacle polygons",
+      "goal/exit annotations or destination labels",
+      "body footprint calibration for pedestrian radius"
+    ]
+  }
+}
