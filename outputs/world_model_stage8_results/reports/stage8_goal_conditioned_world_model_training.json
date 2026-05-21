@@ -1,0 +1,54 @@
+{
+  "stage": "8",
+  "variants": [
+    {
+      "variant": "stage7_best_model_reference",
+      "checkpoint": "outputs/checkpoints/stage7/goal_scene_interaction_residual.json",
+      "reference_only": true
+    },
+    {
+      "variant": "goal_only_v2",
+      "checkpoint": "outputs/checkpoints/stage8/goal_only_v2.json",
+      "heads": 12,
+      "feature_mode": "goal_only",
+      "diagnostic_only": false
+    },
+    {
+      "variant": "scene_only_v2",
+      "checkpoint": "outputs/checkpoints/stage8/scene_only_v2.json",
+      "heads": 12,
+      "feature_mode": "scene_only",
+      "diagnostic_only": false
+    },
+    {
+      "variant": "multiagent_only_v2",
+      "checkpoint": "outputs/checkpoints/stage8/multiagent_only_v2.json",
+      "heads": 12,
+      "feature_mode": "no_scene_goal",
+      "diagnostic_only": false
+    },
+    {
+      "variant": "scene_goal_v2",
+      "checkpoint": "outputs/checkpoints/stage8/scene_goal_v2.json",
+      "heads": 12,
+      "feature_mode": "scene_goal",
+      "diagnostic_only": false
+    },
+    {
+      "variant": "scene_goal_multiagent_v2",
+      "checkpoint": "outputs/checkpoints/stage8/scene_goal_multiagent_v2.json",
+      "heads": 12,
+      "feature_mode": "scene_goal_multiagent",
+      "diagnostic_only": false
+    },
+    {
+      "variant": "topk_goal_diagnostic_v2",
+      "checkpoint": "outputs/checkpoints/stage8/topk_goal_diagnostic_v2.json",
+      "heads": 12,
+      "feature_mode": "scene_goal_multiagent",
+      "diagnostic_only": true
+    }
+  ],
+  "latent_enabled": false,
+  "smc_enabled": false
+}

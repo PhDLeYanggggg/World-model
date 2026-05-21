@@ -1,0 +1,71 @@
+{
+  "stage": "7",
+  "gates": [
+    {
+      "name": "Pedestrian/Drone Long-Horizon Gate",
+      "passed": false,
+      "evidence": "0 pedestrian/drone sources support verified t+50/t+100",
+      "next_fix": "Add SDD/OpenTraj/full pedestrian data with verified long horizon."
+    },
+    {
+      "name": "Scene Pack Gate",
+      "passed": true,
+      "evidence": "4 scene packs; pedestrian scene packs=2",
+      "next_fix": "Add real scene images/homographies/walkable annotations."
+    },
+    {
+      "name": "GoalBench Gate",
+      "passed": false,
+      "evidence": "test top3=0.782609, majority_top3=0.826087, NLL=1.375813",
+      "next_fix": "Improve candidate goals; avoid too-few-goal top3 saturation."
+    },
+    {
+      "name": "Failure Predictor Improvement Gate",
+      "passed": true,
+      "evidence": "stage6_AUROC=0.899098, best_stage7_AUROC=0.943396, best_stage7_AUPRC=0.81326",
+      "next_fix": "Goal/scene features must improve failure prediction."
+    },
+    {
+      "name": "Failure Correction Gate",
+      "passed": true,
+      "evidence": "BaselineFailureBench improvements={'eth_ucy': 0.24408, 'tgsim': 0.0, 'tgsim_i90': 0.02862, 'trajnet': 0.003082}",
+      "next_fix": "Need >=10% improvement on BaselineFailureBench."
+    },
+    {
+      "name": "HardBench Gate",
+      "passed": true,
+      "evidence": "HardBench improvements={'eth_ucy': 0.24408, 'tgsim': 0.0, 'tgsim_i90': 0.611669, 'trajnet': 0.003082}",
+      "next_fix": "Need >=10% improvement on official hard subset."
+    },
+    {
+      "name": "Easy Preservation Gate",
+      "passed": true,
+      "evidence": "easy improvements={'eth_ucy': -0.033983, 'trajnet': 0.0}",
+      "next_fix": "Do not degrade easy cases."
+    },
+    {
+      "name": "Interaction Auxiliary Gate",
+      "passed": false,
+      "evidence": "metrics={'future_nearest_neighbor_distance_MAE': 0.006819, 'future_ttc_min_MAE': 0.009969, 'close_pass_event_AUROC': 0.789547, 'close_pass_event_AUPRC': 0.69836, 'density_increase_event_AUROC': 0.681818, 'density_increase_event_AUPRC': 0.378693, 'crossing_conflict_event_AUROC': 0.5, 'crossing_conflict_event_AUPRC': 0.0, 'stop_go_event_AUROC': 0.5, 'stop_go_event_AUPRC': 0.0, 'local_congestion_event_AUROC': 0.789547, 'local_congestion_event_AUPRC': 0.69836, 'improves_hard_failure_trajectory_performance': False}",
+      "next_fix": "Auxiliary interaction tasks must improve hard/failure trajectory metrics."
+    },
+    {
+      "name": "Verified Long-Horizon Gate",
+      "passed": false,
+      "evidence": "verified long-horizon improvements={'tgsim': 0.0, 'tgsim_i90': 0.006883}",
+      "next_fix": "Need >=5% on at least one verified t+50/t+100 source."
+    },
+    {
+      "name": "Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Do not enter Stage 5C. Goal-conditioned deterministic world model is not strong enough.",
+      "next_fix": "Pass Stage 7 deterministic gates first."
+    }
+  ],
+  "passed": 5,
+  "total": 10,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 71,
+  "verdict": "stage7_scene_goal_grounding_built_but_not_stage5c_ready"
+}

@@ -1,0 +1,3110 @@
+{
+  "name": "SyntheticPhysicalCrowd2.5D",
+  "quick": true,
+  "episodes": [
+    {
+      "episode_id": 0,
+      "split": "train",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 11,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 18,
+      "mean_path_length_m": 42.893,
+      "npz": "train/episode_0000.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 1,
+      "split": "train",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 11,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 13,
+      "mean_path_length_m": 43.195,
+      "npz": "train/episode_0001.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 2,
+      "split": "train",
+      "scene_name": "obstacle_detour",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 17,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 8,
+      "mean_path_length_m": 17.913,
+      "npz": "train/episode_0002.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 3,
+      "split": "train",
+      "scene_name": "crossing_split_merge",
+      "event_label": "physically_corrected_collision_risk",
+      "frames": 160,
+      "agents": 16,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 13,
+      "mean_path_length_m": 21.826,
+      "npz": "train/episode_0003.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 4,
+      "split": "train",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 18,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 17,
+      "mean_path_length_m": 28.776,
+      "npz": "train/episode_0004.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 5,
+      "split": "train",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 13,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 26,
+      "mean_path_length_m": 46.009,
+      "npz": "train/episode_0005.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 6,
+      "split": "train",
+      "scene_name": "obstacle_detour",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 16,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 8,
+      "mean_path_length_m": 18.037,
+      "npz": "train/episode_0006.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 7,
+      "split": "train",
+      "scene_name": "crossing_split_merge",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 10,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 7,
+      "mean_path_length_m": 18.778,
+      "npz": "train/episode_0007.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 8,
+      "split": "train",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 10,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 7,
+      "mean_path_length_m": 23.638,
+      "npz": "train/episode_0008.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 9,
+      "split": "train",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 14,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 20,
+      "mean_path_length_m": 37.692,
+      "npz": "train/episode_0009.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 10,
+      "split": "train",
+      "scene_name": "obstacle_detour",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 12,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 3,
+      "mean_path_length_m": 14.039,
+      "npz": "train/episode_0010.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 11,
+      "split": "train",
+      "scene_name": "crossing_split_merge",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 15,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 17,
+      "mean_path_length_m": 24.867,
+      "npz": "train/episode_0011.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 12,
+      "split": "train",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 11,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 7,
+      "mean_path_length_m": 33.075,
+      "npz": "train/episode_0012.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 13,
+      "split": "train",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 14,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 18,
+      "mean_path_length_m": 44.411,
+      "npz": "train/episode_0013.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 14,
+      "split": "train",
+      "scene_name": "obstacle_detour",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 17,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 10,
+      "mean_path_length_m": 19.693,
+      "npz": "train/episode_0014.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 15,
+      "split": "train",
+      "scene_name": "crossing_split_merge",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 12,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 10,
+      "mean_path_length_m": 20.173,
+      "npz": "train/episode_0015.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 16,
+      "split": "train",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 13,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 10,
+      "mean_path_length_m": 32.325,
+      "npz": "train/episode_0016.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 17,
+      "split": "train",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 14,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 16,
+      "mean_path_length_m": 40.608,
+      "npz": "train/episode_0017.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 18,
+      "split": "train",
+      "scene_name": "obstacle_detour",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 15,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 7,
+      "mean_path_length_m": 18.488,
+      "npz": "train/episode_0018.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 19,
+      "split": "train",
+      "scene_name": "crossing_split_merge",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 16,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 13,
+      "mean_path_length_m": 23.636,
+      "npz": "train/episode_0019.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 20,
+      "split": "val",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 14,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 25,
+      "mean_path_length_m": 35.726,
+      "npz": "val/episode_0020.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 21,
+      "split": "val",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 10,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 10,
+      "mean_path_length_m": 39.285,
+      "npz": "val/episode_0021.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 22,
+      "split": "val",
+      "scene_name": "obstacle_detour",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 11,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 6,
+      "mean_path_length_m": 17.149,
+      "npz": "val/episode_0022.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 23,
+      "split": "val",
+      "scene_name": "crossing_split_merge",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 11,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 14,
+      "mean_path_length_m": 24.043,
+      "npz": "val/episode_0023.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 24,
+      "split": "val",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 10,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 11,
+      "mean_path_length_m": 26.002,
+      "npz": "val/episode_0024.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 25,
+      "split": "test",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 10,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 11,
+      "mean_path_length_m": 26.834,
+      "npz": "test/episode_0025.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    },
+    {
+      "episode_id": 26,
+      "split": "test",
+      "scene_name": "narrow_corridor_jam",
+      "event_label": "corridor_jam",
+      "frames": 160,
+      "agents": 18,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 18,
+      "mean_path_length_m": 39.803,
+      "npz": "test/episode_0026.npz",
+      "scene": {
+        "name": "narrow_corridor_jam",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 18.5,
+            "y1": 0.0,
+            "x2": 22.0,
+            "y2": 9.7,
+            "kind": "wall"
+          },
+          {
+            "x1": 18.5,
+            "y1": 16.3,
+            "x2": 22.0,
+            "y2": 26.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 8.0,
+            "y1": 3.0,
+            "x2": 12.0,
+            "y2": 7.5,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.7
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.3
+          }
+        ],
+        "event_hint": "corridor_jam"
+      }
+    },
+    {
+      "episode_id": 27,
+      "split": "test",
+      "scene_name": "obstacle_detour",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 14,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 8,
+      "mean_path_length_m": 18.576,
+      "npz": "test/episode_0027.npz",
+      "scene": {
+        "name": "obstacle_detour",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 16.5,
+            "y1": 6.0,
+            "x2": 25.5,
+            "y2": 20.0,
+            "kind": "large_obstacle"
+          },
+          {
+            "x1": 6.0,
+            "y1": 0.0,
+            "x2": 9.0,
+            "y2": 7.0,
+            "kind": "wall"
+          },
+          {
+            "x1": 6.0,
+            "y1": 19.0,
+            "x2": 9.0,
+            "y2": 26.0,
+            "kind": "wall"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              7.0,
+              6.0,
+              19.0
+            ],
+            "goal": "east",
+            "weight": 0.8
+          },
+          {
+            "rect": [
+              34.0,
+              7.0,
+              41.0,
+              19.0
+            ],
+            "goal": "west",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "obstacle_detour"
+      }
+    },
+    {
+      "episode_id": 28,
+      "split": "test",
+      "scene_name": "crossing_split_merge",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 17,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 20,
+      "mean_path_length_m": 28.671,
+      "npz": "test/episode_0028.npz",
+      "scene": {
+        "name": "crossing_split_merge",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          },
+          {
+            "x1": 7.0,
+            "y1": 7.0,
+            "x2": 11.0,
+            "y2": 11.0,
+            "kind": "booth"
+          },
+          {
+            "x1": 31.0,
+            "y1": 15.0,
+            "x2": 35.0,
+            "y2": 19.0,
+            "kind": "booth"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              9.0,
+              7.0,
+              17.0
+            ],
+            "goal": "east",
+            "weight": 0.35
+          },
+          {
+            "rect": [
+              35.0,
+              9.0,
+              41.0,
+              17.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              1.0,
+              26.0,
+              6.0
+            ],
+            "goal": "south",
+            "weight": 0.15
+          }
+        ],
+        "event_hint": "group_split"
+      }
+    },
+    {
+      "episode_id": 29,
+      "split": "test",
+      "scene_name": "open_space",
+      "event_label": "obstacle_detour",
+      "frames": 160,
+      "agents": 15,
+      "state_columns": [
+        "position_x",
+        "position_y",
+        "velocity_x",
+        "velocity_y",
+        "acceleration_x",
+        "acceleration_y",
+        "heading",
+        "body_radius",
+        "max_speed",
+        "max_acceleration",
+        "goal_x",
+        "goal_y",
+        "group_id",
+        "active",
+        "reached_goal",
+        "collision_count",
+        "obstacle_violation",
+        "boundary_violation"
+      ],
+      "goal_changes": 13,
+      "mean_path_length_m": 18.859,
+      "npz": "test/episode_0029.npz",
+      "scene": {
+        "name": "open_space",
+        "width": 42.0,
+        "height": 26.0,
+        "obstacles": [
+          {
+            "x1": 19.0,
+            "y1": 11.0,
+            "x2": 23.0,
+            "y2": 15.0,
+            "kind": "kiosk"
+          }
+        ],
+        "exits": {
+          "west": [
+            1.0,
+            13.0
+          ],
+          "east": [
+            41.0,
+            13.0
+          ],
+          "north": [
+            21.0,
+            1.0
+          ],
+          "south": [
+            21.0,
+            25.0
+          ]
+        },
+        "spawn_regions": [
+          {
+            "rect": [
+              1.0,
+              8.0,
+              7.0,
+              18.0
+            ],
+            "goal": "east",
+            "weight": 0.55
+          },
+          {
+            "rect": [
+              35.0,
+              8.0,
+              41.0,
+              18.0
+            ],
+            "goal": "west",
+            "weight": 0.25
+          },
+          {
+            "rect": [
+              16.0,
+              20.0,
+              26.0,
+              25.0
+            ],
+            "goal": "north",
+            "weight": 0.2
+          }
+        ],
+        "event_hint": "smooth_passage"
+      }
+    }
+  ]
+}

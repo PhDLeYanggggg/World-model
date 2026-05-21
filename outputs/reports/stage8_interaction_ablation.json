@@ -1,0 +1,42 @@
+{
+  "stage": "8",
+  "variants": {
+    "no_interaction": {
+      "mode": "none",
+      "test": {
+        "samples": 12,
+        "future_nn_mae": 4.068562,
+        "close_pass_F1": 0.0
+      }
+    },
+    "scalar_interaction": {
+      "mode": "scalar",
+      "test": {
+        "samples": 12,
+        "future_nn_mae": 0.916598,
+        "close_pass_F1": 0.0
+      }
+    },
+    "graph_interaction": {
+      "mode": "graph",
+      "test": {
+        "samples": 12,
+        "future_nn_mae": 0.940188,
+        "close_pass_F1": 0.0
+      }
+    },
+    "graph_interaction_scene_goal": {
+      "mode": "graph",
+      "test": {
+        "samples": 12,
+        "future_nn_mae": 0.940188,
+        "close_pass_F1": 0.0
+      }
+    }
+  },
+  "metrics": {
+    "graph_improves_over_scalar_auxiliary": false,
+    "improves_hard_failure_trajectory_performance": false,
+    "reason": "Stage 8 interaction auxiliary is diagnostic unless benchmark metrics show trajectory lift."
+  }
+}

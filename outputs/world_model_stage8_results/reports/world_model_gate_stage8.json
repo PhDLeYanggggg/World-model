@@ -1,0 +1,77 @@
+{
+  "stage": "8",
+  "gates": [
+    {
+      "name": "Pedestrian/Drone Long-Horizon Gate",
+      "passed": false,
+      "evidence": "eligible pedestrian/drone long-horizon sources=0",
+      "next_fix": "Provide local SDD/OpenTraj/full pedestrian data with verified t+50/t+100."
+    },
+    {
+      "name": "Scene-Gold Gate",
+      "passed": true,
+      "evidence": "gold/silver=0; usable_scene_packs=5",
+      "next_fix": "Manually confirm at least one pedestrian/drone scene or two usable scene packs."
+    },
+    {
+      "name": "Multi-Agent Episode Gate",
+      "passed": true,
+      "evidence": "episodes_with_ge2_agents=78",
+      "next_fix": "Build more multi-agent windows from real pedestrian/drone scenes."
+    },
+    {
+      "name": "GoalBench-Gold Gate",
+      "passed": true,
+      "evidence": "test={'samples': 12, 'top1_accuracy': 0.5, 'top3_accuracy': 0.75, 'goal_NLL': 1.255832, 'goal_ECE': 0.104385, 'goal_entropy': 1.245901, 'majority_top1': 0.333333, 'majority_top3': 0.666667, 'hard_failure_goal_accuracy': 0.5, 'beats_majority': True, 'top3_saturated': False}",
+      "next_fix": "Improve gold/silver goals; avoid majority top-k saturation."
+    },
+    {
+      "name": "Failure Predictor Gate",
+      "passed": false,
+      "evidence": "stage7_best_AUROC=0.943396; stage8_best_AUROC=0.896021",
+      "next_fix": "Scene/goal/multi-agent features should improve failure prediction."
+    },
+    {
+      "name": "Failure Correction Gate",
+      "passed": false,
+      "evidence": "BaselineFailureBench improvements={'tgsim_i90': -0.001179}",
+      "next_fix": "Need >=10% over strongest baseline on BaselineFailureBench."
+    },
+    {
+      "name": "HardBench Gate",
+      "passed": false,
+      "evidence": "HardBench improvements={'tgsim': 0.0, 'tgsim_i90': 0.000266}",
+      "next_fix": "Need >=10% over strongest baseline on HardBench."
+    },
+    {
+      "name": "Easy Preservation Gate",
+      "passed": true,
+      "evidence": "easy improvements={'tgsim': 0.001787}",
+      "next_fix": "Keep easy cases near baseline."
+    },
+    {
+      "name": "Interaction Gate",
+      "passed": false,
+      "evidence": "full_hard={'tgsim': -0.299673, 'tgsim_i90': -0.003275}; no_interaction_hard={'tgsim': -0.298009, 'tgsim_i90': -0.003544}; aux={'graph_improves_over_scalar_auxiliary': False, 'improves_hard_failure_trajectory_performance': False, 'reason': 'Stage 8 interaction auxiliary is diagnostic unless benchmark metrics show trajectory lift.'}",
+      "next_fix": "Multi-agent interaction must improve hard/failure trajectory metrics."
+    },
+    {
+      "name": "Verified Long-Horizon Gate",
+      "passed": false,
+      "evidence": "verified long-horizon improvements={'tgsim': 0.0, 'tgsim_i90': 0.000266}",
+      "next_fix": "Need >=5% on verified t+50/t+100."
+    },
+    {
+      "name": "Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Do not enter Stage 5C. Scene/goal-conditioned deterministic correction is not strong enough.",
+      "next_fix": "Pass Stage 8 deterministic scene/goal gates first."
+    }
+  ],
+  "passed": 4,
+  "total": 11,
+  "latent_stage5c_ready": false,
+  "smc_ready": false,
+  "expert_audit_score": 71,
+  "verdict": "stage8_scene_goal_multiagent_scaffold_not_stage5c_ready"
+}

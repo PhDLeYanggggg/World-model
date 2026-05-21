@@ -140,3 +140,57 @@ smc_ready = false
 Main conclusion:
 
 Stage 6 proves that baseline-failure detection is learnable from causal history, but the failure-aware residual still does not improve baseline-failure cases by the required margin, verified long-horizon improvement still fails, and no pedestrian/drone long-horizon source exists locally. Do not enter Stage 5C or enable SMC.
+
+## Stage 7 Result
+
+Latest Stage 7 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage7_results`
+
+Stage 7 adds scene/goal grounding without enabling latent generative modeling or SMC:
+
+```text
+scene_packs = 4
+goalbench_records = 118
+pedestrian_drone_verified_t50_or_t100_sources = 0
+goal_predictor_test_top3 = 0.782609
+majority_top3_baseline = 0.826087
+best_stage7_failure_predictor_AUROC = 0.943396
+stage7_gates = 5 / 10
+expert_audit_score = 71 / 100
+verdict = stage7_scene_goal_grounding_built_but_not_stage5c_ready
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+Scene/goal grounding is now implemented: the system builds inferred scene packs, candidate goals, GoalBench, a goal predictor, goal/scene-conditioned failure predictors, and bounded goal-conditioned residual variants. The honest result is mixed: failure prediction improves over Stage 6, and some BaselineFailureBench/HardBench subsets improve, but GoalBench does not beat the majority top-3 baseline on test, interaction auxiliary tasks remain diagnostic, verified long-horizon improvement fails, and no pedestrian/drone t+50/t+100 source exists locally. Do not enter Stage 5C or enable SMC.
+
+## Stage 8 Result
+
+Latest Stage 8 package:
+
+`/Users/yangyue/Downloads/World/outputs/world_model_stage8_results`
+
+Stage 8 adds the Scene-Gold annotation pipeline, Scene-Gold/Silver pack builder, true multi-agent episode windows, GoalBench-Gold, Stage 8 goal/failure/world model v2, and interaction v2 ablations. It does not enable latent generative modeling or SMC:
+
+```text
+scene_gold_scenes = 0
+scene_silver_scenes = 0
+scene_inferred_only_scenes = 5
+multi_agent_episodes_with_ge2_agents = 78
+pedestrian_drone_verified_t50_or_t100_sources = 0
+goal_predictor_test_top1 = 0.5
+goal_predictor_majority_top1 = 0.333333
+best_stage8_failure_predictor_AUROC = 0.896021
+stage8_gates = 4 / 11
+expert_audit_score = 71 / 100
+verdict = stage8_scene_goal_multiagent_scaffold_not_stage5c_ready
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+Stage 8 made the pipeline more world-model-shaped, but the evidence is still not strong enough. Multi-agent episodes and GoalBench-Gold now exist, but the scene annotations are still inferred-only, no real pedestrian/drone t+50/t+100 source is verified, Stage 8 failure prediction does not beat Stage 7, goal-conditioned residuals do not improve BaselineFailureBench or HardBench by the required margin, and interaction remains diagnostic. Do not enter Stage 5C or enable SMC.
