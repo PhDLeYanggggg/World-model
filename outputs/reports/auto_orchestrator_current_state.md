@@ -1,8 +1,8 @@
 # Auto-Orchestrator Current State
 
-- current_highest_stage: `12`
-- expert_audit_score: `83`
-- verdict: `stage12_ready_for_stage13_training_with_long_horizon_source`
+- current_highest_stage: `13`
+- expert_audit_score: `84`
+- verdict: `stage13_deterministic_repair_loop_executed_not_stage5c_ready`
 - model_type: `2.5D / pseudo-3D per-agent multi-agent trajectory world-state scaffold`
 - true_3D: `False`
 - large_scale_foundation_model: `False`
@@ -18,9 +18,9 @@
 
 ## Top Failures
 
-- Deterministic residual still does not beat strongest causal baseline by the required margin.
-- Latent generative readiness is false; deterministic gates remain the blocker.
-- SMC readiness is false; no strong stochastic proposal exists yet.
+- Stage 13 found no evaluable EWAP t+100 rows under the per-agent causal mask.
+- HardBench/BaselineFailureBench improvement is below deterministic gate thresholds.
+- Interaction features still do not improve trajectory metrics.
 
 ## Best Automatic Directions
 
@@ -30,7 +30,4 @@
 
 ## Missing Requested Files
 
-- outputs/reports/report_stage13_final.md
-- outputs/reports/world_model_gate_stage13.md
-- outputs/reports/failure_analysis_stage13.md
 - outputs/reports/report_stage11_final.md

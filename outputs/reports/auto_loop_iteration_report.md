@@ -2,9 +2,9 @@
 
 ## 本轮开始状态
 
-- stage: `12`
-- verdict: `stage12_ready_for_stage13_training_with_long_horizon_source`
-- expert_audit_score: `83`
+- stage: `13`
+- verdict: `stage13_deterministic_repair_loop_executed_not_stage5c_ready`
+- expert_audit_score: `84`
 - latent_generative_ready: `False`
 - smc_ready: `False`
 
@@ -37,13 +37,13 @@
 
 ## 是否允许下一阶段
 
-- Stage 13 deterministic repair allowed: `True`
+- Stage 13 deterministic repair allowed: `False`
 - Stage 5C latent generative allowed: `False`
 - SMC allowed: `False`
 
 ## 需要用户输入
 
-- none
+- Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data.
 
 ## 下一轮推荐任务
 
@@ -61,5 +61,5 @@ hard/failure 是否改善：否
 verified long-horizon 是否改善：否
 latent generative 是否 ready：否
 SMC 是否 ready：否
-当前 verdict：stage12_ready_for_stage13_training_with_long_horizon_source
-expert audit score：83
+当前 verdict：stage13_deterministic_repair_loop_executed_not_stage5c_ready
+expert audit score：84

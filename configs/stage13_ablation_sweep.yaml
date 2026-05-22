@@ -1,0 +1,21 @@
+search:
+  max_trials_per_family: 8
+  families:
+    - alpha_only_no_residual
+    - residual_no_alpha
+    - no_scene_no_goal_no_interaction
+    - scene_only
+    - goal_only
+    - interaction_only
+    - scene_goal
+    - goal_interaction
+    - scene_interaction
+    - scene_goal_interaction_full
+    - hard_failure_finetuned
+    - eth_ucy_ewap_t100_finetuned
+  alpha_regularization: [low, medium, high]
+  residual_clip: [0.05, 0.1, 0.25, 0.5]
+  hard_failure_weight: [1, 2, 5, 10]
+  t100_weight: [1, 2, 5]
+  interaction_modes: [none, scalar, simple_attention]
+  scene_goal_modes: [none, scene_only, goal_only, scene_goal]

@@ -204,9 +204,48 @@ def run_auto_loop(mode: str = "quick", max_steps: int = 1) -> Dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Autonomous world-model research loop.")
-    parser.add_argument("--mode", default="quick", choices=["quick", "data-first", "annotation-first", "train-deterministic", "full-auto"])
+    parser.add_argument("--mode", default="quick", choices=["quick", "data-first", "annotation-first", "train-deterministic", "full-auto", "overnight-stage13"])
     parser.add_argument("--max-steps", type=int, default=1)
+    parser.add_argument("--max-hours", type=float, default=8.0)
+    parser.add_argument("--max-iterations", type=int, default=30)
+    parser.add_argument("--allow-training", action="store_true")
+    parser.add_argument("--allow-download", action="store_true")
+    parser.add_argument("--allow-git", action="store_true")
+    parser.add_argument("--quick", action="store_true")
+    parser.add_argument("--no-latent", action="store_true", default=True)
+    parser.add_argument("--no-smc", action="store_true", default=True)
+    parser.add_argument("--stop-on-user-blocker", action="store_true", default=True)
+    parser.add_argument("--continue-on-task-failure", action="store_true", default=True)
+    parser.add_argument("--heartbeat-minutes", type=float, default=15.0)
+    parser.add_argument("--max-trials-per-family", type=int, default=2)
+    parser.add_argument("--max-epochs-per-trial", type=int, default=20)
+    parser.add_argument("--gpu-auto-detect", action="store_true", default=True)
+    parser.add_argument("--cpu-safe-mode", action="store_true", default=True)
     args = parser.parse_args()
+    if args.mode == "overnight-stage13":
+        from .overnight_runner import run_overnight_stage13
+
+        result = run_overnight_stage13(
+            max_hours=args.max_hours,
+            max_iterations=args.max_iterations,
+            allow_training=args.allow_training,
+            allow_download=args.allow_download,
+            allow_git=args.allow_git,
+            heartbeat_minutes=args.heartbeat_minutes,
+            max_trials_per_family=args.max_trials_per_family,
+            no_latent=args.no_latent,
+            no_smc=args.no_smc,
+            continue_on_task_failure=args.continue_on_task_failure,
+        )
+        print({
+            "mode": args.mode,
+            "completed": len(result["completed"]),
+            "failed": len(result["failed"]),
+            "verdict": result["final_report"]["current_verdict"],
+            "latent_ready": result["final_report"]["latent_generative_ready"],
+            "smc_ready": result["final_report"]["smc_ready"],
+        })
+        return
     result = run_auto_loop(mode=args.mode, max_steps=max(1, args.max_steps))
     print({
         "stage": result["current_state"]["current_highest_stage"],

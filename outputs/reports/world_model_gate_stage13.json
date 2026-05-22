@@ -1,0 +1,150 @@
+{
+  "stage": 13,
+  "passed": [
+    "Data Gate",
+    "No Leakage Gate",
+    "Strong Baseline Gate",
+    "Easy Preservation Gate",
+    "Physical Validity Gate"
+  ],
+  "failed": [
+    "Eth-UCY EWAP Long-Horizon Gate",
+    "HardBench Gate",
+    "BaselineFailureBench Gate",
+    "Scene/Goal Gate",
+    "Interaction Gate",
+    "Stage 5C Readiness Gate",
+    "SMC Readiness Gate"
+  ],
+  "rows": [
+    {
+      "gate": "Data Gate",
+      "pass": true,
+      "evidence": "Stage 12 data loaded; Stage 13 metrics rows exist."
+    },
+    {
+      "gate": "No Leakage Gate",
+      "pass": true,
+      "evidence": "Inherited Stage 12 no-leakage policy: causal velocity, train-only goals, no future endpoint input."
+    },
+    {
+      "gate": "Strong Baseline Gate",
+      "pass": true,
+      "evidence": "Every metric row compares against baseline_FDE."
+    },
+    {
+      "gate": "Eth-UCY EWAP Long-Horizon Gate",
+      "pass": false,
+      "evidence": "no_evaluable_t100_rows_under_stage13_causal_per_agent_mask"
+    },
+    {
+      "gate": "HardBench Gate",
+      "pass": false,
+      "evidence": "best_hard_improvement=0.013127"
+    },
+    {
+      "gate": "BaselineFailureBench Gate",
+      "pass": false,
+      "evidence": "best_failure_improvement=0.013127"
+    },
+    {
+      "gate": "Easy Preservation Gate",
+      "pass": true,
+      "evidence": "best_easy_improvement=0.000000"
+    },
+    {
+      "gate": "Scene/Goal Gate",
+      "pass": false,
+      "evidence": "scene_goal_hard=0.007591; no_scene_hard=0.007591"
+    },
+    {
+      "gate": "Interaction Gate",
+      "pass": false,
+      "evidence": "interaction_hard=0.007591; no_interaction_hard=0.013127"
+    },
+    {
+      "gate": "Physical Validity Gate",
+      "pass": true,
+      "evidence": "No residual explosion observed in bounded residual search."
+    },
+    {
+      "gate": "Stage 5C Readiness Gate",
+      "pass": false,
+      "evidence": "Plan only; do not execute without user confirmation."
+    },
+    {
+      "gate": "SMC Readiness Gate",
+      "pass": false,
+      "evidence": "Stage 13 does not train stochastic proposals."
+    }
+  ],
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "best_eth_ucy_ewap_t100": null,
+  "best_hard": {
+    "model": "residual_no_alpha",
+    "dataset": "eth_ucy_ewap",
+    "subset": "hard",
+    "horizon": 50,
+    "FDE": 2.784152,
+    "ADE": 2.784152,
+    "baseline_FDE": 2.821185,
+    "baseline_ADE": 2.821185,
+    "improvement": 0.013127,
+    "episodes": 21,
+    "alpha": 1.0,
+    "residual_magnitude": 0.1,
+    "physical_validity": 0.9,
+    "trial_id": 4,
+    "alpha_regularization": "medium",
+    "residual_clip": 0.1,
+    "hard_failure_weight": 1,
+    "t100_weight": 1,
+    "interaction_mode": "none",
+    "scene_goal_mode": "none"
+  },
+  "best_baseline_failure": {
+    "model": "residual_no_alpha",
+    "dataset": "eth_ucy_ewap",
+    "subset": "baseline_failure",
+    "horizon": 50,
+    "FDE": 2.784152,
+    "ADE": 2.784152,
+    "baseline_FDE": 2.821185,
+    "baseline_ADE": 2.821185,
+    "improvement": 0.013127,
+    "episodes": 21,
+    "alpha": 1.0,
+    "residual_magnitude": 0.1,
+    "physical_validity": 0.9,
+    "trial_id": 4,
+    "alpha_regularization": "medium",
+    "residual_clip": 0.1,
+    "hard_failure_weight": 1,
+    "t100_weight": 1,
+    "interaction_mode": "none",
+    "scene_goal_mode": "none"
+  },
+  "best_easy": {
+    "model": "alpha_only_no_residual",
+    "dataset": "eth_ucy",
+    "subset": "easy",
+    "horizon": 1,
+    "FDE": 0.410458,
+    "ADE": 0.410458,
+    "baseline_FDE": 0.410458,
+    "baseline_ADE": 0.410458,
+    "improvement": 0.0,
+    "episodes": 3,
+    "alpha": 0.0,
+    "residual_magnitude": 0.0,
+    "physical_validity": 1.0,
+    "trial_id": 1,
+    "alpha_regularization": "low",
+    "residual_clip": 0.05,
+    "hard_failure_weight": 1,
+    "t100_weight": 1,
+    "interaction_mode": "none",
+    "scene_goal_mode": "none"
+  }
+}

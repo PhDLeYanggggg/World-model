@@ -1,0 +1,35 @@
+data:
+  primary_dataset: eth_ucy_ewap
+  support_datasets: [eth_ucy, trajnet, aerialmpt]
+  official_horizons: [10, 25, 50, 100]
+  target_long_horizon: 100
+  use_only_causal_velocity: true
+  forbid_test_endpoint_goals: true
+training:
+  max_epochs: 20
+  early_stopping_patience: 4
+  batch_size: 128
+  gradient_clip: 1.0
+  residual_clip: 0.25
+  alpha_regularization: medium
+  hard_failure_weight: 5
+  easy_preservation_weight: 3
+  goal_consistency_weight: 1
+  interaction_aux_weight: 1
+  t100_weight: 5
+  t50_weight: 2
+model:
+  use_scene: true
+  use_goal: true
+  use_interaction: true
+  use_alpha_gate: true
+  use_residual: true
+  horizon_conditioned: true
+  per_agent_output: true
+  all_agent_prediction: true
+  fallback_to_baseline: true
+evaluation:
+  compare_to_strongest_causal_baseline: true
+  require_easy_preservation: true
+  bootstrap_ci: true
+  report_by_subset: true

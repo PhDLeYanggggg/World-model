@@ -1,0 +1,90 @@
+{
+  "project_ran": true,
+  "overnight_loop_executed": true,
+  "training_trial_count": 24,
+  "best_model": "residual_no_alpha",
+  "best_eth_ucy_ewap_t100_improvement": "not_evaluable_under_stage13_per_agent_mask",
+  "best_hardbench_improvement": 0.013127,
+  "best_baselinefailure_improvement": 0.013127,
+  "easy_preservation": "pass",
+  "latent_generative_ready": false,
+  "smc_ready": false,
+  "current_verdict": "stage13_deterministic_repair_loop_executed_not_stage5c_ready",
+  "expert_audit_score": 84,
+  "termination_reason": "all_scheduled_safe_tasks_completed",
+  "completed_tasks": [
+    {
+      "task": "read_current_state",
+      "priority": "P0",
+      "command": "python run_auto_world_model_loop.py --mode quick --max-steps 1",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.075,
+      "log_path": "outputs/logs/overnight_stage13/1779415621_read_current_state.log"
+    },
+    {
+      "task": "check_stage13_allowed",
+      "priority": "P0",
+      "command": "python scripts/auto_run_gates.py",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.063,
+      "log_path": "outputs/logs/overnight_stage13/1779415621_check_stage13_allowed.log"
+    },
+    {
+      "task": "run_stage13_data_audit",
+      "priority": "P1",
+      "command": "python scripts/auto_convert_available_datasets.py",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.06,
+      "log_path": "outputs/logs/overnight_stage13/1779415621_run_stage13_data_audit.log"
+    },
+    {
+      "task": "stage13_deterministic_search",
+      "priority": "P2",
+      "command": "python scripts/run_stage13_deterministic_search.py --max-trials-per-family 2",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 18.368,
+      "log_path": "outputs/logs/overnight_stage13/1779415621_stage13_deterministic_search.log"
+    },
+    {
+      "task": "run_stage13_gates",
+      "priority": "P3",
+      "command": "python run_stage13_gates.py",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.069,
+      "log_path": "outputs/logs/overnight_stage13/1779415639_run_stage13_gates.log"
+    },
+    {
+      "task": "run_stage13_failure_miner",
+      "priority": "P4",
+      "command": "python run_stage13_failure_miner.py",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.064,
+      "log_path": "outputs/logs/overnight_stage13/1779415639_run_stage13_failure_miner.log"
+    },
+    {
+      "task": "auto_data_annotation_fallback",
+      "priority": "P5",
+      "command": "python scripts/auto_find_and_prepare_datasets.py --dry-run",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.072,
+      "log_path": "outputs/logs/overnight_stage13/1779415639_auto_data_annotation_fallback.log"
+    },
+    {
+      "task": "update_readme",
+      "priority": "P6",
+      "command": "python scripts/auto_update_readme_results.py",
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.069,
+      "log_path": "outputs/logs/overnight_stage13/1779415639_update_readme.log"
+    }
+  ],
+  "failed_tasks": []
+}

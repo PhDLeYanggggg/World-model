@@ -1,8 +1,8 @@
 # Research State
 
-- current_stage: `stage12`
-- current_verdict: `stage12_ready_for_stage13_training_with_long_horizon_source`
-- expert_audit_score: `83`
+- current_stage: `stage13`
+- current_verdict: `stage13_deterministic_repair_loop_executed_not_stage5c_ready`
+- expert_audit_score: `84`
 - deterministic_ready: `False`
 - latent_generative_ready: `False`
 - smc_ready: `False`
@@ -37,4 +37,4 @@
 
 ## User Blockers
 
-- none
+- Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data.

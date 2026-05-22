@@ -35,6 +35,16 @@ def analyze_failures(report_text: str, gate_text: str) -> Dict[str, List[str]]:
     if _contains(text, "silver_rule_confirmed"):
         failures.append("Scene labels still rely heavily on rule-confirmed silver annotations, not human gold.")
         fixes.append("Upgrade high-value scenes from silver_rule_confirmed to silver_human_confirmed/gold_human.")
+    if _contains(text, "no_evaluable_t100_rows") or _contains(text, "not_evaluable_under_stage13_per_agent_mask"):
+        failures.append("Stage 13 found no evaluable EWAP t+100 rows under the per-agent causal mask.")
+        fixes.append("Audit/rebuild long-horizon per-agent masks before claiming t+100 improvement.")
+        blockers.append("Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data.")
+    if _contains(text, "HardBench Gate | False") or _contains(text, "BaselineFailureBench Gate | False"):
+        failures.append("HardBench/BaselineFailureBench improvement is below deterministic gate thresholds.")
+        fixes.append("Repair deterministic alpha/fallback residual on hard/failure subsets.")
+    if _contains(text, "Interaction Gate | False"):
+        failures.append("Interaction features still do not improve trajectory metrics.")
+        fixes.append("Keep interaction as ablation/diagnostic until it improves hard/failure FDE.")
 
     if not failures:
         failures.append("No explicit failure pattern was parsed; inspect latest gate report manually.")
@@ -72,4 +82,3 @@ def datasets_from_stage12() -> Dict[str, List[str]]:
     if match:
         verified = [item.strip(" '\"") for item in match.group(1).split(",")]
     return {"loaded": loaded, "verified_long_horizon": verified}
-

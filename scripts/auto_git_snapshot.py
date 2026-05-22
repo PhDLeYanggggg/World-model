@@ -10,7 +10,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.orchestrator.research_state import write_json
 
 
-SAFE_PREFIXES = ("src/", "scripts/", "run_auto_world_model_loop.py", "outputs/reports/", "README_RESULTS.md", "research_state.json")
+SAFE_PREFIXES = (
+    "src/",
+    "scripts/",
+    "configs/",
+    "run_auto_world_model_loop.py",
+    "run_stage13_",
+    "outputs/reports/",
+    "README_RESULTS.md",
+    "research_state.json",
+)
 
 
 def git_status() -> str:
