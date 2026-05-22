@@ -13,6 +13,7 @@ import numpy as np
 
 EPISODE_ROOT = Path("data/stage12_multiagent_episodes")
 STAGE14_EWAP_ROOT = Path("data/stage14_ewap_t100_per_agent_episodes")
+STAGE15_EWAP_ROOT = Path("data/stage15_ewap_expanded_episodes")
 REPORT_DIR = Path("outputs/reports")
 CHECKPOINT_DIR = Path("outputs/checkpoints/stage13_search")
 
@@ -85,6 +86,8 @@ def iter_episode_paths() -> Iterable[Path]:
         paths.extend(sorted(EPISODE_ROOT.glob("*/*.npz")))
     if STAGE14_EWAP_ROOT.exists():
         paths.extend(sorted(STAGE14_EWAP_ROOT.glob("*/*.npz")))
+    if STAGE15_EWAP_ROOT.exists():
+        paths.extend(sorted(STAGE15_EWAP_ROOT.glob("*/*.npz")))
     return paths
 
 

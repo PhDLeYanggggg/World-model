@@ -17,6 +17,7 @@ SAFE_PREFIXES = (
     "run_auto_world_model_loop.py",
     "run_stage13_",
     "run_stage14_",
+    "run_stage15_",
     "outputs/reports/",
     "README_RESULTS.md",
     "research_state.json",

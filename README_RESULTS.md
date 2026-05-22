@@ -348,9 +348,9 @@ Stage 12 finally fixes the verified pedestrian long-horizon data blocker by addi
 This section is maintained by `scripts/auto_update_readme_results.py`.
 
 ```text
-current_highest_stage = 14
-expert_audit_score = 85
-verdict = unknown
+current_highest_stage = 15
+expert_audit_score = 86
+verdict = stage15_oracle_and_deterministic_repair_executed_not_stage5c_ready
 latent_generative_ready = False
 smc_ready = False
 learned_model_beats_strongest_baseline = 否

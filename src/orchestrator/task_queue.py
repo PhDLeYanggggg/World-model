@@ -77,3 +77,36 @@ def build_stage14_maintenance_queue(allow_data_discovery: bool = True) -> List[Q
     if allow_data_discovery:
         tasks.insert(0, QueueTask("stage14_data_dry_run_refresh", "P5", "python scripts/stage14_fetch_or_verify_multimodal_data.py --dry-run"))
     return tasks
+
+
+def build_stage15_task_queue(allow_training: bool = True, allow_data_discovery: bool = True) -> List[QueueTask]:
+    tasks = [
+        QueueTask("stage15_oracle_diagnostics", "P1", "python run_stage15_oracle_diagnostics.py", family="oracle"),
+        QueueTask("stage15_expand_ewap_t100", "P1", "python run_stage15_expand_ewap_t100.py --max-t100 256 --max-t50 512", family="data"),
+    ]
+    if allow_data_discovery:
+        tasks.append(QueueTask("stage15_data_verify", "P5", "python scripts/stage15_verify_or_fetch_data.py", family="data"))
+    if allow_training:
+        tasks.append(QueueTask("stage15_deterministic_search", "P2", "python run_stage15_deterministic_search.py --max-trials 12", family="training"))
+    tasks.extend(
+        [
+            QueueTask("stage15_benchmark", "P3", "python run_stage15_benchmark.py", family="benchmark"),
+            QueueTask("stage15_gates", "P3", "python run_stage15_gates.py", family="gates"),
+            QueueTask("update_readme", "P6", "python scripts/auto_update_readme_results.py"),
+        ]
+    )
+    return tasks
+
+
+def build_stage15_maintenance_queue(allow_data_discovery: bool = True, allow_training: bool = True) -> List[QueueTask]:
+    tasks = [
+        QueueTask("stage15_oracle_refresh", "P1", "python run_stage15_oracle_diagnostics.py", family="oracle"),
+        QueueTask("stage15_benchmark_refresh", "P3", "python run_stage15_benchmark.py", family="benchmark"),
+        QueueTask("stage15_gate_refresh", "P3", "python run_stage15_gates.py", family="gates"),
+        QueueTask("stage15_py_compile", "P6", "python -m py_compile run_auto_world_model_loop.py src/stage15_pipeline.py src/orchestrator/auto_loop.py src/orchestrator/overnight_runner.py"),
+    ]
+    if allow_data_discovery:
+        tasks.insert(1, QueueTask("stage15_data_verify_refresh", "P5", "python scripts/stage15_verify_or_fetch_data.py", family="data"))
+    if allow_training:
+        tasks.insert(2, QueueTask("stage15_deterministic_search_refresh", "P2", "python run_stage15_deterministic_search.py --max-trials 12", family="training"))
+    return tasks

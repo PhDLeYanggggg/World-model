@@ -11,6 +11,7 @@ REPORT_DIR = Path("outputs/reports")
 
 
 STAGE_REPORT_CANDIDATES = {
+    "15": [REPORT_DIR / "report_stage15_final.md", Path("outputs/world_model_stage15_results/reports/report_stage15_final.md")],
     "14": [REPORT_DIR / "report_stage14_final.md", Path("outputs/world_model_stage14_results/reports/report_stage14_final.md")],
     "13": [REPORT_DIR / "report_stage13_final.md", Path("outputs/world_model_stage13_results/reports/report_stage13_final.md")],
     "12": [REPORT_DIR / "report_stage12_final.md", Path("outputs/world_model_stage12_results/reports/report_stage12_final.md")],
@@ -20,6 +21,7 @@ STAGE_REPORT_CANDIDATES = {
 }
 
 GATE_REPORT_CANDIDATES = {
+    "15": [REPORT_DIR / "world_model_gate_stage15.md", Path("outputs/world_model_stage15_results/reports/world_model_gate_stage15.md")],
     "14": [REPORT_DIR / "world_model_gate_stage14.md", Path("outputs/world_model_stage14_results/reports/world_model_gate_stage14.md")],
     "13": [REPORT_DIR / "world_model_gate_stage13.md", Path("outputs/world_model_stage13_results/reports/world_model_gate_stage13.md")],
     "12": [REPORT_DIR / "world_model_gate_stage12.md", Path("outputs/world_model_stage12_results/reports/world_model_gate_stage12.md")],
@@ -38,7 +40,7 @@ def first_existing(paths: List[Path]) -> Path | None:
 
 def latest_completed_stage() -> Dict[str, Any]:
     missing = []
-    for stage in ["14", "13", "12", "11", "10", "9"]:
+    for stage in ["15", "14", "13", "12", "11", "10", "9"]:
         report = first_existing(STAGE_REPORT_CANDIDATES[stage])
         gate = first_existing(GATE_REPORT_CANDIDATES[stage])
         if report:
@@ -61,8 +63,8 @@ def extract_bool(pattern: str, text: str, default: bool = False) -> bool:
 
 def extract_backtick_or_value(label: str, text: str, default: str = "unknown") -> str:
     patterns = [
-        rf"{re.escape(label)}\s*[:=]\s*`([^`]+)`",
-        rf"{re.escape(label)}\s*[:=]\s*([^\n]+)",
+        rf"{re.escape(label)}\s*[:：=]\s*`([^`]+)`",
+        rf"{re.escape(label)}\s*[:：=]\s*([^\n]+)",
     ]
     for pattern in patterns:
         match = re.search(pattern, text, flags=re.IGNORECASE)

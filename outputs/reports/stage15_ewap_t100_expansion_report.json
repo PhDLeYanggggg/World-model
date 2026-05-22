@@ -1,0 +1,37 @@
+{
+  "created_episodes": 411,
+  "policies": {
+    "per_agent_complete": {
+      "policy_name": "per_agent_complete",
+      "t50_rows": 81,
+      "t100_rows": 81,
+      "train_episodes": 64,
+      "test_episodes": 17,
+      "mean_agents_per_episode": 31.062,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": true,
+      "reason_if_not_allowed": ""
+    },
+    "t50_fallback": {
+      "policy_name": "t50_fallback",
+      "t50_rows": 433,
+      "t100_rows": 0,
+      "train_episodes": 264,
+      "test_episodes": 66,
+      "mean_agents_per_episode": 24.542,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": true,
+      "reason_if_not_allowed": ""
+    }
+  },
+  "official_policy": "t50_official_t100_diagnostic",
+  "t100_official_rows": 81,
+  "t50_official_rows": 433,
+  "gate": {
+    "t100_ge_200": false,
+    "t50_ge_300": true,
+    "requires_user_data": false
+  }
+}

@@ -204,7 +204,7 @@ def run_auto_loop(mode: str = "quick", max_steps: int = 1) -> Dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Autonomous world-model research loop.")
-    parser.add_argument("--mode", default="quick", choices=["quick", "data-first", "annotation-first", "train-deterministic", "full-auto", "overnight-stage13", "continuous-stage14"])
+    parser.add_argument("--mode", default="quick", choices=["quick", "data-first", "annotation-first", "train-deterministic", "full-auto", "overnight-stage13", "continuous-stage14", "continuous-stage15"])
     parser.add_argument("--max-steps", type=int, default=1)
     parser.add_argument("--min-hours", type=float, default=1.0)
     parser.add_argument("--max-hours", type=float, default=8.0)
@@ -212,6 +212,7 @@ def main() -> None:
     parser.add_argument("--min-training-trials", type=int, default=30)
     parser.add_argument("--min-data-actions", type=int, default=3)
     parser.add_argument("--min-benchmark-runs", type=int, default=3)
+    parser.add_argument("--min-oracle-runs", type=int, default=3)
     parser.add_argument("--allow-training", action="store_true")
     parser.add_argument("--allow-data-discovery", action="store_true")
     parser.add_argument("--allow-safe-download-dry-run", action="store_true")
@@ -284,6 +285,39 @@ def main() -> None:
             "benchmark_runs": result["loop_report"]["benchmark_runs"],
             "verdict": result["final_report"]["current_verdict"],
             "latent_ready": result["final_report"]["latent_stage5c_ready"],
+            "smc_ready": result["final_report"]["smc_ready"],
+        })
+        return
+    if args.mode == "continuous-stage15":
+        from .overnight_runner import run_continuous_stage15
+
+        result = run_continuous_stage15(
+            min_hours=args.min_hours,
+            max_hours=args.max_hours,
+            max_iterations=args.max_iterations,
+            min_training_trials=args.min_training_trials,
+            min_data_actions=args.min_data_actions,
+            min_oracle_runs=args.min_oracle_runs,
+            allow_training=args.allow_training,
+            allow_data_discovery=args.allow_data_discovery,
+            allow_safe_download_dry_run=args.allow_safe_download_dry_run,
+            allow_git=args.allow_git,
+            heartbeat_minutes=args.heartbeat_minutes,
+            no_latent=args.no_latent,
+            no_smc=args.no_smc,
+            dynamic_queue=args.dynamic_queue,
+            continue_on_task_failure=args.continue_on_task_failure,
+        )
+        print({
+            "mode": args.mode,
+            "elapsed_hours": result["loop_report"]["elapsed_hours"],
+            "completed": len(result["completed"]),
+            "failed": len(result["failed"]),
+            "training_trials": result["loop_report"]["training_trials"],
+            "data_actions": result["loop_report"]["data_actions"],
+            "oracle_runs": result["loop_report"]["oracle_runs"],
+            "verdict": result["final_report"]["current_verdict"],
+            "latent_ready": result["final_report"]["stage5c_ready"],
             "smc_ready": result["final_report"]["smc_ready"],
         })
         return

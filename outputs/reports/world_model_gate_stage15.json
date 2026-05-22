@@ -1,0 +1,83 @@
+{
+  "stage": 15,
+  "passed": [
+    "Continuous Execution Gate",
+    "EWAP Mask Gate",
+    "Oracle Headroom Gate",
+    "Easy Preservation Gate",
+    "Physical Validity Gate",
+    "Data Expansion Gate"
+  ],
+  "failed": [
+    "Deterministic Improvement Gate",
+    "Hard/Failure Gate",
+    "Scene/Goal Gain Gate",
+    "Interaction Gain Gate",
+    "Stage 5C Readiness Gate",
+    "SMC Readiness Gate"
+  ],
+  "rows": [
+    {
+      "gate": "Continuous Execution Gate",
+      "pass": true,
+      "evidence": "elapsed=0.25; trials=12"
+    },
+    {
+      "gate": "EWAP Mask Gate",
+      "pass": true,
+      "evidence": "t100=81; t50=433"
+    },
+    {
+      "gate": "Oracle Headroom Gate",
+      "pass": true,
+      "evidence": "oracle=0.1873597293697746"
+    },
+    {
+      "gate": "Deterministic Improvement Gate",
+      "pass": false,
+      "evidence": "t100=0.008001; t50=0.005442"
+    },
+    {
+      "gate": "Hard/Failure Gate",
+      "pass": false,
+      "evidence": "hard=0.000075; failure=0.000075"
+    },
+    {
+      "gate": "Easy Preservation Gate",
+      "pass": true,
+      "evidence": "easy=0.048225"
+    },
+    {
+      "gate": "Scene/Goal Gain Gate",
+      "pass": false,
+      "evidence": "gain=0.0"
+    },
+    {
+      "gate": "Interaction Gain Gate",
+      "pass": false,
+      "evidence": "gain=0.0"
+    },
+    {
+      "gate": "Physical Validity Gate",
+      "pass": true,
+      "evidence": "Conservative bounded residuals; no stochastic rollout."
+    },
+    {
+      "gate": "Data Expansion Gate",
+      "pass": true,
+      "evidence": "new data verified or user action generated."
+    },
+    {
+      "gate": "Stage 5C Readiness Gate",
+      "pass": false,
+      "evidence": "Plan only; no execution in Stage15."
+    },
+    {
+      "gate": "SMC Readiness Gate",
+      "pass": false,
+      "evidence": "Always false in Stage15."
+    }
+  ],
+  "stage5c_ready": false,
+  "smc_ready": false
+}

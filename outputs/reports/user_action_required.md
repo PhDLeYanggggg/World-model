@@ -1,9 +1,9 @@
 # User Action Required
 
-- reason: stage14_follow_up
+- reason: stage15_data_expansion
 
 ## Actions
 
-- EWAP t+100 per-agent rows are now evaluable in Stage14, but deterministic improvement is only about 0.008 and does not pass the 5% long-horizon gate.
-- Provide/convert additional pedestrian or drone long-horizon data such as SDD/OpenTraj if available.
-- Reboot the Mac if the old OpenMP/SHM-stuck PIDs remain visible after SIGKILL; the fixed runner now avoids torch resource probing and uses inline Stage14 execution.
+- Provide local path for sdd after accepting its license/terms.
+- Provide local path for opentraj after accepting its license/terms.
+- Do not claim new SDD/OpenTraj conversion until local paths are verified and no-leakage audit passes.
