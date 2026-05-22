@@ -413,3 +413,12 @@ learned_model_beats_strongest_baseline = 否
 - Official horizon remains t+50; t+100 remains diagnostic.
 - Latent generative Stage 5C and SMC remain disabled.
 - Reports: `outputs/reports/report_stage17_final.md`, `outputs/reports/world_model_gate_stage17.md`.
+
+## Stage 18: SAM-JEPA-2.5D
+
+- Stage18 implemented self-audited multimodal JEPA representation pretraining.
+- It is not true 3D, not a foundation model, not latent generative rollout, and not SMC.
+- Automatic annotations are silver tiers only; gold_human remains 0.
+- Quick JEPA training ran and embeddings were non-collapsed, but hard/failure correction did not pass gates.
+- Official horizon remains t+50; t+100 remains diagnostic.
+- Reports: `outputs/reports/report_stage18_final.md`, `outputs/reports/world_model_gate_stage18.md`.

@@ -1,0 +1,16 @@
+model:
+  name: SAM-JEPA-2.5D
+  autoregressive_next_token_transformer: false
+  pixel_reconstruction: false
+  latent_generative_rollout: false
+training:
+  mode: medium
+  max_samples: 2500
+  ridge_regularization: 0.001
+evaluation:
+  downstream_heads:
+    - baseline_selector
+    - failure_predictor
+    - goal_predictor
+    - correction_specialist
+

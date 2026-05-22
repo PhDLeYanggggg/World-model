@@ -1,0 +1,96 @@
+{
+  "passed": [
+    "Multimodal Data Gate",
+    "Self-Audited Annotation Gate",
+    "JEPA Dataset Gate",
+    "JEPA No-Collapse Gate",
+    "Diagnostic t+100 Gate"
+  ],
+  "failed": [
+    "JEPA Probe Gate",
+    "Baseline Selector Gate",
+    "Failure Predictor Gate",
+    "Correction Gate",
+    "Scene/Goal Gate",
+    "Interaction Gate",
+    "Official Horizon Gate",
+    "Stage 5C Readiness Gate",
+    "SMC Readiness Gate"
+  ],
+  "passed_count": 5,
+  "total": 14,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "details": [
+    {
+      "gate": "Multimodal Data Gate",
+      "pass": true,
+      "evidence": "ready=5"
+    },
+    {
+      "gate": "Self-Audited Annotation Gate",
+      "pass": true,
+      "evidence": "self_silver=5; gold=0"
+    },
+    {
+      "gate": "JEPA Dataset Gate",
+      "pass": true,
+      "evidence": "samples=650"
+    },
+    {
+      "gate": "JEPA No-Collapse Gate",
+      "pass": true,
+      "evidence": "variance=0.8338966412570863"
+    },
+    {
+      "gate": "JEPA Probe Gate",
+      "pass": false,
+      "evidence": "failure_auc=0.638045540796964"
+    },
+    {
+      "gate": "Baseline Selector Gate",
+      "pass": false,
+      "evidence": "jepa=0.08195359799282922"
+    },
+    {
+      "gate": "Failure Predictor Gate",
+      "pass": false,
+      "evidence": "no_jepa=0.6501423149905123; jepa=0.638045540796964"
+    },
+    {
+      "gate": "Correction Gate",
+      "pass": false,
+      "evidence": "hard=0.0"
+    },
+    {
+      "gate": "Scene/Goal Gate",
+      "pass": false,
+      "evidence": "lift=0.0"
+    },
+    {
+      "gate": "Interaction Gate",
+      "pass": false,
+      "evidence": "lift=0.0"
+    },
+    {
+      "gate": "Official Horizon Gate",
+      "pass": false,
+      "evidence": "t50_lift=0.0"
+    },
+    {
+      "gate": "Diagnostic t+100 Gate",
+      "pass": true,
+      "evidence": "diagnostic_only=0.0"
+    },
+    {
+      "gate": "Stage 5C Readiness Gate",
+      "pass": false,
+      "evidence": "JEPA is representation pretraining; no latent rollout execution"
+    },
+    {
+      "gate": "SMC Readiness Gate",
+      "pass": false,
+      "evidence": "SMC remains disabled"
+    }
+  ]
+}
