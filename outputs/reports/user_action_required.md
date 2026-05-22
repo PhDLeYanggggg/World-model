@@ -1,9 +1,9 @@
 # User Action Required
 
-- reason: stage13_t100_not_evaluable_under_per_agent_mask
+- reason: stage14_follow_up
 
 ## Actions
 
-- Verify Stage 12 EWAP t+100 episode construction and per-agent visibility masks.
+- EWAP t+100 per-agent rows are now evaluable in Stage14, but deterministic improvement is only about 0.008 and does not pass the 5% long-horizon gate.
 - Provide/convert additional pedestrian or drone long-horizon data such as SDD/OpenTraj if available.
-- Do not claim pedestrian t+100 improvement until per-agent t+100 rows are evaluable.
+- Reboot the Mac if the old OpenMP/SHM-stuck PIDs remain visible after SIGKILL; the fixed runner now avoids torch resource probing and uses inline Stage14 execution.

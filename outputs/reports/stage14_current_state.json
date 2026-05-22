@@ -1,0 +1,145 @@
+{
+  "true_3d_world_model": false,
+  "large_scale_foundation_world_model": false,
+  "model_type": "2.5D / pseudo-3D per-agent multi-agent trajectory world-state scaffold",
+  "auto_orchestrator_implemented": true,
+  "previous_loop_too_short": true,
+  "stage13_trials": 24,
+  "stage13_deterministic_gates_passed": false,
+  "ewap_t100_evaluable_under_stage13_mask": false,
+  "hardbench_improvement": 0.013127,
+  "baselinefailure_improvement": 0.013127,
+  "scene_goal_effective": false,
+  "interaction_effective": false,
+  "latent_stage5c_allowed": false,
+  "smc_allowed": false,
+  "correct_direction": [
+    "fix per-agent long-horizon mask / episode construction",
+    "automatically acquire/verify more legal pedestrian/drone multimodal data",
+    "build scene image + trajectory + goal/walkable/annotation multimodal world-state dataset",
+    "continue deterministic model repair",
+    "only generate Stage 5C plan after deterministic gates pass"
+  ],
+  "research_state": {
+    "current_stage": "stage14",
+    "current_verdict": "stage14_continuous_multimodal_repair_executed_not_stage5c_ready",
+    "expert_audit_score": 85,
+    "deterministic_ready": false,
+    "latent_generative_ready": false,
+    "smc_ready": false,
+    "pedestrian_long_horizon_ready": true,
+    "scene_annotation_ready": true,
+    "multi_agent_ready": true,
+    "strongest_causal_baselines": {
+      "aerialmpt": {
+        "target_horizon": "5",
+        "strongest_baseline_FDE": 2.735528,
+        "best_learned_variant": "per_agent_no_scene",
+        "best_learned_FDE": 2.746454,
+        "improvement": -0.003994
+      },
+      "eth_ucy": {
+        "target_horizon": "10",
+        "strongest_baseline_FDE": 5.17126,
+        "best_learned_variant": "per_agent_scene_only",
+        "best_learned_FDE": 5.157833,
+        "improvement": 0.002596
+      },
+      "eth_ucy_ewap": {
+        "target_horizon": "100",
+        "strongest_baseline_FDE": 5.460224,
+        "best_learned_variant": "per_agent_no_scene",
+        "best_learned_FDE": 5.460224,
+        "improvement": 0.0
+      },
+      "trajnet": {
+        "target_horizon": "10",
+        "strongest_baseline_FDE": 20.771859,
+        "best_learned_variant": "per_agent_goal_only",
+        "best_learned_FDE": 20.748859,
+        "improvement": 0.001107
+      }
+    },
+    "best_learned_models": {
+      "aerialmpt": {
+        "target_horizon": "5",
+        "strongest_baseline_FDE": 2.735528,
+        "best_learned_variant": "per_agent_no_scene",
+        "best_learned_FDE": 2.746454,
+        "improvement": -0.003994
+      },
+      "eth_ucy": {
+        "target_horizon": "10",
+        "strongest_baseline_FDE": 5.17126,
+        "best_learned_variant": "per_agent_scene_only",
+        "best_learned_FDE": 5.157833,
+        "improvement": 0.002596
+      },
+      "eth_ucy_ewap": {
+        "target_horizon": "100",
+        "strongest_baseline_FDE": 5.460224,
+        "best_learned_variant": "per_agent_no_scene",
+        "best_learned_FDE": 5.460224,
+        "improvement": 0.0
+      },
+      "trajnet": {
+        "target_horizon": "10",
+        "strongest_baseline_FDE": 20.771859,
+        "best_learned_variant": "per_agent_goal_only",
+        "best_learned_FDE": 20.748859,
+        "improvement": 0.001107
+      }
+    },
+    "datasets_converted": [
+      "eth_ucy_ewap",
+      "aerialmpt",
+      "full_trajnet_original_quick"
+    ],
+    "datasets_registry_only": [],
+    "datasets_failed": [],
+    "annotation_status": {
+      "human_gold": 0,
+      "human_silver": 3,
+      "silver_rule_confirmed": 33
+    },
+    "gates_passed": [
+      "Continuous Execution Gate",
+      "Multimodal Data Gate",
+      "Long-Horizon Gate",
+      "Scene Pack Gate",
+      "Strong Baseline Gate",
+      "Easy Preservation Gate",
+      "Physical Validity Gate"
+    ],
+    "gates_failed": [
+      "Deterministic Improvement Gate",
+      "Scene/Visual Gain Gate",
+      "Stage 5C Readiness Gate",
+      "SMC Readiness Gate"
+    ],
+    "next_actions": [
+      "run_longer_deterministic_search_with_rebuilt_ewap_t100",
+      "verify_sdd_or_opentraj_local_paths",
+      "upgrade_scene_annotations_with_human_review"
+    ],
+    "blockers_requiring_user": [
+      "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
+    ],
+    "last_successful_command": "python run_auto_world_model_loop.py --mode continuous-stage14",
+    "last_failed_command": "",
+    "generated_reports": [
+      "outputs/reports/auto_gate_report.md",
+      "outputs/reports/auto_loop_iteration_report.md",
+      "outputs/reports/auto_next_stage_plan.md",
+      "outputs/reports/auto_orchestrator_current_state.md",
+      "outputs/reports/report_stage14_final.md",
+      "outputs/reports/research_state.md",
+      "outputs/reports/stage14_continuous_loop_report.md",
+      "outputs/reports/stage14_current_state.md",
+      "outputs/reports/stage14_heartbeat.md",
+      "outputs/reports/world_model_gate_stage14.md"
+    ],
+    "generated_figures": [],
+    "git_commit_hash_if_available": "a64fe57"
+  }
+}

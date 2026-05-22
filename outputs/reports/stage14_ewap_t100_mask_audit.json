@@ -1,0 +1,68 @@
+{
+  "stage12_mask_counts": {
+    "counts": {
+      "source_level_t100_episodes": 320,
+      "episodes": 320,
+      "per_agent_complete_past_target_rows": 0,
+      "per_agent_last_past_target_rows": 0,
+      "target_only_rows": 1251,
+      "all_agent_complete_t100_episodes": 0,
+      "episodes_with_any_target": 320
+    },
+    "examples": [
+      {
+        "path": "data/stage12_multiagent_episodes/eth_ucy_ewap/episode_00000.npz",
+        "split": "train",
+        "source_level_t100": true,
+        "complete_past_target_rows": 0,
+        "last_past_target_rows": 0,
+        "target_only_rows": 3
+      },
+      {
+        "path": "data/stage12_multiagent_episodes/eth_ucy_ewap/episode_00001.npz",
+        "split": "train",
+        "source_level_t100": true,
+        "complete_past_target_rows": 0,
+        "last_past_target_rows": 0,
+        "target_only_rows": 3
+      },
+      {
+        "path": "data/stage12_multiagent_episodes/eth_ucy_ewap/episode_00002.npz",
+        "split": "train",
+        "source_level_t100": true,
+        "complete_past_target_rows": 0,
+        "last_past_target_rows": 0,
+        "target_only_rows": 3
+      },
+      {
+        "path": "data/stage12_multiagent_episodes/eth_ucy_ewap/episode_00003.npz",
+        "split": "train",
+        "source_level_t100": true,
+        "complete_past_target_rows": 0,
+        "last_past_target_rows": 0,
+        "target_only_rows": 4
+      },
+      {
+        "path": "data/stage12_multiagent_episodes/eth_ucy_ewap/episode_00004.npz",
+        "split": "train",
+        "source_level_t100": true,
+        "complete_past_target_rows": 0,
+        "last_past_target_rows": 0,
+        "target_only_rows": 4
+      }
+    ]
+  },
+  "source_track_t100_windows": 81,
+  "source_tracks_with_t100": {
+    "seq_eth:171": {
+      "track_length": 190,
+      "possible_t100_windows": 81
+    }
+  },
+  "diagnosis": "Stage12 counted source/episode horizon availability, but Stage13 required per-agent causal past plus target mask in all-agent windows; no row satisfied that stricter policy.",
+  "likely_causes": [
+    "only-visible agents and target masks were not aligned for t+100",
+    "Stage12 episode-level verified_t100 does not imply per-agent complete target rows",
+    "long-horizon target exists at source-track level but can be lost in all-agent window masks"
+  ]
+}

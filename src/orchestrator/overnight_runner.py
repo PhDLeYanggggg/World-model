@@ -9,7 +9,19 @@ from .heartbeat import write_heartbeat
 from .research_state import ResearchState, write_json, write_md, write_research_state_markdown
 from .resource_monitor import disk_ok, resource_snapshot
 from .task_executor import execute_task
-from .task_queue import build_stage13_task_queue
+from .task_queue import QueueTask, build_stage13_task_queue, build_stage14_maintenance_queue, build_stage14_task_queue
+from src.stage14_pipeline import (
+    audit_ewap_t100_masks,
+    build_multimodal_episodes,
+    build_multimodal_scene_packs,
+    evaluate_stage14_gates,
+    multimodal_data_audit,
+    rebuild_ewap_t100_episodes,
+    run_stage14_benchmark,
+    stage14_current_state,
+    validate_stage14_t100_masks,
+    write_stage14_final_reports,
+)
 
 
 REPORT_DIR = Path("outputs/reports")
@@ -235,3 +247,354 @@ def run_overnight_stage13(
         ],
     )
     return {"completed": completed, "failed": failed, "final_report": report}
+
+
+def _write_stage14_heartbeat(
+    started_at: float,
+    current_task: str,
+    completed: List[Dict],
+    failed: List[Dict],
+    next_task: str = "unknown",
+    training_trials: int = 0,
+    data_actions: int = 0,
+    benchmark_runs: int = 0,
+) -> None:
+    elapsed_h = (time.time() - started_at) / 3600.0
+    best = _best_from_metrics()
+    lines = [
+        "# Stage 14 Continuous Loop Heartbeat",
+        "",
+        f"- current_time_unix: `{int(time.time())}`",
+        f"- elapsed_hours: `{elapsed_h:.3f}`",
+        f"- current_task: `{current_task}`",
+        f"- completed_tasks: `{len(completed)}`",
+        f"- failed_tasks: `{len(failed)}`",
+        f"- training_trials: `{training_trials}`",
+        f"- data_actions: `{data_actions}`",
+        f"- benchmark_runs: `{benchmark_runs}`",
+        f"- best_model_so_far: `{best['best_model']}`",
+        f"- best_eth_ucy_ewap_t100_improvement: `{best['best_t100_improvement']}`",
+        f"- best_hard_failure_improvement: `{best['best_hard_improvement']}`",
+        "- latent_blocked: `True`",
+        "- smc_blocked: `True`",
+        f"- next_task: `{next_task}`",
+    ]
+    write_md(REPORT_DIR / "stage14_heartbeat.md", lines)
+
+
+def _stage14_counter_update(task_name: str, completed: List[Dict]) -> Dict[str, int]:
+    search = _read_json(REPORT_DIR / "stage13_search_results.json", {})
+    trials = int(search.get("trial_count", 0) or 0) if isinstance(search, dict) else 0
+    data_actions = sum(1 for item in completed if "data" in item.get("task", "") or "scene_pack" in item.get("task", ""))
+    benchmark_runs = sum(1 for item in completed if "benchmark" in item.get("task", "") or "gates" in item.get("task", ""))
+    if "data" in task_name or "scene_pack" in task_name:
+        data_actions = max(data_actions, 1)
+    if "benchmark" in task_name or "gates" in task_name:
+        benchmark_runs = max(benchmark_runs, 1)
+    return {"training_trials": trials, "data_actions": data_actions, "benchmark_runs": benchmark_runs}
+
+
+def _write_stage14_runner_fix_report(min_hours: float, max_hours: float, max_iterations: int) -> None:
+    write_md(
+        REPORT_DIR / "stage14_overnight_runner_fix.md",
+        [
+            "# Stage 14 Overnight Runner Fix",
+            "",
+            "- Added `continuous-stage14` mode.",
+            f"- min_hours: `{min_hours}`",
+            f"- max_hours: `{max_hours}`",
+            f"- max_iterations: `{max_iterations}`",
+            "- Queue exhaustion before min-hours now triggers safe maintenance tasks or heartbeat sleep, not early termination.",
+            "- Dynamic queue can add data dry-runs, mask audits, benchmarks, gates, failure mining, and py_compile refreshes.",
+            "- Latent generative and SMC remain blocked.",
+        ],
+    )
+
+
+def _execute_stage14_inline(task: QueueTask) -> Dict[str, Any] | None:
+    start = time.time()
+    result = {
+        "task": task.name,
+        "priority": task.priority,
+        "command": task.command,
+        "status": "completed",
+        "returncode": 0,
+        "elapsed_seconds": 0.0,
+        "log_path": "inline",
+        "inline": True,
+    }
+    try:
+        if task.name == "stage14_current_state":
+            result["payload"] = stage14_current_state()
+        elif task.name == "stage14_ewap_t100_mask_audit":
+            result["payload"] = audit_ewap_t100_masks()
+        elif task.name == "stage14_rebuild_ewap_t100_episodes":
+            result["payload"] = {
+                "rebuild": rebuild_ewap_t100_episodes(max_episodes=64),
+                "validation": validate_stage14_t100_masks(),
+            }
+        elif task.name in {"stage14_multimodal_data_dry_run", "stage14_data_dry_run_refresh"}:
+            result["payload"] = multimodal_data_audit()
+        elif task.name == "stage14_build_multimodal_scene_packs":
+            result["payload"] = build_multimodal_scene_packs(limit=64)
+        elif task.name == "stage14_build_multimodal_episodes":
+            result["payload"] = build_multimodal_episodes(limit=256)
+        elif task.name == "stage14_deterministic_multimodal_train":
+            from src.training.train_stage14_multimodal import train_stage14_multimodal
+
+            result["payload"] = train_stage14_multimodal(max_trials_per_family=1, max_iterations=10)
+        elif task.name in {"stage14_multimodal_benchmark", "stage14_benchmark_refresh"}:
+            result["payload"] = run_stage14_benchmark()
+        elif task.name in {"stage14_gates", "stage14_gate_refresh"}:
+            result["payload"] = evaluate_stage14_gates()
+        else:
+            return None
+    except Exception as exc:  # noqa: BLE001
+        result["status"] = "failed"
+        result["returncode"] = -1
+        result["error"] = str(exc)
+    result["elapsed_seconds"] = round(time.time() - start, 3)
+    return result
+
+
+def _write_stage14_loop_report(
+    started_at: float,
+    completed: List[Dict],
+    failed: List[Dict],
+    termination_reason: str,
+    min_hours: float,
+    min_training_trials: int,
+    min_data_actions: int,
+    min_benchmark_runs: int,
+    counters: Dict[str, int],
+) -> Dict[str, Any]:
+    elapsed = (time.time() - started_at) / 3600.0
+    met = (
+        elapsed >= min_hours
+        or counters["training_trials"] >= min_training_trials
+        or (
+            counters["data_actions"] >= min_data_actions
+            and counters["benchmark_runs"] >= min_benchmark_runs
+            and counters["training_trials"] > 0
+        )
+    )
+    report = {
+        "executed": True,
+        "mode": "continuous-stage14",
+        "running_in_reduced_runtime_mode": min_hours < 1.0,
+        "elapsed_hours": round(elapsed, 4),
+        "completed_tasks": completed,
+        "failed_tasks": failed,
+        "termination_reason": termination_reason,
+        "training_trials": counters["training_trials"],
+        "data_actions": counters["data_actions"],
+        "benchmark_runs": counters["benchmark_runs"],
+        "min_hours": min_hours,
+        "min_training_trials": min_training_trials,
+        "min_data_actions": min_data_actions,
+        "min_benchmark_runs": min_benchmark_runs,
+        "met_minimum_runtime_or_trials": met,
+        "latent_enabled": False,
+        "smc_enabled": False,
+    }
+    write_json(REPORT_DIR / "stage14_continuous_loop_report.json", report)
+    write_md(
+        REPORT_DIR / "stage14_continuous_loop_report.md",
+        [
+            "# Stage 14 Continuous Loop Report",
+            "",
+            f"- running in reduced-runtime mode: `{report['running_in_reduced_runtime_mode']}`",
+            f"- elapsed_hours: `{report['elapsed_hours']}`",
+            f"- completed_tasks: `{len(completed)}`",
+            f"- failed_tasks: `{len(failed)}`",
+            f"- training_trials: `{counters['training_trials']}`",
+            f"- data_actions: `{counters['data_actions']}`",
+            f"- benchmark_runs: `{counters['benchmark_runs']}`",
+            f"- termination_reason: `{termination_reason}`",
+            f"- met_minimum_runtime_or_trials: `{met}`",
+            "- latent_enabled: `False`",
+            "- smc_enabled: `False`",
+        ],
+    )
+    return report
+
+
+def run_continuous_stage14(
+    min_hours: float = 1.0,
+    max_hours: float = 8.0,
+    max_iterations: int = 50,
+    min_training_trials: int = 30,
+    min_data_actions: int = 3,
+    min_benchmark_runs: int = 3,
+    allow_training: bool = False,
+    allow_data_discovery: bool = False,
+    allow_safe_download_dry_run: bool = False,
+    allow_git: bool = False,
+    heartbeat_minutes: float = 15.0,
+    max_trials_per_family: int = 1,
+    no_latent: bool = True,
+    no_smc: bool = True,
+    dynamic_queue: bool = True,
+    continue_on_task_failure: bool = True,
+) -> Dict[str, Any]:
+    started_at = time.time()
+    completed: List[Dict] = []
+    failed: List[Dict] = []
+    counters = {"training_trials": 0, "data_actions": 0, "benchmark_runs": 0}
+    if not no_latent or not no_smc:
+        raise RuntimeError("Stage 14 requires --no-latent and --no-smc.")
+    if not disk_ok():
+        write_user_action_required("disk_space_insufficient", ["Free local disk space and rerun continuous-stage14."])
+        loop_report = _write_stage14_loop_report(started_at, completed, failed, "disk_space_insufficient", min_hours, min_training_trials, min_data_actions, min_benchmark_runs, counters)
+        gates = evaluate_stage14_gates(loop_report)
+        final = write_stage14_final_reports(loop_report)
+        return {"completed": completed, "failed": failed, "loop_report": loop_report, "gates": gates, "final_report": final}
+
+    _write_stage14_runner_fix_report(min_hours, max_hours, max_iterations)
+    resource = resource_snapshot()
+    tasks = build_stage14_task_queue(
+        max_trials_per_family=max_trials_per_family,
+        allow_training=allow_training,
+        allow_data_discovery=allow_data_discovery or allow_safe_download_dry_run,
+    )
+    _write_stage14_heartbeat(started_at, "initializing", completed, failed, next_task=tasks[0].name if tasks else "maintenance")
+    iterations = 0
+    maintenance_index = 0
+    termination_reason = "max_hours_reached"
+
+    while (time.time() - started_at) / 3600.0 < max_hours:
+        elapsed_h = (time.time() - started_at) / 3600.0
+        if iterations >= max_iterations and elapsed_h >= min_hours:
+            termination_reason = "max_iterations_reached"
+            break
+
+        if tasks:
+            task = tasks.pop(0)
+        elif dynamic_queue and elapsed_h < min_hours:
+            maintenance = build_stage14_maintenance_queue(allow_data_discovery=allow_data_discovery or allow_safe_download_dry_run)
+            task = maintenance[maintenance_index % len(maintenance)]
+            maintenance_index += 1
+        elif dynamic_queue and (
+            counters["training_trials"] < min_training_trials
+            or counters["data_actions"] < min_data_actions
+            or counters["benchmark_runs"] < min_benchmark_runs
+        ):
+            tasks.extend(build_stage14_maintenance_queue(allow_data_discovery=allow_data_discovery or allow_safe_download_dry_run))
+            if allow_training and counters["training_trials"] < min_training_trials:
+                training_candidates = [
+                    candidate
+                    for candidate in build_stage14_task_queue(max_trials_per_family=max_trials_per_family, allow_training=True, allow_data_discovery=False)
+                    if "train" in candidate.name
+                ]
+                if training_candidates:
+                    tasks.insert(0, training_candidates[0])
+            task = tasks.pop(0)
+        else:
+            termination_reason = "all_scheduled_safe_tasks_completed_after_minimums"
+            break
+
+        if iterations >= max_iterations and elapsed_h < min_hours:
+            sleep_s = min(max(5.0, heartbeat_minutes * 60.0), max(0.0, min_hours * 3600.0 - (time.time() - started_at)))
+            _write_stage14_heartbeat(started_at, "min_hours_sleep_after_max_iterations", completed, failed, next_task="finalize", **counters)
+            if sleep_s > 0:
+                time.sleep(sleep_s)
+            continue
+
+        iterations += 1
+        _write_stage14_heartbeat(started_at, task.name, completed, failed, next_task=tasks[0].name if tasks else "dynamic_maintenance", **counters)
+        result = _execute_stage14_inline(task) or execute_task(task)
+        if result["status"] == "completed":
+            completed.append(result)
+        else:
+            failed.append(result)
+            if not continue_on_task_failure or task.priority == "P0":
+                termination_reason = f"critical_task_failed:{task.name}"
+                break
+        counters.update(_stage14_counter_update(task.name, completed))
+
+        if task.name == "stage14_multimodal_benchmark":
+            try:
+                run_stage14_benchmark()
+            except Exception as exc:  # noqa: BLE001
+                failed.append({"task": "stage14_internal_benchmark_refresh", "status": "failed", "error": str(exc)})
+        if task.name == "stage14_gates":
+            try:
+                loop_snapshot = _write_stage14_loop_report(
+                    started_at,
+                    completed,
+                    failed,
+                    "in_progress",
+                    min_hours,
+                    min_training_trials,
+                    min_data_actions,
+                    min_benchmark_runs,
+                    counters,
+                )
+                gates = evaluate_stage14_gates(loop_snapshot)
+                if gates.get("stage5c_ready"):
+                    termination_reason = "deterministic_gates_passed_stage5c_plan_only"
+                    break
+            except Exception as exc:  # noqa: BLE001
+                failed.append({"task": "stage14_internal_gate_refresh", "status": "failed", "error": str(exc)})
+
+        elapsed_h = (time.time() - started_at) / 3600.0
+        if not tasks and elapsed_h < min_hours:
+            sleep_s = min(max(5.0, heartbeat_minutes * 60.0), max(0.0, min_hours * 3600.0 - (time.time() - started_at)))
+            if sleep_s > 0:
+                _write_stage14_heartbeat(started_at, "min_hours_maintenance_sleep", completed, failed, next_task="dynamic_maintenance", **counters)
+                time.sleep(sleep_s)
+
+    else:
+        termination_reason = "max_hours_reached"
+
+    loop_report = _write_stage14_loop_report(
+        started_at,
+        completed,
+        failed,
+        termination_reason,
+        min_hours,
+        min_training_trials,
+        min_data_actions,
+        min_benchmark_runs,
+        counters,
+    )
+    run_stage14_benchmark()
+    gates = evaluate_stage14_gates(loop_report)
+    final = write_stage14_final_reports(loop_report)
+    _write_stage14_heartbeat(started_at, "finalized", completed, failed, next_task="none", **counters)
+
+    state = ResearchState.load()
+    state.current_stage = "stage14"
+    state.current_verdict = final["current_verdict"]
+    state.expert_audit_score = final["expert_audit_score"]
+    state.deterministic_ready = bool(gates.get("stage5c_ready", False))
+    state.latent_generative_ready = False
+    state.smc_ready = False
+    state.gates_passed = gates.get("passed", [])
+    state.gates_failed = gates.get("failed", [])
+    state.next_actions = [
+        "run_longer_deterministic_search_with_rebuilt_ewap_t100",
+        "verify_sdd_or_opentraj_local_paths",
+        "upgrade_scene_annotations_with_human_review",
+    ]
+    state.last_successful_command = "python run_auto_world_model_loop.py --mode continuous-stage14"
+    state.generated_reports = sorted(set(state.generated_reports + [
+        "outputs/reports/stage14_current_state.md",
+        "outputs/reports/stage14_continuous_loop_report.md",
+        "outputs/reports/stage14_heartbeat.md",
+        "outputs/reports/world_model_gate_stage14.md",
+        "outputs/reports/report_stage14_final.md",
+    ]))
+    state.save()
+    write_research_state_markdown(state)
+
+    if allow_git:
+        git_task = QueueTask("stage14_git_snapshot", "P6", "python scripts/auto_git_snapshot.py --message Stage14-continuous-repair-snapshot")
+        git_result = execute_task(git_task)
+        if git_result["status"] == "completed":
+            completed.append(git_result)
+        else:
+            failed.append(git_result)
+
+    write_json(REPORT_DIR / "stage14_loop_resource.json", {"resource": resource})
+    return {"completed": completed, "failed": failed, "loop_report": loop_report, "gates": gates, "final_report": final}

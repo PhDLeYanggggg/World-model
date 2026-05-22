@@ -31,3 +31,49 @@ def build_stage13_task_queue(max_trials_per_family: int = 2, allow_training: boo
         QueueTask("update_readme", "P6", "python scripts/auto_update_readme_results.py"),
     ]
 
+
+def build_stage14_task_queue(
+    max_trials_per_family: int = 1,
+    allow_training: bool = True,
+    allow_data_discovery: bool = True,
+) -> List[QueueTask]:
+    training_tasks: List[QueueTask] = []
+    if allow_training:
+        training_tasks.append(
+            QueueTask(
+                "stage14_deterministic_multimodal_train",
+                "P2",
+                f"python run_stage14_train_multimodal.py --max-trials-per-family {max_trials_per_family} --max-iterations 10",
+                family="stage14",
+            )
+        )
+    discovery_tasks: List[QueueTask] = []
+    if allow_data_discovery:
+        discovery_tasks.append(
+            QueueTask("stage14_multimodal_data_dry_run", "P5", "python scripts/stage14_fetch_or_verify_multimodal_data.py --dry-run")
+        )
+    return [
+        QueueTask("stage14_current_state", "P0", "python run_stage14_current_state.py"),
+        QueueTask("stage14_ewap_t100_mask_audit", "P1", "python run_stage14_audit_ewap_t100_masks.py"),
+        QueueTask("stage14_rebuild_ewap_t100_episodes", "P1", "python run_stage14_rebuild_ewap_t100_episodes.py --max-episodes 64"),
+        *discovery_tasks,
+        QueueTask("stage14_build_multimodal_scene_packs", "P1", "python run_stage14_build_multimodal_scene_packs.py --limit 64"),
+        QueueTask("stage14_build_multimodal_episodes", "P1", "python run_stage14_build_multimodal_episodes.py --limit 256"),
+        *training_tasks,
+        QueueTask("stage14_multimodal_benchmark", "P3", "python run_stage14_multimodal_benchmark.py"),
+        QueueTask("stage14_gates", "P3", "python run_stage14_gates.py"),
+        QueueTask("stage13_failure_miner_refresh", "P4", "python run_stage13_failure_miner.py"),
+        QueueTask("update_readme", "P6", "python scripts/auto_update_readme_results.py"),
+    ]
+
+
+def build_stage14_maintenance_queue(allow_data_discovery: bool = True) -> List[QueueTask]:
+    tasks = [
+        QueueTask("stage14_benchmark_refresh", "P3", "python run_stage14_multimodal_benchmark.py"),
+        QueueTask("stage14_gate_refresh", "P3", "python run_stage14_gates.py"),
+        QueueTask("stage14_failure_refresh", "P4", "python run_stage13_failure_miner.py"),
+        QueueTask("stage14_py_compile", "P6", "python -m py_compile run_auto_world_model_loop.py run_stage14_current_state.py run_stage14_gates.py run_stage14_train_multimodal.py src/stage14_pipeline.py src/orchestrator/auto_loop.py src/orchestrator/overnight_runner.py"),
+    ]
+    if allow_data_discovery:
+        tasks.insert(0, QueueTask("stage14_data_dry_run_refresh", "P5", "python scripts/stage14_fetch_or_verify_multimodal_data.py --dry-run"))
+    return tasks

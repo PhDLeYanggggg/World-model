@@ -1,61 +1,61 @@
 # Stage 13 Failure Analysis
 
-- failure_case_count: `80`
-- worse_than_baseline_count: `26`
-- easy_degraded_count: `23`
-- alpha_high_easy_count: `36`
+- failure_case_count: `52`
+- worse_than_baseline_count: `0`
+- easy_degraded_count: `12`
+- alpha_high_easy_count: `81`
 - t100_drift_count: `0`
-- interaction_failure_count: `130`
+- interaction_failure_count: `70`
 
 | failure_type | dataset | subset | horizon | improvement | likely reason |
 | --- | --- | --- | --- | --- | --- |
-| baseline_better_than_model | eth_ucy | all | 1 | -0.104415 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | baseline_failure | 1 | -0.102717 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | ge5 | 1 | -0.119964 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | goalbench_official | 1 | -0.104415 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | hard | 1 | -0.105066 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | aerialmpt | all | 1 | -0.132638 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | aerialmpt | baseline_failure | 1 | -0.132638 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | aerialmpt | ge5 | 1 | -0.132638 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | aerialmpt | goalbench_official | 1 | -0.132638 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | aerialmpt | hard | 1 | -0.132638 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | all | 1 | -0.218594 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | baseline_failure | 1 | -0.215602 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | easy | 1 | -0.174608 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | ge5 | 1 | -0.251134 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | goalbench_official | 1 | -0.218594 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy | hard | 1 | -0.220347 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy_ewap | all | 1 | -0.112582 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy_ewap | baseline_failure | 1 | -0.112582 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy_ewap | ge5 | 1 | -0.112582 | Model correction made FDE worse than baseline by >10%. |
-| baseline_better_than_model | eth_ucy_ewap | goalbench_official | 1 | -0.112582 | Model correction made FDE worse than baseline by >10%. |
-| easy_degraded | eth_ucy | easy | 1 | -0.088078 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.174608 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 5 | -0.024905 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.050832 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.04737 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.056072 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.052247 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.041902 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.040101 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.067293 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.062755 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.043026 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.040101 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.047675 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.04737 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.05638 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.052559 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.050832 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.04737 | Easy subset degraded beyond preservation tolerance. |
-| easy_degraded | eth_ucy | easy | 1 | -0.065711 | Easy subset degraded beyond preservation tolerance. |
-| alpha_high_on_easy | eth_ucy | easy | 1 | -0.088078 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 5 | -0.016728 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 10 | -0.005606 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 1 | -0.174608 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 5 | -0.024905 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 10 | -0.0115 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 1 | -0.050832 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 5 | -0.007536 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 10 | -0.004738 | Alpha intervention is too high on easy samples. |
-| alpha_high_on_easy | eth_ucy | easy | 1 | -0.056072 | Alpha intervention is too high on easy samples. |
+| easy_degraded | eth_ucy | easy | 1 | -0.049358 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy_ewap_stage14 | easy | 1 | -0.032713 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.040776 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.048134 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.047817 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy_ewap_stage14 | easy | 1 | -0.021611 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.038186 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy_ewap_stage14 | easy | 1 | -0.020122 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.04771 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.048081 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.046774 | Easy subset degraded beyond preservation tolerance. |
+| easy_degraded | eth_ucy | easy | 1 | -0.040776 | Easy subset degraded beyond preservation tolerance. |
+| alpha_high_on_easy | eth_ucy | easy | 1 | -0.049358 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 5 | -0.017058 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 10 | -0.002925 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 1 | -0.032713 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 5 | 0.010943 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 10 | 0.006104 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 25 | 0.003879 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 50 | 0.005219 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 100 | 0.008052 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 1 | -0.040776 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 5 | -0.004615 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 10 | -0.001304 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 1 | 0.03894 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 5 | 0.008271 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 10 | 0.004595 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 25 | 0.002864 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 50 | 0.003825 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy_ewap_stage14 | easy | 100 | 0.006052 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 1 | -0.048134 | Alpha intervention is too high on easy samples. |
+| alpha_high_on_easy | eth_ucy | easy | 5 | -0.003165 | Alpha intervention is too high on easy samples. |
+| interaction_ineffective | aerialmpt | hard | 1 | -0.046615 | Interaction family failed hard subset. |
+| interaction_ineffective | aerialmpt | hard | 5 | -0.005429 | Interaction family failed hard subset. |
+| interaction_ineffective | aerialmpt | hard | 10 | -0.003516 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy | hard | 1 | -0.041796 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy | hard | 5 | -0.006835 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy | hard | 10 | -0.000977 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy_ewap | hard | 1 | -0.032951 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy_ewap | hard | 5 | -0.00587 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy_ewap | hard | 10 | -0.003352 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy_ewap | hard | 25 | -0.005563 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy_ewap | hard | 50 | -0.010488 | Interaction family failed hard subset. |
+| interaction_ineffective | trajnet | hard | 1 | -0.041129 | Interaction family failed hard subset. |
+| interaction_ineffective | trajnet | hard | 5 | -0.003337 | Interaction family failed hard subset. |
+| interaction_ineffective | trajnet | hard | 10 | -0.000329 | Interaction family failed hard subset. |
+| interaction_ineffective | aerialmpt | hard | 1 | -0.045755 | Interaction family failed hard subset. |
+| interaction_ineffective | aerialmpt | hard | 5 | -0.006624 | Interaction family failed hard subset. |
+| interaction_ineffective | aerialmpt | hard | 10 | -0.003729 | Interaction family failed hard subset. |
+| interaction_ineffective | eth_ucy | hard | 1 | -0.045222 | Interaction family failed hard subset. |

@@ -12,6 +12,7 @@ import numpy as np
 
 
 EPISODE_ROOT = Path("data/stage12_multiagent_episodes")
+STAGE14_EWAP_ROOT = Path("data/stage14_ewap_t100_per_agent_episodes")
 REPORT_DIR = Path("outputs/reports")
 CHECKPOINT_DIR = Path("outputs/checkpoints/stage13_search")
 
@@ -79,9 +80,12 @@ def load_episode(path: Path) -> Dict[str, Any]:
 
 
 def iter_episode_paths() -> Iterable[Path]:
-    if not EPISODE_ROOT.exists():
-        return []
-    return sorted(EPISODE_ROOT.glob("*/*.npz"))
+    paths: List[Path] = []
+    if EPISODE_ROOT.exists():
+        paths.extend(sorted(EPISODE_ROOT.glob("*/*.npz")))
+    if STAGE14_EWAP_ROOT.exists():
+        paths.extend(sorted(STAGE14_EWAP_ROOT.glob("*/*.npz")))
+    return paths
 
 
 def load_episodes() -> List[Dict[str, Any]]:
@@ -244,7 +248,7 @@ def collect_training_rows(episodes: List[Dict[str, Any]], cfg: TrialConfig) -> T
                 weight *= cfg.hard_failure_weight
             if meta.get("baseline_failure_label") or meta.get("baseline_failure_proxy"):
                 weight *= cfg.hard_failure_weight
-            if meta.get("dataset_name") == "eth_ucy_ewap" and horizon == 100:
+            if "eth_ucy_ewap" in meta.get("dataset_name", "") and horizon == 100:
                 weight *= cfg.t100_weight
             for agent in np.where(valid)[0]:
                 x = feature_vector(ep, int(agent), horizon, cfg)
@@ -323,7 +327,7 @@ def evaluate_trial(episodes: List[Dict[str, Any]], cfg: TrialConfig, coef: np.nd
                 subsets.append("goalbench_official")
             if int(meta.get("agent_count", 0) or 0) >= 5:
                 subsets.append("ge5")
-            if meta.get("dataset_name") == "eth_ucy_ewap" and horizon in {50, 100}:
+            if "eth_ucy_ewap" in meta.get("dataset_name", "") and horizon in {50, 100}:
                 subsets.append(f"verified_t{horizon}")
             for subset in subsets:
                 rows.append(
@@ -415,7 +419,7 @@ def summarize_best(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
 
     return {
         "best_all_test": best_for(lambda r: r["subset"] == "all"),
-        "best_eth_ucy_ewap_t100": best_for(lambda r: r["dataset"] == "eth_ucy_ewap" and int(r["horizon"]) == 100 and r["subset"] == "all"),
+        "best_eth_ucy_ewap_t100": best_for(lambda r: "eth_ucy_ewap" in r["dataset"] and int(r["horizon"]) == 100 and r["subset"] == "all"),
         "best_hard": best_for(lambda r: r["subset"] == "hard"),
         "best_baseline_failure": best_for(lambda r: r["subset"] == "baseline_failure"),
         "best_easy_preservation": best_for(lambda r: r["subset"] == "easy"),

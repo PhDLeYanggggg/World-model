@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage13",
-  "current_verdict": "stage13_deterministic_repair_loop_executed_not_stage5c_ready",
-  "expert_audit_score": 84,
+  "current_stage": "stage14",
+  "current_verdict": "stage14_continuous_multimodal_repair_executed_not_stage5c_ready",
+  "expert_audit_score": 85,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -81,37 +81,41 @@
     "silver_rule_confirmed": 33
   },
   "gates_passed": [
-    "Data Gate",
+    "Continuous Execution Gate",
+    "Multimodal Data Gate",
     "Long-Horizon Gate",
-    "Annotation Gate",
-    "Multi-Agent Gate",
+    "Scene Pack Gate",
     "Strong Baseline Gate",
+    "Easy Preservation Gate",
     "Physical Validity Gate"
   ],
   "gates_failed": [
-    "Scene/Goal Gate",
     "Deterministic Improvement Gate",
-    "Easy Preservation Gate",
-    "Scene/Goal Ablation Gate",
-    "Interaction Gate",
-    "Latent Generative Readiness Gate",
+    "Scene/Visual Gain Gate",
+    "Stage 5C Readiness Gate",
     "SMC Readiness Gate"
   ],
   "next_actions": [
-    "deterministic_repair",
-    "latent_blocked"
+    "run_longer_deterministic_search_with_rebuilt_ewap_t100",
+    "verify_sdd_or_opentraj_local_paths",
+    "upgrade_scene_annotations_with_human_review"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_auto_world_model_loop.py --mode quick --max-steps 1",
+  "last_successful_command": "python run_auto_world_model_loop.py --mode continuous-stage14",
   "last_failed_command": "",
   "generated_reports": [
-    "outputs/reports/auto_orchestrator_current_state.md",
-    "outputs/reports/research_state.md",
     "outputs/reports/auto_gate_report.md",
+    "outputs/reports/auto_loop_iteration_report.md",
     "outputs/reports/auto_next_stage_plan.md",
-    "outputs/reports/auto_loop_iteration_report.md"
+    "outputs/reports/auto_orchestrator_current_state.md",
+    "outputs/reports/report_stage14_final.md",
+    "outputs/reports/research_state.md",
+    "outputs/reports/stage14_continuous_loop_report.md",
+    "outputs/reports/stage14_current_state.md",
+    "outputs/reports/stage14_heartbeat.md",
+    "outputs/reports/world_model_gate_stage14.md"
   ],
   "generated_figures": [],
   "git_commit_hash_if_available": "a64fe57"

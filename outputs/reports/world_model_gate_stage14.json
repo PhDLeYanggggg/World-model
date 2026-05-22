@@ -1,0 +1,143 @@
+{
+  "stage": 14,
+  "passed": [
+    "Continuous Execution Gate",
+    "Multimodal Data Gate",
+    "Long-Horizon Gate",
+    "Scene Pack Gate",
+    "Strong Baseline Gate",
+    "Easy Preservation Gate",
+    "Physical Validity Gate"
+  ],
+  "failed": [
+    "Deterministic Improvement Gate",
+    "Scene/Visual Gain Gate",
+    "Stage 5C Readiness Gate",
+    "SMC Readiness Gate"
+  ],
+  "rows": [
+    {
+      "gate": "Continuous Execution Gate",
+      "pass": true,
+      "evidence": "elapsed_hours=0.25; training_trials=10"
+    },
+    {
+      "gate": "Multimodal Data Gate",
+      "pass": true,
+      "evidence": "At least one local pedestrian/drone source has trajectories plus scene context."
+    },
+    {
+      "gate": "Long-Horizon Gate",
+      "pass": true,
+      "evidence": "per_agent_t100_rows=64"
+    },
+    {
+      "gate": "Scene Pack Gate",
+      "pass": true,
+      "evidence": "scene_pack_count=43"
+    },
+    {
+      "gate": "Strong Baseline Gate",
+      "pass": true,
+      "evidence": "Benchmark rows compare model FDE against baseline_FDE."
+    },
+    {
+      "gate": "Deterministic Improvement Gate",
+      "pass": false,
+      "evidence": "t100=0.008052; hard=0.000000; failure=0.000000"
+    },
+    {
+      "gate": "Scene/Visual Gain Gate",
+      "pass": false,
+      "evidence": "visual_gain=0.0"
+    },
+    {
+      "gate": "Easy Preservation Gate",
+      "pass": true,
+      "evidence": "easy_improvement=0.038961"
+    },
+    {
+      "gate": "Physical Validity Gate",
+      "pass": true,
+      "evidence": "Deterministic residuals are bounded; no SMC/stochastic rollout enabled."
+    },
+    {
+      "gate": "Stage 5C Readiness Gate",
+      "pass": false,
+      "evidence": "Generate plan only if true; never execute in Stage14."
+    },
+    {
+      "gate": "SMC Readiness Gate",
+      "pass": false,
+      "evidence": "No stochastic proposal or coverage gate was run."
+    }
+  ],
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "best_eth_ucy_ewap_t100": {
+    "model": "residual_no_alpha",
+    "dataset": "eth_ucy_ewap_stage14",
+    "subset": "all",
+    "horizon": 100,
+    "FDE": 5.875909,
+    "ADE": 5.875909,
+    "baseline_FDE": 5.923605,
+    "baseline_ADE": 5.923605,
+    "improvement": 0.008052,
+    "episodes": 13,
+    "alpha": 1.0,
+    "residual_magnitude": 0.05,
+    "physical_validity": 0.95,
+    "trial_id": 2,
+    "alpha_regularization": "low",
+    "residual_clip": 0.05,
+    "hard_failure_weight": 1,
+    "t100_weight": 1,
+    "interaction_mode": "none",
+    "scene_goal_mode": "none"
+  },
+  "best_hard": {
+    "model": "alpha_only_no_residual",
+    "dataset": "trajnet",
+    "subset": "hard",
+    "horizon": 1,
+    "FDE": 0.291144,
+    "ADE": 0.291144,
+    "baseline_FDE": 0.291144,
+    "baseline_ADE": 0.291144,
+    "improvement": 0.0,
+    "episodes": 30,
+    "alpha": 0.0,
+    "residual_magnitude": 0.0,
+    "physical_validity": 1.0,
+    "trial_id": 1,
+    "alpha_regularization": "low",
+    "residual_clip": 0.05,
+    "hard_failure_weight": 1,
+    "t100_weight": 1,
+    "interaction_mode": "none",
+    "scene_goal_mode": "none"
+  },
+  "best_baseline_failure": {
+    "model": "alpha_only_no_residual",
+    "dataset": "trajnet",
+    "subset": "baseline_failure",
+    "horizon": 1,
+    "FDE": 0.291144,
+    "ADE": 0.291144,
+    "baseline_FDE": 0.291144,
+    "baseline_ADE": 0.291144,
+    "improvement": 0.0,
+    "episodes": 30,
+    "alpha": 0.0,
+    "residual_magnitude": 0.0,
+    "physical_validity": 1.0,
+    "trial_id": 1,
+    "alpha_regularization": "low",
+    "residual_clip": 0.05,
+    "hard_failure_weight": 1,
+    "t100_weight": 1,
+    "interaction_mode": "none",
+    "scene_goal_mode": "none"
+  }
+}
