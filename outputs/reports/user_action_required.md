@@ -1,9 +1,10 @@
 # User Action Required
 
-- reason: stage15_data_expansion
+- reason: stage16_data_and_annotation_expansion
 
-## Actions
+## Data paths
+- Provide local path for sdd; do not bypass license or terms.
+- Provide local path for opentraj; do not bypass license or terms.
 
-- Provide local path for sdd after accepting its license/terms.
-- Provide local path for opentraj after accepting its license/terms.
-- Do not claim new SDD/OpenTraj conversion until local paths are verified and no-leakage audit passes.
+## Annotation
+- Review generated Stage 16 annotation tasks before counting them as human-confirmed silver/gold.

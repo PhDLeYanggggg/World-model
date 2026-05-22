@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage15",
-  "current_verdict": "stage15_oracle_and_deterministic_repair_executed_not_stage5c_ready",
-  "expert_audit_score": 86,
+  "current_stage": "stage16",
+  "current_verdict": "stage16_oracle_distilled_repair_executed_not_stage5c_ready",
+  "expert_audit_score": 87,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -81,30 +81,31 @@
     "silver_rule_confirmed": 33
   },
   "gates_passed": [
-    "Continuous Execution Gate",
-    "EWAP Mask Gate",
-    "Oracle Headroom Gate",
+    "Data Gate",
+    "Oracle Label Gate",
     "Easy Preservation Gate",
     "Physical Validity Gate",
     "Data Expansion Gate"
   ],
   "gates_failed": [
-    "Deterministic Improvement Gate",
+    "Deterministic t+50 Gate",
+    "Diagnostic t+100 Gate",
+    "Failure Predictor Gate",
     "Hard/Failure Gate",
-    "Scene/Goal Gain Gate",
-    "Interaction Gain Gate",
-    "Stage 5C Readiness Gate",
-    "SMC Readiness Gate"
+    "Interaction Gate",
+    "SMC Readiness Gate",
+    "Scene/Goal Gate",
+    "Stage 5C Readiness Gate"
   ],
   "next_actions": [
-    "provide_or_convert_sdd_opentraj_multimodal_data",
-    "increase_official_long_horizon_rows",
-    "train_only_where_oracle_headroom_supports_it"
+    "verify_sdd_or_opentraj_local_paths",
+    "human_review_stage16_annotation_tasks",
+    "improve_causal_failure_predictor_before_more_residual_training"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_auto_world_model_loop.py --mode continuous-stage15",
+  "last_successful_command": "python run_auto_world_model_loop.py --mode continuous-stage16",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/reports/auto_gate_report.md",
@@ -113,14 +114,18 @@
     "outputs/reports/auto_orchestrator_current_state.md",
     "outputs/reports/report_stage14_final.md",
     "outputs/reports/report_stage15_final.md",
+    "outputs/reports/report_stage16_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
     "outputs/reports/stage14_heartbeat.md",
     "outputs/reports/stage15_ewap_t100_expansion_report.md",
     "outputs/reports/stage15_oracle_diagnostics.md",
+    "outputs/reports/stage16_failure_type_predictor_report.md",
+    "outputs/reports/stage16_oracle_distillation_report.md",
     "outputs/reports/world_model_gate_stage14.md",
-    "outputs/reports/world_model_gate_stage15.md"
+    "outputs/reports/world_model_gate_stage15.md",
+    "outputs/reports/world_model_gate_stage16.md"
   ],
   "generated_figures": [],
   "git_commit_hash_if_available": "a64fe57"

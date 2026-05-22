@@ -11,6 +11,7 @@ REPORT_DIR = Path("outputs/reports")
 
 
 STAGE_REPORT_CANDIDATES = {
+    "16": [REPORT_DIR / "report_stage16_final.md", Path("outputs/world_model_stage16_results/reports/report_stage16_final.md")],
     "15": [REPORT_DIR / "report_stage15_final.md", Path("outputs/world_model_stage15_results/reports/report_stage15_final.md")],
     "14": [REPORT_DIR / "report_stage14_final.md", Path("outputs/world_model_stage14_results/reports/report_stage14_final.md")],
     "13": [REPORT_DIR / "report_stage13_final.md", Path("outputs/world_model_stage13_results/reports/report_stage13_final.md")],
@@ -21,6 +22,7 @@ STAGE_REPORT_CANDIDATES = {
 }
 
 GATE_REPORT_CANDIDATES = {
+    "16": [REPORT_DIR / "world_model_gate_stage16.md", Path("outputs/world_model_stage16_results/reports/world_model_gate_stage16.md")],
     "15": [REPORT_DIR / "world_model_gate_stage15.md", Path("outputs/world_model_stage15_results/reports/world_model_gate_stage15.md")],
     "14": [REPORT_DIR / "world_model_gate_stage14.md", Path("outputs/world_model_stage14_results/reports/world_model_gate_stage14.md")],
     "13": [REPORT_DIR / "world_model_gate_stage13.md", Path("outputs/world_model_stage13_results/reports/world_model_gate_stage13.md")],
@@ -40,7 +42,7 @@ def first_existing(paths: List[Path]) -> Path | None:
 
 def latest_completed_stage() -> Dict[str, Any]:
     missing = []
-    for stage in ["15", "14", "13", "12", "11", "10", "9"]:
+    for stage in ["16", "15", "14", "13", "12", "11", "10", "9"]:
         report = first_existing(STAGE_REPORT_CANDIDATES[stage])
         gate = first_existing(GATE_REPORT_CANDIDATES[stage])
         if report:

@@ -1,0 +1,78 @@
+{
+  "created_episodes": 411,
+  "t100_rows": 81,
+  "t50_rows": 433,
+  "target_t100_rows": 200,
+  "target_t50_rows": 600,
+  "official_policy": "t50_official_t100_diagnostic",
+  "policies": {
+    "primary_agent_complete": {
+      "policy_name": "primary_agent_complete",
+      "t50_rows": 81,
+      "t100_rows": 81,
+      "train_episodes": 64,
+      "test_episodes": 17,
+      "mean_agents_per_episode": 31.062,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": true,
+      "reason_if_not_allowed": "",
+      "diagnostic_only": false
+    },
+    "partial_future_allowed": {
+      "policy_name": "partial_future_allowed",
+      "t50_rows": 81,
+      "t100_rows": 81,
+      "train_episodes": 64,
+      "test_episodes": 17,
+      "mean_agents_per_episode": 31.062,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": false,
+      "reason_if_not_allowed": "partial future mask is diagnostic until no-leakage review approves it",
+      "diagnostic_only": true
+    },
+    "relaxed_neighbor_future_mask": {
+      "policy_name": "relaxed_neighbor_future_mask",
+      "t50_rows": 81,
+      "t100_rows": 81,
+      "train_episodes": 64,
+      "test_episodes": 17,
+      "mean_agents_per_episode": 31.062,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": true,
+      "reason_if_not_allowed": "",
+      "diagnostic_only": false
+    },
+    "scene_level_target_with_per_agent_evaluable_mask": {
+      "policy_name": "scene_level_target_with_per_agent_evaluable_mask",
+      "t50_rows": 81,
+      "t100_rows": 81,
+      "train_episodes": 64,
+      "test_episodes": 17,
+      "mean_agents_per_episode": 31.062,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": false,
+      "reason_if_not_allowed": "scene-level target is not official per-agent evaluation",
+      "diagnostic_only": true
+    },
+    "t50_official_t100_diagnostic": {
+      "policy_name": "t50_official_t100_diagnostic",
+      "t50_rows": 433,
+      "t100_rows": 0,
+      "train_episodes": 264,
+      "test_episodes": 66,
+      "mean_agents_per_episode": 24.542,
+      "mask_completeness": "primary/per-agent complete target; neighbors may be partial",
+      "leakage_risk": "low",
+      "official_allowed": true,
+      "reason_if_not_allowed": "",
+      "diagnostic_only": false
+    }
+  },
+  "t100_sufficient": false,
+  "t50_sufficient": false,
+  "leakage_notes": "All official policies keep causal past inputs and do not use test endpoints for goals."
+}

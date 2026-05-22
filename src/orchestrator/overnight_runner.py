@@ -16,6 +16,8 @@ from .task_queue import (
     build_stage14_task_queue,
     build_stage15_maintenance_queue,
     build_stage15_task_queue,
+    build_stage16_maintenance_queue,
+    build_stage16_task_queue,
 )
 from src.stage14_pipeline import (
     audit_ewap_t100_masks,
@@ -37,6 +39,18 @@ from src.stage15_pipeline import (
     run_stage15_data_verify,
     run_stage15_search,
     write_stage15_final,
+)
+from src.stage16_pipeline import (
+    build_oracle_distillation,
+    evaluate_stage16_gates,
+    expand_ewap_stage16,
+    generate_stage16_annotation_tasks,
+    run_stage16_benchmark,
+    run_stage16_data_verify,
+    train_failure_type_predictor,
+    train_oracle_distilled_correction,
+    write_stage16_current_state,
+    write_stage16_final,
 )
 
 
@@ -856,6 +870,251 @@ def run_continuous_stage15(
     write_research_state_markdown(state)
     if allow_git:
         git_task = QueueTask("stage15_git_snapshot", "P6", "python scripts/auto_git_snapshot.py --message Stage15-oracle-deterministic-repair-snapshot")
+        git_result = execute_task(git_task)
+        completed.append(git_result) if git_result["status"] == "completed" else failed.append(git_result)
+    return {"completed": completed, "failed": failed, "loop_report": loop_report, "gates": gates, "final_report": final}
+
+
+def _write_stage16_heartbeat(
+    started_at: float,
+    current_task: str,
+    completed: List[Dict],
+    failed: List[Dict],
+    next_task: str,
+    training_trials: int,
+    data_actions: int,
+    oracle_runs: int,
+) -> None:
+    bench = _read_json(REPORT_DIR / "stage16_benchmark_metrics.json", {})
+    lines = [
+        "# Stage 16 Continuous Loop Heartbeat",
+        "",
+        f"- current_time_unix: `{int(time.time())}`",
+        f"- elapsed_hours: `{(time.time() - started_at) / 3600.0:.3f}`",
+        f"- current_task: `{current_task}`",
+        f"- completed_tasks: `{len(completed)}`",
+        f"- failed_tasks: `{len(failed)}`",
+        f"- training_trials: `{training_trials}`",
+        f"- data_actions: `{data_actions}`",
+        f"- oracle_runs: `{oracle_runs}`",
+        f"- best_t50_improvement: `{bench.get('t50_official_improvement', 'not_available')}`",
+        f"- best_t100_diagnostic_improvement: `{bench.get('t100_diagnostic_improvement', 'not_available')}`",
+        "- latent_blocked: `True`",
+        "- smc_blocked: `True`",
+        f"- next_task: `{next_task}`",
+    ]
+    write_md(REPORT_DIR / "stage16_heartbeat.md", lines)
+
+
+def _execute_stage16_inline(task: QueueTask) -> Dict[str, Any] | None:
+    mapping = {
+        "stage16_current_state": write_stage16_current_state,
+        "stage16_expand_ewap": expand_ewap_stage16,
+        "stage16_oracle_distillation": build_oracle_distillation,
+        "stage16_oracle_refresh": build_oracle_distillation,
+        "stage16_failure_type_predictor": train_failure_type_predictor,
+        "stage16_failure_predictor_refresh": train_failure_type_predictor,
+        "stage16_correction_training": train_oracle_distilled_correction,
+        "stage16_correction_refresh": train_oracle_distilled_correction,
+        "stage16_data_verify": run_stage16_data_verify,
+        "stage16_data_verify_refresh": run_stage16_data_verify,
+        "stage16_annotation_tasks": generate_stage16_annotation_tasks,
+        "stage16_annotation_refresh": generate_stage16_annotation_tasks,
+        "stage16_benchmark": run_stage16_benchmark,
+        "stage16_benchmark_refresh": run_stage16_benchmark,
+        "stage16_gates": evaluate_stage16_gates,
+        "stage16_gate_refresh": evaluate_stage16_gates,
+    }
+    fn = mapping.get(task.name)
+    if fn is None:
+        return None
+    started = time.time()
+    try:
+        payload = fn()
+        return {
+            "task": task.name,
+            "command": task.command,
+            "status": "completed",
+            "returncode": 0,
+            "duration_s": round(time.time() - started, 3),
+            "payload": payload,
+        }
+    except Exception as exc:  # pragma: no cover - failure is reported to loop.
+        return {
+            "task": task.name,
+            "command": task.command,
+            "status": "failed",
+            "returncode": 1,
+            "duration_s": round(time.time() - started, 3),
+            "stderr": repr(exc),
+        }
+
+
+def _stage16_counters(completed: List[Dict]) -> Dict[str, int]:
+    correction = _read_json(REPORT_DIR / "stage16_correction_training_report.json", {})
+    training_trials = int(correction.get("trial_count", 0) or 0)
+    data_actions = sum(1 for row in completed if row.get("task") in {"stage16_expand_ewap", "stage16_data_verify", "stage16_data_verify_refresh", "stage16_annotation_tasks", "stage16_annotation_refresh"})
+    oracle_runs = sum(1 for row in completed if row.get("task") in {"stage16_oracle_distillation", "stage16_oracle_refresh", "stage16_failure_type_predictor", "stage16_failure_predictor_refresh"})
+    return {"training_trials": training_trials, "data_actions": data_actions, "oracle_runs": oracle_runs}
+
+
+def _write_stage16_loop_report(
+    started_at: float,
+    completed: List[Dict],
+    failed: List[Dict],
+    termination_reason: str,
+    min_hours: float,
+    min_training_trials: int,
+    min_data_actions: int,
+    min_oracle_runs: int,
+    counters: Dict[str, int],
+) -> Dict[str, Any]:
+    elapsed = round((time.time() - started_at) / 3600.0, 3)
+    report = {
+        "mode": "continuous-stage16",
+        "executed": True,
+        "reduced_runtime": min_hours < 1.0,
+        "elapsed_hours": elapsed,
+        "completed_tasks": len(completed),
+        "failed_tasks": len(failed),
+        "training_trials": counters["training_trials"],
+        "data_actions": counters["data_actions"],
+        "oracle_runs": counters["oracle_runs"],
+        "termination_reason": termination_reason,
+        "met_minimum_runtime_or_trials": elapsed >= min_hours or counters["training_trials"] >= min_training_trials,
+        "met_minimum_data_actions": counters["data_actions"] >= min_data_actions,
+        "met_minimum_oracle_runs": counters["oracle_runs"] >= min_oracle_runs,
+        "latent_enabled": False,
+        "smc_enabled": False,
+    }
+    write_json(REPORT_DIR / "stage16_continuous_loop_report.json", report)
+    write_md(
+        REPORT_DIR / "stage16_continuous_loop_report.md",
+        [
+            "# Stage 16 Continuous Loop Report",
+            "",
+            f"- running in reduced-runtime mode: `{report['reduced_runtime']}`",
+            f"- elapsed_hours: `{elapsed}`",
+            f"- completed_tasks: `{len(completed)}`",
+            f"- failed_tasks: `{len(failed)}`",
+            f"- training_trials: `{counters['training_trials']}`",
+            f"- data_actions: `{counters['data_actions']}`",
+            f"- oracle_runs: `{counters['oracle_runs']}`",
+            f"- termination_reason: `{termination_reason}`",
+            f"- met_minimum_runtime_or_trials: `{report['met_minimum_runtime_or_trials']}`",
+            "- latent_enabled: `False`",
+            "- smc_enabled: `False`",
+        ],
+    )
+    return report
+
+
+def run_continuous_stage16(
+    min_hours: float = 1.0,
+    max_hours: float = 8.0,
+    max_iterations: int = 60,
+    min_training_trials: int = 30,
+    min_data_actions: int = 3,
+    min_oracle_runs: int = 3,
+    allow_training: bool = False,
+    allow_data_discovery: bool = False,
+    allow_safe_download_dry_run: bool = False,
+    allow_git: bool = False,
+    heartbeat_minutes: float = 15.0,
+    no_latent: bool = True,
+    no_smc: bool = True,
+    dynamic_queue: bool = True,
+    continue_on_task_failure: bool = True,
+) -> Dict[str, Any]:
+    started_at = time.time()
+    completed: List[Dict] = []
+    failed: List[Dict] = []
+    if not no_latent or not no_smc:
+        raise RuntimeError("Stage 16 requires --no-latent and --no-smc.")
+    if not disk_ok():
+        write_user_action_required("disk_space_insufficient", ["Free local disk space and rerun continuous-stage16."])
+    tasks = build_stage16_task_queue(allow_training=allow_training, allow_data_discovery=allow_data_discovery or allow_safe_download_dry_run)
+    counters = {"training_trials": 0, "data_actions": 0, "oracle_runs": 0}
+    iterations = 0
+    maintenance_index = 0
+    termination_reason = "max_hours_reached"
+    _write_stage16_heartbeat(started_at, "initializing", completed, failed, next_task=tasks[0].name if tasks else "maintenance", **counters)
+
+    while (time.time() - started_at) / 3600.0 < max_hours:
+        elapsed_h = (time.time() - started_at) / 3600.0
+        if iterations >= max_iterations and elapsed_h >= min_hours:
+            termination_reason = "max_iterations_reached"
+            break
+        if tasks:
+            task = tasks.pop(0)
+        elif dynamic_queue and (
+            elapsed_h < min_hours
+            or counters["training_trials"] < min_training_trials
+            or counters["data_actions"] < min_data_actions
+            or counters["oracle_runs"] < min_oracle_runs
+        ):
+            maintenance = build_stage16_maintenance_queue(allow_data_discovery=allow_data_discovery or allow_safe_download_dry_run, allow_training=allow_training)
+            task = maintenance[maintenance_index % len(maintenance)]
+            maintenance_index += 1
+        else:
+            termination_reason = "all_scheduled_safe_tasks_completed_after_minimums"
+            break
+        if iterations >= max_iterations and elapsed_h < min_hours:
+            sleep_s = min(max(5.0, heartbeat_minutes * 60.0), max(0.0, min_hours * 3600.0 - (time.time() - started_at)))
+            _write_stage16_heartbeat(started_at, "min_hours_sleep_after_max_iterations", completed, failed, next_task="finalize", **counters)
+            if sleep_s > 0:
+                time.sleep(sleep_s)
+            continue
+        iterations += 1
+        _write_stage16_heartbeat(started_at, task.name, completed, failed, next_task=tasks[0].name if tasks else "dynamic_maintenance", **counters)
+        result = _execute_stage16_inline(task) or execute_task(task)
+        if result["status"] == "completed":
+            completed.append(result)
+        else:
+            failed.append(result)
+            if not continue_on_task_failure or task.priority == "P0":
+                termination_reason = f"critical_task_failed:{task.name}"
+                break
+        counters = _stage16_counters(completed)
+        if not tasks and (time.time() - started_at) / 3600.0 < min_hours:
+            sleep_s = min(max(5.0, heartbeat_minutes * 60.0), max(0.0, min_hours * 3600.0 - (time.time() - started_at)))
+            if sleep_s > 0:
+                _write_stage16_heartbeat(started_at, "min_hours_maintenance_sleep", completed, failed, next_task="dynamic_maintenance", **counters)
+                time.sleep(sleep_s)
+    else:
+        termination_reason = "max_hours_reached"
+
+    loop_report = _write_stage16_loop_report(started_at, completed, failed, termination_reason, min_hours, min_training_trials, min_data_actions, min_oracle_runs, counters)
+    run_stage16_benchmark()
+    gates = evaluate_stage16_gates(loop_report)
+    final = write_stage16_final(loop_report)
+    _write_stage16_heartbeat(started_at, "finalized", completed, failed, next_task="none", **counters)
+
+    state = ResearchState.load()
+    state.current_stage = "stage16"
+    state.current_verdict = final["current_verdict"]
+    state.expert_audit_score = final["expert_audit_score"]
+    state.deterministic_ready = bool(gates.get("stage5c_ready", False))
+    state.latent_generative_ready = False
+    state.smc_ready = False
+    state.gates_passed = gates.get("passed", [])
+    state.gates_failed = gates.get("failed", [])
+    state.next_actions = [
+        "verify_sdd_or_opentraj_local_paths",
+        "human_review_stage16_annotation_tasks",
+        "improve_causal_failure_predictor_before_more_residual_training",
+    ]
+    state.last_successful_command = "python run_auto_world_model_loop.py --mode continuous-stage16"
+    state.generated_reports = sorted(set(state.generated_reports + [
+        "outputs/reports/stage16_oracle_distillation_report.md",
+        "outputs/reports/stage16_failure_type_predictor_report.md",
+        "outputs/reports/world_model_gate_stage16.md",
+        "outputs/reports/report_stage16_final.md",
+    ]))
+    state.save()
+    write_research_state_markdown(state)
+    if allow_git:
+        git_task = QueueTask("stage16_git_snapshot", "P6", "python scripts/auto_git_snapshot.py --message Stage16-oracle-distilled-repair-snapshot")
         git_result = execute_task(git_task)
         completed.append(git_result) if git_result["status"] == "completed" else failed.append(git_result)
     return {"completed": completed, "failed": failed, "loop_report": loop_report, "gates": gates, "final_report": final}

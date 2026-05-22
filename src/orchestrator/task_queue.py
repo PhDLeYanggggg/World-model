@@ -110,3 +110,41 @@ def build_stage15_maintenance_queue(allow_data_discovery: bool = True, allow_tra
     if allow_training:
         tasks.insert(2, QueueTask("stage15_deterministic_search_refresh", "P2", "python run_stage15_deterministic_search.py --max-trials 12", family="training"))
     return tasks
+
+
+def build_stage16_task_queue(allow_training: bool = True, allow_data_discovery: bool = True) -> List[QueueTask]:
+    tasks = [
+        QueueTask("stage16_current_state", "P0", "python run_stage16_current_state.py"),
+        QueueTask("stage16_expand_ewap", "P1", "python run_stage16_expand_ewap.py", family="data"),
+        QueueTask("stage16_oracle_distillation", "P1", "python run_stage16_build_oracle_distillation.py", family="oracle"),
+        QueueTask("stage16_failure_type_predictor", "P2", "python run_stage16_train_failure_type_predictor.py", family="oracle"),
+    ]
+    if allow_training:
+        tasks.append(QueueTask("stage16_correction_training", "P2", "python run_stage16_train_oracle_distilled_correction.py", family="training"))
+    if allow_data_discovery:
+        tasks.append(QueueTask("stage16_data_verify", "P5", "python scripts/stage16_verify_more_data.py", family="data"))
+    tasks.extend(
+        [
+            QueueTask("stage16_annotation_tasks", "P5", "python run_stage16_annotation_tasks.py", family="annotation"),
+            QueueTask("stage16_benchmark", "P3", "python run_stage16_benchmark.py", family="benchmark"),
+            QueueTask("stage16_gates", "P3", "python run_stage16_gates.py", family="gates"),
+            QueueTask("update_readme", "P6", "python scripts/auto_update_readme_results.py"),
+        ]
+    )
+    return tasks
+
+
+def build_stage16_maintenance_queue(allow_data_discovery: bool = True, allow_training: bool = True) -> List[QueueTask]:
+    tasks = [
+        QueueTask("stage16_oracle_refresh", "P1", "python run_stage16_build_oracle_distillation.py", family="oracle"),
+        QueueTask("stage16_failure_predictor_refresh", "P2", "python run_stage16_train_failure_type_predictor.py", family="oracle"),
+        QueueTask("stage16_benchmark_refresh", "P3", "python run_stage16_benchmark.py", family="benchmark"),
+        QueueTask("stage16_gate_refresh", "P3", "python run_stage16_gates.py", family="gates"),
+        QueueTask("stage16_py_compile", "P6", "python -m py_compile run_auto_world_model_loop.py src/stage16_pipeline.py src/orchestrator/auto_loop.py src/orchestrator/overnight_runner.py"),
+    ]
+    if allow_data_discovery:
+        tasks.insert(2, QueueTask("stage16_data_verify_refresh", "P5", "python scripts/stage16_verify_more_data.py", family="data"))
+        tasks.insert(3, QueueTask("stage16_annotation_refresh", "P5", "python run_stage16_annotation_tasks.py", family="annotation"))
+    if allow_training:
+        tasks.insert(2, QueueTask("stage16_correction_refresh", "P2", "python run_stage16_train_oracle_distilled_correction.py", family="training"))
+    return tasks

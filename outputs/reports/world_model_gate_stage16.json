@@ -1,0 +1,89 @@
+{
+  "stage": 16,
+  "passed": [
+    "Data Gate",
+    "Oracle Label Gate",
+    "Easy Preservation Gate",
+    "Physical Validity Gate",
+    "Data Expansion Gate"
+  ],
+  "failed": [
+    "Failure Predictor Gate",
+    "Deterministic t+50 Gate",
+    "Diagnostic t+100 Gate",
+    "Hard/Failure Gate",
+    "Scene/Goal Gate",
+    "Interaction Gate",
+    "Stage 5C Readiness Gate",
+    "SMC Readiness Gate"
+  ],
+  "rows": [
+    {
+      "gate": "Data Gate",
+      "pass": true,
+      "evidence": "t50=433"
+    },
+    {
+      "gate": "Oracle Label Gate",
+      "pass": true,
+      "evidence": "labels=595"
+    },
+    {
+      "gate": "Failure Predictor Gate",
+      "pass": false,
+      "evidence": "AUROC=0.7346938775510204; ECE=0.13629626013901866"
+    },
+    {
+      "gate": "Deterministic t+50 Gate",
+      "pass": false,
+      "evidence": "t50=0.009176227786756534"
+    },
+    {
+      "gate": "Diagnostic t+100 Gate",
+      "pass": false,
+      "evidence": "t100_rows=81; imp=0.0114760269479769"
+    },
+    {
+      "gate": "Hard/Failure Gate",
+      "pass": false,
+      "evidence": "hard=0.0114760269479769; failure=0.00789362952398513"
+    },
+    {
+      "gate": "Easy Preservation Gate",
+      "pass": true,
+      "evidence": "easy_degradation=0.0"
+    },
+    {
+      "gate": "Scene/Goal Gate",
+      "pass": false,
+      "evidence": "gain=0.0"
+    },
+    {
+      "gate": "Interaction Gate",
+      "pass": false,
+      "evidence": "gain=0.0"
+    },
+    {
+      "gate": "Physical Validity Gate",
+      "pass": true,
+      "evidence": "preserved_by_bounded_residual"
+    },
+    {
+      "gate": "Data Expansion Gate",
+      "pass": true,
+      "evidence": "user_action_required or data path found"
+    },
+    {
+      "gate": "Stage 5C Readiness Gate",
+      "pass": false,
+      "evidence": "Plan only; no latent execution in Stage16."
+    },
+    {
+      "gate": "SMC Readiness Gate",
+      "pass": false,
+      "evidence": "Always false in Stage16."
+    }
+  ],
+  "stage5c_ready": false,
+  "smc_ready": false
+}

@@ -1,8 +1,8 @@
 # Research State
 
-- current_stage: `stage15`
-- current_verdict: `stage15_oracle_and_deterministic_repair_executed_not_stage5c_ready`
-- expert_audit_score: `86`
+- current_stage: `stage16`
+- current_verdict: `stage16_oracle_distilled_repair_executed_not_stage5c_ready`
+- expert_audit_score: `87`
 - deterministic_ready: `False`
 - latent_generative_ready: `False`
 - smc_ready: `False`
@@ -13,27 +13,28 @@
 
 ## Gates Passed
 
-- Continuous Execution Gate
-- EWAP Mask Gate
-- Oracle Headroom Gate
+- Data Gate
+- Oracle Label Gate
 - Easy Preservation Gate
 - Physical Validity Gate
 - Data Expansion Gate
 
 ## Gates Failed
 
-- Deterministic Improvement Gate
+- Deterministic t+50 Gate
+- Diagnostic t+100 Gate
+- Failure Predictor Gate
 - Hard/Failure Gate
-- Scene/Goal Gain Gate
-- Interaction Gain Gate
-- Stage 5C Readiness Gate
+- Interaction Gate
 - SMC Readiness Gate
+- Scene/Goal Gate
+- Stage 5C Readiness Gate
 
 ## Next Actions
 
-- provide_or_convert_sdd_opentraj_multimodal_data
-- increase_official_long_horizon_rows
-- train_only_where_oracle_headroom_supports_it
+- verify_sdd_or_opentraj_local_paths
+- human_review_stage16_annotation_tasks
+- improve_causal_failure_predictor_before_more_residual_training
 
 ## User Blockers
 

@@ -18,6 +18,7 @@ SAFE_PREFIXES = (
     "run_stage13_",
     "run_stage14_",
     "run_stage15_",
+    "run_stage16_",
     "outputs/reports/",
     "README_RESULTS.md",
     "research_state.json",
