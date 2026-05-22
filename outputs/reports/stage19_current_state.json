@@ -1,0 +1,21 @@
+{
+  "true_3d_world_model": false,
+  "large_scale_foundation_world_model": false,
+  "model_type": "2.5D / pseudo-3D per-agent multi-agent trajectory world-state scaffold",
+  "bpsg_ma_v1_deployment": "strongest causal baseline fallback + failure diagnostics",
+  "stage17_selector_status": "partial lift, hard/failure and correction gates failed",
+  "stage18_jepa_status": "non-collapse but no downstream lift",
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "why_stage18_no_lift": [
+    "Stage18 used derived preview/raster context rather than raw scene/video data.",
+    "Hard/failure and official long-horizon rows remain limited.",
+    "JEPA probes did not improve failure AUROC, selector, or correction metrics."
+  ],
+  "why_wam_style_data": "The next bottleneck is data diversity and controllable hard/failure supervision, not another residual head.",
+  "simulation_role": "pretraining and stress test only; not real-world success.",
+  "egocentric_role": "representation pretraining only; not top-down trajectory ground truth.",
+  "official_benchmark_role": "real top-down pedestrian/drone trajectories only.",
+  "latent_and_smc_blocked_reason": "deterministic correction, official horizon, and hard/failure gates remain insufficient.",
+  "previous_verdict": "stage18_sam_jepa_pretraining_quick_executed_not_stage5c_ready"
+}

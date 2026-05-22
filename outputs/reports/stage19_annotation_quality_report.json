@@ -1,0 +1,25 @@
+{
+  "input_stage18_self_audited_silver": 5,
+  "gold_human": 0,
+  "quality_levels": {
+    "inferred_only": 0,
+    "silver_rule_confirmed": 0,
+    "ai_visual_silver": 0,
+    "self_audited_silver": 5,
+    "gold_human": 0
+  },
+  "signals": {
+    "train_endpoint_coverage": 1.0,
+    "trajectory_heatmap_coverage": "passed_proxy",
+    "route_consistency": "passed_proxy",
+    "visual_boundary_consistency": "preview_only_not_raw_scene",
+    "no_test_endpoint_leakage": true,
+    "cross_method_consensus": "passed_proxy",
+    "counterfactual_goal_removal": "diagnostic_only"
+  },
+  "top_limitations": [
+    "No human confirmation, therefore no gold labels.",
+    "Stage18 previews are derived, not raw scene images.",
+    "Goal entropy/top3 saturation needs real scene data to calibrate."
+  ]
+}

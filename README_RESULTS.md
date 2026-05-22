@@ -422,3 +422,12 @@ learned_model_beats_strongest_baseline = 否
 - Quick JEPA training ran and embeddings were non-collapsed, but hard/failure correction did not pass gates.
 - Official horizon remains t+50; t+100 remains diagnostic.
 - Reports: `outputs/reports/report_stage18_final.md`, `outputs/reports/world_model_gate_stage18.md`.
+
+## Stage 19: WAM-Style Data Engine
+
+- Stage19 built a WAM-style data registry and UrbanCrowdSim2.5D curriculum data.
+- Simulation is for pretraining/stress only, not real-world success.
+- Egocentric/human video remains representation pretraining only and requires user-provided legal local paths.
+- Official benchmark remains real top-down pedestrian/drone trajectories.
+- Stage5C and SMC remain disabled.
+- Reports: `outputs/reports/report_stage19_final.md`, `outputs/reports/world_model_gate_stage19.md`.

@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage18",
-  "current_verdict": "stage18_sam_jepa_pretraining_quick_executed_not_stage5c_ready",
-  "expert_audit_score": 90,
+  "current_stage": "stage19",
+  "current_verdict": "stage19_wam_style_data_engine_built_not_stage5c_ready",
+  "expert_audit_score": 91,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -99,13 +99,13 @@
   ],
   "next_actions": [
     "provide_sdd_or_opentraj_local_paths",
-    "rebuild_scene_packs_from_raw_scene_images",
-    "evaluate_jepa_features_on_hard_failure_correction"
+    "convert_real_topdown_scene_images_and_long_tracks",
+    "validate_sim_curriculum_on_real_hard_failure_subsets"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage18_auto_annotation.py --quick && python run_stage18_build_scene_packs.py --quick && python run_stage18_build_jepa_dataset.py --quick && python run_stage18_train_jepa.py --config configs/stage18_jepa_quick.yaml && python run_stage18_jepa_eval.py --quick && python run_stage18_gates.py && python -m pytest tests",
+  "last_successful_command": "python run_stage19_wam_data_registry.py && python run_stage19_verify_topdown_data.py --quick && python run_stage19_generate_simulation_data.py --quick && python run_stage19_auto_label_audit.py --quick && python run_stage19_build_wam_jepa_dataset.py --quick && python run_stage19_train_wam_jepa.py --quick && python run_stage19_eval.py --quick && python run_stage19_gates.py && python -m pytest tests",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/final_model/README_FINAL_MODEL.md",
@@ -122,6 +122,7 @@
     "outputs/reports/report_stage16_final.md",
     "outputs/reports/report_stage17_final.md",
     "outputs/reports/report_stage18_final.md",
+    "outputs/reports/report_stage19_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -135,11 +136,14 @@
     "outputs/reports/stage17_benchmark_report.md",
     "outputs/reports/stage18_jepa_eval_report.md",
     "outputs/reports/stage18_jepa_training_report.md",
+    "outputs/reports/stage19_simulation_report.md",
+    "outputs/reports/stage19_wam_data_registry.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
     "outputs/reports/world_model_gate_stage16.md",
     "outputs/reports/world_model_gate_stage17.md",
-    "outputs/reports/world_model_gate_stage18.md"
+    "outputs/reports/world_model_gate_stage18.md",
+    "outputs/reports/world_model_gate_stage19.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
