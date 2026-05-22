@@ -343,14 +343,64 @@ Main conclusion:
 
 Stage 12 finally fixes the verified pedestrian long-horizon data blocker by adding `eth_ucy_ewap` with verified t+50/t+100. The data/annotation/GoalBench gates now allow Stage 13 deterministic training. However, the deterministic residual model still does not beat strongest causal baselines by 5%, including on EWAP t+100 where it only matches baseline. Do not enter Stage 5C or enable SMC yet.
 
+## Final Model: BPSG-MA World Model v1
+
+Final deliverable package:
+
+`/Users/yangyue/Downloads/World/outputs/final_model`
+
+The project is now packaged as a complete, runnable, evaluable final model:
+
+```text
+final_model = Baseline-Preserving Scene/Goal/Multi-Agent 2.5D World Model
+short_name = BPSG-MA World Model v1
+true_3D = false
+large_scale_foundation_world_model = false
+latent_generative = false
+SMC = false
+predicts_all_active_agents = true
+official_horizon = t+50
+t+100_status = diagnostic_small_sample
+deployment_strategy = strongest_baseline_fallback_with_failure_diagnostics
+expert_audit_score = 88 / 100
+verdict = final_bpsg_ma_v1_delivered_with_strongest_baseline_fallback
+```
+
+Final evaluation summary:
+
+```text
+official_FDE@50_improvement_over_strongest_baseline = 0.0 for deployed fallback
+Stage16 learned_correction_FDE@50_diagnostic_improvement = 0.009176
+Stage16 learned_correction_FDE@100_diagnostic_improvement = 0.011476
+hard_failure_improvement_gate = failed
+easy_preservation = pass
+scene_goal_gain = not proven
+interaction_gain = not proven
+```
+
+Main conclusion:
+
+BPSG-MA World Model v1 is a complete CPU-runnable 2.5D per-agent multi-agent world-state model with strongest-causal-baseline rollout, failure probability diagnostics, alpha/intervention decisions, bounded residual machinery, and a safety fallback. Because learned correction still does not pass the strongest causal baseline gates, the deployable final model falls back to strongest causal baselines while reporting where correction would have been attempted. This is honest and deliverable, but it is not a true 3D world model, not a foundation model, not latent generative, and not SMC.
+
+Run:
+
+```bash
+python run_train_final_world_model.py --quick
+python run_evaluate_final_world_model.py --quick
+python run_select_final_model.py
+python run_infer_world_model.py --demo
+python run_visualize_final_world_model.py --demo
+python -m pytest tests
+```
+
 ## Auto-Orchestrator Status
 
 This section is maintained by `scripts/auto_update_readme_results.py`.
 
 ```text
-current_highest_stage = 16
-expert_audit_score = 87
-verdict = stage16_oracle_distilled_repair_executed_not_stage5c_ready
+current_highest_stage = final_model
+expert_audit_score = 88
+verdict = final_bpsg_ma_v1_delivered_with_strongest_baseline_fallback
 latent_generative_ready = False
 smc_ready = False
 learned_model_beats_strongest_baseline = 否

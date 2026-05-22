@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage16",
-  "current_verdict": "stage16_oracle_distilled_repair_executed_not_stage5c_ready",
-  "expert_audit_score": 87,
+  "current_stage": "final_model",
+  "current_verdict": "final_bpsg_ma_v1_delivered_with_strongest_baseline_fallback",
+  "expert_audit_score": 88,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -98,14 +98,14 @@
     "Stage 5C Readiness Gate"
   ],
   "next_actions": [
-    "verify_sdd_or_opentraj_local_paths",
-    "human_review_stage16_annotation_tasks",
-    "improve_causal_failure_predictor_before_more_residual_training"
+    "provide_sdd_or_opentraj_local_paths",
+    "human_confirm_stage16_annotation_tasks",
+    "expand_official_pedestrian_t100_rows"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_auto_world_model_loop.py --mode continuous-stage16",
+  "last_successful_command": "python run_train_final_world_model.py --quick && python run_evaluate_final_world_model.py --quick && python run_infer_world_model.py --demo && python run_visualize_final_world_model.py --demo && python -m pytest tests",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/reports/auto_gate_report.md",
@@ -125,8 +125,15 @@
     "outputs/reports/stage16_oracle_distillation_report.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
-    "outputs/reports/world_model_gate_stage16.md"
+    "outputs/reports/world_model_gate_stage16.md",
+    "outputs/final_model/report_final_model.md",
+    "outputs/final_model/model_card_final.md",
+    "outputs/final_model/data_card_final.md",
+    "outputs/final_model/failure_analysis_final.md",
+    "outputs/final_model/README_FINAL_MODEL.md"
   ],
-  "generated_figures": [],
+  "generated_figures": [
+    "outputs/final_model/figures/demo_baseline_vs_final.png"
+  ],
   "git_commit_hash_if_available": "a64fe57"
 }

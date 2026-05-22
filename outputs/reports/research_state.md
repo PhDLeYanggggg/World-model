@@ -1,8 +1,8 @@
 # Research State
 
-- current_stage: `stage16`
-- current_verdict: `stage16_oracle_distilled_repair_executed_not_stage5c_ready`
-- expert_audit_score: `87`
+- current_stage: `final_model`
+- current_verdict: `final_bpsg_ma_v1_delivered_with_strongest_baseline_fallback`
+- expert_audit_score: `88`
 - deterministic_ready: `False`
 - latent_generative_ready: `False`
 - smc_ready: `False`
@@ -32,9 +32,9 @@
 
 ## Next Actions
 
-- verify_sdd_or_opentraj_local_paths
-- human_review_stage16_annotation_tasks
-- improve_causal_failure_predictor_before_more_residual_training
+- provide_sdd_or_opentraj_local_paths
+- human_confirm_stage16_annotation_tasks
+- expand_official_pedestrian_t100_rows
 
 ## User Blockers
 

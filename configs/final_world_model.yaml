@@ -1,0 +1,21 @@
+model:
+  name: BPSG-MA World Model v1
+  type: baseline_preserving_scene_goal_multi_agent_2p5d
+  latent_generative: false
+  smc: false
+  prediction_form: baseline_plus_alpha_bounded_residual
+  fallback_to_baseline: true
+data:
+  official_horizon: 50
+  diagnostic_horizons: [100]
+  use_oracle_labels_as_supervision_only: true
+  forbid_future_endpoint_input: true
+  forbid_test_endpoint_goals: true
+training:
+  quick: true
+  early_stopping: true
+  fallback_if_validation_worse_than_baseline: true
+evaluation:
+  compare_to_strongest_causal_baseline: true
+  report_easy_degradation: true
+  report_hard_failure: true
