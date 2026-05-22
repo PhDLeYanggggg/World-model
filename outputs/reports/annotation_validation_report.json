@@ -1,0 +1,26 @@
+{
+  "status": {
+    "gold_human": 0,
+    "silver_human_confirmed": 3,
+    "silver_rule_confirmed": 33,
+    "inferred_only": 0,
+    "note": "Silver/human counts are inherited from Stage 12; rule-confirmed is not gold."
+  },
+  "checks": [
+    {
+      "check": "inferred_not_gold",
+      "pass": true,
+      "evidence": "No automatic annotation is promoted to gold."
+    },
+    {
+      "check": "has_human_or_silver",
+      "pass": true,
+      "evidence": "silver_human_confirmed=3"
+    },
+    {
+      "check": "rule_silver_separate",
+      "pass": true,
+      "evidence": "silver_rule_confirmed=33"
+    }
+  ]
+}

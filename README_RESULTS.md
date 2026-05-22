@@ -342,3 +342,16 @@ deterministic_5pct_gate = false
 Main conclusion:
 
 Stage 12 finally fixes the verified pedestrian long-horizon data blocker by adding `eth_ucy_ewap` with verified t+50/t+100. The data/annotation/GoalBench gates now allow Stage 13 deterministic training. However, the deterministic residual model still does not beat strongest causal baselines by 5%, including on EWAP t+100 where it only matches baseline. Do not enter Stage 5C or enable SMC yet.
+
+## Auto-Orchestrator Status
+
+This section is maintained by `scripts/auto_update_readme_results.py`.
+
+```text
+current_highest_stage = 12
+expert_audit_score = 83
+verdict = stage12_ready_for_stage13_training_with_long_horizon_source
+latent_generative_ready = False
+smc_ready = False
+learned_model_beats_strongest_baseline = 否
+```

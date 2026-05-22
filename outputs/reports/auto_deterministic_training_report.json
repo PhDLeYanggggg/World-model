@@ -1,0 +1,26 @@
+{
+  "model_spec": {
+    "name": "auto_scene_goal_interaction_deterministic",
+    "prediction_form": "prediction_i,h = strongest_causal_baseline_i,h + alpha_i,h * bounded_residual_i,h",
+    "latent_enabled": false,
+    "smc_enabled": false,
+    "supports_variable_agent_masks": true,
+    "notes": "Specification only; training is gated by strongest-baseline repair readiness."
+  },
+  "training_order": [
+    "strongest causal baselines",
+    "alpha-only baseline failure gate",
+    "bounded residual without scene/goal",
+    "scene-only",
+    "goal-only",
+    "interaction-only",
+    "scene+goal",
+    "scene+interaction",
+    "goal+interaction",
+    "full scene+goal+interaction",
+    "hard/failure fine-tuned",
+    "long-horizon fine-tuned"
+  ],
+  "executed_training": false,
+  "reason": "Auto quick loop plans deterministic repair but does not launch heavy training by default."
+}

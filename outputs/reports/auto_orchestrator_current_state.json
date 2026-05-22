@@ -1,0 +1,88 @@
+{
+  "current_highest_stage": "12",
+  "latest_report_path": "outputs/reports/report_stage12_final.md",
+  "latest_gate_path": "outputs/reports/world_model_gate_stage12.md",
+  "missing_requested_files": [
+    "outputs/reports/report_stage13_final.md",
+    "outputs/reports/world_model_gate_stage13.md",
+    "outputs/reports/failure_analysis_stage13.md",
+    "outputs/reports/report_stage11_final.md"
+  ],
+  "expert_audit_score": 83,
+  "verdict": "stage12_ready_for_stage13_training_with_long_horizon_source",
+  "model_type": "2.5D / pseudo-3D per-agent multi-agent trajectory world-state scaffold",
+  "true_3D": false,
+  "large_scale_foundation_model": false,
+  "stage13_ready": true,
+  "latent_generative_ready": false,
+  "smc_ready": false,
+  "strongest_causal_baseline": {
+    "aerialmpt": "constant_velocity_causal_fd",
+    "eth_ucy": "scene_clamped_baseline",
+    "eth_ucy_ewap": "constant_position",
+    "trajnet": "damped_velocity"
+  },
+  "strongest_causal_baselines": {
+    "aerialmpt": {
+      "target_horizon": "5",
+      "strongest_baseline_FDE": 2.735528,
+      "best_learned_variant": "per_agent_no_scene",
+      "best_learned_FDE": 2.746454,
+      "improvement": -0.003994
+    },
+    "eth_ucy": {
+      "target_horizon": "10",
+      "strongest_baseline_FDE": 5.17126,
+      "best_learned_variant": "per_agent_scene_only",
+      "best_learned_FDE": 5.157833,
+      "improvement": 0.002596
+    },
+    "eth_ucy_ewap": {
+      "target_horizon": "100",
+      "strongest_baseline_FDE": 5.460224,
+      "best_learned_variant": "per_agent_no_scene",
+      "best_learned_FDE": 5.460224,
+      "improvement": 0.0
+    },
+    "trajnet": {
+      "target_horizon": "10",
+      "strongest_baseline_FDE": 20.771859,
+      "best_learned_variant": "per_agent_goal_only",
+      "best_learned_FDE": 20.748859,
+      "improvement": 0.001107
+    }
+  },
+  "learned_model_beats_strongest_baseline": "否",
+  "verified_pedestrian_drone_t50_t100": [
+    "eth_ucy_ewap"
+  ],
+  "pedestrian_long_horizon_ready": true,
+  "human_gold_annotations": 0,
+  "human_silver_annotations": 3,
+  "silver_rule_confirmed_annotations": 33,
+  "scene_annotation_ready": true,
+  "goalbench_beats_majority": false,
+  "goalbench_official_records": 5574,
+  "hardbench_baselinefailure_enough": true,
+  "hard_failure_records": 649,
+  "multi_agent_ready": true,
+  "multi_agent_episodes_ge2": 660,
+  "datasets_converted": [
+    "eth_ucy_ewap",
+    "aerialmpt",
+    "full_trajnet_original_quick"
+  ],
+  "datasets_registry_only": [],
+  "datasets_failed": [],
+  "top_failure_reasons": [
+    "Deterministic residual still does not beat strongest causal baseline by the required margin.",
+    "Latent generative readiness is false; deterministic gates remain the blocker.",
+    "SMC readiness is false; no strong stochastic proposal exists yet."
+  ],
+  "best_auto_directions": [
+    "Stage 13 deterministic repair: failure-aware bounded residual that preserves strong causal baselines.",
+    "Add/verify more SDD/OpenTraj pedestrian/drone scenes with images/homography where legally available.",
+    "Upgrade rule-confirmed silver annotations into human-confirmed silver/gold and measure GoalBench lift."
+  ],
+  "blockers_requiring_user": []
+}

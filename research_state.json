@@ -1,0 +1,116 @@
+{
+  "current_stage": "stage12",
+  "current_verdict": "stage12_ready_for_stage13_training_with_long_horizon_source",
+  "expert_audit_score": 83,
+  "deterministic_ready": false,
+  "latent_generative_ready": false,
+  "smc_ready": false,
+  "pedestrian_long_horizon_ready": true,
+  "scene_annotation_ready": true,
+  "multi_agent_ready": true,
+  "strongest_causal_baselines": {
+    "aerialmpt": {
+      "target_horizon": "5",
+      "strongest_baseline_FDE": 2.735528,
+      "best_learned_variant": "per_agent_no_scene",
+      "best_learned_FDE": 2.746454,
+      "improvement": -0.003994
+    },
+    "eth_ucy": {
+      "target_horizon": "10",
+      "strongest_baseline_FDE": 5.17126,
+      "best_learned_variant": "per_agent_scene_only",
+      "best_learned_FDE": 5.157833,
+      "improvement": 0.002596
+    },
+    "eth_ucy_ewap": {
+      "target_horizon": "100",
+      "strongest_baseline_FDE": 5.460224,
+      "best_learned_variant": "per_agent_no_scene",
+      "best_learned_FDE": 5.460224,
+      "improvement": 0.0
+    },
+    "trajnet": {
+      "target_horizon": "10",
+      "strongest_baseline_FDE": 20.771859,
+      "best_learned_variant": "per_agent_goal_only",
+      "best_learned_FDE": 20.748859,
+      "improvement": 0.001107
+    }
+  },
+  "best_learned_models": {
+    "aerialmpt": {
+      "target_horizon": "5",
+      "strongest_baseline_FDE": 2.735528,
+      "best_learned_variant": "per_agent_no_scene",
+      "best_learned_FDE": 2.746454,
+      "improvement": -0.003994
+    },
+    "eth_ucy": {
+      "target_horizon": "10",
+      "strongest_baseline_FDE": 5.17126,
+      "best_learned_variant": "per_agent_scene_only",
+      "best_learned_FDE": 5.157833,
+      "improvement": 0.002596
+    },
+    "eth_ucy_ewap": {
+      "target_horizon": "100",
+      "strongest_baseline_FDE": 5.460224,
+      "best_learned_variant": "per_agent_no_scene",
+      "best_learned_FDE": 5.460224,
+      "improvement": 0.0
+    },
+    "trajnet": {
+      "target_horizon": "10",
+      "strongest_baseline_FDE": 20.771859,
+      "best_learned_variant": "per_agent_goal_only",
+      "best_learned_FDE": 20.748859,
+      "improvement": 0.001107
+    }
+  },
+  "datasets_converted": [
+    "eth_ucy_ewap",
+    "aerialmpt",
+    "full_trajnet_original_quick"
+  ],
+  "datasets_registry_only": [],
+  "datasets_failed": [],
+  "annotation_status": {
+    "human_gold": 0,
+    "human_silver": 3,
+    "silver_rule_confirmed": 33
+  },
+  "gates_passed": [
+    "Data Gate",
+    "Long-Horizon Gate",
+    "Annotation Gate",
+    "Multi-Agent Gate",
+    "Strong Baseline Gate",
+    "Physical Validity Gate"
+  ],
+  "gates_failed": [
+    "Scene/Goal Gate",
+    "Deterministic Improvement Gate",
+    "Easy Preservation Gate",
+    "Scene/Goal Ablation Gate",
+    "Interaction Gate",
+    "Latent Generative Readiness Gate",
+    "SMC Readiness Gate"
+  ],
+  "next_actions": [
+    "deterministic_repair",
+    "latent_blocked"
+  ],
+  "blockers_requiring_user": [],
+  "last_successful_command": "python run_auto_world_model_loop.py --mode quick --max-steps 1",
+  "last_failed_command": "",
+  "generated_reports": [
+    "outputs/reports/auto_orchestrator_current_state.md",
+    "outputs/reports/research_state.md",
+    "outputs/reports/auto_gate_report.md",
+    "outputs/reports/auto_next_stage_plan.md",
+    "outputs/reports/auto_loop_iteration_report.md"
+  ],
+  "generated_figures": [],
+  "git_commit_hash_if_available": "a64fe57"
+}
