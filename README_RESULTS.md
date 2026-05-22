@@ -405,3 +405,11 @@ latent_generative_ready = False
 smc_ready = False
 learned_model_beats_strongest_baseline = 否
 ```
+
+## Stage 17: Baseline Ensemble Selector
+
+- Model status: BPSG-MA v1 remains deployable as strongest-baseline fallback with diagnostics.
+- Stage17 oracle selector found per-sample baseline headroom, but trained selector/correction did not pass gates.
+- Official horizon remains t+50; t+100 remains diagnostic.
+- Latent generative Stage 5C and SMC remain disabled.
+- Reports: `outputs/reports/report_stage17_final.md`, `outputs/reports/world_model_gate_stage17.md`.

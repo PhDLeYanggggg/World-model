@@ -1,0 +1,38 @@
+{
+  "trained": true,
+  "model_type": "conservative_rule_selector",
+  "rules": [
+    {
+      "baseline_id": "route_corridor_baseline",
+      "feature": "nearest_neighbor_proxy",
+      "op": "<",
+      "threshold": 1.1436108373019176,
+      "confidence": 0.9261134180012953
+    }
+  ],
+  "fallback_baseline": "constant_position",
+  "train_improvement": 0.037611341800129525,
+  "train_support": 90,
+  "candidate_baselines": [
+    "constant_position",
+    "constant_velocity_causal_fd",
+    "damped_velocity",
+    "constant_acceleration_causal",
+    "constant_turn_rate_velocity",
+    "goal_directed_baseline",
+    "scene_clamped_baseline",
+    "route_corridor_baseline"
+  ],
+  "feature_names": [
+    "past_speed",
+    "past_speed_change",
+    "past_heading_change",
+    "nearest_neighbor_proxy",
+    "agent_count",
+    "horizon"
+  ],
+  "no_future_endpoint_input": true,
+  "no_central_velocity": true,
+  "no_test_endpoint_goals": true,
+  "oracle_best_baseline_used_as_inference_input": false
+}

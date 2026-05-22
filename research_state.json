@@ -1,7 +1,7 @@
 {
-  "current_stage": "final_model",
-  "current_verdict": "final_bpsg_ma_v1_delivered_with_strongest_baseline_fallback",
-  "expert_audit_score": 88,
+  "current_stage": "stage17",
+  "current_verdict": "stage17_selector_oracle_headroom_found_but_v1_remains_deployable",
+  "expert_audit_score": 89,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -100,14 +100,19 @@
   "next_actions": [
     "provide_sdd_or_opentraj_local_paths",
     "human_confirm_stage16_annotation_tasks",
-    "expand_official_pedestrian_t100_rows"
+    "expand_official_pedestrian_t100_and_hard_failure_rows"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_train_final_world_model.py --quick && python run_evaluate_final_world_model.py --quick && python run_infer_world_model.py --demo && python run_visualize_final_world_model.py --demo && python -m pytest tests",
+  "last_successful_command": "python run_stage17_baseline_oracle.py && python run_stage17_train_baseline_selector.py && python run_stage17_train_correction_specialist.py && python run_stage17_benchmark.py && python run_stage17_gates.py && python -m pytest tests",
   "last_failed_command": "",
   "generated_reports": [
+    "outputs/final_model/README_FINAL_MODEL.md",
+    "outputs/final_model/data_card_final.md",
+    "outputs/final_model/failure_analysis_final.md",
+    "outputs/final_model/model_card_final.md",
+    "outputs/final_model/report_final_model.md",
     "outputs/reports/auto_gate_report.md",
     "outputs/reports/auto_loop_iteration_report.md",
     "outputs/reports/auto_next_stage_plan.md",
@@ -115,6 +120,7 @@
     "outputs/reports/report_stage14_final.md",
     "outputs/reports/report_stage15_final.md",
     "outputs/reports/report_stage16_final.md",
+    "outputs/reports/report_stage17_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -123,14 +129,13 @@
     "outputs/reports/stage15_oracle_diagnostics.md",
     "outputs/reports/stage16_failure_type_predictor_report.md",
     "outputs/reports/stage16_oracle_distillation_report.md",
+    "outputs/reports/stage17_baseline_oracle_report.md",
+    "outputs/reports/stage17_baseline_selector_report.md",
+    "outputs/reports/stage17_benchmark_report.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
     "outputs/reports/world_model_gate_stage16.md",
-    "outputs/final_model/report_final_model.md",
-    "outputs/final_model/model_card_final.md",
-    "outputs/final_model/data_card_final.md",
-    "outputs/final_model/failure_analysis_final.md",
-    "outputs/final_model/README_FINAL_MODEL.md"
+    "outputs/reports/world_model_gate_stage17.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
