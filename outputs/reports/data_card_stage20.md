@@ -7,6 +7,6 @@
 - Pixel-space data remains pixel-space unless homography/scale is verified.
 
 - Candidate sources: `33`
-- Local paths found: `4`
-- Light conversions/indexes: `3`
+- Local paths found: `6`
+- Light conversions/indexes: `5`
 - Actual auto downloads: `0`

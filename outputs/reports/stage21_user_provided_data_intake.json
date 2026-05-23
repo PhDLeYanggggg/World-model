@@ -1,0 +1,99 @@
+{
+  "stage": "stage21_user_provided_data_intake",
+  "opentraj": {
+    "exists": true,
+    "path": "external_data/OpenTraj",
+    "remote": "https://github.com/amiryanj/OpenTraj.git",
+    "toolkit_exists": true,
+    "dataset_dirs": [
+      "ATC",
+      "Argoverse",
+      "CITR",
+      "City-Scapes",
+      "DUT",
+      "ETH",
+      "ETH-Person",
+      "Edinburgh",
+      "Forking-Paths-Garden",
+      "GC",
+      "HERMES",
+      "InD",
+      "KITTI",
+      "Ko-PER",
+      "L-CAS",
+      "NuScenes",
+      "PETS-2009",
+      "SDD",
+      "TRAF",
+      "Town-Center",
+      "TrajNet",
+      "TrajNet++",
+      "UCY",
+      "VIRAT",
+      "VRU",
+      "Waymo",
+      "Wild-Track",
+      "ZTD"
+    ],
+    "sdd_annotation_files": 60,
+    "eth_ucy_files": 33
+  },
+  "sdd_archive": {
+    "exists": true,
+    "path": "external_data/archive.zip",
+    "file_count": 180,
+    "annotation_txt": 60,
+    "reference_images": 60,
+    "videos": 60,
+    "top_level": [
+      "annotations",
+      "video"
+    ]
+  },
+  "sdd_ingestion": {
+    "dataset_name": "Stanford Drone Dataset via user-provided Kaggle archive",
+    "source_path": "external_data/StanfordDroneDataset",
+    "archive_path": "external_data/archive.zip",
+    "scene_count": 8,
+    "video_count": 60,
+    "annotation_files": 60,
+    "track_count": 10300,
+    "annotation_rows": 10616256,
+    "scene_video_counts": {
+      "bookstore": 7,
+      "coupa": 4,
+      "deathCircle": 5,
+      "gates": 9,
+      "hyang": 15,
+      "little": 4,
+      "nexus": 12,
+      "quad": 4
+    },
+    "max_track_length_raw_frames": 12272,
+    "samples_t10_raw_frame": 10513263,
+    "samples_t25_raw_frame": 10358868,
+    "samples_t50_raw_frame": 10101593,
+    "samples_t100_raw_frame": 9589470,
+    "actual_verified_t50_raw_frame": true,
+    "actual_verified_t100_raw_frame": true,
+    "official_metric_t50": false,
+    "official_metric_t100": false,
+    "coordinate_unit": "pixel",
+    "metric_status": "pixel-space; no homography/scale verified for Kaggle archive",
+    "fps_or_dt": "raw frame index present; effective seconds not claimed without video fps audit"
+  },
+  "license_audit": {
+    "opentraj": "GitHub toolkit/repo; repository license must be respected; underlying datasets keep their own terms.",
+    "kaggle_sdd": "Kaggle mirror page reports CC0, but official Stanford SDD source/licensing is non-commercial/custom. Treat as user-provided local research data and do not redistribute raw files.",
+    "legal_status": "accepted_by_user_implied_for_local archive; still not committed to GitHub; official license conflict recorded."
+  },
+  "no_leakage": {
+    "candidate_goals_built": false,
+    "test_endpoints_used": false,
+    "future_endpoint_as_input": false,
+    "central_velocity_official": false,
+    "status": "raw intake only; full Stage21/22 episode split audit still required"
+  },
+  "stage5c_ready": false,
+  "smc_ready": false
+}

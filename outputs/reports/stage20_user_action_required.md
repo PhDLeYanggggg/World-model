@@ -28,20 +28,6 @@
   - Place/extract under one of the suggested local paths.
   - Rerun scripts/stage20_verify_local_paths.py with the dataset path.
 
-## OpenTraj supported datasets
-
-- Official URL: https://github.com/crowdbotp/OpenTraj
-- License/access: MIT for toolkit; underlying datasets keep their own licenses
-- Why needed: Official/open toolkit for multiple human trajectory datasets.
-- Expected structure: `OpenTraj repo with datasets/ or user-provided raw ETH/UCY/SDD/etc.`
-- Suggested local paths: `['/Users/yangyue/Downloads/OpenTraj', '/Users/yangyue/Downloads/World/external_data/OpenTraj']`
-- Steps:
-  - Open the official URL.
-  - Review and accept license/terms if you are eligible.
-  - Download using the official instructions only.
-  - Place/extract under one of the suggested local paths.
-  - Rerun scripts/stage20_verify_local_paths.py with the dataset path.
-
 ## NGSIM
 
 - Official URL: https://ops.fhwa.dot.gov/trafficanalysistools/ngsim.htm
@@ -49,20 +35,6 @@
 - Why needed: Diagnostic motion source only; category penalty prevents pedestrian benchmark claims.
 - Expected structure: ``
 - Suggested local paths: `[]`
-- Steps:
-  - Open the official URL.
-  - Review and accept license/terms if you are eligible.
-  - Download using the official instructions only.
-  - Place/extract under one of the suggested local paths.
-  - Rerun scripts/stage20_verify_local_paths.py with the dataset path.
-
-## Stanford Drone Dataset
-
-- Official URL: https://cvgl.stanford.edu/projects/uav_data/
-- License/access: Stanford SDD non-commercial / custom access terms
-- Why needed: Best fit: real drone/top-down multi-agent trajectories with scene imagery.
-- Expected structure: `annotations/<scene>/video*/annotations.txt plus videos/images`
-- Suggested local paths: `['/Users/yangyue/Downloads/StanfordDroneDataset', '/Users/yangyue/Downloads/SDD']`
 - Steps:
   - Open the official URL.
   - Review and accept license/terms if you are eligible.

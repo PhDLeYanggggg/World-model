@@ -10,13 +10,13 @@
 | SyntheticMixedAgents2.5D | project-generated | False/False/False | True | low |
 | SyntheticPhysicalCrowd2.5D | project-generated | False/False/False | True | low |
 | UrbanCrowdSim2.5D | project-generated | False/False/False | True | low |
+| OpenTraj supported datasets | MIT for toolkit; underlying datasets keep their own licenses | False/False/False | False | medium_dataset_specific |
 | UCY Crowd original | UCY crowd research terms; verify before use | False/False/False | False | medium |
 | full ETH/UCY / EWAP | research dataset terms; verify original source | False/False/False | False | medium |
+| Stanford Drone Dataset | Stanford SDD non-commercial / custom access terms | False/False/True | False | high_without_manual_terms |
 | BIWI Walking Pedestrians | research dataset terms; verify before use | False/False/False | False | medium |
 | ETH pedestrian original / BIWI | research dataset terms; verify before use | False/False/False | False | medium |
-| OpenTraj supported datasets | MIT for toolkit; underlying datasets keep their own licenses | False/False/False | False | medium_dataset_specific |
 | NGSIM | FHWA / ITS Public Data Hub | False/False/False | False | medium |
-| Stanford Drone Dataset | Stanford SDD non-commercial / custom access terms | False/False/True | False | high_without_manual_terms |
 | Edinburgh Informatics Forum pedestrian trajectories | research dataset terms; verify before use | False/False/False | False | medium |
 | Grand Central pedestrian trajectories | research dataset terms; verify before use | False/False/False | False | medium |
 | PETS 2009 S2L1 | research dataset terms; verify before use | False/False/False | False | medium |

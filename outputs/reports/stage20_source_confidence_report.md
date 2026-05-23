@@ -5,13 +5,13 @@
 | SyntheticMixedAgents2.5D | 1.0 | local_project_generator |
 | SyntheticPhysicalCrowd2.5D | 1.0 | local_project_generator |
 | UrbanCrowdSim2.5D | 1.0 | local_project_generator |
+| OpenTraj supported datasets | 0.96 | https://github.com/crowdbotp/OpenTraj |
 | UCY Crowd original | 0.84 | http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data |
 | full ETH/UCY / EWAP | 0.86 | https://icu.ee.ethz.ch/research/datsets.html |
+| Stanford Drone Dataset | 0.98 | https://cvgl.stanford.edu/projects/uav_data/ |
 | BIWI Walking Pedestrians | 0.75 | https://icu.ee.ethz.ch/research/datsets.html |
 | ETH pedestrian original / BIWI | 0.75 | https://icu.ee.ethz.ch/research/datsets.html |
-| OpenTraj supported datasets | 0.96 | https://github.com/crowdbotp/OpenTraj |
 | NGSIM | 0.88 | https://ops.fhwa.dot.gov/trafficanalysistools/ngsim.htm |
-| Stanford Drone Dataset | 0.98 | https://cvgl.stanford.edu/projects/uav_data/ |
 | Edinburgh Informatics Forum pedestrian trajectories | 0.75 | https://homepages.inf.ed.ac.uk/rbf/FORUMTRACKING/ |
 | Grand Central pedestrian trajectories | 0.75 | http://www.ee.cuhk.edu.hk/~xgwang/grandcentral.html |
 | PETS 2009 S2L1 | 0.75 | http://www.cvg.reading.ac.uk/PETS2009/a.html |

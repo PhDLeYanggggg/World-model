@@ -438,8 +438,8 @@ Stage 20 searched and registered official/candidate data sources for multimodal 
 ```text
 candidate_sources = 33
 successful_auto_download_sources = 0
-successful_local_path_verifications = 4
-successful_converted_sources = 3
+successful_local_path_verifications = 6
+successful_converted_sources = 5
 new_official_topdown_benchmark_sources = 0
 stage20_gates = 9 / 11
 latent_stage5c_ready = false
@@ -450,3 +450,26 @@ verdict = stage20_web_dataset_acquisition_package_built_stage5c_blocked
 Main conclusion:
 
 Stage 20 built the web-search registry, license audit, dry-run download plan, local-path verification, and data-acquisition package. The project still needs user-provided SDD/OpenTraj/full ETH-UCY paths for a stronger real top-down pedestrian/drone benchmark.
+
+## Stage 21: User-Provided OpenTraj and SDD Intake
+
+The user provided OpenTraj and Kaggle Stanford Drone Dataset sources. OpenTraj was fetched from the GitHub source into `external_data/OpenTraj`, and the user-provided `external_data/archive.zip` was extracted as a local Stanford Drone Dataset mirror. Raw external data remains ignored by git.
+
+```text
+opentraj_local = true
+sdd_archive_found = true
+sdd_scenes = 8
+sdd_videos = 60
+sdd_tracks = 10300
+sdd_annotation_rows = 10616256
+sdd_raw_frame_t50_samples = 10101593
+sdd_raw_frame_t100_samples = 9589470
+coordinate_status = pixel-space
+metric_status = no homography/scale verified
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+The next concrete step is full SDD world-state conversion with scene split, train-only goal dictionaries, causal velocity, horizon audit, and no-leakage validation. The raw-frame t+50/t+100 counts are real annotation-frame availability, but they are not metric-world claims and not yet full official benchmark results.

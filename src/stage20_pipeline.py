@@ -26,6 +26,7 @@ LOCAL_PATHS: Dict[str, List[str]] = {
     "stanford_drone": [
         "/Users/yangyue/Downloads/StanfordDroneDataset",
         "/Users/yangyue/Downloads/SDD",
+        "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
     ],
     "opentraj": [
         "/Users/yangyue/Downloads/OpenTraj",

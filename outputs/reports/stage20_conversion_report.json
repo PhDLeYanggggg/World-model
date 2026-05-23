@@ -1,6 +1,116 @@
 {
-  "converted_count": 3,
+  "converted_count": 5,
   "converted": [
+    {
+      "dataset_name": "OpenTraj supported datasets",
+      "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+      "conversion_level": "raw_index_plus_sample_audit",
+      "usable_for_official_eval": true,
+      "usable_for_supervised_training": true,
+      "estimated_t50_from_registry": true,
+      "estimated_t100_from_registry": true,
+      "actual_verified_t50": false,
+      "actual_verified_t100": false,
+      "no_leakage_policy": "causal velocity only; train endpoints only for candidate goals; no future endpoint input",
+      "files_indexed": 13071,
+      "files_inspected": 12,
+      "sample_inspections": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/requirements.txt",
+          "rows_sampled": 0,
+          "unique_frames_sampled": 0,
+          "unique_agents_sampled": 0,
+          "max_agents_in_frame_sampled": 0
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/LICENSE.txt",
+          "rows_sampled": 0,
+          "unique_frames_sampled": 0,
+          "unique_agents_sampled": 0,
+          "max_agents_in_frame_sampled": 0
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+          "rows_sampled": 7240,
+          "unique_frames_sampled": 1149,
+          "unique_agents_sampled": 362,
+          "max_agents_in_frame_sampled": 12
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+          "rows_sampled": 840,
+          "unique_frames_sampled": 508,
+          "unique_agents_sampled": 42,
+          "max_agents_in_frame_sampled": 5
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+          "rows_sampled": 6680,
+          "unique_frames_sampled": 988,
+          "unique_agents_sampled": 334,
+          "max_agents_in_frame_sampled": 14
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+          "rows_sampled": 1040,
+          "unique_frames_sampled": 126,
+          "unique_agents_sampled": 52,
+          "max_agents_in_frame_sampled": 12
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+          "rows_sampled": 2200,
+          "unique_frames_sampled": 935,
+          "unique_agents_sampled": 110,
+          "max_agents_in_frame_sampled": 6
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+          "rows_sampled": 280,
+          "unique_frames_sampled": 43,
+          "unique_agents_sampled": 14,
+          "max_agents_in_frame_sampled": 8
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+          "rows_sampled": 1220,
+          "unique_frames_sampled": 492,
+          "unique_agents_sampled": 61,
+          "max_agents_in_frame_sampled": 6
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+          "rows_sampled": 12600,
+          "unique_frames_sampled": 945,
+          "unique_agents_sampled": 630,
+          "max_agents_in_frame_sampled": 24
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+          "rows_sampled": 8540,
+          "unique_frames_sampled": 1121,
+          "unique_agents_sampled": 427,
+          "max_agents_in_frame_sampled": 25
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+          "rows_sampled": 400,
+          "unique_frames_sampled": 40,
+          "unique_agents_sampled": 20,
+          "max_agents_in_frame_sampled": 10
+        }
+      ],
+      "track_count_sampled": 2052,
+      "max_agents_in_frame_sampled": 25,
+      "coordinate_unit": "source pixel/world-2D; do not claim metric unless homography exists",
+      "source_velocity_type": "causal_fd_to_be_computed_downstream",
+      "horizon_audit": {
+        "t10": "possible if track length >= past + 10",
+        "t25": "possible if track length >= past + 25",
+        "t50": "requires full conversion; not claimed from index alone",
+        "t100": "requires full conversion; not claimed from index alone"
+      }
+    },
     {
       "dataset_name": "UCY Crowd original",
       "path": "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/data/trajnet_original/crowds",
@@ -84,6 +194,116 @@
       "metric_status": "metric_or_pixel_must_be_verified_from_H.txt",
       "usable_for_official_eval": true,
       "no_leakage_policy": "train/val/test split must be built before goals; no endpoints used as input"
+    },
+    {
+      "dataset_name": "Stanford Drone Dataset",
+      "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+      "conversion_level": "raw_index_plus_sample_audit",
+      "usable_for_official_eval": true,
+      "usable_for_supervised_training": true,
+      "estimated_t50_from_registry": true,
+      "estimated_t100_from_registry": true,
+      "actual_verified_t50": false,
+      "actual_verified_t100": false,
+      "no_leakage_policy": "causal velocity only; train endpoints only for candidate goals; no future endpoint input",
+      "files_indexed": 60,
+      "files_inspected": 12,
+      "sample_inspections": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video3/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 58,
+          "unique_agents_sampled": 710,
+          "max_agents_in_frame_sampled": 642
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video4/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 75,
+          "unique_agents_sampled": 712,
+          "max_agents_in_frame_sampled": 510
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video5/annotations.txt",
+          "rows_sampled": 41072,
+          "unique_frames_sampled": 46,
+          "unique_agents_sampled": 711,
+          "max_agents_in_frame_sampled": 680
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video2/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 66,
+          "unique_agents_sampled": 695,
+          "max_agents_in_frame_sampled": 454
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video7/annotations.txt",
+          "rows_sampled": 30970,
+          "unique_frames_sampled": 40,
+          "unique_agents_sampled": 690,
+          "max_agents_in_frame_sampled": 629
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video0/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 56,
+          "unique_agents_sampled": 711,
+          "max_agents_in_frame_sampled": 697
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video8/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 67,
+          "unique_agents_sampled": 703,
+          "max_agents_in_frame_sampled": 547
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video1/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 54,
+          "unique_agents_sampled": 708,
+          "max_agents_in_frame_sampled": 603
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video6/annotations.txt",
+          "rows_sampled": 18614,
+          "unique_frames_sampled": 27,
+          "unique_agents_sampled": 713,
+          "max_agents_in_frame_sampled": 690
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/little/video3/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 45,
+          "unique_agents_sampled": 705,
+          "max_agents_in_frame_sampled": 613
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/little/video2/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 69,
+          "unique_agents_sampled": 704,
+          "max_agents_in_frame_sampled": 618
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/little/video0/annotations.txt",
+          "rows_sampled": 50001,
+          "unique_frames_sampled": 60,
+          "unique_agents_sampled": 710,
+          "max_agents_in_frame_sampled": 426
+        }
+      ],
+      "track_count_sampled": 8472,
+      "max_agents_in_frame_sampled": 697,
+      "coordinate_unit": "source pixel/world-2D; do not claim metric unless homography exists",
+      "source_velocity_type": "causal_fd_to_be_computed_downstream",
+      "horizon_audit": {
+        "t10": "possible if track length >= past + 10",
+        "t25": "possible if track length >= past + 25",
+        "t50": "requires full conversion; not claimed from index alone",
+        "t100": "requires full conversion; not claimed from index alone"
+      }
     },
     {
       "dataset_name": "TrajNet++ full datasets",

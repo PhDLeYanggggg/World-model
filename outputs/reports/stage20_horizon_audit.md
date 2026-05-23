@@ -5,6 +5,8 @@
 
 | dataset | estimated t+10/t+25 | actual verified t+50 | actual verified t+100 |
 | --- | --- | --- | --- |
+| OpenTraj supported datasets | yes | False | False |
 | UCY Crowd original | yes | False | False |
 | full ETH/UCY / EWAP | yes | False | False |
+| Stanford Drone Dataset | yes | False | False |
 | TrajNet++ full datasets | yes | False | False |
