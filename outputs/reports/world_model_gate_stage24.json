@@ -1,0 +1,79 @@
+{
+  "gates": [
+    {
+      "gate": "Gate 1: I/O Cache Gate",
+      "passed": true,
+      "evidence": "Fast cache built and faster than source random lookup."
+    },
+    {
+      "gate": "Gate 2: Medium Data Gate",
+      "passed": true,
+      "evidence": "True medium or explicitly labeled medium-lite required."
+    },
+    {
+      "gate": "Gate 3: No Leakage Gate",
+      "passed": true,
+      "evidence": "No leakage across splits/goals/velocity/future/normalization."
+    },
+    {
+      "gate": "Gate 4: Strong Baseline Gate",
+      "passed": true,
+      "evidence": "Medium strongest baselines computed."
+    },
+    {
+      "gate": "Gate 5: Selector Oracle Gate",
+      "passed": true,
+      "evidence": "Selector oracle headroom exists."
+    },
+    {
+      "gate": "Gate 6: Selector Gate",
+      "passed": false,
+      "evidence": "Validation-selected selector >=5% t50 or >=10% hard/failure."
+    },
+    {
+      "gate": "Gate 7: Failure Predictor Gate",
+      "passed": true,
+      "evidence": "AUROC >=0.75 and calibrated enough."
+    },
+    {
+      "gate": "Gate 8: JEPA Gate",
+      "passed": false,
+      "evidence": "JEPA non-collapse plus downstream lift."
+    },
+    {
+      "gate": "Gate 9: Correction Gate",
+      "passed": false,
+      "evidence": "Correction improves hard/failure without easy degradation."
+    },
+    {
+      "gate": "Gate 10: Scene/Goal Gate",
+      "passed": false,
+      "evidence": "Scene/goal lift not demonstrated."
+    },
+    {
+      "gate": "Gate 11: Interaction Gate",
+      "passed": false,
+      "evidence": "Interaction lift not demonstrated."
+    },
+    {
+      "gate": "Gate 12: Time/Geometry Gate",
+      "passed": true,
+      "evidence": "Time/geometry audited; no unsupported metric/seconds claims."
+    },
+    {
+      "gate": "Gate 13: Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Keep false unless selector+correction+hard/failure pass."
+    },
+    {
+      "gate": "Gate 14: SMC Readiness Gate",
+      "passed": false,
+      "evidence": "Keep false."
+    }
+  ],
+  "gates_passed": 7,
+  "gates_total": 14,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "verdict": "stage24_sdd_fast_cache_medium_run_heads_not_stage5c_ready"
+}

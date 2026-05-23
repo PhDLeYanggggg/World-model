@@ -544,3 +544,23 @@ verdict = stage23_sdd_quick_plus_dual_split_benchmark_heads_not_stage5c_ready
 
 Main conclusion: dual-split SDD evaluation infrastructure is now in place, but validation-selected selector, failure predictor, JEPA, and correction specialist still do not clear the deterministic gates in quick-plus mode.
 
+## Stage 24: SDD Fast Cache and Medium Selector Training
+
+Stage 24 fixes the SDD compressed-NPZ random I/O bottleneck with a per-video uncompressed `.npy` memmap cache and track/frame indexes, then runs the medium/medium-lite benchmark path without falling back to quick-plus.
+
+```text
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+fast_cache_built = true
+true_medium_status = 是
+selector_effective = False
+failure_predictor_effective = True
+JEPA_effective = False
+correction_effective = False
+latent_stage5c_ready = false
+smc_ready = false
+verdict = stage24_sdd_fast_cache_medium_run_heads_not_stage5c_ready
+```
+

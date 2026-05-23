@@ -1,0 +1,8 @@
+# Stage 24 SDD Selector Oracle Report
+
+- mode: `medium`
+- oracle_rows: `100000`
+- oracle_improvement_over_strongest: `0.4620704066668326`
+- by_group: `{'cross_scene': 0.4372648412015515, 'h50': 0.44421480590017554, 'agent:Pedestrian': 0.4440586407725964, 'scene:nexus': 0.44032956061627876, 'hard': 0.4601159183352856, 'multi_agent_ge5': 0.46103859880899994, 'h10': 0.5278244176155553, 'agent:Car': 0.49918371274737, 'h25': 0.4804480955425784, 'agent:Biker': 0.48144612457024616, 'scene:quad': 0.4573364944522145, 'h100': 0.3858998040239202, 'agent:Skater': 0.5066781385728184, 'agent:Bus': 0.7820744840047859, 'agent:Cart': 0.6237976868602463, 'within_scene': 0.4868759721321136, 'scene:little': 0.4707012942429502, 'scene:bookstore': 0.522743322982334, 'scene:hyang': 0.4688106245401141, 'scene:coupa': 0.5198695347510088, 'scene:deathCircle': 0.5313852523561547, 'scene:gates': 0.48039006655162836}`
+- best_baseline_distribution: `{'cross_scene:constant_position': 36932, 'cross_scene:damped_velocity': 7453, 'cross_scene:constant_velocity_causal_fd': 4610, 'cross_scene:goal_directed_baseline': 690, 'cross_scene:scene_clamped_baseline': 308, 'cross_scene:constant_acceleration_causal': 7, 'within_scene:constant_velocity_causal_fd': 5440, 'within_scene:constant_position': 36546, 'within_scene:damped_velocity': 6587, 'within_scene:goal_directed_baseline': 1045, 'within_scene:scene_clamped_baseline': 380, 'within_scene:constant_acceleration_causal': 2}`
+- selector_training_worth_doing: `True`

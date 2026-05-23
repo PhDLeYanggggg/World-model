@@ -1,0 +1,14 @@
+# Stage 24 SDD Failure Predictor Report
+
+- mode: `medium`
+- validation_selected_model: `random_forest`
+- validation_AUROC: `{'logistic_regression': 0.8473823595854276, 'random_forest': 0.847796674312083, 'extra_trees': 0.8463288635477432}`
+- AUROC: `0.8714731936246393`
+- AUPRC: `0.3035820008607208`
+- positive_rate_baseline: `0.08418`
+- ECE: `0.16052488169664558`
+- Brier_score: `0.12384680820880713`
+- failure_type_F1: `0.0`
+- hard_recall: `0.8372535043953433`
+- easy_false_alarm: `0.195857264527964`
+- effective: `True`

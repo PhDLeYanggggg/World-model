@@ -1,0 +1,24 @@
+{
+  "single_shard_open_time_s": 0.0001816250000006292,
+  "single_video_sequential_read_time_s": 0.005404666999999641,
+  "random_read_time_source_s": {
+    "100": 0.014811917000001174,
+    "1000": 0.14940333300000042,
+    "10000": 1.4940333300000042
+  },
+  "random_read_time_fast_cache_s": {
+    "10000": 0.11607545800000096
+  },
+  "batch_build_time_source_estimate_s_per_1000": 0.14940333300000042,
+  "dataloader_samples_per_second_fast_cache": 86150.85542027254,
+  "cpu_usage": "not available from sandboxed ps/sysmon; wall-clock profiler used",
+  "memory_use": "bounded by one source shard or mmap arrays per active video",
+  "frequent_np_load_detected": true,
+  "compressed_npz_random_read_slow": true,
+  "missing_agent_frame_lookup_was_bottleneck": true,
+  "io_bottleneck_type": "compressed NPZ plus repeated agent/frame lookup",
+  "recommended_cache_format": "per-video uncompressed .npy memmap arrays + JSON track/frame indexes",
+  "estimated_speedup": "measured after cache if cache exists; otherwise expected 5x-50x for random state lookup",
+  "can_directly_run_medium": true,
+  "must_build_fast_cache_first": false
+}

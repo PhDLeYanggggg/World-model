@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage23",
-  "current_verdict": "stage23_sdd_quick_plus_dual_split_benchmark_heads_not_stage5c_ready",
-  "expert_audit_score": 94,
+  "current_stage": "stage24",
+  "current_verdict": "stage24_sdd_fast_cache_medium_run_heads_not_stage5c_ready",
+  "expert_audit_score": 95,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -98,9 +98,9 @@
     "Stage 5C Readiness Gate"
   ],
   "next_actions": [
-    "true_medium_sdd_run",
-    "failure_predictor_feature_repair",
-    "sdd_time_geometry_audit_followup"
+    "selector_confusion_repair",
+    "failure_feature_expansion",
+    "sdd_time_geometry_followup"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
@@ -129,6 +129,7 @@
     "outputs/reports/report_stage21_final.md",
     "outputs/reports/report_stage22_final.md",
     "outputs/reports/report_stage23_final.md",
+    "outputs/reports/report_stage24_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -155,6 +156,7 @@
     "outputs/reports/stage22_sdd_data_audit.md",
     "outputs/reports/stage23_sdd_benchmark_report.md",
     "outputs/reports/stage23_sdd_medium_baseline_table.md",
+    "outputs/reports/stage24_sdd_fast_cache_report.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
     "outputs/reports/world_model_gate_stage16.md",
@@ -163,7 +165,8 @@
     "outputs/reports/world_model_gate_stage19.md",
     "outputs/reports/world_model_gate_stage20.md",
     "outputs/reports/world_model_gate_stage22.md",
-    "outputs/reports/world_model_gate_stage23.md"
+    "outputs/reports/world_model_gate_stage23.md",
+    "outputs/reports/world_model_gate_stage24.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -259,5 +262,24 @@
     "smc_ready": false,
     "current_verdict": "stage23_sdd_quick_plus_dual_split_benchmark_heads_not_stage5c_ready",
     "expert_audit_score": 94
+  },
+  "stage24": {
+    "project_ran": true,
+    "sdd_io_accelerated": "是",
+    "true_medium_status": "是",
+    "still_quick_plus": false,
+    "strongest_baseline_changed": false,
+    "selector_oracle_headroom": 0.4620704066668326,
+    "selector_effective": false,
+    "failure_predictor_effective": true,
+    "jepa_effective": false,
+    "correction_effective": false,
+    "hard_failure_improved": false,
+    "t50_improved": false,
+    "t100_raw_frame_improved": false,
+    "stage5c_ready": false,
+    "smc_ready": false,
+    "current_verdict": "stage24_sdd_fast_cache_medium_run_heads_not_stage5c_ready",
+    "expert_audit_score": 95
   }
 }
