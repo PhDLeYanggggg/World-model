@@ -1,0 +1,1459 @@
+{
+  "analysis_type": "reconstructed_stage24_style_hard_classifier_plus_stage24_report",
+  "stage24_reported_selector_t50_improvement": -0.4326497359356306,
+  "stage24_reported_easy_degradation": 11.328798263207801,
+  "confusion_matrix_labels": [
+    "constant_position",
+    "constant_velocity_causal_fd",
+    "damped_velocity",
+    "constant_acceleration_causal",
+    "constant_turn_rate_velocity",
+    "scene_clamped_baseline",
+    "goal_directed_baseline"
+  ],
+  "confusion_matrix": [
+    [
+      32099,
+      7969,
+      19835,
+      341,
+      0,
+      6794,
+      6440
+    ],
+    [
+      2735,
+      2608,
+      2076,
+      26,
+      0,
+      1485,
+      1120
+    ],
+    [
+      5596,
+      1750,
+      4034,
+      43,
+      0,
+      1115,
+      1502
+    ],
+    [
+      7,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      92,
+      123,
+      57,
+      0,
+      0,
+      276,
+      140
+    ],
+    [
+      433,
+      412,
+      335,
+      8,
+      0,
+      334,
+      213
+    ]
+  ],
+  "confusion_summary": [
+    {
+      "true_oracle_best": "constant_position",
+      "count": 73478,
+      "top_predicted": [
+        [
+          "constant_position",
+          32099
+        ],
+        [
+          "damped_velocity",
+          19835
+        ],
+        [
+          "constant_velocity_causal_fd",
+          7969
+        ],
+        [
+          "scene_clamped_baseline",
+          6794
+        ],
+        [
+          "goal_directed_baseline",
+          6440
+        ]
+      ]
+    },
+    {
+      "true_oracle_best": "constant_velocity_causal_fd",
+      "count": 10050,
+      "top_predicted": [
+        [
+          "constant_position",
+          2735
+        ],
+        [
+          "constant_velocity_causal_fd",
+          2608
+        ],
+        [
+          "damped_velocity",
+          2076
+        ],
+        [
+          "scene_clamped_baseline",
+          1485
+        ],
+        [
+          "goal_directed_baseline",
+          1120
+        ]
+      ]
+    },
+    {
+      "true_oracle_best": "damped_velocity",
+      "count": 14040,
+      "top_predicted": [
+        [
+          "constant_position",
+          5596
+        ],
+        [
+          "damped_velocity",
+          4034
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1750
+        ],
+        [
+          "goal_directed_baseline",
+          1502
+        ],
+        [
+          "scene_clamped_baseline",
+          1115
+        ]
+      ]
+    },
+    {
+      "true_oracle_best": "constant_acceleration_causal",
+      "count": 9,
+      "top_predicted": [
+        [
+          "constant_position",
+          7
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1
+        ],
+        [
+          "damped_velocity",
+          1
+        ],
+        [
+          "constant_acceleration_causal",
+          0
+        ],
+        [
+          "constant_turn_rate_velocity",
+          0
+        ]
+      ]
+    },
+    {
+      "true_oracle_best": "scene_clamped_baseline",
+      "count": 688,
+      "top_predicted": [
+        [
+          "scene_clamped_baseline",
+          276
+        ],
+        [
+          "goal_directed_baseline",
+          140
+        ],
+        [
+          "constant_velocity_causal_fd",
+          123
+        ],
+        [
+          "constant_position",
+          92
+        ],
+        [
+          "damped_velocity",
+          57
+        ]
+      ]
+    },
+    {
+      "true_oracle_best": "goal_directed_baseline",
+      "count": 1735,
+      "top_predicted": [
+        [
+          "constant_position",
+          433
+        ],
+        [
+          "constant_velocity_causal_fd",
+          412
+        ],
+        [
+          "damped_velocity",
+          335
+        ],
+        [
+          "scene_clamped_baseline",
+          334
+        ],
+        [
+          "goal_directed_baseline",
+          213
+        ]
+      ]
+    }
+  ],
+  "reconstructed_hard_classifier_eval": {
+    "n": 100000,
+    "improvement_over_strongest": -0.8630082771571002,
+    "official_t50_improvement": -0.32445384571760205,
+    "diagnostic_t100_raw_frame_improvement": -1.3145740248478623,
+    "hard_failure_improvement": -0.8689773234222957,
+    "easy_degradation": 10.603174214477132,
+    "selector_regret": 29.23797504836798,
+    "harm_over_fallback": 22.394350187205376,
+    "switch_rate": 0.69722,
+    "accuracy_to_oracle_best": 0.3923,
+    "mean_confidence": 0.0,
+    "selected_distribution": {
+      "constant_position": 40962,
+      "constant_velocity_causal_fd": 12863,
+      "damped_velocity": 26338,
+      "goal_directed_baseline": 9415,
+      "scene_clamped_baseline": 10004,
+      "constant_acceleration_causal": 418
+    },
+    "by_split_improvement": {
+      "cross_scene": -1.2256607847255316,
+      "within_scene": -0.5114253463723664
+    },
+    "by_horizon_improvement": {
+      "10": -0.49597099313557136,
+      "25": -0.23904563940575896,
+      "50": -0.32445384571760205,
+      "100": -1.3145740248478623
+    },
+    "easy_count": 58245,
+    "hard_failure_count": 96581,
+    "t50_count": 24810,
+    "t100_count": 23126
+  },
+  "baseline_choice_distribution": {
+    "oracle_best": {
+      "constant_position": 73478,
+      "damped_velocity": 14040,
+      "constant_velocity_causal_fd": 10050,
+      "goal_directed_baseline": 1735,
+      "scene_clamped_baseline": 688,
+      "constant_acceleration_causal": 9
+    },
+    "predicted_selected": {
+      "constant_position": 40962,
+      "constant_velocity_causal_fd": 12863,
+      "damped_velocity": 26338,
+      "goal_directed_baseline": 9415,
+      "scene_clamped_baseline": 10004,
+      "constant_acceleration_causal": 418
+    },
+    "global_strongest": {
+      "damped_velocity": 88426,
+      "scene_clamped_baseline": 11574
+    }
+  },
+  "selector_regret": 29.23797504836798,
+  "harm_over_fallback": 22.394350187205376,
+  "margin_analysis": {
+    "mean_oracle_margin_px": 4.164779931302666,
+    "median_oracle_margin_px": 0.0,
+    "small_margin_counts": {
+      "lt_1px": 79254,
+      "lt_2px": 80793,
+      "lt_5px": 84411,
+      "lt_10px": 87900
+    },
+    "label_noise_ambiguity_note": "Small margins make one-hot oracle labels unstable; wrong switches have asymmetric harm."
+  },
+  "easy_degradation_analysis": {
+    "easy_degradation": 10.603174214477132,
+    "wrong_easy_switches_top": [
+      [
+        "damped_velocity->constant_position",
+        25804
+      ],
+      [
+        "damped_velocity->constant_velocity_causal_fd",
+        7001
+      ],
+      [
+        "damped_velocity->goal_directed_baseline",
+        2614
+      ],
+      [
+        "damped_velocity->scene_clamped_baseline",
+        2253
+      ],
+      [
+        "scene_clamped_baseline->goal_directed_baseline",
+        1155
+      ],
+      [
+        "scene_clamped_baseline->constant_position",
+        1092
+      ],
+      [
+        "scene_clamped_baseline->damped_velocity",
+        558
+      ],
+      [
+        "damped_velocity->constant_acceleration_causal",
+        346
+      ],
+      [
+        "scene_clamped_baseline->constant_velocity_causal_fd",
+        138
+      ]
+    ],
+    "conclusion": "Many easy samples should have remained on the strongest fallback instead of forced hard-label switching."
+  },
+  "group_summaries": {
+    "agent_type:Biker": {
+      "top_choices": [
+        [
+          "constant_velocity_causal_fd",
+          10028
+        ],
+        [
+          "scene_clamped_baseline",
+          4518
+        ],
+        [
+          "damped_velocity",
+          1167
+        ],
+        [
+          "goal_directed_baseline",
+          1144
+        ],
+        [
+          "constant_position",
+          661
+        ]
+      ],
+      "mean_harm_over_fallback": 6.464156559129239,
+      "count": 17682
+    },
+    "agent_type:Bus": {
+      "top_choices": [
+        [
+          "constant_position",
+          324
+        ],
+        [
+          "constant_velocity_causal_fd",
+          302
+        ],
+        [
+          "scene_clamped_baseline",
+          66
+        ],
+        [
+          "goal_directed_baseline",
+          46
+        ]
+      ],
+      "mean_harm_over_fallback": 18.907739998202338,
+      "count": 738
+    },
+    "agent_type:Car": {
+      "top_choices": [
+        [
+          "constant_position",
+          6015
+        ],
+        [
+          "scene_clamped_baseline",
+          1595
+        ],
+        [
+          "goal_directed_baseline",
+          250
+        ],
+        [
+          "constant_velocity_causal_fd",
+          140
+        ],
+        [
+          "damped_velocity",
+          5
+        ]
+      ],
+      "mean_harm_over_fallback": 15.702674203883998,
+      "count": 8005
+    },
+    "agent_type:Cart": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          668
+        ],
+        [
+          "constant_velocity_causal_fd",
+          623
+        ],
+        [
+          "constant_position",
+          329
+        ],
+        [
+          "goal_directed_baseline",
+          322
+        ],
+        [
+          "scene_clamped_baseline",
+          9
+        ]
+      ],
+      "mean_harm_over_fallback": 32.02595779444852,
+      "count": 1951
+    },
+    "agent_type:Pedestrian": {
+      "top_choices": [
+        [
+          "constant_position",
+          33339
+        ],
+        [
+          "damped_velocity",
+          24074
+        ],
+        [
+          "goal_directed_baseline",
+          7547
+        ],
+        [
+          "scene_clamped_baseline",
+          3642
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1192
+        ]
+      ],
+      "mean_harm_over_fallback": 27.18024448413009,
+      "count": 70048
+    },
+    "agent_type:Skater": {
+      "top_choices": [
+        [
+          "constant_velocity_causal_fd",
+          578
+        ],
+        [
+          "damped_velocity",
+          424
+        ],
+        [
+          "constant_position",
+          294
+        ],
+        [
+          "scene_clamped_baseline",
+          174
+        ],
+        [
+          "goal_directed_baseline",
+          106
+        ]
+      ],
+      "mean_harm_over_fallback": 12.105059670010194,
+      "count": 1576
+    },
+    "density_bucket:ge10": {
+      "top_choices": [
+        [
+          "constant_position",
+          29486
+        ],
+        [
+          "damped_velocity",
+          18089
+        ],
+        [
+          "constant_velocity_causal_fd",
+          9902
+        ],
+        [
+          "scene_clamped_baseline",
+          9305
+        ],
+        [
+          "goal_directed_baseline",
+          7162
+        ]
+      ],
+      "mean_harm_over_fallback": 22.307864795560544,
+      "count": 74361
+    },
+    "density_bucket:ge5": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          7465
+        ],
+        [
+          "constant_position",
+          6933
+        ],
+        [
+          "goal_directed_baseline",
+          2091
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1980
+        ],
+        [
+          "scene_clamped_baseline",
+          564
+        ]
+      ],
+      "mean_harm_over_fallback": 28.956695144221452,
+      "count": 19033
+    },
+    "density_bucket:lt5": {
+      "top_choices": [
+        [
+          "constant_position",
+          4543
+        ],
+        [
+          "constant_velocity_causal_fd",
+          981
+        ],
+        [
+          "damped_velocity",
+          784
+        ],
+        [
+          "goal_directed_baseline",
+          162
+        ],
+        [
+          "scene_clamped_baseline",
+          135
+        ]
+      ],
+      "mean_harm_over_fallback": 4.460657883423082,
+      "count": 6606
+    },
+    "easy:False": {
+      "top_choices": [
+        [
+          "constant_position",
+          14066
+        ],
+        [
+          "damped_velocity",
+          10763
+        ],
+        [
+          "constant_velocity_causal_fd",
+          5724
+        ],
+        [
+          "goal_directed_baseline",
+          5646
+        ],
+        [
+          "scene_clamped_baseline",
+          5484
+        ]
+      ],
+      "mean_harm_over_fallback": 28.32659759099948,
+      "count": 41755
+    },
+    "easy:True": {
+      "top_choices": [
+        [
+          "constant_position",
+          26896
+        ],
+        [
+          "damped_velocity",
+          15575
+        ],
+        [
+          "constant_velocity_causal_fd",
+          7139
+        ],
+        [
+          "scene_clamped_baseline",
+          4520
+        ],
+        [
+          "goal_directed_baseline",
+          3769
+        ]
+      ],
+      "mean_harm_over_fallback": 18.141607628266016,
+      "count": 58245
+    },
+    "hard:False": {
+      "top_choices": [
+        [
+          "constant_position",
+          2146
+        ],
+        [
+          "constant_velocity_causal_fd",
+          752
+        ],
+        [
+          "damped_velocity",
+          520
+        ],
+        [
+          "constant_acceleration_causal",
+          1
+        ]
+      ],
+      "mean_harm_over_fallback": 1.0933111659892647,
+      "count": 3419
+    },
+    "hard:True": {
+      "top_choices": [
+        [
+          "constant_position",
+          38816
+        ],
+        [
+          "damped_velocity",
+          25818
+        ],
+        [
+          "constant_velocity_causal_fd",
+          12111
+        ],
+        [
+          "scene_clamped_baseline",
+          10004
+        ],
+        [
+          "goal_directed_baseline",
+          9415
+        ]
+      ],
+      "mean_harm_over_fallback": 23.14841415852,
+      "count": 96581
+    },
+    "horizon:10": {
+      "top_choices": [
+        [
+          "constant_position",
+          18019
+        ],
+        [
+          "damped_velocity",
+          4979
+        ],
+        [
+          "constant_velocity_causal_fd",
+          2695
+        ],
+        [
+          "constant_acceleration_causal",
+          418
+        ],
+        [
+          "goal_directed_baseline",
+          225
+        ]
+      ],
+      "mean_harm_over_fallback": 2.6196738819502303,
+      "count": 26336
+    },
+    "horizon:100": {
+      "top_choices": [
+        [
+          "scene_clamped_baseline",
+          8399
+        ],
+        [
+          "goal_directed_baseline",
+          7775
+        ],
+        [
+          "constant_position",
+          3921
+        ],
+        [
+          "damped_velocity",
+          2273
+        ],
+        [
+          "constant_velocity_causal_fd",
+          758
+        ]
+      ],
+      "mean_harm_over_fallback": 80.50083160963293,
+      "count": 23126
+    },
+    "horizon:25": {
+      "top_choices": [
+        [
+          "constant_position",
+          11426
+        ],
+        [
+          "damped_velocity",
+          8207
+        ],
+        [
+          "constant_velocity_causal_fd",
+          5763
+        ],
+        [
+          "goal_directed_baseline",
+          223
+        ],
+        [
+          "scene_clamped_baseline",
+          109
+        ]
+      ],
+      "mean_harm_over_fallback": 3.10417854462273,
+      "count": 25728
+    },
+    "horizon:50": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          10879
+        ],
+        [
+          "constant_position",
+          7596
+        ],
+        [
+          "constant_velocity_causal_fd",
+          3647
+        ],
+        [
+          "scene_clamped_baseline",
+          1496
+        ],
+        [
+          "goal_directed_baseline",
+          1192
+        ]
+      ],
+      "mean_harm_over_fallback": 9.22679363019233,
+      "count": 24810
+    },
+    "scene:bookstore": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          2263
+        ],
+        [
+          "constant_position",
+          1742
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1498
+        ],
+        [
+          "scene_clamped_baseline",
+          1042
+        ],
+        [
+          "goal_directed_baseline",
+          591
+        ]
+      ],
+      "mean_harm_over_fallback": 13.283807089303043,
+      "count": 7137
+    },
+    "scene:coupa": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          1190
+        ],
+        [
+          "constant_position",
+          1130
+        ],
+        [
+          "scene_clamped_baseline",
+          651
+        ],
+        [
+          "constant_velocity_causal_fd",
+          420
+        ],
+        [
+          "goal_directed_baseline",
+          171
+        ]
+      ],
+      "mean_harm_over_fallback": 7.811798968312452,
+      "count": 3569
+    },
+    "scene:deathCircle": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          1223
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1046
+        ],
+        [
+          "goal_directed_baseline",
+          705
+        ],
+        [
+          "scene_clamped_baseline",
+          457
+        ],
+        [
+          "constant_position",
+          153
+        ]
+      ],
+      "mean_harm_over_fallback": 27.22305417779301,
+      "count": 3584
+    },
+    "scene:gates": {
+      "top_choices": [
+        [
+          "constant_velocity_causal_fd",
+          2170
+        ],
+        [
+          "damped_velocity",
+          1697
+        ],
+        [
+          "scene_clamped_baseline",
+          1242
+        ],
+        [
+          "constant_position",
+          1151
+        ],
+        [
+          "goal_directed_baseline",
+          631
+        ]
+      ],
+      "mean_harm_over_fallback": 13.682470731442383,
+      "count": 7197
+    },
+    "scene:hyang": {
+      "top_choices": [
+        [
+          "constant_position",
+          4615
+        ],
+        [
+          "damped_velocity",
+          3493
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1302
+        ],
+        [
+          "scene_clamped_baseline",
+          721
+        ],
+        [
+          "goal_directed_baseline",
+          659
+        ]
+      ],
+      "mean_harm_over_fallback": 10.105464245590266,
+      "count": 10790
+    },
+    "scene:little": {
+      "top_choices": [
+        [
+          "constant_velocity_causal_fd",
+          1542
+        ],
+        [
+          "scene_clamped_baseline",
+          799
+        ],
+        [
+          "damped_velocity",
+          501
+        ],
+        [
+          "constant_position",
+          494
+        ],
+        [
+          "goal_directed_baseline",
+          165
+        ]
+      ],
+      "mean_harm_over_fallback": 6.045773428063066,
+      "count": 3564
+    },
+    "scene:nexus": {
+      "top_choices": [
+        [
+          "constant_position",
+          24075
+        ],
+        [
+          "damped_velocity",
+          11233
+        ],
+        [
+          "goal_directed_baseline",
+          5038
+        ],
+        [
+          "scene_clamped_baseline",
+          4232
+        ],
+        [
+          "constant_velocity_causal_fd",
+          3558
+        ]
+      ],
+      "mean_harm_over_fallback": 28.026645464911457,
+      "count": 48177
+    },
+    "scene:quad": {
+      "top_choices": [
+        [
+          "constant_position",
+          7602
+        ],
+        [
+          "damped_velocity",
+          4738
+        ],
+        [
+          "goal_directed_baseline",
+          1455
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1327
+        ],
+        [
+          "scene_clamped_baseline",
+          860
+        ]
+      ],
+      "mean_harm_over_fallback": 27.5236650424414,
+      "count": 15982
+    },
+    "split:cross_scene": {
+      "top_choices": [
+        [
+          "constant_position",
+          25786
+        ],
+        [
+          "damped_velocity",
+          10749
+        ],
+        [
+          "goal_directed_baseline",
+          5811
+        ],
+        [
+          "scene_clamped_baseline",
+          3871
+        ],
+        [
+          "constant_velocity_causal_fd",
+          3782
+        ]
+      ],
+      "mean_harm_over_fallback": 31.31195454859078,
+      "count": 50000
+    },
+    "split:within_scene": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          15589
+        ],
+        [
+          "constant_position",
+          15176
+        ],
+        [
+          "constant_velocity_causal_fd",
+          9081
+        ],
+        [
+          "scene_clamped_baseline",
+          6133
+        ],
+        [
+          "goal_directed_baseline",
+          3604
+        ]
+      ],
+      "mean_harm_over_fallback": 13.47674582581997,
+      "count": 50000
+    },
+    "video:video0": {
+      "top_choices": [
+        [
+          "constant_position",
+          3357
+        ],
+        [
+          "damped_velocity",
+          986
+        ],
+        [
+          "constant_velocity_causal_fd",
+          790
+        ],
+        [
+          "scene_clamped_baseline",
+          648
+        ],
+        [
+          "goal_directed_baseline",
+          475
+        ]
+      ],
+      "mean_harm_over_fallback": 20.585552707767054,
+      "count": 6256
+    },
+    "video:video1": {
+      "top_choices": [
+        [
+          "constant_position",
+          2690
+        ],
+        [
+          "damped_velocity",
+          1342
+        ],
+        [
+          "goal_directed_baseline",
+          1058
+        ],
+        [
+          "constant_velocity_causal_fd",
+          850
+        ],
+        [
+          "scene_clamped_baseline",
+          344
+        ]
+      ],
+      "mean_harm_over_fallback": 39.25751848189714,
+      "count": 6284
+    },
+    "video:video10": {
+      "top_choices": [
+        [
+          "constant_position",
+          2918
+        ],
+        [
+          "damped_velocity",
+          1615
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1069
+        ],
+        [
+          "goal_directed_baseline",
+          568
+        ],
+        [
+          "scene_clamped_baseline",
+          419
+        ]
+      ],
+      "mean_harm_over_fallback": 24.291362833661942,
+      "count": 6589
+    },
+    "video:video11": {
+      "top_choices": [
+        [
+          "constant_position",
+          4068
+        ],
+        [
+          "damped_velocity",
+          913
+        ],
+        [
+          "scene_clamped_baseline",
+          770
+        ],
+        [
+          "goal_directed_baseline",
+          537
+        ],
+        [
+          "constant_velocity_causal_fd",
+          401
+        ]
+      ],
+      "mean_harm_over_fallback": 21.709878271500163,
+      "count": 6729
+    },
+    "video:video12": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          1034
+        ],
+        [
+          "constant_position",
+          860
+        ],
+        [
+          "constant_velocity_causal_fd",
+          724
+        ],
+        [
+          "scene_clamped_baseline",
+          634
+        ],
+        [
+          "goal_directed_baseline",
+          378
+        ]
+      ],
+      "mean_harm_over_fallback": 18.337981376864693,
+      "count": 3630
+    },
+    "video:video13": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          1686
+        ],
+        [
+          "constant_position",
+          1317
+        ],
+        [
+          "constant_velocity_causal_fd",
+          237
+        ],
+        [
+          "goal_directed_baseline",
+          230
+        ],
+        [
+          "scene_clamped_baseline",
+          48
+        ]
+      ],
+      "mean_harm_over_fallback": 9.859957329111387,
+      "count": 3518
+    },
+    "video:video14": {
+      "top_choices": [
+        [
+          "constant_position",
+          2438
+        ],
+        [
+          "damped_velocity",
+          773
+        ],
+        [
+          "constant_velocity_causal_fd",
+          341
+        ],
+        [
+          "goal_directed_baseline",
+          51
+        ],
+        [
+          "scene_clamped_baseline",
+          39
+        ]
+      ],
+      "mean_harm_over_fallback": 2.137220463505294,
+      "count": 3642
+    },
+    "video:video2": {
+      "top_choices": [
+        [
+          "damped_velocity",
+          2665
+        ],
+        [
+          "constant_position",
+          2400
+        ],
+        [
+          "goal_directed_baseline",
+          703
+        ],
+        [
+          "scene_clamped_baseline",
+          365
+        ],
+        [
+          "constant_velocity_causal_fd",
+          226
+        ]
+      ],
+      "mean_harm_over_fallback": 27.761074643180812,
+      "count": 6359
+    },
+    "video:video3": {
+      "top_choices": [
+        [
+          "constant_position",
+          6543
+        ],
+        [
+          "damped_velocity",
+          5281
+        ],
+        [
+          "constant_velocity_causal_fd",
+          2065
+        ],
+        [
+          "scene_clamped_baseline",
+          1704
+        ],
+        [
+          "goal_directed_baseline",
+          1132
+        ]
+      ],
+      "mean_harm_over_fallback": 20.273262987437793,
+      "count": 16795
+    },
+    "video:video4": {
+      "top_choices": [
+        [
+          "constant_position",
+          2348
+        ],
+        [
+          "damped_velocity",
+          1612
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1145
+        ],
+        [
+          "goal_directed_baseline",
+          919
+        ],
+        [
+          "scene_clamped_baseline",
+          623
+        ]
+      ],
+      "mean_harm_over_fallback": 23.325588205012412,
+      "count": 6647
+    },
+    "video:video5": {
+      "top_choices": [
+        [
+          "constant_position",
+          3005
+        ],
+        [
+          "scene_clamped_baseline",
+          1324
+        ],
+        [
+          "damped_velocity",
+          1021
+        ],
+        [
+          "constant_velocity_causal_fd",
+          1009
+        ],
+        [
+          "goal_directed_baseline",
+          309
+        ]
+      ],
+      "mean_harm_over_fallback": 11.170899409070012,
+      "count": 6668
+    },
+    "video:video6": {
+      "top_choices": [
+        [
+          "constant_position",
+          2425
+        ],
+        [
+          "damped_velocity",
+          2237
+        ],
+        [
+          "constant_velocity_causal_fd",
+          755
+        ],
+        [
+          "goal_directed_baseline",
+          747
+        ],
+        [
+          "scene_clamped_baseline",
+          530
+        ]
+      ],
+      "mean_harm_over_fallback": 23.321079666103508,
+      "count": 6695
+    },
+    "video:video7": {
+      "top_choices": [
+        [
+          "constant_velocity_causal_fd",
+          1926
+        ],
+        [
+          "constant_position",
+          1780
+        ],
+        [
+          "damped_velocity",
+          1429
+        ],
+        [
+          "goal_directed_baseline",
+          777
+        ],
+        [
+          "scene_clamped_baseline",
+          739
+        ]
+      ],
+      "mean_harm_over_fallback": 23.131163401819173,
+      "count": 6661
+    },
+    "video:video8": {
+      "top_choices": [
+        [
+          "constant_position",
+          2055
+        ],
+        [
+          "damped_velocity",
+          1753
+        ],
+        [
+          "scene_clamped_baseline",
+          984
+        ],
+        [
+          "goal_directed_baseline",
+          818
+        ],
+        [
+          "constant_velocity_causal_fd",
+          815
+        ]
+      ],
+      "mean_harm_over_fallback": 27.994273152092067,
+      "count": 6721
+    },
+    "video:video9": {
+      "top_choices": [
+        [
+          "constant_position",
+          2758
+        ],
+        [
+          "damped_velocity",
+          1991
+        ],
+        [
+          "scene_clamped_baseline",
+          833
+        ],
+        [
+          "goal_directed_baseline",
+          713
+        ],
+        [
+          "constant_velocity_causal_fd",
+          510
+        ]
+      ],
+      "mean_harm_over_fallback": 29.953327916980736,
+      "count": 6806
+    }
+  },
+  "feature_availability": {
+    "speed_bucket": "not present in Stage24 baseline eval rows; not used as inference feature in Stage25 runs",
+    "curvature_bucket": "not present in Stage24 baseline eval rows; not used as inference feature in Stage25 runs",
+    "density_bucket": "approximated by visible agent_count only",
+    "baseline_errors": "used only as labels/evaluation targets, never as inference features"
+  },
+  "feature_leakage_check": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "candidate_goals_train_only": true
+  },
+  "root_causes": {
+    "class_imbalance": true,
+    "label_ambiguity": true,
+    "train_val_test_distribution_shift": true,
+    "horizon_mixing": true,
+    "split_type_mixing": true,
+    "agent_type_mixing": true,
+    "confidence_calibration_failure": true,
+    "fallback_policy_failure": true,
+    "feature_insufficiency": true
+  },
+  "conclusion": "Stage24 failed because a hard best-baseline classifier optimized class labels, not regret. It over-switched low-margin/easy cases and had no conservative fallback gate."
+}

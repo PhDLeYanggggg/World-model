@@ -564,3 +564,24 @@ smc_ready = false
 verdict = stage24_sdd_fast_cache_medium_run_heads_not_stage5c_ready
 ```
 
+## Stage 25: Selector Failure Forensics and Regret-Minimizing Baseline Policy
+
+Stage 25 diagnoses why the Stage 24 hard-label selector failed despite large oracle headroom, then replaces hard classification with regret-aware expected-FDE selection plus confidence/gain/easy fallback gates.
+
+```text
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+selector_root_cause_identified = True
+regret_selector_effective = False
+soft_label_selector_effective = False
+hierarchical_selector_effective = False
+failure_assisted_selector_effective = False
+easy_preserved = True
+final_model_v1_2_upgraded = False
+latent_stage5c_ready = false
+smc_ready = false
+verdict = stage25_selector_forensics_regret_policy_executed_not_stage5c_ready
+```
+

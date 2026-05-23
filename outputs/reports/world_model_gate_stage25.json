@@ -1,0 +1,69 @@
+{
+  "gates": [
+    {
+      "gate": "Gate 1: Forensics Gate",
+      "passed": true,
+      "evidence": "Selector failure analysis completed and root causes recorded."
+    },
+    {
+      "gate": "Gate 2: Regret Selector Gate",
+      "passed": false,
+      "evidence": "Regret selector >=5% t50 or >=10% hard/failure."
+    },
+    {
+      "gate": "Gate 3: Easy Preservation Gate",
+      "passed": true,
+      "evidence": "Selected fallback policy keeps easy degradation <=2%."
+    },
+    {
+      "gate": "Gate 4: Harm Reduction Gate",
+      "passed": true,
+      "evidence": "Harm over fallback reduced compared with Stage24 hard selector."
+    },
+    {
+      "gate": "Gate 5: Failure-Assisted Gate",
+      "passed": false,
+      "evidence": "Failure predictor improves selector over no-failure variant."
+    },
+    {
+      "gate": "Gate 6: Hierarchical Selector Gate",
+      "passed": false,
+      "evidence": "Hierarchical split/horizon/agent policy improves over global regret selector."
+    },
+    {
+      "gate": "Gate 7: Fallback Policy Gate",
+      "passed": true,
+      "evidence": "Selected policy preserves easy cases while minimizing harm."
+    },
+    {
+      "gate": "Gate 8: Hard/Failure Gate",
+      "passed": false,
+      "evidence": "Hard or BaselineFailureBench improves >=10%."
+    },
+    {
+      "gate": "Gate 9: Scene/Goal Gate",
+      "passed": false,
+      "evidence": "Scene/goal measurable selector gain."
+    },
+    {
+      "gate": "Gate 10: Interaction Gate",
+      "passed": false,
+      "evidence": "Interaction measurable selector gain."
+    },
+    {
+      "gate": "Gate 11: Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Keep false unless selector + hard/failure + correction pass later; do not execute Stage5C."
+    },
+    {
+      "gate": "Gate 12: SMC Readiness Gate",
+      "passed": false,
+      "evidence": "Keep false."
+    }
+  ],
+  "gates_passed": 4,
+  "gates_total": 12,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "current_verdict": "stage25_selector_forensics_regret_policy_executed_not_stage5c_ready"
+}
