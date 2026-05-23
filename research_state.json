@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage19",
-  "current_verdict": "stage19_wam_style_data_engine_built_not_stage5c_ready",
-  "expert_audit_score": 91,
+  "current_stage": "stage20",
+  "current_verdict": "stage20_web_dataset_acquisition_package_built_stage5c_blocked",
+  "expert_audit_score": 92,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -105,9 +105,10 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage19_wam_data_registry.py && python run_stage19_verify_topdown_data.py --quick && python run_stage19_generate_simulation_data.py --quick && python run_stage19_auto_label_audit.py --quick && python run_stage19_build_wam_jepa_dataset.py --quick && python run_stage19_train_wam_jepa.py --quick && python run_stage19_eval.py --quick && python run_stage19_gates.py && python -m pytest tests",
+  "last_successful_command": "python run_stage20_web_dataset_search.py; python scripts/stage20_download_or_verify_datasets.py --dry-run; python scripts/stage20_verify_local_paths.py --all-priority; python run_stage20_verify_topdown_data.py; python run_stage20_gates.py; python -m pytest tests",
   "last_failed_command": "",
   "generated_reports": [
+    "outputs/data_registry/stage20_dataset_registry.md",
     "outputs/final_model/README_FINAL_MODEL.md",
     "outputs/final_model/data_card_final.md",
     "outputs/final_model/failure_analysis_final.md",
@@ -117,12 +118,14 @@
     "outputs/reports/auto_loop_iteration_report.md",
     "outputs/reports/auto_next_stage_plan.md",
     "outputs/reports/auto_orchestrator_current_state.md",
+    "outputs/reports/license_audit_stage20.md",
     "outputs/reports/report_stage14_final.md",
     "outputs/reports/report_stage15_final.md",
     "outputs/reports/report_stage16_final.md",
     "outputs/reports/report_stage17_final.md",
     "outputs/reports/report_stage18_final.md",
     "outputs/reports/report_stage19_final.md",
+    "outputs/reports/report_stage20_data_acquisition.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -138,15 +141,41 @@
     "outputs/reports/stage18_jepa_training_report.md",
     "outputs/reports/stage19_simulation_report.md",
     "outputs/reports/stage19_wam_data_registry.md",
+    "outputs/reports/stage20_download_plan.md",
+    "outputs/reports/stage20_topdown_priority_report.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
     "outputs/reports/world_model_gate_stage16.md",
     "outputs/reports/world_model_gate_stage17.md",
     "outputs/reports/world_model_gate_stage18.md",
-    "outputs/reports/world_model_gate_stage19.md"
+    "outputs/reports/world_model_gate_stage19.md",
+    "outputs/reports/world_model_gate_stage20.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
   ],
-  "git_commit_hash_if_available": "a64fe57"
+  "git_commit_hash_if_available": "a64fe57",
+  "stage20": {
+    "project_ran": true,
+    "web_search_completed": true,
+    "registry_updated": true,
+    "legal_download_plan_completed": true,
+    "successful_auto_download_sources": 0,
+    "successful_local_path_verifications": 4,
+    "successful_converted_sources": 3,
+    "new_official_topdown_benchmark_sources": 0,
+    "new_jepa_pretraining_sources": 1,
+    "new_t50_sources": 0,
+    "new_t100_sources": 0,
+    "needs_user_data": true,
+    "top_needed_data": [
+      "Stanford Drone Dataset",
+      "OpenTraj supported datasets",
+      "full ETH/UCY / EWAP"
+    ],
+    "stage5c_allowed": false,
+    "smc_allowed": false,
+    "verdict": "stage20_web_dataset_acquisition_package_built_stage5c_blocked",
+    "expert_audit_score": 92
+  }
 }

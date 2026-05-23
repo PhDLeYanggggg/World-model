@@ -1,0 +1,65 @@
+{
+  "stage": "stage20",
+  "gates_passed": 9,
+  "gates_total": 11,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "gates": [
+    {
+      "gate": "Gate 1: Web Search Gate",
+      "passed": true,
+      "evidence": "33 candidate sources found and deduplicated"
+    },
+    {
+      "gate": "Gate 2: Official Source Gate",
+      "passed": true,
+      "evidence": "31 official source URLs recorded"
+    },
+    {
+      "gate": "Gate 3: Legal Audit Gate",
+      "passed": true,
+      "evidence": "license/access fields populated for every candidate"
+    },
+    {
+      "gate": "Gate 4: Auto Download Gate",
+      "passed": true,
+      "evidence": "dry-run download plan generated; gated data requires user action"
+    },
+    {
+      "gate": "Gate 5: Local Path Gate",
+      "passed": true,
+      "evidence": "found_paths=4"
+    },
+    {
+      "gate": "Gate 6: Topdown Benchmark Gate",
+      "passed": true,
+      "evidence": "converted_count=3; user_action_generated=True"
+    },
+    {
+      "gate": "Gate 7: JEPA Pretraining Data Gate",
+      "passed": true,
+      "evidence": "JEPA sources registered; local/terms actions generated"
+    },
+    {
+      "gate": "Gate 8: No Leakage Gate",
+      "passed": true,
+      "evidence": "causal/no-future/no-test-goal policy written for converted indexes"
+    },
+    {
+      "gate": "Gate 9: Stage 21 Readiness Gate",
+      "passed": true,
+      "evidence": "Stage21 may proceed only for light-converted local sources; full official expansion still needs user data"
+    },
+    {
+      "gate": "Gate 10: Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Always false in Stage20; no latent generative training"
+    },
+    {
+      "gate": "Gate 11: SMC Readiness Gate",
+      "passed": false,
+      "evidence": "Always false in Stage20"
+    }
+  ],
+  "verdict": "stage20_web_dataset_acquisition_package_built_stage5c_blocked"
+}

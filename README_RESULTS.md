@@ -431,3 +431,22 @@ learned_model_beats_strongest_baseline = 否
 - Official benchmark remains real top-down pedestrian/drone trajectories.
 - Stage5C and SMC remain disabled.
 - Reports: `outputs/reports/report_stage19_final.md`, `outputs/reports/world_model_gate_stage19.md`.
+## Stage 20: Web Dataset Acquisition Agent
+
+Stage 20 searched and registered official/candidate data sources for multimodal 2.5D world-model data acquisition. It did not train models, did not enable latent generative Stage 5C, and did not enable SMC.
+
+```text
+candidate_sources = 33
+successful_auto_download_sources = 0
+successful_local_path_verifications = 4
+successful_converted_sources = 3
+new_official_topdown_benchmark_sources = 0
+stage20_gates = 9 / 11
+latent_stage5c_ready = false
+smc_ready = false
+verdict = stage20_web_dataset_acquisition_package_built_stage5c_blocked
+```
+
+Main conclusion:
+
+Stage 20 built the web-search registry, license audit, dry-run download plan, local-path verification, and data-acquisition package. The project still needs user-provided SDD/OpenTraj/full ETH-UCY paths for a stronger real top-down pedestrian/drone benchmark.

@@ -1,0 +1,98 @@
+{
+  "retrieval_date": "2026-05-23",
+  "candidate_sources": 33,
+  "official_sources": 31,
+  "rules": [
+    "Official pages/GitHub/data portals are preferred.",
+    "Kaggle/PapersWithCode/Academic Torrents are secondary mirrors only.",
+    "No login/license bypass, no unauthorized internet video scraping.",
+    "Egocentric video is representation pretraining only.",
+    "Traffic is diagnostic only."
+  ],
+  "top_priority": [
+    {
+      "dataset_name": "SyntheticMixedAgents2.5D",
+      "category": "simulation_and_synthetic",
+      "official_url": "local_project_generator",
+      "priority_score": 100,
+      "next_action": "Use only as curriculum/stress test, not official real benchmark."
+    },
+    {
+      "dataset_name": "SyntheticPhysicalCrowd2.5D",
+      "category": "simulation_and_synthetic",
+      "official_url": "local_project_generator",
+      "priority_score": 100,
+      "next_action": "Use only as curriculum/stress test, not official real benchmark."
+    },
+    {
+      "dataset_name": "UrbanCrowdSim2.5D",
+      "category": "simulation_and_synthetic",
+      "official_url": "local_project_generator",
+      "priority_score": 100,
+      "next_action": "Use only as curriculum/stress test, not official real benchmark."
+    },
+    {
+      "dataset_name": "UCY Crowd original",
+      "category": "real_topdown_pedestrian_drone_official_benchmark",
+      "official_url": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "priority_score": 95,
+      "next_action": "Verify original UCY path or use local TrajNet-origin UCY subset with source caveat."
+    },
+    {
+      "dataset_name": "full ETH/UCY / EWAP",
+      "category": "real_topdown_pedestrian_drone_official_benchmark",
+      "official_url": "https://icu.ee.ethz.ch/research/datsets.html",
+      "priority_score": 95,
+      "next_action": "Verify full local ETH/UCY path if user has it; keep t+100 diagnostic until enough rows."
+    },
+    {
+      "dataset_name": "BIWI Walking Pedestrians",
+      "category": "real_topdown_or_fixed_camera_auxiliary",
+      "official_url": "https://icu.ee.ethz.ch/research/datsets.html",
+      "priority_score": 85,
+      "next_action": "Verify local path/license if user wants auxiliary training data."
+    },
+    {
+      "dataset_name": "ETH pedestrian original / BIWI",
+      "category": "real_topdown_or_fixed_camera_auxiliary",
+      "official_url": "https://icu.ee.ethz.ch/research/datsets.html",
+      "priority_score": 85,
+      "next_action": "Verify local path/license if user wants auxiliary training data."
+    },
+    {
+      "dataset_name": "OpenTraj supported datasets",
+      "category": "real_topdown_pedestrian_drone_official_benchmark",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "priority_score": 85,
+      "next_action": "Provide OpenTraj local path or allow toolkit-only clone; verify underlying dataset licenses."
+    },
+    {
+      "dataset_name": "NGSIM",
+      "category": "traffic / driving diagnostic only",
+      "official_url": "https://ops.fhwa.dot.gov/trafficanalysistools/ngsim.htm",
+      "priority_score": 80,
+      "next_action": "Use only if legal local path exists and reports keep traffic separate."
+    },
+    {
+      "dataset_name": "Stanford Drone Dataset",
+      "category": "real_topdown_pedestrian_drone_official_benchmark",
+      "official_url": "https://cvgl.stanford.edu/projects/uav_data/",
+      "priority_score": 80,
+      "next_action": "User must provide local SDD path after accepting Stanford non-commercial terms."
+    },
+    {
+      "dataset_name": "Edinburgh Informatics Forum pedestrian trajectories",
+      "category": "real_topdown_or_fixed_camera_auxiliary",
+      "official_url": "https://homepages.inf.ed.ac.uk/rbf/FORUMTRACKING/",
+      "priority_score": 75,
+      "next_action": "Verify local path/license if user wants auxiliary training data."
+    },
+    {
+      "dataset_name": "Grand Central pedestrian trajectories",
+      "category": "real_topdown_or_fixed_camera_auxiliary",
+      "official_url": "http://www.ee.cuhk.edu.hk/~xgwang/grandcentral.html",
+      "priority_score": 75,
+      "next_action": "Verify local path/license if user wants auxiliary training data."
+    }
+  ]
+}
