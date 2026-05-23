@@ -520,3 +520,27 @@ Main conclusion:
 
 SDD is now usable as a real top-down pixel-space benchmark, but quick SDD-specific learned heads did not pass selector/correction/JEPA gates. Do not claim metric performance, true 3D, foundation-model status, Stage 5C readiness, or SMC readiness.
 
+## Stage 23: SDD Dual-Split Quick-Plus Benchmark
+
+Stage 23 adds SDD dual-split evaluation: cross-scene generalization and within-scene video split for scene/goal learning. The run completed in `quick-plus` mode, not full medium, and must not be reported as medium/full.
+
+```text
+current_model_type = 2.5D / pseudo-3D per-agent multi-agent trajectory world-state scaffold
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+dual_split_built = True
+medium_benchmark_built = False
+quick_plus_benchmark_built = True
+selector_effective = False
+failure_predictor_effective = False
+JEPA_effective = False
+correction_effective = False
+latent_stage5c_ready = false
+smc_ready = false
+verdict = stage23_sdd_quick_plus_dual_split_benchmark_heads_not_stage5c_ready
+```
+
+Main conclusion: dual-split SDD evaluation infrastructure is now in place, but validation-selected selector, failure predictor, JEPA, and correction specialist still do not clear the deterministic gates in quick-plus mode.
+

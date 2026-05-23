@@ -1,0 +1,186 @@
+{
+  "cross_scene": {
+    "train_scenes": [
+      "bookstore",
+      "coupa",
+      "deathCircle",
+      "gates",
+      "hyang"
+    ],
+    "val_scenes": [
+      "little"
+    ],
+    "test_scenes": [
+      "nexus",
+      "quad"
+    ],
+    "video_counts": {
+      "train": 40,
+      "val": 4,
+      "test": 16
+    },
+    "track_counts": {
+      "train": 8129,
+      "val": 656,
+      "test": 1515
+    },
+    "candidate_goal_availability": "train endpoint goals for train scenes; held-out test scenes visual-prior or diagnostic only",
+    "official_task": "cross-scene generalization"
+  },
+  "within_scene_video": {
+    "videos_per_scene": {
+      "bookstore": {
+        "train": [
+          "video0",
+          "video1",
+          "video2",
+          "video3"
+        ],
+        "val": [
+          "video4"
+        ],
+        "test": [
+          "video5",
+          "video6"
+        ]
+      },
+      "coupa": {
+        "train": [
+          "video0",
+          "video1"
+        ],
+        "val": [
+          "video2"
+        ],
+        "test": [
+          "video3"
+        ]
+      },
+      "deathCircle": {
+        "train": [
+          "video0",
+          "video1",
+          "video2"
+        ],
+        "val": [
+          "video3"
+        ],
+        "test": [
+          "video4"
+        ]
+      },
+      "gates": {
+        "train": [
+          "video0",
+          "video1",
+          "video2",
+          "video3",
+          "video4"
+        ],
+        "val": [
+          "video5",
+          "video6"
+        ],
+        "test": [
+          "video7",
+          "video8"
+        ]
+      },
+      "hyang": {
+        "train": [
+          "video0",
+          "video1",
+          "video2",
+          "video3",
+          "video4",
+          "video5",
+          "video6",
+          "video7",
+          "video8"
+        ],
+        "val": [
+          "video9",
+          "video10",
+          "video11"
+        ],
+        "test": [
+          "video12",
+          "video13",
+          "video14"
+        ]
+      },
+      "little": {
+        "train": [
+          "video0",
+          "video1"
+        ],
+        "val": [
+          "video2"
+        ],
+        "test": [
+          "video3"
+        ]
+      },
+      "nexus": {
+        "train": [
+          "video0",
+          "video1",
+          "video2",
+          "video3",
+          "video4",
+          "video5",
+          "video6"
+        ],
+        "val": [
+          "video7",
+          "video8"
+        ],
+        "test": [
+          "video9",
+          "video10",
+          "video11"
+        ]
+      },
+      "quad": {
+        "train": [
+          "video0",
+          "video1"
+        ],
+        "val": [
+          "video2"
+        ],
+        "test": [
+          "video3"
+        ]
+      }
+    },
+    "video_counts": {
+      "train": 34,
+      "val": 12,
+      "test": 14
+    },
+    "track_counts": {
+      "train": 6959,
+      "val": 1983,
+      "test": 1358
+    },
+    "train_endpoint_counts_by_scene": {
+      "bookstore": 1140,
+      "coupa": 205,
+      "deathCircle": 1893,
+      "gates": 1055,
+      "hyang": 1575,
+      "little": 229,
+      "nexus": 835,
+      "quad": 27
+    },
+    "candidate_goal_availability": "candidate goals can be built from same-scene train videos only",
+    "official_task": "scene/goal learning, not strict cross-scene generalization"
+  },
+  "leakage_audit_risk": "low if split_type is respected; metrics must not be mixed",
+  "rules": [
+    "cross_scene is official for scene generalization.",
+    "within_scene_video is official for scene/goal learning.",
+    "test endpoints are never used for candidate goal construction."
+  ]
+}

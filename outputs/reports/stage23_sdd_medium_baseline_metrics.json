@@ -1,0 +1,146 @@
+{
+  "mode": "quick-plus",
+  "evaluated_rows_per_split_type": {
+    "cross_scene": 500,
+    "within_scene": 500
+  },
+  "strongest_baseline_by_split_horizon": {
+    "cross_scene": {
+      "25": {
+        "baseline": "damped_velocity",
+        "FDE": 15.199630975723267
+      },
+      "100": {
+        "baseline": "damped_velocity",
+        "FDE": 61.17414436183992
+      },
+      "10": {
+        "baseline": "damped_velocity",
+        "FDE": 4.60066444505521
+      },
+      "50": {
+        "baseline": "damped_velocity",
+        "FDE": 28.031838707563256
+      }
+    },
+    "within_scene": {
+      "100": {
+        "baseline": "scene_clamped_baseline",
+        "FDE": 45.182827363934436
+      },
+      "50": {
+        "baseline": "scene_clamped_baseline",
+        "FDE": 21.29365387475379
+      },
+      "25": {
+        "baseline": "damped_velocity",
+        "FDE": 14.405486422915791
+      },
+      "10": {
+        "baseline": "damped_velocity",
+        "FDE": 4.44058446486791
+      }
+    }
+  },
+  "mean_metrics": {
+    "cross_scene": {
+      "25": {
+        "constant_position": 21.579100885811975,
+        "constant_velocity_causal_fd": 20.51095083005288,
+        "damped_velocity": 15.199630975723267,
+        "constant_acceleration_causal": 393.71491923577645,
+        "constant_turn_rate_velocity": 20.51095083005288,
+        "scene_clamped_baseline": 20.51095083005288,
+        "goal_directed_baseline": 268.87513835640516
+      },
+      "100": {
+        "constant_position": 75.67108155078576,
+        "constant_velocity_causal_fd": 79.9463352140833,
+        "damped_velocity": 61.17414436183992,
+        "constant_acceleration_causal": 5164.9867025281565,
+        "constant_turn_rate_velocity": 79.9463352140833,
+        "scene_clamped_baseline": 75.94387943236555,
+        "goal_directed_baseline": 338.72698771367305
+      },
+      "10": {
+        "constant_position": 5.44893038563612,
+        "constant_velocity_causal_fd": 5.623629697939244,
+        "damped_velocity": 4.60066444505521,
+        "constant_acceleration_causal": 46.36156608224884,
+        "constant_turn_rate_velocity": 5.623629697939244,
+        "scene_clamped_baseline": 5.623629697939244,
+        "goal_directed_baseline": 277.5117330531764
+      },
+      "50": {
+        "constant_position": 36.71558432819462,
+        "constant_velocity_causal_fd": 33.52780265367332,
+        "damped_velocity": 28.031838707563256,
+        "constant_acceleration_causal": 1225.5254392784184,
+        "constant_turn_rate_velocity": 33.52780265367332,
+        "scene_clamped_baseline": 31.772387354313825,
+        "goal_directed_baseline": 320.3597489765712
+      }
+    },
+    "within_scene": {
+      "100": {
+        "constant_position": 76.61060825147126,
+        "constant_velocity_causal_fd": 54.52281322813871,
+        "damped_velocity": 62.35446242282265,
+        "constant_acceleration_causal": 3559.125978771009,
+        "constant_turn_rate_velocity": 54.52281322813871,
+        "scene_clamped_baseline": 45.182827363934436,
+        "goal_directed_baseline": 229.21548393316436
+      },
+      "50": {
+        "constant_position": 29.517348076695594,
+        "constant_velocity_causal_fd": 21.582354388504385,
+        "damped_velocity": 21.52771816409637,
+        "constant_acceleration_causal": 669.226925675,
+        "constant_turn_rate_velocity": 21.582354388504385,
+        "scene_clamped_baseline": 21.29365387475379,
+        "goal_directed_baseline": 171.72263645902973
+      },
+      "25": {
+        "constant_position": 25.251684362574142,
+        "constant_velocity_causal_fd": 16.0142444640167,
+        "damped_velocity": 14.405486422915791,
+        "constant_acceleration_causal": 250.57051703356956,
+        "constant_turn_rate_velocity": 16.0142444640167,
+        "scene_clamped_baseline": 14.840433948723845,
+        "goal_directed_baseline": 143.4032100854918
+      },
+      "10": {
+        "constant_position": 8.767314434846242,
+        "constant_velocity_causal_fd": 4.875082743167877,
+        "damped_velocity": 4.44058446486791,
+        "constant_acceleration_causal": 35.25499180873235,
+        "constant_turn_rate_velocity": 4.875082743167877,
+        "scene_clamped_baseline": 4.872277198632558,
+        "goal_directed_baseline": 130.5606420580546
+      }
+    }
+  },
+  "damped_velocity_still_strongest": true,
+  "selector_oracle_headroom_vs_damped_velocity": {
+    "cross_scene": 0.15804028771313627,
+    "within_scene": 0.41022737821256927
+  },
+  "best_baseline_choice_distribution": {
+    "cross_scene:goal_directed_baseline": 6,
+    "cross_scene:constant_position": 359,
+    "cross_scene:damped_velocity": 98,
+    "cross_scene:constant_velocity_causal_fd": 36,
+    "cross_scene:scene_clamped_baseline": 1,
+    "within_scene:constant_position": 347,
+    "within_scene:damped_velocity": 72,
+    "within_scene:constant_velocity_causal_fd": 66,
+    "within_scene:constant_acceleration_causal": 1,
+    "within_scene:goal_directed_baseline": 10,
+    "within_scene:scene_clamped_baseline": 4
+  },
+  "t100_status": "raw-frame pixel-space; effective seconds unknown",
+  "baseline_eval_jsonl": {
+    "cross_scene": "data/stage23_sdd_medium_episodes/cross_scene_test_baseline_eval.jsonl",
+    "within_scene": "data/stage23_sdd_medium_episodes/within_scene_test_baseline_eval.jsonl"
+  }
+}

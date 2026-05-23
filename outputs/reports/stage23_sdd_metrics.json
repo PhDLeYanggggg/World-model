@@ -1,0 +1,90 @@
+{
+  "mode": "quick-plus",
+  "strongest_baseline": {
+    "cross_scene": {
+      "25": {
+        "baseline": "damped_velocity",
+        "FDE": 15.199630975723267
+      },
+      "100": {
+        "baseline": "damped_velocity",
+        "FDE": 61.17414436183992
+      },
+      "10": {
+        "baseline": "damped_velocity",
+        "FDE": 4.60066444505521
+      },
+      "50": {
+        "baseline": "damped_velocity",
+        "FDE": 28.031838707563256
+      }
+    },
+    "within_scene": {
+      "100": {
+        "baseline": "scene_clamped_baseline",
+        "FDE": 45.182827363934436
+      },
+      "50": {
+        "baseline": "scene_clamped_baseline",
+        "FDE": 21.29365387475379
+      },
+      "25": {
+        "baseline": "damped_velocity",
+        "FDE": 14.405486422915791
+      },
+      "10": {
+        "baseline": "damped_velocity",
+        "FDE": 4.44058446486791
+      }
+    }
+  },
+  "models": [
+    {
+      "model": "strongest_baseline",
+      "official_t50_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0
+    },
+    {
+      "model": "selector_oracle_diagnostic",
+      "official_t50_improvement": 0.41315631488769006,
+      "hard_failure_improvement": 0.41315631488769006,
+      "easy_degradation": 0.0
+    },
+    {
+      "model": "validation_selected_selector",
+      "official_t50_improvement": 0.02656760613375428,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.7824685071568545
+    },
+    {
+      "model": "jepa_enhanced_selector",
+      "official_t50_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0
+    },
+    {
+      "model": "correction_specialist",
+      "official_t50_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0
+    },
+    {
+      "model": "bpsg_ma_v1_fallback",
+      "official_t50_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0
+    }
+  ],
+  "selector_regret": 15.321589046478271,
+  "failure_AUROC": 0.64975,
+  "jepa_lift": {
+    "selector": 0.0,
+    "failure": 0.0,
+    "correction": 0.0
+  },
+  "scene_goal_lift": 0.0,
+  "interaction_lift": 0.0,
+  "physical_validity": "no learned correction applied; fallback preserves baseline diagnostics",
+  "t100_raw_frame_status": "diagnostic / raw-frame pixel-space"
+}

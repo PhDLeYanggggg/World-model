@@ -1,0 +1,12 @@
+# Stage 23 SDD Selector Report
+
+- mode: `quick-plus`
+- validation_selected: `True`
+- policies: `{'cross_scene': {'h25': 'constant_position', 'h100': 'constant_position', 'h10': 'constant_position', 'h50': 'constant_position', 'default': 'damped_velocity'}, 'within_scene': {'h25': 'constant_position', 'h10': 'constant_position', 'h50': 'constant_position', 'h100': 'constant_position', 'default': 'damped_velocity'}}`
+- results_by_split: `{'cross_scene': {'improvement': -0.9736640985281678, 'regret': 11.793488505840301, 'accuracy': 0.718, 'easy_degradation': 1.564937014313709}, 'within_scene': {'improvement': -0.25355220025211794, 'regret': 18.84968958711624, 'accuracy': 0.694, 'easy_degradation': 0.0}}`
+- official_t50_improvement: `0.02656760613375428`
+- selector_accuracy: `0.706`
+- selector_regret: `15.321589046478271`
+- easy_degradation: `0.7824685071568545`
+- hard_failure_improvement: `0.0`
+- passed_5pct_gate: `False`

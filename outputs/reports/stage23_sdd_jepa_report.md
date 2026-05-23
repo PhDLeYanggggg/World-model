@@ -1,0 +1,22 @@
+# Stage 23 SDD JEPA Report
+
+- mode: `quick-plus`
+- model: `stage23_sdd_jepa_surrogate_probe`
+- trajectory_only_jepa: `True`
+- scene_raster_jepa: `True`
+- scene_image_jepa_if_loading_works: `False`
+- trajectory_scene_interaction_jepa: `True`
+- autoregressive_transformer: `False`
+- pixel_reconstruction: `False`
+- latent_rollout: `False`
+- smc: `False`
+- non_collapse_variance: `1.6`
+- non_collapse: `True`
+- selector_probe_lift: `0.0`
+- failure_predictor_probe_lift: `0.0`
+- goal_predictor_probe_lift: `0.0`
+- hard_failure_correction_lift: `0.0`
+- t50_lift: `0.0`
+- t100_raw_frame_lift_diagnostic: `0.0`
+- verdict: `non_collapse_but_no_downstream_lift_in_quick_plus_probe`
+- episodes_seen_proxy: `{'cross_scene': 64800, 'within_scene': 64800}`
