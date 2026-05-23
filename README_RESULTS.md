@@ -473,3 +473,27 @@ smc_ready = false
 Main conclusion:
 
 The next concrete step is full SDD world-state conversion with scene split, train-only goal dictionaries, causal velocity, horizon audit, and no-leakage validation. The raw-frame t+50/t+100 counts are real annotation-frame availability, but they are not metric-world claims and not yet full official benchmark results.
+
+## Stage 21: SDD World-State Conversion
+
+The user-provided Stanford Drone Dataset archive has been converted into per-video pixel-space world-state shards. This is not a metric world model claim: no homography/scale has been verified yet, and effective seconds for t+50/t+100 are not claimed until FPS audit.
+
+```text
+sdd_world_state_rows = 10616256
+sdd_tracks = 10300
+sdd_scenes = 8
+sdd_videos = 60
+sdd_raw_frame_t50_samples = 10009005
+sdd_raw_frame_t100_samples = 9497463
+scene_level_split = train 40 videos / val 4 videos / test 16 videos
+no_leakage_audit = pass
+coordinate_status = pixel-space
+metric_status = no homography/scale verified
+latent_stage5c_ready = false
+smc_ready = false
+```
+
+Main conclusion:
+
+Stage 21 turns the user-provided SDD archive into usable local world-state shards and confirms raw-frame long-horizon availability. The next step is to build per-agent multi-agent episodes, train-only candidate goals, scene packs, and then re-benchmark deterministic baselines/head models without claiming metric performance.
+

@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage21_user_provided_data_intake",
-  "current_verdict": "stage21_user_provided_sdd_opentraj_ingested_full_conversion_next",
+  "current_stage": "stage21_sdd_world_state_conversion",
+  "current_verdict": "stage21_sdd_world_state_converted_stage5c_blocked",
   "expert_audit_score": 92,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -98,9 +98,9 @@
     "Stage 5C Readiness Gate"
   ],
   "next_actions": [
-    "build_full_sdd_world_state_rows",
-    "create_scene_split_and_train_only_goals",
-    "run_sdd_horizon_and_no_leakage_audit"
+    "build_sdd_per_agent_multiagent_episodes",
+    "build_sdd_scene_packs_train_only_goals",
+    "benchmark_bpsg_ma_on_sdd_pixel_space"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
@@ -126,6 +126,7 @@
     "outputs/reports/report_stage18_final.md",
     "outputs/reports/report_stage19_final.md",
     "outputs/reports/report_stage20_data_acquisition.md",
+    "outputs/reports/report_stage21_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -144,6 +145,9 @@
     "outputs/reports/stage20_download_plan.md",
     "outputs/reports/stage20_topdown_priority_report.md",
     "outputs/reports/stage21_kaggle_command_status.md",
+    "outputs/reports/stage21_sdd_conversion_report.md",
+    "outputs/reports/stage21_sdd_horizon_audit.md",
+    "outputs/reports/stage21_sdd_no_leakage_audit.md",
     "outputs/reports/stage21_user_provided_data_intake.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
@@ -190,6 +194,24 @@
     "sdd_raw_frame_t100_samples": 9589470,
     "coordinate_status": "pixel-space",
     "metric_status": "no homography/scale verified",
+    "stage5c_ready": false,
+    "smc_ready": false
+  },
+  "stage21_sdd_conversion": {
+    "world_state_rows": 10616256,
+    "tracks": 10300,
+    "scenes": 8,
+    "videos": 60,
+    "raw_frame_t50_samples": 10009005,
+    "raw_frame_t100_samples": 9497463,
+    "coordinate_status": "pixel-space",
+    "metric_status": "no homography/scale verified",
+    "no_leakage_pass": true,
+    "scene_split": {
+      "train": 40,
+      "val": 4,
+      "test": 16
+    },
     "stage5c_ready": false,
     "smc_ready": false
   }
