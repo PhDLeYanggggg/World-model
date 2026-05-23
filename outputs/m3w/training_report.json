@@ -1,0 +1,47 @@
+{
+  "project_name": "M3W: Real-World Multimodal Agent-Scene World Model",
+  "mode": "small",
+  "backend": "numpy_safe_fallback_due_torch_openmp_shm_blocker",
+  "torch_execution_status": "blocked_by_uninterruptible_openmp_shm_process",
+  "variants": {
+    "jepa_only": {
+      "variant": "jepa_only",
+      "feature_dim": 54,
+      "val_loss": 1.2175697326776573,
+      "jepa_stats": [
+        {
+          "latent_variance": 1.7277342081069946,
+          "explained_variance": 0.9498433212050956
+        }
+      ]
+    },
+    "transformer_only": {
+      "variant": "transformer_only",
+      "feature_dim": 90,
+      "val_loss": 1.1551674894517419,
+      "jepa_stats": []
+    },
+    "hybrid": {
+      "variant": "hybrid",
+      "feature_dim": 122,
+      "val_loss": 1.1254322031647461,
+      "jepa_stats": [
+        {
+          "latent_variance": 1.7277342081069946,
+          "explained_variance": 0.9498433212050956
+        }
+      ]
+    }
+  },
+  "best": {
+    "variant": "hybrid",
+    "val_loss": 1.1254322031647461,
+    "checkpoint": "outputs/m3w/checkpoints/best_small.pt"
+  },
+  "true_3d": false,
+  "foundation_world_model": false,
+  "latent_generative": false,
+  "smc": false,
+  "ordinary_residual_trained": false,
+  "elapsed_s": 0.39959025382995605
+}

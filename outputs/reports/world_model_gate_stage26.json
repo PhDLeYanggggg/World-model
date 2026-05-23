@@ -1,0 +1,59 @@
+{
+  "gates": [
+    {
+      "gate": "Gate 1: Feature Store Gate",
+      "passed": true,
+      "evidence": "Causal feature store built with no forbidden inputs."
+    },
+    {
+      "gate": "Gate 2: Expected-FDE Selector Gate",
+      "passed": true,
+      "evidence": "Expected-FDE/risk selector trained."
+    },
+    {
+      "gate": "Gate 3: Failure-assisted Selector Gate",
+      "passed": true,
+      "evidence": "Failure probability used as auxiliary switching gate."
+    },
+    {
+      "gate": "Gate 4: t+50 Gate",
+      "passed": true,
+      "evidence": "t+50 improvement >=5%."
+    },
+    {
+      "gate": "Gate 5: Hard/Failure Gate",
+      "passed": true,
+      "evidence": "hard/failure improvement >=10%."
+    },
+    {
+      "gate": "Gate 6: Easy Preservation Gate",
+      "passed": true,
+      "evidence": "easy degradation <=2%."
+    },
+    {
+      "gate": "Gate 7: Regret Gate",
+      "passed": true,
+      "evidence": "selector regret lower than Stage25/majority-style selector."
+    },
+    {
+      "gate": "Gate 8: Correction Scope Gate",
+      "passed": true,
+      "evidence": "No correction specialist was trained in Stage26; ordinary residual training remained forbidden."
+    },
+    {
+      "gate": "Gate 9: Stage5C Readiness Gate",
+      "passed": false,
+      "evidence": "latent generative remains forbidden."
+    },
+    {
+      "gate": "Gate 10: SMC Readiness Gate",
+      "passed": false,
+      "evidence": "SMC remains forbidden."
+    }
+  ],
+  "gates_passed": 8,
+  "gates_total": 10,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "current_verdict": "stage26_feature_complete_cost_aware_selector_executed_not_stage5c_ready"
+}

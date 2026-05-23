@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage25",
-  "current_verdict": "stage25_selector_forensics_regret_policy_executed_not_stage5c_ready",
-  "expert_audit_score": 96,
+  "current_stage": "m3w_small",
+  "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable",
+  "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -98,8 +98,8 @@
     "Stage 5C Readiness Gate"
   ],
   "next_actions": [
-    "causal_motion_feature_extraction_for_selector",
-    "regret_selector_rerun_with_speed_curvature_density",
+    "stage26_feature_importance_forensics",
+    "scene_agent_distribution_shift_analysis",
     "sdd_time_geometry_followup"
   ],
   "blockers_requiring_user": [
@@ -114,6 +114,12 @@
     "outputs/final_model/failure_analysis_final.md",
     "outputs/final_model/model_card_final.md",
     "outputs/final_model/report_final_model.md",
+    "outputs/m3w/data_card_m3w.md",
+    "outputs/m3w/failure_analysis_m3w.md",
+    "outputs/m3w/m3w_next_steps.md",
+    "outputs/m3w/model_card_m3w.md",
+    "outputs/m3w/report_m3w_final.md",
+    "outputs/m3w/world_model_gate_m3w.md",
     "outputs/reports/auto_gate_report.md",
     "outputs/reports/auto_loop_iteration_report.md",
     "outputs/reports/auto_next_stage_plan.md",
@@ -131,6 +137,7 @@
     "outputs/reports/report_stage23_final.md",
     "outputs/reports/report_stage24_final.md",
     "outputs/reports/report_stage25_final.md",
+    "outputs/reports/report_stage26_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -160,6 +167,8 @@
     "outputs/reports/stage24_sdd_fast_cache_report.md",
     "outputs/reports/stage25_sdd_benchmark_report.md",
     "outputs/reports/stage25_selector_failure_forensics.md",
+    "outputs/reports/stage26_feature_store_report.md",
+    "outputs/reports/stage26_sdd_benchmark_report.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
     "outputs/reports/world_model_gate_stage16.md",
@@ -170,7 +179,8 @@
     "outputs/reports/world_model_gate_stage22.md",
     "outputs/reports/world_model_gate_stage23.md",
     "outputs/reports/world_model_gate_stage24.md",
-    "outputs/reports/world_model_gate_stage25.md"
+    "outputs/reports/world_model_gate_stage25.md",
+    "outputs/reports/world_model_gate_stage26.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -305,5 +315,176 @@
     "smc_ready": false,
     "current_verdict": "stage25_selector_forensics_regret_policy_executed_not_stage5c_ready",
     "expert_audit_score": 96
+  },
+  "stage26": {
+    "project_ran": true,
+    "feature_store_built": true,
+    "expected_fde_selector_trained": true,
+    "failure_assisted_selector_trained": true,
+    "selected_model": "stage26_failure_assisted_selector",
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11232167634621226,
+    "easy_degradation": 0.01808836280803794,
+    "t50_gate_passed": true,
+    "hard_failure_gate_passed": true,
+    "easy_gate_passed": true,
+    "correction_specialist_trained": false,
+    "stage5c_ready": false,
+    "smc_ready": false,
+    "current_verdict": "stage26_feature_complete_cost_aware_selector_executed_not_stage5c_ready",
+    "expert_audit_score": 97
+  },
+  "m3w": {
+    "metrics": {
+      "checkpoint": "outputs/m3w/checkpoints/best_small.pt",
+      "backend": "numpy_safe_fallback_due_torch_openmp_shm_blocker",
+      "variant": "hybrid",
+      "selected_policy": {
+        "confidence_threshold": 0.2,
+        "gain_threshold": 50.0,
+        "failure_threshold": 0.6
+      },
+      "validation_metrics": {
+        "improvement_over_strongest": 0.019413130982683158,
+        "official_t50_improvement": -0.003424870783126144,
+        "diagnostic_t100_raw_frame_improvement": 0.034867398872426514,
+        "hard_failure_improvement": 0.01946962341658498,
+        "easy_degradation": 0.015277013524863214,
+        "selector_regret": 14.95018482208252,
+        "harm_over_fallback": -0.7481511831283569,
+        "switch_rate": 0.00785,
+        "mean_confidence": 22.00649070739746,
+        "selected_distribution": {
+          "constant_position": 8,
+          "constant_velocity_causal_fd": 0,
+          "damped_velocity": 17615,
+          "constant_acceleration_causal": 2,
+          "constant_turn_rate_velocity": 0,
+          "scene_clamped_baseline": 2359,
+          "goal_directed_baseline": 16
+        }
+      },
+      "test_metrics": {
+        "improvement_over_strongest": 0.005504731734828794,
+        "official_t50_improvement": -0.0003516511641914466,
+        "diagnostic_t100_raw_frame_improvement": 0.010443865042999878,
+        "hard_failure_improvement": 0.00565237402143326,
+        "easy_degradation": 0.006164539707586902,
+        "selector_regret": 6.700786113739014,
+        "harm_over_fallback": -0.14283888041973114,
+        "switch_rate": 0.00389,
+        "mean_confidence": 36.20978546142578,
+        "selected_distribution": {
+          "constant_position": 39,
+          "constant_velocity_causal_fd": 0,
+          "damped_velocity": 88514,
+          "constant_acceleration_causal": 0,
+          "constant_turn_rate_velocity": 0,
+          "scene_clamped_baseline": 11353,
+          "goal_directed_baseline": 94
+        }
+      },
+      "stage26_selector": {
+        "t50_improvement": 0.14583655843823773,
+        "hard_failure_improvement": 0.11232167634621226,
+        "easy_degradation": 0.01808836280803794
+      },
+      "beats_stage26_selector": false,
+      "failure_AUROC": 0.9364380811532312,
+      "failure_AUPRC": 0.5470499708612074,
+      "failure_ECE": 0.4459426108889468,
+      "interaction_AUROC": 0.9978516972323822,
+      "occupancy_MSE": 3.8395533920265734e-05,
+      "jepa_latent_variance": 1.7277342081069946,
+      "jepa_non_collapse": true,
+      "jepa_downstream_lift": false,
+      "transformer_dynamics_lift": false,
+      "goal_metrics": "diagnostic_unavailable_no_human_goal_labels",
+      "physical_validity": "selected physical baseline only; no residual/correction",
+      "t100_status": "raw-frame diagnostic, not seconds-level",
+      "metric_status": "pixel-space only"
+    },
+    "gates": {
+      "gates": [
+        {
+          "gate": "Data Gate",
+          "passed": true,
+          "evidence": "SDD Stage26 feature store available."
+        },
+        {
+          "gate": "No Leakage Gate",
+          "passed": true,
+          "evidence": "Feature store audit forbids future/test leakage."
+        },
+        {
+          "gate": "JEPA Non-Collapse Gate",
+          "passed": false,
+          "evidence": "Full torch JEPA non-collapse is required; NumPy fallback latent variance is diagnostic only."
+        },
+        {
+          "gate": "JEPA Downstream Gate",
+          "passed": false,
+          "evidence": "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."
+        },
+        {
+          "gate": "Transformer Dynamics Gate",
+          "passed": false,
+          "evidence": "Torch Transformer dynamics must execute; NumPy hybrid surrogate is diagnostic only."
+        },
+        {
+          "gate": "Selector Gate",
+          "passed": false,
+          "evidence": "Selector improves strongest baseline or Stage26."
+        },
+        {
+          "gate": "Hard/Failure Gate",
+          "passed": false,
+          "evidence": "Hard/failure improvement >=10%."
+        },
+        {
+          "gate": "Easy Preservation Gate",
+          "passed": true,
+          "evidence": "Easy degradation <=2%."
+        },
+        {
+          "gate": "Scene/Goal Gate",
+          "passed": false,
+          "evidence": "Scene/goal lift not proven; goal labels remain diagnostic."
+        },
+        {
+          "gate": "Interaction Gate",
+          "passed": true,
+          "evidence": "Interaction risk head has measurable signal."
+        },
+        {
+          "gate": "Physical Validity Gate",
+          "passed": true,
+          "evidence": "Selected physical baseline only; no residual/correction violates validity."
+        },
+        {
+          "gate": "Reproducibility Gate",
+          "passed": true,
+          "evidence": "Checkpoint and config-backed run available."
+        },
+        {
+          "gate": "Stage5C Plan Readiness",
+          "passed": false,
+          "evidence": "Only plan allowed after full gates; not ready and not executed."
+        },
+        {
+          "gate": "SMC Readiness",
+          "passed": false,
+          "evidence": "SMC remains false."
+        }
+      ],
+      "gates_passed": 6,
+      "gates_total": 14,
+      "m3w_success": false,
+      "foundation_track_prototype": false,
+      "stage5c_ready": false,
+      "smc_ready": false,
+      "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable",
+      "stage26_remains_best_deployable": true
+    }
   }
 }

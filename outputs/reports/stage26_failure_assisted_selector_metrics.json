@@ -1,0 +1,97 @@
+{
+  "trained": true,
+  "uses_stage24_passed_failure_predictor_role": true,
+  "stage24_failure_predictor_AUROC": 0.8714731936246393,
+  "stage26_failure_aux_AUROC": 0.948231574450493,
+  "stage26_failure_aux_AUPRC": 0.5714820292226483,
+  "stage26_failure_aux_Brier": 0.0846478448804357,
+  "failure_meta": {
+    "risk_threshold": 95.20766448974608,
+    "positive_rate": 0.1
+  },
+  "selected_policy": {
+    "policy_family": "stage26_failure_assisted_expected_fde",
+    "risk_weight": 0.0,
+    "confidence_threshold": 0.0,
+    "predicted_gain_threshold_px": 10.0,
+    "easy_predicted_threshold_px": 10.0,
+    "max_switch_risk_delta": 0.05,
+    "failure_probability_threshold": 0.2
+  },
+  "validation_eval": {
+    "n": 20000,
+    "improvement_over_strongest": 0.2800251892046006,
+    "official_t50_improvement": 0.3229272024934863,
+    "diagnostic_t100_raw_frame_improvement": 0.29683778997342847,
+    "hard_failure_improvement": 0.2800905835064138,
+    "easy_degradation": 0.04632671580001113,
+    "selector_regret": 4.906628612312675,
+    "harm_over_fallback": -10.791706451302767,
+    "switch_rate": 0.1101,
+    "accuracy_to_oracle_best": 0.12575,
+    "mean_confidence": 0.12299205417899084,
+    "selected_distribution": {
+      "damped_velocity": 16015,
+      "constant_turn_rate_velocity": 168,
+      "scene_clamped_baseline": 3387,
+      "constant_velocity_causal_fd": 300,
+      "constant_position": 89,
+      "goal_directed_baseline": 39,
+      "constant_acceleration_causal": 2
+    },
+    "by_split_improvement": {
+      "cross_scene": 0.35746199071199414,
+      "within_scene": 0.1414747121445512
+    },
+    "by_horizon_improvement": {
+      "10": 0.0020708449402530027,
+      "25": 0.17899338586115487,
+      "50": 0.3229272024934863,
+      "100": 0.29683778997342847
+    },
+    "easy_count": 12099,
+    "hard_failure_count": 19802,
+    "t50_count": 4927,
+    "t100_count": 4631
+  },
+  "test_eval": {
+    "n": 100000,
+    "improvement_over_strongest": 0.11136393566155733,
+    "official_t50_improvement": 0.14583655843823773,
+    "diagnostic_t100_raw_frame_improvement": 0.12407076485794388,
+    "hard_failure_improvement": 0.11232167634621226,
+    "easy_degradation": 0.01808836280803794,
+    "selector_regret": 3.9538229444929955,
+    "harm_over_fallback": -2.889801916669607,
+    "switch_rate": 0.05466,
+    "accuracy_to_oracle_best": 0.14474,
+    "mean_confidence": 0.2341904695732586,
+    "selected_distribution": {
+      "damped_velocity": 86080,
+      "scene_clamped_baseline": 12537,
+      "constant_velocity_causal_fd": 389,
+      "constant_position": 695,
+      "goal_directed_baseline": 142,
+      "constant_turn_rate_velocity": 156,
+      "constant_acceleration_causal": 1
+    },
+    "by_split_improvement": {
+      "cross_scene": 0.08512517611128001,
+      "within_scene": 0.13680178536704057
+    },
+    "by_horizon_improvement": {
+      "10": -5.2805853000048586e-05,
+      "25": 0.031092283181169078,
+      "50": 0.14583655843823773,
+      "100": 0.12407076485794388
+    },
+    "easy_count": 58245,
+    "hard_failure_count": 96581,
+    "t50_count": 24810,
+    "t100_count": 23126
+  },
+  "passed_gate": true,
+  "ordinary_residual_trained": false,
+  "latent_generative": false,
+  "smc": false
+}

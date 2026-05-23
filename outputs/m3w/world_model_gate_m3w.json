@@ -1,0 +1,82 @@
+{
+  "gates": [
+    {
+      "gate": "Data Gate",
+      "passed": true,
+      "evidence": "SDD Stage26 feature store available."
+    },
+    {
+      "gate": "No Leakage Gate",
+      "passed": true,
+      "evidence": "Feature store audit forbids future/test leakage."
+    },
+    {
+      "gate": "JEPA Non-Collapse Gate",
+      "passed": false,
+      "evidence": "Full torch JEPA non-collapse is required; NumPy fallback latent variance is diagnostic only."
+    },
+    {
+      "gate": "JEPA Downstream Gate",
+      "passed": false,
+      "evidence": "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."
+    },
+    {
+      "gate": "Transformer Dynamics Gate",
+      "passed": false,
+      "evidence": "Torch Transformer dynamics must execute; NumPy hybrid surrogate is diagnostic only."
+    },
+    {
+      "gate": "Selector Gate",
+      "passed": false,
+      "evidence": "Selector improves strongest baseline or Stage26."
+    },
+    {
+      "gate": "Hard/Failure Gate",
+      "passed": false,
+      "evidence": "Hard/failure improvement >=10%."
+    },
+    {
+      "gate": "Easy Preservation Gate",
+      "passed": true,
+      "evidence": "Easy degradation <=2%."
+    },
+    {
+      "gate": "Scene/Goal Gate",
+      "passed": false,
+      "evidence": "Scene/goal lift not proven; goal labels remain diagnostic."
+    },
+    {
+      "gate": "Interaction Gate",
+      "passed": true,
+      "evidence": "Interaction risk head has measurable signal."
+    },
+    {
+      "gate": "Physical Validity Gate",
+      "passed": true,
+      "evidence": "Selected physical baseline only; no residual/correction violates validity."
+    },
+    {
+      "gate": "Reproducibility Gate",
+      "passed": true,
+      "evidence": "Checkpoint and config-backed run available."
+    },
+    {
+      "gate": "Stage5C Plan Readiness",
+      "passed": false,
+      "evidence": "Only plan allowed after full gates; not ready and not executed."
+    },
+    {
+      "gate": "SMC Readiness",
+      "passed": false,
+      "evidence": "SMC remains false."
+    }
+  ],
+  "gates_passed": 6,
+  "gates_total": 14,
+  "m3w_success": false,
+  "foundation_track_prototype": false,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable",
+  "stage26_remains_best_deployable": true
+}

@@ -1,0 +1,69 @@
+{
+  "checkpoint": "outputs/m3w/checkpoints/best_small.pt",
+  "backend": "numpy_safe_fallback_due_torch_openmp_shm_blocker",
+  "variant": "hybrid",
+  "selected_policy": {
+    "confidence_threshold": 0.2,
+    "gain_threshold": 50.0,
+    "failure_threshold": 0.6
+  },
+  "validation_metrics": {
+    "improvement_over_strongest": 0.019413130982683158,
+    "official_t50_improvement": -0.003424870783126144,
+    "diagnostic_t100_raw_frame_improvement": 0.034867398872426514,
+    "hard_failure_improvement": 0.01946962341658498,
+    "easy_degradation": 0.015277013524863214,
+    "selector_regret": 14.95018482208252,
+    "harm_over_fallback": -0.7481511831283569,
+    "switch_rate": 0.00785,
+    "mean_confidence": 22.00649070739746,
+    "selected_distribution": {
+      "constant_position": 8,
+      "constant_velocity_causal_fd": 0,
+      "damped_velocity": 17615,
+      "constant_acceleration_causal": 2,
+      "constant_turn_rate_velocity": 0,
+      "scene_clamped_baseline": 2359,
+      "goal_directed_baseline": 16
+    }
+  },
+  "test_metrics": {
+    "improvement_over_strongest": 0.005504731734828794,
+    "official_t50_improvement": -0.0003516511641914466,
+    "diagnostic_t100_raw_frame_improvement": 0.010443865042999878,
+    "hard_failure_improvement": 0.00565237402143326,
+    "easy_degradation": 0.006164539707586902,
+    "selector_regret": 6.700786113739014,
+    "harm_over_fallback": -0.14283888041973114,
+    "switch_rate": 0.00389,
+    "mean_confidence": 36.20978546142578,
+    "selected_distribution": {
+      "constant_position": 39,
+      "constant_velocity_causal_fd": 0,
+      "damped_velocity": 88514,
+      "constant_acceleration_causal": 0,
+      "constant_turn_rate_velocity": 0,
+      "scene_clamped_baseline": 11353,
+      "goal_directed_baseline": 94
+    }
+  },
+  "stage26_selector": {
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11232167634621226,
+    "easy_degradation": 0.01808836280803794
+  },
+  "beats_stage26_selector": false,
+  "failure_AUROC": 0.9364380811532312,
+  "failure_AUPRC": 0.5470499708612074,
+  "failure_ECE": 0.4459426108889468,
+  "interaction_AUROC": 0.9978516972323822,
+  "occupancy_MSE": 3.8395533920265734e-05,
+  "jepa_latent_variance": 1.7277342081069946,
+  "jepa_non_collapse": true,
+  "jepa_downstream_lift": false,
+  "transformer_dynamics_lift": false,
+  "goal_metrics": "diagnostic_unavailable_no_human_goal_labels",
+  "physical_validity": "selected physical baseline only; no residual/correction",
+  "t100_status": "raw-frame diagnostic, not seconds-level",
+  "metric_status": "pixel-space only"
+}

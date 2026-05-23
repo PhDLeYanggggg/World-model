@@ -585,3 +585,42 @@ smc_ready = false
 verdict = stage25_selector_forensics_regret_policy_executed_not_stage5c_ready
 ```
 
+## Stage 26: Feature-Complete Cost-Aware SDD Baseline Selector Training
+
+Stage 26 builds a causal SDD feature store from the Stage24 medium baseline-evaluated windows and trains expected-FDE/risk selectors with conservative fallback. It does not train JEPA, residual correction, latent generative rollout, or SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+feature_store_built = True
+selected_model = stage26_failure_assisted_selector
+t50_improvement = 0.14583655843823773
+hard_failure_improvement = 0.11232167634621226
+easy_degradation = 0.01808836280803794
+latent_stage5c_ready = false
+smc_ready = false
+verdict = stage26_feature_complete_cost_aware_selector_executed_not_stage5c_ready
+```
+
+## M3W: Real-World Multimodal Agent-Scene World Model
+
+M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes the safe local backend on the Stage26 SDD causal feature store. The PyTorch backend was blocked by a local OpenMP/SHM process, so the executed checkpoint is a NumPy fallback diagnostic, not a full torch JEPA-Transformer success. It does not execute latent generative Stage5C or SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+M3W_execution_backend = numpy_safe_fallback_due_torch_openmp_shm_blocker
+M3W_variant = hybrid
+M3W_t50_improvement = -0.0003516511641914466
+M3W_hard_failure_improvement = 0.00565237402143326
+M3W_easy_degradation = 0.006164539707586902
+beats_stage26_selector = False
+latent_stage5c_ready = false
+smc_ready = false
+verdict = m3w_small_numpy_fallback_executed_stage26_remains_best_deployable
+```
+
