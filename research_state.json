@@ -1,7 +1,7 @@
 {
-  "current_stage": "stage21_sdd_world_state_conversion",
-  "current_verdict": "stage21_sdd_world_state_converted_stage5c_blocked",
-  "expert_audit_score": 92,
+  "current_stage": "stage22",
+  "current_verdict": "stage22_sdd_pixel_benchmark_built_training_heads_not_stage5c_ready",
+  "expert_audit_score": 93,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -98,9 +98,9 @@
     "Stage 5C Readiness Gate"
   ],
   "next_actions": [
-    "build_sdd_per_agent_multiagent_episodes",
-    "build_sdd_scene_packs_train_only_goals",
-    "benchmark_bpsg_ma_on_sdd_pixel_space"
+    "stage22_medium_sdd_eval",
+    "sdd_selector_real_training",
+    "fps_homography_audit"
   ],
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
@@ -127,6 +127,7 @@
     "outputs/reports/report_stage19_final.md",
     "outputs/reports/report_stage20_data_acquisition.md",
     "outputs/reports/report_stage21_final.md",
+    "outputs/reports/report_stage22_final.md",
     "outputs/reports/research_state.md",
     "outputs/reports/stage14_continuous_loop_report.md",
     "outputs/reports/stage14_current_state.md",
@@ -149,13 +150,16 @@
     "outputs/reports/stage21_sdd_horizon_audit.md",
     "outputs/reports/stage21_sdd_no_leakage_audit.md",
     "outputs/reports/stage21_user_provided_data_intake.md",
+    "outputs/reports/stage22_sdd_baseline_table.md",
+    "outputs/reports/stage22_sdd_data_audit.md",
     "outputs/reports/world_model_gate_stage14.md",
     "outputs/reports/world_model_gate_stage15.md",
     "outputs/reports/world_model_gate_stage16.md",
     "outputs/reports/world_model_gate_stage17.md",
     "outputs/reports/world_model_gate_stage18.md",
     "outputs/reports/world_model_gate_stage19.md",
-    "outputs/reports/world_model_gate_stage20.md"
+    "outputs/reports/world_model_gate_stage20.md",
+    "outputs/reports/world_model_gate_stage22.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -214,5 +218,22 @@
     },
     "stage5c_ready": false,
     "smc_ready": false
+  },
+  "stage22": {
+    "project_ran": true,
+    "sdd_official_pixel_space_benchmark": true,
+    "sdd_scene_packs_built": true,
+    "sdd_episodes_built": true,
+    "sdd_t50_official": true,
+    "sdd_t100_raw_frame_status": "official_pixel_raw_frame / diagnostic_seconds_unknown",
+    "selector_effective": false,
+    "failure_predictor_effective": false,
+    "jepa_effective": false,
+    "correction_effective": false,
+    "hard_failure_improved": false,
+    "stage5c_ready": false,
+    "smc_ready": false,
+    "current_verdict": "stage22_sdd_pixel_benchmark_built_training_heads_not_stage5c_ready",
+    "expert_audit_score": 93
   }
 }

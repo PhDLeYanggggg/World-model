@@ -497,3 +497,26 @@ Main conclusion:
 
 Stage 21 turns the user-provided SDD archive into usable local world-state shards and confirms raw-frame long-horizon availability. The next step is to build per-agent multi-agent episodes, train-only candidate goals, scene packs, and then re-benchmark deterministic baselines/head models without claiming metric performance.
 
+## Stage 22: SDD Official Pixel-Space Benchmark
+
+Stage 22 builds a quick SDD pixel-space benchmark from the user-provided Stanford Drone Dataset archive: scene packs, lazy per-agent episodes, no-leakage audit, causal baselines, HardBench/BaselineFailureBench, GoalBench, existing-model transfer eval, and quick SDD selector/failure/JEPA probes. It does not enable latent generative Stage 5C or SMC.
+
+```text
+SDD_official_pixel_space_benchmark = True
+SDD_scene_packs = built
+SDD_episode_windows_quick = 27600
+SDD_t50 = official pixel raw-frame
+SDD_t100 = official pixel raw-frame / diagnostic seconds unknown
+selector_effective = False
+failure_predictor_effective = False
+JEPA_effective = False
+correction_effective = False
+latent_stage5c_ready = false
+smc_ready = false
+verdict = stage22_sdd_pixel_benchmark_built_training_heads_not_stage5c_ready
+```
+
+Main conclusion:
+
+SDD is now usable as a real top-down pixel-space benchmark, but quick SDD-specific learned heads did not pass selector/correction/JEPA gates. Do not claim metric performance, true 3D, foundation-model status, Stage 5C readiness, or SMC readiness.
+

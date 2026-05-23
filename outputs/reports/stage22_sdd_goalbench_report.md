@@ -1,0 +1,14 @@
+# Stage 22 SDD GoalBench Report
+
+- records: `5000`
+- official_records: `0`
+- diagnostic_records: `5000`
+- majority_top1: `0.3524`
+- majority_top3: `0.763`
+- distance_baseline: `1.0`
+- goal_entropy: `1.3862943649291992`
+- goal_ambiguity: `1.0000000027478355`
+- endpoint_assignment_rate: `1.0`
+- top3_saturation: `False`
+- goalbench_meaningful: `False`
+- note: `Test scenes with visual-prior goals are diagnostic; candidate goals are not built from test endpoints.`

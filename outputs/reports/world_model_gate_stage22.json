@@ -1,0 +1,74 @@
+{
+  "gates": [
+    {
+      "gate": "Gate 1: SDD Data Gate",
+      "passed": true,
+      "evidence": "SDD shards loaded and audited"
+    },
+    {
+      "gate": "Gate 2: SDD Scene Pack Gate",
+      "passed": true,
+      "evidence": "Scene packs built from reference images"
+    },
+    {
+      "gate": "Gate 3: SDD Episode Gate",
+      "passed": true,
+      "evidence": "Per-agent lazy episodes indexed"
+    },
+    {
+      "gate": "Gate 4: No Leakage Gate",
+      "passed": true,
+      "evidence": "No split/endpoint/future/velocity leakage"
+    },
+    {
+      "gate": "Gate 5: Strong Baseline Gate",
+      "passed": true,
+      "evidence": "Strongest baselines computed"
+    },
+    {
+      "gate": "Gate 6: Hard/Failure Gate",
+      "passed": true,
+      "evidence": "HardBench and failure bench enough"
+    },
+    {
+      "gate": "Gate 7: GoalBench Gate",
+      "passed": true,
+      "evidence": "GoalBench built; may be diagnostic for test visual-prior scenes"
+    },
+    {
+      "gate": "Gate 8: Existing Model Transfer Gate",
+      "passed": true,
+      "evidence": "Existing model transfer evaluated honestly"
+    },
+    {
+      "gate": "Gate 9: Selector Gate",
+      "passed": false,
+      "evidence": "Selector must improve >=5%"
+    },
+    {
+      "gate": "Gate 10: JEPA Gate",
+      "passed": false,
+      "evidence": "JEPA non-collapse and downstream lift required"
+    },
+    {
+      "gate": "Gate 11: Correction Gate",
+      "passed": false,
+      "evidence": "Correction improves hard/failure without easy degradation"
+    },
+    {
+      "gate": "Gate 12: Stage 5C Readiness Gate",
+      "passed": false,
+      "evidence": "Keep false unless selector+correction+hard/failure pass; do not execute"
+    },
+    {
+      "gate": "Gate 13: SMC Readiness Gate",
+      "passed": false,
+      "evidence": "Keep false"
+    }
+  ],
+  "gates_passed": 8,
+  "gates_total": 13,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "verdict": "stage22_sdd_pixel_benchmark_built_training_heads_not_stage5c_ready"
+}
