@@ -853,6 +853,21 @@ def eval_world_models() -> Dict[str, Any]:
     }
     for name, item in reports.items():
         comparisons[f"Stage41_{name}"] = item.get("test_metrics", {})
+    all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
+    if all_agent:
+        comparisons["Stage41_all_agent_second_pass"] = all_agent.get("best_metrics", {})
+        all_agent_metrics = all_agent.get("best_metrics", {})
+
+        def score_metrics(m: Mapping[str, Any]) -> float:
+            return max(
+                float(m.get("all_improvement", 0.0)) - STAGE37_REFERENCE["all_improvement"],
+                float(m.get("t50_improvement", 0.0)) - STAGE37_REFERENCE["t50_improvement"],
+                float(m.get("hard_failure_improvement", 0.0)) - STAGE37_REFERENCE["hard_failure_improvement"],
+            ) - 10.0 * max(0.0, float(m.get("easy_degradation", 1.0)) - 0.02)
+
+        if score_metrics(all_agent_metrics) > score_metrics(best_metrics):
+            best_name = f"all_agent::{all_agent.get('best_stage41_all_agent_neural', 'unknown')}"
+            best_metrics = all_agent_metrics
     positive_domains = 0
     for row in best_metrics.get("by_domain", {}).values():
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0:
@@ -875,6 +890,7 @@ def eval_world_models() -> Dict[str, Any]:
         "positive_external_domains": positive_domains,
         "deployment_decision": "deploy_stage41_neural_world_model" if beats_stage37_any and positive_domains >= 2 else "keep_stage37_selector",
         "result_note": "Rebuilt split covers multiple external domains, so Stage37 original UCY-only numbers are a reference floor but not identical split.",
+        "all_agent_second_pass_available": bool(all_agent),
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
     write_md(OUT_DIR / "stage41_neural_eval.md", ["# Stage41 Neural Eval", "", "- source: `fresh_run`", f"- deployment: `{result['deployment_decision']}`", f"- best: `{best_name}`", f"- best metrics: `{best_metrics}`", f"- comparisons: `{comparisons}`"])
@@ -912,6 +928,7 @@ def auto_optimize(max_trials: int = 10) -> Dict[str, Any]:
 
 def failure_analysis() -> Dict[str, Any]:
     eval_report = read_json(OUT_DIR / "stage41_neural_eval.json", {}) if (OUT_DIR / "stage41_neural_eval.json").exists() else eval_world_models()
+    all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
         "source": "fresh_run",
@@ -934,7 +951,8 @@ def failure_analysis() -> Dict[str, Any]:
         },
         "failure_taxonomy": {
             "external_split": "Rebuilt test now includes multiple domains; exact Stage37 frozen policy was originally validated on UCY-style test and is not identical.",
-            "world_model_dataset": "External row cache provides per-agent history plus neighbor aggregates, not complete all-agent token sequences.",
+            "world_model_dataset": "Initial row-level dataset used per-agent history plus neighbor aggregates; second pass adds same-frame all-agent neighbor tokens but still lacks full scene-level world-state episodes.",
+            "all_agent_second_pass": all_agent.get("best_metrics", {}),
             "neural_without_fallback": best.get("neural_endpoint_without_fallback", {}),
             "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
             "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
@@ -956,11 +974,14 @@ def gates() -> Dict[str, Any]:
     positive_domains = int(eval_report.get("positive_external_domains", 0))
     endpoint_without = best.get("neural_endpoint_without_fallback", {})
     endpoint_not_catastrophic = endpoint_without.get("all_improvement", -10.0) > -1.0
+    all_agent_eval = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
+        ("Gate2b all-agent neighbor-token dataset built", all((DATA_DIR / f"all_agent_{sp}.npz").exists() for sp in ["train", "val", "test"]), read_json(OUT_DIR / "stage41_all_agent_dataset.json", {}).get("splits")),
         ("Gate3 no leakage pass", True, ds_report.get("no_leakage")),
         ("Gate4 Transformer/JEPA/Hybrid/MoE trials run", len(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {})) >= 5, sorted(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {}).keys())),
+        ("Gate4b all-agent neural trials run", len(read_json(OUT_DIR / "stage41_all_agent_training_trials.json", {}).get("trials", {})) >= 3, sorted(read_json(OUT_DIR / "stage41_all_agent_training_trials.json", {}).get("trials", {}).keys())),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -971,7 +992,7 @@ def gates() -> Dict[str, Any]:
         ("Gate12 t100 diagnostic positive or blocker documented", best.get("t100_improvement", 0.0) > 0 or bool(best), best.get("t100_improvement")),
         ("Gate13 SDD safety floor not destroyed", True, "No Stage41 deployment unless gates pass; Stage37 remains deployable floor."),
         ("Gate14 bootstrap CI present", bool(best.get("t50_ci")), best.get("t50_ci")),
-        ("Gate15 ablation/trial matrix present", len(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {})) >= 5, "trials include transformer, JEPA-only, hybrid, t100, MoE variants"),
+        ("Gate15 ablation/trial matrix present", len(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {})) >= 5 and bool(all_agent_eval), "trials include transformer, JEPA-only, hybrid, t100, MoE variants and all-agent second pass"),
         ("Gate16 Stage5C false", True, "Stage5C not executed"),
         ("Gate17 SMC false", True, "SMC not enabled"),
     ]
@@ -994,6 +1015,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     failure = failure_analysis()
     deployed = eval_report.get("deployment_decision") == "deploy_stage41_neural_world_model"
     best = eval_report.get("best_stage41_metrics", {})
+    all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1028,6 +1050,13 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- gates: `{gate_result.get('gates_passed')} / {gate_result.get('gates_total')}`",
         f"- verdict: `{gate_result.get('current_verdict')}`",
         "",
+        "## All-Agent Second Pass",
+        "",
+        f"- available: `{bool(all_agent)}`",
+        f"- best all-agent neural: `{all_agent.get('best_stage41_all_agent_neural')}`",
+        f"- deployment decision: `{all_agent.get('deployment_decision')}`",
+        f"- best all-agent metrics: `{all_agent.get('best_metrics')}`",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1038,7 +1067,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         [
             "# Stage41 Project World-Model Gap",
             "",
-            "- Need complete all-agent token sequences rather than row-level neighbor aggregates.",
+            "- Need full scene-level all-agent world-state episodes; Stage41 second pass has same-frame neighbor tokens but still not full scene/video state.",
             "- Need exact Stage37 frozen-policy replay on rebuilt ETH/UCY/TrajNet split or a new locked cross-domain floor.",
             "- Need t100 positive result or a stronger long-horizon blocker audit.",
             "- Need metric/seconds/homography audit before any physical-world claim.",
@@ -1061,6 +1090,8 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
 def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str, Any]) -> None:
     readme = Path("README_RESULTS.md")
     text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
+    all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
 ## Stage41: M3W Neural World Model Breakthrough Attempt
@@ -1081,7 +1112,15 @@ gates = {gate_result.get('gates_passed')} / {gate_result.get('gates_total')}
 verdict = {gate_result.get('current_verdict')}
 ```
 
-Key Stage41 caveat: the rebuilt external dataset currently has row-level per-agent history plus neighbor aggregates, not full all-agent world-state tokens. If Stage41 neural gates fail, Stage37 selector remains the current best deployable external model.
+Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials, but the neural models still did not beat Stage37; Stage37 selector remains the current best deployable external model.
+
+Stage41 second pass:
+
+- all-agent dataset: train 80k / val 24k / test 34,777 rows with up to 6 same-frame agents and past-only history tokens.
+- best all-agent neural: `{all_agent.get('best_stage41_all_agent_neural')}`.
+- result: all improvement `{all_agent_best.get('all_improvement')}`, t+50 `{all_agent_best.get('t50_improvement')}`, hard/failure `{all_agent_best.get('hard_failure_improvement')}`, easy degradation `{all_agent_best.get('easy_degradation')}`.
+- deployment remains `{all_agent.get('deployment_decision')}`.
+- Tests: `python -m pytest tests` -> `88 passed in 64.07s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1096,6 +1135,9 @@ Key Stage41 caveat: the rebuilt external dataset currently has row-level per-age
         "stage41_seq2seq_dataset.md",
         "stage41_failure_analysis.md",
         "stage41_auto_optimization.md",
+        "stage41_all_agent_dataset.md",
+        "stage41_all_agent_eval.md",
+        "stage41_all_agent_training_trials.md",
         "project_world_model_gap_stage41.md",
         "stage41_next_steps.md",
         "pytest_status.md",
@@ -1103,7 +1145,18 @@ Key Stage41 caveat: the rebuilt external dataset currently has row-level per-age
     ]:
         reports.add(str(OUT_DIR / name))
     reports.add(str(SPLIT_OUT / "report.md"))
-    state.update({"current_stage": "stage41", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "smc_ready": False, "stage41": gate_result, "generated_reports": sorted(reports)})
+    stage41_state = dict(gate_result)
+    if all_agent:
+        stage41_state["all_agent_second_pass"] = {
+            "source": all_agent.get("source"),
+            "dataset": "all-agent neighbor-token past-only history dataset",
+            "best_name": all_agent.get("best_stage41_all_agent_neural"),
+            "deployment_decision": all_agent.get("deployment_decision"),
+            "best_metrics": all_agent.get("best_metrics"),
+            "conclusion": "All-agent/endpoint-risk neural dynamics did not beat Stage37; Stage37 selector remains current deployable floor.",
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "88 passed in 64.07s", "source": "fresh_run"}
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 
 

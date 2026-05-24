@@ -197,6 +197,51 @@
       }
     },
     {
+      "gate": "Gate2b all-agent neighbor-token dataset built",
+      "passed": true,
+      "evidence": {
+        "train": {
+          "rows": 80000,
+          "neighbor_count_mean": 4.6609875,
+          "neighbor_count_ge1": 79068,
+          "neighbor_count_ge3": 74954,
+          "domains": {
+            "ETH_UCY": 41501,
+            "TrajNet": 35009,
+            "UCY": 3490
+          },
+          "t50": 19561,
+          "t100": 14605
+        },
+        "val": {
+          "rows": 24000,
+          "neighbor_count_mean": 4.502041666666667,
+          "neighbor_count_ge1": 23631,
+          "neighbor_count_ge3": 21847,
+          "domains": {
+            "ETH_UCY": 4648,
+            "TrajNet": 6098,
+            "UCY": 13254
+          },
+          "t50": 5831,
+          "t100": 3569
+        },
+        "test": {
+          "rows": 34777,
+          "neighbor_count_mean": 3.8094430226874083,
+          "neighbor_count_ge1": 33283,
+          "neighbor_count_ge3": 27221,
+          "domains": {
+            "ETH_UCY": 21598,
+            "TrajNet": 3639,
+            "UCY": 9540
+          },
+          "t50": 8245,
+          "t100": 4534
+        }
+      }
+    },
+    {
       "gate": "Gate3 no leakage pass",
       "passed": true,
       "evidence": {
@@ -220,6 +265,20 @@
         "mixture_of_experts_baseline_selector",
         "neighbor_interaction_heavy_hybrid",
         "t50_hard_curriculum_transformer"
+      ]
+    },
+    {
+      "gate": "Gate4b all-agent neural trials run",
+      "passed": true,
+      "evidence": [
+        "all_agent_easy_guard",
+        "all_agent_endpoint_easy_guard",
+        "all_agent_endpoint_hard_only",
+        "all_agent_endpoint_risk_switch",
+        "all_agent_endpoint_t100_focus",
+        "all_agent_t100_curriculum",
+        "all_agent_t50_hard_safety",
+        "all_agent_token_transformer"
       ]
     },
     {
@@ -352,7 +411,7 @@
     {
       "gate": "Gate15 ablation/trial matrix present",
       "passed": true,
-      "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants"
+      "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants and all-agent second pass"
     },
     {
       "gate": "Gate16 Stage5C false",
@@ -365,8 +424,8 @@
       "evidence": "SMC not enabled"
     }
   ],
-  "gates_passed": 12,
-  "gates_total": 17,
+  "gates_passed": 14,
+  "gates_total": 19,
   "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
   "stage5c_executed": false,
   "smc_enabled": false

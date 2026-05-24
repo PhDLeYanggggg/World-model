@@ -930,9 +930,17 @@ deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
 positive_external_domains = 0
 best_stage41_neural = conformal_safety_head_transformer
-gates = 12 / 17
+gates = 14 / 19
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
 
-Key Stage41 caveat: the rebuilt external dataset currently has row-level per-agent history plus neighbor aggregates, not full all-agent world-state tokens. If Stage41 neural gates fail, Stage37 selector remains the current best deployable external model.
+Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials, but the neural models still did not beat Stage37; Stage37 selector remains the current best deployable external model.
+
+Stage41 second pass:
+
+- all-agent dataset: train 80k / val 24k / test 34,777 rows with up to 6 same-frame agents and past-only history tokens.
+- best all-agent neural: `all_agent_t100_curriculum`.
+- result: all improvement `-5.81288021355153e-05`, t+50 `0.0`, hard/failure `-3.246737611095618e-05`, easy degradation `0.0009077552127720878`.
+- deployment remains `keep_stage37_selector`.
+- Tests: `python -m pytest tests` -> `88 passed in 64.07s`.
 

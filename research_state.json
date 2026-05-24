@@ -346,6 +346,9 @@
     "outputs/stage41_breakthrough/pytest_status.md",
     "outputs/stage41_breakthrough/report_stage41_final.md",
     "outputs/stage41_breakthrough/run_ledger.md",
+    "outputs/stage41_breakthrough/stage41_all_agent_dataset.md",
+    "outputs/stage41_breakthrough/stage41_all_agent_eval.md",
+    "outputs/stage41_breakthrough/stage41_all_agent_training_trials.md",
     "outputs/stage41_breakthrough/stage41_auto_optimization.md",
     "outputs/stage41_breakthrough/stage41_failure_analysis.md",
     "outputs/stage41_breakthrough/stage41_neural_eval.md",
@@ -2989,6 +2992,51 @@
         }
       },
       {
+        "gate": "Gate2b all-agent neighbor-token dataset built",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "rows": 80000,
+            "neighbor_count_mean": 4.6609875,
+            "neighbor_count_ge1": 79068,
+            "neighbor_count_ge3": 74954,
+            "domains": {
+              "ETH_UCY": 41501,
+              "TrajNet": 35009,
+              "UCY": 3490
+            },
+            "t50": 19561,
+            "t100": 14605
+          },
+          "val": {
+            "rows": 24000,
+            "neighbor_count_mean": 4.502041666666667,
+            "neighbor_count_ge1": 23631,
+            "neighbor_count_ge3": 21847,
+            "domains": {
+              "ETH_UCY": 4648,
+              "TrajNet": 6098,
+              "UCY": 13254
+            },
+            "t50": 5831,
+            "t100": 3569
+          },
+          "test": {
+            "rows": 34777,
+            "neighbor_count_mean": 3.8094430226874083,
+            "neighbor_count_ge1": 33283,
+            "neighbor_count_ge3": 27221,
+            "domains": {
+              "ETH_UCY": 21598,
+              "TrajNet": 3639,
+              "UCY": 9540
+            },
+            "t50": 8245,
+            "t100": 4534
+          }
+        }
+      },
+      {
         "gate": "Gate3 no leakage pass",
         "passed": true,
         "evidence": {
@@ -3012,6 +3060,20 @@
           "mixture_of_experts_baseline_selector",
           "neighbor_interaction_heavy_hybrid",
           "t50_hard_curriculum_transformer"
+        ]
+      },
+      {
+        "gate": "Gate4b all-agent neural trials run",
+        "passed": true,
+        "evidence": [
+          "all_agent_easy_guard",
+          "all_agent_endpoint_easy_guard",
+          "all_agent_endpoint_hard_only",
+          "all_agent_endpoint_risk_switch",
+          "all_agent_endpoint_t100_focus",
+          "all_agent_t100_curriculum",
+          "all_agent_t50_hard_safety",
+          "all_agent_token_transformer"
         ]
       },
       {
@@ -3144,7 +3206,7 @@
       {
         "gate": "Gate15 ablation/trial matrix present",
         "passed": true,
-        "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants"
+        "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants and all-agent second pass"
       },
       {
         "gate": "Gate16 Stage5C false",
@@ -3157,10 +3219,126 @@
         "evidence": "SMC not enabled"
       }
     ],
-    "gates_passed": 12,
-    "gates_total": 17,
+    "gates_passed": 14,
+    "gates_total": 19,
     "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
     "stage5c_executed": false,
-    "smc_enabled": false
-  }
+    "smc_enabled": false,
+    "all_agent_second_pass": {
+      "source": "fresh_run",
+      "dataset": "all-agent neighbor-token past-only history dataset",
+      "best_name": "all_agent_t100_curriculum",
+      "deployment_decision": "keep_stage37_selector",
+      "best_metrics": {
+        "rows": 34777,
+        "all_improvement": -5.81288021355153e-05,
+        "t10_improvement": 0.0004239339703260292,
+        "t25_improvement": -0.0008406261700055762,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -3.246737611095618e-05,
+        "easy_degradation": 0.0009077552127720878,
+        "harm_over_fallback": 8.192104537139925e-05,
+        "switch_rate": 0.0009201483739252954,
+        "regret_to_oracle": 0.5312652650010209,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 21598,
+            "all_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": 0.0,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0
+          },
+          "TrajNet": {
+            "rows": 3639,
+            "all_improvement": -0.0009429759357326706,
+            "t50_improvement": 0.0,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": -0.000539709093844376,
+            "easy_degradation": 0.008721631654606599,
+            "switch_rate": 0.008793624622148942
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": 0.0,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0
+          }
+        },
+        "neural_endpoint_without_fallback": {
+          "rows": 34777,
+          "all_improvement": -0.0912436200144282,
+          "t10_improvement": 0.30972486455656023,
+          "t25_improvement": -0.5641311795431458,
+          "t50_improvement": -0.5240591374855557,
+          "t100_improvement": 0.189605984307182,
+          "hard_failure_improvement": -0.07477885309043852,
+          "easy_degradation": 0.7239586306613179,
+          "harm_over_fallback": 0.12858982914591013,
+          "switch_rate": 0.0,
+          "regret_to_oracle": 0.6597731731015595,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 21598,
+              "all_improvement": -0.14610012212708123,
+              "t50_improvement": -0.7124330742689264,
+              "t100_improvement": 0.1762928337566103,
+              "hard_failure_improvement": -0.12985962734989887,
+              "easy_degradation": 0.5035373741098177,
+              "switch_rate": 0.0
+            },
+            "TrajNet": {
+              "rows": 3639,
+              "all_improvement": 0.1700700859855414,
+              "t50_improvement": 0.0711820850625875,
+              "t100_improvement": 0.3016490217594361,
+              "hard_failure_improvement": 0.1818950603506052,
+              "easy_degradation": 0.5744577044404715,
+              "switch_rate": 0.0
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.09369260867570361,
+              "t50_improvement": 0.06221658512398265,
+              "t100_improvement": 0.21903797242177991,
+              "hard_failure_improvement": 0.12624940057567424,
+              "easy_degradation": 1.460467978473301,
+              "switch_rate": 0.0
+            }
+          }
+        },
+        "selected_candidate_distribution": {
+          "0": 34745,
+          "-1": 14,
+          "1": 18
+        },
+        "t50_ci": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 8245
+        },
+        "hard_failure_ci": {
+          "low": -0.00020031739667432656,
+          "mid": -2.6241662449910663e-05,
+          "high": 9.600377228013986e-05,
+          "n": 29370
+        }
+      },
+      "conclusion": "All-agent/endpoint-risk neural dynamics did not beat Stage37; Stage37 selector remains current deployable floor."
+    },
+    "pytest": {
+      "command": "python -m pytest tests",
+      "result": "88 passed in 64.07s",
+      "source": "fresh_run"
+    }
+  },
+  "current_best_deployable": "Stage37 selector",
+  "last_updated": "2026-05-24",
+  "stage5c_ready": false
 }

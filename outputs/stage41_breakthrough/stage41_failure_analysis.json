@@ -19,7 +19,108 @@
   },
   "failure_taxonomy": {
     "external_split": "Rebuilt test now includes multiple domains; exact Stage37 frozen policy was originally validated on UCY-style test and is not identical.",
-    "world_model_dataset": "External row cache provides per-agent history plus neighbor aggregates, not complete all-agent token sequences.",
+    "world_model_dataset": "Initial row-level dataset used per-agent history plus neighbor aggregates; second pass adds same-frame all-agent neighbor tokens but still lacks full scene-level world-state episodes.",
+    "all_agent_second_pass": {
+      "rows": 34777,
+      "all_improvement": -5.81288021355153e-05,
+      "t10_improvement": 0.0004239339703260292,
+      "t25_improvement": -0.0008406261700055762,
+      "t50_improvement": 0.0,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": -3.246737611095618e-05,
+      "easy_degradation": 0.0009077552127720878,
+      "harm_over_fallback": 8.192104537139925e-05,
+      "switch_rate": 0.0009201483739252954,
+      "regret_to_oracle": 0.5312652650010209,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 21598,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        },
+        "TrajNet": {
+          "rows": 3639,
+          "all_improvement": -0.0009429759357326706,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.000539709093844376,
+          "easy_degradation": 0.008721631654606599,
+          "switch_rate": 0.008793624622148942
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        }
+      },
+      "neural_endpoint_without_fallback": {
+        "rows": 34777,
+        "all_improvement": -0.0912436200144282,
+        "t10_improvement": 0.30972486455656023,
+        "t25_improvement": -0.5641311795431458,
+        "t50_improvement": -0.5240591374855557,
+        "t100_improvement": 0.189605984307182,
+        "hard_failure_improvement": -0.07477885309043852,
+        "easy_degradation": 0.7239586306613179,
+        "harm_over_fallback": 0.12858982914591013,
+        "switch_rate": 0.0,
+        "regret_to_oracle": 0.6597731731015595,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 21598,
+            "all_improvement": -0.14610012212708123,
+            "t50_improvement": -0.7124330742689264,
+            "t100_improvement": 0.1762928337566103,
+            "hard_failure_improvement": -0.12985962734989887,
+            "easy_degradation": 0.5035373741098177,
+            "switch_rate": 0.0
+          },
+          "TrajNet": {
+            "rows": 3639,
+            "all_improvement": 0.1700700859855414,
+            "t50_improvement": 0.0711820850625875,
+            "t100_improvement": 0.3016490217594361,
+            "hard_failure_improvement": 0.1818950603506052,
+            "easy_degradation": 0.5744577044404715,
+            "switch_rate": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.09369260867570361,
+            "t50_improvement": 0.06221658512398265,
+            "t100_improvement": 0.21903797242177991,
+            "hard_failure_improvement": 0.12624940057567424,
+            "easy_degradation": 1.460467978473301,
+            "switch_rate": 0.0
+          }
+        }
+      },
+      "selected_candidate_distribution": {
+        "0": 34745,
+        "-1": 14,
+        "1": 18
+      },
+      "t50_ci": {
+        "low": 0.0,
+        "mid": 0.0,
+        "high": 0.0,
+        "n": 8245
+      },
+      "hard_failure_ci": {
+        "low": -0.00020031739667432656,
+        "mid": -2.6241662449910663e-05,
+        "high": 9.600377228013986e-05,
+        "n": 29370
+      }
+    },
     "neural_without_fallback": {
       "rows": 34777,
       "all_improvement": 0.03511888712276556,
