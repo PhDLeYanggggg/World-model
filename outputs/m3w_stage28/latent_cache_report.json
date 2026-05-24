@@ -1,0 +1,128 @@
+{
+  "project": "M3W Stage28 latent cache",
+  "cache_dir": "data/stage28_m3w_latent_cache",
+  "runtime": {
+    "platform_machine": "arm64",
+    "torch_threads_env": "4",
+    "torch_interop_threads_env": "2",
+    "num_workers": 0
+  },
+  "source_feature_store": "data/stage26_sdd_feature_store",
+  "stage26_baseline": {
+    "selected_model": "stage26_failure_assisted_selector",
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11234058960663984,
+    "easy_degradation": 0.01808836280803794
+  },
+  "splits": {
+    "train": {
+      "rows": 40000,
+      "latent_shapes": {
+        "jepa_only_latent": [
+          40000,
+          160
+        ],
+        "transformer_only_latent": [
+          40000,
+          160
+        ],
+        "hybrid_latent": [
+          40000,
+          160
+        ],
+        "hybrid_log_fde": [
+          40000,
+          7
+        ],
+        "hybrid_failure_logit": [
+          40000
+        ],
+        "hybrid_interaction_logit": [
+          40000
+        ],
+        "hybrid_occupancy": [
+          40000
+        ],
+        "hybrid_validity_logit": [
+          40000
+        ]
+      },
+      "path": "data/stage28_m3w_latent_cache/train.npz"
+    },
+    "val": {
+      "rows": 20000,
+      "latent_shapes": {
+        "jepa_only_latent": [
+          20000,
+          160
+        ],
+        "transformer_only_latent": [
+          20000,
+          160
+        ],
+        "hybrid_latent": [
+          20000,
+          160
+        ],
+        "hybrid_log_fde": [
+          20000,
+          7
+        ],
+        "hybrid_failure_logit": [
+          20000
+        ],
+        "hybrid_interaction_logit": [
+          20000
+        ],
+        "hybrid_occupancy": [
+          20000
+        ],
+        "hybrid_validity_logit": [
+          20000
+        ]
+      },
+      "path": "data/stage28_m3w_latent_cache/val.npz"
+    },
+    "test": {
+      "rows": 100000,
+      "latent_shapes": {
+        "jepa_only_latent": [
+          100000,
+          160
+        ],
+        "transformer_only_latent": [
+          100000,
+          160
+        ],
+        "hybrid_latent": [
+          100000,
+          160
+        ],
+        "hybrid_log_fde": [
+          100000,
+          7
+        ],
+        "hybrid_failure_logit": [
+          100000
+        ],
+        "hybrid_interaction_logit": [
+          100000
+        ],
+        "hybrid_occupancy": [
+          100000
+        ],
+        "hybrid_validity_logit": [
+          100000
+        ]
+      },
+      "path": "data/stage28_m3w_latent_cache/test.npz"
+    }
+  },
+  "elapsed_s": 20.975189750024583,
+  "leakage_audit": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "latent_features_source": "frozen M3W checkpoints trained on causal Stage26 features"
+  }
+}

@@ -624,3 +624,22 @@ smc_ready = false
 verdict = m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best
 ```
 
+## Stage 28: M3W-LAS Evidence Sprint
+
+Stage 28 tests whether frozen M3W JEPA/Transformer/Hybrid latents improve the Stage26 cost-aware selector. It does not execute Stage5C, SMC, ordinary residual correction, metric conversion, or seconds-level horizon claims.
+
+```text
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+best_variant = all_latent
+t50_improvement = 0.1686288243790961
+hard_failure_improvement = 0.1336398986813968
+easy_degradation = 0.01928694490688554
+candidate_v2 = True
+stage5c_ready = false
+smc_ready = false
+verdict = stage28_m3w_las_candidate_v2_not_stage5c_ready
+```
+

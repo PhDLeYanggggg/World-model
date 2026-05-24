@@ -1,0 +1,76 @@
+{
+  "gates": [
+    {
+      "gate": "Data Gate",
+      "passed": true,
+      "evidence": "Stage26 feature store and Stage28 latent cache available."
+    },
+    {
+      "gate": "No Leakage Gate",
+      "passed": true,
+      "evidence": "No future/test/central velocity inputs in latent cache."
+    },
+    {
+      "gate": "LAS Training Gate",
+      "passed": true,
+      "evidence": "M3W latent-augmented selectors trained with validation-selected fallback."
+    },
+    {
+      "gate": "Selector Gate",
+      "passed": true,
+      "evidence": "Must exceed Stage26 on t+50 or hard/failure."
+    },
+    {
+      "gate": "Hard/Failure Gate",
+      "passed": true,
+      "evidence": "Hard/failure improvement >=10%."
+    },
+    {
+      "gate": "Easy Preservation Gate",
+      "passed": true,
+      "evidence": "Easy degradation <=2%."
+    },
+    {
+      "gate": "Latent Contribution Gate",
+      "passed": true,
+      "evidence": "M3W latent features must add measurable selector value."
+    },
+    {
+      "gate": "Scene/Goal Gate",
+      "passed": true,
+      "evidence": "Scene or goal ablation must reduce performance."
+    },
+    {
+      "gate": "Interaction Gate",
+      "passed": true,
+      "evidence": "Interaction ablation must reduce hard/failure performance."
+    },
+    {
+      "gate": "Statistical Evidence Gate",
+      "passed": true,
+      "evidence": "Bootstrap CI generated."
+    },
+    {
+      "gate": "Candidate v2 Gate",
+      "passed": true,
+      "evidence": "Only pass if above Stage26 and easy preserved."
+    },
+    {
+      "gate": "Stage5C Readiness Gate",
+      "passed": false,
+      "evidence": "Stage5C execution remains forbidden; plan only if later gates justify it."
+    },
+    {
+      "gate": "SMC Readiness Gate",
+      "passed": false,
+      "evidence": "SMC remains forbidden."
+    }
+  ],
+  "gates_passed": 11,
+  "gates_total": 13,
+  "stage5c_ready": false,
+  "smc_ready": false,
+  "candidate_v2": true,
+  "current_verdict": "stage28_m3w_las_candidate_v2_not_stage5c_ready",
+  "expert_audit_score": 93
+}

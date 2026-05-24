@@ -1,0 +1,99 @@
+{
+  "stage": "stage28_retrained_ablations",
+  "rows": [
+    {
+      "ablation": "stage26_only",
+      "variant": "stage26_only",
+      "model_kind": "extra_trees",
+      "t50_improvement": 0.12512663216569941,
+      "hard_failure_improvement": 0.11535801096392961,
+      "easy_degradation": 0.018595834439058434,
+      "selector_regret": 3.8727256317952277,
+      "switch_rate": 0.04335
+    },
+    {
+      "ablation": "no_jepa",
+      "variant": "plus_transformer",
+      "model_kind": "ridge",
+      "t50_improvement": 0.1620196290033873,
+      "hard_failure_improvement": 0.1259412807942233,
+      "easy_degradation": 0.02002637977768429,
+      "selector_regret": 3.602787793326676,
+      "switch_rate": 0.0593
+    },
+    {
+      "ablation": "no_transformer",
+      "variant": "plus_jepa",
+      "model_kind": "ridge",
+      "t50_improvement": 0.1667554528300199,
+      "hard_failure_improvement": 0.13158965955751667,
+      "easy_degradation": 0.020608710912151995,
+      "selector_regret": 3.4562467622748017,
+      "switch_rate": 0.05852
+    },
+    {
+      "ablation": "no_scene",
+      "variant": "all_latent",
+      "model_kind": "extra_trees",
+      "t50_improvement": 0.16932292032362017,
+      "hard_failure_improvement": 0.13427800782374877,
+      "easy_degradation": 0.019455719103871782,
+      "selector_regret": 3.38869208758384,
+      "switch_rate": 0.05
+    },
+    {
+      "ablation": "no_goal",
+      "variant": "all_latent",
+      "model_kind": "extra_trees",
+      "t50_improvement": 0.15672319301837978,
+      "hard_failure_improvement": 0.12064152910480896,
+      "easy_degradation": 0.015612648400139983,
+      "selector_regret": 3.7397705262038112,
+      "switch_rate": 0.03984
+    },
+    {
+      "ablation": "no_interaction",
+      "variant": "all_latent",
+      "model_kind": "extra_trees",
+      "t50_improvement": 0.1675042723274851,
+      "hard_failure_improvement": 0.13322064875392614,
+      "easy_degradation": 0.0173127333559131,
+      "selector_regret": 3.415815658681691,
+      "switch_rate": 0.05
+    },
+    {
+      "ablation": "no_failure_hidden",
+      "variant": "plus_hybrid",
+      "model_kind": "ridge",
+      "t50_improvement": 0.16055512904186497,
+      "hard_failure_improvement": 0.13181870139810392,
+      "easy_degradation": 0.019735621525042824,
+      "selector_regret": 3.4491501488801837,
+      "switch_rate": 0.05983
+    },
+    {
+      "ablation": "no_simulation_curriculum",
+      "variant": "all_latent",
+      "model_kind": "ridge",
+      "t50_improvement": 0.1584344043421414,
+      "hard_failure_improvement": 0.12072951078165217,
+      "easy_degradation": 0.01301620188757835,
+      "selector_regret": 3.737506941590011,
+      "switch_rate": 0.05
+    },
+    {
+      "ablation": "no_fallback",
+      "variant": "all_latent",
+      "model_kind": "extra_trees",
+      "t50_improvement": 0.19444842465499068,
+      "hard_failure_improvement": 0.16682536647668844,
+      "easy_degradation": 0.05035580520580174,
+      "selector_regret": 2.5287942205879093,
+      "switch_rate": 0.74231
+    }
+  ],
+  "notes": {
+    "no_simulation_curriculum": "No simulation curriculum is used in the Stage26/28 official SDD selector path; this row retrains the same real-data-only policy and documents the absence.",
+    "all_ablations_retrained": true
+  }
+}

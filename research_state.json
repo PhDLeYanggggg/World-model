@@ -1,6 +1,6 @@
 {
-  "current_stage": "m3w_small",
-  "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best",
+  "current_stage": "stage28",
+  "current_verdict": "stage28_m3w_las_candidate_v2_not_stage5c_ready",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -129,6 +129,11 @@
     "outputs/m3w/reproducibility_checklist.md",
     "outputs/m3w/stage27_evidence_report.md",
     "outputs/m3w/world_model_gate_m3w.md",
+    "outputs/m3w_stage28/project_world_model_gap.md",
+    "outputs/m3w_stage28/report_stage28_final.md",
+    "outputs/m3w_stage28/retrained_ablation_table.md",
+    "outputs/m3w_stage28/statistical_evidence_report.md",
+    "outputs/m3w_stage28/world_model_gate_stage28.md",
     "outputs/reports/auto_gate_report.md",
     "outputs/reports/auto_loop_iteration_report.md",
     "outputs/reports/auto_next_stage_plan.md",
@@ -503,6 +508,55 @@
       "ccfa_candidate": false,
       "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best",
       "stage26_remains_best_deployable": true
+    }
+  },
+  "stage28": {
+    "best_variant": "all_latent",
+    "candidate_v2": true,
+    "test_eval": {
+      "n": 100000,
+      "improvement_over_strongest": 0.13254356003325196,
+      "official_t50_improvement": 0.1686288243790961,
+      "diagnostic_t100_raw_frame_improvement": 0.14519818992776146,
+      "hard_failure_improvement": 0.1336398986813968,
+      "easy_degradation": 0.01928694490688554,
+      "selector_regret": 3.4042292296150327,
+      "harm_over_fallback": -3.4393956315475704,
+      "switch_rate": 0.05,
+      "accuracy_to_oracle_best": 0.13778,
+      "mean_confidence": 0.053949423134326935,
+      "selected_distribution": {
+        "constant_position": 332,
+        "constant_velocity_causal_fd": 10,
+        "damped_velocity": 85897,
+        "constant_acceleration_causal": 0,
+        "constant_turn_rate_velocity": 0,
+        "scene_clamped_baseline": 13761,
+        "goal_directed_baseline": 0
+      },
+      "by_horizon_improvement": {
+        "10": 0.005748020372715712,
+        "25": 0.055490708791340326,
+        "50": 0.1686288243790961,
+        "100": 0.14519818992776146
+      },
+      "by_split_improvement": {
+        "cross_scene": 0.1064302019155895,
+        "within_scene": 0.15785983604964404
+      },
+      "by_agent_type_improvement": {
+        "Pedestrian": 0.11016732108610128,
+        "Biker": 0.20528328459658607,
+        "Skater": 0.20918500363598935,
+        "Cart": 0.09415699732781369,
+        "Car": -0.017048804306335708,
+        "Bus": 0.13007872802821607,
+        "unknown": 0.0
+      },
+      "easy_count": 58245,
+      "hard_failure_count": 96581,
+      "t50_count": 24810,
+      "t100_count": 23126
     }
   }
 }
