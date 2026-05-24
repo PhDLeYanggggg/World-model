@@ -71,3 +71,10 @@ def test_stage41_hard_all_score_rewards_hard_improvement() -> None:
     higher_hard["hard_failure_improvement"] = 0.12
     higher_hard["by_domain"] = {"ETH_UCY": {"hard_failure_improvement": 0.10, "t50_improvement": 0.03}}
     assert strat._metric_score(higher_hard, "hard_all") > strat._metric_score(lower_hard, "hard_all")
+
+
+def test_stage41_domain_expert_score_penalizes_easy_degradation() -> None:
+    safe = {"all_improvement": 0.08, "t50_improvement": 0.1, "hard_failure_improvement": 0.1, "easy_degradation": 0.0, "switch_rate": 0.1}
+    unsafe = dict(safe)
+    unsafe["easy_degradation"] = 0.05
+    assert strat._domain_expert_score(safe) > strat._domain_expert_score(unsafe)

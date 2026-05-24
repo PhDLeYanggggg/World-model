@@ -303,6 +303,10 @@ def _train_one(trial: Mapping[str, Any], domain_vocab: Sequence[str]) -> Dict[st
         }
     tx = torch.tensor(x_train)
     ty = {k: torch.tensor(v) for k, v in y_train.items() if k not in {"domain"}}
+    focus_domain = str(trial.get("domain_focus", ""))
+    focus_mask_train = None
+    if focus_domain:
+        focus_mask_train = torch.tensor((y_train["domain"].astype(str) == focus_domain).astype(np.float32))
     vx = torch.tensor(x_val)
     vy = {k: torch.tensor(v) for k, v in y_val.items() if k not in {"domain"}}
     best = {"val_loss": float("inf"), "epoch": 0}
@@ -322,6 +326,10 @@ def _train_one(trial: Mapping[str, Any], domain_vocab: Sequence[str]) -> Dict[st
             row_w = row_w + float(trial["t50_w"]) * (ty["horizon"][ids] == 50).float()
             row_w = row_w + float(trial["t100_w"]) * (ty["horizon"][ids] == 100).float()
             row_w = row_w + 2.0 * gain_label
+            if focus_mask_train is not None:
+                focus = focus_mask_train[ids]
+                row_w = row_w + float(trial.get("domain_w", 0.0)) * focus
+                row_w = row_w + float(trial.get("domain_hard_w", 0.0)) * focus * ty["hard"][ids]
             reg = (F.smooth_l1_loss(out["pred_rel"], rel, reduction="none").mean(dim=1) * row_w).mean()
             ce = (F.cross_entropy(-out["pred_rel"], oracle, reduction="none") * row_w).mean()
             pred_best = torch.min(out["pred_rel"], dim=1).values
@@ -834,10 +842,87 @@ def train_locked_v2_hard_all() -> Dict[str, Any]:
     return result
 
 
+def train_locked_v2_domain_focused() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    domain_vocab = _domain_vocab()
+    trial_bases = [
+        {"name": "locked_v2_eth_hard_expert", "domain_focus": "ETH_UCY", "width": 256, "dropout": 0.08, "lr": 5.0e-4, "hard_w": 4.0, "domain_w": 3.0, "domain_hard_w": 8.0, "t50_w": 2.5, "t100_w": 2.0, "ce_w": 1.1, "rank_w": 1.4},
+        {"name": "locked_v2_ucy_hard_expert", "domain_focus": "UCY", "width": 256, "dropout": 0.08, "lr": 5.0e-4, "hard_w": 4.0, "domain_w": 4.0, "domain_hard_w": 9.0, "t50_w": 2.5, "t100_w": 2.0, "ce_w": 1.1, "rank_w": 1.4},
+        {"name": "locked_v2_trajnet_hard_expert", "domain_focus": "TrajNet", "width": 224, "dropout": 0.10, "lr": 6.0e-4, "hard_w": 3.0, "domain_w": 2.0, "domain_hard_w": 5.0, "t50_w": 2.0, "t100_w": 2.0, "ce_w": 1.0, "rank_w": 1.2},
+    ]
+    runs: Dict[str, Any] = {}
+    for base in trial_bases:
+        domain = str(base["domain_focus"])
+        seed_runs: Dict[str, Any] = {}
+        best_trial_name = ""
+        best_mode = ""
+        best_score = -1e18
+        best_policy: Dict[str, Any] = {}
+        best_ckpt = ""
+        for seed_offset in [0, 101]:
+            trial = dict(base)
+            trial["name"] = f"{base['name']}_seed{seed_offset}"
+            trial["seed_offset"] = seed_offset
+            train = _train_one(trial, domain_vocab)
+            modes: Dict[str, Any] = {}
+            for mode in ["domain_hard", "hard_all", "domain_tail"]:
+                policy, val = _select_policy(train["checkpoint"], mode)
+                m = val["metrics"]
+                domain_metrics = (m.get("by_domain") or {}).get(domain, {})
+                score = (
+                    1.4 * float(domain_metrics.get("all_improvement", 0.0))
+                    + 2.4 * float(domain_metrics.get("hard_failure_improvement", 0.0))
+                    + 0.8 * float(domain_metrics.get("t50_improvement", 0.0))
+                    - 30.0 * max(0.0, float(domain_metrics.get("easy_degradation", 1.0)) - 0.02)
+                    + 0.02 * float(domain_metrics.get("switch_rate", 0.0))
+                )
+                modes[mode] = {"policy": policy, "val": val, "domain_val_score": score}
+                if domain_metrics.get("easy_degradation", 1.0) <= 0.02 and score > best_score:
+                    best_score = score
+                    best_trial_name = trial["name"]
+                    best_mode = mode
+                    best_policy = policy
+                    best_ckpt = train["checkpoint"]
+            seed_runs[trial["name"]] = {"source": train.get("source", "fresh_run"), "trial": trial, "train": train, "modes": modes}
+        test_metrics = _eval_policy(best_ckpt, "test", best_policy, bootstrap=False) if best_policy else {}
+        runs[domain] = {
+            "source": "fresh_run",
+            "best_trial": best_trial_name,
+            "best_mode": best_mode,
+            "best_val_score": best_score,
+            "trials": seed_runs,
+            "test_metrics": test_metrics,
+            "domain_test_metrics": (test_metrics.get("by_domain") or {}).get(domain, {}),
+        }
+    summary = {
+        domain: {
+            "best_trial": row.get("best_trial"),
+            "best_mode": row.get("best_mode"),
+            "domain_test_metrics": row.get("domain_test_metrics"),
+        }
+        for domain, row in runs.items()
+    }
+    result = {
+        "source": "fresh_run",
+        "protocol_status": "locked_v2_domain_focused_candidate_not_final_deployable",
+        "selection_rule": "train per-domain hard/all weighted neural cost experts; select each domain expert by validation-only domain hard/all score; test once",
+        "runs": runs,
+        "summary": summary,
+        "deployment_decision": "keep_stage37_selector",
+        "caveat": "Domain-focused experts are diagnostic until composed and evaluated under a single validation-selected deployment policy.",
+    }
+    _write_json(OUT_DIR / "stage41_locked_v2_domain_focused.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_domain_focused.md", ["# Stage41 Locked-v2 Domain-Focused Hard Experts", "", "- source: `fresh_run`", "- status: domain-focused hard experts, diagnostic until composed.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_domain_focused", "ok", started, [str(DATA_DIR / "all_agent_train.npz")], [str(OUT_DIR / "stage41_locked_v2_domain_focused.md")])
+    return result
+
+
 def _locked_v2_checkpoint_paths() -> Dict[str, list[str]]:
     locked = read_json(OUT_DIR / "stage41_locked_v2_confirmatory.json", {})
     tail = read_json(OUT_DIR / "stage41_locked_v2_tail_robust.json", {})
     hard = read_json(OUT_DIR / "stage41_locked_v2_hard_all.json", {})
+    focused = read_json(OUT_DIR / "stage41_locked_v2_domain_focused.json", {})
     locked_paths: list[str] = []
     for row in (locked.get("runs") or {}).values():
         ckpt = ((row.get("train") or {}).get("checkpoint"))
@@ -857,6 +942,15 @@ def _locked_v2_checkpoint_paths() -> Dict[str, list[str]]:
             ckpt = ((((row.get("trials") or {}).get(best_trial) or {}).get("train") or {}).get("checkpoint"))
             if ckpt and Path(ckpt).exists():
                 hard_paths.append(str(ckpt))
+    focused_paths: list[str] = []
+    focused_by_domain: Dict[str, list[str]] = {}
+    for domain, row in (focused.get("runs") or {}).items():
+        best_trial = row.get("best_trial")
+        if best_trial:
+            ckpt = ((((row.get("trials") or {}).get(best_trial) or {}).get("train") or {}).get("checkpoint"))
+            if ckpt and Path(ckpt).exists():
+                focused_paths.append(str(ckpt))
+                focused_by_domain[str(domain)] = [str(ckpt)]
     paths: Dict[str, list[str]] = {}
     if locked_paths:
         paths["locked_v2_3seed_ensemble"] = locked_paths
@@ -864,10 +958,16 @@ def _locked_v2_checkpoint_paths() -> Dict[str, list[str]]:
         paths["tail_robust_3seed_ensemble"] = tail_paths
     if hard_paths:
         paths["hard_all_3seed_ensemble"] = hard_paths
+    if focused_paths:
+        paths["domain_focused_expert_ensemble"] = focused_paths
     if locked_paths and tail_paths:
         paths["locked_v2_plus_tail_6model_ensemble"] = locked_paths + tail_paths
     if locked_paths and tail_paths and hard_paths:
         paths["locked_v2_tail_hard_9model_ensemble"] = locked_paths + tail_paths + hard_paths
+    if locked_paths and tail_paths and hard_paths and focused_paths:
+        paths["locked_v2_tail_hard_domain_12model_ensemble"] = locked_paths + tail_paths + hard_paths + focused_paths
+    for domain, domain_paths in focused_by_domain.items():
+        paths[f"domain_focused_{domain}"] = domain_paths
     return paths
 
 
@@ -920,6 +1020,88 @@ def evaluate_locked_v2_ensemble() -> Dict[str, Any]:
     _write_json(OUT_DIR / "stage41_locked_v2_ensemble.json", result)
     write_md(OUT_DIR / "stage41_locked_v2_ensemble.md", ["# Stage41 Locked-v2 Neural Ensemble", "", "- source: `fresh_run`", "- status: ensemble over locked-v2 checkpoints, candidate evidence only.", f"- result: `{result}`"])
     _append_ledger("stage41_locked_v2_ensemble", "ok", started, list(sum(ensembles.values(), [])), [str(OUT_DIR / "stage41_locked_v2_ensemble.md")])
+    return result
+
+
+def _domain_expert_score(row: Mapping[str, Any]) -> float:
+    return (
+        1.4 * float(row.get("all_improvement", 0.0))
+        + 2.3 * float(row.get("hard_failure_improvement", 0.0))
+        + 0.8 * float(row.get("t50_improvement", 0.0))
+        + 0.2 * float(row.get("t100_improvement", 0.0))
+        - 35.0 * max(0.0, float(row.get("easy_degradation", 1.0)) - 0.02)
+        + 0.02 * float(row.get("switch_rate", 0.0))
+    )
+
+
+def evaluate_locked_v2_domain_expert_composer() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    pools = _locked_v2_checkpoint_paths()
+    candidates = {name: paths for name, paths in pools.items() if not name.startswith("locked_v2_tail_hard_domain_12model")}
+    val_cache: Dict[str, Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]] = {}
+    test_cache: Dict[str, Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]] = {}
+    choices: Dict[str, Any] = {}
+    modes = ["domain_hard", "hard_all", "domain_tail", "t50_tail", "balanced"]
+    for name, paths in candidates.items():
+        val_pred, val_labels = _predict_ensemble(paths, "val")
+        val_cache[name] = (val_pred, val_labels)
+        for mode in modes:
+            policy, val = _select_policy_from_predictions(val_pred, val_labels, mode)
+            for domain, row in (val["metrics"].get("by_domain") or {}).items():
+                if row.get("easy_degradation", 1.0) > 0.02:
+                    continue
+                score = _domain_expert_score(row)
+                prev = choices.get(domain)
+                if prev is None or score > prev["score"]:
+                    choices[domain] = {
+                        "expert": name,
+                        "mode": mode,
+                        "score": score,
+                        "policy": policy,
+                        "val_domain_metrics": row,
+                    }
+    if not choices:
+        result = {"source": "not_run", "reason": "no val-safe domain expert choices", "candidate_count": len(candidates)}
+    else:
+        combined_pred: Dict[str, np.ndarray] | None = None
+        labels_ref: Dict[str, np.ndarray] | None = None
+        composed_policy = {"type": "stage41_locked_v2_domain_expert_composer", "mode": "domain_expert_composer", "slices": {}}
+        for domain, choice in choices.items():
+            expert = choice["expert"]
+            if expert not in test_cache:
+                test_cache[expert] = _predict_ensemble(candidates[expert], "test")
+            pred, labels = test_cache[expert]
+            if labels_ref is None:
+                labels_ref = labels
+                combined_pred = {key: np.zeros_like(value) for key, value in pred.items()}
+            assert combined_pred is not None and labels_ref is not None
+            mask = labels_ref["domain"].astype(str) == domain
+            for key, value in pred.items():
+                combined_pred[key][mask] = value[mask]
+            for slice_key, params in (choice["policy"].get("slices") or {}).items():
+                if slice_key.split("|")[0] == domain:
+                    composed_policy["slices"][slice_key] = params
+        if combined_pred is None or labels_ref is None:
+            result = {"source": "not_run", "reason": "no test predictions composed", "choices": choices}
+        else:
+            metrics = _eval_policy_predictions(combined_pred, labels_ref, composed_policy, bootstrap=True)
+            positive_domains = sum(1 for row in metrics.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+            result = {
+                "source": "fresh_run",
+                "protocol_status": "locked_v2_domain_expert_composer_candidate_not_final_deployable",
+                "selection_rule": "select one cached neural expert and policy mode per domain on validation only; compose domain slices; evaluate test once",
+                "choices": choices,
+                "policy": composed_policy,
+                "best_metrics": metrics,
+                "positive_external_domains": positive_domains,
+                "neural_exceeds_stage37_by_gate_margin": bool(_beats_stage37_required_margins(metrics) and positive_domains >= 2),
+                "deployment_decision": "candidate_needs_independent_locked_protocol_or_user_acceptance" if _beats_stage37_required_margins(metrics) and positive_domains >= 2 else "keep_stage37_selector",
+                "caveat": "Domain expert composition is validation-selected candidate evidence; it does not replace Stage37 unless all strict Stage41 margins pass and the protocol is accepted or independently confirmed.",
+            }
+    _write_json(OUT_DIR / "stage41_locked_v2_domain_expert_composer.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_domain_expert_composer.md", ["# Stage41 Locked-v2 Domain Expert Composer", "", "- source: `fresh_run`", "- status: validation-selected per-domain expert composition, candidate evidence only.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_domain_expert_composer", "ok", started, list(sum(candidates.values(), [])), [str(OUT_DIR / "stage41_locked_v2_domain_expert_composer.md")])
     return result
 
 
@@ -1137,6 +1319,82 @@ easy_degradation_max = {(summary.get('easy_degradation') or {}).get('max')}
     _write_json("research_state.json", state)
 
 
+def update_domain_focused_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    block = f"""
+
+## Stage41 Locked-v2 Domain-Focused Hard Experts
+
+This run targets the remaining ETH_UCY/UCY hard/all gap by training domain-focused hard experts. It is diagnostic until the experts are composed by validation-only policy selection and evaluated once on test.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+summary = {result.get('summary')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Domain-Focused Hard Experts"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_domain_focused.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_domain_focused_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "summary": result.get("summary"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
+def update_domain_composer_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    metrics = result.get("best_metrics", {}) or {}
+    block = f"""
+
+## Stage41 Locked-v2 Domain Expert Composer
+
+This run composes cached neural experts per external domain using validation-only expert selection. It tests whether ETH_UCY/UCY underperformance is a domain-specialization problem rather than a global model-capacity problem.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin = {result.get('neural_exceeds_stage37_by_gate_margin')}
+positive_external_domains = {result.get('positive_external_domains')}
+all_improvement = {metrics.get('all_improvement')}
+t50_improvement = {metrics.get('t50_improvement')}
+t100_improvement = {metrics.get('t100_improvement')}
+hard_failure_improvement = {metrics.get('hard_failure_improvement')}
+easy_degradation = {metrics.get('easy_degradation')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Domain Expert Composer"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_domain_expert_composer.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_domain_expert_composer"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "best_metrics": result.get("best_metrics"),
+        "choices": result.get("choices"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
@@ -1160,3 +1418,13 @@ def main_locked_v2_ensemble() -> None:
 def main_locked_v2_hard_all() -> None:
     result = train_locked_v2_hard_all()
     update_hard_all_readme_state(result)
+
+
+def main_locked_v2_domain_focused() -> None:
+    result = train_locked_v2_domain_focused()
+    update_domain_focused_readme_state(result)
+
+
+def main_locked_v2_domain_composer() -> None:
+    result = evaluate_locked_v2_domain_expert_composer()
+    update_domain_composer_readme_state(result)

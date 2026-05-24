@@ -914,6 +914,8 @@ def eval_world_models() -> Dict[str, Any]:
     locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     tail_robust = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.json", {})
     hard_all = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_hard_all.json", {})
+    domain_focused = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_focused.json", {})
+    domain_composer = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_expert_composer.json", {})
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     if locked_v2:
         comparisons["Stage41_locked_v2_confirmatory_candidate_not_deployable"] = locked_v2.get("representative_metrics", {})
@@ -921,6 +923,8 @@ def eval_world_models() -> Dict[str, Any]:
         comparisons["Stage41_locked_v2_tail_robust_candidate_not_deployable"] = tail_robust.get("representative_metrics", {})
     if hard_all:
         comparisons["Stage41_locked_v2_hard_all_candidate_not_deployable"] = hard_all.get("representative_metrics", {})
+    if domain_composer:
+        comparisons["Stage41_locked_v2_domain_expert_composer_candidate_not_deployable"] = domain_composer.get("best_metrics", {})
     if ensemble:
         comparisons["Stage41_locked_v2_neural_ensemble_candidate_not_deployable"] = ensemble.get("best_metrics", {})
     positive_domains = 0
@@ -954,6 +958,8 @@ def eval_world_models() -> Dict[str, Any]:
         "locked_v2_confirmatory_available": bool(locked_v2),
         "locked_v2_tail_robust_available": bool(tail_robust),
         "locked_v2_hard_all_available": bool(hard_all),
+        "locked_v2_domain_focused_available": bool(domain_focused),
+        "locked_v2_domain_expert_composer_available": bool(domain_composer),
         "locked_v2_neural_ensemble_available": bool(ensemble),
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
@@ -1003,6 +1009,8 @@ def failure_analysis() -> Dict[str, Any]:
     locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     tail_robust = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.json", {})
     hard_all = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_hard_all.json", {})
+    domain_focused = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_focused.json", {})
+    domain_composer = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_expert_composer.json", {})
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
@@ -1035,6 +1043,8 @@ def failure_analysis() -> Dict[str, Any]:
         "neural_without_fallback": best.get("neural_endpoint_without_fallback", {}),
         "locked_v2_tail_robust": tail_robust.get("summary", {}),
         "locked_v2_hard_all": hard_all.get("summary", {}),
+        "locked_v2_domain_focused": domain_focused.get("summary", {}),
+        "locked_v2_domain_expert_composer": domain_composer.get("best_metrics", {}),
         "locked_v2_neural_ensemble": ensemble.get("best_metrics", {}),
         "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
             "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
@@ -1070,6 +1080,8 @@ def gates() -> Dict[str, Any]:
     locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     tail_robust = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.json", {})
     hard_all = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_hard_all.json", {})
+    domain_focused = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_focused.json", {})
+    domain_composer = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_expert_composer.json", {})
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
@@ -1087,7 +1099,9 @@ def gates() -> Dict[str, Any]:
         ("Gate4i locked-v2 confirmatory multi-seed candidate run", bool(locked_v2), locked_v2.get("summary")),
         ("Gate4j locked-v2 tail-robust multi-seed candidate run", bool(tail_robust), tail_robust.get("summary")),
         ("Gate4k locked-v2 hard/all multi-seed candidate run", bool(hard_all), hard_all.get("summary")),
-        ("Gate4l locked-v2 neural ensemble candidate run", bool(ensemble), ensemble.get("best_metrics")),
+        ("Gate4l locked-v2 domain-focused hard experts run", bool(domain_focused), domain_focused.get("summary")),
+        ("Gate4m locked-v2 domain expert composer run", bool(domain_composer), domain_composer.get("best_metrics")),
+        ("Gate4n locked-v2 neural ensemble candidate run", bool(ensemble), ensemble.get("best_metrics")),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -1131,6 +1145,8 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     tail_robust = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.json", {})
     hard_all = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_hard_all.json", {})
+    domain_focused = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_focused.json", {})
+    domain_composer = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_expert_composer.json", {})
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     lines = [
         "# Stage41 Final Report",
@@ -1239,6 +1255,20 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- summary: `{hard_all.get('summary')}`",
         "- caveat: this run targets all/hard margin; it is still candidate evidence, not a deployable replacement for Stage37.",
         "",
+        "## Locked-v2 Domain-Focused Hard Experts",
+        "",
+        f"- available: `{bool(domain_focused)}`",
+        f"- deployment decision: `{domain_focused.get('deployment_decision')}`",
+        f"- summary: `{domain_focused.get('summary')}`",
+        "",
+        "## Locked-v2 Domain Expert Composer",
+        "",
+        f"- available: `{bool(domain_composer)}`",
+        f"- deployment decision: `{domain_composer.get('deployment_decision')}`",
+        f"- Stage37-margin result: `{domain_composer.get('neural_exceeds_stage37_by_gate_margin')}`",
+        f"- best metrics: `{domain_composer.get('best_metrics')}`",
+        "- caveat: this run tests val-selected per-domain expert routing; it remains candidate evidence, not a deployable replacement for Stage37.",
+        "",
         "## Locked-v2 Neural Ensemble Candidate",
         "",
         f"- available: `{bool(ensemble)}`",
@@ -1292,6 +1322,8 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     tail_robust = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.json", {})
     hard_all = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_hard_all.json", {})
+    domain_focused = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_focused.json", {})
+    domain_composer = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_expert_composer.json", {})
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
@@ -1331,8 +1363,10 @@ Stage41 second pass:
 - locked-v2 confirmatory: deployment `{locked_v2.get('deployment_decision')}`, stable margin `{locked_v2.get('neural_exceeds_stage37_by_gate_margin_stably')}`, t50 mean `{((locked_v2.get('summary') or {}).get('t50_improvement') or {}).get('mean')}`.
 - locked-v2 tail-robust: deployment `{tail_robust.get('deployment_decision')}`, stable margin `{tail_robust.get('neural_exceeds_stage37_by_gate_margin_stably')}`, t50 mean `{((tail_robust.get('summary') or {}).get('t50_improvement') or {}).get('mean')}`.
 - locked-v2 hard/all: deployment `{hard_all.get('deployment_decision')}`, stable margin `{hard_all.get('neural_exceeds_stage37_by_gate_margin_stably')}`, hard mean `{((hard_all.get('summary') or {}).get('hard_failure_improvement') or {}).get('mean')}`.
+- locked-v2 domain-focused experts: deployment `{domain_focused.get('deployment_decision')}`, summary `{domain_focused.get('summary')}`.
+- locked-v2 domain expert composer: deployment `{domain_composer.get('deployment_decision')}`, margin result `{domain_composer.get('neural_exceeds_stage37_by_gate_margin')}`, hard `{(domain_composer.get('best_metrics') or {}).get('hard_failure_improvement')}`.
 - locked-v2 neural ensemble: deployment `{ensemble.get('deployment_decision')}`, margin result `{ensemble.get('neural_exceeds_stage37_by_gate_margin')}`, t50 `{(ensemble.get('best_metrics') or {}).get('t50_improvement')}`.
-- Tests: `python -m pytest tests` -> `104 passed in 97.80s`.
+- Tests: `python -m pytest tests` -> `105 passed in 109.07s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1343,7 +1377,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `104 passed in 97.80s`",
+            "- result: `105 passed in 109.07s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1380,6 +1414,8 @@ Stage41 second pass:
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.md")
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.md")
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_hard_all.md")
+    reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_focused.md")
+    reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_expert_composer.md")
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.md")
     stage41_state = dict(gate_result)
     if all_agent:
@@ -1463,6 +1499,23 @@ Stage41 second pass:
             "summary": hard_all.get("summary"),
             "conclusion": hard_all.get("caveat"),
         }
+    if domain_focused:
+        stage41_state["locked_v2_domain_focused_candidate"] = {
+            "source": domain_focused.get("source"),
+            "protocol_status": domain_focused.get("protocol_status"),
+            "deployment_decision": domain_focused.get("deployment_decision"),
+            "summary": domain_focused.get("summary"),
+            "conclusion": domain_focused.get("caveat"),
+        }
+    if domain_composer:
+        stage41_state["locked_v2_domain_expert_composer"] = {
+            "source": domain_composer.get("source"),
+            "protocol_status": domain_composer.get("protocol_status"),
+            "deployment_decision": domain_composer.get("deployment_decision"),
+            "best_metrics": domain_composer.get("best_metrics"),
+            "choices": domain_composer.get("choices"),
+            "conclusion": domain_composer.get("caveat"),
+        }
     if ensemble:
         stage41_state["locked_v2_neural_ensemble_candidate"] = {
             "source": ensemble.get("source"),
@@ -1473,7 +1526,7 @@ Stage41 second pass:
             "best_metrics": ensemble.get("best_metrics"),
             "conclusion": ensemble.get("caveat"),
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "104 passed in 97.80s", "source": "fresh_run"}
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "105 passed in 109.07s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 
