@@ -1014,9 +1014,37 @@ all_agent_policy_composer_t100_diagnostic = 0.26476770940707695
 all_agent_policy_composer_hard = 0.13117103605560632
 all_agent_policy_composer_easy = 0.0
 all_agent_policy_composer_deployment = diagnostic_keep_m3w_neural_v1_endpoint_candidate
+all_agent_locked_v2_all = 0.17133358603743754
+all_agent_locked_v2_t50 = 0.2368852639341944
+all_agent_locked_v2_t100_diagnostic = 0.19179621162648797
+all_agent_locked_v2_hard = 0.1782452385355816
+all_agent_locked_v2_easy = 0.0
+all_agent_locked_v2_stage37_margin_pass = True
+all_agent_locked_v2_stress_pass = True
+all_agent_locked_v2_fresh_confirmation_pass = False
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: if the val-selected composer remains diagnostic, train one unified all-agent multi-objective model instead of stitching isolated t+50 and t+100 specialists; current endpoint-level M3W-Neural v1 remains the best protected candidate.
+Next target: independently confirm or falsify the locked-v2 all-agent candidate on a fresh external protocol; current endpoint-level M3W-Neural v1 remains the best protected deployable candidate until that confirmation exists.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
+
+## Stage41 Locked-v2 Fixed Policy Confirmation Audit
+
+This audit freezes the domain-safe relaxed policy and re-evaluates it without threshold re-selection. It reports domain/source/scene stress slices and split overlap checks, but it is still not a fresh external dataset confirmation.
+
+```text
+source = fresh_run
+deployment_decision = candidate_needs_fresh_external_confirmation_before_deployment
+stage37_margin_pass = True
+stress_pass = True
+fresh_confirmation_pass = False
+all_improvement = 0.17133358603743754
+t50_improvement = 0.2368852639341944
+t100_improvement = 0.19179621162648797
+hard_failure_improvement = 0.1782452385355816
+easy_degradation = 0.0
+max_domain_easy_degradation = 0.0055509018258728116
+```
+
+Conclusion: fixed-policy stress evidence improved, but Stage37 remains the current deployable model until fresh external confirmation is completed.

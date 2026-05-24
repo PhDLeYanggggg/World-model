@@ -49,6 +49,7 @@ def build_completion_audit() -> dict[str, Any]:
     all_agent_repair = read_json("outputs/stage41_breakthrough/stage41_all_agent_risk_repair.json", {})
     all_agent_t50 = read_json("outputs/stage41_breakthrough/stage41_all_agent_t50_specialist.json", {})
     all_agent_composer = read_json("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json", {})
+    all_agent_locked = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -72,6 +73,8 @@ def build_completion_audit() -> dict[str, Any]:
         and composer_metrics.get("hard_failure_improvement", 0.0) > 0
         and composer_metrics.get("easy_degradation", 1.0) <= 0.02
     )
+    locked_metrics = all_agent_locked.get("split_results", {}).get("test", {}).get("metrics", {})
+    locked_strong_candidate = bool(all_agent_locked.get("stage37_margin_pass")) and bool(all_agent_locked.get("stress_pass"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -111,9 +114,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive),
-            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, and stage41_all_agent_policy_composer.json",
-            "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tries to combine them using validation-only selection; full all-agent deployment is only complete if a joint policy clears the Stage37-margin package gate.",
+            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate),
+            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, and outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json",
+            "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tests whether those coexist on the locked split. The stratified locked-v2 fixed-policy audit is stronger and passes Stage37-margin/stress checks, but its own fresh_confirmation_pass remains false, so full all-agent deployment is not complete.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -170,10 +173,22 @@ def build_completion_audit() -> dict[str, Any]:
             "positive_external_domains": all_agent_composer.get("positive_external_domains"),
             "neural_exceeds_stage37_by_gate_margin": all_agent_composer.get("neural_exceeds_stage37_by_gate_margin"),
         },
+        "all_agent_locked_v2_confirmation_summary": {
+            "deployment_decision": all_agent_locked.get("deployment_decision"),
+            "stage37_margin_pass": all_agent_locked.get("stage37_margin_pass"),
+            "stress_pass": all_agent_locked.get("stress_pass"),
+            "fresh_confirmation_pass": all_agent_locked.get("fresh_confirmation_pass"),
+            "all_improvement": locked_metrics.get("all_improvement"),
+            "t50_improvement": locked_metrics.get("t50_improvement"),
+            "t100_improvement": locked_metrics.get("t100_improvement"),
+            "hard_failure_improvement": locked_metrics.get("hard_failure_improvement"),
+            "easy_degradation": locked_metrics.get("easy_degradation"),
+            "max_domain_easy_degradation": all_agent_locked.get("max_domain_easy_degradation"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-            "If the composer remains diagnostic, train a single multi-objective all-agent model rather than post-hoc stitching t50 and t100 specialists.",
+            "Promote or reject locked-v2 all-agent candidate through independent fresh external confirmation; do not deploy it solely from this fixed-policy audit.",
             "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -227,9 +242,21 @@ def build_completion_audit() -> dict[str, Any]:
             f"- hard/failure improvement: `{composer_metrics.get('hard_failure_improvement')}`",
             f"- easy degradation: `{composer_metrics.get('easy_degradation')}`",
             "",
+            "## All-Agent Locked-v2 Fixed Confirmation",
+            "",
+            f"- deployment_decision: `{all_agent_locked.get('deployment_decision')}`",
+            f"- stage37 margin pass: `{all_agent_locked.get('stage37_margin_pass')}`",
+            f"- stress pass: `{all_agent_locked.get('stress_pass')}`",
+            f"- fresh confirmation pass: `{all_agent_locked.get('fresh_confirmation_pass')}`",
+            f"- all improvement: `{locked_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{locked_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{locked_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{locked_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{locked_metrics.get('easy_degradation')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable unless the composer clears the Stage37-margin gate. The t50-specialist fixed the previous all-agent t50 negative slice, and the composer tests whether that can coexist with the all/t100 risk-cap policy without test-tuned thresholds.",
+            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics are still candidate-level. The locked-v2 fixed-policy audit is the strongest all-agent signal so far, but it explicitly requires independent fresh external confirmation before it can replace the endpoint-level protected candidate.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -241,6 +268,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     summary = audit.get("all_agent_risk_repair_summary", {})
     t50_summary = audit.get("all_agent_t50_specialist_summary", {})
     composer_summary = audit.get("all_agent_policy_composer_summary", {})
+    locked_summary = audit.get("all_agent_locked_v2_confirmation_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -269,11 +297,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"all_agent_policy_composer_hard = {composer_summary.get('hard_failure_improvement')}",
             f"all_agent_policy_composer_easy = {composer_summary.get('easy_degradation')}",
             f"all_agent_policy_composer_deployment = {composer_summary.get('deployment_decision')}",
+            f"all_agent_locked_v2_all = {locked_summary.get('all_improvement')}",
+            f"all_agent_locked_v2_t50 = {locked_summary.get('t50_improvement')}",
+            f"all_agent_locked_v2_t100_diagnostic = {locked_summary.get('t100_improvement')}",
+            f"all_agent_locked_v2_hard = {locked_summary.get('hard_failure_improvement')}",
+            f"all_agent_locked_v2_easy = {locked_summary.get('easy_degradation')}",
+            f"all_agent_locked_v2_stage37_margin_pass = {locked_summary.get('stage37_margin_pass')}",
+            f"all_agent_locked_v2_stress_pass = {locked_summary.get('stress_pass')}",
+            f"all_agent_locked_v2_fresh_confirmation_pass = {locked_summary.get('fresh_confirmation_pass')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: if the val-selected composer remains diagnostic, train one unified all-agent multi-objective model instead of stitching isolated t+50 and t+100 specialists; current endpoint-level M3W-Neural v1 remains the best protected candidate.",
+            "Next target: independently confirm or falsify the locked-v2 all-agent candidate on a fresh external protocol; current endpoint-level M3W-Neural v1 remains the best protected deployable candidate until that confirmation exists.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -282,6 +318,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add(str(OUT_DIR / "completion_audit_m3w_neural_v1.json"))
     generated.add("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.md")
     generated.add("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json")
+    generated.add("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.md")
+    generated.add("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json")
     state["generated_reports"] = sorted(generated)
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
@@ -290,6 +328,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "all_agent_risk_repair_summary": summary,
         "all_agent_t50_specialist_summary": t50_summary,
         "all_agent_policy_composer_summary": composer_summary,
+        "all_agent_locked_v2_confirmation_summary": locked_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

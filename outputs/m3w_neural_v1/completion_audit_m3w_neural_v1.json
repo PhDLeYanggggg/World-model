@@ -31,6 +31,18 @@
     "positive_external_domains": 3,
     "neural_exceeds_stage37_by_gate_margin": false
   },
+  "all_agent_locked_v2_confirmation_summary": {
+    "deployment_decision": "candidate_needs_fresh_external_confirmation_before_deployment",
+    "stage37_margin_pass": true,
+    "stress_pass": true,
+    "fresh_confirmation_pass": false,
+    "all_improvement": 0.17133358603743754,
+    "t50_improvement": 0.2368852639341944,
+    "t100_improvement": 0.19179621162648797,
+    "hard_failure_improvement": 0.1782452385355816,
+    "easy_degradation": 0.0,
+    "max_domain_easy_degradation": 0.0055509018258728116
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -61,8 +73,8 @@
     {
       "requirement": "all active agents future world-state, not only endpoint selector",
       "status": "partial",
-      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, and stage41_all_agent_policy_composer.json",
-      "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tries to combine them using validation-only selection; full all-agent deployment is only complete if a joint policy clears the Stage37-margin package gate."
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, and outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json",
+      "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tests whether those coexist on the locked split. The stratified locked-v2 fixed-policy audit is stronger and passes Stage37-margin/stress checks, but its own fresh_confirmation_pass remains false, so full all-agent deployment is not complete."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",
@@ -87,7 +99,7 @@
   ],
   "next_highest_value_actions": [
     "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-    "If the composer remains diagnostic, train a single multi-objective all-agent model rather than post-hoc stitching t50 and t100 specialists.",
+    "Promote or reject locked-v2 all-agent candidate through independent fresh external confirmation; do not deploy it solely from this fixed-policy audit.",
     "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

@@ -13,7 +13,7 @@
 | neural model exceeds Stage37 on external all/t50/hard with easy <=2 | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | at least two held-out external domains positive | `complete` | outputs/stage41_breakthrough/stage41_neural_eval.json |  |
 | neural without external fallback not catastrophic | `complete` | fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports | The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable. |
-| all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, and stage41_all_agent_policy_composer.json | Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tries to combine them using validation-only selection; full all-agent deployment is only complete if a joint policy clears the Stage37-margin package gate. |
+| all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, and outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json | Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tests whether those coexist on the locked split. The stratified locked-v2 fixed-policy audit is stronger and passes Stage37-margin/stress checks, but its own fresh_confirmation_pass remains false, so full all-agent deployment is not complete. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -47,6 +47,18 @@
 - hard/failure improvement: `0.13117103605560632`
 - easy degradation: `0.0`
 
+## All-Agent Locked-v2 Fixed Confirmation
+
+- deployment_decision: `candidate_needs_fresh_external_confirmation_before_deployment`
+- stage37 margin pass: `True`
+- stress pass: `True`
+- fresh confirmation pass: `False`
+- all improvement: `0.17133358603743754`
+- t50 improvement: `0.2368852639341944`
+- t100 diagnostic improvement: `0.19179621162648797`
+- hard/failure improvement: `0.1782452385355816`
+- easy degradation: `0.0`
+
 ## Conclusion
 
-M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable unless the composer clears the Stage37-margin gate. The t50-specialist fixed the previous all-agent t50 negative slice, and the composer tests whether that can coexist with the all/t100 risk-cap policy without test-tuned thresholds.
+M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics are still candidate-level. The locked-v2 fixed-policy audit is the strongest all-agent signal so far, but it explicitly requires independent fresh external confirmation before it can replace the endpoint-level protected candidate.
