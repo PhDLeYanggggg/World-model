@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage34",
-  "current_verdict": "stage34_row_geometry_done_no_external_positive_transfer",
+  "current_stage": "stage35",
+  "current_verdict": "stage35_external_selective_transfer_not_deployable",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -260,12 +260,25 @@
     "outputs/stage34_external_geometry/external_scene_goal_report.md",
     "outputs/stage34_external_geometry/latent_adapter_v2_report.md",
     "outputs/stage34_external_geometry/project_world_model_gap_stage34.md",
+    "outputs/stage34_external_geometry/pytest_status.md",
     "outputs/stage34_external_geometry/relative_baseline_v2_report.md",
     "outputs/stage34_external_geometry/report_stage34_final.md",
     "outputs/stage34_external_geometry/run_ledger.md",
     "outputs/stage34_external_geometry/stage34_failure_analysis.md",
     "outputs/stage34_external_geometry/world_model_gate_stage34.md",
-    "outputs/stage34_external_geometry/pytest_status.md"
+    "outputs/stage35_selective_transfer/cross_domain_eval_stage35.md",
+    "outputs/stage35_selective_transfer/external_curriculum_adaptation_report.md",
+    "outputs/stage35_selective_transfer/external_data_expansion_report.md",
+    "outputs/stage35_selective_transfer/external_hard_easy_failure_report.md",
+    "outputs/stage35_selective_transfer/external_selector_v3_report.md",
+    "outputs/stage35_selective_transfer/external_split_v2_report.md",
+    "outputs/stage35_selective_transfer/project_world_model_gap_stage35.md",
+    "outputs/stage35_selective_transfer/pytest_status.md",
+    "outputs/stage35_selective_transfer/report_stage35_final.md",
+    "outputs/stage35_selective_transfer/run_ledger.md",
+    "outputs/stage35_selective_transfer/selective_transfer_policy_report.md",
+    "outputs/stage35_selective_transfer/stage35_world_model_capability_audit.md",
+    "outputs/stage35_selective_transfer/world_model_gate_stage35.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -1453,5 +1466,199 @@
       "passed": 64,
       "source": "fresh_run"
     }
+  },
+  "stage35": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate1 external data expansion attempted",
+        "passed": true,
+        "evidence": 18
+      },
+      {
+        "gate": "Gate2 external t50 rows enough or blocker",
+        "passed": true,
+        "evidence": {
+          "test_horizon_counts": {
+            "10": 21267,
+            "25": 18765,
+            "50": 16263,
+            "100": 10008
+          },
+          "blocker": null
+        }
+      },
+      {
+        "gate": "Gate3 external held-out scene split built",
+        "passed": true,
+        "evidence": [
+          "UCY_crowds",
+          "UCY_students01",
+          "UCY_zara03"
+        ]
+      },
+      {
+        "gate": "Gate4 no leakage pass",
+        "passed": true,
+        "evidence": {
+          "future_endpoint_input": false,
+          "central_velocity": false,
+          "test_endpoint_goals": false
+        }
+      },
+      {
+        "gate": "Gate5 external hard/easy/failure labels built",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "rows": 158942,
+            "easy": 39736,
+            "hard": 131433,
+            "failure": 64528,
+            "oracle_headroom": 0.46283990144729614
+          },
+          "val": {
+            "rows": 112746,
+            "easy": 35967,
+            "hard": 78283,
+            "failure": 39068,
+            "oracle_headroom": 0.5199509859085083
+          },
+          "test": {
+            "rows": 66303,
+            "easy": 20798,
+            "hard": 45917,
+            "failure": 22891,
+            "oracle_headroom": 0.5287383794784546
+          }
+        }
+      },
+      {
+        "gate": "Gate6 selective transfer all improvement > 0",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545
+        }
+      },
+      {
+        "gate": "Gate7 t50 improvement > 3",
+        "passed": false,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545
+        }
+      },
+      {
+        "gate": "Gate8 hard/failure improvement > 10",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545
+        }
+      },
+      {
+        "gate": "Gate9 easy degradation <= 2",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545
+        }
+      },
+      {
+        "gate": "Gate10 SDD performance not destroyed",
+        "passed": true,
+        "evidence": {
+          "rows": 100000,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "selector_regret": 0.0,
+          "switch_rate": 0.0,
+          "mean_confidence": 0.0,
+          "status": "cached_verified",
+          "reason": "Mixed-domain deployment to SDD is disabled unless easy preservation is proven."
+        }
+      },
+      {
+        "gate": "Gate11 held-out external scenes positive or blocker",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Held-out external test scenes under split v2."
+        }
+      },
+      {
+        "gate": "Gate12 world model cross-domain candidate gate",
+        "passed": false,
+        "evidence": false
+      },
+      {
+        "gate": "Gate13 Stage5C false",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate14 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 12,
+    "gates_total": 14,
+    "current_verdict": "stage35_external_selective_transfer_not_deployable",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

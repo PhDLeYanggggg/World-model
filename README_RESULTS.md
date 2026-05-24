@@ -761,3 +761,32 @@ Key Stage34 outcome:
 - Latent adapter reduced latent distance but did not produce predictive lift.
 - Cross-domain candidate gate remains failed; this is not external positive transfer.
 - Tests: `python -m pytest tests` -> `64 passed`.
+
+## Stage35: External Selective Transfer
+
+Stage35 expands local non-SDD top-down pedestrian data where safely parseable, builds scene-level external splits, hard/easy/failure labels, selective transfer policies, and external selector v3. It does not execute Stage5C or enable SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+sdd_coordinates = pixel raw-frame
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+best_external_all_improvement = 0.12131890857784355
+best_external_t50_improvement = 0.0
+best_external_hard_improvement = 0.1398494448930071
+best_external_easy_degradation = 0.0004114683717719725
+gates = 12 / 14
+verdict = stage35_external_selective_transfer_not_deployable
+```
+
+Key Stage35 outcome:
+
+- External data expansion converted `18` local non-SDD track files into split v2 rows: train `158942`, val `112746`, test `66303`.
+- Test horizons include t+50 `16263` and t+100 `10008` dataset-local raw-frame rows; these are not metric/seconds claims.
+- External hard/easy/failure labels were built with oracle headroom around `52.9%` on test.
+- Selective transfer improved all-test by `0.12131890857784355` and hard/failure by `0.1398494448930071` while easy degradation stayed `0.0004114683717719725`.
+- t+50 improvement stayed `0.0`, so Stage35 is not a deployable cross-domain M3W candidate.
+- Tests: `python -m pytest tests` -> `67 passed`.
+
