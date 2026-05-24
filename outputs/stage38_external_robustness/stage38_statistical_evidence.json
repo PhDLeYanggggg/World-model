@@ -1,0 +1,97 @@
+{
+  "source": "fresh_run",
+  "frozen_stage37": {
+    "bootstrap_n": 2000,
+    "all_ci": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 66303,
+      "low": 0.13111496554415888,
+      "mid": 0.1348989904010876,
+      "high": 0.1387783863042381
+    },
+    "t50_ci": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 16263,
+      "low": 0.07673594462414812,
+      "mid": 0.08445723096143776,
+      "high": 0.09207560630337992
+    },
+    "hard_failure_ci": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 45917,
+      "low": 0.15096500703398077,
+      "mid": 0.15554037466048337,
+      "high": 0.15983416236440717
+    },
+    "easy_ci": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 20798,
+      "low": -0.0009821007527392512,
+      "mid": -0.00040901792014602645,
+      "high": 0.0
+    },
+    "all": 0.1348254070727205,
+    "hard_failure": 0.1554340386904196,
+    "easy_degradation": 0.0004114683717719725
+  },
+  "stage38_correction": {
+    "bootstrap_n": "not_run",
+    "reason": "correction is not deployed unless it improves Stage37; per-row bootstrap skipped when deployment decision keeps Stage37",
+    "metrics": {
+      "rows": 66303,
+      "all_improvement": 0.1348254070040389,
+      "t10_improvement": 0.30620476404756647,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.08457292499203606,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": 0.15543403861117056,
+      "easy_degradation": 0.0004114683717719725,
+      "harm_over_fallback": -0.14194807770788026,
+      "intervention_rate": 0.04891181394507036,
+      "smoothness_proxy": 1.859190279676184,
+      "physical_validity_proxy": "bounded_delta_clip"
+    }
+  },
+  "per_domain_ci": {
+    "UCY": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 66303,
+      "low": 0.13085878462221864,
+      "mid": 0.13486306348137078,
+      "high": 0.13870680502790103
+    },
+    "ETH_UCY": "not_run: no held-out external test split",
+    "TrajNet": "not_run: no held-out external test split"
+  },
+  "per_scene_ci": {
+    "UCY_crowds": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 9540,
+      "low": 0.14691112000261594,
+      "mid": 0.15749974478081713,
+      "high": 0.16821453889005056
+    },
+    "UCY_students01": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 47223,
+      "low": 0.11528510597791429,
+      "mid": 0.11924958916452388,
+      "high": 0.12342439021288197
+    },
+    "UCY_zara03": {
+      "source": "fresh_run",
+      "method": "bootstrap_rows_2000",
+      "rows": 9540,
+      "low": 0.14678627666993546,
+      "mid": 0.15761736888325623,
+      "high": 0.16798849052094658
+    }
+  }
+}

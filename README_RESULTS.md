@@ -841,3 +841,30 @@ Key Stage37 outcome:
 - Rebuilt t+50 candidate baseline family and switchability models.
 - t+50 now passes the Stage37 external gate under dataset-local raw-frame evaluation, but no metric/seconds/3D claim is made.
 - Tests: `python -m pytest tests` -> `73 passed`.
+
+## Stage38: External Robustness and Safe Dynamics Head
+
+Stage38 freezes the Stage37 deployable selector, audits external domain coverage, evaluates frozen external generalization, trains bounded correction/dynamics heads under Stage37 fallback, and reports statistical evidence. It does not execute Stage5C or enable SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+stage37_all_improvement = 0.1348254070727205
+stage37_t50_improvement = 0.08457292542209705
+stage37_hard_improvement = 0.1554340386904196
+stage37_easy_degradation = 0.0004114683717719725
+correction_deployment = keep_stage37_selector
+gates = 14 / 15
+verdict = stage38_robustness_partial_keep_stage37_selector
+```
+
+Key Stage38 outcome:
+
+- Stage37 policy is frozen and remains the current external best unless bounded correction beats it safely.
+- UCY held-out remains positive; ETH/TrajNet held-out external tests are honest blockers under the frozen split.
+- Bounded correction/dynamics head is trained and evaluated with fallback; failed correction is not deployed.
+- Tests: `python -m pytest tests` -> `77 passed in 8.02s`.
+

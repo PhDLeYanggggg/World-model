@@ -1,0 +1,57 @@
+{
+  "source": "fresh_run",
+  "matrix": {
+    "UCY": {
+      "source": "fresh_run",
+      "status": "heldout_test",
+      "metrics": {
+        "rows": 66303,
+        "all_improvement": 0.1348254070727205,
+        "t10_improvement": 0.30620476404756647,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.08457292542209705,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.1554340386904196,
+        "easy_degradation": 0.0004114683717719725,
+        "selector_regret": 0.493665392606631,
+        "harm_over_fallback": -0.14194807778019042,
+        "switch_rate": 0.0990452920682322,
+        "mean_confidence": 0.04121534153819084,
+        "stage35_non_t50_plus_stage37_t50": true,
+        "status": "fresh_run",
+        "reason": "Stage37 final safety-selected external policy."
+      },
+      "bootstrap_ci_t50": {
+        "source": "fresh_run",
+        "method": "bootstrap_rows_500",
+        "low": 0.07692573799568757,
+        "mid": 0.08445480442424597,
+        "high": 0.09151819823299866,
+        "rows": 16263
+      }
+    },
+    "ETH_UCY": {
+      "source": "not_run",
+      "status": "blocker",
+      "reason": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization",
+      "metrics": null
+    },
+    "TrajNet": {
+      "source": "not_run",
+      "status": "blocker",
+      "reason": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization",
+      "metrics": null
+    },
+    "OpenTraj_mixed": {
+      "source": "not_run",
+      "status": "blocker",
+      "reason": "mixed-domain held-out test beyond UCY is not available without redefining frozen Stage37 split",
+      "metrics": null
+    }
+  },
+  "positive_domains": [
+    "UCY"
+  ],
+  "two_domain_success": false,
+  "honest_blocker": true
+}

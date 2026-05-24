@@ -1,0 +1,149 @@
+{
+  "source": "fresh_run",
+  "rows": [
+    {
+      "domain": "ETH_UCY",
+      "split": "train",
+      "source": "cached_verified",
+      "rows": 150798,
+      "t10": 43884,
+      "t25": 40579,
+      "t50": 37007,
+      "t100": 29328,
+      "history_k8": 123654,
+      "history_k16": 86825,
+      "history_k32": 44059,
+      "history_k64": 20715,
+      "agent_count": 435,
+      "scene_count": 5,
+      "scenes": [
+        "ETH_UCY_seq_eth",
+        "ETH_UCY_seq_hotel",
+        "ETH_UCY_students03",
+        "ETH_UCY_zara01",
+        "ETH_UCY_zara02"
+      ],
+      "track_length_median": 40.0,
+      "coordinate_unit": "dataset_local",
+      "metric_status": "unverified weak metric diagnostic",
+      "heldout_status": "training_domain"
+    },
+    {
+      "domain": "TrajNet",
+      "split": "train",
+      "source": "cached_verified",
+      "rows": 8144,
+      "t10": 2720,
+      "t25": 2328,
+      "t50": 1936,
+      "t100": 1160,
+      "history_k8": 4785,
+      "history_k16": 870,
+      "history_k32": 0,
+      "history_k64": 0,
+      "agent_count": 179,
+      "scene_count": 1,
+      "scenes": [
+        "TrajNet_biwi"
+      ],
+      "track_length_median": 20.0,
+      "coordinate_unit": "dataset_local",
+      "metric_status": "unverified weak metric diagnostic",
+      "heldout_status": "training_domain"
+    },
+    {
+      "domain": "TrajNet",
+      "split": "val",
+      "source": "cached_verified",
+      "rows": 112746,
+      "t10": 37683,
+      "t25": 32059,
+      "t50": 26756,
+      "t100": 16248,
+      "history_k8": 67879,
+      "history_k16": 12186,
+      "history_k32": 0,
+      "history_k64": 0,
+      "agent_count": 892,
+      "scene_count": 2,
+      "scenes": [
+        "TrajNet_crowds",
+        "TrajNet_mot"
+      ],
+      "track_length_median": 20.0,
+      "coordinate_unit": "dataset_local",
+      "metric_status": "unverified weak metric diagnostic",
+      "heldout_status": "validation_domain"
+    },
+    {
+      "domain": "UCY",
+      "split": "test",
+      "source": "cached_verified",
+      "rows": 66303,
+      "t10": 21267,
+      "t25": 18765,
+      "t50": 16263,
+      "t100": 10008,
+      "history_k8": 41283,
+      "history_k16": 7506,
+      "history_k32": 0,
+      "history_k64": 0,
+      "agent_count": 892,
+      "scene_count": 3,
+      "scenes": [
+        "UCY_crowds",
+        "UCY_students01",
+        "UCY_zara03"
+      ],
+      "track_length_median": 20.0,
+      "coordinate_unit": "dataset_local",
+      "metric_status": "unverified weak metric diagnostic",
+      "heldout_status": "heldout_test"
+    }
+  ],
+  "by_domain": {
+    "UCY": {
+      "rows": 66303,
+      "t50": 16263,
+      "t100": 10008,
+      "splits": [
+        "test"
+      ],
+      "heldout_test_available": true,
+      "blocker": null
+    },
+    "ETH_UCY": {
+      "rows": 150798,
+      "t50": 37007,
+      "t100": 29328,
+      "splits": [
+        "train"
+      ],
+      "heldout_test_available": false,
+      "blocker": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization"
+    },
+    "TrajNet": {
+      "rows": 120890,
+      "t50": 28692,
+      "t100": 17408,
+      "splits": [
+        "train",
+        "val"
+      ],
+      "heldout_test_available": false,
+      "blocker": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization"
+    },
+    "OpenTraj_mixed": {
+      "rows": 337991,
+      "t50": 81962,
+      "t100": 56744,
+      "splits": [
+        "test",
+        "train",
+        "val"
+      ],
+      "heldout_test_available": true,
+      "blocker": null
+    }
+  }
+}

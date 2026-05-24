@@ -1,0 +1,270 @@
+{
+  "source": "fresh_run",
+  "gates": [
+    {
+      "gate": "Gate1 Stage37 policy frozen",
+      "passed": true,
+      "evidence": "3ee52d057ab49e3952b076d59657a0a2a7f939d74d99a3f3cea8cf37a55673af"
+    },
+    {
+      "gate": "Gate2 no leakage pass",
+      "passed": true,
+      "evidence": {
+        "future_endpoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    {
+      "gate": "Gate3 external multi-domain audit complete",
+      "passed": true,
+      "evidence": {
+        "UCY": {
+          "rows": 66303,
+          "t50": 16263,
+          "t100": 10008,
+          "splits": [
+            "test"
+          ],
+          "heldout_test_available": true,
+          "blocker": null
+        },
+        "ETH_UCY": {
+          "rows": 150798,
+          "t50": 37007,
+          "t100": 29328,
+          "splits": [
+            "train"
+          ],
+          "heldout_test_available": false,
+          "blocker": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization"
+        },
+        "TrajNet": {
+          "rows": 120890,
+          "t50": 28692,
+          "t100": 17408,
+          "splits": [
+            "train",
+            "val"
+          ],
+          "heldout_test_available": false,
+          "blocker": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization"
+        },
+        "OpenTraj_mixed": {
+          "rows": 337991,
+          "t50": 81962,
+          "t100": 56744,
+          "splits": [
+            "test",
+            "train",
+            "val"
+          ],
+          "heldout_test_available": true,
+          "blocker": null
+        }
+      }
+    },
+    {
+      "gate": "Gate4 frozen Stage37 positive on at least one external domain",
+      "passed": true,
+      "evidence": [
+        "UCY"
+      ]
+    },
+    {
+      "gate": "Gate5 positive on at least two external domains or honest blocker",
+      "passed": true,
+      "evidence": {
+        "source": "fresh_run",
+        "matrix": {
+          "UCY": {
+            "source": "fresh_run",
+            "status": "heldout_test",
+            "metrics": {
+              "rows": 66303,
+              "all_improvement": 0.1348254070727205,
+              "t10_improvement": 0.30620476404756647,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.08457292542209705,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.1554340386904196,
+              "easy_degradation": 0.0004114683717719725,
+              "selector_regret": 0.493665392606631,
+              "harm_over_fallback": -0.14194807778019042,
+              "switch_rate": 0.0990452920682322,
+              "mean_confidence": 0.04121534153819084,
+              "stage35_non_t50_plus_stage37_t50": true,
+              "status": "fresh_run",
+              "reason": "Stage37 final safety-selected external policy."
+            },
+            "bootstrap_ci_t50": {
+              "source": "fresh_run",
+              "method": "bootstrap_rows_500",
+              "low": 0.07692573799568757,
+              "mid": 0.08445480442424597,
+              "high": 0.09151819823299866,
+              "rows": 16263
+            }
+          },
+          "ETH_UCY": {
+            "source": "not_run",
+            "status": "blocker",
+            "reason": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization",
+            "metrics": null
+          },
+          "TrajNet": {
+            "source": "not_run",
+            "status": "blocker",
+            "reason": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization",
+            "metrics": null
+          },
+          "OpenTraj_mixed": {
+            "source": "not_run",
+            "status": "blocker",
+            "reason": "mixed-domain held-out test beyond UCY is not available without redefining frozen Stage37 split",
+            "metrics": null
+          }
+        },
+        "positive_domains": [
+          "UCY"
+        ],
+        "two_domain_success": false,
+        "honest_blocker": true
+      }
+    },
+    {
+      "gate": "Gate6 bounded correction trained",
+      "passed": true,
+      "evidence": {
+        "rows": 66303,
+        "all_improvement": 0.1348254070040389,
+        "t10_improvement": 0.30620476404756647,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.08457292499203606,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.15543403861117056,
+        "easy_degradation": 0.0004114683717719725,
+        "harm_over_fallback": -0.14194807770788026,
+        "intervention_rate": 0.04891181394507036,
+        "smoothness_proxy": 1.859190279676184,
+        "physical_validity_proxy": "bounded_delta_clip"
+      }
+    },
+    {
+      "gate": "Gate7 correction improves Stage37 or marked not deployable",
+      "passed": true,
+      "evidence": "keep_stage37_selector"
+    },
+    {
+      "gate": "Gate8 easy degradation <=2",
+      "passed": true,
+      "evidence": {
+        "stage37": 0.0004114683717719725,
+        "correction": 0.0004114683717719725
+      }
+    },
+    {
+      "gate": "Gate9 hard/failure preserved",
+      "passed": true,
+      "evidence": {
+        "stage37": 0.1554340386904196,
+        "correction": 0.15543403861117056
+      }
+    },
+    {
+      "gate": "Gate10 t50 preserved or improved",
+      "passed": true,
+      "evidence": {
+        "stage37": 0.08457292542209705,
+        "correction": 0.08457292499203606
+      }
+    },
+    {
+      "gate": "Gate11 SDD safety not destroyed",
+      "passed": true,
+      "evidence": "Stage38 policy not deployed on SDD; Stage26/Stage37 safety floor preserved"
+    },
+    {
+      "gate": "Gate12 statistical evidence complete",
+      "passed": true,
+      "evidence": {
+        "bootstrap_n": 2000,
+        "all_ci": {
+          "source": "fresh_run",
+          "method": "bootstrap_rows_2000",
+          "rows": 66303,
+          "low": 0.13111496554415888,
+          "mid": 0.1348989904010876,
+          "high": 0.1387783863042381
+        },
+        "t50_ci": {
+          "source": "fresh_run",
+          "method": "bootstrap_rows_2000",
+          "rows": 16263,
+          "low": 0.07673594462414812,
+          "mid": 0.08445723096143776,
+          "high": 0.09207560630337992
+        },
+        "hard_failure_ci": {
+          "source": "fresh_run",
+          "method": "bootstrap_rows_2000",
+          "rows": 45917,
+          "low": 0.15096500703398077,
+          "mid": 0.15554037466048337,
+          "high": 0.15983416236440717
+        },
+        "easy_ci": {
+          "source": "fresh_run",
+          "method": "bootstrap_rows_2000",
+          "rows": 20798,
+          "low": -0.0009821007527392512,
+          "mid": -0.00040901792014602645,
+          "high": 0.0
+        },
+        "all": 0.1348254070727205,
+        "hard_failure": 0.1554340386904196,
+        "easy_degradation": 0.0004114683717719725
+      }
+    },
+    {
+      "gate": "Gate13 world model candidate gate",
+      "passed": false,
+      "evidence": {
+        "source": "fresh_run",
+        "stage37_still_selector": true,
+        "stage38_correction_dynamics_lift": false,
+        "history_neighbor_goal_contribution": "history/neighbor contributed to Stage37 t50; goal prototype independent lift is not proven",
+        "cross_domain_from_ucy_to_eth_trajnet": false,
+        "external_positive_domains": [
+          "UCY"
+        ],
+        "t100_failure_reason": "t100 remains raw-frame diagnostic with 0.0 improvement; no safe long-horizon policy selected",
+        "cross_domain_world_model_candidate": false,
+        "dataset_local_2p5d_only": true,
+        "current_best_external_model": "Stage37 selector",
+        "blockers": [
+          "ETH/TrajNet held-out external tests are not available under frozen Stage37 split",
+          "bounded correction does not provide deployable dynamics lift",
+          "t100 diagnostic remains 0.0"
+        ]
+      }
+    },
+    {
+      "gate": "Gate14 Stage5C false",
+      "passed": true,
+      "evidence": "Stage5C not executed"
+    },
+    {
+      "gate": "Gate15 SMC false",
+      "passed": true,
+      "evidence": "SMC not enabled"
+    }
+  ],
+  "gates_passed": 14,
+  "gates_total": 15,
+  "current_verdict": "stage38_robustness_partial_keep_stage37_selector",
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

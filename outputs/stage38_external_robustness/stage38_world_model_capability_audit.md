@@ -1,0 +1,4 @@
+# Stage38 World Model Capability Audit
+
+- source: `fresh_run`
+- audit: `{'source': 'fresh_run', 'stage37_still_selector': True, 'stage38_correction_dynamics_lift': False, 'history_neighbor_goal_contribution': 'history/neighbor contributed to Stage37 t50; goal prototype independent lift is not proven', 'cross_domain_from_ucy_to_eth_trajnet': False, 'external_positive_domains': ['UCY'], 't100_failure_reason': 't100 remains raw-frame diagnostic with 0.0 improvement; no safe long-horizon policy selected', 'cross_domain_world_model_candidate': False, 'dataset_local_2p5d_only': True, 'current_best_external_model': 'Stage37 selector', 'blockers': ['ETH/TrajNet held-out external tests are not available under frozen Stage37 split', 'bounded correction does not provide deployable dynamics lift', 't100 diagnostic remains 0.0']}`
