@@ -20,6 +20,17 @@
     "easy_degradation": 0.0,
     "positive_external_domains": 3
   },
+  "all_agent_policy_composer_summary": {
+    "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
+    "best_variant": "risk_all_t50_override",
+    "all_improvement": 0.12271025390115187,
+    "t50_improvement": 0.0902220631231122,
+    "t100_improvement": 0.26476770940707695,
+    "hard_failure_improvement": 0.13117103605560632,
+    "easy_degradation": 0.0,
+    "positive_external_domains": 3,
+    "neural_exceeds_stage37_by_gate_margin": false
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -50,8 +61,8 @@
     {
       "requirement": "all active agents future world-state, not only endpoint selector",
       "status": "partial",
-      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json and stage41_all_agent_risk_repair.json",
-      "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. Full all-agent deployment is still not proven because all/hard/t100 do not clear the Stage37-margin package gate together."
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, and stage41_all_agent_policy_composer.json",
+      "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tries to combine them using validation-only selection; full all-agent deployment is only complete if a joint policy clears the Stage37-margin package gate."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",
@@ -76,7 +87,7 @@
   ],
   "next_highest_value_actions": [
     "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-    "Combine t50-specialist and t100-risk-cap policies under a single val-selected all-agent policy without test tuning.",
+    "If the composer remains diagnostic, train a single multi-objective all-agent model rather than post-hoc stitching t50 and t100 specialists.",
     "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

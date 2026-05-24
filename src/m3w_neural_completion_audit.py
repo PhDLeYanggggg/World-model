@@ -48,6 +48,7 @@ def build_completion_audit() -> dict[str, Any]:
     all_agent_eval = read_json("outputs/stage41_breakthrough/stage41_all_agent_eval.json", {})
     all_agent_repair = read_json("outputs/stage41_breakthrough/stage41_all_agent_risk_repair.json", {})
     all_agent_t50 = read_json("outputs/stage41_breakthrough/stage41_all_agent_t50_specialist.json", {})
+    all_agent_composer = read_json("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -63,6 +64,13 @@ def build_completion_audit() -> dict[str, Any]:
         t50_metrics.get("t50_improvement", 0.0) > 0
         and t50_metrics.get("easy_degradation", 1.0) <= 0.02
         and all(row.get("t50_improvement", 0.0) >= 0 for row in t50_metrics.get("by_domain", {}).values())
+    )
+    composer_metrics = all_agent_composer.get("test_metrics", {})
+    composer_positive = (
+        composer_metrics.get("all_improvement", 0.0) > 0
+        and composer_metrics.get("t50_improvement", 0.0) > 0
+        and composer_metrics.get("hard_failure_improvement", 0.0) > 0
+        and composer_metrics.get("easy_degradation", 1.0) <= 0.02
     )
     requirements = [
         {
@@ -103,9 +111,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive or t50_specialist_positive),
-            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json and stage41_all_agent_risk_repair.json",
-            "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. Full all-agent deployment is still not proven because all/hard/t100 do not clear the Stage37-margin package gate together.",
+            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive),
+            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, and stage41_all_agent_policy_composer.json",
+            "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tries to combine them using validation-only selection; full all-agent deployment is only complete if a joint policy clears the Stage37-margin package gate.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -151,10 +159,21 @@ def build_completion_audit() -> dict[str, Any]:
             "easy_degradation": t50_metrics.get("easy_degradation"),
             "positive_external_domains": all_agent_t50.get("positive_external_domains"),
         },
+        "all_agent_policy_composer_summary": {
+            "deployment_decision": all_agent_composer.get("deployment_decision"),
+            "best_variant": all_agent_composer.get("best_variant"),
+            "all_improvement": composer_metrics.get("all_improvement"),
+            "t50_improvement": composer_metrics.get("t50_improvement"),
+            "t100_improvement": composer_metrics.get("t100_improvement"),
+            "hard_failure_improvement": composer_metrics.get("hard_failure_improvement"),
+            "easy_degradation": composer_metrics.get("easy_degradation"),
+            "positive_external_domains": all_agent_composer.get("positive_external_domains"),
+            "neural_exceeds_stage37_by_gate_margin": all_agent_composer.get("neural_exceeds_stage37_by_gate_margin"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-            "Combine t50-specialist and t100-risk-cap policies under a single val-selected all-agent policy without test tuning.",
+            "If the composer remains diagnostic, train a single multi-objective all-agent model rather than post-hoc stitching t50 and t100 specialists.",
             "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -198,9 +217,19 @@ def build_completion_audit() -> dict[str, Any]:
             f"- hard/failure improvement: `{t50_metrics.get('hard_failure_improvement')}`",
             f"- easy degradation: `{t50_metrics.get('easy_degradation')}`",
             "",
+            "## All-Agent Policy Composer Result",
+            "",
+            f"- deployment_decision: `{all_agent_composer.get('deployment_decision')}`",
+            f"- best variant: `{all_agent_composer.get('best_variant')}`",
+            f"- all improvement: `{composer_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{composer_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{composer_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{composer_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{composer_metrics.get('easy_degradation')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable. The t50-specialist fixed the previous all-agent t50 negative slice, but a deployable all-agent policy still needs joint all/t50/t100/hard gains with easy preservation.",
+            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable unless the composer clears the Stage37-margin gate. The t50-specialist fixed the previous all-agent t50 negative slice, and the composer tests whether that can coexist with the all/t100 risk-cap policy without test-tuned thresholds.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -211,6 +240,7 @@ def build_completion_audit() -> dict[str, Any]:
 def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     summary = audit.get("all_agent_risk_repair_summary", {})
     t50_summary = audit.get("all_agent_t50_specialist_summary", {})
+    composer_summary = audit.get("all_agent_policy_composer_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -232,24 +262,34 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"all_agent_t50_specialist_hard = {t50_summary.get('hard_failure_improvement')}",
             f"all_agent_t50_specialist_easy = {t50_summary.get('easy_degradation')}",
             f"all_agent_t50_specialist_deployment = {t50_summary.get('deployment_decision')}",
+            f"all_agent_policy_composer_variant = {composer_summary.get('best_variant')}",
+            f"all_agent_policy_composer_all = {composer_summary.get('all_improvement')}",
+            f"all_agent_policy_composer_t50 = {composer_summary.get('t50_improvement')}",
+            f"all_agent_policy_composer_t100_diagnostic = {composer_summary.get('t100_improvement')}",
+            f"all_agent_policy_composer_hard = {composer_summary.get('hard_failure_improvement')}",
+            f"all_agent_policy_composer_easy = {composer_summary.get('easy_degradation')}",
+            f"all_agent_policy_composer_deployment = {composer_summary.get('deployment_decision')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: combine the all-agent t+50 specialist with the t+100/all risk-cap policy under one val-selected safe all-agent policy; current endpoint-level M3W-Neural v1 remains the best protected candidate.",
+            "Next target: if the val-selected composer remains diagnostic, train one unified all-agent multi-objective model instead of stitching isolated t+50 and t+100 specialists; current endpoint-level M3W-Neural v1 remains the best protected candidate.",
         ],
     )
     state = read_json("research_state.json", {})
     generated = set(state.get("generated_reports", []))
     generated.add(str(OUT_DIR / "completion_audit_m3w_neural_v1.md"))
     generated.add(str(OUT_DIR / "completion_audit_m3w_neural_v1.json"))
+    generated.add("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.md")
+    generated.add("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json")
     state["generated_reports"] = sorted(generated)
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
         "current_best_deployable": audit.get("current_best_deployable"),
-            "all_agent_risk_repair_summary": summary,
-            "all_agent_t50_specialist_summary": t50_summary,
+        "all_agent_risk_repair_summary": summary,
+        "all_agent_t50_specialist_summary": t50_summary,
+        "all_agent_policy_composer_summary": composer_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

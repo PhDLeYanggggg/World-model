@@ -1,0 +1,10 @@
+# Stage41 All-Agent Policy Composer
+
+- source: `fresh_run`
+- best variant: `risk_all_t50_override`
+- deployment: `diagnostic_keep_m3w_neural_v1_endpoint_candidate`
+- metrics: `{'rows': 34777, 'all_improvement': 0.12271025390115187, 't10_improvement': 0.0, 't25_improvement': 3.725982037983133e-05, 't50_improvement': 0.0902220631231122, 't100_improvement': 0.26476770940707695, 'hard_failure_improvement': 0.13117103605560632, 'easy_degradation': 0.0, 'harm_over_fallback': -0.17293582368942842, 'switch_rate': 0.14989792103976765, 'regret_to_oracle': 0.3582475202662211, 'by_domain': {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.10460091903757451, 't50_improvement': 0.05125095680097247, 't100_improvement': 0.24379207926963353, 'hard_failure_improvement': 0.11080900954611494, 'easy_degradation': 0.0, 'switch_rate': 0.1455227335864432}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.17174602369053527, 't50_improvement': 0.22248539473750484, 't100_improvement': 0.33035178890737904, 'hard_failure_improvement': 0.18814064028097188, 'easy_degradation': 0.0, 'switch_rate': 0.17807089859851608}, 'UCY': {'rows': 9540, 'all_improvement': 0.19932224691859335, 't50_improvement': 0.2076505046017627, 't100_improvement': 0.34869274696148644, 'hard_failure_improvement': 0.22156746449481513, 'easy_degradation': 0.0, 'switch_rate': 0.1490566037735849}}, 'variant': 'risk_all_t50_override', 'selected_candidate_distribution': {'floor_rows': 29564, 'switched_rows': 5213, 't50_switched_rows': 1817, 'non_t50_switched_rows': 3396}, 't50_ci': {'low': 0.08463968232251677, 'mid': 0.0901844905892249, 'high': 0.09541339561247265, 'n': 8245}, 'hard_failure_ci': {'low': 0.12715094336656346, 'mid': 0.13121125800026412, 'high': 0.1350269012562027, 'n': 29370}}`
+
+## Interpretation
+
+This composer uses validation only to choose between floor, risk-cap, t50-specialist, and combined policies. It does not tune on test. If it remains diagnostic, the remaining blocker is not isolated t50 or t100 but joint all-agent policy compatibility.

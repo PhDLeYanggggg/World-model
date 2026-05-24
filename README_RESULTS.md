@@ -1007,9 +1007,16 @@ all_agent_t50_specialist_all = 0.023127391643180673
 all_agent_t50_specialist_hard = 0.02472403070303797
 all_agent_t50_specialist_easy = 0.0
 all_agent_t50_specialist_deployment = diagnostic_keep_m3w_neural_v1_endpoint_candidate
+all_agent_policy_composer_variant = risk_all_t50_override
+all_agent_policy_composer_all = 0.12271025390115187
+all_agent_policy_composer_t50 = 0.0902220631231122
+all_agent_policy_composer_t100_diagnostic = 0.26476770940707695
+all_agent_policy_composer_hard = 0.13117103605560632
+all_agent_policy_composer_easy = 0.0
+all_agent_policy_composer_deployment = diagnostic_keep_m3w_neural_v1_endpoint_candidate
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: combine the all-agent t+50 specialist with the t+100/all risk-cap policy under one val-selected safe all-agent policy; current endpoint-level M3W-Neural v1 remains the best protected candidate.
+Next target: if the val-selected composer remains diagnostic, train one unified all-agent multi-objective model instead of stitching isolated t+50 and t+100 specialists; current endpoint-level M3W-Neural v1 remains the best protected candidate.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
