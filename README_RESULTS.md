@@ -893,3 +893,26 @@ Key Stage39 outcome:
 - ETH/TrajNet held-out repair remains an honest blocker unless a new split protocol is built.
 - Tests: `python -m pytest tests` -> `80 passed in 9.11s`.
 
+## Stage40: Neural World Dynamics Optimization
+
+Stage40 diagnoses Stage39 neural failure, rebuilds the training target around Stage37 safety mechanisms, trains candidate-ranker neural dynamics trials with teacher/safety distillation, runs bounded optimization, and evaluates against the frozen Stage37 selector. Stage5C and SMC remain disabled.
+
+```text
+true_3D = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+trained_neural_world_model = true
+neural_exceeds_stage37 = False
+deployment_decision = keep_stage37_selector
+best_stage40_neural = Stage40_causal_transformer_candidate_ranker
+gates = 11 / 12
+verdict = stage40_neural_optimization_keep_stage37
+```
+
+Key Stage40 outcome:
+
+- Neural models were trained and optimized, not merely planned.
+- Deployment remains Stage37 selector unless Stage40 neural beats the same-subset Stage37 floor.
+- Tests: `python -m pytest tests` -> `83 passed in 9.30s`.
+
