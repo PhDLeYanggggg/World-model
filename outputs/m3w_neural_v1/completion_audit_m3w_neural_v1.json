@@ -1,0 +1,73 @@
+{
+  "source": "fresh_run",
+  "completion_status": "not_complete",
+  "current_best_deployable": "M3W-Neural v1 self-gated endpoint candidate under Stage37 safety floor",
+  "all_agent_risk_repair_summary": {
+    "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
+    "all_improvement": 0.09976285280545372,
+    "t50_improvement": -0.002800354643290648,
+    "t100_improvement": 0.26476770940707695,
+    "hard_failure_improvement": 0.10663942185551323,
+    "easy_degradation": 0.0,
+    "positive_external_domains": 3
+  },
+  "requirements": [
+    {
+      "requirement": "external split covers ETH/UCY/TrajNet or blockers",
+      "status": "complete",
+      "evidence": "outputs/stage41_external_split/report.json and Stage41 gates"
+    },
+    {
+      "requirement": "no leakage: future endpoint label/eval only, no central velocity, no test endpoint goals",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json"
+    },
+    {
+      "requirement": "neural model exceeds Stage37 on external all/t50/hard with easy <=2",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "at least two held-out external domains positive",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/stage41_neural_eval.json"
+    },
+    {
+      "requirement": "neural without external fallback not catastrophic",
+      "status": "complete",
+      "evidence": "fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports",
+      "note": "The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable."
+    },
+    {
+      "requirement": "all active agents future world-state, not only endpoint selector",
+      "status": "partial",
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json and stage41_all_agent_risk_repair.json",
+      "note": "Risk-cap repair made all-agent all/hard/t100 positive with easy preserved, but t50 remained negative, so this is not yet deployable all-agent world-state dynamics."
+    },
+    {
+      "requirement": "t100 diagnostic positive or blocker analysis",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "JEPA contribution proven or disabled",
+      "status": "partial",
+      "evidence": "Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution."
+    },
+    {
+      "requirement": "Stage5C disabled and SMC disabled",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "no metric/seconds/foundation/true-3D overclaim",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/report_m3w_neural_v1.md and data/model cards"
+    }
+  ],
+  "next_highest_value_actions": [
+    "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
+    "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
+    "Run independent external split replication before accepting deployment beyond candidate status."
+  ]
+}

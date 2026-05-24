@@ -988,3 +988,23 @@ deployment_state = protected_neural_candidate_pending_user_acceptance
 
 Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Stage37 safety floor. Stage37 remains the explicit fallback floor, and ungated neural dynamics are not claimed safe.
 <!-- M3W_NEURAL_V1:END -->
+
+<!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
+## M3W-Neural v1 Completion Audit
+
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 endpoint dynamics pass Stage41, but full all-agent future world-state dynamics remain diagnostic.
+
+```text
+completion_status = not_complete
+all_agent_repair_all = 0.09976285280545372
+all_agent_repair_t50 = -0.002800354643290648
+all_agent_repair_t100_diagnostic = 0.26476770940707695
+all_agent_repair_hard_failure = 0.10663942185551323
+all_agent_repair_easy = 0.0
+all_agent_deployment = diagnostic_keep_m3w_neural_v1_endpoint_candidate
+stage5c_executed = false
+smc_enabled = false
+```
+
+Next target: all-agent t+50-specific world-state dynamics; current endpoint-level M3W-Neural v1 remains the best protected candidate.
+<!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
