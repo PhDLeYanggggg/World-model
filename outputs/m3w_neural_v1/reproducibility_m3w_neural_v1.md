@@ -11,6 +11,6 @@ Use arm64 PyTorch for training/evaluation commands on Apple Silicon.
 python -m pytest tests
 ```
 
-- frozen git commit at package time: `58119ad`
-- package input hash: `d4fa0cd6545da4e5e0acafd4b6f314a678775553ddf1f35f0ce246724dee148e`
+- frozen git commit at package time: `5f60976`
+- package input hash: `78aca706c62af2b732ef351dddbd89a2273e91bd8ecc6053ada07ba37eb08af1`
 - Do not commit caches/checkpoints/raw data when reproducing.

@@ -47,6 +47,7 @@ def build_completion_audit() -> dict[str, Any]:
     stage41_eval = read_json("outputs/stage41_breakthrough/stage41_neural_eval.json", {})
     all_agent_eval = read_json("outputs/stage41_breakthrough/stage41_all_agent_eval.json", {})
     all_agent_repair = read_json("outputs/stage41_breakthrough/stage41_all_agent_risk_repair.json", {})
+    all_agent_t50 = read_json("outputs/stage41_breakthrough/stage41_all_agent_t50_specialist.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -57,6 +58,12 @@ def build_completion_audit() -> dict[str, Any]:
         and all_agent_metrics.get("easy_degradation", 1.0) <= 0.02
     )
     all_agent_t50_pass = all_agent_metrics.get("t50_improvement", -1.0) > 0
+    t50_metrics = all_agent_t50.get("best_metrics", {})
+    t50_specialist_positive = (
+        t50_metrics.get("t50_improvement", 0.0) > 0
+        and t50_metrics.get("easy_degradation", 1.0) <= 0.02
+        and all(row.get("t50_improvement", 0.0) >= 0 for row in t50_metrics.get("by_domain", {}).values())
+    )
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -96,9 +103,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive),
+            "status": _status(False, partial=all_agent_positive or t50_specialist_positive),
             "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json and stage41_all_agent_risk_repair.json",
-            "note": "Risk-cap repair made all-agent all/hard/t100 positive with easy preserved, but t50 remained negative, so this is not yet deployable all-agent world-state dynamics.",
+            "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. Full all-agent deployment is still not proven because all/hard/t100 do not clear the Stage37-margin package gate together.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -135,9 +142,19 @@ def build_completion_audit() -> dict[str, Any]:
             "easy_degradation": all_agent_metrics.get("easy_degradation"),
             "positive_external_domains": all_agent_repair.get("positive_external_domains"),
         },
+        "all_agent_t50_specialist_summary": {
+            "deployment_decision": all_agent_t50.get("deployment_decision"),
+            "all_improvement": t50_metrics.get("all_improvement"),
+            "t50_improvement": t50_metrics.get("t50_improvement"),
+            "t100_improvement": t50_metrics.get("t100_improvement"),
+            "hard_failure_improvement": t50_metrics.get("hard_failure_improvement"),
+            "easy_degradation": t50_metrics.get("easy_degradation"),
+            "positive_external_domains": all_agent_t50.get("positive_external_domains"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
+            "Combine t50-specialist and t100-risk-cap policies under a single val-selected all-agent policy without test tuning.",
             "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -172,9 +189,18 @@ def build_completion_audit() -> dict[str, Any]:
             f"- hard/failure improvement: `{all_agent_metrics.get('hard_failure_improvement')}`",
             f"- easy degradation: `{all_agent_metrics.get('easy_degradation')}`",
             "",
+            "## All-Agent t50 Specialist Result",
+            "",
+            f"- deployment_decision: `{all_agent_t50.get('deployment_decision')}`",
+            f"- all improvement: `{t50_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{t50_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{t50_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{t50_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{t50_metrics.get('easy_degradation')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable. The next training loop should target all-agent t50 failure specifically.",
+            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable. The t50-specialist fixed the previous all-agent t50 negative slice, but a deployable all-agent policy still needs joint all/t50/t100/hard gains with easy preservation.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -184,6 +210,7 @@ def build_completion_audit() -> dict[str, Any]:
 
 def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     summary = audit.get("all_agent_risk_repair_summary", {})
+    t50_summary = audit.get("all_agent_t50_specialist_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -200,11 +227,16 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"all_agent_repair_hard_failure = {summary.get('hard_failure_improvement')}",
             f"all_agent_repair_easy = {summary.get('easy_degradation')}",
             f"all_agent_deployment = {summary.get('deployment_decision')}",
+            f"all_agent_t50_specialist_t50 = {t50_summary.get('t50_improvement')}",
+            f"all_agent_t50_specialist_all = {t50_summary.get('all_improvement')}",
+            f"all_agent_t50_specialist_hard = {t50_summary.get('hard_failure_improvement')}",
+            f"all_agent_t50_specialist_easy = {t50_summary.get('easy_degradation')}",
+            f"all_agent_t50_specialist_deployment = {t50_summary.get('deployment_decision')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: all-agent t+50-specific world-state dynamics; current endpoint-level M3W-Neural v1 remains the best protected candidate.",
+            "Next target: combine the all-agent t+50 specialist with the t+100/all risk-cap policy under one val-selected safe all-agent policy; current endpoint-level M3W-Neural v1 remains the best protected candidate.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -216,7 +248,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
         "current_best_deployable": audit.get("current_best_deployable"),
-        "all_agent_risk_repair_summary": summary,
+            "all_agent_risk_repair_summary": summary,
+            "all_agent_t50_specialist_summary": t50_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

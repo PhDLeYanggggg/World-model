@@ -13,7 +13,7 @@
 | neural model exceeds Stage37 on external all/t50/hard with easy <=2 | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | at least two held-out external domains positive | `complete` | outputs/stage41_breakthrough/stage41_neural_eval.json |  |
 | neural without external fallback not catastrophic | `complete` | fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports | The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable. |
-| all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json and stage41_all_agent_risk_repair.json | Risk-cap repair made all-agent all/hard/t100 positive with easy preserved, but t50 remained negative, so this is not yet deployable all-agent world-state dynamics. |
+| all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json and stage41_all_agent_risk_repair.json | Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. Full all-agent deployment is still not proven because all/hard/t100 do not clear the Stage37-margin package gate together. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -28,6 +28,15 @@
 - hard/failure improvement: `0.10663942185551323`
 - easy degradation: `0.0`
 
+## All-Agent t50 Specialist Result
+
+- deployment_decision: `diagnostic_keep_m3w_neural_v1_endpoint_candidate`
+- all improvement: `0.023127391643180673`
+- t50 improvement: `0.09375204966816386`
+- t100 diagnostic improvement: `0.0`
+- hard/failure improvement: `0.02472403070303797`
+- easy degradation: `0.0`
+
 ## Conclusion
 
-M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable. The next training loop should target all-agent t50 failure specifically.
+M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics remain diagnostic rather than deployable. The t50-specialist fixed the previous all-agent t50 negative slice, but a deployable all-agent policy still needs joint all/t50/t100/hard gains with easy preservation.

@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `d4fa0cd6545da4e5e0acafd4b6f314a678775553ddf1f35f0ce246724dee148e`
-- git_commit: `58119ad`
+- package_input_hash: `78aca706c62af2b732ef351dddbd89a2273e91bd8ecc6053ada07ba37eb08af1`
+- git_commit: `5f60976`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |

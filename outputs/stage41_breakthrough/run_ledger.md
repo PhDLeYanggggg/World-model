@@ -147,3 +147,5 @@
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.361 | `78fb4a4126ca` | `60eeac3b6246` | `0aca3fe` |
 | `run_stage41_all_agent_risk_repair.py` | `fresh_run` | `success` | 40.561 | `7f7e1c2daf0a` | `ad951e133cbf` | `58119ad` |
 | `run_stage41_all_agent_risk_repair.py` | `fresh_run` | `success` | 39.952 | `7f7e1c2daf0a` | `ad951e133cbf` | `58119ad` |
+| `run_stage41_all_agent_t50_specialist.py` | `fresh_run` | `failed` | 29.618 | `ffedca996e11` | `bb5c13e2ef3d` | `5f60976` |
+| `run_stage41_all_agent_t50_specialist.py` | `fresh_run` | `success` | 170.248 | `ffedca996e11` | `9066af80870d` | `5f60976` |

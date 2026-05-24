@@ -1002,9 +1002,14 @@ all_agent_repair_t100_diagnostic = 0.26476770940707695
 all_agent_repair_hard_failure = 0.10663942185551323
 all_agent_repair_easy = 0.0
 all_agent_deployment = diagnostic_keep_m3w_neural_v1_endpoint_candidate
+all_agent_t50_specialist_t50 = 0.09375204966816386
+all_agent_t50_specialist_all = 0.023127391643180673
+all_agent_t50_specialist_hard = 0.02472403070303797
+all_agent_t50_specialist_easy = 0.0
+all_agent_t50_specialist_deployment = diagnostic_keep_m3w_neural_v1_endpoint_candidate
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: all-agent t+50-specific world-state dynamics; current endpoint-level M3W-Neural v1 remains the best protected candidate.
+Next target: combine the all-agent t+50 specialist with the t+100/all risk-cap policy under one val-selected safe all-agent policy; current endpoint-level M3W-Neural v1 remains the best protected candidate.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
