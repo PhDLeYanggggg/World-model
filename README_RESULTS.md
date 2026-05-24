@@ -597,7 +597,7 @@ SDD_horizon_status = raw annotation-frame; effective seconds unknown
 feature_store_built = True
 selected_model = stage26_failure_assisted_selector
 t50_improvement = 0.14583655843823773
-hard_failure_improvement = 0.11232167634621226
+hard_failure_improvement = 0.11234058960663984
 easy_degradation = 0.01808836280803794
 latent_stage5c_ready = false
 smc_ready = false
@@ -606,21 +606,21 @@ verdict = stage26_feature_complete_cost_aware_selector_executed_not_stage5c_read
 
 ## M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes on the Stage26 SDD causal feature store. The PyTorch backend executed with sequential CPU runtime after repairing the local OpenMP/SHM settings; this is still local-small, not medium/full. It does not execute latent generative Stage5C or SMC.
+M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes on the Stage26 SDD causal feature store. The PyTorch backend executed with the arm64 `.venv-pytorch` runtime requirement; this is still local-small / evidence sprint, not medium/full. It does not execute latent generative Stage5C or SMC.
 
 ```text
 true_3D = false
 foundation_world_model = false
 SDD_coordinate_status = pixel-space
 SDD_horizon_status = raw annotation-frame; effective seconds unknown
-M3W_execution_backend = torch_cpu_sequential
+M3W_execution_backend = torch_arm64_cpu_multithread
 M3W_variant = hybrid
-M3W_t50_improvement = 0.0797643165887999
-M3W_hard_failure_improvement = 0.04591573857839959
-M3W_easy_degradation = 0.008167665001088231
+M3W_t50_improvement = 0.1308150291442871
+M3W_hard_failure_improvement = 0.10240167379379272
+M3W_easy_degradation = 0.010665178298950195
 beats_stage26_selector = False
 latent_stage5c_ready = false
 smc_ready = false
-verdict = m3w_small_executed_stage26_remains_best_deployable
+verdict = m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best
 ```
 

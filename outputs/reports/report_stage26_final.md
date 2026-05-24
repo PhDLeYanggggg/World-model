@@ -10,7 +10,7 @@
 - feature store built: `True`
 - selected model: `stage26_failure_assisted_selector`
 - t+50 improvement: `0.14583655843823773`
-- hard/failure improvement: `0.11232167634621226`
+- hard/failure improvement: `0.11234058960663984`
 - easy degradation: `0.01808836280803794`
 - correction specialist trained: `False`
 

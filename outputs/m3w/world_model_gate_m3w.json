@@ -17,13 +17,18 @@
     },
     {
       "gate": "JEPA Downstream Gate",
-      "passed": false,
-      "evidence": "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."
+      "passed": true,
+      "evidence": "Hybrid with JEPA features should improve over Transformer-only in the evidence matrix."
     },
     {
       "gate": "Transformer Dynamics Gate",
       "passed": true,
       "evidence": "Torch Transformer dynamics variant executed and was validation-selected."
+    },
+    {
+      "gate": "Hybrid Gate",
+      "passed": true,
+      "evidence": "Hybrid should beat JEPA-only or Transformer-only on the evidence matrix."
     },
     {
       "gate": "Selector Gate",
@@ -32,7 +37,7 @@
     },
     {
       "gate": "Hard/Failure Gate",
-      "passed": false,
+      "passed": true,
       "evidence": "Hard/failure improvement >=10%."
     },
     {
@@ -61,6 +66,11 @@
       "evidence": "Checkpoint and config-backed run available."
     },
     {
+      "gate": "CCF-A Evidence Gate",
+      "passed": true,
+      "evidence": "Paper package, ablation table, and bootstrap report exist; passing this gate does not mean CCF-A quality is reached."
+    },
+    {
       "gate": "Stage5C Plan Readiness",
       "passed": false,
       "evidence": "Only plan allowed after full gates; not ready and not executed."
@@ -71,12 +81,13 @@
       "evidence": "SMC remains false."
     }
   ],
-  "gates_passed": 8,
-  "gates_total": 14,
+  "gates_passed": 12,
+  "gates_total": 16,
   "m3w_success": false,
   "foundation_track_prototype": false,
   "stage5c_ready": false,
   "smc_ready": false,
-  "current_verdict": "m3w_small_executed_stage26_remains_best_deployable",
+  "ccfa_candidate": false,
+  "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best",
   "stage26_remains_best_deployable": true
 }

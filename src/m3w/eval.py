@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import argparse
 import math
+import os
+import platform
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -131,8 +133,8 @@ def evaluate_m3w(checkpoint: str | Path) -> Dict[str, Any]:
     model.load_state_dict(ckpt["model_state"])
     val_pred = _predict(model, val, device)
     test_pred = _predict(model, test, device)
-    val_fde = np.maximum(0.0, np.expm1(val_pred["log_fde"]))
-    test_fde = np.maximum(0.0, np.expm1(test_pred["log_fde"]))
+    val_fde = np.maximum(0.0, np.expm1(np.clip(val_pred["log_fde"], -20.0, 8.5)))
+    test_fde = np.maximum(0.0, np.expm1(np.clip(test_pred["log_fde"], -20.0, 8.5)))
     val_failure = 1.0 / (1.0 + np.exp(-val_pred["failure_logit"]))
     test_failure = 1.0 / (1.0 + np.exp(-test_pred["failure_logit"]))
     selected_policy = _search_policy(val, val_fde, val_failure, config)
@@ -150,7 +152,7 @@ def evaluate_m3w(checkpoint: str | Path) -> Dict[str, Any]:
     latent_variance = float(jepa_stats[-1].get("latent_variance", 0.0)) if jepa_stats else 0.0
     result = {
         "checkpoint": str(checkpoint),
-        "backend": "torch_cpu_sequential",
+        "backend": _runtime_backend(),
         "variant": ckpt["variant"],
         "selected_policy": selected_policy["policy"],
         "validation_metrics": selected_policy["metrics"],
@@ -199,6 +201,14 @@ def _ece(labels: np.ndarray, probs: np.ndarray, bins: int = 10) -> float:
         if np.any(mask):
             total += float(mask.mean()) * abs(float(probs[mask].mean()) - float(labels[mask].mean()))
     return total
+
+
+def _runtime_backend() -> str:
+    threads = int(os.environ.get("WORLD_MODEL_TORCH_THREADS", os.environ.get("OMP_NUM_THREADS", "1")))
+    arch = platform.machine().lower()
+    if arch == "arm64":
+        return "torch_arm64_cpu_multithread" if threads > 1 else "torch_arm64_cpu"
+    return "torch_cpu_sequential"
 
 
 def main(argv: list[str] | None = None) -> None:

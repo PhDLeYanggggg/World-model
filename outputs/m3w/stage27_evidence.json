@@ -1,0 +1,398 @@
+{
+  "created_at": "2026-05-24 01:56:17",
+  "elapsed_s": 74.65447092056274,
+  "current_truth": [
+    "Current model is not true 3D.",
+    "Current model is not a large-scale foundation world model.",
+    "Current model is still a 2.5D / pseudo-3D multi-agent trajectory world-state model.",
+    "SDD is pixel-space, not metric.",
+    "t+50/t+100 are raw annotation-frame horizons.",
+    "Effective seconds, homography, and metric scale remain unverified.",
+    "self-audited / visual-prior labels are not human gold.",
+    "Stage5C latent generative execution is forbidden.",
+    "SMC is forbidden."
+  ],
+  "stage26": {
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11234058960663984,
+    "easy_degradation": 0.01808836280803794
+  },
+  "m3w_metrics": {
+    "checkpoint": "outputs/m3w/checkpoints/best_medium.pt",
+    "backend": "torch_arm64_cpu_multithread",
+    "variant": "hybrid",
+    "selected_policy": {
+      "confidence_threshold": 0.0,
+      "gain_threshold": 10.0,
+      "failure_threshold": 0.35
+    },
+    "validation_metrics": {
+      "improvement_over_strongest": 0.2452029585838318,
+      "official_t50_improvement": 0.3103444576263428,
+      "diagnostic_t100_raw_frame_improvement": 0.2760850787162781,
+      "hard_failure_improvement": 0.2459152340888977,
+      "easy_degradation": 0.017978906631469727,
+      "selector_regret": 6.248622417449951,
+      "harm_over_fallback": -9.449713706970215,
+      "switch_rate": 0.07635,
+      "mean_confidence": 2.6134114265441895,
+      "selected_distribution": {
+        "constant_position": 70,
+        "constant_velocity_causal_fd": 211,
+        "damped_velocity": 16632,
+        "constant_acceleration_causal": 119,
+        "constant_turn_rate_velocity": 500,
+        "scene_clamped_baseline": 2463,
+        "goal_directed_baseline": 5
+      }
+    },
+    "test_metrics": {
+      "improvement_over_strongest": 0.10152828693389893,
+      "official_t50_improvement": 0.1308150291442871,
+      "diagnostic_t100_raw_frame_improvement": 0.12080299854278564,
+      "hard_failure_improvement": 0.10240167379379272,
+      "easy_degradation": 0.010665178298950195,
+      "selector_regret": 4.209047317504883,
+      "harm_over_fallback": -2.634577512741089,
+      "switch_rate": 0.04736,
+      "mean_confidence": 3.7792036533355713,
+      "selected_distribution": {
+        "constant_position": 488,
+        "constant_velocity_causal_fd": 431,
+        "damped_velocity": 86552,
+        "constant_acceleration_causal": 230,
+        "constant_turn_rate_velocity": 1129,
+        "scene_clamped_baseline": 11141,
+        "goal_directed_baseline": 29
+      }
+    },
+    "stage26_selector": {
+      "t50_improvement": 0.14583655843823773,
+      "hard_failure_improvement": 0.11234058960663984,
+      "easy_degradation": 0.01808836280803794
+    },
+    "beats_stage26_selector": false,
+    "failure_AUROC": 0.9543455373640822,
+    "failure_AUPRC": 0.6381205770048155,
+    "failure_ECE": 0.014374548431523144,
+    "interaction_AUROC": 0.9976791527175191,
+    "occupancy_MSE": 0.007292779628187418,
+    "jepa_latent_variance": 0.004041421227157116,
+    "jepa_non_collapse": false,
+    "goal_metrics": "diagnostic_unavailable_no_human_goal_labels",
+    "physical_validity": "selected physical baseline only; no residual/correction",
+    "t100_status": "raw-frame diagnostic, not seconds-level",
+    "metric_status": "pixel-space only"
+  },
+  "m3w_gates": {
+    "gates": [
+      {
+        "gate": "Data Gate",
+        "passed": true,
+        "evidence": "SDD Stage26 feature store available."
+      },
+      {
+        "gate": "No Leakage Gate",
+        "passed": true,
+        "evidence": "Feature store audit forbids future/test leakage."
+      },
+      {
+        "gate": "JEPA Non-Collapse Gate",
+        "passed": false,
+        "evidence": "Full torch JEPA latent variance must be non-collapsed; current small run did not pass."
+      },
+      {
+        "gate": "JEPA Downstream Gate",
+        "passed": false,
+        "evidence": "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."
+      },
+      {
+        "gate": "Transformer Dynamics Gate",
+        "passed": true,
+        "evidence": "Torch Transformer dynamics variant executed and was validation-selected."
+      },
+      {
+        "gate": "Hybrid Gate",
+        "passed": true,
+        "evidence": "Hybrid should beat JEPA-only or Transformer-only on the evidence matrix."
+      },
+      {
+        "gate": "Selector Gate",
+        "passed": true,
+        "evidence": "Selector improves strongest baseline or Stage26."
+      },
+      {
+        "gate": "Hard/Failure Gate",
+        "passed": true,
+        "evidence": "Hard/failure improvement >=10%."
+      },
+      {
+        "gate": "Easy Preservation Gate",
+        "passed": true,
+        "evidence": "Easy degradation <=2%."
+      },
+      {
+        "gate": "Scene/Goal Gate",
+        "passed": false,
+        "evidence": "Scene/goal lift not proven; goal labels remain diagnostic."
+      },
+      {
+        "gate": "Interaction Gate",
+        "passed": true,
+        "evidence": "Interaction risk head has measurable signal."
+      },
+      {
+        "gate": "Physical Validity Gate",
+        "passed": true,
+        "evidence": "Selected physical baseline only; no residual/correction violates validity."
+      },
+      {
+        "gate": "Reproducibility Gate",
+        "passed": true,
+        "evidence": "Checkpoint and config-backed run available."
+      },
+      {
+        "gate": "CCF-A Evidence Gate",
+        "passed": true,
+        "evidence": "Paper package, ablation table, and bootstrap report exist; passing this gate does not mean CCF-A quality is reached."
+      },
+      {
+        "gate": "Stage5C Plan Readiness",
+        "passed": false,
+        "evidence": "Only plan allowed after full gates; not ready and not executed."
+      },
+      {
+        "gate": "SMC Readiness",
+        "passed": false,
+        "evidence": "SMC remains false."
+      }
+    ],
+    "gates_passed": 11,
+    "gates_total": 16,
+    "m3w_success": false,
+    "foundation_track_prototype": false,
+    "stage5c_ready": false,
+    "smc_ready": false,
+    "ccfa_candidate": false,
+    "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best",
+    "stage26_remains_best_deployable": true
+  },
+  "experiment_rows": [
+    {
+      "improvement_over_strongest": 0.05737882852554321,
+      "official_t50_improvement": 0.030078589916229248,
+      "diagnostic_t100_raw_frame_improvement": 0.09021598100662231,
+      "hard_failure_improvement": 0.05787241458892822,
+      "easy_degradation": 0.01374518871307373,
+      "selector_regret": 5.354690074920654,
+      "harm_over_fallback": -1.4889349937438965,
+      "switch_rate": 0.0423,
+      "mean_confidence": 0.13774564862251282,
+      "selected_distribution": {
+        "constant_position": 462,
+        "constant_velocity_causal_fd": 493,
+        "damped_velocity": 87499,
+        "constant_acceleration_causal": 681,
+        "constant_turn_rate_velocity": 257,
+        "scene_clamped_baseline": 10598,
+        "goal_directed_baseline": 10
+      },
+      "name": "jepa_only",
+      "variant": "jepa_only",
+      "checkpoint": "outputs/m3w/checkpoints/jepa_only_best.pt",
+      "policy": {
+        "confidence_threshold": 0.03,
+        "gain_threshold": 5.0,
+        "failure_threshold": 0.2
+      },
+      "jepa_latent_variance": 0.004098123870790005,
+      "failure_ece": 0.014188258057422937
+    },
+    {
+      "improvement_over_strongest": 0.04521811008453369,
+      "official_t50_improvement": 0.018797218799591064,
+      "diagnostic_t100_raw_frame_improvement": 0.0734906792640686,
+      "hard_failure_improvement": 0.04560720920562744,
+      "easy_degradation": 0.0031458139419555664,
+      "selector_regret": 5.670248985290527,
+      "harm_over_fallback": -1.1733757257461548,
+      "switch_rate": 0.02525,
+      "mean_confidence": 0.18709109723567963,
+      "selected_distribution": {
+        "constant_position": 84,
+        "constant_velocity_causal_fd": 4,
+        "damped_velocity": 87851,
+        "constant_acceleration_causal": 93,
+        "constant_turn_rate_velocity": 3,
+        "scene_clamped_baseline": 11963,
+        "goal_directed_baseline": 2
+      },
+      "name": "transformer_only",
+      "variant": "transformer_only",
+      "checkpoint": "outputs/m3w/checkpoints/transformer_only_best.pt",
+      "policy": {
+        "confidence_threshold": 0.03,
+        "gain_threshold": 10.0,
+        "failure_threshold": 0.35
+      },
+      "jepa_latent_variance": 0.0,
+      "failure_ece": 0.009872281785830855
+    },
+    {
+      "improvement_over_strongest": 0.10152828693389893,
+      "official_t50_improvement": 0.1308150291442871,
+      "diagnostic_t100_raw_frame_improvement": 0.12080299854278564,
+      "hard_failure_improvement": 0.10240167379379272,
+      "easy_degradation": 0.010665178298950195,
+      "selector_regret": 4.209047317504883,
+      "harm_over_fallback": -2.634577512741089,
+      "switch_rate": 0.04736,
+      "mean_confidence": 3.7792036533355713,
+      "selected_distribution": {
+        "constant_position": 488,
+        "constant_velocity_causal_fd": 431,
+        "damped_velocity": 86552,
+        "constant_acceleration_causal": 230,
+        "constant_turn_rate_velocity": 1129,
+        "scene_clamped_baseline": 11141,
+        "goal_directed_baseline": 29
+      },
+      "name": "hybrid",
+      "variant": "hybrid",
+      "checkpoint": "outputs/m3w/checkpoints/best_medium.pt",
+      "policy": {
+        "confidence_threshold": 0.0,
+        "gain_threshold": 10.0,
+        "failure_threshold": 0.35
+      },
+      "jepa_latent_variance": 0.004041421227157116,
+      "failure_ece": 0.014374548431523144
+    }
+  ],
+  "ablations": [
+    {
+      "improvement_over_strongest": 0.04097473621368408,
+      "official_t50_improvement": 0.016813278198242188,
+      "diagnostic_t100_raw_frame_improvement": 0.0595126748085022,
+      "hard_failure_improvement": 0.04100900888442993,
+      "easy_degradation": 0.0122910737991333,
+      "selector_regret": 5.780361175537109,
+      "harm_over_fallback": -1.0632637739181519,
+      "switch_rate": 0.0473,
+      "mean_confidence": 0.17555758357048035,
+      "selected_distribution": {
+        "constant_position": 2598,
+        "constant_velocity_causal_fd": 0,
+        "damped_velocity": 86614,
+        "constant_acceleration_causal": 63,
+        "constant_turn_rate_velocity": 8,
+        "scene_clamped_baseline": 10508,
+        "goal_directed_baseline": 209
+      },
+      "name": "no_scene",
+      "disabled_tokens": [
+        "scene_patch",
+        "scene_sdf"
+      ]
+    },
+    {
+      "improvement_over_strongest": 0.02328115701675415,
+      "official_t50_improvement": 0.013408958911895752,
+      "diagnostic_t100_raw_frame_improvement": 0.025550782680511475,
+      "hard_failure_improvement": 0.023123085498809814,
+      "easy_degradation": 0.01749420166015625,
+      "selector_regret": 6.239494800567627,
+      "harm_over_fallback": -0.6041296124458313,
+      "switch_rate": 0.02433,
+      "mean_confidence": 93.21798706054688,
+      "selected_distribution": {
+        "constant_position": 912,
+        "constant_velocity_causal_fd": 0,
+        "damped_velocity": 87238,
+        "constant_acceleration_causal": 776,
+        "constant_turn_rate_velocity": 0,
+        "scene_clamped_baseline": 11074,
+        "goal_directed_baseline": 0
+      },
+      "name": "no_goal",
+      "disabled_tokens": [
+        "goal_region"
+      ]
+    },
+    {
+      "improvement_over_strongest": 0.04401743412017822,
+      "official_t50_improvement": 0.020151972770690918,
+      "diagnostic_t100_raw_frame_improvement": 0.07061553001403809,
+      "hard_failure_improvement": 0.044396162033081055,
+      "easy_degradation": 0.005810260772705078,
+      "selector_regret": 5.701406955718994,
+      "harm_over_fallback": -1.1422184705734253,
+      "switch_rate": 0.02183,
+      "mean_confidence": 0.15161366760730743,
+      "selected_distribution": {
+        "constant_position": 227,
+        "constant_velocity_causal_fd": 37,
+        "damped_velocity": 88182,
+        "constant_acceleration_causal": 126,
+        "constant_turn_rate_velocity": 383,
+        "scene_clamped_baseline": 11029,
+        "goal_directed_baseline": 16
+      },
+      "name": "no_interaction",
+      "disabled_tokens": [
+        "interaction_edge"
+      ]
+    },
+    {
+      "improvement_over_strongest": 0.033705055713653564,
+      "official_t50_improvement": 0.08430206775665283,
+      "diagnostic_t100_raw_frame_improvement": 0.019759953022003174,
+      "hard_failure_improvement": 0.033995211124420166,
+      "easy_degradation": 0.016007304191589355,
+      "selector_regret": 5.969001293182373,
+      "harm_over_fallback": -0.8746238350868225,
+      "switch_rate": 0.04937,
+      "mean_confidence": 0.3361095190048218,
+      "selected_distribution": {
+        "constant_position": 107,
+        "constant_velocity_causal_fd": 3005,
+        "damped_velocity": 85141,
+        "constant_acceleration_causal": 0,
+        "constant_turn_rate_velocity": 1486,
+        "scene_clamped_baseline": 10088,
+        "goal_directed_baseline": 173
+      },
+      "name": "no_baseline_rollout",
+      "disabled_tokens": [
+        "baseline_rollout"
+      ]
+    }
+  ],
+  "bootstrap_ci": {
+    "t50": {
+      "mean": 0.13053562015295028,
+      "lo": 0.12283393442630768,
+      "hi": 0.1383122131228447,
+      "n": 24810
+    },
+    "t100": {
+      "mean": 0.12136146903038025,
+      "lo": 0.11440477669239044,
+      "hi": 0.12889642715454103,
+      "n": 23126
+    },
+    "hard": {
+      "mean": 0.10246343970298767,
+      "lo": 0.0966106116771698,
+      "hi": 0.10830951482057571,
+      "n": 96581
+    },
+    "easy": {
+      "mean": 0.010872046947479248,
+      "lo": 0.0056129306554794315,
+      "hi": 0.018622323870658875,
+      "n": 58245
+    }
+  },
+  "ccfa_candidate": false
+}

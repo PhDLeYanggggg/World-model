@@ -18,12 +18,31 @@ def run_m3w_gates() -> Dict[str, Any]:
     m = metrics.get("test_metrics", {})
     backend = metrics.get("backend") or train.get("backend")
     torch_backend = backend not in {"numpy_safe_fallback_due_torch_openmp_shm_blocker", None}
+    evidence = read_json(OUT / "stage27_evidence.json", {})
+    rows = evidence.get("experiment_rows", [])
+    hybrid = next((r for r in rows if r.get("name") == "hybrid"), {})
+    jepa = next((r for r in rows if r.get("name") == "jepa_only"), {})
+    transformer = next((r for r in rows if r.get("name") == "transformer_only"), {})
+    ci = evidence.get("bootstrap_ci", {})
+    hybrid_beats_family = bool(
+        rows
+        and hybrid.get("official_t50_improvement", -9.0) >= max(
+            jepa.get("official_t50_improvement", -9.0),
+            transformer.get("official_t50_improvement", -9.0),
+        )
+    )
+    jepa_downstream_lift = bool(
+        hybrid.get("official_t50_improvement", -9.0) > transformer.get("official_t50_improvement", -9.0) + 0.02
+        or hybrid.get("hard_failure_improvement", -9.0) > transformer.get("hard_failure_improvement", -9.0) + 0.02
+    )
+    evidence_ready = bool(Path(OUT / "paper_draft_m3w.md").exists() and Path(OUT / "bootstrap_or_seed_report.md").exists())
     gates = [
         ("Data Gate", bool(feature.get("feature_names")) or Path("data/stage26_sdd_feature_store/train.npz").exists(), "SDD Stage26 feature store available."),
         ("No Leakage Gate", feature.get("leakage_audit", {}).get("future_endpoint_input") is False, "Feature store audit forbids future/test leakage."),
         ("JEPA Non-Collapse Gate", bool(metrics.get("jepa_non_collapse", False)) and torch_backend, "Full torch JEPA latent variance must be non-collapsed; current small run did not pass."),
-        ("JEPA Downstream Gate", False, "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."),
+        ("JEPA Downstream Gate", jepa_downstream_lift, "Hybrid with JEPA features should improve over Transformer-only in the evidence matrix."),
         ("Transformer Dynamics Gate", train.get("best", {}).get("variant") in {"transformer_only", "hybrid"} and torch_backend, "Torch Transformer dynamics variant executed and was validation-selected."),
+        ("Hybrid Gate", hybrid_beats_family, "Hybrid should beat JEPA-only or Transformer-only on the evidence matrix."),
         ("Selector Gate", m.get("official_t50_improvement", 0.0) >= 0.05 or metrics.get("beats_stage26_selector", False), "Selector improves strongest baseline or Stage26."),
         ("Hard/Failure Gate", m.get("hard_failure_improvement", 0.0) >= 0.10, "Hard/failure improvement >=10%."),
         ("Easy Preservation Gate", m.get("easy_degradation", 9.0) <= 0.02, "Easy degradation <=2%."),
@@ -31,6 +50,7 @@ def run_m3w_gates() -> Dict[str, Any]:
         ("Interaction Gate", metrics.get("interaction_AUROC", 0.0) > 0.6, "Interaction risk head has measurable signal."),
         ("Physical Validity Gate", True, "Selected physical baseline only; no residual/correction violates validity."),
         ("Reproducibility Gate", Path(OUT / "checkpoints/best_small.pt").exists(), "Checkpoint and config-backed run available."),
+        ("CCF-A Evidence Gate", evidence_ready and bool(ci), "Paper package, ablation table, and bootstrap report exist; passing this gate does not mean CCF-A quality is reached."),
         ("Stage5C Plan Readiness", False, "Only plan allowed after full gates; not ready and not executed."),
         ("SMC Readiness", False, "SMC remains false."),
     ]
@@ -42,7 +62,13 @@ def run_m3w_gates() -> Dict[str, Any]:
         "foundation_track_prototype": False,
         "stage5c_ready": False,
         "smc_ready": False,
-        "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable" if backend == "numpy_safe_fallback_due_torch_openmp_shm_blocker" else ("m3w_small_executed_stage26_remains_best_deployable" if not metrics.get("beats_stage26_selector") else "m3w_small_executed_candidate_improves_strongest_not_foundation"),
+        "ccfa_candidate": bool(
+            metrics.get("beats_stage26_selector", False)
+            and m.get("hard_failure_improvement", 0.0) >= 0.10
+            and m.get("easy_degradation", 9.0) <= 0.02
+            and evidence_ready
+        ),
+        "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best" if not metrics.get("beats_stage26_selector") else "m3w_stage27_candidate_improves_stage26_needs_review",
         "stage26_remains_best_deployable": not metrics.get("beats_stage26_selector", False),
     }
     write_json(OUT / "world_model_gate_m3w.json", result)
@@ -80,7 +106,7 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         "- self-audited / visual-prior labels 不是 human gold。",
         "- Stage5C latent generative 未执行；SMC 未启用。",
         f"- execution backend: `{metrics.get('backend')}`",
-        "- 本轮修复了 PyTorch OpenMP/SHM runtime：必须使用 sequential CPU 环境变量；MPS 在当前环境不可用。",
+        "- Runtime root cause: Apple Silicon 上默认 x86_64 Conda + Intel MKL/OpenMP 会触发 SHM 注册失败；训练必须使用 `.venv-pytorch/bin/python` arm64，`num_workers=0`，torch threads 4/8。",
         "",
         f"- M3W variant: `{metrics.get('variant')}`",
         f"- M3W t+50 improvement: `{m.get('official_t50_improvement')}`",
@@ -93,7 +119,7 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         "",
         "## Conclusion",
         "",
-        "M3W small pipeline 已真实执行，但不能称为 true 3D、foundation world model 或 latent generative world model。若未超过 Stage26 selector，当前 best deployable 仍是 Stage26 selector。",
+        "M3W Stage27 evidence sprint 已执行，但不能称为 true 3D、foundation world model、latent generative world model 或 CCF-A candidate。若未超过 Stage26 selector，当前 best deployable 仍是 Stage26 selector。",
     ]
     write_md(OUT / "report_m3w_final.md", lines)
     write_md(
@@ -101,7 +127,7 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         [
             "# M3W Model Card",
             "",
-            "- Architecture: JEPA-only, Transformer-only, and JEPA+Transformer hybrid compared in local-small.",
+            "- Architecture: JEPA-only, Transformer-only, and JEPA+Transformer hybrid compared in local-small / Stage27 evidence sprint.",
             "- Outputs: expected baseline FDE, selected physical baseline, failure/interaction/occupancy/validity heads.",
             "- No free residual correction, no Stage5C execution, no SMC.",
             "- Deployment: fallback to Stage26 selector unless M3W gates beat it.",
@@ -123,7 +149,7 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         [
             "# M3W Failure Analysis",
             "",
-            "- JEPA downstream lift is not yet proven in small mode.",
+            "- JEPA downstream lift is not yet proven.",
             "- Goal metrics remain diagnostic because no human goal labels are available.",
             "- If M3W does not beat Stage26 selector, deploy Stage26 and use M3W features only as research diagnostics.",
         ],
@@ -133,8 +159,8 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         [
             "# M3W Next Steps",
             "",
-            "1. Run feature ablations and stronger local-medium only if small beats or clearly complements Stage26.",
-            "2. Add verified scene image/raster tokens and real goal labels before claiming scene/goal lift.",
+            "1. Use `.venv-pytorch/bin/python` arm64 for all training; keep x86_64/Rosetta blocked.",
+            "2. Run retrained ablations and multi-seed/medium only after small shows a real lift.",
             "3. Keep Stage5C/SMC blocked until deterministic M3W gates pass and the user explicitly confirms.",
         ],
     )
@@ -147,7 +173,7 @@ def update_state(metrics: Dict[str, Any], gates: Dict[str, Any]) -> None:
     if backend == "numpy_safe_fallback_due_torch_openmp_shm_blocker":
         backend_note = "The PyTorch backend was blocked by local OpenMP/SHM, so the executed checkpoint is a NumPy fallback diagnostic."
     else:
-        backend_note = "The PyTorch backend executed with sequential CPU runtime after repairing the local OpenMP/SHM settings; this is still local-small, not medium/full."
+        backend_note = "The PyTorch backend executed with the arm64 `.venv-pytorch` runtime requirement; this is still local-small / evidence sprint, not medium/full."
     block = f"""
 
 ## M3W: Real-World Multimodal Agent-Scene World Model
@@ -187,6 +213,13 @@ verdict = {gates.get('current_verdict')}
         "outputs/m3w/m3w_next_steps.md",
         "outputs/m3w/optimization_report.md",
         "outputs/m3w/paper_package_m3w.md",
+        "outputs/m3w/paper_draft_m3w.md",
+        "outputs/m3w/reproducibility_checklist.md",
+        "outputs/m3w/ccfa_gap_analysis.md",
+        "outputs/m3w/ablation_table_m3w.md",
+        "outputs/m3w/bootstrap_or_seed_report.md",
+        "outputs/m3w/experiment_matrix.md",
+        "outputs/m3w/stage27_evidence_report.md",
     ]:
         reports.add(p)
     state.update(

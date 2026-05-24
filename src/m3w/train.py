@@ -2,10 +2,35 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import platform
 import random
+import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, Iterable, Tuple
+
+os.environ.setdefault("WORLD_MODEL_TORCH_THREADS", "4")
+os.environ.setdefault("WORLD_MODEL_TORCH_INTEROP_THREADS", "2")
+os.environ.setdefault("OMP_NUM_THREADS", os.environ["WORLD_MODEL_TORCH_THREADS"])
+os.environ.setdefault("MKL_NUM_THREADS", os.environ["WORLD_MODEL_TORCH_THREADS"])
+os.environ.setdefault("OPENBLAS_NUM_THREADS", os.environ["WORLD_MODEL_TORCH_THREADS"])
+os.environ.setdefault("VECLIB_MAXIMUM_THREADS", os.environ["WORLD_MODEL_TORCH_THREADS"])
+os.environ.setdefault("NUMEXPR_NUM_THREADS", os.environ["WORLD_MODEL_TORCH_THREADS"])
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
+
+if (
+    sys.platform == "darwin"
+    and platform.machine().lower() == "x86_64"
+    and os.environ.get("WORLD_MODEL_ALLOW_RISKY_OPENMP") != "1"
+):
+    raise RuntimeError(
+        "Refusing to import torch training under macOS x86_64/Rosetta because this runtime "
+        "can trigger Intel OpenMP Can't open SHM hangs before Python can recover. "
+        "Use .venv-pytorch/bin/python on arm64, or set WORLD_MODEL_ALLOW_RISKY_OPENMP=1 "
+        "only if you accept the crash risk."
+    )
 
 import numpy as np
 import torch
@@ -21,6 +46,40 @@ from src.stage14_pipeline import ensure_dir, read_json, write_json, write_md
 def load_config(path: str | Path) -> Dict[str, Any]:
     with Path(path).open("r", encoding="utf-8") as handle:
         return yaml.safe_load(handle)
+
+
+def _int_setting(config: Dict[str, Any], key: str, env_key: str, default: int) -> int:
+    raw = os.environ.get(env_key, config.get(key, default))
+    try:
+        return max(1, int(raw))
+    except (TypeError, ValueError):
+        return max(1, int(default))
+
+
+def configure_torch_threads(config: Dict[str, Any]) -> Dict[str, int]:
+    intra = _int_setting(config, "torch_threads", "WORLD_MODEL_TORCH_THREADS", 1)
+    interop = _int_setting(config, "torch_interop_threads", "WORLD_MODEL_TORCH_INTEROP_THREADS", 1)
+    torch.set_num_threads(intra)
+    try:
+        torch.set_num_interop_threads(interop)
+    except RuntimeError:
+        if torch.get_num_interop_threads() != interop:
+            raise
+    return {"torch_threads": torch.get_num_threads(), "torch_interop_threads": torch.get_num_interop_threads()}
+
+
+def assert_safe_torch_runtime() -> None:
+    """Refuse the known Apple Silicon Rosetta + Intel OpenMP crash path."""
+    if os.environ.get("WORLD_MODEL_ALLOW_RISKY_OPENMP") == "1":
+        return
+    is_darwin_x86 = sys.platform == "darwin" and platform.machine().lower() == "x86_64"
+    if is_darwin_x86 and torch.backends.mkl.is_available():
+        raise RuntimeError(
+            "Refusing M3W torch training in macOS x86_64/Rosetta + Intel MKL/OpenMP runtime. "
+            "This environment has previously triggered OMP Can't open SHM crashes. "
+            "Use .venv-pytorch/bin/python on arm64, or set WORLD_MODEL_ALLOW_RISKY_OPENMP=1 "
+            "only if you intentionally accept the crash risk."
+        )
 
 
 def choose_device(config: Dict[str, Any], force_cpu: bool = False, force_mps: bool = False) -> torch.device:
@@ -89,15 +148,27 @@ def _val_loss(model: M3WModel, loader: DataLoader, device: torch.device, weights
     return float(np.mean(vals)) if vals else 0.0
 
 
-def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False, long: bool = False, resume: bool = False, mps: bool = False, cpu: bool = False, checkpoint_every: int | None = None) -> Dict[str, Any]:
+def train_m3w(
+    config_path: str | Path,
+    quick: bool = False,
+    medium: bool = False,
+    long: bool = False,
+    resume: bool = False,
+    mps: bool = False,
+    cpu: bool = False,
+    checkpoint_every: int | None = None,
+    heartbeat_minutes: float | None = None,
+) -> Dict[str, Any]:
     config = load_config(config_path)
-    torch.set_num_threads(1)
-    torch.set_num_interop_threads(1)
+    assert_safe_torch_runtime()
+    thread_info = configure_torch_threads(config)
     if quick:
         config["jepa_epochs"] = min(int(config.get("jepa_epochs", 4)), 2)
         config["supervised_epochs"] = min(int(config.get("supervised_epochs", 8)), 3)
     if checkpoint_every is not None:
         config["checkpoint_every"] = checkpoint_every
+    if heartbeat_minutes is not None:
+        config["heartbeat_minutes"] = heartbeat_minutes
     _seed(int(config.get("seed", 27)))
     device = choose_device(config, force_cpu=cpu, force_mps=mps)
     out_dir = ensure_dir(config.get("output_dir", "outputs/m3w"))
@@ -108,8 +179,10 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
     variants = ["jepa_only", "transformer_only", "hybrid"]
     results = {}
     best = {"variant": None, "val_loss": float("inf"), "checkpoint": None}
+    best_name = "best_medium.pt" if str(config.get("mode", "")).startswith("medium") else "best_small.pt"
     start = time.time()
     _heartbeat(out_dir, "initializing local-small training", start, {})
+    write_json(Path(out_dir) / "torch_runtime.json", thread_info)
     for variant in variants:
         model = M3WModel(train_ds.schema, config, variant=variant).to(device)
         opt = torch.optim.AdamW(model.parameters(), lr=float(config["learning_rate"]), weight_decay=float(config.get("weight_decay", 0.0)))
@@ -156,12 +229,13 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
         results[variant] = {"val_loss": final_val, "jepa_stats": jepa_stats, "val_history": val_history, "checkpoint": str(best_variant_path)}
         if final_val < best["val_loss"]:
             best = {"variant": variant, "val_loss": final_val, "checkpoint": str(best_variant_path)}
-            torch.save(torch.load(best_variant_path, map_location="cpu"), ckpt_dir / "best_small.pt")
+            torch.save(torch.load(best_variant_path, map_location="cpu"), ckpt_dir / best_name)
     report = {
         "project_name": "M3W: Real-World Multimodal Agent-Scene World Model",
         "mode": config.get("mode", "small"),
-        "backend": "torch_cpu_sequential" if str(device) == "cpu" else f"torch_{device}",
+        "backend": "torch_cpu_multithread" if str(device) == "cpu" and thread_info["torch_threads"] > 1 else f"torch_{device}",
         "device": str(device),
+        "torch_runtime": thread_info,
         "variants": results,
         "best": best,
         "true_3d": False,
@@ -170,6 +244,8 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
         "smc": False,
         "ordinary_residual_trained": False,
         "elapsed_s": time.time() - start,
+        "resume_requested": bool(resume),
+        "heartbeat_minutes": config.get("heartbeat_minutes"),
     }
     write_json(Path(out_dir) / "training_report.json", report)
     write_md(
@@ -180,6 +256,8 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
             "- This is a local-small representation/deterministic-head run, not a foundation/full model.",
             "- No Stage5C latent generative execution, no SMC, no ordinary residual training.",
             f"- device: `{device}`",
+            f"- torch threads: `{thread_info['torch_threads']}`",
+            f"- torch interop threads: `{thread_info['torch_interop_threads']}`",
             f"- best variant: `{best['variant']}`",
             f"- best checkpoint: `{best['checkpoint']}`",
         ],
@@ -227,5 +305,16 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--mps", action="store_true")
     parser.add_argument("--cpu", action="store_true")
     parser.add_argument("--checkpoint-every", type=int, default=None)
+    parser.add_argument("--heartbeat-minutes", type=float, default=None)
     args = parser.parse_args(argv)
-    train_m3w(args.config, quick=args.quick, medium=args.medium, long=args.long, resume=args.resume, mps=args.mps, cpu=args.cpu, checkpoint_every=args.checkpoint_every)
+    train_m3w(
+        args.config,
+        quick=args.quick,
+        medium=args.medium,
+        long=args.long,
+        resume=args.resume,
+        mps=args.mps,
+        cpu=args.cpu,
+        checkpoint_every=args.checkpoint_every,
+        heartbeat_minutes=args.heartbeat_minutes,
+    )

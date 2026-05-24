@@ -1,10 +1,10 @@
 # M3W Metrics
 
 - variant: `hybrid`
-- t+50 improvement: `0.0797643165887999`
-- hard/failure improvement: `0.04591573857839959`
-- easy degradation: `0.008167665001088231`
+- t+50 improvement: `0.1308150291442871`
+- hard/failure improvement: `0.10240167379379272`
+- easy degradation: `0.010665178298950195`
 - beats Stage26 selector: `False`
-- failure AUROC/AUPRC/ECE: `0.9346414494225567` / `0.5090746798518613` / `0.03996540148588829`
-- interaction AUROC: `0.6537175646345935`
+- failure AUROC/AUPRC/ECE: `0.9543455373640822` / `0.6381205770048155` / `0.014374548431523144`
+- interaction AUROC: `0.9976791527175191`
 - JEPA non-collapse: `False`

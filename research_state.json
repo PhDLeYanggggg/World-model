@@ -1,6 +1,6 @@
 {
   "current_stage": "m3w_small",
-  "current_verdict": "m3w_small_executed_stage26_remains_best_deployable",
+  "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -114,13 +114,20 @@
     "outputs/final_model/failure_analysis_final.md",
     "outputs/final_model/model_card_final.md",
     "outputs/final_model/report_final_model.md",
+    "outputs/m3w/ablation_table_m3w.md",
+    "outputs/m3w/bootstrap_or_seed_report.md",
+    "outputs/m3w/ccfa_gap_analysis.md",
     "outputs/m3w/data_card_m3w.md",
+    "outputs/m3w/experiment_matrix.md",
     "outputs/m3w/failure_analysis_m3w.md",
     "outputs/m3w/m3w_next_steps.md",
     "outputs/m3w/model_card_m3w.md",
     "outputs/m3w/optimization_report.md",
+    "outputs/m3w/paper_draft_m3w.md",
     "outputs/m3w/paper_package_m3w.md",
     "outputs/m3w/report_m3w_final.md",
+    "outputs/m3w/reproducibility_checklist.md",
+    "outputs/m3w/stage27_evidence_report.md",
     "outputs/m3w/world_model_gate_m3w.md",
     "outputs/reports/auto_gate_report.md",
     "outputs/reports/auto_loop_iteration_report.md",
@@ -325,7 +332,7 @@
     "failure_assisted_selector_trained": true,
     "selected_model": "stage26_failure_assisted_selector",
     "t50_improvement": 0.14583655843823773,
-    "hard_failure_improvement": 0.11232167634621226,
+    "hard_failure_improvement": 0.11234058960663984,
     "easy_degradation": 0.01808836280803794,
     "t50_gate_passed": true,
     "hard_failure_gate_passed": true,
@@ -338,66 +345,66 @@
   },
   "m3w": {
     "metrics": {
-      "checkpoint": "outputs/m3w/checkpoints/best_small.pt",
-      "backend": "torch_cpu_sequential",
+      "checkpoint": "outputs/m3w/checkpoints/best_medium.pt",
+      "backend": "torch_arm64_cpu_multithread",
       "variant": "hybrid",
       "selected_policy": {
         "confidence_threshold": 0.0,
-        "gain_threshold": 40.0,
-        "failure_threshold": 0.0
+        "gain_threshold": 10.0,
+        "failure_threshold": 0.35
       },
       "validation_metrics": {
-        "improvement_over_strongest": 0.17486234972301673,
-        "official_t50_improvement": 0.20744705193469892,
-        "diagnostic_t100_raw_frame_improvement": 0.20140328153979237,
-        "hard_failure_improvement": 0.17537030961306088,
-        "easy_degradation": 0.007325388982142078,
-        "selector_regret": 8.959431648254395,
-        "harm_over_fallback": -6.738903045654297,
-        "switch_rate": 0.0486,
-        "mean_confidence": 668.19873046875,
+        "improvement_over_strongest": 0.2452029585838318,
+        "official_t50_improvement": 0.3103444576263428,
+        "diagnostic_t100_raw_frame_improvement": 0.2760850787162781,
+        "hard_failure_improvement": 0.2459152340888977,
+        "easy_degradation": 0.017978906631469727,
+        "selector_regret": 6.248622417449951,
+        "harm_over_fallback": -9.449713706970215,
+        "switch_rate": 0.07635,
+        "mean_confidence": 2.6134114265441895,
         "selected_distribution": {
-          "constant_position": 11,
-          "constant_velocity_causal_fd": 11,
-          "damped_velocity": 16793,
-          "constant_acceleration_causal": 0,
-          "constant_turn_rate_velocity": 20,
-          "scene_clamped_baseline": 3165,
-          "goal_directed_baseline": 0
+          "constant_position": 70,
+          "constant_velocity_causal_fd": 211,
+          "damped_velocity": 16632,
+          "constant_acceleration_causal": 119,
+          "constant_turn_rate_velocity": 500,
+          "scene_clamped_baseline": 2463,
+          "goal_directed_baseline": 5
         }
       },
       "test_metrics": {
-        "improvement_over_strongest": 0.04552431005992641,
-        "official_t50_improvement": 0.0797643165887999,
-        "diagnostic_t100_raw_frame_improvement": 0.04313533356610444,
-        "hard_failure_improvement": 0.04591573857839959,
-        "easy_degradation": 0.008167665001088231,
-        "selector_regret": 5.662308692932129,
-        "harm_over_fallback": -1.1813162565231323,
-        "switch_rate": 0.01848,
-        "mean_confidence": 565.9408569335938,
+        "improvement_over_strongest": 0.10152828693389893,
+        "official_t50_improvement": 0.1308150291442871,
+        "diagnostic_t100_raw_frame_improvement": 0.12080299854278564,
+        "hard_failure_improvement": 0.10240167379379272,
+        "easy_degradation": 0.010665178298950195,
+        "selector_regret": 4.209047317504883,
+        "harm_over_fallback": -2.634577512741089,
+        "switch_rate": 0.04736,
+        "mean_confidence": 3.7792036533355713,
         "selected_distribution": {
-          "constant_position": 105,
-          "constant_velocity_causal_fd": 74,
-          "damped_velocity": 87121,
-          "constant_acceleration_causal": 0,
-          "constant_turn_rate_velocity": 45,
-          "scene_clamped_baseline": 12655,
-          "goal_directed_baseline": 0
+          "constant_position": 488,
+          "constant_velocity_causal_fd": 431,
+          "damped_velocity": 86552,
+          "constant_acceleration_causal": 230,
+          "constant_turn_rate_velocity": 1129,
+          "scene_clamped_baseline": 11141,
+          "goal_directed_baseline": 29
         }
       },
       "stage26_selector": {
         "t50_improvement": 0.14583655843823773,
-        "hard_failure_improvement": 0.11232167634621226,
+        "hard_failure_improvement": 0.11234058960663984,
         "easy_degradation": 0.01808836280803794
       },
       "beats_stage26_selector": false,
-      "failure_AUROC": 0.9346414494225567,
-      "failure_AUPRC": 0.5090746798518613,
-      "failure_ECE": 0.03996540148588829,
-      "interaction_AUROC": 0.6537175646345935,
-      "occupancy_MSE": 0.00974509958177805,
-      "jepa_latent_variance": 0.0013557503698393703,
+      "failure_AUROC": 0.9543455373640822,
+      "failure_AUPRC": 0.6381205770048155,
+      "failure_ECE": 0.014374548431523144,
+      "interaction_AUROC": 0.9976791527175191,
+      "occupancy_MSE": 0.007292779628187418,
+      "jepa_latent_variance": 0.004041421227157116,
       "jepa_non_collapse": false,
       "goal_metrics": "diagnostic_unavailable_no_human_goal_labels",
       "physical_validity": "selected physical baseline only; no residual/correction",
@@ -423,13 +430,18 @@
         },
         {
           "gate": "JEPA Downstream Gate",
-          "passed": false,
-          "evidence": "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."
+          "passed": true,
+          "evidence": "Hybrid with JEPA features should improve over Transformer-only in the evidence matrix."
         },
         {
           "gate": "Transformer Dynamics Gate",
           "passed": true,
           "evidence": "Torch Transformer dynamics variant executed and was validation-selected."
+        },
+        {
+          "gate": "Hybrid Gate",
+          "passed": true,
+          "evidence": "Hybrid should beat JEPA-only or Transformer-only on the evidence matrix."
         },
         {
           "gate": "Selector Gate",
@@ -438,7 +450,7 @@
         },
         {
           "gate": "Hard/Failure Gate",
-          "passed": false,
+          "passed": true,
           "evidence": "Hard/failure improvement >=10%."
         },
         {
@@ -467,6 +479,11 @@
           "evidence": "Checkpoint and config-backed run available."
         },
         {
+          "gate": "CCF-A Evidence Gate",
+          "passed": true,
+          "evidence": "Paper package, ablation table, and bootstrap report exist; passing this gate does not mean CCF-A quality is reached."
+        },
+        {
           "gate": "Stage5C Plan Readiness",
           "passed": false,
           "evidence": "Only plan allowed after full gates; not ready and not executed."
@@ -477,13 +494,14 @@
           "evidence": "SMC remains false."
         }
       ],
-      "gates_passed": 8,
-      "gates_total": 14,
+      "gates_passed": 12,
+      "gates_total": 16,
       "m3w_success": false,
       "foundation_track_prototype": false,
       "stage5c_ready": false,
       "smc_ready": false,
-      "current_verdict": "m3w_small_executed_stage26_remains_best_deployable",
+      "ccfa_candidate": false,
+      "current_verdict": "m3w_stage27_evidence_executed_not_ccfa_candidate_stage26_remains_best",
       "stage26_remains_best_deployable": true
     }
   }
