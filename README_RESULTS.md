@@ -685,3 +685,25 @@ gates = 10 / 11
 verdict = stage31_external_domain_gap_sdd_candidate_only
 ```
 
+## Stage32: External Domain Alignment
+
+Stage32 audits the Stage31 external domain gap, builds multiple domain normalizations, recomputes normalized external baselines, measures latent distribution shift, trains domain-adapted selectors, and evaluates SDD/external cross-domain transfer without enabling Stage5C or SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+gates = 9 / 11
+verdict = stage32_domain_alignment_partial_not_cross_domain_candidate
+```
+
+Key Stage32 outcome:
+
+- External conversion, no-leakage, normalization, baseline reaudit, latent alignment, selectors, cross-domain matrix, and gates were run as `fresh_run`.
+- Best external adapted selector fell back to the external strongest causal baseline: all improvement `0.0`, t+50 improvement `0.0`.
+- SDD-trained zero-shot selector still failed externally: all improvement `-0.337476`, t+50 improvement `-1.018801`.
+- Mixed-domain selector preserved positive SDD average improvement but failed easy preservation, so it is not deployable.
+- Cross-dataset world-model generalization is not established; M3W-LAS remains an SDD pixel raw-frame candidate.
+- Tests: `python -m pytest tests` -> `58 passed`.

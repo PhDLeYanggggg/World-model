@@ -1,0 +1,283 @@
+{
+  "source": "fresh_run",
+  "experiments": {
+    "external_only_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "base",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "sdd_only_zero_shot_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd"
+      ],
+      "val_domain": "sdd",
+      "test_domain": "external",
+      "variant": "all_latent",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.05
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.33747588542220686,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": -1.0188012106824642,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.09569949022769952,
+        "easy_degradation": 1.3761319235867493,
+        "selector_regret": 0.06389086321919987,
+        "harm_over_fallback": 0.046586689905917154,
+        "switch_rate": 0.04977997799779978,
+        "mean_confidence": 0.0493367500603199
+      }
+    },
+    "sdd_external_mixed_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "all_latent",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "sdd_latent_external_adapter_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "latent_adapter",
+      "normalization": "raw_dataset_local",
+      "coral_external": true,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.05
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.004313163987425428,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": -0.013020950183636026,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.02480084774952207,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.017899581879865695,
+        "harm_over_fallback": 0.0005954085665829767,
+        "switch_rate": 0.04977997799779978,
+        "mean_confidence": 0.03733079135417938
+      }
+    },
+    "domain_conditioned_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "domain_conditioned",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "feature_normalized_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "feature_normalized",
+      "normalization": "robust_quantile",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "failure_assisted_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "failure_assisted",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "conservative_fallback_selector": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "conservative",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    }
+  },
+  "best_model": "external_only_selector",
+  "best_metrics": {
+    "domain": "external",
+    "split": "test",
+    "rows": 3636,
+    "all_improvement": 0.0,
+    "t10_improvement": 0.0,
+    "t25_improvement": 0.0,
+    "t50_improvement": 0.0,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.0,
+    "easy_degradation": 0.0,
+    "selector_regret": 0.01730417331328272,
+    "harm_over_fallback": 0.0,
+    "switch_rate": 0.0,
+    "mean_confidence": 0.0
+  }
+}

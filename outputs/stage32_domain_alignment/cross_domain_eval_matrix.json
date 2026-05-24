@@ -1,0 +1,199 @@
+{
+  "source": "fresh_run",
+  "matrix": {
+    "SDD_train_to_SDD_test": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd"
+      ],
+      "val_domain": "sdd",
+      "test_domain": "sdd",
+      "variant": "all_latent",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.05
+      },
+      "metrics": {
+        "domain": "sdd",
+        "split": "test",
+        "rows": 100000,
+        "all_improvement": 0.0842178466933835,
+        "t10_improvement": 0.05020453010058967,
+        "t25_improvement": 0.041168295857218484,
+        "t50_improvement": 0.07862244849889255,
+        "t100_improvement": 0.10050253333508141,
+        "hard_failure_improvement": 0.08456001151898729,
+        "easy_degradation": 0.0,
+        "selector_regret": 4.658241475180685,
+        "harm_over_fallback": -2.1853833859819174,
+        "switch_rate": 0.05,
+        "mean_confidence": 0.038291703909635544
+      }
+    },
+    "SDD_train_to_external_test": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd"
+      ],
+      "val_domain": "sdd",
+      "test_domain": "external",
+      "variant": "all_latent",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.05
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.33747588542220686,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": -1.0188012106824642,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.09569949022769952,
+        "easy_degradation": 1.3761319235867493,
+        "selector_regret": 0.06389086321919987,
+        "harm_over_fallback": 0.046586689905917154,
+        "switch_rate": 0.04977997799779978,
+        "mean_confidence": 0.0493367500603199
+      }
+    },
+    "external_train_to_external_test": {
+      "source": "fresh_run",
+      "train_domains": [
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "base",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "external_train_to_SDD_test": {
+      "source": "fresh_run",
+      "train_domains": [
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "sdd",
+      "variant": "base",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "sdd",
+        "split": "test",
+        "rows": 100000,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 6.843624861162603,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "SDD_external_train_to_SDD_test": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "sdd",
+      "test_domain": "sdd",
+      "variant": "all_latent",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.05
+      },
+      "metrics": {
+        "domain": "sdd",
+        "split": "test",
+        "rows": 100000,
+        "all_improvement": 0.04593392521544648,
+        "t10_improvement": 0.012675610213318533,
+        "t25_improvement": 0.01660725927948936,
+        "t50_improvement": 0.04481255195163136,
+        "t100_improvement": 0.05667802793817034,
+        "hard_failure_improvement": 0.04629964467328851,
+        "easy_degradation": 250699.06445684892,
+        "selector_regret": 5.651677536930442,
+        "harm_over_fallback": -1.191947324232161,
+        "switch_rate": 0.05,
+        "mean_confidence": 0.038551878184080124
+      }
+    },
+    "SDD_external_train_to_external_test": {
+      "source": "fresh_run",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "val_domain": "external",
+      "test_domain": "external",
+      "variant": "all_latent",
+      "normalization": "raw_dataset_local",
+      "coral_external": false,
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    }
+  }
+}

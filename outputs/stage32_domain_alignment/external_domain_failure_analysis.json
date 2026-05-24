@@ -1,0 +1,24 @@
+{
+  "source": "fresh_run",
+  "zero_shot_collapse_reason": "SDD selector/latent scale is not calibrated to dataset-local external coordinates; conservative switch policy still selects harmful baselines under external feature distribution shift.",
+  "normalization_fixed": false,
+  "latent_adapter_useful": true,
+  "external_data_too_short": true,
+  "horizon_mismatch": {
+    "10": 2020,
+    "25": 1212,
+    "50": 404
+  },
+  "agent_type_issue": "external is pedestrian-only; SDD training includes mixed agent types.",
+  "scene_goal_missing_impact": "scene/goal features are mostly zero-filled externally; full multimodal scene transfer cannot be claimed.",
+  "needs_external_scene_packs": true,
+  "sdd_specific_selector": true,
+  "shortest_repair_path": [
+    "Build ETH/UCY/OpenTraj scene packs with train-only goals.",
+    "Use coordinate-invariant trajectory tokens and relative-error selector targets.",
+    "Train a domain-conditioned model with held-out external scenes, not only SDD.",
+    "Add homography/scale audit where available before any metric claim."
+  ],
+  "world_model_status": "not_cross_domain_candidate",
+  "latent_distance": 6.645000520842287
+}

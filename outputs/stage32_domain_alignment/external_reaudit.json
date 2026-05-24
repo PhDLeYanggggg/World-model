@@ -1,0 +1,110 @@
+{
+  "source": "fresh_run",
+  "source_labels": {
+    "stage31_feature_store": "cached_verified",
+    "reaudit": "fresh_run"
+  },
+  "rows": {
+    "train": 119109,
+    "val": 7685,
+    "test": 3636
+  },
+  "coordinate_unit": "dataset_local_coordinates",
+  "scale_status": "unverified_weak_metric_diagnostic",
+  "horizon_availability": {
+    "train": {
+      "10": 38978,
+      "25": 33700,
+      "50": 28743,
+      "100": 17688
+    },
+    "val": {
+      "10": 2465,
+      "25": 2175,
+      "50": 1885,
+      "100": 1160
+    },
+    "test": {
+      "10": 2020,
+      "25": 1212,
+      "50": 404
+    }
+  },
+  "frame_step_definition": "OpenTraj/TrajNet frame ids; raw horizon is frame-id delta or nearest future frame at/after requested delta.",
+  "agent_type": "Pedestrian",
+  "scene_goal_availability": {
+    "scene_packs": false,
+    "goal_candidates": false,
+    "goal_features_present_but_zero_filled": [
+      "goal_count",
+      "nearest_goal_distance",
+      "goal_direction_alignment",
+      "goal_source_train_endpoint",
+      "goal_source_visual_prior",
+      "goal_directed_available"
+    ]
+  },
+  "interaction_features": [
+    "density_visible_count",
+    "density_r20",
+    "density_r50",
+    "density_r100",
+    "nearest_neighbor_distance",
+    "mean_nearest3_distance",
+    "mean_nearest5_distance",
+    "min_ttc",
+    "max_closing_speed",
+    "closing_neighbor_count",
+    "nearest_goal_distance"
+  ],
+  "feature_distribution_vs_sdd": {
+    "speed_now": {
+      "mean_delta_in_sdd_std": -0.5828104021551638,
+      "external_mean": 0.027930731578138742,
+      "sdd_mean": 1.0522962868109345
+    },
+    "accel_mag_now": {
+      "mean_delta_in_sdd_std": -0.6747178226694621,
+      "external_mean": 0.0005642604358682332,
+      "sdd_mean": 0.943044411097467
+    },
+    "heading_change_past": {
+      "mean_delta_in_sdd_std": 0.001915425898141661,
+      "external_mean": 0.0,
+      "sdd_mean": -0.0016643612238578498
+    },
+    "curvature_proxy": {
+      "mean_delta_in_sdd_std": -0.06542866700009106,
+      "external_mean": 0.0,
+      "sdd_mean": 1462.1535003298627
+    },
+    "density_visible_count": {
+      "mean_delta_in_sdd_std": 0.1369255892594166,
+      "external_mean": 28.83081882981135,
+      "sdd_mean": 26.0759
+    },
+    "nearest_neighbor_distance": {
+      "mean_delta_in_sdd_std": 0.019824446862749163,
+      "external_mean": 1000.0,
+      "sdd_mean": 579.5968769606919
+    },
+    "min_ttc": {
+      "mean_delta_in_sdd_std": -0.8662248641812629,
+      "external_mean": 0.0,
+      "sdd_mean": 275.56940302415006
+    },
+    "horizon_norm": {
+      "mean_delta_in_sdd_std": -0.2171802191504993,
+      "external_mean": 0.3726191980293827,
+      "sdd_mean": 0.4454662503929809
+    }
+  },
+  "no_leakage": {
+    "split_by_file": true,
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "candidate_goals_used": false
+  },
+  "pass": true
+}

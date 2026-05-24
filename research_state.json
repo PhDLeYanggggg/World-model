@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage31",
-  "current_verdict": "stage31_external_domain_gap_sdd_candidate_only",
+  "current_stage": "stage32",
+  "current_verdict": "stage32_domain_alignment_partial_not_cross_domain_candidate",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage20_web_dataset_search.py; python scripts/stage20_download_or_verify_datasets.py --dry-run; python scripts/stage20_verify_local_paths.py --all-priority; python run_stage20_verify_topdown_data.py; python run_stage20_gates.py; python -m pytest tests",
+  "last_successful_command": "python run_stage32_external_reaudit.py; python run_stage32_domain_normalization.py; python run_stage32_external_baseline_reaudit.py; python run_stage32_latent_domain_alignment.py; python run_stage32_train_domain_adapted_selector.py; python run_stage32_cross_domain_eval.py; python run_stage32_domain_failure_analysis.py; python run_stage32_gates.py; python -m pytest tests",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -224,7 +224,19 @@
     "outputs/stage31_m3w_external/pytest_status.md",
     "outputs/stage31_m3w_external/report_stage31_final.md",
     "outputs/stage31_m3w_external/run_ledger.md",
-    "outputs/stage31_m3w_external/world_model_gate_stage31.md"
+    "outputs/stage31_m3w_external/world_model_gate_stage31.md",
+    "outputs/stage32_domain_alignment/cross_domain_eval_matrix.md",
+    "outputs/stage32_domain_alignment/domain_adapted_selector_report.md",
+    "outputs/stage32_domain_alignment/domain_normalization_report.md",
+    "outputs/stage32_domain_alignment/external_baseline_reaudit.md",
+    "outputs/stage32_domain_alignment/external_domain_failure_analysis.md",
+    "outputs/stage32_domain_alignment/external_reaudit.md",
+    "outputs/stage32_domain_alignment/latent_domain_alignment_report.md",
+    "outputs/stage32_domain_alignment/project_world_model_gap_stage32.md",
+    "outputs/stage32_domain_alignment/report_stage32_final.md",
+    "outputs/stage32_domain_alignment/run_ledger.md",
+    "outputs/stage32_domain_alignment/world_model_gate_stage32.md",
+    "outputs/stage32_domain_alignment/pytest_status.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -928,5 +940,118 @@
     "current_verdict": "stage31_external_domain_gap_sdd_candidate_only",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage32": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate1 external reaudit pass",
+        "passed": true,
+        "evidence": "rows={'train': 119109, 'val': 7685, 'test': 3636}"
+      },
+      {
+        "gate": "Gate2 normalization built",
+        "passed": true,
+        "evidence": [
+          "raw_dataset_local",
+          "per_scene_zscore",
+          "velocity_scale",
+          "path_length_speed",
+          "robust_quantile"
+        ]
+      },
+      {
+        "gate": "Gate3 external baseline recomputed",
+        "passed": true,
+        "evidence": "baseline by normalization exists"
+      },
+      {
+        "gate": "Gate4 latent alignment measured",
+        "passed": true,
+        "evidence": "mean_distance=6.645000520842287"
+      },
+      {
+        "gate": "Gate5 adapted selector improves external strongest baseline or reduces domain gap",
+        "passed": true,
+        "evidence": {
+          "domain": "external",
+          "split": "test",
+          "rows": 3636,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "selector_regret": 0.01730417331328272,
+          "harm_over_fallback": 0.0,
+          "switch_rate": 0.0,
+          "mean_confidence": 0.0
+        }
+      },
+      {
+        "gate": "Gate6 mixed-domain training does not destroy SDD performance",
+        "passed": false,
+        "evidence": {
+          "domain": "sdd",
+          "split": "test",
+          "rows": 100000,
+          "all_improvement": 0.04593392521544648,
+          "t10_improvement": 0.012675610213318533,
+          "t25_improvement": 0.01660725927948936,
+          "t50_improvement": 0.04481255195163136,
+          "t100_improvement": 0.05667802793817034,
+          "hard_failure_improvement": 0.04629964467328851,
+          "easy_degradation": 250699.06445684892,
+          "selector_regret": 5.651677536930442,
+          "harm_over_fallback": -1.191947324232161,
+          "switch_rate": 0.05,
+          "mean_confidence": 0.038551878184080124
+        }
+      },
+      {
+        "gate": "Gate7 no leakage pass",
+        "passed": true,
+        "evidence": {
+          "split_by_file": true,
+          "future_endpoint_input": false,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "candidate_goals_used": false
+        }
+      },
+      {
+        "gate": "Gate8 external generalization positive or honest blocker",
+        "passed": true,
+        "evidence": "not_cross_domain_candidate"
+      },
+      {
+        "gate": "Gate9 world model cross-domain candidate gate",
+        "passed": false,
+        "evidence": "best=0.0, mixed_ext=0.0, mixed_sdd=0.04593392521544648"
+      },
+      {
+        "gate": "Gate10 Stage5C false plan only",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate11 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 9,
+    "gates_total": 11,
+    "current_verdict": "stage32_domain_alignment_partial_not_cross_domain_candidate",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "tests": {
+      "command": "python -m pytest tests",
+      "status": "success",
+      "passed": 58,
+      "source": "fresh_run"
+    }
   }
 }
