@@ -287,24 +287,29 @@
       "evidence": "calibrated_all_agent_endpoint_t100_focus"
     },
     {
+      "gate": "Gate4d t50 rescue run",
+      "passed": true,
+      "evidence": "calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard"
+    },
+    {
       "gate": "Gate5 external all improvement beats Stage37 by >=2% absolute",
       "passed": false,
-      "evidence": 0.028781365981368823
+      "evidence": 0.024621545149110413
     },
     {
       "gate": "Gate6 external t50 improvement beats Stage37 by >=2% absolute",
       "passed": false,
-      "evidence": -0.06738370319574938
+      "evidence": 0.023656017980682287
     },
     {
       "gate": "Gate7 external hard/failure beats Stage37 by >=2% absolute",
       "passed": false,
-      "evidence": 0.02896269407231611
+      "evidence": 0.026077286541592137
     },
     {
       "gate": "Gate8 easy degradation <=2%",
       "passed": true,
-      "evidence": 0.007744831149381959
+      "evidence": 0.0
     },
     {
       "gate": "Gate9 at least two held-out external domains positive",
@@ -312,94 +317,53 @@
       "evidence": {
         "ETH_UCY": {
           "rows": 21598,
-          "all_improvement": 0.023884582600586568,
-          "t50_improvement": -0.09700626346566987,
-          "t100_improvement": 0.10046277194697684,
-          "hard_failure_improvement": 0.024218069353421856,
-          "easy_degradation": 0.023738889473978952,
-          "switch_rate": 0.10255579220298176
+          "all_improvement": 0.015926675807943824,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0335577870056738,
+          "hard_failure_improvement": 0.016892028728442865,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.05000463005833874
         },
         "TrajNet": {
           "rows": 3639,
-          "all_improvement": 0.07688423698396307,
-          "t50_improvement": 0.01653618948787916,
-          "t100_improvement": 0.14563338285586003,
-          "hard_failure_improvement": 0.07937702789473322,
+          "all_improvement": 0.06162077231472862,
+          "t50_improvement": 0.10700099062093782,
+          "t100_improvement": 0.0161846897491722,
+          "hard_failure_improvement": 0.06610576278451474,
           "easy_degradation": 0.0,
-          "switch_rate": 0.09123385545479527
+          "switch_rate": 0.14179719703215168
         },
         "UCY": {
           "rows": 9540,
-          "all_improvement": 0.03493412560197373,
-          "t50_improvement": 0.02891112745639035,
-          "t100_improvement": 0.03074729235981255,
-          "hard_failure_improvement": 0.0342745972429187,
+          "all_improvement": 0.05578151010993071,
+          "t50_improvement": 0.09364137229419445,
+          "t100_improvement": 0.011124917320985195,
+          "hard_failure_improvement": 0.06077739672330784,
           "easy_degradation": 0.0,
-          "switch_rate": 0.0820754716981132
+          "switch_rate": 0.10660377358490566
         }
       }
     },
     {
       "gate": "Gate10 neural without fallback not catastrophic",
       "passed": true,
-      "evidence": {
-        "rows": 34777,
-        "all_improvement": 0.024009797605558547,
-        "t10_improvement": 0.3603982691557014,
-        "t25_improvement": -0.4867417904070279,
-        "t50_improvement": -0.28897919310165276,
-        "t100_improvement": 0.2785319364033665,
-        "hard_failure_improvement": 0.04962847544642379,
-        "easy_degradation": 0.6812873463088354,
-        "harm_over_fallback": -0.033837059198642376,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.49734628475700704,
-        "by_domain": {
-          "ETH_UCY": {
-            "rows": 21598,
-            "all_improvement": 0.010437041918007095,
-            "t50_improvement": -0.41242213495272795,
-            "t100_improvement": 0.28660123430876794,
-            "hard_failure_improvement": 0.03143295959212977,
-            "easy_degradation": 0.3395951146710232,
-            "switch_rate": 0.0
-          },
-          "TrajNet": {
-            "rows": 3639,
-            "all_improvement": 0.019862138058775458,
-            "t50_improvement": 0.09064734822744225,
-            "t100_improvement": 0.17414658404566286,
-            "hard_failure_improvement": 0.03241966295070797,
-            "easy_degradation": 0.5123077528636275,
-            "switch_rate": 0.0
-          },
-          "UCY": {
-            "rows": 9540,
-            "all_improvement": 0.09852400946695206,
-            "t50_improvement": 0.09963251316326338,
-            "t100_improvement": 0.2730386980188162,
-            "hard_failure_improvement": 0.15929650182575317,
-            "easy_degradation": 1.7936608790274748,
-            "switch_rate": 0.0
-          }
-        }
-      }
+      "evidence": {}
     },
     {
       "gate": "Gate11 neural switch rate >0 and positive with fallback",
       "passed": true,
       "evidence": {
-        "switch_rate": 0.09575294016160106,
+        "switch_rate": 0.07513586565833741,
         "exceeds_stage37": false,
-        "all": 0.028781365981368823,
-        "t50": -0.06738370319574938,
-        "hard": 0.02896269407231611
+        "all": 0.024621545149110413,
+        "t50": 0.023656017980682287,
+        "hard": 0.026077286541592137
       }
     },
     {
       "gate": "Gate12 t100 diagnostic positive or blocker documented",
       "passed": true,
-      "evidence": 0.09195588417060285
+      "evidence": 0.029132360292621673
     },
     {
       "gate": "Gate13 SDD safety floor not destroyed",
@@ -410,16 +374,16 @@
       "gate": "Gate14 bootstrap CI present",
       "passed": true,
       "evidence": {
-        "low": -0.07473157807877269,
-        "mid": -0.06749106400505778,
-        "high": -0.06026517747779372,
+        "low": 0.021000038058883685,
+        "mid": 0.0236399225734506,
+        "high": 0.026428649141640826,
         "n": 8245
       }
     },
     {
       "gate": "Gate15 ablation/trial matrix present",
       "passed": true,
-      "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, and gain/harm intervention calibrator"
+      "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, and t50 rescue"
     },
     {
       "gate": "Gate16 Stage5C false",
@@ -432,8 +396,8 @@
       "evidence": "SMC not enabled"
     }
   ],
-  "gates_passed": 17,
-  "gates_total": 20,
+  "gates_passed": 18,
+  "gates_total": 21,
   "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
   "stage5c_executed": false,
   "smc_enabled": false
