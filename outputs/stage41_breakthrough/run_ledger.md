@@ -86,3 +86,8 @@
 | `run_stage41_locked_v2_domain_composer.py` | `fresh_run` | `ok` | 195.415 | `83a0abcca140` | `44a085ff4d6d` | `1c00584` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 7.669 | `78fb4a4126ca` | `21dafb824c2c` | `1c00584` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 5.470 | `78fb4a4126ca` | `21dafb824c2c` | `1c00584` |
+| `run_stage41_locked_v2_relaxed_easy_budget.py` | `fresh_run` | `ok` | 10.899 | `6a190c2e1966` | `b4076054fe59` | `f9eb55b` |
+| `run_stage41_locked_v2_relaxed_easy_budget.py` | `fresh_run` | `ok` | 76.971 | `64286110661f` | `d83279f8278f` | `f9eb55b` |
+| `run_stage41_gates.py` | `fresh_run` | `failed` | 2.926 | `78fb4a4126ca` | `a6b541bcf885` | `f9eb55b` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.955 | `78fb4a4126ca` | `24f4f6442b2e` | `f9eb55b` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.954 | `78fb4a4126ca` | `24f4f6442b2e` | `f9eb55b` |

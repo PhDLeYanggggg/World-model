@@ -423,6 +423,30 @@ def _policy_grid() -> list[Dict[str, Any]]:
     ]
 
 
+def _relaxed_easy_budget_policy_grid() -> list[Dict[str, Any]]:
+    """Expanded policy grid for the post-diagnostic easy-budget hypothesis.
+
+    The standard grid is intentionally conservative and often lets the Stage37
+    floor consume neural signal. This grid allows larger switch budgets, but it
+    is still selected on validation only and remains candidate evidence until
+    repeated on a fresh locked protocol.
+    """
+    grid = list(_policy_grid())
+    for harm in [0.45, 0.65, 0.90]:
+        for max_switch in [0.70, 0.80, 0.95, 1.00]:
+            grid.append(
+                {
+                    "gain_threshold": 0.0,
+                    "gain_prob": 0.0,
+                    "harm_prob": harm,
+                    "physical_prob": 0.0,
+                    "max_switch": max_switch,
+                    "hard_only": False,
+                }
+            )
+    return grid
+
+
 def _metric_score(metrics: Mapping[str, Any], mode: str) -> float:
     """Validation-only score for selecting a safe switch policy."""
     all_imp = float(metrics.get("all_improvement", 0.0))
@@ -513,6 +537,84 @@ def _select_policy_from_predictions(pred: Mapping[str, np.ndarray], labels: Mapp
                     score = 1.2 * imp + (2.4 if h in {25, 50, 100} else 1.2) * hard_imp + 0.25 * float(h == 50) * imp + 0.02 * float(np.mean(sw))
                 else:
                     score = imp + (0.8 if h in {50, 100} else 0.25) * hard_imp + 0.01 * float(np.mean(sw))
+                if score > best_score:
+                    best_score = score
+                    best_params = dict(params)
+                    best_metrics = {"rows": int(len(ids)), "improvement": float(imp), "hard_failure_improvement": float(hard_imp), "easy_degradation": float(easy_deg), "switch_rate": float(np.mean(sw))}
+            if best_params:
+                policy["slices"][f"{d}|{h}"] = best_params
+            diagnostics[f"{d}|{h}"] = {"val_score": best_score, "selected": bool(best_params), "val_metrics": best_metrics or {"rows": int(mask.sum()), "improvement": 0.0}}
+    selected, switch, idx = _apply_policy(pred, labels, policy)
+    metrics = _metrics(selected, labels, switch)
+    metrics["selected_candidate_distribution"] = {str(k): int(v) for k, v in zip(*np.unique(idx, return_counts=True))}
+    return policy, {"metrics": metrics, "slice_diagnostics": diagnostics}
+
+
+def _select_relaxed_easy_budget_policy_from_predictions(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], mode: str = "relaxed_easy_budget") -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    """Select a higher-switch neural policy under validation easy-budget checks.
+
+    This directly targets the Stage41 failure mode where candidate neural
+    endpoints have substantial oracle and predicted-best headroom, but the
+    deployment policy falls back too often. It uses validation labels only for
+    policy selection. Because this rule was introduced after inspecting Stage41
+    failures, outputs are marked as candidate evidence until a fresh locked
+    confirmation run is available.
+    """
+    rel = pred["pred_rel"]
+    fallback = labels["floor_fde"].astype(np.float64)
+    best = np.argmin(rel, axis=1)
+    pred_gain = rel[:, 0] - rel[np.arange(len(best)), best]
+    candidate_fde = labels["candidate_fde"].astype(np.float64)
+    hard_all = labels["hard"].astype(bool)
+    easy_all = labels["easy"].astype(bool)
+    domain = labels["domain"].astype(str)
+    horizon = labels["horizon"].astype(int)
+    max_local_easy = 0.02
+    policy = {"type": "stage41_locked_v2_relaxed_easy_budget_policy", "mode": mode, "slices": {}}
+    diagnostics: Dict[str, Any] = {}
+    for d in sorted(set(domain.tolist())):
+        for h in [10, 25, 50, 100]:
+            mask = (domain == d) & (horizon == h)
+            if int(mask.sum()) < 100:
+                continue
+            ids = np.where(mask)[0]
+            local_fallback = fallback[ids]
+            local_best = best[ids]
+            local_gain = pred_gain[ids]
+            local_hard = hard_all[ids]
+            local_easy = easy_all[ids]
+            candidate_selected = candidate_fde[ids][np.arange(len(ids)), local_best]
+            can_switch_base = local_best != 0
+            best_params = None
+            best_score = 0.0
+            best_metrics = None
+            for params in _relaxed_easy_budget_policy_grid():
+                sw = can_switch_base & (local_gain >= float(params["gain_threshold"])) & (pred["gain"][ids] >= float(params["gain_prob"])) & (pred["harm"][ids] <= float(params["harm_prob"])) & (pred["physical"][ids] >= float(params["physical_prob"]))
+                if bool(params.get("hard_only", False)):
+                    sw &= local_hard
+                max_switch = float(params.get("max_switch", 1.0))
+                if max_switch <= 0:
+                    sw[:] = False
+                elif max_switch < 1.0 and np.any(sw):
+                    sw_ids = np.where(sw)[0]
+                    keep_n = max(1, int(max_switch * len(ids)))
+                    keep = np.zeros(len(sw), dtype=bool)
+                    keep[sw_ids[np.argsort(local_gain[sw_ids])[::-1][:keep_n]]] = True
+                    sw &= keep
+                selected = local_fallback.copy()
+                selected[sw] = candidate_selected[sw]
+                imp = 1.0 - float(selected.mean()) / max(float(local_fallback.mean()), EPS)
+                hard_imp = 0.0 if not np.any(local_hard) else 1.0 - float(selected[local_hard].mean()) / max(float(local_fallback[local_hard].mean()), EPS)
+                easy_deg = 0.0 if not np.any(local_easy) else max(0.0, float(selected[local_easy].mean()) / max(float(local_fallback[local_easy].mean()), EPS) - 1.0)
+                if imp <= 0.0 or easy_deg > max_local_easy:
+                    continue
+                if mode == "relaxed_t50_budget":
+                    score = 0.8 * imp + 1.2 * hard_imp + (2.8 if h == 50 else 0.2) * imp + 0.02 * float(np.mean(sw))
+                elif mode == "relaxed_hard_budget":
+                    score = 1.0 * imp + 3.0 * hard_imp + (0.6 if h in {50, 100} else 0.1) * imp + 0.02 * float(np.mean(sw))
+                else:
+                    score = 1.2 * imp + 2.0 * hard_imp + (0.8 if h == 50 else 0.2) * imp + (0.2 if h == 100 else 0.0) * imp + 0.03 * float(np.mean(sw))
+                score -= 20.0 * max(0.0, easy_deg - 0.01)
                 if score > best_score:
                     best_score = score
                     best_params = dict(params)
@@ -1023,6 +1125,78 @@ def evaluate_locked_v2_ensemble() -> Dict[str, Any]:
     return result
 
 
+def evaluate_locked_v2_relaxed_easy_budget() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    ensembles = _locked_v2_checkpoint_paths()
+    candidate_names = [
+        "locked_v2_tail_hard_9model_ensemble",
+        "locked_v2_plus_tail_6model_ensemble",
+        "tail_robust_3seed_ensemble",
+        "hard_all_3seed_ensemble",
+        "locked_v2_3seed_ensemble",
+    ]
+    runs: Dict[str, Any] = {}
+    best_name = ""
+    best_mode = ""
+    best_score = -1e18
+    best_policy: Dict[str, Any] = {}
+    best_paths: list[str] = []
+    modes = ["relaxed_easy_budget", "relaxed_t50_budget", "relaxed_hard_budget"]
+    for name in candidate_names:
+        paths = ensembles.get(name)
+        if not paths:
+            continue
+        val_pred, val_labels = _predict_ensemble(paths, "val")
+        mode_runs: Dict[str, Any] = {}
+        for mode in modes:
+            policy, val = _select_relaxed_easy_budget_policy_from_predictions(val_pred, val_labels, mode)
+            metrics = val["metrics"]
+            score = (
+                1.4 * float(metrics.get("all_improvement", 0.0))
+                + 1.6 * float(metrics.get("t50_improvement", 0.0))
+                + 1.8 * float(metrics.get("hard_failure_improvement", 0.0))
+                + 0.4 * float(metrics.get("t100_improvement", 0.0))
+                - 80.0 * max(0.0, float(metrics.get("easy_degradation", 1.0)) - 0.02)
+                + 0.02 * float(metrics.get("switch_rate", 0.0))
+            )
+            mode_runs[mode] = {"policy": policy, "val": val, "val_score": score}
+            if metrics.get("easy_degradation", 1.0) <= 0.02 and score > best_score:
+                best_score = score
+                best_name = name
+                best_mode = mode
+                best_policy = policy
+                best_paths = list(paths)
+        runs[name] = {"source": "cached_verified", "paths": paths, "modes": mode_runs}
+    if not best_policy:
+        result: Dict[str, Any] = {"source": "not_run", "reason": "no val-safe relaxed easy-budget policy", "ensembles": runs}
+    else:
+        test_pred, test_labels = _predict_ensemble(best_paths, "test")
+        test_metrics = _eval_policy_predictions(test_pred, test_labels, best_policy, bootstrap=True)
+        positive_domains = sum(1 for row in test_metrics.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+        margin_pass = bool(_beats_stage37_required_margins(test_metrics) and positive_domains >= 2)
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "locked_v2_relaxed_easy_budget_candidate_requires_fresh_confirmation",
+            "model_source": "cached_verified locked-v2 neural checkpoints; relaxed policy freshly selected on validation",
+            "selection_rule": "select relaxed high-switch easy-budget policy on validation only; evaluate test once; introduced after Stage41 failure diagnostics, so not final deployment evidence until fresh confirmation",
+            "best_ensemble": best_name,
+            "best_mode": best_mode,
+            "best_policy": best_policy,
+            "best_metrics": test_metrics,
+            "positive_external_domains": positive_domains,
+            "neural_exceeds_stage37_by_gate_margin": margin_pass,
+            "deployment_decision": "candidate_needs_fresh_confirmation_before_deployment" if margin_pass else "keep_stage37_selector",
+            "per_domain_easy_caveat": "Aggregate easy degradation is the strict Stage41 gate, but per-domain easy degradation must also be inspected before deployment.",
+            "ensembles": runs,
+            "caveat": "This run is a hypothesis-confirming candidate from failure forensics: neural endpoints contain strong signal, but a fresh locked protocol is required before replacing Stage37.",
+        }
+    _write_json(OUT_DIR / "stage41_locked_v2_relaxed_easy_budget.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_relaxed_easy_budget.md", ["# Stage41 Locked-v2 Relaxed Easy-Budget Neural Policy", "", "- source: `fresh_run`", "- status: relaxed policy candidate; requires fresh confirmation before deployment.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_relaxed_easy_budget", "ok", started, list(sum(ensembles.values(), [])), [str(OUT_DIR / "stage41_locked_v2_relaxed_easy_budget.md")])
+    return result
+
+
 def _domain_expert_score(row: Mapping[str, Any]) -> float:
     return (
         1.4 * float(row.get("all_improvement", 0.0))
@@ -1395,6 +1569,51 @@ easy_degradation = {metrics.get('easy_degradation')}
     _write_json("research_state.json", state)
 
 
+def update_relaxed_easy_budget_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    metrics = result.get("best_metrics", {}) or {}
+    block = f"""
+
+## Stage41 Locked-v2 Relaxed Easy-Budget Neural Policy
+
+This run tests the current failure-forensics hypothesis: neural candidate endpoints have strong dynamics signal, but the previous fallback policy was too conservative. The policy is selected on validation only, but because this rule was introduced after Stage41 test-slice diagnostics, it is candidate evidence and needs fresh confirmation before deployment.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+best_ensemble = {result.get('best_ensemble')}
+best_mode = {result.get('best_mode')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin = {result.get('neural_exceeds_stage37_by_gate_margin')}
+positive_external_domains = {result.get('positive_external_domains')}
+all_improvement = {metrics.get('all_improvement')}
+t50_improvement = {metrics.get('t50_improvement')}
+t100_improvement = {metrics.get('t100_improvement')}
+hard_failure_improvement = {metrics.get('hard_failure_improvement')}
+easy_degradation = {metrics.get('easy_degradation')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Relaxed Easy-Budget Neural Policy"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_relaxed_easy_budget.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_relaxed_easy_budget_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "best_name": result.get("best_ensemble"),
+        "best_mode": result.get("best_mode"),
+        "best_metrics": result.get("best_metrics"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
@@ -1428,3 +1647,8 @@ def main_locked_v2_domain_focused() -> None:
 def main_locked_v2_domain_composer() -> None:
     result = evaluate_locked_v2_domain_expert_composer()
     update_domain_composer_readme_state(result)
+
+
+def main_locked_v2_relaxed_easy_budget() -> None:
+    result = evaluate_locked_v2_relaxed_easy_budget()
+    update_relaxed_easy_budget_readme_state(result)

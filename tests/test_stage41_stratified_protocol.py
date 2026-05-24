@@ -78,3 +78,10 @@ def test_stage41_domain_expert_score_penalizes_easy_degradation() -> None:
     unsafe = dict(safe)
     unsafe["easy_degradation"] = 0.05
     assert strat._domain_expert_score(safe) > strat._domain_expert_score(unsafe)
+
+
+def test_stage41_relaxed_easy_budget_grid_expands_switch_space() -> None:
+    base_grid = strat._policy_grid()
+    relaxed_grid = strat._relaxed_easy_budget_policy_grid()
+    assert len(relaxed_grid) > len(base_grid)
+    assert max(row["max_switch"] for row in relaxed_grid) >= 0.95

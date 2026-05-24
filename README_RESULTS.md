@@ -930,7 +930,7 @@ deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
 positive_external_domains = 3
 best_stage41_neural = policy_blender::metadata_guarded
-gates = 28 / 31
+gates = 29 / 32
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
 
@@ -954,5 +954,6 @@ Stage41 second pass:
 - locked-v2 domain-focused experts: deployment `keep_stage37_selector`, summary `{'ETH_UCY': {'best_trial': 'locked_v2_eth_hard_expert_seed0', 'best_mode': 'domain_hard', 'domain_test_metrics': {'rows': 26092, 'all_improvement': 0.01129205281700052, 't50_improvement': 0.0004292731375977743, 't100_improvement': 0.002026249305847494, 'hard_failure_improvement': 0.010058122841057004, 'easy_degradation': 0.0, 'switch_rate': 0.018473095201594358}}, 'UCY': {'best_trial': 'locked_v2_ucy_hard_expert_seed0', 'best_mode': 'domain_hard', 'domain_test_metrics': {'rows': 13254, 'all_improvement': 0.05172065705329609, 't50_improvement': 0.12630349635484828, 't100_improvement': 0.003960889298421644, 'hard_failure_improvement': 0.05540953335396692, 'easy_degradation': 0.0, 'switch_rate': 0.03945978572506413}}, 'TrajNet': {'best_trial': 'locked_v2_trajnet_hard_expert_seed101', 'best_mode': 'domain_tail', 'domain_test_metrics': {'rows': 17193, 'all_improvement': 0.18067366523521744, 't50_improvement': 0.210138445350176, 't100_improvement': 0.26814367001244144, 'hard_failure_improvement': 0.20566244426479086, 'easy_degradation': 0.0024923440564112997, 'switch_rate': 0.13261210957948003}}}`.
 - locked-v2 domain expert composer: deployment `keep_stage37_selector`, margin result `False`, hard `0.11515500294044723`.
 - locked-v2 neural ensemble: deployment `keep_stage37_selector`, margin result `False`, t50 `0.17139836347088577`.
-- Tests: `python -m pytest tests` -> `105 passed in 109.07s`.
+- locked-v2 relaxed easy-budget: deployment `candidate_needs_fresh_confirmation_before_deployment`, margin result `True`, all `0.2020717215500809`, t50 `0.2570819493873687`, hard `0.21034517907168104`. This is candidate evidence requiring fresh confirmation before deployment.
+- Tests: `python -m pytest tests` -> `106 passed in 60.04s`.
 
