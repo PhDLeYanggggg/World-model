@@ -1,6 +1,6 @@
 # Stage41 Gates
 
-- gates passed: `19 / 22`
+- gates passed: `20 / 23`
 - verdict: `stage41_breakthrough_not_yet_keep_stage37`
 - Stage5C executed: `False`
 - SMC enabled: `False`
@@ -16,16 +16,17 @@
 | Gate4c intervention calibrator run | True | calibrated_all_agent_endpoint_t100_focus |
 | Gate4d t50 rescue run | True | calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard |
 | Gate4e policy blender run | True | metadata_guarded |
-| Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.032979180115021434 |
-| Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.023656017980682287 |
-| Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.03650862324128157 |
-| Gate8 easy degradation <=2% | True | 0.0 |
-| Gate9 at least two held-out external domains positive | True | {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.018463535536692777, 't50_improvement': 0.0, 't100_improvement': 0.065154349729443, 'hard_failure_improvement': 0.02156272379339874, 'easy_degradation': 0.0, 'switch_rate': 0.07255301416797852}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.10320584923572218, 't50_improvement': 0.10700099062093782, 't100_improvement': 0.14563338285586003, 'hard_failure_improvement': 0.11162523479019204, 'easy_degradation': 0.0, 'switch_rate': 0.1110195108546304}, 'UCY': {'rows': 9540, 'all_improvement': 0.0814639226154027, 't50_improvement': 0.09364137229419445, 't100_improvement': 0.07835892682758294, 'hard_failure_improvement': 0.08873697802709679, 'easy_degradation': 0.007077164853350082, 'switch_rate': 0.1110062893081761}} |
+| Gate4f candidate-FDE distiller run | True | candidate_distill_t100_curriculum::balanced |
+| Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.043360106580431435 |
+| Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.003641920827104572 |
+| Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.0466372032313187 |
+| Gate8 easy degradation <=2% | True | 0.006755172637699314 |
+| Gate9 at least two held-out external domains positive | True | {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.04605093000229887, 't50_improvement': -0.00210693685679586, 't100_improvement': 0.1232514622505757, 'hard_failure_improvement': 0.04918249589535573, 'easy_degradation': 0.008451311947507367, 'switch_rate': 0.027039540698212797}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.06853396112624877, 't50_improvement': 0.007685683656614706, 't100_improvement': 0.19407654431680577, 'hard_failure_improvement': 0.07536811565896706, 'easy_degradation': 0.002393750666228156, 'switch_rate': 0.03407529541082715}, 'UCY': {'rows': 9540, 'all_improvement': 0.01840954821848395, 't50_improvement': 0.0275138096413875, 't100_improvement': 0.015766212623279374, 'hard_failure_improvement': 0.02013182555636206, 'easy_degradation': 0.003664575205972964, 'switch_rate': 0.01813417190775681}} |
 | Gate10 neural without fallback not catastrophic | True | {} |
-| Gate11 neural switch rate >0 and positive with fallback | True | {'switch_rate': 0.08712654915605142, 'exceeds_stage37': False, 'all': 0.032979180115021434, 't50': 0.023656017980682287, 'hard': 0.03650862324128157} |
-| Gate12 t100 diagnostic positive or blocker documented | True | 0.0714760176897149 |
+| Gate11 neural switch rate >0 and positive with fallback | True | {'switch_rate': 0.02533283491963079, 'exceeds_stage37': False, 'all': 0.043360106580431435, 't50': 0.003641920827104572, 'hard': 0.0466372032313187} |
+| Gate12 t100 diagnostic positive or blocker documented | True | 0.1101983502761672 |
 | Gate13 SDD safety floor not destroyed | True | No Stage41 deployment unless gates pass; Stage37 remains deployable floor. |
-| Gate14 bootstrap CI present | True | {'low': 0.021000038058883685, 'mid': 0.0236399225734506, 'high': 0.026428649141640826, 'n': 8245} |
-| Gate15 ablation/trial matrix present | True | trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, and policy blender |
+| Gate14 bootstrap CI present | True | {'low': 0.0011510494386591768, 'mid': 0.0036807901133367738, 'high': 0.006148324047097044, 'n': 8245} |
+| Gate15 ablation/trial matrix present | True | trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, policy blender, and candidate-FDE distiller |
 | Gate16 Stage5C false | True | Stage5C not executed |
 | Gate17 SMC false | True | SMC not enabled |

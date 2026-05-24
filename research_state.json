@@ -350,6 +350,7 @@
     "outputs/stage41_breakthrough/stage41_all_agent_eval.md",
     "outputs/stage41_breakthrough/stage41_all_agent_training_trials.md",
     "outputs/stage41_breakthrough/stage41_auto_optimization.md",
+    "outputs/stage41_breakthrough/stage41_candidate_distiller.md",
     "outputs/stage41_breakthrough/stage41_failure_analysis.md",
     "outputs/stage41_breakthrough/stage41_intervention_calibrator.md",
     "outputs/stage41_breakthrough/stage41_intervention_calibrator_eval.md",
@@ -3096,24 +3097,29 @@
         "evidence": "metadata_guarded"
       },
       {
+        "gate": "Gate4f candidate-FDE distiller run",
+        "passed": true,
+        "evidence": "candidate_distill_t100_curriculum::balanced"
+      },
+      {
         "gate": "Gate5 external all improvement beats Stage37 by >=2% absolute",
         "passed": false,
-        "evidence": 0.032979180115021434
+        "evidence": 0.043360106580431435
       },
       {
         "gate": "Gate6 external t50 improvement beats Stage37 by >=2% absolute",
         "passed": false,
-        "evidence": 0.023656017980682287
+        "evidence": 0.003641920827104572
       },
       {
         "gate": "Gate7 external hard/failure beats Stage37 by >=2% absolute",
         "passed": false,
-        "evidence": 0.03650862324128157
+        "evidence": 0.0466372032313187
       },
       {
         "gate": "Gate8 easy degradation <=2%",
         "passed": true,
-        "evidence": 0.0
+        "evidence": 0.006755172637699314
       },
       {
         "gate": "Gate9 at least two held-out external domains positive",
@@ -3121,30 +3127,30 @@
         "evidence": {
           "ETH_UCY": {
             "rows": 21598,
-            "all_improvement": 0.018463535536692777,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.065154349729443,
-            "hard_failure_improvement": 0.02156272379339874,
-            "easy_degradation": 0.0,
-            "switch_rate": 0.07255301416797852
+            "all_improvement": 0.04605093000229887,
+            "t50_improvement": -0.00210693685679586,
+            "t100_improvement": 0.1232514622505757,
+            "hard_failure_improvement": 0.04918249589535573,
+            "easy_degradation": 0.008451311947507367,
+            "switch_rate": 0.027039540698212797
           },
           "TrajNet": {
             "rows": 3639,
-            "all_improvement": 0.10320584923572218,
-            "t50_improvement": 0.10700099062093782,
-            "t100_improvement": 0.14563338285586003,
-            "hard_failure_improvement": 0.11162523479019204,
-            "easy_degradation": 0.0,
-            "switch_rate": 0.1110195108546304
+            "all_improvement": 0.06853396112624877,
+            "t50_improvement": 0.007685683656614706,
+            "t100_improvement": 0.19407654431680577,
+            "hard_failure_improvement": 0.07536811565896706,
+            "easy_degradation": 0.002393750666228156,
+            "switch_rate": 0.03407529541082715
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.0814639226154027,
-            "t50_improvement": 0.09364137229419445,
-            "t100_improvement": 0.07835892682758294,
-            "hard_failure_improvement": 0.08873697802709679,
-            "easy_degradation": 0.007077164853350082,
-            "switch_rate": 0.1110062893081761
+            "all_improvement": 0.01840954821848395,
+            "t50_improvement": 0.0275138096413875,
+            "t100_improvement": 0.015766212623279374,
+            "hard_failure_improvement": 0.02013182555636206,
+            "easy_degradation": 0.003664575205972964,
+            "switch_rate": 0.01813417190775681
           }
         }
       },
@@ -3157,17 +3163,17 @@
         "gate": "Gate11 neural switch rate >0 and positive with fallback",
         "passed": true,
         "evidence": {
-          "switch_rate": 0.08712654915605142,
+          "switch_rate": 0.02533283491963079,
           "exceeds_stage37": false,
-          "all": 0.032979180115021434,
-          "t50": 0.023656017980682287,
-          "hard": 0.03650862324128157
+          "all": 0.043360106580431435,
+          "t50": 0.003641920827104572,
+          "hard": 0.0466372032313187
         }
       },
       {
         "gate": "Gate12 t100 diagnostic positive or blocker documented",
         "passed": true,
-        "evidence": 0.0714760176897149
+        "evidence": 0.1101983502761672
       },
       {
         "gate": "Gate13 SDD safety floor not destroyed",
@@ -3178,16 +3184,16 @@
         "gate": "Gate14 bootstrap CI present",
         "passed": true,
         "evidence": {
-          "low": 0.021000038058883685,
-          "mid": 0.0236399225734506,
-          "high": 0.026428649141640826,
+          "low": 0.0011510494386591768,
+          "mid": 0.0036807901133367738,
+          "high": 0.006148324047097044,
           "n": 8245
         }
       },
       {
         "gate": "Gate15 ablation/trial matrix present",
         "passed": true,
-        "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, and policy blender"
+        "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, policy blender, and candidate-FDE distiller"
       },
       {
         "gate": "Gate16 Stage5C false",
@@ -3200,8 +3206,8 @@
         "evidence": "SMC not enabled"
       }
     ],
-    "gates_passed": 19,
-    "gates_total": 22,
+    "gates_passed": 20,
+    "gates_total": 23,
     "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
     "stage5c_executed": false,
     "smc_enabled": false,
@@ -3562,9 +3568,117 @@
       },
       "conclusion": "Policy blender is a negative/diagnostic trial unless it beats Stage37 and preserves easy cases."
     },
+    "candidate_fde_distiller": {
+      "source": "fresh_run",
+      "best_name": "candidate_distill_t100_curriculum::balanced",
+      "deployment_decision": "keep_stage37_selector",
+      "best_metrics": {
+        "rows": 34777,
+        "all_improvement": 0.043360106580431435,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0038217452412949715,
+        "t50_improvement": 0.003641920827104572,
+        "t100_improvement": 0.1101983502761672,
+        "hard_failure_improvement": 0.0466372032313187,
+        "easy_degradation": 0.006755172637699314,
+        "harm_over_fallback": -0.06110749108863117,
+        "switch_rate": 0.02533283491963079,
+        "regret_to_oracle": 0.4700758528670183,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 21598,
+            "all_improvement": 0.04605093000229887,
+            "t50_improvement": -0.00210693685679586,
+            "t100_improvement": 0.1232514622505757,
+            "hard_failure_improvement": 0.04918249589535573,
+            "easy_degradation": 0.008451311947507367,
+            "switch_rate": 0.027039540698212797
+          },
+          "TrajNet": {
+            "rows": 3639,
+            "all_improvement": 0.06853396112624877,
+            "t50_improvement": 0.007685683656614706,
+            "t100_improvement": 0.19407654431680577,
+            "hard_failure_improvement": 0.07536811565896706,
+            "easy_degradation": 0.002393750666228156,
+            "switch_rate": 0.03407529541082715
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.01840954821848395,
+            "t50_improvement": 0.0275138096413875,
+            "t100_improvement": 0.015766212623279374,
+            "hard_failure_improvement": 0.02013182555636206,
+            "easy_degradation": 0.003664575205972964,
+            "switch_rate": 0.01813417190775681
+          }
+        },
+        "candidate_oracle": {
+          "rows": 34777,
+          "all_improvement": 0.3769123228158836,
+          "t10_improvement": 0.02315141828656797,
+          "t25_improvement": 0.05880982127553769,
+          "t50_improvement": 0.38972847936181054,
+          "t100_improvement": 0.7011595436181789,
+          "hard_failure_improvement": 0.398420175843911,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.5311833439556495,
+          "switch_rate": 1.0,
+          "regret_to_oracle": 0.0,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 21598,
+              "all_improvement": 0.4010119588969192,
+              "t50_improvement": 0.4880542856199006,
+              "t100_improvement": 0.7103554242669032,
+              "hard_failure_improvement": 0.42005661823211593,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "TrajNet": {
+              "rows": 3639,
+              "all_improvement": 0.26778559529834733,
+              "t50_improvement": 0.09633990902528955,
+              "t100_improvement": 0.7056858048644646,
+              "hard_failure_improvement": 0.2903242796003379,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.2932943815841236,
+              "t50_improvement": 0.0763795492531959,
+              "t100_improvement": 0.6531018662747778,
+              "hard_failure_improvement": 0.32253747159218404,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            }
+          }
+        },
+        "selected_candidate_distribution": {
+          "0": 33896,
+          "1": 269,
+          "6": 549,
+          "8": 63
+        },
+        "t50_ci": {
+          "low": 0.0011510494386591768,
+          "mid": 0.0036807901133367738,
+          "high": 0.006148324047097044,
+          "n": 8245
+        },
+        "hard_failure_ci": {
+          "low": 0.042932818585797096,
+          "mid": 0.04654994815684721,
+          "high": 0.050495385862548384,
+          "n": 29370
+        }
+      },
+      "conclusion": "Candidate-FDE distillation learns expected baseline costs and improves over the strongest causal baseline, but remains diagnostic unless it beats Stage37."
+    },
     "pytest": {
       "command": "python -m pytest tests",
-      "result": "94 passed in 116.24s",
+      "result": "96 passed in 58.18s",
       "source": "fresh_run"
     }
   },

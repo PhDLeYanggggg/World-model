@@ -41,3 +41,6 @@
 | `run_stage41_policy_blender.py` | `fresh_run` | `ok` | 152.666 | `de1294638753` | `5362358fa340` | `d080a41` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 5.174 | `78fb4a4126ca` | `0726253508c5` | `d080a41` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 5.033 | `78fb4a4126ca` | `0726253508c5` | `d080a41` |
+| `run_stage41_candidate_distiller.py` | `fresh_run` | `ok` | 28.373 | `d51986c198d0` | `2f7530d9b165` | `0d693cc` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.869 | `78fb4a4126ca` | `461049518657` | `0d693cc` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.908 | `78fb4a4126ca` | `461049518657` | `0d693cc` |
