@@ -85,3 +85,11 @@ def test_stage41_relaxed_easy_budget_grid_expands_switch_space() -> None:
     relaxed_grid = strat._relaxed_easy_budget_policy_grid()
     assert len(relaxed_grid) > len(base_grid)
     assert max(row["max_switch"] for row in relaxed_grid) >= 0.95
+
+
+def test_stage41_domain_safe_policy_caps_risky_domain() -> None:
+    policy = {"slices": {"ETH_UCY|50": {"max_switch": 0.95, "harm_prob": 0.9, "hard_only": False}, "UCY|50": {"max_switch": 0.95, "harm_prob": 0.9, "hard_only": False}}}
+    capped = strat._cap_policy_for_risky_domains(policy, ["ETH_UCY"], max_switch=0.1, harm_prob=0.16)
+    assert capped["slices"]["ETH_UCY|50"]["max_switch"] == 0.1
+    assert capped["slices"]["ETH_UCY|50"]["harm_prob"] == 0.16
+    assert capped["slices"]["UCY|50"]["max_switch"] == 0.95

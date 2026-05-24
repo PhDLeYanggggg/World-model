@@ -91,3 +91,13 @@
 | `run_stage41_gates.py` | `fresh_run` | `failed` | 2.926 | `78fb4a4126ca` | `a6b541bcf885` | `f9eb55b` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.955 | `78fb4a4126ca` | `24f4f6442b2e` | `f9eb55b` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.954 | `78fb4a4126ca` | `24f4f6442b2e` | `f9eb55b` |
+| `run_stage41_locked_v2_domain_safe_relaxed.py` | `fresh_run` | `ok` | 10.841 | `6a190c2e1966` | `b4076054fe59` | `e13e80b` |
+| `run_stage41_locked_v2_domain_safe_relaxed.py` | `fresh_run` | `ok` | 28.949 | `fdb8ca0bb206` | `bd43d290b448` | `e13e80b` |
+| `run_stage41_locked_v2_domain_safe_relaxed.py` | `fresh_run` | `ok` | 10.863 | `6a190c2e1966` | `b4076054fe59` | `e13e80b` |
+| `run_stage41_locked_v2_domain_safe_relaxed.py` | `fresh_run` | `ok` | 29.304 | `fdb8ca0bb206` | `5ae9fb694a8d` | `e13e80b` |
+| `run_stage41_gates.py` | `fresh_run` | `failed` | 2.861 | `78fb4a4126ca` | `24f4f6442b2e` | `e13e80b` |
+| `run_stage41_gates.py` | `fresh_run` | `failed` | 2.890 | `78fb4a4126ca` | `56f39734e556` | `e13e80b` |
+| `run_stage41_gates.py` | `fresh_run` | `failed` | 2.933 | `78fb4a4126ca` | `a2f61c474145` | `e13e80b` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.928 | `78fb4a4126ca` | `a2f61c474145` | `e13e80b` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.941 | `78fb4a4126ca` | `a2f61c474145` | `e13e80b` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.929 | `78fb4a4126ca` | `a2f61c474145` | `e13e80b` |

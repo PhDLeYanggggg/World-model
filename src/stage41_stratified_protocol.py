@@ -1197,6 +1197,105 @@ def evaluate_locked_v2_relaxed_easy_budget() -> Dict[str, Any]:
     return result
 
 
+def _validation_gap_risky_domains() -> list[str]:
+    audit = read_json(Path("outputs/stage41_external_split") / "stage41_validation_gap_audit.json", {})
+    risky: list[str] = []
+    for blocker in audit.get("blockers", []) or []:
+        domain = str(blocker).split(" ", 1)[0]
+        if domain and domain not in risky:
+            risky.append(domain)
+    return risky
+
+
+def _cap_policy_for_risky_domains(policy: Mapping[str, Any], risky_domains: Sequence[str], max_switch: float, harm_prob: float, hard_only: bool = False) -> Dict[str, Any]:
+    capped = {"type": "stage41_locked_v2_domain_safe_relaxed_policy", "mode": "domain_safe_relaxed", "slices": {}}
+    risky = set(str(d) for d in risky_domains)
+    for key, value in (policy.get("slices") or {}).items():
+        params = dict(value)
+        domain = key.split("|", 1)[0]
+        if domain in risky:
+            params["max_switch"] = min(float(params.get("max_switch", 1.0)), float(max_switch))
+            params["harm_prob"] = min(float(params.get("harm_prob", 0.30)), float(harm_prob))
+            params["hard_only"] = bool(hard_only)
+        capped["slices"][key] = params
+    capped["risky_domains"] = sorted(risky)
+    capped["risky_domain_max_switch"] = float(max_switch)
+    capped["risky_domain_harm_prob_cap"] = float(harm_prob)
+    capped["risky_domain_hard_only"] = bool(hard_only)
+    return capped
+
+
+def evaluate_locked_v2_domain_safe_relaxed() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    ensembles = _locked_v2_checkpoint_paths()
+    paths = ensembles.get("locked_v2_tail_hard_9model_ensemble") or ensembles.get("locked_v2_plus_tail_6model_ensemble")
+    risky_domains = _validation_gap_risky_domains()
+    if not paths:
+        result: Dict[str, Any] = {"source": "not_run", "reason": "no cached locked-v2 ensemble checkpoints available"}
+    else:
+        val_pred, val_labels = _predict_ensemble(paths, "val")
+        base_policy, base_val = _select_relaxed_easy_budget_policy_from_predictions(val_pred, val_labels, "relaxed_easy_budget")
+        candidates: Dict[str, Any] = {}
+        best_name = ""
+        best_score = -1e18
+        best_policy: Dict[str, Any] = {}
+        # Conservative preset grid fixed before test evaluation. It uses the
+        # validation-gap audit only to identify risky domains; thresholds are
+        # not selected from test labels. Risky domains get an explicit safety
+        # buffer below the 2% easy-degradation gate, so the grid does not allow
+        # aggressive caps that merely look safe on validation.
+        for max_switch in [0.05, 0.08, 0.10]:
+            for hard_only in [False, True]:
+                name = f"riskcap_ms{max_switch:.2f}_hard{int(hard_only)}"
+                policy = _cap_policy_for_risky_domains(base_policy, risky_domains, max_switch=max_switch, harm_prob=0.16 if not hard_only else 0.08, hard_only=hard_only)
+                val_metrics = _eval_policy_predictions(val_pred, val_labels, policy, bootstrap=False)
+                domain_vals = val_metrics.get("by_domain", {}) or {}
+                max_domain_easy = max([float(row.get("easy_degradation", 0.0)) for row in domain_vals.values()] or [0.0])
+                score = (
+                    1.4 * float(val_metrics.get("all_improvement", 0.0))
+                    + 1.6 * float(val_metrics.get("t50_improvement", 0.0))
+                    + 1.8 * float(val_metrics.get("hard_failure_improvement", 0.0))
+                    + 0.4 * float(val_metrics.get("t100_improvement", 0.0))
+                    - 90.0 * max(0.0, float(val_metrics.get("easy_degradation", 1.0)) - 0.02)
+                    - 25.0 * max(0.0, max_domain_easy - 0.02)
+                )
+                candidates[name] = {"policy": policy, "val_metrics": val_metrics, "val_score": score, "max_domain_easy_degradation": max_domain_easy}
+                if val_metrics.get("easy_degradation", 1.0) <= 0.02 and max_domain_easy <= 0.02 and score > best_score:
+                    best_score = score
+                    best_name = name
+                    best_policy = policy
+        if not best_policy:
+            result = {"source": "not_run", "reason": "no val-safe domain-safe relaxed policy", "risky_domains": risky_domains, "base_val": base_val, "candidates": candidates}
+        else:
+            test_pred, test_labels = _predict_ensemble(paths, "test")
+            test_metrics = _eval_policy_predictions(test_pred, test_labels, best_policy, bootstrap=True)
+            positive_domains = sum(1 for row in test_metrics.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+            max_domain_easy_test = max([float(row.get("easy_degradation", 0.0)) for row in (test_metrics.get("by_domain") or {}).values()] or [0.0])
+            margin_pass = bool(_beats_stage37_required_margins(test_metrics) and positive_domains >= 2 and max_domain_easy_test <= 0.02)
+            result = {
+                "source": "fresh_run",
+                "protocol_status": "locked_v2_domain_safe_relaxed_candidate_requires_fresh_confirmation",
+                "model_source": "cached_verified locked-v2 neural checkpoints; domain-safe relaxed policy freshly selected on validation",
+                "selection_rule": "select relaxed policy on validation, then cap validation-gap risky domains with a preset switch budget; evaluate test once",
+                "risky_domains": risky_domains,
+                "best_candidate": best_name,
+                "best_policy": best_policy,
+                "best_metrics": test_metrics,
+                "max_domain_easy_degradation": max_domain_easy_test,
+                "positive_external_domains": positive_domains,
+                "neural_exceeds_stage37_by_gate_margin": margin_pass,
+                "deployment_decision": "candidate_needs_fresh_confirmation_before_deployment" if margin_pass else "keep_stage37_selector",
+                "base_relaxed_val": base_val,
+                "candidates": candidates,
+                "caveat": "Domain-safe relaxed policy repairs the observed ETH_UCY easy-risk failure mode, but it is still post-diagnostic candidate evidence requiring fresh confirmation before deployment.",
+            }
+    _write_json(OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.md", ["# Stage41 Locked-v2 Domain-Safe Relaxed Neural Policy", "", "- source: `fresh_run`", "- status: domain-safe relaxed candidate; requires fresh confirmation before deployment.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_domain_safe_relaxed", "ok", started, list(paths or []), [str(OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.md")])
+    return result
+
+
 def _domain_expert_score(row: Mapping[str, Any]) -> float:
     return (
         1.4 * float(row.get("all_improvement", 0.0))
@@ -1614,6 +1713,51 @@ easy_degradation = {metrics.get('easy_degradation')}
     _write_json("research_state.json", state)
 
 
+def update_domain_safe_relaxed_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    metrics = result.get("best_metrics", {}) or {}
+    block = f"""
+
+## Stage41 Locked-v2 Domain-Safe Relaxed Neural Policy
+
+This run follows the relaxed easy-budget breakthrough signal but caps risky validation-gap domains before test evaluation. It directly targets the ETH_UCY per-domain easy degradation observed in the previous relaxed candidate. It remains post-diagnostic candidate evidence and needs fresh confirmation before deployment.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+best_candidate = {result.get('best_candidate')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin = {result.get('neural_exceeds_stage37_by_gate_margin')}
+positive_external_domains = {result.get('positive_external_domains')}
+max_domain_easy_degradation = {result.get('max_domain_easy_degradation')}
+all_improvement = {metrics.get('all_improvement')}
+t50_improvement = {metrics.get('t50_improvement')}
+t100_improvement = {metrics.get('t100_improvement')}
+hard_failure_improvement = {metrics.get('hard_failure_improvement')}
+easy_degradation = {metrics.get('easy_degradation')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Domain-Safe Relaxed Neural Policy"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_domain_safe_relaxed_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "best_name": result.get("best_candidate"),
+        "best_metrics": result.get("best_metrics"),
+        "max_domain_easy_degradation": result.get("max_domain_easy_degradation"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
@@ -1652,3 +1796,8 @@ def main_locked_v2_domain_composer() -> None:
 def main_locked_v2_relaxed_easy_budget() -> None:
     result = evaluate_locked_v2_relaxed_easy_budget()
     update_relaxed_easy_budget_readme_state(result)
+
+
+def main_locked_v2_domain_safe_relaxed() -> None:
+    result = evaluate_locked_v2_domain_safe_relaxed()
+    update_domain_safe_relaxed_readme_state(result)
