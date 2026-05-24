@@ -1,0 +1,64 @@
+{
+  "source": "fresh_run",
+  "attempted_domains": [
+    "ETH_UCY",
+    "TrajNet",
+    "OpenTraj_mixed",
+    "UCY"
+  ],
+  "status": {
+    "UCY": "available_heldout_test",
+    "ETH_UCY": "not_run_blocker: available rows are train-only under frozen Stage37 split; rebuilding held-out test would invalidate frozen policy/test protocol",
+    "TrajNet": "not_run_blocker: train/val rows exist but no frozen held-out test split; requires Stage40 split rebuild and retuning on val only",
+    "OpenTraj_mixed": "not_run_blocker: mixed test currently UCY; non-UCY held-out requires new split"
+  },
+  "domain_counts": {
+    "UCY": {
+      "rows": 66303,
+      "t50": 16263,
+      "t100": 10008,
+      "splits": [
+        "test"
+      ],
+      "heldout_test_available": true,
+      "blocker": null
+    },
+    "ETH_UCY": {
+      "rows": 150798,
+      "t50": 37007,
+      "t100": 29328,
+      "splits": [
+        "train"
+      ],
+      "heldout_test_available": false,
+      "blocker": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization"
+    },
+    "TrajNet": {
+      "rows": 120890,
+      "t50": 28692,
+      "t100": 17408,
+      "splits": [
+        "train",
+        "val"
+      ],
+      "heldout_test_available": false,
+      "blocker": "no held-out test split for frozen Stage37 evaluation; cannot claim deployable generalization"
+    },
+    "OpenTraj_mixed": {
+      "rows": 337991,
+      "t50": 81962,
+      "t100": 56744,
+      "splits": [
+        "test",
+        "train",
+        "val"
+      ],
+      "heldout_test_available": true,
+      "blocker": null
+    }
+  },
+  "no_leakage": {
+    "test_threshold_tuning": false,
+    "test_endpoint_goals": false
+  }
+}

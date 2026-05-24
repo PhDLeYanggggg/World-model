@@ -868,3 +868,28 @@ Key Stage38 outcome:
 - Bounded correction/dynamics head is trained and evaluated with fallback; failed correction is not deployed.
 - Tests: `python -m pytest tests` -> `77 passed in 8.02s`.
 
+## Stage39: Stage37-Protected Neural World Dynamics
+
+Stage39 trains real causal Transformer, JEPA auxiliary, and Hybrid neural dynamics heads under the frozen Stage37 safety floor. Neural outputs are diagnostic unless they beat Stage37 under fallback while preserving easy cases. Stage5C and SMC remain disabled.
+
+```text
+true_3D = false
+foundation_world_model = false
+external_coordinates = dataset-local / unverified weak metric diagnostic
+raw_frame_horizons = true
+stage5c_executed = false
+smc_enabled = false
+deployment_decision = keep_stage37_selector
+best_neural = Transformer_only
+neural_beats_stage37 = False
+gates = 11 / 13
+verdict = stage39_neural_dynamics_diagnostic_keep_stage37
+```
+
+Key Stage39 outcome:
+
+- Stage37 safety floor is frozen and remains the external deployment floor.
+- Transformer/JEPA/Hybrid neural dynamics are trained with arm64 `.venv-pytorch` runtime, single-process data loading, checkpoints, and heartbeat files.
+- ETH/TrajNet held-out repair remains an honest blocker unless a new split protocol is built.
+- Tests: `python -m pytest tests` -> `80 passed in 9.11s`.
+

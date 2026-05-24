@@ -1,0 +1,196 @@
+{
+  "source": "fresh_run",
+  "comparisons": {
+    "Stage37_selector_full": {
+      "rows": 66303,
+      "all_improvement": 0.1348254070727205,
+      "t10_improvement": 0.30620476404756647,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.08457292542209705,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": 0.1554340386904196,
+      "easy_degradation": 0.0004114683717719725,
+      "selector_regret": 0.493665392606631,
+      "harm_over_fallback": -0.14194807778019042,
+      "switch_rate": 0.0990452920682322,
+      "mean_confidence": 0.04121534153819084,
+      "stage35_non_t50_plus_stage37_t50": true,
+      "status": "fresh_run",
+      "reason": "Stage37 final safety-selected external policy."
+    },
+    "Stage37_selector_same_subset": {
+      "rows": 16000,
+      "all_improvement": 0.13200527968500975,
+      "t10_improvement": 0.3025072845476737,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.08301228991324938,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": 0.1523895057047563,
+      "easy_degradation": 0.0006815189764808327,
+      "harm_over_fallback": -0.13887056636996567
+    },
+    "Stage38_correction": {
+      "rows": 66303,
+      "all_improvement": 0.1348254070040389,
+      "t10_improvement": 0.30620476404756647,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.08457292499203606,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": 0.15543403861117056,
+      "easy_degradation": 0.0004114683717719725,
+      "harm_over_fallback": -0.14194807770788026,
+      "intervention_rate": 0.04891181394507036,
+      "smoothness_proxy": 1.859190279676184,
+      "physical_validity_proxy": "bounded_delta_clip"
+    },
+    "Transformer_only": {
+      "source": "fresh_run",
+      "kind": "transformer",
+      "policy_selected_on_val": {
+        "gain_thr": 0.2,
+        "harm_thr": 0.05,
+        "conf_thr": 0.2,
+        "val_score": 0.14602961456206176,
+        "val_metrics": {
+          "rows": 8000,
+          "all_improvement": 0.12629583498355235,
+          "t10_improvement": 0.3216035843528431,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.14602961456206176,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.13188173584267496
+        }
+      },
+      "with_stage37_fallback": {
+        "rows": 16000,
+        "all_improvement": 0.13200527968500975,
+        "t10_improvement": 0.3025072845476737,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.08301228991324938,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.1523895057047563,
+        "easy_degradation": 0.0006815189764808327,
+        "harm_over_fallback": -0.13887056636996567
+      },
+      "without_stage37_fallback": {
+        "rows": 16000,
+        "all_improvement": -111.66360986672896,
+        "t10_improvement": -54.544078551279675,
+        "t25_improvement": -103.28073929306495,
+        "t50_improvement": -200.9718402898109,
+        "t100_improvement": -161.0902275949689,
+        "hard_failure_improvement": -103.80705724617971,
+        "easy_degradation": 473.96043105415174,
+        "harm_over_fallback": 117.47097375279034
+      },
+      "switch_rate": 0.0,
+      "failure_auroc": 0.5,
+      "failure_auprc": 0.4234375,
+      "gain_auroc": 0.5,
+      "harm_auroc": 0.5
+    },
+    "JEPA_only_probe": {
+      "source": "fresh_run",
+      "runtime": {
+        "python": "/Users/yangyue/Downloads/World/.venv-pytorch/bin/python",
+        "machine": "arm64",
+        "torch_threads": 4,
+        "num_workers": 0
+      },
+      "checkpoint": "outputs/stage39_neural_dynamics/checkpoints/jepa_best.pt",
+      "heartbeat": "outputs/stage39_neural_dynamics/jepa_heartbeat.json",
+      "best": {
+        "val_loss": 79.89398956298828,
+        "epoch": 2,
+        "train_loss": 0.0008967651470385968,
+        "latent_variance": 0.06202657148241997
+      },
+      "non_collapse": true,
+      "downstream_lift": {
+        "source": "fresh_run",
+        "failure_auroc_base": 0.9880898558164535,
+        "failure_auroc_with_jepa": 0.5595315549772284,
+        "failure_auroc_lift": -0.4285583008392251,
+        "failure_auprc_base": 0.9858232078403314,
+        "failure_auprc_with_jepa": 0.454838276741377
+      }
+    },
+    "Hybrid": {
+      "source": "fresh_run",
+      "kind": "hybrid",
+      "policy_selected_on_val": {
+        "gain_thr": 0.2,
+        "harm_thr": 0.05,
+        "conf_thr": 0.2,
+        "val_score": 0.14602961456206176,
+        "val_metrics": {
+          "rows": 8000,
+          "all_improvement": 0.12629583498355235,
+          "t10_improvement": 0.3216035843528431,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.14602961456206176,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.13188173584267496
+        }
+      },
+      "with_stage37_fallback": {
+        "rows": 16000,
+        "all_improvement": 0.13200527968500975,
+        "t10_improvement": 0.3025072845476737,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.08301228991324938,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.1523895057047563,
+        "easy_degradation": 0.0006815189764808327,
+        "harm_over_fallback": -0.13887056636996567
+      },
+      "without_stage37_fallback": {
+        "rows": 16000,
+        "all_improvement": -29.96344743891264,
+        "t10_improvement": -14.359197417466392,
+        "t25_improvement": -27.47907871023139,
+        "t50_improvement": -53.921867401550486,
+        "t100_improvement": -44.00218065943239,
+        "hard_failure_improvement": -28.102582918599943,
+        "easy_degradation": 121.86131070126886,
+        "harm_over_fallback": 31.52177644839317
+      },
+      "switch_rate": 0.0,
+      "failure_auroc": 0.5000738007380073,
+      "failure_auprc": 0.4235226014760148,
+      "gain_auroc": 0.5,
+      "harm_auroc": 0.5
+    }
+  },
+  "best_neural": "Transformer_only",
+  "best_neural_metrics": {
+    "rows": 16000,
+    "all_improvement": 0.13200527968500975,
+    "t10_improvement": 0.3025072845476737,
+    "t25_improvement": 0.0,
+    "t50_improvement": 0.08301228991324938,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.1523895057047563,
+    "easy_degradation": 0.0006815189764808327,
+    "harm_over_fallback": -0.13887056636996567
+  },
+  "stage37_same_subset_metrics": {
+    "rows": 16000,
+    "all_improvement": 0.13200527968500975,
+    "t10_improvement": 0.3025072845476737,
+    "t25_improvement": 0.0,
+    "t50_improvement": 0.08301228991324938,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.1523895057047563,
+    "easy_degradation": 0.0006815189764808327,
+    "harm_over_fallback": -0.13887056636996567
+  },
+  "neural_with_fallback_beats_stage37": false,
+  "deployment_decision": "keep_stage37_selector",
+  "sdd_safety": "preserved_by_not_deploying_neural_on_sdd",
+  "t100_diagnostic_honest": 0.0
+}

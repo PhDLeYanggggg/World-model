@@ -1,0 +1,4 @@
+# Stage39 Transformer Training Report
+
+- source: `fresh_run`
+- report: `{'source': 'fresh_run', 'kind': 'transformer', 'runtime': {'python': '/Users/yangyue/Downloads/World/.venv-pytorch/bin/python', 'machine': 'arm64', 'torch_threads': 4, 'num_workers': 0, 'mps': False}, 'checkpoint': 'outputs/stage39_neural_dynamics/checkpoints/transformer_best.pt', 'heartbeat': 'outputs/stage39_neural_dynamics/transformer_heartbeat.json', 'resume_supported': True, 'best': {'val_loss': 38.90000534057617, 'epoch': 1, 'train_loss': 0.18872265073847264}, 'train_rows': 24000, 'val_rows': 8000}`

@@ -1,0 +1,110 @@
+{
+  "source": "fresh_run",
+  "floor_name": "Stage37 protected external selector",
+  "policy_hash": "3ee52d057ab49e3952b076d59657a0a2a7f939d74d99a3f3cea8cf37a55673af",
+  "feature_schema_hash": "f52823ae883e1c0dbb15eb970ad60432aebc8583ba848f3565e7676eed5d936a",
+  "history_schema": {
+    "source": "fresh_run",
+    "max_k": 64,
+    "k_values": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "fields": [
+      "history_x/y",
+      "history_dx/dy",
+      "history_speed",
+      "history_accel",
+      "history_heading",
+      "history_curvature",
+      "history_turn_angle",
+      "history_stop_go",
+      "history_dwell",
+      "history_path_length",
+      "history_velocity_decay",
+      "history_goal_alignment_proxy",
+      "history_neighbor_count",
+      "history_min_neighbor_dist",
+      "history_density",
+      "history_TTC",
+      "history_closing_speed",
+      "history_valid_mask"
+    ],
+    "no_leakage": {
+      "uses_current_and_past_frames_only": true,
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false
+    }
+  },
+  "goal_prototype_schema": {
+    "source": "fresh_run",
+    "prototype_names": [
+      "straight_continue",
+      "slow_stop",
+      "left_turn",
+      "right_turn",
+      "reverse_or_u_turn",
+      "group_follow",
+      "density_avoid",
+      "exit_like_direction_from_past_motion"
+    ],
+    "train_only_endpoint_usage": false,
+    "test_endpoint_usage": false,
+    "reports": {
+      "train": {
+        "rows": 158942,
+        "prototype_count": 8,
+        "mean_entropy": 1.5178409814834595,
+        "mean_ambiguity": 0.6515766382217407
+      },
+      "val": {
+        "rows": 112746,
+        "prototype_count": 8,
+        "mean_entropy": 1.5990002155303955,
+        "mean_ambiguity": 0.676776111125946
+      },
+      "test": {
+        "rows": 66303,
+        "prototype_count": 8,
+        "mean_entropy": 1.5864468812942505,
+        "mean_ambiguity": 0.6736359000205994
+      }
+    }
+  },
+  "thresholds": {
+    "gain": 0.0,
+    "confidence": 0.0,
+    "max_switch": 0.2,
+    "easy_guard": 0.0,
+    "hard_only": 0.0
+  },
+  "split": "Stage35/37 external split; test currently UCY held-out",
+  "metrics": {
+    "rows": 66303,
+    "all_improvement": 0.1348254070727205,
+    "t10_improvement": 0.30620476404756647,
+    "t25_improvement": 0.0,
+    "t50_improvement": 0.08457292542209705,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.1554340386904196,
+    "easy_degradation": 0.0004114683717719725,
+    "selector_regret": 0.493665392606631,
+    "harm_over_fallback": -0.14194807778019042,
+    "switch_rate": 0.0990452920682322,
+    "mean_confidence": 0.04121534153819084,
+    "stage35_non_t50_plus_stage37_t50": true,
+    "status": "fresh_run",
+    "reason": "Stage37 final safety-selected external policy."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

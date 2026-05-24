@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage38",
-  "current_verdict": "stage38_robustness_partial_keep_stage37_selector",
+  "current_stage": "stage39",
+  "current_verdict": "stage39_neural_dynamics_diagnostic_keep_stage37",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -318,7 +318,20 @@
     "outputs/stage38_external_robustness/stage38_frozen_stage37_policy.md",
     "outputs/stage38_external_robustness/stage38_statistical_evidence.md",
     "outputs/stage38_external_robustness/stage38_world_model_capability_audit.md",
-    "outputs/stage38_external_robustness/world_model_gate_stage38.md"
+    "outputs/stage38_external_robustness/world_model_gate_stage38.md",
+    "outputs/stage39_neural_dynamics/project_world_model_gap_stage39.md",
+    "outputs/stage39_neural_dynamics/pytest_status.md",
+    "outputs/stage39_neural_dynamics/report_stage39_final.md",
+    "outputs/stage39_neural_dynamics/run_ledger.md",
+    "outputs/stage39_neural_dynamics/stage39_external_split_repair.md",
+    "outputs/stage39_neural_dynamics/stage39_failure_analysis.md",
+    "outputs/stage39_neural_dynamics/stage39_hybrid_report.md",
+    "outputs/stage39_neural_dynamics/stage39_jepa_report.md",
+    "outputs/stage39_neural_dynamics/stage39_neural_dataset_report.md",
+    "outputs/stage39_neural_dynamics/stage39_neural_eval.md",
+    "outputs/stage39_neural_dynamics/stage39_stage37_floor_report.md",
+    "outputs/stage39_neural_dynamics/stage39_transformer_training_report.md",
+    "outputs/stage39_neural_dynamics/world_model_gate_stage39.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -2514,6 +2527,128 @@
     "gates_passed": 14,
     "gates_total": 15,
     "current_verdict": "stage38_robustness_partial_keep_stage37_selector",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage39": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate1 Stage37 floor frozen",
+        "passed": true,
+        "evidence": "3ee52d057ab49e3952b076d59657a0a2a7f939d74d99a3f3cea8cf37a55673af"
+      },
+      {
+        "gate": "Gate2 neural dataset built no leakage",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "split": "train",
+            "source": "cached_verified",
+            "rows": 24000,
+            "path": "data/stage39_neural_dynamics/neural_dataset_train.npz"
+          },
+          "val": {
+            "split": "val",
+            "source": "cached_verified",
+            "rows": 8000,
+            "path": "data/stage39_neural_dynamics/neural_dataset_val.npz"
+          },
+          "test": {
+            "split": "test",
+            "source": "cached_verified",
+            "rows": 16000,
+            "path": "data/stage39_neural_dynamics/neural_dataset_test.npz"
+          }
+        }
+      },
+      {
+        "gate": "Gate3 Transformer trained",
+        "passed": true,
+        "evidence": {
+          "val_loss": 38.90000534057617,
+          "epoch": 1,
+          "train_loss": 0.18872265073847264
+        }
+      },
+      {
+        "gate": "Gate4 JEPA trained and non-collapse checked",
+        "passed": true,
+        "evidence": {
+          "val_loss": 79.89398956298828,
+          "epoch": 2,
+          "train_loss": 0.0008967651470385968,
+          "latent_variance": 0.06202657148241997
+        }
+      },
+      {
+        "gate": "Gate5 Hybrid trained",
+        "passed": true,
+        "evidence": {
+          "val_loss": 17.962100982666016,
+          "epoch": 4,
+          "train_loss": 0.01619455030069072
+        }
+      },
+      {
+        "gate": "Gate6 neural_with_fallback beats Stage37 on all/t50/hard at least one",
+        "passed": false,
+        "evidence": {
+          "rows": 16000,
+          "all_improvement": 0.13200527968500975,
+          "t10_improvement": 0.3025072845476737,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08301228991324938,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1523895057047563,
+          "easy_degradation": 0.0006815189764808327,
+          "harm_over_fallback": -0.13887056636996567
+        }
+      },
+      {
+        "gate": "Gate7 easy degradation <=2",
+        "passed": true,
+        "evidence": 0.0006815189764808327
+      },
+      {
+        "gate": "Gate8 SDD safety pass",
+        "passed": true,
+        "evidence": "preserved_by_not_deploying_neural_on_sdd"
+      },
+      {
+        "gate": "Gate9 external held-out domains repaired or honest blocker",
+        "passed": true,
+        "evidence": {
+          "UCY": "available_heldout_test",
+          "ETH_UCY": "not_run_blocker: available rows are train-only under frozen Stage37 split; rebuilding held-out test would invalidate frozen policy/test protocol",
+          "TrajNet": "not_run_blocker: train/val rows exist but no frozen held-out test split; requires Stage40 split rebuild and retuning on val only",
+          "OpenTraj_mixed": "not_run_blocker: mixed test currently UCY; non-UCY held-out requires new split"
+        }
+      },
+      {
+        "gate": "Gate10 t100 diagnostic honest",
+        "passed": true,
+        "evidence": 0.0
+      },
+      {
+        "gate": "Gate11 world dynamics candidate gate",
+        "passed": false,
+        "evidence": "keep_stage37_selector"
+      },
+      {
+        "gate": "Gate12 Stage5C false",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate13 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 11,
+    "gates_total": 13,
+    "current_verdict": "stage39_neural_dynamics_diagnostic_keep_stage37",
     "stage5c_executed": false,
     "smc_enabled": false
   }
