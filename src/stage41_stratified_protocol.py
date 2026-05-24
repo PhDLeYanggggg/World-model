@@ -304,13 +304,13 @@ def _train_one(trial: Mapping[str, Any], domain_vocab: Sequence[str]) -> Dict[st
             "resume_note": "checkpoint and heartbeat verified; skipped retraining",
         }
     tx = torch.tensor(x_train)
-    ty = {k: torch.tensor(v) for k, v in y_train.items() if k not in {"domain"}}
+    ty = {k: torch.tensor(v) for k, v in y_train.items() if k not in {"domain", "scene_id", "source_file"}}
     focus_domain = str(trial.get("domain_focus", ""))
     focus_mask_train = None
     if focus_domain:
         focus_mask_train = torch.tensor((y_train["domain"].astype(str) == focus_domain).astype(np.float32))
     vx = torch.tensor(x_val)
-    vy = {k: torch.tensor(v) for k, v in y_val.items() if k not in {"domain"}}
+    vy = {k: torch.tensor(v) for k, v in y_val.items() if k not in {"domain", "scene_id", "source_file"}}
     best = {"val_loss": float("inf"), "epoch": 0}
     for epoch in range(1, EPOCHS + 1):
         order = rng.permutation(len(x_train))

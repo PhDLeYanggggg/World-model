@@ -930,7 +930,7 @@ deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
 positive_external_domains = 3
 best_stage41_neural = policy_blender::metadata_guarded
-gates = 31 / 34
+gates = 32 / 35
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
 
@@ -957,5 +957,6 @@ Stage41 second pass:
 - locked-v2 relaxed easy-budget: deployment `candidate_needs_fresh_confirmation_before_deployment`, margin result `True`, all `0.2020717215500809`, t50 `0.2570819493873687`, hard `0.21034517907168104`. This is candidate evidence requiring fresh confirmation before deployment.
 - locked-v2 domain-safe relaxed: deployment `candidate_needs_fresh_confirmation_before_deployment`, margin result `True`, all `0.1707426681634402`, t50 `0.23639645488658112`, hard `0.17761634616412003`, max domain easy `0.0055509018258728116`. This fixes the ETH_UCY easy-risk issue but still requires fresh confirmation before deployment.
 - locked-v2 fixed-policy confirmation: deployment `candidate_needs_fresh_external_confirmation_before_deployment`, margin `True`, stress `True`, fresh confirmation `False`, all `0.1707426681634402`, t50 `0.23639645488658112`, hard `0.17761634616412003`.
-- Tests: `python -m pytest tests` -> `107 passed in 59.02s`.
+- source-rotation fresh confirmation: deployment `stage41_neural_fresh_confirmed_partial_not_full_replacement`, fresh pass `True`, full replacement `False`, all `0.20881762937561832`, t50 `0.05448600669657733`, t100 `0.4572355026149352`, hard `0.22538184888542845`, easy `0.0`, t50 oracle ceiling `0.07570014620278032`. This confirms all/hard neural lift on fresh held-out source files but does not fully replace Stage37 because t50 remains below Stage37.
+- Tests: `python -m pytest tests` -> `107 passed in 60.34s`.
 
