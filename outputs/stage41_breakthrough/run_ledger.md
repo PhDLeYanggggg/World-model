@@ -47,3 +47,8 @@
 | `run_stage41_policy_blender.py` | `fresh_run` | `ok` | 166.388 | `de1294638753` | `154a3ccd1caa` | `65739cc` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 5.205 | `78fb4a4126ca` | `e42d019ef405` | `65739cc` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 5.341 | `78fb4a4126ca` | `e42d019ef405` | `65739cc` |
+| `run_stage41_validation_gap_audit.py` | `fresh_run` | `ok` | 1.554 | `75c1d81a305a` | `fa90e893a5d8` | `5c12b37` |
+| `run_stage41_validation_gap_audit.py` | `fresh_run` | `ok` | 3.071 | `75c1d81a305a` | `80946fc4bc8d` | `5c12b37` |
+| `run_stage41_gates.py` | `fresh_run` | `failed` | 2.863 | `78fb4a4126ca` | `e42d019ef405` | `5c12b37` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.912 | `78fb4a4126ca` | `1be5d5abc052` | `5c12b37` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.903 | `78fb4a4126ca` | `1be5d5abc052` | `5c12b37` |

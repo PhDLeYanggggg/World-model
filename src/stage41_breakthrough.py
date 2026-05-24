@@ -977,6 +977,8 @@ def failure_analysis() -> Dict[str, Any]:
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
     policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     candidate_distiller = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
+    validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
+    stratified_candidate = read_json(SPLIT_OUT / "stage41_stratified_split_candidate.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
         "source": "fresh_run",
@@ -1034,6 +1036,8 @@ def gates() -> Dict[str, Any]:
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
     policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     candidate_distiller = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
+    validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
+    stratified_candidate = read_json(SPLIT_OUT / "stage41_stratified_split_candidate.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
@@ -1045,6 +1049,7 @@ def gates() -> Dict[str, Any]:
         ("Gate4d t50 rescue run", bool(t50_rescue), t50_rescue.get("best_stage41_t50_rescue")),
         ("Gate4e policy blender run", bool(policy_blender), policy_blender.get("best_stage41_policy_blender")),
         ("Gate4f candidate-FDE distiller run", bool(candidate_distiller), candidate_distiller.get("best_stage41_candidate_distiller")),
+        ("Gate4g validation gap audit and stratified split candidate built", bool(validation_gap) and bool(stratified_candidate), validation_gap.get("blockers")),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -1083,6 +1088,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
     policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     candidate_distiller = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
+    validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1152,6 +1158,12 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- deployment decision: `{candidate_distiller.get('deployment_decision')}`",
         f"- best candidate distiller metrics: `{candidate_distiller.get('best_metrics')}`",
         "",
+        "## Validation Gap Audit",
+        "",
+        f"- available: `{bool(validation_gap)}`",
+        f"- blockers: `{validation_gap.get('blockers')}`",
+        "- implication: the next retraining loop should use a locked stratified external split candidate before claiming Stage41 neural failure as final.",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1190,6 +1202,8 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
     policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     candidate_distiller = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
+    validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
+    stratified_candidate = read_json(SPLIT_OUT / "stage41_stratified_split_candidate.json", {})
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
@@ -1223,7 +1237,8 @@ Stage41 second pass:
 - t50 rescue: `{t50_rescue.get('best_stage41_t50_rescue')}` with deployment `{t50_rescue.get('deployment_decision')}`.
 - policy blender: `{policy_blender.get('best_stage41_policy_blender')}` with deployment `{policy_blender.get('deployment_decision')}`.
 - candidate-FDE distiller: `{candidate_distiller.get('best_stage41_candidate_distiller')}` with deployment `{candidate_distiller.get('deployment_decision')}`.
-- Tests: `python -m pytest tests` -> `96 passed in 101.46s`.
+- validation gap audit: blockers `{validation_gap.get('blockers')}`; stratified candidate status `{stratified_candidate.get('status')}`.
+- Tests: `python -m pytest tests` -> `98 passed in 57.73s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1234,7 +1249,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `96 passed in 101.46s`",
+            "- result: `98 passed in 57.73s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1264,6 +1279,8 @@ Stage41 second pass:
     ]:
         reports.add(str(OUT_DIR / name))
     reports.add(str(SPLIT_OUT / "report.md"))
+    reports.add(str(SPLIT_OUT / "stage41_validation_gap_audit.md"))
+    reports.add(str(SPLIT_OUT / "stage41_stratified_split_candidate.md"))
     stage41_state = dict(gate_result)
     if all_agent:
         stage41_state["all_agent_second_pass"] = {
@@ -1306,7 +1323,14 @@ Stage41 second pass:
             "best_metrics": candidate_distiller.get("best_metrics"),
             "conclusion": "Candidate-FDE distillation learns expected baseline costs and improves over the strongest causal baseline, but remains diagnostic unless it beats Stage37.",
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "96 passed in 101.46s", "source": "fresh_run"}
+    if validation_gap:
+        stage41_state["validation_gap_audit"] = {
+            "source": validation_gap.get("source"),
+            "blockers": validation_gap.get("blockers"),
+            "stratified_split_candidate_status": stratified_candidate.get("status"),
+            "conclusion": "Current ETH_UCY t50 validation headroom is not representative of held-out test headroom; next neural retraining should use the candidate stratified split instead of more threshold tuning on the current split.",
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "98 passed in 57.73s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 

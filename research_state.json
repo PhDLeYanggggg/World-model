@@ -361,7 +361,9 @@
     "outputs/stage41_breakthrough/stage41_t50_rescue.md",
     "outputs/stage41_breakthrough/stage41_training_trials.md",
     "outputs/stage41_breakthrough/world_model_gate_stage41.md",
-    "outputs/stage41_external_split/report.md"
+    "outputs/stage41_external_split/report.md",
+    "outputs/stage41_external_split/stage41_stratified_split_candidate.md",
+    "outputs/stage41_external_split/stage41_validation_gap_audit.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -3102,6 +3104,13 @@
         "evidence": "candidate_distill_t100_curriculum::balanced"
       },
       {
+        "gate": "Gate4g validation gap audit and stratified split candidate built",
+        "passed": true,
+        "evidence": [
+          "ETH_UCY t50 validation headroom is not representative: val=0.0445, test=0.4881"
+        ]
+      },
+      {
         "gate": "Gate5 external all improvement beats Stage37 by >=2% absolute",
         "passed": false,
         "evidence": 0.05288899790075696
@@ -3206,8 +3215,8 @@
         "evidence": "SMC not enabled"
       }
     ],
-    "gates_passed": 20,
-    "gates_total": 23,
+    "gates_passed": 21,
+    "gates_total": 24,
     "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
     "stage5c_executed": false,
     "smc_enabled": false,
@@ -3676,9 +3685,17 @@
       },
       "conclusion": "Candidate-FDE distillation learns expected baseline costs and improves over the strongest causal baseline, but remains diagnostic unless it beats Stage37."
     },
+    "validation_gap_audit": {
+      "source": "fresh_run",
+      "blockers": [
+        "ETH_UCY t50 validation headroom is not representative: val=0.0445, test=0.4881"
+      ],
+      "stratified_split_candidate_status": "candidate_protocol_not_used_for_stage41_claims",
+      "conclusion": "Current ETH_UCY t50 validation headroom is not representative of held-out test headroom; next neural retraining should use the candidate stratified split instead of more threshold tuning on the current split."
+    },
     "pytest": {
       "command": "python -m pytest tests",
-      "result": "96 passed in 101.46s",
+      "result": "98 passed in 57.73s",
       "source": "fresh_run"
     }
   },
