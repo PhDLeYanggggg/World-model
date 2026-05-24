@@ -1,0 +1,307 @@
+{
+  "stage": "A_freeze_current_best_candidate",
+  "frozen_model_name": "M3W-LAS v2 candidate",
+  "created_unix": 1779588621.11158,
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 2.5D / pseudo-3D 多智能体轨迹世界状态模型。",
+    "SDD 是 pixel-space benchmark，不是 metric benchmark。",
+    "t+50 / t+100 是 raw annotation-frame horizon，不能说成 seconds-level。",
+    "homography / scale / effective seconds 未验证。",
+    "Stage5C 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage26_reference": {
+    "selected_model": "stage26_failure_assisted_selector",
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11234058960663984,
+    "easy_degradation": 0.01808836280803794
+  },
+  "stage28_candidate_metrics": {
+    "n": 100000,
+    "improvement_over_strongest": 0.13254356003325196,
+    "official_t50_improvement": 0.1686288243790961,
+    "diagnostic_t100_raw_frame_improvement": 0.14519818992776146,
+    "hard_failure_improvement": 0.1336398986813968,
+    "easy_degradation": 0.01928694490688554,
+    "selector_regret": 3.4042292296150327,
+    "harm_over_fallback": -3.4393956315475704,
+    "switch_rate": 0.05,
+    "accuracy_to_oracle_best": 0.13778,
+    "mean_confidence": 0.053949423134326935,
+    "selected_distribution": {
+      "constant_position": 332,
+      "constant_velocity_causal_fd": 10,
+      "damped_velocity": 85897,
+      "constant_acceleration_causal": 0,
+      "constant_turn_rate_velocity": 0,
+      "scene_clamped_baseline": 13761,
+      "goal_directed_baseline": 0
+    },
+    "by_horizon_improvement": {
+      "10": 0.005748020372715712,
+      "25": 0.055490708791340326,
+      "50": 0.1686288243790961,
+      "100": 0.14519818992776146
+    },
+    "by_split_improvement": {
+      "cross_scene": 0.1064302019155895,
+      "within_scene": 0.15785983604964404
+    },
+    "by_agent_type_improvement": {
+      "Pedestrian": 0.11016732108610128,
+      "Biker": 0.20528328459658607,
+      "Skater": 0.20918500363598935,
+      "Cart": 0.09415699732781369,
+      "Car": -0.017048804306335708,
+      "Bus": 0.13007872802821607,
+      "unknown": 0.0
+    },
+    "easy_count": 58245,
+    "hard_failure_count": 96581,
+    "t50_count": 24810,
+    "t100_count": 23126
+  },
+  "stage28_recomputed_metrics_from_frozen_arrays": {
+    "n": 100000,
+    "improvement_over_strongest": 0.13254356003325196,
+    "official_t50_improvement": 0.1686288243790961,
+    "diagnostic_t100_raw_frame_improvement": 0.14519818992776146,
+    "hard_failure_improvement": 0.1336398986813968,
+    "easy_degradation": 0.01928694490688554,
+    "selector_regret": 3.4042292296150327,
+    "harm_over_fallback": -3.4393956315475704,
+    "switch_rate": 0.05,
+    "accuracy_to_oracle_best": 0.13778,
+    "mean_confidence": 0.053949419409036636,
+    "selected_distribution": {
+      "constant_position": 332,
+      "constant_velocity_causal_fd": 10,
+      "damped_velocity": 85897,
+      "constant_acceleration_causal": 0,
+      "constant_turn_rate_velocity": 0,
+      "scene_clamped_baseline": 13761,
+      "goal_directed_baseline": 0
+    },
+    "by_horizon_improvement": {
+      "10": 0.005748020372715712,
+      "25": 0.055490708791340326,
+      "50": 0.1686288243790961,
+      "100": 0.14519818992776146
+    },
+    "by_split_improvement": {
+      "cross_scene": 0.1064302019155895,
+      "within_scene": 0.15785983604964404
+    },
+    "by_agent_type_improvement": {
+      "Pedestrian": 0.11016732108610128,
+      "Biker": 0.20528328459658607,
+      "Skater": 0.20918500363598935,
+      "Cart": 0.09415699732781369,
+      "Car": -0.017048804306335708,
+      "Bus": 0.13007872802821607,
+      "unknown": 0.0
+    },
+    "easy_count": 58245,
+    "hard_failure_count": 96581,
+    "t50_count": 24810,
+    "t100_count": 23126
+  },
+  "selected_policy": {
+    "variant": "all_latent",
+    "confidence_threshold": 0.0,
+    "predicted_gain_threshold_px": 0.0,
+    "min_predicted_margin_px": 0.0,
+    "easy_predicted_strongest_threshold_px": 10.0,
+    "failure_probability_threshold": null,
+    "max_switch_rate": 0.05
+  },
+  "selected_policy_sha256": "792f0682ca2c8c74c2b0a366e3f9a2022223b70ef04ef2d2a38d64999d333d57",
+  "feature_schema_sha256": "de0b63a7e8d656e0f7177da3038023065e6d6e06835c31e0de34c27d64fda16b",
+  "feature_schema": {
+    "feature_names": [
+      "horizon_norm",
+      "horizon_is_10",
+      "horizon_is_25",
+      "horizon_is_50",
+      "horizon_is_100",
+      "split_within_scene",
+      "agent_count_log",
+      "agent_count_ge5",
+      "agent_count_ge10",
+      "start_frame_norm",
+      "speed_now",
+      "speed_mean_past",
+      "speed_std_past",
+      "speed_delta_past",
+      "accel_mag_now",
+      "accel_mag_mean_past",
+      "heading_change_past",
+      "heading_rate_abs_mean",
+      "curvature_proxy",
+      "past_path_length",
+      "past_displacement",
+      "past_straightness",
+      "vx_now",
+      "vy_now",
+      "ax_now",
+      "ay_now",
+      "density_visible_count",
+      "density_r20",
+      "density_r50",
+      "density_r100",
+      "nearest_neighbor_distance",
+      "mean_nearest3_distance",
+      "mean_nearest5_distance",
+      "min_ttc",
+      "max_closing_speed",
+      "closing_neighbor_count",
+      "goal_count",
+      "nearest_goal_distance",
+      "goal_direction_alignment",
+      "goal_source_train_endpoint",
+      "goal_source_visual_prior",
+      "scene_image_width",
+      "scene_image_height",
+      "cv_rollout_displacement",
+      "damped_rollout_displacement",
+      "ca_rollout_displacement",
+      "scene_clamp_delta",
+      "goal_directed_available",
+      "baseline_cv_vs_damped_delta",
+      "baseline_accel_to_velocity_ratio",
+      "agent_type_Pedestrian",
+      "agent_type_Biker",
+      "agent_type_Skater",
+      "agent_type_Cart",
+      "agent_type_Car",
+      "agent_type_Bus",
+      "agent_type_unknown"
+    ],
+    "baseline_names": [
+      "constant_position",
+      "constant_velocity_causal_fd",
+      "damped_velocity",
+      "constant_acceleration_causal",
+      "constant_turn_rate_velocity",
+      "scene_clamped_baseline",
+      "goal_directed_baseline"
+    ],
+    "stage28_best_variant": "all_latent",
+    "selected_policy": {
+      "variant": "all_latent",
+      "confidence_threshold": 0.0,
+      "predicted_gain_threshold_px": 0.0,
+      "min_predicted_margin_px": 0.0,
+      "easy_predicted_strongest_threshold_px": 10.0,
+      "failure_probability_threshold": null,
+      "max_switch_rate": 0.05
+    }
+  },
+  "split_hashes": {
+    "feature_store": {
+      "train": {
+        "path": "data/stage26_sdd_feature_store/train.npz",
+        "sha256": "32c037f66621652007899824dc5aabbdc2295c6d334d236670d3dbbefdc6c396"
+      },
+      "val": {
+        "path": "data/stage26_sdd_feature_store/val.npz",
+        "sha256": "b6081cf84f40649a3fa9ea7fd721f0eccf4f33dbf0d87672d4464c9784a705dd"
+      },
+      "test": {
+        "path": "data/stage26_sdd_feature_store/test.npz",
+        "sha256": "37bf557274f98da5772b03cf5146d421a09244b270b5ca29daab18db81f19eb5"
+      }
+    },
+    "latent_cache": {
+      "train": {
+        "path": "data/stage28_m3w_latent_cache/train.npz",
+        "sha256": "d6bf3bd0852cf7e74a00fb250390c74cbee669dc9b00c7c3fe133416df0be82a"
+      },
+      "val": {
+        "path": "data/stage28_m3w_latent_cache/val.npz",
+        "sha256": "752363d7ae4a65c178e13f0e5261d86d58971e9145663b9c71ca8c3fb4dbae6e"
+      },
+      "test": {
+        "path": "data/stage28_m3w_latent_cache/test.npz",
+        "sha256": "6c7159d61449410fb0f2dfae88a5a8ba72e7872720558a4f02c9733fb1e8b40c"
+      }
+    }
+  },
+  "report_hashes": {
+    "las_train_report.json": "4c4e3d789c8ebe6a1c30a2ab8db0fdf5ee9b194b9765bfeda9d1a9850bf562da",
+    "las_eval_report.json": "0cebb9c20064ec3871363cec71ac3172751d02bb915f183dfde69c1109cb1555",
+    "retrained_ablation_table.json": "a93caaebc155651bdc0b3355395058e562c3a59079e614df61ad132c18baec13",
+    "statistical_evidence_report.json": "5587baddbd1840891597f104b1847a46974d115ef2ceb7dc11968872fc25a7b6",
+    "world_model_gate_stage28.json": "4965bddf134ea64b838461fa33d9fa4cea52814b343acb9c5031e87e6d157ef5",
+    "project_world_model_gap.md": "9249afa3dc23dcccb9f386ac4c02a7ef66c0832a9447bf3f522fbd280fe15d88"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "latent_cache_leakage_audit": {
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "latent_features_source": "frozen M3W checkpoints trained on causal Stage26 features"
+    },
+    "feature_store_leakage_audit": {
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "baseline_errors_as_features": false,
+      "velocity_source": "causal finite difference from Stage21/24 fast cache"
+    },
+    "policy_frozen_before_state_machine_b": true,
+    "test_tuning_after_freeze": false
+  },
+  "bootstrap_summary": {
+    "bootstrap_samples": 1000,
+    "official_t50": {
+      "mean": 0.1685134146072848,
+      "ci_low": 0.159876441757561,
+      "ci_high": 0.17725847297777875,
+      "n": 24810
+    },
+    "hard_failure": {
+      "mean": 0.13368733316279838,
+      "ci_low": 0.128160524151216,
+      "ci_high": 0.13875920341782055,
+      "n": 96581
+    },
+    "all": {
+      "mean": 0.13251020144587988,
+      "ci_low": 0.12740476945877266,
+      "ci_high": 0.13804549839233507,
+      "n": 100000
+    },
+    "within_scene": {
+      "mean": 0.1581407420444513,
+      "ci_low": 0.15014358298571315,
+      "ci_high": 0.16543465159516213,
+      "n": 50000
+    },
+    "cross_scene": {
+      "mean": 0.10612619373122573,
+      "ci_low": 0.09936906837734273,
+      "ci_high": 0.11308007896699061,
+      "n": 50000
+    },
+    "easy_degradation_point": 0.01928694490688554,
+    "stage26_reference": {
+      "selected_model": "stage26_failure_assisted_selector",
+      "t50_improvement": 0.14583655843823773,
+      "hard_failure_improvement": 0.11234058960663984,
+      "easy_degradation": 0.01808836280803794
+    }
+  },
+  "frozen_test_arrays_sha256": "1bec88fadfad1a2fa19298c77de53714ad6fa054b00240ede6cc3b6c702a1ab5",
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "notes": [
+    "This freezes the Stage28 validation-selected policy. It does not tune on test.",
+    "The latent cache and selected arrays are hashed but not intended for GitHub commit."
+  ]
+}

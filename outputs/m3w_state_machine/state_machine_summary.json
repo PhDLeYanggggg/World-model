@@ -1,0 +1,195 @@
+{
+  "current_stage": "F_plan_generated",
+  "results": {
+    "A": {
+      "stage": "A",
+      "gates": [
+        {
+          "gate": "A1 v2 t+50 Reproduction",
+          "passed": true,
+          "evidence": "0.1686288243790961 > 0.14583655843823773"
+        },
+        {
+          "gate": "A2 Hard/Failure Reproduction",
+          "passed": true,
+          "evidence": "0.1336398986813968 > 0.11234058960663984"
+        },
+        {
+          "gate": "A3 Easy Preservation",
+          "passed": true,
+          "evidence": "0.01928694490688554 <= 0.02"
+        },
+        {
+          "gate": "A4 No Leakage",
+          "passed": true,
+          "evidence": "future/test/central velocity inputs remain forbidden"
+        },
+        {
+          "gate": "A5 Bootstrap CI Exists",
+          "passed": true,
+          "evidence": "Stage28 bootstrap CI exists"
+        },
+        {
+          "gate": "A6 Policy/Schema/Split Frozen",
+          "passed": true,
+          "evidence": "policy, schema, feature split, and latent cache hashes recorded"
+        }
+      ],
+      "gates_passed": 6,
+      "gates_total": 6,
+      "passed": true,
+      "current_verdict": "stage_a_pass_enter_stage_b",
+      "next_stage": "B",
+      "failure_reason": null
+    },
+    "B": {
+      "stage": "B",
+      "gates": [
+        {
+          "gate": "B1 CI t+50 Above Stage26",
+          "passed": true,
+          "evidence": "0.16006103130418847 > 0.14583655843823773"
+        },
+        {
+          "gate": "B2 CI Hard/Failure Above Stage26",
+          "passed": true,
+          "evidence": "0.12780886662468002 > 0.11234058960663984"
+        },
+        {
+          "gate": "B3 Cross-Scene Does Not Collapse",
+          "passed": true,
+          "evidence": "cross_scene CI low 0.09883479819529153 > 0"
+        },
+        {
+          "gate": "B4 Easy Preservation",
+          "passed": true,
+          "evidence": "0.01928694490688554 <= 0.02"
+        },
+        {
+          "gate": "B5 External Validation Or Clear Blocker",
+          "passed": true,
+          "evidence": "No converted non-SDD top-down feature store aligned to M3W-LAS exists yet; do not fabricate external validation."
+        }
+      ],
+      "gates_passed": 5,
+      "gates_total": 5,
+      "passed": true,
+      "current_verdict": "stage_b_pass_enter_stage_c",
+      "next_stage": "C"
+    },
+    "C": {
+      "stage": "C",
+      "gates": [
+        {
+          "gate": "C1 All-Latent Beats Stage26",
+          "passed": true,
+          "evidence": "all_latent exceeds Stage26 on t+50 or hard/failure"
+        },
+        {
+          "gate": "C2 Hard/Failure >= 10%",
+          "passed": true,
+          "evidence": "0.1336398986813968 >= 0.10"
+        },
+        {
+          "gate": "C3 Easy <= 2%",
+          "passed": true,
+          "evidence": "0.01928694490688554 <= 0.02"
+        },
+        {
+          "gate": "C4 JEPA or Transformer Downstream Lift",
+          "passed": true,
+          "evidence": "no-JEPA/no-Transformer retrained variants improve over Stage26-only"
+        },
+        {
+          "gate": "C5 Goal or Interaction Contribution",
+          "passed": true,
+          "evidence": "goal or interaction ablation reduces performance"
+        }
+      ],
+      "gates_passed": 5,
+      "gates_total": 5,
+      "passed": true,
+      "current_verdict": "stage_c_pass_enter_stage_d",
+      "next_stage": "D",
+      "failure_taxonomy": null
+    },
+    "D": {
+      "stage": "D",
+      "gates": [
+        {
+          "gate": "D1 Effective Seconds Audit",
+          "passed": true,
+          "evidence": "Evidence insufficient; reports keep raw-frame only."
+        },
+        {
+          "gate": "D2 Metric/Homography Audit",
+          "passed": true,
+          "evidence": "Evidence insufficient; reports keep pixel-space only."
+        },
+        {
+          "gate": "D3 Report Claim Safety",
+          "passed": true,
+          "evidence": "All state-machine reports explicitly forbid metric/seconds/true-3D claims."
+        }
+      ],
+      "gates_passed": 3,
+      "gates_total": 3,
+      "passed": true,
+      "current_verdict": "stage_d_pass_enter_stage_e_pixel_raw_frame_only",
+      "next_stage": "E"
+    },
+    "E": {
+      "stage": "E",
+      "gates": [
+        {
+          "gate": "E1 Reports Present",
+          "passed": true,
+          "evidence": "missing=[]"
+        },
+        {
+          "gate": "E2 Negative Results Visible",
+          "passed": true,
+          "evidence": "no-scene/no-fallback and limitations remain visible"
+        },
+        {
+          "gate": "E3 Reproducible Commands",
+          "passed": true,
+          "evidence": "commands recorded"
+        },
+        {
+          "gate": "E4 README/State Updated",
+          "passed": true,
+          "evidence": "README_RESULTS and research_state include Stage28/state-machine status"
+        }
+      ],
+      "gates_passed": 4,
+      "gates_total": 4,
+      "passed": true,
+      "current_verdict": "stage_e_pass_enter_stage_f_plan_only",
+      "next_stage": "F"
+    },
+    "F": {
+      "stage": "F",
+      "stage5c_execution": false,
+      "smc_enabled": false,
+      "stage5c_plan_only": [
+        "Require external top-down dataset conversion before any latent generative claim.",
+        "Require calibrated metric/time audit before physical-world rollout claims.",
+        "Require stochastic coverage proposal and coverage lift before SMC readiness."
+      ],
+      "smc_future_plan_only": [
+        "Do not enable SMC until deterministic selector/correction and stochastic proposal gates pass.",
+        "Evaluate coverage, calibration, and easy-case preservation before any execution."
+      ],
+      "current_next_action": "Continue with external top-down conversion and C-stage latent/token improvements; do not execute Stage5C or SMC."
+    }
+  },
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "strict_claims": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric": false,
+    "seconds_level_horizon": false
+  }
+}

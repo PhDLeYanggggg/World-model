@@ -643,3 +643,17 @@ smc_ready = false
 verdict = stage28_m3w_las_candidate_v2_not_stage5c_ready
 ```
 
+## M3W Long-Term State Machine
+
+The M3W state machine freezes the Stage28 M3W-LAS v2 candidate and advances through gated stages without enabling Stage5C or SMC.
+
+```text
+current_state_machine_stage = F_plan_generated
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+SDD_horizon_status = raw annotation-frame; effective seconds unknown
+stage5c_executed = false
+smc_enabled = false
+```
+

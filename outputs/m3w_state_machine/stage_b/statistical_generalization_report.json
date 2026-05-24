@@ -1,0 +1,100 @@
+{
+  "stage": "B",
+  "stats": {
+    "bootstrap_samples": 2000,
+    "seed": 2901,
+    "subsets": {
+      "all": {
+        "mean": 0.13262123431295442,
+        "ci_low": 0.12732134565908482,
+        "ci_high": 0.13813521330239717,
+        "n": 100000
+      },
+      "official_t50": {
+        "mean": 0.16865755284543865,
+        "ci_low": 0.16006103130418847,
+        "ci_high": 0.1774508372034304,
+        "n": 24810
+      },
+      "diagnostic_t100": {
+        "mean": 0.14519196856463834,
+        "ci_low": 0.13694524456317358,
+        "ci_high": 0.15436261533728116,
+        "n": 23126
+      },
+      "hard_failure": {
+        "mean": 0.1336479491598302,
+        "ci_low": 0.12780886662468002,
+        "ci_high": 0.1387674747628355,
+        "n": 96581
+      },
+      "cross_scene": {
+        "mean": 0.10638971037780987,
+        "ci_low": 0.09883479819529153,
+        "ci_high": 0.11367006756786821,
+        "n": 50000
+      },
+      "within_scene": {
+        "mean": 0.1579360667904667,
+        "ci_low": 0.15036045747067164,
+        "ci_high": 0.16506592523478197,
+        "n": 50000
+      }
+    },
+    "easy_degradation_point": 0.01928694490688554,
+    "per_agent_type": {
+      "Pedestrian": 0.11016732108610128,
+      "Biker": 0.20528328459658607,
+      "Skater": 0.20918500363598935,
+      "Cart": 0.09415699732781369,
+      "Car": -0.017048804306335708,
+      "Bus": 0.13007872802821607,
+      "unknown": 0.0
+    },
+    "by_split": {
+      "cross_scene": 0.1064302019155895,
+      "within_scene": 0.15785983604964404
+    },
+    "by_horizon": {
+      "10": 0.005748020372715712,
+      "25": 0.055490708791340326,
+      "50": 0.1686288243790961,
+      "100": 0.14519818992776146
+    }
+  },
+  "stage26_reference": {
+    "selected_model": "stage26_failure_assisted_selector",
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11234058960663984,
+    "easy_degradation": 0.01808836280803794
+  },
+  "external_topdown_status": {
+    "checked_paths": [
+      "external_data/OpenTraj",
+      "external_data/StanfordDroneDataset",
+      "external_data/ETH_UCY",
+      "data/stage20_world_state",
+      "data/stage21_sdd_world_state"
+    ],
+    "found_paths": [
+      "external_data/OpenTraj",
+      "external_data/StanfordDroneDataset",
+      "data/stage20_world_state",
+      "data/stage21_sdd_world_state"
+    ],
+    "external_non_sdd_m3w_feature_store_found": false,
+    "external_validation_completed": false,
+    "blocker_clear": "No converted non-SDD top-down feature store aligned to M3W-LAS exists yet; do not fabricate external validation.",
+    "next_user_or_auto_action": "Convert OpenTraj/ETH-UCY into the Stage26 feature-store schema before claiming cross-dataset validation."
+  },
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 2.5D / pseudo-3D 多智能体轨迹世界状态模型。",
+    "SDD 是 pixel-space benchmark，不是 metric benchmark。",
+    "t+50 / t+100 是 raw annotation-frame horizon，不能说成 seconds-level。",
+    "homography / scale / effective seconds 未验证。",
+    "Stage5C 未执行。",
+    "SMC 未启用。"
+  ]
+}

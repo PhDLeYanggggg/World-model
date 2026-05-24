@@ -1,0 +1,36 @@
+{
+  "stage": "C",
+  "gates": [
+    {
+      "gate": "C1 All-Latent Beats Stage26",
+      "passed": true,
+      "evidence": "all_latent exceeds Stage26 on t+50 or hard/failure"
+    },
+    {
+      "gate": "C2 Hard/Failure >= 10%",
+      "passed": true,
+      "evidence": "0.1336398986813968 >= 0.10"
+    },
+    {
+      "gate": "C3 Easy <= 2%",
+      "passed": true,
+      "evidence": "0.01928694490688554 <= 0.02"
+    },
+    {
+      "gate": "C4 JEPA or Transformer Downstream Lift",
+      "passed": true,
+      "evidence": "no-JEPA/no-Transformer retrained variants improve over Stage26-only"
+    },
+    {
+      "gate": "C5 Goal or Interaction Contribution",
+      "passed": true,
+      "evidence": "goal or interaction ablation reduces performance"
+    }
+  ],
+  "gates_passed": 5,
+  "gates_total": 5,
+  "passed": true,
+  "current_verdict": "stage_c_pass_enter_stage_d",
+  "next_stage": "D",
+  "failure_taxonomy": null
+}
