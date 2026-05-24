@@ -12,6 +12,7 @@ from src.stage14_pipeline import ensure_dir, read_json, write_json, write_md
 from src.stage30_m3w_verified import _combined_hash, _git_commit
 from src import stage41_all_agent as s41a
 from src import stage41_breakthrough as s41
+from src import stage41_candidate_distiller as cand
 from src import stage41_intervention_calibrator as cal
 from src import stage41_t50_rescue as rescue
 
@@ -134,6 +135,10 @@ def _action_library() -> Dict[str, Dict[str, Any]]:
     if not t50_report:
         rescue.build_t50_rescue_variants()
         t50_report = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
+    candidate_report = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
+    if not candidate_report:
+        cand.train_candidate_distiller()
+        candidate_report = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
 
     actions: Dict[str, Dict[str, Any]] = {"fallback": {"type": "fallback"}}
     for trial_name, item in eval_report.get("trials", {}).items():
@@ -151,6 +156,16 @@ def _action_library() -> Dict[str, Dict[str, Any]]:
             policy = row.get("policy", {})
             if policy:
                 actions[f"{trial_name}::{variant_name}"] = {"type": "calibrator", "checkpoint": checkpoint, "policy": policy}
+    if candidate_report.get("source") == "fresh_run" and candidate_report.get("best_policy"):
+        trial_name = str(candidate_report.get("best_stage41_candidate_distiller", "candidate_distiller")).split("::", 1)[0]
+        trial = candidate_report.get("trials", {}).get(trial_name, {})
+        checkpoint = trial.get("train", {}).get("checkpoint")
+        if checkpoint:
+            actions[f"candidate_distiller::{candidate_report.get('best_stage41_candidate_distiller')}"] = {
+                "type": "candidate_distiller",
+                "checkpoint": checkpoint,
+                "policy": candidate_report.get("best_policy", {}),
+            }
     return actions
 
 
@@ -159,6 +174,9 @@ def _arrays_for_action(action: Mapping[str, Any], split: str, cache: Dict[Tuple[
     fallback = ds["floor_fde"].astype(np.float64)
     if action.get("type") == "fallback":
         return fallback.copy(), np.zeros(len(fallback), dtype=bool)
+    if action.get("type") == "candidate_distiller":
+        pred, labels = cand._predict(str(action["checkpoint"]), split)
+        return cand._apply_policy(pred, labels, action["policy"])[:2]
     checkpoint = str(action["checkpoint"])
     key = (checkpoint, split)
     if key not in cache:

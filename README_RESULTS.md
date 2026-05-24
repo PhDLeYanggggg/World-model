@@ -929,7 +929,7 @@ trained_neural_world_model = true
 deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
 positive_external_domains = 3
-best_stage41_neural = candidate_distiller::candidate_distill_t100_curriculum::balanced
+best_stage41_neural = policy_blender::metadata_guarded
 gates = 20 / 23
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
@@ -946,5 +946,5 @@ Stage41 second pass:
 - t50 rescue: `calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard` with deployment `keep_stage37_selector`.
 - policy blender: `metadata_guarded` with deployment `keep_stage37_selector`.
 - candidate-FDE distiller: `candidate_distill_t100_curriculum::balanced` with deployment `keep_stage37_selector`.
-- Tests: `python -m pytest tests` -> `96 passed in 58.18s`.
+- Tests: `python -m pytest tests` -> `96 passed in 101.46s`.
 

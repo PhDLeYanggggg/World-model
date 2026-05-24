@@ -17,16 +17,16 @@
 | Gate4d t50 rescue run | True | calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard |
 | Gate4e policy blender run | True | metadata_guarded |
 | Gate4f candidate-FDE distiller run | True | candidate_distill_t100_curriculum::balanced |
-| Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.043360106580431435 |
-| Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.003641920827104572 |
-| Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.0466372032313187 |
-| Gate8 easy degradation <=2% | True | 0.006755172637699314 |
-| Gate9 at least two held-out external domains positive | True | {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.04605093000229887, 't50_improvement': -0.00210693685679586, 't100_improvement': 0.1232514622505757, 'hard_failure_improvement': 0.04918249589535573, 'easy_degradation': 0.008451311947507367, 'switch_rate': 0.027039540698212797}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.06853396112624877, 't50_improvement': 0.007685683656614706, 't100_improvement': 0.19407654431680577, 'hard_failure_improvement': 0.07536811565896706, 'easy_degradation': 0.002393750666228156, 'switch_rate': 0.03407529541082715}, 'UCY': {'rows': 9540, 'all_improvement': 0.01840954821848395, 't50_improvement': 0.0275138096413875, 't100_improvement': 0.015766212623279374, 'hard_failure_improvement': 0.02013182555636206, 'easy_degradation': 0.003664575205972964, 'switch_rate': 0.01813417190775681}} |
+| Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.05288899790075696 |
+| Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.023656017980682287 |
+| Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.05758402319342837 |
+| Gate8 easy degradation <=2% | True | 0.0005845819725827095 |
+| Gate9 at least two held-out external domains positive | True | {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.04180452102211896, 't50_improvement': 0.0, 't100_improvement': 0.1232514622505757, 'hard_failure_improvement': 0.046010170283638296, 'easy_degradation': 0.0, 'switch_rate': 0.07324752291878878}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.11897884654410085, 't50_improvement': 0.10700099062093782, 't100_improvement': 0.19407654431680577, 'hard_failure_improvement': 0.1289038986508212, 'easy_degradation': 0.0, 'switch_rate': 0.11486672162682056}, 'UCY': {'rows': 9540, 'all_improvement': 0.08470394913884915, 't50_improvement': 0.09364137229419445, 't100_improvement': 0.07723504945883397, 'hard_failure_improvement': 0.09245124755529599, 'easy_degradation': 0.009100054321902418, 'switch_rate': 0.11635220125786164}} |
 | Gate10 neural without fallback not catastrophic | True | {} |
-| Gate11 neural switch rate >0 and positive with fallback | True | {'switch_rate': 0.02533283491963079, 'exceeds_stage37': False, 'all': 0.043360106580431435, 't50': 0.003641920827104572, 'hard': 0.0466372032313187} |
-| Gate12 t100 diagnostic positive or blocker documented | True | 0.1101983502761672 |
+| Gate11 neural switch rate >0 and positive with fallback | True | {'switch_rate': 0.08942692009086466, 'exceeds_stage37': False, 'all': 0.05288899790075696, 't50': 0.023656017980682287, 'hard': 0.05758402319342837} |
+| Gate12 t100 diagnostic positive or blocker documented | True | 0.11980603879154517 |
 | Gate13 SDD safety floor not destroyed | True | No Stage41 deployment unless gates pass; Stage37 remains deployable floor. |
-| Gate14 bootstrap CI present | True | {'low': 0.0011510494386591768, 'mid': 0.0036807901133367738, 'high': 0.006148324047097044, 'n': 8245} |
+| Gate14 bootstrap CI present | True | {'low': 0.021000038058883685, 'mid': 0.0236399225734506, 'high': 0.026428649141640826, 'n': 8245} |
 | Gate15 ablation/trial matrix present | True | trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, policy blender, and candidate-FDE distiller |
 | Gate16 Stage5C false | True | Stage5C not executed |
 | Gate17 SMC false | True | SMC not enabled |

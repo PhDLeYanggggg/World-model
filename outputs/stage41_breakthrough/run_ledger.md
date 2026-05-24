@@ -44,3 +44,6 @@
 | `run_stage41_candidate_distiller.py` | `fresh_run` | `ok` | 28.373 | `d51986c198d0` | `2f7530d9b165` | `0d693cc` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.869 | `78fb4a4126ca` | `461049518657` | `0d693cc` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.908 | `78fb4a4126ca` | `461049518657` | `0d693cc` |
+| `run_stage41_policy_blender.py` | `fresh_run` | `ok` | 166.388 | `de1294638753` | `154a3ccd1caa` | `65739cc` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 5.205 | `78fb4a4126ca` | `e42d019ef405` | `65739cc` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 5.341 | `78fb4a4126ca` | `e42d019ef405` | `65739cc` |
