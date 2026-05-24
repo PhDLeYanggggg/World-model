@@ -657,3 +657,17 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
+## Stage30: Fresh Recompute, External Validation, Raw Audit
+
+Stage30 reruns M3W-LAS v2 verification with explicit source labels: `fresh_run`, `cached_verified`, and `not_run`. It refits ablations for seeds 0/1/2, runs 3000 bootstrap, attempts non-SDD OpenTraj conversion, audits raw SDD timing/geometry, and keeps Stage5C/SMC disabled.
+
+```text
+true_3D = false
+foundation_world_model = false
+SDD_coordinate_status = pixel-space
+stage5c_executed = false
+smc_enabled = false
+gates = 14 / 14
+verdict = stage30_fresh_recompute_verified_m3w_las_v2_candidate_not_stage5c_ready
+```
+

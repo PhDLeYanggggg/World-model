@@ -1,0 +1,212 @@
+{
+  "step": "A_freeze_recheck",
+  "source": "fresh_run",
+  "source_labels": {
+    "metric_recomputation": "fresh_run",
+    "selected_arrays": "cached_verified",
+    "feature_schema": "cached_verified",
+    "latent_metadata": "cached_verified"
+  },
+  "metrics_recomputed_from_frozen_arrays": {
+    "n": 100000,
+    "improvement_over_strongest": 0.13254356003325196,
+    "official_t50_improvement": 0.1686288243790961,
+    "diagnostic_t100_raw_frame_improvement": 0.14519818992776146,
+    "hard_failure_improvement": 0.1336398986813968,
+    "easy_degradation": 0.01928694490688554,
+    "selector_regret": 3.4042292296150327,
+    "harm_over_fallback": -3.4393956315475704,
+    "switch_rate": 0.05,
+    "accuracy_to_oracle_best": 0.13778,
+    "mean_confidence": 0.053949423134326935,
+    "selected_distribution": {
+      "constant_position": 332,
+      "constant_velocity_causal_fd": 10,
+      "damped_velocity": 85897,
+      "constant_acceleration_causal": 0,
+      "constant_turn_rate_velocity": 0,
+      "scene_clamped_baseline": 13761,
+      "goal_directed_baseline": 0
+    },
+    "by_horizon_improvement": {
+      "10": 0.005748020372715712,
+      "25": 0.055490708791340326,
+      "50": 0.1686288243790961,
+      "100": 0.14519818992776146
+    },
+    "by_split_improvement": {
+      "cross_scene": 0.1064302019155895,
+      "within_scene": 0.15785983604964404
+    },
+    "by_agent_type_improvement": {
+      "Pedestrian": 0.11016732108610128,
+      "Biker": 0.20528328459658607,
+      "Skater": 0.20918500363598935,
+      "Cart": 0.09415699732781369,
+      "Car": -0.017048804306335708,
+      "Bus": 0.13007872802821607,
+      "unknown": 0.0
+    },
+    "easy_count": 58245,
+    "hard_failure_count": 96581,
+    "t50_count": 24810,
+    "t100_count": 23126
+  },
+  "stage26_reference": {
+    "selected_model": "stage26_failure_assisted_selector",
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11234058960663984,
+    "easy_degradation": 0.01808836280803794
+  },
+  "policy_sha256": "792f0682ca2c8c74c2b0a366e3f9a2022223b70ef04ef2d2a38d64999d333d57",
+  "schema_sha256": "b91443bbbfc175bc75edc8e16697abc7187a3de5159900670141fa8d0b583661",
+  "selected_arrays_sha256": "1bec88fadfad1a2fa19298c77de53714ad6fa054b00240ede6cc3b6c702a1ab5",
+  "latent_metadata": {
+    "project": "M3W Stage28 latent cache",
+    "cache_dir": "data/stage28_m3w_latent_cache",
+    "runtime": {
+      "platform_machine": "arm64",
+      "torch_threads_env": "4",
+      "torch_interop_threads_env": "2",
+      "num_workers": 0
+    },
+    "source_feature_store": "data/stage26_sdd_feature_store",
+    "stage26_baseline": {
+      "selected_model": "stage26_failure_assisted_selector",
+      "t50_improvement": 0.14583655843823773,
+      "hard_failure_improvement": 0.11234058960663984,
+      "easy_degradation": 0.01808836280803794
+    },
+    "splits": {
+      "train": {
+        "rows": 40000,
+        "latent_shapes": {
+          "jepa_only_latent": [
+            40000,
+            160
+          ],
+          "transformer_only_latent": [
+            40000,
+            160
+          ],
+          "hybrid_latent": [
+            40000,
+            160
+          ],
+          "hybrid_log_fde": [
+            40000,
+            7
+          ],
+          "hybrid_failure_logit": [
+            40000
+          ],
+          "hybrid_interaction_logit": [
+            40000
+          ],
+          "hybrid_occupancy": [
+            40000
+          ],
+          "hybrid_validity_logit": [
+            40000
+          ]
+        },
+        "path": "data/stage28_m3w_latent_cache/train.npz"
+      },
+      "val": {
+        "rows": 20000,
+        "latent_shapes": {
+          "jepa_only_latent": [
+            20000,
+            160
+          ],
+          "transformer_only_latent": [
+            20000,
+            160
+          ],
+          "hybrid_latent": [
+            20000,
+            160
+          ],
+          "hybrid_log_fde": [
+            20000,
+            7
+          ],
+          "hybrid_failure_logit": [
+            20000
+          ],
+          "hybrid_interaction_logit": [
+            20000
+          ],
+          "hybrid_occupancy": [
+            20000
+          ],
+          "hybrid_validity_logit": [
+            20000
+          ]
+        },
+        "path": "data/stage28_m3w_latent_cache/val.npz"
+      },
+      "test": {
+        "rows": 100000,
+        "latent_shapes": {
+          "jepa_only_latent": [
+            100000,
+            160
+          ],
+          "transformer_only_latent": [
+            100000,
+            160
+          ],
+          "hybrid_latent": [
+            100000,
+            160
+          ],
+          "hybrid_log_fde": [
+            100000,
+            7
+          ],
+          "hybrid_failure_logit": [
+            100000
+          ],
+          "hybrid_interaction_logit": [
+            100000
+          ],
+          "hybrid_occupancy": [
+            100000
+          ],
+          "hybrid_validity_logit": [
+            100000
+          ]
+        },
+        "path": "data/stage28_m3w_latent_cache/test.npz"
+      }
+    },
+    "elapsed_s": 20.975189750024583,
+    "leakage_audit": {
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "latent_features_source": "frozen M3W checkpoints trained on causal Stage26 features"
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "feature_store_audit": {
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "baseline_errors_as_features": false,
+      "velocity_source": "causal finite difference from Stage21/24 fast cache"
+    },
+    "latent_cache_audit": {
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "latent_features_source": "frozen M3W checkpoints trained on causal Stage26 features"
+    }
+  },
+  "passed": true,
+  "no_leakage_pass": true
+}

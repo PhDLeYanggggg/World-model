@@ -1,0 +1,182 @@
+{
+  "step": "C_statistical_fresh",
+  "source": "fresh_run",
+  "seed_count": 3,
+  "seed_stats_full_all_latent": {
+    "t50": {
+      "mean": 0.1596237559880336,
+      "std": 9.980261961829778e-05,
+      "ci_low": 0.1595108186922008,
+      "ci_high": 0.15973669328386642
+    },
+    "hard_failure": {
+      "mean": 0.1277534594649022,
+      "std": 0.0009053816238441174,
+      "ci_low": 0.12672892370938055,
+      "ci_high": 0.12877799522042388
+    },
+    "easy_degradation": {
+      "mean": 0.017766493777173542,
+      "std": 0.00041149933598625933,
+      "ci_low": 0.017300838442463624,
+      "ci_high": 0.01823214911188346
+    }
+  },
+  "bootstrap": {
+    "bootstrap_samples": 3000,
+    "seed": 30,
+    "subsets": {
+      "all": {
+        "mean": 0.13246002154641598,
+        "std": 0.002698615265162935,
+        "ci_low": 0.1271846901914301,
+        "ci_high": 0.13785618248795936,
+        "n": 100000
+      },
+      "t50": {
+        "mean": 0.16848943145890402,
+        "std": 0.004304755428418378,
+        "ci_low": 0.16009449184493582,
+        "ci_high": 0.17713789303073652,
+        "n": 24810
+      },
+      "t100_raw_frame": {
+        "mean": 0.14531146338145812,
+        "std": 0.004497967832237792,
+        "ci_low": 0.13634719966988226,
+        "ci_high": 0.154198490361366,
+        "n": 23126
+      },
+      "hard_failure": {
+        "mean": 0.1335780398198769,
+        "std": 0.0026975740703462908,
+        "ci_low": 0.12827162431515393,
+        "ci_high": 0.13874959849911755,
+        "n": 96581
+      },
+      "easy": {
+        "mean": -0.019211279706333864,
+        "std": 0.0045582527335676975,
+        "ci_low": -0.02889213918152182,
+        "ci_high": -0.010945847454681511,
+        "n": 58245
+      },
+      "cross_scene": {
+        "mean": 0.10650970577641213,
+        "std": 0.003809555952213115,
+        "ci_low": 0.09931288488129851,
+        "ci_high": 0.1137750601130819,
+        "n": 50000
+      },
+      "within_scene": {
+        "mean": 0.15780248866308977,
+        "std": 0.003974945738008669,
+        "ci_low": 0.15008606305952027,
+        "ci_high": 0.165707581642669,
+        "n": 50000
+      }
+    }
+  },
+  "stage28_frozen_policy_metrics_recomputed": {
+    "n": 100000,
+    "improvement_over_strongest": 0.13254356003325196,
+    "official_t50_improvement": 0.1686288243790961,
+    "diagnostic_t100_raw_frame_improvement": 0.14519818992776146,
+    "hard_failure_improvement": 0.1336398986813968,
+    "easy_degradation": 0.01928694490688554,
+    "selector_regret": 3.4042292296150327,
+    "harm_over_fallback": -3.4393956315475704,
+    "switch_rate": 0.05,
+    "accuracy_to_oracle_best": 0.13778,
+    "mean_confidence": 0.053949423134326935,
+    "selected_distribution": {
+      "constant_position": 332,
+      "constant_velocity_causal_fd": 10,
+      "damped_velocity": 85897,
+      "constant_acceleration_causal": 0,
+      "constant_turn_rate_velocity": 0,
+      "scene_clamped_baseline": 13761,
+      "goal_directed_baseline": 0
+    },
+    "by_horizon_improvement": {
+      "10": 0.005748020372715712,
+      "25": 0.055490708791340326,
+      "50": 0.1686288243790961,
+      "100": 0.14519818992776146
+    },
+    "by_split_improvement": {
+      "cross_scene": 0.1064302019155895,
+      "within_scene": 0.15785983604964404
+    },
+    "by_agent_type_improvement": {
+      "Pedestrian": 0.11016732108610128,
+      "Biker": 0.20528328459658607,
+      "Skater": 0.20918500363598935,
+      "Cart": 0.09415699732781369,
+      "Car": -0.017048804306335708,
+      "Bus": 0.13007872802821607,
+      "unknown": 0.0
+    },
+    "easy_count": 58245,
+    "hard_failure_count": 96581,
+    "t50_count": 24810,
+    "t100_count": 23126
+  },
+  "per_scene": {
+    "source": "fresh_run",
+    "per_scene": {
+      "bookstore": {
+        "n": 7137,
+        "improvement": 0.1087714084752689
+      },
+      "coupa": {
+        "n": 3569,
+        "improvement": 0.16078710469063218
+      },
+      "deathCircle": {
+        "n": 3584,
+        "improvement": 0.10643016484583989
+      },
+      "gates": {
+        "n": 7197,
+        "improvement": 0.17590429359251547
+      },
+      "hyang": {
+        "n": 10790,
+        "improvement": 0.15553801840362613
+      },
+      "little": {
+        "n": 3564,
+        "improvement": 0.1800009782841595
+      },
+      "nexus": {
+        "n": 48177,
+        "improvement": 0.09594247848578774
+      },
+      "quad": {
+        "n": 15982,
+        "improvement": 0.17998572238825716
+      }
+    }
+  },
+  "per_agent_type": {
+    "Pedestrian": 0.11016732108610128,
+    "Biker": 0.20528328459658607,
+    "Skater": 0.20918500363598935,
+    "Cart": 0.09415699732781369,
+    "Car": -0.017048804306335708,
+    "Bus": 0.13007872802821607,
+    "unknown": 0.0
+  },
+  "cross_scene": 0.1064302019155895,
+  "within_scene": 0.15785983604964404,
+  "hard_failure": 0.1336398986813968,
+  "easy": 0.01928694490688554,
+  "stage26_reference": {
+    "selected_model": "stage26_failure_assisted_selector",
+    "t50_improvement": 0.14583655843823773,
+    "hard_failure_improvement": 0.11234058960663984,
+    "easy_degradation": 0.01808836280803794
+  },
+  "significantly_above_stage26": true
+}

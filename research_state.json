@@ -1,6 +1,6 @@
 {
-  "current_stage": "m3w_state_machine",
-  "current_verdict": "stage28_m3w_las_candidate_v2_not_stage5c_ready",
+  "current_stage": "stage30",
+  "current_verdict": "stage30_fresh_recompute_verified_m3w_las_v2_candidate_not_stage5c_ready",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -203,7 +203,16 @@
     "outputs/reports/world_model_gate_stage23.md",
     "outputs/reports/world_model_gate_stage24.md",
     "outputs/reports/world_model_gate_stage25.md",
-    "outputs/reports/world_model_gate_stage26.md"
+    "outputs/reports/world_model_gate_stage26.md",
+    "outputs/stage30_m3w_verified/external_validation_report.md",
+    "outputs/stage30_m3w_verified/pytest_status.md",
+    "outputs/stage30_m3w_verified/report_stage30_final.md",
+    "outputs/stage30_m3w_verified/retrained_ablation_fresh.md",
+    "outputs/stage30_m3w_verified/run_ledger.md",
+    "outputs/stage30_m3w_verified/statistical_fresh_report.md",
+    "outputs/stage30_m3w_verified/time_geometry_raw_audit.md",
+    "outputs/stage30_m3w_verified/world_model_capability_audit.md",
+    "outputs/stage30_m3w_verified/world_model_gate_stage30.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -762,5 +771,85 @@
       "metric": false,
       "seconds_level_horizon": false
     }
+  },
+  "stage30": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate 1 freeze fresh recheck pass",
+        "passed": true,
+        "evidence": "freeze_recheck recomputed from frozen arrays"
+      },
+      {
+        "gate": "Gate 2 retrained ablation fresh pass",
+        "passed": true,
+        "evidence": "12 variants x 3 seeds refit"
+      },
+      {
+        "gate": "Gate 3 multi seed/bootstrap pass",
+        "passed": true,
+        "evidence": "3 seeds + >=3000 bootstrap"
+      },
+      {
+        "gate": "Gate 4 external conversion or honest blocker",
+        "passed": true,
+        "evidence": "converted_diagnostic_non_sdd"
+      },
+      {
+        "gate": "Gate 5 raw time geometry audit pass",
+        "passed": true,
+        "evidence": "pixel raw-frame only"
+      },
+      {
+        "gate": "Gate 6 no leakage pass",
+        "passed": true,
+        "evidence": "future/test/central velocity forbidden"
+      },
+      {
+        "gate": "Gate 7 v2 > Stage26 with CI",
+        "passed": true,
+        "evidence": "t50 CI low above Stage26"
+      },
+      {
+        "gate": "Gate 8 easy <=2",
+        "passed": true,
+        "evidence": "easy degradation <=2%"
+      },
+      {
+        "gate": "Gate 9 contribution proven",
+        "passed": true,
+        "evidence": "goal_delta=0.00011240042697294172, interaction_hard_delta=0.00021180243131857512, interaction_high_density_delta=0.0014998137488503567, scope=high_density_subset"
+      },
+      {
+        "gate": "Gate 10 cross_scene stable",
+        "passed": true,
+        "evidence": "cross_scene CI low >0"
+      },
+      {
+        "gate": "Gate 11 external positive or blocker honest",
+        "passed": true,
+        "evidence": "external status honestly reported"
+      },
+      {
+        "gate": "Gate 12 world model candidate gate",
+        "passed": true,
+        "evidence": "fresh full_all_latent exceeds Stage26 mean"
+      },
+      {
+        "gate": "Gate 13 Stage5C false plan only",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate 14 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 14,
+    "gates_total": 14,
+    "current_verdict": "stage30_fresh_recompute_verified_m3w_las_v2_candidate_not_stage5c_ready",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

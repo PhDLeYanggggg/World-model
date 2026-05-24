@@ -1,0 +1,65 @@
+{
+  "source": "fresh_run",
+  "source_labels": {
+    "path_verification": "fresh_run",
+    "non_sdd_conversion": "fresh_run",
+    "feature_alignment": "fresh_run",
+    "full_m3w_las_transfer_eval": "not_run"
+  },
+  "checked_paths": [
+    "external_data/OpenTraj",
+    "external_data/StanfordDroneDataset",
+    "external_data",
+    "/Users/yangyue/Downloads/OpenTraj",
+    "/Users/yangyue/Downloads/ETH_UCY",
+    "/Users/yangyue/Downloads/trajnetplusplusdataset"
+  ],
+  "found_paths": [
+    "external_data/OpenTraj",
+    "external_data/StanfordDroneDataset",
+    "external_data"
+  ],
+  "converted_non_sdd_files": [
+    "external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+    "external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt"
+  ],
+  "feature_schema": "stage26_m3w_las_57_features",
+  "feature_alignment": {
+    "target_feature_count": 57,
+    "baseline_count": 7,
+    "aligned_to_stage26_schema": true,
+    "missing_scene_goal_modalities": true
+  },
+  "coordinate_status": "external_mixed_metric_or_world_coordinates_diagnostic_only",
+  "no_leakage": {
+    "split_by_file": true,
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false
+  },
+  "rows": {
+    "train": 52808,
+    "val": 3841,
+    "test": 808
+  },
+  "strongest_baseline": {
+    "train": "constant_velocity_causal_fd",
+    "val": "constant_velocity_causal_fd",
+    "test": "constant_velocity_causal_fd"
+  },
+  "transfer_eval": {
+    "status": "not_run",
+    "reason": "Full M3W-LAS all_latent transfer needs external latent cache and scale calibration; converted base feature store is diagnostic only."
+  },
+  "conversion_status": "converted_diagnostic_non_sdd",
+  "honest_blocker": null
+}
