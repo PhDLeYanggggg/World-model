@@ -11,7 +11,7 @@ import numpy as np
 import torch
 import yaml
 from torch import nn
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, WeightedRandomSampler
 
 from src.m3w.dataset import BASELINE_NAMES, load_datasets
 from src.m3w.models import M3WModel
@@ -39,17 +39,30 @@ def _seed(seed: int) -> None:
     torch.manual_seed(seed)
 
 
-def _loader(dataset, batch_size: int, shuffle: bool) -> DataLoader:
+def _loader(dataset, batch_size: int, shuffle: bool, hard_oversample: bool = False) -> DataLoader:
+    if hard_oversample:
+        weights = 1.0 + 3.0 * dataset.hard_candidate + 4.0 * dataset.failure_label
+        sampler = WeightedRandomSampler(torch.as_tensor(weights, dtype=torch.double), num_samples=len(dataset), replacement=True)
+        return DataLoader(dataset, batch_size=batch_size, sampler=sampler, num_workers=0)
     return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, num_workers=0)
 
 
 def _loss(outputs: Dict[str, torch.Tensor], batch: Dict[str, torch.Tensor], weights: Dict[str, float]) -> torch.Tensor:
-    mse = nn.functional.mse_loss(outputs["log_fde"], batch["y_log_fde"])
+    per_sample_mse = ((outputs["log_fde"] - batch["y_log_fde"]) ** 2).mean(dim=1)
+    sample_weight = 1.0 + float(weights.get("hard_weight", 0.0)) * batch["interaction"] + float(weights.get("failure_weight", 0.0)) * batch["failure"]
+    mse = (per_sample_mse * sample_weight).sum() / sample_weight.sum().clamp_min(1e-6)
+    if float(weights.get("ranking", 0.0)) > 0.0:
+        pred_diff = outputs["log_fde"].unsqueeze(2) - outputs["log_fde"].unsqueeze(1)
+        true_diff = batch["y_log_fde"].unsqueeze(2) - batch["y_log_fde"].unsqueeze(1)
+        rank = nn.functional.mse_loss(torch.tanh(pred_diff), torch.tanh(true_diff))
+    else:
+        rank = torch.tensor(0.0, device=outputs["log_fde"].device)
     failure = nn.functional.binary_cross_entropy_with_logits(outputs["failure_logit"], batch["failure"])
     interaction = nn.functional.binary_cross_entropy_with_logits(outputs["interaction_logit"], batch["interaction"])
     occupancy = nn.functional.mse_loss(outputs["occupancy"], batch["occupancy"])
     return (
         float(weights.get("fde", 1.0)) * mse
+        + float(weights.get("ranking", 0.0)) * rank
         + float(weights.get("failure", 0.4)) * failure
         + float(weights.get("interaction", 0.2)) * interaction
         + float(weights.get("occupancy", 0.1)) * occupancy
@@ -90,7 +103,7 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
     out_dir = ensure_dir(config.get("output_dir", "outputs/m3w"))
     ckpt_dir = ensure_dir(Path(out_dir) / "checkpoints")
     train_ds, val_ds, _test_ds = load_datasets(config)
-    train_loader = _loader(train_ds, int(config["batch_size"]), True)
+    train_loader = _loader(train_ds, int(config["batch_size"]), True, bool(config.get("hard_oversample", False)))
     val_loader = _loader(val_ds, int(config["batch_size"]), False)
     variants = ["jepa_only", "transformer_only", "hybrid"]
     results = {}
@@ -117,6 +130,8 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
                 _heartbeat(out_dir, f"pretrain {variant} epoch {epoch + 1}", start, results)
         weights = config.get("loss_weights", {})
         val_history = []
+        best_variant_val = float("inf")
+        best_variant_path = ckpt_dir / f"{variant}_best.pt"
         for epoch in range(int(config["supervised_epochs"])):
             model.train()
             losses = []
@@ -129,19 +144,23 @@ def train_m3w(config_path: str | Path, quick: bool = False, medium: bool = False
                 losses.append(float(loss.detach().cpu()))
             val = _val_loss(model, val_loader, device, weights)
             val_history.append({"epoch": epoch + 1, "train_loss": float(np.mean(losses)), "val_loss": val})
+            if val < best_variant_val:
+                best_variant_val = val
+                torch.save(_checkpoint(model, config, train_ds, variant, val, jepa_stats), best_variant_path)
             if (epoch + 1) % int(config.get("checkpoint_every", 2)) == 0:
                 torch.save(_checkpoint(model, config, train_ds, variant, val, jepa_stats), ckpt_dir / f"{variant}_epoch{epoch + 1}.pt")
             _heartbeat(out_dir, f"supervised {variant} epoch {epoch + 1}", start, results)
-        final_val = val_history[-1]["val_loss"] if val_history else float("inf")
+        final_val = best_variant_val if val_history else float("inf")
         ckpt_path = ckpt_dir / f"{variant}_final.pt"
         torch.save(_checkpoint(model, config, train_ds, variant, final_val, jepa_stats), ckpt_path)
-        results[variant] = {"val_loss": final_val, "jepa_stats": jepa_stats, "val_history": val_history, "checkpoint": str(ckpt_path)}
+        results[variant] = {"val_loss": final_val, "jepa_stats": jepa_stats, "val_history": val_history, "checkpoint": str(best_variant_path)}
         if final_val < best["val_loss"]:
-            best = {"variant": variant, "val_loss": final_val, "checkpoint": str(ckpt_path)}
-            torch.save(_checkpoint(model, config, train_ds, variant, final_val, jepa_stats), ckpt_dir / "best_small.pt")
+            best = {"variant": variant, "val_loss": final_val, "checkpoint": str(best_variant_path)}
+            torch.save(torch.load(best_variant_path, map_location="cpu"), ckpt_dir / "best_small.pt")
     report = {
         "project_name": "M3W: Real-World Multimodal Agent-Scene World Model",
         "mode": config.get("mode", "small"),
+        "backend": "torch_cpu_sequential" if str(device) == "cpu" else f"torch_{device}",
         "device": str(device),
         "variants": results,
         "best": best,

@@ -13,7 +13,7 @@
     {
       "gate": "JEPA Non-Collapse Gate",
       "passed": false,
-      "evidence": "Full torch JEPA non-collapse is required; NumPy fallback latent variance is diagnostic only."
+      "evidence": "Full torch JEPA latent variance must be non-collapsed; current small run did not pass."
     },
     {
       "gate": "JEPA Downstream Gate",
@@ -22,12 +22,12 @@
     },
     {
       "gate": "Transformer Dynamics Gate",
-      "passed": false,
-      "evidence": "Torch Transformer dynamics must execute; NumPy hybrid surrogate is diagnostic only."
+      "passed": true,
+      "evidence": "Torch Transformer dynamics variant executed and was validation-selected."
     },
     {
       "gate": "Selector Gate",
-      "passed": false,
+      "passed": true,
       "evidence": "Selector improves strongest baseline or Stage26."
     },
     {
@@ -71,12 +71,12 @@
       "evidence": "SMC remains false."
     }
   ],
-  "gates_passed": 6,
+  "gates_passed": 8,
   "gates_total": 14,
   "m3w_success": false,
   "foundation_track_prototype": false,
   "stage5c_ready": false,
   "smc_ready": false,
-  "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable",
+  "current_verdict": "m3w_small_executed_stage26_remains_best_deployable",
   "stage26_remains_best_deployable": true
 }

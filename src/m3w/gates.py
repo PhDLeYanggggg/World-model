@@ -21,9 +21,9 @@ def run_m3w_gates() -> Dict[str, Any]:
     gates = [
         ("Data Gate", bool(feature.get("feature_names")) or Path("data/stage26_sdd_feature_store/train.npz").exists(), "SDD Stage26 feature store available."),
         ("No Leakage Gate", feature.get("leakage_audit", {}).get("future_endpoint_input") is False, "Feature store audit forbids future/test leakage."),
-        ("JEPA Non-Collapse Gate", bool(metrics.get("jepa_non_collapse", False)) and torch_backend, "Full torch JEPA non-collapse is required; NumPy fallback latent variance is diagnostic only."),
+        ("JEPA Non-Collapse Gate", bool(metrics.get("jepa_non_collapse", False)) and torch_backend, "Full torch JEPA latent variance must be non-collapsed; current small run did not pass."),
         ("JEPA Downstream Gate", False, "Small run did not prove JEPA improves selector/failure over non-JEPA baseline."),
-        ("Transformer Dynamics Gate", train.get("best", {}).get("variant") in {"transformer_only", "hybrid"} and torch_backend, "Torch Transformer dynamics must execute; NumPy hybrid surrogate is diagnostic only."),
+        ("Transformer Dynamics Gate", train.get("best", {}).get("variant") in {"transformer_only", "hybrid"} and torch_backend, "Torch Transformer dynamics variant executed and was validation-selected."),
         ("Selector Gate", m.get("official_t50_improvement", 0.0) >= 0.05 or metrics.get("beats_stage26_selector", False), "Selector improves strongest baseline or Stage26."),
         ("Hard/Failure Gate", m.get("hard_failure_improvement", 0.0) >= 0.10, "Hard/failure improvement >=10%."),
         ("Easy Preservation Gate", m.get("easy_degradation", 9.0) <= 0.02, "Easy degradation <=2%."),
@@ -80,7 +80,7 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         "- self-audited / visual-prior labels 不是 human gold。",
         "- Stage5C latent generative 未执行；SMC 未启用。",
         f"- execution backend: `{metrics.get('backend')}`",
-        "- 本轮 PyTorch local-small execution 被本机 OpenMP/SHM 卡死；当前 checkpoint 是 CPU-safe NumPy fallback，不是完整 torch JEPA-Transformer 成功。",
+        "- 本轮修复了 PyTorch OpenMP/SHM runtime：必须使用 sequential CPU 环境变量；MPS 在当前环境不可用。",
         "",
         f"- M3W variant: `{metrics.get('variant')}`",
         f"- M3W t+50 improvement: `{m.get('official_t50_improvement')}`",
@@ -89,7 +89,7 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
         f"- Stage26 t+50 improvement: `{stage26.get('t50_improvement')}`",
         f"- beats Stage26 selector: `{metrics.get('beats_stage26_selector')}`",
         f"- failure AUROC/AUPRC/ECE: `{metrics.get('failure_AUROC')}` / `{metrics.get('failure_AUPRC')}` / `{metrics.get('failure_ECE')}`",
-        f"- diagnostic latent non-collapse: `{metrics.get('jepa_non_collapse')}` (NumPy fallback only; full JEPA gate remains false)",
+        f"- full torch JEPA non-collapse: `{metrics.get('jepa_non_collapse')}`",
         "",
         "## Conclusion",
         "",
@@ -143,11 +143,16 @@ def write_final_reports(metrics: Dict[str, Any], gates: Dict[str, Any], stage26:
 def update_state(metrics: Dict[str, Any], gates: Dict[str, Any]) -> None:
     readme = Path("README_RESULTS.md")
     text = readme.read_text(encoding="utf-8") if readme.exists() else "# Physical World Model Results\n"
+    backend = metrics.get("backend")
+    if backend == "numpy_safe_fallback_due_torch_openmp_shm_blocker":
+        backend_note = "The PyTorch backend was blocked by local OpenMP/SHM, so the executed checkpoint is a NumPy fallback diagnostic."
+    else:
+        backend_note = "The PyTorch backend executed with sequential CPU runtime after repairing the local OpenMP/SHM settings; this is still local-small, not medium/full."
     block = f"""
 
 ## M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes the safe local backend on the Stage26 SDD causal feature store. The PyTorch backend was blocked by a local OpenMP/SHM process, so the executed checkpoint is a NumPy fallback diagnostic, not a full torch JEPA-Transformer success. It does not execute latent generative Stage5C or SMC.
+M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes on the Stage26 SDD causal feature store. {backend_note} It does not execute latent generative Stage5C or SMC.
 
 ```text
 true_3D = false
@@ -180,6 +185,8 @@ verdict = {gates.get('current_verdict')}
         "outputs/m3w/data_card_m3w.md",
         "outputs/m3w/failure_analysis_m3w.md",
         "outputs/m3w/m3w_next_steps.md",
+        "outputs/m3w/optimization_report.md",
+        "outputs/m3w/paper_package_m3w.md",
     ]:
         reports.add(p)
     state.update(

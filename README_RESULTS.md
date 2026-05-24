@@ -606,21 +606,21 @@ verdict = stage26_feature_complete_cost_aware_selector_executed_not_stage5c_read
 
 ## M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes the safe local backend on the Stage26 SDD causal feature store. The PyTorch backend was blocked by a local OpenMP/SHM process, so the executed checkpoint is a NumPy fallback diagnostic, not a full torch JEPA-Transformer success. It does not execute latent generative Stage5C or SMC.
+M3W local-small adds JEPA-only, Transformer-only, and JEPA+Transformer hybrid code, then executes on the Stage26 SDD causal feature store. The PyTorch backend executed with sequential CPU runtime after repairing the local OpenMP/SHM settings; this is still local-small, not medium/full. It does not execute latent generative Stage5C or SMC.
 
 ```text
 true_3D = false
 foundation_world_model = false
 SDD_coordinate_status = pixel-space
 SDD_horizon_status = raw annotation-frame; effective seconds unknown
-M3W_execution_backend = numpy_safe_fallback_due_torch_openmp_shm_blocker
+M3W_execution_backend = torch_cpu_sequential
 M3W_variant = hybrid
-M3W_t50_improvement = -0.0003516511641914466
-M3W_hard_failure_improvement = 0.00565237402143326
-M3W_easy_degradation = 0.006164539707586902
+M3W_t50_improvement = 0.0797643165887999
+M3W_hard_failure_improvement = 0.04591573857839959
+M3W_easy_degradation = 0.008167665001088231
 beats_stage26_selector = False
 latent_stage5c_ready = false
 smc_ready = false
-verdict = m3w_small_numpy_fallback_executed_stage26_remains_best_deployable
+verdict = m3w_small_executed_stage26_remains_best_deployable
 ```
 

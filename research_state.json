@@ -1,6 +1,6 @@
 {
   "current_stage": "m3w_small",
-  "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable",
+  "current_verdict": "m3w_small_executed_stage26_remains_best_deployable",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -118,6 +118,8 @@
     "outputs/m3w/failure_analysis_m3w.md",
     "outputs/m3w/m3w_next_steps.md",
     "outputs/m3w/model_card_m3w.md",
+    "outputs/m3w/optimization_report.md",
+    "outputs/m3w/paper_package_m3w.md",
     "outputs/m3w/report_m3w_final.md",
     "outputs/m3w/world_model_gate_m3w.md",
     "outputs/reports/auto_gate_report.md",
@@ -337,51 +339,51 @@
   "m3w": {
     "metrics": {
       "checkpoint": "outputs/m3w/checkpoints/best_small.pt",
-      "backend": "numpy_safe_fallback_due_torch_openmp_shm_blocker",
+      "backend": "torch_cpu_sequential",
       "variant": "hybrid",
       "selected_policy": {
-        "confidence_threshold": 0.2,
-        "gain_threshold": 50.0,
-        "failure_threshold": 0.6
+        "confidence_threshold": 0.0,
+        "gain_threshold": 40.0,
+        "failure_threshold": 0.0
       },
       "validation_metrics": {
-        "improvement_over_strongest": 0.019413130982683158,
-        "official_t50_improvement": -0.003424870783126144,
-        "diagnostic_t100_raw_frame_improvement": 0.034867398872426514,
-        "hard_failure_improvement": 0.01946962341658498,
-        "easy_degradation": 0.015277013524863214,
-        "selector_regret": 14.95018482208252,
-        "harm_over_fallback": -0.7481511831283569,
-        "switch_rate": 0.00785,
-        "mean_confidence": 22.00649070739746,
+        "improvement_over_strongest": 0.17486234972301673,
+        "official_t50_improvement": 0.20744705193469892,
+        "diagnostic_t100_raw_frame_improvement": 0.20140328153979237,
+        "hard_failure_improvement": 0.17537030961306088,
+        "easy_degradation": 0.007325388982142078,
+        "selector_regret": 8.959431648254395,
+        "harm_over_fallback": -6.738903045654297,
+        "switch_rate": 0.0486,
+        "mean_confidence": 668.19873046875,
         "selected_distribution": {
-          "constant_position": 8,
-          "constant_velocity_causal_fd": 0,
-          "damped_velocity": 17615,
-          "constant_acceleration_causal": 2,
-          "constant_turn_rate_velocity": 0,
-          "scene_clamped_baseline": 2359,
-          "goal_directed_baseline": 16
+          "constant_position": 11,
+          "constant_velocity_causal_fd": 11,
+          "damped_velocity": 16793,
+          "constant_acceleration_causal": 0,
+          "constant_turn_rate_velocity": 20,
+          "scene_clamped_baseline": 3165,
+          "goal_directed_baseline": 0
         }
       },
       "test_metrics": {
-        "improvement_over_strongest": 0.005504731734828794,
-        "official_t50_improvement": -0.0003516511641914466,
-        "diagnostic_t100_raw_frame_improvement": 0.010443865042999878,
-        "hard_failure_improvement": 0.00565237402143326,
-        "easy_degradation": 0.006164539707586902,
-        "selector_regret": 6.700786113739014,
-        "harm_over_fallback": -0.14283888041973114,
-        "switch_rate": 0.00389,
-        "mean_confidence": 36.20978546142578,
+        "improvement_over_strongest": 0.04552431005992641,
+        "official_t50_improvement": 0.0797643165887999,
+        "diagnostic_t100_raw_frame_improvement": 0.04313533356610444,
+        "hard_failure_improvement": 0.04591573857839959,
+        "easy_degradation": 0.008167665001088231,
+        "selector_regret": 5.662308692932129,
+        "harm_over_fallback": -1.1813162565231323,
+        "switch_rate": 0.01848,
+        "mean_confidence": 565.9408569335938,
         "selected_distribution": {
-          "constant_position": 39,
-          "constant_velocity_causal_fd": 0,
-          "damped_velocity": 88514,
+          "constant_position": 105,
+          "constant_velocity_causal_fd": 74,
+          "damped_velocity": 87121,
           "constant_acceleration_causal": 0,
-          "constant_turn_rate_velocity": 0,
-          "scene_clamped_baseline": 11353,
-          "goal_directed_baseline": 94
+          "constant_turn_rate_velocity": 45,
+          "scene_clamped_baseline": 12655,
+          "goal_directed_baseline": 0
         }
       },
       "stage26_selector": {
@@ -390,15 +392,13 @@
         "easy_degradation": 0.01808836280803794
       },
       "beats_stage26_selector": false,
-      "failure_AUROC": 0.9364380811532312,
-      "failure_AUPRC": 0.5470499708612074,
-      "failure_ECE": 0.4459426108889468,
-      "interaction_AUROC": 0.9978516972323822,
-      "occupancy_MSE": 3.8395533920265734e-05,
-      "jepa_latent_variance": 1.7277342081069946,
-      "jepa_non_collapse": true,
-      "jepa_downstream_lift": false,
-      "transformer_dynamics_lift": false,
+      "failure_AUROC": 0.9346414494225567,
+      "failure_AUPRC": 0.5090746798518613,
+      "failure_ECE": 0.03996540148588829,
+      "interaction_AUROC": 0.6537175646345935,
+      "occupancy_MSE": 0.00974509958177805,
+      "jepa_latent_variance": 0.0013557503698393703,
+      "jepa_non_collapse": false,
       "goal_metrics": "diagnostic_unavailable_no_human_goal_labels",
       "physical_validity": "selected physical baseline only; no residual/correction",
       "t100_status": "raw-frame diagnostic, not seconds-level",
@@ -419,7 +419,7 @@
         {
           "gate": "JEPA Non-Collapse Gate",
           "passed": false,
-          "evidence": "Full torch JEPA non-collapse is required; NumPy fallback latent variance is diagnostic only."
+          "evidence": "Full torch JEPA latent variance must be non-collapsed; current small run did not pass."
         },
         {
           "gate": "JEPA Downstream Gate",
@@ -428,12 +428,12 @@
         },
         {
           "gate": "Transformer Dynamics Gate",
-          "passed": false,
-          "evidence": "Torch Transformer dynamics must execute; NumPy hybrid surrogate is diagnostic only."
+          "passed": true,
+          "evidence": "Torch Transformer dynamics variant executed and was validation-selected."
         },
         {
           "gate": "Selector Gate",
-          "passed": false,
+          "passed": true,
           "evidence": "Selector improves strongest baseline or Stage26."
         },
         {
@@ -477,13 +477,13 @@
           "evidence": "SMC remains false."
         }
       ],
-      "gates_passed": 6,
+      "gates_passed": 8,
       "gates_total": 14,
       "m3w_success": false,
       "foundation_track_prototype": false,
       "stage5c_ready": false,
       "smc_ready": false,
-      "current_verdict": "m3w_small_numpy_fallback_executed_stage26_remains_best_deployable",
+      "current_verdict": "m3w_small_executed_stage26_remains_best_deployable",
       "stage26_remains_best_deployable": true
     }
   }

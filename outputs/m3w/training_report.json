@@ -1,47 +1,250 @@
 {
   "project_name": "M3W: Real-World Multimodal Agent-Scene World Model",
-  "mode": "small",
-  "backend": "numpy_safe_fallback_due_torch_openmp_shm_blocker",
-  "torch_execution_status": "blocked_by_uninterruptible_openmp_shm_process",
+  "mode": "small_hard_focus",
+  "backend": "torch_cpu_sequential",
+  "device": "cpu",
   "variants": {
     "jepa_only": {
-      "variant": "jepa_only",
-      "feature_dim": 54,
-      "val_loss": 1.2175697326776573,
+      "val_loss": 1.5439290881156922,
       "jepa_stats": [
         {
-          "latent_variance": 1.7277342081069946,
-          "explained_variance": 0.9498433212050956
+          "epoch": 1,
+          "loss": 0.5092079743742943,
+          "jepa_l2": 0.049249716103076935,
+          "jepa_cosine": 0.14653772115707397,
+          "latent_variance": 0.005907144397497177
+        },
+        {
+          "epoch": 2,
+          "loss": 0.16142408326268196,
+          "jepa_l2": 0.01908307895064354,
+          "jepa_cosine": 0.05686265230178833,
+          "latent_variance": 0.003950315061956644
         }
-      ]
+      ],
+      "val_history": [
+        {
+          "epoch": 1,
+          "train_loss": 15.063077163696288,
+          "val_loss": 9.437631702423095
+        },
+        {
+          "epoch": 2,
+          "train_loss": 8.24229347705841,
+          "val_loss": 4.960909366607666
+        },
+        {
+          "epoch": 3,
+          "train_loss": 3.705550491809845,
+          "val_loss": 2.4301496028900145
+        },
+        {
+          "epoch": 4,
+          "train_loss": 2.1193762004375456,
+          "val_loss": 1.9688573122024535
+        },
+        {
+          "epoch": 5,
+          "train_loss": 1.7522022724151611,
+          "val_loss": 1.8049652099609375
+        },
+        {
+          "epoch": 6,
+          "train_loss": 1.6354005455970764,
+          "val_loss": 1.7093211889266968
+        },
+        {
+          "epoch": 7,
+          "train_loss": 1.5538023650646209,
+          "val_loss": 1.6812418460845948
+        },
+        {
+          "epoch": 8,
+          "train_loss": 1.5602371156215669,
+          "val_loss": 1.6798481583595275
+        },
+        {
+          "epoch": 9,
+          "train_loss": 1.4939056813716889,
+          "val_loss": 1.668713593482971
+        },
+        {
+          "epoch": 10,
+          "train_loss": 1.4591685593128205,
+          "val_loss": 1.6107940435409547
+        },
+        {
+          "epoch": 11,
+          "train_loss": 1.4256132185459136,
+          "val_loss": 1.5713921546936036
+        },
+        {
+          "epoch": 12,
+          "train_loss": 1.4044983446598054,
+          "val_loss": 1.5439290881156922
+        }
+      ],
+      "checkpoint": "outputs/m3w/checkpoints/jepa_only_best.pt"
     },
     "transformer_only": {
-      "variant": "transformer_only",
-      "feature_dim": 90,
-      "val_loss": 1.1551674894517419,
-      "jepa_stats": []
+      "val_loss": 1.6426119565963746,
+      "jepa_stats": [],
+      "val_history": [
+        {
+          "epoch": 1,
+          "train_loss": 15.092175579071045,
+          "val_loss": 10.58009843826294
+        },
+        {
+          "epoch": 2,
+          "train_loss": 10.972802972793579,
+          "val_loss": 7.633508396148682
+        },
+        {
+          "epoch": 3,
+          "train_loss": 7.555063343048095,
+          "val_loss": 5.78877215385437
+        },
+        {
+          "epoch": 4,
+          "train_loss": 5.353502202033996,
+          "val_loss": 4.474527359008789
+        },
+        {
+          "epoch": 5,
+          "train_loss": 3.5632273077964784,
+          "val_loss": 3.2341235876083374
+        },
+        {
+          "epoch": 6,
+          "train_loss": 2.6089375734329225,
+          "val_loss": 2.4932800769805907
+        },
+        {
+          "epoch": 7,
+          "train_loss": 2.1274854719638823,
+          "val_loss": 2.085287165641785
+        },
+        {
+          "epoch": 8,
+          "train_loss": 1.8499895334243774,
+          "val_loss": 1.9032010793685914
+        },
+        {
+          "epoch": 9,
+          "train_loss": 1.7245009779930114,
+          "val_loss": 1.791066873073578
+        },
+        {
+          "epoch": 10,
+          "train_loss": 1.6252031803131104,
+          "val_loss": 1.7342403888702393
+        },
+        {
+          "epoch": 11,
+          "train_loss": 1.5931108057498933,
+          "val_loss": 1.7196677446365356
+        },
+        {
+          "epoch": 12,
+          "train_loss": 1.5615744888782501,
+          "val_loss": 1.6426119565963746
+        }
+      ],
+      "checkpoint": "outputs/m3w/checkpoints/transformer_only_best.pt"
     },
     "hybrid": {
-      "variant": "hybrid",
-      "feature_dim": 122,
-      "val_loss": 1.1254322031647461,
+      "val_loss": 1.395436406135559,
       "jepa_stats": [
         {
-          "latent_variance": 1.7277342081069946,
-          "explained_variance": 0.9498433212050956
+          "epoch": 1,
+          "loss": 0.5616191878914834,
+          "jepa_l2": 0.027033483609557152,
+          "jepa_cosine": 0.19148075580596924,
+          "latent_variance": 0.002696558367460966
+        },
+        {
+          "epoch": 2,
+          "loss": 0.1446269527077675,
+          "jepa_l2": 0.006645710673183203,
+          "jepa_cosine": 0.03350639343261719,
+          "latent_variance": 0.0013557503698393703
         }
-      ]
+      ],
+      "val_history": [
+        {
+          "epoch": 1,
+          "train_loss": 8.785835266113281,
+          "val_loss": 5.547606706619263
+        },
+        {
+          "epoch": 2,
+          "train_loss": 4.957116913795471,
+          "val_loss": 3.6986125469207765
+        },
+        {
+          "epoch": 3,
+          "train_loss": 3.0724940657615663,
+          "val_loss": 2.4670663118362426
+        },
+        {
+          "epoch": 4,
+          "train_loss": 2.1641048729419707,
+          "val_loss": 2.000955855846405
+        },
+        {
+          "epoch": 5,
+          "train_loss": 1.8035830497741698,
+          "val_loss": 1.7784641861915589
+        },
+        {
+          "epoch": 6,
+          "train_loss": 1.6434028446674347,
+          "val_loss": 1.727640688419342
+        },
+        {
+          "epoch": 7,
+          "train_loss": 1.5039999127388,
+          "val_loss": 1.6081744313240052
+        },
+        {
+          "epoch": 8,
+          "train_loss": 1.463351833820343,
+          "val_loss": 1.5684880137443542
+        },
+        {
+          "epoch": 9,
+          "train_loss": 1.382689929008484,
+          "val_loss": 1.5133960485458373
+        },
+        {
+          "epoch": 10,
+          "train_loss": 1.3317707657814026,
+          "val_loss": 1.526682186126709
+        },
+        {
+          "epoch": 11,
+          "train_loss": 1.320871776342392,
+          "val_loss": 1.4712344765663148
+        },
+        {
+          "epoch": 12,
+          "train_loss": 1.2636208832263947,
+          "val_loss": 1.395436406135559
+        }
+      ],
+      "checkpoint": "outputs/m3w/checkpoints/hybrid_best.pt"
     }
   },
   "best": {
     "variant": "hybrid",
-    "val_loss": 1.1254322031647461,
-    "checkpoint": "outputs/m3w/checkpoints/best_small.pt"
+    "val_loss": 1.395436406135559,
+    "checkpoint": "outputs/m3w/checkpoints/hybrid_best.pt"
   },
   "true_3d": false,
   "foundation_world_model": false,
   "latent_generative": false,
   "smc": false,
   "ordinary_residual_trained": false,
-  "elapsed_s": 0.39959025382995605
+  "elapsed_s": 178.60766792297363
 }

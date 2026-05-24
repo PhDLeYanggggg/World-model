@@ -1,0 +1,37 @@
+run_name: m3w_small_hard_focus
+mode: small_hard_focus
+seed: 43
+device: auto
+feature_store: data/stage26_sdd_feature_store
+output_dir: outputs/m3w
+batch_size: 2048
+num_workers: 0
+hard_oversample: true
+jepa_epochs: 2
+supervised_epochs: 12
+learning_rate: 0.0006
+weight_decay: 0.00025
+hidden_dim: 96
+token_dim: 16
+latent_dim: 64
+transformer_layers: 2
+transformer_heads: 4
+dropout: 0.08
+checkpoint_every: 2
+max_train_samples: 40000
+max_val_samples: 20000
+max_test_samples: 100000
+mask_ratio: 0.2
+validation_easy_target: 0.015
+loss_weights:
+  fde: 1.0
+  ranking: 0.25
+  failure: 0.8
+  interaction: 0.35
+  occupancy: 0.1
+  hard_weight: 3.0
+  failure_weight: 4.0
+fallback_search:
+  confidence_thresholds: [0.0, 0.03, 0.05, 0.1, 0.2, 0.35, 0.5]
+  gain_thresholds: [0.0, 1.0, 2.0, 5.0, 10.0, 20.0, 40.0]
+  failure_thresholds: [0.0, 0.05, 0.1, 0.2, 0.4, 0.6, 0.8]

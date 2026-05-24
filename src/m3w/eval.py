@@ -100,17 +100,23 @@ def _metrics(dataset: M3WFeatureDataset, selected: np.ndarray, confs: np.ndarray
 def _search_policy(dataset: M3WFeatureDataset, pred_fde: np.ndarray, failure_prob: np.ndarray, config: Dict[str, Any]) -> Dict[str, Any]:
     search = config.get("fallback_search", {})
     best = None
+    best_safe = None
+    easy_target = float(config.get("validation_easy_target", 0.018))
     for conf in search.get("confidence_thresholds", [0.0, 0.05, 0.1]):
         for gain in search.get("gain_thresholds", [0.0, 2.0, 5.0]):
             for fail in search.get("failure_thresholds", [0.0, 0.1]):
                 policy = {"confidence_threshold": float(conf), "gain_threshold": float(gain), "failure_threshold": float(fail)}
                 selected, confs = _select(dataset, pred_fde, failure_prob, policy)
                 met = _metrics(dataset, selected, confs)
-                objective = met["official_t50_improvement"] + 0.5 * met["hard_failure_improvement"] - 5.0 * max(0.0, met["easy_degradation"] - 0.02)
+                objective = met["official_t50_improvement"] + 0.5 * met["hard_failure_improvement"] - 20.0 * max(0.0, met["easy_degradation"] - easy_target)
                 if best is None or objective > best["objective"]:
                     best = {"policy": policy, "metrics": met, "objective": objective}
+                if met["easy_degradation"] <= easy_target:
+                    safe_objective = met["official_t50_improvement"] + 0.7 * met["hard_failure_improvement"] - 0.05 * met["switch_rate"]
+                    if best_safe is None or safe_objective > best_safe["objective"]:
+                        best_safe = {"policy": policy, "metrics": met, "objective": safe_objective}
     assert best is not None
-    return best
+    return best_safe if best_safe is not None else best
 
 
 def evaluate_m3w(checkpoint: str | Path) -> Dict[str, Any]:
@@ -144,6 +150,7 @@ def evaluate_m3w(checkpoint: str | Path) -> Dict[str, Any]:
     latent_variance = float(jepa_stats[-1].get("latent_variance", 0.0)) if jepa_stats else 0.0
     result = {
         "checkpoint": str(checkpoint),
+        "backend": "torch_cpu_sequential",
         "variant": ckpt["variant"],
         "selected_policy": selected_policy["policy"],
         "validation_metrics": selected_policy["metrics"],
