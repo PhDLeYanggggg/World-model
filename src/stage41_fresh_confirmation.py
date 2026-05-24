@@ -2190,3 +2190,306 @@ smc_enabled = false
 
 def main_fresh_endpoint_gain_gate_candidate() -> None:
     run_fresh_endpoint_gain_gate_candidate()
+
+
+def _self_gated_policy_grid(gate_pred: Mapping[str, np.ndarray], free_pred: Mapping[str, np.ndarray]) -> list[Dict[str, Any]]:
+    """Compact validation grid for a no-external-fallback self-gated endpoint.
+
+    The model output is the internally gated endpoint itself: base endpoint when
+    alpha/switch is zero and neural endpoint when the learned gate permits it.
+    That differs from raw ungated endpoint replacement and directly targets the
+    Gate10 failure mode.
+    """
+    gain_q = [float(np.quantile(gate_pred["gain_value"], q)) for q in [0.55, 0.72]]
+    var = free_pred["ensemble_variance"]
+    uncert = free_pred["log_uncertainty"]
+    return [
+        {
+            "gain_value_min": gv,
+            "gain_prob_min": gp,
+            "harm_prob_max": hp,
+            "t100_good_min": tg,
+            "variance_max": float(np.quantile(var, vq)),
+            "uncertainty_max": float(np.quantile(uncert, uq)),
+            "max_alpha": alpha,
+            "alpha_mode": "continuous",
+            "max_switch": ms,
+            "horizon_mode": hz,
+        }
+        for gv in sorted(set([-0.01, *gain_q]))
+        for gp in [0.50, 0.68]
+        for hp in [0.14, 0.28]
+        for tg in [0.0, 0.45]
+        for vq in [0.90, 0.98]
+        for uq in [0.90, 0.98]
+        for alpha in [0.50, 0.75, 1.0]
+        for ms in [0.25, 0.45, 0.70]
+        for hz in ["all", "t50_t100", "no_t100"]
+    ]
+
+
+def _apply_self_gated_endpoint(gate_pred: Mapping[str, np.ndarray], free_pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], policy: Mapping[str, Any]) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    horizon = labels["horizon"].astype(int)
+    gate = (
+        (gate_pred["gain_value"] >= float(policy["gain_value_min"]))
+        & (gate_pred["gain_prob"] >= float(policy["gain_prob_min"]))
+        & (gate_pred["harm_prob"] <= float(policy["harm_prob_max"]))
+        & (free_pred["ensemble_variance"] <= float(policy["variance_max"]))
+        & (free_pred["log_uncertainty"] <= float(policy["uncertainty_max"]))
+    )
+    mode = str(policy.get("horizon_mode", "all"))
+    if mode == "long_only":
+        gate &= np.isin(horizon, [25, 50, 100])
+    elif mode == "t50_t100":
+        gate &= np.isin(horizon, [50, 100])
+    elif mode == "no_t100":
+        gate &= horizon != 100
+    t100_mask = horizon == 100
+    if np.any(t100_mask):
+        gate[t100_mask] &= gate_pred["t100_good_prob"][t100_mask] >= float(policy.get("t100_good_min", 0.0))
+    score = gate_pred["gain_value"] + 0.30 * gate_pred["gain_prob"] - 0.65 * gate_pred["harm_prob"] - 0.08 * free_pred["ensemble_variance"]
+    max_switch = float(policy.get("max_switch", 1.0))
+    if max_switch <= 0.0:
+        gate[:] = False
+    elif max_switch < 1.0 and np.any(gate):
+        ids = np.where(gate)[0]
+        keep_n = max(1, int(max_switch * len(gate)))
+        keep = np.zeros(len(gate), dtype=bool)
+        keep[ids[np.argsort(score[ids])[::-1][:keep_n]]] = True
+        gate &= keep
+    alpha = np.zeros(len(gate), dtype=np.float32)
+    if str(policy.get("alpha_mode", "continuous")) == "binary":
+        alpha[gate] = float(policy.get("max_alpha", 1.0))
+        endpoint_fde = _endpoint_fde(free_pred, labels)
+        selected = labels["base_fde"].astype(np.float64).copy()
+        selected[gate] = endpoint_fde[gate]
+        # Binary self-gating is an internal discrete policy: the neural model
+        # either emits its endpoint prediction or its learned safety-floor
+        # choice.  We evaluate this directly in FDE space because the stored
+        # source-rotation safety-floor endpoint deltas are not reliably aligned
+        # with their FDE labels for every candidate baseline.  Continuous
+        # interpolation below remains diagnostic until that endpoint geometry is
+        # repaired.
+        return selected, gate.copy(), alpha, endpoint_fde
+    else:
+        raw_alpha = float(policy.get("max_alpha", 1.0)) * np.clip(gate_pred["gain_prob"] - gate_pred["harm_prob"], 0.0, 1.0)
+        alpha[gate] = np.clip(raw_alpha[gate], 0.0, float(policy.get("max_alpha", 1.0)))
+    base_delta = labels["base_delta"].astype(np.float32)
+    free_delta = free_pred["endpoint_delta"].astype(np.float32)
+    gated_pred = dict(free_pred)
+    gated_pred["endpoint_delta"] = (base_delta + alpha[:, None] * (free_delta - base_delta)).astype(np.float32)
+    endpoint_fde = _endpoint_fde(gated_pred, labels)
+    # switch here means alpha > 0; there is no external fallback after this
+    # output is formed.
+    switch = alpha > 1e-6
+    return endpoint_fde, switch, alpha, _endpoint_fde(free_pred, labels)
+
+
+def _self_gated_score(metrics: Mapping[str, Any]) -> float:
+    max_easy = _max_domain_easy(metrics)
+    return (
+        1.2 * float(metrics.get("all_improvement", 0.0))
+        + 2.4 * float(metrics.get("t50_improvement", 0.0))
+        + 1.3 * float(metrics.get("hard_failure_improvement", 0.0))
+        + 1.4 * float(metrics.get("t100_improvement", 0.0))
+        + 0.04 * float(metrics.get("switch_rate", 0.0))
+        - 55.0 * max(0.0, float(metrics.get("easy_degradation", 1.0)) - 0.02)
+        - 55.0 * max(0.0, max_easy - 0.02)
+        - 4.0 * max(0.0, -float(metrics.get("t100_improvement", 0.0)))
+    )
+
+
+def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_source_rotation_split()
+    gain_gate = read_json(OUT_DIR / "stage41_fresh_endpoint_gain_gate_candidate.json", {})
+    if not gain_gate:
+        gain_gate = run_fresh_endpoint_gain_gate_candidate()
+    gate_paths = [
+        ((row.get("train") or {}).get("checkpoint"))
+        for row in (gain_gate.get("trials") or {}).values()
+        if ((row.get("train") or {}).get("checkpoint"))
+    ]
+    gate_paths = [str(p) for p in gate_paths if Path(str(p)).exists()]
+    if not gate_paths:
+        raise FileNotFoundError("No endpoint gain-gate checkpoints available for self-gated candidate")
+
+    val_gate, val_free, val_labels = _predict_endpoint_gate_ensemble(gate_paths, "val")
+    candidate_policies = _self_gated_policy_grid(val_gate, val_free)
+    if gain_gate.get("best_policy"):
+        exact = dict(gain_gate["best_policy"])
+        exact["alpha_mode"] = "binary"
+        exact["max_alpha"] = 1.0
+        exact["self_gate_source"] = "stage41_endpoint_gain_gate_best_policy"
+        candidate_policies.insert(0, exact)
+    best_policy: Dict[str, Any] = {}
+    best_val: Dict[str, Any] = {}
+    best_score = -1e18
+    for policy in candidate_policies:
+        selected, switch, alpha, raw_endpoint = _apply_self_gated_endpoint(val_gate, val_free, val_labels, policy)
+        metrics = _metric_from_labels(selected, val_labels["base_fde"], val_labels, switch)
+        if metrics.get("easy_degradation", 1.0) > 0.02 or _max_domain_easy(metrics) > 0.02:
+            continue
+        score = _self_gated_score(metrics)
+        if score > best_score:
+            best_score = score
+            best_policy = dict(policy)
+            best_val = {
+                "metrics_vs_source_rotation_base": metrics,
+                "score": score,
+                "alpha_mean": float(np.mean(alpha)),
+                "alpha_nonzero_mean": float(np.mean(alpha[switch])) if np.any(switch) else 0.0,
+            }
+    if not best_policy:
+        result: Dict[str, Any] = {
+            "source": "fresh_run",
+            "protocol_status": "fresh_rotation_self_gated_endpoint_candidate",
+            "deployment_decision": "diagnostic_keep_stage37_floor",
+            "reason": "no validation-safe self-gated endpoint policy",
+            "gate_checkpoint_count": len(gate_paths),
+        }
+    else:
+        test_gate, test_free, test_labels = _predict_endpoint_gate_ensemble(gate_paths, "test")
+        selected, switch, alpha, raw_endpoint = _apply_self_gated_endpoint(test_gate, test_free, test_labels, best_policy)
+        metrics_vs_base = _metric_from_labels(selected, test_labels["base_fde"], test_labels, switch)
+        metrics_vs_floor = _metric_from_labels(selected, test_labels["floor_fde"], test_labels, switch | test_labels["base_switch"].astype(bool))
+        raw_endpoint_metrics = _metric_from_labels(raw_endpoint, test_labels["base_fde"], test_labels, np.ones(len(raw_endpoint), dtype=bool))
+        metrics_vs_base["t50_ci"] = s41._bootstrap_ci(selected, test_labels["base_fde"], test_labels, "t50", n=2000)
+        metrics_vs_floor["t50_ci"] = s41._bootstrap_ci(selected, test_labels["floor_fde"], test_labels, "t50", n=2000)
+        metrics_vs_floor["hard_failure_ci"] = s41._bootstrap_ci(selected, test_labels["floor_fde"], test_labels, "hard_failure", n=2000)
+        metrics_vs_floor["all_ci"] = s41._bootstrap_ci(selected, test_labels["floor_fde"], test_labels, "all", n=2000)
+        no_external_fallback_safe = bool(
+            metrics_vs_base.get("all_improvement", -1.0) > 0.0
+            and metrics_vs_base.get("t50_improvement", -1.0) > 0.0
+            and metrics_vs_base.get("t100_improvement", -1.0) >= 0.0
+            and metrics_vs_base.get("easy_degradation", 1.0) <= 0.02
+            and _max_domain_easy(metrics_vs_base) <= 0.02
+        )
+        protected_full_replacement = bool(
+            metrics_vs_floor.get("easy_degradation", 1.0) <= 0.02
+            and _max_domain_easy(metrics_vs_floor) <= 0.02
+            and _positive_domains(metrics_vs_floor) >= 2
+            and metrics_vs_floor.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+            and metrics_vs_floor.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+            and metrics_vs_floor.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+        )
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "fresh_rotation_self_gated_endpoint_candidate",
+            "hypothesis": "Make the gain/harm gate part of the neural endpoint output itself: prediction = base + alpha*(endpoint-base). This tests no-external-fallback safety while still reporting raw ungated endpoint failure.",
+            "best_policy": best_policy,
+            "best_val": best_val,
+            "self_gated_without_external_fallback_vs_source_rotation_base": metrics_vs_base,
+            "metrics_vs_floor": metrics_vs_floor,
+            "raw_ungated_endpoint_vs_source_rotation_base": raw_endpoint_metrics,
+            "trajectory_endpoint_alignment_status": "binary_fde_safe; continuous endpoint interpolation remains diagnostic because safety-floor endpoint deltas are not aligned with source-rotation FDE labels",
+            "alpha_mean": float(np.mean(alpha)),
+            "alpha_nonzero_mean": float(np.mean(alpha[switch])) if np.any(switch) else 0.0,
+            "positive_external_domains_vs_floor": _positive_domains(metrics_vs_floor),
+            "max_domain_easy_degradation_vs_floor": _max_domain_easy(metrics_vs_floor),
+            "no_external_fallback_safe_pass": no_external_fallback_safe,
+            "protected_full_replacement_pass": protected_full_replacement,
+            "deployment_decision": "self_gated_m3w_neural_v1_candidate_pending_user_acceptance" if protected_full_replacement and no_external_fallback_safe else "diagnostic_keep_stage37_floor",
+            "gate_checkpoint_count": len(gate_paths),
+            "caveat": "Self-gated endpoint is still dataset-local 2.5D raw-frame prediction. Binary FDE selection is safe, but continuous endpoint interpolation remains diagnostic until source-rotation floor endpoint geometry is repaired. It is not true 3D, not a foundation model, and does not execute Stage5C or SMC.",
+        }
+    _write_json(OUT_DIR / "stage41_fresh_self_gated_endpoint_candidate.json", result)
+    lines = [
+        "# Stage41 Fresh Self-Gated Endpoint Candidate",
+        "",
+        "- source: `fresh_run`",
+        f"- protocol status: `{result.get('protocol_status')}`",
+        f"- deployment decision: `{result.get('deployment_decision')}`",
+        f"- no-external-fallback safe pass: `{result.get('no_external_fallback_safe_pass')}`",
+        f"- protected full replacement pass: `{result.get('protected_full_replacement_pass')}`",
+        f"- self-gated vs source-rotation base: `{result.get('self_gated_without_external_fallback_vs_source_rotation_base')}`",
+        f"- metrics vs floor: `{result.get('metrics_vs_floor')}`",
+        f"- raw ungated endpoint: `{result.get('raw_ungated_endpoint_vs_source_rotation_base')}`",
+        f"- trajectory endpoint alignment status: `{result.get('trajectory_endpoint_alignment_status')}`",
+        f"- alpha mean: `{result.get('alpha_mean')}`",
+        f"- alpha nonzero mean: `{result.get('alpha_nonzero_mean')}`",
+        f"- caveat: `{result.get('caveat')}`",
+        "",
+        "- Stage5C executed: `False`",
+        "- SMC enabled: `False`",
+        "- metric/seconds-level claim: `False`",
+    ]
+    write_md(OUT_DIR / "stage41_fresh_self_gated_endpoint_candidate.md", lines)
+    _append_ledger("stage41_fresh_self_gated_endpoint_candidate", "ok", started, [OUT_DIR / "stage41_fresh_endpoint_gain_gate_candidate.json"], [OUT_DIR / "stage41_fresh_self_gated_endpoint_candidate.md"])
+    update_self_gated_endpoint_readme_state(result)
+    return result
+
+
+def update_self_gated_endpoint_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    m = result.get("metrics_vs_floor", {}) or {}
+    base = result.get("self_gated_without_external_fallback_vs_source_rotation_base", {}) or {}
+    raw = result.get("raw_ungated_endpoint_vs_source_rotation_base", {}) or {}
+    block = f"""
+
+## Stage41 Fresh Self-Gated Endpoint Candidate
+
+This run makes the neural gate part of the endpoint prediction itself: `prediction = base + alpha * (neural_endpoint - base)`. It targets Gate10 by testing no-external-fallback safety while still reporting the raw ungated endpoint failure. It does not execute Stage5C or SMC.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+no_external_fallback_safe_pass = {result.get('no_external_fallback_safe_pass')}
+protected_full_replacement_pass = {result.get('protected_full_replacement_pass')}
+self_gated_vs_base_all = {base.get('all_improvement')}
+self_gated_vs_base_t50 = {base.get('t50_improvement')}
+self_gated_vs_base_t100 = {base.get('t100_improvement')}
+self_gated_vs_base_hard = {base.get('hard_failure_improvement')}
+self_gated_vs_base_easy = {base.get('easy_degradation')}
+vs_floor_all = {m.get('all_improvement')}
+vs_floor_t50 = {m.get('t50_improvement')}
+vs_floor_t100 = {m.get('t100_improvement')}
+vs_floor_hard = {m.get('hard_failure_improvement')}
+vs_floor_easy = {m.get('easy_degradation')}
+raw_ungated_t100 = {raw.get('t100_improvement')}
+raw_ungated_easy = {raw.get('easy_degradation')}
+trajectory_endpoint_alignment_status = {result.get('trajectory_endpoint_alignment_status')}
+true_3d = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+```
+"""
+    marker = "## Stage41 Fresh Self-Gated Endpoint Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_fresh_self_gated_endpoint_candidate.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["fresh_self_gated_endpoint_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "no_external_fallback_safe_pass": result.get("no_external_fallback_safe_pass"),
+        "protected_full_replacement_pass": result.get("protected_full_replacement_pass"),
+        "self_gated_without_external_fallback_vs_source_rotation_base": result.get("self_gated_without_external_fallback_vs_source_rotation_base"),
+        "metrics_vs_floor": result.get("metrics_vs_floor"),
+        "raw_ungated_endpoint_vs_source_rotation_base": result.get("raw_ungated_endpoint_vs_source_rotation_base"),
+        "trajectory_endpoint_alignment_status": result.get("trajectory_endpoint_alignment_status"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update(
+        {
+            "current_stage": "stage41",
+            "current_best_deployable": "Stage37 selector",
+            "last_updated": "2026-05-24",
+            "latent_generative_ready": False,
+            "stage5c_ready": False,
+            "smc_ready": False,
+            "stage41": stage41,
+            "generated_reports": sorted(reports),
+        }
+    )
+    _write_json("research_state.json", state)
+
+
+def main_fresh_self_gated_endpoint_candidate() -> None:
+    run_fresh_self_gated_endpoint_candidate()

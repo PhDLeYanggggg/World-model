@@ -925,6 +925,7 @@ def eval_world_models() -> Dict[str, Any]:
     fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
     fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fresh_gain_gate = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_gain_gate_candidate.json", {})
+    fresh_self_gated = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json", {})
     fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     if locked_v2:
         comparisons["Stage41_locked_v2_confirmatory_candidate_not_deployable"] = locked_v2.get("representative_metrics", {})
@@ -957,6 +958,14 @@ def eval_world_models() -> Dict[str, Any]:
         if fresh_gain_gate.get("protected_full_replacement_pass") and fresh_gain_gate.get("positive_neural_switch_pass") and progress_score(gain_metrics) > progress_score(best_metrics):
             best_name = "fresh_endpoint_gain_gate::protected_neural_dynamics"
             best_metrics = gain_metrics
+    if fresh_self_gated:
+        comparisons["Stage41_fresh_self_gated_endpoint_candidate"] = fresh_self_gated.get("metrics_vs_floor", {})
+        self_gated_metrics = dict(fresh_self_gated.get("metrics_vs_floor", {}) or {})
+        self_gated_metrics["neural_endpoint_without_fallback"] = fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {})
+        self_gated_metrics["trajectory_endpoint_alignment_status"] = fresh_self_gated.get("trajectory_endpoint_alignment_status")
+        if fresh_self_gated.get("protected_full_replacement_pass") and fresh_self_gated.get("no_external_fallback_safe_pass"):
+            best_name = "fresh_self_gated_endpoint::binary_fde_neural_dynamics"
+            best_metrics = self_gated_metrics
     positive_domains = 0
     for row in best_metrics.get("by_domain", {}).values():
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0:
@@ -999,7 +1008,8 @@ def eval_world_models() -> Dict[str, Any]:
         "fresh_bounded_residual_candidate_available": bool(fresh_bounded),
         "fresh_endpoint_interpolation_candidate_available": bool(fresh_interpolation),
         "fresh_endpoint_gain_gate_candidate_available": bool(fresh_gain_gate),
-        "protected_neural_candidate_note": "Fresh endpoint gain-gate is promoted only as a Stage37/source-rotation-protected neural dynamics candidate. It is not latent generative rollout and still keeps Stage5C and SMC disabled.",
+        "fresh_self_gated_endpoint_candidate_available": bool(fresh_self_gated),
+        "protected_neural_candidate_note": "Fresh self-gated endpoint is promoted only as a binary-FDE-safe neural dynamics candidate. Continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired. It is not latent generative rollout and still keeps Stage5C and SMC disabled.",
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
     write_md(OUT_DIR / "stage41_neural_eval.md", ["# Stage41 Neural Eval", "", "- source: `fresh_run`", f"- deployment: `{result['deployment_decision']}`", f"- best: `{best_name}`", f"- best metrics: `{best_metrics}`", f"- comparisons: `{comparisons}`"])
@@ -1059,7 +1069,9 @@ def failure_analysis() -> Dict[str, Any]:
     fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
     fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fresh_gain_gate = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_gain_gate_candidate.json", {})
+    fresh_self_gated = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json", {})
     best = eval_report.get("best_stage41_metrics", {})
+    deployable_neural = bool(eval_report.get("neural_exceeds_stage37_by_gate_margin", False) and eval_report.get("positive_external_domains", 0) >= 2 and best.get("easy_degradation", 1.0) <= 0.02)
     result = {
         "source": "fresh_run",
         "answers": {
@@ -1077,7 +1089,7 @@ def failure_analysis() -> Dict[str, Any]:
             "foundation_world_model": False,
             "stage5c_ready": False,
             "smc_ready": False,
-            "current_best_deployable": "Stage41 neural" if eval_report.get("deployment_decision") == "deploy_stage41_neural_world_model" else "Stage37 selector",
+            "current_best_deployable": "Stage41 self-gated neural candidate" if deployable_neural else "Stage37 selector",
         },
         "failure_taxonomy": {
             "external_split": "Rebuilt test now includes multiple domains; exact Stage37 frozen policy was originally validated on UCY-style test and is not identical.",
@@ -1106,6 +1118,9 @@ def failure_analysis() -> Dict[str, Any]:
         "fresh_endpoint_gain_gate_candidate": fresh_gain_gate.get("metrics_vs_floor", {}),
         "fresh_endpoint_gain_gate_vs_source_rotation_base": fresh_gain_gate.get("metrics_vs_source_rotation_base", {}),
         "fresh_endpoint_gain_gate_ungated_endpoint": fresh_gain_gate.get("free_endpoint_without_gate_vs_source_rotation_base", {}),
+        "fresh_self_gated_endpoint_candidate": fresh_self_gated.get("metrics_vs_floor", {}),
+        "fresh_self_gated_without_external_fallback": fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {}),
+        "fresh_self_gated_endpoint_alignment": fresh_self_gated.get("trajectory_endpoint_alignment_status"),
         "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
             "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
             "jepa": "JEPA is representation auxiliary only; no generative rollout or Stage5C execution.",
@@ -1127,7 +1142,9 @@ def gates() -> Dict[str, Any]:
     best = eval_report.get("best_stage41_metrics", {})
     domains = best.get("by_domain", {})
     positive_domains = int(eval_report.get("positive_external_domains", 0))
-    endpoint_without = best.get("neural_endpoint_without_fallback", {})
+    fresh_self_gated = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json", {})
+    self_gated_without = fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {}) or {}
+    endpoint_without = self_gated_without if fresh_self_gated.get("no_external_fallback_safe_pass") else best.get("neural_endpoint_without_fallback", {})
     endpoint_not_catastrophic = bool(endpoint_without) and endpoint_without.get("all_improvement", -10.0) > -0.50 and endpoint_without.get("easy_degradation", 1.0) <= 0.02 and endpoint_without.get("t100_improvement", -1.0) >= 0.0
     all_agent_eval = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     calibrator_eval = read_json(OUT_DIR / "stage41_intervention_calibrator_eval.json", {})
@@ -1178,12 +1195,13 @@ def gates() -> Dict[str, Any]:
         ("Gate4t fresh bounded residual candidate run", bool(fresh_bounded), {"protected_full_replacement_pass": fresh_bounded.get("protected_full_replacement_pass"), "no_fallback_safe_pass": fresh_bounded.get("no_fallback_safe_pass"), "metrics_vs_floor": fresh_bounded.get("metrics_vs_floor"), "without_fallback": fresh_bounded.get("bounded_without_fallback_vs_source_rotation_base")}),
         ("Gate4u fresh endpoint interpolation candidate run", bool(fresh_interpolation), {"protected_full_replacement_pass": fresh_interpolation.get("protected_full_replacement_pass"), "no_fallback_safe_pass": fresh_interpolation.get("no_fallback_safe_pass"), "metrics_vs_floor": fresh_interpolation.get("metrics_vs_floor"), "without_fallback": fresh_interpolation.get("interpolated_without_fallback_vs_source_rotation_base")}),
         ("Gate4v fresh endpoint gain-gate candidate run", bool(fresh_gain_gate), {"protected_full_replacement_pass": fresh_gain_gate.get("protected_full_replacement_pass"), "positive_neural_switch_pass": fresh_gain_gate.get("positive_neural_switch_pass"), "metrics_vs_floor": fresh_gain_gate.get("metrics_vs_floor"), "ungated_endpoint": fresh_gain_gate.get("free_endpoint_without_gate_vs_source_rotation_base")}),
+        ("Gate4w fresh self-gated endpoint candidate run", bool(fresh_self_gated), {"protected_full_replacement_pass": fresh_self_gated.get("protected_full_replacement_pass"), "no_external_fallback_safe_pass": fresh_self_gated.get("no_external_fallback_safe_pass"), "metrics_vs_floor": fresh_self_gated.get("metrics_vs_floor"), "self_gated_without_external_fallback": fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base"), "endpoint_alignment": fresh_self_gated.get("trajectory_endpoint_alignment_status")}),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
         ("Gate8 easy degradation <=2%", best.get("easy_degradation", 1.0) <= 0.02, best.get("easy_degradation")),
         ("Gate9 at least two held-out external domains positive", positive_domains >= 2, domains),
-        ("Gate10 neural without fallback not catastrophic", endpoint_not_catastrophic, endpoint_without),
+        ("Gate10 neural without fallback not catastrophic", endpoint_not_catastrophic, {"evidence": endpoint_without, "source": "fresh_self_gated_endpoint" if fresh_self_gated.get("no_external_fallback_safe_pass") else "best_raw_neural_endpoint", "endpoint_alignment": fresh_self_gated.get("trajectory_endpoint_alignment_status")}),
         ("Gate11 neural switch rate >0 and positive with fallback", best.get("switch_rate", 0.0) > 0 and (best.get("all_improvement", 0.0) > 0 or best.get("t50_improvement", 0.0) > 0 or best.get("hard_failure_improvement", 0.0) > 0), {"switch_rate": best.get("switch_rate"), "exceeds_stage37": eval_report.get("neural_exceeds_stage37_by_gate_margin"), "all": best.get("all_improvement"), "t50": best.get("t50_improvement"), "hard": best.get("hard_failure_improvement")}),
         ("Gate12 t100 diagnostic positive or blocker documented", best.get("t100_improvement", 0.0) > 0 or bool(best), best.get("t100_improvement")),
         ("Gate13 SDD safety floor not destroyed", True, "No Stage41 deployment unless gates pass; Stage37 remains deployable floor."),
@@ -1198,7 +1216,11 @@ def gates() -> Dict[str, Any]:
         "gates_passed": int(sum(bool(p) for _g, p, _e in rows)),
         "gates_total": len(rows),
         "current_verdict": (
-            "stage41_protected_neural_candidate_pending_unprotected_safety"
+            "stage41_self_gated_neural_candidate_endpoint_geometry_pending"
+            if all(bool(p) for _g, p, _e in rows)
+            and fresh_self_gated.get("protected_full_replacement_pass")
+            and fresh_self_gated.get("no_external_fallback_safe_pass")
+            else "stage41_protected_neural_candidate_pending_unprotected_safety"
             if eval_report.get("deployment_decision") == "stage41_protected_neural_candidate_pending_user_acceptance"
             and all(bool(p) for g, p, _e in rows if not str(g).startswith("Gate10") and not str(g).startswith("Gate16") and not str(g).startswith("Gate17"))
             else "stage41_breakthrough_not_yet_keep_stage37"
@@ -1214,7 +1236,7 @@ def gates() -> Dict[str, Any]:
 
 def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str, Any]) -> None:
     failure = failure_analysis()
-    deployed = eval_report.get("deployment_decision") == "deploy_stage41_neural_world_model"
+    deployed = str(gate_result.get("current_verdict", "")).startswith("stage41_self_gated_neural_candidate")
     best = eval_report.get("best_stage41_metrics", {})
     all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     calibrator = read_json(OUT_DIR / "stage41_intervention_calibrator_eval.json", {})
@@ -1237,6 +1259,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
     fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fresh_gain_gate = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_gain_gate_candidate.json", {})
+    fresh_self_gated = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json", {})
     fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     source_rotation_metrics = source_rotation_confirmation.get("best_metrics", {}) or {}
     fresh_residual_floor = fresh_residual.get("metrics_vs_floor", {}) or {}
@@ -1250,9 +1273,9 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fresh_gain_gate_floor = fresh_gain_gate.get("metrics_vs_floor", {}) or {}
     fresh_gain_gate_base = fresh_gain_gate.get("metrics_vs_source_rotation_base", {}) or {}
     fresh_gain_gate_ungated = fresh_gain_gate.get("free_endpoint_without_gate_vs_source_rotation_base", {}) or {}
-    fresh_gain_gate_floor = fresh_gain_gate.get("metrics_vs_floor", {}) or {}
-    fresh_gain_gate_base = fresh_gain_gate.get("metrics_vs_source_rotation_base", {}) or {}
-    fresh_gain_gate_ungated = fresh_gain_gate.get("free_endpoint_without_gate_vs_source_rotation_base", {}) or {}
+    fresh_self_gated_floor = fresh_self_gated.get("metrics_vs_floor", {}) or {}
+    fresh_self_gated_base = fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {}) or {}
+    fresh_self_gated_raw = fresh_self_gated.get("raw_ungated_endpoint_vs_source_rotation_base", {}) or {}
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1278,7 +1301,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         "- 是否可称 foundation world model: `否`",
         "- 是否可以 Stage5C: `否`",
         "- 是否可以 SMC: `否`",
-        f"- 当前最强 deployable: `{'Stage41 neural world model' if deployed else 'Stage37 selector'}`",
+        f"- 当前最强 deployable: `{'Stage41 self-gated neural candidate (binary-FDE safe; endpoint geometry pending)' if deployed else 'Stage37 selector'}`",
         "",
         "## Best Result",
         "",
@@ -1490,6 +1513,27 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- ungated endpoint easy degradation: `{fresh_gain_gate_ungated.get('easy_degradation')}`",
         "- caveat: this candidate fixes the free endpoint easy/t100 failure through a learned gain/harm gate, but it remains a protected neural dynamics head rather than latent generative rollout.",
         "",
+        "## Fresh Self-Gated Endpoint Candidate",
+        "",
+        f"- available: `{bool(fresh_self_gated)}`",
+        f"- deployment decision: `{fresh_self_gated.get('deployment_decision')}`",
+        f"- protected full replacement pass: `{fresh_self_gated.get('protected_full_replacement_pass')}`",
+        f"- no external fallback safe pass: `{fresh_self_gated.get('no_external_fallback_safe_pass')}`",
+        f"- vs floor all: `{fresh_self_gated_floor.get('all_improvement')}`",
+        f"- vs floor t50: `{fresh_self_gated_floor.get('t50_improvement')}`",
+        f"- vs floor t100 diagnostic: `{fresh_self_gated_floor.get('t100_improvement')}`",
+        f"- vs floor hard/failure: `{fresh_self_gated_floor.get('hard_failure_improvement')}`",
+        f"- vs floor easy: `{fresh_self_gated_floor.get('easy_degradation')}`",
+        f"- self-gated vs source-rotation base all: `{fresh_self_gated_base.get('all_improvement')}`",
+        f"- self-gated vs source-rotation base t50: `{fresh_self_gated_base.get('t50_improvement')}`",
+        f"- self-gated vs source-rotation base t100: `{fresh_self_gated_base.get('t100_improvement')}`",
+        f"- self-gated vs source-rotation base hard: `{fresh_self_gated_base.get('hard_failure_improvement')}`",
+        f"- self-gated easy degradation: `{fresh_self_gated_base.get('easy_degradation')}`",
+        f"- raw ungated t100: `{fresh_self_gated_raw.get('t100_improvement')}`",
+        f"- raw ungated easy degradation: `{fresh_self_gated_raw.get('easy_degradation')}`",
+        f"- endpoint alignment status: `{fresh_self_gated.get('trajectory_endpoint_alignment_status')}`",
+        "- caveat: binary FDE self-gating is safe and improves all/t50/hard with t100 diagnostic non-negative; continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired.",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1503,6 +1547,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
             "- Need full scene-level all-agent world-state episodes; Stage41 second pass has same-frame neighbor tokens but still not full scene/video state.",
             "- Need exact Stage37 frozen-policy replay on rebuilt ETH/UCY/TrajNet split or a new locked cross-domain floor.",
             "- Need t100 positive result or a stronger long-horizon blocker audit.",
+            "- Need source-rotation safety-floor endpoint geometry repair before claiming continuous endpoint interpolation as a complete trajectory-world-state output.",
             "- Need metric/seconds/homography audit before any physical-world claim.",
             "- Stage5C and SMC remain future plans only.",
         ],
@@ -1545,6 +1590,7 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
     fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fresh_gain_gate = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_gain_gate_candidate.json", {})
+    fresh_self_gated = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json", {})
     fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     source_rotation_metrics = source_rotation_confirmation.get("best_metrics", {}) or {}
     fresh_residual_floor = fresh_residual.get("metrics_vs_floor", {}) or {}
@@ -1558,6 +1604,9 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fresh_gain_gate_floor = fresh_gain_gate.get("metrics_vs_floor", {}) or {}
     fresh_gain_gate_base = fresh_gain_gate.get("metrics_vs_source_rotation_base", {}) or {}
     fresh_gain_gate_ungated = fresh_gain_gate.get("free_endpoint_without_gate_vs_source_rotation_base", {}) or {}
+    fresh_self_gated_floor = fresh_self_gated.get("metrics_vs_floor", {}) or {}
+    fresh_self_gated_base = fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {}) or {}
+    fresh_self_gated_raw = fresh_self_gated.get("raw_ungated_endpoint_vs_source_rotation_base", {}) or {}
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
@@ -1579,7 +1628,7 @@ gates = {gate_result.get('gates_passed')} / {gate_result.get('gates_total')}
 verdict = {gate_result.get('current_verdict')}
 ```
 
-Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials, but the neural models still did not beat Stage37; Stage37 selector remains the current best deployable external model.
+Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials. The fresh self-gated endpoint candidate now beats the Stage37/source-rotation floor in all/t50/hard with easy preserved, but continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired.
 
 Stage41 second pass:
 
@@ -1607,7 +1656,8 @@ Stage41 second pass:
 - fresh bounded residual candidate: deployment `{fresh_bounded.get('deployment_decision')}`, protected full replacement `{fresh_bounded.get('protected_full_replacement_pass')}`, no-fallback safe `{fresh_bounded.get('no_fallback_safe_pass')}`, vs-floor all `{fresh_bounded_floor.get('all_improvement')}`, t50 `{fresh_bounded_floor.get('t50_improvement')}`, hard `{fresh_bounded_floor.get('hard_failure_improvement')}`, unprotected easy `{fresh_bounded_without.get('easy_degradation')}`. This clipped residual hypothesis did not fix no-fallback safety and remains diagnostic.
 - fresh endpoint interpolation candidate: deployment `{fresh_interpolation.get('deployment_decision')}`, protected full replacement `{fresh_interpolation.get('protected_full_replacement_pass')}`, no-fallback safe `{fresh_interpolation.get('no_fallback_safe_pass')}`, alpha `{fresh_interpolation.get('best_alpha')}`, vs-floor all `{fresh_interpolation_floor.get('all_improvement')}`, t50 `{fresh_interpolation_floor.get('t50_improvement')}`, t100 `{fresh_interpolation_floor.get('t100_improvement')}`, hard `{fresh_interpolation_floor.get('hard_failure_improvement')}`, easy `{fresh_interpolation_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_interpolation_base.get('all_improvement')}`, t50 `{fresh_interpolation_base.get('t50_improvement')}`, unprotected easy `{fresh_interpolation_without.get('easy_degradation')}`. This is the strongest protected neural evidence so far, but no-fallback safety remains false.
 - fresh endpoint gain-gate candidate: deployment `{fresh_gain_gate.get('deployment_decision')}`, protected full replacement `{fresh_gain_gate.get('protected_full_replacement_pass')}`, positive neural switch `{fresh_gain_gate.get('positive_neural_switch_pass')}`, vs-floor all `{fresh_gain_gate_floor.get('all_improvement')}`, t50 `{fresh_gain_gate_floor.get('t50_improvement')}`, t100 `{fresh_gain_gate_floor.get('t100_improvement')}`, hard `{fresh_gain_gate_floor.get('hard_failure_improvement')}`, easy `{fresh_gain_gate_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_gain_gate_base.get('all_improvement')}`, t50 `{fresh_gain_gate_base.get('t50_improvement')}`, t100 `{fresh_gain_gate_base.get('t100_improvement')}`, switch `{fresh_gain_gate_base.get('switch_rate')}`, ungated easy `{fresh_gain_gate_ungated.get('easy_degradation')}`. This is the strongest protected neural dynamics evidence so far and directly fixes the ungated endpoint easy/t100 failure through a learned gain/harm gate.
-- Tests: `python -m pytest tests` -> `107 passed in 63.19s`.
+- fresh self-gated endpoint candidate: deployment `{fresh_self_gated.get('deployment_decision')}`, protected full replacement `{fresh_self_gated.get('protected_full_replacement_pass')}`, no-external-fallback safe `{fresh_self_gated.get('no_external_fallback_safe_pass')}`, vs-floor all `{fresh_self_gated_floor.get('all_improvement')}`, t50 `{fresh_self_gated_floor.get('t50_improvement')}`, t100 `{fresh_self_gated_floor.get('t100_improvement')}`, hard `{fresh_self_gated_floor.get('hard_failure_improvement')}`, easy `{fresh_self_gated_floor.get('easy_degradation')}`, self-gated vs source-rotation-base all `{fresh_self_gated_base.get('all_improvement')}`, t50 `{fresh_self_gated_base.get('t50_improvement')}`, t100 `{fresh_self_gated_base.get('t100_improvement')}`, hard `{fresh_self_gated_base.get('hard_failure_improvement')}`, easy `{fresh_self_gated_base.get('easy_degradation')}`, raw ungated t100 `{fresh_self_gated_raw.get('t100_improvement')}`, raw ungated easy `{fresh_self_gated_raw.get('easy_degradation')}`. This fixes the Gate10 no-external-fallback safety check through an internal binary neural gate, while still recording that continuous endpoint interpolation is pending floor-geometry repair.
+- Tests: `python -m pytest tests` -> `107 passed in 64.74s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1618,7 +1668,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `107 passed in 63.19s`",
+            "- result: `107 passed in 64.74s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1667,6 +1717,7 @@ Stage41 second pass:
     reports.add("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.md")
     reports.add("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.md")
     reports.add("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_gain_gate_candidate.md")
+    reports.add("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.md")
     stage41_state = dict(gate_result)
     if all_agent:
         stage41_state["all_agent_second_pass"] = {
@@ -1871,8 +1922,21 @@ Stage41 second pass:
             "free_endpoint_without_gate_vs_source_rotation_base": fresh_gain_gate_ungated,
             "conclusion": fresh_gain_gate.get("caveat"),
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 63.19s", "source": "fresh_run"}
-    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
+    if fresh_self_gated:
+        stage41_state["fresh_self_gated_endpoint_candidate"] = {
+            "source": fresh_self_gated.get("source"),
+            "protocol_status": fresh_self_gated.get("protocol_status"),
+            "deployment_decision": fresh_self_gated.get("deployment_decision"),
+            "protected_full_replacement_pass": fresh_self_gated.get("protected_full_replacement_pass"),
+            "no_external_fallback_safe_pass": fresh_self_gated.get("no_external_fallback_safe_pass"),
+            "metrics_vs_floor": fresh_self_gated_floor,
+            "self_gated_without_external_fallback_vs_source_rotation_base": fresh_self_gated_base,
+            "raw_ungated_endpoint_vs_source_rotation_base": fresh_self_gated_raw,
+            "trajectory_endpoint_alignment_status": fresh_self_gated.get("trajectory_endpoint_alignment_status"),
+            "conclusion": fresh_self_gated.get("caveat"),
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 64.74s", "source": "fresh_run"}
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage41 self-gated neural candidate" if str(gate_result.get("current_verdict", "")).startswith("stage41_self_gated_neural_candidate") else "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 
 

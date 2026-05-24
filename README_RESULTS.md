@@ -929,12 +929,12 @@ trained_neural_world_model = true
 deployment_decision = stage41_protected_neural_candidate_pending_user_acceptance
 neural_exceeds_stage37_by_gate_margin = True
 positive_external_domains = 3
-best_stage41_neural = fresh_endpoint_gain_gate::protected_neural_dynamics
-gates = 38 / 39
-verdict = stage41_protected_neural_candidate_pending_unprotected_safety
+best_stage41_neural = fresh_self_gated_endpoint::binary_fde_neural_dynamics
+gates = 40 / 40
+verdict = stage41_self_gated_neural_candidate_endpoint_geometry_pending
 ```
 
-Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials, but the neural models still did not beat Stage37; Stage37 selector remains the current best deployable external model.
+Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials. The fresh self-gated endpoint candidate now beats the Stage37/source-rotation floor in all/t50/hard with easy preserved, but continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired.
 
 Stage41 second pass:
 
@@ -962,5 +962,5 @@ Stage41 second pass:
 - fresh bounded residual candidate: deployment `diagnostic_keep_stage37_floor`, protected full replacement `False`, no-fallback safe `False`, vs-floor all `0.2093691451653562`, t50 `0.05492974017452401`, hard `0.22598240425938143`, unprotected easy `20.566047225938334`. This clipped residual hypothesis did not fix no-fallback safety and remains diagnostic.
 - fresh endpoint interpolation candidate: deployment `diagnostic_keep_stage37_floor`, protected full replacement `True`, no-fallback safe `False`, alpha `1.0`, vs-floor all `0.4360308896303905`, t50 `0.462871212116444`, t100 `0.37849164106051136`, hard `0.4461783076319382`, easy `0.0`, vs-source-rotation-base all `0.2871819048185579`, t50 `0.43191873236381895`, unprotected easy `0.24986518840352323`. This is the strongest protected neural evidence so far, but no-fallback safety remains false.
 - fresh endpoint gain-gate candidate: deployment `endpoint_gain_gate_neural_candidate_pending_user_acceptance`, protected full replacement `True`, positive neural switch `True`, vs-floor all `0.46177001431414255`, t50 `0.43642186378275194`, t100 `0.4650043702786226`, hard `0.47323650646534476`, easy `0.0`, vs-source-rotation-base all `0.3197143848628736`, t50 `0.4039452189932936`, t100 `0.014313514795305071`, switch `0.4499891946405417`, ungated easy `0.24986519081559688`. This is the strongest protected neural dynamics evidence so far and directly fixes the ungated endpoint easy/t100 failure through a learned gain/harm gate.
-- Tests: `python -m pytest tests` -> `107 passed in 63.19s`.
-
+- fresh self-gated endpoint candidate: deployment `self_gated_m3w_neural_v1_candidate_pending_user_acceptance`, protected full replacement `True`, no-external-fallback safe `True`, vs-floor all `0.4614113848791721`, t50 `0.4362393895147665`, t100 `0.46439094388611946`, hard `0.47291172871358067`, easy `0.0`, self-gated vs source-rotation-base all `0.3192611019684539`, t50 `0.40375222949839684`, t100 `0.013183325928018297`, hard `0.31955083865771794`, easy `0.0`, raw ungated t100 `-0.19744334708407352`, raw ungated easy `0.24986519081559688`. This fixes the Gate10 no-external-fallback safety check through an internal binary neural gate, while still recording that continuous endpoint interpolation is pending floor-geometry repair.
+- Tests: `python -m pytest tests` -> `107 passed in 64.74s`.

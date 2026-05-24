@@ -1,0 +1,216 @@
+{
+  "source": "fresh_run",
+  "protocol_status": "fresh_rotation_self_gated_endpoint_candidate",
+  "hypothesis": "Make the gain/harm gate part of the neural endpoint output itself: prediction = base + alpha*(endpoint-base). This tests no-external-fallback safety while still reporting raw ungated endpoint failure.",
+  "best_policy": {
+    "gain_value_min": -0.01,
+    "gain_prob_min": 0.5,
+    "harm_prob_max": 0.14,
+    "t100_good_min": 0.0,
+    "variance_max": 0.00032432249281555414,
+    "uncertainty_max": 0.042329512536525726,
+    "max_switch": 0.45,
+    "horizon_mode": "all",
+    "alpha_mode": "binary",
+    "max_alpha": 1.0,
+    "self_gate_source": "stage41_endpoint_gain_gate_best_policy"
+  },
+  "best_val": {
+    "metrics_vs_source_rotation_base": {
+      "rows": 53256,
+      "all_improvement": 0.24573120045171326,
+      "t10_improvement": 0.6207091982098217,
+      "t25_improvement": 0.12641864929649071,
+      "t50_improvement": 0.28435131004276215,
+      "t100_improvement": 0.00017189119570759637,
+      "hard_failure_improvement": 0.25807202212350555,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.12036813313335955,
+      "switch_rate": 0.3941152170647439,
+      "regret_to_oracle": -0.11086394324149536,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 16103,
+          "all_improvement": 0.3461724398624185,
+          "t50_improvement": 0.4724151061308649,
+          "t100_improvement": 0.0005073757033561277,
+          "hard_failure_improvement": 0.35094773202107576,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.6018133267093089
+        },
+        "TrajNet": {
+          "rows": 37153,
+          "all_improvement": 0.18460618147354102,
+          "t50_improvement": 0.13851843716014633,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.194160997175444,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.3040938820552849
+        }
+      }
+    },
+    "score": 1.3288194697618227,
+    "alpha_mean": 0.3941152095794678,
+    "alpha_nonzero_mean": 1.0
+  },
+  "self_gated_without_external_fallback_vs_source_rotation_base": {
+    "rows": 55528,
+    "all_improvement": 0.3192611019684539,
+    "t10_improvement": 0.6955344912029293,
+    "t25_improvement": 0.23748388501087003,
+    "t50_improvement": 0.40375222949839684,
+    "t100_improvement": 0.013183325928018297,
+    "hard_failure_improvement": 0.31955083865771794,
+    "easy_degradation": 0.0,
+    "harm_over_fallback": -0.1736398505123468,
+    "switch_rate": 0.4499891946405417,
+    "regret_to_oracle": -0.12949866949634692,
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "all_improvement": 0.30750735799361906,
+        "t50_improvement": 0.4244035910617633,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.31332344052868233,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.4242307246824447
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "all_improvement": 0.3846602563303798,
+        "t50_improvement": 0.41444981815573834,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.3859812972110227,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.42704236570916515
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.2684899432555141,
+        "t50_improvement": 0.33297218814172014,
+        "t100_improvement": 0.03842502902356526,
+        "hard_failure_improvement": 0.2593947369806888,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5682389937106919
+      }
+    },
+    "t50_ci": {
+      "low": 0.3974567896091973,
+      "mid": 0.40357530642898176,
+      "high": 0.41021389850847045,
+      "n": 13689
+    }
+  },
+  "metrics_vs_floor": {
+    "rows": 55528,
+    "all_improvement": 0.4614113848791721,
+    "t10_improvement": 0.69558909907834,
+    "t25_improvement": 0.26757074034916273,
+    "t50_improvement": 0.4362393895147665,
+    "t100_improvement": 0.46439094388611946,
+    "hard_failure_improvement": 0.47291172871358067,
+    "easy_degradation": 0.0,
+    "harm_over_fallback": -0.317186795593556,
+    "switch_rate": 0.5717655957354848,
+    "regret_to_oracle": -0.12949866949634692,
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "all_improvement": 0.4833030577618802,
+        "t50_improvement": 0.46317263349133886,
+        "t100_improvement": 0.5385035854281408,
+        "hard_failure_improvement": 0.49813913401273,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.596617891201112
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "all_improvement": 0.547216760146751,
+        "t50_improvement": 0.45290771424935206,
+        "t100_improvement": 0.6061667533205937,
+        "hard_failure_improvement": 0.5643999475484496,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5413949320456016
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.2684899432555141,
+        "t50_improvement": 0.33297218814172014,
+        "t100_improvement": 0.03842502902356526,
+        "hard_failure_improvement": 0.2593947369806888,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5682389937106919
+      }
+    },
+    "t50_ci": {
+      "low": 0.4295875451749954,
+      "mid": 0.4361862252296785,
+      "high": 0.4426953114653275,
+      "n": 13689
+    },
+    "hard_failure_ci": {
+      "low": 0.46833520577826454,
+      "mid": 0.4728356680826595,
+      "high": 0.4774533284450004,
+      "n": 41741
+    },
+    "all_ci": {
+      "low": 0.45701120135765283,
+      "mid": 0.4614062491433939,
+      "high": 0.4656731601796882,
+      "n": 55528
+    }
+  },
+  "raw_ungated_endpoint_vs_source_rotation_base": {
+    "rows": 55528,
+    "all_improvement": 0.2868374344223086,
+    "t10_improvement": 0.6671126836987926,
+    "t25_improvement": 0.3163898088353633,
+    "t50_improvement": 0.4544848267879741,
+    "t100_improvement": -0.19744334708407352,
+    "hard_failure_improvement": 0.2805415560111326,
+    "easy_degradation": 0.24986519081559688,
+    "harm_over_fallback": -0.1560052537792597,
+    "switch_rate": 1.0,
+    "regret_to_oracle": -0.11186407276325983,
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "all_improvement": 0.19100770311652815,
+        "t50_improvement": 0.4705050467951397,
+        "t100_improvement": -0.5704743177014502,
+        "hard_failure_improvement": 0.18101858247746128,
+        "easy_degradation": 0.37263990961494664,
+        "switch_rate": 1.0
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "all_improvement": 0.2832305052410572,
+        "t50_improvement": 0.4247083093530982,
+        "t100_improvement": -0.4624739090418817,
+        "hard_failure_improvement": 0.28029333238416787,
+        "easy_degradation": 0.3509794221501181,
+        "switch_rate": 1.0
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.48604256728188755,
+        "t50_improvement": 0.45628079060862103,
+        "t100_improvement": 0.4526117178671788,
+        "hard_failure_improvement": 0.4873823315179616,
+        "easy_degradation": 0.0,
+        "switch_rate": 1.0
+      }
+    }
+  },
+  "trajectory_endpoint_alignment_status": "binary_fde_safe; continuous endpoint interpolation remains diagnostic because safety-floor endpoint deltas are not aligned with source-rotation FDE labels",
+  "alpha_mean": 0.4499891996383667,
+  "alpha_nonzero_mean": 1.0,
+  "positive_external_domains_vs_floor": 3,
+  "max_domain_easy_degradation_vs_floor": 0.0,
+  "no_external_fallback_safe_pass": true,
+  "protected_full_replacement_pass": true,
+  "deployment_decision": "self_gated_m3w_neural_v1_candidate_pending_user_acceptance",
+  "gate_checkpoint_count": 3,
+  "caveat": "Self-gated endpoint is still dataset-local 2.5D raw-frame prediction. Binary FDE selection is safe, but continuous endpoint interpolation remains diagnostic until source-rotation floor endpoint geometry is repaired. It is not true 3D, not a foundation model, and does not execute Stage5C or SMC."
+}

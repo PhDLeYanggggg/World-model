@@ -15,7 +15,7 @@
     "foundation_world_model": false,
     "stage5c_ready": false,
     "smc_ready": false,
-    "current_best_deployable": "Stage37 selector"
+    "current_best_deployable": "Stage41 self-gated neural candidate"
   },
   "failure_taxonomy": {
     "external_split": "Rebuilt test now includes multiple domains; exact Stage37 frozen policy was originally validated on UCY-style test and is not identical.",
@@ -456,44 +456,50 @@
     },
     "neural_without_fallback": {
       "rows": 55528,
-      "all_improvement": 0.2868374344223086,
-      "t10_improvement": 0.6671126836987926,
-      "t25_improvement": 0.3163898088353633,
-      "t50_improvement": 0.4544848267879741,
-      "t100_improvement": -0.19744334708407352,
-      "hard_failure_improvement": 0.2805415560111326,
-      "easy_degradation": 0.24986519081559688,
-      "harm_over_fallback": -0.1560052537792597,
-      "switch_rate": 1.0,
-      "regret_to_oracle": -0.11186407276325983,
+      "all_improvement": 0.3192611019684539,
+      "t10_improvement": 0.6955344912029293,
+      "t25_improvement": 0.23748388501087003,
+      "t50_improvement": 0.40375222949839684,
+      "t100_improvement": 0.013183325928018297,
+      "hard_failure_improvement": 0.31955083865771794,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.1736398505123468,
+      "switch_rate": 0.4499891946405417,
+      "regret_to_oracle": -0.12949866949634692,
       "by_domain": {
         "ETH_UCY": {
           "rows": 25901,
-          "all_improvement": 0.19100770311652815,
-          "t50_improvement": 0.4705050467951397,
-          "t100_improvement": -0.5704743177014502,
-          "hard_failure_improvement": 0.18101858247746128,
-          "easy_degradation": 0.37263990961494664,
-          "switch_rate": 1.0
+          "all_improvement": 0.30750735799361906,
+          "t50_improvement": 0.4244035910617633,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.31332344052868233,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.4242307246824447
         },
         "TrajNet": {
           "rows": 20087,
-          "all_improvement": 0.2832305052410572,
-          "t50_improvement": 0.4247083093530982,
-          "t100_improvement": -0.4624739090418817,
-          "hard_failure_improvement": 0.28029333238416787,
-          "easy_degradation": 0.3509794221501181,
-          "switch_rate": 1.0
+          "all_improvement": 0.3846602563303798,
+          "t50_improvement": 0.41444981815573834,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.3859812972110227,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.42704236570916515
         },
         "UCY": {
           "rows": 9540,
-          "all_improvement": 0.48604256728188755,
-          "t50_improvement": 0.45628079060862103,
-          "t100_improvement": 0.4526117178671788,
-          "hard_failure_improvement": 0.4873823315179616,
+          "all_improvement": 0.2684899432555141,
+          "t50_improvement": 0.33297218814172014,
+          "t100_improvement": 0.03842502902356526,
+          "hard_failure_improvement": 0.2593947369806888,
           "easy_degradation": 0.0,
-          "switch_rate": 1.0
+          "switch_rate": 0.5682389937106919
         }
+      },
+      "t50_ci": {
+        "low": 0.3974567896091973,
+        "mid": 0.40357530642898176,
+        "high": 0.41021389850847045,
+        "n": 13689
       }
     },
     "locked_v2_tail_robust": {
@@ -1643,6 +1649,115 @@
         }
       }
     },
+    "fresh_self_gated_endpoint_candidate": {
+      "rows": 55528,
+      "all_improvement": 0.4614113848791721,
+      "t10_improvement": 0.69558909907834,
+      "t25_improvement": 0.26757074034916273,
+      "t50_improvement": 0.4362393895147665,
+      "t100_improvement": 0.46439094388611946,
+      "hard_failure_improvement": 0.47291172871358067,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.317186795593556,
+      "switch_rate": 0.5717655957354848,
+      "regret_to_oracle": -0.12949866949634692,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.4833030577618802,
+          "t50_improvement": 0.46317263349133886,
+          "t100_improvement": 0.5385035854281408,
+          "hard_failure_improvement": 0.49813913401273,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.596617891201112
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.547216760146751,
+          "t50_improvement": 0.45290771424935206,
+          "t100_improvement": 0.6061667533205937,
+          "hard_failure_improvement": 0.5643999475484496,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.5413949320456016
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.2684899432555141,
+          "t50_improvement": 0.33297218814172014,
+          "t100_improvement": 0.03842502902356526,
+          "hard_failure_improvement": 0.2593947369806888,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.5682389937106919
+        }
+      },
+      "t50_ci": {
+        "low": 0.4295875451749954,
+        "mid": 0.4361862252296785,
+        "high": 0.4426953114653275,
+        "n": 13689
+      },
+      "hard_failure_ci": {
+        "low": 0.46833520577826454,
+        "mid": 0.4728356680826595,
+        "high": 0.4774533284450004,
+        "n": 41741
+      },
+      "all_ci": {
+        "low": 0.45701120135765283,
+        "mid": 0.4614062491433939,
+        "high": 0.4656731601796882,
+        "n": 55528
+      }
+    },
+    "fresh_self_gated_without_external_fallback": {
+      "rows": 55528,
+      "all_improvement": 0.3192611019684539,
+      "t10_improvement": 0.6955344912029293,
+      "t25_improvement": 0.23748388501087003,
+      "t50_improvement": 0.40375222949839684,
+      "t100_improvement": 0.013183325928018297,
+      "hard_failure_improvement": 0.31955083865771794,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.1736398505123468,
+      "switch_rate": 0.4499891946405417,
+      "regret_to_oracle": -0.12949866949634692,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.30750735799361906,
+          "t50_improvement": 0.4244035910617633,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.31332344052868233,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.4242307246824447
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.3846602563303798,
+          "t50_improvement": 0.41444981815573834,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.3859812972110227,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.42704236570916515
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.2684899432555141,
+          "t50_improvement": 0.33297218814172014,
+          "t100_improvement": 0.03842502902356526,
+          "hard_failure_improvement": 0.2593947369806888,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.5682389937106919
+        }
+      },
+      "t50_ci": {
+        "low": 0.3974567896091973,
+        "mid": 0.40357530642898176,
+        "high": 0.41021389850847045,
+        "n": 13689
+      }
+    },
+    "fresh_self_gated_endpoint_alignment": "binary_fde_safe; continuous endpoint interpolation remains diagnostic because safety-floor endpoint deltas are not aligned with source-rotation FDE labels",
     "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
     "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
     "jepa": "JEPA is representation auxiliary only; no generative rollout or Stage5C execution."
