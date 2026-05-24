@@ -230,6 +230,8 @@ def _features(split: str, domain_vocab: Sequence[str] | None = None) -> Tuple[np
         "easy": ds["easy"].astype(bool).astype(np.float32),
         "failure": ds["failure"].astype(bool).astype(np.float32),
         "domain": domain,
+        "scene_id": ds["scene_id"].astype(str),
+        "source_file": ds["source_file"].astype(str),
     }
     return x, labels
 
@@ -644,6 +646,158 @@ def _eval_policy_predictions(pred: Mapping[str, np.ndarray], labels: Mapping[str
         metrics["t50_ci"] = s41._bootstrap_ci(selected, labels["floor_fde"].astype(np.float64), ds, "t50", n=2000)
         metrics["hard_failure_ci"] = s41._bootstrap_ci(selected, labels["floor_fde"].astype(np.float64), ds, "hard_failure", n=1000)
     return metrics
+
+
+def _slice_labels(labels: Mapping[str, np.ndarray], mask: np.ndarray) -> Dict[str, np.ndarray]:
+    return {key: value[mask] for key, value in labels.items()}
+
+
+def _group_stress_metrics(selected: np.ndarray, switch: np.ndarray, labels: Mapping[str, np.ndarray], group_key: str) -> Dict[str, Any]:
+    values = labels[group_key].astype(str)
+    out: Dict[str, Any] = {}
+    for value in sorted(set(values.tolist())):
+        mask = values == value
+        if not np.any(mask):
+            continue
+        sliced = _slice_labels(labels, mask)
+        row = _metrics(selected[mask], sliced, switch[mask])
+        row["rows"] = int(np.sum(mask))
+        row["t50_rows"] = int(np.sum(sliced["horizon"].astype(int) == 50))
+        row["t100_rows"] = int(np.sum(sliced["horizon"].astype(int) == 100))
+        if group_key != "domain":
+            row["domain"] = str(sliced["domain"][0]) if len(sliced["domain"]) else ""
+        out[value] = row
+    return out
+
+
+def _stress_summary(group_metrics: Mapping[str, Mapping[str, Any]]) -> Dict[str, Any]:
+    if not group_metrics:
+        return {
+            "groups": 0,
+            "positive_groups": 0,
+            "max_easy_degradation": 0.0,
+            "min_all_improvement": 0.0,
+            "min_t50_improvement": 0.0,
+            "min_hard_failure_improvement": 0.0,
+        }
+    rows = list(group_metrics.values())
+    positive = [
+        row
+        for row in rows
+        if row.get("all_improvement", 0.0) > 0.0
+        or row.get("t50_improvement", 0.0) > 0.0
+        or row.get("hard_failure_improvement", 0.0) > 0.0
+    ]
+    return {
+        "groups": int(len(rows)),
+        "positive_groups": int(len(positive)),
+        "max_easy_degradation": float(max(float(row.get("easy_degradation", 0.0)) for row in rows)),
+        "min_all_improvement": float(min(float(row.get("all_improvement", 0.0)) for row in rows)),
+        "min_t50_improvement": float(min(float(row.get("t50_improvement", 0.0)) for row in rows)),
+        "min_hard_failure_improvement": float(min(float(row.get("hard_failure_improvement", 0.0)) for row in rows)),
+        "worst_all_group": min(group_metrics, key=lambda key: float(group_metrics[key].get("all_improvement", 0.0))),
+        "worst_t50_group": min(group_metrics, key=lambda key: float(group_metrics[key].get("t50_improvement", 0.0))),
+        "worst_hard_group": min(group_metrics, key=lambda key: float(group_metrics[key].get("hard_failure_improvement", 0.0))),
+        "worst_easy_group": max(group_metrics, key=lambda key: float(group_metrics[key].get("easy_degradation", 0.0))),
+    }
+
+
+def _split_overlap_audit() -> Dict[str, Any]:
+    idx = _candidate_split_index()
+    split = idx["split"].astype(str)
+    row_id = idx["row_id"].astype(np.int64)
+    source = idx["source_file"].astype(str)
+    row_sets = {sp: set(row_id[split == sp].tolist()) for sp in ["train", "val", "test"]}
+    source_sets = {sp: set(source[split == sp].tolist()) for sp in ["train", "val", "test"]}
+    row_overlap = {
+        "train_val": len(row_sets["train"] & row_sets["val"]),
+        "train_test": len(row_sets["train"] & row_sets["test"]),
+        "val_test": len(row_sets["val"] & row_sets["test"]),
+    }
+    source_overlap = {
+        "train_val": sorted(source_sets["train"] & source_sets["val"]),
+        "train_test": sorted(source_sets["train"] & source_sets["test"]),
+        "val_test": sorted(source_sets["val"] & source_sets["test"]),
+    }
+    return {
+        "row_overlap": row_overlap,
+        "source_file_overlap": source_overlap,
+        "row_overlap_pass": all(v == 0 for v in row_overlap.values()),
+        "source_file_overlap_pass": all(len(v) == 0 for v in source_overlap.values()),
+    }
+
+
+def evaluate_locked_v2_fixed_policy_confirmation() -> Dict[str, Any]:
+    started = time.perf_counter()
+    candidate = read_json(OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.json", {})
+    if not candidate:
+        candidate = evaluate_locked_v2_domain_safe_relaxed()
+    ensembles = _locked_v2_checkpoint_paths()
+    paths = ensembles.get("locked_v2_tail_hard_9model_ensemble") or ensembles.get("locked_v2_plus_tail_6model_ensemble")
+    policy = candidate.get("best_policy") or {}
+    if not paths or not policy:
+        result: Dict[str, Any] = {
+            "source": "not_run",
+            "reason": "missing locked-v2 ensemble checkpoints or fixed domain-safe policy",
+            "candidate_available": bool(candidate),
+        }
+    else:
+        split_results: Dict[str, Any] = {}
+        for split in ["val", "test"]:
+            pred, labels = _predict_ensemble(paths, split)
+            selected, switch, _idx = _apply_policy(pred, labels, policy)
+            metrics = _eval_policy_predictions(pred, labels, policy, bootstrap=(split == "test"))
+            by_source = _group_stress_metrics(selected, switch, labels, "source_file")
+            by_scene = _group_stress_metrics(selected, switch, labels, "scene_id")
+            split_results[split] = {
+                "metrics": metrics,
+                "by_source_file": by_source,
+                "by_scene": by_scene,
+                "source_stress": _stress_summary(by_source),
+                "scene_stress": _stress_summary(by_scene),
+            }
+        test = split_results["test"]
+        metrics = test["metrics"]
+        max_domain_easy = max([float(row.get("easy_degradation", 0.0)) for row in (metrics.get("by_domain") or {}).values()] or [0.0])
+        overlap = _split_overlap_audit()
+        stress_pass = bool(
+            test["source_stress"].get("positive_groups", 0) >= 2
+            and test["source_stress"].get("max_easy_degradation", 1.0) <= 0.02
+            and test["scene_stress"].get("max_easy_degradation", 1.0) <= 0.02
+        )
+        margin_pass = bool(_beats_stage37_required_margins(metrics) and max_domain_easy <= 0.02)
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "fixed_policy_confirmation_audit",
+            "model_source": "cached_verified locked-v2 ensemble checkpoints",
+            "policy_source": "fixed stage41_locked_v2_domain_safe_relaxed policy; no threshold re-selection in this audit",
+            "policy_hash": _combined_hash([OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.json"]),
+            "checkpoint_hash": _combined_hash(list(paths)),
+            "split_overlap_audit": overlap,
+            "split_results": split_results,
+            "max_domain_easy_degradation": max_domain_easy,
+            "stage37_margin_pass": margin_pass,
+            "stress_pass": stress_pass,
+            "fresh_confirmation_pass": False,
+            "deployment_decision": "candidate_needs_fresh_external_confirmation_before_deployment",
+            "caveat": "This audit freezes the post-diagnostic policy and stress-tests it by domain/source/scene, but it does not create a new external dataset or independent locked test. It is not final deployable proof.",
+        }
+    _write_json(OUT_DIR / "stage41_fixed_policy_confirmation.json", result)
+    lines = [
+        "# Stage41 Fixed Policy Confirmation Audit",
+        "",
+        "- source: `fresh_run`",
+        f"- deployment decision: `{result.get('deployment_decision')}`",
+        f"- stage37 margin pass: `{result.get('stage37_margin_pass')}`",
+        f"- stress pass: `{result.get('stress_pass')}`",
+        f"- fresh confirmation pass: `{result.get('fresh_confirmation_pass')}`",
+        f"- max domain easy degradation: `{result.get('max_domain_easy_degradation')}`",
+        f"- split overlap audit: `{result.get('split_overlap_audit')}`",
+        f"- caveat: `{result.get('caveat')}`",
+    ]
+    write_md(OUT_DIR / "stage41_fixed_policy_confirmation.md", lines)
+    _append_ledger("stage41_fixed_policy_confirmation", "ok", started, [str(OUT_DIR / "stage41_locked_v2_domain_safe_relaxed.json"), *[str(p) for p in (paths or [])]], [str(OUT_DIR / "stage41_fixed_policy_confirmation.md")])
+    return result
 
 
 def _predict_ensemble(paths: Sequence[str | Path], split: str) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
@@ -1771,6 +1925,64 @@ easy_degradation = {metrics.get('easy_degradation')}
     _write_json("research_state.json", state)
 
 
+def update_fixed_policy_confirmation_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    test_metrics = (((result.get("split_results") or {}).get("test") or {}).get("metrics") or {})
+    block = f"""
+
+## Stage41 Locked-v2 Fixed Policy Confirmation Audit
+
+This audit freezes the domain-safe relaxed policy and re-evaluates it without threshold re-selection. It reports domain/source/scene stress slices and split overlap checks, but it is still not a fresh external dataset confirmation.
+
+```text
+source = {result.get('source')}
+deployment_decision = {result.get('deployment_decision')}
+stage37_margin_pass = {result.get('stage37_margin_pass')}
+stress_pass = {result.get('stress_pass')}
+fresh_confirmation_pass = {result.get('fresh_confirmation_pass')}
+all_improvement = {test_metrics.get('all_improvement')}
+t50_improvement = {test_metrics.get('t50_improvement')}
+t100_improvement = {test_metrics.get('t100_improvement')}
+hard_failure_improvement = {test_metrics.get('hard_failure_improvement')}
+easy_degradation = {test_metrics.get('easy_degradation')}
+max_domain_easy_degradation = {result.get('max_domain_easy_degradation')}
+```
+
+Conclusion: fixed-policy stress evidence improved, but Stage37 remains the current deployable model until fresh external confirmation is completed.
+"""
+    marker = "## Stage41 Locked-v2 Fixed Policy Confirmation Audit"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_fixed_policy_confirmation.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_fixed_policy_confirmation"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "stage37_margin_pass": result.get("stage37_margin_pass"),
+        "stress_pass": result.get("stress_pass"),
+        "fresh_confirmation_pass": result.get("fresh_confirmation_pass"),
+        "test_metrics": test_metrics,
+        "conclusion": result.get("caveat"),
+    }
+    state.update(
+        {
+            "current_stage": "stage41",
+            "current_best_deployable": "Stage37 selector",
+            "last_updated": "2026-05-24",
+            "latent_generative_ready": False,
+            "stage5c_ready": False,
+            "smc_ready": False,
+            "stage41": stage41,
+            "generated_reports": sorted(reports),
+        }
+    )
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
@@ -1814,3 +2026,8 @@ def main_locked_v2_relaxed_easy_budget() -> None:
 def main_locked_v2_domain_safe_relaxed() -> None:
     result = evaluate_locked_v2_domain_safe_relaxed()
     update_domain_safe_relaxed_readme_state(result)
+
+
+def main_fixed_policy_confirmation() -> None:
+    result = evaluate_locked_v2_fixed_policy_confirmation()
+    update_fixed_policy_confirmation_readme_state(result)

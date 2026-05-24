@@ -919,6 +919,8 @@ def eval_world_models() -> Dict[str, Any]:
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     relaxed_easy = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_relaxed_easy_budget.json", {})
     domain_safe_relaxed = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_safe_relaxed.json", {})
+    fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
+    fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     if locked_v2:
         comparisons["Stage41_locked_v2_confirmatory_candidate_not_deployable"] = locked_v2.get("representative_metrics", {})
     if tail_robust:
@@ -933,6 +935,8 @@ def eval_world_models() -> Dict[str, Any]:
         comparisons["Stage41_locked_v2_relaxed_easy_budget_candidate_requires_fresh_confirmation"] = relaxed_easy.get("best_metrics", {})
     if domain_safe_relaxed:
         comparisons["Stage41_locked_v2_domain_safe_relaxed_candidate_requires_fresh_confirmation"] = domain_safe_relaxed.get("best_metrics", {})
+    if fixed_confirmation:
+        comparisons["Stage41_locked_v2_fixed_policy_confirmation_not_deployable"] = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     positive_domains = 0
     for row in best_metrics.get("by_domain", {}).values():
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0:
@@ -969,6 +973,7 @@ def eval_world_models() -> Dict[str, Any]:
         "locked_v2_neural_ensemble_available": bool(ensemble),
         "locked_v2_relaxed_easy_budget_available": bool(relaxed_easy),
         "locked_v2_domain_safe_relaxed_available": bool(domain_safe_relaxed),
+        "locked_v2_fixed_policy_confirmation_available": bool(fixed_confirmation),
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
     write_md(OUT_DIR / "stage41_neural_eval.md", ["# Stage41 Neural Eval", "", "- source: `fresh_run`", f"- deployment: `{result['deployment_decision']}`", f"- best: `{best_name}`", f"- best metrics: `{best_metrics}`", f"- comparisons: `{comparisons}`"])
@@ -1022,6 +1027,7 @@ def failure_analysis() -> Dict[str, Any]:
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     relaxed_easy = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_relaxed_easy_budget.json", {})
     domain_safe_relaxed = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_safe_relaxed.json", {})
+    fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
         "source": "fresh_run",
@@ -1058,6 +1064,7 @@ def failure_analysis() -> Dict[str, Any]:
         "locked_v2_neural_ensemble": ensemble.get("best_metrics", {}),
         "locked_v2_relaxed_easy_budget": relaxed_easy.get("best_metrics", {}),
         "locked_v2_domain_safe_relaxed": domain_safe_relaxed.get("best_metrics", {}),
+        "locked_v2_fixed_policy_confirmation": ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {}),
         "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
             "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
             "jepa": "JEPA is representation auxiliary only; no generative rollout or Stage5C execution.",
@@ -1097,6 +1104,7 @@ def gates() -> Dict[str, Any]:
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     relaxed_easy = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_relaxed_easy_budget.json", {})
     domain_safe_relaxed = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_safe_relaxed.json", {})
+    fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
@@ -1118,6 +1126,7 @@ def gates() -> Dict[str, Any]:
         ("Gate4n locked-v2 neural ensemble candidate run", bool(ensemble), ensemble.get("best_metrics")),
         ("Gate4o locked-v2 relaxed easy-budget candidate run", bool(relaxed_easy), relaxed_easy.get("best_metrics")),
         ("Gate4p locked-v2 domain-safe relaxed candidate run", bool(domain_safe_relaxed), domain_safe_relaxed.get("best_metrics")),
+        ("Gate4q fixed-policy stress confirmation audit run", bool(fixed_confirmation), {"stage37_margin_pass": fixed_confirmation.get("stage37_margin_pass"), "stress_pass": fixed_confirmation.get("stress_pass"), "fresh_confirmation_pass": fixed_confirmation.get("fresh_confirmation_pass")}),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -1166,6 +1175,8 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     relaxed_easy = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_relaxed_easy_budget.json", {})
     domain_safe_relaxed = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_safe_relaxed.json", {})
+    fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
+    fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1315,6 +1326,16 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- best metrics: `{domain_safe_relaxed.get('best_metrics')}`",
         "- caveat: this run adds validation-gap risky-domain caps after Stage41 diagnostics; it is promising candidate evidence but still needs fresh locked confirmation before replacing Stage37.",
         "",
+        "## Locked-v2 Fixed Policy Confirmation Audit",
+        "",
+        f"- available: `{bool(fixed_confirmation)}`",
+        f"- deployment decision: `{fixed_confirmation.get('deployment_decision')}`",
+        f"- Stage37-margin result: `{fixed_confirmation.get('stage37_margin_pass')}`",
+        f"- stress pass: `{fixed_confirmation.get('stress_pass')}`",
+        f"- fresh confirmation pass: `{fixed_confirmation.get('fresh_confirmation_pass')}`",
+        f"- test metrics: `{fixed_test_metrics}`",
+        "- caveat: fixed-policy stress confirmation is stronger than threshold search, but it is still not a fresh external-data confirmation.",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1364,6 +1385,8 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     ensemble = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.json", {})
     relaxed_easy = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_relaxed_easy_budget.json", {})
     domain_safe_relaxed = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_safe_relaxed.json", {})
+    fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
+    fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
@@ -1407,7 +1430,8 @@ Stage41 second pass:
 - locked-v2 neural ensemble: deployment `{ensemble.get('deployment_decision')}`, margin result `{ensemble.get('neural_exceeds_stage37_by_gate_margin')}`, t50 `{(ensemble.get('best_metrics') or {}).get('t50_improvement')}`.
 - locked-v2 relaxed easy-budget: deployment `{relaxed_easy.get('deployment_decision')}`, margin result `{relaxed_easy.get('neural_exceeds_stage37_by_gate_margin')}`, all `{(relaxed_easy.get('best_metrics') or {}).get('all_improvement')}`, t50 `{(relaxed_easy.get('best_metrics') or {}).get('t50_improvement')}`, hard `{(relaxed_easy.get('best_metrics') or {}).get('hard_failure_improvement')}`. This is candidate evidence requiring fresh confirmation before deployment.
 - locked-v2 domain-safe relaxed: deployment `{domain_safe_relaxed.get('deployment_decision')}`, margin result `{domain_safe_relaxed.get('neural_exceeds_stage37_by_gate_margin')}`, all `{(domain_safe_relaxed.get('best_metrics') or {}).get('all_improvement')}`, t50 `{(domain_safe_relaxed.get('best_metrics') or {}).get('t50_improvement')}`, hard `{(domain_safe_relaxed.get('best_metrics') or {}).get('hard_failure_improvement')}`, max domain easy `{domain_safe_relaxed.get('max_domain_easy_degradation')}`. This fixes the ETH_UCY easy-risk issue but still requires fresh confirmation before deployment.
-- Tests: `python -m pytest tests` -> `107 passed in 59.68s`.
+- locked-v2 fixed-policy confirmation: deployment `{fixed_confirmation.get('deployment_decision')}`, margin `{fixed_confirmation.get('stage37_margin_pass')}`, stress `{fixed_confirmation.get('stress_pass')}`, fresh confirmation `{fixed_confirmation.get('fresh_confirmation_pass')}`, all `{fixed_test_metrics.get('all_improvement')}`, t50 `{fixed_test_metrics.get('t50_improvement')}`, hard `{fixed_test_metrics.get('hard_failure_improvement')}`.
+- Tests: `python -m pytest tests` -> `107 passed in 59.02s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1418,7 +1442,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `107 passed in 59.68s`",
+            "- result: `107 passed in 59.02s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1460,6 +1484,7 @@ Stage41 second pass:
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_ensemble.md")
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_relaxed_easy_budget.md")
     reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_domain_safe_relaxed.md")
+    reports.add("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.md")
     stage41_state = dict(gate_result)
     if all_agent:
         stage41_state["all_agent_second_pass"] = {
@@ -1589,7 +1614,18 @@ Stage41 second pass:
             "max_domain_easy_degradation": domain_safe_relaxed.get("max_domain_easy_degradation"),
             "conclusion": domain_safe_relaxed.get("caveat"),
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 59.68s", "source": "fresh_run"}
+    if fixed_confirmation:
+        stage41_state["locked_v2_fixed_policy_confirmation"] = {
+            "source": fixed_confirmation.get("source"),
+            "protocol_status": fixed_confirmation.get("protocol_status"),
+            "deployment_decision": fixed_confirmation.get("deployment_decision"),
+            "stage37_margin_pass": fixed_confirmation.get("stage37_margin_pass"),
+            "stress_pass": fixed_confirmation.get("stress_pass"),
+            "fresh_confirmation_pass": fixed_confirmation.get("fresh_confirmation_pass"),
+            "test_metrics": fixed_test_metrics,
+            "conclusion": fixed_confirmation.get("caveat"),
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 59.02s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 

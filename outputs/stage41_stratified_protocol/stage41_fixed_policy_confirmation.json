@@ -1,0 +1,611 @@
+{
+  "source": "fresh_run",
+  "protocol_status": "fixed_policy_confirmation_audit",
+  "model_source": "cached_verified locked-v2 ensemble checkpoints",
+  "policy_source": "fixed stage41_locked_v2_domain_safe_relaxed policy; no threshold re-selection in this audit",
+  "policy_hash": "23d65efaa3bfded955848e054cbc207849cac178c718056aa379445e06cfed60",
+  "checkpoint_hash": "fdb8ca0bb20694a6bb01c28f095f71ae785be561991ca750d4b2908acbad8301",
+  "split_overlap_audit": {
+    "row_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_file_overlap": {
+      "train_val": [],
+      "train_test": [],
+      "val_test": []
+    },
+    "row_overlap_pass": true,
+    "source_file_overlap_pass": true
+  },
+  "split_results": {
+    "val": {
+      "metrics": {
+        "rows": 44836,
+        "all_improvement": 0.12068390346524349,
+        "t10_improvement": 0.0015343940760537134,
+        "t25_improvement": 0.035986719866424766,
+        "t50_improvement": 0.140407799140437,
+        "t100_improvement": 0.20512281694962053,
+        "hard_failure_improvement": 0.1282199459693154,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1471101748362427,
+        "switch_rate": 0.14934427692033186,
+        "regret_to_oracle": 0.30885823122657197,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 21598,
+            "all_improvement": 0.05771813977099405,
+            "t50_improvement": 0.12006220792662636,
+            "t100_improvement": 0.0678534271321588,
+            "hard_failure_improvement": 0.06115114529951471,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.04898601722381702
+          },
+          "TrajNet": {
+            "rows": 13698,
+            "all_improvement": 0.26441080916353266,
+            "t50_improvement": 0.2659577255672023,
+            "t100_improvement": 0.42812902879080295,
+            "hard_failure_improvement": 0.2937027214193557,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.2858811505329245
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.2860602339227092,
+            "t50_improvement": 0.06864727814697658,
+            "t100_improvement": 0.6437716841499272,
+            "hard_failure_improvement": 0.3156238570088634,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.18050314465408804
+          }
+        },
+        "candidate_oracle": {
+          "rows": 44836,
+          "all_improvement": 0.3740601026525916,
+          "t10_improvement": 0.022480295284094343,
+          "t25_improvement": 0.07134022375583116,
+          "t50_improvement": 0.39637386468282076,
+          "t100_improvement": 0.6704431429318037,
+          "hard_failure_improvement": 0.39773338318724394,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.45596840606281464,
+          "switch_rate": 1.0,
+          "regret_to_oracle": 0.0,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 21598,
+              "all_improvement": 0.4010119588969192,
+              "t50_improvement": 0.4880542856199006,
+              "t100_improvement": 0.7103554242669032,
+              "hard_failure_improvement": 0.42005661823211593,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "TrajNet": {
+              "rows": 13698,
+              "all_improvement": 0.3208644351559853,
+              "t50_improvement": 0.3282931564477094,
+              "t100_improvement": 0.5095494732326458,
+              "hard_failure_improvement": 0.3538239855195634,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.2932943815841236,
+              "t50_improvement": 0.0763795492531959,
+              "t100_improvement": 0.6531018662747778,
+              "hard_failure_improvement": 0.32253747159218404,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            }
+          }
+        },
+        "selected_candidate_distribution": {
+          "0": 38140,
+          "1": 1101,
+          "2": 45,
+          "3": 575,
+          "6": 2657,
+          "7": 1,
+          "8": 2317
+        }
+      },
+      "by_source_file": {
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt": {
+          "rows": 21598,
+          "all_improvement": 0.05771813977099405,
+          "t10_improvement": 0.0017059560699707044,
+          "t25_improvement": 0.01869784306022859,
+          "t50_improvement": 0.12006220792662636,
+          "t100_improvement": 0.0678534271321588,
+          "hard_failure_improvement": 0.06115114529951471,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.1035855366357781,
+          "switch_rate": 0.04898601722381702,
+          "regret_to_oracle": 0.6161022274625579,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 21598,
+              "all_improvement": 0.05771813977099405,
+              "t50_improvement": 0.12006220792662636,
+              "t100_improvement": 0.0678534271321588,
+              "hard_failure_improvement": 0.06115114529951471,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04898601722381702
+            }
+          },
+          "t50_rows": 5074,
+          "t100_rows": 2614,
+          "domain": "ETH_UCY"
+        },
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt": {
+          "rows": 9540,
+          "all_improvement": 0.2860602339227092,
+          "t10_improvement": 0.00025684794445191006,
+          "t25_improvement": 0.050231494441553726,
+          "t50_improvement": 0.06864727814697658,
+          "t100_improvement": 0.6437716841499272,
+          "hard_failure_improvement": 0.3156238570088634,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.21675119921587022,
+          "switch_rate": 0.18050314465408804,
+          "regret_to_oracle": 0.005481398653054016,
+          "by_domain": {
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.2860602339227092,
+              "t50_improvement": 0.06864727814697658,
+              "t100_improvement": 0.6437716841499272,
+              "hard_failure_improvement": 0.3156238570088634,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.18050314465408804
+            }
+          },
+          "t50_rows": 2340,
+          "t100_rows": 1440,
+          "domain": "UCY"
+        },
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt": {
+          "rows": 13698,
+          "all_improvement": 0.26441080916353266,
+          "t10_improvement": 0.0016059370906877923,
+          "t25_improvement": 0.10428162671276353,
+          "t50_improvement": 0.2659577255672023,
+          "t100_improvement": 0.42812902879080295,
+          "hard_failure_improvement": 0.2937027214193557,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.167234993296747,
+          "switch_rate": 0.2858811505329245,
+          "regret_to_oracle": 0.03570588431801134,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 13698,
+              "all_improvement": 0.26441080916353266,
+              "t50_improvement": 0.2659577255672023,
+              "t100_improvement": 0.42812902879080295,
+              "hard_failure_improvement": 0.2937027214193557,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.2858811505329245
+            }
+          },
+          "t50_rows": 3452,
+          "t100_rows": 2053,
+          "domain": "TrajNet"
+        }
+      },
+      "by_scene": {
+        "ETH_UCY_seq_eth": {
+          "rows": 21598,
+          "all_improvement": 0.05771813977099405,
+          "t10_improvement": 0.0017059560699707044,
+          "t25_improvement": 0.01869784306022859,
+          "t50_improvement": 0.12006220792662636,
+          "t100_improvement": 0.0678534271321588,
+          "hard_failure_improvement": 0.06115114529951471,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.1035855366357781,
+          "switch_rate": 0.04898601722381702,
+          "regret_to_oracle": 0.6161022274625579,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 21598,
+              "all_improvement": 0.05771813977099405,
+              "t50_improvement": 0.12006220792662636,
+              "t100_improvement": 0.0678534271321588,
+              "hard_failure_improvement": 0.06115114529951471,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04898601722381702
+            }
+          },
+          "t50_rows": 5074,
+          "t100_rows": 2614,
+          "domain": "ETH_UCY"
+        },
+        "TrajNet_crowds": {
+          "rows": 13698,
+          "all_improvement": 0.26441080916353266,
+          "t10_improvement": 0.0016059370906877923,
+          "t25_improvement": 0.10428162671276353,
+          "t50_improvement": 0.2659577255672023,
+          "t100_improvement": 0.42812902879080295,
+          "hard_failure_improvement": 0.2937027214193557,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.167234993296747,
+          "switch_rate": 0.2858811505329245,
+          "regret_to_oracle": 0.03570588431801134,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 13698,
+              "all_improvement": 0.26441080916353266,
+              "t50_improvement": 0.2659577255672023,
+              "t100_improvement": 0.42812902879080295,
+              "hard_failure_improvement": 0.2937027214193557,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.2858811505329245
+            }
+          },
+          "t50_rows": 3452,
+          "t100_rows": 2053,
+          "domain": "TrajNet"
+        },
+        "UCY_crowds": {
+          "rows": 9540,
+          "all_improvement": 0.2860602339227092,
+          "t10_improvement": 0.00025684794445191006,
+          "t25_improvement": 0.050231494441553726,
+          "t50_improvement": 0.06864727814697658,
+          "t100_improvement": 0.6437716841499272,
+          "hard_failure_improvement": 0.3156238570088634,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.21675119921587022,
+          "switch_rate": 0.18050314465408804,
+          "regret_to_oracle": 0.005481398653054016,
+          "by_domain": {
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.2860602339227092,
+              "t50_improvement": 0.06864727814697658,
+              "t100_improvement": 0.6437716841499272,
+              "hard_failure_improvement": 0.3156238570088634,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.18050314465408804
+            }
+          },
+          "t50_rows": 2340,
+          "t100_rows": 1440,
+          "domain": "UCY"
+        }
+      },
+      "source_stress": {
+        "groups": 3,
+        "positive_groups": 3,
+        "max_easy_degradation": 0.0,
+        "min_all_improvement": 0.05771813977099405,
+        "min_t50_improvement": 0.06864727814697658,
+        "min_hard_failure_improvement": 0.06115114529951471,
+        "worst_all_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+        "worst_t50_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+        "worst_hard_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+        "worst_easy_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt"
+      },
+      "scene_stress": {
+        "groups": 3,
+        "positive_groups": 3,
+        "max_easy_degradation": 0.0,
+        "min_all_improvement": 0.05771813977099405,
+        "min_t50_improvement": 0.06864727814697658,
+        "min_hard_failure_improvement": 0.06115114529951471,
+        "worst_all_group": "ETH_UCY_seq_eth",
+        "worst_t50_group": "UCY_crowds",
+        "worst_hard_group": "ETH_UCY_seq_eth",
+        "worst_easy_group": "ETH_UCY_seq_eth"
+      }
+    },
+    "test": {
+      "metrics": {
+        "rows": 56539,
+        "all_improvement": 0.1707426681634402,
+        "t10_improvement": 0.0011053630110359203,
+        "t25_improvement": 0.12408478460721906,
+        "t50_improvement": 0.23639645488658112,
+        "t100_improvement": 0.19083676549319006,
+        "hard_failure_improvement": 0.17761634616412003,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.09383507525175537,
+        "switch_rate": 0.2389677921434762,
+        "regret_to_oracle": 0.11783041207375768,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 26092,
+            "all_improvement": 0.06194618865780055,
+            "t50_improvement": 0.049321370882298265,
+            "t100_improvement": 0.09911483906109275,
+            "hard_failure_improvement": 0.06770307450941015,
+            "easy_degradation": 0.0055509018258728116,
+            "switch_rate": 0.03556645715161735
+          },
+          "TrajNet": {
+            "rows": 17193,
+            "all_improvement": 0.28763056804637666,
+            "t50_improvement": 0.4350107499326459,
+            "t100_improvement": 0.29932130828481274,
+            "hard_failure_improvement": 0.3043719948218453,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.41010876519513756
+          },
+          "UCY": {
+            "rows": 13254,
+            "all_improvement": 0.2930752816129506,
+            "t50_improvement": 0.436723615287648,
+            "t100_improvement": 0.31283784234621526,
+            "hard_failure_improvement": 0.3126001184230719,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.41738343141693074
+          }
+        },
+        "candidate_oracle": {
+          "rows": 56539,
+          "all_improvement": 0.38514734460552225,
+          "t10_improvement": 0.07648818804700197,
+          "t25_improvement": 0.28618436191611674,
+          "t50_improvement": 0.48389441795053967,
+          "t100_improvement": 0.4428336939689358,
+          "hard_failure_improvement": 0.4020489533524859,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.21166548732551305,
+          "switch_rate": 1.0,
+          "regret_to_oracle": 0.0,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 26092,
+              "all_improvement": 0.3701362426573215,
+              "t50_improvement": 0.4473862581990321,
+              "t100_improvement": 0.40213201117281605,
+              "hard_failure_improvement": 0.37869170579234335,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "TrajNet": {
+              "rows": 17193,
+              "all_improvement": 0.3996412705787423,
+              "t50_improvement": 0.52297836393309,
+              "t100_improvement": 0.49051098250122604,
+              "hard_failure_improvement": 0.42735420849232586,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "UCY": {
+              "rows": 13254,
+              "all_improvement": 0.40411995078566076,
+              "t50_improvement": 0.5225752010409577,
+              "t100_improvement": 0.497558673504753,
+              "hard_failure_improvement": 0.4328275220356591,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            }
+          }
+        },
+        "selected_candidate_distribution": {
+          "0": 43028,
+          "1": 1398,
+          "2": 25,
+          "3": 547,
+          "6": 1563,
+          "8": 9978
+        },
+        "t50_ci": {
+          "low": 0.22916396530814623,
+          "mid": 0.23654261230995904,
+          "high": 0.24408005511091044,
+          "n": 13998
+        },
+        "hard_failure_ci": {
+          "low": 0.1730998783276319,
+          "mid": 0.17756380978274205,
+          "high": 0.18223770342083476,
+          "n": 40495
+        }
+      },
+      "by_source_file": {
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt": {
+          "rows": 17193,
+          "all_improvement": 0.28763056804637666,
+          "t10_improvement": 0.0023353671653848496,
+          "t25_improvement": 0.22321944327472354,
+          "t50_improvement": 0.4350107499326459,
+          "t100_improvement": 0.29932130828481274,
+          "hard_failure_improvement": 0.3043719948218453,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.1392956605909623,
+          "switch_rate": 0.41010876519513756,
+          "regret_to_oracle": 0.05424529426228423,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 17193,
+              "all_improvement": 0.28763056804637666,
+              "t50_improvement": 0.4350107499326459,
+              "t100_improvement": 0.29932130828481274,
+              "hard_failure_improvement": 0.3043719948218453,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.41010876519513756
+            }
+          },
+          "t50_rows": 4258,
+          "t100_rows": 2565,
+          "domain": "TrajNet"
+        },
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt": {
+          "rows": 13254,
+          "all_improvement": 0.2930752816129506,
+          "t10_improvement": 0.0009962311208816521,
+          "t25_improvement": 0.21898244642862397,
+          "t50_improvement": 0.436723615287648,
+          "t100_improvement": 0.31283784234621526,
+          "hard_failure_improvement": 0.3126001184230719,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.14364098467066141,
+          "switch_rate": 0.41738343141693074,
+          "regret_to_oracle": 0.05442480694588573,
+          "by_domain": {
+            "UCY": {
+              "rows": 13254,
+              "all_improvement": 0.2930752816129506,
+              "t50_improvement": 0.436723615287648,
+              "t100_improvement": 0.31283784234621526,
+              "hard_failure_improvement": 0.3126001184230719,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.41738343141693074
+            }
+          },
+          "t50_rows": 3282,
+          "t100_rows": 2009,
+          "domain": "UCY"
+        },
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt": {
+          "rows": 26092,
+          "all_improvement": 0.06194618865780055,
+          "t10_improvement": 0.00037050645822889194,
+          "t25_improvement": 0.025841976848249737,
+          "t50_improvement": 0.049321370882298265,
+          "t100_improvement": 0.09911483906109275,
+          "hard_failure_improvement": 0.06770307450941015,
+          "easy_degradation": 0.0055509018258728116,
+          "harm_over_fallback": -0.03857938894272712,
+          "switch_rate": 0.03556645715161735,
+          "regret_to_oracle": 0.19193729621056121,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 26092,
+              "all_improvement": 0.06194618865780055,
+              "t50_improvement": 0.049321370882298265,
+              "t100_improvement": 0.09911483906109275,
+              "hard_failure_improvement": 0.06770307450941015,
+              "easy_degradation": 0.0055509018258728116,
+              "switch_rate": 0.03556645715161735
+            }
+          },
+          "t50_rows": 6458,
+          "t100_rows": 5744,
+          "domain": "ETH_UCY"
+        }
+      },
+      "by_scene": {
+        "ETH_UCY_students03": {
+          "rows": 26092,
+          "all_improvement": 0.06194618865780055,
+          "t10_improvement": 0.00037050645822889194,
+          "t25_improvement": 0.025841976848249737,
+          "t50_improvement": 0.049321370882298265,
+          "t100_improvement": 0.09911483906109275,
+          "hard_failure_improvement": 0.06770307450941015,
+          "easy_degradation": 0.0055509018258728116,
+          "harm_over_fallback": -0.03857938894272712,
+          "switch_rate": 0.03556645715161735,
+          "regret_to_oracle": 0.19193729621056121,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 26092,
+              "all_improvement": 0.06194618865780055,
+              "t50_improvement": 0.049321370882298265,
+              "t100_improvement": 0.09911483906109275,
+              "hard_failure_improvement": 0.06770307450941015,
+              "easy_degradation": 0.0055509018258728116,
+              "switch_rate": 0.03556645715161735
+            }
+          },
+          "t50_rows": 6458,
+          "t100_rows": 5744,
+          "domain": "ETH_UCY"
+        },
+        "TrajNet_crowds": {
+          "rows": 17193,
+          "all_improvement": 0.28763056804637666,
+          "t10_improvement": 0.0023353671653848496,
+          "t25_improvement": 0.22321944327472354,
+          "t50_improvement": 0.4350107499326459,
+          "t100_improvement": 0.29932130828481274,
+          "hard_failure_improvement": 0.3043719948218453,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.1392956605909623,
+          "switch_rate": 0.41010876519513756,
+          "regret_to_oracle": 0.05424529426228423,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 17193,
+              "all_improvement": 0.28763056804637666,
+              "t50_improvement": 0.4350107499326459,
+              "t100_improvement": 0.29932130828481274,
+              "hard_failure_improvement": 0.3043719948218453,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.41010876519513756
+            }
+          },
+          "t50_rows": 4258,
+          "t100_rows": 2565,
+          "domain": "TrajNet"
+        },
+        "UCY_students01": {
+          "rows": 13254,
+          "all_improvement": 0.2930752816129506,
+          "t10_improvement": 0.0009962311208816521,
+          "t25_improvement": 0.21898244642862397,
+          "t50_improvement": 0.436723615287648,
+          "t100_improvement": 0.31283784234621526,
+          "hard_failure_improvement": 0.3126001184230719,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.14364098467066141,
+          "switch_rate": 0.41738343141693074,
+          "regret_to_oracle": 0.05442480694588573,
+          "by_domain": {
+            "UCY": {
+              "rows": 13254,
+              "all_improvement": 0.2930752816129506,
+              "t50_improvement": 0.436723615287648,
+              "t100_improvement": 0.31283784234621526,
+              "hard_failure_improvement": 0.3126001184230719,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.41738343141693074
+            }
+          },
+          "t50_rows": 3282,
+          "t100_rows": 2009,
+          "domain": "UCY"
+        }
+      },
+      "source_stress": {
+        "groups": 3,
+        "positive_groups": 3,
+        "max_easy_degradation": 0.0055509018258728116,
+        "min_all_improvement": 0.06194618865780055,
+        "min_t50_improvement": 0.049321370882298265,
+        "min_hard_failure_improvement": 0.06770307450941015,
+        "worst_all_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+        "worst_t50_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+        "worst_hard_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+        "worst_easy_group": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt"
+      },
+      "scene_stress": {
+        "groups": 3,
+        "positive_groups": 3,
+        "max_easy_degradation": 0.0055509018258728116,
+        "min_all_improvement": 0.06194618865780055,
+        "min_t50_improvement": 0.049321370882298265,
+        "min_hard_failure_improvement": 0.06770307450941015,
+        "worst_all_group": "ETH_UCY_students03",
+        "worst_t50_group": "ETH_UCY_students03",
+        "worst_hard_group": "ETH_UCY_students03",
+        "worst_easy_group": "ETH_UCY_students03"
+      }
+    }
+  },
+  "max_domain_easy_degradation": 0.0055509018258728116,
+  "stage37_margin_pass": true,
+  "stress_pass": true,
+  "fresh_confirmation_pass": false,
+  "deployment_decision": "candidate_needs_fresh_external_confirmation_before_deployment",
+  "caveat": "This audit freezes the post-diagnostic policy and stress-tests it by domain/source/scene, but it does not create a new external dataset or independent locked test. It is not final deployable proof."
+}

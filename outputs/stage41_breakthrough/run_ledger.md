@@ -105,3 +105,7 @@
 | `run_stage41_locked_v2_domain_safe_relaxed.py` | `fresh_run` | `ok` | 29.732 | `fdb8ca0bb206` | `356b31bbae04` | `97159d5` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.066 | `78fb4a4126ca` | `98f2efecef54` | `97159d5` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.931 | `78fb4a4126ca` | `98f2efecef54` | `97159d5` |
+| `run_stage41_fixed_policy_confirmation.py` | `fresh_run` | `ok` | 15.433 | `5ade8b146ebe` | `51e6b2ee8cd9` | `f88f012` |
+| `run_stage41_gates.py` | `fresh_run` | `failed` | 2.915 | `78fb4a4126ca` | `98f2efecef54` | `f88f012` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.892 | `78fb4a4126ca` | `ca0299e9b3a9` | `f88f012` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.988 | `78fb4a4126ca` | `ca0299e9b3a9` | `f88f012` |
