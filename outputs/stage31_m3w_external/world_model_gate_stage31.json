@@ -1,0 +1,65 @@
+{
+  "source": "fresh_run",
+  "gates": [
+    {
+      "gate": "Gate1 external conversion pass or hard blocker",
+      "passed": true,
+      "evidence": "rows={'train': 119109, 'val': 7685, 'test': 3636}"
+    },
+    {
+      "gate": "Gate2 external no-leakage pass",
+      "passed": true,
+      "evidence": "causal/no future/test goal checks pass"
+    },
+    {
+      "gate": "Gate3 external strongest baseline computed",
+      "passed": true,
+      "evidence": "baseline table exists"
+    },
+    {
+      "gate": "Gate4 external latent cache built",
+      "passed": true,
+      "evidence": "15f34cec5c44eff626f12e5109c1350b4f0a3082738d397575458018572660ed"
+    },
+    {
+      "gate": "Gate5 zero-shot transfer evaluated or blocker",
+      "passed": true,
+      "evidence": "zero-shot evaluated"
+    },
+    {
+      "gate": "Gate6 adapted transfer evaluated if zero-shot fails",
+      "passed": true,
+      "evidence": "adapted selector head evaluated"
+    },
+    {
+      "gate": "Gate7 external improvement positive or domain gap explained",
+      "passed": true,
+      "evidence": "zero=-0.9266750268846149, adapted=0.0"
+    },
+    {
+      "gate": "Gate8 no metric/seconds overclaim",
+      "passed": true,
+      "evidence": "unverified_weak_metric_diagnostic"
+    },
+    {
+      "gate": "Gate9 world model generalization gate",
+      "passed": false,
+      "evidence": "requires positive zero-shot external improvement"
+    },
+    {
+      "gate": "Gate10 Stage5C false plan only",
+      "passed": true,
+      "evidence": "Stage5C not executed"
+    },
+    {
+      "gate": "Gate11 SMC false",
+      "passed": true,
+      "evidence": "SMC not enabled"
+    }
+  ],
+  "gates_passed": 10,
+  "gates_total": 11,
+  "current_verdict": "stage31_external_domain_gap_sdd_candidate_only",
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

@@ -1,0 +1,92 @@
+{
+  "source": "fresh_run",
+  "zero_shot_failed": true,
+  "adaptation_rule": "freeze M3W latent extractor; train selector head on external train; select thresholds on external val; test once",
+  "results": {
+    "external_base_adapted_selector": {
+      "source": "fresh_run",
+      "policy_source": "external val only",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.03
+      },
+      "metrics": {
+        "rows": 3636,
+        "improvement_over_external_strongest": 0.000318428181876218,
+        "t10_improvement": 0.0017565804462307266,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.16402156902445197,
+        "selector_regret": 0.01726021605409127,
+        "harm_over_fallback": -4.395725919144917e-05,
+        "switch_rate": 0.029977997799779978,
+        "mean_confidence": 0.02662610448896885,
+        "selected_distribution": {
+          "constant_position": 0,
+          "constant_velocity_causal_fd": 3527,
+          "damped_velocity": 0,
+          "constant_acceleration_causal": 109,
+          "constant_turn_rate_velocity": 0,
+          "scene_clamped_baseline": 0,
+          "goal_directed_baseline": 0
+        },
+        "per_scene": {
+          "biwi": {
+            "n": 459,
+            "improvement": 0.0006871338370365576
+          },
+          "crowds": {
+            "n": 3177,
+            "improvement": 0.00017222425943219655
+          }
+        }
+      }
+    },
+    "external_m3w_las_adapted_selector": {
+      "source": "fresh_run",
+      "policy_source": "external val only",
+      "policy": {
+        "confidence": 1.0,
+        "gain": 1000000000.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "rows": 3636,
+        "improvement_over_external_strongest": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.01730417331328272,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0,
+        "selected_distribution": {
+          "constant_position": 0,
+          "constant_velocity_causal_fd": 3636,
+          "damped_velocity": 0,
+          "constant_acceleration_causal": 0,
+          "constant_turn_rate_velocity": 0,
+          "scene_clamped_baseline": 0,
+          "goal_directed_baseline": 0
+        },
+        "per_scene": {
+          "biwi": {
+            "n": 459,
+            "improvement": 0.0
+          },
+          "crowds": {
+            "n": 3177,
+            "improvement": 0.0
+          }
+        }
+      }
+    }
+  },
+  "domain_gap_summary": "External adaptation is a selector-head test in dataset-local coordinates; positive adapted results do not prove SDD zero-shot world-model generalization."
+}

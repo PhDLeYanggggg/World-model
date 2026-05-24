@@ -671,3 +671,17 @@ gates = 14 / 14
 verdict = stage30_fresh_recompute_verified_m3w_las_v2_candidate_not_stage5c_ready
 ```
 
+## Stage31: External Topdown Generalization
+
+Stage31 converts non-SDD OpenTraj pedestrian subsets into the M3W-LAS feature-store schema, builds an external latent cache from frozen M3W checkpoints, evaluates zero-shot transfer, runs bounded external selector-head adaptation, and reports domain gap without enabling Stage5C or SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+gates = 10 / 11
+verdict = stage31_external_domain_gap_sdd_candidate_only
+```
+
