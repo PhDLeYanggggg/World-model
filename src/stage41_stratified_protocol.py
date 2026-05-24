@@ -1239,6 +1239,7 @@ def evaluate_locked_v2_domain_safe_relaxed() -> Dict[str, Any]:
         candidates: Dict[str, Any] = {}
         best_name = ""
         best_score = -1e18
+        best_risk_key: tuple[float, float, float, int, float] | None = None
         best_policy: Dict[str, Any] = {}
         # Conservative preset grid fixed before test evaluation. It uses the
         # validation-gap audit only to identify risky domains; thresholds are
@@ -1261,9 +1262,21 @@ def evaluate_locked_v2_domain_safe_relaxed() -> Dict[str, Any]:
                     - 25.0 * max(0.0, max_domain_easy - 0.02)
                 )
                 candidates[name] = {"policy": policy, "val_metrics": val_metrics, "val_score": score, "max_domain_easy_degradation": max_domain_easy}
-                if val_metrics.get("easy_degradation", 1.0) <= 0.02 and max_domain_easy <= 0.02 and score > best_score:
+                risk_key = (
+                    max_domain_easy,
+                    float(val_metrics.get("easy_degradation", 1.0)),
+                    float(val_metrics.get("switch_rate", 1.0)),
+                    0 if hard_only else 1,
+                    float(max_switch),
+                )
+                score_tol = 0.005 * max(1.0, abs(best_score), abs(score))
+                risk_better = best_risk_key is None or risk_key < best_risk_key
+                score_better = score > best_score + score_tol
+                near_tie_safer = abs(score - best_score) <= score_tol and risk_better
+                if val_metrics.get("easy_degradation", 1.0) <= 0.02 and max_domain_easy <= 0.02 and (score_better or near_tie_safer):
                     best_score = score
                     best_name = name
+                    best_risk_key = risk_key
                     best_policy = policy
         if not best_policy:
             result = {"source": "not_run", "reason": "no val-safe domain-safe relaxed policy", "risky_domains": risky_domains, "base_val": base_val, "candidates": candidates}
@@ -1277,7 +1290,7 @@ def evaluate_locked_v2_domain_safe_relaxed() -> Dict[str, Any]:
                 "source": "fresh_run",
                 "protocol_status": "locked_v2_domain_safe_relaxed_candidate_requires_fresh_confirmation",
                 "model_source": "cached_verified locked-v2 neural checkpoints; domain-safe relaxed policy freshly selected on validation",
-                "selection_rule": "select relaxed policy on validation, then cap validation-gap risky domains with a preset switch budget; evaluate test once",
+                "selection_rule": "select relaxed policy on validation, cap validation-gap risky domains with a preset switch budget, and use a validation-only risk-averse tie-breaker; evaluate test once",
                 "risky_domains": risky_domains,
                 "best_candidate": best_name,
                 "best_policy": best_policy,

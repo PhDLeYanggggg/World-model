@@ -955,6 +955,6 @@ Stage41 second pass:
 - locked-v2 domain expert composer: deployment `keep_stage37_selector`, margin result `False`, hard `0.11515500294044723`.
 - locked-v2 neural ensemble: deployment `keep_stage37_selector`, margin result `False`, t50 `0.17139836347088577`.
 - locked-v2 relaxed easy-budget: deployment `candidate_needs_fresh_confirmation_before_deployment`, margin result `True`, all `0.2020717215500809`, t50 `0.2570819493873687`, hard `0.21034517907168104`. This is candidate evidence requiring fresh confirmation before deployment.
-- locked-v2 domain-safe relaxed: deployment `candidate_needs_fresh_confirmation_before_deployment`, margin result `True`, all `0.18073534425165882`, t50 `0.2582726438373233`, hard `0.18770979758585704`, max domain easy `0.006579556802287723`. This fixes the ETH_UCY easy-risk issue but still requires fresh confirmation before deployment.
-- Tests: `python -m pytest tests` -> `107 passed in 59.67s`.
+- locked-v2 domain-safe relaxed: deployment `candidate_needs_fresh_confirmation_before_deployment`, margin result `True`, all `0.1707426681634402`, t50 `0.23639645488658112`, hard `0.17761634616412003`, max domain easy `0.0055509018258728116`. This fixes the ETH_UCY easy-risk issue but still requires fresh confirmation before deployment.
+- Tests: `python -m pytest tests` -> `107 passed in 59.68s`.
 
