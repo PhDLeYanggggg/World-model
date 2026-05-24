@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage41",
-  "current_verdict": "stage41_self_gated_neural_candidate_endpoint_geometry_verified",
+  "current_stage": "m3w_neural_v1_stage41_freeze",
+  "current_verdict": "m3w_neural_v1_frozen_candidate_pending_user_acceptance",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage34_external_row_geometry.py; python run_stage34_external_scene_goals.py; python run_stage34_external_horizon_split.py; python run_stage34_relative_baselines_v2.py; python run_stage34_latent_adapter_v2.py; python run_stage34_train_domain_conditioned_selector_v2.py; python run_stage34_cross_domain_eval.py; python run_stage34_failure_analysis.py; python run_stage34_gates.py; python -m pytest tests",
+  "last_successful_command": "python run_stage41_freeze_m3w_neural_v1.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -129,6 +129,16 @@
     "outputs/m3w/reproducibility_checklist.md",
     "outputs/m3w/stage27_evidence_report.md",
     "outputs/m3w/world_model_gate_m3w.md",
+    "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+    "outputs/m3w_neural_v1/data_card_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
+    "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/model_card_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json",
+    "outputs/m3w_neural_v1/paper_gap_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/report_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/reproducibility_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/selector_policy_m3w_neural_v1.json",
     "outputs/m3w_stage28/project_world_model_gap.md",
     "outputs/m3w_stage28/report_stage28_final.md",
     "outputs/m3w_stage28/retrained_ablation_table.md",
@@ -7123,5 +7133,24 @@
   },
   "current_best_deployable": "Stage41 self-gated neural candidate",
   "last_updated": "2026-05-24",
-  "stage5c_ready": false
+  "stage5c_ready": false,
+  "true_3d_world_model": false,
+  "large_scale_foundation_world_model": false,
+  "metric_claim_allowed": false,
+  "seconds_level_claim_allowed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "m3w_neural_v1": {
+    "source": "cached_verified",
+    "package_dir": "outputs/m3w_neural_v1",
+    "gates": "41 / 41",
+    "all_improvement": 0.41964214194307703,
+    "t50_improvement": 0.4061979981406123,
+    "t100_raw_frame_diagnostic": 0.45728888926366984,
+    "hard_failure_improvement": 0.43608295876101655,
+    "easy_degradation": 0.0,
+    "deployment_state": "protected_neural_candidate_pending_user_acceptance",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
 }

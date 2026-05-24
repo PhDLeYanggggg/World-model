@@ -144,3 +144,4 @@
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.066 | `78fb4a4126ca` | `671f023ebc4e` | `88cea63` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.368 | `78fb4a4126ca` | `60eeac3b6246` | `3ef0ea2` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.330 | `78fb4a4126ca` | `60eeac3b6246` | `3ef0ea2` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 3.361 | `78fb4a4126ca` | `60eeac3b6246` | `0aca3fe` |

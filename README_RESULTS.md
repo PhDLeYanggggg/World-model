@@ -965,3 +965,26 @@ Stage41 second pass:
 - fresh self-gated endpoint candidate: deployment `self_gated_m3w_neural_v1_candidate_pending_user_acceptance`, protected full replacement `True`, no-external-fallback safe `True`, vs-floor all `0.41964214194307703`, t50 `0.4061979981406123`, t100 `0.45728888926366984`, hard `0.43608295876101655`, easy `0.0`, self-gated vs source-rotation-base all `0.26645599312381374`, t50 `0.37198928631867734`, t100 `0.0`, hard `0.2719897698942525`, easy `0.0`, raw ungated t100 `-0.007687587556248099`, raw ungated easy `1.3360420821946413`. This fixes the Gate10 no-external-fallback safety check through an internal binary neural gate, while still recording that continuous endpoint interpolation is pending floor-geometry repair.
 - Tests: `python -m pytest tests` -> `107 passed in 66.97s`.
 
+<!-- M3W_NEURAL_V1:START -->
+## M3W-Neural v1 Frozen Evidence Package
+
+Stage41 evidence is now frozen into `outputs/m3w_neural_v1/` as a cached-verified M3W-Neural v1 candidate package.
+
+```text
+true_3D = false
+foundation_world_model = false
+metric_claim = false
+seconds_level_claim = false
+stage5c_executed = false
+smc_enabled = false
+gates = 41 / 41
+all_improvement = 0.41964214194307703
+t50_improvement = 0.4061979981406123
+t100_raw_frame_diagnostic = 0.45728888926366984
+hard_failure_improvement = 0.43608295876101655
+easy_degradation = 0.0
+deployment_state = protected_neural_candidate_pending_user_acceptance
+```
+
+Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Stage37 safety floor. Stage37 remains the explicit fallback floor, and ungated neural dynamics are not claimed safe.
+<!-- M3W_NEURAL_V1:END -->
