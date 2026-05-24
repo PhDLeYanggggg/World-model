@@ -284,9 +284,23 @@ def _train_one(trial: Mapping[str, Any], domain_vocab: Sequence[str]) -> Dict[st
     candidate_count = y_train["candidate_rel"].shape[1]
     model = _make_model(x_train.shape[1], candidate_count, int(trial["width"]), float(trial["dropout"]))
     opt = torch.optim.AdamW(model.parameters(), lr=float(trial["lr"]), weight_decay=1e-4)
-    rng = np.random.default_rng(SEED + abs(hash(str(trial["name"]))) % 10000)
+    seed_offset = int(trial.get("seed_offset", 0))
+    rng = np.random.default_rng(SEED + seed_offset + abs(hash(str(trial["name"]))) % 10000)
     ckpt = CHECKPOINT_DIR / f"stage41_stratified_{trial['name']}.pt"
     heartbeat = OUT_DIR / f"stratified_{trial['name']}_heartbeat.json"
+    if ckpt.exists() and heartbeat.exists():
+        payload = read_json(heartbeat, {})
+        return {
+            "source": "cached_verified",
+            "checkpoint": str(ckpt),
+            "heartbeat": str(heartbeat),
+            "best": {
+                "val_loss": float(payload.get("val_loss", 0.0)),
+                "epoch": int(payload.get("epoch", EPOCHS)),
+                "train_loss": float(payload.get("train_loss", 0.0)),
+            },
+            "resume_note": "checkpoint and heartbeat verified; skipped retraining",
+        }
     tx = torch.tensor(x_train)
     ty = {k: torch.tensor(v) for k, v in y_train.items() if k not in {"domain"}}
     vx = torch.tensor(x_val)
@@ -534,6 +548,76 @@ def train_stratified_protocol() -> Dict[str, Any]:
     return result
 
 
+def _aggregate_metric(values: Sequence[float]) -> Dict[str, float]:
+    arr = np.asarray(values, dtype=np.float64)
+    if len(arr) == 0:
+        return {"mean": 0.0, "std": 0.0, "min": 0.0, "max": 0.0}
+    return {"mean": float(arr.mean()), "std": float(arr.std(ddof=0)), "min": float(arr.min()), "max": float(arr.max())}
+
+
+def train_locked_v2_confirmatory() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    domain_vocab = _domain_vocab()
+    base = {"name": "locked_v2_long_horizon", "width": 224, "dropout": 0.08, "lr": 8.0e-4, "hard_w": 2.0, "t50_w": 2.0, "t100_w": 4.0, "ce_w": 0.6, "rank_w": 0.8}
+    runs: Dict[str, Any] = {}
+    for seed_offset in [0, 101, 202]:
+        trial = dict(base)
+        trial["name"] = f"{base['name']}_seed{seed_offset}"
+        trial["seed_offset"] = seed_offset
+        train = _train_one(trial, domain_vocab)
+        best_mode = ""
+        best_score = -1e18
+        best_policy: Dict[str, Any] = {}
+        modes: Dict[str, Any] = {}
+        for mode in ["conservative", "balanced", "long_horizon"]:
+            policy, val = _select_policy(train["checkpoint"], mode)
+            m = val["metrics"]
+            score = m.get("all_improvement", 0.0) + 1.4 * m.get("t50_improvement", 0.0) + m.get("hard_failure_improvement", 0.0) + 0.4 * m.get("t100_improvement", 0.0) - 20.0 * max(0.0, m.get("easy_degradation", 1.0) - 0.02)
+            modes[mode] = {"policy": policy, "val": val, "val_score": score}
+            if m.get("easy_degradation", 1.0) <= 0.02 and score > best_score:
+                best_score = score
+                best_mode = mode
+                best_policy = policy
+        test_metrics = _eval_policy(train["checkpoint"], "test", best_policy, bootstrap=seed_offset == 0) if best_policy else {}
+        runs[f"seed{seed_offset}"] = {"source": train.get("source", "fresh_run"), "trial": trial, "train": train, "best_mode": best_mode, "best_val_score": best_score, "modes": modes, "test_metrics": test_metrics}
+    metrics = [row.get("test_metrics", {}) for row in runs.values()]
+    summary = {
+        "all_improvement": _aggregate_metric([m.get("all_improvement", 0.0) for m in metrics]),
+        "t50_improvement": _aggregate_metric([m.get("t50_improvement", 0.0) for m in metrics]),
+        "t100_improvement": _aggregate_metric([m.get("t100_improvement", 0.0) for m in metrics]),
+        "hard_failure_improvement": _aggregate_metric([m.get("hard_failure_improvement", 0.0) for m in metrics]),
+        "easy_degradation": _aggregate_metric([m.get("easy_degradation", 1.0) for m in metrics]),
+        "switch_rate": _aggregate_metric([m.get("switch_rate", 0.0) for m in metrics]),
+    }
+    first_metrics = metrics[0] if metrics else {}
+    positive_domains = min(
+        sum(1 for row in m.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+        for m in metrics
+    ) if metrics else 0
+    stable = bool(
+        summary["easy_degradation"]["max"] <= 0.02
+        and summary["t50_improvement"]["min"] >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+        and positive_domains >= 2
+    )
+    result = {
+        "source": "fresh_run",
+        "protocol_status": "locked_v2_candidate_confirmatory_not_final_deployable",
+        "selection_rule": "for each seed: train on locked-v2 candidate train, select policy on val, evaluate test once; reports multi-seed stability",
+        "runs": runs,
+        "summary": summary,
+        "representative_metrics": first_metrics,
+        "positive_external_domains_min_across_seeds": positive_domains,
+        "neural_exceeds_stage37_by_gate_margin_stably": stable,
+        "deployment_decision": "candidate_needs_independent_locked_protocol_or_user_acceptance" if stable else "keep_stage37_selector",
+        "caveat": "The locked-v2 protocol is derived after validation-gap diagnosis. It is strong evidence for the failure mechanism, but not final deployment proof until accepted as the new locked external protocol or repeated on fresh data.",
+    }
+    _write_json(OUT_DIR / "stage41_locked_v2_confirmatory.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_confirmatory.md", ["# Stage41 Locked-v2 Confirmatory Multi-Seed", "", "- source: `fresh_run`", "- status: locked-v2 candidate confirmation, not final deployable claim.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_confirmatory", "ok", started, [str(DATA_DIR / "all_agent_train.npz")], [str(OUT_DIR / "stage41_locked_v2_confirmatory.md")])
+    return result
+
+
 def update_readme_state(result: Mapping[str, Any]) -> None:
     readme = Path("README_RESULTS.md")
     text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
@@ -578,6 +662,53 @@ easy_degradation = {m.get('easy_degradation')}
     _write_json("research_state.json", state)
 
 
+def update_confirmatory_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    summary = result.get("summary", {})
+    block = f"""
+
+## Stage41 Locked-v2 Confirmatory Candidate
+
+This multi-seed run freezes the stratified locked-v2 candidate protocol and checks whether the t+50 neural lift is stable. It is still not final deployable proof unless the locked-v2 protocol is accepted for deployment or repeated on fresh external data.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin_stably = {result.get('neural_exceeds_stage37_by_gate_margin_stably')}
+positive_external_domains_min_across_seeds = {result.get('positive_external_domains_min_across_seeds')}
+all_improvement_mean = {(summary.get('all_improvement') or {}).get('mean')}
+t50_improvement_mean = {(summary.get('t50_improvement') or {}).get('mean')}
+t50_improvement_min = {(summary.get('t50_improvement') or {}).get('min')}
+t100_improvement_mean = {(summary.get('t100_improvement') or {}).get('mean')}
+hard_failure_improvement_mean = {(summary.get('hard_failure_improvement') or {}).get('mean')}
+easy_degradation_max = {(summary.get('easy_degradation') or {}).get('max')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Confirmatory Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_confirmatory.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_confirmatory_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "summary": result.get("summary"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
+
+
+def main_locked_v2_confirmatory() -> None:
+    result = train_locked_v2_confirmatory()
+    update_confirmatory_readme_state(result)

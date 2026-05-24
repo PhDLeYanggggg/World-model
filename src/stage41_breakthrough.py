@@ -911,6 +911,9 @@ def eval_world_models() -> Dict[str, Any]:
     stratified_protocol = read_json("outputs/stage41_stratified_protocol/stage41_stratified_protocol.json", {})
     if stratified_protocol:
         comparisons["Stage41_stratified_protocol_candidate_not_deployable"] = stratified_protocol.get("best_metrics", {})
+    locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
+    if locked_v2:
+        comparisons["Stage41_locked_v2_confirmatory_candidate_not_deployable"] = locked_v2.get("representative_metrics", {})
     positive_domains = 0
     for row in best_metrics.get("by_domain", {}).values():
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0:
@@ -939,6 +942,7 @@ def eval_world_models() -> Dict[str, Any]:
         "policy_blender_available": bool(policy_blender),
         "candidate_distiller_available": bool(candidate_distiller),
         "stratified_protocol_candidate_available": bool(stratified_protocol),
+        "locked_v2_confirmatory_available": bool(locked_v2),
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
     write_md(OUT_DIR / "stage41_neural_eval.md", ["# Stage41 Neural Eval", "", "- source: `fresh_run`", f"- deployment: `{result['deployment_decision']}`", f"- best: `{best_name}`", f"- best metrics: `{best_metrics}`", f"- comparisons: `{comparisons}`"])
@@ -984,6 +988,7 @@ def failure_analysis() -> Dict[str, Any]:
     validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
     stratified_candidate = read_json(SPLIT_OUT / "stage41_stratified_split_candidate.json", {})
     stratified_protocol = read_json("outputs/stage41_stratified_protocol/stage41_stratified_protocol.json", {})
+    locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
         "source": "fresh_run",
@@ -1044,6 +1049,7 @@ def gates() -> Dict[str, Any]:
     validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
     stratified_candidate = read_json(SPLIT_OUT / "stage41_stratified_split_candidate.json", {})
     stratified_protocol = read_json("outputs/stage41_stratified_protocol/stage41_stratified_protocol.json", {})
+    locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
@@ -1057,6 +1063,7 @@ def gates() -> Dict[str, Any]:
         ("Gate4f candidate-FDE distiller run", bool(candidate_distiller), candidate_distiller.get("best_stage41_candidate_distiller")),
         ("Gate4g validation gap audit and stratified split candidate built", bool(validation_gap) and bool(stratified_candidate), validation_gap.get("blockers")),
         ("Gate4h stratified protocol neural retraining candidate run", bool(stratified_protocol), stratified_protocol.get("best_stage41_stratified_protocol")),
+        ("Gate4i locked-v2 confirmatory multi-seed candidate run", bool(locked_v2), locked_v2.get("summary")),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -1097,6 +1104,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     candidate_distiller = read_json(OUT_DIR / "stage41_candidate_distiller.json", {})
     validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
     stratified_protocol = read_json("outputs/stage41_stratified_protocol/stage41_stratified_protocol.json", {})
+    locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1180,6 +1188,14 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- best candidate protocol metrics: `{stratified_protocol.get('best_metrics')}`",
         "- caveat: this candidate protocol does not replace the locked Stage41 split until a confirmatory locked-protocol run is accepted.",
         "",
+        "## Locked-v2 Confirmatory Candidate",
+        "",
+        f"- available: `{bool(locked_v2)}`",
+        f"- deployment decision: `{locked_v2.get('deployment_decision')}`",
+        f"- stable Stage37-margin result: `{locked_v2.get('neural_exceeds_stage37_by_gate_margin_stably')}`",
+        f"- summary: `{locked_v2.get('summary')}`",
+        "- caveat: still not a final deployable claim unless locked-v2 is accepted or repeated on fresh external data.",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1221,6 +1237,7 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     validation_gap = read_json(SPLIT_OUT / "stage41_validation_gap_audit.json", {})
     stratified_candidate = read_json(SPLIT_OUT / "stage41_stratified_split_candidate.json", {})
     stratified_protocol = read_json("outputs/stage41_stratified_protocol/stage41_stratified_protocol.json", {})
+    locked_v2 = read_json("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.json", {})
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
@@ -1256,7 +1273,8 @@ Stage41 second pass:
 - candidate-FDE distiller: `{candidate_distiller.get('best_stage41_candidate_distiller')}` with deployment `{candidate_distiller.get('deployment_decision')}`.
 - validation gap audit: blockers `{validation_gap.get('blockers')}`; stratified candidate status `{stratified_candidate.get('status')}`.
 - stratified protocol candidate: `{stratified_protocol.get('best_stage41_stratified_protocol')}` with deployment `{stratified_protocol.get('deployment_decision')}` and t50 `{(stratified_protocol.get('best_metrics') or {}).get('t50_improvement')}`.
-- Tests: `python -m pytest tests` -> `100 passed in 58.91s`.
+- locked-v2 confirmatory: deployment `{locked_v2.get('deployment_decision')}`, stable margin `{locked_v2.get('neural_exceeds_stage37_by_gate_margin_stably')}`, t50 mean `{((locked_v2.get('summary') or {}).get('t50_improvement') or {}).get('mean')}`.
+- Tests: `python -m pytest tests` -> `101 passed in 59.21s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1267,7 +1285,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `100 passed in 58.91s`",
+            "- result: `101 passed in 59.21s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1301,6 +1319,7 @@ Stage41 second pass:
     reports.add(str(SPLIT_OUT / "stage41_stratified_split_candidate.md"))
     reports.add("outputs/stage41_stratified_protocol/stage41_stratified_dataset.md")
     reports.add("outputs/stage41_stratified_protocol/stage41_stratified_protocol.md")
+    reports.add("outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.md")
     stage41_state = dict(gate_result)
     if all_agent:
         stage41_state["all_agent_second_pass"] = {
@@ -1359,7 +1378,15 @@ Stage41 second pass:
             "best_metrics": stratified_protocol.get("best_metrics"),
             "conclusion": "Candidate protocol shows t50 neural lift after validation stratification, but it is not a deployable claim until confirmed on a locked protocol.",
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "100 passed in 58.91s", "source": "fresh_run"}
+    if locked_v2:
+        stage41_state["locked_v2_confirmatory_candidate"] = {
+            "source": locked_v2.get("source"),
+            "protocol_status": locked_v2.get("protocol_status"),
+            "deployment_decision": locked_v2.get("deployment_decision"),
+            "summary": locked_v2.get("summary"),
+            "conclusion": locked_v2.get("caveat"),
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "101 passed in 59.21s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 

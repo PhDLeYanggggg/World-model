@@ -1,6 +1,6 @@
 # Stage41 Gates
 
-- gates passed: `22 / 25`
+- gates passed: `23 / 26`
 - verdict: `stage41_breakthrough_not_yet_keep_stage37`
 - Stage5C executed: `False`
 - SMC enabled: `False`
@@ -19,6 +19,7 @@
 | Gate4f candidate-FDE distiller run | True | candidate_distill_t100_curriculum::balanced |
 | Gate4g validation gap audit and stratified split candidate built | True | ['ETH_UCY t50 validation headroom is not representative: val=0.0445, test=0.4881'] |
 | Gate4h stratified protocol neural retraining candidate run | True | stratified_long_horizon::balanced |
+| Gate4i locked-v2 confirmatory multi-seed candidate run | True | {'all_improvement': {'mean': 0.10076060162719132, 'std': 0.021278091594282754, 'min': 0.0836020732388636, 'max': 0.13074837932655314}, 't50_improvement': {'mean': 0.11543840676955701, 'std': 0.01631948702560948, 'min': 0.09788763837378578, 'max': 0.1371932509603334}, 't100_improvement': {'mean': 0.13278486183881436, 'std': 0.05339766506096824, 'min': 0.08500067681076384, 'max': 0.20731754772267286}, 'hard_failure_improvement': {'mean': 0.1087480829975569, 'std': 0.024043432138828265, 'min': 0.09008230236540615, 'max': 0.14269441310911757}, 'easy_degradation': {'mean': 0.00245989618002714, 'std': 0.001806647589304468, 'min': 0.0, 'max': 0.004287879683311013}, 'switch_rate': {'mean': 0.0863887464110319, 'std': 0.01413073749111931, 'min': 0.07607138435416261, 'max': 0.10636905498859195}} |
 | Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.05288899790075696 |
 | Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.023656017980682287 |
 | Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.05758402319342837 |

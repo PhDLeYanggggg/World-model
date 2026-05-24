@@ -17,3 +17,10 @@ def test_stage41_stratified_split_mask_shape() -> None:
     assert mask.dtype == bool
     assert mask.shape == (n,)
     assert np.any(mask)
+
+
+def test_stage41_stratified_metric_aggregate() -> None:
+    summary = strat._aggregate_metric([0.1, 0.2, 0.3])
+    assert round(summary["mean"], 3) == 0.2
+    assert summary["min"] == 0.1
+    assert summary["max"] == 0.3
