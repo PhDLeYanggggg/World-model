@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage36",
-  "current_verdict": "stage36_t50_transfer_not_repaired",
+  "current_stage": "stage37",
+  "current_verdict": "stage37_t50_transfer_repaired_deployable",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -290,7 +290,22 @@
     "outputs/stage36_t50_repair/stage36_t50_feature_report.md",
     "outputs/stage36_t50_repair/stage36_t50_forensics.md",
     "outputs/stage36_t50_repair/stage36_t50_policy_search.md",
-    "outputs/stage36_t50_repair/world_model_gate_stage36.md"
+    "outputs/stage36_t50_repair/world_model_gate_stage36.md",
+    "outputs/stage37_t50_history/cross_domain_eval_stage37.md",
+    "outputs/stage37_t50_history/history_window_schema.json",
+    "outputs/stage37_t50_history/project_world_model_gap_stage37.md",
+    "outputs/stage37_t50_history/pytest_status.md",
+    "outputs/stage37_t50_history/report_stage37_final.md",
+    "outputs/stage37_t50_history/run_ledger.md",
+    "outputs/stage37_t50_history/stage37_conformal_safety_report.md",
+    "outputs/stage37_t50_history/stage37_goal_prototype_report.md",
+    "outputs/stage37_t50_history/stage37_history_window_report.md",
+    "outputs/stage37_t50_history/stage37_switchability_report.md",
+    "outputs/stage37_t50_history/stage37_t50_baseline_family.md",
+    "outputs/stage37_t50_history/stage37_t50_failure_analysis.md",
+    "outputs/stage37_t50_history/stage37_t50_quality_audit.md",
+    "outputs/stage37_t50_history/stage37_t50_selector_report.md",
+    "outputs/stage37_t50_history/world_model_gate_stage37.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -1882,6 +1897,340 @@
     "gates_passed": 12,
     "gates_total": 14,
     "current_verdict": "stage36_t50_transfer_not_repaired",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage37": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate1 history window built",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "split": "train",
+            "rows": 158942,
+            "source_found": 158942,
+            "k_available": {
+              "8": 128439,
+              "16": 87695,
+              "32": 44059,
+              "64": 20715
+            }
+          },
+          "val": {
+            "split": "val",
+            "rows": 112746,
+            "source_found": 112746,
+            "k_available": {
+              "8": 67879,
+              "16": 12186,
+              "32": 0,
+              "64": 0
+            }
+          },
+          "test": {
+            "split": "test",
+            "rows": 66303,
+            "source_found": 66303,
+            "k_available": {
+              "8": 41283,
+              "16": 7506,
+              "32": 0,
+              "64": 0
+            }
+          }
+        }
+      },
+      {
+        "gate": "Gate2 no leakage pass",
+        "passed": true,
+        "evidence": {
+          "uses_current_and_past_frames_only": true,
+          "future_endpoint_input": false,
+          "central_velocity": false,
+          "test_endpoint_goals": false
+        }
+      },
+      {
+        "gate": "Gate3 t50 quality audit pass",
+        "passed": true,
+        "evidence": {
+          "t50_rows": 16263,
+          "history_len_ge_8": 10008,
+          "history_len_ge_16": 0,
+          "history_len_ge_32": 0,
+          "history_len_ge_64": 0,
+          "source_found": 16263,
+          "future_label_valid": 16263,
+          "scene_distribution": {
+            "UCY_crowds": 2340,
+            "UCY_students01": 11583,
+            "UCY_zara03": 2340
+          },
+          "domain_distribution": {
+            "UCY": 16263
+          },
+          "baseline_error_mean": 0.6854909319768842,
+          "oracle_error_mean": 0.5279460167791594,
+          "oracle_margin_mean": 0.023048298885204398,
+          "oracle_headroom": 0.22982786182653314
+        }
+      },
+      {
+        "gate": "Gate4 goal prototypes built without test endpoints",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "rows": 158942,
+            "prototype_count": 8,
+            "mean_entropy": 1.5178409814834595,
+            "mean_ambiguity": 0.6515766382217407
+          },
+          "val": {
+            "rows": 112746,
+            "prototype_count": 8,
+            "mean_entropy": 1.5990002155303955,
+            "mean_ambiguity": 0.676776111125946
+          },
+          "test": {
+            "rows": 66303,
+            "prototype_count": 8,
+            "mean_entropy": 1.5864468812942505,
+            "mean_ambiguity": 0.6736359000205994
+          }
+        }
+      },
+      {
+        "gate": "Gate5 t50 baseline family built",
+        "passed": true,
+        "evidence": {
+          "t50_rows": 16263,
+          "family_mean_fde": {
+            "constant_position": 1.2695345260932,
+            "constant_velocity_causal_fd": 11.732235399495703,
+            "damped_velocity": 2.9191251223207537,
+            "constant_acceleration": 11.965999549415235,
+            "turn_rate": 12.787680918781573,
+            "history_decay_baseline": 1.396845585677735,
+            "prototype_goal_directed_baseline": 12.3985631849885,
+            "neighbor_aware_decay_baseline": 1.1441748184339853
+          },
+          "family_mean_relative_fde": {
+            "constant_position": 0.08380548298825896,
+            "constant_velocity_causal_fd": 0.6997987365905954,
+            "damped_velocity": 0.17743667427879115,
+            "constant_acceleration": 0.7321309329987568,
+            "turn_rate": 0.7662606023164736,
+            "history_decay_baseline": 0.08949351277875563,
+            "prototype_goal_directed_baseline": 0.7381259378019799,
+            "neighbor_aware_decay_baseline": 0.06428479743863455
+          },
+          "family_oracle_headroom_vs_stage35_fallback": -0.08211011984837602,
+          "best_distribution": {
+            "history_decay_baseline": 2355,
+            "constant_position": 3599,
+            "turn_rate": 26,
+            "constant_velocity_causal_fd": 49,
+            "neighbor_aware_decay_baseline": 9955,
+            "prototype_goal_directed_baseline": 37,
+            "damped_velocity": 223,
+            "constant_acceleration": 19
+          }
+        }
+      },
+      {
+        "gate": "Gate6 switchability model val positive",
+        "passed": true,
+        "evidence": {
+          "t50_failure_predictor": {
+            "source": "fresh_run",
+            "val_auroc": 0.771113805523548,
+            "val_auprc": 0.41114056862822573,
+            "positive_rate_train": 0.29915517551292914,
+            "positive_rate_val": 0.17947376289430408
+          },
+          "t50_gain_predictor": {
+            "source": "fresh_run",
+            "val_auroc": 0.6617879139209526,
+            "val_auprc": 0.6586475843818191,
+            "positive_rate_train": 0.44223608864237474,
+            "positive_rate_val": 0.5808790551651966
+          },
+          "t50_harm_predictor": {
+            "source": "fresh_run",
+            "val_auroc": 0.6503120818602564,
+            "val_auprc": 0.6184666839625047,
+            "positive_rate_train": 0.45931232827465784,
+            "positive_rate_val": 0.40058304679324264
+          }
+        }
+      },
+      {
+        "gate": "Gate7 t50 selector test improvement >3%",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.1348254070727205,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08457292542209705,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1554340386904196,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.493665392606631,
+          "harm_over_fallback": -0.14194807778019042,
+          "switch_rate": 0.0990452920682322,
+          "mean_confidence": 0.04121534153819084,
+          "stage35_non_t50_plus_stage37_t50": true,
+          "status": "fresh_run",
+          "reason": "Stage37 final safety-selected external policy."
+        }
+      },
+      {
+        "gate": "Gate8 all improvement >0",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.1348254070727205,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08457292542209705,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1554340386904196,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.493665392606631,
+          "harm_over_fallback": -0.14194807778019042,
+          "switch_rate": 0.0990452920682322,
+          "mean_confidence": 0.04121534153819084,
+          "stage35_non_t50_plus_stage37_t50": true,
+          "status": "fresh_run",
+          "reason": "Stage37 final safety-selected external policy."
+        }
+      },
+      {
+        "gate": "Gate9 hard/failure improvement >10%",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.1348254070727205,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08457292542209705,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1554340386904196,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.493665392606631,
+          "harm_over_fallback": -0.14194807778019042,
+          "switch_rate": 0.0990452920682322,
+          "mean_confidence": 0.04121534153819084,
+          "stage35_non_t50_plus_stage37_t50": true,
+          "status": "fresh_run",
+          "reason": "Stage37 final safety-selected external policy."
+        }
+      },
+      {
+        "gate": "Gate10 easy degradation <=2%",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.1348254070727205,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08457292542209705,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1554340386904196,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.493665392606631,
+          "harm_over_fallback": -0.14194807778019042,
+          "switch_rate": 0.0990452920682322,
+          "mean_confidence": 0.04121534153819084,
+          "stage35_non_t50_plus_stage37_t50": true,
+          "status": "fresh_run",
+          "reason": "Stage37 final safety-selected external policy."
+        }
+      },
+      {
+        "gate": "Gate11 held-out external scenes stable",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.1348254070727205,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08457292542209705,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1554340386904196,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.493665392606631,
+          "harm_over_fallback": -0.14194807778019042,
+          "switch_rate": 0.0990452920682322,
+          "mean_confidence": 0.04121534153819084,
+          "stage35_non_t50_plus_stage37_t50": true,
+          "status": "fresh_run",
+          "reason": "held-out external test scenes."
+        }
+      },
+      {
+        "gate": "Gate12 SDD performance not destroyed",
+        "passed": true,
+        "evidence": {
+          "rows": 100000,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "selector_regret": 0.0,
+          "harm_over_fallback": 0.0,
+          "switch_rate": 0.0,
+          "mean_confidence": 0.0,
+          "status": "cached_verified",
+          "reason": "Stage37 selector is not deployed on SDD; Stage26 remains safety floor."
+        }
+      },
+      {
+        "gate": "Gate13 t100 diagnostic honest",
+        "passed": true,
+        "evidence": "diagnostic_raw_frame_dataset_local"
+      },
+      {
+        "gate": "Gate14 cross-domain deployable candidate gate",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.1348254070727205,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.08457292542209705,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1554340386904196,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.493665392606631,
+          "harm_over_fallback": -0.14194807778019042,
+          "switch_rate": 0.0990452920682322,
+          "mean_confidence": 0.04121534153819084,
+          "stage35_non_t50_plus_stage37_t50": true,
+          "status": "fresh_run",
+          "reason": "Stage37 final safety-selected external policy."
+        }
+      },
+      {
+        "gate": "Gate15 Stage5C false",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate16 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 16,
+    "gates_total": 16,
+    "current_verdict": "stage37_t50_transfer_repaired_deployable",
     "stage5c_executed": false,
     "smc_enabled": false
   }

@@ -815,3 +815,29 @@ Key Stage36 outcome:
 - Horizon-specific t+50 selectors and bounded curriculum were trained/validated, but no policy safely passed the `>3%` t+50 gate on held-out test scenes.
 - all/hard/easy remain acceptable through conservative fallback, but t+50 remains unrepaired, so Stage36 is not deployable cross-domain M3W.
 - Tests: `python -m pytest tests` -> `70 passed`.
+
+## Stage37: External t+50 Causal History Transfer
+
+Stage37 builds past-only external history windows and scene-agnostic goal prototypes to repair the external t+50 gate. It does not execute Stage5C or enable SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+final_all_improvement = 0.1348254070727205
+final_t50_improvement = 0.08457292542209705
+final_t100_diagnostic_improvement = 0.0
+final_hard_improvement = 0.1554340386904196
+final_easy_degradation = 0.0004114683717719725
+gates = 16 / 16
+verdict = stage37_t50_transfer_repaired_deployable
+```
+
+Key Stage37 outcome:
+
+- Built K=8/16/32/64 past-only history windows and scene-agnostic goal prototypes from train/past motion only.
+- Rebuilt t+50 candidate baseline family and switchability models.
+- t+50 now passes the Stage37 external gate under dataset-local raw-frame evaluation, but no metric/seconds/3D claim is made.
+- Tests: `python -m pytest tests` -> `73 passed`.

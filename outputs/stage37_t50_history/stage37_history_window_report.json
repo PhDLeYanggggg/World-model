@@ -1,0 +1,75 @@
+{
+  "source": "fresh_run",
+  "stage35_inputs": "cached_verified",
+  "reports": {
+    "train": {
+      "split": "train",
+      "rows": 158942,
+      "source_found": 158942,
+      "k_available": {
+        "8": 128439,
+        "16": 87695,
+        "32": 44059,
+        "64": 20715
+      }
+    },
+    "val": {
+      "split": "val",
+      "rows": 112746,
+      "source_found": 112746,
+      "k_available": {
+        "8": 67879,
+        "16": 12186,
+        "32": 0,
+        "64": 0
+      }
+    },
+    "test": {
+      "split": "test",
+      "rows": 66303,
+      "source_found": 66303,
+      "k_available": {
+        "8": 41283,
+        "16": 7506,
+        "32": 0,
+        "64": 0
+      }
+    }
+  },
+  "schema": {
+    "source": "fresh_run",
+    "max_k": 64,
+    "k_values": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "fields": [
+      "history_x/y",
+      "history_dx/dy",
+      "history_speed",
+      "history_accel",
+      "history_heading",
+      "history_curvature",
+      "history_turn_angle",
+      "history_stop_go",
+      "history_dwell",
+      "history_path_length",
+      "history_velocity_decay",
+      "history_goal_alignment_proxy",
+      "history_neighbor_count",
+      "history_min_neighbor_dist",
+      "history_density",
+      "history_TTC",
+      "history_closing_speed",
+      "history_valid_mask"
+    ],
+    "no_leakage": {
+      "uses_current_and_past_frames_only": true,
+      "future_endpoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false
+    }
+  }
+}
