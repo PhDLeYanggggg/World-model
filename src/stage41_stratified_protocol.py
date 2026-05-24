@@ -410,7 +410,7 @@ def _policy_grid() -> list[Dict[str, Any]]:
         for gp in [0.0, 0.35, 0.55, 0.75]
         for hp in [0.04, 0.08, 0.16, 0.30]
         for pp in [0.0, 0.4, 0.65]
-        for ms in [0.0, 0.03, 0.05, 0.10, 0.18, 0.30]
+        for ms in [0.0, 0.03, 0.05, 0.10, 0.18, 0.30, 0.45, 0.60]
         for hard_only in [False, True]
     ]
 
@@ -433,6 +433,10 @@ def _metric_score(metrics: Mapping[str, Any], mode: str) -> float:
         return all_imp + 3.0 * t50 + 1.2 * hard + 0.35 * t100 + 0.8 * min_domain_t50 + 0.3 * min_domain_hard + 0.02 * switch - easy_penalty
     if mode == "domain_tail":
         return all_imp + 2.4 * t50 + 1.4 * hard + 0.35 * t100 + 1.1 * min_domain_t50 + 0.7 * min_domain_hard + 0.02 * switch - easy_penalty
+    if mode == "hard_all":
+        return 2.0 * all_imp + 0.8 * t50 + 2.8 * hard + 0.25 * t100 + 0.5 * min_domain_hard + 0.03 * switch - easy_penalty
+    if mode == "domain_hard":
+        return 1.6 * all_imp + 0.8 * t50 + 2.3 * hard + 0.25 * t100 + 0.9 * min_domain_hard + 0.4 * min_domain_t50 + 0.03 * switch - easy_penalty
     return all_imp + 1.4 * t50 + hard + 0.4 * t100 - 20.0 * max(0.0, easy - 0.02)
 
 
@@ -495,6 +499,10 @@ def _select_policy_from_predictions(pred: Mapping[str, np.ndarray], labels: Mapp
                     score = (2.2 if h == 50 else 0.7) * imp + (1.4 if h == 50 else 0.6) * hard_imp + 0.2 * float(h == 100) * imp + 0.01 * float(np.mean(sw))
                 elif mode == "domain_tail":
                     score = (1.8 if h == 50 else 0.8) * imp + (1.6 if h in {50, 100} else 0.7) * hard_imp + 0.01 * float(np.mean(sw))
+                elif mode == "hard_all":
+                    score = 1.5 * imp + (2.8 if h in {25, 50, 100} else 1.2) * hard_imp + 0.02 * float(np.mean(sw))
+                elif mode == "domain_hard":
+                    score = 1.2 * imp + (2.4 if h in {25, 50, 100} else 1.2) * hard_imp + 0.25 * float(h == 50) * imp + 0.02 * float(np.mean(sw))
                 else:
                     score = imp + (0.8 if h in {50, 100} else 0.25) * hard_imp + 0.01 * float(np.mean(sw))
                 if score > best_score:
@@ -749,9 +757,87 @@ def train_locked_v2_tail_robust() -> Dict[str, Any]:
     return result
 
 
+def train_locked_v2_hard_all() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    domain_vocab = _domain_vocab()
+    trial_bases = [
+        {"name": "locked_v2_hard_all", "width": 256, "dropout": 0.08, "lr": 6.0e-4, "hard_w": 6.0, "t50_w": 1.5, "t100_w": 2.0, "ce_w": 1.0, "rank_w": 1.4},
+        {"name": "locked_v2_domain_hard", "width": 256, "dropout": 0.10, "lr": 5.0e-4, "hard_w": 7.0, "t50_w": 2.0, "t100_w": 2.0, "ce_w": 1.2, "rank_w": 1.5},
+        {"name": "locked_v2_all_domain_balanced", "width": 224, "dropout": 0.08, "lr": 7.0e-4, "hard_w": 4.0, "t50_w": 2.0, "t100_w": 2.0, "ce_w": 0.9, "rank_w": 1.0},
+    ]
+    runs: Dict[str, Any] = {}
+    for seed_offset in [0, 101, 202]:
+        seed_key = f"seed{seed_offset}"
+        seed_runs: Dict[str, Any] = {}
+        best_trial_name = ""
+        best_mode = ""
+        best_score = -1e18
+        best_policy: Dict[str, Any] = {}
+        best_ckpt = ""
+        for base in trial_bases:
+            trial = dict(base)
+            trial["name"] = f"{base['name']}_seed{seed_offset}"
+            trial["seed_offset"] = seed_offset
+            train = _train_one(trial, domain_vocab)
+            modes: Dict[str, Any] = {}
+            for mode in ["hard_all", "domain_hard", "balanced", "domain_tail"]:
+                policy, val = _select_policy(train["checkpoint"], mode)
+                m = val["metrics"]
+                score = _metric_score(m, mode)
+                modes[mode] = {"policy": policy, "val": val, "val_score": score}
+                if m.get("easy_degradation", 1.0) <= 0.02 and score > best_score:
+                    best_score = score
+                    best_trial_name = trial["name"]
+                    best_mode = mode
+                    best_policy = policy
+                    best_ckpt = train["checkpoint"]
+            seed_runs[trial["name"]] = {"source": train.get("source", "fresh_run"), "trial": trial, "train": train, "modes": modes}
+        test_metrics = _eval_policy(best_ckpt, "test", best_policy, bootstrap=seed_offset == 0) if best_policy else {}
+        runs[seed_key] = {
+            "source": "fresh_run",
+            "best_trial": best_trial_name,
+            "best_mode": best_mode,
+            "best_val_score": best_score,
+            "trials": seed_runs,
+            "test_metrics": test_metrics,
+        }
+    metrics = [row.get("test_metrics", {}) for row in runs.values()]
+    summary = {
+        "all_improvement": _aggregate_metric([m.get("all_improvement", 0.0) for m in metrics]),
+        "t50_improvement": _aggregate_metric([m.get("t50_improvement", 0.0) for m in metrics]),
+        "t100_improvement": _aggregate_metric([m.get("t100_improvement", 0.0) for m in metrics]),
+        "hard_failure_improvement": _aggregate_metric([m.get("hard_failure_improvement", 0.0) for m in metrics]),
+        "easy_degradation": _aggregate_metric([m.get("easy_degradation", 1.0) for m in metrics]),
+        "switch_rate": _aggregate_metric([m.get("switch_rate", 0.0) for m in metrics]),
+    }
+    positive_domains = min(
+        sum(1 for row in m.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+        for m in metrics
+    ) if metrics else 0
+    stable = bool(_summary_beats_stage37_required_margins(summary) and positive_domains >= 2)
+    result = {
+        "source": "fresh_run",
+        "protocol_status": "locked_v2_hard_all_candidate_not_final_deployable",
+        "selection_rule": "for each seed: train hard/all weighted neural cost models; select by validation-only hard/all domain score; evaluate test once",
+        "runs": runs,
+        "summary": summary,
+        "representative_metrics": metrics[0] if metrics else {},
+        "positive_external_domains_min_across_seeds": positive_domains,
+        "neural_exceeds_stage37_by_gate_margin_stably": stable,
+        "deployment_decision": "candidate_needs_independent_locked_protocol_or_user_acceptance" if stable else "keep_stage37_selector",
+        "caveat": "Hard/all locked-v2 remains a candidate protocol derived after Stage41 validation-gap diagnosis. It cannot replace Stage37 without passing all strict margins and independent confirmation.",
+    }
+    _write_json(OUT_DIR / "stage41_locked_v2_hard_all.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_hard_all.md", ["# Stage41 Locked-v2 Hard/All Multi-Seed", "", "- source: `fresh_run`", "- status: hard/all locked-v2 candidate confirmation, not final deployable claim.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_hard_all", "ok", started, [str(DATA_DIR / "all_agent_train.npz")], [str(OUT_DIR / "stage41_locked_v2_hard_all.md")])
+    return result
+
+
 def _locked_v2_checkpoint_paths() -> Dict[str, list[str]]:
     locked = read_json(OUT_DIR / "stage41_locked_v2_confirmatory.json", {})
     tail = read_json(OUT_DIR / "stage41_locked_v2_tail_robust.json", {})
+    hard = read_json(OUT_DIR / "stage41_locked_v2_hard_all.json", {})
     locked_paths: list[str] = []
     for row in (locked.get("runs") or {}).values():
         ckpt = ((row.get("train") or {}).get("checkpoint"))
@@ -764,13 +850,24 @@ def _locked_v2_checkpoint_paths() -> Dict[str, list[str]]:
             ckpt = ((((row.get("trials") or {}).get(best_trial) or {}).get("train") or {}).get("checkpoint"))
             if ckpt and Path(ckpt).exists():
                 tail_paths.append(str(ckpt))
+    hard_paths: list[str] = []
+    for row in (hard.get("runs") or {}).values():
+        best_trial = row.get("best_trial")
+        if best_trial:
+            ckpt = ((((row.get("trials") or {}).get(best_trial) or {}).get("train") or {}).get("checkpoint"))
+            if ckpt and Path(ckpt).exists():
+                hard_paths.append(str(ckpt))
     paths: Dict[str, list[str]] = {}
     if locked_paths:
         paths["locked_v2_3seed_ensemble"] = locked_paths
     if tail_paths:
         paths["tail_robust_3seed_ensemble"] = tail_paths
+    if hard_paths:
+        paths["hard_all_3seed_ensemble"] = hard_paths
     if locked_paths and tail_paths:
         paths["locked_v2_plus_tail_6model_ensemble"] = locked_paths + tail_paths
+    if locked_paths and tail_paths and hard_paths:
+        paths["locked_v2_tail_hard_9model_ensemble"] = locked_paths + tail_paths + hard_paths
     return paths
 
 
@@ -998,6 +1095,48 @@ easy_degradation = {metrics.get('easy_degradation')}
     _write_json("research_state.json", state)
 
 
+def update_hard_all_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    summary = result.get("summary", {})
+    block = f"""
+
+## Stage41 Locked-v2 Hard/All Candidate
+
+This multi-seed run targets the current Stage41 bottleneck: all-domain and hard/failure improvement are below the Stage37+2% gate even though t+50 has a neural signal. It trains hard/all weighted neural cost models and selects policy by validation-only hard/all domain score.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin_stably = {result.get('neural_exceeds_stage37_by_gate_margin_stably')}
+positive_external_domains_min_across_seeds = {result.get('positive_external_domains_min_across_seeds')}
+all_improvement_mean = {(summary.get('all_improvement') or {}).get('mean')}
+all_improvement_min = {(summary.get('all_improvement') or {}).get('min')}
+t50_improvement_mean = {(summary.get('t50_improvement') or {}).get('mean')}
+hard_failure_improvement_mean = {(summary.get('hard_failure_improvement') or {}).get('mean')}
+hard_failure_improvement_min = {(summary.get('hard_failure_improvement') or {}).get('min')}
+easy_degradation_max = {(summary.get('easy_degradation') or {}).get('max')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Hard/All Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_hard_all.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_hard_all_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "summary": result.get("summary"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
@@ -1016,3 +1155,8 @@ def main_locked_v2_tail_robust() -> None:
 def main_locked_v2_ensemble() -> None:
     result = evaluate_locked_v2_ensemble()
     update_ensemble_readme_state(result)
+
+
+def main_locked_v2_hard_all() -> None:
+    result = train_locked_v2_hard_all()
+    update_hard_all_readme_state(result)

@@ -55,3 +55,19 @@ def test_stage41_required_margins_are_not_t50_only() -> None:
         "easy_degradation": 0.0,
     }
     assert not strat._beats_stage37_required_margins(metrics)
+
+
+def test_stage41_hard_all_score_rewards_hard_improvement() -> None:
+    lower_hard = {
+        "all_improvement": 0.08,
+        "t50_improvement": 0.10,
+        "t100_improvement": 0.08,
+        "hard_failure_improvement": 0.06,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.05,
+        "by_domain": {"ETH_UCY": {"hard_failure_improvement": 0.04, "t50_improvement": 0.03}},
+    }
+    higher_hard = dict(lower_hard)
+    higher_hard["hard_failure_improvement"] = 0.12
+    higher_hard["by_domain"] = {"ETH_UCY": {"hard_failure_improvement": 0.10, "t50_improvement": 0.03}}
+    assert strat._metric_score(higher_hard, "hard_all") > strat._metric_score(lower_hard, "hard_all")
