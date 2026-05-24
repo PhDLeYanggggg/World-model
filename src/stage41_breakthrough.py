@@ -60,6 +60,55 @@ def _write_json(path: str | Path, payload: Mapping[str, Any]) -> None:
     write_json(path, _jsonable(dict(payload)))
 
 
+def _safe_baseline_predictions(data: Mapping[str, np.ndarray]) -> np.ndarray:
+    """Rebuild Stage35 safe baseline endpoints from past/current geometry.
+
+    The first Stage41 candidate is a train-horizon-selected safe baseline.
+    Its FDE labels come from Stage35 `y_fde[:, :SAFE_BASELINE_COUNT]`, so its
+    endpoint delta must be reconstructed from the same causal row geometry.
+    Using a Stage37 family endpoint as a proxy breaks endpoint/FDE alignment.
+    """
+
+    cur = np.stack([data["current_x"], data["current_y"]], axis=1).astype(np.float64)
+    past = np.stack([data["past_start_x"], data["past_start_y"]], axis=1).astype(np.float64)
+    h = np.maximum(data["dt_frame_step"].astype(np.float64), 1.0)
+    v = (cur - past) / h[:, None]
+    damp_factor = (1.0 - 0.95**h) / max(1.0 - 0.95, EPS)
+    cv = cur + v * h[:, None]
+    preds = [
+        cur,
+        cv,
+        cur + v * damp_factor[:, None],
+        cv,
+        cv,
+    ]
+    return np.stack(preds, axis=1).astype(np.float32)
+
+
+def _train_horizon_floor(
+    data: Mapping[str, np.ndarray], train_mask: np.ndarray
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, Dict[int, int], Dict[str, float]]:
+    safe_y = data["y_fde"][:, :SAFE_BASELINE_COUNT].astype(np.float32)
+    safe_pred = _safe_baseline_predictions(data)
+    strongest_by_h: Dict[int, int] = {}
+    for h in [10, 25, 50, 100]:
+        hm = train_mask & (data["horizon"].astype(int) == h)
+        strongest_by_h[h] = int(np.argmin(safe_y[hm].mean(axis=0))) if np.any(hm) else 1
+    floor_idx = np.asarray([strongest_by_h[int(h)] for h in data["horizon"].astype(int)], dtype=np.int16)
+    row = np.arange(len(floor_idx))
+    floor_fde = safe_y[row, floor_idx]
+    floor_pred = safe_pred[row, floor_idx]
+
+    fut = np.stack([data["future_endpoint_x"], data["future_endpoint_y"]], axis=1).astype(np.float64)
+    reconstructed = np.linalg.norm(floor_pred.astype(np.float64) - fut, axis=1)
+    geometry_error = np.abs(reconstructed - floor_fde.astype(np.float64))
+    diagnostics = {
+        "safe_endpoint_max_abs_fde_error": float(geometry_error.max()) if len(geometry_error) else 0.0,
+        "safe_endpoint_mean_abs_fde_error": float(geometry_error.mean()) if len(geometry_error) else 0.0,
+    }
+    return floor_idx, floor_fde, floor_pred.astype(np.float32), strongest_by_h, diagnostics
+
+
 def _append_ledger(entry: Mapping[str, Any]) -> None:
     ensure_dir(OUT_DIR)
     with LEDGER_JSONL.open("a", encoding="utf-8") as handle:
@@ -314,20 +363,12 @@ def build_seq2seq_dataset() -> Dict[str, Any]:
         speed = np.maximum(data["history_seq"][:, -1, 2].astype(np.float32), EPS)
         horizon = data["horizon"].astype(np.float32)
         normalizer = np.maximum(hist_path + speed * np.maximum(horizon, 1.0), np.median(hist_path + speed * np.maximum(horizon, 1.0)) + EPS).astype(np.float32)
-        safe_y = data["y_fde"][:, :SAFE_BASELINE_COUNT].astype(np.float32)
-        # Domain/horizon-safe strongest baseline from train-only means.
         train_mask = _split_mask("train")
-        strongest_by_h: Dict[int, int] = {}
-        for h in [10, 25, 50, 100]:
-            hm = train_mask & (data["horizon"].astype(int) == h)
-            strongest_by_h[h] = int(np.argmin(safe_y[hm].mean(axis=0))) if np.any(hm) else 1
-        floor_idx = np.asarray([strongest_by_h[int(h)] for h in data["horizon"].astype(int)], dtype=np.int16)
-        floor_fde = safe_y[np.arange(len(safe_y)), floor_idx]
+        # Domain/horizon-safe strongest baseline from train-only means, with
+        # endpoint geometry reconstructed from the same causal safe baseline.
+        floor_idx, floor_fde, floor_pred, strongest_by_h, geometry_diagnostics = _train_horizon_floor(data, train_mask)
         family_fde = data["family_fde"].astype(np.float32)
         candidate_fde = np.concatenate([floor_fde[:, None], family_fde], axis=1)
-        floor_pred = np.zeros((len(floor_idx), 2), dtype=np.float32)
-        # Approximate floor endpoints: use safe baseline candidates available through Stage37 family where possible.
-        floor_pred[:] = data["family_pred"][:, 1, :]
         family_pred = data["family_pred"].astype(np.float32)
         candidates = np.concatenate([floor_pred[:, None, :], family_pred], axis=1)
         cand_delta = ((candidates - cur[:, None, :]) / normalizer[:, None, None]).astype(np.float32)
@@ -365,7 +406,14 @@ def build_seq2seq_dataset() -> Dict[str, Any]:
             scene_id=data["scene_id"].astype("U80")[ids],
             source_file=data["source_file"].astype("U256")[ids],
         )
-        reports[sp] = {"rows": int(len(ids)), "full_rows": int(mask.sum()), "t50": int(np.sum(data["horizon"].astype(int)[ids] == 50)), "t100": int(np.sum(data["horizon"].astype(int)[ids] == 100)), "domains": dict(Counter(data["dataset"].astype(str)[ids].tolist()))}
+        reports[sp] = {
+            "rows": int(len(ids)),
+            "full_rows": int(mask.sum()),
+            "t50": int(np.sum(data["horizon"].astype(int)[ids] == 50)),
+            "t100": int(np.sum(data["horizon"].astype(int)[ids] == 100)),
+            "domains": dict(Counter(data["dataset"].astype(str)[ids].tolist())),
+            "floor_geometry": geometry_diagnostics,
+        }
     train = dict(np.load(DATA_DIR / "seq2seq_train.npz"))
     mean = train["static"].mean(axis=0).astype(np.float32)
     std = np.maximum(train["static"].std(axis=0), 1e-3).astype(np.float32)
@@ -387,6 +435,87 @@ def _ds(split: str) -> Dict[str, np.ndarray]:
     if not path.exists():
         build_seq2seq_dataset()
     return dict(np.load(path))
+
+
+def endpoint_geometry_audit() -> Dict[str, Any]:
+    data = _combined()
+    fut = np.stack([data["future_endpoint_x"], data["future_endpoint_y"]], axis=1).astype(np.float64)
+    safe_pred = _safe_baseline_predictions(data).astype(np.float64)
+    safe_y = data["y_fde"][:, :SAFE_BASELINE_COUNT].astype(np.float64)
+    safe_fde = np.linalg.norm(safe_pred - fut[:, None, :], axis=2)
+    safe_diff = np.abs(safe_fde - safe_y)
+    family_pred = data["family_pred"].astype(np.float64)
+    family_fde = np.linalg.norm(family_pred - fut[:, None, :], axis=2)
+    family_diff = np.abs(family_fde - data["family_fde"].astype(np.float64))
+
+    reports: Dict[str, Any] = {
+        "combined_safe": {
+            "max_abs_error": float(safe_diff.max()) if len(safe_diff) else 0.0,
+            "mean_abs_error": float(safe_diff.mean()) if len(safe_diff) else 0.0,
+        },
+        "combined_family": {
+            "max_abs_error": float(family_diff.max()) if len(family_diff) else 0.0,
+            "mean_abs_error": float(family_diff.mean()) if len(family_diff) else 0.0,
+        },
+        "datasets": {},
+    }
+
+    def audit_dataset(path: Path) -> Dict[str, Any]:
+        ds = dict(np.load(path, allow_pickle=True))
+        cur = ds["current_xy"].astype(np.float64)
+        target = ds["future_xy"].astype(np.float64)
+        normalizer = ds["normalizer"].astype(np.float64)
+        pred = cur[:, None, :] + ds["cand_delta"].astype(np.float64) * normalizer[:, None, None]
+        fde = np.linalg.norm(pred - target[:, None, :], axis=2)
+        diff = np.abs(fde - ds["candidate_fde"].astype(np.float64))
+        return {
+            "rows": int(len(cur)),
+            "candidate_count": int(diff.shape[1]) if diff.ndim == 2 else 0,
+            "floor_mean_abs_error": float(diff[:, 0].mean()) if len(diff) else 0.0,
+            "floor_max_abs_error": float(diff[:, 0].max()) if len(diff) else 0.0,
+            "all_mean_abs_error": float(diff.mean()) if len(diff) else 0.0,
+            "all_max_abs_error": float(diff.max()) if len(diff) else 0.0,
+        }
+
+    for prefix in ["seq2seq", "all_agent"]:
+        for split in ["train", "val", "test"]:
+            path = DATA_DIR / f"{prefix}_{split}.npz"
+            if path.exists():
+                reports["datasets"][f"{prefix}_{split}"] = audit_dataset(path)
+            else:
+                reports["datasets"][f"{prefix}_{split}"] = {"missing": True}
+
+    threshold = 1e-3
+    geometry_pass = (
+        reports["combined_safe"]["max_abs_error"] <= threshold
+        and reports["combined_family"]["max_abs_error"] <= threshold
+        and all((row.get("all_max_abs_error", float("inf")) <= threshold) for row in reports["datasets"].values() if not row.get("missing"))
+        and not any(row.get("missing") for row in reports["datasets"].values())
+    )
+    result = {
+        "source": "fresh_run",
+        "geometry_pass": bool(geometry_pass),
+        "threshold": threshold,
+        "reports": reports,
+        "no_leakage": {"future_endpoint_input": False, "future_endpoint_label_eval_only": True, "central_velocity": False, "test_endpoint_goals": False},
+        "conclusion": "endpoint geometry aligned" if geometry_pass else "endpoint geometry still misaligned or datasets missing",
+    }
+    _write_json(OUT_DIR / "stage41_endpoint_geometry_audit.json", result)
+    write_md(
+        OUT_DIR / "stage41_endpoint_geometry_audit.md",
+        [
+            "# Stage41 Endpoint Geometry Audit",
+            "",
+            "- source: `fresh_run`",
+            f"- geometry pass: `{result['geometry_pass']}`",
+            f"- threshold: `{threshold}`",
+            f"- combined safe: `{reports['combined_safe']}`",
+            f"- combined family: `{reports['combined_family']}`",
+            f"- datasets: `{reports['datasets']}`",
+            "- Future endpoints are labels/evaluation only; no inference feature uses them.",
+        ],
+    )
+    return result
 
 
 def _norm_static(static: np.ndarray) -> np.ndarray:
@@ -1134,6 +1263,7 @@ def failure_analysis() -> Dict[str, Any]:
 def gates() -> Dict[str, Any]:
     split = read_json(SPLIT_OUT / "report.json", {}) if (SPLIT_OUT / "report.json").exists() else rebuild_external_split()
     ds_report = read_json(OUT_DIR / "stage41_seq2seq_dataset.json", {}) if (OUT_DIR / "stage41_seq2seq_dataset.json").exists() else build_seq2seq_dataset()
+    geometry_audit = read_json(OUT_DIR / "stage41_endpoint_geometry_audit.json", {}) if (OUT_DIR / "stage41_endpoint_geometry_audit.json").exists() else endpoint_geometry_audit()
     opt = read_json(OUT_DIR / "stage41_auto_optimization.json", {}) if (OUT_DIR / "stage41_auto_optimization.json").exists() else auto_optimize()
     # Always refresh the evaluator here. Later second-pass artifacts such as
     # all-agent or intervention-calibrator evals can be produced after the
@@ -1172,6 +1302,7 @@ def gates() -> Dict[str, Any]:
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
         ("Gate2b all-agent neighbor-token dataset built", all((DATA_DIR / f"all_agent_{sp}.npz").exists() for sp in ["train", "val", "test"]), read_json(OUT_DIR / "stage41_all_agent_dataset.json", {}).get("splits")),
+        ("Gate2c endpoint geometry alignment pass", bool(geometry_audit.get("geometry_pass")), geometry_audit.get("reports")),
         ("Gate3 no leakage pass", True, ds_report.get("no_leakage")),
         ("Gate4 Transformer/JEPA/Hybrid/MoE trials run", len(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {})) >= 5, sorted(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {}).keys())),
         ("Gate4b all-agent neural trials run", len(read_json(OUT_DIR / "stage41_all_agent_training_trials.json", {}).get("trials", {})) >= 3, sorted(read_json(OUT_DIR / "stage41_all_agent_training_trials.json", {}).get("trials", {}).keys())),
@@ -1216,8 +1347,13 @@ def gates() -> Dict[str, Any]:
         "gates_passed": int(sum(bool(p) for _g, p, _e in rows)),
         "gates_total": len(rows),
         "current_verdict": (
-            "stage41_self_gated_neural_candidate_endpoint_geometry_pending"
+            "stage41_self_gated_neural_candidate_endpoint_geometry_verified"
             if all(bool(p) for _g, p, _e in rows)
+            and fresh_self_gated.get("protected_full_replacement_pass")
+            and fresh_self_gated.get("no_external_fallback_safe_pass")
+            and geometry_audit.get("geometry_pass")
+            else "stage41_self_gated_neural_candidate_endpoint_geometry_pending"
+            if all(bool(p) for g, p, _e in rows if not str(g).startswith("Gate2c"))
             and fresh_self_gated.get("protected_full_replacement_pass")
             and fresh_self_gated.get("no_external_fallback_safe_pass")
             else "stage41_protected_neural_candidate_pending_unprotected_safety"
@@ -1276,6 +1412,9 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fresh_self_gated_floor = fresh_self_gated.get("metrics_vs_floor", {}) or {}
     fresh_self_gated_base = fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {}) or {}
     fresh_self_gated_raw = fresh_self_gated.get("raw_ungated_endpoint_vs_source_rotation_base", {}) or {}
+    geometry_audit = read_json(OUT_DIR / "stage41_endpoint_geometry_audit.json", {})
+    geometry_verified = bool(geometry_audit.get("geometry_pass"))
+    deployable_name = "Stage41 self-gated neural candidate (endpoint geometry verified)" if geometry_verified else "Stage41 self-gated neural candidate (binary-FDE safe; endpoint geometry pending)"
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1301,7 +1440,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         "- 是否可称 foundation world model: `否`",
         "- 是否可以 Stage5C: `否`",
         "- 是否可以 SMC: `否`",
-        f"- 当前最强 deployable: `{'Stage41 self-gated neural candidate (binary-FDE safe; endpoint geometry pending)' if deployed else 'Stage37 selector'}`",
+        f"- 当前最强 deployable: `{deployable_name if deployed else 'Stage37 selector'}`",
         "",
         "## Best Result",
         "",
@@ -1532,7 +1671,9 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- raw ungated t100: `{fresh_self_gated_raw.get('t100_improvement')}`",
         f"- raw ungated easy degradation: `{fresh_self_gated_raw.get('easy_degradation')}`",
         f"- endpoint alignment status: `{fresh_self_gated.get('trajectory_endpoint_alignment_status')}`",
-        "- caveat: binary FDE self-gating is safe and improves all/t50/hard with t100 diagnostic non-negative; continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired.",
+        f"- endpoint geometry audit: `{geometry_audit.get('conclusion')}`",
+        f"- endpoint geometry max error: `{((geometry_audit.get('reports') or {}).get('datasets') or {}).get('all_agent_test', {}).get('all_max_abs_error')}`",
+        f"- caveat: binary FDE self-gating is safe and improves all/t50/hard with t100 diagnostic non-negative; continuous endpoint interpolation is `{'geometry-aligned but still protected by the Stage37/source-rotation safety floor' if geometry_verified else 'diagnostic until safety-floor endpoint geometry is repaired'}`.",
         "",
         "## Failure / Gap",
         "",
@@ -1547,7 +1688,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
             "- Need full scene-level all-agent world-state episodes; Stage41 second pass has same-frame neighbor tokens but still not full scene/video state.",
             "- Need exact Stage37 frozen-policy replay on rebuilt ETH/UCY/TrajNet split or a new locked cross-domain floor.",
             "- Need t100 positive result or a stronger long-horizon blocker audit.",
-            "- Need source-rotation safety-floor endpoint geometry repair before claiming continuous endpoint interpolation as a complete trajectory-world-state output.",
+            "- Need broader full-trajectory and multi-step rollout validation before claiming continuous endpoint interpolation as a complete trajectory-world-state output.",
             "- Need metric/seconds/homography audit before any physical-world claim.",
             "- Stage5C and SMC remain future plans only.",
         ],
@@ -1608,6 +1749,13 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fresh_self_gated_base = fresh_self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {}) or {}
     fresh_self_gated_raw = fresh_self_gated.get("raw_ungated_endpoint_vs_source_rotation_base", {}) or {}
     all_agent_best = all_agent.get("best_metrics", {})
+    geometry_audit = read_json(OUT_DIR / "stage41_endpoint_geometry_audit.json", {})
+    geometry_verified = bool(geometry_audit.get("geometry_pass"))
+    geometry_line = (
+        "The Stage41 endpoint geometry audit now verifies that safety-floor endpoint deltas and FDE labels are aligned, so continuous endpoint interpolation is geometry-aligned but remains protected by the safety floor."
+        if geometry_verified
+        else "Continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired."
+    )
     block = f"""
 
 ## Stage41: M3W Neural World Model Breakthrough Attempt
@@ -1628,7 +1776,7 @@ gates = {gate_result.get('gates_passed')} / {gate_result.get('gates_total')}
 verdict = {gate_result.get('current_verdict')}
 ```
 
-Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials. The fresh self-gated endpoint candidate now beats the Stage37/source-rotation floor in all/t50/hard with easy preserved, but continuous endpoint interpolation remains diagnostic until safety-floor endpoint geometry is repaired.
+Key Stage41 caveat: the rebuilt external dataset initially used row-level per-agent history plus neighbor aggregates. A second pass added all-agent same-frame neighbor tokens and endpoint-risk neural trials. The fresh self-gated endpoint candidate now beats the Stage37/source-rotation floor in all/t50/hard with easy preserved. {geometry_line}
 
 Stage41 second pass:
 
@@ -1657,7 +1805,7 @@ Stage41 second pass:
 - fresh endpoint interpolation candidate: deployment `{fresh_interpolation.get('deployment_decision')}`, protected full replacement `{fresh_interpolation.get('protected_full_replacement_pass')}`, no-fallback safe `{fresh_interpolation.get('no_fallback_safe_pass')}`, alpha `{fresh_interpolation.get('best_alpha')}`, vs-floor all `{fresh_interpolation_floor.get('all_improvement')}`, t50 `{fresh_interpolation_floor.get('t50_improvement')}`, t100 `{fresh_interpolation_floor.get('t100_improvement')}`, hard `{fresh_interpolation_floor.get('hard_failure_improvement')}`, easy `{fresh_interpolation_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_interpolation_base.get('all_improvement')}`, t50 `{fresh_interpolation_base.get('t50_improvement')}`, unprotected easy `{fresh_interpolation_without.get('easy_degradation')}`. This is the strongest protected neural evidence so far, but no-fallback safety remains false.
 - fresh endpoint gain-gate candidate: deployment `{fresh_gain_gate.get('deployment_decision')}`, protected full replacement `{fresh_gain_gate.get('protected_full_replacement_pass')}`, positive neural switch `{fresh_gain_gate.get('positive_neural_switch_pass')}`, vs-floor all `{fresh_gain_gate_floor.get('all_improvement')}`, t50 `{fresh_gain_gate_floor.get('t50_improvement')}`, t100 `{fresh_gain_gate_floor.get('t100_improvement')}`, hard `{fresh_gain_gate_floor.get('hard_failure_improvement')}`, easy `{fresh_gain_gate_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_gain_gate_base.get('all_improvement')}`, t50 `{fresh_gain_gate_base.get('t50_improvement')}`, t100 `{fresh_gain_gate_base.get('t100_improvement')}`, switch `{fresh_gain_gate_base.get('switch_rate')}`, ungated easy `{fresh_gain_gate_ungated.get('easy_degradation')}`. This is the strongest protected neural dynamics evidence so far and directly fixes the ungated endpoint easy/t100 failure through a learned gain/harm gate.
 - fresh self-gated endpoint candidate: deployment `{fresh_self_gated.get('deployment_decision')}`, protected full replacement `{fresh_self_gated.get('protected_full_replacement_pass')}`, no-external-fallback safe `{fresh_self_gated.get('no_external_fallback_safe_pass')}`, vs-floor all `{fresh_self_gated_floor.get('all_improvement')}`, t50 `{fresh_self_gated_floor.get('t50_improvement')}`, t100 `{fresh_self_gated_floor.get('t100_improvement')}`, hard `{fresh_self_gated_floor.get('hard_failure_improvement')}`, easy `{fresh_self_gated_floor.get('easy_degradation')}`, self-gated vs source-rotation-base all `{fresh_self_gated_base.get('all_improvement')}`, t50 `{fresh_self_gated_base.get('t50_improvement')}`, t100 `{fresh_self_gated_base.get('t100_improvement')}`, hard `{fresh_self_gated_base.get('hard_failure_improvement')}`, easy `{fresh_self_gated_base.get('easy_degradation')}`, raw ungated t100 `{fresh_self_gated_raw.get('t100_improvement')}`, raw ungated easy `{fresh_self_gated_raw.get('easy_degradation')}`. This fixes the Gate10 no-external-fallback safety check through an internal binary neural gate, while still recording that continuous endpoint interpolation is pending floor-geometry repair.
-- Tests: `python -m pytest tests` -> `107 passed in 64.74s`.
+- Tests: `python -m pytest tests` -> `107 passed in 62.11s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1668,7 +1816,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `107 passed in 64.74s`",
+            "- result: `107 passed in 62.11s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1681,6 +1829,7 @@ Stage41 second pass:
         "stage41_neural_eval.md",
         "stage41_training_trials.md",
         "stage41_seq2seq_dataset.md",
+        "stage41_endpoint_geometry_audit.md",
         "stage41_failure_analysis.md",
         "stage41_auto_optimization.md",
         "stage41_all_agent_dataset.md",
@@ -1719,6 +1868,7 @@ Stage41 second pass:
     reports.add("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_gain_gate_candidate.md")
     reports.add("outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.md")
     stage41_state = dict(gate_result)
+    stage41_state["endpoint_geometry_audit"] = geometry_audit
     if all_agent:
         stage41_state["all_agent_second_pass"] = {
             "source": all_agent.get("source"),
@@ -1935,7 +2085,7 @@ Stage41 second pass:
             "trajectory_endpoint_alignment_status": fresh_self_gated.get("trajectory_endpoint_alignment_status"),
             "conclusion": fresh_self_gated.get("caveat"),
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 64.74s", "source": "fresh_run"}
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 62.11s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage41 self-gated neural candidate" if str(gate_result.get("current_verdict", "")).startswith("stage41_self_gated_neural_candidate") else "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 
@@ -1950,6 +2100,10 @@ def main_external_split() -> None:
 
 def main_build_seq2seq_dataset() -> None:
     _main("stage41_build_seq2seq_dataset", build_seq2seq_dataset, [SPLIT_OUT / "report.json"], [OUT_DIR / "stage41_seq2seq_dataset.md"])
+
+
+def main_endpoint_geometry_audit() -> None:
+    _main("stage41_endpoint_geometry_audit", endpoint_geometry_audit, [DATA_DIR / "combined_external.npz"], [OUT_DIR / "stage41_endpoint_geometry_audit.md"])
 
 
 def main_train_world_models() -> None:

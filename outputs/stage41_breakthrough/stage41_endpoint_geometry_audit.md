@@ -1,0 +1,9 @@
+# Stage41 Endpoint Geometry Audit
+
+- source: `fresh_run`
+- geometry pass: `True`
+- threshold: `0.001`
+- combined safe: `{'max_abs_error': 1.88178200222211e-06, 'mean_abs_error': 7.218126644990612e-08}`
+- combined family: `{'max_abs_error': 6.969049309191178e-06, 'mean_abs_error': 1.361793514530431e-07}`
+- datasets: `{'seq2seq_train': {'rows': 80000, 'candidate_count': 9, 'floor_mean_abs_error': 6.578311098045677e-08, 'floor_max_abs_error': 1.167208538266351e-06, 'all_mean_abs_error': 1.9420632755169049e-07, 'all_max_abs_error': 1.0391490761207933e-05}, 'seq2seq_val': {'rows': 24000, 'candidate_count': 9, 'floor_mean_abs_error': 6.332068162822371e-08, 'floor_max_abs_error': 7.191609652235087e-07, 'all_mean_abs_error': 1.6708973096747166e-07, 'all_max_abs_error': 8.971902659027364e-06}, 'seq2seq_test': {'rows': 34777, 'candidate_count': 9, 'floor_mean_abs_error': 9.417861215249921e-08, 'floor_max_abs_error': 1.780308475770806e-06, 'all_mean_abs_error': 3.0357778316829965e-07, 'all_max_abs_error': 1.1905965948244557e-05}, 'all_agent_train': {'rows': 80000, 'candidate_count': 9, 'floor_mean_abs_error': 6.578311098045677e-08, 'floor_max_abs_error': 1.167208538266351e-06, 'all_mean_abs_error': 1.9420632755169049e-07, 'all_max_abs_error': 1.0391490761207933e-05}, 'all_agent_val': {'rows': 24000, 'candidate_count': 9, 'floor_mean_abs_error': 6.332068162822371e-08, 'floor_max_abs_error': 7.191609652235087e-07, 'all_mean_abs_error': 1.6708973096747166e-07, 'all_max_abs_error': 8.971902659027364e-06}, 'all_agent_test': {'rows': 34777, 'candidate_count': 9, 'floor_mean_abs_error': 9.417861215249921e-08, 'floor_max_abs_error': 1.780308475770806e-06, 'all_mean_abs_error': 3.0357778316829965e-07, 'all_max_abs_error': 1.1905965948244557e-05}}`
+- Future endpoints are labels/evaluation only; no inference feature uses them.

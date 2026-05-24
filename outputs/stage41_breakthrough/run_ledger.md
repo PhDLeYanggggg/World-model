@@ -134,3 +134,11 @@
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.342 | `78fb4a4126ca` | `d29f578c1e9f` | `dfac687` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.197 | `78fb4a4126ca` | `40ab6fc31250` | `dfac687` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.249 | `78fb4a4126ca` | `65f6d5cdcacb` | `dfac687` |
+| `run_stage41_build_seq2seq_dataset.py` | `fresh_run` | `success` | 4.988 | `9b3e5c51cbbd` | `79ac33499430` | `88cea63` |
+| `run_stage41_stratified_protocol.py` | `fresh_run` | `ok` | 11.422 | `6a190c2e1966` | `541c67770f12` | `88cea63` |
+| `run_stage41_stratified_protocol.py` | `fresh_run` | `ok` | 46.900 | `941ad888bc40` | `ba9c22ad4990` | `88cea63` |
+| `run_stage41_endpoint_geometry_audit.py` | `fresh_run` | `success` | 1.361 | `e3474e97b824` | `deeaccae1bc9` | `88cea63` |
+| `run_stage41_build_all_agent_dataset.py` | `fresh_run` | `success` | 15.497 | `802749268572` | `db1e80b38922` | `88cea63` |
+| `run_stage41_endpoint_geometry_audit.py` | `fresh_run` | `success` | 1.313 | `e3474e97b824` | `c023a2d0c5dc` | `88cea63` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 3.079 | `78fb4a4126ca` | `671f023ebc4e` | `88cea63` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 3.066 | `78fb4a4126ca` | `671f023ebc4e` | `88cea63` |

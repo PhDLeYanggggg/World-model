@@ -2265,11 +2265,9 @@ def _apply_self_gated_endpoint(gate_pred: Mapping[str, np.ndarray], free_pred: M
         selected[gate] = endpoint_fde[gate]
         # Binary self-gating is an internal discrete policy: the neural model
         # either emits its endpoint prediction or its learned safety-floor
-        # choice.  We evaluate this directly in FDE space because the stored
-        # source-rotation safety-floor endpoint deltas are not reliably aligned
-        # with their FDE labels for every candidate baseline.  Continuous
-        # interpolation below remains diagnostic until that endpoint geometry is
-        # repaired.
+        # choice.  It is still evaluated in FDE space to make the safety claim
+        # independent from continuous interpolation; the separate Stage41
+        # endpoint geometry audit verifies whether interpolation is aligned.
         return selected, gate.copy(), alpha, endpoint_fde
     else:
         raw_alpha = float(policy.get("max_alpha", 1.0)) * np.clip(gate_pred["gain_prob"] - gate_pred["harm_prob"], 0.0, 1.0)
@@ -2373,6 +2371,20 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
             and metrics_vs_floor.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
             and metrics_vs_floor.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
         )
+        geometry = read_json(s41.OUT_DIR / "stage41_endpoint_geometry_audit.json", {})
+        if not geometry and all((s41.DATA_DIR / f"all_agent_{sp}.npz").exists() for sp in ["train", "val", "test"]):
+            geometry = s41.endpoint_geometry_audit()
+        geometry_verified = bool(geometry.get("geometry_pass"))
+        alignment_status = (
+            "endpoint_geometry_verified; continuous endpoint interpolation is geometry-aligned but remains safety-gated"
+            if geometry_verified
+            else "binary_fde_safe; continuous endpoint interpolation remains diagnostic because safety-floor endpoint deltas are not aligned with source-rotation FDE labels"
+        )
+        caveat = (
+            "Self-gated endpoint is still dataset-local 2.5D raw-frame prediction. Endpoint geometry is verified for the rebuilt safety-floor candidate, but deployment remains safety-gated; it is not true 3D, not a foundation model, and does not execute Stage5C or SMC."
+            if geometry_verified
+            else "Self-gated endpoint is still dataset-local 2.5D raw-frame prediction. Binary FDE selection is safe, but continuous endpoint interpolation remains diagnostic until source-rotation floor endpoint geometry is repaired. It is not true 3D, not a foundation model, and does not execute Stage5C or SMC."
+        )
         result = {
             "source": "fresh_run",
             "protocol_status": "fresh_rotation_self_gated_endpoint_candidate",
@@ -2382,7 +2394,8 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
             "self_gated_without_external_fallback_vs_source_rotation_base": metrics_vs_base,
             "metrics_vs_floor": metrics_vs_floor,
             "raw_ungated_endpoint_vs_source_rotation_base": raw_endpoint_metrics,
-            "trajectory_endpoint_alignment_status": "binary_fde_safe; continuous endpoint interpolation remains diagnostic because safety-floor endpoint deltas are not aligned with source-rotation FDE labels",
+            "trajectory_endpoint_alignment_status": alignment_status,
+            "endpoint_geometry_audit": geometry,
             "alpha_mean": float(np.mean(alpha)),
             "alpha_nonzero_mean": float(np.mean(alpha[switch])) if np.any(switch) else 0.0,
             "positive_external_domains_vs_floor": _positive_domains(metrics_vs_floor),
@@ -2391,7 +2404,7 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
             "protected_full_replacement_pass": protected_full_replacement,
             "deployment_decision": "self_gated_m3w_neural_v1_candidate_pending_user_acceptance" if protected_full_replacement and no_external_fallback_safe else "diagnostic_keep_stage37_floor",
             "gate_checkpoint_count": len(gate_paths),
-            "caveat": "Self-gated endpoint is still dataset-local 2.5D raw-frame prediction. Binary FDE selection is safe, but continuous endpoint interpolation remains diagnostic until source-rotation floor endpoint geometry is repaired. It is not true 3D, not a foundation model, and does not execute Stage5C or SMC.",
+            "caveat": caveat,
         }
     _write_json(OUT_DIR / "stage41_fresh_self_gated_endpoint_candidate.json", result)
     lines = [

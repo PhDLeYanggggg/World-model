@@ -121,16 +121,9 @@ def build_stratified_all_agent_dataset() -> Dict[str, Any]:
     speed = np.maximum(data["history_seq"][:, -1, 2].astype(np.float32), EPS)
     horizon = data["horizon"].astype(np.float32)
     normalizer = np.maximum(hist_path + speed * np.maximum(horizon, 1.0), np.median(hist_path[train_mask] + speed[train_mask] * np.maximum(horizon[train_mask], 1.0)) + EPS).astype(np.float32)
-    safe_y = data["y_fde"][:, : s41.SAFE_BASELINE_COUNT].astype(np.float32)
-    strongest_by_h: Dict[int, int] = {}
-    for h in [10, 25, 50, 100]:
-        hm = train_mask & (data["horizon"].astype(int) == h)
-        strongest_by_h[h] = int(np.argmin(safe_y[hm].mean(axis=0))) if np.any(hm) else 1
-    floor_idx = np.asarray([strongest_by_h[int(h)] for h in data["horizon"].astype(int)], dtype=np.int16)
-    floor_fde = safe_y[np.arange(len(safe_y)), floor_idx]
+    floor_idx, floor_fde, floor_pred, strongest_by_h, geometry_diagnostics = s41._train_horizon_floor(data, train_mask)
     family_fde = data["family_fde"].astype(np.float32)
     candidate_fde = np.concatenate([floor_fde[:, None], family_fde], axis=1)
-    floor_pred = data["family_pred"][:, 1, :].astype(np.float32)
     candidates = np.concatenate([floor_pred[:, None, :], data["family_pred"].astype(np.float32)], axis=1)
     target_delta = ((fut - cur) / normalizer[:, None]).astype(np.float32)
     static = np.concatenate(
@@ -150,7 +143,13 @@ def build_stratified_all_agent_dataset() -> Dict[str, Any]:
     static_std = np.maximum(static[train_mask].std(axis=0), 1e-3).astype(np.float32)
     np.savez_compressed(DATA_DIR / "normalization.npz", static_mean=static_mean, static_std=static_std)
     groups = s41a._group_indices(data)
-    report: Dict[str, Any] = {"source": "fresh_run", "protocol": "stage41_stratified_split_candidate", "splits": {}, "strongest_by_horizon": strongest_by_h}
+    report: Dict[str, Any] = {
+        "source": "fresh_run",
+        "protocol": "stage41_stratified_split_candidate",
+        "splits": {},
+        "strongest_by_horizon": strongest_by_h,
+        "floor_geometry": geometry_diagnostics,
+    }
     for split in ["train", "val", "test"]:
         ids = np.where(_split_mask(split, n))[0].astype(np.int64)
         base = _make_base_arrays(data, ids, floor_idx, floor_fde, candidate_fde, candidates, normalizer, static, target_delta)
