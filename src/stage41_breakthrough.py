@@ -1805,7 +1805,7 @@ Stage41 second pass:
 - fresh endpoint interpolation candidate: deployment `{fresh_interpolation.get('deployment_decision')}`, protected full replacement `{fresh_interpolation.get('protected_full_replacement_pass')}`, no-fallback safe `{fresh_interpolation.get('no_fallback_safe_pass')}`, alpha `{fresh_interpolation.get('best_alpha')}`, vs-floor all `{fresh_interpolation_floor.get('all_improvement')}`, t50 `{fresh_interpolation_floor.get('t50_improvement')}`, t100 `{fresh_interpolation_floor.get('t100_improvement')}`, hard `{fresh_interpolation_floor.get('hard_failure_improvement')}`, easy `{fresh_interpolation_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_interpolation_base.get('all_improvement')}`, t50 `{fresh_interpolation_base.get('t50_improvement')}`, unprotected easy `{fresh_interpolation_without.get('easy_degradation')}`. This is the strongest protected neural evidence so far, but no-fallback safety remains false.
 - fresh endpoint gain-gate candidate: deployment `{fresh_gain_gate.get('deployment_decision')}`, protected full replacement `{fresh_gain_gate.get('protected_full_replacement_pass')}`, positive neural switch `{fresh_gain_gate.get('positive_neural_switch_pass')}`, vs-floor all `{fresh_gain_gate_floor.get('all_improvement')}`, t50 `{fresh_gain_gate_floor.get('t50_improvement')}`, t100 `{fresh_gain_gate_floor.get('t100_improvement')}`, hard `{fresh_gain_gate_floor.get('hard_failure_improvement')}`, easy `{fresh_gain_gate_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_gain_gate_base.get('all_improvement')}`, t50 `{fresh_gain_gate_base.get('t50_improvement')}`, t100 `{fresh_gain_gate_base.get('t100_improvement')}`, switch `{fresh_gain_gate_base.get('switch_rate')}`, ungated easy `{fresh_gain_gate_ungated.get('easy_degradation')}`. This is the strongest protected neural dynamics evidence so far and directly fixes the ungated endpoint easy/t100 failure through a learned gain/harm gate.
 - fresh self-gated endpoint candidate: deployment `{fresh_self_gated.get('deployment_decision')}`, protected full replacement `{fresh_self_gated.get('protected_full_replacement_pass')}`, no-external-fallback safe `{fresh_self_gated.get('no_external_fallback_safe_pass')}`, vs-floor all `{fresh_self_gated_floor.get('all_improvement')}`, t50 `{fresh_self_gated_floor.get('t50_improvement')}`, t100 `{fresh_self_gated_floor.get('t100_improvement')}`, hard `{fresh_self_gated_floor.get('hard_failure_improvement')}`, easy `{fresh_self_gated_floor.get('easy_degradation')}`, self-gated vs source-rotation-base all `{fresh_self_gated_base.get('all_improvement')}`, t50 `{fresh_self_gated_base.get('t50_improvement')}`, t100 `{fresh_self_gated_base.get('t100_improvement')}`, hard `{fresh_self_gated_base.get('hard_failure_improvement')}`, easy `{fresh_self_gated_base.get('easy_degradation')}`, raw ungated t100 `{fresh_self_gated_raw.get('t100_improvement')}`, raw ungated easy `{fresh_self_gated_raw.get('easy_degradation')}`. This fixes the Gate10 no-external-fallback safety check through an internal binary neural gate, while still recording that continuous endpoint interpolation is pending floor-geometry repair.
-- Tests: `python -m pytest tests` -> `107 passed in 62.11s`.
+- Tests: `python -m pytest tests` -> `107 passed in 66.97s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1816,7 +1816,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `107 passed in 62.11s`",
+            "- result: `107 passed in 66.97s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -2085,7 +2085,7 @@ Stage41 second pass:
             "trajectory_endpoint_alignment_status": fresh_self_gated.get("trajectory_endpoint_alignment_status"),
             "conclusion": fresh_self_gated.get("caveat"),
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 62.11s", "source": "fresh_run"}
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 66.97s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage41 self-gated neural candidate" if str(gate_result.get("current_verdict", "")).startswith("stage41_self_gated_neural_candidate") else "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 

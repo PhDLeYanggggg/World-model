@@ -21,6 +21,7 @@ CHECKPOINT_DIR = OUT_DIR / "checkpoints"
 SPLIT_PATH = DATA_DIR / "stage41_source_rotation_split.npz"
 LEDGER_JSONL = OUT_DIR / "run_ledger.jsonl"
 EPS = 1e-6
+UNCALIBRATED_DOMAIN_MAX_SWITCH = 0.25
 
 
 def _jsonable(value: Any) -> Any:
@@ -2257,6 +2258,20 @@ def _apply_self_gated_endpoint(gate_pred: Mapping[str, np.ndarray], free_pred: M
         keep = np.zeros(len(gate), dtype=bool)
         keep[ids[np.argsort(score[ids])[::-1][:keep_n]]] = True
         gate &= keep
+    calibrated_domains = {str(d) for d in policy.get("calibrated_domains", [])}
+    uncalibrated_cap = float(policy.get("uncalibrated_domain_max_switch", 1.0))
+    if calibrated_domains and uncalibrated_cap < 1.0 and "domain" in labels and np.any(gate):
+        domains = labels["domain"].astype(str)
+        for domain in sorted(set(domains.tolist()) - calibrated_domains):
+            dmask = domains == domain
+            ids = np.where(gate & dmask)[0]
+            if len(ids) == 0:
+                continue
+            keep_n = int(uncalibrated_cap * int(np.sum(dmask)))
+            keep = np.zeros(len(ids), dtype=bool)
+            if keep_n > 0:
+                keep[np.argsort(score[ids])[::-1][:keep_n]] = True
+            gate[ids[~keep]] = False
     alpha = np.zeros(len(gate), dtype=np.float32)
     if str(policy.get("alpha_mode", "continuous")) == "binary":
         alpha[gate] = float(policy.get("max_alpha", 1.0))
@@ -2313,6 +2328,11 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
         raise FileNotFoundError("No endpoint gain-gate checkpoints available for self-gated candidate")
 
     val_gate, val_free, val_labels = _predict_endpoint_gate_ensemble(gate_paths, "val")
+    calibrated_domains = sorted(set(val_labels["domain"].astype(str).tolist()))
+    # Use train/validation metadata only for calibration coverage. Test labels
+    # must not influence threshold or domain-safety policy selection.
+    all_domains = sorted(set(_residual_features("train")[1]["domain"].astype(str).tolist()) | set(val_labels["domain"].astype(str).tolist()))
+    uncalibrated_domains = sorted(set(all_domains) - set(calibrated_domains))
     candidate_policies = _self_gated_policy_grid(val_gate, val_free)
     if gain_gate.get("best_policy"):
         exact = dict(gain_gate["best_policy"])
@@ -2320,6 +2340,14 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
         exact["max_alpha"] = 1.0
         exact["self_gate_source"] = "stage41_endpoint_gain_gate_best_policy"
         candidate_policies.insert(0, exact)
+    for policy in candidate_policies:
+        policy["calibrated_domains"] = calibrated_domains
+        policy["uncalibrated_domains"] = uncalibrated_domains
+        policy["uncalibrated_domain_max_switch"] = min(
+            float(policy.get("max_switch", 1.0)),
+            UNCALIBRATED_DOMAIN_MAX_SWITCH,
+        )
+        policy["uncalibrated_domain_rule"] = "validation_absent_domains_get_fixed_conservative_switch_cap"
     best_policy: Dict[str, Any] = {}
     best_val: Dict[str, Any] = {}
     best_score = -1e18
@@ -2345,6 +2373,8 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
             "deployment_decision": "diagnostic_keep_stage37_floor",
             "reason": "no validation-safe self-gated endpoint policy",
             "gate_checkpoint_count": len(gate_paths),
+            "calibrated_domains": calibrated_domains,
+            "uncalibrated_domains": uncalibrated_domains,
         }
     else:
         test_gate, test_free, test_labels = _predict_endpoint_gate_ensemble(gate_paths, "test")
@@ -2404,6 +2434,9 @@ def run_fresh_self_gated_endpoint_candidate() -> Dict[str, Any]:
             "protected_full_replacement_pass": protected_full_replacement,
             "deployment_decision": "self_gated_m3w_neural_v1_candidate_pending_user_acceptance" if protected_full_replacement and no_external_fallback_safe else "diagnostic_keep_stage37_floor",
             "gate_checkpoint_count": len(gate_paths),
+            "calibrated_domains": calibrated_domains,
+            "uncalibrated_domains": uncalibrated_domains,
+            "uncalibrated_domain_max_switch_default": UNCALIBRATED_DOMAIN_MAX_SWITCH,
             "caveat": caveat,
         }
     _write_json(OUT_DIR / "stage41_fresh_self_gated_endpoint_candidate.json", result)
