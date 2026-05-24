@@ -1,0 +1,18 @@
+# Stage33 Domain Failure Analysis
+
+- source: `fresh_run`
+- coordinate-invariant features fixed negative transfer: `True`
+- relative-error target better than raw-FDE target: `False`
+- domain adapter useful: `True`
+- external scene/goal contribution: `partial: train-only goal context exists but current feature rows lack exact per-row endpoint coordinates, so selector lift remains limited.`
+- external data too short: `True`
+- horizon mismatch: `{10: 2020, 25: 1212, 50: 404}`
+- agent type mismatch: `external is pedestrian-only while SDD is mixed-agent.`
+- still SDD-specific selector: `True`
+- world model status: `not_cross_domain_candidate`
+
+## Shortest Repair Path
+- Attach exact current-position/endpoint coordinates to external feature rows so train-only goal distances are per-row, not scene-level.
+- Build external scene packs from images/homographies where available; current packs are geometry-proxy only.
+- Train on at least one external domain with held-out scenes and enough t+50/t+100 rows.
+- Use relative-error selector targets everywhere; raw-FDE targets remain coordinate-scale fragile.

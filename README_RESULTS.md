@@ -707,3 +707,30 @@ Key Stage32 outcome:
 - Mixed-domain selector preserved positive SDD average improvement but failed easy preservation, so it is not deployable.
 - Cross-dataset world-model generalization is not established; M3W-LAS remains an SDD pixel raw-frame candidate.
 - Tests: `python -m pytest tests` -> `58 passed`.
+
+## Stage33: Coordinate-Invariant Cross-Domain M3W
+
+Stage33 rebuilds the external transfer stack around train-only external scene/goal context, coordinate-invariant tokens, relative-error baseline targets, latent domain adapters, and domain-conditioned selectors. It does not execute Stage5C or enable SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+sdd_coordinates = pixel raw-frame
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+best_external_all_improvement = 0.0
+best_external_t50_improvement = 0.0
+gates = 11 / 13
+verdict = stage33_coordinate_invariant_partial_not_cross_domain_candidate
+```
+
+Key Stage33 outcome:
+
+- External scene packs and train-only goal context were built as geometry proxies; no test endpoints were used.
+- Coordinate-invariant features, relative-FDE targets, relative baselines, latent domain adapter, domain-conditioned selectors, and cross-domain matrix were run as `fresh_run`.
+- Domain adapter reduced latent mean-distance, but selector deployment still fell back to strongest baselines externally.
+- Best external all/t+50 improvement remained `0.0`; this is safe fallback, not positive cross-domain transfer.
+- External-only relative selectors still damaged easy cases, so they are not deployable.
+- Cross-domain world-model candidate gate failed; M3W-LAS remains SDD pixel raw-frame candidate plus external diagnostic evidence.
+- Tests: `python -m pytest tests` -> `61 passed`.
