@@ -1201,7 +1201,7 @@ Stage41 second pass:
 - intervention calibrator: `{calibrator.get('best_stage41_intervention_calibrator')}` with deployment `{calibrator.get('deployment_decision')}`.
 - t50 rescue: `{t50_rescue.get('best_stage41_t50_rescue')}` with deployment `{t50_rescue.get('deployment_decision')}`.
 - policy blender: `{policy_blender.get('best_stage41_policy_blender')}` with deployment `{policy_blender.get('deployment_decision')}`.
-- Tests: `python -m pytest tests` -> `94 passed in 57.92s`.
+- Tests: `python -m pytest tests` -> `94 passed in 116.24s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1212,7 +1212,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `94 passed in 57.92s`",
+            "- result: `94 passed in 116.24s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1275,7 +1275,7 @@ Stage41 second pass:
             "best_metrics": policy_blender.get("best_metrics"),
             "conclusion": "Policy blender is a negative/diagnostic trial unless it beats Stage37 and preserves easy cases.",
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "94 passed in 57.92s", "source": "fresh_run"}
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "94 passed in 116.24s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 

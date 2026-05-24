@@ -93,7 +93,21 @@ def _score_for_mode(metrics: Mapping[str, float], horizon: int, mode: str) -> fl
     )
 
 
-def _overall_score(metrics: Mapping[str, Any]) -> float:
+def _metadata_by_domain(split: str = "val") -> Dict[str, Dict[str, float]]:
+    split_report = read_json("outputs/stage41_external_split/report.json", {})
+    result: Dict[str, Dict[str, float]] = {}
+    for domain, item in split_report.get("by_domain", {}).items():
+        row = item.get(split, {})
+        result[domain] = {
+            "source_files": float(row.get("source_files", 0)),
+            "history_len_mean": float(row.get("history_len_mean", 0.0)),
+            "history_ge_32": float(row.get("history_ge_32", 0)),
+            "rows": float(row.get("rows", 0)),
+        }
+    return result
+
+
+def _overall_score(metrics: Mapping[str, Any], risk_penalty: float = 0.0) -> float:
     positive_domains = sum(
         1
         for row in metrics.get("by_domain", {}).values()
@@ -107,6 +121,7 @@ def _overall_score(metrics: Mapping[str, Any]) -> float:
         + 0.03 * positive_domains
         - 20.0 * max(0.0, float(metrics.get("easy_degradation", 1.0)) - 0.02)
         - 0.2 * max(0.0, float(metrics.get("harm_over_fallback", 0.0)))
+        - risk_penalty
     )
 
 
@@ -176,15 +191,29 @@ def _blend(actions: Mapping[str, Mapping[str, Any]], selected_slices: Mapping[st
     return selected, switch
 
 
-def _select_slices(actions: Mapping[str, Mapping[str, Any]], mode: str) -> Tuple[Dict[str, str], Dict[str, Any]]:
+def _select_slices(actions: Mapping[str, Mapping[str, Any]], mode: str) -> Tuple[Dict[str, str], Dict[str, Any], float]:
     ds = s41a._ds("val")
     fallback = ds["floor_fde"].astype(np.float64)
     domains = ds["domain"].astype(str)
     horizons = ds["horizon"].astype(int)
+    meta = _metadata_by_domain("val")
     cache: Dict[Tuple[str, str], Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]] = {}
     action_arrays = {name: _arrays_for_action(action, "val", cache) for name, action in actions.items()}
+    train_arrays: Dict[str, Tuple[np.ndarray, np.ndarray]] = {}
+    train_ds: Mapping[str, np.ndarray] | None = None
+    train_fallback: np.ndarray | None = None
+    train_domains: np.ndarray | None = None
+    train_horizons: np.ndarray | None = None
+    if mode in {"train_val_consistency", "robust_short_history"}:
+        train_ds = s41a._ds("train")
+        train_fallback = train_ds["floor_fde"].astype(np.float64)
+        train_domains = train_ds["domain"].astype(str)
+        train_horizons = train_ds["horizon"].astype(int)
+        train_cache: Dict[Tuple[str, str], Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]] = {}
+        train_arrays = {name: _arrays_for_action(action, "train", train_cache) for name, action in actions.items()}
     selected_slices: Dict[str, str] = {}
     diagnostics: Dict[str, Any] = {}
+    risk_penalty = 0.0
     for domain in sorted(set(domains.tolist())):
         for horizon in [10, 25, 50, 100]:
             mask = (domains == domain) & (horizons == horizon)
@@ -195,41 +224,55 @@ def _select_slices(actions: Mapping[str, Mapping[str, Any]], mode: str) -> Tuple
             best_metrics = _slice_metrics(fallback, fallback, ds, np.zeros(len(fallback), dtype=bool), mask)
             for action_name, (action_selected, action_switch) in action_arrays.items():
                 metrics = _slice_metrics(action_selected, fallback, ds, action_switch, mask)
-                min_imp = 0.002 if mode in {"conservative", "long_horizon"} else 0.0
-                max_easy = 0.004 if mode == "conservative" else 0.02
+                min_imp = 0.002 if mode in {"conservative", "long_horizon", "metadata_guarded", "robust_short_history"} else 0.0
+                max_easy = 0.004 if mode in {"conservative", "metadata_guarded", "robust_short_history"} else 0.02
                 if metrics["improvement"] <= min_imp or metrics["easy_degradation"] > max_easy:
                     continue
+                risky_t50 = horizon == 50 and meta.get(domain, {}).get("history_len_mean", 0.0) > 12.0
+                if mode in {"metadata_guarded", "robust_short_history"} and risky_t50:
+                    continue
+                if mode in {"train_val_consistency", "robust_short_history"} and train_ds is not None and train_domains is not None and train_horizons is not None and train_fallback is not None:
+                    train_mask = (train_domains == domain) & (train_horizons == horizon)
+                    if int(np.sum(train_mask)) < 100:
+                        continue
+                    train_selected, train_switch = train_arrays[action_name]
+                    train_metrics = _slice_metrics(train_selected, train_fallback, train_ds, train_switch, train_mask)
+                    if train_metrics["improvement"] <= 0.002 or train_metrics["easy_degradation"] > 0.01:
+                        continue
                 score = _score_for_mode(metrics, horizon, mode)
                 if score > best_score:
                     best_name = action_name
                     best_score = score
                     best_metrics = metrics
             selected_slices[f"{domain}|{horizon}"] = best_name
+            if horizon == 50 and best_name != "fallback" and meta.get(domain, {}).get("history_len_mean", 0.0) > 12.0:
+                risk_penalty += 0.30
             diagnostics[f"{domain}|{horizon}"] = {"selected_action": best_name, "val_score": best_score, "val_metrics": best_metrics}
-    return selected_slices, diagnostics
+    return selected_slices, diagnostics, risk_penalty
 
 
 def build_policy_blender() -> Dict[str, Any]:
     started = time.perf_counter()
     actions = _action_library()
-    modes = ["conservative", "balanced", "long_horizon", "hard_aware", "stage37_gap_hunting"]
+    modes = ["conservative", "balanced", "long_horizon", "hard_aware", "stage37_gap_hunting", "metadata_guarded", "train_val_consistency", "robust_short_history"]
     mode_reports: Dict[str, Any] = {}
     best_mode = ""
     best_val_score = -1e18
     best_slices: Dict[str, str] = {}
     for mode in modes:
-        selected_slices, diagnostics = _select_slices(actions, mode)
+        selected_slices, diagnostics, risk_penalty = _select_slices(actions, mode)
         cache: Dict[Tuple[str, str], Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]] = {}
         val_selected, val_switch = _blend(actions, selected_slices, "val", cache)
         val_ds = s41a._ds("val")
         val_metrics = s41a._metrics(val_selected, val_ds["floor_fde"].astype(np.float64), val_ds, val_switch)
-        score = _overall_score(val_metrics)
+        score = _overall_score(val_metrics, risk_penalty=risk_penalty)
         mode_reports[mode] = {
             "source": "fresh_run",
             "selected_slices": selected_slices,
             "slice_diagnostics": diagnostics,
             "val_metrics": val_metrics,
             "val_score": score,
+            "metadata_risk_penalty": risk_penalty,
         }
         if val_metrics.get("easy_degradation", 1.0) <= 0.02 and score > best_val_score:
             best_mode = mode
@@ -261,6 +304,7 @@ def build_policy_blender() -> Dict[str, Any]:
             "source": "fresh_run",
             "best_stage41_policy_blender": best_mode,
             "selection_rule": "domain+horizon slice policy selected on validation only; test evaluated once",
+            "guard_note": "metadata_guarded modes forbid t50 switching for validation domains with mean history > 12 frames; train_val modes require positive train and val slice metrics.",
             "action_count": len(actions),
             "best_selected_slices": best_slices,
             "best_val_score": best_val_score,
@@ -287,4 +331,3 @@ def build_policy_blender() -> Dict[str, Any]:
 
 def main_policy_blender() -> None:
     build_policy_blender()
-

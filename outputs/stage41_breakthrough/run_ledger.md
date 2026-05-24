@@ -38,3 +38,6 @@
 | `run_stage41_policy_blender.py` | `fresh_run` | `ok` | 69.697 | `de1294638753` | `7e95cec7a5f4` | `72f09de` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.945 | `78fb4a4126ca` | `a778875425e9` | `72f09de` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 3.026 | `78fb4a4126ca` | `a778875425e9` | `72f09de` |
+| `run_stage41_policy_blender.py` | `fresh_run` | `ok` | 152.666 | `de1294638753` | `5362358fa340` | `d080a41` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 5.174 | `78fb4a4126ca` | `0726253508c5` | `d080a41` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 5.033 | `78fb4a4126ca` | `0726253508c5` | `d080a41` |

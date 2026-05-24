@@ -15,15 +15,15 @@
 | Gate4b all-agent neural trials run | True | ['all_agent_easy_guard', 'all_agent_endpoint_easy_guard', 'all_agent_endpoint_hard_only', 'all_agent_endpoint_risk_switch', 'all_agent_endpoint_t100_focus', 'all_agent_t100_curriculum', 'all_agent_t50_hard_safety', 'all_agent_token_transformer'] |
 | Gate4c intervention calibrator run | True | calibrated_all_agent_endpoint_t100_focus |
 | Gate4d t50 rescue run | True | calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard |
-| Gate4e policy blender run | True | hard_aware |
-| Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.024621545149110413 |
+| Gate4e policy blender run | True | metadata_guarded |
+| Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.032979180115021434 |
 | Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.023656017980682287 |
-| Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.026077286541592137 |
+| Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.03650862324128157 |
 | Gate8 easy degradation <=2% | True | 0.0 |
-| Gate9 at least two held-out external domains positive | True | {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.015926675807943824, 't50_improvement': 0.0, 't100_improvement': 0.0335577870056738, 'hard_failure_improvement': 0.016892028728442865, 'easy_degradation': 0.0, 'switch_rate': 0.05000463005833874}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.06162077231472862, 't50_improvement': 0.10700099062093782, 't100_improvement': 0.0161846897491722, 'hard_failure_improvement': 0.06610576278451474, 'easy_degradation': 0.0, 'switch_rate': 0.14179719703215168}, 'UCY': {'rows': 9540, 'all_improvement': 0.05578151010993071, 't50_improvement': 0.09364137229419445, 't100_improvement': 0.011124917320985195, 'hard_failure_improvement': 0.06077739672330784, 'easy_degradation': 0.0, 'switch_rate': 0.10660377358490566}} |
+| Gate9 at least two held-out external domains positive | True | {'ETH_UCY': {'rows': 21598, 'all_improvement': 0.018463535536692777, 't50_improvement': 0.0, 't100_improvement': 0.065154349729443, 'hard_failure_improvement': 0.02156272379339874, 'easy_degradation': 0.0, 'switch_rate': 0.07255301416797852}, 'TrajNet': {'rows': 3639, 'all_improvement': 0.10320584923572218, 't50_improvement': 0.10700099062093782, 't100_improvement': 0.14563338285586003, 'hard_failure_improvement': 0.11162523479019204, 'easy_degradation': 0.0, 'switch_rate': 0.1110195108546304}, 'UCY': {'rows': 9540, 'all_improvement': 0.0814639226154027, 't50_improvement': 0.09364137229419445, 't100_improvement': 0.07835892682758294, 'hard_failure_improvement': 0.08873697802709679, 'easy_degradation': 0.007077164853350082, 'switch_rate': 0.1110062893081761}} |
 | Gate10 neural without fallback not catastrophic | True | {} |
-| Gate11 neural switch rate >0 and positive with fallback | True | {'switch_rate': 0.07513586565833741, 'exceeds_stage37': False, 'all': 0.024621545149110413, 't50': 0.023656017980682287, 'hard': 0.026077286541592137} |
-| Gate12 t100 diagnostic positive or blocker documented | True | 0.029132360292621673 |
+| Gate11 neural switch rate >0 and positive with fallback | True | {'switch_rate': 0.08712654915605142, 'exceeds_stage37': False, 'all': 0.032979180115021434, 't50': 0.023656017980682287, 'hard': 0.03650862324128157} |
+| Gate12 t100 diagnostic positive or blocker documented | True | 0.0714760176897149 |
 | Gate13 SDD safety floor not destroyed | True | No Stage41 deployment unless gates pass; Stage37 remains deployable floor. |
 | Gate14 bootstrap CI present | True | {'low': 0.021000038058883685, 'mid': 0.0236399225734506, 'high': 0.026428649141640826, 'n': 8245} |
 | Gate15 ablation/trial matrix present | True | trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, and policy blender |
