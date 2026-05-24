@@ -922,6 +922,8 @@ def eval_world_models() -> Dict[str, Any]:
     fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     source_rotation_confirmation = read_json("outputs/stage41_fresh_confirmation/stage41_source_rotation_fresh_confirmation.json", {})
     fresh_residual = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_residual_endpoint_candidate.json", {})
+    fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
+    fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     if locked_v2:
         comparisons["Stage41_locked_v2_confirmatory_candidate_not_deployable"] = locked_v2.get("representative_metrics", {})
@@ -943,6 +945,10 @@ def eval_world_models() -> Dict[str, Any]:
         comparisons["Stage41_source_rotation_fresh_confirmation_partial_not_full_replacement"] = source_rotation_confirmation.get("best_metrics", {})
     if fresh_residual:
         comparisons["Stage41_fresh_residual_endpoint_candidate_protected"] = fresh_residual.get("metrics_vs_floor", {})
+    if fresh_bounded:
+        comparisons["Stage41_fresh_bounded_residual_candidate_diagnostic"] = fresh_bounded.get("metrics_vs_floor", {})
+    if fresh_interpolation:
+        comparisons["Stage41_fresh_endpoint_interpolation_candidate_protected"] = fresh_interpolation.get("metrics_vs_floor", {})
     positive_domains = 0
     for row in best_metrics.get("by_domain", {}).values():
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0:
@@ -982,6 +988,9 @@ def eval_world_models() -> Dict[str, Any]:
         "locked_v2_fixed_policy_confirmation_available": bool(fixed_confirmation),
         "source_rotation_fresh_confirmation_available": bool(source_rotation_confirmation),
         "fresh_residual_endpoint_candidate_available": bool(fresh_residual),
+        "fresh_bounded_residual_candidate_available": bool(fresh_bounded),
+        "fresh_endpoint_interpolation_candidate_available": bool(fresh_interpolation),
+        "protected_neural_candidate_note": "Fresh endpoint interpolation is a strong protected neural candidate, but it is not promoted to deploy_stage41_neural_world_model while no-fallback safety remains false.",
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
     write_md(OUT_DIR / "stage41_neural_eval.md", ["# Stage41 Neural Eval", "", "- source: `fresh_run`", f"- deployment: `{result['deployment_decision']}`", f"- best: `{best_name}`", f"- best metrics: `{best_metrics}`", f"- comparisons: `{comparisons}`"])
@@ -1038,6 +1047,8 @@ def failure_analysis() -> Dict[str, Any]:
     fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     source_rotation_confirmation = read_json("outputs/stage41_fresh_confirmation/stage41_source_rotation_fresh_confirmation.json", {})
     fresh_residual = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_residual_endpoint_candidate.json", {})
+    fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
+    fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
         "source": "fresh_run",
@@ -1078,6 +1089,10 @@ def failure_analysis() -> Dict[str, Any]:
         "source_rotation_fresh_confirmation": source_rotation_confirmation.get("best_metrics", {}),
         "fresh_residual_endpoint_candidate": fresh_residual.get("metrics_vs_floor", {}),
         "fresh_residual_without_fallback": fresh_residual.get("endpoint_without_fallback_vs_source_rotation_base", {}),
+        "fresh_bounded_residual_candidate": fresh_bounded.get("metrics_vs_floor", {}),
+        "fresh_bounded_without_fallback": fresh_bounded.get("bounded_without_fallback_vs_source_rotation_base", {}),
+        "fresh_endpoint_interpolation_candidate": fresh_interpolation.get("metrics_vs_floor", {}),
+        "fresh_endpoint_interpolation_without_fallback": fresh_interpolation.get("interpolated_without_fallback_vs_source_rotation_base", {}),
         "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
             "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
             "jepa": "JEPA is representation auxiliary only; no generative rollout or Stage5C execution.",
@@ -1120,6 +1135,8 @@ def gates() -> Dict[str, Any]:
     fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     source_rotation_confirmation = read_json("outputs/stage41_fresh_confirmation/stage41_source_rotation_fresh_confirmation.json", {})
     fresh_residual = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_residual_endpoint_candidate.json", {})
+    fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
+    fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
@@ -1144,6 +1161,8 @@ def gates() -> Dict[str, Any]:
         ("Gate4q fixed-policy stress confirmation audit run", bool(fixed_confirmation), {"stage37_margin_pass": fixed_confirmation.get("stage37_margin_pass"), "stress_pass": fixed_confirmation.get("stress_pass"), "fresh_confirmation_pass": fixed_confirmation.get("fresh_confirmation_pass")}),
         ("Gate4r source-rotation fresh confirmation run", bool(source_rotation_confirmation), {"fresh_confirmation_pass": source_rotation_confirmation.get("fresh_confirmation_pass"), "full_replacement_pass": source_rotation_confirmation.get("full_replacement_pass"), "best_metrics": source_rotation_confirmation.get("best_metrics"), "t50_oracle_ceiling": source_rotation_confirmation.get("t50_oracle_ceiling")}),
         ("Gate4s fresh residual endpoint candidate run", bool(fresh_residual), {"full_replacement_pass": fresh_residual.get("full_replacement_pass"), "metrics_vs_floor": fresh_residual.get("metrics_vs_floor"), "without_fallback": fresh_residual.get("endpoint_without_fallback_vs_source_rotation_base")}),
+        ("Gate4t fresh bounded residual candidate run", bool(fresh_bounded), {"protected_full_replacement_pass": fresh_bounded.get("protected_full_replacement_pass"), "no_fallback_safe_pass": fresh_bounded.get("no_fallback_safe_pass"), "metrics_vs_floor": fresh_bounded.get("metrics_vs_floor"), "without_fallback": fresh_bounded.get("bounded_without_fallback_vs_source_rotation_base")}),
+        ("Gate4u fresh endpoint interpolation candidate run", bool(fresh_interpolation), {"protected_full_replacement_pass": fresh_interpolation.get("protected_full_replacement_pass"), "no_fallback_safe_pass": fresh_interpolation.get("no_fallback_safe_pass"), "metrics_vs_floor": fresh_interpolation.get("metrics_vs_floor"), "without_fallback": fresh_interpolation.get("interpolated_without_fallback_vs_source_rotation_base")}),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -1195,11 +1214,18 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     source_rotation_confirmation = read_json("outputs/stage41_fresh_confirmation/stage41_source_rotation_fresh_confirmation.json", {})
     fresh_residual = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_residual_endpoint_candidate.json", {})
+    fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
+    fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     source_rotation_metrics = source_rotation_confirmation.get("best_metrics", {}) or {}
     fresh_residual_floor = fresh_residual.get("metrics_vs_floor", {}) or {}
     fresh_residual_base = fresh_residual.get("metrics_vs_source_rotation_base", {}) or {}
     fresh_residual_without = fresh_residual.get("endpoint_without_fallback_vs_source_rotation_base", {}) or {}
+    fresh_bounded_floor = fresh_bounded.get("metrics_vs_floor", {}) or {}
+    fresh_bounded_without = fresh_bounded.get("bounded_without_fallback_vs_source_rotation_base", {}) or {}
+    fresh_interpolation_floor = fresh_interpolation.get("metrics_vs_floor", {}) or {}
+    fresh_interpolation_base = fresh_interpolation.get("metrics_vs_source_rotation_base", {}) or {}
+    fresh_interpolation_without = fresh_interpolation.get("interpolated_without_fallback_vs_source_rotation_base", {}) or {}
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1389,6 +1415,36 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- endpoint without fallback easy degradation: `{fresh_residual_without.get('easy_degradation')}`",
         "- caveat: residual endpoint with validation-selected fallback clears all/t50/hard on this fresh rotation, but unprotected endpoint still harms easy cases, so deployment must remain Stage37-protected.",
         "",
+        "## Fresh Bounded Residual Candidate",
+        "",
+        f"- available: `{bool(fresh_bounded)}`",
+        f"- deployment decision: `{fresh_bounded.get('deployment_decision')}`",
+        f"- protected full replacement pass: `{fresh_bounded.get('protected_full_replacement_pass')}`",
+        f"- no-fallback safe pass: `{fresh_bounded.get('no_fallback_safe_pass')}`",
+        f"- vs floor all: `{fresh_bounded_floor.get('all_improvement')}`",
+        f"- vs floor t50: `{fresh_bounded_floor.get('t50_improvement')}`",
+        f"- vs floor t100 diagnostic: `{fresh_bounded_floor.get('t100_improvement')}`",
+        f"- vs floor hard/failure: `{fresh_bounded_floor.get('hard_failure_improvement')}`",
+        f"- bounded without fallback easy degradation: `{fresh_bounded_without.get('easy_degradation')}`",
+        "- caveat: clipped residual around the safety floor was safe only under the gate and did not fix no-fallback behavior; it remains diagnostic.",
+        "",
+        "## Fresh Endpoint Interpolation Candidate",
+        "",
+        f"- available: `{bool(fresh_interpolation)}`",
+        f"- deployment decision: `{fresh_interpolation.get('deployment_decision')}`",
+        f"- protected full replacement pass: `{fresh_interpolation.get('protected_full_replacement_pass')}`",
+        f"- no-fallback safe pass: `{fresh_interpolation.get('no_fallback_safe_pass')}`",
+        f"- best alpha: `{fresh_interpolation.get('best_alpha')}`",
+        f"- vs floor all: `{fresh_interpolation_floor.get('all_improvement')}`",
+        f"- vs floor t50: `{fresh_interpolation_floor.get('t50_improvement')}`",
+        f"- vs floor t100 diagnostic: `{fresh_interpolation_floor.get('t100_improvement')}`",
+        f"- vs floor hard/failure: `{fresh_interpolation_floor.get('hard_failure_improvement')}`",
+        f"- vs floor easy: `{fresh_interpolation_floor.get('easy_degradation')}`",
+        f"- vs source-rotation base all: `{fresh_interpolation_base.get('all_improvement')}`",
+        f"- vs source-rotation base t50: `{fresh_interpolation_base.get('t50_improvement')}`",
+        f"- interpolated without fallback easy degradation: `{fresh_interpolation_without.get('easy_degradation')}`",
+        "- caveat: protected endpoint interpolation is the strongest neural evidence so far, but no-fallback safety remains false, so it cannot yet replace Stage37 as an unconditional world dynamics head.",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1441,11 +1497,18 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     fixed_confirmation = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     source_rotation_confirmation = read_json("outputs/stage41_fresh_confirmation/stage41_source_rotation_fresh_confirmation.json", {})
     fresh_residual = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_residual_endpoint_candidate.json", {})
+    fresh_bounded = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_bounded_residual_candidate.json", {})
+    fresh_interpolation = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_endpoint_interpolation_candidate.json", {})
     fixed_test_metrics = ((fixed_confirmation.get("split_results") or {}).get("test") or {}).get("metrics", {})
     source_rotation_metrics = source_rotation_confirmation.get("best_metrics", {}) or {}
     fresh_residual_floor = fresh_residual.get("metrics_vs_floor", {}) or {}
     fresh_residual_base = fresh_residual.get("metrics_vs_source_rotation_base", {}) or {}
     fresh_residual_without = fresh_residual.get("endpoint_without_fallback_vs_source_rotation_base", {}) or {}
+    fresh_bounded_floor = fresh_bounded.get("metrics_vs_floor", {}) or {}
+    fresh_bounded_without = fresh_bounded.get("bounded_without_fallback_vs_source_rotation_base", {}) or {}
+    fresh_interpolation_floor = fresh_interpolation.get("metrics_vs_floor", {}) or {}
+    fresh_interpolation_base = fresh_interpolation.get("metrics_vs_source_rotation_base", {}) or {}
+    fresh_interpolation_without = fresh_interpolation.get("interpolated_without_fallback_vs_source_rotation_base", {}) or {}
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
@@ -1492,7 +1555,9 @@ Stage41 second pass:
 - locked-v2 fixed-policy confirmation: deployment `{fixed_confirmation.get('deployment_decision')}`, margin `{fixed_confirmation.get('stage37_margin_pass')}`, stress `{fixed_confirmation.get('stress_pass')}`, fresh confirmation `{fixed_confirmation.get('fresh_confirmation_pass')}`, all `{fixed_test_metrics.get('all_improvement')}`, t50 `{fixed_test_metrics.get('t50_improvement')}`, hard `{fixed_test_metrics.get('hard_failure_improvement')}`.
 - source-rotation fresh confirmation: deployment `{source_rotation_confirmation.get('deployment_decision')}`, fresh pass `{source_rotation_confirmation.get('fresh_confirmation_pass')}`, full replacement `{source_rotation_confirmation.get('full_replacement_pass')}`, all `{source_rotation_metrics.get('all_improvement')}`, t50 `{source_rotation_metrics.get('t50_improvement')}`, t100 `{source_rotation_metrics.get('t100_improvement')}`, hard `{source_rotation_metrics.get('hard_failure_improvement')}`, easy `{source_rotation_metrics.get('easy_degradation')}`, t50 oracle ceiling `{source_rotation_confirmation.get('t50_oracle_ceiling')}`. This confirms all/hard neural lift on fresh held-out source files but does not fully replace Stage37 because t50 remains below Stage37.
 - fresh residual endpoint candidate: deployment `{fresh_residual.get('deployment_decision')}`, full replacement `{fresh_residual.get('full_replacement_pass')}`, vs-floor all `{fresh_residual_floor.get('all_improvement')}`, t50 `{fresh_residual_floor.get('t50_improvement')}`, t100 `{fresh_residual_floor.get('t100_improvement')}`, hard `{fresh_residual_floor.get('hard_failure_improvement')}`, easy `{fresh_residual_floor.get('easy_degradation')}`, vs-source-rotation-base t50 `{fresh_residual_base.get('t50_improvement')}`, unprotected endpoint easy `{fresh_residual_without.get('easy_degradation')}`. This is the first Stage41 neural residual candidate that clears all/t50/hard on fresh rotation, but it must remain protected because unprotected endpoint still hurts easy cases.
-- Tests: `python -m pytest tests` -> `107 passed in 60.74s`.
+- fresh bounded residual candidate: deployment `{fresh_bounded.get('deployment_decision')}`, protected full replacement `{fresh_bounded.get('protected_full_replacement_pass')}`, no-fallback safe `{fresh_bounded.get('no_fallback_safe_pass')}`, vs-floor all `{fresh_bounded_floor.get('all_improvement')}`, t50 `{fresh_bounded_floor.get('t50_improvement')}`, hard `{fresh_bounded_floor.get('hard_failure_improvement')}`, unprotected easy `{fresh_bounded_without.get('easy_degradation')}`. This clipped residual hypothesis did not fix no-fallback safety and remains diagnostic.
+- fresh endpoint interpolation candidate: deployment `{fresh_interpolation.get('deployment_decision')}`, protected full replacement `{fresh_interpolation.get('protected_full_replacement_pass')}`, no-fallback safe `{fresh_interpolation.get('no_fallback_safe_pass')}`, alpha `{fresh_interpolation.get('best_alpha')}`, vs-floor all `{fresh_interpolation_floor.get('all_improvement')}`, t50 `{fresh_interpolation_floor.get('t50_improvement')}`, t100 `{fresh_interpolation_floor.get('t100_improvement')}`, hard `{fresh_interpolation_floor.get('hard_failure_improvement')}`, easy `{fresh_interpolation_floor.get('easy_degradation')}`, vs-source-rotation-base all `{fresh_interpolation_base.get('all_improvement')}`, t50 `{fresh_interpolation_base.get('t50_improvement')}`, unprotected easy `{fresh_interpolation_without.get('easy_degradation')}`. This is the strongest protected neural evidence so far, but no-fallback safety remains false.
+- Tests: `python -m pytest tests` -> `107 passed in 67.64s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1503,7 +1568,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `107 passed in 60.74s`",
+            "- result: `107 passed in 67.64s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1717,7 +1782,31 @@ Stage41 second pass:
             "endpoint_without_fallback_vs_source_rotation_base": fresh_residual_without,
             "conclusion": fresh_residual.get("caveat"),
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 60.74s", "source": "fresh_run"}
+    if fresh_bounded:
+        stage41_state["fresh_bounded_residual_candidate"] = {
+            "source": fresh_bounded.get("source"),
+            "protocol_status": fresh_bounded.get("protocol_status"),
+            "deployment_decision": fresh_bounded.get("deployment_decision"),
+            "protected_full_replacement_pass": fresh_bounded.get("protected_full_replacement_pass"),
+            "no_fallback_safe_pass": fresh_bounded.get("no_fallback_safe_pass"),
+            "metrics_vs_floor": fresh_bounded_floor,
+            "bounded_without_fallback_vs_source_rotation_base": fresh_bounded_without,
+            "conclusion": fresh_bounded.get("caveat"),
+        }
+    if fresh_interpolation:
+        stage41_state["fresh_endpoint_interpolation_candidate"] = {
+            "source": fresh_interpolation.get("source"),
+            "protocol_status": fresh_interpolation.get("protocol_status"),
+            "deployment_decision": fresh_interpolation.get("deployment_decision"),
+            "best_alpha": fresh_interpolation.get("best_alpha"),
+            "protected_full_replacement_pass": fresh_interpolation.get("protected_full_replacement_pass"),
+            "no_fallback_safe_pass": fresh_interpolation.get("no_fallback_safe_pass"),
+            "metrics_vs_floor": fresh_interpolation_floor,
+            "metrics_vs_source_rotation_base": fresh_interpolation_base,
+            "interpolated_without_fallback_vs_source_rotation_base": fresh_interpolation_without,
+            "conclusion": fresh_interpolation.get("caveat"),
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "107 passed in 67.64s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 

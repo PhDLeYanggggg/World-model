@@ -930,7 +930,7 @@ deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
 positive_external_domains = 3
 best_stage41_neural = policy_blender::metadata_guarded
-gates = 33 / 36
+gates = 35 / 38
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
 
@@ -959,5 +959,7 @@ Stage41 second pass:
 - locked-v2 fixed-policy confirmation: deployment `candidate_needs_fresh_external_confirmation_before_deployment`, margin `True`, stress `True`, fresh confirmation `False`, all `0.1707426681634402`, t50 `0.23639645488658112`, hard `0.17761634616412003`.
 - source-rotation fresh confirmation: deployment `stage41_neural_fresh_confirmed_partial_not_full_replacement`, fresh pass `True`, full replacement `False`, all `0.20881762937561832`, t50 `0.05448600669657733`, t100 `0.4572355026149352`, hard `0.22538184888542845`, easy `0.0`, t50 oracle ceiling `0.07570014620278032`. This confirms all/hard neural lift on fresh held-out source files but does not fully replace Stage37 because t50 remains below Stage37.
 - fresh residual endpoint candidate: deployment `candidate_residual_full_replacement_pending_user_acceptance`, full replacement `True`, vs-floor all `0.2617154631065064`, t50 `0.2347529658082287`, t100 `0.4572355026149352`, hard `0.2829832429137916`, easy `0.0`, vs-source-rotation-base t50 `0.1906549880682753`, unprotected endpoint easy `0.24986519081559688`. This is the first Stage41 neural residual candidate that clears all/t50/hard on fresh rotation, but it must remain protected because unprotected endpoint still hurts easy cases.
-- Tests: `python -m pytest tests` -> `107 passed in 60.74s`.
+- fresh bounded residual candidate: deployment `diagnostic_keep_stage37_floor`, protected full replacement `False`, no-fallback safe `False`, vs-floor all `0.2093691451653562`, t50 `0.05492974017452401`, hard `0.22598240425938143`, unprotected easy `20.566047225938334`. This clipped residual hypothesis did not fix no-fallback safety and remains diagnostic.
+- fresh endpoint interpolation candidate: deployment `diagnostic_keep_stage37_floor`, protected full replacement `True`, no-fallback safe `False`, alpha `1.0`, vs-floor all `0.4360308896303905`, t50 `0.462871212116444`, t100 `0.37849164106051136`, hard `0.4461783076319382`, easy `0.0`, vs-source-rotation-base all `0.2871819048185579`, t50 `0.43191873236381895`, unprotected easy `0.24986518840352323`. This is the strongest protected neural evidence so far, but no-fallback safety remains false.
+- Tests: `python -m pytest tests` -> `107 passed in 67.64s`.
 

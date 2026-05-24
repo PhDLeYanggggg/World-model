@@ -588,6 +588,7 @@ def _residual_features(split: str) -> tuple[np.ndarray, Dict[str, np.ndarray]]:
         "source_file": ds["source_file"].astype(str),
         "floor_fde": ds["floor_fde"].astype(np.float64),
         "candidate_fde": ds["candidate_fde"].astype(np.float64),
+        "cand_delta": ds["cand_delta"].astype(np.float32),
     }
     return x, labels
 
@@ -729,6 +730,11 @@ def _predict_residual_ensemble(paths: Sequence[str | Path], split: str) -> tuple
 
 
 def _source_rotation_base(split: str) -> tuple[np.ndarray, np.ndarray, Dict[str, np.ndarray]]:
+    selected, switch, _idx, labels = _source_rotation_base_details(split)
+    return selected, switch, labels
+
+
+def _source_rotation_base_details(split: str) -> tuple[np.ndarray, np.ndarray, np.ndarray, Dict[str, np.ndarray]]:
     result = read_json(OUT_DIR / "stage41_source_rotation_fresh_confirmation.json", {})
     if not result:
         result = run_source_rotation_fresh_confirmation()
@@ -742,11 +748,13 @@ def _source_rotation_base(split: str) -> tuple[np.ndarray, np.ndarray, Dict[str,
     policy = result.get("best_policy") or {}
     if not paths or not policy:
         labels = _residual_features(split)[1]
-        return labels["floor_fde"].copy(), np.zeros(len(labels["floor_fde"]), dtype=bool), labels
+        idx = np.zeros(len(labels["floor_fde"]), dtype=np.int64)
+        return labels["floor_fde"].copy(), np.zeros(len(labels["floor_fde"]), dtype=bool), idx, labels
     with _ProtoPatch() as patched:
         pred, labels = patched._predict_ensemble(paths, split)
         selected, switch, _idx = patched._apply_policy(pred, labels, policy)
-    return selected.astype(np.float64), switch.astype(bool), labels
+    rich_labels = _residual_features(split)[1]
+    return selected.astype(np.float64), switch.astype(bool), _idx.astype(np.int64), rich_labels
 
 
 def _endpoint_fde(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray]) -> np.ndarray:
@@ -982,3 +990,746 @@ smc_enabled = false
 
 def main_fresh_residual_endpoint_candidate() -> None:
     run_fresh_residual_endpoint_candidate()
+
+
+def _bounded_base_features(split: str) -> tuple[np.ndarray, Dict[str, np.ndarray]]:
+    x_base, labels = _residual_features(split)
+    base_fde, base_switch, base_idx, _ = _source_rotation_base_details(split)
+    cand_delta = labels["cand_delta"].astype(np.float32)
+    base_delta = cand_delta[np.arange(len(base_idx)), base_idx].astype(np.float32)
+    candidate_count = cand_delta.shape[1]
+    idx_one = np.zeros((len(base_idx), candidate_count), dtype=np.float32)
+    idx_one[np.arange(len(base_idx)), base_idx] = 1.0
+    x = np.concatenate(
+        [
+            x_base,
+            base_delta,
+            base_switch.astype(np.float32)[:, None],
+            idx_one,
+        ],
+        axis=1,
+    ).astype(np.float32)
+    labels = dict(labels)
+    labels.update(
+        {
+            "base_fde": base_fde.astype(np.float64),
+            "base_switch": base_switch.astype(bool),
+            "base_idx": base_idx.astype(np.int64),
+            "base_delta": base_delta.astype(np.float32),
+            "target_residual": (labels["target_delta"].astype(np.float32) - base_delta).astype(np.float32),
+        }
+    )
+    return x, labels
+
+
+def _make_bounded_model(in_dim: int, width: int, dropout: float):
+    torch = proto._torch()
+    import torch.nn as nn
+
+    class BoundedResidualHead(nn.Module):
+        def __init__(self) -> None:
+            super().__init__()
+            self.trunk = nn.Sequential(
+                nn.Linear(in_dim, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+            )
+            self.residual = nn.Linear(width, 2)
+            self.log_uncertainty = nn.Linear(width, 1)
+            self.harm = nn.Linear(width, 1)
+            self.failure = nn.Linear(width, 1)
+
+        def forward(self, x):
+            h = self.trunk(x)
+            return {
+                "residual_raw": self.residual(h),
+                "log_uncertainty": self.log_uncertainty(h).squeeze(-1),
+                "harm_logit": self.harm(h).squeeze(-1),
+                "failure_logit": self.failure(h).squeeze(-1),
+            }
+
+    return BoundedResidualHead()
+
+
+def _bounded_trial_configs() -> list[Dict[str, Any]]:
+    return [
+        {
+            "name": "bounded_residual_easy_safe",
+            "width": 160,
+            "dropout": 0.10,
+            "lr": 9.0e-4,
+            "clip": 0.018,
+            "t50_w": 3.0,
+            "t100_w": 2.0,
+            "hard_w": 1.5,
+            "easy_guard_w": 3.0,
+            "residual_w": 0.10,
+            "seed": 9411,
+        },
+        {
+            "name": "bounded_residual_t50",
+            "width": 192,
+            "dropout": 0.08,
+            "lr": 8.0e-4,
+            "clip": 0.035,
+            "t50_w": 5.0,
+            "t100_w": 1.0,
+            "hard_w": 2.5,
+            "easy_guard_w": 2.0,
+            "residual_w": 0.08,
+            "seed": 9422,
+        },
+        {
+            "name": "bounded_residual_long_horizon",
+            "width": 224,
+            "dropout": 0.10,
+            "lr": 7.0e-4,
+            "clip": 0.055,
+            "t50_w": 2.5,
+            "t100_w": 4.5,
+            "hard_w": 2.0,
+            "easy_guard_w": 2.5,
+            "residual_w": 0.12,
+            "seed": 9433,
+        },
+        {
+            "name": "bounded_residual_hard",
+            "width": 192,
+            "dropout": 0.12,
+            "lr": 8.0e-4,
+            "clip": 0.045,
+            "t50_w": 3.0,
+            "t100_w": 2.0,
+            "hard_w": 4.0,
+            "easy_guard_w": 3.5,
+            "residual_w": 0.12,
+            "seed": 9444,
+        },
+    ]
+
+
+def _train_bounded_trial(trial: Mapping[str, Any]) -> Dict[str, Any]:
+    torch = proto._torch()
+    import torch.nn.functional as F
+
+    ensure_dir(CHECKPOINT_DIR)
+    ckpt = CHECKPOINT_DIR / f"stage41_{trial['name']}.pt"
+    heartbeat = OUT_DIR / f"{trial['name']}_heartbeat.json"
+    if ckpt.exists():
+        payload = torch.load(ckpt, map_location="cpu")
+        return {"source": "cached_verified", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": payload.get("best", {}), "resume_note": "existing bounded residual checkpoint reused"}
+    x_train, y_train = _bounded_base_features("train")
+    x_val, y_val = _bounded_base_features("val")
+    model = _make_bounded_model(x_train.shape[1], int(trial["width"]), float(trial["dropout"]))
+    opt = torch.optim.AdamW(model.parameters(), lr=float(trial["lr"]), weight_decay=1e-4)
+    rng = np.random.default_rng(int(trial["seed"]))
+    tx = torch.tensor(x_train)
+    ty = {k: torch.tensor(v) for k, v in y_train.items() if k in {"target_delta", "base_delta", "horizon", "hard", "easy", "failure"}}
+    vx = torch.tensor(x_val)
+    vy = {k: torch.tensor(v) for k, v in y_val.items() if k in {"target_delta", "base_delta", "horizon", "hard", "easy", "failure"}}
+    best = {"val_loss": float("inf"), "epoch": 0}
+    batch = 512
+    epochs = 5
+    clip = float(trial["clip"])
+    margin = 0.003
+    for epoch in range(1, epochs + 1):
+        order = rng.permutation(len(x_train))
+        losses: list[float] = []
+        model.train()
+        for start in range(0, len(order), batch):
+            ids = torch.tensor(order[start : start + batch], dtype=torch.long)
+            out = model(tx[ids])
+            residual = clip * torch.tanh(out["residual_raw"])
+            pred_delta = ty["base_delta"][ids] + residual
+            pred_err = torch.linalg.norm(pred_delta - ty["target_delta"][ids], dim=1)
+            base_err = torch.linalg.norm(ty["base_delta"][ids] - ty["target_delta"][ids], dim=1).detach()
+            row_w = 1.0 + float(trial["hard_w"]) * ty["hard"][ids].float()
+            row_w = row_w + float(trial["t50_w"]) * (ty["horizon"][ids] == 50).float()
+            row_w = row_w + float(trial["t100_w"]) * (ty["horizon"][ids] == 100).float()
+            endpoint = (F.smooth_l1_loss(pred_delta, ty["target_delta"][ids], reduction="none").mean(dim=1) * row_w).mean()
+            easy_guard = (F.relu(pred_err - base_err + margin) * ty["easy"][ids].float() * row_w).mean()
+            t100_guard = (F.relu(pred_err - base_err + margin) * (ty["horizon"][ids] == 100).float() * row_w).mean()
+            uncertainty = (F.smooth_l1_loss(out["log_uncertainty"], torch.log1p(pred_err.detach()), reduction="none") * row_w).mean()
+            harm_target = (pred_err.detach() > (base_err + margin)).float()
+            harm = F.binary_cross_entropy_with_logits(out["harm_logit"], torch.maximum(harm_target, ty["easy"][ids].float()))
+            failure = F.binary_cross_entropy_with_logits(out["failure_logit"], ty["failure"][ids].float())
+            residual_size = torch.linalg.norm(residual, dim=1).mean()
+            loss = endpoint + float(trial["easy_guard_w"]) * easy_guard + 1.2 * t100_guard + 0.35 * uncertainty + 0.25 * harm + 0.15 * failure + float(trial["residual_w"]) * residual_size
+            opt.zero_grad()
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            opt.step()
+            losses.append(float(loss.detach().cpu()))
+        model.eval()
+        with torch.no_grad():
+            out = model(vx)
+            residual = clip * torch.tanh(out["residual_raw"])
+            pred_delta = vy["base_delta"] + residual
+            pred_err = torch.linalg.norm(pred_delta - vy["target_delta"], dim=1)
+            base_err = torch.linalg.norm(vy["base_delta"] - vy["target_delta"], dim=1)
+            val_loss = float((F.smooth_l1_loss(pred_delta, vy["target_delta"]) + 2.0 * (F.relu(pred_err - base_err + margin) * vy["easy"].float()).mean() + 0.5 * (F.relu(pred_err - base_err + margin) * (vy["horizon"] == 100).float()).mean()).cpu())
+        heartbeat.write_text(json.dumps({"trial": dict(trial), "epoch": epoch, "train_loss": float(np.mean(losses)), "val_loss": val_loss, "checkpoint": str(ckpt)}), encoding="utf-8")
+        if val_loss < best["val_loss"]:
+            best = {"val_loss": val_loss, "epoch": epoch, "train_loss": float(np.mean(losses))}
+            torch.save({"model": model.state_dict(), "trial": dict(trial), "in_dim": x_train.shape[1], "best": best}, ckpt)
+    return {"source": "fresh_run", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": best}
+
+
+def _predict_bounded(path: str | Path, split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    torch = proto._torch()
+    payload = torch.load(path, map_location="cpu")
+    trial = payload["trial"]
+    model = _make_bounded_model(int(payload["in_dim"]), int(trial["width"]), float(trial["dropout"]))
+    model.load_state_dict(payload["model"])
+    model.eval()
+    x, labels = _bounded_base_features(split)
+    outs: Dict[str, list[np.ndarray]] = {"residual_delta": [], "endpoint_delta": [], "log_uncertainty": [], "harm": [], "failure": []}
+    clip = float(trial["clip"])
+    with torch.no_grad():
+        tx = torch.tensor(x)
+        base_delta = torch.tensor(labels["base_delta"].astype(np.float32))
+        for start in range(0, len(x), 4096):
+            sl = slice(start, min(start + 4096, len(x)))
+            out = model(tx[sl])
+            residual = clip * torch.tanh(out["residual_raw"])
+            endpoint = base_delta[sl] + residual
+            outs["residual_delta"].append(residual.cpu().numpy())
+            outs["endpoint_delta"].append(endpoint.cpu().numpy())
+            outs["log_uncertainty"].append(out["log_uncertainty"].cpu().numpy())
+            outs["harm"].append(torch.sigmoid(out["harm_logit"]).cpu().numpy())
+            outs["failure"].append(torch.sigmoid(out["failure_logit"]).cpu().numpy())
+    return {k: np.concatenate(v, axis=0).astype(np.float32) for k, v in outs.items()}, labels
+
+
+def _predict_bounded_ensemble(paths: Sequence[str | Path], split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    preds: list[Dict[str, np.ndarray]] = []
+    labels_ref: Dict[str, np.ndarray] | None = None
+    for path in paths:
+        pred, labels = _predict_bounded(path, split)
+        preds.append(pred)
+        labels_ref = labels if labels_ref is None else labels_ref
+    if not preds or labels_ref is None:
+        raise ValueError("bounded residual ensemble requires at least one checkpoint")
+    endpoints = np.stack([p["endpoint_delta"] for p in preds], axis=0)
+    residuals = np.stack([p["residual_delta"] for p in preds], axis=0)
+    out = {
+        "endpoint_delta": endpoints.mean(axis=0).astype(np.float32),
+        "residual_delta": residuals.mean(axis=0).astype(np.float32),
+        "ensemble_variance": endpoints.var(axis=0).mean(axis=1).astype(np.float32),
+        "log_uncertainty": np.mean([p["log_uncertainty"] for p in preds], axis=0).astype(np.float32),
+        "harm": np.mean([p["harm"] for p in preds], axis=0).astype(np.float32),
+        "failure": np.mean([p["failure"] for p in preds], axis=0).astype(np.float32),
+    }
+    return out, labels_ref
+
+
+def _bounded_endpoint_fde(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray]) -> np.ndarray:
+    endpoint = labels["current_xy"].astype(np.float64) + pred["endpoint_delta"].astype(np.float64) * labels["normalizer"].astype(np.float64)[:, None]
+    return np.linalg.norm(endpoint - labels["future_xy"].astype(np.float64), axis=1)
+
+
+def _bounded_policy_grid(pred: Mapping[str, np.ndarray]) -> list[Dict[str, Any]]:
+    var = pred["ensemble_variance"]
+    uncert = pred["log_uncertainty"]
+    res_norm = np.linalg.norm(pred["residual_delta"], axis=1)
+    # Keep this grid intentionally compact: bounded residual training writes
+    # checkpoints first, then validation policy search should be a safety
+    # calibration step rather than the runtime bottleneck.
+    return [
+        {
+            "variance_max": float(np.quantile(var, vq)),
+            "uncertainty_max": float(np.quantile(uncert, uq)),
+            "harm_max": hm,
+            "failure_min": fm,
+            "residual_norm_max": float(np.quantile(res_norm, rq)),
+            "max_switch": ms,
+            "horizon_mode": hz,
+        }
+        for vq in [0.50, 0.90]
+        for uq in [0.50, 0.90]
+        for rq in [0.75, 1.00]
+        for hm in [0.50, 0.80, 0.95]
+        for fm in [0.0]
+        for ms in [0.20, 0.70, 1.0]
+        for hz in ["all", "t50_only", "t50_t100"]
+    ]
+
+
+def _apply_bounded_policy(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], policy: Mapping[str, Any]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    horizon = labels["horizon"].astype(int)
+    endpoint_fde = _bounded_endpoint_fde(pred, labels)
+    res_norm = np.linalg.norm(pred["residual_delta"], axis=1)
+    switch = (
+        (pred["ensemble_variance"] <= float(policy["variance_max"]))
+        & (pred["log_uncertainty"] <= float(policy["uncertainty_max"]))
+        & (pred["harm"] <= float(policy["harm_max"]))
+        & (pred["failure"] >= float(policy["failure_min"]))
+        & (res_norm <= float(policy["residual_norm_max"]))
+    )
+    mode = str(policy.get("horizon_mode", "all"))
+    if mode == "long_only":
+        switch &= np.isin(horizon, [25, 50, 100])
+    elif mode == "t50_only":
+        switch &= horizon == 50
+    elif mode == "t50_t100":
+        switch &= np.isin(horizon, [50, 100])
+    elif mode == "t100_only":
+        switch &= horizon == 100
+    max_switch = float(policy.get("max_switch", 1.0))
+    score = -pred["ensemble_variance"] - 0.25 * pred["log_uncertainty"] - pred["harm"] - 0.2 * res_norm + 0.2 * pred["failure"]
+    if max_switch <= 0.0:
+        switch[:] = False
+    elif max_switch < 1.0 and np.any(switch):
+        ids = np.where(switch)[0]
+        keep_n = max(1, int(max_switch * len(switch)))
+        keep = np.zeros(len(switch), dtype=bool)
+        keep[ids[np.argsort(score[ids])[::-1][:keep_n]]] = True
+        switch &= keep
+    selected = labels["base_fde"].astype(np.float64).copy()
+    selected[switch] = endpoint_fde[switch]
+    return selected, switch, endpoint_fde
+
+
+def _bounded_selection_score(metrics: Mapping[str, Any], without: Mapping[str, Any]) -> float:
+    max_domain_easy = _max_domain_easy(metrics)
+    return (
+        1.2 * float(metrics.get("all_improvement", 0.0))
+        + 2.0 * float(metrics.get("t50_improvement", 0.0))
+        + 1.5 * float(metrics.get("hard_failure_improvement", 0.0))
+        + 0.6 * float(metrics.get("t100_improvement", 0.0))
+        + 0.25 * float(without.get("all_improvement", 0.0))
+        + 0.25 * float(without.get("t50_improvement", 0.0))
+        - 20.0 * max(0.0, float(metrics.get("easy_degradation", 1.0)) - 0.02)
+        - 20.0 * max(0.0, max_domain_easy - 0.02)
+        - 8.0 * max(0.0, float(without.get("easy_degradation", 1.0)) - 0.02)
+        - 2.0 * max(0.0, -float(without.get("t100_improvement", 0.0)))
+    )
+
+
+def run_fresh_bounded_residual_candidate() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_source_rotation_split()
+    with _ProtoPatch() as patched:
+        patched.build_stratified_all_agent_dataset()
+    trial_results: Dict[str, Any] = {}
+    for trial in _bounded_trial_configs():
+        trial_results[trial["name"]] = {"trial": trial, "train": _train_bounded_trial(trial)}
+    paths = [row["train"]["checkpoint"] for row in trial_results.values()]
+    best_single_name = min(trial_results, key=lambda name: float((trial_results[name]["train"].get("best") or {}).get("val_loss", 1e18)))
+    variants: Dict[str, Sequence[str | Path]] = {
+        best_single_name: [trial_results[best_single_name]["train"]["checkpoint"]],
+        "bounded_residual_ensemble": paths,
+    }
+    best_name = ""
+    best_policy: Dict[str, Any] = {}
+    best_val: Dict[str, Any] = {}
+    best_score = -1e18
+    for name, variant_paths in variants.items():
+        val_pred, val_labels = _predict_bounded_ensemble(variant_paths, "val")
+        without = _metric_from_labels(_bounded_endpoint_fde(val_pred, val_labels), val_labels["base_fde"], val_labels, np.ones(len(val_labels["base_fde"]), dtype=bool))
+        for policy in _bounded_policy_grid(val_pred):
+            selected, switch, _endpoint_fde = _apply_bounded_policy(val_pred, val_labels, policy)
+            metrics = _metric_from_labels(selected, val_labels["base_fde"], val_labels, switch)
+            score = _bounded_selection_score(metrics, without)
+            if score > best_score:
+                best_score = score
+                best_name = name
+                best_policy = dict(policy)
+                best_val = {"metrics_vs_source_rotation_base": metrics, "without_fallback_vs_source_rotation_base": without, "score": score}
+    selected_paths = variants[best_name]
+    test_pred, test_labels = _predict_bounded_ensemble(selected_paths, "test")
+    selected, switch, endpoint_fde = _apply_bounded_policy(test_pred, test_labels, best_policy)
+    metrics_vs_base = _metric_from_labels(selected, test_labels["base_fde"], test_labels, switch)
+    without_vs_base = _metric_from_labels(endpoint_fde, test_labels["base_fde"], test_labels, np.ones(len(endpoint_fde), dtype=bool))
+    metrics_vs_floor = _metric_from_labels(selected, test_labels["floor_fde"], test_labels, switch | test_labels["base_switch"].astype(bool))
+    without_vs_floor = _metric_from_labels(endpoint_fde, test_labels["floor_fde"], test_labels, np.ones(len(endpoint_fde), dtype=bool))
+    no_fallback_safe = bool(without_vs_base.get("easy_degradation", 1.0) <= 0.02 and without_vs_base.get("t100_improvement", -1.0) >= 0.0)
+    protected_full_replacement = bool(
+        metrics_vs_floor.get("easy_degradation", 1.0) <= 0.02
+        and _max_domain_easy(metrics_vs_floor) <= 0.02
+        and _positive_domains(metrics_vs_floor) >= 2
+        and metrics_vs_floor.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+        and metrics_vs_floor.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+        and metrics_vs_floor.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+    )
+    result = {
+        "source": "fresh_run",
+        "protocol_status": "fresh_rotation_bounded_residual_candidate",
+        "hypothesis": "Predict a clipped residual around the validation-selected source-rotation safety floor instead of a free future endpoint, so neural_without_fallback cannot catastrophically damage easy/t100 slices.",
+        "best_variant": best_name,
+        "best_policy": best_policy,
+        "best_val": best_val,
+        "metrics_vs_source_rotation_base": metrics_vs_base,
+        "metrics_vs_floor": metrics_vs_floor,
+        "bounded_without_fallback_vs_source_rotation_base": without_vs_base,
+        "bounded_without_fallback_vs_floor": without_vs_floor,
+        "no_fallback_safe_pass": no_fallback_safe,
+        "protected_full_replacement_pass": protected_full_replacement,
+        "positive_external_domains_vs_floor": _positive_domains(metrics_vs_floor),
+        "max_domain_easy_degradation_vs_floor": _max_domain_easy(metrics_vs_floor),
+        "deployment_decision": "bounded_residual_neural_candidate_pending_user_acceptance" if protected_full_replacement and no_fallback_safe else "diagnostic_keep_stage37_floor",
+        "trials": trial_results,
+        "caveat": "Bounded residual is still dataset-local/raw-frame 2.5D. It does not execute Stage5C or SMC and does not make metric/seconds-level claims.",
+    }
+    _write_json(OUT_DIR / "stage41_fresh_bounded_residual_candidate.json", result)
+    lines = [
+        "# Stage41 Fresh Bounded Residual Candidate",
+        "",
+        "- source: `fresh_run`",
+        f"- protocol status: `{result['protocol_status']}`",
+        f"- best variant: `{best_name}`",
+        f"- deployment decision: `{result['deployment_decision']}`",
+        f"- protected full replacement pass: `{protected_full_replacement}`",
+        f"- no-fallback safe pass: `{no_fallback_safe}`",
+        f"- metrics vs source-rotation base: `{metrics_vs_base}`",
+        f"- metrics vs floor: `{metrics_vs_floor}`",
+        f"- bounded without fallback vs source-rotation base: `{without_vs_base}`",
+        f"- bounded without fallback vs floor: `{without_vs_floor}`",
+        "",
+        "- Stage5C executed: `False`",
+        "- SMC enabled: `False`",
+        "- metric/seconds-level claim: `False`",
+    ]
+    write_md(OUT_DIR / "stage41_fresh_bounded_residual_candidate.md", lines)
+    _append_ledger("stage41_fresh_bounded_residual_candidate", "ok", started, [DATA_DIR / "all_agent_train.npz"], [OUT_DIR / "stage41_fresh_bounded_residual_candidate.md"])
+    update_bounded_residual_readme_state(result)
+    return result
+
+
+def update_bounded_residual_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    m = result.get("metrics_vs_floor", {}) or {}
+    base = result.get("metrics_vs_source_rotation_base", {}) or {}
+    nofb = result.get("bounded_without_fallback_vs_source_rotation_base", {}) or {}
+    block = f"""
+
+## Stage41 Fresh Bounded Residual Candidate
+
+This run addresses the remaining neural-without-fallback failure by predicting a clipped residual around the source-rotation safety floor rather than a free endpoint. It trains on train, selects policy on validation, and evaluates test once. It does not execute Stage5C or SMC.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+protected_full_replacement_pass = {result.get('protected_full_replacement_pass')}
+no_fallback_safe_pass = {result.get('no_fallback_safe_pass')}
+vs_floor_all = {m.get('all_improvement')}
+vs_floor_t50 = {m.get('t50_improvement')}
+vs_floor_t100 = {m.get('t100_improvement')}
+vs_floor_hard = {m.get('hard_failure_improvement')}
+vs_floor_easy = {m.get('easy_degradation')}
+vs_source_rotation_base_all = {base.get('all_improvement')}
+vs_source_rotation_base_t50 = {base.get('t50_improvement')}
+without_fallback_all = {nofb.get('all_improvement')}
+without_fallback_t50 = {nofb.get('t50_improvement')}
+without_fallback_t100 = {nofb.get('t100_improvement')}
+without_fallback_easy = {nofb.get('easy_degradation')}
+true_3d = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+```
+"""
+    marker = "## Stage41 Fresh Bounded Residual Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_fresh_bounded_residual_candidate.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["fresh_bounded_residual_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "protected_full_replacement_pass": result.get("protected_full_replacement_pass"),
+        "no_fallback_safe_pass": result.get("no_fallback_safe_pass"),
+        "metrics_vs_floor": result.get("metrics_vs_floor"),
+        "metrics_vs_source_rotation_base": result.get("metrics_vs_source_rotation_base"),
+        "bounded_without_fallback_vs_source_rotation_base": result.get("bounded_without_fallback_vs_source_rotation_base"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update(
+        {
+            "current_stage": "stage41",
+            "current_best_deployable": "Stage37 selector",
+            "last_updated": "2026-05-24",
+            "latent_generative_ready": False,
+            "stage5c_ready": False,
+            "smc_ready": False,
+            "stage41": stage41,
+            "generated_reports": sorted(reports),
+        }
+    )
+    _write_json("research_state.json", state)
+
+
+def main_fresh_bounded_residual_candidate() -> None:
+    run_fresh_bounded_residual_candidate()
+
+
+def _free_endpoint_paths() -> list[str]:
+    result = read_json(OUT_DIR / "stage41_fresh_residual_endpoint_candidate.json", {})
+    if not result:
+        result = run_fresh_residual_endpoint_candidate()
+    paths: list[str] = []
+    for row in (result.get("trials") or {}).values():
+        ckpt = ((row.get("train") or {}).get("checkpoint"))
+        if ckpt and Path(ckpt).exists():
+            paths.append(str(ckpt))
+    if not paths:
+        raise FileNotFoundError("No free-endpoint residual checkpoints available for interpolation")
+    return paths
+
+
+def _free_endpoint_with_base(split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    pred, labels = _predict_residual_ensemble(_free_endpoint_paths(), split)
+    base_fde, base_switch, base_idx, rich_labels = _source_rotation_base_details(split)
+    labels = dict(labels)
+    labels["base_fde"] = base_fde.astype(np.float64)
+    labels["base_switch"] = base_switch.astype(bool)
+    labels["base_idx"] = base_idx.astype(np.int64)
+    labels["base_delta"] = rich_labels["cand_delta"].astype(np.float32)[np.arange(len(base_idx)), base_idx].astype(np.float32)
+    return pred, labels
+
+
+def _scaled_endpoint_prediction(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], alpha: float) -> Dict[str, np.ndarray]:
+    scaled = dict(pred)
+    base_delta = labels["base_delta"].astype(np.float32)
+    free_delta = pred["endpoint_delta"].astype(np.float32)
+    scaled["endpoint_delta"] = (base_delta + float(alpha) * (free_delta - base_delta)).astype(np.float32)
+    scaled["ensemble_variance"] = (pred["ensemble_variance"].astype(np.float32) * float(alpha) * float(alpha)).astype(np.float32)
+    scaled["interpolation_alpha"] = np.full(len(base_delta), float(alpha), dtype=np.float32)
+    return scaled
+
+
+def _interpolation_policy_grid(pred: Mapping[str, np.ndarray]) -> list[Dict[str, Any]]:
+    var = pred["ensemble_variance"]
+    uncert = pred["log_uncertainty"]
+    return [
+        {
+            "variance_max": float(np.quantile(var, vq)),
+            "uncertainty_max": float(np.quantile(uncert, uq)),
+            "harm_max": hm,
+            "failure_min": fm,
+            "max_switch": ms,
+            "horizon_mode": hz,
+        }
+        for vq in [0.25, 0.60, 0.95]
+        for uq in [0.35, 0.70, 0.95]
+        for hm in [0.35, 0.70, 0.95]
+        for fm in [0.0, 0.35]
+        for ms in [0.05, 0.12, 0.30, 0.70]
+        for hz in ["all", "long_only", "t50_only", "t50_t100"]
+    ]
+
+
+def _apply_interpolation_policy(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], policy: Mapping[str, Any]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    horizon = labels["horizon"].astype(int)
+    endpoint_fde = _endpoint_fde(pred, labels)
+    switch = (
+        (pred["ensemble_variance"] <= float(policy["variance_max"]))
+        & (pred["log_uncertainty"] <= float(policy["uncertainty_max"]))
+        & (pred["harm"] <= float(policy["harm_max"]))
+        & (pred["failure"] >= float(policy["failure_min"]))
+    )
+    mode = str(policy.get("horizon_mode", "all"))
+    if mode == "long_only":
+        switch &= np.isin(horizon, [25, 50, 100])
+    elif mode == "t50_only":
+        switch &= horizon == 50
+    elif mode == "t50_t100":
+        switch &= np.isin(horizon, [50, 100])
+    max_switch = float(policy.get("max_switch", 1.0))
+    score = -pred["ensemble_variance"] - 0.25 * pred["log_uncertainty"] - pred["harm"] + 0.15 * pred["failure"]
+    if max_switch <= 0.0:
+        switch[:] = False
+    elif max_switch < 1.0 and np.any(switch):
+        ids = np.where(switch)[0]
+        keep_n = max(1, int(max_switch * len(switch)))
+        keep = np.zeros(len(switch), dtype=bool)
+        keep[ids[np.argsort(score[ids])[::-1][:keep_n]]] = True
+        switch &= keep
+    selected = labels["base_fde"].astype(np.float64).copy()
+    selected[switch] = endpoint_fde[switch]
+    return selected, switch, endpoint_fde
+
+
+def _interpolation_score(metrics: Mapping[str, Any], without: Mapping[str, Any], alpha: float) -> float:
+    max_domain_easy = _max_domain_easy(metrics)
+    safe_bonus = 0.4 if without.get("easy_degradation", 1.0) <= 0.02 else 0.0
+    return (
+        1.2 * float(metrics.get("all_improvement", 0.0))
+        + 2.4 * float(metrics.get("t50_improvement", 0.0))
+        + 1.4 * float(metrics.get("hard_failure_improvement", 0.0))
+        + 0.5 * float(metrics.get("t100_improvement", 0.0))
+        + 0.25 * float(without.get("all_improvement", 0.0))
+        + 0.35 * float(without.get("t50_improvement", 0.0))
+        + safe_bonus
+        + 0.02 * float(alpha > 0.0)
+        - 18.0 * max(0.0, float(metrics.get("easy_degradation", 1.0)) - 0.02)
+        - 18.0 * max(0.0, max_domain_easy - 0.02)
+        - 4.0 * max(0.0, float(without.get("easy_degradation", 1.0)) - 0.02)
+        - 1.0 * max(0.0, -float(without.get("t100_improvement", 0.0)))
+    )
+
+
+def run_fresh_endpoint_interpolation_candidate() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_source_rotation_split()
+    val_free, val_labels = _free_endpoint_with_base("val")
+    best_alpha = 0.0
+    best_policy: Dict[str, Any] = {}
+    best_val: Dict[str, Any] = {}
+    best_score = -1e18
+    alpha_grid = [0.0, 0.01, 0.02, 0.05, 0.10, 0.18, 0.30, 0.50, 0.75, 1.0]
+    for alpha in alpha_grid:
+        val_pred = _scaled_endpoint_prediction(val_free, val_labels, alpha)
+        without = _metric_from_labels(_endpoint_fde(val_pred, val_labels), val_labels["base_fde"], val_labels, np.ones(len(val_labels["base_fde"]), dtype=bool))
+        for policy in _interpolation_policy_grid(val_pred):
+            selected, switch, _endpoint = _apply_interpolation_policy(val_pred, val_labels, policy)
+            metrics = _metric_from_labels(selected, val_labels["base_fde"], val_labels, switch)
+            score = _interpolation_score(metrics, without, alpha)
+            if score > best_score:
+                best_score = score
+                best_alpha = float(alpha)
+                best_policy = dict(policy)
+                best_val = {"metrics_vs_source_rotation_base": metrics, "without_fallback_vs_source_rotation_base": without, "score": score}
+    test_free, test_labels = _free_endpoint_with_base("test")
+    test_pred = _scaled_endpoint_prediction(test_free, test_labels, best_alpha)
+    selected, switch, endpoint_fde = _apply_interpolation_policy(test_pred, test_labels, best_policy)
+    metrics_vs_base = _metric_from_labels(selected, test_labels["base_fde"], test_labels, switch)
+    without_vs_base = _metric_from_labels(endpoint_fde, test_labels["base_fde"], test_labels, np.ones(len(endpoint_fde), dtype=bool))
+    metrics_vs_floor = _metric_from_labels(selected, test_labels["floor_fde"], test_labels, switch | test_labels["base_switch"].astype(bool))
+    without_vs_floor = _metric_from_labels(endpoint_fde, test_labels["floor_fde"], test_labels, np.ones(len(endpoint_fde), dtype=bool))
+    no_fallback_safe = bool(best_alpha > 0.0 and without_vs_base.get("easy_degradation", 1.0) <= 0.02 and without_vs_base.get("t100_improvement", -1.0) >= 0.0)
+    protected_full_replacement = bool(
+        metrics_vs_floor.get("easy_degradation", 1.0) <= 0.02
+        and _max_domain_easy(metrics_vs_floor) <= 0.02
+        and _positive_domains(metrics_vs_floor) >= 2
+        and metrics_vs_floor.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+        and metrics_vs_floor.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+        and metrics_vs_floor.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+    )
+    result = {
+        "source": "fresh_run",
+        "protocol_status": "fresh_rotation_endpoint_interpolation_candidate",
+        "hypothesis": "Interpolate the strong free-endpoint neural prediction toward the source-rotation safety floor with alpha selected on validation, aiming to keep neural_without_fallback non-catastrophic while retaining t50/hard lift.",
+        "best_alpha": best_alpha,
+        "best_policy": best_policy,
+        "best_val": best_val,
+        "metrics_vs_source_rotation_base": metrics_vs_base,
+        "metrics_vs_floor": metrics_vs_floor,
+        "interpolated_without_fallback_vs_source_rotation_base": without_vs_base,
+        "interpolated_without_fallback_vs_floor": without_vs_floor,
+        "no_fallback_safe_pass": no_fallback_safe,
+        "protected_full_replacement_pass": protected_full_replacement,
+        "positive_external_domains_vs_floor": _positive_domains(metrics_vs_floor),
+        "max_domain_easy_degradation_vs_floor": _max_domain_easy(metrics_vs_floor),
+        "deployment_decision": "interpolated_neural_candidate_pending_user_acceptance" if protected_full_replacement and no_fallback_safe else "diagnostic_keep_stage37_floor",
+        "caveat": "This is a validation-calibrated interpolation of a neural endpoint head, not latent generative rollout. Stage5C and SMC remain disabled.",
+    }
+    _write_json(OUT_DIR / "stage41_fresh_endpoint_interpolation_candidate.json", result)
+    lines = [
+        "# Stage41 Fresh Endpoint Interpolation Candidate",
+        "",
+        "- source: `fresh_run`",
+        f"- protocol status: `{result['protocol_status']}`",
+        f"- best alpha: `{best_alpha}`",
+        f"- deployment decision: `{result['deployment_decision']}`",
+        f"- protected full replacement pass: `{protected_full_replacement}`",
+        f"- no-fallback safe pass: `{no_fallback_safe}`",
+        f"- metrics vs source-rotation base: `{metrics_vs_base}`",
+        f"- metrics vs floor: `{metrics_vs_floor}`",
+        f"- interpolated without fallback vs source-rotation base: `{without_vs_base}`",
+        f"- interpolated without fallback vs floor: `{without_vs_floor}`",
+        "",
+        "- Stage5C executed: `False`",
+        "- SMC enabled: `False`",
+        "- metric/seconds-level claim: `False`",
+    ]
+    write_md(OUT_DIR / "stage41_fresh_endpoint_interpolation_candidate.md", lines)
+    _append_ledger("stage41_fresh_endpoint_interpolation_candidate", "ok", started, [OUT_DIR / "stage41_fresh_residual_endpoint_candidate.json"], [OUT_DIR / "stage41_fresh_endpoint_interpolation_candidate.md"])
+    update_endpoint_interpolation_readme_state(result)
+    return result
+
+
+def update_endpoint_interpolation_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    m = result.get("metrics_vs_floor", {}) or {}
+    base = result.get("metrics_vs_source_rotation_base", {}) or {}
+    nofb = result.get("interpolated_without_fallback_vs_source_rotation_base", {}) or {}
+    block = f"""
+
+## Stage41 Fresh Endpoint Interpolation Candidate
+
+This run calibrates the strong free-endpoint neural head by interpolating it toward the source-rotation safety floor with validation-selected alpha and policy thresholds. It does not execute Stage5C or SMC.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+best_alpha = {result.get('best_alpha')}
+protected_full_replacement_pass = {result.get('protected_full_replacement_pass')}
+no_fallback_safe_pass = {result.get('no_fallback_safe_pass')}
+vs_floor_all = {m.get('all_improvement')}
+vs_floor_t50 = {m.get('t50_improvement')}
+vs_floor_t100 = {m.get('t100_improvement')}
+vs_floor_hard = {m.get('hard_failure_improvement')}
+vs_floor_easy = {m.get('easy_degradation')}
+vs_source_rotation_base_all = {base.get('all_improvement')}
+vs_source_rotation_base_t50 = {base.get('t50_improvement')}
+without_fallback_all = {nofb.get('all_improvement')}
+without_fallback_t50 = {nofb.get('t50_improvement')}
+without_fallback_t100 = {nofb.get('t100_improvement')}
+without_fallback_easy = {nofb.get('easy_degradation')}
+true_3d = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+```
+"""
+    marker = "## Stage41 Fresh Endpoint Interpolation Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_fresh_endpoint_interpolation_candidate.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["fresh_endpoint_interpolation_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "best_alpha": result.get("best_alpha"),
+        "protected_full_replacement_pass": result.get("protected_full_replacement_pass"),
+        "no_fallback_safe_pass": result.get("no_fallback_safe_pass"),
+        "metrics_vs_floor": result.get("metrics_vs_floor"),
+        "metrics_vs_source_rotation_base": result.get("metrics_vs_source_rotation_base"),
+        "interpolated_without_fallback_vs_source_rotation_base": result.get("interpolated_without_fallback_vs_source_rotation_base"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update(
+        {
+            "current_stage": "stage41",
+            "current_best_deployable": "Stage37 selector",
+            "last_updated": "2026-05-24",
+            "latent_generative_ready": False,
+            "stage5c_ready": False,
+            "smc_ready": False,
+            "stage41": stage41,
+            "generated_reports": sorted(reports),
+        }
+    )
+    _write_json("research_state.json", state)
+
+
+def main_fresh_endpoint_interpolation_candidate() -> None:
+    run_fresh_endpoint_interpolation_candidate()
