@@ -916,3 +916,23 @@ Key Stage40 outcome:
 - Deployment remains Stage37 selector unless Stage40 neural beats the same-subset Stage37 floor.
 - Tests: `python -m pytest tests` -> `83 passed in 9.30s`.
 
+## Stage41: M3W Neural World Model Breakthrough Attempt
+
+Stage41 rebuilds the external split so test is no longer UCY-only, constructs a seq2seq neural world-model dataset from past-only history windows, trains Transformer / JEPA-only / Hybrid / mixture-style neural dynamics trials, runs validation-selected safety policies, and compares against the Stage37 deployable floor. Stage5C and SMC remain disabled.
+
+```text
+true_3D = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+trained_neural_world_model = true
+deployment_decision = keep_stage37_selector
+neural_exceeds_stage37_by_gate_margin = False
+positive_external_domains = 0
+best_stage41_neural = conformal_safety_head_transformer
+gates = 12 / 17
+verdict = stage41_breakthrough_not_yet_keep_stage37
+```
+
+Key Stage41 caveat: the rebuilt external dataset currently has row-level per-agent history plus neighbor aggregates, not full all-agent world-state tokens. If Stage41 neural gates fail, Stage37 selector remains the current best deployable external model.
+

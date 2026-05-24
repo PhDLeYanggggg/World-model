@@ -1,0 +1,69 @@
+{
+  "source": "fresh_run",
+  "answers": {
+    "trained_neural_world_model": true,
+    "exceeded_stage37": false,
+    "exceeded_strongest_causal_baseline": false,
+    "two_external_domains_positive": false,
+    "t50_improved": false,
+    "t100_improved": false,
+    "hard_failure_improved": false,
+    "easy_preserved": true,
+    "jepa_useful": "not proven unless jepa/hybrid trial wins and gate passes",
+    "transformer_useful": "not deployable unless best trial beats Stage37 margin",
+    "true_3d": false,
+    "foundation_world_model": false,
+    "stage5c_ready": false,
+    "smc_ready": false,
+    "current_best_deployable": "Stage37 selector"
+  },
+  "failure_taxonomy": {
+    "external_split": "Rebuilt test now includes multiple domains; exact Stage37 frozen policy was originally validated on UCY-style test and is not identical.",
+    "world_model_dataset": "External row cache provides per-agent history plus neighbor aggregates, not complete all-agent token sequences.",
+    "neural_without_fallback": {
+      "rows": 34777,
+      "all_improvement": 0.03511888712276556,
+      "t10_improvement": 0.4038711381418798,
+      "t25_improvement": -0.3162298418193421,
+      "t50_improvement": -0.18197395372873815,
+      "t100_improvement": 0.1380159267201967,
+      "hard_failure_improvement": 0.05167724357600689,
+      "easy_degradation": 0.39921317883150875,
+      "harm_over_fallback": -0.04949312285282851,
+      "switch_rate": 0.0,
+      "regret_to_oracle": 0.481690221102821,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 21598,
+          "all_improvement": -0.01392309205234521,
+          "t50_improvement": -0.3048523738493607,
+          "t100_improvement": 0.11269159751681213,
+          "hard_failure_improvement": 0.002830273029555519,
+          "easy_degradation": 0.2039057447431205,
+          "switch_rate": 0.0
+        },
+        "TrajNet": {
+          "rows": 3639,
+          "all_improvement": 0.19295072551089476,
+          "t50_improvement": 0.22842751948245177,
+          "t100_improvement": -0.004603809412569104,
+          "hard_failure_improvement": 0.1846991331776392,
+          "easy_degradation": 0.10365985055750038,
+          "switch_rate": 0.0
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.2321273961173841,
+          "t50_improvement": 0.19109431435167568,
+          "t100_improvement": 0.31441598394746806,
+          "hard_failure_improvement": 0.27007693279926337,
+          "easy_degradation": 1.1280521527387366,
+          "switch_rate": 0.0
+        }
+      }
+    },
+    "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
+    "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
+    "jepa": "JEPA is representation auxiliary only; no generative rollout or Stage5C execution."
+  }
+}

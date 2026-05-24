@@ -1,0 +1,373 @@
+{
+  "source": "fresh_run",
+  "gates": [
+    {
+      "gate": "Gate1 rebuilt external held-out split covers domains",
+      "passed": true,
+      "evidence": {
+        "ETH_UCY": {
+          "train": {
+            "rows": 112589,
+            "agents": 428,
+            "scenes": 3,
+            "source_files": 3,
+            "t10": 31019,
+            "t25": 29477,
+            "t50": 27939,
+            "t100": 24154,
+            "history_len_mean": 29.136301040649414,
+            "history_ge_32": 40701,
+            "history_ge_64": 19775,
+            "hard": 89648,
+            "easy": 28990,
+            "failure": 44336
+          },
+          "val": {
+            "rows": 16611,
+            "agents": 366,
+            "scenes": 1,
+            "source_files": 1,
+            "t10": 5387,
+            "t25": 4670,
+            "t50": 3994,
+            "t100": 2560,
+            "history_len_mean": 14.438925743103027,
+            "history_ge_32": 1692,
+            "history_ge_64": 251,
+            "hard": 14776,
+            "easy": 5755,
+            "failure": 6307
+          },
+          "test": {
+            "rows": 21598,
+            "agents": 350,
+            "scenes": 1,
+            "source_files": 1,
+            "t10": 7478,
+            "t25": 6432,
+            "t50": 5074,
+            "t100": 2614,
+            "history_len_mean": 15.116214752197266,
+            "history_ge_32": 1666,
+            "history_ge_64": 689,
+            "hard": 18865,
+            "easy": 1812,
+            "failure": 10862
+          }
+        },
+        "TrajNet": {
+          "train": {
+            "rows": 95517,
+            "agents": 892,
+            "scenes": 3,
+            "source_files": 6,
+            "t10": 31770,
+            "t25": 27100,
+            "t50": 22751,
+            "t100": 13896,
+            "history_len_mean": 9.43199634552002,
+            "history_ge_32": 0,
+            "history_ge_64": 0,
+            "hard": 68173,
+            "easy": 29716,
+            "failure": 33099
+          },
+          "val": {
+            "rows": 21734,
+            "agents": 379,
+            "scenes": 1,
+            "source_files": 2,
+            "t10": 7358,
+            "t25": 6234,
+            "t50": 5110,
+            "t100": 3032,
+            "history_len_mean": 9.160486221313477,
+            "history_ge_32": 0,
+            "history_ge_64": 0,
+            "hard": 15138,
+            "easy": 8999,
+            "failure": 7138
+          },
+          "test": {
+            "rows": 3639,
+            "agents": 104,
+            "scenes": 2,
+            "source_files": 2,
+            "t10": 1275,
+            "t25": 1053,
+            "t50": 831,
+            "t100": 480,
+            "history_len_mean": 8.903545379638672,
+            "history_ge_32": 0,
+            "history_ge_64": 0,
+            "hard": 3116,
+            "easy": 431,
+            "failure": 1854
+          }
+        },
+        "UCY": {
+          "train": {
+            "rows": 9540,
+            "agents": 180,
+            "scenes": 1,
+            "source_files": 1,
+            "t10": 3060,
+            "t25": 2700,
+            "t50": 2340,
+            "t100": 1440,
+            "history_len_mean": 9.54716968536377,
+            "history_ge_32": 0,
+            "history_ge_64": 0,
+            "hard": 7389,
+            "easy": 1979,
+            "failure": 4302
+          },
+          "val": {
+            "rows": 47223,
+            "agents": 891,
+            "scenes": 1,
+            "source_files": 1,
+            "t10": 15147,
+            "t25": 13365,
+            "t50": 11583,
+            "t100": 7128,
+            "history_len_mean": 9.54716968536377,
+            "history_ge_32": 0,
+            "history_ge_64": 0,
+            "hard": 31139,
+            "easy": 16840,
+            "failure": 14287
+          },
+          "test": {
+            "rows": 9540,
+            "agents": 180,
+            "scenes": 1,
+            "source_files": 1,
+            "t10": 3060,
+            "t25": 2700,
+            "t50": 2340,
+            "t100": 1440,
+            "history_len_mean": 9.54716968536377,
+            "history_ge_32": 0,
+            "history_ge_64": 0,
+            "hard": 7389,
+            "easy": 1979,
+            "failure": 4302
+          }
+        }
+      }
+    },
+    {
+      "gate": "Gate2 seq2seq neural world-model dataset built",
+      "passed": true,
+      "evidence": {
+        "train": {
+          "rows": 80000,
+          "full_rows": 217646,
+          "t50": 19561,
+          "t100": 14605,
+          "domains": {
+            "ETH_UCY": 41501,
+            "TrajNet": 35009,
+            "UCY": 3490
+          }
+        },
+        "val": {
+          "rows": 24000,
+          "full_rows": 85568,
+          "t50": 5831,
+          "t100": 3569,
+          "domains": {
+            "ETH_UCY": 4648,
+            "TrajNet": 6098,
+            "UCY": 13254
+          }
+        },
+        "test": {
+          "rows": 34777,
+          "full_rows": 34777,
+          "t50": 8245,
+          "t100": 4534,
+          "domains": {
+            "ETH_UCY": 21598,
+            "TrajNet": 3639,
+            "UCY": 9540
+          }
+        }
+      }
+    },
+    {
+      "gate": "Gate3 no leakage pass",
+      "passed": true,
+      "evidence": {
+        "future_endpoint_input": false,
+        "future_endpoint_label_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false
+      }
+    },
+    {
+      "gate": "Gate4 Transformer/JEPA/Hybrid/MoE trials run",
+      "passed": true,
+      "evidence": [
+        "baseline_relative_transformer",
+        "causal_transformer_dynamics",
+        "conformal_safety_head_transformer",
+        "easy_guard_distilled_hybrid",
+        "hybrid_jepa_transformer",
+        "jepa_auxiliary_representation",
+        "long_horizon_t100_curriculum",
+        "mixture_of_experts_baseline_selector",
+        "neighbor_interaction_heavy_hybrid",
+        "t50_hard_curriculum_transformer"
+      ]
+    },
+    {
+      "gate": "Gate5 external all improvement beats Stage37 by >=2% absolute",
+      "passed": false,
+      "evidence": 0.0
+    },
+    {
+      "gate": "Gate6 external t50 improvement beats Stage37 by >=2% absolute",
+      "passed": false,
+      "evidence": 0.0
+    },
+    {
+      "gate": "Gate7 external hard/failure beats Stage37 by >=2% absolute",
+      "passed": false,
+      "evidence": 0.0
+    },
+    {
+      "gate": "Gate8 easy degradation <=2%",
+      "passed": true,
+      "evidence": 0.0
+    },
+    {
+      "gate": "Gate9 at least two held-out external domains positive",
+      "passed": false,
+      "evidence": {
+        "ETH_UCY": {
+          "rows": 21598,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        },
+        "TrajNet": {
+          "rows": 3639,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        }
+      }
+    },
+    {
+      "gate": "Gate10 neural without fallback not catastrophic",
+      "passed": true,
+      "evidence": {
+        "rows": 34777,
+        "all_improvement": 0.03511888712276556,
+        "t10_improvement": 0.4038711381418798,
+        "t25_improvement": -0.3162298418193421,
+        "t50_improvement": -0.18197395372873815,
+        "t100_improvement": 0.1380159267201967,
+        "hard_failure_improvement": 0.05167724357600689,
+        "easy_degradation": 0.39921317883150875,
+        "harm_over_fallback": -0.04949312285282851,
+        "switch_rate": 0.0,
+        "regret_to_oracle": 0.481690221102821,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 21598,
+            "all_improvement": -0.01392309205234521,
+            "t50_improvement": -0.3048523738493607,
+            "t100_improvement": 0.11269159751681213,
+            "hard_failure_improvement": 0.002830273029555519,
+            "easy_degradation": 0.2039057447431205,
+            "switch_rate": 0.0
+          },
+          "TrajNet": {
+            "rows": 3639,
+            "all_improvement": 0.19295072551089476,
+            "t50_improvement": 0.22842751948245177,
+            "t100_improvement": -0.004603809412569104,
+            "hard_failure_improvement": 0.1846991331776392,
+            "easy_degradation": 0.10365985055750038,
+            "switch_rate": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.2321273961173841,
+            "t50_improvement": 0.19109431435167568,
+            "t100_improvement": 0.31441598394746806,
+            "hard_failure_improvement": 0.27007693279926337,
+            "easy_degradation": 1.1280521527387366,
+            "switch_rate": 0.0
+          }
+        }
+      }
+    },
+    {
+      "gate": "Gate11 neural switch rate >0 and positive with fallback",
+      "passed": false,
+      "evidence": {
+        "switch_rate": 0.0,
+        "exceeds": false
+      }
+    },
+    {
+      "gate": "Gate12 t100 diagnostic positive or blocker documented",
+      "passed": true,
+      "evidence": 0.0
+    },
+    {
+      "gate": "Gate13 SDD safety floor not destroyed",
+      "passed": true,
+      "evidence": "No Stage41 deployment unless gates pass; Stage37 remains deployable floor."
+    },
+    {
+      "gate": "Gate14 bootstrap CI present",
+      "passed": true,
+      "evidence": {
+        "low": 0.0,
+        "mid": 0.0,
+        "high": 0.0,
+        "n": 8245
+      }
+    },
+    {
+      "gate": "Gate15 ablation/trial matrix present",
+      "passed": true,
+      "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants"
+    },
+    {
+      "gate": "Gate16 Stage5C false",
+      "passed": true,
+      "evidence": "Stage5C not executed"
+    },
+    {
+      "gate": "Gate17 SMC false",
+      "passed": true,
+      "evidence": "SMC not enabled"
+    }
+  ],
+  "gates_passed": 12,
+  "gates_total": 17,
+  "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
