@@ -928,9 +928,9 @@ smc_enabled = false
 trained_neural_world_model = true
 deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
-positive_external_domains = 0
-best_stage41_neural = conformal_safety_head_transformer
-gates = 14 / 19
+positive_external_domains = 3
+best_stage41_neural = intervention_calibrator::calibrated_all_agent_endpoint_t100_focus
+gates = 17 / 20
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
 
@@ -942,5 +942,6 @@ Stage41 second pass:
 - best all-agent neural: `all_agent_t100_curriculum`.
 - result: all improvement `-5.81288021355153e-05`, t+50 `0.0`, hard/failure `-3.246737611095618e-05`, easy degradation `0.0009077552127720878`.
 - deployment remains `keep_stage37_selector`.
-- Tests: `python -m pytest tests` -> `88 passed in 64.07s`.
+- intervention calibrator: `calibrated_all_agent_endpoint_t100_focus` with deployment `keep_stage37_selector`.
+- Tests: `python -m pytest tests` -> `90 passed in 67.77s`.
 

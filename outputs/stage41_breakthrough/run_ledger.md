@@ -21,3 +21,11 @@
 | `run_stage41_gates.py` | `fresh_run` | `success` | 0.010 | `78fb4a4126ca` | `6c2e94ee15eb` | `1f94d22` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 0.010 | `78fb4a4126ca` | `6c2e94ee15eb` | `1f94d22` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 0.010 | `78fb4a4126ca` | `6c2e94ee15eb` | `1f94d22` |
+| `run_stage41_train_intervention_calibrator.py` | `fresh_run` | `ok` | 298.490 | `7f7e1c2daf0a` | `39a5fd355b2a` | `2fd5608` |
+| `run_stage41_eval_intervention_calibrator.py` | `fresh_run` | `ok` | 2.399 | `4f511447fa1a` | `96449991c355` | `2fd5608` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 0.010 | `78fb4a4126ca` | `1d056143a7a7` | `2fd5608` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 5.266 | `78fb4a4126ca` | `e58f5aed32e4` | `2fd5608` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 4.942 | `78fb4a4126ca` | `e58f5aed32e4` | `2fd5608` |
+| `run_stage41_eval_intervention_calibrator.py` | `fresh_run` | `ok` | 3.020 | `4f511447fa1a` | `7373c7ce3c1a` | `2fd5608` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 3.659 | `78fb4a4126ca` | `3d2ac1903cd8` | `2fd5608` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 4.169 | `78fb4a4126ca` | `3d2ac1903cd8` | `2fd5608` |
