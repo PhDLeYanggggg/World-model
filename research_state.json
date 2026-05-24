@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage35",
-  "current_verdict": "stage35_external_selective_transfer_not_deployable",
+  "current_stage": "stage36",
+  "current_verdict": "stage36_t50_transfer_not_repaired",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -278,7 +278,19 @@
     "outputs/stage35_selective_transfer/run_ledger.md",
     "outputs/stage35_selective_transfer/selective_transfer_policy_report.md",
     "outputs/stage35_selective_transfer/stage35_world_model_capability_audit.md",
-    "outputs/stage35_selective_transfer/world_model_gate_stage35.md"
+    "outputs/stage35_selective_transfer/world_model_gate_stage35.md",
+    "outputs/stage36_t50_repair/cross_domain_eval_stage36.md",
+    "outputs/stage36_t50_repair/project_world_model_gap_stage36.md",
+    "outputs/stage36_t50_repair/pytest_status.md",
+    "outputs/stage36_t50_repair/report_stage36_final.md",
+    "outputs/stage36_t50_repair/run_ledger.md",
+    "outputs/stage36_t50_repair/stage36_horizon_selector_report.md",
+    "outputs/stage36_t50_repair/stage36_t50_curriculum_report.md",
+    "outputs/stage36_t50_repair/stage36_t50_failure_analysis.md",
+    "outputs/stage36_t50_repair/stage36_t50_feature_report.md",
+    "outputs/stage36_t50_repair/stage36_t50_forensics.md",
+    "outputs/stage36_t50_repair/stage36_t50_policy_search.md",
+    "outputs/stage36_t50_repair/world_model_gate_stage36.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -1658,6 +1670,218 @@
     "gates_passed": 12,
     "gates_total": 14,
     "current_verdict": "stage35_external_selective_transfer_not_deployable",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage36": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate1 t50 forensics complete",
+        "passed": true,
+        "evidence": 16263
+      },
+      {
+        "gate": "Gate2 t50 feature schema built",
+        "passed": true,
+        "evidence": {
+          "future_endpoint_input": false,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "baseline_relative_error_h50": "label_only",
+          "oracle_margin_h50": "label_or_analysis_only",
+          "track_remaining_length": "audit_only_excluded_from_inference_features"
+        }
+      },
+      {
+        "gate": "Gate3 horizon-specific selector trained",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": -0.0018587637543769908,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": -0.01163892243691822,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.002144751142444834,
+          "easy_degradation": 0.0,
+          "selector_regret": 0.5586280635657679,
+          "harm_over_fallback": 0.0019569600990635046,
+          "switch_rate": 0.049047554409302745,
+          "mean_confidence": 0.009633413515985012
+        }
+      },
+      {
+        "gate": "Gate4 t50 improvement > 3",
+        "passed": false,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "harm_over_fallback": -0.12772804655228734,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Stage36 final external policy; t50 remains a hard gate."
+        }
+      },
+      {
+        "gate": "Gate5 all improvement > 0",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "harm_over_fallback": -0.12772804655228734,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Stage36 final external policy; t50 remains a hard gate."
+        }
+      },
+      {
+        "gate": "Gate6 hard/failure improvement > 10",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "harm_over_fallback": -0.12772804655228734,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Stage36 final external policy; t50 remains a hard gate."
+        }
+      },
+      {
+        "gate": "Gate7 easy degradation <= 2",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "harm_over_fallback": -0.12772804655228734,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Stage36 final external policy; t50 remains a hard gate."
+        }
+      },
+      {
+        "gate": "Gate8 held-out external scenes stable",
+        "passed": true,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "harm_over_fallback": -0.12772804655228734,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Stage35/36 scene-level held-out external test scenes."
+        }
+      },
+      {
+        "gate": "Gate9 SDD performance not destroyed",
+        "passed": true,
+        "evidence": {
+          "rows": 100000,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "selector_regret": 0.0,
+          "harm_over_fallback": 0.0,
+          "switch_rate": 0.0,
+          "mean_confidence": 0.0,
+          "status": "cached_verified",
+          "reason": "Stage36 policy is not deployed to SDD; Stage26/M3W-LAS v2 remains SDD safety floor."
+        }
+      },
+      {
+        "gate": "Gate10 no leakage pass",
+        "passed": true,
+        "evidence": {
+          "future_endpoint_input": false,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "baseline_relative_error_h50": "label_only",
+          "oracle_margin_h50": "label_or_analysis_only",
+          "track_remaining_length": "audit_only_excluded_from_inference_features"
+        }
+      },
+      {
+        "gate": "Gate11 t100 diagnostic reported honestly",
+        "passed": true,
+        "evidence": "diagnostic_raw_frame_dataset_local"
+      },
+      {
+        "gate": "Gate12 cross-domain deployable candidate gate",
+        "passed": false,
+        "evidence": {
+          "rows": 66303,
+          "all_improvement": 0.12131890857784355,
+          "t10_improvement": 0.30620476404756647,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.1398494448930071,
+          "easy_degradation": 0.0004114683717719725,
+          "selector_regret": 0.4289430569144169,
+          "harm_over_fallback": -0.12772804655228734,
+          "switch_rate": 0.04999773765892946,
+          "mean_confidence": 0.03720055893063545,
+          "status": "fresh_run",
+          "reason": "Stage36 final external policy; t50 remains a hard gate."
+        }
+      },
+      {
+        "gate": "Gate13 Stage5C false",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate14 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 12,
+    "gates_total": 14,
+    "current_verdict": "stage36_t50_transfer_not_repaired",
     "stage5c_executed": false,
     "smc_enabled": false
   }

@@ -1,0 +1,58 @@
+{
+  "source": "fresh_run",
+  "policy_search_space": {
+    "confidence_thresholds": [
+      0.0,
+      0.01,
+      0.03,
+      0.05
+    ],
+    "predicted_gain_thresholds": [
+      0.0,
+      0.0005,
+      0.001,
+      0.003,
+      0.01,
+      0.03
+    ],
+    "hard_probability_threshold": "proxied by hard/failure label in val-selected gating",
+    "failure_probability_threshold": "proxied by hard/failure label in val-selected gating",
+    "easy_guard": [
+      0.0,
+      1.0
+    ],
+    "track_length_threshold": "audit-only; excluded from deployment feature because full-track length can leak future availability",
+    "goal_distance_threshold": "included through train-only goal distance where available",
+    "per_scene_threshold": "not selected; held-out scene deployment would overfit val scenes"
+  },
+  "t50_selector_enabled": false,
+  "t50_selector_test_metrics": {
+    "rows": 66303,
+    "all_improvement": -0.0018587637543769908,
+    "t10_improvement": 0.0,
+    "t25_improvement": 0.0,
+    "t50_improvement": -0.01163892243691822,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": -0.002144751142444834,
+    "easy_degradation": 0.0,
+    "selector_regret": 0.5586280635657679,
+    "harm_over_fallback": 0.0019569600990635046,
+    "switch_rate": 0.049047554409302745,
+    "mean_confidence": 0.009633413515985012
+  },
+  "final_policy": "stage35_selective_transfer_with_t50_fallback",
+  "final_test_metrics": {
+    "rows": 66303,
+    "all_improvement": 0.12131890857784355,
+    "t10_improvement": 0.30620476404756647,
+    "t25_improvement": 0.0,
+    "t50_improvement": 0.0,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.1398494448930071,
+    "easy_degradation": 0.0004114683717719725,
+    "selector_regret": 0.4289430569144169,
+    "harm_over_fallback": -0.12772804655228734,
+    "switch_rate": 0.04999773765892946,
+    "mean_confidence": 0.03720055893063545
+  }
+}

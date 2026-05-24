@@ -1,0 +1,64 @@
+{
+  "source": "fresh_run",
+  "stage35_inputs": "cached_verified",
+  "feature_dim": 29,
+  "feature_names": [
+    "stage35_feature_0",
+    "stage35_feature_1",
+    "stage35_feature_2",
+    "stage35_feature_3",
+    "stage35_feature_4",
+    "stage35_feature_5",
+    "stage35_feature_6",
+    "stage35_feature_7",
+    "stage35_feature_8",
+    "stage35_feature_9",
+    "stage35_feature_10",
+    "stage35_feature_11",
+    "stage35_feature_12",
+    "stage35_feature_13",
+    "stage35_feature_14",
+    "stage35_feature_15",
+    "stage35_feature_16",
+    "is_t50",
+    "history_length_norm",
+    "mean_speed_h50_norm",
+    "path_length_h50_norm",
+    "goal_distance_h50",
+    "goal_angle_h50",
+    "goal_available_h50",
+    "curvature_h50_proxy_zero_unavailable",
+    "density_h50",
+    "ttc_h50_proxy_zero_unavailable",
+    "long_horizon_drift_risk",
+    "horizon_is_long"
+  ],
+  "splits": {
+    "train": {
+      "rows": 158942,
+      "t50_rows": 38943,
+      "feature_dim": 29,
+      "goal_available_fraction": 1.0
+    },
+    "val": {
+      "rows": 112746,
+      "t50_rows": 26756,
+      "feature_dim": 29,
+      "goal_available_fraction": 0.0
+    },
+    "test": {
+      "rows": 66303,
+      "t50_rows": 16263,
+      "feature_dim": 29,
+      "goal_available_fraction": 0.0
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "baseline_relative_error_h50": "label_only",
+    "oracle_margin_h50": "label_or_analysis_only",
+    "track_remaining_length": "audit_only_excluded_from_inference_features"
+  }
+}

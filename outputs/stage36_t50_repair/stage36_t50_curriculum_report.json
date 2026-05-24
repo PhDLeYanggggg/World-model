@@ -1,0 +1,260 @@
+{
+  "source": "fresh_run",
+  "baseline_policy": "stage35_selective_transfer_with_t50_fallback",
+  "adaptations": {
+    "t50_oversampling": {
+      "source": "fresh_run",
+      "policy": {
+        "gain": 0.0,
+        "confidence": 0.0,
+        "max_switch": 0.2,
+        "easy_guard": 1.0,
+        "hard_only": 0.0
+      },
+      "val_metrics": {
+        "rows": 112746,
+        "all_improvement": 0.0059865817346580474,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.03777288685068725,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.006918147165697275,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5351856934233838,
+        "harm_over_fallback": -0.006233763898366195,
+        "switch_rate": 0.047460663792950525,
+        "mean_confidence": 0.00893996562808752,
+        "_score": 0.04099906907577608
+      },
+      "test_metrics": {
+        "rows": 66303,
+        "all_improvement": -0.0018587637543769908,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": -0.01163892243691822,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.002144751142444834,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5586280635657679,
+        "harm_over_fallback": 0.0019569600990635046,
+        "switch_rate": 0.049047554409302745,
+        "mean_confidence": 0.009633413515985012
+      },
+      "fallback_reasons": {
+        "fallback_non_target_horizon": 50040,
+        "fallback_no_predicted_gain": 4678,
+        "candidate": 2269,
+        "fallback_easy_guard": 6064,
+        "switch": 3252
+      }
+    },
+    "t50_hard_failure_oversampling": {
+      "source": "fresh_run",
+      "policy": {
+        "gain": 0.0,
+        "confidence": 0.0,
+        "max_switch": 0.2,
+        "easy_guard": 1.0,
+        "hard_only": 0.0
+      },
+      "val_metrics": {
+        "rows": 112746,
+        "all_improvement": 0.0059865817346580474,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.03777288685068725,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.006918147165697275,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5351856934233838,
+        "harm_over_fallback": -0.006233763898366195,
+        "switch_rate": 0.047460663792950525,
+        "mean_confidence": 0.00893996562808752,
+        "_score": 0.04099906907577608
+      },
+      "test_metrics": {
+        "rows": 66303,
+        "all_improvement": -0.0018587637543769908,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": -0.01163892243691822,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.002144751142444834,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5586280635657679,
+        "harm_over_fallback": 0.0019569600990635046,
+        "switch_rate": 0.049047554409302745,
+        "mean_confidence": 0.009633413515985012
+      },
+      "fallback_reasons": {
+        "fallback_non_target_horizon": 50040,
+        "fallback_no_predicted_gain": 4678,
+        "candidate": 2269,
+        "fallback_easy_guard": 6064,
+        "switch": 3252
+      }
+    },
+    "t50_only_selector_refit": {
+      "source": "fresh_run",
+      "policy": {
+        "gain": 0.0,
+        "confidence": 0.0,
+        "max_switch": 0.2,
+        "easy_guard": 1.0,
+        "hard_only": 0.0
+      },
+      "val_metrics": {
+        "rows": 112746,
+        "all_improvement": 0.0013694266531254495,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.008640523141839274,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0015825216356947225,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5399934879104761,
+        "harm_over_fallback": -0.0014259694112740385,
+        "switch_rate": 0.047460663792950525,
+        "mean_confidence": 0.0022372808307409286,
+        "_score": 0.009378510214044317
+      },
+      "test_metrics": {
+        "rows": 66303,
+        "all_improvement": -0.0010946370059450317,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": -0.006854230495281,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.0012630566759948003,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5578235688827897,
+        "harm_over_fallback": 0.0011524654160854372,
+        "switch_rate": 0.02995339577394688,
+        "mean_confidence": 0.001471516559831798
+      },
+      "fallback_reasons": {
+        "fallback_non_target_horizon": 50040,
+        "fallback_no_predicted_gain": 8213,
+        "fallback_easy_guard": 6064,
+        "switch": 1986
+      }
+    },
+    "horizon_balanced_loss": {
+      "source": "fresh_run",
+      "policy": {
+        "gain": 0.0,
+        "confidence": 0.0,
+        "max_switch": 0.0,
+        "easy_guard": 0.0,
+        "hard_only": 0.0
+      },
+      "val_metrics": {
+        "rows": 112746,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5414194573217501,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0,
+        "_score": 0.0
+      },
+      "test_metrics": {
+        "rows": 66303,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5566711034667043,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      },
+      "fallback_reasons": {
+        "fallback_non_target_horizon": 50040,
+        "candidate": 16263
+      }
+    },
+    "long_track_only_training": {
+      "source": "fresh_run",
+      "policy": {
+        "gain": 0.0,
+        "confidence": 0.0,
+        "max_switch": 0.2,
+        "easy_guard": 1.0,
+        "hard_only": 0.0
+      },
+      "val_metrics": {
+        "rows": 112746,
+        "all_improvement": 0.004310648885193946,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.027198434734604038,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.004981424239942078,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5369308244774866,
+        "harm_over_fallback": -0.004488632844263509,
+        "switch_rate": 0.047460663792950525,
+        "mean_confidence": 0.010167766362428665,
+        "_score": 0.029521453015888044
+      },
+      "test_metrics": {
+        "rows": 66303,
+        "all_improvement": 4.552759222953284e-06,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 2.850777100926738e-05,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 5.253241850633472e-06,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5566663101904641,
+        "harm_over_fallback": -4.7932762402102875e-06,
+        "switch_rate": 0.049047554409302745,
+        "mean_confidence": 0.010579731315374374
+      },
+      "fallback_reasons": {
+        "fallback_non_target_horizon": 50040,
+        "fallback_no_predicted_gain": 3663,
+        "fallback_easy_guard": 6064,
+        "candidate": 3284,
+        "switch": 3252
+      }
+    },
+    "per_scene_t50_selector": {
+      "source": "not_run",
+      "reason": "test scenes are held out; per-scene thresholding would require test-scene tuning"
+    },
+    "pedestrian_only_t50_selector": {
+      "source": "not_run",
+      "reason": "external Stage35 rows do not carry reliable agent-type labels"
+    },
+    "t50_goal_aware_selector": {
+      "source": "fresh_run",
+      "reason": "goal distance features included where train-only goals are available, but test held-out UCY scenes mostly lack train-scene goals"
+    }
+  },
+  "best_adaptation": "long_track_only_training",
+  "best_metrics": {
+    "rows": 66303,
+    "all_improvement": 4.552759222953284e-06,
+    "t10_improvement": 0.0,
+    "t25_improvement": 0.0,
+    "t50_improvement": 2.850777100926738e-05,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 5.253241850633472e-06,
+    "easy_degradation": 0.0,
+    "selector_regret": 0.5566663101904641,
+    "harm_over_fallback": -4.7932762402102875e-06,
+    "switch_rate": 0.049047554409302745,
+    "mean_confidence": 0.010579731315374374
+  },
+  "curriculum_passed_t50_gate": false
+}

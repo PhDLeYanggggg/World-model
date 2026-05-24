@@ -790,3 +790,28 @@ Key Stage35 outcome:
 - t+50 improvement stayed `0.0`, so Stage35 is not a deployable cross-domain M3W candidate.
 - Tests: `python -m pytest tests` -> `67 passed`.
 
+## Stage36: External t+50 Transfer Repair
+
+Stage36 focuses only on the Stage35 blocker: external t+50 transfer. It builds t+50 forensics, horizon-specific features, horizon selectors, t+50 conservative policy search, bounded t+50 curriculum, cross-domain eval v4, and failure analysis. It does not execute Stage5C or enable SMC.
+
+```text
+true_3D = false
+foundation_world_model = false
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+final_all_improvement = 0.12131890857784355
+final_t50_improvement = 0.0
+final_t100_diagnostic_improvement = 0.0
+final_hard_improvement = 0.1398494448930071
+final_easy_degradation = 0.0004114683717719725
+gates = 12 / 14
+verdict = stage36_t50_transfer_not_repaired
+```
+
+Key Stage36 outcome:
+
+- t+50 forensics confirmed `16263` external t+50 test rows and real oracle headroom, but Stage35 t+50 switch rate was `0.0`.
+- Horizon-specific t+50 selectors and bounded curriculum were trained/validated, but no policy safely passed the `>3%` t+50 gate on held-out test scenes.
+- all/hard/easy remain acceptable through conservative fallback, but t+50 remains unrepaired, so Stage36 is not deployable cross-domain M3W.
+- Tests: `python -m pytest tests` -> `70 passed`.
