@@ -1,6 +1,6 @@
 # Stage41 Gates
 
-- gates passed: `21 / 24`
+- gates passed: `22 / 25`
 - verdict: `stage41_breakthrough_not_yet_keep_stage37`
 - Stage5C executed: `False`
 - SMC enabled: `False`
@@ -18,6 +18,7 @@
 | Gate4e policy blender run | True | metadata_guarded |
 | Gate4f candidate-FDE distiller run | True | candidate_distill_t100_curriculum::balanced |
 | Gate4g validation gap audit and stratified split candidate built | True | ['ETH_UCY t50 validation headroom is not representative: val=0.0445, test=0.4881'] |
+| Gate4h stratified protocol neural retraining candidate run | True | stratified_long_horizon::balanced |
 | Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.05288899790075696 |
 | Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.023656017980682287 |
 | Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.05758402319342837 |

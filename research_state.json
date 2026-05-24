@@ -363,7 +363,9 @@
     "outputs/stage41_breakthrough/world_model_gate_stage41.md",
     "outputs/stage41_external_split/report.md",
     "outputs/stage41_external_split/stage41_stratified_split_candidate.md",
-    "outputs/stage41_external_split/stage41_validation_gap_audit.md"
+    "outputs/stage41_external_split/stage41_validation_gap_audit.md",
+    "outputs/stage41_stratified_protocol/stage41_stratified_dataset.md",
+    "outputs/stage41_stratified_protocol/stage41_stratified_protocol.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -3111,6 +3113,11 @@
         ]
       },
       {
+        "gate": "Gate4h stratified protocol neural retraining candidate run",
+        "passed": true,
+        "evidence": "stratified_long_horizon::balanced"
+      },
+      {
         "gate": "Gate5 external all improvement beats Stage37 by >=2% absolute",
         "passed": false,
         "evidence": 0.05288899790075696
@@ -3215,8 +3222,8 @@
         "evidence": "SMC not enabled"
       }
     ],
-    "gates_passed": 21,
-    "gates_total": 24,
+    "gates_passed": 22,
+    "gates_total": 25,
     "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
     "stage5c_executed": false,
     "smc_enabled": false,
@@ -3693,9 +3700,120 @@
       "stratified_split_candidate_status": "candidate_protocol_not_used_for_stage41_claims",
       "conclusion": "Current ETH_UCY t50 validation headroom is not representative of held-out test headroom; next neural retraining should use the candidate stratified split instead of more threshold tuning on the current split."
     },
+    "stratified_protocol_candidate": {
+      "source": "fresh_run",
+      "protocol_status": "candidate_protocol_not_deployable_until_confirmed_on_locked_split",
+      "best_name": "stratified_long_horizon::balanced",
+      "deployment_decision": "candidate_needs_confirmatory_locked_split",
+      "best_metrics": {
+        "rows": 56539,
+        "all_improvement": 0.05984973787284231,
+        "t10_improvement": 0.009449369284416975,
+        "t25_improvement": 0.04628358248988873,
+        "t50_improvement": 0.1230400968639157,
+        "t100_improvement": 0.03296630234492792,
+        "hard_failure_improvement": 0.06559030972590985,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.03289162994524714,
+        "switch_rate": 0.05748244574541467,
+        "regret_to_oracle": 0.1787738573802659,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 26092,
+            "all_improvement": 0.04932763626797576,
+            "t50_improvement": 0.08884469476658852,
+            "t100_improvement": 0.025823582768793818,
+            "hard_failure_improvement": 0.05197588950191312,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.05745055955848536
+          },
+          "TrajNet": {
+            "rows": 17193,
+            "all_improvement": 0.08391758178922681,
+            "t50_improvement": 0.17745611209325718,
+            "t100_improvement": 0.06151789615873515,
+            "hard_failure_improvement": 0.09720167867511598,
+            "easy_degradation": 0.0007379615330953548,
+            "switch_rate": 0.07026115279474204
+          },
+          "UCY": {
+            "rows": 13254,
+            "all_improvement": 0.05532156859194015,
+            "t50_improvement": 0.13653210701746,
+            "t100_improvement": 0.016973858881679904,
+            "hard_failure_improvement": 0.0618869965176061,
+            "easy_degradation": 0.0003228296988437851,
+            "switch_rate": 0.0409687641466727
+          }
+        },
+        "candidate_oracle": {
+          "rows": 56539,
+          "all_improvement": 0.38514734460552225,
+          "t10_improvement": 0.07648818804700197,
+          "t25_improvement": 0.28618436191611674,
+          "t50_improvement": 0.48389441795053967,
+          "t100_improvement": 0.4428336939689358,
+          "hard_failure_improvement": 0.4020489533524859,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.21166548732551305,
+          "switch_rate": 1.0,
+          "regret_to_oracle": 0.0,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 26092,
+              "all_improvement": 0.3701362426573215,
+              "t50_improvement": 0.4473862581990321,
+              "t100_improvement": 0.40213201117281605,
+              "hard_failure_improvement": 0.37869170579234335,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "TrajNet": {
+              "rows": 17193,
+              "all_improvement": 0.3996412705787423,
+              "t50_improvement": 0.52297836393309,
+              "t100_improvement": 0.49051098250122604,
+              "hard_failure_improvement": 0.42735420849232586,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            },
+            "UCY": {
+              "rows": 13254,
+              "all_improvement": 0.40411995078566076,
+              "t50_improvement": 0.5225752010409577,
+              "t100_improvement": 0.497558673504753,
+              "hard_failure_improvement": 0.4328275220356591,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0
+            }
+          }
+        },
+        "selected_candidate_distribution": {
+          "0": 53289,
+          "1": 1191,
+          "3": 117,
+          "6": 197,
+          "7": 3,
+          "8": 1742
+        },
+        "t50_ci": {
+          "low": 0.11683209441830678,
+          "mid": 0.12298341921663086,
+          "high": 0.129708964471319,
+          "n": 13998
+        },
+        "hard_failure_ci": {
+          "low": 0.062270538678606595,
+          "mid": 0.06551452727821494,
+          "high": 0.06882043366379655,
+          "n": 40495
+        }
+      },
+      "conclusion": "Candidate protocol shows t50 neural lift after validation stratification, but it is not a deployable claim until confirmed on a locked protocol."
+    },
     "pytest": {
       "command": "python -m pytest tests",
-      "result": "98 passed in 57.73s",
+      "result": "100 passed in 58.91s",
       "source": "fresh_run"
     }
   },

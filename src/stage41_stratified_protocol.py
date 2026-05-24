@@ -1,0 +1,583 @@
+from __future__ import annotations
+
+import json
+import sys
+import time
+from collections import Counter
+from pathlib import Path
+from typing import Any, Dict, Mapping, Sequence, Tuple
+
+import numpy as np
+
+from src.stage14_pipeline import ensure_dir, read_json, write_json, write_md
+from src.stage30_m3w_verified import _combined_hash, _git_commit
+from src import stage41_all_agent as s41a
+from src import stage41_breakthrough as s41
+
+
+OUT_DIR = Path("outputs/stage41_stratified_protocol")
+DATA_DIR = Path("data/stage41_stratified_protocol")
+CHECKPOINT_DIR = OUT_DIR / "checkpoints"
+LEDGER_JSONL = s41.OUT_DIR / "run_ledger.jsonl"
+EPS = 1e-6
+THREADS = 4
+BATCH = 512
+EPOCHS = 5
+SEED = 4217
+
+
+def _jsonable(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {str(k): _jsonable(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_jsonable(v) for v in value]
+    if isinstance(value, np.ndarray):
+        return [_jsonable(v) for v in value.tolist()]
+    if isinstance(value, (np.floating, np.float32, np.float64)):
+        return float(value)
+    if isinstance(value, (np.integer, np.int32, np.int64)):
+        return int(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    return value
+
+
+def _write_json(path: str | Path, payload: Mapping[str, Any]) -> None:
+    write_json(path, _jsonable(dict(payload)))
+
+
+def _append_ledger(step: str, status: str, started: float, inputs: list[str], outputs: list[str]) -> None:
+    ensure_dir(s41.OUT_DIR)
+    entry = {
+        "command": " ".join([Path(sys.argv[0]).name, *sys.argv[1:]]),
+        "step": step,
+        "source": "fresh_run",
+        "status": status,
+        "wall_time_s": time.perf_counter() - started,
+        "input_hash": _combined_hash(inputs),
+        "output_hash": _combined_hash(outputs),
+        "git_commit": _git_commit(),
+    }
+    with LEDGER_JSONL.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(_jsonable(entry), ensure_ascii=False) + "\n")
+
+
+def _torch():
+    torch = s41a._torch()
+    torch.set_num_threads(THREADS)
+    return torch
+
+
+def _candidate_split_index() -> Dict[str, np.ndarray]:
+    path = s41.DATA_DIR / "stage41_stratified_split_candidate.npz"
+    if not path.exists():
+        from src import stage41_validation_gap as gap
+
+        gap.build_stratified_split_candidate()
+    return dict(np.load(path, allow_pickle=True))
+
+
+def _split_mask(split: str, n: int) -> np.ndarray:
+    idx = _candidate_split_index()
+    mask = np.zeros(n, dtype=bool)
+    rows = idx["row_id"][idx["split"].astype(str) == split].astype(np.int64)
+    mask[rows] = True
+    return mask
+
+
+def _make_base_arrays(data: Mapping[str, np.ndarray], ids: np.ndarray, floor_idx: np.ndarray, floor_fde: np.ndarray, candidate_fde: np.ndarray, candidates: np.ndarray, normalizer: np.ndarray, static: np.ndarray, target_delta: np.ndarray) -> Dict[str, np.ndarray]:
+    return {
+        "ids": ids.astype(np.int64),
+        "static": static[ids].astype(np.float32),
+        "target_delta": target_delta[ids].astype(np.float32),
+        "cand_delta": ((candidates[ids] - np.stack([data["current_x"], data["current_y"]], axis=1)[ids, None, :]) / normalizer[ids, None, None]).astype(np.float32),
+        "candidate_fde": candidate_fde[ids].astype(np.float32),
+        "floor_fde": floor_fde[ids].astype(np.float32),
+        "oracle_idx": np.argmin(candidate_fde[ids], axis=1).astype(np.int64),
+        "normalizer": normalizer[ids].astype(np.float32),
+        "current_xy": np.stack([data["current_x"], data["current_y"]], axis=1)[ids].astype(np.float32),
+        "future_xy": np.stack([data["future_endpoint_x"], data["future_endpoint_y"]], axis=1)[ids].astype(np.float32),
+        "horizon": data["horizon"][ids].astype(np.int16),
+        "hard": data["hard"][ids].astype(bool),
+        "easy": data["easy"][ids].astype(bool),
+        "failure": data["failure"][ids].astype(bool),
+        "domain": data["dataset"][ids],
+        "scene_id": data["scene_id"][ids],
+        "source_file": data["source_file"][ids],
+        "floor_idx": floor_idx[ids].astype(np.int16),
+    }
+
+
+def build_stratified_all_agent_dataset() -> Dict[str, Any]:
+    started = time.perf_counter()
+    ensure_dir(DATA_DIR)
+    ensure_dir(OUT_DIR)
+    data = s41._combined()
+    n = len(data["horizon"])
+    train_mask = _split_mask("train", n)
+    cur = np.stack([data["current_x"], data["current_y"]], axis=1).astype(np.float32)
+    fut = np.stack([data["future_endpoint_x"], data["future_endpoint_y"]], axis=1).astype(np.float32)
+    hist_path = np.maximum(data["history_scalar"][:, 0].astype(np.float32), EPS)
+    speed = np.maximum(data["history_seq"][:, -1, 2].astype(np.float32), EPS)
+    horizon = data["horizon"].astype(np.float32)
+    normalizer = np.maximum(hist_path + speed * np.maximum(horizon, 1.0), np.median(hist_path[train_mask] + speed[train_mask] * np.maximum(horizon[train_mask], 1.0)) + EPS).astype(np.float32)
+    safe_y = data["y_fde"][:, : s41.SAFE_BASELINE_COUNT].astype(np.float32)
+    strongest_by_h: Dict[int, int] = {}
+    for h in [10, 25, 50, 100]:
+        hm = train_mask & (data["horizon"].astype(int) == h)
+        strongest_by_h[h] = int(np.argmin(safe_y[hm].mean(axis=0))) if np.any(hm) else 1
+    floor_idx = np.asarray([strongest_by_h[int(h)] for h in data["horizon"].astype(int)], dtype=np.int16)
+    floor_fde = safe_y[np.arange(len(safe_y)), floor_idx]
+    family_fde = data["family_fde"].astype(np.float32)
+    candidate_fde = np.concatenate([floor_fde[:, None], family_fde], axis=1)
+    floor_pred = data["family_pred"][:, 1, :].astype(np.float32)
+    candidates = np.concatenate([floor_pred[:, None, :], data["family_pred"].astype(np.float32)], axis=1)
+    target_delta = ((fut - cur) / normalizer[:, None]).astype(np.float32)
+    static = np.concatenate(
+        [
+            data["stage37_features"].astype(np.float32),
+            data["history_scalar"].astype(np.float32),
+            data["prototype_likelihood"].astype(np.float32),
+            data["prototype_entropy"][:, None].astype(np.float32),
+            data["goal_ambiguity"][:, None].astype(np.float32),
+            data["family_rel"].astype(np.float32),
+            data["family_fde"].astype(np.float32) / normalizer[:, None],
+            np.eye(4, dtype=np.float32)[np.searchsorted([10, 25, 50, 100], data["horizon"].astype(int))],
+        ],
+        axis=1,
+    )
+    static_mean = static[train_mask].mean(axis=0).astype(np.float32)
+    static_std = np.maximum(static[train_mask].std(axis=0), 1e-3).astype(np.float32)
+    np.savez_compressed(DATA_DIR / "normalization.npz", static_mean=static_mean, static_std=static_std)
+    groups = s41a._group_indices(data)
+    report: Dict[str, Any] = {"source": "fresh_run", "protocol": "stage41_stratified_split_candidate", "splits": {}, "strongest_by_horizon": strongest_by_h}
+    for split in ["train", "val", "test"]:
+        ids = np.where(_split_mask(split, n))[0].astype(np.int64)
+        base = _make_base_arrays(data, ids, floor_idx, floor_fde, candidate_fde, candidates, normalizer, static, target_delta)
+        tokens, agent_mask, neighbor_counts = s41a._build_tokens_for_ids(data, ids, groups)
+        np.savez_compressed(
+            DATA_DIR / f"all_agent_{split}.npz",
+            **base,
+            agent_tokens=tokens,
+            agent_mask=agent_mask,
+            neighbor_counts=neighbor_counts,
+        )
+        report["splits"][split] = {
+            "rows": int(len(ids)),
+            "domains": dict(Counter(base["domain"].astype(str).tolist())),
+            "t50": int(np.sum(base["horizon"].astype(int) == 50)),
+            "t100": int(np.sum(base["horizon"].astype(int) == 100)),
+            "hard": int(np.sum(base["hard"].astype(bool))),
+            "easy": int(np.sum(base["easy"].astype(bool))),
+            "failure": int(np.sum(base["failure"].astype(bool))),
+            "neighbor_count_mean": float(np.mean(neighbor_counts)) if len(neighbor_counts) else 0.0,
+        }
+    report["no_leakage"] = {
+        "future_endpoint_input": False,
+        "future_endpoint_label_eval_only": True,
+        "test_endpoint_goals": False,
+        "central_velocity": False,
+        "overwrites_locked_stage41_split": False,
+    }
+    _write_json(OUT_DIR / "stage41_stratified_dataset.json", report)
+    write_md(OUT_DIR / "stage41_stratified_dataset.md", ["# Stage41 Stratified All-Agent Dataset", "", "- source: `fresh_run`", "- status: candidate protocol for retraining; does not overwrite locked Stage41 split.", f"- report: `{report}`"])
+    _append_ledger("stage41_stratified_dataset", "ok", started, [str(s41.DATA_DIR / "stage41_stratified_split_candidate.npz")], [str(OUT_DIR / "stage41_stratified_dataset.md")])
+    return report
+
+
+def _ds(split: str) -> Dict[str, np.ndarray]:
+    path = DATA_DIR / f"all_agent_{split}.npz"
+    if not path.exists():
+        build_stratified_all_agent_dataset()
+    return dict(np.load(path, allow_pickle=True))
+
+
+def _domain_vocab() -> list[str]:
+    domains: set[str] = set()
+    for split in ["train", "val", "test"]:
+        domains.update(_ds(split)["domain"].astype(str).tolist())
+    return sorted(domains)
+
+
+def _features(split: str, domain_vocab: Sequence[str] | None = None) -> Tuple[np.ndarray, Dict[str, np.ndarray]]:
+    ds = _ds(split)
+    norm = dict(np.load(DATA_DIR / "normalization.npz"))
+    static = ((ds["static"].astype(np.float32) - norm["static_mean"]) / norm["static_std"]).astype(np.float32)
+    target_hist = ds["agent_tokens"][:, 0, :, :].astype(np.float32).reshape(len(static), -1)
+    valid = np.clip(ds["agent_tokens"][:, 0, :, 6:7].astype(np.float32), 0.0, 1.0)
+    hist = ds["agent_tokens"][:, 0, :, :].astype(np.float32)
+    hist_mean = (hist * valid).sum(axis=1) / np.maximum(valid.sum(axis=1), 1.0)
+    hist_std = np.sqrt(((hist - hist_mean[:, None, :]) ** 2 * valid).sum(axis=1) / np.maximum(valid.sum(axis=1), 1.0))
+    cand = ds["cand_delta"].astype(np.float32).reshape(len(static), -1)
+    horizon = ds["horizon"].astype(int)
+    h_one = np.zeros((len(static), 4), dtype=np.float32)
+    for i, h in enumerate([10, 25, 50, 100]):
+        h_one[:, i] = horizon == h
+    domain_vocab = list(domain_vocab or _domain_vocab())
+    domain = ds["domain"].astype(str)
+    d_one = np.zeros((len(static), len(domain_vocab)), dtype=np.float32)
+    for i, d in enumerate(domain_vocab):
+        d_one[:, i] = domain == d
+    neighbor = ds["neighbor_counts"].astype(np.float32)[:, None] / 6.0
+    x = np.concatenate([static, target_hist, hist_mean, hist_std, cand, h_one, d_one, neighbor], axis=1).astype(np.float32)
+    labels = {
+        "candidate_rel": np.log1p(np.clip(ds["candidate_fde"].astype(np.float32) / np.maximum(ds["floor_fde"].astype(np.float32)[:, None], EPS), 0.0, 1e4)).astype(np.float32),
+        "candidate_fde": ds["candidate_fde"].astype(np.float32),
+        "floor_fde": ds["floor_fde"].astype(np.float32),
+        "oracle": ds["oracle_idx"].astype(np.int64),
+        "horizon": horizon.astype(np.int64),
+        "hard": (ds["hard"].astype(bool) | ds["failure"].astype(bool)).astype(np.float32),
+        "easy": ds["easy"].astype(bool).astype(np.float32),
+        "failure": ds["failure"].astype(bool).astype(np.float32),
+        "domain": domain,
+    }
+    return x, labels
+
+
+def _make_model(in_dim: int, candidate_count: int, width: int, dropout: float):
+    torch = _torch()
+    import torch.nn as nn
+
+    class StratifiedDistiller(nn.Module):
+        def __init__(self) -> None:
+            super().__init__()
+            self.trunk = nn.Sequential(
+                nn.Linear(in_dim, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+            )
+            self.rel = nn.Linear(width, candidate_count)
+            self.failure = nn.Linear(width, 1)
+            self.gain = nn.Linear(width, 1)
+            self.harm = nn.Linear(width, 1)
+            self.physical = nn.Linear(width, 1)
+
+        def forward(self, x):
+            h = self.trunk(x)
+            return {"pred_rel": self.rel(h), "failure_logit": self.failure(h), "gain_logit": self.gain(h), "harm_logit": self.harm(h), "physical_logit": self.physical(h)}
+
+    return StratifiedDistiller()
+
+
+def _trial_configs() -> list[Dict[str, Any]]:
+    return [
+        {"name": "stratified_balanced", "width": 192, "dropout": 0.06, "lr": 1.0e-3, "hard_w": 1.5, "t50_w": 2.0, "t100_w": 1.0, "ce_w": 0.5, "rank_w": 0.5},
+        {"name": "stratified_t50_specialist", "width": 224, "dropout": 0.08, "lr": 8.0e-4, "hard_w": 2.5, "t50_w": 4.0, "t100_w": 1.0, "ce_w": 0.8, "rank_w": 0.8},
+        {"name": "stratified_long_horizon", "width": 224, "dropout": 0.08, "lr": 8.0e-4, "hard_w": 2.0, "t50_w": 2.0, "t100_w": 4.0, "ce_w": 0.6, "rank_w": 0.8},
+    ]
+
+
+def _train_one(trial: Mapping[str, Any], domain_vocab: Sequence[str]) -> Dict[str, Any]:
+    torch = _torch()
+    import torch.nn.functional as F
+
+    ensure_dir(CHECKPOINT_DIR)
+    x_train, y_train = _features("train", domain_vocab)
+    x_val, y_val = _features("val", domain_vocab)
+    candidate_count = y_train["candidate_rel"].shape[1]
+    model = _make_model(x_train.shape[1], candidate_count, int(trial["width"]), float(trial["dropout"]))
+    opt = torch.optim.AdamW(model.parameters(), lr=float(trial["lr"]), weight_decay=1e-4)
+    rng = np.random.default_rng(SEED + abs(hash(str(trial["name"]))) % 10000)
+    ckpt = CHECKPOINT_DIR / f"stage41_stratified_{trial['name']}.pt"
+    heartbeat = OUT_DIR / f"stratified_{trial['name']}_heartbeat.json"
+    tx = torch.tensor(x_train)
+    ty = {k: torch.tensor(v) for k, v in y_train.items() if k not in {"domain"}}
+    vx = torch.tensor(x_val)
+    vy = {k: torch.tensor(v) for k, v in y_val.items() if k not in {"domain"}}
+    best = {"val_loss": float("inf"), "epoch": 0}
+    for epoch in range(1, EPOCHS + 1):
+        order = rng.permutation(len(x_train))
+        losses: list[float] = []
+        model.train()
+        for start in range(0, len(order), BATCH):
+            ids = torch.tensor(order[start : start + BATCH], dtype=torch.long)
+            out = model(tx[ids])
+            rel = ty["candidate_rel"][ids]
+            oracle = ty["oracle"][ids]
+            best_rel = torch.min(rel, dim=1).values
+            fallback_rel = rel[:, 0]
+            gain_label = ((fallback_rel - best_rel) > 0.02).float()
+            row_w = 1.0 + float(trial["hard_w"]) * ty["hard"][ids]
+            row_w = row_w + float(trial["t50_w"]) * (ty["horizon"][ids] == 50).float()
+            row_w = row_w + float(trial["t100_w"]) * (ty["horizon"][ids] == 100).float()
+            row_w = row_w + 2.0 * gain_label
+            reg = (F.smooth_l1_loss(out["pred_rel"], rel, reduction="none").mean(dim=1) * row_w).mean()
+            ce = (F.cross_entropy(-out["pred_rel"], oracle, reduction="none") * row_w).mean()
+            pred_best = torch.min(out["pred_rel"], dim=1).values
+            rank = (F.relu(pred_best - out["pred_rel"][torch.arange(len(ids)), oracle] + 0.01) * row_w).mean()
+            failure = F.binary_cross_entropy_with_logits(out["failure_logit"], ty["failure"][ids, None])
+            gain = F.binary_cross_entropy_with_logits(out["gain_logit"], gain_label[:, None])
+            harm = F.binary_cross_entropy_with_logits(out["harm_logit"], ty["easy"][ids, None])
+            physical = F.binary_cross_entropy_with_logits(out["physical_logit"], 1.0 - ty["failure"][ids, None])
+            loss = reg + float(trial["ce_w"]) * ce + float(trial["rank_w"]) * rank + 0.25 * failure + 0.3 * gain + 0.35 * harm + 0.1 * physical
+            opt.zero_grad()
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            opt.step()
+            losses.append(float(loss.detach().cpu()))
+        model.eval()
+        with torch.no_grad():
+            out = model(vx)
+            val_loss = float((F.smooth_l1_loss(out["pred_rel"], vy["candidate_rel"]) + 0.4 * F.cross_entropy(-out["pred_rel"], vy["oracle"])).cpu())
+        heartbeat.write_text(json.dumps({"trial": dict(trial), "epoch": epoch, "train_loss": float(np.mean(losses)), "val_loss": val_loss, "checkpoint": str(ckpt)}), encoding="utf-8")
+        if val_loss < best["val_loss"]:
+            best = {"val_loss": val_loss, "epoch": epoch, "train_loss": float(np.mean(losses))}
+            torch.save({"model": model.state_dict(), "in_dim": x_train.shape[1], "candidate_count": candidate_count, "trial": dict(trial), "best": best, "domain_vocab": list(domain_vocab)}, ckpt)
+    return {"source": "fresh_run", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": best}
+
+
+def _predict(path: str | Path, split: str) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    torch = _torch()
+    payload = torch.load(path, map_location="cpu")
+    model = _make_model(int(payload["in_dim"]), int(payload["candidate_count"]), int(payload["trial"]["width"]), float(payload["trial"]["dropout"]))
+    model.load_state_dict(payload["model"])
+    model.eval()
+    x, labels = _features(split, payload.get("domain_vocab", _domain_vocab()))
+    outs: Dict[str, list[np.ndarray]] = {"pred_rel": [], "failure": [], "gain": [], "harm": [], "physical": []}
+    with torch.no_grad():
+        tx = torch.tensor(x)
+        for start in range(0, len(x), 2048):
+            out = model(tx[start : start + 2048])
+            outs["pred_rel"].append(out["pred_rel"].cpu().numpy())
+            outs["failure"].append(torch.sigmoid(out["failure_logit"]).cpu().numpy().reshape(-1))
+            outs["gain"].append(torch.sigmoid(out["gain_logit"]).cpu().numpy().reshape(-1))
+            outs["harm"].append(torch.sigmoid(out["harm_logit"]).cpu().numpy().reshape(-1))
+            outs["physical"].append(torch.sigmoid(out["physical_logit"]).cpu().numpy().reshape(-1))
+    return {k: np.concatenate(v, axis=0) for k, v in outs.items()}, labels
+
+
+def _apply_policy(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], policy: Mapping[str, Any]) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    rel = pred["pred_rel"]
+    fallback = labels["floor_fde"].astype(np.float64)
+    best = np.argmin(rel, axis=1)
+    pred_gain = rel[:, 0] - rel[np.arange(len(best)), best]
+    switch = np.zeros(len(best), dtype=bool)
+    selected_idx = np.zeros(len(best), dtype=np.int64)
+    domain = labels["domain"].astype(str)
+    horizon = labels["horizon"].astype(int)
+    for key, params in policy.get("slices", {}).items():
+        d, h_s = key.split("|")
+        mask = (domain == d) & (horizon == int(h_s))
+        sw = mask & (best != 0) & (pred_gain >= float(params["gain_threshold"])) & (pred["gain"] >= float(params["gain_prob"])) & (pred["harm"] <= float(params["harm_prob"])) & (pred["physical"] >= float(params["physical_prob"]))
+        if bool(params.get("hard_only", False)):
+            sw &= labels["hard"].astype(bool)
+        max_switch = float(params.get("max_switch", 1.0))
+        if max_switch <= 0:
+            sw[:] = False
+        elif max_switch < 1.0 and np.any(sw):
+            ids = np.where(sw)[0]
+            keep_n = max(1, int(max_switch * np.sum(mask)))
+            keep = np.zeros(len(sw), dtype=bool)
+            keep[ids[np.argsort(pred_gain[ids])[::-1][:keep_n]]] = True
+            sw &= keep
+        switch |= sw
+        selected_idx[sw] = best[sw]
+    selected = fallback.copy()
+    selected[switch] = labels["candidate_fde"].astype(np.float64)[np.where(switch)[0], selected_idx[switch]]
+    return selected, switch, selected_idx
+
+
+def _metrics(selected: np.ndarray, labels: Mapping[str, np.ndarray], switch: np.ndarray) -> Dict[str, Any]:
+    ds = {"horizon": labels["horizon"], "hard": labels["hard"].astype(bool), "failure": labels["failure"].astype(bool), "easy": labels["easy"].astype(bool), "domain": labels["domain"], "candidate_fde": labels["candidate_fde"]}
+    return s41._metrics(selected, labels["floor_fde"].astype(np.float64), ds, switch)
+
+
+def _policy_grid() -> list[Dict[str, Any]]:
+    return [
+        {"gain_threshold": gain, "gain_prob": gp, "harm_prob": hp, "physical_prob": pp, "max_switch": ms, "hard_only": hard_only}
+        for gain in [0.0, 0.01, 0.03, 0.06, 0.10]
+        for gp in [0.0, 0.35, 0.55, 0.75]
+        for hp in [0.04, 0.08, 0.16, 0.30]
+        for pp in [0.0, 0.4, 0.65]
+        for ms in [0.0, 0.03, 0.05, 0.10, 0.18, 0.30]
+        for hard_only in [False, True]
+    ]
+
+
+def _select_policy(path: str | Path, mode: str) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    pred, labels = _predict(path, "val")
+    rel = pred["pred_rel"]
+    fallback = labels["floor_fde"].astype(np.float64)
+    best = np.argmin(rel, axis=1)
+    pred_gain = rel[:, 0] - rel[np.arange(len(best)), best]
+    candidate_fde = labels["candidate_fde"].astype(np.float64)
+    hard_all = labels["hard"].astype(bool)
+    easy_all = labels["easy"].astype(bool)
+    domain = labels["domain"].astype(str)
+    horizon = labels["horizon"].astype(int)
+    policy = {"type": "stage41_stratified_candidate_policy", "mode": mode, "slices": {}}
+    diagnostics: Dict[str, Any] = {}
+    for d in sorted(set(domain.tolist())):
+        for h in [10, 25, 50, 100]:
+            mask = (domain == d) & (horizon == h)
+            if int(mask.sum()) < 100:
+                continue
+            ids = np.where(mask)[0]
+            local_fallback = fallback[ids]
+            local_best = best[ids]
+            local_gain = pred_gain[ids]
+            local_hard = hard_all[ids]
+            local_easy = easy_all[ids]
+            candidate_selected = candidate_fde[ids][np.arange(len(ids)), local_best]
+            can_switch_base = local_best != 0
+            best_params = None
+            best_score = 0.0
+            best_metrics = None
+            for params in _policy_grid():
+                sw = can_switch_base & (local_gain >= float(params["gain_threshold"])) & (pred["gain"][ids] >= float(params["gain_prob"])) & (pred["harm"][ids] <= float(params["harm_prob"])) & (pred["physical"][ids] >= float(params["physical_prob"]))
+                if bool(params.get("hard_only", False)):
+                    sw &= local_hard
+                max_switch = float(params.get("max_switch", 1.0))
+                if max_switch <= 0:
+                    sw[:] = False
+                elif max_switch < 1.0 and np.any(sw):
+                    sw_ids = np.where(sw)[0]
+                    keep_n = max(1, int(max_switch * len(ids)))
+                    keep = np.zeros(len(sw), dtype=bool)
+                    keep[sw_ids[np.argsort(local_gain[sw_ids])[::-1][:keep_n]]] = True
+                    sw &= keep
+                selected = local_fallback.copy()
+                selected[sw] = candidate_selected[sw]
+                imp = 1.0 - float(selected.mean()) / max(float(local_fallback.mean()), EPS)
+                hard_imp = 0.0 if not np.any(local_hard) else 1.0 - float(selected[local_hard].mean()) / max(float(local_fallback[local_hard].mean()), EPS)
+                easy_deg = 0.0 if not np.any(local_easy) else max(0.0, float(selected[local_easy].mean()) / max(float(local_fallback[local_easy].mean()), EPS) - 1.0)
+                max_easy = 0.002 if mode == "conservative" else 0.02
+                min_imp = 0.003 if mode == "conservative" else 0.0
+                if imp <= min_imp or easy_deg > max_easy:
+                    continue
+                score = imp + (0.8 if h in {50, 100} else 0.25) * hard_imp + 0.01 * float(np.mean(sw))
+                if score > best_score:
+                    best_score = score
+                    best_params = dict(params)
+                    best_metrics = {"rows": int(len(ids)), "improvement": float(imp), "hard_failure_improvement": float(hard_imp), "easy_degradation": float(easy_deg), "switch_rate": float(np.mean(sw))}
+            if best_params:
+                policy["slices"][f"{d}|{h}"] = best_params
+            diagnostics[f"{d}|{h}"] = {"val_score": best_score, "selected": bool(best_params), "val_metrics": best_metrics or {"rows": int(mask.sum()), "improvement": 0.0}}
+    selected, switch, idx = _apply_policy(pred, labels, policy)
+    metrics = _metrics(selected, labels, switch)
+    metrics["selected_candidate_distribution"] = {str(k): int(v) for k, v in zip(*np.unique(idx, return_counts=True))}
+    return policy, {"metrics": metrics, "slice_diagnostics": diagnostics}
+
+
+def _eval_policy(path: str | Path, split: str, policy: Mapping[str, Any], bootstrap: bool = False) -> Dict[str, Any]:
+    pred, labels = _predict(path, split)
+    selected, switch, idx = _apply_policy(pred, labels, policy)
+    metrics = _metrics(selected, labels, switch)
+    endpoint_oracle = labels["candidate_fde"].astype(np.float64).min(axis=1)
+    metrics["candidate_oracle"] = _metrics(endpoint_oracle, labels, np.ones(len(endpoint_oracle), dtype=bool))
+    metrics["selected_candidate_distribution"] = {str(k): int(v) for k, v in zip(*np.unique(idx, return_counts=True))}
+    if bootstrap:
+        ds = {"horizon": labels["horizon"], "hard": labels["hard"].astype(bool), "failure": labels["failure"].astype(bool), "easy": labels["easy"].astype(bool), "domain": labels["domain"], "candidate_fde": labels["candidate_fde"]}
+        metrics["t50_ci"] = s41._bootstrap_ci(selected, labels["floor_fde"].astype(np.float64), ds, "t50", n=2000)
+        metrics["hard_failure_ci"] = s41._bootstrap_ci(selected, labels["floor_fde"].astype(np.float64), ds, "hard_failure", n=1000)
+    return metrics
+
+
+def train_stratified_protocol() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    domain_vocab = _domain_vocab()
+    trials: Dict[str, Any] = {}
+    best_name = ""
+    best_val_score = -1e18
+    best_policy: Dict[str, Any] = {}
+    for trial in _trial_configs():
+        train = _train_one(trial, domain_vocab)
+        modes: Dict[str, Any] = {}
+        for mode in ["conservative", "balanced", "long_horizon"]:
+            policy, val = _select_policy(train["checkpoint"], mode)
+            m = val["metrics"]
+            score = m.get("all_improvement", 0.0) + 1.4 * m.get("t50_improvement", 0.0) + m.get("hard_failure_improvement", 0.0) + 0.4 * m.get("t100_improvement", 0.0) - 20.0 * max(0.0, m.get("easy_degradation", 1.0) - 0.02)
+            modes[mode] = {"policy": policy, "val": val, "val_score": score}
+            if m.get("easy_degradation", 1.0) <= 0.02 and score > best_val_score:
+                best_val_score = score
+                best_name = f"{trial['name']}::{mode}"
+                best_policy = policy
+        trials[trial["name"]] = {"source": "fresh_run", "trial": trial, "train": train, "modes": modes}
+    if not best_name:
+        result = {"source": "not_run", "reason": "no val-safe stratified protocol policy", "trials": trials}
+    else:
+        trial_name, _mode = best_name.split("::", 1)
+        ckpt = trials[trial_name]["train"]["checkpoint"]
+        test_metrics = _eval_policy(ckpt, "test", best_policy, bootstrap=True)
+        positive_domains = sum(1 for row in test_metrics.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+        exceeds = bool(
+            test_metrics.get("easy_degradation", 1.0) <= 0.02
+            and (
+                test_metrics.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+                or test_metrics.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+                or test_metrics.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+            )
+        )
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "candidate_protocol_not_deployable_until_confirmed_on_locked_split",
+            "best_stage41_stratified_protocol": best_name,
+            "selection_rule": "train on stratified candidate train; val-selected slice thresholds; test once",
+            "best_policy": best_policy,
+            "best_metrics": test_metrics,
+            "positive_external_domains": positive_domains,
+            "neural_exceeds_stage37_by_gate_margin": exceeds,
+            "deployment_decision": "candidate_needs_confirmatory_locked_split" if exceeds and positive_domains >= 2 else "keep_stage37_selector",
+            "trials": trials,
+        }
+    _write_json(OUT_DIR / "stage41_stratified_protocol.json", result)
+    write_md(OUT_DIR / "stage41_stratified_protocol.md", ["# Stage41 Stratified Protocol Neural Retraining", "", "- source: `fresh_run`", "- status: candidate protocol, not a replacement for locked Stage41 claims.", f"- result: `{result}`"])
+    _append_ledger("stage41_stratified_protocol", "ok", started, [str(DATA_DIR / "all_agent_train.npz")], [str(OUT_DIR / "stage41_stratified_protocol.md")])
+    return result
+
+
+def update_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    m = result.get("best_metrics", {})
+    block = f"""
+
+## Stage41 Stratified Protocol Candidate
+
+This is a candidate retraining protocol created after the Stage41 validation-gap audit. It does not overwrite the locked Stage41 split and is not a deployable claim until confirmed on a locked protocol.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+best_stage41_stratified_protocol = {result.get('best_stage41_stratified_protocol')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin = {result.get('neural_exceeds_stage37_by_gate_margin')}
+positive_external_domains = {result.get('positive_external_domains')}
+all_improvement = {m.get('all_improvement')}
+t50_improvement = {m.get('t50_improvement')}
+t100_improvement = {m.get('t100_improvement')}
+hard_failure_improvement = {m.get('hard_failure_improvement')}
+easy_degradation = {m.get('easy_degradation')}
+```
+"""
+    marker = "## Stage41 Stratified Protocol Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    for name in ["stage41_stratified_dataset.md", "stage41_stratified_protocol.md"]:
+        reports.add(str(OUT_DIR / name))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["stratified_protocol_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "best_name": result.get("best_stage41_stratified_protocol"),
+        "deployment_decision": result.get("deployment_decision"),
+        "best_metrics": result.get("best_metrics"),
+        "conclusion": "Candidate protocol tests whether validation representativeness was the t50 blocker; not deployable until confirmed on a locked external protocol.",
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": state.get("current_verdict", "stage41_breakthrough_not_yet_keep_stage37"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
+def main_stratified_protocol() -> None:
+    result = train_stratified_protocol()
+    update_readme_state(result)
