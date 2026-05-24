@@ -1733,3 +1733,460 @@ smc_enabled = false
 
 def main_fresh_endpoint_interpolation_candidate() -> None:
     run_fresh_endpoint_interpolation_candidate()
+
+
+def _endpoint_gate_features(split: str, pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray]) -> np.ndarray:
+    """Past-only gate features for deciding when the free endpoint head should intervene.
+
+    The endpoint FDE itself is never included because it uses the future target.
+    The features are limited to the same causal row representation used by the
+    residual head plus neural uncertainty/risk scores and split-local metadata.
+    """
+    x, _ = _residual_features(split)
+    horizon = labels["horizon"].astype(int)
+    h_one = np.zeros((len(horizon), 4), dtype=np.float32)
+    for i, h in enumerate([10, 25, 50, 100]):
+        h_one[:, i] = horizon == h
+    domain = labels["domain"].astype(str)
+    domains = ["ETH_UCY", "TrajNet", "UCY"]
+    d_one = np.zeros((len(domain), len(domains)), dtype=np.float32)
+    for i, d in enumerate(domains):
+        d_one[:, i] = domain == d
+    endpoint_delta = pred["endpoint_delta"].astype(np.float32)
+    endpoint_norm = np.linalg.norm(endpoint_delta, axis=1, keepdims=True).astype(np.float32)
+    pred_feats = np.stack(
+        [
+            pred["ensemble_variance"].astype(np.float32),
+            pred["log_uncertainty"].astype(np.float32),
+            pred["harm"].astype(np.float32),
+            pred["failure"].astype(np.float32),
+            labels["base_fde"].astype(np.float32) / np.maximum(labels["normalizer"].astype(np.float32), EPS),
+            labels["floor_fde"].astype(np.float32) / np.maximum(labels["normalizer"].astype(np.float32), EPS),
+            labels["base_switch"].astype(np.float32),
+        ],
+        axis=1,
+    )
+    return np.concatenate([x, pred_feats, endpoint_norm, endpoint_delta, h_one, d_one], axis=1).astype(np.float32)
+
+
+def _make_endpoint_gate_model(in_dim: int, width: int, dropout: float):
+    torch = proto._torch()
+    import torch.nn as nn
+
+    class EndpointGainGate(nn.Module):
+        def __init__(self) -> None:
+            super().__init__()
+            self.trunk = nn.Sequential(
+                nn.Linear(in_dim, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, max(32, width // 2)),
+                nn.ReLU(),
+            )
+            hidden = max(32, width // 2)
+            self.gain_value = nn.Linear(hidden, 1)
+            self.gain_logit = nn.Linear(hidden, 1)
+            self.harm_logit = nn.Linear(hidden, 1)
+            self.t100_good_logit = nn.Linear(hidden, 1)
+
+        def forward(self, x):
+            h = self.trunk(x)
+            return {
+                "gain_value": self.gain_value(h).squeeze(-1),
+                "gain_logit": self.gain_logit(h).squeeze(-1),
+                "harm_logit": self.harm_logit(h).squeeze(-1),
+                "t100_good_logit": self.t100_good_logit(h).squeeze(-1),
+            }
+
+    return EndpointGainGate()
+
+
+def _endpoint_gate_trial_configs() -> list[Dict[str, Any]]:
+    return [
+        {"name": "endpoint_gate_balanced", "width": 160, "dropout": 0.08, "lr": 8.0e-4, "hard_w": 2.0, "t50_w": 3.0, "t100_w": 2.0, "harm_w": 1.0, "seed": 9611},
+        {"name": "endpoint_gate_easy_safe", "width": 144, "dropout": 0.12, "lr": 9.0e-4, "hard_w": 1.5, "t50_w": 2.0, "t100_w": 3.0, "harm_w": 1.8, "seed": 9622},
+        {"name": "endpoint_gate_long_horizon", "width": 192, "dropout": 0.10, "lr": 7.0e-4, "hard_w": 2.2, "t50_w": 3.5, "t100_w": 4.0, "harm_w": 1.2, "seed": 9633},
+    ]
+
+
+def _endpoint_gate_labels(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray]) -> Dict[str, np.ndarray]:
+    endpoint = _endpoint_fde(pred, labels).astype(np.float32)
+    base = labels["base_fde"].astype(np.float32)
+    norm = np.maximum(labels["normalizer"].astype(np.float32), EPS)
+    gain = ((base - endpoint) / np.maximum(base, EPS)).astype(np.float32)
+    # A small normalized margin prevents near ties from becoming noisy positive labels.
+    gain_label = ((base - endpoint) > np.maximum(0.015 * norm, 0.01)).astype(np.float32)
+    harm_label = ((endpoint - base) > np.maximum(0.015 * norm, 0.01)).astype(np.float32)
+    easy_harm_label = (harm_label.astype(bool) & labels["easy"].astype(bool)).astype(np.float32)
+    t100_good = (((labels["horizon"].astype(int) == 100) & (gain > 0.0)).astype(np.float32))
+    return {
+        "endpoint_fde": endpoint,
+        "gain_value": gain,
+        "gain_label": gain_label,
+        "harm_label": harm_label,
+        "easy_harm_label": easy_harm_label,
+        "t100_good": t100_good,
+    }
+
+
+def _train_endpoint_gate_trial(trial: Mapping[str, Any], free_paths: Sequence[str | Path]) -> Dict[str, Any]:
+    torch = proto._torch()
+    import torch.nn.functional as F
+
+    ensure_dir(CHECKPOINT_DIR)
+    train_pred, train_labels = _free_endpoint_with_base("train")
+    val_pred, val_labels = _free_endpoint_with_base("val")
+    x_train = _endpoint_gate_features("train", train_pred, train_labels)
+    x_val = _endpoint_gate_features("val", val_pred, val_labels)
+    y_train = _endpoint_gate_labels(train_pred, train_labels)
+    y_val = _endpoint_gate_labels(val_pred, val_labels)
+    model = _make_endpoint_gate_model(x_train.shape[1], int(trial["width"]), float(trial["dropout"]))
+    opt = torch.optim.AdamW(model.parameters(), lr=float(trial["lr"]), weight_decay=1e-4)
+    rng = np.random.default_rng(int(trial["seed"]))
+    tx = torch.tensor(x_train)
+    vx = torch.tensor(x_val)
+    ty = {k: torch.tensor(v) for k, v in y_train.items()}
+    vy = {k: torch.tensor(v) for k, v in y_val.items()}
+    horizon_t = torch.tensor(train_labels["horizon"].astype(np.int64))
+    hard_t = torch.tensor(train_labels["hard"].astype(np.float32))
+    easy_t = torch.tensor(train_labels["easy"].astype(np.float32))
+    horizon_v = torch.tensor(val_labels["horizon"].astype(np.int64))
+    hard_v = torch.tensor(val_labels["hard"].astype(np.float32))
+    ckpt = CHECKPOINT_DIR / f"stage41_{trial['name']}.pt"
+    heartbeat = OUT_DIR / f"{trial['name']}_heartbeat.json"
+    if ckpt.exists() and heartbeat.exists():
+        payload = read_json(heartbeat, {})
+        return {
+            "source": "cached_verified",
+            "checkpoint": str(ckpt),
+            "heartbeat": str(heartbeat),
+            "best": {
+                "val_loss": float(payload.get("val_loss", 0.0)),
+                "epoch": int(payload.get("epoch", 0)),
+                "train_loss": float(payload.get("train_loss", 0.0)),
+            },
+            "resume_note": "checkpoint and heartbeat verified; skipped retraining",
+        }
+    batch = 512
+    epochs = 5
+    best = {"val_loss": float("inf"), "epoch": 0}
+    for epoch in range(1, epochs + 1):
+        order = rng.permutation(len(x_train))
+        losses: list[float] = []
+        model.train()
+        for start in range(0, len(order), batch):
+            ids = torch.tensor(order[start : start + batch], dtype=torch.long)
+            out = model(tx[ids])
+            row_w = 1.0 + float(trial["hard_w"]) * hard_t[ids]
+            row_w = row_w + float(trial["t50_w"]) * (horizon_t[ids] == 50).float()
+            row_w = row_w + float(trial["t100_w"]) * (horizon_t[ids] == 100).float()
+            row_w = row_w + 1.5 * ty["gain_label"][ids]
+            gain_reg = (F.smooth_l1_loss(out["gain_value"], ty["gain_value"][ids], reduction="none") * row_w).mean()
+            gain_bce = (F.binary_cross_entropy_with_logits(out["gain_logit"], ty["gain_label"][ids], reduction="none") * row_w).mean()
+            harm_target = torch.maximum(ty["harm_label"][ids], ty["easy_harm_label"][ids])
+            harm_bce = (F.binary_cross_entropy_with_logits(out["harm_logit"], harm_target, reduction="none") * (row_w + float(trial["harm_w"]) * easy_t[ids])).mean()
+            t100_bce = F.binary_cross_entropy_with_logits(out["t100_good_logit"], ty["t100_good"][ids])
+            loss = gain_reg + 0.55 * gain_bce + 0.75 * harm_bce + 0.20 * t100_bce
+            opt.zero_grad()
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            opt.step()
+            losses.append(float(loss.detach().cpu()))
+        model.eval()
+        with torch.no_grad():
+            out = model(vx)
+            val_w = 1.0 + 1.5 * hard_v + 2.0 * (horizon_v == 50).float() + 2.0 * (horizon_v == 100).float()
+            val_loss = (
+                (F.smooth_l1_loss(out["gain_value"], vy["gain_value"], reduction="none") * val_w).mean()
+                + 0.4 * F.binary_cross_entropy_with_logits(out["gain_logit"], vy["gain_label"])
+                + 0.7 * F.binary_cross_entropy_with_logits(out["harm_logit"], torch.maximum(vy["harm_label"], vy["easy_harm_label"]))
+            )
+            val_loss_f = float(val_loss.cpu())
+        heartbeat.write_text(json.dumps({"trial": dict(trial), "epoch": epoch, "train_loss": float(np.mean(losses)), "val_loss": val_loss_f, "checkpoint": str(ckpt)}), encoding="utf-8")
+        if val_loss_f < best["val_loss"]:
+            best = {"val_loss": val_loss_f, "epoch": epoch, "train_loss": float(np.mean(losses))}
+            torch.save({"model": model.state_dict(), "trial": dict(trial), "in_dim": x_train.shape[1], "best": best, "free_paths": list(map(str, free_paths))}, ckpt)
+    return {"source": "fresh_run", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": best}
+
+
+def _predict_endpoint_gate(path: str | Path, split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    torch = proto._torch()
+    payload = torch.load(path, map_location="cpu")
+    trial = payload["trial"]
+    free_pred, labels = _free_endpoint_with_base(split)
+    x = _endpoint_gate_features(split, free_pred, labels)
+    model = _make_endpoint_gate_model(int(payload["in_dim"]), int(trial["width"]), float(trial["dropout"]))
+    model.load_state_dict(payload["model"])
+    model.eval()
+    outs: Dict[str, list[np.ndarray]] = {"gain_value": [], "gain_prob": [], "harm_prob": [], "t100_good_prob": []}
+    with torch.no_grad():
+        tx = torch.tensor(x)
+        for start in range(0, len(x), 4096):
+            out = model(tx[start : start + 4096])
+            outs["gain_value"].append(out["gain_value"].cpu().numpy())
+            outs["gain_prob"].append(torch.sigmoid(out["gain_logit"]).cpu().numpy())
+            outs["harm_prob"].append(torch.sigmoid(out["harm_logit"]).cpu().numpy())
+            outs["t100_good_prob"].append(torch.sigmoid(out["t100_good_logit"]).cpu().numpy())
+    pred = {k: np.concatenate(v, axis=0).astype(np.float32) for k, v in outs.items()}
+    return pred, free_pred, labels
+
+
+def _predict_endpoint_gate_ensemble(paths: Sequence[str | Path], split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    gate_preds: list[Dict[str, np.ndarray]] = []
+    free_ref: Dict[str, np.ndarray] | None = None
+    labels_ref: Dict[str, np.ndarray] | None = None
+    for path in paths:
+        gp, free_pred, labels = _predict_endpoint_gate(path, split)
+        gate_preds.append(gp)
+        free_ref = free_pred
+        labels_ref = labels
+    if not gate_preds or free_ref is None or labels_ref is None:
+        raise ValueError("endpoint gate ensemble requires at least one checkpoint")
+    return {k: np.mean([p[k] for p in gate_preds], axis=0).astype(np.float32) for k in gate_preds[0]}, free_ref, labels_ref
+
+
+def _endpoint_gain_gate_grid(gate_pred: Mapping[str, np.ndarray], free_pred: Mapping[str, np.ndarray]) -> list[Dict[str, Any]]:
+    var = free_pred["ensemble_variance"]
+    uncert = free_pred["log_uncertainty"]
+    gain_q = [float(np.quantile(gate_pred["gain_value"], q)) for q in [0.55, 0.70]]
+    gain_candidates = sorted(set([-0.01, 0.02, *gain_q]))
+    return [
+        {
+            "gain_value_min": gv,
+            "gain_prob_min": gp,
+            "harm_prob_max": hp,
+            "t100_good_min": tg,
+            "variance_max": float(np.quantile(var, vq)),
+            "uncertainty_max": float(np.quantile(uncert, uq)),
+            "max_switch": ms,
+            "horizon_mode": hz,
+        }
+        for gv in gain_candidates
+        for gp in [0.50, 0.68]
+        for hp in [0.14, 0.28, 0.42]
+        for tg in [0.0, 0.45]
+        for vq in [0.75, 0.95]
+        for uq in [0.80, 0.95]
+        for ms in [0.06, 0.12, 0.25, 0.45]
+        for hz in ["all", "t50_t100", "no_t100"]
+    ]
+
+
+def _apply_endpoint_gain_gate(gate_pred: Mapping[str, np.ndarray], free_pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], policy: Mapping[str, Any]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    horizon = labels["horizon"].astype(int)
+    endpoint_fde = _endpoint_fde(free_pred, labels)
+    switch = (
+        (gate_pred["gain_value"] >= float(policy["gain_value_min"]))
+        & (gate_pred["gain_prob"] >= float(policy["gain_prob_min"]))
+        & (gate_pred["harm_prob"] <= float(policy["harm_prob_max"]))
+        & (free_pred["ensemble_variance"] <= float(policy["variance_max"]))
+        & (free_pred["log_uncertainty"] <= float(policy["uncertainty_max"]))
+    )
+    mode = str(policy.get("horizon_mode", "all"))
+    if mode == "long_only":
+        switch &= np.isin(horizon, [25, 50, 100])
+    elif mode == "t50_only":
+        switch &= horizon == 50
+    elif mode == "t50_t100":
+        switch &= np.isin(horizon, [50, 100])
+    elif mode == "no_t100":
+        switch &= horizon != 100
+    if np.any(horizon == 100):
+        t100_mask = horizon == 100
+        switch[t100_mask] &= gate_pred["t100_good_prob"][t100_mask] >= float(policy.get("t100_good_min", 0.0))
+    max_switch = float(policy.get("max_switch", 1.0))
+    score = gate_pred["gain_value"] + 0.35 * gate_pred["gain_prob"] - 0.55 * gate_pred["harm_prob"] - 0.10 * free_pred["ensemble_variance"]
+    if max_switch <= 0.0:
+        switch[:] = False
+    elif max_switch < 1.0 and np.any(switch):
+        ids = np.where(switch)[0]
+        keep_n = max(1, int(max_switch * len(switch)))
+        keep = np.zeros(len(switch), dtype=bool)
+        keep[ids[np.argsort(score[ids])[::-1][:keep_n]]] = True
+        switch &= keep
+    selected = labels["base_fde"].astype(np.float64).copy()
+    selected[switch] = endpoint_fde[switch]
+    return selected, switch, endpoint_fde
+
+
+def _endpoint_gain_gate_score(metrics: Mapping[str, Any]) -> float:
+    max_easy = _max_domain_easy(metrics)
+    return (
+        1.2 * float(metrics.get("all_improvement", 0.0))
+        + 2.8 * float(metrics.get("t50_improvement", 0.0))
+        + 1.8 * float(metrics.get("hard_failure_improvement", 0.0))
+        + 1.0 * float(metrics.get("t100_improvement", 0.0))
+        + 0.04 * float(metrics.get("switch_rate", 0.0))
+        - 35.0 * max(0.0, float(metrics.get("easy_degradation", 1.0)) - 0.02)
+        - 35.0 * max(0.0, max_easy - 0.02)
+    )
+
+
+def run_fresh_endpoint_gain_gate_candidate() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_source_rotation_split()
+    free_paths = _free_endpoint_paths()
+    trials: Dict[str, Any] = {}
+    for trial in _endpoint_gate_trial_configs():
+        trials[trial["name"]] = {"trial": trial, "train": _train_endpoint_gate_trial(trial, free_paths)}
+    paths = [row["train"]["checkpoint"] for row in trials.values()]
+    val_gate, val_free, val_labels = _predict_endpoint_gate_ensemble(paths, "val")
+    best_policy: Dict[str, Any] = {}
+    best_val: Dict[str, Any] = {}
+    best_score = -1e18
+    for policy in _endpoint_gain_gate_grid(val_gate, val_free):
+        selected, switch, endpoint_fde = _apply_endpoint_gain_gate(val_gate, val_free, val_labels, policy)
+        metrics = _metric_from_labels(selected, val_labels["base_fde"], val_labels, switch)
+        if metrics.get("easy_degradation", 1.0) > 0.02 or _max_domain_easy(metrics) > 0.02:
+            continue
+        score = _endpoint_gain_gate_score(metrics)
+        if score > best_score:
+            best_score = score
+            best_policy = dict(policy)
+            best_val = {"metrics_vs_source_rotation_base": metrics, "score": score}
+    if not best_policy:
+        result: Dict[str, Any] = {
+            "source": "fresh_run",
+            "protocol_status": "fresh_rotation_endpoint_gain_gate_candidate",
+            "deployment_decision": "diagnostic_keep_stage37_floor",
+            "reason": "no validation-safe endpoint gain gate policy",
+            "trials": trials,
+        }
+    else:
+        test_gate, test_free, test_labels = _predict_endpoint_gate_ensemble(paths, "test")
+        selected, switch, endpoint_fde = _apply_endpoint_gain_gate(test_gate, test_free, test_labels, best_policy)
+        metrics_vs_base = _metric_from_labels(selected, test_labels["base_fde"], test_labels, switch)
+        metrics_vs_floor = _metric_from_labels(selected, test_labels["floor_fde"], test_labels, switch | test_labels["base_switch"].astype(bool))
+        endpoint_without = _metric_from_labels(endpoint_fde, test_labels["base_fde"], test_labels, np.ones(len(endpoint_fde), dtype=bool))
+        metrics_vs_base["t50_ci"] = s41._bootstrap_ci(selected, test_labels["base_fde"], test_labels, "t50", n=2000)
+        metrics_vs_floor["t50_ci"] = s41._bootstrap_ci(selected, test_labels["floor_fde"], test_labels, "t50", n=2000)
+        metrics_vs_floor["hard_failure_ci"] = s41._bootstrap_ci(selected, test_labels["floor_fde"], test_labels, "hard_failure", n=2000)
+        metrics_vs_floor["all_ci"] = s41._bootstrap_ci(selected, test_labels["floor_fde"], test_labels, "all", n=2000)
+        protected_full_replacement = bool(
+            metrics_vs_floor.get("easy_degradation", 1.0) <= 0.02
+            and _max_domain_easy(metrics_vs_floor) <= 0.02
+            and _positive_domains(metrics_vs_floor) >= 2
+            and metrics_vs_floor.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+            and metrics_vs_floor.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+            and metrics_vs_floor.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+        )
+        positive_switch = bool(metrics_vs_base.get("switch_rate", 0.0) > 0.0 and metrics_vs_base.get("all_improvement", -1.0) > 0.0)
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "fresh_rotation_endpoint_gain_gate_candidate",
+            "hypothesis": "Train a gain/harm/t100-safe gate on endpoint-head predictions so the neural endpoint intervenes only when predicted gain exceeds harm, instead of relying only on hand-tuned uncertainty thresholds.",
+            "best_policy": best_policy,
+            "best_val": best_val,
+            "metrics_vs_source_rotation_base": metrics_vs_base,
+            "metrics_vs_floor": metrics_vs_floor,
+            "free_endpoint_without_gate_vs_source_rotation_base": endpoint_without,
+            "positive_external_domains_vs_floor": _positive_domains(metrics_vs_floor),
+            "max_domain_easy_degradation_vs_floor": _max_domain_easy(metrics_vs_floor),
+            "protected_full_replacement_pass": protected_full_replacement,
+            "positive_neural_switch_pass": positive_switch,
+            "deployment_decision": "endpoint_gain_gate_neural_candidate_pending_user_acceptance" if protected_full_replacement and positive_switch else "diagnostic_keep_stage37_floor",
+            "trials": trials,
+            "caveat": "The gate is a Stage37/source-rotation-protected neural dynamics head. It is not latent generative rollout; Stage5C and SMC remain disabled.",
+        }
+    _write_json(OUT_DIR / "stage41_fresh_endpoint_gain_gate_candidate.json", result)
+    lines = [
+        "# Stage41 Fresh Endpoint Gain-Gate Candidate",
+        "",
+        "- source: `fresh_run`",
+        f"- protocol status: `{result.get('protocol_status')}`",
+        f"- deployment decision: `{result.get('deployment_decision')}`",
+        f"- protected full replacement pass: `{result.get('protected_full_replacement_pass')}`",
+        f"- positive neural switch pass: `{result.get('positive_neural_switch_pass')}`",
+        f"- metrics vs source-rotation base: `{result.get('metrics_vs_source_rotation_base')}`",
+        f"- metrics vs floor: `{result.get('metrics_vs_floor')}`",
+        f"- free endpoint without gate: `{result.get('free_endpoint_without_gate_vs_source_rotation_base')}`",
+        f"- caveat: `{result.get('caveat')}`",
+        "",
+        "- Stage5C executed: `False`",
+        "- SMC enabled: `False`",
+        "- metric/seconds-level claim: `False`",
+    ]
+    write_md(OUT_DIR / "stage41_fresh_endpoint_gain_gate_candidate.md", lines)
+    _append_ledger("stage41_fresh_endpoint_gain_gate_candidate", "ok", started, [OUT_DIR / "stage41_fresh_residual_endpoint_candidate.json"], [OUT_DIR / "stage41_fresh_endpoint_gain_gate_candidate.md"])
+    update_endpoint_gain_gate_readme_state(result)
+    return result
+
+
+def update_endpoint_gain_gate_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    m = result.get("metrics_vs_floor", {}) or {}
+    base = result.get("metrics_vs_source_rotation_base", {}) or {}
+    no_gate = result.get("free_endpoint_without_gate_vs_source_rotation_base", {}) or {}
+    block = f"""
+
+## Stage41 Fresh Endpoint Gain-Gate Candidate
+
+This run trains a validation-selected gain/harm/t100-safe gate for the free endpoint neural head. It targets the Stage40/41 failure mode where the neural endpoint is strong on hard/t50 but unsafe on easy/t100 without a calibrated intervention rule. It does not execute Stage5C or SMC.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+protected_full_replacement_pass = {result.get('protected_full_replacement_pass')}
+positive_neural_switch_pass = {result.get('positive_neural_switch_pass')}
+vs_floor_all = {m.get('all_improvement')}
+vs_floor_t50 = {m.get('t50_improvement')}
+vs_floor_t100 = {m.get('t100_improvement')}
+vs_floor_hard = {m.get('hard_failure_improvement')}
+vs_floor_easy = {m.get('easy_degradation')}
+vs_source_rotation_base_all = {base.get('all_improvement')}
+vs_source_rotation_base_t50 = {base.get('t50_improvement')}
+vs_source_rotation_base_t100 = {base.get('t100_improvement')}
+vs_source_rotation_base_hard = {base.get('hard_failure_improvement')}
+vs_source_rotation_base_easy = {base.get('easy_degradation')}
+ungated_endpoint_all = {no_gate.get('all_improvement')}
+ungated_endpoint_t50 = {no_gate.get('t50_improvement')}
+ungated_endpoint_t100 = {no_gate.get('t100_improvement')}
+ungated_endpoint_easy = {no_gate.get('easy_degradation')}
+true_3d = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+```
+"""
+    marker = "## Stage41 Fresh Endpoint Gain-Gate Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_fresh_endpoint_gain_gate_candidate.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["fresh_endpoint_gain_gate_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "protected_full_replacement_pass": result.get("protected_full_replacement_pass"),
+        "positive_neural_switch_pass": result.get("positive_neural_switch_pass"),
+        "metrics_vs_floor": result.get("metrics_vs_floor"),
+        "metrics_vs_source_rotation_base": result.get("metrics_vs_source_rotation_base"),
+        "free_endpoint_without_gate_vs_source_rotation_base": result.get("free_endpoint_without_gate_vs_source_rotation_base"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update(
+        {
+            "current_stage": "stage41",
+            "current_best_deployable": "Stage37 selector",
+            "last_updated": "2026-05-24",
+            "latent_generative_ready": False,
+            "stage5c_ready": False,
+            "smc_ready": False,
+            "stage41": stage41,
+            "generated_reports": sorted(reports),
+        }
+    )
+    _write_json("research_state.json", state)
+
+
+def main_fresh_endpoint_gain_gate_candidate() -> None:
+    run_fresh_endpoint_gain_gate_candidate()
