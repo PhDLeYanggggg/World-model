@@ -24,3 +24,34 @@ def test_stage41_stratified_metric_aggregate() -> None:
     assert round(summary["mean"], 3) == 0.2
     assert summary["min"] == 0.1
     assert summary["max"] == 0.3
+
+
+def test_stage41_tail_metric_score_rewards_low_tail_t50() -> None:
+    weak_tail = {
+        "all_improvement": 0.10,
+        "t50_improvement": 0.12,
+        "t100_improvement": 0.03,
+        "hard_failure_improvement": 0.10,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.08,
+        "by_domain": {
+            "ETH_UCY": {"t50_improvement": 0.00, "hard_failure_improvement": 0.05},
+            "TrajNet": {"t50_improvement": 0.20, "hard_failure_improvement": 0.15},
+        },
+    }
+    stronger_tail = dict(weak_tail)
+    stronger_tail["by_domain"] = {
+        "ETH_UCY": {"t50_improvement": 0.08, "hard_failure_improvement": 0.08},
+        "TrajNet": {"t50_improvement": 0.18, "hard_failure_improvement": 0.14},
+    }
+    assert strat._metric_score(stronger_tail, "domain_tail") > strat._metric_score(weak_tail, "domain_tail")
+
+
+def test_stage41_required_margins_are_not_t50_only() -> None:
+    metrics = {
+        "all_improvement": 0.01,
+        "t50_improvement": 1.0,
+        "hard_failure_improvement": 0.01,
+        "easy_degradation": 0.0,
+    }
+    assert not strat._beats_stage37_required_margins(metrics)

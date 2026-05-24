@@ -930,7 +930,7 @@ deployment_decision = keep_stage37_selector
 neural_exceeds_stage37_by_gate_margin = False
 positive_external_domains = 3
 best_stage41_neural = policy_blender::metadata_guarded
-gates = 23 / 26
+gates = 25 / 28
 verdict = stage41_breakthrough_not_yet_keep_stage37
 ```
 
@@ -949,5 +949,7 @@ Stage41 second pass:
 - validation gap audit: blockers `['ETH_UCY t50 validation headroom is not representative: val=0.0445, test=0.4881']`; stratified candidate status `candidate_protocol_not_used_for_stage41_claims`.
 - stratified protocol candidate: `stratified_long_horizon::balanced` with deployment `candidate_needs_confirmatory_locked_split` and t50 `0.1230400968639157`.
 - locked-v2 confirmatory: deployment `keep_stage37_selector`, stable margin `False`, t50 mean `0.11543840676955701`.
-- Tests: `python -m pytest tests` -> `101 passed in 59.21s`.
+- locked-v2 tail-robust: deployment `keep_stage37_selector`, stable margin `False`, t50 mean `0.11007864650973702`.
+- locked-v2 neural ensemble: deployment `keep_stage37_selector`, margin result `False`, t50 `0.11736282145897792`.
+- Tests: `python -m pytest tests` -> `103 passed in 70.63s`.
 

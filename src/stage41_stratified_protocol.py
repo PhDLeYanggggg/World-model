@@ -415,8 +415,33 @@ def _policy_grid() -> list[Dict[str, Any]]:
     ]
 
 
+def _metric_score(metrics: Mapping[str, Any], mode: str) -> float:
+    """Validation-only score for selecting a safe switch policy."""
+    all_imp = float(metrics.get("all_improvement", 0.0))
+    t50 = float(metrics.get("t50_improvement", 0.0))
+    t100 = float(metrics.get("t100_improvement", 0.0))
+    hard = float(metrics.get("hard_failure_improvement", 0.0))
+    easy = float(metrics.get("easy_degradation", 1.0))
+    switch = float(metrics.get("switch_rate", 0.0))
+    by_domain = metrics.get("by_domain", {}) or {}
+    domain_t50 = [float(row.get("t50_improvement", 0.0)) for row in by_domain.values()]
+    domain_hard = [float(row.get("hard_failure_improvement", 0.0)) for row in by_domain.values()]
+    min_domain_t50 = min(domain_t50) if domain_t50 else 0.0
+    min_domain_hard = min(domain_hard) if domain_hard else 0.0
+    easy_penalty = 30.0 * max(0.0, easy - 0.02)
+    if mode == "t50_tail":
+        return all_imp + 3.0 * t50 + 1.2 * hard + 0.35 * t100 + 0.8 * min_domain_t50 + 0.3 * min_domain_hard + 0.02 * switch - easy_penalty
+    if mode == "domain_tail":
+        return all_imp + 2.4 * t50 + 1.4 * hard + 0.35 * t100 + 1.1 * min_domain_t50 + 0.7 * min_domain_hard + 0.02 * switch - easy_penalty
+    return all_imp + 1.4 * t50 + hard + 0.4 * t100 - 20.0 * max(0.0, easy - 0.02)
+
+
 def _select_policy(path: str | Path, mode: str) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     pred, labels = _predict(path, "val")
+    return _select_policy_from_predictions(pred, labels, mode)
+
+
+def _select_policy_from_predictions(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], mode: str) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     rel = pred["pred_rel"]
     fallback = labels["floor_fde"].astype(np.float64)
     best = np.argmin(rel, axis=1)
@@ -466,7 +491,12 @@ def _select_policy(path: str | Path, mode: str) -> Tuple[Dict[str, Any], Dict[st
                 min_imp = 0.003 if mode == "conservative" else 0.0
                 if imp <= min_imp or easy_deg > max_easy:
                     continue
-                score = imp + (0.8 if h in {50, 100} else 0.25) * hard_imp + 0.01 * float(np.mean(sw))
+                if mode == "t50_tail":
+                    score = (2.2 if h == 50 else 0.7) * imp + (1.4 if h == 50 else 0.6) * hard_imp + 0.2 * float(h == 100) * imp + 0.01 * float(np.mean(sw))
+                elif mode == "domain_tail":
+                    score = (1.8 if h == 50 else 0.8) * imp + (1.6 if h in {50, 100} else 0.7) * hard_imp + 0.01 * float(np.mean(sw))
+                else:
+                    score = imp + (0.8 if h in {50, 100} else 0.25) * hard_imp + 0.01 * float(np.mean(sw))
                 if score > best_score:
                     best_score = score
                     best_params = dict(params)
@@ -482,6 +512,10 @@ def _select_policy(path: str | Path, mode: str) -> Tuple[Dict[str, Any], Dict[st
 
 def _eval_policy(path: str | Path, split: str, policy: Mapping[str, Any], bootstrap: bool = False) -> Dict[str, Any]:
     pred, labels = _predict(path, split)
+    return _eval_policy_predictions(pred, labels, policy, bootstrap=bootstrap)
+
+
+def _eval_policy_predictions(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], policy: Mapping[str, Any], bootstrap: bool = False) -> Dict[str, Any]:
     selected, switch, idx = _apply_policy(pred, labels, policy)
     metrics = _metrics(selected, labels, switch)
     endpoint_oracle = labels["candidate_fde"].astype(np.float64).min(axis=1)
@@ -492,6 +526,20 @@ def _eval_policy(path: str | Path, split: str, policy: Mapping[str, Any], bootst
         metrics["t50_ci"] = s41._bootstrap_ci(selected, labels["floor_fde"].astype(np.float64), ds, "t50", n=2000)
         metrics["hard_failure_ci"] = s41._bootstrap_ci(selected, labels["floor_fde"].astype(np.float64), ds, "hard_failure", n=1000)
     return metrics
+
+
+def _predict_ensemble(paths: Sequence[str | Path], split: str) -> Tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    preds: list[Dict[str, np.ndarray]] = []
+    labels_ref: Dict[str, np.ndarray] | None = None
+    for path in paths:
+        pred, labels = _predict(path, split)
+        preds.append(pred)
+        if labels_ref is None:
+            labels_ref = labels
+    if not preds or labels_ref is None:
+        raise ValueError("ensemble requires at least one checkpoint")
+    avg = {key: np.mean([p[key] for p in preds], axis=0).astype(np.float32) for key in preds[0].keys()}
+    return avg, labels_ref
 
 
 def train_stratified_protocol() -> Dict[str, Any]:
@@ -508,7 +556,7 @@ def train_stratified_protocol() -> Dict[str, Any]:
         for mode in ["conservative", "balanced", "long_horizon"]:
             policy, val = _select_policy(train["checkpoint"], mode)
             m = val["metrics"]
-            score = m.get("all_improvement", 0.0) + 1.4 * m.get("t50_improvement", 0.0) + m.get("hard_failure_improvement", 0.0) + 0.4 * m.get("t100_improvement", 0.0) - 20.0 * max(0.0, m.get("easy_degradation", 1.0) - 0.02)
+            score = _metric_score(m, mode)
             modes[mode] = {"policy": policy, "val": val, "val_score": score}
             if m.get("easy_degradation", 1.0) <= 0.02 and score > best_val_score:
                 best_val_score = score
@@ -522,14 +570,7 @@ def train_stratified_protocol() -> Dict[str, Any]:
         ckpt = trials[trial_name]["train"]["checkpoint"]
         test_metrics = _eval_policy(ckpt, "test", best_policy, bootstrap=True)
         positive_domains = sum(1 for row in test_metrics.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
-        exceeds = bool(
-            test_metrics.get("easy_degradation", 1.0) <= 0.02
-            and (
-                test_metrics.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
-                or test_metrics.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
-                or test_metrics.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
-            )
-        )
+        exceeds = _beats_stage37_required_margins(test_metrics)
         result = {
             "source": "fresh_run",
             "protocol_status": "candidate_protocol_not_deployable_until_confirmed_on_locked_split",
@@ -555,6 +596,24 @@ def _aggregate_metric(values: Sequence[float]) -> Dict[str, float]:
     return {"mean": float(arr.mean()), "std": float(arr.std(ddof=0)), "min": float(arr.min()), "max": float(arr.max())}
 
 
+def _beats_stage37_required_margins(metrics: Mapping[str, Any]) -> bool:
+    return bool(
+        metrics.get("easy_degradation", 1.0) <= 0.02
+        and metrics.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+        and metrics.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+        and metrics.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+    )
+
+
+def _summary_beats_stage37_required_margins(summary: Mapping[str, Mapping[str, float]]) -> bool:
+    return bool(
+        (summary.get("easy_degradation") or {}).get("max", 1.0) <= 0.02
+        and (summary.get("all_improvement") or {}).get("min", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+        and (summary.get("t50_improvement") or {}).get("min", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+        and (summary.get("hard_failure_improvement") or {}).get("min", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+    )
+
+
 def train_locked_v2_confirmatory() -> Dict[str, Any]:
     started = time.perf_counter()
     build_stratified_all_agent_dataset()
@@ -573,7 +632,7 @@ def train_locked_v2_confirmatory() -> Dict[str, Any]:
         for mode in ["conservative", "balanced", "long_horizon"]:
             policy, val = _select_policy(train["checkpoint"], mode)
             m = val["metrics"]
-            score = m.get("all_improvement", 0.0) + 1.4 * m.get("t50_improvement", 0.0) + m.get("hard_failure_improvement", 0.0) + 0.4 * m.get("t100_improvement", 0.0) - 20.0 * max(0.0, m.get("easy_degradation", 1.0) - 0.02)
+            score = _metric_score(m, mode)
             modes[mode] = {"policy": policy, "val": val, "val_score": score}
             if m.get("easy_degradation", 1.0) <= 0.02 and score > best_score:
                 best_score = score
@@ -595,11 +654,7 @@ def train_locked_v2_confirmatory() -> Dict[str, Any]:
         sum(1 for row in m.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
         for m in metrics
     ) if metrics else 0
-    stable = bool(
-        summary["easy_degradation"]["max"] <= 0.02
-        and summary["t50_improvement"]["min"] >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
-        and positive_domains >= 2
-    )
+    stable = bool(_summary_beats_stage37_required_margins(summary) and positive_domains >= 2)
     result = {
         "source": "fresh_run",
         "protocol_status": "locked_v2_candidate_confirmatory_not_final_deployable",
@@ -615,6 +670,159 @@ def train_locked_v2_confirmatory() -> Dict[str, Any]:
     _write_json(OUT_DIR / "stage41_locked_v2_confirmatory.json", result)
     write_md(OUT_DIR / "stage41_locked_v2_confirmatory.md", ["# Stage41 Locked-v2 Confirmatory Multi-Seed", "", "- source: `fresh_run`", "- status: locked-v2 candidate confirmation, not final deployable claim.", f"- result: `{result}`"])
     _append_ledger("stage41_locked_v2_confirmatory", "ok", started, [str(DATA_DIR / "all_agent_train.npz")], [str(OUT_DIR / "stage41_locked_v2_confirmatory.md")])
+    return result
+
+
+def train_locked_v2_tail_robust() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    domain_vocab = _domain_vocab()
+    trial_bases = [
+        {"name": "locked_v2_t50_tail", "width": 256, "dropout": 0.08, "lr": 6.0e-4, "hard_w": 2.5, "t50_w": 5.0, "t100_w": 2.0, "ce_w": 0.9, "rank_w": 1.1},
+        {"name": "locked_v2_domain_tail", "width": 224, "dropout": 0.10, "lr": 7.0e-4, "hard_w": 3.0, "t50_w": 4.0, "t100_w": 2.5, "ce_w": 0.8, "rank_w": 1.2},
+    ]
+    runs: Dict[str, Any] = {}
+    for seed_offset in [0, 101, 202]:
+        seed_key = f"seed{seed_offset}"
+        seed_runs: Dict[str, Any] = {}
+        best_trial_name = ""
+        best_mode = ""
+        best_score = -1e18
+        best_policy: Dict[str, Any] = {}
+        best_ckpt = ""
+        for base in trial_bases:
+            trial = dict(base)
+            trial["name"] = f"{base['name']}_seed{seed_offset}"
+            trial["seed_offset"] = seed_offset
+            train = _train_one(trial, domain_vocab)
+            modes: Dict[str, Any] = {}
+            for mode in ["balanced", "long_horizon", "t50_tail", "domain_tail"]:
+                policy, val = _select_policy(train["checkpoint"], mode)
+                m = val["metrics"]
+                score = _metric_score(m, mode)
+                modes[mode] = {"policy": policy, "val": val, "val_score": score}
+                if m.get("easy_degradation", 1.0) <= 0.02 and score > best_score:
+                    best_score = score
+                    best_trial_name = trial["name"]
+                    best_mode = mode
+                    best_policy = policy
+                    best_ckpt = train["checkpoint"]
+            seed_runs[trial["name"]] = {"source": train.get("source", "fresh_run"), "trial": trial, "train": train, "modes": modes}
+        test_metrics = _eval_policy(best_ckpt, "test", best_policy, bootstrap=seed_offset == 0) if best_policy else {}
+        runs[seed_key] = {
+            "source": "fresh_run",
+            "best_trial": best_trial_name,
+            "best_mode": best_mode,
+            "best_val_score": best_score,
+            "trials": seed_runs,
+            "test_metrics": test_metrics,
+        }
+    metrics = [row.get("test_metrics", {}) for row in runs.values()]
+    summary = {
+        "all_improvement": _aggregate_metric([m.get("all_improvement", 0.0) for m in metrics]),
+        "t50_improvement": _aggregate_metric([m.get("t50_improvement", 0.0) for m in metrics]),
+        "t100_improvement": _aggregate_metric([m.get("t100_improvement", 0.0) for m in metrics]),
+        "hard_failure_improvement": _aggregate_metric([m.get("hard_failure_improvement", 0.0) for m in metrics]),
+        "easy_degradation": _aggregate_metric([m.get("easy_degradation", 1.0) for m in metrics]),
+        "switch_rate": _aggregate_metric([m.get("switch_rate", 0.0) for m in metrics]),
+    }
+    positive_domains = min(
+        sum(1 for row in m.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+        for m in metrics
+    ) if metrics else 0
+    stable = bool(_summary_beats_stage37_required_margins(summary) and positive_domains >= 2)
+    result = {
+        "source": "fresh_run",
+        "protocol_status": "locked_v2_tail_robust_candidate_not_final_deployable",
+        "selection_rule": "for each seed: train t50/domain-tail weighted neural cost models; select by validation-only low-tail t50/domain score; evaluate test once",
+        "runs": runs,
+        "summary": summary,
+        "representative_metrics": metrics[0] if metrics else {},
+        "positive_external_domains_min_across_seeds": positive_domains,
+        "neural_exceeds_stage37_by_gate_margin_stably": stable,
+        "deployment_decision": "candidate_needs_independent_locked_protocol_or_user_acceptance" if stable else "keep_stage37_selector",
+        "caveat": "Tail-robust locked-v2 remains a candidate protocol derived after Stage41 validation-gap diagnosis. It cannot replace Stage37 without protocol acceptance or independent fresh external confirmation.",
+    }
+    _write_json(OUT_DIR / "stage41_locked_v2_tail_robust.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_tail_robust.md", ["# Stage41 Locked-v2 Tail-Robust Multi-Seed", "", "- source: `fresh_run`", "- status: tail-robust locked-v2 candidate confirmation, not final deployable claim.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_tail_robust", "ok", started, [str(DATA_DIR / "all_agent_train.npz")], [str(OUT_DIR / "stage41_locked_v2_tail_robust.md")])
+    return result
+
+
+def _locked_v2_checkpoint_paths() -> Dict[str, list[str]]:
+    locked = read_json(OUT_DIR / "stage41_locked_v2_confirmatory.json", {})
+    tail = read_json(OUT_DIR / "stage41_locked_v2_tail_robust.json", {})
+    locked_paths: list[str] = []
+    for row in (locked.get("runs") or {}).values():
+        ckpt = ((row.get("train") or {}).get("checkpoint"))
+        if ckpt and Path(ckpt).exists():
+            locked_paths.append(str(ckpt))
+    tail_paths: list[str] = []
+    for row in (tail.get("runs") or {}).values():
+        best_trial = row.get("best_trial")
+        if best_trial:
+            ckpt = ((((row.get("trials") or {}).get(best_trial) or {}).get("train") or {}).get("checkpoint"))
+            if ckpt and Path(ckpt).exists():
+                tail_paths.append(str(ckpt))
+    paths: Dict[str, list[str]] = {}
+    if locked_paths:
+        paths["locked_v2_3seed_ensemble"] = locked_paths
+    if tail_paths:
+        paths["tail_robust_3seed_ensemble"] = tail_paths
+    if locked_paths and tail_paths:
+        paths["locked_v2_plus_tail_6model_ensemble"] = locked_paths + tail_paths
+    return paths
+
+
+def evaluate_locked_v2_ensemble() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_stratified_all_agent_dataset()
+    ensembles = _locked_v2_checkpoint_paths()
+    runs: Dict[str, Any] = {}
+    best_name = ""
+    best_score = -1e18
+    best_policy: Dict[str, Any] = {}
+    best_paths: list[str] = []
+    best_mode = ""
+    for name, paths in ensembles.items():
+        val_pred, val_labels = _predict_ensemble(paths, "val")
+        modes: Dict[str, Any] = {}
+        for mode in ["balanced", "long_horizon", "t50_tail", "domain_tail"]:
+            policy, val = _select_policy_from_predictions(val_pred, val_labels, mode)
+            score = _metric_score(val["metrics"], mode)
+            modes[mode] = {"policy": policy, "val": val, "val_score": score}
+            if val["metrics"].get("easy_degradation", 1.0) <= 0.02 and score > best_score:
+                best_score = score
+                best_name = name
+                best_mode = mode
+                best_policy = policy
+                best_paths = list(paths)
+        runs[name] = {"source": "cached_verified", "paths": paths, "modes": modes}
+    if not best_policy:
+        result: Dict[str, Any] = {"source": "not_run", "reason": "no cached locked-v2 checkpoints available for ensemble", "ensembles": runs}
+    else:
+        test_pred, test_labels = _predict_ensemble(best_paths, "test")
+        test_metrics = _eval_policy_predictions(test_pred, test_labels, best_policy, bootstrap=True)
+        positive_domains = sum(1 for row in test_metrics.get("by_domain", {}).values() if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0)
+        exceeds = bool(_beats_stage37_required_margins(test_metrics) and positive_domains >= 2)
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "locked_v2_neural_ensemble_candidate_not_final_deployable",
+            "model_source": "cached_verified locked-v2 and/or tail-robust checkpoints; ensemble predictions freshly evaluated",
+            "selection_rule": "average neural cost/risk predictions across seed checkpoints, select policy on validation only, evaluate test once",
+            "best_ensemble": best_name,
+            "best_mode": best_mode,
+            "best_policy": best_policy,
+            "best_metrics": test_metrics,
+            "positive_external_domains": positive_domains,
+            "neural_exceeds_stage37_by_gate_margin": exceeds,
+            "deployment_decision": "candidate_needs_independent_locked_protocol_or_user_acceptance" if exceeds else "keep_stage37_selector",
+            "ensembles": runs,
+            "caveat": "This is a neural ensemble over candidate locked-v2 checkpoints. It is useful evidence for dynamics lift, but still not final deployable proof without accepting the locked-v2 protocol or fresh external confirmation.",
+        }
+    _write_json(OUT_DIR / "stage41_locked_v2_ensemble.json", result)
+    write_md(OUT_DIR / "stage41_locked_v2_ensemble.md", ["# Stage41 Locked-v2 Neural Ensemble", "", "- source: `fresh_run`", "- status: ensemble over locked-v2 checkpoints, candidate evidence only.", f"- result: `{result}`"])
+    _append_ledger("stage41_locked_v2_ensemble", "ok", started, list(sum(ensembles.values(), [])), [str(OUT_DIR / "stage41_locked_v2_ensemble.md")])
     return result
 
 
@@ -704,6 +912,92 @@ easy_degradation_max = {(summary.get('easy_degradation') or {}).get('max')}
     _write_json("research_state.json", state)
 
 
+def update_tail_robust_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    summary = result.get("summary", {})
+    block = f"""
+
+## Stage41 Locked-v2 Tail-Robust Candidate
+
+This multi-seed run adds validation-only low-tail t+50/domain scoring to test whether the previous locked-v2 result failed because the policy optimized mean validation lift rather than worst-seed/worst-domain stability. It remains a candidate protocol, not a deployable replacement for Stage37.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin_stably = {result.get('neural_exceeds_stage37_by_gate_margin_stably')}
+positive_external_domains_min_across_seeds = {result.get('positive_external_domains_min_across_seeds')}
+all_improvement_mean = {(summary.get('all_improvement') or {}).get('mean')}
+t50_improvement_mean = {(summary.get('t50_improvement') or {}).get('mean')}
+t50_improvement_min = {(summary.get('t50_improvement') or {}).get('min')}
+hard_failure_improvement_min = {(summary.get('hard_failure_improvement') or {}).get('min')}
+easy_degradation_max = {(summary.get('easy_degradation') or {}).get('max')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Tail-Robust Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_tail_robust.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_tail_robust_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "summary": result.get("summary"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
+def update_ensemble_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    metrics = result.get("best_metrics", {}) or {}
+    block = f"""
+
+## Stage41 Locked-v2 Neural Ensemble Candidate
+
+This run ensembles cached locked-v2 neural cost models and reselects a safety policy on validation only. It tests whether multi-seed neural averaging can preserve the strong t+50 signal while reducing low-tail variance. It remains candidate evidence, not a deployable replacement for Stage37.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+best_ensemble = {result.get('best_ensemble')}
+best_mode = {result.get('best_mode')}
+deployment_decision = {result.get('deployment_decision')}
+neural_exceeds_stage37_by_gate_margin = {result.get('neural_exceeds_stage37_by_gate_margin')}
+positive_external_domains = {result.get('positive_external_domains')}
+all_improvement = {metrics.get('all_improvement')}
+t50_improvement = {metrics.get('t50_improvement')}
+t100_improvement = {metrics.get('t100_improvement')}
+hard_failure_improvement = {metrics.get('hard_failure_improvement')}
+easy_degradation = {metrics.get('easy_degradation')}
+```
+"""
+    marker = "## Stage41 Locked-v2 Neural Ensemble Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_locked_v2_ensemble.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["locked_v2_neural_ensemble_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "best_name": result.get("best_ensemble"),
+        "best_mode": result.get("best_mode"),
+        "best_metrics": result.get("best_metrics"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41, "generated_reports": sorted(reports)})
+    _write_json("research_state.json", state)
+
+
 def main_stratified_protocol() -> None:
     result = train_stratified_protocol()
     update_readme_state(result)
@@ -712,3 +1006,13 @@ def main_stratified_protocol() -> None:
 def main_locked_v2_confirmatory() -> None:
     result = train_locked_v2_confirmatory()
     update_confirmatory_readme_state(result)
+
+
+def main_locked_v2_tail_robust() -> None:
+    result = train_locked_v2_tail_robust()
+    update_tail_robust_readme_state(result)
+
+
+def main_locked_v2_ensemble() -> None:
+    result = evaluate_locked_v2_ensemble()
+    update_ensemble_readme_state(result)
