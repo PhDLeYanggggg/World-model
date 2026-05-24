@@ -552,3 +552,433 @@ smc_enabled = false
 
 def main_source_rotation_fresh_confirmation() -> None:
     run_source_rotation_fresh_confirmation()
+
+
+def _fresh_ds(split: str) -> Dict[str, np.ndarray]:
+    path = DATA_DIR / f"all_agent_{split}.npz"
+    if not path.exists():
+        with _ProtoPatch() as patched:
+            patched.build_stratified_all_agent_dataset()
+    return dict(np.load(path, allow_pickle=True))
+
+
+def _residual_features(split: str) -> tuple[np.ndarray, Dict[str, np.ndarray]]:
+    ds = _fresh_ds(split)
+    norm = dict(np.load(DATA_DIR / "normalization.npz"))
+    static = ((ds["static"].astype(np.float32) - norm["static_mean"]) / norm["static_std"]).astype(np.float32)
+    target_hist = ds["agent_tokens"][:, 0, :, :].astype(np.float32)
+    valid = np.clip(target_hist[:, :, 6:7], 0.0, 1.0)
+    hist_mean = (target_hist * valid).sum(axis=1) / np.maximum(valid.sum(axis=1), 1.0)
+    hist_std = np.sqrt(((target_hist - hist_mean[:, None, :]) ** 2 * valid).sum(axis=1) / np.maximum(valid.sum(axis=1), 1.0))
+    tail = target_hist[:, -16:, :].reshape(len(static), -1)
+    cand = ds["cand_delta"].astype(np.float32).reshape(len(static), -1)
+    neighbor = ds["neighbor_counts"].astype(np.float32)[:, None] / 6.0
+    x = np.concatenate([static, hist_mean, hist_std, tail, cand, neighbor], axis=1).astype(np.float32)
+    labels = {
+        "target_delta": ds["target_delta"].astype(np.float32),
+        "normalizer": ds["normalizer"].astype(np.float32),
+        "current_xy": ds["current_xy"].astype(np.float32),
+        "future_xy": ds["future_xy"].astype(np.float32),
+        "horizon": ds["horizon"].astype(np.int64),
+        "hard": (ds["hard"].astype(bool) | ds["failure"].astype(bool)),
+        "easy": ds["easy"].astype(bool),
+        "failure": ds["failure"].astype(bool),
+        "domain": ds["domain"].astype(str),
+        "scene_id": ds["scene_id"].astype(str),
+        "source_file": ds["source_file"].astype(str),
+        "floor_fde": ds["floor_fde"].astype(np.float64),
+        "candidate_fde": ds["candidate_fde"].astype(np.float64),
+    }
+    return x, labels
+
+
+def _make_residual_model(in_dim: int, width: int, dropout: float):
+    torch = proto._torch()
+    import torch.nn as nn
+
+    class FreshResidualHead(nn.Module):
+        def __init__(self) -> None:
+            super().__init__()
+            self.trunk = nn.Sequential(
+                nn.Linear(in_dim, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+                nn.LayerNorm(width),
+                nn.Dropout(dropout),
+                nn.Linear(width, width),
+                nn.ReLU(),
+            )
+            self.endpoint = nn.Linear(width, 2)
+            self.log_uncertainty = nn.Linear(width, 1)
+            self.harm = nn.Linear(width, 1)
+            self.failure = nn.Linear(width, 1)
+
+        def forward(self, x):
+            h = self.trunk(x)
+            return {
+                "endpoint_delta": self.endpoint(h),
+                "log_uncertainty": self.log_uncertainty(h).squeeze(-1),
+                "harm_logit": self.harm(h).squeeze(-1),
+                "failure_logit": self.failure(h).squeeze(-1),
+            }
+
+    return FreshResidualHead()
+
+
+def _residual_trial_configs() -> list[Dict[str, Any]]:
+    return [
+        {"name": "fresh_residual_t50_balanced", "width": 192, "dropout": 0.08, "lr": 8.0e-4, "t50_w": 4.0, "t100_w": 1.0, "hard_w": 2.0, "endpoint_w": 1.0, "uncertainty_w": 0.7, "seed": 9101},
+        {"name": "fresh_residual_long_horizon", "width": 224, "dropout": 0.10, "lr": 7.0e-4, "t50_w": 2.0, "t100_w": 4.0, "hard_w": 2.0, "endpoint_w": 1.1, "uncertainty_w": 0.8, "seed": 9202},
+        {"name": "fresh_residual_easy_guard", "width": 160, "dropout": 0.12, "lr": 9.0e-4, "t50_w": 3.0, "t100_w": 1.5, "hard_w": 1.5, "endpoint_w": 0.8, "uncertainty_w": 1.2, "seed": 9303},
+    ]
+
+
+def _train_residual_trial(trial: Mapping[str, Any]) -> Dict[str, Any]:
+    torch = proto._torch()
+    import torch.nn.functional as F
+
+    ensure_dir(CHECKPOINT_DIR)
+    x_train, y_train = _residual_features("train")
+    x_val, y_val = _residual_features("val")
+    model = _make_residual_model(x_train.shape[1], int(trial["width"]), float(trial["dropout"]))
+    opt = torch.optim.AdamW(model.parameters(), lr=float(trial["lr"]), weight_decay=1e-4)
+    rng = np.random.default_rng(int(trial["seed"]))
+    tx = torch.tensor(x_train)
+    ty = {k: torch.tensor(v) for k, v in y_train.items() if k in {"target_delta", "horizon", "hard", "easy", "failure"}}
+    vx = torch.tensor(x_val)
+    vy = {k: torch.tensor(v) for k, v in y_val.items() if k in {"target_delta", "horizon", "hard", "easy", "failure"}}
+    ckpt = CHECKPOINT_DIR / f"stage41_{trial['name']}.pt"
+    heartbeat = OUT_DIR / f"{trial['name']}_heartbeat.json"
+    best = {"val_loss": float("inf"), "epoch": 0}
+    batch = 512
+    epochs = 5
+    for epoch in range(1, epochs + 1):
+        order = rng.permutation(len(x_train))
+        losses: list[float] = []
+        model.train()
+        for start in range(0, len(order), batch):
+            ids = torch.tensor(order[start : start + batch], dtype=torch.long)
+            out = model(tx[ids])
+            err = torch.linalg.norm(out["endpoint_delta"] - ty["target_delta"][ids], dim=1).detach()
+            row_w = 1.0 + float(trial["hard_w"]) * ty["hard"][ids].float()
+            row_w = row_w + float(trial["t50_w"]) * (ty["horizon"][ids] == 50).float()
+            row_w = row_w + float(trial["t100_w"]) * (ty["horizon"][ids] == 100).float()
+            endpoint = (F.smooth_l1_loss(out["endpoint_delta"], ty["target_delta"][ids], reduction="none").mean(dim=1) * row_w).mean()
+            uncertainty = (F.smooth_l1_loss(out["log_uncertainty"], torch.log1p(err), reduction="none") * row_w).mean()
+            harm = F.binary_cross_entropy_with_logits(out["harm_logit"], ty["easy"][ids].float())
+            failure = F.binary_cross_entropy_with_logits(out["failure_logit"], ty["failure"][ids].float())
+            loss = float(trial["endpoint_w"]) * endpoint + float(trial["uncertainty_w"]) * uncertainty + 0.25 * harm + 0.15 * failure
+            opt.zero_grad()
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            opt.step()
+            losses.append(float(loss.detach().cpu()))
+        model.eval()
+        with torch.no_grad():
+            out = model(vx)
+            val_err = torch.linalg.norm(out["endpoint_delta"] - vy["target_delta"], dim=1)
+            val_loss = float((F.smooth_l1_loss(out["endpoint_delta"], vy["target_delta"]) + 0.4 * F.smooth_l1_loss(out["log_uncertainty"], torch.log1p(val_err))).cpu())
+        heartbeat.write_text(json.dumps({"trial": dict(trial), "epoch": epoch, "train_loss": float(np.mean(losses)), "val_loss": val_loss, "checkpoint": str(ckpt)}), encoding="utf-8")
+        if val_loss < best["val_loss"]:
+            best = {"val_loss": val_loss, "epoch": epoch, "train_loss": float(np.mean(losses))}
+            torch.save({"model": model.state_dict(), "trial": dict(trial), "in_dim": x_train.shape[1], "best": best}, ckpt)
+    return {"source": "fresh_run", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": best}
+
+
+def _predict_residual(path: str | Path, split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    torch = proto._torch()
+    payload = torch.load(path, map_location="cpu")
+    trial = payload["trial"]
+    model = _make_residual_model(int(payload["in_dim"]), int(trial["width"]), float(trial["dropout"]))
+    model.load_state_dict(payload["model"])
+    model.eval()
+    x, labels = _residual_features(split)
+    outs: Dict[str, list[np.ndarray]] = {"endpoint_delta": [], "log_uncertainty": [], "harm": [], "failure": []}
+    with torch.no_grad():
+        tx = torch.tensor(x)
+        for start in range(0, len(x), 4096):
+            out = model(tx[start : start + 4096])
+            outs["endpoint_delta"].append(out["endpoint_delta"].cpu().numpy())
+            outs["log_uncertainty"].append(out["log_uncertainty"].cpu().numpy())
+            outs["harm"].append(torch.sigmoid(out["harm_logit"]).cpu().numpy())
+            outs["failure"].append(torch.sigmoid(out["failure_logit"]).cpu().numpy())
+    return {k: np.concatenate(v, axis=0).astype(np.float32) for k, v in outs.items()}, labels
+
+
+def _predict_residual_ensemble(paths: Sequence[str | Path], split: str) -> tuple[Dict[str, np.ndarray], Dict[str, np.ndarray]]:
+    preds: list[Dict[str, np.ndarray]] = []
+    labels_ref: Dict[str, np.ndarray] | None = None
+    for path in paths:
+        pred, labels = _predict_residual(path, split)
+        preds.append(pred)
+        labels_ref = labels if labels_ref is None else labels_ref
+    if not preds or labels_ref is None:
+        raise ValueError("residual ensemble requires at least one checkpoint")
+    endpoints = np.stack([p["endpoint_delta"] for p in preds], axis=0)
+    avg = {
+        "endpoint_delta": endpoints.mean(axis=0).astype(np.float32),
+        "ensemble_variance": endpoints.var(axis=0).mean(axis=1).astype(np.float32),
+        "log_uncertainty": np.mean([p["log_uncertainty"] for p in preds], axis=0).astype(np.float32),
+        "harm": np.mean([p["harm"] for p in preds], axis=0).astype(np.float32),
+        "failure": np.mean([p["failure"] for p in preds], axis=0).astype(np.float32),
+    }
+    return avg, labels_ref
+
+
+def _source_rotation_base(split: str) -> tuple[np.ndarray, np.ndarray, Dict[str, np.ndarray]]:
+    result = read_json(OUT_DIR / "stage41_source_rotation_fresh_confirmation.json", {})
+    if not result:
+        result = run_source_rotation_fresh_confirmation()
+    paths: list[str] = []
+    for name, row in (result.get("runs") or {}).items():
+        if name == "fresh_rotation_ensemble":
+            continue
+        ckpt = ((row.get("train") or {}).get("checkpoint"))
+        if ckpt and Path(ckpt).exists():
+            paths.append(str(ckpt))
+    policy = result.get("best_policy") or {}
+    if not paths or not policy:
+        labels = _residual_features(split)[1]
+        return labels["floor_fde"].copy(), np.zeros(len(labels["floor_fde"]), dtype=bool), labels
+    with _ProtoPatch() as patched:
+        pred, labels = patched._predict_ensemble(paths, split)
+        selected, switch, _idx = patched._apply_policy(pred, labels, policy)
+    return selected.astype(np.float64), switch.astype(bool), labels
+
+
+def _endpoint_fde(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray]) -> np.ndarray:
+    endpoint = labels["current_xy"].astype(np.float64) + pred["endpoint_delta"].astype(np.float64) * labels["normalizer"].astype(np.float64)[:, None]
+    return np.linalg.norm(endpoint - labels["future_xy"].astype(np.float64), axis=1)
+
+
+def _residual_policy_grid(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray]) -> list[Dict[str, Any]]:
+    var = pred["ensemble_variance"]
+    uncert = pred["log_uncertainty"]
+    var_q = [float(np.quantile(var, q)) for q in [0.10, 0.20, 0.35, 0.50, 0.70]]
+    unc_q = [float(np.quantile(uncert, q)) for q in [0.15, 0.30, 0.50, 0.70]]
+    return [
+        {
+            "variance_max": v,
+            "uncertainty_max": u,
+            "harm_max": hm,
+            "failure_min": fm,
+            "max_switch": ms,
+            "horizon_mode": hz,
+        }
+        for v in var_q
+        for u in unc_q
+        for hm in [0.35, 0.50, 0.70, 0.90]
+        for fm in [0.0, 0.30, 0.50]
+        for ms in [0.02, 0.05, 0.10, 0.18, 0.30]
+        for hz in ["all", "t50_t100", "t50_only", "long_only"]
+    ]
+
+
+def _apply_residual_policy(pred: Mapping[str, np.ndarray], labels: Mapping[str, np.ndarray], base_selected: np.ndarray, policy: Mapping[str, Any]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    horizon = labels["horizon"].astype(int)
+    endpoint_fde = _endpoint_fde(pred, labels)
+    switch = (
+        (pred["ensemble_variance"] <= float(policy["variance_max"]))
+        & (pred["log_uncertainty"] <= float(policy["uncertainty_max"]))
+        & (pred["harm"] <= float(policy["harm_max"]))
+        & (pred["failure"] >= float(policy["failure_min"]))
+    )
+    mode = str(policy.get("horizon_mode", "all"))
+    if mode == "t50_t100":
+        switch &= np.isin(horizon, [50, 100])
+    elif mode == "t50_only":
+        switch &= horizon == 50
+    elif mode == "long_only":
+        switch &= np.isin(horizon, [25, 50, 100])
+    max_switch = float(policy.get("max_switch", 1.0))
+    score = -pred["ensemble_variance"] - 0.25 * pred["log_uncertainty"] - pred["harm"] + 0.15 * pred["failure"]
+    if max_switch <= 0.0:
+        switch[:] = False
+    elif max_switch < 1.0 and np.any(switch):
+        ids = np.where(switch)[0]
+        keep_n = max(1, int(max_switch * len(switch)))
+        keep = np.zeros(len(switch), dtype=bool)
+        keep[ids[np.argsort(score[ids])[::-1][:keep_n]]] = True
+        switch &= keep
+    selected = base_selected.copy()
+    selected[switch] = endpoint_fde[switch]
+    return selected, switch, endpoint_fde
+
+
+def _metric_from_labels(selected: np.ndarray, fallback: np.ndarray, labels: Mapping[str, np.ndarray], switch: np.ndarray) -> Dict[str, Any]:
+    ds = {
+        "horizon": labels["horizon"],
+        "hard": labels["hard"].astype(bool),
+        "failure": labels["failure"].astype(bool),
+        "easy": labels["easy"].astype(bool),
+        "domain": labels["domain"],
+        "candidate_fde": labels["candidate_fde"],
+    }
+    return s41._metrics(selected, fallback, ds, switch)
+
+
+def run_fresh_residual_endpoint_candidate() -> Dict[str, Any]:
+    started = time.perf_counter()
+    build_source_rotation_split()
+    with _ProtoPatch() as patched:
+        patched.build_stratified_all_agent_dataset()
+    trial_results: Dict[str, Any] = {}
+    for trial in _residual_trial_configs():
+        trial_results[trial["name"]] = {"trial": trial, "train": _train_residual_trial(trial)}
+    paths = [row["train"]["checkpoint"] for row in trial_results.values()]
+    val_pred, val_labels = _predict_residual_ensemble(paths, "val")
+    val_base, _val_base_switch, _ = _source_rotation_base("val")
+    best_policy: Dict[str, Any] = {}
+    best_score = -1e18
+    best_val: Dict[str, Any] = {}
+    for policy in _residual_policy_grid(val_pred, val_labels):
+        selected, switch, endpoint_fde = _apply_residual_policy(val_pred, val_labels, val_base, policy)
+        metrics = _metric_from_labels(selected, val_base, val_labels, switch)
+        max_domain_easy = _max_domain_easy(metrics)
+        if metrics.get("easy_degradation", 1.0) > 0.02 or max_domain_easy > 0.02:
+            continue
+        endpoint_without = _metric_from_labels(endpoint_fde, val_base, val_labels, np.ones(len(endpoint_fde), dtype=bool))
+        score = (
+            1.0 * float(metrics.get("all_improvement", 0.0))
+            + 2.4 * float(metrics.get("t50_improvement", 0.0))
+            + 1.2 * float(metrics.get("hard_failure_improvement", 0.0))
+            + 0.4 * float(metrics.get("t100_improvement", 0.0))
+            + 0.02 * float(metrics.get("switch_rate", 0.0))
+            - 0.2 * max(0.0, -float(endpoint_without.get("all_improvement", 0.0)))
+        )
+        if score > best_score:
+            best_score = score
+            best_policy = dict(policy)
+            best_val = {"metrics": metrics, "endpoint_without_fallback": endpoint_without, "score": score, "max_domain_easy_degradation": max_domain_easy}
+    if not best_policy:
+        result: Dict[str, Any] = {
+            "source": "fresh_run",
+            "protocol_status": "fresh_residual_endpoint_candidate",
+            "deployment_decision": "keep_stage37_selector",
+            "reason": "no val-safe residual endpoint policy",
+            "trials": trial_results,
+        }
+    else:
+        test_pred, test_labels = _predict_residual_ensemble(paths, "test")
+        test_base, test_base_switch, _ = _source_rotation_base("test")
+        selected, switch, endpoint_fde = _apply_residual_policy(test_pred, test_labels, test_base, best_policy)
+        test_metrics = _metric_from_labels(selected, test_base, test_labels, switch)
+        endpoint_without = _metric_from_labels(endpoint_fde, test_base, test_labels, np.ones(len(endpoint_fde), dtype=bool))
+        # Also compare against the original train-horizon strongest floor so the
+        # report can be read next to the source-rotation selector report.
+        floor_metrics = _metric_from_labels(selected, test_labels["floor_fde"], test_labels, switch | test_base_switch)
+        positive = _positive_domains(floor_metrics)
+        max_easy = _max_domain_easy(floor_metrics)
+        full_replacement = bool(
+            floor_metrics.get("easy_degradation", 1.0) <= 0.02
+            and max_easy <= 0.02
+            and positive >= 2
+            and floor_metrics.get("all_improvement", 0.0) >= s41.STAGE37_REFERENCE["all_improvement"] + 0.02
+            and floor_metrics.get("t50_improvement", 0.0) >= s41.STAGE37_REFERENCE["t50_improvement"] + 0.02
+            and floor_metrics.get("hard_failure_improvement", 0.0) >= s41.STAGE37_REFERENCE["hard_failure_improvement"] + 0.02
+        )
+        result = {
+            "source": "fresh_run",
+            "protocol_status": "fresh_rotation_residual_endpoint_candidate",
+            "selection_rule": "train endpoint/residual neural heads on train; select uncertainty/switch policy on val; test once; compare residual over the source-rotation selector base and over train-horizon strongest floor",
+            "best_policy": best_policy,
+            "best_val": best_val,
+            "metrics_vs_source_rotation_base": test_metrics,
+            "metrics_vs_floor": floor_metrics,
+            "endpoint_without_fallback_vs_source_rotation_base": endpoint_without,
+            "positive_external_domains_vs_floor": positive,
+            "max_domain_easy_degradation_vs_floor": max_easy,
+            "full_replacement_pass": full_replacement,
+            "deployment_decision": "candidate_residual_full_replacement_pending_user_acceptance" if full_replacement else "keep_stage37_selector",
+            "trials": trial_results,
+            "caveat": "Residual endpoint candidate is bounded by validation-selected uncertainty policy. It is not deployed unless it beats Stage37 on all/t50/hard with easy degradation <=2%.",
+        }
+    _write_json(OUT_DIR / "stage41_fresh_residual_endpoint_candidate.json", result)
+    lines = [
+        "# Stage41 Fresh Residual Endpoint Candidate",
+        "",
+        "- source: `fresh_run`",
+        f"- protocol status: `{result.get('protocol_status')}`",
+        f"- deployment decision: `{result.get('deployment_decision')}`",
+        f"- full replacement pass: `{result.get('full_replacement_pass')}`",
+        f"- metrics vs source-rotation base: `{result.get('metrics_vs_source_rotation_base')}`",
+        f"- metrics vs floor: `{result.get('metrics_vs_floor')}`",
+        f"- endpoint without fallback: `{result.get('endpoint_without_fallback_vs_source_rotation_base')}`",
+        f"- caveat: `{result.get('caveat')}`",
+        "",
+        "- Stage5C executed: `False`",
+        "- SMC enabled: `False`",
+        "- metric/seconds-level claim: `False`",
+    ]
+    write_md(OUT_DIR / "stage41_fresh_residual_endpoint_candidate.md", lines)
+    _append_ledger("stage41_fresh_residual_endpoint_candidate", "ok", started, [DATA_DIR / "all_agent_train.npz"], [OUT_DIR / "stage41_fresh_residual_endpoint_candidate.md"])
+    update_residual_readme_state(result)
+    return result
+
+
+def update_residual_readme_state(result: Mapping[str, Any]) -> None:
+    readme = Path("README_RESULTS.md")
+    text = readme.read_text(encoding="utf-8") if readme.exists() else "# Results\n"
+    m = result.get("metrics_vs_floor", {}) or {}
+    base = result.get("metrics_vs_source_rotation_base", {}) or {}
+    block = f"""
+
+## Stage41 Fresh Residual Endpoint Candidate
+
+This run targets the source-rotation t+50 ceiling blocker by adding a neural endpoint / bounded residual candidate. It trains on train, selects uncertainty/switch thresholds on validation, and evaluates test once. It does not execute Stage5C or SMC.
+
+```text
+source = {result.get('source')}
+protocol_status = {result.get('protocol_status')}
+deployment_decision = {result.get('deployment_decision')}
+full_replacement_pass = {result.get('full_replacement_pass')}
+vs_floor_all = {m.get('all_improvement')}
+vs_floor_t50 = {m.get('t50_improvement')}
+vs_floor_t100 = {m.get('t100_improvement')}
+vs_floor_hard = {m.get('hard_failure_improvement')}
+vs_floor_easy = {m.get('easy_degradation')}
+vs_source_rotation_base_all = {base.get('all_improvement')}
+vs_source_rotation_base_t50 = {base.get('t50_improvement')}
+true_3d = false
+foundation_world_model = false
+stage5c_executed = false
+smc_enabled = false
+```
+"""
+    marker = "## Stage41 Fresh Residual Endpoint Candidate"
+    text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
+    readme.write_text(text, encoding="utf-8")
+    state = read_json("research_state.json", {})
+    reports = set(state.get("generated_reports", []))
+    reports.add(str(OUT_DIR / "stage41_fresh_residual_endpoint_candidate.md"))
+    stage41 = dict(state.get("stage41", {}))
+    stage41["fresh_residual_endpoint_candidate"] = {
+        "source": result.get("source"),
+        "protocol_status": result.get("protocol_status"),
+        "deployment_decision": result.get("deployment_decision"),
+        "full_replacement_pass": result.get("full_replacement_pass"),
+        "metrics_vs_floor": result.get("metrics_vs_floor"),
+        "metrics_vs_source_rotation_base": result.get("metrics_vs_source_rotation_base"),
+        "endpoint_without_fallback_vs_source_rotation_base": result.get("endpoint_without_fallback_vs_source_rotation_base"),
+        "conclusion": result.get("caveat"),
+    }
+    state.update(
+        {
+            "current_stage": "stage41",
+            "current_best_deployable": "Stage37 selector",
+            "last_updated": "2026-05-24",
+            "latent_generative_ready": False,
+            "stage5c_ready": False,
+            "smc_ready": False,
+            "stage41": stage41,
+            "generated_reports": sorted(reports),
+        }
+    )
+    _write_json("research_state.json", state)
+
+
+def main_fresh_residual_endpoint_candidate() -> None:
+    run_fresh_residual_endpoint_candidate()
