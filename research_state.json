@@ -355,6 +355,7 @@
     "outputs/stage41_breakthrough/stage41_intervention_calibrator_eval.md",
     "outputs/stage41_breakthrough/stage41_neural_eval.md",
     "outputs/stage41_breakthrough/stage41_next_steps.md",
+    "outputs/stage41_breakthrough/stage41_policy_blender.md",
     "outputs/stage41_breakthrough/stage41_seq2seq_dataset.md",
     "outputs/stage41_breakthrough/stage41_t50_rescue.md",
     "outputs/stage41_breakthrough/stage41_training_trials.md",
@@ -3090,6 +3091,11 @@
         "evidence": "calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard"
       },
       {
+        "gate": "Gate4e policy blender run",
+        "passed": true,
+        "evidence": "hard_aware"
+      },
+      {
         "gate": "Gate5 external all improvement beats Stage37 by >=2% absolute",
         "passed": false,
         "evidence": 0.024621545149110413
@@ -3181,7 +3187,7 @@
       {
         "gate": "Gate15 ablation/trial matrix present",
         "passed": true,
-        "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, and t50 rescue"
+        "evidence": "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, and policy blender"
       },
       {
         "gate": "Gate16 Stage5C false",
@@ -3194,8 +3200,8 @@
         "evidence": "SMC not enabled"
       }
     ],
-    "gates_passed": 18,
-    "gates_total": 21,
+    "gates_passed": 19,
+    "gates_total": 22,
     "current_verdict": "stage41_breakthrough_not_yet_keep_stage37",
     "stage5c_executed": false,
     "smc_enabled": false,
@@ -3496,9 +3502,69 @@
       },
       "conclusion": "t50 rescue is deployable only if it repairs t50 and beats the Stage37 floor without easy degradation."
     },
+    "policy_blender": {
+      "source": "fresh_run",
+      "best_name": "hard_aware",
+      "deployment_decision": "keep_stage37_selector",
+      "best_metrics": {
+        "rows": 34777,
+        "all_improvement": 0.01319267709715044,
+        "t10_improvement": 0.03341793220964229,
+        "t25_improvement": -0.026710290041499496,
+        "t50_improvement": -0.06874542089682922,
+        "t100_improvement": 0.07369068671583567,
+        "hard_failure_improvement": 0.015027099718730508,
+        "easy_degradation": 0.03288054893877934,
+        "harm_over_fallback": -0.01859246809400449,
+        "switch_rate": 0.10423555798372487,
+        "regret_to_oracle": 0.5125908758616451,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 21598,
+            "all_improvement": -0.0066820231057140855,
+            "t50_improvement": -0.12195613441285214,
+            "t100_improvement": 0.06743365428488346,
+            "hard_failure_improvement": -0.005548600730167053,
+            "easy_degradation": 0.04864731946288181,
+            "switch_rate": 0.0989443466987684
+          },
+          "TrajNet": {
+            "rows": 3639,
+            "all_improvement": 0.10320584923572218,
+            "t50_improvement": 0.10700099062093782,
+            "t100_improvement": 0.14563338285586003,
+            "hard_failure_improvement": 0.11162523479019204,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.1110195108546304
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.08214410936833627,
+            "t50_improvement": 0.09364137229419445,
+            "t100_improvement": 0.08099620433935262,
+            "hard_failure_improvement": 0.08981841720328898,
+            "easy_degradation": 0.0005693550188217156,
+            "switch_rate": 0.11362683438155136
+          }
+        },
+        "t50_ci": {
+          "low": -0.07674606776022282,
+          "mid": -0.0689266689662269,
+          "high": -0.06078879460732355,
+          "n": 8245
+        },
+        "hard_failure_ci": {
+          "low": 0.011552392865365163,
+          "mid": 0.01499855060724714,
+          "high": 0.018436371194988612,
+          "n": 29370
+        }
+      },
+      "conclusion": "Policy blender is a negative/diagnostic trial unless it beats Stage37 and preserves easy cases."
+    },
     "pytest": {
       "command": "python -m pytest tests",
-      "result": "92 passed in 58.91s",
+      "result": "94 passed in 57.92s",
       "source": "fresh_run"
     }
   },

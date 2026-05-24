@@ -1670,6 +1670,60 @@
         "high": 0.027877084946636165,
         "n": 29370
       }
+    },
+    "Stage41_policy_blender": {
+      "rows": 34777,
+      "all_improvement": 0.01319267709715044,
+      "t10_improvement": 0.03341793220964229,
+      "t25_improvement": -0.026710290041499496,
+      "t50_improvement": -0.06874542089682922,
+      "t100_improvement": 0.07369068671583567,
+      "hard_failure_improvement": 0.015027099718730508,
+      "easy_degradation": 0.03288054893877934,
+      "harm_over_fallback": -0.01859246809400449,
+      "switch_rate": 0.10423555798372487,
+      "regret_to_oracle": 0.5125908758616451,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 21598,
+          "all_improvement": -0.0066820231057140855,
+          "t50_improvement": -0.12195613441285214,
+          "t100_improvement": 0.06743365428488346,
+          "hard_failure_improvement": -0.005548600730167053,
+          "easy_degradation": 0.04864731946288181,
+          "switch_rate": 0.0989443466987684
+        },
+        "TrajNet": {
+          "rows": 3639,
+          "all_improvement": 0.10320584923572218,
+          "t50_improvement": 0.10700099062093782,
+          "t100_improvement": 0.14563338285586003,
+          "hard_failure_improvement": 0.11162523479019204,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.1110195108546304
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.08214410936833627,
+          "t50_improvement": 0.09364137229419445,
+          "t100_improvement": 0.08099620433935262,
+          "hard_failure_improvement": 0.08981841720328898,
+          "easy_degradation": 0.0005693550188217156,
+          "switch_rate": 0.11362683438155136
+        }
+      },
+      "t50_ci": {
+        "low": -0.07674606776022282,
+        "mid": -0.0689266689662269,
+        "high": -0.06078879460732355,
+        "n": 8245
+      },
+      "hard_failure_ci": {
+        "low": 0.011552392865365163,
+        "mid": 0.01499855060724714,
+        "high": 0.018436371194988612,
+        "n": 29370
+      }
     }
   },
   "best_stage41_neural": "t50_rescue::calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard",
@@ -1762,5 +1816,6 @@
   "result_note": "Rebuilt split covers multiple external domains, so Stage37 original UCY-only numbers are a reference floor but not identical split.",
   "all_agent_second_pass_available": true,
   "intervention_calibrator_available": true,
-  "t50_rescue_available": true
+  "t50_rescue_available": true,
+  "policy_blender_available": true
 }

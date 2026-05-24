@@ -35,3 +35,6 @@
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.896 | `78fb4a4126ca` | `c26543f6eac9` | `0afd2c2` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.898 | `78fb4a4126ca` | `c26543f6eac9` | `0afd2c2` |
 | `run_stage41_gates.py` | `fresh_run` | `success` | 2.912 | `78fb4a4126ca` | `c26543f6eac9` | `0afd2c2` |
+| `run_stage41_policy_blender.py` | `fresh_run` | `ok` | 69.697 | `de1294638753` | `7e95cec7a5f4` | `72f09de` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 2.945 | `78fb4a4126ca` | `a778875425e9` | `72f09de` |
+| `run_stage41_gates.py` | `fresh_run` | `success` | 3.026 | `78fb4a4126ca` | `a778875425e9` | `72f09de` |

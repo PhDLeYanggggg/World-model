@@ -1,6 +1,6 @@
 # Stage41 Gates
 
-- gates passed: `18 / 21`
+- gates passed: `19 / 22`
 - verdict: `stage41_breakthrough_not_yet_keep_stage37`
 - Stage5C executed: `False`
 - SMC enabled: `False`
@@ -15,6 +15,7 @@
 | Gate4b all-agent neural trials run | True | ['all_agent_easy_guard', 'all_agent_endpoint_easy_guard', 'all_agent_endpoint_hard_only', 'all_agent_endpoint_risk_switch', 'all_agent_endpoint_t100_focus', 'all_agent_t100_curriculum', 'all_agent_t50_hard_safety', 'all_agent_token_transformer'] |
 | Gate4c intervention calibrator run | True | calibrated_all_agent_endpoint_t100_focus |
 | Gate4d t50 rescue run | True | calibrated_all_agent_endpoint_easy_guard::t50_short_history_guard |
+| Gate4e policy blender run | True | hard_aware |
 | Gate5 external all improvement beats Stage37 by >=2% absolute | False | 0.024621545149110413 |
 | Gate6 external t50 improvement beats Stage37 by >=2% absolute | False | 0.023656017980682287 |
 | Gate7 external hard/failure beats Stage37 by >=2% absolute | False | 0.026077286541592137 |
@@ -25,6 +26,6 @@
 | Gate12 t100 diagnostic positive or blocker documented | True | 0.029132360292621673 |
 | Gate13 SDD safety floor not destroyed | True | No Stage41 deployment unless gates pass; Stage37 remains deployable floor. |
 | Gate14 bootstrap CI present | True | {'low': 0.021000038058883685, 'mid': 0.0236399225734506, 'high': 0.026428649141640826, 'n': 8245} |
-| Gate15 ablation/trial matrix present | True | trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, and t50 rescue |
+| Gate15 ablation/trial matrix present | True | trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, and policy blender |
 | Gate16 Stage5C false | True | Stage5C not executed |
 | Gate17 SMC false | True | SMC not enabled |

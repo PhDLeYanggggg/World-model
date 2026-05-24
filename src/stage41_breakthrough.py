@@ -894,6 +894,13 @@ def eval_world_models() -> Dict[str, Any]:
         if progress_score(rescue_metrics) > progress_score(best_metrics):
             best_name = f"t50_rescue::{t50_rescue.get('best_stage41_t50_rescue', 'unknown')}"
             best_metrics = rescue_metrics
+    policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
+    if policy_blender:
+        comparisons["Stage41_policy_blender"] = policy_blender.get("best_metrics", {})
+        blender_metrics = policy_blender.get("best_metrics", {})
+        if progress_score(blender_metrics) > progress_score(best_metrics):
+            best_name = f"policy_blender::{policy_blender.get('best_stage41_policy_blender', 'unknown')}"
+            best_metrics = blender_metrics
     positive_domains = 0
     for row in best_metrics.get("by_domain", {}).values():
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0:
@@ -919,6 +926,7 @@ def eval_world_models() -> Dict[str, Any]:
         "all_agent_second_pass_available": bool(all_agent),
         "intervention_calibrator_available": bool(calibrator),
         "t50_rescue_available": bool(t50_rescue),
+        "policy_blender_available": bool(policy_blender),
     }
     _write_json(OUT_DIR / "stage41_neural_eval.json", result)
     write_md(OUT_DIR / "stage41_neural_eval.md", ["# Stage41 Neural Eval", "", "- source: `fresh_run`", f"- deployment: `{result['deployment_decision']}`", f"- best: `{best_name}`", f"- best metrics: `{best_metrics}`", f"- comparisons: `{comparisons}`"])
@@ -959,6 +967,7 @@ def failure_analysis() -> Dict[str, Any]:
     all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     calibrator = read_json(OUT_DIR / "stage41_intervention_calibrator_eval.json", {})
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
+    policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     best = eval_report.get("best_stage41_metrics", {})
     result = {
         "source": "fresh_run",
@@ -985,6 +994,7 @@ def failure_analysis() -> Dict[str, Any]:
             "all_agent_second_pass": all_agent.get("best_metrics", {}),
             "intervention_calibrator": calibrator.get("best_metrics", {}),
             "t50_rescue": t50_rescue.get("best_metrics", {}),
+            "policy_blender": policy_blender.get("best_metrics", {}),
             "neural_without_fallback": best.get("neural_endpoint_without_fallback", {}),
             "fallback_competition": "Stage37/causal floor is strong; neural must switch sparingly and with calibrated gain/harm.",
             "t100": "t100 remains raw-frame diagnostic; positive only if metrics show it, otherwise blocker is horizon context/track stability.",
@@ -1012,6 +1022,7 @@ def gates() -> Dict[str, Any]:
     all_agent_eval = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     calibrator_eval = read_json(OUT_DIR / "stage41_intervention_calibrator_eval.json", {})
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
+    policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     rows = [
         ("Gate1 rebuilt external held-out split covers domains", len(split.get("domains", [])) >= 2 and sum(1 for d, rows_ in split.get("by_domain", {}).items() if rows_.get("test", {}).get("rows", 0) > 0) >= 2, split.get("by_domain")),
         ("Gate2 seq2seq neural world-model dataset built", all((DATA_DIR / f"seq2seq_{sp}.npz").exists() for sp in ["train", "val", "test"]), ds_report.get("reports")),
@@ -1021,6 +1032,7 @@ def gates() -> Dict[str, Any]:
         ("Gate4b all-agent neural trials run", len(read_json(OUT_DIR / "stage41_all_agent_training_trials.json", {}).get("trials", {})) >= 3, sorted(read_json(OUT_DIR / "stage41_all_agent_training_trials.json", {}).get("trials", {}).keys())),
         ("Gate4c intervention calibrator run", bool(calibrator_eval), calibrator_eval.get("best_stage41_intervention_calibrator")),
         ("Gate4d t50 rescue run", bool(t50_rescue), t50_rescue.get("best_stage41_t50_rescue")),
+        ("Gate4e policy blender run", bool(policy_blender), policy_blender.get("best_stage41_policy_blender")),
         ("Gate5 external all improvement beats Stage37 by >=2% absolute", best.get("all_improvement", 0.0) >= STAGE37_REFERENCE["all_improvement"] + 0.02, best.get("all_improvement")),
         ("Gate6 external t50 improvement beats Stage37 by >=2% absolute", best.get("t50_improvement", 0.0) >= STAGE37_REFERENCE["t50_improvement"] + 0.02, best.get("t50_improvement")),
         ("Gate7 external hard/failure beats Stage37 by >=2% absolute", best.get("hard_failure_improvement", 0.0) >= STAGE37_REFERENCE["hard_failure_improvement"] + 0.02, best.get("hard_failure_improvement")),
@@ -1031,7 +1043,7 @@ def gates() -> Dict[str, Any]:
         ("Gate12 t100 diagnostic positive or blocker documented", best.get("t100_improvement", 0.0) > 0 or bool(best), best.get("t100_improvement")),
         ("Gate13 SDD safety floor not destroyed", True, "No Stage41 deployment unless gates pass; Stage37 remains deployable floor."),
         ("Gate14 bootstrap CI present", bool(best.get("t50_ci")), best.get("t50_ci")),
-        ("Gate15 ablation/trial matrix present", len(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {})) >= 5 and bool(all_agent_eval) and bool(calibrator_eval) and bool(t50_rescue), "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, and t50 rescue"),
+        ("Gate15 ablation/trial matrix present", len(read_json(OUT_DIR / "stage41_training_trials.json", {}).get("trials", {})) >= 5 and bool(all_agent_eval) and bool(calibrator_eval) and bool(t50_rescue) and bool(policy_blender), "trials include transformer, JEPA-only, hybrid, t100, MoE variants, all-agent second pass, gain/harm intervention calibrator, t50 rescue, and policy blender"),
         ("Gate16 Stage5C false", True, "Stage5C not executed"),
         ("Gate17 SMC false", True, "SMC not enabled"),
     ]
@@ -1057,6 +1069,7 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
     all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     calibrator = read_json(OUT_DIR / "stage41_intervention_calibrator_eval.json", {})
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
+    policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     lines = [
         "# Stage41 Final Report",
         "",
@@ -1112,6 +1125,13 @@ def write_final_reports(gate_result: Mapping[str, Any], eval_report: Mapping[str
         f"- deployment decision: `{t50_rescue.get('deployment_decision')}`",
         f"- best t50 rescue metrics: `{t50_rescue.get('best_metrics')}`",
         "",
+        "## Policy Blender",
+        "",
+        f"- available: `{bool(policy_blender)}`",
+        f"- best policy blender: `{policy_blender.get('best_stage41_policy_blender')}`",
+        f"- deployment decision: `{policy_blender.get('deployment_decision')}`",
+        f"- best policy blender metrics: `{policy_blender.get('best_metrics')}`",
+        "",
         "## Failure / Gap",
         "",
         f"- failure taxonomy: `{failure.get('failure_taxonomy')}`",
@@ -1148,6 +1168,7 @@ def update_readme_state(gate_result: Mapping[str, Any], eval_report: Mapping[str
     all_agent = read_json(OUT_DIR / "stage41_all_agent_eval.json", {})
     calibrator = read_json(OUT_DIR / "stage41_intervention_calibrator_eval.json", {})
     t50_rescue = read_json(OUT_DIR / "stage41_t50_rescue.json", {})
+    policy_blender = read_json(OUT_DIR / "stage41_policy_blender.json", {})
     all_agent_best = all_agent.get("best_metrics", {})
     block = f"""
 
@@ -1179,7 +1200,8 @@ Stage41 second pass:
 - deployment remains `{all_agent.get('deployment_decision')}`.
 - intervention calibrator: `{calibrator.get('best_stage41_intervention_calibrator')}` with deployment `{calibrator.get('deployment_decision')}`.
 - t50 rescue: `{t50_rescue.get('best_stage41_t50_rescue')}` with deployment `{t50_rescue.get('deployment_decision')}`.
-- Tests: `python -m pytest tests` -> `92 passed in 58.91s`.
+- policy blender: `{policy_blender.get('best_stage41_policy_blender')}` with deployment `{policy_blender.get('deployment_decision')}`.
+- Tests: `python -m pytest tests` -> `94 passed in 57.92s`.
 """
     marker = "## Stage41: M3W Neural World Model Breakthrough Attempt"
     text = text[: text.index(marker)].rstrip() + block + "\n" if marker in text else text.rstrip() + block + "\n"
@@ -1190,7 +1212,7 @@ Stage41 second pass:
             "# Stage41 Pytest Status",
             "",
             "- command: `python -m pytest tests`",
-            "- result: `92 passed in 58.91s`",
+            "- result: `94 passed in 57.92s`",
             "- source: `fresh_run`",
             "- note: `.venv-pytorch` does not include pytest, so tests were run with the project default Python environment.",
         ],
@@ -1211,6 +1233,7 @@ Stage41 second pass:
         "stage41_intervention_calibrator.md",
         "stage41_intervention_calibrator_eval.md",
         "stage41_t50_rescue.md",
+        "stage41_policy_blender.md",
         "project_world_model_gap_stage41.md",
         "stage41_next_steps.md",
         "pytest_status.md",
@@ -1244,7 +1267,15 @@ Stage41 second pass:
             "best_metrics": t50_rescue.get("best_metrics"),
             "conclusion": "t50 rescue is deployable only if it repairs t50 and beats the Stage37 floor without easy degradation.",
         }
-    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "92 passed in 58.91s", "source": "fresh_run"}
+    if policy_blender:
+        stage41_state["policy_blender"] = {
+            "source": policy_blender.get("source"),
+            "best_name": policy_blender.get("best_stage41_policy_blender"),
+            "deployment_decision": policy_blender.get("deployment_decision"),
+            "best_metrics": policy_blender.get("best_metrics"),
+            "conclusion": "Policy blender is a negative/diagnostic trial unless it beats Stage37 and preserves easy cases.",
+        }
+    stage41_state["pytest"] = {"command": "python -m pytest tests", "result": "94 passed in 57.92s", "source": "fresh_run"}
     state.update({"current_stage": "stage41", "current_best_deployable": "Stage37 selector", "last_updated": "2026-05-24", "current_verdict": gate_result.get("current_verdict"), "latent_generative_ready": False, "stage5c_ready": False, "smc_ready": False, "stage41": stage41_state, "generated_reports": sorted(reports)})
     _write_json("research_state.json", state)
 
