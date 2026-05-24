@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage33",
-  "current_verdict": "stage33_coordinate_invariant_partial_not_cross_domain_candidate",
+  "current_stage": "stage34",
+  "current_verdict": "stage34_row_geometry_done_no_external_positive_transfer",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage33_build_external_scene_packs.py; python run_stage33_build_coordinate_invariant_features.py; python run_stage33_relative_baselines.py; python run_stage33_domain_adapter.py; python run_stage33_train_domain_conditioned_selector.py; python run_stage33_cross_domain_eval.py; python run_stage33_domain_failure_analysis.py; python run_stage33_gates.py; python -m pytest tests",
+  "last_successful_command": "python run_stage34_external_row_geometry.py; python run_stage34_external_scene_goals.py; python run_stage34_external_horizon_split.py; python run_stage34_relative_baselines_v2.py; python run_stage34_latent_adapter_v2.py; python run_stage34_train_domain_conditioned_selector_v2.py; python run_stage34_cross_domain_eval.py; python run_stage34_failure_analysis.py; python run_stage34_gates.py; python -m pytest tests",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -246,13 +246,26 @@
     "outputs/stage33_coordinate_invariant/external_scene_pack_report.md",
     "outputs/stage33_coordinate_invariant/latent_alignment_metrics.json",
     "outputs/stage33_coordinate_invariant/project_world_model_gap_stage33.md",
+    "outputs/stage33_coordinate_invariant/pytest_status.md",
     "outputs/stage33_coordinate_invariant/relative_baseline_metrics.json",
     "outputs/stage33_coordinate_invariant/relative_baseline_table.md",
     "outputs/stage33_coordinate_invariant/report_stage33_final.md",
     "outputs/stage33_coordinate_invariant/run_ledger.md",
     "outputs/stage33_coordinate_invariant/stage33_domain_failure_analysis.md",
     "outputs/stage33_coordinate_invariant/world_model_gate_stage33.md",
-    "outputs/stage33_coordinate_invariant/pytest_status.md"
+    "outputs/stage34_external_geometry/cross_domain_eval_stage34.md",
+    "outputs/stage34_external_geometry/domain_conditioned_selector_v2_report.md",
+    "outputs/stage34_external_geometry/external_horizon_split_report.md",
+    "outputs/stage34_external_geometry/external_row_geometry_report.md",
+    "outputs/stage34_external_geometry/external_scene_goal_report.md",
+    "outputs/stage34_external_geometry/latent_adapter_v2_report.md",
+    "outputs/stage34_external_geometry/project_world_model_gap_stage34.md",
+    "outputs/stage34_external_geometry/relative_baseline_v2_report.md",
+    "outputs/stage34_external_geometry/report_stage34_final.md",
+    "outputs/stage34_external_geometry/run_ledger.md",
+    "outputs/stage34_external_geometry/stage34_failure_analysis.md",
+    "outputs/stage34_external_geometry/world_model_gate_stage34.md",
+    "outputs/stage34_external_geometry/pytest_status.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -1206,6 +1219,238 @@
       "command": "python -m pytest tests",
       "status": "success",
       "passed": 61,
+      "source": "fresh_run"
+    }
+  },
+  "stage34": {
+    "source": "fresh_run",
+    "gates": [
+      {
+        "gate": "Gate1 external row geometry complete",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "expected_feature_rows": 119109,
+            "geometry_rows": 119109,
+            "aligned_to_feature_store": true,
+            "scenes": 2,
+            "agents": 892,
+            "horizon_counts": {
+              "10": 38978,
+              "25": 33700,
+              "50": 28743,
+              "100": 17688
+            },
+            "has_future_endpoint_label": true,
+            "future_endpoint_used_as_inference_feature": false
+          },
+          "val": {
+            "expected_feature_rows": 7685,
+            "geometry_rows": 7685,
+            "aligned_to_feature_store": true,
+            "scenes": 1,
+            "agents": 145,
+            "horizon_counts": {
+              "10": 2465,
+              "25": 2175,
+              "50": 1885,
+              "100": 1160
+            },
+            "has_future_endpoint_label": true,
+            "future_endpoint_used_as_inference_feature": false
+          },
+          "test": {
+            "expected_feature_rows": 3636,
+            "geometry_rows": 3636,
+            "aligned_to_feature_store": true,
+            "scenes": 2,
+            "agents": 220,
+            "horizon_counts": {
+              "10": 2020,
+              "25": 1212,
+              "50": 404
+            },
+            "has_future_endpoint_label": true,
+            "future_endpoint_used_as_inference_feature": false
+          }
+        }
+      },
+      {
+        "gate": "Gate2 train-only external goals built",
+        "passed": true,
+        "evidence": {
+          "train": {
+            "rows": 119109,
+            "goal_available_rows": 119109,
+            "goal_unavailable_rows": 0
+          },
+          "val": {
+            "rows": 7685,
+            "goal_available_rows": 0,
+            "goal_unavailable_rows": 7685
+          },
+          "test": {
+            "rows": 3636,
+            "goal_available_rows": 3177,
+            "goal_unavailable_rows": 459
+          }
+        }
+      },
+      {
+        "gate": "Gate3 no leakage pass",
+        "passed": true,
+        "evidence": {
+          "row": {
+            "future_endpoint_in_features": false,
+            "future_endpoint_label_only": true,
+            "central_velocity": false,
+            "test_endpoint_goals": false
+          },
+          "scene": {
+            "candidate_goals_from_train_only": true,
+            "test_endpoints_used": false,
+            "future_endpoint_input": false,
+            "central_velocity": false
+          }
+        }
+      },
+      {
+        "gate": "Gate4 external relative baselines recomputed",
+        "passed": true,
+        "evidence": "scene_scale"
+      },
+      {
+        "gate": "Gate5 external selector beats external strongest baseline",
+        "passed": true,
+        "evidence": {
+          "model": "conservative_fallback_selector",
+          "metrics": {
+            "domain": "external",
+            "split": "test",
+            "rows": 3636,
+            "all_improvement": -0.05190954265331249,
+            "t10_improvement": -0.3526910879291141,
+            "t25_improvement": 0.05008976652378283,
+            "t50_improvement": 0.0664571791684676,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": 0.18270867428249649,
+            "easy_degradation": 0.5695324954717857,
+            "selector_regret": 0.5746428083579858,
+            "harm_over_fallback": 0.05646082867609031,
+            "switch_rate": 0.09983498349834984,
+            "mean_confidence": 0.09983498603105545
+          }
+        }
+      },
+      {
+        "gate": "Gate6 easy degradation <=2",
+        "passed": true,
+        "evidence": 0.0
+      },
+      {
+        "gate": "Gate7 domain-conditioned model beats external-only or mixed baseline",
+        "passed": false,
+        "evidence": {
+          "domain": "external",
+          "split": "test",
+          "rows": 3636,
+          "all_improvement": -0.015475423110942632,
+          "t10_improvement": -0.32641180404300574,
+          "t25_improvement": 0.11265419193756698,
+          "t50_improvement": 0.06598701408505248,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.2512714845174614,
+          "easy_degradation": 0.30290742479725674,
+          "selector_regret": 0.535014245355906,
+          "harm_over_fallback": 0.016832265674010558,
+          "switch_rate": 0.09983498349834984,
+          "mean_confidence": 0.09983498603105545
+        }
+      },
+      {
+        "gate": "Gate8 latent adapter produces predictive lift",
+        "passed": false,
+        "evidence": {
+          "source": "fresh_run",
+          "raw_latent_gap": 6.51259669625378,
+          "standardization_gap": 1.941606243108246e-14,
+          "coral_gap": 2.0491784430841082e-14,
+          "gap_reduction": 0.999999999999997,
+          "geometry_latent_selector_val_lift": -0.5466799736022949,
+          "predictive_lift_from_adapter": false,
+          "adapter_types": [
+            "linear_adapter",
+            "CORAL_adapter",
+            "domain_conditioned_geometry_latent_ridge",
+            "mixture_adapter_diagnostic"
+          ]
+        }
+      },
+      {
+        "gate": "Gate9 held-out external scenes evaluated or honest blocker",
+        "passed": true,
+        "evidence": {
+          "domain": "external",
+          "split": "test",
+          "rows": 3636,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "selector_regret": 0.5181819796818955,
+          "harm_over_fallback": 0.0,
+          "switch_rate": 0.0,
+          "mean_confidence": 0.0
+        }
+      },
+      {
+        "gate": "Gate10 SDD performance not destroyed",
+        "passed": false,
+        "evidence": {
+          "domain": "sdd",
+          "split": "test",
+          "rows": 100000,
+          "all_improvement": 0.0010959818024106616,
+          "t10_improvement": -0.004350596132404405,
+          "t25_improvement": -0.001388342619544014,
+          "t50_improvement": -6.801640245024387e-06,
+          "t100_improvement": 0.002766478682293183,
+          "hard_failure_improvement": 0.0011362167149230329,
+          "easy_degradation": 3735.421701968168,
+          "selector_regret": 6.8151850409063695,
+          "harm_over_fallback": -0.028439820256233216,
+          "switch_rate": 0.1,
+          "mean_confidence": 0.03426046296954155
+        }
+      },
+      {
+        "gate": "Gate11 cross-domain candidate gate",
+        "passed": false,
+        "evidence": "best=0.0, sdd_easy=3735.421701968168"
+      },
+      {
+        "gate": "Gate12 Stage5C false",
+        "passed": true,
+        "evidence": "Stage5C not executed"
+      },
+      {
+        "gate": "Gate13 SMC false",
+        "passed": true,
+        "evidence": "SMC not enabled"
+      }
+    ],
+    "gates_passed": 9,
+    "gates_total": 13,
+    "current_verdict": "stage34_row_geometry_done_no_external_positive_transfer",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "tests": {
+      "command": "python -m pytest tests",
+      "status": "success",
+      "passed": 64,
       "source": "fresh_run"
     }
   }

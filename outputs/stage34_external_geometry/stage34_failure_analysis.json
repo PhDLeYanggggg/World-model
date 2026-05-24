@@ -1,0 +1,40 @@
+{
+  "source": "fresh_run",
+  "row_geometry_complete": true,
+  "per_row_goal_distance_lift": false,
+  "scene_packs_lift": 0.0,
+  "relative_target_lift": 0.0,
+  "diagnostic_domain_conditioned_t50_lift": 0.06598701408505248,
+  "diagnostic_domain_conditioned_hard_lift": 0.2512714845174614,
+  "diagnostic_domain_conditioned_easy_degradation": 0.30290742479725674,
+  "latent_adapter_predictive_lift": false,
+  "latent_adapter_gap_only": true,
+  "horizon_mismatch_main_factor": true,
+  "agent_type_mismatch_still_factor": true,
+  "external_data_too_short": true,
+  "m3w_still_sdd_specific": true,
+  "scene_goal_status": {
+    "train": {
+      "rows": 119109,
+      "goal_available_rows": 119109,
+      "goal_unavailable_rows": 0
+    },
+    "val": {
+      "rows": 7685,
+      "goal_available_rows": 0,
+      "goal_unavailable_rows": 7685
+    },
+    "test": {
+      "rows": 3636,
+      "goal_available_rows": 3177,
+      "goal_unavailable_rows": 459
+    }
+  },
+  "world_model_status": "not_cross_domain_candidate",
+  "shortest_repair_path": [
+    "Need more held-out external t+50/t+100 rows; current test t+50 is small and t+100 absent.",
+    "Need image/homography-backed scene packs; current walkable map is scene-bounds proxy.",
+    "Need per-domain held-out-scene training rather than only OpenTraj TrajNet file split.",
+    "Need verify whether goal-directed baseline is genuinely predictive in external data before using it as selector target."
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "source": "fresh_run",
+  "experiments": {
+    "external_strongest_baseline": {
+      "source": "fresh_run",
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5181819796818955,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "external_oracle_diagnostic": {
+      "source": "fresh_run",
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.47641152649015295,
+        "t10_improvement": 0.08866899834106223,
+        "t25_improvement": 0.7391319030424208,
+        "t50_improvement": 0.39241026586013683,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.4317878968459755,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.0,
+        "harm_over_fallback": -0.5181819796818955,
+        "switch_rate": 0.5654565456545655,
+        "mean_confidence": 1.0
+      }
+    },
+    "external_only_selector": {
+      "source": "fresh_run",
+      "variant": "external_scene_goal_selector",
+      "train_domains": [
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5181819796818955,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "SDD_zero_shot_selector": {
+      "source": "fresh_run",
+      "variant": "domain_conditioned_selector",
+      "train_domains": [
+        "sdd"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5181819796818955,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "SDD_external_mixed_selector": {
+      "source": "fresh_run",
+      "variant": "domain_conditioned_selector",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.1
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.015475423110942632,
+        "t10_improvement": -0.32641180404300574,
+        "t25_improvement": 0.11265419193756698,
+        "t50_improvement": 0.06598701408505248,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.2512714845174614,
+        "easy_degradation": 0.30290742479725674,
+        "selector_regret": 0.535014245355906,
+        "harm_over_fallback": 0.016832265674010558,
+        "switch_rate": 0.09983498349834984,
+        "mean_confidence": 0.09983498603105545
+      }
+    },
+    "domain_conditioned_selector": {
+      "source": "fresh_run",
+      "variant": "domain_conditioned_selector",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.1
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.015475423110942632,
+        "t10_improvement": -0.32641180404300574,
+        "t25_improvement": 0.11265419193756698,
+        "t50_improvement": 0.06598701408505248,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.2512714845174614,
+        "easy_degradation": 0.30290742479725674,
+        "selector_regret": 0.535014245355906,
+        "harm_over_fallback": 0.016832265674010558,
+        "switch_rate": 0.09983498349834984,
+        "mean_confidence": 0.09983498603105545
+      }
+    },
+    "domain_mixture_of_experts": {
+      "source": "fresh_run",
+      "variant": "domain_mixture_of_experts",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.1
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.028077847556730262,
+        "t10_improvement": -0.34555776620808043,
+        "t25_improvement": 0.10000071956332768,
+        "t50_improvement": 0.060052228291050724,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.22179798643597815,
+        "easy_degradation": 0.21796397246260413,
+        "selector_regret": 0.548721615738442,
+        "harm_over_fallback": 0.03053963605654646,
+        "switch_rate": 0.09983498349834984,
+        "mean_confidence": 0.09981723129749298
+      }
+    },
+    "external_scene_goal_selector": {
+      "source": "fresh_run",
+      "variant": "external_scene_goal_selector",
+      "train_domains": [
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5181819796818955,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "external_relative_error_selector": {
+      "source": "fresh_run",
+      "variant": "external_scene_goal_selector",
+      "train_domains": [
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5181819796818955,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "M3W_latent_plus_external_geometry_selector": {
+      "source": "fresh_run",
+      "variant": "M3W_latent_plus_external_geometry_selector",
+      "train_domains": [
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.0
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "selector_regret": 0.5181819796818955,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "mean_confidence": 0.0
+      }
+    },
+    "conservative_fallback_selector": {
+      "source": "fresh_run",
+      "variant": "failure_assisted",
+      "train_domains": [
+        "sdd",
+        "external"
+      ],
+      "test_domain": "external",
+      "policy": {
+        "confidence": 0.0,
+        "gain": 0.0,
+        "max_switch_rate": 0.1
+      },
+      "metrics": {
+        "domain": "external",
+        "split": "test",
+        "rows": 3636,
+        "all_improvement": -0.05190954265331249,
+        "t10_improvement": -0.3526910879291141,
+        "t25_improvement": 0.05008976652378283,
+        "t50_improvement": 0.0664571791684676,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.18270867428249649,
+        "easy_degradation": 0.5695324954717857,
+        "selector_regret": 0.5746428083579858,
+        "harm_over_fallback": 0.05646082867609031,
+        "switch_rate": 0.09983498349834984,
+        "mean_confidence": 0.09983498603105545
+      }
+    }
+  },
+  "best_model": "external_only_selector",
+  "best_metrics": {
+    "domain": "external",
+    "split": "test",
+    "rows": 3636,
+    "all_improvement": 0.0,
+    "t10_improvement": 0.0,
+    "t25_improvement": 0.0,
+    "t50_improvement": 0.0,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.0,
+    "easy_degradation": 0.0,
+    "selector_regret": 0.5181819796818955,
+    "harm_over_fallback": 0.0,
+    "switch_rate": 0.0,
+    "mean_confidence": 0.0
+  }
+}

@@ -734,3 +734,30 @@ Key Stage33 outcome:
 - External-only relative selectors still damaged easy cases, so they are not deployable.
 - Cross-domain world-model candidate gate failed; M3W-LAS remains SDD pixel raw-frame candidate plus external diagnostic evidence.
 - Tests: `python -m pytest tests` -> `61 passed`.
+
+## Stage34: External Row Geometry and Domain-Conditioned Transfer
+
+Stage34 reconstructs external per-row geometry from raw OpenTraj/TrajNet rows, builds train-only goals and per-row goal distance/angle features, recomputes relative baselines v2, and evaluates domain-conditioned transfer. Stage5C and SMC remain disabled.
+
+```text
+true_3D = false
+foundation_world_model = false
+sdd_coordinates = pixel raw-frame
+external_coordinates = dataset-local / unverified weak metric diagnostic
+stage5c_executed = false
+smc_enabled = false
+best_external_all_improvement = 0.0
+best_external_t50_improvement = 0.0
+gates = 9 / 13
+verdict = stage34_row_geometry_done_no_external_positive_transfer
+```
+
+Key Stage34 outcome:
+
+- External row geometry was reconstructed and aligned for all Stage31 external rows: train `119109`, val `7685`, test `3636`.
+- Future endpoint coordinates are stored only as supervision/evaluation labels and are not used as inference features.
+- Train-only goals and per-row goal distance/angle features were built without test endpoints.
+- Diagnostic external selector lift exists on t+50 (`~6.6%`) and hard/failure (`~25.1%`), but it is not deployable because all-test is negative and easy degradation is high.
+- Latent adapter reduced latent distance but did not produce predictive lift.
+- Cross-domain candidate gate remains failed; this is not external positive transfer.
+- Tests: `python -m pytest tests` -> `64 passed`.
