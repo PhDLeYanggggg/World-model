@@ -63,6 +63,7 @@ def build_completion_audit() -> dict[str, Any]:
     ucy_repair = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json", {})
     ucy_validation = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json", {})
     joint_rollout = read_json("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json", {})
+    joint_latent = read_json("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json", {})
     group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
     group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
     group_distiller_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json", {})
@@ -154,6 +155,14 @@ def build_completion_audit() -> dict[str, Any]:
     joint_rollout_stats = joint_rollout.get("rollout_stats") or {}
     joint_rollout_selected_stats = joint_rollout_stats.get("selected") or {}
     joint_rollout_pass = bool(joint_rollout.get("joint_rollout_consistency_pass"))
+    joint_latent_metrics = joint_latent.get("test_metrics") or {}
+    joint_latent_multi = joint_latent.get("multi_agent_metrics") or {}
+    joint_latent_raw = joint_latent.get("raw_neural_without_fallback_metrics") or {}
+    joint_latent_lift = joint_latent.get("lift_over_current_group_consistency_basis") or {}
+    joint_latent_aux = joint_latent.get("auxiliary_metrics") or {}
+    joint_latent_no_leak = joint_latent.get("no_leakage") or {}
+    joint_latent_deployable = bool(joint_latent.get("joint_latent_rollout_deployable"))
+    joint_latent_improves_current = bool(joint_latent.get("joint_latent_rollout_improves_current_deployable"))
     group_distiller_metrics = group_distiller.get("test_metrics") or {}
     group_distiller_lift = group_distiller.get("lift_over_fixed_proximity_guard") or {}
     group_distiller_deployable = bool(group_distiller.get("group_consistency_distiller_deployable"))
@@ -206,9 +215,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass or full_traj_pass),
-            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, and outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
-            "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. It remains per-agent all-agent-context prediction with goal/route proxy features, not a fully joint latent world-state rollout, so the full objective remains not complete.",
+            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass or full_traj_pass or bool(joint_latent_metrics)),
+            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
+            "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete.",
         },
         {
             "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
@@ -284,6 +293,17 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(joint_rollout_pass, partial=bool(joint_rollout_metrics)),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json",
             "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC.",
+        },
+        {
+            "requirement": "joint latent all-agent rollout prototype trained and audited",
+            "status": _status(
+                bool(joint_latent_metrics)
+                and not joint_latent_no_leak.get("future_waypoints_input", True)
+                and not joint_latent_no_leak.get("stage5c_executed", True)
+                and not joint_latent_no_leak.get("smc_enabled", True)
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
+            "note": "The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only.",
         },
         {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
@@ -570,6 +590,30 @@ def build_completion_audit() -> dict[str, Any]:
             "selected_near_collision_rate_005": joint_rollout_selected_stats.get("near_collision_rate_005"),
             "selected_mixed_group_switch_rate": (joint_rollout.get("group_switch_summary") or {}).get("selected_mixed_group_switch_rate"),
         },
+        "joint_latent_rollout_summary": {
+            "trained_group_token_transformer": joint_latent.get("trained_group_token_transformer"),
+            "deployable": joint_latent_deployable,
+            "improves_current_deployable": joint_latent_improves_current,
+            "selected_policy": joint_latent.get("selected_policy"),
+            "all_improvement": joint_latent_metrics.get("all_improvement"),
+            "t50_improvement": joint_latent_metrics.get("t50_improvement"),
+            "t100_improvement": joint_latent_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_latent_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_latent_metrics.get("easy_degradation"),
+            "switch_rate": joint_latent.get("switch_rate"),
+            "collision_delta_vs_floor_005": joint_latent.get("collision_delta_vs_floor_005"),
+            "multi_agent_all_improvement": joint_latent_multi.get("all_improvement"),
+            "raw_neural_all_improvement": joint_latent_raw.get("all_improvement"),
+            "raw_neural_t50_improvement": joint_latent_raw.get("t50_improvement"),
+            "raw_neural_hard_failure_improvement": joint_latent_raw.get("hard_failure_improvement"),
+            "raw_neural_easy_degradation": joint_latent_raw.get("easy_degradation"),
+            "all_delta_over_current_group": joint_latent_lift.get("all_delta"),
+            "t50_delta_over_current_group": joint_latent_lift.get("t50_delta"),
+            "hard_delta_over_current_group": joint_latent_lift.get("hard_delta"),
+            "interaction_auroc": (joint_latent_aux.get("interaction") or {}).get("auroc"),
+            "occupancy_auroc": (joint_latent_aux.get("occupancy") or {}).get("auroc"),
+            "future_group_close_auroc": (joint_latent_aux.get("future_group_close") or {}).get("auroc"),
+        },
         "group_consistency_distiller_summary": {
             "deployable": group_distiller_deployable,
             "improves_fixed_guard": group_distiller_improves_guard,
@@ -626,7 +670,7 @@ def build_completion_audit() -> dict[str, Any]:
         "requirements": requirements,
         "next_highest_value_actions": [
             "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
-            "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
+            "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
     }
@@ -844,6 +888,19 @@ def build_completion_audit() -> dict[str, Any]:
             f"- collision delta vs floor @0.05 normalized: `{joint_rollout.get('collision_delta_vs_floor_005')}`",
             f"- mixed group switch rate: `{(joint_rollout.get('group_switch_summary') or {}).get('selected_mixed_group_switch_rate')}`",
             "",
+            "## Joint Latent Rollout Prototype",
+            "",
+            f"- trained group-token Transformer: `{joint_latent.get('trained_group_token_transformer')}`",
+            f"- deployable: `{joint_latent_deployable}`",
+            f"- improves current deployable: `{joint_latent_improves_current}`",
+            f"- selected policy: `{joint_latent.get('selected_policy')}`",
+            f"- all/t50/t100: `{joint_latent_metrics.get('all_improvement')}` / `{joint_latent_metrics.get('t50_improvement')}` / `{joint_latent_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_latent_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_latent_metrics.get('easy_degradation')}`",
+            f"- raw neural all/t50/hard/easy: `{joint_latent_raw.get('all_improvement')}` / `{joint_latent_raw.get('t50_improvement')}` / `{joint_latent_raw.get('hard_failure_improvement')}` / `{joint_latent_raw.get('easy_degradation')}`",
+            f"- all/t50/hard delta vs current group deployable: `{joint_latent_lift.get('all_delta')}` / `{joint_latent_lift.get('t50_delta')}` / `{joint_latent_lift.get('hard_delta')}`",
+            f"- interaction/occupancy/future-close AUROC: `{(joint_latent_aux.get('interaction') or {}).get('auroc')}` / `{(joint_latent_aux.get('occupancy') or {}).get('auroc')}` / `{(joint_latent_aux.get('future_group_close') or {}).get('auroc')}`",
+            "",
             "## Neural Group Consistency Distiller",
             "",
             f"- deployable: `{group_distiller_deployable}`",
@@ -862,7 +919,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. A fresh joint latent group-token rollout prototype was trained next; it learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because fully deployable joint latent all-agent rollout and source-level independent UCY validation remain unavailable, and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -886,6 +943,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     ucy_repair_summary = audit.get("ucy_fallback_repair_summary", {})
     ucy_validation_summary = audit.get("ucy_independent_validation_summary", {})
     joint_rollout_summary = audit.get("joint_rollout_consistency_summary", {})
+    joint_latent_summary = audit.get("joint_latent_rollout_summary", {})
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
@@ -1026,6 +1084,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_rollout_consistency_easy = {joint_rollout_summary.get('easy_degradation')}",
             f"joint_rollout_consistency_multi_agent_all = {joint_rollout_summary.get('multi_agent_all_improvement')}",
             f"joint_rollout_consistency_collision_delta_005 = {joint_rollout_summary.get('collision_delta_vs_floor_005')}",
+            f"joint_latent_rollout_deployable = {joint_latent_summary.get('deployable')}",
+            f"joint_latent_rollout_improves_current = {joint_latent_summary.get('improves_current_deployable')}",
+            f"joint_latent_rollout_all = {joint_latent_summary.get('all_improvement')}",
+            f"joint_latent_rollout_t50 = {joint_latent_summary.get('t50_improvement')}",
+            f"joint_latent_rollout_t100_diagnostic = {joint_latent_summary.get('t100_improvement')}",
+            f"joint_latent_rollout_hard = {joint_latent_summary.get('hard_failure_improvement')}",
+            f"joint_latent_rollout_easy = {joint_latent_summary.get('easy_degradation')}",
+            f"joint_latent_raw_neural_all = {joint_latent_summary.get('raw_neural_all_improvement')}",
+            f"joint_latent_raw_neural_t50 = {joint_latent_summary.get('raw_neural_t50_improvement')}",
+            f"joint_latent_raw_neural_easy = {joint_latent_summary.get('raw_neural_easy_degradation')}",
+            f"joint_latent_interaction_auroc = {joint_latent_summary.get('interaction_auroc')}",
+            f"joint_latent_occupancy_auroc = {joint_latent_summary.get('occupancy_auroc')}",
+            f"joint_latent_future_group_close_auroc = {joint_latent_summary.get('future_group_close_auroc')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1103,6 +1174,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.md")
@@ -1180,6 +1253,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_rollout_easy_degradation": joint_rollout_summary.get("easy_degradation"),
         "joint_rollout_multi_agent_all_improvement": joint_rollout_summary.get("multi_agent_all_improvement"),
         "joint_rollout_collision_delta_vs_floor_005": joint_rollout_summary.get("collision_delta_vs_floor_005"),
+        "joint_latent_rollout_deployable": joint_latent_summary.get("deployable"),
+        "joint_latent_rollout_improves_current": joint_latent_summary.get("improves_current_deployable"),
+        "joint_latent_rollout_all_improvement": joint_latent_summary.get("all_improvement"),
+        "joint_latent_rollout_t50_improvement": joint_latent_summary.get("t50_improvement"),
+        "joint_latent_rollout_t100_raw_frame_diagnostic": joint_latent_summary.get("t100_improvement"),
+        "joint_latent_rollout_hard_failure_improvement": joint_latent_summary.get("hard_failure_improvement"),
+        "joint_latent_rollout_easy_degradation": joint_latent_summary.get("easy_degradation"),
+        "joint_latent_raw_neural_all_improvement": joint_latent_summary.get("raw_neural_all_improvement"),
+        "joint_latent_raw_neural_t50_improvement": joint_latent_summary.get("raw_neural_t50_improvement"),
+        "joint_latent_raw_neural_easy_degradation": joint_latent_summary.get("raw_neural_easy_degradation"),
+        "joint_latent_interaction_auroc": joint_latent_summary.get("interaction_auroc"),
+        "joint_latent_occupancy_auroc": joint_latent_summary.get("occupancy_auroc"),
+        "joint_latent_future_group_close_auroc": joint_latent_summary.get("future_group_close_auroc"),
         "group_consistency_distiller_deployable": group_distiller_summary.get("deployable"),
         "group_consistency_distiller_improves_fixed_guard": group_distiller_summary.get("improves_fixed_guard"),
         "group_consistency_distiller_bootstrap_all_low": group_distiller_summary.get("bootstrap_all_low"),
@@ -1240,6 +1326,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "ucy_fallback_repair_summary": ucy_repair_summary,
         "ucy_independent_validation_summary": ucy_validation_summary,
         "joint_rollout_consistency_summary": joint_rollout_summary,
+        "joint_latent_rollout_summary": joint_latent_summary,
         "group_consistency_distiller_summary": group_distiller_summary,
         "group_consistency_multiseed_summary": group_multiseed_summary,
         "jepa_deployment_decision_summary": jepa_decision_summary,

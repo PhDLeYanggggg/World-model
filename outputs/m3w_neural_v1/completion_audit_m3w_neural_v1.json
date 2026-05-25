@@ -230,6 +230,36 @@
     "selected_near_collision_rate_005": 0.44992479548039177,
     "selected_mixed_group_switch_rate": 0.5893493343333959
   },
+  "joint_latent_rollout_summary": {
+    "trained_group_token_transformer": true,
+    "deployable": false,
+    "improves_current_deployable": false,
+    "selected_policy": {
+      "type": "joint_latent_rollout_val_selected",
+      "traj_risk_max": -1000000000.0,
+      "physical_min": 1.1,
+      "future_close_max": 0.0,
+      "val_eligible": false
+    },
+    "all_improvement": 0.0,
+    "t50_improvement": 0.0,
+    "t100_improvement": 0.0,
+    "hard_failure_improvement": 0.0,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.0,
+    "collision_delta_vs_floor_005": 0.0,
+    "multi_agent_all_improvement": 0.0,
+    "raw_neural_all_improvement": -0.7185960593471277,
+    "raw_neural_t50_improvement": -0.9470536951712247,
+    "raw_neural_hard_failure_improvement": -0.5918476698510013,
+    "raw_neural_easy_degradation": 7.0398942498342745,
+    "all_delta_over_current_group": -0.139879916889688,
+    "t50_delta_over_current_group": -0.12149802173622119,
+    "hard_delta_over_current_group": -0.14504228036236014,
+    "interaction_auroc": 0.9778962684138552,
+    "occupancy_auroc": 0.9533724454671079,
+    "future_group_close_auroc": 0.9718721574984199
+  },
   "group_consistency_distiller_summary": {
     "deployable": true,
     "improves_fixed_guard": true,
@@ -323,8 +353,8 @@
     {
       "requirement": "all active agents future world-state, not only endpoint selector",
       "status": "partial",
-      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, and outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
-      "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. It remains per-agent all-agent-context prediction with goal/route proxy features, not a fully joint latent world-state rollout, so the full objective remains not complete."
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
+      "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete."
     },
     {
       "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
@@ -387,6 +417,12 @@
       "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC."
     },
     {
+      "requirement": "joint latent all-agent rollout prototype trained and audited",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
+      "note": "The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only."
+    },
+    {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
@@ -428,7 +464,7 @@
   ],
   "next_highest_value_actions": [
     "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
-    "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
+    "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]
 }
