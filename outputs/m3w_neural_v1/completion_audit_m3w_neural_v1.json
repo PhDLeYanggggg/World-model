@@ -54,6 +54,19 @@
     "positive_external_domains": 2,
     "neural_exceeds_stage37_by_gate_margin": true
   },
+  "full_trajectory_world_state_summary": {
+    "deployment_decision": "candidate_full_trajectory_world_state_probe",
+    "best_name": "full_trajectory_ensemble",
+    "all_improvement": 0.18577852429834418,
+    "t50_improvement": 0.14803699577731477,
+    "t100_improvement": 0.22857426649949408,
+    "hard_failure_improvement": 0.19518047277951456,
+    "easy_degradation": 0.0,
+    "positive_external_domains": 2,
+    "interaction_auroc": 0.9614642176190807,
+    "occupancy_auroc": 0.9486653948303418,
+    "full_trajectory_world_state_pass": true
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -84,8 +97,14 @@
     {
       "requirement": "all active agents future world-state, not only endpoint selector",
       "status": "partial",
-      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, and outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json",
-      "note": "Fresh source-rotation all-agent endpoint specialist now exceeds Stage37 margins on all/t50/t100/hard with easy preserved and two positive external domains. It is still endpoint-level future-state, not a full trajectory-latent world-state rollout, so the full objective remains not complete."
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, and outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
+      "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. It remains per-agent all-agent-context prediction with goal/route proxy features, not a fully joint latent world-state rollout, so the full objective remains not complete."
+    },
+    {
+      "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
+      "note": "Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. Physical-validity label is degenerate in this pass and needs a stronger label."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",
@@ -109,9 +128,9 @@
     }
   ],
   "next_highest_value_actions": [
-    "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-    "Extend the fresh all-agent endpoint specialist from endpoint-only future-state to full trajectory/occupancy/interaction latent heads.",
-    "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
+    "Strengthen the physical-validity label so it is not degenerate and evaluate smoothness/collision constraints.",
+    "Add an explicit goal/route head instead of relying only on Stage37 prototype proxy features.",
+    "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]
 }

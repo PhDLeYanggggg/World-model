@@ -51,6 +51,7 @@ def build_completion_audit() -> dict[str, Any]:
     all_agent_composer = read_json("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json", {})
     all_agent_locked = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
     fresh_all_agent = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json", {})
+    full_traj = read_json("outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -81,6 +82,12 @@ def build_completion_audit() -> dict[str, Any]:
         fresh_all_agent.get("neural_exceeds_stage37_by_gate_margin")
         and fresh_all_agent.get("positive_external_domains", 0) >= 2
         and fresh_all_agent_metrics.get("easy_degradation", 1.0) <= 0.02
+    )
+    full_traj_metrics = full_traj.get("best_metrics", {})
+    full_traj_pass = bool(
+        full_traj.get("full_trajectory_world_state_pass")
+        and full_traj.get("positive_external_domains", 0) >= 2
+        and full_traj_metrics.get("easy_degradation", 1.0) <= 0.02
     )
     requirements = [
         {
@@ -121,9 +128,15 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass),
-            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, and outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json",
-            "note": "Fresh source-rotation all-agent endpoint specialist now exceeds Stage37 margins on all/t50/t100/hard with easy preserved and two positive external domains. It is still endpoint-level future-state, not a full trajectory-latent world-state rollout, so the full objective remains not complete.",
+            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass or full_traj_pass),
+            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, and outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
+            "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. It remains per-agent all-agent-context prediction with goal/route proxy features, not a fully joint latent world-state rollout, so the full objective remains not complete.",
+        },
+        {
+            "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
+            "status": _status(full_traj_pass),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
+            "note": "Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. Physical-validity label is degenerate in this pass and needs a stronger label.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -203,11 +216,24 @@ def build_completion_audit() -> dict[str, Any]:
             "positive_external_domains": fresh_all_agent.get("positive_external_domains"),
             "neural_exceeds_stage37_by_gate_margin": fresh_all_agent.get("neural_exceeds_stage37_by_gate_margin"),
         },
+        "full_trajectory_world_state_summary": {
+            "deployment_decision": full_traj.get("deployment_decision"),
+            "best_name": full_traj.get("best_name"),
+            "all_improvement": full_traj_metrics.get("all_improvement"),
+            "t50_improvement": full_traj_metrics.get("t50_improvement"),
+            "t100_improvement": full_traj_metrics.get("t100_improvement"),
+            "hard_failure_improvement": full_traj_metrics.get("hard_failure_improvement"),
+            "easy_degradation": full_traj_metrics.get("easy_degradation"),
+            "positive_external_domains": full_traj.get("positive_external_domains"),
+            "interaction_auroc": (full_traj_metrics.get("interaction_risk") or {}).get("auroc"),
+            "occupancy_auroc": (full_traj_metrics.get("occupancy_risk") or {}).get("auroc"),
+            "full_trajectory_world_state_pass": full_traj.get("full_trajectory_world_state_pass"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-            "Extend the fresh all-agent endpoint specialist from endpoint-only future-state to full trajectory/occupancy/interaction latent heads.",
-            "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
+            "Strengthen the physical-validity label so it is not degenerate and evaluate smoothness/collision constraints.",
+            "Add an explicit goal/route head instead of relying only on Stage37 prototype proxy features.",
+            "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
     }
@@ -283,9 +309,22 @@ def build_completion_audit() -> dict[str, Any]:
             f"- easy degradation: `{fresh_all_agent_metrics.get('easy_degradation')}`",
             f"- positive external domains: `{fresh_all_agent.get('positive_external_domains')}`",
             "",
+            "## Full-Trajectory World-State Probe",
+            "",
+            f"- deployment_decision: `{full_traj.get('deployment_decision')}`",
+            f"- best name: `{full_traj.get('best_name')}`",
+            f"- trajectory ADE all improvement: `{full_traj_metrics.get('all_improvement')}`",
+            f"- trajectory ADE t50 improvement: `{full_traj_metrics.get('t50_improvement')}`",
+            f"- trajectory ADE t100 diagnostic improvement: `{full_traj_metrics.get('t100_improvement')}`",
+            f"- trajectory ADE hard/failure improvement: `{full_traj_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{full_traj_metrics.get('easy_degradation')}`",
+            f"- positive external domains: `{full_traj.get('positive_external_domains')}`",
+            f"- interaction AUROC: `{(full_traj_metrics.get('interaction_risk') or {}).get('auroc')}`",
+            f"- occupancy AUROC: `{(full_traj_metrics.get('occupancy_risk') or {}).get('auroc')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate. The fresh source-rotation all-agent endpoint specialist is now the strongest all-agent neural signal, but the full active objective is not complete because it remains endpoint-level future-state rather than full trajectory-latent world-state dynamics.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads on raw external trajectories. The full active objective is still not complete because goal/route is proxy-only, physical validity needs a non-degenerate label, and the rollout is still per-agent all-agent-context rather than a jointly consistent latent world-state model.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -299,6 +338,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     composer_summary = audit.get("all_agent_policy_composer_summary", {})
     locked_summary = audit.get("all_agent_locked_v2_confirmation_summary", {})
     fresh_all_agent_summary = audit.get("fresh_all_agent_endpoint_specialist_summary", {})
+    full_traj_summary = audit.get("full_trajectory_world_state_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -343,11 +383,20 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"fresh_all_agent_endpoint_easy = {fresh_all_agent_summary.get('easy_degradation')}",
             f"fresh_all_agent_endpoint_positive_domains = {fresh_all_agent_summary.get('positive_external_domains')}",
             f"fresh_all_agent_endpoint_deployment = {fresh_all_agent_summary.get('deployment_decision')}",
+            f"full_trajectory_world_state_best = {full_traj_summary.get('best_name')}",
+            f"full_trajectory_world_state_all = {full_traj_summary.get('all_improvement')}",
+            f"full_trajectory_world_state_t50 = {full_traj_summary.get('t50_improvement')}",
+            f"full_trajectory_world_state_t100_diagnostic = {full_traj_summary.get('t100_improvement')}",
+            f"full_trajectory_world_state_hard = {full_traj_summary.get('hard_failure_improvement')}",
+            f"full_trajectory_world_state_easy = {full_traj_summary.get('easy_degradation')}",
+            f"full_trajectory_world_state_positive_domains = {full_traj_summary.get('positive_external_domains')}",
+            f"full_trajectory_world_state_interaction_auroc = {full_traj_summary.get('interaction_auroc')}",
+            f"full_trajectory_world_state_occupancy_auroc = {full_traj_summary.get('occupancy_auroc')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: upgrade the fresh all-agent endpoint specialist into full trajectory/occupancy/interaction world-state dynamics; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: make the full-trajectory probe jointly consistent across agents, add an explicit goal/route head, and repair the degenerate physical-validity label; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -360,6 +409,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json")
     state["generated_reports"] = sorted(generated)
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
@@ -370,6 +421,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "all_agent_policy_composer_summary": composer_summary,
         "all_agent_locked_v2_confirmation_summary": locked_summary,
         "fresh_all_agent_endpoint_specialist_summary": fresh_all_agent_summary,
+        "full_trajectory_world_state_summary": full_traj_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

@@ -13,7 +13,8 @@
 | neural model exceeds Stage37 on external all/t50/hard with easy <=2 | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | at least two held-out external domains positive | `complete` | outputs/stage41_breakthrough/stage41_neural_eval.json |  |
 | neural without external fallback not catastrophic | `complete` | fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports | The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable. |
-| all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, and outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json | Fresh source-rotation all-agent endpoint specialist now exceeds Stage37 margins on all/t50/t100/hard with easy preserved and two positive external domains. It is still endpoint-level future-state, not a full trajectory-latent world-state rollout, so the full objective remains not complete. |
+| all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, and outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json | Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. It remains per-agent all-agent-context prediction with goal/route proxy features, not a fully joint latent world-state rollout, so the full objective remains not complete. |
+| full trajectory, interaction, occupancy, and physical-validity heads | `complete` | outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json | Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. Physical-validity label is degenerate in this pass and needs a stronger label. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -70,6 +71,19 @@
 - easy degradation: `0.0`
 - positive external domains: `2`
 
+## Full-Trajectory World-State Probe
+
+- deployment_decision: `candidate_full_trajectory_world_state_probe`
+- best name: `full_trajectory_ensemble`
+- trajectory ADE all improvement: `0.18577852429834418`
+- trajectory ADE t50 improvement: `0.14803699577731477`
+- trajectory ADE t100 diagnostic improvement: `0.22857426649949408`
+- trajectory ADE hard/failure improvement: `0.19518047277951456`
+- easy degradation: `0.0`
+- positive external domains: `2`
+- interaction AUROC: `0.9614642176190807`
+- occupancy AUROC: `0.9486653948303418`
+
 ## Conclusion
 
-M3W-Neural v1 is a strong protected endpoint-dynamics candidate. The fresh source-rotation all-agent endpoint specialist is now the strongest all-agent neural signal, but the full active objective is not complete because it remains endpoint-level future-state rather than full trajectory-latent world-state dynamics.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads on raw external trajectories. The full active objective is still not complete because goal/route is proxy-only, physical validity needs a non-degenerate label, and the rollout is still per-agent all-agent-context rather than a jointly consistent latent world-state model.

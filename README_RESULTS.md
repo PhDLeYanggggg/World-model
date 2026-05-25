@@ -1030,11 +1030,20 @@ fresh_all_agent_endpoint_hard = 0.2850203073377977
 fresh_all_agent_endpoint_easy = 0.0
 fresh_all_agent_endpoint_positive_domains = 2
 fresh_all_agent_endpoint_deployment = fresh_all_agent_endpoint_candidate_needs_independent_acceptance
+full_trajectory_world_state_best = full_trajectory_ensemble
+full_trajectory_world_state_all = 0.18577852429834418
+full_trajectory_world_state_t50 = 0.14803699577731477
+full_trajectory_world_state_t100_diagnostic = 0.22857426649949408
+full_trajectory_world_state_hard = 0.19518047277951456
+full_trajectory_world_state_easy = 0.0
+full_trajectory_world_state_positive_domains = 2
+full_trajectory_world_state_interaction_auroc = 0.9614642176190807
+full_trajectory_world_state_occupancy_auroc = 0.9486653948303418
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: upgrade the fresh all-agent endpoint specialist into full trajectory/occupancy/interaction world-state dynamics; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: make the full-trajectory probe jointly consistent across agents, add an explicit goal/route head, and repair the degenerate physical-validity label; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
