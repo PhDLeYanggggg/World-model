@@ -89,3 +89,36 @@ ungated_full_waypoint_easy_degradation = 1.2459
 Interpretation:
 
 The protected full-waypoint sequence model strengthens the world-state claim because it is evaluated on reconstructed future waypoint labels and is positive on two external domains. It is not a complete replacement for the composite-tail linear bridge yet: composite-tail has higher all-ADE, while the full-waypoint sequence model is stronger on t+50/t+100 raw-frame waypoint metrics. Ungated full-waypoint neural remains unsafe, so the Stage37/teacher floor and safe switch stay in the deployable path.
+
+## Stage42-D/E Causal Ablation And Safety Floor Follow-Up
+
+Stage42-D adds a causal ablation evidence audit:
+
+- report: `outputs/stage42_long_research/causal_ablation_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_d_gate.md`
+- result: Stage42-D gates `12 / 12`
+- boundary: not every component was retrained inside Stage42-D; fresh rows cover safety/floor/full-waypoint ablations, while historical no-history/no-neighbor/no-scene-goal/no-interaction/no-JEPA/no-Transformer/no-fallback evidence is cached-verified.
+
+Stage42-E studies whether the Stage37/teacher safety floor can be removed:
+
+- report: `outputs/stage42_long_research/safety_floor_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_e_gate.md`
+- result: Stage42-E gates `12 / 12`
+
+Key fresh-run result:
+
+```text
+best_policy_family = current_composite_tail_policy
+best_policy_source = cached_verified_policy_fresh_eval
+best_all = 0.2102513255185352
+best_t50 = 0.13652231450154184
+best_t100_raw_frame_diagnostic = 0.14694086716388166
+best_hard_failure = 0.20384916307933942
+best_easy_degradation = 0.0
+floor_necessity_conclusion = teacher_floor_required_for_current_deployment
+ungated_endpoint_easy_degradation = 1.2458611044726973
+```
+
+Interpretation:
+
+The Stage37/teacher floor remains necessary for current deployment. Ungated neural has stronger raw all/t50/hard numbers but fails safety with easy degradation around `1.2459` and worse proximity/collision. Internal self-gate, uncertainty gate, harm gate, and conformal gate show large raw lift but exceed the collision safety ceiling in this fresh study. Teacher-repaired and composite-tail protected policies remain the deployable path. This is still dataset-local raw-frame 2.5D evidence, not metric, seconds-level, true 3D, Stage5C, or SMC.

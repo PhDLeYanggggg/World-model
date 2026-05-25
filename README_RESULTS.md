@@ -1941,3 +1941,27 @@ smc_enabled = false
 ```
 
 Stage42-D adds a causal ablation evidence package with strict source labels. Fresh rows recompute no-fallback, teacher-floor, endpoint-linear, and full-waypoint safety ablations from Stage42-B/C. Required no-history/no-neighbor/no-scene-goal/no-interaction/no-JEPA/no-Transformer/no-fallback coverage is cached-verified from Stage30/41 evidence; it is not falsely relabeled as new Stage42 retraining.
+
+## Stage42-E Safety Floor Research
+
+```text
+source = fresh_run
+verdict = stage42_e_safety_floor_research_pass
+gates = 12 / 12
+best_policy_family = current_composite_tail_policy
+best_policy_source = cached_verified_policy_fresh_eval
+best_all = 0.2102513255185352
+best_t50 = 0.13652231450154184
+best_t100_raw_frame_diagnostic = 0.14694086716388166
+best_hard_failure = 0.20384916307933942
+best_easy_degradation = 0.0
+floor_necessity_conclusion = teacher_floor_required_for_current_deployment
+ungated_endpoint_easy_degradation = 1.2458611044726973
+true_3d = false
+foundation_world_model = false
+metric_or_seconds_claim = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-E studies whether the Stage37/teacher floor can be removed. It evaluates internal self-gates, uncertainty/harm/conformal gates, teacher-prob gates, and bounded residual blends with validation-only threshold selection. Ungated neural remains unsafe; any partial floor removal is limited to explicitly deployable gated families.
