@@ -62,6 +62,7 @@ def build_completion_audit() -> dict[str, Any]:
     ucy_repair = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json", {})
     ucy_validation = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json", {})
     joint_rollout = read_json("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json", {})
+    group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -144,6 +145,10 @@ def build_completion_audit() -> dict[str, Any]:
     joint_rollout_stats = joint_rollout.get("rollout_stats") or {}
     joint_rollout_selected_stats = joint_rollout_stats.get("selected") or {}
     joint_rollout_pass = bool(joint_rollout.get("joint_rollout_consistency_pass"))
+    group_distiller_metrics = group_distiller.get("test_metrics") or {}
+    group_distiller_lift = group_distiller.get("lift_over_fixed_proximity_guard") or {}
+    group_distiller_deployable = bool(group_distiller.get("group_consistency_distiller_deployable"))
+    group_distiller_improves_guard = bool(group_distiller.get("group_consistency_distiller_improves_fixed_guard"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -263,6 +268,12 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC.",
         },
         {
+            "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
+            "status": _status(group_distiller_deployable and group_distiller_improves_guard, partial=group_distiller_deployable or bool(group_distiller_metrics)),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
+            "note": "Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation.",
+        },
+        {
             "requirement": "t100 diagnostic positive or blocker analysis",
             "status": _status(best.get("t100_diagnostic", 0.0) > 0 or best.get("t100_improvement", 0.0) > 0),
             "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
@@ -288,7 +299,13 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
-            "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor"
+            "M3W-Neural v1 group-consistency-distilled joint-safe candidate under Stage37 safety floor"
+            if group_distiller_deployable and group_distiller_improves_guard
+            else
+            "M3W-Neural v1 fixed-proximity-guarded joint-safe candidate under Stage37 safety floor"
+            if joint_rollout_pass
+            else
+            "M3W-Neural v1 UCY-repaired joint-policy-distilled row-level candidate under Stage37 safety floor"
             if ucy_repair_contributes
             else
             "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor"
@@ -505,6 +522,23 @@ def build_completion_audit() -> dict[str, Any]:
             "selected_near_collision_rate_005": joint_rollout_selected_stats.get("near_collision_rate_005"),
             "selected_mixed_group_switch_rate": (joint_rollout.get("group_switch_summary") or {}).get("selected_mixed_group_switch_rate"),
         },
+        "group_consistency_distiller_summary": {
+            "deployable": group_distiller_deployable,
+            "improves_fixed_guard": group_distiller_improves_guard,
+            "selected_policy": group_distiller.get("selected_policy"),
+            "all_improvement": group_distiller_metrics.get("all_improvement"),
+            "t50_improvement": group_distiller_metrics.get("t50_improvement"),
+            "t100_improvement": group_distiller_metrics.get("t100_improvement"),
+            "hard_failure_improvement": group_distiller_metrics.get("hard_failure_improvement"),
+            "easy_degradation": group_distiller_metrics.get("easy_degradation"),
+            "switch_rate": group_distiller_metrics.get("switch_rate"),
+            "collision_delta_vs_floor_005": group_distiller_metrics.get("collision_delta_vs_floor_005"),
+            "all_delta_over_fixed_guard": group_distiller_lift.get("all_delta"),
+            "t50_delta_over_fixed_guard": group_distiller_lift.get("t50_delta"),
+            "t100_delta_over_fixed_guard": group_distiller_lift.get("t100_delta"),
+            "hard_delta_over_fixed_guard": group_distiller_lift.get("hard_delta"),
+            "easy_delta_over_fixed_guard": group_distiller_lift.get("easy_delta"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
@@ -716,9 +750,21 @@ def build_completion_audit() -> dict[str, Any]:
             f"- collision delta vs floor @0.05 normalized: `{joint_rollout.get('collision_delta_vs_floor_005')}`",
             f"- mixed group switch rate: `{(joint_rollout.get('group_switch_summary') or {}).get('selected_mixed_group_switch_rate')}`",
             "",
+            "## Neural Group Consistency Distiller",
+            "",
+            f"- deployable: `{group_distiller_deployable}`",
+            f"- improves fixed proximity guard: `{group_distiller_improves_guard}`",
+            f"- selected policy: `{group_distiller.get('selected_policy')}`",
+            f"- all/t50/t100: `{group_distiller_metrics.get('all_improvement')}` / `{group_distiller_metrics.get('t50_improvement')}` / `{group_distiller_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{group_distiller_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{group_distiller_metrics.get('easy_degradation')}`",
+            f"- switch rate: `{group_distiller_metrics.get('switch_rate')}`",
+            f"- collision delta vs floor @0.05 normalized: `{group_distiller_metrics.get('collision_delta_vs_floor_005')}`",
+            f"- lift over fixed guard all/t50/t100/hard: `{group_distiller_lift.get('all_delta')}` / `{group_distiller_lift.get('t50_delta')}` / `{group_distiller_lift.get('t100_delta')}` / `{group_distiller_lift.get('hard_delta')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The joint rollout consistency audit now checks grouped all-agent selected waypoints under the repaired policy, but this remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller now improves the fixed joint proximity guard while preserving easy cases and joint proximity safety. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -741,13 +787,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     ucy_repair_summary = audit.get("ucy_fallback_repair_summary", {})
     ucy_validation_summary = audit.get("ucy_independent_validation_summary", {})
     joint_rollout_summary = audit.get("joint_rollout_consistency_summary", {})
+    group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, and a grouped all-agent rollout consistency audit. The rollout is still not a latent generative world state.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, and a neural group-consistency distiller that improves the fixed proximity guard. The rollout is still not a latent generative world state.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -867,6 +914,15 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_rollout_consistency_easy = {joint_rollout_summary.get('easy_degradation')}",
             f"joint_rollout_consistency_multi_agent_all = {joint_rollout_summary.get('multi_agent_all_improvement')}",
             f"joint_rollout_consistency_collision_delta_005 = {joint_rollout_summary.get('collision_delta_vs_floor_005')}",
+            f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
+            f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
+            f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
+            f"group_consistency_distiller_t50 = {group_distiller_summary.get('t50_improvement')}",
+            f"group_consistency_distiller_t100_diagnostic = {group_distiller_summary.get('t100_improvement')}",
+            f"group_consistency_distiller_hard = {group_distiller_summary.get('hard_failure_improvement')}",
+            f"group_consistency_distiller_easy = {group_distiller_summary.get('easy_degradation')}",
+            f"group_consistency_distiller_collision_delta_005 = {group_distiller_summary.get('collision_delta_vs_floor_005')}",
+            f"group_consistency_distiller_t100_delta_vs_fixed_guard = {group_distiller_summary.get('t100_delta_over_fixed_guard')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
@@ -908,21 +964,32 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
     state["generated_reports"] = sorted(generated)
-    state["current_verdict"] = "stage41_ucy_repaired_joint_distiller_strong_not_complete"
+    state["current_verdict"] = "stage41_group_consistency_distiller_joint_safe_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
     state["m3w_neural_v1_current_candidate"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
-        "deployment_state": "ucy_repaired_joint_policy_distilled_candidate_pending_independent_validation",
+        "deployment_state": "group_consistency_distilled_joint_safe_candidate_pending_independent_validation",
         "current_best_deployable": audit.get("current_best_deployable"),
-        "best_name": "ucy_train_calibrated_joint_distiller",
-        "all_improvement": ucy_repair_summary.get("all_improvement"),
-        "t50_improvement": ucy_repair_summary.get("t50_improvement"),
-        "t100_raw_frame_diagnostic": ucy_repair_summary.get("t100_improvement"),
-        "hard_failure_improvement": ucy_repair_summary.get("hard_failure_improvement"),
-        "easy_degradation": ucy_repair_summary.get("easy_degradation"),
-        "switch_rate": ucy_repair_summary.get("switch_rate"),
+        "best_name": "group_consistency_distiller",
+        "all_improvement": group_distiller_summary.get("all_improvement"),
+        "t50_improvement": group_distiller_summary.get("t50_improvement"),
+        "t100_raw_frame_diagnostic": group_distiller_summary.get("t100_improvement"),
+        "hard_failure_improvement": group_distiller_summary.get("hard_failure_improvement"),
+        "easy_degradation": group_distiller_summary.get("easy_degradation"),
+        "switch_rate": group_distiller_summary.get("switch_rate"),
+        "collision_delta_vs_floor_005": group_distiller_summary.get("collision_delta_vs_floor_005"),
+        "lift_over_fixed_guard_all": group_distiller_summary.get("all_delta_over_fixed_guard"),
+        "lift_over_fixed_guard_t50": group_distiller_summary.get("t50_delta_over_fixed_guard"),
+        "lift_over_fixed_guard_t100": group_distiller_summary.get("t100_delta_over_fixed_guard"),
+        "lift_over_fixed_guard_hard": group_distiller_summary.get("hard_delta_over_fixed_guard"),
+        "row_level_ucy_repaired_all": ucy_repair_summary.get("all_improvement"),
+        "row_level_ucy_repaired_t50": ucy_repair_summary.get("t50_improvement"),
+        "row_level_ucy_repaired_t100": ucy_repair_summary.get("t100_improvement"),
+        "row_level_ucy_repaired_note": "Higher row-level FDE than group-safe variants, but raw repaired policy increased near-proximity risk in joint rollout audit.",
         "positive_external_domains": 3 if ucy_repair_summary.get("contributes") else joint_distill_summary.get("positive_external_domains"),
         "base_switch_input": joint_distill_summary.get("base_switch_input"),
         "base_plus_distiller_deployable": joint_distill_summary.get("base_plus_distiller_deployable"),
@@ -953,6 +1020,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_rollout_easy_degradation": joint_rollout_summary.get("easy_degradation"),
         "joint_rollout_multi_agent_all_improvement": joint_rollout_summary.get("multi_agent_all_improvement"),
         "joint_rollout_collision_delta_vs_floor_005": joint_rollout_summary.get("collision_delta_vs_floor_005"),
+        "group_consistency_distiller_deployable": group_distiller_summary.get("deployable"),
+        "group_consistency_distiller_improves_fixed_guard": group_distiller_summary.get("improves_fixed_guard"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -974,6 +1043,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "ucy_fallback_repair_summary": ucy_repair_summary,
         "ucy_independent_validation_summary": ucy_validation_summary,
         "joint_rollout_consistency_summary": joint_rollout_summary,
+        "group_consistency_distiller_summary": group_distiller_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

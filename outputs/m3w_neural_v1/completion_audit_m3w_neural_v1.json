@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor",
+  "current_best_deployable": "M3W-Neural v1 group-consistency-distilled joint-safe candidate under Stage37 safety floor",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -216,6 +216,29 @@
     "selected_near_collision_rate_005": 0.44992479548039177,
     "selected_mixed_group_switch_rate": 0.5893493343333959
   },
+  "group_consistency_distiller_summary": {
+    "deployable": true,
+    "improves_fixed_guard": true,
+    "selected_policy": {
+      "type": "group_consistency_distiller",
+      "safe_min": 0.4,
+      "gain_min": 0.25296418368816376,
+      "unsafe_max": 0.8,
+      "val_eligible": true
+    },
+    "all_improvement": 0.22240440177021437,
+    "t50_improvement": 0.1509377397722127,
+    "t100_improvement": 0.23019369783249866,
+    "hard_failure_improvement": 0.2241176936539857,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.265541708687509,
+    "collision_delta_vs_floor_005": 0.00829083972266037,
+    "all_delta_over_fixed_guard": 0.015592083944776403,
+    "t50_delta_over_fixed_guard": 0.009555803738271695,
+    "t100_delta_over_fixed_guard": 0.09101018779442116,
+    "hard_delta_over_fixed_guard": 0.023954864790153962,
+    "easy_delta_over_fixed_guard": 0.0
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -308,6 +331,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json",
       "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC."
+    },
+    {
+      "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
+      "note": "Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",

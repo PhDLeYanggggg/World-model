@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, and a grouped all-agent rollout consistency audit. The rollout is still not a latent generative world state.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, and a neural group-consistency distiller that improves the fixed proximity guard. The rollout is still not a latent generative world state.
 
 ```text
 completion_status = not_complete
@@ -1112,6 +1112,15 @@ joint_rollout_consistency_hard = 0.20016282886383174
 joint_rollout_consistency_easy = 0.0
 joint_rollout_consistency_multi_agent_all = 0.20472359322136924
 joint_rollout_consistency_collision_delta_005 = -0.004879122491654175
+group_consistency_distiller_deployable = True
+group_consistency_distiller_improves_fixed_guard = True
+group_consistency_distiller_all = 0.22240440177021437
+group_consistency_distiller_t50 = 0.1509377397722127
+group_consistency_distiller_t100_diagnostic = 0.23019369783249866
+group_consistency_distiller_hard = 0.2241176936539857
+group_consistency_distiller_easy = 0.0
+group_consistency_distiller_collision_delta_005 = 0.00829083972266037
+group_consistency_distiller_t100_delta_vs_fixed_guard = 0.09101018779442116
 stage5c_executed = false
 smc_enabled = false
 ```

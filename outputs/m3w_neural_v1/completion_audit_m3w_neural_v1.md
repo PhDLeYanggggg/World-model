@@ -2,7 +2,7 @@
 
 - source: `fresh_run`
 - completion_status: `not_complete`
-- current_best_deployable: `M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor`
+- current_best_deployable: `M3W-Neural v1 group-consistency-distilled joint-safe candidate under Stage37 safety floor`
 
 ## Requirement Matrix
 
@@ -24,6 +24,7 @@
 | UCY fallback-only blocker diagnosed and repaired without test tuning | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json | UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment. |
 | UCY repair internal fold/temporal validation | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json | UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source. |
 | grouped all-agent rollout consistency under repaired policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json | Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC. |
+| neural group-consistency head improves joint-safe fixed proximity guard | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json | Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -212,6 +213,18 @@
 - collision delta vs floor @0.05 normalized: `-0.004879122491654175`
 - mixed group switch rate: `0.5893493343333959`
 
+## Neural Group Consistency Distiller
+
+- deployable: `True`
+- improves fixed proximity guard: `True`
+- selected policy: `{'type': 'group_consistency_distiller', 'safe_min': 0.4, 'gain_min': 0.25296418368816376, 'unsafe_max': 0.8, 'val_eligible': True}`
+- all/t50/t100: `0.22240440177021437` / `0.1509377397722127` / `0.23019369783249866`
+- hard/failure improvement: `0.2241176936539857`
+- easy degradation: `0.0`
+- switch rate: `0.265541708687509`
+- collision delta vs floor @0.05 normalized: `0.00829083972266037`
+- lift over fixed guard all/t50/t100/hard: `0.015592083944776403` / `0.009555803738271695` / `0.09101018779442116` / `0.023954864790153962`
+
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The joint rollout consistency audit now checks grouped all-agent selected waypoints under the repaired policy, but this remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller now improves the fixed joint proximity guard while preserving easy cases and joint proximity safety. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.
