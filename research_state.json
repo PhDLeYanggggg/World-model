@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (226 passed in 60.59s); .venv-pytorch/bin/python run_stage41_calibrated_shape_meta_policy.py",
+  "last_successful_command": "python3 -m pytest tests (229 passed in 65.30s); .venv-pytorch/bin/python run_stage41_pairwise_shape_switch_policy.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -476,7 +476,9 @@
     "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.md",
     "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json",
     "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.md",
-    "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json"
+    "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json",
+    "outputs/stage41_domain_local/stage41_pairwise_shape_switch_policy.md",
+    "outputs/stage41_domain_local/stage41_pairwise_shape_switch_policy.json"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -575,8 +577,8 @@
   },
   "stage24": {
     "project_ran": true,
-    "sdd_io_accelerated": "是",
-    "true_medium_status": "是",
+    "sdd_io_accelerated": "\u662f",
+    "true_medium_status": "\u662f",
     "still_quick_plus": false,
     "strongest_baseline_changed": false,
     "selector_oracle_headroom": 0.4620704066668326,
@@ -10781,7 +10783,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 calibrated shape source meta-policy tested global/source/source+horizon affine calibration. It did not repair ETH_UCY ranking; fixed horizon composer remains safer deployable default.",
+  "latest_evidence": "Stage41 pairwise gain/harm shape switch policy passed the two-domain safety/positive gate, but it does not replace the fixed horizon composer: ETH_UCY is weaker than fixed and TrajNet only has tiny all/hard/t100 gains while t50 falls.",
   "stage41_domain_local_full_trajectory_repair": {
     "two_domain_repair_gate": false,
     "positive_domains": [
@@ -11219,6 +11221,70 @@
         "delta_vs_fixed_t50": -0.0002168070513676179,
         "delta_vs_fixed_t100": 0.0007082811202218098,
         "delta_vs_fixed_hard": 0.00017955894658017169
+      }
+    }
+  },
+  "stage41_pairwise_shape_switch_policy": {
+    "source": "fresh_run",
+    "protocol": "pairwise_gain_harm_shape_switch_policy",
+    "two_domain_pairwise_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "domains_better_than_fixed_on_any_core_metric": [
+      "TrajNet"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false,
+    "overall_interpretation": "Pairwise gain/harm switching is safe and two-domain positive, but fixed horizon composer remains the safer deployable shape policy because ETH_UCY weakens versus fixed and TrajNet t50 falls.",
+    "domains": {
+      "ETH_UCY": {
+        "status": "ok",
+        "all": 0.01609092234292575,
+        "t50": 0.0017756136269108103,
+        "t100": 0.004284781808472471,
+        "hard_failure": 0.015879478780563505,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0004020731204350536,
+        "shape_gain_t50": -0.00012552756048478386,
+        "shape_gain_t100": -2.9650299970152005e-05,
+        "shape_gain_hard_failure": 0.0004125766879699011,
+        "shape_switch_rate": 0.0025928326696916383,
+        "source_distribution": {
+          "bridge": 0.9974071673303083,
+          "old_shape": 4.630058338735068e-05,
+          "gain_gate": 0.0025465320863042873
+        },
+        "pairwise_sign_accuracy": 0.42624317066395034,
+        "delta_vs_fixed_all": -0.00032297825006355474,
+        "delta_vs_fixed_t50": -0.00012528894482233266,
+        "delta_vs_fixed_t100": -4.3928731498943385e-05,
+        "delta_vs_fixed_hard": -0.0003294059239454805
+      },
+      "TrajNet": {
+        "status": "ok",
+        "all": 0.038161213771437996,
+        "t50": 0.02647590218373508,
+        "t100": 0.014243899710901564,
+        "hard_failure": 0.039209723936848406,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.00014138369380356508,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": 0.0004495536054297533,
+        "shape_gain_hard_failure": 0.00015530982190070652,
+        "shape_switch_rate": 0.0005496015388843089,
+        "source_distribution": {
+          "bridge": 0.9994503984611157,
+          "old_shape": 0.0005496015388843089,
+          "gain_gate": 0.0
+        },
+        "pairwise_sign_accuracy": 0.5021984061555372,
+        "delta_vs_fixed_all": 2.3150465527366215e-05,
+        "delta_vs_fixed_t50": -0.0004560985580928101,
+        "delta_vs_fixed_t100": 0.0004433495183338021,
+        "delta_vs_fixed_hard": 2.5403390736533638e-05
       }
     }
   }

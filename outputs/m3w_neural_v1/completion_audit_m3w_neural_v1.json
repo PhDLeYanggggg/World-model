@@ -4386,7 +4386,7 @@
   },
   "last_validation": {
     "command": "python3 -m pytest tests",
-    "result": "226 passed in 60.59s",
+    "result": "229 passed in 65.30s",
     "source": "fresh_run"
   },
   "learned_shape_gain_gate_summary": {
@@ -4628,5 +4628,17 @@
         "delta_vs_fixed_hard": 0.00017955894658017169
       }
     }
+  },
+  "pairwise_shape_switch_policy_summary": {
+    "status": "diagnostic_safe_not_deployable_over_fixed",
+    "two_domain_pairwise_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "domains_better_than_fixed_on_any_core_metric": [
+      "TrajNet"
+    ],
+    "interpretation": "Pairwise gain/harm switching is safe and two-domain positive, but it does not replace fixed composer: ETH_UCY weakens and TrajNet t50 falls; keep fixed composer/composite route deployable."
   }
 }

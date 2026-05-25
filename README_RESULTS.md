@@ -1603,3 +1603,31 @@ pytest = 226 passed in 60.59s
 ```
 
 Conclusion: simple affine calibration did not repair ETH_UCY; validation selected `none`, and source/source+horizon calibration made ranking worse. This negative result narrows the next fix: ETH_UCY needs pairwise gain/harm switch modeling or source-specific hard/failure features, not post-hoc raw-ADE calibration. Fixed horizon composer remains the safer deployable shape policy.
+
+## Stage41 Pairwise Gain/Harm Shape Switch Policy
+
+The follow-up repair trained a pairwise source-switch model that predicts gain and harm for switching from the protected bridge/Stage37 floor into the learned-shape or gain-gate source. This avoids the failed absolute-ADE ranking objective and selects conservative gain, harm, margin, and per-horizon switch-rate thresholds on validation only; test is evaluated once.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_pairwise_gate = True
+domains_better_than_fixed_on_any_core_metric = ['TrajNet']
+ETH_UCY_all = 0.01609092234292575
+ETH_UCY_t50 = 0.0017756136269108103
+ETH_UCY_t100 = 0.004284781808472471
+ETH_UCY_hard = 0.015879478780563505
+ETH_UCY_easy = 0.0
+ETH_UCY_shape_gain_all_t50_t100_hard = 0.000402 / -0.000126 / -0.000030 / 0.000413
+ETH_UCY_delta_vs_fixed_all_t50_t100_hard = -0.000323 / -0.000125 / -0.000044 / -0.000329
+TrajNet_all = 0.038161213771437996
+TrajNet_t50 = 0.02647590218373508
+TrajNet_t100 = 0.014243899710901564
+TrajNet_hard = 0.039209723936848406
+TrajNet_easy = 0.0
+TrajNet_shape_gain_all_t50_t100_hard = 0.000141 / 0.000000 / 0.000450 / 0.000155
+TrajNet_delta_vs_fixed_all_t50_t100_hard = 0.000023 / -0.000456 / 0.000443 / 0.000025
+pytest = 229 passed in 65.30s
+```
+
+Conclusion: pairwise gain/harm switching is safe and two-domain positive, but it still does not replace the fixed horizon composer. It repairs neither ETH_UCY’s weak ranking nor TrajNet t50; it only gives tiny TrajNet all/hard/t100 gains over fixed composer. Current best deployable shape policy remains the protected fixed composer/composite route, while pairwise switching is diagnostic evidence for future source-specific hard/failure features. Stage5C and SMC remain disabled.
