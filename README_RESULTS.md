@@ -1219,14 +1219,19 @@ bounded_neural_blend_easy = 0.2070880438160938
 bounded_neural_blend_alpha_mean = 0.2999999999999999
 bounded_neural_blend_failure_reason = easy_degradation_too_high_despite_positive_all_t50_hard
 safe_switch_bounded_blend_deployable = true
-safe_switch_bounded_blend_all = 0.11701273259955347
-safe_switch_bounded_blend_t50 = 0.0901472737617619
-safe_switch_bounded_blend_t100_raw_frame_diagnostic = 0.08404585440914669
-safe_switch_bounded_blend_hard = 0.11458797966091572
+safe_switch_bounded_blend_policy = composite_tail_switch_alpha_1.0_tail_alpha_0.08
+safe_switch_bounded_blend_all = 0.2102513255185352
+safe_switch_bounded_blend_t50 = 0.13652231450154184
+safe_switch_bounded_blend_t100_raw_frame_diagnostic = 0.14694086716388166
+safe_switch_bounded_blend_hard = 0.20384916307933942
 safe_switch_bounded_blend_easy = 0.0
-safe_switch_bounded_blend_alpha_mean = 0.1181674110358738
-safe_switch_bounded_blend_switch_rate = 0.2954185275896845
-safe_switch_bounded_blend_status = deployable_auxiliary_dynamics_not_best_policy
+safe_switch_bounded_blend_alpha_mean = 0.29906641694280367
+safe_switch_bounded_blend_switch_rate = 0.3410171445036738
+safe_switch_bounded_blend_delta_vs_teacher_all = 0.006654217800260431
+safe_switch_bounded_blend_delta_vs_teacher_t50 = 0.005358324070314557
+safe_switch_bounded_blend_delta_vs_teacher_t100 = 0.013229138842131616
+safe_switch_bounded_blend_delta_vs_teacher_hard = 0.0072769072843839044
+safe_switch_bounded_blend_status = strongest_fresh_candidate_pending_bootstrap_multiseed_and_source_level_validation
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1307,20 +1312,23 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Interpretation: the continuous neural dynamics signal is real on all/t50/t100/hard, but the full-row easy-case harm is far beyond the <=2% safety gate. Full-row blend is not deployable. A second safe-switch-only hypothesis, constrained to the already validation-repaired teacher switch set, is deployable as an auxiliary dynamics head:
+Interpretation: the continuous neural dynamics signal is real on all/t50/t100/hard, but the full-row easy-case harm is far beyond the <=2% safety gate. Full-row blend is not deployable. A second safe-switch family, constrained by the already validation-repaired teacher switch set and then allowing a small low-risk tail blend, is deployable as a bounded neural dynamics candidate:
 
 ```text
-safe_switch_policy = teacher_repaired_switch, alpha 0.4
+safe_switch_policy = composite_tail, switch_alpha 1.0, tail_alpha 0.08
 safe_switch_deployable = true
-safe_switch_all_improvement = 0.11701273259955347
-safe_switch_t50_improvement = 0.0901472737617619
-safe_switch_t100_raw_frame_diagnostic = 0.08404585440914669
-safe_switch_hard_failure_improvement = 0.11458797966091572
+safe_switch_all_improvement = 0.2102513255185352
+safe_switch_t50_improvement = 0.13652231450154184
+safe_switch_t100_raw_frame_diagnostic = 0.14694086716388166
+safe_switch_hard_failure_improvement = 0.20384916307933942
 safe_switch_easy_degradation = 0.0
-safe_switch_collision_delta_vs_floor_005 = -0.001155581642760195
+safe_switch_collision_delta_vs_floor_005 = -0.0038702813749587617
+safe_switch_delta_vs_teacher_repair_all = 0.006654217800260431
+safe_switch_delta_vs_teacher_repair_t50 = 0.005358324070314557
+safe_switch_delta_vs_teacher_repair_hard = 0.0072769072843839044
 ```
 
-This proves a safe nonzero continuous neural-dynamics contribution exists under the Stage37/teacher safety floor, but it is not the best deployable policy because it trails the teacher-guided repaired switch on all and hard/failure. Current best deployable remains the teacher-guided safety-repaired candidate.
+This proves a safe nonzero continuous neural-dynamics contribution exists under the Stage37/teacher safety floor and gives a small fresh-run lift over the teacher-guided repaired switch on all/t50/t100/hard while keeping easy degradation at 0.0. It is now the strongest fresh candidate, but it is not yet frozen as final M3W-Neural v1 because bootstrap/multiseed evidence for this composite-tail policy and the pure-UCY source-level validation blocker remain open.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 

@@ -46,6 +46,33 @@ def test_eligible_requires_easy_and_collision_safety():
 
 
 def test_safe_switch_policy_candidates_are_constrained_to_repaired_gate():
-    policies = [p for p in blend._candidate_policies() if p.get("gate") == "teacher_repaired_switch"]
+    policies = blend._safe_switch_candidate_policies()
     assert policies
-    assert all(p["gate"] == "teacher_repaired_switch" for p in policies)
+    assert all(p.get("gate") == "teacher_repaired_switch" or p["type"] == "composite_tail" for p in policies)
+    assert any(p.get("alpha") == 1.0 for p in policies if p["type"] == "global")
+    assert any(p.get("alpha") == 1.4 for p in policies if p["type"] == "global")
+    assert any(p["type"] == "composite_tail" for p in policies)
+
+
+def test_composite_tail_adds_low_alpha_only_to_safe_tail_rows():
+    data = {
+        "labels": {"horizon": np.asarray([50, 50, 50]), "domain": np.asarray(["A", "A", "A"])},
+        "teacher_repaired_switch": np.asarray([True, False, False]),
+        "proposal_gain": np.asarray([0.0, 0.2, 0.2]),
+        "proposal_harm": np.asarray([0.0, 0.1, 0.9]),
+        "proposal_uncertainty": np.asarray([0.0, 0.1, 0.1]),
+        "proposal_teacher_prob": np.asarray([1.0, 0.9, 0.9]),
+    }
+    alpha = blend._alpha_vector(
+        data,
+        {
+            "type": "composite_tail",
+            "switch_alpha": 1.0,
+            "tail_alpha": 0.1,
+            "tail_gain_min": 0.05,
+            "tail_harm_max": 0.2,
+            "tail_uncertainty_max": 0.2,
+            "tail_teacher_min": 0.45,
+        },
+    )
+    assert np.allclose(alpha, [1.0, 0.1, 0.0])
