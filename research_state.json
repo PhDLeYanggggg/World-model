@@ -1,6 +1,6 @@
 {
   "current_stage": "m3w_neural_v1_stage41_composite_tail_package",
-  "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_pure_ucy_policy_validated_not_complete",
+  "current_verdict": "stage41_composite_tail_and_domain_local_neural_endpoint_supported_not_complete",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -376,6 +376,8 @@
     "outputs/stage41_breakthrough/stage41_t50_rescue.md",
     "outputs/stage41_breakthrough/stage41_training_trials.md",
     "outputs/stage41_breakthrough/world_model_gate_stage41.md",
+    "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json",
+    "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md",
     "outputs/stage41_external_split/report.md",
     "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
     "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.md",
@@ -10423,7 +10425,7 @@
     "deployment_state": "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_and_policy_supported_strict_neural_retrain_pending",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
     "best_name": "composite_tail_safe_switch_bounded_neural_dynamics",
-    "deployable_metric_basis": "bootstrap_plus_multiseed_plus_pure_ucy_source_and_policy_train_val_test_evidence",
+    "deployable_metric_basis": "bootstrap_plus_multiseed_plus_pure_ucy_policy_plus_domain_local_endpoint_evidence",
     "all_improvement": 0.2102513255185352,
     "t50_improvement": 0.13652231450154184,
     "t100_raw_frame_diagnostic": 0.14694086716388166,
@@ -10619,5 +10621,5 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 pure-UCY policy-head calibration: UCY train/val/test protocol passes with test all +20.78%, t50 +16.74%, hard/failure +20.98%, easy degradation 0.0, collision delta 0.0073; strict pure-UCY neural retrain remains pending because proposal/floor features are mixed-external trained."
+  "latest_evidence": "Stage41 domain-local neural endpoint retrain: causal seq2seq neural endpoint models with val-selected gain/harm gates are positive on ETH_UCY, TrajNet, and UCY_expanded; direct ungated neural remains unsafe/negative, so this is endpoint-only evidence and all-agent deployment still uses the protected composite path."
 }
