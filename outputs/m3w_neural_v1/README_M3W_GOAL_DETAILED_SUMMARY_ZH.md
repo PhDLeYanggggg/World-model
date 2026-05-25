@@ -1,7 +1,23 @@
 # M3W 目标内研究总结：尝试路线、失败原因、成功结果与当前结论
 
-来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F 的新增审计、外部验证、full-waypoint、安全地板与论文包结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
+来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint 和 static-gated repair 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。Stage42-K 当前为 `in_progress`，只作为正在运行的 fresh static-gated checkpoint training 记录，不计入完成结果。  
 本文件是给项目长期目标使用的中文总 README：它不是论文结论包装，而是把真实做过的路线、失败原因、成功证据和仍然不能声称的内容集中写清楚。
+
+## 0.0 给用户的目标级摘要
+
+这个目标内我实际推进的是一条从 **SDD pixel-space selector** 到 **external dataset-local protected neural world-state candidate** 的长期路线。核心不是一次性训练出 foundation model，而是不断用 gate 排除错误路线：
+
+1. 先证明原始 JEPA / selector / correction 在 SDD 上哪里无效。
+2. 再把 SDD 数据做成 official pixel raw-frame benchmark，训练出 Stage26 cost-aware selector。
+3. 然后把模型迁移到 external top-down pedestrian 数据，先失败，再通过 row geometry、train-only goals、history windows、goal prototypes、selective transfer 修复。
+4. Stage37 形成第一个 external deployable selector：all、t+50、hard/failure 都为正，easy 安全。
+5. Stage39/40 开始训练神经动力学，但无保护 neural 不安全，不能替代 Stage37。
+6. Stage41/42 把神经动力学做成 protected candidate：Stage37/teacher floor 保护下，composite-tail / endpoint-to-full / full-waypoint / sequence ablation 都有正证据。
+7. 目前最强可部署仍需要 safety floor；它比 selector-only 更像 world-state dynamics，但仍不是 true 3D / metric / foundation。
+
+最关键的成功是：**M3W-Neural v1 composite-tail safe-switch bounded neural dynamics** 在 external dataset-local raw-frame benchmark 上形成稳定正提升，并且 Stage42-H/J 进一步证明 causal history 和 gated static/context 对 full-waypoint world-state dynamics 有用。
+
+最关键的失败是：**JEPA-only、ungated neural、hard-class selector、raw domain alignment、无保护 residual、全局 static/context mixing** 都不能部署。失败原因不是单一模型小，而是 leakage-safe 部署下 easy preservation、domain scale、goal/scene availability、horizon objective、static context overfit 同时约束了模型。
 
 ## 0. 当前一句话结论
 
@@ -881,6 +897,48 @@ static_gated ADE all/t50/hard = 0.0362 / 0.0369 / 0.0397
 
 Stage42-J 是一个有效的 policy-level repair。它把 Stage42-I 的 partial/failure 推进为 static-gated full-waypoint pass，但更强论文证据仍需要下一步把 static gate / static dropout bake into training，训练 fresh checkpoint。
 
+### 2.19 Stage42-K：fresh static-gated checkpoint training 当前状态
+
+当前状态：
+
+```text
+source = in_progress
+script = run_stage42_fresh_static_gated_checkpoint.py
+model = StaticGatedSequenceWaypoint
+seeds = 71, 73, 79
+target = fresh static-gated/static-dropout full-waypoint checkpoint
+num_workers = 0
+torch_threads = 4
+runtime = .venv-pytorch arm64
+```
+
+为什么要做：
+
+- Stage42-J 已经证明 static/context 不能全局强制混入，但 validation-gated partial static expert 有用。
+- Stage42-J 的边界是：它是 cached Stage42-I experts + fresh gate/eval，不是 fresh checkpoint training。
+- Stage42-K 的目标就是把 learned static gate、static dropout、gate regularization 直接放入训练，让模型自己学习什么时候用 static/context。
+
+当前已完成的部分：
+
+- 已实现 `src/stage42_fresh_static_gated_checkpoint.py`。
+- 已实现 `run_stage42_fresh_static_gated_checkpoint.py`。
+- 已实现 targeted test `tests/test_stage42_fresh_static_gated_checkpoint.py`。
+- targeted test 已通过：`3 passed`。
+- 训练仍在运行，已经写 heartbeat；当前不能把结果写成完成。
+
+Stage42-K 通过后才允许写：
+
+```text
+fresh_static_gated_checkpoint = completed
+```
+
+如果 Stage42-K 失败，结论也要诚实写成：
+
+```text
+Stage42-J remains the best static-gated full-waypoint evidence.
+Stage42-K did not bake the static gate into a stronger fresh checkpoint.
+```
+
 ## 3. 失败路线总表
 
 | 路线 | 状态 | 失败原因 |
@@ -907,6 +965,7 @@ Stage42-J 是一个有效的 policy-level repair。它把 Stage42-I 的 partial/
 | Stage42-G domain one-hot expert | 弱 | no_domain_expert 几乎等于 full，说明当前 external protocol 下 domain embedding 贡献很小。 |
 | Stage42-H no-safe-switch raw sequence | 不能部署 | raw family-FDE 更高，但没有 proximity/collision/deployment safety，不能替代 protected policy。 |
 | Stage42-I full static+sequence waypoint head | 部分失败 | protected ADE all/t50/hard 为负；no-static-context 变体为正，说明 static/context 混入导致 full-waypoint head 过拟合或跨域尺度不稳。 |
+| Stage42-K fresh static-gated checkpoint | 运行中 | 当前不能判定成败；它正在检验 Stage42-J policy-level static gate 能否被训练进 checkpoint。 |
 
 ## 4. 成功路线总表
 
@@ -931,6 +990,7 @@ Stage42-J 是一个有效的 policy-level repair。它把 Stage42-I 的 partial/
 | Stage42-H causal sequence ablation | 成功 | 证明 history tokens 在真正 sequence encoder 下对 t50 和 hard/failure 有强正贡献，修复了 flattened-history 负结果。 |
 | Stage42-I no-static sequence-to-waypoint variant | 局部成功 | 证明 causal sequence 可以转化成 full-waypoint ADE/FDE 正信号，但需要 static/context gating 后才能变成主模型。 |
 | Stage42-J static-gated full-waypoint repair | 成功 | 证明 partial static/context 在 validation-gated 使用时能提升 full-waypoint ADE/FDE，同时保护 easy。 |
+| Stage42-K targeted runtime/test | 运行前置成功 | fresh static-gated checkpoint 代码和 targeted test 已通过；训练仍在运行，结果未完成。 |
 
 ## 5. 当前模型到底是什么
 
@@ -1015,6 +1075,7 @@ Stage42-G 是否完成 full retrained ablation：否，只完成 Phase1；goal/s
 Stage42-H 是否证明 history：是，在 causal temporal sequence encoder 下证明；但这不是 metric、不是 seconds-level，也不是无保护 deployment。
 Stage42-I 是否完成 full-waypoint sequence integration：部分完成。history 转成 full-waypoint 有小正贡献，no-static sequence 变体为正，但 full static+sequence 模型未过 gate。
 Stage42-J 是否修复 static/context：是，policy-level 修复成功；但还不是 fresh static-gated checkpoint training。
+Stage42-K 是否完成 fresh static-gated checkpoint：否，当前 in_progress，不能包装成完成。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -1046,10 +1107,11 @@ SMC 是否可启用：否。
 - Stage42-H causal sequence ablation：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/sequence_ablation_stage42.md`
 - Stage42-I sequence-to-full-waypoint dynamics：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/sequence_full_waypoint_stage42.md`
 - Stage42-J static-gated full-waypoint repair：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/static_gated_full_waypoint_stage42.md`
+- Stage42-K fresh static-gated checkpoint training：`/Users/yangyue/Downloads/World/run_stage42_fresh_static_gated_checkpoint.py`，当前训练运行中；完成后会生成 `outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **fresh static-gated checkpoint training**：基于 Stage42-J 的 policy-level 成功，训练 static dropout / learned static gate / domain-scale adapter checkpoint，而不是只做 cached expert gate。
+1. **完成 Stage42-K fresh static-gated checkpoint training**：基于 Stage42-J 的 policy-level 成功，训练 static dropout / learned static gate / domain-scale adapter checkpoint，而不是只做 cached expert gate。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。

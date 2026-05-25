@@ -6,7 +6,7 @@ Latest Chinese detailed summary of the M3W goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-H. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package, Stage42-G added fresh retrained selector ablations, and Stage42-H proved history tokens are strongly positive under a causal sequence encoder; the package is still not full A-journal ready.
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-J plus Stage42-K as an explicitly `in_progress` fresh checkpoint run. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package, Stage42-G added fresh retrained selector ablations, Stage42-H proved history tokens are strongly positive under a causal sequence encoder, Stage42-I exposed unconditional static/context failure in full-waypoint training, and Stage42-J repaired it at policy level with validation-gated static experts. The package is still not full A-journal ready.
 
 ## M3W-Neural v1 Goal Summary
 
@@ -2059,3 +2059,18 @@ smc_enabled = false
 Stage42-J uses cached-verified Stage42-I no-static/full-static checkpoints and performs a fresh validation-selected static expert gate. It tests whether static/context should be allowed per domain/horizon rather than forced globally. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 Static-gated interpretation: Stage42-J repairs the Stage42-I failure mode at policy level. It is not a new checkpoint training run, so the source is explicitly `cached_verified_checkpoints_fresh_static_gate_eval`. The next stronger evidence step is a fresh static-gated/static-dropout checkpoint trained with this rule baked into the model.
+
+## Stage42-K Fresh Static-Gated Checkpoint Training
+
+```text
+source = in_progress
+script = run_stage42_fresh_static_gated_checkpoint.py
+model = StaticGatedSequenceWaypoint
+purpose = bake Stage42-J static gate / static dropout into fresh checkpoint training
+targeted_test = passed
+completed_metrics = not_yet_available
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-K is currently running and must not be counted as a completed result. Its role is to test whether the Stage42-J policy-level static-gated repair can become a trained checkpoint rather than a cached-expert gate. Until it finishes, the honest status is: Stage42-J remains the strongest static-gated full-waypoint evidence, while Stage42-K is an active fresh-run experiment.

@@ -7,6 +7,7 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 ## Files
 
 - `README_GOAL_SUMMARY_M3W_NEURAL_V1.md` — detailed research ledger: attempted routes, failures, successes, current best deployable candidate, and remaining gaps.
+- `README_M3W_GOAL_DETAILED_SUMMARY_ZH.md` — Chinese goal-level README for the full M3W route, including failed paths, successful paths, claim boundaries, and Stage42-K in-progress status.
 - `report_m3w_neural_v1.md` — frozen result summary.
 - `evidence_matrix_m3w_neural_v1.md/json` — gate and metric evidence.
 - `selector_policy_m3w_neural_v1.json` — frozen policy metadata and hashes.
@@ -216,3 +217,18 @@ smc_enabled = false
 Stage42-J uses cached-verified Stage42-I no-static/full-static checkpoints and performs a fresh validation-selected static expert gate. It tests whether static/context should be allowed per domain/horizon rather than forced globally. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 Static-gated interpretation: Stage42-J repairs the Stage42-I failure mode at policy level. It is not a new checkpoint training run, so the source is explicitly `cached_verified_checkpoints_fresh_static_gate_eval`. The next stronger evidence step is a fresh static-gated/static-dropout checkpoint trained with this rule baked into the model.
+
+## Stage42-K Fresh Static-Gated Checkpoint Training
+
+Stage42-K is currently running and is intentionally marked as `in_progress`, not completed:
+
+```text
+source = in_progress
+script = run_stage42_fresh_static_gated_checkpoint.py
+model = StaticGatedSequenceWaypoint
+purpose = train a fresh static-gated/static-dropout full-waypoint checkpoint
+targeted_test = passed
+completed_metrics = not_yet_available
+```
+
+It exists because Stage42-J showed that static/context is useful only when gated, but Stage42-J itself was a cached-checkpoint expert gate rather than a new trained checkpoint. Stage42-K tests whether this rule can be learned directly. Until that run finishes, Stage42-J remains the strongest static-gated full-waypoint evidence.
