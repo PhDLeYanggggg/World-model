@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed supported; pending source-level validation before final freeze)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation before final freeze)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -692,6 +692,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json",
       "note": "Composite-tail has both 2000-bootstrap support and three seed-aware replications. Every seed is deployable, positive on all/t50/t100/hard, easy=0, positive in three external domains, and strictly improves its teacher-guided repair on all/t50/t100/hard."
+    },
+    {
+      "requirement": "pure UCY source-heldout frozen-policy validation",
+      "status": "complete",
+      "evidence": "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
+      "note": "Positive on UCY zara01/zara02/zara03 with easy=0; not a pure UCY-only retrain/select/test protocol."
     }
   ],
   "next_highest_value_actions": [
@@ -1121,5 +1127,251 @@
       "smc_enabled": false
     },
     "interpretation": "Composite-tail passes three seed-aware evaluations using the independently trained teacher-guided seed checkpoints; each seed selects composite-tail on validation and evaluates test once."
+  },
+  "pure_ucy_source_heldout_validation_summary": {
+    "source": "fresh_run",
+    "report": "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
+    "pure_ucy_source_heldout_gate": true,
+    "pure_ucy_three_way_train_val_test_gate": false,
+    "target_results": {
+      "UCY__zara01__obsmat_txt": {
+        "split": "val",
+        "source": "UCY/zara01/obsmat.txt",
+        "rows": 16103,
+        "metrics": {
+          "rows": 16103,
+          "all_improvement": 0.21828771576292694,
+          "t10_improvement": 0.5301852789227356,
+          "t25_improvement": 0.07968865508627099,
+          "t50_improvement": 0.13048154004563695,
+          "t100_improvement": 0.1519913478329452,
+          "hard_failure_improvement": 0.21511919143960267,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.12745774757167894,
+          "switch_rate": 0.4796000745202757,
+          "regret_to_oracle": -0.14999561760228539,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.21828771576292694,
+              "t50_improvement": 0.13048154004563695,
+              "t100_improvement": 0.1519913478329452,
+              "hard_failure_improvement": 0.21511919143960267,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.4796000745202757
+            }
+          },
+          "alpha_mean": 0.40372849779544184,
+          "alpha_positive_rate": 0.4796000745202757,
+          "collision_delta_vs_floor_005": -0.0002500312539067684,
+          "smoothness_jagged_delta": 0.0
+        },
+        "alpha_mean": 0.40372849779544184,
+        "switch_rate": 0.4796000745202757,
+        "strict_positive": true,
+        "floor_stats": {
+          "name": "floor",
+          "rows": 16103,
+          "groups": 3305,
+          "multi_agent_rows": 15998,
+          "multi_agent_groups": 3200,
+          "mean_group_size": 4.872314674735249,
+          "switch_rate": 0.0,
+          "group_switch_rate": 0.0,
+          "mixed_group_switch_rate": 0.0,
+          "all_switch_group_rate": 0.0,
+          "no_switch_group_rate": 1.0,
+          "mean_min_group_distance": 0.08551111373624307,
+          "p05_min_group_distance": 0.012575922667039437,
+          "near_collision_rate_002": 0.15308163520440055,
+          "near_collision_rate_005": 0.4951243905488186,
+          "smoothness": {
+            "mean_max_normalized_step": 0.013650502966657206,
+            "jagged_rate": 0.0
+          }
+        },
+        "blend_stats": {
+          "name": "bounded_neural_blend",
+          "rows": 16103,
+          "groups": 3305,
+          "multi_agent_rows": 15998,
+          "multi_agent_groups": 3200,
+          "mean_group_size": 4.872314674735249,
+          "switch_rate": 0.4796000745202757,
+          "group_switch_rate": 0.7428139183055976,
+          "mixed_group_switch_rate": 0.5355521936459909,
+          "all_switch_group_rate": 0.20726172465960666,
+          "no_switch_group_rate": 0.25718608169440244,
+          "mean_min_group_distance": 0.0840145610539307,
+          "p05_min_group_distance": 0.013214658837746897,
+          "near_collision_rate_002": 0.13732966620827602,
+          "near_collision_rate_005": 0.49487435929491186,
+          "smoothness": {
+            "mean_max_normalized_step": 0.019201607753781397,
+            "jagged_rate": 0.0
+          }
+        }
+      },
+      "UCY__zara02__obsmat_txt": {
+        "split": "test",
+        "source": "UCY/zara02/obsmat.txt",
+        "rows": 25901,
+        "metrics": {
+          "rows": 25901,
+          "all_improvement": 0.19062711907148822,
+          "t10_improvement": 0.4421030898244771,
+          "t25_improvement": 0.08626219775321453,
+          "t50_improvement": 0.13578010021258757,
+          "t100_improvement": 0.1345954848165677,
+          "hard_failure_improvement": 0.18707724155054317,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.09991210991584816,
+          "switch_rate": 0.39380718891162503,
+          "regret_to_oracle": -0.13475794833324328,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.19062711907148822,
+              "t50_improvement": 0.13578010021258757,
+              "t100_improvement": 0.1345954848165677,
+              "hard_failure_improvement": 0.18707724155054317,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.39380718891162503
+            }
+          },
+          "alpha_mean": 0.31680012354735343,
+          "alpha_positive_rate": 0.39380718891162503,
+          "collision_delta_vs_floor_005": -0.002025158702340657,
+          "smoothness_jagged_delta": 0.0
+        },
+        "alpha_mean": 0.31680012354735343,
+        "switch_rate": 0.39380718891162503,
+        "strict_positive": true,
+        "floor_stats": {
+          "name": "floor",
+          "rows": 25901,
+          "groups": 4119,
+          "multi_agent_rows": 25677,
+          "multi_agent_groups": 3895,
+          "mean_group_size": 6.288176741927653,
+          "switch_rate": 0.0,
+          "group_switch_rate": 0.0,
+          "mixed_group_switch_rate": 0.0,
+          "all_switch_group_rate": 0.0,
+          "no_switch_group_rate": 1.0,
+          "mean_min_group_distance": 0.0865344282447012,
+          "p05_min_group_distance": 0.009767163915709344,
+          "near_collision_rate_002": 0.18031701522763563,
+          "near_collision_rate_005": 0.5190248081941037,
+          "smoothness": {
+            "mean_max_normalized_step": 0.011292809871603525,
+            "jagged_rate": 0.0
+          }
+        },
+        "blend_stats": {
+          "name": "bounded_neural_blend",
+          "rows": 25901,
+          "groups": 4119,
+          "multi_agent_rows": 25677,
+          "multi_agent_groups": 3895,
+          "mean_group_size": 6.288176741927653,
+          "switch_rate": 0.39380718891162503,
+          "group_switch_rate": 0.7776159261956785,
+          "mixed_group_switch_rate": 0.6950716193250789,
+          "all_switch_group_rate": 0.08254430687059966,
+          "no_switch_group_rate": 0.22238407380432143,
+          "mean_min_group_distance": 0.0853610586745054,
+          "p05_min_group_distance": 0.010616166503208057,
+          "near_collision_rate_002": 0.16847762589087512,
+          "near_collision_rate_005": 0.516999649491763,
+          "smoothness": {
+            "mean_max_normalized_step": 0.015323617894435695,
+            "jagged_rate": 0.0
+          }
+        }
+      },
+      "UCY__zara03__crowds_zara03_txt": {
+        "split": "test",
+        "source": "UCY/zara03/crowds_zara03.txt",
+        "rows": 9540,
+        "metrics": {
+          "rows": 9540,
+          "all_improvement": 0.23265884628641076,
+          "t10_improvement": 0.5301448202265879,
+          "t25_improvement": 0.1094369383623871,
+          "t50_improvement": 0.0913767291690647,
+          "t100_improvement": 0.19255939765315455,
+          "hard_failure_improvement": 0.22601578755697505,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.1243715327938506,
+          "switch_rate": 0.33343815513626834,
+          "regret_to_oracle": -0.12528457758125616,
+          "by_domain": {
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.23265884628641076,
+              "t50_improvement": 0.0913767291690647,
+              "t100_improvement": 0.19255939765315455,
+              "hard_failure_improvement": 0.22601578755697505,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.33343815513626834
+            }
+          },
+          "alpha_mean": 0.3206121593291405,
+          "alpha_positive_rate": 0.33343815513626834,
+          "collision_delta_vs_floor_005": -0.003617627713220828,
+          "smoothness_jagged_delta": 0.0
+        },
+        "alpha_mean": 0.3206121593291405,
+        "switch_rate": 0.33343815513626834,
+        "strict_positive": true,
+        "floor_stats": {
+          "name": "floor",
+          "rows": 9540,
+          "groups": 2611,
+          "multi_agent_rows": 9122,
+          "multi_agent_groups": 2193,
+          "mean_group_size": 3.6537725009574875,
+          "switch_rate": 0.0,
+          "group_switch_rate": 0.0,
+          "mixed_group_switch_rate": 0.0,
+          "all_switch_group_rate": 0.0,
+          "no_switch_group_rate": 1.0,
+          "mean_min_group_distance": 0.12025676890818746,
+          "p05_min_group_distance": 0.013487151389819247,
+          "near_collision_rate_002": 0.10951545713659286,
+          "near_collision_rate_005": 0.43071694803771104,
+          "smoothness": {
+            "mean_max_normalized_step": 0.012061250472492215,
+            "jagged_rate": 0.0
+          }
+        },
+        "blend_stats": {
+          "name": "bounded_neural_blend",
+          "rows": 9540,
+          "groups": 2611,
+          "multi_agent_rows": 9122,
+          "multi_agent_groups": 2193,
+          "mean_group_size": 3.6537725009574875,
+          "switch_rate": 0.33343815513626834,
+          "group_switch_rate": 0.523171198774416,
+          "mixed_group_switch_rate": 0.38988893144389125,
+          "all_switch_group_rate": 0.1332822673305247,
+          "no_switch_group_rate": 0.4768288012255841,
+          "mean_min_group_distance": 0.11650087453317524,
+          "p05_min_group_distance": 0.01407795018399009,
+          "near_collision_rate_002": 0.099539574654681,
+          "near_collision_rate_005": 0.4270993203244902,
+          "smoothness": {
+            "mean_max_normalized_step": 0.017819447567440725,
+            "jagged_rate": 0.0
+          }
+        }
+      }
+    },
+    "remaining_blocker": "This validates frozen-policy UCY source-heldout behavior, but it is not a pure UCY-only retrain/select/test protocol because the frozen model and safety floor were trained on mixed external train data.",
+    "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D.",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

@@ -1250,7 +1250,7 @@ safe_switch_bounded_blend_multiseed_delta_vs_teacher_t50_min = 0.005636676602763
 safe_switch_bounded_blend_multiseed_delta_vs_teacher_t100_min = 0.008330490182942518
 safe_switch_bounded_blend_multiseed_delta_vs_teacher_hard_min = 0.0054317016626029835
 safe_switch_bounded_blend_multiseed_positive_domain_counts = [3, 3, 3]
-safe_switch_bounded_blend_status = strongest_bootstrap_and_multiseed_supported_candidate_pending_source_level_validation
+safe_switch_bounded_blend_status = strongest_bootstrap_multiseed_and_pure_ucy_source_heldout_supported_candidate_pending_final_package
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1289,7 +1289,7 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: acquire or rebuild a true pure-UCY source-level validation split; the current source-level repair confirms positive held-out source files and a positive UCY-family surrogate, but pure UCY source-level validation remains blocked. Continue from teacher-guided safe switching toward a jointly learned multi-agent latent rollout with safe non-fallback dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: consolidate the pure-UCY source-heldout evidence into the final Stage41 package while keeping the stricter caveat that this is not a pure UCY-only retrain/select/test protocol. Continue from composite-tail safe-switch neural dynamics toward stronger no-fallback dynamics only if it can preserve easy cases. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Source-Level Validation Repair
@@ -1312,6 +1312,24 @@ smc_enabled = false
 ```
 
 Interpretation: the frozen teacher-guided neural candidate is positive on held-out source files and on a UCY-family surrogate, but pure UCY source-level validation remains blocked because the available split has no independent UCY validation source after excluding duplicate-like zara03. This supports candidate status, not final foundation or true-3D claims.
+
+## Stage41 Pure UCY Source-Heldout Validation
+
+Fresh pure-UCY source-heldout audit was added under `outputs/stage41_external_split/stage41_pure_ucy_source_validation.md`. The composite-tail policy was selected only on non-UCY validation rows and then evaluated once on UCY held-out sources, without future endpoints, central velocity, test endpoint goals, Stage5C, or SMC.
+
+```text
+source = fresh_run
+policy_selected_on = non_ucy_validation_rows_only
+pure_ucy_source_heldout_gate = true
+pure_ucy_three_way_train_val_test_gate = false
+UCY/zara01 all = 0.2183, t50 = 0.1305, t100 = 0.1520, hard = 0.2151, easy = 0.0000
+UCY/zara02 all = 0.1906, t50 = 0.1358, t100 = 0.1346, hard = 0.1871, easy = 0.0000
+UCY/zara03 all = 0.2327, t50 = 0.0914, t100 = 0.1926, hard = 0.2260, easy = 0.0000
+stage5c_executed = false
+smc_enabled = false
+```
+
+Interpretation: this repairs the narrower pure-UCY held-out evidence gap for the frozen-policy check, but it is still not a pure UCY-only retrain/select/test protocol because the frozen model and safety floor were trained on mixed external train data. Dataset-local raw-frame claims only.
 
 ## Stage41 Bounded Neural Blend Dynamics
 
@@ -1378,7 +1396,7 @@ composite_tail_multiseed_delta_vs_teacher_hard_min = 0.0054317016626029835
 positive_domain_counts = [3, 3, 3]
 ```
 
-Composite-tail is now bootstrap-supported and multiseed-supported as the strongest neural dynamics candidate, but it is not yet frozen as final M3W-Neural v1 because the pure-UCY source-level validation blocker and final paper/package consolidation remain open.
+Composite-tail is now bootstrap-supported, multiseed-supported, and pure-UCY source-heldout supported as the strongest neural dynamics candidate. It is not yet frozen as final M3W-Neural v1 because the strict pure UCY-only retrain/select/test protocol and final paper/package consolidation remain open.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 
