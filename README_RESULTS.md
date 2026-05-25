@@ -1238,6 +1238,8 @@ composite_tail_multiseed_strict_delta_pass = True
 composite_tail_multiseed_positive_domain_counts = [3, 3, 3]
 pure_ucy_source_heldout_gate = True
 pure_ucy_three_way_train_val_test_gate = False
+pure_ucy_policy_train_val_test_gate = True
+strict_pure_ucy_only_neural_retrain_gate = False
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1383,7 +1385,7 @@ composite_tail_multiseed_delta_vs_teacher_hard_min = 0.0054317016626029835
 positive_domain_counts = [3, 3, 3]
 ```
 
-Composite-tail is now bootstrap-supported, multiseed-supported, and pure-UCY source-heldout supported as the strongest neural dynamics candidate. It is not yet frozen as final M3W-Neural v1 because the strict pure UCY-only retrain/select/test protocol and final paper/package consolidation remain open.
+Composite-tail is now bootstrap-supported, multiseed-supported, pure-UCY source-heldout supported, and backed by a UCY-only policy-head train/val/test calibration. It is still not a strict pure-UCY neural retrain because the proposal/floor features remain mixed-external trained.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 

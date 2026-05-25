@@ -79,6 +79,7 @@ def build_completion_audit() -> dict[str, Any]:
     composite_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json", {})
     composite_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json", {})
     pure_ucy_source = read_json("outputs/stage41_external_split/stage41_pure_ucy_source_validation.json", {})
+    pure_ucy_retrain = read_json("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -262,6 +263,8 @@ def build_completion_audit() -> dict[str, Any]:
     )
     pure_ucy_source_gate = bool(pure_ucy_source.get("pure_ucy_source_heldout_gate"))
     pure_ucy_three_way_gate = bool(pure_ucy_source.get("pure_ucy_three_way_train_val_test_gate"))
+    pure_ucy_policy_gate = bool(pure_ucy_retrain.get("pure_ucy_policy_train_val_test_gate"))
+    pure_ucy_strict_neural_gate = bool(pure_ucy_retrain.get("strict_pure_ucy_only_neural_retrain_select_test_gate"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -517,6 +520,12 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Composite-tail policy is selected on non-UCY validation rows only and evaluated once on UCY zara01/zara02/zara03. This is not a pure UCY-only retrain/select/test protocol.",
         },
         {
+            "requirement": "pure UCY train/val/test policy-head calibration",
+            "status": _status(pure_ucy_policy_gate, partial=bool(pure_ucy_retrain)),
+            "evidence": "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
+            "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying neural proposal and floor are still mixed-external trained, so strict pure-UCY neural retrain remains false.",
+        },
+        {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
             "status": _status(group_distiller_deployable and group_distiller_improves_guard, partial=group_distiller_deployable or bool(group_distiller_metrics)),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
@@ -561,7 +570,7 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
-            "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)"
+            "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)"
             if composite_deployable
             else
             "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (multi-seed/bootstrap supported; pending source-level validation)"
@@ -1038,6 +1047,16 @@ def build_completion_audit() -> dict[str, Any]:
             "target_results": pure_ucy_source.get("target_results", {}),
             "caveat": pure_ucy_source.get("caveat"),
         },
+        "pure_ucy_train_val_test_policy_calibration_summary": {
+            "pure_ucy_policy_train_val_test_gate": pure_ucy_policy_gate,
+            "strict_pure_ucy_only_neural_retrain_select_test_gate": pure_ucy_strict_neural_gate,
+            "train_rows": pure_ucy_retrain.get("train_rows"),
+            "val_rows": pure_ucy_retrain.get("val_rows"),
+            "test_rows": pure_ucy_retrain.get("test_rows"),
+            "selected_policy": pure_ucy_retrain.get("selected_policy"),
+            "test_metrics": (pure_ucy_retrain.get("test_eval") or {}).get("metrics", {}),
+            "remaining_blocker": pure_ucy_retrain.get("remaining_blocker"),
+        },
         "jepa_deployment_decision_summary": {
             "decision": jepa_decision.get("decision"),
             "disable_jepa_in_deployable_path": jepa_disabled,
@@ -1048,7 +1067,7 @@ def build_completion_audit() -> dict[str, Any]:
         },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
+            "Run a strict pure-UCY neural proposal retrain if final UCY-only model independence is required; the current UCY-only policy-head passes but still uses frozen mixed external proposal/floor features.",
             "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -1372,6 +1391,10 @@ def build_completion_audit() -> dict[str, Any]:
             f"- strict pure UCY-only retrain/select/test gate: `{pure_ucy_three_way_gate}`",
             f"- target sources: `{sorted((pure_ucy_source.get('target_results') or {}).keys())}`",
             f"- caveat: `{pure_ucy_source.get('caveat')}`",
+            f"- UCY-only policy-head train/val/test gate: `{pure_ucy_policy_gate}`",
+            f"- strict pure UCY-only neural retrain gate: `{pure_ucy_strict_neural_gate}`",
+            f"- UCY policy-head test metrics: `{((pure_ucy_retrain.get('test_eval') or {}).get('metrics') or {})}`",
+            f"- UCY policy-head caveat: `{pure_ucy_retrain.get('remaining_blocker')}`",
             "",
             "## Neural Group Consistency Distiller",
             "",
@@ -1428,6 +1451,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     composite_summary = audit.get("composite_tail_bounded_neural_evidence_summary", {})
     composite_multiseed_summary = audit.get("composite_tail_bounded_neural_multiseed_summary", {})
     pure_ucy_summary = audit.get("pure_ucy_source_heldout_validation_summary", {})
+    pure_ucy_policy_summary = audit.get("pure_ucy_train_val_test_policy_calibration_summary", {})
     composite_deployable_state = bool(
         composite_summary.get("evidence_pass")
         and composite_summary.get("strict_delta_vs_teacher_repair_pass")
@@ -1441,6 +1465,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         and (composite_summary.get("collision_delta_vs_floor_005") if composite_summary.get("collision_delta_vs_floor_005") is not None else 1.0) <= 0.01
     )
     pure_ucy_source_gate_state = bool(pure_ucy_summary.get("pure_ucy_source_heldout_gate"))
+    pure_ucy_policy_gate_state = bool(pure_ucy_policy_summary.get("pure_ucy_policy_train_val_test_gate"))
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
@@ -1686,6 +1711,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"composite_tail_multiseed_positive_domain_counts = {composite_multiseed_summary.get('positive_domain_counts')}",
             f"pure_ucy_source_heldout_gate = {pure_ucy_summary.get('pure_ucy_source_heldout_gate')}",
             f"pure_ucy_three_way_train_val_test_gate = {pure_ucy_summary.get('pure_ucy_three_way_train_val_test_gate')}",
+            f"pure_ucy_policy_train_val_test_gate = {pure_ucy_policy_summary.get('pure_ucy_policy_train_val_test_gate')}",
+            f"strict_pure_ucy_only_neural_retrain_gate = {pure_ucy_policy_summary.get('strict_pure_ucy_only_neural_retrain_select_test_gate')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1795,8 +1822,13 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json")
     generated.add("outputs/stage41_external_split/stage41_pure_ucy_source_validation.md")
     generated.add("outputs/stage41_external_split/stage41_pure_ucy_source_validation.json")
+    generated.add("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.md")
+    generated.add("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = (
+        "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_pure_ucy_policy_validated_not_complete"
+        if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state
+        else
         "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_pure_ucy_source_heldout_supported_not_complete"
         if composite_deployable_state and pure_ucy_source_gate_state
         else
@@ -1813,6 +1845,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
         "deployment_state": (
+            "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_and_policy_supported_strict_neural_retrain_pending"
+            if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state
+            else
             "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_heldout_supported_pending_final_protocol"
             if composite_deployable_state and pure_ucy_source_gate_state
             else
@@ -1836,6 +1871,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             else "group_consistency_distiller"
         ),
         "deployable_metric_basis": (
+            "bootstrap_plus_multiseed_plus_pure_ucy_source_and_policy_train_val_test_evidence"
+            if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state
+            else
             "bootstrap_plus_multiseed_plus_pure_ucy_source_heldout_evidence"
             if composite_deployable_state and pure_ucy_source_gate_state
             else

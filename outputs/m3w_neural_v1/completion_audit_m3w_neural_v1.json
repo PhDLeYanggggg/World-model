@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "complete",
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -878,6 +878,93 @@
     },
     "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
   },
+  "pure_ucy_train_val_test_policy_calibration_summary": {
+    "pure_ucy_policy_train_val_test_gate": true,
+    "strict_pure_ucy_only_neural_retrain_select_test_gate": false,
+    "train_rows": 117808,
+    "val_rows": 16103,
+    "test_rows": 35441,
+    "selected_policy": {
+      "type": "pure_ucy_ridge_gain_harm",
+      "mode": "teacher_raw_gain_harm",
+      "alpha": 0.4,
+      "gain_min": 0.0,
+      "harm_max": 0.0,
+      "proposal_harm_max": 0.25,
+      "uncertainty_max": 0.25,
+      "teacher_min": 0.5
+    },
+    "test_metrics": {
+      "rows": 35441,
+      "all_improvement": 0.20776078287134314,
+      "t10_improvement": 0.3186320645598619,
+      "t25_improvement": 0.07604057090793714,
+      "t50_improvement": 0.16741031165863363,
+      "t100_improvement": 0.219956129029393,
+      "hard_failure_improvement": 0.20980890977880717,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.109476277047378,
+      "switch_rate": 0.5038232555514799,
+      "regret_to_oracle": -0.1351880940988382,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.20576698045363073,
+          "t50_improvement": 0.19449331248310975,
+          "t100_improvement": 0.2012278018557263,
+          "hard_failure_improvement": 0.2074244291310272,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.5283965870043628
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.21306818879480027,
+          "t50_improvement": 0.09380788841505572,
+          "t100_improvement": 0.2737636153082392,
+          "hard_failure_improvement": 0.21642402352003987,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.4371069182389937
+        }
+      },
+      "endpoint_fde_metrics": {
+        "rows": 35441,
+        "all_improvement": 0.19988295321965166,
+        "t10_improvement": 0.34289120068878687,
+        "t25_improvement": 0.07920444370090152,
+        "t50_improvement": 0.1932412042921009,
+        "t100_improvement": 0.19666022159899088,
+        "hard_failure_improvement": 0.2019465651862199,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.15199923397543671,
+        "switch_rate": 0.5038232555514799,
+        "regret_to_oracle": 0.055795881982318114,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": 0.200764449256583,
+            "t50_improvement": 0.22997532411686694,
+            "t100_improvement": 0.17668205323818498,
+            "hard_failure_improvement": 0.20274646874995617,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.5283965870043628
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.19747790428901502,
+            "t50_improvement": 0.08863185042687594,
+            "t100_improvement": 0.2538225381383088,
+            "hard_failure_improvement": 0.19967489336772315,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.4371069182389937
+          }
+        }
+      },
+      "collision_delta_vs_floor_005": 0.007327796775769391,
+      "smoothness_jagged_delta": 0.0,
+      "alpha_mean": 0.20152930222059195
+    },
+    "remaining_blocker": "The policy/head is trained and selected only on UCY train/val rows, but the underlying neural proposal, Stage37 floor, and teacher-repaired switch features are inherited from mixed external training. A full strict pure-UCY neural world-model retrain is still not complete."
+  },
   "jepa_deployment_decision_summary": {
     "decision": "disable_jepa_in_deployable_path",
     "disable_jepa_in_deployable_path": true,
@@ -1040,6 +1127,12 @@
       "note": "Composite-tail policy is selected on non-UCY validation rows only and evaluated once on UCY zara01/zara02/zara03. This is not a pure UCY-only retrain/select/test protocol."
     },
     {
+      "requirement": "pure UCY train/val/test policy-head calibration",
+      "status": "complete",
+      "evidence": "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
+      "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying neural proposal and floor are still mixed-external trained, so strict pure-UCY neural retrain remains false."
+    },
+    {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
@@ -1080,7 +1173,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
+    "Run a strict pure-UCY neural proposal retrain if final UCY-only model independence is required; the current UCY-only policy-head passes but still uses frozen mixed external proposal/floor features.",
     "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

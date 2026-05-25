@@ -1,6 +1,6 @@
 {
   "current_stage": "m3w_neural_v1_stage41_composite_tail_package",
-  "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_pure_ucy_source_heldout_supported_not_complete",
+  "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_pure_ucy_policy_validated_not_complete",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -377,6 +377,8 @@
     "outputs/stage41_breakthrough/stage41_training_trials.md",
     "outputs/stage41_breakthrough/world_model_gate_stage41.md",
     "outputs/stage41_external_split/report.md",
+    "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
+    "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.md",
     "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
     "outputs/stage41_external_split/stage41_pure_ucy_source_validation.md",
     "outputs/stage41_external_split/stage41_stratified_split_candidate.md",
@@ -9842,7 +9844,7 @@
       "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
   "last_updated": "2026-05-24",
   "stage5c_ready": false,
   "true_3d_world_model": false,
@@ -9878,7 +9880,7 @@
   "m3w_neural_v1_completion_audit": {
     "source": "fresh_run",
     "completion_status": "complete",
-    "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)",
+    "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
     "all_agent_risk_repair_summary": {
       "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
       "all_improvement": 0.09976285280545372,
@@ -10418,10 +10420,10 @@
   "m3w_neural_v1_current_candidate": {
     "source": "fresh_run",
     "completion_status": "complete",
-    "deployment_state": "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_heldout_supported_pending_final_protocol",
-    "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)",
+    "deployment_state": "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_and_policy_supported_strict_neural_retrain_pending",
+    "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
     "best_name": "composite_tail_safe_switch_bounded_neural_dynamics",
-    "deployable_metric_basis": "bootstrap_plus_multiseed_plus_pure_ucy_source_heldout_evidence",
+    "deployable_metric_basis": "bootstrap_plus_multiseed_plus_pure_ucy_source_and_policy_train_val_test_evidence",
     "all_improvement": 0.2102513255185352,
     "t50_improvement": 0.13652231450154184,
     "t100_raw_frame_diagnostic": 0.14694086716388166,
@@ -10617,5 +10619,5 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 pure-UCY source-heldout audit: zara01/zara02/zara03 all strict-positive with t50/t100/hard positive and easy degradation 0.0; not a pure UCY-only retrain/select/test protocol."
+  "latest_evidence": "Stage41 pure-UCY policy-head calibration: UCY train/val/test protocol passes with test all +20.78%, t50 +16.74%, hard/failure +20.98%, easy degradation 0.0, collision delta 0.0073; strict pure-UCY neural retrain remains pending because proposal/floor features are mixed-external trained."
 }
