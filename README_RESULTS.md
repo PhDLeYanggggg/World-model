@@ -1518,3 +1518,30 @@ pytest = 219 passed in 59.91s
 ```
 
 Conclusion: learned gain/harm calibration expands ETH_UCY shape intervention and improves TrajNet t50 shape gain, but it is not a monotonic upgrade over the previous learned-shape bridge. The best next step is a domain/horizon-specific shape-policy composer that keeps ETH_UCY all/hard improvements from the gain gate while preserving TrajNet t100/tail behavior from the previous t100-only learned-shape policy. This remains protected 2.5D evidence; no Stage5C or SMC execution.
+
+## Stage41 Domain/Horizon Shape-Policy Composer
+
+A fresh composer now treats the previous learned-shape bridge and the gain/harm shape gate as separate sources. It selects the source per horizon family on validation only (`short`, `t50`, `t100`) and evaluates test once. The selected policy is still protected by the endpoint bridge/floor fallback and remains dataset-local raw-frame 2.5D evidence, not metric/seconds-level, true 3D, foundation-model evidence, Stage5C, or SMC.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_composer_gate = True
+ETH_UCY_policy_short_t50_t100 = gain_gate / bridge / old_shape
+ETH_UCY_all = 0.016413900592989306
+ETH_UCY_t50 = 0.001900902571733143
+ETH_UCY_t100 = 0.004328710539971414
+ETH_UCY_hard = 0.016208884704508986
+ETH_UCY_easy = 0.0
+ETH_UCY_shape_gain_all_t50_t100_hard = 0.000730 / 0.000000 / 0.000014 / 0.000747
+TrajNet_policy_short_t50_t100 = bridge / gain_gate / gain_gate
+TrajNet_all = 0.03813806330591063
+TrajNet_t50 = 0.02693200074182789
+TrajNet_t100 = 0.013800550192567762
+TrajNet_hard = 0.03918432054611187
+TrajNet_easy = 0.0
+TrajNet_shape_gain_all_t50_t100_hard = 0.000117 / 0.000469 / 0.000000 / 0.000129
+pytest = 221 passed in 60.99s
+```
+
+Conclusion: the composer makes the mixed shape evidence deployable as a validation-selected horizon policy. It improves the ETH_UCY all/hard shape contribution while preserving the old-shape t100 behavior, and it keeps the TrajNet t50 gain-gate contribution. It does not yet prove a large ungated full-waypoint neural dynamics breakthrough; the protected floor remains required and Stage5C/SMC stay disabled.

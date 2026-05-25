@@ -4384,7 +4384,11 @@
     },
     "interpretation": "Past-only waypoint-shape residual head passes a protected two-domain gate, but the learned-shape contribution is tiny and mostly t100/tail-specific; it is not an ungated learned full-waypoint dynamics replacement."
   },
-  "last_validation": "python3 -m pytest tests (219 passed in 59.91s)",
+  "last_validation": {
+    "command": "python3 -m pytest tests",
+    "result": "221 passed in 60.99s",
+    "source": "fresh_run"
+  },
   "learned_shape_gain_gate_summary": {
     "source": "fresh_run",
     "report": "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md",
@@ -4463,6 +4467,56 @@
         "selected_mode": "all_waypoints",
         "selected_horizons": "long_horizon",
         "collision_delta_vs_floor_005": -0.0029078220412910305
+      }
+    }
+  },
+  "shape_policy_composer_summary": {
+    "source": "fresh_run",
+    "protocol": "domain_horizon_shape_policy_composer",
+    "two_domain_composer_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false,
+    "domains": {
+      "ETH_UCY": {
+        "status": "ok",
+        "policy": {
+          "short": "gain_gate",
+          "t50": "bridge",
+          "t100": "old_shape"
+        },
+        "all": 0.016413900592989306,
+        "t50": 0.001900902571733143,
+        "t100": 0.004328710539971414,
+        "hard_failure": 0.016208884704508986,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0007302013962300347,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": 1.4468774637288462e-05,
+        "shape_gain_hard_failure": 0.0007471597107203687,
+        "shape_switch_rate": 0.005648671173256783
+      },
+      "TrajNet": {
+        "status": "ok",
+        "policy": {
+          "short": "bridge",
+          "t50": "gain_gate",
+          "t100": "gain_gate"
+        },
+        "all": 0.03813806330591063,
+        "t50": 0.02693200074182789,
+        "t100": 0.013800550192567762,
+        "hard_failure": 0.03918432054611187,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0001173181302596138,
+        "shape_gain_t50": 0.0004685025867524617,
+        "shape_gain_t100": 0.0,
+        "shape_gain_hard_failure": 0.00012887382855930607,
+        "shape_switch_rate": 0.0008244023083264633
       }
     }
   }

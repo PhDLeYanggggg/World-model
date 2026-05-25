@@ -1,6 +1,6 @@
 # Stage41 Pytest Status
 
 - command: `python3 -m pytest tests`
-- result: `219 passed in 59.91s`
+- result: `221 passed in 60.99s`
 - source: `fresh_run`
 - note: `.venv-pytorch` does not include pytest, so tests were run with `python3`; training still used the arm64 `.venv-pytorch/bin/python` runtime.

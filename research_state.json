@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (219 passed in 59.91s); .venv-pytorch/bin/python run_stage41_learned_shape_gain_gate.py",
+  "last_successful_command": "python3 -m pytest tests (221 passed in 60.99s); .venv-pytorch/bin/python run_stage41_shape_policy_composer.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -470,7 +470,9 @@
     "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_repair.md",
     "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.md",
     "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
-    "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md"
+    "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md",
+    "outputs/stage41_domain_local/stage41_shape_policy_composer.md",
+    "outputs/stage41_domain_local/stage41_shape_policy_composer.json"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -9854,8 +9856,8 @@
       "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint/full-trajectory bridge and learned-shape residual/gain-gate evidence; deployment still requires protected fallback and remains 2.5D.",
-  "last_updated": "2026-05-25T00:00:00Z",
+  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint/full-trajectory bridge and horizon-composed learned-shape evidence; deployment still requires protected fallback and remains 2.5D.",
+  "last_updated": "2026-05-25",
   "stage5c_ready": false,
   "true_3d_world_model": false,
   "large_scale_foundation_world_model": false,
@@ -10775,7 +10777,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 learned shape gain/harm gate passed a protected two-domain gate; it improves ETH_UCY shape all/hard and TrajNet t50 shape gain, but is not a monotonic global upgrade over the previous learned-shape bridge.",
+  "latest_evidence": "Stage41 domain/horizon shape-policy composer passed a protected two-domain gate. It formalizes the mixed learned-shape evidence with val-selected horizon sources, but the protected floor remains required.",
   "stage41_domain_local_full_trajectory_repair": {
     "two_domain_repair_gate": false,
     "positive_domains": [
@@ -11054,6 +11056,56 @@
         "selected_mode": "all_waypoints",
         "selected_horizons": "long_horizon",
         "collision_delta_vs_floor_005": -0.0029078220412910305
+      }
+    }
+  },
+  "stage41_shape_policy_composer": {
+    "source": "fresh_run",
+    "protocol": "domain_horizon_shape_policy_composer",
+    "two_domain_composer_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false,
+    "domains": {
+      "ETH_UCY": {
+        "status": "ok",
+        "policy": {
+          "short": "gain_gate",
+          "t50": "bridge",
+          "t100": "old_shape"
+        },
+        "all": 0.016413900592989306,
+        "t50": 0.001900902571733143,
+        "t100": 0.004328710539971414,
+        "hard_failure": 0.016208884704508986,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0007302013962300347,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": 1.4468774637288462e-05,
+        "shape_gain_hard_failure": 0.0007471597107203687,
+        "shape_switch_rate": 0.005648671173256783
+      },
+      "TrajNet": {
+        "status": "ok",
+        "policy": {
+          "short": "bridge",
+          "t50": "gain_gate",
+          "t100": "gain_gate"
+        },
+        "all": 0.03813806330591063,
+        "t50": 0.02693200074182789,
+        "t100": 0.013800550192567762,
+        "hard_failure": 0.03918432054611187,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0001173181302596138,
+        "shape_gain_t50": 0.0004685025867524617,
+        "shape_gain_t100": 0.0,
+        "shape_gain_hard_failure": 0.00012887382855930607,
+        "shape_switch_rate": 0.0008244023083264633
       }
     }
   }
