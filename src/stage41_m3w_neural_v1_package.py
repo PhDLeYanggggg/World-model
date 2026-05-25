@@ -33,6 +33,12 @@ SOURCE_PATHS = [
     SPLIT_DIR / "stage41_pure_ucy_source_validation.json",
     SPLIT_DIR / "stage41_pure_ucy_neural_dataset.json",
     SPLIT_DIR / "stage41_pure_ucy_neural_retrain.json",
+    DOMAIN_LOCAL_DIR / "stage41_endpoint_to_full_trajectory_repair.json",
+    DOMAIN_LOCAL_DIR / "stage41_learned_waypoint_shape_bridge.json",
+    DOMAIN_LOCAL_DIR / "stage41_learned_shape_gain_gate.json",
+    DOMAIN_LOCAL_DIR / "stage41_shape_policy_composer.json",
+    DOMAIN_LOCAL_DIR / "stage41_dynamic_shape_meta_policy.json",
+    DOMAIN_LOCAL_DIR / "stage41_calibrated_shape_meta_policy.json",
     DOMAIN_LOCAL_DIR / "stage41_fixed_prior_source_switch_policy.json",
     DOMAIN_LOCAL_DIR / "stage41_fixed_prior_oracle_audit.json",
     Path("src/stage41_breakthrough.py"),
@@ -43,6 +49,12 @@ SOURCE_PATHS = [
     Path("src/stage41_all_agent_composite_world_state.py"),
     Path("src/stage41_pure_ucy_source_validation.py"),
     Path("src/stage41_pure_ucy_neural_retrain.py"),
+    Path("src/stage41_endpoint_to_full_trajectory_repair.py"),
+    Path("src/stage41_learned_waypoint_shape_bridge.py"),
+    Path("src/stage41_learned_shape_gain_gate.py"),
+    Path("src/stage41_shape_policy_composer.py"),
+    Path("src/stage41_dynamic_shape_meta_policy.py"),
+    Path("src/stage41_calibrated_shape_meta_policy.py"),
 ]
 
 CURRENT_FACTS = [
@@ -146,6 +158,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
     source_repair = _safe_read(SPLIT_DIR / "stage41_source_level_validation_repair.json")
     pure_ucy = _safe_read(SPLIT_DIR / "stage41_pure_ucy_source_validation.json")
     pure_ucy_neural = _safe_read(SPLIT_DIR / "stage41_pure_ucy_neural_retrain.json")
+    endpoint_to_full = _safe_read(DOMAIN_LOCAL_DIR / "stage41_endpoint_to_full_trajectory_repair.json")
+    calibrated_shape = _safe_read(DOMAIN_LOCAL_DIR / "stage41_calibrated_shape_meta_policy.json")
     split_report = _safe_read(SPLIT_DIR / "report.json")
     seq2seq = _safe_read(STAGE41_DIR / "stage41_seq2seq_dataset.json")
     all_agent = _safe_read(STAGE41_DIR / "stage41_all_agent_dataset.json")
@@ -245,6 +259,46 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "no_leakage": pure_ucy_neural.get("no_leakage", {}),
             "interpretation": "Strict pure-UCY neural retrain/select/test was attempted with source-only train/val/test. It is negative deployability evidence: raw neural residual has some signal, but validation-selected safe deployment falls back because source-shift/easy-safety is not reliable.",
         },
+        "endpoint_to_full_trajectory_bridge": {
+            "gate": endpoint_to_full.get("two_domain_endpoint_to_full_gate"),
+            "positive_domains": endpoint_to_full.get("positive_domains"),
+            "positive_domain_count": endpoint_to_full.get("positive_domain_count"),
+            "domain_results": {
+                domain: {
+                    "status": row.get("status"),
+                    "endpoint_to_full_trajectory_gate": row.get("endpoint_to_full_trajectory_gate"),
+                    "rows": row.get("rows"),
+                    "t50_rows": row.get("t50_rows"),
+                    "t100_rows": row.get("t100_rows"),
+                    "ade_metrics_vs_floor": row.get("ade_metrics_vs_floor"),
+                    "fde_metrics_vs_floor": row.get("fde_metrics_vs_floor"),
+                    "multi_agent_ade_metrics": row.get("multi_agent_ade_metrics"),
+                    "collision_delta_vs_floor_005": row.get("collision_delta_vs_floor_005"),
+                    "smoothness_jagged_delta": row.get("smoothness_jagged_delta"),
+                }
+                for domain, row in (endpoint_to_full.get("domain_results") or {}).items()
+            },
+            "claim_boundary": endpoint_to_full.get("claim_boundary"),
+            "interpretation": "Endpoint neural dynamics are projected to a linear waypoint bridge and scored against actual reconstructed future waypoints. This is positive full-waypoint bridge evidence on ETH_UCY and TrajNet, but it is not learned waypoint-shape dynamics.",
+        },
+        "learned_waypoint_shape_meta_policy": {
+            "gate": calibrated_shape.get("two_domain_calibrated_meta_gate"),
+            "positive_domains": calibrated_shape.get("positive_domains"),
+            "positive_domain_count": calibrated_shape.get("positive_domain_count"),
+            "domain_results": {
+                domain: {
+                    "status": row.get("status"),
+                    "selected_mode": row.get("selected_mode"),
+                    "selected_pass": row.get("selected_pass"),
+                    "selected_compact": row.get("selected_compact"),
+                    "fixed_horizon_composer_compact": row.get("fixed_horizon_composer_compact"),
+                }
+                for domain, row in (calibrated_shape.get("domain_results") or {}).items()
+            },
+            "no_leakage": calibrated_shape.get("no_leakage"),
+            "claim_boundary": calibrated_shape.get("claim_boundary"),
+            "interpretation": "The calibrated learned-shape meta-policy is positive on ETH_UCY and TrajNet with small learned-shape residual gains. It strengthens learned full-waypoint evidence, but remains protected by endpoint bridge/floor fallback and is not an ungated neural replacement.",
+        },
         "source_level_validation_repair": {
             "pass": source_repair.get("source_level_validation_repair_pass"),
             "pure_ucy_source_level_gate": source_repair.get("pure_ucy_source_level_gate"),
@@ -324,6 +378,10 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         _metric_row("strict pure UCY neural retrain gate", pure_ucy_neural.get("strict_pure_ucy_only_neural_retrain_select_test_gate"), "negative deployability audit, not claimed"),
         _metric_row("strict pure UCY neural best trial/mode", f"{pure_ucy_neural.get('best_trial')} / {pure_ucy_neural.get('best_mode')}", "source-only neural retrain protocol"),
         _metric_row("strict pure UCY neural all/t50/hard/easy", f"{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('all_improvement'))} / {_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('t50_improvement'))} / {_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('hard_failure_improvement'))} / {_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('easy_degradation'))}", "selected safe policy falls back if not reliable"),
+        _metric_row("endpoint-to-full bridge gate", endpoint_to_full.get("two_domain_endpoint_to_full_gate"), "positive full-waypoint bridge evidence, not learned shape"),
+        _metric_row("endpoint-to-full bridge positive domains", endpoint_to_full.get("positive_domains"), "ETH_UCY and TrajNet if pass"),
+        _metric_row("calibrated learned-shape meta-policy gate", calibrated_shape.get("two_domain_calibrated_meta_gate"), "positive learned-shape residual evidence under fallback"),
+        _metric_row("calibrated learned-shape positive domains", calibrated_shape.get("positive_domains"), "ETH_UCY and TrajNet if pass"),
         _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
         _metric_row("fixed-prior source switch beats fixed composer", fixed_prior_switch.get("two_domain_fixed_prior_beats_fixed_gate"), "negative branch audit"),
         _metric_row("residual source-switch oracle headroom", fixed_prior_oracle.get("two_domain_residual_oracle_headroom"), "negative branch audit"),
@@ -375,6 +433,10 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- strict pure UCY neural best trial/mode: `{pure_ucy_neural.get('best_trial')}` / `{pure_ucy_neural.get('best_mode')}`",
         f"- strict pure UCY neural best metrics all/t+50/hard/easy: `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('all_improvement'))}` / `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('t50_improvement'))}` / `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('hard_failure_improvement'))}` / `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('easy_degradation'))}`",
         f"- strict pure UCY neural blocker: `{pure_ucy_neural.get('remaining_blocker')}`",
+        f"- endpoint-to-full bridge gate: `{endpoint_to_full.get('two_domain_endpoint_to_full_gate')}`",
+        f"- endpoint-to-full bridge positive domains: `{endpoint_to_full.get('positive_domains')}`",
+        f"- calibrated learned-shape meta-policy gate: `{calibrated_shape.get('two_domain_calibrated_meta_gate')}`",
+        f"- calibrated learned-shape positive domains: `{calibrated_shape.get('positive_domains')}`",
         f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
         f"- fixed-prior source switch beats fixed composer: `{fixed_prior_switch.get('two_domain_fixed_prior_beats_fixed_gate')}`",
         f"- residual source-switch oracle headroom: `{fixed_prior_oracle.get('two_domain_residual_oracle_headroom')}`",
@@ -392,7 +454,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "",
         "## Current Best Deployable Answer",
         "",
-        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement. The stricter pure UCY-only neural retrain/select/test audit has now been attempted and failed deployability because source-shift/easy-safety was not reliable, so Stage37 remains the explicit safety floor.",
+        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement. The stricter pure UCY-only neural retrain/select/test audit has now been attempted and failed deployability because source-shift/easy-safety was not reliable, so Stage37 remains the explicit safety floor. A new endpoint-to-full bridge audit is positive on ETH_UCY and TrajNet, showing endpoint neural dynamics can survive actual full-waypoint evaluation through a linear bridge. The calibrated learned-shape meta-policy then adds small but positive protected waypoint-shape residual contribution on both domains.",
         "",
         "Recent negative source-switch and strict pure-UCY neural retrain audits show that residual source selection and source-only neural retraining are not the next useful deployment path without new causal features, stronger scene/domain context, or more independent UCY-like validation data.",
     ]
@@ -418,6 +480,10 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- `paper_gap_m3w_neural_v1.md` — what is still missing before stronger publication claims.",
             "",
             "Latest package inputs include the negative fixed-composer source-switch audits and the negative strict pure-UCY neural retrain audit, so the frozen package records both the successful composite-tail path and the exhausted source-switch / source-only retrain branches.",
+            "",
+            "The package also includes the positive endpoint-to-full bridge audit: domain-local endpoint neural dynamics pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet through a linear waypoint bridge. This strengthens world-state evidence without claiming learned waypoint-shape dynamics.",
+            "",
+            "The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.",
         ],
     )
 
@@ -489,6 +555,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_composite_tail_multiseed.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_source_validation.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_retrain.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_to_full_trajectory_repair.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_calibrated_shape_meta_policy.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_geometry_audit.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_gates.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_freeze_m3w_neural_v1.py",
@@ -520,6 +588,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- Seconds-level long-horizon prediction.",
             "- Ungated neural dynamics safe replacement.",
             "- Pure UCY-only neural retrain/select/test deployability: it has now been attempted and is negative because source-shift/easy-safety was not reliable.",
+            "- Ungated learned waypoint-shape dynamics: calibrated learned-shape residuals are positive on two domains, but the contribution is small and protected by endpoint bridge/floor fallback.",
             "- Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.",
             "- Residual source-switching over the fixed composer as a deployable improvement path.",
             "",
@@ -570,6 +639,10 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "strict_pure_ucy_neural_hard_failure_improvement": (pure_ucy_neural.get("best_metrics") or {}).get("hard_failure_improvement"),
             "strict_pure_ucy_neural_easy_degradation": (pure_ucy_neural.get("best_metrics") or {}).get("easy_degradation"),
             "strict_pure_ucy_neural_remaining_blocker": pure_ucy_neural.get("remaining_blocker"),
+            "endpoint_to_full_bridge_gate": endpoint_to_full.get("two_domain_endpoint_to_full_gate"),
+            "endpoint_to_full_bridge_positive_domains": endpoint_to_full.get("positive_domains"),
+            "calibrated_learned_shape_meta_gate": calibrated_shape.get("two_domain_calibrated_meta_gate"),
+            "calibrated_learned_shape_positive_domains": calibrated_shape.get("positive_domains"),
             "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
             "composite_tail_multiseed_pass": composite_multiseed.get("replication_pass"),
             "strict_delta_vs_teacher_repair_pass": composite_multiseed.get("strict_delta_vs_teacher_repair_pass"),
@@ -621,6 +694,10 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"strict_pure_ucy_neural_hard_failure_improvement = {summary.get('strict_pure_ucy_neural_hard_failure_improvement')}",
         f"strict_pure_ucy_neural_easy_degradation = {summary.get('strict_pure_ucy_neural_easy_degradation')}",
         f"strict_pure_ucy_neural_remaining_blocker = {summary.get('strict_pure_ucy_neural_remaining_blocker')}",
+        f"endpoint_to_full_bridge_gate = {summary.get('endpoint_to_full_bridge_gate')}",
+        f"endpoint_to_full_bridge_positive_domains = {summary.get('endpoint_to_full_bridge_positive_domains')}",
+        f"calibrated_learned_shape_meta_gate = {summary.get('calibrated_learned_shape_meta_gate')}",
+        f"calibrated_learned_shape_positive_domains = {summary.get('calibrated_learned_shape_positive_domains')}",
         f"composite_tail_evidence_pass = {summary.get('composite_tail_evidence_pass')}",
         f"composite_tail_multiseed_pass = {summary.get('composite_tail_multiseed_pass')}",
         f"all_agent_composite_world_state_pass = {summary.get('all_agent_composite_world_state_pass')}",
@@ -680,6 +757,10 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "strict_pure_ucy_neural_hard_failure_improvement": summary.get("strict_pure_ucy_neural_hard_failure_improvement"),
         "strict_pure_ucy_neural_easy_degradation": summary.get("strict_pure_ucy_neural_easy_degradation"),
         "strict_pure_ucy_neural_remaining_blocker": summary.get("strict_pure_ucy_neural_remaining_blocker"),
+        "endpoint_to_full_bridge_gate": summary.get("endpoint_to_full_bridge_gate"),
+        "endpoint_to_full_bridge_positive_domains": summary.get("endpoint_to_full_bridge_positive_domains"),
+        "calibrated_learned_shape_meta_gate": summary.get("calibrated_learned_shape_meta_gate"),
+        "calibrated_learned_shape_positive_domains": summary.get("calibrated_learned_shape_positive_domains"),
         "composite_tail_evidence_pass": summary.get("composite_tail_evidence_pass"),
         "composite_tail_multiseed_pass": summary.get("composite_tail_multiseed_pass"),
         "strict_delta_vs_teacher_repair_pass": summary.get("strict_delta_vs_teacher_repair_pass"),

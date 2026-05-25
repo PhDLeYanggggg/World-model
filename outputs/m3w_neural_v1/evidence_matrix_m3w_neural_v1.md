@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `e80e02aa1c7e89cb2892dfa9cc82fef8565a6525e9000a71adbde53aa96361d5`
-- git_commit: `e767c49`
+- package_input_hash: `6b97872388f01afd92f5f5c98fabe4f30ecec9e22079a6c765a92145132a871c`
+- git_commit: `a2983a4`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -27,6 +27,10 @@
 | strict pure UCY neural retrain gate | `False` | negative deployability audit, not claimed |
 | strict pure UCY neural best trial/mode | `pure_ucy_transformer / candidate_switch` | source-only neural retrain protocol |
 | strict pure UCY neural all/t50/hard/easy | `0.00% / 0.00% / 0.00% / 0.00%` | selected safe policy falls back if not reliable |
+| endpoint-to-full bridge gate | `True` | positive full-waypoint bridge evidence, not learned shape |
+| endpoint-to-full bridge positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
+| calibrated learned-shape meta-policy gate | `True` | positive learned-shape residual evidence under fallback |
+| calibrated learned-shape positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
 | JEPA deployable path | `disabled` | JEPA had no deployable downstream lift |
 | fixed-prior source switch beats fixed composer | `False` | negative branch audit |
 | residual source-switch oracle headroom | `False` | negative branch audit |

@@ -84,6 +84,12 @@ def build_completion_audit() -> dict[str, Any]:
     domain_local_neural = read_json("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json", {})
     domain_local_all_agent = read_json("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json", {})
     domain_local_full_traj = read_json("outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json", {})
+    endpoint_to_full = read_json("outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json", {})
+    learned_shape = read_json("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json", {})
+    shape_gain = read_json("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json", {})
+    shape_composer = read_json("outputs/stage41_domain_local/stage41_shape_policy_composer.json", {})
+    dynamic_shape_meta = read_json("outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json", {})
+    calibrated_shape_meta = read_json("outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -280,6 +286,14 @@ def build_completion_audit() -> dict[str, Any]:
     domain_local_all_agent_positive_domains = list(domain_local_all_agent.get("positive_domains") or [])
     domain_local_full_traj_gate = bool(domain_local_full_traj.get("two_domain_full_trajectory_gate"))
     domain_local_full_traj_positive_domains = list(domain_local_full_traj.get("positive_domains") or [])
+    endpoint_to_full_gate = bool(endpoint_to_full.get("two_domain_endpoint_to_full_gate"))
+    endpoint_to_full_positive_domains = list(endpoint_to_full.get("positive_domains") or [])
+    learned_shape_gate = bool(learned_shape.get("two_domain_learned_shape_gate"))
+    shape_gain_gate = bool(shape_gain.get("two_domain_gain_gate"))
+    shape_composer_gate = bool(shape_composer.get("two_domain_composer_gate"))
+    dynamic_shape_meta_gate = bool(dynamic_shape_meta.get("two_domain_dynamic_meta_gate"))
+    calibrated_shape_meta_gate = bool(calibrated_shape_meta.get("two_domain_calibrated_meta_gate"))
+    calibrated_shape_positive_domains = list(calibrated_shape_meta.get("positive_domains") or [])
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -563,6 +577,18 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(domain_local_full_traj_gate, partial=bool(domain_local_full_traj)),
             "evidence": "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json",
             "note": "Fresh learned full-waypoint domain-local dynamics were trained for ETH_UCY and TrajNet. The gate fails: ETH_UCY has all/hard ADE lift but no t50/t100 ADE lift and unsafe proximity delta; TrajNet has endpoint-FDE lift and t100 ADE lift but negative all/t50/hard ADE. UCY is blocked by no validation rows in the current all-agent split. This is negative evidence, not deployable.",
+        },
+        {
+            "requirement": "domain-local endpoint neural dynamics bridge to actual full-waypoint world-state on at least two domains",
+            "status": _status(endpoint_to_full_gate, partial=bool(endpoint_to_full)),
+            "evidence": "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json",
+            "note": "Fresh endpoint neural models are validation-selected, projected to linear waypoint rollouts, and scored against reconstructed actual future waypoint labels. ETH_UCY and TrajNet pass all/t50/t100/hard/easy, multi-agent, proximity, and smoothness gates. This is neural endpoint dynamics plus a linear waypoint bridge, not learned waypoint-shape dynamics.",
+        },
+        {
+            "requirement": "learned waypoint-shape residual/meta-policy positive on at least two domains",
+            "status": _status(calibrated_shape_meta_gate, partial=bool(calibrated_shape_meta)),
+            "evidence": "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json",
+            "note": "Fresh calibrated shape meta-policy selects among bridge/old-shape/gain-gated learned waypoint-shape residual sources on validation and evaluates test once. ETH_UCY and TrajNet pass protected full-waypoint gates with small but positive learned-shape contribution; this remains protected 2.5D evidence, not ungated neural replacement.",
         },
         {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
@@ -1160,6 +1186,49 @@ def build_completion_audit() -> dict[str, Any]:
             },
             "claim_boundary": domain_local_full_traj.get("claim_boundary"),
         },
+        "endpoint_to_full_trajectory_bridge_summary": {
+            "two_domain_endpoint_to_full_gate": endpoint_to_full_gate,
+            "positive_domains": endpoint_to_full_positive_domains,
+            "positive_domain_count": endpoint_to_full.get("positive_domain_count"),
+            "domain_results": {
+                domain: {
+                    "status": row.get("status"),
+                    "endpoint_to_full_trajectory_gate": row.get("endpoint_to_full_trajectory_gate"),
+                    "rows": row.get("rows"),
+                    "t50_rows": row.get("t50_rows"),
+                    "t100_rows": row.get("t100_rows"),
+                    "ade_metrics_vs_floor": row.get("ade_metrics_vs_floor"),
+                    "fde_metrics_vs_floor": row.get("fde_metrics_vs_floor"),
+                    "multi_agent_ade_metrics": row.get("multi_agent_ade_metrics"),
+                    "collision_delta_vs_floor_005": row.get("collision_delta_vs_floor_005"),
+                    "smoothness_jagged_delta": row.get("smoothness_jagged_delta"),
+                }
+                for domain, row in (endpoint_to_full.get("domain_results") or {}).items()
+            },
+            "claim_boundary": endpoint_to_full.get("claim_boundary"),
+            "caveat": "Endpoint neural dynamics are projected through a linear waypoint bridge and evaluated on actual reconstructed future waypoints. This is not learned waypoint-shape dynamics.",
+        },
+        "learned_waypoint_shape_summary": {
+            "two_domain_learned_shape_gate": learned_shape_gate,
+            "two_domain_gain_gate": shape_gain_gate,
+            "two_domain_composer_gate": shape_composer_gate,
+            "two_domain_dynamic_meta_gate": dynamic_shape_meta_gate,
+            "two_domain_calibrated_meta_gate": calibrated_shape_meta_gate,
+            "positive_domains": calibrated_shape_positive_domains,
+            "domain_results": {
+                domain: {
+                    "status": row.get("status"),
+                    "selected_mode": row.get("selected_mode"),
+                    "selected_pass": row.get("selected_pass"),
+                    "selected_compact": row.get("selected_compact"),
+                    "fixed_horizon_composer_compact": row.get("fixed_horizon_composer_compact"),
+                }
+                for domain, row in (calibrated_shape_meta.get("domain_results") or {}).items()
+            },
+            "no_leakage": calibrated_shape_meta.get("no_leakage"),
+            "claim_boundary": calibrated_shape_meta.get("claim_boundary"),
+            "caveat": "Learned waypoint-shape residual contribution is positive but small and protected by endpoint bridge/floor fallback; it is not an ungated full-row neural replacement.",
+        },
         "jepa_deployment_decision_summary": {
             "decision": jepa_decision.get("decision"),
             "disable_jepa_in_deployable_path": jepa_disabled,
@@ -1532,7 +1601,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. The fresh all-agent composite world-state audit applies that frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame groups; it passes ADE/FDE, multi-agent, proximity, and smoothness gates under the safety floor. No-fallback/full-row neural remains unsafe for easy cases, so the Stage37/teacher safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains protected grouped 2.5D rollout evidence rather than latent generative world-state execution. The M3W-Neural v1 audit matrix is complete for the current protected candidate, while stricter pure UCY-only retrain/select/test and ungated full-row neural safety remain future-strengthening work; Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. The fresh all-agent composite world-state audit applies that frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame groups; it passes ADE/FDE, multi-agent, proximity, and smoothness gates under the safety floor. A new endpoint-to-full bridge audit shows domain-local endpoint neural dynamics can be projected through a linear waypoint bridge and still pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet; this is useful world-state bridge evidence but not learned waypoint-shape dynamics. No-fallback/full-row neural remains unsafe for easy cases, so the Stage37/teacher safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. The strict pure-UCY neural retrain was attempted and is not deployable; source-only neural signal exists but fails safety/deployability. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains protected grouped 2.5D rollout evidence rather than latent generative world-state execution. The M3W-Neural v1 audit matrix is stronger for the current protected candidate, while independent external replication, learned waypoint-shape dynamics, and ungated full-row neural safety remain future-strengthening work; Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -1574,6 +1643,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     domain_local_summary = audit.get("domain_local_neural_endpoint_retrain_summary", {})
     domain_local_all_agent_summary = audit.get("domain_local_all_agent_world_state_summary", {})
     domain_local_full_traj_summary = audit.get("domain_local_full_trajectory_world_state_summary", {})
+    endpoint_to_full_summary = audit.get("endpoint_to_full_trajectory_bridge_summary", {})
+    learned_shape_summary = audit.get("learned_waypoint_shape_summary", {})
     composite_deployable_state = bool(
         composite_summary.get("evidence_pass")
         and composite_summary.get("strict_delta_vs_teacher_repair_pass")
@@ -1852,6 +1923,12 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"domain_local_full_waypoint_two_domain_gate = {domain_local_full_traj_summary.get('two_domain_full_trajectory_gate')}",
             f"domain_local_full_waypoint_positive_domains = {domain_local_full_traj_summary.get('positive_domains')}",
             f"domain_local_full_waypoint_failure_taxonomy = {domain_local_full_traj_summary.get('failure_taxonomy')}",
+            f"endpoint_to_full_bridge_two_domain_gate = {endpoint_to_full_summary.get('two_domain_endpoint_to_full_gate')}",
+            f"endpoint_to_full_bridge_positive_domains = {endpoint_to_full_summary.get('positive_domains')}",
+            f"endpoint_to_full_bridge_claim = {endpoint_to_full_summary.get('caveat')}",
+            f"learned_shape_calibrated_meta_gate = {learned_shape_summary.get('two_domain_calibrated_meta_gate')}",
+            f"learned_shape_positive_domains = {learned_shape_summary.get('positive_domains')}",
+            f"learned_shape_claim = {learned_shape_summary.get('caveat')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1973,6 +2050,18 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.md")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json")
+    generated.add("outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.md")
+    generated.add("outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json")
+    generated.add("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md")
+    generated.add("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json")
+    generated.add("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md")
+    generated.add("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json")
+    generated.add("outputs/stage41_domain_local/stage41_shape_policy_composer.md")
+    generated.add("outputs/stage41_domain_local/stage41_shape_policy_composer.json")
+    generated.add("outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.md")
+    generated.add("outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json")
+    generated.add("outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.md")
+    generated.add("outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = (
         "stage41_composite_tail_and_domain_local_all_agent_endpoint_proxy_supported_not_complete"
@@ -2082,6 +2171,12 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "strict_pure_ucy_neural_best_mode": pure_ucy_neural_summary.get("best_mode"),
         "strict_pure_ucy_neural_best_metrics": pure_ucy_neural_summary.get("best_metrics"),
         "strict_pure_ucy_neural_remaining_blocker": pure_ucy_neural_summary.get("remaining_blocker"),
+        "endpoint_to_full_bridge_two_domain_gate": endpoint_to_full_summary.get("two_domain_endpoint_to_full_gate"),
+        "endpoint_to_full_bridge_positive_domains": endpoint_to_full_summary.get("positive_domains"),
+        "endpoint_to_full_bridge_caveat": endpoint_to_full_summary.get("caveat"),
+        "learned_shape_calibrated_meta_gate": learned_shape_summary.get("two_domain_calibrated_meta_gate"),
+        "learned_shape_positive_domains": learned_shape_summary.get("positive_domains"),
+        "learned_shape_caveat": learned_shape_summary.get("caveat"),
         "base_switch_input": joint_distill_summary.get("base_switch_input"),
         "base_plus_distiller_deployable": joint_distill_summary.get("base_plus_distiller_deployable"),
         "bootstrap_all_low": joint_distill_summary.get("bootstrap_all_low"),
@@ -2275,6 +2370,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "group_consistency_multiseed_summary": group_multiseed_summary,
         "jepa_deployment_decision_summary": jepa_decision_summary,
         "strict_pure_ucy_neural_retrain_summary": pure_ucy_neural_summary,
+        "endpoint_to_full_trajectory_bridge_summary": endpoint_to_full_summary,
+        "learned_waypoint_shape_summary": learned_shape_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

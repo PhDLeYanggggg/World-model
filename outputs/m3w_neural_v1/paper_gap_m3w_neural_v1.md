@@ -14,6 +14,7 @@
 - Seconds-level long-horizon prediction.
 - Ungated neural dynamics safe replacement.
 - Pure UCY-only neural retrain/select/test deployability: it has now been attempted and is negative because source-shift/easy-safety was not reliable.
+- Ungated learned waypoint-shape dynamics: calibrated learned-shape residuals are positive on two domains, but the contribution is small and protected by endpoint bridge/floor fallback.
 - Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.
 - Residual source-switching over the fixed composer as a deployable improvement path.
 

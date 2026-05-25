@@ -16,8 +16,8 @@
   "policy": {
     "model_name": "M3W-Neural-v1",
     "source": "cached_verified",
-    "frozen_at_utc": "2026-05-25T16:16:09.164141+00:00",
-    "git_commit": "e767c49",
+    "frozen_at_utc": "2026-05-25T16:46:15.852281+00:00",
+    "git_commit": "a2983a4",
     "stage41_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
     "deployment_state": "composite_tail_candidate_pending_final_package_acceptance",
     "best_candidate": "composite_tail_safe_switch_bounded_neural_dynamics",
@@ -41,7 +41,7 @@
     "uncalibrated_domain_rule": "fallback_to_stage37_floor",
     "stage5c_executed": false,
     "smc_enabled": false,
-    "source_hash": "e80e02aa1c7e89cb2892dfa9cc82fef8565a6525e9000a71adbde53aa96361d5",
+    "source_hash": "6b97872388f01afd92f5f5c98fabe4f30ecec9e22079a6c765a92145132a871c",
     "source_paths": [
       "outputs/stage41_breakthrough/world_model_gate_stage41.json",
       "outputs/stage41_breakthrough/stage41_neural_eval.json",
@@ -60,6 +60,12 @@
       "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
       "outputs/stage41_external_split/stage41_pure_ucy_neural_dataset.json",
       "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
+      "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json",
+      "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json",
+      "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json",
+      "outputs/stage41_domain_local/stage41_shape_policy_composer.json",
+      "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json",
+      "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json",
       "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
       "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
       "src/stage41_breakthrough.py",
@@ -69,7 +75,13 @@
       "src/stage41_composite_tail_multiseed.py",
       "src/stage41_all_agent_composite_world_state.py",
       "src/stage41_pure_ucy_source_validation.py",
-      "src/stage41_pure_ucy_neural_retrain.py"
+      "src/stage41_pure_ucy_neural_retrain.py",
+      "src/stage41_endpoint_to_full_trajectory_repair.py",
+      "src/stage41_learned_waypoint_shape_bridge.py",
+      "src/stage41_learned_shape_gain_gate.py",
+      "src/stage41_shape_policy_composer.py",
+      "src/stage41_dynamic_shape_meta_policy.py",
+      "src/stage41_calibrated_shape_meta_policy.py"
     ]
   },
   "evidence_summary": {
@@ -91,6 +103,16 @@
     "strict_pure_ucy_neural_hard_failure_improvement": 0.0,
     "strict_pure_ucy_neural_easy_degradation": 0.0,
     "strict_pure_ucy_neural_remaining_blocker": "Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.",
+    "endpoint_to_full_bridge_gate": true,
+    "endpoint_to_full_bridge_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "calibrated_learned_shape_meta_gate": true,
+    "calibrated_learned_shape_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
     "composite_tail_evidence_pass": true,
     "composite_tail_multiseed_pass": true,
     "strict_delta_vs_teacher_repair_pass": true,
