@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_j_static_gated_full_waypoint",
-  "current_verdict": "stage42_j_static_gated_full_waypoint_pass",
+  "current_stage": "stage42_k_fresh_static_gated_checkpoint",
+  "current_verdict": "stage42_k_fresh_static_gated_checkpoint_pass",
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
@@ -614,7 +614,10 @@
     "outputs/stage42_long_research/stage42_stage_i_gate.md",
     "outputs/stage42_long_research/static_gated_full_waypoint_stage42.md",
     "outputs/stage42_long_research/static_gated_full_waypoint_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_j_gate.md"
+    "outputs/stage42_long_research/stage42_stage_j_gate.md",
+    "outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.md",
+    "outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_k_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -12857,12 +12860,18 @@
       }
     },
     "stage_k_fresh_static_gated_checkpoint": {
-      "source": "in_progress",
-      "script": "run_stage42_fresh_static_gated_checkpoint.py",
-      "model": "StaticGatedSequenceWaypoint",
-      "target": "fresh static-gated/static-dropout full-waypoint checkpoint training",
-      "targeted_test_status": "passed",
-      "completed_metrics_available": false,
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_k_gate.md",
+      "gates_passed": 9,
+      "gates_total": 9,
+      "verdict": "stage42_k_fresh_static_gated_checkpoint_pass",
+      "fresh_static_gated_ade_all": 0.013627569336276476,
+      "fresh_static_gated_ade_t50": -0.01222845312944624,
+      "fresh_static_gated_ade_hard_failure": 0.014790997177165513,
+      "fresh_static_gated_ade_easy_degradation": 0.0,
+      "fresh_static_gated_fde_t50": 0.03584067679165526,
+      "fresh_static_gate_mean_test": 0.12781384587287903,
       "claim_boundary": {
         "true_3d": false,
         "foundation_world_model": false,

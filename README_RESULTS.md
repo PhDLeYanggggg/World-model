@@ -2063,14 +2063,20 @@ Static-gated interpretation: Stage42-J repairs the Stage42-I failure mode at pol
 ## Stage42-K Fresh Static-Gated Checkpoint Training
 
 ```text
-source = in_progress
-script = run_stage42_fresh_static_gated_checkpoint.py
-model = StaticGatedSequenceWaypoint
-purpose = bake Stage42-J static gate / static dropout into fresh checkpoint training
-targeted_test = passed
-completed_metrics = not_yet_available
+source = fresh_run
+verdict = stage42_k_fresh_static_gated_checkpoint_pass
+gates = 9 / 9
+fresh_static_gated_ade_all = 0.013627569336276476
+fresh_static_gated_ade_t50 = -0.01222845312944624
+fresh_static_gated_ade_t100_raw_frame_diagnostic = 0.015857871472793977
+fresh_static_gated_ade_hard_failure = 0.014790997177165513
+fresh_static_gated_ade_easy_degradation = 0.0
+fresh_static_gated_fde_t50 = 0.03584067679165526
+fresh_static_gate_mean_test = 0.12781384587287903
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Stage42-K is currently running and must not be counted as a completed result. Its role is to test whether the Stage42-J policy-level static-gated repair can become a trained checkpoint rather than a cached-expert gate. Until it finishes, the honest status is: Stage42-J remains the strongest static-gated full-waypoint evidence, while Stage42-K is an active fresh-run experiment.
+Stage42-K trains the static gate/dropout idea directly into a fresh checkpoint over three seeds. It is a real fresh-run improvement over the failed Stage42-I full static+sequence head and preserves easy cases, with positive ADE all/hard and FDE all/t50.
+
+The honest boundary is important: Stage42-K does not beat the Stage42-J policy-level static expert gate, and its ADE t50 mean is still negative. So Stage42-K is a successful fresh-checkpoint repair step, not the new best deployable full-waypoint policy. Stage42-J remains the strongest static-gated full-waypoint evidence for now.

@@ -220,15 +220,21 @@ Static-gated interpretation: Stage42-J repairs the Stage42-I failure mode at pol
 
 ## Stage42-K Fresh Static-Gated Checkpoint Training
 
-Stage42-K is currently running and is intentionally marked as `in_progress`, not completed:
+Stage42-K has completed as a fresh-run checkpoint experiment:
 
 ```text
-source = in_progress
-script = run_stage42_fresh_static_gated_checkpoint.py
-model = StaticGatedSequenceWaypoint
-purpose = train a fresh static-gated/static-dropout full-waypoint checkpoint
-targeted_test = passed
-completed_metrics = not_yet_available
+source = fresh_run
+verdict = stage42_k_fresh_static_gated_checkpoint_pass
+gates = 9 / 9
+fresh_static_gated_ade_all = 0.013627569336276476
+fresh_static_gated_ade_t50 = -0.01222845312944624
+fresh_static_gated_ade_t100_raw_frame_diagnostic = 0.015857871472793977
+fresh_static_gated_ade_hard_failure = 0.014790997177165513
+fresh_static_gated_ade_easy_degradation = 0.0
+fresh_static_gated_fde_t50 = 0.03584067679165526
+fresh_static_gate_mean_test = 0.12781384587287903
 ```
 
-It exists because Stage42-J showed that static/context is useful only when gated, but Stage42-J itself was a cached-checkpoint expert gate rather than a new trained checkpoint. Stage42-K tests whether this rule can be learned directly. Until that run finishes, Stage42-J remains the strongest static-gated full-waypoint evidence.
+It exists because Stage42-J showed that static/context is useful only when gated, but Stage42-J itself was a cached-checkpoint expert gate rather than a new trained checkpoint. Stage42-K shows that the learned static gate/dropout rule can be trained into a fresh checkpoint and improve over the failed Stage42-I full static+sequence head while preserving easy cases.
+
+It is not the new best deployable full-waypoint policy: Stage42-J remains stronger on ADE all/t50/hard and FDE t50, while Stage42-K still has negative ADE t50. The next repair should make the learned static gate horizon-aware, especially for t+50.

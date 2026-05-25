@@ -82,3 +82,14 @@ The important positive signal is diagnostic: `sequence_waypoint_no_static_contex
 Stage42-J repairs the Stage42-I static/context failure mode by using cached-verified Stage42-I full/no-static checkpoints as experts and selecting static mix weights on validation by domain/horizon. Test is evaluated once. The static-gated policy is positive on full-waypoint ADE all/t50/hard (`0.0362`, `0.0369`, `0.0397`), t+100 raw-frame diagnostic ADE (`0.0267`), FDE all/t50 (`0.0633`, `0.1166`), and preserves easy cases (`0.0` degradation).
 
 This strengthens the full-waypoint world-state evidence: the problem was not simply that static context is useless; the problem was forcing static/context globally. Partial static experts (`alpha=0.25` and `0.50`) are useful when validation says they are safe, while full static remains harmful. The boundary remains important: Stage42-J is a fresh gate/eval over cached Stage42-I checkpoints, not a fresh checkpoint training run, and all claims remain dataset-local raw-frame 2.5D.
+
+## Stage42-K Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_k_gate.md`
+- verdict: `stage42_k_fresh_static_gated_checkpoint_pass`
+
+Stage42-K trains the Stage42-J static-gating idea directly into a fresh `StaticGatedSequenceWaypoint` checkpoint with three seeds. It passes its fresh checkpoint gates (`9 / 9`) and improves over the failed Stage42-I full static+sequence head while preserving easy cases. The fresh checkpoint result is positive on ADE all (`0.0136`), t+100 raw-frame diagnostic ADE (`0.0159`), hard/failure ADE (`0.0148`), FDE all (`0.0312`), and FDE t50 (`0.0358`), with easy degradation `0.0`.
+
+The honest boundary is that Stage42-K does not replace Stage42-J as the strongest full-waypoint static-gated evidence. Stage42-J's policy-level gate remains stronger on ADE all/t50/hard and FDE t50, and Stage42-K's ADE t50 mean is still negative (`-0.0122`). The result is therefore a useful fresh-checkpoint repair step, not a new best deployable model. Next work should make the learned static gate horizon-aware and explicitly repair the t+50 slice.
