@@ -1545,3 +1545,32 @@ pytest = 221 passed in 60.99s
 ```
 
 Conclusion: the composer makes the mixed shape evidence deployable as a validation-selected horizon policy. It improves the ETH_UCY all/hard shape contribution while preserving the old-shape t100 behavior, and it keeps the TrajNet t50 gain-gate contribution. It does not yet prove a large ungated full-waypoint neural dynamics breakthrough; the protected floor remains required and Stage5C/SMC stay disabled.
+
+## Stage41 Dynamic Shape Source Meta-Policy
+
+The next experiment trained a per-row expected-ADE source model over three protected rollout sources: the endpoint bridge, the previous learned-shape bridge, and the gain/harm shape gate. The model used train future-waypoint labels only as supervision; validation selected gain/margin/source-rate thresholds; test was evaluated once. This tests whether source choice can be made dynamically from past-only causal features and candidate rollout geometry rather than from fixed horizon buckets.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_dynamic_meta_gate = True
+ETH_UCY_all = 0.016314720529778892
+ETH_UCY_t50 = 0.0017756136269108103
+ETH_UCY_t100 = 0.004284781808472471
+ETH_UCY_hard = 0.01611365182677149
+ETH_UCY_easy = 0.0
+ETH_UCY_shape_gain_all_t50_t100_hard = 0.000629 / -0.000126 / -0.000030 / 0.000650
+ETH_UCY_source_distribution = bridge 0.9871 / old_shape 0.00005 / gain_gate 0.0128
+ETH_UCY_test_ranking_accuracy = 0.0193
+TrajNet_all = 0.03830169788706028
+TrajNet_t50 = 0.02671519369046027
+TrajNet_t100 = 0.014508831312789572
+TrajNet_hard = 0.039363879492692044
+TrajNet_easy = 0.0
+TrajNet_shape_gain_all_t50_t100_hard = 0.000287 / 0.000246 / 0.000718 / 0.000316
+TrajNet_source_distribution = bridge 0.9986 / old_shape 0.0011 / gain_gate 0.0003
+TrajNet_test_ranking_accuracy = 0.9997
+pytest = 224 passed in 60.12s
+```
+
+Conclusion: the dynamic meta-policy is safe and two-domain positive, and it improves TrajNet all/hard/t100 versus the fixed horizon composer. It does not dominate globally: ETH_UCY is weaker than the fixed composer and its ranking accuracy is poor, while TrajNet t50 is also slightly lower than the fixed composer. This is useful evidence for dynamic source selection, but the current best deployable path remains the protected composite/fixed-composer route until domain-specific calibration improves ETH_UCY ranking.

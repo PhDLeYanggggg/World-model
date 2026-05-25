@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (221 passed in 60.99s); .venv-pytorch/bin/python run_stage41_shape_policy_composer.py",
+  "last_successful_command": "python3 -m pytest tests (224 passed in 60.12s); .venv-pytorch/bin/python run_stage41_dynamic_shape_meta_policy.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -472,7 +472,9 @@
     "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
     "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md",
     "outputs/stage41_domain_local/stage41_shape_policy_composer.md",
-    "outputs/stage41_domain_local/stage41_shape_policy_composer.json"
+    "outputs/stage41_domain_local/stage41_shape_policy_composer.json",
+    "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.md",
+    "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -9856,7 +9858,7 @@
       "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint/full-trajectory bridge and horizon-composed learned-shape evidence; deployment still requires protected fallback and remains 2.5D.",
+  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint/full-trajectory bridge and fixed domain/horizon shape composer; dynamic meta-policy is diagnostic/auxiliary until ETH_UCY calibration improves.",
   "last_updated": "2026-05-25",
   "stage5c_ready": false,
   "true_3d_world_model": false,
@@ -10777,7 +10779,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 domain/horizon shape-policy composer passed a protected two-domain gate. It formalizes the mixed learned-shape evidence with val-selected horizon sources, but the protected floor remains required.",
+  "latest_evidence": "Stage41 dynamic shape source meta-policy passed a protected two-domain gate, but it only improves fixed composer on TrajNet all/hard/t100 and is weaker on ETH_UCY; fixed composer remains safer deployable default.",
   "stage41_domain_local_full_trajectory_repair": {
     "two_domain_repair_gate": false,
     "positive_domains": [
@@ -11106,6 +11108,64 @@
         "shape_gain_t100": 0.0,
         "shape_gain_hard_failure": 0.00012887382855930607,
         "shape_switch_rate": 0.0008244023083264633
+      }
+    }
+  },
+  "stage41_dynamic_shape_meta_policy": {
+    "source": "fresh_run",
+    "protocol": "dynamic_shape_source_meta_policy",
+    "two_domain_dynamic_meta_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false,
+    "domains": {
+      "ETH_UCY": {
+        "status": "ok",
+        "all": 0.016314720529778892,
+        "t50": 0.0017756136269108103,
+        "t100": 0.004284781808472471,
+        "hard_failure": 0.01611365182677149,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0006294398646777832,
+        "shape_gain_t50": -0.00012552756048478386,
+        "shape_gain_t100": -2.9650299970152005e-05,
+        "shape_gain_hard_failure": 0.0006504301081771136,
+        "source_distribution": {
+          "bridge": 0.9871284378183165,
+          "old_shape": 4.630058338735068e-05,
+          "gain_gate": 0.01282526159829614
+        },
+        "test_ranking_accuracy": 0.019261042689137885,
+        "delta_vs_fixed_all": -9.91800632104134e-05,
+        "delta_vs_fixed_t50": -0.00012528894482233266,
+        "delta_vs_fixed_t100": -4.3928731498943385e-05,
+        "delta_vs_fixed_hard": -9.523287773749445e-05
+      },
+      "TrajNet": {
+        "status": "ok",
+        "all": 0.03830169788706028,
+        "t50": 0.02671519369046027,
+        "t100": 0.014508831312789572,
+        "hard_failure": 0.039363879492692044,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.00028742090447775315,
+        "shape_gain_t50": 0.00024579926399548313,
+        "shape_gain_t100": 0.0007181925728715344,
+        "shape_gain_hard_failure": 0.0003157315266282268,
+        "source_distribution": {
+          "bridge": 0.9986259961527892,
+          "old_shape": 0.0010992030777686177,
+          "gain_gate": 0.0002748007694421544
+        },
+        "test_ranking_accuracy": 0.9997251992305578,
+        "delta_vs_fixed_all": 0.00016363458114965201,
+        "delta_vs_fixed_t50": -0.0002168070513676179,
+        "delta_vs_fixed_t100": 0.0007082811202218098,
+        "delta_vs_fixed_hard": 0.00017955894658017169
       }
     }
   }
