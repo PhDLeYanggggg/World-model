@@ -61,6 +61,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_distill_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json", {})
     ucy_repair = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json", {})
     ucy_validation = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json", {})
+    joint_rollout = read_json("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -138,6 +139,11 @@ def build_completion_audit() -> dict[str, Any]:
     ucy_repair_contributes = bool(ucy_repair.get("ucy_repair_contributes"))
     ucy_validation_pass = bool(ucy_validation.get("validation_pass"))
     ucy_source_level_available = bool(ucy_validation.get("source_level_independent_validation_available"))
+    joint_rollout_metrics = joint_rollout.get("selected_metrics") or {}
+    joint_rollout_multi = joint_rollout.get("multi_agent_metrics") or {}
+    joint_rollout_stats = joint_rollout.get("rollout_stats") or {}
+    joint_rollout_selected_stats = joint_rollout_stats.get("selected") or {}
+    joint_rollout_pass = bool(joint_rollout.get("joint_rollout_consistency_pass"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -249,6 +255,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(ucy_validation_pass, partial=ucy_repair_contributes),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json",
             "note": "UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source.",
+        },
+        {
+            "requirement": "grouped all-agent rollout consistency under repaired policy",
+            "status": _status(joint_rollout_pass, partial=bool(joint_rollout_metrics)),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json",
+            "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -474,6 +486,25 @@ def build_completion_audit() -> dict[str, Any]:
             "test_ucy_hard": (ucy_validation.get("test_ucy_metrics") or {}).get("hard_failure_improvement"),
             "test_ucy_easy": (ucy_validation.get("test_ucy_metrics") or {}).get("easy_degradation"),
         },
+        "joint_rollout_consistency_summary": {
+            "pass": joint_rollout_pass,
+            "policy_source": joint_rollout.get("policy_source"),
+            "rows": joint_rollout.get("rows"),
+            "multi_agent_rows": joint_rollout.get("multi_agent_rows"),
+            "all_improvement": joint_rollout_metrics.get("all_improvement"),
+            "t50_improvement": joint_rollout_metrics.get("t50_improvement"),
+            "t100_improvement": joint_rollout_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_rollout_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_rollout_metrics.get("easy_degradation"),
+            "switch_rate": joint_rollout_metrics.get("switch_rate"),
+            "multi_agent_all_improvement": joint_rollout_multi.get("all_improvement"),
+            "multi_agent_t50_improvement": joint_rollout_multi.get("t50_improvement"),
+            "multi_agent_hard_failure_improvement": joint_rollout_multi.get("hard_failure_improvement"),
+            "multi_agent_easy_degradation": joint_rollout_multi.get("easy_degradation"),
+            "collision_delta_vs_floor_005": joint_rollout.get("collision_delta_vs_floor_005"),
+            "selected_near_collision_rate_005": joint_rollout_selected_stats.get("near_collision_rate_005"),
+            "selected_mixed_group_switch_rate": (joint_rollout.get("group_switch_summary") or {}).get("selected_mixed_group_switch_rate"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
@@ -673,9 +704,21 @@ def build_completion_audit() -> dict[str, Any]:
             f"- temporal validation pass: `{ucy_validation.get('temporal_validation_pass')}`",
             f"- test UCY all/t50/t100/hard/easy: `{(ucy_validation.get('test_ucy_metrics') or {}).get('all_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('t50_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('t100_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('hard_failure_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('easy_degradation')}`",
             "",
+            "## Joint Rollout Consistency Audit",
+            "",
+            f"- pass: `{joint_rollout_pass}`",
+            f"- policy source: `{joint_rollout.get('policy_source')}`",
+            f"- all/t50/t100: `{joint_rollout_metrics.get('all_improvement')}` / `{joint_rollout_metrics.get('t50_improvement')}` / `{joint_rollout_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_rollout_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_rollout_metrics.get('easy_degradation')}`",
+            f"- multi-agent rows: `{joint_rollout.get('multi_agent_rows')}`",
+            f"- multi-agent all/t50/hard: `{joint_rollout_multi.get('all_improvement')}` / `{joint_rollout_multi.get('t50_improvement')}` / `{joint_rollout_multi.get('hard_failure_improvement')}`",
+            f"- collision delta vs floor @0.05 normalized: `{joint_rollout.get('collision_delta_vs_floor_005')}`",
+            f"- mixed group switch rate: `{(joint_rollout.get('group_switch_summary') or {}).get('selected_mixed_group_switch_rate')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The full active objective is still not complete because the repair needs independent UCY validation and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The joint rollout consistency audit now checks grouped all-agent selected waypoints under the repaired policy, but this remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -697,13 +740,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     joint_distill_summary = audit.get("joint_policy_distillation_summary", {})
     ucy_repair_summary = audit.get("ucy_fallback_repair_summary", {})
     ucy_validation_summary = audit.get("ucy_independent_validation_summary", {})
+    joint_rollout_summary = audit.get("joint_rollout_consistency_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, and the UCY fallback-only blocker has a train-only calibration repair. The rollout is still not a jointly consistent latent world state.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, and a grouped all-agent rollout consistency audit. The rollout is still not a latent generative world state.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -815,11 +859,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"ucy_internal_validation_pass = {ucy_validation_summary.get('validation_pass')}",
             f"ucy_source_level_validation_available = {ucy_validation_summary.get('source_level_independent_validation_available')}",
             f"ucy_source_level_blocker = {ucy_validation_summary.get('source_level_blocker')}",
+            f"joint_rollout_consistency_pass = {joint_rollout_summary.get('pass')}",
+            f"joint_rollout_consistency_all = {joint_rollout_summary.get('all_improvement')}",
+            f"joint_rollout_consistency_t50 = {joint_rollout_summary.get('t50_improvement')}",
+            f"joint_rollout_consistency_t100_diagnostic = {joint_rollout_summary.get('t100_improvement')}",
+            f"joint_rollout_consistency_hard = {joint_rollout_summary.get('hard_failure_improvement')}",
+            f"joint_rollout_consistency_easy = {joint_rollout_summary.get('easy_degradation')}",
+            f"joint_rollout_consistency_multi_agent_all = {joint_rollout_summary.get('multi_agent_all_improvement')}",
+            f"joint_rollout_consistency_collision_delta_005 = {joint_rollout_summary.get('collision_delta_vs_floor_005')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: rebuild or acquire a true source-level UCY validation split and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: rebuild or acquire a true source-level UCY validation split and move from grouped consistency auditing toward a jointly learned multi-agent latent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -854,6 +906,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = "stage41_ucy_repaired_joint_distiller_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
@@ -891,6 +945,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "ucy_internal_validation_pass": ucy_validation_summary.get("validation_pass"),
         "ucy_source_level_validation_available": ucy_validation_summary.get("source_level_independent_validation_available"),
         "ucy_source_level_blocker": ucy_validation_summary.get("source_level_blocker"),
+        "joint_rollout_consistency_pass": joint_rollout_summary.get("pass"),
+        "joint_rollout_all_improvement": joint_rollout_summary.get("all_improvement"),
+        "joint_rollout_t50_improvement": joint_rollout_summary.get("t50_improvement"),
+        "joint_rollout_t100_raw_frame_diagnostic": joint_rollout_summary.get("t100_improvement"),
+        "joint_rollout_hard_failure_improvement": joint_rollout_summary.get("hard_failure_improvement"),
+        "joint_rollout_easy_degradation": joint_rollout_summary.get("easy_degradation"),
+        "joint_rollout_multi_agent_all_improvement": joint_rollout_summary.get("multi_agent_all_improvement"),
+        "joint_rollout_collision_delta_vs_floor_005": joint_rollout_summary.get("collision_delta_vs_floor_005"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -911,6 +973,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_policy_distillation_summary": joint_distill_summary,
         "ucy_fallback_repair_summary": ucy_repair_summary,
         "ucy_independent_validation_summary": ucy_validation_summary,
+        "joint_rollout_consistency_summary": joint_rollout_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

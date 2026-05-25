@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, and the UCY fallback-only blocker has a train-only calibration repair. The rollout is still not a jointly consistent latent world state.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, and a grouped all-agent rollout consistency audit. The rollout is still not a latent generative world state.
 
 ```text
 completion_status = not_complete
@@ -1104,11 +1104,19 @@ ucy_fallback_repair_bootstrap_ucy_low = 0.38373376338122456
 ucy_internal_validation_pass = True
 ucy_source_level_validation_available = False
 ucy_source_level_blocker = UCY has one train source and no UCY validation source; true source-level UCY validation needs another UCY-like source or a rebuilt split.
+joint_rollout_consistency_pass = True
+joint_rollout_consistency_all = 0.20681231782543796
+joint_rollout_consistency_t50 = 0.141381936033941
+joint_rollout_consistency_t100_diagnostic = 0.1391835100380775
+joint_rollout_consistency_hard = 0.20016282886383174
+joint_rollout_consistency_easy = 0.0
+joint_rollout_consistency_multi_agent_all = 0.20472359322136924
+joint_rollout_consistency_collision_delta_005 = -0.004879122491654175
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: rebuild or acquire a true source-level UCY validation split and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: rebuild or acquire a true source-level UCY validation split and move from grouped consistency auditing toward a jointly learned multi-agent latent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

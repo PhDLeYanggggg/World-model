@@ -23,6 +23,7 @@
 | no-base-switch distiller multi-seed replication | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json | Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only. |
 | UCY fallback-only blocker diagnosed and repaired without test tuning | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json | UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment. |
 | UCY repair internal fold/temporal validation | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json | UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source. |
+| grouped all-agent rollout consistency under repaired policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json | Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -199,6 +200,18 @@
 - temporal validation pass: `True`
 - test UCY all/t50/t100/hard/easy: `0.3928657400363359` / `0.24265047375057225` / `0.4634436152370407` / `0.3987527223236249` / `0.0`
 
+## Joint Rollout Consistency Audit
+
+- pass: `True`
+- policy source: `ucy_repaired_policy`
+- all/t50/t100: `0.20681231782543796` / `0.141381936033941` / `0.1391835100380775`
+- hard/failure improvement: `0.20016282886383174`
+- easy degradation: `0.0`
+- multi-agent rows: `54518`
+- multi-agent all/t50/hard: `0.20472359322136924` / `0.1425999374065452` / `0.19777460723256124`
+- collision delta vs floor @0.05 normalized: `-0.004879122491654175`
+- mixed group switch rate: `0.5893493343333959`
+
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The full active objective is still not complete because the repair needs independent UCY validation and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The joint rollout consistency audit now checks grouped all-agent selected waypoints under the repaired policy, but this remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.

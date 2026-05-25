@@ -197,6 +197,25 @@
     "test_ucy_hard": 0.3987527223236249,
     "test_ucy_easy": 0.0
   },
+  "joint_rollout_consistency_summary": {
+    "pass": true,
+    "policy_source": "ucy_repaired_policy",
+    "rows": 55528,
+    "multi_agent_rows": 54518,
+    "all_improvement": 0.20681231782543796,
+    "t50_improvement": 0.141381936033941,
+    "t100_improvement": 0.1391835100380775,
+    "hard_failure_improvement": 0.20016282886383174,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.32144143495173605,
+    "multi_agent_all_improvement": 0.20472359322136924,
+    "multi_agent_t50_improvement": 0.1425999374065452,
+    "multi_agent_hard_failure_improvement": 0.19777460723256124,
+    "multi_agent_easy_degradation": 0.0,
+    "collision_delta_vs_floor_005": -0.004879122491654175,
+    "selected_near_collision_rate_005": 0.44992479548039177,
+    "selected_mixed_group_switch_rate": 0.5893493343333959
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -283,6 +302,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json",
       "note": "UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source."
+    },
+    {
+      "requirement": "grouped all-agent rollout consistency under repaired policy",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json",
+      "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",
