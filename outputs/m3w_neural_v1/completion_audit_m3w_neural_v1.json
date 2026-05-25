@@ -4181,6 +4181,7 @@
     }
   ],
   "next_highest_value_actions": [
+    "Build source-specific causal features or per-domain/t50 priors before attempting another learned source-switch policy over the fixed composer.",
     "Train a learned waypoint-shape model to match or exceed the endpoint-to-full linear bridge on ETH_UCY and TrajNet.",
     "Bootstrap or multiseed-confirm the endpoint-to-full bridge before promoting it beyond candidate evidence.",
     "Keep Stage5C/SMC disabled and keep metric/seconds/true-3D/foundation claims false."
@@ -4386,7 +4387,7 @@
   },
   "last_validation": {
     "command": "python3 -m pytest tests",
-    "result": "231 passed in 66.04s",
+    "result": "233 passed in 65.88s",
     "source": "fresh_run"
   },
   "learned_shape_gain_gate_summary": {
@@ -4652,5 +4653,82 @@
       "TrajNet"
     ],
     "interpretation": "Hard/tail/positive-gain weighting did not repair the deployability gap; keep fixed composer/composite route deployable."
-  }
+  },
+  "fixed_prior_source_switch_policy_summary": {
+    "status": "diagnostic_negative_not_deployable_over_fixed",
+    "two_domain_fixed_prior_gate": false,
+    "positive_domains": [
+      "ETH_UCY"
+    ],
+    "domains_better_than_fixed_on_any_core_metric": [],
+    "two_domain_fixed_prior_beats_fixed_gate": false,
+    "interpretation": "Fixed-composer prior switching preserves safety but does not beat the fixed composer; ETH_UCY has tiny all/hard/t100 loss and TrajNet falls back exactly to fixed composer.",
+    "domain_deltas": {
+      "ETH_UCY": {
+        "all": -7.47012063097019e-05,
+        "t50": 0.0,
+        "t100": -4.3928731498943385e-05,
+        "hard_failure": -7.711733527826503e-05,
+        "easy_degradation": 0.0,
+        "shape_gain_all": -7.589234885441165e-05,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": -4.411907460744047e-05,
+        "shape_gain_hard_failure": -7.832934767781907e-05
+      },
+      "TrajNet": {
+        "all": 0.0,
+        "t50": 0.0,
+        "t100": 0.0,
+        "hard_failure": 0.0,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": 0.0,
+        "shape_gain_hard_failure": 0.0
+      }
+    },
+    "domain_metrics": {
+      "ETH_UCY": {
+        "all_improvement": 0.016339199386679604,
+        "t50_improvement": 0.001900902571733143,
+        "t100_improvement": 0.004284781808472471,
+        "hard_failure_improvement": 0.01613176736923072,
+        "easy_degradation": 0.0,
+        "source_switch_rate": 0.0056023705898694326
+      },
+      "TrajNet": {
+        "all_improvement": 0.03813806330591063,
+        "t50_improvement": 0.02693200074182789,
+        "t100_improvement": 0.013800550192567762,
+        "hard_failure_improvement": 0.03918432054611187,
+        "easy_degradation": 0.0,
+        "source_switch_rate": 0.0
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "future_waypoints_input": false,
+      "future_waypoints_label_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "val_selected_policy": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "claim_boundary": {
+      "fixed_composer_prior_switch": true,
+      "learned_waypoint_shape_residual": true,
+      "protected_by_endpoint_bridge_or_floor": true,
+      "latent_generative_rollout": false,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false
+    }
+  },
+  "generated_reports": [
+    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
+    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json"
+  ]
 }

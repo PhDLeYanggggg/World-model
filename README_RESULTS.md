@@ -1659,3 +1659,30 @@ pytest = 231 passed in 66.04s
 ```
 
 Conclusion: hard/tail/positive-gain weighting did not fix the remaining source-switch problem. It is safe and positive, but ETH_UCY remains below fixed composer and TrajNet t50 remains below fixed composer. The likely bottleneck is not simple positive-label imbalance; it is source-specific causal feature insufficiency or a need for stronger per-domain/t50 source-family priors. Fixed composer/composite remains the deployable route; Stage5C and SMC remain disabled.
+
+## Stage41 Fixed-Composer Prior Source Switch Policy
+
+The next repair treated the fixed horizon composer itself as the safety prior, then trained a residual source-switch model only around that prior. Validation was made stricter than the previous pairwise runs: a policy had to preserve t50 versus the fixed composer and improve at least one of all / hard / t100 on validation; otherwise the policy falls back to the fixed composer.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY']
+two_domain_fixed_prior_gate = False
+domains_better_than_fixed_on_any_core_metric = []
+two_domain_fixed_prior_beats_fixed_gate = False
+ETH_UCY_all = 0.016339199386679604
+ETH_UCY_t50 = 0.001900902571733143
+ETH_UCY_t100 = 0.004284781808472471
+ETH_UCY_hard = 0.01613176736923072
+ETH_UCY_easy = 0.0
+ETH_UCY_delta_vs_fixed_all_t50_t100_hard = -0.000075 / 0.000000 / -0.000044 / -0.000077
+TrajNet_all = 0.03813806330591063
+TrajNet_t50 = 0.02693200074182789
+TrajNet_t100 = 0.013800550192567762
+TrajNet_hard = 0.03918432054611187
+TrajNet_easy = 0.0
+TrajNet_delta_vs_fixed_all_t50_t100_hard = 0.000000 / 0.000000 / 0.000000 / 0.000000
+pytest = 233 passed in 65.88s
+```
+
+Conclusion: the fixed-prior source switch is a clean negative result. The stricter validation rule prevented the TrajNet t50 harm seen in earlier dynamic selectors by reverting to the fixed composer, but it did not find a residual switch that beats the fixed composer on both domains. ETH_UCY still suffers a tiny all/hard/t100 loss versus fixed, and TrajNet is exactly the fixed composer. Current deployable shape policy remains the protected fixed composer/composite route. Stage5C and SMC remain disabled.

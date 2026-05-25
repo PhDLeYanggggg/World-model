@@ -98,6 +98,7 @@
     "Stage 5C Readiness Gate"
   ],
   "next_actions": [
+    "stage41_source_specific_causal_feature_repair_for_fixed_composer_switching",
     "stage26_feature_importance_forensics",
     "scene_agent_distribution_shift_analysis",
     "sdd_time_geometry_followup"
@@ -105,7 +106,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (231 passed in 66.04s); .venv-pytorch/bin/python run_stage41_weighted_pairwise_shape_switch_policy.py",
+  "last_successful_command": "python3 -m pytest tests (233 passed in 65.88s); .venv-pytorch/bin/python run_stage41_fixed_prior_source_switch_policy.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -480,7 +481,9 @@
     "outputs/stage41_domain_local/stage41_pairwise_shape_switch_policy.md",
     "outputs/stage41_domain_local/stage41_pairwise_shape_switch_policy.json",
     "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.md",
-    "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.json"
+    "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.json",
+    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
+    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -11353,5 +11356,46 @@
         "delta_vs_fixed_hard": 0.00017345396359436105
       }
     }
+  },
+  "fixed_prior_source_switch_policy_summary": {
+    "source": "fresh_run",
+    "status": "diagnostic_negative_not_deployable_over_fixed",
+    "report": "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
+    "two_domain_fixed_prior_gate": false,
+    "positive_domains": [
+      "ETH_UCY"
+    ],
+    "domains_better_than_fixed_on_any_core_metric": [],
+    "two_domain_fixed_prior_beats_fixed_gate": false,
+    "interpretation": "Treating fixed composer as the safety prior avoids t50 harm but does not improve over the fixed composer; fixed composer/composite remains deployable.",
+    "domain_deltas": {
+      "ETH_UCY": {
+        "all": -7.47012063097019e-05,
+        "t50": 0.0,
+        "t100": -4.3928731498943385e-05,
+        "hard_failure": -7.711733527826503e-05,
+        "easy_degradation": 0.0,
+        "shape_gain_all": -7.589234885441165e-05,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": -4.411907460744047e-05,
+        "shape_gain_hard_failure": -7.832934767781907e-05
+      },
+      "TrajNet": {
+        "all": 0.0,
+        "t50": 0.0,
+        "t100": 0.0,
+        "hard_failure": 0.0,
+        "easy_degradation": 0.0,
+        "shape_gain_all": 0.0,
+        "shape_gain_t50": 0.0,
+        "shape_gain_t100": 0.0,
+        "shape_gain_hard_failure": 0.0
+      }
+    }
+  },
+  "last_validation": {
+    "command": "python3 -m pytest tests",
+    "result": "233 passed in 65.88s",
+    "source": "fresh_run"
   }
 }

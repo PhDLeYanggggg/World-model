@@ -381,6 +381,8 @@
 - pairwise gain/harm shape switch policy summary: `A pairwise source-switch model predicts gain and harm for switching from the protected bridge into old-shape or gain-gate sources. It passes the two-domain positive/safety gate, but ETH_UCY is weaker than fixed composer and TrajNet only improves all/hard/t100 by tiny amounts while t50 falls. Current deployable shape policy remains the fixed horizon composer/composite route; pairwise switching is diagnostic evidence for future source-specific hard/failure features.`
 - weighted pairwise shape switch policy: `diagnostic_safe_not_deployable_over_fixed`
 - weighted pairwise shape switch policy summary: `Hard/failure, t50/t100, source-switch, and positive-gain rows were upweighted during pairwise training. This did not repair the deployability gap: ETH_UCY remains below fixed composer and TrajNet t50 remains below fixed composer. The blocker is likely source-specific causal feature insufficiency or missing per-domain/t50 priors rather than simple positive-label imbalance.`
+- fixed-composer prior source switch policy: `diagnostic_negative_not_deployable_over_fixed`
+- fixed-composer prior source switch policy summary: `The fixed composer was treated as the safety prior and the learned model was only allowed to make residual source switches after validation proved t50 preservation and all/hard/t100 gain. The stricter policy prevented TrajNet t50 harm by falling back to the fixed composer, but it did not beat fixed on either domain: ETH_UCY deltas all/t50/t100/hard = -0.000075 / 0.0 / -0.000044 / -0.000077, while TrajNet deltas are exactly 0. Current deployable shape path remains the fixed composer/composite route.`
 
 ## Neural Group Consistency Distiller
 
