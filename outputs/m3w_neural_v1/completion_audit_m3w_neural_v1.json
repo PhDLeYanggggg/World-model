@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (single fresh run; pending multi-seed/CI)",
+  "current_best_deployable": "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (bootstrap-supported; pending multi-seed/source replication)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -386,6 +386,28 @@
     "t100_delta_over_current_group": -0.03520915160486934,
     "hard_delta_over_current_group": 0.05152997543259538
   },
+  "teacher_guided_evidence_summary": {
+    "evidence_pass": true,
+    "all_improvement": 0.20359710771827477,
+    "t50_improvement": 0.13116399043122728,
+    "t100_improvement": 0.13371172832175005,
+    "hard_failure_improvement": 0.19657225579495552,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.2954185275896845,
+    "collision_delta_vs_floor_005": -0.003961994203749264,
+    "bootstrap_all_low": 0.19991125433418688,
+    "bootstrap_t50_low": 0.12503056367179802,
+    "bootstrap_t100_low": 0.1270625048070677,
+    "bootstrap_hard_low": 0.19259794747674494,
+    "bootstrap_eth_ucy_low": 0.17604451654489478,
+    "bootstrap_trajnet_low": 0.21892619124157922,
+    "bootstrap_ucy_low": 0.22065013211805656,
+    "no_fallback_easy_degradation": 1.2458611044726973,
+    "no_fallback_all_improvement": 0.296621240422128,
+    "raw_policy_collision_delta_vs_floor_005": 0.018672731941744014,
+    "no_group_consistency_all_delta": -0.1993508302918573,
+    "no_neighbor_interaction_all_delta": -0.1980910960572272
+  },
   "group_consistency_distiller_summary": {
     "deployable": true,
     "improves_fixed_guard": true,
@@ -571,6 +593,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json",
       "note": "Validation-selected proximity repair restores joint safety and still improves the current group-consistency multi-seed safety-buffer basis on all/t50/hard with easy=0. This is a strong single fresh run; multi-seed/CI is still required before freezing it as the final M3W-Neural v1 policy."
+    },
+    {
+      "requirement": "teacher-guided repair bootstrap CI and ablation evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
+      "note": "Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required."
     },
     {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",

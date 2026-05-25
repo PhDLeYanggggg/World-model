@@ -68,6 +68,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_residual_domain = read_json("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json", {})
     teacher_proposal = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json", {})
     teacher_repair = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json", {})
+    teacher_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json", {})
     group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
     group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
     group_distiller_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json", {})
@@ -189,6 +190,11 @@ def build_completion_audit() -> dict[str, Any]:
     teacher_repair_no_leak = teacher_repair.get("no_leakage") or {}
     teacher_repair_deployable = bool(teacher_repair.get("teacher_guided_proposal_repair_deployable"))
     teacher_repair_improves_current = bool(teacher_repair.get("teacher_guided_proposal_repair_improves_current_deployable"))
+    teacher_evidence_metrics = teacher_evidence.get("test_metrics") or {}
+    teacher_evidence_bootstrap = teacher_evidence.get("bootstrap") or {}
+    teacher_evidence_ablation = teacher_evidence.get("ablations") or {}
+    teacher_evidence_no_leak = teacher_evidence.get("no_leakage") or {}
+    teacher_evidence_pass = bool(teacher_evidence.get("evidence_pass"))
     group_distiller_metrics = group_distiller.get("test_metrics") or {}
     group_distiller_lift = group_distiller.get("lift_over_fixed_proximity_guard") or {}
     group_distiller_deployable = bool(group_distiller.get("group_consistency_distiller_deployable"))
@@ -385,6 +391,22 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Validation-selected proximity repair restores joint safety and still improves the current group-consistency multi-seed safety-buffer basis on all/t50/hard with easy=0. This is a strong single fresh run; multi-seed/CI is still required before freezing it as the final M3W-Neural v1 policy.",
         },
         {
+            "requirement": "teacher-guided repair bootstrap CI and ablation evidence",
+            "status": _status(
+                teacher_evidence_pass
+                and (teacher_evidence_bootstrap.get("all") or {}).get("low", 0.0) > 0
+                and (teacher_evidence_bootstrap.get("t50") or {}).get("low", 0.0) > 0
+                and (teacher_evidence_bootstrap.get("hard_failure") or {}).get("low", 0.0) > 0
+                and not teacher_evidence_no_leak.get("future_waypoints_input", True)
+                and not teacher_evidence_no_leak.get("test_threshold_tuning", True)
+                and not teacher_evidence_no_leak.get("stage5c_executed", True)
+                and not teacher_evidence_no_leak.get("smc_enabled", True),
+                partial=bool(teacher_evidence_metrics),
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
+            "note": "Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required.",
+        },
+        {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
             "status": _status(group_distiller_deployable and group_distiller_improves_guard, partial=group_distiller_deployable or bool(group_distiller_metrics)),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
@@ -429,7 +451,9 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
-            "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (single fresh run; pending multi-seed/CI)"
+            "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (bootstrap-supported; pending multi-seed/source replication)"
+            if teacher_evidence_pass
+            else "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (single fresh run; pending multi-seed/CI)"
             if teacher_repair_deployable and teacher_repair_improves_current
             else
             "M3W-Neural v1 group-consistency multi-seed safety-buffer joint-safe candidate under Stage37 safety floor"
@@ -764,6 +788,28 @@ def build_completion_audit() -> dict[str, Any]:
             "t50_delta_over_current_group": teacher_repair_lift.get("t50_delta"),
             "t100_delta_over_current_group": teacher_repair_lift.get("t100_delta"),
             "hard_delta_over_current_group": teacher_repair_lift.get("hard_delta"),
+        },
+        "teacher_guided_evidence_summary": {
+            "evidence_pass": teacher_evidence_pass,
+            "all_improvement": teacher_evidence_metrics.get("all_improvement"),
+            "t50_improvement": teacher_evidence_metrics.get("t50_improvement"),
+            "t100_improvement": teacher_evidence_metrics.get("t100_improvement"),
+            "hard_failure_improvement": teacher_evidence_metrics.get("hard_failure_improvement"),
+            "easy_degradation": teacher_evidence_metrics.get("easy_degradation"),
+            "switch_rate": teacher_evidence_metrics.get("switch_rate"),
+            "collision_delta_vs_floor_005": teacher_evidence.get("collision_delta_vs_floor_005"),
+            "bootstrap_all_low": (teacher_evidence_bootstrap.get("all") or {}).get("low"),
+            "bootstrap_t50_low": (teacher_evidence_bootstrap.get("t50") or {}).get("low"),
+            "bootstrap_t100_low": (teacher_evidence_bootstrap.get("t100_raw_frame_diagnostic") or {}).get("low"),
+            "bootstrap_hard_low": (teacher_evidence_bootstrap.get("hard_failure") or {}).get("low"),
+            "bootstrap_eth_ucy_low": (teacher_evidence_bootstrap.get("domain:ETH_UCY") or {}).get("low"),
+            "bootstrap_trajnet_low": (teacher_evidence_bootstrap.get("domain:TrajNet") or {}).get("low"),
+            "bootstrap_ucy_low": (teacher_evidence_bootstrap.get("domain:UCY") or {}).get("low"),
+            "no_fallback_easy_degradation": (teacher_evidence.get("neural_without_fallback_metrics") or {}).get("easy_degradation"),
+            "no_fallback_all_improvement": (teacher_evidence.get("neural_without_fallback_metrics") or {}).get("all_improvement"),
+            "raw_policy_collision_delta_vs_floor_005": teacher_evidence.get("raw_policy_without_proximity_repair_collision_delta_vs_floor_005"),
+            "no_group_consistency_all_delta": ((teacher_evidence_ablation.get("no_group_consistency") or {}).get("delta_vs_full") or {}).get("all_delta"),
+            "no_neighbor_interaction_all_delta": ((teacher_evidence_ablation.get("no_neighbor_interaction") or {}).get("delta_vs_full") or {}).get("all_delta"),
         },
         "group_consistency_distiller_summary": {
             "deployable": group_distiller_deployable,
@@ -1100,6 +1146,16 @@ def build_completion_audit() -> dict[str, Any]:
             f"- collision delta @0.05 normalized: `{teacher_repair.get('collision_delta_vs_floor_005')}`",
             f"- all/t50/t100/hard delta vs current group basis: `{teacher_repair_lift.get('all_delta')}` / `{teacher_repair_lift.get('t50_delta')}` / `{teacher_repair_lift.get('t100_delta')}` / `{teacher_repair_lift.get('hard_delta')}`",
             "",
+            "## Teacher-Guided Repair Bootstrap And Ablation Evidence",
+            "",
+            f"- evidence pass: `{teacher_evidence_pass}`",
+            f"- bootstrap all/t50/t100/hard lows: `{(teacher_evidence_bootstrap.get('all') or {}).get('low')}` / `{(teacher_evidence_bootstrap.get('t50') or {}).get('low')}` / `{(teacher_evidence_bootstrap.get('t100_raw_frame_diagnostic') or {}).get('low')}` / `{(teacher_evidence_bootstrap.get('hard_failure') or {}).get('low')}`",
+            f"- bootstrap ETH_UCY/TrajNet/UCY lows: `{(teacher_evidence_bootstrap.get('domain:ETH_UCY') or {}).get('low')}` / `{(teacher_evidence_bootstrap.get('domain:TrajNet') or {}).get('low')}` / `{(teacher_evidence_bootstrap.get('domain:UCY') or {}).get('low')}`",
+            f"- no-fallback all/easy: `{(teacher_evidence.get('neural_without_fallback_metrics') or {}).get('all_improvement')}` / `{(teacher_evidence.get('neural_without_fallback_metrics') or {}).get('easy_degradation')}`",
+            f"- raw policy collision delta @0.05: `{teacher_evidence.get('raw_policy_without_proximity_repair_collision_delta_vs_floor_005')}`",
+            f"- no-group-consistency all/t50 delta: `{((teacher_evidence_ablation.get('no_group_consistency') or {}).get('delta_vs_full') or {}).get('all_delta')}` / `{((teacher_evidence_ablation.get('no_group_consistency') or {}).get('delta_vs_full') or {}).get('t50_delta')}`",
+            f"- no-neighbor-interaction all/t50 delta: `{((teacher_evidence_ablation.get('no_neighbor_interaction') or {}).get('delta_vs_full') or {}).get('all_delta')}` / `{((teacher_evidence_ablation.get('no_neighbor_interaction') or {}).get('delta_vs_full') or {}).get('t50_delta')}`",
+            "",
             "## Neural Group Consistency Distiller",
             "",
             f"- deployable: `{group_distiller_deployable}`",
@@ -1118,7 +1174,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift in a single fresh run. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because the teacher-guided repair needs multi-seed/CI replication before final freeze, source-level independent UCY validation remains unavailable, and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The frozen teacher-guided repair now has 2000-bootstrap evidence with positive CI lows on all/t50/t100/hard and all three external domains, plus feature ablations showing group/neighbor consistency is necessary. No-fallback neural is still unsafe for easy cases, so the Stage37 safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because the teacher-guided repair still needs multi-seed replication and source-level independent UCY validation before final freeze, and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -1147,6 +1203,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     joint_residual_domain_summary = audit.get("joint_residual_domain_policy_summary", {})
     teacher_proposal_summary = audit.get("teacher_guided_proposal_summary", {})
     teacher_repair_summary = audit.get("teacher_guided_proposal_repair_summary", {})
+    teacher_evidence_summary = audit.get("teacher_guided_evidence_summary", {})
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
@@ -1343,6 +1400,16 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"teacher_guided_repair_t50_delta_vs_current = {teacher_repair_summary.get('t50_delta_over_current_group')}",
             f"teacher_guided_repair_t100_delta_vs_current = {teacher_repair_summary.get('t100_delta_over_current_group')}",
             f"teacher_guided_repair_hard_delta_vs_current = {teacher_repair_summary.get('hard_delta_over_current_group')}",
+            f"teacher_guided_evidence_pass = {teacher_evidence_summary.get('evidence_pass')}",
+            f"teacher_guided_bootstrap_all_low = {teacher_evidence_summary.get('bootstrap_all_low')}",
+            f"teacher_guided_bootstrap_t50_low = {teacher_evidence_summary.get('bootstrap_t50_low')}",
+            f"teacher_guided_bootstrap_t100_low = {teacher_evidence_summary.get('bootstrap_t100_low')}",
+            f"teacher_guided_bootstrap_hard_low = {teacher_evidence_summary.get('bootstrap_hard_low')}",
+            f"teacher_guided_bootstrap_domain_lows = {teacher_evidence_summary.get('bootstrap_eth_ucy_low')} / {teacher_evidence_summary.get('bootstrap_trajnet_low')} / {teacher_evidence_summary.get('bootstrap_ucy_low')}",
+            f"teacher_guided_no_fallback_all = {teacher_evidence_summary.get('no_fallback_all_improvement')}",
+            f"teacher_guided_no_fallback_easy = {teacher_evidence_summary.get('no_fallback_easy_degradation')}",
+            f"teacher_guided_no_group_consistency_all_delta = {teacher_evidence_summary.get('no_group_consistency_all_delta')}",
+            f"teacher_guided_no_neighbor_interaction_all_delta = {teacher_evidence_summary.get('no_neighbor_interaction_all_delta')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1430,6 +1497,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.md")
@@ -1442,7 +1511,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = (
-        "stage41_teacher_guided_proposal_repair_strong_single_run_not_complete"
+        "stage41_teacher_guided_proposal_repair_bootstrap_supported_not_complete"
+        if teacher_evidence_summary.get("evidence_pass")
+        else "stage41_teacher_guided_proposal_repair_strong_single_run_not_complete"
         if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable")
         else "stage41_group_consistency_multiseed_safety_buffer_joint_safe_strong_not_complete"
     )
@@ -1466,7 +1537,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             else "group_consistency_distiller"
         ),
         "deployable_metric_basis": (
-            "single_fresh_run_validation_selected_repair"
+            "frozen_policy_bootstrap_and_ablation_evidence"
+            if teacher_evidence_summary.get("evidence_pass")
+            else "single_fresh_run_validation_selected_repair"
             if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable")
             else "three_seed_safety_buffer_mean"
             if group_multiseed_summary.get("safety_buffer_repair_pass")
@@ -1573,6 +1646,18 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "teacher_guided_repair_t50_delta_vs_current_group": teacher_repair_summary.get("t50_delta_over_current_group"),
         "teacher_guided_repair_t100_delta_vs_current_group": teacher_repair_summary.get("t100_delta_over_current_group"),
         "teacher_guided_repair_hard_delta_vs_current_group": teacher_repair_summary.get("hard_delta_over_current_group"),
+        "teacher_guided_evidence_pass": teacher_evidence_summary.get("evidence_pass"),
+        "teacher_guided_evidence_bootstrap_all_low": teacher_evidence_summary.get("bootstrap_all_low"),
+        "teacher_guided_evidence_bootstrap_t50_low": teacher_evidence_summary.get("bootstrap_t50_low"),
+        "teacher_guided_evidence_bootstrap_t100_low": teacher_evidence_summary.get("bootstrap_t100_low"),
+        "teacher_guided_evidence_bootstrap_hard_low": teacher_evidence_summary.get("bootstrap_hard_low"),
+        "teacher_guided_evidence_bootstrap_eth_ucy_low": teacher_evidence_summary.get("bootstrap_eth_ucy_low"),
+        "teacher_guided_evidence_bootstrap_trajnet_low": teacher_evidence_summary.get("bootstrap_trajnet_low"),
+        "teacher_guided_evidence_bootstrap_ucy_low": teacher_evidence_summary.get("bootstrap_ucy_low"),
+        "teacher_guided_evidence_no_fallback_all": teacher_evidence_summary.get("no_fallback_all_improvement"),
+        "teacher_guided_evidence_no_fallback_easy": teacher_evidence_summary.get("no_fallback_easy_degradation"),
+        "teacher_guided_evidence_no_group_consistency_all_delta": teacher_evidence_summary.get("no_group_consistency_all_delta"),
+        "teacher_guided_evidence_no_neighbor_interaction_all_delta": teacher_evidence_summary.get("no_neighbor_interaction_all_delta"),
         "group_consistency_distiller_deployable": group_distiller_summary.get("deployable"),
         "group_consistency_distiller_improves_fixed_guard": group_distiller_summary.get("improves_fixed_guard"),
         "group_consistency_distiller_bootstrap_all_low": group_distiller_summary.get("bootstrap_all_low"),
@@ -1638,6 +1723,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_residual_domain_policy_summary": joint_residual_domain_summary,
         "teacher_guided_proposal_summary": teacher_proposal_summary,
         "teacher_guided_proposal_repair_summary": teacher_repair_summary,
+        "teacher_guided_evidence_summary": teacher_evidence_summary,
         "group_consistency_distiller_summary": group_distiller_summary,
         "group_consistency_multiseed_summary": group_multiseed_summary,
         "jepa_deployment_decision_summary": jepa_decision_summary,
