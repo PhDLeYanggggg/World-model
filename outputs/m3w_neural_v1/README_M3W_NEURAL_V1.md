@@ -61,3 +61,31 @@ verdict = stage42_b_external_validation_pass_protected_neural_not_ungated
 ```
 
 This confirms the protected neural candidate under the Stage37/teacher floor, and it also confirms the safety failure of ungated neural endpoint dynamics. Negative easy degradation means no easy-case harm under the report's metric convention. The result remains dataset-local raw-frame 2.5D evidence only; it is not metric, seconds-level, true 3D, Stage5C, or SMC.
+
+## Stage42-C Full-Waypoint Dynamics Follow-Up
+
+Stage42-C evaluates actual reconstructed future waypoint labels rather than only endpoint FDE:
+
+- report: `outputs/stage42_long_research/full_waypoint_dynamics_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_c_gate.md`
+- result: Stage42-C gates `12 / 12`
+
+Key fresh-run result:
+
+```text
+full_waypoint_sequence_model = full_trajectory_ensemble
+positive_full_waypoint_domains = ETH_UCY, TrajNet
+protected_full_waypoint_ADE_all = 0.1858
+protected_full_waypoint_ADE_t50 = 0.1480
+protected_full_waypoint_ADE_t100_raw_frame_diagnostic = 0.2286
+protected_full_waypoint_ADE_hard_failure = 0.1952
+protected_full_waypoint_easy_degradation = 0.0000
+protected_full_waypoint_FDE_all = 0.1938
+protected_full_waypoint_FDE_t50 = 0.2158
+protected_full_waypoint_near_collision_delta_005 = 0.0086
+ungated_full_waypoint_easy_degradation = 1.2459
+```
+
+Interpretation:
+
+The protected full-waypoint sequence model strengthens the world-state claim because it is evaluated on reconstructed future waypoint labels and is positive on two external domains. It is not a complete replacement for the composite-tail linear bridge yet: composite-tail has higher all-ADE, while the full-waypoint sequence model is stronger on t+50/t+100 raw-frame waypoint metrics. Ungated full-waypoint neural remains unsafe, so the Stage37/teacher floor and safe switch stay in the deployable path.

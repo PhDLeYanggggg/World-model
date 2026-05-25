@@ -65,6 +65,42 @@ Conclusion:
 
 Stage42-B confirms with fresh source/fold stress evidence that protected M3W-Neural v1 remains positive on external dataset-local raw-frame validation. Ungated neural still fails easy-case safety, so the Stage37/teacher floor is still required and should be treated as part of the method, not removed silently.
 
+## Stage42-C Full-Waypoint Dynamics
+
+Latest Stage42-C full-waypoint dynamics evidence:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/full_waypoint_dynamics_stage42.md`
+
+Fresh full-waypoint result:
+
+```text
+source = fresh_run
+full_waypoint_sequence_model = full_trajectory_ensemble
+stage42_c_gates = 12 / 12
+verdict = stage42_c_full_waypoint_dynamics_pass
+positive_full_waypoint_domains = ETH_UCY, TrajNet
+
+protected_full_waypoint_ADE_all = 0.1858
+protected_full_waypoint_ADE_t50 = 0.1480
+protected_full_waypoint_ADE_t100_raw_frame_diagnostic = 0.2286
+protected_full_waypoint_ADE_hard_failure = 0.1952
+protected_full_waypoint_easy_degradation = 0.0000
+protected_full_waypoint_FDE_all = 0.1938
+protected_full_waypoint_FDE_t50 = 0.2158
+protected_full_waypoint_near_collision_delta_005 = 0.0086
+
+composite_tail_linear_bridge_ADE_all = 0.2103
+composite_tail_linear_bridge_ADE_t50 = 0.1365
+composite_tail_linear_bridge_ADE_hard_failure = 0.2038
+ungated_full_waypoint_easy_degradation = 1.2459
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Conclusion:
+
+Stage42-C upgrades the evidence from endpoint-only/linear bridge toward actual reconstructed future waypoint labels and all-agent world-state dynamics. The protected full-waypoint sequence model is positive on two external domains and improves t+50/t+100 raw-frame ADE/FDE while preserving easy cases and proximity gates. It does not fully replace the composite-tail linear bridge on all-ADE yet, and ungated full-waypoint neural remains unsafe.
+
 ## Stage42-A Long Research Mode Data Calibration
 
 Latest Stage42-A data/calibration audit:

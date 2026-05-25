@@ -1,6 +1,39 @@
 {
-  "current_stage": "stage42_b_external_validation",
-  "current_verdict": "stage42_b_external_validation_pass_protected_neural_not_ungated",
+  "current_stage": "stage42_c_full_waypoint_dynamics",
+  "current_verdict": "stage42_c_full_waypoint_dynamics_pass_but_not_ungated_or_metric",
+  "stage42_c_full_waypoint_dynamics": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_c_gate.md",
+    "full_waypoint_sequence_model": "full_trajectory_ensemble",
+    "gates_passed": 12,
+    "gates_total": 12,
+    "positive_external_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "protected_full_waypoint_ade_all": 0.18577852429834418,
+    "protected_full_waypoint_ade_t50": 0.14803699577731477,
+    "protected_full_waypoint_ade_t100_raw_frame_diagnostic": 0.22857426649949408,
+    "protected_full_waypoint_ade_hard_failure": 0.19518047277951456,
+    "protected_full_waypoint_easy_degradation": 0.0,
+    "protected_full_waypoint_fde_all": 0.19384419892400817,
+    "protected_full_waypoint_fde_t50": 0.2158088248723733,
+    "protected_full_waypoint_near_collision_delta_005": 0.008639348472064268,
+    "composite_tail_linear_bridge_ade_all": 0.2102513255185352,
+    "composite_tail_linear_bridge_ade_t50": 0.13652231450154184,
+    "composite_tail_linear_bridge_ade_hard_failure": 0.20384916307933942,
+    "ungated_full_waypoint_easy_degradation": 1.2458611044726973,
+    "interpretation": "Protected full-waypoint sequence dynamics are positive on ETH_UCY and TrajNet and strengthen world-state evidence, but they do not fully replace the composite-tail linear bridge on all-ADE. Ungated full-waypoint neural remains unsafe.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_b_external_validation": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/external_validation_stage42.md",
