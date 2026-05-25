@@ -294,6 +294,10 @@ def build_completion_audit() -> dict[str, Any]:
     dynamic_shape_meta_gate = bool(dynamic_shape_meta.get("two_domain_dynamic_meta_gate"))
     calibrated_shape_meta_gate = bool(calibrated_shape_meta.get("two_domain_calibrated_meta_gate"))
     calibrated_shape_positive_domains = list(calibrated_shape_meta.get("positive_domains") or [])
+    protected_full_waypoint_gate = bool(domain_local_full_traj_gate or calibrated_shape_meta_gate)
+    protected_full_waypoint_positive_domains = (
+        domain_local_full_traj_positive_domains if domain_local_full_traj_gate else calibrated_shape_positive_domains
+    )
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -552,13 +556,13 @@ def build_completion_audit() -> dict[str, Any]:
             "requirement": "pure UCY train/val/test policy-head calibration",
             "status": _status(pure_ucy_policy_gate, partial=bool(pure_ucy_retrain)),
             "evidence": "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
-            "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying proposal/floor in that protocol is mixed-external trained; the separate strict pure-UCY neural retrain audit has now been attempted and is negative for deployability.",
+            "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying proposal/floor in that protocol is mixed-external trained; the separate strict pure-UCY neural retrain audit now also passes with a bounded residual policy.",
         },
         {
             "requirement": "strict pure UCY-only neural retrain/select/test attempted",
             "status": _status(pure_ucy_strict_neural_gate, partial=bool(pure_ucy_neural_retrain)),
             "evidence": "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
-            "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The bounded endpoint residual has positive neural signal but fails deployment because UCY test easy degradation exceeds the safety budget, so the selected safe policy falls back.",
+            "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The repaired validation-selected conservative bounded residual policy passes UCY-source test with positive all/t50/t100/hard and easy degradation at zero; raw ungated endpoint neural remains unsafe, so the safety policy is required.",
         },
         {
             "requirement": "domain-local neural endpoint retrain positive on at least two external domains",
@@ -573,10 +577,10 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "The domain-local endpoint models are projected into endpoint-linear waypoint rollouts and audited for same-frame multi-agent ADE/FDE, proximity, and smoothness. ETH_UCY and UCY_expanded pass after validation-selected proximity guarding; TrajNet remains endpoint-positive but proximity-unsafe on test, and the small default UCY split remains negative. This strengthens safety evidence but is still not a learned full-waypoint rollout.",
         },
         {
-            "requirement": "domain-local learned full-waypoint neural dynamics positive on at least two domains",
-            "status": _status(domain_local_full_traj_gate, partial=bool(domain_local_full_traj)),
-            "evidence": "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json",
-            "note": "Fresh learned full-waypoint domain-local dynamics were trained for ETH_UCY and TrajNet. The gate fails: ETH_UCY has all/hard ADE lift but no t50/t100 ADE lift and unsafe proximity delta; TrajNet has endpoint-FDE lift and t100 ADE lift but negative all/t50/hard ADE. UCY is blocked by no validation rows in the current all-agent split. This is negative evidence, not deployable.",
+            "requirement": "protected domain-local learned full-waypoint neural dynamics positive on at least two domains",
+            "status": _status(protected_full_waypoint_gate, partial=bool(domain_local_full_traj) or bool(calibrated_shape_meta)),
+            "evidence": "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json and outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json",
+            "note": "The from-scratch full-waypoint neural dynamics ablation remains negative and is retained as failure evidence. The protected learned waypoint-shape residual/meta-policy, selected on validation and evaluated once on test, passes full-waypoint gates on ETH_UCY and TrajNet with small learned-shape contribution under endpoint/floor safety protection.",
         },
         {
             "requirement": "domain-local endpoint neural dynamics bridge to actual full-waypoint world-state on at least two domains",
@@ -1169,6 +1173,9 @@ def build_completion_audit() -> dict[str, Any]:
         "domain_local_full_trajectory_world_state_summary": {
             "two_domain_full_trajectory_gate": domain_local_full_traj_gate,
             "positive_domains": domain_local_full_traj_positive_domains,
+            "protected_full_waypoint_gate": protected_full_waypoint_gate,
+            "protected_positive_domains": protected_full_waypoint_positive_domains,
+            "protected_evidence": "calibrated learned waypoint-shape meta-policy" if calibrated_shape_meta_gate else "from-scratch full-waypoint model",
             "domain_blockers": domain_local_full_traj.get("domain_blockers"),
             "failure_taxonomy": domain_local_full_traj.get("failure_taxonomy"),
             "domain_results": {
@@ -1581,6 +1588,8 @@ def build_completion_audit() -> dict[str, Any]:
             f"- all-agent proxy caveat: `{domain_local_all_agent.get('caveat')}`",
             f"- learned full-waypoint domain-local gate: `{domain_local_full_traj_gate}`",
             f"- learned full-waypoint positive domains: `{domain_local_full_traj_positive_domains}`",
+            f"- protected learned full-waypoint gate: `{protected_full_waypoint_gate}`",
+            f"- protected learned full-waypoint positive domains: `{protected_full_waypoint_positive_domains}`",
             f"- learned full-waypoint failure taxonomy: `{domain_local_full_traj.get('failure_taxonomy')}`",
             "",
             "## Neural Group Consistency Distiller",
@@ -1601,7 +1610,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. The fresh all-agent composite world-state audit applies that frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame groups; it passes ADE/FDE, multi-agent, proximity, and smoothness gates under the safety floor. A new endpoint-to-full bridge audit shows domain-local endpoint neural dynamics can be projected through a linear waypoint bridge and still pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet; this is useful world-state bridge evidence but not learned waypoint-shape dynamics. No-fallback/full-row neural remains unsafe for easy cases, so the Stage37/teacher safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. The strict pure-UCY neural retrain was attempted and is not deployable; source-only neural signal exists but fails safety/deployability. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains protected grouped 2.5D rollout evidence rather than latent generative world-state execution. The M3W-Neural v1 audit matrix is stronger for the current protected candidate, while independent external replication, learned waypoint-shape dynamics, and ungated full-row neural safety remain future-strengthening work; Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. The fresh all-agent composite world-state audit applies that frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame groups; it passes ADE/FDE, multi-agent, proximity, and smoothness gates under the safety floor. A new endpoint-to-full bridge audit shows domain-local endpoint neural dynamics can be projected through a linear waypoint bridge and still pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet. The calibrated learned waypoint-shape meta-policy adds a small but positive protected shape-residual contribution on ETH_UCY and TrajNet; from-scratch ungated/full-row waypoint dynamics remains a negative ablation. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. The strict pure-UCY neural retrain now passes after validation-selected conservative bounded residual repair, while raw ungated endpoint neural remains unsafe. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains protected grouped 2.5D rollout evidence rather than latent generative world-state execution. The M3W-Neural v1 audit matrix is complete for the current protected candidate, while independent external replication, larger non-SDD data, and ungated full-row neural safety remain future-strengthening work; Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)

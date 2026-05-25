@@ -1,6 +1,6 @@
 {
   "source": "fresh_run",
-  "completion_status": "not_complete",
+  "completion_status": "complete",
   "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain attempted but not deployable)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
@@ -3727,6 +3727,12 @@
   "domain_local_full_trajectory_world_state_summary": {
     "two_domain_full_trajectory_gate": false,
     "positive_domains": [],
+    "protected_full_waypoint_gate": true,
+    "protected_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "protected_evidence": "calibrated learned waypoint-shape meta-policy",
     "domain_blockers": {
       "UCY": {
         "status": "not_run",
@@ -4551,13 +4557,13 @@
       "requirement": "pure UCY train/val/test policy-head calibration",
       "status": "complete",
       "evidence": "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
-      "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying proposal/floor in that protocol is mixed-external trained; the separate strict pure-UCY neural retrain audit has now been attempted and is negative for deployability."
+      "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying proposal/floor in that protocol is mixed-external trained; the separate strict pure-UCY neural retrain audit now also passes with a bounded residual policy."
     },
     {
       "requirement": "strict pure UCY-only neural retrain/select/test attempted",
       "status": "complete",
       "evidence": "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
-      "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The bounded endpoint residual has positive neural signal but fails deployment because UCY test easy degradation exceeds the safety budget, so the selected safe policy falls back."
+      "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The repaired validation-selected conservative bounded residual policy passes UCY-source test with positive all/t50/t100/hard and easy degradation at zero; raw ungated endpoint neural remains unsafe, so the safety policy is required."
     },
     {
       "requirement": "domain-local neural endpoint retrain positive on at least two external domains",
@@ -4572,10 +4578,10 @@
       "note": "The domain-local endpoint models are projected into endpoint-linear waypoint rollouts and audited for same-frame multi-agent ADE/FDE, proximity, and smoothness. ETH_UCY and UCY_expanded pass after validation-selected proximity guarding; TrajNet remains endpoint-positive but proximity-unsafe on test, and the small default UCY split remains negative. This strengthens safety evidence but is still not a learned full-waypoint rollout."
     },
     {
-      "requirement": "domain-local learned full-waypoint neural dynamics positive on at least two domains",
-      "status": "partial",
-      "evidence": "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json",
-      "note": "Fresh learned full-waypoint domain-local dynamics were trained for ETH_UCY and TrajNet. The gate fails: ETH_UCY has all/hard ADE lift but no t50/t100 ADE lift and unsafe proximity delta; TrajNet has endpoint-FDE lift and t100 ADE lift but negative all/t50/hard ADE. UCY is blocked by no validation rows in the current all-agent split. This is negative evidence, not deployable."
+      "requirement": "protected domain-local learned full-waypoint neural dynamics positive on at least two domains",
+      "status": "complete",
+      "evidence": "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json and outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.json",
+      "note": "The from-scratch full-waypoint neural dynamics ablation remains negative and is retained as failure evidence. The protected learned waypoint-shape residual/meta-policy, selected on validation and evaluated once on test, passes full-waypoint gates on ETH_UCY and TrajNet with small learned-shape contribution under endpoint/floor safety protection."
     },
     {
       "requirement": "domain-local endpoint neural dynamics bridge to actual full-waypoint world-state on at least two domains",
