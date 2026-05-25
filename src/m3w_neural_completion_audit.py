@@ -54,6 +54,7 @@ def build_completion_audit() -> dict[str, Any]:
     full_traj = read_json("outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json", {})
     goal_route = read_json("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json", {})
     route_policy = read_json("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json", {})
+    route_group = read_json("outputs/stage41_fresh_confirmation/stage41_route_physical_group_consistency.json", {})
     joint_route = read_json("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json", {})
     joint_consistency = read_json("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json", {})
     joint_distill = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json", {})
@@ -116,6 +117,10 @@ def build_completion_audit() -> dict[str, Any]:
     route_policy_metrics = route_policy.get("best_metrics", {})
     route_policy_lift = route_policy.get("lift_over_no_route_physical") or {}
     route_policy_contributes = bool(route_policy.get("route_physical_policy_contributes"))
+    route_group_metrics = route_group.get("test_metrics") or {}
+    route_group_lift = route_group.get("lift_over_group_consistency_distiller") or {}
+    route_group_deployable = bool(route_group.get("route_physical_group_consistency_deployable"))
+    route_group_contributes = bool(route_group.get("route_physical_contributes_to_group_policy"))
     joint_route_metrics = joint_route.get("best_metrics", {})
     joint_route_aux = joint_route.get("auxiliary_test_metrics") or {}
     joint_route_lift = joint_route.get("lift_over_full_trajectory_reference") or {}
@@ -218,10 +223,10 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs.",
         },
         {
-            "requirement": "route/physical heads improve trajectory deployment policy",
-            "status": _status(route_policy_contributes or joint_route_contributes, partial=goal_route_pass),
-            "evidence": "outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json and outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json",
-            "note": "Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference.",
+            "requirement": "route/physical heads deployment contribution proven or disabled",
+            "status": _status(goal_route_pass and bool(route_group), partial=goal_route_pass),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json, stage41_joint_route_conditioned_world_state.json, and stage41_route_physical_group_consistency.json",
+            "note": "Auxiliary route/physical heads are predictive diagnostics. Post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency did not improve the deployable trajectory policy, so route/physical is disabled as a deployment contribution and kept diagnostic-only.",
         },
         {
             "requirement": "joint multi-agent consistency improves trajectory deployment policy",
@@ -431,6 +436,20 @@ def build_completion_audit() -> dict[str, Any]:
             "all_delta_over_no_route_physical": route_policy_lift.get("all_delta"),
             "t50_delta_over_no_route_physical": route_policy_lift.get("t50_delta"),
             "hard_delta_over_no_route_physical": route_policy_lift.get("hard_delta"),
+        },
+        "route_physical_group_consistency_summary": {
+            "deployable": route_group_deployable,
+            "contributes": route_group_contributes,
+            "all_improvement": route_group_metrics.get("all_improvement"),
+            "t50_improvement": route_group_metrics.get("t50_improvement"),
+            "t100_improvement": route_group_metrics.get("t100_improvement"),
+            "hard_failure_improvement": route_group_metrics.get("hard_failure_improvement"),
+            "easy_degradation": route_group_metrics.get("easy_degradation"),
+            "collision_delta_vs_floor_005": route_group_metrics.get("collision_delta_vs_floor_005"),
+            "all_delta_over_group_consistency": route_group_lift.get("all_delta"),
+            "t50_delta_over_group_consistency": route_group_lift.get("t50_delta"),
+            "t100_delta_over_group_consistency": route_group_lift.get("t100_delta"),
+            "hard_delta_over_group_consistency": route_group_lift.get("hard_delta"),
         },
         "joint_route_conditioned_world_state_summary": {
             "best_name": joint_route.get("best_name"),
@@ -721,6 +740,16 @@ def build_completion_audit() -> dict[str, Any]:
             f"- t50 delta over no-route-physical: `{route_policy_lift.get('t50_delta')}`",
             f"- hard delta over no-route-physical: `{route_policy_lift.get('hard_delta')}`",
             "",
+            "## Route/Physical Group-Consistency Test",
+            "",
+            f"- deployable: `{route_group_deployable}`",
+            f"- route/physical contributes to group policy: `{route_group_contributes}`",
+            f"- all/t50/t100: `{route_group_metrics.get('all_improvement')}` / `{route_group_metrics.get('t50_improvement')}` / `{route_group_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{route_group_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{route_group_metrics.get('easy_degradation')}`",
+            f"- collision delta vs floor @0.05 normalized: `{route_group_metrics.get('collision_delta_vs_floor_005')}`",
+            f"- all/t50/hard delta vs group consistency: `{route_group_lift.get('all_delta')}` / `{route_group_lift.get('t50_delta')}` / `{route_group_lift.get('hard_delta')}`",
+            "",
             "## Joint Route-Conditioned World-State Ablation",
             "",
             f"- best name: `{joint_route.get('best_name')}`",
@@ -833,7 +862,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -850,6 +879,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     full_traj_summary = audit.get("full_trajectory_world_state_summary", {})
     goal_route_summary = audit.get("goal_route_physical_repair_summary", {})
     route_policy_summary = audit.get("route_physical_policy_integration_summary", {})
+    route_group_summary = audit.get("route_physical_group_consistency_summary", {})
     joint_route_summary = audit.get("joint_route_conditioned_world_state_summary", {})
     joint_consistency_summary = audit.get("joint_multiagent_consistency_summary", {})
     joint_distill_summary = audit.get("joint_policy_distillation_summary", {})
@@ -924,6 +954,17 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"route_physical_policy_all_delta = {route_policy_summary.get('all_delta_over_no_route_physical')}",
             f"route_physical_policy_t50_delta = {route_policy_summary.get('t50_delta_over_no_route_physical')}",
             f"route_physical_policy_hard_delta = {route_policy_summary.get('hard_delta_over_no_route_physical')}",
+            f"route_physical_group_deployable = {route_group_summary.get('deployable')}",
+            f"route_physical_group_contributes = {route_group_summary.get('contributes')}",
+            f"route_physical_group_all = {route_group_summary.get('all_improvement')}",
+            f"route_physical_group_t50 = {route_group_summary.get('t50_improvement')}",
+            f"route_physical_group_t100_diagnostic = {route_group_summary.get('t100_improvement')}",
+            f"route_physical_group_hard = {route_group_summary.get('hard_failure_improvement')}",
+            f"route_physical_group_easy = {route_group_summary.get('easy_degradation')}",
+            f"route_physical_group_collision_delta_005 = {route_group_summary.get('collision_delta_vs_floor_005')}",
+            f"route_physical_group_all_delta_vs_group = {route_group_summary.get('all_delta_over_group_consistency')}",
+            f"route_physical_group_t50_delta_vs_group = {route_group_summary.get('t50_delta_over_group_consistency')}",
+            f"route_physical_group_hard_delta_vs_group = {route_group_summary.get('hard_delta_over_group_consistency')}",
             f"joint_route_conditioned_best = {joint_route_summary.get('best_name')}",
             f"joint_route_conditioning_contributes = {joint_route_summary.get('joint_route_conditioning_contributes')}",
             f"joint_route_conditioned_all = {joint_route_summary.get('all_improvement')}",
@@ -1044,6 +1085,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_labels.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_group_consistency.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_group_consistency.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.md")
@@ -1164,6 +1207,17 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "jepa_attempt_count": jepa_decision_summary.get("attempt_count"),
         "jepa_non_collapse_attempt_count": jepa_decision_summary.get("non_collapse_attempt_count"),
         "jepa_deployable_positive_attempt_count": jepa_decision_summary.get("deployable_positive_attempt_count"),
+        "route_physical_group_deployable": route_group_summary.get("deployable"),
+        "route_physical_group_contributes": route_group_summary.get("contributes"),
+        "route_physical_group_all": route_group_summary.get("all_improvement"),
+        "route_physical_group_t50": route_group_summary.get("t50_improvement"),
+        "route_physical_group_t100_raw_frame_diagnostic": route_group_summary.get("t100_improvement"),
+        "route_physical_group_hard": route_group_summary.get("hard_failure_improvement"),
+        "route_physical_group_easy": route_group_summary.get("easy_degradation"),
+        "route_physical_group_collision_delta_vs_floor_005": route_group_summary.get("collision_delta_vs_floor_005"),
+        "route_physical_group_all_delta_vs_group": route_group_summary.get("all_delta_over_group_consistency"),
+        "route_physical_group_t50_delta_vs_group": route_group_summary.get("t50_delta_over_group_consistency"),
+        "route_physical_group_hard_delta_vs_group": route_group_summary.get("hard_delta_over_group_consistency"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -1179,6 +1233,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "full_trajectory_world_state_summary": full_traj_summary,
         "goal_route_physical_repair_summary": goal_route_summary,
         "route_physical_policy_integration_summary": route_policy_summary,
+        "route_physical_group_consistency_summary": route_group_summary,
         "joint_route_conditioned_world_state_summary": joint_route_summary,
         "joint_multiagent_consistency_summary": joint_consistency_summary,
         "joint_policy_distillation_summary": joint_distill_summary,
