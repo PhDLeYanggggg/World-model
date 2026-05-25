@@ -1005,7 +1005,7 @@ Current best candidate: M3W-Neural v1 composite-tail safe-switch bounded neural 
 The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, a teacher-guided neural proposal repaired by a validation-selected safety guard, and a domain-local endpoint retrain checked by an endpoint-linear all-agent safety proxy on two domains. The rollout is still not a latent generative world state.
 
 ```text
-completion_status = complete
+completion_status = not_complete
 all_agent_repair_all = 0.09976285280545372
 all_agent_repair_t50 = -0.002800354643290648
 all_agent_repair_t100_diagnostic = 0.26476770940707695
@@ -1244,6 +1244,9 @@ domain_local_endpoint_two_domain_gate = True
 domain_local_endpoint_positive_domains = ['ETH_UCY', 'TrajNet', 'UCY_expanded']
 domain_local_all_agent_two_domain_gate = True
 domain_local_all_agent_positive_domains = ['ETH_UCY', 'UCY_expanded']
+domain_local_full_waypoint_two_domain_gate = False
+domain_local_full_waypoint_positive_domains = []
+domain_local_full_waypoint_failure_taxonomy = {'ETH_UCY': {'reasons': ['t50_ade_not_positive', 't100_ade_not_positive', 'same_frame_proximity_delta_unsafe', 'ungated_neural_catastrophic_easy_degradation'], 'ade_all': 0.03200185360974939, 'ade_t50': 0.0, 'ade_t100': 0.0, 'fde_all': 0.02140015213054336, 'fde_t50': 0.0, 'collision_delta_vs_floor_005': 0.020563149900689304, 'next_fix': 'train a validation-selected efficient proximity guard and horizon-specific waypoint policy; do not deploy learned full-waypoint domain-local model yet.'}, 'TrajNet': {'reasons': ['all_ade_not_positive', 't50_ade_not_positive', 'hard_failure_ade_not_positive', 'same_frame_proximity_delta_unsafe', 'ungated_neural_catastrophic_easy_degradation', 'endpoint_fde_positive_but_waypoint_ade_negative'], 'ade_all': -0.009876103097439914, 'ade_t50': -0.09471803973274517, 'ade_t100': 0.022840260699697912, 'fde_all': 0.06300366873346075, 'fde_t50': 0.06502418472340132, 'collision_delta_vs_floor_005': 0.014909478168264101, 'next_fix': 'train a validation-selected efficient proximity guard and horizon-specific waypoint policy; do not deploy learned full-waypoint domain-local model yet.'}}
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437

@@ -1,6 +1,6 @@
 {
   "source": "fresh_run",
-  "completion_status": "complete",
+  "completion_status": "not_complete",
   "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
@@ -3620,6 +3620,341 @@
     },
     "caveat": "This extends domain-local endpoint-FDE evidence to same-frame all-agent endpoint-linear waypoint safety. It strengthens safety evidence but does not replace a true learned full-trajectory neural dynamics audit."
   },
+  "domain_local_full_trajectory_world_state_summary": {
+    "two_domain_full_trajectory_gate": false,
+    "positive_domains": [],
+    "domain_blockers": {
+      "UCY": {
+        "status": "not_run",
+        "reason": "domain lacks strict train/val/test coverage in current all-agent split",
+        "has_train": true,
+        "has_val": false,
+        "has_test": true
+      }
+    },
+    "failure_taxonomy": {
+      "ETH_UCY": {
+        "reasons": [
+          "t50_ade_not_positive",
+          "t100_ade_not_positive",
+          "same_frame_proximity_delta_unsafe",
+          "ungated_neural_catastrophic_easy_degradation"
+        ],
+        "ade_all": 0.03200185360974939,
+        "ade_t50": 0.0,
+        "ade_t100": 0.0,
+        "fde_all": 0.02140015213054336,
+        "fde_t50": 0.0,
+        "collision_delta_vs_floor_005": 0.020563149900689304,
+        "next_fix": "train a validation-selected efficient proximity guard and horizon-specific waypoint policy; do not deploy learned full-waypoint domain-local model yet."
+      },
+      "TrajNet": {
+        "reasons": [
+          "all_ade_not_positive",
+          "t50_ade_not_positive",
+          "hard_failure_ade_not_positive",
+          "same_frame_proximity_delta_unsafe",
+          "ungated_neural_catastrophic_easy_degradation",
+          "endpoint_fde_positive_but_waypoint_ade_negative"
+        ],
+        "ade_all": -0.009876103097439914,
+        "ade_t50": -0.09471803973274517,
+        "ade_t100": 0.022840260699697912,
+        "fde_all": 0.06300366873346075,
+        "fde_t50": 0.06502418472340132,
+        "collision_delta_vs_floor_005": 0.014909478168264101,
+        "next_fix": "train a validation-selected efficient proximity guard and horizon-specific waypoint policy; do not deploy learned full-waypoint domain-local model yet."
+      }
+    },
+    "domain_results": {
+      "ETH_UCY": {
+        "status": "ok",
+        "domain_local_full_trajectory_world_state_gate": false,
+        "summary": {
+          "train": {
+            "rows": 108794,
+            "full_waypoint_rows": 76710,
+            "t10_rows": 32081,
+            "t25_rows": 29472,
+            "t50_rows": 26597,
+            "t100_rows": 20644,
+            "hard_failure_rate": 0.8110833318013861,
+            "easy_rate": 0.2664760924315679,
+            "sources": 3,
+            "scenes": 3
+          },
+          "val": {
+            "rows": 16103,
+            "full_waypoint_rows": 11523,
+            "t10_rows": 4580,
+            "t25_rows": 4284,
+            "t50_rows": 3988,
+            "t100_rows": 3251,
+            "hard_failure_rate": 0.8810159597590511,
+            "easy_rate": 0.0839595106501894,
+            "sources": 1,
+            "scenes": 1
+          },
+          "test": {
+            "rows": 25901,
+            "full_waypoint_rows": 18678,
+            "t10_rows": 7223,
+            "t25_rows": 6823,
+            "t50_rows": 6422,
+            "t100_rows": 5433,
+            "hard_failure_rate": 0.8054129184201382,
+            "easy_rate": 0.23991351685263118,
+            "sources": 1,
+            "scenes": 1
+          }
+        },
+        "ade_metrics_vs_floor": {
+          "rows": 25901,
+          "all_improvement": 0.03200185360974939,
+          "t10_improvement": 0.15819111892728577,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.034380958393171346,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.01677291631401656,
+          "switch_rate": 0.09509285355777769,
+          "regret_to_oracle": -0.051618754731411684,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.03200185360974939,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.034380958393171346,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.09509285355777769
+            }
+          }
+        },
+        "fde_metrics_vs_floor": {
+          "rows": 25901,
+          "all_improvement": 0.02140015213054336,
+          "t10_improvement": 0.15368440269934347,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.02285402337133191,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.01629507170014134,
+          "switch_rate": 0.09509285355777769,
+          "regret_to_oracle": 0.1861823506243192,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.02140015213054336,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.02285402337133191,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.09509285355777769
+            }
+          }
+        },
+        "multi_agent_ade_metrics": {
+          "rows": 25677,
+          "all_improvement": 0.032394133220194465,
+          "t10_improvement": 0.1595214393988479,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.03482496066470775,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.01691596856568026,
+          "switch_rate": 0.09518245901000896,
+          "regret_to_oracle": -0.05300486231908969,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25677,
+              "all_improvement": 0.032394133220194465,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.03482496066470775,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.09518245901000896
+            }
+          }
+        },
+        "neural_without_fallback_ade": {
+          "rows": 25901,
+          "all_improvement": -0.2987557738455193,
+          "t10_improvement": 0.09293526243515926,
+          "t25_improvement": -1.1565672994870355,
+          "t50_improvement": -0.4074877231331633,
+          "t100_improvement": -0.14503436888118104,
+          "hard_failure_improvement": -0.20645473129024672,
+          "easy_degradation": 5.400225626783272,
+          "harm_over_fallback": 0.15658485455709903,
+          "switch_rate": 1.0,
+          "regret_to_oracle": 0.12173901613970388,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": -0.2987557738455193,
+              "t50_improvement": -0.4074877231331633,
+              "t100_improvement": -0.14503436888118104,
+              "hard_failure_improvement": -0.20645473129024672,
+              "easy_degradation": 5.400225626783272,
+              "switch_rate": 1.0
+            }
+          }
+        },
+        "collision_delta_vs_floor_005": 0.020563149900689304
+      },
+      "TrajNet": {
+        "status": "ok",
+        "domain_local_full_trajectory_world_state_gate": false,
+        "summary": {
+          "train": {
+            "rows": 63650,
+            "full_waypoint_rows": 42998,
+            "t10_rows": 22043,
+            "t25_rows": 18187,
+            "t50_rows": 14652,
+            "t100_rows": 8768,
+            "hard_failure_rate": 0.7229222309505106,
+            "easy_rate": 0.33833464257659074,
+            "sources": 8,
+            "scenes": 3
+          },
+          "val": {
+            "rows": 37153,
+            "full_waypoint_rows": 25236,
+            "t10_rows": 11917,
+            "t25_rows": 10515,
+            "t50_rows": 9113,
+            "t100_rows": 5608,
+            "hard_failure_rate": 0.7246251985034856,
+            "easy_rate": 0.24399106397868275,
+            "sources": 1,
+            "scenes": 1
+          },
+          "test": {
+            "rows": 20087,
+            "full_waypoint_rows": 13644,
+            "t10_rows": 6443,
+            "t25_rows": 5685,
+            "t50_rows": 4927,
+            "t100_rows": 3032,
+            "hard_failure_rate": 0.6716284163887091,
+            "easy_rate": 0.42544929556429534,
+            "sources": 1,
+            "scenes": 1
+          }
+        },
+        "ade_metrics_vs_floor": {
+          "rows": 20087,
+          "all_improvement": -0.009876103097439914,
+          "t10_improvement": 0.025761413722126925,
+          "t25_improvement": -0.001145389874250169,
+          "t50_improvement": -0.09471803973274517,
+          "t100_improvement": 0.022840260699697912,
+          "hard_failure_improvement": -0.011062118611413485,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": 0.0038852858034089783,
+          "switch_rate": 0.15263603325533928,
+          "regret_to_oracle": -0.009103610144487089,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": -0.009876103097439914,
+              "t50_improvement": -0.09471803973274517,
+              "t100_improvement": 0.022840260699697912,
+              "hard_failure_improvement": -0.011062118611413485,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.15263603325533928
+            }
+          }
+        },
+        "fde_metrics_vs_floor": {
+          "rows": 20087,
+          "all_improvement": 0.06300366873346075,
+          "t10_improvement": 0.030720972957027914,
+          "t25_improvement": 0.0026006967293906724,
+          "t50_improvement": 0.06502418472340132,
+          "t100_improvement": 0.09900527711602758,
+          "hard_failure_improvement": 0.0701048678798295,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.03519406793292714,
+          "switch_rate": 0.15263603325533928,
+          "regret_to_oracle": 0.11701778725097299,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.06300366873346075,
+              "t50_improvement": 0.06502418472340132,
+              "t100_improvement": 0.09900527711602758,
+              "hard_failure_improvement": 0.0701048678798295,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.15263603325533928
+            }
+          }
+        },
+        "multi_agent_ade_metrics": {
+          "rows": 19719,
+          "all_improvement": -0.01002863688930744,
+          "t10_improvement": 0.02607587106268261,
+          "t25_improvement": -0.0011613483084984555,
+          "t50_improvement": -0.09669511586988655,
+          "t100_improvement": 0.02494899440086351,
+          "hard_failure_improvement": -0.01126450150998659,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": 0.0038839176287366792,
+          "switch_rate": 0.15401389522795272,
+          "regret_to_oracle": -0.012269367228558325,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 19719,
+              "all_improvement": -0.01002863688930744,
+              "t50_improvement": -0.09669511586988655,
+              "t100_improvement": 0.02494899440086351,
+              "hard_failure_improvement": -0.01126450150998659,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.15401389522795272
+            }
+          }
+        },
+        "neural_without_fallback_ade": {
+          "rows": 20087,
+          "all_improvement": -0.4111850820008922,
+          "t10_improvement": -0.09763258082685145,
+          "t25_improvement": -1.2635688114157033,
+          "t50_improvement": -0.6367865620242406,
+          "t100_improvement": -0.10995921447461199,
+          "hard_failure_improvement": -0.23289056065728442,
+          "easy_degradation": 6.5934020170383265,
+          "harm_over_fallback": 0.16176132892798306,
+          "switch_rate": 1.0,
+          "regret_to_oracle": 0.148772432980087,
+          "by_domain": {
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": -0.4111850820008922,
+              "t50_improvement": -0.6367865620242406,
+              "t100_improvement": -0.10995921447461199,
+              "hard_failure_improvement": -0.23289056065728442,
+              "easy_degradation": 6.5934020170383265,
+              "switch_rate": 1.0
+            }
+          }
+        },
+        "collision_delta_vs_floor_005": 0.014909478168264101
+      }
+    },
+    "claim_boundary": {
+      "learned_full_waypoint_neural_dynamics": true,
+      "all_active_agent_world_state_audit": true,
+      "latent_generative_rollout": false,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false
+    }
+  },
   "jepa_deployment_decision_summary": {
     "decision": "disable_jepa_in_deployable_path",
     "disable_jepa_in_deployable_path": true,
@@ -3798,6 +4133,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json",
       "note": "The domain-local endpoint models are projected into endpoint-linear waypoint rollouts and audited for same-frame multi-agent ADE/FDE, proximity, and smoothness. ETH_UCY and UCY_expanded pass after validation-selected proximity guarding; TrajNet remains endpoint-positive but proximity-unsafe on test, and the small default UCY split remains negative. This strengthens safety evidence but is still not a learned full-waypoint rollout."
+    },
+    {
+      "requirement": "domain-local learned full-waypoint neural dynamics positive on at least two domains",
+      "status": "partial",
+      "evidence": "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json",
+      "note": "Fresh learned full-waypoint domain-local dynamics were trained for ETH_UCY and TrajNet. The gate fails: ETH_UCY has all/hard ADE lift but no t50/t100 ADE lift and unsafe proximity delta; TrajNet has endpoint-FDE lift and t100 ADE lift but negative all/t50/hard ADE. UCY is blocked by no validation rows in the current all-agent split. This is negative evidence, not deployable."
     },
     {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",

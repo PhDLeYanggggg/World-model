@@ -378,6 +378,8 @@
     "outputs/stage41_breakthrough/world_model_gate_stage41.md",
     "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json",
     "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.md",
+    "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json",
+    "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.md",
     "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json",
     "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md",
     "outputs/stage41_external_split/report.md",
@@ -9883,7 +9885,7 @@
   },
   "m3w_neural_v1_completion_audit": {
     "source": "fresh_run",
-    "completion_status": "complete",
+    "completion_status": "not_complete",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
     "all_agent_risk_repair_summary": {
       "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
@@ -10423,7 +10425,7 @@
   },
   "m3w_neural_v1_current_candidate": {
     "source": "fresh_run",
-    "completion_status": "complete",
+    "completion_status": "not_complete",
     "deployment_state": "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_policy_and_domain_local_all_agent_endpoint_proxy_supported",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
     "best_name": "composite_tail_safe_switch_bounded_neural_dynamics",
@@ -10623,5 +10625,5 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 domain-local neural endpoint retrain now has an all-agent endpoint-linear safety proxy: ETH_UCY and UCY_expanded pass same-frame ADE/FDE/proximity/smoothness gates with validation-selected proximity guarding; TrajNet remains endpoint-positive but proximity-unsafe on test, and the default small UCY split remains negative. This is not a learned full-waypoint rollout; all deployment claims remain protected 2.5D raw-frame evidence."
+  "latest_evidence": "Stage41 domain-local learned full-waypoint dynamics were trained for ETH_UCY and TrajNet but are not deployable: ETH_UCY has all/hard ADE lift but no t50/t100 lift and unsafe proximity delta, while TrajNet has endpoint-FDE/t100 lift but negative all/t50/hard ADE. Domain-local endpoint evidence still has an all-agent endpoint-linear safety proxy on ETH_UCY and UCY_expanded. Current deployment remains the protected composite-tail candidate; no Stage5C/SMC/metric/seconds/true-3D claim."
 }
