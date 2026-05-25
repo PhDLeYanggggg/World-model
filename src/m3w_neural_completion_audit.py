@@ -64,6 +64,8 @@ def build_completion_audit() -> dict[str, Any]:
     joint_rollout = read_json("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json", {})
     group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
     group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
+    group_distiller_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json", {})
+    group_distiller_multiseed_repair = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -153,6 +155,11 @@ def build_completion_audit() -> dict[str, Any]:
     group_distiller_bootstrap = group_distiller_evidence.get("bootstrap") or {}
     group_distiller_ablation = group_distiller_evidence.get("contribution_summary") or {}
     group_distiller_stable = bool(group_distiller_evidence.get("statistically_stable_on_test"))
+    group_distiller_multiseed_summary = group_distiller_multiseed.get("metric_summary") or {}
+    group_distiller_multiseed_pass = bool(group_distiller_multiseed.get("replication_pass"))
+    group_distiller_repair_summary = group_distiller_multiseed_repair.get("metric_summary") or {}
+    group_distiller_repair_pass = bool(group_distiller_multiseed_repair.get("replication_pass"))
+    group_distiller_repair_domains = group_distiller_multiseed_repair.get("positive_domain_counts") or []
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -284,6 +291,12 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head.",
         },
         {
+            "requirement": "group-consistency distiller multi-seed replication with joint-safety buffer",
+            "status": _status(group_distiller_repair_pass, partial=bool(group_distiller_multiseed_summary)),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json and outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json",
+            "note": "The first three-seed run had stable positive FDE gains but one seed exceeded the near-proximity delta threshold. A validation-selected safety-buffer repair passes all three seeds with positive all/t50/t100/hard, easy=0, and max collision delta below the joint-safety ceiling.",
+        },
+        {
             "requirement": "t100 diagnostic positive or blocker analysis",
             "status": _status(best.get("t100_diagnostic", 0.0) > 0 or best.get("t100_improvement", 0.0) > 0),
             "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
@@ -309,6 +322,9 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
+            "M3W-Neural v1 group-consistency multi-seed safety-buffer joint-safe candidate under Stage37 safety floor"
+            if group_distiller_repair_pass
+            else
             "M3W-Neural v1 group-consistency-distilled joint-safe candidate under Stage37 safety floor"
             if group_distiller_deployable and group_distiller_improves_guard
             else
@@ -559,6 +575,24 @@ def build_completion_audit() -> dict[str, Any]:
             "ablation_static_all_delta": (group_distiller_ablation.get("static_causal_features") or {}).get("all_delta"),
             "ablation_full_traj_signal_all_delta": (group_distiller_ablation.get("full_trajectory_prediction_signals") or {}).get("all_delta"),
         },
+        "group_consistency_multiseed_summary": {
+            "initial_replication_pass": group_distiller_multiseed_pass,
+            "safety_buffer_repair_pass": group_distiller_repair_pass,
+            "validation_collision_ceiling": group_distiller_multiseed_repair.get("validation_collision_ceiling"),
+            "test_collision_ceiling": group_distiller_multiseed_repair.get("test_collision_ceiling"),
+            "all_mean": (group_distiller_repair_summary.get("all_improvement") or {}).get("mean"),
+            "all_min": (group_distiller_repair_summary.get("all_improvement") or {}).get("min"),
+            "t50_mean": (group_distiller_repair_summary.get("t50_improvement") or {}).get("mean"),
+            "t50_min": (group_distiller_repair_summary.get("t50_improvement") or {}).get("min"),
+            "t100_mean": (group_distiller_repair_summary.get("t100_improvement") or {}).get("mean"),
+            "t100_min": (group_distiller_repair_summary.get("t100_improvement") or {}).get("min"),
+            "hard_mean": (group_distiller_repair_summary.get("hard_failure_improvement") or {}).get("mean"),
+            "hard_min": (group_distiller_repair_summary.get("hard_failure_improvement") or {}).get("min"),
+            "easy_max": (group_distiller_repair_summary.get("easy_degradation") or {}).get("max"),
+            "collision_delta_max": (group_distiller_repair_summary.get("collision_delta_vs_floor_005") or {}).get("max"),
+            "switch_rate_mean": (group_distiller_repair_summary.get("switch_rate") or {}).get("mean"),
+            "positive_domain_counts": group_distiller_repair_domains,
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
@@ -788,7 +822,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller now improves the fixed joint proximity guard while preserving easy cases and joint proximity safety. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -812,6 +846,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     ucy_validation_summary = audit.get("ucy_independent_validation_summary", {})
     joint_rollout_summary = audit.get("joint_rollout_consistency_summary", {})
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
+    group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -954,6 +989,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"group_consistency_distiller_stable = {group_distiller_summary.get('statistically_stable_on_test')}",
             f"group_consistency_distiller_group_feature_ablation_all_delta = {group_distiller_summary.get('ablation_group_consistency_all_delta')}",
             f"group_consistency_distiller_proposal_score_ablation_all_delta = {group_distiller_summary.get('ablation_proposal_score_all_delta')}",
+            f"group_consistency_multiseed_initial_pass = {group_multiseed_summary.get('initial_replication_pass')}",
+            f"group_consistency_multiseed_safety_buffer_pass = {group_multiseed_summary.get('safety_buffer_repair_pass')}",
+            f"group_consistency_multiseed_all_mean = {group_multiseed_summary.get('all_mean')}",
+            f"group_consistency_multiseed_all_min = {group_multiseed_summary.get('all_min')}",
+            f"group_consistency_multiseed_t50_mean = {group_multiseed_summary.get('t50_mean')}",
+            f"group_consistency_multiseed_t50_min = {group_multiseed_summary.get('t50_min')}",
+            f"group_consistency_multiseed_t100_mean = {group_multiseed_summary.get('t100_mean')}",
+            f"group_consistency_multiseed_t100_min = {group_multiseed_summary.get('t100_min')}",
+            f"group_consistency_multiseed_hard_mean = {group_multiseed_summary.get('hard_mean')}",
+            f"group_consistency_multiseed_hard_min = {group_multiseed_summary.get('hard_min')}",
+            f"group_consistency_multiseed_easy_max = {group_multiseed_summary.get('easy_max')}",
+            f"group_consistency_multiseed_collision_delta_max = {group_multiseed_summary.get('collision_delta_max')}",
+            f"group_consistency_multiseed_positive_domain_counts = {group_multiseed_summary.get('positive_domain_counts')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
@@ -999,22 +1047,39 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json")
     state["generated_reports"] = sorted(generated)
-    state["current_verdict"] = "stage41_group_consistency_distiller_joint_safe_strong_not_complete"
+    state["current_verdict"] = "stage41_group_consistency_multiseed_safety_buffer_joint_safe_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
     state["m3w_neural_v1_current_candidate"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
-        "deployment_state": "group_consistency_distilled_joint_safe_candidate_pending_independent_validation",
+        "deployment_state": (
+            "group_consistency_multiseed_safety_buffer_joint_safe_candidate_pending_independent_validation"
+            if group_multiseed_summary.get("safety_buffer_repair_pass")
+            else "group_consistency_distilled_joint_safe_candidate_pending_independent_validation"
+        ),
         "current_best_deployable": audit.get("current_best_deployable"),
-        "best_name": "group_consistency_distiller",
-        "all_improvement": group_distiller_summary.get("all_improvement"),
-        "t50_improvement": group_distiller_summary.get("t50_improvement"),
-        "t100_raw_frame_diagnostic": group_distiller_summary.get("t100_improvement"),
-        "hard_failure_improvement": group_distiller_summary.get("hard_failure_improvement"),
-        "easy_degradation": group_distiller_summary.get("easy_degradation"),
-        "switch_rate": group_distiller_summary.get("switch_rate"),
-        "collision_delta_vs_floor_005": group_distiller_summary.get("collision_delta_vs_floor_005"),
+        "best_name": (
+            "group_consistency_distiller_safety_buffer_multiseed"
+            if group_multiseed_summary.get("safety_buffer_repair_pass")
+            else "group_consistency_distiller"
+        ),
+        "deployable_metric_basis": (
+            "three_seed_safety_buffer_mean"
+            if group_multiseed_summary.get("safety_buffer_repair_pass")
+            else "single_seed_validation_selected"
+        ),
+        "all_improvement": group_multiseed_summary.get("all_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("all_improvement"),
+        "t50_improvement": group_multiseed_summary.get("t50_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("t50_improvement"),
+        "t100_raw_frame_diagnostic": group_multiseed_summary.get("t100_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("t100_improvement"),
+        "hard_failure_improvement": group_multiseed_summary.get("hard_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("hard_failure_improvement"),
+        "easy_degradation": group_multiseed_summary.get("easy_max") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("easy_degradation"),
+        "switch_rate": group_multiseed_summary.get("switch_rate_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("switch_rate"),
+        "collision_delta_vs_floor_005": group_multiseed_summary.get("collision_delta_max") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("collision_delta_vs_floor_005"),
         "lift_over_fixed_guard_all": group_distiller_summary.get("all_delta_over_fixed_guard"),
         "lift_over_fixed_guard_t50": group_distiller_summary.get("t50_delta_over_fixed_guard"),
         "lift_over_fixed_guard_t100": group_distiller_summary.get("t100_delta_over_fixed_guard"),
@@ -1062,6 +1127,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "group_consistency_distiller_statistically_stable": group_distiller_summary.get("statistically_stable_on_test"),
         "group_consistency_feature_ablation_all_delta": group_distiller_summary.get("ablation_group_consistency_all_delta"),
         "proposal_score_ablation_all_delta": group_distiller_summary.get("ablation_proposal_score_all_delta"),
+        "group_consistency_multiseed_initial_pass": group_multiseed_summary.get("initial_replication_pass"),
+        "group_consistency_multiseed_safety_buffer_pass": group_multiseed_summary.get("safety_buffer_repair_pass"),
+        "group_consistency_multiseed_all_mean": group_multiseed_summary.get("all_mean"),
+        "group_consistency_multiseed_all_min": group_multiseed_summary.get("all_min"),
+        "group_consistency_multiseed_t50_mean": group_multiseed_summary.get("t50_mean"),
+        "group_consistency_multiseed_t50_min": group_multiseed_summary.get("t50_min"),
+        "group_consistency_multiseed_t100_mean": group_multiseed_summary.get("t100_mean"),
+        "group_consistency_multiseed_t100_min": group_multiseed_summary.get("t100_min"),
+        "group_consistency_multiseed_hard_mean": group_multiseed_summary.get("hard_mean"),
+        "group_consistency_multiseed_hard_min": group_multiseed_summary.get("hard_min"),
+        "group_consistency_multiseed_easy_max": group_multiseed_summary.get("easy_max"),
+        "group_consistency_multiseed_collision_delta_max": group_multiseed_summary.get("collision_delta_max"),
+        "group_consistency_multiseed_positive_domain_counts": group_multiseed_summary.get("positive_domain_counts"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -1084,6 +1162,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "ucy_independent_validation_summary": ucy_validation_summary,
         "joint_rollout_consistency_summary": joint_rollout_summary,
         "group_consistency_distiller_summary": group_distiller_summary,
+        "group_consistency_multiseed_summary": group_multiseed_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }
