@@ -5,28 +5,28 @@
 - SMC enabled: `False`
 - metric/seconds claim: `False`
 - best trial: `pure_ucy_transformer`
-- best mode: `candidate_switch`
-- strict pure UCY-only neural retrain/select/test gate: `False`
-- remaining blocker: `Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.`
+- best mode: `bounded_endpoint_residual`
+- strict pure UCY-only neural retrain/select/test gate: `True`
+- remaining blocker: ``
 
 ## Best Test Metrics
 
-- all improvement: `0.000000`
-- t50 improvement: `0.000000`
-- t100 diagnostic improvement: `0.000000`
-- hard/failure improvement: `0.000000`
+- all improvement: `0.090083`
+- t50 improvement: `0.088009`
+- t100 diagnostic improvement: `0.083106`
+- hard/failure improvement: `0.093584`
 - easy degradation: `0.000000`
-- switch rate: `0.000000`
+- switch rate: `0.792726`
 - neural endpoint without fallback: `{'rows': 35441, 'all_improvement': 0.09230014952008259, 't10_improvement': 0.2945080639312109, 't25_improvement': -0.31497445367685795, 't50_improvement': 0.21303079289629967, 't100_improvement': 0.06383108641982482, 'hard_failure_improvement': 0.1499403484153744, 'easy_degradation': 1.6257516010806778, 'harm_over_fallback': -0.07364632580896721, 'switch_rate': 0.0, 'regret_to_oracle': 0.12474498836204391, 'by_domain': {'ETH_UCY': {'rows': 25901, 'all_improvement': 0.04621994621154035, 't50_improvement': 0.1871286638125077, 't100_improvement': 0.0026131006895112607, 'hard_failure_improvement': 0.11285089841042761, 'easy_degradation': 2.3738767004916275, 'switch_rate': 0.0}, 'UCY': {'rows': 9540, 'all_improvement': 0.21280842523236154, 't50_improvement': 0.2774538691415518, 't100_improvement': 0.2389903817823379, 'hard_failure_improvement': 0.2502984382542832, 'easy_degradation': 0.39570304933311595, 'switch_rate': 0.0}}}`
-- neural candidate without fallback: `{'rows': 35441, 'all_improvement': -4.84063232397299, 't10_improvement': -5.0523001485536, 't25_improvement': -5.747087464949059, 't50_improvement': -2.892711154341845, 't100_improvement': -6.057235462451089, 'hard_failure_improvement': -4.813309601343785, 'easy_degradation': 6.349163978769179, 'harm_over_fallback': 3.8623424458826823, 'switch_rate': 0.0, 'regret_to_oracle': 4.060733760053693, 'by_domain': {'ETH_UCY': {'rows': 25901, 'all_improvement': -5.741161716503469, 't50_improvement': -3.169027342944509, 't100_improvement': -7.909864246126901, 'hard_failure_improvement': -5.735167095468177, 'easy_degradation': 7.978595522412968, 'switch_rate': 0.0}, 'UCY': {'rows': 9540, 'all_improvement': -2.485580988903105, 't50_improvement': -2.20546498903392, 't100_improvement': -0.7564215195271502, 'hard_failure_improvement': -2.318911404507015, 'easy_degradation': 3.670093443628808, 'switch_rate': 0.0}}}`
+- neural candidate without fallback: `None`
 
 ## Trial Table
 
 | trial | best mode | all | t50 | t100 | hard/failure | easy | switch | strict gate |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| `pure_ucy_transformer` | `candidate_switch` | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | `False` |
-| `pure_ucy_t50_hard_transformer` | `candidate_switch` | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | `False` |
-| `pure_ucy_hybrid_jepa` | `candidate_switch` | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | `False` |
+| `pure_ucy_transformer` | `bounded_endpoint_residual` | 0.0901 | 0.0880 | 0.0831 | 0.0936 | 0.0000 | 0.7927 | `True` |
+| `pure_ucy_t50_hard_transformer` | `bounded_endpoint_residual` | 0.0601 | 0.0538 | 0.0280 | 0.0603 | 0.0000 | 0.7823 | `True` |
+| `pure_ucy_hybrid_jepa` | `bounded_endpoint_residual` | 0.0827 | 0.0859 | 0.0528 | 0.0844 | 0.0000 | 0.7795 | `True` |
 
 ## Dataset
 

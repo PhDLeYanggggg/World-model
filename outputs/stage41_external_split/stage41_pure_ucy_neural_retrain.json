@@ -306,32 +306,36 @@
       },
       "bounded_endpoint_residual_policy": {
         "type": "bounded_endpoint_residual",
-        "mode": "all",
+        "mode": "gain_harm",
         "alpha": 0.15,
+        "gain_prob": 0.0,
+        "harm_prob": 0.5,
+        "physical_prob": 0.0,
         "max_switch": 1.0,
-        "val_score": 0.39363543784899246
+        "val_score": 0.3738025602881907,
+        "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
       },
       "bounded_endpoint_residual_val_metrics": {
         "rows": 16103,
-        "all_improvement": 0.0959581255109172,
-        "t10_improvement": 0.16414911267874688,
-        "t25_improvement": 0.06245129872481492,
-        "t50_improvement": 0.09124361933867797,
-        "t100_improvement": 0.0867759935571566,
-        "hard_failure_improvement": 0.09822554094136016,
+        "all_improvement": 0.09552487920395725,
+        "t10_improvement": 0.16330494858772637,
+        "t25_improvement": 0.06132326248478692,
+        "t50_improvement": 0.09131574147072063,
+        "t100_improvement": 0.0862909014340244,
+        "hard_failure_improvement": 0.09783579292471045,
         "easy_degradation": 0.0,
-        "harm_over_fallback": -0.08571202147118094,
-        "switch_rate": 1.0,
-        "regret_to_oracle": 0.14738277233505323,
+        "harm_over_fallback": -0.08532503582961348,
+        "switch_rate": 0.9370924672421288,
+        "regret_to_oracle": 0.14776975797662067,
         "by_domain": {
           "ETH_UCY": {
             "rows": 16103,
-            "all_improvement": 0.0959581255109172,
-            "t50_improvement": 0.09124361933867797,
-            "t100_improvement": 0.0867759935571566,
-            "hard_failure_improvement": 0.09822554094136016,
+            "all_improvement": 0.09552487920395725,
+            "t50_improvement": 0.09131574147072063,
+            "t100_improvement": 0.0862909014340244,
+            "hard_failure_improvement": 0.09783579292471045,
             "easy_degradation": 0.0,
-            "switch_rate": 1.0
+            "switch_rate": 0.9370924672421288
           }
         },
         "neural_endpoint_without_fallback": {
@@ -358,40 +362,40 @@
             }
           }
         },
-        "alpha_mean": 0.15,
-        "alpha_positive_rate": 1.0,
+        "alpha_mean": 0.1405638700863193,
+        "alpha_positive_rate": 0.9370924672421288,
         "latent_variance": 0.11751236766576767
       },
       "bounded_endpoint_residual_test_metrics": {
         "rows": 35441,
-        "all_improvement": 0.07897024511307948,
-        "t10_improvement": 0.12879682504243606,
-        "t25_improvement": 0.032633226502478685,
-        "t50_improvement": 0.08010938279740254,
-        "t100_improvement": 0.07676590126324412,
-        "hard_failure_improvement": 0.08818062617594502,
-        "easy_degradation": 0.1678544628116736,
-        "harm_over_fallback": -0.06301038981032688,
-        "switch_rate": 1.0,
-        "regret_to_oracle": 0.13538092436068422,
+        "all_improvement": 0.09008338741058997,
+        "t10_improvement": 0.14947939008441202,
+        "t25_improvement": 0.05550895315198645,
+        "t50_improvement": 0.08800918427966675,
+        "t100_improvement": 0.08310612104619552,
+        "hard_failure_improvement": 0.09358425348430643,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.07187757044502117,
+        "switch_rate": 0.792725938884343,
+        "regret_to_oracle": 0.12651374372598992,
         "by_domain": {
           "ETH_UCY": {
             "rows": 25901,
-            "all_improvement": 0.08437009720712352,
-            "t50_improvement": 0.08937233966599978,
-            "t100_improvement": 0.08507921491477843,
-            "hard_failure_improvement": 0.09471449373974583,
-            "easy_degradation": 0.2585564659889632,
-            "switch_rate": 1.0
+            "all_improvement": 0.09830500611895576,
+            "t50_improvement": 0.09915599864170066,
+            "t100_improvement": 0.09344195079241124,
+            "hard_failure_improvement": 0.10158284536653805,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.778116675031852
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.06484863066191326,
-            "t50_improvement": 0.057070806521618556,
-            "t100_improvement": 0.05297952306149856,
-            "hard_failure_improvement": 0.07050103082265735,
-            "easy_degradation": 0.01872450080842958,
-            "switch_rate": 1.0
+            "all_improvement": 0.06858233005902004,
+            "t50_improvement": 0.06028512849977563,
+            "t100_improvement": 0.05353284068199737,
+            "hard_failure_improvement": 0.07194134956972442,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.8323899371069182
           }
         },
         "neural_endpoint_without_fallback": {
@@ -427,73 +431,105 @@
             }
           }
         },
-        "alpha_mean": 0.15,
-        "alpha_positive_rate": 1.0,
+        "alpha_mean": 0.11890889083265145,
+        "alpha_positive_rate": 0.792725938884343,
         "latent_variance": 0.12380863726139069
       },
-      "best_mode": "candidate_switch",
+      "candidate_switch_val_score": 0.0,
+      "bounded_endpoint_residual_val_score": 0.3738025602881907,
+      "best_mode": "bounded_endpoint_residual",
       "selected_policy": {
-        "gain_threshold": 0.0,
+        "type": "bounded_endpoint_residual",
+        "mode": "gain_harm",
+        "alpha": 0.15,
         "gain_prob": 0.0,
-        "harm_prob": 0.1,
+        "harm_prob": 0.5,
         "physical_prob": 0.0,
-        "max_switch": 0.0,
-        "val_score": 0.0
+        "max_switch": 1.0,
+        "val_score": 0.3738025602881907,
+        "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
       },
       "val_metrics": {
         "rows": 16103,
-        "all_improvement": 0.0,
-        "t10_improvement": 0.0,
-        "t25_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.09552487920395725,
+        "t10_improvement": 0.16330494858772637,
+        "t25_improvement": 0.06132326248478692,
+        "t50_improvement": 0.09131574147072063,
+        "t100_improvement": 0.0862909014340244,
+        "hard_failure_improvement": 0.09783579292471045,
         "easy_degradation": 0.0,
-        "harm_over_fallback": 0.0,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.23309479380623416,
+        "harm_over_fallback": -0.08532503582961348,
+        "switch_rate": 0.9370924672421288,
+        "regret_to_oracle": 0.14776975797662067,
         "by_domain": {
           "ETH_UCY": {
             "rows": 16103,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.09552487920395725,
+            "t50_improvement": 0.09131574147072063,
+            "t100_improvement": 0.0862909014340244,
+            "hard_failure_improvement": 0.09783579292471045,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.9370924672421288
           }
-        }
+        },
+        "neural_endpoint_without_fallback": {
+          "rows": 16103,
+          "all_improvement": 0.13965713233918953,
+          "t10_improvement": 0.45354261685550545,
+          "t25_improvement": -0.18000110819489867,
+          "t50_improvement": 0.2665015698898374,
+          "t100_improvement": 0.02857075467264536,
+          "hard_failure_improvement": 0.1501754413691323,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.12474498706519965,
+          "switch_rate": 0.0,
+          "regret_to_oracle": 0.10834980674103448,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.13965713233918953,
+              "t50_improvement": 0.2665015698898374,
+              "t100_improvement": 0.02857075467264536,
+              "hard_failure_improvement": 0.1501754413691323,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            }
+          }
+        },
+        "alpha_mean": 0.1405638700863193,
+        "alpha_positive_rate": 0.9370924672421288,
+        "latent_variance": 0.11751236766576767
       },
       "test_metrics": {
         "rows": 35441,
-        "all_improvement": 0.0,
-        "t10_improvement": 0.0,
-        "t25_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.09008338741058997,
+        "t10_improvement": 0.14947939008441202,
+        "t25_improvement": 0.05550895315198645,
+        "t50_improvement": 0.08800918427966675,
+        "t100_improvement": 0.08310612104619552,
+        "hard_failure_improvement": 0.09358425348430643,
         "easy_degradation": 0.0,
-        "harm_over_fallback": 0.0,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.1983913141710111,
+        "harm_over_fallback": -0.07187757044502117,
+        "switch_rate": 0.792725938884343,
+        "regret_to_oracle": 0.12651374372598992,
         "by_domain": {
           "ETH_UCY": {
             "rows": 25901,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.09830500611895576,
+            "t50_improvement": 0.09915599864170066,
+            "t100_improvement": 0.09344195079241124,
+            "hard_failure_improvement": 0.10158284536653805,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.778116675031852
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.06858233005902004,
+            "t50_improvement": 0.06028512849977563,
+            "t100_improvement": 0.05353284068199737,
+            "hard_failure_improvement": 0.07194134956972442,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.8323899371069182
           }
         },
         "neural_endpoint_without_fallback": {
@@ -529,45 +565,11 @@
             }
           }
         },
-        "neural_candidate_without_fallback": {
-          "rows": 35441,
-          "all_improvement": -4.84063232397299,
-          "t10_improvement": -5.0523001485536,
-          "t25_improvement": -5.747087464949059,
-          "t50_improvement": -2.892711154341845,
-          "t100_improvement": -6.057235462451089,
-          "hard_failure_improvement": -4.813309601343785,
-          "easy_degradation": 6.349163978769179,
-          "harm_over_fallback": 3.8623424458826823,
-          "switch_rate": 0.0,
-          "regret_to_oracle": 4.060733760053693,
-          "by_domain": {
-            "ETH_UCY": {
-              "rows": 25901,
-              "all_improvement": -5.741161716503469,
-              "t50_improvement": -3.169027342944509,
-              "t100_improvement": -7.909864246126901,
-              "hard_failure_improvement": -5.735167095468177,
-              "easy_degradation": 7.978595522412968,
-              "switch_rate": 0.0
-            },
-            "UCY": {
-              "rows": 9540,
-              "all_improvement": -2.485580988903105,
-              "t50_improvement": -2.20546498903392,
-              "t100_improvement": -0.7564215195271502,
-              "hard_failure_improvement": -2.318911404507015,
-              "easy_degradation": 3.670093443628808,
-              "switch_rate": 0.0
-            }
-          }
-        },
-        "selected_candidate_distribution": {
-          "0": 35441
-        },
+        "alpha_mean": 0.11890889083265145,
+        "alpha_positive_rate": 0.792725938884343,
         "latent_variance": 0.12380863726139069
       },
-      "strict_gate": false
+      "strict_gate": true
     },
     "pure_ucy_t50_hard_transformer": {
       "source": "fresh_run",
@@ -734,32 +736,36 @@
       },
       "bounded_endpoint_residual_policy": {
         "type": "bounded_endpoint_residual",
-        "mode": "all",
+        "mode": "gain_harm",
         "alpha": 0.15,
+        "gain_prob": 0.0,
+        "harm_prob": 0.5,
+        "physical_prob": 0.0,
         "max_switch": 1.0,
-        "val_score": 0.19870838715510344
+        "val_score": 0.1792559555824255,
+        "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
       },
       "bounded_endpoint_residual_val_metrics": {
         "rows": 16103,
-        "all_improvement": 0.055828828273708386,
-        "t10_improvement": 0.17297935031122158,
-        "t25_improvement": 0.08676034374578823,
-        "t50_improvement": 0.05143384121916361,
-        "t100_improvement": 0.00950436955654288,
-        "hard_failure_improvement": 0.054307966200533575,
+        "all_improvement": 0.055374367669447255,
+        "t10_improvement": 0.17041520080946582,
+        "t25_improvement": 0.08596709990801876,
+        "t50_improvement": 0.05140416605469378,
+        "t100_improvement": 0.00953623573718676,
+        "hard_failure_improvement": 0.0539828089665958,
         "easy_degradation": 0.0,
-        "harm_over_fallback": -0.049867603209511925,
-        "switch_rate": 1.0,
-        "regret_to_oracle": 0.1832271905967222,
+        "harm_over_fallback": -0.04946166846596801,
+        "switch_rate": 0.9292678382910017,
+        "regret_to_oracle": 0.18363312534026613,
         "by_domain": {
           "ETH_UCY": {
             "rows": 16103,
-            "all_improvement": 0.055828828273708386,
-            "t50_improvement": 0.05143384121916361,
-            "t100_improvement": 0.00950436955654288,
-            "hard_failure_improvement": 0.054307966200533575,
+            "all_improvement": 0.055374367669447255,
+            "t50_improvement": 0.05140416605469378,
+            "t100_improvement": 0.00953623573718676,
+            "hard_failure_improvement": 0.0539828089665958,
             "easy_degradation": 0.0,
-            "switch_rate": 1.0
+            "switch_rate": 0.9292678382910017
           }
         },
         "neural_endpoint_without_fallback": {
@@ -786,40 +792,40 @@
             }
           }
         },
-        "alpha_mean": 0.15,
-        "alpha_positive_rate": 1.0,
+        "alpha_mean": 0.13939017574365023,
+        "alpha_positive_rate": 0.9292678382910017,
         "latent_variance": 0.13092777132987976
       },
       "bounded_endpoint_residual_test_metrics": {
         "rows": 35441,
-        "all_improvement": 0.054783441370188535,
-        "t10_improvement": 0.13739583851012338,
-        "t25_improvement": 0.07090148778750305,
-        "t50_improvement": 0.04866000254177849,
-        "t100_improvement": 0.025442215622381248,
-        "hard_failure_improvement": 0.05754923286209468,
-        "easy_degradation": 0.07677480852334329,
-        "harm_over_fallback": -0.04371172953742091,
-        "switch_rate": 1.0,
-        "regret_to_oracle": 0.15467958463359022,
+        "all_improvement": 0.06012394937224519,
+        "t10_improvement": 0.14703774885998888,
+        "t25_improvement": 0.08055208594617302,
+        "t50_improvement": 0.05377745646303078,
+        "t100_improvement": 0.027970292050467638,
+        "hard_failure_improvement": 0.060331767578810536,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.04797292298455924,
+        "switch_rate": 0.7822860528766118,
+        "regret_to_oracle": 0.1504183911864519,
         "by_domain": {
           "ETH_UCY": {
             "rows": 25901,
-            "all_improvement": 0.0563972209711735,
-            "t50_improvement": 0.05163132560316053,
-            "t100_improvement": 0.02752351272963005,
-            "hard_failure_improvement": 0.059114709663353526,
-            "easy_degradation": 0.10263091239673439,
-            "switch_rate": 1.0
+            "all_improvement": 0.06251202066166606,
+            "t50_improvement": 0.05734895231764803,
+            "t100_improvement": 0.030258593949556656,
+            "hard_failure_improvement": 0.06211576772556915,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.7740241689510058
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.050563108491182285,
-            "t50_improvement": 0.04126980803253755,
-            "t100_improvement": 0.019487126927504428,
-            "hard_failure_improvement": 0.053313304277537,
-            "easy_degradation": 0.03426285009775243,
-            "switch_rate": 1.0
+            "all_improvement": 0.053878700161012594,
+            "t50_improvement": 0.04489452838374797,
+            "t100_improvement": 0.021422913148018363,
+            "hard_failure_improvement": 0.05550454994745857,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.8047169811320755
           }
         },
         "neural_endpoint_without_fallback": {
@@ -855,73 +861,105 @@
             }
           }
         },
-        "alpha_mean": 0.15,
-        "alpha_positive_rate": 1.0,
+        "alpha_mean": 0.11734290793149177,
+        "alpha_positive_rate": 0.7822860528766118,
         "latent_variance": 0.13619229197502136
       },
-      "best_mode": "candidate_switch",
+      "candidate_switch_val_score": 0.0,
+      "bounded_endpoint_residual_val_score": 0.1792559555824255,
+      "best_mode": "bounded_endpoint_residual",
       "selected_policy": {
-        "gain_threshold": 0.0,
+        "type": "bounded_endpoint_residual",
+        "mode": "gain_harm",
+        "alpha": 0.15,
         "gain_prob": 0.0,
-        "harm_prob": 0.1,
+        "harm_prob": 0.5,
         "physical_prob": 0.0,
-        "max_switch": 0.0,
-        "val_score": 0.0
+        "max_switch": 1.0,
+        "val_score": 0.1792559555824255,
+        "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
       },
       "val_metrics": {
         "rows": 16103,
-        "all_improvement": 0.0,
-        "t10_improvement": 0.0,
-        "t25_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.055374367669447255,
+        "t10_improvement": 0.17041520080946582,
+        "t25_improvement": 0.08596709990801876,
+        "t50_improvement": 0.05140416605469378,
+        "t100_improvement": 0.00953623573718676,
+        "hard_failure_improvement": 0.0539828089665958,
         "easy_degradation": 0.0,
-        "harm_over_fallback": 0.0,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.23309479380623416,
+        "harm_over_fallback": -0.04946166846596801,
+        "switch_rate": 0.9292678382910017,
+        "regret_to_oracle": 0.18363312534026613,
         "by_domain": {
           "ETH_UCY": {
             "rows": 16103,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.055374367669447255,
+            "t50_improvement": 0.05140416605469378,
+            "t100_improvement": 0.00953623573718676,
+            "hard_failure_improvement": 0.0539828089665958,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.9292678382910017
           }
-        }
+        },
+        "neural_endpoint_without_fallback": {
+          "rows": 16103,
+          "all_improvement": 0.026574910860368006,
+          "t10_improvement": 0.18650604826617412,
+          "t25_improvement": -0.3158094025646083,
+          "t50_improvement": 0.22528531353030412,
+          "t100_improvement": -0.0827450208462992,
+          "hard_failure_improvement": 0.044756045096443264,
+          "easy_degradation": 0.17406164117932432,
+          "harm_over_fallback": -0.02373732623611368,
+          "switch_rate": 0.0,
+          "regret_to_oracle": 0.20935746757012044,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.026574910860368006,
+              "t50_improvement": 0.22528531353030412,
+              "t100_improvement": -0.0827450208462992,
+              "hard_failure_improvement": 0.044756045096443264,
+              "easy_degradation": 0.17406164117932432,
+              "switch_rate": 0.0
+            }
+          }
+        },
+        "alpha_mean": 0.13939017574365023,
+        "alpha_positive_rate": 0.9292678382910017,
+        "latent_variance": 0.13092777132987976
       },
       "test_metrics": {
         "rows": 35441,
-        "all_improvement": 0.0,
-        "t10_improvement": 0.0,
-        "t25_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.06012394937224519,
+        "t10_improvement": 0.14703774885998888,
+        "t25_improvement": 0.08055208594617302,
+        "t50_improvement": 0.05377745646303078,
+        "t100_improvement": 0.027970292050467638,
+        "hard_failure_improvement": 0.060331767578810536,
         "easy_degradation": 0.0,
-        "harm_over_fallback": 0.0,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.1983913141710111,
+        "harm_over_fallback": -0.04797292298455924,
+        "switch_rate": 0.7822860528766118,
+        "regret_to_oracle": 0.1504183911864519,
         "by_domain": {
           "ETH_UCY": {
             "rows": 25901,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.06251202066166606,
+            "t50_improvement": 0.05734895231764803,
+            "t100_improvement": 0.030258593949556656,
+            "hard_failure_improvement": 0.06211576772556915,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.7740241689510058
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.053878700161012594,
+            "t50_improvement": 0.04489452838374797,
+            "t100_improvement": 0.021422913148018363,
+            "hard_failure_improvement": 0.05550454994745857,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.8047169811320755
           }
         },
         "neural_endpoint_without_fallback": {
@@ -957,45 +995,11 @@
             }
           }
         },
-        "neural_candidate_without_fallback": {
-          "rows": 35441,
-          "all_improvement": -3.1885092768496612,
-          "t10_improvement": -5.6413029771452745,
-          "t25_improvement": -6.783643218588084,
-          "t50_improvement": -3.026391058561094,
-          "t100_improvement": -1.2184254050513532,
-          "hard_failure_improvement": -2.9874613632501843,
-          "easy_degradation": 6.298719524464076,
-          "harm_over_fallback": 2.5441128131292174,
-          "switch_rate": 0.0,
-          "regret_to_oracle": 2.742504127300229,
-          "by_domain": {
-            "ETH_UCY": {
-              "rows": 25901,
-              "all_improvement": -3.364828057741293,
-              "t50_improvement": -3.164921817653119,
-              "t100_improvement": -1.456960001777238,
-              "hard_failure_improvement": -3.14750621841005,
-              "easy_degradation": 7.706747950938157,
-              "switch_rate": 0.0
-            },
-            "UCY": {
-              "rows": 9540,
-              "all_improvement": -2.727402972290395,
-              "t50_improvement": -2.681841094099578,
-              "t100_improvement": -0.5359208864259051,
-              "hard_failure_improvement": -2.5544057112993848,
-              "easy_degradation": 3.983674449559466,
-              "switch_rate": 0.0
-            }
-          }
-        },
-        "selected_candidate_distribution": {
-          "0": 35441
-        },
+        "alpha_mean": 0.11734290793149177,
+        "alpha_positive_rate": 0.7822860528766118,
         "latent_variance": 0.13619229197502136
       },
-      "strict_gate": false
+      "strict_gate": true
     },
     "pure_ucy_hybrid_jepa": {
       "source": "fresh_run",
@@ -1162,32 +1166,36 @@
       },
       "bounded_endpoint_residual_policy": {
         "type": "bounded_endpoint_residual",
-        "mode": "all",
+        "mode": "gain_harm",
         "alpha": 0.15,
+        "gain_prob": 0.0,
+        "harm_prob": 0.5,
+        "physical_prob": 0.0,
         "max_switch": 1.0,
-        "val_score": 0.29617853541794187
+        "val_score": 0.27644670067535704,
+        "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
       },
       "bounded_endpoint_residual_val_metrics": {
         "rows": 16103,
-        "all_improvement": 0.07683832124953194,
-        "t10_improvement": 0.16602588995699885,
-        "t25_improvement": 0.09429087521361867,
-        "t50_improvement": 0.07056243807233054,
-        "t100_improvement": 0.04584203811472676,
-        "hard_failure_improvement": 0.07753964833192595,
+        "all_improvement": 0.07699513892838294,
+        "t10_improvement": 0.16764378627317877,
+        "t25_improvement": 0.09600480592648408,
+        "t50_improvement": 0.07014737247726743,
+        "t100_improvement": 0.04547527506704063,
+        "hard_failure_improvement": 0.07719467860889162,
         "easy_degradation": 0.0,
-        "harm_over_fallback": -0.06863376921634527,
-        "switch_rate": 1.0,
-        "regret_to_oracle": 0.16446102458988887,
+        "harm_over_fallback": -0.06877384240123893,
+        "switch_rate": 0.933676954604732,
+        "regret_to_oracle": 0.16432095140499522,
         "by_domain": {
           "ETH_UCY": {
             "rows": 16103,
-            "all_improvement": 0.07683832124953194,
-            "t50_improvement": 0.07056243807233054,
-            "t100_improvement": 0.04584203811472676,
-            "hard_failure_improvement": 0.07753964833192595,
+            "all_improvement": 0.07699513892838294,
+            "t50_improvement": 0.07014737247726743,
+            "t100_improvement": 0.04547527506704063,
+            "hard_failure_improvement": 0.07719467860889162,
             "easy_degradation": 0.0,
-            "switch_rate": 1.0
+            "switch_rate": 0.933676954604732
           }
         },
         "neural_endpoint_without_fallback": {
@@ -1214,40 +1222,40 @@
             }
           }
         },
-        "alpha_mean": 0.15,
-        "alpha_positive_rate": 1.0,
+        "alpha_mean": 0.14005154319070978,
+        "alpha_positive_rate": 0.933676954604732,
         "latent_variance": 0.0581999234855175
       },
       "bounded_endpoint_residual_test_metrics": {
         "rows": 35441,
-        "all_improvement": 0.07484197558398387,
-        "t10_improvement": 0.13342209907113944,
-        "t25_improvement": 0.07005744251657742,
-        "t50_improvement": 0.0810722027827202,
-        "t100_improvement": 0.0509563397411279,
-        "hard_failure_improvement": 0.0819004102349874,
-        "easy_degradation": 0.10514557692578697,
-        "harm_over_fallback": -0.05971644192023315,
-        "switch_rate": 1.0,
-        "regret_to_oracle": 0.13867487225077796,
+        "all_improvement": 0.08266424221605506,
+        "t10_improvement": 0.1570850394338279,
+        "t25_improvement": 0.08616216703669333,
+        "t50_improvement": 0.0859225248699459,
+        "t100_improvement": 0.052830400093897056,
+        "hard_failure_improvement": 0.08442690981193601,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.06595783155985435,
+        "switch_rate": 0.7794644620637116,
+        "regret_to_oracle": 0.13243348261115676,
         "by_domain": {
           "ETH_UCY": {
             "rows": 25901,
-            "all_improvement": 0.07223529765485193,
-            "t50_improvement": 0.07000758826829412,
-            "t100_improvement": 0.05718287246593734,
-            "hard_failure_improvement": 0.08009684402926998,
-            "easy_degradation": 0.1868807588035557,
-            "switch_rate": 1.0
+            "all_improvement": 0.08264576654256528,
+            "t50_improvement": 0.07713191757862858,
+            "t100_improvement": 0.060093516416117154,
+            "hard_failure_improvement": 0.0838272501339048,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.7651828114744604
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.08165892169148325,
-            "t50_improvement": 0.10859181332057455,
-            "t100_improvement": 0.03314074075304718,
-            "hard_failure_improvement": 0.08678057047677157,
+            "all_improvement": 0.08271255952793821,
+            "t50_improvement": 0.10778628602790274,
+            "t100_improvement": 0.03204888757010138,
+            "hard_failure_improvement": 0.0860494925095121,
             "easy_degradation": 0.0,
-            "switch_rate": 1.0
+            "switch_rate": 0.8182389937106919
           }
         },
         "neural_endpoint_without_fallback": {
@@ -1283,73 +1291,105 @@
             }
           }
         },
-        "alpha_mean": 0.15,
-        "alpha_positive_rate": 1.0,
+        "alpha_mean": 0.11691966930955673,
+        "alpha_positive_rate": 0.7794644620637116,
         "latent_variance": 0.06808555126190186
       },
-      "best_mode": "candidate_switch",
+      "candidate_switch_val_score": 0.0,
+      "bounded_endpoint_residual_val_score": 0.27644670067535704,
+      "best_mode": "bounded_endpoint_residual",
       "selected_policy": {
-        "gain_threshold": 0.0,
+        "type": "bounded_endpoint_residual",
+        "mode": "gain_harm",
+        "alpha": 0.15,
         "gain_prob": 0.0,
-        "harm_prob": 0.1,
+        "harm_prob": 0.5,
         "physical_prob": 0.0,
-        "max_switch": 0.0,
-        "val_score": 0.0
+        "max_switch": 1.0,
+        "val_score": 0.27644670067535704,
+        "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
       },
       "val_metrics": {
         "rows": 16103,
-        "all_improvement": 0.0,
-        "t10_improvement": 0.0,
-        "t25_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.07699513892838294,
+        "t10_improvement": 0.16764378627317877,
+        "t25_improvement": 0.09600480592648408,
+        "t50_improvement": 0.07014737247726743,
+        "t100_improvement": 0.04547527506704063,
+        "hard_failure_improvement": 0.07719467860889162,
         "easy_degradation": 0.0,
-        "harm_over_fallback": 0.0,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.23309479380623416,
+        "harm_over_fallback": -0.06877384240123893,
+        "switch_rate": 0.933676954604732,
+        "regret_to_oracle": 0.16432095140499522,
         "by_domain": {
           "ETH_UCY": {
             "rows": 16103,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.07699513892838294,
+            "t50_improvement": 0.07014737247726743,
+            "t100_improvement": 0.04547527506704063,
+            "hard_failure_improvement": 0.07719467860889162,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.933676954604732
           }
-        }
+        },
+        "neural_endpoint_without_fallback": {
+          "rows": 16103,
+          "all_improvement": -0.06039343259490715,
+          "t10_improvement": 0.45788730340698214,
+          "t25_improvement": -0.3839819330963725,
+          "t50_improvement": -0.21409814933925753,
+          "t100_improvement": -0.013251366812873977,
+          "hard_failure_improvement": -0.05267398045512861,
+          "easy_degradation": 0.3316411509215209,
+          "harm_over_fallback": 0.05394481357083281,
+          "switch_rate": 0.0,
+          "regret_to_oracle": 0.28703960737706696,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": -0.06039343259490715,
+              "t50_improvement": -0.21409814933925753,
+              "t100_improvement": -0.013251366812873977,
+              "hard_failure_improvement": -0.05267398045512861,
+              "easy_degradation": 0.3316411509215209,
+              "switch_rate": 0.0
+            }
+          }
+        },
+        "alpha_mean": 0.14005154319070978,
+        "alpha_positive_rate": 0.933676954604732,
+        "latent_variance": 0.0581999234855175
       },
       "test_metrics": {
         "rows": 35441,
-        "all_improvement": 0.0,
-        "t10_improvement": 0.0,
-        "t25_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.08266424221605506,
+        "t10_improvement": 0.1570850394338279,
+        "t25_improvement": 0.08616216703669333,
+        "t50_improvement": 0.0859225248699459,
+        "t100_improvement": 0.052830400093897056,
+        "hard_failure_improvement": 0.08442690981193601,
         "easy_degradation": 0.0,
-        "harm_over_fallback": 0.0,
-        "switch_rate": 0.0,
-        "regret_to_oracle": 0.1983913141710111,
+        "harm_over_fallback": -0.06595783155985435,
+        "switch_rate": 0.7794644620637116,
+        "regret_to_oracle": 0.13243348261115676,
         "by_domain": {
           "ETH_UCY": {
             "rows": 25901,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.08264576654256528,
+            "t50_improvement": 0.07713191757862858,
+            "t100_improvement": 0.060093516416117154,
+            "hard_failure_improvement": 0.0838272501339048,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.7651828114744604
           },
           "UCY": {
             "rows": 9540,
-            "all_improvement": 0.0,
-            "t50_improvement": 0.0,
-            "t100_improvement": 0.0,
-            "hard_failure_improvement": 0.0,
+            "all_improvement": 0.08271255952793821,
+            "t50_improvement": 0.10778628602790274,
+            "t100_improvement": 0.03204888757010138,
+            "hard_failure_improvement": 0.0860494925095121,
             "easy_degradation": 0.0,
-            "switch_rate": 0.0
+            "switch_rate": 0.8182389937106919
           }
         },
         "neural_endpoint_without_fallback": {
@@ -1385,79 +1425,45 @@
             }
           }
         },
-        "neural_candidate_without_fallback": {
-          "rows": 35441,
-          "all_improvement": -5.390003971534342,
-          "t10_improvement": -6.264842390745787,
-          "t25_improvement": -7.387160441563058,
-          "t50_improvement": -3.2321169998372836,
-          "t100_improvement": -6.169630839925849,
-          "hard_failure_improvement": -5.26398889191624,
-          "easy_degradation": 9.019012847029941,
-          "harm_over_fallback": 4.300686300761372,
-          "switch_rate": 0.0,
-          "regret_to_oracle": 4.499077614932383,
-          "by_domain": {
-            "ETH_UCY": {
-              "rows": 25901,
-              "all_improvement": -5.977687353234482,
-              "t50_improvement": -3.4218017405617482,
-              "t100_improvement": -7.2856579140855295,
-              "hard_failure_improvement": -5.822976814819279,
-              "easy_degradation": 11.831114980228287,
-              "switch_rate": 0.0
-            },
-            "UCY": {
-              "rows": 9540,
-              "all_improvement": -3.8531029618047157,
-              "t50_improvement": -2.760338233129661,
-              "t100_improvement": -2.976410521040072,
-              "hard_failure_improvement": -3.7514574260118945,
-              "easy_degradation": 4.395424948387883,
-              "switch_rate": 0.0
-            }
-          }
-        },
-        "selected_candidate_distribution": {
-          "0": 35441
-        },
+        "alpha_mean": 0.11691966930955673,
+        "alpha_positive_rate": 0.7794644620637116,
         "latent_variance": 0.06808555126190186
       },
-      "strict_gate": false
+      "strict_gate": true
     }
   },
   "best_trial": "pure_ucy_transformer",
-  "best_mode": "candidate_switch",
+  "best_mode": "bounded_endpoint_residual",
   "best_metrics": {
     "rows": 35441,
-    "all_improvement": 0.0,
-    "t10_improvement": 0.0,
-    "t25_improvement": 0.0,
-    "t50_improvement": 0.0,
-    "t100_improvement": 0.0,
-    "hard_failure_improvement": 0.0,
+    "all_improvement": 0.09008338741058997,
+    "t10_improvement": 0.14947939008441202,
+    "t25_improvement": 0.05550895315198645,
+    "t50_improvement": 0.08800918427966675,
+    "t100_improvement": 0.08310612104619552,
+    "hard_failure_improvement": 0.09358425348430643,
     "easy_degradation": 0.0,
-    "harm_over_fallback": 0.0,
-    "switch_rate": 0.0,
-    "regret_to_oracle": 0.1983913141710111,
+    "harm_over_fallback": -0.07187757044502117,
+    "switch_rate": 0.792725938884343,
+    "regret_to_oracle": 0.12651374372598992,
     "by_domain": {
       "ETH_UCY": {
         "rows": 25901,
-        "all_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.09830500611895576,
+        "t50_improvement": 0.09915599864170066,
+        "t100_improvement": 0.09344195079241124,
+        "hard_failure_improvement": 0.10158284536653805,
         "easy_degradation": 0.0,
-        "switch_rate": 0.0
+        "switch_rate": 0.778116675031852
       },
       "UCY": {
         "rows": 9540,
-        "all_improvement": 0.0,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0,
+        "all_improvement": 0.06858233005902004,
+        "t50_improvement": 0.06028512849977563,
+        "t100_improvement": 0.05353284068199737,
+        "hard_failure_improvement": 0.07194134956972442,
         "easy_degradation": 0.0,
-        "switch_rate": 0.0
+        "switch_rate": 0.8323899371069182
       }
     },
     "neural_endpoint_without_fallback": {
@@ -1493,54 +1499,23 @@
         }
       }
     },
-    "neural_candidate_without_fallback": {
-      "rows": 35441,
-      "all_improvement": -4.84063232397299,
-      "t10_improvement": -5.0523001485536,
-      "t25_improvement": -5.747087464949059,
-      "t50_improvement": -2.892711154341845,
-      "t100_improvement": -6.057235462451089,
-      "hard_failure_improvement": -4.813309601343785,
-      "easy_degradation": 6.349163978769179,
-      "harm_over_fallback": 3.8623424458826823,
-      "switch_rate": 0.0,
-      "regret_to_oracle": 4.060733760053693,
-      "by_domain": {
-        "ETH_UCY": {
-          "rows": 25901,
-          "all_improvement": -5.741161716503469,
-          "t50_improvement": -3.169027342944509,
-          "t100_improvement": -7.909864246126901,
-          "hard_failure_improvement": -5.735167095468177,
-          "easy_degradation": 7.978595522412968,
-          "switch_rate": 0.0
-        },
-        "UCY": {
-          "rows": 9540,
-          "all_improvement": -2.485580988903105,
-          "t50_improvement": -2.20546498903392,
-          "t100_improvement": -0.7564215195271502,
-          "hard_failure_improvement": -2.318911404507015,
-          "easy_degradation": 3.670093443628808,
-          "switch_rate": 0.0
-        }
-      }
-    },
-    "selected_candidate_distribution": {
-      "0": 35441
-    },
+    "alpha_mean": 0.11890889083265145,
+    "alpha_positive_rate": 0.792725938884343,
     "latent_variance": 0.12380863726139069
   },
   "best_policy": {
-    "gain_threshold": 0.0,
+    "type": "bounded_endpoint_residual",
+    "mode": "gain_harm",
+    "alpha": 0.15,
     "gain_prob": 0.0,
-    "harm_prob": 0.1,
+    "harm_prob": 0.5,
     "physical_prob": 0.0,
-    "max_switch": 0.0,
-    "val_score": 0.0
+    "max_switch": 1.0,
+    "val_score": 0.3738025602881907,
+    "selection_rule": "validation_score_minus_switch_ungated_easy_risk_penalty"
   },
-  "strict_pure_ucy_only_neural_retrain_select_test_gate": false,
-  "remaining_blocker": "Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.",
+  "strict_pure_ucy_only_neural_retrain_select_test_gate": true,
+  "remaining_blocker": "",
   "no_leakage": {
     "future_endpoint_input": false,
     "future_endpoint_label_eval_only": true,
@@ -1558,7 +1533,7 @@
     "mixed_external_floor_used": false
   },
   "runtime": {
-    "wall_time_s": 51.37034975003917,
+    "wall_time_s": 50.69082812499255,
     "torch_threads": 4,
     "num_workers": 0
   },

@@ -35,10 +35,10 @@
 - all-agent composite ADE all/t+50/t+100: `21.03%` / `13.65%` / `14.69%`
 - all-agent composite FDE all/t+50: `19.82%` / `17.39%`
 - strict pure UCY-only retrain/select/test gate: `False`
-- strict pure UCY neural retrain gate: `False`
-- strict pure UCY neural best trial/mode: `pure_ucy_transformer` / `candidate_switch`
-- strict pure UCY neural best metrics all/t+50/hard/easy: `0.00%` / `0.00%` / `0.00%` / `0.00%`
-- strict pure UCY neural blocker: `Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.`
+- strict pure UCY neural retrain gate: `True`
+- strict pure UCY neural best trial/mode: `pure_ucy_transformer` / `bounded_endpoint_residual`
+- strict pure UCY neural best metrics all/t+50/hard/easy: `9.01%` / `8.80%` / `9.36%` / `0.00%`
+- strict pure UCY neural blocker: ``
 - endpoint-to-full bridge gate: `True`
 - endpoint-to-full bridge positive domains: `['ETH_UCY', 'TrajNet']`
 - calibrated learned-shape meta-policy gate: `True`

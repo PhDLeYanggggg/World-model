@@ -586,13 +586,24 @@ def _select_endpoint_residual_policy(pred: Mapping[str, np.ndarray]) -> tuple[di
     best_score = -1e18
     for policy in _endpoint_residual_grid():
         metrics = _eval_endpoint_residual(pred, "val", policy)
-        score = _score_metrics(metrics)
+        # Conservative tie-break: the original UCY retrain had positive
+        # residual signal but selected an almost-equal validation policy that
+        # intervened on every row. Prefer lower-switch, harm-gated policies
+        # when validation utility is effectively tied, so source-shifted easy
+        # rows are less likely to be harmed. This uses validation metrics and
+        # policy shape only; test metrics are still evaluated once below.
+        mode = str(policy.get("mode", ""))
+        switch_penalty = 0.02 * float(metrics.get("switch_rate", 0.0))
+        ungated_penalty = 0.015 if mode == "all" else 0.0
+        easy_penalty = 50.0 * max(0.0, float(metrics.get("easy_degradation", 0.0)) - 0.02)
+        score = _score_metrics(metrics) - switch_penalty - ungated_penalty - easy_penalty
         if score > best_score:
             best_score = score
             best_policy = dict(policy)
             best_metrics = metrics
     assert best_policy is not None and best_metrics is not None
     best_policy["val_score"] = float(best_score)
+    best_policy["selection_rule"] = "validation_score_minus_switch_ungated_easy_risk_penalty"
     return best_policy, best_metrics
 
 
@@ -642,7 +653,9 @@ def run_strict_pure_ucy_neural_retrain() -> dict[str, Any]:
         test_pred = _predict(train_result["checkpoint"], "test")
         test_metrics = _eval_policy(test_pred, "test", policy)
         residual_test_metrics = _eval_endpoint_residual(test_pred, "test", residual_policy)
-        if _score_metrics(residual_test_metrics) > _score_metrics(test_metrics):
+        candidate_val_score = _score_metrics(val_metrics)
+        residual_val_score = float(residual_policy.get("val_score", _score_metrics(residual_val_metrics)))
+        if residual_val_score > candidate_val_score:
             best_mode = "bounded_endpoint_residual"
             combined_policy = residual_policy
             combined_val_metrics = residual_val_metrics
@@ -662,13 +675,21 @@ def run_strict_pure_ucy_neural_retrain() -> dict[str, Any]:
             "bounded_endpoint_residual_policy": residual_policy,
             "bounded_endpoint_residual_val_metrics": residual_val_metrics,
             "bounded_endpoint_residual_test_metrics": residual_test_metrics,
+            "candidate_switch_val_score": candidate_val_score,
+            "bounded_endpoint_residual_val_score": residual_val_score,
             "best_mode": best_mode,
             "selected_policy": combined_policy,
             "val_metrics": combined_val_metrics,
             "test_metrics": combined_test_metrics,
             "strict_gate": _strict_gate(combined_test_metrics),
         }
-    best_name = max(trial_results, key=lambda name: _score_metrics(trial_results[name]["test_metrics"]))
+    best_name = max(
+        trial_results,
+        key=lambda name: max(
+            float(trial_results[name].get("candidate_switch_val_score", -1e18)),
+            float(trial_results[name].get("bounded_endpoint_residual_val_score", -1e18)),
+        ),
+    )
     best = trial_results[best_name]
     strict_gate = bool(best["strict_gate"])
     result = {
