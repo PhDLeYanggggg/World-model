@@ -55,6 +55,7 @@ def build_completion_audit() -> dict[str, Any]:
     goal_route = read_json("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json", {})
     route_policy = read_json("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json", {})
     joint_route = read_json("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json", {})
+    joint_consistency = read_json("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -108,6 +109,9 @@ def build_completion_audit() -> dict[str, Any]:
     joint_route_aux = joint_route.get("auxiliary_test_metrics") or {}
     joint_route_lift = joint_route.get("lift_over_full_trajectory_reference") or {}
     joint_route_contributes = bool(joint_route.get("joint_route_conditioning_contributes"))
+    joint_consistency_metrics = joint_consistency.get("test_metrics", {})
+    joint_consistency_lift = joint_consistency.get("lift_over_full_trajectory_reference") or {}
+    joint_consistency_contributes = bool(joint_consistency.get("joint_multiagent_consistency_contributes"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -170,6 +174,21 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference.",
         },
         {
+            "requirement": "joint multi-agent consistency improves trajectory deployment policy",
+            "status": _status(
+                joint_consistency_contributes
+                and joint_consistency_metrics.get("easy_degradation", 1.0) <= 0.02
+                and (
+                    joint_consistency_lift.get("all_delta", 0.0) > 0
+                    or joint_consistency_lift.get("t50_delta", 0.0) > 0
+                    or joint_consistency_lift.get("hard_delta", 0.0) > 0
+                ),
+                partial=bool(joint_consistency_metrics),
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json",
+            "note": "Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout.",
+        },
+        {
             "requirement": "t100 diagnostic positive or blocker analysis",
             "status": _status(best.get("t100_diagnostic", 0.0) > 0 or best.get("t100_improvement", 0.0) > 0),
             "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
@@ -194,7 +213,11 @@ def build_completion_audit() -> dict[str, Any]:
     audit = {
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
-        "current_best_deployable": "M3W-Neural v1 self-gated endpoint candidate under Stage37 safety floor",
+        "current_best_deployable": (
+            "M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor"
+            if joint_consistency_contributes
+            else "M3W-Neural v1 self-gated endpoint candidate under Stage37 safety floor"
+        ),
         "all_agent_risk_repair_summary": {
             "deployment_decision": all_agent_repair.get("deployment_decision"),
             "all_improvement": all_agent_metrics.get("all_improvement"),
@@ -301,9 +324,25 @@ def build_completion_audit() -> dict[str, Any]:
             "interaction_auroc": (joint_route_aux.get("interaction") or {}).get("auroc"),
             "occupancy_auroc": (joint_route_aux.get("occupancy") or {}).get("auroc"),
         },
+        "joint_multiagent_consistency_summary": {
+            "selected_params": joint_consistency.get("selected_params"),
+            "joint_multiagent_consistency_contributes": joint_consistency.get("joint_multiagent_consistency_contributes"),
+            "all_improvement": joint_consistency_metrics.get("all_improvement"),
+            "t50_improvement": joint_consistency_metrics.get("t50_improvement"),
+            "t100_improvement": joint_consistency_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_consistency_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_consistency_metrics.get("easy_degradation"),
+            "switch_rate": joint_consistency_metrics.get("switch_rate"),
+            "all_delta_over_full_trajectory_reference": joint_consistency_lift.get("all_delta"),
+            "t50_delta_over_full_trajectory_reference": joint_consistency_lift.get("t50_delta"),
+            "t100_delta_over_full_trajectory_reference": joint_consistency_lift.get("t100_delta"),
+            "hard_delta_over_full_trajectory_reference": joint_consistency_lift.get("hard_delta"),
+            "expanded_on": (joint_consistency_metrics.get("joint_consistency") or {}).get("expanded_on"),
+            "guarded_off": (joint_consistency_metrics.get("joint_consistency") or {}).get("guarded_off"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Treat route/physical heads as diagnostics until a jointly trained policy shows trajectory lift; the current post-hoc and joint route-conditioned attempts are negative ablations.",
+            "Turn the tiny positive joint-consistency group expansion into an explicitly trained joint rollout/policy distillation objective and verify the lift is statistically stable.",
             "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -434,9 +473,23 @@ def build_completion_audit() -> dict[str, Any]:
             f"- route top1: `{(joint_route_aux.get('route') or {}).get('top1')}`",
             f"- physical challenge AUROC: `{(joint_route_aux.get('physical_challenge') or {}).get('auroc')}`",
             "",
+            "## Joint Multi-Agent Consistency Calibration",
+            "",
+            f"- selected params: `{joint_consistency.get('selected_params')}`",
+            f"- joint consistency contributes: `{joint_consistency.get('joint_multiagent_consistency_contributes')}`",
+            f"- all improvement: `{joint_consistency_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{joint_consistency_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{joint_consistency_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_consistency_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_consistency_metrics.get('easy_degradation')}`",
+            f"- all delta over full-trajectory reference: `{joint_consistency_lift.get('all_delta')}`",
+            f"- t50 delta over full-trajectory reference: `{joint_consistency_lift.get('t50_delta')}`",
+            f"- hard delta over full-trajectory reference: `{joint_consistency_lift.get('hard_delta')}`",
+            f"- expanded-on rows: `{(joint_consistency_metrics.get('joint_consistency') or {}).get('expanded_on')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. The full active objective is still not complete because the rollout is still per-agent all-agent-context rather than a jointly consistent latent world-state model.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. Joint multi-agent consistency calibration adds a tiny positive lift by safely expanding group-consistent interventions, including a small positive UCY transfer signal. The full active objective is still not complete because this is post-hoc current-frame group calibration rather than a jointly consistent latent world-state rollout.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -454,13 +507,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     goal_route_summary = audit.get("goal_route_physical_repair_summary", {})
     route_policy_summary = audit.get("route_physical_policy_integration_summary", {})
     joint_route_summary = audit.get("joint_route_conditioned_world_state_summary", {})
+    joint_consistency_summary = audit.get("joint_multiagent_consistency_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, but route/physical policy integration and joint route-conditioned training are negative trajectory ablations.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, route/physical heads remain diagnostic, and joint multi-agent consistency gives a tiny positive policy lift but is not yet a jointly consistent latent rollout.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -527,11 +581,20 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_route_conditioned_hard = {joint_route_summary.get('hard_failure_improvement')}",
             f"joint_route_conditioned_all_delta_vs_full_traj = {joint_route_summary.get('all_delta_over_full_trajectory_reference')}",
             f"joint_route_conditioned_t50_delta_vs_full_traj = {joint_route_summary.get('t50_delta_over_full_trajectory_reference')}",
+            f"joint_multiagent_consistency_contributes = {joint_consistency_summary.get('joint_multiagent_consistency_contributes')}",
+            f"joint_multiagent_consistency_all = {joint_consistency_summary.get('all_improvement')}",
+            f"joint_multiagent_consistency_t50 = {joint_consistency_summary.get('t50_improvement')}",
+            f"joint_multiagent_consistency_t100_diagnostic = {joint_consistency_summary.get('t100_improvement')}",
+            f"joint_multiagent_consistency_hard = {joint_consistency_summary.get('hard_failure_improvement')}",
+            f"joint_multiagent_consistency_easy = {joint_consistency_summary.get('easy_degradation')}",
+            f"joint_multiagent_consistency_all_delta_vs_full_traj = {joint_consistency_summary.get('all_delta_over_full_trajectory_reference')}",
+            f"joint_multiagent_consistency_t50_delta_vs_full_traj = {joint_consistency_summary.get('t50_delta_over_full_trajectory_reference')}",
+            f"joint_multiagent_consistency_expanded_on = {joint_consistency_summary.get('expanded_on')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: keep route/physical heads as diagnostics unless they show trajectory lift, then move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: make the tiny joint-consistency gain statistically stable by training it as an explicit joint rollout/policy objective; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -554,8 +617,10 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json")
     state["generated_reports"] = sorted(generated)
-    state["current_verdict"] = "stage41_full_trajectory_candidate_route_physical_negative_ablation_not_complete"
+    state["current_verdict"] = "stage41_joint_consistency_tiny_positive_not_complete"
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
@@ -569,6 +634,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "goal_route_physical_repair_summary": goal_route_summary,
         "route_physical_policy_integration_summary": route_policy_summary,
         "joint_route_conditioned_world_state_summary": joint_route_summary,
+        "joint_multiagent_consistency_summary": joint_consistency_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

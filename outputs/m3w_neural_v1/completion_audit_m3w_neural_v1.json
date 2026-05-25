@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 self-gated endpoint candidate under Stage37 safety floor",
+  "current_best_deployable": "M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -108,6 +108,26 @@
     "interaction_auroc": 0.9479880457425697,
     "occupancy_auroc": 0.9453385350366176
   },
+  "joint_multiagent_consistency_summary": {
+    "selected_params": {
+      "mode": "group_expand",
+      "expand_risk_max": 0.010222918819636106,
+      "expand_min_sep": 0.08
+    },
+    "joint_multiagent_consistency_contributes": true,
+    "all_improvement": 0.18619055634397086,
+    "t50_improvement": 0.14841646500755878,
+    "t100_improvement": 0.22857473063742806,
+    "hard_failure_improvement": 0.19563212885213843,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.2967691975219709,
+    "all_delta_over_full_trajectory_reference": 0.0004120320456266757,
+    "t50_delta_over_full_trajectory_reference": 0.0003794692302440117,
+    "t100_delta_over_full_trajectory_reference": 4.641379339753726e-07,
+    "hard_delta_over_full_trajectory_reference": 0.00045165607262387386,
+    "expanded_on": 118,
+    "guarded_off": 0
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -160,6 +180,12 @@
       "note": "Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference."
     },
     {
+      "requirement": "joint multi-agent consistency improves trajectory deployment policy",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json",
+      "note": "Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout."
+    },
+    {
       "requirement": "t100 diagnostic positive or blocker analysis",
       "status": "complete",
       "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
@@ -181,7 +207,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Treat route/physical heads as diagnostics until a jointly trained policy shows trajectory lift; the current post-hoc and joint route-conditioned attempts are negative ablations.",
+    "Turn the tiny positive joint-consistency group expansion into an explicitly trained joint rollout/policy distillation objective and verify the lift is statistically stable.",
     "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

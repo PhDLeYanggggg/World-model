@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, but route/physical policy integration and joint route-conditioned training are negative trajectory ablations.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, route/physical heads remain diagnostic, and joint multi-agent consistency gives a tiny positive policy lift but is not yet a jointly consistent latent rollout.
 
 ```text
 completion_status = not_complete
@@ -1059,11 +1059,20 @@ joint_route_conditioned_t100_diagnostic = 0.16374924097478616
 joint_route_conditioned_hard = 0.15655007967571088
 joint_route_conditioned_all_delta_vs_full_traj = -0.03489077742818736
 joint_route_conditioned_t50_delta_vs_full_traj = -0.05508147882643466
+joint_multiagent_consistency_contributes = True
+joint_multiagent_consistency_all = 0.18619055634397086
+joint_multiagent_consistency_t50 = 0.14841646500755878
+joint_multiagent_consistency_t100_diagnostic = 0.22857473063742806
+joint_multiagent_consistency_hard = 0.19563212885213843
+joint_multiagent_consistency_easy = 0.0
+joint_multiagent_consistency_all_delta_vs_full_traj = 0.0004120320456266757
+joint_multiagent_consistency_t50_delta_vs_full_traj = 0.0003794692302440117
+joint_multiagent_consistency_expanded_on = 118
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: keep route/physical heads as diagnostics unless they show trajectory lift, then move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: make the tiny joint-consistency gain statistically stable by training it as an explicit joint rollout/policy objective; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

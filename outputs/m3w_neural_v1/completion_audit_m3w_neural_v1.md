@@ -2,7 +2,7 @@
 
 - source: `fresh_run`
 - completion_status: `not_complete`
-- current_best_deployable: `M3W-Neural v1 self-gated endpoint candidate under Stage37 safety floor`
+- current_best_deployable: `M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor`
 
 ## Requirement Matrix
 
@@ -17,6 +17,7 @@
 | full trajectory, interaction, occupancy, and physical-validity heads | `complete` | outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json | Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. The separate goal/route/physical repair pass adds a non-degenerate physical-challenge label. |
 | explicit goal/route head and non-degenerate physical-consistency target | `complete` | outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json | Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs. |
 | route/physical heads improve trajectory deployment policy | `partial` | outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json and outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json | Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference. |
+| joint multi-agent consistency improves trajectory deployment policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json | Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -127,6 +128,20 @@
 - route top1: `0.7032127935455986`
 - physical challenge AUROC: `0.9460369245580365`
 
+## Joint Multi-Agent Consistency Calibration
+
+- selected params: `{'mode': 'group_expand', 'expand_risk_max': 0.010222918819636106, 'expand_min_sep': 0.08}`
+- joint consistency contributes: `True`
+- all improvement: `0.18619055634397086`
+- t50 improvement: `0.14841646500755878`
+- t100 diagnostic improvement: `0.22857473063742806`
+- hard/failure improvement: `0.19563212885213843`
+- easy degradation: `0.0`
+- all delta over full-trajectory reference: `0.0004120320456266757`
+- t50 delta over full-trajectory reference: `0.0003794692302440117`
+- hard delta over full-trajectory reference: `0.00045165607262387386`
+- expanded-on rows: `118`
+
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. The full active objective is still not complete because the rollout is still per-agent all-agent-context rather than a jointly consistent latent world-state model.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. Joint multi-agent consistency calibration adds a tiny positive lift by safely expanding group-consistent interventions, including a small positive UCY transfer signal. The full active objective is still not complete because this is post-hoc current-frame group calibration rather than a jointly consistent latent world-state rollout.
