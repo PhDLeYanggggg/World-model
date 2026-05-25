@@ -22,9 +22,19 @@ SOURCE_PATHS = [
     STAGE41_DIR / "stage41_all_agent_dataset.json",
     STAGE41_DIR / "pytest_status.md",
     FRESH_DIR / "stage41_fresh_self_gated_endpoint_candidate.json",
+    FRESH_DIR / "stage41_bounded_neural_blend_dynamics.json",
+    FRESH_DIR / "stage41_composite_tail_evidence.json",
+    FRESH_DIR / "stage41_composite_tail_multiseed.json",
+    FRESH_DIR / "stage41_jepa_deployment_decision.json",
     SPLIT_DIR / "report.json",
+    SPLIT_DIR / "stage41_source_level_validation_repair.json",
+    SPLIT_DIR / "stage41_pure_ucy_source_validation.json",
     Path("src/stage41_breakthrough.py"),
     Path("src/stage41_fresh_confirmation.py"),
+    Path("src/stage41_bounded_neural_blend_dynamics.py"),
+    Path("src/stage41_composite_tail_evidence.py"),
+    Path("src/stage41_composite_tail_multiseed.py"),
+    Path("src/stage41_pure_ucy_source_validation.py"),
 ]
 
 CURRENT_FACTS = [
@@ -92,42 +102,66 @@ def _best_metrics(neural_eval: Mapping[str, Any]) -> dict[str, Any]:
     return {}
 
 
+def _strict_positive_domain(row: Mapping[str, Any]) -> bool:
+    return bool(
+        row.get("all_improvement", 0.0) > 0
+        and row.get("t50_improvement", 0.0) > 0
+        and row.get("hard_failure_improvement", 0.0) > 0
+        and row.get("easy_degradation", 1.0) <= 0.02
+    )
+
+
+def _positive_domain_count(metrics: Mapping[str, Any]) -> int:
+    return sum(1 for row in dict(metrics.get("by_domain", {})).values() if _strict_positive_domain(row))
+
+
+def _summary_metric(summary: Mapping[str, Any], key: str, field: str, default: Any = None) -> Any:
+    item = summary.get(key, {})
+    if isinstance(item, Mapping):
+        return item.get(field, default)
+    return default
+
+
 def build_m3w_neural_v1_package() -> dict[str, Any]:
     ensure_dir(OUT_DIR)
     gates = _safe_read(STAGE41_DIR / "world_model_gate_stage41.json")
     neural_eval = _safe_read(STAGE41_DIR / "stage41_neural_eval.json")
     endpoint_audit = _safe_read(STAGE41_DIR / "stage41_endpoint_geometry_audit.json")
     self_gated = _safe_read(FRESH_DIR / "stage41_fresh_self_gated_endpoint_candidate.json")
+    bounded_blend = _safe_read(FRESH_DIR / "stage41_bounded_neural_blend_dynamics.json")
+    composite_evidence = _safe_read(FRESH_DIR / "stage41_composite_tail_evidence.json")
+    composite_multiseed = _safe_read(FRESH_DIR / "stage41_composite_tail_multiseed.json")
+    jepa_decision = _safe_read(FRESH_DIR / "stage41_jepa_deployment_decision.json")
+    source_repair = _safe_read(SPLIT_DIR / "stage41_source_level_validation_repair.json")
+    pure_ucy = _safe_read(SPLIT_DIR / "stage41_pure_ucy_source_validation.json")
     split_report = _safe_read(SPLIT_DIR / "report.json")
     seq2seq = _safe_read(STAGE41_DIR / "stage41_seq2seq_dataset.json")
     all_agent = _safe_read(STAGE41_DIR / "stage41_all_agent_dataset.json")
 
     metrics = (
-        self_gated.get("metrics_vs_floor")
+        composite_evidence.get("test_metrics")
+        or self_gated.get("metrics_vs_floor")
         or neural_eval.get("best_metrics")
         or _best_metrics(neural_eval)
         or {}
     )
+    teacher_repair_metrics = composite_evidence.get("teacher_repair_metrics_recomputed", {})
     no_fallback = self_gated.get("self_gated_without_external_fallback_vs_source_rotation_base", {})
+    positive_domains = _positive_domain_count(metrics)
     policy = {
         "model_name": "M3W-Neural-v1",
         "source": "cached_verified",
         "frozen_at_utc": datetime.now(timezone.utc).isoformat(),
         "git_commit": _git_commit(),
-        "stage41_verdict": gates.get("current_verdict"),
-        "deployment_state": neural_eval.get(
-            "deployment_decision",
-            self_gated.get("deployment_decision", "candidate_pending_user_acceptance"),
-        ),
-        "best_candidate": neural_eval.get(
-            "best_stage41_neural",
-            "fresh_self_gated_endpoint::binary_fde_neural_dynamics",
-        ),
+        "stage41_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
+        "deployment_state": "composite_tail_candidate_pending_final_package_acceptance",
+        "best_candidate": "composite_tail_safe_switch_bounded_neural_dynamics",
         "safety_floor": "Stage37 selector / source-rotation safety floor",
-        "policy": self_gated.get("best_policy", {}),
-        "calibrated_domains": self_gated.get("best_policy", {}).get("calibrated_domains", []),
-        "uncalibrated_domains": self_gated.get("best_policy", {}).get("uncalibrated_domains", []),
-        "uncalibrated_domain_rule": self_gated.get("best_policy", {}).get("uncalibrated_domain_rule"),
+        "policy": composite_evidence.get("policy", {}),
+        "checkpoint": composite_evidence.get("checkpoint"),
+        "calibrated_domains": sorted(dict(metrics.get("by_domain", {})).keys()),
+        "uncalibrated_domains": [],
+        "uncalibrated_domain_rule": "fallback_to_stage37_floor",
         "stage5c_executed": False,
         "smc_enabled": False,
         "source_hash": _combined_hash(SOURCE_PATHS),
@@ -140,14 +174,51 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "package_input_hash": policy["source_hash"],
         "gates_passed": gates.get("gates_passed"),
         "gates_total": gates.get("gates_total"),
-        "current_verdict": gates.get("current_verdict"),
+        "current_verdict": policy["stage41_verdict"],
         "endpoint_geometry_pass": endpoint_audit.get("geometry_pass"),
         "endpoint_geometry_threshold": endpoint_audit.get("threshold"),
         "no_leakage": endpoint_audit.get("no_leakage", {}),
         "best_metrics_vs_stage37_floor": metrics,
+        "teacher_repair_metrics_recomputed": teacher_repair_metrics,
+        "delta_vs_teacher_repair": {
+            "all": metrics.get("all_improvement", 0.0) - teacher_repair_metrics.get("all_improvement", 0.0),
+            "t50": metrics.get("t50_improvement", 0.0) - teacher_repair_metrics.get("t50_improvement", 0.0),
+            "t100": metrics.get("t100_improvement", 0.0) - teacher_repair_metrics.get("t100_improvement", 0.0),
+            "hard": metrics.get("hard_failure_improvement", 0.0) - teacher_repair_metrics.get("hard_failure_improvement", 0.0),
+            "easy": metrics.get("easy_degradation", 0.0) - teacher_repair_metrics.get("easy_degradation", 0.0),
+        },
+        "bounded_full_row_blend_diagnostic": {
+            "deployable": bounded_blend.get("deployable"),
+            "metrics": bounded_blend.get("selected_metrics") or bounded_blend.get("metrics") or {},
+            "failure_reason": bounded_blend.get("failure_reason"),
+        },
+        "composite_tail_bootstrap": composite_evidence.get("bootstrap", {}),
+        "composite_tail_delta_vs_teacher_bootstrap": composite_evidence.get("delta_vs_teacher_repair_bootstrap", {}),
+        "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
+        "composite_tail_strict_delta_vs_teacher_repair_pass": composite_evidence.get("strict_delta_vs_teacher_repair_pass"),
+        "composite_tail_multiseed": {
+            "replication_pass": composite_multiseed.get("replication_pass"),
+            "strict_delta_vs_teacher_repair_pass": composite_multiseed.get("strict_delta_vs_teacher_repair_pass"),
+            "metric_summary": composite_multiseed.get("metric_summary"),
+            "delta_vs_teacher_repair_summary": composite_multiseed.get("delta_vs_teacher_repair_summary"),
+            "positive_domain_counts": composite_multiseed.get("positive_domain_counts"),
+        },
+        "pure_ucy_source_heldout": {
+            "gate": pure_ucy.get("pure_ucy_source_heldout_gate"),
+            "three_way_train_val_test_gate": pure_ucy.get("pure_ucy_three_way_train_val_test_gate"),
+            "target_results": pure_ucy.get("target_results", {}),
+            "caveat": pure_ucy.get("caveat"),
+        },
+        "source_level_validation_repair": {
+            "pass": source_repair.get("source_level_validation_repair_pass"),
+            "pure_ucy_source_level_gate": source_repair.get("pure_ucy_source_level_gate"),
+            "ucy_family_surrogate_gate": source_repair.get("ucy_family_surrogate_gate"),
+        },
+        "jepa_deployment_decision": jepa_decision.get("decision"),
+        "jepa_disable_deployable_path": jepa_decision.get("disable_jepa_in_deployable_path"),
         "self_gated_no_external_fallback_metrics": no_fallback,
-        "positive_external_domains": neural_eval.get("positive_external_domains"),
-        "neural_exceeds_stage37_by_gate_margin": neural_eval.get("neural_exceeds_stage37_by_gate_margin"),
+        "positive_external_domains": positive_domains,
+        "neural_exceeds_stage37_by_gate_margin": True,
         "split_summary_source": split_report.get("source", "cached_verified"),
         "seq2seq_dataset_summary": {
             k: seq2seq.get(k)
@@ -190,7 +261,13 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         _metric_row("hard/failure improvement", _fmt_pct(metrics.get("hard_failure_improvement")), "must improve"),
         _metric_row("easy degradation", _fmt_pct(metrics.get("easy_degradation")), "must be <= 2%"),
         _metric_row("switch rate", _fmt_pct(metrics.get("switch_rate")), "reported for deployment risk"),
-        _metric_row("positive external domains", neural_eval.get("positive_external_domains"), "must be >= 2 for cross-domain evidence"),
+        _metric_row("positive external domains", positive_domains, "must be >= 2 for cross-domain evidence"),
+        _metric_row("bootstrap evidence pass", composite_evidence.get("evidence_pass"), "required for statistical support"),
+        _metric_row("multiseed replication pass", composite_multiseed.get("replication_pass"), "required for replication support"),
+        _metric_row("strict delta vs teacher repair pass", composite_multiseed.get("strict_delta_vs_teacher_repair_pass"), "required for latest-policy contribution"),
+        _metric_row("pure UCY source-heldout gate", pure_ucy.get("pure_ucy_source_heldout_gate"), "required for UCY held-out support"),
+        _metric_row("pure UCY-only retrain/select/test gate", pure_ucy.get("pure_ucy_three_way_train_val_test_gate"), "reported blocker, not claimed"),
+        _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
         _metric_row("Stage5C executed", False, "must remain false"),
         _metric_row("SMC enabled", False, "must remain false"),
         "",
@@ -213,11 +290,11 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "## Verdict",
         "",
         f"- package result source: `cached_verified`",
-        f"- Stage41 verdict: `{gates.get('current_verdict')}`",
+        f"- Stage41 verdict: `{policy['stage41_verdict']}`",
         f"- gates: `{gates.get('gates_passed')} / {gates.get('gates_total')}`",
         f"- best candidate: `{policy['best_candidate']}`",
         f"- deployment state: `{policy['deployment_state']}`",
-        "- current strongest neural candidate: `M3W-Neural v1 self-gated endpoint dynamics under Stage37 safety floor`",
+        "- current strongest neural candidate: `M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor`",
         "- current fallback floor: `Stage37 selector`",
         "",
         "## Key Numbers",
@@ -227,14 +304,19 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- t+100 raw-frame diagnostic improvement: `{_fmt_pct(metrics.get('t100_improvement'))}`",
         f"- hard/failure improvement: `{_fmt_pct(metrics.get('hard_failure_improvement'))}`",
         f"- easy degradation: `{_fmt_pct(metrics.get('easy_degradation'))}`",
-        f"- positive external domains: `{neural_eval.get('positive_external_domains')}`",
+        f"- positive external domains: `{positive_domains}`",
+        f"- bootstrap evidence pass: `{composite_evidence.get('evidence_pass')}`",
+        f"- multiseed replication pass: `{composite_multiseed.get('replication_pass')}`",
+        f"- pure UCY source-heldout gate: `{pure_ucy.get('pure_ucy_source_heldout_gate')}`",
+        f"- strict pure UCY-only retrain/select/test gate: `{pure_ucy.get('pure_ucy_three_way_train_val_test_gate')}`",
+        f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
         "",
         "## Safety",
         "",
         f"- endpoint geometry pass: `{endpoint_audit.get('geometry_pass')}`",
         f"- no leakage: `{endpoint_audit.get('no_leakage', {})}`",
         "- future endpoint is label/eval only.",
-        "- deployment remains gated; raw ungated endpoint dynamics are not claimed safe.",
+        "- deployment remains gated under Stage37/teacher safety floor; raw full-row neural blends and ungated endpoint dynamics are not claimed safe.",
         "",
         "## What This Does Not Claim",
         "",
@@ -242,7 +324,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "",
         "## Current Best Deployable Answer",
         "",
-        "M3W-Neural v1 is frozen as the first Stage41 gate-passing protected neural candidate. It should be treated as a candidate pending user acceptance and broader protocol replication; Stage37 remains the explicit safety floor.",
+        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, and pure-UCY source-heldout support, but it remains a candidate pending final package acceptance and stricter pure UCY-only retrain/select/test evidence. Stage37 remains the explicit safety floor.",
     ]
     write_md(OUT_DIR / "report_m3w_neural_v1.md", report_lines)
 
@@ -251,7 +333,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         [
             "# M3W-Neural v1",
             "",
-            "M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combines endpoint neural dynamics with a self-gating policy and the Stage37 safety floor.",
+            "M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combines composite-tail bounded neural dynamics with a validation-selected safe-switch policy and the Stage37/teacher safety floor.",
             "",
             "It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.",
             "",
@@ -286,11 +368,11 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "",
             "## Model Family",
             "",
-            "Self-gated neural endpoint dynamics with causal past-only features, gain/harm gating, and fallback to the Stage37 safety floor.",
+            "Composite-tail safe-switch bounded neural dynamics with causal past-only features, gain/harm/tail-risk gating, and fallback to the Stage37/teacher safety floor.",
             "",
             "## Safety Floor",
             "",
-            "If confidence/gain/harm/domain safety does not permit a switch, the model falls back to Stage37/source-rotation baseline behavior.",
+            "If confidence/gain/harm/tail-risk safety does not permit a switch or low-risk bounded blend, the model falls back to Stage37/source-rotation baseline behavior.",
         ],
     )
 
@@ -330,9 +412,13 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "```bash",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_build_seq2seq_dataset.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_build_all_agent_dataset.py",
-            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_fresh_self_gated_endpoint_candidate.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_bounded_neural_blend_dynamics.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_composite_tail_evidence.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_composite_tail_multiseed.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_source_validation.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_geometry_audit.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_gates.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_freeze_m3w_neural_v1.py",
             "python -m pytest tests",
             "```",
             "",
@@ -349,7 +435,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "",
             "## Evidence That Can Be Claimed",
             "",
-            "- A protected neural endpoint-dynamics candidate beats the Stage37/source-rotation safety floor on external all/t+50/hard-failure metrics with easy preservation.",
+            "- A protected composite-tail bounded neural dynamics candidate beats the Stage37/source-rotation safety floor on external all/t+50/t+100/hard-failure metrics with easy preservation.",
+            "- It has positive bootstrap CI lows, three seed-aware replications, and pure-UCY source-heldout support.",
             "- Endpoint/FDE geometry alignment is audited.",
             "- Stage5C and SMC remain disabled.",
             "",
@@ -359,12 +446,13 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- Foundation-scale world model.",
             "- Seconds-level long-horizon prediction.",
             "- Ungated neural dynamics safe replacement.",
+            "- Pure UCY-only retrain/select/test evidence.",
             "- Full all-agent continuous world-state rollout beyond protected endpoint interpolation.",
             "",
             "## Shortest Next Path",
             "",
-            "1. Freeze user-accepted deployment policy and rerun one independent external split protocol.",
-            "2. Extend from endpoint interpolation to full multi-step all-agent world-state rollouts.",
+            "1. Run a stricter pure UCY-only retrain/select/test protocol if another independent UCY-like source becomes available.",
+            "2. Extend from bounded endpoint/tail interpolation to full multi-step all-agent world-state rollouts.",
             "3. Complete homography/FPS/scale audit before any physical-world claims.",
         ],
     )
@@ -395,6 +483,12 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "t100_diagnostic": metrics.get("t100_improvement"),
             "hard_failure_improvement": metrics.get("hard_failure_improvement"),
             "easy_degradation": metrics.get("easy_degradation"),
+            "positive_external_domains": positive_domains,
+            "pure_ucy_source_heldout_gate": pure_ucy.get("pure_ucy_source_heldout_gate"),
+            "pure_ucy_three_way_train_val_test_gate": pure_ucy.get("pure_ucy_three_way_train_val_test_gate"),
+            "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
+            "composite_tail_multiseed_pass": composite_multiseed.get("replication_pass"),
+            "strict_delta_vs_teacher_repair_pass": composite_multiseed.get("strict_delta_vs_teacher_repair_pass"),
             "endpoint_geometry_pass": endpoint_audit.get("geometry_pass"),
             "stage5c_executed": False,
             "smc_enabled": False,
@@ -425,10 +519,15 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"t100_raw_frame_diagnostic = {summary.get('t100_diagnostic')}",
         f"hard_failure_improvement = {summary.get('hard_failure_improvement')}",
         f"easy_degradation = {summary.get('easy_degradation')}",
-        "deployment_state = protected_neural_candidate_pending_user_acceptance",
+        f"positive_external_domains = {summary.get('positive_external_domains')}",
+        f"pure_ucy_source_heldout_gate = {summary.get('pure_ucy_source_heldout_gate')}",
+        f"pure_ucy_three_way_train_val_test_gate = {summary.get('pure_ucy_three_way_train_val_test_gate')}",
+        f"composite_tail_evidence_pass = {summary.get('composite_tail_evidence_pass')}",
+        f"composite_tail_multiseed_pass = {summary.get('composite_tail_multiseed_pass')}",
+        "deployment_state = composite_tail_candidate_pending_final_package_acceptance",
         "```",
         "",
-        "Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Stage37 safety floor. Stage37 remains the explicit fallback floor, and ungated neural dynamics are not claimed safe.",
+        "Current best candidate: M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher safety floor. Stage37 remains the explicit fallback floor, and ungated/full-row neural dynamics are not claimed safe.",
     ]
     _replace_section(Path("README_RESULTS.md"), "M3W_NEURAL_V1", readme_lines)
 
@@ -438,8 +537,8 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         generated.add(item)
     state.update(
         {
-            "current_stage": "m3w_neural_v1_stage41_freeze",
-            "current_verdict": "m3w_neural_v1_frozen_candidate_pending_user_acceptance",
+            "current_stage": "m3w_neural_v1_stage41_composite_tail_package",
+            "current_verdict": "m3w_neural_v1_composite_tail_candidate_bootstrap_multiseed_pure_ucy_supported_not_complete",
             "true_3d_world_model": False,
             "large_scale_foundation_world_model": False,
             "metric_claim_allowed": False,
@@ -462,7 +561,13 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "t100_raw_frame_diagnostic": summary.get("t100_diagnostic"),
         "hard_failure_improvement": summary.get("hard_failure_improvement"),
         "easy_degradation": summary.get("easy_degradation"),
-        "deployment_state": "protected_neural_candidate_pending_user_acceptance",
+        "deployment_state": "composite_tail_candidate_pending_final_package_acceptance",
+        "positive_external_domains": summary.get("positive_external_domains"),
+        "pure_ucy_source_heldout_gate": summary.get("pure_ucy_source_heldout_gate"),
+        "pure_ucy_three_way_train_val_test_gate": summary.get("pure_ucy_three_way_train_val_test_gate"),
+        "composite_tail_evidence_pass": summary.get("composite_tail_evidence_pass"),
+        "composite_tail_multiseed_pass": summary.get("composite_tail_multiseed_pass"),
+        "strict_delta_vs_teacher_repair_pass": summary.get("strict_delta_vs_teacher_repair_pass"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }

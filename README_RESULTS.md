@@ -978,15 +978,20 @@ seconds_level_claim = false
 stage5c_executed = false
 smc_enabled = false
 gates = 41 / 41
-all_improvement = 0.41964214194307703
-t50_improvement = 0.4061979981406123
-t100_raw_frame_diagnostic = 0.45728888926366984
-hard_failure_improvement = 0.43608295876101655
+all_improvement = 0.2102513255185352
+t50_improvement = 0.13652231450154184
+t100_raw_frame_diagnostic = 0.14694086716388166
+hard_failure_improvement = 0.20384916307933942
 easy_degradation = 0.0
-deployment_state = protected_neural_candidate_pending_user_acceptance
+positive_external_domains = 3
+pure_ucy_source_heldout_gate = True
+pure_ucy_three_way_train_val_test_gate = False
+composite_tail_evidence_pass = True
+composite_tail_multiseed_pass = True
+deployment_state = composite_tail_candidate_pending_final_package_acceptance
 ```
 
-Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Stage37 safety floor. Stage37 remains the explicit fallback floor, and ungated neural dynamics are not claimed safe.
+Current best candidate: M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher safety floor. Stage37 remains the explicit fallback floor, and ungated/full-row neural dynamics are not claimed safe.
 <!-- M3W_NEURAL_V1:END -->
 
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->

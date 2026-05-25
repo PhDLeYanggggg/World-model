@@ -1,6 +1,6 @@
 # M3W-Neural v1
 
-M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combines endpoint neural dynamics with a self-gating policy and the Stage37 safety floor.
+M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combines composite-tail bounded neural dynamics with a validation-selected safe-switch policy and the Stage37/teacher safety floor.
 
 It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.
 

@@ -14,8 +14,8 @@ Protected 2.5D multi-agent trajectory world-state diagnostics and external top-d
 
 ## Model Family
 
-Self-gated neural endpoint dynamics with causal past-only features, gain/harm gating, and fallback to the Stage37 safety floor.
+Composite-tail safe-switch bounded neural dynamics with causal past-only features, gain/harm/tail-risk gating, and fallback to the Stage37/teacher safety floor.
 
 ## Safety Floor
 
-If confidence/gain/harm/domain safety does not permit a switch, the model falls back to Stage37/source-rotation baseline behavior.
+If confidence/gain/harm/tail-risk safety does not permit a switch or low-risk bounded blend, the model falls back to Stage37/source-rotation baseline behavior.

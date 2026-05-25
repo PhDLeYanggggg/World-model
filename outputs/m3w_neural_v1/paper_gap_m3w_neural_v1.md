@@ -2,7 +2,8 @@
 
 ## Evidence That Can Be Claimed
 
-- A protected neural endpoint-dynamics candidate beats the Stage37/source-rotation safety floor on external all/t+50/hard-failure metrics with easy preservation.
+- A protected composite-tail bounded neural dynamics candidate beats the Stage37/source-rotation safety floor on external all/t+50/t+100/hard-failure metrics with easy preservation.
+- It has positive bootstrap CI lows, three seed-aware replications, and pure-UCY source-heldout support.
 - Endpoint/FDE geometry alignment is audited.
 - Stage5C and SMC remain disabled.
 
@@ -12,10 +13,11 @@
 - Foundation-scale world model.
 - Seconds-level long-horizon prediction.
 - Ungated neural dynamics safe replacement.
+- Pure UCY-only retrain/select/test evidence.
 - Full all-agent continuous world-state rollout beyond protected endpoint interpolation.
 
 ## Shortest Next Path
 
-1. Freeze user-accepted deployment policy and rerun one independent external split protocol.
-2. Extend from endpoint interpolation to full multi-step all-agent world-state rollouts.
+1. Run a stricter pure UCY-only retrain/select/test protocol if another independent UCY-like source becomes available.
+2. Extend from bounded endpoint/tail interpolation to full multi-step all-agent world-state rollouts.
 3. Complete homography/FPS/scale audit before any physical-world claims.

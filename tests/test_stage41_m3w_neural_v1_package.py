@@ -7,6 +7,9 @@ def test_stage41_m3w_neural_v1_package_paths() -> None:
     assert pkg.OUT_DIR == Path("outputs/m3w_neural_v1")
     assert any("world_model_gate_stage41.json" in str(p) for p in pkg.SOURCE_PATHS)
     assert any("stage41_fresh_self_gated_endpoint_candidate.json" in str(p) for p in pkg.SOURCE_PATHS)
+    assert any("stage41_composite_tail_evidence.json" in str(p) for p in pkg.SOURCE_PATHS)
+    assert any("stage41_composite_tail_multiseed.json" in str(p) for p in pkg.SOURCE_PATHS)
+    assert any("stage41_pure_ucy_source_validation.json" in str(p) for p in pkg.SOURCE_PATHS)
 
 
 def test_stage41_m3w_neural_v1_current_facts_block_overclaim() -> None:

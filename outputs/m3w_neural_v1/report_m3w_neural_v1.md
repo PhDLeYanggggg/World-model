@@ -13,28 +13,33 @@
 ## Verdict
 
 - package result source: `cached_verified`
-- Stage41 verdict: `stage41_self_gated_neural_candidate_endpoint_geometry_verified`
+- Stage41 verdict: `composite_tail_safe_switch_bounded_neural_dynamics_candidate`
 - gates: `41 / 41`
-- best candidate: `fresh_self_gated_endpoint::binary_fde_neural_dynamics`
-- deployment state: `stage41_protected_neural_candidate_pending_user_acceptance`
-- current strongest neural candidate: `M3W-Neural v1 self-gated endpoint dynamics under Stage37 safety floor`
+- best candidate: `composite_tail_safe_switch_bounded_neural_dynamics`
+- deployment state: `composite_tail_candidate_pending_final_package_acceptance`
+- current strongest neural candidate: `M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor`
 - current fallback floor: `Stage37 selector`
 
 ## Key Numbers
 
-- all improvement vs Stage37 floor: `41.96%`
-- t+50 improvement vs Stage37 floor: `40.62%`
-- t+100 raw-frame diagnostic improvement: `45.73%`
-- hard/failure improvement: `43.61%`
+- all improvement vs Stage37 floor: `21.03%`
+- t+50 improvement vs Stage37 floor: `13.65%`
+- t+100 raw-frame diagnostic improvement: `14.69%`
+- hard/failure improvement: `20.38%`
 - easy degradation: `0.00%`
 - positive external domains: `3`
+- bootstrap evidence pass: `True`
+- multiseed replication pass: `True`
+- pure UCY source-heldout gate: `True`
+- strict pure UCY-only retrain/select/test gate: `False`
+- JEPA deployable path: `disable_jepa_in_deployable_path`
 
 ## Safety
 
 - endpoint geometry pass: `True`
 - no leakage: `{'future_endpoint_input': False, 'future_endpoint_label_eval_only': True, 'central_velocity': False, 'test_endpoint_goals': False}`
 - future endpoint is label/eval only.
-- deployment remains gated; raw ungated endpoint dynamics are not claimed safe.
+- deployment remains gated under Stage37/teacher safety floor; raw full-row neural blends and ungated endpoint dynamics are not claimed safe.
 
 ## What This Does Not Claim
 
@@ -47,4 +52,4 @@
 
 ## Current Best Deployable Answer
 
-M3W-Neural v1 is frozen as the first Stage41 gate-passing protected neural candidate. It should be treated as a candidate pending user acceptance and broader protocol replication; Stage37 remains the explicit safety floor.
+M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, and pure-UCY source-heldout support, but it remains a candidate pending final package acceptance and stricter pure UCY-only retrain/select/test evidence. Stage37 remains the explicit safety floor.
