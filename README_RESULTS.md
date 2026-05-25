@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## 中文详细目标总结
+
+Latest Chinese detailed summary of the M3W goal:
+
+`/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
+
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled.
+
 ## M3W-Neural v1 Goal Summary
 
 Latest detailed goal-level summary:
