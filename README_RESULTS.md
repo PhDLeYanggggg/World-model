@@ -1210,6 +1210,14 @@ source_level_validation_repair_overall_easy = 0.0
 source_level_validation_repair_positive_sources = 3
 pure_ucy_source_level_gate = false
 ucy_family_surrogate_gate = true
+bounded_neural_blend_deployable = false
+bounded_neural_blend_all = 0.183054549856548
+bounded_neural_blend_t50 = 0.17556642701259895
+bounded_neural_blend_t100_raw_frame_diagnostic = 0.1988123052757771
+bounded_neural_blend_hard = 0.1934724604647473
+bounded_neural_blend_easy = 0.2070880438160938
+bounded_neural_blend_alpha_mean = 0.2999999999999999
+bounded_neural_blend_failure_reason = easy_degradation_too_high_despite_positive_all_t50_hard
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1271,6 +1279,26 @@ smc_enabled = false
 ```
 
 Interpretation: the frozen teacher-guided neural candidate is positive on held-out source files and on a UCY-family surrogate, but pure UCY source-level validation remains blocked because the available split has no independent UCY validation source after excluding duplicate-like zara03. This supports candidate status, not final foundation or true-3D claims.
+
+## Stage41 Bounded Neural Blend Dynamics
+
+Fresh bounded blend evaluation tested whether a continuous neural dynamics head `floor + alpha * (neural - floor)` can contribute without binary full replacement.
+
+```text
+source = fresh_run
+selected_policy = global alpha 0.3
+deployable = false
+all_improvement = 0.183054549856548
+t50_improvement = 0.17556642701259895
+t100_raw_frame_diagnostic = 0.1988123052757771
+hard_failure_improvement = 0.1934724604647473
+easy_degradation = 0.2070880438160938
+collision_delta_vs_floor_005 = 0.007905645841740305
+stage5c_executed = false
+smc_enabled = false
+```
+
+Interpretation: the continuous neural dynamics signal is real on all/t50/t100/hard, but the easy-case harm is far beyond the <=2% safety gate. This is not deployable. It also shows the current train/val easy stress is not representative enough for non-fallback continuous neural dynamics.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 
