@@ -1022,11 +1022,19 @@ all_agent_locked_v2_easy = 0.0
 all_agent_locked_v2_stage37_margin_pass = True
 all_agent_locked_v2_stress_pass = True
 all_agent_locked_v2_fresh_confirmation_pass = False
+fresh_all_agent_endpoint_best = fresh_all_agent_endpoint_ensemble
+fresh_all_agent_endpoint_all = 0.26231894385271437
+fresh_all_agent_endpoint_t50 = 0.2754049021317291
+fresh_all_agent_endpoint_t100_diagnostic = 0.3011547102800356
+fresh_all_agent_endpoint_hard = 0.2850203073377977
+fresh_all_agent_endpoint_easy = 0.0
+fresh_all_agent_endpoint_positive_domains = 2
+fresh_all_agent_endpoint_deployment = fresh_all_agent_endpoint_candidate_needs_independent_acceptance
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: independently confirm or falsify the locked-v2 all-agent candidate on a fresh external protocol; current endpoint-level M3W-Neural v1 remains the best protected deployable candidate until that confirmation exists.
+Next target: upgrade the fresh all-agent endpoint specialist into full trajectory/occupancy/interaction world-state dynamics; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

@@ -50,6 +50,7 @@ def build_completion_audit() -> dict[str, Any]:
     all_agent_t50 = read_json("outputs/stage41_breakthrough/stage41_all_agent_t50_specialist.json", {})
     all_agent_composer = read_json("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json", {})
     all_agent_locked = read_json("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json", {})
+    fresh_all_agent = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -75,6 +76,12 @@ def build_completion_audit() -> dict[str, Any]:
     )
     locked_metrics = all_agent_locked.get("split_results", {}).get("test", {}).get("metrics", {})
     locked_strong_candidate = bool(all_agent_locked.get("stage37_margin_pass")) and bool(all_agent_locked.get("stress_pass"))
+    fresh_all_agent_metrics = fresh_all_agent.get("best_metrics", {})
+    fresh_all_agent_pass = bool(
+        fresh_all_agent.get("neural_exceeds_stage37_by_gate_margin")
+        and fresh_all_agent.get("positive_external_domains", 0) >= 2
+        and fresh_all_agent_metrics.get("easy_degradation", 1.0) <= 0.02
+    )
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -114,9 +121,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate),
-            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, and outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json",
-            "note": "Risk-cap repair made all-agent all/hard/t100 positive. The t50 specialist made all-agent t50 positive across ETH_UCY/TrajNet/UCY with easy preserved. The composer tests whether those coexist on the locked split. The stratified locked-v2 fixed-policy audit is stronger and passes Stage37-margin/stress checks, but its own fresh_confirmation_pass remains false, so full all-agent deployment is not complete.",
+            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass),
+            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, and outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json",
+            "note": "Fresh source-rotation all-agent endpoint specialist now exceeds Stage37 margins on all/t50/t100/hard with easy preserved and two positive external domains. It is still endpoint-level future-state, not a full trajectory-latent world-state rollout, so the full objective remains not complete.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -185,10 +192,21 @@ def build_completion_audit() -> dict[str, Any]:
             "easy_degradation": locked_metrics.get("easy_degradation"),
             "max_domain_easy_degradation": all_agent_locked.get("max_domain_easy_degradation"),
         },
+        "fresh_all_agent_endpoint_specialist_summary": {
+            "deployment_decision": fresh_all_agent.get("deployment_decision"),
+            "best_name": fresh_all_agent.get("best_name"),
+            "all_improvement": fresh_all_agent_metrics.get("all_improvement"),
+            "t50_improvement": fresh_all_agent_metrics.get("t50_improvement"),
+            "t100_improvement": fresh_all_agent_metrics.get("t100_improvement"),
+            "hard_failure_improvement": fresh_all_agent_metrics.get("hard_failure_improvement"),
+            "easy_degradation": fresh_all_agent_metrics.get("easy_degradation"),
+            "positive_external_domains": fresh_all_agent.get("positive_external_domains"),
+            "neural_exceeds_stage37_by_gate_margin": fresh_all_agent.get("neural_exceeds_stage37_by_gate_margin"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Train all-agent t50-specific endpoint model with domain/horizon-balanced validation rather than generic all-agent endpoint head.",
-            "Promote or reject locked-v2 all-agent candidate through independent fresh external confirmation; do not deploy it solely from this fixed-policy audit.",
+            "Extend the fresh all-agent endpoint specialist from endpoint-only future-state to full trajectory/occupancy/interaction latent heads.",
             "Add explicit per-neighbor future-interaction labels and multi-agent occupancy/physical-validity probes.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -254,9 +272,20 @@ def build_completion_audit() -> dict[str, Any]:
             f"- hard/failure improvement: `{locked_metrics.get('hard_failure_improvement')}`",
             f"- easy degradation: `{locked_metrics.get('easy_degradation')}`",
             "",
+            "## Fresh Source-Rotation All-Agent Endpoint Specialist",
+            "",
+            f"- deployment_decision: `{fresh_all_agent.get('deployment_decision')}`",
+            f"- best name: `{fresh_all_agent.get('best_name')}`",
+            f"- all improvement: `{fresh_all_agent_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{fresh_all_agent_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{fresh_all_agent_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{fresh_all_agent_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{fresh_all_agent_metrics.get('easy_degradation')}`",
+            f"- positive external domains: `{fresh_all_agent.get('positive_external_domains')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate, but the full active objective is not complete because all-agent future world-state dynamics are still candidate-level. The locked-v2 fixed-policy audit is the strongest all-agent signal so far, but it explicitly requires independent fresh external confirmation before it can replace the endpoint-level protected candidate.",
+            "M3W-Neural v1 is a strong protected endpoint-dynamics candidate. The fresh source-rotation all-agent endpoint specialist is now the strongest all-agent neural signal, but the full active objective is not complete because it remains endpoint-level future-state rather than full trajectory-latent world-state dynamics.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -269,6 +298,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     t50_summary = audit.get("all_agent_t50_specialist_summary", {})
     composer_summary = audit.get("all_agent_policy_composer_summary", {})
     locked_summary = audit.get("all_agent_locked_v2_confirmation_summary", {})
+    fresh_all_agent_summary = audit.get("fresh_all_agent_endpoint_specialist_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -305,11 +335,19 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"all_agent_locked_v2_stage37_margin_pass = {locked_summary.get('stage37_margin_pass')}",
             f"all_agent_locked_v2_stress_pass = {locked_summary.get('stress_pass')}",
             f"all_agent_locked_v2_fresh_confirmation_pass = {locked_summary.get('fresh_confirmation_pass')}",
+            f"fresh_all_agent_endpoint_best = {fresh_all_agent_summary.get('best_name')}",
+            f"fresh_all_agent_endpoint_all = {fresh_all_agent_summary.get('all_improvement')}",
+            f"fresh_all_agent_endpoint_t50 = {fresh_all_agent_summary.get('t50_improvement')}",
+            f"fresh_all_agent_endpoint_t100_diagnostic = {fresh_all_agent_summary.get('t100_improvement')}",
+            f"fresh_all_agent_endpoint_hard = {fresh_all_agent_summary.get('hard_failure_improvement')}",
+            f"fresh_all_agent_endpoint_easy = {fresh_all_agent_summary.get('easy_degradation')}",
+            f"fresh_all_agent_endpoint_positive_domains = {fresh_all_agent_summary.get('positive_external_domains')}",
+            f"fresh_all_agent_endpoint_deployment = {fresh_all_agent_summary.get('deployment_decision')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: independently confirm or falsify the locked-v2 all-agent candidate on a fresh external protocol; current endpoint-level M3W-Neural v1 remains the best protected deployable candidate until that confirmation exists.",
+            "Next target: upgrade the fresh all-agent endpoint specialist into full trajectory/occupancy/interaction world-state dynamics; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -320,6 +358,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_breakthrough/stage41_all_agent_policy_composer.json")
     generated.add("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.md")
     generated.add("outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json")
     state["generated_reports"] = sorted(generated)
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
@@ -329,6 +369,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "all_agent_t50_specialist_summary": t50_summary,
         "all_agent_policy_composer_summary": composer_summary,
         "all_agent_locked_v2_confirmation_summary": locked_summary,
+        "fresh_all_agent_endpoint_specialist_summary": fresh_all_agent_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }
