@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (213 passed in 60.42s); .venv-pytorch/bin/python run_stage41_domain_local_full_trajectory_repair.py",
+  "last_successful_command": "python3 -m pytest tests (215 passed in 59.77s); .venv-pytorch/bin/python run_stage41_endpoint_to_full_trajectory_repair.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -467,7 +467,8 @@
     "outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.md",
     "outputs/stage41_stratified_protocol/stage41_stratified_dataset.md",
     "outputs/stage41_stratified_protocol/stage41_stratified_protocol.md",
-    "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_repair.md"
+    "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_repair.md",
+    "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -9851,7 +9852,7 @@
       "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor; Stage41 full-waypoint repair is one-domain-positive only and not the deployable replacement.",
+  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint-to-full bridge evidence; bridge is candidate evidence, not a learned shape-dynamics replacement.",
   "last_updated": "2026-05-25T00:00:00Z",
   "stage5c_ready": false,
   "true_3d_world_model": false,
@@ -10626,7 +10627,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 full-waypoint repair produced one positive TrajNet t50-only neural dynamics slice, but ETH_UCY still fails and two-domain neural world-dynamics gate remains false.",
+  "latest_evidence": "Stage41 endpoint-to-full bridge produced two-domain positive endpoint neural dynamics scored against reconstructed actual waypoint labels; it is not learned full-waypoint shape dynamics.",
   "stage41_domain_local_full_trajectory_repair": {
     "two_domain_repair_gate": false,
     "positive_domains": [
@@ -10694,6 +10695,65 @@
       "learned_full_waypoint_neural_dynamics": true,
       "endpoint_linearized_repair_if_selected": true,
       "all_active_agent_world_state_audit": true,
+      "latent_generative_rollout": false,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false
+    }
+  },
+  "stage41_endpoint_to_full_trajectory_bridge": {
+    "two_domain_endpoint_to_full_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "positive_domain_count": 2,
+    "domain_summaries": {
+      "ETH_UCY": {
+        "endpoint_to_full_trajectory_gate": true,
+        "variant": "all_horizons",
+        "min_sep": 0.05,
+        "all_improvement": 0.01569515982437708,
+        "t50_improvement": 0.001900902571733143,
+        "t100_improvement": 0.004314304188029139,
+        "hard_failure_improvement": 0.015473286009687448,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.15445874618020186,
+        "multi_agent_all_improvement": 0.015862045506379263,
+        "multi_agent_t50_improvement": 0.0019217524294212751,
+        "collision_delta_vs_floor_005": -0.0014959945951163456
+      },
+      "TrajNet": {
+        "endpoint_to_full_trajectory_gate": true,
+        "variant": "all_horizons",
+        "min_sep": 0.05,
+        "all_improvement": 0.038025206221747654,
+        "t50_improvement": 0.02647590218373508,
+        "t100_improvement": 0.013800550192567762,
+        "hard_failure_improvement": 0.03906048059123168,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.16460566089585052,
+        "multi_agent_all_improvement": 0.04040289734721991,
+        "multi_agent_t50_improvement": 0.02929173995488621,
+        "collision_delta_vs_floor_005": -0.0029078220412910305
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "future_waypoints_input": false,
+      "future_waypoints_label_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "val_selected_policy": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "claim_boundary": {
+      "endpoint_neural_dynamics": true,
+      "linear_waypoint_bridge": true,
+      "learned_full_waypoint_shape": false,
       "latent_generative_rollout": false,
       "metric_or_seconds_claim": false,
       "true_3d": false,

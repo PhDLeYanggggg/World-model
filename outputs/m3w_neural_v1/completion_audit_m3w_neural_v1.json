@@ -4181,9 +4181,9 @@
     }
   ],
   "next_highest_value_actions": [
-    "Repair ETH_UCY full-waypoint t50/easy failure with domain-specific t50 labels and easy-risk calibration.",
-    "Promote TrajNet t50-only full-waypoint repair to multiseed/bootstrap confirmation before any deployment claim.",
-    "Keep Stage5C/SMC disabled; current deployable remains protected composite-tail/Stage37-floor route."
+    "Train a learned waypoint-shape model to match or exceed the endpoint-to-full linear bridge on ETH_UCY and TrajNet.",
+    "Bootstrap or multiseed-confirm the endpoint-to-full bridge before promoting it beyond candidate evidence.",
+    "Keep Stage5C/SMC disabled and keep metric/seconds/true-3D/foundation claims false."
   ],
   "domain_local_full_trajectory_repair_summary": {
     "two_domain_repair_gate": false,
@@ -4258,5 +4258,65 @@
       "foundation_world_model": false
     }
   },
-  "latest_repair_status": "domain_local_full_trajectory_repair_one_domain_positive_two_domain_false"
+  "latest_repair_status": "domain_local_full_trajectory_repair_one_domain_positive_two_domain_false",
+  "endpoint_to_full_trajectory_bridge_summary": {
+    "two_domain_endpoint_to_full_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "positive_domain_count": 2,
+    "domain_summaries": {
+      "ETH_UCY": {
+        "endpoint_to_full_trajectory_gate": true,
+        "variant": "all_horizons",
+        "min_sep": 0.05,
+        "all_improvement": 0.01569515982437708,
+        "t50_improvement": 0.001900902571733143,
+        "t100_improvement": 0.004314304188029139,
+        "hard_failure_improvement": 0.015473286009687448,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.15445874618020186,
+        "multi_agent_all_improvement": 0.015862045506379263,
+        "multi_agent_t50_improvement": 0.0019217524294212751,
+        "collision_delta_vs_floor_005": -0.0014959945951163456
+      },
+      "TrajNet": {
+        "endpoint_to_full_trajectory_gate": true,
+        "variant": "all_horizons",
+        "min_sep": 0.05,
+        "all_improvement": 0.038025206221747654,
+        "t50_improvement": 0.02647590218373508,
+        "t100_improvement": 0.013800550192567762,
+        "hard_failure_improvement": 0.03906048059123168,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.16460566089585052,
+        "multi_agent_all_improvement": 0.04040289734721991,
+        "multi_agent_t50_improvement": 0.02929173995488621,
+        "collision_delta_vs_floor_005": -0.0029078220412910305
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "future_waypoints_input": false,
+      "future_waypoints_label_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "val_selected_policy": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "claim_boundary": {
+      "endpoint_neural_dynamics": true,
+      "linear_waypoint_bridge": true,
+      "learned_full_waypoint_shape": false,
+      "latent_generative_rollout": false,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false
+    }
+  },
+  "latest_bridge_status": "two_domain_positive_endpoint_neural_to_actual_waypoint_bridge_not_learned_shape"
 }

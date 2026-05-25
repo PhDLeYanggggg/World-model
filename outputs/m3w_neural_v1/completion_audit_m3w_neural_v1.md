@@ -363,6 +363,9 @@
 - learned full-waypoint repair two-domain gate: `False`
 - learned full-waypoint repair positive domains: `['TrajNet']`
 - learned full-waypoint repair summary: `TrajNet t50-only gain-calibrated raw-waypoint policy passed one-domain repair with all=0.00277, t50=0.01093, hard=0.00311, easy=0.00396, collision_delta=-0.00046. ETH_UCY remained failed with t50=0.0 and easy=0.03042. This is a useful neural dynamics slice but not a two-domain deployable neural world model.`
+- endpoint-to-full trajectory bridge gate: `True`
+- endpoint-to-full positive domains: `['ETH_UCY', 'TrajNet']`
+- endpoint-to-full summary: `Endpoint neural dynamics projected through a linear waypoint bridge were scored against reconstructed actual waypoint labels. ETH_UCY all/t50/t100/hard/easy/collision = 0.01570 / 0.00190 / 0.00431 / 0.01547 / 0.0 / -0.00150. TrajNet all/t50/t100/hard/easy/collision = 0.03803 / 0.02648 / 0.01380 / 0.03906 / 0.0 / -0.00291. This is two-domain positive endpoint dynamics evidence, but still not learned full-waypoint shape dynamics.`
 
 ## Neural Group Consistency Distiller
 

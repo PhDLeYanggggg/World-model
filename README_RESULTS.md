@@ -1437,3 +1437,28 @@ pytest = 213 passed in 60.42s
 ```
 
 Conclusion: the repair produced one deployable full-waypoint neural dynamics slice on TrajNet t50, but ETH_UCY still fails t50/easy and the two-domain neural world-dynamics gate remains false. Current best deployable remains the protected composite-tail/Stage37-floor route; Stage5C and SMC stay disabled.
+
+## Stage41 Endpoint-To-Full-Trajectory Bridge
+
+To test whether endpoint neural dynamics could repair the ETH_UCY full-waypoint t50 blocker, the domain-local endpoint model was projected into linear waypoint rollouts and scored against reconstructed actual future waypoint labels. The policy and proximity guard were selected on validation only; test was evaluated once. This is endpoint neural dynamics with a linear waypoint bridge, not learned full-waypoint shape dynamics, not metric/seconds-level, and not Stage5C/SMC.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_endpoint_to_full_gate = True
+ETH_UCY_all = 0.01569515982437708
+ETH_UCY_t50 = 0.001900902571733143
+ETH_UCY_t100 = 0.004314304188029139
+ETH_UCY_hard = 0.015473286009687448
+ETH_UCY_easy = 0.0
+ETH_UCY_collision_delta_005 = -0.0014959945951163456
+TrajNet_all = 0.038025206221747654
+TrajNet_t50 = 0.02647590218373508
+TrajNet_t100 = 0.013800550192567762
+TrajNet_hard = 0.03906048059123168
+TrajNet_easy = 0.0
+TrajNet_collision_delta_005 = -0.0029078220412910305
+pytest = 215 passed in 59.77s
+```
+
+Conclusion: this is the first Stage41 domain-local bridge evidence where endpoint neural dynamics remain positive when evaluated as full future waypoint rollouts on two external domains. It strengthens the neural world-state case but still does not prove learned full-waypoint shape dynamics; the next step is to train a waypoint-shape model to match or exceed this bridge.
