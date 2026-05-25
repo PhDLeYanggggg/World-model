@@ -2040,3 +2040,22 @@ smc_enabled = false
 Stage42-I connects causal sequence history to actual reconstructed full-waypoint ADE/FDE labels. It remains a protected dataset-local raw-frame 2.5D dynamics experiment, not metric/seconds-level prediction and not Stage5C/SMC.
 
 The honest interpretation is partial/failure, not deployment success: the full static+sequence waypoint head is ADE-negative, while `sequence_waypoint_no_static_context` is positive on ADE all/t50/hard (`0.0115`, `0.0199`, `0.0129`) and FDE t50 (`0.0611`) with easy degradation `0.0`. Next repair target is static-gated/static-dropout sequence-to-waypoint dynamics.
+
+## Stage42-J Static-Gated Full-Waypoint Repair
+
+```text
+source = cached_verified_checkpoints_fresh_static_gate_eval
+verdict = stage42_j_static_gated_full_waypoint_pass
+gates = 10 / 10
+static_gated_ade_all = 0.036222114075724364
+static_gated_ade_t50 = 0.036875348395170704
+static_gated_ade_hard_failure = 0.03970549853881511
+static_gated_ade_easy_degradation = 0.0
+static_gated_fde_t50 = 0.11663789673246368
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-J uses cached-verified Stage42-I no-static/full-static checkpoints and performs a fresh validation-selected static expert gate. It tests whether static/context should be allowed per domain/horizon rather than forced globally. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+Static-gated interpretation: Stage42-J repairs the Stage42-I failure mode at policy level. It is not a new checkpoint training run, so the source is explicitly `cached_verified_checkpoints_fresh_static_gate_eval`. The next stronger evidence step is a fresh static-gated/static-dropout checkpoint trained with this rule baked into the model.

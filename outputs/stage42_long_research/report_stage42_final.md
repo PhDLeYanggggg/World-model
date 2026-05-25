@@ -71,3 +71,14 @@ The strongest raw sequence variant without the safe switch has better family-FDE
 Stage42-I connected the Stage42-H causal sequence encoder to reconstructed full-waypoint ADE/FDE labels. It trained four variants across three seeds each: full, no-history, no-neighbor, and no-static-context. The result is useful but not a pass for the full model: `sequence_waypoint_full` has negative protected ADE all/t50/hard (`-0.0106`, `-0.0321`, `-0.0116`) while preserving easy cases. History contribution is measurable but small on full-waypoint ADE/FDE (`t50 ADE delta = 0.0040`, `t50 FDE delta = 0.0094`).
 
 The important positive signal is diagnostic: `sequence_waypoint_no_static_context` is positive on ADE all/t50/hard (`0.0115`, `0.0199`, `0.0129`) and FDE t50 (`0.0611`) with easy degradation `0.0`. This suggests the next full-waypoint repair should keep causal sequence history but add static/context gating or static dropout rather than mixing all static/context features unconditionally. Stage42-I therefore reduces the full-waypoint gap, but it does not make the full sequence-to-waypoint model deployable yet.
+
+## Stage42-J Addendum
+
+- source: `cached_verified_checkpoints_fresh_static_gate_eval`
+- report: `outputs/stage42_long_research/static_gated_full_waypoint_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_j_gate.md`
+- verdict: `stage42_j_static_gated_full_waypoint_pass`
+
+Stage42-J repairs the Stage42-I static/context failure mode by using cached-verified Stage42-I full/no-static checkpoints as experts and selecting static mix weights on validation by domain/horizon. Test is evaluated once. The static-gated policy is positive on full-waypoint ADE all/t50/hard (`0.0362`, `0.0369`, `0.0397`), t+100 raw-frame diagnostic ADE (`0.0267`), FDE all/t50 (`0.0633`, `0.1166`), and preserves easy cases (`0.0` degradation).
+
+This strengthens the full-waypoint world-state evidence: the problem was not simply that static context is useless; the problem was forcing static/context globally. Partial static experts (`alpha=0.25` and `0.50`) are useful when validation says they are safe, while full static remains harmful. The boundary remains important: Stage42-J is a fresh gate/eval over cached Stage42-I checkpoints, not a fresh checkpoint training run, and all claims remain dataset-local raw-frame 2.5D.
