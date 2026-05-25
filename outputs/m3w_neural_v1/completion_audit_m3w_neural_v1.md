@@ -366,6 +366,9 @@
 - endpoint-to-full trajectory bridge gate: `True`
 - endpoint-to-full positive domains: `['ETH_UCY', 'TrajNet']`
 - endpoint-to-full summary: `Endpoint neural dynamics projected through a linear waypoint bridge were scored against reconstructed actual waypoint labels. ETH_UCY all/t50/t100/hard/easy/collision = 0.01570 / 0.00190 / 0.00431 / 0.01547 / 0.0 / -0.00150. TrajNet all/t50/t100/hard/easy/collision = 0.03803 / 0.02648 / 0.01380 / 0.03906 / 0.0 / -0.00291. This is two-domain positive endpoint dynamics evidence, but still not learned full-waypoint shape dynamics.`
+- learned waypoint-shape bridge gate: `True`
+- learned waypoint-shape positive domains: `['ETH_UCY', 'TrajNet']`
+- learned waypoint-shape summary: `A past-only waypoint-shape residual head was trained around the endpoint neural bridge and selected on validation. ETH_UCY all/t50/t100/hard/easy/collision = 0.01570 / 0.00190 / 0.00433 / 0.01548 / 0.0 / -0.00150 with shape gain all/t50/t100/hard = 0.000005 / 0.0 / 0.000014 / 0.000005 and a tiny 0.0046% shape-switch rate. TrajNet all/t50/t100/hard/easy/collision = 0.03824 / 0.02648 / 0.01451 / 0.03930 / 0.0 / -0.00291 with shape gain all/t50/t100/hard = 0.000226 / 0.0 / 0.000718 / 0.000248 and 0.1099% shape-switch rate. This is a protected, tiny, mostly t100/tail learned-shape contribution, not an ungated full-waypoint dynamics replacement.`
 
 ## Neural Group Consistency Distiller
 

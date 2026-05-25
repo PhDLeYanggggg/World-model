@@ -105,7 +105,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (215 passed in 59.77s); .venv-pytorch/bin/python run_stage41_endpoint_to_full_trajectory_repair.py",
+  "last_successful_command": "python3 -m pytest tests (217 passed in 59.65s); .venv-pytorch/bin/python run_stage41_learned_waypoint_shape_bridge.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -468,7 +468,8 @@
     "outputs/stage41_stratified_protocol/stage41_stratified_dataset.md",
     "outputs/stage41_stratified_protocol/stage41_stratified_protocol.md",
     "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_repair.md",
-    "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.md"
+    "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.md",
+    "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -9852,7 +9853,7 @@
       "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint-to-full bridge evidence; bridge is candidate evidence, not a learned shape-dynamics replacement.",
+  "current_best_deployable": "M3W-Neural v1 protected composite-tail safe-switch route plus endpoint-to-full bridge and tiny learned waypoint-shape tail residual evidence; still protected 2.5D, not a learned ungated full-waypoint replacement.",
   "last_updated": "2026-05-25T00:00:00Z",
   "stage5c_ready": false,
   "true_3d_world_model": false,
@@ -10423,7 +10424,72 @@
       "keep_jepa_for_diagnostic_research": true
     },
     "stage5c_executed": false,
-    "smc_enabled": false
+    "smc_enabled": false,
+    "learned_waypoint_shape_bridge_summary": {
+      "source": "fresh_run",
+      "report": "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
+      "two_domain_learned_shape_gate": true,
+      "positive_domains": [
+        "ETH_UCY",
+        "TrajNet"
+      ],
+      "claim_boundary": {
+        "endpoint_neural_dynamics": true,
+        "learned_waypoint_shape_residual": true,
+        "stage37_or_floor_protected": true,
+        "latent_generative_rollout": false,
+        "metric_or_seconds_claim": false,
+        "true_3d": false,
+        "foundation_world_model": false
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_endpoint_label_eval_only": true,
+        "future_waypoints_input": false,
+        "future_waypoints_label_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "val_selected_policy": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "domain_summary": {
+        "ETH_UCY": {
+          "gate": true,
+          "all_improvement": 0.015700181822596138,
+          "t50_improvement": 0.001900902571733143,
+          "t100_improvement": 0.004328710539971414,
+          "hard_failure_improvement": 0.015478633818655996,
+          "easy_degradation": 0.0,
+          "shape_gain_vs_bridge_all": 5.1020761192566155e-06,
+          "shape_gain_vs_bridge_t50": 0.0,
+          "shape_gain_vs_bridge_t100": 1.4468774637288462e-05,
+          "shape_gain_vs_bridge_hard_failure": 5.43185765555787e-06,
+          "shape_switch_rate": 4.630058338735068e-05,
+          "collision_delta_vs_floor_005": -0.0014959945951163456,
+          "selected_mode": "all_waypoints",
+          "selected_horizons": "t100_only"
+        },
+        "TrajNet": {
+          "gate": true,
+          "all_improvement": 0.0382424875667583,
+          "t50_improvement": 0.02647590218373508,
+          "t100_improvement": 0.014508831312789572,
+          "hard_failure_improvement": 0.039298907023759044,
+          "easy_degradation": 0.0,
+          "shape_gain_vs_bridge_all": 0.00022587010222718806,
+          "shape_gain_vs_bridge_t50": 0.0,
+          "shape_gain_vs_bridge_t100": 0.0007181925728715344,
+          "shape_gain_vs_bridge_hard_failure": 0.0002481180425111251,
+          "shape_switch_rate": 0.0010992030777686177,
+          "collision_delta_vs_floor_005": -0.0029078220412910305,
+          "selected_mode": "intermediate_only",
+          "selected_horizons": "t100_only"
+        }
+      },
+      "interpretation": "Past-only waypoint-shape residual head passes a protected two-domain gate, but the learned-shape contribution is tiny and mostly t100/tail-specific; it is not an ungated learned full-waypoint dynamics replacement."
+    }
   },
   "m3w_neural_v1_current_candidate": {
     "source": "fresh_run",
@@ -10627,7 +10693,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "latest_evidence": "Stage41 endpoint-to-full bridge produced two-domain positive endpoint neural dynamics scored against reconstructed actual waypoint labels; it is not learned full-waypoint shape dynamics.",
+  "latest_evidence": "Stage41 learned waypoint-shape bridge passed a protected two-domain gate, but the learned shape contribution is tiny and mostly t100/tail-specific; endpoint bridge and Stage37/floor safety remain required.",
   "stage41_domain_local_full_trajectory_repair": {
     "two_domain_repair_gate": false,
     "positive_domains": [
@@ -10759,5 +10825,73 @@
       "true_3d": false,
       "foundation_world_model": false
     }
-  }
+  },
+  "stage41_learned_waypoint_shape_bridge": {
+    "source": "fresh_run",
+    "report": "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
+    "two_domain_learned_shape_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "claim_boundary": {
+      "endpoint_neural_dynamics": true,
+      "learned_waypoint_shape_residual": true,
+      "stage37_or_floor_protected": true,
+      "latent_generative_rollout": false,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "future_waypoints_input": false,
+      "future_waypoints_label_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "val_selected_policy": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "domain_summary": {
+      "ETH_UCY": {
+        "gate": true,
+        "all_improvement": 0.015700181822596138,
+        "t50_improvement": 0.001900902571733143,
+        "t100_improvement": 0.004328710539971414,
+        "hard_failure_improvement": 0.015478633818655996,
+        "easy_degradation": 0.0,
+        "shape_gain_vs_bridge_all": 5.1020761192566155e-06,
+        "shape_gain_vs_bridge_t50": 0.0,
+        "shape_gain_vs_bridge_t100": 1.4468774637288462e-05,
+        "shape_gain_vs_bridge_hard_failure": 5.43185765555787e-06,
+        "shape_switch_rate": 4.630058338735068e-05,
+        "collision_delta_vs_floor_005": -0.0014959945951163456,
+        "selected_mode": "all_waypoints",
+        "selected_horizons": "t100_only"
+      },
+      "TrajNet": {
+        "gate": true,
+        "all_improvement": 0.0382424875667583,
+        "t50_improvement": 0.02647590218373508,
+        "t100_improvement": 0.014508831312789572,
+        "hard_failure_improvement": 0.039298907023759044,
+        "easy_degradation": 0.0,
+        "shape_gain_vs_bridge_all": 0.00022587010222718806,
+        "shape_gain_vs_bridge_t50": 0.0,
+        "shape_gain_vs_bridge_t100": 0.0007181925728715344,
+        "shape_gain_vs_bridge_hard_failure": 0.0002481180425111251,
+        "shape_switch_rate": 0.0010992030777686177,
+        "collision_delta_vs_floor_005": -0.0029078220412910305,
+        "selected_mode": "intermediate_only",
+        "selected_horizons": "t100_only"
+      }
+    },
+    "interpretation": "Past-only waypoint-shape residual head passes a protected two-domain gate, but the learned-shape contribution is tiny and mostly t100/tail-specific; it is not an ungated learned full-waypoint dynamics replacement."
+  },
+  "true_3d_claim": false,
+  "foundation_world_model_claim": false,
+  "metric_or_seconds_claim": false
 }

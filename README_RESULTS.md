@@ -1462,3 +1462,32 @@ pytest = 215 passed in 59.77s
 ```
 
 Conclusion: this is the first Stage41 domain-local bridge evidence where endpoint neural dynamics remain positive when evaluated as full future waypoint rollouts on two external domains. It strengthens the neural world-state case but still does not prove learned full-waypoint shape dynamics; the next step is to train a waypoint-shape model to match or exceed this bridge.
+
+## Stage41 Learned Waypoint-Shape Bridge
+
+After the endpoint-to-full linear bridge passed two external domains, a fresh learned waypoint-shape residual head was trained from past-only features and future waypoint labels. The residual head predicts shape corrections around the endpoint neural bridge; policy thresholds are validation-selected, test is evaluated once, and the deployment remains protected by the endpoint bridge/floor fallback. This is still dataset-local raw-frame 2.5D evidence, not metric/seconds-level, not true 3D, and not Stage5C/SMC.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_learned_shape_gate = True
+ETH_UCY_all = 0.015700181822596138
+ETH_UCY_t50 = 0.001900902571733143
+ETH_UCY_t100 = 0.004328710539971414
+ETH_UCY_hard = 0.015478633818655996
+ETH_UCY_easy = 0.0
+ETH_UCY_shape_gain_all_t50_t100_hard = 0.0000051020761192566155 / 0.0 / 0.000014468774637288462 / 0.00000543185765555787
+ETH_UCY_shape_switch_rate = 0.00004630058338735068
+ETH_UCY_collision_delta_005 = -0.0014959945951163456
+TrajNet_all = 0.0382424875667583
+TrajNet_t50 = 0.02647590218373508
+TrajNet_t100 = 0.014508831312789572
+TrajNet_hard = 0.039298907023759044
+TrajNet_easy = 0.0
+TrajNet_shape_gain_all_t50_t100_hard = 0.00022587010222718806 / 0.0 / 0.0007181925728715344 / 0.0002481180425111251
+TrajNet_shape_switch_rate = 0.0010992030777686177
+TrajNet_collision_delta_005 = -0.0029078220412910305
+pytest = 217 passed in 60.50s
+```
+
+Conclusion: the learned shape head now passes a two-domain protected gate, but the actual learned-shape contribution is tiny and mostly t100/tail-specific. This is positive evidence that a learned waypoint-shape residual can be safely layered on top of the endpoint bridge, not proof of a large ungated full-waypoint neural dynamics breakthrough. Current claims remain protected 2.5D world-state evidence; Stage5C and SMC stay disabled.
