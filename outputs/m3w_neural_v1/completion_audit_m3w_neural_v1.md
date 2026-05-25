@@ -25,6 +25,8 @@
 | UCY repair internal fold/temporal validation | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json | UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source. |
 | grouped all-agent rollout consistency under repaired policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json | Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC. |
 | joint latent all-agent rollout prototype trained and audited | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json | The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only. |
+| baseline-relative bounded residual rollout repair attempted | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json | Residual clipping reduces raw neural damage versus direct joint latent rollout, but the selected test policy is still all/t50/hard negative and not deployable. |
+| domain/horizon residual policy repair attempted after global residual gate failed | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json | Validation-only domain/horizon slicing reduces switch rate and protects easy cases, but t50 remains zero and all/hard are not reliably positive, so it is not deployable. |
 | neural group-consistency head improves joint-safe fixed proximity guard | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json | Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation. |
 | group-consistency distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json | Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head. |
 | group-consistency distiller multi-seed replication with joint-safety buffer | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json and outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json | The first three-seed run had stable positive FDE gains but one seed exceeded the near-proximity delta threshold. A validation-selected safety-buffer repair passes all three seeds with positive all/t50/t100/hard, easy=0, and max collision delta below the joint-safety ceiling. |
@@ -239,6 +241,29 @@
 - all/t50/hard delta vs current group deployable: `-0.139879916889688` / `-0.12149802173622119` / `-0.14504228036236014`
 - interaction/occupancy/future-close AUROC: `0.9778962684138552` / `0.9533724454671079` / `0.9718721574984199`
 
+## Joint Residual Rollout Repair
+
+- selected trial: `joint_residual_clip050_safe`
+- deployable: `False`
+- improves current deployable: `False`
+- selected policy: `{'type': 'joint_residual_rollout_val_selected', 'gain_min': 0.4314935505390167, 'harm_max': 8.21683497633785e-05, 'uncertainty_max': 8.21683497633785e-05, 'traj_risk_max': -0.0068512409925460815, 'physical_min': 0.35, 'future_close_max': 0.85, 'val_eligible': True}`
+- all/t50/t100: `-0.006199871934993384` / `-0.01622586160854622` / `-0.0055173545259843415`
+- hard/failure improvement: `-0.0070840559248055435`
+- easy degradation: `0.013581362841401212`
+- raw neural all/t50/hard/easy: `-0.3187259758636325` / `-0.4973167857250549` / `-0.27481595341262954` / `3.0795776161376986`
+- all/t50/hard delta vs current group deployable: `-0.1460797888246814` / `-0.13772388334476743` / `-0.15212633628716568`
+- interaction/occupancy/future-close AUROC: `0.9656852889954971` / `0.9383229818070397` / `0.9677306100575066`
+
+## Joint Residual Domain-Horizon Policy Repair
+
+- selected trial: `joint_residual_clip100_balanced`
+- deployable: `False`
+- all/t50/t100: `-0.0006363835790781369` / `0.0` / `-0.0005775775254206472`
+- hard/failure improvement: `-0.0005725919532908463`
+- easy degradation: `0.00111839385467416`
+- switch rate: `0.0020530182970753493`
+- collision delta @0.05 normalized: `0.0008621005906305768`
+
 ## Neural Group Consistency Distiller
 
 - deployable: `True`
@@ -257,4 +282,4 @@
 
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. A fresh joint latent group-token rollout prototype was trained next; it learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because fully deployable joint latent all-agent rollout and source-level independent UCY validation remain unavailable, and Stage5C/SMC stay disabled.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. A fresh joint latent group-token rollout prototype was trained next; it learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced the raw neural damage but still failed all/t50/hard gates and is also not deployable. A domain/horizon residual policy repair further reduced easy harm and switch rate but still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because fully deployable joint latent all-agent rollout and source-level independent UCY validation remain unavailable, and Stage5C/SMC stay disabled.

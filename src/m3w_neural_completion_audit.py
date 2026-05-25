@@ -64,6 +64,8 @@ def build_completion_audit() -> dict[str, Any]:
     ucy_validation = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json", {})
     joint_rollout = read_json("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json", {})
     joint_latent = read_json("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json", {})
+    joint_residual = read_json("outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json", {})
+    joint_residual_domain = read_json("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json", {})
     group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
     group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
     group_distiller_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json", {})
@@ -163,6 +165,17 @@ def build_completion_audit() -> dict[str, Any]:
     joint_latent_no_leak = joint_latent.get("no_leakage") or {}
     joint_latent_deployable = bool(joint_latent.get("joint_latent_rollout_deployable"))
     joint_latent_improves_current = bool(joint_latent.get("joint_latent_rollout_improves_current_deployable"))
+    joint_residual_metrics = joint_residual.get("test_metrics") or {}
+    joint_residual_multi = joint_residual.get("multi_agent_metrics") or {}
+    joint_residual_raw = joint_residual.get("raw_neural_without_fallback_metrics") or {}
+    joint_residual_lift = joint_residual.get("lift_over_current_group_consistency_basis") or {}
+    joint_residual_aux = joint_residual.get("auxiliary_metrics") or {}
+    joint_residual_no_leak = joint_residual.get("no_leakage") or {}
+    joint_residual_deployable = bool(joint_residual.get("joint_residual_rollout_deployable"))
+    joint_residual_improves_current = bool(joint_residual.get("joint_residual_rollout_improves_current_deployable"))
+    joint_residual_domain_metrics = joint_residual_domain.get("test_metrics") or {}
+    joint_residual_domain_no_leak = joint_residual_domain.get("no_leakage") or {}
+    joint_residual_domain_deployable = bool(joint_residual_domain.get("domain_horizon_policy_deployable"))
     group_distiller_metrics = group_distiller.get("test_metrics") or {}
     group_distiller_lift = group_distiller.get("lift_over_fixed_proximity_guard") or {}
     group_distiller_deployable = bool(group_distiller.get("group_consistency_distiller_deployable"))
@@ -304,6 +317,28 @@ def build_completion_audit() -> dict[str, Any]:
             ),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
             "note": "The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only.",
+        },
+        {
+            "requirement": "baseline-relative bounded residual rollout repair attempted",
+            "status": _status(
+                bool(joint_residual_metrics)
+                and not joint_residual_no_leak.get("future_waypoints_input", True)
+                and not joint_residual_no_leak.get("stage5c_executed", True)
+                and not joint_residual_no_leak.get("smc_enabled", True)
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json",
+            "note": "Residual clipping reduces raw neural damage versus direct joint latent rollout, but the selected test policy is still all/t50/hard negative and not deployable.",
+        },
+        {
+            "requirement": "domain/horizon residual policy repair attempted after global residual gate failed",
+            "status": _status(
+                bool(joint_residual_domain_metrics)
+                and not joint_residual_domain_no_leak.get("future_waypoints_input", True)
+                and not joint_residual_domain_no_leak.get("stage5c_executed", True)
+                and not joint_residual_domain_no_leak.get("smc_enabled", True)
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json",
+            "note": "Validation-only domain/horizon slicing reduces switch rate and protects easy cases, but t50 remains zero and all/hard are not reliably positive, so it is not deployable.",
         },
         {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
@@ -614,6 +649,41 @@ def build_completion_audit() -> dict[str, Any]:
             "occupancy_auroc": (joint_latent_aux.get("occupancy") or {}).get("auroc"),
             "future_group_close_auroc": (joint_latent_aux.get("future_group_close") or {}).get("auroc"),
         },
+        "joint_residual_rollout_summary": {
+            "selected_trial": joint_residual.get("selected_trial"),
+            "deployable": joint_residual_deployable,
+            "improves_current_deployable": joint_residual_improves_current,
+            "selected_policy": joint_residual.get("selected_policy"),
+            "all_improvement": joint_residual_metrics.get("all_improvement"),
+            "t50_improvement": joint_residual_metrics.get("t50_improvement"),
+            "t100_improvement": joint_residual_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_residual_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_residual_metrics.get("easy_degradation"),
+            "switch_rate": joint_residual.get("switch_rate"),
+            "collision_delta_vs_floor_005": joint_residual.get("collision_delta_vs_floor_005"),
+            "multi_agent_all_improvement": joint_residual_multi.get("all_improvement"),
+            "raw_neural_all_improvement": joint_residual_raw.get("all_improvement"),
+            "raw_neural_t50_improvement": joint_residual_raw.get("t50_improvement"),
+            "raw_neural_hard_failure_improvement": joint_residual_raw.get("hard_failure_improvement"),
+            "raw_neural_easy_degradation": joint_residual_raw.get("easy_degradation"),
+            "all_delta_over_current_group": joint_residual_lift.get("all_delta"),
+            "t50_delta_over_current_group": joint_residual_lift.get("t50_delta"),
+            "hard_delta_over_current_group": joint_residual_lift.get("hard_delta"),
+            "interaction_auroc": (joint_residual_aux.get("interaction") or {}).get("auroc"),
+            "occupancy_auroc": (joint_residual_aux.get("occupancy") or {}).get("auroc"),
+            "future_group_close_auroc": (joint_residual_aux.get("future_group_close") or {}).get("auroc"),
+        },
+        "joint_residual_domain_policy_summary": {
+            "selected_trial": joint_residual_domain.get("selected_trial"),
+            "deployable": joint_residual_domain_deployable,
+            "all_improvement": joint_residual_domain_metrics.get("all_improvement"),
+            "t50_improvement": joint_residual_domain_metrics.get("t50_improvement"),
+            "t100_improvement": joint_residual_domain_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_residual_domain_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_residual_domain_metrics.get("easy_degradation"),
+            "switch_rate": joint_residual_domain.get("test_switch_rate"),
+            "collision_delta_vs_floor_005": joint_residual_domain.get("test_collision_delta_005"),
+        },
         "group_consistency_distiller_summary": {
             "deployable": group_distiller_deployable,
             "improves_fixed_guard": group_distiller_improves_guard,
@@ -901,6 +971,29 @@ def build_completion_audit() -> dict[str, Any]:
             f"- all/t50/hard delta vs current group deployable: `{joint_latent_lift.get('all_delta')}` / `{joint_latent_lift.get('t50_delta')}` / `{joint_latent_lift.get('hard_delta')}`",
             f"- interaction/occupancy/future-close AUROC: `{(joint_latent_aux.get('interaction') or {}).get('auroc')}` / `{(joint_latent_aux.get('occupancy') or {}).get('auroc')}` / `{(joint_latent_aux.get('future_group_close') or {}).get('auroc')}`",
             "",
+            "## Joint Residual Rollout Repair",
+            "",
+            f"- selected trial: `{joint_residual.get('selected_trial')}`",
+            f"- deployable: `{joint_residual_deployable}`",
+            f"- improves current deployable: `{joint_residual_improves_current}`",
+            f"- selected policy: `{joint_residual.get('selected_policy')}`",
+            f"- all/t50/t100: `{joint_residual_metrics.get('all_improvement')}` / `{joint_residual_metrics.get('t50_improvement')}` / `{joint_residual_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_residual_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_residual_metrics.get('easy_degradation')}`",
+            f"- raw neural all/t50/hard/easy: `{joint_residual_raw.get('all_improvement')}` / `{joint_residual_raw.get('t50_improvement')}` / `{joint_residual_raw.get('hard_failure_improvement')}` / `{joint_residual_raw.get('easy_degradation')}`",
+            f"- all/t50/hard delta vs current group deployable: `{joint_residual_lift.get('all_delta')}` / `{joint_residual_lift.get('t50_delta')}` / `{joint_residual_lift.get('hard_delta')}`",
+            f"- interaction/occupancy/future-close AUROC: `{(joint_residual_aux.get('interaction') or {}).get('auroc')}` / `{(joint_residual_aux.get('occupancy') or {}).get('auroc')}` / `{(joint_residual_aux.get('future_group_close') or {}).get('auroc')}`",
+            "",
+            "## Joint Residual Domain-Horizon Policy Repair",
+            "",
+            f"- selected trial: `{joint_residual_domain.get('selected_trial')}`",
+            f"- deployable: `{joint_residual_domain_deployable}`",
+            f"- all/t50/t100: `{joint_residual_domain_metrics.get('all_improvement')}` / `{joint_residual_domain_metrics.get('t50_improvement')}` / `{joint_residual_domain_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_residual_domain_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_residual_domain_metrics.get('easy_degradation')}`",
+            f"- switch rate: `{joint_residual_domain.get('test_switch_rate')}`",
+            f"- collision delta @0.05 normalized: `{joint_residual_domain.get('test_collision_delta_005')}`",
+            "",
             "## Neural Group Consistency Distiller",
             "",
             f"- deployable: `{group_distiller_deployable}`",
@@ -919,7 +1012,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. A fresh joint latent group-token rollout prototype was trained next; it learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because fully deployable joint latent all-agent rollout and source-level independent UCY validation remain unavailable, and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. A fresh joint latent group-token rollout prototype was trained next; it learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced the raw neural damage but still failed all/t50/hard gates and is also not deployable. A domain/horizon residual policy repair further reduced easy harm and switch rate but still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because fully deployable joint latent all-agent rollout and source-level independent UCY validation remain unavailable, and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -944,6 +1037,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     ucy_validation_summary = audit.get("ucy_independent_validation_summary", {})
     joint_rollout_summary = audit.get("joint_rollout_consistency_summary", {})
     joint_latent_summary = audit.get("joint_latent_rollout_summary", {})
+    joint_residual_summary = audit.get("joint_residual_rollout_summary", {})
+    joint_residual_domain_summary = audit.get("joint_residual_domain_policy_summary", {})
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
@@ -1097,6 +1192,28 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_latent_interaction_auroc = {joint_latent_summary.get('interaction_auroc')}",
             f"joint_latent_occupancy_auroc = {joint_latent_summary.get('occupancy_auroc')}",
             f"joint_latent_future_group_close_auroc = {joint_latent_summary.get('future_group_close_auroc')}",
+            f"joint_residual_rollout_selected_trial = {joint_residual_summary.get('selected_trial')}",
+            f"joint_residual_rollout_deployable = {joint_residual_summary.get('deployable')}",
+            f"joint_residual_rollout_improves_current = {joint_residual_summary.get('improves_current_deployable')}",
+            f"joint_residual_rollout_all = {joint_residual_summary.get('all_improvement')}",
+            f"joint_residual_rollout_t50 = {joint_residual_summary.get('t50_improvement')}",
+            f"joint_residual_rollout_t100_diagnostic = {joint_residual_summary.get('t100_improvement')}",
+            f"joint_residual_rollout_hard = {joint_residual_summary.get('hard_failure_improvement')}",
+            f"joint_residual_rollout_easy = {joint_residual_summary.get('easy_degradation')}",
+            f"joint_residual_raw_neural_all = {joint_residual_summary.get('raw_neural_all_improvement')}",
+            f"joint_residual_raw_neural_t50 = {joint_residual_summary.get('raw_neural_t50_improvement')}",
+            f"joint_residual_raw_neural_easy = {joint_residual_summary.get('raw_neural_easy_degradation')}",
+            f"joint_residual_interaction_auroc = {joint_residual_summary.get('interaction_auroc')}",
+            f"joint_residual_occupancy_auroc = {joint_residual_summary.get('occupancy_auroc')}",
+            f"joint_residual_future_group_close_auroc = {joint_residual_summary.get('future_group_close_auroc')}",
+            f"joint_residual_domain_policy_selected_trial = {joint_residual_domain_summary.get('selected_trial')}",
+            f"joint_residual_domain_policy_deployable = {joint_residual_domain_summary.get('deployable')}",
+            f"joint_residual_domain_policy_all = {joint_residual_domain_summary.get('all_improvement')}",
+            f"joint_residual_domain_policy_t50 = {joint_residual_domain_summary.get('t50_improvement')}",
+            f"joint_residual_domain_policy_t100_diagnostic = {joint_residual_domain_summary.get('t100_improvement')}",
+            f"joint_residual_domain_policy_hard = {joint_residual_domain_summary.get('hard_failure_improvement')}",
+            f"joint_residual_domain_policy_easy = {joint_residual_domain_summary.get('easy_degradation')}",
+            f"joint_residual_domain_policy_switch_rate = {joint_residual_domain_summary.get('switch_rate')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1176,6 +1293,10 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.md")
@@ -1266,6 +1387,28 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_latent_interaction_auroc": joint_latent_summary.get("interaction_auroc"),
         "joint_latent_occupancy_auroc": joint_latent_summary.get("occupancy_auroc"),
         "joint_latent_future_group_close_auroc": joint_latent_summary.get("future_group_close_auroc"),
+        "joint_residual_rollout_selected_trial": joint_residual_summary.get("selected_trial"),
+        "joint_residual_rollout_deployable": joint_residual_summary.get("deployable"),
+        "joint_residual_rollout_improves_current": joint_residual_summary.get("improves_current_deployable"),
+        "joint_residual_rollout_all_improvement": joint_residual_summary.get("all_improvement"),
+        "joint_residual_rollout_t50_improvement": joint_residual_summary.get("t50_improvement"),
+        "joint_residual_rollout_t100_raw_frame_diagnostic": joint_residual_summary.get("t100_improvement"),
+        "joint_residual_rollout_hard_failure_improvement": joint_residual_summary.get("hard_failure_improvement"),
+        "joint_residual_rollout_easy_degradation": joint_residual_summary.get("easy_degradation"),
+        "joint_residual_raw_neural_all_improvement": joint_residual_summary.get("raw_neural_all_improvement"),
+        "joint_residual_raw_neural_t50_improvement": joint_residual_summary.get("raw_neural_t50_improvement"),
+        "joint_residual_raw_neural_easy_degradation": joint_residual_summary.get("raw_neural_easy_degradation"),
+        "joint_residual_interaction_auroc": joint_residual_summary.get("interaction_auroc"),
+        "joint_residual_occupancy_auroc": joint_residual_summary.get("occupancy_auroc"),
+        "joint_residual_future_group_close_auroc": joint_residual_summary.get("future_group_close_auroc"),
+        "joint_residual_domain_policy_selected_trial": joint_residual_domain_summary.get("selected_trial"),
+        "joint_residual_domain_policy_deployable": joint_residual_domain_summary.get("deployable"),
+        "joint_residual_domain_policy_all_improvement": joint_residual_domain_summary.get("all_improvement"),
+        "joint_residual_domain_policy_t50_improvement": joint_residual_domain_summary.get("t50_improvement"),
+        "joint_residual_domain_policy_t100_raw_frame_diagnostic": joint_residual_domain_summary.get("t100_improvement"),
+        "joint_residual_domain_policy_hard_failure_improvement": joint_residual_domain_summary.get("hard_failure_improvement"),
+        "joint_residual_domain_policy_easy_degradation": joint_residual_domain_summary.get("easy_degradation"),
+        "joint_residual_domain_policy_switch_rate": joint_residual_domain_summary.get("switch_rate"),
         "group_consistency_distiller_deployable": group_distiller_summary.get("deployable"),
         "group_consistency_distiller_improves_fixed_guard": group_distiller_summary.get("improves_fixed_guard"),
         "group_consistency_distiller_bootstrap_all_low": group_distiller_summary.get("bootstrap_all_low"),
@@ -1327,6 +1470,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "ucy_independent_validation_summary": ucy_validation_summary,
         "joint_rollout_consistency_summary": joint_rollout_summary,
         "joint_latent_rollout_summary": joint_latent_summary,
+        "joint_residual_rollout_summary": joint_residual_summary,
+        "joint_residual_domain_policy_summary": joint_residual_domain_summary,
         "group_consistency_distiller_summary": group_distiller_summary,
         "group_consistency_multiseed_summary": group_multiseed_summary,
         "jepa_deployment_decision_summary": jepa_decision_summary,
