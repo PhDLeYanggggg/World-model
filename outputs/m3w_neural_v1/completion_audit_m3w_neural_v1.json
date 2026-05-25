@@ -145,7 +145,13 @@
     "t50_delta_over_full_trajectory_reference": 0.0658008801329012,
     "hard_delta_over_full_trajectory_reference": 0.09160413133878398,
     "base_switch_input": false,
-    "base_plus_distiller_deployable": false
+    "base_plus_distiller_deployable": false,
+    "bootstrap_all_low": 0.2816879475496606,
+    "bootstrap_t50_low": 0.20700457337312783,
+    "bootstrap_hard_low": 0.2822097538327134,
+    "statistically_stable_on_test": true,
+    "ablation_static_all_delta": -0.17365892957312368,
+    "ablation_prediction_all_delta": -0.008307576365714331
   },
   "requirements": [
     {
@@ -211,6 +217,12 @@
       "note": "The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY."
     },
     {
+      "requirement": "no-base-switch distiller bootstrap and ablation evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json",
+      "note": "Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only."
+    },
+    {
       "requirement": "t100 diagnostic positive or blocker analysis",
       "status": "complete",
       "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
@@ -232,7 +244,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Run bootstrap/multi-seed and ablations for the deployable no-base-switch joint policy distiller; UCY remains fallback-only.",
+    "Run multi-seed replication for the deployable no-base-switch joint policy distiller; bootstrap and first ablations are complete, but UCY remains fallback-only.",
     "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

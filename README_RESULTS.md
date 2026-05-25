@@ -1080,11 +1080,17 @@ joint_policy_distillation_positive_domains = 2
 joint_policy_distillation_all_delta_vs_joint_consistency = 0.09973904221060959
 joint_policy_distillation_t50_delta_vs_joint_consistency = 0.06542141090265718
 joint_policy_distillation_base_switch_input = False
+joint_policy_distillation_bootstrap_all_low = 0.2816879475496606
+joint_policy_distillation_bootstrap_t50_low = 0.20700457337312783
+joint_policy_distillation_bootstrap_hard_low = 0.2822097538327134
+joint_policy_distillation_stable = True
+joint_policy_distillation_static_ablation_all_delta = -0.17365892957312368
+joint_policy_distillation_prediction_ablation_all_delta = -0.008307576365714331
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: bootstrap/multi-seed the no-base-switch distiller, add ablations, and fix UCY fallback-only behavior; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: run multi-seed replication for the no-base-switch distiller and repair UCY fallback-only behavior; bootstrap and first ablations are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

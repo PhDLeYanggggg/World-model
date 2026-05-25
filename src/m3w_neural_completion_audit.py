@@ -57,6 +57,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_route = read_json("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json", {})
     joint_consistency = read_json("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json", {})
     joint_distill = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json", {})
+    joint_distill_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -123,6 +124,9 @@ def build_completion_audit() -> dict[str, Any]:
         for row in (joint_distill_metrics.get("by_domain") or {}).values()
         if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0
     )
+    joint_distill_bootstrap = joint_distill_evidence.get("bootstrap") or {}
+    joint_distill_ablation = joint_distill_evidence.get("contribution_summary") or {}
+    joint_distill_stable = bool(joint_distill_evidence.get("statistically_stable_on_test"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -210,6 +214,12 @@ def build_completion_audit() -> dict[str, Any]:
             ),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json",
             "note": "The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY.",
+        },
+        {
+            "requirement": "no-base-switch distiller bootstrap and ablation evidence",
+            "status": _status(joint_distill_stable),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json",
+            "note": "Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -383,10 +393,16 @@ def build_completion_audit() -> dict[str, Any]:
             "hard_delta_over_full_trajectory_reference": joint_distill_lift_full.get("hard_delta"),
             "base_switch_input": joint_distill_no_leak.get("base_switch_input"),
             "base_plus_distiller_deployable": joint_distill_no_leak.get("base_plus_distiller_deployable"),
+            "bootstrap_all_low": (joint_distill_bootstrap.get("all") or {}).get("low"),
+            "bootstrap_t50_low": (joint_distill_bootstrap.get("t50") or {}).get("low"),
+            "bootstrap_hard_low": (joint_distill_bootstrap.get("hard_failure") or {}).get("low"),
+            "statistically_stable_on_test": joint_distill_stable,
+            "ablation_static_all_delta": (joint_distill_ablation.get("static_causal_features") or {}).get("all_delta"),
+            "ablation_prediction_all_delta": (joint_distill_ablation.get("full_trajectory_prediction_signals") or {}).get("all_delta"),
         },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Run bootstrap/multi-seed and ablations for the deployable no-base-switch joint policy distiller; UCY remains fallback-only.",
+            "Run multi-seed replication for the deployable no-base-switch joint policy distiller; bootstrap and first ablations are complete, but UCY remains fallback-only.",
             "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -546,6 +562,12 @@ def build_completion_audit() -> dict[str, Any]:
             f"- t50 delta over joint consistency: `{joint_distill_lift_joint.get('t50_delta')}`",
             f"- base switch input: `{joint_distill_no_leak.get('base_switch_input')}`",
             f"- base-plus-distiller deployable: `{joint_distill_no_leak.get('base_plus_distiller_deployable')}`",
+            f"- bootstrap all CI low: `{(joint_distill_bootstrap.get('all') or {}).get('low')}`",
+            f"- bootstrap t50 CI low: `{(joint_distill_bootstrap.get('t50') or {}).get('low')}`",
+            f"- bootstrap hard/failure CI low: `{(joint_distill_bootstrap.get('hard_failure') or {}).get('low')}`",
+            f"- statistically stable on test: `{joint_distill_stable}`",
+            f"- static causal feature ablation all delta: `{(joint_distill_ablation.get('static_causal_features') or {}).get('all_delta')}`",
+            f"- full-trajectory signal ablation all delta: `{(joint_distill_ablation.get('full_trajectory_prediction_signals') or {}).get('all_delta')}`",
             "",
             "## Conclusion",
             "",
@@ -663,11 +685,17 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_policy_distillation_all_delta_vs_joint_consistency = {joint_distill_summary.get('all_delta_over_joint_consistency')}",
             f"joint_policy_distillation_t50_delta_vs_joint_consistency = {joint_distill_summary.get('t50_delta_over_joint_consistency')}",
             f"joint_policy_distillation_base_switch_input = {joint_distill_summary.get('base_switch_input')}",
+            f"joint_policy_distillation_bootstrap_all_low = {joint_distill_summary.get('bootstrap_all_low')}",
+            f"joint_policy_distillation_bootstrap_t50_low = {joint_distill_summary.get('bootstrap_t50_low')}",
+            f"joint_policy_distillation_bootstrap_hard_low = {joint_distill_summary.get('bootstrap_hard_low')}",
+            f"joint_policy_distillation_stable = {joint_distill_summary.get('statistically_stable_on_test')}",
+            f"joint_policy_distillation_static_ablation_all_delta = {joint_distill_summary.get('ablation_static_all_delta')}",
+            f"joint_policy_distillation_prediction_ablation_all_delta = {joint_distill_summary.get('ablation_prediction_all_delta')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: bootstrap/multi-seed the no-base-switch distiller, add ablations, and fix UCY fallback-only behavior; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: run multi-seed replication for the no-base-switch distiller and repair UCY fallback-only behavior; bootstrap and first ablations are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -694,6 +722,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = "stage41_joint_policy_distiller_strong_two_domain_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
@@ -712,6 +742,12 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "positive_external_domains": joint_distill_summary.get("positive_external_domains"),
         "base_switch_input": joint_distill_summary.get("base_switch_input"),
         "base_plus_distiller_deployable": joint_distill_summary.get("base_plus_distiller_deployable"),
+        "bootstrap_all_low": joint_distill_summary.get("bootstrap_all_low"),
+        "bootstrap_t50_low": joint_distill_summary.get("bootstrap_t50_low"),
+        "bootstrap_hard_low": joint_distill_summary.get("bootstrap_hard_low"),
+        "statistically_stable_on_test": joint_distill_summary.get("statistically_stable_on_test"),
+        "ablation_static_all_delta": joint_distill_summary.get("ablation_static_all_delta"),
+        "ablation_prediction_all_delta": joint_distill_summary.get("ablation_prediction_all_delta"),
         "ucy_status": "fallback_only",
         "stage5c_executed": False,
         "smc_enabled": False,

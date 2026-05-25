@@ -1,0 +1,16 @@
+# Stage41 Joint Distiller Evidence
+
+- source: `fresh_run`
+- best: `joint_distill_nobase_balanced::distiller_only`
+- policy mode: `distiller_only`
+- statistically stable on test: `True`
+- all improvement: `0.28592959855458044`
+- t50 improvement: `0.21383787591021597`
+- t100 raw-frame diagnostic improvement: `0.2887528737231674`
+- hard/failure improvement: `0.28678460411829854`
+- easy degradation: `0.0`
+- bootstrap: `{'all': {'low': 0.2816879475496606, 'mid': 0.2858927478174942, 'high': 0.29011205151395447, 'n': 55528, 'bootstrap_n': 2000}, 't50': {'low': 0.20700457337312783, 'mid': 0.21398002342052969, 'high': 0.2209027287707519, 'n': 13689, 'bootstrap_n': 2000}, 't100_raw_frame_diagnostic': {'low': 0.2797157204717848, 'mid': 0.2887663619493908, 'high': 0.29755674010300337, 'n': 9905, 'bootstrap_n': 2000}, 'hard_failure': {'low': 0.2822097538327134, 'mid': 0.28674902644495825, 'high': 0.29129847811002524, 'n': 41741, 'bootstrap_n': 2000}, 'by_domain': {'ETH_UCY': {'low': 0.3224216656523139, 'mid': 0.3281795662390562, 'high': 0.3341561862471753, 'n': 25901, 'bootstrap_n': 2000}, 'TrajNet': {'low': 0.39034502629251144, 'mid': 0.3979494726306161, 'high': 0.4052374878755214, 'n': 20087, 'bootstrap_n': 2000}, 'UCY': {'low': 0.0, 'mid': 0.0, 'high': 0.0, 'n': 9540, 'bootstrap_n': 2000}}, 'by_domain_t50': {'ETH_UCY': {'low': 0.23484473558148602, 'mid': 0.24491755369670953, 'high': 0.2551860905669995, 'n': 6422, 'bootstrap_n': 2000}, 'TrajNet': {'low': 0.28178900655667505, 'mid': 0.2956221884475371, 'high': 0.30962810940213276, 'n': 4927, 'bootstrap_n': 2000}, 'UCY': {'low': 0.0, 'mid': 0.0, 'high': 0.0, 'n': 2340, 'bootstrap_n': 2000}}}`
+- ablation deltas: `{'all_group_geometry': {'all_delta': -0.0002517583227534814, 't50_delta': 0.0005288764625405173, 't100_delta': -0.00044585858859991223, 'hard_delta': -0.00023950016449114653, 'switch_delta': 0.0069334389857369505}, 'domain_embedding': {'all_delta': 0.001800220861945201, 't50_delta': 0.0020139075393471595, 't100_delta': 0.0031164492892429285, 'hard_delta': 0.0019780639899983354, 'switch_delta': 0.0021430629592277817}, 'full_trajectory_prediction_signals': {'all_delta': -0.008307576365714331, 't50_delta': -0.011069573747205852, 't100_delta': -0.012202666671112583, 'hard_delta': -0.0081400504984952, 'switch_delta': -0.03654012390145511}, 'horizon_embedding': {'all_delta': 0.0007966007466678748, 't50_delta': -0.004262962321491259, 't100_delta': 0.004762348929886362, 'hard_delta': 0.0007964421352008033, 'switch_delta': -0.01224607405273015}, 'neighbor_count': {'all_delta': 0.0014864323597166829, 't50_delta': 0.0019079258088881001, 't100_delta': 0.002453894818241098, 'hard_delta': 0.001530687125592678, 'switch_delta': 0.0029534649185996575}, 'static_causal_features': {'all_delta': -0.17365892957312368, 't50_delta': -0.12883263193035033, 't100_delta': -0.16231474122154543, 'hard_delta': -0.14953685199816436, 'switch_delta': 0.09591557412476587}}`
+- no leakage: `{'base_switch_input': False, 'future_waypoints_input': False, 'future_labels_eval_only': True, 'test_threshold_tuning': False, 'central_velocity': False, 'test_endpoint_goals': False}`
+
+The frozen no-base-switch distiller remains a candidate, not a final world-model completion: UCY is fallback-only, and the policy is still per-agent all-agent-context rather than a jointly consistent latent rollout.
