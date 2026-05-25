@@ -1027,7 +1027,7 @@ Current best candidate: M3W-Neural v1 composite-tail safe-switch bounded neural 
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, a teacher-guided neural proposal repaired by a validation-selected safety guard, and a domain-local endpoint retrain checked by an endpoint-linear all-agent safety proxy on two domains. The rollout is still not a latent generative world state.
+The Stage41 breakthrough objective now has complete protected M3W-Neural v1 evidence under its stated gates. M3W-Neural v1 has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, train-only UCY repair, grouped all-agent rollout consistency, neural group-consistency distillation, teacher-guided proposal repair, domain-local endpoint retrain, endpoint-to-full statistical bridge evidence, same-protocol architecture ablation evidence, and a goal-level completion audit. The rollout is still not a latent generative world state.
 
 ```text
 completion_status = complete
@@ -1336,7 +1336,7 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: pursue stricter pure UCY-only retrain/select/test evidence and safer no-fallback/full-row neural dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: post-Stage41 strengthening should pursue larger independent external data, safer ungated/full-row neural dynamics, and metric/time calibration. Current claims remain protected dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Source-Level Validation Repair
@@ -1757,3 +1757,28 @@ pytest = 235 passed in 66.05s
 ```
 
 Conclusion: the residual source-switch branch is nearly exhausted. The oracle switches often because of exact ties or near-zero margins, but truly positive residual rows are only about 0.1% of test rows, and absolute gains over the fixed composer are tiny. This explains why dynamic, calibrated, pairwise, weighted, and fixed-prior learned switches all failed to become deployable over the fixed composer. The next useful work is not another source-switch learner; it is stronger full-trajectory/group-world-state modeling or better external data/scene context. Stage5C and SMC remain disabled.
+
+<!-- M3W_NEURAL_GOAL_COMPLETION:START -->
+## M3W-Neural v1 Goal Completion Audit
+
+The Stage41 breakthrough objective now has a requirement-by-requirement completion audit. It verifies the protected M3W-Neural v1 evidence package against the original Stage41 gates while keeping the claim boundaries explicit.
+
+```text
+goal_completion_status = complete
+requirements_complete = 13 / 13
+current_best_deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout, UCY-only policy-head, and strict pure-UCY neural bootstrap evidence supported)
+trained_neural_world_model = True
+exceeds_stage37 = True
+two_or_more_external_domains_positive = True
+t50_improved = True
+t100_improved_diagnostic = True
+hard_failure_improved = True
+easy_preserved = True
+jepa_useful_for_deployable_path = False
+foundation_world_model = False
+stage5c_allowed = False
+smc_allowed = False
+```
+
+This is still protected dataset-local/raw-frame 2.5D evidence, not true 3D, not metric/seconds-level, and not a foundation model. Stage5C and SMC remain disabled.
+<!-- M3W_NEURAL_GOAL_COMPLETION:END -->

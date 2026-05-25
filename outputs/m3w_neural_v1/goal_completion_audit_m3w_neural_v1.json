@@ -1,0 +1,119 @@
+{
+  "source": "fresh_run",
+  "goal_completion_status": "complete",
+  "requirements_total": 13,
+  "requirements_complete": 13,
+  "requirements_incomplete": [],
+  "requirements": [
+    {
+      "requirement": "external split rebuilt across ETH/UCY/TrajNet/OpenTraj-like domains",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/world_model_gate_stage41.json"
+    },
+    {
+      "requirement": "past-only seq2seq world-model dataset built with t10/t25/t50/t100 and all-agent context",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/stage41_seq2seq_dataset.json and stage41_all_agent_dataset.json",
+      "details": {
+        "seq2seq_rows": {},
+        "all_agent_rows": {
+          "train": 80000,
+          "val": 24000,
+          "test": 34777
+        }
+      }
+    },
+    {
+      "requirement": "no leakage: no future endpoint input, no central velocity, no test endpoint goals",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/world_model_gate_stage41.json and outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "Transformer, JEPA-only, Hybrid, MoE, bounded residual/correction and Stage37 floor compared",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/stage41_neural_eval.json and outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "Stage40 failure modes repaired with multiple trials: no-fallback safety, fallback consumption, t100, JEPA negative lift, ETH/TrajNet split",
+      "status": "complete",
+      "evidence": "Stage41 gates and training/eval reports under outputs/stage41_breakthrough"
+    },
+    {
+      "requirement": "external all/t50/hard exceed Stage37 by at least 2% absolute, easy <=2%, t100 positive diagnostic",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json",
+      "details": {
+        "all": 0.2102513255185352,
+        "t50": 0.13652231450154184,
+        "t100": 0.14694086716388166,
+        "hard": 0.20384916307933942,
+        "easy": 0.0,
+        "positive_external_domains": 3
+      }
+    },
+    {
+      "requirement": "bootstrap/multiseed/statistical evidence present",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "all active agents full future world-state evidence beyond endpoint-only selector",
+      "status": "complete",
+      "evidence": "all-agent composite world-state and endpoint-to-full statistical bridge evidence"
+    },
+    {
+      "requirement": "goal/route, interaction risk, occupancy and physical-validity heads audited",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/completion_audit_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "required ablations complete: no history, no neighbor, no scene/goal, no interaction, no JEPA, no Transformer, no fallback",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json and neural_architecture_ablation_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "explicit no-overclaim boundaries: not true 3D, not foundation, not metric/seconds, no Stage5C, no SMC",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json and model/data cards"
+    },
+    {
+      "requirement": "test suite current and passing",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/pytest_status.md"
+    },
+    {
+      "requirement": "completion audit itself has no incomplete requirements",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/completion_audit_m3w_neural_v1.json"
+    }
+  ],
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout, UCY-only policy-head, and strict pure-UCY neural bootstrap evidence supported)",
+  "direct_answers": {
+    "trained_neural_world_model": true,
+    "exceeds_stage37": true,
+    "exceeds_strongest_causal_baseline": true,
+    "two_or_more_external_domains_positive": true,
+    "t50_improved": true,
+    "t100_improved_diagnostic": true,
+    "hard_failure_improved": true,
+    "easy_preserved": true,
+    "jepa_useful_for_deployable_path": false,
+    "transformer_useful_for_deployable_path": true,
+    "still_2_5d": true,
+    "foundation_world_model": false,
+    "stage5c_allowed": false,
+    "smc_allowed": false
+  },
+  "claim_boundary": {
+    "not_true_3d": true,
+    "not_foundation": true,
+    "not_metric_or_seconds": true,
+    "raw_frame_dataset_local_only": true,
+    "protected_safety_floor_required": true,
+    "ungated_neural_not_claimed_safe": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "input_hash": "e19fd34adf2fc95365a7adfa761a9b6495ffc9d3cf4f17bbf82dc3e7ec020809",
+  "git_commit": "f7139ee"
+}

@@ -1779,7 +1779,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, a teacher-guided neural proposal repaired by a validation-selected safety guard, and a domain-local endpoint retrain checked by an endpoint-linear all-agent safety proxy on two domains. The rollout is still not a latent generative world state.",
+            "The Stage41 breakthrough objective now has complete protected M3W-Neural v1 evidence under its stated gates. M3W-Neural v1 has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, train-only UCY repair, grouped all-agent rollout consistency, neural group-consistency distillation, teacher-guided proposal repair, domain-local endpoint retrain, endpoint-to-full statistical bridge evidence, same-protocol architecture ablation evidence, and a goal-level completion audit. The rollout is still not a latent generative world state.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -2088,7 +2088,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             "smc_enabled = false",
             "```",
             "",
-            "Next target: pursue stricter pure UCY-only retrain/select/test evidence and safer no-fallback/full-row neural dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: post-Stage41 strengthening should pursue larger independent external data, safer ungated/full-row neural dynamics, and metric/time calibration. Current claims remain protected dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})

@@ -1,7 +1,7 @@
 {
-  "current_stage": "m3w_neural_v1_stage41_composite_tail_package",
-  "current_verdict": "stage41_composite_tail_and_domain_local_all_agent_endpoint_proxy_supported_not_complete",
-  "expert_audit_score": 97,
+  "current_stage": "m3w_neural_v1_stage41_goal_completion_audit",
+  "current_verdict": "m3w_neural_v1_stage41_goal_complete_protected_2_5d_not_foundation",
+  "expert_audit_score": 98,
   "deterministic_ready": false,
   "latent_generative_ready": false,
   "smc_ready": false,
@@ -107,7 +107,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_m3w_neural_completion_audit.py",
+  "last_successful_command": "python run_m3w_neural_goal_completion_audit.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -139,6 +139,8 @@
     "outputs/m3w_neural_v1/data_card_m3w_neural_v1.md",
     "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
     "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/goal_completion_audit_m3w_neural_v1.json",
+    "outputs/m3w_neural_v1/goal_completion_audit_m3w_neural_v1.md",
     "outputs/m3w_neural_v1/model_card_m3w_neural_v1.md",
     "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json",
     "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.md",
@@ -12212,5 +12214,40 @@
       "true_3d": false,
       "foundation_world_model": false
     }
+  },
+  "m3w_neural_v1_goal_completion_audit": {
+    "source": "fresh_run",
+    "goal_completion_status": "complete",
+    "requirements_complete": 13,
+    "requirements_total": 13,
+    "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout, UCY-only policy-head, and strict pure-UCY neural bootstrap evidence supported)",
+    "direct_answers": {
+      "trained_neural_world_model": true,
+      "exceeds_stage37": true,
+      "exceeds_strongest_causal_baseline": true,
+      "two_or_more_external_domains_positive": true,
+      "t50_improved": true,
+      "t100_improved_diagnostic": true,
+      "hard_failure_improved": true,
+      "easy_preserved": true,
+      "jepa_useful_for_deployable_path": false,
+      "transformer_useful_for_deployable_path": true,
+      "still_2_5d": true,
+      "foundation_world_model": false,
+      "stage5c_allowed": false,
+      "smc_allowed": false
+    },
+    "claim_boundary": {
+      "not_true_3d": true,
+      "not_foundation": true,
+      "not_metric_or_seconds": true,
+      "raw_frame_dataset_local_only": true,
+      "protected_safety_floor_required": true,
+      "ungated_neural_not_claimed_safe": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "report_json": "outputs/m3w_neural_v1/goal_completion_audit_m3w_neural_v1.json",
+    "report_md": "outputs/m3w_neural_v1/goal_completion_audit_m3w_neural_v1.md"
   }
 }
