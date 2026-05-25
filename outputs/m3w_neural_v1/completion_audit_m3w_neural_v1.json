@@ -271,6 +271,14 @@
       3
     ]
   },
+  "jepa_deployment_decision_summary": {
+    "decision": "disable_jepa_in_deployable_path",
+    "disable_jepa_in_deployable_path": true,
+    "attempt_count": 7,
+    "non_collapse_attempt_count": 7,
+    "deployable_positive_attempt_count": 0,
+    "keep_jepa_for_diagnostic_research": true
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -389,8 +397,9 @@
     },
     {
       "requirement": "JEPA contribution proven or disabled",
-      "status": "partial",
-      "evidence": "Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution."
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json",
+      "note": "Current audited JEPA variants are non-collapse in several stages but do not produce deployable downstream lift. JEPA is disabled from the M3W-Neural v1 deployable path and kept diagnostic-only."
     },
     {
       "requirement": "Stage5C disabled and SMC disabled",

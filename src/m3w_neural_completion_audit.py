@@ -66,6 +66,7 @@ def build_completion_audit() -> dict[str, Any]:
     group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
     group_distiller_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json", {})
     group_distiller_multiseed_repair = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json", {})
+    jepa_decision = read_json("outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -160,6 +161,7 @@ def build_completion_audit() -> dict[str, Any]:
     group_distiller_repair_summary = group_distiller_multiseed_repair.get("metric_summary") or {}
     group_distiller_repair_pass = bool(group_distiller_multiseed_repair.get("replication_pass"))
     group_distiller_repair_domains = group_distiller_multiseed_repair.get("positive_domain_counts") or []
+    jepa_disabled = bool(jepa_decision.get("disable_jepa_in_deployable_path"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -303,8 +305,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "JEPA contribution proven or disabled",
-            "status": _status(False, partial=True),
-            "evidence": "Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution.",
+            "status": _status(jepa_disabled, partial=bool(jepa_decision)),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json",
+            "note": "Current audited JEPA variants are non-collapse in several stages but do not produce deployable downstream lift. JEPA is disabled from the M3W-Neural v1 deployable path and kept diagnostic-only.",
         },
         {
             "requirement": "Stage5C disabled and SMC disabled",
@@ -593,6 +596,14 @@ def build_completion_audit() -> dict[str, Any]:
             "switch_rate_mean": (group_distiller_repair_summary.get("switch_rate") or {}).get("mean"),
             "positive_domain_counts": group_distiller_repair_domains,
         },
+        "jepa_deployment_decision_summary": {
+            "decision": jepa_decision.get("decision"),
+            "disable_jepa_in_deployable_path": jepa_disabled,
+            "attempt_count": jepa_decision.get("attempt_count"),
+            "non_collapse_attempt_count": jepa_decision.get("non_collapse_attempt_count"),
+            "deployable_positive_attempt_count": jepa_decision.get("deployable_positive_attempt_count"),
+            "keep_jepa_for_diagnostic_research": jepa_decision.get("keep_jepa_for_diagnostic_research"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
@@ -822,7 +833,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation remains unavailable and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -847,6 +858,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     joint_rollout_summary = audit.get("joint_rollout_consistency_summary", {})
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
+    jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -1002,6 +1014,11 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"group_consistency_multiseed_easy_max = {group_multiseed_summary.get('easy_max')}",
             f"group_consistency_multiseed_collision_delta_max = {group_multiseed_summary.get('collision_delta_max')}",
             f"group_consistency_multiseed_positive_domain_counts = {group_multiseed_summary.get('positive_domain_counts')}",
+            f"jepa_deployment_decision = {jepa_decision_summary.get('decision')}",
+            f"jepa_disable_deployable_path = {jepa_decision_summary.get('disable_jepa_in_deployable_path')}",
+            f"jepa_attempt_count = {jepa_decision_summary.get('attempt_count')}",
+            f"jepa_non_collapse_attempt_count = {jepa_decision_summary.get('non_collapse_attempt_count')}",
+            f"jepa_deployable_positive_attempt_count = {jepa_decision_summary.get('deployable_positive_attempt_count')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
@@ -1051,6 +1068,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = "stage41_group_consistency_multiseed_safety_buffer_joint_safe_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
@@ -1140,6 +1159,11 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "group_consistency_multiseed_easy_max": group_multiseed_summary.get("easy_max"),
         "group_consistency_multiseed_collision_delta_max": group_multiseed_summary.get("collision_delta_max"),
         "group_consistency_multiseed_positive_domain_counts": group_multiseed_summary.get("positive_domain_counts"),
+        "jepa_deployment_decision": jepa_decision_summary.get("decision"),
+        "jepa_disable_deployable_path": jepa_decision_summary.get("disable_jepa_in_deployable_path"),
+        "jepa_attempt_count": jepa_decision_summary.get("attempt_count"),
+        "jepa_non_collapse_attempt_count": jepa_decision_summary.get("non_collapse_attempt_count"),
+        "jepa_deployable_positive_attempt_count": jepa_decision_summary.get("deployable_positive_attempt_count"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -1163,6 +1187,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_rollout_consistency_summary": joint_rollout_summary,
         "group_consistency_distiller_summary": group_distiller_summary,
         "group_consistency_multiseed_summary": group_multiseed_summary,
+        "jepa_deployment_decision_summary": jepa_decision_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

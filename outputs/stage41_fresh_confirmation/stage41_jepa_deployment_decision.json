@@ -1,0 +1,107 @@
+{
+  "source": "fresh_run",
+  "decision": "disable_jepa_in_deployable_path",
+  "disable_jepa_in_deployable_path": true,
+  "keep_jepa_for_diagnostic_research": true,
+  "attempt_count": 7,
+  "non_collapse_attempt_count": 7,
+  "deployable_positive_attempt_count": 0,
+  "evidence": [
+    {
+      "source": "cached_verified",
+      "attempt": "SAM-JEPA-2.5D representation pretraining",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "failure_auroc_lift": -0.012096774193548376
+      },
+      "deployable_lift": false,
+      "notes": "Stage18 was non-collapse but did not improve selector/failure/goal/correction/official t+50."
+    },
+    {
+      "source": "cached_verified",
+      "attempt": "WAM-style JEPA probe",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "failure_auroc_lift": -0.08754208754208748,
+        "selector_t50_lift": 0.0
+      },
+      "deployable_lift": false,
+      "notes": "Stage19 has mixed historical diagnostics, but the registered probe report shows negative failure lift and no meaningful selector lift."
+    },
+    {
+      "source": "cached_verified",
+      "attempt": "Stage23 SDD JEPA",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "selector_probe_lift": 0.0,
+        "failure_predictor_lift": 0.0,
+        "hard_failure_correction_lift": 0.0,
+        "t50_lift": 0.0
+      },
+      "deployable_lift": false,
+      "notes": "SDD JEPA retest is diagnostic unless it improves a downstream head."
+    },
+    {
+      "source": "cached_verified",
+      "attempt": "Stage24 SDD JEPA",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "selector_probe_lift": 0.0,
+        "failure_predictor_lift": 0.0,
+        "hard_failure_correction_lift": 0.0,
+        "t50_lift": 0.0
+      },
+      "deployable_lift": false,
+      "notes": "SDD JEPA retest is diagnostic unless it improves a downstream head."
+    },
+    {
+      "source": "fresh_run",
+      "attempt": "Stage39 JEPA auxiliary representation",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "failure_auroc_lift": -0.4285583008392251,
+        "failure_auroc_base": 0.9880898558164535,
+        "failure_auroc_with_jepa": 0.5595315549772284
+      },
+      "deployable_lift": false,
+      "notes": "JEPA is representation-only; no latent generative rollout. Stage39 failure AUROC lift is negative."
+    },
+    {
+      "source": "fresh_run",
+      "attempt": "Stage40 jepa_aux_candidate_ranker",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "all_improvement": -0.31813566333776033,
+        "t50_improvement": -0.36523721047520064,
+        "hard_failure_improvement": -0.3121845224802864,
+        "easy_degradation": 0.7812278656398819,
+        "switch_rate": 0.02
+      },
+      "deployable_lift": false,
+      "notes": "Stage40 JEPA/hybrid ranker failed the safety/deployment objective and was not deployed."
+    },
+    {
+      "source": "fresh_run",
+      "attempt": "Stage40 hybrid_moe_deeper_ranker",
+      "non_collapse": true,
+      "downstream_lifts": {
+        "all_improvement": -0.22194761788310857,
+        "t50_improvement": -0.6152104089274417,
+        "hard_failure_improvement": -0.18030445536332285,
+        "easy_degradation": 1.2056777651489945,
+        "switch_rate": 0.02
+      },
+      "deployable_lift": false,
+      "notes": "Stage40 JEPA/hybrid ranker failed the safety/deployment objective and was not deployed."
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "test_endpoint_goals": false,
+    "central_velocity": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "jepa_is_latent_generative_rollout": false
+  },
+  "caveat": "This is a deployment decision, not a claim that JEPA can never help. It says current audited JEPA variants do not earn a deployable role in M3W-Neural v1."
+}

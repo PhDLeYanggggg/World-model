@@ -1141,6 +1141,11 @@ group_consistency_multiseed_hard_min = 0.12488209249854709
 group_consistency_multiseed_easy_max = 0.0
 group_consistency_multiseed_collision_delta_max = 0.008309182288418482
 group_consistency_multiseed_positive_domain_counts = [3, 3, 3]
+jepa_deployment_decision = disable_jepa_in_deployable_path
+jepa_disable_deployable_path = True
+jepa_attempt_count = 7
+jepa_non_collapse_attempt_count = 7
+jepa_deployable_positive_attempt_count = 0
 stage5c_executed = false
 smc_enabled = false
 ```
