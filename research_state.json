@@ -1,6 +1,6 @@
 {
   "current_stage": "stage41",
-  "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_supported_not_complete",
+  "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_supported_not_complete",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -4667,7 +4667,7 @@
     ],
     "gates_passed": 41,
     "gates_total": 41,
-    "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_supported_not_complete",
+    "current_verdict": "stage41_composite_tail_bounded_neural_dynamics_bootstrap_multiseed_supported_not_complete",
     "stage5c_executed": false,
     "smc_enabled": false,
     "endpoint_geometry_audit": {
@@ -7185,7 +7185,7 @@
     "pytest": {
       "source": "fresh_run",
       "command": "python3 -m pytest tests",
-      "result": "191 passed in 63.49s",
+      "result": "193 passed in 62.41s",
       "note": ".venv-pytorch does not include pytest; tests used python3 while training scripts keep arm64 .venv-pytorch runtime."
     },
     "bounded_neural_blend_dynamics": {
@@ -7549,9 +7549,119 @@
         "smc_enabled": false
       },
       "interpretation": "Frozen composite-tail policy has positive 2000-bootstrap CI lows on all/t50/t100/hard and positive delta-vs-teacher CI lows. Multiseed and pure-UCY source-level validation are still pending."
+    },
+    "composite_tail_bounded_neural_multiseed": {
+      "source": "fresh_run",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json",
+      "seed_source": "cached_verified_teacher_guided_multiseed_checkpoints_re_evaluated_fresh",
+      "seeds": [
+        11,
+        17,
+        23
+      ],
+      "replication_pass": true,
+      "strict_delta_vs_teacher_repair_pass": true,
+      "metric_summary": {
+        "all_improvement": {
+          "mean": 0.20954401723273208,
+          "std": 0.000812132451000419,
+          "min": 0.20858725214166063,
+          "max": 0.2105726625312615
+        },
+        "t50_improvement": {
+          "mean": 0.1383020020634588,
+          "std": 0.0008215631373107549,
+          "min": 0.13750499067156252,
+          "max": 0.13943264750957252
+        },
+        "t100_improvement": {
+          "mean": 0.1445226429961963,
+          "std": 0.0024185410870793955,
+          "min": 0.14199993286084633,
+          "max": 0.1477842384655702
+        },
+        "hard_failure_improvement": {
+          "mean": 0.203088119625216,
+          "std": 0.0009137514198866433,
+          "min": 0.2019696303499685,
+          "max": 0.2042078540414125
+        },
+        "easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "alpha_mean": {
+          "mean": 0.3022868942995726,
+          "std": 0.001235759500323106,
+          "min": 0.3010394755798877,
+          "max": 0.30397060942227344
+        },
+        "switch_rate": {
+          "mean": 0.3427520049944772,
+          "std": 0.0037883401613774035,
+          "min": 0.339576429909235,
+          "max": 0.34807664601642413
+        },
+        "collision_delta_vs_floor_005": {
+          "mean": -0.003961994203749227,
+          "std": 0.0001958450099422415,
+          "min": -0.004127077295572101,
+          "max": -0.003686855717377757
+        }
+      },
+      "delta_vs_teacher_repair_summary": {
+        "all_delta": {
+          "mean": 0.005549847936104062,
+          "std": 0.0007554235504385845,
+          "min": 0.004997329897068581,
+          "max": 0.006617965511956925
+        },
+        "t50_delta": {
+          "mean": 0.006532821969673974,
+          "std": 0.0009042920713246326,
+          "min": 0.005636676602763568,
+          "max": 0.00777102681701991
+        },
+        "t100_delta": {
+          "mean": 0.009578016235438488,
+          "std": 0.0014294941686291741,
+          "min": 0.008330490182942518,
+          "max": 0.011579436486280126
+        },
+        "hard_delta": {
+          "mean": 0.006046163872124384,
+          "std": 0.0008354645702825151,
+          "min": 0.0054317016626029835,
+          "max": 0.0072273679267517155
+        },
+        "easy_delta": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "positive_domain_counts": [
+        3,
+        3,
+        3
+      ],
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_labels_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "policy_selected_on_val": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "interpretation": "Composite-tail passes three seed-aware evaluations using the independently trained teacher-guided seed checkpoints; each seed selects composite-tail on validation and evaluates test once."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap-supported; pending multiseed and source-level validation before final freeze)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed supported; pending source-level validation before final freeze)",
   "last_updated": "2026-05-24",
   "stage5c_ready": false,
   "true_3d_world_model": false,
@@ -8367,7 +8477,7 @@
     "pytest": {
       "source": "fresh_run",
       "command": "python3 -m pytest tests",
-      "result": "191 passed in 63.49s",
+      "result": "193 passed in 62.41s",
       "note": ".venv-pytorch does not include pytest; tests used python3 while training scripts keep arm64 .venv-pytorch runtime."
     },
     "stage41_composite_tail_evidence": {
@@ -8599,6 +8709,116 @@
         "smc_enabled": false
       },
       "interpretation": "Frozen composite-tail policy has positive 2000-bootstrap CI lows on all/t50/t100/hard and positive delta-vs-teacher CI lows. Multiseed and pure-UCY source-level validation are still pending."
+    },
+    "stage41_composite_tail_multiseed": {
+      "source": "fresh_run",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json",
+      "seed_source": "cached_verified_teacher_guided_multiseed_checkpoints_re_evaluated_fresh",
+      "seeds": [
+        11,
+        17,
+        23
+      ],
+      "replication_pass": true,
+      "strict_delta_vs_teacher_repair_pass": true,
+      "metric_summary": {
+        "all_improvement": {
+          "mean": 0.20954401723273208,
+          "std": 0.000812132451000419,
+          "min": 0.20858725214166063,
+          "max": 0.2105726625312615
+        },
+        "t50_improvement": {
+          "mean": 0.1383020020634588,
+          "std": 0.0008215631373107549,
+          "min": 0.13750499067156252,
+          "max": 0.13943264750957252
+        },
+        "t100_improvement": {
+          "mean": 0.1445226429961963,
+          "std": 0.0024185410870793955,
+          "min": 0.14199993286084633,
+          "max": 0.1477842384655702
+        },
+        "hard_failure_improvement": {
+          "mean": 0.203088119625216,
+          "std": 0.0009137514198866433,
+          "min": 0.2019696303499685,
+          "max": 0.2042078540414125
+        },
+        "easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "alpha_mean": {
+          "mean": 0.3022868942995726,
+          "std": 0.001235759500323106,
+          "min": 0.3010394755798877,
+          "max": 0.30397060942227344
+        },
+        "switch_rate": {
+          "mean": 0.3427520049944772,
+          "std": 0.0037883401613774035,
+          "min": 0.339576429909235,
+          "max": 0.34807664601642413
+        },
+        "collision_delta_vs_floor_005": {
+          "mean": -0.003961994203749227,
+          "std": 0.0001958450099422415,
+          "min": -0.004127077295572101,
+          "max": -0.003686855717377757
+        }
+      },
+      "delta_vs_teacher_repair_summary": {
+        "all_delta": {
+          "mean": 0.005549847936104062,
+          "std": 0.0007554235504385845,
+          "min": 0.004997329897068581,
+          "max": 0.006617965511956925
+        },
+        "t50_delta": {
+          "mean": 0.006532821969673974,
+          "std": 0.0009042920713246326,
+          "min": 0.005636676602763568,
+          "max": 0.00777102681701991
+        },
+        "t100_delta": {
+          "mean": 0.009578016235438488,
+          "std": 0.0014294941686291741,
+          "min": 0.008330490182942518,
+          "max": 0.011579436486280126
+        },
+        "hard_delta": {
+          "mean": 0.006046163872124384,
+          "std": 0.0008354645702825151,
+          "min": 0.0054317016626029835,
+          "max": 0.0072273679267517155
+        },
+        "easy_delta": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        }
+      },
+      "positive_domain_counts": [
+        3,
+        3,
+        3
+      ],
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_labels_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "policy_selected_on_val": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "interpretation": "Composite-tail passes three seed-aware evaluations using the independently trained teacher-guided seed checkpoints; each seed selects composite-tail on validation and evaluates test once."
     }
   }
 }

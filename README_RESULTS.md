@@ -1239,7 +1239,18 @@ safe_switch_bounded_blend_delta_vs_teacher_all_low = 0.006356558489780059
 safe_switch_bounded_blend_delta_vs_teacher_t50_low = 0.004948699786380758
 safe_switch_bounded_blend_delta_vs_teacher_t100_low = 0.01249062196636364
 safe_switch_bounded_blend_delta_vs_teacher_hard_low = 0.006931417129331407
-safe_switch_bounded_blend_status = strongest_bootstrap_supported_candidate_pending_multiseed_and_source_level_validation
+safe_switch_bounded_blend_multiseed_pass = true
+safe_switch_bounded_blend_multiseed_all_mean = 0.20954401723273208
+safe_switch_bounded_blend_multiseed_t50_mean = 0.1383020020634588
+safe_switch_bounded_blend_multiseed_t100_mean = 0.1445226429961963
+safe_switch_bounded_blend_multiseed_hard_mean = 0.203088119625216
+safe_switch_bounded_blend_multiseed_easy_max = 0.0
+safe_switch_bounded_blend_multiseed_delta_vs_teacher_all_min = 0.004997329897068581
+safe_switch_bounded_blend_multiseed_delta_vs_teacher_t50_min = 0.005636676602763568
+safe_switch_bounded_blend_multiseed_delta_vs_teacher_t100_min = 0.008330490182942518
+safe_switch_bounded_blend_multiseed_delta_vs_teacher_hard_min = 0.0054317016626029835
+safe_switch_bounded_blend_multiseed_positive_domain_counts = [3, 3, 3]
+safe_switch_bounded_blend_status = strongest_bootstrap_and_multiseed_supported_candidate_pending_source_level_validation
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1351,7 +1362,23 @@ delta_vs_teacher_t100_low = 0.01249062196636364
 delta_vs_teacher_hard_low = 0.006931417129331407
 ```
 
-Composite-tail is now the strongest bootstrap-supported fresh candidate, but it is not yet frozen as final M3W-Neural v1 because multiseed replication for this specific policy and the pure-UCY source-level validation blocker remain open.
+Composite-tail is now the strongest bootstrap-supported fresh candidate. A seed-aware follow-up reused the three independently trained teacher-guided seed checkpoints, selected composite-tail policies on each seed's validation split, and evaluated test once:
+
+```text
+composite_tail_multiseed_pass = true
+composite_tail_multiseed_all_mean = 0.20954401723273208
+composite_tail_multiseed_t50_mean = 0.1383020020634588
+composite_tail_multiseed_t100_raw_frame_mean = 0.1445226429961963
+composite_tail_multiseed_hard_mean = 0.203088119625216
+composite_tail_multiseed_easy_max = 0.0
+composite_tail_multiseed_delta_vs_teacher_all_min = 0.004997329897068581
+composite_tail_multiseed_delta_vs_teacher_t50_min = 0.005636676602763568
+composite_tail_multiseed_delta_vs_teacher_t100_min = 0.008330490182942518
+composite_tail_multiseed_delta_vs_teacher_hard_min = 0.0054317016626029835
+positive_domain_counts = [3, 3, 3]
+```
+
+Composite-tail is now bootstrap-supported and multiseed-supported as the strongest neural dynamics candidate, but it is not yet frozen as final M3W-Neural v1 because the pure-UCY source-level validation blocker and final paper/package consolidation remain open.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 
