@@ -1413,3 +1413,27 @@ max_domain_easy_degradation = 0.0055509018258728116
 ```
 
 Conclusion: fixed-policy stress evidence improved, but Stage37 remains the current deployable model until fresh external confirmation is completed.
+
+## Stage41 Domain-Local Full-Trajectory Repair
+
+After the learned full-waypoint domain-local audit failed, a fresh repair pass tested endpoint-linearized trajectory modes, a train-fitted gain-calibrated switch head, horizon-specific deployment variants, and a validation-selected proximity guard. This is still dataset-local raw-frame 2.5D evidence, not metric/seconds-level, not true 3D, and not Stage5C/SMC.
+
+```text
+source = fresh_run
+positive_domains = ['TrajNet']
+two_domain_repair_gate = False
+ETH_UCY_all = 0.011436216574168045
+ETH_UCY_t50 = 0.0
+ETH_UCY_t100 = 0.027826091852716672
+ETH_UCY_hard = 0.012286415999727573
+ETH_UCY_easy = 0.030422051582583265
+TrajNet_variant = t50_only
+TrajNet_all = 0.002773658373583787
+TrajNet_t50 = 0.010928773473788844
+TrajNet_hard = 0.0031067454048834264
+TrajNet_easy = 0.003963066360362033
+TrajNet_collision_delta_005 = -0.00045641259698764314
+pytest = 213 passed in 60.42s
+```
+
+Conclusion: the repair produced one deployable full-waypoint neural dynamics slice on TrajNet t50, but ETH_UCY still fails t50/easy and the two-domain neural world-dynamics gate remains false. Current best deployable remains the protected composite-tail/Stage37-floor route; Stage5C and SMC stay disabled.

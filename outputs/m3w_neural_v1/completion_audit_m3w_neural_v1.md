@@ -360,6 +360,9 @@
 - learned full-waypoint domain-local gate: `False`
 - learned full-waypoint positive domains: `[]`
 - learned full-waypoint failure taxonomy: `{'ETH_UCY': {'reasons': ['t50_ade_not_positive', 't100_ade_not_positive', 'same_frame_proximity_delta_unsafe', 'ungated_neural_catastrophic_easy_degradation'], 'ade_all': 0.03200185360974939, 'ade_t50': 0.0, 'ade_t100': 0.0, 'fde_all': 0.02140015213054336, 'fde_t50': 0.0, 'collision_delta_vs_floor_005': 0.020563149900689304, 'next_fix': 'train a validation-selected efficient proximity guard and horizon-specific waypoint policy; do not deploy learned full-waypoint domain-local model yet.'}, 'TrajNet': {'reasons': ['all_ade_not_positive', 't50_ade_not_positive', 'hard_failure_ade_not_positive', 'same_frame_proximity_delta_unsafe', 'ungated_neural_catastrophic_easy_degradation', 'endpoint_fde_positive_but_waypoint_ade_negative'], 'ade_all': -0.009876103097439914, 'ade_t50': -0.09471803973274517, 'ade_t100': 0.022840260699697912, 'fde_all': 0.06300366873346075, 'fde_t50': 0.06502418472340132, 'collision_delta_vs_floor_005': 0.014909478168264101, 'next_fix': 'train a validation-selected efficient proximity guard and horizon-specific waypoint policy; do not deploy learned full-waypoint domain-local model yet.'}}`
+- learned full-waypoint repair two-domain gate: `False`
+- learned full-waypoint repair positive domains: `['TrajNet']`
+- learned full-waypoint repair summary: `TrajNet t50-only gain-calibrated raw-waypoint policy passed one-domain repair with all=0.00277, t50=0.01093, hard=0.00311, easy=0.00396, collision_delta=-0.00046. ETH_UCY remained failed with t50=0.0 and easy=0.03042. This is a useful neural dynamics slice but not a two-domain deployable neural world model.`
 
 ## Neural Group Consistency Distiller
 
