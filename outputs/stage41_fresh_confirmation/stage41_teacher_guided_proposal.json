@@ -1,0 +1,416 @@
+{
+  "source": "fresh_run",
+  "protocol_status": "teacher_guided_neural_proposal_policy",
+  "hypothesis": "Distilling the group-consistency safety-buffer teacher into a neural proposal policy can produce positive neural switch-rate without residual-regression harm.",
+  "use_residual_signals": false,
+  "selected_trial": "teacher_proposal_balanced",
+  "selected_policy": {
+    "type": "teacher_guided_proposal",
+    "mode": "teacher_or_gain",
+    "teacher_min": 0.45,
+    "gain_min": 0.0,
+    "harm_max": 0.2103135883808136,
+    "uncertainty_max": 0.2103135883808136,
+    "val_eligible": true
+  },
+  "trial_reports": {
+    "teacher_proposal_balanced": {
+      "train": {
+        "source": "fresh_run",
+        "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_teacher_proposal_balanced.pt",
+        "heartbeat": "outputs/stage41_fresh_confirmation/teacher_proposal_balanced_heartbeat.json",
+        "best": {
+          "val_loss": 0.4944523870944977,
+          "epoch": 4,
+          "train_loss": 1.1828036970562406
+        },
+        "trial": {
+          "name": "teacher_proposal_balanced",
+          "width": 96,
+          "dropout": 0.08,
+          "lr": 0.0008,
+          "teacher_w": 1.2,
+          "gain_w": 0.6,
+          "harm_w": 1.0,
+          "hard_w": 1.5,
+          "seed": 1
+        }
+      },
+      "policy": {
+        "type": "teacher_guided_proposal",
+        "mode": "teacher_or_gain",
+        "teacher_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2103135883808136,
+        "uncertainty_max": 0.2103135883808136,
+        "val_eligible": true
+      },
+      "val_best": {
+        "policy": {
+          "mode": "teacher_or_gain",
+          "teacher_min": 0.45,
+          "gain_min": 0.0,
+          "harm_max": 0.2103135883808136,
+          "uncertainty_max": 0.2103135883808136
+        },
+        "metrics": {
+          "rows": 53256,
+          "all_improvement": 0.3652322674737405,
+          "t10_improvement": 0.5719297047477041,
+          "t25_improvement": 0.18703449498597646,
+          "t50_improvement": 0.2984294165606973,
+          "t100_improvement": 0.36853184903385783,
+          "hard_failure_improvement": 0.37034437320774427,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.17599355950570547,
+          "switch_rate": 0.5954258675078864,
+          "regret_to_oracle": -0.1744584593797822,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.35395449103128684,
+              "t50_improvement": 0.2501721344027271,
+              "t100_improvement": 0.35852471659563734,
+              "hard_failure_improvement": 0.3548890399386262,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.6152269763398125
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.37175382449784955,
+              "t50_improvement": 0.3233202988176417,
+              "t100_improvement": 0.37515981102366236,
+              "hard_failure_improvement": 0.3801158816281456,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.5868435927112212
+            }
+          }
+        },
+        "switch_rate": 0.5954258675078864,
+        "eligible": true,
+        "score": 1.5326969163973758
+      },
+      "val_candidate_count": 180
+    },
+    "teacher_proposal_conservative": {
+      "train": {
+        "source": "fresh_run",
+        "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_teacher_proposal_conservative.pt",
+        "heartbeat": "outputs/stage41_fresh_confirmation/teacher_proposal_conservative_heartbeat.json",
+        "best": {
+          "val_loss": 0.5094683170318604,
+          "epoch": 4,
+          "train_loss": 1.5140883955690596
+        },
+        "trial": {
+          "name": "teacher_proposal_conservative",
+          "width": 80,
+          "dropout": 0.12,
+          "lr": 0.0007,
+          "teacher_w": 1.5,
+          "gain_w": 0.4,
+          "harm_w": 1.5,
+          "hard_w": 1.2,
+          "seed": 2
+        }
+      },
+      "policy": {
+        "type": "teacher_guided_proposal",
+        "mode": "teacher_or_gain",
+        "teacher_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.1925865113735199,
+        "uncertainty_max": 0.1925865113735199,
+        "val_eligible": true
+      },
+      "val_best": {
+        "policy": {
+          "mode": "teacher_or_gain",
+          "teacher_min": 0.45,
+          "gain_min": 0.0,
+          "harm_max": 0.1925865113735199,
+          "uncertainty_max": 0.1925865113735199
+        },
+        "metrics": {
+          "rows": 53256,
+          "all_improvement": 0.3647296299823627,
+          "t10_improvement": 0.5718937373722296,
+          "t25_improvement": 0.18673495928341777,
+          "t50_improvement": 0.29562707391801146,
+          "t100_improvement": 0.3692541464638278,
+          "hard_failure_improvement": 0.36998979837129353,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.17575135483452334,
+          "switch_rate": 0.5934167042211206,
+          "regret_to_oracle": -0.17421625470860005,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.35278704466196786,
+              "t50_improvement": 0.24545258960716798,
+              "t100_improvement": 0.3572123454684747,
+              "hard_failure_improvement": 0.35355220811596766,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.6159721790970627
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.3716356235157211,
+              "t50_improvement": 0.32150684015092634,
+              "t100_improvement": 0.3772297178653975,
+              "hard_failure_improvement": 0.3803823307608709,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.583640621214976
+            }
+          }
+        },
+        "switch_rate": 0.5934167042211206,
+        "eligible": true,
+        "score": 1.5290058869706924
+      },
+      "val_candidate_count": 180
+    },
+    "teacher_proposal_hard_expand": {
+      "train": {
+        "source": "fresh_run",
+        "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_teacher_proposal_hard_expand.pt",
+        "heartbeat": "outputs/stage41_fresh_confirmation/teacher_proposal_hard_expand_heartbeat.json",
+        "best": {
+          "val_loss": 0.499187707901001,
+          "epoch": 3,
+          "train_loss": 1.7210853221239868
+        },
+        "trial": {
+          "name": "teacher_proposal_hard_expand",
+          "width": 112,
+          "dropout": 0.08,
+          "lr": 0.0007,
+          "teacher_w": 1.0,
+          "gain_w": 1.0,
+          "harm_w": 1.2,
+          "hard_w": 2.5,
+          "seed": 3
+        }
+      },
+      "policy": {
+        "type": "teacher_guided_proposal",
+        "mode": "teacher_or_gain",
+        "teacher_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.22905059158802032,
+        "uncertainty_max": 0.22905059158802032,
+        "val_eligible": true
+      },
+      "val_best": {
+        "policy": {
+          "mode": "teacher_or_gain",
+          "teacher_min": 0.45,
+          "gain_min": 0.0,
+          "harm_max": 0.22905059158802032,
+          "uncertainty_max": 0.22905059158802032
+        },
+        "metrics": {
+          "rows": 53256,
+          "all_improvement": 0.36495797363929405,
+          "t10_improvement": 0.5695320378468045,
+          "t25_improvement": 0.18605190943527816,
+          "t50_improvement": 0.2967684900099985,
+          "t100_improvement": 0.3706058921456993,
+          "hard_failure_improvement": 0.370500101414167,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.17586138622154143,
+          "switch_rate": 0.5920459666516449,
+          "regret_to_oracle": -0.17432628609561815,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.35198064694339426,
+              "t50_improvement": 0.24773106441385195,
+              "t100_improvement": 0.3573679294842147,
+              "hard_failure_improvement": 0.35307169987789266,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.6131155685276035
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.3724623231446824,
+              "t50_improvement": 0.3220617666330323,
+              "t100_improvement": 0.3793737098881387,
+              "hard_failure_improvement": 0.3815190661560097,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.5829138965897774
+            }
+          }
+        },
+        "switch_rate": 0.5920459666516449,
+        "eligible": true,
+        "score": 1.5325995949237834
+      },
+      "val_candidate_count": 180
+    }
+  },
+  "teacher_reference": {
+    "metrics": {
+      "rows": 55528,
+      "all_improvement": 0.1393202201579521,
+      "t10_improvement": 0.1563299297230466,
+      "t25_improvement": 0.040444139802853996,
+      "t50_improvement": 0.12126737787486941,
+      "t100_improvement": 0.17673280174017203,
+      "hard_failure_improvement": 0.14490267519591504,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.06668281520495808,
+      "switch_rate": 0.1450259328626999,
+      "regret_to_oracle": -0.08779217374526548,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.17056344003586288,
+          "t50_improvement": 0.16045684031127594,
+          "t100_improvement": 0.20690422180183998,
+          "hard_failure_improvement": 0.17864551745920054,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.21972124628392725
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.09365505693259502,
+          "t50_improvement": 0.11092254323839157,
+          "t100_improvement": 0.08733719753225222,
+          "hard_failure_improvement": 0.09012855968572908,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.07029422014238064
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.1269122480061905,
+          "t50_improvement": 0.031198227012897983,
+          "t100_improvement": 0.2255781365944418,
+          "hard_failure_improvement": 0.13613416004740708,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.09958071278825996
+        }
+      }
+    },
+    "collision_delta_005": 0.006438240581092491,
+    "switch_rate": 0.1450259328626999
+  },
+  "test_metrics": {
+    "rows": 55528,
+    "all_improvement": 0.35147372419646705,
+    "t10_improvement": 0.6053046394540129,
+    "t25_improvement": 0.1510837734096614,
+    "t50_improvement": 0.23666446707361,
+    "t100_improvement": 0.3579659237738704,
+    "hard_failure_improvement": 0.350941376256631,
+    "easy_degradation": 0.0,
+    "harm_over_fallback": -0.16822581369322984,
+    "switch_rate": 0.46194712577438407,
+    "regret_to_oracle": -0.18933517223353724,
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "all_improvement": 0.33225454161862544,
+        "t50_improvement": 0.24216379035330815,
+        "t100_improvement": 0.3257832290514051,
+        "hard_failure_improvement": 0.3326993796608597,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5285896297440253
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "all_improvement": 0.3772821748740772,
+        "t50_improvement": 0.27580233831416157,
+        "t100_improvement": 0.37306732806416065,
+        "hard_failure_improvement": 0.3753719964298464,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.3878130133917459
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.3626430486243518,
+        "t50_improvement": 0.15954198384946638,
+        "t100_improvement": 0.4275338357026297,
+        "hard_failure_improvement": 0.3637072951060495,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.4371069182389937
+      }
+    }
+  },
+  "multi_agent_metrics": {
+    "rows": 54518,
+    "all_improvement": 0.35356548588293746,
+    "t10_improvement": 0.6068247799587576,
+    "t25_improvement": 0.1513330959957624,
+    "t50_improvement": 0.24003124211995597,
+    "t100_improvement": 0.3598048665785456,
+    "hard_failure_improvement": 0.3531695352980463,
+    "easy_degradation": 0.0,
+    "harm_over_fallback": -0.16750378745100938,
+    "switch_rate": 0.46379177519351406,
+    "regret_to_oracle": -0.19180770981937403,
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25677,
+        "all_improvement": 0.33338207599491176,
+        "t50_improvement": 0.24438956254586341,
+        "t100_improvement": 0.3263874547857162,
+        "hard_failure_improvement": 0.3338795545688915,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.529072710986486
+      },
+      "TrajNet": {
+        "rows": 19719,
+        "all_improvement": 0.3801862194538884,
+        "t50_improvement": 0.28123521662003315,
+        "t100_improvement": 0.37616130764802236,
+        "hard_failure_improvement": 0.37869752811578217,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.3885085450580658
+      },
+      "UCY": {
+        "rows": 9122,
+        "all_improvement": 0.3676417806548611,
+        "t50_improvement": 0.1607494194184148,
+        "t100_improvement": 0.43978871043747514,
+        "hard_failure_improvement": 0.3689142918785232,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.4427757070817803
+      }
+    }
+  },
+  "collision_delta_vs_floor_005": 0.018672731941744014,
+  "switch_rate": 0.46194712577438407,
+  "teacher_agreement_rate": 0.6825025212505402,
+  "current_best_group_consistency_basis": {
+    "all_improvement": 0.139879916889688,
+    "t50_improvement": 0.12149802173622119,
+    "t100_improvement": 0.1689208799266194,
+    "hard_failure_improvement": 0.14504228036236014,
+    "easy_degradation": 0.0,
+    "collision_delta_vs_floor_005": 0.008309182288418482
+  },
+  "lift_over_current_group_consistency_basis": {
+    "all_delta": 0.21159380730677904,
+    "t50_delta": 0.1151664453373888,
+    "t100_delta": 0.189045043847251,
+    "hard_delta": 0.20589909589427088,
+    "easy_delta": 0.0
+  },
+  "teacher_guided_proposal_deployable": false,
+  "teacher_guided_proposal_improves_current_deployable": false,
+  "no_leakage": {
+    "teacher_switch_inference_input": false,
+    "teacher_switch_train_label_only": true,
+    "future_waypoints_input": false,
+    "future_waypoints_label_eval_only": true,
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "policy_selected_on_val": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "caveat": "This is teacher-guided neural proposal selection under the Stage37 safety floor. It remains dataset-local raw-frame 2.5D, not metric/seconds/true 3D/foundation."
+}

@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, and a neural group-consistency distiller that improves the fixed proximity guard. The rollout is still not a latent generative world state.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, and a teacher-guided neural proposal repaired by a validation-selected safety guard. The rollout is still not a latent generative world state.
 
 ```text
 completion_status = not_complete
@@ -1158,6 +1158,27 @@ joint_residual_domain_policy_t100_diagnostic = -0.0005775775254206472
 joint_residual_domain_policy_hard = -0.0005725919532908463
 joint_residual_domain_policy_easy = 0.00111839385467416
 joint_residual_domain_policy_switch_rate = 0.0020530182970753493
+teacher_guided_proposal_selected_trial = teacher_proposal_balanced
+teacher_guided_proposal_deployable_raw = False
+teacher_guided_proposal_all = 0.35147372419646705
+teacher_guided_proposal_t50 = 0.23666446707361
+teacher_guided_proposal_t100_diagnostic = 0.3579659237738704
+teacher_guided_proposal_hard = 0.350941376256631
+teacher_guided_proposal_easy = 0.0
+teacher_guided_proposal_collision_delta_005 = 0.018672731941744014
+teacher_guided_repair_deployable = True
+teacher_guided_repair_improves_current = True
+teacher_guided_repair_all = 0.20359710771827477
+teacher_guided_repair_t50 = 0.13116399043122728
+teacher_guided_repair_t100_diagnostic = 0.13371172832175005
+teacher_guided_repair_hard = 0.19657225579495552
+teacher_guided_repair_easy = 0.0
+teacher_guided_repair_switch_rate = 0.2954185275896845
+teacher_guided_repair_collision_delta_005 = -0.003961994203749264
+teacher_guided_repair_all_delta_vs_current = 0.06371719082858676
+teacher_guided_repair_t50_delta_vs_current = 0.009665968695006091
+teacher_guided_repair_t100_delta_vs_current = -0.03520915160486934
+teacher_guided_repair_hard_delta_vs_current = 0.05152997543259538
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1196,7 +1217,7 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: rebuild or acquire a true source-level UCY validation split and move from grouped consistency auditing toward a jointly learned multi-agent latent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: run multi-seed/bootstrap replication for the teacher-guided repair, then rebuild or acquire a true source-level UCY validation split and continue toward a jointly learned multi-agent latent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

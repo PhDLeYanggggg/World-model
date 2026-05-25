@@ -2,7 +2,7 @@
 
 - source: `fresh_run`
 - completion_status: `not_complete`
-- current_best_deployable: `M3W-Neural v1 group-consistency multi-seed safety-buffer joint-safe candidate under Stage37 safety floor`
+- current_best_deployable: `M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (single fresh run; pending multi-seed/CI)`
 
 ## Requirement Matrix
 
@@ -27,6 +27,8 @@
 | joint latent all-agent rollout prototype trained and audited | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json | The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only. |
 | baseline-relative bounded residual rollout repair attempted | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json | Residual clipping reduces raw neural damage versus direct joint latent rollout, but the selected test policy is still all/t50/hard negative and not deployable. |
 | domain/horizon residual policy repair attempted after global residual gate failed | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json | Validation-only domain/horizon slicing reduces switch rate and protects easy cases, but t50 remains zero and all/hard are not reliably positive, so it is not deployable. |
+| teacher-guided neural proposal trained and evaluated without inference leakage | `complete` | outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json | A teacher-guided neural proposal learns from Stage37/group-consistency switch labels and neural proposal scores. Raw test gains are strong across all/t50/t100/hard, but the unguarded proposal exceeded the near-proximity safety delta and is not deployable by itself. |
+| teacher-guided proposal safety repair passes deployment gates | `complete` | outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json | Validation-selected proximity repair restores joint safety and still improves the current group-consistency multi-seed safety-buffer basis on all/t50/hard with easy=0. This is a strong single fresh run; multi-seed/CI is still required before freezing it as the final M3W-Neural v1 policy. |
 | neural group-consistency head improves joint-safe fixed proximity guard | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json | Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation. |
 | group-consistency distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json | Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head. |
 | group-consistency distiller multi-seed replication with joint-safety buffer | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json and outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json | The first three-seed run had stable positive FDE gains but one seed exceeded the near-proximity delta threshold. A validation-selected safety-buffer repair passes all three seeds with positive all/t50/t100/hard, easy=0, and max collision delta below the joint-safety ceiling. |
@@ -264,6 +266,31 @@
 - switch rate: `0.0020530182970753493`
 - collision delta @0.05 normalized: `0.0008621005906305768`
 
+## Teacher-Guided Neural Proposal
+
+- selected trial: `teacher_proposal_balanced`
+- deployable before repair: `False`
+- improves current before repair: `False`
+- all/t50/t100: `0.35147372419646705` / `0.23666446707361` / `0.3579659237738704`
+- hard/failure improvement: `0.350941376256631`
+- easy degradation: `0.0`
+- switch rate: `0.46194712577438407`
+- collision delta @0.05 normalized: `0.018672731941744014`
+- all/t50/t100/hard delta vs current group basis: `0.21159380730677904` / `0.1151664453373888` / `0.189045043847251` / `0.20589909589427088`
+
+## Teacher-Guided Proposal Safety Repair
+
+- deployable after repair: `True`
+- improves current after repair: `True`
+- selected guard: `{'min_sep': 0.05, 'guarded_off': 10039, 'metrics': {'rows': 53256, 'all_improvement': 0.22280774494692202, 't10_improvement': 0.49519817747255257, 't25_improvement': 0.14144561713770243, 't50_improvement': 0.1747765107374638, 't100_improvement': 0.14077697517497378, 'hard_failure_improvement': 0.21798978349895448, 'easy_degradation': 0.0, 'harm_over_fallback': -0.1073638109520745, 'switch_rate': 0.40692128586450355, 'regret_to_oracle': -0.10582871082615124, 'by_domain': {'ETH_UCY': {'rows': 16103, 'all_improvement': 0.20876672236979266, 't50_improvement': 0.12498790873257482, 't100_improvement': 0.13265281476884816, 'hard_failure_improvement': 0.2049683657193917, 'easy_degradation': 0.0, 'switch_rate': 0.3971309693845867}, 'TrajNet': {'rows': 37153, 'all_improvement': 0.2309271938365859, 't50_improvement': 0.20045724066719228, 't100_improvement': 0.14615779997201717, 'hard_failure_improvement': 0.22622246869978446, 'easy_degradation': 0.0, 'switch_rate': 0.41116464350119775}}}, 'collision_delta_005': -0.009973091470184214, 'switch_rate': 0.40692128586450355, 'eligible': True, 'score': 0.8327436095675232}`
+- test guarded off: `9247`
+- all/t50/t100: `0.20359710771827477` / `0.13116399043122728` / `0.13371172832175005`
+- hard/failure improvement: `0.19657225579495552`
+- easy degradation: `0.0`
+- switch rate: `0.2954185275896845`
+- collision delta @0.05 normalized: `-0.003961994203749264`
+- all/t50/t100/hard delta vs current group basis: `0.06371719082858676` / `0.009665968695006091` / `-0.03520915160486934` / `0.05152997543259538`
+
 ## Neural Group Consistency Distiller
 
 - deployable: `True`
@@ -282,4 +309,4 @@
 
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and its initial three-seed run was positive but one seed slightly exceeded the near-proximity safety delta. A validation-selected safety-buffer repair now passes all three seeds while preserving easy cases and joint proximity safety. A fresh joint latent group-token rollout prototype was trained next; it learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced the raw neural damage but still failed all/t50/hard gates and is also not deployable. A domain/horizon residual policy repair further reduced easy harm and switch rate but still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because fully deployable joint latent all-agent rollout and source-level independent UCY validation remain unavailable, and Stage5C/SMC stay disabled.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift in a single fresh run. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because the teacher-guided repair needs multi-seed/CI replication before final freeze, source-level independent UCY validation remains unavailable, and Stage5C/SMC stay disabled.
