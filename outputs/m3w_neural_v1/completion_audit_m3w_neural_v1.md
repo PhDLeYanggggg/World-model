@@ -25,6 +25,7 @@
 | UCY repair internal fold/temporal validation | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json | UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source. |
 | grouped all-agent rollout consistency under repaired policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json | Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC. |
 | neural group-consistency head improves joint-safe fixed proximity guard | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json | Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation. |
+| group-consistency distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json | Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -224,6 +225,10 @@
 - switch rate: `0.265541708687509`
 - collision delta vs floor @0.05 normalized: `0.00829083972266037`
 - lift over fixed guard all/t50/t100/hard: `0.015592083944776403` / `0.009555803738271695` / `0.09101018779442116` / `0.023954864790153962`
+- bootstrap all/t50/t100/hard CI lows: `0.2185104674424955` / `0.1445060231000635` / `0.22247098030108228` / `0.2197743039844412`
+- statistically stable on test: `True`
+- group-consistency feature ablation all/t100 delta: `-0.22219845243926872` / `-0.23019369783249866`
+- proposal-score feature ablation all delta: `-0.22195167063440968`
 
 ## Conclusion
 

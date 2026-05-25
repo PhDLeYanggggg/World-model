@@ -1121,6 +1121,13 @@ group_consistency_distiller_hard = 0.2241176936539857
 group_consistency_distiller_easy = 0.0
 group_consistency_distiller_collision_delta_005 = 0.00829083972266037
 group_consistency_distiller_t100_delta_vs_fixed_guard = 0.09101018779442116
+group_consistency_distiller_bootstrap_all_low = 0.2185104674424955
+group_consistency_distiller_bootstrap_t50_low = 0.1445060231000635
+group_consistency_distiller_bootstrap_t100_low = 0.22247098030108228
+group_consistency_distiller_bootstrap_hard_low = 0.2197743039844412
+group_consistency_distiller_stable = True
+group_consistency_distiller_group_feature_ablation_all_delta = -0.22219845243926872
+group_consistency_distiller_proposal_score_ablation_all_delta = -0.22195167063440968
 stage5c_executed = false
 smc_enabled = false
 ```

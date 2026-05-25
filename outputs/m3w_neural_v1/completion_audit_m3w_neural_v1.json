@@ -237,7 +237,17 @@
     "t50_delta_over_fixed_guard": 0.009555803738271695,
     "t100_delta_over_fixed_guard": 0.09101018779442116,
     "hard_delta_over_fixed_guard": 0.023954864790153962,
-    "easy_delta_over_fixed_guard": 0.0
+    "easy_delta_over_fixed_guard": 0.0,
+    "bootstrap_all_low": 0.2185104674424955,
+    "bootstrap_t50_low": 0.1445060231000635,
+    "bootstrap_t100_low": 0.22247098030108228,
+    "bootstrap_hard_low": 0.2197743039844412,
+    "statistically_stable_on_test": true,
+    "ablation_group_consistency_all_delta": -0.22219845243926872,
+    "ablation_group_consistency_t100_delta": -0.23019369783249866,
+    "ablation_proposal_score_all_delta": -0.22195167063440968,
+    "ablation_static_all_delta": -0.0839599783640661,
+    "ablation_full_traj_signal_all_delta": 0.12482366960114344
   },
   "requirements": [
     {
@@ -337,6 +347,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
       "note": "Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation."
+    },
+    {
+      "requirement": "group-consistency distiller bootstrap and ablation evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json",
+      "note": "Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",

@@ -63,6 +63,7 @@ def build_completion_audit() -> dict[str, Any]:
     ucy_validation = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json", {})
     joint_rollout = read_json("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json", {})
     group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
+    group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -149,6 +150,9 @@ def build_completion_audit() -> dict[str, Any]:
     group_distiller_lift = group_distiller.get("lift_over_fixed_proximity_guard") or {}
     group_distiller_deployable = bool(group_distiller.get("group_consistency_distiller_deployable"))
     group_distiller_improves_guard = bool(group_distiller.get("group_consistency_distiller_improves_fixed_guard"))
+    group_distiller_bootstrap = group_distiller_evidence.get("bootstrap") or {}
+    group_distiller_ablation = group_distiller_evidence.get("contribution_summary") or {}
+    group_distiller_stable = bool(group_distiller_evidence.get("statistically_stable_on_test"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -272,6 +276,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(group_distiller_deployable and group_distiller_improves_guard, partial=group_distiller_deployable or bool(group_distiller_metrics)),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
             "note": "Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation.",
+        },
+        {
+            "requirement": "group-consistency distiller bootstrap and ablation evidence",
+            "status": _status(group_distiller_stable, partial=bool(group_distiller_bootstrap)),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json",
+            "note": "Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -538,6 +548,16 @@ def build_completion_audit() -> dict[str, Any]:
             "t100_delta_over_fixed_guard": group_distiller_lift.get("t100_delta"),
             "hard_delta_over_fixed_guard": group_distiller_lift.get("hard_delta"),
             "easy_delta_over_fixed_guard": group_distiller_lift.get("easy_delta"),
+            "bootstrap_all_low": (group_distiller_bootstrap.get("all") or {}).get("low"),
+            "bootstrap_t50_low": (group_distiller_bootstrap.get("t50") or {}).get("low"),
+            "bootstrap_t100_low": (group_distiller_bootstrap.get("t100_raw_frame_diagnostic") or {}).get("low"),
+            "bootstrap_hard_low": (group_distiller_bootstrap.get("hard_failure") or {}).get("low"),
+            "statistically_stable_on_test": group_distiller_stable,
+            "ablation_group_consistency_all_delta": (group_distiller_ablation.get("group_consistency_features") or {}).get("all_delta"),
+            "ablation_group_consistency_t100_delta": (group_distiller_ablation.get("group_consistency_features") or {}).get("t100_delta"),
+            "ablation_proposal_score_all_delta": (group_distiller_ablation.get("proposal_score_features") or {}).get("all_delta"),
+            "ablation_static_all_delta": (group_distiller_ablation.get("static_causal_features") or {}).get("all_delta"),
+            "ablation_full_traj_signal_all_delta": (group_distiller_ablation.get("full_trajectory_prediction_signals") or {}).get("all_delta"),
         },
         "requirements": requirements,
         "next_highest_value_actions": [
@@ -761,6 +781,10 @@ def build_completion_audit() -> dict[str, Any]:
             f"- switch rate: `{group_distiller_metrics.get('switch_rate')}`",
             f"- collision delta vs floor @0.05 normalized: `{group_distiller_metrics.get('collision_delta_vs_floor_005')}`",
             f"- lift over fixed guard all/t50/t100/hard: `{group_distiller_lift.get('all_delta')}` / `{group_distiller_lift.get('t50_delta')}` / `{group_distiller_lift.get('t100_delta')}` / `{group_distiller_lift.get('hard_delta')}`",
+            f"- bootstrap all/t50/t100/hard CI lows: `{(group_distiller_bootstrap.get('all') or {}).get('low')}` / `{(group_distiller_bootstrap.get('t50') or {}).get('low')}` / `{(group_distiller_bootstrap.get('t100_raw_frame_diagnostic') or {}).get('low')}` / `{(group_distiller_bootstrap.get('hard_failure') or {}).get('low')}`",
+            f"- statistically stable on test: `{group_distiller_stable}`",
+            f"- group-consistency feature ablation all/t100 delta: `{(group_distiller_ablation.get('group_consistency_features') or {}).get('all_delta')}` / `{(group_distiller_ablation.get('group_consistency_features') or {}).get('t100_delta')}`",
+            f"- proposal-score feature ablation all delta: `{(group_distiller_ablation.get('proposal_score_features') or {}).get('all_delta')}`",
             "",
             "## Conclusion",
             "",
@@ -923,6 +947,13 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"group_consistency_distiller_easy = {group_distiller_summary.get('easy_degradation')}",
             f"group_consistency_distiller_collision_delta_005 = {group_distiller_summary.get('collision_delta_vs_floor_005')}",
             f"group_consistency_distiller_t100_delta_vs_fixed_guard = {group_distiller_summary.get('t100_delta_over_fixed_guard')}",
+            f"group_consistency_distiller_bootstrap_all_low = {group_distiller_summary.get('bootstrap_all_low')}",
+            f"group_consistency_distiller_bootstrap_t50_low = {group_distiller_summary.get('bootstrap_t50_low')}",
+            f"group_consistency_distiller_bootstrap_t100_low = {group_distiller_summary.get('bootstrap_t100_low')}",
+            f"group_consistency_distiller_bootstrap_hard_low = {group_distiller_summary.get('bootstrap_hard_low')}",
+            f"group_consistency_distiller_stable = {group_distiller_summary.get('statistically_stable_on_test')}",
+            f"group_consistency_distiller_group_feature_ablation_all_delta = {group_distiller_summary.get('ablation_group_consistency_all_delta')}",
+            f"group_consistency_distiller_proposal_score_ablation_all_delta = {group_distiller_summary.get('ablation_proposal_score_all_delta')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
@@ -966,6 +997,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = "stage41_group_consistency_distiller_joint_safe_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
@@ -1022,6 +1055,13 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_rollout_collision_delta_vs_floor_005": joint_rollout_summary.get("collision_delta_vs_floor_005"),
         "group_consistency_distiller_deployable": group_distiller_summary.get("deployable"),
         "group_consistency_distiller_improves_fixed_guard": group_distiller_summary.get("improves_fixed_guard"),
+        "group_consistency_distiller_bootstrap_all_low": group_distiller_summary.get("bootstrap_all_low"),
+        "group_consistency_distiller_bootstrap_t50_low": group_distiller_summary.get("bootstrap_t50_low"),
+        "group_consistency_distiller_bootstrap_t100_low": group_distiller_summary.get("bootstrap_t100_low"),
+        "group_consistency_distiller_bootstrap_hard_low": group_distiller_summary.get("bootstrap_hard_low"),
+        "group_consistency_distiller_statistically_stable": group_distiller_summary.get("statistically_stable_on_test"),
+        "group_consistency_feature_ablation_all_delta": group_distiller_summary.get("ablation_group_consistency_all_delta"),
+        "proposal_score_ablation_all_delta": group_distiller_summary.get("ablation_proposal_score_all_delta"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
