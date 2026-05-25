@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "complete",
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain attempted but not deployable)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout, UCY-only policy-head, and strict pure-UCY neural bootstrap evidence supported)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -1067,6 +1067,68 @@
       "test_threshold_tuning": false,
       "mixed_external_neural_proposal_used": false,
       "mixed_external_floor_used": false
+    }
+  },
+  "strict_pure_ucy_neural_statistical_evidence_summary": {
+    "statistically_stable_on_test": true,
+    "test_metrics_recomputed": {
+      "rows": 35441,
+      "all_improvement": 0.09008338741058997,
+      "t10_improvement": 0.14947939008441202,
+      "t25_improvement": 0.05550895315198645,
+      "t50_improvement": 0.08800918427966675,
+      "t100_improvement": 0.08310612104619552,
+      "hard_failure_improvement": 0.09358425348430643,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.07187757044502117,
+      "switch_rate": 0.792725938884343,
+      "regret_to_oracle": 0.12651374372598992,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.09830500611895576,
+          "t50_improvement": 0.09915599864170066,
+          "t100_improvement": 0.09344195079241124,
+          "hard_failure_improvement": 0.10158284536653805,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.778116675031852
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.06858233005902004,
+          "t50_improvement": 0.06028512849977563,
+          "t100_improvement": 0.05353284068199737,
+          "hard_failure_improvement": 0.07194134956972442,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.8323899371069182
+        }
+      }
+    },
+    "bootstrap_all_low": 0.08888491295965614,
+    "bootstrap_t50_low": 0.08630755189944371,
+    "bootstrap_t100_low": 0.08069804446646152,
+    "bootstrap_hard_low": 0.09229635491900144,
+    "source_lows": {
+      "UCY/zara02/obsmat.txt": 0.09673364730105438,
+      "UCY/zara03/crowds_zara03.txt": 0.06707415954927377
+    },
+    "raw_no_fallback_easy_degradation": 1.6257516010806778,
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "candidate_fde_input": false,
+      "candidate_fde_label_only": true,
+      "train_only_floor_selection": true,
+      "train_only_normalization_statistics": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "validation_policy_selection_only": true,
+      "test_threshold_tuning": false,
+      "mixed_external_neural_proposal_used": false,
+      "mixed_external_floor_used": false,
+      "bootstrap_uses_test_labels_for_ci_only": true
     }
   },
   "domain_local_neural_endpoint_retrain_summary": {
@@ -4566,6 +4628,12 @@
       "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The repaired validation-selected conservative bounded residual policy passes UCY-source test with positive all/t50/t100/hard and easy degradation at zero; raw ungated endpoint neural remains unsafe, so the safety policy is required."
     },
     {
+      "requirement": "strict pure UCY-only neural retrain bootstrap/statistical evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_external_split/stage41_pure_ucy_neural_statistical_evidence.json",
+      "note": "The strict pure-UCY conservative bounded residual policy is recomputed on test and has positive 2000-bootstrap lower bounds for all/t50/t100/hard and both held-out UCY sources. Raw ungated endpoint neural remains unsafe and is retained as no-fallback negative evidence."
+    },
+    {
       "requirement": "domain-local neural endpoint retrain positive on at least two external domains",
       "status": "complete",
       "evidence": "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json",
@@ -4637,7 +4705,7 @@
   ],
   "next_highest_value_actions": [
     "Strict pure-UCY neural proposal retrain has now been attempted and failed deployability; next useful work is new independent UCY-like data or stronger scene/domain causal features before retrying source-only neural independence.",
-    "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
+    "Move from the current protected policy to larger independent external validation and a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]
 }

@@ -39,6 +39,8 @@
 - strict pure UCY neural best trial/mode: `pure_ucy_transformer` / `bounded_endpoint_residual`
 - strict pure UCY neural best metrics all/t+50/hard/easy: `9.01%` / `8.80%` / `9.36%` / `0.00%`
 - strict pure UCY neural blocker: ``
+- strict pure UCY neural statistical evidence: `True`
+- strict pure UCY neural bootstrap lows all/t50/t100/hard: `8.89%` / `8.63%` / `8.07%` / `9.23%`
 - endpoint-to-full bridge gate: `True`
 - endpoint-to-full bridge positive domains: `['ETH_UCY', 'TrajNet']`
 - calibrated learned-shape meta-policy gate: `True`
@@ -65,6 +67,6 @@
 
 ## Current Best Deployable Answer
 
-M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement. The stricter pure UCY-only neural retrain/select/test audit has now been attempted and failed deployability because source-shift/easy-safety was not reliable, so Stage37 remains the explicit safety floor. A new endpoint-to-full bridge audit is positive on ETH_UCY and TrajNet, showing endpoint neural dynamics can survive actual full-waypoint evaluation through a linear bridge. The calibrated learned-shape meta-policy then adds small but positive protected waypoint-shape residual contribution on both domains.
+M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, strict pure-UCY neural bootstrap evidence, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement. The stricter pure UCY-only neural retrain/select/test audit now passes with a conservative bounded residual policy, while raw no-fallback endpoint neural remains unsafe. A new endpoint-to-full bridge audit is positive on ETH_UCY and TrajNet, showing endpoint neural dynamics can survive actual full-waypoint evaluation through a linear bridge. The calibrated learned-shape meta-policy then adds small but positive protected waypoint-shape residual contribution on both domains.
 
-Recent negative source-switch and strict pure-UCY neural retrain audits show that residual source selection and source-only neural retraining are not the next useful deployment path without new causal features, stronger scene/domain context, or more independent UCY-like validation data.
+Recent negative source-switch audits show residual source selection is not the next useful deployment path. The strict pure-UCY neural retrain branch is now positive with conservative bounded residual deployment and bootstrap support, but raw ungated endpoint neural remains unsafe.

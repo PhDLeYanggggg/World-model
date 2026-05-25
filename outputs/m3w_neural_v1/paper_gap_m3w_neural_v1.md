@@ -13,14 +13,14 @@
 - Foundation-scale world model.
 - Seconds-level long-horizon prediction.
 - Ungated neural dynamics safe replacement.
-- Pure UCY-only neural retrain/select/test deployability: it has now been attempted and is negative because source-shift/easy-safety was not reliable.
+- Independent UCY-like replication beyond the current strict pure-UCY zara held-out sources.
 - Ungated learned waypoint-shape dynamics: calibrated learned-shape residuals are positive on two domains, but the contribution is small and protected by endpoint bridge/floor fallback.
 - Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.
 - Residual source-switching over the fixed composer as a deployable improvement path.
 
 ## Shortest Next Path
 
-1. Add independent UCY-like validation sources or stronger scene/domain causal features before retrying strict pure UCY-only neural retrain/select/test.
+1. Add independent UCY-like validation sources to validate the repaired strict pure UCY-only neural retrain beyond the current zara held-out sources.
 2. Strengthen the protected all-agent full-waypoint rollout with stricter source-heldout retrain/select/test evidence and safer no-fallback neural rollout research.
 3. Complete homography/FPS/scale audit before any physical-world claims.
 4. Add genuinely new scene/domain context before retrying fixed-composer residual source-switching.

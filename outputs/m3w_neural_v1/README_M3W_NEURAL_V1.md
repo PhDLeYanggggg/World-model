@@ -14,7 +14,7 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 - `reproducibility_m3w_neural_v1.md` — rerun commands.
 - `paper_gap_m3w_neural_v1.md` — what is still missing before stronger publication claims.
 
-Latest package inputs include the negative fixed-composer source-switch audits and the negative strict pure-UCY neural retrain audit, so the frozen package records both the successful composite-tail path and the exhausted source-switch / source-only retrain branches.
+Latest package inputs include the negative fixed-composer source-switch audits and the positive strict pure-UCY neural retrain/statistical evidence, so the frozen package records both the successful composite-tail path and the repaired source-only neural branch.
 
 The package also includes the positive endpoint-to-full bridge audit: domain-local endpoint neural dynamics pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet through a linear waypoint bridge. This strengthens world-state evidence without claiming learned waypoint-shape dynamics.
 

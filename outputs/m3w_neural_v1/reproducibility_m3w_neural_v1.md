@@ -10,6 +10,7 @@ Use arm64 PyTorch for training/evaluation commands on Apple Silicon.
 /usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_composite_tail_multiseed.py
 /usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_source_validation.py
 /usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_retrain.py
+/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_statistical_evidence.py
 /usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_to_full_trajectory_repair.py
 /usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_calibrated_shape_meta_policy.py
 /usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_geometry_audit.py
@@ -18,6 +19,6 @@ Use arm64 PyTorch for training/evaluation commands on Apple Silicon.
 python -m pytest tests
 ```
 
-- frozen git commit at package time: `4f0a4ff`
-- package input hash: `61039f8f776cc52216da5678ffed3504e5b457c7b10f3013b612adeb3a26d241`
+- frozen git commit at package time: `52ba61a`
+- package input hash: `44071931ceb325e067ce5ce68c0bced79e25983915bbcd20aed45668856ed4b8`
 - Do not commit caches/checkpoints/raw data when reproducing.

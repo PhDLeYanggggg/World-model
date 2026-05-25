@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `61039f8f776cc52216da5678ffed3504e5b457c7b10f3013b612adeb3a26d241`
-- git_commit: `4f0a4ff`
+- package_input_hash: `44071931ceb325e067ce5ce68c0bced79e25983915bbcd20aed45668856ed4b8`
+- git_commit: `52ba61a`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -24,9 +24,11 @@
 | all-agent composite multi-agent ADE all/t50 | `20.82% / 13.80%` | same-frame multi-agent rows |
 | pure UCY source-heldout gate | `True` | required for UCY held-out support |
 | pure UCY-only retrain/select/test gate | `False` | reported blocker, not claimed |
-| strict pure UCY neural retrain gate | `True` | negative deployability audit, not claimed |
+| strict pure UCY neural retrain gate | `True` | source-only neural retrain with validation-selected conservative residual policy |
 | strict pure UCY neural best trial/mode | `pure_ucy_transformer / bounded_endpoint_residual` | source-only neural retrain protocol |
-| strict pure UCY neural all/t50/hard/easy | `9.01% / 8.80% / 9.36% / 0.00%` | selected safe policy falls back if not reliable |
+| strict pure UCY neural all/t50/hard/easy | `9.01% / 8.80% / 9.36% / 0.00%` | bounded residual policy selected on validation; raw no-fallback neural remains unsafe |
+| strict pure UCY neural bootstrap stable | `True` | 2000-bootstrap lower bounds positive for all/t50/t100/hard |
+| strict pure UCY neural bootstrap lows all/t50/t100/hard | `8.89% / 8.63% / 8.07% / 9.23%` | strict pure-UCY source-only neural statistical evidence |
 | endpoint-to-full bridge gate | `True` | positive full-waypoint bridge evidence, not learned shape |
 | endpoint-to-full bridge positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
 | calibrated learned-shape meta-policy gate | `True` | positive learned-shape residual evidence under fallback |
