@@ -2,7 +2,7 @@
 
 - source: `fresh_run`
 - completion_status: `not_complete`
-- current_best_deployable: `M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor`
+- current_best_deployable: `M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor`
 
 ## Requirement Matrix
 
@@ -18,6 +18,7 @@
 | explicit goal/route head and non-degenerate physical-consistency target | `complete` | outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json | Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs. |
 | route/physical heads improve trajectory deployment policy | `partial` | outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json and outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json | Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference. |
 | joint multi-agent consistency improves trajectory deployment policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json | Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout. |
+| neural gain/harm/switch distillation improves deployment without base-switch leakage | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json | The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -142,6 +143,22 @@
 - hard delta over full-trajectory reference: `0.00045165607262387386`
 - expanded-on rows: `118`
 
+## Joint Policy Distillation
+
+- best name: `joint_distill_nobase_balanced::distiller_only`
+- joint policy distillation contributes: `True`
+- all improvement: `0.28592959855458044`
+- t50 improvement: `0.21383787591021597`
+- t100 diagnostic improvement: `0.2887528737231674`
+- hard/failure improvement: `0.28678460411829854`
+- easy degradation: `0.0`
+- switch rate: `0.42232747442731594`
+- positive external domains: `2`
+- all delta over joint consistency: `0.09973904221060959`
+- t50 delta over joint consistency: `0.06542141090265718`
+- base switch input: `False`
+- base-plus-distiller deployable: `False`
+
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. Joint multi-agent consistency calibration adds a tiny positive lift by safely expanding group-consistent interventions, including a small positive UCY transfer signal. The full active objective is still not complete because this is post-hoc current-frame group calibration rather than a jointly consistent latent world-state rollout.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation is the strongest current deployment candidate: it learns gain/harm/switch without base-switch input and improves ETH_UCY and TrajNet while preserving easy. The full active objective is still not complete because UCY remains fallback-only and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.

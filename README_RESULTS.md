@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, route/physical heads remain diagnostic, and joint multi-agent consistency gives a tiny positive policy lift but is not yet a jointly consistent latent rollout.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller that strongly improves ETH_UCY and TrajNet while preserving easy, but UCY remains fallback-only and the rollout is not yet a jointly consistent latent world state.
 
 ```text
 completion_status = not_complete
@@ -1068,11 +1068,23 @@ joint_multiagent_consistency_easy = 0.0
 joint_multiagent_consistency_all_delta_vs_full_traj = 0.0004120320456266757
 joint_multiagent_consistency_t50_delta_vs_full_traj = 0.0003794692302440117
 joint_multiagent_consistency_expanded_on = 118
+joint_policy_distillation_best = joint_distill_nobase_balanced::distiller_only
+joint_policy_distillation_contributes = True
+joint_policy_distillation_all = 0.28592959855458044
+joint_policy_distillation_t50 = 0.21383787591021597
+joint_policy_distillation_t100_diagnostic = 0.2887528737231674
+joint_policy_distillation_hard = 0.28678460411829854
+joint_policy_distillation_easy = 0.0
+joint_policy_distillation_switch_rate = 0.42232747442731594
+joint_policy_distillation_positive_domains = 2
+joint_policy_distillation_all_delta_vs_joint_consistency = 0.09973904221060959
+joint_policy_distillation_t50_delta_vs_joint_consistency = 0.06542141090265718
+joint_policy_distillation_base_switch_input = False
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: make the tiny joint-consistency gain statistically stable by training it as an explicit joint rollout/policy objective; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: bootstrap/multi-seed the no-base-switch distiller, add ablations, and fix UCY fallback-only behavior; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

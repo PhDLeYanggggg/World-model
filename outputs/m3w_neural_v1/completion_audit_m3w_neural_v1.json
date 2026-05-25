@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor",
+  "current_best_deployable": "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -128,6 +128,25 @@
     "expanded_on": 118,
     "guarded_off": 0
   },
+  "joint_policy_distillation_summary": {
+    "best_name": "joint_distill_nobase_balanced::distiller_only",
+    "joint_policy_distillation_contributes": true,
+    "all_improvement": 0.28592959855458044,
+    "t50_improvement": 0.21383787591021597,
+    "t100_improvement": 0.2887528737231674,
+    "hard_failure_improvement": 0.28678460411829854,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.42232747442731594,
+    "positive_external_domains": 2,
+    "all_delta_over_joint_consistency": 0.09973904221060959,
+    "t50_delta_over_joint_consistency": 0.06542141090265718,
+    "hard_delta_over_joint_consistency": 0.0911524752661601,
+    "all_delta_over_full_trajectory_reference": 0.10015107425623626,
+    "t50_delta_over_full_trajectory_reference": 0.0658008801329012,
+    "hard_delta_over_full_trajectory_reference": 0.09160413133878398,
+    "base_switch_input": false,
+    "base_plus_distiller_deployable": false
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -186,6 +205,12 @@
       "note": "Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout."
     },
     {
+      "requirement": "neural gain/harm/switch distillation improves deployment without base-switch leakage",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json",
+      "note": "The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY."
+    },
+    {
       "requirement": "t100 diagnostic positive or blocker analysis",
       "status": "complete",
       "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
@@ -207,7 +232,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Turn the tiny positive joint-consistency group expansion into an explicitly trained joint rollout/policy distillation objective and verify the lift is statistically stable.",
+    "Run bootstrap/multi-seed and ablations for the deployable no-base-switch joint policy distiller; UCY remains fallback-only.",
     "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

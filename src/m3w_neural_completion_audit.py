@@ -56,6 +56,7 @@ def build_completion_audit() -> dict[str, Any]:
     route_policy = read_json("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json", {})
     joint_route = read_json("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json", {})
     joint_consistency = read_json("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json", {})
+    joint_distill = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -112,6 +113,16 @@ def build_completion_audit() -> dict[str, Any]:
     joint_consistency_metrics = joint_consistency.get("test_metrics", {})
     joint_consistency_lift = joint_consistency.get("lift_over_full_trajectory_reference") or {}
     joint_consistency_contributes = bool(joint_consistency.get("joint_multiagent_consistency_contributes"))
+    joint_distill_metrics = joint_distill.get("test_metrics", {})
+    joint_distill_lift_joint = joint_distill.get("lift_over_joint_consistency_reference") or {}
+    joint_distill_lift_full = joint_distill.get("lift_over_full_trajectory_reference") or {}
+    joint_distill_no_leak = joint_distill.get("no_leakage") or {}
+    joint_distill_contributes = bool(joint_distill.get("joint_policy_distillation_contributes"))
+    joint_distill_positive_domains = sum(
+        1
+        for row in (joint_distill_metrics.get("by_domain") or {}).values()
+        if row.get("all_improvement", 0.0) > 0 or row.get("t50_improvement", 0.0) > 0 or row.get("hard_failure_improvement", 0.0) > 0
+    )
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -189,6 +200,18 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout.",
         },
         {
+            "requirement": "neural gain/harm/switch distillation improves deployment without base-switch leakage",
+            "status": _status(
+                joint_distill_contributes
+                and joint_distill_metrics.get("easy_degradation", 1.0) <= 0.02
+                and joint_distill_positive_domains >= 2
+                and not joint_distill_no_leak.get("base_switch_input", True)
+                and not joint_distill_no_leak.get("future_waypoints_input", True)
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json",
+            "note": "The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY.",
+        },
+        {
             "requirement": "t100 diagnostic positive or blocker analysis",
             "status": _status(best.get("t100_diagnostic", 0.0) > 0 or best.get("t100_improvement", 0.0) > 0),
             "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
@@ -214,7 +237,9 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
-            "M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor"
+            "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor"
+            if joint_distill_contributes
+            else "M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor"
             if joint_consistency_contributes
             else "M3W-Neural v1 self-gated endpoint candidate under Stage37 safety floor"
         ),
@@ -340,9 +365,28 @@ def build_completion_audit() -> dict[str, Any]:
             "expanded_on": (joint_consistency_metrics.get("joint_consistency") or {}).get("expanded_on"),
             "guarded_off": (joint_consistency_metrics.get("joint_consistency") or {}).get("guarded_off"),
         },
+        "joint_policy_distillation_summary": {
+            "best_name": joint_distill.get("best_name"),
+            "joint_policy_distillation_contributes": joint_distill.get("joint_policy_distillation_contributes"),
+            "all_improvement": joint_distill_metrics.get("all_improvement"),
+            "t50_improvement": joint_distill_metrics.get("t50_improvement"),
+            "t100_improvement": joint_distill_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_distill_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_distill_metrics.get("easy_degradation"),
+            "switch_rate": joint_distill_metrics.get("switch_rate"),
+            "positive_external_domains": joint_distill_positive_domains,
+            "all_delta_over_joint_consistency": joint_distill_lift_joint.get("all_delta"),
+            "t50_delta_over_joint_consistency": joint_distill_lift_joint.get("t50_delta"),
+            "hard_delta_over_joint_consistency": joint_distill_lift_joint.get("hard_delta"),
+            "all_delta_over_full_trajectory_reference": joint_distill_lift_full.get("all_delta"),
+            "t50_delta_over_full_trajectory_reference": joint_distill_lift_full.get("t50_delta"),
+            "hard_delta_over_full_trajectory_reference": joint_distill_lift_full.get("hard_delta"),
+            "base_switch_input": joint_distill_no_leak.get("base_switch_input"),
+            "base_plus_distiller_deployable": joint_distill_no_leak.get("base_plus_distiller_deployable"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Turn the tiny positive joint-consistency group expansion into an explicitly trained joint rollout/policy distillation objective and verify the lift is statistically stable.",
+            "Run bootstrap/multi-seed and ablations for the deployable no-base-switch joint policy distiller; UCY remains fallback-only.",
             "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -487,9 +531,25 @@ def build_completion_audit() -> dict[str, Any]:
             f"- hard delta over full-trajectory reference: `{joint_consistency_lift.get('hard_delta')}`",
             f"- expanded-on rows: `{(joint_consistency_metrics.get('joint_consistency') or {}).get('expanded_on')}`",
             "",
+            "## Joint Policy Distillation",
+            "",
+            f"- best name: `{joint_distill.get('best_name')}`",
+            f"- joint policy distillation contributes: `{joint_distill.get('joint_policy_distillation_contributes')}`",
+            f"- all improvement: `{joint_distill_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{joint_distill_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{joint_distill_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_distill_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_distill_metrics.get('easy_degradation')}`",
+            f"- switch rate: `{joint_distill_metrics.get('switch_rate')}`",
+            f"- positive external domains: `{joint_distill_positive_domains}`",
+            f"- all delta over joint consistency: `{joint_distill_lift_joint.get('all_delta')}`",
+            f"- t50 delta over joint consistency: `{joint_distill_lift_joint.get('t50_delta')}`",
+            f"- base switch input: `{joint_distill_no_leak.get('base_switch_input')}`",
+            f"- base-plus-distiller deployable: `{joint_distill_no_leak.get('base_plus_distiller_deployable')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. Joint multi-agent consistency calibration adds a tiny positive lift by safely expanding group-consistent interventions, including a small positive UCY transfer signal. The full active objective is still not complete because this is post-hoc current-frame group calibration rather than a jointly consistent latent world-state rollout.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation is the strongest current deployment candidate: it learns gain/harm/switch without base-switch input and improves ETH_UCY and TrajNet while preserving easy. The full active objective is still not complete because UCY remains fallback-only and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -508,13 +568,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     route_policy_summary = audit.get("route_physical_policy_integration_summary", {})
     joint_route_summary = audit.get("joint_route_conditioned_world_state_summary", {})
     joint_consistency_summary = audit.get("joint_multiagent_consistency_summary", {})
+    joint_distill_summary = audit.get("joint_policy_distillation_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, route/physical heads remain diagnostic, and joint multi-agent consistency gives a tiny positive policy lift but is not yet a jointly consistent latent rollout.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller that strongly improves ETH_UCY and TrajNet while preserving easy, but UCY remains fallback-only and the rollout is not yet a jointly consistent latent world state.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -590,11 +651,23 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_multiagent_consistency_all_delta_vs_full_traj = {joint_consistency_summary.get('all_delta_over_full_trajectory_reference')}",
             f"joint_multiagent_consistency_t50_delta_vs_full_traj = {joint_consistency_summary.get('t50_delta_over_full_trajectory_reference')}",
             f"joint_multiagent_consistency_expanded_on = {joint_consistency_summary.get('expanded_on')}",
+            f"joint_policy_distillation_best = {joint_distill_summary.get('best_name')}",
+            f"joint_policy_distillation_contributes = {joint_distill_summary.get('joint_policy_distillation_contributes')}",
+            f"joint_policy_distillation_all = {joint_distill_summary.get('all_improvement')}",
+            f"joint_policy_distillation_t50 = {joint_distill_summary.get('t50_improvement')}",
+            f"joint_policy_distillation_t100_diagnostic = {joint_distill_summary.get('t100_improvement')}",
+            f"joint_policy_distillation_hard = {joint_distill_summary.get('hard_failure_improvement')}",
+            f"joint_policy_distillation_easy = {joint_distill_summary.get('easy_degradation')}",
+            f"joint_policy_distillation_switch_rate = {joint_distill_summary.get('switch_rate')}",
+            f"joint_policy_distillation_positive_domains = {joint_distill_summary.get('positive_external_domains')}",
+            f"joint_policy_distillation_all_delta_vs_joint_consistency = {joint_distill_summary.get('all_delta_over_joint_consistency')}",
+            f"joint_policy_distillation_t50_delta_vs_joint_consistency = {joint_distill_summary.get('t50_delta_over_joint_consistency')}",
+            f"joint_policy_distillation_base_switch_input = {joint_distill_summary.get('base_switch_input')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: make the tiny joint-consistency gain statistically stable by training it as an explicit joint rollout/policy objective; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: bootstrap/multi-seed the no-base-switch distiller, add ablations, and fix UCY fallback-only behavior; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -619,8 +692,30 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json")
     state["generated_reports"] = sorted(generated)
-    state["current_verdict"] = "stage41_joint_consistency_tiny_positive_not_complete"
+    state["current_verdict"] = "stage41_joint_policy_distiller_strong_two_domain_not_complete"
+    state["current_best_deployable"] = audit.get("current_best_deployable")
+    state["m3w_neural_v1_current_candidate"] = {
+        "source": audit.get("source"),
+        "completion_status": audit.get("completion_status"),
+        "deployment_state": "joint_policy_distilled_candidate_pending_bootstrap_ablation_and_ucy_repair",
+        "current_best_deployable": audit.get("current_best_deployable"),
+        "best_name": joint_distill_summary.get("best_name"),
+        "all_improvement": joint_distill_summary.get("all_improvement"),
+        "t50_improvement": joint_distill_summary.get("t50_improvement"),
+        "t100_raw_frame_diagnostic": joint_distill_summary.get("t100_improvement"),
+        "hard_failure_improvement": joint_distill_summary.get("hard_failure_improvement"),
+        "easy_degradation": joint_distill_summary.get("easy_degradation"),
+        "switch_rate": joint_distill_summary.get("switch_rate"),
+        "positive_external_domains": joint_distill_summary.get("positive_external_domains"),
+        "base_switch_input": joint_distill_summary.get("base_switch_input"),
+        "base_plus_distiller_deployable": joint_distill_summary.get("base_plus_distiller_deployable"),
+        "ucy_status": "fallback_only",
+        "stage5c_executed": False,
+        "smc_enabled": False,
+    }
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
@@ -635,6 +730,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "route_physical_policy_integration_summary": route_policy_summary,
         "joint_route_conditioned_world_state_summary": joint_route_summary,
         "joint_multiagent_consistency_summary": joint_consistency_summary,
+        "joint_policy_distillation_summary": joint_distill_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }
