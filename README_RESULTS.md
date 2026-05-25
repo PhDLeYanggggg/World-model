@@ -1631,3 +1631,31 @@ pytest = 229 passed in 65.30s
 ```
 
 Conclusion: pairwise gain/harm switching is safe and two-domain positive, but it still does not replace the fixed horizon composer. It repairs neither ETH_UCY’s weak ranking nor TrajNet t50; it only gives tiny TrajNet all/hard/t100 gains over fixed composer. Current best deployable shape policy remains the protected fixed composer/composite route, while pairwise switching is diagnostic evidence for future source-specific hard/failure features. Stage5C and SMC remain disabled.
+
+## Stage41 Weighted Pairwise Shape Switch Policy
+
+The next repair tried to address the rare-positive switch-label problem by upweighting hard/failure, t50/t100, source-switch, and positive-gain rows during pairwise gain/harm training. These labels are used only as training weights, never as inference inputs; validation still selects conservative safety thresholds and test is evaluated once.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_weighted_pairwise_gate = True
+domains_better_than_fixed_on_any_core_metric = ['TrajNet']
+ETH_UCY_all = 0.016058154598355467
+ETH_UCY_t50 = 0.0017756136269108103
+ETH_UCY_t100 = 0.004284781808472471
+ETH_UCY_hard = 0.015850944660093846
+ETH_UCY_easy = 0.0
+ETH_UCY_shape_gain_all_t50_t100_hard = 0.000369 / -0.000126 / -0.000030 / 0.000384
+ETH_UCY_delta_vs_fixed_all_t50_t100_hard = -0.000356 / -0.000125 / -0.000044 / -0.000358
+TrajNet_all = 0.0382961343306194
+TrajNet_t50 = 0.026692709235102585
+TrajNet_t100 = 0.014508831312789572
+TrajNet_hard = 0.039357774509706234
+TrajNet_easy = 0.0
+TrajNet_shape_gain_all_t50_t100_hard = 0.000282 / 0.000223 / 0.000718 / 0.000309
+TrajNet_delta_vs_fixed_all_t50_t100_hard = 0.000158 / -0.000239 / 0.000708 / 0.000173
+pytest = 231 passed in 66.04s
+```
+
+Conclusion: hard/tail/positive-gain weighting did not fix the remaining source-switch problem. It is safe and positive, but ETH_UCY remains below fixed composer and TrajNet t50 remains below fixed composer. The likely bottleneck is not simple positive-label imbalance; it is source-specific causal feature insufficiency or a need for stronger per-domain/t50 source-family priors. Fixed composer/composite remains the deployable route; Stage5C and SMC remain disabled.

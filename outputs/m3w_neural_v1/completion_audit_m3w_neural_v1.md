@@ -379,6 +379,8 @@
 - calibrated shape source meta-policy summary: `Validation-only affine log calibration was tested globally, per source, and per source+horizon to repair ETH_UCY source ranking. Validation selected no calibration for both ETH_UCY and TrajNet. ETH_UCY remained weaker than fixed composer with rank accuracy 0.0193 and fixed deltas all/t50/t100/hard = -0.000099 / -0.000125 / -0.000044 / -0.000095. This rules out simple raw-ADE calibration as the repair path; the next fix should use pairwise gain/harm source switching.`
 - pairwise gain/harm shape switch policy: `diagnostic_safe_not_deployable_over_fixed`
 - pairwise gain/harm shape switch policy summary: `A pairwise source-switch model predicts gain and harm for switching from the protected bridge into old-shape or gain-gate sources. It passes the two-domain positive/safety gate, but ETH_UCY is weaker than fixed composer and TrajNet only improves all/hard/t100 by tiny amounts while t50 falls. Current deployable shape policy remains the fixed horizon composer/composite route; pairwise switching is diagnostic evidence for future source-specific hard/failure features.`
+- weighted pairwise shape switch policy: `diagnostic_safe_not_deployable_over_fixed`
+- weighted pairwise shape switch policy summary: `Hard/failure, t50/t100, source-switch, and positive-gain rows were upweighted during pairwise training. This did not repair the deployability gap: ETH_UCY remains below fixed composer and TrajNet t50 remains below fixed composer. The blocker is likely source-specific causal feature insufficiency or missing per-domain/t50 priors rather than simple positive-label imbalance.`
 
 ## Neural Group Consistency Distiller
 
