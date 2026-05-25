@@ -238,3 +238,23 @@ fresh_static_gate_mean_test = 0.12781384587287903
 It exists because Stage42-J showed that static/context is useful only when gated, but Stage42-J itself was a cached-checkpoint expert gate rather than a new trained checkpoint. Stage42-K shows that the learned static gate/dropout rule can be trained into a fresh checkpoint and improve over the failed Stage42-I full static+sequence head while preserving easy cases.
 
 It is not the new best deployable full-waypoint policy: Stage42-J remains stronger on ADE all/t50/hard and FDE t50, while Stage42-K still has negative ADE t50. The next repair should make the learned static gate horizon-aware, especially for t+50.
+
+## Stage42-L Horizon-Aware T50 Static-Gate Repair
+
+```text
+source = fresh_run
+verdict = stage42_l_horizon_static_gate_repair_pass
+gates = 11 / 11
+horizon_static_gate_ade_all = 0.021866490467258453
+horizon_static_gate_ade_t50 = 0.0020146201423274133
+horizon_static_gate_ade_hard_failure = 0.02396933275296098
+horizon_static_gate_ade_easy_degradation = 0.0
+horizon_static_gate_fde_t50 = 0.05315292474994737
+horizon_static_gate_t50_mean = 0.19026817878087363
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-L targets the Stage42-K t+50 ADE failure with horizon-conditioned static gating and t+50-weighted training/policy selection. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+It repairs Stage42-K's t+50 ADE sign and improves the fresh checkpoint on all/hard/FDE t50 without easy degradation. It still does not surpass the Stage42-J policy-level static gate, so the deployable full-waypoint static-gated path remains Stage42-J unless a later fresh checkpoint catches up.

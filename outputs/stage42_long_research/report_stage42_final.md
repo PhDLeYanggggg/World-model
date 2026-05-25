@@ -93,3 +93,14 @@ This strengthens the full-waypoint world-state evidence: the problem was not sim
 Stage42-K trains the Stage42-J static-gating idea directly into a fresh `StaticGatedSequenceWaypoint` checkpoint with three seeds. It passes its fresh checkpoint gates (`9 / 9`) and improves over the failed Stage42-I full static+sequence head while preserving easy cases. The fresh checkpoint result is positive on ADE all (`0.0136`), t+100 raw-frame diagnostic ADE (`0.0159`), hard/failure ADE (`0.0148`), FDE all (`0.0312`), and FDE t50 (`0.0358`), with easy degradation `0.0`.
 
 The honest boundary is that Stage42-K does not replace Stage42-J as the strongest full-waypoint static-gated evidence. Stage42-J's policy-level gate remains stronger on ADE all/t50/hard and FDE t50, and Stage42-K's ADE t50 mean is still negative (`-0.0122`). The result is therefore a useful fresh-checkpoint repair step, not a new best deployable model. Next work should make the learned static gate horizon-aware and explicitly repair the t+50 slice.
+
+## Stage42-L Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/horizon_static_gate_repair_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_l_gate.md`
+- verdict: `stage42_l_horizon_static_gate_repair_pass`
+
+Stage42-L directly targets the Stage42-K t+50 failure by adding horizon embeddings to the static gate, lowering t+50 static dropout/gate penalty, and using a t+50-weighted validation policy. It passes its gates (`11 / 11`) and repairs the t+50 ADE sign: Stage42-K had ADE t50 `-0.0122`, while Stage42-L reaches `+0.0020`. It also improves the fresh checkpoint on ADE all (`0.0219`), ADE hard/failure (`0.0240`), and FDE t50 (`0.0532`) while preserving easy cases (`0.0` degradation).
+
+The boundary remains: Stage42-L is still weaker than the Stage42-J policy-level static gate (`0.0362` all, `0.0369` t50, `0.0397` hard). Therefore Stage42-L is the strongest fresh checkpoint in this static-gated branch so far, but Stage42-J remains the strongest static-gated full-waypoint evidence overall. All claims remain dataset-local raw-frame 2.5D; Stage5C and SMC remain disabled.

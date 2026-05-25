@@ -2080,3 +2080,23 @@ smc_enabled = false
 Stage42-K trains the static gate/dropout idea directly into a fresh checkpoint over three seeds. It is a real fresh-run improvement over the failed Stage42-I full static+sequence head and preserves easy cases, with positive ADE all/hard and FDE all/t50.
 
 The honest boundary is important: Stage42-K does not beat the Stage42-J policy-level static expert gate, and its ADE t50 mean is still negative. So Stage42-K is a successful fresh-checkpoint repair step, not the new best deployable full-waypoint policy. Stage42-J remains the strongest static-gated full-waypoint evidence for now.
+
+## Stage42-L Horizon-Aware T50 Static-Gate Repair
+
+```text
+source = fresh_run
+verdict = stage42_l_horizon_static_gate_repair_pass
+gates = 11 / 11
+horizon_static_gate_ade_all = 0.021866490467258453
+horizon_static_gate_ade_t50 = 0.0020146201423274133
+horizon_static_gate_ade_hard_failure = 0.02396933275296098
+horizon_static_gate_ade_easy_degradation = 0.0
+horizon_static_gate_fde_t50 = 0.05315292474994737
+horizon_static_gate_t50_mean = 0.19026817878087363
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-L targets the Stage42-K t+50 ADE failure with horizon-conditioned static gating and t+50-weighted training/policy selection. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+Stage42-L interpretation: the targeted horizon-aware repair works relative to Stage42-K (`ADE t50` moves from `-0.0122` to `+0.0020`, and FDE t50 improves from `0.0358` to `0.0532`) while preserving easy cases. It still does not beat Stage42-J's policy-level static gate, so Stage42-J remains the strongest static-gated full-waypoint evidence and Stage42-L is the strongest fresh checkpoint in this static-gated branch.
