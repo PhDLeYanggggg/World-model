@@ -1231,7 +1231,15 @@ safe_switch_bounded_blend_delta_vs_teacher_all = 0.006654217800260431
 safe_switch_bounded_blend_delta_vs_teacher_t50 = 0.005358324070314557
 safe_switch_bounded_blend_delta_vs_teacher_t100 = 0.013229138842131616
 safe_switch_bounded_blend_delta_vs_teacher_hard = 0.0072769072843839044
-safe_switch_bounded_blend_status = strongest_fresh_candidate_pending_bootstrap_multiseed_and_source_level_validation
+safe_switch_bounded_blend_bootstrap_all_low = 0.20671347297933704
+safe_switch_bounded_blend_bootstrap_t50_low = 0.13060829691569112
+safe_switch_bounded_blend_bootstrap_t100_low = 0.13962817164239194
+safe_switch_bounded_blend_bootstrap_hard_low = 0.19986489207982036
+safe_switch_bounded_blend_delta_vs_teacher_all_low = 0.006356558489780059
+safe_switch_bounded_blend_delta_vs_teacher_t50_low = 0.004948699786380758
+safe_switch_bounded_blend_delta_vs_teacher_t100_low = 0.01249062196636364
+safe_switch_bounded_blend_delta_vs_teacher_hard_low = 0.006931417129331407
+safe_switch_bounded_blend_status = strongest_bootstrap_supported_candidate_pending_multiseed_and_source_level_validation
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1328,7 +1336,22 @@ safe_switch_delta_vs_teacher_repair_t50 = 0.005358324070314557
 safe_switch_delta_vs_teacher_repair_hard = 0.0072769072843839044
 ```
 
-This proves a safe nonzero continuous neural-dynamics contribution exists under the Stage37/teacher safety floor and gives a small fresh-run lift over the teacher-guided repaired switch on all/t50/t100/hard while keeping easy degradation at 0.0. It is now the strongest fresh candidate, but it is not yet frozen as final M3W-Neural v1 because bootstrap/multiseed evidence for this composite-tail policy and the pure-UCY source-level validation blocker remain open.
+This proves a safe nonzero continuous neural-dynamics contribution exists under the Stage37/teacher safety floor and gives a small fresh-run lift over the teacher-guided repaired switch on all/t50/t100/hard while keeping easy degradation at 0.0. Follow-up bootstrap evidence for the frozen composite-tail policy is now positive, including positive CI lows for all/t50/t100/hard and positive delta-vs-teacher CI lows:
+
+```text
+composite_tail_evidence_pass = true
+composite_tail_strict_delta_vs_teacher_pass = true
+bootstrap_all_low = 0.20671347297933704
+bootstrap_t50_low = 0.13060829691569112
+bootstrap_t100_raw_frame_low = 0.13962817164239194
+bootstrap_hard_low = 0.19986489207982036
+delta_vs_teacher_all_low = 0.006356558489780059
+delta_vs_teacher_t50_low = 0.004948699786380758
+delta_vs_teacher_t100_low = 0.01249062196636364
+delta_vs_teacher_hard_low = 0.006931417129331407
+```
+
+Composite-tail is now the strongest bootstrap-supported fresh candidate, but it is not yet frozen as final M3W-Neural v1 because multiseed replication for this specific policy and the pure-UCY source-level validation blocker remain open.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 
