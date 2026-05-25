@@ -1189,6 +1189,18 @@ teacher_guided_no_fallback_all = 0.296621240422128
 teacher_guided_no_fallback_easy = 1.2458611044726973
 teacher_guided_no_group_consistency_all_delta = -0.1993508302918573
 teacher_guided_no_neighbor_interaction_all_delta = -0.1980910960572272
+teacher_guided_multiseed_replication_pass = True
+teacher_guided_multiseed_all_mean = 0.20399416929662803
+teacher_guided_multiseed_all_min = 0.20358992224459205
+teacher_guided_multiseed_t50_mean = 0.13176918009378483
+teacher_guided_multiseed_t50_min = 0.13019734119222148
+teacher_guided_multiseed_t100_mean = 0.1349446267607578
+teacher_guided_multiseed_t100_min = 0.13366944267790382
+teacher_guided_multiseed_hard_mean = 0.1970419557530916
+teacher_guided_multiseed_hard_min = 0.19653792868736553
+teacher_guided_multiseed_easy_max = 0.0
+teacher_guided_multiseed_collision_delta_max = -0.0037418834146520363
+teacher_guided_multiseed_positive_domain_counts = [3, 3, 3]
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1227,7 +1239,7 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: run multi-seed/bootstrap replication for the teacher-guided repair, then rebuild or acquire a true source-level UCY validation split and continue toward a jointly learned multi-agent latent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: rebuild or acquire a true source-level UCY validation split, then continue from teacher-guided safe switching toward a jointly learned multi-agent latent rollout with safe non-fallback dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

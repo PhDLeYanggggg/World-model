@@ -69,6 +69,7 @@ def build_completion_audit() -> dict[str, Any]:
     teacher_proposal = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json", {})
     teacher_repair = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json", {})
     teacher_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json", {})
+    teacher_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json", {})
     group_distiller = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json", {})
     group_distiller_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json", {})
     group_distiller_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json", {})
@@ -195,6 +196,10 @@ def build_completion_audit() -> dict[str, Any]:
     teacher_evidence_ablation = teacher_evidence.get("ablations") or {}
     teacher_evidence_no_leak = teacher_evidence.get("no_leakage") or {}
     teacher_evidence_pass = bool(teacher_evidence.get("evidence_pass"))
+    teacher_multiseed_summary = teacher_multiseed.get("metric_summary") or {}
+    teacher_multiseed_pass = bool(teacher_multiseed.get("replication_pass"))
+    teacher_multiseed_no_leak = teacher_multiseed.get("no_leakage") or {}
+    teacher_multiseed_domains = teacher_multiseed.get("positive_domain_counts") or []
     group_distiller_metrics = group_distiller.get("test_metrics") or {}
     group_distiller_lift = group_distiller.get("lift_over_fixed_proximity_guard") or {}
     group_distiller_deployable = bool(group_distiller.get("group_consistency_distiller_deployable"))
@@ -407,6 +412,26 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required.",
         },
         {
+            "requirement": "teacher-guided repair multi-seed replication",
+            "status": _status(
+                teacher_multiseed_pass
+                and (teacher_multiseed_summary.get("all_improvement") or {}).get("min", 0.0) > 0
+                and (teacher_multiseed_summary.get("t50_improvement") or {}).get("min", 0.0) > 0
+                and (teacher_multiseed_summary.get("t100_improvement") or {}).get("min", 0.0) > 0
+                and (teacher_multiseed_summary.get("hard_failure_improvement") or {}).get("min", 0.0) > 0
+                and (teacher_multiseed_summary.get("easy_degradation") or {}).get("max", 1.0) <= 0.02
+                and (teacher_multiseed_summary.get("collision_delta_vs_floor_005") or {}).get("max", 1.0) <= 0.01
+                and min(teacher_multiseed_domains or [0]) >= 2
+                and not teacher_multiseed_no_leak.get("future_waypoints_input", True)
+                and not teacher_multiseed_no_leak.get("test_threshold_tuning", True)
+                and not teacher_multiseed_no_leak.get("stage5c_executed", True)
+                and not teacher_multiseed_no_leak.get("smc_enabled", True),
+                partial=bool(teacher_multiseed_summary),
+            ),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json",
+            "note": "Three fresh teacher-guided seeds each select policy and proximity guard on validation, then evaluate test once. All seeds are positive on all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and all three external domains positive.",
+        },
+        {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
             "status": _status(group_distiller_deployable and group_distiller_improves_guard, partial=group_distiller_deployable or bool(group_distiller_metrics)),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
@@ -451,7 +476,9 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
-            "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (bootstrap-supported; pending multi-seed/source replication)"
+            "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (multi-seed/bootstrap supported; pending source-level validation)"
+            if teacher_multiseed_pass
+            else "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (bootstrap-supported; pending multi-seed/source replication)"
             if teacher_evidence_pass
             else "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (single fresh run; pending multi-seed/CI)"
             if teacher_repair_deployable and teacher_repair_improves_current
@@ -811,6 +838,22 @@ def build_completion_audit() -> dict[str, Any]:
             "no_group_consistency_all_delta": ((teacher_evidence_ablation.get("no_group_consistency") or {}).get("delta_vs_full") or {}).get("all_delta"),
             "no_neighbor_interaction_all_delta": ((teacher_evidence_ablation.get("no_neighbor_interaction") or {}).get("delta_vs_full") or {}).get("all_delta"),
         },
+        "teacher_guided_multiseed_summary": {
+            "replication_pass": teacher_multiseed_pass,
+            "seeds": teacher_multiseed.get("seeds"),
+            "all_mean": (teacher_multiseed_summary.get("all_improvement") or {}).get("mean"),
+            "all_min": (teacher_multiseed_summary.get("all_improvement") or {}).get("min"),
+            "t50_mean": (teacher_multiseed_summary.get("t50_improvement") or {}).get("mean"),
+            "t50_min": (teacher_multiseed_summary.get("t50_improvement") or {}).get("min"),
+            "t100_mean": (teacher_multiseed_summary.get("t100_improvement") or {}).get("mean"),
+            "t100_min": (teacher_multiseed_summary.get("t100_improvement") or {}).get("min"),
+            "hard_mean": (teacher_multiseed_summary.get("hard_failure_improvement") or {}).get("mean"),
+            "hard_min": (teacher_multiseed_summary.get("hard_failure_improvement") or {}).get("min"),
+            "easy_max": (teacher_multiseed_summary.get("easy_degradation") or {}).get("max"),
+            "collision_delta_max": (teacher_multiseed_summary.get("collision_delta_vs_floor_005") or {}).get("max"),
+            "switch_rate_mean": (teacher_multiseed_summary.get("switch_rate") or {}).get("mean"),
+            "positive_domain_counts": teacher_multiseed_domains,
+        },
         "group_consistency_distiller_summary": {
             "deployable": group_distiller_deployable,
             "improves_fixed_guard": group_distiller_improves_guard,
@@ -1156,6 +1199,18 @@ def build_completion_audit() -> dict[str, Any]:
             f"- no-group-consistency all/t50 delta: `{((teacher_evidence_ablation.get('no_group_consistency') or {}).get('delta_vs_full') or {}).get('all_delta')}` / `{((teacher_evidence_ablation.get('no_group_consistency') or {}).get('delta_vs_full') or {}).get('t50_delta')}`",
             f"- no-neighbor-interaction all/t50 delta: `{((teacher_evidence_ablation.get('no_neighbor_interaction') or {}).get('delta_vs_full') or {}).get('all_delta')}` / `{((teacher_evidence_ablation.get('no_neighbor_interaction') or {}).get('delta_vs_full') or {}).get('t50_delta')}`",
             "",
+            "## Teacher-Guided Repair Multi-Seed Replication",
+            "",
+            f"- replication pass: `{teacher_multiseed_pass}`",
+            f"- seeds: `{teacher_multiseed.get('seeds')}`",
+            f"- all mean/min: `{(teacher_multiseed_summary.get('all_improvement') or {}).get('mean')}` / `{(teacher_multiseed_summary.get('all_improvement') or {}).get('min')}`",
+            f"- t50 mean/min: `{(teacher_multiseed_summary.get('t50_improvement') or {}).get('mean')}` / `{(teacher_multiseed_summary.get('t50_improvement') or {}).get('min')}`",
+            f"- t100 mean/min: `{(teacher_multiseed_summary.get('t100_improvement') or {}).get('mean')}` / `{(teacher_multiseed_summary.get('t100_improvement') or {}).get('min')}`",
+            f"- hard mean/min: `{(teacher_multiseed_summary.get('hard_failure_improvement') or {}).get('mean')}` / `{(teacher_multiseed_summary.get('hard_failure_improvement') or {}).get('min')}`",
+            f"- easy max: `{(teacher_multiseed_summary.get('easy_degradation') or {}).get('max')}`",
+            f"- collision delta max @0.05: `{(teacher_multiseed_summary.get('collision_delta_vs_floor_005') or {}).get('max')}`",
+            f"- positive domain counts: `{teacher_multiseed_domains}`",
+            "",
             "## Neural Group Consistency Distiller",
             "",
             f"- deployable: `{group_distiller_deployable}`",
@@ -1174,7 +1229,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The frozen teacher-guided repair now has 2000-bootstrap evidence with positive CI lows on all/t50/t100/hard and all three external domains, plus feature ablations showing group/neighbor consistency is necessary. No-fallback neural is still unsafe for easy cases, so the Stage37 safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because the teacher-guided repair still needs multi-seed replication and source-level independent UCY validation before final freeze, and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The frozen teacher-guided repair has 2000-bootstrap evidence with positive CI lows on all/t50/t100/hard and all three external domains, plus feature ablations showing group/neighbor consistency is necessary. It now also has three fresh seeds with positive all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and three positive external domains per seed. No-fallback neural is still unsafe for easy cases, so the Stage37 safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because source-level independent UCY validation and final paper-package consolidation remain unavailable, and Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -1204,6 +1259,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     teacher_proposal_summary = audit.get("teacher_guided_proposal_summary", {})
     teacher_repair_summary = audit.get("teacher_guided_proposal_repair_summary", {})
     teacher_evidence_summary = audit.get("teacher_guided_evidence_summary", {})
+    teacher_multiseed_summary = audit.get("teacher_guided_multiseed_summary", {})
+    teacher_multiseed_pass = bool(teacher_multiseed_summary.get("replication_pass"))
+    teacher_multiseed_domains = teacher_multiseed_summary.get("positive_domain_counts") or []
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
@@ -1410,6 +1468,18 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"teacher_guided_no_fallback_easy = {teacher_evidence_summary.get('no_fallback_easy_degradation')}",
             f"teacher_guided_no_group_consistency_all_delta = {teacher_evidence_summary.get('no_group_consistency_all_delta')}",
             f"teacher_guided_no_neighbor_interaction_all_delta = {teacher_evidence_summary.get('no_neighbor_interaction_all_delta')}",
+            f"teacher_guided_multiseed_replication_pass = {teacher_multiseed_summary.get('replication_pass')}",
+            f"teacher_guided_multiseed_all_mean = {teacher_multiseed_summary.get('all_mean')}",
+            f"teacher_guided_multiseed_all_min = {teacher_multiseed_summary.get('all_min')}",
+            f"teacher_guided_multiseed_t50_mean = {teacher_multiseed_summary.get('t50_mean')}",
+            f"teacher_guided_multiseed_t50_min = {teacher_multiseed_summary.get('t50_min')}",
+            f"teacher_guided_multiseed_t100_mean = {teacher_multiseed_summary.get('t100_mean')}",
+            f"teacher_guided_multiseed_t100_min = {teacher_multiseed_summary.get('t100_min')}",
+            f"teacher_guided_multiseed_hard_mean = {teacher_multiseed_summary.get('hard_mean')}",
+            f"teacher_guided_multiseed_hard_min = {teacher_multiseed_summary.get('hard_min')}",
+            f"teacher_guided_multiseed_easy_max = {teacher_multiseed_summary.get('easy_max')}",
+            f"teacher_guided_multiseed_collision_delta_max = {teacher_multiseed_summary.get('collision_delta_max')}",
+            f"teacher_guided_multiseed_positive_domain_counts = {teacher_multiseed_summary.get('positive_domain_counts')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1448,7 +1518,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             "smc_enabled = false",
             "```",
             "",
-            "Next target: run multi-seed/bootstrap replication for the teacher-guided repair, then rebuild or acquire a true source-level UCY validation split and continue toward a jointly learned multi-agent latent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: rebuild or acquire a true source-level UCY validation split, then continue from teacher-guided safe switching toward a jointly learned multi-agent latent rollout with safe non-fallback dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -1499,6 +1569,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.md")
@@ -1511,7 +1583,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = (
-        "stage41_teacher_guided_proposal_repair_bootstrap_supported_not_complete"
+        "stage41_teacher_guided_proposal_repair_multiseed_supported_not_complete"
+        if teacher_multiseed_pass
+        else "stage41_teacher_guided_proposal_repair_bootstrap_supported_not_complete"
         if teacher_evidence_summary.get("evidence_pass")
         else "stage41_teacher_guided_proposal_repair_strong_single_run_not_complete"
         if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable")
@@ -1522,7 +1596,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
         "deployment_state": (
-            "teacher_guided_proposal_repair_strong_single_run_candidate_pending_multiseed_ci"
+            "teacher_guided_proposal_repair_multiseed_bootstrap_candidate_pending_source_level_validation"
+            if teacher_multiseed_pass
+            else "teacher_guided_proposal_repair_strong_single_run_candidate_pending_multiseed_ci"
             if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable")
             else "group_consistency_multiseed_safety_buffer_joint_safe_candidate_pending_independent_validation"
             if group_multiseed_summary.get("safety_buffer_repair_pass")
@@ -1537,7 +1613,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             else "group_consistency_distiller"
         ),
         "deployable_metric_basis": (
-            "frozen_policy_bootstrap_and_ablation_evidence"
+            "three_seed_plus_bootstrap_evidence"
+            if teacher_multiseed_pass
+            else "frozen_policy_bootstrap_and_ablation_evidence"
             if teacher_evidence_summary.get("evidence_pass")
             else "single_fresh_run_validation_selected_repair"
             if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable")
@@ -1545,13 +1623,13 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             if group_multiseed_summary.get("safety_buffer_repair_pass")
             else "single_seed_validation_selected"
         ),
-        "all_improvement": teacher_repair_summary.get("all_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("all_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("all_improvement"),
-        "t50_improvement": teacher_repair_summary.get("t50_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("t50_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("t50_improvement"),
-        "t100_raw_frame_diagnostic": teacher_repair_summary.get("t100_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("t100_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("t100_improvement"),
-        "hard_failure_improvement": teacher_repair_summary.get("hard_failure_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("hard_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("hard_failure_improvement"),
-        "easy_degradation": teacher_repair_summary.get("easy_degradation") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("easy_max") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("easy_degradation"),
-        "switch_rate": teacher_repair_summary.get("switch_rate") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("switch_rate_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("switch_rate"),
-        "collision_delta_vs_floor_005": teacher_repair_summary.get("collision_delta_vs_floor_005") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("collision_delta_max") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("collision_delta_vs_floor_005"),
+        "all_improvement": teacher_multiseed_summary.get("all_mean") if teacher_multiseed_pass else teacher_repair_summary.get("all_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("all_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("all_improvement"),
+        "t50_improvement": teacher_multiseed_summary.get("t50_mean") if teacher_multiseed_pass else teacher_repair_summary.get("t50_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("t50_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("t50_improvement"),
+        "t100_raw_frame_diagnostic": teacher_multiseed_summary.get("t100_mean") if teacher_multiseed_pass else teacher_repair_summary.get("t100_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("t100_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("t100_improvement"),
+        "hard_failure_improvement": teacher_multiseed_summary.get("hard_mean") if teacher_multiseed_pass else teacher_repair_summary.get("hard_failure_improvement") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("hard_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("hard_failure_improvement"),
+        "easy_degradation": teacher_multiseed_summary.get("easy_max") if teacher_multiseed_pass else teacher_repair_summary.get("easy_degradation") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("easy_max") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("easy_degradation"),
+        "switch_rate": teacher_multiseed_summary.get("switch_rate_mean") if teacher_multiseed_pass else teacher_repair_summary.get("switch_rate") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("switch_rate_mean") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("switch_rate"),
+        "collision_delta_vs_floor_005": teacher_multiseed_summary.get("collision_delta_max") if teacher_multiseed_pass else teacher_repair_summary.get("collision_delta_vs_floor_005") if teacher_repair_summary.get("deployable") and teacher_repair_summary.get("improves_current_deployable") else group_multiseed_summary.get("collision_delta_max") if group_multiseed_summary.get("safety_buffer_repair_pass") else group_distiller_summary.get("collision_delta_vs_floor_005"),
         "lift_over_fixed_guard_all": group_distiller_summary.get("all_delta_over_fixed_guard"),
         "lift_over_fixed_guard_t50": group_distiller_summary.get("t50_delta_over_fixed_guard"),
         "lift_over_fixed_guard_t100": group_distiller_summary.get("t100_delta_over_fixed_guard"),
@@ -1658,6 +1736,18 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "teacher_guided_evidence_no_fallback_easy": teacher_evidence_summary.get("no_fallback_easy_degradation"),
         "teacher_guided_evidence_no_group_consistency_all_delta": teacher_evidence_summary.get("no_group_consistency_all_delta"),
         "teacher_guided_evidence_no_neighbor_interaction_all_delta": teacher_evidence_summary.get("no_neighbor_interaction_all_delta"),
+        "teacher_guided_multiseed_replication_pass": teacher_multiseed_pass,
+        "teacher_guided_multiseed_all_mean": teacher_multiseed_summary.get("all_mean"),
+        "teacher_guided_multiseed_all_min": teacher_multiseed_summary.get("all_min"),
+        "teacher_guided_multiseed_t50_mean": teacher_multiseed_summary.get("t50_mean"),
+        "teacher_guided_multiseed_t50_min": teacher_multiseed_summary.get("t50_min"),
+        "teacher_guided_multiseed_t100_mean": teacher_multiseed_summary.get("t100_mean"),
+        "teacher_guided_multiseed_t100_min": teacher_multiseed_summary.get("t100_min"),
+        "teacher_guided_multiseed_hard_mean": teacher_multiseed_summary.get("hard_mean"),
+        "teacher_guided_multiseed_hard_min": teacher_multiseed_summary.get("hard_min"),
+        "teacher_guided_multiseed_easy_max": teacher_multiseed_summary.get("easy_max"),
+        "teacher_guided_multiseed_collision_delta_max": teacher_multiseed_summary.get("collision_delta_max"),
+        "teacher_guided_multiseed_positive_domain_counts": teacher_multiseed_domains,
         "group_consistency_distiller_deployable": group_distiller_summary.get("deployable"),
         "group_consistency_distiller_improves_fixed_guard": group_distiller_summary.get("improves_fixed_guard"),
         "group_consistency_distiller_bootstrap_all_low": group_distiller_summary.get("bootstrap_all_low"),
@@ -1724,6 +1814,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "teacher_guided_proposal_summary": teacher_proposal_summary,
         "teacher_guided_proposal_repair_summary": teacher_repair_summary,
         "teacher_guided_evidence_summary": teacher_evidence_summary,
+        "teacher_guided_multiseed_summary": audit.get("teacher_guided_multiseed_summary", {}),
         "group_consistency_distiller_summary": group_distiller_summary,
         "group_consistency_multiseed_summary": group_multiseed_summary,
         "jepa_deployment_decision_summary": jepa_decision_summary,

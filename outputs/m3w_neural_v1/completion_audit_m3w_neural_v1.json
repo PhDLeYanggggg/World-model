@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (bootstrap-supported; pending multi-seed/source replication)",
+  "current_best_deployable": "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (multi-seed/bootstrap supported; pending source-level validation)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -408,6 +408,30 @@
     "no_group_consistency_all_delta": -0.1993508302918573,
     "no_neighbor_interaction_all_delta": -0.1980910960572272
   },
+  "teacher_guided_multiseed_summary": {
+    "replication_pass": true,
+    "seeds": [
+      11,
+      17,
+      23
+    ],
+    "all_mean": 0.20399416929662803,
+    "all_min": 0.20358992224459205,
+    "t50_mean": 0.13176918009378483,
+    "t50_min": 0.13019734119222148,
+    "t100_mean": 0.1349446267607578,
+    "t100_min": 0.13366944267790382,
+    "hard_mean": 0.1970419557530916,
+    "hard_min": 0.19653792868736553,
+    "easy_max": 0.0,
+    "collision_delta_max": -0.0037418834146520363,
+    "switch_rate_mean": 0.2987681890217548,
+    "positive_domain_counts": [
+      3,
+      3,
+      3
+    ]
+  },
   "group_consistency_distiller_summary": {
     "deployable": true,
     "improves_fixed_guard": true,
@@ -599,6 +623,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
       "note": "Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required."
+    },
+    {
+      "requirement": "teacher-guided repair multi-seed replication",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json",
+      "note": "Three fresh teacher-guided seeds each select policy and proximity guard on validation, then evaluate test once. All seeds are positive on all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and all three external domains positive."
     },
     {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
