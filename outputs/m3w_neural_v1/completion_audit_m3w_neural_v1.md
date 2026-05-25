@@ -20,6 +20,7 @@
 | joint multi-agent consistency improves trajectory deployment policy | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json | Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout. |
 | neural gain/harm/switch distillation improves deployment without base-switch leakage | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json | The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY. |
 | no-base-switch distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json | Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only. |
+| no-base-switch distiller multi-seed replication | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json | Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -165,6 +166,11 @@
 - statistically stable on test: `True`
 - static causal feature ablation all delta: `-0.17365892957312368`
 - full-trajectory signal ablation all delta: `-0.008307576365714331`
+- multi-seed pass: `True`
+- multi-seed all mean/min: `0.2855577482364627` / `0.2785936928672702`
+- multi-seed t50 mean/min: `0.19436183988319766` / `0.1695617463193938`
+- multi-seed hard mean: `0.2862145627536274`
+- multi-seed easy max: `0.0`
 
 ## Conclusion
 

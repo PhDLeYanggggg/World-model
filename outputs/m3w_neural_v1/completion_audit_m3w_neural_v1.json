@@ -151,7 +151,15 @@
     "bootstrap_hard_low": 0.2822097538327134,
     "statistically_stable_on_test": true,
     "ablation_static_all_delta": -0.17365892957312368,
-    "ablation_prediction_all_delta": -0.008307576365714331
+    "ablation_prediction_all_delta": -0.008307576365714331,
+    "multiseed_pass": true,
+    "multiseed_all_mean": 0.2855577482364627,
+    "multiseed_all_min": 0.2785936928672702,
+    "multiseed_t50_mean": 0.19436183988319766,
+    "multiseed_t50_min": 0.1695617463193938,
+    "multiseed_t100_mean": 0.2995344632130104,
+    "multiseed_hard_mean": 0.2862145627536274,
+    "multiseed_easy_max": 0.0
   },
   "requirements": [
     {
@@ -223,6 +231,12 @@
       "note": "Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only."
     },
     {
+      "requirement": "no-base-switch distiller multi-seed replication",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json",
+      "note": "Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only."
+    },
+    {
       "requirement": "t100 diagnostic positive or blocker analysis",
       "status": "complete",
       "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
@@ -244,7 +258,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Run multi-seed replication for the deployable no-base-switch joint policy distiller; bootstrap and first ablations are complete, but UCY remains fallback-only.",
+    "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
     "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

@@ -1086,11 +1086,17 @@ joint_policy_distillation_bootstrap_hard_low = 0.2822097538327134
 joint_policy_distillation_stable = True
 joint_policy_distillation_static_ablation_all_delta = -0.17365892957312368
 joint_policy_distillation_prediction_ablation_all_delta = -0.008307576365714331
+joint_policy_distillation_multiseed_pass = True
+joint_policy_distillation_multiseed_all_mean = 0.2855577482364627
+joint_policy_distillation_multiseed_all_min = 0.2785936928672702
+joint_policy_distillation_multiseed_t50_mean = 0.19436183988319766
+joint_policy_distillation_multiseed_t50_min = 0.1695617463193938
+joint_policy_distillation_multiseed_easy_max = 0.0
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: run multi-seed replication for the no-base-switch distiller and repair UCY fallback-only behavior; bootstrap and first ablations are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: repair UCY fallback-only behavior and move toward a jointly consistent multi-agent rollout; bootstrap, first ablations, and three-seed replication are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

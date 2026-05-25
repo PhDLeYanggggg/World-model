@@ -58,6 +58,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_consistency = read_json("outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json", {})
     joint_distill = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json", {})
     joint_distill_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json", {})
+    joint_distill_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -127,6 +128,8 @@ def build_completion_audit() -> dict[str, Any]:
     joint_distill_bootstrap = joint_distill_evidence.get("bootstrap") or {}
     joint_distill_ablation = joint_distill_evidence.get("contribution_summary") or {}
     joint_distill_stable = bool(joint_distill_evidence.get("statistically_stable_on_test"))
+    joint_distill_multiseed_summary = joint_distill_multiseed.get("metric_summary") or {}
+    joint_distill_multiseed_pass = bool(joint_distill_multiseed.get("replication_pass"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -220,6 +223,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(joint_distill_stable),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json",
             "note": "Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only.",
+        },
+        {
+            "requirement": "no-base-switch distiller multi-seed replication",
+            "status": _status(joint_distill_multiseed_pass),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json",
+            "note": "Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -399,10 +408,18 @@ def build_completion_audit() -> dict[str, Any]:
             "statistically_stable_on_test": joint_distill_stable,
             "ablation_static_all_delta": (joint_distill_ablation.get("static_causal_features") or {}).get("all_delta"),
             "ablation_prediction_all_delta": (joint_distill_ablation.get("full_trajectory_prediction_signals") or {}).get("all_delta"),
+            "multiseed_pass": joint_distill_multiseed_pass,
+            "multiseed_all_mean": (joint_distill_multiseed_summary.get("all_improvement") or {}).get("mean"),
+            "multiseed_all_min": (joint_distill_multiseed_summary.get("all_improvement") or {}).get("min"),
+            "multiseed_t50_mean": (joint_distill_multiseed_summary.get("t50_improvement") or {}).get("mean"),
+            "multiseed_t50_min": (joint_distill_multiseed_summary.get("t50_improvement") or {}).get("min"),
+            "multiseed_t100_mean": (joint_distill_multiseed_summary.get("t100_improvement") or {}).get("mean"),
+            "multiseed_hard_mean": (joint_distill_multiseed_summary.get("hard_failure_improvement") or {}).get("mean"),
+            "multiseed_easy_max": (joint_distill_multiseed_summary.get("easy_degradation") or {}).get("max"),
         },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Run multi-seed replication for the deployable no-base-switch joint policy distiller; bootstrap and first ablations are complete, but UCY remains fallback-only.",
+            "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
             "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -568,6 +585,11 @@ def build_completion_audit() -> dict[str, Any]:
             f"- statistically stable on test: `{joint_distill_stable}`",
             f"- static causal feature ablation all delta: `{(joint_distill_ablation.get('static_causal_features') or {}).get('all_delta')}`",
             f"- full-trajectory signal ablation all delta: `{(joint_distill_ablation.get('full_trajectory_prediction_signals') or {}).get('all_delta')}`",
+            f"- multi-seed pass: `{joint_distill_multiseed_pass}`",
+            f"- multi-seed all mean/min: `{(joint_distill_multiseed_summary.get('all_improvement') or {}).get('mean')}` / `{(joint_distill_multiseed_summary.get('all_improvement') or {}).get('min')}`",
+            f"- multi-seed t50 mean/min: `{(joint_distill_multiseed_summary.get('t50_improvement') or {}).get('mean')}` / `{(joint_distill_multiseed_summary.get('t50_improvement') or {}).get('min')}`",
+            f"- multi-seed hard mean: `{(joint_distill_multiseed_summary.get('hard_failure_improvement') or {}).get('mean')}`",
+            f"- multi-seed easy max: `{(joint_distill_multiseed_summary.get('easy_degradation') or {}).get('max')}`",
             "",
             "## Conclusion",
             "",
@@ -691,11 +713,17 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_policy_distillation_stable = {joint_distill_summary.get('statistically_stable_on_test')}",
             f"joint_policy_distillation_static_ablation_all_delta = {joint_distill_summary.get('ablation_static_all_delta')}",
             f"joint_policy_distillation_prediction_ablation_all_delta = {joint_distill_summary.get('ablation_prediction_all_delta')}",
+            f"joint_policy_distillation_multiseed_pass = {joint_distill_summary.get('multiseed_pass')}",
+            f"joint_policy_distillation_multiseed_all_mean = {joint_distill_summary.get('multiseed_all_mean')}",
+            f"joint_policy_distillation_multiseed_all_min = {joint_distill_summary.get('multiseed_all_min')}",
+            f"joint_policy_distillation_multiseed_t50_mean = {joint_distill_summary.get('multiseed_t50_mean')}",
+            f"joint_policy_distillation_multiseed_t50_min = {joint_distill_summary.get('multiseed_t50_min')}",
+            f"joint_policy_distillation_multiseed_easy_max = {joint_distill_summary.get('multiseed_easy_max')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: run multi-seed replication for the no-base-switch distiller and repair UCY fallback-only behavior; bootstrap and first ablations are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: repair UCY fallback-only behavior and move toward a jointly consistent multi-agent rollout; bootstrap, first ablations, and three-seed replication are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -724,6 +752,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = "stage41_joint_policy_distiller_strong_two_domain_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
@@ -748,6 +778,12 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "statistically_stable_on_test": joint_distill_summary.get("statistically_stable_on_test"),
         "ablation_static_all_delta": joint_distill_summary.get("ablation_static_all_delta"),
         "ablation_prediction_all_delta": joint_distill_summary.get("ablation_prediction_all_delta"),
+        "multiseed_pass": joint_distill_summary.get("multiseed_pass"),
+        "multiseed_all_mean": joint_distill_summary.get("multiseed_all_mean"),
+        "multiseed_all_min": joint_distill_summary.get("multiseed_all_min"),
+        "multiseed_t50_mean": joint_distill_summary.get("multiseed_t50_mean"),
+        "multiseed_t50_min": joint_distill_summary.get("multiseed_t50_min"),
+        "multiseed_easy_max": joint_distill_summary.get("multiseed_easy_max"),
         "ucy_status": "fallback_only",
         "stage5c_executed": False,
         "smc_enabled": False,
