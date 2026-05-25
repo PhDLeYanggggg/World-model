@@ -643,6 +643,12 @@
       "note": "The bounded blend has strong all/t50/t100/hard signal, but test easy degradation is about 20.7%, far above the 2% safety gate. It is not deployable and shows current train/val easy stress is not representative enough for non-fallback neural dynamics."
     },
     {
+      "requirement": "safe-switch bounded continuous neural dynamics",
+      "status": "partial",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
+      "note": "Constraining the bounded blend to the validation-repaired teacher switch set yields a deployable nonzero continuous neural dynamics contribution with positive all/t50/t100/hard and easy=0. It is auxiliary, not the best policy, because it trails the teacher-guided repaired switch on all and hard/failure."
+    },
+    {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",

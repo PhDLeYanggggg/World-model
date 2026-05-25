@@ -56,16 +56,30 @@ def _append_ledger(step: str, status: str, started: float, inputs: Sequence[str 
         handle.write(json.dumps(_jsonable(entry), ensure_ascii=False) + "\n")
 
 
-def _load_frozen_model() -> tuple[str, dict[str, Any]]:
-    checkpoint, policy, _min_sep = evidence._selected_checkpoint_policy_guard()
-    return checkpoint, policy
+def _load_frozen_model() -> tuple[str, dict[str, Any], float]:
+    checkpoint, policy, min_sep = evidence._selected_checkpoint_policy_guard()
+    return checkpoint, policy, float(min_sep)
 
 
-def _bundle(split: str, checkpoint: str, policy: Mapping[str, Any]) -> dict[str, Any]:
+def _bundle(split: str, checkpoint: str, policy: Mapping[str, Any], min_sep: float) -> dict[str, Any]:
     data = tgp._bundle(split)
     pred = tgp._predict(checkpoint, data)
     raw_switch = tgp._policy_switch(pred, policy)
-    return {**data, "teacher_raw_switch": raw_switch.astype(bool)}
+    repaired_switch, repaired_off = jrc._apply_proximity_guard(
+        data["floor_xy"],
+        data["neural_xy"],
+        data["labels"],
+        data["keys"],
+        raw_switch.astype(bool),
+        min_sep,
+    )
+    return {
+        **data,
+        "teacher_raw_switch": raw_switch.astype(bool),
+        "teacher_repaired_switch": repaired_switch.astype(bool),
+        "teacher_repaired_guarded_off": np.asarray([repaired_off], dtype=np.int64),
+        "teacher_repaired_min_sep": np.asarray([float(min_sep)], dtype=np.float32),
+    }
 
 
 def _alpha_vector(data: Mapping[str, Any], policy: Mapping[str, Any]) -> np.ndarray:
@@ -88,6 +102,8 @@ def _alpha_vector(data: Mapping[str, Any], policy: Mapping[str, Any]) -> np.ndar
     gate = str(policy.get("gate", "all"))
     if gate == "teacher_raw_switch":
         alpha = alpha * data["teacher_raw_switch"].astype(np.float64)
+    elif gate == "teacher_repaired_switch":
+        alpha = alpha * data["teacher_repaired_switch"].astype(np.float64)
     elif gate == "teacher_prob_050":
         alpha = alpha * (data["teacher_prob"].astype(np.float64) >= 0.50)
     elif gate == "teacher_prob_070":
@@ -102,6 +118,7 @@ def _candidate_policies() -> list[dict[str, Any]]:
     for alpha in [0.03, 0.05, 0.08, 0.10, 0.15, 0.20, 0.30, 0.40]:
         policies.append({"type": "global", "alpha": alpha})
         policies.append({"type": "global", "alpha": alpha, "gate": "teacher_raw_switch"})
+        policies.append({"type": "global", "alpha": alpha, "gate": "teacher_repaired_switch"})
         policies.append({"type": "global", "alpha": alpha, "gate": "teacher_prob_070"})
     horizon_templates = [
         {10: 0.02, 25: 0.03, 50: 0.06, 100: 0.06},
@@ -113,6 +130,7 @@ def _candidate_policies() -> list[dict[str, Any]]:
     for row in horizon_templates:
         policies.append({"type": "horizon", "alpha_by_horizon": row})
         policies.append({"type": "horizon", "alpha_by_horizon": row, "gate": "teacher_raw_switch"})
+        policies.append({"type": "horizon", "alpha_by_horizon": row, "gate": "teacher_repaired_switch"})
         policies.append({"type": "horizon", "alpha_by_horizon": row, "gate": "teacher_prob_070"})
     domains = ["ETH_UCY", "TrajNet", "UCY"]
     for base in horizon_templates[1:]:
@@ -211,22 +229,58 @@ def _select_policy(train: Mapping[str, Any], val: Mapping[str, Any]) -> dict[str
     return {"selected": selected, "candidates": rows}
 
 
+def _select_safe_switch_policy(train: Mapping[str, Any], val: Mapping[str, Any]) -> dict[str, Any]:
+    """Select a continuous blend only inside the already validated switch set."""
+
+    rows: list[dict[str, Any]] = []
+    for policy in _candidate_policies():
+        if policy.get("gate") != "teacher_repaired_switch":
+            continue
+        ev = _evaluate_blend(val, policy)
+        train_ev = _evaluate_blend(train, policy)
+        metrics = ev["metrics"]
+        train_metrics = train_ev["metrics"]
+        train_stress_safe = bool(
+            train_metrics.get("easy_degradation", 1.0) <= 0.02
+            and train_metrics.get("collision_delta_vs_floor_005", 1.0) <= TEST_COLLISION_CEILING
+        )
+        rows.append(
+            {
+                "policy": ev["policy"],
+                "metrics": metrics,
+                "train_stress_metrics": train_metrics,
+                "train_stress_safe": train_stress_safe,
+                "eligible": _eligible(metrics, TEST_COLLISION_CEILING) and train_stress_safe,
+                "score": _score(metrics, TEST_COLLISION_CEILING),
+            }
+        )
+    pool = [row for row in rows if row["eligible"]] or rows
+    selected = max(pool, key=lambda row: row["score"])
+    return {"selected": selected, "candidates": rows, "constraint": "teacher_repaired_switch_only"}
+
+
 def run_bounded_neural_blend_dynamics() -> dict[str, Any]:
     ensure_dir(OUT_DIR)
-    checkpoint, teacher_policy = _load_frozen_model()
-    train = _bundle("train", checkpoint, teacher_policy)
-    val = _bundle("val", checkpoint, teacher_policy)
+    checkpoint, teacher_policy, min_sep = _load_frozen_model()
+    train = _bundle("train", checkpoint, teacher_policy, min_sep)
+    val = _bundle("val", checkpoint, teacher_policy, min_sep)
     selection = _select_policy(train, val)
-    test = _bundle("test", checkpoint, teacher_policy)
+    safe_switch_selection = _select_safe_switch_policy(train, val)
+    test = _bundle("test", checkpoint, teacher_policy, min_sep)
     selected_policy = (selection["selected"] or {}).get("policy") or {}
     test_eval = _evaluate_blend(test, selected_policy)
     metrics = test_eval["metrics"]
     deployable = _eligible(metrics, TEST_COLLISION_CEILING)
+    safe_switch_policy = (safe_switch_selection["selected"] or {}).get("policy") or {}
+    safe_switch_eval = _evaluate_blend(test, safe_switch_policy)
+    safe_switch_metrics = safe_switch_eval["metrics"]
+    safe_switch_deployable = _eligible(safe_switch_metrics, TEST_COLLISION_CEILING)
     result = {
         "source": "fresh_run",
         "protocol": "bounded_neural_blend_dynamics",
         "checkpoint": checkpoint,
         "teacher_policy": teacher_policy,
+        "teacher_repaired_min_sep": min_sep,
         "validation_selection": selection,
         "test_policy": selected_policy,
         "test_metrics": metrics,
@@ -234,6 +288,15 @@ def run_bounded_neural_blend_dynamics() -> dict[str, Any]:
         "test_blend_stats": test_eval["blend_stats"],
         "bounded_neural_blend_deployable": deployable,
         "non_fallback_continuous_neural_contribution": bool(deployable and metrics.get("alpha_mean", 0.0) > 0.0),
+        "safe_switch_validation_selection": safe_switch_selection,
+        "safe_switch_test_policy": safe_switch_policy,
+        "safe_switch_test_metrics": safe_switch_metrics,
+        "safe_switch_test_floor_stats": safe_switch_eval["floor_stats"],
+        "safe_switch_test_blend_stats": safe_switch_eval["blend_stats"],
+        "safe_switch_bounded_neural_blend_deployable": safe_switch_deployable,
+        "safe_switch_non_fallback_continuous_neural_contribution": bool(
+            safe_switch_deployable and safe_switch_metrics.get("alpha_mean", 0.0) > 0.0
+        ),
         "no_leakage": {
             "future_endpoint_input": False,
             "future_labels_eval_only": True,
@@ -241,6 +304,8 @@ def run_bounded_neural_blend_dynamics() -> dict[str, Any]:
             "test_endpoint_goals": False,
             "test_threshold_tuning": False,
             "blend_policy_selected_on_val": True,
+            "safe_switch_gate_selected_before_test": True,
+            "safe_switch_alpha_selected_on_val": True,
             "stage5c_executed": False,
             "smc_enabled": False,
         },
@@ -260,9 +325,13 @@ def run_bounded_neural_blend_dynamics() -> dict[str, Any]:
             f"- deployable: `{deployable}`",
             f"- non-fallback continuous neural contribution: `{result['non_fallback_continuous_neural_contribution']}`",
             f"- test metrics: `{metrics}`",
+            f"- safe-switch policy: `{safe_switch_policy}`",
+            f"- safe-switch deployable: `{safe_switch_deployable}`",
+            f"- safe-switch non-fallback continuous neural contribution: `{result['safe_switch_non_fallback_continuous_neural_contribution']}`",
+            f"- safe-switch test metrics: `{safe_switch_metrics}`",
             f"- no leakage: `{result['no_leakage']}`",
             "",
-            "This evaluates a validation-selected bounded blend `floor + alpha * (neural - floor)` across rows. It is a conservative neural dynamics head, not Stage5C latent generation.",
+            "This evaluates a validation-selected bounded blend `floor + alpha * (neural - floor)` across rows, plus a second hypothesis constrained to the already validated repaired switch set. It is a conservative neural dynamics head, not Stage5C latent generation.",
         ],
     )
     return result

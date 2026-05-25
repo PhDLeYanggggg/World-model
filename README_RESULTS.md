@@ -1218,6 +1218,15 @@ bounded_neural_blend_hard = 0.1934724604647473
 bounded_neural_blend_easy = 0.2070880438160938
 bounded_neural_blend_alpha_mean = 0.2999999999999999
 bounded_neural_blend_failure_reason = easy_degradation_too_high_despite_positive_all_t50_hard
+safe_switch_bounded_blend_deployable = true
+safe_switch_bounded_blend_all = 0.11701273259955347
+safe_switch_bounded_blend_t50 = 0.0901472737617619
+safe_switch_bounded_blend_t100_raw_frame_diagnostic = 0.08404585440914669
+safe_switch_bounded_blend_hard = 0.11458797966091572
+safe_switch_bounded_blend_easy = 0.0
+safe_switch_bounded_blend_alpha_mean = 0.1181674110358738
+safe_switch_bounded_blend_switch_rate = 0.2954185275896845
+safe_switch_bounded_blend_status = deployable_auxiliary_dynamics_not_best_policy
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1298,7 +1307,20 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Interpretation: the continuous neural dynamics signal is real on all/t50/t100/hard, but the easy-case harm is far beyond the <=2% safety gate. This is not deployable. It also shows the current train/val easy stress is not representative enough for non-fallback continuous neural dynamics.
+Interpretation: the continuous neural dynamics signal is real on all/t50/t100/hard, but the full-row easy-case harm is far beyond the <=2% safety gate. Full-row blend is not deployable. A second safe-switch-only hypothesis, constrained to the already validation-repaired teacher switch set, is deployable as an auxiliary dynamics head:
+
+```text
+safe_switch_policy = teacher_repaired_switch, alpha 0.4
+safe_switch_deployable = true
+safe_switch_all_improvement = 0.11701273259955347
+safe_switch_t50_improvement = 0.0901472737617619
+safe_switch_t100_raw_frame_diagnostic = 0.08404585440914669
+safe_switch_hard_failure_improvement = 0.11458797966091572
+safe_switch_easy_degradation = 0.0
+safe_switch_collision_delta_vs_floor_005 = -0.001155581642760195
+```
+
+This proves a safe nonzero continuous neural-dynamics contribution exists under the Stage37/teacher safety floor, but it is not the best deployable policy because it trails the teacher-guided repaired switch on all and hard/failure. Current best deployable remains the teacher-guided safety-repaired candidate.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 
