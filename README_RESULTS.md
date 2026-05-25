@@ -993,6 +993,8 @@ all_agent_composite_ade_all_improvement = 0.2102513255185352
 all_agent_composite_ade_t50_improvement = 0.13652231450154184
 all_agent_composite_fde_all_improvement = 0.19816955620782206
 all_agent_composite_fde_t50_improvement = 0.17387876491801468
+fixed_prior_source_switch_beats_fixed = False
+fixed_prior_residual_oracle_headroom = False
 deployment_state = composite_tail_candidate_pending_final_package_acceptance
 ```
 

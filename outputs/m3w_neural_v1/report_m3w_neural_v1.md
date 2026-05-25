@@ -36,6 +36,8 @@
 - all-agent composite FDE all/t+50: `19.82%` / `17.39%`
 - strict pure UCY-only retrain/select/test gate: `False`
 - JEPA deployable path: `disable_jepa_in_deployable_path`
+- fixed-prior source switch beats fixed composer: `False`
+- residual source-switch oracle headroom: `False`
 
 ## Safety
 
@@ -56,3 +58,5 @@
 ## Current Best Deployable Answer
 
 M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement; stricter pure UCY-only retrain/select/test evidence would further strengthen it. Stage37 remains the explicit safety floor.
+
+Recent negative source-switch audits show that residual source selection around the fixed horizon composer has too little oracle headroom to justify more trials without new causal features or scene/domain context.

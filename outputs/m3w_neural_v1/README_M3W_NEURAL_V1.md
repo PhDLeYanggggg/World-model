@@ -13,3 +13,5 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 - `data_card_m3w_neural_v1.md` — dataset and leakage status.
 - `reproducibility_m3w_neural_v1.md` — rerun commands.
 - `paper_gap_m3w_neural_v1.md` — what is still missing before stronger publication claims.
+
+Latest package inputs include the negative fixed-composer source-switch audits, so the frozen package records both the successful composite-tail path and the exhausted residual source-switch branch.

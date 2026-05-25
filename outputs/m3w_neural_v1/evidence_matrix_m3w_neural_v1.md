@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `a59c30bb01536373bb0fc402ba66fe0ce47b03340260e7e4b132d2e648b99c7e`
-- git_commit: `f0e9616`
+- package_input_hash: `ebd6b8b7e1ea7076d120ab50248e93abd1815812cea8b62fc55ba0e02868c541`
+- git_commit: `d42fd81`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -25,6 +25,8 @@
 | pure UCY source-heldout gate | `True` | required for UCY held-out support |
 | pure UCY-only retrain/select/test gate | `False` | reported blocker, not claimed |
 | JEPA deployable path | `disabled` | JEPA had no deployable downstream lift |
+| fixed-prior source switch beats fixed composer | `False` | negative branch audit |
+| residual source-switch oracle headroom | `False` | negative branch audit |
 | Stage5C executed | `False` | must remain false |
 | SMC enabled | `False` | must remain false |
 

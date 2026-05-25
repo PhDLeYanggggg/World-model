@@ -13,6 +13,7 @@ OUT_DIR = Path("outputs/m3w_neural_v1")
 STAGE41_DIR = Path("outputs/stage41_breakthrough")
 FRESH_DIR = Path("outputs/stage41_fresh_confirmation")
 SPLIT_DIR = Path("outputs/stage41_external_split")
+DOMAIN_LOCAL_DIR = Path("outputs/stage41_domain_local")
 
 SOURCE_PATHS = [
     STAGE41_DIR / "world_model_gate_stage41.json",
@@ -30,6 +31,8 @@ SOURCE_PATHS = [
     SPLIT_DIR / "report.json",
     SPLIT_DIR / "stage41_source_level_validation_repair.json",
     SPLIT_DIR / "stage41_pure_ucy_source_validation.json",
+    DOMAIN_LOCAL_DIR / "stage41_fixed_prior_source_switch_policy.json",
+    DOMAIN_LOCAL_DIR / "stage41_fixed_prior_oracle_audit.json",
     Path("src/stage41_breakthrough.py"),
     Path("src/stage41_fresh_confirmation.py"),
     Path("src/stage41_bounded_neural_blend_dynamics.py"),
@@ -135,6 +138,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
     composite_multiseed = _safe_read(FRESH_DIR / "stage41_composite_tail_multiseed.json")
     all_agent_composite = _safe_read(FRESH_DIR / "stage41_all_agent_composite_world_state.json")
     jepa_decision = _safe_read(FRESH_DIR / "stage41_jepa_deployment_decision.json")
+    fixed_prior_switch = _safe_read(DOMAIN_LOCAL_DIR / "stage41_fixed_prior_source_switch_policy.json")
+    fixed_prior_oracle = _safe_read(DOMAIN_LOCAL_DIR / "stage41_fixed_prior_oracle_audit.json")
     source_repair = _safe_read(SPLIT_DIR / "stage41_source_level_validation_repair.json")
     pure_ucy = _safe_read(SPLIT_DIR / "stage41_pure_ucy_source_validation.json")
     split_report = _safe_read(SPLIT_DIR / "report.json")
@@ -231,6 +236,20 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         },
         "jepa_deployment_decision": jepa_decision.get("decision"),
         "jepa_disable_deployable_path": jepa_decision.get("disable_jepa_in_deployable_path"),
+        "negative_source_switch_evidence": {
+            "fixed_prior_source_switch_status": {
+                "two_domain_fixed_prior_gate": fixed_prior_switch.get("two_domain_fixed_prior_gate"),
+                "two_domain_beats_fixed_gate": fixed_prior_switch.get("two_domain_fixed_prior_beats_fixed_gate"),
+                "positive_domains": fixed_prior_switch.get("positive_domains"),
+                "domains_better_than_fixed_on_any_core_metric": fixed_prior_switch.get("domains_better_than_fixed_on_any_core_metric"),
+            },
+            "fixed_prior_oracle_status": {
+                "oracle_is_diagnostic_not_deployable": fixed_prior_oracle.get("oracle_is_diagnostic_not_deployable"),
+                "headroom_domains": fixed_prior_oracle.get("headroom_domains"),
+                "two_domain_residual_oracle_headroom": fixed_prior_oracle.get("two_domain_residual_oracle_headroom"),
+            },
+            "interpretation": "Residual source-switching around the fixed composer has tiny oracle headroom and is not the next useful path without new data or causal scene/domain context.",
+        },
         "self_gated_no_external_fallback_metrics": no_fallback,
         "positive_external_domains": positive_domains,
         "neural_exceeds_stage37_by_gate_margin": True,
@@ -287,6 +306,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         _metric_row("pure UCY source-heldout gate", pure_ucy.get("pure_ucy_source_heldout_gate"), "required for UCY held-out support"),
         _metric_row("pure UCY-only retrain/select/test gate", pure_ucy.get("pure_ucy_three_way_train_val_test_gate"), "reported blocker, not claimed"),
         _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
+        _metric_row("fixed-prior source switch beats fixed composer", fixed_prior_switch.get("two_domain_fixed_prior_beats_fixed_gate"), "negative branch audit"),
+        _metric_row("residual source-switch oracle headroom", fixed_prior_oracle.get("two_domain_residual_oracle_headroom"), "negative branch audit"),
         _metric_row("Stage5C executed", False, "must remain false"),
         _metric_row("SMC enabled", False, "must remain false"),
         "",
@@ -332,6 +353,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- all-agent composite FDE all/t+50: `{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('all_improvement'))}` / `{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('t50_improvement'))}`",
         f"- strict pure UCY-only retrain/select/test gate: `{pure_ucy.get('pure_ucy_three_way_train_val_test_gate')}`",
         f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
+        f"- fixed-prior source switch beats fixed composer: `{fixed_prior_switch.get('two_domain_fixed_prior_beats_fixed_gate')}`",
+        f"- residual source-switch oracle headroom: `{fixed_prior_oracle.get('two_domain_residual_oracle_headroom')}`",
         "",
         "## Safety",
         "",
@@ -347,6 +370,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "## Current Best Deployable Answer",
         "",
         "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement; stricter pure UCY-only retrain/select/test evidence would further strengthen it. Stage37 remains the explicit safety floor.",
+        "",
+        "Recent negative source-switch audits show that residual source selection around the fixed horizon composer has too little oracle headroom to justify more trials without new causal features or scene/domain context.",
     ]
     write_md(OUT_DIR / "report_m3w_neural_v1.md", report_lines)
 
@@ -368,6 +393,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- `data_card_m3w_neural_v1.md` — dataset and leakage status.",
             "- `reproducibility_m3w_neural_v1.md` — rerun commands.",
             "- `paper_gap_m3w_neural_v1.md` — what is still missing before stronger publication claims.",
+            "",
+            "Latest package inputs include the negative fixed-composer source-switch audits, so the frozen package records both the successful composite-tail path and the exhausted residual source-switch branch.",
         ],
     )
 
@@ -470,12 +497,14 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- Ungated neural dynamics safe replacement.",
             "- Pure UCY-only retrain/select/test evidence.",
             "- Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.",
+            "- Residual source-switching over the fixed composer as a deployable improvement path.",
             "",
             "## Shortest Next Path",
             "",
             "1. Run a stricter pure UCY-only retrain/select/test protocol if another independent UCY-like source becomes available.",
             "2. Strengthen the protected all-agent full-waypoint rollout with stricter source-heldout retrain/select/test evidence and safer no-fallback neural rollout research.",
             "3. Complete homography/FPS/scale audit before any physical-world claims.",
+            "4. Add genuinely new scene/domain context before retrying fixed-composer residual source-switching.",
         ],
     )
 
@@ -517,6 +546,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "all_agent_composite_fde_all_improvement": (all_agent_composite.get("fde_metrics_vs_floor") or {}).get("all_improvement"),
             "all_agent_composite_fde_t50_improvement": (all_agent_composite.get("fde_metrics_vs_floor") or {}).get("t50_improvement"),
             "endpoint_geometry_pass": endpoint_audit.get("geometry_pass"),
+            "fixed_prior_source_switch_beats_fixed": fixed_prior_switch.get("two_domain_fixed_prior_beats_fixed_gate"),
+            "fixed_prior_residual_oracle_headroom": fixed_prior_oracle.get("two_domain_residual_oracle_headroom"),
             "stage5c_executed": False,
             "smc_enabled": False,
         },
@@ -556,6 +587,8 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"all_agent_composite_ade_t50_improvement = {summary.get('all_agent_composite_ade_t50_improvement')}",
         f"all_agent_composite_fde_all_improvement = {summary.get('all_agent_composite_fde_all_improvement')}",
         f"all_agent_composite_fde_t50_improvement = {summary.get('all_agent_composite_fde_t50_improvement')}",
+        f"fixed_prior_source_switch_beats_fixed = {summary.get('fixed_prior_source_switch_beats_fixed')}",
+        f"fixed_prior_residual_oracle_headroom = {summary.get('fixed_prior_residual_oracle_headroom')}",
         "deployment_state = composite_tail_candidate_pending_final_package_acceptance",
         "```",
         "",
@@ -605,6 +638,8 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "all_agent_composite_ade_t50_improvement": summary.get("all_agent_composite_ade_t50_improvement"),
         "all_agent_composite_fde_all_improvement": summary.get("all_agent_composite_fde_all_improvement"),
         "all_agent_composite_fde_t50_improvement": summary.get("all_agent_composite_fde_t50_improvement"),
+        "fixed_prior_source_switch_beats_fixed": summary.get("fixed_prior_source_switch_beats_fixed"),
+        "fixed_prior_residual_oracle_headroom": summary.get("fixed_prior_residual_oracle_headroom"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }

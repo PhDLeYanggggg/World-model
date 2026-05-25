@@ -16,6 +16,8 @@
     "outputs/stage41_external_split/report.json",
     "outputs/stage41_external_split/stage41_source_level_validation_repair.json",
     "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
+    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
+    "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
     "src/stage41_breakthrough.py",
     "src/stage41_fresh_confirmation.py",
     "src/stage41_bounded_neural_blend_dynamics.py",
@@ -24,7 +26,7 @@
     "src/stage41_all_agent_composite_world_state.py",
     "src/stage41_pure_ucy_source_validation.py"
   ],
-  "package_input_hash": "a59c30bb01536373bb0fc402ba66fe0ce47b03340260e7e4b132d2e648b99c7e",
+  "package_input_hash": "ebd6b8b7e1ea7076d120ab50248e93abd1815812cea8b62fc55ba0e02868c541",
   "gates_passed": 41,
   "gates_total": 41,
   "current_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
@@ -785,6 +787,22 @@
   },
   "jepa_deployment_decision": "disable_jepa_in_deployable_path",
   "jepa_disable_deployable_path": true,
+  "negative_source_switch_evidence": {
+    "fixed_prior_source_switch_status": {
+      "two_domain_fixed_prior_gate": false,
+      "two_domain_beats_fixed_gate": false,
+      "positive_domains": [
+        "ETH_UCY"
+      ],
+      "domains_better_than_fixed_on_any_core_metric": []
+    },
+    "fixed_prior_oracle_status": {
+      "oracle_is_diagnostic_not_deployable": true,
+      "headroom_domains": [],
+      "two_domain_residual_oracle_headroom": false
+    },
+    "interpretation": "Residual source-switching around the fixed composer has tiny oracle headroom and is not the next useful path without new data or causal scene/domain context."
+  },
   "self_gated_no_external_fallback_metrics": {
     "rows": 55528,
     "all_improvement": 0.26645599312381374,
