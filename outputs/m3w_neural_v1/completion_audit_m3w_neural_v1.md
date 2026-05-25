@@ -2,7 +2,7 @@
 
 - source: `fresh_run`
 - completion_status: `not_complete`
-- current_best_deployable: `M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor`
+- current_best_deployable: `M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor`
 
 ## Requirement Matrix
 
@@ -21,6 +21,7 @@
 | neural gain/harm/switch distillation improves deployment without base-switch leakage | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json | The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY. |
 | no-base-switch distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json | Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only. |
 | no-base-switch distiller multi-seed replication | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json | Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only. |
+| UCY fallback-only blocker diagnosed and repaired without test tuning | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json | UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -172,6 +173,22 @@
 - multi-seed hard mean: `0.2862145627536274`
 - multi-seed easy max: `0.0`
 
+## UCY Fallback Repair
+
+- contributes: `True`
+- missing val domains: `['UCY']`
+- calibration rows: `9445`
+- all improvement: `0.3613141132176878`
+- t50 improvement: `0.25956635248380133`
+- t100 diagnostic improvement: `0.37474907455985007`
+- hard/failure improvement: `0.3616933168487243`
+- easy degradation: `0.0`
+- UCY all/t50/t100: `0.3928657400363359` / `0.24265047375057225` / `0.4634436152370407`
+- all delta over no-UCY policy: `0.07538451466310736`
+- t50 delta over no-UCY policy: `0.045728476573585364`
+- UCY bootstrap low: `0.38373376338122456`
+- train-only UCY calibration: `True`
+
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation is the strongest current deployment candidate: it learns gain/harm/switch without base-switch input and improves ETH_UCY and TrajNet while preserving easy. The full active objective is still not complete because UCY remains fallback-only and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The full active objective is still not complete because the repair needs independent UCY validation and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.

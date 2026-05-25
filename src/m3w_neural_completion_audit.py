@@ -59,6 +59,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_distill = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json", {})
     joint_distill_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json", {})
     joint_distill_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json", {})
+    ucy_repair = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -130,6 +131,10 @@ def build_completion_audit() -> dict[str, Any]:
     joint_distill_stable = bool(joint_distill_evidence.get("statistically_stable_on_test"))
     joint_distill_multiseed_summary = joint_distill_multiseed.get("metric_summary") or {}
     joint_distill_multiseed_pass = bool(joint_distill_multiseed.get("replication_pass"))
+    ucy_repair_metrics = ucy_repair.get("repaired_metrics") or {}
+    ucy_repair_lift = ucy_repair.get("lift_over_base_policy") or {}
+    ucy_repair_bootstrap = ucy_repair.get("bootstrap") or {}
+    ucy_repair_contributes = bool(ucy_repair.get("ucy_repair_contributes"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -231,6 +236,12 @@ def build_completion_audit() -> dict[str, Any]:
             "note": "Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only.",
         },
         {
+            "requirement": "UCY fallback-only blocker diagnosed and repaired without test tuning",
+            "status": _status(ucy_repair_contributes),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
+            "note": "UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment.",
+        },
+        {
             "requirement": "t100 diagnostic positive or blocker analysis",
             "status": _status(best.get("t100_diagnostic", 0.0) > 0 or best.get("t100_improvement", 0.0) > 0),
             "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
@@ -256,6 +267,9 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
+            "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor"
+            if ucy_repair_contributes
+            else
             "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor"
             if joint_distill_contributes
             else "M3W-Neural v1 joint-consistency-calibrated full-trajectory candidate under Stage37 safety floor"
@@ -416,6 +430,27 @@ def build_completion_audit() -> dict[str, Any]:
             "multiseed_t100_mean": (joint_distill_multiseed_summary.get("t100_improvement") or {}).get("mean"),
             "multiseed_hard_mean": (joint_distill_multiseed_summary.get("hard_failure_improvement") or {}).get("mean"),
             "multiseed_easy_max": (joint_distill_multiseed_summary.get("easy_degradation") or {}).get("max"),
+        },
+        "ucy_fallback_repair_summary": {
+            "contributes": ucy_repair_contributes,
+            "missing_val_domains": ucy_repair.get("missing_val_domains"),
+            "calibration_rows": (ucy_repair.get("calibration") or {}).get("rows"),
+            "all_improvement": ucy_repair_metrics.get("all_improvement"),
+            "t50_improvement": ucy_repair_metrics.get("t50_improvement"),
+            "t100_improvement": ucy_repair_metrics.get("t100_improvement"),
+            "hard_failure_improvement": ucy_repair_metrics.get("hard_failure_improvement"),
+            "easy_degradation": ucy_repair_metrics.get("easy_degradation"),
+            "switch_rate": ucy_repair_metrics.get("switch_rate"),
+            "ucy_all_improvement": ((ucy_repair_metrics.get("by_domain") or {}).get("UCY") or {}).get("all_improvement"),
+            "ucy_t50_improvement": ((ucy_repair_metrics.get("by_domain") or {}).get("UCY") or {}).get("t50_improvement"),
+            "ucy_t100_improvement": ((ucy_repair_metrics.get("by_domain") or {}).get("UCY") or {}).get("t100_improvement"),
+            "all_delta_over_base_policy": ucy_repair_lift.get("all_delta"),
+            "t50_delta_over_base_policy": ucy_repair_lift.get("t50_delta"),
+            "hard_delta_over_base_policy": ucy_repair_lift.get("hard_delta"),
+            "bootstrap_all_low": (ucy_repair_bootstrap.get("all") or {}).get("low"),
+            "bootstrap_t50_low": (ucy_repair_bootstrap.get("t50") or {}).get("low"),
+            "bootstrap_ucy_low": ((ucy_repair_bootstrap.get("by_domain") or {}).get("UCY") or {}).get("low"),
+            "train_only_ucy_threshold_calibration": (ucy_repair.get("no_leakage") or {}).get("train_only_ucy_threshold_calibration"),
         },
         "requirements": requirements,
         "next_highest_value_actions": [
@@ -591,9 +626,25 @@ def build_completion_audit() -> dict[str, Any]:
             f"- multi-seed hard mean: `{(joint_distill_multiseed_summary.get('hard_failure_improvement') or {}).get('mean')}`",
             f"- multi-seed easy max: `{(joint_distill_multiseed_summary.get('easy_degradation') or {}).get('max')}`",
             "",
+            "## UCY Fallback Repair",
+            "",
+            f"- contributes: `{ucy_repair_contributes}`",
+            f"- missing val domains: `{ucy_repair.get('missing_val_domains')}`",
+            f"- calibration rows: `{(ucy_repair.get('calibration') or {}).get('rows')}`",
+            f"- all improvement: `{ucy_repair_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{ucy_repair_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{ucy_repair_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{ucy_repair_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{ucy_repair_metrics.get('easy_degradation')}`",
+            f"- UCY all/t50/t100: `{((ucy_repair_metrics.get('by_domain') or {}).get('UCY') or {}).get('all_improvement')}` / `{((ucy_repair_metrics.get('by_domain') or {}).get('UCY') or {}).get('t50_improvement')}` / `{((ucy_repair_metrics.get('by_domain') or {}).get('UCY') or {}).get('t100_improvement')}`",
+            f"- all delta over no-UCY policy: `{ucy_repair_lift.get('all_delta')}`",
+            f"- t50 delta over no-UCY policy: `{ucy_repair_lift.get('t50_delta')}`",
+            f"- UCY bootstrap low: `{((ucy_repair_bootstrap.get('by_domain') or {}).get('UCY') or {}).get('low')}`",
+            f"- train-only UCY calibration: `{(ucy_repair.get('no_leakage') or {}).get('train_only_ucy_threshold_calibration')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation is the strongest current deployment candidate: it learns gain/harm/switch without base-switch input and improves ETH_UCY and TrajNet while preserving easy. The full active objective is still not complete because UCY remains fallback-only and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The full active objective is still not complete because the repair needs independent UCY validation and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -613,13 +664,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     joint_route_summary = audit.get("joint_route_conditioned_world_state_summary", {})
     joint_consistency_summary = audit.get("joint_multiagent_consistency_summary", {})
     joint_distill_summary = audit.get("joint_policy_distillation_summary", {})
+    ucy_repair_summary = audit.get("ucy_fallback_repair_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller that strongly improves ETH_UCY and TrajNet while preserving easy, but UCY remains fallback-only and the rollout is not yet a jointly consistent latent world state.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, and the UCY fallback-only blocker has a train-only calibration repair. The rollout is still not a jointly consistent latent world state.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -719,11 +771,20 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_policy_distillation_multiseed_t50_mean = {joint_distill_summary.get('multiseed_t50_mean')}",
             f"joint_policy_distillation_multiseed_t50_min = {joint_distill_summary.get('multiseed_t50_min')}",
             f"joint_policy_distillation_multiseed_easy_max = {joint_distill_summary.get('multiseed_easy_max')}",
+            f"ucy_fallback_repair_contributes = {ucy_repair_summary.get('contributes')}",
+            f"ucy_fallback_repair_all = {ucy_repair_summary.get('all_improvement')}",
+            f"ucy_fallback_repair_t50 = {ucy_repair_summary.get('t50_improvement')}",
+            f"ucy_fallback_repair_t100_diagnostic = {ucy_repair_summary.get('t100_improvement')}",
+            f"ucy_fallback_repair_hard = {ucy_repair_summary.get('hard_failure_improvement')}",
+            f"ucy_fallback_repair_easy = {ucy_repair_summary.get('easy_degradation')}",
+            f"ucy_fallback_repair_ucy_all = {ucy_repair_summary.get('ucy_all_improvement')}",
+            f"ucy_fallback_repair_ucy_t50 = {ucy_repair_summary.get('ucy_t50_improvement')}",
+            f"ucy_fallback_repair_bootstrap_ucy_low = {ucy_repair_summary.get('bootstrap_ucy_low')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: repair UCY fallback-only behavior and move toward a jointly consistent multi-agent rollout; bootstrap, first ablations, and three-seed replication are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: independently validate the train-calibrated UCY repair and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -754,22 +815,24 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json")
     state["generated_reports"] = sorted(generated)
-    state["current_verdict"] = "stage41_joint_policy_distiller_strong_two_domain_not_complete"
+    state["current_verdict"] = "stage41_ucy_repaired_joint_distiller_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
     state["m3w_neural_v1_current_candidate"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
-        "deployment_state": "joint_policy_distilled_candidate_pending_bootstrap_ablation_and_ucy_repair",
+        "deployment_state": "ucy_repaired_joint_policy_distilled_candidate_pending_independent_validation",
         "current_best_deployable": audit.get("current_best_deployable"),
-        "best_name": joint_distill_summary.get("best_name"),
-        "all_improvement": joint_distill_summary.get("all_improvement"),
-        "t50_improvement": joint_distill_summary.get("t50_improvement"),
-        "t100_raw_frame_diagnostic": joint_distill_summary.get("t100_improvement"),
-        "hard_failure_improvement": joint_distill_summary.get("hard_failure_improvement"),
-        "easy_degradation": joint_distill_summary.get("easy_degradation"),
-        "switch_rate": joint_distill_summary.get("switch_rate"),
-        "positive_external_domains": joint_distill_summary.get("positive_external_domains"),
+        "best_name": "ucy_train_calibrated_joint_distiller",
+        "all_improvement": ucy_repair_summary.get("all_improvement"),
+        "t50_improvement": ucy_repair_summary.get("t50_improvement"),
+        "t100_raw_frame_diagnostic": ucy_repair_summary.get("t100_improvement"),
+        "hard_failure_improvement": ucy_repair_summary.get("hard_failure_improvement"),
+        "easy_degradation": ucy_repair_summary.get("easy_degradation"),
+        "switch_rate": ucy_repair_summary.get("switch_rate"),
+        "positive_external_domains": 3 if ucy_repair_summary.get("contributes") else joint_distill_summary.get("positive_external_domains"),
         "base_switch_input": joint_distill_summary.get("base_switch_input"),
         "base_plus_distiller_deployable": joint_distill_summary.get("base_plus_distiller_deployable"),
         "bootstrap_all_low": joint_distill_summary.get("bootstrap_all_low"),
@@ -784,7 +847,10 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "multiseed_t50_mean": joint_distill_summary.get("multiseed_t50_mean"),
         "multiseed_t50_min": joint_distill_summary.get("multiseed_t50_min"),
         "multiseed_easy_max": joint_distill_summary.get("multiseed_easy_max"),
-        "ucy_status": "fallback_only",
+        "ucy_status": "train_calibrated_repaired_pending_independent_validation",
+        "ucy_all_improvement": ucy_repair_summary.get("ucy_all_improvement"),
+        "ucy_t50_improvement": ucy_repair_summary.get("ucy_t50_improvement"),
+        "ucy_bootstrap_low": ucy_repair_summary.get("bootstrap_ucy_low"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -803,6 +869,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_route_conditioned_world_state_summary": joint_route_summary,
         "joint_multiagent_consistency_summary": joint_consistency_summary,
         "joint_policy_distillation_summary": joint_distill_summary,
+        "ucy_fallback_repair_summary": ucy_repair_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

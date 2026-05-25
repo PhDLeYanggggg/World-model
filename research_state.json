@@ -1,6 +1,6 @@
 {
   "current_stage": "stage41",
-  "current_verdict": "stage41_joint_policy_distiller_strong_two_domain_not_complete",
+  "current_verdict": "stage41_ucy_repaired_joint_distiller_strong_not_complete",
   "expert_audit_score": 97,
   "deterministic_ready": false,
   "latent_generative_ready": false,
@@ -407,6 +407,8 @@
     "outputs/stage41_fresh_confirmation/stage41_source_rotation_fresh_confirmation.md",
     "outputs/stage41_fresh_confirmation/stage41_source_rotation_split_report.md",
     "outputs/stage41_fresh_confirmation/stage41_stratified_dataset.md",
+    "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
+    "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.md",
     "outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json",
     "outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.md",
     "outputs/stage41_stratified_protocol/stage41_locked_v2_confirmatory.md",
@@ -7156,7 +7158,7 @@
       "source": "fresh_run"
     }
   },
-  "current_best_deployable": "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor",
+  "current_best_deployable": "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor",
   "last_updated": "2026-05-24",
   "stage5c_ready": false,
   "true_3d_world_model": false,
@@ -7181,7 +7183,7 @@
   "m3w_neural_v1_completion_audit": {
     "source": "fresh_run",
     "completion_status": "not_complete",
-    "current_best_deployable": "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor",
+    "current_best_deployable": "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor",
     "all_agent_risk_repair_summary": {
       "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
       "all_improvement": 0.09976285280545372,
@@ -7341,22 +7343,45 @@
       "multiseed_hard_mean": 0.2862145627536274,
       "multiseed_easy_max": 0.0
     },
+    "ucy_fallback_repair_summary": {
+      "contributes": true,
+      "missing_val_domains": [
+        "UCY"
+      ],
+      "calibration_rows": 9445,
+      "all_improvement": 0.3613141132176878,
+      "t50_improvement": 0.25956635248380133,
+      "t100_improvement": 0.37474907455985007,
+      "hard_failure_improvement": 0.3616933168487243,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.5102831004178072,
+      "ucy_all_improvement": 0.3928657400363359,
+      "ucy_t50_improvement": 0.24265047375057225,
+      "ucy_t100_improvement": 0.4634436152370407,
+      "all_delta_over_base_policy": 0.07538451466310736,
+      "t50_delta_over_base_policy": 0.045728476573585364,
+      "hard_delta_over_base_policy": 0.07490871273042576,
+      "bootstrap_all_low": 0.35713967840322164,
+      "bootstrap_t50_low": 0.25243361192569325,
+      "bootstrap_ucy_low": 0.38373376338122456,
+      "train_only_ucy_threshold_calibration": true
+    },
     "stage5c_executed": false,
     "smc_enabled": false
   },
   "m3w_neural_v1_current_candidate": {
     "source": "fresh_run",
     "completion_status": "not_complete",
-    "deployment_state": "joint_policy_distilled_candidate_pending_bootstrap_ablation_and_ucy_repair",
-    "current_best_deployable": "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor",
-    "best_name": "joint_distill_nobase_balanced::distiller_only",
-    "all_improvement": 0.28592959855458044,
-    "t50_improvement": 0.21383787591021597,
-    "t100_raw_frame_diagnostic": 0.2887528737231674,
-    "hard_failure_improvement": 0.28678460411829854,
+    "deployment_state": "ucy_repaired_joint_policy_distilled_candidate_pending_independent_validation",
+    "current_best_deployable": "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor",
+    "best_name": "ucy_train_calibrated_joint_distiller",
+    "all_improvement": 0.3613141132176878,
+    "t50_improvement": 0.25956635248380133,
+    "t100_raw_frame_diagnostic": 0.37474907455985007,
+    "hard_failure_improvement": 0.3616933168487243,
     "easy_degradation": 0.0,
-    "switch_rate": 0.42232747442731594,
-    "positive_external_domains": 2,
+    "switch_rate": 0.5102831004178072,
+    "positive_external_domains": 3,
     "base_switch_input": false,
     "base_plus_distiller_deployable": false,
     "bootstrap_all_low": 0.2816879475496606,
@@ -7371,7 +7396,10 @@
     "multiseed_t50_mean": 0.19436183988319766,
     "multiseed_t50_min": 0.1695617463193938,
     "multiseed_easy_max": 0.0,
-    "ucy_status": "fallback_only",
+    "ucy_status": "train_calibrated_repaired_pending_independent_validation",
+    "ucy_all_improvement": 0.3928657400363359,
+    "ucy_t50_improvement": 0.24265047375057225,
+    "ucy_bootstrap_low": 0.38373376338122456,
     "stage5c_executed": false,
     "smc_enabled": false
   }

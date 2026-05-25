@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller that strongly improves ETH_UCY and TrajNet while preserving easy, but UCY remains fallback-only and the rollout is not yet a jointly consistent latent world state.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, and the UCY fallback-only blocker has a train-only calibration repair. The rollout is still not a jointly consistent latent world state.
 
 ```text
 completion_status = not_complete
@@ -1092,11 +1092,20 @@ joint_policy_distillation_multiseed_all_min = 0.2785936928672702
 joint_policy_distillation_multiseed_t50_mean = 0.19436183988319766
 joint_policy_distillation_multiseed_t50_min = 0.1695617463193938
 joint_policy_distillation_multiseed_easy_max = 0.0
+ucy_fallback_repair_contributes = True
+ucy_fallback_repair_all = 0.3613141132176878
+ucy_fallback_repair_t50 = 0.25956635248380133
+ucy_fallback_repair_t100_diagnostic = 0.37474907455985007
+ucy_fallback_repair_hard = 0.3616933168487243
+ucy_fallback_repair_easy = 0.0
+ucy_fallback_repair_ucy_all = 0.3928657400363359
+ucy_fallback_repair_ucy_t50 = 0.24265047375057225
+ucy_fallback_repair_bootstrap_ucy_low = 0.38373376338122456
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: repair UCY fallback-only behavior and move toward a jointly consistent multi-agent rollout; bootstrap, first ablations, and three-seed replication are now complete. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: independently validate the train-calibrated UCY repair and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

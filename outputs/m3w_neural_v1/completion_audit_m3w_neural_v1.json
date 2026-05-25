@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 joint-policy-distilled full-trajectory candidate under Stage37 safety floor",
+  "current_best_deployable": "M3W-Neural v1 UCY-repaired joint-policy-distilled candidate under Stage37 safety floor",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -161,6 +161,29 @@
     "multiseed_hard_mean": 0.2862145627536274,
     "multiseed_easy_max": 0.0
   },
+  "ucy_fallback_repair_summary": {
+    "contributes": true,
+    "missing_val_domains": [
+      "UCY"
+    ],
+    "calibration_rows": 9445,
+    "all_improvement": 0.3613141132176878,
+    "t50_improvement": 0.25956635248380133,
+    "t100_improvement": 0.37474907455985007,
+    "hard_failure_improvement": 0.3616933168487243,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.5102831004178072,
+    "ucy_all_improvement": 0.3928657400363359,
+    "ucy_t50_improvement": 0.24265047375057225,
+    "ucy_t100_improvement": 0.4634436152370407,
+    "all_delta_over_base_policy": 0.07538451466310736,
+    "t50_delta_over_base_policy": 0.045728476573585364,
+    "hard_delta_over_base_policy": 0.07490871273042576,
+    "bootstrap_all_low": 0.35713967840322164,
+    "bootstrap_t50_low": 0.25243361192569325,
+    "bootstrap_ucy_low": 0.38373376338122456,
+    "train_only_ucy_threshold_calibration": true
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -235,6 +258,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json",
       "note": "Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only."
+    },
+    {
+      "requirement": "UCY fallback-only blocker diagnosed and repaired without test tuning",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
+      "note": "UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",
