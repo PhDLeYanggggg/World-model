@@ -6,6 +6,7 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 
 ## Files
 
+- `README_GOAL_SUMMARY_M3W_NEURAL_V1.md` — detailed research ledger: attempted routes, failures, successes, current best deployable candidate, and remaining gaps.
 - `report_m3w_neural_v1.md` — frozen result summary.
 - `evidence_matrix_m3w_neural_v1.md/json` — gate and metric evidence.
 - `selector_policy_m3w_neural_v1.json` — frozen policy metadata and hashes.

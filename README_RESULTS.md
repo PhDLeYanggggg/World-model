@@ -1,5 +1,31 @@
 # Physical World Model 2.5D Results
 
+## M3W-Neural v1 Goal Summary
+
+Latest detailed goal-level summary:
+
+`/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_GOAL_SUMMARY_M3W_NEURAL_V1.md`
+
+Current deployable candidate:
+
+```text
+model = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+safety_floor = Stage37 selector / teacher floor
+gates = 41 / 41
+all_ADE_improvement = 0.2103
+t50_ADE_improvement = 0.1365
+t100_raw_frame_diagnostic_ADE_improvement = 0.1469
+hard_failure_ADE_improvement = 0.2038
+easy_degradation = 0.0000
+positive_external_domains = 3
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Main honest verdict:
+
+M3W-Neural v1 is the strongest current protected 2.5D neural world-state candidate, but it is still not true 3D, not metric/seconds-level, and not a foundation world model. JEPA remains diagnostic-only; ungated neural dynamics remain unsafe; Stage37/teacher safety floor is still required for deployability.
+
 Latest consolidated package:
 
 `/Users/yangyue/Downloads/World/outputs/world_model_stage5_data_results`
