@@ -6,7 +6,7 @@ Latest Chinese detailed summary of the M3W goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled.
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-F. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package, but it is not yet full A-journal ready.
 
 ## M3W-Neural v1 Goal Summary
 
@@ -1965,3 +1965,24 @@ smc_enabled = false
 ```
 
 Stage42-E studies whether the Stage37/teacher floor can be removed. It evaluates internal self-gates, uncertainty/harm/conformal gates, teacher-prob gates, and bounded residual blends with validation-only threshold selection. Ungated neural remains unsafe; any partial floor removal is limited to explicitly deployable gated families.
+
+## Stage42-F Paper Evidence Package
+
+```text
+source = fresh_run
+verdict = stage42_f_paper_package_complete_not_full_a_journal_ready
+gates = 12 / 12
+full_a_journal_ready = False
+external_all = 0.2102513255185352
+external_t50 = 0.13652231450154184
+full_waypoint_ade_all = 0.18577852429834418
+full_waypoint_ade_t50 = 0.14803699577731477
+safety_floor_best_all = 0.2102513255185352
+safety_floor_best_easy = 0.0
+all_components_retrained_inside_stage42_d = False
+metric_or_seconds_claim = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-F packages A-E into paper-ready artifacts under `outputs/stage42_long_research/`. It supports a protected raw-frame 2.5D external world-state manuscript package, but it is **not yet full A-journal ready** because metric/time calibration, all-component fresh retrained ablation, independent external expansion, and floor-free safety remain open.

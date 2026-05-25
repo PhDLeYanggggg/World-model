@@ -122,3 +122,24 @@ ungated_endpoint_easy_degradation = 1.2458611044726973
 Interpretation:
 
 The Stage37/teacher floor remains necessary for current deployment. Ungated neural has stronger raw all/t50/hard numbers but fails safety with easy degradation around `1.2459` and worse proximity/collision. Internal self-gate, uncertainty gate, harm gate, and conformal gate show large raw lift but exceed the collision safety ceiling in this fresh study. Teacher-repaired and composite-tail protected policies remain the deployable path. This is still dataset-local raw-frame 2.5D evidence, not metric, seconds-level, true 3D, Stage5C, or SMC.
+
+## Stage42-F Paper Evidence Package
+
+```text
+source = fresh_run
+verdict = stage42_f_paper_package_complete_not_full_a_journal_ready
+gates = 12 / 12
+full_a_journal_ready = False
+external_all = 0.2102513255185352
+external_t50 = 0.13652231450154184
+full_waypoint_ade_all = 0.18577852429834418
+full_waypoint_ade_t50 = 0.14803699577731477
+safety_floor_best_all = 0.2102513255185352
+safety_floor_best_easy = 0.0
+all_components_retrained_inside_stage42_d = False
+metric_or_seconds_claim = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-F packages A-E into paper-ready artifacts under `outputs/stage42_long_research/`. It supports a protected raw-frame 2.5D external world-state manuscript package, but it is **not yet full A-journal ready** because metric/time calibration, all-component fresh retrained ablation, independent external expansion, and floor-free safety remain open.

@@ -1,6 +1,6 @@
 # M3W 目标内研究总结：尝试路线、失败原因、成功结果与当前结论
 
-来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence，外加 Stage42-A 数据/标定审计的 `fresh_run` 结果。  
+来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F 的新增审计、外部验证、full-waypoint、安全地板与论文包结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
 本文件是给项目长期目标使用的中文总 README：它不是论文结论包装，而是把真实做过的路线、失败原因、成功证据和仍然不能声称的内容集中写清楚。
 
 ## 0. 当前一句话结论
@@ -16,6 +16,8 @@ uncalibrated domain rule = fallback_to_stage37_floor
 ```
 
 它已经从 SDD-only selector 走到了受保护的 2.5D 外部多智能体世界状态候选：有外部 dataset-local raw-frame 结果、bootstrap、多 seed、pure-UCY、all-agent、endpoint-to-full bridge 和 ablation evidence。
+
+Stage42-F 已经整理出论文级证据包，但结论是：**这是强的 protected 2.5D external world-state manuscript package，不是 full A-journal-ready / foundation / true-3D 结论**。A刊候选还缺 full retrained ablation、更多独立外部数据、metric/time calibration，以及减少 Stage37/teacher floor 依赖的安全神经门控。
 
 但是必须继续诚实承认：
 
@@ -110,6 +112,53 @@ stage42_c_full_waypoint_prereq_ready = true
 Stage5C_executed = false
 SMC_enabled = false
 stage42_a_gates = 7 / 7
+```
+
+Stage42-B 最新外部 source-level 验证：
+
+```text
+source = fresh_run
+source_level_split_rebuilt = true
+frozen_eval_pool_rows = 66,303
+evaluated_rows = 55,528
+protected_M3W_all_ADE_improvement = 0.2103
+protected_M3W_t50_ADE_improvement = 0.1365
+protected_M3W_t100_raw_frame_diagnostic_ADE_improvement = 0.1469
+protected_M3W_hard_failure_ADE_improvement = 0.2038
+protected_M3W_easy_degradation = -0.1451
+ungated_neural_all_ADE_improvement = 0.2966
+ungated_neural_easy_degradation = 1.2459
+stage42_b_gates = 10 / 10
+verdict = stage42_b_external_validation_pass_protected_neural_not_ungated
+```
+
+Stage42-C 最新 full-waypoint dynamics 证据：
+
+```text
+source = fresh_run
+full_waypoint_sequence_model = full_trajectory_ensemble
+positive_full_waypoint_domains = ETH_UCY, TrajNet
+protected_full_waypoint_ADE_all = 0.1858
+protected_full_waypoint_ADE_t50 = 0.1480
+protected_full_waypoint_ADE_t100_raw_frame_diagnostic = 0.2286
+protected_full_waypoint_ADE_hard_failure = 0.1952
+protected_full_waypoint_easy_degradation = 0.0000
+protected_full_waypoint_FDE_all = 0.1938
+protected_full_waypoint_FDE_t50 = 0.2158
+stage42_c_gates = 12 / 12
+verdict = stage42_c_full_waypoint_dynamics_pass
+```
+
+Stage42-D 到 F 的证据边界：
+
+```text
+Stage42-D causal ablation evidence = pass_with_retrain_boundary
+Stage42-D gates = 12 / 12
+Stage42-E safety floor research = pass
+Stage42-E gates = 12 / 12
+Stage42-F paper package = complete_not_full_a_journal_ready
+Stage42-F gates = 12 / 12
+full_a_journal_ready = false
 ```
 
 ## 2. 我们尝试过的主要路线
@@ -439,6 +488,161 @@ global seconds claim allowed = false
 
 可以继续做外部验证和 full-waypoint dynamics，但仍不能声称 metric/seconds-level 或 foundation。
 
+### 2.10 Stage42-B：外部 source-level 验证
+
+尝试内容：
+
+- 使用冻结后的 M3W-Neural v1 / Stage37 safety floor 组合策略，重新做外部 source-level split 和 frozen evaluation。
+- 明确区分 protected policy 与 ungated neural。
+- 对 external all、t+50、t+100 raw-frame diagnostic、hard/failure、easy degradation 重新统计。
+
+结果：
+
+```text
+source = fresh_run
+evaluated_rows = 55,528
+all ADE improvement = 0.2103
+t+50 ADE improvement = 0.1365
+t+100 raw-frame diagnostic ADE improvement = 0.1469
+hard/failure ADE improvement = 0.2038
+easy degradation = -0.1451
+ungated neural easy degradation = 1.2459
+gates = 10 / 10
+```
+
+为什么这一步成功：
+
+- 不是把 Stage37 结果简单重复，而是在冻结策略、source/fold stress 下重新验证。
+- protected M3W 在 external dataset-local raw-frame 上保持正提升。
+- 同时证明了 ungated neural 虽然 raw lift 更高，但 easy-case 安全失败，不能部署。
+
+结论：
+
+Stage42-B 支持 “protected neural world-state dynamics 有外部正贡献”，但也确认 Stage37/teacher floor 仍是方法的一部分，不可悄悄拿掉。
+
+### 2.11 Stage42-C：full-waypoint / all-agent dynamics
+
+尝试内容：
+
+- 从 endpoint / tail evidence 推进到 future waypoint sequence。
+- 训练 / 评估 full_trajectory_ensemble。
+- 比较 ADE/FDE、t+50、t+100 raw-frame diagnostic、hard/failure、easy preservation、near-collision proxy。
+
+结果：
+
+```text
+source = fresh_run
+positive_domains = ETH_UCY, TrajNet
+ADE all = 0.1858
+ADE t+50 = 0.1480
+ADE t+100 raw-frame diagnostic = 0.2286
+ADE hard/failure = 0.1952
+easy degradation = 0.0000
+FDE all = 0.1938
+FDE t+50 = 0.2158
+near_collision_delta_005 = 0.0086
+gates = 12 / 12
+```
+
+为什么这一步重要：
+
+- 它把证据从“只选 endpoint / baseline policy”推进到 “future waypoint sequence / all-agent world-state”。
+- 说明当前 M3W 已经不只是 selector demo，有了受保护的神经 dynamics 证据。
+
+仍然的限制：
+
+- full-waypoint model 还没有完全替代 composite-tail linear bridge 的 all-ADE。
+- ungated full-waypoint neural 仍不安全。
+- 仍然是 raw-frame / dataset-local，不是 metric / seconds-level。
+
+### 2.12 Stage42-D：causal ablation evidence
+
+尝试内容：
+
+- 汇总并复核 no-history、no-neighbor、no-scene/goal、no-interaction、no-JEPA、no-Transformer、no-fallback 等 ablation evidence。
+- 对 fresh safety / waypoint rows 做重新计算。
+- 明确哪些是 Stage42 本轮 fresh，哪些是 Stage30/41 cached-verified。
+
+结果：
+
+```text
+verdict = stage42_d_causal_ablation_evidence_pass_with_retrain_boundary
+gates = 12 / 12
+ablation_coverage = true
+all_components_retrained_inside_stage42_d = false
+```
+
+为什么只能算 partial support：
+
+- 组件覆盖齐全，但不是每个组件都在 Stage42-D 内重新训练。
+- scene/goal/interaction/history/neighbor 的贡献可以作为当前证据链的一部分，但还不能当成最终论文级 full retrained ablation。
+
+结论：
+
+Stage42-D 足够支撑“当前证据链有 ablation coverage”，但 A刊最终稿还需要同一 protocol 下全量 retrained ablation。
+
+### 2.13 Stage42-E：safety floor research
+
+尝试内容：
+
+- 研究能否去掉 Stage37/teacher floor。
+- 比较 no-teacher、internal self-gate、uncertainty gate、harm gate、conformal gate、bounded no-switch 等策略。
+- 检查 raw lift、easy degradation、proximity/collision safety。
+
+结果：
+
+```text
+best_deployable_policy = current_composite_tail_policy
+all = 0.2103
+t+50 = 0.1365
+t+100 raw-frame diagnostic = 0.1469
+hard/failure = 0.2038
+easy degradation = 0.0000
+floor_conclusion = teacher_floor_required_for_current_deployment
+gates = 12 / 12
+```
+
+失败路线：
+
+- ungated endpoint/full-waypoint neural raw lift 很高，但 easy degradation 约 1.2459，不可部署。
+- internal self-gate / uncertainty / harm / conformal gates 可以产生 raw lift，但违反 proximity/collision ceiling。
+- bounded no-switch 不能稳定替代 Stage37 floor。
+
+结论：
+
+当前最安全的部署方式仍然需要 Stage37/teacher floor。去掉 teacher floor 是未来研究任务，不是当前可部署结论。
+
+### 2.14 Stage42-F：论文证据包
+
+尝试内容：
+
+- 把 Stage42-A 到 E 的证据整理成 paper outline、method draft、experiment table、ablation table、failure taxonomy、model/data card、reproducibility 和 A-journal gap analysis。
+- 明确哪些 claim 支持，哪些 claim 不支持。
+
+结果：
+
+```text
+verdict = stage42_f_paper_package_complete_not_full_a_journal_ready
+gates = 12 / 12
+full_a_journal_ready = false
+```
+
+支持的 claim：
+
+- protected external raw-frame 2.5D world-state dynamics improves over Stage37 / strongest floor。
+- full-waypoint sequence dynamics exists beyond endpoint-only linear bridge。
+
+不支持或只能部分支持的 claim：
+
+- ungated neural can replace safety floor：不支持。
+- metric or seconds-level pedestrian world model：不支持。
+- true 3D / foundation world model：不支持。
+- scene/goal/interaction/history/neighbor contribution：部分支持，还需要 full retrained ablation。
+
+结论：
+
+Stage42-F 已经形成可写论文草稿的证据包，但诚实结论是 `not yet full A-journal ready`。当前是强 protected 2.5D external world-state candidate，而不是最终 A刊级完成态。
+
 ## 3. 失败路线总表
 
 | 路线 | 状态 | 失败原因 |
@@ -458,6 +662,9 @@ global seconds claim allowed = false
 | continuous full-row bounded blend | 安全失败 | all/t50/t100/hard 正，但 easy degradation 约 0.207，高于 <=2% gate。 |
 | dynamic/calibrated/pairwise source switching | 大多失败 | fixed composer 后剩余 oracle headroom 很小，positive residual rows 约 0.1%。 |
 | learned full-waypoint shape alone | 弱 | 安全正贡献存在，但 shape gain 很小，主要是 tail-specific。 |
+| ungated Stage42 full-waypoint / endpoint neural | 不可部署 | raw lift 高，但 easy degradation 和 proximity/collision safety 失败。 |
+| internal self/uncertainty/harm/conformal gate 替代 teacher floor | 不可部署 | 可以产生 raw lift，但未通过 proximity/collision ceiling。 |
+| Stage42-D 全组件 fresh retraining | 未完成 | 当前是 fresh rows + cached-verified component evidence，不是全量同 protocol retrain。 |
 
 ## 4. 成功路线总表
 
@@ -473,6 +680,11 @@ global seconds claim allowed = false
 | all-agent composite world-state | 成功 | 证据不是单 agent endpoint 选择，all-agent future world-state metrics 也为正。 |
 | ablation coverage | 成功 | no-history、no-neighbor、no-scene/goal、no-interaction、no-JEPA、no-Transformer、no-fallback 都已覆盖。 |
 | Stage42-A data calibration | 成功 | 当前数据足够继续 Stage42-B/C，但 metric/seconds claim 仍不允许。 |
+| Stage42-B protected external validation | 成功 | frozen protected M3W 在 external source/fold stress 下仍为正，ungated neural 仍不安全。 |
+| Stage42-C full-waypoint dynamics | 成功 | full future waypoint / all-agent world-state evidence 在 ETH_UCY、TrajNet 为正。 |
+| Stage42-D causal ablation coverage | 部分成功 | ablation coverage 完成，但不是所有组件在 Stage42-D 内 fresh retrain。 |
+| Stage42-E safety floor study | 成功 | 证明 teacher floor 当前仍必要，不能部署 ungated neural。 |
+| Stage42-F paper package | 成功但未达最终 A刊 | 证据包完整，claim boundary 清楚，但 full retrained ablation、metric/time、外部扩展仍缺。 |
 
 ## 5. 当前模型到底是什么
 
@@ -536,7 +748,9 @@ SMC-ready model
 4. **full-waypoint dynamics**：endpoint-to-full bridge 有效，但 learned waypoint-shape contribution 小。
 5. **external breadth**：ETH_UCY、TrajNet、UCY 为正，但还不是 foundation-scale 外部泛化。
 6. **source/domain robustness**：fixed composer 之后的 dynamic source switching headroom 很小，需要新增 causal scene/domain features，而不是继续堆 source-switch learner。
-7. **Stage42-B/C**：需要继续做 external validation source-level split 和 full-waypoint dynamics 加固。
+7. **full retrained ablation**：Stage42-D 已覆盖组件，但 A刊级最终 claim 还需要同一 protocol 下重新训练所有 ablation。
+8. **teacher-floor dependence**：Stage42-E 证明当前 teacher floor 必要；下一步要研究 proximity-safe internal gate，减少 floor 依赖。
+9. **更多独立外部数据**：需要再接入合法 top-down pedestrian/drone 数据源，而不是只依赖当前 converted external 状态。
 
 ## 8. 直接回答
 
@@ -548,6 +762,7 @@ SMC-ready model
 JEPA 是否可部署：否。
 Transformer 是否有贡献：纯 Transformer 不可部署；protected endpoint neural dynamics 有贡献。
 当前是否只是 selector：不是，已有 protected neural dynamics、all-agent world-state、endpoint-to-full evidence，但仍依赖 safety floor。
+Stage42 论文包是否 full A刊 ready：否，是 strong protected 2.5D manuscript package，还不是最终 A刊完成态。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -569,11 +784,17 @@ SMC 是否可启用：否。
 - paper gap：`/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/paper_gap_m3w_neural_v1.md`
 - frozen policy：`/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/selector_policy_m3w_neural_v1.json`
 - Stage42-A data calibration：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/data_calibration_stage42.md`
+- Stage42-B external validation：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/external_validation_stage42.md`
+- Stage42-C full-waypoint dynamics：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/full_waypoint_dynamics_stage42.md`
+- Stage42-D causal ablation：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/causal_ablation_stage42.md`
+- Stage42-E safety floor：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_stage42.md`
+- Stage42-F final report：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/report_stage42_final.md`
+- Stage42-F A-journal gap：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/a_journal_gap_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **Stage42-B external validation**：做 source-level external validation，明确 frozen M3W-Neural v1 在不同 source/domain/scene/agent 切片上的稳定性。
-2. **Stage42-C full-waypoint dynamics**：继续从 endpoint evidence 推进到更强 full future waypoint / all-agent dynamics，但保持 safety floor。
+1. **全量 retrained ablation**：同一 protocol 重训 no-history、no-neighbor、no-scene、no-goal、no-interaction、no-teacher-floor、no-safe-switch、no-endpoint-bridge、no-full-waypoint-shape。
+2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。
 5. **停止低收益方向**：不继续把 JEPA-only、hard-class selector、ungated residual、source-switch 微小 headroom 当主线。
@@ -585,5 +806,5 @@ SMC 是否可启用：否。
 - 可以说：M3W-Neural v1 是当前 strongest protected 2.5D neural world-state candidate。
 - 必须说：它不是 true 3D、不是 metric、不是 seconds-level、不是 foundation。
 - 可以说：Stage37/teacher floor 下的 composite-tail neural dynamics 有稳定正贡献。
-- 必须说：ungated neural dynamics 不安全，JEPA 不可部署，Stage5C/SMC 未启用。
-
+- 可以说：Stage42 形成了 strong protected 2.5D manuscript package。
+- 必须说：它 not yet full A-journal ready；ungated neural dynamics 不安全，JEPA 不可部署，Stage5C/SMC 未启用。

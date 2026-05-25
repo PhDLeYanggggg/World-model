@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_e_safety_floor",
-  "current_verdict": "stage42_e_safety_floor_research_pass",
+  "current_stage": "stage42_f_paper_package",
+  "current_verdict": "stage42_f_paper_package_complete_not_full_a_journal_ready",
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
@@ -62,7 +62,7 @@
     }
   },
   "latest_chinese_goal_summary": {
-    "source": "cached_verified_plus_stage42_a_fresh_run",
+        "source": "cached_verified_plus_stage42_a_to_f_fresh_runs_and_cached_verified_evidence",
     "path": "outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor",
     "summary_scope": "routes_tried_failure_reasons_successes_claim_boundaries_next_steps",
@@ -579,16 +579,28 @@
     "outputs/stage41_stratified_protocol/stage41_locked_v2_tail_robust.md",
     "outputs/stage41_stratified_protocol/stage41_stratified_dataset.md",
     "outputs/stage41_stratified_protocol/stage41_stratified_protocol.md",
+    "outputs/stage42_long_research/a_journal_gap_stage42.md",
+    "outputs/stage42_long_research/ablation_tables_stage42.md",
     "outputs/stage42_long_research/causal_ablation_stage42.json",
     "outputs/stage42_long_research/causal_ablation_stage42.md",
     "outputs/stage42_long_research/data_calibration_stage42.json",
     "outputs/stage42_long_research/data_calibration_stage42.md",
+    "outputs/stage42_long_research/data_card_stage42.md",
+    "outputs/stage42_long_research/experiment_tables_stage42.md",
+    "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+    "outputs/stage42_long_research/method_draft_stage42.md",
+    "outputs/stage42_long_research/model_card_stage42.md",
+    "outputs/stage42_long_research/paper_outline_stage42.md",
+    "outputs/stage42_long_research/paper_package_stage42.json",
     "outputs/stage42_long_research/pytest_status.md",
+    "outputs/stage42_long_research/report_stage42_final.md",
+    "outputs/stage42_long_research/reproducibility_stage42.md",
     "outputs/stage42_long_research/safety_floor_stage42.json",
     "outputs/stage42_long_research/safety_floor_stage42.md",
     "outputs/stage42_long_research/stage42_stage_a_gate.md",
     "outputs/stage42_long_research/stage42_stage_d_gate.md",
     "outputs/stage42_long_research/stage42_stage_e_gate.md",
+    "outputs/stage42_long_research/stage42_stage_f_gate.md",
     "outputs/stage42_long_research/user_action_required_stage42.md"
   ],
   "generated_figures": [
@@ -12540,6 +12552,196 @@
         "test_endpoint_goals": false,
         "test_threshold_tuning": false,
         "thresholds_selected_on_val": true
+      }
+    },
+    "stage_f_paper_package": {
+      "source": "fresh_run",
+      "verdict": "stage42_f_paper_package_complete_not_full_a_journal_ready",
+      "gates": {
+        "source": "fresh_run",
+        "gates": {
+          "stage42_a_data_calibration_present": true,
+          "stage42_b_external_validation_pass": true,
+          "stage42_c_full_waypoint_pass": true,
+          "stage42_d_ablation_package_pass_with_boundary": true,
+          "stage42_e_safety_floor_pass": true,
+          "paper_files_written": true,
+          "claim_matrix_has_negative_boundaries": true,
+          "full_waypoint_evidence_positive": true,
+          "safety_floor_evidence_positive": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 12,
+        "total": 12,
+        "full_a_journal_ready": false,
+        "verdict": "stage42_f_paper_package_complete_not_full_a_journal_ready"
+      },
+      "evidence_summary": {
+        "data_calibration": {
+          "datasets_audited": 7,
+          "external_domains_ready_from_existing_state": [
+            "opentraj",
+            "eth_ucy",
+            "trajnet",
+            "ucy"
+          ],
+          "metric_claim_ready_datasets": [
+            "tgsim"
+          ],
+          "seconds_claim_ready_datasets": [],
+          "global_metric_claim_allowed": false,
+          "global_seconds_claim_allowed": false
+        },
+        "external_validation": {
+          "rows": 55528,
+          "all": 0.2102513255185352,
+          "t50": 0.13652231450154184,
+          "t100_raw_frame_diagnostic": 0.14694086716388166,
+          "hard_failure": 0.20384916307933942,
+          "easy_degradation": -0.14511076140795587,
+          "ungated_easy_degradation": 1.2458611044726973,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.19062711907148822,
+              "t10_improvement": 0.4421030898244771,
+              "t25_improvement": 0.08626219775321453,
+              "t50_improvement": 0.13578010021258757,
+              "t100_improvement": 0.1345954848165677,
+              "hard_failure_improvement": 0.18707724155054317,
+              "failure_improvement": 0.23979992868491018,
+              "easy_degradation": -0.1361185217956561,
+              "switch_rate": 0.39380718891162503,
+              "harm_over_fallback": -0.09991210991584816
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.2295029620675162,
+              "t10_improvement": 0.5089431497884755,
+              "t25_improvement": 0.1357580189865265,
+              "t50_improvement": 0.166209193926539,
+              "t100_improvement": 0.14024617113502336,
+              "hard_failure_improvement": 0.2195777066718413,
+              "failure_improvement": 0.2816834879425284,
+              "easy_degradation": -0.14966415934330612,
+              "switch_rate": 0.27654702046099466,
+              "harm_over_fallback": -0.09028708910424278
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.23265884628641076,
+              "t10_improvement": 0.5301448202265879,
+              "t25_improvement": 0.1094369383623871,
+              "t50_improvement": 0.0913767291690647,
+              "t100_improvement": 0.19255939765315455,
+              "hard_failure_improvement": 0.22601578755697505,
+              "failure_improvement": 0.3149812946151078,
+              "easy_degradation": -0.15375935190404844,
+              "switch_rate": 0.33343815513626834,
+              "harm_over_fallback": -0.1243715327938506
+            }
+          }
+        },
+        "full_waypoint": {
+          "model": "full_trajectory_ensemble",
+          "positive_domains": [
+            "ETH_UCY",
+            "TrajNet"
+          ],
+          "ade_all": 0.18577852429834418,
+          "ade_t50": 0.14803699577731477,
+          "ade_t100_raw_frame_diagnostic": 0.22857426649949408,
+          "ade_hard_failure": 0.19518047277951456,
+          "ade_easy_degradation": -0.0,
+          "fde_all": 0.19384419892400817,
+          "fde_t50": 0.2158088248723733,
+          "near_collision_delta_005": 0.008639348472064268
+        },
+        "ablation": {
+          "gate": {
+            "source": "fresh_run",
+            "passed": 12,
+            "total": 12,
+            "verdict": "stage42_d_causal_ablation_evidence_pass_with_retrain_boundary"
+          },
+          "all_components_retrained_inside_stage42_d": false,
+          "required_ablation_coverage_gate": true,
+          "same_protocol_architecture_ablation_gate": true
+        },
+        "safety_floor": {
+          "gate": {
+            "source": "fresh_run",
+            "passed": 12,
+            "total": 12,
+            "verdict": "stage42_e_safety_floor_research_pass"
+          },
+          "best_policy_family": "current_composite_tail_policy",
+          "best_policy_source": "cached_verified_policy_fresh_eval",
+          "best_all": 0.2102513255185352,
+          "best_t50": 0.13652231450154184,
+          "best_t100_raw_frame_diagnostic": 0.14694086716388166,
+          "best_hard_failure": 0.20384916307933942,
+          "best_easy_degradation": 0.0,
+          "floor_necessity_conclusion": "teacher_floor_required_for_current_deployment"
+        }
+      },
+      "claim_matrix": [
+        {
+          "claim": "protected external raw-frame 2.5D world-state dynamics improves over Stage37/strongest floor",
+          "status": "supported",
+          "evidence": "external all=0.2103, t50=0.1365, hard=0.2038, easy=-0.1451"
+        },
+        {
+          "claim": "full-waypoint sequence dynamics exists beyond endpoint-only linear bridge",
+          "status": "supported_but_protected",
+          "evidence": "full-waypoint ADE all=0.1858, t50=0.1480, t100diag=0.2286, positive_domains=['ETH_UCY', 'TrajNet']"
+        },
+        {
+          "claim": "ungated neural can replace safety floor",
+          "status": "rejected",
+          "evidence": "ungated easy degradation=1.2459; safety conclusion=teacher_floor_required_for_current_deployment"
+        },
+        {
+          "claim": "metric or seconds-level pedestrian world model",
+          "status": "not_supported",
+          "evidence": "global_metric=False, global_seconds=False"
+        },
+        {
+          "claim": "true 3D or foundation world model",
+          "status": "not_supported",
+          "evidence": "all Stage42 claim boundaries keep true_3d=false and foundation_world_model=false"
+        },
+        {
+          "claim": "scene/goal/interaction/history/neighbor contributions are proven",
+          "status": "partially_supported",
+          "evidence": "ablation coverage=True; all Stage42-D component retraining=False"
+        },
+        {
+          "claim": "A-journal submission candidate",
+          "status": "candidate_package_not_final_claim",
+          "evidence": "A-E evidence is organized and strong for a protected 2.5D paper; full retrained ablation, metric/time calibration, independent external expansion, and floor-free safety remain gaps."
+        }
+      ],
+      "paper_files": [
+        "outputs/stage42_long_research/paper_outline_stage42.md",
+        "outputs/stage42_long_research/method_draft_stage42.md",
+        "outputs/stage42_long_research/experiment_tables_stage42.md",
+        "outputs/stage42_long_research/ablation_tables_stage42.md",
+        "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+        "outputs/stage42_long_research/model_card_stage42.md",
+        "outputs/stage42_long_research/data_card_stage42.md",
+        "outputs/stage42_long_research/reproducibility_stage42.md",
+        "outputs/stage42_long_research/a_journal_gap_stage42.md"
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
       }
     }
   }
