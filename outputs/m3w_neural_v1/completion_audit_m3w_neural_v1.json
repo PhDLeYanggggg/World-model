@@ -4181,6 +4181,7 @@
     }
   ],
   "next_highest_value_actions": [
+    "return_to_full_trajectory_group_world_state_modeling_or_add_new_scene_domain_context; do_not_spend_more_trials_on_fixed_composer_residual_source_switch_without_new headroom",
     "Build source-specific causal features or per-domain/t50 priors before attempting another learned source-switch policy over the fixed composer.",
     "Train a learned waypoint-shape model to match or exceed the endpoint-to-full linear bridge on ETH_UCY and TrajNet.",
     "Bootstrap or multiseed-confirm the endpoint-to-full bridge before promoting it beyond candidate evidence.",
@@ -4387,7 +4388,7 @@
   },
   "last_validation": {
     "command": "python3 -m pytest tests",
-    "result": "233 passed in 65.88s",
+    "result": "235 passed in 66.05s",
     "source": "fresh_run"
   },
   "learned_shape_gain_gate_summary": {
@@ -4729,6 +4730,144 @@
   },
   "generated_reports": [
     "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
-    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json"
-  ]
+    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
+    "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.md",
+    "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json"
+  ],
+  "fixed_prior_oracle_audit_summary": {
+    "status": "diagnostic_headroom_too_small",
+    "source": "fresh_run",
+    "report": "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.md",
+    "oracle_is_diagnostic_not_deployable": true,
+    "headroom_domains": [],
+    "two_domain_residual_oracle_headroom": false,
+    "interpretation": "Residual source-switch oracle headroom over the fixed composer is tiny and present in only about 0.1% of rows; stop spending trials on source-switch learners without new data/features.",
+    "domain_summary": {
+      "ETH_UCY": {
+        "fixed_policy": {
+          "short": "gain_gate",
+          "t50": "bridge",
+          "t100": "old_shape"
+        },
+        "oracle_delta_vs_fixed": {
+          "all": 8.575888838702195e-05,
+          "t50": 1.2770039430010094e-05,
+          "t100": 0.0,
+          "hard_failure": 7.310714203079272e-05,
+          "easy_degradation": 0.0,
+          "shape_gain_all": 8.712635038121697e-05,
+          "shape_gain_t50": 1.279436026235814e-05,
+          "shape_gain_t100": 0.0,
+          "shape_gain_hard_failure": 7.425612834255357e-05
+        },
+        "oracle_switch_rate": 0.7605333827206223,
+        "positive_residual_rate": 0.0011112140012964164,
+        "mean_residual_gain": 0.00011155779718481218,
+        "hard_oracle_switch_rate": 0.7263185793798038,
+        "by_horizon": {
+          "t10": {
+            "rows": 7478,
+            "oracle_switch_rate": 0.9878309708478202,
+            "mean_residual_gain": 0.00018910393209333465,
+            "positive_residual_rate": 0.0017384327360256753,
+            "median_best_margin": 0.0
+          },
+          "t25": {
+            "rows": 6432,
+            "oracle_switch_rate": 0.9987562189054726,
+            "mean_residual_gain": 0.00014148028125577397,
+            "positive_residual_rate": 0.0013992537313432835,
+            "median_best_margin": 0.0
+          },
+          "t50": {
+            "rows": 5074,
+            "oracle_switch_rate": 0.00039416633819471815,
+            "mean_residual_gain": 1.6812166016255137e-05,
+            "positive_residual_rate": 0.00039416633819471815,
+            "median_best_margin": 0.0
+          },
+          "t100": {
+            "rows": 2614,
+            "oracle_switch_rate": 0.9996174445294568,
+            "mean_residual_gain": 0.0,
+            "positive_residual_rate": 0.0,
+            "median_best_margin": 0.0
+          }
+        }
+      },
+      "TrajNet": {
+        "fixed_policy": {
+          "short": "bridge",
+          "t50": "gain_gate",
+          "t100": "gain_gate"
+        },
+        "oracle_delta_vs_fixed": {
+          "all": 0.000244361183678099,
+          "t50": 0.00010943996525503152,
+          "t100": 0.0007082811202218098,
+          "hard_failure": 0.0002681415897424211,
+          "easy_degradation": 0.0,
+          "shape_gain_all": 0.00025402036026156427,
+          "shape_gain_t50": 0.00011241628789726565,
+          "shape_gain_t100": 0.0007181925728715344,
+          "shape_gain_hard_failure": 0.00027904106796172723
+        },
+        "oracle_switch_rate": 0.35971420719978014,
+        "positive_residual_rate": 0.0013740038472107722,
+        "mean_residual_gain": 0.00014709197817754834,
+        "hard_oracle_switch_rate": 0.4200898587933248,
+        "by_horizon": {
+          "t10": {
+            "rows": 1275,
+            "oracle_switch_rate": 0.0,
+            "mean_residual_gain": 0.0,
+            "positive_residual_rate": 0.0,
+            "median_best_margin": 0.0
+          },
+          "t25": {
+            "rows": 1053,
+            "oracle_switch_rate": 0.0,
+            "mean_residual_gain": 0.0,
+            "positive_residual_rate": 0.0,
+            "median_best_margin": 0.0
+          },
+          "t50": {
+            "rows": 831,
+            "oracle_switch_rate": 0.9975932611311673,
+            "mean_residual_gain": 7.138120464241217e-05,
+            "positive_residual_rate": 0.0012033694344163659,
+            "median_best_margin": 0.0
+          },
+          "t100": {
+            "rows": 480,
+            "oracle_switch_rate": 1.0,
+            "mean_residual_gain": 0.000991562349021362,
+            "positive_residual_rate": 0.008333333333333333,
+            "median_best_margin": 0.0
+          }
+        }
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "future_waypoints_input": false,
+      "future_waypoints_label_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "oracle_future_labels_diagnostic_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "claim_boundary": {
+      "oracle_diagnostic": true,
+      "deployable_model": false,
+      "latent_generative_rollout": false,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false
+    }
+  },
+  "last_successful_command": "python3 -m pytest tests (235 passed in 66.05s); .venv-pytorch/bin/python run_stage41_fixed_prior_oracle_audit.py"
 }

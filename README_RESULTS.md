@@ -1686,3 +1686,23 @@ pytest = 233 passed in 65.88s
 ```
 
 Conclusion: the fixed-prior source switch is a clean negative result. The stricter validation rule prevented the TrajNet t50 harm seen in earlier dynamic selectors by reverting to the fixed composer, but it did not find a residual switch that beats the fixed composer on both domains. ETH_UCY still suffers a tiny all/hard/t100 loss versus fixed, and TrajNet is exactly the fixed composer. Current deployable shape policy remains the protected fixed composer/composite route. Stage5C and SMC remain disabled.
+
+## Stage41 Fixed-Composer Residual Source Oracle Audit
+
+After the fixed-prior learned switch failed, I measured the diagnostic oracle headroom for any per-row switch among `bridge`, `old_shape`, and `gain_gate` relative to the validation-selected fixed composer. This oracle uses future waypoint labels only to measure theoretical headroom; it is not an inference model and is not deployable.
+
+```text
+source = fresh_run
+oracle_is_diagnostic_not_deployable = True
+headroom_domains = []
+two_domain_residual_oracle_headroom = False
+ETH_UCY_oracle_delta_vs_fixed_all_t50_t100_hard = 0.000086 / 0.000013 / 0.000000 / 0.000073
+ETH_UCY_positive_residual_rate = 0.001111
+ETH_UCY_oracle_switch_rate = 0.760533
+TrajNet_oracle_delta_vs_fixed_all_t50_t100_hard = 0.000244 / 0.000109 / 0.000708 / 0.000268
+TrajNet_positive_residual_rate = 0.001374
+TrajNet_oracle_switch_rate = 0.359714
+pytest = 235 passed in 66.05s
+```
+
+Conclusion: the residual source-switch branch is nearly exhausted. The oracle switches often because of exact ties or near-zero margins, but truly positive residual rows are only about 0.1% of test rows, and absolute gains over the fixed composer are tiny. This explains why dynamic, calibrated, pairwise, weighted, and fixed-prior learned switches all failed to become deployable over the fixed composer. The next useful work is not another source-switch learner; it is stronger full-trajectory/group-world-state modeling or better external data/scene context. Stage5C and SMC remain disabled.

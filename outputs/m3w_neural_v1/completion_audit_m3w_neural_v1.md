@@ -383,6 +383,8 @@
 - weighted pairwise shape switch policy summary: `Hard/failure, t50/t100, source-switch, and positive-gain rows were upweighted during pairwise training. This did not repair the deployability gap: ETH_UCY remains below fixed composer and TrajNet t50 remains below fixed composer. The blocker is likely source-specific causal feature insufficiency or missing per-domain/t50 priors rather than simple positive-label imbalance.`
 - fixed-composer prior source switch policy: `diagnostic_negative_not_deployable_over_fixed`
 - fixed-composer prior source switch policy summary: `The fixed composer was treated as the safety prior and the learned model was only allowed to make residual source switches after validation proved t50 preservation and all/hard/t100 gain. The stricter policy prevented TrajNet t50 harm by falling back to the fixed composer, but it did not beat fixed on either domain: ETH_UCY deltas all/t50/t100/hard = -0.000075 / 0.0 / -0.000044 / -0.000077, while TrajNet deltas are exactly 0. Current deployable shape path remains the fixed composer/composite route.`
+- fixed-composer residual source oracle audit: `diagnostic_headroom_too_small`
+- fixed-composer residual source oracle audit summary: `A diagnostic oracle over bridge / old-shape / gain-gate sources has no meaningful two-domain headroom over the fixed composer. ETH_UCY oracle deltas all/t50/t100/hard are 0.000086 / 0.000013 / 0.0 / 0.000073 with only 0.111% positive residual rows. TrajNet oracle deltas are 0.000244 / 0.000109 / 0.000708 / 0.000268 with only 0.137% positive residual rows. The source-switch branch is therefore nearly exhausted; next work should return to full-trajectory/group-world-state modeling or richer scene/domain context.`
 
 ## Neural Group Consistency Distiller
 
