@@ -79,6 +79,35 @@
     "physical_positive_rate": 0.8778634202564471,
     "non_degenerate_physical_label": true
   },
+  "route_physical_policy_integration_summary": {
+    "best_mode": "no_route_physical",
+    "route_physical_policy_contributes": false,
+    "all_improvement": 0.18577852429834418,
+    "t50_improvement": 0.14803699577731477,
+    "t100_improvement": 0.22857426649949408,
+    "hard_failure_improvement": 0.19518047277951456,
+    "easy_degradation": 0.0,
+    "all_delta_over_no_route_physical": 0.0,
+    "t50_delta_over_no_route_physical": 0.0,
+    "hard_delta_over_no_route_physical": 0.0
+  },
+  "joint_route_conditioned_world_state_summary": {
+    "best_name": "joint_route_conditioned_ensemble",
+    "joint_route_conditioning_contributes": false,
+    "all_improvement": 0.15088774687015682,
+    "t50_improvement": 0.09295551695088011,
+    "t100_improvement": 0.16374924097478616,
+    "hard_failure_improvement": 0.15655007967571088,
+    "easy_degradation": 0.0,
+    "all_delta_over_full_trajectory_reference": -0.03489077742818736,
+    "t50_delta_over_full_trajectory_reference": -0.05508147882643466,
+    "t100_delta_over_full_trajectory_reference": -0.06482502552470792,
+    "hard_delta_over_full_trajectory_reference": -0.03863039310380367,
+    "route_top1": 0.7032127935455986,
+    "physical_auroc": 0.9460369245580365,
+    "interaction_auroc": 0.9479880457425697,
+    "occupancy_auroc": 0.9453385350366176
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -125,6 +154,12 @@
       "note": "Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs."
     },
     {
+      "requirement": "route/physical heads improve trajectory deployment policy",
+      "status": "partial",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json and outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json",
+      "note": "Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference."
+    },
+    {
       "requirement": "t100 diagnostic positive or blocker analysis",
       "status": "complete",
       "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
@@ -146,7 +181,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Evaluate whether route/physical heads improve trajectory deployment policy instead of only auxiliary diagnostics.",
+    "Treat route/physical heads as diagnostics until a jointly trained policy shows trajectory lift; the current post-hoc and joint route-conditioned attempts are negative ablations.",
     "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]

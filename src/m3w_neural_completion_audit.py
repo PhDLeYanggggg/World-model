@@ -53,6 +53,8 @@ def build_completion_audit() -> dict[str, Any]:
     fresh_all_agent = read_json("outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json", {})
     full_traj = read_json("outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json", {})
     goal_route = read_json("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json", {})
+    route_policy = read_json("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json", {})
+    joint_route = read_json("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -99,6 +101,13 @@ def build_completion_audit() -> dict[str, Any]:
         and (physical_metrics.get("auroc") or 0.0) >= 0.70
         and goal_route_metrics.get("non_degenerate_physical_label")
     )
+    route_policy_metrics = route_policy.get("best_metrics", {})
+    route_policy_lift = route_policy.get("lift_over_no_route_physical") or {}
+    route_policy_contributes = bool(route_policy.get("route_physical_policy_contributes"))
+    joint_route_metrics = joint_route.get("best_metrics", {})
+    joint_route_aux = joint_route.get("auxiliary_test_metrics") or {}
+    joint_route_lift = joint_route.get("lift_over_full_trajectory_reference") or {}
+    joint_route_contributes = bool(joint_route.get("joint_route_conditioning_contributes"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -153,6 +162,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(goal_route_pass),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json",
             "note": "Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs.",
+        },
+        {
+            "requirement": "route/physical heads improve trajectory deployment policy",
+            "status": _status(route_policy_contributes or joint_route_contributes, partial=goal_route_pass),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json and outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json",
+            "note": "Auxiliary route/physical heads are predictive diagnostics, but post-hoc route/physical gating selected the no-route-physical policy and joint route-conditioned trajectory training underperformed the full-trajectory reference.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -257,9 +272,38 @@ def build_completion_audit() -> dict[str, Any]:
             "physical_positive_rate": physical_metrics.get("positive_rate"),
             "non_degenerate_physical_label": goal_route_metrics.get("non_degenerate_physical_label"),
         },
+        "route_physical_policy_integration_summary": {
+            "best_mode": route_policy.get("best_mode"),
+            "route_physical_policy_contributes": route_policy.get("route_physical_policy_contributes"),
+            "all_improvement": route_policy_metrics.get("all_improvement"),
+            "t50_improvement": route_policy_metrics.get("t50_improvement"),
+            "t100_improvement": route_policy_metrics.get("t100_improvement"),
+            "hard_failure_improvement": route_policy_metrics.get("hard_failure_improvement"),
+            "easy_degradation": route_policy_metrics.get("easy_degradation"),
+            "all_delta_over_no_route_physical": route_policy_lift.get("all_delta"),
+            "t50_delta_over_no_route_physical": route_policy_lift.get("t50_delta"),
+            "hard_delta_over_no_route_physical": route_policy_lift.get("hard_delta"),
+        },
+        "joint_route_conditioned_world_state_summary": {
+            "best_name": joint_route.get("best_name"),
+            "joint_route_conditioning_contributes": joint_route.get("joint_route_conditioning_contributes"),
+            "all_improvement": joint_route_metrics.get("all_improvement"),
+            "t50_improvement": joint_route_metrics.get("t50_improvement"),
+            "t100_improvement": joint_route_metrics.get("t100_improvement"),
+            "hard_failure_improvement": joint_route_metrics.get("hard_failure_improvement"),
+            "easy_degradation": joint_route_metrics.get("easy_degradation"),
+            "all_delta_over_full_trajectory_reference": joint_route_lift.get("all_delta"),
+            "t50_delta_over_full_trajectory_reference": joint_route_lift.get("t50_delta"),
+            "t100_delta_over_full_trajectory_reference": joint_route_lift.get("t100_delta"),
+            "hard_delta_over_full_trajectory_reference": joint_route_lift.get("hard_delta"),
+            "route_top1": (joint_route_aux.get("route") or {}).get("top1"),
+            "physical_auroc": (joint_route_aux.get("physical_challenge") or {}).get("auroc"),
+            "interaction_auroc": (joint_route_aux.get("interaction") or {}).get("auroc"),
+            "occupancy_auroc": (joint_route_aux.get("occupancy") or {}).get("auroc"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Evaluate whether route/physical heads improve trajectory deployment policy instead of only auxiliary diagnostics.",
+            "Treat route/physical heads as diagnostics until a jointly trained policy shows trajectory lift; the current post-hoc and joint route-conditioned attempts are negative ablations.",
             "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -361,9 +405,38 @@ def build_completion_audit() -> dict[str, Any]:
             f"- physical challenge AUPRC: `{physical_metrics.get('auprc')}`",
             f"- physical challenge positive rate: `{physical_metrics.get('positive_rate')}`",
             "",
+            "## Route/Physical Policy Integration",
+            "",
+            f"- best mode: `{route_policy.get('best_mode')}`",
+            f"- route/physical policy contributes: `{route_policy.get('route_physical_policy_contributes')}`",
+            f"- all improvement: `{route_policy_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{route_policy_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{route_policy_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{route_policy_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{route_policy_metrics.get('easy_degradation')}`",
+            f"- all delta over no-route-physical: `{route_policy_lift.get('all_delta')}`",
+            f"- t50 delta over no-route-physical: `{route_policy_lift.get('t50_delta')}`",
+            f"- hard delta over no-route-physical: `{route_policy_lift.get('hard_delta')}`",
+            "",
+            "## Joint Route-Conditioned World-State Ablation",
+            "",
+            f"- best name: `{joint_route.get('best_name')}`",
+            f"- joint route conditioning contributes: `{joint_route.get('joint_route_conditioning_contributes')}`",
+            f"- all improvement: `{joint_route_metrics.get('all_improvement')}`",
+            f"- t50 improvement: `{joint_route_metrics.get('t50_improvement')}`",
+            f"- t100 diagnostic improvement: `{joint_route_metrics.get('t100_improvement')}`",
+            f"- hard/failure improvement: `{joint_route_metrics.get('hard_failure_improvement')}`",
+            f"- easy degradation: `{joint_route_metrics.get('easy_degradation')}`",
+            f"- all delta over full-trajectory reference: `{joint_route_lift.get('all_delta')}`",
+            f"- t50 delta over full-trajectory reference: `{joint_route_lift.get('t50_delta')}`",
+            f"- t100 delta over full-trajectory reference: `{joint_route_lift.get('t100_delta')}`",
+            f"- hard delta over full-trajectory reference: `{joint_route_lift.get('hard_delta')}`",
+            f"- route top1: `{(joint_route_aux.get('route') or {}).get('top1')}`",
+            f"- physical challenge AUROC: `{(joint_route_aux.get('physical_challenge') or {}).get('auroc')}`",
+            "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The full active objective is still not complete because the rollout is still per-agent all-agent-context rather than a jointly consistent latent world-state model, and route/physical heads have not yet been shown to improve the trajectory deployment policy.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but the latest post-hoc gate and joint route-conditioned training are negative ablations for trajectory deployment. The full active objective is still not complete because the rollout is still per-agent all-agent-context rather than a jointly consistent latent world-state model.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -379,13 +452,15 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     fresh_all_agent_summary = audit.get("fresh_all_agent_endpoint_specialist_summary", {})
     full_traj_summary = audit.get("full_trajectory_world_state_summary", {})
     goal_route_summary = audit.get("goal_route_physical_repair_summary", {})
+    route_policy_summary = audit.get("route_physical_policy_integration_summary", {})
+    joint_route_summary = audit.get("joint_route_conditioned_world_state_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 endpoint dynamics pass Stage41, but full all-agent future world-state dynamics remain diagnostic.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, but route/physical policy integration and joint route-conditioned training are negative trajectory ablations.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -439,11 +514,24 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"physical_challenge_auroc = {goal_route_summary.get('physical_auroc')}",
             f"physical_challenge_auprc = {goal_route_summary.get('physical_auprc')}",
             f"physical_challenge_positive_rate = {goal_route_summary.get('physical_positive_rate')}",
+            f"route_physical_policy_best_mode = {route_policy_summary.get('best_mode')}",
+            f"route_physical_policy_contributes = {route_policy_summary.get('route_physical_policy_contributes')}",
+            f"route_physical_policy_all_delta = {route_policy_summary.get('all_delta_over_no_route_physical')}",
+            f"route_physical_policy_t50_delta = {route_policy_summary.get('t50_delta_over_no_route_physical')}",
+            f"route_physical_policy_hard_delta = {route_policy_summary.get('hard_delta_over_no_route_physical')}",
+            f"joint_route_conditioned_best = {joint_route_summary.get('best_name')}",
+            f"joint_route_conditioning_contributes = {joint_route_summary.get('joint_route_conditioning_contributes')}",
+            f"joint_route_conditioned_all = {joint_route_summary.get('all_improvement')}",
+            f"joint_route_conditioned_t50 = {joint_route_summary.get('t50_improvement')}",
+            f"joint_route_conditioned_t100_diagnostic = {joint_route_summary.get('t100_improvement')}",
+            f"joint_route_conditioned_hard = {joint_route_summary.get('hard_failure_improvement')}",
+            f"joint_route_conditioned_all_delta_vs_full_traj = {joint_route_summary.get('all_delta_over_full_trajectory_reference')}",
+            f"joint_route_conditioned_t50_delta_vs_full_traj = {joint_route_summary.get('t50_delta_over_full_trajectory_reference')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: use the route/physical heads in the deployment policy and move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: keep route/physical heads as diagnostics unless they show trajectory lift, then move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -462,7 +550,12 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_labels.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_goal_route_physical_labels.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_joint_route_conditioned_world_state.json")
     state["generated_reports"] = sorted(generated)
+    state["current_verdict"] = "stage41_full_trajectory_candidate_route_physical_negative_ablation_not_complete"
     state["m3w_neural_v1_completion_audit"] = {
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
@@ -474,6 +567,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "fresh_all_agent_endpoint_specialist_summary": fresh_all_agent_summary,
         "full_trajectory_world_state_summary": full_traj_summary,
         "goal_route_physical_repair_summary": goal_route_summary,
+        "route_physical_policy_integration_summary": route_policy_summary,
+        "joint_route_conditioned_world_state_summary": joint_route_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

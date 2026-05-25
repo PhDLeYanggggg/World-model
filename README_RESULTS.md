@@ -992,7 +992,7 @@ Current best candidate: M3W-Neural v1 self-gated endpoint dynamics under the Sta
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 endpoint dynamics pass Stage41, but full all-agent future world-state dynamics remain diagnostic.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 has a strong full-trajectory diagnostic candidate, but route/physical policy integration and joint route-conditioned training are negative trajectory ablations.
 
 ```text
 completion_status = not_complete
@@ -1046,11 +1046,24 @@ goal_route_lift_over_majority = 0.20575205301829702
 physical_challenge_auroc = 0.9523668831032517
 physical_challenge_auprc = 0.9931913407537012
 physical_challenge_positive_rate = 0.8778634202564471
+route_physical_policy_best_mode = no_route_physical
+route_physical_policy_contributes = False
+route_physical_policy_all_delta = 0.0
+route_physical_policy_t50_delta = 0.0
+route_physical_policy_hard_delta = 0.0
+joint_route_conditioned_best = joint_route_conditioned_ensemble
+joint_route_conditioning_contributes = False
+joint_route_conditioned_all = 0.15088774687015682
+joint_route_conditioned_t50 = 0.09295551695088011
+joint_route_conditioned_t100_diagnostic = 0.16374924097478616
+joint_route_conditioned_hard = 0.15655007967571088
+joint_route_conditioned_all_delta_vs_full_traj = -0.03489077742818736
+joint_route_conditioned_t50_delta_vs_full_traj = -0.05508147882643466
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: use the route/physical heads in the deployment policy and move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: keep route/physical heads as diagnostics unless they show trajectory lift, then move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
