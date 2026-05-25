@@ -161,6 +161,9 @@ def _combined_to_endpoint_dataset(data: Mapping[str, np.ndarray], mask: np.ndarr
         "domain": data["dataset"].astype("U32"),
         "scene_id": data["scene_id"].astype("U80"),
         "source_file": data["source_file"].astype("U256"),
+        "ids": data["row_id"].astype(np.int64),
+        "agent_id": data["agent_id"].astype(np.int64),
+        "frame_id": data["frame_id"].astype(np.float32),
     }
     return _subset(out, mask)
 

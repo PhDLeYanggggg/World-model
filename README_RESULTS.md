@@ -1002,7 +1002,7 @@ Current best candidate: M3W-Neural v1 composite-tail safe-switch bounded neural 
 <!-- M3W_NEURAL_COMPLETION_AUDIT:START -->
 ## M3W-Neural v1 Completion Audit
 
-The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, and a teacher-guided neural proposal repaired by a validation-selected safety guard. The rollout is still not a latent generative world state.
+The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, a teacher-guided neural proposal repaired by a validation-selected safety guard, and a domain-local endpoint retrain checked by an endpoint-linear all-agent safety proxy on two domains. The rollout is still not a latent generative world state.
 
 ```text
 completion_status = complete
@@ -1240,8 +1240,10 @@ pure_ucy_source_heldout_gate = True
 pure_ucy_three_way_train_val_test_gate = False
 pure_ucy_policy_train_val_test_gate = True
 strict_pure_ucy_only_neural_retrain_gate = False
-domain_local_neural_endpoint_two_domain_gate = True
-domain_local_neural_endpoint_positive_domains = ETH_UCY, TrajNet, UCY_expanded
+domain_local_endpoint_two_domain_gate = True
+domain_local_endpoint_positive_domains = ['ETH_UCY', 'TrajNet', 'UCY_expanded']
+domain_local_all_agent_two_domain_gate = True
+domain_local_all_agent_positive_domains = ['ETH_UCY', 'UCY_expanded']
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437

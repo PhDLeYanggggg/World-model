@@ -81,6 +81,7 @@ def build_completion_audit() -> dict[str, Any]:
     pure_ucy_source = read_json("outputs/stage41_external_split/stage41_pure_ucy_source_validation.json", {})
     pure_ucy_retrain = read_json("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json", {})
     domain_local_neural = read_json("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json", {})
+    domain_local_all_agent = read_json("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -268,6 +269,8 @@ def build_completion_audit() -> dict[str, Any]:
     pure_ucy_strict_neural_gate = bool(pure_ucy_retrain.get("strict_pure_ucy_only_neural_retrain_select_test_gate"))
     domain_local_two_domain_gate = bool(domain_local_neural.get("two_domain_endpoint_gate"))
     domain_local_positive_domains = list(domain_local_neural.get("positive_domains") or [])
+    domain_local_all_agent_gate = bool(domain_local_all_agent.get("two_domain_all_agent_world_state_gate"))
+    domain_local_all_agent_positive_domains = list(domain_local_all_agent.get("positive_domains") or [])
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -533,6 +536,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(domain_local_two_domain_gate, partial=bool(domain_local_neural)),
             "evidence": "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json",
             "note": "Fresh domain-local endpoint neural models are trained from causal seq2seq inputs with validation-selected gain/harm gates. ETH_UCY, TrajNet, and UCY_expanded are positive in endpoint-FDE, while the small default UCY split remains negative. This is endpoint-only evidence and does not replace the protected all-agent composite deployment path.",
+        },
+        {
+            "requirement": "domain-local neural endpoint evidence passes same-frame all-agent safety proxy on at least two domains",
+            "status": _status(domain_local_all_agent_gate, partial=bool(domain_local_all_agent)),
+            "evidence": "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json",
+            "note": "The domain-local endpoint models are projected into endpoint-linear waypoint rollouts and audited for same-frame multi-agent ADE/FDE, proximity, and smoothness. ETH_UCY and UCY_expanded pass after validation-selected proximity guarding; TrajNet remains endpoint-positive but proximity-unsafe on test, and the small default UCY split remains negative. This strengthens safety evidence but is still not a learned full-waypoint rollout.",
         },
         {
             "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
@@ -1082,6 +1091,23 @@ def build_completion_audit() -> dict[str, Any]:
             "pure_ucy_expanded_neural_retrain": domain_local_neural.get("pure_ucy_expanded_neural_retrain"),
             "caveat": domain_local_neural.get("caveat"),
         },
+        "domain_local_all_agent_world_state_summary": {
+            "two_domain_all_agent_world_state_gate": domain_local_all_agent_gate,
+            "positive_domains": domain_local_all_agent_positive_domains,
+            "domain_results": {
+                domain: {
+                    "status": row.get("status"),
+                    "domain_local_all_agent_world_state_gate": row.get("domain_local_all_agent_world_state_gate"),
+                    "rows": row.get("rows"),
+                    "ade_metrics_vs_floor": row.get("ade_metrics_vs_floor"),
+                    "multi_agent_ade_metrics": row.get("multi_agent_ade_metrics"),
+                    "collision_delta_vs_floor_005": row.get("collision_delta_vs_floor_005"),
+                }
+                for domain, row in (domain_local_all_agent.get("domain_results") or {}).items()
+            },
+            "pure_ucy_expanded_all_agent_world_state": domain_local_all_agent.get("pure_ucy_expanded_all_agent_world_state"),
+            "caveat": domain_local_all_agent.get("caveat"),
+        },
         "jepa_deployment_decision_summary": {
             "decision": jepa_decision.get("decision"),
             "disable_jepa_in_deployable_path": jepa_disabled,
@@ -1426,6 +1452,9 @@ def build_completion_audit() -> dict[str, Any]:
             f"- two-domain endpoint gate: `{domain_local_two_domain_gate}`",
             f"- positive domains: `{domain_local_positive_domains}`",
             f"- domain-local caveat: `{domain_local_neural.get('caveat')}`",
+            f"- all-agent endpoint-linear proxy gate: `{domain_local_all_agent_gate}`",
+            f"- all-agent proxy positive domains: `{domain_local_all_agent_positive_domains}`",
+            f"- all-agent proxy caveat: `{domain_local_all_agent.get('caveat')}`",
             "",
             "## Neural Group Consistency Distiller",
             "",
@@ -1484,6 +1513,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     pure_ucy_summary = audit.get("pure_ucy_source_heldout_validation_summary", {})
     pure_ucy_policy_summary = audit.get("pure_ucy_train_val_test_policy_calibration_summary", {})
     domain_local_summary = audit.get("domain_local_neural_endpoint_retrain_summary", {})
+    domain_local_all_agent_summary = audit.get("domain_local_all_agent_world_state_summary", {})
     composite_deployable_state = bool(
         composite_summary.get("evidence_pass")
         and composite_summary.get("strict_delta_vs_teacher_repair_pass")
@@ -1499,6 +1529,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     pure_ucy_source_gate_state = bool(pure_ucy_summary.get("pure_ucy_source_heldout_gate"))
     pure_ucy_policy_gate_state = bool(pure_ucy_policy_summary.get("pure_ucy_policy_train_val_test_gate"))
     domain_local_two_domain_gate = bool(domain_local_summary.get("two_domain_endpoint_gate"))
+    domain_local_all_agent_gate_state = bool(domain_local_all_agent_summary.get("two_domain_all_agent_world_state_gate"))
     group_distiller_summary = audit.get("group_consistency_distiller_summary", {})
     group_multiseed_summary = audit.get("group_consistency_multiseed_summary", {})
     jepa_decision_summary = audit.get("jepa_deployment_decision_summary", {})
@@ -1508,7 +1539,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         [
             "## M3W-Neural v1 Completion Audit",
             "",
-            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, and a teacher-guided neural proposal repaired by a validation-selected safety guard. The rollout is still not a latent generative world state.",
+            "The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, a teacher-guided neural proposal repaired by a validation-selected safety guard, and a domain-local endpoint retrain checked by an endpoint-linear all-agent safety proxy on two domains. The rollout is still not a latent generative world state.",
             "",
             "```text",
             f"completion_status = {audit.get('completion_status')}",
@@ -1746,6 +1777,10 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"pure_ucy_three_way_train_val_test_gate = {pure_ucy_summary.get('pure_ucy_three_way_train_val_test_gate')}",
             f"pure_ucy_policy_train_val_test_gate = {pure_ucy_policy_summary.get('pure_ucy_policy_train_val_test_gate')}",
             f"strict_pure_ucy_only_neural_retrain_gate = {pure_ucy_policy_summary.get('strict_pure_ucy_only_neural_retrain_select_test_gate')}",
+            f"domain_local_endpoint_two_domain_gate = {domain_local_summary.get('two_domain_endpoint_gate')}",
+            f"domain_local_endpoint_positive_domains = {domain_local_summary.get('positive_domains')}",
+            f"domain_local_all_agent_two_domain_gate = {domain_local_all_agent_summary.get('two_domain_all_agent_world_state_gate')}",
+            f"domain_local_all_agent_positive_domains = {domain_local_all_agent_summary.get('positive_domains')}",
             f"group_consistency_distiller_deployable = {group_distiller_summary.get('deployable')}",
             f"group_consistency_distiller_improves_fixed_guard = {group_distiller_summary.get('improves_fixed_guard')}",
             f"group_consistency_distiller_all = {group_distiller_summary.get('all_improvement')}",
@@ -1859,8 +1894,13 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json")
+    generated.add("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.md")
+    generated.add("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = (
+        "stage41_composite_tail_and_domain_local_all_agent_endpoint_proxy_supported_not_complete"
+        if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state and domain_local_two_domain_gate and domain_local_all_agent_gate_state
+        else
         "stage41_composite_tail_and_domain_local_neural_endpoint_supported_not_complete"
         if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state and domain_local_two_domain_gate
         else
@@ -1883,6 +1923,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "source": audit.get("source"),
         "completion_status": audit.get("completion_status"),
         "deployment_state": (
+            "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_policy_and_domain_local_all_agent_endpoint_proxy_supported"
+            if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state and domain_local_two_domain_gate and domain_local_all_agent_gate_state
+            else
             "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_and_policy_supported_strict_neural_retrain_pending"
             if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state
             else
@@ -1909,6 +1952,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             else "group_consistency_distiller"
         ),
         "deployable_metric_basis": (
+            "bootstrap_plus_multiseed_plus_pure_ucy_policy_plus_domain_local_endpoint_and_all_agent_proxy_evidence"
+            if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state and domain_local_two_domain_gate and domain_local_all_agent_gate_state
+            else
             "bootstrap_plus_multiseed_plus_pure_ucy_policy_plus_domain_local_endpoint_evidence"
             if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state and domain_local_two_domain_gate
             else
