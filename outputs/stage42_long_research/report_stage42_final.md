@@ -60,3 +60,14 @@ Stage42-G Phase1 continued the long research objective after this paper package 
 Stage42-H directly addresses the Stage42-G flattened-history negative result by training a causal temporal sequence encoder over past-only history windows. The result is strongly positive for history under a sequence model: removing history tokens reduces t+50 improvement by `0.4578` and hard/failure improvement by `0.4708` relative to the full sequence model. This means the project should not conclude that history is useless; the correct conclusion is that flattened history plus ridge selection was too weak to express the temporal signal.
 
 The strongest raw sequence variant without the safe switch has better family-FDE than the safe-switch variant, but it is not deployment-ready because it has not passed the proximity/collision/floor-safety study required for removing the Stage37/teacher floor. Stage42-H therefore improves the causal evidence for temporal dynamics, while leaving the larger Stage42 gaps open: JEPA/full Transformer/full-waypoint-shape retraining, metric/time calibration, additional external datasets, and a floor-free safety mechanism are still not complete.
+
+## Stage42-I Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/sequence_full_waypoint_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_i_gate.md`
+- verdict: `stage42_i_sequence_full_waypoint_partial`
+
+Stage42-I connected the Stage42-H causal sequence encoder to reconstructed full-waypoint ADE/FDE labels. It trained four variants across three seeds each: full, no-history, no-neighbor, and no-static-context. The result is useful but not a pass for the full model: `sequence_waypoint_full` has negative protected ADE all/t50/hard (`-0.0106`, `-0.0321`, `-0.0116`) while preserving easy cases. History contribution is measurable but small on full-waypoint ADE/FDE (`t50 ADE delta = 0.0040`, `t50 FDE delta = 0.0094`).
+
+The important positive signal is diagnostic: `sequence_waypoint_no_static_context` is positive on ADE all/t50/hard (`0.0115`, `0.0199`, `0.0129`) and FDE t50 (`0.0611`) with easy degradation `0.0`. This suggests the next full-waypoint repair should keep causal sequence history but add static/context gating or static dropout rather than mixing all static/context features unconditionally. Stage42-I therefore reduces the full-waypoint gap, but it does not make the full sequence-to-waypoint model deployable yet.

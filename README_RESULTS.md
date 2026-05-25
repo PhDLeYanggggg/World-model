@@ -2021,3 +2021,22 @@ smc_enabled = false
 ```
 
 Stage42-H trains a causal temporal sequence encoder, not a flattened-history ridge selector. It answers whether history tokens help under a sequence model while keeping val-only safety selection and test-once evaluation. This is still dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+## Stage42-I Sequence-To-Full-Waypoint Dynamics
+
+```text
+source = fresh_run
+verdict = stage42_i_sequence_full_waypoint_partial
+gates = 10 / 11
+sequence_waypoint_full_ade_all = -0.01055804004793807
+sequence_waypoint_full_ade_t50 = -0.03208177658024658
+sequence_waypoint_full_ade_hard_failure = -0.011590796127162406
+sequence_waypoint_full_ade_easy_degradation = 0.0
+history_ade_t50_delta_full_minus_no_history = 0.0040235141863109725
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-I connects causal sequence history to actual reconstructed full-waypoint ADE/FDE labels. It remains a protected dataset-local raw-frame 2.5D dynamics experiment, not metric/seconds-level prediction and not Stage5C/SMC.
+
+The honest interpretation is partial/failure, not deployment success: the full static+sequence waypoint head is ADE-negative, while `sequence_waypoint_no_static_context` is positive on ADE all/t50/hard (`0.0115`, `0.0199`, `0.0129`) and FDE t50 (`0.0611`) with easy degradation `0.0`. Next repair target is static-gated/static-dropout sequence-to-waypoint dynamics.

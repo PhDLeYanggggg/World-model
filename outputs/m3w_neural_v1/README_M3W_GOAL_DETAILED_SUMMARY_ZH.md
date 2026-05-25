@@ -781,6 +781,59 @@ sequence_full_easy_degradation = -0.7684
 
 Stage42-H 纠正了 Stage42-G 对 history 的负面信号：history 贡献依赖时序模型。它把 “history 是否有效” 从不稳定推进到 fresh positive sequence evidence。但它仍是 dataset-local raw-frame 2.5D expected-FDE family selection evidence，不是 Stage5C、不是 SMC、不是 metric/seconds-level。
 
+### 2.17 Stage42-I：sequence-to-full-waypoint dynamics
+
+尝试内容：
+
+- 把 Stage42-H 的 causal temporal sequence encoder 接到 Stage42-C 的 reconstructed full-waypoint labels。
+- 预测 4 个 future waypoints 的 relative displacement，而不是只预测 endpoint / family-FDE。
+- 输入是 past-only all-agent tokens、neighbor tokens、static causal context、horizon/domain metadata。
+- future waypoints / endpoints 只作为 loss/eval label，不作为 inference input。
+- 每个 variant 3 seeds：53、59、61。
+- val 选择 risk/safe-switch policy，test 只评一次。
+
+重训 variants：
+
+```text
+sequence_waypoint_full
+sequence_waypoint_no_history
+sequence_waypoint_no_neighbor
+sequence_waypoint_no_static_context
+```
+
+结果：
+
+```text
+source = fresh_run
+gate = 10 / 11
+verdict = stage42_i_sequence_full_waypoint_partial
+sequence_waypoint_full_ade_all = -0.0106
+sequence_waypoint_full_ade_t50 = -0.0321
+sequence_waypoint_full_ade_hard_failure = -0.0116
+sequence_waypoint_full_ade_easy_degradation = 0.0
+sequence_waypoint_full_fde_t50 = 0.0201
+history_ade_t50_delta_full_minus_no_history = 0.0040
+history_fde_t50_delta_full_minus_no_history = 0.0094
+best_variant = sequence_waypoint_no_static_context
+best_variant_ade_all = 0.0115
+best_variant_ade_t50 = 0.0199
+best_variant_ade_hard_failure = 0.0129
+best_variant_fde_t50 = 0.0611
+best_variant_easy_degradation = 0.0
+```
+
+主要贡献结论：
+
+- full static+sequence model 没过 gate：ADE all / t50 / hard 为负，不能部署。
+- history 对 full-waypoint ADE/FDE 有小但正的贡献：去掉 history 后 t50 ADE 和 t50 FDE 都下降。
+- no-neighbor 基本接近 full，说明当前 neighbor token 对 full-waypoint 仍弱。
+- `sequence_waypoint_no_static_context` 反而是最强变体，all/t50/hard/FDE t50 都为正且 easy degradation 为 0。
+- 这说明当前 static/context features 在 full-waypoint head 中可能存在 domain/scale overfit；下一步应该训练 static-gated 或 static-dropout sequence-to-waypoint head，而不是无条件混入全部 static context。
+
+结论：
+
+Stage42-I 没有让 full sequence-to-waypoint 主模型过 gate，但它把失败原因定位得很具体：causal sequence history 是有用的，unconditional static/context mixing 是当前 full-waypoint ADE 负贡献的主要嫌疑。它是一个有价值的 partial/failure result，不能包装成成功。
+
 ## 3. 失败路线总表
 
 | 路线 | 状态 | 失败原因 |
@@ -806,6 +859,7 @@ Stage42-H 纠正了 Stage42-G 对 history 的负面信号：history 贡献依赖
 | Stage42-G flattened history proxy | 不稳定/负贡献 | 在 ridge expected-FDE selector 下 no_history 和 no_transformer_proxy_history_sequence 反而更强，说明 raw history flattening 需要 sequence model 或更强正则，不能作为已证明贡献。 |
 | Stage42-G domain one-hot expert | 弱 | no_domain_expert 几乎等于 full，说明当前 external protocol 下 domain embedding 贡献很小。 |
 | Stage42-H no-safe-switch raw sequence | 不能部署 | raw family-FDE 更高，但没有 proximity/collision/deployment safety，不能替代 protected policy。 |
+| Stage42-I full static+sequence waypoint head | 部分失败 | protected ADE all/t50/hard 为负；no-static-context 变体为正，说明 static/context 混入导致 full-waypoint head 过拟合或跨域尺度不稳。 |
 
 ## 4. 成功路线总表
 
@@ -828,6 +882,7 @@ Stage42-H 纠正了 Stage42-G 对 history 的负面信号：history 贡献依赖
 | Stage42-F paper package | 成功但未达最终 A刊 | 证据包完整，claim boundary 清楚，但 full retrained ablation、metric/time、外部扩展仍缺。 |
 | Stage42-G Phase1 retrained ablation | 部分成功 | fresh refit 了 10 个 external selector 消融，goal/scene、neighbor/interaction、safe-switch/floor 有贡献；JEPA/Transformer/full-waypoint-shape 重训仍未完成。 |
 | Stage42-H causal sequence ablation | 成功 | 证明 history tokens 在真正 sequence encoder 下对 t50 和 hard/failure 有强正贡献，修复了 flattened-history 负结果。 |
+| Stage42-I no-static sequence-to-waypoint variant | 局部成功 | 证明 causal sequence 可以转化成 full-waypoint ADE/FDE 正信号，但需要 static/context gating 后才能变成主模型。 |
 
 ## 5. 当前模型到底是什么
 
@@ -895,6 +950,7 @@ SMC-ready model
 8. **teacher-floor dependence**：Stage42-E 证明当前 teacher floor 必要；下一步要研究 proximity-safe internal gate，减少 floor 依赖。
 9. **更多独立外部数据**：需要再接入合法 top-down pedestrian/drone 数据源，而不是只依赖当前 converted external 状态。
 10. **sequence-to-full-waypoint bridge**：Stage42-H 证明 sequence history 对 family selection 有用，但还要把 causal sequence encoder 直接接到 full-waypoint all-agent dynamics。
+11. **static-gated full-waypoint repair**：Stage42-I 显示无条件 static/context 会伤 full-waypoint ADE；下一步应训练 static dropout / static gate / domain-scale adapter。
 
 ## 8. 直接回答
 
@@ -909,6 +965,7 @@ Transformer 是否有贡献：纯 Transformer 不可部署；protected endpoint 
 Stage42 论文包是否 full A刊 ready：否，是 strong protected 2.5D manuscript package，还不是最终 A刊完成态。
 Stage42-G 是否完成 full retrained ablation：否，只完成 Phase1；goal/scene、neighbor/interaction、safe-switch/floor 有 fresh 正贡献，history/domain 贡献不稳定或弱，JEPA/Transformer/full-waypoint-shape 仍 not_run。
 Stage42-H 是否证明 history：是，在 causal temporal sequence encoder 下证明；但这不是 metric、不是 seconds-level，也不是无保护 deployment。
+Stage42-I 是否完成 full-waypoint sequence integration：部分完成。history 转成 full-waypoint 有小正贡献，no-static sequence 变体为正，但 full static+sequence 模型未过 gate。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -938,10 +995,11 @@ SMC 是否可启用：否。
 - Stage42-F A-journal gap：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/a_journal_gap_stage42.md`
 - Stage42-G retrained ablation Phase1：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/retrained_ablation_stage42.md`
 - Stage42-H causal sequence ablation：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/sequence_ablation_stage42.md`
+- Stage42-I sequence-to-full-waypoint dynamics：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/sequence_full_waypoint_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **full-waypoint sequence integration**：把 Stage42-H 的 causal sequence encoder 接到 Stage42-C full-waypoint/all-agent dynamics，验证 history contribution 能否转化成 ADE/FDE 和 proximity-safe full future trajectory lift。
+1. **static-gated full-waypoint repair**：基于 Stage42-I 结果训练 static dropout / static gate / domain-scale adapter，让 no-static 的正信号进入 deployable full-waypoint head。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。
