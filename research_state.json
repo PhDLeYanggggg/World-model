@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_f_paper_package",
-  "current_verdict": "stage42_f_paper_package_complete_not_full_a_journal_ready",
+  "current_stage": "stage42_g_retrained_ablation_phase1",
+  "current_verdict": "stage42_g_retrained_ablation_phase1_pass",
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
@@ -62,7 +62,7 @@
     }
   },
   "latest_chinese_goal_summary": {
-        "source": "cached_verified_plus_stage42_a_to_f_fresh_runs_and_cached_verified_evidence",
+    "source": "cached_verified_plus_stage42_a_to_f_fresh_runs_and_cached_verified_evidence",
     "path": "outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor",
     "summary_scope": "routes_tried_failure_reasons_successes_claim_boundaries_next_steps",
@@ -601,7 +601,11 @@
     "outputs/stage42_long_research/stage42_stage_d_gate.md",
     "outputs/stage42_long_research/stage42_stage_e_gate.md",
     "outputs/stage42_long_research/stage42_stage_f_gate.md",
-    "outputs/stage42_long_research/user_action_required_stage42.md"
+    "outputs/stage42_long_research/user_action_required_stage42.md",
+    "outputs/stage42_long_research/retrained_ablation_stage42.md",
+    "outputs/stage42_long_research/retrained_ablation_stage42.json",
+    "outputs/stage42_long_research/retrained_ablation_stage42.csv",
+    "outputs/stage42_long_research/stage42_stage_g_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -12742,6 +12746,33 @@
         "raw_frame_dataset_local_only": true,
         "stage5c_executed": false,
         "smc_enabled": false
+      }
+    },
+    "stage_g_retrained_ablation_phase1": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/retrained_ablation_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_g_gate.md",
+      "gates_passed": 11,
+      "gates_total": 11,
+      "verdict": "stage42_g_retrained_ablation_phase1_pass",
+      "full_all": 0.81221615514233,
+      "full_t50": 0.8461508150001023,
+      "full_hard_failure": 0.8458841094532804,
+      "full_easy_degradation": -0.8412751638465125,
+      "not_run_boundaries": {
+        "no_jepa": "not_run_in_phase1; current deployable path does not use JEPA features, and JEPA remains diagnostic-only from Stage18/19/41 evidence.",
+        "full_transformer_retrain": "not_run_in_phase1; this phase retrains ridge expected-FDE selectors on causal external features, not torch Transformer checkpoints.",
+        "no_endpoint_bridge": "not_run_in_phase1; Stage42-C has fresh full-waypoint vs endpoint-linear comparisons, but this phase does not retrain the waypoint model.",
+        "no_full_waypoint_shape": "not_run_in_phase1; Stage42-C covers protected full-waypoint sequence dynamics, but all-component waypoint-shape retraining remains open."
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "phase1_not_full_stage42_d_completion": true
       }
     }
   }

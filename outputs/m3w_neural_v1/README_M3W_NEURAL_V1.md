@@ -143,3 +143,21 @@ smc_enabled = false
 ```
 
 Stage42-F packages A-E into paper-ready artifacts under `outputs/stage42_long_research/`. It supports a protected raw-frame 2.5D external world-state manuscript package, but it is **not yet full A-journal ready** because metric/time calibration, all-component fresh retrained ablation, independent external expansion, and floor-free safety remain open.
+
+## Stage42-G Retrained Ablation Phase1
+
+```text
+source = fresh_run
+verdict = stage42_g_retrained_ablation_phase1_pass
+gates = 11 / 11
+full_all = 0.81221615514233
+full_t50 = 0.8461508150001023
+full_t100_raw_frame_diagnostic = 0.9527078250428334
+full_hard_failure = 0.8458841094532804
+full_easy_degradation = -0.8412751638465125
+phase1_not_full_stage42_d_completion = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-G Phase1 freshly refits external expected-FDE selectors for the key causal feature/safety variants. It improves the ablation evidence beyond cached coverage, but it still does not complete all A-journal retrained ablations because JEPA/Transformer/full-waypoint-shape retraining remains explicitly `not_run_in_phase1`.

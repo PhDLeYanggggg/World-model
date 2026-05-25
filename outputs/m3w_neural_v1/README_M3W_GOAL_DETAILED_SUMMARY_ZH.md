@@ -19,6 +19,8 @@ uncalibrated domain rule = fallback_to_stage37_floor
 
 Stage42-F 已经整理出论文级证据包，但结论是：**这是强的 protected 2.5D external world-state manuscript package，不是 full A-journal-ready / foundation / true-3D 结论**。A刊候选还缺 full retrained ablation、更多独立外部数据、metric/time calibration，以及减少 Stage37/teacher floor 依赖的安全神经门控。
 
+Stage42-G Phase1 之后，full retrained ablation gap 被推进了一步：已经 fresh 重训 external expected-FDE selector 的 history、neighbor、goal/scene、interaction、domain、safe-switch/floor 关键消融；但 JEPA / full Transformer / full-waypoint-shape 仍未在 Stage42-G 内重训，所以还不能说 Stage42-D 全组件 A刊级消融完成。
+
 但是必须继续诚实承认：
 
 - 当前不是 true 3D world model。
@@ -159,6 +161,22 @@ Stage42-E gates = 12 / 12
 Stage42-F paper package = complete_not_full_a_journal_ready
 Stage42-F gates = 12 / 12
 full_a_journal_ready = false
+```
+
+Stage42-G Phase1 fresh retrained ablation：
+
+```text
+source = fresh_run
+verdict = stage42_g_retrained_ablation_phase1_pass
+gates = 11 / 11
+variants = full, no_history, no_neighbor, no_goal, no_scene_goal, no_interaction, no_domain_expert, no_transformer_proxy_history_sequence, no_safe_switch, no_teacher_floor_proxy
+seeds_per_variant = 3
+full_all = 0.8122
+full_t50 = 0.8462
+full_t100_raw_frame_diagnostic = 0.9527
+full_hard_failure = 0.8459
+full_easy_degradation = -0.8413
+phase1_not_full_stage42_d_completion = true
 ```
 
 ## 2. 我们尝试过的主要路线
@@ -643,6 +661,63 @@ full_a_journal_ready = false
 
 Stage42-F 已经形成可写论文草稿的证据包，但诚实结论是 `not yet full A-journal ready`。当前是强 protected 2.5D external world-state candidate，而不是最终 A刊级完成态。
 
+### 2.15 Stage42-G Phase1：fresh retrained ablation
+
+尝试内容：
+
+- 不再只读 Stage30/41 的 cached ablation coverage。
+- 在 external combined dataset 上重新 assemble causal feature matrix。
+- 对每个 variant 在 train split 上 fresh refit expected-FDE selector。
+- 在 val split 上选择 conservative safety policy。
+- test split 只评一次。
+- 每个 variant 做 3 seeds：11、17、23。
+
+重训 variants：
+
+```text
+full_retrained_external
+no_history
+no_neighbor
+no_goal
+no_scene_goal
+no_interaction
+no_domain_expert
+no_transformer_proxy_history_sequence
+no_safe_switch
+no_teacher_floor_proxy
+```
+
+结果：
+
+```text
+source = fresh_run
+gate = 11 / 11
+verdict = stage42_g_retrained_ablation_phase1_pass
+full_all = 0.8122
+full_t50 = 0.8462
+full_t100_raw_frame_diagnostic = 0.9527
+full_hard_failure = 0.8459
+full_easy_degradation = -0.8413
+```
+
+主要贡献结论：
+
+- `no_goal` / `no_scene_goal` 低于 full：goal/scene proxy 对 all 和 hard/failure 有正贡献，t50 贡献小但为正。
+- `no_neighbor` / `no_interaction` 低于 full：neighbor / interaction 对 all、t50 和 hard/failure 有小但稳定正贡献。
+- `no_safe_switch` / `no_teacher_floor_proxy` 在 all/hard 上低于 full，但 t50 更高，说明无保护切换可提高长时程但会改变安全/部署权衡；不能用它替代 protected policy。
+- `no_history` 和 `no_transformer_proxy_history_sequence` 在这个 ridge expected-FDE selector 协议下反而强于 full：这说明 raw flattened history sequence 对该轻量 selector 不是稳定正贡献，可能需要真正 sequence model 或更强 regularization，而不能把 history contribution 硬写成已证明。
+- `no_domain_expert` 几乎等于 full：当前 external source-level feature 下 domain one-hot 贡献很小。
+
+仍然未完成：
+
+- `no_jepa` 未在 Stage42-G Phase1 重训，因为当前 deployable path 本来不使用 JEPA；JEPA 仍是 diagnostic-only。
+- full Transformer checkpoint retrain 未在 Phase1 执行；Phase1 是 ridge expected-FDE selector ablation，不是 Torch Transformer ablation。
+- `no_endpoint_bridge` / `no_full_waypoint_shape` 仍依赖 Stage42-C 的 fresh comparison，尚未做全组件 waypoint-shape retraining。
+
+结论：
+
+Stage42-G Phase1 把 Stage42-D 的 “cached ablation coverage” 往 “fresh retrained ablation” 推进了一大步，但还不能宣布 A刊级 full retrained ablation 全完成。最诚实的下一步是继续做 JEPA/Transformer/full-waypoint-shape 的同协议重训消融。
+
 ## 3. 失败路线总表
 
 | 路线 | 状态 | 失败原因 |
@@ -665,6 +740,8 @@ Stage42-F 已经形成可写论文草稿的证据包，但诚实结论是 `not y
 | ungated Stage42 full-waypoint / endpoint neural | 不可部署 | raw lift 高，但 easy degradation 和 proximity/collision safety 失败。 |
 | internal self/uncertainty/harm/conformal gate 替代 teacher floor | 不可部署 | 可以产生 raw lift，但未通过 proximity/collision ceiling。 |
 | Stage42-D 全组件 fresh retraining | 未完成 | 当前是 fresh rows + cached-verified component evidence，不是全量同 protocol retrain。 |
+| Stage42-G flattened history proxy | 不稳定/负贡献 | 在 ridge expected-FDE selector 下 no_history 和 no_transformer_proxy_history_sequence 反而更强，说明 raw history flattening 需要 sequence model 或更强正则，不能作为已证明贡献。 |
+| Stage42-G domain one-hot expert | 弱 | no_domain_expert 几乎等于 full，说明当前 external protocol 下 domain embedding 贡献很小。 |
 
 ## 4. 成功路线总表
 
@@ -685,6 +762,7 @@ Stage42-F 已经形成可写论文草稿的证据包，但诚实结论是 `not y
 | Stage42-D causal ablation coverage | 部分成功 | ablation coverage 完成，但不是所有组件在 Stage42-D 内 fresh retrain。 |
 | Stage42-E safety floor study | 成功 | 证明 teacher floor 当前仍必要，不能部署 ungated neural。 |
 | Stage42-F paper package | 成功但未达最终 A刊 | 证据包完整，claim boundary 清楚，但 full retrained ablation、metric/time、外部扩展仍缺。 |
+| Stage42-G Phase1 retrained ablation | 部分成功 | fresh refit 了 10 个 external selector 消融，goal/scene、neighbor/interaction、safe-switch/floor 有贡献；JEPA/Transformer/full-waypoint-shape 重训仍未完成。 |
 
 ## 5. 当前模型到底是什么
 
@@ -748,7 +826,7 @@ SMC-ready model
 4. **full-waypoint dynamics**：endpoint-to-full bridge 有效，但 learned waypoint-shape contribution 小。
 5. **external breadth**：ETH_UCY、TrajNet、UCY 为正，但还不是 foundation-scale 外部泛化。
 6. **source/domain robustness**：fixed composer 之后的 dynamic source switching headroom 很小，需要新增 causal scene/domain features，而不是继续堆 source-switch learner。
-7. **full retrained ablation**：Stage42-D 已覆盖组件，但 A刊级最终 claim 还需要同一 protocol 下重新训练所有 ablation。
+7. **full retrained ablation**：Stage42-G Phase1 已完成 external selector 关键 feature/safety 消融，但 A刊级最终 claim 还需要同一 protocol 下重训 JEPA、Transformer、full-waypoint-shape、endpoint bridge 等 ablation。
 8. **teacher-floor dependence**：Stage42-E 证明当前 teacher floor 必要；下一步要研究 proximity-safe internal gate，减少 floor 依赖。
 9. **更多独立外部数据**：需要再接入合法 top-down pedestrian/drone 数据源，而不是只依赖当前 converted external 状态。
 
@@ -763,6 +841,7 @@ JEPA 是否可部署：否。
 Transformer 是否有贡献：纯 Transformer 不可部署；protected endpoint neural dynamics 有贡献。
 当前是否只是 selector：不是，已有 protected neural dynamics、all-agent world-state、endpoint-to-full evidence，但仍依赖 safety floor。
 Stage42 论文包是否 full A刊 ready：否，是 strong protected 2.5D manuscript package，还不是最终 A刊完成态。
+Stage42-G 是否完成 full retrained ablation：否，只完成 Phase1；goal/scene、neighbor/interaction、safe-switch/floor 有 fresh 正贡献，history/domain 贡献不稳定或弱，JEPA/Transformer/full-waypoint-shape 仍 not_run。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -790,10 +869,11 @@ SMC 是否可启用：否。
 - Stage42-E safety floor：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_stage42.md`
 - Stage42-F final report：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/report_stage42_final.md`
 - Stage42-F A-journal gap：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/a_journal_gap_stage42.md`
+- Stage42-G retrained ablation Phase1：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/retrained_ablation_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **全量 retrained ablation**：同一 protocol 重训 no-history、no-neighbor、no-scene、no-goal、no-interaction、no-teacher-floor、no-safe-switch、no-endpoint-bridge、no-full-waypoint-shape。
+1. **全量 retrained ablation Phase2**：继续重训 no-JEPA、no-Transformer、no-endpoint-bridge、no-full-waypoint-shape，并用真正 sequence/Transformer 模型重新检验 history contribution。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。

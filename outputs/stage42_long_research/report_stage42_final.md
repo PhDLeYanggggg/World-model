@@ -40,3 +40,12 @@
 - `outputs/stage42_long_research/data_card_stage42.md`
 - `outputs/stage42_long_research/reproducibility_stage42.md`
 - `outputs/stage42_long_research/a_journal_gap_stage42.md`
+
+## Stage42-G Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/retrained_ablation_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_g_gate.md`
+- verdict: `stage42_g_retrained_ablation_phase1_pass`
+
+Stage42-G Phase1 continued the long research objective after this paper package by fresh-refitting external expected-FDE selector ablations for 10 variants across 3 seeds each. It improves the causal ablation evidence beyond cached coverage: goal/scene proxy, neighbor/interaction, and safe-switch/floor variants show positive contribution signals. It also adds an honest negative result: flattened history / transformer-proxy history features are not positive in this lightweight ridge-selector protocol, so history contribution still needs a true sequence-model ablation. JEPA, full Transformer retraining, endpoint bridge, and full-waypoint-shape ablations remain `not_run_in_phase1`.
