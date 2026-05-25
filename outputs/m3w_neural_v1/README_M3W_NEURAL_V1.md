@@ -24,3 +24,14 @@ The endpoint-to-full bridge now also has fresh 2000-bootstrap per-domain statist
 The required ablation coverage audit is now packaged. It covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback. The newer same-protocol neural architecture audit records that pure Transformer/no-JEPA, JEPA-only/no-Transformer, and JEPA+Transformer hybrid attempts were negative or fallback-only under the Stage41 external protocol.
 
 The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.
+
+## Stage42-A Data Calibration Follow-Up
+
+Stage42 Long Research Mode has started with a fresh data/calibration audit:
+
+- report: `outputs/stage42_long_research/data_calibration_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_a_gate.md`
+- user actions: `outputs/stage42_long_research/user_action_required_stage42.md`
+- result: Stage42-A gates `7 / 7`
+
+The audit confirms that existing local converted state is sufficient to proceed to Stage42-B external validation and Stage42-C full-waypoint dynamics. It also confirms that global metric and seconds-level claims remain disallowed.

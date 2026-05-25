@@ -26,6 +26,35 @@ Main honest verdict:
 
 M3W-Neural v1 is the strongest current protected 2.5D neural world-state candidate, but it is still not true 3D, not metric/seconds-level, and not a foundation world model. JEPA remains diagnostic-only; ungated neural dynamics remain unsafe; Stage37/teacher safety floor is still required for deployability.
 
+## Stage42-A Long Research Mode Data Calibration
+
+Latest Stage42-A data/calibration audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/data_calibration_stage42.md`
+
+Fresh audit result:
+
+```text
+source = fresh_run
+datasets_audited = 7
+raw_paths_found = 6
+converted_paths_found = 7
+external_domains_ready_from_existing_state = OpenTraj, ETH/UCY, TrajNet++, UCY
+metric_claim_ready_datasets = TGSIM diagnostic only
+seconds_claim_ready_datasets = none
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+stage42_b_external_validation_ready = true
+stage42_c_full_waypoint_prereq_ready = true
+Stage5C_executed = false
+SMC_enabled = false
+stage42_a_gates = 7 / 7
+```
+
+Conclusion:
+
+Stage42 can proceed to external validation and full-waypoint dynamics from existing local converted state. It still cannot claim global metric prediction or seconds-level horizons. SDD remains pixel raw-frame; external pedestrian domains remain dataset-local raw-frame / unverified weak-metric diagnostics. TGSIM is metric traffic diagnostic only and is not pedestrian/drone world-model success.
+
 Latest consolidated package:
 
 `/Users/yangyue/Downloads/World/outputs/world_model_stage5_data_results`
