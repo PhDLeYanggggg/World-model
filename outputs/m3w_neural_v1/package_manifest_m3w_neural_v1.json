@@ -16,8 +16,8 @@
   "policy": {
     "model_name": "M3W-Neural-v1",
     "source": "cached_verified",
-    "frozen_at_utc": "2026-05-25T17:12:39.110451+00:00",
-    "git_commit": "52ba61a",
+    "frozen_at_utc": "2026-05-25T17:24:04.279504+00:00",
+    "git_commit": "704bdc3",
     "stage41_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
     "deployment_state": "composite_tail_candidate_pending_final_package_acceptance",
     "best_candidate": "composite_tail_safe_switch_bounded_neural_dynamics",
@@ -41,7 +41,7 @@
     "uncalibrated_domain_rule": "fallback_to_stage37_floor",
     "stage5c_executed": false,
     "smc_enabled": false,
-    "source_hash": "44071931ceb325e067ce5ce68c0bced79e25983915bbcd20aed45668856ed4b8",
+    "source_hash": "fc9c10f0a98a255008eefc4b0e8cccabf5da069d9bd9623cb36b630976c462cf",
     "source_paths": [
       "outputs/stage41_breakthrough/world_model_gate_stage41.json",
       "outputs/stage41_breakthrough/stage41_neural_eval.json",
@@ -62,6 +62,7 @@
       "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
       "outputs/stage41_external_split/stage41_pure_ucy_neural_statistical_evidence.json",
       "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json",
+      "outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json",
       "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json",
       "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json",
       "outputs/stage41_domain_local/stage41_shape_policy_composer.json",
@@ -79,6 +80,8 @@
       "src/stage41_pure_ucy_neural_retrain.py",
       "src/stage41_pure_ucy_neural_statistical_evidence.py",
       "src/stage41_endpoint_to_full_trajectory_repair.py",
+      "src/stage41_endpoint_to_full_statistical_evidence.py",
+      "run_stage41_endpoint_to_full_statistical_evidence.py",
       "src/stage41_learned_waypoint_shape_bridge.py",
       "src/stage41_learned_shape_gain_gate.py",
       "src/stage41_shape_policy_composer.py",
@@ -115,6 +118,31 @@
       "ETH_UCY",
       "TrajNet"
     ],
+    "endpoint_to_full_statistical_gate": true,
+    "endpoint_to_full_statistical_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "endpoint_to_full_statistical_domain_lows": {
+      "ETH_UCY": {
+        "ade_all": 0.014989124720870283,
+        "ade_t50": 0.001358729620311877,
+        "ade_t100": 0.003205122362247967,
+        "ade_hard": 0.01477184652828257,
+        "ade_multi": 0.015119963379165813,
+        "fde_all": 0.01541917336054947,
+        "fde_t50": 0.0020177568013793916
+      },
+      "TrajNet": {
+        "ade_all": 0.03381106629559396,
+        "ade_t50": 0.018640699426599426,
+        "ade_t100": 0.007743473232062962,
+        "ade_hard": 0.03437455061849066,
+        "ade_multi": 0.03594728364084391,
+        "fde_all": 0.03386172479233887,
+        "fde_t50": 0.025763665503977688
+      }
+    },
     "calibrated_learned_shape_meta_gate": true,
     "calibrated_learned_shape_positive_domains": [
       "ETH_UCY",

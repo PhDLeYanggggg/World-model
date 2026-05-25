@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `44071931ceb325e067ce5ce68c0bced79e25983915bbcd20aed45668856ed4b8`
-- git_commit: `52ba61a`
+- package_input_hash: `fc9c10f0a98a255008eefc4b0e8cccabf5da069d9bd9623cb36b630976c462cf`
+- git_commit: `704bdc3`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -31,6 +31,8 @@
 | strict pure UCY neural bootstrap lows all/t50/t100/hard | `8.89% / 8.63% / 8.07% / 9.23%` | strict pure-UCY source-only neural statistical evidence |
 | endpoint-to-full bridge gate | `True` | positive full-waypoint bridge evidence, not learned shape |
 | endpoint-to-full bridge positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
+| endpoint-to-full bridge statistical gate | `True` | fresh 2000-bootstrap support for the protected waypoint bridge |
+| endpoint-to-full bridge statistical positive domains | `['ETH_UCY', 'TrajNet']` | domains with positive ADE/FDE lower bounds |
 | calibrated learned-shape meta-policy gate | `True` | positive learned-shape residual evidence under fallback |
 | calibrated learned-shape positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
 | JEPA deployable path | `disabled` | JEPA had no deployable downstream lift |

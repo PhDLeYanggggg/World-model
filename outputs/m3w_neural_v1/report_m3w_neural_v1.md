@@ -43,6 +43,8 @@
 - strict pure UCY neural bootstrap lows all/t50/t100/hard: `8.89%` / `8.63%` / `8.07%` / `9.23%`
 - endpoint-to-full bridge gate: `True`
 - endpoint-to-full bridge positive domains: `['ETH_UCY', 'TrajNet']`
+- endpoint-to-full bridge statistical gate: `True`
+- endpoint-to-full bridge statistical positive domains: `['ETH_UCY', 'TrajNet']`
 - calibrated learned-shape meta-policy gate: `True`
 - calibrated learned-shape positive domains: `['ETH_UCY', 'TrajNet']`
 - JEPA deployable path: `disable_jepa_in_deployable_path`

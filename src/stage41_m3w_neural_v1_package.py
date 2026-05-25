@@ -35,6 +35,7 @@ SOURCE_PATHS = [
     SPLIT_DIR / "stage41_pure_ucy_neural_retrain.json",
     SPLIT_DIR / "stage41_pure_ucy_neural_statistical_evidence.json",
     DOMAIN_LOCAL_DIR / "stage41_endpoint_to_full_trajectory_repair.json",
+    DOMAIN_LOCAL_DIR / "stage41_endpoint_to_full_statistical_evidence.json",
     DOMAIN_LOCAL_DIR / "stage41_learned_waypoint_shape_bridge.json",
     DOMAIN_LOCAL_DIR / "stage41_learned_shape_gain_gate.json",
     DOMAIN_LOCAL_DIR / "stage41_shape_policy_composer.json",
@@ -52,6 +53,8 @@ SOURCE_PATHS = [
     Path("src/stage41_pure_ucy_neural_retrain.py"),
     Path("src/stage41_pure_ucy_neural_statistical_evidence.py"),
     Path("src/stage41_endpoint_to_full_trajectory_repair.py"),
+    Path("src/stage41_endpoint_to_full_statistical_evidence.py"),
+    Path("run_stage41_endpoint_to_full_statistical_evidence.py"),
     Path("src/stage41_learned_waypoint_shape_bridge.py"),
     Path("src/stage41_learned_shape_gain_gate.py"),
     Path("src/stage41_shape_policy_composer.py"),
@@ -162,6 +165,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
     pure_ucy_neural = _safe_read(SPLIT_DIR / "stage41_pure_ucy_neural_retrain.json")
     pure_ucy_neural_stats = _safe_read(SPLIT_DIR / "stage41_pure_ucy_neural_statistical_evidence.json")
     endpoint_to_full = _safe_read(DOMAIN_LOCAL_DIR / "stage41_endpoint_to_full_trajectory_repair.json")
+    endpoint_to_full_stats = _safe_read(DOMAIN_LOCAL_DIR / "stage41_endpoint_to_full_statistical_evidence.json")
     calibrated_shape = _safe_read(DOMAIN_LOCAL_DIR / "stage41_calibrated_shape_meta_policy.json")
     split_report = _safe_read(SPLIT_DIR / "report.json")
     seq2seq = _safe_read(STAGE41_DIR / "stage41_seq2seq_dataset.json")
@@ -292,6 +296,18 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "claim_boundary": endpoint_to_full.get("claim_boundary"),
             "interpretation": "Endpoint neural dynamics are projected to a linear waypoint bridge and scored against actual reconstructed future waypoints. This is positive full-waypoint bridge evidence on ETH_UCY and TrajNet, but it is not learned waypoint-shape dynamics.",
         },
+        "endpoint_to_full_statistical_evidence": {
+            "gate": endpoint_to_full_stats.get("two_domain_statistical_gate"),
+            "positive_domains": endpoint_to_full_stats.get("positive_domains"),
+            "bootstrap_n": endpoint_to_full_stats.get("bootstrap_n"),
+            "domain_lows": {
+                domain: row.get("bootstrap_lows")
+                for domain, row in (endpoint_to_full_stats.get("domain_results") or {}).items()
+            },
+            "no_leakage": endpoint_to_full_stats.get("no_leakage"),
+            "claim_boundary": endpoint_to_full_stats.get("claim_boundary"),
+            "interpretation": "Fresh per-domain bootstrap evidence for the endpoint-neural-to-linear-waypoint bridge on ETH_UCY and TrajNet. It is statistical support for the protected bridge, not a claim of ungated learned full-waypoint shape dynamics.",
+        },
         "learned_waypoint_shape_meta_policy": {
             "gate": calibrated_shape.get("two_domain_calibrated_meta_gate"),
             "positive_domains": calibrated_shape.get("positive_domains"),
@@ -397,6 +413,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         ),
         _metric_row("endpoint-to-full bridge gate", endpoint_to_full.get("two_domain_endpoint_to_full_gate"), "positive full-waypoint bridge evidence, not learned shape"),
         _metric_row("endpoint-to-full bridge positive domains", endpoint_to_full.get("positive_domains"), "ETH_UCY and TrajNet if pass"),
+        _metric_row("endpoint-to-full bridge statistical gate", endpoint_to_full_stats.get("two_domain_statistical_gate"), "fresh 2000-bootstrap support for the protected waypoint bridge"),
+        _metric_row("endpoint-to-full bridge statistical positive domains", endpoint_to_full_stats.get("positive_domains"), "domains with positive ADE/FDE lower bounds"),
         _metric_row("calibrated learned-shape meta-policy gate", calibrated_shape.get("two_domain_calibrated_meta_gate"), "positive learned-shape residual evidence under fallback"),
         _metric_row("calibrated learned-shape positive domains", calibrated_shape.get("positive_domains"), "ETH_UCY and TrajNet if pass"),
         _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
@@ -454,6 +472,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- strict pure UCY neural bootstrap lows all/t50/t100/hard: `{_fmt_pct(((pure_ucy_neural_stats.get('bootstrap') or {}).get('all') or {}).get('low'))}` / `{_fmt_pct(((pure_ucy_neural_stats.get('bootstrap') or {}).get('t50') or {}).get('low'))}` / `{_fmt_pct(((pure_ucy_neural_stats.get('bootstrap') or {}).get('t100_raw_frame_diagnostic') or {}).get('low'))}` / `{_fmt_pct(((pure_ucy_neural_stats.get('bootstrap') or {}).get('hard_failure') or {}).get('low'))}`",
         f"- endpoint-to-full bridge gate: `{endpoint_to_full.get('two_domain_endpoint_to_full_gate')}`",
         f"- endpoint-to-full bridge positive domains: `{endpoint_to_full.get('positive_domains')}`",
+        f"- endpoint-to-full bridge statistical gate: `{endpoint_to_full_stats.get('two_domain_statistical_gate')}`",
+        f"- endpoint-to-full bridge statistical positive domains: `{endpoint_to_full_stats.get('positive_domains')}`",
         f"- calibrated learned-shape meta-policy gate: `{calibrated_shape.get('two_domain_calibrated_meta_gate')}`",
         f"- calibrated learned-shape positive domains: `{calibrated_shape.get('positive_domains')}`",
         f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
@@ -501,6 +521,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "Latest package inputs include the negative fixed-composer source-switch audits and the positive strict pure-UCY neural retrain/statistical evidence, so the frozen package records both the successful composite-tail path and the repaired source-only neural branch.",
             "",
             "The package also includes the positive endpoint-to-full bridge audit: domain-local endpoint neural dynamics pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet through a linear waypoint bridge. This strengthens world-state evidence without claiming learned waypoint-shape dynamics.",
+            "",
+            "The endpoint-to-full bridge now also has fresh 2000-bootstrap per-domain statistical support on ETH_UCY and TrajNet. The lower bounds are positive for all/t50/hard/multi-agent ADE and all/t50 FDE, but this is still protected linear-bridge evidence rather than ungated learned full-waypoint shape dynamics.",
             "",
             "The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.",
         ],
@@ -576,6 +598,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_retrain.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_statistical_evidence.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_to_full_trajectory_repair.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_to_full_statistical_evidence.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_calibrated_shape_meta_policy.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_geometry_audit.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_gates.py",
@@ -666,6 +689,12 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "strict_pure_ucy_neural_bootstrap_hard_low": ((pure_ucy_neural_stats.get("bootstrap") or {}).get("hard_failure") or {}).get("low"),
             "endpoint_to_full_bridge_gate": endpoint_to_full.get("two_domain_endpoint_to_full_gate"),
             "endpoint_to_full_bridge_positive_domains": endpoint_to_full.get("positive_domains"),
+            "endpoint_to_full_statistical_gate": endpoint_to_full_stats.get("two_domain_statistical_gate"),
+            "endpoint_to_full_statistical_positive_domains": endpoint_to_full_stats.get("positive_domains"),
+            "endpoint_to_full_statistical_domain_lows": {
+                domain: row.get("bootstrap_lows")
+                for domain, row in (endpoint_to_full_stats.get("domain_results") or {}).items()
+            },
             "calibrated_learned_shape_meta_gate": calibrated_shape.get("two_domain_calibrated_meta_gate"),
             "calibrated_learned_shape_positive_domains": calibrated_shape.get("positive_domains"),
             "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
@@ -723,6 +752,8 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"strict_pure_ucy_neural_bootstrap_lows_all_t50_t100_hard = {summary.get('strict_pure_ucy_neural_bootstrap_all_low')} / {summary.get('strict_pure_ucy_neural_bootstrap_t50_low')} / {summary.get('strict_pure_ucy_neural_bootstrap_t100_low')} / {summary.get('strict_pure_ucy_neural_bootstrap_hard_low')}",
         f"endpoint_to_full_bridge_gate = {summary.get('endpoint_to_full_bridge_gate')}",
         f"endpoint_to_full_bridge_positive_domains = {summary.get('endpoint_to_full_bridge_positive_domains')}",
+        f"endpoint_to_full_statistical_gate = {summary.get('endpoint_to_full_statistical_gate')}",
+        f"endpoint_to_full_statistical_positive_domains = {summary.get('endpoint_to_full_statistical_positive_domains')}",
         f"calibrated_learned_shape_meta_gate = {summary.get('calibrated_learned_shape_meta_gate')}",
         f"calibrated_learned_shape_positive_domains = {summary.get('calibrated_learned_shape_positive_domains')}",
         f"composite_tail_evidence_pass = {summary.get('composite_tail_evidence_pass')}",
@@ -791,6 +822,9 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "strict_pure_ucy_neural_bootstrap_hard_low": summary.get("strict_pure_ucy_neural_bootstrap_hard_low"),
         "endpoint_to_full_bridge_gate": summary.get("endpoint_to_full_bridge_gate"),
         "endpoint_to_full_bridge_positive_domains": summary.get("endpoint_to_full_bridge_positive_domains"),
+        "endpoint_to_full_statistical_gate": summary.get("endpoint_to_full_statistical_gate"),
+        "endpoint_to_full_statistical_positive_domains": summary.get("endpoint_to_full_statistical_positive_domains"),
+        "endpoint_to_full_statistical_domain_lows": summary.get("endpoint_to_full_statistical_domain_lows"),
         "calibrated_learned_shape_meta_gate": summary.get("calibrated_learned_shape_meta_gate"),
         "calibrated_learned_shape_positive_domains": summary.get("calibrated_learned_shape_positive_domains"),
         "composite_tail_evidence_pass": summary.get("composite_tail_evidence_pass"),

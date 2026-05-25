@@ -389,6 +389,8 @@
     "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md",
     "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json",
     "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.md",
+    "outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json",
+    "outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.md",
     "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json",
     "outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.md",
     "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
@@ -9920,6 +9922,31 @@
       "ETH_UCY",
       "TrajNet"
     ],
+    "endpoint_to_full_statistical_gate": true,
+    "endpoint_to_full_statistical_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "endpoint_to_full_statistical_domain_lows": {
+      "ETH_UCY": {
+        "ade_all": 0.014989124720870283,
+        "ade_t50": 0.001358729620311877,
+        "ade_t100": 0.003205122362247967,
+        "ade_hard": 0.01477184652828257,
+        "ade_multi": 0.015119963379165813,
+        "fde_all": 0.01541917336054947,
+        "fde_t50": 0.0020177568013793916
+      },
+      "TrajNet": {
+        "ade_all": 0.03381106629559396,
+        "ade_t50": 0.018640699426599426,
+        "ade_t100": 0.007743473232062962,
+        "ade_hard": 0.03437455061849066,
+        "ade_multi": 0.03594728364084391,
+        "fde_all": 0.03386172479233887,
+        "fde_t50": 0.025763665503977688
+      }
+    },
     "calibrated_learned_shape_meta_gate": true,
     "calibrated_learned_shape_positive_domains": [
       "ETH_UCY",
@@ -10847,6 +10874,59 @@
       },
       "caveat": "Endpoint neural dynamics are projected through a linear waypoint bridge and evaluated on actual reconstructed future waypoints. This is not learned waypoint-shape dynamics."
     },
+    "endpoint_to_full_statistical_evidence_summary": {
+      "two_domain_statistical_gate": true,
+      "positive_domains": [
+        "ETH_UCY",
+        "TrajNet"
+      ],
+      "positive_domain_count": 2,
+      "bootstrap_n": 2000,
+      "domain_lows": {
+        "ETH_UCY": {
+          "gate": true,
+          "ade_all_low": 0.014989124720870283,
+          "ade_t50_low": 0.001358729620311877,
+          "ade_t100_low": 0.003205122362247967,
+          "ade_hard_low": 0.01477184652828257,
+          "ade_multi_low": 0.015119963379165813,
+          "fde_all_low": 0.01541917336054947,
+          "fde_t50_low": 0.0020177568013793916
+        },
+        "TrajNet": {
+          "gate": true,
+          "ade_all_low": 0.03381106629559396,
+          "ade_t50_low": 0.018640699426599426,
+          "ade_t100_low": 0.007743473232062962,
+          "ade_hard_low": 0.03437455061849066,
+          "ade_multi_low": 0.03594728364084391,
+          "fde_all_low": 0.03386172479233887,
+          "fde_t50_low": 0.025763665503977688
+        }
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_endpoint_label_eval_only": true,
+        "future_waypoints_input": false,
+        "future_waypoints_label_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "val_selected_policy": true
+      },
+      "claim_boundary": {
+        "endpoint_neural_dynamics": true,
+        "linear_waypoint_bridge": true,
+        "learned_full_waypoint_shape": false,
+        "ungated_full_row_neural_safety": false,
+        "latent_generative_rollout": false,
+        "metric_or_seconds_claim": false,
+        "true_3d": false,
+        "foundation_world_model": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
     "learned_waypoint_shape_summary": {
       "two_domain_learned_shape_gate": true,
       "two_domain_gain_gate": true,
@@ -11088,6 +11168,33 @@
       "TrajNet"
     ],
     "endpoint_to_full_bridge_caveat": "Endpoint neural dynamics are projected through a linear waypoint bridge and evaluated on actual reconstructed future waypoints. This is not learned waypoint-shape dynamics.",
+    "endpoint_to_full_statistical_gate": true,
+    "endpoint_to_full_statistical_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "endpoint_to_full_statistical_domain_lows": {
+      "ETH_UCY": {
+        "gate": true,
+        "ade_all_low": 0.014989124720870283,
+        "ade_t50_low": 0.001358729620311877,
+        "ade_t100_low": 0.003205122362247967,
+        "ade_hard_low": 0.01477184652828257,
+        "ade_multi_low": 0.015119963379165813,
+        "fde_all_low": 0.01541917336054947,
+        "fde_t50_low": 0.0020177568013793916
+      },
+      "TrajNet": {
+        "gate": true,
+        "ade_all_low": 0.03381106629559396,
+        "ade_t50_low": 0.018640699426599426,
+        "ade_t100_low": 0.007743473232062962,
+        "ade_hard_low": 0.03437455061849066,
+        "ade_multi_low": 0.03594728364084391,
+        "fde_all_low": 0.03386172479233887,
+        "fde_t50_low": 0.025763665503977688
+      }
+    },
     "learned_shape_calibrated_meta_gate": true,
     "learned_shape_positive_domains": [
       "ETH_UCY",
