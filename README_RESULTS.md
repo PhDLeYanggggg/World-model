@@ -1574,3 +1574,32 @@ pytest = 224 passed in 60.12s
 ```
 
 Conclusion: the dynamic meta-policy is safe and two-domain positive, and it improves TrajNet all/hard/t100 versus the fixed horizon composer. It does not dominate globally: ETH_UCY is weaker than the fixed composer and its ranking accuracy is poor, while TrajNet t50 is also slightly lower than the fixed composer. This is useful evidence for dynamic source selection, but the current best deployable path remains the protected composite/fixed-composer route until domain-specific calibration improves ETH_UCY ranking.
+
+## Stage41 Calibrated Shape Source Meta-Policy
+
+Because the dynamic meta-policy collapsed on ETH_UCY source ranking, the next experiment tested validation-only calibration of predicted source ADE. Four modes were compared: no calibration, global affine log calibration, source-specific calibration, and source+horizon calibration. Calibration uses validation source ADE labels only; test is evaluated once.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_calibrated_meta_gate = True
+ETH_UCY_selected_calibration = none
+ETH_UCY_all = 0.016314720529778892
+ETH_UCY_t50 = 0.0017756136269108103
+ETH_UCY_t100 = 0.004284781808472471
+ETH_UCY_hard = 0.01611365182677149
+ETH_UCY_easy = 0.0
+ETH_UCY_rank_accuracy = 0.019261042689137885
+ETH_UCY_delta_vs_fixed_all_t50_t100_hard = -0.000099 / -0.000125 / -0.000044 / -0.000095
+TrajNet_selected_calibration = none
+TrajNet_all = 0.03830169788706028
+TrajNet_t50 = 0.02671519369046027
+TrajNet_t100 = 0.014508831312789572
+TrajNet_hard = 0.039363879492692044
+TrajNet_easy = 0.0
+TrajNet_rank_accuracy = 0.9997251992305578
+TrajNet_delta_vs_fixed_all_t50_t100_hard = 0.000164 / -0.000217 / 0.000708 / 0.000180
+pytest = 226 passed in 60.59s
+```
+
+Conclusion: simple affine calibration did not repair ETH_UCY; validation selected `none`, and source/source+horizon calibration made ranking worse. This negative result narrows the next fix: ETH_UCY needs pairwise gain/harm switch modeling or source-specific hard/failure features, not post-hoc raw-ADE calibration. Fixed horizon composer remains the safer deployable shape policy.

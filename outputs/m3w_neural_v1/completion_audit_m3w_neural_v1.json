@@ -4386,7 +4386,7 @@
   },
   "last_validation": {
     "command": "python3 -m pytest tests",
-    "result": "224 passed in 60.12s",
+    "result": "226 passed in 60.59s",
     "source": "fresh_run"
   },
   "learned_shape_gain_gate_summary": {
@@ -4571,6 +4571,57 @@
           "gain_gate": 0.0002748007694421544
         },
         "test_ranking_accuracy": 0.9997251992305578,
+        "delta_vs_fixed_all": 0.00016363458114965201,
+        "delta_vs_fixed_t50": -0.0002168070513676179,
+        "delta_vs_fixed_t100": 0.0007082811202218098,
+        "delta_vs_fixed_hard": 0.00017955894658017169
+      }
+    }
+  },
+  "calibrated_shape_meta_policy_summary": {
+    "source": "fresh_run",
+    "protocol": "calibrated_shape_source_meta_policy",
+    "two_domain_calibrated_meta_gate": true,
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false,
+    "overall_interpretation": "Simple affine calibration did not repair ETH_UCY ranking; validation selected no calibration and fixed horizon composer remains safer deployable shape policy.",
+    "domains": {
+      "ETH_UCY": {
+        "status": "ok",
+        "selected_mode": "none",
+        "all": 0.016314720529778892,
+        "t50": 0.0017756136269108103,
+        "t100": 0.004284781808472471,
+        "hard_failure": 0.01611365182677149,
+        "easy_degradation": 0.0,
+        "rank_accuracy": 0.019261042689137885,
+        "shape_gain_all": 0.0006294398646777832,
+        "shape_gain_t50": -0.00012552756048478386,
+        "shape_gain_t100": -2.9650299970152005e-05,
+        "shape_gain_hard_failure": 0.0006504301081771136,
+        "delta_vs_fixed_all": -9.91800632104134e-05,
+        "delta_vs_fixed_t50": -0.00012528894482233266,
+        "delta_vs_fixed_t100": -4.3928731498943385e-05,
+        "delta_vs_fixed_hard": -9.523287773749445e-05
+      },
+      "TrajNet": {
+        "status": "ok",
+        "selected_mode": "none",
+        "all": 0.03830169788706028,
+        "t50": 0.02671519369046027,
+        "t100": 0.014508831312789572,
+        "hard_failure": 0.039363879492692044,
+        "easy_degradation": 0.0,
+        "rank_accuracy": 0.9997251992305578,
+        "shape_gain_all": 0.00028742090447775315,
+        "shape_gain_t50": 0.00024579926399548313,
+        "shape_gain_t100": 0.0007181925728715344,
+        "shape_gain_hard_failure": 0.0003157315266282268,
         "delta_vs_fixed_all": 0.00016363458114965201,
         "delta_vs_fixed_t50": -0.0002168070513676179,
         "delta_vs_fixed_t100": 0.0007082811202218098,
