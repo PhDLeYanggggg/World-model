@@ -1,0 +1,365 @@
+{
+  "source": "fresh_run",
+  "stage": "Stage42-D causal ablation evidence audit",
+  "generated_at_utc": "2026-05-25T20:08:00.255378+00:00",
+  "git_commit": "c26d980",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "SDD 仍是 pixel-space；external 仍是 dataset-local / unverified weak metric diagnostic。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "future endpoints / future waypoints 只作为 loss/eval label，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "4ae781add304d5797c95cae26525f32b77a985bd89d23f6199ca36b84c863bc4",
+  "fresh_ablation_rows": [
+    {
+      "ablation": "no_neural_tail_use_teacher_floor_only",
+      "source": "fresh_run",
+      "status": "positive_safe",
+      "rows": 55528,
+      "all_improvement": 0.20359710771827477,
+      "t50_improvement": 0.13116399043122728,
+      "t100_raw_frame_diagnostic_improvement": 0.13371172832175005,
+      "hard_failure_improvement": 0.19657225579495552,
+      "easy_degradation": -0.14450504937632014,
+      "switch_rate": 0.2954185275896845,
+      "delta_vs_reference": {
+        "all": -0.006654217800260431,
+        "t50": -0.005358324070314557,
+        "t100_raw_frame_diagnostic": -0.013229138842131616,
+        "hard_failure": -0.0072769072843839044,
+        "easy_degradation": 0.0006057120316357301
+      },
+      "interpretation": "Removing the composite-tail neural safe switch leaves the Stage37/teacher floor; positive protected-minus-teacher deltas indicate neural tail contribution."
+    },
+    {
+      "ablation": "no_safe_floor_use_ungated_endpoint_neural",
+      "source": "fresh_run",
+      "status": "negative_unsafe",
+      "rows": 55528,
+      "all_improvement": 0.296621240422128,
+      "t50_improvement": 0.21520334842637612,
+      "t100_raw_frame_diagnostic_improvement": 0.359213230578716,
+      "hard_failure_improvement": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "switch_rate": 1.0,
+      "delta_vs_reference": {
+        "all": 0.0863699149035928,
+        "t50": 0.07868103392483428,
+        "t100_raw_frame_diagnostic": 0.21227236341483435,
+        "hard_failure": 0.12552497477328683,
+        "easy_degradation": 1.3909718658806531
+      },
+      "interpretation": "Ungated endpoint neural is a no-fallback safety ablation; it can improve raw all but is not deployable if easy degradation exceeds 2%."
+    },
+    {
+      "ablation": "oracle_floor_vs_neural_diagnostic",
+      "source": "fresh_run",
+      "status": "positive_safe",
+      "rows": 55528,
+      "all_improvement": 0.4222350505506064,
+      "t50_improvement": 0.34524000201065486,
+      "t100_raw_frame_diagnostic_improvement": 0.42599536547439476,
+      "hard_failure_improvement": 0.421079797458903,
+      "easy_degradation": -0.29988911585586453,
+      "switch_rate": 0.5740167122892955,
+      "delta_vs_reference": {
+        "all": 0.2119837250320712,
+        "t50": 0.20871768750911301,
+        "t100_raw_frame_diagnostic": 0.2790544983105131,
+        "hard_failure": 0.21723063437956358,
+        "easy_degradation": -0.15477835444790866
+      },
+      "interpretation": "Diagnostic oracle uses future labels only to measure remaining headroom; it is not a deployable model."
+    },
+    {
+      "ablation": "no_full_waypoint_sequence_use_endpoint_linear_bridge",
+      "source": "fresh_run",
+      "status": "positive_safe",
+      "rows": 55528,
+      "all_improvement": 0.2102513255185352,
+      "t50_improvement": 0.13652231450154184,
+      "t100_raw_frame_diagnostic_improvement": 0.14694086716388166,
+      "hard_failure_improvement": 0.20384916307933942,
+      "easy_degradation": -0.14511076140795587,
+      "switch_rate": 0.3410171445036738,
+      "delta_vs_reference": {
+        "all": 0.02447280122019102,
+        "t50": -0.011514681275772931,
+        "t100_raw_frame_diagnostic": -0.08163339933561242,
+        "hard_failure": 0.008668690299824866,
+        "easy_degradation": -0.14511076140795587
+      },
+      "interpretation": "Endpoint-linear bridge removes the full-waypoint sequence model. delta_vs_reference is ablation-minus-protected: negative t50/t100 deltas mean the full-waypoint model helps those horizons, while positive all-delta means endpoint-linear remains stronger on all-ADE."
+    },
+    {
+      "ablation": "no_safe_floor_use_ungated_full_waypoint",
+      "source": "fresh_run",
+      "status": "negative_unsafe",
+      "rows": 55528,
+      "all_improvement": 0.296621240422128,
+      "t50_improvement": 0.21520334842637612,
+      "t100_raw_frame_diagnostic_improvement": 0.359213230578716,
+      "hard_failure_improvement": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "switch_rate": 1.0,
+      "delta_vs_reference": {
+        "all": 0.11084271612378382,
+        "t50": 0.06716635264906134,
+        "t100_raw_frame_diagnostic": 0.13063896407922193,
+        "hard_failure": 0.1341936650731117,
+        "easy_degradation": 1.2458611044726973
+      },
+      "interpretation": "Ungated full-waypoint neural is a no-fallback safety ablation; it remains diagnostic if easy degradation is unsafe."
+    },
+    {
+      "ablation": "no_composite_tail_use_teacher_linear_bridge",
+      "source": "fresh_run",
+      "status": "positive_safe",
+      "rows": 55528,
+      "all_improvement": 0.20359710771827477,
+      "t50_improvement": 0.13116399043122728,
+      "t100_raw_frame_diagnostic_improvement": 0.13371172832175005,
+      "hard_failure_improvement": 0.19657225579495552,
+      "easy_degradation": -0.14450504937632014,
+      "switch_rate": 0.2954185275896845,
+      "delta_vs_reference": {
+        "all": 0.01781858341993059,
+        "t50": -0.01687300534608749,
+        "t100_raw_frame_diagnostic": -0.09486253817774404,
+        "hard_failure": 0.0013917830154409616,
+        "easy_degradation": -0.14450504937632014
+      },
+      "interpretation": "Teacher linear bridge is the pre-composite floor in waypoint space; protected full-waypoint must improve without easy harm."
+    }
+  ],
+  "cached_verified_required_ablation_rows": [
+    {
+      "ablation": "no_history",
+      "source": "cached_verified",
+      "status": "complete",
+      "evidence_type": "fresh_run masked-feature ablation",
+      "evidence_source": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
+      "interpretation": "Masks history/static causal feature group after policy freeze; proves coverage for no-history/static ablation, not a claim that every history-derived scalar is useless."
+    },
+    {
+      "ablation": "no_neighbor",
+      "source": "cached_verified",
+      "status": "complete",
+      "evidence_type": "fresh_run masked neighbor/interaction ablations",
+      "evidence_source": "teacher_guided_evidence + group_consistency_evidence",
+      "interpretation": "Neighbor/interaction masking is audited; group/neighbor features are especially important for the safety head and t100/hard slices."
+    },
+    {
+      "ablation": "no_scene_goal",
+      "source": "cached_verified",
+      "status": "complete",
+      "evidence_type": "fresh_run scene/goal proxy and route/physical ablations",
+      "evidence_source": "stage41_teacher_guided_evidence + stage41_route_physical_policy_integration",
+      "interpretation": "Scene/goal proxy coverage exists. Current deployable trajectory path keeps route/physical mostly diagnostic; route/physical heads are not main trajectory deployment claims."
+    },
+    {
+      "ablation": "no_interaction",
+      "source": "cached_verified",
+      "status": "complete",
+      "evidence_type": "fresh_run interaction/group-consistency masking",
+      "evidence_source": "stage41_teacher_guided_evidence + stage41_group_consistency_evidence",
+      "interpretation": "Interaction/group-consistency features have explicit ablations and are necessary for guarded deployment; without them raw neural remains less safe."
+    },
+    {
+      "ablation": "no_jepa",
+      "source": "cached_verified",
+      "status": "complete_with_same_protocol_negative_evidence",
+      "evidence_type": "fresh JEPA disable decision plus same-protocol Stage41 pure-Transformer negative attempts",
+      "evidence_source": "stage41_jepa_deployment_decision + stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh",
+      "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage41 now also records same-protocol pure-Transformer/no-JEPA attempts as negative or fallback-only, so the current positive path is protected endpoint neural dynamics rather than JEPA/Transformer purity."
+    },
+    {
+      "ablation": "no_transformer",
+      "source": "cached_verified",
+      "status": "complete_with_same_protocol_negative_evidence",
+      "evidence_type": "same-protocol JEPA-only negative attempts plus historical cross-protocol ablation",
+      "evidence_source": "stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
+      "interpretation": "Stage41 same-protocol JEPA-only/no-Transformer attempts are negative or unsafe, so no-Transformer is covered as negative architecture evidence. This is not a claim that JEPA contributes to the deployable path; it is why JEPA remains diagnostic-only."
+    },
+    {
+      "ablation": "no_fallback",
+      "source": "cached_verified",
+      "status": "complete",
+      "evidence_type": "fresh no-fallback negative safety ablation",
+      "evidence_source": "teacher_guided_evidence + pure_ucy_neural_statistical_evidence + all_agent_composite_world_state",
+      "interpretation": "No-fallback neural often improves hard/all raw error but catastrophically damages easy cases; fallback is required for deployability."
+    }
+  ],
+  "cached_verified_architecture_rows": [
+    {
+      "architecture": "transformer_only",
+      "source": "cached_verified",
+      "attempted": true,
+      "candidate_count": 5,
+      "best_candidate": "Stage41_conformal_safety_head_transformer",
+      "any_deployable": false,
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "interpretation": "same-protocol cached verified architecture audit; current positive path is protected endpoint/full-waypoint dynamics"
+    },
+    {
+      "architecture": "jepa_only",
+      "source": "cached_verified",
+      "attempted": true,
+      "candidate_count": 1,
+      "best_candidate": "Stage41_jepa_auxiliary_representation",
+      "any_deployable": false,
+      "best": {
+        "rows": 34777,
+        "all_improvement": -0.026777069471576986,
+        "t50_improvement": -0.015065713704299988,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.024300942834727834,
+        "easy_degradation": 0.026903930506348317,
+        "switch_rate": 0.019984472496190012,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "negative_or_unsafe"
+      },
+      "interpretation": "same-protocol cached verified architecture audit; current positive path is protected endpoint/full-waypoint dynamics"
+    },
+    {
+      "architecture": "hybrid_jepa_transformer",
+      "source": "cached_verified",
+      "attempted": true,
+      "candidate_count": 3,
+      "best_candidate": "Stage41_easy_guard_distilled_hybrid",
+      "any_deployable": false,
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "interpretation": "same-protocol cached verified architecture audit; current positive path is protected endpoint/full-waypoint dynamics"
+    },
+    {
+      "architecture": "mixture_selector",
+      "source": "cached_verified",
+      "attempted": true,
+      "candidate_count": 1,
+      "best_candidate": "Stage41_mixture_of_experts_baseline_selector",
+      "any_deployable": false,
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 2.8754636685165482e-05,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "interpretation": "same-protocol cached verified architecture audit; current positive path is protected endpoint/full-waypoint dynamics"
+    },
+    {
+      "architecture": "protected_neural_endpoint",
+      "source": "cached_verified",
+      "attempted": true,
+      "candidate_count": 4,
+      "best_candidate": "Stage41_fresh_self_gated_endpoint_candidate",
+      "any_deployable": true,
+      "best": {
+        "rows": 55528,
+        "all_improvement": 0.41964214194307703,
+        "t50_improvement": 0.4061979981406123,
+        "t100_improvement": 0.45728888926366984,
+        "hard_failure_improvement": 0.43608295876101655,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5084281803774672,
+        "positive_domain_count": 3,
+        "deployable": true,
+        "status": "deployable_positive"
+      },
+      "interpretation": "same-protocol cached verified architecture audit; current positive path is protected endpoint/full-waypoint dynamics"
+    }
+  ],
+  "summary": {
+    "stage42_b_verdict": "stage42_b_external_validation_pass_protected_neural_not_ungated",
+    "stage42_c_verdict": "stage42_c_full_waypoint_dynamics_pass",
+    "required_ablation_coverage_gate": true,
+    "same_protocol_architecture_ablation_gate": true,
+    "protected_endpoint_all": 0.2102513255185352,
+    "protected_endpoint_t50": 0.13652231450154184,
+    "protected_endpoint_hard_failure": 0.20384916307933942,
+    "protected_endpoint_easy_degradation": -0.14511076140795587,
+    "protected_full_waypoint_all": 0.18577852429834418,
+    "protected_full_waypoint_t50": 0.14803699577731477,
+    "protected_full_waypoint_t100_raw_frame_diagnostic": 0.22857426649949408,
+    "protected_full_waypoint_hard_failure": 0.19518047277951456,
+    "protected_full_waypoint_easy_degradation": -0.0,
+    "ungated_endpoint_easy_degradation": 1.2458611044726973,
+    "ungated_full_waypoint_easy_degradation": 1.2458611044726973
+  },
+  "full_retrain_boundary": {
+    "all_components_retrained_inside_stage42_d": false,
+    "reason": "Stage42-D fresh-runs the safety/floor/full-waypoint ablations and verifies prior Stage30/41 retrained or architecture ablations by hash/source. It does not retrain every JEPA/Transformer/history/scene/goal component again in this command.",
+    "honest_source_policy": "fresh_run rows are recomputed this stage; cached_verified rows are old evidence with schema/hash/no-leakage provenance; not_run rows must remain not_run."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_d_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "stage42_b_prereq_pass": true,
+      "stage42_c_prereq_pass": true,
+      "fresh_safety_and_waypoint_ablation_rows_present": true,
+      "ungated_safety_failure_diagnosed": true,
+      "required_ablation_coverage_cached_verified": true,
+      "architecture_ablation_cached_verified": true,
+      "source_labels_are_explicit": true,
+      "full_retrain_boundary_declared": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_d_causal_ablation_evidence_pass_with_retrain_boundary"
+  }
+}

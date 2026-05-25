@@ -1912,3 +1912,32 @@ smc_allowed = False
 
 This is still protected dataset-local/raw-frame 2.5D evidence, not true 3D, not metric/seconds-level, and not a foundation model. Stage5C and SMC remain disabled.
 <!-- M3W_NEURAL_GOAL_COMPLETION:END -->
+
+## Stage42-D Causal Ablation Evidence
+
+```text
+source = fresh_run
+verdict = stage42_d_causal_ablation_evidence_pass_with_retrain_boundary
+gates = 12 / 12
+stage42_b_verdict = stage42_b_external_validation_pass_protected_neural_not_ungated
+stage42_c_verdict = stage42_c_full_waypoint_dynamics_pass
+required_ablation_coverage_gate = True
+same_protocol_architecture_ablation_gate = True
+protected_endpoint_all = 0.2102513255185352
+protected_endpoint_t50 = 0.13652231450154184
+protected_endpoint_hard_failure = 0.20384916307933942
+protected_endpoint_easy_degradation = -0.14511076140795587
+protected_full_waypoint_all = 0.18577852429834418
+protected_full_waypoint_t50 = 0.14803699577731477
+protected_full_waypoint_t100_raw_frame_diagnostic = 0.22857426649949408
+protected_full_waypoint_hard_failure = 0.19518047277951456
+protected_full_waypoint_easy_degradation = -0.0
+all_components_retrained_inside_stage42_d = False
+true_3d = false
+foundation_world_model = false
+metric_or_seconds_claim = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-D adds a causal ablation evidence package with strict source labels. Fresh rows recompute no-fallback, teacher-floor, endpoint-linear, and full-waypoint safety ablations from Stage42-B/C. Required no-history/no-neighbor/no-scene-goal/no-interaction/no-JEPA/no-Transformer/no-fallback coverage is cached-verified from Stage30/41 evidence; it is not falsely relabeled as new Stage42 retraining.
