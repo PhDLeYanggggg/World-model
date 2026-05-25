@@ -11,6 +11,8 @@
     "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
     "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.md",
     "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
+    "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.md",
+    "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json",
     "outputs/m3w_neural_v1/reproducibility_m3w_neural_v1.md",
     "outputs/m3w_neural_v1/paper_gap_m3w_neural_v1.md",
     "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json"
@@ -18,8 +20,8 @@
   "policy": {
     "model_name": "M3W-Neural-v1",
     "source": "cached_verified",
-    "frozen_at_utc": "2026-05-25T17:33:02.996646+00:00",
-    "git_commit": "d144526",
+    "frozen_at_utc": "2026-05-25T17:42:22.666426+00:00",
+    "git_commit": "5fe81ff",
     "stage41_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
     "deployment_state": "composite_tail_candidate_pending_final_package_acceptance",
     "best_candidate": "composite_tail_safe_switch_bounded_neural_dynamics",
@@ -43,7 +45,7 @@
     "uncalibrated_domain_rule": "fallback_to_stage37_floor",
     "stage5c_executed": false,
     "smc_enabled": false,
-    "source_hash": "dda9bf0c4f803a14657d10f578d06253cca6c2b5496e192fe447f37444163134",
+    "source_hash": "b67d88b23a6ea71cf1898203d9154ab5b9ac8caecb847a902d6abb9b511511a5",
     "source_paths": [
       "outputs/stage41_breakthrough/world_model_gate_stage41.json",
       "outputs/stage41_breakthrough/stage41_neural_eval.json",
@@ -52,6 +54,7 @@
       "outputs/stage41_breakthrough/stage41_all_agent_dataset.json",
       "outputs/stage41_breakthrough/pytest_status.md",
       "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
+      "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json",
       "outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json",
       "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
       "outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json",
@@ -76,6 +79,8 @@
       "src/stage41_breakthrough.py",
       "src/stage41_ablation_coverage_audit.py",
       "run_stage41_ablation_coverage_audit.py",
+      "src/stage41_neural_architecture_ablation_audit.py",
+      "run_stage41_neural_architecture_ablation_audit.py",
       "src/stage41_fresh_confirmation.py",
       "src/stage41_bounded_neural_blend_dynamics.py",
       "src/stage41_composite_tail_evidence.py",
@@ -150,10 +155,12 @@
     },
     "required_ablation_coverage_gate": true,
     "required_ablation_coverage_missing": [],
-    "required_ablation_cross_protocol_limitations": [
-      "no_jepa",
-      "no_transformer"
-    ],
+    "required_ablation_cross_protocol_limitations": [],
+    "same_protocol_architecture_ablation_gate": true,
+    "same_protocol_best_protected_architecture": "Stage41_fresh_self_gated_endpoint_candidate",
+    "same_protocol_transformer_only_deployable": false,
+    "same_protocol_jepa_only_deployable": false,
+    "same_protocol_hybrid_deployable": false,
     "calibrated_learned_shape_meta_gate": true,
     "calibrated_learned_shape_positive_domains": [
       "ETH_UCY",

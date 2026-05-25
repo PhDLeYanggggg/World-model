@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `dda9bf0c4f803a14657d10f578d06253cca6c2b5496e192fe447f37444163134`
-- git_commit: `d144526`
+- package_input_hash: `b67d88b23a6ea71cf1898203d9154ab5b9ac8caecb847a902d6abb9b511511a5`
+- git_commit: `5fe81ff`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -36,7 +36,12 @@
 | calibrated learned-shape meta-policy gate | `True` | positive learned-shape residual evidence under fallback |
 | calibrated learned-shape positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
 | required ablation coverage gate | `True` | covers no-history/no-neighbor/no-scene-goal/no-interaction/no-JEPA/no-Transformer/no-fallback |
-| required ablation cross-protocol limits | `['no_jepa', 'no_transformer']` | limitations must be explicit |
+| required ablation cross-protocol limits | `[]` | limitations must be explicit |
+| same-protocol architecture ablation gate | `True` | pure Transformer/JEPA/hybrid attempts audited under Stage41 protocol |
+| same-protocol best protected neural architecture | `Stage41_fresh_self_gated_endpoint_candidate` | current positive neural evidence path |
+| same-protocol transformer-only deployable | `False` | negative architecture evidence if false |
+| same-protocol JEPA-only deployable | `False` | negative architecture evidence if false |
+| same-protocol hybrid deployable | `False` | negative architecture evidence if false |
 | JEPA deployable path | `disabled` | JEPA had no deployable downstream lift |
 | fixed-prior source switch beats fixed composer | `False` | negative branch audit |
 | residual source-switch oracle headroom | `False` | negative branch audit |

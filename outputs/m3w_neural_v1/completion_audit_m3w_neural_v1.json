@@ -4390,7 +4390,8 @@
     "coverage_gate": true,
     "missing": [],
     "partial": [],
-    "cross_protocol_limitations": [
+    "cross_protocol_limitations": [],
+    "same_protocol_negative_architecture_evidence": [
       "no_jepa",
       "no_transformer"
     ],
@@ -4416,14 +4417,14 @@
         "interpretation": "Interaction/group-consistency features have explicit ablations and are necessary for guarded deployment; without them raw neural remains less safe."
       },
       "no_jepa": {
-        "status": "complete_but_cross_protocol",
-        "source": "stage41_jepa_deployment_decision + stage30_m3w_verified/retrained_ablation_fresh",
-        "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage30 provides no-JEPA numerical ablation; Stage41 external JEPA attempts are negative diagnostics."
+        "status": "complete_with_same_protocol_negative_evidence",
+        "source": "stage41_jepa_deployment_decision + stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh",
+        "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage41 now also records same-protocol pure-Transformer/no-JEPA attempts as negative or fallback-only, so the current positive path is protected endpoint neural dynamics rather than JEPA/Transformer purity."
       },
       "no_transformer": {
-        "status": "complete_but_cross_protocol",
-        "source": "stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
-        "interpretation": "No-Transformer evidence is present but weaker than endpoint/full-waypoint bridge evidence because the strongest external protected path is not a pure Transformer-only deployment. Treat as ablation coverage, not a main claim."
+        "status": "complete_with_same_protocol_negative_evidence",
+        "source": "stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
+        "interpretation": "Stage41 same-protocol JEPA-only/no-Transformer attempts are negative or unsafe, so no-Transformer is covered as negative architecture evidence. This is not a claim that JEPA contributes to the deployable path; it is why JEPA remains diagnostic-only."
       },
       "no_fallback": {
         "status": "complete",
@@ -4433,13 +4434,39 @@
     },
     "claim_boundary": {
       "ablation_coverage_not_new_training": true,
-      "cross_protocol_ablations_are_limitations": [
-        "no_jepa",
-        "no_transformer"
-      ],
+      "cross_protocol_ablations_are_limitations": [],
       "not_true_3d": true,
       "not_foundation": true,
       "not_metric_or_seconds": true
+    }
+  },
+  "same_protocol_neural_architecture_ablation_summary": {
+    "gate": true,
+    "best_protected_architecture": "Stage41_fresh_self_gated_endpoint_candidate",
+    "best_protected_architecture_metrics": {
+      "rows": 55528,
+      "all_improvement": 0.41964214194307703,
+      "t50_improvement": 0.4061979981406123,
+      "t100_improvement": 0.45728888926366984,
+      "hard_failure_improvement": 0.43608295876101655,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.5084281803774672,
+      "positive_domain_count": 3,
+      "deployable": true,
+      "status": "deployable_positive"
+    },
+    "transformer_only_deployable": false,
+    "jepa_only_deployable": false,
+    "hybrid_jepa_transformer_deployable": false,
+    "mixture_selector_deployable": false,
+    "claim_boundary": {
+      "not_true_3d": true,
+      "not_foundation": true,
+      "not_metric_or_seconds": true,
+      "same_protocol_architecture_audit_not_new_training": true,
+      "jepa_transformer_hybrid_positive_contribution_not_proven": true,
+      "protected_endpoint_neural_candidate_is_current_positive_neural_evidence": true,
+      "ungated_neural_still_not_deployable": true
     }
   },
   "learned_waypoint_shape_summary": {
@@ -4776,7 +4803,13 @@
       "requirement": "Stage41 required ablation coverage matrix complete",
       "status": "complete",
       "evidence": "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
-      "note": "Covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback. no-JEPA and no-Transformer are explicitly marked as cross-protocol limitations rather than overclaimed same-protocol causal proof."
+      "note": "Covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback. no-JEPA and no-Transformer now have same-protocol negative architecture evidence rather than cross-protocol-only support."
+    },
+    {
+      "requirement": "same-protocol neural architecture ablation explains JEPA/Transformer/Hybrid failures",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json",
+      "note": "Pure Transformer/no-JEPA, JEPA-only/no-Transformer, and JEPA+Transformer hybrid attempts are audited under the same Stage41 external protocol and are negative or fallback-only. The positive path is protected endpoint neural dynamics under the Stage37/teacher safety floor."
     },
     {
       "requirement": "learned waypoint-shape residual/meta-policy positive on at least two domains",

@@ -67,6 +67,7 @@ def run_ablation_coverage_audit() -> dict[str, Any]:
     group = read_json(FRESH_DIR / "stage41_group_consistency_evidence.json", {})
     route = read_json(FRESH_DIR / "stage41_route_physical_policy_integration.json", {})
     jepa = read_json(FRESH_DIR / "stage41_jepa_deployment_decision.json", {})
+    architecture = read_json(OUT_DIR / "neural_architecture_ablation_m3w_neural_v1.json", {})
     pure_ucy_stats = read_json(SPLIT_DIR / "stage41_pure_ucy_neural_statistical_evidence.json", {})
     all_agent = read_json(FRESH_DIR / "stage41_all_agent_composite_world_state.json", {})
     stage30 = read_json(STAGE30_DIR / "retrained_ablation_fresh.json", {})
@@ -112,21 +113,27 @@ def run_ablation_coverage_audit() -> dict[str, Any]:
             "interpretation": "Interaction/group-consistency features have explicit ablations and are necessary for guarded deployment; without them raw neural remains less safe.",
         },
         "no_jepa": {
-            "status": _status(bool(jepa.get("disable_jepa_in_deployable_path")), "no_jepa" in stage30_summary, weaker=True),
-            "source": "stage41_jepa_deployment_decision + stage30_m3w_verified/retrained_ablation_fresh",
-            "evidence_type": "fresh JEPA disable decision plus cached/fresh Stage30 no-JEPA ablation",
+            "status": "complete_with_same_protocol_negative_evidence"
+            if architecture.get("no_jepa_evidence")
+            else _status(bool(jepa.get("disable_jepa_in_deployable_path")), "no_jepa" in stage30_summary, weaker=True),
+            "source": "stage41_jepa_deployment_decision + stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh",
+            "evidence_type": "fresh JEPA disable decision plus same-protocol Stage41 pure-Transformer negative attempts",
             "jepa_decision": jepa.get("decision"),
             "deployable_positive_attempt_count": jepa.get("deployable_positive_attempt_count"),
+            "same_protocol_no_jepa": architecture.get("no_jepa_evidence"),
             "stage30_no_jepa_summary": stage30_summary.get("no_jepa"),
-            "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage30 provides no-JEPA numerical ablation; Stage41 external JEPA attempts are negative diagnostics.",
+            "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage41 now also records same-protocol pure-Transformer/no-JEPA attempts as negative or fallback-only, so the current positive path is protected endpoint neural dynamics rather than JEPA/Transformer purity.",
         },
         "no_transformer": {
-            "status": _status("no_transformer" in stage30_summary, bool(jepa.get("evidence")), weaker=True),
-            "source": "stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
-            "evidence_type": "cross-protocol ablation/diagnostic",
+            "status": "complete_with_same_protocol_negative_evidence"
+            if architecture.get("no_transformer_evidence")
+            else _status("no_transformer" in stage30_summary, bool(jepa.get("evidence")), weaker=True),
+            "source": "stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
+            "evidence_type": "same-protocol JEPA-only negative attempts plus historical cross-protocol ablation",
             "stage30_no_transformer_summary": stage30_summary.get("no_transformer"),
+            "same_protocol_no_transformer": architecture.get("no_transformer_evidence"),
             "stage41_jepa_only_attempts": [row for row in (jepa.get("evidence") or []) if "JEPA" in str(row.get("attempt", ""))],
-            "interpretation": "No-Transformer evidence is present but weaker than endpoint/full-waypoint bridge evidence because the strongest external protected path is not a pure Transformer-only deployment. Treat as ablation coverage, not a main claim.",
+            "interpretation": "Stage41 same-protocol JEPA-only/no-Transformer attempts are negative or unsafe, so no-Transformer is covered as negative architecture evidence. This is not a claim that JEPA contributes to the deployable path; it is why JEPA remains diagnostic-only.",
         },
         "no_fallback": {
             "status": _status(bool(no_fallback_teacher), bool(no_fallback_ucy), all_agent.get("claim_boundary", {}).get("ungated_no_fallback_neural_rollout_safe") is False),
@@ -145,10 +152,12 @@ def run_ablation_coverage_audit() -> dict[str, Any]:
         },
     }
 
-    complete_like = {"complete", "complete_but_cross_protocol"}
     missing = [name for name, row in requirements.items() if row["status"] == "missing"]
     partial = [name for name, row in requirements.items() if row["status"] == "partial"]
     cross_protocol = [name for name, row in requirements.items() if row["status"] == "complete_but_cross_protocol"]
+    same_protocol_negative = [
+        name for name, row in requirements.items() if row["status"] == "complete_with_same_protocol_negative_evidence"
+    ]
     coverage_gate = not missing and not partial
     result = {
         "source": "fresh_run",
@@ -158,6 +167,8 @@ def run_ablation_coverage_audit() -> dict[str, Any]:
         "missing": missing,
         "partial": partial,
         "cross_protocol_limitations": cross_protocol,
+        "same_protocol_negative_architecture_evidence": same_protocol_negative,
+        "same_protocol_architecture_ablation_gate": architecture.get("same_protocol_architecture_ablation_gate"),
         "requirements": requirements,
         "no_leakage": {
             "future_endpoint_input": False,
@@ -184,6 +195,8 @@ def run_ablation_coverage_audit() -> dict[str, Any]:
         f"- missing: `{missing}`",
         f"- partial: `{partial}`",
         f"- cross-protocol limitations: `{cross_protocol}`",
+        f"- same-protocol negative architecture evidence: `{same_protocol_negative}`",
+        f"- same-protocol architecture ablation gate: `{architecture.get('same_protocol_architecture_ablation_gate')}`",
         "- Stage5C executed: `False`",
         "- SMC enabled: `False`",
         "",
@@ -197,7 +210,7 @@ def run_ablation_coverage_audit() -> dict[str, Any]:
             "",
             "## Important Boundary",
             "",
-            "This audit does not turn every ablation into a same-protocol causal proof. It makes the current evidence traceable and marks cross-protocol limits explicitly.",
+            "This audit keeps the evidence traceable. no-JEPA and no-Transformer are now covered by same-protocol negative architecture evidence; any future cross-protocol limits must remain explicit.",
             "The no-fallback evidence remains negative for deployment safety; Stage37/teacher fallback remains required.",
             f"- no leakage: `{result['no_leakage']}`",
             f"- claim boundary: `{result['claim_boundary']}`",
@@ -223,6 +236,7 @@ def main_ablation_coverage_audit() -> None:
                 FRESH_DIR / "stage41_group_consistency_evidence.json",
                 FRESH_DIR / "stage41_jepa_deployment_decision.json",
                 STAGE30_DIR / "retrained_ablation_fresh.json",
+                OUT_DIR / "neural_architecture_ablation_m3w_neural_v1.json",
             ],
             [REPORT_MD, REPORT_JSON],
         )

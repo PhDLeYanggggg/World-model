@@ -1,0 +1,512 @@
+{
+  "source": "fresh_run",
+  "protocol": "stage41_same_protocol_neural_architecture_ablation_audit",
+  "same_protocol_architecture_ablation_gate": true,
+  "best_protected_architecture": "Stage41_fresh_self_gated_endpoint_candidate",
+  "best_protected_architecture_metrics": {
+    "rows": 55528,
+    "all_improvement": 0.41964214194307703,
+    "t50_improvement": 0.4061979981406123,
+    "t100_improvement": 0.45728888926366984,
+    "hard_failure_improvement": 0.43608295876101655,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.5084281803774672,
+    "positive_domain_count": 3,
+    "deployable": true,
+    "status": "deployable_positive"
+  },
+  "transformer_only_deployable": false,
+  "jepa_only_deployable": false,
+  "hybrid_jepa_transformer_deployable": false,
+  "mixture_selector_deployable": false,
+  "no_jepa_evidence": {
+    "status": "same_protocol_negative_transformer_only_attempts",
+    "interpretation": "Pure Transformer/no-JEPA Stage41 attempts were run in the same external protocol and were negative or fallback-only; current positive deployable evidence is protected endpoint neural dynamics, not a pure Transformer claim.",
+    "attempts": {
+      "attempted": true,
+      "candidate_count": 5,
+      "best_candidate": "Stage41_conformal_safety_head_transformer",
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 1,
+      "negative_or_unsafe_count": 4,
+      "candidates": {
+        "Stage41_causal_transformer_dynamics": {
+          "rows": 34777,
+          "all_improvement": -0.018455516450759157,
+          "t50_improvement": -0.006069423696344778,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.014993139507399,
+          "easy_degradation": 0.02154209705707366,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_baseline_relative_transformer": {
+          "rows": 34777,
+          "all_improvement": -0.019314045639318156,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.017516999548495393,
+          "easy_degradation": 0.10228475494964284,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_t50_hard_curriculum_transformer": {
+          "rows": 34777,
+          "all_improvement": -0.020421560585158538,
+          "t50_improvement": -0.0011720986972525438,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.01796851058798965,
+          "easy_degradation": 0.06925183667543955,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_conformal_safety_head_transformer": {
+          "rows": 34777,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "safe_fallback_only_no_lift"
+        },
+        "Stage41_long_horizon_t100_curriculum": {
+          "rows": 34777,
+          "all_improvement": -2.2213002345505828e-05,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -2.3746514975497846e-05,
+          "easy_degradation": 0.0,
+          "switch_rate": 2.8754636685165482e-05,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        }
+      }
+    }
+  },
+  "no_transformer_evidence": {
+    "status": "same_protocol_negative_jepa_only_attempts",
+    "interpretation": "JEPA-only/no-Transformer Stage41 attempts were run in the same external protocol and were negative; JEPA remains disabled from the deployable path.",
+    "attempts": {
+      "attempted": true,
+      "candidate_count": 1,
+      "best_candidate": "Stage41_jepa_auxiliary_representation",
+      "best": {
+        "rows": 34777,
+        "all_improvement": -0.026777069471576986,
+        "t50_improvement": -0.015065713704299988,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.024300942834727834,
+        "easy_degradation": 0.026903930506348317,
+        "switch_rate": 0.019984472496190012,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "negative_or_unsafe"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 0,
+      "negative_or_unsafe_count": 1,
+      "candidates": {
+        "Stage41_jepa_auxiliary_representation": {
+          "rows": 34777,
+          "all_improvement": -0.026777069471576986,
+          "t50_improvement": -0.015065713704299988,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.024300942834727834,
+          "easy_degradation": 0.026903930506348317,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        }
+      }
+    }
+  },
+  "hybrid_evidence": {
+    "status": "same_protocol_negative_hybrid_attempts",
+    "interpretation": "JEPA+Transformer hybrid variants did not beat the Stage37 safety floor under this protocol.",
+    "attempts": {
+      "attempted": true,
+      "candidate_count": 3,
+      "best_candidate": "Stage41_easy_guard_distilled_hybrid",
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 1,
+      "negative_or_unsafe_count": 2,
+      "candidates": {
+        "Stage41_hybrid_jepa_transformer": {
+          "rows": 34777,
+          "all_improvement": -0.02411819666853776,
+          "t50_improvement": -0.0011550793559587103,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.02109626444134083,
+          "easy_degradation": 0.07824220602651288,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_neighbor_interaction_heavy_hybrid": {
+          "rows": 34777,
+          "all_improvement": -2.7766116724059486e-05,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -2.9682998108127023e-05,
+          "easy_degradation": 0.0,
+          "switch_rate": 2.8754636685165482e-05,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_easy_guard_distilled_hybrid": {
+          "rows": 34777,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "safe_fallback_only_no_lift"
+        }
+      }
+    }
+  },
+  "groups": {
+    "transformer_only": {
+      "attempted": true,
+      "candidate_count": 5,
+      "best_candidate": "Stage41_conformal_safety_head_transformer",
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 1,
+      "negative_or_unsafe_count": 4,
+      "candidates": {
+        "Stage41_causal_transformer_dynamics": {
+          "rows": 34777,
+          "all_improvement": -0.018455516450759157,
+          "t50_improvement": -0.006069423696344778,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.014993139507399,
+          "easy_degradation": 0.02154209705707366,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_baseline_relative_transformer": {
+          "rows": 34777,
+          "all_improvement": -0.019314045639318156,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.017516999548495393,
+          "easy_degradation": 0.10228475494964284,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_t50_hard_curriculum_transformer": {
+          "rows": 34777,
+          "all_improvement": -0.020421560585158538,
+          "t50_improvement": -0.0011720986972525438,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.01796851058798965,
+          "easy_degradation": 0.06925183667543955,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_conformal_safety_head_transformer": {
+          "rows": 34777,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "safe_fallback_only_no_lift"
+        },
+        "Stage41_long_horizon_t100_curriculum": {
+          "rows": 34777,
+          "all_improvement": -2.2213002345505828e-05,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -2.3746514975497846e-05,
+          "easy_degradation": 0.0,
+          "switch_rate": 2.8754636685165482e-05,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        }
+      }
+    },
+    "jepa_only": {
+      "attempted": true,
+      "candidate_count": 1,
+      "best_candidate": "Stage41_jepa_auxiliary_representation",
+      "best": {
+        "rows": 34777,
+        "all_improvement": -0.026777069471576986,
+        "t50_improvement": -0.015065713704299988,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": -0.024300942834727834,
+        "easy_degradation": 0.026903930506348317,
+        "switch_rate": 0.019984472496190012,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "negative_or_unsafe"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 0,
+      "negative_or_unsafe_count": 1,
+      "candidates": {
+        "Stage41_jepa_auxiliary_representation": {
+          "rows": 34777,
+          "all_improvement": -0.026777069471576986,
+          "t50_improvement": -0.015065713704299988,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.024300942834727834,
+          "easy_degradation": 0.026903930506348317,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        }
+      }
+    },
+    "hybrid_jepa_transformer": {
+      "attempted": true,
+      "candidate_count": 3,
+      "best_candidate": "Stage41_easy_guard_distilled_hybrid",
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 1,
+      "negative_or_unsafe_count": 2,
+      "candidates": {
+        "Stage41_hybrid_jepa_transformer": {
+          "rows": 34777,
+          "all_improvement": -0.02411819666853776,
+          "t50_improvement": -0.0011550793559587103,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.02109626444134083,
+          "easy_degradation": 0.07824220602651288,
+          "switch_rate": 0.019984472496190012,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_neighbor_interaction_heavy_hybrid": {
+          "rows": 34777,
+          "all_improvement": -2.7766116724059486e-05,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -2.9682998108127023e-05,
+          "easy_degradation": 0.0,
+          "switch_rate": 2.8754636685165482e-05,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "negative_or_unsafe"
+        },
+        "Stage41_easy_guard_distilled_hybrid": {
+          "rows": 34777,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "safe_fallback_only_no_lift"
+        }
+      }
+    },
+    "mixture_selector": {
+      "attempted": true,
+      "candidate_count": 1,
+      "best_candidate": "Stage41_mixture_of_experts_baseline_selector",
+      "best": {
+        "rows": 34777,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 2.8754636685165482e-05,
+        "positive_domain_count": 0,
+        "deployable": false,
+        "status": "safe_fallback_only_no_lift"
+      },
+      "any_deployable": false,
+      "safe_fallback_only_count": 1,
+      "negative_or_unsafe_count": 0,
+      "candidates": {
+        "Stage41_mixture_of_experts_baseline_selector": {
+          "rows": 34777,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 2.8754636685165482e-05,
+          "positive_domain_count": 0,
+          "deployable": false,
+          "status": "safe_fallback_only_no_lift"
+        }
+      }
+    },
+    "protected_neural_endpoint": {
+      "attempted": true,
+      "candidate_count": 4,
+      "best_candidate": "Stage41_fresh_self_gated_endpoint_candidate",
+      "best": {
+        "rows": 55528,
+        "all_improvement": 0.41964214194307703,
+        "t50_improvement": 0.4061979981406123,
+        "t100_improvement": 0.45728888926366984,
+        "hard_failure_improvement": 0.43608295876101655,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5084281803774672,
+        "positive_domain_count": 3,
+        "deployable": true,
+        "status": "deployable_positive"
+      },
+      "any_deployable": true,
+      "safe_fallback_only_count": 0,
+      "negative_or_unsafe_count": 0,
+      "candidates": {
+        "Stage41_t50_rescue": {
+          "rows": 34777,
+          "all_improvement": 0.024621545149110413,
+          "t50_improvement": 0.023656017980682287,
+          "t100_improvement": 0.029132360292621673,
+          "hard_failure_improvement": 0.026077286541592137,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.07513586565833741,
+          "positive_domain_count": 2,
+          "deployable": true,
+          "status": "deployable_positive"
+        },
+        "Stage41_policy_blender": {
+          "rows": 34777,
+          "all_improvement": 0.05288899790075696,
+          "t50_improvement": 0.023656017980682287,
+          "t100_improvement": 0.11980603879154517,
+          "hard_failure_improvement": 0.05758402319342837,
+          "easy_degradation": 0.0005845819725827095,
+          "switch_rate": 0.08942692009086466,
+          "positive_domain_count": 2,
+          "deployable": true,
+          "status": "deployable_positive"
+        },
+        "Stage41_candidate_distiller": {
+          "rows": 34777,
+          "all_improvement": 0.043360106580431435,
+          "t50_improvement": 0.003641920827104572,
+          "t100_improvement": 0.1101983502761672,
+          "hard_failure_improvement": 0.0466372032313187,
+          "easy_degradation": 0.006755172637699314,
+          "switch_rate": 0.02533283491963079,
+          "positive_domain_count": 2,
+          "deployable": true,
+          "status": "deployable_positive"
+        },
+        "Stage41_fresh_self_gated_endpoint_candidate": {
+          "rows": 55528,
+          "all_improvement": 0.41964214194307703,
+          "t50_improvement": 0.4061979981406123,
+          "t100_improvement": 0.45728888926366984,
+          "hard_failure_improvement": 0.43608295876101655,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.5084281803774672,
+          "positive_domain_count": 3,
+          "deployable": true,
+          "status": "deployable_positive"
+        }
+      }
+    }
+  },
+  "jepa_deployment_decision": {
+    "decision": "disable_jepa_in_deployable_path",
+    "disable_jepa_in_deployable_path": true,
+    "attempt_count": 7,
+    "non_collapse_attempt_count": 7,
+    "deployable_positive_attempt_count": 0
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_endpoint_label_eval_only": true,
+    "test_endpoint_goals": false,
+    "central_velocity": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "claim_boundary": {
+    "not_true_3d": true,
+    "not_foundation": true,
+    "not_metric_or_seconds": true,
+    "same_protocol_architecture_audit_not_new_training": true,
+    "jepa_transformer_hybrid_positive_contribution_not_proven": true,
+    "protected_endpoint_neural_candidate_is_current_positive_neural_evidence": true,
+    "ungated_neural_still_not_deployable": true
+  }
+}

@@ -8,6 +8,7 @@
     "outputs/stage41_breakthrough/stage41_all_agent_dataset.json",
     "outputs/stage41_breakthrough/pytest_status.md",
     "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
+    "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json",
     "outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json",
     "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
     "outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json",
@@ -32,6 +33,8 @@
     "src/stage41_breakthrough.py",
     "src/stage41_ablation_coverage_audit.py",
     "run_stage41_ablation_coverage_audit.py",
+    "src/stage41_neural_architecture_ablation_audit.py",
+    "run_stage41_neural_architecture_ablation_audit.py",
     "src/stage41_fresh_confirmation.py",
     "src/stage41_bounded_neural_blend_dynamics.py",
     "src/stage41_composite_tail_evidence.py",
@@ -49,7 +52,7 @@
     "src/stage41_dynamic_shape_meta_policy.py",
     "src/stage41_calibrated_shape_meta_policy.py"
   ],
-  "package_input_hash": "dda9bf0c4f803a14657d10f578d06253cca6c2b5496e192fe447f37444163134",
+  "package_input_hash": "b67d88b23a6ea71cf1898203d9154ab5b9ac8caecb847a902d6abb9b511511a5",
   "gates_passed": 41,
   "gates_total": 41,
   "current_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
@@ -1455,7 +1458,8 @@
     "gate": true,
     "missing": [],
     "partial": [],
-    "cross_protocol_limitations": [
+    "cross_protocol_limitations": [],
+    "same_protocol_negative_architecture_evidence": [
       "no_jepa",
       "no_transformer"
     ],
@@ -1587,11 +1591,97 @@
         "interpretation": "Interaction/group-consistency features have explicit ablations and are necessary for guarded deployment; without them raw neural remains less safe."
       },
       "no_jepa": {
-        "status": "complete_but_cross_protocol",
-        "source": "stage41_jepa_deployment_decision + stage30_m3w_verified/retrained_ablation_fresh",
-        "evidence_type": "fresh JEPA disable decision plus cached/fresh Stage30 no-JEPA ablation",
+        "status": "complete_with_same_protocol_negative_evidence",
+        "source": "stage41_jepa_deployment_decision + stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh",
+        "evidence_type": "fresh JEPA disable decision plus same-protocol Stage41 pure-Transformer negative attempts",
         "jepa_decision": "disable_jepa_in_deployable_path",
         "deployable_positive_attempt_count": 0,
+        "same_protocol_no_jepa": {
+          "status": "same_protocol_negative_transformer_only_attempts",
+          "interpretation": "Pure Transformer/no-JEPA Stage41 attempts were run in the same external protocol and were negative or fallback-only; current positive deployable evidence is protected endpoint neural dynamics, not a pure Transformer claim.",
+          "attempts": {
+            "attempted": true,
+            "candidate_count": 5,
+            "best_candidate": "Stage41_conformal_safety_head_transformer",
+            "best": {
+              "rows": 34777,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0,
+              "positive_domain_count": 0,
+              "deployable": false,
+              "status": "safe_fallback_only_no_lift"
+            },
+            "any_deployable": false,
+            "safe_fallback_only_count": 1,
+            "negative_or_unsafe_count": 4,
+            "candidates": {
+              "Stage41_causal_transformer_dynamics": {
+                "rows": 34777,
+                "all_improvement": -0.018455516450759157,
+                "t50_improvement": -0.006069423696344778,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": -0.014993139507399,
+                "easy_degradation": 0.02154209705707366,
+                "switch_rate": 0.019984472496190012,
+                "positive_domain_count": 0,
+                "deployable": false,
+                "status": "negative_or_unsafe"
+              },
+              "Stage41_baseline_relative_transformer": {
+                "rows": 34777,
+                "all_improvement": -0.019314045639318156,
+                "t50_improvement": 0.0,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": -0.017516999548495393,
+                "easy_degradation": 0.10228475494964284,
+                "switch_rate": 0.019984472496190012,
+                "positive_domain_count": 0,
+                "deployable": false,
+                "status": "negative_or_unsafe"
+              },
+              "Stage41_t50_hard_curriculum_transformer": {
+                "rows": 34777,
+                "all_improvement": -0.020421560585158538,
+                "t50_improvement": -0.0011720986972525438,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": -0.01796851058798965,
+                "easy_degradation": 0.06925183667543955,
+                "switch_rate": 0.019984472496190012,
+                "positive_domain_count": 0,
+                "deployable": false,
+                "status": "negative_or_unsafe"
+              },
+              "Stage41_conformal_safety_head_transformer": {
+                "rows": 34777,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.0,
+                "positive_domain_count": 0,
+                "deployable": false,
+                "status": "safe_fallback_only_no_lift"
+              },
+              "Stage41_long_horizon_t100_curriculum": {
+                "rows": 34777,
+                "all_improvement": -2.2213002345505828e-05,
+                "t50_improvement": 0.0,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": -2.3746514975497846e-05,
+                "easy_degradation": 0.0,
+                "switch_rate": 2.8754636685165482e-05,
+                "positive_domain_count": 0,
+                "deployable": false,
+                "status": "negative_or_unsafe"
+              }
+            }
+          }
+        },
         "stage30_no_jepa_summary": {
           "source": "fresh_run",
           "seeds": [
@@ -1630,12 +1720,12 @@
             "ci_high": 0.05000000000000002
           }
         },
-        "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage30 provides no-JEPA numerical ablation; Stage41 external JEPA attempts are negative diagnostics."
+        "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage41 now also records same-protocol pure-Transformer/no-JEPA attempts as negative or fallback-only, so the current positive path is protected endpoint neural dynamics rather than JEPA/Transformer purity."
       },
       "no_transformer": {
-        "status": "complete_but_cross_protocol",
-        "source": "stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
-        "evidence_type": "cross-protocol ablation/diagnostic",
+        "status": "complete_with_same_protocol_negative_evidence",
+        "source": "stage41_neural_architecture_ablation_audit + stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
+        "evidence_type": "same-protocol JEPA-only negative attempts plus historical cross-protocol ablation",
         "stage30_no_transformer_summary": {
           "source": "fresh_run",
           "seeds": [
@@ -1672,6 +1762,44 @@
             "std": 8.498374721940739e-18,
             "ci_low": 0.05,
             "ci_high": 0.05000000000000002
+          }
+        },
+        "same_protocol_no_transformer": {
+          "status": "same_protocol_negative_jepa_only_attempts",
+          "interpretation": "JEPA-only/no-Transformer Stage41 attempts were run in the same external protocol and were negative; JEPA remains disabled from the deployable path.",
+          "attempts": {
+            "attempted": true,
+            "candidate_count": 1,
+            "best_candidate": "Stage41_jepa_auxiliary_representation",
+            "best": {
+              "rows": 34777,
+              "all_improvement": -0.026777069471576986,
+              "t50_improvement": -0.015065713704299988,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": -0.024300942834727834,
+              "easy_degradation": 0.026903930506348317,
+              "switch_rate": 0.019984472496190012,
+              "positive_domain_count": 0,
+              "deployable": false,
+              "status": "negative_or_unsafe"
+            },
+            "any_deployable": false,
+            "safe_fallback_only_count": 0,
+            "negative_or_unsafe_count": 1,
+            "candidates": {
+              "Stage41_jepa_auxiliary_representation": {
+                "rows": 34777,
+                "all_improvement": -0.026777069471576986,
+                "t50_improvement": -0.015065713704299988,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": -0.024300942834727834,
+                "easy_degradation": 0.026903930506348317,
+                "switch_rate": 0.019984472496190012,
+                "positive_domain_count": 0,
+                "deployable": false,
+                "status": "negative_or_unsafe"
+              }
+            }
           }
         },
         "stage41_jepa_only_attempts": [
@@ -1735,7 +1863,7 @@
             "notes": "JEPA is representation-only; no latent generative rollout. Stage39 failure AUROC lift is negative."
           }
         ],
-        "interpretation": "No-Transformer evidence is present but weaker than endpoint/full-waypoint bridge evidence because the strongest external protected path is not a pure Transformer-only deployment. Treat as ablation coverage, not a main claim."
+        "interpretation": "Stage41 same-protocol JEPA-only/no-Transformer attempts are negative or unsafe, so no-Transformer is covered as negative architecture evidence. This is not a claim that JEPA contributes to the deployable path; it is why JEPA remains diagnostic-only."
       },
       "no_fallback": {
         "status": "complete",
@@ -1755,13 +1883,39 @@
     },
     "claim_boundary": {
       "ablation_coverage_not_new_training": true,
-      "cross_protocol_ablations_are_limitations": [
-        "no_jepa",
-        "no_transformer"
-      ],
+      "cross_protocol_ablations_are_limitations": [],
       "not_true_3d": true,
       "not_foundation": true,
       "not_metric_or_seconds": true
+    }
+  },
+  "same_protocol_neural_architecture_ablation": {
+    "gate": true,
+    "best_protected_architecture": "Stage41_fresh_self_gated_endpoint_candidate",
+    "best_protected_architecture_metrics": {
+      "rows": 55528,
+      "all_improvement": 0.41964214194307703,
+      "t50_improvement": 0.4061979981406123,
+      "t100_improvement": 0.45728888926366984,
+      "hard_failure_improvement": 0.43608295876101655,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.5084281803774672,
+      "positive_domain_count": 3,
+      "deployable": true,
+      "status": "deployable_positive"
+    },
+    "transformer_only_deployable": false,
+    "jepa_only_deployable": false,
+    "hybrid_jepa_transformer_deployable": false,
+    "mixture_selector_deployable": false,
+    "claim_boundary": {
+      "not_true_3d": true,
+      "not_foundation": true,
+      "not_metric_or_seconds": true,
+      "same_protocol_architecture_audit_not_new_training": true,
+      "jepa_transformer_hybrid_positive_contribution_not_proven": true,
+      "protected_endpoint_neural_candidate_is_current_positive_neural_evidence": true,
+      "ungated_neural_still_not_deployable": true
     }
   },
   "jepa_deployment_decision": "disable_jepa_in_deployable_path",

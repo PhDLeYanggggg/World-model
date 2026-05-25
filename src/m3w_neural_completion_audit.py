@@ -88,6 +88,7 @@ def build_completion_audit() -> dict[str, Any]:
     endpoint_to_full = read_json("outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json", {})
     endpoint_to_full_stats = read_json("outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json", {})
     ablation_coverage = read_json("outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json", {})
+    architecture_ablation = read_json("outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json", {})
     learned_shape = read_json("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json", {})
     shape_gain = read_json("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json", {})
     shape_composer = read_json("outputs/stage41_domain_local/stage41_shape_policy_composer.json", {})
@@ -296,6 +297,7 @@ def build_completion_audit() -> dict[str, Any]:
     endpoint_to_full_stats_gate = bool(endpoint_to_full_stats.get("two_domain_statistical_gate"))
     endpoint_to_full_stats_positive_domains = list(endpoint_to_full_stats.get("positive_domains") or [])
     ablation_coverage_gate = bool(ablation_coverage.get("coverage_gate"))
+    architecture_ablation_gate = bool(architecture_ablation.get("same_protocol_architecture_ablation_gate"))
     learned_shape_gate = bool(learned_shape.get("two_domain_learned_shape_gate"))
     shape_gain_gate = bool(shape_gain.get("two_domain_gain_gate"))
     shape_composer_gate = bool(shape_composer.get("two_domain_composer_gate"))
@@ -612,7 +614,13 @@ def build_completion_audit() -> dict[str, Any]:
             "requirement": "Stage41 required ablation coverage matrix complete",
             "status": _status(ablation_coverage_gate, partial=bool(ablation_coverage)),
             "evidence": "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
-            "note": "Covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback. no-JEPA and no-Transformer are explicitly marked as cross-protocol limitations rather than overclaimed same-protocol causal proof.",
+            "note": "Covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback. no-JEPA and no-Transformer now have same-protocol negative architecture evidence rather than cross-protocol-only support.",
+        },
+        {
+            "requirement": "same-protocol neural architecture ablation explains JEPA/Transformer/Hybrid failures",
+            "status": _status(architecture_ablation_gate, partial=bool(architecture_ablation)),
+            "evidence": "outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json",
+            "note": "Pure Transformer/no-JEPA, JEPA-only/no-Transformer, and JEPA+Transformer hybrid attempts are audited under the same Stage41 external protocol and are negative or fallback-only. The positive path is protected endpoint neural dynamics under the Stage37/teacher safety floor.",
         },
         {
             "requirement": "learned waypoint-shape residual/meta-policy positive on at least two domains",
@@ -1280,6 +1288,7 @@ def build_completion_audit() -> dict[str, Any]:
             "missing": ablation_coverage.get("missing"),
             "partial": ablation_coverage.get("partial"),
             "cross_protocol_limitations": ablation_coverage.get("cross_protocol_limitations"),
+            "same_protocol_negative_architecture_evidence": ablation_coverage.get("same_protocol_negative_architecture_evidence"),
             "requirements": {
                 name: {
                     "status": row.get("status"),
@@ -1289,6 +1298,16 @@ def build_completion_audit() -> dict[str, Any]:
                 for name, row in (ablation_coverage.get("requirements") or {}).items()
             },
             "claim_boundary": ablation_coverage.get("claim_boundary"),
+        },
+        "same_protocol_neural_architecture_ablation_summary": {
+            "gate": architecture_ablation_gate,
+            "best_protected_architecture": architecture_ablation.get("best_protected_architecture"),
+            "best_protected_architecture_metrics": architecture_ablation.get("best_protected_architecture_metrics"),
+            "transformer_only_deployable": architecture_ablation.get("transformer_only_deployable"),
+            "jepa_only_deployable": architecture_ablation.get("jepa_only_deployable"),
+            "hybrid_jepa_transformer_deployable": architecture_ablation.get("hybrid_jepa_transformer_deployable"),
+            "mixture_selector_deployable": architecture_ablation.get("mixture_selector_deployable"),
+            "claim_boundary": architecture_ablation.get("claim_boundary"),
         },
         "learned_waypoint_shape_summary": {
             "two_domain_learned_shape_gate": learned_shape_gate,
@@ -1733,6 +1752,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     endpoint_to_full_summary = audit.get("endpoint_to_full_trajectory_bridge_summary", {})
     endpoint_to_full_stats_summary = audit.get("endpoint_to_full_statistical_evidence_summary", {})
     ablation_coverage_summary = audit.get("required_ablation_coverage_summary", {})
+    architecture_ablation_summary = audit.get("same_protocol_neural_architecture_ablation_summary", {})
     learned_shape_summary = audit.get("learned_waypoint_shape_summary", {})
     composite_deployable_state = bool(
         composite_summary.get("evidence_pass")
@@ -2022,6 +2042,11 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"endpoint_to_full_statistical_domain_lows = {endpoint_to_full_stats_summary.get('domain_lows')}",
             f"required_ablation_coverage_gate = {ablation_coverage_summary.get('coverage_gate')}",
             f"required_ablation_cross_protocol_limitations = {ablation_coverage_summary.get('cross_protocol_limitations')}",
+            f"same_protocol_architecture_ablation_gate = {architecture_ablation_summary.get('gate')}",
+            f"same_protocol_best_protected_architecture = {architecture_ablation_summary.get('best_protected_architecture')}",
+            f"same_protocol_transformer_only_deployable = {architecture_ablation_summary.get('transformer_only_deployable')}",
+            f"same_protocol_jepa_only_deployable = {architecture_ablation_summary.get('jepa_only_deployable')}",
+            f"same_protocol_hybrid_deployable = {architecture_ablation_summary.get('hybrid_jepa_transformer_deployable')}",
             f"learned_shape_calibrated_meta_gate = {learned_shape_summary.get('two_domain_calibrated_meta_gate')}",
             f"learned_shape_positive_domains = {learned_shape_summary.get('positive_domains')}",
             f"learned_shape_claim = {learned_shape_summary.get('caveat')}",
@@ -2154,6 +2179,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json")
     generated.add("outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.md")
     generated.add("outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json")
+    generated.add("outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.md")
+    generated.add("outputs/m3w_neural_v1/neural_architecture_ablation_m3w_neural_v1.json")
     generated.add("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md")
     generated.add("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json")
     generated.add("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md")
@@ -2486,6 +2513,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "endpoint_to_full_trajectory_bridge_summary": endpoint_to_full_summary,
         "endpoint_to_full_statistical_evidence_summary": endpoint_to_full_stats_summary,
         "required_ablation_coverage_summary": ablation_coverage_summary,
+        "same_protocol_neural_architecture_ablation_summary": architecture_ablation_summary,
         "learned_waypoint_shape_summary": learned_shape_summary,
         "stage5c_executed": False,
         "smc_enabled": False,

@@ -48,7 +48,10 @@
 - calibrated learned-shape meta-policy gate: `True`
 - calibrated learned-shape positive domains: `['ETH_UCY', 'TrajNet']`
 - required ablation coverage gate: `True`
-- required ablation cross-protocol limitations: `['no_jepa', 'no_transformer']`
+- required ablation cross-protocol limitations: `[]`
+- same-protocol architecture ablation gate: `True`
+- same-protocol best protected architecture: `Stage41_fresh_self_gated_endpoint_candidate`
+- same-protocol transformer-only / JEPA-only / hybrid deployable: `False` / `False` / `False`
 - JEPA deployable path: `disable_jepa_in_deployable_path`
 - fixed-prior source switch beats fixed composer: `False`
 - residual source-switch oracle headroom: `False`
