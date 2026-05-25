@@ -31,6 +31,8 @@ SOURCE_PATHS = [
     SPLIT_DIR / "report.json",
     SPLIT_DIR / "stage41_source_level_validation_repair.json",
     SPLIT_DIR / "stage41_pure_ucy_source_validation.json",
+    SPLIT_DIR / "stage41_pure_ucy_neural_dataset.json",
+    SPLIT_DIR / "stage41_pure_ucy_neural_retrain.json",
     DOMAIN_LOCAL_DIR / "stage41_fixed_prior_source_switch_policy.json",
     DOMAIN_LOCAL_DIR / "stage41_fixed_prior_oracle_audit.json",
     Path("src/stage41_breakthrough.py"),
@@ -40,6 +42,7 @@ SOURCE_PATHS = [
     Path("src/stage41_composite_tail_multiseed.py"),
     Path("src/stage41_all_agent_composite_world_state.py"),
     Path("src/stage41_pure_ucy_source_validation.py"),
+    Path("src/stage41_pure_ucy_neural_retrain.py"),
 ]
 
 CURRENT_FACTS = [
@@ -142,6 +145,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
     fixed_prior_oracle = _safe_read(DOMAIN_LOCAL_DIR / "stage41_fixed_prior_oracle_audit.json")
     source_repair = _safe_read(SPLIT_DIR / "stage41_source_level_validation_repair.json")
     pure_ucy = _safe_read(SPLIT_DIR / "stage41_pure_ucy_source_validation.json")
+    pure_ucy_neural = _safe_read(SPLIT_DIR / "stage41_pure_ucy_neural_retrain.json")
     split_report = _safe_read(SPLIT_DIR / "report.json")
     seq2seq = _safe_read(STAGE41_DIR / "stage41_seq2seq_dataset.json")
     all_agent = _safe_read(STAGE41_DIR / "stage41_all_agent_dataset.json")
@@ -229,6 +233,18 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "target_results": pure_ucy.get("target_results", {}),
             "caveat": pure_ucy.get("caveat"),
         },
+        "strict_pure_ucy_neural_retrain": {
+            "gate": pure_ucy_neural.get("strict_pure_ucy_only_neural_retrain_select_test_gate"),
+            "source": pure_ucy_neural.get("source"),
+            "protocol": pure_ucy_neural.get("protocol"),
+            "best_trial": pure_ucy_neural.get("best_trial"),
+            "best_mode": pure_ucy_neural.get("best_mode"),
+            "best_metrics": pure_ucy_neural.get("best_metrics", {}),
+            "best_policy": pure_ucy_neural.get("best_policy", {}),
+            "remaining_blocker": pure_ucy_neural.get("remaining_blocker"),
+            "no_leakage": pure_ucy_neural.get("no_leakage", {}),
+            "interpretation": "Strict pure-UCY neural retrain/select/test was attempted with source-only train/val/test. It is negative deployability evidence: raw neural residual has some signal, but validation-selected safe deployment falls back because source-shift/easy-safety is not reliable.",
+        },
         "source_level_validation_repair": {
             "pass": source_repair.get("source_level_validation_repair_pass"),
             "pure_ucy_source_level_gate": source_repair.get("pure_ucy_source_level_gate"),
@@ -305,6 +321,9 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         _metric_row("all-agent composite multi-agent ADE all/t50", f"{_fmt_pct((all_agent_composite.get('multi_agent_ade_metrics') or {}).get('all_improvement'))} / {_fmt_pct((all_agent_composite.get('multi_agent_ade_metrics') or {}).get('t50_improvement'))}", "same-frame multi-agent rows"),
         _metric_row("pure UCY source-heldout gate", pure_ucy.get("pure_ucy_source_heldout_gate"), "required for UCY held-out support"),
         _metric_row("pure UCY-only retrain/select/test gate", pure_ucy.get("pure_ucy_three_way_train_val_test_gate"), "reported blocker, not claimed"),
+        _metric_row("strict pure UCY neural retrain gate", pure_ucy_neural.get("strict_pure_ucy_only_neural_retrain_select_test_gate"), "negative deployability audit, not claimed"),
+        _metric_row("strict pure UCY neural best trial/mode", f"{pure_ucy_neural.get('best_trial')} / {pure_ucy_neural.get('best_mode')}", "source-only neural retrain protocol"),
+        _metric_row("strict pure UCY neural all/t50/hard/easy", f"{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('all_improvement'))} / {_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('t50_improvement'))} / {_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('hard_failure_improvement'))} / {_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('easy_degradation'))}", "selected safe policy falls back if not reliable"),
         _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
         _metric_row("fixed-prior source switch beats fixed composer", fixed_prior_switch.get("two_domain_fixed_prior_beats_fixed_gate"), "negative branch audit"),
         _metric_row("residual source-switch oracle headroom", fixed_prior_oracle.get("two_domain_residual_oracle_headroom"), "negative branch audit"),
@@ -352,6 +371,10 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- all-agent composite ADE all/t+50/t+100: `{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('all_improvement'))}` / `{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('t50_improvement'))}` / `{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('t100_improvement'))}`",
         f"- all-agent composite FDE all/t+50: `{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('all_improvement'))}` / `{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('t50_improvement'))}`",
         f"- strict pure UCY-only retrain/select/test gate: `{pure_ucy.get('pure_ucy_three_way_train_val_test_gate')}`",
+        f"- strict pure UCY neural retrain gate: `{pure_ucy_neural.get('strict_pure_ucy_only_neural_retrain_select_test_gate')}`",
+        f"- strict pure UCY neural best trial/mode: `{pure_ucy_neural.get('best_trial')}` / `{pure_ucy_neural.get('best_mode')}`",
+        f"- strict pure UCY neural best metrics all/t+50/hard/easy: `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('all_improvement'))}` / `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('t50_improvement'))}` / `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('hard_failure_improvement'))}` / `{_fmt_pct((pure_ucy_neural.get('best_metrics') or {}).get('easy_degradation'))}`",
+        f"- strict pure UCY neural blocker: `{pure_ucy_neural.get('remaining_blocker')}`",
         f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
         f"- fixed-prior source switch beats fixed composer: `{fixed_prior_switch.get('two_domain_fixed_prior_beats_fixed_gate')}`",
         f"- residual source-switch oracle headroom: `{fixed_prior_oracle.get('two_domain_residual_oracle_headroom')}`",
@@ -369,9 +392,9 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "",
         "## Current Best Deployable Answer",
         "",
-        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement; stricter pure UCY-only retrain/select/test evidence would further strengthen it. Stage37 remains the explicit safety floor.",
+        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement. The stricter pure UCY-only neural retrain/select/test audit has now been attempted and failed deployability because source-shift/easy-safety was not reliable, so Stage37 remains the explicit safety floor.",
         "",
-        "Recent negative source-switch audits show that residual source selection around the fixed horizon composer has too little oracle headroom to justify more trials without new causal features or scene/domain context.",
+        "Recent negative source-switch and strict pure-UCY neural retrain audits show that residual source selection and source-only neural retraining are not the next useful deployment path without new causal features, stronger scene/domain context, or more independent UCY-like validation data.",
     ]
     write_md(OUT_DIR / "report_m3w_neural_v1.md", report_lines)
 
@@ -394,7 +417,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- `reproducibility_m3w_neural_v1.md` — rerun commands.",
             "- `paper_gap_m3w_neural_v1.md` — what is still missing before stronger publication claims.",
             "",
-            "Latest package inputs include the negative fixed-composer source-switch audits, so the frozen package records both the successful composite-tail path and the exhausted residual source-switch branch.",
+            "Latest package inputs include the negative fixed-composer source-switch audits and the negative strict pure-UCY neural retrain audit, so the frozen package records both the successful composite-tail path and the exhausted source-switch / source-only retrain branches.",
         ],
     )
 
@@ -465,6 +488,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_composite_tail_evidence.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_composite_tail_multiseed.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_source_validation.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_retrain.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_geometry_audit.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_gates.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_freeze_m3w_neural_v1.py",
@@ -495,13 +519,13 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- Foundation-scale world model.",
             "- Seconds-level long-horizon prediction.",
             "- Ungated neural dynamics safe replacement.",
-            "- Pure UCY-only retrain/select/test evidence.",
+            "- Pure UCY-only neural retrain/select/test deployability: it has now been attempted and is negative because source-shift/easy-safety was not reliable.",
             "- Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.",
             "- Residual source-switching over the fixed composer as a deployable improvement path.",
             "",
             "## Shortest Next Path",
             "",
-            "1. Run a stricter pure UCY-only retrain/select/test protocol if another independent UCY-like source becomes available.",
+            "1. Add independent UCY-like validation sources or stronger scene/domain causal features before retrying strict pure UCY-only neural retrain/select/test.",
             "2. Strengthen the protected all-agent full-waypoint rollout with stricter source-heldout retrain/select/test evidence and safer no-fallback neural rollout research.",
             "3. Complete homography/FPS/scale audit before any physical-world claims.",
             "4. Add genuinely new scene/domain context before retrying fixed-composer residual source-switching.",
@@ -537,6 +561,15 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "positive_external_domains": positive_domains,
             "pure_ucy_source_heldout_gate": pure_ucy.get("pure_ucy_source_heldout_gate"),
             "pure_ucy_three_way_train_val_test_gate": pure_ucy.get("pure_ucy_three_way_train_val_test_gate"),
+            "strict_pure_ucy_neural_retrain_gate": pure_ucy_neural.get("strict_pure_ucy_only_neural_retrain_select_test_gate"),
+            "strict_pure_ucy_neural_best_trial": pure_ucy_neural.get("best_trial"),
+            "strict_pure_ucy_neural_best_mode": pure_ucy_neural.get("best_mode"),
+            "strict_pure_ucy_neural_all_improvement": (pure_ucy_neural.get("best_metrics") or {}).get("all_improvement"),
+            "strict_pure_ucy_neural_t50_improvement": (pure_ucy_neural.get("best_metrics") or {}).get("t50_improvement"),
+            "strict_pure_ucy_neural_t100_diagnostic": (pure_ucy_neural.get("best_metrics") or {}).get("t100_improvement"),
+            "strict_pure_ucy_neural_hard_failure_improvement": (pure_ucy_neural.get("best_metrics") or {}).get("hard_failure_improvement"),
+            "strict_pure_ucy_neural_easy_degradation": (pure_ucy_neural.get("best_metrics") or {}).get("easy_degradation"),
+            "strict_pure_ucy_neural_remaining_blocker": pure_ucy_neural.get("remaining_blocker"),
             "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
             "composite_tail_multiseed_pass": composite_multiseed.get("replication_pass"),
             "strict_delta_vs_teacher_repair_pass": composite_multiseed.get("strict_delta_vs_teacher_repair_pass"),
@@ -580,6 +613,14 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"positive_external_domains = {summary.get('positive_external_domains')}",
         f"pure_ucy_source_heldout_gate = {summary.get('pure_ucy_source_heldout_gate')}",
         f"pure_ucy_three_way_train_val_test_gate = {summary.get('pure_ucy_three_way_train_val_test_gate')}",
+        f"strict_pure_ucy_neural_retrain_gate = {summary.get('strict_pure_ucy_neural_retrain_gate')}",
+        f"strict_pure_ucy_neural_best_trial = {summary.get('strict_pure_ucy_neural_best_trial')}",
+        f"strict_pure_ucy_neural_best_mode = {summary.get('strict_pure_ucy_neural_best_mode')}",
+        f"strict_pure_ucy_neural_all_improvement = {summary.get('strict_pure_ucy_neural_all_improvement')}",
+        f"strict_pure_ucy_neural_t50_improvement = {summary.get('strict_pure_ucy_neural_t50_improvement')}",
+        f"strict_pure_ucy_neural_hard_failure_improvement = {summary.get('strict_pure_ucy_neural_hard_failure_improvement')}",
+        f"strict_pure_ucy_neural_easy_degradation = {summary.get('strict_pure_ucy_neural_easy_degradation')}",
+        f"strict_pure_ucy_neural_remaining_blocker = {summary.get('strict_pure_ucy_neural_remaining_blocker')}",
         f"composite_tail_evidence_pass = {summary.get('composite_tail_evidence_pass')}",
         f"composite_tail_multiseed_pass = {summary.get('composite_tail_multiseed_pass')}",
         f"all_agent_composite_world_state_pass = {summary.get('all_agent_composite_world_state_pass')}",
@@ -603,7 +644,7 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
     state.update(
         {
             "current_stage": "m3w_neural_v1_stage41_composite_tail_package",
-            "current_verdict": "m3w_neural_v1_composite_tail_candidate_bootstrap_multiseed_pure_ucy_supported_not_complete",
+            "current_verdict": "m3w_neural_v1_composite_tail_candidate_bootstrap_multiseed_pure_ucy_supported_strict_neural_attempted_not_deployable_not_complete",
             "true_3d_world_model": False,
             "large_scale_foundation_world_model": False,
             "metric_claim_allowed": False,
@@ -630,6 +671,15 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "positive_external_domains": summary.get("positive_external_domains"),
         "pure_ucy_source_heldout_gate": summary.get("pure_ucy_source_heldout_gate"),
         "pure_ucy_three_way_train_val_test_gate": summary.get("pure_ucy_three_way_train_val_test_gate"),
+        "strict_pure_ucy_neural_retrain_gate": summary.get("strict_pure_ucy_neural_retrain_gate"),
+        "strict_pure_ucy_neural_best_trial": summary.get("strict_pure_ucy_neural_best_trial"),
+        "strict_pure_ucy_neural_best_mode": summary.get("strict_pure_ucy_neural_best_mode"),
+        "strict_pure_ucy_neural_all_improvement": summary.get("strict_pure_ucy_neural_all_improvement"),
+        "strict_pure_ucy_neural_t50_improvement": summary.get("strict_pure_ucy_neural_t50_improvement"),
+        "strict_pure_ucy_neural_t100_diagnostic": summary.get("strict_pure_ucy_neural_t100_diagnostic"),
+        "strict_pure_ucy_neural_hard_failure_improvement": summary.get("strict_pure_ucy_neural_hard_failure_improvement"),
+        "strict_pure_ucy_neural_easy_degradation": summary.get("strict_pure_ucy_neural_easy_degradation"),
+        "strict_pure_ucy_neural_remaining_blocker": summary.get("strict_pure_ucy_neural_remaining_blocker"),
         "composite_tail_evidence_pass": summary.get("composite_tail_evidence_pass"),
         "composite_tail_multiseed_pass": summary.get("composite_tail_multiseed_pass"),
         "strict_delta_vs_teacher_repair_pass": summary.get("strict_delta_vs_teacher_repair_pass"),

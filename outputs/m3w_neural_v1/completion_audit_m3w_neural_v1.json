@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain attempted but not deployable)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -964,6 +964,141 @@
       "alpha_mean": 0.20152930222059195
     },
     "remaining_blocker": "The policy/head is trained and selected only on UCY train/val rows, but the underlying neural proposal, Stage37 floor, and teacher-repaired switch features are inherited from mixed external training. A full strict pure-UCY neural world-model retrain is still not complete."
+  },
+  "strict_pure_ucy_neural_retrain_summary": {
+    "strict_pure_ucy_only_neural_retrain_select_test_gate": false,
+    "source": "fresh_run",
+    "protocol": "strict_pure_ucy_only_neural_retrain_select_test",
+    "best_trial": "pure_ucy_transformer",
+    "best_mode": "candidate_switch",
+    "best_metrics": {
+      "rows": 35441,
+      "all_improvement": 0.0,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.0,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": 0.0,
+      "switch_rate": 0.0,
+      "regret_to_oracle": 0.1983913141710111,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        }
+      },
+      "neural_endpoint_without_fallback": {
+        "rows": 35441,
+        "all_improvement": 0.09230014952008259,
+        "t10_improvement": 0.2945080639312109,
+        "t25_improvement": -0.31497445367685795,
+        "t50_improvement": 0.21303079289629967,
+        "t100_improvement": 0.06383108641982482,
+        "hard_failure_improvement": 0.1499403484153744,
+        "easy_degradation": 1.6257516010806778,
+        "harm_over_fallback": -0.07364632580896721,
+        "switch_rate": 0.0,
+        "regret_to_oracle": 0.12474498836204391,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": 0.04621994621154035,
+            "t50_improvement": 0.1871286638125077,
+            "t100_improvement": 0.0026131006895112607,
+            "hard_failure_improvement": 0.11285089841042761,
+            "easy_degradation": 2.3738767004916275,
+            "switch_rate": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.21280842523236154,
+            "t50_improvement": 0.2774538691415518,
+            "t100_improvement": 0.2389903817823379,
+            "hard_failure_improvement": 0.2502984382542832,
+            "easy_degradation": 0.39570304933311595,
+            "switch_rate": 0.0
+          }
+        }
+      },
+      "neural_candidate_without_fallback": {
+        "rows": 35441,
+        "all_improvement": -4.84063232397299,
+        "t10_improvement": -5.0523001485536,
+        "t25_improvement": -5.747087464949059,
+        "t50_improvement": -2.892711154341845,
+        "t100_improvement": -6.057235462451089,
+        "hard_failure_improvement": -4.813309601343785,
+        "easy_degradation": 6.349163978769179,
+        "harm_over_fallback": 3.8623424458826823,
+        "switch_rate": 0.0,
+        "regret_to_oracle": 4.060733760053693,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": -5.741161716503469,
+            "t50_improvement": -3.169027342944509,
+            "t100_improvement": -7.909864246126901,
+            "hard_failure_improvement": -5.735167095468177,
+            "easy_degradation": 7.978595522412968,
+            "switch_rate": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": -2.485580988903105,
+            "t50_improvement": -2.20546498903392,
+            "t100_improvement": -0.7564215195271502,
+            "hard_failure_improvement": -2.318911404507015,
+            "easy_degradation": 3.670093443628808,
+            "switch_rate": 0.0
+          }
+        }
+      },
+      "selected_candidate_distribution": {
+        "0": 35441
+      },
+      "latent_variance": 0.12380863726139069
+    },
+    "best_policy": {
+      "gain_threshold": 0.0,
+      "gain_prob": 0.0,
+      "harm_prob": 0.1,
+      "physical_prob": 0.0,
+      "max_switch": 0.0,
+      "val_score": 0.0
+    },
+    "remaining_blocker": "Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.",
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "candidate_fde_input": false,
+      "candidate_fde_label_only": true,
+      "train_only_floor_selection": true,
+      "train_only_normalization_statistics": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "validation_policy_selection_only": true,
+      "test_threshold_tuning": false,
+      "mixed_external_neural_proposal_used": false,
+      "mixed_external_floor_used": false
+    }
   },
   "domain_local_neural_endpoint_retrain_summary": {
     "two_domain_endpoint_gate": true,
@@ -4120,7 +4255,13 @@
       "requirement": "pure UCY train/val/test policy-head calibration",
       "status": "complete",
       "evidence": "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
-      "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying neural proposal and floor are still mixed-external trained, so strict pure-UCY neural retrain remains false."
+      "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying proposal/floor in that protocol is mixed-external trained; the separate strict pure-UCY neural retrain audit has now been attempted and is negative for deployability."
+    },
+    {
+      "requirement": "strict pure UCY-only neural retrain/select/test attempted",
+      "status": "partial",
+      "evidence": "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
+      "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The bounded endpoint residual has positive neural signal but fails deployment because UCY test easy degradation exceeds the safety budget, so the selected safe policy falls back."
     },
     {
       "requirement": "domain-local neural endpoint retrain positive on at least two external domains",
@@ -4181,693 +4322,8 @@
     }
   ],
   "next_highest_value_actions": [
-    "return_to_full_trajectory_group_world_state_modeling_or_add_new_scene_domain_context; do_not_spend_more_trials_on_fixed_composer_residual_source_switch_without_new headroom",
-    "Build source-specific causal features or per-domain/t50 priors before attempting another learned source-switch policy over the fixed composer.",
-    "Train a learned waypoint-shape model to match or exceed the endpoint-to-full linear bridge on ETH_UCY and TrajNet.",
-    "Bootstrap or multiseed-confirm the endpoint-to-full bridge before promoting it beyond candidate evidence.",
-    "Keep Stage5C/SMC disabled and keep metric/seconds/true-3D/foundation claims false."
-  ],
-  "domain_local_full_trajectory_repair_summary": {
-    "two_domain_repair_gate": false,
-    "positive_domains": [
-      "TrajNet"
-    ],
-    "positive_domain_count": 1,
-    "domain_summaries": {
-      "ETH_UCY": {
-        "repair_gate": false,
-        "policy_family": "gain_calibrated",
-        "deployment_variant": "long_horizon_only",
-        "trajectory_mode": "blend_25_raw_75_endpoint",
-        "all_improvement": 0.011436216574168045,
-        "t50_improvement": 0.0,
-        "t100_improvement": 0.027826091852716672,
-        "hard_failure_improvement": 0.012286415999727573,
-        "easy_degradation": 0.030422051582583265,
-        "switch_rate": 0.020964441527354157,
-        "collision_delta_vs_floor_005": 0.001207306149472287
-      },
-      "TrajNet": {
-        "repair_gate": true,
-        "policy_family": "gain_calibrated",
-        "deployment_variant": "t50_only",
-        "trajectory_mode": "raw_waypoint",
-        "all_improvement": 0.002773658373583787,
-        "t50_improvement": 0.010928773473788844,
-        "t100_improvement": 0.0,
-        "hard_failure_improvement": 0.0031067454048834264,
-        "easy_degradation": 0.003963066360362033,
-        "switch_rate": 0.004878777318663812,
-        "collision_delta_vs_floor_005": -0.00045641259698764314
-      }
-    },
-    "failure_taxonomy": {
-      "ETH_UCY": {
-        "reasons": [
-          "t50_ade_not_positive",
-          "easy_degradation_over_2pct"
-        ],
-        "trajectory_mode": "blend_25_raw_75_endpoint",
-        "policy_family": "gain_calibrated",
-        "deployment_variant": "long_horizon_only",
-        "ade_all": 0.011436216574168045,
-        "ade_t50": 0.0,
-        "ade_t100": 0.027826091852716672,
-        "fde_all": 0.008311019616787152,
-        "fde_t50": 0.0,
-        "collision_delta_vs_floor_005": 0.001207306149472287
-      }
-    },
-    "no_leakage": {
-      "future_waypoints_input": false,
-      "future_waypoints_label_eval_only": true,
-      "future_endpoint_input": false,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "val_selected_policy": true,
-      "inference_switch_uses_hard_easy_labels": false,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "claim_boundary": {
-      "learned_full_waypoint_neural_dynamics": true,
-      "endpoint_linearized_repair_if_selected": true,
-      "all_active_agent_world_state_audit": true,
-      "latent_generative_rollout": false,
-      "metric_or_seconds_claim": false,
-      "true_3d": false,
-      "foundation_world_model": false
-    }
-  },
-  "latest_repair_status": "domain_local_full_trajectory_repair_one_domain_positive_two_domain_false",
-  "endpoint_to_full_trajectory_bridge_summary": {
-    "two_domain_endpoint_to_full_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "positive_domain_count": 2,
-    "domain_summaries": {
-      "ETH_UCY": {
-        "endpoint_to_full_trajectory_gate": true,
-        "variant": "all_horizons",
-        "min_sep": 0.05,
-        "all_improvement": 0.01569515982437708,
-        "t50_improvement": 0.001900902571733143,
-        "t100_improvement": 0.004314304188029139,
-        "hard_failure_improvement": 0.015473286009687448,
-        "easy_degradation": 0.0,
-        "switch_rate": 0.15445874618020186,
-        "multi_agent_all_improvement": 0.015862045506379263,
-        "multi_agent_t50_improvement": 0.0019217524294212751,
-        "collision_delta_vs_floor_005": -0.0014959945951163456
-      },
-      "TrajNet": {
-        "endpoint_to_full_trajectory_gate": true,
-        "variant": "all_horizons",
-        "min_sep": 0.05,
-        "all_improvement": 0.038025206221747654,
-        "t50_improvement": 0.02647590218373508,
-        "t100_improvement": 0.013800550192567762,
-        "hard_failure_improvement": 0.03906048059123168,
-        "easy_degradation": 0.0,
-        "switch_rate": 0.16460566089585052,
-        "multi_agent_all_improvement": 0.04040289734721991,
-        "multi_agent_t50_improvement": 0.02929173995488621,
-        "collision_delta_vs_floor_005": -0.0029078220412910305
-      }
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_endpoint_label_eval_only": true,
-      "future_waypoints_input": false,
-      "future_waypoints_label_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "val_selected_policy": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "claim_boundary": {
-      "endpoint_neural_dynamics": true,
-      "linear_waypoint_bridge": true,
-      "learned_full_waypoint_shape": false,
-      "latent_generative_rollout": false,
-      "metric_or_seconds_claim": false,
-      "true_3d": false,
-      "foundation_world_model": false
-    }
-  },
-  "latest_bridge_status": "two_domain_positive_endpoint_neural_to_actual_waypoint_bridge_not_learned_shape",
-  "learned_waypoint_shape_bridge_summary": {
-    "source": "fresh_run",
-    "report": "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
-    "two_domain_learned_shape_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "claim_boundary": {
-      "endpoint_neural_dynamics": true,
-      "learned_waypoint_shape_residual": true,
-      "stage37_or_floor_protected": true,
-      "latent_generative_rollout": false,
-      "metric_or_seconds_claim": false,
-      "true_3d": false,
-      "foundation_world_model": false
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_endpoint_label_eval_only": true,
-      "future_waypoints_input": false,
-      "future_waypoints_label_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "val_selected_policy": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "domain_summary": {
-      "ETH_UCY": {
-        "gate": true,
-        "all_improvement": 0.015700181822596138,
-        "t50_improvement": 0.001900902571733143,
-        "t100_improvement": 0.004328710539971414,
-        "hard_failure_improvement": 0.015478633818655996,
-        "easy_degradation": 0.0,
-        "shape_gain_vs_bridge_all": 5.1020761192566155e-06,
-        "shape_gain_vs_bridge_t50": 0.0,
-        "shape_gain_vs_bridge_t100": 1.4468774637288462e-05,
-        "shape_gain_vs_bridge_hard_failure": 5.43185765555787e-06,
-        "shape_switch_rate": 4.630058338735068e-05,
-        "collision_delta_vs_floor_005": -0.0014959945951163456,
-        "selected_mode": "all_waypoints",
-        "selected_horizons": "t100_only"
-      },
-      "TrajNet": {
-        "gate": true,
-        "all_improvement": 0.0382424875667583,
-        "t50_improvement": 0.02647590218373508,
-        "t100_improvement": 0.014508831312789572,
-        "hard_failure_improvement": 0.039298907023759044,
-        "easy_degradation": 0.0,
-        "shape_gain_vs_bridge_all": 0.00022587010222718806,
-        "shape_gain_vs_bridge_t50": 0.0,
-        "shape_gain_vs_bridge_t100": 0.0007181925728715344,
-        "shape_gain_vs_bridge_hard_failure": 0.0002481180425111251,
-        "shape_switch_rate": 0.0010992030777686177,
-        "collision_delta_vs_floor_005": -0.0029078220412910305,
-        "selected_mode": "intermediate_only",
-        "selected_horizons": "t100_only"
-      }
-    },
-    "interpretation": "Past-only waypoint-shape residual head passes a protected two-domain gate, but the learned-shape contribution is tiny and mostly t100/tail-specific; it is not an ungated learned full-waypoint dynamics replacement."
-  },
-  "last_validation": {
-    "command": "python3 -m pytest tests",
-    "result": "235 passed in 66.05s",
-    "source": "fresh_run"
-  },
-  "learned_shape_gain_gate_summary": {
-    "source": "fresh_run",
-    "report": "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md",
-    "two_domain_gain_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "delta_vs_previous_learned_shape": {
-      "ETH_UCY": {
-        "all": 0.0006741753759589297,
-        "t50": -0.00012552756048478386,
-        "t100": -5.8587849244506884e-05,
-        "hard_failure": 0.0006875123514856751,
-        "shape_switch_rate": 0.005880174090193537
-      },
-      "TrajNet": {
-        "all": -0.00010855197196757427,
-        "t50": 0.0004685025867524617,
-        "t100": -0.0007181925728715344,
-        "hard_failure": -0.00011924421395181906,
-        "shape_switch_rate": -0.00027480076944215437
-      }
-    },
-    "claim_boundary": {
-      "learned_shape_gain_harm_gate": true,
-      "learned_waypoint_shape_residual": true,
-      "protected_by_endpoint_bridge_or_floor": true,
-      "latent_generative_rollout": false,
-      "metric_or_seconds_claim": false,
-      "true_3d": false,
-      "foundation_world_model": false
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_endpoint_label_eval_only": true,
-      "future_waypoints_input": false,
-      "future_waypoints_label_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "val_selected_policy": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "interpretation": "Train-fitted shape gain/harm calibration expands ETH_UCY shape intervention and improves TrajNet t50 shape gain, but it is not a monotonic upgrade over the previous learned-shape bridge; next is a domain/horizon-specific shape-policy composer.",
-    "domain_summary": {
-      "ETH_UCY": {
-        "gate": true,
-        "all_improvement": 0.016363775908279754,
-        "t50_improvement": 0.0017756136269108103,
-        "t100_improvement": 0.0042703754565303065,
-        "hard_failure_improvement": 0.016155508094891968,
-        "easy_degradation": 0.0,
-        "shape_gain_vs_bridge_all": 0.0006792774520781864,
-        "shape_gain_vs_bridge_t50": -0.00012552756048478386,
-        "shape_gain_vs_bridge_t100": -4.411907460721842e-05,
-        "shape_gain_vs_bridge_hard_failure": 0.000692944209141233,
-        "shape_switch_rate": 0.005926474673580887,
-        "selected_mode": "all_waypoints",
-        "selected_horizons": "all_horizons",
-        "collision_delta_vs_floor_005": -0.0012547051442911017
-      },
-      "TrajNet": {
-        "gate": true,
-        "all_improvement": 0.03813806330591063,
-        "t50_improvement": 0.02693200074182789,
-        "t100_improvement": 0.013800550192567762,
-        "hard_failure_improvement": 0.03918432054611187,
-        "easy_degradation": 0.0,
-        "shape_gain_vs_bridge_all": 0.0001173181302596138,
-        "shape_gain_vs_bridge_t50": 0.0004685025867524617,
-        "shape_gain_vs_bridge_t100": 0.0,
-        "shape_gain_vs_bridge_hard_failure": 0.00012887382855930607,
-        "shape_switch_rate": 0.0008244023083264633,
-        "selected_mode": "all_waypoints",
-        "selected_horizons": "long_horizon",
-        "collision_delta_vs_floor_005": -0.0029078220412910305
-      }
-    }
-  },
-  "shape_policy_composer_summary": {
-    "source": "fresh_run",
-    "protocol": "domain_horizon_shape_policy_composer",
-    "two_domain_composer_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "stage5c_executed": false,
-    "smc_enabled": false,
-    "metric_or_seconds_claim": false,
-    "domains": {
-      "ETH_UCY": {
-        "status": "ok",
-        "policy": {
-          "short": "gain_gate",
-          "t50": "bridge",
-          "t100": "old_shape"
-        },
-        "all": 0.016413900592989306,
-        "t50": 0.001900902571733143,
-        "t100": 0.004328710539971414,
-        "hard_failure": 0.016208884704508986,
-        "easy_degradation": 0.0,
-        "shape_gain_all": 0.0007302013962300347,
-        "shape_gain_t50": 0.0,
-        "shape_gain_t100": 1.4468774637288462e-05,
-        "shape_gain_hard_failure": 0.0007471597107203687,
-        "shape_switch_rate": 0.005648671173256783
-      },
-      "TrajNet": {
-        "status": "ok",
-        "policy": {
-          "short": "bridge",
-          "t50": "gain_gate",
-          "t100": "gain_gate"
-        },
-        "all": 0.03813806330591063,
-        "t50": 0.02693200074182789,
-        "t100": 0.013800550192567762,
-        "hard_failure": 0.03918432054611187,
-        "easy_degradation": 0.0,
-        "shape_gain_all": 0.0001173181302596138,
-        "shape_gain_t50": 0.0004685025867524617,
-        "shape_gain_t100": 0.0,
-        "shape_gain_hard_failure": 0.00012887382855930607,
-        "shape_switch_rate": 0.0008244023083264633
-      }
-    }
-  },
-  "dynamic_shape_meta_policy_summary": {
-    "source": "fresh_run",
-    "protocol": "dynamic_shape_source_meta_policy",
-    "two_domain_dynamic_meta_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "stage5c_executed": false,
-    "smc_enabled": false,
-    "metric_or_seconds_claim": false,
-    "domains": {
-      "ETH_UCY": {
-        "status": "ok",
-        "all": 0.016314720529778892,
-        "t50": 0.0017756136269108103,
-        "t100": 0.004284781808472471,
-        "hard_failure": 0.01611365182677149,
-        "easy_degradation": 0.0,
-        "shape_gain_all": 0.0006294398646777832,
-        "shape_gain_t50": -0.00012552756048478386,
-        "shape_gain_t100": -2.9650299970152005e-05,
-        "shape_gain_hard_failure": 0.0006504301081771136,
-        "source_distribution": {
-          "bridge": 0.9871284378183165,
-          "old_shape": 4.630058338735068e-05,
-          "gain_gate": 0.01282526159829614
-        },
-        "test_ranking_accuracy": 0.019261042689137885,
-        "delta_vs_fixed_all": -9.91800632104134e-05,
-        "delta_vs_fixed_t50": -0.00012528894482233266,
-        "delta_vs_fixed_t100": -4.3928731498943385e-05,
-        "delta_vs_fixed_hard": -9.523287773749445e-05
-      },
-      "TrajNet": {
-        "status": "ok",
-        "all": 0.03830169788706028,
-        "t50": 0.02671519369046027,
-        "t100": 0.014508831312789572,
-        "hard_failure": 0.039363879492692044,
-        "easy_degradation": 0.0,
-        "shape_gain_all": 0.00028742090447775315,
-        "shape_gain_t50": 0.00024579926399548313,
-        "shape_gain_t100": 0.0007181925728715344,
-        "shape_gain_hard_failure": 0.0003157315266282268,
-        "source_distribution": {
-          "bridge": 0.9986259961527892,
-          "old_shape": 0.0010992030777686177,
-          "gain_gate": 0.0002748007694421544
-        },
-        "test_ranking_accuracy": 0.9997251992305578,
-        "delta_vs_fixed_all": 0.00016363458114965201,
-        "delta_vs_fixed_t50": -0.0002168070513676179,
-        "delta_vs_fixed_t100": 0.0007082811202218098,
-        "delta_vs_fixed_hard": 0.00017955894658017169
-      }
-    }
-  },
-  "calibrated_shape_meta_policy_summary": {
-    "source": "fresh_run",
-    "protocol": "calibrated_shape_source_meta_policy",
-    "two_domain_calibrated_meta_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "stage5c_executed": false,
-    "smc_enabled": false,
-    "metric_or_seconds_claim": false,
-    "overall_interpretation": "Simple affine calibration did not repair ETH_UCY ranking; validation selected no calibration and fixed horizon composer remains safer deployable shape policy.",
-    "domains": {
-      "ETH_UCY": {
-        "status": "ok",
-        "selected_mode": "none",
-        "all": 0.016314720529778892,
-        "t50": 0.0017756136269108103,
-        "t100": 0.004284781808472471,
-        "hard_failure": 0.01611365182677149,
-        "easy_degradation": 0.0,
-        "rank_accuracy": 0.019261042689137885,
-        "shape_gain_all": 0.0006294398646777832,
-        "shape_gain_t50": -0.00012552756048478386,
-        "shape_gain_t100": -2.9650299970152005e-05,
-        "shape_gain_hard_failure": 0.0006504301081771136,
-        "delta_vs_fixed_all": -9.91800632104134e-05,
-        "delta_vs_fixed_t50": -0.00012528894482233266,
-        "delta_vs_fixed_t100": -4.3928731498943385e-05,
-        "delta_vs_fixed_hard": -9.523287773749445e-05
-      },
-      "TrajNet": {
-        "status": "ok",
-        "selected_mode": "none",
-        "all": 0.03830169788706028,
-        "t50": 0.02671519369046027,
-        "t100": 0.014508831312789572,
-        "hard_failure": 0.039363879492692044,
-        "easy_degradation": 0.0,
-        "rank_accuracy": 0.9997251992305578,
-        "shape_gain_all": 0.00028742090447775315,
-        "shape_gain_t50": 0.00024579926399548313,
-        "shape_gain_t100": 0.0007181925728715344,
-        "shape_gain_hard_failure": 0.0003157315266282268,
-        "delta_vs_fixed_all": 0.00016363458114965201,
-        "delta_vs_fixed_t50": -0.0002168070513676179,
-        "delta_vs_fixed_t100": 0.0007082811202218098,
-        "delta_vs_fixed_hard": 0.00017955894658017169
-      }
-    }
-  },
-  "pairwise_shape_switch_policy_summary": {
-    "status": "diagnostic_safe_not_deployable_over_fixed",
-    "two_domain_pairwise_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "domains_better_than_fixed_on_any_core_metric": [
-      "TrajNet"
-    ],
-    "interpretation": "Pairwise gain/harm switching is safe and two-domain positive, but it does not replace fixed composer: ETH_UCY weakens and TrajNet t50 falls; keep fixed composer/composite route deployable."
-  },
-  "weighted_pairwise_shape_switch_policy_summary": {
-    "status": "diagnostic_safe_not_deployable_over_fixed",
-    "two_domain_weighted_pairwise_gate": true,
-    "positive_domains": [
-      "ETH_UCY",
-      "TrajNet"
-    ],
-    "domains_better_than_fixed_on_any_core_metric": [
-      "TrajNet"
-    ],
-    "interpretation": "Hard/tail/positive-gain weighting did not repair the deployability gap; keep fixed composer/composite route deployable."
-  },
-  "fixed_prior_source_switch_policy_summary": {
-    "status": "diagnostic_negative_not_deployable_over_fixed",
-    "two_domain_fixed_prior_gate": false,
-    "positive_domains": [
-      "ETH_UCY"
-    ],
-    "domains_better_than_fixed_on_any_core_metric": [],
-    "two_domain_fixed_prior_beats_fixed_gate": false,
-    "interpretation": "Fixed-composer prior switching preserves safety but does not beat the fixed composer; ETH_UCY has tiny all/hard/t100 loss and TrajNet falls back exactly to fixed composer.",
-    "domain_deltas": {
-      "ETH_UCY": {
-        "all": -7.47012063097019e-05,
-        "t50": 0.0,
-        "t100": -4.3928731498943385e-05,
-        "hard_failure": -7.711733527826503e-05,
-        "easy_degradation": 0.0,
-        "shape_gain_all": -7.589234885441165e-05,
-        "shape_gain_t50": 0.0,
-        "shape_gain_t100": -4.411907460744047e-05,
-        "shape_gain_hard_failure": -7.832934767781907e-05
-      },
-      "TrajNet": {
-        "all": 0.0,
-        "t50": 0.0,
-        "t100": 0.0,
-        "hard_failure": 0.0,
-        "easy_degradation": 0.0,
-        "shape_gain_all": 0.0,
-        "shape_gain_t50": 0.0,
-        "shape_gain_t100": 0.0,
-        "shape_gain_hard_failure": 0.0
-      }
-    },
-    "domain_metrics": {
-      "ETH_UCY": {
-        "all_improvement": 0.016339199386679604,
-        "t50_improvement": 0.001900902571733143,
-        "t100_improvement": 0.004284781808472471,
-        "hard_failure_improvement": 0.01613176736923072,
-        "easy_degradation": 0.0,
-        "source_switch_rate": 0.0056023705898694326
-      },
-      "TrajNet": {
-        "all_improvement": 0.03813806330591063,
-        "t50_improvement": 0.02693200074182789,
-        "t100_improvement": 0.013800550192567762,
-        "hard_failure_improvement": 0.03918432054611187,
-        "easy_degradation": 0.0,
-        "source_switch_rate": 0.0
-      }
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_endpoint_label_eval_only": true,
-      "future_waypoints_input": false,
-      "future_waypoints_label_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "val_selected_policy": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "claim_boundary": {
-      "fixed_composer_prior_switch": true,
-      "learned_waypoint_shape_residual": true,
-      "protected_by_endpoint_bridge_or_floor": true,
-      "latent_generative_rollout": false,
-      "metric_or_seconds_claim": false,
-      "true_3d": false,
-      "foundation_world_model": false
-    }
-  },
-  "generated_reports": [
-    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
-    "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
-    "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.md",
-    "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json"
-  ],
-  "fixed_prior_oracle_audit_summary": {
-    "status": "diagnostic_headroom_too_small",
-    "source": "fresh_run",
-    "report": "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.md",
-    "oracle_is_diagnostic_not_deployable": true,
-    "headroom_domains": [],
-    "two_domain_residual_oracle_headroom": false,
-    "interpretation": "Residual source-switch oracle headroom over the fixed composer is tiny and present in only about 0.1% of rows; stop spending trials on source-switch learners without new data/features.",
-    "domain_summary": {
-      "ETH_UCY": {
-        "fixed_policy": {
-          "short": "gain_gate",
-          "t50": "bridge",
-          "t100": "old_shape"
-        },
-        "oracle_delta_vs_fixed": {
-          "all": 8.575888838702195e-05,
-          "t50": 1.2770039430010094e-05,
-          "t100": 0.0,
-          "hard_failure": 7.310714203079272e-05,
-          "easy_degradation": 0.0,
-          "shape_gain_all": 8.712635038121697e-05,
-          "shape_gain_t50": 1.279436026235814e-05,
-          "shape_gain_t100": 0.0,
-          "shape_gain_hard_failure": 7.425612834255357e-05
-        },
-        "oracle_switch_rate": 0.7605333827206223,
-        "positive_residual_rate": 0.0011112140012964164,
-        "mean_residual_gain": 0.00011155779718481218,
-        "hard_oracle_switch_rate": 0.7263185793798038,
-        "by_horizon": {
-          "t10": {
-            "rows": 7478,
-            "oracle_switch_rate": 0.9878309708478202,
-            "mean_residual_gain": 0.00018910393209333465,
-            "positive_residual_rate": 0.0017384327360256753,
-            "median_best_margin": 0.0
-          },
-          "t25": {
-            "rows": 6432,
-            "oracle_switch_rate": 0.9987562189054726,
-            "mean_residual_gain": 0.00014148028125577397,
-            "positive_residual_rate": 0.0013992537313432835,
-            "median_best_margin": 0.0
-          },
-          "t50": {
-            "rows": 5074,
-            "oracle_switch_rate": 0.00039416633819471815,
-            "mean_residual_gain": 1.6812166016255137e-05,
-            "positive_residual_rate": 0.00039416633819471815,
-            "median_best_margin": 0.0
-          },
-          "t100": {
-            "rows": 2614,
-            "oracle_switch_rate": 0.9996174445294568,
-            "mean_residual_gain": 0.0,
-            "positive_residual_rate": 0.0,
-            "median_best_margin": 0.0
-          }
-        }
-      },
-      "TrajNet": {
-        "fixed_policy": {
-          "short": "bridge",
-          "t50": "gain_gate",
-          "t100": "gain_gate"
-        },
-        "oracle_delta_vs_fixed": {
-          "all": 0.000244361183678099,
-          "t50": 0.00010943996525503152,
-          "t100": 0.0007082811202218098,
-          "hard_failure": 0.0002681415897424211,
-          "easy_degradation": 0.0,
-          "shape_gain_all": 0.00025402036026156427,
-          "shape_gain_t50": 0.00011241628789726565,
-          "shape_gain_t100": 0.0007181925728715344,
-          "shape_gain_hard_failure": 0.00027904106796172723
-        },
-        "oracle_switch_rate": 0.35971420719978014,
-        "positive_residual_rate": 0.0013740038472107722,
-        "mean_residual_gain": 0.00014709197817754834,
-        "hard_oracle_switch_rate": 0.4200898587933248,
-        "by_horizon": {
-          "t10": {
-            "rows": 1275,
-            "oracle_switch_rate": 0.0,
-            "mean_residual_gain": 0.0,
-            "positive_residual_rate": 0.0,
-            "median_best_margin": 0.0
-          },
-          "t25": {
-            "rows": 1053,
-            "oracle_switch_rate": 0.0,
-            "mean_residual_gain": 0.0,
-            "positive_residual_rate": 0.0,
-            "median_best_margin": 0.0
-          },
-          "t50": {
-            "rows": 831,
-            "oracle_switch_rate": 0.9975932611311673,
-            "mean_residual_gain": 7.138120464241217e-05,
-            "positive_residual_rate": 0.0012033694344163659,
-            "median_best_margin": 0.0
-          },
-          "t100": {
-            "rows": 480,
-            "oracle_switch_rate": 1.0,
-            "mean_residual_gain": 0.000991562349021362,
-            "positive_residual_rate": 0.008333333333333333,
-            "median_best_margin": 0.0
-          }
-        }
-      }
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_endpoint_label_eval_only": true,
-      "future_waypoints_input": false,
-      "future_waypoints_label_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "oracle_future_labels_diagnostic_only": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "claim_boundary": {
-      "oracle_diagnostic": true,
-      "deployable_model": false,
-      "latent_generative_rollout": false,
-      "metric_or_seconds_claim": false,
-      "true_3d": false,
-      "foundation_world_model": false
-    }
-  },
-  "last_successful_command": "python3 -m pytest tests (235 passed in 66.05s); .venv-pytorch/bin/python run_stage41_fixed_prior_oracle_audit.py"
+    "Strict pure-UCY neural proposal retrain has now been attempted and failed deployability; next useful work is new independent UCY-like data or stronger scene/domain causal features before retrying source-only neural independence.",
+    "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
+    "Run independent external split replication before accepting deployment beyond candidate status."
+  ]
 }

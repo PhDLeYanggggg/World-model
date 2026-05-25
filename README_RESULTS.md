@@ -986,6 +986,14 @@ easy_degradation = 0.0
 positive_external_domains = 3
 pure_ucy_source_heldout_gate = True
 pure_ucy_three_way_train_val_test_gate = False
+strict_pure_ucy_neural_retrain_gate = False
+strict_pure_ucy_neural_best_trial = pure_ucy_transformer
+strict_pure_ucy_neural_best_mode = candidate_switch
+strict_pure_ucy_neural_all_improvement = 0.0
+strict_pure_ucy_neural_t50_improvement = 0.0
+strict_pure_ucy_neural_hard_failure_improvement = 0.0
+strict_pure_ucy_neural_easy_degradation = 0.0
+strict_pure_ucy_neural_remaining_blocker = Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.
 composite_tail_evidence_pass = True
 composite_tail_multiseed_pass = True
 all_agent_composite_world_state_pass = True
@@ -1242,6 +1250,14 @@ pure_ucy_source_heldout_gate = True
 pure_ucy_three_way_train_val_test_gate = False
 pure_ucy_policy_train_val_test_gate = True
 strict_pure_ucy_only_neural_retrain_gate = False
+strict_pure_ucy_neural_best_trial = pure_ucy_transformer
+strict_pure_ucy_neural_best_mode = candidate_switch
+strict_pure_ucy_neural_all = 0.0
+strict_pure_ucy_neural_t50 = 0.0
+strict_pure_ucy_neural_t100_diagnostic = 0.0
+strict_pure_ucy_neural_hard = 0.0
+strict_pure_ucy_neural_easy = 0.0
+strict_pure_ucy_neural_blocker = Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.
 domain_local_endpoint_two_domain_gate = True
 domain_local_endpoint_positive_domains = ['ETH_UCY', 'TrajNet', 'UCY_expanded']
 domain_local_all_agent_two_domain_gate = True
@@ -1394,7 +1410,7 @@ composite_tail_multiseed_delta_vs_teacher_hard_min = 0.0054317016626029835
 positive_domain_counts = [3, 3, 3]
 ```
 
-Composite-tail is now bootstrap-supported, multiseed-supported, pure-UCY source-heldout supported, and backed by a UCY-only policy-head train/val/test calibration. It is still not a strict pure-UCY neural retrain because the proposal/floor features remain mixed-external trained.
+Composite-tail is now bootstrap-supported, multiseed-supported, pure-UCY source-heldout supported, and backed by a UCY-only policy-head train/val/test calibration. A strict pure-UCY neural retrain/select/test audit has now been attempted; it is not deployable because the source-only neural signal still fails the safety/deployability gate, so the mixed-external M3W-Neural v1 candidate plus Stage37/teacher floor remains the current deployable path.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 

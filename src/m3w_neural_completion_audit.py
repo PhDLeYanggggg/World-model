@@ -80,6 +80,7 @@ def build_completion_audit() -> dict[str, Any]:
     composite_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json", {})
     pure_ucy_source = read_json("outputs/stage41_external_split/stage41_pure_ucy_source_validation.json", {})
     pure_ucy_retrain = read_json("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json", {})
+    pure_ucy_neural_retrain = read_json("outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json", {})
     domain_local_neural = read_json("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json", {})
     domain_local_all_agent = read_json("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json", {})
     domain_local_full_traj = read_json("outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json", {})
@@ -267,7 +268,12 @@ def build_completion_audit() -> dict[str, Any]:
     pure_ucy_source_gate = bool(pure_ucy_source.get("pure_ucy_source_heldout_gate"))
     pure_ucy_three_way_gate = bool(pure_ucy_source.get("pure_ucy_three_way_train_val_test_gate"))
     pure_ucy_policy_gate = bool(pure_ucy_retrain.get("pure_ucy_policy_train_val_test_gate"))
-    pure_ucy_strict_neural_gate = bool(pure_ucy_retrain.get("strict_pure_ucy_only_neural_retrain_select_test_gate"))
+    pure_ucy_policy_strict_neural_gate = bool(pure_ucy_retrain.get("strict_pure_ucy_only_neural_retrain_select_test_gate"))
+    pure_ucy_strict_neural_gate = bool(
+        pure_ucy_neural_retrain.get("strict_pure_ucy_only_neural_retrain_select_test_gate")
+        if pure_ucy_neural_retrain
+        else pure_ucy_policy_strict_neural_gate
+    )
     domain_local_two_domain_gate = bool(domain_local_neural.get("two_domain_endpoint_gate"))
     domain_local_positive_domains = list(domain_local_neural.get("positive_domains") or [])
     domain_local_all_agent_gate = bool(domain_local_all_agent.get("two_domain_all_agent_world_state_gate"))
@@ -532,7 +538,13 @@ def build_completion_audit() -> dict[str, Any]:
             "requirement": "pure UCY train/val/test policy-head calibration",
             "status": _status(pure_ucy_policy_gate, partial=bool(pure_ucy_retrain)),
             "evidence": "outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json",
-            "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying neural proposal and floor are still mixed-external trained, so strict pure-UCY neural retrain remains false.",
+            "note": "The ridge gain/harm policy head is trained only on UCY train rows, selected on UCY validation rows, and evaluated once on UCY test rows. It passes policy safety, but the underlying proposal/floor in that protocol is mixed-external trained; the separate strict pure-UCY neural retrain audit has now been attempted and is negative for deployability.",
+        },
+        {
+            "requirement": "strict pure UCY-only neural retrain/select/test attempted",
+            "status": _status(pure_ucy_strict_neural_gate, partial=bool(pure_ucy_neural_retrain)),
+            "evidence": "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
+            "note": "Fresh UCY-source-only causal Transformer / t50-hard Transformer / hybrid-JEPA retraining uses train-only floor selection and train-only normalization. The bounded endpoint residual has positive neural signal but fails deployment because UCY test easy degradation exceeds the safety budget, so the selected safe policy falls back.",
         },
         {
             "requirement": "domain-local neural endpoint retrain positive on at least two external domains",
@@ -597,7 +609,7 @@ def build_completion_audit() -> dict[str, Any]:
         "source": "fresh_run",
         "completion_status": "complete" if complete else "not_complete",
         "current_best_deployable": (
-            "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain still pending)"
+            "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout and UCY-only policy-head supported; strict pure-UCY neural retrain attempted but not deployable)"
             if composite_deployable
             else
             "M3W-Neural v1 teacher-guided proposal safety-repaired candidate under Stage37 safety floor (multi-seed/bootstrap supported; pending source-level validation)"
@@ -1084,6 +1096,17 @@ def build_completion_audit() -> dict[str, Any]:
             "test_metrics": (pure_ucy_retrain.get("test_eval") or {}).get("metrics", {}),
             "remaining_blocker": pure_ucy_retrain.get("remaining_blocker"),
         },
+        "strict_pure_ucy_neural_retrain_summary": {
+            "strict_pure_ucy_only_neural_retrain_select_test_gate": pure_ucy_strict_neural_gate,
+            "source": pure_ucy_neural_retrain.get("source"),
+            "protocol": pure_ucy_neural_retrain.get("protocol"),
+            "best_trial": pure_ucy_neural_retrain.get("best_trial"),
+            "best_mode": pure_ucy_neural_retrain.get("best_mode"),
+            "best_metrics": pure_ucy_neural_retrain.get("best_metrics", {}),
+            "best_policy": pure_ucy_neural_retrain.get("best_policy", {}),
+            "remaining_blocker": pure_ucy_neural_retrain.get("remaining_blocker"),
+            "no_leakage": pure_ucy_neural_retrain.get("no_leakage", {}),
+        },
         "domain_local_neural_endpoint_retrain_summary": {
             "two_domain_endpoint_gate": domain_local_two_domain_gate,
             "positive_domains": domain_local_positive_domains,
@@ -1147,7 +1170,7 @@ def build_completion_audit() -> dict[str, Any]:
         },
         "requirements": requirements,
         "next_highest_value_actions": [
-            "Run a strict pure-UCY neural proposal retrain if final UCY-only model independence is required; the current UCY-only policy-head passes but still uses frozen mixed external proposal/floor features.",
+            "Strict pure-UCY neural proposal retrain has now been attempted and failed deployability; next useful work is new independent UCY-like data or stronger scene/domain causal features before retrying source-only neural independence.",
             "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
             "Run independent external split replication before accepting deployment beyond candidate status.",
         ],
@@ -1474,7 +1497,10 @@ def build_completion_audit() -> dict[str, Any]:
             f"- UCY-only policy-head train/val/test gate: `{pure_ucy_policy_gate}`",
             f"- strict pure UCY-only neural retrain gate: `{pure_ucy_strict_neural_gate}`",
             f"- UCY policy-head test metrics: `{((pure_ucy_retrain.get('test_eval') or {}).get('metrics') or {})}`",
-            f"- UCY policy-head caveat: `{pure_ucy_retrain.get('remaining_blocker')}`",
+            f"- UCY policy-head historical caveat: `{pure_ucy_retrain.get('remaining_blocker')}`",
+            f"- strict pure UCY neural retrain best trial/mode: `{pure_ucy_neural_retrain.get('best_trial')}` / `{pure_ucy_neural_retrain.get('best_mode')}`",
+            f"- strict pure UCY neural retrain best metrics: `{pure_ucy_neural_retrain.get('best_metrics', {})}`",
+            f"- strict pure UCY neural retrain blocker: `{pure_ucy_neural_retrain.get('remaining_blocker')}`",
             "",
             "## Domain-Local Neural Endpoint Retrain",
             "",
@@ -1544,6 +1570,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     composite_multiseed_summary = audit.get("composite_tail_bounded_neural_multiseed_summary", {})
     pure_ucy_summary = audit.get("pure_ucy_source_heldout_validation_summary", {})
     pure_ucy_policy_summary = audit.get("pure_ucy_train_val_test_policy_calibration_summary", {})
+    pure_ucy_neural_summary = audit.get("strict_pure_ucy_neural_retrain_summary", {})
     domain_local_summary = audit.get("domain_local_neural_endpoint_retrain_summary", {})
     domain_local_all_agent_summary = audit.get("domain_local_all_agent_world_state_summary", {})
     domain_local_full_traj_summary = audit.get("domain_local_full_trajectory_world_state_summary", {})
@@ -1809,7 +1836,15 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"pure_ucy_source_heldout_gate = {pure_ucy_summary.get('pure_ucy_source_heldout_gate')}",
             f"pure_ucy_three_way_train_val_test_gate = {pure_ucy_summary.get('pure_ucy_three_way_train_val_test_gate')}",
             f"pure_ucy_policy_train_val_test_gate = {pure_ucy_policy_summary.get('pure_ucy_policy_train_val_test_gate')}",
-            f"strict_pure_ucy_only_neural_retrain_gate = {pure_ucy_policy_summary.get('strict_pure_ucy_only_neural_retrain_select_test_gate')}",
+            f"strict_pure_ucy_only_neural_retrain_gate = {pure_ucy_neural_summary.get('strict_pure_ucy_only_neural_retrain_select_test_gate')}",
+            f"strict_pure_ucy_neural_best_trial = {pure_ucy_neural_summary.get('best_trial')}",
+            f"strict_pure_ucy_neural_best_mode = {pure_ucy_neural_summary.get('best_mode')}",
+            f"strict_pure_ucy_neural_all = {(pure_ucy_neural_summary.get('best_metrics') or {}).get('all_improvement')}",
+            f"strict_pure_ucy_neural_t50 = {(pure_ucy_neural_summary.get('best_metrics') or {}).get('t50_improvement')}",
+            f"strict_pure_ucy_neural_t100_diagnostic = {(pure_ucy_neural_summary.get('best_metrics') or {}).get('t100_improvement')}",
+            f"strict_pure_ucy_neural_hard = {(pure_ucy_neural_summary.get('best_metrics') or {}).get('hard_failure_improvement')}",
+            f"strict_pure_ucy_neural_easy = {(pure_ucy_neural_summary.get('best_metrics') or {}).get('easy_degradation')}",
+            f"strict_pure_ucy_neural_blocker = {pure_ucy_neural_summary.get('remaining_blocker')}",
             f"domain_local_endpoint_two_domain_gate = {domain_local_summary.get('two_domain_endpoint_gate')}",
             f"domain_local_endpoint_positive_domains = {domain_local_summary.get('positive_domains')}",
             f"domain_local_all_agent_two_domain_gate = {domain_local_all_agent_summary.get('two_domain_all_agent_world_state_gate')}",
@@ -1928,6 +1963,10 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_external_split/stage41_pure_ucy_source_validation.json")
     generated.add("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.md")
     generated.add("outputs/stage41_external_split/stage41_pure_ucy_retrain_protocol.json")
+    generated.add("outputs/stage41_external_split/stage41_pure_ucy_neural_dataset.md")
+    generated.add("outputs/stage41_external_split/stage41_pure_ucy_neural_dataset.json")
+    generated.add("outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.md")
+    generated.add("outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json")
     generated.add("outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.md")
@@ -1964,7 +2003,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_policy_and_domain_local_all_agent_endpoint_proxy_supported"
             if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state and domain_local_two_domain_gate and domain_local_all_agent_gate_state
             else
-            "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_and_policy_supported_strict_neural_retrain_pending"
+            "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_and_policy_supported_strict_neural_retrain_attempted_not_deployable"
             if composite_deployable_state and pure_ucy_source_gate_state and pure_ucy_policy_gate_state
             else
             "composite_tail_candidate_bootstrap_multiseed_pure_ucy_source_heldout_supported_pending_final_protocol"
@@ -2037,6 +2076,12 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "composite_tail_bootstrap_hard_low": composite_summary.get("bootstrap_hard_low"),
         "pure_ucy_source_heldout_gate": pure_ucy_summary.get("pure_ucy_source_heldout_gate"),
         "pure_ucy_three_way_train_val_test_gate": pure_ucy_summary.get("pure_ucy_three_way_train_val_test_gate"),
+        "pure_ucy_policy_train_val_test_gate": pure_ucy_policy_summary.get("pure_ucy_policy_train_val_test_gate"),
+        "strict_pure_ucy_only_neural_retrain_select_test_gate": pure_ucy_neural_summary.get("strict_pure_ucy_only_neural_retrain_select_test_gate"),
+        "strict_pure_ucy_neural_best_trial": pure_ucy_neural_summary.get("best_trial"),
+        "strict_pure_ucy_neural_best_mode": pure_ucy_neural_summary.get("best_mode"),
+        "strict_pure_ucy_neural_best_metrics": pure_ucy_neural_summary.get("best_metrics"),
+        "strict_pure_ucy_neural_remaining_blocker": pure_ucy_neural_summary.get("remaining_blocker"),
         "base_switch_input": joint_distill_summary.get("base_switch_input"),
         "base_plus_distiller_deployable": joint_distill_summary.get("base_plus_distiller_deployable"),
         "bootstrap_all_low": joint_distill_summary.get("bootstrap_all_low"),
@@ -2229,6 +2274,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "group_consistency_distiller_summary": group_distiller_summary,
         "group_consistency_multiseed_summary": group_multiseed_summary,
         "jepa_deployment_decision_summary": jepa_decision_summary,
+        "strict_pure_ucy_neural_retrain_summary": pure_ucy_neural_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

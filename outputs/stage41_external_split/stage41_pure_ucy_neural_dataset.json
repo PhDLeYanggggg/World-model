@@ -1,0 +1,139 @@
+{
+  "source": "fresh_run",
+  "protocol": "strict_pure_ucy_seq2seq_neural_world_model_dataset",
+  "splits": {
+    "train": {
+      "rows": 117808,
+      "sources": 2,
+      "t10": 34363,
+      "t25": 31735,
+      "t50": 29112,
+      "t100": 22598,
+      "hard": 85739,
+      "easy": 38264,
+      "failure": 40518,
+      "history_len_mean": 23.249082565307617,
+      "history_ge_32": 31247,
+      "history_ge_64": 14985
+    },
+    "val": {
+      "rows": 16103,
+      "sources": 1,
+      "t10": 4580,
+      "t25": 4284,
+      "t50": 3988,
+      "t100": 3251,
+      "hard": 14187,
+      "easy": 1352,
+      "failure": 7631,
+      "history_len_mean": 19.324100494384766,
+      "history_ge_32": 2251,
+      "history_ge_64": 517
+    },
+    "test": {
+      "rows": 35441,
+      "sources": 2,
+      "t10": 10283,
+      "t25": 9523,
+      "t50": 8762,
+      "t100": 6873,
+      "hard": 28250,
+      "easy": 8193,
+      "failure": 14776,
+      "history_len_mean": 21.78970718383789,
+      "history_ge_32": 7203,
+      "history_ge_64": 4273
+    }
+  },
+  "source_inventory": {
+    "train": [
+      {
+        "source": "UCY/students01/students001-trajnet.txt",
+        "rows": 47223,
+        "t10": 15147,
+        "t25": 13365,
+        "t50": 11583,
+        "t100": 7128,
+        "is_pure_ucy_source": true
+      },
+      {
+        "source": "UCY/students03/obsmat.txt",
+        "rows": 70585,
+        "t10": 19216,
+        "t25": 18370,
+        "t50": 17529,
+        "t100": 15470,
+        "is_pure_ucy_source": true
+      }
+    ],
+    "val": [
+      {
+        "source": "UCY/zara01/obsmat.txt",
+        "rows": 16103,
+        "t10": 4580,
+        "t25": 4284,
+        "t50": 3988,
+        "t100": 3251,
+        "is_pure_ucy_source": true
+      }
+    ],
+    "test": [
+      {
+        "source": "UCY/zara02/obsmat.txt",
+        "rows": 25901,
+        "t10": 7223,
+        "t25": 6823,
+        "t50": 6422,
+        "t100": 5433,
+        "is_pure_ucy_source": true
+      },
+      {
+        "source": "UCY/zara03/crowds_zara03.txt",
+        "rows": 9540,
+        "t10": 3060,
+        "t25": 2700,
+        "t50": 2340,
+        "t100": 1440,
+        "is_pure_ucy_source": true
+      }
+    ],
+    "unused": []
+  },
+  "strongest_by_horizon_train_only": {
+    "10": 0,
+    "25": 2,
+    "50": 2,
+    "100": 1
+  },
+  "floor_geometry": {
+    "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+    "safe_endpoint_mean_abs_fde_error": 8.15813852113342e-08
+  },
+  "train_only_normalizer": {
+    "median_history_speed_horizon_scale": 10.33821964263916
+  },
+  "input_modalities": [
+    "past K=64 target-agent history",
+    "past-only density/TTC/neighbor scalar features",
+    "scene-agnostic goal prototype proxy",
+    "causal baseline rollouts",
+    "horizon metadata"
+  ],
+  "outputs": [
+    "future endpoint delta",
+    "candidate baseline relative error",
+    "failure/gain/harm/interaction/physical proxy heads"
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_endpoint_label_eval_only": true,
+    "candidate_fde_input": false,
+    "candidate_fde_label_only": true,
+    "train_only_floor_selection": true,
+    "train_only_normalization_statistics": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

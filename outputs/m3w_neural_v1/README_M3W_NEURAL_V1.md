@@ -14,4 +14,4 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 - `reproducibility_m3w_neural_v1.md` — rerun commands.
 - `paper_gap_m3w_neural_v1.md` — what is still missing before stronger publication claims.
 
-Latest package inputs include the negative fixed-composer source-switch audits, so the frozen package records both the successful composite-tail path and the exhausted residual source-switch branch.
+Latest package inputs include the negative fixed-composer source-switch audits and the negative strict pure-UCY neural retrain audit, so the frozen package records both the successful composite-tail path and the exhausted source-switch / source-only retrain branches.

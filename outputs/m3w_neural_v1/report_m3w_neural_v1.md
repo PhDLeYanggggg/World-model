@@ -35,6 +35,10 @@
 - all-agent composite ADE all/t+50/t+100: `21.03%` / `13.65%` / `14.69%`
 - all-agent composite FDE all/t+50: `19.82%` / `17.39%`
 - strict pure UCY-only retrain/select/test gate: `False`
+- strict pure UCY neural retrain gate: `False`
+- strict pure UCY neural best trial/mode: `pure_ucy_transformer` / `candidate_switch`
+- strict pure UCY neural best metrics all/t+50/hard/easy: `0.00%` / `0.00%` / `0.00%` / `0.00%`
+- strict pure UCY neural blocker: `Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.`
 - JEPA deployable path: `disable_jepa_in_deployable_path`
 - fixed-prior source switch beats fixed composer: `False`
 - residual source-switch oracle headroom: `False`
@@ -57,6 +61,6 @@
 
 ## Current Best Deployable Answer
 
-M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement; stricter pure UCY-only retrain/select/test evidence would further strengthen it. Stage37 remains the explicit safety floor.
+M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement. The stricter pure UCY-only neural retrain/select/test audit has now been attempted and failed deployability because source-shift/easy-safety was not reliable, so Stage37 remains the explicit safety floor.
 
-Recent negative source-switch audits show that residual source selection around the fixed horizon composer has too little oracle headroom to justify more trials without new causal features or scene/domain context.
+Recent negative source-switch and strict pure-UCY neural retrain audits show that residual source selection and source-only neural retraining are not the next useful deployment path without new causal features, stronger scene/domain context, or more independent UCY-like validation data.

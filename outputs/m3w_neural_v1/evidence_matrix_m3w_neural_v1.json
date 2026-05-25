@@ -16,6 +16,8 @@
     "outputs/stage41_external_split/report.json",
     "outputs/stage41_external_split/stage41_source_level_validation_repair.json",
     "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
+    "outputs/stage41_external_split/stage41_pure_ucy_neural_dataset.json",
+    "outputs/stage41_external_split/stage41_pure_ucy_neural_retrain.json",
     "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
     "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
     "src/stage41_breakthrough.py",
@@ -24,9 +26,10 @@
     "src/stage41_composite_tail_evidence.py",
     "src/stage41_composite_tail_multiseed.py",
     "src/stage41_all_agent_composite_world_state.py",
-    "src/stage41_pure_ucy_source_validation.py"
+    "src/stage41_pure_ucy_source_validation.py",
+    "src/stage41_pure_ucy_neural_retrain.py"
   ],
-  "package_input_hash": "ebd6b8b7e1ea7076d120ab50248e93abd1815812cea8b62fc55ba0e02868c541",
+  "package_input_hash": "e80e02aa1c7e89cb2892dfa9cc82fef8565a6525e9000a71adbde53aa96361d5",
   "gates_passed": 41,
   "gates_total": 41,
   "current_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
@@ -779,6 +782,142 @@
       }
     },
     "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
+  },
+  "strict_pure_ucy_neural_retrain": {
+    "gate": false,
+    "source": "fresh_run",
+    "protocol": "strict_pure_ucy_only_neural_retrain_select_test",
+    "best_trial": "pure_ucy_transformer",
+    "best_mode": "candidate_switch",
+    "best_metrics": {
+      "rows": 35441,
+      "all_improvement": 0.0,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.0,
+      "t100_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": 0.0,
+      "switch_rate": 0.0,
+      "regret_to_oracle": 0.1983913141710111,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        }
+      },
+      "neural_endpoint_without_fallback": {
+        "rows": 35441,
+        "all_improvement": 0.09230014952008259,
+        "t10_improvement": 0.2945080639312109,
+        "t25_improvement": -0.31497445367685795,
+        "t50_improvement": 0.21303079289629967,
+        "t100_improvement": 0.06383108641982482,
+        "hard_failure_improvement": 0.1499403484153744,
+        "easy_degradation": 1.6257516010806778,
+        "harm_over_fallback": -0.07364632580896721,
+        "switch_rate": 0.0,
+        "regret_to_oracle": 0.12474498836204391,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": 0.04621994621154035,
+            "t50_improvement": 0.1871286638125077,
+            "t100_improvement": 0.0026131006895112607,
+            "hard_failure_improvement": 0.11285089841042761,
+            "easy_degradation": 2.3738767004916275,
+            "switch_rate": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.21280842523236154,
+            "t50_improvement": 0.2774538691415518,
+            "t100_improvement": 0.2389903817823379,
+            "hard_failure_improvement": 0.2502984382542832,
+            "easy_degradation": 0.39570304933311595,
+            "switch_rate": 0.0
+          }
+        }
+      },
+      "neural_candidate_without_fallback": {
+        "rows": 35441,
+        "all_improvement": -4.84063232397299,
+        "t10_improvement": -5.0523001485536,
+        "t25_improvement": -5.747087464949059,
+        "t50_improvement": -2.892711154341845,
+        "t100_improvement": -6.057235462451089,
+        "hard_failure_improvement": -4.813309601343785,
+        "easy_degradation": 6.349163978769179,
+        "harm_over_fallback": 3.8623424458826823,
+        "switch_rate": 0.0,
+        "regret_to_oracle": 4.060733760053693,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": -5.741161716503469,
+            "t50_improvement": -3.169027342944509,
+            "t100_improvement": -7.909864246126901,
+            "hard_failure_improvement": -5.735167095468177,
+            "easy_degradation": 7.978595522412968,
+            "switch_rate": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": -2.485580988903105,
+            "t50_improvement": -2.20546498903392,
+            "t100_improvement": -0.7564215195271502,
+            "hard_failure_improvement": -2.318911404507015,
+            "easy_degradation": 3.670093443628808,
+            "switch_rate": 0.0
+          }
+        }
+      },
+      "selected_candidate_distribution": {
+        "0": 35441
+      },
+      "latent_variance": 0.12380863726139069
+    },
+    "best_policy": {
+      "gain_threshold": 0.0,
+      "gain_prob": 0.0,
+      "harm_prob": 0.1,
+      "physical_prob": 0.0,
+      "max_switch": 0.0,
+      "val_score": 0.0
+    },
+    "remaining_blocker": "Strict pure-UCY neural retrain did not satisfy all/t50/hard positive with easy<=2%; keep mixed-external M3W-Neural v1 candidate and Stage37/teacher floor as deployable path.",
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_endpoint_label_eval_only": true,
+      "candidate_fde_input": false,
+      "candidate_fde_label_only": true,
+      "train_only_floor_selection": true,
+      "train_only_normalization_statistics": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "validation_policy_selection_only": true,
+      "test_threshold_tuning": false,
+      "mixed_external_neural_proposal_used": false,
+      "mixed_external_floor_used": false
+    },
+    "interpretation": "Strict pure-UCY neural retrain/select/test was attempted with source-only train/val/test. It is negative deployability evidence: raw neural residual has some signal, but validation-selected safe deployment falls back because source-shift/easy-safety is not reliable."
   },
   "source_level_validation_repair": {
     "pass": true,
