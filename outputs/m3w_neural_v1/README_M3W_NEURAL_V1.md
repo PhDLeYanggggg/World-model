@@ -161,3 +161,20 @@ smc_enabled = false
 ```
 
 Stage42-G Phase1 freshly refits external expected-FDE selectors for the key causal feature/safety variants. It improves the ablation evidence beyond cached coverage, but it still does not complete all A-journal retrained ablations because JEPA/Transformer/full-waypoint-shape retraining remains explicitly `not_run_in_phase1`.
+
+## Stage42-H Causal Sequence Ablation
+
+```text
+source = fresh_run
+verdict = stage42_h_sequence_ablation_pass
+gates = 10 / 10
+sequence_full_all = 0.7784711241234431
+sequence_full_t50 = 0.7833622318578909
+sequence_full_hard_failure = 0.8080734180137877
+sequence_full_easy_degradation = -0.768403531092173
+history_t50_delta_full_minus_no_history = 0.457817280518282
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-H trains a causal temporal sequence encoder, not a flattened-history ridge selector. It answers whether history tokens help under a sequence model while keeping val-only safety selection and test-once evaluation. This is still dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.

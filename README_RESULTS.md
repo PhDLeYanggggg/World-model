@@ -6,7 +6,7 @@ Latest Chinese detailed summary of the M3W goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-F. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package, but it is not yet full A-journal ready.
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-H. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package, Stage42-G added fresh retrained selector ablations, and Stage42-H proved history tokens are strongly positive under a causal sequence encoder; the package is still not full A-journal ready.
 
 ## M3W-Neural v1 Goal Summary
 
@@ -2004,3 +2004,20 @@ smc_enabled = false
 ```
 
 Stage42-G Phase1 freshly refits external expected-FDE selectors for the key causal feature/safety variants. It improves the ablation evidence beyond cached coverage, but it still does not complete all A-journal retrained ablations because JEPA/Transformer/full-waypoint-shape retraining remains explicitly `not_run_in_phase1`.
+
+## Stage42-H Causal Sequence Ablation
+
+```text
+source = fresh_run
+verdict = stage42_h_sequence_ablation_pass
+gates = 10 / 10
+sequence_full_all = 0.7784711241234431
+sequence_full_t50 = 0.7833622318578909
+sequence_full_hard_failure = 0.8080734180137877
+sequence_full_easy_degradation = -0.768403531092173
+history_t50_delta_full_minus_no_history = 0.457817280518282
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-H trains a causal temporal sequence encoder, not a flattened-history ridge selector. It answers whether history tokens help under a sequence model while keeping val-only safety selection and test-once evaluation. This is still dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.

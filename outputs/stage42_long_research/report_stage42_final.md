@@ -49,3 +49,14 @@
 - verdict: `stage42_g_retrained_ablation_phase1_pass`
 
 Stage42-G Phase1 continued the long research objective after this paper package by fresh-refitting external expected-FDE selector ablations for 10 variants across 3 seeds each. It improves the causal ablation evidence beyond cached coverage: goal/scene proxy, neighbor/interaction, and safe-switch/floor variants show positive contribution signals. It also adds an honest negative result: flattened history / transformer-proxy history features are not positive in this lightweight ridge-selector protocol, so history contribution still needs a true sequence-model ablation. JEPA, full Transformer retraining, endpoint bridge, and full-waypoint-shape ablations remain `not_run_in_phase1`.
+
+## Stage42-H Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/sequence_ablation_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_h_gate.md`
+- verdict: `stage42_h_sequence_ablation_pass`
+
+Stage42-H directly addresses the Stage42-G flattened-history negative result by training a causal temporal sequence encoder over past-only history windows. The result is strongly positive for history under a sequence model: removing history tokens reduces t+50 improvement by `0.4578` and hard/failure improvement by `0.4708` relative to the full sequence model. This means the project should not conclude that history is useless; the correct conclusion is that flattened history plus ridge selection was too weak to express the temporal signal.
+
+The strongest raw sequence variant without the safe switch has better family-FDE than the safe-switch variant, but it is not deployment-ready because it has not passed the proximity/collision/floor-safety study required for removing the Stage37/teacher floor. Stage42-H therefore improves the causal evidence for temporal dynamics, while leaving the larger Stage42 gaps open: JEPA/full Transformer/full-waypoint-shape retraining, metric/time calibration, additional external datasets, and a floor-free safety mechanism are still not complete.
