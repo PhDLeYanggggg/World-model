@@ -2,7 +2,7 @@
 
 - source: `fresh_run`
 - completion_status: `not_complete`
-- current_best_deployable: `M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation before final freeze)`
+- current_best_deployable: `M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)`
 
 ## Requirement Matrix
 
@@ -11,7 +11,7 @@
 | external split covers ETH/UCY/TrajNet or blockers | `complete` | outputs/stage41_external_split/report.json and Stage41 gates |  |
 | no leakage: future endpoint label/eval only, no central velocity, no test endpoint goals | `complete` | outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json |  |
 | neural model exceeds Stage37 on external all/t50/hard with easy <=2 | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
-| at least two held-out external domains positive | `complete` | outputs/stage41_breakthrough/stage41_neural_eval.json |  |
+| at least two held-out external domains positive | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | neural without external fallback not catastrophic | `complete` | fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports | The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable. |
 | all active agents future world-state, not only endpoint selector | `partial` | outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json | Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete. |
 | full trajectory, interaction, occupancy, and physical-validity heads | `complete` | outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json | Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. The separate goal/route/physical repair pass adds a non-degenerate physical-challenge label. |
@@ -31,6 +31,9 @@
 | teacher-guided proposal safety repair passes deployment gates | `complete` | outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json | Validation-selected proximity repair restores joint safety and still improves the current group-consistency multi-seed safety-buffer basis on all/t50/hard with easy=0. This is a strong single fresh run; multi-seed/CI is still required before freezing it as the final M3W-Neural v1 policy. |
 | teacher-guided repair bootstrap CI and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json | Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required. |
 | teacher-guided repair multi-seed replication | `complete` | outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json | Three fresh teacher-guided seeds each select policy and proximity guard on validation, then evaluate test once. All seeds are positive on all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and all three external domains positive. |
+| composite-tail bounded neural dynamics improves teacher repair | `complete` | outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json | Composite-tail keeps the validation-repaired teacher switch set and adds a low-risk bounded neural tail; it improves the teacher repair on all/t50/t100/hard while preserving easy cases. |
+| composite-tail bootstrap and multi-seed evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json and stage41_composite_tail_multiseed.json | Composite-tail has positive bootstrap lower bounds versus the floor and versus teacher repair, plus three seed-aware evaluations with positive all/t50/t100/hard deltas and easy=0. |
+| pure UCY source-heldout frozen-policy validation | `complete` | outputs/stage41_external_split/stage41_pure_ucy_source_validation.json | Composite-tail policy is selected on non-UCY validation rows only and evaluated once on UCY zara01/zara02/zara03. This is not a pure UCY-only retrain/select/test protocol. |
 | neural group-consistency head improves joint-safe fixed proximity guard | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json | Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation. |
 | group-consistency distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json | Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head. |
 | group-consistency distiller multi-seed replication with joint-safety buffer | `complete` | outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json and outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json | The first three-seed run had stable positive FDE gains but one seed exceeded the near-proximity delta threshold. A validation-selected safety-buffer repair passes all three seeds with positive all/t50/t100/hard, easy=0, and max collision delta below the joint-safety ceiling. |
@@ -38,7 +41,6 @@
 | JEPA contribution proven or disabled | `complete` | outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json | Current audited JEPA variants are non-collapse in several stages but do not produce deployable downstream lift. JEPA is disabled from the M3W-Neural v1 deployable path and kept diagnostic-only. |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
 | no metric/seconds/foundation/true-3D overclaim | `complete` | outputs/m3w_neural_v1/report_m3w_neural_v1.md and data/model cards |  |
-| pure UCY source-heldout frozen-policy validation | `complete` | outputs/stage41_external_split/stage41_pure_ucy_source_validation.json | The frozen composite-tail policy is selected on non-UCY validation rows only and is positive on UCY zara01/zara02/zara03 held-out sources with easy=0. This is not a pure UCY-only retrain/select/test protocol. |
 
 ## All-Agent Risk Repair Result
 
@@ -316,37 +318,28 @@
 - collision delta max @0.05: `-0.0037418834146520363`
 - positive domain counts: `[3, 3, 3]`
 
-## Source-Level Validation Repair
+## Composite-Tail Safe-Switch Bounded Neural Dynamics
 
-- source-level validation repair pass: `True`
-- overall all/t50/t100/hard/easy: `0.20359710771827477` / `0.13116399043122728` / `0.13371172832175005` / `0.19657225579495552` / `0.0`
-- positive held-out source files: `3`
-- UCY-family surrogate gate: `True`
-- pure UCY source-level gate: `False`
-- interpretation: frozen teacher-guided candidate is positive on held-out source files and the UCY-family surrogate, but pure UCY source-level validation remains blocked by lack of an independent UCY validation source after excluding duplicate-like zara03.
-
-## Bounded Neural Blend Dynamics
-
-- deployable: `False`
-- selected policy: `global alpha=0.3`
-- all/t50/t100/hard/easy: `0.183054549856548` / `0.17556642701259895` / `0.1988123052757771` / `0.1934724604647473` / `0.2070880438160938`
-- collision delta @0.05 normalized: `0.007905645841740305`
-- conclusion: full-row continuous neural dynamics has strong all/t50/t100/hard signal, but easy degradation is far above the safety gate; this is not deployable and reveals that current train/val easy stress is not representative enough for unrestricted non-fallback neural dynamics.
-
-## Composite-Tail Safe-Switch Bounded Neural Blend Dynamics
-
-- deployable: `True`
-- selected policy: `composite_tail, switch_alpha=1.0, tail_alpha=0.08`
-- all/t50/t100/hard/easy: `0.2102513255185352` / `0.13652231450154184` / `0.14694086716388166` / `0.20384916307933942` / `0.0`
-- alpha mean: `0.29906641694280367`
-- switch/intervention rate: `0.3410171445036738`
+- evidence pass: `True`
+- multiseed pass: `True`
+- strict delta vs teacher repair pass: `True`
+- all/t50/t100: `0.2102513255185352` / `0.13652231450154184` / `0.14694086716388166`
+- hard/failure improvement: `0.20384916307933942`
+- easy degradation: `0.0`
+- switch rate: `0.3410171445036738`
 - collision delta @0.05 normalized: `-0.0038702813749587617`
-- lift over teacher-guided repair all/t50/t100/hard/easy: `0.006654217800260431` / `0.005358324070314557` / `0.013229138842131616` / `0.0072769072843839044` / `0.0`
-- bootstrap CI lows all/t50/t100/hard: `0.20671347297933704` / `0.13060829691569112` / `0.13962817164239194` / `0.19986489207982036`
-- delta-vs-teacher CI lows all/t50/t100/hard: `0.006356558489780059` / `0.004948699786380758` / `0.01249062196636364` / `0.006931417129331407`
+- bootstrap all/t50/t100/hard lows: `0.20671347297933704` / `0.13060829691569112` / `0.13962817164239194` / `0.19986489207982036`
+- delta-vs-teacher CI lows all/t50/t100/hard: `None` / `None` / `None` / `None`
 - multiseed means all/t50/t100/hard/easy: `0.20954401723273208` / `0.1383020020634588` / `0.1445226429961963` / `0.203088119625216` / `0.0`
-- multiseed delta-vs-teacher minimums all/t50/t100/hard/easy: `0.004997329897068581` / `0.005636676602763568` / `0.008330490182942518` / `0.0054317016626029835` / `0.0`
-- conclusion: composite-tail safe switching adds a small validation-selected low-risk continuous neural blend outside the repaired teacher switch rows. It is the strongest bootstrap-supported, multiseed-supported, and pure-UCY source-heldout supported fresh candidate and improves the teacher-guided repair on all/t50/t100/hard while preserving easy cases. It still needs final package consolidation and a stricter pure UCY-only retrain/select/test protocol before broader deployment claims.
+- multiseed delta-vs-teacher mins all/t50/t100/hard: `0.004997329897068581` / `0.005636676602763568` / `0.008330490182942518` / `0.0054317016626029835`
+- positive domain counts: `[3, 3, 3]`
+
+## Pure UCY Source-Heldout Validation
+
+- pure UCY source-heldout gate: `True`
+- strict pure UCY-only retrain/select/test gate: `False`
+- target sources: `['UCY__zara01__obsmat_txt', 'UCY__zara02__obsmat_txt', 'UCY__zara03__crowds_zara03_txt']`
+- caveat: `This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D.`
 
 ## Neural Group Consistency Distiller
 
@@ -366,4 +359,4 @@
 
 ## Conclusion
 
-M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The frozen teacher-guided repair has 2000-bootstrap evidence with positive CI lows on all/t50/t100/hard and all three external domains, plus feature ablations showing group/neighbor consistency is necessary. It now also has three fresh seeds with positive all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and three positive external domains per seed. The source-level repair confirms positive held-out source files and a positive UCY-family surrogate, and the pure-UCY source-heldout frozen-policy audit is positive on UCY zara01/zara02/zara03 with easy=0. This still is not a pure UCY-only retrain/select/test protocol. A bounded full-row neural blend shows strong all/t50/t100/hard signal but fails easy preservation by a wide margin. The repaired-switch-only bounded blend fixed that safety failure but trailed the teacher-guided repaired switch; the newer composite-tail safe-switch blend keeps easy=0 and improves the teacher-guided repair by a small amount on all/t50/t100/hard. Composite-tail now has 2000-bootstrap support with positive CI lows both versus the Stage37/teacher floor and versus the frozen teacher-guided repair, plus three seed-aware re-evaluations where each seed uses its own trained checkpoint and validation-selected policy. It is now the strongest bootstrap-supported, multiseed-supported, and pure-UCY source-heldout supported neural dynamics candidate. No-fallback neural is still unsafe for easy cases, so the Stage37 safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because best-policy non-fallback neural dynamics, strict pure UCY-only retrain/select/test evidence, and final paper-package consolidation remain unavailable, and Stage5C/SMC stay disabled.
+M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. No-fallback/full-row neural remains unsafe for easy cases, so the Stage37/teacher safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because strict pure UCY-only retrain/select/test evidence and no-fallback/full-row neural safety remain unavailable, and Stage5C/SMC stay disabled.

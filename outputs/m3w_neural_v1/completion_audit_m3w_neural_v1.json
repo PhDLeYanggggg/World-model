@@ -1,7 +1,7 @@
 {
   "source": "fresh_run",
   "completion_status": "not_complete",
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation before final freeze)",
+  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
     "all_improvement": 0.09976285280545372,
@@ -487,546 +487,26 @@
       3
     ]
   },
-  "jepa_deployment_decision_summary": {
-    "decision": "disable_jepa_in_deployable_path",
-    "disable_jepa_in_deployable_path": true,
-    "attempt_count": 7,
-    "non_collapse_attempt_count": 7,
-    "deployable_positive_attempt_count": 0,
-    "keep_jepa_for_diagnostic_research": true
-  },
-  "requirements": [
-    {
-      "requirement": "external split covers ETH/UCY/TrajNet or blockers",
-      "status": "complete",
-      "evidence": "outputs/stage41_external_split/report.json and Stage41 gates"
-    },
-    {
-      "requirement": "no leakage: future endpoint label/eval only, no central velocity, no test endpoint goals",
-      "status": "complete",
-      "evidence": "outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json"
-    },
-    {
-      "requirement": "neural model exceeds Stage37 on external all/t50/hard with easy <=2",
-      "status": "complete",
-      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
-    },
-    {
-      "requirement": "at least two held-out external domains positive",
-      "status": "complete",
-      "evidence": "outputs/stage41_breakthrough/stage41_neural_eval.json"
-    },
-    {
-      "requirement": "neural without external fallback not catastrophic",
-      "status": "complete",
-      "evidence": "fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports",
-      "note": "The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable."
-    },
-    {
-      "requirement": "all active agents future world-state, not only endpoint selector",
-      "status": "partial",
-      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
-      "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete."
-    },
-    {
-      "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
-      "note": "Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. The separate goal/route/physical repair pass adds a non-degenerate physical-challenge label."
-    },
-    {
-      "requirement": "explicit goal/route head and non-degenerate physical-consistency target",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json",
-      "note": "Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs."
-    },
-    {
-      "requirement": "route/physical heads deployment contribution proven or disabled",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json, stage41_joint_route_conditioned_world_state.json, and stage41_route_physical_group_consistency.json",
-      "note": "Auxiliary route/physical heads are predictive diagnostics. Post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency did not improve the deployable trajectory policy, so route/physical is disabled as a deployment contribution and kept diagnostic-only."
-    },
-    {
-      "requirement": "joint multi-agent consistency improves trajectory deployment policy",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json",
-      "note": "Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout."
-    },
-    {
-      "requirement": "neural gain/harm/switch distillation improves deployment without base-switch leakage",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json",
-      "note": "The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY."
-    },
-    {
-      "requirement": "no-base-switch distiller bootstrap and ablation evidence",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json",
-      "note": "Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only."
-    },
-    {
-      "requirement": "no-base-switch distiller multi-seed replication",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json",
-      "note": "Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only."
-    },
-    {
-      "requirement": "UCY fallback-only blocker diagnosed and repaired without test tuning",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
-      "note": "UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment."
-    },
-    {
-      "requirement": "UCY repair internal fold/temporal validation",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json",
-      "note": "UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source."
-    },
-    {
-      "requirement": "grouped all-agent rollout consistency under repaired policy",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json",
-      "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC."
-    },
-    {
-      "requirement": "joint latent all-agent rollout prototype trained and audited",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
-      "note": "The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only."
-    },
-    {
-      "requirement": "baseline-relative bounded residual rollout repair attempted",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json",
-      "note": "Residual clipping reduces raw neural damage versus direct joint latent rollout, but the selected test policy is still all/t50/hard negative and not deployable."
-    },
-    {
-      "requirement": "domain/horizon residual policy repair attempted after global residual gate failed",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json",
-      "note": "Validation-only domain/horizon slicing reduces switch rate and protects easy cases, but t50 remains zero and all/hard are not reliably positive, so it is not deployable."
-    },
-    {
-      "requirement": "teacher-guided neural proposal trained and evaluated without inference leakage",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json",
-      "note": "A teacher-guided neural proposal learns from Stage37/group-consistency switch labels and neural proposal scores. Raw test gains are strong across all/t50/t100/hard, but the unguarded proposal exceeded the near-proximity safety delta and is not deployable by itself."
-    },
-    {
-      "requirement": "teacher-guided proposal safety repair passes deployment gates",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json",
-      "note": "Validation-selected proximity repair restores joint safety and still improves the current group-consistency multi-seed safety-buffer basis on all/t50/hard with easy=0. This is a strong single fresh run; multi-seed/CI is still required before freezing it as the final M3W-Neural v1 policy."
-    },
-    {
-      "requirement": "teacher-guided repair bootstrap CI and ablation evidence",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
-      "note": "Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required."
-    },
-    {
-      "requirement": "teacher-guided repair multi-seed replication",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json",
-      "note": "Three fresh teacher-guided seeds each select policy and proximity guard on validation, then evaluate test once. All seeds are positive on all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and all three external domains positive."
-    },
-    {
-      "requirement": "source-level held-out validation repair audit",
-      "status": "partial",
-      "evidence": "outputs/stage41_external_split/stage41_source_level_validation_repair.json",
-      "note": "Frozen teacher-guided candidate is positive on three held-out source files and a UCY-family surrogate, but pure UCY source-level validation remains blocked by the lack of an independent UCY validation source after duplicate-like zara03 exclusion."
-    },
-    {
-      "requirement": "bounded continuous neural dynamics without full replacement",
-      "status": "failed",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
-      "note": "The bounded blend has strong all/t50/t100/hard signal, but test easy degradation is about 20.7%, far above the 2% safety gate. It is not deployable and shows current train/val easy stress is not representative enough for non-fallback neural dynamics."
-    },
-    {
-      "requirement": "safe-switch bounded continuous neural dynamics",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
-      "note": "Composite-tail safe switching constrains the blend to the validation-repaired teacher switch rows and a small low-risk tail. It improves the teacher-guided repair on all/t50/t100/hard with easy=0 in a fresh run, but still needs bootstrap/multiseed and source-level validation before final freeze."
-    },
-    {
-      "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
-      "note": "Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation."
-    },
-    {
-      "requirement": "group-consistency distiller bootstrap and ablation evidence",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json",
-      "note": "Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head."
-    },
-    {
-      "requirement": "group-consistency distiller multi-seed replication with joint-safety buffer",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json and outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json",
-      "note": "The first three-seed run had stable positive FDE gains but one seed exceeded the near-proximity delta threshold. A validation-selected safety-buffer repair passes all three seeds with positive all/t50/t100/hard, easy=0, and max collision delta below the joint-safety ceiling."
-    },
-    {
-      "requirement": "t100 diagnostic positive or blocker analysis",
-      "status": "complete",
-      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
-    },
-    {
-      "requirement": "JEPA contribution proven or disabled",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json",
-      "note": "Current audited JEPA variants are non-collapse in several stages but do not produce deployable downstream lift. JEPA is disabled from the M3W-Neural v1 deployable path and kept diagnostic-only."
-    },
-    {
-      "requirement": "Stage5C disabled and SMC disabled",
-      "status": "complete",
-      "evidence": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json"
-    },
-    {
-      "requirement": "no metric/seconds/foundation/true-3D overclaim",
-      "status": "complete",
-      "evidence": "outputs/m3w_neural_v1/report_m3w_neural_v1.md and data/model cards"
-    },
-    {
-      "requirement": "composite-tail bounded neural dynamics replication",
-      "status": "complete",
-      "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json",
-      "note": "Composite-tail has both 2000-bootstrap support and three seed-aware replications. Every seed is deployable, positive on all/t50/t100/hard, easy=0, positive in three external domains, and strictly improves its teacher-guided repair on all/t50/t100/hard."
-    },
-    {
-      "requirement": "pure UCY source-heldout frozen-policy validation",
-      "status": "complete",
-      "evidence": "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
-      "note": "Positive on UCY zara01/zara02/zara03 with easy=0; not a pure UCY-only retrain/select/test protocol."
-    }
-  ],
-  "next_highest_value_actions": [
-    "Acquire or rebuild a true pure-UCY source-level validation split; current evidence has positive held-out source files and a UCY-family surrogate, but pure UCY source-level validation remains blocked.",
-    "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
-    "Run independent external split replication on additional non-duplicate external sources before accepting deployment beyond candidate status."
-  ],
-  "statistically_supported_deployable_reference": "teacher-guided proposal safety-repaired candidate under Stage37 safety floor",
-  "composite_tail_bounded_neural_blend_summary": {
-    "source": "fresh_run",
-    "evidence": "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
-    "policy": {
-      "type": "composite_tail",
-      "switch_alpha": 1.0,
-      "tail_alpha": 0.08,
-      "tail_gain_min": 0.05,
-      "tail_harm_max": 0.35,
-      "tail_uncertainty_max": 0.35,
-      "tail_teacher_min": 0.45
-    },
-    "deployable": true,
-    "non_fallback_continuous_neural_contribution": true,
-    "beats_teacher_guided_repair_single_run": true,
-    "metrics": {
-      "rows": 55528,
-      "all_improvement": 0.2102513255185352,
-      "t10_improvement": 0.4810525302753197,
-      "t25_improvement": 0.10635705713395971,
-      "t50_improvement": 0.13652231450154184,
-      "t100_improvement": 0.14694086716388166,
-      "hard_failure_improvement": 0.20384916307933942,
-      "easy_degradation": 0.0,
-      "harm_over_fallback": -0.1006325590804755,
-      "switch_rate": 0.3410171445036738,
-      "regret_to_oracle": -0.12174191762078287,
-      "by_domain": {
-        "ETH_UCY": {
-          "rows": 25901,
-          "all_improvement": 0.19062711907148822,
-          "t50_improvement": 0.13578010021258757,
-          "t100_improvement": 0.1345954848165677,
-          "hard_failure_improvement": 0.18707724155054317,
-          "easy_degradation": 0.0,
-          "switch_rate": 0.39380718891162503
-        },
-        "TrajNet": {
-          "rows": 20087,
-          "all_improvement": 0.2295029620675162,
-          "t50_improvement": 0.166209193926539,
-          "t100_improvement": 0.14024617113502336,
-          "hard_failure_improvement": 0.2195777066718413,
-          "easy_degradation": 0.0,
-          "switch_rate": 0.27654702046099466
-        },
-        "UCY": {
-          "rows": 9540,
-          "all_improvement": 0.23265884628641076,
-          "t50_improvement": 0.0913767291690647,
-          "t100_improvement": 0.19255939765315455,
-          "hard_failure_improvement": 0.22601578755697505,
-          "easy_degradation": 0.0,
-          "switch_rate": 0.33343815513626834
-        }
-      },
-      "alpha_mean": 0.29906641694280367,
-      "alpha_positive_rate": 0.3410171445036738,
-      "collision_delta_vs_floor_005": -0.0038702813749587617,
-      "smoothness_jagged_delta": 0.0
-    },
-    "lift_over_teacher_guided_repair": {
-      "all_delta": 0.006654217800260431,
-      "t50_delta": 0.005358324070314557,
-      "t100_delta": 0.013229138842131616,
-      "hard_delta": 0.0072769072843839044,
-      "easy_delta": 0.0
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_labels_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "blend_policy_selected_on_val": true,
-      "safe_switch_gate_selected_before_test": true,
-      "safe_switch_alpha_selected_on_val": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "interpretation": "Strongest fresh-run bounded neural dynamics candidate. It improves the teacher-guided repair on all/t50/t100/hard with easy=0, but still needs bootstrap/multiseed and source-level validation before final freeze."
-  },
   "composite_tail_bounded_neural_evidence_summary": {
-    "source": "fresh_run",
-    "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json",
     "evidence_pass": true,
     "strict_delta_vs_teacher_repair_pass": true,
-    "test_metrics": {
-      "rows": 55528,
-      "all_improvement": 0.2102513255185352,
-      "t10_improvement": 0.4810525302753197,
-      "t25_improvement": 0.10635705713395971,
-      "t50_improvement": 0.13652231450154184,
-      "t100_improvement": 0.14694086716388166,
-      "hard_failure_improvement": 0.20384916307933942,
-      "easy_degradation": 0.0,
-      "harm_over_fallback": -0.1006325590804755,
-      "switch_rate": 0.3410171445036738,
-      "regret_to_oracle": -0.12174191762078287,
-      "by_domain": {
-        "ETH_UCY": {
-          "rows": 25901,
-          "all_improvement": 0.19062711907148822,
-          "t50_improvement": 0.13578010021258757,
-          "t100_improvement": 0.1345954848165677,
-          "hard_failure_improvement": 0.18707724155054317,
-          "easy_degradation": 0.0,
-          "switch_rate": 0.39380718891162503
-        },
-        "TrajNet": {
-          "rows": 20087,
-          "all_improvement": 0.2295029620675162,
-          "t50_improvement": 0.166209193926539,
-          "t100_improvement": 0.14024617113502336,
-          "hard_failure_improvement": 0.2195777066718413,
-          "easy_degradation": 0.0,
-          "switch_rate": 0.27654702046099466
-        },
-        "UCY": {
-          "rows": 9540,
-          "all_improvement": 0.23265884628641076,
-          "t50_improvement": 0.0913767291690647,
-          "t100_improvement": 0.19255939765315455,
-          "hard_failure_improvement": 0.22601578755697505,
-          "easy_degradation": 0.0,
-          "switch_rate": 0.33343815513626834
-        }
-      },
-      "alpha_mean": 0.29906641694280367,
-      "alpha_positive_rate": 0.3410171445036738,
-      "collision_delta_vs_floor_005": -0.0038702813749587617,
-      "smoothness_jagged_delta": 0.0
-    },
-    "bootstrap_n": 2000,
-    "bootstrap": {
-      "all": {
-        "low": 0.20671347297933704,
-        "mid": 0.21024756504458747,
-        "high": 0.21392424931161438,
-        "n": 55528,
-        "bootstrap_n": 2000
-      },
-      "t50": {
-        "low": 0.13060829691569112,
-        "mid": 0.1365613619661028,
-        "high": 0.14255977524359317,
-        "n": 13689,
-        "bootstrap_n": 2000
-      },
-      "t100": {
-        "low": 0.13962817164239194,
-        "mid": 0.14686885110468462,
-        "high": 0.15366490155106707,
-        "n": 9905,
-        "bootstrap_n": 2000
-      },
-      "hard_failure": {
-        "low": 0.19986489207982036,
-        "mid": 0.20386600719360953,
-        "high": 0.2076275026471252,
-        "n": 41741,
-        "bootstrap_n": 2000
-      },
-      "by_domain": {
-        "ETH_UCY": {
-          "low": 0.18599384555584145,
-          "mid": 0.19073564530095888,
-          "high": 0.1955701691735668,
-          "n": 25901,
-          "bootstrap_n": 2000
-        },
-        "TrajNet": {
-          "low": 0.22276512954043204,
-          "mid": 0.2295355015467448,
-          "high": 0.23639811765905858,
-          "n": 20087,
-          "bootstrap_n": 2000
-        },
-        "UCY": {
-          "low": 0.22351313339436668,
-          "mid": 0.2325102275833334,
-          "high": 0.24162313399513752,
-          "n": 9540,
-          "bootstrap_n": 2000
-        }
-      },
-      "by_domain_t50": {
-        "ETH_UCY": {
-          "low": 0.12750255552780945,
-          "mid": 0.13558643046357088,
-          "high": 0.1440026787931363,
-          "n": 6422,
-          "bootstrap_n": 2000
-        },
-        "TrajNet": {
-          "low": 0.15462906779492275,
-          "mid": 0.1660707354169929,
-          "high": 0.1777218761380531,
-          "n": 4927,
-          "bootstrap_n": 2000
-        },
-        "UCY": {
-          "low": 0.07928146457171144,
-          "mid": 0.09100281907547825,
-          "high": 0.10375592877180057,
-          "n": 2340,
-          "bootstrap_n": 2000
-        }
-      }
-    },
-    "delta_vs_teacher_repair_bootstrap": {
-      "all": {
-        "low": 0.006356558489780059,
-        "mid": 0.006644601574182285,
-        "high": 0.006965479447114583,
-        "n": 55528,
-        "bootstrap_n": 2000
-      },
-      "t50": {
-        "low": 0.004948699786380758,
-        "mid": 0.005351347932085471,
-        "high": 0.005787533399090685,
-        "n": 13689,
-        "bootstrap_n": 2000
-      },
-      "t100": {
-        "low": 0.01249062196636364,
-        "mid": 0.013207870465148541,
-        "high": 0.013934068040317384,
-        "n": 9905,
-        "bootstrap_n": 2000
-      },
-      "hard_failure": {
-        "low": 0.006931417129331407,
-        "mid": 0.007279936216473937,
-        "high": 0.00762101457222023,
-        "n": 41741,
-        "bootstrap_n": 2000
-      },
-      "by_domain": {
-        "ETH_UCY": {
-          "low": 0.0093767683420562,
-          "mid": 0.00984037850905184,
-          "high": 0.010293036997054769,
-          "n": 25901,
-          "bootstrap_n": 2000
-        },
-        "TrajNet": {
-          "low": 0.0030013363628150934,
-          "mid": 0.003485101265804036,
-          "high": 0.004006865731707745,
-          "n": 20087,
-          "bootstrap_n": 2000
-        },
-        "UCY": {
-          "low": 0.002525777608060234,
-          "mid": 0.003065841932509028,
-          "high": 0.0037204764256919595,
-          "n": 9540,
-          "bootstrap_n": 2000
-        }
-      },
-      "by_domain_t50": {
-        "ETH_UCY": {
-          "low": 0.008664036824087399,
-          "mid": 0.009390221050192216,
-          "high": 0.010105058886943902,
-          "n": 6422,
-          "bootstrap_n": 2000
-        },
-        "TrajNet": {
-          "low": 0.0012776706550283539,
-          "mid": 0.0017074766600359559,
-          "high": 0.0021983394135865835,
-          "n": 4927,
-          "bootstrap_n": 2000
-        },
-        "UCY": {
-          "low": 3.7130780846311715e-05,
-          "mid": 0.00021169597985321031,
-          "high": 0.0004256808037433112,
-          "n": 2340,
-          "bootstrap_n": 2000
-        }
-      }
-    },
-    "alpha_stats": {
-      "mean": 0.29906641694280367,
-      "positive_rate": 0.3410171445036738,
-      "full_switch_alpha_rate": 0.2954185275896845,
-      "tail_alpha_rate": 0.04559861691398934
-    },
-    "ablation_no_tail_delta": {
-      "all_delta": 0.006654217800260431,
-      "t50_delta": 0.005358324070314557,
-      "t100_delta": 0.013229138842131616,
-      "hard_delta": 0.0072769072843839044,
-      "easy_delta": 0.0
-    },
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_labels_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "policy_selected_on_val": true,
-      "bootstrap_after_freeze": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "interpretation": "Frozen composite-tail policy has positive 2000-bootstrap CI lows on all/t50/t100/hard and positive delta-vs-teacher CI lows. Multiseed and pure-UCY source-level validation are still pending."
+    "all_improvement": 0.2102513255185352,
+    "t50_improvement": 0.13652231450154184,
+    "t100_improvement": 0.14694086716388166,
+    "hard_failure_improvement": 0.20384916307933942,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.3410171445036738,
+    "collision_delta_vs_floor_005": -0.0038702813749587617,
+    "bootstrap_all_low": 0.20671347297933704,
+    "bootstrap_t50_low": 0.13060829691569112,
+    "bootstrap_t100_low": 0.13962817164239194,
+    "bootstrap_hard_low": 0.19986489207982036,
+    "delta_vs_teacher_all_low": 0.006356558489780059,
+    "delta_vs_teacher_t50_low": 0.004948699786380758,
+    "delta_vs_teacher_t100_low": 0.01249062196636364,
+    "delta_vs_teacher_hard_low": 0.006931417129331407
   },
   "composite_tail_bounded_neural_multiseed_summary": {
-    "source": "fresh_run",
-    "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_multiseed.json",
-    "seed_source": "cached_verified_teacher_guided_multiseed_checkpoints_re_evaluated_fresh",
-    "seeds": [
-      11,
-      17,
-      23
-    ],
     "replication_pass": true,
     "strict_delta_vs_teacher_repair_pass": true,
     "metric_summary": {
@@ -1115,22 +595,9 @@
       3,
       3,
       3
-    ],
-    "no_leakage": {
-      "future_endpoint_input": false,
-      "future_labels_eval_only": true,
-      "central_velocity": false,
-      "test_endpoint_goals": false,
-      "test_threshold_tuning": false,
-      "policy_selected_on_val": true,
-      "stage5c_executed": false,
-      "smc_enabled": false
-    },
-    "interpretation": "Composite-tail passes three seed-aware evaluations using the independently trained teacher-guided seed checkpoints; each seed selects composite-tail on validation and evaluates test once."
+    ]
   },
   "pure_ucy_source_heldout_validation_summary": {
-    "source": "fresh_run",
-    "report": "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
     "pure_ucy_source_heldout_gate": true,
     "pure_ucy_three_way_train_val_test_gate": false,
     "target_results": {
@@ -1369,9 +836,212 @@
         }
       }
     },
-    "remaining_blocker": "This validates frozen-policy UCY source-heldout behavior, but it is not a pure UCY-only retrain/select/test protocol because the frozen model and safety floor were trained on mixed external train data.",
-    "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D.",
-    "stage5c_executed": false,
-    "smc_enabled": false
-  }
+    "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
+  },
+  "jepa_deployment_decision_summary": {
+    "decision": "disable_jepa_in_deployable_path",
+    "disable_jepa_in_deployable_path": true,
+    "attempt_count": 7,
+    "non_collapse_attempt_count": 7,
+    "deployable_positive_attempt_count": 0,
+    "keep_jepa_for_diagnostic_research": true
+  },
+  "requirements": [
+    {
+      "requirement": "external split covers ETH/UCY/TrajNet or blockers",
+      "status": "complete",
+      "evidence": "outputs/stage41_external_split/report.json and Stage41 gates"
+    },
+    {
+      "requirement": "no leakage: future endpoint label/eval only, no central velocity, no test endpoint goals",
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json"
+    },
+    {
+      "requirement": "neural model exceeds Stage37 on external all/t50/hard with easy <=2",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "at least two held-out external domains positive",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "neural without external fallback not catastrophic",
+      "status": "complete",
+      "evidence": "fresh self-gated endpoint records no-external-fallback safe, but raw ungated endpoint remains unsafe in Stage41 reports",
+      "note": "The self-gated neural output is safe; raw ungated endpoint dynamics remain unsafe and are not deployable."
+    },
+    {
+      "requirement": "all active agents future world-state, not only endpoint selector",
+      "status": "partial",
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
+      "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete."
+    },
+    {
+      "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
+      "note": "Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. The separate goal/route/physical repair pass adds a non-degenerate physical-challenge label."
+    },
+    {
+      "requirement": "explicit goal/route head and non-degenerate physical-consistency target",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json",
+      "note": "Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs."
+    },
+    {
+      "requirement": "route/physical heads deployment contribution proven or disabled",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_route_physical_policy_integration.json, stage41_joint_route_conditioned_world_state.json, and stage41_route_physical_group_consistency.json",
+      "note": "Auxiliary route/physical heads are predictive diagnostics. Post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency did not improve the deployable trajectory policy, so route/physical is disabled as a deployment contribution and kept diagnostic-only."
+    },
+    {
+      "requirement": "joint multi-agent consistency improves trajectory deployment policy",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_multiagent_consistency.json",
+      "note": "Current-frame group consistency adds a tiny positive deployment-policy lift over the full-trajectory reference and gives UCY a small positive switch rate, but it is still post-hoc group calibration rather than a jointly consistent latent rollout."
+    },
+    {
+      "requirement": "neural gain/harm/switch distillation improves deployment without base-switch leakage",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation.json",
+      "note": "The deployable distiller-only policy learns gain/harm/switch from train labels and uses past/static/full-trajectory prediction signals at inference. It improves ETH_UCY and TrajNet but still falls back on UCY."
+    },
+    {
+      "requirement": "no-base-switch distiller bootstrap and ablation evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json",
+      "note": "Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only."
+    },
+    {
+      "requirement": "no-base-switch distiller multi-seed replication",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json",
+      "note": "Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only."
+    },
+    {
+      "requirement": "UCY fallback-only blocker diagnosed and repaired without test tuning",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
+      "note": "UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment."
+    },
+    {
+      "requirement": "UCY repair internal fold/temporal validation",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json",
+      "note": "UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source."
+    },
+    {
+      "requirement": "grouped all-agent rollout consistency under repaired policy",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_rollout_consistency.json",
+      "note": "Audits same-frame multi-agent selected future waypoints for switch coherence, proximity risk, smoothness, and multi-agent improvement. This is grouped rollout evidence, not Stage5C latent generation or SMC."
+    },
+    {
+      "requirement": "joint latent all-agent rollout prototype trained and audited",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
+      "note": "The group-token Transformer trains and auxiliary interaction/occupancy/future-close heads are useful, but deployment is disabled because raw neural rollout is FDE-negative and safe validation policy chooses fallback-only."
+    },
+    {
+      "requirement": "baseline-relative bounded residual rollout repair attempted",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json",
+      "note": "Residual clipping reduces raw neural damage versus direct joint latent rollout, but the selected test policy is still all/t50/hard negative and not deployable."
+    },
+    {
+      "requirement": "domain/horizon residual policy repair attempted after global residual gate failed",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json",
+      "note": "Validation-only domain/horizon slicing reduces switch rate and protects easy cases, but t50 remains zero and all/hard are not reliably positive, so it is not deployable."
+    },
+    {
+      "requirement": "teacher-guided neural proposal trained and evaluated without inference leakage",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json",
+      "note": "A teacher-guided neural proposal learns from Stage37/group-consistency switch labels and neural proposal scores. Raw test gains are strong across all/t50/t100/hard, but the unguarded proposal exceeded the near-proximity safety delta and is not deployable by itself."
+    },
+    {
+      "requirement": "teacher-guided proposal safety repair passes deployment gates",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json",
+      "note": "Validation-selected proximity repair restores joint safety and still improves the current group-consistency multi-seed safety-buffer basis on all/t50/hard with easy=0. This is a strong single fresh run; multi-seed/CI is still required before freezing it as the final M3W-Neural v1 policy."
+    },
+    {
+      "requirement": "teacher-guided repair bootstrap CI and ablation evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
+      "note": "Frozen policy/guard evidence adds 2000-bootstrap confidence intervals and feature masking. CI lows are positive for all/t50/t100/hard and every external domain; ablations show group/neighbor consistency features are necessary. No-fallback neural remains unsafe for easy cases, so Stage37 safety fallback remains required."
+    },
+    {
+      "requirement": "teacher-guided repair multi-seed replication",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_multiseed.json",
+      "note": "Three fresh teacher-guided seeds each select policy and proximity guard on validation, then evaluate test once. All seeds are positive on all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and all three external domains positive."
+    },
+    {
+      "requirement": "composite-tail bounded neural dynamics improves teacher repair",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json",
+      "note": "Composite-tail keeps the validation-repaired teacher switch set and adds a low-risk bounded neural tail; it improves the teacher repair on all/t50/t100/hard while preserving easy cases."
+    },
+    {
+      "requirement": "composite-tail bootstrap and multi-seed evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json and stage41_composite_tail_multiseed.json",
+      "note": "Composite-tail has positive bootstrap lower bounds versus the floor and versus teacher repair, plus three seed-aware evaluations with positive all/t50/t100/hard deltas and easy=0."
+    },
+    {
+      "requirement": "pure UCY source-heldout frozen-policy validation",
+      "status": "complete",
+      "evidence": "outputs/stage41_external_split/stage41_pure_ucy_source_validation.json",
+      "note": "Composite-tail policy is selected on non-UCY validation rows only and evaluated once on UCY zara01/zara02/zara03. This is not a pure UCY-only retrain/select/test protocol."
+    },
+    {
+      "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
+      "note": "Trains a neural safe-switch/gain/unsafe head from train labels and selects thresholds on validation. It improves the fixed proximity guard while preserving easy cases and joint proximity safety, but it is still a guarded selector/dynamics head rather than Stage5C latent generation."
+    },
+    {
+      "requirement": "group-consistency distiller bootstrap and ablation evidence",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_evidence.json",
+      "note": "Bootstrap lower bounds are positive for all/t50/t100/hard. Ablations show the new group-consistency/proposal-score features are necessary, while some older feature blocks are not positive in this head."
+    },
+    {
+      "requirement": "group-consistency distiller multi-seed replication with joint-safety buffer",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed.json and outputs/stage41_fresh_confirmation/stage41_group_consistency_multiseed_repair.json",
+      "note": "The first three-seed run had stable positive FDE gains but one seed exceeded the near-proximity delta threshold. A validation-selected safety-buffer repair passes all three seeds with positive all/t50/t100/hard, easy=0, and max collision delta below the joint-safety ceiling."
+    },
+    {
+      "requirement": "t100 diagnostic positive or blocker analysis",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "JEPA contribution proven or disabled",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_jepa_deployment_decision.json",
+      "note": "Current audited JEPA variants are non-collapse in several stages but do not produce deployable downstream lift. JEPA is disabled from the M3W-Neural v1 deployable path and kept diagnostic-only."
+    },
+    {
+      "requirement": "Stage5C disabled and SMC disabled",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json"
+    },
+    {
+      "requirement": "no metric/seconds/foundation/true-3D overclaim",
+      "status": "complete",
+      "evidence": "outputs/m3w_neural_v1/report_m3w_neural_v1.md and data/model cards"
+    }
+  ],
+  "next_highest_value_actions": [
+    "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
+    "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
+    "Run independent external split replication before accepting deployment beyond candidate status."
+  ]
 }
