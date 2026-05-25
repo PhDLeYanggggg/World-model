@@ -1039,11 +1039,18 @@ full_trajectory_world_state_easy = 0.0
 full_trajectory_world_state_positive_domains = 2
 full_trajectory_world_state_interaction_auroc = 0.9614642176190807
 full_trajectory_world_state_occupancy_auroc = 0.9486653948303418
+goal_route_physical_pass = True
+goal_route_top1 = 0.7590404840801037
+goal_route_majority_top1 = 0.5532884310618067
+goal_route_lift_over_majority = 0.20575205301829702
+physical_challenge_auroc = 0.9523668831032517
+physical_challenge_auprc = 0.9931913407537012
+physical_challenge_positive_rate = 0.8778634202564471
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: make the full-trajectory probe jointly consistent across agents, add an explicit goal/route head, and repair the degenerate physical-validity label; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: use the route/physical heads in the deployment policy and move from per-agent all-agent-context prediction to jointly consistent multi-agent future rollout; current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

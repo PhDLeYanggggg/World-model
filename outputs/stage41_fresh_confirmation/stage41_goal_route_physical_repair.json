@@ -1,0 +1,489 @@
+{
+  "source": "fresh_run",
+  "protocol_status": "goal_route_physical_repair",
+  "best_name": "goal_route_physical_hard",
+  "ensemble_test_metrics": {
+    "rows": 55528,
+    "route": {
+      "top1": 0.7590404840801037,
+      "top3": 0.9820631032992364,
+      "nll": 0.5988429293767238,
+      "majority_top1": 0.5532884310618067,
+      "majority_class": "straight",
+      "distribution": {
+        "stop": 17482,
+        "straight": 30723,
+        "left_turn": 483,
+        "right_turn": 482,
+        "reverse_or_uturn": 393,
+        "interaction_detour": 5965
+      }
+    },
+    "physical_challenge": {
+      "auroc": 0.9523668831032517,
+      "auprc": 0.9931913407537012,
+      "positive_rate": 0.8778634202564471
+    },
+    "by_domain": {
+      "ETH_UCY": {
+        "route": {
+          "top1": 0.7640631635844176,
+          "top3": 0.9847110150187252,
+          "nll": 0.5903779391377233,
+          "majority_top1": 0.5532218833249681,
+          "majority_class": "straight",
+          "distribution": {
+            "stop": 7476,
+            "straight": 14329,
+            "left_turn": 272,
+            "right_turn": 172,
+            "reverse_or_uturn": 162,
+            "interaction_detour": 3490
+          }
+        },
+        "physical": {
+          "auroc": 0.9735173958580418,
+          "auprc": 0.9964565344739191,
+          "positive_rate": 0.8820122775182425
+        },
+        "rows": 25901
+      },
+      "TrajNet": {
+        "route": {
+          "top1": 0.7603922935231742,
+          "top3": 0.9822273111962961,
+          "nll": 0.5821539214035469,
+          "majority_top1": 0.4833972220839349,
+          "majority_class": "straight",
+          "distribution": {
+            "stop": 8175,
+            "straight": 9710,
+            "left_turn": 133,
+            "right_turn": 168,
+            "reverse_or_uturn": 143,
+            "interaction_detour": 1758
+          }
+        },
+        "physical": {
+          "auroc": 0.9435928504104263,
+          "auprc": 0.9923970538424153,
+          "positive_rate": 0.8876387713446507
+        },
+        "rows": 20087
+      },
+      "UCY": {
+        "route": {
+          "top1": 0.7425576519916143,
+          "top3": 0.9745283018867924,
+          "nll": 0.6569649225986893,
+          "majority_top1": 0.70062893081761,
+          "majority_class": "straight",
+          "distribution": {
+            "stop": 1831,
+            "straight": 6684,
+            "left_turn": 78,
+            "right_turn": 142,
+            "reverse_or_uturn": 88,
+            "interaction_detour": 717
+          }
+        },
+        "physical": {
+          "auroc": 0.971734434160272,
+          "auprc": 0.9947555125346907,
+          "positive_rate": 0.8460167714884697
+        },
+        "rows": 9540
+      }
+    },
+    "route_lift_over_majority": 0.20575205301829702,
+    "non_degenerate_physical_label": true
+  },
+  "pass_gate": true,
+  "label_report": {
+    "source": "fresh_run",
+    "route_names": [
+      "stop",
+      "straight",
+      "left_turn",
+      "right_turn",
+      "reverse_or_uturn",
+      "interaction_detour"
+    ],
+    "splits": {
+      "train": {
+        "rows": 219667,
+        "route_distribution": {
+          "stop": 74632,
+          "straight": 97559,
+          "left_turn": 2392,
+          "right_turn": 2638,
+          "reverse_or_uturn": 2429,
+          "interaction_detour": 40017
+        },
+        "physical_challenge_positive": 198874,
+        "physical_challenge_rate": 0.9053430874915213,
+        "endpoint_only_rows": 67883,
+        "speed_change_p95": 1.9999943971633911,
+        "max_turn_p95": 1.219896912574768,
+        "domains": {
+          "ETH_UCY": 108794,
+          "TrajNet": 63650,
+          "UCY": 47223
+        }
+      },
+      "val": {
+        "rows": 53256,
+        "route_distribution": {
+          "stop": 12584,
+          "straight": 29960,
+          "left_turn": 801,
+          "right_turn": 961,
+          "reverse_or_uturn": 198,
+          "interaction_detour": 8752
+        },
+        "physical_challenge_positive": 47221,
+        "physical_challenge_rate": 0.8866794351810124,
+        "endpoint_only_rows": 16497,
+        "speed_change_p95": 1.9999924898147583,
+        "max_turn_p95": 0.4872189164161682,
+        "domains": {
+          "ETH_UCY": 16103,
+          "TrajNet": 37153
+        }
+      },
+      "test": {
+        "rows": 55528,
+        "route_distribution": {
+          "stop": 17482,
+          "straight": 30723,
+          "left_turn": 483,
+          "right_turn": 482,
+          "reverse_or_uturn": 393,
+          "interaction_detour": 5965
+        },
+        "physical_challenge_positive": 48746,
+        "physical_challenge_rate": 0.8778634202564471,
+        "endpoint_only_rows": 16726,
+        "speed_change_p95": 1.9999934434890747,
+        "max_turn_p95": 0.46364760398864746,
+        "domains": {
+          "ETH_UCY": 25901,
+          "TrajNet": 20087,
+          "UCY": 9540
+        }
+      }
+    },
+    "no_leakage": {
+      "route_label_from_future_waypoints": "label_eval_only",
+      "physical_challenge_from_future_waypoints": "label_eval_only",
+      "future_endpoint_input": false,
+      "future_waypoints_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false
+    }
+  },
+  "trials": {
+    "goal_route_balanced": {
+      "source": "fresh_run",
+      "trial": {
+        "name": "goal_route_balanced",
+        "width": 72,
+        "dropout": 0.08,
+        "lr": 0.0008,
+        "route_w": 1.0,
+        "physical_w": 0.8,
+        "hard_w": 1.5,
+        "t100_w": 1.0,
+        "seed": 1
+      },
+      "train": {
+        "source": "fresh_run",
+        "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_goal_route_balanced.pt",
+        "heartbeat": "outputs/stage41_fresh_confirmation/goal_route_balanced_heartbeat.json",
+        "best": {
+          "val_loss": 1.0594384670257568,
+          "epoch": 4,
+          "train_loss": 0.26486510197783625
+        }
+      },
+      "val_metrics": {
+        "rows": 53256,
+        "route": {
+          "top1": 0.6838478293525612,
+          "top3": 0.9656376746282109,
+          "nll": 0.7575811971750148,
+          "majority_top1": 0.562565720294427,
+          "majority_class": "straight",
+          "distribution": {
+            "stop": 12584,
+            "straight": 29960,
+            "left_turn": 801,
+            "right_turn": 961,
+            "reverse_or_uturn": 198,
+            "interaction_detour": 8752
+          }
+        },
+        "physical_challenge": {
+          "auroc": 0.9604109408373926,
+          "auprc": 0.9948428466940687,
+          "positive_rate": 0.8866794351810124
+        },
+        "by_domain": {
+          "ETH_UCY": {
+            "route": {
+              "top1": 0.7810966900577532,
+              "top3": 0.9824877352046203,
+              "nll": 0.590710978436497,
+              "majority_top1": 0.7365708253120536,
+              "majority_class": "straight",
+              "distribution": {
+                "stop": 2190,
+                "straight": 11861,
+                "left_turn": 160,
+                "right_turn": 170,
+                "reverse_or_uturn": 88,
+                "interaction_detour": 1634
+              }
+            },
+            "physical": {
+              "auroc": 0.9765985656234715,
+              "auprc": 0.9973153475123276,
+              "positive_rate": 0.8986524250139726
+            },
+            "rows": 16103
+          },
+          "TrajNet": {
+            "route": {
+              "top1": 0.6416978440502786,
+              "top3": 0.9583344548219525,
+              "nll": 0.829906746453575,
+              "majority_top1": 0.4871477404247302,
+              "majority_class": "straight",
+              "distribution": {
+                "stop": 10394,
+                "straight": 18099,
+                "left_turn": 641,
+                "right_turn": 791,
+                "reverse_or_uturn": 110,
+                "interaction_detour": 7118
+              }
+            },
+            "physical": {
+              "auroc": 0.9549098064643642,
+              "auprc": 0.9938001149633916,
+              "positive_rate": 0.8814900546389255
+            },
+            "rows": 37153
+          }
+        },
+        "route_lift_over_majority": 0.12128210905813419,
+        "non_degenerate_physical_label": true
+      },
+      "val_score": 0.6014875794768305
+    },
+    "goal_route_physical_hard": {
+      "source": "fresh_run",
+      "trial": {
+        "name": "goal_route_physical_hard",
+        "width": 80,
+        "dropout": 0.1,
+        "lr": 0.0007,
+        "route_w": 0.8,
+        "physical_w": 1.2,
+        "hard_w": 3.0,
+        "t100_w": 1.5,
+        "seed": 2
+      },
+      "train": {
+        "source": "fresh_run",
+        "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_goal_route_physical_hard.pt",
+        "heartbeat": "outputs/stage41_fresh_confirmation/goal_route_physical_hard_heartbeat.json",
+        "best": {
+          "val_loss": 1.0861830711364746,
+          "epoch": 4,
+          "train_loss": 0.3776606691438098
+        }
+      },
+      "val_metrics": {
+        "rows": 53256,
+        "route": {
+          "top1": 0.7114879074658255,
+          "top3": 0.965806669671023,
+          "nll": 0.7082032741775696,
+          "majority_top1": 0.562565720294427,
+          "majority_class": "straight",
+          "distribution": {
+            "stop": 12584,
+            "straight": 29960,
+            "left_turn": 801,
+            "right_turn": 961,
+            "reverse_or_uturn": 198,
+            "interaction_detour": 8752
+          }
+        },
+        "physical_challenge": {
+          "auroc": 0.9657385488780417,
+          "auprc": 0.9956096208749413,
+          "positive_rate": 0.8866794351810124
+        },
+        "by_domain": {
+          "ETH_UCY": {
+            "route": {
+              "top1": 0.8143203129851581,
+              "top3": 0.9799416257840154,
+              "nll": 0.5305838201914095,
+              "majority_top1": 0.7365708253120536,
+              "majority_class": "straight",
+              "distribution": {
+                "stop": 2190,
+                "straight": 11861,
+                "left_turn": 160,
+                "right_turn": 170,
+                "reverse_or_uturn": 88,
+                "interaction_detour": 1634
+              }
+            },
+            "physical": {
+              "auroc": 0.981829658302406,
+              "auprc": 0.997978601344986,
+              "positive_rate": 0.8986524250139726
+            },
+            "rows": 16103
+          },
+          "TrajNet": {
+            "route": {
+              "top1": 0.6669178801173525,
+              "top3": 0.9596802411649127,
+              "nll": 0.7851877994524905,
+              "majority_top1": 0.4871477404247302,
+              "majority_class": "straight",
+              "distribution": {
+                "stop": 10394,
+                "straight": 18099,
+                "left_turn": 641,
+                "right_turn": 791,
+                "reverse_or_uturn": 110,
+                "interaction_detour": 7118
+              }
+            },
+            "physical": {
+              "auroc": 0.9597883608157519,
+              "auprc": 0.9945269648808381,
+              "positive_rate": 0.8814900546389255
+            },
+            "rows": 37153
+          }
+        },
+        "route_lift_over_majority": 0.1489221871713985,
+        "non_degenerate_physical_label": true
+      },
+      "val_score": 0.6317914616104193
+    },
+    "goal_route_long_horizon": {
+      "source": "fresh_run",
+      "trial": {
+        "name": "goal_route_long_horizon",
+        "width": 80,
+        "dropout": 0.08,
+        "lr": 0.0007,
+        "route_w": 1.0,
+        "physical_w": 1.0,
+        "hard_w": 2.0,
+        "t100_w": 3.0,
+        "seed": 3
+      },
+      "train": {
+        "source": "fresh_run",
+        "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_goal_route_long_horizon.pt",
+        "heartbeat": "outputs/stage41_fresh_confirmation/goal_route_long_horizon_heartbeat.json",
+        "best": {
+          "val_loss": 1.1444944143295288,
+          "epoch": 3,
+          "train_loss": 0.3882499127193939
+        }
+      },
+      "val_metrics": {
+        "rows": 53256,
+        "route": {
+          "top1": 0.6991324921135647,
+          "top3": 0.9630651945320715,
+          "nll": 0.7376193567061452,
+          "majority_top1": 0.562565720294427,
+          "majority_class": "straight",
+          "distribution": {
+            "stop": 12584,
+            "straight": 29960,
+            "left_turn": 801,
+            "right_turn": 961,
+            "reverse_or_uturn": 198,
+            "interaction_detour": 8752
+          }
+        },
+        "physical_challenge": {
+          "auroc": 0.960198710966978,
+          "auprc": 0.994807806814399,
+          "positive_rate": 0.8866794351810124
+        },
+        "by_domain": {
+          "ETH_UCY": {
+            "route": {
+              "top1": 0.7552629944730795,
+              "top3": 0.9685151835061789,
+              "nll": 0.6776729625214861,
+              "majority_top1": 0.7365708253120536,
+              "majority_class": "straight",
+              "distribution": {
+                "stop": 2190,
+                "straight": 11861,
+                "left_turn": 160,
+                "right_turn": 170,
+                "reverse_or_uturn": 88,
+                "interaction_detour": 1634
+              }
+            },
+            "physical": {
+              "auroc": 0.9752093775109381,
+              "auprc": 0.9971384402536325,
+              "positive_rate": 0.8986524250139726
+            },
+            "rows": 16103
+          },
+          "TrajNet": {
+            "route": {
+              "top1": 0.6748041880870993,
+              "top3": 0.9607030387855624,
+              "nll": 0.7636015596387635,
+              "majority_top1": 0.4871477404247302,
+              "majority_class": "straight",
+              "distribution": {
+                "stop": 10394,
+                "straight": 18099,
+                "left_turn": 641,
+                "right_turn": 791,
+                "reverse_or_uturn": 110,
+                "interaction_detour": 7118
+              }
+            },
+            "physical": {
+              "auroc": 0.9548662899861822,
+              "auprc": 0.9938128653506981,
+              "positive_rate": 0.8814900546389255
+            },
+            "rows": 37153
+          }
+        },
+        "route_lift_over_majority": 0.13656677181913768,
+        "non_degenerate_physical_label": true
+      },
+      "val_score": 0.6166661273026266
+    }
+  },
+  "no_leakage": {
+    "future_route_label_input": false,
+    "future_physical_label_input": false,
+    "future_waypoints_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false
+  },
+  "caveat": "Route and physical labels are supervised targets from future waypoints only. This repairs auxiliary heads; it is not metric, not true 3D, and does not execute Stage5C or SMC."
+}

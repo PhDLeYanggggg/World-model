@@ -67,6 +67,18 @@
     "occupancy_auroc": 0.9486653948303418,
     "full_trajectory_world_state_pass": true
   },
+  "goal_route_physical_repair_summary": {
+    "pass_gate": true,
+    "best_name": "goal_route_physical_hard",
+    "route_top1": 0.7590404840801037,
+    "route_top3": 0.9820631032992364,
+    "route_majority_top1": 0.5532884310618067,
+    "route_lift_over_majority": 0.20575205301829702,
+    "physical_auroc": 0.9523668831032517,
+    "physical_auprc": 0.9931913407537012,
+    "physical_positive_rate": 0.8778634202564471,
+    "non_degenerate_physical_label": true
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -104,7 +116,13 @@
       "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json",
-      "note": "Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. Physical-validity label is degenerate in this pass and needs a stronger label."
+      "note": "Trajectory ADE/t50/t100/hard improve with easy preserved; interaction and occupancy heads report AUROC/AUPRC. The separate goal/route/physical repair pass adds a non-degenerate physical-challenge label."
+    },
+    {
+      "requirement": "explicit goal/route head and non-degenerate physical-consistency target",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_goal_route_physical_repair.json",
+      "note": "Route top1 beats majority and physical-challenge AUROC is high. Labels are still supervised future-waypoint targets, never inference inputs."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",
@@ -128,8 +146,7 @@
     }
   ],
   "next_highest_value_actions": [
-    "Strengthen the physical-validity label so it is not degenerate and evaluate smoothness/collision constraints.",
-    "Add an explicit goal/route head instead of relying only on Stage37 prototype proxy features.",
+    "Evaluate whether route/physical heads improve trajectory deployment policy instead of only auxiliary diagnostics.",
     "Move from per-agent all-agent-context prediction to a jointly consistent multi-agent future rollout while keeping Stage5C/SMC disabled.",
     "Run independent external split replication before accepting deployment beyond candidate status."
   ]
