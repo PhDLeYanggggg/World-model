@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `578b8aeb131f93e30f8b2ea681b63a8116114f0213ae0cca4bdb6640384e4bf5`
-- git_commit: `e8b477d`
+- package_input_hash: `a59c30bb01536373bb0fc402ba66fe0ce47b03340260e7e4b132d2e648b99c7e`
+- git_commit: `f0e9616`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -18,6 +18,10 @@
 | bootstrap evidence pass | `True` | required for statistical support |
 | multiseed replication pass | `True` | required for replication support |
 | strict delta vs teacher repair pass | `True` | required for latest-policy contribution |
+| all-agent composite world-state pass | `True` | required for full active-agent waypoint evidence |
+| all-agent composite ADE all/t50/t100 | `21.03% / 13.65% / 14.69%` | protected full-waypoint rollout |
+| all-agent composite FDE all/t50 | `19.82% / 17.39%` | endpoint check over same full rollout |
+| all-agent composite multi-agent ADE all/t50 | `20.82% / 13.80%` | same-frame multi-agent rows |
 | pure UCY source-heldout gate | `True` | required for UCY held-out support |
 | pure UCY-only retrain/select/test gate | `False` | reported blocker, not claimed |
 | JEPA deployable path | `disabled` | JEPA had no deployable downstream lift |

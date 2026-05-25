@@ -25,6 +25,7 @@ SOURCE_PATHS = [
     FRESH_DIR / "stage41_bounded_neural_blend_dynamics.json",
     FRESH_DIR / "stage41_composite_tail_evidence.json",
     FRESH_DIR / "stage41_composite_tail_multiseed.json",
+    FRESH_DIR / "stage41_all_agent_composite_world_state.json",
     FRESH_DIR / "stage41_jepa_deployment_decision.json",
     SPLIT_DIR / "report.json",
     SPLIT_DIR / "stage41_source_level_validation_repair.json",
@@ -34,6 +35,7 @@ SOURCE_PATHS = [
     Path("src/stage41_bounded_neural_blend_dynamics.py"),
     Path("src/stage41_composite_tail_evidence.py"),
     Path("src/stage41_composite_tail_multiseed.py"),
+    Path("src/stage41_all_agent_composite_world_state.py"),
     Path("src/stage41_pure_ucy_source_validation.py"),
 ]
 
@@ -131,6 +133,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
     bounded_blend = _safe_read(FRESH_DIR / "stage41_bounded_neural_blend_dynamics.json")
     composite_evidence = _safe_read(FRESH_DIR / "stage41_composite_tail_evidence.json")
     composite_multiseed = _safe_read(FRESH_DIR / "stage41_composite_tail_multiseed.json")
+    all_agent_composite = _safe_read(FRESH_DIR / "stage41_all_agent_composite_world_state.json")
     jepa_decision = _safe_read(FRESH_DIR / "stage41_jepa_deployment_decision.json")
     source_repair = _safe_read(SPLIT_DIR / "stage41_source_level_validation_repair.json")
     pure_ucy = _safe_read(SPLIT_DIR / "stage41_pure_ucy_source_validation.json")
@@ -203,6 +206,18 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "delta_vs_teacher_repair_summary": composite_multiseed.get("delta_vs_teacher_repair_summary"),
             "positive_domain_counts": composite_multiseed.get("positive_domain_counts"),
         },
+        "all_agent_composite_world_state": {
+            "pass": all_agent_composite.get("all_agent_composite_world_state_pass"),
+            "rows": all_agent_composite.get("rows"),
+            "coverage": all_agent_composite.get("coverage"),
+            "group_summary": all_agent_composite.get("group_summary"),
+            "ade_metrics_vs_floor": all_agent_composite.get("ade_metrics_vs_floor"),
+            "fde_metrics_vs_floor": all_agent_composite.get("fde_metrics_vs_floor"),
+            "multi_agent_ade_metrics": all_agent_composite.get("multi_agent_ade_metrics"),
+            "collision_delta_vs_floor_005": all_agent_composite.get("collision_delta_vs_floor_005"),
+            "smoothness_jagged_delta": all_agent_composite.get("smoothness_jagged_delta"),
+            "claim_boundary": all_agent_composite.get("claim_boundary"),
+        },
         "pure_ucy_source_heldout": {
             "gate": pure_ucy.get("pure_ucy_source_heldout_gate"),
             "three_way_train_val_test_gate": pure_ucy.get("pure_ucy_three_way_train_val_test_gate"),
@@ -265,6 +280,10 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         _metric_row("bootstrap evidence pass", composite_evidence.get("evidence_pass"), "required for statistical support"),
         _metric_row("multiseed replication pass", composite_multiseed.get("replication_pass"), "required for replication support"),
         _metric_row("strict delta vs teacher repair pass", composite_multiseed.get("strict_delta_vs_teacher_repair_pass"), "required for latest-policy contribution"),
+        _metric_row("all-agent composite world-state pass", all_agent_composite.get("all_agent_composite_world_state_pass"), "required for full active-agent waypoint evidence"),
+        _metric_row("all-agent composite ADE all/t50/t100", f"{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('all_improvement'))} / {_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('t50_improvement'))} / {_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('t100_improvement'))}", "protected full-waypoint rollout"),
+        _metric_row("all-agent composite FDE all/t50", f"{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('all_improvement'))} / {_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('t50_improvement'))}", "endpoint check over same full rollout"),
+        _metric_row("all-agent composite multi-agent ADE all/t50", f"{_fmt_pct((all_agent_composite.get('multi_agent_ade_metrics') or {}).get('all_improvement'))} / {_fmt_pct((all_agent_composite.get('multi_agent_ade_metrics') or {}).get('t50_improvement'))}", "same-frame multi-agent rows"),
         _metric_row("pure UCY source-heldout gate", pure_ucy.get("pure_ucy_source_heldout_gate"), "required for UCY held-out support"),
         _metric_row("pure UCY-only retrain/select/test gate", pure_ucy.get("pure_ucy_three_way_train_val_test_gate"), "reported blocker, not claimed"),
         _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
@@ -308,6 +327,9 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- bootstrap evidence pass: `{composite_evidence.get('evidence_pass')}`",
         f"- multiseed replication pass: `{composite_multiseed.get('replication_pass')}`",
         f"- pure UCY source-heldout gate: `{pure_ucy.get('pure_ucy_source_heldout_gate')}`",
+        f"- all-agent composite world-state pass: `{all_agent_composite.get('all_agent_composite_world_state_pass')}`",
+        f"- all-agent composite ADE all/t+50/t+100: `{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('all_improvement'))}` / `{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('t50_improvement'))}` / `{_fmt_pct((all_agent_composite.get('ade_metrics_vs_floor') or {}).get('t100_improvement'))}`",
+        f"- all-agent composite FDE all/t+50: `{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('all_improvement'))}` / `{_fmt_pct((all_agent_composite.get('fde_metrics_vs_floor') or {}).get('t50_improvement'))}`",
         f"- strict pure UCY-only retrain/select/test gate: `{pure_ucy.get('pure_ucy_three_way_train_val_test_gate')}`",
         f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
         "",
@@ -324,7 +346,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         "",
         "## Current Best Deployable Answer",
         "",
-        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, and pure-UCY source-heldout support, but it remains a candidate pending final package acceptance and stricter pure UCY-only retrain/select/test evidence. Stage37 remains the explicit safety floor.",
+        "M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement; stricter pure UCY-only retrain/select/test evidence would further strengthen it. Stage37 remains the explicit safety floor.",
     ]
     write_md(OUT_DIR / "report_m3w_neural_v1.md", report_lines)
 
@@ -447,12 +469,12 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "- Seconds-level long-horizon prediction.",
             "- Ungated neural dynamics safe replacement.",
             "- Pure UCY-only retrain/select/test evidence.",
-            "- Full all-agent continuous world-state rollout beyond protected endpoint interpolation.",
+            "- Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.",
             "",
             "## Shortest Next Path",
             "",
             "1. Run a stricter pure UCY-only retrain/select/test protocol if another independent UCY-like source becomes available.",
-            "2. Extend from bounded endpoint/tail interpolation to full multi-step all-agent world-state rollouts.",
+            "2. Strengthen the protected all-agent full-waypoint rollout with stricter source-heldout retrain/select/test evidence and safer no-fallback neural rollout research.",
             "3. Complete homography/FPS/scale audit before any physical-world claims.",
         ],
     )
@@ -489,6 +511,11 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
             "composite_tail_multiseed_pass": composite_multiseed.get("replication_pass"),
             "strict_delta_vs_teacher_repair_pass": composite_multiseed.get("strict_delta_vs_teacher_repair_pass"),
+            "all_agent_composite_world_state_pass": all_agent_composite.get("all_agent_composite_world_state_pass"),
+            "all_agent_composite_ade_all_improvement": (all_agent_composite.get("ade_metrics_vs_floor") or {}).get("all_improvement"),
+            "all_agent_composite_ade_t50_improvement": (all_agent_composite.get("ade_metrics_vs_floor") or {}).get("t50_improvement"),
+            "all_agent_composite_fde_all_improvement": (all_agent_composite.get("fde_metrics_vs_floor") or {}).get("all_improvement"),
+            "all_agent_composite_fde_t50_improvement": (all_agent_composite.get("fde_metrics_vs_floor") or {}).get("t50_improvement"),
             "endpoint_geometry_pass": endpoint_audit.get("geometry_pass"),
             "stage5c_executed": False,
             "smc_enabled": False,
@@ -524,6 +551,11 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"pure_ucy_three_way_train_val_test_gate = {summary.get('pure_ucy_three_way_train_val_test_gate')}",
         f"composite_tail_evidence_pass = {summary.get('composite_tail_evidence_pass')}",
         f"composite_tail_multiseed_pass = {summary.get('composite_tail_multiseed_pass')}",
+        f"all_agent_composite_world_state_pass = {summary.get('all_agent_composite_world_state_pass')}",
+        f"all_agent_composite_ade_all_improvement = {summary.get('all_agent_composite_ade_all_improvement')}",
+        f"all_agent_composite_ade_t50_improvement = {summary.get('all_agent_composite_ade_t50_improvement')}",
+        f"all_agent_composite_fde_all_improvement = {summary.get('all_agent_composite_fde_all_improvement')}",
+        f"all_agent_composite_fde_t50_improvement = {summary.get('all_agent_composite_fde_t50_improvement')}",
         "deployment_state = composite_tail_candidate_pending_final_package_acceptance",
         "```",
         "",
@@ -568,6 +600,11 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "composite_tail_evidence_pass": summary.get("composite_tail_evidence_pass"),
         "composite_tail_multiseed_pass": summary.get("composite_tail_multiseed_pass"),
         "strict_delta_vs_teacher_repair_pass": summary.get("strict_delta_vs_teacher_repair_pass"),
+        "all_agent_composite_world_state_pass": summary.get("all_agent_composite_world_state_pass"),
+        "all_agent_composite_ade_all_improvement": summary.get("all_agent_composite_ade_all_improvement"),
+        "all_agent_composite_ade_t50_improvement": summary.get("all_agent_composite_ade_t50_improvement"),
+        "all_agent_composite_fde_all_improvement": summary.get("all_agent_composite_fde_all_improvement"),
+        "all_agent_composite_fde_t50_improvement": summary.get("all_agent_composite_fde_t50_improvement"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }

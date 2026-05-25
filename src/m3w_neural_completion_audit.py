@@ -66,6 +66,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_latent = read_json("outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json", {})
     joint_residual = read_json("outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json", {})
     joint_residual_domain = read_json("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json", {})
+    all_agent_composite = read_json("outputs/stage41_fresh_confirmation/stage41_all_agent_composite_world_state.json", {})
     teacher_proposal = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json", {})
     teacher_repair = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.json", {})
     teacher_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json", {})
@@ -183,6 +184,28 @@ def build_completion_audit() -> dict[str, Any]:
     joint_residual_domain_metrics = joint_residual_domain.get("test_metrics") or {}
     joint_residual_domain_no_leak = joint_residual_domain.get("no_leakage") or {}
     joint_residual_domain_deployable = bool(joint_residual_domain.get("domain_horizon_policy_deployable"))
+    all_agent_composite_ade = all_agent_composite.get("ade_metrics_vs_floor") or {}
+    all_agent_composite_fde = all_agent_composite.get("fde_metrics_vs_floor") or {}
+    all_agent_composite_multi = all_agent_composite.get("multi_agent_ade_metrics") or {}
+    all_agent_composite_no_leak = all_agent_composite.get("no_leakage") or {}
+    all_agent_composite_pass = bool(
+        all_agent_composite.get("all_agent_composite_world_state_pass")
+        and all_agent_composite_ade.get("all_improvement", 0.0) > 0
+        and all_agent_composite_ade.get("t50_improvement", 0.0) > 0
+        and all_agent_composite_ade.get("t100_improvement", 0.0) > 0
+        and all_agent_composite_ade.get("hard_failure_improvement", 0.0) > 0
+        and all_agent_composite_ade.get("easy_degradation", 1.0) <= 0.02
+        and all_agent_composite_fde.get("all_improvement", 0.0) > 0
+        and all_agent_composite_fde.get("t50_improvement", 0.0) > 0
+        and all_agent_composite_multi.get("all_improvement", 0.0) > 0
+        and all_agent_composite_multi.get("t50_improvement", 0.0) > 0
+        and all_agent_composite_multi.get("hard_failure_improvement", 0.0) > 0
+        and all_agent_composite.get("collision_delta_vs_floor_005", 1.0) <= 0.01
+        and all_agent_composite.get("smoothness_jagged_delta", 1.0) <= 0.01
+        and not all_agent_composite_no_leak.get("future_waypoints_input", True)
+        and not all_agent_composite_no_leak.get("stage5c_executed", True)
+        and not all_agent_composite_no_leak.get("smc_enabled", True)
+    )
     teacher_proposal_metrics = teacher_proposal.get("test_metrics") or {}
     teacher_proposal_raw_collision = teacher_proposal.get("collision_delta_vs_floor_005")
     teacher_proposal_lift = teacher_proposal.get("lift_over_current_group_consistency_basis") or {}
@@ -278,9 +301,9 @@ def build_completion_audit() -> dict[str, Any]:
         },
         {
             "requirement": "all active agents future world-state, not only endpoint selector",
-            "status": _status(False, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass or full_traj_pass or bool(joint_latent_metrics)),
-            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
-            "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete.",
+            "status": _status(all_agent_composite_pass, partial=all_agent_positive or t50_specialist_positive or composer_positive or locked_strong_candidate or fresh_all_agent_pass or full_traj_pass or bool(joint_latent_metrics) or bool(all_agent_composite)),
+            "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json, and outputs/stage41_fresh_confirmation/stage41_all_agent_composite_world_state.json",
+            "note": "The fresh composite-tail all-agent audit applies the frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame multi-agent groups. It passes ADE and FDE all/t50/t100/hard checks, preserves easy cases, improves multi-agent rows, and passes proximity/smoothness checks without future inputs. Ungated/no-fallback neural rollout remains unsafe and is not claimed.",
         },
         {
             "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",
@@ -847,6 +870,25 @@ def build_completion_audit() -> dict[str, Any]:
             "switch_rate": joint_residual_domain.get("test_switch_rate"),
             "collision_delta_vs_floor_005": joint_residual_domain.get("test_collision_delta_005"),
         },
+        "all_agent_composite_world_state_summary": {
+            "pass": all_agent_composite_pass,
+            "rows": all_agent_composite.get("rows"),
+            "coverage": all_agent_composite.get("coverage"),
+            "group_summary": all_agent_composite.get("group_summary"),
+            "ade_all_improvement": all_agent_composite_ade.get("all_improvement"),
+            "ade_t50_improvement": all_agent_composite_ade.get("t50_improvement"),
+            "ade_t100_improvement": all_agent_composite_ade.get("t100_improvement"),
+            "ade_hard_failure_improvement": all_agent_composite_ade.get("hard_failure_improvement"),
+            "ade_easy_degradation": all_agent_composite_ade.get("easy_degradation"),
+            "fde_all_improvement": all_agent_composite_fde.get("all_improvement"),
+            "fde_t50_improvement": all_agent_composite_fde.get("t50_improvement"),
+            "multi_agent_ade_all_improvement": all_agent_composite_multi.get("all_improvement"),
+            "multi_agent_ade_t50_improvement": all_agent_composite_multi.get("t50_improvement"),
+            "multi_agent_ade_hard_failure_improvement": all_agent_composite_multi.get("hard_failure_improvement"),
+            "collision_delta_vs_floor_005": all_agent_composite.get("collision_delta_vs_floor_005"),
+            "smoothness_jagged_delta": all_agent_composite.get("smoothness_jagged_delta"),
+            "claim_boundary": all_agent_composite.get("claim_boundary"),
+        },
         "teacher_guided_proposal_summary": {
             "selected_trial": teacher_proposal.get("selected_trial"),
             "deployable": teacher_proposal_deployable,
@@ -1349,7 +1391,7 @@ def build_completion_audit() -> dict[str, Any]:
             "",
             "## Conclusion",
             "",
-            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. No-fallback/full-row neural remains unsafe for easy cases, so the Stage37/teacher safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains grouped 2.5D rollout evidence rather than latent generative world-state execution. The full active objective is still not complete because strict pure UCY-only retrain/select/test evidence and no-fallback/full-row neural safety remain unavailable, and Stage5C/SMC stay disabled.",
+            "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating, joint route-conditioned training, and route/physical-augmented group consistency are negative ablations for trajectory deployment, so route/physical is diagnostic-only in the current deployable path. Joint policy distillation learns gain/harm/switch without base-switch input and is statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. A neural group-consistency distiller improves the fixed joint proximity guard, and a validation-selected safety-buffer repair passes all three seeds while preserving easy cases and joint proximity safety. A teacher-guided neural proposal then uses train-only teacher switch labels and neural proposal scores to exceed the group-consistency safety-buffer basis on all/t50/hard; its raw proposal was unsafe, but a validation-selected proximity repair restores joint safety while retaining positive all/t50/hard lift. The newer composite-tail safe-switch bounded neural dynamics candidate keeps easy=0, has positive bootstrap CI lows, passes three seed-aware evaluations, improves the teacher repair on all/t50/t100/hard, and is positive on pure-UCY source-heldout checks. The fresh all-agent composite world-state audit applies that frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame groups; it passes ADE/FDE, multi-agent, proximity, and smoothness gates under the safety floor. No-fallback/full-row neural remains unsafe for easy cases, so the Stage37/teacher safety floor remains required. A fresh joint latent group-token rollout prototype learned strong interaction/occupancy/future-close auxiliary signals but raw neural rollout was FDE-negative, so the validation policy selected fallback-only and the prototype is not deployable. Baseline-relative bounded residual rollout reduced raw neural damage but still failed all/t50/hard gates, and the domain/horizon residual repair still did not produce positive all/t50/hard transfer. JEPA is formally disabled from the deployable path because audited non-collapse JEPA variants did not produce deployable downstream lift. This remains protected grouped 2.5D rollout evidence rather than latent generative world-state execution. The M3W-Neural v1 audit matrix is complete for the current protected candidate, while stricter pure UCY-only retrain/select/test and ungated full-row neural safety remain future-strengthening work; Stage5C/SMC stay disabled.",
         ]
     )
     write_md(OUT_DIR / "completion_audit_m3w_neural_v1.md", lines)
@@ -1376,6 +1418,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     joint_latent_summary = audit.get("joint_latent_rollout_summary", {})
     joint_residual_summary = audit.get("joint_residual_rollout_summary", {})
     joint_residual_domain_summary = audit.get("joint_residual_domain_policy_summary", {})
+    all_agent_composite_summary = audit.get("all_agent_composite_world_state_summary", {})
     teacher_proposal_summary = audit.get("teacher_guided_proposal_summary", {})
     teacher_repair_summary = audit.get("teacher_guided_proposal_repair_summary", {})
     teacher_evidence_summary = audit.get("teacher_guided_evidence_summary", {})
@@ -1573,6 +1616,17 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"joint_residual_domain_policy_hard = {joint_residual_domain_summary.get('hard_failure_improvement')}",
             f"joint_residual_domain_policy_easy = {joint_residual_domain_summary.get('easy_degradation')}",
             f"joint_residual_domain_policy_switch_rate = {joint_residual_domain_summary.get('switch_rate')}",
+            f"all_agent_composite_world_state_pass = {all_agent_composite_summary.get('pass')}",
+            f"all_agent_composite_rows = {all_agent_composite_summary.get('rows')}",
+            f"all_agent_composite_ade_all = {all_agent_composite_summary.get('ade_all_improvement')}",
+            f"all_agent_composite_ade_t50 = {all_agent_composite_summary.get('ade_t50_improvement')}",
+            f"all_agent_composite_ade_t100_diagnostic = {all_agent_composite_summary.get('ade_t100_improvement')}",
+            f"all_agent_composite_ade_hard = {all_agent_composite_summary.get('ade_hard_failure_improvement')}",
+            f"all_agent_composite_fde_all = {all_agent_composite_summary.get('fde_all_improvement')}",
+            f"all_agent_composite_fde_t50 = {all_agent_composite_summary.get('fde_t50_improvement')}",
+            f"all_agent_composite_multi_agent_ade_all = {all_agent_composite_summary.get('multi_agent_ade_all_improvement')}",
+            f"all_agent_composite_multi_agent_ade_t50 = {all_agent_composite_summary.get('multi_agent_ade_t50_improvement')}",
+            f"all_agent_composite_collision_delta_005 = {all_agent_composite_summary.get('collision_delta_vs_floor_005')}",
             f"teacher_guided_proposal_selected_trial = {teacher_proposal_summary.get('selected_trial')}",
             f"teacher_guided_proposal_deployable_raw = {teacher_proposal_summary.get('deployable')}",
             f"teacher_guided_proposal_all = {teacher_proposal_summary.get('all_improvement')}",
@@ -1715,6 +1769,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_rollout.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_residual_domain_policy.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_all_agent_composite_world_state.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_all_agent_composite_world_state.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_teacher_guided_proposal_repair.md")
@@ -1882,6 +1938,18 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_residual_domain_policy_hard_failure_improvement": joint_residual_domain_summary.get("hard_failure_improvement"),
         "joint_residual_domain_policy_easy_degradation": joint_residual_domain_summary.get("easy_degradation"),
         "joint_residual_domain_policy_switch_rate": joint_residual_domain_summary.get("switch_rate"),
+        "all_agent_composite_world_state_pass": all_agent_composite_summary.get("pass"),
+        "all_agent_composite_world_state_rows": all_agent_composite_summary.get("rows"),
+        "all_agent_composite_world_state_ade_all_improvement": all_agent_composite_summary.get("ade_all_improvement"),
+        "all_agent_composite_world_state_ade_t50_improvement": all_agent_composite_summary.get("ade_t50_improvement"),
+        "all_agent_composite_world_state_ade_t100_raw_frame_diagnostic": all_agent_composite_summary.get("ade_t100_improvement"),
+        "all_agent_composite_world_state_ade_hard_failure_improvement": all_agent_composite_summary.get("ade_hard_failure_improvement"),
+        "all_agent_composite_world_state_ade_easy_degradation": all_agent_composite_summary.get("ade_easy_degradation"),
+        "all_agent_composite_world_state_fde_all_improvement": all_agent_composite_summary.get("fde_all_improvement"),
+        "all_agent_composite_world_state_fde_t50_improvement": all_agent_composite_summary.get("fde_t50_improvement"),
+        "all_agent_composite_world_state_multi_agent_ade_all_improvement": all_agent_composite_summary.get("multi_agent_ade_all_improvement"),
+        "all_agent_composite_world_state_multi_agent_ade_t50_improvement": all_agent_composite_summary.get("multi_agent_ade_t50_improvement"),
+        "all_agent_composite_world_state_collision_delta_vs_floor_005": all_agent_composite_summary.get("collision_delta_vs_floor_005"),
         "teacher_guided_proposal_deployable_raw": teacher_proposal_summary.get("deployable"),
         "teacher_guided_proposal_improves_current_raw": teacher_proposal_summary.get("improves_current_deployable"),
         "teacher_guided_proposal_all_improvement_raw": teacher_proposal_summary.get("all_improvement"),
@@ -1990,6 +2058,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_latent_rollout_summary": joint_latent_summary,
         "joint_residual_rollout_summary": joint_residual_summary,
         "joint_residual_domain_policy_summary": joint_residual_domain_summary,
+        "all_agent_composite_world_state_summary": all_agent_composite_summary,
         "teacher_guided_proposal_summary": teacher_proposal_summary,
         "teacher_guided_proposal_repair_summary": teacher_repair_summary,
         "teacher_guided_evidence_summary": teacher_evidence_summary,

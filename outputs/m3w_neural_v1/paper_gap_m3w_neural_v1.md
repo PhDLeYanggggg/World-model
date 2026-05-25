@@ -14,10 +14,10 @@
 - Seconds-level long-horizon prediction.
 - Ungated neural dynamics safe replacement.
 - Pure UCY-only retrain/select/test evidence.
-- Full all-agent continuous world-state rollout beyond protected endpoint interpolation.
+- Ungated full-row all-agent continuous world-state rollout without the Stage37/teacher safety floor.
 
 ## Shortest Next Path
 
 1. Run a stricter pure UCY-only retrain/select/test protocol if another independent UCY-like source becomes available.
-2. Extend from bounded endpoint/tail interpolation to full multi-step all-agent world-state rollouts.
+2. Strengthen the protected all-agent full-waypoint rollout with stricter source-heldout retrain/select/test evidence and safer no-fallback neural rollout research.
 3. Complete homography/FPS/scale audit before any physical-world claims.

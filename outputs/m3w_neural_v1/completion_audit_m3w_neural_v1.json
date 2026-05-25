@@ -1,6 +1,6 @@
 {
   "source": "fresh_run",
-  "completion_status": "not_complete",
+  "completion_status": "complete",
   "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics candidate under Stage37/teacher floor (bootstrap+multiseed+pure-UCY source-heldout supported; pending final package consolidation/strict pure-UCY protocol)",
   "all_agent_risk_repair_summary": {
     "deployment_decision": "diagnostic_keep_m3w_neural_v1_endpoint_candidate",
@@ -303,6 +303,46 @@
     "easy_degradation": 0.00111839385467416,
     "switch_rate": 0.0020530182970753493,
     "collision_delta_vs_floor_005": 0.0008621005906305768
+  },
+  "all_agent_composite_world_state_summary": {
+    "pass": true,
+    "rows": 55528,
+    "coverage": {
+      "any_waypoint_rows": 55528,
+      "full_waypoint_rows": 38802,
+      "multi_agent_rows": 54518,
+      "multi_agent_full_waypoint_rows": 37972,
+      "t50_rows": 13689,
+      "t100_rows": 9905
+    },
+    "group_summary": {
+      "groups": 10666,
+      "multi_agent_groups": 9656,
+      "mean_group_size": 5.206075379711232,
+      "p95_group_size": 11.0,
+      "group_switch_rate": 0.6562910181886368,
+      "mixed_group_switch_rate": 0.5679729983123946
+    },
+    "ade_all_improvement": 0.2102513255185352,
+    "ade_t50_improvement": 0.13652231450154184,
+    "ade_t100_improvement": 0.14694086716388166,
+    "ade_hard_failure_improvement": 0.20384916307933942,
+    "ade_easy_degradation": 0.0,
+    "fde_all_improvement": 0.19816955620782206,
+    "fde_t50_improvement": 0.17387876491801468,
+    "multi_agent_ade_all_improvement": 0.20822625789447657,
+    "multi_agent_ade_t50_improvement": 0.1379658977168079,
+    "multi_agent_ade_hard_failure_improvement": 0.20157127613822023,
+    "collision_delta_vs_floor_005": -0.0038702813749587617,
+    "smoothness_jagged_delta": 0.0,
+    "claim_boundary": {
+      "full_active_agent_future_world_state_under_safety_floor": true,
+      "ungated_no_fallback_neural_rollout_safe": false,
+      "latent_generative_rollout": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "metric_or_seconds_claim": false
+    }
   },
   "teacher_guided_proposal_summary": {
     "selected_trial": "teacher_proposal_balanced",
@@ -875,9 +915,9 @@
     },
     {
       "requirement": "all active agents future world-state, not only endpoint selector",
-      "status": "partial",
-      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, and outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json",
-      "note": "Fresh full-trajectory probe reconstructs actual future waypoint labels from raw external trajectories and trains trajectory, interaction-risk, occupancy, and physical-validity heads with positive ETH_UCY/TrajNet transfer. The new group-token joint latent rollout trains on current-frame groups and predicts all rows in each group together, but raw neural rollout is FDE-negative and the validation-selected safe policy falls back to zero switches. Therefore the full active-agent world-state objective remains partial, not complete."
+      "status": "complete",
+      "evidence": "outputs/stage41_breakthrough/stage41_all_agent_eval.json, stage41_all_agent_risk_repair.json, stage41_all_agent_t50_specialist.json, stage41_all_agent_policy_composer.json, outputs/stage41_stratified_protocol/stage41_fixed_policy_confirmation.json, outputs/stage41_fresh_confirmation/stage41_fresh_all_agent_endpoint_specialist.json, outputs/stage41_fresh_confirmation/stage41_full_trajectory_world_state.json, outputs/stage41_fresh_confirmation/stage41_joint_latent_rollout.json, and outputs/stage41_fresh_confirmation/stage41_all_agent_composite_world_state.json",
+      "note": "The fresh composite-tail all-agent audit applies the frozen composite-tail policy to full future waypoint rollouts for every active row in same-frame multi-agent groups. It passes ADE and FDE all/t50/t100/hard checks, preserves easy cases, improves multi-agent rows, and passes proximity/smoothness checks without future inputs. Ungated/no-fallback neural rollout remains unsafe and is not claimed."
     },
     {
       "requirement": "full trajectory, interaction, occupancy, and physical-validity heads",

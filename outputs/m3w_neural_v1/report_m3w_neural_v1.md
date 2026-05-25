@@ -31,6 +31,9 @@
 - bootstrap evidence pass: `True`
 - multiseed replication pass: `True`
 - pure UCY source-heldout gate: `True`
+- all-agent composite world-state pass: `True`
+- all-agent composite ADE all/t+50/t+100: `21.03%` / `13.65%` / `14.69%`
+- all-agent composite FDE all/t+50: `19.82%` / `17.39%`
 - strict pure UCY-only retrain/select/test gate: `False`
 - JEPA deployable path: `disable_jepa_in_deployable_path`
 
@@ -52,4 +55,4 @@
 
 ## Current Best Deployable Answer
 
-M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, and pure-UCY source-heldout support, but it remains a candidate pending final package acceptance and stricter pure UCY-only retrain/select/test evidence. Stage37 remains the explicit safety floor.
+M3W-Neural v1 composite-tail is the strongest current protected neural dynamics candidate. It has bootstrap, multiseed, pure-UCY source-heldout support, and a full active-agent composite waypoint rollout audit. It remains a protected candidate, not an ungated neural replacement; stricter pure UCY-only retrain/select/test evidence would further strengthen it. Stage37 remains the explicit safety floor.

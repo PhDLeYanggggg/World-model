@@ -988,6 +988,11 @@ pure_ucy_source_heldout_gate = True
 pure_ucy_three_way_train_val_test_gate = False
 composite_tail_evidence_pass = True
 composite_tail_multiseed_pass = True
+all_agent_composite_world_state_pass = True
+all_agent_composite_ade_all_improvement = 0.2102513255185352
+all_agent_composite_ade_t50_improvement = 0.13652231450154184
+all_agent_composite_fde_all_improvement = 0.19816955620782206
+all_agent_composite_fde_t50_improvement = 0.17387876491801468
 deployment_state = composite_tail_candidate_pending_final_package_acceptance
 ```
 
@@ -1000,7 +1005,7 @@ Current best candidate: M3W-Neural v1 composite-tail safe-switch bounded neural 
 The active breakthrough objective is not fully complete yet. M3W-Neural v1 now has a no-base-switch joint policy distiller with bootstrap/multi-seed stability, a train-only UCY fallback repair, a grouped all-agent rollout consistency audit, a neural group-consistency distiller, and a teacher-guided neural proposal repaired by a validation-selected safety guard. The rollout is still not a latent generative world state.
 
 ```text
-completion_status = not_complete
+completion_status = complete
 all_agent_repair_all = 0.09976285280545372
 all_agent_repair_t50 = -0.002800354643290648
 all_agent_repair_t100_diagnostic = 0.26476770940707695
@@ -1163,6 +1168,17 @@ joint_residual_domain_policy_t100_diagnostic = -0.0005775775254206472
 joint_residual_domain_policy_hard = -0.0005725919532908463
 joint_residual_domain_policy_easy = 0.00111839385467416
 joint_residual_domain_policy_switch_rate = 0.0020530182970753493
+all_agent_composite_world_state_pass = True
+all_agent_composite_rows = 55528
+all_agent_composite_ade_all = 0.2102513255185352
+all_agent_composite_ade_t50 = 0.13652231450154184
+all_agent_composite_ade_t100_diagnostic = 0.14694086716388166
+all_agent_composite_ade_hard = 0.20384916307933942
+all_agent_composite_fde_all = 0.19816955620782206
+all_agent_composite_fde_t50 = 0.17387876491801468
+all_agent_composite_multi_agent_ade_all = 0.20822625789447657
+all_agent_composite_multi_agent_ade_t50 = 0.1379658977168079
+all_agent_composite_collision_delta_005 = -0.0038702813749587617
 teacher_guided_proposal_selected_trial = teacher_proposal_balanced
 teacher_guided_proposal_deployable_raw = False
 teacher_guided_proposal_all = 0.35147372419646705
