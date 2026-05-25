@@ -369,6 +369,8 @@
 - learned waypoint-shape bridge gate: `True`
 - learned waypoint-shape positive domains: `['ETH_UCY', 'TrajNet']`
 - learned waypoint-shape summary: `A past-only waypoint-shape residual head was trained around the endpoint neural bridge and selected on validation. ETH_UCY all/t50/t100/hard/easy/collision = 0.01570 / 0.00190 / 0.00433 / 0.01548 / 0.0 / -0.00150 with shape gain all/t50/t100/hard = 0.000005 / 0.0 / 0.000014 / 0.000005 and a tiny 0.0046% shape-switch rate. TrajNet all/t50/t100/hard/easy/collision = 0.03824 / 0.02648 / 0.01451 / 0.03930 / 0.0 / -0.00291 with shape gain all/t50/t100/hard = 0.000226 / 0.0 / 0.000718 / 0.000248 and 0.1099% shape-switch rate. This is a protected, tiny, mostly t100/tail learned-shape contribution, not an ungated full-waypoint dynamics replacement.`
+- learned shape gain/harm gate: `True`
+- learned shape gain/harm summary: `A train-fitted shape gain/harm gate expands ETH_UCY shape intervention and improves TrajNet t50 shape gain, but it is not a monotonic upgrade. ETH_UCY all/t50/t100/hard = 0.01636 / 0.00178 / 0.00427 / 0.01616 with shape-gain delta vs previous all/t100 = +0.000674 / -0.000059. TrajNet all/t50/t100/hard = 0.03814 / 0.02693 / 0.01380 / 0.03918 with shape-gain delta vs previous all/t100 = -0.000109 / -0.000718. This points to a domain/horizon-specific shape-policy composer rather than a single global shape gate.`
 
 ## Neural Group Consistency Distiller
 

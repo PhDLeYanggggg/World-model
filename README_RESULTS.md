@@ -1491,3 +1491,30 @@ pytest = 217 passed in 60.50s
 ```
 
 Conclusion: the learned shape head now passes a two-domain protected gate, but the actual learned-shape contribution is tiny and mostly t100/tail-specific. This is positive evidence that a learned waypoint-shape residual can be safely layered on top of the endpoint bridge, not proof of a large ungated full-waypoint neural dynamics breakthrough. Current claims remain protected 2.5D world-state evidence; Stage5C and SMC stay disabled.
+
+## Stage41 Learned Shape Gain/Harm Gate
+
+The next repair replaced the residual-norm heuristic with a train-fitted shape gain/harm gate. The gate is trained on train-only future-waypoint labels, selected on validation, and evaluated once on test. Inference remains past-only and protected by the endpoint bridge/floor fallback.
+
+```text
+source = fresh_run
+positive_domains = ['ETH_UCY', 'TrajNet']
+two_domain_gain_gate = True
+ETH_UCY_all = 0.016363775908279754
+ETH_UCY_t50 = 0.0017756136269108103
+ETH_UCY_t100 = 0.0042703754565303065
+ETH_UCY_hard = 0.016155508094891968
+ETH_UCY_easy = 0.0
+ETH_UCY_shape_gain_all_t50_t100_hard = 0.000679 / -0.000126 / -0.000044 / 0.000693
+ETH_UCY_delta_vs_previous_shape_all_t100 = 0.000674 / -0.000059
+TrajNet_all = 0.03813806330591063
+TrajNet_t50 = 0.02693200074182789
+TrajNet_t100 = 0.013800550192567762
+TrajNet_hard = 0.03918432054611187
+TrajNet_easy = 0.0
+TrajNet_shape_gain_all_t50_t100_hard = 0.000117 / 0.000469 / 0.000000 / 0.000129
+TrajNet_delta_vs_previous_shape_all_t100 = -0.000109 / -0.000718
+pytest = 219 passed in 59.91s
+```
+
+Conclusion: learned gain/harm calibration expands ETH_UCY shape intervention and improves TrajNet t50 shape gain, but it is not a monotonic upgrade over the previous learned-shape bridge. The best next step is a domain/horizon-specific shape-policy composer that keeps ETH_UCY all/hard improvements from the gain gate while preserving TrajNet t100/tail behavior from the previous t100-only learned-shape policy. This remains protected 2.5D evidence; no Stage5C or SMC execution.
