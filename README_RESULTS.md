@@ -1101,11 +1101,14 @@ ucy_fallback_repair_easy = 0.0
 ucy_fallback_repair_ucy_all = 0.3928657400363359
 ucy_fallback_repair_ucy_t50 = 0.24265047375057225
 ucy_fallback_repair_bootstrap_ucy_low = 0.38373376338122456
+ucy_internal_validation_pass = True
+ucy_source_level_validation_available = False
+ucy_source_level_blocker = UCY has one train source and no UCY validation source; true source-level UCY validation needs another UCY-like source or a rebuilt split.
 stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: independently validate the train-calibrated UCY repair and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: rebuild or acquire a true source-level UCY validation split and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit

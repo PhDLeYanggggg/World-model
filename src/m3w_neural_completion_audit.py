@@ -60,6 +60,7 @@ def build_completion_audit() -> dict[str, Any]:
     joint_distill_evidence = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json", {})
     joint_distill_multiseed = read_json("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json", {})
     ucy_repair = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json", {})
+    ucy_validation = read_json("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json", {})
     endpoint_audit = read_json("outputs/stage41_breakthrough/stage41_endpoint_geometry_audit.json", {})
 
     best = package.get("evidence_summary", {})
@@ -135,6 +136,8 @@ def build_completion_audit() -> dict[str, Any]:
     ucy_repair_lift = ucy_repair.get("lift_over_base_policy") or {}
     ucy_repair_bootstrap = ucy_repair.get("bootstrap") or {}
     ucy_repair_contributes = bool(ucy_repair.get("ucy_repair_contributes"))
+    ucy_validation_pass = bool(ucy_validation.get("validation_pass"))
+    ucy_source_level_available = bool(ucy_validation.get("source_level_independent_validation_available"))
     requirements = [
         {
             "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -240,6 +243,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(ucy_repair_contributes),
             "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
             "note": "UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment.",
+        },
+        {
+            "requirement": "UCY repair internal fold/temporal validation",
+            "status": _status(ucy_validation_pass, partial=ucy_repair_contributes),
+            "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json",
+            "note": "UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source.",
         },
         {
             "requirement": "t100 diagnostic positive or blocker analysis",
@@ -452,6 +461,19 @@ def build_completion_audit() -> dict[str, Any]:
             "bootstrap_ucy_low": ((ucy_repair_bootstrap.get("by_domain") or {}).get("UCY") or {}).get("low"),
             "train_only_ucy_threshold_calibration": (ucy_repair.get("no_leakage") or {}).get("train_only_ucy_threshold_calibration"),
         },
+        "ucy_independent_validation_summary": {
+            "validation_pass": ucy_validation_pass,
+            "source_level_independent_validation_available": ucy_source_level_available,
+            "source_level_blocker": ucy_validation.get("source_level_blocker"),
+            "selection_rows": (ucy_validation.get("selection") or {}).get("rows"),
+            "internal_validation_pass": ucy_validation.get("internal_validation_pass"),
+            "temporal_validation_pass": ucy_validation.get("temporal_validation_pass"),
+            "test_ucy_all": (ucy_validation.get("test_ucy_metrics") or {}).get("all_improvement"),
+            "test_ucy_t50": (ucy_validation.get("test_ucy_metrics") or {}).get("t50_improvement"),
+            "test_ucy_t100": (ucy_validation.get("test_ucy_metrics") or {}).get("t100_improvement"),
+            "test_ucy_hard": (ucy_validation.get("test_ucy_metrics") or {}).get("hard_failure_improvement"),
+            "test_ucy_easy": (ucy_validation.get("test_ucy_metrics") or {}).get("easy_degradation"),
+        },
         "requirements": requirements,
         "next_highest_value_actions": [
             "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
@@ -642,6 +664,15 @@ def build_completion_audit() -> dict[str, Any]:
             f"- UCY bootstrap low: `{((ucy_repair_bootstrap.get('by_domain') or {}).get('UCY') or {}).get('low')}`",
             f"- train-only UCY calibration: `{(ucy_repair.get('no_leakage') or {}).get('train_only_ucy_threshold_calibration')}`",
             "",
+            "## UCY Internal Validation",
+            "",
+            f"- validation pass: `{ucy_validation_pass}`",
+            f"- source-level independent validation available: `{ucy_source_level_available}`",
+            f"- source-level blocker: `{ucy_validation.get('source_level_blocker')}`",
+            f"- internal validation pass: `{ucy_validation.get('internal_validation_pass')}`",
+            f"- temporal validation pass: `{ucy_validation.get('temporal_validation_pass')}`",
+            f"- test UCY all/t50/t100/hard/easy: `{(ucy_validation.get('test_ucy_metrics') or {}).get('all_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('t50_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('t100_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('hard_failure_improvement')}` / `{(ucy_validation.get('test_ucy_metrics') or {}).get('easy_degradation')}`",
+            "",
             "## Conclusion",
             "",
             "M3W-Neural v1 is now more than an endpoint-only candidate: the fresh full-trajectory probe adds waypoint trajectory, interaction-risk, occupancy, and physical-validity heads, and the goal/route repair pass adds an explicit route head plus a non-degenerate physical-challenge target. The route/physical heads are useful diagnostics, but post-hoc route/physical gating and joint route-conditioned training are negative ablations for trajectory deployment. Joint policy distillation learns gain/harm/switch without base-switch input and is now statistically stable across bootstrap plus three seeds. The UCY fallback-only blocker was traced to missing UCY validation rows and repaired with train-only UCY calibration. The full active objective is still not complete because the repair needs independent UCY validation and the model is still per-agent all-agent-context policy/dynamics rather than a jointly consistent latent world-state rollout.",
@@ -665,6 +696,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     joint_consistency_summary = audit.get("joint_multiagent_consistency_summary", {})
     joint_distill_summary = audit.get("joint_policy_distillation_summary", {})
     ucy_repair_summary = audit.get("ucy_fallback_repair_summary", {})
+    ucy_validation_summary = audit.get("ucy_independent_validation_summary", {})
     _replace_section(
         Path("README_RESULTS.md"),
         "M3W_NEURAL_COMPLETION_AUDIT",
@@ -780,11 +812,14 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"ucy_fallback_repair_ucy_all = {ucy_repair_summary.get('ucy_all_improvement')}",
             f"ucy_fallback_repair_ucy_t50 = {ucy_repair_summary.get('ucy_t50_improvement')}",
             f"ucy_fallback_repair_bootstrap_ucy_low = {ucy_repair_summary.get('bootstrap_ucy_low')}",
+            f"ucy_internal_validation_pass = {ucy_validation_summary.get('validation_pass')}",
+            f"ucy_source_level_validation_available = {ucy_validation_summary.get('source_level_independent_validation_available')}",
+            f"ucy_source_level_blocker = {ucy_validation_summary.get('source_level_blocker')}",
             "stage5c_executed = false",
             "smc_enabled = false",
             "```",
             "",
-            "Next target: independently validate the train-calibrated UCY repair and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
+            "Next target: rebuild or acquire a true source-level UCY validation split and move toward a jointly consistent multi-agent rollout. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.",
         ],
     )
     state = read_json("research_state.json", {})
@@ -817,6 +852,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json")
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.md")
     generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.md")
+    generated.add("outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json")
     state["generated_reports"] = sorted(generated)
     state["current_verdict"] = "stage41_ucy_repaired_joint_distiller_strong_not_complete"
     state["current_best_deployable"] = audit.get("current_best_deployable")
@@ -851,6 +888,9 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "ucy_all_improvement": ucy_repair_summary.get("ucy_all_improvement"),
         "ucy_t50_improvement": ucy_repair_summary.get("ucy_t50_improvement"),
         "ucy_bootstrap_low": ucy_repair_summary.get("bootstrap_ucy_low"),
+        "ucy_internal_validation_pass": ucy_validation_summary.get("validation_pass"),
+        "ucy_source_level_validation_available": ucy_validation_summary.get("source_level_independent_validation_available"),
+        "ucy_source_level_blocker": ucy_validation_summary.get("source_level_blocker"),
         "stage5c_executed": False,
         "smc_enabled": False,
     }
@@ -870,6 +910,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "joint_multiagent_consistency_summary": joint_consistency_summary,
         "joint_policy_distillation_summary": joint_distill_summary,
         "ucy_fallback_repair_summary": ucy_repair_summary,
+        "ucy_independent_validation_summary": ucy_validation_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
     }

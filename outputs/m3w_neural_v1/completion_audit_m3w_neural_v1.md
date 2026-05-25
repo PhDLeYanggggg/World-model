@@ -22,6 +22,7 @@
 | no-base-switch distiller bootstrap and ablation evidence | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_evidence.json | Bootstrap lower bounds are positive for all/t50/hard; ablations show static causal features and full-trajectory prediction signals are the main positive contributors, while UCY remains fallback-only. |
 | no-base-switch distiller multi-seed replication | `complete` | outputs/stage41_fresh_confirmation/stage41_joint_policy_distillation_multiseed.json | Three fresh seeds keep all/t50/t100/hard positive with easy preserved and two positive domains per seed; UCY remains fallback-only. |
 | UCY fallback-only blocker diagnosed and repaired without test tuning | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json | UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment. |
+| UCY repair internal fold/temporal validation | `complete` | outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json | UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source. |
 | t100 diagnostic positive or blocker analysis | `complete` | outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json |  |
 | JEPA contribution proven or disabled | `partial` | Stage41 final report: JEPA not proven unless winning trial passes; winning frozen candidate is self-gated endpoint dynamics, not JEPA contribution. |  |
 | Stage5C disabled and SMC disabled | `complete` | outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json |  |
@@ -188,6 +189,15 @@
 - t50 delta over no-UCY policy: `0.045728476573585364`
 - UCY bootstrap low: `0.38373376338122456`
 - train-only UCY calibration: `True`
+
+## UCY Internal Validation
+
+- validation pass: `True`
+- source-level independent validation available: `False`
+- source-level blocker: `UCY has one train source and no UCY validation source; true source-level UCY validation needs another UCY-like source or a rebuilt split.`
+- internal validation pass: `True`
+- temporal validation pass: `True`
+- test UCY all/t50/t100/hard/easy: `0.3928657400363359` / `0.24265047375057225` / `0.4634436152370407` / `0.3987527223236249` / `0.0`
 
 ## Conclusion
 

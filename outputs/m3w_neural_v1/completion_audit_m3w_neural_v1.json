@@ -184,6 +184,19 @@
     "bootstrap_ucy_low": 0.38373376338122456,
     "train_only_ucy_threshold_calibration": true
   },
+  "ucy_independent_validation_summary": {
+    "validation_pass": true,
+    "source_level_independent_validation_available": false,
+    "source_level_blocker": "UCY has one train source and no UCY validation source; true source-level UCY validation needs another UCY-like source or a rebuilt split.",
+    "selection_rows": 9445,
+    "internal_validation_pass": true,
+    "temporal_validation_pass": true,
+    "test_ucy_all": 0.3928657400363359,
+    "test_ucy_t50": 0.24265047375057225,
+    "test_ucy_t100": 0.4634436152370407,
+    "test_ucy_hard": 0.3987527223236249,
+    "test_ucy_easy": 0.0
+  },
   "requirements": [
     {
       "requirement": "external split covers ETH/UCY/TrajNet or blockers",
@@ -264,6 +277,12 @@
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_fallback_repair.json",
       "note": "UCY was missing from validation, so no UCY slice thresholds were selected. A train-only UCY calibration subset repairs UCY on test, but independent UCY validation is still needed before final deployment."
+    },
+    {
+      "requirement": "UCY repair internal fold/temporal validation",
+      "status": "complete",
+      "evidence": "outputs/stage41_fresh_confirmation/stage41_ucy_independent_validation.json",
+      "note": "UCY repair validates on internal held-out row folds and temporal blocks. True source-level UCY validation remains unavailable because there is one UCY train source and no UCY validation source."
     },
     {
       "requirement": "t100 diagnostic positive or blocker analysis",

@@ -1,0 +1,498 @@
+{
+  "source": "fresh_run",
+  "protocol": "ucy_internal_fold_and_temporal_validation",
+  "source_summary": {
+    "train": {
+      "rows": 47223,
+      "scenes": [
+        "UCY_students01"
+      ],
+      "source_count": 1,
+      "sources": {
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt": 47223
+      }
+    },
+    "val": {
+      "rows": 0,
+      "scenes": [],
+      "source_count": 0,
+      "sources": {}
+    },
+    "test": {
+      "rows": 9540,
+      "scenes": [
+        "UCY_zara03"
+      ],
+      "source_count": 1,
+      "sources": {
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt": 9540
+      }
+    }
+  },
+  "source_level_independent_validation_available": false,
+  "source_level_blocker": "UCY has one train source and no UCY validation source; true source-level UCY validation needs another UCY-like source or a rebuilt split.",
+  "selection": {
+    "rule": "UCY train rows with row_index % 5 == 0",
+    "rows": 9445,
+    "metrics": {
+      "rows": 9445,
+      "all_improvement": 0.4026916808348108,
+      "t10_improvement": 0.5593299818264275,
+      "t25_improvement": 0.24762951791728616,
+      "t50_improvement": 0.3871935327336957,
+      "t100_improvement": 0.39985883288728596,
+      "hard_failure_improvement": 0.41905219573850194,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.1353850212339077,
+      "switch_rate": 0.6163049232398095,
+      "regret_to_oracle": -0.0893939357136789,
+      "by_domain": {
+        "UCY": {
+          "rows": 9445,
+          "all_improvement": 0.4026916808348108,
+          "t50_improvement": 0.3871935327336957,
+          "t100_improvement": 0.39985883288728596,
+          "hard_failure_improvement": 0.41905219573850194,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.6163049232398095
+        }
+      },
+      "slice_diagnostics": {
+        "UCY|10": {
+          "selected": true,
+          "score": 1.4364683779581995,
+          "metrics": {
+            "rows": 3029,
+            "all_improvement": 0.5593299818264275,
+            "t10_improvement": 0.5593299818264275,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": 0.5886710767434511,
+            "easy_degradation": 0.0,
+            "harm_over_fallback": -0.11615902059757564,
+            "switch_rate": 0.699900957411687,
+            "regret_to_oracle": -0.11156856924728754,
+            "by_domain": {
+              "UCY": {
+                "rows": 3029,
+                "all_improvement": 0.5593299818264275,
+                "t50_improvement": 0.0,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": 0.5886710767434511,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.699900957411687
+              }
+            }
+          }
+        },
+        "UCY|25": {
+          "selected": true,
+          "score": 0.5615940549879221,
+          "metrics": {
+            "rows": 2673,
+            "all_improvement": 0.24762951791728616,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.24762951791728616,
+            "t50_improvement": 0.0,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": 0.20341433345167603,
+            "easy_degradation": 0.0,
+            "harm_over_fallback": -0.04879708696535813,
+            "switch_rate": 0.4047886270108492,
+            "regret_to_oracle": -0.06746797598323369,
+            "by_domain": {
+              "UCY": {
+                "rows": 2673,
+                "all_improvement": 0.24762951791728616,
+                "t50_improvement": 0.0,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": 0.20341433345167603,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.4047886270108492
+              }
+            }
+          }
+        },
+        "UCY|50": {
+          "selected": true,
+          "score": 1.5874934842081525,
+          "metrics": {
+            "rows": 2317,
+            "all_improvement": 0.3871935327336957,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.3871935327336957,
+            "t100_improvement": 0.0,
+            "hard_failure_improvement": 0.3871935327336957,
+            "easy_degradation": 0.0,
+            "harm_over_fallback": -0.14692439999031237,
+            "switch_rate": 0.6996115666810531,
+            "regret_to_oracle": -0.05756267785741413,
+            "by_domain": {
+              "UCY": {
+                "rows": 2317,
+                "all_improvement": 0.3871935327336957,
+                "t50_improvement": 0.3871935327336957,
+                "t100_improvement": 0.0,
+                "hard_failure_improvement": 0.3871935327336957,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.6996115666810531
+              }
+            }
+          }
+        },
+        "UCY|100": {
+          "selected": true,
+          "score": 1.399505915105501,
+          "metrics": {
+            "rows": 1426,
+            "all_improvement": 0.39985883288728596,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_improvement": 0.39985883288728596,
+            "hard_failure_improvement": 0.39985883288728596,
+            "easy_degradation": 0.0,
+            "harm_over_fallback": -0.319780788168475,
+            "switch_rate": 0.699859747545582,
+            "regret_to_oracle": -0.13511213335683803,
+            "by_domain": {
+              "UCY": {
+                "rows": 1426,
+                "all_improvement": 0.39985883288728596,
+                "t50_improvement": 0.0,
+                "t100_improvement": 0.39985883288728596,
+                "hard_failure_improvement": 0.39985883288728596,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.699859747545582
+              }
+            }
+          }
+        }
+      }
+    },
+    "policy_slices": {
+      "UCY|10": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.35,
+        "max_switch": 0.7,
+        "guard_harm_min": 0.8,
+        "guard_gain_max": 0.0
+      },
+      "UCY|25": {
+        "switch_min": 0.55,
+        "gain_min": 0.0,
+        "harm_max": 0.55,
+        "max_switch": 0.7,
+        "guard_harm_min": 0.8,
+        "guard_gain_max": 0.0
+      },
+      "UCY|50": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.55,
+        "max_switch": 0.7,
+        "guard_harm_min": 0.8,
+        "guard_gain_max": 0.0
+      },
+      "UCY|100": {
+        "switch_min": 0.55,
+        "gain_min": 0.0,
+        "harm_max": 0.55,
+        "max_switch": 0.7,
+        "guard_harm_min": 0.8,
+        "guard_gain_max": 0.0
+      }
+    }
+  },
+  "internal_validation_folds": {
+    "mod_0": {
+      "role": "selection",
+      "rows": 9445,
+      "metrics": {
+        "rows": 9445,
+        "all_improvement": 0.4026916808348108,
+        "t10_improvement": 0.5593299818264275,
+        "t25_improvement": 0.24762951791728616,
+        "t50_improvement": 0.3871935327336957,
+        "t100_improvement": 0.39985883288728596,
+        "hard_failure_improvement": 0.41905219573850194,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1353850212339077,
+        "switch_rate": 0.6163049232398095,
+        "regret_to_oracle": -0.0893939357136789,
+        "by_domain": {
+          "UCY": {
+            "rows": 9445,
+            "all_improvement": 0.4026916808348108,
+            "t50_improvement": 0.3871935327336957,
+            "t100_improvement": 0.39985883288728596,
+            "hard_failure_improvement": 0.41905219573850194,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.6163049232398095
+          }
+        }
+      }
+    },
+    "mod_1": {
+      "role": "internal_validation",
+      "rows": 9445,
+      "metrics": {
+        "rows": 9445,
+        "all_improvement": 0.4027235916275771,
+        "t10_improvement": 0.5597486331304848,
+        "t25_improvement": 0.24798336921691433,
+        "t50_improvement": 0.39391160197827535,
+        "t100_improvement": 0.39468472876033645,
+        "hard_failure_improvement": 0.41910226702950437,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1356999701340598,
+        "switch_rate": 0.614716781365802,
+        "regret_to_oracle": -0.08952355025436229,
+        "by_domain": {
+          "UCY": {
+            "rows": 9445,
+            "all_improvement": 0.4027235916275771,
+            "t50_improvement": 0.39391160197827535,
+            "t100_improvement": 0.39468472876033645,
+            "hard_failure_improvement": 0.41910226702950437,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.614716781365802
+          }
+        }
+      }
+    },
+    "mod_2": {
+      "role": "internal_validation",
+      "rows": 9444,
+      "metrics": {
+        "rows": 9444,
+        "all_improvement": 0.4005153900660001,
+        "t10_improvement": 0.5594999948620135,
+        "t25_improvement": 0.24592057410440205,
+        "t50_improvement": 0.3930355540220202,
+        "t100_improvement": 0.3897231366675057,
+        "hard_failure_improvement": 0.4164354330654928,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.13499881854528187,
+        "switch_rate": 0.6159466327827192,
+        "regret_to_oracle": -0.08709259491572263,
+        "by_domain": {
+          "UCY": {
+            "rows": 9444,
+            "all_improvement": 0.4005153900660001,
+            "t50_improvement": 0.3930355540220202,
+            "t100_improvement": 0.3897231366675057,
+            "hard_failure_improvement": 0.4164354330654928,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.6159466327827192
+          }
+        }
+      }
+    },
+    "mod_3": {
+      "role": "internal_validation",
+      "rows": 9444,
+      "metrics": {
+        "rows": 9444,
+        "all_improvement": 0.4018208065177482,
+        "t10_improvement": 0.5586366523479783,
+        "t25_improvement": 0.2426969486239834,
+        "t50_improvement": 0.4023419657011652,
+        "t100_improvement": 0.3877570682361541,
+        "hard_failure_improvement": 0.41947053762653463,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1353021566742831,
+        "switch_rate": 0.6161584074544685,
+        "regret_to_oracle": -0.08962442738981463,
+        "by_domain": {
+          "UCY": {
+            "rows": 9444,
+            "all_improvement": 0.4018208065177482,
+            "t50_improvement": 0.4023419657011652,
+            "t100_improvement": 0.3877570682361541,
+            "hard_failure_improvement": 0.41947053762653463,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.6161584074544685
+          }
+        }
+      }
+    },
+    "mod_4": {
+      "role": "internal_validation",
+      "rows": 9445,
+      "metrics": {
+        "rows": 9445,
+        "all_improvement": 0.40076273820209896,
+        "t10_improvement": 0.5551082559010362,
+        "t25_improvement": 0.2332699221543939,
+        "t50_improvement": 0.3903468498143696,
+        "t100_improvement": 0.40088785762920665,
+        "hard_failure_improvement": 0.4183060223310183,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.13468796307178252,
+        "switch_rate": 0.6136580201164638,
+        "regret_to_oracle": -0.08771668177777432,
+        "by_domain": {
+          "UCY": {
+            "rows": 9445,
+            "all_improvement": 0.40076273820209896,
+            "t50_improvement": 0.3903468498143696,
+            "t100_improvement": 0.40088785762920665,
+            "hard_failure_improvement": 0.4183060223310183,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.6136580201164638
+          }
+        }
+      }
+    }
+  },
+  "temporal_validation_blocks": {
+    "early": {
+      "rows": 15773,
+      "metrics": {
+        "rows": 15773,
+        "all_improvement": 0.38892347635419666,
+        "t10_improvement": 0.5614815053412628,
+        "t25_improvement": 0.22676131204872219,
+        "t50_improvement": 0.3702302702308522,
+        "t100_improvement": 0.3799713253826883,
+        "hard_failure_improvement": 0.404831754839556,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.14028638636658033,
+        "switch_rate": 0.617891333291067,
+        "regret_to_oracle": -0.09064777742715267,
+        "by_domain": {
+          "UCY": {
+            "rows": 15773,
+            "all_improvement": 0.38892347635419666,
+            "t50_improvement": 0.3702302702308522,
+            "t100_improvement": 0.3799713253826883,
+            "hard_failure_improvement": 0.404831754839556,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.617891333291067
+          }
+        }
+      }
+    },
+    "middle": {
+      "rows": 15783,
+      "metrics": {
+        "rows": 15783,
+        "all_improvement": 0.40751242187307124,
+        "t10_improvement": 0.5362595382051272,
+        "t25_improvement": 0.2728971127295202,
+        "t50_improvement": 0.4165340374616079,
+        "t100_improvement": 0.39657396542833256,
+        "hard_failure_improvement": 0.4253797863065558,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1277509048813337,
+        "switch_rate": 0.5697902806817462,
+        "regret_to_oracle": -0.07700402745103307,
+        "by_domain": {
+          "UCY": {
+            "rows": 15783,
+            "all_improvement": 0.40751242187307124,
+            "t50_improvement": 0.4165340374616079,
+            "t100_improvement": 0.39657396542833256,
+            "hard_failure_improvement": 0.4253797863065558,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.5697902806817462
+          }
+        }
+      }
+    },
+    "late": {
+      "rows": 15667,
+      "metrics": {
+        "rows": 15667,
+        "all_improvement": 0.40529028299774794,
+        "t10_improvement": 0.560326766252347,
+        "t25_improvement": 0.23303952351575552,
+        "t50_improvement": 0.39145229895081735,
+        "t100_improvement": 0.4070765544150957,
+        "hard_failure_improvement": 0.4225688957688867,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.13602605560246858,
+        "switch_rate": 0.6182421650603178,
+        "regret_to_oracle": -0.09682997809176065,
+        "by_domain": {
+          "UCY": {
+            "rows": 15667,
+            "all_improvement": 0.40529028299774794,
+            "t50_improvement": 0.39145229895081735,
+            "t100_improvement": 0.4070765544150957,
+            "hard_failure_improvement": 0.4225688957688867,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.6182421650603178
+          }
+        }
+      }
+    }
+  },
+  "internal_validation_pass": true,
+  "temporal_validation_pass": true,
+  "test_ucy_metrics": {
+    "rows": 9540,
+    "all_improvement": 0.3928657400363359,
+    "t50_improvement": 0.24265047375057225,
+    "t100_improvement": 0.4634436152370407,
+    "hard_failure_improvement": 0.3987527223236249,
+    "easy_degradation": 0.0,
+    "switch_rate": 0.5119496855345912
+  },
+  "test_overall_metrics": {
+    "rows": 55528,
+    "all_improvement": 0.3613141132176878,
+    "t10_improvement": 0.5931070948125632,
+    "t25_improvement": 0.1516107191380761,
+    "t50_improvement": 0.25956635248380133,
+    "t100_improvement": 0.37474907455985007,
+    "hard_failure_improvement": 0.3616933168487243,
+    "easy_degradation": 0.0,
+    "harm_over_fallback": -0.17293571755286352,
+    "switch_rate": 0.5102831004178072,
+    "regret_to_oracle": -0.1940450760931709,
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "all_improvement": 0.32821268069269216,
+        "t50_improvement": 0.24483247178301415,
+        "t100_improvement": 0.3238291310801773,
+        "hard_failure_improvement": 0.3301899932426716,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5250376433342342
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "all_improvement": 0.39781708186662845,
+        "t50_improvement": 0.2954187037019633,
+        "t100_improvement": 0.4127429783070867,
+        "hard_failure_improvement": 0.3941917315547696,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.4904664708517947
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.3928657400363359,
+        "t50_improvement": 0.24265047375057225,
+        "t100_improvement": 0.4634436152370407,
+        "hard_failure_improvement": 0.3987527223236249,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5119496855345912
+      }
+    }
+  },
+  "validation_pass": true,
+  "no_leakage": {
+    "future_waypoints_input": false,
+    "future_labels_eval_only": true,
+    "test_threshold_tuning": false,
+    "train_only_policy_selection": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false
+  },
+  "caveat": "This validates the UCY repair on internal train folds and temporal blocks, but source-level UCY validation remains blocked by available data."
+}
