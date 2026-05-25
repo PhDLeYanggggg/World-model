@@ -1201,6 +1201,15 @@ teacher_guided_multiseed_hard_min = 0.19653792868736553
 teacher_guided_multiseed_easy_max = 0.0
 teacher_guided_multiseed_collision_delta_max = -0.0037418834146520363
 teacher_guided_multiseed_positive_domain_counts = [3, 3, 3]
+source_level_validation_repair_pass = true
+source_level_validation_repair_overall_all = 0.20359710771827477
+source_level_validation_repair_overall_t50 = 0.13116399043122728
+source_level_validation_repair_overall_t100_raw_frame_diagnostic = 0.13371172832175005
+source_level_validation_repair_overall_hard = 0.19657225579495552
+source_level_validation_repair_overall_easy = 0.0
+source_level_validation_repair_positive_sources = 3
+pure_ucy_source_level_gate = false
+ucy_family_surrogate_gate = true
 group_consistency_distiller_deployable = True
 group_consistency_distiller_improves_fixed_guard = True
 group_consistency_distiller_all = 0.22240440177021437
@@ -1239,8 +1248,29 @@ stage5c_executed = false
 smc_enabled = false
 ```
 
-Next target: rebuild or acquire a true source-level UCY validation split, then continue from teacher-guided safe switching toward a jointly learned multi-agent latent rollout with safe non-fallback dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
+Next target: acquire or rebuild a true pure-UCY source-level validation split; the current source-level repair confirms positive held-out source files and a positive UCY-family surrogate, but pure UCY source-level validation remains blocked. Continue from teacher-guided safe switching toward a jointly learned multi-agent latent rollout with safe non-fallback dynamics. Current claims remain dataset-local raw-frame 2.5D, not true 3D or foundation.
 <!-- M3W_NEURAL_COMPLETION_AUDIT:END -->
+
+## Stage41 Source-Level Validation Repair
+
+Fresh source-level audit of the frozen teacher-guided candidate was added under `outputs/stage41_external_split/stage41_source_level_validation_repair.md`.
+
+```text
+source = fresh_run
+source_level_validation_repair_pass = true
+overall_all_improvement = 0.20359710771827477
+overall_t50_improvement = 0.13116399043122728
+overall_t100_raw_frame_diagnostic = 0.13371172832175005
+overall_hard_failure_improvement = 0.19657225579495552
+overall_easy_degradation = 0.0
+positive_heldout_sources = 3
+pure_ucy_source_level_gate = false
+ucy_family_surrogate_gate = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Interpretation: the frozen teacher-guided neural candidate is positive on held-out source files and on a UCY-family surrogate, but pure UCY source-level validation remains blocked because the available split has no independent UCY validation source after excluding duplicate-like zara03. This supports candidate status, not final foundation or true-3D claims.
 
 ## Stage41 Locked-v2 Fixed Policy Confirmation Audit
 

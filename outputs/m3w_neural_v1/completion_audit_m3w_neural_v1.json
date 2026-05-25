@@ -631,6 +631,12 @@
       "note": "Three fresh teacher-guided seeds each select policy and proximity guard on validation, then evaluate test once. All seeds are positive on all/t50/t100/hard, easy=0, joint collision delta below the safety ceiling, and all three external domains positive."
     },
     {
+      "requirement": "source-level held-out validation repair audit",
+      "status": "partial",
+      "evidence": "outputs/stage41_external_split/stage41_source_level_validation_repair.json",
+      "note": "Frozen teacher-guided candidate is positive on three held-out source files and a UCY-family surrogate, but pure UCY source-level validation remains blocked by the lack of an independent UCY validation source after duplicate-like zara03 exclusion."
+    },
+    {
       "requirement": "neural group-consistency head improves joint-safe fixed proximity guard",
       "status": "complete",
       "evidence": "outputs/stage41_fresh_confirmation/stage41_group_consistency_distiller.json",
@@ -671,8 +677,8 @@
     }
   ],
   "next_highest_value_actions": [
-    "Repair UCY fallback-only behavior in the deployable no-base-switch joint policy distiller; bootstrap, first ablations, and three-seed replication are complete.",
+    "Acquire or rebuild a true pure-UCY source-level validation split; current evidence has positive held-out source files and a UCY-family surrogate, but pure UCY source-level validation remains blocked.",
     "Move from the current safe group-consistency selector to a deployable jointly learned multi-agent latent rollout; the first group-token prototype is trained but FDE-negative without fallback.",
-    "Run independent external split replication before accepting deployment beyond candidate status."
+    "Run independent external split replication on additional non-duplicate external sources before accepting deployment beyond candidate status."
   ]
 }

@@ -1,0 +1,623 @@
+{
+  "source": "fresh_run",
+  "protocol": "stage41_source_level_validation_repair_audit",
+  "inventory": {
+    "source": "fresh_run",
+    "combined_rows": 337991,
+    "domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "by_domain": {
+      "ETH_UCY": {
+        "source_count": 5,
+        "sources": [
+          {
+            "source": "ETH/seq_eth/obsmat.txt",
+            "scene": [
+              "ETH_UCY_seq_eth"
+            ],
+            "rows": 21598,
+            "t50": 5074,
+            "t100": 2614,
+            "agents": 350
+          },
+          {
+            "source": "ETH/seq_hotel/obsmat.txt",
+            "scene": [
+              "ETH_UCY_seq_hotel"
+            ],
+            "rows": 16611,
+            "t50": 3994,
+            "t100": 2560,
+            "agents": 366
+          },
+          {
+            "source": "UCY/students03/obsmat.txt",
+            "scene": [
+              "ETH_UCY_students03"
+            ],
+            "rows": 70585,
+            "t50": 17529,
+            "t100": 15470,
+            "agents": 427
+          },
+          {
+            "source": "UCY/zara01/obsmat.txt",
+            "scene": [
+              "ETH_UCY_zara01"
+            ],
+            "rows": 16103,
+            "t50": 3988,
+            "t100": 3251,
+            "agents": 148
+          },
+          {
+            "source": "UCY/zara02/obsmat.txt",
+            "scene": [
+              "ETH_UCY_zara02"
+            ],
+            "rows": 25901,
+            "t50": 6422,
+            "t100": 5433,
+            "agents": 204
+          }
+        ]
+      },
+      "TrajNet": {
+        "source_count": 10,
+        "sources": [
+          {
+            "source": "TrajNet/Test/biwi/biwi_eth.txt",
+            "scene": [
+              "TrajNet_biwi"
+            ],
+            "rows": 459,
+            "t50": 51,
+            "t100": 0,
+            "agents": 51
+          },
+          {
+            "source": "TrajNet/Test/crowds/crowds_zara01.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 1647,
+            "t50": 183,
+            "t100": 0,
+            "agents": 183
+          },
+          {
+            "source": "TrajNet/Test/crowds/students002.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 765,
+            "t50": 85,
+            "t100": 0,
+            "agents": 85
+          },
+          {
+            "source": "TrajNet/Test/crowds/uni_examples.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 765,
+            "t50": 85,
+            "t100": 0,
+            "agents": 85
+          },
+          {
+            "source": "TrajNet/Train/biwi/biwi_hotel.txt",
+            "scene": [
+              "TrajNet_biwi"
+            ],
+            "rows": 7685,
+            "t50": 1885,
+            "t100": 1160,
+            "agents": 145
+          },
+          {
+            "source": "TrajNet/Train/crowds/arxiepiskopi1.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 3180,
+            "t50": 780,
+            "t100": 480,
+            "agents": 60
+          },
+          {
+            "source": "TrajNet/Train/crowds/crowds_zara02.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 20087,
+            "t50": 4927,
+            "t100": 3032,
+            "agents": 379
+          },
+          {
+            "source": "TrajNet/Train/crowds/students001.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 47223,
+            "t50": 11583,
+            "t100": 7128,
+            "agents": 891
+          },
+          {
+            "source": "TrajNet/Train/crowds/students003.txt",
+            "scene": [
+              "TrajNet_crowds"
+            ],
+            "rows": 37153,
+            "t50": 9113,
+            "t100": 5608,
+            "agents": 701
+          },
+          {
+            "source": "TrajNet/Train/mot/PETS09-S2L1.txt",
+            "scene": [
+              "TrajNet_mot"
+            ],
+            "rows": 1926,
+            "t50": 0,
+            "t100": 0,
+            "agents": 107
+          }
+        ]
+      },
+      "UCY": {
+        "source_count": 3,
+        "sources": [
+          {
+            "source": "TrajNet/Train/crowds/crowds_zara03.txt",
+            "scene": [
+              "UCY_crowds"
+            ],
+            "rows": 9540,
+            "t50": 2340,
+            "t100": 1440,
+            "agents": 180
+          },
+          {
+            "source": "UCY/students01/students001-trajnet.txt",
+            "scene": [
+              "UCY_students01"
+            ],
+            "rows": 47223,
+            "t50": 11583,
+            "t100": 7128,
+            "agents": 891
+          },
+          {
+            "source": "UCY/zara03/crowds_zara03.txt",
+            "scene": [
+              "UCY_zara03"
+            ],
+            "rows": 9540,
+            "t50": 2340,
+            "t100": 1440,
+            "agents": 180
+          }
+        ]
+      }
+    },
+    "by_family": {
+      "UCY_family_surrogate": {
+        "definition": "UCY domain plus UCY-path and crowds/student source files. This is a surrogate family, not pure UCY source-level validation.",
+        "stats": {
+          "rows": 285767,
+          "sources": 11,
+          "scenes": 7,
+          "agents": 892,
+          "t10": 87133,
+          "t25": 78611,
+          "t50": 70093,
+          "t100": 49930,
+          "hard": 209981,
+          "easy": 84831,
+          "failure": 103948,
+          "frame_min": 20.0,
+          "frame_max": 10507.0
+        },
+        "sources": [
+          "TrajNet/Test/crowds/crowds_zara01.txt",
+          "TrajNet/Test/crowds/students002.txt",
+          "TrajNet/Train/crowds/crowds_zara02.txt",
+          "TrajNet/Train/crowds/crowds_zara03.txt",
+          "TrajNet/Train/crowds/students001.txt",
+          "TrajNet/Train/crowds/students003.txt",
+          "UCY/students01/students001-trajnet.txt",
+          "UCY/students03/obsmat.txt",
+          "UCY/zara01/obsmat.txt",
+          "UCY/zara02/obsmat.txt",
+          "UCY/zara03/crowds_zara03.txt"
+        ]
+      }
+    },
+    "duplicate_basename_groups": {
+      "obsmat.txt": [
+        "ETH/seq_eth/obsmat.txt",
+        "ETH/seq_hotel/obsmat.txt",
+        "UCY/students03/obsmat.txt",
+        "UCY/zara01/obsmat.txt",
+        "UCY/zara02/obsmat.txt"
+      ],
+      "crowds_zara03.txt": [
+        "TrajNet/Train/crowds/crowds_zara03.txt",
+        "UCY/zara03/crowds_zara03.txt"
+      ]
+    },
+    "known_duplicate_blockers": [
+      "UCY/zara03/crowds_zara03.txt and TrajNet/Train/crowds/crowds_zara03.txt are treated as duplicate-like zara03 sources and must not be split across train/val/test as independent evidence."
+    ]
+  },
+  "split_feasibility": {
+    "ETH_UCY": {
+      "source_level_train_val_test_available": true,
+      "train_sources": 3,
+      "val_sources": 1,
+      "test_sources": 1,
+      "train_rows": 108794,
+      "val_rows": 16103,
+      "test_rows": 25901,
+      "val_t50": 3988,
+      "test_t50": 6422
+    },
+    "TrajNet": {
+      "source_level_train_val_test_available": true,
+      "train_sources": 8,
+      "val_sources": 1,
+      "test_sources": 1,
+      "train_rows": 63650,
+      "val_rows": 37153,
+      "test_rows": 20087,
+      "val_t50": 9113,
+      "test_t50": 4927
+    },
+    "UCY": {
+      "source_level_train_val_test_available": false,
+      "train_sources": 1,
+      "val_sources": 0,
+      "test_sources": 1,
+      "train_rows": 47223,
+      "val_rows": 0,
+      "test_rows": 9540,
+      "val_t50": 0,
+      "test_t50": 2340
+    },
+    "no_source_overlap": true,
+    "source_overlap_audit": {
+      "train_val": [],
+      "train_test": [],
+      "val_test": []
+    },
+    "UCY_source_level_blocker": "Pure UCY still has no independent validation source in the source-rotation split. Internal/temporal validation is useful but is not source-level evidence.",
+    "UCY_family_surrogate_available": true,
+    "UCY_family_surrogate_note": "UCY-family surrogate uses ETH_UCY UCY-path sources plus held-out UCY test sources; it is not a replacement for a true pure-UCY source-level validation split."
+  },
+  "frozen_test_source_metrics": {
+    "source": "fresh_run",
+    "frozen_policy": {
+      "checkpoint": "outputs/stage41_fresh_confirmation/checkpoints/stage41_teacher_proposal_balanced.pt",
+      "policy": {
+        "type": "teacher_guided_proposal",
+        "mode": "teacher_or_gain",
+        "teacher_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2103135883808136,
+        "uncertainty_max": 0.2103135883808136,
+        "val_eligible": true
+      },
+      "proximity_guard_min_sep": 0.05,
+      "guarded_off": 9247
+    },
+    "overall_test_metrics": {
+      "rows": 55528,
+      "all_improvement": 0.20359710771827477,
+      "t10_improvement": 0.4808062018590501,
+      "t25_improvement": 0.10605934536724371,
+      "t50_improvement": 0.13116399043122728,
+      "t100_improvement": 0.13371172832175005,
+      "hard_failure_improvement": 0.19657225579495552,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.09744765185448034,
+      "switch_rate": 0.2954185275896845,
+      "regret_to_oracle": -0.11855701039478773,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.18078385652963747,
+          "t50_improvement": 0.12639767337296248,
+          "t100_improvement": 0.116773132534713,
+          "hard_failure_improvement": 0.17652646157464624,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.31010385699393844
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.22603090188551178,
+          "t50_improvement": 0.16449991586869817,
+          "t100_improvement": 0.13224492571845858,
+          "hard_failure_improvement": 0.21570445239262925,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.26504704535271567
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.22956283301221425,
+          "t50_improvement": 0.0911574213666958,
+          "t100_improvement": 0.18460098687191007,
+          "hard_failure_improvement": 0.2225493052657842,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.31949685534591193
+        }
+      }
+    },
+    "by_source": {
+      "TrajNet/Train/crowds/crowds_zara02.txt": {
+        "rows": 20087,
+        "all_improvement": 0.22603090188551178,
+        "t10_improvement": 0.5087135343426403,
+        "t25_improvement": 0.13572157903578475,
+        "t50_improvement": 0.16449991586869817,
+        "t100_improvement": 0.13224492571845858,
+        "hard_failure_improvement": 0.21570445239262925,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.08892117119101035,
+        "switch_rate": 0.26504704535271567,
+        "regret_to_oracle": -0.10191006713890642,
+        "by_domain": {
+          "TrajNet": {
+            "rows": 20087,
+            "all_improvement": 0.22603090188551178,
+            "t50_improvement": 0.16449991586869817,
+            "t100_improvement": 0.13224492571845858,
+            "hard_failure_improvement": 0.21570445239262925,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.26504704535271567
+          }
+        },
+        "source": "TrajNet/Train/crowds/crowds_zara02.txt",
+        "domain": [
+          "TrajNet"
+        ],
+        "scene": [
+          "TrajNet_crowds"
+        ],
+        "t50_rows": 4927,
+        "t100_rows": 3032
+      },
+      "UCY/zara02/obsmat.txt": {
+        "rows": 25901,
+        "all_improvement": 0.18078385652963747,
+        "t10_improvement": 0.44176233166105927,
+        "t25_improvement": 0.0856772342083768,
+        "t50_improvement": 0.12639767337296248,
+        "t100_improvement": 0.116773132534713,
+        "hard_failure_improvement": 0.17652646157464624,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.09475302691757265,
+        "switch_rate": 0.31010385699393844,
+        "regret_to_oracle": -0.12959886533496778,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": 0.18078385652963747,
+            "t50_improvement": 0.12639767337296248,
+            "t100_improvement": 0.116773132534713,
+            "hard_failure_improvement": 0.17652646157464624,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.31010385699393844
+          }
+        },
+        "source": "UCY/zara02/obsmat.txt",
+        "domain": [
+          "ETH_UCY"
+        ],
+        "scene": [
+          "ETH_UCY_zara02"
+        ],
+        "t50_rows": 6422,
+        "t100_rows": 5433
+      },
+      "UCY/zara03/crowds_zara03.txt": {
+        "rows": 9540,
+        "all_improvement": 0.22956283301221425,
+        "t10_improvement": 0.5300956078236537,
+        "t25_improvement": 0.1094369383623871,
+        "t50_improvement": 0.0911574213666958,
+        "t100_improvement": 0.18460098687191007,
+        "hard_failure_improvement": 0.2225493052657842,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.12271650904294659,
+        "switch_rate": 0.31949685534591193,
+        "regret_to_oracle": -0.12362955383035212,
+        "by_domain": {
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.22956283301221425,
+            "t50_improvement": 0.0911574213666958,
+            "t100_improvement": 0.18460098687191007,
+            "hard_failure_improvement": 0.2225493052657842,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.31949685534591193
+          }
+        },
+        "source": "UCY/zara03/crowds_zara03.txt",
+        "domain": [
+          "UCY"
+        ],
+        "scene": [
+          "UCY_zara03"
+        ],
+        "t50_rows": 2340,
+        "t100_rows": 1440
+      }
+    },
+    "by_family": {
+      "UCY_family_surrogate_test": {
+        "rows": 55528,
+        "all_improvement": 0.20359710771827477,
+        "t10_improvement": 0.4808062018590501,
+        "t25_improvement": 0.10605934536724371,
+        "t50_improvement": 0.13116399043122728,
+        "t100_improvement": 0.13371172832175005,
+        "hard_failure_improvement": 0.19657225579495552,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.09744765185448034,
+        "switch_rate": 0.2954185275896845,
+        "regret_to_oracle": -0.11855701039478773,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": 0.18078385652963747,
+            "t50_improvement": 0.12639767337296248,
+            "t100_improvement": 0.116773132534713,
+            "hard_failure_improvement": 0.17652646157464624,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.31010385699393844
+          },
+          "TrajNet": {
+            "rows": 20087,
+            "all_improvement": 0.22603090188551178,
+            "t50_improvement": 0.16449991586869817,
+            "t100_improvement": 0.13224492571845858,
+            "hard_failure_improvement": 0.21570445239262925,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.26504704535271567
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.22956283301221425,
+            "t50_improvement": 0.0911574213666958,
+            "t100_improvement": 0.18460098687191007,
+            "hard_failure_improvement": 0.2225493052657842,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.31949685534591193
+          }
+        }
+      },
+      "pure_UCY_test": {
+        "rows": 9540,
+        "all_improvement": 0.22956283301221425,
+        "t10_improvement": 0.5300956078236537,
+        "t25_improvement": 0.1094369383623871,
+        "t50_improvement": 0.0911574213666958,
+        "t100_improvement": 0.18460098687191007,
+        "hard_failure_improvement": 0.2225493052657842,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.12271650904294659,
+        "switch_rate": 0.31949685534591193,
+        "regret_to_oracle": -0.12362955383035212,
+        "by_domain": {
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.22956283301221425,
+            "t50_improvement": 0.0911574213666958,
+            "t100_improvement": 0.18460098687191007,
+            "hard_failure_improvement": 0.2225493052657842,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.31949685534591193
+          }
+        }
+      },
+      "ETH_UCY_test": {
+        "rows": 25901,
+        "all_improvement": 0.18078385652963747,
+        "t10_improvement": 0.44176233166105927,
+        "t25_improvement": 0.0856772342083768,
+        "t50_improvement": 0.12639767337296248,
+        "t100_improvement": 0.116773132534713,
+        "hard_failure_improvement": 0.17652646157464624,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.09475302691757265,
+        "switch_rate": 0.31010385699393844,
+        "regret_to_oracle": -0.12959886533496778,
+        "by_domain": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "all_improvement": 0.18078385652963747,
+            "t50_improvement": 0.12639767337296248,
+            "t100_improvement": 0.116773132534713,
+            "hard_failure_improvement": 0.17652646157464624,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.31010385699393844
+          }
+        }
+      },
+      "TrajNet_test": {
+        "rows": 20087,
+        "all_improvement": 0.22603090188551178,
+        "t10_improvement": 0.5087135343426403,
+        "t25_improvement": 0.13572157903578475,
+        "t50_improvement": 0.16449991586869817,
+        "t100_improvement": 0.13224492571845858,
+        "hard_failure_improvement": 0.21570445239262925,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.08892117119101035,
+        "switch_rate": 0.26504704535271567,
+        "regret_to_oracle": -0.10191006713890642,
+        "by_domain": {
+          "TrajNet": {
+            "rows": 20087,
+            "all_improvement": 0.22603090188551178,
+            "t50_improvement": 0.16449991586869817,
+            "t100_improvement": 0.13224492571845858,
+            "hard_failure_improvement": 0.21570445239262925,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.26504704535271567
+          }
+        }
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_labels_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "frozen_policy_and_guard": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "ucy_internal_temporal_validation": {
+    "source": "cached_verified",
+    "validation_pass": true,
+    "source_level_available": false,
+    "source_level_blocker": "UCY has one train source and no UCY validation source; true source-level UCY validation needs another UCY-like source or a rebuilt split.",
+    "test_ucy_metrics": {
+      "rows": 9540,
+      "all_improvement": 0.3928657400363359,
+      "t50_improvement": 0.24265047375057225,
+      "t100_improvement": 0.4634436152370407,
+      "hard_failure_improvement": 0.3987527223236249,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.5119496855345912
+    }
+  },
+  "positive_test_sources": [
+    "TrajNet/Train/crowds/crowds_zara02.txt",
+    "UCY/zara02/obsmat.txt",
+    "UCY/zara03/crowds_zara03.txt"
+  ],
+  "source_level_validation_repair_pass": true,
+  "pure_ucy_source_level_gate": false,
+  "ucy_family_surrogate_gate": true,
+  "deployment_interpretation": "The frozen teacher-guided candidate has positive source-heldout evidence and a positive UCY-family surrogate, but pure UCY source-level validation remains blocked. This supports continued candidate status, not final external source-level deployment evidence.",
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "source_file_overlap_pass": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
