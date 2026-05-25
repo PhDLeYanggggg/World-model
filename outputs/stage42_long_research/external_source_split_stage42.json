@@ -1,0 +1,135 @@
+{
+  "source": "fresh_run",
+  "protocol": "stage42_source_level_split_rebuild",
+  "generated_at_utc": "2026-05-25T19:41:00.046585+00:00",
+  "input": "data/stage41_world_model/combined_external.npz",
+  "proposed_source_level_split": {
+    "train": {
+      "rows": 266745,
+      "domains": {
+        "ETH_UCY": 134695,
+        "TrajNet": 75287,
+        "UCY": 56763
+      },
+      "scenes": 9,
+      "sources": 13,
+      "t10": 83107,
+      "t25": 73802,
+      "t50": 64551,
+      "t100": 45285,
+      "hard": 198685,
+      "failure": 96981,
+      "easy": 80855
+    },
+    "val": {
+      "rows": 23788,
+      "domains": {
+        "ETH_UCY": 16103,
+        "TrajNet": 7685
+      },
+      "scenes": 2,
+      "sources": 2,
+      "t10": 7045,
+      "t25": 6459,
+      "t50": 5873,
+      "t100": 4411,
+      "hard": 21872,
+      "failure": 10450,
+      "easy": 4454
+    },
+    "test": {
+      "rows": 47458,
+      "domains": {
+        "TrajNet": 37918,
+        "UCY": 9540
+      },
+      "scenes": 2,
+      "sources": 3,
+      "t10": 15402,
+      "t25": 13470,
+      "t50": 11538,
+      "t100": 7048,
+      "hard": 35076,
+      "failure": 19056,
+      "easy": 11192
+    }
+  },
+  "proposed_split_group_overlap": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "proposed_split_no_source_overlap": true,
+  "frozen_model_eval_pool": {
+    "definition": "old_split == test, then regrouped by source_file into fresh source folds; this avoids evaluating frozen Stage41 models on old train rows.",
+    "stats": {
+      "rows": 66303,
+      "domains": {
+        "UCY": 66303
+      },
+      "scenes": 3,
+      "sources": 3,
+      "t10": 21267,
+      "t25": 18765,
+      "t50": 16263,
+      "t100": 10008,
+      "hard": 45917,
+      "failure": 22891,
+      "easy": 20798
+    },
+    "source_folds": {
+      "fold_0": {
+        "rows": 0,
+        "domains": {},
+        "scenes": 0,
+        "sources": 0,
+        "t10": 0,
+        "t25": 0,
+        "t50": 0,
+        "t100": 0,
+        "hard": 0,
+        "failure": 0,
+        "easy": 0
+      },
+      "fold_1": {
+        "rows": 47223,
+        "domains": {
+          "UCY": 47223
+        },
+        "scenes": 1,
+        "sources": 1,
+        "t10": 15147,
+        "t25": 13365,
+        "t50": 11583,
+        "t100": 7128,
+        "hard": 31139,
+        "failure": 14287,
+        "easy": 16840
+      },
+      "fold_2": {
+        "rows": 19080,
+        "domains": {
+          "UCY": 19080
+        },
+        "scenes": 2,
+        "sources": 2,
+        "t10": 6120,
+        "t25": 5400,
+        "t50": 4680,
+        "t100": 2880,
+        "hard": 14778,
+        "failure": 8604,
+        "easy": 3958
+      }
+    },
+    "source_fold_count": 3
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "proposed_source_overlap_pass": true,
+    "frozen_eval_uses_old_train_rows": false
+  }
+}

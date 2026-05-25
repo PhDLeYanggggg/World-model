@@ -34,6 +34,37 @@ Main honest verdict:
 
 M3W-Neural v1 is the strongest current protected 2.5D neural world-state candidate, but it is still not true 3D, not metric/seconds-level, and not a foundation world model. JEPA remains diagnostic-only; ungated neural dynamics remain unsafe; Stage37/teacher safety floor is still required for deployability.
 
+## Stage42-B External Validation
+
+Latest Stage42-B external validation:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/external_validation_stage42.md`
+
+Fresh external validation result:
+
+```text
+source = fresh_run
+source_level_split_rebuilt = true
+frozen_eval_pool_rows = 66303
+frozen_eval_source_groups = 3
+evaluated_rows = 55528
+protected_M3W_all_ADE_improvement = 0.2103
+protected_M3W_t50_ADE_improvement = 0.1365
+protected_M3W_t100_raw_frame_diagnostic_ADE_improvement = 0.1469
+protected_M3W_hard_failure_ADE_improvement = 0.2038
+protected_M3W_easy_degradation = -0.1451
+ungated_neural_all_ADE_improvement = 0.2966
+ungated_neural_easy_degradation = 1.2459
+stage42_b_gates = 10 / 10
+verdict = stage42_b_external_validation_pass_protected_neural_not_ungated
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Conclusion:
+
+Stage42-B confirms with fresh source/fold stress evidence that protected M3W-Neural v1 remains positive on external dataset-local raw-frame validation. Ungated neural still fails easy-case safety, so the Stage37/teacher floor is still required and should be treated as part of the method, not removed silently.
+
 ## Stage42-A Long Research Mode Data Calibration
 
 Latest Stage42-A data/calibration audit:

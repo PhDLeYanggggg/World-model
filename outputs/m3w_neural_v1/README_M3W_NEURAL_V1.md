@@ -35,3 +35,29 @@ Stage42 Long Research Mode has started with a fresh data/calibration audit:
 - result: Stage42-A gates `7 / 7`
 
 The audit confirms that existing local converted state is sufficient to proceed to Stage42-B external validation and Stage42-C full-waypoint dynamics. It also confirms that global metric and seconds-level claims remain disallowed.
+
+## Stage42-B External Validation Follow-Up
+
+Stage42-B rebuilt a source-level/fold stress protocol over the frozen external evaluation pool and reran the protected package comparisons:
+
+- report: `outputs/stage42_long_research/external_validation_stage42.md`
+- source split: `outputs/stage42_long_research/external_source_split_stage42.json`
+- gate: `outputs/stage42_long_research/stage42_stage_b_gate.md`
+- result: Stage42-B gates `10 / 10`
+
+Key fresh-run result:
+
+```text
+frozen_eval_pool_rows = 66303
+evaluated_rows = 55528
+protected_M3W_all_ADE_improvement = 0.2103
+protected_M3W_t50_ADE_improvement = 0.1365
+protected_M3W_t100_raw_frame_diagnostic_ADE_improvement = 0.1469
+protected_M3W_hard_failure_ADE_improvement = 0.2038
+protected_M3W_easy_degradation = -0.1451
+ungated_neural_all_ADE_improvement = 0.2966
+ungated_neural_easy_degradation = 1.2459
+verdict = stage42_b_external_validation_pass_protected_neural_not_ungated
+```
+
+This confirms the protected neural candidate under the Stage37/teacher floor, and it also confirms the safety failure of ungated neural endpoint dynamics. Negative easy degradation means no easy-case harm under the report's metric convention. The result remains dataset-local raw-frame 2.5D evidence only; it is not metric, seconds-level, true 3D, Stage5C, or SMC.
