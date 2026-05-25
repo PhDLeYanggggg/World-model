@@ -22,6 +22,7 @@ SOURCE_PATHS = [
     STAGE41_DIR / "stage41_seq2seq_dataset.json",
     STAGE41_DIR / "stage41_all_agent_dataset.json",
     STAGE41_DIR / "pytest_status.md",
+    OUT_DIR / "ablation_coverage_m3w_neural_v1.json",
     FRESH_DIR / "stage41_fresh_self_gated_endpoint_candidate.json",
     FRESH_DIR / "stage41_bounded_neural_blend_dynamics.json",
     FRESH_DIR / "stage41_composite_tail_evidence.json",
@@ -44,6 +45,8 @@ SOURCE_PATHS = [
     DOMAIN_LOCAL_DIR / "stage41_fixed_prior_source_switch_policy.json",
     DOMAIN_LOCAL_DIR / "stage41_fixed_prior_oracle_audit.json",
     Path("src/stage41_breakthrough.py"),
+    Path("src/stage41_ablation_coverage_audit.py"),
+    Path("run_stage41_ablation_coverage_audit.py"),
     Path("src/stage41_fresh_confirmation.py"),
     Path("src/stage41_bounded_neural_blend_dynamics.py"),
     Path("src/stage41_composite_tail_evidence.py"),
@@ -170,6 +173,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
     split_report = _safe_read(SPLIT_DIR / "report.json")
     seq2seq = _safe_read(STAGE41_DIR / "stage41_seq2seq_dataset.json")
     all_agent = _safe_read(STAGE41_DIR / "stage41_all_agent_dataset.json")
+    ablation_coverage = _safe_read(OUT_DIR / "ablation_coverage_m3w_neural_v1.json")
 
     metrics = (
         composite_evidence.get("test_metrics")
@@ -331,6 +335,14 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "pure_ucy_source_level_gate": source_repair.get("pure_ucy_source_level_gate"),
             "ucy_family_surrogate_gate": source_repair.get("ucy_family_surrogate_gate"),
         },
+        "required_ablation_coverage": {
+            "gate": ablation_coverage.get("coverage_gate"),
+            "missing": ablation_coverage.get("missing"),
+            "partial": ablation_coverage.get("partial"),
+            "cross_protocol_limitations": ablation_coverage.get("cross_protocol_limitations"),
+            "requirements": ablation_coverage.get("requirements"),
+            "claim_boundary": ablation_coverage.get("claim_boundary"),
+        },
         "jepa_deployment_decision": jepa_decision.get("decision"),
         "jepa_disable_deployable_path": jepa_decision.get("disable_jepa_in_deployable_path"),
         "negative_source_switch_evidence": {
@@ -417,6 +429,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         _metric_row("endpoint-to-full bridge statistical positive domains", endpoint_to_full_stats.get("positive_domains"), "domains with positive ADE/FDE lower bounds"),
         _metric_row("calibrated learned-shape meta-policy gate", calibrated_shape.get("two_domain_calibrated_meta_gate"), "positive learned-shape residual evidence under fallback"),
         _metric_row("calibrated learned-shape positive domains", calibrated_shape.get("positive_domains"), "ETH_UCY and TrajNet if pass"),
+        _metric_row("required ablation coverage gate", ablation_coverage.get("coverage_gate"), "covers no-history/no-neighbor/no-scene-goal/no-interaction/no-JEPA/no-Transformer/no-fallback"),
+        _metric_row("required ablation cross-protocol limits", ablation_coverage.get("cross_protocol_limitations"), "limitations must be explicit"),
         _metric_row("JEPA deployable path", "disabled", "JEPA had no deployable downstream lift"),
         _metric_row("fixed-prior source switch beats fixed composer", fixed_prior_switch.get("two_domain_fixed_prior_beats_fixed_gate"), "negative branch audit"),
         _metric_row("residual source-switch oracle headroom", fixed_prior_oracle.get("two_domain_residual_oracle_headroom"), "negative branch audit"),
@@ -476,6 +490,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
         f"- endpoint-to-full bridge statistical positive domains: `{endpoint_to_full_stats.get('positive_domains')}`",
         f"- calibrated learned-shape meta-policy gate: `{calibrated_shape.get('two_domain_calibrated_meta_gate')}`",
         f"- calibrated learned-shape positive domains: `{calibrated_shape.get('positive_domains')}`",
+        f"- required ablation coverage gate: `{ablation_coverage.get('coverage_gate')}`",
+        f"- required ablation cross-protocol limitations: `{ablation_coverage.get('cross_protocol_limitations')}`",
         f"- JEPA deployable path: `{jepa_decision.get('decision')}`",
         f"- fixed-prior source switch beats fixed composer: `{fixed_prior_switch.get('two_domain_fixed_prior_beats_fixed_gate')}`",
         f"- residual source-switch oracle headroom: `{fixed_prior_oracle.get('two_domain_residual_oracle_headroom')}`",
@@ -523,6 +539,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "The package also includes the positive endpoint-to-full bridge audit: domain-local endpoint neural dynamics pass actual full-waypoint ADE/FDE, multi-agent, proximity, and smoothness gates on ETH_UCY and TrajNet through a linear waypoint bridge. This strengthens world-state evidence without claiming learned waypoint-shape dynamics.",
             "",
             "The endpoint-to-full bridge now also has fresh 2000-bootstrap per-domain statistical support on ETH_UCY and TrajNet. The lower bounds are positive for all/t50/hard/multi-agent ADE and all/t50 FDE, but this is still protected linear-bridge evidence rather than ungated learned full-waypoint shape dynamics.",
+            "",
+            "The required ablation coverage audit is now packaged. It covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback, while explicitly marking no-JEPA/no-Transformer as cross-protocol limitations.",
             "",
             "The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.",
         ],
@@ -599,6 +617,7 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_pure_ucy_neural_statistical_evidence.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_to_full_trajectory_repair.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_to_full_statistical_evidence.py",
+            "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_ablation_coverage_audit.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_calibrated_shape_meta_policy.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_endpoint_geometry_audit.py",
             "/usr/bin/arch -arm64 .venv-pytorch/bin/python run_stage41_gates.py",
@@ -657,6 +676,8 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
                 "selector_policy_m3w_neural_v1.json",
                 "evidence_matrix_m3w_neural_v1.md",
                 "evidence_matrix_m3w_neural_v1.json",
+                "ablation_coverage_m3w_neural_v1.md",
+                "ablation_coverage_m3w_neural_v1.json",
                 "reproducibility_m3w_neural_v1.md",
                 "paper_gap_m3w_neural_v1.md",
                 "package_manifest_m3w_neural_v1.json",
@@ -695,6 +716,9 @@ def build_m3w_neural_v1_package() -> dict[str, Any]:
                 domain: row.get("bootstrap_lows")
                 for domain, row in (endpoint_to_full_stats.get("domain_results") or {}).items()
             },
+            "required_ablation_coverage_gate": ablation_coverage.get("coverage_gate"),
+            "required_ablation_coverage_missing": ablation_coverage.get("missing"),
+            "required_ablation_cross_protocol_limitations": ablation_coverage.get("cross_protocol_limitations"),
             "calibrated_learned_shape_meta_gate": calibrated_shape.get("two_domain_calibrated_meta_gate"),
             "calibrated_learned_shape_positive_domains": calibrated_shape.get("positive_domains"),
             "composite_tail_evidence_pass": composite_evidence.get("evidence_pass"),
@@ -754,6 +778,8 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         f"endpoint_to_full_bridge_positive_domains = {summary.get('endpoint_to_full_bridge_positive_domains')}",
         f"endpoint_to_full_statistical_gate = {summary.get('endpoint_to_full_statistical_gate')}",
         f"endpoint_to_full_statistical_positive_domains = {summary.get('endpoint_to_full_statistical_positive_domains')}",
+        f"required_ablation_coverage_gate = {summary.get('required_ablation_coverage_gate')}",
+        f"required_ablation_cross_protocol_limitations = {summary.get('required_ablation_cross_protocol_limitations')}",
         f"calibrated_learned_shape_meta_gate = {summary.get('calibrated_learned_shape_meta_gate')}",
         f"calibrated_learned_shape_positive_domains = {summary.get('calibrated_learned_shape_positive_domains')}",
         f"composite_tail_evidence_pass = {summary.get('composite_tail_evidence_pass')}",
@@ -825,6 +851,9 @@ def _update_readme_and_state(package: Mapping[str, Any]) -> None:
         "endpoint_to_full_statistical_gate": summary.get("endpoint_to_full_statistical_gate"),
         "endpoint_to_full_statistical_positive_domains": summary.get("endpoint_to_full_statistical_positive_domains"),
         "endpoint_to_full_statistical_domain_lows": summary.get("endpoint_to_full_statistical_domain_lows"),
+        "required_ablation_coverage_gate": summary.get("required_ablation_coverage_gate"),
+        "required_ablation_coverage_missing": summary.get("required_ablation_coverage_missing"),
+        "required_ablation_cross_protocol_limitations": summary.get("required_ablation_cross_protocol_limitations"),
         "calibrated_learned_shape_meta_gate": summary.get("calibrated_learned_shape_meta_gate"),
         "calibrated_learned_shape_positive_domains": summary.get("calibrated_learned_shape_positive_domains"),
         "composite_tail_evidence_pass": summary.get("composite_tail_evidence_pass"),

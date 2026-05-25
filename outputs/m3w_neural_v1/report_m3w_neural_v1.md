@@ -47,6 +47,8 @@
 - endpoint-to-full bridge statistical positive domains: `['ETH_UCY', 'TrajNet']`
 - calibrated learned-shape meta-policy gate: `True`
 - calibrated learned-shape positive domains: `['ETH_UCY', 'TrajNet']`
+- required ablation coverage gate: `True`
+- required ablation cross-protocol limitations: `['no_jepa', 'no_transformer']`
 - JEPA deployable path: `disable_jepa_in_deployable_path`
 - fixed-prior source switch beats fixed composer: `False`
 - residual source-switch oracle headroom: `False`

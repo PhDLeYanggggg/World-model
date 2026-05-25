@@ -1,8 +1,8 @@
 # M3W-Neural v1 Evidence Matrix
 
 - result_source: `cached_verified` from Stage41 fresh reports, hashes recorded below.
-- package_input_hash: `fc9c10f0a98a255008eefc4b0e8cccabf5da069d9bd9623cb36b630976c462cf`
-- git_commit: `704bdc3`
+- package_input_hash: `dda9bf0c4f803a14657d10f578d06253cca6c2b5496e192fe447f37444163134`
+- git_commit: `d144526`
 
 | Evidence | Value | Gate interpretation |
 | --- | --- | --- |
@@ -35,6 +35,8 @@
 | endpoint-to-full bridge statistical positive domains | `['ETH_UCY', 'TrajNet']` | domains with positive ADE/FDE lower bounds |
 | calibrated learned-shape meta-policy gate | `True` | positive learned-shape residual evidence under fallback |
 | calibrated learned-shape positive domains | `['ETH_UCY', 'TrajNet']` | ETH_UCY and TrajNet if pass |
+| required ablation coverage gate | `True` | covers no-history/no-neighbor/no-scene-goal/no-interaction/no-JEPA/no-Transformer/no-fallback |
+| required ablation cross-protocol limits | `['no_jepa', 'no_transformer']` | limitations must be explicit |
 | JEPA deployable path | `disabled` | JEPA had no deployable downstream lift |
 | fixed-prior source switch beats fixed composer | `False` | negative branch audit |
 | residual source-switch oracle headroom | `False` | negative branch audit |

@@ -7,6 +7,7 @@
     "outputs/stage41_breakthrough/stage41_seq2seq_dataset.json",
     "outputs/stage41_breakthrough/stage41_all_agent_dataset.json",
     "outputs/stage41_breakthrough/pytest_status.md",
+    "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
     "outputs/stage41_fresh_confirmation/stage41_fresh_self_gated_endpoint_candidate.json",
     "outputs/stage41_fresh_confirmation/stage41_bounded_neural_blend_dynamics.json",
     "outputs/stage41_fresh_confirmation/stage41_composite_tail_evidence.json",
@@ -29,6 +30,8 @@
     "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
     "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
     "src/stage41_breakthrough.py",
+    "src/stage41_ablation_coverage_audit.py",
+    "run_stage41_ablation_coverage_audit.py",
     "src/stage41_fresh_confirmation.py",
     "src/stage41_bounded_neural_blend_dynamics.py",
     "src/stage41_composite_tail_evidence.py",
@@ -46,7 +49,7 @@
     "src/stage41_dynamic_shape_meta_policy.py",
     "src/stage41_calibrated_shape_meta_policy.py"
   ],
-  "package_input_hash": "fc9c10f0a98a255008eefc4b0e8cccabf5da069d9bd9623cb36b630976c462cf",
+  "package_input_hash": "dda9bf0c4f803a14657d10f578d06253cca6c2b5496e192fe447f37444163134",
   "gates_passed": 41,
   "gates_total": 41,
   "current_verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate",
@@ -1447,6 +1450,319 @@
     "pass": true,
     "pure_ucy_source_level_gate": false,
     "ucy_family_surrogate_gate": true
+  },
+  "required_ablation_coverage": {
+    "gate": true,
+    "missing": [],
+    "partial": [],
+    "cross_protocol_limitations": [
+      "no_jepa",
+      "no_transformer"
+    ],
+    "requirements": {
+      "no_history": {
+        "status": "complete",
+        "source": "outputs/stage41_fresh_confirmation/stage41_teacher_guided_evidence.json",
+        "evidence_type": "fresh_run masked-feature ablation",
+        "delta_vs_full": {
+          "all_delta": 0.005348364841490927,
+          "t50_delta": 0.008461227809460459,
+          "t100_delta": 0.0066666916198473425,
+          "hard_delta": 0.005360984666041402
+        },
+        "interpretation": "Masks history/static causal feature group after policy freeze; proves coverage for no-history/static ablation, not a claim that every history-derived scalar is useless."
+      },
+      "no_neighbor": {
+        "status": "complete",
+        "source": "teacher_guided_evidence + group_consistency_evidence",
+        "evidence_type": "fresh_run masked neighbor/interaction ablations",
+        "teacher_delta_vs_full": {
+          "all_delta": -0.1980910960572272,
+          "t50_delta": -0.12984928959704223,
+          "t100_delta": -0.13309844737942722,
+          "hard_delta": -0.1932304854705187
+        },
+        "neighbor_count_delta": {
+          "all_delta": 0.008271109175146063,
+          "t50_delta": 0.005511255610689547,
+          "t100_delta": 0.010186229711920625,
+          "hard_delta": 0.008337925324469087,
+          "easy_delta": 0.0,
+          "switch_delta": 0.012246074052730205,
+          "collision_delta_change": 9.171282879050224e-05
+        },
+        "interpretation": "Neighbor/interaction masking is audited; group/neighbor features are especially important for the safety head and t100/hard slices."
+      },
+      "no_scene_goal": {
+        "status": "complete",
+        "source": "stage41_teacher_guided_evidence + stage41_route_physical_policy_integration",
+        "evidence_type": "fresh_run scene/goal proxy and route/physical ablations",
+        "teacher_delta_vs_full": {
+          "all_delta": 0.002417794918705307,
+          "t50_delta": 0.006889259802428271,
+          "t100_delta": 0.00039140589907349366,
+          "hard_delta": 0.0017780699130228728
+        },
+        "route_physical_no_aux_metrics": {
+          "rows": 55528,
+          "all_improvement": 0.18577852429834418,
+          "t10_improvement": 0.2639424206993144,
+          "t25_improvement": 0.01350273464284224,
+          "t50_improvement": 0.14803699577731477,
+          "t100_improvement": 0.22857426649949408,
+          "hard_failure_improvement": 0.19518047277951456,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.08891914605641113,
+          "switch_rate": 0.2946441434951736,
+          "regret_to_oracle": -0.11002850459671851,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.21976483138872083,
+              "t50_improvement": 0.16111929638455114,
+              "t100_improvement": 0.23250265575395312,
+              "hard_failure_improvement": 0.22611959337799148,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.38554495965406743
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.2472862268599434,
+              "t50_improvement": 0.21884068163302184,
+              "t100_improvement": 0.3718979141821237,
+              "hard_failure_improvement": 0.26577561826854845,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.31736944292328373
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            }
+          },
+          "selected_source_distribution": {
+            "0": 39167,
+            "1": 16361
+          },
+          "route_switch_rate": {
+            "stop": 0.1599300558208353,
+            "straight": 0.39209863791879157,
+            "left_turn": 0.1064198958935801,
+            "right_turn": 0.18910126067507116,
+            "reverse_or_uturn": 0.055690809494826535,
+            "interaction_detour": 0.45528824330458467
+          }
+        },
+        "interpretation": "Scene/goal proxy coverage exists. Current deployable trajectory path keeps route/physical mostly diagnostic; route/physical heads are not main trajectory deployment claims."
+      },
+      "no_interaction": {
+        "status": "complete",
+        "source": "stage41_teacher_guided_evidence + stage41_group_consistency_evidence",
+        "evidence_type": "fresh_run interaction/group-consistency masking",
+        "teacher_no_group_delta": {
+          "all_delta": -0.1993508302918573,
+          "t50_delta": -0.13084852602738606,
+          "t100_delta": -0.13293179163743463,
+          "hard_delta": -0.19389985247242103
+        },
+        "teacher_no_neighbor_interaction_delta": {
+          "all_delta": -0.1980910960572272,
+          "t50_delta": -0.12984928959704223,
+          "t100_delta": -0.13309844737942722,
+          "hard_delta": -0.1932304854705187
+        },
+        "group_consistency_feature_delta": {
+          "all_delta": -0.22219845243926872,
+          "t50_delta": -0.1509377397722127,
+          "t100_delta": -0.23019369783249866,
+          "hard_delta": -0.22390733709664123,
+          "easy_delta": 0.0,
+          "switch_delta": -0.26534361043077365,
+          "collision_delta_change": -0.00829083972266037
+        },
+        "interpretation": "Interaction/group-consistency features have explicit ablations and are necessary for guarded deployment; without them raw neural remains less safe."
+      },
+      "no_jepa": {
+        "status": "complete_but_cross_protocol",
+        "source": "stage41_jepa_deployment_decision + stage30_m3w_verified/retrained_ablation_fresh",
+        "evidence_type": "fresh JEPA disable decision plus cached/fresh Stage30 no-JEPA ablation",
+        "jepa_decision": "disable_jepa_in_deployable_path",
+        "deployable_positive_attempt_count": 0,
+        "stage30_no_jepa_summary": {
+          "source": "fresh_run",
+          "seeds": [
+            0,
+            1,
+            2
+          ],
+          "t50": {
+            "mean": 0.15251204303103635,
+            "std": 0.0005645790840789288,
+            "ci_low": 0.1518731616541396,
+            "ci_high": 0.1531509244079331
+          },
+          "hard_failure": {
+            "mean": 0.12624147912850137,
+            "std": 0.00011978419573539239,
+            "ci_low": 0.1261059305507025,
+            "ci_high": 0.12637702770630024
+          },
+          "easy_degradation": {
+            "mean": 0.017930170689640867,
+            "std": 0.000667714891798931,
+            "ci_low": 0.01717458015949768,
+            "ci_high": 0.018685761219784054
+          },
+          "regret": {
+            "mean": 3.594968934154213,
+            "std": 0.0033018153896430622,
+            "ci_low": 3.591232578306324,
+            "ci_high": 3.5987052900021017
+          },
+          "switch_rate": {
+            "mean": 0.05000000000000001,
+            "std": 8.498374721940739e-18,
+            "ci_low": 0.05,
+            "ci_high": 0.05000000000000002
+          }
+        },
+        "interpretation": "JEPA is explicitly disabled from the deployable path because audited JEPA variants were non-collapse but did not give deployable downstream lift. Stage30 provides no-JEPA numerical ablation; Stage41 external JEPA attempts are negative diagnostics."
+      },
+      "no_transformer": {
+        "status": "complete_but_cross_protocol",
+        "source": "stage30_m3w_verified/retrained_ablation_fresh + Stage41 JEPA-only diagnostics",
+        "evidence_type": "cross-protocol ablation/diagnostic",
+        "stage30_no_transformer_summary": {
+          "source": "fresh_run",
+          "seeds": [
+            0,
+            1,
+            2
+          ],
+          "t50": {
+            "mean": 0.1587111474052213,
+            "std": 0.00066674057387417,
+            "ci_low": 0.15795665941960174,
+            "ci_high": 0.15946563539084085
+          },
+          "hard_failure": {
+            "mean": 0.12831244601160144,
+            "std": 0.0004313016266905303,
+            "ci_low": 0.1278243822754689,
+            "ci_high": 0.12880050974773397
+          },
+          "easy_degradation": {
+            "mean": 0.01798584879126815,
+            "std": 0.0015008958071904951,
+            "ci_low": 0.016287425298586403,
+            "ci_high": 0.019684272283949898
+          },
+          "regret": {
+            "mean": 3.5417962755450603,
+            "std": 0.010985973113325454,
+            "ci_low": 3.529364476657855,
+            "ci_high": 3.5542280744322654
+          },
+          "switch_rate": {
+            "mean": 0.05000000000000001,
+            "std": 8.498374721940739e-18,
+            "ci_low": 0.05,
+            "ci_high": 0.05000000000000002
+          }
+        },
+        "stage41_jepa_only_attempts": [
+          {
+            "source": "cached_verified",
+            "attempt": "SAM-JEPA-2.5D representation pretraining",
+            "non_collapse": true,
+            "downstream_lifts": {
+              "failure_auroc_lift": -0.012096774193548376
+            },
+            "deployable_lift": false,
+            "notes": "Stage18 was non-collapse but did not improve selector/failure/goal/correction/official t+50."
+          },
+          {
+            "source": "cached_verified",
+            "attempt": "WAM-style JEPA probe",
+            "non_collapse": true,
+            "downstream_lifts": {
+              "failure_auroc_lift": -0.08754208754208748,
+              "selector_t50_lift": 0.0
+            },
+            "deployable_lift": false,
+            "notes": "Stage19 has mixed historical diagnostics, but the registered probe report shows negative failure lift and no meaningful selector lift."
+          },
+          {
+            "source": "cached_verified",
+            "attempt": "Stage23 SDD JEPA",
+            "non_collapse": true,
+            "downstream_lifts": {
+              "selector_probe_lift": 0.0,
+              "failure_predictor_lift": 0.0,
+              "hard_failure_correction_lift": 0.0,
+              "t50_lift": 0.0
+            },
+            "deployable_lift": false,
+            "notes": "SDD JEPA retest is diagnostic unless it improves a downstream head."
+          },
+          {
+            "source": "cached_verified",
+            "attempt": "Stage24 SDD JEPA",
+            "non_collapse": true,
+            "downstream_lifts": {
+              "selector_probe_lift": 0.0,
+              "failure_predictor_lift": 0.0,
+              "hard_failure_correction_lift": 0.0,
+              "t50_lift": 0.0
+            },
+            "deployable_lift": false,
+            "notes": "SDD JEPA retest is diagnostic unless it improves a downstream head."
+          },
+          {
+            "source": "fresh_run",
+            "attempt": "Stage39 JEPA auxiliary representation",
+            "non_collapse": true,
+            "downstream_lifts": {
+              "failure_auroc_lift": -0.4285583008392251,
+              "failure_auroc_base": 0.9880898558164535,
+              "failure_auroc_with_jepa": 0.5595315549772284
+            },
+            "deployable_lift": false,
+            "notes": "JEPA is representation-only; no latent generative rollout. Stage39 failure AUROC lift is negative."
+          }
+        ],
+        "interpretation": "No-Transformer evidence is present but weaker than endpoint/full-waypoint bridge evidence because the strongest external protected path is not a pure Transformer-only deployment. Treat as ablation coverage, not a main claim."
+      },
+      "no_fallback": {
+        "status": "complete",
+        "source": "teacher_guided_evidence + pure_ucy_neural_statistical_evidence + all_agent_composite_world_state",
+        "evidence_type": "fresh no-fallback negative safety ablation",
+        "teacher_no_fallback": {
+          "all_improvement": 0.296621240422128,
+          "easy_degradation": 1.2458611044726973
+        },
+        "pure_ucy_raw_no_fallback": {
+          "all_improvement": 0.09230014952008259,
+          "easy_degradation": 1.6257516010806778
+        },
+        "all_agent_ungated_safe": false,
+        "interpretation": "No-fallback neural often improves hard/all raw error but catastrophically damages easy cases; fallback is required for deployability."
+      }
+    },
+    "claim_boundary": {
+      "ablation_coverage_not_new_training": true,
+      "cross_protocol_ablations_are_limitations": [
+        "no_jepa",
+        "no_transformer"
+      ],
+      "not_true_3d": true,
+      "not_foundation": true,
+      "not_metric_or_seconds": true
+    }
   },
   "jepa_deployment_decision": "disable_jepa_in_deployable_path",
   "jepa_disable_deployable_path": true,

@@ -87,6 +87,7 @@ def build_completion_audit() -> dict[str, Any]:
     domain_local_full_traj = read_json("outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.json", {})
     endpoint_to_full = read_json("outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json", {})
     endpoint_to_full_stats = read_json("outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json", {})
+    ablation_coverage = read_json("outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json", {})
     learned_shape = read_json("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json", {})
     shape_gain = read_json("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json", {})
     shape_composer = read_json("outputs/stage41_domain_local/stage41_shape_policy_composer.json", {})
@@ -294,6 +295,7 @@ def build_completion_audit() -> dict[str, Any]:
     endpoint_to_full_positive_domains = list(endpoint_to_full.get("positive_domains") or [])
     endpoint_to_full_stats_gate = bool(endpoint_to_full_stats.get("two_domain_statistical_gate"))
     endpoint_to_full_stats_positive_domains = list(endpoint_to_full_stats.get("positive_domains") or [])
+    ablation_coverage_gate = bool(ablation_coverage.get("coverage_gate"))
     learned_shape_gate = bool(learned_shape.get("two_domain_learned_shape_gate"))
     shape_gain_gate = bool(shape_gain.get("two_domain_gain_gate"))
     shape_composer_gate = bool(shape_composer.get("two_domain_composer_gate"))
@@ -605,6 +607,12 @@ def build_completion_audit() -> dict[str, Any]:
             "status": _status(endpoint_to_full_stats_gate, partial=bool(endpoint_to_full_stats)),
             "evidence": "outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json",
             "note": "Fresh endpoint-to-full statistical evidence reruns ETH_UCY and TrajNet domain-local endpoint neural training, projects through the linear waypoint bridge, and reports positive 2000-bootstrap lower bounds for all/t50/hard/multi-agent ADE plus all/t50 FDE on both domains. This still does not claim learned full-waypoint shape dynamics or ungated full-row safety.",
+        },
+        {
+            "requirement": "Stage41 required ablation coverage matrix complete",
+            "status": _status(ablation_coverage_gate, partial=bool(ablation_coverage)),
+            "evidence": "outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json",
+            "note": "Covers no-history, no-neighbor, no-scene/goal, no-interaction, no-JEPA, no-Transformer, and no-fallback. no-JEPA and no-Transformer are explicitly marked as cross-protocol limitations rather than overclaimed same-protocol causal proof.",
         },
         {
             "requirement": "learned waypoint-shape residual/meta-policy positive on at least two domains",
@@ -1267,6 +1275,21 @@ def build_completion_audit() -> dict[str, Any]:
             "no_leakage": endpoint_to_full_stats.get("no_leakage"),
             "claim_boundary": endpoint_to_full_stats.get("claim_boundary"),
         },
+        "required_ablation_coverage_summary": {
+            "coverage_gate": ablation_coverage_gate,
+            "missing": ablation_coverage.get("missing"),
+            "partial": ablation_coverage.get("partial"),
+            "cross_protocol_limitations": ablation_coverage.get("cross_protocol_limitations"),
+            "requirements": {
+                name: {
+                    "status": row.get("status"),
+                    "source": row.get("source"),
+                    "interpretation": row.get("interpretation"),
+                }
+                for name, row in (ablation_coverage.get("requirements") or {}).items()
+            },
+            "claim_boundary": ablation_coverage.get("claim_boundary"),
+        },
         "learned_waypoint_shape_summary": {
             "two_domain_learned_shape_gate": learned_shape_gate,
             "two_domain_gain_gate": shape_gain_gate,
@@ -1709,6 +1732,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     domain_local_full_traj_summary = audit.get("domain_local_full_trajectory_world_state_summary", {})
     endpoint_to_full_summary = audit.get("endpoint_to_full_trajectory_bridge_summary", {})
     endpoint_to_full_stats_summary = audit.get("endpoint_to_full_statistical_evidence_summary", {})
+    ablation_coverage_summary = audit.get("required_ablation_coverage_summary", {})
     learned_shape_summary = audit.get("learned_waypoint_shape_summary", {})
     composite_deployable_state = bool(
         composite_summary.get("evidence_pass")
@@ -1996,6 +2020,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
             f"endpoint_to_full_statistical_gate = {endpoint_to_full_stats_summary.get('two_domain_statistical_gate')}",
             f"endpoint_to_full_statistical_positive_domains = {endpoint_to_full_stats_summary.get('positive_domains')}",
             f"endpoint_to_full_statistical_domain_lows = {endpoint_to_full_stats_summary.get('domain_lows')}",
+            f"required_ablation_coverage_gate = {ablation_coverage_summary.get('coverage_gate')}",
+            f"required_ablation_cross_protocol_limitations = {ablation_coverage_summary.get('cross_protocol_limitations')}",
             f"learned_shape_calibrated_meta_gate = {learned_shape_summary.get('two_domain_calibrated_meta_gate')}",
             f"learned_shape_positive_domains = {learned_shape_summary.get('positive_domains')}",
             f"learned_shape_claim = {learned_shape_summary.get('caveat')}",
@@ -2126,6 +2152,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
     generated.add("outputs/stage41_domain_local/stage41_endpoint_to_full_trajectory_repair.json")
     generated.add("outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.md")
     generated.add("outputs/stage41_domain_local/stage41_endpoint_to_full_statistical_evidence.json")
+    generated.add("outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.md")
+    generated.add("outputs/m3w_neural_v1/ablation_coverage_m3w_neural_v1.json")
     generated.add("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md")
     generated.add("outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json")
     generated.add("outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md")
@@ -2256,6 +2284,8 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "endpoint_to_full_statistical_gate": endpoint_to_full_stats_summary.get("two_domain_statistical_gate"),
         "endpoint_to_full_statistical_positive_domains": endpoint_to_full_stats_summary.get("positive_domains"),
         "endpoint_to_full_statistical_domain_lows": endpoint_to_full_stats_summary.get("domain_lows"),
+        "required_ablation_coverage_gate": ablation_coverage_summary.get("coverage_gate"),
+        "required_ablation_cross_protocol_limitations": ablation_coverage_summary.get("cross_protocol_limitations"),
         "learned_shape_calibrated_meta_gate": learned_shape_summary.get("two_domain_calibrated_meta_gate"),
         "learned_shape_positive_domains": learned_shape_summary.get("positive_domains"),
         "learned_shape_caveat": learned_shape_summary.get("caveat"),
@@ -2455,6 +2485,7 @@ def _update_readme_and_state(audit: Mapping[str, Any]) -> None:
         "strict_pure_ucy_neural_statistical_evidence_summary": pure_ucy_neural_stats_summary,
         "endpoint_to_full_trajectory_bridge_summary": endpoint_to_full_summary,
         "endpoint_to_full_statistical_evidence_summary": endpoint_to_full_stats_summary,
+        "required_ablation_coverage_summary": ablation_coverage_summary,
         "learned_waypoint_shape_summary": learned_shape_summary,
         "stage5c_executed": False,
         "smc_enabled": False,
