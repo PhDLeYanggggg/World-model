@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair，以及 Stage42-AJ post-repair paper package refresh；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh，以及 Stage42-AK post-repair locked policy/source-split audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -26,7 +26,7 @@ python3 -m pytest tests/test_stage42_eth_t50_fde_source_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_claim_refresh.py = 2 passed
 python3 -m pytest tests/test_stage42_trajnet_t100_safety_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_paper_package_refresh.py = 2 passed
-python3 -m pytest tests = 357 passed
+python3 -m pytest tests = 360 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -42,7 +42,7 @@ python3 -m pytest tests = 357 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair 和 post-repair paper package refresh evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ/AK 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair、post-repair paper package refresh 和 locked policy/source-split audit evidence。
 
 ## 给你的直接结论快照
 
@@ -1117,3 +1117,22 @@ Stage42-AJ 把 AD-AI 的最新证据同步进 9 个 paper package 文件：
 - 支持 post-repair all/t50/hard/FDE@50 正下界。
 - 支持 t100 raw-frame diagnostic safety evidence，但不支持 seconds-level long-horizon claim。
 - 拒绝 metric、true 3D、foundation、Stage5C、SMC、ungated neural deployment claim。
+
+## Stage42-AK Post-Repair Locked Policy Audit
+
+```text
+source = fresh_synthesis_from_stage42_af_ag_ai_aj_and_source_split
+verdict = stage42_ak_post_repair_locked_policy_audit_pass
+gates = 17 / 17
+policy_hash = 06772a241eedacc9b8828bddc7c70569ef7d0abc1951cc83eb1c5251e7979298
+source_split_hash = e22c1fc43543da7fea1805460163f8fcd7993e3dcf88a2eb04d40a82269584bd
+ade_all_ci_low = 0.0859783492681093
+ade_t50_ci_low = 0.05851255877278698
+ade_t100_raw_frame_diagnostic_ci_low = 0.06834922663403784
+ade_hard_failure_ci_low = 0.0906618058871814
+easy_degradation_ci_high = 0.00116827749002908
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AK freezes the post-repair AF/AG/AI policy rules and source-level split audit as reproducibility evidence. It is a policy/source audit, not new training. Claims remain protected dataset-local raw-frame 2.5D; metric/seconds-level, true-3D, foundation, Stage5C, SMC, and ungated-neural deployment claims remain rejected.

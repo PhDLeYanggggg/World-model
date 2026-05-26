@@ -1,13 +1,13 @@
 {
-  "current_stage": "stage42_aj_post_repair_paper_package_refresh",
-  "current_verdict": "stage42_aj_post_repair_paper_package_refresh_pass",
+  "current_stage": "stage42_ak_post_repair_locked_policy_audit",
+  "current_verdict": "stage42_ak_post_repair_locked_policy_audit_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "User-requested detailed M3W route/failure/success summary: routes tried, failed branches, failure causes, successful gates, current best deployable model, claim boundaries, and next steps; includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ evidence refreshes.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK post-repair locked policy/source-split audit; includes routes tried, failed branches, failure causes, successful gates, current best deployable model, claim boundaries, and next steps.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AJ post-repair paper package refresh passed 10/10 gates; 9/9 paper files include AD-AI evidence and no-overclaim boundaries.",
+    "latest_branch_success": "Stage42-AK post-repair locked policy/source-split audit passed 17/17 gates and froze AF/AG/AI policy rules with source-level split/no-leakage evidence.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -21,7 +21,9 @@
       "stage42_ah_runner": "pass",
       "stage42_ai_runner": "pass",
       "stage42_aj_runner": "pass",
-      "full_pytest": "357 passed"
+      "full_pytest": "360 passed",
+      "stage42_ak_runner": "pass",
+      "stage42_ak_focused_pytest": "3 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -51,6 +53,15 @@
       "stage42_af": "horizon=25 weak slice repaired to floor/non-harm with validation-margin guard; ETH_UCY t50/FDE limitation remained at AF.",
       "stage42_ag": "ETH_UCY|50 ADE/FDE lower bounds repaired with validation-only FDE-aware source rule.",
       "stage42_ai": "TrajNet|100 easy-safety repaired; t100 remains raw-frame diagnostic only."
+    },
+    "stage42_ak_locked_policy_audit": {
+      "source": "fresh_synthesis_from_stage42_af_ag_ai_aj_and_source_split",
+      "report": "outputs/stage42_long_research/post_repair_locked_policy_audit_stage42.md",
+      "gate": "17/17",
+      "verdict": "stage42_ak_post_repair_locked_policy_audit_pass",
+      "policy_hash": "06772a241eedacc9b8828bddc7c70569ef7d0abc1951cc83eb1c5251e7979298",
+      "source_split_hash": "e22c1fc43543da7fea1805460163f8fcd7993e3dcf88a2eb04d40a82269584bd",
+      "conclusion": "Post-repair AF/AG/AI policy rules and source-level split/no-leakage evidence are frozen; this is reproducibility/deployment-boundary evidence, not new model training."
     }
   },
   "stage42_ad_calibration_evidence_refresh": {
@@ -362,7 +373,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (357 passed)",
+  "last_successful_command": "python3 -m pytest tests (360 passed)",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -856,7 +867,11 @@
     "outputs/stage42_long_research/paper_package_refresh_stage42.md",
     "outputs/stage42_long_research/paper_package_refresh_stage42.json",
     "outputs/stage42_long_research/paper_package_refresh_stage42.csv",
-    "outputs/stage42_long_research/stage42_stage_ac_gate.md"
+    "outputs/stage42_long_research/stage42_stage_ac_gate.md",
+    "outputs/stage42_long_research/post_repair_locked_policy_audit_stage42.md",
+    "outputs/stage42_long_research/post_repair_locked_policy_audit_stage42.json",
+    "outputs/stage42_long_research/post_repair_locked_policy_stage42_policy.json",
+    "outputs/stage42_long_research/stage42_stage_ak_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13554,6 +13569,37 @@
         "raw_frame_dataset_local_only": true,
         "stage5c_executed": false,
         "smc_enabled": false
+      }
+    },
+    "stage_ak_post_repair_locked_policy_audit": {
+      "source": "fresh_synthesis_from_stage42_af_ag_ai_aj_and_source_split",
+      "report": "outputs/stage42_long_research/post_repair_locked_policy_audit_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_ak_gate.md",
+      "policy_artifact": "outputs/stage42_long_research/post_repair_locked_policy_stage42_policy.json",
+      "gates_passed": 17,
+      "gates_total": 17,
+      "verdict": "stage42_ak_post_repair_locked_policy_audit_pass",
+      "policy_hash": "06772a241eedacc9b8828bddc7c70569ef7d0abc1951cc83eb1c5251e7979298",
+      "source_split_hash": "e22c1fc43543da7fea1805460163f8fcd7993e3dcf88a2eb04d40a82269584bd",
+      "post_repair_summary": {
+        "source": "cached_verified_from_stage42_ai_post_repair_policy",
+        "ade_all_ci_low": 0.0859783492681093,
+        "ade_t50_ci_low": 0.05851255877278698,
+        "ade_t100_raw_frame_diagnostic_ci_low": 0.06834922663403784,
+        "ade_hard_failure_ci_low": 0.0906618058871814,
+        "easy_degradation_ci_high": 0.00116827749002908,
+        "fde_t50_ci_low": 0.14823015795452749,
+        "switch_rate_mean": 0.23795202420400519
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "t100_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "ungated_neural_deployable": false
       }
     }
   },
