@@ -1,10 +1,12 @@
-# M3W 长期目标研究总结：做过什么、哪些路线失败、哪些成功、为什么
+# M3W 长期目标研究总账：路线、失败、成功与当前结论
 
 更新时间：2026-05-26  
-汇总状态：`cached_verified` 汇总 Stage18-Stage42 已生成报告；每个阶段内的新实验按原报告标注 `fresh_run` / `cached_verified` / `not_run`。  
-用途：给长期目标状态机使用的中文总 README。它不是论文宣传稿，而是把真实尝试、失败原因、成功证据、当前 best deployable 和不能声称的边界集中写清楚。
+汇总状态：`cached_verified` 汇总 Stage18-Stage42 已生成报告；Stage42-A 到 Stage42-P 中明确标注 `fresh_run` 的实验按原报告记录。  
+用途：这是给用户看的一个总 README，把“这个长期目标内我做了什么、尝试了哪些路线、哪些失败、为什么失败、哪些成功、当前最强可部署是谁、还不能声称什么”集中写清楚。
 
-## 0. 必须先写清楚的结论边界
+这不是宣传稿，也不是论文 claim。它是研究状态账本。
+
+## 0. 先写清楚不能夸大的边界
 
 - 当前不是 true 3D world model。
 - 当前不是 large-scale foundation world model。
@@ -12,25 +14,61 @@
 - SDD 是 pixel-space benchmark，不是 metric benchmark。
 - external top-down pedestrian 数据仍是 dataset-local / unverified weak-metric diagnostic，不能写成统一真实物理米制。
 - t+50 / t+100 是 raw-frame horizon，不能写成 seconds-level。
-- homography、metric scale、effective seconds 还没有全局验证。
+- homography、metric scale、effective seconds 没有完成全局验证。
 - self-audited / visual-prior / auto-silver labels 不是 human gold。
 - JEPA 在本项目里是 representation / auxiliary pretraining，不是 latent generative rollout。
 - Stage5C latent generative 没有执行。
 - SMC 没有启用。
-- 无保护 neural dynamics 仍不安全，当前可部署路径仍需要 Stage37 / teacher safety floor。
+- 无保护 neural dynamics 仍不安全；当前可部署路线需要 Stage37 / teacher safety floor。
 
 一句话现状：
 
 ```text
-当前 best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
-safety_floor = Stage37 selector / teacher floor
-claim = protected 2.5D external world-state candidate
-not_claim = true 3D / metric / seconds-level / foundation world model
+current best deployable =
+  M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+
+safety floor =
+  Stage37 selector / teacher floor
+
+honest claim =
+  protected 2.5D external world-state candidate
+
+not claim =
+  true 3D / metric / seconds-level / foundation world model
 ```
 
-## 1. 当前最强可部署结果
+## 1. 总体路线：从 SDD selector 到 protected neural world-state candidate
 
-当前主包来自 M3W-Neural v1 / Stage41-42 证据链，相对 Stage37 / teacher safety floor：
+这个目标里实际推进的是一条长期研究链：
+
+1. 先验证早期 JEPA / selector / correction 在 SDD 上为什么没有 downstream lift。
+2. 把 SDD 建成 pixel raw-frame official benchmark。
+3. 训练出 Stage26 cost-aware selector，成为 SDD best deployable。
+4. 尝试把 SDD 结果迁移到外部 top-down pedestrian 数据，zero-shot 先大失败。
+5. 补 external row geometry、train-only goals、history windows、goal prototypes 和 selective transfer。
+6. Stage37 第一次把 external all / t+50 / hard-failure / easy safety 同时修到可部署。
+7. Stage38 尝试 bounded correction，但没有安全超过 Stage37，不部署。
+8. Stage39/40 开始真正 neural dynamics，但 ungated neural 不安全，不能替代 Stage37。
+9. Stage41/42 把 neural 做成受保护的世界状态候选：full-waypoint、sequence ablation、static-gated repair、gain/harm selector 等逐步推进。
+10. 到 Stage42-P，t+50 gain/harm selector 均值修复成功，但 seed-level t50 稳定性还不足，不能包装成完整 A刊级 t+50 结论。
+
+核心规律：
+
+```text
+纯模型堆大没有解决问题。
+真正有用的是：
+  causal history
+  train-only goals / goal prototypes
+  hard/easy/failure 分层
+  gain/harm/risk-aware selection
+  conservative fallback
+  full-waypoint dynamics under safety floor
+  validation-only policy selection
+```
+
+## 2. 当前最强可部署结果
+
+当前主候选来自 M3W-Neural v1 / Stage41-42 证据链。相对 Stage37 / teacher safety floor，主包报告如下：
 
 | 指标 | 数值 |
 | --- | ---: |
@@ -89,15 +127,17 @@ ETH_UCY bootstrap lows: ADE all 0.0150, ADE t50 0.0014, FDE all 0.0154, FDE t50 
 TrajNet bootstrap lows: ADE all 0.0338, ADE t50 0.0186, FDE all 0.0339, FDE t50 0.0258
 ```
 
-## 2. 做过的主路线
+注意：Stage37 用百分比风格汇报 improvement；Stage42 多数报告使用 ADE/FDE improvement 数值。不要把两个量纲直接混成同一个单位。
 
-### 2.1 Stage18-19：JEPA / WAM-style representation
+## 3. 做过的主要路线、结果和原因
+
+### 3.1 Stage18-19：JEPA / WAM-style representation
 
 尝试：
 
 - SAM-JEPA-2.5D representation pretraining。
 - WAM-style data registry：simulation、real top-down trajectories、human/egocentric video。
-- 检查 JEPA non-collapse。
+- JEPA non-collapse 检查。
 - 用 JEPA latent 辅助 selector、failure predictor、goal predictor、correction、official t+50。
 
 结果：
@@ -112,15 +152,17 @@ deployable contribution = no
 
 - JEPA latent 有 variance，但没有对齐部署目标。
 - 真正卡住的是 causal history、hard/easy/failure、gain/harm、fallback safety，而不是单纯 representation variance。
-- 没有启用 latent rollout，也不能把 JEPA 说成生成式 world model。
+- 当时没有足够强的外部 top-down scene/trajectory 对齐，也没有可靠的 hard/failure 部署标签。
+- JEPA 没有启用 latent rollout，也不能说成生成式 world model。
 
 结论：
 
 ```text
-继续盲目加 JEPA 不是主线；JEPA 必须证明 downstream lift 才能成为贡献。
+JEPA 不能作为主 claim，除非证明 downstream lift。
+后续 JEPA 只能作为 auxiliary representation，而不是部署核心。
 ```
 
-### 2.2 Stage22-26：SDD pixel-space official benchmark 与 Stage26 selector
+### 3.2 Stage22-26：SDD pixel-space benchmark 与 Stage26 selector
 
 尝试：
 
@@ -130,7 +172,7 @@ deployable contribution = no
 - 建立 HardBench / BaselineFailureBench / GoalBench。
 - 从 hard-class selector 改为 expected-FDE / cost-aware selector。
 
-关键结果：
+关键成功：
 
 ```text
 Stage26 selector t50 improvement ≈ 14.58%
@@ -141,25 +183,30 @@ Stage26 = 当时 SDD best deployable
 
 失败过的路线：
 
-- Stage24 hard-class selector 有 46.2% oracle headroom，但训练 selector t+50 improvement = -43.3%。
-- easy degradation = 11.33%，说明 selector 大量伤害 easy cases。
+```text
+Stage24 selector oracle headroom ≈ 46.2%
+trained hard-class selector t+50 improvement = -43.3%
+easy degradation = 11.33%
+```
 
 失败原因：
 
-- hard one-hot oracle label 噪声大，很多样本 best 和 second best margin 很小。
-- 直接分类“哪个 baseline 最好”没有考虑切换代价。
-- 没有 conservative fallback 时会过度切换 easy 样本。
+- 直接分类“哪个 baseline 最好”太粗糙。
+- 很多样本 oracle best 与 second best margin 很小，one-hot label 噪声大。
+- selector 没有显式考虑 harm over fallback，导致 easy case 被大量错误切换。
+- oracle headroom 大不等于真实 selector 可学；如果学习目标错，会越学越伤。
 
 成功原因：
 
-- expected-FDE / gain/harm / regret-aware selector 更符合部署目标。
-- fallback 到 strongest causal baseline 是必要安全机制。
+- expected-FDE / gain-harm / regret-aware 目标更接近部署需求。
+- conservative fallback 到 strongest causal baseline 是必要安全机制。
+- 这奠定了后面 Stage37/Stage42 的核心思想：先判断能不能安全切换，再考虑预测更复杂的轨迹。
 
-### 2.3 Stage31-36：从 SDD 迁移到外部 top-down pedestrian 数据
+### 3.3 Stage31-36：从 SDD 迁移到外部 top-down pedestrian 数据
 
 尝试：
 
-- OpenTraj / ETH-UCY / TrajNet / UCY 外部 feature store。
+- OpenTraj / ETH-UCY / TrajNet / UCY external feature store。
 - external strongest baseline。
 - external latent cache。
 - zero-shot transfer。
@@ -176,11 +223,11 @@ Stage31 zero-shot t50 ≈ -278.57%
 
 失败原因：
 
-- 坐标尺度不兼容。
-- scene/goal/interaction 缺失。
+- SDD pixel coordinates 与 external dataset-local coordinates 不兼容。
+- scene/goal/interaction 上下文缺失。
 - agent type 约定不一致。
 - homography / scale 未验证。
-- SDD selector 明显 SDD-specific。
+- SDD selector 是 SDD-specific，不能直接当跨域模型。
 
 Stage35 局部成功但不可部署：
 
@@ -196,10 +243,16 @@ Stage36 诊断：
 
 - t+50 rows 足够。
 - t+50 oracle headroom 约 22.98%。
-- 不是没有可学空间，而是现有特征/goal/context 不足以支持安全切换。
-- threshold tuning 不能解决根因。
+- t+50 不是没有可学空间，而是特征/goal/context 不足以支持安全切换。
+- 只调 threshold 不够，因为模型没有看见足够的 past-only history 和 scene-agnostic goal pattern。
 
-### 2.4 Stage37：外部 t+50 修复成功
+结论：
+
+```text
+跨域失败的根因主要不是模型容量，而是坐标/目标/历史/安全切换建模不足。
+```
+
+### 3.4 Stage37：外部 t+50 修复成功
 
 核心改变：
 
@@ -222,8 +275,8 @@ verdict = stage37_t50_transfer_repaired_deployable
 
 为什么成功：
 
-- 它不再把 t+50 当作 all-horizon objective 的附属品。
-- 不使用 test endpoints 建 goals，而是用 train 相对运动模式生成 scene-agnostic prototypes。
+- t+50 不再被 all-horizon objective 淹没。
+- goals 不来自 test endpoints，而来自 train 相对运动模式和 scene-agnostic prototypes。
 - 只在 gain 高、harm 低、confidence 高时切换，否则 fallback。
 
 结论：
@@ -232,13 +285,16 @@ verdict = stage37_t50_transfer_repaired_deployable
 Stage37 是第一个 external deployable selector candidate。
 ```
 
-### 2.5 Stage38：bounded correction 失败
+### 3.5 Stage38：bounded correction / dynamics head 没有部署
 
 尝试：
 
 - 冻结 Stage37 policy。
 - 训练 bounded correction / dynamics head：
-  `prediction = selected_baseline + alpha * bounded_delta`
+
+```text
+prediction = selected_baseline + alpha * bounded_delta
+```
 
 结果：
 
@@ -251,100 +307,68 @@ current external best remained Stage37 selector
 
 - correction 可以改善少量 hard/tail rows，但不能稳定超过 Stage37。
 - easy preservation 很脆弱。
-- 无法安全证明 correction_with_fallback all/t50/hard 超过 Stage37。
+- correction_with_fallback 没有同时满足 all/t50/hard 超过 Stage37 和 easy <=2%。
 
 结论：
 
 ```text
-不要部署 Stage38 correction；保留 Stage37。
+不要部署 Stage38 correction。
+Stage37 继续作为 external best safety floor。
 ```
 
-### 2.6 Stage39-40：真正神经网络世界动力学训练，初期失败
+### 3.6 Stage39-40：真正神经网络世界动力学训练，初期失败
 
 尝试：
 
-- Causal Transformer。
+- Causal Temporal Transformer。
 - JEPA auxiliary。
-- JEPA + Transformer Hybrid。
-- teacher distillation。
-- horizon-specific heads。
-- failure/gain/harm multitask targets。
-- hard/t50 curriculum。
+- Hybrid JEPA + Transformer。
+- neural without fallback。
+- neural with Stage37 fallback。
+- teacher distillation、horizon heads、hard/failure oversampling、t50 curriculum。
 
 结果：
 
 ```text
-Transformer-only = trained but did not beat Stage37
-JEPA-only = non-collapse historically, but downstream lift remained absent/negative
-Hybrid = did not beat Stage37
-ungated neural = unsafe
-Stage37 remained external best
+Transformer / JEPA / Hybrid trained = yes
+neural without fallback = unsafe
+neural with fallback did not clearly beat Stage37
+deploy neural = no
+current best remained Stage37
 ```
 
 失败原因：
 
-- neural without fallback 会伤 easy cases。
-- weak neural proposals 被 Stage37 fallback 吃掉，无法形成净提升。
-- JEPA latent 没有稳定 downstream lift。
-- Transformer 学到局部动态，但没有学到“何时安全切换”。
-- Hybrid 继承了 JEPA downstream 无效的问题。
+- 无保护 neural 容易伤 easy cases。
+- JEPA non-collapse 仍不等于 downstream lift。
+- Hybrid 的 latent/dynamics 没有稳定转化为部署增益。
+- 很多模型其实在学习“近似 Stage37”，而不是学习更强的可部署切换/动力学。
 
 结论：
 
 ```text
-神经网络必须在 Stage37 safety floor 保护下学习 bounded contribution，而不是直接替代 selector。
+神经网络方向不能直接替代 selector。
+必须把 Stage37/teacher floor 当作安全地板，再训练 protected neural dynamics。
 ```
 
-### 2.7 Stage41：protected neural dynamics 突破
+### 3.7 Stage41-42：protected neural world-state candidate
 
-成功路线：
+Stage41/42 的目标是把神经网络从“裸模型失败”改造成“受保护的 world-state candidate”。
 
-- 重新建立 external split。
-- 构建 seq2seq world-model dataset。
-- 构建 all-agent dataset。
-- endpoint dynamics + safety floor。
-- composite-tail safe-switch bounded neural dynamics。
-- endpoint-to-full bridge。
-- all-agent composite world-state evaluation。
+主要成功：
 
-同协议 protected endpoint candidate：
+- composite-tail safe-switch bounded neural dynamics 达到 41/41 gates。
+- external source-level validation fresh run 通过。
+- full-waypoint dynamics fresh run 通过。
+- pure-UCY strict retrain 通过。
+- endpoint-to-full bridge 在 ETH_UCY / TrajNet 有正证据。
+- sequence history ablation 证明 causal history tokens 有强贡献。
+- static/context 不是无用，而是必须 gated 使用。
+- explicit gain/harm selector 明显优于 alpha-only distillation。
 
-```text
-all = 0.4196
-t50 = 0.4062
-t100 raw-frame diagnostic = 0.4573
-hard/failure = 0.4361
-easy = 0.0
-positive domains = 3
-```
+### 3.8 Stage42-A/B/C：数据审计、外部验证、full-waypoint
 
-冻结 packaged deployable candidate：
-
-```text
-all = 0.2103
-t50 = 0.1365
-t100 raw-frame diagnostic = 0.1469
-hard/failure = 0.2038
-easy = 0.0
-positive domains = 3
-```
-
-为什么成功：
-
-- 不让 neural dynamics 全局替代 safety floor。
-- neural 只提供 bounded tail improvement。
-- policy frozen 后再 test，不用 test 调 threshold。
-- bootstrap / multiseed / pure-UCY / all-agent / endpoint-to-full 都给了正证据。
-
-结论：
-
-```text
-M3W 从 selector-only 进入 protected neural world-state candidate。
-```
-
-## 3. Stage42 长研究模式：证据补强与 full-waypoint 分支
-
-### Stage42-A：数据/标定审计
+Stage42-A 数据/标定审计：
 
 ```text
 source = fresh_run
@@ -352,21 +376,19 @@ datasets_audited = 7
 raw_paths_found = 6
 converted_paths_found = 7
 external_domains_ready = OpenTraj, ETH/UCY, TrajNet++, UCY
+metric_claim_ready_datasets = TGSIM diagnostic only
+seconds_claim_ready_datasets = none
 global_metric_claim_allowed = false
 global_seconds_claim_allowed = false
-gates = 7 / 7
+stage42_a_gates = 7 / 7
 ```
 
-意义：
-
-- 外部验证和 full-waypoint dynamics 可以继续。
-- 仍不能做 metric 或 seconds-level claim。
-
-### Stage42-B：外部 source-level 验证
+Stage42-B 外部 source-level 验证：
 
 ```text
 source = fresh_run
 source_level_split_rebuilt = true
+frozen_eval_pool_rows = 66,303
 evaluated_rows = 55,528
 protected_M3W_all_ADE_improvement = 0.2103
 protected_M3W_t50_ADE_improvement = 0.1365
@@ -375,18 +397,15 @@ protected_M3W_hard_failure_ADE_improvement = 0.2038
 protected_M3W_easy_degradation = -0.1451
 ungated_neural_all_ADE_improvement = 0.2966
 ungated_neural_easy_degradation = 1.2459
-gates = 10 / 10
+stage42_b_gates = 10 / 10
+verdict = protected neural passes; ungated neural unsafe
 ```
 
-解释：
-
-- protected M3W 稳定正迁移。
-- ungated neural 即使 all 更高，也因 easy degradation 过大不可部署。
-
-### Stage42-C：full-waypoint dynamics
+Stage42-C full-waypoint dynamics：
 
 ```text
 source = fresh_run
+full_waypoint_sequence_model = full_trajectory_ensemble
 positive_full_waypoint_domains = ETH_UCY, TrajNet
 protected_full_waypoint_ADE_all = 0.1858
 protected_full_waypoint_ADE_t50 = 0.1480
@@ -395,40 +414,69 @@ protected_full_waypoint_ADE_hard_failure = 0.1952
 protected_full_waypoint_easy_degradation = 0.0000
 protected_full_waypoint_FDE_all = 0.1938
 protected_full_waypoint_FDE_t50 = 0.2158
+stage42_c_gates = 12 / 12
+```
+
+意义：
+
+- Stage42-C 把证据从 endpoint-only / linear bridge 推向 reconstructed future waypoints。
+- 但它仍然依赖 safety floor，不是无保护生成式 rollout。
+
+### 3.9 Stage42-D/E/F：论文包与证据边界
+
+Stage42-D：
+
+```text
+causal ablation evidence = pass_with_retrain_boundary
 gates = 12 / 12
 ```
 
-意义：
+边界：
 
-- 不只是 endpoint selector，有 reconstructed full future waypoint evidence。
-- 但仍需要 protection；ungated full-waypoint neural 不安全。
+- 有 component evidence，但不是每个组件都完成 full fresh retraining。
 
-### Stage42-D/E/F：ablation、安全地板、论文包
-
-结果：
+Stage42-E：
 
 ```text
-Stage42-D causal ablation evidence = pass_with_retrain_boundary
-Stage42-D gates = 12 / 12
-Stage42-E safety floor research = pass
-Stage42-E gates = 12 / 12
-Stage42-F paper package = complete_not_full_a_journal_ready
-Stage42-F gates = 12 / 12
-full_a_journal_ready = false
+safety floor research = pass
+gates = 12 / 12
 ```
 
-意义：
+结论：
 
-- 论文包结构完整。
-- 但 full retrained ablation、更多外部数据、metric/time calibration、floor-free neural safety 仍不足。
+- safety floor 不是临时补丁，而是当前部署方法的一部分。
+- 去掉 floor 的 neural 还不安全。
 
-### Stage42-G：fresh retrained selector ablation
+Stage42-F：
+
+```text
+paper package = complete_not_full_a_journal_ready
+gates = 12 / 12
+```
+
+结论：
+
+- 已经有 strong protected 2.5D manuscript evidence package。
+- 但还不是 full A-journal-ready / foundation-ready 结果。
+
+缺口：
+
+- full retrained ablation 不完整。
+- 更多独立外部数据不足。
+- metric/time calibration 不足。
+- floor-free neural safety mechanism 不足。
+
+### 3.10 Stage42-G/H：重训消融与 causal sequence history
+
+Stage42-G Phase1 fresh retrained ablation：
 
 ```text
 source = fresh_run
 verdict = stage42_g_retrained_ablation_phase1_pass
 gates = 11 / 11
-variants = full, no_history, no_neighbor, no_goal, no_scene_goal, no_interaction, no_domain_expert, no_transformer_proxy_history_sequence, no_safe_switch, no_teacher_floor_proxy
+variants = full, no_history, no_neighbor, no_goal, no_scene_goal,
+           no_interaction, no_domain_expert, no_transformer_proxy_history_sequence,
+           no_safe_switch, no_teacher_floor_proxy
 seeds_per_variant = 3
 full_all = 0.8122
 full_t50 = 0.8462
@@ -437,12 +485,12 @@ full_hard_failure = 0.8459
 full_easy_degradation = -0.8413
 ```
 
-意义：
+重要负结果：
 
-- fresh retrained selector ablation 证明多个组件有贡献。
-- 但 flattened history + ridge 协议下 history 信号不稳定，因此不能把它当成最终 history 结论。
+- flattened history / transformer-proxy history 在 ridge selector 协议里不稳定。
+- 不能因此说 history 无用，只能说这个表示方式太弱。
 
-### Stage42-H：causal temporal sequence ablation
+Stage42-H causal temporal sequence encoder：
 
 ```text
 source = fresh_run
@@ -457,237 +505,377 @@ history_t50_delta_full_minus_no_history = 0.4578
 history_hard_delta_full_minus_no_history = 0.4708
 ```
 
-意义：
-
-- history 不是没用，flattened history 太弱。
-- 真正 causal temporal encoder 可以提取强 t+50 / hard 信息。
-
-### Stage42-I：sequence-to-full-waypoint 失败与诊断
-
-结果：
+结论：
 
 ```text
-source = fresh_run
-verdict = stage42_i_sequence_full_waypoint_partial
-sequence_waypoint_full ADE all/t50/hard = negative
-sequence_waypoint_no_static_context ADE all/t50/hard = positive
+history tokens 有真实贡献，但需要 causal sequence encoder。
+flattened history + ridge 不足以表达这个信号。
 ```
 
-失败原因：
+### 3.11 Stage42-I/J/K/L/M/N/O/P：full-waypoint static/context 与 gain/harm 修复链
 
-- 静态/scene/context 全局混入会伤害 full-waypoint ADE。
-- 需要 static/context gating 或 static dropout。
+Stage42-I：
 
-### Stage42-J：policy-level static-gated repair 成功
+```text
+verdict = stage42_i_sequence_full_waypoint_partial
+sequence_waypoint_full ADE all/t50/hard = -0.0106 / -0.0321 / -0.0116
+sequence_waypoint_no_static_context ADE all/t50/hard = 0.0115 / 0.0199 / 0.0129
+FDE t50 = 0.0611
+```
+
+结论：
+
+- causal sequence history 有用。
+- 但 static/context 不能无条件混入；全局混入会伤 full-waypoint。
+
+Stage42-J：
 
 ```text
 source = cached_verified_checkpoints_fresh_static_gate_eval
 verdict = stage42_j_static_gated_full_waypoint_pass
-ADE all = 0.0362
-ADE t50 = 0.0369
-ADE hard/failure = 0.0397
-ADE easy degradation = 0.0
-FDE all = 0.0633
-FDE t50 = 0.1166
+ADE all/t50/hard = 0.0362 / 0.0369 / 0.0397
+t100 raw-frame diagnostic ADE = 0.0267
+FDE all/t50 = 0.0633 / 0.1166
+easy degradation = 0.0
 ```
 
-意义：
+结论：
 
-- static/context 不是没用，而是不能全局强混。
-- validation-gated partial static experts 能修复 Stage42-I。
-
-### Stage42-K/L/M/N：fresh static-gate checkpoint 分支
+- static/context 不是没用，而是必须按 domain/horizon validation-gated。
+- Stage42-J 是强的 policy-level static-gated full-waypoint evidence。
 
 Stage42-K：
 
 ```text
-fresh static-gated checkpoint = pass
+source = fresh_run
+verdict = stage42_k_fresh_static_gated_checkpoint_pass
 ADE all = 0.0136
+ADE t100 raw-frame diagnostic = 0.0159
+ADE hard/failure = 0.0148
+FDE all = 0.0312
+FDE t50 = 0.0358
 ADE t50 = -0.0122
-hard = 0.0148
-easy = 0.0
+easy degradation = 0.0
 ```
+
+结论：
+
+- fresh checkpoint 方向可行，但 t+50 ADE 仍失败。
 
 Stage42-L：
 
 ```text
-horizon-aware repair = pass
+source = fresh_run
+verdict = stage42_l_horizon_static_gate_repair_pass
 ADE all = 0.0219
 ADE t50 = 0.0020
-hard = 0.0240
+ADE hard/failure = 0.0240
 FDE t50 = 0.0532
-easy = 0.0
+easy degradation = 0.0
 ```
+
+结论：
+
+- horizon-aware static gate 修复了 Stage42-K 的 t+50 ADE 负号。
+- 但仍弱于 Stage42-J policy-level static gate。
 
 Stage42-M：
 
 ```text
-policy-distilled static gate = partial
+source = fresh_run
+verdict = stage42_m_policy_distilled_static_gate_partial
 ADE all = 0.0161
 ADE t50 = -0.0015
-hard = 0.0177
+ADE hard/failure = 0.0177
 FDE t50 = 0.0729
-easy = 0.0
+easy degradation = 0.0
+gates = 10 / 12
 ```
+
+失败原因：
+
+- slice-level alpha distillation 太粗。
+- domain/horizon alpha 增加 static usage，但没有教会 row-level gain/harm。
 
 Stage42-N：
 
 ```text
-row-level gain/harm static-gate distillation = partial
+source = fresh_run
+verdict = stage42_n_row_gain_static_gate_partial
 ADE all = 0.0250
 ADE t50 = -0.0278
-hard = 0.0269
-FDE t50 = 0.0555
-easy = 0.0
+ADE hard/failure = 0.0269
+easy degradation = 0.0
 ```
 
-分支结论：
+失败原因：
 
-- Stage42-J policy-level static gate 仍是最强 static-gated full-waypoint evidence。
-- Stage42-L 是更好的 fresh checkpoint 修复，但 t+50 仍很弱。
-- Stage42-M/N 证明 alpha-style static distillation 不够；需要显式 row-level gain/harm/switchability selector。
+- row-level static gain/floor gain/harm/switchability 有帮助，但仍不能选对 t+50 rows。
+- alpha-style static-gate supervision 不足。
 
-### Stage42-O：显式 gain/harm/switchability selector
-
-Stage42-O 是对 Stage42-N 的直接修复：不再只监督 static-gate alpha，而是显式训练 row-level switch probability、expected gain、harm probability、uncertainty，再用 validation 选择 conservative policy。
-
-严格修复点：
-
-- 初版 val/test 特征标准化使用了各自 split stats，容易被视为 test-stat normalization 风险。
-- 已改为只使用 train-split mean/std 标准化 val/test。
-- gate 中新增 `no_test_statistics_normalization`。
-- 以下结果是 train-only normalization 后的结果。
+Stage42-O：
 
 ```text
 source = fresh_run
 verdict = stage42_o_explicit_gain_harm_selector_partial
+ADE all = 0.052646
+ADE t50 = -0.000776
+ADE t100 raw-frame diagnostic = 0.060206
+ADE hard/failure = 0.053527
+easy degradation = 0.015491
+FDE t50 = 0.057614
 gates = 13 / 14
-ADE all = 0.0526
-ADE t50 = -0.0008
-ADE t100 raw-frame diagnostic = 0.0602
-ADE hard/failure = 0.0535
-ADE easy degradation = 0.0155
-FDE t50 = 0.0576
-feature_normalization = train_split_stats_only
-no_test_statistics_normalization = true
 ```
 
-解释：
+重要修复：
 
-- 显式 row-level selector 明显优于 Stage42-N：ADE all 从 `0.0250` 到 `0.0526`，hard/failure 从 `0.0269` 到 `0.0535`，t100 raw-frame diagnostic 也为正。
-- 它没有通过 t+50 gate：ADE t50 是 `-0.0008`，虽然比 Stage42-N 的 `-0.0278` 大幅改善，但仍不能写成 t50 修复成功。
-- easy degradation mean 为 `0.0155`，低于 2% mean gate，但仍需要后续 bootstrap/CI 检查，不能只看 mean。
-- 下一步不是再做 alpha distillation，而是做 t+50-specific gain/harm teacher ensemble 或 per-domain horizon policy。
+- Stage42-O 最初看起来 13/13 pass，但发现 split-local normalization 风险后，改成 train-only normalization，并增加 `no_test_statistics_normalization` gate。
+- 严格协议后 t+50 ADE 仍微负，所以必须标 partial。
 
-### Stage42-P：t+50-specific gain/harm selector repair
+结论：
 
-Stage42-P 是对 Stage42-O 的直接 t+50 修复：保留显式 switch/gain/harm/uncertainty head，但把 train/val teacher supervision 中的 t+50 行加权，并用 t+50-weighted validation policy search。仍然使用 train-only feature normalization，不使用 test stats，不使用 test easy/hard label 做 inference guard。
+- explicit gain/harm prediction 明显比 alpha-only distillation 好。
+- 但还需要 t+50-specific 训练/校准。
+
+Stage42-P：
 
 ```text
 source = fresh_run
 verdict = stage42_p_t50_gain_harm_selector_pass
 gates = 14 / 14
-ADE all = 0.0515
-ADE t50 = 0.0066
-ADE t50 3-seed CI = [-0.0179, 0.0311]
-ADE t100 raw-frame diagnostic = 0.0593
-ADE hard/failure = 0.0533
-ADE easy degradation = 0.0086
-FDE t50 = 0.0574
-feature_normalization = train_split_stats_only
-no_test_statistics_normalization = true
+ADE all = 0.051537
+ADE t50 = 0.006596
+ADE t100 raw-frame diagnostic = 0.059254
+ADE hard/failure = 0.053256
+easy degradation = 0.008580
+FDE all = 0.080118
+FDE t50 = 0.057431
+switch rate = 0.139443
 ```
 
-解释：
+重要边界：
 
-- Stage42-P 修复了 Stage42-O 的 mean t50 负号：ADE t50 从 `-0.0008` 到 `+0.0066`。
-- all/hard 仍明显为正：ADE all `0.0515`，hard/failure `0.0533`。
-- easy degradation mean `0.0086`，低于 2% 安全门限。
-- 但 t50 的 3-seed CI low 仍为负，说明这是一个 pass-gate repair，不是论文级稳定 t50 结论。
-- 下一步应做更多 seed 或 bootstrap，并把 Stage42-P 与 Stage42-J policy static-gated experts 合并，避免只靠 t50 加权 head。
+```text
+3-seed t50 CI low = -0.0179
+```
+
+结论：
+
+- Stage42-P 修复了 Stage42-O 的 mean ADE t+50 负号。
+- 它是 gate-passing t+50 repair。
+- 但 t+50 seed-level 稳定性还不够，不能作为 paper-stable t+50 claim。
+- 下一步应该把 Stage42-P row-level gain/harm selector 与 Stage42-J static expert policy 组合，并做更多 seed/bootstrap。
 
 ## 4. 失败路线总表
 
-| 路线 | 状态 | 失败原因 |
-| --- | --- | --- |
-| JEPA-only | 失败 | non-collapse 没有转化为 downstream lift。 |
-| Stage24 hard-class selector | 失败 | oracle margin 小、label ambiguity、大量 easy over-switch。 |
-| SDD-to-external zero-shot | 失败 | 坐标、scale、goal/scene、agent type、horizon domain gap 太大。 |
-| raw normalization / CORAL / latent alignment alone | 失败 | 缩小分布距离不等于预测增益。 |
-| mixed-domain selector without safety | 失败 | all 有时提升，但 easy preservation 不过 gate。 |
-| Stage34/35 global external transfer | partial/失败 | hard/t50 有局部信号，但 all/easy/t50 不能同时过。 |
-| Stage38 bounded correction | 失败 | 不能安全超过 Stage37。 |
-| Stage39 pure Transformer | 失败 | 不会稳定超过 Stage37，且易被 fallback 吃掉。 |
-| JEPA+Transformer Hybrid | 失败 | JEPA downstream 无 lift，Hybrid 没有变成主贡献。 |
-| no-fallback neural | 失败 | easy degradation 太大，不可部署。 |
-| continuous full-row bounded blend | 失败 | all/t50/hard 正，但 easy degradation 约 0.207，远超 2% gate。 |
-| fixed-prior / dynamic source switching | 大多失败 | residual oracle headroom 太小，真正可切换正样本极少。 |
-| unconditional static/context full-waypoint model | 失败 | scene/static context 全局混入导致 ADE t50/hard 受损。 |
-| alpha-only static-gate distillation | partial/失败 | 学到“用多少 static”，没学到“哪一行切换会 gain/harm”。 |
+| 路线 | 结果 | 失败原因 | 后续处理 |
+| --- | --- | --- | --- |
+| JEPA-only / Stage18 | non-collapse 但无 downstream lift | latent variance 没有对齐 selector/failure/goal/correction | 降级为 auxiliary，不作为主 claim |
+| Stage24 hard-class selector | t50 -43.3%，easy degr 11.33% | one-hot oracle label 噪声、margin 小、过度切换 | 改 expected-FDE / gain-harm / fallback |
+| SDD -> external zero-shot | all -92.67%，t50 -278.57% | 坐标尺度、scene/goal、agent type、domain mismatch | 做 row geometry、relative target、scene goals |
+| 普通 normalization / latent adapter | 不足以正迁移 | 分布距离缩小不等于预测有用 | 改成 selective transfer 与 history/goal prototypes |
+| Stage35 selective transfer | all/hard 正但 t50=0 | all objective 淹没 t50，缺历史/目标原型 | Stage37 t50-specific 修复 |
+| Stage38 bounded correction | not deployable | hard 少量改善但 easy/safety 不稳 | 不部署，保留 Stage37 |
+| Stage39/40 ungated neural | unsafe | easy degradation 大，复制/扰乱 floor | 必须 protected neural |
+| Stage42-I full static/context sequence | negative | static/context 全局混入伤 full-waypoint | Stage42-J static-gated |
+| Stage42-M alpha distillation | t50 负 | slice-level teacher 太粗 | Stage42-N/O row-level gain/harm |
+| Stage42-O strict gain/harm | t50 微负 | t50 仍未被足够重视 | Stage42-P t50-weighted repair |
 
 ## 5. 成功路线总表
 
-| 路线 | 状态 | 证明了什么 |
+| 路线 | 成功点 | 证据 |
 | --- | --- | --- |
-| Stage26 expected-FDE SDD selector | SDD 成功 | selector 必须 cost-aware、regret-aware、fallback-safe。 |
-| Stage37 history + goal prototype selector | external 成功 | past-only history 与 scene-agnostic goals 可修复 external t+50。 |
-| Stage41 protected endpoint neural | 成功 | neural dynamics 在 safety floor 下能超过 Stage37。 |
-| Stage41 composite-tail safe-switch | 当前主成功 | bounded neural tail 能稳定增益且保持 easy。 |
-| pure-UCY retrain | 成功 | 独立 source 上 neural branch 可 bootstrap-stable 正迁移。 |
-| endpoint-to-full bridge | 成功 | endpoint neural dynamics 的增益能转成 full future waypoint evidence。 |
-| Stage42-C full-waypoint dynamics | 成功 | 不只是 endpoint，有 reconstructed full-waypoint raw-frame 证据。 |
-| Stage42-H causal sequence encoder | 成功 | history tokens 对 t+50 / hard 有强贡献。 |
-| Stage42-J validation-gated static experts | 成功 | static/context 有用，但必须 gated，不可全局混入。 |
-| Stage42-L horizon-aware static gate | 局部成功 | fresh checkpoint 分支能把 t+50 从负修成小正。 |
+| Stage26 cost-aware selector | SDD t50/hard/easy 同时过 gate | t50 +14.58%，hard +11.23%，easy +1.81% |
+| Stage37 t50 transfer repair | external 可部署 selector | all +13.48%，t50 +8.46%，hard +15.54%，easy 0.041%，16/16 gates |
+| Stage42-B protected external validation | source-level external validation pass | all ADE +0.2103，t50 +0.1365，hard +0.2038 |
+| Stage42-C protected full-waypoint dynamics | 从 endpoint 推进到 full-waypoint | ADE all +0.1858，t50 +0.1480，FDE t50 +0.2158 |
+| Stage42-H causal sequence history | 证明 history tokens 有贡献 | no-history 下降 t50 0.4578、hard 0.4708 |
+| Stage42-J static-gated full-waypoint | static/context gated 后有效 | ADE all/t50/hard +0.0362/+0.0369/+0.0397 |
+| Stage42-L horizon static gate | fresh checkpoint 修复 t50 符号 | ADE t50 从 -0.0122 到 +0.0020 |
+| Stage42-P t50 gain/harm selector | explicit gain/harm t50 mean repair | ADE t50 +0.0066，14/14 gates |
 
-## 6. 现在到底是什么质量
+## 6. 为什么当前 best 不是纯 neural，也不是纯 selector
 
-现在质量可以诚实描述为：
+纯 selector 的问题：
+
+- 能部署，但不是完整 world dynamics。
+- 对 full future waypoint / all-agent dynamics 解释力不足。
+- 依赖手工 baseline family 和 policy 结构。
+
+纯 neural 的问题：
+
+- 无保护时 easy degradation 大。
+- 可能产生不物理或过度修正的输出。
+- 在 dataset-local / raw-frame 外部数据中很容易受 domain/scale/goal 缺失影响。
+
+当前 best 的折中：
 
 ```text
-strong protected 2.5D external multi-agent world-state candidate
-not full A-journal-ready
-not true 3D
-not metric/seconds-level
-not foundation model
-not ungated neural deployment
+neural world-state signal + Stage37/teacher floor + safe switch
 ```
 
-它已经比早期 SDD-only selector 强很多，因为：
+它的意义是：
 
-- 有 external dataset-local top-down pedestrian evidence。
-- 有 protected neural dynamics，而不只是 selector。
-- 有 all-agent world-state evidence。
-- 有 endpoint-to-full waypoint evidence。
-- 有 bootstrap / multiseed / ablation / no-leakage 报告。
+- neural 学习 history / goal / interaction / full-waypoint 的额外信号；
+- floor 保证 easy case 不被破坏；
+- gain/harm selector 决定什么时候允许 neural 接管或辅助。
 
-但还不能写成 A刊完整主张，因为：
+这比纯 selector 更接近 world-state modeling，但仍不是 true 3D / foundation。
 
-- 仍依赖 Stage37 / teacher floor。
-- JEPA 没有稳定 downstream lift。
-- metric/time calibration 未完成。
-- external 数据广度仍有限。
-- full retrained ablation 仍未完全覆盖所有神经组件。
-- Stage42-P 已把 Stage42-O 的 mean t50 负号修成正值，但 3-seed CI low 仍为负；说明 t50-specific switchability 方向有效，但还需要更强统计证据和 expert-policy 组合。
+## 7. 当前最重要的研究结论
 
-## 7. 下一步最短路径
+1. **Oracle headroom 不能直接变成 selector 成功。**  
+   Stage24 就证明了 oracle headroom 大但 hard classification 会大失败。
 
-1. 对 Stage42-P 做更多 seed 或 bootstrap，检查 t50 CI low 和 easy degradation CI，而不只看 mean。
-2. 组合 Stage42-J policy static-gated experts 与 Stage42-P t50-specific gain/harm selector，而不是继续 alpha-only distillation。
-3. 继续做 per-domain horizon calibration，重点修复 t50 CI low 为负的问题。
-4. 补 full retrained ablation：JEPA、Transformer、full-waypoint shape、no-fallback、no-static、no-history、no-neighbor、no-goal/scene 全部同协议重训。
-5. 做 metric/time calibration：FPS、annotation stride、homography、meter-per-pixel。没有证据就继续写 raw-frame / dataset-local。
-6. 增加外部 top-down 数据集，尤其带 scene image / homography / longer horizon 的合法数据。
+2. **跨域泛化首先是数据几何和目标定义问题。**  
+   Stage31-34 的失败说明，坐标/scale/scene/goal/horizon 不对齐时，模型越复杂越容易负迁移。
 
-## 8. 文件索引
+3. **t+50 需要专门建模。**  
+   Stage35 all/hard 正但 t50=0；Stage37 通过 history window + goal prototype 修复；Stage42-P 又证明 full-waypoint t50 也需要 t50-weighted gain/harm。
 
-- 主目标英文总结：`outputs/m3w_neural_v1/README_GOAL_SUMMARY_M3W_NEURAL_V1.md`
-- 主目标中文详细总结：`outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
-- 本文件：`outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md`
-- Stage42 final package：`outputs/stage42_long_research/report_stage42_final.md`
-- Stage42 paper gap：`outputs/stage42_long_research/a_journal_gap_stage42.md`
-- Stage42 full-waypoint：`outputs/stage42_long_research/full_waypoint_dynamics_stage42.md`
-- Stage42 static-gated repair：`outputs/stage42_long_research/static_gated_full_waypoint_stage42.md`
-- Stage42 horizon-aware repair：`outputs/stage42_long_research/horizon_static_gate_repair_stage42.md`
-- Stage42 row-gain static gate：`outputs/stage42_long_research/row_gain_static_gate_stage42.md`
-- Stage42 explicit gain/harm selector：`outputs/stage42_long_research/explicit_gain_harm_selector_stage42.md`
+4. **history 有用，但必须用 causal sequence encoder。**  
+   flattened history 失败，Stage42-H sequence history 成功。
+
+5. **scene/static/context 有用，但必须 gated。**  
+   Stage42-I 全局 static 失败，Stage42-J static-gated 成功。
+
+6. **JEPA 目前不是主贡献。**  
+   它 non-collapse，但没有稳定 downstream lift；不能包装成 world model 成功。
+
+7. **安全 floor 是当前方法的一部分。**  
+   不是临时 hack。去掉 floor 的 neural 仍不安全。
+
+## 8. 当前还没解决的问题
+
+1. **Stage42-P t+50 稳定性不足。**  
+   mean t50 过 gate，但 3-seed CI low 仍为负，需要更多 seeds/bootstrap 或组合 Stage42-J expert policy。
+
+2. **full A-journal-ready 仍未达到。**  
+   Stage42-F 是强 paper package，但不是 full A-journal-ready：还缺完整 fresh retrained ablation、更多独立外部数据、metric/time calibration、floor-free safety。
+
+3. **metric / seconds-level claim 仍不允许。**  
+   没有全局 homography/scale/effective seconds 验证。
+
+4. **Stage5C / SMC 仍不能执行。**  
+   当前没有足够证据证明 latent generative 或 SMC readiness。
+
+5. **JEPA downstream lift 仍未证明。**  
+   后续如果继续 JEPA，必须以 downstream head lift 为目标，而不是只看 non-collapse。
+
+6. **external domains 还需要更多独立验证。**  
+   当前已有 ETH_UCY / TrajNet / UCY 证据，但还不能称 foundation 或广泛真实世界泛化。
+
+## 9. 当前 best deployable 与不部署清单
+
+当前 best deployable：
+
+```text
+M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+with Stage37 / teacher safety floor
+```
+
+可作为候选但需注明边界：
+
+```text
+Stage42-C protected full-waypoint dynamics
+Stage42-J static-gated full-waypoint policy evidence
+Stage42-L fresh horizon-aware static-gated checkpoint
+Stage42-P t50 gain/harm selector repair
+```
+
+不部署：
+
+```text
+JEPA-only
+ungated neural
+Stage38 correction
+Stage39/40 neural without fallback
+Stage42-I full static/context sequence
+Stage42-M alpha-distilled static gate
+Stage42-N row static-gate pilot
+Stage42-O strict gain/harm as t50 success
+```
+
+## 10. 下一步最短路径
+
+1. **Stage42-Q：组合 Stage42-P row-level gain/harm selector 与 Stage42-J static expert policy。**  
+   目标是保留 Stage42-J 的 t50/FDE 稳定性，同时保留 Stage42-P 的 all/hard gain/harm 优势。必须 validation-only policy selection，test once。
+
+2. **给 Stage42-P / Q 做更多 seeds 或 row bootstrap。**  
+   当前 P 的 mean t50 成功，但 CI low 负。下一步必须解决统计稳定性，而不是只看一次均值。
+
+3. **继续 full retrained ablation。**  
+   把 JEPA / full Transformer / full-waypoint-shape / no-scene / no-goal / no-interaction 这些未完全 fresh retrain 的部分补齐。
+
+4. **做 metric/time audit，但不急着声称 metric。**  
+   只有 homography/scale/effective seconds 证据足够时，才允许从 raw-frame/dataset-local 升级 claim。
+
+5. **保持 Stage5C / SMC 禁止。**  
+   除非未来 gates 明确通过且用户确认，否则只生成 plan，不执行。
+
+## 11. 最关键文件
+
+主 README：
+
+```text
+outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md
+outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md
+outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md
+README_RESULTS.md
+research_state.json
+```
+
+Stage42 关键报告：
+
+```text
+outputs/stage42_long_research/report_stage42_final.md
+outputs/stage42_long_research/external_validation_stage42.md
+outputs/stage42_long_research/full_waypoint_dynamics_stage42.md
+outputs/stage42_long_research/retrained_ablation_stage42.md
+outputs/stage42_long_research/sequence_ablation_stage42.md
+outputs/stage42_long_research/sequence_full_waypoint_stage42.md
+outputs/stage42_long_research/static_gated_full_waypoint_stage42.md
+outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.md
+outputs/stage42_long_research/horizon_static_gate_repair_stage42.md
+outputs/stage42_long_research/policy_distilled_static_gate_stage42.md
+outputs/stage42_long_research/row_gain_static_gate_stage42.md
+outputs/stage42_long_research/explicit_gain_harm_selector_stage42.md
+outputs/stage42_long_research/t50_gain_harm_selector_stage42.md
+```
+
+## 12. 给用户的最终简明结论
+
+这个目标里成功的不是“直接训练一个无保护大模型”，而是逐步建立了一个受保护的、跨外部 top-down pedestrian 数据有正证据的 2.5D world-state candidate。
+
+最重要的成功：
+
+```text
+Stage37 修复 external t+50，形成 deployable selector。
+Stage42-B/C 把 protected neural 推到 external validation 和 full-waypoint dynamics。
+Stage42-H/J 证明 causal history 和 gated static/context 有真实贡献。
+Stage42-P 修复 explicit gain/harm selector 的 mean t+50。
+```
+
+最重要的失败：
+
+```text
+JEPA-only 没有 downstream lift。
+hard-class selector 会严重伤 easy。
+SDD zero-shot external 会崩。
+普通 domain alignment / latent adapter 不足。
+ungated neural 不安全。
+global static/context mixing 会伤 full-waypoint。
+Stage42-P 的 t50 seed stability 还不够。
+```
+
+当前 honest verdict：
+
+```text
+M3W 已经不是早期 SDD-only selector demo。
+它现在是 protected 2.5D external world-state candidate。
+但它仍不是 true 3D，不是 metric/seconds-level，不是 foundation world model。
+如果写论文，主 claim 应该是：
+  safety-floor-protected neural world-state dynamics for dataset-local top-down multi-agent trajectories
+而不是：
+  true 3D foundation world model
+```
