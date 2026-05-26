@@ -711,6 +711,27 @@ smc_enabled = false
 
 Stage42-BF 已经做 actual in-memory schema conversion 和 causal baseline/source-CV audit，并修正 `UCY/students03/obsmat_px.txt` 的 8 列坐标解析风险。UCY 的 t100 baseline-family source-CV holdout 全部强于 constant velocity；但这仍不是 protected M3W policy training/evaluation，所以 t100 仍是 blocker / diagnostic。
 
+### Stage42-BG 本轮 protected t100 policy source-CV
+
+```text
+source = fresh_source_cv_protected_policy
+verdict = stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker
+gates = 13 / 13
+t50_policy_windows = 15058
+t100_policy_windows = 6071
+source_cv_domains_evaluated = UCY
+source_cv_domains_blocked = ETH_UCY
+UCY_t100_source_cv_supported = true
+UCY_t100_mean_improvement_vs_fallback = 0.440938
+UCY_t100_min_improvement_vs_fallback = 0.438579
+UCY_t100_max_easy_degradation = 0.011340
+global_t100_positive_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BG 在 BF 的 converted windows 上做 validation-selected protected baseline-family policy。UCY local t100 source-CV 已经 positive/easy-safe，但 ETH_UCY 仍 under-supported，TrajNet 未进入这批新本地候选，所以 global t100 仍不能作为 deployable positive claim。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：

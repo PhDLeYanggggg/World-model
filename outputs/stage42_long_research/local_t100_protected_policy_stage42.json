@@ -1,0 +1,1814 @@
+{
+  "source": "fresh_source_cv_protected_policy",
+  "stage": "Stage42-BG Local T100 Protected Policy Source-CV",
+  "generated_at_utc": "2026-05-26T12:44:04.036036+00:00",
+  "git_commit": "ffe6c51",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BG 使用 Stage42-BF 的本地 t100 in-memory conversion 结果继续做 protected policy source-CV。",
+    "本步骤只训练/选择 baseline-family policy，不训练神经模型，不执行 Stage5C，不启用 SMC。",
+    "policy threshold / baseline choice 只从 train/validation source 选择，holdout source 只评估一次。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t100 仍是 raw-frame diagnostic；即使 UCY source-CV positive，也不能写成全局 t100 已修复。"
+  ],
+  "input_hash": "7cf20945b6a10fe3e70dc474cc1861e9c2987b61f75723c53f6916d40b3bd1d0",
+  "be_verdict": "stage42_be_local_t100_conversion_readiness_pass",
+  "bf_verdict": "stage42_bf_local_t100_schema_conversion_pass",
+  "feature_store_manifest": {
+    "source": "fresh_in_memory_policy_windows",
+    "materialized_large_feature_store_written": false,
+    "manifest_written_in_report": true,
+    "fields": [
+      "source_id",
+      "domain",
+      "scene_id",
+      "agent_id",
+      "frame_id",
+      "horizon",
+      "speed_causal",
+      "accel_causal",
+      "baseline_family_errors_eval_only"
+    ],
+    "future_labels_as_inputs": false,
+    "central_velocity": false
+  },
+  "window_summary": {
+    "source": "fresh_in_memory_policy_windows",
+    "sources": {
+      "ETH/seq_eth/biwi_eth_10fps.txt": {
+        "rows": 88,
+        "t50_rows": 76,
+        "t100_rows": 12
+      },
+      "UCY/students01/students001.txt": {
+        "rows": 8000,
+        "t50_rows": 6134,
+        "t100_rows": 1866
+      },
+      "UCY/students03/obsmat_px.txt": {
+        "rows": 9594,
+        "t50_rows": 6252,
+        "t100_rows": 3342
+      },
+      "UCY/students03/students003.txt": {
+        "rows": 3447,
+        "t50_rows": 2596,
+        "t100_rows": 851
+      }
+    },
+    "total_windows_by_horizon": {
+      "50": 15058,
+      "100": 6071
+    }
+  },
+  "source_cv_folds": [
+    {
+      "source": "fresh_source_cv_protected_policy",
+      "domain": "UCY",
+      "holdout_source": "UCY/students03/obsmat_px.txt",
+      "validation_source": "UCY/students01/students001.txt",
+      "train_sources": [
+        "UCY/students03/students003.txt"
+      ],
+      "by_horizon": {
+        "50": {
+          "source": "fresh_source_cv_protected_policy",
+          "selection": {
+            "source": "fresh_validation_selection",
+            "horizon": 50,
+            "selected_policy": {
+              "source": "fresh_validation_selection",
+              "policy_name": "global_damped_velocity_0p50",
+              "metadata": {
+                "baseline": "damped_velocity_0p50"
+              },
+              "validation_metrics": {
+                "source": "fresh_policy_eval",
+                "rows": 6134,
+                "mean_fde": 3.901956959407794,
+                "fallback_mean_fde": 6.048271273452599,
+                "improvement_vs_fallback": 0.35486409537639696,
+                "easy_threshold_from_eval_slice": 4.841093076806713,
+                "easy_rows": 3067,
+                "easy_degradation": 0.011064542906318723,
+                "switch_rate": 1.0,
+                "harm_over_fallback": -2.146314314044805,
+                "selected_distribution": {
+                  "damped_velocity_0p50": 6134
+                }
+              },
+              "eligible_for_holdout": true,
+              "score": 0.35386409537639696,
+              "horizon": 50
+            },
+            "candidate_count": 8,
+            "candidates": [
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_position",
+                "metadata": {
+                  "baseline": "constant_position"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 4.8729623779731766,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.1943214585361196,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 0.5764616782019754,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -1.1753088954794224,
+                  "selected_distribution": {
+                    "constant_position": 6134
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -5.371295323483634,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_velocity_causal_fd",
+                "metadata": {
+                  "baseline": "constant_velocity_causal_fd"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 6.048271273452599,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.0,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.0,
+                  "harm_over_fallback": 0.0,
+                  "selected_distribution": {
+                    "constant_velocity_causal_fd": 6134
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.0,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p25",
+                "metadata": {
+                  "baseline": "damped_velocity_0p25"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 3.866290399184208,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.3607610795907353,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 0.2578465189520899,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -2.181980874268391,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 6134
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -2.0187041099301632,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p50",
+                "metadata": {
+                  "baseline": "damped_velocity_0p50"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 3.901956959407794,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.35486409537639696,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 0.011064542906318723,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -2.146314314044805,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 6134
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.35386409537639696,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p75",
+                "metadata": {
+                  "baseline": "damped_velocity_0p75"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 4.7654517462100054,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.21209689004413784,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": -0.09240756622297074,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -1.2828195272425935,
+                  "selected_distribution": {
+                    "damped_velocity_0p75": 6134
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.21109689004413784,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_acceleration_causal",
+                "metadata": {
+                  "baseline": "constant_acceleration_causal"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 28.632411900952118,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": -3.7339827541511004,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 7.343198313549021,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": 22.58414062749952,
+                  "selected_distribution": {
+                    "constant_acceleration_causal": 6134
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -76.96696588964132,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "speed_bucket_train_best",
+                "metadata": {
+                  "low_speed_threshold": 0.032678068766835607,
+                  "high_speed_threshold": 0.21135105175408778,
+                  "mapping": {
+                    "50:speed_high": "damped_velocity_0p25",
+                    "50:speed_low": "constant_velocity_causal_fd",
+                    "50:speed_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 3.7275724879395047,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.38369621344519245,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 0.08634224478469243,
+                  "switch_rate": 0.7018258884903815,
+                  "harm_over_fallback": -2.3206987855130943,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 1851,
+                    "damped_velocity_0p50": 2454,
+                    "constant_velocity_causal_fd": 1829
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -0.2804280602902222,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "accel_bucket_train_best",
+                "metadata": {
+                  "low_accel_threshold": 0.00023865970000080952,
+                  "high_accel_threshold": 0.01081367666026234,
+                  "mapping": {
+                    "50:accel_high": "damped_velocity_0p25",
+                    "50:accel_low": "damped_velocity_0p50",
+                    "50:accel_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6134,
+                  "mean_fde": 3.8461444499190427,
+                  "fallback_mean_fde": 6.048271273452599,
+                  "improvement_vs_fallback": 0.36409194032007974,
+                  "easy_threshold_from_eval_slice": 4.841093076806713,
+                  "easy_rows": 3067,
+                  "easy_degradation": 0.12364725219610466,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -2.2021268235335563,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 3988,
+                    "damped_velocity_0p25": 2146
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -0.6733805816409669,
+                "horizon": 50
+              }
+            ]
+          },
+          "holdout_metrics": {
+            "source": "fresh_policy_eval",
+            "rows": 6252,
+            "mean_fde": 137.6827730494049,
+            "fallback_mean_fde": 215.60075679588044,
+            "improvement_vs_fallback": 0.3613993981488861,
+            "easy_threshold_from_eval_slice": 111.87203574072561,
+            "easy_rows": 3126,
+            "easy_degradation": 0.18529073058781653,
+            "switch_rate": 1.0,
+            "harm_over_fallback": -77.91798374647556,
+            "selected_distribution": {
+              "damped_velocity_0p50": 6252
+            }
+          },
+          "safe_positive": false
+        },
+        "100": {
+          "source": "fresh_source_cv_protected_policy",
+          "selection": {
+            "source": "fresh_validation_selection",
+            "horizon": 100,
+            "selected_policy": {
+              "source": "fresh_validation_selection",
+              "policy_name": "global_damped_velocity_0p50",
+              "metadata": {
+                "baseline": "damped_velocity_0p50"
+              },
+              "validation_metrics": {
+                "source": "fresh_policy_eval",
+                "rows": 1866,
+                "mean_fde": 5.549623804187652,
+                "fallback_mean_fde": 9.956563883725808,
+                "improvement_vs_fallback": 0.4426165624007478,
+                "easy_threshold_from_eval_slice": 6.718974291834967,
+                "easy_rows": 933,
+                "easy_degradation": -0.07629116853383457,
+                "switch_rate": 1.0,
+                "harm_over_fallback": -4.406940079538156,
+                "selected_distribution": {
+                  "damped_velocity_0p50": 1866
+                }
+              },
+              "eligible_for_holdout": true,
+              "score": 0.4416165624007478,
+              "horizon": 100
+            },
+            "candidate_count": 8,
+            "candidates": [
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_position",
+                "metadata": {
+                  "baseline": "constant_position"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 5.0624605582945135,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.4915454149227927,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": 0.3049184210208196,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -4.894103325431295,
+                  "selected_distribution": {
+                    "constant_position": 1866
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -2.3586387952854033,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_velocity_causal_fd",
+                "metadata": {
+                  "baseline": "constant_velocity_causal_fd"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 9.956563883725808,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.0,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.0,
+                  "harm_over_fallback": 0.0,
+                  "selected_distribution": {
+                    "constant_velocity_causal_fd": 1866
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.0,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p25",
+                "metadata": {
+                  "baseline": "damped_velocity_0p25"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 4.297606197482573,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.568364523376675,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": 0.08186799889666511,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -5.658957686243235,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 1866
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -0.05131546558997613,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p50",
+                "metadata": {
+                  "baseline": "damped_velocity_0p50"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 5.549623804187652,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.4426165624007478,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": -0.07629116853383457,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -4.406940079538156,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 1866
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.4416165624007478,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p75",
+                "metadata": {
+                  "baseline": "damped_velocity_0p75"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 7.5795965081180325,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.23873370405356145,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": -0.10548038926882085,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -2.3769673756077756,
+                  "selected_distribution": {
+                    "damped_velocity_0p75": 1866
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.23773370405356145,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_acceleration_causal",
+                "metadata": {
+                  "baseline": "constant_acceleration_causal"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 88.07767266013651,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": -7.8461916870840485,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": 12.481670792191679,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": 78.12110877641071,
+                  "selected_distribution": {
+                    "constant_acceleration_causal": 1866
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -132.46389960900086,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "speed_bucket_train_best",
+                "metadata": {
+                  "low_speed_threshold": 0.02137087201309372,
+                  "high_speed_threshold": 0.19999272189519207,
+                  "mapping": {
+                    "100:speed_high": "constant_position",
+                    "100:speed_low": "constant_velocity_causal_fd",
+                    "100:speed_mid": "damped_velocity_0p25"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 4.459449194706964,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.5521096186611109,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": 0.05050516582869711,
+                  "switch_rate": 0.7047159699892819,
+                  "harm_over_fallback": -5.4971146890188445,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 941,
+                    "constant_position": 374,
+                    "constant_velocity_causal_fd": 551
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.24635324440415052,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "accel_bucket_train_best",
+                "metadata": {
+                  "low_accel_threshold": 0.00023865979000081694,
+                  "high_accel_threshold": 0.011101850072898089,
+                  "mapping": {
+                    "100:accel_high": "constant_position",
+                    "100:accel_low": "constant_position",
+                    "100:accel_mid": "constant_position"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 1866,
+                  "mean_fde": 5.0624605582945135,
+                  "fallback_mean_fde": 9.956563883725808,
+                  "improvement_vs_fallback": 0.4915454149227927,
+                  "easy_threshold_from_eval_slice": 6.718974291834967,
+                  "easy_rows": 933,
+                  "easy_degradation": 0.3049184210208196,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -4.894103325431295,
+                  "selected_distribution": {
+                    "constant_position": 1866
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -2.3586387952854033,
+                "horizon": 100
+              }
+            ]
+          },
+          "holdout_metrics": {
+            "source": "fresh_policy_eval",
+            "rows": 3342,
+            "mean_fde": 213.3891456572617,
+            "fallback_mean_fde": 382.1566843869673,
+            "improvement_vs_fallback": 0.44161870150310806,
+            "easy_threshold_from_eval_slice": 70.84608511891005,
+            "easy_rows": 1671,
+            "easy_degradation": 0.011339719285930428,
+            "switch_rate": 1.0,
+            "harm_over_fallback": -168.7675387297056,
+            "selected_distribution": {
+              "damped_velocity_0p50": 3342
+            }
+          },
+          "safe_positive": true
+        }
+      }
+    },
+    {
+      "source": "fresh_source_cv_protected_policy",
+      "domain": "UCY",
+      "holdout_source": "UCY/students01/students001.txt",
+      "validation_source": "UCY/students03/obsmat_px.txt",
+      "train_sources": [
+        "UCY/students03/students003.txt"
+      ],
+      "by_horizon": {
+        "50": {
+          "source": "fresh_source_cv_protected_policy",
+          "selection": {
+            "source": "fresh_validation_selection",
+            "horizon": 50,
+            "selected_policy": {
+              "source": "fresh_validation_selection",
+              "policy_name": "global_constant_velocity_causal_fd",
+              "metadata": {
+                "baseline": "constant_velocity_causal_fd"
+              },
+              "validation_metrics": {
+                "source": "fresh_policy_eval",
+                "rows": 6252,
+                "mean_fde": 215.60075679588044,
+                "fallback_mean_fde": 215.60075679588044,
+                "improvement_vs_fallback": 0.0,
+                "easy_threshold_from_eval_slice": 111.87203574072561,
+                "easy_rows": 3126,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.0,
+                "harm_over_fallback": 0.0,
+                "selected_distribution": {
+                  "constant_velocity_causal_fd": 6252
+                }
+              },
+              "eligible_for_holdout": true,
+              "score": 0.0,
+              "horizon": 50,
+              "fallback_reason": "no_validation_safe_policy_exceeded_fallback"
+            },
+            "candidate_count": 8,
+            "candidates": [
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_position",
+                "metadata": {
+                  "baseline": "constant_position"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 130.51794445209177,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.39463132508547105,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.6155427543431816,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -85.08281234378867,
+                  "selected_distribution": {
+                    "constant_position": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -5.561796218346346,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_velocity_causal_fd",
+                "metadata": {
+                  "baseline": "constant_velocity_causal_fd"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 215.60075679588044,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.0,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.0,
+                  "harm_over_fallback": 0.0,
+                  "selected_distribution": {
+                    "constant_velocity_causal_fd": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.0,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p25",
+                "metadata": {
+                  "baseline": "damped_velocity_0p25"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 120.43903184182783,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.4413793641928019,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.38375322612003215,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -95.16172495405262,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -3.1971528970075194,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p50",
+                "metadata": {
+                  "baseline": "damped_velocity_0p50"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 137.6827730494049,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.3613993981488861,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.18529073058781653,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -77.91798374647556,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -1.2925079077292791,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p75",
+                "metadata": {
+                  "baseline": "damped_velocity_0p75"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 171.67975420421902,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.20371451030315044,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.027670830939217742,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -43.92100259166142,
+                  "selected_distribution": {
+                    "damped_velocity_0p75": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.12600620091097303,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_acceleration_causal",
+                "metadata": {
+                  "baseline": "constant_acceleration_causal"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 3827.5674647781975,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": -16.753033531333745,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 48.76167476290697,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": 3611.966707982317,
+                  "selected_distribution": {
+                    "constant_acceleration_causal": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -504.1707811604034,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "speed_bucket_train_best",
+                "metadata": {
+                  "low_speed_threshold": 0.032678068766835607,
+                  "high_speed_threshold": 0.21135105175408778,
+                  "mapping": {
+                    "50:speed_high": "damped_velocity_0p25",
+                    "50:speed_low": "constant_velocity_causal_fd",
+                    "50:speed_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 120.4387773395756,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.4413805446258208,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.38377063420427093,
+                  "switch_rate": 0.48192578374920025,
+                  "harm_over_fallback": -95.16197945630485,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3011,
+                    "constant_velocity_causal_fd": 3239,
+                    "damped_velocity_0p50": 2
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -3.1968077232006378,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "accel_bucket_train_best",
+                "metadata": {
+                  "low_accel_threshold": 0.00023865970000080952,
+                  "high_accel_threshold": 0.01081367666026234,
+                  "mapping": {
+                    "50:accel_high": "damped_velocity_0p25",
+                    "50:accel_low": "damped_velocity_0p50",
+                    "50:accel_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 120.47029783177936,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.44123434619557317,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.3835225276278022,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -95.13045896410108,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3154,
+                    "damped_velocity_0p50": 3098
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -3.1949909300824486,
+                "horizon": 50
+              }
+            ]
+          },
+          "holdout_metrics": {
+            "source": "fresh_policy_eval",
+            "rows": 6134,
+            "mean_fde": 6.048271273452599,
+            "fallback_mean_fde": 6.048271273452599,
+            "improvement_vs_fallback": 0.0,
+            "easy_threshold_from_eval_slice": 4.841093076806713,
+            "easy_rows": 3067,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0,
+            "harm_over_fallback": 0.0,
+            "selected_distribution": {
+              "constant_velocity_causal_fd": 6134
+            }
+          },
+          "safe_positive": false
+        },
+        "100": {
+          "source": "fresh_source_cv_protected_policy",
+          "selection": {
+            "source": "fresh_validation_selection",
+            "horizon": 100,
+            "selected_policy": {
+              "source": "fresh_validation_selection",
+              "policy_name": "global_damped_velocity_0p50",
+              "metadata": {
+                "baseline": "damped_velocity_0p50"
+              },
+              "validation_metrics": {
+                "source": "fresh_policy_eval",
+                "rows": 3342,
+                "mean_fde": 213.3891456572617,
+                "fallback_mean_fde": 382.1566843869673,
+                "improvement_vs_fallback": 0.44161870150310806,
+                "easy_threshold_from_eval_slice": 70.84608511891005,
+                "easy_rows": 1671,
+                "easy_degradation": 0.011339719285930428,
+                "switch_rate": 1.0,
+                "harm_over_fallback": -168.7675387297056,
+                "selected_distribution": {
+                  "damped_velocity_0p50": 3342
+                }
+              },
+              "eligible_for_holdout": true,
+              "score": 0.44061870150310806,
+              "horizon": 100
+            },
+            "candidate_count": 8,
+            "candidates": [
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_position",
+                "metadata": {
+                  "baseline": "constant_position"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 112.59966803295744,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.7053573242776506,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.06332289296349253,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -269.5570163540099,
+                  "selected_distribution": {
+                    "constant_position": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.2711283946427254,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_velocity_causal_fd",
+                "metadata": {
+                  "baseline": "constant_velocity_causal_fd"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 382.1566843869673,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.0,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.0,
+                  "harm_over_fallback": 0.0,
+                  "selected_distribution": {
+                    "constant_velocity_causal_fd": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.0,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p25",
+                "metadata": {
+                  "baseline": "damped_velocity_0p25"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 138.6806754759215,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.6371104284139771,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.03699326962151245,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -243.4760089110458,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.46617773219885267,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p50",
+                "metadata": {
+                  "baseline": "damped_velocity_0p50"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 213.3891456572617,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.44161870150310806,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.011339719285930428,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -168.7675387297056,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 3342
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.44061870150310806,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p75",
+                "metadata": {
+                  "baseline": "damped_velocity_0p75"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 296.5017517398138,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.224135638984193,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": -0.006759757374403884,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -85.65493264715349,
+                  "selected_distribution": {
+                    "damped_velocity_0p75": 3342
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.223135638984193,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_acceleration_causal",
+                "metadata": {
+                  "baseline": "constant_acceleration_causal"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 12279.739539608223,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": -31.132735187679994,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 132.6714110596809,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": 11897.582855221255,
+                  "selected_distribution": {
+                    "constant_acceleration_causal": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -1357.647845784489,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "speed_bucket_train_best",
+                "metadata": {
+                  "low_speed_threshold": 0.02137087201309372,
+                  "high_speed_threshold": 0.19999272189519207,
+                  "mapping": {
+                    "100:speed_high": "constant_position",
+                    "100:speed_low": "constant_velocity_causal_fd",
+                    "100:speed_mid": "damped_velocity_0p25"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 112.60018781621524,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.7053559641463771,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.06345441985216678,
+                  "switch_rate": 0.35218432076600836,
+                  "harm_over_fallback": -269.5564965707521,
+                  "selected_distribution": {
+                    "constant_position": 1176,
+                    "damped_velocity_0p25": 1,
+                    "constant_velocity_causal_fd": 2165
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.2704595813039434,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "accel_bucket_train_best",
+                "metadata": {
+                  "low_accel_threshold": 0.00023865979000081694,
+                  "high_accel_threshold": 0.011101850072898089,
+                  "mapping": {
+                    "100:accel_high": "constant_position",
+                    "100:accel_low": "constant_position",
+                    "100:accel_mid": "constant_position"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 112.59966803295744,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.7053573242776506,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.06332289296349253,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -269.5570163540099,
+                  "selected_distribution": {
+                    "constant_position": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.2711283946427254,
+                "horizon": 100
+              }
+            ]
+          },
+          "holdout_metrics": {
+            "source": "fresh_policy_eval",
+            "rows": 1866,
+            "mean_fde": 5.549623804187652,
+            "fallback_mean_fde": 9.956563883725808,
+            "improvement_vs_fallback": 0.4426165624007478,
+            "easy_threshold_from_eval_slice": 6.718974291834967,
+            "easy_rows": 933,
+            "easy_degradation": -0.07629116853383457,
+            "switch_rate": 1.0,
+            "harm_over_fallback": -4.406940079538156,
+            "selected_distribution": {
+              "damped_velocity_0p50": 1866
+            }
+          },
+          "safe_positive": true
+        }
+      }
+    },
+    {
+      "source": "fresh_source_cv_protected_policy",
+      "domain": "UCY",
+      "holdout_source": "UCY/students03/students003.txt",
+      "validation_source": "UCY/students03/obsmat_px.txt",
+      "train_sources": [
+        "UCY/students01/students001.txt"
+      ],
+      "by_horizon": {
+        "50": {
+          "source": "fresh_source_cv_protected_policy",
+          "selection": {
+            "source": "fresh_validation_selection",
+            "horizon": 50,
+            "selected_policy": {
+              "source": "fresh_validation_selection",
+              "policy_name": "global_constant_velocity_causal_fd",
+              "metadata": {
+                "baseline": "constant_velocity_causal_fd"
+              },
+              "validation_metrics": {
+                "source": "fresh_policy_eval",
+                "rows": 6252,
+                "mean_fde": 215.60075679588044,
+                "fallback_mean_fde": 215.60075679588044,
+                "improvement_vs_fallback": 0.0,
+                "easy_threshold_from_eval_slice": 111.87203574072561,
+                "easy_rows": 3126,
+                "easy_degradation": 0.0,
+                "switch_rate": 0.0,
+                "harm_over_fallback": 0.0,
+                "selected_distribution": {
+                  "constant_velocity_causal_fd": 6252
+                }
+              },
+              "eligible_for_holdout": true,
+              "score": 0.0,
+              "horizon": 50,
+              "fallback_reason": "no_validation_safe_policy_exceeded_fallback"
+            },
+            "candidate_count": 8,
+            "candidates": [
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_position",
+                "metadata": {
+                  "baseline": "constant_position"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 130.51794445209177,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.39463132508547105,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.6155427543431816,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -85.08281234378867,
+                  "selected_distribution": {
+                    "constant_position": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -5.561796218346346,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_velocity_causal_fd",
+                "metadata": {
+                  "baseline": "constant_velocity_causal_fd"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 215.60075679588044,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.0,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.0,
+                  "harm_over_fallback": 0.0,
+                  "selected_distribution": {
+                    "constant_velocity_causal_fd": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.0,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p25",
+                "metadata": {
+                  "baseline": "damped_velocity_0p25"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 120.43903184182783,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.4413793641928019,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.38375322612003215,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -95.16172495405262,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -3.1971528970075194,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p50",
+                "metadata": {
+                  "baseline": "damped_velocity_0p50"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 137.6827730494049,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.3613993981488861,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.18529073058781653,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -77.91798374647556,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -1.2925079077292791,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p75",
+                "metadata": {
+                  "baseline": "damped_velocity_0p75"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 171.67975420421902,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.20371451030315044,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.027670830939217742,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -43.92100259166142,
+                  "selected_distribution": {
+                    "damped_velocity_0p75": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.12600620091097303,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_acceleration_causal",
+                "metadata": {
+                  "baseline": "constant_acceleration_causal"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 3827.5674647781975,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": -16.753033531333745,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 48.76167476290697,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": 3611.966707982317,
+                  "selected_distribution": {
+                    "constant_acceleration_causal": 6252
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -504.1707811604034,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "speed_bucket_train_best",
+                "metadata": {
+                  "low_speed_threshold": 0.041378701000753866,
+                  "high_speed_threshold": 0.19181663594558687,
+                  "mapping": {
+                    "50:speed_high": "damped_velocity_0p25",
+                    "50:speed_low": "constant_velocity_causal_fd",
+                    "50:speed_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 120.43917965955718,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.44137867858421886,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.38377063420427093,
+                  "switch_rate": 0.48192578374920025,
+                  "harm_over_fallback": -95.16157713632326,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3012,
+                    "constant_velocity_causal_fd": 3239,
+                    "damped_velocity_0p50": 1
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -3.19680958924224,
+                "horizon": 50
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "accel_bucket_train_best",
+                "metadata": {
+                  "low_accel_threshold": 0.00023865978999992876,
+                  "high_accel_threshold": 0.012035679867116301,
+                  "mapping": {
+                    "50:accel_high": "damped_velocity_0p25",
+                    "50:accel_low": "damped_velocity_0p50",
+                    "50:accel_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 6252,
+                  "mean_fde": 120.47029783177936,
+                  "fallback_mean_fde": 215.60075679588044,
+                  "improvement_vs_fallback": 0.44123434619557317,
+                  "easy_threshold_from_eval_slice": 111.87203574072561,
+                  "easy_rows": 3126,
+                  "easy_degradation": 0.3835225276278022,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -95.13045896410108,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3154,
+                    "damped_velocity_0p50": 3098
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -3.1949909300824486,
+                "horizon": 50
+              }
+            ]
+          },
+          "holdout_metrics": {
+            "source": "fresh_policy_eval",
+            "rows": 2596,
+            "mean_fde": 6.845414487524838,
+            "fallback_mean_fde": 6.845414487524838,
+            "improvement_vs_fallback": 0.0,
+            "easy_threshold_from_eval_slice": 4.695519709484046,
+            "easy_rows": 1298,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0,
+            "harm_over_fallback": 0.0,
+            "selected_distribution": {
+              "constant_velocity_causal_fd": 2596
+            }
+          },
+          "safe_positive": false
+        },
+        "100": {
+          "source": "fresh_source_cv_protected_policy",
+          "selection": {
+            "source": "fresh_validation_selection",
+            "horizon": 100,
+            "selected_policy": {
+              "source": "fresh_validation_selection",
+              "policy_name": "global_damped_velocity_0p50",
+              "metadata": {
+                "baseline": "damped_velocity_0p50"
+              },
+              "validation_metrics": {
+                "source": "fresh_policy_eval",
+                "rows": 3342,
+                "mean_fde": 213.3891456572617,
+                "fallback_mean_fde": 382.1566843869673,
+                "improvement_vs_fallback": 0.44161870150310806,
+                "easy_threshold_from_eval_slice": 70.84608511891005,
+                "easy_rows": 1671,
+                "easy_degradation": 0.011339719285930428,
+                "switch_rate": 1.0,
+                "harm_over_fallback": -168.7675387297056,
+                "selected_distribution": {
+                  "damped_velocity_0p50": 3342
+                }
+              },
+              "eligible_for_holdout": true,
+              "score": 0.44061870150310806,
+              "horizon": 100
+            },
+            "candidate_count": 8,
+            "candidates": [
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_position",
+                "metadata": {
+                  "baseline": "constant_position"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 112.59966803295744,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.7053573242776506,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.06332289296349253,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -269.5570163540099,
+                  "selected_distribution": {
+                    "constant_position": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.2711283946427254,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_velocity_causal_fd",
+                "metadata": {
+                  "baseline": "constant_velocity_causal_fd"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 382.1566843869673,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.0,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.0,
+                  "harm_over_fallback": 0.0,
+                  "selected_distribution": {
+                    "constant_velocity_causal_fd": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.0,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p25",
+                "metadata": {
+                  "baseline": "damped_velocity_0p25"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 138.6806754759215,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.6371104284139771,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.03699326962151245,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -243.4760089110458,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.46617773219885267,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p50",
+                "metadata": {
+                  "baseline": "damped_velocity_0p50"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 213.3891456572617,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.44161870150310806,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.011339719285930428,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -168.7675387297056,
+                  "selected_distribution": {
+                    "damped_velocity_0p50": 3342
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.44061870150310806,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_damped_velocity_0p75",
+                "metadata": {
+                  "baseline": "damped_velocity_0p75"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 296.5017517398138,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.224135638984193,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": -0.006759757374403884,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -85.65493264715349,
+                  "selected_distribution": {
+                    "damped_velocity_0p75": 3342
+                  }
+                },
+                "eligible_for_holdout": true,
+                "score": 0.223135638984193,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "global_constant_acceleration_causal",
+                "metadata": {
+                  "baseline": "constant_acceleration_causal"
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 12279.739539608223,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": -31.132735187679994,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 132.6714110596809,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": 11897.582855221255,
+                  "selected_distribution": {
+                    "constant_acceleration_causal": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": -1357.647845784489,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "speed_bucket_train_best",
+                "metadata": {
+                  "low_speed_threshold": 0.03550464939747427,
+                  "high_speed_threshold": 0.1349990461343541,
+                  "mapping": {
+                    "100:speed_high": "damped_velocity_0p25",
+                    "100:speed_low": "constant_velocity_causal_fd",
+                    "100:speed_mid": "damped_velocity_0p50"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 138.68120143035793,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.6371090521344094,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.03712635807631038,
+                  "switch_rate": 0.35218432076600836,
+                  "harm_over_fallback": -243.47548295660937,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 1176,
+                    "damped_velocity_0p50": 1,
+                    "constant_velocity_causal_fd": 2165
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.4654932870505396,
+                "horizon": 100
+              },
+              {
+                "source": "fresh_validation_selection",
+                "policy_name": "accel_bucket_train_best",
+                "metadata": {
+                  "low_accel_threshold": 0.00021046512000033626,
+                  "high_accel_threshold": 0.0044454670244604005,
+                  "mapping": {
+                    "100:accel_high": "damped_velocity_0p25",
+                    "100:accel_low": "damped_velocity_0p25",
+                    "100:accel_mid": "damped_velocity_0p25"
+                  }
+                },
+                "validation_metrics": {
+                  "source": "fresh_policy_eval",
+                  "rows": 3342,
+                  "mean_fde": 138.6806754759215,
+                  "fallback_mean_fde": 382.1566843869673,
+                  "improvement_vs_fallback": 0.6371104284139771,
+                  "easy_threshold_from_eval_slice": 70.84608511891005,
+                  "easy_rows": 1671,
+                  "easy_degradation": 0.03699326962151245,
+                  "switch_rate": 1.0,
+                  "harm_over_fallback": -243.4760089110458,
+                  "selected_distribution": {
+                    "damped_velocity_0p25": 3342
+                  }
+                },
+                "eligible_for_holdout": false,
+                "score": 0.46617773219885267,
+                "horizon": 100
+              }
+            ]
+          },
+          "holdout_metrics": {
+            "source": "fresh_policy_eval",
+            "rows": 851,
+            "mean_fde": 9.170096166645905,
+            "fallback_mean_fde": 16.333714081421718,
+            "improvement_vs_fallback": 0.43857862817152227,
+            "easy_threshold_from_eval_slice": 7.85910814444707,
+            "easy_rows": 426,
+            "easy_degradation": -0.041435997049046526,
+            "switch_rate": 1.0,
+            "harm_over_fallback": -7.163617914775813,
+            "selected_distribution": {
+              "damped_velocity_0p50": 851
+            }
+          },
+          "safe_positive": true
+        }
+      }
+    }
+  ],
+  "domain_summary": {
+    "UCY": {
+      "source": "fresh_source_cv_protected_policy",
+      "fold_count": 3,
+      "by_horizon": {
+        "50": {
+          "source": "fresh_source_cv_protected_policy",
+          "fold_count": 3,
+          "safe_positive_fold_count": 0,
+          "all_folds_safe_positive": false,
+          "mean_holdout_improvement_vs_fallback": 0.1204664660496287,
+          "minimum_holdout_improvement_vs_fallback": 0.0,
+          "maximum_easy_degradation": 0.18529073058781653
+        },
+        "100": {
+          "source": "fresh_source_cv_protected_policy",
+          "fold_count": 3,
+          "safe_positive_fold_count": 3,
+          "all_folds_safe_positive": true,
+          "mean_holdout_improvement_vs_fallback": 0.44093796402512603,
+          "minimum_holdout_improvement_vs_fallback": 0.43857862817152227,
+          "maximum_easy_degradation": 0.011339719285930428
+        }
+      }
+    }
+  },
+  "blockers": {
+    "ETH_UCY": {
+      "source": "fresh_source_cv_protected_policy",
+      "status": "not_run",
+      "reason": "fewer_than_three_t100_capable_sources_or_no_source_cv_folds",
+      "t100_capable_sources": 1,
+      "estimated_t100_windows": 14
+    }
+  },
+  "summary": {
+    "source": "fresh_source_cv_protected_policy",
+    "candidate_sources": 4,
+    "policy_window_sources": 4,
+    "t50_policy_windows": 15058,
+    "t100_policy_windows": 6071,
+    "source_cv_domains_evaluated": [
+      "UCY"
+    ],
+    "source_cv_domains_blocked": [
+      "ETH_UCY"
+    ],
+    "ucy_t100_source_cv_supported": true,
+    "ucy_t100_mean_improvement_vs_fallback": 0.44093796402512603,
+    "ucy_t100_min_improvement_vs_fallback": 0.43857862817152227,
+    "ucy_t100_max_easy_degradation": 0.011339719285930428,
+    "training_run": true,
+    "training_type": "validation_selected_baseline_family_policy",
+    "neural_training_run": false,
+    "evaluation_run": true,
+    "t100_positive_claim_allowed": false,
+    "ucy_local_t100_support_claim_allowed": true,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_metrics_for_threshold": false,
+    "causal_velocity_only": true,
+    "holdout_used_for_threshold": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "t100_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "t100_positive_claim_allowed": false,
+    "ucy_local_t100_source_cv_support": true
+  },
+  "stage42_bg_gate": {
+    "source": "fresh_source_cv_protected_policy",
+    "gates": {
+      "be_readiness_loaded": true,
+      "bf_conversion_loaded": true,
+      "policy_windows_built": true,
+      "validation_selected_policy_trained": true,
+      "holdout_source_cv_evaluated": true,
+      "ucy_t100_source_cv_supported": true,
+      "eth_ucy_blocker_reported": true,
+      "no_leakage_pass": true,
+      "no_large_feature_store_committed": true,
+      "no_metric_seconds_overclaim": true,
+      "global_t100_claim_still_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker"
+  },
+  "user_action_required": [
+    {
+      "source": "fresh_source_cv_protected_policy",
+      "priority": "high",
+      "action_type": "keep_global_t100_claim_blocked",
+      "notes": "UCY local source-CV is supported, but ETH_UCY remains under-supported. Do not advertise global external t100 success."
+    },
+    {
+      "source": "fresh_source_cv_protected_policy",
+      "priority": "high",
+      "action_type": "add_more_independent_t100_sources",
+      "notes": "Need additional ETH_UCY / TrajNet / UCY t100-capable independent sources before global t100 deployment claims."
+    }
+  ]
+}

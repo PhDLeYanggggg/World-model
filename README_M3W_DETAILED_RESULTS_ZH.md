@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总历史阶段报告、README、gate report 和 `research_state.json`；Stage42-BD 本地 t100 source inventory 为本轮 `fresh_local_path_inventory`。
+结果来源：`cached_verified` 汇总历史阶段报告、README、gate report 和 `research_state.json`；Stage42-BD 本地 t100 source inventory 为 `fresh_local_path_inventory`，Stage42-BE/BF/BG 为本轮连续 fresh evidence。
 
 这份 README 是给人的一页式研究复盘：在 M3W 这个长期目标里做了什么、试了哪些路线、哪些失败、失败原因是什么、哪些成功、当前最好可部署模型是谁、哪些 claim 仍然禁止。
 
@@ -110,6 +110,7 @@ SMC-ready model
 | Stage42-BD local t100 inventory | 93 files scanned；74 parseable；8 t100-capable；4 already used；4 novel candidates；estimated novel t100 windows = 6,257。 | 仅 inventory；还没 conversion/eval。 |
 | Stage42-BE local t100 conversion readiness | 4 candidates；4 schema-ready；estimated t50 windows = 15,813；estimated t100 windows = 6,257；UCY source-CV feasible after conversion。 | 仍是 readiness；full feature store / source-CV / eval 还没跑。 |
 | Stage42-BF local t100 schema conversion | 4 sources converted in-memory；t50 eval windows = 15,058；t100 eval windows = 6,071；UCY source-CV baseline-family positive，mean +60.70%，min +49.15% vs constant velocity。 | 这是 causal baseline/source-CV audit，不是 M3W policy training；t100 claim 仍 blocked。 |
+| Stage42-BG local t100 protected policy | validation-selected protected baseline-family policy；UCY t100 source-CV mean +44.09%，min +43.86%，max easy degradation 1.13%；13/13 gates。 | UCY local support positive；ETH_UCY 仍 blocked；global t100 claim 仍 forbidden。 |
 
 ## 5. Stage42-BD 本轮新增发现
 
@@ -198,7 +199,35 @@ t100_positive_claim_allowed = false
 - ETH_UCY 没有足够 folds，仍不能修复 ETH_UCY t100 blocker。
 - 这仍不是 M3W protected policy training，因此不能把 t100 写成已修复。下一步应是 Stage42-BG：在这些转换源上训练/评估 protected policy，并继续保持 no-leakage 和 validation-only threshold。
 
-## 8. 为什么当前成果不是 true 3D / foundation
+## 8. Stage42-BG 本轮 protected policy source-CV
+
+Stage42-BG 把 BF 的 in-memory conversion 继续推进到 validation-selected protected policy source-CV：
+
+```text
+source = fresh_source_cv_protected_policy
+verdict = stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker
+gates = 13 / 13
+candidate_sources = 4
+t50_policy_windows = 15058
+t100_policy_windows = 6071
+source_cv_domains_evaluated = UCY
+source_cv_domains_blocked = ETH_UCY
+UCY_t100_source_cv_supported = true
+UCY_t100_mean_improvement_vs_fallback = 0.440938
+UCY_t100_min_improvement_vs_fallback = 0.438579
+UCY_t100_max_easy_degradation = 0.011340
+global_t100_positive_claim_allowed = false
+```
+
+解释：
+
+- 这一步确实训练/选择了一个轻量 protected baseline-family policy，但不是神经模型训练。
+- selection 只用 train / validation source，holdout source 只评估一次。
+- UCY local t100 source-CV 是 positive 且 easy-safe。
+- t50 在这个新本地 source-CV 协议下不全 easy-safe，因此不能把 BG 写成全面 horizon success。
+- ETH_UCY 只有 1 个 t100-capable source，TrajNet 不在这批新本地候选里，所以 global t100 positive claim 仍 blocked。
+
+## 9. 为什么当前成果不是 true 3D / foundation
 
 不能这么写的原因很具体：
 
@@ -222,10 +251,10 @@ strict no-leakage protected 2.5D multi-agent world-state modeling on real top-do
 true 3D foundation world model
 ```
 
-## 9. 现在最值得做的下一步
+## 10. 现在最值得做的下一步
 
 1. **Stage42-BG：基于 BF 的 in-memory conversion 结果写非 Git feature store，并训练/评估 protected t100 policy。**
-   必须用 train-only source-CV，不得用 test 调阈值；UCY 是优先域，ETH_UCY 仍需更多 source。
+   已完成第一版：UCY local t100 source-CV positive，但 global t100 仍 blocked。下一步应扩展到 ETH_UCY / TrajNet independent sources。
 
 2. **继续 t100 source-CV repair，但不 overclaim。**
    只有 ETH_UCY / TrajNet / UCY 至少有足够独立 t100 source support，t100 才能从 diagnostic blocker 变成可部署正 claim。
@@ -233,7 +262,7 @@ true 3D foundation world model
 3. **如果继续冲神经世界模型主贡献，要换更强 graph/scene-rich protocol。**
    当前 ridge/MLP/Conv1D/hand-built graph residual context 都没证明独立增量；不能继续把 history/goal/neighbor 写成已证明主贡献。
 
-## 10. 最终简短 verdict
+## 11. 最终简短 verdict
 
 ```text
 项目是否跑通：是
@@ -248,5 +277,5 @@ SDD success：是
 external t50 success：是
 protected source-level full-waypoint success：是
 t100 stable success：否，当前仍是 blocker / diagnostic
-本轮新发现：4 个 novel t100 candidates 已完成 in-memory schema conversion；UCY t100 source-CV baseline-family holdout 全部强于 constant velocity，但这还不是 protected M3W policy training，t100 stable success 仍未允许
+本轮新发现：4 个 novel t100 candidates 已完成 in-memory schema conversion；Stage42-BG 在 UCY local source-CV 上得到 protected t100 policy positive/easy-safe 支持，但 ETH_UCY/TrajNet 支持不足，global t100 stable success 仍未允许
 ```

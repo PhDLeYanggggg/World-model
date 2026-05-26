@@ -1,6 +1,48 @@
 {
-  "current_stage": "stage42_bf_local_t100_schema_conversion",
-  "current_verdict": "stage42_bf_local_t100_schema_conversion_pass",
+  "current_stage": "stage42_bg_local_t100_protected_policy",
+  "current_verdict": "stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker",
+  "stage42_bg_local_t100_protected_policy": {
+    "source": "fresh_source_cv_protected_policy",
+    "report": "outputs/stage42_long_research/local_t100_protected_policy_stage42.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_local_t100_protected_policy_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bg_gate.md",
+    "verdict": "stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker",
+    "gates": "13/13",
+    "candidate_sources": 4,
+    "t50_policy_windows": 15058,
+    "t100_policy_windows": 6071,
+    "source_cv_domains_evaluated": [
+      "UCY"
+    ],
+    "source_cv_domains_blocked": [
+      "ETH_UCY"
+    ],
+    "ucy_t100_source_cv_supported": true,
+    "ucy_t100_mean_improvement_vs_fallback": 0.440938,
+    "ucy_t100_min_improvement_vs_fallback": 0.438579,
+    "ucy_t100_max_easy_degradation": 0.01134,
+    "training_run": true,
+    "training_type": "validation_selected_baseline_family_policy",
+    "neural_training_run": false,
+    "evaluation_run": true,
+    "verification": {
+      "runner": "pass",
+      "focused_pytest": "13 passed",
+      "venv_pytorch_pytest": "not_run_pytest_not_installed",
+      "full_pytest": "447 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "t100_positive_claim_allowed": false,
+      "ucy_local_t100_source_cv_support": true,
+      "global_t100_stable_success": false
+    }
+  },
   "stage42_bf_local_t100_schema_conversion": {
     "source": "fresh_in_memory_schema_conversion",
     "report": "outputs/stage42_long_research/local_t100_schema_conversion_stage42.md",
@@ -200,21 +242,21 @@
     }
   },
   "latest_detailed_results_readme": {
-    "source": "cached_verified_plus_stage42_bd_summary",
+    "source": "cached_verified_plus_stage42_bg_summary",
     "path": "README_M3W_DETAILED_RESULTS_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "User-facing detailed Chinese summary of M3W routes, failures, root causes, successes, current best deployable policy, strict claim boundaries, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, and Stage42-BF in-memory schema conversion/source-CV baseline audit.",
+    "scope": "User-facing detailed Chinese summary of M3W routes, failures, root causes, successes, current best deployable policy, strict claim boundaries, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, Stage42-BF in-memory schema conversion/source-CV baseline audit, and Stage42-BG local protected t100 policy source-CV.",
     "current_best_deployable": "M3W-Neural v1 protected policy under Stage37/teacher safety floor",
     "current_claim": "protected dataset-local raw-frame 2.5D multi-agent world-state candidate",
-    "latest_inventory": "Stage42-BF converts the 4 novel local t100-capable candidates in memory, evaluates 15058 t50 and 6071 t100 causal windows, and finds UCY source-CV baseline-family holdout improvement positive vs constant velocity; protected M3W policy training/evaluation is still required.",
+    "latest_inventory": "Stage42-BG selects a validation-only protected baseline-family policy on the 4 local t100-capable candidates; UCY local t100 source-CV is positive/easy-safe, but ETH_UCY remains blocked and global t100 positive claims remain forbidden.",
     "stage5c_executed": false,
     "smc_enabled": false
   },
   "latest_execution_summary_readme": {
-    "source": "cached_verified_plus_stage42_ba_summary",
+    "source": "cached_verified_plus_stage42_bg_summary",
     "path": "README_M3W_EXECUTION_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, strict claim boundaries, Stage42-BB t100 data/source-support gap audit, Stage42-BC official-source acquisition plan, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, and Stage42-BF schema conversion/source-CV baseline audit.",
+    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, strict claim boundaries, Stage42-BB t100 data/source-support gap audit, Stage42-BC official-source acquisition plan, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, Stage42-BF schema conversion/source-CV baseline audit, and Stage42-BG protected t100 policy source-CV.",
     "current_best_deployable": "M3W-Neural v1 protected policy under Stage37/teacher safety floor",
     "current_claim": "protected dataset-local raw-frame 2.5D multi-agent world-state candidate",
     "t100_status": "blocker / diagnostic after Stage42-BA train-only source-CV guard and Stage42-BB data gap audit",
@@ -228,7 +270,7 @@
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-BA train-only t100 source-CV repair; focused pytest and full pytest passed.",
-    "scope": "Detailed M3W route/failure/success summary plus Stage42-BA train-only t100 source-CV support audit, Stage42-BB/BC t100 data/source acquisition planning, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, and Stage42-BF schema conversion/source-CV baseline audit.",
+    "scope": "Detailed M3W route/failure/success summary plus Stage42-BA train-only t100 source-CV support audit, Stage42-BB/BC t100 data/source acquisition planning, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, Stage42-BF schema conversion/source-CV baseline audit, and Stage42-BG local protected t100 policy source-CV.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
     "latest_branch_success": "Stage42-BA uses train-only source-CV to guard unsupported t100 domain slices, preserving all/t50/hard/easy while honestly zeroing unsupported t100 gain.",
     "verification": {

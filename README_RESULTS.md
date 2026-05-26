@@ -70,6 +70,28 @@ SMC_enabled = false
 
 Stage42-BF performs an actual in-memory schema conversion and causal baseline audit. It also fixes the local UCY `obsmat_px` coordinate-layout issue by detecting the 8-column layout. UCY now has positive t100 baseline-family source-CV readiness evidence, but this is still not protected M3W policy training/evaluation; t100 remains blocked as a deployable positive claim until Stage42-BG.
 
+Latest Stage42-BG local t100 protected policy source-CV:
+
+```text
+source = fresh_source_cv_protected_policy
+verdict = stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker
+gates = 13 / 13
+candidate_sources = 4
+t50_policy_windows = 15058
+t100_policy_windows = 6071
+source_cv_domains_evaluated = UCY
+source_cv_domains_blocked = ETH_UCY
+UCY_t100_source_cv_supported = true
+UCY_t100_mean_improvement_vs_fallback = 0.440938
+UCY_t100_min_improvement_vs_fallback = 0.438579
+UCY_t100_max_easy_degradation = 0.011340
+global_t100_positive_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BG is the first follow-up after BF that selects a protected baseline-family policy on validation sources and evaluates once on held-out local sources. UCY local t100 source-CV is positive and easy-safe. This is still not a global t100 deployment claim because ETH_UCY remains under-supported and TrajNet is not represented in these new local candidates.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
@@ -78,7 +100,7 @@ Latest update: this canonical Chinese summary now explicitly includes Stage42-W/
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for the latest detailed summary / Stage42-BF refresh: `python3 -m pytest tests` -> `443 passed`.
+Validation for the latest detailed summary / Stage42-BG refresh: focused pytest `13 passed`; full-suite pytest `447 passed`.
 
 Most important current summary:
 
