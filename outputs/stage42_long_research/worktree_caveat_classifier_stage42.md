@@ -1,8 +1,8 @@
 # Stage42-CY Worktree Caveat Classifier
 
 - source: `fresh_worktree_caveat_classification`
-- generated_at_utc: `2026-05-26T20:14:51.627397+00:00`
-- git_commit: `1d2da72`
+- generated_at_utc: `2026-05-26T20:32:33.069916+00:00`
+- git_commit: `c0b12af`
 - gate: `11 / 11`
 - verdict: `stage42_cy_worktree_caveat_classifier_pass`
 
@@ -22,18 +22,15 @@
 
 ## Summary
 
-- tracked_dirty_files: `21`
-- stage42_dirty_files: `9`
+- tracked_dirty_files: `8`
+- stage42_dirty_files: `0`
 - stage42_substantive_dirty_files: `0`
-- classification_counts: `{'substantive_markdown_change': 3, 'substantive_json_change': 9, 'metadata_only': 6, 'metadata_and_paper_size_only': 2, 'append_only_run_ledger': 1}`
+- classification_counts: `{'substantive_json_change': 8}`
 
 ## Dirty File Classification
 
 | path | scope | status | classification | allowed |
 | --- | --- | --- | --- | ---: |
-| `README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md` | `outside_stage42_scope` | ` M` | `substantive_markdown_change` | `True` |
-| `README_RESULTS.md` | `outside_stage42_scope` | ` M` | `substantive_markdown_change` | `True` |
-| `outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md` | `outside_stage42_scope` | ` M` | `substantive_markdown_change` | `True` |
 | `outputs/reports/stage17_baseline_oracle_metrics.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
 | `outputs/reports/stage17_baseline_oracle_report.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
 | `outputs/reports/stage17_baseline_selector_report.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
@@ -42,16 +39,6 @@
 | `outputs/reports/stage19_jepa_probe_report.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
 | `outputs/reports/stage19_jepa_training_report.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
 | `outputs/reports/stage19_wam_data_registry.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
-| `outputs/stage42_long_research/context_contribution_forensics_stage42.json` | `stage42` | ` M` | `metadata_only` | `True` |
-| `outputs/stage42_long_research/context_contribution_forensics_stage42.md` | `stage42` | ` M` | `metadata_only` | `True` |
-| `outputs/stage42_long_research/paper_claim_evidence_audit_stage42.json` | `stage42` | ` M` | `metadata_and_paper_size_only` | `True` |
-| `outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md` | `stage42` | ` M` | `metadata_and_paper_size_only` | `True` |
-| `outputs/stage42_long_research/retrained_ablation_matrix_stage42.json` | `stage42` | ` M` | `metadata_only` | `True` |
-| `outputs/stage42_long_research/retrained_ablation_matrix_stage42.md` | `stage42` | ` M` | `metadata_only` | `True` |
-| `outputs/stage42_long_research/run_ledger.jsonl` | `stage42` | ` M` | `append_only_run_ledger` | `True` |
-| `outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` | `stage42` | ` M` | `metadata_only` | `True` |
-| `outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` | `stage42` | ` M` | `metadata_only` | `True` |
-| `research_state.json` | `outside_stage42_scope` | ` M` | `substantive_json_change` | `True` |
 
 ## Interpretation
 
