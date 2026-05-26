@@ -1,0 +1,256 @@
+{
+  "source": "fresh_stage42_dd_source_support_closure_audit",
+  "stage": "Stage42-DD Source Support Closure Audit",
+  "generated_at_utc": "2026-05-26T21:21:47.999405+00:00",
+  "git_commit": "cdeb2ea",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DD 是 DA-1 legal/source/time-calibration closure audit，不训练模型、不下载数据、不把计划当完成。",
+    "local path、parseability、source-specific calibration hints 不等于 legal conversion / deployable claim。",
+    "future endpoints / future waypoints 只能作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level，除非下游结果显式限制到 verified source-specific calibrated subset。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_status": {
+    "source_terms": {
+      "path": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+      "stage": "Stage42-CG Source Terms Confirmation Validator",
+      "generated_at_utc": "2026-05-26T21:21:15.231275+00:00"
+    },
+    "time_geometry": {
+      "path": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+      "exists": true,
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "stage": "Stage42-BN Strict Source Time/Geometry Calibration",
+      "generated_at_utc": "2026-05-26T21:21:15.225979+00:00"
+    },
+    "t100_gap": {
+      "path": "outputs/stage42_long_research/t100_data_gap_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_synthesis_from_stage42_ba_and_calibration",
+      "stage": "Stage42-BB T100 Data Gap Audit",
+      "generated_at_utc": "2026-05-26T11:55:23.301162+00:00"
+    },
+    "conversion_manifest": {
+      "path": "outputs/stage42_long_research/source_conversion_readiness_manifest_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+      "stage": "",
+      "generated_at_utc": "2026-05-26T21:21:15.231269+00:00"
+    },
+    "source_diversity_preflight": {
+      "path": "outputs/stage42_long_research/source_diversity_conversion_preflight_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_ce_source_diversity_conversion_preflight",
+      "stage": "Stage42-CE Source Diversity Conversion Preflight",
+      "generated_at_utc": "2026-05-26T17:02:36.785402+00:00"
+    },
+    "local_t100_schema": {
+      "path": "outputs/stage42_long_research/local_t100_schema_conversion_stage42.json",
+      "exists": true,
+      "source": "fresh_in_memory_schema_conversion",
+      "stage": "Stage42-BF Local T100 Schema Conversion And Source-CV Baseline Audit",
+      "generated_at_utc": "2026-05-26T12:33:12.689637+00:00"
+    },
+    "t100_source_cv": {
+      "path": "outputs/stage42_long_research/t100_source_cv_repair_stage42.json",
+      "exists": true,
+      "source": "fresh_run",
+      "stage": "Stage42-BA Train-Only T100 Source-CV Repair",
+      "generated_at_utc": "2026-05-26T11:40:18.478205+00:00"
+    }
+  },
+  "domain_status": [
+    {
+      "domain": "ETH_UCY",
+      "source": "fresh_stage42_dd_synthesis_from_cached_verified_inputs",
+      "claim_status": "not_closed",
+      "blockers": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=2",
+        "legal_terms_blocked_targets=eth_biwi_original"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ],
+        "local_t100_schema_source_cv_evaluated": true,
+        "local_t100_schema_positive_vs_constant_velocity": false,
+        "preflight_targets_with_t50_files": 2,
+        "preflight_targets_with_t100_files": 2
+      },
+      "global_or_restricted_metric_seconds_claim_allowed": false,
+      "global_t100_deployable_claim_allowed": false,
+      "next_action": "confirm ETH/BIWI or ETH-Person source terms and add enough independent t100-capable ETH_UCY train sources, then rerun source-CV without test tuning"
+    },
+    {
+      "domain": "TrajNet",
+      "source": "fresh_stage42_dd_synthesis_from_cached_verified_inputs",
+      "claim_status": "not_closed",
+      "blockers": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=1",
+        "source_specific_metric_time_calibration_missing",
+        "legal_terms_blocked_targets=trajnetplusplus_official"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [],
+        "local_t100_schema_source_cv_evaluated": false,
+        "local_t100_schema_positive_vs_constant_velocity": false,
+        "preflight_targets_with_t50_files": 1,
+        "preflight_targets_with_t100_files": 1
+      },
+      "global_or_restricted_metric_seconds_claim_allowed": false,
+      "global_t100_deployable_claim_allowed": false,
+      "next_action": "provide/confirm legal TrajNet++ or TrajNet-compatible long-track source with timing/geometry evidence, then rerun conversion, no-leakage, and train-only source-CV"
+    },
+    {
+      "domain": "UCY",
+      "source": "fresh_stage42_dd_synthesis_from_cached_verified_inputs",
+      "claim_status": "not_closed",
+      "blockers": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=1",
+        "legal_terms_blocked_targets=ucy_crowd_original"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03",
+          "UCY_students03",
+          "UCY_students01"
+        ],
+        "local_t100_schema_source_cv_evaluated": true,
+        "local_t100_schema_positive_vs_constant_velocity": true,
+        "preflight_targets_with_t50_files": 2,
+        "preflight_targets_with_t100_files": 2
+      },
+      "global_or_restricted_metric_seconds_claim_allowed": false,
+      "global_t100_deployable_claim_allowed": false,
+      "next_action": "confirm UCY original terms/source identity and add one independent t100-capable UCY source or source split before claiming stable t100"
+    }
+  ],
+  "closure_summary": {
+    "domains_closed": [],
+    "domains_not_closed": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "global_metric_seconds_claim_allowed": false,
+    "global_t100_deployable_claim_allowed": false,
+    "restricted_source_specific_metric_time_candidate_exists": true,
+    "requires_user_or_external_state": true,
+    "paper_claim": "DA-1 remains open: source-specific calibration candidates exist for ETH/UCY, but legal conversion readiness and train-only t100 source-CV support are not closed for ETH_UCY, TrajNet, or UCY."
+  },
+  "user_action_required": [
+    {
+      "domain": "ETH_UCY",
+      "blockers": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=2",
+        "legal_terms_blocked_targets=eth_biwi_original"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ],
+        "local_t100_schema_source_cv_evaluated": true,
+        "local_t100_schema_positive_vs_constant_velocity": false,
+        "preflight_targets_with_t50_files": 2,
+        "preflight_targets_with_t100_files": 2
+      },
+      "action": "confirm ETH/BIWI or ETH-Person source terms and add enough independent t100-capable ETH_UCY train sources, then rerun source-CV without test tuning"
+    },
+    {
+      "domain": "TrajNet",
+      "blockers": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=1",
+        "source_specific_metric_time_calibration_missing",
+        "legal_terms_blocked_targets=trajnetplusplus_official"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [],
+        "local_t100_schema_source_cv_evaluated": false,
+        "local_t100_schema_positive_vs_constant_velocity": false,
+        "preflight_targets_with_t50_files": 1,
+        "preflight_targets_with_t100_files": 1
+      },
+      "action": "provide/confirm legal TrajNet++ or TrajNet-compatible long-track source with timing/geometry evidence, then rerun conversion, no-leakage, and train-only source-CV"
+    },
+    {
+      "domain": "UCY",
+      "blockers": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=1",
+        "legal_terms_blocked_targets=ucy_crowd_original"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03",
+          "UCY_students03",
+          "UCY_students01"
+        ],
+        "local_t100_schema_source_cv_evaluated": true,
+        "local_t100_schema_positive_vs_constant_velocity": true,
+        "preflight_targets_with_t50_files": 2,
+        "preflight_targets_with_t100_files": 2
+      },
+      "action": "confirm UCY original terms/source identity and add one independent t100-capable UCY source or source split before claiming stable t100"
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "global_t100_deployable_claim_allowed": false,
+    "raw_frame_dataset_local_global_claim_required": true,
+    "converted_dataset_claim_from_stage42_dd": false,
+    "evaluation_claim_from_stage42_dd": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_dd_gate": {
+    "gates": {
+      "all_required_inputs_loaded": true,
+      "terms_validator_loaded": true,
+      "time_geometry_loaded": true,
+      "t100_gap_loaded": true,
+      "three_domains_audited": true,
+      "blockers_explicit_for_each_open_domain": true,
+      "user_action_required_written": true,
+      "restricted_calibration_candidate_recorded": true,
+      "global_metric_claim_blocked": true,
+      "global_seconds_claim_blocked": true,
+      "global_t100_claim_blocked": true,
+      "dd_not_counted_as_conversion": true,
+      "dd_not_counted_as_evaluation": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_dd_source_support_closure_audit_pass_open_blockers"
+  }
+}

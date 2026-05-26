@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY/CZ/DA/DB/DC：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier、paper-freeze manifest、next-action evidence queue、context rescue decision audit、context switchability / gain-harm gate。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY/CZ/DA/DB/DC/DD：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier、paper-freeze manifest、next-action evidence queue、context rescue decision audit、context switchability / gain-harm gate、source support closure audit。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
 
 当前总判定：
 
@@ -31,7 +31,8 @@ latest paper freeze manifest = Stage42-CZ, 74 files hashed, 14 / 14 gates, candi
 latest next-action queue = Stage42-DA, 15 / 15 gates, top priority is legal/source support for ETH_UCY and TrajNet t100/t50 calibration
 latest context rescue decision = Stage42-DB, 13 / 13 gates, decision is stop repeating current context residual/gated protocols
 latest context switchability gate = Stage42-DC, 15 / 15 gates, decision is context_switchability_not_supported
-latest full pytest = 626 passed
+latest source support closure audit = Stage42-DD, 15 / 15 gates, DA-1 remains open with explicit ETH_UCY/TrajNet/UCY blockers
+latest full pytest = 629 passed
 ```
 
 ```text
@@ -4340,3 +4341,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - delta vs baseline-family all/t50/hard/easy: `0.0004` / `-0.0001` / `0.0004` / `-0.0024`.
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, foundation, metric/seconds-level, Stage5C, or SMC.
 <!-- STAGE42_DC_CONTEXT_SWITCHABILITY_GATE:END -->
+
+<!-- STAGE42_DD_SOURCE_SUPPORT_CLOSURE_AUDIT:START -->
+## Stage42-DD Source Support Closure Audit
+
+- source: `fresh_stage42_dd_source_support_closure_audit`
+- role: close or explicitly block DA-1 legal/source/time-calibration support for ETH_UCY, TrajNet, and UCY.
+- gate: `15 / 15`; verdict `stage42_dd_source_support_closure_audit_pass_open_blockers`.
+- domains_not_closed: `['ETH_UCY', 'TrajNet', 'UCY']`.
+- restricted ETH/UCY source-specific metric/time candidates exist, but global metric/seconds and global t100 deployable claims remain blocked.
+- User/external action remains required before official converted/evaluated metric-time or t100 source-CV claims.
+- Stage5C remains false; SMC remains false.
+<!-- STAGE42_DD_SOURCE_SUPPORT_CLOSURE_AUDIT:END -->

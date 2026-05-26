@@ -694,3 +694,15 @@ true 3D / foundation / global metric / seconds-level / ungated neural world dyna
 - delta vs baseline-family all/t50/hard/easy: `0.0004` / `-0.0001` / `0.0004` / `-0.0024`.
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, foundation, metric/seconds-level, Stage5C, or SMC.
 <!-- STAGE42_DC_CONTEXT_SWITCHABILITY_GATE:END -->
+
+<!-- STAGE42_DD_SOURCE_SUPPORT_CLOSURE_AUDIT:START -->
+## Stage42-DD Source Support Closure Audit
+
+- source: `fresh_stage42_dd_source_support_closure_audit`
+- role: close or explicitly block DA-1 legal/source/time-calibration support for ETH_UCY, TrajNet, and UCY.
+- gate: `15 / 15`; verdict `stage42_dd_source_support_closure_audit_pass_open_blockers`.
+- domains_not_closed: `['ETH_UCY', 'TrajNet', 'UCY']`.
+- restricted ETH/UCY source-specific metric/time candidates exist, but global metric/seconds and global t100 deployable claims remain blocked.
+- User/external action remains required before official converted/evaluated metric-time or t100 source-CV claims.
+- Stage5C remains false; SMC remains false.
+<!-- STAGE42_DD_SOURCE_SUPPORT_CLOSURE_AUDIT:END -->

@@ -1,8 +1,8 @@
 # Stage42-CG Source Terms Confirmation Validator
 
 - source: `fresh_stage42_cg_source_terms_confirmation_validator`
-- generated_at_utc: `2026-05-26T17:16:15.755309+00:00`
-- git_commit: `b4ef6a7`
+- generated_at_utc: `2026-05-26T21:21:15.231275+00:00`
+- git_commit: `cdeb2ea`
 - input_hash: `09d9e5847343e1842c23ce1ae7b3e1e2a919c4f232e800e043e6e826d10dae59`
 - gate: `11 / 11`
 - verdict: `stage42_cg_source_terms_confirmation_validator_pass`
