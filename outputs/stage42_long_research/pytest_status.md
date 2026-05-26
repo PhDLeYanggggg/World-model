@@ -1,8 +1,10 @@
 # Stage42 Pytest Status
 
 - source: `fresh_run`
-- command: `python3 -m pytest tests`
-- result: `522 passed in 108.80s`
+- command: `.venv-pytorch/bin/python -m pytest tests`
+- result: `528 passed in 36.69s`
+- targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_independent_t50_source_inventory.py tests/test_stage42_t50_source_robustness_audit.py` -> `10 passed in 1.38s`
+- note: authoritative full test now uses the arm64 `.venv-pytorch` runtime. A prior `python3 -m pytest tests` run hit the known x86_64 Conda/OpenMP/subprocess crash path near `stage42_source_time_geometry_calibration`, so it is not used as the authoritative result.
 - targeted: `python3 -m pytest tests/test_stage42_t50_source_robustness_audit.py tests/test_stage42_t50_repair_statistical_evidence.py` -> `8 passed in 2.67s`
 - targeted: `python3 -m pytest tests/test_stage42_post_bz_paper_package_refresh.py tests/test_stage42_t50_repair_statistical_evidence.py` -> `7 passed in 1.37s`
 - targeted: `python3 -m pytest tests/test_stage42_t50_repair_statistical_evidence.py tests/test_stage42_t50_floor_relaxability_repair.py` -> `8 passed in 1.45s`
@@ -31,4 +33,4 @@
 - targeted: `python3 -m pytest tests/test_stage42_external_validation.py` -> `4 passed in 1.56s`
 - targeted: `python3 -m pytest tests/test_stage42_full_waypoint_dynamics.py` -> `4 passed in 1.77s`
 - targeted: `python3 -m pytest tests/test_stage42_full_waypoint_dynamics.py tests/test_stage42_external_validation.py` -> `8 passed in 1.38s`
-- note: `.venv-pytorch/bin/python` was used for the Stage42 audit, external validation, full-waypoint dynamics, causal ablation, and safety-floor scripts. The local `.venv-pytorch` environment does not include pytest, so tests were run with the repository's existing `python3 -m pytest` test environment.
+- note: `.venv-pytorch/bin/python` is now the authoritative Stage42 test/runtime path for this workspace because it is arm64 and avoids the known x86_64 Conda/OpenMP crash mode. `pytest==8.3.4` was installed into the local `.venv-pytorch` environment for this purpose; `.venv-pytorch` remains untracked and must not be committed.

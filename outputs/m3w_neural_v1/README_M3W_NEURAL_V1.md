@@ -1078,3 +1078,21 @@ UCY|50 largest_source_fraction = 100.00%
 ```
 
 Stage42-CB adds the source-level caveat to the t50 repair evidence. The available major sources are robust-positive, but source diversity is limited; broad source-level generalization is not yet allowed.
+
+## Stage42-CC Independent T50 Source Inventory
+
+```text
+source = fresh_stage42_cc_independent_t50_source_inventory
+verdict = stage42_cc_independent_t50_source_inventory_pass
+gates = 10 / 10
+scanned_files = 93
+t50_capable_files = 10
+unused_candidate_t50_sources = 0
+alternate_current_source_candidates = 4
+diagnostic_t50_candidates = 1
+source_diversity_repair_ready = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CC confirms the Stage42-CB caveat rather than repairing it. The local scan found t50-capable files, but none can be counted as an unused independent ready-to-claim real external source. Four are alternate/current-source representations and one is synthetic/diagnostic. The M3W-Neural v1 claim therefore remains protected dataset-local/raw-frame 2.5D with source-diversity limitation; broad source-level generalization still requires legally enabled independent top-down pedestrian data plus conversion, no-leakage, validation-only selection, and final test.

@@ -145,3 +145,24 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 
 Stage42-CB strengthens the honesty of the t50 claim: BY/BZ t50 gains are positive on the available major sources, but source diversity is still limited. `TrajNet|50` is dominated by `students003` and `UCY|50` currently has a single test source. This supports a paper claim of protected t50 repair with source-concentration caveat, not a broad source-level generalization claim. The shortest path remains acquiring or legally converting more independent t50-capable external top-down sources.
 <!-- STAGE42_CB_REFRESH:END -->
+
+<!-- STAGE42_CC_REFRESH:START -->
+## Stage42-CC Independent T50 Source Inventory
+
+- source: `fresh_stage42_cc_independent_t50_source_inventory`
+- verdict: `stage42_cc_independent_t50_source_inventory_pass`
+- scanned files: `93`
+- t50-capable files: `10`
+- unused independent ready-to-claim t50 sources: `0`
+- alternate current-source candidates: `4`
+- diagnostic/synthetic t50 candidates: `1`
+- source-diversity repair ready: `false`
+
+Stage42-CC confirms that the Stage42-CB source-diversity caveat remains active. The local inventory contains t50-capable files, but the conservative audit does not count any as an unused independent ready-to-claim real external source. Four files are alternate/current-source representations useful for split-rebuild diagnostics, and one file is synthetic/diagnostic. Therefore BY/BZ t50 repair remains paper-usable only with a source-concentration caveat; broad source-level generalization still requires legally enabled independent top-down pedestrian sources followed by conversion, no-leakage audit, validation-only selection, and final test.
+
+### Updated Gap After CC
+
+- Need at least one new independent legal t50-capable external source for source-diversity repair.
+- Do not count alternate representations, registry-only paths, or synthetic/diagnostic rows as converted/evaluated external evidence.
+- The current A-journal package can claim protected major-source robustness, not broad source-level generalization.
+<!-- STAGE42_CC_REFRESH:END -->

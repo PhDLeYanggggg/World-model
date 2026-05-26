@@ -3739,3 +3739,32 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_cb_gate.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_t50_source_robustness_audit.py` passed, focused CB/BZ tests passed with 8 tests, and `python3 -m pytest tests` passed with 522 tests.
+
+## Stage42-CC Independent T50 Source Inventory
+
+```text
+source = fresh_stage42_cc_independent_t50_source_inventory
+verdict = stage42_cc_independent_t50_source_inventory_pass
+gates = 10 / 10
+scanned_files = 93
+t50_capable_files = 10
+unused_candidate_t50_sources = 0
+alternate_current_source_candidates = 4
+diagnostic_t50_candidates = 1
+source_diversity_repair_ready = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CC reruns the local t50 source inventory with conservative filtering after the Stage42-CB source-concentration warning. The result is intentionally stricter than the earlier stale inventory: no local file is currently counted as an unused independent ready-to-claim t50 source. `seq_eth/biwi_eth_10fps.txt`, `students01/students001.txt`, `students03/obsmat_px.txt`, and `students03/students003.txt` are treated as alternate representations or same-parent/current-source material useful for split rebuild diagnostics, not independent new held-out evidence. `synth_data/orca_circle_crossing_5ped.ndjson` is diagnostic/synthetic and cannot count as real external top-down pedestrian source support.
+
+The correct conclusion is therefore: Stage42-BY/BZ t50 repair remains positive on available major sources, but broad source-level generalization is still blocked until a legal independent t50-capable top-down pedestrian source is converted, no-leakage audited, selected on train/internal-val, and tested once. Stage42-CC is an inventory and user-action audit, not conversion or benchmark success.
+
+Artifacts:
+
+- `outputs/stage42_long_research/independent_t50_source_inventory_stage42.md`
+- `outputs/stage42_long_research/independent_t50_source_inventory_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_cc_gate.md`
+- `outputs/stage42_long_research/user_action_required_independent_t50_sources_stage42.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_independent_t50_source_inventory.py` passed, focused CC/CB tests passed with 10 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 528 tests. A prior `python3 -m pytest tests` run hit the known x86_64 Conda/OpenMP/subprocess crash path, so the authoritative full test result is the arm64 `.venv-pytorch` run.
