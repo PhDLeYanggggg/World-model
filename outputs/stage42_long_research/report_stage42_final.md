@@ -104,3 +104,14 @@ The honest boundary is that Stage42-K does not replace Stage42-J as the stronges
 Stage42-L directly targets the Stage42-K t+50 failure by adding horizon embeddings to the static gate, lowering t+50 static dropout/gate penalty, and using a t+50-weighted validation policy. It passes its gates (`11 / 11`) and repairs the t+50 ADE sign: Stage42-K had ADE t50 `-0.0122`, while Stage42-L reaches `+0.0020`. It also improves the fresh checkpoint on ADE all (`0.0219`), ADE hard/failure (`0.0240`), and FDE t50 (`0.0532`) while preserving easy cases (`0.0` degradation).
 
 The boundary remains: Stage42-L is still weaker than the Stage42-J policy-level static gate (`0.0362` all, `0.0369` t50, `0.0397` hard). Therefore Stage42-L is the strongest fresh checkpoint in this static-gated branch so far, but Stage42-J remains the strongest static-gated full-waypoint evidence overall. All claims remain dataset-local raw-frame 2.5D; Stage5C and SMC remain disabled.
+
+## Stage42-M Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/policy_distilled_static_gate_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_m_gate.md`
+- verdict: `stage42_m_policy_distilled_static_gate_partial`
+
+Stage42-M attempts to distill the Stage42-J validation-selected domain/horizon static expert policy into a fresh checkpoint. It trains three seeds with domain and horizon embeddings and a static-gate teacher alpha derived from Stage42-J's selected experts. The teacher uses no test endpoints; future waypoints remain loss/eval labels only.
+
+The result is a useful negative/partial result, not a deployment improvement. Stage42-M is positive on ADE all (`0.0161`), hard/failure (`0.0177`), and FDE t50 (`0.0729`) with easy degradation `0.0`, but ADE t50 is still negative (`-0.0015`) and it fails `10 / 12` gates. It improves FDE t50 over Stage42-L but loses on ADE all/t50/hard. The likely failure mode is that coarse domain/horizon alpha distillation increases static usage without teaching row-level gain/harm. Stage42-L remains the best fresh checkpoint in this branch; Stage42-J remains the strongest static-gated full-waypoint evidence overall.

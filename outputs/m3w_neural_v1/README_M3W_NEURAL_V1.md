@@ -258,3 +258,23 @@ smc_enabled = false
 Stage42-L targets the Stage42-K t+50 ADE failure with horizon-conditioned static gating and t+50-weighted training/policy selection. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 It repairs Stage42-K's t+50 ADE sign and improves the fresh checkpoint on all/hard/FDE t50 without easy degradation. It still does not surpass the Stage42-J policy-level static gate, so the deployable full-waypoint static-gated path remains Stage42-J unless a later fresh checkpoint catches up.
+
+## Stage42-M Policy-Distilled Static Gate Checkpoint
+
+```text
+source = fresh_run
+verdict = stage42_m_policy_distilled_static_gate_partial
+gates = 10 / 12
+policy_distilled_ade_all = 0.016145179493171253
+policy_distilled_ade_t50 = -0.001543676155626487
+policy_distilled_ade_hard_failure = 0.017697818504874285
+policy_distilled_ade_easy_degradation = 0.0
+policy_distilled_fde_t50 = 0.07290641189728979
+policy_distilled_t50_gate_mean = 0.18051626284917197
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-M distills Stage42-J's validation-selected domain/horizon static expert choices into a fresh checkpoint. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+It is partial, not a pass: FDE t50 improves over Stage42-L, but ADE t50 remains negative and ADE all/hard are weaker than Stage42-L. The teacher signal is too coarse because it distills domain/horizon expert alpha rather than row-level gain/harm. Stage42-L remains the best fresh checkpoint; Stage42-J remains the strongest static-gated full-waypoint evidence overall.

@@ -15,12 +15,14 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 - Fresh Stage42-J static-gated full-waypoint repair showing that validation-selected partial-static experts convert the Stage42-I negative full model into positive ADE/FDE full-waypoint evidence while preserving easy cases.
 - Fresh Stage42-K static-gated checkpoint training showing that a learned static gate/dropout can be trained directly into a checkpoint and improve over Stage42-I full static+sequence while preserving easy cases.
 - Fresh Stage42-L horizon-aware static gate repair showing that t+50-specific gate conditioning fixes the Stage42-K ADE t50 sign while preserving easy cases.
+- Fresh Stage42-M policy-distillation negative result showing that coarse domain/horizon alpha distillation is insufficient; row-level gain/harm supervision is needed.
 - Clear claim boundaries and no-leakage policy.
 
 ## What Is Not Yet Strong Enough
 
 - Full retrained ablation for every named component: Stage42-G/H cover key feature/safety selector and causal sequence-history ablations, but JEPA, full Transformer, endpoint-bridge, and full-waypoint-shape retraining remain open.
 - Full sequence-to-waypoint deployment: Stage42-L repairs the fresh checkpoint t50 sign, but it still underperforms the Stage42-J policy-level gate. A stronger paper claim still needs distillation of Stage42-J's domain/horizon expert selection into a fresh checkpoint, longer training, or bootstrap over the improved checkpoint.
+- Policy distillation: Stage42-M shows that distilling only slice-level static alpha can improve FDE t50 but harms ADE t50. It is not enough for a deployable checkpoint.
 - Metric/time-calibrated pedestrian benchmark claims.
 - External expansion beyond the current converted top-down state with independent legal datasets.
 - Floor-free or partially floor-free neural deployment that preserves proximity/collision safety.
@@ -28,7 +30,7 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 
 ## Shortest Next Path
 
-1. Distill the Stage42-J policy-level expert gate into a horizon/domain-aware checkpoint, because Stage42-L fixes t50 sign but remains weaker than the policy-level gate.
+1. Build a row-level gain/harm teacher from Stage42-J experts, because Stage42-M shows that slice-level alpha distillation is too coarse.
 2. Run Stage42-G/H Phase2 true retrained ablations for no-JEPA, no-Transformer, no-endpoint-bridge, and no-full-waypoint-shape with bootstrap or three seeds; Stage42-H has repaired the history-token question with an actual sequence model, so the next ablation priority is full Transformer/JEPA/full-waypoint-shape rather than flattened-history.
 3. Add one more legally verified external top-down pedestrian/drone dataset or a stronger held-out source split.
 4. Build a proximity-safe internal self-gate that reduces teacher-floor dependence without increasing collision/proximity risk.

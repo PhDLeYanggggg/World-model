@@ -2100,3 +2100,23 @@ smc_enabled = false
 Stage42-L targets the Stage42-K t+50 ADE failure with horizon-conditioned static gating and t+50-weighted training/policy selection. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 Stage42-L interpretation: the targeted horizon-aware repair works relative to Stage42-K (`ADE t50` moves from `-0.0122` to `+0.0020`, and FDE t50 improves from `0.0358` to `0.0532`) while preserving easy cases. It still does not beat Stage42-J's policy-level static gate, so Stage42-J remains the strongest static-gated full-waypoint evidence and Stage42-L is the strongest fresh checkpoint in this static-gated branch.
+
+## Stage42-M Policy-Distilled Static Gate Checkpoint
+
+```text
+source = fresh_run
+verdict = stage42_m_policy_distilled_static_gate_partial
+gates = 10 / 12
+policy_distilled_ade_all = 0.016145179493171253
+policy_distilled_ade_t50 = -0.001543676155626487
+policy_distilled_ade_hard_failure = 0.017697818504874285
+policy_distilled_ade_easy_degradation = 0.0
+policy_distilled_fde_t50 = 0.07290641189728979
+policy_distilled_t50_gate_mean = 0.18051626284917197
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-M distills Stage42-J's validation-selected domain/horizon static expert choices into a fresh checkpoint. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+Stage42-M interpretation: this is a partial/negative repair. It improves FDE t50 (`0.0729`) over Stage42-L (`0.0532`) and preserves easy cases, but ADE t50 is still negative (`-0.0015`) and it does not beat Stage42-L or Stage42-J on ADE all/t50/hard. The likely failure mode is that Stage42-J's teacher is a coarse domain/horizon alpha, not a row-level gain/harm teacher, so it increases static usage without learning when static/context is locally harmful for ADE.
