@@ -35,6 +35,23 @@ SMC_enabled = false
 
 Stage42-CJ directly tests the Stage42-CI gap: whether a validation-only goal/scene gated expert can safely become an incremental contribution over baseline-family rollout context. It cannot under the current source-level ridge/full-waypoint protocol: both goal candidates score lower on validation and test, so the safe choice is fallback to `baseline_family_control`. This is fresh negative evidence and keeps goal/scene as mixed/diagnostic, not a main paper claim.
 
+```text
+Stage42-CK validation-only neighbor/interaction gated expert audit
+source = fresh_run
+verdict = stage42_ck_neighbor_interaction_gated_expert_pass_diagnostic_no_overclaim
+gates = 11 / 11
+baseline_family_control all/t50/hard = 28.78% / 31.54% / 27.58%
+baseline_plus_scalar_neighbor all/t50/hard = 26.37% / 22.96% / 24.88%
+baseline_plus_knn_graph all/t50/hard = 24.38% / 22.38% / 23.78%
+baseline_plus_graph_goal all/t50/hard = 20.67% / 22.21% / 18.81%
+selected_variant = baseline_family_control
+neighbor_interaction_rescue_success = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CK tests the other mixed Stage42-CI context component. It builds current-frame kNN graph features for `337991` rows with `334525` rows having neighbors, then evaluates scalar-neighbor and graph candidates under the same validation-only rule. None beat `baseline_family_control` on validation or test. This is fresh negative evidence: neighbor/interaction remains auxiliary/diagnostic, not an independent main paper claim under the current source-level ridge/full-waypoint protocol.
+
 本次汇总版已吸收 Stage42-CG/CH 的最新 legal / metric-time guard：当前有 6 个 ETH/UCY source-specific calibration candidates，但 conversion_ready=0，因而 global/restricted metric-seconds claim 仍全部禁止；source terms validator 也仍为 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。
 
 ## 中文详细目标总结

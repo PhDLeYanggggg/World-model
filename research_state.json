@@ -1,6 +1,36 @@
 {
-  "current_stage": "Stage42-CJ validation-only goal/scene gated expert audit",
-  "current_verdict": "stage42_cj_goal_scene_gated_expert_pass_diagnostic_no_overclaim",
+  "current_stage": "Stage42-CK validation-only neighbor/interaction gated expert audit",
+  "current_verdict": "stage42_ck_neighbor_interaction_gated_expert_pass_diagnostic_no_overclaim",
+  "stage42_ck_neighbor_interaction_gated_expert": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ck_gate.md",
+    "verdict": "stage42_ck_neighbor_interaction_gated_expert_pass_diagnostic_no_overclaim",
+    "gates": "11/11",
+    "selected_variant": "baseline_family_control",
+    "neighbor_interaction_rescue_success": false,
+    "graph_rows": 337991,
+    "graph_rows_with_neighbors": 334525,
+    "baseline_family_control": {
+      "all_improvement": 0.287773,
+      "t50_improvement": 0.315425,
+      "hard_failure_improvement": 0.275812
+    },
+    "baseline_plus_knn_graph": {
+      "all_improvement": 0.243823,
+      "t50_improvement": 0.223773,
+      "hard_failure_improvement": 0.237773
+    },
+    "conclusion": "A validation-only neighbor/interaction gated expert did not beat the baseline-family rollout control. Scalar-neighbor and kNN graph candidates are fresh diagnostic negative evidence; neighbor/interaction remains auxiliary and not an independent main claim under the current source-level ridge/full-waypoint protocol.",
+    "claim_boundary": {
+      "neighbor_interaction_main_claim_allowed": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_cj_goal_scene_gated_expert": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/goal_scene_gated_expert_stage42.md",

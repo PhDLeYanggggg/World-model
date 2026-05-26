@@ -16,6 +16,12 @@ Latest Stage42 goal/scene gated expert audit:
 
 Stage42-CJ passes `10 / 10` gates as `fresh_run`, but it is diagnostic rather than a new positive contribution. The validation-only gate selected `baseline_family_control`, not the goal/scene candidates. Test metrics confirm the boundary: `baseline_family_control` all/t50/hard = `28.78% / 31.54% / 27.58%`, while `baseline_plus_goal_scene` drops to `26.25% / 22.76% / 24.86%` and `baseline_plus_motion_goal_context` drops to `24.58% / 22.02% / 23.75%`. Therefore goal/scene remains mixed/diagnostic and must not be written as an independent main claim under the current source-level ridge/full-waypoint protocol.
 
+Latest Stage42 neighbor/interaction gated expert audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.md`
+
+Stage42-CK passes `11 / 11` gates as `fresh_run`, but it is also diagnostic rather than a new positive contribution. It builds current-frame kNN graph features for `337991` rows (`334525` rows with neighbors), then evaluates scalar-neighbor and graph candidates under a validation-only safe gate. The gate again selects `baseline_family_control`: scalar neighbor reaches `26.37% / 22.96% / 24.88%` all/t50/hard, kNN graph reaches `24.38% / 22.38% / 23.78%`, both below the baseline-family control `28.78% / 31.54% / 27.58%`. Neighbor/interaction therefore remains auxiliary/diagnostic and not an independent main claim under the current source-level ridge/full-waypoint protocol.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`
