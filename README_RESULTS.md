@@ -4183,3 +4183,18 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - This freezes the Stage42-CQ/CR safety-sensitive composer. The no-guard composer remains accuracy-priority diagnostic only.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation claim, no global metric/seconds-level claim, no Stage5C execution, no SMC.
 <!-- STAGE42_CS_FROZEN_PROXIMITY_GUARD_POLICY:END -->
+
+<!-- STAGE42_CT_FROZEN_POLICY_REPLAY:START -->
+## Stage42-CT Frozen Policy Replay / Reproducibility Verifier
+
+- source: `fresh_replay_from_frozen_policy_artifact`
+- verdict: `stage42_ct_frozen_policy_replay_pass`
+- gates: `30 / 30`
+- replayed policy artifact: `outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json`
+- policy hash: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`
+- replay check: policy artifact matches Stage42-CS embedded policy and Stage42-CQ source metrics/safety.
+- ADE vs endpoint-linear all/t50/t100 raw/hard: `1.77%` / `1.07%` / `3.48%` / `1.93%`
+- easy degradation: `0.25%`
+- near-collision@0.05 delta vs endpoint-linear: `-0.06%`
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_CT_FROZEN_POLICY_REPLAY:END -->

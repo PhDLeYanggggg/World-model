@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-CS frozen proximity-guard composer policy",
-  "current_verdict": "stage42_cs_frozen_proximity_guard_policy_pass",
+  "current_stage": "Stage42-CT frozen proximity-guard policy replay",
+  "current_verdict": "stage42_ct_frozen_policy_replay_pass",
   "stage42_cr_proximity_guard_ablation": {
     "source": "fresh_synthesis_from_stage42_co_cp_cq_artifacts",
     "report": "outputs/stage42_long_research/proximity_guard_ablation_stage42.md",
@@ -338,7 +338,7 @@
     }
   },
   "latest_user_facing_goal_summary": {
-    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_cs",
+    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_ct",
     "readme": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "updated_at": "2026-05-26",
     "purpose": "Summarize the full M3W long-goal route: what was attempted, what failed and why, what succeeded, current best deployable model, and strict claim boundaries.",
@@ -352,7 +352,8 @@
       "Stage42-CP common validation composer safety/bootstrap: 2000 bootstrap lower bounds are positive for all/t50/t100 raw-frame/hard-failure vs endpoint-linear and all-agent joint safety remains materially guarded",
       "Stage42-CQ proximity-aware composer guard: validation-only predicted-proximity guard repairs the near-collision caveat while retaining positive all/t50/t100 raw-frame/hard-failure lower bounds",
       "Stage42-CR proximity guard ablation: no-guard is accuracy-priority diagnostic, proximity guard is safety-sensitive deployable composer variant",
-      "Stage42-CS frozen proximity-guard composer policy: safety-sensitive composer artifact/hash frozen from CQ/CR with validation-only guard rules"
+      "Stage42-CS frozen proximity-guard composer policy: safety-sensitive composer artifact/hash frozen from CQ/CR with validation-only guard rules",
+      "Stage42-CT frozen policy replay: policy artifact hash and metrics replay against CQ/CR/CS source evidence"
     ],
     "best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor",
     "dominant_supported_mechanism": "baseline-family rollout context plus causal history and guarded domain expert under conservative safety floor",
@@ -18153,6 +18154,97 @@
     "verification": {
       "runner": ".venv-pytorch/bin/python run_stage42_freeze_proximity_guard_policy.py",
       "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_policy_freeze.py"
+    }
+  },
+  "stage42_ct_frozen_policy_replay": {
+    "source": "fresh_replay_from_frozen_policy_artifact",
+    "report": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ct_gate.md",
+    "verdict": "stage42_ct_frozen_policy_replay_pass",
+    "gates": "30/30",
+    "policy_artifact": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json",
+    "policy_hash_recomputed": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+    "replay_checks": {
+      "policy_hash_recomputed_matches_cs": true,
+      "policy_json_matches_cs_embedded_policy": true,
+      "cq_replay": {
+        "selected_policy_match": true,
+        "base_choices_match": true,
+        "metric_matches": {
+          "all_improvement": {
+            "artifact": 0.017743597342181783,
+            "source": 0.017743597342181783,
+            "match": true
+          },
+          "t50_improvement": {
+            "artifact": 0.010673426149055754,
+            "source": 0.010673426149055754,
+            "match": true
+          },
+          "t100_raw_frame_diagnostic_improvement": {
+            "artifact": 0.03480124336134305,
+            "source": 0.03480124336134305,
+            "match": true
+          },
+          "hard_failure_improvement": {
+            "artifact": 0.01929354722729537,
+            "source": 0.01929354722729537,
+            "match": true
+          },
+          "easy_degradation": {
+            "artifact": 0.0024927762207753723,
+            "source": 0.0024927762207753723,
+            "match": true
+          },
+          "switch_rate": {
+            "artifact": 0.1696441434951736,
+            "source": 0.1696441434951736,
+            "match": true
+          }
+        },
+        "safety_matches": {
+          "near_collision_002_delta": {
+            "artifact": -3.6685131516209224e-05,
+            "source": -3.6685131516209224e-05,
+            "match": true
+          },
+          "near_collision_005_delta": {
+            "artifact": -0.0006053046700172371,
+            "source": -0.0006053046700172371,
+            "match": true
+          },
+          "p05_min_group_distance_delta": {
+            "artifact": -0.0001248494575282963,
+            "source": -0.0001248494575282963,
+            "match": true
+          },
+          "jagged_rate_delta": {
+            "artifact": 0.0,
+            "source": 0.0,
+            "match": true
+          }
+        }
+      },
+      "cr_safety_policy_matches_artifact": true
+    },
+    "test_vs_endpoint_linear_ade": {
+      "all_improvement": 0.017743597342181783,
+      "t50_improvement": 0.010673426149055754,
+      "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+      "hard_failure_improvement": 0.01929354722729537,
+      "easy_degradation": 0.0024927762207753723
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-CT replays the frozen Stage42-CS proximity-guard composer policy from artifact and verifies hash, CQ metric/safety consistency, CR recommendation consistency, no-leakage flags, and claim boundaries. It is reproducibility/deployment evidence, not new model training.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_replay_proximity_guard_policy.py",
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_policy_replay.py"
     }
   }
 }
