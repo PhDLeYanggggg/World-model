@@ -1,0 +1,348 @@
+{
+  "source": "fresh_synthesis_from_cached_verified_context_runs",
+  "generated_at_utc": "2026-05-26T20:55:45.287348+00:00",
+  "git_commit": "cc4f4d7",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DB 是 context rescue decision audit，不重新训练，不调 threshold，不把 cached 结果写成 fresh training。",
+    "本阶段整合 CJ/CK/AR/AS 已训练或已评估的 context evidence，判断是否应继续同类 protocol。",
+    "future endpoints / waypoints 只作为 labels/eval，不作为 inference input。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_files": {
+    "goal_scene_gated": true,
+    "neighbor_interaction_gated": true,
+    "sequence_context": true,
+    "graph_context": true,
+    "context_forensics": true
+  },
+  "protocol_status": [
+    {
+      "protocol": "goal_scene_gated",
+      "loaded": true,
+      "source": "fresh_run",
+      "verdict": "stage42_cj_goal_scene_gated_expert_pass_diagnostic_no_overclaim"
+    },
+    {
+      "protocol": "neighbor_interaction_gated",
+      "loaded": true,
+      "source": "fresh_run",
+      "verdict": "stage42_ck_neighbor_interaction_gated_expert_pass_diagnostic_no_overclaim"
+    },
+    {
+      "protocol": "sequence_context",
+      "loaded": true,
+      "source": "fresh_run",
+      "verdict": "stage42_ar_sequence_context_evidence_partial_or_negative"
+    },
+    {
+      "protocol": "graph_context",
+      "loaded": true,
+      "source": "fresh_run",
+      "verdict": "stage42_as_graph_context_evidence_partial_or_negative"
+    }
+  ],
+  "summary": {
+    "variant_rows": [
+      {
+        "protocol": "goal_scene_gated",
+        "variant": "goal_scene_only_control",
+        "metric": {
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.2877734037648393,
+          "t50_improvement": -0.31542535139554606,
+          "hard_failure_improvement": -0.2758122379367457,
+          "easy_degradation": 0.32418582524688455
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "goal_scene_gated",
+        "variant": "baseline_plus_goal_scene",
+        "metric": {
+          "all_improvement": 0.2625023163351611,
+          "t50_improvement": 0.22764025009184075,
+          "hard_failure_improvement": 0.2486482750567104,
+          "easy_degradation": -0.30171179431720985
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.025271087429678207,
+          "t50_improvement": -0.08778510130370532,
+          "hard_failure_improvement": -0.02716396288003531,
+          "easy_degradation": 0.022474030929674704
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "goal_scene_gated",
+        "variant": "baseline_plus_motion_goal_context",
+        "metric": {
+          "all_improvement": 0.24578838559866356,
+          "t50_improvement": 0.22017071087030715,
+          "hard_failure_improvement": 0.23749387838492075,
+          "easy_degradation": -0.25662729975593146
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.041985018166175725,
+          "t50_improvement": -0.09525464052523891,
+          "hard_failure_improvement": -0.03831835955182494,
+          "easy_degradation": 0.06755852549095309
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "neighbor_interaction_gated",
+        "variant": "baseline_plus_scalar_neighbor",
+        "metric": {
+          "all_improvement": 0.26374706567226713,
+          "t50_improvement": 0.2296155003724124,
+          "hard_failure_improvement": 0.24879100370895468,
+          "easy_degradation": -0.3131884044853861
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.024026338092572153,
+          "t50_improvement": -0.08580985102313365,
+          "hard_failure_improvement": -0.027021234227791013,
+          "easy_degradation": 0.010997420761498455
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "neighbor_interaction_gated",
+        "variant": "baseline_plus_goal_scene",
+        "metric": {
+          "all_improvement": 0.2625023163351611,
+          "t50_improvement": 0.22764025009184075,
+          "hard_failure_improvement": 0.2486482750567104,
+          "easy_degradation": -0.30171179431720985
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.025271087429678207,
+          "t50_improvement": -0.08778510130370532,
+          "hard_failure_improvement": -0.02716396288003531,
+          "easy_degradation": 0.022474030929674704
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "neighbor_interaction_gated",
+        "variant": "baseline_plus_history_scalar",
+        "metric": {
+          "all_improvement": 0.263336229733784,
+          "t50_improvement": 0.22949042979018586,
+          "hard_failure_improvement": 0.24838132686558823,
+          "easy_degradation": -0.3129642616205879
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.024437174031055275,
+          "t50_improvement": -0.0859349216053602,
+          "hard_failure_improvement": -0.02743091107115747,
+          "easy_degradation": 0.011221563626296671
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "neighbor_interaction_gated",
+        "variant": "baseline_plus_knn_graph",
+        "metric": {
+          "all_improvement": 0.24382302248431365,
+          "t50_improvement": 0.22377278727042105,
+          "hard_failure_improvement": 0.23777348401932608,
+          "easy_degradation": -0.25642325739101735
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.04395038128052564,
+          "t50_improvement": -0.09165256412512501,
+          "hard_failure_improvement": -0.03803875391741962,
+          "easy_degradation": 0.0677625678558672
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "neighbor_interaction_gated",
+        "variant": "baseline_plus_graph_goal",
+        "metric": {
+          "all_improvement": 0.2067478184369237,
+          "t50_improvement": 0.22205300067582556,
+          "hard_failure_improvement": 0.18810191259992803,
+          "easy_degradation": -0.27226494705673565
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.0810255853279156,
+          "t50_improvement": -0.0933723507197205,
+          "hard_failure_improvement": -0.08771032533681766,
+          "easy_degradation": 0.0519208781901489
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "neighbor_interaction_gated",
+        "variant": "baseline_plus_graph_history_scalar",
+        "metric": {
+          "all_improvement": 0.19570131941514768,
+          "t50_improvement": 0.2239689323690317,
+          "hard_failure_improvement": 0.18460326333426758,
+          "easy_degradation": -0.24415147318824504
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.09207208434969161,
+          "t50_improvement": -0.09145641902651436,
+          "hard_failure_improvement": -0.09120897460247812,
+          "easy_degradation": 0.08003435205863951
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "sequence_context",
+        "variant": "sequence_history",
+        "metric": {
+          "all_improvement": 0.2633152586326496,
+          "t50_improvement": 0.2323679642403601,
+          "hard_failure_improvement": 0.24741418790487835,
+          "easy_degradation": -0.30982823445844976
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.02445814513218969,
+          "t50_improvement": -0.08305738715518596,
+          "hard_failure_improvement": -0.02839805003186735,
+          "easy_degradation": 0.014357590788434793
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "sequence_context",
+        "variant": "sequence_goal_neighbor_no_history",
+        "metric": {
+          "all_improvement": 0.26130002736023783,
+          "t50_improvement": 0.2232892377764233,
+          "hard_failure_improvement": 0.2467397948665826,
+          "easy_degradation": -0.28601953415774817
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.026473376404601456,
+          "t50_improvement": -0.09213611361912277,
+          "hard_failure_improvement": -0.0290724430701631,
+          "easy_degradation": 0.038166291089136384
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "sequence_context",
+        "variant": "sequence_history_goal_neighbor",
+        "metric": {
+          "all_improvement": 0.20024997391877342,
+          "t50_improvement": 0.2278968439041842,
+          "hard_failure_improvement": 0.1797244742637072,
+          "easy_degradation": -0.27044076380100046
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.08752342984606587,
+          "t50_improvement": -0.08752850749136187,
+          "hard_failure_improvement": -0.0960877636730385,
+          "easy_degradation": 0.05374506144588409
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "graph_context",
+        "variant": "graph_only",
+        "metric": {
+          "all_improvement": 0.26427016918217416,
+          "t50_improvement": 0.22967318481501453,
+          "hard_failure_improvement": 0.24880998931431964,
+          "easy_degradation": -0.3175381477489213
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.023503234582665122,
+          "t50_improvement": -0.08575216658053153,
+          "hard_failure_improvement": -0.02700224862242606,
+          "easy_degradation": 0.006647677497963245
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "graph_context",
+        "variant": "graph_goal",
+        "metric": {
+          "all_improvement": 0.2646507299807236,
+          "t50_improvement": 0.22903525133547764,
+          "hard_failure_improvement": 0.2494716891363956,
+          "easy_degradation": -0.3163125928245055
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.0231226737841157,
+          "t50_improvement": -0.08639010006006842,
+          "hard_failure_improvement": -0.026340548800350083,
+          "easy_degradation": 0.007873232422379028
+        },
+        "safe_positive_increment": false
+      },
+      {
+        "protocol": "graph_context",
+        "variant": "graph_history_goal",
+        "metric": {
+          "all_improvement": 0.2647648890850426,
+          "t50_improvement": 0.22900798793791954,
+          "hard_failure_improvement": 0.24957754247287833,
+          "easy_degradation": -0.31638833681258816
+        },
+        "delta_vs_baseline_family_control": {
+          "all_improvement": -0.0230085146797967,
+          "t50_improvement": -0.08641736345762652,
+          "hard_failure_improvement": -0.026234695463867364,
+          "easy_degradation": 0.007797488434296396
+        },
+        "safe_positive_increment": false
+      }
+    ],
+    "safe_positive_context_variants": [],
+    "decision": "stop_repeating_current_context_residual_or_gated_protocols",
+    "best_delta_all": -0.0230085146797967,
+    "best_delta_t50": -0.08305738715518596,
+    "worst_delta_t50": -0.31542535139554606,
+    "best_delta_hard_failure": -0.026234695463867364,
+    "root_cause": "Existing goal/scene, neighbor/interaction, sequence, and graph context variants either reduce all/t50/hard or add easy risk after baseline-family rollout context. The next credible experiment must change the target/model/data, not merely rerun the same residual/gated variants or tune thresholds.",
+    "required_next_protocol_change": [
+      "Use source-compatible graph/sequence model with a different supervision target, such as switchability/gain-harm labels rather than residual waypoint delta only.",
+      "Add legal/source-calibrated data where scene/goal/interaction context can vary independently from baseline-family rollout context.",
+      "Keep baseline-family rollout as the control arm and require validation-only safety gates plus bootstrap-positive test evidence."
+    ]
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_db_gate": {
+    "gates": {
+      "all_inputs_present": true,
+      "four_context_protocols_loaded": true,
+      "variant_rows_computed": true,
+      "negative_context_evidence_preserved": true,
+      "no_same_protocol_rerun_recommended": true,
+      "root_cause_written": true,
+      "next_protocol_change_required": true,
+      "does_not_mark_not_run_complete": true,
+      "no_metric_seconds_overclaim": true,
+      "true_3d_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_db_context_rescue_decision_pass"
+  }
+}

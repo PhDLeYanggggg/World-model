@@ -1379,3 +1379,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - user/external blockers remain explicit; no not_run item is counted complete.
 - Current deployable claim remains protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C, no SMC.
 <!-- STAGE42_DA_NEXT_ACTION_QUEUE:END -->
+
+<!-- STAGE42_DB_CONTEXT_RESCUE_DECISION:START -->
+## Stage42-DB Context Rescue Decision Audit
+
+- source: `fresh_synthesis_from_cached_verified_context_runs`
+- role: decide whether existing goal/scene, neighbor/interaction, sequence, and graph context protocols should be repeated.
+- gate: `13 / 13`; verdict `stage42_db_context_rescue_decision_pass`.
+- decision: `stop_repeating_current_context_residual_or_gated_protocols`.
+- best delta all/t50/hard vs baseline-family control: `-0.0230` / `-0.0831` / `-0.0262`.
+- No safe positive context variant was found under the existing residual/gated protocols; next work must change target/model/data, not just rerun thresholds.
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, foundation, metric/seconds-level, Stage5C, or SMC.
+<!-- STAGE42_DB_CONTEXT_RESCUE_DECISION:END -->
