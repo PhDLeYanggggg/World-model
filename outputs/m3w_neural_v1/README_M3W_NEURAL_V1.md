@@ -36,6 +36,8 @@ Stage42-AO sharpens that boundary with standalone and incremental variants. `his
 
 Stage42-AP then tests the same question as a two-stage residual problem. It trains a baseline-family first-stage model and asks history / goal / neighbor context to predict the remaining full-waypoint residual. The result is still partial/negative: no residual context variant improves over the baseline-family first stage by the +1% threshold. This further constrains paper claims: current source-level ridge/residual evidence supports baseline-family rollout context, not independent history/goal/neighbor contribution.
 
+Stage42-AQ repeats the residual-context question with a real PyTorch MLP in the arm64 `.venv-pytorch` runtime. It still does not find neural context increment: `neural_history`, `neural_goal_neighbor`, and `neural_history_goal_neighbor` all underperform the baseline-family first-stage on all/t50/hard. This rules out a simple tabular neural-context repair; the next credible route is graph/sequence/scene-rich context.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
