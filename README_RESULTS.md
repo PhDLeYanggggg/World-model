@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 

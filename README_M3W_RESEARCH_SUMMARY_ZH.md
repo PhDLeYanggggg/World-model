@@ -26,7 +26,7 @@ python3 -m pytest tests/test_stage42_eth_t50_fde_source_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_claim_refresh.py = 2 passed
 python3 -m pytest tests/test_stage42_trajnet_t100_safety_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_paper_package_refresh.py = 2 passed
-python3 -m pytest tests = 346 passed
+python3 -m pytest tests = 357 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -42,7 +42,43 @@ python3 -m pytest tests = 346 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh 和 unified row-cache stress evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair 和 post-repair paper package refresh evidence。
+
+## 给你的直接结论快照
+
+截至 Stage42-AJ，我在 M3W 这个长期目标里做的核心事情可以概括为五条：
+
+1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
+   SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
+
+2. **证明了“硬分类 selector”和“无保护 neural dynamics”都不可靠。**  
+   Stage24/25 看到 oracle headroom 很大，但 hard classification selector 会过度切换并伤害 easy cases；Stage39/40 的无保护 Transformer/JEPA/Hybrid neural 也不能安全替代 Stage37 floor。结论是：这个任务里安全 fallback 和 gain/harm/easy guard 不是附属功能，而是部署前提。
+
+3. **Stage26 与 Stage37 是两个关键成功拐点。**  
+   Stage26 在 SDD 上用 expected-FDE / regret-aware / conservative fallback 修复 selector，成为 SDD best deployable；Stage37 用 past-only history windows、scene-agnostic goal prototypes、switchability/gain/harm/conformal safety 修复 external t+50，达到 all +13.48%、t+50 +8.46%、hard/failure +15.54%、easy degradation 0.041%、16/16 gates。
+
+4. **Stage41/42 把 selector-level 成功推进到 protected full-waypoint world-state evidence。**  
+   我尝试了 composite-tail safe-switch、full-waypoint dynamics、row prediction cache、UCY full-waypoint source、unified row-level cache、retrained ablation、paper claim audit、calibration evidence refresh、weak-slice guard、ETH_UCY t50/FDE source repair、TrajNet t100 easy-safety repair 和 paper package refresh。成功结果是 protected dataset-local raw-frame 2.5D full-waypoint evidence package，而不是 ungated neural / true 3D / foundation。
+
+5. **当前最强可部署仍是 protected policy，而不是自由神经 rollout。**  
+   当前 best deployable 是 `M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor`。它可以说是 protected 2.5D multi-agent world-state candidate；不能说 true 3D、metric、seconds-level、foundation、Stage5C-ready 或 SMC-ready。
+
+最重要的失败原因也很清楚：
+
+- JEPA non-collapse 不等于 downstream lift。
+- SDD pixel-space selector 不能直接 zero-shot 到 external dataset-local coordinates。
+- 只做 normalization / latent alignment 不能修复目标和 horizon mismatch。
+- t+50 需要完整 past-only history 与 goal prototype，单纯调 threshold 不够。
+- residual/correction 和 ungated neural 容易伤 easy cases。
+- endpoint 成功不能自动外推成 full-waypoint 成功。
+- auxiliary interaction/occupancy/physical heads 目前是 mixed/partial evidence，不能写成统一主贡献。
+
+最重要的成功原因也很清楚：
+
+- 目标从“预测 best baseline class”改成 expected-FDE / gain / harm / regret-aware decision。
+- 所有强结果都保留 validation-only threshold、test-once、no-leakage、fallback-safe 规则。
+- external t+50 修复靠 past-only history window + scene-agnostic goal prototype + conformal safety，而不是用 test endpoint goals。
+- Stage42 row-level cache 把多个候选 source 的互补性做成可审计 policy，而不是凭单个模型硬上。
 
 ## 本次请求版详细总结
 
