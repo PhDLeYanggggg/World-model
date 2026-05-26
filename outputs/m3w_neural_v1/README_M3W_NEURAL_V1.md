@@ -30,6 +30,8 @@ The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X
 
 Stage42-AL and Stage42-AM refine the source-level claim boundary. Stage42-AL shows that the locked post-repair stress pool is not a full proposed source-level split evaluation. Stage42-AM then evaluates the proposed source-level test split directly with a fresh past-only ridge full-waypoint probe and validation-only safe policy: test rows `47458`, TrajNet `37918`, UCY `9540`, ADE all `+0.245788`, t50 `+0.220171`, t100 raw-frame diagnostic `+0.143652`, hard/failure `+0.237494`, easy degradation `-0.256627`, gates `12 / 12`. This is strong source-level raw-frame full-waypoint evidence, but it is still a protected dataset-local 2.5D probe, not metric, seconds-level, true 3D, foundation, Stage5C, or SMC evidence.
 
+Stage42-AN adds a retrained source-level ablation boundary. It reruns ridge probes and validation-only safety policies for no-history, no-neighbor, no-goal, no-baseline-family, no-domain, and combined variants on the same proposed source-level split. The full variant remains strong, but the gate is `9 / 10`: only `baseline_family_context` is independently supported. History, neighbor/interaction, goal prototype, domain expert, and safe-switch necessity are not proven by this ridge ablation, so they must not be written as independent main claims yet.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

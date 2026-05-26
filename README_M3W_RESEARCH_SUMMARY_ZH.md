@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit，以及 Stage42-AM proposed source-level full-waypoint evaluation；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation，以及 Stage42-AN proposed source-level retrained ablation；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -32,7 +32,9 @@ python3 run_stage42_source_level_coverage_audit.py = pass
 python3 -m pytest tests/test_stage42_source_level_coverage_audit.py = 3 passed
 python3 run_stage42_source_level_full_waypoint_eval.py = pass
 python3 -m pytest tests/test_stage42_source_level_full_waypoint_eval.py = 3 passed
-python3 -m pytest tests = 363 passed
+python3 run_stage42_source_level_ablation.py = pass
+python3 -m pytest tests/test_stage42_source_level_ablation.py = 4 passed
+python3 -m pytest tests = 370 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -48,11 +50,11 @@ python3 -m pytest tests = 363 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair、post-repair paper package refresh、locked policy/source-split audit、source-level coverage gap 和 proposed source-level full-waypoint evaluation evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair、post-repair paper package refresh、locked policy/source-split audit、source-level coverage gap、proposed source-level full-waypoint evaluation 和 proposed source-level retrained ablation evidence。
 
 ## 给你的直接结论快照
 
-截至 Stage42-AM，我在 M3W 这个长期目标里做的核心事情可以概括为七条：
+截至 Stage42-AN，我在 M3W 这个长期目标里做的核心事情可以概括为八条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -74,6 +76,9 @@ python3 -m pytest tests = 363 passed
 
 7. **Stage42-AM 直接补了一版 proposed source-level full-waypoint fresh evaluation。**  
    Stage42-AM 不再复用 locked-policy stress pool，而是在 proposed source-level train/val/test 上重建 full-waypoint labels，训练 past-only ridge full-waypoint probe，用 validation-only safe policy 选规则，test 只评一次。结果：proposed source-level test rows `47458`，TrajNet `37918`，UCY `9540`，ADE all `+24.58%`，t50 `+22.02%`，t100 raw-frame diagnostic `+14.37%`，hard/failure `+23.75%`，easy degradation `-25.66%`，12/12 gates。它是强 fresh source-level raw-frame full-waypoint evidence，但仍是 protected dataset-local 2.5D probe，不是 metric/seconds/true-3D/foundation。
+
+8. **Stage42-AN 给出了一条重要的 retrained ablation 边界。**  
+   Stage42-AN 在同一个 proposed source-level split 上重新训练多个 ridge ablation，不是 inference masking。结果是 9/10 gates：full variant 仍强，但只清楚证明 `baseline_family_context` 的独立贡献；`history`、`neighbor_interaction`、`goal_prototype`、`domain_expert` 和 safe-switch necessity 在这个 ridge probe 上没有被证明为独立正贡献。因此这一步是“partial component evidence”，不是完整因果贡献证明。
 
 最重要的失败原因也很清楚：
 
@@ -149,6 +154,7 @@ python3 -m pytest tests = 363 passed
 | Stage42-AK locked policy/source-split audit | policy hash `06772a241...`，source split hash `e22c1fc...`，17/17 gates。 | 冻结 AF/AG/AI post-repair rules；确认 no future input / no central velocity / no test-threshold tuning / no Stage5C / no SMC。 |
 | Stage42-AL source-level coverage audit | 12/12 gates；UCY exact coverage，TrajNet coverage ratio `0.530`，ETH_UCY 是 extra available rows，不属于 proposed source-level test。 | 防止把 available row-level stress 包装成 full proposed source-level evaluation；明确下一步必须补 TrajNet full coverage 或重建 split。 |
 | Stage42-AM proposed source-level full-waypoint eval | proposed test `47458` rows；ADE all +24.58%，t50 +22.02%，t100 raw-frame diagnostic +14.37%，hard/failure +23.75%，easy degradation -25.66%，12/12 gates。 | 直接在 proposed source-level split 上 fresh 重建 full-waypoint labels、训练 past-only ridge probe，并用 validation-only safe policy test-once；修复 AL 的 coverage claim gap，但仍不是 metric/seconds/true-3D。 |
+| Stage42-AN proposed source-level retrained ablation | 9/10 gates；full variant 保持 AM 指标；独立正贡献只证明 `baseline_family_context`；history/neighbor/goal/domain/safe-switch necessity 未被此 ridge probe 证明。 | 这是重要负结果：不能把所有模块写成主贡献；下一步要用更强 neural/graph ablation 或 richer features 再验证 history/goal/interaction。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界
@@ -201,8 +207,8 @@ SMC-ready model
 ### 最短下一步
 
 1. 基于 Stage42-AD 的 user_action_required，人工/官方验证 ETH/UCY、UCY、OpenTraj 的 homography direction、FPS、annotation stride 和 scale；验证前继续保持 raw-frame / dataset-local 口径。
-2. 把 Stage42-AM 的 ridge probe 升级为更强的 proposed source-level full-waypoint neural / graph model，并保持同一 split/test-once 规则，确认 AM 不是线性 probe 偶然。
-3. 给 Stage42-AM 做更完整 per-scene / per-source / per-agent stress 和 ablation，尤其验证 UCY 当前 fallback-only 是否需要 UCY-specific source-level full-waypoint source。
+2. 把 Stage42-AM/AN 的 ridge probe 升级为更强的 proposed source-level full-waypoint neural / graph model，并保持同一 split/test-once 规则，确认 AM 不是线性 probe 偶然。
+3. 针对 AN 的负结果，重新设计 source-level history / goal / neighbor 特征或 neural token schema；目前这些模块不能写成独立主贡献。
 4. 针对 mixed 组件做更干净的 ablation：goal/scene、neighbor/interaction、auxiliary heads、JEPA，不把 partial evidence 写成主贡献。
 
 ## 本次用户版总览
@@ -216,7 +222,7 @@ SMC-ready model
 5. 后面我开始训练 neural dynamics。无保护 Transformer/JEPA/Hybrid 多次失败；有效结果都来自 Stage37/teacher floor 保护下的 bounded / safe-switch neural package。
 6. Stage41/42 把结果从 endpoint / selector 推到 all-agent、full-waypoint、row-level cache 和 retrained ablation evidence；这比早期 demo 更像研究证据链。
 7. 失败路线也很明确：JEPA non-collapse 但 downstream 无稳定 lift；hard-class selector 会严重伤 easy；ordinary residual/correction 不安全；ungated neural dynamics 不可部署；endpoint success 不能自动转成 full-waypoint success。
-8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新、weak-slice safety repair、ETH_UCY t50/FDE source repair、post-repair claim refresh、TrajNet t100 safety repair、paper package refresh、locked policy/source-split audit、source-level coverage gap audit 和 proposed source-level full-waypoint fresh evaluation。
+8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新、weak-slice safety repair、ETH_UCY t50/FDE source repair、post-repair claim refresh、TrajNet t100 safety repair、paper package refresh、locked policy/source-split audit、source-level coverage gap audit、proposed source-level full-waypoint fresh evaluation 和 retrained ablation boundary。
 9. 仍不能说 true 3D、metric、seconds-level、foundation，也不能执行 Stage5C 或 SMC。
 
 没有纳入为“已完成结果”的内容：

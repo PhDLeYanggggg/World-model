@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -56,6 +56,24 @@ SMC_enabled = false
 ```
 
 Stage42-AM addresses the Stage42-AL coverage gap by evaluating the proposed source-level test split directly rather than reusing the locked-policy stress pool. It trains a past-only ridge full-waypoint probe on proposed train rows, selects the safety policy on validation only, and evaluates test once. It is positive source-level raw-frame full-waypoint evidence, but it is still a protected dataset-local 2.5D probe, not metric/seconds-level, true-3D, foundation, Stage5C, or SMC evidence.
+
+Latest Stage42-AN proposed source-level retrained ablation:
+
+```text
+source = fresh_run
+verdict = stage42_an_source_level_ablation_partial_component_evidence
+gates = 9 / 10
+full_ADE_all = 0.245788
+full_ADE_t50 = 0.220171
+full_ADE_hard_failure = 0.237494
+positive_independent_components = baseline_family_context
+positive_combined_variants = motion_goal_no_baseline_domain
+not_proven_independent = history, neighbor_interaction, goal_prototype, domain_expert, safe_switch necessity in this ridge probe
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AN is an important boundary result, not a clean success. Each ablation is retrained and validation-selected on the proposed source-level split. It confirms the full ridge probe remains strong, but it does **not** prove two independent module contributions: only baseline/family context is independently supported. History, neighbor, goal prototype, domain expert, and safe-switch necessity need stronger neural/graph ablation or richer source-level features before they can be paper main claims.
 
 Latest Stage42-AD calibration evidence refresh:
 

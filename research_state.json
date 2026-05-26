@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_am_source_level_full_waypoint_eval",
-  "current_verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive",
+  "current_stage": "stage42_an_source_level_ablation",
+  "current_verdict": "stage42_an_source_level_ablation_partial_component_evidence",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 user-requested detailed route/failure/success summary refreshed with Stage42-AM proposed source-level full-waypoint evaluation; full pytest 366 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL source-level coverage/claim-gap audit, and Stage42-AM proposed source-level full-waypoint fresh evaluation.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AN proposed source-level retrained ablation boundary; full pytest 370 passed.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, and Stage42-AN retrained ablation boundary.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AM evaluated the proposed source-level test split directly and passed 12/12 gates with positive protected full-waypoint ADE on all/t50/t100/hard, while preserving dataset-local raw-frame 2.5D claim boundaries.",
+    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AN is a fresh partial ablation result that proves baseline/family context contribution but not two independent module contributions.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -29,7 +29,10 @@
       "stage42_al_focused_pytest": "3 passed",
       "stage42_am_runner": "pass",
       "stage42_am_focused_pytest": "3 passed",
-      "stage42_am_full_pytest": "366 passed"
+      "stage42_am_full_pytest": "366 passed",
+      "stage42_an_runner": "pass",
+      "stage42_an_focused_pytest": "4 passed",
+      "stage42_an_full_pytest": "370 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -97,6 +100,29 @@
       "ade_all_ci_low": 0.24255412523302317,
       "ade_t50_ci_low": 0.2159234170345621,
       "conclusion": "Stage42-AM closes the Stage42-AL proposed source-level coverage gap with a fresh past-only ridge full-waypoint probe and validation-only safety policy; claims remain protected dataset-local raw-frame 2.5D."
+    },
+    "stage42_an_source_level_ablation": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/source_level_ablation_stage42.md",
+      "gate": "9/10",
+      "verdict": "stage42_an_source_level_ablation_partial_component_evidence",
+      "full_ade_all": 0.24578838559866356,
+      "full_ade_t50": 0.22017071087030715,
+      "full_ade_hard_failure": 0.23749387838492075,
+      "positive_independent_components": [
+        "baseline_family_context"
+      ],
+      "positive_combined_variants": [
+        "motion_goal_no_baseline_domain"
+      ],
+      "not_proven_independent": [
+        "history",
+        "neighbor_interaction",
+        "goal_prototype",
+        "domain_expert",
+        "safe_switch_necessity"
+      ],
+      "conclusion": "Stage42-AN is honest partial component evidence: full source-level ridge remains strong, but it does not prove two independent module contributions."
     }
   },
   "stage42_am_source_level_full_waypoint_eval": {
@@ -13997,5 +14023,35 @@
       "smc_enabled": false
     },
     "interpretation": "Stage42-AJ propagates the AD-AI post-repair evidence into all Stage42 paper files. The paper package is stronger than Stage42-AC but remains protected dataset-local raw-frame 2.5D."
+  },
+  "stage42_an_source_level_ablation": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/source_level_ablation_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_an_gate.md",
+    "gates_passed": 9,
+    "gates_total": 10,
+    "verdict": "stage42_an_source_level_ablation_partial_component_evidence",
+    "full_variant": {
+      "ade_all": 0.24578838559866356,
+      "ade_t50": 0.22017071087030715,
+      "ade_t100_raw_frame_diagnostic": 0.14365240535176194,
+      "ade_hard_failure": 0.23749387838492075,
+      "easy_degradation": -0.25662729975593146
+    },
+    "positive_independent_components": [
+      "baseline_family_context"
+    ],
+    "positive_combined_variants": [
+      "motion_goal_no_baseline_domain"
+    ],
+    "failed_gate": "at_least_two_independent_components_positive",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Do not claim history/goal/neighbor/domain/safe-switch as independent source-level ridge contributions from Stage42-AN; stronger neural/graph ablation is needed."
   }
 }
