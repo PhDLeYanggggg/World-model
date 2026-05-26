@@ -660,3 +660,16 @@ M3W 现在有真实工程和实验价值，但它的强点是 protected 2.5D wor
 - decision: `all_hard_proximity_repair_no_primary_promotion_keep_cq_guarded_composer`.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DF_FULL_WAYPOINT_ALL_HARD_PROXIMITY_REPAIR:END -->
+
+<!-- STAGE42_DG_FULL_WAYPOINT_ALL_HARD_LOSS_REPAIR:START -->
+## Stage42-DG Full-Waypoint All/Hard Weighted Loss Repair
+
+- source: `fresh_stage42_dg_full_waypoint_all_hard_loss_repair`
+- role: actual retraining probe for all/hard/long-horizon weighted full-waypoint dynamics, following Stage42-DE/DF blockers.
+- selected loss variant: `balanced` with lambda `100.0`.
+- gate: `13 / 15`; verdict `stage42_dg_full_waypoint_weighted_loss_repair_pass_positive_not_better_than_am`.
+- test vs train-horizon causal floor: all `24.58%`, t50 `22.02%`, t100 raw `14.37%`, hard `23.75%`, easy `-25.66%`.
+- delta vs Stage42-AM: all `0.00%`, t50 `0.00%`, t100 raw `0.00%`, hard `0.00%`, easy `0.00%`.
+- decision: `weighted_loss_not_enough_keep_stage42_am_or_cq_floor`.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DG_FULL_WAYPOINT_ALL_HARD_LOSS_REPAIR:END -->

@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-DF all-hard/proximity full-waypoint repair",
-  "current_verdict": "stage42_df_all_hard_proximity_repair_partial",
+  "current_stage": "Stage42-DG full-waypoint all/hard weighted loss repair",
+  "current_verdict": "stage42_dg_full_waypoint_weighted_loss_repair_pass_positive_not_better_than_am",
   "m3w_current_full_retrospective_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_reports_with_stage42_dc_dd_latest",
     "path": "README_M3W_CURRENT_FULL_RETROSPECTIVE_ZH.md",
@@ -18691,6 +18691,51 @@
       "foundation_world_model": false,
       "global_metric_claim_allowed": false,
       "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_dg_full_waypoint_all_hard_loss_repair": {
+    "source": "fresh_stage42_dg_full_waypoint_all_hard_loss_repair",
+    "report": "outputs/stage42_long_research/full_waypoint_all_hard_loss_repair_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_dg_gate.md",
+    "verdict": "stage42_dg_full_waypoint_weighted_loss_repair_pass_positive_not_better_than_am",
+    "gates": "13/15",
+    "deployment_decision": {
+      "promote_weighted_loss_full_waypoint": false,
+      "decision": "weighted_loss_not_enough_keep_stage42_am_or_cq_floor",
+      "reason": "Promotion requires test all+hard positive, easy safe, and improvement over Stage42-AM on all+hard."
+    },
+    "selected": {
+      "variant": "balanced",
+      "lambda": 100.0,
+      "val_score": 2.376170235571301
+    },
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.24578838559866356,
+      "t10_improvement": 0.4584029803090398,
+      "t25_improvement": 0.23324144358920462,
+      "t50_improvement": 0.22017071087030715,
+      "t100_raw_frame_diagnostic_improvement": 0.14365240535176194,
+      "hard_failure_improvement": 0.23749387838492075,
+      "easy_degradation": -0.25662729975593146,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11319535181660002
+    },
+    "comparison_to_stage42_am": {
+      "all_improvement": 0.0,
+      "t50_improvement": 0.0,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
       "stage5c_executed": false,
       "smc_enabled": false
     }
