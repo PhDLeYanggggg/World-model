@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_az_shadow_holdout_robustness",
-  "current_verdict": "stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation",
+  "current_stage": "stage42_ba_t100_source_cv_repair",
+  "current_verdict": "stage42_ba_t100_source_cv_repair_pass_with_t100_blocker",
   "latest_user_requested_research_summary": {
-    "source": "fresh_run_plus_stage42_az_verified",
+    "source": "fresh_run_plus_stage42_ba_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AZ AY shadow-holdout t100 robustness audit; focused pytest and full pytest passed.",
-    "scope": "Detailed M3W route/failure/success summary plus Stage42-AZ shadow-holdout robustness showing AY t100 positive gain is not independently robust without stricter source-support guard.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-BA train-only t100 source-CV repair; focused pytest and full pytest passed.",
+    "scope": "Detailed M3W route/failure/success summary plus Stage42-BA train-only t100 source-CV support audit showing t100 positive gain remains a blocker while all/t50/hard stay safe-positive.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AZ keeps all/t50/hard positive under a stricter source-support t100 guard while exposing that AY strict t100 positive gain is not robust on source-level shadow holdout.",
+    "latest_branch_success": "Stage42-BA uses train-only source-CV to guard unsupported t100 domain slices, preserving all/t50/hard/easy while honestly zeroing unsupported t100 gain.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -69,7 +69,10 @@
       "stage42_ay_full_pytest": "414 passed",
       "stage42_az_runner": "pass",
       "stage42_az_focused_pytest": "4 passed",
-      "stage42_az_full_pytest": "418 passed"
+      "stage42_az_full_pytest": "418 passed",
+      "stage42_ba_runner": "pass",
+      "stage42_ba_focused_pytest": "4 passed",
+      "stage42_ba_full_pytest": "422 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -14769,6 +14772,65 @@
       "runner": "python3 run_stage42_ay_shadow_holdout_robustness.py -> stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation (16/16)",
       "focused_pytest": "python3 -m pytest tests/test_stage42_ay_shadow_holdout_robustness.py -> 4 passed",
       "full_pytest": "python3 -m pytest tests -> 418 passed"
+    }
+  },
+  "stage42_ba_t100_source_cv_repair": {
+    "source": "fresh_run",
+    "verdict": "stage42_ba_t100_source_cv_repair_pass_with_t100_blocker",
+    "gate": "16/16",
+    "report": "outputs/stage42_long_research/t100_source_cv_repair_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ba_gate.md",
+    "source_cv": {
+      "fold_count": 7,
+      "uses_original_train_sources_only": true,
+      "final_test_metrics_for_threshold": false,
+      "domain_support": {
+        "ETH_UCY": {
+          "fold_count": 4,
+          "safe_positive_fold_count": 0,
+          "supported_for_t100": false,
+          "max_easy_degradation": 0.39783898629931813
+        },
+        "TrajNet": {
+          "fold_count": 3,
+          "safe_positive_fold_count": 1,
+          "supported_for_t100": false,
+          "max_easy_degradation": 0.0673639177746077
+        },
+        "UCY": {
+          "fold_count": 0,
+          "status": "not_run",
+          "reason": "fewer_than_three_t100_capable_original_train_sources",
+          "supported_for_t100": false
+        }
+      }
+    },
+    "final_metrics_after_cv_guard": {
+      "all_improvement": 0.280997,
+      "t50_improvement": 0.289698,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "hard_failure_improvement": 0.251576,
+      "easy_degradation": -0.372431,
+      "all_ci_low": 0.277271,
+      "t50_ci_low": 0.284913,
+      "hard_ci_low": 0.247811,
+      "h100_easy_ci_high": 0.0
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "t100_seconds_claim": false,
+      "t100_positive_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false
+    },
+    "verification": {
+      "runner": "python3 run_stage42_t100_source_cv_repair.py -> stage42_ba_t100_source_cv_repair_pass_with_t100_blocker (16/16)",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_t100_source_cv_repair.py -> 4 passed",
+      "full_pytest": "python3 -m pytest tests -> 422 passed"
     }
   }
 }

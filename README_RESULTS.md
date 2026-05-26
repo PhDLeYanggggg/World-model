@@ -6,11 +6,11 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, t100 easy-safety repair evidence, AY shadow-holdout robustness evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, t100 easy-safety repair evidence, AY shadow-holdout robustness evidence, train-only t100 source-CV repair evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for this summary refresh: `python3 -m pytest tests` -> `418 passed`.
+Validation for this summary refresh: `python3 -m pytest tests` -> `422 passed`.
 
 Most important current summary:
 
@@ -55,6 +55,27 @@ SMC_enabled = false
 ```
 
 Stage42-AZ is negative/repair evidence, not a new t100 success. It builds shadow train/val/holdout only from original train sources and excludes final val/test from thresholding. The AY strict t100 guard is not independently robust on shadow holdout because ETH_UCY t100 easy harm appears. A stricter source-support guard protects easy and keeps all/t50/hard positive, but it removes positive t100 gain on this shadow holdout. The correct claim is therefore: t100 remains raw-frame diagnostic and needs more independent validation support; do not write it as a stable long-horizon success.
+
+Latest Stage42-BA train-only t100 source-CV repair:
+
+```text
+source = fresh_run
+verdict = stage42_ba_t100_source_cv_repair_pass_with_t100_blocker
+gates = 16 / 16
+source_cv_folds = 7
+ETH_UCY_safe_positive_t100_folds = 0 / 4
+TrajNet_safe_positive_t100_folds = 1 / 3
+UCY_status = not_run_fewer_than_three_t100_capable_original_train_sources
+after_cv_guard_all = 0.280997
+after_cv_guard_t50 = 0.289698
+after_cv_guard_t100_raw_frame_diagnostic = 0.000000
+after_cv_guard_hard_failure = 0.251576
+after_cv_guard_easy_degradation = -0.372431
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BA takes the AZ limitation seriously instead of trying to polish it away. It uses only original train sources to run t100 source-CV and requires at least two safe-positive source folds before any domain keeps a t100 slice. No domain passes that support rule, so all domain|100 slices are guarded to the causal floor before final test evaluation. The final protected result still has strong all/t50/hard improvement and safe easy cases, but t100 is zeroed out. That is the honest deployment boundary: t100 is a blocker/diagnostic, not a current positive-transfer claim.
 
 Latest Stage42-AM proposed source-level full-waypoint evaluation:
 
@@ -360,6 +381,38 @@ python3 -m pytest tests/test_stage42_ay_shadow_holdout_robustness.py
   -> 4 passed
 python3 -m pytest tests
   -> 418 passed
+```
+
+Latest Stage42-BA train-only t100 source-CV repair:
+
+```text
+source = fresh_run
+verdict = stage42_ba_t100_source_cv_repair_pass_with_t100_blocker
+gates = 16 / 16
+source_cv_folds = 7
+ETH_UCY_safe_positive_t100_folds = 0 / 4
+TrajNet_safe_positive_t100_folds = 1 / 3
+UCY_status = not_run_fewer_than_three_t100_capable_original_train_sources
+after_cv_guard_all = 0.280997
+after_cv_guard_t50 = 0.289698
+after_cv_guard_t100_raw_frame_diagnostic = 0.000000
+after_cv_guard_hard_failure = 0.251576
+after_cv_guard_easy_degradation = -0.372431
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BA uses train-only source-CV to decide whether any domain has enough independent t100 support. ETH_UCY and TrajNet both fail the safe-positive fold rule, and UCY has too few t100-capable train sources for this audit. The final source-CV guard keeps all/t50/hard positive and easy safe, but guards all t100 slices to the causal floor. This is a blocker result for t100 positive claims, not a failure of the all/t50/hard deployable evidence.
+
+Validation for Stage42-BA:
+
+```text
+python3 run_stage42_t100_source_cv_repair.py
+  -> stage42_ba_t100_source_cv_repair_pass_with_t100_blocker (16/16)
+python3 -m pytest tests/test_stage42_t100_source_cv_repair.py
+  -> 4 passed
+python3 -m pytest tests
+  -> 422 passed
 ```
 
 Latest Stage42-AD calibration evidence refresh:

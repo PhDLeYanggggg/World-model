@@ -891,3 +891,24 @@ smc_enabled = false
 ```
 
 Stage42-AZ tests the Stage42-AY strict t100 guard on a source-level shadow split built only from original train sources. It finds that the AY strict guard is not independently robust for t100 easy safety: ETH_UCY t100 easy harm appears on the shadow holdout. A more conservative source-support guard keeps all/t50/hard positive and protects easy cases, but it gives up positive t100 gain on this shadow holdout. This is a useful safety result and a claim-boundary result, not a new t100 success: t100 remains raw-frame diagnostic and should not be written as seconds-level or uniformly robust long-horizon world-model evidence.
+
+## Stage42-BA Train-Only T100 Source-CV Repair
+
+```text
+source = fresh_run
+verdict = stage42_ba_t100_source_cv_repair_pass_with_t100_blocker
+gates = 16 / 16
+source_cv_folds = 7
+ETH_UCY_safe_positive_t100_folds = 0 / 4
+TrajNet_safe_positive_t100_folds = 1 / 3
+UCY_status = not_run_fewer_than_three_t100_capable_original_train_sources
+after_cv_guard_all = 0.280997
+after_cv_guard_t50 = 0.289698
+after_cv_guard_t100_raw_frame_diagnostic = 0.000000
+after_cv_guard_hard_failure = 0.251576
+after_cv_guard_easy_degradation = -0.372431
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BA converts the Stage42-AZ t100 warning into an explicit train-only source-CV guard. It leaves one original-train t100-capable source out at a time, selects policy support without final test metrics, and only allows a domain t100 slice if it has at least two safe-positive source folds. No domain currently satisfies that rule. The repaired deployment boundary is therefore clear: all/t50/hard remain positive and easy-safe under the guard, but t100 positive gain is not supported and is guarded to the causal floor.
