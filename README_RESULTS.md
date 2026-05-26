@@ -4,9 +4,15 @@
 
 Current one-file research route/failure/success summary requested by the user:
 
+`/Users/yangyue/Downloads/World/README_M3W_LONG_GOAL_RETROSPECTIVE_ZH.md`
+
+This is the newest detailed Chinese retrospective for the full M3W goal: what was attempted, which routes failed and why, which routes succeeded, the current best deployable model, the strict claim boundaries, and the latest Stage42-BR calibrated t50 source-support gap.
+
+Previous consolidated human-facing review:
+
 `/Users/yangyue/Downloads/World/README_M3W_FULL_GOAL_REVIEW_ZH.md`
 
-This is the newest consolidated human-facing review for the full M3W goal: routes tried, failures and root causes, successful evidence, current best deployable model, current claim boundaries, and the latest Stage42-BL ETH-Person XML technical dry-run limitation.
+This remains a consolidated human-facing review for the full M3W goal: routes tried, failures and root causes, successful evidence, current best deployable model, current claim boundaries, and Stage42 source-level updates.
 
 Previous canonical summary:
 
