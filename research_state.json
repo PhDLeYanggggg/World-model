@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-CU runtime policy API smoke audit",
-  "current_verdict": "stage42_cu_runtime_policy_api_pass",
+  "current_stage": "Stage42-CV batch runtime policy replay",
+  "current_verdict": "stage42_cv_batch_runtime_replay_pass",
   "stage42_cr_proximity_guard_ablation": {
     "source": "fresh_synthesis_from_stage42_co_cp_cq_artifacts",
     "report": "outputs/stage42_long_research/proximity_guard_ablation_stage42.md",
@@ -338,7 +338,7 @@
     }
   },
   "latest_user_facing_goal_summary": {
-    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_cu",
+    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_cv",
     "readme": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "updated_at": "2026-05-26",
     "purpose": "Summarize the full M3W long-goal route: what was attempted, what failed and why, what succeeded, current best deployable model, and strict claim boundaries.",
@@ -354,7 +354,8 @@
       "Stage42-CR proximity guard ablation: no-guard is accuracy-priority diagnostic, proximity guard is safety-sensitive deployable composer variant",
       "Stage42-CS frozen proximity-guard composer policy: safety-sensitive composer artifact/hash frozen from CQ/CR with validation-only guard rules",
       "Stage42-CT frozen policy replay: policy artifact hash and metrics replay against CQ/CR/CS source evidence",
-      "Stage42-CU runtime policy API: frozen proximity-guard composer exposed as deterministic domain/horizon/proximity decision function"
+      "Stage42-CU runtime policy API: frozen proximity-guard composer exposed as deterministic domain/horizon/proximity decision function",
+      "Stage42-CV batch runtime replay: frozen runtime policy exactly matches original CQ guard decisions on real validation/test rows"
     ],
     "best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor",
     "dominant_supported_mechanism": "baseline-family rollout context plus causal history and guarded domain expert under conservative safety floor",
@@ -18278,6 +18279,35 @@
     "verification": {
       "runner": ".venv-pytorch/bin/python run_stage42_runtime_proximity_guard_policy.py",
       "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_runtime_policy.py"
+    }
+  },
+  "stage42_cv_batch_runtime_replay": {
+    "source": "fresh_batch_runtime_replay_from_frozen_policy_artifact",
+    "report": "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_cv_gate.md",
+    "verdict": "stage42_cv_batch_runtime_replay_pass",
+    "gates": "25/25",
+    "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+    "val_decision_match": true,
+    "test_decision_match": true,
+    "test_vs_endpoint_linear_ade": {
+      "all_improvement": 0.017743597342181783,
+      "t50_improvement": 0.010673426149055754,
+      "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+      "hard_failure_improvement": 0.01929354722729537,
+      "easy_degradation": 0.0024927762207753723
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-CV replays the frozen Stage42-CU runtime policy over real common validation/test rows and exactly matches the original Stage42-CQ guard decisions and metrics. It is deployment/reproducibility evidence, not new training.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_batch_replay_proximity_guard_policy.py",
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_batch_replay.py"
     }
   }
 }

@@ -1293,3 +1293,18 @@ The context contribution map is now explicit: baseline-family rollout context is
 - smoke cases: guard-clear full slice, guarded-off full slice, endpoint-only slice, and nonfinite-geometry replay behavior all pass.
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_CU_RUNTIME_POLICY_API:END -->
+
+<!-- STAGE42_CV_BATCH_RUNTIME_REPLAY:START -->
+## Stage42-CV Batch Runtime Policy Replay
+
+- source: `fresh_batch_runtime_replay_from_frozen_policy_artifact`
+- verdict: `stage42_cv_batch_runtime_replay_pass`
+- gates: `25 / 25`
+- policy hash: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`
+- replay scope: real common validation/test rows, not toy smoke cases.
+- replay result: validation and test runtime decisions exactly match the original CQ guard output.
+- test ADE vs endpoint-linear all/t50/t100 raw/hard: `1.77%` / `1.07%` / `3.48%` / `1.93%`
+- test easy degradation: `0.25%`
+- near-collision@0.05 delta vs endpoint-linear: `-0.06%`
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_CV_BATCH_RUNTIME_REPLAY:END -->
