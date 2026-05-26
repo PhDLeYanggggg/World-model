@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_o_explicit_gain_harm_selector",
-  "current_verdict": "stage42_o_explicit_gain_harm_selector_partial",
+  "current_stage": "stage42_p_t50_gain_harm_selector",
+  "current_verdict": "stage42_p_t50_gain_harm_selector_pass",
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
@@ -630,7 +630,10 @@
     "outputs/stage42_long_research/explicit_gain_harm_selector_stage42.md",
     "outputs/stage42_long_research/explicit_gain_harm_selector_stage42.json",
     "outputs/stage42_long_research/stage42_stage_o_gate.md",
-    "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md"
+    "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md",
+    "outputs/stage42_long_research/t50_gain_harm_selector_stage42.md",
+    "outputs/stage42_long_research/t50_gain_harm_selector_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_p_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -12980,13 +12983,35 @@
         "stage5c_executed": false,
         "smc_enabled": false
       }
+    },
+    "stage_p_t50_gain_harm_selector": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/t50_gain_harm_selector_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_p_gate.md",
+      "gates_passed": 14,
+      "gates_total": 14,
+      "verdict": "stage42_p_t50_gain_harm_selector_pass",
+      "t50_gain_harm_ade_all": 0.051537041008552574,
+      "t50_gain_harm_ade_t50": 0.006595599081553938,
+      "t50_gain_harm_ade_hard_failure": 0.05325620637574713,
+      "t50_gain_harm_ade_easy_degradation": 0.008580272800932839,
+      "t50_gain_harm_fde_t50": 0.057430632009597526,
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
-    "source": "cached_verified_plus_stage42_o_strict_partial",
+    "source": "cached_verified_plus_stage42_p_t50_repair",
     "path": "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md",
     "summary_scope": "detailed_routes_failures_successes_current_best_and_boundaries",
-    "stage42_o_verdict": "stage42_o_explicit_gain_harm_selector_partial",
+    "stage42_p_verdict": "stage42_p_t50_gain_harm_selector_pass",
+    "stage42_p_t50_ci_low": -0.01793137718168797,
     "true_3d": false,
     "foundation_world_model": false,
     "metric_or_seconds_claim": false,

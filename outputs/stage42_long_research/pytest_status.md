@@ -2,7 +2,8 @@
 
 - source: `fresh_run`
 - command: `python3 -m pytest tests`
-- result: `299 passed in 62.06s`
+- result: `302 passed in 61.54s`
+- targeted: `python3 -m pytest tests/test_stage42_t50_gain_harm_selector.py` -> `3 passed in 1.48s`
 - targeted: `python3 -m pytest tests/test_stage42_explicit_gain_harm_selector.py` -> `3 passed in 1.51s`
 - targeted: `python3 -m pytest tests/test_stage42_row_gain_static_gate.py` -> `3 passed in 1.84s`
 - targeted: `python3 -m pytest tests/test_stage42_policy_distilled_static_gate.py` -> `3 passed in 1.82s`

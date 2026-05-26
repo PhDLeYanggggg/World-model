@@ -137,3 +137,14 @@ The result is mixed and must not be packaged as a t+50 success. It improves ADE 
 Stage42-O tests the Stage42-N diagnosis by adding an explicit row-level selector head for switch probability, expected gain, harm probability, and uncertainty. It also fixes the strict evaluation protocol by using train-split feature normalization for train/val/test and adding a `no_test_statistics_normalization` gate. Future waypoints remain labels only, not inference inputs.
 
 The strict result is useful but partial: ADE all improves to `0.0526`, hard/failure to `0.0535`, t+100 raw-frame diagnostic to `0.0602`, and easy degradation stays under the mean 2% gate at `0.0155`. However ADE t50 remains slightly negative at `-0.0008`, so Stage42-O must not be packaged as a t+50 success. It confirms that explicit gain/harm prediction is better than alpha-only distillation, but the next repair needs a t+50-specific teacher ensemble or per-domain horizon calibration.
+
+## Stage42-P Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/t50_gain_harm_selector_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_p_gate.md`
+- verdict: `stage42_p_t50_gain_harm_selector_pass`
+
+Stage42-P directly targets the Stage42-O t+50 failure by increasing t+50 train/val teacher weight and using a t+50-weighted validation policy search. It keeps the strict protocol from Stage42-O: train-only feature normalization, validation-only threshold selection, no test endpoint goals, no future waypoint input, and no central velocity.
+
+The result repairs the mean ADE t50 sign while preserving all/hard/easy: ADE all `0.0515`, ADE t50 `0.0066`, ADE hard/failure `0.0533`, easy degradation `0.0086`, and FDE t50 `0.0574`, with gates `14 / 14`. The limitation is statistical: the 3-seed t50 CI low is still negative (`-0.0179`), so this is a gate-passing t+50 repair, not yet a paper-level stable t+50 claim. The next step is more seeds/bootstrap and combining Stage42-P's row gain/harm selector with Stage42-J's static expert policy.

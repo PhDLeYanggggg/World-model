@@ -579,6 +579,33 @@ no_test_statistics_normalization = true
 - easy degradation mean 为 `0.0155`，低于 2% mean gate，但仍需要后续 bootstrap/CI 检查，不能只看 mean。
 - 下一步不是再做 alpha distillation，而是做 t+50-specific gain/harm teacher ensemble 或 per-domain horizon policy。
 
+### Stage42-P：t+50-specific gain/harm selector repair
+
+Stage42-P 是对 Stage42-O 的直接 t+50 修复：保留显式 switch/gain/harm/uncertainty head，但把 train/val teacher supervision 中的 t+50 行加权，并用 t+50-weighted validation policy search。仍然使用 train-only feature normalization，不使用 test stats，不使用 test easy/hard label 做 inference guard。
+
+```text
+source = fresh_run
+verdict = stage42_p_t50_gain_harm_selector_pass
+gates = 14 / 14
+ADE all = 0.0515
+ADE t50 = 0.0066
+ADE t50 3-seed CI = [-0.0179, 0.0311]
+ADE t100 raw-frame diagnostic = 0.0593
+ADE hard/failure = 0.0533
+ADE easy degradation = 0.0086
+FDE t50 = 0.0574
+feature_normalization = train_split_stats_only
+no_test_statistics_normalization = true
+```
+
+解释：
+
+- Stage42-P 修复了 Stage42-O 的 mean t50 负号：ADE t50 从 `-0.0008` 到 `+0.0066`。
+- all/hard 仍明显为正：ADE all `0.0515`，hard/failure `0.0533`。
+- easy degradation mean `0.0086`，低于 2% 安全门限。
+- 但 t50 的 3-seed CI low 仍为负，说明这是一个 pass-gate repair，不是论文级稳定 t50 结论。
+- 下一步应做更多 seed 或 bootstrap，并把 Stage42-P 与 Stage42-J policy static-gated experts 合并，避免只靠 t50 加权 head。
+
 ## 4. 失败路线总表
 
 | 路线 | 状态 | 失败原因 |
@@ -641,13 +668,13 @@ not ungated neural deployment
 - metric/time calibration 未完成。
 - external 数据广度仍有限。
 - full retrained ablation 仍未完全覆盖所有神经组件。
-- Stage42-O 严格 train-only normalization 后是 partial，不是 t+50 pass；说明 t50-specific switchability 仍是未解决点。
+- Stage42-P 已把 Stage42-O 的 mean t50 负号修成正值，但 3-seed CI low 仍为负；说明 t50-specific switchability 方向有效，但还需要更强统计证据和 expert-policy 组合。
 
 ## 7. 下一步最短路径
 
-1. 做 t+50-specific gain/harm teacher ensemble，避免 Stage42-O 在 train-only normalization 后 t50 仍小负。
-2. 对 Stage42-O 类策略增加 bootstrap / seed variance，并检查 easy degradation CI，而不只看 mean。
-3. 组合 Stage42-J policy static-gated experts 与 Stage42-O row-level gain/harm selector，而不是继续 alpha-only distillation。
+1. 对 Stage42-P 做更多 seed 或 bootstrap，检查 t50 CI low 和 easy degradation CI，而不只看 mean。
+2. 组合 Stage42-J policy static-gated experts 与 Stage42-P t50-specific gain/harm selector，而不是继续 alpha-only distillation。
+3. 继续做 per-domain horizon calibration，重点修复 t50 CI low 为负的问题。
 4. 补 full retrained ablation：JEPA、Transformer、full-waypoint shape、no-fallback、no-static、no-history、no-neighbor、no-goal/scene 全部同协议重训。
 5. 做 metric/time calibration：FPS、annotation stride、homography、meter-per-pixel。没有证据就继续写 raw-frame / dataset-local。
 6. 增加外部 top-down 数据集，尤其带 scene image / homography / longer horizon 的合法数据。

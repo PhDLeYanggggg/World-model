@@ -2165,3 +2165,21 @@ smc_enabled = false
 Stage42-O adds an explicit row-level gain/harm/switchability selector head on top of cached-verified Stage42-N full-waypoint predictors. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 Stage42-O interpretation: after fixing normalization to use train-split statistics only, the result is a useful partial repair rather than a t+50 pass. It improves ADE all and hard/failure over Stage42-N and keeps easy degradation below the mean 2% gate, but ADE t50 remains slightly negative, so it must not be packaged as a t+50 success.
+
+## Stage42-P T50-Specific Gain/Harm Selector Repair
+
+```text
+source = fresh_run
+verdict = stage42_p_t50_gain_harm_selector_pass
+gates = 14 / 14
+t50_gain_harm_ade_all = 0.051537041008552574
+t50_gain_harm_ade_t50 = 0.006595599081553938
+t50_gain_harm_ade_hard_failure = 0.05325620637574713
+t50_gain_harm_ade_easy_degradation = 0.008580272800932839
+t50_gain_harm_fde_t50 = 0.057430632009597526
+feature_normalization = train_split_stats_only
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-P is a t+50-specific follow-up to Stage42-O. It increases t+50 teacher weight and searches a t+50-weighted validation policy while preserving the raw-frame/dataset-local 2.5D claim boundary.

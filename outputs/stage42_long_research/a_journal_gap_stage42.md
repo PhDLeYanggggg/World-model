@@ -18,13 +18,14 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 - Fresh Stage42-M policy-distillation negative result showing that coarse domain/horizon alpha distillation is insufficient; row-level gain/harm supervision is needed.
 - Fresh Stage42-N row-level gain/harm static-gate pilot showing that row-level alpha supervision improves all/hard but still fails t+50, so alpha-style gate distillation alone is insufficient.
 - Fresh Stage42-O explicit gain/harm selector showing that row-level switch/gain/harm prediction improves all/hard and uses train-only normalization, but still does not pass ADE t50.
+- Fresh Stage42-P t+50-specific gain/harm selector showing that t+50-weighted train/val supervision repairs the mean ADE t50 sign while preserving all/hard/easy.
 - Clear claim boundaries and no-leakage policy.
 
 ## What Is Not Yet Strong Enough
 
 - Full retrained ablation for every named component: Stage42-G/H cover key feature/safety selector and causal sequence-history ablations, but JEPA, full Transformer, endpoint-bridge, and full-waypoint-shape retraining remain open.
 - Full sequence-to-waypoint deployment: Stage42-L repairs the fresh checkpoint t50 sign, but it still underperforms the Stage42-J policy-level gate. A stronger paper claim still needs distillation of Stage42-J's domain/horizon expert selection into a fresh checkpoint, longer training, or bootstrap over the improved checkpoint.
-- Policy distillation and row selector: Stage42-M shows that distilling only slice-level static alpha can improve FDE t50 but harms ADE t50. Stage42-N shows that row-level alpha/gain/harm supervision improves all/hard but still harms ADE t50. Stage42-O shows that an explicit gain/harm selector improves all/hard more cleanly under train-only normalization, but ADE t50 is still slightly negative. This branch needs t+50-specific teacher ensembles or per-domain horizon calibration before it can support a deployable checkpoint claim.
+- Policy distillation and row selector: Stage42-M shows that distilling only slice-level static alpha can improve FDE t50 but harms ADE t50. Stage42-N shows that row-level alpha/gain/harm supervision improves all/hard but still harms ADE t50. Stage42-O shows that an explicit gain/harm selector improves all/hard more cleanly under train-only normalization, but ADE t50 is still slightly negative. Stage42-P repairs the mean ADE t50 sign with t+50-specific weighting, but the 3-seed t50 CI low remains negative, so it still needs statistical strengthening before becoming a paper-level stable t50 claim.
 - Metric/time-calibrated pedestrian benchmark claims.
 - External expansion beyond the current converted top-down state with independent legal datasets.
 - Floor-free or partially floor-free neural deployment that preserves proximity/collision safety.
@@ -32,7 +33,7 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 
 ## Shortest Next Path
 
-1. Build a t+50-specific row-level gain/harm teacher ensemble or per-domain horizon-calibrated selector, because Stage42-O improves all/hard but still does not pass ADE t50 under strict train-only normalization.
+1. Add more seeds/bootstrap and per-domain horizon calibration for Stage42-P, because it passes the mean t50 gate but still has negative 3-seed t50 CI low.
 2. Run Stage42-G/H Phase2 true retrained ablations for no-JEPA, no-Transformer, no-endpoint-bridge, and no-full-waypoint-shape with bootstrap or three seeds; Stage42-H has repaired the history-token question with an actual sequence model, so the next ablation priority is full Transformer/JEPA/full-waypoint-shape rather than flattened-history.
 3. Add one more legally verified external top-down pedestrian/drone dataset or a stronger held-out source split.
 4. Build a proximity-safe internal self-gate that reduces teacher-floor dependence without increasing collision/proximity risk.
