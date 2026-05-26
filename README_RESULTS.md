@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA, the main successful routes, failed routes and failure reasons, current deployable model boundary, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB, the main successful routes, failed routes and failure reasons, current deployable model boundary, full-waypoint auxiliary-head mixed evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Root-level Chinese summary requested by the user:
 
@@ -2422,3 +2422,23 @@ smc_enabled = false
 ```
 
 Stage42-AA reruns Stage42-G fresh retrained ablation and consolidates the required Stage42 ablations into one source-labeled matrix. It supports history tokens and domain expert as the clearest sequence contributions, shows goal/scene/neighbor/interaction are positive in the ridge retrained proxy but mixed at sequence level, and keeps JEPA/Transformer boundaries honest: no-JEPA is cached negative evidence, while no-Transformer is a fresh proxy rather than a full architecture retrain.
+
+## Stage42-AB Full-Waypoint Auxiliary-Head Ablation
+
+```text
+source = fresh_run
+verdict = stage42_ab_full_waypoint_auxiliary_ablation_pass
+gates = 11 / 11
+no_aux_ADE_all = -0.0023389398251364435
+no_aux_ADE_t50 = -0.03744290181012914
+no_aux_ADE_hard_failure = -0.0025638694532068573
+no_aux_easy_degradation = 0.0
+full_minus_no_aux_ADE_all = -0.008219100222801626
+full_minus_no_aux_ADE_t50 = 0.005361125229882559
+full_minus_no_aux_ADE_hard = -0.009026926673955549
+uniform_aux_positive_claim_allowed = False
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AB removes supervised interaction / occupancy / physical auxiliary losses while keeping the same full-waypoint model inputs, outputs, and validation-only policy interface. Positive deltas mean the auxiliary heads helped; mixed or negative deltas are recorded as limitation evidence, not overclaimed.

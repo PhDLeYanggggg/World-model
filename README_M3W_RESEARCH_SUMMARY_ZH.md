@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA 已生成并校验的轻量报告；本文件本身不重新训练大模型、不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。  
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB 已生成并校验的轻量报告；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。  
 
 本轮校验：
 
@@ -11,8 +11,9 @@ python3 run_stage42_unified_ablation_evidence.py = pass
 python3 run_stage42_paper_claim_evidence_audit.py = pass
 python3 run_stage42_retrained_ablation.py = pass
 python3 run_stage42_retrained_ablation_matrix.py = pass
+python3 run_stage42_full_waypoint_auxiliary_ablation.py = pass
 python3 -m pytest tests/test_stage42_unified_ablation_evidence.py = 3 passed
-python3 -m pytest tests = 333 passed
+python3 -m pytest tests = 336 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -28,7 +29,7 @@ python3 -m pytest tests = 333 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA 的统一 full-waypoint、paper claim、retrained ablation evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB 的统一 full-waypoint、paper claim、retrained ablation 和 auxiliary-head ablation evidence。
 
 ## 本次用户版总览
 
@@ -41,12 +42,11 @@ python3 -m pytest tests = 333 passed
 5. 后面我开始训练 neural dynamics。无保护 Transformer/JEPA/Hybrid 多次失败；有效结果都来自 Stage37/teacher floor 保护下的 bounded / safe-switch neural package。
 6. Stage41/42 把结果从 endpoint / selector 推到 all-agent、full-waypoint、row-level cache 和 retrained ablation evidence；这比早期 demo 更像研究证据链。
 7. 失败路线也很明确：JEPA non-collapse 但 downstream 无稳定 lift；hard-class selector 会严重伤 easy；ordinary residual/correction 不安全；ungated neural dynamics 不可部署；endpoint success 不能自动转成 full-waypoint success。
-8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA 则提供 row-level full-waypoint cache、统一消融和论文 claim 边界证据。
+8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界和 auxiliary-head mixed-evidence。
 9. 仍不能说 true 3D、metric、seconds-level、foundation，也不能执行 Stage5C 或 SMC。
 
 没有纳入为“已完成结果”的内容：
 
-- 尚未正式跑完/提交的 Stage42-AB auxiliary-head ablation，不写成成功也不写成失败。
 - 大 cache、checkpoint、heartbeat、raw data、第三方数据，不作为 GitHub 提交内容。
 
 ## 0. 必须先写清楚的边界
@@ -692,3 +692,23 @@ smc_enabled = false
 ```
 
 Stage42-AA 重跑了 Stage42-G 的 retrained ablation，并把用户要求的 12 类 ablation 放进同一张矩阵。当前 11/12 有 fresh Stage42 evidence；唯一不是 fresh 的是 `no_JEPA`，它仍是 cached negative architecture evidence，不能伪装成本轮重训。`no_Transformer` 目前是 fresh proxy，不是完整 no-Transformer architecture retrain。最清楚的正贡献仍是 history tokens 和 domain expert；teacher floor 去掉后不安全，所以 Stage37/teacher floor 仍是部署必要条件。
+
+## Stage42-AB Full-Waypoint Auxiliary-Head Ablation
+
+```text
+source = fresh_run
+verdict = stage42_ab_full_waypoint_auxiliary_ablation_pass
+gates = 11 / 11
+no_aux_ADE_all = -0.0023389398251364435
+no_aux_ADE_t50 = -0.03744290181012914
+no_aux_ADE_hard_failure = -0.0025638694532068573
+no_aux_easy_degradation = 0.0
+full_minus_no_aux_ADE_all = -0.008219100222801626
+full_minus_no_aux_ADE_t50 = 0.005361125229882559
+full_minus_no_aux_ADE_hard = -0.009026926673955549
+uniform_aux_positive_claim_allowed = False
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AB removes supervised interaction / occupancy / physical auxiliary losses while keeping the same full-waypoint model inputs, outputs, and validation-only policy interface. Positive deltas mean the auxiliary heads helped; mixed or negative deltas are recorded as limitation evidence, not overclaimed.

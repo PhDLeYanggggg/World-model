@@ -1,20 +1,22 @@
 {
-  "current_stage": "stage42_aa_retrained_ablation_matrix",
-  "current_verdict": "stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary",
+  "current_stage": "stage42_ab_full_waypoint_auxiliary_ablation",
+  "current_verdict": "stage42_ab_full_waypoint_auxiliary_ablation_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyzaa_verified",
+    "source": "cached_verified_plus_stage42_wxyzaaab_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA.",
+    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AA retrained ablation matrix passed with 15/15 gates; Stage42-Z paper claim audit passed with 16/16 gates; Stage42-X/Y provide row-level full-waypoint cache and unified ablation evidence.",
+    "latest_branch_success": "Stage42-AB fresh retrained auxiliary-head ablation passed 11/11 gates; full pytest passed 336 tests. The auxiliary heads show mixed evidence: small t50/FDE-t50 support, but not uniform all/hard ADE support.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
       "stage42_g_rerun": "pass",
       "stage42_aa_runner": "pass",
       "focused_pytest": "passed",
-      "full_pytest": "333 passed"
+      "full_pytest": "336 passed",
+      "stage42_ab_runner": "pass",
+      "stage42_ab_focused_pytest": "6 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -23,9 +25,13 @@
       "stage5c_executed": false,
       "smc_enabled": false
     },
-    "not_included_as_completed": [
-      "Stage42-AB auxiliary-head ablation is not counted because it has not been completed/evaluated in this summary update."
-    ]
+    "auxiliary_head_evidence": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.md",
+      "gate": "11/11",
+      "uniform_aux_positive_claim_allowed": false,
+      "conclusion": "Auxiliary interaction/occupancy/physical heads provide small t50/FDE-t50 support but mixed or negative all/hard ADE deltas; limitation/partial evidence only."
+    }
   },
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
@@ -701,7 +707,11 @@
     "outputs/stage42_long_research/retrained_ablation_matrix_stage42.csv",
     "outputs/stage42_long_research/stage42_stage_aa_gate.md",
     "README_M3W_RESEARCH_SUMMARY_ZH.md",
-    "README_RESULTS.md"
+    "README_RESULTS.md",
+    "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.md",
+    "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.json",
+    "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.csv",
+    "outputs/stage42_long_research/stage42_stage_ab_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13335,6 +13345,34 @@
       "safety_negative_claims": [
         "no_teacher_floor"
       ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_ab_full_waypoint_auxiliary_ablation": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_ab_gate.md",
+      "csv": "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.csv",
+      "gates_passed": 11,
+      "gates_total": 11,
+      "verdict": "stage42_ab_full_waypoint_auxiliary_ablation_pass",
+      "no_aux_ade_all": -0.0023389398251364435,
+      "no_aux_ade_t50": -0.03744290181012914,
+      "no_aux_ade_hard_failure": -0.0025638694532068573,
+      "no_aux_easy_degradation": 0.0,
+      "delta_vs_stage42i_full": {
+        "ade_all_delta_full_minus_no_aux": -0.008219100222801626,
+        "ade_t50_delta_full_minus_no_aux": 0.005361125229882559,
+        "ade_hard_delta_full_minus_no_aux": -0.009026926673955549,
+        "fde_t50_delta_full_minus_no_aux": 0.005084278619559292
+      },
+      "uniform_aux_positive_claim_allowed": false,
       "claim_boundary": {
         "true_3d": false,
         "foundation_world_model": false,

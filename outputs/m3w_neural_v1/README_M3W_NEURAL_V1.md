@@ -547,3 +547,23 @@ smc_enabled = false
 ```
 
 Stage42-AA reruns the Stage42-G retrained ablation and unifies the required ablation evidence. It shows 11 of 12 requested ablation categories have fresh Stage42 evidence; no-JEPA remains cached negative architecture evidence and is not relabeled as fresh retraining. Teacher-floor removal is unsafe, so the Stage37/teacher safety floor remains required for deployment.
+
+## Stage42-AB Full-Waypoint Auxiliary-Head Ablation
+
+```text
+source = fresh_run
+verdict = stage42_ab_full_waypoint_auxiliary_ablation_pass
+gates = 11 / 11
+no_aux_ADE_all = -0.0023389398251364435
+no_aux_ADE_t50 = -0.03744290181012914
+no_aux_ADE_hard_failure = -0.0025638694532068573
+no_aux_easy_degradation = 0.0
+full_minus_no_aux_ADE_all = -0.008219100222801626
+full_minus_no_aux_ADE_t50 = 0.005361125229882559
+full_minus_no_aux_ADE_hard = -0.009026926673955549
+uniform_aux_positive_claim_allowed = False
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AB removes supervised interaction / occupancy / physical auxiliary losses while keeping the same full-waypoint model inputs, outputs, and validation-only policy interface. Positive deltas mean the auxiliary heads helped; mixed or negative deltas are recorded as limitation evidence, not overclaimed.
