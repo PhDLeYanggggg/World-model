@@ -22,6 +22,12 @@ Latest Stage42 neighbor/interaction gated expert audit:
 
 Stage42-CK passes `11 / 11` gates as `fresh_run`, but it is also diagnostic rather than a new positive contribution. It builds current-frame kNN graph features for `337991` rows (`334525` rows with neighbors), then evaluates scalar-neighbor and graph candidates under a validation-only safe gate. The gate again selects `baseline_family_control`: scalar neighbor reaches `26.37% / 22.96% / 24.88%` all/t50/hard, kNN graph reaches `24.38% / 22.38% / 23.78%`, both below the baseline-family control `28.78% / 31.54% / 27.58%`. Neighbor/interaction therefore remains auxiliary/diagnostic and not an independent main claim under the current source-level ridge/full-waypoint protocol.
 
+Latest Stage42 post-context-guard paper package refresh:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/paper_package_post_context_guard_refresh_stage42.md`
+
+Stage42-CL passes `11 / 11` gates as `fresh_synthesis_from_stage42_cj_ck_artifacts`. It propagates the CJ/CK negative evidence into the paper package files themselves: experiment tables, ablation tables, failure taxonomy, and A-journal gap. The refreshed package explicitly blocks goal/scene and neighbor/interaction as independent main claims while preserving the supported mechanism boundary: baseline-family rollout context, causal history, guarded domain expert, and conservative safety floor. This is a claim-boundary refresh, not new training, not metric/seconds-level evidence, not Stage5C, and not SMC.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`

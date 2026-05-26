@@ -183,3 +183,31 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - Still required: teacher/floor rollout context, protected safe-switch, train/internal-validation policy selection.
 - Rejected: true 3D, foundation model, global metric prediction, seconds-level horizon, Stage5C execution, SMC readiness, and ungated/floor-free neural deployment.
 <!-- STAGE42_CA_REFRESH:END -->
+
+<!-- STAGE42_CL_CONTEXT_GUARD_REFRESH:START -->
+## Stage42-CL Post-CJ/CK Context Guard Refresh
+
+- source: `fresh_synthesis_from_stage42_cj_ck_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-CJ tested whether goal/scene context can become a validation-only gated expert over baseline-family rollout context.
+- Stage42-CK tested whether scalar neighbor or kNN interaction graph context can become a validation-only gated expert.
+- Both gates selected `baseline_family_control`, so goal/scene and neighbor/interaction remain diagnostic/auxiliary rather than main claims.
+- This refresh updates paper-package language to prevent context overclaims.
+- Stage5C remains unexecuted and SMC remains disabled.
+
+### Evidence Rows
+
+| item | status | paper use | evidence |
+| --- | --- | --- | --- |
+| Stage42-CJ goal/scene gated expert | `diagnostic_negative` | claim boundary / limitation | gate=10/10; selected=baseline_family_control; goal_scene_rescue_success=False; control all/t50/hard=28.78%/31.54%/27.58%; goal all/t50/hard=26.25%/22.76%/24.86% |
+| Stage42-CJ motion+goal context | `diagnostic_negative` | ablation boundary | motion_goal all/t50/hard=24.58%/22.02%/23.75%; delta_t50_vs_control=-9.53% |
+| Stage42-CK neighbor/interaction gated expert | `diagnostic_negative` | claim boundary / limitation | gate=11/11; selected=baseline_family_control; neighbor_interaction_rescue_success=False; graph_rows=337991; rows_with_neighbors=334525; control all/t50/hard=28.78%/31.54%/27.58% |
+| Stage42-CK graph/scalar candidates | `diagnostic_negative` | ablation boundary | scalar all/t50/hard=26.37%/22.96%/24.88%; knn_graph all/t50/hard=24.38%/22.38%/23.78%; graph_goal all/t50/hard=20.67%/22.21%/18.81% |
+
+### Claim Boundary
+
+- Supported main mechanism remains baseline-family rollout context plus causal history under a conservative safety floor.
+- Goal/scene context is not a standalone main contribution under the current source-level ridge/full-waypoint protocol.
+- Neighbor/interaction context is not a standalone main contribution under the current source-level ridge/full-waypoint protocol.
+- Rejected: true 3D, foundation model, global metric prediction, seconds-level horizon, Stage5C execution, SMC readiness, and ungated/floor-free neural deployment.
+<!-- STAGE42_CL_CONTEXT_GUARD_REFRESH:END -->

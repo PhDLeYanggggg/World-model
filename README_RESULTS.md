@@ -16,6 +16,7 @@ dominant mechanism = baseline-family rollout context + causal history + guarded 
 not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as independent drivers
 latest audits = Stage42-CJ goal/scene gated expert and Stage42-CK neighbor/interaction gated expert
 latest gate status = CJ 10 / 10, CK 11 / 11
+latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
 latest full pytest = 562 passed
 ```
 
@@ -53,6 +54,19 @@ SMC_enabled = false
 ```
 
 Stage42-CK tests the other mixed Stage42-CI context component. It builds current-frame kNN graph features for `337991` rows with `334525` rows having neighbors, then evaluates scalar-neighbor and graph candidates under the same validation-only rule. None beat `baseline_family_control` on validation or test. This is fresh negative evidence: neighbor/interaction remains auxiliary/diagnostic, not an independent main paper claim under the current source-level ridge/full-waypoint protocol.
+
+```text
+Stage42-CL post-CJ/CK context guard paper refresh
+source = fresh_synthesis_from_stage42_cj_ck_artifacts
+verdict = stage42_cl_context_guard_paper_refresh_pass
+gates = 11 / 11
+paper files refreshed = experiment tables, ablation tables, failure taxonomy, A-journal gap
+claim boundary = goal/scene and neighbor/interaction remain auxiliary/diagnostic, not independent main claims
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CL propagates the CJ/CK negative context evidence into the paper package itself, so the package now explicitly blocks goal/scene and neighbor/interaction overclaims while preserving the supported main mechanism: baseline-family rollout context + causal history + guarded domain expert under a conservative safety floor.
 
 本次汇总版已吸收 Stage42-CG/CH 的最新 legal / metric-time guard：当前有 6 个 ETH/UCY source-specific calibration candidates，但 conversion_ready=0，因而 global/restricted metric-seconds claim 仍全部禁止；source terms validator 也仍为 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。
 
