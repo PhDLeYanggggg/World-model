@@ -147,6 +147,8 @@ Bootstrap lower bounds:
 | Stage42-BL | ETH-Person XML technical dry-run：5 strict independent sources，t100 windows 1485，mean +0.683549，min +0.496424，easy -0.014155，gates 13/13 | 技术路径强正，但 terms 未确认，不能算 official / deployable / global t100 |
 | Stage42-BM | ETH-Person terms audit：gates 14/14；OpenTraj MIT 被判定为 toolkit/software-only；ETH-Person local terms file 未找到；official URL 已记录但 terms 未验证 | 正确保留 BL 技术证据，同时阻止 official converted/evaluated、deployable t100、global t100 overclaim |
 | Stage42-BN | source time/geometry calibration：gates 13/13；ETH source-specific metric/time sources = 2，UCY = 4；SDD scale_count = 60 但 metric claim false | 为未来 source-specific calibrated subset 打开入口，同时继续禁止 global metric/seconds claim |
+| Stage42-BO | calibrated-subset source-CV：6 sources、160338 rows；macro all +9.05%、t50 +7.07%、t100 raw diag +10.41%，但 t50 min -10.78%、easy max +103.25%，gates 10/13 | 有 calibrated subset 正信号，但过切换严重，不可部署，不能写成成功 |
+| Stage42-BP | 加 source/source-family support guard 后 gates 11/11；macro all +5.76%、t50 +6.19%、hard +5.63%，easy max 0；`UCY_students03` 被安全回退 | 修复 BO 的 easy harm，形成 limited positive safety repair；但 `ETH_seq_eth` t50 仍 -6.66%，不是 global calibrated-subset success |
 
 ## 4. 失败路线和原因
 
@@ -328,6 +330,7 @@ ETH-Person XML 已经 official converted/evaluated。
 
 3. **做 source-specific calibrated subset 评估，而不是全局 metric claim。**
    Stage42-BN 已确认 ETH `seq_eth` / `seq_hotel` 和 UCY `zara01/02/03/students03` 有局部 H + annotation-step timing evidence。下一步如果要写 metric/time，只能在这些 source-specific calibrated subsets 上重评，并继续把全局 M3W 写成 raw-frame/dataset-local。
+   Stage42-BO/BP 已完成第一轮重评：有 macro 正信号，但只能称 limited positive / source-family guarded safety repair；`ETH_seq_eth` t50 负值和 fallback-only sources 仍是 blocker。
 
 4. **如果继续追神经世界模型主贡献，要重训 graph/scene-rich neural protocol。**
    当前 source-level 主机制是 baseline-family rollout context。若要证明 neural dynamics，需要更强的 scene tokens、interaction graph、full-waypoint loss、multi-domain source split 和 multi-seed/bootstrap。
@@ -353,6 +356,7 @@ source-level strongest mechanism：baseline-family rollout context + validation-
 t100 global claim：否，仍 blocked
 ETH-Person XML：technical dry-run positive；Stage42-BM 已确认 terms/license blocker，official/deployable/global t100 claim 仍禁止
 metric/time：Stage42-BN 找到 ETH/UCY source-specific candidates，但 global metric/seconds claim 仍禁止
+calibrated subset：Stage42-BO partial，Stage42-BP limited positive safety repair；easy harm 已修，但 ETH_seq_eth t50 仍负，不能写成 global calibrated success
 
 current verdict:
   M3W 是一个有实证进展的 protected 2.5D multi-agent world-state candidate。

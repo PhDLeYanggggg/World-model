@@ -661,6 +661,44 @@ M3W official metric/seconds claim allowed = false
 
 解释：ETH `seq_eth` / `seq_hotel` 和 UCY `zara01/02/03/students03` 有局部 H + 2.5fps / 0.4s annotation-step evidence，可作为未来 source-specific calibrated subset 的候选；但不能把整个 M3W 写成 metric 或 seconds-level。
 
+随后 Stage42-BO/BP 已完成 calibrated-subset source-CV 与安全修复：
+
+```text
+Stage42-BO:
+  source = fresh_calibrated_subset_source_cv
+  verdict = stage42_bo_calibrated_subset_eval_partial
+  gates = 10 / 13
+  calibrated_sources = 6
+  rows_total = 160338
+  all_macro = +0.090510
+  t50_macro = +0.070729
+  t50_min = -0.107784
+  easy_max = +1.032550
+
+Stage42-BP:
+  source = fresh_calibrated_subset_safety_repair
+  verdict = stage42_bp_calibrated_subset_safety_repair_pass_limited_positive
+  gates = 11 / 11
+  all_macro = +0.057580
+  t50_macro = +0.061868
+  t50_min = -0.066609
+  hard_macro = +0.056282
+  easy_max = 0.0
+  positive_fold_count = 3
+  positive_t50_fold_count = 2
+```
+
+解释：BO 证明 calibrated-subset 有 macro 正信号，但 `UCY_students03` easy degradation 爆到 103%，`ETH_seq_eth` t50 为负，所以不能部署。BP 加入 train+val source/source-family support guard 后，`UCY_students03` 被安全回退，easy harm 修复为 0；但 `ETH_seq_eth` t50 仍为负，多个 source fallback-only，因此只能写 limited positive safety repair，不能写 global calibrated-subset / metric / seconds-level 成功。
+
+验证：
+
+```text
+python3 run_stage42_calibrated_subset_eval.py -> completed, BO partial
+python3 run_stage42_calibrated_subset_safety_repair.py -> 11 / 11
+focused pytest -> 11 passed
+python3 -m pytest tests -> 484 passed
+```
+
 已知 runtime 注意事项：
 
 ```text

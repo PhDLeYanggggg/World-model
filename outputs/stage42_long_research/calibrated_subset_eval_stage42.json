@@ -1,0 +1,1505 @@
+{
+  "source": "fresh_calibrated_subset_source_cv",
+  "stage": "Stage42-BO calibrated subset source-CV evaluation",
+  "generated_at_utc": "2026-05-26T14:04:15.669924+00:00",
+  "git_commit": "31e3189",
+  "input_hash": "1d363dc34a97a3c640bb689dc821a4c735830975422d6ea63840cea4bdbf9b54",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BO 是 calibrated-subset-only source-CV evaluation，不是全局 metric 或 seconds-level claim。",
+    "只评估 Stage42-BN 审计出的 source-specific calibration candidates。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "bn_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+  "calibration_summary": {
+    "source": "fresh_source_time_geometry_calibration_audit",
+    "source_records_audited": 7,
+    "eth_source_specific_metric_time_sources": 2,
+    "ucy_source_specific_metric_time_sources": 4,
+    "source_specific_metric_time_sources": [
+      "ETH_seq_eth",
+      "ETH_seq_hotel",
+      "UCY_zara01",
+      "UCY_zara02",
+      "UCY_zara03",
+      "UCY_students03"
+    ],
+    "sdd_scale_count": 60,
+    "sdd_metric_claim_allowed": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "training_run": false,
+    "auto_download_executed": false,
+    "user_action_required": true
+  },
+  "summary": {
+    "source": "fresh_calibrated_subset_source_cv",
+    "calibrated_sources_evaluated": 6,
+    "calibrated_source_ids": [
+      "ETH_seq_eth",
+      "ETH_seq_hotel",
+      "UCY_students03",
+      "UCY_zara01",
+      "UCY_zara02",
+      "UCY_zara03"
+    ],
+    "source_rows": {
+      "ETH_seq_eth": 21598,
+      "ETH_seq_hotel": 16611,
+      "UCY_students03": 70585,
+      "UCY_zara01": 16103,
+      "UCY_zara02": 25901,
+      "UCY_zara03": 9540
+    },
+    "source_cv_folds": 6,
+    "source_overlap_pass": true,
+    "folds": 6,
+    "rows_total": 160338,
+    "all_improvement_macro_mean": 0.09050979339528516,
+    "all_improvement_min": 0.0,
+    "t50_improvement_macro_mean": 0.07072861716817978,
+    "t50_improvement_min": -0.10778426225438564,
+    "t100_raw_frame_diagnostic_macro_mean": 0.10407147772840182,
+    "t100_raw_frame_diagnostic_min": 0.0,
+    "hard_failure_improvement_macro_mean": 0.09794392386813798,
+    "hard_failure_improvement_min": 0.0,
+    "easy_degradation_macro_mean": 0.07756107215615038,
+    "easy_degradation_max": 1.0325498116840084,
+    "positive_all_folds": false,
+    "positive_t50_folds": false,
+    "easy_safe_all_folds": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "training_run": true,
+    "auto_download_executed": false
+  },
+  "fold_results": [
+    {
+      "source": "fresh_calibrated_subset_source_cv_fold",
+      "fold": {
+        "fold_id": 0,
+        "holdout_source": "ETH_seq_eth",
+        "validation_source": "ETH_seq_hotel",
+        "train_sources": [
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "ETH_seq_eth"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 122129,
+          "domains": {
+            "ETH_UCY": 112589,
+            "UCY": 9540
+          },
+          "sources": {
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara01/obsmat.txt": 16103,
+            "UCY/zara02/obsmat.txt": 25901,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 34079,
+          "t25": 32177,
+          "t50": 30279,
+          "t100": 25594,
+          "hard": 97037,
+          "failure": 48638,
+          "easy": 30969
+        },
+        "val": {
+          "rows": 16611,
+          "domains": {
+            "ETH_UCY": 16611
+          },
+          "sources": {
+            "ETH/seq_hotel/obsmat.txt": 16611
+          },
+          "t10": 5387,
+          "t25": 4670,
+          "t50": 3994,
+          "t100": 2560,
+          "hard": 14776,
+          "failure": 6307,
+          "easy": 5755
+        },
+        "test": {
+          "rows": 21598,
+          "domains": {
+            "ETH_UCY": 21598
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598
+          },
+          "t10": 7478,
+          "t25": 6432,
+          "t50": 5074,
+          "t100": 2614,
+          "hard": 18865,
+          "failure": 10862,
+          "easy": 1812
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "floor": {
+        "type": "train_horizon_selected_safe_causal_baseline",
+        "strongest_by_horizon": {
+          "10": 0,
+          "25": 2,
+          "50": 1,
+          "100": 1
+        },
+        "geometry_diagnostics": {
+          "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+          "safe_endpoint_mean_abs_fde_error": 6.232531667367801e-08
+        }
+      },
+      "selected_lambda": 0.1,
+      "policy_slice_count": 4,
+      "protected_ade": {
+        "rows": 21598,
+        "all_improvement": 0.11910130263003682,
+        "t10_improvement": 0.4818164088472351,
+        "t25_improvement": -0.024547212985627453,
+        "t50_improvement": -0.10778426225438564,
+        "t100_raw_frame_diagnostic_improvement": 0.12672837546831983,
+        "hard_failure_improvement": 0.11981906490250749,
+        "easy_degradation": -0.23157587012711023,
+        "switch_rate": 0.8428558199833318,
+        "harm_over_fallback": -0.1549306342463774
+      },
+      "protected_fde": {
+        "rows": 21598,
+        "all_improvement": 0.06307043069954277,
+        "t10_improvement": 0.4447559597515298,
+        "t25_improvement": -0.11500755395556683,
+        "t50_improvement": -0.23522169307369256,
+        "t100_raw_frame_diagnostic_improvement": 0.11826758401354343,
+        "hard_failure_improvement": 0.06372643852483117,
+        "easy_degradation": -0.17091160330072808,
+        "switch_rate": 0.8428558199833318,
+        "harm_over_fallback": -0.11319118097416994
+      },
+      "ungated_ade_diagnostic": {
+        "rows": 21598,
+        "all_improvement": 0.1599439242851617,
+        "t10_improvement": 0.49962952265602933,
+        "t25_improvement": -0.03821873339442661,
+        "t50_improvement": -0.1531828107109907,
+        "t100_raw_frame_diagnostic_improvement": 0.271332545100177,
+        "hard_failure_improvement": 0.16416162624116404,
+        "easy_degradation": -0.18324549946909963,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.20805997152129582
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.11499525124615959,
+          "mid": 0.11912994486977307,
+          "high": 0.12359258129429225,
+          "n": 21598,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -0.11849247454923513,
+          "mid": -0.10785300402838294,
+          "high": -0.09637105526639518,
+          "n": 5074,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.11994785675565907,
+          "mid": 0.12680125771121775,
+          "high": 0.1331577867115954,
+          "n": 2614,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.11533465216448581,
+          "mid": 0.11969416729086019,
+          "high": 0.12445197740655427,
+          "n": 18865,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.3485176029498794,
+          "mid": -0.3025953190026488,
+          "high": -0.25473605326207754,
+          "n": 1812,
+          "bootstrap_n": 1000
+        }
+      },
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 21598,
+          "all_improvement": 0.11910130263003682,
+          "t10_improvement": 0.4818164088472351,
+          "t25_improvement": -0.024547212985627453,
+          "t50_improvement": -0.10778426225438564,
+          "t100_raw_frame_diagnostic_improvement": 0.12672837546831983,
+          "hard_failure_improvement": 0.11981906490250749,
+          "easy_degradation": -0.23157587012711023,
+          "switch_rate": 0.8428558199833318,
+          "harm_over_fallback": -0.1549306342463774
+        }
+      },
+      "by_horizon": {
+        "10": {
+          "rows": 7478,
+          "all_improvement": 0.4818164088472351,
+          "t10_improvement": 0.4818164088472351,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.4811718921895265,
+          "easy_degradation": -0.6170023821722426,
+          "switch_rate": 0.8721583311045734,
+          "harm_over_fallback": -0.3957639825303309
+        },
+        "25": {
+          "rows": 6432,
+          "all_improvement": -0.024547212985627453,
+          "t10_improvement": 0.0,
+          "t25_improvement": -0.024547212985627453,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.030037954433860037,
+          "easy_degradation": -0.09606211240662343,
+          "switch_rate": 0.9350124378109452,
+          "harm_over_fallback": 0.020909793280570497
+        },
+        "50": {
+          "rows": 5074,
+          "all_improvement": -0.10778426225438564,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": -0.10778426225438564,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.10778426225438564,
+          "easy_degradation": 0.6974178551257519,
+          "switch_rate": 0.9613716988569176,
+          "harm_over_fallback": 0.14190143440723463
+        },
+        "100": {
+          "rows": 2614,
+          "all_improvement": 0.12672837546831983,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.12672837546831983,
+          "hard_failure_improvement": 0.12672837546831983,
+          "easy_degradation": 0.03603248849396867,
+          "switch_rate": 0.3022188217291507,
+          "harm_over_fallback": -0.47481577875071995
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_source_cv_fold",
+      "fold": {
+        "fold_id": 1,
+        "holdout_source": "ETH_seq_hotel",
+        "validation_source": "UCY_students03",
+        "train_sources": [
+          "ETH_seq_eth",
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "ETH_seq_hotel"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 73142,
+          "domains": {
+            "ETH_UCY": 63602,
+            "UCY": 9540
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "UCY/zara01/obsmat.txt": 16103,
+            "UCY/zara02/obsmat.txt": 25901,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 22341,
+          "t25": 20239,
+          "t50": 17824,
+          "t100": 12738,
+          "hard": 61302,
+          "failure": 33269,
+          "easy": 11357
+        },
+        "val": {
+          "rows": 70585,
+          "domains": {
+            "ETH_UCY": 70585
+          },
+          "sources": {
+            "UCY/students03/obsmat.txt": 70585
+          },
+          "t10": 19216,
+          "t25": 18370,
+          "t50": 17529,
+          "t100": 15470,
+          "hard": 54600,
+          "failure": 26231,
+          "easy": 21424
+        },
+        "test": {
+          "rows": 16611,
+          "domains": {
+            "ETH_UCY": 16611
+          },
+          "sources": {
+            "ETH/seq_hotel/obsmat.txt": 16611
+          },
+          "t10": 5387,
+          "t25": 4670,
+          "t50": 3994,
+          "t100": 2560,
+          "hard": 14776,
+          "failure": 6307,
+          "easy": 5755
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "floor": {
+        "type": "train_horizon_selected_safe_causal_baseline",
+        "strongest_by_horizon": {
+          "10": 0,
+          "25": 2,
+          "50": 1,
+          "100": 1
+        },
+        "geometry_diagnostics": {
+          "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+          "safe_endpoint_mean_abs_fde_error": 6.232531667367801e-08
+        }
+      },
+      "selected_lambda": 10.0,
+      "policy_slice_count": 2,
+      "protected_ade": {
+        "rows": 16611,
+        "all_improvement": 0.030266858171688837,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.08053346100693504,
+        "t50_improvement": 0.07771774424561517,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.030350015227374905,
+        "easy_degradation": -0.07396549192315582,
+        "switch_rate": 0.07476973090121004,
+        "harm_over_fallback": -0.015350955060940967
+      },
+      "protected_fde": {
+        "rows": 16611,
+        "all_improvement": 0.029646772292843626,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.07570907548512007,
+        "t50_improvement": 0.0664017390195002,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.02970024051224507,
+        "easy_degradation": -0.07409753238362438,
+        "switch_rate": 0.07476973090121004,
+        "harm_over_fallback": -0.020586291068722784
+      },
+      "ungated_ade_diagnostic": {
+        "rows": 16611,
+        "all_improvement": 0.4532530442553171,
+        "t10_improvement": 0.4847262488555183,
+        "t25_improvement": 0.2351503351689488,
+        "t50_improvement": 0.3919530647918549,
+        "t100_raw_frame_diagnostic_improvement": 0.5634283145506978,
+        "hard_failure_improvement": 0.4784282974991336,
+        "easy_degradation": 0.8033441697614354,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.22988402278589773
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.02851232927958092,
+          "mid": 0.03022100658638388,
+          "high": 0.03197566486961045,
+          "n": 16611,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.07279797789280261,
+          "mid": 0.0779384268173055,
+          "high": 0.08270028115000452,
+          "n": 3994,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2560,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.028468888249403308,
+          "mid": 0.03033792823267495,
+          "high": 0.03219798181666665,
+          "n": 14776,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.08874109005315377,
+          "mid": -0.0798434729339812,
+          "high": -0.07124284662572211,
+          "n": 5755,
+          "bootstrap_n": 1000
+        }
+      },
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 16611,
+          "all_improvement": 0.030266858171688837,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.08053346100693504,
+          "t50_improvement": 0.07771774424561517,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.030350015227374905,
+          "easy_degradation": -0.07396549192315582,
+          "switch_rate": 0.07476973090121004,
+          "harm_over_fallback": -0.015350955060940967
+        }
+      },
+      "by_horizon": {
+        "10": {
+          "rows": 5387,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "25": {
+          "rows": 4670,
+          "all_improvement": 0.08053346100693504,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.08053346100693504,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.08334233388526624,
+          "easy_degradation": -0.1706956159896742,
+          "switch_rate": 0.1323340471092077,
+          "harm_over_fallback": -0.02194711738164825
+        },
+        "50": {
+          "rows": 3994,
+          "all_improvement": 0.07771774424561517,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.07771774424561517,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.07771774424561517,
+          "easy_degradation": 0.007148928602785931,
+          "switch_rate": 0.15623435152729093,
+          "harm_over_fallback": -0.03818269312593716
+        },
+        "100": {
+          "rows": 2560,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_source_cv_fold",
+      "fold": {
+        "fold_id": 2,
+        "holdout_source": "UCY_students03",
+        "validation_source": "UCY_zara01",
+        "train_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "UCY_students03"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 73650,
+          "domains": {
+            "ETH_UCY": 64110,
+            "UCY": 9540
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/zara02/obsmat.txt": 25901,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 23148,
+          "t25": 20625,
+          "t50": 17830,
+          "t100": 12047,
+          "hard": 61891,
+          "failure": 31945,
+          "easy": 15760
+        },
+        "val": {
+          "rows": 16103,
+          "domains": {
+            "ETH_UCY": 16103
+          },
+          "sources": {
+            "UCY/zara01/obsmat.txt": 16103
+          },
+          "t10": 4580,
+          "t25": 4284,
+          "t50": 3988,
+          "t100": 3251,
+          "hard": 14187,
+          "failure": 7631,
+          "easy": 1352
+        },
+        "test": {
+          "rows": 70585,
+          "domains": {
+            "ETH_UCY": 70585
+          },
+          "sources": {
+            "UCY/students03/obsmat.txt": 70585
+          },
+          "t10": 19216,
+          "t25": 18370,
+          "t50": 17529,
+          "t100": 15470,
+          "hard": 54600,
+          "failure": 26231,
+          "easy": 21424
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "floor": {
+        "type": "train_horizon_selected_safe_causal_baseline",
+        "strongest_by_horizon": {
+          "10": 0,
+          "25": 2,
+          "50": 1,
+          "100": 1
+        },
+        "geometry_diagnostics": {
+          "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+          "safe_endpoint_mean_abs_fde_error": 6.232531667367801e-08
+        }
+      },
+      "selected_lambda": 100.0,
+      "policy_slice_count": 4,
+      "protected_ade": {
+        "rows": 70585,
+        "all_improvement": 0.032107420215067406,
+        "t10_improvement": -0.18900674650909166,
+        "t25_improvement": -0.06072762898730222,
+        "t50_improvement": 0.02578825577231325,
+        "t100_raw_frame_diagnostic_improvement": 0.1573676043324438,
+        "hard_failure_improvement": 0.07740086125680734,
+        "easy_degradation": 1.0325498116840084,
+        "switch_rate": 0.8981086633137352,
+        "harm_over_fallback": -0.013638804219523185
+      },
+      "protected_fde": {
+        "rows": 70585,
+        "all_improvement": 0.049036559163282645,
+        "t10_improvement": -0.24596063165603854,
+        "t25_improvement": 0.00029156093659632454,
+        "t50_improvement": 0.09645654669876236,
+        "t100_raw_frame_diagnostic_improvement": 0.10954328514864309,
+        "hard_failure_improvement": 0.08202422345640215,
+        "easy_degradation": 1.1375251769665238,
+        "switch_rate": 0.8981086633137352,
+        "harm_over_fallback": -0.030341532811746435
+      },
+      "ungated_ade_diagnostic": {
+        "rows": 70585,
+        "all_improvement": -0.0793741500618701,
+        "t10_improvement": -0.20196597825479623,
+        "t25_improvement": -0.23604847983651456,
+        "t50_improvement": 0.015436820181499944,
+        "t100_raw_frame_diagnostic_improvement": -0.036082242212372995,
+        "hard_failure_improvement": -0.0290018695964418,
+        "easy_degradation": 1.5464333690571048,
+        "switch_rate": 1.0,
+        "harm_over_fallback": 0.033717081146148214
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.027393270391519196,
+          "mid": 0.03225635319171971,
+          "high": 0.03686951556938429,
+          "n": 70585,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.015373191101280529,
+          "mid": 0.025758353544037882,
+          "high": 0.03669446256498675,
+          "n": 17529,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.15114328272015376,
+          "mid": 0.15723464909465779,
+          "high": 0.16376492495188702,
+          "n": 15470,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.07255915522716114,
+          "mid": 0.07750663815249148,
+          "high": 0.08220623345860333,
+          "n": 54600,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.5013678880721325,
+          "mid": 0.5082609419920456,
+          "high": 0.5148812839698297,
+          "n": 21424,
+          "bootstrap_n": 1000
+        }
+      },
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 70585,
+          "all_improvement": 0.032107420215067406,
+          "t10_improvement": -0.18900674650909166,
+          "t25_improvement": -0.06072762898730222,
+          "t50_improvement": 0.02578825577231325,
+          "t100_raw_frame_diagnostic_improvement": 0.1573676043324438,
+          "hard_failure_improvement": 0.07740086125680734,
+          "easy_degradation": 1.0325498116840084,
+          "switch_rate": 0.8981086633137352,
+          "harm_over_fallback": -0.013638804219523185
+        }
+      },
+      "by_horizon": {
+        "10": {
+          "rows": 19216,
+          "all_improvement": -0.18900674650909166,
+          "t10_improvement": -0.18900674650909166,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.004619572279415118,
+          "easy_degradation": 2.710759411698626,
+          "switch_rate": 0.9242298084929226,
+          "harm_over_fallback": 0.04776399814083221
+        },
+        "25": {
+          "rows": 18370,
+          "all_improvement": -0.06072762898730222,
+          "t10_improvement": 0.0,
+          "t25_improvement": -0.06072762898730222,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.011682286298623668,
+          "easy_degradation": 0.5005824017939542,
+          "switch_rate": 0.9408818726183996,
+          "harm_over_fallback": 0.015111675264114444
+        },
+        "50": {
+          "rows": 17529,
+          "all_improvement": 0.02578825577231325,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.02578825577231325,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.02578825577231325,
+          "easy_degradation": 1.0658796119059994,
+          "switch_rate": 0.9073535284385875,
+          "harm_over_fallback": -0.012039095445183877
+        },
+        "100": {
+          "rows": 15470,
+          "all_improvement": 0.1573676043324438,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.1573676043324438,
+          "hard_failure_improvement": 0.1573676043324438,
+          "easy_degradation": 0.5786835189096873,
+          "switch_rate": 0.8043956043956044,
+          "harm_over_fallback": -0.12586271200080348
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_source_cv_fold",
+      "fold": {
+        "fold_id": 3,
+        "holdout_source": "UCY_zara01",
+        "validation_source": "UCY_zara02",
+        "train_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "UCY_zara01"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 118334,
+          "domains": {
+            "ETH_UCY": 108794,
+            "UCY": 9540
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 35141,
+          "t25": 32172,
+          "t50": 28937,
+          "t100": 22084,
+          "hard": 95630,
+          "failure": 47702,
+          "easy": 30970
+        },
+        "val": {
+          "rows": 25901,
+          "domains": {
+            "ETH_UCY": 25901
+          },
+          "sources": {
+            "UCY/zara02/obsmat.txt": 25901
+          },
+          "t10": 7223,
+          "t25": 6823,
+          "t50": 6422,
+          "t100": 5433,
+          "hard": 20861,
+          "failure": 10474,
+          "easy": 6214
+        },
+        "test": {
+          "rows": 16103,
+          "domains": {
+            "ETH_UCY": 16103
+          },
+          "sources": {
+            "UCY/zara01/obsmat.txt": 16103
+          },
+          "t10": 4580,
+          "t25": 4284,
+          "t50": 3988,
+          "t100": 3251,
+          "hard": 14187,
+          "failure": 7631,
+          "easy": 1352
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "floor": {
+        "type": "train_horizon_selected_safe_causal_baseline",
+        "strongest_by_horizon": {
+          "10": 0,
+          "25": 2,
+          "50": 1,
+          "100": 1
+        },
+        "geometry_diagnostics": {
+          "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+          "safe_endpoint_mean_abs_fde_error": 6.232531667367801e-08
+        }
+      },
+      "selected_lambda": 100.0,
+      "policy_slice_count": 4,
+      "protected_ade": {
+        "rows": 16103,
+        "all_improvement": 0.3615831793549179,
+        "t10_improvement": 0.35042124627324256,
+        "t25_improvement": 0.3227491376674606,
+        "t50_improvement": 0.4286499652455359,
+        "t100_raw_frame_diagnostic_improvement": 0.34033288656964733,
+        "hard_failure_improvement": 0.3600936018221381,
+        "easy_degradation": -0.26164201669684006,
+        "switch_rate": 0.7784884804073775,
+        "harm_over_fallback": -0.2111276737398242
+      },
+      "protected_fde": {
+        "rows": 16103,
+        "all_improvement": 0.36170361545025065,
+        "t10_improvement": 0.36090673999670364,
+        "t25_improvement": 0.3292586372426022,
+        "t50_improvement": 0.4707261251780932,
+        "t100_raw_frame_diagnostic_improvement": 0.2985594361203231,
+        "hard_failure_improvement": 0.3605577893435923,
+        "easy_degradation": -0.23487637208447365,
+        "switch_rate": 0.7784884804073775,
+        "harm_over_fallback": -0.3053035890266198
+      },
+      "ungated_ade_diagnostic": {
+        "rows": 16103,
+        "all_improvement": 0.48562250702835863,
+        "t10_improvement": 0.5585517870844388,
+        "t25_improvement": 0.2671308589448338,
+        "t50_improvement": 0.47172168837705564,
+        "t100_raw_frame_diagnostic_improvement": 0.5226273187094954,
+        "hard_failure_improvement": 0.49356670129331104,
+        "easy_degradation": -0.14041048093642416,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.28355398170765117
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.35704359741518465,
+          "mid": 0.36168257244374097,
+          "high": 0.36640130649951297,
+          "n": 16103,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.41576900013381923,
+          "mid": 0.42876470105047304,
+          "high": 0.4400888522967282,
+          "n": 3988,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.3341044160497167,
+          "mid": 0.3405588049956802,
+          "high": 0.3472982867671889,
+          "n": 3251,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.3550072693953596,
+          "mid": 0.3601769486679236,
+          "high": 0.3654906640821227,
+          "n": 14187,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.41756370141338983,
+          "mid": -0.35580077827764156,
+          "high": -0.29944508584937324,
+          "n": 1352,
+          "bootstrap_n": 1000
+        }
+      },
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 16103,
+          "all_improvement": 0.3615831793549179,
+          "t10_improvement": 0.35042124627324256,
+          "t25_improvement": 0.3227491376674606,
+          "t50_improvement": 0.4286499652455359,
+          "t100_raw_frame_diagnostic_improvement": 0.34033288656964733,
+          "hard_failure_improvement": 0.3600936018221381,
+          "easy_degradation": -0.26164201669684006,
+          "switch_rate": 0.7784884804073775,
+          "harm_over_fallback": -0.2111276737398242
+        }
+      },
+      "by_horizon": {
+        "10": {
+          "rows": 4580,
+          "all_improvement": 0.35042124627324256,
+          "t10_improvement": 0.35042124627324256,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.34352888714414953,
+          "easy_degradation": -0.25177705809519824,
+          "switch_rate": 0.6255458515283843,
+          "harm_over_fallback": -0.15341517381366282
+        },
+        "25": {
+          "rows": 4284,
+          "all_improvement": 0.3227491376674606,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.3227491376674606,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.3016796028203532,
+          "easy_degradation": -0.5252520175389217,
+          "switch_rate": 0.9372082166199813,
+          "harm_over_fallback": -0.08975518629761355
+        },
+        "50": {
+          "rows": 3988,
+          "all_improvement": 0.4286499652455359,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.4286499652455359,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.4286499652455359,
+          "easy_degradation": -0.03372781149160653,
+          "switch_rate": 0.7399699097291875,
+          "harm_over_fallback": -0.24404729614259357
+        },
+        "100": {
+          "rows": 3251,
+          "all_improvement": 0.34033288656964733,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.34033288656964733,
+          "hard_failure_improvement": 0.34033288656964733,
+          "easy_degradation": 0.0627964457297634,
+          "switch_rate": 0.8320516764072593,
+          "harm_over_fallback": -0.41198880315292946
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_source_cv_fold",
+      "fold": {
+        "fold_id": 4,
+        "holdout_source": "UCY_zara02",
+        "validation_source": "UCY_zara03",
+        "train_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara01"
+        ],
+        "test_sources": [
+          "UCY_zara02"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 124897,
+          "domains": {
+            "ETH_UCY": 124897
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara01/obsmat.txt": 16103
+          },
+          "t10": 36661,
+          "t25": 33756,
+          "t50": 30585,
+          "t100": 23895,
+          "hard": 102428,
+          "failure": 51031,
+          "easy": 30343
+        },
+        "val": {
+          "rows": 9540,
+          "domains": {
+            "UCY": 9540
+          },
+          "sources": {
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 3060,
+          "t25": 2700,
+          "t50": 2340,
+          "t100": 1440,
+          "hard": 7389,
+          "failure": 4302,
+          "easy": 1979
+        },
+        "test": {
+          "rows": 25901,
+          "domains": {
+            "ETH_UCY": 25901
+          },
+          "sources": {
+            "UCY/zara02/obsmat.txt": 25901
+          },
+          "t10": 7223,
+          "t25": 6823,
+          "t50": 6422,
+          "t100": 5433,
+          "hard": 20861,
+          "failure": 10474,
+          "easy": 6214
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "floor": {
+        "type": "train_horizon_selected_safe_causal_baseline",
+        "strongest_by_horizon": {
+          "10": 0,
+          "25": 2,
+          "50": 1,
+          "100": 1
+        },
+        "geometry_diagnostics": {
+          "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+          "safe_endpoint_mean_abs_fde_error": 6.232531667367801e-08
+        }
+      },
+      "selected_lambda": 0.1,
+      "policy_slice_count": 4,
+      "protected_ade": {
+        "rows": 25901,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "protected_fde": {
+        "rows": 25901,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "ungated_ade_diagnostic": {
+        "rows": 25901,
+        "all_improvement": 0.39005496992931865,
+        "t10_improvement": 0.49852815778301995,
+        "t25_improvement": 0.18544303821402264,
+        "t50_improvement": 0.39015733807301667,
+        "t100_raw_frame_diagnostic_improvement": 0.4033056565170584,
+        "hard_failure_improvement": 0.42362962105636115,
+        "easy_degradation": 1.4604016206530726,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.20443688860035747
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 25901,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 6422,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 5433,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 20861,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 6214,
+          "bootstrap_n": 1000
+        }
+      },
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        }
+      },
+      "by_horizon": {
+        "10": {
+          "rows": 7223,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "25": {
+          "rows": 6823,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "50": {
+          "rows": 6422,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "100": {
+          "rows": 5433,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_source_cv_fold",
+      "fold": {
+        "fold_id": 5,
+        "holdout_source": "UCY_zara03",
+        "validation_source": "ETH_seq_eth",
+        "train_sources": [
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02"
+        ],
+        "test_sources": [
+          "UCY_zara03"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 129200,
+          "domains": {
+            "ETH_UCY": 129200
+          },
+          "sources": {
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara01/obsmat.txt": 16103,
+            "UCY/zara02/obsmat.txt": 25901
+          },
+          "t10": 36406,
+          "t25": 34147,
+          "t50": 31933,
+          "t100": 26714,
+          "hard": 104424,
+          "failure": 50643,
+          "easy": 34745
+        },
+        "val": {
+          "rows": 21598,
+          "domains": {
+            "ETH_UCY": 21598
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598
+          },
+          "t10": 7478,
+          "t25": 6432,
+          "t50": 5074,
+          "t100": 2614,
+          "hard": 18865,
+          "failure": 10862,
+          "easy": 1812
+        },
+        "test": {
+          "rows": 9540,
+          "domains": {
+            "UCY": 9540
+          },
+          "sources": {
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 3060,
+          "t25": 2700,
+          "t50": 2340,
+          "t100": 1440,
+          "hard": 7389,
+          "failure": 4302,
+          "easy": 1979
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "floor": {
+        "type": "train_horizon_selected_safe_causal_baseline",
+        "strongest_by_horizon": {
+          "10": 0,
+          "25": 2,
+          "50": 1,
+          "100": 1
+        },
+        "geometry_diagnostics": {
+          "safe_endpoint_max_abs_fde_error": 1.7858156996196362e-06,
+          "safe_endpoint_mean_abs_fde_error": 6.232531667367801e-08
+        }
+      },
+      "selected_lambda": 0.1,
+      "policy_slice_count": 4,
+      "protected_ade": {
+        "rows": 9540,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "protected_fde": {
+        "rows": 9540,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "ungated_ade_diagnostic": {
+        "rows": 9540,
+        "all_improvement": 0.363887054687133,
+        "t10_improvement": 0.566443836754692,
+        "t25_improvement": 0.29629447674233034,
+        "t50_improvement": 0.2945894846767345,
+        "t100_raw_frame_diagnostic_improvement": 0.3129551397625301,
+        "hard_failure_improvement": 0.3520688860194243,
+        "easy_degradation": -0.07758565810813156,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.19452168469407122
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 7389,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 1979,
+          "bootstrap_n": 1000
+        }
+      },
+      "by_domain": {
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        }
+      },
+      "by_horizon": {
+        "10": {
+          "rows": 3060,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "25": {
+          "rows": 2700,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "50": {
+          "rows": 2340,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "100": {
+          "rows": 1440,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        }
+      }
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "train_only_feature_normalization": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "source_specific_annotation_step_subset_claim_allowed": true,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "raw_frame_dataset_local_global_claim_required": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_bo_gate": {
+    "source": "fresh_calibrated_subset_source_cv",
+    "gates": {
+      "bn_input_verified": true,
+      "calibrated_sources_present": true,
+      "source_cv_completed": true,
+      "source_overlap_pass": true,
+      "all_fold_positive": false,
+      "t50_fold_positive": false,
+      "easy_safe": false,
+      "no_future_inputs": true,
+      "validation_only_selection": true,
+      "global_metric_blocked": true,
+      "global_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 10,
+    "total": 13,
+    "positive_transfer": false,
+    "verdict": "stage42_bo_calibrated_subset_eval_partial"
+  }
+}

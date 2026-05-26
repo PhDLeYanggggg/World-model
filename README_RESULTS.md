@@ -256,6 +256,59 @@ SMC_enabled = false
 
 Stage42-BN moves calibration forward without overclaiming. ETH `seq_eth` / `seq_hotel` and several UCY sources have local evidence for source-specific annotation-step geometry/time calibration, but this does not upgrade the global M3W claim. Current reports must still use raw-frame / dataset-local wording unless a future evaluation explicitly restricts itself to a verified source-specific calibrated subset.
 
+Latest Stage42-BO calibrated-subset source-CV evaluation:
+
+```text
+source = fresh_calibrated_subset_source_cv
+verdict = stage42_bo_calibrated_subset_eval_partial
+gates = 10 / 13
+calibrated_sources_evaluated = 6
+rows_total = 160338
+all_improvement_macro_mean = 0.090510
+all_improvement_min = 0.0
+t50_improvement_macro_mean = 0.070729
+t50_improvement_min = -0.107784
+t100_raw_frame_diagnostic_macro_mean = 0.104071
+hard_failure_improvement_macro_mean = 0.097944
+easy_degradation_max = 1.032550
+positive_all_folds = false
+positive_t50_folds = false
+easy_safe_all_folds = false
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BO is the first fresh source-CV evaluation restricted to the Stage42-BN calibrated candidates. It shows real positive macro signal, but it is **not deployable** as a source-calibrated policy: `UCY_students03` has severe easy harm and `ETH_seq_eth` has negative t50. This is why BO is recorded as partial evidence and not a calibrated-subset success.
+
+Latest Stage42-BP calibrated-subset safety repair:
+
+```text
+source = fresh_calibrated_subset_safety_repair
+verdict = stage42_bp_calibrated_subset_safety_repair_pass_limited_positive
+gates = 11 / 11
+source_cv_folds = 6
+rows_total = 160338
+all_improvement_macro_mean = 0.057580
+all_improvement_min = 0.0
+t50_improvement_macro_mean = 0.061868
+t50_improvement_min = -0.066609
+t100_raw_frame_diagnostic_macro_mean = 0.028177
+hard_failure_improvement_macro_mean = 0.056282
+easy_degradation_max = 0.0
+positive_fold_count = 3
+positive_t50_fold_count = 2
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BP adds train+val source/source-family support guards. It fixes BO's worst over-switching: `UCY_students03` is now guarded to fallback instead of harming easy cases. This is a **limited positive safety repair**, not global metric/seconds success and not uniform t50 success, because `ETH_seq_eth` t50 remains negative and several sources remain fallback-only.
+
+Verification: `python3 run_stage42_calibrated_subset_eval.py` passed with partial BO evidence, `python3 run_stage42_calibrated_subset_safety_repair.py` passed with `11 / 11` BP gates, focused pytest passed with `11` tests, and `python3 -m pytest tests` passed with `484` tests.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

@@ -86,6 +86,8 @@ Stage42-BM then audits that license/terms blocker directly. It passes `14 / 14` 
 
 Stage42-BN adds a stricter source-level time/geometry calibration audit. It identifies source-specific calibration candidates (`ETH_seq_eth`, `ETH_seq_hotel`, `UCY_zara01`, `UCY_zara02`, `UCY_zara03`, `UCY_students03`) with local evidence for parseable H files plus 2.5fps / 0.4s annotation-step timing. It still blocks global M3W metric/seconds claims: SDD remains pixel raw-frame, TrajNet snippets remain dataset-local short snippets, TGSIM remains traffic diagnostic only, and no Stage5C/SMC claim is allowed.
 
+Stage42-BO evaluates those calibrated candidates with source-CV. It finds useful macro signal (`all` +9.05%, `t50` +7.07%, `t100` raw-frame diagnostic +10.41%), but it fails as a deployable policy because one held-out source has severe easy harm (`UCY_students03` easy degradation +103.25%) and another has negative t50 (`ETH_seq_eth` -10.78%). Stage42-BP repairs the easy-harm failure with train+val source/source-family support guards: `easy_degradation_max` becomes 0 and gates pass `11 / 11`. The repaired result is still only limited positive evidence (`all` +5.76%, `t50` +6.19%, `hard/failure` +5.63% macro) because `ETH_seq_eth` t50 remains negative and several sources are fallback-only. This is not a global metric/seconds-level claim, not Stage5C, not SMC, and not a replacement for the protected dataset-local raw-frame wording.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

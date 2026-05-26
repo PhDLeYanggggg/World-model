@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_bn_source_time_geometry_calibration",
-  "current_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+    "current_stage": "stage42_bp_calibrated_subset_safety_repair",
+    "current_verdict": "stage42_bp_calibrated_subset_safety_repair_pass_limited_positive",
   "latest_user_requested_goal_summary_2026_05_26": {
     "source": "cached_verified_plus_stage42_bn_source_time_geometry_calibration_plus_full_goal_review",
     "path": "README_M3W_FULL_GOAL_REVIEW_ZH.md",
@@ -16,9 +16,10 @@
       "Stage42-BI UCY independent-source t100 easy-guard repair",
       "Stage42-BJ post-BI t100 source package and action queue",
       "Stage42-BK ETH-Person XML local t100 conversion candidate discovery",
-      "Stage42-BL ETH-Person XML technical dry-run source-CV positive evidence",
-      "Stage42-BM ETH-Person terms audit blocks official/deployable t100 overclaim until terms are confirmed",
-      "Stage42-BN source-level time/geometry audit identifies ETH/UCY calibrated-subset candidates while blocking global metric/seconds claims"
+            "Stage42-BL ETH-Person XML technical dry-run source-CV positive evidence",
+            "Stage42-BM ETH-Person terms audit blocks official/deployable t100 overclaim until terms are confirmed",
+            "Stage42-BN source-level time/geometry audit identifies ETH/UCY calibrated-subset candidates while blocking global metric/seconds claims",
+            "Stage42-BP source-family guarded calibrated-subset repair removes BO easy harm and provides limited positive source-specific evidence"
     ],
     "major_failures_or_limits": [
       "JEPA downstream lift not proven",
@@ -28,8 +29,10 @@
       "ordinary residual/correction was not deployable",
       "ungated neural dynamics remained unsafe",
       "global t100 positive claim remains blocked by ETH_UCY and TrajNet independent-source shortage",
-      "ETH-Person XML technical result remains license/terms-blocked and cannot be counted as official converted/evaluated data",
-      "global M3W metric/seconds claim remains blocked despite source-specific ETH/UCY calibration evidence"
+            "ETH-Person XML technical result remains license/terms-blocked and cannot be counted as official converted/evaluated data",
+            "global M3W metric/seconds claim remains blocked despite source-specific ETH/UCY calibration evidence",
+            "Stage42-BO calibrated-subset source-CV was partial because UCY_students03 easy harm was severe and ETH_seq_eth t50 was negative",
+            "Stage42-BP repairs easy harm but remains limited: ETH_seq_eth t50 is still negative and several sources are fallback-only"
     ],
     "claim_boundary": {
       "true_3d": false,
@@ -40,9 +43,9 @@
       "global_t100_positive_claim_allowed": false
     }
   },
-  "stage42_bn_source_time_geometry_calibration": {
-    "source": "fresh_source_time_geometry_calibration_audit",
-    "report": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
+    "stage42_bn_source_time_geometry_calibration": {
+        "source": "fresh_source_time_geometry_calibration_audit",
+        "report": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
     "user_action_required": "outputs/stage42_long_research/user_action_required_source_time_geometry_stage42.md",
     "gate": "outputs/stage42_long_research/stage42_stage_bn_gate.md",
     "verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
@@ -75,10 +78,69 @@
       "global_seconds_claim_allowed": false,
       "m3w_official_metric_seconds_claim_allowed": false,
       "stage5c_executed": false,
-      "smc_enabled": false
-    }
-  },
-  "stage42_bm_eth_person_terms_audit": {
+            "smc_enabled": false
+        }
+    },
+    "stage42_bo_calibrated_subset_eval": {
+        "source": "fresh_calibrated_subset_source_cv",
+        "report": "outputs/stage42_long_research/calibrated_subset_eval_stage42.md",
+        "gate": "outputs/stage42_long_research/stage42_stage_bo_gate.md",
+        "user_action_required": "outputs/stage42_long_research/user_action_required_calibrated_subset_stage42.md",
+        "verdict": "stage42_bo_calibrated_subset_eval_partial",
+        "gates": "10/13",
+        "calibrated_sources_evaluated": 6,
+        "rows_total": 160338,
+        "all_improvement_macro_mean": 0.09051,
+        "t50_improvement_macro_mean": 0.070729,
+        "t50_improvement_min": -0.107784,
+        "t100_raw_frame_diagnostic_macro_mean": 0.104071,
+        "hard_failure_improvement_macro_mean": 0.097944,
+        "easy_degradation_max": 1.03255,
+        "deployable": false,
+        "failure_reason": "source-CV macro signal is positive but UCY_students03 easy harm and ETH_seq_eth negative t50 make BO unsafe",
+        "claim_boundary": {
+            "true_3d": false,
+            "foundation_world_model": false,
+            "global_metric_claim_allowed": false,
+            "global_seconds_claim_allowed": false,
+            "stage5c_executed": false,
+            "smc_enabled": false
+        }
+    },
+    "stage42_bp_calibrated_subset_safety_repair": {
+        "source": "fresh_calibrated_subset_safety_repair",
+        "report": "outputs/stage42_long_research/calibrated_subset_safety_repair_stage42.md",
+        "gate": "outputs/stage42_long_research/stage42_stage_bp_gate.md",
+        "verdict": "stage42_bp_calibrated_subset_safety_repair_pass_limited_positive",
+        "gates": "11/11",
+        "calibrated_sources_evaluated": 6,
+        "rows_total": 160338,
+        "all_improvement_macro_mean": 0.05758,
+        "t50_improvement_macro_mean": 0.061868,
+        "t50_improvement_min": -0.066609,
+        "t100_raw_frame_diagnostic_macro_mean": 0.028177,
+        "hard_failure_improvement_macro_mean": 0.056282,
+        "easy_degradation_max": 0.0,
+        "positive_fold_count": 3,
+        "positive_t50_fold_count": 2,
+        "limited_positive_transfer": true,
+        "deployable_scope": "limited source-specific calibrated subset with source-family guard; not global metric/seconds-level success",
+        "remaining_blocker": "ETH_seq_eth t50 remains negative and multiple sources are fallback-only",
+        "verification": {
+            "runner": "python3 run_stage42_calibrated_subset_safety_repair.py -> 11/11",
+            "focused_pytest": "11 passed",
+            "full_pytest": "python3 -m pytest tests -> 484 passed"
+        },
+        "claim_boundary": {
+            "true_3d": false,
+            "foundation_world_model": false,
+            "global_metric_claim_allowed": false,
+            "global_seconds_claim_allowed": false,
+            "stage5c_executed": false,
+            "smc_enabled": false
+        }
+    },
+    "stage42_bm_eth_person_terms_audit": {
     "source": "fresh_eth_person_terms_audit",
     "report": "outputs/stage42_long_research/eth_person_terms_audit_stage42.md",
     "user_action_required": "outputs/stage42_long_research/user_action_required_eth_person_terms_stage42.md",
