@@ -4,6 +4,12 @@ M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combine
 
 It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.
 
+Latest user-facing route/failure/success summary:
+
+`/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
+
+That README now starts with a direct “本次交付版总摘要” covering what was attempted, which routes failed and why, which routes succeeded, the current best deployable model, and the strict claim boundary. It keeps the core limitation explicit: M3W-Neural v1 is still a protected dataset-local raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+
 ## Files
 
 - `README_GOAL_SUMMARY_M3W_NEURAL_V1.md` — detailed research ledger: attempted routes, failures, successes, current best deployable candidate, and remaining gaps.

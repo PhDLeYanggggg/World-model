@@ -4,6 +4,126 @@
 工作目录：`/Users/yangyue/Downloads/World`  
 结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit、Stage42-AU proposed source-level baseline-family mechanism audit、Stage42-AV baseline-family robustness / weak-slice audit，以及 Stage42-AW UCY validation-support repair；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
+## 本次交付版总摘要
+
+你问的是“在这个长期目标里到底做了什么、试了哪些路线、哪些失败、为什么失败、哪些成功”。一句话回答：
+
+```text
+M3W 目前已经从 SDD-only selector scaffold 推进到 protected dataset-local raw-frame 2.5D multi-agent world-state candidate。
+最强可部署组件仍是 safety/fallback-protected policy，而不是无保护 neural rollout。
+Stage37 修复 external t+50，Stage42-AM/AW 给出 source-level full-waypoint 与 UCY validation-support 正证据。
+但它仍不是 true 3D、不是 foundation、不是 metric、不是 seconds-level，也没有执行 Stage5C 或 SMC。
+```
+
+### 当前最强可部署结论
+
+```text
+current best deployable:
+  M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+  under Stage37 / teacher safety floor
+
+current honest claim:
+  protected dataset-local raw-frame 2.5D multi-agent world-state candidate
+
+not allowed:
+  true 3D world model
+  large-scale foundation world model
+  metric prediction
+  seconds-level t+50/t+100 claim
+  ungated neural dynamics deployment
+  Stage5C latent generative execution
+  SMC execution
+```
+
+### 主要尝试路线和结论
+
+| 路线 | 做了什么 | 结论 | 原因 |
+| --- | --- | --- | --- |
+| BPSG-MA / early scaffold | 建立 per-agent multi-agent 2.5D world-state scaffold、baseline fallback、diagnostics。 | 成功作为稳定基座。 | 能跑、能审计、能 fallback，但不是 true 3D / foundation。 |
+| JEPA representation | Stage18/19/后续多轮 JEPA non-collapse、probe、downstream lift 检查。 | 失败为主。 | non-collapse 不等于 downstream lift，selector/failure/correction/t50 没有稳定改善。 |
+| SDD official benchmark | 转换 SDD、构建 pixel-space raw-frame split、scene packs、episodes、baselines。 | 成功。 | SDD 成为 official pixel-space benchmark，但 homography/scale/effective seconds 未验证。 |
+| SDD selector | 从 hard classification 改成 expected-FDE / regret / fallback-safe selector。 | 成功，Stage26 成为 SDD best deployable。 | 修复了 oracle headroom 大但 hard selector 过度切换的问题。 |
+| External zero-shot | SDD selector / latent 直接迁移到 OpenTraj/ETH-UCY/UCY/TrajNet。 | 失败。 | 坐标体系、horizon、scene/goal、agent type、scale/homography 都不一致。 |
+| Domain normalization / latent alignment | 做 zscore、velocity/path normalization、CORAL/adapter 等。 | 不能单独解决。 | 分布距离缩小不等于预测目标对齐，external all/easy 仍不稳。 |
+| External row geometry / train-only goals | 为 external 补逐行几何、candidate goals、relative baselines。 | 局部成功。 | t50/hard 有正信号，但 all/easy 不稳，不可部署。 |
+| Selective transfer | 建 hard/easy/failure label、failure/gain/harm gate。 | 部分成功。 | Stage35 all/hard/easy 过，但 t50 = 0，说明长 horizon 不会安全切换。 |
+| Stage37 causal history + goal prototypes | 构建 past-only history window、scene-agnostic goal prototypes、switchability/gain/harm/conformal safety。 | 成功。 | external all +13.48%，t50 +8.46%，hard/failure +15.54%，easy degradation 0.041%，16/16 gates。 |
+| Bounded correction / residual | 在 Stage37 保护下训练 bounded correction。 | 不部署。 | 不能稳定超过 Stage37，且 residual 容易伤 easy。 |
+| Transformer / JEPA / Hybrid neural | 训练受保护 neural dynamics、JEPA auxiliary、Hybrid。 | 诊断为主。 | 无保护 neural 不安全；受保护 neural 没有稳定超过 Stage37。 |
+| Full-waypoint / row-cache / source-level | Stage42 做 full-waypoint dynamics、row prediction cache、UCY source、unified row-level cache、source-level evaluation。 | 成功形成 protected evidence package。 | test-once、validation-only policy、safety floor 与 source-level repairs 使 evidence 可审计。 |
+| Source-level ablation | Stage42-AN 到 AS 反复测 history/goal/neighbor/graph/sequence/neural residual 的独立贡献。 | 多数为负或 partial。 | 当前 source-level 成功主要由 baseline-family rollout context 驱动，不应把 history/goal/neighbor 写成已证明主贡献。 |
+| Baseline-family mechanism | Stage42-AU/AV/AW 拆解并验证 baseline-family rollout context、UCY validation support。 | 成功但有边界。 | family baseline relative rollout 是主要有效机制；UCY blocker 被 train-only internal validation 修复；仍是 raw-frame dataset-local。 |
+
+### 最重要的成功证据
+
+| 阶段 | 关键结果 | 可信边界 |
+| --- | ---: | --- |
+| Stage26 SDD selector | t+50 约 +14.58%，hard/failure 约 +11.23%，easy degradation 约 1.81%。 | SDD pixel raw-frame，非 metric。 |
+| Stage37 external t+50 repair | all +13.48%，t50 +8.46%，t50 CI [+7.69%, +9.15%]，hard/failure +15.54%，easy 0.041%。 | External dataset-local / weak-metric diagnostic，不是统一真实世界尺度。 |
+| M3W-Neural v1 protected package | all ADE +21.03%，t50 +13.65%，t100 raw-frame diagnostic +14.69%，hard/failure +20.38%，easy 0。 | Protected deployment，不是 ungated neural。 |
+| Stage42-AM source-level full-waypoint | proposed source-level test rows 47458，ADE all +24.58%，t50 +22.02%，t100 raw diagnostic +14.37%，hard/failure +23.75%，easy degradation -25.66%。 | Fresh source-level raw-frame full-waypoint probe，仍非 metric/seconds。 |
+| Stage42-AU baseline-family mechanism | family_baseline_rel_only protected all +27.38%，t50 +23.73%；baseline_family_all protected all +28.78%，t50 +31.54%。 | 证明当前 source-level 主机制是 baseline-family rollout context。 |
+| Stage42-AW UCY validation repair | UCY test all +37.45%，t50 +24.53%，hard/failure +35.51%，easy degradation 为负。 | 使用 UCY train-only internal validation 修复 blocker，不用 test 调阈值。 |
+
+### 最重要的失败原因
+
+1. **JEPA 没有 downstream lift。**  
+   它可以 non-collapse，但没有稳定改善 selector、failure predictor、correction 或 t+50，所以不能把 JEPA 写成主贡献。
+
+2. **hard classification selector 会过度切换。**  
+   Stage24/25 显示 oracle headroom 大，但 hard label 低 margin / ambiguous，模型会在 easy cases 上乱切换，导致 easy degradation。
+
+3. **SDD zero-shot external 不成立。**  
+   SDD 是 pixel-space；external 是 dataset-local / unverified weak metric。坐标、scale、horizon、scene/goal、agent type 都变了，直接迁移会崩。
+
+4. **只做 normalization 或 latent alignment 不够。**  
+   分布对齐不等于目标对齐，尤其 t+50 要知道历史运动模式和目标原型。
+
+5. **t+50 不能靠调 threshold 修。**  
+   Stage36 证明 t+50 有 oracle headroom，但特征不够时 policy 只能 fallback。Stage37 的修复来自 past-only history + goal prototype + gain/harm/conformal safety。
+
+6. **无保护 neural dynamics 不安全。**  
+   Transformer/Hybrid 可以在部分切片有信号，但没有 Stage37 floor 时会伤 easy cases。因此当前神经模型必须在 safety floor 下部署。
+
+7. **full-waypoint 不能从 endpoint 线性桥接。**  
+   Stage42-U 的 UCY endpoint-to-full bridge 失败，说明 endpoint 成功不等于整条未来轨迹 shape 成功。Stage42-V/AM 才是直接 full-waypoint 训练/评估。
+
+8. **history/goal/neighbor/graph 还不是已证明主贡献。**  
+   Stage42-AN/AO/AP/AQ/AR/AS 多轮 retrained ablation 显示当前 source-level ridge/MLP/sequence/graph residual protocol 下，它们没有超过 baseline-family context 的独立增量。
+
+### 当前最准确的论文式结论
+
+可以写：
+
+```text
+We develop a protected dataset-local raw-frame 2.5D multi-agent world-state candidate.
+The strongest deployable evidence comes from regret-aware baseline-family rollout selection under strict no-leakage, validation-only safety policies.
+Stage37 repairs external t+50 transfer, and Stage42 source-level full-waypoint evidence shows positive protected raw-frame gains.
+```
+
+不能写：
+
+```text
+We solved true 3D world modeling.
+We built a large-scale foundation world model.
+We achieved metric or seconds-level prediction.
+JEPA is a generative world model.
+Ungated Transformer/Hybrid is deployable.
+Stage5C or SMC is ready/executed.
+History/goal/interaction are independently proven main contributions under current source-level ablations.
+```
+
+### 下一步最短路径
+
+1. **先把 Stage42-AW 后的 repaired protocol 做 robustness refresh。**  
+   目标是确认 global、UCY、TrajNet、t50、hard/failure、FDE 和 easy-safety 都在同一 repaired protocol 下稳定成立，同时诚实标记 t100 weak slice。
+
+2. **把 baseline-family rollout context 正式重写为当前主机制。**  
+   现在最强证据不是“JEPA/Transformer 独立学出世界动力学”，而是“多候选因果 baseline family + validation-safe selector/policy 形成 protected world-state dynamics candidate”。
+
+3. **若要继续追求神经世界模型主贡献，必须做更强 graph/scene-rich neural protocol。**  
+   不能继续把当前负结果包装为成功；要用 richer scene tokens、graph neural interaction、full waypoint loss、multi-domain source-level split、multi-seed/bootstrap 重新证明 history/goal/interaction 的独立贡献。
+
 本轮校验：
 
 ```text

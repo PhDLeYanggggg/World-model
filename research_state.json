@@ -1,12 +1,12 @@
 {
-  "current_stage": "stage42_aw_ucy_validation_support_repair",
-  "current_verdict": "stage42_aw_ucy_validation_support_repair_pass",
+  "current_stage": "stage42_user_research_summary_refresh",
+  "current_verdict": "cached_verified_summary_refresh_completed",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_as_at_au_av_aw_verified",
+    "source": "cached_verified_plus_stage42_aw_user_facing_summary_refresh",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AW UCY validation-support repair; full pytest 406 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR/AS context contribution boundary evidence, Stage42-AT fallback/floor-context boundary evidence, Stage42-AU baseline-family mechanism evidence, Stage42-AV robustness/weak-slice evidence, and Stage42-AW UCY validation-support repair.",
+    "last_readme_refresh": "2026-05-26 user-facing route/failure/success summary refreshed at top of README_M3W_RESEARCH_SUMMARY_ZH.md.",
+    "scope": "Detailed Chinese summary of M3W routes tried, failures and causes, successes and metrics, current best deployable status, claim boundaries, and next shortest path.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
     "latest_branch_success": "Stage42-AW repairs the UCY validation-support blocker with train-only internal validation and obtains positive UCY transfer while preserving test-once/no-leakage boundaries.",
     "verification": {
@@ -59,7 +59,8 @@
       "stage42_av_full_pytest": "402 passed",
       "stage42_aw_runner": "pass",
       "stage42_aw_focused_pytest": "4 passed",
-      "stage42_aw_full_pytest": "406 passed"
+      "stage42_aw_full_pytest": "406 passed",
+      "user_summary_refresh_full_pytest": "406 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -69,7 +70,7 @@
       "smc_enabled": false,
       "ungated_neural_deployable": false
     },
-    "direct_snapshot": "Stage26 and Stage37 were the core selector/fallback successes; Stage41/42 add protected full-waypoint and row-level evidence. JEPA/ungated neural/residual/correction remain non-deployable unless protected by safety floor.",
+    "direct_snapshot": "Stage26 and Stage37 were the core selector/fallback successes; Stage41/42 add protected full-waypoint/source-level evidence; Stage42-AU/AW show baseline-family rollout context and UCY validation-support repair are the current strongest mechanisms.",
     "auxiliary_head_evidence": {
       "source": "fresh_run",
       "report": "outputs/stage42_long_research/full_waypoint_auxiliary_ablation_stage42.md",
@@ -14323,12 +14324,12 @@
         "hard_failure": 0.247414
       },
       "sequence_goal_neighbor_no_history": {
-        "all": 0.261300,
+        "all": 0.2613,
         "t50": 0.223289,
-        "hard_failure": 0.246740
+        "hard_failure": 0.24674
       },
       "sequence_history_goal_neighbor": {
-        "all": 0.200250,
+        "all": 0.20025,
         "t50": 0.227897,
         "hard_failure": 0.179724
       }
@@ -14447,7 +14448,7 @@
     },
     "safe_baseline_rel_only": {
       "protected_all": 0.06770689217302678,
-      "protected_t50": -0.09942197075750154
+      "protected_t50": -0.09942197075750155
     },
     "family_baseline_rel_only": {
       "protected_all": 0.27381485543888084,
@@ -14556,6 +14557,26 @@
       "stage5c_executed": false,
       "smc_enabled": false,
       "ungated_neural_deployable": false
+    }
+  },
+  "latest_user_facing_summary_refresh": {
+    "source": "cached_verified",
+    "readme": "README_M3W_RESEARCH_SUMMARY_ZH.md",
+    "also_updated": [
+      "README_RESULTS.md",
+      "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md"
+    ],
+    "summary": "Updated the canonical Chinese README with direct sections for attempted routes, failed routes and causes, successes, current best deployable model, and claim boundaries.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false
+    },
+    "verification": {
+      "python3 -m pytest tests": "406 passed"
     }
   }
 }
