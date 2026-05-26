@@ -4,9 +4,9 @@
 
 最新单文件中文总复盘已更新：
 
-`/Users/yangyue/Downloads/World/README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md`
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本在文件最前面新增“本次问题的直接答案”，明确列出成功路线、失败路线、根因和当前 best deployable。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
 
 当前总判定：
 
@@ -23,7 +23,11 @@ latest common-validation composer = Stage42-CO, 14 / 14 gates, endpoint-vs-full 
 latest composer safety/bootstrap = Stage42-CP, 14 / 14 gates, 2000-bootstrap CI and all-agent joint safety audit
 latest proximity-aware composer guard = Stage42-CQ, 19 / 19 gates, near-collision caveat repaired with positive all/t50/t100/hard bootstrap evidence
 latest proximity guard ablation = Stage42-CR, 19 / 19 gates, no-guard accuracy vs guarded safety Pareto boundary documented
-latest full pytest = 582 passed
+latest batch runtime replay = Stage42-CV, 25 / 25 gates, frozen policy replay exactly matches decisions and selected_xy/ADE/FDE
+latest paper refresh = Stage42-CW, runtime replay evidence propagated into paper/reproducibility/model-card package
+latest provenance verifier = Stage42-CX, 21 artifacts audited, 21 gates passed
+latest worktree caveat classifier = Stage42-CY, Stage42 substantive dirty files = 0
+latest full pytest = 610 passed
 ```
 
 ```text
