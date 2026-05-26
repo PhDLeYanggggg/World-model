@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CI context contribution forensics。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CJ goal/scene gated expert audit 与 Stage42-CK neighbor/interaction gated expert audit。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
 用途：这是当前 M3W 长期目标的单文件中文总览，用来回答“这个目标内到底做了什么、尝试了什么路线、哪些失败了、为什么失败、哪些成功了、当前最强模型是谁、下一步该怎么走”。
 
 ## 本次问题的直接答案
@@ -14,7 +14,8 @@
 3. 在 SDD 上从失败的 hard-class selector，修到 Stage26 cost-aware selector。
 4. 把 SDD-only 成功迁移到 external top-down 数据时，经历了 zero-shot、normalization、latent adapter、row geometry、train-only goals、selective transfer、t50-specific repair 等多轮失败和修复。
 5. 最后 Stage37 修复 external t+50，Stage41/42 做 protected neural / full-waypoint / source-level evidence package。
-6. 最近 Stage42-CI 把贡献边界重新审计清楚：当前最稳机制不是“JEPA/Transformer 单独起飞”，而是 `baseline-family rollout context + causal history + guarded domain expert + Stage37/teacher safety floor`。
+6. Stage42-CI 把贡献边界重新审计清楚：当前最稳机制不是“JEPA/Transformer 单独起飞”，而是 `baseline-family rollout context + causal history + guarded domain expert + Stage37/teacher safety floor`。
+7. Stage42-CJ/CK 又专门尝试把 goal/scene 与 neighbor/interaction 做成 validation-only gated expert，结果都没有超过 `baseline_family_control`，所以这两类上下文继续只能写 diagnostic / auxiliary，不能写成主贡献。
 
 当前最强可部署结论：
 
@@ -83,6 +84,8 @@ not = true 3D / foundation / global metric / seconds-level / Stage5C / SMC
 - Stage42-CH claim guard：6 个 ETH/UCY source-specific metric/time candidates 存在，但 conversion_ready=0，所以当前 global/restricted metric-seconds claim 仍全部禁止。
 - Stage42-Z post-CH evidence matrix：13 条 claim 逐项映射到证据，22/22 gates；C12 明确 legal conversion 不能 claim，C13 明确 restricted metric/seconds subset 仍 blocked。
 - Stage42-CI context contribution forensics：13/13 gates；确认 baseline-family rollout context 是当前 dominant mechanism，history tokens 是 core component，domain expert 是 secondary component；goal/scene 和 neighbor/interaction 仍是 mixed，不能写主贡献。
+- Stage42-CJ goal/scene gated expert：10/10 gates；`baseline_family_control` all/t50/hard = 28.78% / 31.54% / 27.58%，`baseline_plus_goal_scene` = 26.25% / 22.76% / 24.86%；validation-only gate 选择 control，goal/scene rescue 失败。
+- Stage42-CK neighbor/interaction gated expert：11/11 gates；kNN graph rows = 337991，rows_with_neighbors = 334525；`baseline_plus_knn_graph` all/t50/hard = 24.38% / 22.38% / 23.78%，低于 control；neighbor/interaction rescue 失败。
 
 最关键失败结论：
 
@@ -90,6 +93,7 @@ not = true 3D / foundation / global metric / seconds-level / Stage5C / SMC
 - hard-class selector 在 Stage24 失败：oracle headroom 大但 t+50 -43.3%、easy degradation 11.33%，原因是低 margin label 噪声和过度切换。
 - SDD -> external zero-shot / 普通 domain normalization / latent adapter 都失败，原因是坐标、horizon、source、scene/goal、agent-type、scale/homography 不一致。
 - 普通 residual / correction、ungated Transformer / Hybrid 不可部署，主要因为 easy harm 和 safety-floor 依赖。
+- goal/scene gated expert 和 neighbor/interaction gated expert 都没有超过 baseline-family control；说明“场景/交互上下文存在”不等于“当前协议下有稳定增量贡献”。
 - t100、global metric、seconds-level、broad source-level generalization 仍是 blocker。
 
 ## 0. 当前必须诚实承认的事实
