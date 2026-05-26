@@ -1,6 +1,48 @@
 {
-  "current_stage": "Stage42-BW safety floor necessity audit",
-  "current_verdict": "stage42_bw_safety_floor_necessity_audit_pass",
+  "current_stage": "Stage42-BX slice-level floor relaxability audit",
+  "current_verdict": "stage42_bx_floor_relaxability_audit_pass",
+  "stage42_bx_floor_relaxability_audit": {
+    "source": "fresh_stage42_bx_floor_relaxability_audit",
+    "report": "outputs/stage42_long_research/floor_relaxability_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bx_gate.md",
+    "verdict": "stage42_bx_floor_relaxability_audit_pass",
+    "gates": "14/14",
+    "relaxable_slices": [
+      "TrajNet|25"
+    ],
+    "t50_relaxable_slices": [],
+    "t50_blocked_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "t100_relaxable_slices": [],
+    "blocked_no_validation_support": [
+      "UCY|10",
+      "UCY|100",
+      "UCY|25",
+      "UCY|50"
+    ],
+    "blocked_by_validation_safety": [
+      "TrajNet|10",
+      "TrajNet|100",
+      "TrajNet|50"
+    ],
+    "conclusion": "Fallback relaxation is slice-limited. Only TrajNet|25 is validation-supported and easy-safe; t50/t100 relaxation remains blocked. Teacher/floor rollout context and Stage37 safety floor remain required.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_floor_relaxability_audit.py -> 14/14",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_floor_relaxability_audit.py tests/test_stage42_safety_floor_necessity_audit.py -> 8 passed",
+      "full_pytest": "python3 -m pytest tests -> 507 passed in 67.02s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "floor_free_neural_deployable": false
+    }
+  },
   "stage42_bw_safety_floor_necessity_audit": {
     "source": "fresh_stage42_bw_safety_floor_necessity_audit",
     "report": "outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md",

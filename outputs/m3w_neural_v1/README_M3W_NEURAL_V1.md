@@ -16,6 +16,12 @@ Latest Stage42 safety-floor audit:
 
 Stage42-BW passes `15 / 15` gates as `fresh_stage42_bw_safety_floor_necessity_audit`. It separates fallback-floor deployment safety from teacher/floor rollout context and from ungated neural dynamics. The current protected composite-tail policy remains positive and easy-safe (`all 21.03%`, `t50 13.65%`, `hard 20.38%`, `easy 0.00%`). Ungated endpoint/full-waypoint variants show unacceptable easy degradation (`124.59%`), and removing floor/safe rollout context hurts protected t50 (`-9.21%` and `-9.50%`). Therefore Stage37/teacher floor remains a necessary deployment safety mechanism and baseline-family rollout context remains the dominant supported mechanism; this is not true 3D, not metric/seconds-level, not Stage5C, and not SMC evidence. Verification: focused pytest `5 passed`; full pytest `502 passed in 68.35s`.
 
+Latest Stage42 slice-level floor-relaxability audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/floor_relaxability_audit_stage42.md`
+
+Stage42-BX passes `14 / 14` gates as `fresh_stage42_bx_floor_relaxability_audit`. It shows fallback relaxation is slice-limited, not global: only `TrajNet|25` is relaxable under validation and final-test safety rules. `TrajNet|50` is blocked by validation easy harm, `UCY|50` is blocked by missing validation support, and no t100 slice is relaxable. The teacher/floor rollout context and Stage37 safety floor therefore remain required for deployment. Verification: focused pytest `8 passed`; full pytest `507 passed in 67.02s`.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

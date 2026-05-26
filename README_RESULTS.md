@@ -19,6 +19,25 @@ This is the newest detailed Chinese retrospective for the full M3W goal: what wa
 Latest concrete Stage42 progress after that summary:
 
 ```text
+Stage42-BX slice-level floor relaxability audit
+source = fresh_stage42_bx_floor_relaxability_audit
+verdict = stage42_bx_floor_relaxability_audit_pass
+gates = 14 / 14
+relaxable_slices = TrajNet|25
+t50_relaxable_slices = none
+t50_blocked_slices = TrajNet|50, UCY|50
+t100_relaxable_slices = none
+teacher_floor_context_required = true
+floor_free_neural_deployable = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BX refines the BW safety-floor conclusion at source/horizon level. Fallback relaxation is **not** globally deployable: only `TrajNet|25` is validation-supported and easy-safe. `TrajNet|50` is blocked by validation easy harm, all UCY slices are blocked by missing validation support in this audit, and no t100 slice is relaxable. This strengthens the deployment rule: partial fallback relaxation can be used only for validation-supported slices; teacher/floor rollout context and global safety floor remain required.
+
+Verification: `.venv-pytorch/bin/python run_stage42_floor_relaxability_audit.py`, focused pytest `8 passed`, full pytest `507 passed in 67.02s`.
+
+```text
 Stage42-BW safety-floor necessity audit
 source = fresh_stage42_bw_safety_floor_necessity_audit
 verdict = stage42_bw_safety_floor_necessity_audit_pass
