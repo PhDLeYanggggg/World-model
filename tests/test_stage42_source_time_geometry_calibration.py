@@ -3,6 +3,13 @@ from pathlib import Path
 from src import stage42_source_time_geometry_calibration as bn
 
 
+def _isolate_outputs(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr(bn, "REPORT_JSON", tmp_path / "source_time_geometry_calibration_stage42.json")
+    monkeypatch.setattr(bn, "REPORT_MD", tmp_path / "source_time_geometry_calibration_stage42.md")
+    monkeypatch.setattr(bn, "GATE_MD", tmp_path / "stage42_stage_bn_gate.md")
+    monkeypatch.setattr(bn, "USER_ACTION_MD", tmp_path / "user_action_required_source_time_geometry_stage42.md")
+
+
 def test_parse_eth_homography_is_non_singular() -> None:
     row = bn.parse_homography_matrix(Path("external_data/OpenTraj/datasets/ETH/seq_eth/H.txt"))
     assert row["exists"] is True
@@ -28,7 +35,8 @@ def test_sdd_estimated_scale_is_not_metric_claim() -> None:
     assert row["seconds_claim_allowed"] is False
 
 
-def test_bn_gate_passes_but_blocks_global_claims() -> None:
+def test_bn_gate_passes_but_blocks_global_claims(tmp_path, monkeypatch) -> None:
+    _isolate_outputs(tmp_path, monkeypatch)
     payload = bn.run_stage42_source_time_geometry_calibration()
     gate = payload["stage42_bn_gate"]
     assert gate["passed"] == gate["total"]

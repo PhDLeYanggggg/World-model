@@ -1,9 +1,9 @@
 # Stage42-CI Context Contribution Forensics
 
 - source: `fresh_synthesis_from_stage42_ablation_and_claim_audits`
-- generated_at_utc: `2026-05-26T20:30:27.075353+00:00`
-- git_commit: `b136c10`
-- input_hash: `a1ec95ece776e62c965151535b7193b788894a52912b678da8c8eb38158d0ce9`
+- generated_at_utc: `2026-05-26T20:35:04.100508+00:00`
+- git_commit: `16fed1c`
+- input_hash: `c38d39b241211311b6876fd5bc7afd0cb88d14a9d11903d0698b6588ac46b127`
 - gate: `13 / 13`
 - verdict: `stage42_ci_context_contribution_forensics_pass`
 

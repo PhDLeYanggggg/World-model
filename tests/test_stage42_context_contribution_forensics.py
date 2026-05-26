@@ -1,7 +1,15 @@
 from src import stage42_context_contribution_forensics as ci
 
 
-def test_stage42_ci_identifies_supported_and_mixed_contexts():
+def _isolate_outputs(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr(ci, "REPORT_JSON", tmp_path / "context_contribution_forensics_stage42.json")
+    monkeypatch.setattr(ci, "REPORT_MD", tmp_path / "context_contribution_forensics_stage42.md")
+    monkeypatch.setattr(ci, "GATE_MD", tmp_path / "stage42_stage_ci_gate.md")
+    monkeypatch.setattr(ci, "LEDGER_JSONL", tmp_path / "run_ledger.jsonl")
+
+
+def test_stage42_ci_identifies_supported_and_mixed_contexts(tmp_path, monkeypatch):
+    _isolate_outputs(tmp_path, monkeypatch)
     result = ci.run_stage42_context_contribution_forensics()
     rows = {row["module"]: row for row in result["context_rows"]}
     assert rows["baseline_family_rollout_context"]["status"] == "supported_dominant_mechanism"
@@ -13,7 +21,8 @@ def test_stage42_ci_identifies_supported_and_mixed_contexts():
     assert not rows["neighbor_interaction_context"]["main_claim_allowed"]
 
 
-def test_stage42_ci_gate_passes_without_overclaiming():
+def test_stage42_ci_gate_passes_without_overclaiming(tmp_path, monkeypatch):
+    _isolate_outputs(tmp_path, monkeypatch)
     result = ci.run_stage42_context_contribution_forensics()
     gate = result["stage42_ci_gate"]
     assert gate["passed"] == gate["total"]

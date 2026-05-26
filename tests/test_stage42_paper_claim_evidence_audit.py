@@ -1,7 +1,16 @@
 from src import stage42_paper_claim_evidence_audit as z
 
 
-def test_stage42_z_claim_matrix_contains_negative_boundaries():
+def _isolate_outputs(tmp_path, monkeypatch) -> None:
+    monkeypatch.setattr(z, "REPORT_JSON", tmp_path / "paper_claim_evidence_audit_stage42.json")
+    monkeypatch.setattr(z, "REPORT_MD", tmp_path / "paper_claim_evidence_audit_stage42.md")
+    monkeypatch.setattr(z, "REPORT_CSV", tmp_path / "paper_claim_evidence_audit_stage42.csv")
+    monkeypatch.setattr(z, "GATE_MD", tmp_path / "stage42_stage_z_gate.md")
+    monkeypatch.setattr(z, "LEDGER_JSONL", tmp_path / "run_ledger.jsonl")
+
+
+def test_stage42_z_claim_matrix_contains_negative_boundaries(tmp_path, monkeypatch):
+    _isolate_outputs(tmp_path, monkeypatch)
     result = z.run_stage42_paper_claim_evidence_audit()
     statuses = {row["status"] for row in result["claim_rows"]}
     assert "supported_fresh" in statuses
@@ -15,7 +24,8 @@ def test_stage42_z_claim_matrix_contains_negative_boundaries():
     assert any(row["claim_id"] == "C13" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
 
 
-def test_stage42_z_gate_passes_with_paper_files_and_wxy_artifacts():
+def test_stage42_z_gate_passes_with_paper_files_and_wxy_artifacts(tmp_path, monkeypatch):
+    _isolate_outputs(tmp_path, monkeypatch)
     result = z.run_stage42_paper_claim_evidence_audit()
     gate = result["stage42_z_gate"]
     assert gate["passed"] == gate["total"]

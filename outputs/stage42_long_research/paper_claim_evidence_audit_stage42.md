@@ -1,8 +1,8 @@
 # Stage42-Z Paper Claim Evidence Audit
 
 - source: `fresh_audit_from_stage42_wxy_and_paper_package_artifacts`
-- generated_at_utc: `2026-05-26T20:30:28.033732+00:00`
-- git_commit: `b136c10`
+- generated_at_utc: `2026-05-26T20:35:05.192737+00:00`
+- git_commit: `16fed1c`
 - input_hash: `d72803a8ce5a9618928254f5580742b53b84120a1ccb76db158056a2703347ba`
 - gate: `22 / 22`
 - verdict: `stage42_z_paper_claim_evidence_audit_pass`
