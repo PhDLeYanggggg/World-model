@@ -92,6 +92,26 @@ SMC_enabled = false
 
 Stage42-BG is the first follow-up after BF that selects a protected baseline-family policy on validation sources and evaluates once on held-out local sources. UCY local t100 source-CV is positive and easy-safe. This is still not a global t100 deployment claim because ETH_UCY remains under-supported and TrajNet is not represented in these new local candidates.
 
+Latest Stage42-BH independent-source t100 audit:
+
+```text
+source = fresh_local_independent_source_audit
+verdict = stage42_bh_independent_t100_source_audit_partial
+gates = 13 / 14
+raw_t100_capable_files = 8
+independent_t100_sources = 5
+duplicate_or_alternate_format_group_count = 2
+UCY_independent_sources = 4
+ETH_UCY_independent_sources = 1
+TrajNet_independent_sources = 0
+UCY_t100_mean_improvement_vs_fallback = 0.483414
+UCY_t100_min_improvement_vs_fallback = 0.340559
+UCY_t100_max_easy_degradation = 0.063323
+global_t100_positive_claim_allowed = false
+```
+
+Stage42-BH is stricter than BG because it deduplicates alternate files from the same scene/source before source-CV. Under this stricter protocol UCY still has positive mean t100 gain, but easy degradation exceeds the 2% gate on one independent holdout, so UCY t100 support is not yet deployable. ETH_UCY and TrajNet remain hard blockers.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
@@ -100,7 +120,7 @@ Latest update: this canonical Chinese summary now explicitly includes Stage42-W/
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for the latest detailed summary / Stage42-BG refresh: focused pytest `13 passed`; full-suite pytest `447 passed`.
+Validation for the latest detailed summary / Stage42-BH refresh: focused pytest `9 passed`; full-suite pytest `452 passed`.
 
 Most important current summary:
 

@@ -72,6 +72,8 @@ Stage42-BE parses those four novel local t100 candidates for conversion readines
 
 Stage42-BF then performs actual in-memory schema conversion and causal baseline/source-CV audit for the same four local sources. It passes `12 / 12` gates, with `15058` t50 evaluation windows and `6071` t100 evaluation windows. UCY has positive t100 baseline-family source-CV readiness evidence (`mean holdout improvement vs constant_velocity = 0.607043`, minimum `0.491545`). Stage42-BG then runs a validation-selected protected baseline-family policy source-CV on the converted windows. It passes `13 / 13` gates: UCY local t100 source-CV is positive/easy-safe (`mean improvement = 0.440938`, min `0.438579`, max easy degradation `0.011340`). This still does not permit a global t100 deployment claim because ETH_UCY remains under-supported and TrajNet is not represented in the new local candidates.
 
+Stage42-BH tightens that evidence by deduplicating alternate files from the same scene/source before source-CV. It finds `8` t100-capable files but only `5` independent sources; UCY has `4`, ETH_UCY has `1`, and TrajNet has `0`. Under this stricter protocol UCY still has positive mean t100 gain (`0.483414`) but fails the easy gate (`max easy degradation = 0.063323`), so the honest verdict is partial: UCY t100 needs source-robust easy/harm repair and global t100 remains blocked.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

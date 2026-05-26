@@ -1,6 +1,43 @@
 {
-  "current_stage": "stage42_bg_local_t100_protected_policy",
-  "current_verdict": "stage42_bg_local_t100_protected_policy_pass_with_global_t100_blocker",
+  "current_stage": "stage42_bh_local_t100_independent_source_audit",
+  "current_verdict": "stage42_bh_independent_t100_source_audit_partial",
+  "stage42_bh_local_t100_independent_source_audit": {
+    "source": "fresh_local_independent_source_audit",
+    "report": "outputs/stage42_long_research/local_t100_independent_source_audit_stage42.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_local_t100_independent_sources_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bh_gate.md",
+    "verdict": "stage42_bh_independent_t100_source_audit_partial",
+    "gates": "13/14",
+    "raw_t100_capable_files": 8,
+    "independent_t100_sources": 5,
+    "duplicate_or_alternate_format_group_count": 2,
+    "ucy_independent_sources": 4,
+    "eth_ucy_independent_sources": 1,
+    "trajnet_independent_sources": 0,
+    "ucy_t100_source_cv_supported": false,
+    "ucy_t100_mean_improvement_vs_fallback": 0.483414,
+    "ucy_t100_min_improvement_vs_fallback": 0.340559,
+    "ucy_t100_max_easy_degradation": 0.063323,
+    "blocked_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "failure_reason": "strict independent-source source-CV keeps positive UCY t100 mean gain but violates easy_degradation <= 2%; ETH_UCY and TrajNet lack enough independent t100 sources",
+    "verification": {
+      "runner": "partial_expected",
+      "focused_pytest": "9 passed",
+      "full_pytest": "452 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "global_t100_positive_claim_allowed": false
+    }
+  },
   "stage42_bg_local_t100_protected_policy": {
     "source": "fresh_source_cv_protected_policy",
     "report": "outputs/stage42_long_research/local_t100_protected_policy_stage42.md",

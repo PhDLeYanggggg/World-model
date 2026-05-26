@@ -732,6 +732,24 @@ smc_enabled = false
 
 Stage42-BG 在 BF 的 converted windows 上做 validation-selected protected baseline-family policy。UCY local t100 source-CV 已经 positive/easy-safe，但 ETH_UCY 仍 under-supported，TrajNet 未进入这批新本地候选，所以 global t100 仍不能作为 deployable positive claim。
 
+### Stage42-BH 本轮 independent-source audit
+
+```text
+source = fresh_local_independent_source_audit
+verdict = stage42_bh_independent_t100_source_audit_partial
+gates = 13 / 14
+raw_t100_capable_files = 8
+independent_t100_sources = 5
+UCY_independent_sources = 4
+ETH_UCY_independent_sources = 1
+TrajNet_independent_sources = 0
+UCY_t100_mean_improvement_vs_fallback = 0.483414
+UCY_t100_min_improvement_vs_fallback = 0.340559
+UCY_t100_max_easy_degradation = 0.063323
+```
+
+Stage42-BH 把同一 scene/source 的 alternate formats 去重后重新审计。结果更严格也更诚实：UCY t100 仍有正均值收益，但 easy degradation 超过 2%，所以 UCY independent-source t100 还不能部署；ETH_UCY 和 TrajNet 仍缺足够独立 t100 source。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：

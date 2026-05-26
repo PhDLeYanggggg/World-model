@@ -111,6 +111,7 @@ SMC-ready model
 | Stage42-BE local t100 conversion readiness | 4 candidates；4 schema-ready；estimated t50 windows = 15,813；estimated t100 windows = 6,257；UCY source-CV feasible after conversion。 | 仍是 readiness；full feature store / source-CV / eval 还没跑。 |
 | Stage42-BF local t100 schema conversion | 4 sources converted in-memory；t50 eval windows = 15,058；t100 eval windows = 6,071；UCY source-CV baseline-family positive，mean +60.70%，min +49.15% vs constant velocity。 | 这是 causal baseline/source-CV audit，不是 M3W policy training；t100 claim 仍 blocked。 |
 | Stage42-BG local t100 protected policy | validation-selected protected baseline-family policy；UCY t100 source-CV mean +44.09%，min +43.86%，max easy degradation 1.13%；13/13 gates。 | UCY local support positive；ETH_UCY 仍 blocked；global t100 claim 仍 forbidden。 |
+| Stage42-BH independent-source audit | 8 个 t100-capable files 去重为 5 个 independent sources；UCY mean +48.34%，min +34.06%，但 max easy degradation 6.33%；13/14 gates。 | 更严格 source 去重后 UCY 仍未 easy-safe；ETH_UCY/TrajNet 仍是 hard blocker。 |
 
 ## 5. Stage42-BD 本轮新增发现
 
@@ -227,7 +228,34 @@ global_t100_positive_claim_allowed = false
 - t50 在这个新本地 source-CV 协议下不全 easy-safe，因此不能把 BG 写成全面 horizon success。
 - ETH_UCY 只有 1 个 t100-capable source，TrajNet 不在这批新本地候选里，所以 global t100 positive claim 仍 blocked。
 
-## 9. 为什么当前成果不是 true 3D / foundation
+## 9. Stage42-BH 本轮 independent-source audit
+
+Stage42-BH 更严格地审计“独立 source”：
+
+```text
+source = fresh_local_independent_source_audit
+verdict = stage42_bh_independent_t100_source_audit_partial
+gates = 13 / 14
+raw_t100_capable_files = 8
+independent_t100_sources = 5
+duplicate_or_alternate_format_group_count = 2
+UCY_independent_sources = 4
+ETH_UCY_independent_sources = 1
+TrajNet_independent_sources = 0
+UCY_t100_mean_improvement_vs_fallback = 0.483414
+UCY_t100_min_improvement_vs_fallback = 0.340559
+UCY_t100_max_easy_degradation = 0.063323
+```
+
+解释：
+
+- `UCY/students03/obsmat.txt`、`obsmat_px.txt`、`students003.txt` 被视为同一 independent source group，不再当成三个独立泛化源。
+- `ETH/seq_eth/obsmat.txt` 和 `biwi_eth_10fps.txt` 也被视为同一 ETH source group。
+- 去重后 UCY 有 4 个 independent t100 sources，均值收益仍为正，但 max easy degradation = 6.33%，超过 2% gate。
+- 这说明 BG 的 UCY positive/easy-safe 是较宽松 source 定义下的支持；BH 更严格后，UCY t100 仍需要 easy/harm guard repair。
+- ETH_UCY 只有 1 个 independent source，TrajNet 为 0，global t100 继续 blocked。
+
+## 10. 为什么当前成果不是 true 3D / foundation
 
 不能这么写的原因很具体：
 
@@ -251,10 +279,10 @@ strict no-leakage protected 2.5D multi-agent world-state modeling on real top-do
 true 3D foundation world model
 ```
 
-## 10. 现在最值得做的下一步
+## 11. 现在最值得做的下一步
 
-1. **Stage42-BG：基于 BF 的 in-memory conversion 结果写非 Git feature store，并训练/评估 protected t100 policy。**
-   已完成第一版：UCY local t100 source-CV positive，但 global t100 仍 blocked。下一步应扩展到 ETH_UCY / TrajNet independent sources。
+1. **Stage42-BI：修复 BH 暴露的 UCY independent-source easy degradation。**
+   需要 source-robust easy/harm guard，而不是只看 validation source gain。
 
 2. **继续 t100 source-CV repair，但不 overclaim。**
    只有 ETH_UCY / TrajNet / UCY 至少有足够独立 t100 source support，t100 才能从 diagnostic blocker 变成可部署正 claim。
@@ -262,7 +290,7 @@ true 3D foundation world model
 3. **如果继续冲神经世界模型主贡献，要换更强 graph/scene-rich protocol。**
    当前 ridge/MLP/Conv1D/hand-built graph residual context 都没证明独立增量；不能继续把 history/goal/neighbor 写成已证明主贡献。
 
-## 11. 最终简短 verdict
+## 12. 最终简短 verdict
 
 ```text
 项目是否跑通：是
@@ -277,5 +305,5 @@ SDD success：是
 external t50 success：是
 protected source-level full-waypoint success：是
 t100 stable success：否，当前仍是 blocker / diagnostic
-本轮新发现：4 个 novel t100 candidates 已完成 in-memory schema conversion；Stage42-BG 在 UCY local source-CV 上得到 protected t100 policy positive/easy-safe 支持，但 ETH_UCY/TrajNet 支持不足，global t100 stable success 仍未允许
+本轮新发现：4 个 novel t100 candidates 已完成 in-memory schema conversion；Stage42-BG 在宽松 UCY local source-CV 上得到 protected t100 policy positive/easy-safe 支持；Stage42-BH 去重后发现 UCY independent-source t100 仍有 easy degradation blocker，ETH_UCY/TrajNet 支持不足，global t100 stable success 仍未允许
 ```
