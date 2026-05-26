@@ -94,6 +94,8 @@ Stage42-BR audits why positive calibrated-subset t50 disappeared. The answer is 
 
 Stage42-BS resolves the `UCY_zara` policy/model part of that calibrated t50 blocker without adding new data. It runs a family-only source-CV over `UCY_zara01`, `UCY_zara02`, and `UCY_zara03`, selects candidates and thresholds on validation sources only, and adds a conservative t50 switch-rate guard after the first attempt showed easy harm. The final BS result passes `14 / 14` gates: `rows_total = 51544`, `t50_rows_total = 12750`, t50 macro improvement `+0.247189`, t50 minimum `+0.150958`, hard/failure macro `+0.067158`, easy degradation max `0.012388`, positive t50 folds `3 / 3`. This is source-family-specific annotation-step evidence only: it does not fix `ETH_seq` or `UCY_students`, does not authorize global metric/seconds-level claims, and does not execute Stage5C or SMC.
 
+Stage42-BT checks whether the existing ETH-Person XML technical path can repair the remaining `ETH_seq` calibrated t50 blocker. It cannot. ETH-Person XML h50 has technical positive signal on several ETH-Person holdouts (`technical_h50_mean_improvement_vs_fallback = 0.411217`, `safe_positive_h50_fold_count = 3 / 5`), but the actual `ETH_seq_eth` holdout gets `0.0` improvement under validation-only safety selection. BT passes `13 / 13` gates as an honest blocker confirmation: ETH_seq still needs same-family/source-compatible support, official terms confirmation, or a stronger source-compatible model. ETH-Person terms remain unverified and no official/deployable metric/seconds-level claim is allowed.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

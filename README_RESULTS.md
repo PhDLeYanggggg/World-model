@@ -30,6 +30,25 @@ SMC_enabled = false
 
 Stage42-BS resolves the `UCY_zara` part of the Stage42-BR calibrated t50 blocker with a validation-only conservative switch-rate guard. It does not resolve `ETH_seq` or `UCY_students` source-support blockers, and it does not permit global metric/seconds-level claims.
 
+Latest ETH_seq blocker follow-up:
+
+```text
+Stage42-BT ETH_seq t50 support dry-run
+source = fresh_eth_seq_t50_support_dry_run_terms_unverified
+verdict = stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed
+gates = 13 / 13
+h50_windows_total = 4397
+technical_h50_mean_improvement_vs_fallback = 0.411217
+safe_positive_h50_fold_count = 3 / 5
+eth_seq_holdout_rows = 273
+eth_seq_h50_improvement_vs_fallback = 0.0
+eth_seq_t50_support_repaired = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BT confirms that ETH-Person XML technical h50 signal does **not** safely repair the actual `ETH_seq_eth` calibrated t50 holdout under validation-only selection. ETH-Person terms remain unverified, and ETH_seq still needs same-family/source-compatible support or a stronger source-compatible model.
+
 Previous consolidated human-facing review:
 
 `/Users/yangyue/Downloads/World/README_M3W_FULL_GOAL_REVIEW_ZH.md`
@@ -3503,3 +3522,19 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_bc_gate.md`
 
 Verification: `python3 run_stage42_t100_source_acquisition_plan.py` passed, `python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py` passed with 4 tests, and `python3 -m pytest tests` passed with 430 tests.
+
+## M3W Execution Summary Refresh Through Stage42-BT
+
+```text
+source = cached_verified_plus_stage42_bs_bt_summary_refresh
+summary_file = README_M3W_EXECUTION_SUMMARY_ZH.md
+current_best_deployable = M3W-Neural v1 protected policy under Stage37 / teacher safety floor
+stage42_bs_verdict = stage42_bs_ucy_zara_t50_family_policy_pass_positive
+stage42_bt_verdict = stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed
+stage5c_executed = false
+smc_enabled = false
+```
+
+The reader-facing Chinese execution summary has been refreshed through Stage42-BT. It now includes the full route history, major success and failure reasons, Stage42-BS UCY_zara source-family-specific calibrated t50 repair, and Stage42-BT ETH_seq support dry-run blocker. UCY_zara now has a local positive calibrated t50 result (`t50 macro +24.72%`, min fold `+15.10%`, easy max `1.24%`), while ETH_seq remains blocked because ETH-Person XML technical h50 positives do not safely transfer to the `ETH_seq_eth` holdout and ETH-Person terms remain unverified. The summary keeps all claim boundaries explicit: no true-3D, no foundation, no global metric/seconds-level claim, no Stage5C execution, and no SMC.
+
+Verification: `python3 run_stage42_ucy_zara_t50_family_policy.py` passed, `python3 run_stage42_eth_seq_t50_support_dry_run.py` passed, focused Stage42-BS/BT tests passed with 5 tests, and `python3 -m pytest tests` passed with 495 tests.

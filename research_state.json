@@ -1,6 +1,43 @@
 {
-    "current_stage": "stage42_bs_ucy_zara_t50_family_policy",
-    "current_verdict": "stage42_bs_ucy_zara_t50_family_policy_pass_positive",
+  "current_stage": "stage42_bt_eth_seq_t50_support_dry_run",
+  "current_verdict": "stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed",
+  "stage42_bt_eth_seq_t50_support_dry_run": {
+    "source": "fresh_eth_seq_t50_support_dry_run_terms_unverified",
+    "report": "outputs/stage42_long_research/eth_seq_t50_support_dry_run_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bt_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_eth_seq_t50_support_stage42.md",
+    "verdict": "stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed",
+    "gates": "13/13",
+    "candidate_sources": 5,
+    "eth_person_xml_sources": 4,
+    "source_cv_folds": 5,
+    "h50_windows_total": 4397,
+    "technical_h50_mean_improvement_vs_fallback": 0.411217,
+    "technical_h50_min_improvement_vs_fallback": 0.0,
+    "technical_h50_max_easy_degradation": 0.12464,
+    "safe_positive_h50_fold_count": 3,
+    "eth_seq_holdout_rows": 273,
+    "eth_seq_h50_improvement_vs_fallback": 0.0,
+    "eth_seq_easy_degradation": 0.0,
+    "eth_seq_t50_support_repaired": false,
+    "remaining_blocker": "ETH_seq remains unsupported for calibrated t50 under validation-only safe policy; ETH-Person XML h50 technical positives do not safely transfer to ETH_seq_eth holdout.",
+    "verification": {
+      "runner": "python3 run_stage42_eth_seq_t50_support_dry_run.py -> 13/13",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_eth_seq_t50_support_dry_run.py tests/test_stage42_ucy_zara_t50_family_policy.py -> 5 passed",
+      "full_pytest": "python3 -m pytest tests -> 495 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "eth_person_terms_confirmed": false,
+      "official_converted_dataset_claim_allowed": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "positive_eth_seq_t50_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_bs_ucy_zara_t50_family_policy": {
     "source": "fresh_ucy_zara_t50_family_policy",
     "report": "outputs/stage42_long_research/ucy_zara_t50_family_policy_stage42.md",
@@ -90,12 +127,12 @@
       "Stage42-BI UCY independent-source t100 easy-guard repair",
       "Stage42-BJ post-BI t100 source package and action queue",
       "Stage42-BK ETH-Person XML local t100 conversion candidate discovery",
-            "Stage42-BL ETH-Person XML technical dry-run source-CV positive evidence",
-            "Stage42-BM ETH-Person terms audit blocks official/deployable t100 overclaim until terms are confirmed",
-            "Stage42-BN source-level time/geometry audit identifies ETH/UCY calibrated-subset candidates while blocking global metric/seconds claims",
-            "Stage42-BP source-family guarded calibrated-subset repair removes BO easy harm and provides limited positive source-specific evidence",
-            "Stage42-BQ t50 source-family support repair removes negative calibrated-subset t50 transfer by guarding unsupported t50 slices to fallback",
-            "Stage42-BR quantifies the calibrated t50 source-support gap and maps ETH-Person XML/user-action blockers"
+      "Stage42-BL ETH-Person XML technical dry-run source-CV positive evidence",
+      "Stage42-BM ETH-Person terms audit blocks official/deployable t100 overclaim until terms are confirmed",
+      "Stage42-BN source-level time/geometry audit identifies ETH/UCY calibrated-subset candidates while blocking global metric/seconds claims",
+      "Stage42-BP source-family guarded calibrated-subset repair removes BO easy harm and provides limited positive source-specific evidence",
+      "Stage42-BQ t50 source-family support repair removes negative calibrated-subset t50 transfer by guarding unsupported t50 slices to fallback",
+      "Stage42-BR quantifies the calibrated t50 source-support gap and maps ETH-Person XML/user-action blockers"
     ],
     "major_failures_or_limits": [
       "JEPA downstream lift not proven",
@@ -105,12 +142,12 @@
       "ordinary residual/correction was not deployable",
       "ungated neural dynamics remained unsafe",
       "global t100 positive claim remains blocked by ETH_UCY and TrajNet independent-source shortage",
-            "ETH-Person XML technical result remains license/terms-blocked and cannot be counted as official converted/evaluated data",
-            "global M3W metric/seconds claim remains blocked despite source-specific ETH/UCY calibration evidence",
-            "Stage42-BO calibrated-subset source-CV was partial because UCY_students03 easy harm was severe and ETH_seq_eth t50 was negative",
-            "Stage42-BP repairs easy harm but remains limited: ETH_seq_eth t50 is still negative and several sources are fallback-only",
-            "Stage42-BQ t50 support repair is non-harm rather than positive t50 transfer: positive_t50_fold_count is zero",
-            "Stage42-BR shows ETH_seq and UCY_students lack enough same-family calibrated support, while UCY_zara has support but no safe positive t50 policy"
+      "ETH-Person XML technical result remains license/terms-blocked and cannot be counted as official converted/evaluated data",
+      "global M3W metric/seconds claim remains blocked despite source-specific ETH/UCY calibration evidence",
+      "Stage42-BO calibrated-subset source-CV was partial because UCY_students03 easy harm was severe and ETH_seq_eth t50 was negative",
+      "Stage42-BP repairs easy harm but remains limited: ETH_seq_eth t50 is still negative and several sources are fallback-only",
+      "Stage42-BQ t50 support repair is non-harm rather than positive t50 transfer: positive_t50_fold_count is zero",
+      "Stage42-BR shows ETH_seq and UCY_students lack enough same-family calibrated support, while UCY_zara has support but no safe positive t50 policy"
     ],
     "claim_boundary": {
       "true_3d": false,
@@ -121,9 +158,9 @@
       "global_t100_positive_claim_allowed": false
     }
   },
-    "stage42_bn_source_time_geometry_calibration": {
-        "source": "fresh_source_time_geometry_calibration_audit",
-        "report": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
+  "stage42_bn_source_time_geometry_calibration": {
+    "source": "fresh_source_time_geometry_calibration_audit",
+    "report": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
     "user_action_required": "outputs/stage42_long_research/user_action_required_source_time_geometry_stage42.md",
     "gate": "outputs/stage42_long_research/stage42_stage_bn_gate.md",
     "verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
@@ -156,143 +193,143 @@
       "global_seconds_claim_allowed": false,
       "m3w_official_metric_seconds_claim_allowed": false,
       "stage5c_executed": false,
-            "smc_enabled": false
-        }
+      "smc_enabled": false
+    }
+  },
+  "stage42_bo_calibrated_subset_eval": {
+    "source": "fresh_calibrated_subset_source_cv",
+    "report": "outputs/stage42_long_research/calibrated_subset_eval_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bo_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_calibrated_subset_stage42.md",
+    "verdict": "stage42_bo_calibrated_subset_eval_partial",
+    "gates": "10/13",
+    "calibrated_sources_evaluated": 6,
+    "rows_total": 160338,
+    "all_improvement_macro_mean": 0.09051,
+    "t50_improvement_macro_mean": 0.070729,
+    "t50_improvement_min": -0.107784,
+    "t100_raw_frame_diagnostic_macro_mean": 0.104071,
+    "hard_failure_improvement_macro_mean": 0.097944,
+    "easy_degradation_max": 1.03255,
+    "deployable": false,
+    "failure_reason": "source-CV macro signal is positive but UCY_students03 easy harm and ETH_seq_eth negative t50 make BO unsafe",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_bp_calibrated_subset_safety_repair": {
+    "source": "fresh_calibrated_subset_safety_repair",
+    "report": "outputs/stage42_long_research/calibrated_subset_safety_repair_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bp_gate.md",
+    "verdict": "stage42_bp_calibrated_subset_safety_repair_pass_limited_positive",
+    "gates": "11/11",
+    "calibrated_sources_evaluated": 6,
+    "rows_total": 160338,
+    "all_improvement_macro_mean": 0.05758,
+    "t50_improvement_macro_mean": 0.061868,
+    "t50_improvement_min": -0.066609,
+    "t100_raw_frame_diagnostic_macro_mean": 0.028177,
+    "hard_failure_improvement_macro_mean": 0.056282,
+    "easy_degradation_max": 0.0,
+    "positive_fold_count": 3,
+    "positive_t50_fold_count": 2,
+    "limited_positive_transfer": true,
+    "deployable_scope": "limited source-specific calibrated subset with source-family guard; not global metric/seconds-level success",
+    "remaining_blocker": "ETH_seq_eth t50 remains negative and multiple sources are fallback-only",
+    "verification": {
+      "runner": "python3 run_stage42_calibrated_subset_safety_repair.py -> 11/11",
+      "focused_pytest": "11 passed",
+      "full_pytest": "python3 -m pytest tests -> 484 passed"
     },
-    "stage42_bo_calibrated_subset_eval": {
-        "source": "fresh_calibrated_subset_source_cv",
-        "report": "outputs/stage42_long_research/calibrated_subset_eval_stage42.md",
-        "gate": "outputs/stage42_long_research/stage42_stage_bo_gate.md",
-        "user_action_required": "outputs/stage42_long_research/user_action_required_calibrated_subset_stage42.md",
-        "verdict": "stage42_bo_calibrated_subset_eval_partial",
-        "gates": "10/13",
-        "calibrated_sources_evaluated": 6,
-        "rows_total": 160338,
-        "all_improvement_macro_mean": 0.09051,
-        "t50_improvement_macro_mean": 0.070729,
-        "t50_improvement_min": -0.107784,
-        "t100_raw_frame_diagnostic_macro_mean": 0.104071,
-        "hard_failure_improvement_macro_mean": 0.097944,
-        "easy_degradation_max": 1.03255,
-        "deployable": false,
-        "failure_reason": "source-CV macro signal is positive but UCY_students03 easy harm and ETH_seq_eth negative t50 make BO unsafe",
-        "claim_boundary": {
-            "true_3d": false,
-            "foundation_world_model": false,
-            "global_metric_claim_allowed": false,
-            "global_seconds_claim_allowed": false,
-            "stage5c_executed": false,
-            "smc_enabled": false
-        }
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_bq_calibrated_subset_t50_support_repair": {
+    "source": "fresh_calibrated_subset_t50_support_repair",
+    "report": "outputs/stage42_long_research/calibrated_subset_t50_support_repair_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bq_gate.md",
+    "verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive",
+    "gates": "12/12",
+    "calibrated_sources_evaluated": 6,
+    "rows_total": 160338,
+    "t50_min_source_family_support": 2,
+    "all_improvement_macro_mean": 0.04238,
+    "all_improvement_min": 0.0,
+    "t50_improvement_macro_mean": 0.0,
+    "t50_improvement_min": 0.0,
+    "t100_raw_frame_diagnostic_macro_mean": 0.027796,
+    "hard_failure_improvement_macro_mean": 0.040266,
+    "easy_degradation_max": 0.0,
+    "positive_fold_count": 3,
+    "positive_t50_fold_count": 0,
+    "limited_positive_t50_nonharm": true,
+    "deployable_scope": "limited source-specific calibrated subset with t50 unsupported source-families guarded to fallback; not positive t50 transfer",
+    "remaining_blocker": "no calibrated t50 fold remains positive after source-family support guard",
+    "verification": {
+      "runner": "python3 run_stage42_calibrated_subset_t50_support_repair.py -> 12/12",
+      "focused_pytest": "10 passed",
+      "full_pytest": "python3 -m pytest tests -> 487 passed"
     },
-    "stage42_bp_calibrated_subset_safety_repair": {
-        "source": "fresh_calibrated_subset_safety_repair",
-        "report": "outputs/stage42_long_research/calibrated_subset_safety_repair_stage42.md",
-        "gate": "outputs/stage42_long_research/stage42_stage_bp_gate.md",
-        "verdict": "stage42_bp_calibrated_subset_safety_repair_pass_limited_positive",
-        "gates": "11/11",
-        "calibrated_sources_evaluated": 6,
-        "rows_total": 160338,
-        "all_improvement_macro_mean": 0.05758,
-        "t50_improvement_macro_mean": 0.061868,
-        "t50_improvement_min": -0.066609,
-        "t100_raw_frame_diagnostic_macro_mean": 0.028177,
-        "hard_failure_improvement_macro_mean": 0.056282,
-        "easy_degradation_max": 0.0,
-        "positive_fold_count": 3,
-        "positive_t50_fold_count": 2,
-        "limited_positive_transfer": true,
-        "deployable_scope": "limited source-specific calibrated subset with source-family guard; not global metric/seconds-level success",
-        "remaining_blocker": "ETH_seq_eth t50 remains negative and multiple sources are fallback-only",
-        "verification": {
-            "runner": "python3 run_stage42_calibrated_subset_safety_repair.py -> 11/11",
-            "focused_pytest": "11 passed",
-            "full_pytest": "python3 -m pytest tests -> 484 passed"
-        },
-        "claim_boundary": {
-            "true_3d": false,
-            "foundation_world_model": false,
-            "global_metric_claim_allowed": false,
-            "global_seconds_claim_allowed": false,
-            "stage5c_executed": false,
-            "smc_enabled": false
-        }
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_br_calibrated_t50_source_support_gap_audit": {
+    "source": "fresh_calibrated_t50_source_support_gap_audit",
+    "report": "outputs/stage42_long_research/calibrated_t50_source_support_gap_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_br_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_calibrated_t50_sources_stage42.md",
+    "verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass",
+    "gates": "12/12",
+    "families_audited": 3,
+    "calibrated_sources_audited": 6,
+    "unsupported_family_holdout_count": 3,
+    "families_with_additional_sources_needed": [
+      "ETH_seq",
+      "UCY_students"
+    ],
+    "families_with_support_but_no_positive_t50": [
+      "UCY_zara"
+    ],
+    "bq_t50_macro": 0.0,
+    "bq_t50_min": 0.0,
+    "bq_positive_t50_fold_count": 0,
+    "eth_person_candidate_count": 5,
+    "eth_person_terms_verified": false,
+    "trajnet_t100_capable_files": 0,
+    "positive_t50_claim_allowed": false,
+    "t50_nonharm_claim_allowed": true,
+    "verification": {
+      "runner": "python3 run_stage42_calibrated_t50_source_support_gap_audit.py -> 12/12",
+      "focused_pytest": "6 passed",
+      "full_pytest": "python3 -m pytest tests -> 490 passed"
     },
-    "stage42_bq_calibrated_subset_t50_support_repair": {
-        "source": "fresh_calibrated_subset_t50_support_repair",
-        "report": "outputs/stage42_long_research/calibrated_subset_t50_support_repair_stage42.md",
-        "gate": "outputs/stage42_long_research/stage42_stage_bq_gate.md",
-        "verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive",
-        "gates": "12/12",
-        "calibrated_sources_evaluated": 6,
-        "rows_total": 160338,
-        "t50_min_source_family_support": 2,
-        "all_improvement_macro_mean": 0.04238,
-        "all_improvement_min": 0.0,
-        "t50_improvement_macro_mean": 0.0,
-        "t50_improvement_min": 0.0,
-        "t100_raw_frame_diagnostic_macro_mean": 0.027796,
-        "hard_failure_improvement_macro_mean": 0.040266,
-        "easy_degradation_max": 0.0,
-        "positive_fold_count": 3,
-        "positive_t50_fold_count": 0,
-        "limited_positive_t50_nonharm": true,
-        "deployable_scope": "limited source-specific calibrated subset with t50 unsupported source-families guarded to fallback; not positive t50 transfer",
-        "remaining_blocker": "no calibrated t50 fold remains positive after source-family support guard",
-        "verification": {
-            "runner": "python3 run_stage42_calibrated_subset_t50_support_repair.py -> 12/12",
-            "focused_pytest": "10 passed",
-            "full_pytest": "python3 -m pytest tests -> 487 passed"
-        },
-        "claim_boundary": {
-            "true_3d": false,
-            "foundation_world_model": false,
-            "global_metric_claim_allowed": false,
-            "global_seconds_claim_allowed": false,
-            "stage5c_executed": false,
-            "smc_enabled": false
-        }
-    },
-    "stage42_br_calibrated_t50_source_support_gap_audit": {
-        "source": "fresh_calibrated_t50_source_support_gap_audit",
-        "report": "outputs/stage42_long_research/calibrated_t50_source_support_gap_stage42.md",
-        "gate": "outputs/stage42_long_research/stage42_stage_br_gate.md",
-        "user_action_required": "outputs/stage42_long_research/user_action_required_calibrated_t50_sources_stage42.md",
-        "verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass",
-        "gates": "12/12",
-        "families_audited": 3,
-        "calibrated_sources_audited": 6,
-        "unsupported_family_holdout_count": 3,
-        "families_with_additional_sources_needed": [
-            "ETH_seq",
-            "UCY_students"
-        ],
-        "families_with_support_but_no_positive_t50": [
-            "UCY_zara"
-        ],
-        "bq_t50_macro": 0.0,
-        "bq_t50_min": 0.0,
-        "bq_positive_t50_fold_count": 0,
-        "eth_person_candidate_count": 5,
-        "eth_person_terms_verified": false,
-        "trajnet_t100_capable_files": 0,
-        "positive_t50_claim_allowed": false,
-        "t50_nonharm_claim_allowed": true,
-        "verification": {
-            "runner": "python3 run_stage42_calibrated_t50_source_support_gap_audit.py -> 12/12",
-            "focused_pytest": "6 passed",
-            "full_pytest": "python3 -m pytest tests -> 490 passed"
-        },
-        "claim_boundary": {
-            "true_3d": false,
-            "foundation_world_model": false,
-            "global_metric_claim_allowed": false,
-            "global_seconds_claim_allowed": false,
-            "stage5c_executed": false,
-            "smc_enabled": false
-        }
-    },
-    "stage42_bm_eth_person_terms_audit": {
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_bm_eth_person_terms_audit": {
     "source": "fresh_eth_person_terms_audit",
     "report": "outputs/stage42_long_research/eth_person_terms_audit_stage42.md",
     "user_action_required": "outputs/stage42_long_research/user_action_required_eth_person_terms_stage42.md",
@@ -762,17 +799,29 @@
     "smc_enabled": false
   },
   "latest_execution_summary_readme": {
-    "source": "cached_verified_plus_stage42_bg_summary",
+    "source": "cached_verified_plus_stage42_bs_bt_summary_refresh",
     "path": "README_M3W_EXECUTION_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, strict claim boundaries, Stage42-BB t100 data/source-support gap audit, Stage42-BC official-source acquisition plan, Stage42-BD local t100 source inventory, Stage42-BE conversion-readiness audit, Stage42-BF schema conversion/source-CV baseline audit, and Stage42-BG protected t100 policy source-CV.",
+    "scope": "Detailed Chinese summary of M3W routes tried, failures, success evidence, claim boundaries, Stage42-BS UCY_zara calibrated t50 repair, and Stage42-BT ETH_seq blocker audit.",
     "current_best_deployable": "M3W-Neural v1 protected policy under Stage37/teacher safety floor",
     "current_claim": "protected dataset-local raw-frame 2.5D multi-agent world-state candidate",
-    "t100_status": "blocker / diagnostic after Stage42-BA train-only source-CV guard and Stage42-BB data gap audit",
-    "latest_t100_user_action_file": "outputs/stage42_long_research/user_action_required_t100_stage42.md",
-    "latest_t100_source_acquisition_file": "outputs/stage42_long_research/user_action_required_t100_sources_stage42.md",
-    "stage5c_executed": false,
-    "smc_enabled": false
+    "stage42_bs_summary": "UCY_zara source-family-specific calibrated t50 repair passed 14/14 gates: all +6.12%, t50 +24.72%, min t50 fold +15.10%, hard/failure +6.72%, easy max 1.24%; scope is UCY_zara only.",
+    "stage42_bt_summary": "ETH_seq t50 support dry-run passed audit gates but confirmed blocker: ETH-Person XML h50 technical positives do not safely transfer to ETH_seq_eth holdout; eth_seq h50 improvement 0.0 and terms remain unverified.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "global_t50_calibrated_success": false,
+      "global_t100_positive_claim_allowed": false
+    },
+    "verification": {
+      "stage42_bs_runner": "python3 run_stage42_ucy_zara_t50_family_policy.py -> pass",
+      "stage42_bt_runner": "python3 run_stage42_eth_seq_t50_support_dry_run.py -> pass",
+      "stage42_bs_bt_focused_pytest": "5 passed",
+      "full_pytest": "python3 -m pytest tests -> 495 passed"
+    }
   },
   "latest_user_requested_research_summary": {
     "source": "fresh_run_plus_stage42_ba_verified",

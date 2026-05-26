@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有 README、阶段报告、gate report、`research_state.json`；其中 Stage37、Stage42-AM/AW/AZ/BA 等关键结论来自对应 `fresh_run` 报告。  
+结果来源：`cached_verified` 汇总已有 README、阶段报告、gate report、`research_state.json`；其中 Stage37、Stage42-AM/AW/AZ/BA/BS/BT 等关键结论来自对应 `fresh_run` 报告。
 
 这份文件回答一个问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，到底做了什么、试过哪些路线、哪些失败了、为什么失败、哪些成功了，以及现在可以诚实 claim 什么。
 
@@ -765,6 +765,182 @@ global_t100_positive_claim_allowed = false
 
 Stage42-BI 使用 source-robust easy guard 修复了 UCY independent-source t100 easy degradation。候选策略必须在所有 non-holdout sources 上 positive/easy-safe，holdout 只评一次。UCY 局部 t100 支持现在成立；但 ETH_UCY / TrajNet 缺独立 t100 source，global t100 仍 blocked。
 
+### Stage42-BJ 到 Stage42-BT：source-support、time/geometry、UCY_zara 修复与 ETH_seq blocker
+
+Stage42-BJ 到 BT 的意义是：不再只看全局平均，而是把 t100/t50 的 source-family 支持、source-specific 时间几何、license/terms、shadow holdout、family-level policy 都拆开验证。它产生了一个局部成功和一个明确 blocker。
+
+Stage42-BJ 先把 BI 的 UCY 修复放进全局 source-support 盘点：
+
+```text
+source = fresh_t100_source_support_status
+verdict = source_support_gap_confirmed
+UCY = repaired for independent-source t100
+ETH_UCY = 1 independent source, still needs 2
+TrajNet = 0 independent sources, still needs 3
+stage5c_executed = false
+smc_enabled = false
+```
+
+结论：UCY 局部 t100 support 成立，但 ETH_UCY / TrajNet 仍不足，global t100 不能 claim。
+
+Stage42-BK 做 ETH-Person XML / TrajNet source inventory：
+
+```text
+ETH-Person XML candidates = 5 ETH_UCY t100-capable candidates
+TrajNet local t100-capable files = 0
+TrajNet local files = short snippets / insufficient horizon
+```
+
+结论：ETH_UCY 有本地 loader-gap 修复入口；TrajNet 仍需要更长的官方/用户 raw source，不能伪造 t100 support。
+
+Stage42-BL 做 ETH-Person XML 技术 dry-run：
+
+```text
+source = fresh_technical_dry_run_terms_unverified
+t100 windows = 1485
+mean improvement = +0.683549
+min improvement = +0.496424
+easy degradation = -0.014155
+gates = 13 / 13
+```
+
+这说明 ETH-Person XML 技术上有很强 t100 信号，但它不是 official/deployable claim，因为 terms/license 还没有确认。
+
+Stage42-BM 专门做 terms audit：
+
+```text
+OpenTraj MIT = toolkit/software-only, not raw ETH-Person data license
+ETH-Person local terms file = not found
+official URL = recorded
+official converted/evaluated claim = blocked
+deployable/global t100 claim = blocked
+```
+
+结论：技术结果保留，法律/terms blocker 也保留。不能因为本地能解析 XML 就把它当合法 official 数据。
+
+Stage42-BN 做 source-specific time/geometry calibration：
+
+```text
+ETH source-specific metric/time candidates = 2
+UCY source-specific metric/time candidates = 4
+SDD scale evidence count = 60
+global metric claim = false
+global seconds claim = false
+```
+
+结论：可以为未来 source-specific calibrated subset 打开入口，但全局 M3W 仍必须写 raw-frame / dataset-local，不能写 global metric 或 seconds-level。
+
+Stage42-BO 首次在 calibrated subset 上跑 source-CV：
+
+```text
+sources = 6
+rows = 160338
+macro all = +9.05%
+macro t50 = +7.07%
+t100 raw diagnostic = +10.41%
+t50 min = -10.78%
+easy max degradation = +103.25%
+gates = 10 / 13
+```
+
+这是一个典型“有信号但不可部署”的结果：平均数是正的，但某些 source/horizon/easy 切片严重受伤，所以不能包装成成功。
+
+Stage42-BP 加 source/source-family support guard：
+
+```text
+gates = 11 / 11
+macro all = +5.76%
+macro t50 = +6.19%
+macro hard = +5.63%
+easy max degradation = 0
+UCY_students03 = safe fallback
+ETH_seq_eth t50 = -6.66%
+```
+
+结论：easy harm 被修掉了，但 ETH_seq t50 仍有负迁移，不能 claim global calibrated t50 success。
+
+Stage42-BQ 要求同 family 至少有 2 个 train+val 支持源：
+
+```text
+gates = 12 / 12
+macro all = +4.24%
+macro hard = +4.03%
+easy max degradation = 0
+t50 min = 0
+t50 macro = 0
+```
+
+结论：BQ 把 t50 负迁移修成 non-harm floor，但不是正 t50 迁移。正确表述是 t50 guarded floor / limited positive all-hard。
+
+Stage42-BR 做 calibrated t50 source-support gap audit：
+
+```text
+families = 3
+ETH_seq = needs 1 same-family support source
+UCY_students = needs 2 same-family support sources
+UCY_zara = sources exist, but policy/model still needed repair
+ETH-Person XML candidates = 5, terms unconfirmed
+```
+
+结论：t50 non-harm 的根因被拆开了：一部分是 source-support 不足，一部分是 UCY_zara policy/model blocker。
+
+Stage42-BS 修复 UCY_zara family-specific calibrated t50：
+
+```text
+source = fresh_ucy_zara_t50_family_policy
+verdict = stage42_bs_ucy_zara_t50_family_policy_pass_positive
+gates = 14 / 14
+zara sources = UCY_zara01, UCY_zara02, UCY_zara03
+rows_total = 51,544
+t50_rows_total = 12,750
+candidate_t50_oracle_headroom_macro_mean = 43.19%
+all_improvement_macro_mean = +6.12%
+t50_improvement_macro_mean = +24.72%
+t50_improvement_min = +15.10%
+hard/failure_improvement_macro_mean = +6.72%
+easy_degradation_max = 1.24%
+positive_t50_fold_count = 3 / 3
+positive_t50_claim_allowed = true, but only for UCY_zara source-family-specific annotation-step calibrated t50
+```
+
+这是一个真正成功的局部修复：UCY_zara 不再只是 fallback 或 non-harm，而是三折 t50 都正且 easy <2%。但 scope 很窄：它不能修 ETH_seq，不能修 UCY_students，不能升级成 global metric/seconds claim。
+
+Stage42-BT 尝试用 ETH-Person XML 技术源修复 ETH_seq：
+
+```text
+source = fresh_eth_seq_t50_support_dry_run_terms_unverified
+verdict = stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed
+gates = 13 / 13
+candidate_sources = 5
+eth_person_xml_sources = 4
+source_cv_folds = 5
+h50_windows_total = 4,397
+technical_h50_mean_improvement_vs_fallback = +41.12%
+technical_h50_min_improvement_vs_fallback = 0.0%
+technical_h50_max_easy_degradation = 12.46%
+safe_positive_h50_fold_count = 3
+eth_seq_holdout_rows = 273
+eth_seq_h50_improvement_vs_fallback = 0.0%
+eth_seq_easy_degradation = 0.0%
+eth_seq_t50_support_repaired = false
+```
+
+结论非常明确：ETH-Person XML 内部技术信号存在，但不能安全迁移到 `ETH_seq_eth` holdout；再加上 ETH-Person terms/license 未确认，所以 BT 只能写成 blocker confirmed，不能写成 ETH_seq 修复成功。
+
+当前 Stage42-BT 后的 t50/t100 总结：
+
+```text
+UCY_zara calibrated t50 = repaired locally / positive source-family result
+ETH_seq calibrated t50 = still blocked
+UCY_students calibrated t50 = still source-support blocked
+UCY local t100 = repaired locally with easy-safe guard
+ETH_UCY global t100 = blocked by independent-source support and terms
+TrajNet t100 = blocked by insufficient long raw sources
+global metric/seconds claim = false
+Stage5C executed = false
+SMC enabled = false
+```
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：
@@ -793,17 +969,23 @@ python3 run_stage42_t100_source_acquisition_plan.py = pass
 python3 run_stage42_local_t100_source_inventory.py = pass
 python3 run_stage42_local_t100_conversion_readiness.py = pass
 python3 run_stage42_local_t100_schema_conversion.py = pass
+python3 run_stage42_ucy_zara_t50_family_policy.py = pass
+python3 run_stage42_eth_seq_t50_support_dry_run.py = pass
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_source_inventory.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_conversion_readiness.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_schema_conversion.py = 4 passed
-python3 -m pytest tests = 443 passed
+python3 -m pytest tests/test_stage42_ucy_zara_t50_family_policy.py = 3 passed
+python3 -m pytest tests/test_stage42_eth_seq_t50_support_dry_run.py = 2 passed
+python3 -m pytest tests = 495 passed
 ```
 
 ## 10. 总结成一句话
 
 ```text
 M3W 现在最有价值的成果，不是“已经做成 true 3D/foundation 神经世界模型”，而是严谨地证明了：
-在真实 top-down 多智能体 raw-frame 数据上，只有把因果 baseline family、past-only history、目标原型、gain/harm/easy guard、validation-only policy 和 safety floor 结合起来，才能获得可部署的 external t50 / full-waypoint 正迁移；同时，JEPA、无保护 neural、plain domain alignment 和不稳健 t100 claim 都必须被明确限制。
+在真实 top-down 多智能体 raw-frame 数据上，只有把因果 baseline family、past-only history、目标原型、source-family support、gain/harm/easy guard、validation-only policy 和 safety floor 结合起来，才能获得可部署或局部可部署的 external t50 / full-waypoint 正迁移；同时，JEPA、无保护 neural、plain domain alignment、terms 未确认数据、source-support 不足的 t50/t100 claim 都必须被明确限制。
+
+截至 Stage42-BT，最强正结果是 Stage37 / M3W-Neural v1 protected policy 和 Stage42 source-level/full-waypoint/UCY_zara family-specific repair；最重要未解 blocker 是 ETH_seq / UCY_students 的 calibrated t50 source-support，以及 ETH_UCY / TrajNet 的 global t100 独立源支持与合法数据条款。
 ```
