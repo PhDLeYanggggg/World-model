@@ -1,0 +1,214 @@
+{
+  "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+  "stage": "Stage42-BW Safety Floor Necessity Audit",
+  "generated_at_utc": "2026-05-26T15:47:39.714956+00:00",
+  "git_commit": "25b17b2",
+  "input_hash": "ea91a32da16d25551889c51b447e0c0bf894df1c341b95958576fb3fc365bb90",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BW 是 safety-floor necessity audit，不训练新模型，不执行 Stage5C，不启用 SMC。",
+    "本审计区分三件事：fallback floor、teacher/floor rollout context、以及无保护 neural dynamics。",
+    "future endpoints / waypoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "source-specific calibration 不等于 global metric claim。"
+  ],
+  "input_gates": {
+    "stage42_e": {
+      "verdict": "stage42_e_safety_floor_research_pass",
+      "passed": 12,
+      "total": 12
+    },
+    "stage42_at": {
+      "verdict": "stage42_at_source_level_fallback_audit_pass",
+      "passed": 11,
+      "total": 11
+    },
+    "stage42_au": {
+      "verdict": "stage42_au_baseline_family_mechanism_pass",
+      "passed": 11,
+      "total": 11
+    },
+    "stage42_aq": {
+      "verdict": "stage42_aq_neural_context_evidence_partial_or_negative",
+      "passed": 11,
+      "total": 12
+    },
+    "stage42_s": {
+      "verdict": "stage42_s_frozen_row_combo_policy_pass",
+      "passed": 13,
+      "total": 13
+    },
+    "stage42_x": {
+      "verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
+      "passed": 16,
+      "total": 16
+    },
+    "stage42_bv": {
+      "verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
+      "passed": 16,
+      "total": 16
+    }
+  },
+  "safety_floor_findings": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "current_composite_tail": {
+      "rows": 55528,
+      "all_improvement": 0.2102513255185352,
+      "t10_improvement": 0.4810525302753197,
+      "t25_improvement": 0.10635705713395971,
+      "t50_improvement": 0.13652231450154184,
+      "t100_improvement": 0.14694086716388166,
+      "hard_failure_improvement": 0.20384916307933942,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.1006325590804755,
+      "switch_rate": 0.3410171445036738,
+      "alpha_mean": 0.29906641694280367,
+      "alpha_positive_rate": 0.3410171445036738,
+      "collision_delta_vs_floor_005": -0.0038702813749587617,
+      "smoothness_jagged_delta": 0.0
+    },
+    "ungated_endpoint": {
+      "rows": 55528,
+      "all_improvement": 0.296621240422128,
+      "t10_improvement": 0.49983686172432895,
+      "t25_improvement": -0.044336116247622126,
+      "t50_improvement": 0.21520334842637612,
+      "t100_improvement": 0.359213230578716,
+      "hard_failure_improvement": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "harm_over_fallback": -0.14197177795519889,
+      "switch_rate": 1.0
+    },
+    "ungated_full_waypoint": {
+      "rows": 55528,
+      "all_improvement": 0.296621240422128,
+      "t10_improvement": 0.49983686172432895,
+      "t25_improvement": -0.044336116247622126,
+      "t50_improvement": 0.21520334842637612,
+      "t100_improvement": 0.359213230578716,
+      "hard_failure_improvement": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "harm_over_fallback": -0.14197177795519889,
+      "switch_rate": 1.0
+    },
+    "teacher_raw_policy": {
+      "rows": 55528,
+      "all_improvement": 0.35147372419646705,
+      "t10_improvement": 0.6053046394540129,
+      "t25_improvement": 0.1510837734096614,
+      "t50_improvement": 0.23666446707361,
+      "t100_improvement": 0.3579659237738704,
+      "hard_failure_improvement": 0.350941376256631,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.16822581369322984,
+      "switch_rate": 0.46194712577438407,
+      "collision_delta_vs_floor_005": 0.018672731941744014
+    },
+    "ungated_endpoint_easy_violation": true,
+    "ungated_full_waypoint_easy_violation": true,
+    "teacher_raw_collision_warning": true,
+    "no_teacher_internal_gate_deployable_families": [],
+    "bounded_no_switch_deployable_families": [],
+    "floor_necessity_conclusion": "teacher_floor_required_for_current_deployment",
+    "floor_necessity_reason": "Ungated neural improves raw errors but violates easy safety. Validation-selected internal/harm/uncertainty gates are reported separately; only deployable families may be considered for floor reduction, never Stage5C/SMC execution."
+  },
+  "context_findings": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "fallback_removal_for_baseline_family_probe": "supported_on_this_source_level_split",
+    "teacher_floor_context_removal": "not_supported_as_global_replacement",
+    "no_floor_rel_context_protected_delta_t50": -0.09205317177637129,
+    "no_safe_baseline_context_protected_delta_t50": -0.09502721842335304,
+    "context_removal_hurts_protected_t50": true,
+    "interpretation": "Fallback relaxation in one baseline-family probe is not equivalent to removing teacher/floor rollout context or deploying ungated neural dynamics."
+  },
+  "mechanism_findings": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "dominant_supported_mechanism": "baseline_family_rollout_context_supported_as_dominant_mechanism",
+    "best_single_family_protected": "family_baseline_rel_only",
+    "best_single_family_ungated": "family_baseline_rel_only",
+    "protected_multi_family_increment_supported": true,
+    "ungated_multi_family_increment_supported": false,
+    "neural_context_verdict": "stage42_aq_neural_context_not_supported",
+    "positive_neural_context_variants": [],
+    "neural_context_not_supported": true
+  },
+  "row_level_findings": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "frozen_row_combo_ci_low_all": 0.02794078064168351,
+    "frozen_row_combo_ci_low_t50": 0.02774018469754745,
+    "frozen_row_combo_easy_ci_high": 0.0032618559800165533,
+    "unified_row_cache_ci_low_all": 0.0824486947640029,
+    "unified_row_cache_ci_low_t50": 0.05367075264893123,
+    "unified_row_cache_easy_ci_high": 0.0032618559800165533,
+    "row_level_positive_and_easy_safe": true,
+    "unified_cache_positive_and_easy_safe": true
+  },
+  "summary": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "verdict_short": "teacher_floor_required_but_baseline_family_probe_can_relax_fallback",
+    "current_deployable_family": "current_composite_tail_policy",
+    "current_all_improvement": 0.2102513255185352,
+    "current_t50_improvement": 0.13652231450154184,
+    "current_t100_raw_frame_diagnostic": 0.14694086716388166,
+    "current_hard_failure_improvement": 0.20384916307933942,
+    "current_easy_degradation": 0.0,
+    "ungated_endpoint_easy_degradation": 1.2458611044726973,
+    "ungated_full_waypoint_easy_degradation": 1.2458611044726973,
+    "fallback_floor_is_core_deployment_safety": true,
+    "teacher_floor_context_is_core_feature_mechanism": true,
+    "floor_free_neural_deployable": false,
+    "baseline_family_rollout_context_supported": true,
+    "small_tabular_neural_context_supported": false,
+    "row_level_full_waypoint_evidence_positive": true,
+    "source_blockers_active": 5,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "uses_cached_verified_prior_reports": true,
+    "fresh_audit_no_training": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_bw_gate": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "gates": {
+      "required_inputs_passed": true,
+      "current_policy_deployable_positive": true,
+      "ungated_easy_harm_detected": true,
+      "no_floor_free_neural_overclaim": true,
+      "fallback_vs_context_distinguished": true,
+      "context_removal_hurts_t50_reported": true,
+      "baseline_family_mechanism_supported": true,
+      "neural_context_not_overclaimed": true,
+      "row_level_full_waypoint_positive": true,
+      "unified_cache_positive": true,
+      "source_blockers_still_visible": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_bw_safety_floor_necessity_audit_pass"
+  }
+}

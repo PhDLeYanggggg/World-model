@@ -1,6 +1,38 @@
 {
-  "current_stage": "Stage42-BV source acquisition status / blocker matrix",
-  "current_verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
+  "current_stage": "Stage42-BW safety floor necessity audit",
+  "current_verdict": "stage42_bw_safety_floor_necessity_audit_pass",
+  "stage42_bw_safety_floor_necessity_audit": {
+    "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+    "report": "outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bw_gate.md",
+    "verdict": "stage42_bw_safety_floor_necessity_audit_pass",
+    "gates": "15/15",
+    "current_all_improvement": 0.210251,
+    "current_t50_improvement": 0.136522,
+    "current_t100_raw_frame_diagnostic_improvement": 0.146941,
+    "current_hard_failure_improvement": 0.203849,
+    "current_easy_degradation": 0.0,
+    "ungated_endpoint_easy_degradation": 1.245861,
+    "ungated_full_waypoint_easy_degradation": 1.245861,
+    "teacher_raw_collision_delta_vs_floor_005": 0.0187,
+    "no_floor_rel_context_protected_delta_t50": -0.092053,
+    "no_safe_baseline_context_protected_delta_t50": -0.095027,
+    "conclusion": "Stage37/teacher floor remains necessary as a deployment safety floor; baseline-family rollout context is a core feature mechanism; ungated neural dynamics remains unsafe.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_safety_floor_necessity_audit.py -> 15/15",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_safety_floor_necessity_audit.py tests/test_stage42_source_acquisition_status.py -> 5 passed",
+      "full_pytest": "python3 -m pytest tests -> 502 passed in 68.35s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "floor_free_neural_deployable": false
+    }
+  },
   "latest_user_requested_current_goal_retrospective_2026_05_26": {
     "source": "cached_verified_stage18_to_stage42_plus_stage42_bv_blocker_matrix",
     "path": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",

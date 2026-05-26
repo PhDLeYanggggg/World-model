@@ -19,6 +19,26 @@ This is the newest detailed Chinese retrospective for the full M3W goal: what wa
 Latest concrete Stage42 progress after that summary:
 
 ```text
+Stage42-BW safety-floor necessity audit
+source = fresh_stage42_bw_safety_floor_necessity_audit
+verdict = stage42_bw_safety_floor_necessity_audit_pass
+gates = 15 / 15
+current protected all/t50/hard = 21.03% / 13.65% / 20.38%
+current protected easy degradation = 0.00%
+ungated endpoint/full-waypoint easy degradation = 124.59%
+teacher raw policy collision/proximity warning = +1.87%
+no_floor_rel_context protected t50 delta = -9.21%
+no_safe_baseline_context protected t50 delta = -9.50%
+small tabular neural context supported = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BW resolves the safety-floor interpretation: the Stage37/teacher floor is not just an implementation crutch. Fallback relaxation is supported for one baseline-family probe, but removing teacher/floor rollout context hurts protected t50 by about 9%, while ungated endpoint/full-waypoint variants create unacceptable easy-case harm. The current deployable path remains protected dataset-local/raw-frame 2.5D dynamics under the safety floor, with baseline-family rollout context as the dominant supported mechanism.
+
+Verification: `.venv-pytorch/bin/python run_stage42_safety_floor_necessity_audit.py`, focused pytest `5 passed`, full pytest `502 passed in 68.35s`.
+
+```text
 Stage42-BV source acquisition / blocker matrix
 source = fresh_stage42_bv_source_acquisition_status
 verdict = stage42_bv_source_acquisition_status_pass_blockers_actionable

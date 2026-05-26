@@ -10,6 +10,12 @@ Latest user-facing route/failure/success summary:
 
 This is the current concise-but-detailed Chinese summary requested by the user. It covers attempted routes, failed routes and causes, successful evidence, current best deployable status, claim boundaries, and the Stage42-BD local t100 source inventory.
 
+Latest Stage42 safety-floor audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`
+
+Stage42-BW passes `15 / 15` gates as `fresh_stage42_bw_safety_floor_necessity_audit`. It separates fallback-floor deployment safety from teacher/floor rollout context and from ungated neural dynamics. The current protected composite-tail policy remains positive and easy-safe (`all 21.03%`, `t50 13.65%`, `hard 20.38%`, `easy 0.00%`). Ungated endpoint/full-waypoint variants show unacceptable easy degradation (`124.59%`), and removing floor/safe rollout context hurts protected t50 (`-9.21%` and `-9.50%`). Therefore Stage37/teacher floor remains a necessary deployment safety mechanism and baseline-family rollout context remains the dominant supported mechanism; this is not true 3D, not metric/seconds-level, not Stage5C, and not SMC evidence. Verification: focused pytest `5 passed`; full pytest `502 passed in 68.35s`.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
