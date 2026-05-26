@@ -3863,3 +3863,32 @@ Artifacts:
 - `outputs/stage42_long_research/user_action_required_source_legal_gate_stage42.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_source_conversion_legal_gate.py` passed, focused CF/CE/CD/CC tests passed with 18 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 540 tests.
+
+## Stage42-CG Source Terms Confirmation Validator
+
+```text
+source = fresh_stage42_cg_source_terms_confirmation_validator
+verdict = stage42_cg_source_terms_confirmation_validator_pass
+gates = 11 / 11
+targets_validated = 5
+terms_accepted_targets = 0
+conversion_ready_targets = 0
+conversion_allowed_now_count = 0
+converted_datasets_now = 0
+evaluated_datasets_now = 0
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CG validates the CF-generated terms confirmation template and writes a conversion readiness manifest. Because the template is blank and no explicit official terms/path/source-identity confirmation has been supplied, all five targets remain blocked. This is the correct safety behavior: parseable local files and a template are not permission, and no future conversion should proceed until this validator reports ready targets and a later no-leakage/source-CV conversion gate passes.
+
+Artifacts:
+
+- `outputs/stage42_long_research/source_terms_validation_stage42.md`
+- `outputs/stage42_long_research/source_terms_validation_stage42.json`
+- `outputs/stage42_long_research/source_conversion_readiness_manifest_stage42.md`
+- `outputs/stage42_long_research/source_conversion_readiness_manifest_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_cg_gate.md`
+- `outputs/stage42_long_research/user_action_required_source_terms_validation_stage42.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py` passed, focused CG/CF/CE/CD/CC tests passed with 23 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 545 tests.

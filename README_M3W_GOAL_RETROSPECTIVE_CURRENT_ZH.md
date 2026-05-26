@@ -583,6 +583,7 @@ Stage42-CB 显示：
 - Stage42-CD 已把 blocker 转成官方/manual acquisition package：UCY、ETH/BIWI、TrajNet++、OpenTraj toolkit、additional top-down target；auto-download=0，converted datasets=0。
 - Stage42-CE 进一步检查这些 target 的本地路径：4 个 target 有 local path 且 schema_possible，3 个 target 有 t50/t100 文件，但 independent_t50_candidates=0，source_cv_ready=0。
 - Stage42-CF 把 CE 结果接入 legal/source-identity gate：conversion_allowed_now=0，converted=0，evaluated=0；只有显式官方 terms/path confirmation 和 independent source identity 后，未来 conversion 才允许继续。
+- Stage42-CG 验证 CF 的 terms confirmation template：当前 terms_accepted_targets=0、conversion_ready_targets=0，并生成 conversion readiness manifest；仍然没有 legal conversion 或 external eval。
 
 结论：
 
@@ -603,6 +604,7 @@ source-CV repair ready: no
 - Stage42-CD 的官方源包是 next-action evidence，不是外部泛化成功证据。
 - Stage42-CE 的 local parseability 也不是 legal permission、conversion success 或 final-test evidence。
 - Stage42-CF 的 terms confirmation template 是 checklist，不是 permission；不能把 template 或 local path 写成 legal/converted evidence。
+- Stage42-CG 的 readiness manifest 当前全 blocked；只有未来 validator 报 ready，且后续 no-leakage/source-CV conversion gate 通过，才能写成 converted source evidence。
 
 ### 10.2 t100 blocker
 

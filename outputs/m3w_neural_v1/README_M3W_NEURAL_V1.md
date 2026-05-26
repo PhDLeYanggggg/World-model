@@ -1145,3 +1145,17 @@ evaluated_datasets_now = 0
 ```
 
 Stage42-CF makes the source-diversity blocker enforceable. Local parseability from Stage42-CE is now passed through a legal/source-identity gate that refuses conversion until explicit official terms confirmation and an independent source-CV-ready held-out source exist. It writes a terms confirmation template, but the template is not permission. M3W-Neural v1 remains protected dataset-local/raw-frame 2.5D; broad source-level generalization is still not claimed.
+
+## Stage42-CG Source Terms Confirmation Validator
+
+```text
+source = fresh_stage42_cg_source_terms_confirmation_validator
+verdict = stage42_cg_source_terms_confirmation_validator_pass
+gates = 11 / 11
+terms_accepted_targets = 0
+conversion_ready_targets = 0
+converted_datasets_now = 0
+evaluated_datasets_now = 0
+```
+
+Stage42-CG validates the CF terms confirmation template and writes a conversion readiness manifest. The current template is intentionally blank, so every source remains blocked. This preserves the M3W-Neural v1 evidence boundary: no legal/source-diversity conversion has happened yet, and broad source-level generalization still requires explicit terms confirmation plus a later no-leakage/source-CV/final-test conversion stage.

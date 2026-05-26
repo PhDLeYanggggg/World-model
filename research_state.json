@@ -1,6 +1,39 @@
 {
-  "current_stage": "Stage42-CF source conversion legal gate",
-  "current_verdict": "stage42_cf_source_conversion_legal_gate_pass",
+  "current_stage": "Stage42-CG source terms confirmation validator",
+  "current_verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+  "stage42_cg_source_terms_confirmation_validator": {
+    "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+    "report": "outputs/stage42_long_research/source_terms_validation_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_cg_gate.md",
+    "readiness_manifest": "outputs/stage42_long_research/source_conversion_readiness_manifest_stage42.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_source_terms_validation_stage42.md",
+    "verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+    "gates": "11/11",
+    "targets_validated": 5,
+    "terms_accepted_targets": 0,
+    "conversion_ready_targets": 0,
+    "conversion_allowed_now_count": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "conclusion": "Stage42-CG validates the CF terms confirmation template and writes a conversion readiness manifest. The current template is blank, so every target remains blocked. This is readiness infrastructure only; no legal conversion or external evaluation has occurred.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py -> 11/11",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_source_terms_confirmation_validator.py tests/test_stage42_source_conversion_legal_gate.py tests/test_stage42_source_diversity_conversion_preflight.py tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py -> 23 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 545 passed in 32.30s"
+    },
+    "claim_boundary": {
+      "validator_counted_as_conversion": false,
+      "converted_dataset_claim": false,
+      "evaluated_dataset_claim": false,
+      "broad_source_level_generalization_claim_allowed": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_cf_source_conversion_legal_gate": {
     "source": "fresh_stage42_cf_source_conversion_legal_gate",
     "report": "outputs/stage42_long_research/source_conversion_legal_gate_stage42.md",
@@ -231,7 +264,7 @@
     }
   },
   "latest_user_requested_current_goal_retrospective_2026_05_26": {
-    "source": "cached_verified_stage18_to_stage42_plus_stage42_cf_source_conversion_legal_gate",
+    "source": "cached_verified_stage18_to_stage42_plus_stage42_cg_source_terms_confirmation_validator",
     "path": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "scope": "detailed_current_goal_handoff_routes_tried_failure_roots_success_evidence_best_deployable_claim_boundaries_blockers_next_steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
@@ -246,7 +279,8 @@
       "Stage42-CC conservative local source inventory confirming source-diversity blocker remains active",
       "Stage42-CD official/manual source acquisition package for source-diversity repair",
       "Stage42-CE local conversion preflight proving parseability while preserving the source-CV blocker",
-      "Stage42-CF legal/source-identity gate preventing any conversion until explicit terms confirmation exists"
+      "Stage42-CF legal/source-identity gate preventing any conversion until explicit terms confirmation exists",
+      "Stage42-CG terms-confirmation validator and readiness manifest showing all targets remain blocked"
     ],
     "failed_or_limited_routes": [
       "JEPA downstream lift not proven",
@@ -289,9 +323,12 @@
       "source_diversity_acquisition_package_ready": true,
       "source_diversity_conversion_preflight_ready": true,
       "source_conversion_legal_gate_ready": true,
+      "source_terms_confirmation_validator_ready": true,
+      "source_conversion_ready_targets": 0,
       "source_cv_repair_ready": false,
       "converted_dataset_claim_from_stage42_ce": false,
-      "converted_dataset_claim_from_stage42_cf": false
+      "converted_dataset_claim_from_stage42_cf": false,
+      "converted_dataset_claim_from_stage42_cg": false
     }
   },
   "stage42_bt_eth_seq_t50_support_dry_run": {
@@ -16814,8 +16851,8 @@
       "full_pytest": "python3 -m pytest tests -> 499 passed"
     }
   },
-  "latest_stage42_source_support_summary": "Stage42-CF fresh-ran source conversion legal gate. Gates 13/13. Four local target paths are present and schema-parseable, three contain t50/t100-capable files, but zero targets are conversion-allowed now, zero datasets were converted, and zero were evaluated. Explicit official terms/path confirmation plus independent source identity remain required. No automatic download, no registry-only conversion claim, no Stage5C, no SMC.",
-  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 540 passed after Stage42-CF source conversion legal gate",
+  "latest_stage42_source_support_summary": "Stage42-CG fresh-ran source terms confirmation validator. Gates 11/11. Five targets validated, zero terms accepted, zero conversion-ready targets, zero converted datasets, zero evaluated datasets. The readiness manifest blocks all conversion until explicit official terms/path/source-identity confirmation plus a later no-leakage/source-CV conversion gate. No automatic download, no registry-only conversion claim, no Stage5C, no SMC.",
+  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 545 passed after Stage42-CG source terms confirmation validator",
   "stage42_by_t50_floor_relaxability_repair": {
     "source": "fresh_stage42_by_t50_floor_relaxability_repair",
     "verdict": "stage42_by_t50_floor_relaxability_repair_pass",
@@ -16965,7 +17002,7 @@
     }
   },
   "last_test_command": ".venv-pytorch/bin/python -m pytest tests",
-  "last_test_result": "540 passed in 31.18s",
+  "last_test_result": "545 passed in 32.30s",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
