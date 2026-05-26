@@ -1249,3 +1249,19 @@ gates = 13 / 13
 ```
 
 The context contribution map is now explicit: baseline-family rollout context is the dominant mechanism, causal history tokens are a supported core component, and domain expert is a smaller guarded component. Goal/scene and neighbor/interaction context remain mixed under the current protocols, while JEPA and Transformer are not independent deployable main claims. This sharpens the model-card language for M3W-Neural v1: the protected safety-floor mechanism is part of the contribution, not just an implementation detail.
+
+<!-- STAGE42_CS_FROZEN_PROXIMITY_GUARD_POLICY:START -->
+## Stage42-CS Frozen Proximity-Guard Composer Policy
+
+- source: `fresh_policy_freeze_from_stage42_cq_cr`
+- verdict: `stage42_cs_frozen_proximity_guard_policy_pass`
+- gates: `25 / 25`
+- policy artifact: `outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json`
+- policy hash: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`
+- selected deployment role: `safety_sensitive_deployable_composer_variant`
+- ADE vs endpoint-linear all/t50/t100 raw/hard: `1.77%` / `1.07%` / `3.48%` / `1.93%`
+- easy degradation: `0.25%`
+- near-collision@0.05 delta vs endpoint-linear: `-0.06%`
+- This freezes the Stage42-CQ/CR safety-sensitive composer. The no-guard composer remains accuracy-priority diagnostic only.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation claim, no global metric/seconds-level claim, no Stage5C execution, no SMC.
+<!-- STAGE42_CS_FROZEN_PROXIMITY_GUARD_POLICY:END -->

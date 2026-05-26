@@ -1,0 +1,110 @@
+{
+  "policy_name": "stage42_cs_frozen_proximity_guard_composer_policy",
+  "source": "fresh_policy_freeze_from_stage42_cq_cr",
+  "base_stage": "Stage42-CQ proximity-aware composer guard",
+  "ablation_stage": "Stage42-CR proximity guard ablation / Pareto audit",
+  "frozen_at_utc": "2026-05-26T19:37:47.622614+00:00",
+  "frozen_git_commit": "2d338ab",
+  "selection_scope": "validation_only",
+  "test_usage": "test_once_after_policy_freeze",
+  "deployment_role": "safety_sensitive_deployable_composer_variant",
+  "accuracy_priority_diagnostic_policy": "no_proximity_guard",
+  "selected_policy": {
+    "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+    "min_sep": 0.2,
+    "margin": 0.005,
+    "base_choices": {
+      "ETH_UCY|10": false,
+      "ETH_UCY|25": false,
+      "ETH_UCY|50": true,
+      "ETH_UCY|100": true,
+      "TrajNet|10": false,
+      "TrajNet|25": false,
+      "TrajNet|50": false,
+      "TrajNet|100": false
+    }
+  },
+  "guard_rule": {
+    "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+    "min_sep": 0.2,
+    "margin": 0.005,
+    "guard_input": "predicted endpoint/full-waypoint rollout geometry only",
+    "uses_future_labels": false
+  },
+  "base_choices": {
+    "ETH_UCY|10": false,
+    "ETH_UCY|25": false,
+    "ETH_UCY|50": true,
+    "ETH_UCY|100": true,
+    "TrajNet|10": false,
+    "TrajNet|25": false,
+    "TrajNet|50": false,
+    "TrajNet|100": false
+  },
+  "validation_selection_rule": {
+    "threshold_source": "validation_only",
+    "no_test_threshold_tuning": true,
+    "easy_degradation_limit": 0.02,
+    "safety_objective": "near_collision@0.05 no worse than endpoint-linear and strongest floor"
+  },
+  "test_summary_vs_endpoint_linear_ade": {
+    "rows": 55528,
+    "all_improvement": 0.017743597342181783,
+    "t50_improvement": 0.010673426149055754,
+    "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+    "hard_failure_improvement": 0.01929354722729537,
+    "easy_degradation": 0.0024927762207753723,
+    "switch_rate": 0.1696441434951736
+  },
+  "joint_safety_vs_endpoint_linear": {
+    "near_collision_002_delta": -3.6685131516209224e-05,
+    "near_collision_005_delta": -0.0006053046700172371,
+    "p05_min_group_distance_delta": -0.0001248494575282963,
+    "jagged_rate_delta": 0.0
+  },
+  "bootstrap_vs_endpoint_ade": {
+    "all": {
+      "low": 0.015001017840065956,
+      "mid": 0.017741793807755535,
+      "high": 0.020508576445801136,
+      "n": 55528,
+      "bootstrap_n": 2000
+    },
+    "t50": {
+      "low": 0.005939549853030457,
+      "mid": 0.010609408711776791,
+      "high": 0.015196755938181785,
+      "n": 13689,
+      "bootstrap_n": 2000
+    },
+    "t100": {
+      "low": 0.029116189622682552,
+      "mid": 0.03480810511035953,
+      "high": 0.04075484859533311,
+      "n": 9905,
+      "bootstrap_n": 2000
+    },
+    "hard_failure": {
+      "low": 0.016264474104925146,
+      "mid": 0.01928441782591267,
+      "high": 0.022182264577856596,
+      "n": 41741,
+      "bootstrap_n": 2000
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "guard_uses_future_labels": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

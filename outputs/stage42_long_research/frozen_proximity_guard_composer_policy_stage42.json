@@ -1,0 +1,229 @@
+{
+  "source": "fresh_policy_freeze_from_stage42_cq_cr",
+  "stage": "Stage42-CS frozen proximity-guard composer policy",
+  "generated_at_utc": "2026-05-26T19:37:47.636797+00:00",
+  "git_commit": "2d338ab",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CS 冻结 Stage42-CQ/CR 选择的 proximity-guard composer policy。",
+    "policy 冻结只使用 validation-selected 阈值和已审计的 predicted-rollout geometry guard。",
+    "test 只用于最终报告，不用于阈值选择。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "988f8c0c5e8141841842c7c01dff26eb1b7a29ff6f307bd2c96a6037e7d5b2bb",
+  "inputs": {
+    "stage42_cq": {
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "stage42_cq_gate": {
+        "gates": {
+          "stage42_co_gate_passed": true,
+          "stage42_cp_gate_passed": true,
+          "validation_selected_guard": true,
+          "test_evaluated_once": true,
+          "no_test_threshold_tuning": true,
+          "rollout_geometry_only_guard": true,
+          "test_all_positive_vs_endpoint": true,
+          "test_t50_positive_vs_endpoint": true,
+          "test_t100_positive_vs_endpoint": true,
+          "test_hard_positive_vs_endpoint": true,
+          "easy_degradation_under_2pct": true,
+          "near_collision_not_worse_than_endpoint": true,
+          "near_collision_not_worse_than_floor": true,
+          "all_ci_low_positive": true,
+          "t50_ci_low_positive": true,
+          "paper_files_refreshed": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+      }
+    },
+    "stage42_cr": {
+      "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+      "stage42_cr_gate": {
+        "gates": {
+          "co_gate_passed": true,
+          "cp_gate_passed": true,
+          "cq_gate_passed": true,
+          "ablation_rows_present": true,
+          "no_guard_has_accuracy_gain": true,
+          "no_guard_has_proximity_caveat": true,
+          "guard_repairs_near_collision": true,
+          "guard_retains_all_positive": true,
+          "guard_retains_t50_positive": true,
+          "guard_retains_t100_positive": true,
+          "guard_retains_hard_positive": true,
+          "guard_easy_under_2pct": true,
+          "safety_delta_documented": true,
+          "accuracy_cost_documented": true,
+          "deployment_recommendation_safe": true,
+          "paper_files_refreshed": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_cr_proximity_guard_ablation_pass"
+      }
+    }
+  },
+  "frozen_policy": {
+    "policy_name": "stage42_cs_frozen_proximity_guard_composer_policy",
+    "source": "fresh_policy_freeze_from_stage42_cq_cr",
+    "base_stage": "Stage42-CQ proximity-aware composer guard",
+    "ablation_stage": "Stage42-CR proximity guard ablation / Pareto audit",
+    "frozen_at_utc": "2026-05-26T19:37:47.622614+00:00",
+    "frozen_git_commit": "2d338ab",
+    "selection_scope": "validation_only",
+    "test_usage": "test_once_after_policy_freeze",
+    "deployment_role": "safety_sensitive_deployable_composer_variant",
+    "accuracy_priority_diagnostic_policy": "no_proximity_guard",
+    "selected_policy": {
+      "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+      "min_sep": 0.2,
+      "margin": 0.005,
+      "base_choices": {
+        "ETH_UCY|10": false,
+        "ETH_UCY|25": false,
+        "ETH_UCY|50": true,
+        "ETH_UCY|100": true,
+        "TrajNet|10": false,
+        "TrajNet|25": false,
+        "TrajNet|50": false,
+        "TrajNet|100": false
+      }
+    },
+    "guard_rule": {
+      "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+      "min_sep": 0.2,
+      "margin": 0.005,
+      "guard_input": "predicted endpoint/full-waypoint rollout geometry only",
+      "uses_future_labels": false
+    },
+    "base_choices": {
+      "ETH_UCY|10": false,
+      "ETH_UCY|25": false,
+      "ETH_UCY|50": true,
+      "ETH_UCY|100": true,
+      "TrajNet|10": false,
+      "TrajNet|25": false,
+      "TrajNet|50": false,
+      "TrajNet|100": false
+    },
+    "validation_selection_rule": {
+      "threshold_source": "validation_only",
+      "no_test_threshold_tuning": true,
+      "easy_degradation_limit": 0.02,
+      "safety_objective": "near_collision@0.05 no worse than endpoint-linear and strongest floor"
+    },
+    "test_summary_vs_endpoint_linear_ade": {
+      "rows": 55528,
+      "all_improvement": 0.017743597342181783,
+      "t50_improvement": 0.010673426149055754,
+      "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+      "hard_failure_improvement": 0.01929354722729537,
+      "easy_degradation": 0.0024927762207753723,
+      "switch_rate": 0.1696441434951736
+    },
+    "joint_safety_vs_endpoint_linear": {
+      "near_collision_002_delta": -3.6685131516209224e-05,
+      "near_collision_005_delta": -0.0006053046700172371,
+      "p05_min_group_distance_delta": -0.0001248494575282963,
+      "jagged_rate_delta": 0.0
+    },
+    "bootstrap_vs_endpoint_ade": {
+      "all": {
+        "low": 0.015001017840065956,
+        "mid": 0.017741793807755535,
+        "high": 0.020508576445801136,
+        "n": 55528,
+        "bootstrap_n": 2000
+      },
+      "t50": {
+        "low": 0.005939549853030457,
+        "mid": 0.010609408711776791,
+        "high": 0.015196755938181785,
+        "n": 13689,
+        "bootstrap_n": 2000
+      },
+      "t100": {
+        "low": 0.029116189622682552,
+        "mid": 0.03480810511035953,
+        "high": 0.04075484859533311,
+        "n": 9905,
+        "bootstrap_n": 2000
+      },
+      "hard_failure": {
+        "low": 0.016264474104925146,
+        "mid": 0.01928441782591267,
+        "high": 0.022182264577856596,
+        "n": 41741,
+        "bootstrap_n": 2000
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoints_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "guard_uses_future_labels": false
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "policy_artifact": {
+    "path": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json",
+    "sha256": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+    "size_bytes": 3414
+  },
+  "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+  "stage42_cs_gate": {
+    "gates": {
+      "cq_gate_passed": true,
+      "cr_gate_passed": true,
+      "policy_artifact_written": true,
+      "policy_hash_recorded": true,
+      "validation_only_selection": true,
+      "test_once_after_freeze": true,
+      "guard_uses_predicted_rollout_geometry_only": true,
+      "all_positive_vs_endpoint": true,
+      "t50_positive_vs_endpoint": true,
+      "t100_positive_vs_endpoint": true,
+      "hard_positive_vs_endpoint": true,
+      "easy_under_2pct": true,
+      "near_collision_not_worse_than_endpoint": true,
+      "all_ci_low_positive": true,
+      "t50_ci_low_positive": true,
+      "t100_ci_low_positive": true,
+      "hard_ci_low_positive": true,
+      "no_future_endpoint_input": true,
+      "no_future_waypoints_input": true,
+      "no_central_velocity": true,
+      "no_test_endpoint_goals": true,
+      "no_test_threshold_tuning": true,
+      "metric_seconds_overclaim_blocked": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 25,
+    "total": 25,
+    "verdict": "stage42_cs_frozen_proximity_guard_policy_pass"
+  }
+}
