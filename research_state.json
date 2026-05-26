@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_ar_source_level_sequence_context",
-  "current_verdict": "stage42_ar_sequence_context_evidence_partial_or_negative",
+  "current_stage": "stage42_as_source_level_graph_context",
+  "current_verdict": "stage42_as_graph_context_evidence_partial_or_negative",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_as_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AR proposed source-level sequence-context boundary; full pytest 386 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR context contribution boundary evidence.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AS proposed source-level graph-interaction context boundary; full pytest 390 passed.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR/AS context contribution boundary evidence.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AN/AO/AP/AQ/AR are fresh boundary ablations showing baseline-family rollout context dominates current ridge/residual/tabular-neural/sequence evidence.",
+    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AN/AO/AP/AQ/AR/AS are fresh boundary ablations showing baseline-family rollout context dominates current ridge/residual/tabular-neural/sequence/graph evidence.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -44,7 +44,10 @@
       "stage42_aq_full_pytest": "382 passed",
       "stage42_ar_runner": "pass",
       "stage42_ar_focused_pytest": "4 passed",
-      "stage42_ar_full_pytest": "386 passed"
+      "stage42_ar_full_pytest": "386 passed",
+      "stage42_as_runner": "pass",
+      "stage42_as_focused_pytest": "4 passed",
+      "stage42_as_full_pytest": "390 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -197,6 +200,23 @@
       "positive_sequence_context_variants": [],
       "failed_gate": "sequence_context_increment_found",
       "conclusion": "A temporal Conv1D sequence-context residual model over past-only history_seq did not improve over baseline-family rollout context; current source-level success is still dominated by baseline-family context rather than independent history/goal/neighbor sequence modules."
+    },
+    "stage42_as_source_level_graph_context": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/source_level_graph_context_stage42.md",
+      "gate": "10/11",
+      "verdict": "stage42_as_graph_context_evidence_partial_or_negative",
+      "rows_with_neighbors": 334525,
+      "max_unique_agents_per_frame": 65,
+      "baseline_family_only_ade_all": 0.2877734037648393,
+      "baseline_family_only_ade_t50": 0.31542535139554606,
+      "baseline_family_only_ade_hard_failure": 0.2758122379367457,
+      "graph_only_ade_all": 0.26427016918217416,
+      "graph_goal_ade_all": 0.2646507299807236,
+      "graph_history_goal_ade_all": 0.2647648890850426,
+      "positive_graph_context_variants": [],
+      "failed_gate": "graph_context_increment_found",
+      "conclusion": "Current-frame kNN graph / interaction residual context did not improve over baseline-family rollout context; do not claim independent graph/interaction module contribution under this protocol."
     }
   },
   "stage42_am_source_level_full_waypoint_eval": {
@@ -14239,6 +14259,52 @@
     "positive_sequence_context_variants": [],
     "failed_gate": "sequence_context_increment_found",
     "conclusion": "Temporal Conv1D over full past-only history_seq plus goal/neighbor context did not beat baseline-family first-stage on all/t50/hard. Do not claim independent sequence/history/goal/neighbor contribution under this protocol.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_as_source_level_graph_context": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/source_level_graph_context_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_as_gate.md",
+    "gate": "10/11",
+    "gates_passed": 10,
+    "gates_total": 11,
+    "verdict": "stage42_as_graph_context_evidence_partial_or_negative",
+    "graph_schema": {
+      "k_neighbors": 4,
+      "rows": 337991,
+      "rows_with_neighbors": 334525,
+      "max_unique_agents_per_frame": 65,
+      "uses_current_and_past_only": true
+    },
+    "baseline_family_only_ade_all": 0.2877734037648393,
+    "baseline_family_only_ade_t50": 0.31542535139554606,
+    "baseline_family_only_ade_hard_failure": 0.2758122379367457,
+    "graph_variants": {
+      "graph_only": {
+        "all": 0.26427016918217416,
+        "t50": 0.22967318481501453,
+        "hard_failure": 0.24880998931431964
+      },
+      "graph_goal": {
+        "all": 0.2646507299807236,
+        "t50": 0.22903525133547764,
+        "hard_failure": 0.2494716891363956
+      },
+      "graph_history_goal": {
+        "all": 0.2647648890850426,
+        "t50": 0.22900798793791954,
+        "hard_failure": 0.24957754247287833
+      }
+    },
+    "positive_graph_context_variants": [],
+    "failed_gate": "graph_context_increment_found",
+    "conclusion": "Structured same-frame kNN graph/interaction residual features did not beat the baseline-family first-stage on all/t50/hard. Current source-level evidence remains dominated by baseline-family rollout context, not independent graph context.",
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,

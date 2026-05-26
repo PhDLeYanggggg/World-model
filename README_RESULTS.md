@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -143,6 +143,27 @@ SMC_enabled = false
 ```
 
 Stage42-AR upgrades AQ from tabular MLP to a temporal Conv1D sequence encoder over past-only `history_seq` plus goal/neighbor context. It still fails the increment gate: `sequence_history`, `sequence_goal_neighbor_no_history`, and `sequence_history_goal_neighbor` all underperform the baseline-family first-stage on all/t50/hard. This is now a strong boundary result: current source-level success is not explained by independent history/goal/neighbor residual modules under ridge, tabular MLP, or temporal Conv1D residual protocols. The next credible experiment must use richer graph/scene tokens, a different supervision target, or explicitly evaluate whether baseline-family rollout context itself should be the main paper contribution.
+
+Latest Stage42-AS proposed source-level graph-interaction context residual training:
+
+```text
+source = fresh_run
+verdict = stage42_as_graph_context_evidence_partial_or_negative
+gates = 10 / 11
+rows_with_neighbors = 334525
+max_unique_agents_per_frame = 65
+baseline_family_only_ADE_all = 0.287773
+baseline_family_only_ADE_t50 = 0.315425
+baseline_family_only_ADE_hard_failure = 0.275812
+graph_only_ADE_all = 0.264270
+graph_goal_ADE_all = 0.264651
+graph_history_goal_ADE_all = 0.264765
+positive_graph_context_variants = none
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AS builds structured current-frame kNN graph / interaction features from `(source_file, frame_id)`, deduplicates horizon rows by agent, excludes the target agent, and uses only current/past motion. It still fails the increment gate: graph-only, graph+goal, and graph+history+goal residual variants all underperform the baseline-family first stage on all/t50/hard. This further narrows the claim boundary: the current proposed source-level evidence is dominated by baseline-family rollout context, not by independent history/goal/neighbor/sequence/graph residual modules under the tested protocols.
 
 Latest Stage42-AD calibration evidence refresh:
 

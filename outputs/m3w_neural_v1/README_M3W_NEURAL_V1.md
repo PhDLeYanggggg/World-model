@@ -40,6 +40,8 @@ Stage42-AQ repeats the residual-context question with a real PyTorch MLP in the 
 
 Stage42-AR then tests temporal sequence context directly using a Conv1D encoder over past-only `history_seq` with shape `[337991, 64, 7]`. It also fails to beat the baseline-family first-stage: sequence-history and sequence-goal/neighbor variants underperform on all/t50/hard. The evidence now strongly says the current source-level ridge/residual/tabular/sequence context branches do not independently explain the gain beyond baseline-family rollout context.
 
+Stage42-AS adds a structured current-frame kNN graph / interaction-context residual test. It builds graph features for `337991` rows, with `334525` rows having same-frame neighbors and up to `65` unique agents per frame, using only current/past motion and no future labels as input. The result is still partial/negative: `graph_only`, `graph_goal`, and `graph_history_goal` underperform the baseline-family first-stage on all/t50/hard. This rules out the current hand-built graph residual context as an independent source-level contribution and further supports treating baseline-family rollout context as the dominant current mechanism unless a stronger graph-neural or scene-token protocol proves otherwise.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
