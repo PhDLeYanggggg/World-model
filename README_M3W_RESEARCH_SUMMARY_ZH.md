@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining，以及 Stage42-AS proposed source-level graph-interaction context retraining；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining，以及 Stage42-AT proposed source-level safety-floor / fallback audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -38,13 +38,15 @@ python3 run_stage42_source_level_residual_context.py = pass
 python3 run_stage42_source_level_neural_context.py = pass
 python3 run_stage42_source_level_sequence_context.py = pass
 python3 run_stage42_source_level_graph_context.py = pass
+python3 run_stage42_source_level_safety_floor_audit.py = pass
 python3 -m pytest tests/test_stage42_source_level_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_incremental_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_residual_context.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_neural_context.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_sequence_context.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_graph_context.py = 4 passed
-python3 -m pytest tests = 390 passed
+python3 -m pytest tests/test_stage42_source_level_safety_floor_audit.py = 4 passed
+python3 -m pytest tests = 394 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -64,7 +66,7 @@ python3 -m pytest tests = 390 passed
 
 ## 给你的直接结论快照
 
-截至 Stage42-AS，我在 M3W 这个长期目标里做的核心事情可以概括为十三条：
+截至 Stage42-AT，我在 M3W 这个长期目标里做的核心事情可以概括为十四条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -104,6 +106,9 @@ python3 -m pytest tests = 390 passed
 
 13. **Stage42-AS 构建 current-frame kNN graph / interaction context，仍未证明独立增量。**  
    Stage42-AS 按 `(source_file, frame_id)` 构建同帧 kNN graph features，覆盖 `337991` rows，其中 `334525` rows 有邻居，最大同帧 unique agents 为 `65`。训练 `graph_only`、`graph_goal`、`graph_history_goal` 三个 residual variants，结果 10/11 gates，失败 gate 是 `graph_context_increment_found`：所有 graph variants 都低于 baseline-family first stage。因此当前 source-level 成功仍不能归因于独立 graph/interaction residual context；下一步要么使用真正 graph neural / scene-token supervision，要么把 baseline-family rollout context 作为核心机制重新组织论文贡献。
+
+14. **Stage42-AT 区分 fallback removal 与 teacher/floor context removal。**  
+   Stage42-AT 结果是 11/11 gates：在 proposed source-level baseline-family ridge probe 上，直接 ungated all rows 反而比 validation safe-switch 更强（all `+46.17%` vs `+28.78%`，t50 `+41.19%` vs `+31.54%`，hard/failure `+45.84%` vs `+27.58%`，easy degradation 仍为负）。但这不能写成“完全不需要 Stage37/teacher floor”，因为输入仍包含 baseline-family / floor rollout context；移除 `floor_rel` 或 `safe_baseline` context 会伤 protected t50，`teacher_floor_context_removal` 仍是 `not_supported_as_global_replacement`。
 
 最重要的失败原因也很清楚：
 
@@ -185,6 +190,7 @@ python3 -m pytest tests = 390 passed
 | Stage42-AQ proposed source-level neural residual context | 11/12 gates；arm64 PyTorch MLP fresh run；`positive_neural_context_variants = []`；`neural_history` / `neural_goal_neighbor` / `neural_history_goal_neighbor` 均低于 baseline-family first stage。 | 排除了简单 tabular neural residual-context 修复；下一步应做 graph/sequence/scene-rich context，而不是继续包装 ridge/MLP context。 |
 | Stage42-AR proposed source-level sequence context | 11/12 gates；arm64 temporal Conv1D fresh run；`history_seq_shape = [337991, 64, 7]`；`positive_sequence_context_variants = []`。 | 完整 past sequence encoder 也没有超过 baseline-family first stage；下一步应转向 graph/scene-rich context 或重新把 baseline-family rollout context 定义为主要贡献。 |
 | Stage42-AS proposed source-level graph interaction context | 10/11 gates；`rows_with_neighbors = 334525`；`max_unique_agents_per_frame = 65`；`positive_graph_context_variants = []`。 | current-frame kNN graph / interaction residual context 仍没有超过 baseline-family first stage；当前 source-level 成功仍由 baseline-family rollout context 主导。 |
+| Stage42-AT source-level safety floor / fallback audit | 11/11 gates；baseline-family ungated all +46.17%、t50 +41.19%、hard/failure +45.84%、easy degradation -30.56%；teacher/floor context removal 不支持全局替代。 | fallback floor 在这个 source-level ridge probe 上可局部去掉，但 teacher/floor rollout context 仍是输入机制；不能把它写成 floor-free neural dynamics。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界

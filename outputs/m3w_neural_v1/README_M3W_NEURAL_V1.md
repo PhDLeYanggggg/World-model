@@ -42,6 +42,8 @@ Stage42-AR then tests temporal sequence context directly using a Conv1D encoder 
 
 Stage42-AS adds a structured current-frame kNN graph / interaction-context residual test. It builds graph features for `337991` rows, with `334525` rows having same-frame neighbors and up to `65` unique agents per frame, using only current/past motion and no future labels as input. The result is still partial/negative: `graph_only`, `graph_goal`, and `graph_history_goal` underperform the baseline-family first-stage on all/t50/hard. This rules out the current hand-built graph residual context as an independent source-level contribution and further supports treating baseline-family rollout context as the dominant current mechanism unless a stronger graph-neural or scene-token protocol proves otherwise.
 
+Stage42-AT audits the safety floor boundary on the same proposed source-level split. It finds that fallback removal is supported for the baseline-family ridge probe itself: ungated all-row prediction reaches all `+0.461656`, t50 `+0.411874`, hard/failure `+0.458447`, with easy degradation still negative. But this is not a floor-free neural claim, because baseline/floor rollout context remains an input mechanism. Removing floor/safe rollout context hurts protected t50, so teacher/floor context removal is not supported as a global replacement.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

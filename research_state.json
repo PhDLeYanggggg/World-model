@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_as_source_level_graph_context",
-  "current_verdict": "stage42_as_graph_context_evidence_partial_or_negative",
+  "current_stage": "stage42_at_source_level_safety_floor_audit",
+  "current_verdict": "stage42_at_source_level_fallback_audit_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_as_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_as_at_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AS proposed source-level graph-interaction context boundary; full pytest 390 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR/AS context contribution boundary evidence.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AT proposed source-level safety-floor/fallback boundary; full pytest passed after Stage42-AT.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR/AS context contribution boundary evidence, and Stage42-AT fallback/floor-context boundary evidence.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AN/AO/AP/AQ/AR/AS are fresh boundary ablations showing baseline-family rollout context dominates current ridge/residual/tabular-neural/sequence/graph evidence.",
+    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AT shows source-level baseline-family ridge can be ungated on this split, while Stage42-AN/AO/AP/AQ/AR/AS show baseline-family rollout context dominates current context evidence.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -47,7 +47,10 @@
       "stage42_ar_full_pytest": "386 passed",
       "stage42_as_runner": "pass",
       "stage42_as_focused_pytest": "4 passed",
-      "stage42_as_full_pytest": "390 passed"
+      "stage42_as_full_pytest": "390 passed",
+      "stage42_at_runner": "pass",
+      "stage42_at_focused_pytest": "4 passed",
+      "stage42_at_full_pytest": "394 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -217,6 +220,21 @@
       "positive_graph_context_variants": [],
       "failed_gate": "graph_context_increment_found",
       "conclusion": "Current-frame kNN graph / interaction residual context did not improve over baseline-family rollout context; do not claim independent graph/interaction module contribution under this protocol."
+    },
+    "stage42_at_source_level_safety_floor_audit": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/source_level_safety_floor_audit_stage42.md",
+      "gate": "11/11",
+      "verdict": "stage42_at_source_level_fallback_audit_pass",
+      "baseline_family_protected_all": 0.2877734037648393,
+      "baseline_family_protected_t50": 0.31542535139554606,
+      "baseline_family_ungated_all": 0.46165607894645355,
+      "baseline_family_ungated_t50": 0.4118740667748171,
+      "baseline_family_ungated_hard_failure": 0.4584467385548455,
+      "baseline_family_ungated_easy_degradation": -0.3056252688145068,
+      "fallback_removal_for_baseline_family_probe": "supported_on_this_source_level_split",
+      "teacher_floor_context_removal": "not_supported_as_global_replacement",
+      "conclusion": "Fallback removal is supported for the source-level baseline-family ridge probe, but this is not a floor-free neural claim because baseline/floor rollout context remains an input mechanism."
     }
   },
   "stage42_am_source_level_full_waypoint_eval": {
@@ -14311,6 +14329,43 @@
       "metric_or_seconds_claim": false,
       "stage5c_executed": false,
       "smc_enabled": false
+    }
+  },
+  "stage42_at_source_level_safety_floor_audit": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/source_level_safety_floor_audit_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_at_gate.md",
+    "gate": "11/11",
+    "gates_passed": 11,
+    "gates_total": 11,
+    "verdict": "stage42_at_source_level_fallback_audit_pass",
+    "baseline_family_all_context": {
+      "protected_all": 0.2877734037648393,
+      "protected_t50": 0.31542535139554606,
+      "protected_hard_failure": 0.2758122379367457,
+      "protected_easy_degradation": -0.32418582524688455,
+      "ungated_all": 0.46165607894645355,
+      "ungated_t50": 0.4118740667748171,
+      "ungated_hard_failure": 0.4584467385548455,
+      "ungated_easy_degradation": -0.3056252688145068
+    },
+    "fallback_removed_delta_vs_protected": {
+      "all": 0.17388267518161427,
+      "t50": 0.09644871537927102,
+      "t100_raw_frame_diagnostic": 0.31340065273891127,
+      "hard_failure": 0.18263450061809983,
+      "easy_degradation": 0.01856055643237775
+    },
+    "fallback_removal_for_baseline_family_probe": "supported_on_this_source_level_split",
+    "teacher_floor_context_removal": "not_supported_as_global_replacement",
+    "conclusion": "The fallback switch can be relaxed for this source-level baseline-family ridge probe, but teacher/floor rollout context remains part of the mechanism. Do not claim floor-free neural deployment.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false
     }
   }
 }
