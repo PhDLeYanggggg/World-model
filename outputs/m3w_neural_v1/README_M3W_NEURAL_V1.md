@@ -26,7 +26,7 @@ The required ablation coverage audit is now packaged. It covers no-history, no-n
 
 The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.
 
-The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard. Stage42-AH refreshes the post-repair paper-claim boundary. Stage42-AI repairs the remaining TrajNet|100 easy-safety limit with a validation-only source guard while keeping t100 raw-frame diagnostic only.
+The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard. Stage42-AH refreshes the post-repair paper-claim boundary. Stage42-AI repairs the remaining TrajNet|100 easy-safety limit with a validation-only source guard while keeping t100 raw-frame diagnostic only. Stage42-AJ propagates AD-AI evidence into all Stage42 paper package files.
 
 ## Stage42-A Data Calibration Follow-Up
 
@@ -201,6 +201,30 @@ global easy degradation CI high = 0.001168
 Interpretation:
 
 The repair uses validation easy-degradation only. It selects the easy-safe positive validation source for `TrajNet|100`, otherwise floor. This removes the TrajNet|100 easy harm while preserving positive raw-frame diagnostic t100 evidence. It still does not allow seconds-level, metric, true-3D, foundation, Stage5C, or SMC claims.
+
+### Stage42-AJ Post-Repair Paper Package Refresh
+
+Stage42-AJ refreshes the paper package with AD-AI evidence:
+
+- report: `outputs/stage42_long_research/paper_package_post_repair_refresh_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_aj_gate.md`
+- result: Stage42-AJ gates `10 / 10`
+
+Key result:
+
+```text
+verdict = stage42_aj_post_repair_paper_package_refresh_pass
+paper_files_refreshed = 9 / 9
+included = calibration refresh, horizon25 repair, ETH_UCY t50/FDE repair, post-repair claim matrix, TrajNet t100 safety repair
+metric/seconds claim = rejected
+t100 seconds claim = rejected
+Stage5C = false
+SMC = false
+```
+
+Interpretation:
+
+The paper package is now current through Stage42-AI. The package can claim protected dataset-local raw-frame 2.5D full-waypoint evidence with repaired weak slices. It still must reject metric, seconds-level, true-3D, foundation, Stage5C, SMC, and ungated-neural deployment claims.
 
 ## Stage42-B External Validation Follow-Up
 

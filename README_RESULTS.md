@@ -159,6 +159,22 @@ SMC_enabled = false
 
 Stage42-AI repairs the remaining TrajNet|100 easy-safety limit with a validation-only source safety guard. This strengthens t100 raw-frame diagnostic evidence and removes the TrajNet|100 easy harm, but it still does not permit seconds-level, metric, true-3D, foundation, Stage5C, or SMC claims.
 
+Latest Stage42-AJ post-repair paper package refresh:
+
+```text
+source = fresh_synthesis_from_stage42_ad_to_ai_artifacts
+verdict = stage42_aj_post_repair_paper_package_refresh_pass
+gates = 10 / 10
+paper_files_refreshed = 9 / 9
+included = Stage42-AD calibration, Stage42-AF horizon25 repair, Stage42-AG ETH_UCY t50/FDE repair, Stage42-AH post-repair claim matrix, Stage42-AI TrajNet t100 safety repair
+metric_seconds_claim = rejected
+t100_seconds_claim = rejected
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AJ updates all Stage42 paper package files (`paper_outline`, `method`, `experiment_tables`, `ablation_tables`, `failure_taxonomy`, `model_card`, `data_card`, `reproducibility`, and `a_journal_gap`) with AD-AI post-repair evidence. The paper-ready scope is now stronger than Stage42-AC, but remains protected dataset-local raw-frame 2.5D.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
