@@ -496,3 +496,17 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
 - claim boundary: still protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:END -->
+
+<!-- STAGE42_DK_GROUP_CONSISTENCY_POLICY_REPLAY:START -->
+## Stage42-DK Group-Consistency Policy Replay
+
+- source: `fresh_replay_from_frozen_group_consistency_policy_artifact`
+- role: replay the Stage42-DJ frozen group-consistency full-waypoint policy artifact against Stage42-DI/DJ source evidence.
+- replay performs no retraining, no threshold reselection, and no test tuning.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json`
+- policy hash: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
+- gate: `34 / 34`; verdict `stage42_dk_group_consistency_policy_replay_pass`.
+- replayed ADE vs train-horizon causal floor: all `24.72%`, t50 `22.36%`, t100 raw `14.35%`, hard `23.89%`, easy `-25.63%`.
+- replayed near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- claim boundary: still protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_DK_GROUP_CONSISTENCY_POLICY_REPLAY:END -->

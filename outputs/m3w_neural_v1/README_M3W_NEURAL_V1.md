@@ -1494,3 +1494,18 @@ The context contribution map is now explicit: baseline-family rollout context is
 - near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:END -->
+
+<!-- STAGE42_DK_GROUP_CONSISTENCY_POLICY_REPLAY:START -->
+## Stage42-DK Group-Consistency Policy Replay
+
+- source: `fresh_replay_from_frozen_group_consistency_policy_artifact`
+- verdict: `stage42_dk_group_consistency_policy_replay_pass`
+- gates: `34 / 34`
+- replayed policy artifact: `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json`
+- policy hash: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
+- replay check: policy artifact matches Stage42-DJ embedded policy and Stage42-DI selected repair / metrics / safety.
+- ADE vs train-horizon causal floor all/t50/t100 raw/hard: `24.72%` / `22.36%` / `14.35%` / `23.89%`
+- easy degradation: `-25.63%`
+- near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_DK_GROUP_CONSISTENCY_POLICY_REPLAY:END -->
