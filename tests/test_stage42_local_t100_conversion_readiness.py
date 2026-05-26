@@ -27,6 +27,14 @@ def test_source_cv_plan_requires_three_sources() -> None:
     assert plan["domains"]["ETH_UCY"]["source_cv_feasible_after_conversion"] is False
 
 
+def test_choose_xy_columns_handles_obsmat_px_layout() -> None:
+    rows = [
+        [1.0, 1.0, 323.0, 0.0, 430.0, 0.0, 0.0, 0.0],
+        [1.0, 2.0, 266.0, 0.0, 539.0, 0.0, 0.0, 0.0],
+    ]
+    assert s42be._choose_xy_columns(rows) == (2, 4)
+
+
 def test_gate_passes_for_readiness_payload() -> None:
     payload = {
         "source": "fresh_local_conversion_readiness",

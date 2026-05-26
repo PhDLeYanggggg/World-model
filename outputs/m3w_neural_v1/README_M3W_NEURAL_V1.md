@@ -70,6 +70,8 @@ Stage42-BD scans local OpenTraj / ETH / UCY / TrajNet paths for t100-capable sou
 
 Stage42-BE parses those four novel local t100 candidates for conversion readiness. It passes `12 / 12` gates: all `4` candidates are schema-ready, with `15813` estimated t50 windows and `6257` estimated t100 windows. UCY has enough novel local sources for a source-CV readiness plan after actual conversion; ETH_UCY gains only one small source and remains under-supported. This remains readiness evidence only, not a converted feature store, training run, evaluation run, or t100 success claim.
 
+Stage42-BF then performs actual in-memory schema conversion and causal baseline/source-CV audit for the same four local sources. It passes `12 / 12` gates, with `15058` t50 evaluation windows and `6071` t100 evaluation windows. UCY has positive t100 baseline-family source-CV readiness evidence (`mean holdout improvement vs constant_velocity = 0.607043`, minimum `0.491545`). This is still not protected M3W policy training/evaluation, so t100 remains blocked as a deployable positive claim until a later protected-policy run.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

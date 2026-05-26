@@ -281,6 +281,33 @@ Stage42-BE 不是又写计划，而是解析 Stage42-BD 找到的 4 个本地候
 
 这一步仍然不写 full feature store、不训练、不评估、不改变 t100 claim。下一步是 Stage42-BF actual conversion + no-leakage + train-only source-CV。
 
+## Stage42-BF Local T100 Schema Conversion And Source-CV Baseline Audit
+
+```text
+source = fresh_in_memory_schema_conversion
+verdict = stage42_bf_local_t100_schema_conversion_pass
+gates = 12 / 12
+candidate_sources = 4
+converted_sources = 4
+t50_eval_windows = 15058
+t100_eval_windows = 6071
+source_cv_domains_evaluated = ETH_UCY, UCY
+source_cv_domains_positive_vs_constant_velocity = UCY
+UCY_mean_holdout_improvement_vs_constant_velocity = 0.607043
+UCY_min_holdout_improvement_vs_constant_velocity = 0.491545
+materialized_feature_store_written = false
+training_run = false
+t100_positive_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BF 是对 BD/BE 的真实推进：它在内存中完成 4 个本地候选源的 schema conversion，构建 causal windows，计算 constant_position / constant_velocity_causal_fd / damped_velocity / constant_acceleration 等 baseline-family FDE，并在 UCY 三源上做 validation-source / holdout-source 的 source-CV baseline audit。结果显示 UCY 的 t100 baseline-family source-CV holdout 全部强于 constant velocity，mean improvement 约 `60.70%`，minimum improvement 约 `49.15%`。
+
+这一步也修正了 `UCY/students03/obsmat_px.txt` 的 8 列坐标布局问题：不能把第 4 列全 0 当作 y 坐标，解析器会选择第 5 列作为 y。这个修复很重要，因为“能读文件”不等于“坐标列可信”。
+
+边界仍然严格：BF 没有写 full feature store，没有训练 protected M3W policy，也没有在 final test 上产生 deployable t100 claim。下一步是 Stage42-BG：基于这些 converted windows 写非 Git feature store/cache，训练/评估 protected t100 policy，并继续保持 train-only source-CV 和 validation-only threshold。
+
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
 
 阅读索引：

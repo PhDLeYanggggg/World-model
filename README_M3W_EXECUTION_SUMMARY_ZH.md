@@ -690,6 +690,27 @@ smc_enabled = false
 
 Stage42-BE 解析这 4 个候选源并验证 schema-readiness：UCY 有 3 个 novel t100-capable sources，实际转换后具备 source-CV readiness；ETH_UCY 只新增 1 个很小 t100 source，仍不足以独立修复 t100 blocker。这仍然不是 converted dataset / trained model / evaluated model，下一步需要 Stage42-BF actual conversion 和 train-only source-CV。
 
+### Stage42-BF 本轮 actual in-memory conversion
+
+```text
+source = fresh_in_memory_schema_conversion
+verdict = stage42_bf_local_t100_schema_conversion_pass
+gates = 12 / 12
+converted_sources = 4
+t50_eval_windows = 15058
+t100_eval_windows = 6071
+source_cv_domains_positive_vs_constant_velocity = UCY
+UCY_mean_holdout_improvement_vs_constant_velocity = 0.607043
+UCY_min_holdout_improvement_vs_constant_velocity = 0.491545
+materialized_feature_store_written = false
+training_run = false
+t100_positive_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BF 已经做 actual in-memory schema conversion 和 causal baseline/source-CV audit，并修正 `UCY/students03/obsmat_px.txt` 的 8 列坐标解析风险。UCY 的 t100 baseline-family source-CV holdout 全部强于 constant velocity；但这仍不是 protected M3W policy training/evaluation，所以 t100 仍是 blocker / diagnostic。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：
@@ -717,11 +738,13 @@ python3 run_stage42_t100_data_gap_audit.py = pass
 python3 run_stage42_t100_source_acquisition_plan.py = pass
 python3 run_stage42_local_t100_source_inventory.py = pass
 python3 run_stage42_local_t100_conversion_readiness.py = pass
+python3 run_stage42_local_t100_schema_conversion.py = pass
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_source_inventory.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_conversion_readiness.py = 4 passed
-python3 -m pytest tests = 438 passed
+python3 -m pytest tests/test_stage42_local_t100_schema_conversion.py = 4 passed
+python3 -m pytest tests = 443 passed
 ```
 
 ## 10. 总结成一句话

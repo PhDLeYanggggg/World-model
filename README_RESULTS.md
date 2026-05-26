@@ -47,6 +47,29 @@ SMC_enabled = false
 
 Stage42-BE parses the four local candidates and confirms they can map to the external row schema. UCY now has enough novel local t100-capable sources for a source-CV readiness plan after actual conversion. This is still readiness evidence only; it is not a converted dataset, trained model, evaluated model, metric/seconds claim, or t100 success claim.
 
+Latest Stage42-BF local t100 schema conversion and source-CV baseline audit:
+
+```text
+source = fresh_in_memory_schema_conversion
+verdict = stage42_bf_local_t100_schema_conversion_pass
+gates = 12 / 12
+candidate_sources = 4
+converted_sources = 4
+t50_eval_windows = 15058
+t100_eval_windows = 6071
+source_cv_domains_evaluated = ETH_UCY, UCY
+source_cv_domains_positive_vs_constant_velocity = UCY
+UCY_mean_holdout_improvement_vs_constant_velocity = 0.607043
+UCY_min_holdout_improvement_vs_constant_velocity = 0.491545
+materialized_feature_store_written = false
+training_run = false
+t100_positive_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BF performs an actual in-memory schema conversion and causal baseline audit. It also fixes the local UCY `obsmat_px` coordinate-layout issue by detecting the 8-column layout. UCY now has positive t100 baseline-family source-CV readiness evidence, but this is still not protected M3W policy training/evaluation; t100 remains blocked as a deployable positive claim until Stage42-BG.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
@@ -55,7 +78,7 @@ Latest update: this canonical Chinese summary now explicitly includes Stage42-W/
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for the latest detailed summary / Stage42-BE refresh: `python3 -m pytest tests` -> `438 passed`.
+Validation for the latest detailed summary / Stage42-BF refresh: `python3 -m pytest tests` -> `443 passed`.
 
 Most important current summary:
 

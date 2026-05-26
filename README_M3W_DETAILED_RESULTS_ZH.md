@@ -109,6 +109,7 @@ SMC-ready model
 | Stage42-BC source acquisition plan | 6 candidates，5 official sources，6 local paths；high priority = UCY Crowd / TrajNet++ / OpenTraj / ETH-UCY。 | 不自动下载受限数据，不绕 license。 |
 | Stage42-BD local t100 inventory | 93 files scanned；74 parseable；8 t100-capable；4 already used；4 novel candidates；estimated novel t100 windows = 6,257。 | 仅 inventory；还没 conversion/eval。 |
 | Stage42-BE local t100 conversion readiness | 4 candidates；4 schema-ready；estimated t50 windows = 15,813；estimated t100 windows = 6,257；UCY source-CV feasible after conversion。 | 仍是 readiness；full feature store / source-CV / eval 还没跑。 |
+| Stage42-BF local t100 schema conversion | 4 sources converted in-memory；t50 eval windows = 15,058；t100 eval windows = 6,071；UCY source-CV baseline-family positive，mean +60.70%，min +49.15% vs constant velocity。 | 这是 causal baseline/source-CV audit，不是 M3W policy training；t100 claim 仍 blocked。 |
 
 ## 5. Stage42-BD 本轮新增发现
 
@@ -169,7 +170,35 @@ evaluation_run = false
 - 本步骤不写 full feature store，不训练，不评估，不改变 t100 claim。
 - 下一步仍必须是 Stage42-BF actual schema conversion + no-leakage + train-only source-CV。
 
-## 7. 为什么当前成果不是 true 3D / foundation
+## 7. Stage42-BF 本轮 actual in-memory conversion
+
+Stage42-BF 真正解析这 4 个本地候选源，修正了 `UCY/students03/obsmat_px.txt` 的 8 列坐标布局风险，并在内存中构建 causal windows，计算 baseline-family FDE 和 UCY source-CV holdout baseline audit：
+
+```text
+source = fresh_in_memory_schema_conversion
+verdict = stage42_bf_local_t100_schema_conversion_pass
+gates = 12 / 12
+candidate_sources = 4
+converted_sources = 4
+t50_eval_windows = 15058
+t100_eval_windows = 6071
+source_cv_domains_evaluated = ETH_UCY, UCY
+source_cv_domains_positive_vs_constant_velocity = UCY
+UCY mean holdout improvement vs constant_velocity = 0.607043
+UCY minimum holdout improvement vs constant_velocity = 0.491545
+materialized_feature_store_written = false
+training_run = false
+t100_positive_claim_allowed = false
+```
+
+解释：
+
+- 这一步已经不是单纯 readiness：它做了 actual in-memory schema conversion 和 causal baseline audit。
+- UCY 三源 source-CV 下，validation-selected baseline-family 在 holdout t100 上全部强于 constant velocity。
+- ETH_UCY 没有足够 folds，仍不能修复 ETH_UCY t100 blocker。
+- 这仍不是 M3W protected policy training，因此不能把 t100 写成已修复。下一步应是 Stage42-BG：在这些转换源上训练/评估 protected policy，并继续保持 no-leakage 和 validation-only threshold。
+
+## 8. 为什么当前成果不是 true 3D / foundation
 
 不能这么写的原因很具体：
 
@@ -193,10 +222,10 @@ strict no-leakage protected 2.5D multi-agent world-state modeling on real top-do
 true 3D foundation world model
 ```
 
-## 8. 现在最值得做的下一步
+## 9. 现在最值得做的下一步
 
-1. **Stage42-BF：把 Stage42-BE 证明 schema-ready 的 4 个 local t100 candidates 实际转换进 external schema。**
-   必须做 no-leakage split、causal velocity、train-only goals/source-CV，不能只登记。
+1. **Stage42-BG：基于 BF 的 in-memory conversion 结果写非 Git feature store，并训练/评估 protected t100 policy。**
+   必须用 train-only source-CV，不得用 test 调阈值；UCY 是优先域，ETH_UCY 仍需更多 source。
 
 2. **继续 t100 source-CV repair，但不 overclaim。**
    只有 ETH_UCY / TrajNet / UCY 至少有足够独立 t100 source support，t100 才能从 diagnostic blocker 变成可部署正 claim。
@@ -204,7 +233,7 @@ true 3D foundation world model
 3. **如果继续冲神经世界模型主贡献，要换更强 graph/scene-rich protocol。**
    当前 ridge/MLP/Conv1D/hand-built graph residual context 都没证明独立增量；不能继续把 history/goal/neighbor 写成已证明主贡献。
 
-## 9. 最终简短 verdict
+## 10. 最终简短 verdict
 
 ```text
 项目是否跑通：是
@@ -219,5 +248,5 @@ SDD success：是
 external t50 success：是
 protected source-level full-waypoint success：是
 t100 stable success：否，当前仍是 blocker / diagnostic
-本轮新发现：4 个 novel t100 candidates 全部 schema-ready，估计 15,813 个 t50 windows / 6,257 个 t100 windows；UCY 在 actual conversion 后具备 source-CV readiness，下一步必须实际转换 + source-CV
+本轮新发现：4 个 novel t100 candidates 已完成 in-memory schema conversion；UCY t100 source-CV baseline-family holdout 全部强于 constant velocity，但这还不是 protected M3W policy training，t100 stable success 仍未允许
 ```

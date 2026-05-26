@@ -1,8 +1,8 @@
 # Stage42-BE Local T100 Conversion Readiness
 
 - source: `fresh_local_conversion_readiness`
-- generated_at_utc: `2026-05-26T12:24:15.930066+00:00`
-- git_commit: `e86258f`
+- generated_at_utc: `2026-05-26T12:30:34.975942+00:00`
+- git_commit: `f6e0265`
 - input_hash: `8a4f5287b20b2a3f161e8885992c6b531906544ef2c8b2fe042e878fa7ff1666`
 - gate: `12 / 12`
 - verdict: `stage42_be_local_t100_conversion_readiness_pass`

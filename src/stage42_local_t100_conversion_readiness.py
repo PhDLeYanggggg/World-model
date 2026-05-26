@@ -68,23 +68,42 @@ def _parse_rows(path: Path) -> list[dict[str, Any]]:
                     continue
         return rows
 
+    numeric_rows: list[list[float]] = []
     with path.open("r", encoding="utf-8", errors="ignore") as f:
         for line in f:
             parts = line.replace(",", " ").strip().split()
             if len(parts) < 4:
                 continue
             try:
-                rows.append(
-                    {
-                        "frame_id": int(float(parts[0])),
-                        "agent_id": str(int(float(parts[1]))),
-                        "x": float(parts[2]),
-                        "y": float(parts[3]),
-                    }
-                )
+                numeric_rows.append([float(part) for part in parts])
             except ValueError:
                 continue
+    x_idx, y_idx = _choose_xy_columns(numeric_rows)
+    for parts in numeric_rows:
+        rows.append(
+            {
+                "frame_id": int(parts[0]),
+                "agent_id": str(int(parts[1])),
+                "x": float(parts[x_idx]),
+                "y": float(parts[y_idx]),
+            }
+        )
     return rows
+
+
+def _choose_xy_columns(numeric_rows: list[list[float]]) -> tuple[int, int]:
+    if not numeric_rows:
+        return 2, 3
+    min_len = min(len(row) for row in numeric_rows)
+    if min_len < 5:
+        return 2, 3
+    col3 = [row[3] for row in numeric_rows]
+    col4 = [row[4] for row in numeric_rows]
+    range3 = max(col3) - min(col3)
+    range4 = max(col4) - min(col4)
+    if range3 < 1e-9 and range4 > 1e-9:
+        return 2, 4
+    return 2, 3
 
 
 def _track_map(rows: Iterable[Mapping[str, Any]]) -> dict[str, list[dict[str, Any]]]:

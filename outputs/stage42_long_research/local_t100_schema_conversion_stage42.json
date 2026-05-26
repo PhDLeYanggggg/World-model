@@ -1,0 +1,932 @@
+{
+  "source": "fresh_in_memory_schema_conversion",
+  "stage": "Stage42-BF Local T100 Schema Conversion And Source-CV Baseline Audit",
+  "generated_at_utc": "2026-05-26T12:33:12.689637+00:00",
+  "git_commit": "f6e0265",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BF 做 local t100 candidates 的 in-memory schema conversion 和 causal baseline/source-CV audit。",
+    "本步骤不提交 full feature store，不训练神经模型，不改变部署模型。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t100 仍是 raw-frame diagnostic / blocker，不能写成 seconds-level。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "22e46b6a2d4745dd439f05bb24396a10fd83bb885a7f79dc9ca236d222ee05e9",
+  "be_verdict": "stage42_be_local_t100_conversion_readiness_pass",
+  "converted_schema": {
+    "source": "fresh_in_memory_schema_conversion",
+    "fields": [
+      "dataset_name",
+      "domain",
+      "source_id",
+      "scene_id",
+      "agent_id",
+      "frame_id",
+      "x",
+      "y",
+      "vx_causal",
+      "vy_causal",
+      "horizon",
+      "future_x_label_eval_only",
+      "future_y_label_eval_only",
+      "coordinate_unit",
+      "metric_status"
+    ],
+    "materialized_feature_store_written": false,
+    "conversion_mode": "in_memory_aggregate_windows_only"
+  },
+  "source_metrics": {
+    "ETH/seq_eth/biwi_eth_10fps.txt": {
+      "source": "fresh_in_memory_schema_conversion",
+      "source_id": "ETH/seq_eth/biwi_eth_10fps.txt",
+      "domain": "ETH_UCY",
+      "window_counts": {
+        "10": 1513,
+        "25": 208,
+        "50": 76,
+        "100": 12
+      },
+      "by_horizon": {
+        "10": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 1513,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1513,
+              "mean_fde": 7.754286387424897,
+              "mean_relative_fde": 46085.492387588674
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1513,
+              "mean_fde": 1.7475662438097264,
+              "mean_relative_fde": 46084.87383262027
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1513,
+              "mean_fde": 5.816729519350266,
+              "mean_relative_fde": 46085.28592974248
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1513,
+              "mean_fde": 3.9723393801116615,
+              "mean_relative_fde": 46085.09588863981
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1513,
+              "mean_fde": 2.367692737801876,
+              "mean_relative_fde": 46084.93343599594
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1513,
+              "mean_fde": 7.628952838836443,
+              "mean_relative_fde": 156298.16315445263
+            }
+          },
+          "strongest_baseline": "constant_velocity_causal_fd",
+          "improvement_vs_constant_velocity": 0.0
+        },
+        "25": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 208,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 208,
+              "mean_fde": 4.722855357239586,
+              "mean_relative_fde": 766400.3058386439
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 208,
+              "mean_fde": 5.599528449658681,
+              "mean_relative_fde": 766400.4401361998
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 208,
+              "mean_fde": 3.9086685074971466,
+              "mean_relative_fde": 766400.2573763239
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 208,
+              "mean_fde": 3.721908984500271,
+              "mean_relative_fde": 766400.2657630426
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 208,
+              "mean_fde": 4.34831398623476,
+              "mean_relative_fde": 766400.3276450868
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 208,
+              "mean_fde": 41.46817155683253,
+              "mean_relative_fde": 4598886.3768541
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p50",
+          "improvement_vs_constant_velocity": 0.3353174257508881
+        },
+        "50": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 76,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 76,
+              "mean_fde": 5.99365147020261,
+              "mean_relative_fde": 1579906.1241770212
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 76,
+              "mean_fde": 16.890972647946114,
+              "mean_relative_fde": 1579906.74267738
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 76,
+              "mean_fde": 7.476294547989943,
+              "mean_relative_fde": 1579906.2356054094
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 76,
+              "mean_fde": 10.301059035109342,
+              "mean_relative_fde": 1579906.3893039294
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 76,
+              "mean_fde": 13.558629375890428,
+              "mean_relative_fde": 1579906.5631135565
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 76,
+              "mean_fde": 195.7164527675114,
+              "mean_relative_fde": 13670446.911497012
+            }
+          },
+          "strongest_baseline": "constant_position",
+          "improvement_vs_constant_velocity": 0.6451565226510849
+        },
+        "100": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 12,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12,
+              "mean_fde": 1.3762090769974946,
+              "mean_relative_fde": 317615.9059425684
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12,
+              "mean_fde": 17.75875758100398,
+              "mean_relative_fde": 317616.53435586405
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12,
+              "mean_fde": 4.118989979843831,
+              "mean_relative_fde": 317615.98186233046
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12,
+              "mean_fde": 8.632693217808088,
+              "mean_relative_fde": 317616.1618292573
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12,
+              "mean_fde": 13.191668804239848,
+              "mean_relative_fde": 317616.34759893524
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12,
+              "mean_fde": 926.9695935531904,
+              "mean_relative_fde": 172513990.99535176
+            }
+          },
+          "strongest_baseline": "constant_position",
+          "improvement_vs_constant_velocity": 0.9225053289499495
+        }
+      }
+    },
+    "UCY/students01/students001.txt": {
+      "source": "fresh_in_memory_schema_conversion",
+      "source_id": "UCY/students01/students001.txt",
+      "domain": "UCY",
+      "window_counts": {
+        "10": 16913,
+        "25": 11666,
+        "50": 6134,
+        "100": 1866
+      },
+      "by_horizon": {
+        "10": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 16913,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16913,
+              "mean_fde": 1.944364349165888,
+              "mean_relative_fde": 1.3454973267089898
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16913,
+              "mean_fde": 0.8270213424323059,
+              "mean_relative_fde": 0.7790750701063618
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16913,
+              "mean_fde": 1.4919710809761055,
+              "mean_relative_fde": 1.1313105825951415
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16913,
+              "mean_fde": 1.102404144536486,
+              "mean_relative_fde": 0.9486467913278849
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16913,
+              "mean_fde": 0.8387339744758074,
+              "mean_relative_fde": 0.8184832670668426
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16913,
+              "mean_fde": 1.5833269337851608,
+              "mean_relative_fde": 1.4472260631099798
+            }
+          },
+          "strongest_baseline": "constant_velocity_causal_fd",
+          "improvement_vs_constant_velocity": 0.0
+        },
+        "25": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 11666,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11666,
+              "mean_fde": 3.8091654237996035,
+              "mean_relative_fde": 1.7889638975292321
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11666,
+              "mean_fde": 2.839425150523603,
+              "mean_relative_fde": 1.4638806930771833
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11666,
+              "mean_fde": 2.9750125432250183,
+              "mean_relative_fde": 1.6094395416649463
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11666,
+              "mean_fde": 2.4550834482290114,
+              "mean_relative_fde": 1.4864927035935924
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11666,
+              "mean_fde": 2.4196935043098056,
+              "mean_relative_fde": 1.4384274091543092
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11666,
+              "mean_fde": 8.34625643508902,
+              "mean_relative_fde": 3.568431500682588
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p75",
+          "improvement_vs_constant_velocity": 0.14782275424178618
+        },
+        "50": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 6134,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6134,
+              "mean_fde": 4.8729623779731766,
+              "mean_relative_fde": 1.7442560166303993
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6134,
+              "mean_fde": 6.048271273452597,
+              "mean_relative_fde": 1.6654033017512369
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6134,
+              "mean_fde": 3.866290399184208,
+              "mean_relative_fde": 1.6073345579802005
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6134,
+              "mean_fde": 3.901956959407794,
+              "mean_relative_fde": 1.5605513191825193
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6134,
+              "mean_fde": 4.7654517462100054,
+              "mean_relative_fde": 1.588684887016881
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6134,
+              "mean_fde": 28.632411900952107,
+              "mean_relative_fde": 6.990467711664933
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p25",
+          "improvement_vs_constant_velocity": 0.36076107959073506
+        },
+        "100": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 1866,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1866,
+              "mean_fde": 5.0624605582945135,
+              "mean_relative_fde": 1.6304522643258021
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1866,
+              "mean_fde": 9.956563883725808,
+              "mean_relative_fde": 1.6981280975575097
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1866,
+              "mean_fde": 4.297606197482573,
+              "mean_relative_fde": 1.528640500754266
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1866,
+              "mean_fde": 5.549623804187652,
+              "mean_relative_fde": 1.5324332349017302
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1866,
+              "mean_fde": 7.5795965081180325,
+              "mean_relative_fde": 1.596707085963037
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 1866,
+              "mean_fde": 88.07767266013653,
+              "mean_relative_fde": 13.576017073166543
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p25",
+          "improvement_vs_constant_velocity": 0.568364523376675
+        }
+      }
+    },
+    "UCY/students03/obsmat_px.txt": {
+      "source": "fresh_in_memory_schema_conversion",
+      "source_id": "UCY/students03/obsmat_px.txt",
+      "domain": "UCY",
+      "window_counts": {
+        "10": 16793,
+        "25": 11356,
+        "50": 6252,
+        "100": 3342
+      },
+      "by_horizon": {
+        "10": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 16793,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16793,
+              "mean_fde": 93.06198084571817,
+              "mean_relative_fde": 1309865.9381415297
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16793,
+              "mean_fde": 52.02980833442424,
+              "mean_relative_fde": 1309865.7097489908
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16793,
+              "mean_fde": 72.79569830868402,
+              "mean_relative_fde": 1309865.8178878385
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16793,
+              "mean_fde": 56.32622629330504,
+              "mean_relative_fde": 1309865.727307161
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16793,
+              "mean_fde": 48.02105311638543,
+              "mean_relative_fde": 1309865.6835889723
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 16793,
+              "mean_fde": 264.5361037075098,
+              "mean_relative_fde": 5068724.79803497
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p75",
+          "improvement_vs_constant_velocity": 0.07704728013357899
+        },
+        "25": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 11356,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11356,
+              "mean_fde": 165.2704542555002,
+              "mean_relative_fde": 7698906.855286403
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11356,
+              "mean_fde": 137.68752873289316,
+              "mean_relative_fde": 7698906.821308703
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11356,
+              "mean_fde": 135.4734735262994,
+              "mean_relative_fde": 7698906.785305487
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11356,
+              "mean_fde": 118.49365837402108,
+              "mean_relative_fde": 7698906.753495677
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11356,
+              "mean_fde": 119.00713599208598,
+              "mean_relative_fde": 7698906.764111194
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 11356,
+              "mean_fde": 1326.9725315259996,
+              "mean_relative_fde": 41341360.701474875
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p50",
+          "improvement_vs_constant_velocity": 0.13940166212226246
+        },
+        "50": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 6252,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6252,
+              "mean_fde": 130.51794445209174,
+              "mean_relative_fde": 22704625.230669994
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6252,
+              "mean_fde": 215.60075679588044,
+              "mean_relative_fde": 22704625.402572695
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6252,
+              "mean_fde": 120.43903184182786,
+              "mean_relative_fde": 22704625.22080712
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6252,
+              "mean_fde": 137.68277304940491,
+              "mean_relative_fde": 22704625.255008865
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6252,
+              "mean_fde": 171.67975420421902,
+              "mean_relative_fde": 22704625.318895143
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 6252,
+              "mean_fde": 3827.567464778198,
+              "mean_relative_fde": 212026061.41808632
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p25",
+          "improvement_vs_constant_velocity": 0.4413793641928017
+        },
+        "100": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 3342,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 3342,
+              "mean_fde": 112.59966803295744,
+              "mean_relative_fde": 39285664.426454246
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 3342,
+              "mean_fde": 382.1566843869673,
+              "mean_relative_fde": 39285664.6615386
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 3342,
+              "mean_fde": 138.6806754759215,
+              "mean_relative_fde": 39285664.44724631
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 3342,
+              "mean_fde": 213.3891456572617,
+              "mean_relative_fde": 39285664.50877793
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 3342,
+              "mean_fde": 296.5017517398138,
+              "mean_relative_fde": 39285664.58258581
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 3342,
+              "mean_fde": 12279.739539608223,
+              "mean_relative_fde": 770265747.0707707
+            }
+          },
+          "strongest_baseline": "constant_position",
+          "improvement_vs_constant_velocity": 0.7053573242776506
+        }
+      }
+    },
+    "UCY/students03/students003.txt": {
+      "source": "fresh_in_memory_schema_conversion",
+      "source_id": "UCY/students03/students003.txt",
+      "domain": "UCY",
+      "window_counts": {
+        "10": 12815,
+        "25": 7344,
+        "50": 2596,
+        "100": 851
+      },
+      "by_horizon": {
+        "10": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 12815,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12815,
+              "mean_fde": 2.6418991798420453,
+              "mean_relative_fde": 1.3864974364963327
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12815,
+              "mean_fde": 1.0869294858795238,
+              "mean_relative_fde": 0.8030347919011548
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12815,
+              "mean_fde": 2.0235578657794133,
+              "mean_relative_fde": 1.1685754107479351
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12815,
+              "mean_fde": 1.4785654662316077,
+              "mean_relative_fde": 0.9772943812720175
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12815,
+              "mean_fde": 1.099213585881033,
+              "mean_relative_fde": 0.8379710875499616
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 12815,
+              "mean_fde": 2.168466327900263,
+              "mean_relative_fde": 1.40416970800043
+            }
+          },
+          "strongest_baseline": "constant_velocity_causal_fd",
+          "improvement_vs_constant_velocity": 0.0
+        },
+        "25": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 7344,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 7344,
+              "mean_fde": 5.345343124766548,
+              "mean_relative_fde": 1.9951040184446427
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 7344,
+              "mean_fde": 3.497085176396089,
+              "mean_relative_fde": 1.6287253550262435
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 7344,
+              "mean_fde": 4.231279813740953,
+              "mean_relative_fde": 1.8197423295678734
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 7344,
+              "mean_fde": 3.426027970850887,
+              "mean_relative_fde": 1.6876315086640306
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 7344,
+              "mean_fde": 3.0996058707316076,
+              "mean_relative_fde": 1.6148630944322575
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 7344,
+              "mean_fde": 10.68388203431577,
+              "mean_relative_fde": 3.6041746159552788
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p75",
+          "improvement_vs_constant_velocity": 0.11366017286261886
+        },
+        "50": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 2596,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 2596,
+              "mean_fde": 5.444765804964568,
+              "mean_relative_fde": 2.2776440115317986
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 2596,
+              "mean_fde": 6.845414487524838,
+              "mean_relative_fde": 2.14259475088769
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 2596,
+              "mean_fde": 4.555559886417396,
+              "mean_relative_fde": 2.148140738421372
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 2596,
+              "mean_fde": 4.639625578610446,
+              "mean_relative_fde": 2.088161203513063
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 2596,
+              "mean_fde": 5.479479632077231,
+              "mean_relative_fde": 2.0900645492519008
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 2596,
+              "mean_fde": 32.14540472823903,
+              "mean_relative_fde": 7.511832714960341
+            }
+          },
+          "strongest_baseline": "damped_velocity_0p25",
+          "improvement_vs_constant_velocity": 0.3345092697133971
+        },
+        "100": {
+          "source": "fresh_in_memory_schema_conversion",
+          "windows": 851,
+          "baselines": {
+            "constant_position": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 851,
+              "mean_fde": 5.0230390886637055,
+              "mean_relative_fde": 2.435359832814702
+            },
+            "constant_velocity_causal_fd": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 851,
+              "mean_fde": 16.333714081421714,
+              "mean_relative_fde": 2.7049327192502455
+            },
+            "damped_velocity_0p25": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 851,
+              "mean_fde": 6.022378384015861,
+              "mean_relative_fde": 2.4256149027469363
+            },
+            "damped_velocity_0p50": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 851,
+              "mean_fde": 9.170096166645905,
+              "mean_relative_fde": 2.494699075494003
+            },
+            "damped_velocity_0p75": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 851,
+              "mean_fde": 12.687201022091207,
+              "mean_relative_fde": 2.5911208474914087
+            },
+            "constant_acceleration_causal": {
+              "source": "fresh_in_memory_schema_conversion",
+              "windows": 851,
+              "mean_fde": 135.83593540569765,
+              "mean_relative_fde": 17.35116506498757
+            }
+          },
+          "strongest_baseline": "constant_position",
+          "improvement_vs_constant_velocity": 0.6924741633394326
+        }
+      }
+    }
+  },
+  "source_cv_audit": {
+    "source": "fresh_source_cv_baseline_audit",
+    "domains": {
+      "ETH_UCY": {
+        "source": "fresh_source_cv_baseline_audit",
+        "fold_count": 0,
+        "folds": [],
+        "all_folds_positive_vs_constant_velocity": false,
+        "mean_holdout_improvement_vs_constant_velocity": null,
+        "minimum_holdout_improvement_vs_constant_velocity": null
+      },
+      "UCY": {
+        "source": "fresh_source_cv_baseline_audit",
+        "fold_count": 3,
+        "folds": [
+          {
+            "source": "fresh_source_cv_baseline_audit",
+            "holdout_source": "UCY/students03/obsmat_px.txt",
+            "validation_source": "UCY/students01/students001.txt",
+            "selected_baseline_from_validation": "damped_velocity_0p25",
+            "holdout_t100_windows": 3342,
+            "holdout_selected_mean_fde": 138.6806754759215,
+            "holdout_constant_velocity_mean_fde": 382.1566843869673,
+            "holdout_improvement_vs_constant_velocity": 0.6371104284139771
+          },
+          {
+            "source": "fresh_source_cv_baseline_audit",
+            "holdout_source": "UCY/students01/students001.txt",
+            "validation_source": "UCY/students03/obsmat_px.txt",
+            "selected_baseline_from_validation": "constant_position",
+            "holdout_t100_windows": 1866,
+            "holdout_selected_mean_fde": 5.0624605582945135,
+            "holdout_constant_velocity_mean_fde": 9.956563883725808,
+            "holdout_improvement_vs_constant_velocity": 0.4915454149227927
+          },
+          {
+            "source": "fresh_source_cv_baseline_audit",
+            "holdout_source": "UCY/students03/students003.txt",
+            "validation_source": "UCY/students03/obsmat_px.txt",
+            "selected_baseline_from_validation": "constant_position",
+            "holdout_t100_windows": 851,
+            "holdout_selected_mean_fde": 5.0230390886637055,
+            "holdout_constant_velocity_mean_fde": 16.333714081421714,
+            "holdout_improvement_vs_constant_velocity": 0.6924741633394326
+          }
+        ],
+        "all_folds_positive_vs_constant_velocity": true,
+        "mean_holdout_improvement_vs_constant_velocity": 0.6070433355587341,
+        "minimum_holdout_improvement_vs_constant_velocity": 0.4915454149227927
+      }
+    }
+  },
+  "summary": {
+    "source": "fresh_in_memory_schema_conversion",
+    "candidate_sources": 4,
+    "converted_sources": 4,
+    "total_eval_windows_by_horizon": {
+      "10": 48034,
+      "25": 30574,
+      "50": 15058,
+      "100": 6071
+    },
+    "t100_eval_windows": 6071,
+    "source_cv_domains_evaluated": [
+      "ETH_UCY",
+      "UCY"
+    ],
+    "source_cv_domains_positive_vs_constant_velocity": [
+      "UCY"
+    ],
+    "materialized_feature_store_written": false,
+    "training_run": false,
+    "evaluation_run": true,
+    "t100_positive_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_metrics_for_threshold": false,
+    "causal_velocity_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "t100_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "converted_dataset_claim_allowed": true,
+    "t100_positive_claim_allowed": false
+  },
+  "stage42_bf_gate": {
+    "source": "fresh_in_memory_schema_conversion",
+    "gates": {
+      "be_readiness_loaded": true,
+      "schema_conversion_ran": true,
+      "t50_windows_converted": true,
+      "t100_windows_converted": true,
+      "causal_baselines_computed": true,
+      "source_cv_audit_completed": true,
+      "no_materialized_large_store": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "t100_claim_still_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_bf_local_t100_schema_conversion_pass"
+  },
+  "user_action_required": [
+    {
+      "source": "fresh_in_memory_schema_conversion",
+      "priority": "high",
+      "action_type": "write_non_git_feature_store_for_stage42_bg",
+      "notes": "The in-memory conversion and baseline audit passed. Next step is to write a non-committed feature store/cache and run t100 policy source-CV."
+    },
+    {
+      "source": "fresh_in_memory_schema_conversion",
+      "priority": "high",
+      "action_type": "keep_t100_claim_blocked",
+      "notes": "This audit computes causal baselines and source-CV baseline selection, but it does not train/evaluate the protected M3W policy on these sources."
+    }
+  ]
+}
