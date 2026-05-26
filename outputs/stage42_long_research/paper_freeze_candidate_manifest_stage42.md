@@ -1,13 +1,13 @@
 # Stage42-CZ Paper Freeze Candidate Manifest
 
 - source: `fresh_freeze_candidate_manifest_from_cx_cy`
-- generated_at_utc: `2026-05-26T20:28:56.365653+00:00`
-- git_commit: `b136c10`
-- manifest_hash: `3b8b87987624af7337a82bbf159b297be2eed04e76a4da1a50d3c2930d213f9a`
+- generated_at_utc: `2026-05-26T20:33:18.405328+00:00`
+- git_commit: `16fed1c`
+- manifest_hash: `bb6689cae4a1deb1ba2684d5b4814952267726fbec94767868510d4cfa5a3cce`
 - gate: `14 / 14`
 - verdict: `stage42_cz_paper_freeze_candidate_manifest_pass`
-- freeze_status: `candidate_with_metadata_caveats`
-- final_immutable_release: `False`
+- freeze_status: `candidate_clean`
+- final_immutable_release: `True`
 
 ## Current Facts
 
@@ -30,7 +30,7 @@
 - evidence_json_files: `21`
 - evidence_md_files: `20`
 - runner_files: `21`
-- files_with_git_caveat: `4`
+- files_with_git_caveat: `0`
 
 ## Files
 
@@ -63,8 +63,8 @@
 | `runner:safety_floor` | `run_stage42_safety_floor.py` | 122 | `5259ebd2dbeb5a64b7aff53a3f78eb192d90d66f1a54caf35cd7e65f96d25c50` | `clean` |
 | `evidence_json:paper_package` | `outputs/stage42_long_research/paper_package_stage42.json` | 9537 | `4ec71440d909cd2beda738b57a7b8ca82329e4089da8333778e6b52156449b9e` | `clean` |
 | `runner:paper_package` | `run_stage42_paper_package.py` | 125 | `e4197e224712883040dcac5244e14c071b250279e6b473733fe8c7bc95353f61` | `clean` |
-| `evidence_json:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` | 15612 | `47cd7a5a35f1dab7a065f3cac9d87a8dc2d5eb1e3019e8e76d7b4455f1c9f1d3` | `M outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` |
-| `evidence_md:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` | 4205 | `6ff72eb9e684b6faa8a64d0dea441ed707412fd99dc6f7f45d8148b11f9fe2a3` | `M outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` |
+| `evidence_json:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` | 15612 | `7a5d8a525a008545c95c9adb729de789773c309884231cefee416a72c72a8a40` | `clean` |
+| `evidence_md:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` | 4205 | `c650770f0020121b497e01c8150c86dd306966462289891c46c7c574f99eb985` | `clean` |
 | `runner:strict_time_geometry_calibration` | `run_stage42_source_time_geometry_calibration.py` | 295 | `92e4a6fcddadd10339c4e5ef2aa15a975a5557dbdb072cb8f68cec4e1e0b59e0` | `clean` |
 | `evidence_json:metric_time_claim_guard` | `outputs/stage42_long_research/metric_time_claim_guard_stage42.json` | 7724 | `21acab6b57b200e224d3d5c75dce34d86d1541f34814ac10451a930db0f0cb4c` | `clean` |
 | `evidence_md:metric_time_claim_guard` | `outputs/stage42_long_research/metric_time_claim_guard_stage42.md` | 3057 | `13ddb703c4b5c2953b16d657bf7f68f46afe919f5f504c2a1b09e55267f06f05` | `clean` |
@@ -72,8 +72,8 @@
 | `evidence_json:source_terms_validation` | `outputs/stage42_long_research/source_terms_validation_stage42.json` | 14852 | `3712d080967d228e062952973614690aff69406e0ad8bb9baf6dd805c6a8b8db` | `clean` |
 | `evidence_md:source_terms_validation` | `outputs/stage42_long_research/source_terms_validation_stage42.md` | 3060 | `55dd6cbe95f3f3575eb15eb9683524ba7275e0582a139dbd632718160b55487a` | `clean` |
 | `runner:source_terms_validation` | `run_stage42_source_terms_confirmation_validator.py` | 191 | `91fcab4829f5defb379c5c405300df64b8143a0131ab1963ce27101f1dc1ef2c` | `clean` |
-| `evidence_json:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.json` | 8022 | `c4d95d0db18ec8491d59e7644f174923039b9daaa6ab9e5dd9382f12eb0de8da` | `M outputs/stage42_long_research/context_contribution_forensics_stage42.json` |
-| `evidence_md:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.md` | 4915 | `19b41c7cc6b27c4ac2a41a9858b2883767671868ddccd2df593fea0535069b29` | `M outputs/stage42_long_research/context_contribution_forensics_stage42.md` |
+| `evidence_json:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.json` | 8022 | `2640333f20e52405de58920d65aef77200ec0938186b6bf88e786217809ed0dd` | `clean` |
+| `evidence_md:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.md` | 4915 | `dbbea434935b3b561345e8121bb16af88bed7325c62aecd9d3d57e6291186bf2` | `clean` |
 | `runner:context_contribution_forensics` | `run_stage42_context_contribution_forensics.py` | 176 | `0a62177d9c3166315e1b0aed2261742c9c2661ea765eb532b561b730da018cb3` | `clean` |
 | `evidence_json:goal_scene_gated_expert` | `outputs/stage42_long_research/goal_scene_gated_expert_stage42.json` | 42002 | `d80b5cf912bc44ccfcd9b89f51ac37e315a98bf49bc67a9ff9ccb67becc15f71` | `clean` |
 | `evidence_md:goal_scene_gated_expert` | `outputs/stage42_long_research/goal_scene_gated_expert_stage42.md` | 4628 | `8183dfa140d739f28fb2d8d81f1b9f338dacb6ba55e416ea3a631656d81c2d1f` | `clean` |
@@ -109,7 +109,7 @@
 | `evidence_md:runtime_replay_paper_refresh` | `outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.md` | 2826 | `8ace17b2d1d2a7ad6d8e18894aaa3c39057a5c027faa76599a78b694d3786e3a` | `clean` |
 | `runner:runtime_replay_paper_refresh` | `run_stage42_runtime_replay_paper_refresh.py` | 170 | `47568296ec4774c160d2b75f351837d70b4f230969896ce7fa86488b08c4071b` | `clean` |
 | `provenance_verifier_json` | `outputs/stage42_long_research/evidence_provenance_stage42.json` | 23656 | `1fc0a9030d5b38046fb507d0e49586661fd327bcbcef723ebf7c26f8d2db1019` | `clean` |
-| `worktree_caveat_classifier_json` | `outputs/stage42_long_research/worktree_caveat_classifier_stage42.json` | 7630 | `4fd1cefab285eb37adc0690663d3ab0bd30f281affaf27cd965a0f87bcf4b505` | `clean` |
+| `worktree_caveat_classifier_json` | `outputs/stage42_long_research/worktree_caveat_classifier_stage42.json` | 4151 | `ac69d14565cd4f4d9b13873f1f6c80a21f4735efeb8b7ab984a18dcab91fb567` | `clean` |
 
 ## Interpretation
 
