@@ -2,8 +2,38 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近已提交的 fresh 证据截至 Stage42-CB source robustness audit。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CH metric/time claim guard。
 用途：这是当前 M3W 长期目标的单文件中文总览，用来回答“这个目标内到底做了什么、尝试了什么路线、哪些失败了、为什么失败、哪些成功了、当前最强模型是谁、下一步该怎么走”。
+
+## 本次交付版摘要
+
+这份 README 是当前目标的主入口，已经把有意义结果集中到一个文件里。它不是新训练结果，也不把 cached 结果写成 fresh；它是对已经完成的 Stage18-Stage42 证据链的 `cached_verified` 复盘，并吸收了最新 Stage42-CG/CH 的 legal / metric-time claim guard。
+
+当前最重要的结论：
+
+```text
+best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+deployment floor = Stage37 / teacher safety floor
+status = protected dataset-local/raw-frame 2.5D multi-agent world-state candidate
+not = true 3D / foundation / global metric / seconds-level / Stage5C / SMC
+```
+
+最关键成功证据：
+
+- SDD Stage26：t+50 约 +14.58%，hard/failure 约 +11.23%，easy degradation 约 1.81%。
+- External Stage37：all +13.48%，t+50 +8.46%，t+50 bootstrap CI [+7.69%, +9.15%]，hard/failure +15.54%，easy degradation 0.041%，16/16 gates。
+- M3W-Neural v1 protected package：all ADE +21.03%，t+50 ADE +13.65%，t+100 raw-frame diagnostic ADE +14.69%，hard/failure ADE +20.38%，easy degradation 0.00%。
+- Stage42 full-waypoint / source-level evidence：protected full-waypoint all +18.58%，t+50 +14.80%，t+100 raw diagnostic +22.86%，hard +19.52%，easy 0。
+- Stage42-BY/BZ target t50 repair：target union t50 bootstrap CI [28.52%, 29.45%]，hard/failure CI low +28.51%，easy CI high -25.16%。
+- Stage42-CH claim guard：6 个 ETH/UCY source-specific metric/time candidates 存在，但 conversion_ready=0，所以当前 global/restricted metric-seconds claim 仍全部禁止。
+
+最关键失败结论：
+
+- JEPA 多次 non-collapse，但没有稳定 downstream lift，不能作为主贡献或生成式 world model。
+- hard-class selector 在 Stage24 失败：oracle headroom 大但 t+50 -43.3%、easy degradation 11.33%，原因是低 margin label 噪声和过度切换。
+- SDD -> external zero-shot / 普通 domain normalization / latent adapter 都失败，原因是坐标、horizon、source、scene/goal、agent-type、scale/homography 不一致。
+- 普通 residual / correction、ungated Transformer / Hybrid 不可部署，主要因为 easy harm 和 safety-floor 依赖。
+- t100、global metric、seconds-level、broad source-level generalization 仍是 blocker。
 
 ## 0. 当前必须诚实承认的事实
 
@@ -565,6 +595,8 @@ Broad source-level generalization is proven without caveats.
 | Stage42 full-waypoint | all +18.58%，t50 +14.80%，t100 raw diagnostic +22.86%，hard +19.52%，easy 0。 | 可作为 protected full-waypoint evidence。 |
 | Stage42-BY/BZ t50 repair | target union t50 CI [28.52,29.45]，hard CI low +28.51%，easy CI high -25.16%。 | 可作为 protected t50 slice repair evidence。 |
 | Stage42-CB source robustness | available major-source robust，但 source concentration limited。 | 可作为 caveated source robustness claim，不可作为 broad source generalization。 |
+| Stage42-CG source terms validator | 5 个 target validated，但 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。 | 只能作为 readiness / blocker evidence，不能作为 converted/evaluated dataset claim。 |
+| Stage42-CH metric/time claim guard | 6 个 ETH/UCY source-specific calibration candidates；global/restricted metric-seconds claim 仍全部 blocked。 | 可作为 claim-boundary evidence，不能作为 metric/seconds result claim。 |
 | JEPA | non-collapse。 | 只能 auxiliary / diagnostic，不是主 claim。 |
 | Transformer/Hybrid | protected auxiliary / ablation evidence。 | 不能作为 floor-free deployable neural claim。 |
 | t100 | raw-frame diagnostic 局部正信号。 | 不能作为 global deployable t100 claim。 |
@@ -584,6 +616,7 @@ Stage42-CB 显示：
 - Stage42-CE 进一步检查这些 target 的本地路径：4 个 target 有 local path 且 schema_possible，3 个 target 有 t50/t100 文件，但 independent_t50_candidates=0，source_cv_ready=0。
 - Stage42-CF 把 CE 结果接入 legal/source-identity gate：conversion_allowed_now=0，converted=0，evaluated=0；只有显式官方 terms/path confirmation 和 independent source identity 后，未来 conversion 才允许继续。
 - Stage42-CG 验证 CF 的 terms confirmation template：当前 terms_accepted_targets=0、conversion_ready_targets=0，并生成 conversion readiness manifest；仍然没有 legal conversion 或 external eval。
+- Stage42-CH 把 calibration 证据变成 paper-claim guard：6 个 ETH/UCY source-specific metric/time candidates 存在，但 conversion_ready=0，所以 global/restricted metric-seconds claim 仍全部禁止。
 
 结论：
 
@@ -605,6 +638,7 @@ source-CV repair ready: no
 - Stage42-CE 的 local parseability 也不是 legal permission、conversion success 或 final-test evidence。
 - Stage42-CF 的 terms confirmation template 是 checklist，不是 permission；不能把 template 或 local path 写成 legal/converted evidence。
 - Stage42-CG 的 readiness manifest 当前全 blocked；只有未来 validator 报 ready，且后续 no-leakage/source-CV conversion gate 通过，才能写成 converted source evidence。
+- Stage42-CH 明确：source-specific calibration candidate 不是当前 paper-allowed metric/seconds evaluation claim；SDD 仍是 pixel raw-frame，TGSIM 仍只是 traffic diagnostic。
 
 ### 10.2 t100 blocker
 

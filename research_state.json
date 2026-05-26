@@ -1,6 +1,38 @@
 {
-  "current_stage": "Stage42-CG source terms confirmation validator",
-  "current_verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+  "current_stage": "Stage42-CH metric/time claim guard",
+  "current_verdict": "stage42_ch_metric_time_claim_guard_pass",
+  "stage42_ch_metric_time_claim_guard": {
+    "source": "fresh_stage42_ch_metric_time_claim_guard",
+    "report": "outputs/stage42_long_research/metric_time_claim_guard_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ch_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_metric_time_claim_guard_stage42.md",
+    "verdict": "stage42_ch_metric_time_claim_guard_pass",
+    "gates": "11/11",
+    "datasets_audited": 7,
+    "source_records_audited": 7,
+    "source_specific_metric_time_candidates": 6,
+    "conversion_ready_targets": 0,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "restricted_subset_metric_seconds_claim_allowed_now": false,
+    "sdd_metric_claim_allowed": false,
+    "tgsim_pedestrian_world_model_metric_claim_allowed": false,
+    "conclusion": "Stage42-CH identifies ETH/UCY source-specific metric/time calibration candidates but blocks all paper metric/seconds claims because legal conversion readiness is zero and no restricted-subset final evaluation has run. M3W-Neural v1 remains protected dataset-local/raw-frame 2.5D.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_metric_time_claim_guard.py -> 11/11",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_metric_time_claim_guard.py tests/test_stage42_source_terms_confirmation_validator.py tests/test_stage42_source_time_geometry_calibration.py tests/test_stage42_data_calibration.py -> 16 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 549 passed in 31.61s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "restricted_subset_metric_seconds_claim_allowed_now": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_cg_source_terms_confirmation_validator": {
     "source": "fresh_stage42_cg_source_terms_confirmation_validator",
     "report": "outputs/stage42_long_research/source_terms_validation_stage42.md",
@@ -264,7 +296,7 @@
     }
   },
   "latest_user_requested_current_goal_retrospective_2026_05_26": {
-    "source": "cached_verified_stage18_to_stage42_plus_stage42_cg_source_terms_confirmation_validator",
+    "source": "cached_verified_stage18_to_stage42_plus_stage42_ch_metric_time_claim_guard",
     "path": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "scope": "detailed_current_goal_handoff_routes_tried_failure_roots_success_evidence_best_deployable_claim_boundaries_blockers_next_steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
@@ -280,7 +312,8 @@
       "Stage42-CD official/manual source acquisition package for source-diversity repair",
       "Stage42-CE local conversion preflight proving parseability while preserving the source-CV blocker",
       "Stage42-CF legal/source-identity gate preventing any conversion until explicit terms confirmation exists",
-      "Stage42-CG terms-confirmation validator and readiness manifest showing all targets remain blocked"
+      "Stage42-CG terms-confirmation validator and readiness manifest showing all targets remain blocked",
+      "Stage42-CH metric/time claim guard blocking global and restricted metric/seconds claims until legal conversion readiness and restricted-subset final evaluation exist"
     ],
     "failed_or_limited_routes": [
       "JEPA downstream lift not proven",
@@ -324,6 +357,9 @@
       "source_diversity_conversion_preflight_ready": true,
       "source_conversion_legal_gate_ready": true,
       "source_terms_confirmation_validator_ready": true,
+      "metric_time_claim_guard_ready": true,
+      "source_specific_metric_time_candidates": 6,
+      "restricted_subset_metric_seconds_claim_allowed_now": false,
       "source_conversion_ready_targets": 0,
       "source_cv_repair_ready": false,
       "converted_dataset_claim_from_stage42_ce": false,
@@ -16851,8 +16887,8 @@
       "full_pytest": "python3 -m pytest tests -> 499 passed"
     }
   },
-  "latest_stage42_source_support_summary": "Stage42-CG fresh-ran source terms confirmation validator. Gates 11/11. Five targets validated, zero terms accepted, zero conversion-ready targets, zero converted datasets, zero evaluated datasets. The readiness manifest blocks all conversion until explicit official terms/path/source-identity confirmation plus a later no-leakage/source-CV conversion gate. No automatic download, no registry-only conversion claim, no Stage5C, no SMC.",
-  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 545 passed after Stage42-CG source terms confirmation validator",
+  "latest_stage42_source_support_summary": "Stage42-CH fresh-ran metric/time claim guard after Stage42-CG terms validation. Gates 11/11. Six ETH/UCY source-specific metric/time calibration candidates exist, but conversion_ready_targets=0 and no restricted-subset final evaluation has run; therefore global and restricted metric/seconds claims remain blocked. No automatic download, no legal conversion, no external evaluation, no Stage5C, no SMC.",
+  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 549 passed after Stage42-CH metric/time claim guard",
   "stage42_by_t50_floor_relaxability_repair": {
     "source": "fresh_stage42_by_t50_floor_relaxability_repair",
     "verdict": "stage42_by_t50_floor_relaxability_repair_pass",
@@ -17002,7 +17038,7 @@
     }
   },
   "last_test_command": ".venv-pytorch/bin/python -m pytest tests",
-  "last_test_result": "545 passed in 32.30s",
+  "last_test_result": "549 passed in 31.61s",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",

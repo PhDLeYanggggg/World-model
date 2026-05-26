@@ -1159,3 +1159,18 @@ evaluated_datasets_now = 0
 ```
 
 Stage42-CG validates the CF terms confirmation template and writes a conversion readiness manifest. The current template is intentionally blank, so every source remains blocked. This preserves the M3W-Neural v1 evidence boundary: no legal/source-diversity conversion has happened yet, and broad source-level generalization still requires explicit terms confirmation plus a later no-leakage/source-CV/final-test conversion stage.
+
+## Stage42-CH Metric/Time Claim Guard
+
+```text
+source = fresh_stage42_ch_metric_time_claim_guard
+verdict = stage42_ch_metric_time_claim_guard_pass
+gates = 11 / 11
+source_specific_metric_time_candidates = 6
+conversion_ready_targets = 0
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+restricted_subset_metric_seconds_claim_allowed_now = false
+```
+
+Stage42-CH keeps the calibration story honest. ETH/UCY source-specific metric/time candidates exist, but they are not paper-allowed metric/seconds claims because legal conversion readiness is still zero and no restricted-subset final evaluation has run. The deployable M3W-Neural v1 claim therefore remains protected dataset-local/raw-frame 2.5D, not metric, not seconds-level, not true 3D, and not foundation-scale.
