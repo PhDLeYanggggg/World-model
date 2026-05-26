@@ -1,6 +1,28 @@
 {
-  "current_stage": "Stage42-CM endpoint bridge / full-waypoint shape audit",
-  "current_verdict": "stage42_cm_full_waypoint_bridge_shape_audit_pass",
+  "current_stage": "Stage42-CN bridge / shape composer audit",
+  "current_verdict": "stage42_cn_bridge_shape_composer_audit_pass_blocker_documented",
+  "stage42_cn_bridge_shape_composer_audit": {
+    "source": "fresh_synthesis_from_stage42_cm_j_x_artifacts",
+    "report": "outputs/stage42_long_research/bridge_shape_composer_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_cn_gate.md",
+    "verdict": "stage42_cn_bridge_shape_composer_audit_pass_blocker_documented",
+    "gates": "15/15",
+    "selected_deployment_policy": "keep_endpoint_linear_bridge_floor_with_full_waypoint_auxiliary_reporting",
+    "deployable_bridge_shape_composer_available": false,
+    "common_validation_endpoint_vs_full_waypoint_comparison_available": false,
+    "full_waypoint_horizon_auxiliary_supported": true,
+    "full_waypoint_all_ade_replacement_supported": false,
+    "blocked_next_requirement": "Build common validation-aligned endpoint-linear-vs-full-waypoint row cache before any deployment switch.",
+    "conclusion": "Stage42-CN turns the Stage42-CM boundary into a composer decision. Stage42-J supplies validation-only full-waypoint/static gating evidence and Stage42-CM shows full-waypoint improves t50/t100 raw-frame over endpoint-linear bridge, but there is no common validation-aligned endpoint-vs-full-waypoint row cache. Deployment remains endpoint-linear bridge / Stage37-teacher floor, with full-waypoint reported as auxiliary horizon evidence.",
+    "claim_boundary": {
+      "new_bridge_shape_deployment_switch_allowed": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_cm_full_waypoint_bridge_shape_audit": {
     "source": "fresh_synthesis_from_stage42_full_waypoint_artifacts",
     "report": "outputs/stage42_long_research/full_waypoint_bridge_shape_audit_stage42.md",
@@ -116,7 +138,8 @@
       "Stage42-CJ goal/scene gated expert: goal_scene_rescue_success=false, selected_variant=baseline_family_control",
       "Stage42-CK neighbor/interaction gated expert: neighbor_interaction_rescue_success=false, selected_variant=baseline_family_control",
       "Stage42-CL paper-package context guard: CJ/CK negative context evidence propagated into paper files",
-      "Stage42-CM full-waypoint bridge shape audit: protected full-waypoint improves t50/t100 raw-frame over endpoint-linear bridge but loses all/hard, so endpoint-only success is not full-waypoint success"
+      "Stage42-CM full-waypoint bridge shape audit: protected full-waypoint improves t50/t100 raw-frame over endpoint-linear bridge but loses all/hard, so endpoint-only success is not full-waypoint success",
+      "Stage42-CN bridge/shape composer audit: full-waypoint is auxiliary horizon evidence, but no new deployment switch is allowed until common validation endpoint-vs-full-waypoint row cache exists"
     ],
     "best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor",
     "dominant_supported_mechanism": "baseline-family rollout context plus causal history and guarded domain expert under conservative safety floor",

@@ -34,6 +34,12 @@ Latest Stage42 endpoint bridge / full-waypoint shape audit:
 
 Stage42-CM passes `14 / 14` gates as `fresh_synthesis_from_stage42_full_waypoint_artifacts`. It clarifies a key world-state boundary: protected full-waypoint sequence dynamics improves t50 by `+1.15%` and t100 raw-frame diagnostic by `+8.16%` relative to the composite-tail endpoint-linear bridge, but loses `-2.45%` on all-ADE and `-0.87%` on hard/failure. Endpoint-linear bridge remains the stronger all-ADE floor; endpoint-only success cannot be counted as learned full-waypoint dynamics. Ungated full-waypoint neural still has unsafe easy degradation (`124.59%`), so deployment remains protected by Stage37/teacher floor and safe switch.
 
+Latest Stage42 bridge / shape composer audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/bridge_shape_composer_stage42.md`
+
+Stage42-CN passes `15 / 15` gates as `fresh_synthesis_from_stage42_cm_j_x_artifacts`, but it documents a blocker rather than a new deployment switch. Stage42-J static-gated full-waypoint evidence is validation-selected and easy-safe, and Stage42-CM shows full-waypoint has auxiliary t50/t100 raw-frame lift. However, there is still no common validation-aligned endpoint-linear-vs-full-waypoint row cache, so a bridge/shape composer cannot safely switch deployment policy yet. The deployable policy remains endpoint-linear bridge / Stage37-teacher floor, with full-waypoint reported as auxiliary horizon evidence.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`

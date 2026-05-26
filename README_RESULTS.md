@@ -14,12 +14,30 @@
 best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor
 dominant mechanism = baseline-family rollout context + causal history + guarded domain expert + conservative safety floor
 not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as independent drivers
-latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, and Stage42-CM full-waypoint boundary audit
+latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, Stage42-CM full-waypoint boundary audit, and Stage42-CN bridge/shape composer audit
 latest gate status = CJ 10 / 10, CK 11 / 11
 latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
 latest full-waypoint boundary audit = Stage42-CM endpoint bridge / full-waypoint shape audit, 14 / 14 gates
-latest full pytest = 568 passed
+latest bridge/shape composer audit = Stage42-CN, 15 / 15 gates, blocker documented
+latest full pytest = 570 passed
 ```
+
+```text
+Stage42-CN bridge / shape composer audit
+source = fresh_synthesis_from_stage42_cm_j_x_artifacts
+verdict = stage42_cn_bridge_shape_composer_audit_pass_blocker_documented
+gates = 15 / 15
+selected_deployment_policy = keep_endpoint_linear_bridge_floor_with_full_waypoint_auxiliary_reporting
+deployable_bridge_shape_composer_available = false
+common_validation_endpoint_vs_full_waypoint_comparison_available = false
+full_waypoint horizon auxiliary = supported
+full_waypoint all-ADE replacement = not supported
+blocked next requirement = build common validation-aligned endpoint-linear-vs-full-waypoint row cache
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CN turns the Stage42-CM boundary into a composer decision. It uses Stage42-J validation-only full-waypoint/static gating plus Stage42-CM/X full-waypoint artifacts. The result is honest: full-waypoint shape heads have auxiliary t50/t100 raw-frame value, but there is not yet a common validation-aligned endpoint-vs-full-waypoint row cache that would justify a new deployment switch. The deployable policy remains the endpoint-linear bridge / Stage37-teacher floor, with full-waypoint reported as auxiliary evidence.
 
 Latest concrete Stage42 progress after the goal retrospective:
 

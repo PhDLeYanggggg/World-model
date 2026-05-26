@@ -51,6 +51,7 @@ not allowed to claim:
 | Stage42-CK | validation-only neighbor/interaction gated expert 审计 | 11/11 gates；kNN graph rows 337991；selected_variant = baseline_family_control；neighbor_interaction_rescue_success = false；neighbor/interaction 仍不能写主贡献 |
 | Stage42-CL | post-CJ/CK paper package context guard refresh | 11/11 gates；experiment tables、ablation tables、failure taxonomy、A-journal gap 已吸收 CJ/CK 负证据；明确阻止 goal/scene 和 neighbor/interaction 被写成独立主贡献 |
 | Stage42-CM | endpoint bridge / full-waypoint shape audit | 14/14 gates；protected full-waypoint 比 endpoint-linear bridge 在 t50 +1.15%、t100 raw diagnostic +8.16%，但 all -2.45%、hard -0.87%；endpoint-only 不能算 full-waypoint 成功，ungated full-waypoint easy degradation 124.59% 不可部署 |
+| Stage42-CN | bridge / shape composer 审计 | 15/15 gates；full-waypoint 可作 t50/t100 raw-frame 辅助证据，但没有 common validation endpoint-vs-full-waypoint row cache 前，不允许新增 deployment switch |
 
 最重要失败和原因：
 
@@ -91,6 +92,7 @@ not = true 3D / foundation / global metric / seconds-level / Stage5C / SMC
 - Stage42-CK neighbor/interaction gated expert：11/11 gates；kNN graph rows = 337991，rows_with_neighbors = 334525；`baseline_plus_knn_graph` all/t50/hard = 24.38% / 22.38% / 23.78%，低于 control；neighbor/interaction rescue 失败。
 - Stage42-CL paper package refresh：11/11 gates；把 CJ/CK 负证据写入 experiment/ablation/failure/A-journal gap 文件，防止论文包把 goal/scene 或 neighbor/interaction overclaim 成主贡献。
 - Stage42-CM full-waypoint boundary audit：14/14 gates；full-waypoint sequence 有 t50/t100 raw-frame horizon lift，但还不能替代 endpoint-linear bridge 的 all-ADE floor；UCY endpoint-to-full bridge 仍是 failed blocker；ungated full-waypoint 仍因 easy harm 不可部署。
+- Stage42-CN bridge/shape composer audit：15/15 gates；Stage42-J 的 validation-only full-waypoint/static gate 是正且 easy-safe，Stage42-CM 的 full-waypoint horizon lift 成立，但当前仍缺 common validation-aligned endpoint-linear-vs-full-waypoint row cache，所以 deployable policy 仍是 endpoint-linear bridge / Stage37-teacher floor。
 
 最关键失败结论：
 
