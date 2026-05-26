@@ -45,6 +45,7 @@ not allowed to claim:
 | M3W-Neural v1 / Stage41 | protected neural candidate 成立 | all ADE +21.03%；t+50 ADE +13.65%；t+100 raw diagnostic +14.69%；hard/failure +20.38%；easy 0.00%；41/41 gates |
 | Stage42 source/full-waypoint | full-waypoint/source-level evidence 成立但仍 protected | source-level full-waypoint all +24.58%；t50 +22.02%；hard +23.75%；baseline-family mechanism t50 +31.54% |
 | Stage42-CI | 贡献边界被重新审计 | 13/13 gates；baseline-family rollout context 是 dominant mechanism；history 是 core；domain expert 是 secondary；goal/scene、neighbor、JEPA、Transformer 不能写主贡献 |
+| Stage42-CJ | validation-only goal/scene gated expert 审计 | 10/10 gates；selected_variant = baseline_family_control；goal_scene_rescue_success = false；goal/scene 仍不能写主贡献 |
 
 最重要失败和原因：
 

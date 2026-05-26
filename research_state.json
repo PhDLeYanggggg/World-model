@@ -1,6 +1,34 @@
 {
-  "current_stage": "Stage42-CI context contribution forensics",
-  "current_verdict": "stage42_ci_context_contribution_forensics_pass",
+  "current_stage": "Stage42-CJ validation-only goal/scene gated expert audit",
+  "current_verdict": "stage42_cj_goal_scene_gated_expert_pass_diagnostic_no_overclaim",
+  "stage42_cj_goal_scene_gated_expert": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/goal_scene_gated_expert_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_cj_gate.md",
+    "verdict": "stage42_cj_goal_scene_gated_expert_pass_diagnostic_no_overclaim",
+    "gates": "10/10",
+    "selected_variant": "baseline_family_control",
+    "goal_scene_rescue_success": false,
+    "baseline_family_control": {
+      "all_improvement": 0.287773,
+      "t50_improvement": 0.315425,
+      "hard_failure_improvement": 0.275812
+    },
+    "baseline_plus_goal_scene": {
+      "all_improvement": 0.262502,
+      "t50_improvement": 0.22764,
+      "hard_failure_improvement": 0.248648
+    },
+    "conclusion": "A validation-only goal/scene gated expert did not beat the baseline-family rollout control. This is fresh diagnostic negative evidence: goal/scene remains mixed and not an independent main claim under the current source-level ridge/full-waypoint protocol.",
+    "claim_boundary": {
+      "goal_scene_main_claim_allowed": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "latest_user_facing_goal_summary": {
     "source": "cached_verified_synthesis_for_user_question",
     "readme": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",

@@ -17,6 +17,24 @@ not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as indepen
 latest audit = Stage42-CI context contribution forensics, 13 / 13 gates, full pytest 552 passed
 ```
 
+Latest concrete Stage42 progress after the goal retrospective:
+
+```text
+Stage42-CJ validation-only goal/scene gated expert audit
+source = fresh_run
+verdict = stage42_cj_goal_scene_gated_expert_pass_diagnostic_no_overclaim
+gates = 10 / 10
+baseline_family_control all/t50/hard = 28.78% / 31.54% / 27.58%
+baseline_plus_goal_scene all/t50/hard = 26.25% / 22.76% / 24.86%
+baseline_plus_motion_goal_context all/t50/hard = 24.58% / 22.02% / 23.75%
+selected_variant = baseline_family_control
+goal_scene_rescue_success = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CJ directly tests the Stage42-CI gap: whether a validation-only goal/scene gated expert can safely become an incremental contribution over baseline-family rollout context. It cannot under the current source-level ridge/full-waypoint protocol: both goal candidates score lower on validation and test, so the safe choice is fallback to `baseline_family_control`. This is fresh negative evidence and keeps goal/scene as mixed/diagnostic, not a main paper claim.
+
 本次汇总版已吸收 Stage42-CG/CH 的最新 legal / metric-time guard：当前有 6 个 ETH/UCY source-specific calibration candidates，但 conversion_ready=0，因而 global/restricted metric-seconds claim 仍全部禁止；source terms validator 也仍为 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。
 
 ## 中文详细目标总结

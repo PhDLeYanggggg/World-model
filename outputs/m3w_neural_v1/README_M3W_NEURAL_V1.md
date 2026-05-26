@@ -10,6 +10,12 @@ Latest user-facing route/failure/success summary:
 
 This is the current concise-but-detailed Chinese summary requested by the user. It covers attempted routes, failed routes and causes, successful evidence, current best deployable status, claim boundaries, and the Stage42-BD local t100 source inventory.
 
+Latest Stage42 goal/scene gated expert audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/goal_scene_gated_expert_stage42.md`
+
+Stage42-CJ passes `10 / 10` gates as `fresh_run`, but it is diagnostic rather than a new positive contribution. The validation-only gate selected `baseline_family_control`, not the goal/scene candidates. Test metrics confirm the boundary: `baseline_family_control` all/t50/hard = `28.78% / 31.54% / 27.58%`, while `baseline_plus_goal_scene` drops to `26.25% / 22.76% / 24.86%` and `baseline_plus_motion_goal_context` drops to `24.58% / 22.02% / 23.75%`. Therefore goal/scene remains mixed/diagnostic and must not be written as an independent main claim under the current source-level ridge/full-waypoint protocol.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`
