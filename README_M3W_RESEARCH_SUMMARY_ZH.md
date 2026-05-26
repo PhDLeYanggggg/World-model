@@ -2,9 +2,29 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`；本文件本身不重新训练、不重新评估。  
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并加入 Stage42-W/X/Y 本轮已生成/校验的轻量报告；本文件本身不重新训练大模型、不读取未提交 raw data。  
+
+本轮校验：
+
+```text
+python3 run_stage42_unified_ablation_evidence.py = pass
+python3 -m pytest tests/test_stage42_unified_ablation_evidence.py = 3 passed
+python3 -m pytest tests = 327 passed
+```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
+
+阅读索引：
+
+- 第 0 节：必须遵守的 claim 边界。
+- 第 1 节：从早期 JEPA 到 Stage42 row-level full-waypoint cache 的总路线图。
+- 第 2 节：最重要的成功证据。
+- 第 3 节：失败路线、失败原因和修复逻辑。
+- 第 4 节：成功路线总表。
+- 第 5 节：当前 best deployable 是谁。
+- 第 6 节：为什么仍不能称 true 3D / foundation / metric。
+- 第 7 节：下一步最短路径。
+- 第 8 节：给你的直接结论。
 
 ## 0. 必须先写清楚的边界
 
@@ -604,3 +624,21 @@ smc_enabled = false
 ```
 
 Stage42-X upgrades Stage42-W from a domain-level policy package into a row-level merged full-waypoint cache with unified bootstrap. ETH_UCY/TrajNet use Stage42-S row-cache combo outputs; UCY rows use Stage42-V UCY full-waypoint predictions after row alignment. Claims remain dataset-local raw-frame 2.5D, not metric or seconds-level.
+
+## Stage42-Y Unified Ablation Evidence
+
+```text
+source = fresh_synthesis_from_stage42x_row_cache_and_retrained_ablation_reports
+verdict = stage42_y_unified_ablation_evidence_pass
+gates = 13 / 13
+Stage42-X_ADE_all = 0.0900136608879362
+Stage42-X_ADE_t50 = 0.06109367671246102
+UCY_source_loss_if_removed_t50 = 0.0231594736115995
+UCY_source_loss_if_removed_hard = 0.038954187812382024
+history_token_t50_contribution = 0.457817280518282
+history_token_hard_contribution = 0.47079873325328386
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-Y turns the Stage42-X unified row-level cache into paper-table ablation evidence. It shows that removing the UCY full-waypoint source loses t50/hard performance, history tokens are the strongest retrained sequence contribution, domain expert helps, and safety floor remains necessary because ungated neural is unsafe. Goal/scene and neighbor/interaction remain mixed rather than overclaimed.

@@ -1,0 +1,400 @@
+{
+  "stage": "Stage42-Y unified ablation evidence",
+  "source": "fresh_synthesis_from_stage42x_row_cache_and_retrained_ablation_reports",
+  "generated_at_utc": "2026-05-26T04:46:01.553602+00:00",
+  "git_commit": "7c0e1b6",
+  "python": "3.9.13",
+  "machine": "x86_64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "Stage42-Y 汇总 row-level full-waypoint cache 与 retrained ablation evidence；不是 metric 或 seconds-level 结果。",
+    "Stage42-X 统一 cache 是本轮 row-level full-waypoint 主证据；Stage42-H 是 retrained sequence ablation；Stage42-E 是 safety-floor 研究。",
+    "future waypoints / endpoints 只作为 train/val labels 和 eval labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test 调阈值。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "stage42x_report": "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.json",
+    "stage42x_verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
+    "stage42r_report": "outputs/stage42_long_research/row_prediction_cache_stage42.json",
+    "stage42s_report": "outputs/stage42_long_research/frozen_row_combo_policy_stage42.json",
+    "stage42h_report": "outputs/stage42_long_research/sequence_ablation_stage42.json",
+    "stage42e_report": "outputs/stage42_long_research/safety_floor_stage42.json",
+    "stage42c_report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.json"
+  },
+  "input_hash": "a88056df873cad45611d380338de6e50c0248cc6dcac457cffd11d52e422f0ae",
+  "stage42x_summary": {
+    "source": "fresh_run_from_unified_row_level_cache",
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ade_all": {
+      "mean": 0.0900136608879362,
+      "std": 0.006685155961321358,
+      "ci_low": 0.0824486947640029,
+      "ci_high": 0.0975786270118695
+    },
+    "ade_t50": {
+      "mean": 0.06109367671246102,
+      "std": 0.006559633478958787,
+      "ci_low": 0.05367075264893123,
+      "ci_high": 0.06851660077599081
+    },
+    "ade_t100_raw_frame_diagnostic": {
+      "mean": 0.08153326024168321,
+      "std": 0.02540820290689218,
+      "ci_low": 0.0527811719773623,
+      "ci_high": 0.11028534850600413
+    },
+    "ade_hard_failure": {
+      "mean": 0.09374591375146946,
+      "std": 0.006375727252471933,
+      "ci_low": 0.08653109917430062,
+      "ci_high": 0.1009607283286383
+    },
+    "ade_easy_degradation": {
+      "mean": 0.001101978371627214,
+      "std": 0.001908682528500352,
+      "ci_low": -0.001057899236762125,
+      "ci_high": 0.0032618559800165533
+    },
+    "fde_t50": {
+      "mean": 0.1537620890856707,
+      "std": 0.02772921852590775,
+      "ci_low": 0.12238352439618314,
+      "ci_high": 0.1851406537751583
+    },
+    "switch_rate": {
+      "mean": 0.23259136531719735,
+      "std": 0.014540853376223555,
+      "ci_low": 0.21613684071961864,
+      "ci_high": 0.24904588991477605
+    }
+  },
+  "stage42x_bootstrap": {
+    "source": "fresh_bootstrap_over_unified_row_seed_mean",
+    "n": 2000,
+    "all": {
+      "rows": 55528,
+      "mean": 0.043083224445581436,
+      "ci_low": 0.041525051929056644,
+      "ci_high": 0.04462338527664542
+    },
+    "t50": {
+      "rows": 13689,
+      "mean": 0.029896412044763565,
+      "ci_low": 0.027880326844751835,
+      "ci_high": 0.03181883338838816
+    },
+    "t100_raw_frame_diagnostic": {
+      "rows": 9905,
+      "mean": 0.08614584803581238,
+      "ci_low": 0.07859801054000855,
+      "ci_high": 0.09368959553539752
+    },
+    "hard_failure": {
+      "rows": 41741,
+      "mean": 0.05445333197712898,
+      "ci_low": 0.052389211114495994,
+      "ci_high": 0.05649755205959082
+    },
+    "easy": {
+      "rows": 16739,
+      "mean": 2.694820796023123e-05,
+      "ci_low": -0.00016368149190384428,
+      "ci_high": 0.00025477910312474703
+    }
+  },
+  "row_level_ablation_rows": [
+    {
+      "name": "floor_only",
+      "source": "fresh_reference",
+      "metrics": {
+        "ade_all": 0.0,
+        "ade_t50": 0.0,
+        "ade_t100_raw_frame_diagnostic": 0.0,
+        "ade_hard_failure": 0.0,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.0
+      },
+      "loss_vs_stage42x_full": {
+        "ade_all": 0.0900136608879362,
+        "ade_t50": 0.06109367671246102,
+        "ade_t100_raw_frame_diagnostic": 0.08153326024168321,
+        "ade_hard_failure": 0.09374591375146946,
+        "ade_easy_degradation": -0.001101978371627214,
+        "fde_t50": 0.1537620890856707
+      },
+      "positive_component_contribution": true,
+      "interpretation": "Strongest/teacher floor reference; all improvements are zero by definition."
+    },
+    {
+      "name": "stage42j_static_expert_only",
+      "source": "cached_verified_stage42r_row_cache",
+      "metrics": {
+        "ade_all": 0.03622211410797116,
+        "ade_t50": 0.03687534846076057,
+        "ade_t100_raw_frame_diagnostic": 0.026738243344936168,
+        "ade_hard_failure": 0.03970549857571178,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.11663789693648445
+      },
+      "loss_vs_stage42x_full": {
+        "ade_all": 0.053791546779965047,
+        "ade_t50": 0.02421832825170045,
+        "ade_t100_raw_frame_diagnostic": 0.05479501689674704,
+        "ade_hard_failure": 0.054040415175757674,
+        "ade_easy_degradation": -0.001101978371627214,
+        "fde_t50": 0.03712419214918626
+      },
+      "positive_component_contribution": true,
+      "interpretation": "Uses the static-gated full-waypoint expert without Stage42-P/UCY integration."
+    },
+    {
+      "name": "stage42p_gain_harm_only",
+      "source": "cached_verified_stage42r_row_cache",
+      "metrics": {
+        "ade_all": 0.05153704104193376,
+        "ade_t50": 0.0065955990643286055,
+        "ade_t100_raw_frame_diagnostic": 0.05925428082731558,
+        "ade_hard_failure": 0.05325620642069262,
+        "ade_easy_degradation": 0.008580272918299992,
+        "fde_t50": 0.057430632040042284
+      },
+      "loss_vs_stage42x_full": {
+        "ade_all": 0.038476619846002445,
+        "ade_t50": 0.054498077648132415,
+        "ade_t100_raw_frame_diagnostic": 0.022278979414367635,
+        "ade_hard_failure": 0.040489707330776836,
+        "ade_easy_degradation": 0.007478294546672777,
+        "fde_t50": 0.09633145704562843
+      },
+      "positive_component_contribution": true,
+      "interpretation": "Uses the t50 gain/harm selector source without Stage42-J/UCY integration."
+    },
+    {
+      "name": "stage42s_combo_no_ucy_source",
+      "source": "cached_verified_stage42s_row_cache",
+      "metrics": {
+        "ade_all": 0.05238704221741153,
+        "ade_t50": 0.03793420310086152,
+        "ade_t100_raw_frame_diagnostic": 0.04184584975029467,
+        "ade_hard_failure": 0.05479172593908743,
+        "ade_easy_degradation": 0.001101978371627214,
+        "fde_t50": 0.10005888767615174
+      },
+      "loss_vs_stage42x_full": {
+        "ade_all": 0.03762661867052468,
+        "ade_t50": 0.0231594736115995,
+        "ade_t100_raw_frame_diagnostic": 0.03968741049138854,
+        "ade_hard_failure": 0.038954187812382024,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.053703201409518966
+      },
+      "positive_component_contribution": true,
+      "interpretation": "Stage42-S row combo leaves UCY fallback-only; loss vs Stage42-X quantifies UCY full-waypoint source contribution."
+    },
+    {
+      "name": "stage42x_unified_full",
+      "source": "fresh_run_row_level_unified_cache",
+      "metrics": {
+        "ade_all": 0.0900136608879362,
+        "ade_t50": 0.06109367671246102,
+        "ade_t100_raw_frame_diagnostic": 0.08153326024168321,
+        "ade_hard_failure": 0.09374591375146946,
+        "ade_easy_degradation": 0.001101978371627214,
+        "fde_t50": 0.1537620890856707
+      },
+      "loss_vs_stage42x_full": {
+        "ade_all": 0.0,
+        "ade_t50": 0.0,
+        "ade_t100_raw_frame_diagnostic": 0.0,
+        "ade_hard_failure": 0.0,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.0
+      },
+      "positive_component_contribution": false,
+      "interpretation": "Full Stage42-X row-level merged cache over ETH_UCY, TrajNet, and UCY."
+    }
+  ],
+  "retrained_sequence_ablation_rows": [
+    {
+      "module": "history tokens",
+      "ablation": "sequence_no_history_tokens",
+      "source": "fresh_run",
+      "metrics": {
+        "all": 0.3304355789876775,
+        "t50": 0.32554495133960887,
+        "t100_raw_frame_diagnostic": 0.3585103910963155,
+        "hard_failure": 0.3372746847605039,
+        "easy_degradation": -0.3256412431992857
+      },
+      "full_minus_ablation": {
+        "all": 0.4480355451357656,
+        "t50": 0.457817280518282,
+        "hard_failure": 0.47079873325328386,
+        "easy_delta_ablation_minus_full": 0.44276228789288724
+      },
+      "positive_contribution": true
+    },
+    {
+      "module": "domain expert",
+      "ablation": "sequence_no_domain_expert",
+      "source": "fresh_run",
+      "metrics": {
+        "all": 0.7369295383136194,
+        "t50": 0.7414769743658925,
+        "t100_raw_frame_diagnostic": 0.893435911421307,
+        "hard_failure": 0.768206646252081,
+        "easy_degradation": -0.6963264311534142
+      },
+      "full_minus_ablation": {
+        "all": 0.0415415858098237,
+        "t50": 0.04188525749199834,
+        "hard_failure": 0.03986677176170672,
+        "easy_delta_ablation_minus_full": 0.07207709993875877
+      },
+      "positive_contribution": true
+    },
+    {
+      "module": "goal/scene tokens",
+      "ablation": "sequence_no_goal_scene_tokens",
+      "source": "fresh_run",
+      "metrics": {
+        "all": 0.7731505704668217,
+        "t50": 0.7876211484182892,
+        "t100_raw_frame_diagnostic": 0.9118188737123679,
+        "hard_failure": 0.8037016848055435,
+        "easy_degradation": -0.7571316550217917
+      },
+      "full_minus_ablation": {
+        "all": 0.0053205536566214295,
+        "t50": -0.00425891656039834,
+        "hard_failure": 0.004371733208244244,
+        "easy_delta_ablation_minus_full": 0.01127187607038127
+      },
+      "positive_contribution": true
+    },
+    {
+      "module": "neighbor/interaction tokens",
+      "ablation": "sequence_no_neighbor_interaction_tokens",
+      "source": "fresh_run",
+      "metrics": {
+        "all": 0.778549392169928,
+        "t50": 0.782063751648341,
+        "t100_raw_frame_diagnostic": 0.917928855104648,
+        "hard_failure": 0.8094168572093686,
+        "easy_degradation": -0.7497884260727141
+      },
+      "full_minus_ablation": {
+        "all": -7.826804648491947e-05,
+        "t50": 0.0012984802095499237,
+        "hard_failure": -0.0013434391955808866,
+        "easy_delta_ablation_minus_full": 0.018615105019458844
+      },
+      "positive_contribution": true
+    }
+  ],
+  "safety_floor_rows": [
+    {
+      "name": "floor_only",
+      "source": "cached_verified_stage42e_fresh_eval",
+      "all": 0.0,
+      "t50": 0.0,
+      "hard_failure": 0.0,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "deployable": true
+    },
+    {
+      "name": "ungated_endpoint_neural",
+      "source": "cached_verified_stage42e_fresh_eval",
+      "all": 0.296621240422128,
+      "t50": 0.21520334842637612,
+      "hard_failure": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "switch_rate": 1.0,
+      "deployable": false
+    },
+    {
+      "name": "ungated_full_waypoint_neural",
+      "source": "cached_verified_stage42e_fresh_eval",
+      "all": 0.296621240422128,
+      "t50": 0.21520334842637612,
+      "hard_failure": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "switch_rate": 1.0,
+      "deployable": false
+    },
+    {
+      "name": "teacher_raw_policy",
+      "source": "cached_verified_stage42e_fresh_eval",
+      "all": 0.35147372419646705,
+      "t50": 0.23666446707361,
+      "hard_failure": 0.350941376256631,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.46194712577438407,
+      "deployable": true
+    },
+    {
+      "name": "current_composite_tail_policy",
+      "source": "cached_verified_stage42e_fresh_eval",
+      "all": 0.2102513255185352,
+      "t50": 0.13652231450154184,
+      "hard_failure": 0.20384916307933942,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.3410171445036738,
+      "deployable": true
+    }
+  ],
+  "full_waypoint_context": {
+    "stage42c_verdict": "stage42_c_full_waypoint_dynamics_pass",
+    "positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "interpretation": "Stage42-C is earlier full-waypoint evidence; Stage42-X supersedes it for unified ETH_UCY/TrajNet/UCY row-level cache."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "future_waypoints_used_as_train_val_label_and_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_y_gate": {
+    "source": "fresh_synthesis_from_stage42x_row_cache_and_retrained_ablation_reports",
+    "gates": {
+      "stage42x_prereq_pass": true,
+      "row_level_ablation_table_built": true,
+      "ucy_source_contribution_positive": true,
+      "combo_beats_single_sources": true,
+      "at_least_two_retrained_modules_positive": true,
+      "history_contribution_positive": true,
+      "safety_floor_necessity_diagnosed": true,
+      "stage42x_t50_seed_ci_positive": true,
+      "stage42x_easy_preserved": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_y_unified_ablation_evidence_pass"
+  }
+}

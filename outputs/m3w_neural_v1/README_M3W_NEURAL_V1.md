@@ -500,3 +500,23 @@ smc_enabled = false
 ```
 
 Stage42-X upgrades Stage42-W from a domain-level policy package into a row-level merged full-waypoint cache with unified bootstrap. ETH_UCY/TrajNet use Stage42-S row-cache combo outputs; UCY rows use Stage42-V UCY full-waypoint predictions after row alignment. Claims remain dataset-local raw-frame 2.5D, not metric or seconds-level.
+
+## Stage42-Y Unified Ablation Evidence
+
+```text
+source = fresh_synthesis_from_stage42x_row_cache_and_retrained_ablation_reports
+verdict = stage42_y_unified_ablation_evidence_pass
+gates = 13 / 13
+Stage42-X_ADE_all = 0.0900136608879362
+Stage42-X_ADE_t50 = 0.06109367671246102
+UCY_source_loss_if_removed_t50 = 0.0231594736115995
+UCY_source_loss_if_removed_hard = 0.038954187812382024
+history_token_t50_contribution = 0.457817280518282
+history_token_hard_contribution = 0.47079873325328386
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-Y turns the Stage42-X unified row-level cache into paper-table ablation evidence. It shows that removing the UCY full-waypoint source loses t50/hard performance, history tokens are the strongest retrained sequence contribution, domain expert helps, and safety floor remains necessary because ungated neural is unsafe. Goal/scene and neighbor/interaction remain mixed rather than overclaimed.
+
+Verification: Stage42-Y runner passed, focused Stage42-Y pytest passed with 3 tests, and the full repository test suite passed with 327 tests.

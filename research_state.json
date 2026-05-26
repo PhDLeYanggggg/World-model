@@ -1,13 +1,18 @@
 {
-  "current_stage": "stage42_x_unified_row_level_full_waypoint_cache",
-  "current_verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
+  "current_stage": "stage42_y_unified_ablation_evidence",
+  "current_verdict": "stage42_y_unified_ablation_evidence_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified",
+    "source": "cached_verified_plus_stage42_wxy_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-V strict pure-UCY full-waypoint candidate passed and should next be integrated with Stage42-R/S row-combo policy",
+    "latest_branch_success": "Stage42-X unified row-level full-waypoint cache passed and Stage42-Y unified ablation evidence passed; Stage42-Y shows UCY source contribution, history-token contribution, and safety-floor necessity.",
+    "verification": {
+      "stage42_y_runner": "pass",
+      "focused_pytest": "3 passed",
+      "full_pytest": "327 passed"
+    },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,
@@ -676,7 +681,11 @@
     "outputs/stage42_long_research/stage42_stage_w_gate.md",
     "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.md",
     "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_x_gate.md"
+    "outputs/stage42_long_research/stage42_stage_x_gate.md",
+    "outputs/stage42_long_research/unified_ablation_evidence_stage42.md",
+    "outputs/stage42_long_research/unified_ablation_evidence_stage42.json",
+    "outputs/stage42_long_research/unified_ablation_evidence_stage42.csv",
+    "outputs/stage42_long_research/stage42_stage_y_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13204,6 +13213,29 @@
         "TrajNet",
         "UCY"
       ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_y_unified_ablation_evidence": {
+      "source": "fresh_synthesis_from_stage42x_row_cache_and_retrained_ablation_reports",
+      "report": "outputs/stage42_long_research/unified_ablation_evidence_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_y_gate.md",
+      "csv": "outputs/stage42_long_research/unified_ablation_evidence_stage42.csv",
+      "gates_passed": 13,
+      "gates_total": 13,
+      "verdict": "stage42_y_unified_ablation_evidence_pass",
+      "stage42x_ade_all": 0.0900136608879362,
+      "stage42x_ade_t50": 0.06109367671246102,
+      "ucy_source_loss_if_removed_t50": 0.0231594736115995,
+      "ucy_source_loss_if_removed_hard": 0.038954187812382024,
+      "history_token_t50_contribution": 0.457817280518282,
+      "history_token_hard_contribution": 0.47079873325328386,
       "claim_boundary": {
         "true_3d": false,
         "foundation_world_model": false,
