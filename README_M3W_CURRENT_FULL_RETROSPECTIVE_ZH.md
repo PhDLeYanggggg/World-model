@@ -686,3 +686,17 @@ M3W 现在有真实工程和实验价值，但它的强点是 protected 2.5D wor
 - decision: `proximity_occupancy_loss_not_enough_keep_stage42_am_or_cq_floor`.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DH_FULL_WAYPOINT_PROXIMITY_OCCUPANCY_LOSS_REPAIR:END -->
+
+<!-- STAGE42_DI_GROUP_CONSISTENCY_FULL_WAYPOINT_REPAIR:START -->
+## Stage42-DI Group-Consistency Full-Waypoint Repair
+
+- source: `fresh_stage42_di_group_consistency_full_waypoint_repair`
+- role: explicit all-agent group-consistency / proximity repair over source-level full-waypoint predictions after Stage42-DE/DF/DG/DH blockers.
+- selected repair: `{'mode': 'repel_unsafe', 'min_sep': 0.08, 'margin': 0.0, 'strength': 0.5}`.
+- gate: `17 / 17`; verdict `stage42_di_group_consistency_full_waypoint_repair_pass_promotable`.
+- test vs train-horizon causal floor: all `24.72%`, t50 `22.36%`, t100 raw `14.35%`, hard `23.89%`, easy `-25.63%`.
+- delta vs Stage42-AM: all `0.14%`, t50 `0.35%`, t100 raw `-0.02%`, hard `0.14%`, easy `0.03%`.
+- near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- decision: `promote_stage42_di_group_consistency_full_waypoint_repair`.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DI_GROUP_CONSISTENCY_FULL_WAYPOINT_REPAIR:END -->

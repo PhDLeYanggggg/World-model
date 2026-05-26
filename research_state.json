@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-DH full-waypoint proximity/occupancy-proxy loss repair",
-  "current_verdict": "stage42_dh_proximity_occupancy_loss_repair_pass_positive_not_better_than_am",
+  "current_stage": "Stage42-DI group-consistency full-waypoint repair",
+  "current_verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable",
   "m3w_current_full_retrospective_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_reports_with_stage42_dc_dd_latest",
     "path": "README_M3W_CURRENT_FULL_RETROSPECTIVE_ZH.md",
@@ -18813,6 +18813,69 @@
     "verification": {
       "research_state_json": "ok",
       "latest_known_full_pytest": "641 passed after Stage42-DH commit df70432"
+    }
+  },
+  "stage42_di_group_consistency_full_waypoint_repair": {
+    "source": "fresh_stage42_di_group_consistency_full_waypoint_repair",
+    "report": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_di_gate.md",
+    "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable",
+    "gates": "17/17",
+    "deployment_decision": {
+      "promote_group_consistency_full_waypoint_repair": true,
+      "decision": "promote_stage42_di_group_consistency_full_waypoint_repair",
+      "reason": "Promotion requires all+hard positive, easy safe, improvement over Stage42-AM on all+hard, and no worse near@0.05 than rebuilt AM selected rollout."
+    },
+    "selected_repair": {
+      "mode": "repel_unsafe",
+      "min_sep": 0.08,
+      "margin": 0.0,
+      "strength": 0.5
+    },
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.24715658317833844,
+      "t10_improvement": 0.4586454739489455,
+      "t25_improvement": 0.23617773697664124,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11382546135578223
+    },
+    "test_proximity_diagnostics": {
+      "unsafe_rows": 955,
+      "unsafe_rate": 0.02012305617598719,
+      "base_switch_rate": 0.5880989506511021,
+      "final_switch_rate": 0.5880989506511021,
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01382274853554722,
+      "floor_near_005": 0.022377681318218216,
+      "base_p05_min_distance": 0.07437689768396878,
+      "final_p05_min_distance": 0.07770240407545181,
+      "floor_p05_min_distance": 0.07354961919220622
+    },
+    "comparison_to_stage42_am": {
+      "all_improvement": 0.001368197579674879,
+      "t50_improvement": 0.0034591684196666472,
+      "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+      "hard_failure_improvement": 0.0013803223197202952,
+      "easy_degradation": 0.00031875910508205596
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-DI is a fresh explicit group-consistency/proximity repair over source-level full-waypoint rollouts. Promotion requires all+hard improvement over Stage42-AM plus proximity safety; otherwise keep Stage42-AM/CQ or Stage37/teacher floor.",
+    "verification": {
+      "focused_pytest": "3 passed in tests/test_stage42_group_consistency_full_waypoint_repair.py",
+      "full_pytest": "644 passed in 32.24s",
+      "runner": ".venv-pytorch/bin/python run_stage42_group_consistency_full_waypoint_repair.py"
     }
   }
 }
