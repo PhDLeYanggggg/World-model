@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CP common-validation composer safety / bootstrap audit，并包含 Stage42-CJ/CK context negative evidence、Stage42-CL paper-package claim guard refresh、Stage42-CM/CN/CO bridge-shape composer evidence。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CQ proximity-aware composer guard，并包含 Stage42-CJ/CK context negative evidence、Stage42-CL paper-package claim guard refresh、Stage42-CM/CN/CO/CP bridge-shape composer evidence。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
 用途：这是当前 M3W 长期目标的单文件中文总览，用来回答“这个目标内到底做了什么、尝试了什么路线、哪些失败了、为什么失败、哪些成功了、当前最强模型是谁、下一步该怎么走”。
 
 ## 本次问题的直接答案
@@ -18,6 +18,7 @@
 7. Stage42-CJ/CK 又专门尝试把 goal/scene 与 neighbor/interaction 做成 validation-only gated expert，结果都没有超过 `baseline_family_control`，所以这两类上下文继续只能写 diagnostic / auxiliary，不能写成主贡献。
 8. Stage42-CL 已把 CJ/CK 的负证据同步进 paper package，Stage42-CM 又把 endpoint-linear bridge 与 full-waypoint sequence 的边界审计清楚：full-waypoint 对 t50/t100 raw-frame horizon 有真实辅助增益，但还不能替代 endpoint-linear bridge 的 all-ADE floor。
 9. Stage42-CO 补上 common validation/test row alignment 后，允许 validation-only composer 在 ETH_UCY t50/t100 切 full-waypoint；Stage42-CP 进一步用 2000 bootstrap 和 all-agent joint safety 证明这个 composer 对 endpoint-linear bridge 有统计支持且安全 caveat 可控。
+10. Stage42-CQ 又把 CP 的 proximity caveat 变成 validation-only predicted-proximity guard：牺牲一部分 accuracy，但让 near-collision@0.05 不再高于 endpoint-linear，同时 all/t50/t100/hard bootstrap lower bound 仍为正。
 
 当前最强可部署结论：
 
@@ -55,6 +56,7 @@ not allowed to claim:
 | Stage42-CN | bridge / shape composer 审计 | 15/15 gates；full-waypoint 可作 t50/t100 raw-frame 辅助证据，但没有 common validation endpoint-vs-full-waypoint row cache 前，不允许新增 deployment switch |
 | Stage42-CO | common validation bridge / shape composer | 14/14 gates；endpoint-linear 与 full-waypoint val/test rows 完全对齐；validation-only composer 选择 ETH_UCY t50/t100 切 full-waypoint；test 相比 endpoint-linear all +3.02%、t50 +1.50%、t100 raw +6.12%、hard +3.28%、easy degradation +0.25% |
 | Stage42-CP | common validation composer safety / bootstrap | 14/14 gates；2000 bootstrap 支持 composer 相比 endpoint-linear：all CI [+2.64%, +3.37%]、t50 CI [+0.90%, +2.09%]、t100 raw CI [+5.39%, +6.94%]、hard/failure CI [+2.90%, +3.68%]；near-collision@0.05 比 endpoint-linear +0.34% 但比 strongest floor -0.05%，jagged-rate 不恶化 |
+| Stage42-CQ | proximity-aware composer guard | 19/19 gates；validation-only guard 使用预测 rollout geometry，不使用 future label；test 相比 endpoint-linear all +1.77%、t50 +1.07%、t100 raw +3.48%、hard +1.93%、easy +0.25%；near-collision@0.05 相比 endpoint-linear -0.06%，相比 strongest floor -0.45% |
 
 最重要失败和原因：
 
@@ -98,6 +100,7 @@ not = true 3D / foundation / global metric / seconds-level / Stage5C / SMC
 - Stage42-CN bridge/shape composer audit：15/15 gates；Stage42-J 的 validation-only full-waypoint/static gate 是正且 easy-safe，Stage42-CM 的 full-waypoint horizon lift 成立，但当前仍缺 common validation-aligned endpoint-linear-vs-full-waypoint row cache，所以 deployable policy 仍是 endpoint-linear bridge / Stage37-teacher floor。
 - Stage42-CO common-validation composer：14/14 gates；补上 CN 的 row-alignment 缺口，validation-only 选择 ETH_UCY t50/t100 使用 full-waypoint sequence，test 相比 endpoint-linear bridge 再提升 all +3.02%、t50 +1.50%、t100 raw +6.12%、hard +3.28%，easy degradation 仍只有 +0.25%。
 - Stage42-CP common-validation composer safety/bootstrap：14/14 gates；2000 bootstrap 下 all/t50/t100/hard-failure 对 endpoint-linear 的 CI lower bound 全为正；joint safety 显示 near-collision@0.05 较 endpoint-linear 小幅增加但仍低于 strongest floor，smoothness 不恶化。
+- Stage42-CQ proximity-aware composer guard：19/19 gates；用 validation-only predicted-proximity guard 修复 CP 的 near-collision caveat，test all/t50/t100/hard 仍为正，near-collision@0.05 不再高于 endpoint-linear。
 
 最关键失败结论：
 

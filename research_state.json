@@ -1,6 +1,68 @@
 {
-  "current_stage": "Stage42-CP common validation composer safety / bootstrap",
-  "current_verdict": "stage42_cp_common_validation_composer_safety_pass",
+  "current_stage": "Stage42-CQ proximity-aware composer guard",
+  "current_verdict": "stage42_cq_proximity_aware_composer_guard_pass",
+  "stage42_cq_proximity_aware_composer_guard": {
+    "source": "fresh_validation_selected_proximity_guard_from_stage42_co_policy",
+    "report": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_cq_gate.md",
+    "verdict": "stage42_cq_proximity_aware_composer_guard_pass",
+    "gates": "19/19",
+    "selected_policy": {
+      "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+      "min_sep": 0.2,
+      "margin": 0.005,
+      "selected_on": "validation_only",
+      "guard_input": "predicted endpoint/full-waypoint rollout geometry only"
+    },
+    "test_vs_endpoint_linear_ade": {
+      "all_improvement": 0.017744,
+      "t50_improvement": 0.010673,
+      "t100_raw_frame_diagnostic_improvement": 0.034801,
+      "hard_failure_improvement": 0.019294,
+      "easy_degradation": 0.002493
+    },
+    "bootstrap_vs_endpoint_ade": {
+      "all_ci": {
+        "low": 0.0150,
+        "mid": 0.0177,
+        "high": 0.0205
+      },
+      "t50_ci": {
+        "low": 0.0059,
+        "mid": 0.0106,
+        "high": 0.0152
+      },
+      "t100_raw_frame_diagnostic_ci": {
+        "low": 0.0291,
+        "mid": 0.0348,
+        "high": 0.0408
+      },
+      "hard_failure_ci": {
+        "low": 0.0163,
+        "mid": 0.0193,
+        "high": 0.0222
+      }
+    },
+    "joint_safety": {
+      "near_collision_005_delta_vs_endpoint_linear": -0.000605,
+      "near_collision_005_delta_vs_strongest_floor": -0.004476,
+      "p05_min_distance_delta_vs_endpoint_linear": -0.000125,
+      "jagged_rate_delta_vs_endpoint_linear": 0.0
+    },
+    "conclusion": "Stage42-CQ repairs the Stage42-CP proximity caveat with a validation-selected predicted-proximity guard. It sacrifices some Stage42-CO/CP accuracy, but keeps positive all/t50/t100 raw-frame/hard-failure ADE lower bounds versus endpoint-linear and makes near-collision@0.05 no worse than endpoint-linear or strongest floor. It remains protected dataset-local/raw-frame 2.5D evidence, not true 3D, foundation, metric/seconds-level, Stage5C, or SMC evidence.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_proximity_aware_composer_guard.py -> 19/19",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_aware_composer_guard.py tests/test_stage42_common_validation_composer_safety.py tests/test_stage42_common_validation_bridge_shape_composer.py -> 9 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 579 passed"
+    }
+  },
   "stage42_cp_common_validation_composer_safety": {
     "source": "fresh_joint_safety_bootstrap_from_stage42_co_policy",
     "report": "outputs/stage42_long_research/common_validation_composer_safety_stage42.md",
@@ -218,7 +280,7 @@
     }
   },
   "latest_user_facing_goal_summary": {
-    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_cp",
+    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_cq",
     "readme": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "updated_at": "2026-05-26",
     "purpose": "Summarize the full M3W long-goal route: what was attempted, what failed and why, what succeeded, current best deployable model, and strict claim boundaries.",
@@ -229,7 +291,8 @@
       "Stage42-CM full-waypoint bridge shape audit: protected full-waypoint improves t50/t100 raw-frame over endpoint-linear bridge but loses all/hard, so endpoint-only success is not full-waypoint success",
       "Stage42-CN bridge/shape composer audit: full-waypoint is auxiliary horizon evidence, but no new deployment switch is allowed until common validation endpoint-vs-full-waypoint row cache exists",
       "Stage42-CO common validation composer: endpoint/full rows align, validation selects ETH_UCY t50/t100 full-waypoint switch, test improves over endpoint-linear bridge with easy degradation below 2%",
-      "Stage42-CP common validation composer safety/bootstrap: 2000 bootstrap lower bounds are positive for all/t50/t100 raw-frame/hard-failure vs endpoint-linear and all-agent joint safety remains materially guarded"
+      "Stage42-CP common validation composer safety/bootstrap: 2000 bootstrap lower bounds are positive for all/t50/t100 raw-frame/hard-failure vs endpoint-linear and all-agent joint safety remains materially guarded",
+      "Stage42-CQ proximity-aware composer guard: validation-only predicted-proximity guard repairs the near-collision caveat while retaining positive all/t50/t100 raw-frame/hard-failure lower bounds"
     ],
     "best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor",
     "dominant_supported_mechanism": "baseline-family rollout context plus causal history and guarded domain expert under conservative safety floor",

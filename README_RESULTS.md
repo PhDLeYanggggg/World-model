@@ -14,14 +14,15 @@
 best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor
 dominant mechanism = baseline-family rollout context + causal history + guarded domain expert + conservative safety floor
 not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as independent drivers
-latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, Stage42-CM full-waypoint boundary audit, Stage42-CN bridge/shape composer audit, and Stage42-CP composer safety/bootstrap audit
+latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, Stage42-CM full-waypoint boundary audit, Stage42-CN bridge/shape composer audit, Stage42-CP composer safety/bootstrap audit, and Stage42-CQ proximity-aware composer guard
 latest gate status = CJ 10 / 10, CK 11 / 11
 latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
 latest full-waypoint boundary audit = Stage42-CM endpoint bridge / full-waypoint shape audit, 14 / 14 gates
 latest bridge/shape composer audit = Stage42-CN, 15 / 15 gates, blocker documented
 latest common-validation composer = Stage42-CO, 14 / 14 gates, endpoint-vs-full rows aligned
 latest composer safety/bootstrap = Stage42-CP, 14 / 14 gates, 2000-bootstrap CI and all-agent joint safety audit
-latest full pytest = 576 passed
+latest proximity-aware composer guard = Stage42-CQ, 19 / 19 gates, near-collision caveat repaired with positive all/t50/t100/hard bootstrap evidence
+latest full pytest = 579 passed
 ```
 
 ```text
@@ -69,6 +70,29 @@ SMC_enabled = false
 ```
 
 Stage42-CP adds statistical and all-agent joint-safety evidence to Stage42-CO. The validation-only composer has positive bootstrap lower bounds against the endpoint-linear bridge for all/t50/t100 raw-frame/hard-failure ADE. Safety remains materially guarded: near-collision@0.05 is slightly higher than endpoint-linear but still lower than the strongest floor, and smoothness does not worsen. This is protected dataset-local/raw-frame 2.5D evidence only, not metric/seconds-level, true 3D, Stage5C, or SMC evidence.
+
+```text
+Stage42-CQ proximity-aware composer guard
+source = fresh_validation_selected_proximity_guard_from_stage42_co_policy
+verdict = stage42_cq_proximity_aware_composer_guard_pass
+gates = 19 / 19
+validation-selected guard = min_sep 0.2, margin 0.005
+guard input = predicted endpoint/full-waypoint rollout geometry only
+test vs endpoint-linear ADE:
+  all = +1.77%, CI [+1.50%, +2.05%]
+  t50 = +1.07%, CI [+0.59%, +1.52%]
+  t100 raw diagnostic = +3.48%, CI [+2.91%, +4.08%]
+  hard/failure = +1.93%, CI [+1.63%, +2.22%]
+  easy degradation = +0.25%
+joint safety:
+  near_collision@0.05 delta vs endpoint-linear = -0.06%
+  near_collision@0.05 delta vs strongest floor = -0.45%
+  jagged-rate delta vs endpoint-linear = 0.00%
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CQ turns the Stage42-CP proximity caveat into a validation-selected safety policy. It gives up part of the Stage42-CO/CP accuracy gain, but it keeps all/t50/t100 raw-frame/hard-failure positive with positive bootstrap lower bounds while making near-collision@0.05 no worse than endpoint-linear or the strongest floor. This is the safer composer variant for safety-sensitive reporting; it remains protected dataset-local/raw-frame 2.5D evidence, not metric/seconds-level, true 3D, Stage5C, or SMC evidence.
 
 ```text
 Stage42-CN bridge / shape composer audit

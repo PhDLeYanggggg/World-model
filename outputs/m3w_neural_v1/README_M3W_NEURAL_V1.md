@@ -52,6 +52,12 @@ Latest Stage42 common-validation composer safety / bootstrap audit:
 
 Stage42-CP passes `14 / 14` gates as `fresh_joint_safety_bootstrap_from_stage42_co_policy`. It adds `2000`-bootstrap statistical evidence and all-agent joint safety checks to the Stage42-CO composer. Against the endpoint-linear bridge, test ADE improves by `+3.02%` all with CI `[+2.64%, +3.37%]`, `+1.50%` t50 with CI `[+0.90%, +2.09%]`, `+6.12%` t100 raw-frame diagnostic with CI `[+5.39%, +6.94%]`, and `+3.28%` hard/failure with CI `[+2.90%, +3.68%]`. The safety caveat is explicit: near-collision@0.05 is `+0.34%` versus endpoint-linear but `-0.05%` versus the strongest floor, and jagged-rate does not worsen. This is protected dataset-local/raw-frame 2.5D evidence, not metric/seconds-level, Stage5C, or SMC evidence.
 
+Latest Stage42 proximity-aware composer guard:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/proximity_aware_composer_guard_stage42.md`
+
+Stage42-CQ passes `19 / 19` gates as `fresh_validation_selected_proximity_guard_from_stage42_co_policy`. It directly repairs the Stage42-CP safety caveat by selecting a predicted-proximity guard on validation only (`min_sep=0.2`, `margin=0.005`) and evaluating test once. Against endpoint-linear bridge, the guarded composer keeps positive ADE gains: all `+1.77%`, t50 `+1.07%`, t100 raw-frame diagnostic `+3.48%`, hard/failure `+1.93%`, easy degradation `+0.25%`; bootstrap lower bounds are positive for all and t50. Near-collision@0.05 becomes `-0.06%` versus endpoint-linear and `-0.45%` versus the strongest floor. This is a safer protected composer variant, not metric/seconds-level, Stage5C, or SMC evidence.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`

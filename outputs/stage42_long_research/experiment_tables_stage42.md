@@ -208,3 +208,17 @@
 - near-collision@0.05 delta vs strongest floor: `-0.05%`.
 - claim boundary: still dataset-local/raw-frame 2.5D; no metric/seconds-level, no Stage5C, no SMC.
 <!-- STAGE42_CP_COMMON_VALIDATION_COMPOSER_SAFETY:END -->
+
+<!-- STAGE42_CQ_PROXIMITY_AWARE_COMPOSER_GUARD:START -->
+## Stage42-CQ Proximity-Aware Composer Guard
+
+- source: `fresh_validation_selected_proximity_guard_from_stage42_co_policy`
+- scope: Stage42-CO full-waypoint composer with validation-selected predicted-proximity guard.
+- guard uses only model rollout geometry, not future labels as inference input.
+- test vs endpoint-linear ADE: all `1.77%`, t50 `1.07%`, t100 raw diagnostic `3.48%`, hard `1.93%`, easy `0.25%`.
+- bootstrap vs endpoint-linear all CI: `[1.50%, 2.05%]`.
+- bootstrap vs endpoint-linear t50 CI: `[0.59%, 1.52%]`.
+- near-collision@0.05 delta vs endpoint-linear: `-0.06%`.
+- near-collision@0.05 delta vs strongest floor: `-0.45%`.
+- claim boundary: still dataset-local/raw-frame 2.5D; no metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_CQ_PROXIMITY_AWARE_COMPOSER_GUARD:END -->
