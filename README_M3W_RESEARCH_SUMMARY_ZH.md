@@ -228,8 +228,8 @@ FDE t+50 = 0.334459
 意义：
 
 - Stage42-V 修复了 UCY “没有 full-waypoint candidate source”的 blocker。
-- 但它还没有合并进 Stage42-R/S row-combo policy。
-- 下一步应该把 ETH_UCY/TrajNet 的 Stage42-R/S combo 与 UCY 的 Stage42-V candidate 合成统一 frozen external full-waypoint policy。
+- Stage42-W 已经把它作为 UCY-domain slice 合并进统一 external full-waypoint policy package。
+- 但 Stage42-W 仍不是单一 merged row-cache artifact；下一步要把 UCY candidate 也缓存成统一 row-level source，并重新做全局 row-level bootstrap。
 
 ## 3. 主要失败路线和失败原因
 
@@ -447,8 +447,8 @@ Stage42-R/S/V 的关系：
 
 - Stage42-R/S 是 full-waypoint row-cache combo 分支，对 ETH_UCY/TrajNet 很重要。
 - Stage42-V 是 UCY full-waypoint candidate source，修复了 UCY candidate 缺失。
-- 但 Stage42-V 还没有合并进 Stage42-R/S 的统一 frozen external full-waypoint policy。
-- 所以下一步不是再泛泛加模型，而是做统一 row-level / domain-level policy integration，并重新过 gate。
+- Stage42-W 已经把 Stage42-S 的 ETH_UCY/TrajNet 与 Stage42-V 的 UCY-domain slice 合成统一 external full-waypoint policy package，并过 gate。
+- 但 Stage42-W 明确不是单一 merged row-cache artifact；下一步不是再泛泛加模型，而是补 UCY row-level cache、统一 bootstrap 和更严格 held-out stress。
 
 ## 6. 为什么现在还不能说 CCF-A / foundation / true world model
 
@@ -475,8 +475,8 @@ M3W 当前具备 protected 2.5D external world-state candidate 证据。
 
 CCF-A / A刊候选还差：
 
-1. 更完整跨数据集泛化：ETH / TrajNet / UCY 的统一 policy，而不是多个 branch evidence。
-2. 更强 row-level unified full-waypoint cache：Stage42-V 需要合进 Stage42-R/S。
+1. 更完整跨数据集泛化：Stage42-W 已有 ETH / TrajNet / UCY 统一 policy package，但还需要单一 row-level merged cache 和统一 bootstrap。
+2. 更强 row-level unified full-waypoint cache：Stage42-V 的 UCY source 需要进入 Stage42-R/S 同级 row cache，而不是只作为 domain-slice package source。
 3. 更清晰的世界动力学贡献：证明不是只靠 safety selector，而是 neural dynamics / history / interaction / goal 分支本身有稳定贡献。
 4. 更强 external held-out scene evidence。
 5. metric / time calibration 或更严格声明为 raw-frame dataset-local。
@@ -484,7 +484,7 @@ CCF-A / A刊候选还差：
 
 ## 7. 下一步最短路径
 
-### Step 1：合并 Stage42-V 到 Stage42-R/S
+### Step 1：把 Stage42-W package 升级成单一 row-level merged cache
 
 目标：
 
@@ -494,7 +494,7 @@ TrajNet = Stage42-R/S row combo
 UCY = Stage42-V strict pure-UCY full-waypoint candidate
 ```
 
-输出一个统一 frozen external full-waypoint policy。必须清楚标注：
+Stage42-W 已经输出统一 frozen external full-waypoint policy package。下一步要输出单一 row-level merged cache。必须清楚标注：
 
 - 哪些是 row-level merged cache。
 - 哪些是 domain-level policy package。
@@ -554,7 +554,7 @@ ungated neural dynamics
 ordinary residual/correction deployment
 metric / seconds-level claim
 Stage5C / SMC readiness
-single unified row-level full-waypoint policy over ETH_UCY + TrajNet + UCY
+single merged row-level full-waypoint cache/bootstrap over ETH_UCY + TrajNet + UCY
 ```
 
 最诚实的 current verdict：
@@ -563,6 +563,24 @@ single unified row-level full-waypoint policy over ETH_UCY + TrajNet + UCY
 M3W 已经从 SDD selector demo 推进到 protected external 2.5D world-state candidate。
 它有多个强证据分支，但还不是 true 3D、不是 foundation、不是 metric/seconds-level。
 当前 best deployable 仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线。
-下一步最值得做的是把 Stage42-V UCY full-waypoint candidate 合并进 Stage42-R/S row-combo policy，形成统一 external full-waypoint candidate。
+Stage42-W 已经形成统一 external full-waypoint policy package；下一步最值得做的是建立单一 row-level merged cache 和统一 bootstrap，把 package-level 证据推进成更严格的 row-level evidence。
 ```
 
+## Stage42-W Unified External Full-Waypoint Policy
+
+```text
+source = fresh_unified_from_cached_verified_stage42s_and_stage42v
+verdict = stage42_w_unified_external_full_waypoint_policy_pass
+gates = 16 / 16
+policy_hash = a2439e23c0c2e3f7aa99efa8a84e42868ea52258394ce41339c96ee0a2ec910e
+rows = 55528
+weighted_ADE_all = 0.09933852091487605
+weighted_ADE_t50 = 0.09399823177957682
+weighted_ADE_hard_failure = 0.10486717627981672
+weighted_easy_degradation = 0.002399712905777252
+domains = ETH_UCY, TrajNet, UCY
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-W combines ETH_UCY/TrajNet from the frozen Stage42-S row-cache combo policy with the UCY-domain slice from Stage42-V strict pure-UCY full-waypoint candidate. It avoids double counting the Stage42-V ETH_UCY slice and explicitly records that a single merged row-cache artifact remains future work. Claims remain dataset-local raw-frame 2.5D, not metric or seconds-level.

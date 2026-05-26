@@ -1,0 +1,32 @@
+{
+  "policy_name": "stage42_w_unified_external_full_waypoint_policy",
+  "source": "fresh_unified_from_stage42s_and_stage42v",
+  "selection_scope": "domain_source_package_only",
+  "test_usage": "test_once_metrics_from_frozen_stage42s_and_stage42v_reports",
+  "domain_sources": {
+    "ETH_UCY": "stage42_s_row_combo_policy",
+    "TrajNet": "stage42_s_row_combo_policy",
+    "UCY": "stage42_v_strict_pure_ucy_full_waypoint_candidate_ucy_slice"
+  },
+  "double_counting_guard": "Stage42-V ETH_UCY slice is excluded; only Stage42-V UCY slice replaces Stage42-S UCY fallback-only slice.",
+  "single_row_cache_status": "not_run_separate_validated_sources_need_future_row_level_merge",
+  "domains": {
+    "ETH_UCY": {
+      "rows": 25901,
+      "source": "cached_verified_stage42s_row_combo_domain_slice",
+      "source_stage": "Stage42-S"
+    },
+    "TrajNet": {
+      "rows": 20087,
+      "source": "cached_verified_stage42s_row_combo_domain_slice",
+      "source_stage": "Stage42-S"
+    },
+    "UCY": {
+      "rows": 9540,
+      "source": "fresh_stage42v_ucy_domain_slice",
+      "source_stage": "Stage42-V"
+    }
+  },
+  "stage42s_policy_hash": "33450e033e14b10293b8a10796d934d7689e39358ab5eaa338d684a36b015d3f",
+  "stage42v_best_trial": "ucy_full_waypoint_t50_hard"
+}

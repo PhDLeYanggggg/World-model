@@ -2328,3 +2328,22 @@ smc_enabled = false
 ```
 
 Stage42-T attempts a validation-only unseen-domain transfer rule for UCY. The current row cache has no non-floor Stage42-J/P UCY predictions, so UCY remains fallback-only; this is reported as a blocker, not as a success.
+
+## Stage42-W Unified External Full-Waypoint Policy
+
+```text
+source = fresh_unified_from_cached_verified_stage42s_and_stage42v
+verdict = stage42_w_unified_external_full_waypoint_policy_pass
+gates = 16 / 16
+policy_hash = a2439e23c0c2e3f7aa99efa8a84e42868ea52258394ce41339c96ee0a2ec910e
+rows = 55528
+weighted_ADE_all = 0.09933852091487605
+weighted_ADE_t50 = 0.09399823177957682
+weighted_ADE_hard_failure = 0.10486717627981672
+weighted_easy_degradation = 0.002399712905777252
+domains = ETH_UCY, TrajNet, UCY
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-W combines ETH_UCY/TrajNet from the frozen Stage42-S row-cache combo policy with the UCY-domain slice from Stage42-V strict pure-UCY full-waypoint candidate. It avoids double counting the Stage42-V ETH_UCY slice and explicitly records that a single merged row-cache artifact remains future work. Claims remain dataset-local raw-frame 2.5D, not metric or seconds-level.
