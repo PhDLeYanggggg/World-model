@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_w_unified_external_full_waypoint_policy",
-  "current_verdict": "stage42_w_unified_external_full_waypoint_policy_pass",
+  "current_stage": "stage42_x_unified_row_level_full_waypoint_cache",
+  "current_verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
   "latest_user_requested_research_summary": {
     "source": "cached_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
@@ -673,7 +673,10 @@
     "outputs/stage42_long_research/unified_external_full_waypoint_policy_stage42.md",
     "outputs/stage42_long_research/unified_external_full_waypoint_policy_stage42.json",
     "outputs/stage42_long_research/unified_external_full_waypoint_policy_stage42_policy.json",
-    "outputs/stage42_long_research/stage42_stage_w_gate.md"
+    "outputs/stage42_long_research/stage42_stage_w_gate.md",
+    "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.md",
+    "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_x_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13167,6 +13170,40 @@
         "UCY"
       ],
       "single_row_cache_status": "not_run_separate_validated_sources_need_future_row_level_merge",
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_x_unified_row_level_full_waypoint_cache": {
+      "source": "fresh_run_from_stage42s_row_cache_and_stage42v_ucy_predictions",
+      "report": "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_x_gate.md",
+      "gates_passed": 16,
+      "gates_total": 16,
+      "verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
+      "cache_dir": "data/stage42_unified_full_waypoint_cache",
+      "cache_hash": "ffa31b2525fa1a10db356ac5b1ef78602e44bc6f065c63cfc05ac29083e08937",
+      "ade_all": 0.0900136608879362,
+      "ade_t50": 0.06109367671246102,
+      "ade_t50_seed_ci_low": 0.05367075264893123,
+      "ade_t50_bootstrap_ci_low": 0.027880326844751835,
+      "ade_hard_failure": 0.09374591375146946,
+      "ade_easy_degradation": 0.001101978371627214,
+      "positive_all_domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "positive_t50_domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
       "claim_boundary": {
         "true_3d": false,
         "foundation_world_model": false,

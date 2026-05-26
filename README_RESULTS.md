@@ -2347,3 +2347,23 @@ smc_enabled = false
 ```
 
 Stage42-W combines ETH_UCY/TrajNet from the frozen Stage42-S row-cache combo policy with the UCY-domain slice from Stage42-V strict pure-UCY full-waypoint candidate. It avoids double counting the Stage42-V ETH_UCY slice and explicitly records that a single merged row-cache artifact remains future work. Claims remain dataset-local raw-frame 2.5D, not metric or seconds-level.
+
+## Stage42-X Unified Row-Level Full-Waypoint Cache
+
+```text
+source = fresh_run_from_stage42s_row_cache_and_stage42v_ucy_predictions
+verdict = stage42_x_unified_row_level_full_waypoint_cache_pass
+gates = 16 / 16
+cache_hash = ffa31b2525fa1a10db356ac5b1ef78602e44bc6f065c63cfc05ac29083e08937
+ADE_all = 0.0900136608879362
+ADE_t50 = 0.06109367671246102
+ADE_t50_seed_CI_low = 0.05367075264893123
+ADE_t50_bootstrap_CI_low = 0.027880326844751835
+ADE_hard_failure = 0.09374591375146946
+ADE_easy_degradation = 0.001101978371627214
+positive_domains = ['ETH_UCY', 'TrajNet', 'UCY']
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-X upgrades Stage42-W from a domain-level policy package into a row-level merged full-waypoint cache with unified bootstrap. ETH_UCY/TrajNet use Stage42-S row-cache combo outputs; UCY rows use Stage42-V UCY full-waypoint predictions after row alignment. Claims remain dataset-local raw-frame 2.5D, not metric or seconds-level.
