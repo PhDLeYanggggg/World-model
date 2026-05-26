@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-CT frozen proximity-guard policy replay",
-  "current_verdict": "stage42_ct_frozen_policy_replay_pass",
+  "current_stage": "Stage42-CU runtime policy API smoke audit",
+  "current_verdict": "stage42_cu_runtime_policy_api_pass",
   "stage42_cr_proximity_guard_ablation": {
     "source": "fresh_synthesis_from_stage42_co_cp_cq_artifacts",
     "report": "outputs/stage42_long_research/proximity_guard_ablation_stage42.md",
@@ -338,7 +338,7 @@
     }
   },
   "latest_user_facing_goal_summary": {
-    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_ct",
+    "source": "cached_verified_synthesis_for_user_question_refreshed_after_stage42_cu",
     "readme": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "updated_at": "2026-05-26",
     "purpose": "Summarize the full M3W long-goal route: what was attempted, what failed and why, what succeeded, current best deployable model, and strict claim boundaries.",
@@ -353,7 +353,8 @@
       "Stage42-CQ proximity-aware composer guard: validation-only predicted-proximity guard repairs the near-collision caveat while retaining positive all/t50/t100 raw-frame/hard-failure lower bounds",
       "Stage42-CR proximity guard ablation: no-guard is accuracy-priority diagnostic, proximity guard is safety-sensitive deployable composer variant",
       "Stage42-CS frozen proximity-guard composer policy: safety-sensitive composer artifact/hash frozen from CQ/CR with validation-only guard rules",
-      "Stage42-CT frozen policy replay: policy artifact hash and metrics replay against CQ/CR/CS source evidence"
+      "Stage42-CT frozen policy replay: policy artifact hash and metrics replay against CQ/CR/CS source evidence",
+      "Stage42-CU runtime policy API: frozen proximity-guard composer exposed as deterministic domain/horizon/proximity decision function"
     ],
     "best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor",
     "dominant_supported_mechanism": "baseline-family rollout context plus causal history and guarded domain expert under conservative safety floor",
@@ -18245,6 +18246,38 @@
     "verification": {
       "runner": ".venv-pytorch/bin/python run_stage42_replay_proximity_guard_policy.py",
       "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_policy_replay.py"
+    }
+  },
+  "stage42_cu_runtime_policy_api": {
+    "source": "fresh_runtime_api_from_frozen_policy_artifact",
+    "report": "outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_cu_gate.md",
+    "verdict": "stage42_cu_runtime_policy_api_pass",
+    "gates": "19/19",
+    "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+    "runtime_inputs": [
+      "domain",
+      "horizon",
+      "endpoint_min_group_distance_from_predicted_endpoint_rollout",
+      "full_min_group_distance_from_predicted_full_waypoint_rollout"
+    ],
+    "smoke_case_summary": {
+      "full_slice_guard_clear": "base_choice_full_waypoint_guard_clear",
+      "full_slice_guarded_off": "proximity_guard_fallback_to_endpoint_linear",
+      "endpoint_slice_never_switches": "base_choice_endpoint_linear",
+      "full_slice_nonfinite_geometry_replays_no_guard": "base_choice_full_waypoint_geometry_nonfinite_replay_no_guard"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-CU exposes the frozen Stage42-CS proximity-guard composer as a deterministic runtime policy API and verifies representative smoke cases. It makes the policy deployable/reproducible without changing the raw-frame/dataset-local 2.5D claim boundary.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_runtime_proximity_guard_policy.py",
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_runtime_policy.py"
     }
   }
 }

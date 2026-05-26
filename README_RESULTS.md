@@ -4198,3 +4198,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - near-collision@0.05 delta vs endpoint-linear: `-0.06%`
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_CT_FROZEN_POLICY_REPLAY:END -->
+
+<!-- STAGE42_CU_RUNTIME_POLICY_API:START -->
+## Stage42-CU Runtime Policy API Smoke Audit
+
+- source: `fresh_runtime_api_from_frozen_policy_artifact`
+- verdict: `stage42_cu_runtime_policy_api_pass`
+- gates: `19 / 19`
+- policy hash: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`
+- runtime inputs: domain, horizon, endpoint predicted group min-distance, full-waypoint predicted group min-distance.
+- guard rule: use full-waypoint only when validation-selected base slice wants full and predicted proximity guard does not fire.
+- smoke cases: guard-clear full slice, guarded-off full slice, endpoint-only slice, and nonfinite-geometry replay behavior all pass.
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_CU_RUNTIME_POLICY_API:END -->

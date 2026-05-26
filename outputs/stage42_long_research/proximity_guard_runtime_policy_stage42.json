@@ -1,0 +1,332 @@
+{
+  "source": "fresh_runtime_api_from_frozen_policy_artifact",
+  "stage": "Stage42-CU runtime proximity-guard policy API",
+  "generated_at_utc": "2026-05-26T19:46:57.462514+00:00",
+  "git_commit": "728ad2b",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CU 把 Stage42-CS frozen policy artifact 变成可调用 runtime policy API。",
+    "runtime policy 只使用 domain、horizon 和模型预测 rollout geometry 的 group min-distance。",
+    "runtime policy 不使用 future endpoint、future waypoints、central velocity 或 test endpoint goals。",
+    "runtime smoke audit 是 deployment/reproducibility evidence，不是新增模型训练分数。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "stage42_ct": {
+      "path": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
+      "stage42_ct_gate": {
+        "gates": {
+          "policy_artifact_exists": true,
+          "policy_hash_recomputed_matches_cs": true,
+          "policy_json_matches_cs_embedded_policy": true,
+          "cq_gate_passed": true,
+          "cr_gate_passed": true,
+          "cs_gate_passed": true,
+          "selected_policy_replays_cq": true,
+          "base_choices_replay_cq": true,
+          "all_metric_replays_cq": true,
+          "t50_metric_replays_cq": true,
+          "t100_metric_replays_cq": true,
+          "hard_metric_replays_cq": true,
+          "easy_metric_replays_cq": true,
+          "near_collision_replays_cq": true,
+          "jagged_rate_replays_cq": true,
+          "cr_recommendation_replayed": true,
+          "all_positive": true,
+          "t50_positive": true,
+          "t100_positive": true,
+          "hard_positive": true,
+          "easy_under_2pct": true,
+          "near_collision_not_worse_than_endpoint": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoints_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 30,
+        "total": 30,
+        "verdict": "stage42_ct_frozen_policy_replay_pass"
+      }
+    }
+  },
+  "policy_artifact": {
+    "path": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json",
+    "exists": true,
+    "size_bytes": 3414
+  },
+  "policy_artifact_payload": {
+    "policy_name": "stage42_cs_frozen_proximity_guard_composer_policy",
+    "source": "fresh_policy_freeze_from_stage42_cq_cr",
+    "base_stage": "Stage42-CQ proximity-aware composer guard",
+    "ablation_stage": "Stage42-CR proximity guard ablation / Pareto audit",
+    "frozen_at_utc": "2026-05-26T19:37:47.622614+00:00",
+    "frozen_git_commit": "2d338ab",
+    "selection_scope": "validation_only",
+    "test_usage": "test_once_after_policy_freeze",
+    "deployment_role": "safety_sensitive_deployable_composer_variant",
+    "accuracy_priority_diagnostic_policy": "no_proximity_guard",
+    "selected_policy": {
+      "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+      "min_sep": 0.2,
+      "margin": 0.005,
+      "base_choices": {
+        "ETH_UCY|10": false,
+        "ETH_UCY|25": false,
+        "ETH_UCY|50": true,
+        "ETH_UCY|100": true,
+        "TrajNet|10": false,
+        "TrajNet|25": false,
+        "TrajNet|50": false,
+        "TrajNet|100": false
+      }
+    },
+    "guard_rule": {
+      "type": "proximity_aware_domain_horizon_full_waypoint_composer",
+      "min_sep": 0.2,
+      "margin": 0.005,
+      "guard_input": "predicted endpoint/full-waypoint rollout geometry only",
+      "uses_future_labels": false
+    },
+    "base_choices": {
+      "ETH_UCY|10": false,
+      "ETH_UCY|25": false,
+      "ETH_UCY|50": true,
+      "ETH_UCY|100": true,
+      "TrajNet|10": false,
+      "TrajNet|25": false,
+      "TrajNet|50": false,
+      "TrajNet|100": false
+    },
+    "validation_selection_rule": {
+      "threshold_source": "validation_only",
+      "no_test_threshold_tuning": true,
+      "easy_degradation_limit": 0.02,
+      "safety_objective": "near_collision@0.05 no worse than endpoint-linear and strongest floor"
+    },
+    "test_summary_vs_endpoint_linear_ade": {
+      "rows": 55528,
+      "all_improvement": 0.017743597342181783,
+      "t50_improvement": 0.010673426149055754,
+      "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+      "hard_failure_improvement": 0.01929354722729537,
+      "easy_degradation": 0.0024927762207753723,
+      "switch_rate": 0.1696441434951736
+    },
+    "joint_safety_vs_endpoint_linear": {
+      "near_collision_002_delta": -3.6685131516209224e-05,
+      "near_collision_005_delta": -0.0006053046700172371,
+      "p05_min_group_distance_delta": -0.0001248494575282963,
+      "jagged_rate_delta": 0.0
+    },
+    "bootstrap_vs_endpoint_ade": {
+      "all": {
+        "low": 0.015001017840065956,
+        "mid": 0.017741793807755535,
+        "high": 0.020508576445801136,
+        "n": 55528,
+        "bootstrap_n": 2000
+      },
+      "t50": {
+        "low": 0.005939549853030457,
+        "mid": 0.010609408711776791,
+        "high": 0.015196755938181785,
+        "n": 13689,
+        "bootstrap_n": 2000
+      },
+      "t100": {
+        "low": 0.029116189622682552,
+        "mid": 0.03480810511035953,
+        "high": 0.04075484859533311,
+        "n": 9905,
+        "bootstrap_n": 2000
+      },
+      "hard_failure": {
+        "low": 0.016264474104925146,
+        "mid": 0.01928441782591267,
+        "high": 0.022182264577856596,
+        "n": 41741,
+        "bootstrap_n": 2000
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoints_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "guard_uses_future_labels": false
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+  "runtime_policy": {
+    "min_sep": 0.2,
+    "margin": 0.005,
+    "base_choices": {
+      "ETH_UCY|10": false,
+      "ETH_UCY|25": false,
+      "ETH_UCY|50": true,
+      "ETH_UCY|100": true,
+      "TrajNet|10": false,
+      "TrajNet|25": false,
+      "TrajNet|50": false,
+      "TrajNet|100": false
+    }
+  },
+  "runtime_inputs": [
+    "domain",
+    "horizon",
+    "endpoint_min_group_distance_from_predicted_endpoint_rollout",
+    "full_min_group_distance_from_predicted_full_waypoint_rollout"
+  ],
+  "smoke_cases": {
+    "full_slice_guard_clear": {
+      "name": "full_slice_guard_clear",
+      "domain": "ETH_UCY",
+      "horizon": 50,
+      "endpoint_min_group_distance": 0.4,
+      "full_min_group_distance": 0.3,
+      "expected_use_full_waypoint": true,
+      "expected_guarded_off": false,
+      "decision": {
+        "domain": "ETH_UCY",
+        "horizon": 50,
+        "key": "ETH_UCY|50",
+        "base_wants_full_waypoint": true,
+        "use_full_waypoint": true,
+        "guarded_off": false,
+        "reason": "base_choice_full_waypoint_guard_clear",
+        "endpoint_min_group_distance": 0.4,
+        "full_min_group_distance": 0.3,
+        "min_sep": 0.2,
+        "margin": 0.005
+      },
+      "passed": true
+    },
+    "full_slice_guarded_off": {
+      "name": "full_slice_guarded_off",
+      "domain": "ETH_UCY",
+      "horizon": 50,
+      "endpoint_min_group_distance": 0.4,
+      "full_min_group_distance": 0.1,
+      "expected_use_full_waypoint": false,
+      "expected_guarded_off": true,
+      "decision": {
+        "domain": "ETH_UCY",
+        "horizon": 50,
+        "key": "ETH_UCY|50",
+        "base_wants_full_waypoint": true,
+        "use_full_waypoint": false,
+        "guarded_off": true,
+        "reason": "proximity_guard_fallback_to_endpoint_linear",
+        "endpoint_min_group_distance": 0.4,
+        "full_min_group_distance": 0.1,
+        "min_sep": 0.2,
+        "margin": 0.005
+      },
+      "passed": true
+    },
+    "endpoint_slice_never_switches": {
+      "name": "endpoint_slice_never_switches",
+      "domain": "TrajNet",
+      "horizon": 50,
+      "endpoint_min_group_distance": 0.4,
+      "full_min_group_distance": 0.3,
+      "expected_use_full_waypoint": false,
+      "expected_guarded_off": false,
+      "decision": {
+        "domain": "TrajNet",
+        "horizon": 50,
+        "key": "TrajNet|50",
+        "base_wants_full_waypoint": false,
+        "use_full_waypoint": false,
+        "guarded_off": false,
+        "reason": "base_choice_endpoint_linear",
+        "endpoint_min_group_distance": 0.4,
+        "full_min_group_distance": 0.3,
+        "min_sep": 0.2,
+        "margin": 0.005
+      },
+      "passed": true
+    },
+    "full_slice_nonfinite_geometry_replays_no_guard": {
+      "name": "full_slice_nonfinite_geometry_replays_no_guard",
+      "domain": "ETH_UCY",
+      "horizon": 100,
+      "endpoint_min_group_distance": null,
+      "full_min_group_distance": 0.1,
+      "expected_use_full_waypoint": true,
+      "expected_guarded_off": false,
+      "decision": {
+        "domain": "ETH_UCY",
+        "horizon": 100,
+        "key": "ETH_UCY|100",
+        "base_wants_full_waypoint": true,
+        "use_full_waypoint": true,
+        "guarded_off": false,
+        "reason": "base_choice_full_waypoint_geometry_nonfinite_replay_no_guard",
+        "endpoint_min_group_distance": null,
+        "full_min_group_distance": 0.1,
+        "min_sep": 0.2,
+        "margin": 0.005
+      },
+      "passed": true
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "guard_uses_future_labels": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_cu_gate": {
+    "gates": {
+      "policy_artifact_exists": true,
+      "policy_hash_available": true,
+      "ct_replay_gate_passed": true,
+      "runtime_min_sep_matches_artifact": true,
+      "runtime_margin_matches_artifact": true,
+      "runtime_base_choices_match_artifact": true,
+      "full_slice_guard_clear_passed": true,
+      "full_slice_guarded_off_passed": true,
+      "endpoint_slice_never_switches_passed": true,
+      "nonfinite_geometry_replay_rule_passed": true,
+      "uses_domain_horizon_and_predicted_geometry_only": true,
+      "no_future_endpoint_input": true,
+      "no_future_waypoints_input": true,
+      "no_central_velocity": true,
+      "no_test_endpoint_goals": true,
+      "no_test_threshold_tuning": true,
+      "metric_seconds_overclaim_blocked": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 19,
+    "total": 19,
+    "verdict": "stage42_cu_runtime_policy_api_pass"
+  }
+}
