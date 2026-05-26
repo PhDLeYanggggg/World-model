@@ -683,3 +683,14 @@ true 3D / foundation / global metric / seconds-level / ungated neural world dyna
 - No safe positive context variant was found under the existing residual/gated protocols; next work must change target/model/data, not just rerun thresholds.
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, foundation, metric/seconds-level, Stage5C, or SMC.
 <!-- STAGE42_DB_CONTEXT_RESCUE_DECISION:END -->
+
+<!-- STAGE42_DC_CONTEXT_SWITCHABILITY_GATE:START -->
+## Stage42-DC Context Switchability / Gain-Harm Gate
+
+- source: `fresh_run`
+- role: change context supervision from waypoint residual to gain/harm switchability after Stage42-DB no-go.
+- gate: `15 / 15`; verdict `stage42_dc_context_switchability_gate_pass`.
+- selected candidate: `baseline_plus_knn_graph`; decision `context_switchability_not_supported`.
+- delta vs baseline-family all/t50/hard/easy: `0.0004` / `-0.0001` / `0.0004` / `-0.0024`.
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, foundation, metric/seconds-level, Stage5C, or SMC.
+<!-- STAGE42_DC_CONTEXT_SWITCHABILITY_GATE:END -->
