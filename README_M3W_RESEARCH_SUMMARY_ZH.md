@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh，以及 Stage42-AK post-repair locked policy/source-split audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit，以及 Stage42-AL source-level coverage / claim-gap audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -26,7 +26,11 @@ python3 -m pytest tests/test_stage42_eth_t50_fde_source_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_claim_refresh.py = 2 passed
 python3 -m pytest tests/test_stage42_trajnet_t100_safety_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_paper_package_refresh.py = 2 passed
-python3 -m pytest tests = 360 passed
+python3 run_stage42_post_repair_locked_policy_audit.py = pass
+python3 -m pytest tests/test_stage42_post_repair_locked_policy_audit.py = 3 passed
+python3 run_stage42_source_level_coverage_audit.py = pass
+python3 -m pytest tests/test_stage42_source_level_coverage_audit.py = 3 passed
+python3 -m pytest tests = 363 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -42,11 +46,11 @@ python3 -m pytest tests = 360 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ/AK 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair、post-repair paper package refresh 和 locked policy/source-split audit evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD/AE/AF/AG/AH/AI/AJ/AK/AL 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh、calibration evidence refresh、unified row-cache stress、weak-slice/source/easy-safety repair、post-repair paper package refresh、locked policy/source-split audit 和 source-level coverage gap evidence。
 
 ## 给你的直接结论快照
 
-截至 Stage42-AJ，我在 M3W 这个长期目标里做的核心事情可以概括为五条：
+截至 Stage42-AL，我在 M3W 这个长期目标里做的核心事情可以概括为六条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -62,6 +66,9 @@ python3 -m pytest tests = 360 passed
 
 5. **当前最强可部署仍是 protected policy，而不是自由神经 rollout。**  
    当前 best deployable 是 `M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor`。它可以说是 protected 2.5D multi-agent world-state candidate；不能说 true 3D、metric、seconds-level、foundation、Stage5C-ready 或 SMC-ready。
+
+6. **Stage42-AL 把最新 claim 边界又收紧了一次。**  
+   Stage42-AK 已冻结 post-repair policy hash 和 source-level split hash；Stage42-AL 进一步检查这些 locked-policy metrics 能不能写成完整 proposed source-level split evaluation。结论是：**不能**。UCY test rows 精确匹配，TrajNet 只有约 `53.0%` proposed source-level test coverage，ETH_UCY stress rows 是 proposed source-level test 之外的 extra available rows。因此当前正确说法是“available row-level post-repair stress with explicit coverage gap”，不能写成 full source-level split evaluation。
 
 最重要的失败原因也很清楚：
 
@@ -134,6 +141,8 @@ python3 -m pytest tests = 360 passed
 | Stage42-AH post-repair claim refresh | global all/t50/hard/FDE@50 CI low 均为正；horizon=25 为 floor/non-harm；ETH_UCY t50/FDE limitation 修复；TrajNet|100 safety-limited；metric/seconds claim rejected。 | 把 AF/AG 后能写的 claim 和仍需写的 limitation 绑定到 paper-ready matrix，避免旧限制残留或过度 claim。 |
 | Stage42-AI TrajNet t100 safety repair | TrajNet|100 ADE CI low +4.871%，easy CI high 从 8.498% 降到 0；global t100 raw-frame diagnostic CI low +6.835%，global easy degradation CI high 0.117%。 | 只用 validation easy-degradation 选 easy-safe positive source；修复 TrajNet|100 safety limit，但 t100 仍只是 raw-frame diagnostic。 |
 | Stage42-AJ post-repair paper package refresh | 9/9 paper files refreshed；纳入 AD-AI calibration、weak-slice、source repair、claim matrix、t100 safety evidence；gate 10/10。 | 把最新证据传播到 paper_outline、method、experiment tables、ablation tables、failure taxonomy、model/data cards、reproducibility 和 A-journal gap。 |
+| Stage42-AK locked policy/source-split audit | policy hash `06772a241...`，source split hash `e22c1fc...`，17/17 gates。 | 冻结 AF/AG/AI post-repair rules；确认 no future input / no central velocity / no test-threshold tuning / no Stage5C / no SMC。 |
+| Stage42-AL source-level coverage audit | 12/12 gates；UCY exact coverage，TrajNet coverage ratio `0.530`，ETH_UCY 是 extra available rows，不属于 proposed source-level test。 | 防止把 available row-level stress 包装成 full proposed source-level evaluation；明确下一步必须补 TrajNet full coverage 或重建 split。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界
@@ -186,8 +195,9 @@ SMC-ready model
 ### 最短下一步
 
 1. 基于 Stage42-AD 的 user_action_required，人工/官方验证 ETH/UCY、UCY、OpenTraj 的 homography direction、FPS、annotation stride 和 scale；验证前继续保持 raw-frame / dataset-local 口径。
-2. 把 Stage42-X unified row-level cache 继续做更严格 held-out / bootstrap / per-domain stress，尤其确认 UCY source 与 ETH_UCY/TrajNet source 的 row-level 合并边界。
-3. 针对 mixed 组件做更干净的 ablation：goal/scene、neighbor/interaction、auxiliary heads、JEPA，不把 partial evidence 写成主贡献。
+2. 按 Stage42-AL 的 gap 修复 source-level coverage：不要把 ETH_UCY stress rows 算作 proposed source-level test；重建 proposed source-level TrajNet full-waypoint prediction cache，当前 stress rows `20087` vs proposed test rows `37918`。
+3. 在补齐 proposed source-level pool 后重新计算 horizon metrics，才能写 full source-level split performance。
+4. 针对 mixed 组件做更干净的 ablation：goal/scene、neighbor/interaction、auxiliary heads、JEPA，不把 partial evidence 写成主贡献。
 
 ## 本次用户版总览
 
@@ -200,7 +210,7 @@ SMC-ready model
 5. 后面我开始训练 neural dynamics。无保护 Transformer/JEPA/Hybrid 多次失败；有效结果都来自 Stage37/teacher floor 保护下的 bounded / safe-switch neural package。
 6. Stage41/42 把结果从 endpoint / selector 推到 all-agent、full-waypoint、row-level cache 和 retrained ablation evidence；这比早期 demo 更像研究证据链。
 7. 失败路线也很明确：JEPA non-collapse 但 downstream 无稳定 lift；hard-class selector 会严重伤 easy；ordinary residual/correction 不安全；ungated neural dynamics 不可部署；endpoint success 不能自动转成 full-waypoint success。
-8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF/AG/AH/AI/AJ 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新、weak-slice safety repair、ETH_UCY t50/FDE source repair、post-repair claim refresh、TrajNet t100 safety repair 和 paper package refresh。
+8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF/AG/AH/AI/AJ/AK/AL 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新、weak-slice safety repair、ETH_UCY t50/FDE source repair、post-repair claim refresh、TrajNet t100 safety repair、paper package refresh、locked policy/source-split audit 和 source-level coverage gap audit。
 9. 仍不能说 true 3D、metric、seconds-level、foundation，也不能执行 Stage5C 或 SMC。
 
 没有纳入为“已完成结果”的内容：
