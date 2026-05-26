@@ -720,3 +720,15 @@ true 3D / foundation / global metric / seconds-level / ungated neural world dyna
 - Conclusion: keep Stage37/teacher or endpoint-linear safety floor; use guarded full-waypoint composer only as protected horizon/shape component until all/hard/proximity/source-support gaps are closed.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DE_FULL_WAYPOINT_DEPLOYMENT_GAP_AUDIT:END -->
+
+<!-- STAGE42_DF_FULL_WAYPOINT_ALL_HARD_PROXIMITY_REPAIR:START -->
+## Stage42-DF All-Hard / Proximity Full-Waypoint Repair
+
+- source: `fresh_stage42_df_all_hard_proximity_full_waypoint_repair`
+- role: validation-only repair search for the Stage42-DE all/hard/proximity full-waypoint deployment blocker.
+- gate: `12 / 14`; verdict `stage42_df_all_hard_proximity_repair_partial`.
+- test vs endpoint-linear: all `-0.67%`, t50 `-1.40%`, t100 raw `-0.66%`, hard `-0.72%`, easy `0.19%`.
+- delta vs Stage42-CQ: all `-2.44%`, t50 `-2.46%`, t100 raw `-4.14%`, hard `-2.65%`, near@0.05 `-0.05%`.
+- decision: `all_hard_proximity_repair_no_primary_promotion_keep_cq_guarded_composer`.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DF_FULL_WAYPOINT_ALL_HARD_PROXIMITY_REPAIR:END -->
