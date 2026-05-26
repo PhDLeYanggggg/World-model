@@ -1354,3 +1354,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - Metadata-only, paper-size-only, and append-only ledger changes are recorded as caveats, not new model evidence.
 - This classifier does not execute Stage5C, does not enable SMC, and does not create metric/seconds/3D/foundation claims.
 <!-- STAGE42_CY_WORKTREE_CAVEAT_CLASSIFIER:END -->
+
+<!-- STAGE42_CZ_PAPER_FREEZE_MANIFEST:START -->
+## Stage42-CZ Paper Freeze Candidate Manifest
+
+- source: `fresh_freeze_candidate_manifest_from_cx_cy`
+- role: hash manifest for the current Stage42 paper evidence candidate.
+- gate: `14 / 14`; verdict `stage42_cz_paper_freeze_candidate_manifest_pass`.
+- freeze status: `candidate_with_metadata_caveats`.
+- final immutable release: `False`.
+- files hashed: `74`.
+- metadata caveats: `9`; substantive caveats: `0`.
+- This is a paper evidence freeze candidate under protected dataset-local/raw-frame 2.5D boundaries.
+- It is not true 3D, not foundation, not metric/seconds-level, not Stage5C, and not SMC.
+<!-- STAGE42_CZ_PAPER_FREEZE_MANIFEST:END -->
