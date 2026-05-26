@@ -115,3 +115,14 @@ The boundary remains: Stage42-L is still weaker than the Stage42-J policy-level 
 Stage42-M attempts to distill the Stage42-J validation-selected domain/horizon static expert policy into a fresh checkpoint. It trains three seeds with domain and horizon embeddings and a static-gate teacher alpha derived from Stage42-J's selected experts. The teacher uses no test endpoints; future waypoints remain loss/eval labels only.
 
 The result is a useful negative/partial result, not a deployment improvement. Stage42-M is positive on ADE all (`0.0161`), hard/failure (`0.0177`), and FDE t50 (`0.0729`) with easy degradation `0.0`, but ADE t50 is still negative (`-0.0015`) and it fails `10 / 12` gates. It improves FDE t50 over Stage42-L but loses on ADE all/t50/hard. The likely failure mode is that coarse domain/horizon alpha distillation increases static usage without teaching row-level gain/harm. Stage42-L remains the best fresh checkpoint in this branch; Stage42-J remains the strongest static-gated full-waypoint evidence overall.
+
+## Stage42-N Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/row_gain_static_gate_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_n_gate.md`
+- verdict: `stage42_n_row_gain_static_gate_partial`
+
+Stage42-N directly follows the Stage42-M failure by replacing slice-level alpha distillation with row-level train/val static gain, floor gain, harm, and switchability supervision. It also fixes the runtime rough edge from the first attempt by caching train/val row-teacher targets and writing heartbeats. The run is intentionally marked as a single-teacher-seed pilot, not a full teacher ensemble.
+
+The result is mixed and must not be packaged as a t+50 success. It improves ADE all (`0.0250`) and ADE hard/failure (`0.0269`) over Stage42-L/M while preserving easy cases (`0.0` degradation), but ADE t50 becomes negative (`-0.0278`). Row-level teacher diagnostics show large static/switchable mass on t50 (`train t50 switchable 0.462`, `val t50 switchable 0.572`), yet the learned deployment policy still switches the wrong t50 rows. The new failure taxonomy is therefore sharper: alpha-style static-gate supervision is not enough, even when row-level; the next repair needs an explicit row-level gain/harm/switchability selector head or t50-specific teacher ensemble, not just a static gate target.

@@ -1,6 +1,6 @@
 # M3W 目标内研究总结：尝试路线、失败原因、成功结果与当前结论
 
-来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J/K/L/M 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint、static-gated repair、fresh static-gated checkpoint、horizon-aware repair 和 policy-distilled static gate 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
+来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J/K/L/M/N 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint、static-gated repair、fresh static-gated checkpoint、horizon-aware repair、policy-distilled static gate 和 row-level gain/harm static gate 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
 本文件是给项目长期目标使用的中文总 README：它不是论文结论包装，而是把真实做过的路线、失败原因、成功证据和仍然不能声称的内容集中写清楚。
 
 ## 0.0 给用户的目标级摘要
@@ -1044,6 +1044,56 @@ Stage42-J ADE all/t50/hard = 0.0362 / 0.0369 / 0.0397
 
 Stage42-M 是有价值的负结果：它证明“把 J 的 policy gate 直接蒸馏成 alpha”不能替代 Stage42-L，也不能追上 Stage42-J。当前 fresh checkpoint 最强仍是 Stage42-L；整体 static-gated full-waypoint 最强仍是 Stage42-J。
 
+### 2.22 Stage42-N：row-level gain/harm static-gate distillation
+
+尝试内容：
+
+- 修复 Stage42-M 的 teacher 过粗问题。
+- 用 Stage42-I no-static/full-static checkpoint 在 train/val 上构建 row-level teacher。
+- teacher 包含每行 static gain、floor gain、harm、switchability 和 alpha target。
+- test 不构建 teacher，不参与阈值或目标构建。
+- 第一次运行暴露出 teacher 构建无 heartbeat/缓存的问题；随后修成 cached teacher，并明确标为 single-teacher-seed pilot。
+
+结果：
+
+```text
+source = fresh_run
+gate = 11 / 13
+verdict = stage42_n_row_gain_static_gate_partial
+row_gain_ade_all = 0.0250
+row_gain_ade_t50 = -0.0278
+row_gain_ade_t100_raw_frame_diagnostic = 0.0208
+row_gain_ade_hard_failure = 0.0269
+row_gain_ade_easy_degradation = 0.0
+row_gain_fde_t50 = 0.0555
+row_gain_t50_gate_mean = 0.2576
+```
+
+teacher diagnostics：
+
+```text
+train static_positive_rate = 0.4475
+train t50_switchable_rate = 0.4620
+val static_positive_rate = 0.5164
+val t50_switchable_rate = 0.5720
+```
+
+成功点：
+
+- ADE all 和 hard/failure 超过 Stage42-L/M。
+- easy degradation 仍为 0。
+- runtime 修成可缓存、可恢复，不再无声卡在 teacher 构建。
+
+失败原因：
+
+- t+50 ADE 变成负值，比 Stage42-L 和 Stage42-M 都差。
+- row-level alpha target 仍然只是在训练 static gate，不是独立的 gain/harm/switchability selector。
+- t+50 switchable rows 很多，但模型缺少 inference-time 的 row-level harm guard，所以仍会切到对 ADE 有害的 t+50 样本。
+
+结论：
+
+Stage42-N 进一步缩小了问题范围：不是“row-level teacher 完全没用”，因为 all/hard 变好；而是“alpha-style static gate teacher 不足以解决 t+50”。下一步应该训练显式的 row-level gain/harm/switchability selector head，或用 t+50-specific teacher ensemble，而不是继续只调 static alpha。
+
 ## 3. 失败路线总表
 
 | 路线 | 状态 | 失败原因 |
@@ -1073,6 +1123,7 @@ Stage42-M 是有价值的负结果：它证明“把 J 的 policy gate 直接蒸
 | Stage42-K fresh static-gated checkpoint | 部分成功 | fresh checkpoint 过 gate，all/hard/FDE 为正并保护 easy；但 t50 ADE 仍为负，且弱于 Stage42-J policy gate。 |
 | Stage42-L horizon-aware static gate | 成功但非 best | 修复 Stage42-K t50 ADE 负值，但幅度小且仍弱于 Stage42-J policy gate。 |
 | Stage42-M policy-distilled static gate | 部分失败 | FDE t50 提升，但 ADE t50 仍负；coarse domain/horizon alpha teacher 不足以学习 row-level gain/harm。 |
+| Stage42-N row-level gain/harm static gate | 部分失败 | all/hard 提升且 easy 安全，但 t50 ADE 显著为负；row-level alpha teacher 仍缺少独立 gain/harm switch head。 |
 
 ## 4. 成功路线总表
 
@@ -1100,6 +1151,7 @@ Stage42-M 是有价值的负结果：它证明“把 J 的 policy gate 直接蒸
 | Stage42-K fresh static-gated checkpoint | 成功但非 best | 证明 static gate/dropout 可以训练进 checkpoint，并修复 Stage42-I full-static 的部分失败；但 t50 仍需 horizon-aware 修复。 |
 | Stage42-L horizon-aware/t50-weighted repair | 成功但非 best | 证明 t50-specific horizon gate 可以把 fresh checkpoint 的 t50 ADE 从负修到正，并保持 easy 安全。 |
 | Stage42-M policy distillation | 负结果有用 | 证明 Stage42-J 不能只用 slice-level alpha 蒸馏，需要 row-level gain/harm teacher。 |
+| Stage42-N row-level teacher pilot | 负结果有用 | 证明 row-level teacher 能改善 all/hard，但 alpha-style gate 仍不能保护 t50；下一步应转向显式 gain/harm selector。 |
 
 ## 5. 当前模型到底是什么
 
@@ -1167,7 +1219,7 @@ SMC-ready model
 8. **teacher-floor dependence**：Stage42-E 证明当前 teacher floor 必要；下一步要研究 proximity-safe internal gate，减少 floor 依赖。
 9. **更多独立外部数据**：需要再接入合法 top-down pedestrian/drone 数据源，而不是只依赖当前 converted external 状态。
 10. **sequence-to-full-waypoint bridge**：Stage42-H 证明 sequence history 对 family selection 有用，但还要把 causal sequence encoder 直接接到 full-waypoint all-agent dynamics。
-11. **static-gated full-waypoint repair**：Stage42-J 已完成 policy-level repair，Stage42-K 已完成 fresh checkpoint training，Stage42-L 已修复 fresh checkpoint 的 t50 ADE 负号；Stage42-M 证明 coarse policy alpha distillation 不够，下一步需要 row-level gain/harm teacher。
+11. **static-gated full-waypoint repair**：Stage42-J 已完成 policy-level repair，Stage42-K 已完成 fresh checkpoint training，Stage42-L 已修复 fresh checkpoint 的 t50 ADE 负号；Stage42-M 证明 coarse policy alpha distillation 不够，Stage42-N 证明 row-level alpha teacher 仍不够，下一步需要显式 row-level gain/harm/switchability selector head。
 
 ## 8. 直接回答
 
@@ -1187,6 +1239,7 @@ Stage42-J 是否修复 static/context：是，policy-level 修复成功；但还
 Stage42-K 是否完成 fresh static-gated checkpoint：是，fresh_run gates 9/9；但它不是新 best deployable，t50 ADE 仍为负。
 Stage42-L 是否修复 K 的 t50：是，ADE t50 从 -0.0122 修到 +0.0020；但仍未超过 Stage42-J policy gate。
 Stage42-M 是否完成 policy distillation：部分失败。FDE t50 提升到 0.0729，但 ADE t50 仍为负，未超过 Stage42-L/J。
+Stage42-N 是否完成 row-level teacher 修复：部分失败。all/hard 超过 L/M 且 easy 安全，但 t50 ADE 为 -0.0278，说明 alpha-style row teacher 不足。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -1221,10 +1274,11 @@ SMC 是否可启用：否。
 - Stage42-K fresh static-gated checkpoint training：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/fresh_static_gated_checkpoint_stage42.md`
 - Stage42-L horizon-aware t50 static-gate repair：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/horizon_static_gate_repair_stage42.md`
 - Stage42-M policy-distilled static gate：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/policy_distilled_static_gate_stage42.md`
+- Stage42-N row-level gain/harm static gate：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/row_gain_static_gate_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **row-level gain/harm teacher distillation**：Stage42-M 证明 slice-level alpha teacher 不够；下一步要蒸馏 row-level expected ADE gain、harm risk 和 switchability，而不是只学 domain/horizon alpha。
+1. **显式 row-level gain/harm selector head**：Stage42-N 证明 row-level alpha teacher 仍不够；下一步要让模型直接预测 expected ADE gain、harm risk 和 switchability，尤其是 t+50 切换，而不是只监督 static gate。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。

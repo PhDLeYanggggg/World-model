@@ -1,0 +1,691 @@
+from __future__ import annotations
+
+import json
+import os
+import platform
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Mapping
+
+import numpy as np
+
+from src import stage41_full_trajectory_world_state as ft
+from src import stage42_horizon_static_gate_repair as s42l
+from src import stage42_policy_distilled_static_gate as s42m
+from src import stage42_sequence_full_waypoint as s42i
+from src.stage14_pipeline import ensure_dir, read_json, write_json, write_md
+from src.stage30_m3w_verified import _combined_hash
+
+
+OUT_DIR = Path("outputs/stage42_long_research")
+CHECKPOINT_DIR = OUT_DIR / "checkpoints"
+TEACHER_CACHE_DIR = Path("data/stage42_row_gain_teacher_cache")
+REPORT_JSON = OUT_DIR / "row_gain_static_gate_stage42.json"
+REPORT_MD = OUT_DIR / "row_gain_static_gate_stage42.md"
+GATE_MD = OUT_DIR / "stage42_stage_n_gate.md"
+LEDGER_JSONL = OUT_DIR / "run_ledger.jsonl"
+
+SEEDS = [109, 113, 127]
+TEACHER_SEEDS = [53]
+ALPHAS = np.asarray([0.0, 0.25, 0.50, 0.75, 1.0], dtype=np.float32)
+EPOCHS = 2
+BATCH = 2048
+THREADS = 4
+HORIZONS = [10, 25, 50, 100]
+STATIC_MARGIN = 1e-4
+FLOOR_GAIN_MARGIN = 1e-4
+
+CURRENT_FACTS = [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "Stage42-N 使用 dataset-local raw-frame full-waypoint labels，不能写成 metric 或 seconds-level。",
+    "future waypoints / future endpoints 只作为 loss/eval label 和 row-level supervised teacher，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals。",
+    "row-level teacher 只在 train/val 上构建，test 不用于训练、阈值或 teacher fitting。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。",
+]
+
+
+def _git_commit() -> str:
+    try:
+        return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], text=True).strip()
+    except Exception:
+        return "unknown"
+
+
+def _jsonable(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {str(k): _jsonable(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_jsonable(v) for v in value]
+    if isinstance(value, np.ndarray):
+        return [_jsonable(v) for v in value.tolist()]
+    if isinstance(value, (np.integer, np.int32, np.int64)):
+        return int(value)
+    if isinstance(value, (np.floating, np.float32, np.float64)):
+        return float(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if isinstance(value, Path):
+        return str(value)
+    return value
+
+
+def _ensure_arm64() -> None:
+    if platform.machine() == "arm64":
+        return
+    venv = Path(".venv-pytorch/bin/python")
+    if venv.exists() and os.environ.get("STAGE42N_REEXEC") != "1":
+        env = os.environ.copy()
+        env["STAGE42N_REEXEC"] = "1"
+        os.execve("/usr/bin/arch", ["/usr/bin/arch", "-arm64", str(venv), *sys.argv], env)
+    raise RuntimeError("Stage42-N refuses x86_64/Rosetta Python for torch training.")
+
+
+def _torch():
+    _ensure_arm64()
+    import torch
+
+    torch.set_num_threads(THREADS)
+    return torch
+
+
+def _checkpoint_info(variant: str, seed: int) -> dict[str, Any]:
+    ckpt = OUT_DIR / "checkpoints" / f"stage42i_{variant}_seed{seed}.pt"
+    heartbeat = OUT_DIR / f"stage42i_{variant}_seed{seed}_heartbeat.json"
+    if not ckpt.exists() or not heartbeat.exists():
+        raise FileNotFoundError(f"Missing Stage42-I checkpoint or heartbeat for {variant} seed {seed}")
+    return {"source": "cached_verified", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": read_json(heartbeat, {}).get("best", {})}
+
+
+def _mix_pred(no_static: Mapping[str, np.ndarray], full: Mapping[str, np.ndarray], alpha: float) -> dict[str, np.ndarray]:
+    return {key: ((1.0 - alpha) * no_static[key] + alpha * full[key]).astype(np.float32) for key in no_static}
+
+
+def _alpha_teacher_from_ade(
+    floor_ade: np.ndarray,
+    alpha_ade: np.ndarray,
+    easy: np.ndarray,
+    static_margin: float = STATIC_MARGIN,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Return per-row static alpha, static gain, floor gain, and harm.
+
+    `alpha_ade` is shaped [num_alpha, rows] and must include alpha=0
+    as the no-static reference. Future labels are used only to create
+    supervised train/val targets, never as inference inputs.
+    """
+
+    no_static = alpha_ade[0]
+    best_idx = np.argmin(alpha_ade, axis=0)
+    best_ade = alpha_ade[best_idx, np.arange(alpha_ade.shape[1])]
+    best_alpha = ALPHAS[best_idx]
+    static_gain = no_static - best_ade
+    floor_gain = floor_ade - best_ade
+    harm = np.maximum(best_ade - floor_ade, 0.0)
+    teacher = np.where((static_gain > static_margin) & (~easy.astype(bool)), best_alpha, 0.0)
+    return teacher.astype(np.float32), static_gain.astype(np.float32), floor_gain.astype(np.float32), harm.astype(np.float32)
+
+
+def _row_teacher(split: Mapping[str, np.ndarray], split_name: str) -> dict[str, Any]:
+    ensure_dir(TEACHER_CACHE_DIR)
+    cache = TEACHER_CACHE_DIR / f"stage42n_row_teacher_{split_name}_seeds_{'-'.join(map(str, TEACHER_SEEDS))}.npz"
+    if cache.exists():
+        loaded = np.load(cache, allow_pickle=False)
+        teacher_alpha = loaded["teacher_alpha"].astype(np.float32)
+        static_gain = loaded["static_gain"].astype(np.float32)
+        floor_gain = loaded["floor_gain"].astype(np.float32)
+        harm = loaded["harm"].astype(np.float32)
+        switchable = loaded["switchable"].astype(bool)
+        weight = loaded["weight"].astype(np.float32)
+        horizon = split["horizon"].astype(int)
+        h50 = horizon == 50
+        return {
+            "source": "cached_verified_teacher_cache",
+            "split": split_name,
+            "teacher_alpha": teacher_alpha,
+            "static_gain": static_gain,
+            "floor_gain": floor_gain,
+            "harm": harm,
+            "switchable": switchable,
+            "weight": weight,
+            "diagnostics": {
+                "rows": int(len(teacher_alpha)),
+                "static_positive_rate": float(np.mean(teacher_alpha > 0.0)) if len(teacher_alpha) else 0.0,
+                "mean_teacher_alpha": float(np.mean(teacher_alpha)) if len(teacher_alpha) else 0.0,
+                "mean_static_gain": float(np.mean(static_gain)) if len(static_gain) else 0.0,
+                "mean_floor_gain": float(np.mean(floor_gain)) if len(floor_gain) else 0.0,
+                "harm_positive_rate": float(np.mean(harm > 0.0)) if len(harm) else 0.0,
+                "switchable_rate": float(np.mean(switchable)) if len(switchable) else 0.0,
+                "t50_static_positive_rate": float(np.mean(teacher_alpha[h50] > 0.0)) if np.any(h50) else 0.0,
+                "t50_switchable_rate": float(np.mean(switchable[h50])) if np.any(h50) else 0.0,
+            },
+        }
+    print(f"[Stage42-N] building row teacher for {split_name} rows={len(split['horizon'])} teacher_seeds={TEACHER_SEEDS}", flush=True)
+    labels = s42i._labels(split)
+    floor_xy = ft._floor_waypoints(labels)
+    floor_ade, _floor_fde = ft._trajectory_errors(floor_xy, labels)
+    alpha_ades_by_seed: list[np.ndarray] = []
+    for seed in TEACHER_SEEDS:
+        print(f"[Stage42-N] {split_name}: teacher seed {seed} no-static/full prediction", flush=True)
+        no_static_info = _checkpoint_info("sequence_waypoint_no_static_context", seed)
+        full_info = _checkpoint_info("sequence_waypoint_full", seed)
+        pred_no = s42i._predict(no_static_info, split, "sequence_waypoint_no_static_context")
+        pred_full = s42i._predict(full_info, split, "sequence_waypoint_full")
+        per_alpha: list[np.ndarray] = []
+        for alpha in ALPHAS:
+            pred = _mix_pred(pred_no, pred_full, float(alpha))
+            xy = ft._pred_waypoints(pred, labels)
+            ade, _fde = ft._trajectory_errors(xy, labels)
+            per_alpha.append(ade.astype(np.float32))
+        alpha_ades_by_seed.append(np.stack(per_alpha, axis=0))
+    alpha_ade = np.mean(np.stack(alpha_ades_by_seed, axis=0), axis=0)
+    teacher_alpha, static_gain, floor_gain, harm = _alpha_teacher_from_ade(
+        floor_ade.astype(np.float32),
+        alpha_ade.astype(np.float32),
+        labels["easy"].astype(bool),
+    )
+    switchable = (floor_gain > FLOOR_GAIN_MARGIN) & (~labels["easy"].astype(bool))
+    h50 = labels["horizon"].astype(int) == 50
+    weight = (
+        1.0
+        + 2.0 * switchable.astype(np.float32)
+        + 1.6 * (labels["hard"].astype(bool) | labels["failure"].astype(bool)).astype(np.float32)
+        + 3.5 * h50.astype(np.float32)
+        + 0.8 * (labels["horizon"].astype(int) == 100).astype(np.float32)
+    ).astype(np.float32)
+    np.savez(
+        cache,
+        teacher_alpha=teacher_alpha,
+        static_gain=static_gain,
+        floor_gain=floor_gain,
+        harm=harm,
+        switchable=switchable.astype(np.uint8),
+        weight=weight,
+    )
+    print(f"[Stage42-N] cached row teacher for {split_name}: {cache}", flush=True)
+    return {
+        "source": "fresh_run_train_val_teacher" if split_name in {"train", "val"} else "not_used_for_training",
+        "split": split_name,
+        "teacher_alpha": teacher_alpha,
+        "static_gain": static_gain,
+        "floor_gain": floor_gain,
+        "harm": harm,
+        "switchable": switchable.astype(bool),
+        "weight": weight,
+        "diagnostics": {
+            "rows": int(len(teacher_alpha)),
+            "static_positive_rate": float(np.mean(teacher_alpha > 0.0)) if len(teacher_alpha) else 0.0,
+            "mean_teacher_alpha": float(np.mean(teacher_alpha)) if len(teacher_alpha) else 0.0,
+            "mean_static_gain": float(np.mean(static_gain)) if len(static_gain) else 0.0,
+            "mean_floor_gain": float(np.mean(floor_gain)) if len(floor_gain) else 0.0,
+            "harm_positive_rate": float(np.mean(harm > 0.0)) if len(harm) else 0.0,
+            "switchable_rate": float(np.mean(switchable)) if len(switchable) else 0.0,
+            "t50_static_positive_rate": float(np.mean(teacher_alpha[h50] > 0.0)) if np.any(h50) else 0.0,
+            "t50_switchable_rate": float(np.mean(switchable[h50])) if np.any(h50) else 0.0,
+        },
+    }
+
+
+def _train_seed(
+    seed: int,
+    train: Mapping[str, np.ndarray],
+    val: Mapping[str, np.ndarray],
+    vocab: Mapping[str, int],
+    train_teacher: Mapping[str, np.ndarray],
+    val_teacher: Mapping[str, np.ndarray],
+) -> dict[str, Any]:
+    torch = _torch()
+    import torch.nn.functional as F
+
+    ensure_dir(CHECKPOINT_DIR)
+    torch.manual_seed(seed)
+    rng = np.random.default_rng(seed)
+    model = s42m._make_model(train["static"].shape[1], len(vocab), train["agent_tokens"].shape[-1])
+    opt = torch.optim.AdamW(model.parameters(), lr=6e-4, weight_decay=1e-4)
+    ckpt = CHECKPOINT_DIR / f"stage42n_row_gain_static_gate_seed{seed}.pt"
+    heartbeat = OUT_DIR / f"stage42n_row_gain_static_gate_seed{seed}_heartbeat.json"
+    if ckpt.exists() and heartbeat.exists():
+        payload = read_json(heartbeat, {})
+        if int(payload.get("epoch", 0)) >= EPOCHS:
+            return {"source": "cached_verified", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": payload.get("best", {})}
+
+    tensors = {
+        "tokens": torch.tensor(train["agent_tokens"]),
+        "mask": torch.tensor(train["agent_mask"]),
+        "static": torch.tensor(train["static"]),
+        "target": torch.tensor(train["waypoint_delta"]),
+        "valid": torch.tensor(train["waypoint_valid"].astype(np.float32)),
+        "interaction": torch.tensor(train["interaction"]),
+        "occupancy": torch.tensor(train["occupancy"]),
+        "physical": torch.tensor(train["physical"]),
+        "hard": torch.tensor((train["hard"] | train["failure"]).astype(np.float32)),
+        "horizon": torch.tensor(train["horizon"]),
+        "horizon_idx": torch.tensor(s42l._horizon_index_np(train["horizon"]), dtype=torch.long),
+        "domain_idx": torch.tensor(s42m._domain_index(train, vocab), dtype=torch.long),
+        "teacher_alpha": torch.tensor(train_teacher["teacher_alpha"]),
+        "teacher_weight": torch.tensor(train_teacher["weight"]),
+        "teacher_harm": torch.tensor((train_teacher["harm"] > 0.0).astype(np.float32)),
+        "teacher_switch": torch.tensor(train_teacher["switchable"].astype(np.float32)),
+    }
+    val_tensors = {
+        "tokens": torch.tensor(val["agent_tokens"]),
+        "mask": torch.tensor(val["agent_mask"]),
+        "static": torch.tensor(val["static"]),
+        "target": torch.tensor(val["waypoint_delta"]),
+        "valid": torch.tensor(val["waypoint_valid"].astype(np.float32)),
+        "horizon_idx": torch.tensor(s42l._horizon_index_np(val["horizon"]), dtype=torch.long),
+        "domain_idx": torch.tensor(s42m._domain_index(val, vocab), dtype=torch.long),
+        "teacher_alpha": torch.tensor(val_teacher["teacher_alpha"]),
+    }
+    waypoint_weight = torch.tensor([1.0, 1.15, 1.75, 2.85], dtype=torch.float32)
+    best = {"val_loss": float("inf"), "epoch": 0}
+    for epoch in range(1, EPOCHS + 1):
+        order = rng.permutation(len(train["agent_tokens"]))
+        losses: list[float] = []
+        gate_vals: list[float] = []
+        teacher_losses: list[float] = []
+        switch_losses: list[float] = []
+        model.train()
+        for start in range(0, len(order), BATCH):
+            ids = torch.tensor(order[start : start + BATCH], dtype=torch.long)
+            horizon = tensors["horizon"][ids]
+            teacher = tensors["teacher_alpha"][ids]
+            row_w = tensors["teacher_weight"][ids]
+            static = tensors["static"][ids].clone()
+            drop_prob = torch.clamp(0.58 - 0.46 * teacher, 0.10, 0.58)
+            drop = torch.rand(static.shape[0]) < drop_prob
+            static[drop] = 0.0
+            out = model(tensors["tokens"][ids], tensors["mask"][ids], static, tensors["horizon_idx"][ids], tensors["domain_idx"][ids])
+            valid = tensors["valid"][ids]
+            is_t50 = (horizon == 50).float()
+            per_wp = F.smooth_l1_loss(out["waypoint_delta"], tensors["target"][ids], reduction="none").mean(dim=2)
+            wp_w = waypoint_weight.to(per_wp.device)[None, :] * (1.0 + 0.55 * is_t50[:, None])
+            traj = ((per_wp * valid * wp_w).sum(dim=1) / (valid * wp_w).sum(dim=1).clamp_min(1.0) * row_w).mean()
+            err = torch.linalg.norm(out["waypoint_delta"] - tensors["target"][ids], dim=2)
+            risk_target = torch.log1p((err * valid).sum(dim=1) / valid.sum(dim=1).clamp_min(1.0)).detach()
+            risk = (F.smooth_l1_loss(out["traj_risk"], risk_target, reduction="none") * row_w).mean()
+            aux = (
+                F.binary_cross_entropy_with_logits(out["interaction_logit"], tensors["interaction"][ids])
+                + F.binary_cross_entropy_with_logits(out["occupancy_logit"], tensors["occupancy"][ids])
+                + F.binary_cross_entropy_with_logits(out["physical_logit"], tensors["physical"][ids])
+            )
+            teacher_loss = (F.smooth_l1_loss(out["static_gate"], teacher, reduction="none") * row_w).mean()
+            # Switchable rows should have lower predicted risk; harmful rows
+            # should have higher risk. This is still supervised on train labels
+            # only and is never an inference-time future input.
+            switch_loss = F.binary_cross_entropy_with_logits(-out["traj_risk"], tensors["teacher_switch"][ids])
+            harm_loss = F.binary_cross_entropy_with_logits(out["traj_risk"], tensors["teacher_harm"][ids])
+            closed_gate_penalty = (0.004 * (teacher < 0.05).float() * out["static_gate"]).mean()
+            loss = traj + 0.30 * risk + 0.11 * aux + 0.34 * teacher_loss + 0.06 * switch_loss + 0.04 * harm_loss + closed_gate_penalty
+            opt.zero_grad()
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            opt.step()
+            losses.append(float(loss.detach().cpu()))
+            gate_vals.append(float(out["static_gate"].mean().detach().cpu()))
+            teacher_losses.append(float(teacher_loss.detach().cpu()))
+            switch_losses.append(float(switch_loss.detach().cpu()))
+        model.eval()
+        with torch.no_grad():
+            out = model(val_tensors["tokens"], val_tensors["mask"], val_tensors["static"], val_tensors["horizon_idx"], val_tensors["domain_idx"])
+            per_wp = F.smooth_l1_loss(out["waypoint_delta"], val_tensors["target"], reduction="none").mean(dim=2)
+            val_waypoint_loss = ((per_wp * val_tensors["valid"]).sum(dim=1) / val_tensors["valid"].sum(dim=1).clamp_min(1.0)).mean()
+            val_teacher_loss = F.smooth_l1_loss(out["static_gate"], val_tensors["teacher_alpha"])
+            val_loss = float((val_waypoint_loss + 0.20 * val_teacher_loss).cpu())
+            val_gate = float(out["static_gate"].mean().cpu())
+        cand = {
+            "val_loss": val_loss,
+            "epoch": epoch,
+            "train_loss": float(np.mean(losses)),
+            "train_gate_mean": float(np.mean(gate_vals)),
+            "train_teacher_loss": float(np.mean(teacher_losses)),
+            "train_switch_loss": float(np.mean(switch_losses)),
+            "val_gate_mean": val_gate,
+        }
+        if val_loss < best["val_loss"]:
+            best = cand
+            torch.save(
+                {
+                    "model": model.state_dict(),
+                    "seed": seed,
+                    "static_dim": train["static"].shape[1],
+                    "token_dim": train["agent_tokens"].shape[-1],
+                    "domain_vocab": dict(vocab),
+                    "best": best,
+                },
+                ckpt,
+            )
+        heartbeat.write_text(json.dumps({"seed": seed, "epoch": epoch, "best": best, "checkpoint": str(ckpt)}, ensure_ascii=False), encoding="utf-8")
+    return {"source": "fresh_run", "checkpoint": str(ckpt), "heartbeat": str(heartbeat), "best": best}
+
+
+def _eval_seed(
+    seed: int,
+    train: Mapping[str, np.ndarray],
+    val: Mapping[str, np.ndarray],
+    test: Mapping[str, np.ndarray],
+    vocab: Mapping[str, int],
+    train_teacher: Mapping[str, np.ndarray],
+    val_teacher: Mapping[str, np.ndarray],
+) -> dict[str, Any]:
+    info = _train_seed(seed, train, val, vocab, train_teacher, val_teacher)
+    pred_val = s42m._predict(info, val)
+    pred_test = s42m._predict(info, test)
+    labels_val = s42i._labels(val)
+    labels_test = s42i._labels(test)
+    policy, val_metrics = s42l._fit_t50_weighted_policy(pred_val, labels_val)
+    test_metrics = s42i._row_metrics("row_gain_static_gate", pred_test, labels_test, policy)
+    ungated = s42i._row_metrics(
+        "row_gain_static_gate_ungated",
+        pred_test,
+        labels_test,
+        {"slices": {f"{d}|{h}": {"risk_max": 1e9, "physical_min": 0.0, "max_switch": 1.0, "hard_only": False, "easy_block": False} for d in sorted(set(labels_test["domain"].tolist())) for h in HORIZONS}},
+    )
+    t50 = test["horizon"] == 50
+    return {
+        "source": info["source"],
+        "seed": seed,
+        "train_info": info,
+        "val_policy": policy,
+        "val_metrics": val_metrics,
+        "test_metrics": test_metrics,
+        "ungated_test_metrics": ungated,
+        "static_gate_mean_val": float(np.mean(pred_val["static_gate"])),
+        "static_gate_mean_test": float(np.mean(pred_test["static_gate"])),
+        "static_gate_t50_mean_test": float(np.mean(pred_test["static_gate"][t50])) if np.any(t50) else 0.0,
+    }
+
+
+def _summary(rows: list[Mapping[str, Any]]) -> dict[str, Any]:
+    return {
+        "source": "fresh_run",
+        "seeds": [int(row["seed"]) for row in rows],
+        "ade_all": s42l._stat([row["test_metrics"]["ade"].get("all_improvement", 0.0) for row in rows]),
+        "ade_t50": s42l._stat([row["test_metrics"]["ade"].get("t50_improvement", 0.0) for row in rows]),
+        "ade_t100_raw_frame_diagnostic": s42l._stat([row["test_metrics"]["ade"].get("t100_improvement", 0.0) for row in rows]),
+        "ade_hard_failure": s42l._stat([row["test_metrics"]["ade"].get("hard_failure_improvement", 0.0) for row in rows]),
+        "ade_easy_degradation": s42l._stat([row["test_metrics"]["ade"].get("easy_degradation", 1.0) for row in rows]),
+        "fde_all": s42l._stat([row["test_metrics"]["fde"].get("all_improvement", 0.0) for row in rows]),
+        "fde_t50": s42l._stat([row["test_metrics"]["fde"].get("t50_improvement", 0.0) for row in rows]),
+        "switch_rate": s42l._stat([row["test_metrics"].get("switch_rate", 0.0) for row in rows]),
+        "ungated_easy_degradation": s42l._stat([row["ungated_test_metrics"]["ade"].get("easy_degradation", 1.0) for row in rows]),
+        "static_gate_mean_test": s42l._stat([row["static_gate_mean_test"] for row in rows]),
+        "static_gate_t50_mean_test": s42l._stat([row["static_gate_t50_mean_test"] for row in rows]),
+    }
+
+
+def _comparison() -> dict[str, Any]:
+    return {
+        "source": "cached_verified",
+        "stage42_l_horizon_static_gate": read_json(OUT_DIR / "horizon_static_gate_repair_stage42.json", {}).get("summary", {}),
+        "stage42_m_policy_distilled": read_json(OUT_DIR / "policy_distilled_static_gate_stage42.json", {}).get("summary", {}),
+        "stage42_j_static_gated": (read_json(OUT_DIR / "static_gated_full_waypoint_stage42.json", {}).get("summary") or {}).get("static_gated", {}),
+    }
+
+
+def _gate(result: Mapping[str, Any]) -> dict[str, Any]:
+    s = result.get("summary", {})
+    m = (result.get("comparison", {}).get("stage42_m_policy_distilled") or {})
+    l = (result.get("comparison", {}).get("stage42_l_horizon_static_gate") or {})
+    gates = {
+        "row_teacher_built": result.get("teacher_diagnostics", {}).get("train", {}).get("static_positive_rate", 0.0) > 0.0,
+        "row_teacher_train_val_only": result.get("source_labels", {}).get("row_teacher_test") == "not_built",
+        "three_seeds": len(s.get("seeds", [])) >= 3,
+        "all_positive": s.get("ade_all", {}).get("mean", 0.0) > 0.0,
+        "t50_positive": s.get("ade_t50", {}).get("mean", -1.0) > 0.0,
+        "hard_positive": s.get("ade_hard_failure", {}).get("mean", 0.0) > 0.0,
+        "easy_preserved": s.get("ade_easy_degradation", {}).get("mean", 1.0) <= 0.02,
+        "improves_stage42m_t50": s.get("ade_t50", {}).get("mean", -1.0) > m.get("ade_t50", {}).get("mean", -1.0),
+        "improves_stage42l_all_or_t50": s.get("ade_all", {}).get("mean", -1.0) > l.get("ade_all", {}).get("mean", -1.0)
+        or s.get("ade_t50", {}).get("mean", -1.0) > l.get("ade_t50", {}).get("mean", -1.0),
+        "no_leakage_pass": result.get("no_leakage", {}).get("future_endpoint_input") is False
+        and result.get("no_leakage", {}).get("future_waypoints_input") is False
+        and result.get("no_leakage", {}).get("central_velocity") is False
+        and result.get("no_leakage", {}).get("test_endpoint_goals") is False,
+        "no_metric_seconds_overclaim": result.get("claim_boundary", {}).get("metric_or_seconds_claim") is False,
+        "stage5c_false": result.get("claim_boundary", {}).get("stage5c_executed") is False,
+        "smc_false": result.get("claim_boundary", {}).get("smc_enabled") is False,
+    }
+    return {
+        "source": "fresh_run",
+        "gates": gates,
+        "passed": int(sum(bool(v) for v in gates.values())),
+        "total": len(gates),
+        "verdict": "stage42_n_row_gain_static_gate_pass" if all(gates.values()) else "stage42_n_row_gain_static_gate_partial",
+    }
+
+
+def run_stage42_row_gain_static_gate() -> dict[str, Any]:
+    ensure_dir(OUT_DIR)
+    ensure_dir(CHECKPOINT_DIR)
+    ft.build_full_trajectory_labels()
+    data = {split: s42i._split_arrays(split) for split in ["train", "val", "test"]}
+    vocab = s42m._domain_vocab(data["train"], data["val"], data["test"])
+    train_teacher = _row_teacher(data["train"], "train")
+    val_teacher = _row_teacher(data["val"], "val")
+    rows = [_eval_seed(seed, data["train"], data["val"], data["test"], vocab, train_teacher, val_teacher) for seed in SEEDS]
+    result = {
+        "source": "fresh_run",
+        "stage": "Stage42-N row-level gain/harm static-gate distillation",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "git_commit": _git_commit(),
+        "python": platform.python_version(),
+        "machine": platform.machine(),
+        "torch_threads": THREADS,
+        "epochs": EPOCHS,
+        "batch": BATCH,
+        "teacher_seeds": TEACHER_SEEDS,
+        "teacher_cache_dir": str(TEACHER_CACHE_DIR),
+        "current_facts": CURRENT_FACTS,
+        "input_hash": _combined_hash(
+            [
+                ft.DATA_DIR / "all_agent_train.npz",
+                ft.DATA_DIR / "all_agent_val.npz",
+                ft.DATA_DIR / "all_agent_test.npz",
+                ft.DATA_DIR / "full_trajectory_train.npz",
+                ft.DATA_DIR / "full_trajectory_val.npz",
+                ft.DATA_DIR / "full_trajectory_test.npz",
+                OUT_DIR / "static_gated_full_waypoint_stage42.json",
+                OUT_DIR / "horizon_static_gate_repair_stage42.json",
+                OUT_DIR / "policy_distilled_static_gate_stage42.json",
+            ]
+        ),
+        "dataset_rows": {split: int(len(data[split]["horizon"])) for split in ["train", "val", "test"]},
+        "domain_vocab": vocab,
+        "teacher_diagnostics": {
+            "train": train_teacher["diagnostics"],
+            "val": val_teacher["diagnostics"],
+        },
+        "rows": rows,
+        "summary": _summary(rows),
+        "comparison": _comparison(),
+        "source_labels": {
+            "all_agent_dataset": "cached_verified",
+            "full_waypoint_labels": "cached_verified_or_rebuilt_by_stage41_helper",
+            "row_teacher_train": "fresh_run_or_cached_verified_from_train_labels_cached_stage42i_checkpoints_single_teacher_seed",
+            "row_teacher_val": "fresh_run_or_cached_verified_from_val_labels_cached_stage42i_checkpoints_single_teacher_seed",
+            "row_teacher_test": "not_built",
+            "validation_policy_selection": "fresh_run",
+            "test_evaluation": "fresh_run_once_per_seed",
+        },
+        "no_leakage": {
+            "future_endpoint_input": False,
+            "future_waypoints_input": False,
+            "future_waypoints_used_as_label_only": True,
+            "central_velocity": False,
+            "test_endpoint_goals": False,
+            "test_threshold_tuning": False,
+            "thresholds_selected_on_val": True,
+            "row_teacher_uses_test": False,
+        },
+        "claim_boundary": {
+            "true_3d": False,
+            "foundation_world_model": False,
+            "metric_or_seconds_claim": False,
+            "raw_frame_dataset_local_only": True,
+            "stage5c_executed": False,
+            "smc_enabled": False,
+        },
+    }
+    result["stage42_n_gate"] = _gate(result)
+    write_json(REPORT_JSON, _jsonable(result))
+    _write_report(result)
+    _write_gate(result["stage42_n_gate"])
+    _append_readme_and_state(result)
+    _append_ledger(result)
+    return result
+
+
+def _write_report(result: Mapping[str, Any]) -> None:
+    s = result["summary"]
+    cmp = result["comparison"]
+    l = cmp.get("stage42_l_horizon_static_gate", {})
+    m = cmp.get("stage42_m_policy_distilled", {})
+    j = cmp.get("stage42_j_static_gated", {})
+    lines = [
+        "# Stage42-N Row-Level Gain/Harm Static-Gate Distillation",
+        "",
+        f"- source: `{result['source']}`",
+        f"- generated_at_utc: `{result['generated_at_utc']}`",
+        f"- git_commit: `{result['git_commit']}`",
+        f"- input_hash: `{result['input_hash']}`",
+        f"- gate: `{result['stage42_n_gate']['passed']} / {result['stage42_n_gate']['total']}`",
+        f"- verdict: `{result['stage42_n_gate']['verdict']}`",
+        f"- teacher_seeds: `{result['teacher_seeds']}`",
+        f"- teacher_cache_dir: `{result['teacher_cache_dir']}`",
+        "",
+        "## Current Facts",
+        *[f"- {fact}" for fact in result["current_facts"]],
+        "",
+        "## Row-Level Teacher Diagnostics",
+        "",
+        "| split | rows | static positive | mean alpha | mean static gain | mean floor gain | harm positive | switchable | t50 static positive | t50 switchable |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for split, diag in result["teacher_diagnostics"].items():
+        lines.append(
+            f"| `{split}` | {diag['rows']} | {diag['static_positive_rate']:.6f} | {diag['mean_teacher_alpha']:.6f} | {diag['mean_static_gain']:.6f} | {diag['mean_floor_gain']:.6f} | {diag['harm_positive_rate']:.6f} | {diag['switchable_rate']:.6f} | {diag['t50_static_positive_rate']:.6f} | {diag['t50_switchable_rate']:.6f} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Fresh Metrics",
+            "",
+            "| candidate | source | ADE all | ADE t50 | ADE t100 diag | ADE hard | ADE easy degr | FDE all | FDE t50 | switch | gate | gate t50 |",
+            "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+            f"| `row_gain_static_gate` | `fresh_run` | {s['ade_all']['mean']:.6f} | {s['ade_t50']['mean']:.6f} | {s['ade_t100_raw_frame_diagnostic']['mean']:.6f} | {s['ade_hard_failure']['mean']:.6f} | {s['ade_easy_degradation']['mean']:.6f} | {s['fde_all']['mean']:.6f} | {s['fde_t50']['mean']:.6f} | {s['switch_rate']['mean']:.6f} | {s['static_gate_mean_test']['mean']:.6f} | {s['static_gate_t50_mean_test']['mean']:.6f} |",
+            "",
+            "## Comparison",
+            "",
+            "| candidate | source | ADE all | ADE t50 | ADE hard | ADE easy degr | FDE t50 |",
+            "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
+            f"| `Stage42-L horizon static gate` | `cached_verified` | {l.get('ade_all', {}).get('mean', 0.0):.6f} | {l.get('ade_t50', {}).get('mean', 0.0):.6f} | {l.get('ade_hard_failure', {}).get('mean', 0.0):.6f} | {l.get('ade_easy_degradation', {}).get('mean', 0.0):.6f} | {l.get('fde_t50', {}).get('mean', 0.0):.6f} |",
+            f"| `Stage42-M coarse alpha distillation` | `cached_verified` | {m.get('ade_all', {}).get('mean', 0.0):.6f} | {m.get('ade_t50', {}).get('mean', 0.0):.6f} | {m.get('ade_hard_failure', {}).get('mean', 0.0):.6f} | {m.get('ade_easy_degradation', {}).get('mean', 0.0):.6f} | {m.get('fde_t50', {}).get('mean', 0.0):.6f} |",
+            f"| `Stage42-J policy static-gated` | `cached_verified` | {j.get('ade_all', {}).get('mean', 0.0):.6f} | {j.get('ade_t50', {}).get('mean', 0.0):.6f} | {j.get('ade_hard_failure', {}).get('mean', 0.0):.6f} | {j.get('ade_easy_degradation', {}).get('mean', 0.0):.6f} | {j.get('fde_t50', {}).get('mean', 0.0):.6f} |",
+            "",
+            "## Interpretation",
+            "",
+            "- Stage42-N is a direct follow-up to Stage42-M's failure: it replaces coarse domain/horizon alpha with row-level static gain, floor gain, harm, and switchability supervision.",
+            "- This run is a single-teacher-seed row-level pilot for speed and recoverability; it is not a full teacher ensemble.",
+            "- Row-level teacher labels are built only for train/val from cached-verified Stage42-I checkpoints plus train/val full-waypoint labels; test labels are not used for teacher fitting or threshold tuning.",
+            "- Future waypoints remain supervised labels only and never inference inputs.",
+            "- If Stage42-N still fails, the evidence points away from alpha-style distillation and toward row-level expert prediction or a separate gain/harm selector head.",
+            "- All claims remain dataset-local raw-frame 2.5D; no metric/seconds-level, Stage5C, or SMC claim is made.",
+        ]
+    )
+    write_md(REPORT_MD, lines)
+
+
+def _write_gate(gate: Mapping[str, Any]) -> None:
+    lines = [
+        "# Stage42-N Gate",
+        "",
+        f"- source: `{gate['source']}`",
+        f"- passed: `{gate['passed']} / {gate['total']}`",
+        f"- verdict: `{gate['verdict']}`",
+        "",
+        "| gate | pass |",
+        "| --- | --- |",
+    ]
+    for name, ok in gate["gates"].items():
+        lines.append(f"| `{name}` | `{bool(ok)}` |")
+    write_md(GATE_MD, lines)
+
+
+def _append_if_missing(path: Path, marker: str, block: str) -> None:
+    text = path.read_text(encoding="utf-8") if path.exists() else ""
+    if marker not in text:
+        path.write_text(text.rstrip() + "\n\n" + block.strip() + "\n", encoding="utf-8")
+
+
+def _append_readme_and_state(result: Mapping[str, Any]) -> None:
+    gate = result["stage42_n_gate"]
+    s = result["summary"]
+    block = f"""
+## Stage42-N Row-Level Gain/Harm Static-Gate Distillation
+
+```text
+source = fresh_run
+verdict = {gate['verdict']}
+gates = {gate['passed']} / {gate['total']}
+row_gain_ade_all = {s['ade_all']['mean']}
+row_gain_ade_t50 = {s['ade_t50']['mean']}
+row_gain_ade_hard_failure = {s['ade_hard_failure']['mean']}
+row_gain_ade_easy_degradation = {s['ade_easy_degradation']['mean']}
+row_gain_fde_t50 = {s['fde_t50']['mean']}
+row_gain_t50_gate_mean = {s['static_gate_t50_mean_test']['mean']}
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-N replaces Stage42-M's coarse domain/horizon alpha teacher with row-level train/val static gain, floor gain, harm, and switchability supervision. This run is a single-teacher-seed row-level pilot with cached train/val teacher targets for recoverability. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+"""
+    _append_if_missing(Path("README_RESULTS.md"), "## Stage42-N Row-Level Gain/Harm Static-Gate Distillation", block)
+    _append_if_missing(Path("outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md"), "## Stage42-N Row-Level Gain/Harm Static-Gate Distillation", block)
+    state = read_json(Path("research_state.json"), {})
+    state["current_stage"] = "stage42_n_row_gain_static_gate"
+    state["current_verdict"] = gate["verdict"]
+    state.setdefault("stage42", {})["stage_n_row_gain_static_gate"] = {
+        "source": "fresh_run",
+        "report": str(REPORT_MD),
+        "gate_report": str(GATE_MD),
+        "gates_passed": gate["passed"],
+        "gates_total": gate["total"],
+        "verdict": gate["verdict"],
+        "row_gain_ade_all": s["ade_all"]["mean"],
+        "row_gain_ade_t50": s["ade_t50"]["mean"],
+        "row_gain_ade_hard_failure": s["ade_hard_failure"]["mean"],
+        "row_gain_ade_easy_degradation": s["ade_easy_degradation"]["mean"],
+        "row_gain_fde_t50": s["fde_t50"]["mean"],
+        "row_gain_t50_gate_mean": s["static_gate_t50_mean_test"]["mean"],
+        "claim_boundary": result["claim_boundary"],
+    }
+    reports = state.setdefault("generated_reports", [])
+    for path in [REPORT_MD, REPORT_JSON, GATE_MD]:
+        sp = str(path)
+        if sp not in reports:
+            reports.append(sp)
+    write_json(Path("research_state.json"), _jsonable(state))
+
+
+def _append_ledger(result: Mapping[str, Any]) -> None:
+    entry = {
+        "command": " ".join([Path(sys.argv[0]).name, *sys.argv[1:]]),
+        "step": "stage42_n_row_gain_static_gate",
+        "source": result["source"],
+        "status": "success",
+        "input_hash": result.get("input_hash"),
+        "output_hash": _combined_hash([REPORT_JSON, REPORT_MD, GATE_MD]),
+        "git_commit": _git_commit(),
+        "generated_at_utc": result.get("generated_at_utc"),
+    }
+    with LEDGER_JSONL.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(_jsonable(entry), ensure_ascii=False) + "\n")
+
+
+if __name__ == "__main__":
+    run_stage42_row_gain_static_gate()

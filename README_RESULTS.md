@@ -2120,3 +2120,23 @@ smc_enabled = false
 Stage42-M distills Stage42-J's validation-selected domain/horizon static expert choices into a fresh checkpoint. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 Stage42-M interpretation: this is a partial/negative repair. It improves FDE t50 (`0.0729`) over Stage42-L (`0.0532`) and preserves easy cases, but ADE t50 is still negative (`-0.0015`) and it does not beat Stage42-L or Stage42-J on ADE all/t50/hard. The likely failure mode is that Stage42-J's teacher is a coarse domain/horizon alpha, not a row-level gain/harm teacher, so it increases static usage without learning when static/context is locally harmful for ADE.
+
+## Stage42-N Row-Level Gain/Harm Static-Gate Distillation
+
+```text
+source = fresh_run
+verdict = stage42_n_row_gain_static_gate_partial
+gates = 11 / 13
+row_gain_ade_all = 0.025023795590058923
+row_gain_ade_t50 = -0.02781637207460134
+row_gain_ade_hard_failure = 0.026922830068713138
+row_gain_ade_easy_degradation = 0.0
+row_gain_fde_t50 = 0.05545595532346274
+row_gain_t50_gate_mean = 0.2575782686471939
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-N replaces Stage42-M's coarse domain/horizon alpha teacher with row-level train/val static gain, floor gain, harm, and switchability supervision. This run is a single-teacher-seed row-level pilot with cached train/val teacher targets for recoverability. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+Stage42-N interpretation: this is a partial/negative t+50 result. It improves ADE all (`0.0250`) and hard/failure (`0.0269`) over Stage42-L/M while preserving easy cases, but ADE t50 becomes negative (`-0.0278`). Row-level alpha supervision is therefore not sufficient; the next repair needs an explicit row-level gain/harm/switchability selector head or t+50-specific teacher ensemble rather than only a static-gate alpha target.
