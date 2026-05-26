@@ -63,6 +63,24 @@ root_cause = endpoint residual success does not transfer to full-waypoint shape 
 next = train/cache a UCY-aware full-waypoint candidate or validation-selected waypoint-shape bridge
 ```
 
+Latest Stage42-V strict pure-UCY full-waypoint candidate:
+
+```text
+source = fresh_run
+verdict = stage42_v_ucy_full_waypoint_candidate_pass
+gates = 11 / 11
+protocol = train UCY students01/students03, val UCY zara01, test UCY zara02/zara03
+best_trial = ucy_full_waypoint_t50_hard
+ADE_all = 0.220755
+ADE_t50 = 0.290332
+ADE_t50_CI_low = 0.231725
+ADE_t100_raw_frame_diagnostic = 0.147461
+hard_failure = 0.229484
+easy_degradation = 0.000000
+FDE_t50 = 0.334459
+decision = deployable as a UCY full-waypoint candidate source, not yet merged into Stage42-R/S combo
+```
+
 ## M3W-Neural v1 Goal Summary
 
 Latest detailed goal-level summary:

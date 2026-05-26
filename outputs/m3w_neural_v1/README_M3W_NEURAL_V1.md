@@ -168,6 +168,33 @@ UCY_zara03_test easy degradation = 0.566646
 
 This is a blocker diagnosis, not a success. It proves that endpoint-FDE success cannot be counted as full-waypoint world-state success. The next aligned action is to train/cache a UCY-aware full-waypoint candidate source or learn a validation-selected waypoint-shape bridge. Stage5C and SMC remain disabled, and no metric/seconds-level claim is made.
 
+## Stage42-V Strict Pure-UCY Full-Waypoint Candidate
+
+```text
+source = fresh_run
+report = outputs/stage42_long_research/ucy_full_waypoint_candidate_stage42.md
+gate = outputs/stage42_long_research/stage42_stage_v_gate.md
+verdict = stage42_v_ucy_full_waypoint_candidate_pass
+gates = 11 / 11
+```
+
+Stage42-V directly repairs the Stage42-U blocker by training a UCY-aware full-waypoint model instead of linearly interpolating an endpoint residual. The protocol is strict and source-heldout: train on UCY `students01`/`students03`, validate on UCY `zara01`, and test once on UCY `zara02`/`zara03`.
+
+Best 3-seed result:
+
+```text
+best_trial = ucy_full_waypoint_t50_hard
+ADE all = 0.220755
+ADE t50 = 0.290332
+ADE t50 CI low = 0.231725
+ADE t100 raw-frame diagnostic = 0.147461
+hard/failure = 0.229484
+easy degradation = 0.000000
+FDE t50 = 0.334459
+```
+
+This is a meaningful UCY full-waypoint candidate source. It still remains dataset-local/raw-frame 2.5D evidence, not metric/seconds-level, not true 3D, and not Stage5C/SMC. The next step is to integrate this UCY source into the Stage42-R/S row-combo policy rather than treating it as a standalone final model.
+
 ## Stage42-G Retrained Ablation Phase1
 
 ```text
