@@ -2,6 +2,10 @@
 
 ## 中文详细目标总结
 
+Current one-file research route/failure/success summary requested by the user:
+
+`/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
