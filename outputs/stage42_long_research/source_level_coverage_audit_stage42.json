@@ -1,0 +1,363 @@
+{
+  "source": "fresh_synthesis_from_stage42_ak_ai_x_source_split",
+  "stage": "Stage42-AL source-level coverage and claim-gap audit",
+  "generated_at_utc": "2026-05-26T07:10:19.569187+00:00",
+  "git_commit": "c7f5dc6",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-AL 是 source-level split coverage / claim-gap audit，不重新训练模型。",
+    "它检查 Stage42-AK locked policy 的 post-repair metrics 是否可被写成完整 source-level split evaluation。",
+    "如果 coverage 不足，必须写 blocker，而不是把 available row-level stress 包装成 full source-level validation。",
+    "t+50 / t+100 仍是 raw-frame horizons；t+100 仍只能 diagnostic。",
+    "External coordinates 仍是 dataset-local / unverified weak-metric diagnostic。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "0cea3d80aa7839394f5eb210585940b335e0e834535837e867afc904c3640c02",
+  "stage42ak_gate": {
+    "source": "fresh_post_repair_locked_policy_audit",
+    "passed": 17,
+    "total": 17,
+    "verdict": "stage42_ak_post_repair_locked_policy_audit_pass",
+    "gates": {
+      "stage42af_gate_pass": true,
+      "stage42ag_gate_pass": true,
+      "stage42ai_gate_pass": true,
+      "stage42aj_paper_package_current": true,
+      "policy_artifact_written": true,
+      "policy_hash_recorded": true,
+      "input_hash_recorded": true,
+      "source_level_split_no_overlap": true,
+      "frozen_eval_excludes_old_train_rows": true,
+      "validation_only_rules": true,
+      "no_leakage_pass": true,
+      "global_post_repair_positive": true,
+      "easy_preserved": true,
+      "t100_diagnostic_only": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    }
+  },
+  "source_split": {
+    "source": "fresh_run",
+    "protocol": "stage42_source_level_split_rebuild",
+    "generated_at_utc": "2026-05-25T19:41:00.046585+00:00",
+    "input": "data/stage41_world_model/combined_external.npz",
+    "proposed_source_level_split": {
+      "train": {
+        "rows": 266745,
+        "domains": {
+          "ETH_UCY": 134695,
+          "TrajNet": 75287,
+          "UCY": 56763
+        },
+        "scenes": 9,
+        "sources": 13,
+        "t10": 83107,
+        "t25": 73802,
+        "t50": 64551,
+        "t100": 45285,
+        "hard": 198685,
+        "failure": 96981,
+        "easy": 80855
+      },
+      "val": {
+        "rows": 23788,
+        "domains": {
+          "ETH_UCY": 16103,
+          "TrajNet": 7685
+        },
+        "scenes": 2,
+        "sources": 2,
+        "t10": 7045,
+        "t25": 6459,
+        "t50": 5873,
+        "t100": 4411,
+        "hard": 21872,
+        "failure": 10450,
+        "easy": 4454
+      },
+      "test": {
+        "rows": 47458,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "scenes": 2,
+        "sources": 3,
+        "t10": 15402,
+        "t25": 13470,
+        "t50": 11538,
+        "t100": 7048,
+        "hard": 35076,
+        "failure": 19056,
+        "easy": 11192
+      }
+    },
+    "proposed_split_group_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "proposed_split_no_source_overlap": true,
+    "frozen_model_eval_pool": {
+      "definition": "old_split == test, then regrouped by source_file into fresh source folds; this avoids evaluating frozen Stage41 models on old train rows.",
+      "stats": {
+        "rows": 66303,
+        "domains": {
+          "UCY": 66303
+        },
+        "scenes": 3,
+        "sources": 3,
+        "t10": 21267,
+        "t25": 18765,
+        "t50": 16263,
+        "t100": 10008,
+        "hard": 45917,
+        "failure": 22891,
+        "easy": 20798
+      },
+      "source_folds": {
+        "fold_0": {
+          "rows": 0,
+          "domains": {},
+          "scenes": 0,
+          "sources": 0,
+          "t10": 0,
+          "t25": 0,
+          "t50": 0,
+          "t100": 0,
+          "hard": 0,
+          "failure": 0,
+          "easy": 0
+        },
+        "fold_1": {
+          "rows": 47223,
+          "domains": {
+            "UCY": 47223
+          },
+          "scenes": 1,
+          "sources": 1,
+          "t10": 15147,
+          "t25": 13365,
+          "t50": 11583,
+          "t100": 7128,
+          "hard": 31139,
+          "failure": 14287,
+          "easy": 16840
+        },
+        "fold_2": {
+          "rows": 19080,
+          "domains": {
+            "UCY": 19080
+          },
+          "scenes": 2,
+          "sources": 2,
+          "t10": 6120,
+          "t25": 5400,
+          "t50": 4680,
+          "t100": 2880,
+          "hard": 14778,
+          "failure": 8604,
+          "easy": 3958
+        }
+      },
+      "source_fold_count": 3
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "proposed_source_overlap_pass": true,
+      "frozen_eval_uses_old_train_rows": false
+    }
+  },
+  "domain_coverage": [
+    {
+      "domain": "ETH_UCY",
+      "train_rows": 134695,
+      "val_rows": 16103,
+      "proposed_test_rows": 0,
+      "locked_policy_stress_rows": 25901,
+      "coverage_ratio_vs_proposed_test": null,
+      "status": "extra_available_not_in_proposed_source_test",
+      "ade_all_ci_low": 0.02838466447108905,
+      "ade_t50_ci_low": 0.002820688160982139,
+      "hard_failure_ci_low": 0.03009961509110905,
+      "easy_degradation_ci_high": 0.0
+    },
+    {
+      "domain": "TrajNet",
+      "train_rows": 75287,
+      "val_rows": 7685,
+      "proposed_test_rows": 37918,
+      "locked_policy_stress_rows": 20087,
+      "coverage_ratio_vs_proposed_test": 0.5297484044517116,
+      "status": "partial_coverage",
+      "ade_all_ci_low": 0.06992789444870502,
+      "ade_t50_ci_low": 0.07757268874983766,
+      "hard_failure_ci_low": 0.07724135345940641,
+      "easy_degradation_ci_high": 0.0031575866341743797
+    },
+    {
+      "domain": "UCY",
+      "train_rows": 56763,
+      "val_rows": 0,
+      "proposed_test_rows": 9540,
+      "locked_policy_stress_rows": 9540,
+      "coverage_ratio_vs_proposed_test": 1.0,
+      "status": "exact_row_count_match",
+      "ade_all_ci_low": 0.12411168483251812,
+      "ade_t50_ci_low": 0.04805040777131636,
+      "hard_failure_ci_low": 0.1311436064328775,
+      "easy_degradation_ci_high": 0.0
+    }
+  ],
+  "horizon_coverage": [
+    {
+      "horizon": 10,
+      "proposed_test_rows": 15402,
+      "locked_policy_stress_rows": 16726,
+      "coverage_ratio_vs_proposed_test": 1.0859628619659785,
+      "status": "different_eval_pool",
+      "ade_ci_low": 0.16534854860275627,
+      "easy_degradation_ci_high": 0.0
+    },
+    {
+      "horizon": 25,
+      "proposed_test_rows": 13470,
+      "locked_policy_stress_rows": 15208,
+      "coverage_ratio_vs_proposed_test": 1.1290274684484038,
+      "status": "different_eval_pool",
+      "ade_ci_low": 0.0,
+      "easy_degradation_ci_high": 0.0
+    },
+    {
+      "horizon": 50,
+      "proposed_test_rows": 11538,
+      "locked_policy_stress_rows": 13689,
+      "coverage_ratio_vs_proposed_test": 1.186427457098284,
+      "status": "different_eval_pool",
+      "ade_ci_low": 0.05851255877278698,
+      "easy_degradation_ci_high": 0.004030954578174646
+    },
+    {
+      "horizon": 100,
+      "proposed_test_rows": 7048,
+      "locked_policy_stress_rows": 9905,
+      "coverage_ratio_vs_proposed_test": 1.4053632236095346,
+      "status": "different_eval_pool",
+      "ade_ci_low": 0.06834922663403784,
+      "easy_degradation_ci_high": 0.0
+    }
+  ],
+  "claim_table": [
+    {
+      "claim": "Stage42 post-repair policy has a frozen hash and source-level split hash.",
+      "status": "supported",
+      "evidence": "Stage42-AK policy_hash/source_split_hash exist and AK gate passed."
+    },
+    {
+      "claim": "UCY locked-policy stress row count exactly matches proposed source-level test rows.",
+      "status": "supported",
+      "evidence": "exact_domains=['UCY']"
+    },
+    {
+      "claim": "TrajNet locked-policy stress fully covers the proposed source-level test rows.",
+      "status": "not_supported",
+      "evidence": "partial_domains=['TrajNet']"
+    },
+    {
+      "claim": "ETH_UCY post-repair stress rows are part of the proposed source-level test split.",
+      "status": "not_supported",
+      "evidence": "extra_available_not_in_proposed_source_test=['ETH_UCY']"
+    },
+    {
+      "claim": "Current locked-policy metrics can be described as full proposed source-level split evaluation.",
+      "status": "rejected",
+      "evidence": "domain statuses include partial/extra pools; horizon statuses include ['t10', 't25', 't50', 't100']."
+    },
+    {
+      "claim": "Current locked-policy metrics can be described as available row-level post-repair stress with explicit coverage gap.",
+      "status": "supported",
+      "evidence": "Coverage matrix reports exact, partial, and extra-pool domains separately."
+    },
+    {
+      "claim": "Metric or seconds-level claims are allowed.",
+      "status": "rejected",
+      "evidence": "Stage42-AK/AJ claim boundaries reject metric/seconds-level claims."
+    },
+    {
+      "claim": "Stage5C or SMC is enabled.",
+      "status": "rejected",
+      "evidence": "Stage5C and SMC remain false."
+    }
+  ],
+  "next_actions": [
+    "Do not count `ETH_UCY` stress rows as proposed source-level test evidence; either move to diagnostic table or rebuild a split where that source is explicitly test.",
+    "Rebuild full-waypoint prediction cache for proposed source-level `TrajNet` test rows: current stress rows 20087 vs proposed test rows 37918.",
+    "Recompute horizon metrics on the proposed source-level test row set before claiming full source-level split horizon performance.",
+    "Keep all current results dataset-local raw-frame 2.5D until calibration/homography/stride evidence is verified."
+  ],
+  "no_leakage": {
+    "source": "combined_from_stage42ak_and_source_split",
+    "passed": true,
+    "stage42ak": {
+      "checks": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "source_overlap_pass": true,
+        "frozen_eval_uses_old_train_rows": false,
+        "af_uses_test_threshold": false,
+        "ag_uses_test_threshold": false,
+        "ai_uses_test_threshold": false
+      },
+      "passed": true
+    },
+    "source_split": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "proposed_source_overlap_pass": true,
+      "frozen_eval_uses_old_train_rows": false
+    }
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_al_gate": {
+    "source": "fresh_source_level_coverage_claim_gap_audit",
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_al_source_level_coverage_audit_pass_with_full_split_eval_gap",
+    "gates": {
+      "stage42ak_input_verified": true,
+      "source_level_split_built": true,
+      "source_overlap_pass": true,
+      "coverage_matrix_built": true,
+      "claim_gap_detected": true,
+      "ucy_exact_coverage_recorded": true,
+      "partial_or_extra_domains_not_overclaimed": true,
+      "next_actions_generated": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    }
+  }
+}

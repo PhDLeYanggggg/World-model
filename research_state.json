@@ -1,13 +1,13 @@
 {
-  "current_stage": "stage42_ak_post_repair_locked_policy_audit",
-  "current_verdict": "stage42_ak_post_repair_locked_policy_audit_pass",
+  "current_stage": "stage42_al_source_level_coverage_audit",
+  "current_verdict": "stage42_al_source_level_coverage_audit_pass_with_full_split_eval_gap",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK post-repair locked policy/source-split audit; includes routes tried, failed branches, failure causes, successful gates, current best deployable model, claim boundaries, and next steps.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit and Stage42-AL source-level coverage/claim-gap audit.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AK post-repair locked policy/source-split audit passed 17/17 gates and froze AF/AG/AI policy rules with source-level split/no-leakage evidence.",
+    "latest_branch_success": "Stage42-AL source-level coverage audit passed 12/12 gates and identified the remaining full proposed source-level evaluation gap without overclaiming.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -21,9 +21,11 @@
       "stage42_ah_runner": "pass",
       "stage42_ai_runner": "pass",
       "stage42_aj_runner": "pass",
-      "full_pytest": "360 passed",
+      "full_pytest": "363 passed",
       "stage42_ak_runner": "pass",
-      "stage42_ak_focused_pytest": "3 passed"
+      "stage42_ak_focused_pytest": "3 passed",
+      "stage42_al_runner": "pass",
+      "stage42_al_focused_pytest": "3 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -62,6 +64,17 @@
       "policy_hash": "06772a241eedacc9b8828bddc7c70569ef7d0abc1951cc83eb1c5251e7979298",
       "source_split_hash": "e22c1fc43543da7fea1805460163f8fcd7993e3dcf88a2eb04d40a82269584bd",
       "conclusion": "Post-repair AF/AG/AI policy rules and source-level split/no-leakage evidence are frozen; this is reproducibility/deployment-boundary evidence, not new model training."
+    },
+    "stage42_al_source_level_coverage_audit": {
+      "source": "fresh_synthesis_from_stage42_ak_ai_x_source_split",
+      "report": "outputs/stage42_long_research/source_level_coverage_audit_stage42.md",
+      "gate": "12/12",
+      "verdict": "stage42_al_source_level_coverage_audit_pass_with_full_split_eval_gap",
+      "ucy_source_test_coverage": "exact_row_count_match",
+      "trajnet_source_test_coverage": "partial_coverage_0.530",
+      "eth_ucy_stress_status": "extra_available_not_in_proposed_source_test",
+      "full_proposed_source_level_eval": false,
+      "conclusion": "Current locked-policy metrics are available row-level post-repair stress with explicit coverage gap, not full proposed source-level split evaluation."
     }
   },
   "stage42_ad_calibration_evidence_refresh": {
@@ -373,7 +386,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python3 -m pytest tests (360 passed)",
+  "last_successful_command": "python3 -m pytest tests (363 passed)",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -871,7 +884,10 @@
     "outputs/stage42_long_research/post_repair_locked_policy_audit_stage42.md",
     "outputs/stage42_long_research/post_repair_locked_policy_audit_stage42.json",
     "outputs/stage42_long_research/post_repair_locked_policy_stage42_policy.json",
-    "outputs/stage42_long_research/stage42_stage_ak_gate.md"
+    "outputs/stage42_long_research/stage42_stage_ak_gate.md",
+    "outputs/stage42_long_research/source_level_coverage_audit_stage42.md",
+    "outputs/stage42_long_research/source_level_coverage_audit_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_al_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13600,6 +13616,108 @@
         "stage5c_executed": false,
         "smc_enabled": false,
         "ungated_neural_deployable": false
+      }
+    },
+    "stage_al_source_level_coverage_audit": {
+      "source": "fresh_synthesis_from_stage42_ak_ai_x_source_split",
+      "report": "outputs/stage42_long_research/source_level_coverage_audit_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_al_gate.md",
+      "gates_passed": 12,
+      "gates_total": 12,
+      "verdict": "stage42_al_source_level_coverage_audit_pass_with_full_split_eval_gap",
+      "full_proposed_source_level_eval": false,
+      "domain_coverage": [
+        {
+          "domain": "ETH_UCY",
+          "train_rows": 134695,
+          "val_rows": 16103,
+          "proposed_test_rows": 0,
+          "locked_policy_stress_rows": 25901,
+          "coverage_ratio_vs_proposed_test": null,
+          "status": "extra_available_not_in_proposed_source_test",
+          "ade_all_ci_low": 0.02838466447108905,
+          "ade_t50_ci_low": 0.002820688160982139,
+          "hard_failure_ci_low": 0.03009961509110905,
+          "easy_degradation_ci_high": 0.0
+        },
+        {
+          "domain": "TrajNet",
+          "train_rows": 75287,
+          "val_rows": 7685,
+          "proposed_test_rows": 37918,
+          "locked_policy_stress_rows": 20087,
+          "coverage_ratio_vs_proposed_test": 0.5297484044517116,
+          "status": "partial_coverage",
+          "ade_all_ci_low": 0.06992789444870502,
+          "ade_t50_ci_low": 0.07757268874983766,
+          "hard_failure_ci_low": 0.07724135345940641,
+          "easy_degradation_ci_high": 0.0031575866341743797
+        },
+        {
+          "domain": "UCY",
+          "train_rows": 56763,
+          "val_rows": 0,
+          "proposed_test_rows": 9540,
+          "locked_policy_stress_rows": 9540,
+          "coverage_ratio_vs_proposed_test": 1.0,
+          "status": "exact_row_count_match",
+          "ade_all_ci_low": 0.12411168483251812,
+          "ade_t50_ci_low": 0.04805040777131636,
+          "hard_failure_ci_low": 0.1311436064328775,
+          "easy_degradation_ci_high": 0.0
+        }
+      ],
+      "horizon_coverage": [
+        {
+          "horizon": 10,
+          "proposed_test_rows": 15402,
+          "locked_policy_stress_rows": 16726,
+          "coverage_ratio_vs_proposed_test": 1.0859628619659785,
+          "status": "different_eval_pool",
+          "ade_ci_low": 0.16534854860275627,
+          "easy_degradation_ci_high": 0.0
+        },
+        {
+          "horizon": 25,
+          "proposed_test_rows": 13470,
+          "locked_policy_stress_rows": 15208,
+          "coverage_ratio_vs_proposed_test": 1.1290274684484038,
+          "status": "different_eval_pool",
+          "ade_ci_low": 0.0,
+          "easy_degradation_ci_high": 0.0
+        },
+        {
+          "horizon": 50,
+          "proposed_test_rows": 11538,
+          "locked_policy_stress_rows": 13689,
+          "coverage_ratio_vs_proposed_test": 1.186427457098284,
+          "status": "different_eval_pool",
+          "ade_ci_low": 0.05851255877278698,
+          "easy_degradation_ci_high": 0.004030954578174646
+        },
+        {
+          "horizon": 100,
+          "proposed_test_rows": 7048,
+          "locked_policy_stress_rows": 9905,
+          "coverage_ratio_vs_proposed_test": 1.4053632236095346,
+          "status": "different_eval_pool",
+          "ade_ci_low": 0.06834922663403784,
+          "easy_degradation_ci_high": 0.0
+        }
+      ],
+      "next_actions": [
+        "Do not count `ETH_UCY` stress rows as proposed source-level test evidence; either move to diagnostic table or rebuild a split where that source is explicitly test.",
+        "Rebuild full-waypoint prediction cache for proposed source-level `TrajNet` test rows: current stress rows 20087 vs proposed test rows 37918.",
+        "Recompute horizon metrics on the proposed source-level test row set before claiming full source-level split horizon performance.",
+        "Keep all current results dataset-local raw-frame 2.5D until calibration/homography/stride evidence is verified."
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
       }
     }
   },

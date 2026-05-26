@@ -1136,3 +1136,19 @@ smc_enabled = false
 ```
 
 Stage42-AK freezes the post-repair AF/AG/AI policy rules and source-level split audit as reproducibility evidence. It is a policy/source audit, not new training. Claims remain protected dataset-local raw-frame 2.5D; metric/seconds-level, true-3D, foundation, Stage5C, SMC, and ungated-neural deployment claims remain rejected.
+
+## Stage42-AL Source-Level Coverage Audit
+
+```text
+source = fresh_synthesis_from_stage42_ak_ai_x_source_split
+verdict = stage42_al_source_level_coverage_audit_pass_with_full_split_eval_gap
+gates = 12 / 12
+full_proposed_source_level_eval = false
+ucy_source_test_coverage = exact_row_count_match
+trajnet_source_test_coverage = partial_coverage
+eth_ucy_stress_rows = extra_available_not_in_proposed_source_test
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AL audits whether the locked post-repair policy can be claimed as a full proposed source-level split evaluation. It cannot: UCY matches the proposed source-level test row count, but TrajNet is only partially covered by the current locked-policy stress pool and ETH_UCY stress rows are extra available rows outside the proposed source-level test split. The correct claim remains available row-level post-repair stress with explicit coverage gap, not full source-level split evaluation.
