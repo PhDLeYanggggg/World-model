@@ -2,6 +2,10 @@
 
 ## 中文详细目标总结
 
+Root-level Chinese summary requested by the user:
+
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
+
 Latest Chinese detailed summary of the M3W goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
@@ -10,7 +14,7 @@ Full long-form Chinese route/failure/success summary for the current goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-S. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O/P investigated full-waypoint static/context repair and explicit gain/harm selector repair. Stage42-Q identified Stage42-J/Stage42-P complementarity as report-level preflight only, Stage42-R built a local row prediction cache for validation-only combo evaluation, and Stage42-S froze that combo as a lightweight policy artifact with per-domain/per-horizon stress. Stage42-S passed 13/13 gates, but it remains dataset-local raw-frame 2.5D branch evidence and does not change the no-metric/no-Stage5C/no-SMC boundary.
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-T. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O/P investigated full-waypoint static/context repair and explicit gain/harm selector repair. Stage42-Q identified Stage42-J/Stage42-P complementarity as report-level preflight only, Stage42-R built a local row prediction cache for validation-only combo evaluation, and Stage42-S froze that combo as a lightweight policy artifact with per-domain/per-horizon stress. Stage42-T then attempted an unseen-domain UCY transfer rule and honestly marked a blocker: the current Stage42-R row cache has no non-floor Stage42-J/P candidate predictions for UCY, so UCY remains fallback-only in this combo branch. Stage42-S passed 13/13 gates and Stage42-T passed 8/11 gates as a blocker diagnosis, but both remain dataset-local raw-frame 2.5D branch evidence and do not change the no-metric/no-Stage5C/no-SMC boundary.
 
 Latest Stage42-R row prediction cache combo:
 
@@ -25,6 +29,22 @@ cached_combo_ADE_hard_failure = 0.054792
 cached_combo_easy_degradation = 0.001102
 cached_combo_FDE_t50 = 0.100059
 cache_dir = data/stage42_row_prediction_cache (not committed)
+```
+
+Latest Stage42-T UCY unseen-domain transfer diagnosis:
+
+```text
+source = fresh_run
+verdict = stage42_t_ucy_transfer_blocked_no_candidate_predictions
+gates = 8 / 11
+validation_domains = ETH_UCY, TrajNet
+unseen_test_domain = UCY
+UCY_rows = 9540
+UCY_all = 0.0
+UCY_t50 = 0.0
+UCY_hard_failure = 0.0
+available_nonfloor_source_for_UCY = false
+root_cause = current row cache has no non-floor Stage42-J/P candidate predictions for UCY
 ```
 
 ## M3W-Neural v1 Goal Summary
