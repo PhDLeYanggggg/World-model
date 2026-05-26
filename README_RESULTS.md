@@ -10,7 +10,22 @@ Full long-form Chinese route/failure/success summary for the current goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-P. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O/P investigated full-waypoint static/context repair and explicit gain/harm selector repair. Stage42-P repairs the mean ADE t+50 sign with train-only normalization and validation-only policy selection, but its 3-seed t50 CI low is still negative, so it is a gate-passing repair rather than a paper-stable t+50 claim.
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-R. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O/P investigated full-waypoint static/context repair and explicit gain/harm selector repair. Stage42-Q identified Stage42-J/Stage42-P complementarity as report-level preflight only, and Stage42-R then built a local row prediction cache for validation-only combo evaluation. Stage42-R passed its row-cache combo gates with positive t+50 CI, but it remains dataset-local raw-frame 2.5D branch evidence and does not change the no-metric/no-Stage5C/no-SMC boundary.
+
+Latest Stage42-R row prediction cache combo:
+
+```text
+source = fresh_run_from_row_prediction_cache
+verdict = stage42_r_row_cached_combo_pass
+gates = 15 / 15
+cached_combo_ADE_all = 0.052387
+cached_combo_ADE_t50 = 0.037934
+cached_combo_ADE_t50_CI_low = 0.027740
+cached_combo_ADE_hard_failure = 0.054792
+cached_combo_easy_degradation = 0.001102
+cached_combo_FDE_t50 = 0.100059
+cache_dir = data/stage42_row_prediction_cache (not committed)
+```
 
 ## M3W-Neural v1 Goal Summary
 
@@ -2200,3 +2215,22 @@ smc_enabled = false
 ```
 
 Stage42-Q targets the complementarity between Stage42-J static-gated full-waypoint experts and Stage42-P t+50 gain/harm selector. If it is a preflight result, it is diagnostic only and not a deployable combo claim; a row-level NPZ prediction cache is required before a full validation-only combo can be treated as pipeline evidence.
+
+## Stage42-R Row Prediction Cache + Combo Eval
+
+```text
+source = fresh_run_from_row_prediction_cache
+verdict = stage42_r_row_cached_combo_pass
+gates = 15 / 15
+cached_combo_ade_all = 0.05238704221741153
+cached_combo_ade_t50 = 0.03793420310086152
+cached_combo_ade_t50_ci_low = 0.02774018469754745
+cached_combo_ade_hard_failure = 0.05479172593908743
+cached_combo_ade_easy_degradation = 0.001101978371627214
+cached_combo_fde_t50 = 0.10005888767615174
+cache_dir = data/stage42_row_prediction_cache (not committed)
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-R builds a local NPZ row prediction cache for floor / Stage42-J static expert / Stage42-P t+50 gain-harm selected errors, then performs validation-only combo evaluation from cache. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.

@@ -1,6 +1,6 @@
 # M3W 目标内研究总结：尝试路线、失败原因、成功结果与当前结论
 
-来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J/K/L/M/N 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint、static-gated repair、fresh static-gated checkpoint、horizon-aware repair、policy-distilled static gate 和 row-level gain/harm static gate 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
+来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint、static-gated repair、fresh static-gated checkpoint、horizon-aware repair、policy-distilled static gate、row-level gain/harm static gate、explicit gain/harm selector、t50-specific gain/harm selector、static/gain-harm combo preflight 和 row prediction cache combo eval 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
 本文件是给项目长期目标使用的中文总 README：它不是论文结论包装，而是把真实做过的路线、失败原因、成功证据和仍然不能声称的内容集中写清楚。
 
 ## 0.0 给用户的目标级摘要
@@ -14,6 +14,7 @@
 5. Stage39/40 开始训练神经动力学，但无保护 neural 不安全，不能替代 Stage37。
 6. Stage41/42 把神经动力学做成 protected candidate：Stage37/teacher floor 保护下，composite-tail / endpoint-to-full / full-waypoint / sequence ablation 都有正证据。
 7. 目前最强可部署仍需要 safety floor；它比 selector-only 更像 world-state dynamics，但仍不是 true 3D / metric / foundation。
+8. Stage42-R 最新完成 row prediction cache + validation-only combo eval，修复了 Stage42-Q 只能 report-level preflight 的问题，并给出 positive t50 CI low 的 full-waypoint combo 分支证据。
 
 最关键的成功是：**M3W-Neural v1 composite-tail safe-switch bounded neural dynamics** 在 external dataset-local raw-frame benchmark 上形成稳定正提升，并且 Stage42-H/J/K/L 进一步证明 causal history、gated static/context、fresh static-gated checkpoint 与 horizon-aware t50 repair 对 full-waypoint world-state dynamics 有用。
 
@@ -38,6 +39,8 @@ Stage42-F 已经整理出论文级证据包，但结论是：**这是强的 prot
 Stage42-G Phase1 之后，full retrained ablation gap 被推进了一步：已经 fresh 重训 external expected-FDE selector 的 history、neighbor、goal/scene、interaction、domain、safe-switch/floor 关键消融；但 JEPA / full Transformer / full-waypoint-shape 仍未在 Stage42-G 内重训，所以还不能说 Stage42-D 全组件 A刊级消融完成。
 
 Stage42-H 进一步修复了 Stage42-G 的一个负结果：flattened history 在 ridge selector 下不稳定，但 causal temporal sequence encoder 证明 history tokens 对 t+50 和 hard/failure 有强正贡献。也就是说，history 不是没用，而是不能用简单 flatten + ridge 方式证明；它需要真正的时序编码器。
+
+Stage42-R 进一步修复了 Stage42-Q 的证据缺口：Stage42-Q 只能从报告级别看到 Stage42-J static expert 和 Stage42-P gain/harm selector 互补，不能做逐行组合；Stage42-R 建立本地 NPZ row prediction cache 后，完成了 validation-only row-level combo eval，gates 15/15，ADE t50 CI low 为正。
 
 但是必须继续诚实承认：
 
@@ -168,6 +171,30 @@ protected_full_waypoint_FDE_t50 = 0.2158
 stage42_c_gates = 12 / 12
 verdict = stage42_c_full_waypoint_dynamics_pass
 ```
+
+Stage42-R 最新 row prediction cache combo 证据：
+
+```text
+source = fresh_run_from_row_prediction_cache
+verdict = stage42_r_row_cached_combo_pass
+gates = 15 / 15
+cached_combo_ADE_all = 0.052387
+cached_combo_ADE_t50 = 0.037934
+cached_combo_ADE_t50_CI_low = 0.027740
+cached_combo_ADE_t100_raw_frame_diagnostic = 0.041846
+cached_combo_ADE_hard_failure = 0.054792
+cached_combo_easy_degradation = 0.001102
+cached_combo_FDE_t50 = 0.100059
+source_choices = Stage42-P t50 gain/harm 14, floor 4, Stage42-J static expert 6
+cache_dir = data/stage42_row_prediction_cache (not committed)
+```
+
+Stage42-R 的意义：
+
+- 它把 Stage42-Q 的 preflight 变成 row-cache-backed eval。
+- 它仍然只用 validation 选择 source / policy，test 只最终评估一次。
+- 它用 row-level cache 同时保留 Stage42-J 的 static expert 稳定性和 Stage42-P 的 t50 gain/harm 信号。
+- 它不是 metric/seconds-level/true-3D/foundation 证据，也不执行 Stage5C 或 SMC。
 
 Stage42-D 到 F 的证据边界：
 
@@ -1219,7 +1246,7 @@ SMC-ready model
 8. **teacher-floor dependence**：Stage42-E 证明当前 teacher floor 必要；下一步要研究 proximity-safe internal gate，减少 floor 依赖。
 9. **更多独立外部数据**：需要再接入合法 top-down pedestrian/drone 数据源，而不是只依赖当前 converted external 状态。
 10. **sequence-to-full-waypoint bridge**：Stage42-H 证明 sequence history 对 family selection 有用，但还要把 causal sequence encoder 直接接到 full-waypoint all-agent dynamics。
-11. **static-gated full-waypoint repair**：Stage42-J 已完成 policy-level repair，Stage42-K 已完成 fresh checkpoint training，Stage42-L 已修复 fresh checkpoint 的 t50 ADE 负号；Stage42-M 证明 coarse policy alpha distillation 不够，Stage42-N 证明 row-level alpha teacher 仍不够，Stage42-O 证明显式 gain/harm selector 能改善 all/hard 但 t50 仍未过 gate，Stage42-P 通过 t50-specific 加权修复了 mean t50 负号但 3-seed CI low 仍为负。
+11. **static-gated full-waypoint repair**：Stage42-J 已完成 policy-level repair，Stage42-K 已完成 fresh checkpoint training，Stage42-L 已修复 fresh checkpoint 的 t50 ADE 负号；Stage42-M 证明 coarse policy alpha distillation 不够，Stage42-N 证明 row-level alpha teacher 仍不够，Stage42-O 证明显式 gain/harm selector 能改善 all/hard 但 t50 仍未过 gate，Stage42-P 通过 t50-specific 加权修复了 mean t50 负号但 3-seed CI low 仍为负，Stage42-R 通过 row prediction cache + validation-only combo 让 cached combo 的 t50 CI low 为正。
 
 ## 8. 直接回答
 
@@ -1242,6 +1269,8 @@ Stage42-M 是否完成 policy distillation：部分失败。FDE t50 提升到 0.
 Stage42-N 是否完成 row-level teacher 修复：部分失败。all/hard 超过 L/M 且 easy 安全，但 t50 ADE 为 -0.0278，说明 alpha-style row teacher 不足。
 Stage42-O 是否完成显式 gain/harm selector 修复：部分失败。严格 train-only normalization 后 all/hard 为正、easy mean 小于 2%，但 ADE t50 为 -0.0008，不能写成 t50 修复成功。
 Stage42-P 是否完成 t50-specific gain/harm 修复：门控通过。ADE t50 mean 从 Stage42-O 的 -0.0008 修到 +0.0066，all/hard/easy 也过 mean gate；但 t50 3-seed CI low 为 -0.0179，所以还不是论文级稳定 t50 claim。
+Stage42-Q 是否完成 combo：没有，只是 report-level preflight，指出 Stage42-J/P 互补，需要 row cache。
+Stage42-R 是否完成 row-cache combo：是，fresh_run_from_row_prediction_cache，gates 15/15，cached combo ADE t50 0.0379 且 CI low 0.0277；但它仍是 dataset-local raw-frame 2.5D 分支证据，不是 metric/seconds-level/Stage5C/SMC。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -1279,10 +1308,12 @@ SMC 是否可启用：否。
 - Stage42-N row-level gain/harm static gate：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/row_gain_static_gate_stage42.md`
 - Stage42-O explicit gain/harm selector：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/explicit_gain_harm_selector_stage42.md`
 - Stage42-P t50-specific gain/harm selector：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/t50_gain_harm_selector_stage42.md`
+- Stage42-Q static/gain-harm combo preflight：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/t50_static_expert_combo_stage42.md`
+- Stage42-R row prediction cache combo：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/row_prediction_cache_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **Stage42-P 统计加固**：Stage42-P 已让 t50 mean 为正，但 CI low 仍为负；下一步需要更多 seeds/bootstrap、per-domain horizon calibration，以及与 Stage42-J static-gated expert policy 组合。
+1. **Stage42-R 统计和部署固化**：Stage42-R 已让 row-cache combo 的 t50 CI low 为正；下一步需要把该 combo 固化为可复现 policy artifact，补更多 seeds/per-domain stress，并比较它是否能成为 full-waypoint 分支默认部署策略。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。

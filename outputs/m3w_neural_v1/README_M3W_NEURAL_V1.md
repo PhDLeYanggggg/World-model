@@ -7,7 +7,7 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 ## Files
 
 - `README_GOAL_SUMMARY_M3W_NEURAL_V1.md` — detailed research ledger: attempted routes, failures, successes, current best deployable candidate, and remaining gaps.
-- `README_M3W_GOAL_DETAILED_SUMMARY_ZH.md` — Chinese goal-level README for the full M3W route, including failed paths, successful paths, claim boundaries, and Stage42-K in-progress status.
+- `README_M3W_GOAL_DETAILED_SUMMARY_ZH.md` — Chinese goal-level README for the full M3W route, including failed paths, successful paths, claim boundaries, and Stage42-R row-cache combo status.
 - `report_m3w_neural_v1.md` — frozen result summary.
 - `evidence_matrix_m3w_neural_v1.md/json` — gate and metric evidence.
 - `selector_policy_m3w_neural_v1.json` — frozen policy metadata and hashes.
@@ -356,3 +356,22 @@ smc_enabled = false
 ```
 
 Stage42-Q targets the complementarity between Stage42-J static-gated full-waypoint experts and Stage42-P t+50 gain/harm selector. If it is a preflight result, it is diagnostic only and not a deployable combo claim; a row-level NPZ prediction cache is required before a full validation-only combo can be treated as pipeline evidence.
+
+## Stage42-R Row Prediction Cache + Combo Eval
+
+```text
+source = fresh_run_from_row_prediction_cache
+verdict = stage42_r_row_cached_combo_pass
+gates = 15 / 15
+cached_combo_ade_all = 0.05238704221741153
+cached_combo_ade_t50 = 0.03793420310086152
+cached_combo_ade_t50_ci_low = 0.02774018469754745
+cached_combo_ade_hard_failure = 0.05479172593908743
+cached_combo_ade_easy_degradation = 0.001101978371627214
+cached_combo_fde_t50 = 0.10005888767615174
+cache_dir = data/stage42_row_prediction_cache (not committed)
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-R builds a local NPZ row prediction cache for floor / Stage42-J static expert / Stage42-P t+50 gain-harm selected errors, then performs validation-only combo evaluation from cache. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
