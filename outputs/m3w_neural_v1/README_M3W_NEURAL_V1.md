@@ -34,6 +34,8 @@ Stage42-AN adds a retrained source-level ablation boundary. It reruns ridge prob
 
 Stage42-AO sharpens that boundary with standalone and incremental variants. `history_only` and `motion_goal_context` show standalone positive signal, but no context variant improves over `baseline_family_only`; `baseline_family_only` is stronger than the full ridge variant on all/t50/hard. The current source-level ridge evidence is therefore dominated by baseline-family rollout context. History, goal, neighbor, and domain modules need stronger neural/graph retraining or richer context before becoming independent paper claims.
 
+Stage42-AP then tests the same question as a two-stage residual problem. It trains a baseline-family first-stage model and asks history / goal / neighbor context to predict the remaining full-waypoint residual. The result is still partial/negative: no residual context variant improves over the baseline-family first stage by the +1% threshold. This further constrains paper claims: current source-level ridge/residual evidence supports baseline-family rollout context, not independent history/goal/neighbor contribution.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
