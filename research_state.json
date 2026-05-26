@@ -1,18 +1,20 @@
 {
-  "current_stage": "stage42_z_paper_claim_evidence_audit",
-  "current_verdict": "stage42_z_paper_claim_evidence_audit_pass",
+  "current_stage": "stage42_aa_retrained_ablation_matrix",
+  "current_verdict": "stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary",
   "latest_user_requested_research_summary": {
     "source": "cached_verified_plus_stage42_wxy_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-Z paper claim evidence audit passed; claim-to-evidence matrix now separates supported main claims from rejected/non-supported overclaims.",
+    "latest_branch_success": "Stage42-AA retrained ablation matrix passed after rerunning Stage42-G; 11/12 requested ablation categories have fresh Stage42 evidence, with no-JEPA kept as cached negative evidence and no-Transformer kept as a proxy boundary.",
     "verification": {
       "stage42_y_runner": "pass",
       "focused_pytest": "3 passed",
       "full_pytest": "327 passed",
-      "stage42_z_runner": "pass"
+      "stage42_z_runner": "pass",
+      "stage42_g_rerun": "pass",
+      "stage42_aa_runner": "pass"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -690,7 +692,11 @@
     "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md",
     "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.json",
     "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.csv",
-    "outputs/stage42_long_research/stage42_stage_z_gate.md"
+    "outputs/stage42_long_research/stage42_stage_z_gate.md",
+    "outputs/stage42_long_research/retrained_ablation_matrix_stage42.md",
+    "outputs/stage42_long_research/retrained_ablation_matrix_stage42.json",
+    "outputs/stage42_long_research/retrained_ablation_matrix_stage42.csv",
+    "outputs/stage42_long_research/stage42_stage_aa_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -12840,10 +12846,10 @@
       "gates_passed": 11,
       "gates_total": 11,
       "verdict": "stage42_g_retrained_ablation_phase1_pass",
-      "full_all": 0.81221615514233,
-      "full_t50": 0.8461508150001023,
-      "full_hard_failure": 0.8458841094532804,
-      "full_easy_degradation": -0.8412751638465125,
+      "full_all": 0.8122171210435322,
+      "full_t50": 0.846141982933112,
+      "full_hard_failure": 0.8458883141241493,
+      "full_easy_degradation": -0.8412609200348086,
       "not_run_boundaries": {
         "no_jepa": "not_run_in_phase1; current deployable path does not use JEPA features, and JEPA remains diagnostic-only from Stage18/19/41 evidence.",
         "full_transformer_retrain": "not_run_in_phase1; this phase retrains ridge expected-FDE selectors on causal external features, not torch Transformer checkpoints.",
@@ -13272,6 +13278,57 @@
         "metric/seconds-level not supported",
         "true 3D/foundation not supported",
         "goal/scene and neighbor/interaction uniform positivity mixed"
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_aa_retrained_ablation_matrix": {
+      "source": "fresh_matrix_from_stage42g_rerun_plus_stage42h_i_d_z",
+      "report": "outputs/stage42_long_research/retrained_ablation_matrix_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_aa_gate.md",
+      "csv": "outputs/stage42_long_research/retrained_ablation_matrix_stage42.csv",
+      "stage42g_rerun_report": "outputs/stage42_long_research/retrained_ablation_stage42.md",
+      "gates_passed": 15,
+      "gates_total": 15,
+      "verdict": "stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary",
+      "fresh_required_coverage": "11/12",
+      "required_ablations": [
+        "no_history",
+        "no_neighbor",
+        "no_scene",
+        "no_goal",
+        "no_interaction",
+        "no_JEPA",
+        "no_Transformer",
+        "no_teacher_floor",
+        "no_safe_switch",
+        "no_endpoint_bridge",
+        "no_full_waypoint_shape",
+        "no_domain_expert"
+      ],
+      "fresh_positive_contributions": [
+        "no_history",
+        "no_neighbor",
+        "no_scene",
+        "no_goal",
+        "no_interaction",
+        "no_safe_switch",
+        "no_domain_expert"
+      ],
+      "cached_not_overclaimed": [
+        "no_JEPA"
+      ],
+      "fresh_proxy_not_overclaimed": [
+        "no_Transformer"
+      ],
+      "safety_negative_claims": [
+        "no_teacher_floor"
       ],
       "claim_boundary": {
         "true_3d": false,

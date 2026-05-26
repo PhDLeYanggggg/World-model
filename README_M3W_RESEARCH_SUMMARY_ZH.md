@@ -656,3 +656,16 @@ smc_enabled = false
 ```
 
 Stage42-Z 把“能写进论文的 claim”和“必须作为 limitation / negative evidence 的内容”逐条绑定到 artifact。它支持的主 claim 是：Stage42-X 统一 row-level full-waypoint cache、external t50 正证据、UCY full-waypoint source 贡献、history token / domain expert 贡献、protected external floor、protected full-waypoint dynamics。它明确拒绝：ungated neural 替代 safety floor、metric/seconds-level claim、true 3D / foundation claim，以及把 goal/scene 或 neighbor/interaction 的 mixed evidence 写成统一正贡献。
+
+## Stage42-AA Retrained Ablation Matrix
+
+```text
+source = fresh_matrix_from_stage42g_rerun_plus_stage42h_i_d_z
+verdict = stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary
+gates = 15 / 15
+fresh_required_coverage = 11 / 12
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AA 重跑了 Stage42-G 的 retrained ablation，并把用户要求的 12 类 ablation 放进同一张矩阵。当前 11/12 有 fresh Stage42 evidence；唯一不是 fresh 的是 `no_JEPA`，它仍是 cached negative architecture evidence，不能伪装成本轮重训。`no_Transformer` 目前是 fresh proxy，不是完整 no-Transformer architecture retrain。最清楚的正贡献仍是 history tokens 和 domain expert；teacher floor 去掉后不安全，所以 Stage37/teacher floor 仍是部署必要条件。

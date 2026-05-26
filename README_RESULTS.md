@@ -2403,3 +2403,20 @@ smc_enabled = false
 ```
 
 Stage42-Z maps each paper claim to an explicit artifact and status. It confirms that Stage42 is paper-ready only as a protected dataset-local raw-frame 2.5D world-state candidate. It rejects ungated neural deployment, metric/seconds claims, true-3D/foundation claims, and overclaiming mixed goal/scene or neighbor/interaction evidence.
+
+## Stage42-AA Retrained Ablation Matrix
+
+```text
+source = fresh_matrix_from_stage42g_rerun_plus_stage42h_i_d_z
+verdict = stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary
+gates = 15 / 15
+fresh_required_coverage = 11 / 12
+positive_fresh_contributions = no_history, no_neighbor, no_scene, no_goal, no_interaction, no_safe_switch, no_domain_expert
+unsafe_negative_claim = no_teacher_floor
+cached_not_overclaimed = no_JEPA
+fresh_proxy_not_overclaimed = no_Transformer
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AA reruns Stage42-G fresh retrained ablation and consolidates the required Stage42 ablations into one source-labeled matrix. It supports history tokens and domain expert as the clearest sequence contributions, shows goal/scene/neighbor/interaction are positive in the ridge retrained proxy but mixed at sequence level, and keeps JEPA/Transformer boundaries honest: no-JEPA is cached negative evidence, while no-Transformer is a fresh proxy rather than a full architecture retrain.

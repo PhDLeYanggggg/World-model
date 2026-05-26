@@ -534,3 +534,16 @@ smc_enabled = false
 ```
 
 Stage42-Z makes the claim boundary explicit for the paper package: unified row-level full-waypoint evidence, t50 positivity, UCY source contribution, history-token contribution, protected external floor, and protected full-waypoint dynamics are supported. Ungated neural replacement, metric/seconds-level claims, true-3D/foundation claims, and uniform goal/scene or neighbor/interaction positivity are not supported as main claims.
+
+## Stage42-AA Retrained Ablation Matrix
+
+```text
+source = fresh_matrix_from_stage42g_rerun_plus_stage42h_i_d_z
+verdict = stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary
+gates = 15 / 15
+fresh_required_coverage = 11 / 12
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AA reruns the Stage42-G retrained ablation and unifies the required ablation evidence. It shows 11 of 12 requested ablation categories have fresh Stage42 evidence; no-JEPA remains cached negative architecture evidence and is not relabeled as fresh retraining. Teacher-floor removal is unsafe, so the Stage37/teacher safety floor remains required for deployment.
