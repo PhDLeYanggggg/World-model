@@ -580,6 +580,7 @@ Stage42-CB 显示：
 - UCY|50 最大 source 占比 100.00%。
 - Stage42-CC 本地 inventory 扫描 93 个文件、10 个 t50-capable 文件，但 unused independent ready-to-claim t50 sources = 0。
 - Stage42-CC 找到的 4 个 t50-capable 文件只是当前 source 的 alternate representation；1 个是 synthetic/diagnostic。
+- Stage42-CD 已把 blocker 转成官方/manual acquisition package：UCY、ETH/BIWI、TrajNet++、OpenTraj toolkit、additional top-down target；auto-download=0，converted datasets=0。
 
 结论：
 
@@ -587,6 +588,7 @@ Stage42-CB 显示：
 available major-source robust: yes
 broad source-level generalization: no
 local source-diversity repair ready: no
+official acquisition package ready: yes
 ```
 
 下一步：
@@ -594,6 +596,7 @@ local source-diversity repair ready: no
 - 需要更多 independent t50-capable external top-down sources。
 - 不能把 source-concentrated success 写成 broad source generalization。
 - 不能把 registry-only、alternate representation、synthetic/diagnostic inventory 写成 converted/evaluated dataset。
+- Stage42-CD 的官方源包是 next-action evidence，不是外部泛化成功证据。
 
 ### 10.2 t100 blocker
 
@@ -668,6 +671,8 @@ outputs/stage42_long_research/t50_repair_statistical_evidence_stage42.md
 outputs/stage42_long_research/t50_source_robustness_audit_stage42.md
 outputs/stage42_long_research/independent_t50_source_inventory_stage42.md
 outputs/stage42_long_research/user_action_required_independent_t50_sources_stage42.md
+outputs/stage42_long_research/source_diversity_acquisition_package_stage42.md
+outputs/stage42_long_research/user_action_required_source_diversity_stage42.md
 outputs/stage42_long_research/source_acquisition_status_stage42.md
 ```
 

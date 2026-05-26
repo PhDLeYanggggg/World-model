@@ -1,0 +1,365 @@
+{
+  "source": "fresh_stage42_cd_source_diversity_acquisition_package",
+  "stage": "Stage42-CD Source Diversity Acquisition Package",
+  "generated_at_utc": "2026-05-26T16:55:35.586098+00:00",
+  "git_commit": "20f0dad",
+  "input_hash": "9df7a4242dc8c00e23cede201859c2395d26601ac9cccadd5b2be2725e782106",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CD 是官方源获取与接入准备包，不下载数据，不转换数据，不训练模型。",
+    "Stage42-CB/CC 已证明 t50 source diversity blocker 仍 active；本包不能把 blocker 包装成完成。",
+    "OpenTraj toolkit / wrapper 许可不能自动覆盖 ETH/UCY/TrajNet 等底层第三方数据许可。",
+    "future endpoints / waypoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "Stage5C 未执行，SMC 未启用。"
+  ],
+  "input_reports": {
+    "stage42_bv_verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
+    "stage42_cc_verdict": "stage42_cc_independent_t50_source_inventory_pass",
+    "stage42_cc_unused_candidate_t50_sources": 0,
+    "stage42_cc_source_diversity_repair_ready": false
+  },
+  "summary": {
+    "source": "fresh_stage42_cd_source_diversity_acquisition_package",
+    "official_targets": 5,
+    "critical_targets": 2,
+    "auto_download_targets": 0,
+    "manual_or_terms_targets": 4,
+    "local_paths_found": 4,
+    "converted_datasets_now": 0,
+    "source_diversity_repair_ready_now": false,
+    "broad_source_generalization_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "official_targets": [
+    {
+      "id": "ucy_crowd_original",
+      "name": "UCY Crowd Data original source",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "source_confidence": "official_url_known_manual_verification_required",
+      "priority": "critical",
+      "target_blocker": "UCY_students_t50_source_support",
+      "expected_role": "independent t50-capable UCY/students/crowd source if legal long tracks are provided",
+      "why_needed": "Stage42-CB/CC show UCY t50 evidence is source-concentrated; another independent UCY/students-family long source is needed for source-CV.",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": false,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "/Users/yangyue/Downloads/UCY",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY",
+        "/Users/yangyue/Downloads/OpenTraj/datasets/UCY"
+      ],
+      "conversion_after_user_path": [
+        "verify original dataset terms and source identity",
+        "convert to external feature-store schema",
+        "build source-level train/internal-val/final-test split without test endpoint goals",
+        "rerun t50 source-CV and protected policy final test once"
+      ],
+      "claim_if_missing": "blocked_user_action_required"
+    },
+    {
+      "id": "eth_biwi_original",
+      "name": "ETH / BIWI walking pedestrians original source",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "source_confidence": "official_eth_page",
+      "priority": "critical",
+      "target_blocker": "ETH_seq_t50_source_support",
+      "expected_role": "same-family ETH_seq long-track support with homography/metadata hints when legally usable",
+      "why_needed": "ETH_seq t50 is still blocked because ETH-Person XML technical signal did not safely repair the ETH_seq holdout and terms remain unresolved.",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": false,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "/Users/yangyue/Downloads/ETH_UCY",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH",
+        "/Users/yangyue/Downloads/OpenTraj/datasets/ETH"
+      ],
+      "conversion_after_user_path": [
+        "verify ETH/BIWI source terms and citation requirements",
+        "separate alternate-format files from independent held-out sources",
+        "audit frame step/FPS/homography only as source-specific evidence",
+        "rerun ETH_seq t50 source-CV under validation-only policy"
+      ],
+      "claim_if_missing": "blocked_user_action_required"
+    },
+    {
+      "id": "trajnetplusplus_official",
+      "name": "TrajNet++ official challenge/source page",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "secondary_url": "https://www.aicrowd.com/challenges/trajnet-a-trajectory-forecasting-challenge",
+      "source_confidence": "official_epfl_and_aicrowd_reference",
+      "priority": "high",
+      "target_blocker": "TrajNet_raw_long_t100_source_support",
+      "expected_role": "scene-format diagnostics or long raw tracks only if legally provided; challenge snippets alone are too short for raw-frame t100 source-CV",
+      "why_needed": "Stage42-BV/CC show local TrajNet rows are dominated by short snippets or synthetic diagnostic data, not legal raw long-track t100 support.",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": true,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "/Users/yangyue/Downloads/trajnetplusplusdataset",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet",
+        "/Users/yangyue/Downloads/OpenTraj/datasets/TrajNet"
+      ],
+      "conversion_after_user_path": [
+        "verify official challenge or source terms",
+        "separate scene snippets from raw long tracks",
+        "do not count synthetic ORCA diagnostic rows as real external evidence",
+        "run raw-frame horizon audit before any t100 claim"
+      ],
+      "claim_if_missing": "short_scene_diagnostic_only"
+    },
+    {
+      "id": "opentraj_toolkit",
+      "name": "OpenTraj official GitHub toolkit",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "source_confidence": "official_github_toolkit",
+      "priority": "medium",
+      "target_blocker": "loader_and_metadata_support",
+      "expected_role": "loader/toolkit support and dataset indexing; not an independent data license by itself",
+      "why_needed": "OpenTraj helps identify paths/loaders, but Stage42 must preserve underlying ETH/UCY/TrajNet terms and source identity.",
+      "requires_manual_terms_acceptance": false,
+      "requires_login_or_application": false,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+        "/Users/yangyue/Downloads/OpenTraj"
+      ],
+      "conversion_after_user_path": [
+        "use only as toolkit/index metadata",
+        "resolve every underlying dataset to its own terms",
+        "do not count toolkit clone as converted/evaluated data"
+      ],
+      "claim_if_missing": "toolkit_only_not_dataset_claim"
+    },
+    {
+      "id": "aerialmpt_or_other_topdown",
+      "name": "Additional legal top-down pedestrian/drone long-track source",
+      "official_url": "user_or_web_verified_official_url_required",
+      "source_confidence": "not_run_until_user_or_web_source_verified",
+      "priority": "medium",
+      "target_blocker": "external_source_diversity",
+      "expected_role": "independent non-SDD top-down pedestrian/drone t50/t100 source if terms permit",
+      "why_needed": "A non-ETH/UCY/TrajNet source would test whether M3W is broader than the current source families.",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": true,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "/Users/yangyue/Downloads/AerialMPT",
+        "/Users/yangyue/Downloads/World/external_data/AerialMPT"
+      ],
+      "conversion_after_user_path": [
+        "verify official source and terms",
+        "audit coordinate unit, frame step, track length, scene identity, and agent type",
+        "convert only if no-leakage source-level split is possible"
+      ],
+      "claim_if_missing": "future_external_expansion_only"
+    }
+  ],
+  "target_status": [
+    {
+      "id": "ucy_crowd_original",
+      "priority": "critical",
+      "target_blocker": "UCY_students_t50_source_support",
+      "blocker_status": "blocked_narrowed",
+      "auto_download_allowed": false,
+      "local_candidates": [
+        {
+          "path": "/Users/yangyue/Downloads/UCY",
+          "exists": false,
+          "kind": "missing"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/UCY",
+          "exists": false,
+          "kind": "missing"
+        }
+      ],
+      "local_path_found": true,
+      "can_claim_converted_now": false,
+      "can_claim_source_diversity_repair_now": false,
+      "reason": "Stage42-CC found no unused independent ready-to-claim t50 source"
+    },
+    {
+      "id": "eth_biwi_original",
+      "priority": "critical",
+      "target_blocker": "ETH_seq_t50_source_support",
+      "blocker_status": "blocked",
+      "auto_download_allowed": false,
+      "local_candidates": [
+        {
+          "path": "/Users/yangyue/Downloads/ETH_UCY",
+          "exists": false,
+          "kind": "missing"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/ETH",
+          "exists": false,
+          "kind": "missing"
+        }
+      ],
+      "local_path_found": true,
+      "can_claim_converted_now": false,
+      "can_claim_source_diversity_repair_now": false,
+      "reason": "Stage42-CC found no unused independent ready-to-claim t50 source"
+    },
+    {
+      "id": "trajnetplusplus_official",
+      "priority": "high",
+      "target_blocker": "TrajNet_raw_long_t100_source_support",
+      "blocker_status": "blocked",
+      "auto_download_allowed": false,
+      "local_candidates": [
+        {
+          "path": "/Users/yangyue/Downloads/trajnetplusplusdataset",
+          "exists": false,
+          "kind": "missing"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/TrajNet",
+          "exists": false,
+          "kind": "missing"
+        }
+      ],
+      "local_path_found": true,
+      "can_claim_converted_now": false,
+      "can_claim_source_diversity_repair_now": false,
+      "reason": "Stage42-CC found no unused independent ready-to-claim t50 source"
+    },
+    {
+      "id": "opentraj_toolkit",
+      "priority": "medium",
+      "target_blocker": "loader_and_metadata_support",
+      "blocker_status": "not_applicable",
+      "auto_download_allowed": false,
+      "local_candidates": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj",
+          "exists": false,
+          "kind": "missing"
+        }
+      ],
+      "local_path_found": true,
+      "can_claim_converted_now": false,
+      "can_claim_source_diversity_repair_now": false,
+      "reason": "Stage42-CC found no unused independent ready-to-claim t50 source"
+    },
+    {
+      "id": "aerialmpt_or_other_topdown",
+      "priority": "medium",
+      "target_blocker": "external_source_diversity",
+      "blocker_status": "not_applicable",
+      "auto_download_allowed": false,
+      "local_candidates": [
+        {
+          "path": "/Users/yangyue/Downloads/AerialMPT",
+          "exists": false,
+          "kind": "missing"
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/AerialMPT",
+          "exists": false,
+          "kind": "missing"
+        }
+      ],
+      "local_path_found": false,
+      "can_claim_converted_now": false,
+      "can_claim_source_diversity_repair_now": false,
+      "reason": "Stage42-CC found no unused independent ready-to-claim t50 source"
+    }
+  ],
+  "next_commands_after_user_data": [
+    "run a source-specific conversion script for the provided path",
+    "run no-leakage audit with source-level train/internal-val/final-test split",
+    "run protected t50/t100 source-CV only after terms and split are verified",
+    "update paper package only after fresh final-test evidence exists"
+  ],
+  "user_action_required": [
+    {
+      "priority": "critical",
+      "dataset": "UCY Crowd Data original source",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "secondary_url": null,
+      "action": "Provide a legal local path or proof of accepted terms before conversion.",
+      "why": "Stage42-CB/CC show UCY t50 evidence is source-concentrated; another independent UCY/students-family long source is needed for source-CV."
+    },
+    {
+      "priority": "critical",
+      "dataset": "ETH / BIWI walking pedestrians original source",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "secondary_url": null,
+      "action": "Provide a legal local path or proof of accepted terms before conversion.",
+      "why": "ETH_seq t50 is still blocked because ETH-Person XML technical signal did not safely repair the ETH_seq holdout and terms remain unresolved."
+    },
+    {
+      "priority": "high",
+      "dataset": "TrajNet++ official challenge/source page",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "secondary_url": "https://www.aicrowd.com/challenges/trajnet-a-trajectory-forecasting-challenge",
+      "action": "Provide a legal local path or proof of accepted terms before conversion.",
+      "why": "Stage42-BV/CC show local TrajNet rows are dominated by short snippets or synthetic diagnostic data, not legal raw long-track t100 support."
+    },
+    {
+      "priority": "medium",
+      "dataset": "Additional legal top-down pedestrian/drone long-track source",
+      "official_url": "user_or_web_verified_official_url_required",
+      "secondary_url": null,
+      "action": "Provide a legal local path or proof of accepted terms before conversion.",
+      "why": "A non-ETH/UCY/TrajNet source would test whether M3W is broader than the current source families."
+    }
+  ],
+  "claim_boundary": {
+    "inventory_counted_as_converted": false,
+    "registry_only_counted_as_converted": false,
+    "auto_download_executed": false,
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_cd_gate": {
+    "source": "fresh_stage42_cd_source_diversity_acquisition_package",
+    "gates": {
+      "bv_input_verified": true,
+      "cc_input_verified": true,
+      "official_targets_present": true,
+      "critical_targets_present": true,
+      "manual_terms_blockers_explicit": true,
+      "no_auto_download_executed": true,
+      "not_counted_as_converted": true,
+      "source_diversity_not_overclaimed": true,
+      "next_commands_defined": true,
+      "user_action_written": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_cd_source_diversity_acquisition_package_pass"
+  }
+}

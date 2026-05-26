@@ -166,3 +166,25 @@ Stage42-CC confirms that the Stage42-CB source-diversity caveat remains active. 
 - Do not count alternate representations, registry-only paths, or synthetic/diagnostic rows as converted/evaluated external evidence.
 - The current A-journal package can claim protected major-source robustness, not broad source-level generalization.
 <!-- STAGE42_CC_REFRESH:END -->
+
+<!-- STAGE42_CD_REFRESH:START -->
+## Stage42-CD Source Diversity Acquisition Package
+
+- source: `fresh_stage42_cd_source_diversity_acquisition_package`
+- verdict: `stage42_cd_source_diversity_acquisition_package_pass`
+- official targets: `5`
+- auto-download targets: `0`
+- manual/terms targets: `4`
+- local path families found: `4`
+- converted datasets now: `0`
+- source-diversity repair ready now: `false`
+- broad source-level generalization claim allowed: `false`
+
+Stage42-CD converts the CC source-diversity blocker into an actionable acquisition package. It identifies UCY Crowd Data, ETH/BIWI, TrajNet++, OpenTraj toolkit/reference, and an additional legal top-down pedestrian/drone source as the next acquisition/conversion targets. It intentionally performs no automatic download and makes no conversion claim, because the priority targets either require manual terms/path verification or are toolkit/challenge references rather than independent permission to use data.
+
+### Updated Gap After CD
+
+- The next paper-critical data action is not another source-concentrated t50 report; it is legal independent source acquisition plus conversion/no-leakage/source-CV.
+- Existing local paths are useful, but current evidence still cannot claim broad source-level generalization.
+- A future Stage42 source-diversity repair must start from a user-provided legal local path or verified official terms.
+<!-- STAGE42_CD_REFRESH:END -->

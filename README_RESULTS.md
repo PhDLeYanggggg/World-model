@@ -3768,3 +3768,34 @@ Artifacts:
 - `outputs/stage42_long_research/user_action_required_independent_t50_sources_stage42.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_independent_t50_source_inventory.py` passed, focused CC/CB tests passed with 10 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 528 tests. A prior `python3 -m pytest tests` run hit the known x86_64 Conda/OpenMP/subprocess crash path, so the authoritative full test result is the arm64 `.venv-pytorch` run.
+
+## Stage42-CD Source Diversity Acquisition Package
+
+```text
+source = fresh_stage42_cd_source_diversity_acquisition_package
+verdict = stage42_cd_source_diversity_acquisition_package_pass
+gates = 13 / 13
+official_targets = 5
+critical_targets = 2
+auto_download_targets = 0
+manual_or_terms_targets = 4
+local_paths_found = 4
+converted_datasets_now = 0
+source_diversity_repair_ready_now = false
+broad_source_generalization_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CD turns the Stage42-CB/CC source-diversity blocker into an explicit official/manual acquisition package. It lists UCY Crowd Data, ETH/BIWI, TrajNet++, OpenTraj toolkit, and an additional legal top-down pedestrian/drone source target. Four local path families are present, but none are counted as converted datasets or as source-diversity repair. No auto-download was executed because the priority targets require manual terms/path verification or are toolkit/challenge references rather than independent data permission.
+
+The correct conclusion remains conservative: BY/BZ protected t50 repair is paper-usable with source-concentration caveat, but broad source-level generalization is still blocked until a legal independent t50-capable source is provided, converted, no-leakage audited, selected on train/internal-val, and evaluated once on final test.
+
+Artifacts:
+
+- `outputs/stage42_long_research/source_diversity_acquisition_package_stage42.md`
+- `outputs/stage42_long_research/source_diversity_acquisition_package_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_cd_gate.md`
+- `outputs/stage42_long_research/user_action_required_source_diversity_stage42.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_source_diversity_acquisition_package.py` passed, focused CD/CC/BV tests passed with 12 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 532 tests.

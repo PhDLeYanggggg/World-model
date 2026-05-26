@@ -1096,3 +1096,20 @@ smc_enabled = false
 ```
 
 Stage42-CC confirms the Stage42-CB caveat rather than repairing it. The local scan found t50-capable files, but none can be counted as an unused independent ready-to-claim real external source. Four are alternate/current-source representations and one is synthetic/diagnostic. The M3W-Neural v1 claim therefore remains protected dataset-local/raw-frame 2.5D with source-diversity limitation; broad source-level generalization still requires legally enabled independent top-down pedestrian data plus conversion, no-leakage, validation-only selection, and final test.
+
+## Stage42-CD Source Diversity Acquisition Package
+
+```text
+source = fresh_stage42_cd_source_diversity_acquisition_package
+verdict = stage42_cd_source_diversity_acquisition_package_pass
+gates = 13 / 13
+official_targets = 5
+auto_download_targets = 0
+converted_datasets_now = 0
+source_diversity_repair_ready_now = false
+broad_source_generalization_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CD adds the official/manual acquisition package for the remaining source-diversity blocker. The target list covers UCY Crowd Data, ETH/BIWI, TrajNet++, OpenTraj as a toolkit/reference, and an additional legal top-down pedestrian/drone source. It intentionally does not download, convert, or claim success. Current M3W-Neural v1 remains protected dataset-local/raw-frame 2.5D; broad source-level generalization still waits on legal independent source conversion and source-CV.
