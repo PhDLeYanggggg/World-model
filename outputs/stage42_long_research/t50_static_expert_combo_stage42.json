@@ -1,0 +1,103 @@
+{
+  "source": "cached_verified_report_level_preflight",
+  "stage": "Stage42-Q validation-only t50 static expert plus gain/harm combo preflight",
+  "generated_at_utc": "2026-05-26T02:45:52.340387+00:00",
+  "git_commit": "2cc68d5",
+  "python": "3.9.13",
+  "machine": "x86_64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "Stage42-Q 是 validation-only static expert + t50 gain/harm selector 组合评估，不是 metric 或 seconds-level 结果。",
+    "future waypoints / future endpoints 只作为 train/val supervised labels 和 eval labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals。",
+    "feature normalization 只使用 train split statistics。",
+    "combo source policy 只在 validation 上选择，test 只最终评估一次。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "bb1a7aceba8c957606cef96f0d76c1848ea589e5a4585ba5c1a40b19c0bc5851",
+  "rows": {
+    "Stage42-J static-gated": {
+      "source": "cached_verified",
+      "ade_all": 0.036222114075724364,
+      "ade_t50": 0.036875348395170704,
+      "ade_t50_ci_low": 0.016268421586476293,
+      "ade_hard": 0.03970549853881511,
+      "easy_degradation": 0.0,
+      "fde_t50": 0.11663789673246368
+    },
+    "Stage42-P t50 gain/harm": {
+      "source": "cached_verified",
+      "ade_all": 0.051537041008552574,
+      "ade_t50": 0.006595599081553938,
+      "ade_t50_ci_low": -0.01793137718168797,
+      "ade_hard": 0.05325620637574713,
+      "easy_degradation": 0.008580272800932839,
+      "fde_t50": 0.057430632009597526
+    },
+    "Stage42-O explicit gain/harm": {
+      "source": "cached_verified",
+      "ade_all": 0.0526457864037421,
+      "ade_t50": -0.0007755414586538093,
+      "ade_t50_ci_low": -0.0175306102676199,
+      "ade_hard": 0.0535270529782426,
+      "easy_degradation": 0.015491233410829327,
+      "fde_t50": 0.05761440213671524
+    }
+  },
+  "complementarity": {
+    "p_beats_j_all": true,
+    "p_beats_j_hard": true,
+    "j_beats_p_t50": true,
+    "p_t50_seed_ci_low_negative": true,
+    "both_preserve_easy": true
+  },
+  "diagnostic_envelope": {
+    "source": "diagnostic_only_not_deployable",
+    "ade_all_best_available": 0.0526457864037421,
+    "ade_t50_best_available": 0.036875348395170704,
+    "ade_hard_best_available": 0.0535270529782426,
+    "fde_t50_best_available": 0.11663789673246368,
+    "easy_degradation_worst_available": 0.015491233410829327,
+    "warning": "This envelope is not a deployable policy because it chooses metrics after reading cached reports; it only motivates row-level caching and validation-only combo evaluation."
+  },
+  "row_level_combo_status": {
+    "source": "attempted_not_completed",
+    "reason": "Direct recomputation was too slow because it repeats multi-seed Stage42-J/P checkpoint forward passes and row-level arrays need an NPZ cache before becoming a normal pipeline step.",
+    "next_action": "Build stage42_q_row_prediction_cache.npz containing floor/J/P selected ADE-FDE/switch arrays, then run validation-only combo and bootstrap from cache."
+  },
+  "stage42_q_gate": {
+    "source": "cached_verified_report_level_preflight",
+    "gates": {
+      "cached_reports_available": true,
+      "complementarity_detected": true,
+      "row_level_combo_not_claimed_complete": true,
+      "row_cache_required": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 7,
+    "total": 7,
+    "verdict": "stage42_q_preflight_partial_row_cache_required"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false,
+    "report_level_preflight_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

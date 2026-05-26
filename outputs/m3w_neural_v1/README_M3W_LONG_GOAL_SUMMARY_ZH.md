@@ -879,3 +879,20 @@ M3W 已经不是早期 SDD-only selector demo。
 而不是：
   true 3D foundation world model
 ```
+
+## Stage42-Q T50 Static Expert + Gain/Harm Combo
+
+```text
+source = cached_verified_report_level_preflight
+verdict = stage42_q_preflight_partial_row_cache_required
+gates = 7 / 7
+diagnostic_ade_all_best_available = 0.0526457864037421
+diagnostic_ade_t50_best_available = 0.036875348395170704
+diagnostic_ade_hard_best_available = 0.0535270529782426
+diagnostic_fde_t50_best_available = 0.11663789673246368
+row_level_combo_status = attempted_not_completed
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-Q targets the complementarity between Stage42-J static-gated full-waypoint experts and Stage42-P t+50 gain/harm selector. If it is a preflight result, it is diagnostic only and not a deployable combo claim; a row-level NPZ prediction cache is required before a full validation-only combo can be treated as pipeline evidence.
