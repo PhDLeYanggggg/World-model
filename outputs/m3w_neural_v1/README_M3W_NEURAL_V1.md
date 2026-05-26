@@ -952,3 +952,19 @@ smc_enabled = false
 ```
 
 Stage42-BA converts the Stage42-AZ t100 warning into an explicit train-only source-CV guard. It leaves one original-train t100-capable source out at a time, selects policy support without final test metrics, and only allows a domain t100 slice if it has at least two safe-positive source folds. No domain currently satisfies that rule. The repaired deployment boundary is therefore clear: all/t50/hard remain positive and easy-safe under the guard, but t100 positive gain is not supported and is guarded to the causal floor.
+
+## Stage42-BU UCY_students T50 Source-Support Audit
+
+```text
+source = fresh_ucy_students_t50_source_support
+verdict = stage42_bu_ucy_students_t50_source_support_pass_blocker_narrowed
+gates = 14 / 14
+independent_t50_capable_sources = UCY_students01, UCY_students03
+additional_independent_t50_sources_still_needed = 1
+source_cv_ready = false
+ucy_students_t50_support_repaired = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BU narrows the remaining calibrated t50 blocker for `UCY_students`. The local `students001` source is t50-capable and independent from the existing `students003` calibrated source, but `students002` is too short for t50 and duplicate/alternate `students001/003` files are not counted as independent. UCY_students therefore still needs one more independent t50-capable same-family source before a protected train/val/holdout source-CV t50 repair can be attempted.

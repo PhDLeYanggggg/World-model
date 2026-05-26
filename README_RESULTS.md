@@ -49,6 +49,26 @@ SMC_enabled = false
 
 Stage42-BT confirms that ETH-Person XML technical h50 signal does **not** safely repair the actual `ETH_seq_eth` calibrated t50 holdout under validation-only selection. ETH-Person terms remain unverified, and ETH_seq still needs same-family/source-compatible support or a stronger source-compatible model.
 
+Latest UCY_students source-support audit:
+
+```text
+Stage42-BU UCY_students t50 source-support audit
+source = fresh_ucy_students_t50_source_support
+verdict = stage42_bu_ucy_students_t50_source_support_pass_blocker_narrowed
+gates = 14 / 14
+local_candidates_audited = 9
+local_paths_found = 9
+independent_t50_capable_sources = UCY_students01, UCY_students03
+new_independent_t50_sources_found = UCY_students01
+additional_independent_t50_sources_still_needed = 1
+source_cv_ready = false
+ucy_students_t50_support_repaired = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BU narrows the `UCY_students` blocker. The local `students001` file is a real additional t50-capable same-family source, while `students002` is locally present but too short for t50 and alternate `students003` / TrajNet / stage5b files are duplicates rather than independent sources. UCY_students therefore still lacks one independent t50-capable students-family source before train/val/holdout source-CV can be attempted.
+
 Previous consolidated human-facing review:
 
 `/Users/yangyue/Downloads/World/README_M3W_FULL_GOAL_REVIEW_ZH.md`
@@ -3537,4 +3557,4 @@ smc_enabled = false
 
 The reader-facing Chinese execution summary has been refreshed through Stage42-BT. It now includes the full route history, major success and failure reasons, Stage42-BS UCY_zara source-family-specific calibrated t50 repair, and Stage42-BT ETH_seq support dry-run blocker. UCY_zara now has a local positive calibrated t50 result (`t50 macro +24.72%`, min fold `+15.10%`, easy max `1.24%`), while ETH_seq remains blocked because ETH-Person XML technical h50 positives do not safely transfer to the `ETH_seq_eth` holdout and ETH-Person terms remain unverified. The summary keeps all claim boundaries explicit: no true-3D, no foundation, no global metric/seconds-level claim, no Stage5C execution, and no SMC.
 
-Verification: `python3 run_stage42_ucy_zara_t50_family_policy.py` passed, `python3 run_stage42_eth_seq_t50_support_dry_run.py` passed, focused Stage42-BS/BT tests passed with 5 tests, and `python3 -m pytest tests` passed with 495 tests.
+Verification: `python3 run_stage42_ucy_zara_t50_family_policy.py` passed, `python3 run_stage42_eth_seq_t50_support_dry_run.py` passed, `python3 run_stage42_ucy_students_t50_source_support.py` passed, focused Stage42-BS/BT/BU tests passed with 7 tests, and `python3 -m pytest tests` passed with 497 tests.

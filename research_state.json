@@ -799,7 +799,7 @@
     "smc_enabled": false
   },
   "latest_execution_summary_readme": {
-    "source": "cached_verified_plus_stage42_bs_bt_summary_refresh",
+    "source": "cached_verified_plus_stage42_bs_bt_bu_summary_refresh",
     "path": "README_M3W_EXECUTION_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "scope": "Detailed Chinese summary of M3W routes tried, failures, success evidence, claim boundaries, Stage42-BS UCY_zara calibrated t50 repair, and Stage42-BT ETH_seq blocker audit.",
@@ -820,8 +820,11 @@
       "stage42_bs_runner": "python3 run_stage42_ucy_zara_t50_family_policy.py -> pass",
       "stage42_bt_runner": "python3 run_stage42_eth_seq_t50_support_dry_run.py -> pass",
       "stage42_bs_bt_focused_pytest": "5 passed",
-      "full_pytest": "python3 -m pytest tests -> 495 passed"
-    }
+      "full_pytest": "python3 -m pytest tests -> 497 passed",
+      "stage42_bu_runner": "python3 run_stage42_ucy_students_t50_source_support.py -> pass",
+      "stage42_bu_focused_pytest": "7 passed with Stage42-BS/BT/BU tests"
+    },
+    "latest_stage42_bu_summary": "UCY_students source-support audit passed 14/14 gates as blocker-narrowing evidence: students001 is a new independent t50-capable source, students003 is existing, students002 is too short; one more independent t50-capable students-family source is still needed."
   },
   "latest_user_requested_research_summary": {
     "source": "fresh_run_plus_stage42_ba_verified",
@@ -15662,6 +15665,41 @@
       "runner": "python3 run_stage42_t100_source_cv_repair.py -> stage42_ba_t100_source_cv_repair_pass_with_t100_blocker (16/16)",
       "focused_pytest": "python3 -m pytest tests/test_stage42_t100_source_cv_repair.py -> 4 passed",
       "full_pytest": "python3 -m pytest tests -> 422 passed"
+    }
+  },
+  "stage42_bu_ucy_students_t50_source_support": {
+    "source": "fresh_ucy_students_t50_source_support",
+    "report": "outputs/stage42_long_research/ucy_students_t50_source_support_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bu_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_ucy_students_t50_sources_stage42.md",
+    "verdict": "stage42_bu_ucy_students_t50_source_support_pass_blocker_narrowed",
+    "gates": "14/14",
+    "local_candidates_audited": 9,
+    "local_paths_found": 9,
+    "independent_t50_capable_sources": [
+      "UCY_students01",
+      "UCY_students03"
+    ],
+    "new_independent_t50_sources_found": [
+      "UCY_students01"
+    ],
+    "additional_independent_t50_sources_still_needed": 1,
+    "source_cv_ready": false,
+    "ucy_students_t50_support_repaired": false,
+    "remaining_blocker": "Need one more independent t50-capable UCY_students-family source before train/val/holdout source-CV can be attempted.",
+    "verification": {
+      "runner": "python3 run_stage42_ucy_students_t50_source_support.py -> 14/14",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_ucy_students_t50_source_support.py tests/test_stage42_eth_seq_t50_support_dry_run.py tests/test_stage42_ucy_zara_t50_family_policy.py -> 7 passed",
+      "full_pytest": "python3 -m pytest tests -> 497 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "positive_ucy_students_t50_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
     }
   }
 }

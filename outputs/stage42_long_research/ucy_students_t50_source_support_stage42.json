@@ -1,0 +1,454 @@
+{
+  "source": "fresh_ucy_students_t50_source_support",
+  "stage": "Stage42-BU UCY_students T50 Source-Support Audit",
+  "generated_at_utc": "2026-05-26T15:20:36.357796+00:00",
+  "git_commit": "b530050",
+  "input_hash": "a543cd798b4bd28eaa7e860c2fd7ddbcb145964b1d33a96119f2deb2a3ef4ab9",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BU 只审计 UCY_students calibrated t50 source-family support，不训练神经模型。",
+    "UCY_students03 已在 calibrated subset 中；本步骤检查本地 students001/002/003 是否提供独立 t50-capable support。",
+    "alternate formats / duplicate copies 不能算新的 independent source。",
+    "future endpoints 只作为 baseline error label，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "br_verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass",
+  "bs_verdict": "stage42_bs_ucy_zara_t50_family_policy_pass_positive",
+  "bt_verdict": "stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed",
+  "candidate_audit": [
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students01_raw",
+      "independent_key": "UCY_students01",
+      "path": "external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+      "role": "canonical_independent_candidate",
+      "notes": "long UCY students001 local source",
+      "path_exists": true,
+      "rows": 21813,
+      "agents": 415,
+      "unique_frames": 444,
+      "common_frame_step": 10,
+      "max_track_points": 352,
+      "median_track_points": 41.0,
+      "horizon_counts": {
+        "10": 17707,
+        "25": 12289,
+        "50": 6445,
+        "100": 1949
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 6134,
+        "strongest_baseline": "damped_velocity_0p25",
+        "improvement_vs_constant_velocity": 0.36076107959073506,
+        "constant_velocity_mean_fde": 6.048271273452597,
+        "strongest_mean_fde": 3.866290399184208
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students01_trajnet_duplicate",
+      "independent_key": "UCY_students01",
+      "path": "external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+      "role": "alternate_short_format_duplicate",
+      "notes": "same students001 source, shorter TrajNet slice; not independent",
+      "path_exists": true,
+      "rows": 17820,
+      "agents": 891,
+      "unique_frames": 444,
+      "common_frame_step": 10,
+      "max_track_points": 20,
+      "median_track_points": 20.0,
+      "horizon_counts": {
+        "10": 8910,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 0,
+        "strongest_baseline": null,
+        "improvement_vs_constant_velocity": null,
+        "constant_velocity_mean_fde": null,
+        "strongest_mean_fde": null
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students03_obsmat_existing_calibrated",
+      "independent_key": "UCY_students03",
+      "path": "external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "role": "existing_calibrated_source",
+      "notes": "source already represented by UCY_students03 in calibrated subset",
+      "path_exists": true,
+      "rows": 21846,
+      "agents": 428,
+      "unique_frames": 540,
+      "common_frame_step": 10,
+      "max_track_points": 539,
+      "median_track_points": 38.0,
+      "horizon_counts": {
+        "10": 17608,
+        "25": 11976,
+        "50": 6491,
+        "100": 3413
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 6250,
+        "strongest_baseline": "damped_velocity_0p25",
+        "improvement_vs_constant_velocity": 0.444351310314571,
+        "constant_velocity_mean_fde": 4.606425741739061,
+        "strongest_mean_fde": 2.5595544275305397
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students03_raw_duplicate",
+      "independent_key": "UCY_students03",
+      "path": "external_data/OpenTraj/datasets/UCY/students03/students003.txt",
+      "role": "alternate_format_duplicate",
+      "notes": "same students003 source, not independent from obsmat",
+      "path_exists": true,
+      "rows": 17953,
+      "agents": 434,
+      "unique_frames": 541,
+      "common_frame_step": 10,
+      "max_track_points": 289,
+      "median_track_points": 36.0,
+      "horizon_counts": {
+        "10": 13651,
+        "25": 7953,
+        "50": 2793,
+        "100": 879
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 2596,
+        "strongest_baseline": "damped_velocity_0p25",
+        "improvement_vs_constant_velocity": 0.3345092697133971,
+        "constant_velocity_mean_fde": 6.845414487524838,
+        "strongest_mean_fde": 4.555559886417396
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students02_trajnet_short",
+      "independent_key": "UCY_students02",
+      "path": "external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+      "role": "short_local_candidate",
+      "notes": "students002 is locally present but too short for t50 in this file",
+      "path_exists": true,
+      "rows": 680,
+      "agents": 85,
+      "unique_frames": 368,
+      "common_frame_step": 10,
+      "max_track_points": 8,
+      "median_track_points": 8.0,
+      "horizon_counts": {
+        "10": 0,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 0,
+        "strongest_baseline": null,
+        "improvement_vs_constant_velocity": null,
+        "constant_velocity_mean_fde": null,
+        "strongest_mean_fde": null
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students01_trajnet_train_duplicate",
+      "independent_key": "UCY_students01",
+      "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+      "role": "duplicate_copy",
+      "notes": "duplicate of students001 source",
+      "path_exists": true,
+      "rows": 17820,
+      "agents": 891,
+      "unique_frames": 444,
+      "common_frame_step": 10,
+      "max_track_points": 20,
+      "median_track_points": 20.0,
+      "horizon_counts": {
+        "10": 8910,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 0,
+        "strongest_baseline": null,
+        "improvement_vs_constant_velocity": null,
+        "constant_velocity_mean_fde": null,
+        "strongest_mean_fde": null
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students03_trajnet_train_duplicate",
+      "independent_key": "UCY_students03",
+      "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+      "role": "duplicate_copy",
+      "notes": "duplicate/short slice of students003 source",
+      "path_exists": true,
+      "rows": 14020,
+      "agents": 701,
+      "unique_frames": 538,
+      "common_frame_step": 10,
+      "max_track_points": 20,
+      "median_track_points": 20.0,
+      "horizon_counts": {
+        "10": 7010,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 0,
+        "strongest_baseline": null,
+        "improvement_vs_constant_velocity": null,
+        "constant_velocity_mean_fde": null,
+        "strongest_mean_fde": null
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students01_stage5b_duplicate",
+      "independent_key": "UCY_students01",
+      "path": "data/stage5b_raw/trajnetplusplusdataset/data/trajnet_original/crowds/students001.txt",
+      "role": "duplicate_copy",
+      "notes": "duplicate of students001 source from stage5b raw bundle",
+      "path_exists": true,
+      "rows": 17820,
+      "agents": 891,
+      "unique_frames": 444,
+      "common_frame_step": 10,
+      "max_track_points": 20,
+      "median_track_points": 20.0,
+      "horizon_counts": {
+        "10": 8910,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 0,
+        "strongest_baseline": null,
+        "improvement_vs_constant_velocity": null,
+        "constant_velocity_mean_fde": null,
+        "strongest_mean_fde": null
+      }
+    },
+    {
+      "source": "fresh_ucy_students_t50_source_support",
+      "source_id": "UCY_students03_stage5b_duplicate",
+      "independent_key": "UCY_students03",
+      "path": "data/stage5b_raw/trajnetplusplusdataset/data/trajnet_original/crowds/students003.txt",
+      "role": "duplicate_copy",
+      "notes": "duplicate/short slice of students003 source from stage5b raw bundle",
+      "path_exists": true,
+      "rows": 14020,
+      "agents": 701,
+      "unique_frames": 538,
+      "common_frame_step": 10,
+      "max_track_points": 20,
+      "median_track_points": 20.0,
+      "horizon_counts": {
+        "10": 7010,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "source_specific_unverified_for_global_claim",
+      "baseline_t50": {
+        "windows": 0,
+        "strongest_baseline": null,
+        "improvement_vs_constant_velocity": null,
+        "constant_velocity_mean_fde": null,
+        "strongest_mean_fde": null
+      }
+    }
+  ],
+  "summary": {
+    "source": "fresh_ucy_students_t50_source_support",
+    "br_existing_calibrated_sources": [
+      "UCY_students03"
+    ],
+    "br_additional_sources_needed_before_bu": 2,
+    "local_candidates_audited": 9,
+    "local_paths_found": 9,
+    "independent_t50_capable_sources": [
+      "UCY_students01",
+      "UCY_students03"
+    ],
+    "independent_t50_capable_source_count": 2,
+    "canonical_sources": {
+      "UCY_students01": "UCY_students01_raw",
+      "UCY_students03": "UCY_students03_obsmat_existing_calibrated"
+    },
+    "new_independent_t50_sources_found": [
+      "UCY_students01"
+    ],
+    "new_independent_t50_source_count": 1,
+    "minimum_independent_sources_needed_for_source_cv": 3,
+    "additional_independent_t50_sources_still_needed": 1,
+    "source_cv_ready": false,
+    "short_or_missing_sources": [
+      {
+        "source_id": "UCY_students01_trajnet_duplicate",
+        "independent_key": "UCY_students01",
+        "horizon_counts": {
+          "10": 8910,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "reason": "not_t50_capable"
+      },
+      {
+        "source_id": "UCY_students02_trajnet_short",
+        "independent_key": "UCY_students02",
+        "horizon_counts": {
+          "10": 0,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "reason": "not_t50_capable"
+      },
+      {
+        "source_id": "UCY_students01_trajnet_train_duplicate",
+        "independent_key": "UCY_students01",
+        "horizon_counts": {
+          "10": 8910,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "reason": "not_t50_capable"
+      },
+      {
+        "source_id": "UCY_students03_trajnet_train_duplicate",
+        "independent_key": "UCY_students03",
+        "horizon_counts": {
+          "10": 7010,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "reason": "not_t50_capable"
+      },
+      {
+        "source_id": "UCY_students01_stage5b_duplicate",
+        "independent_key": "UCY_students01",
+        "horizon_counts": {
+          "10": 8910,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "reason": "not_t50_capable"
+      },
+      {
+        "source_id": "UCY_students03_stage5b_duplicate",
+        "independent_key": "UCY_students03",
+        "horizon_counts": {
+          "10": 7010,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "reason": "not_t50_capable"
+      }
+    ],
+    "ucy_students_t50_support_repaired": false,
+    "remaining_blocker": "UCY_students still lacks one independent t50-capable same-family source for train/val/holdout source-CV."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "duplicate_formats_counted_as_independent": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "source_specific_annotation_step_subset_claim_allowed": true,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "positive_ucy_students_t50_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required": [
+    {
+      "priority": "high",
+      "action": "provide_or_locate_one_more_independent_t50_capable_UCY_students_source",
+      "notes": "students001 and students003 are t50-capable; students002 local TrajNet file is too short for t50. Need one more independent students-family long source for train/val/holdout source-CV."
+    }
+  ],
+  "stage42_bu_gate": {
+    "source": "fresh_ucy_students_t50_source_support",
+    "gates": {
+      "br_input_verified": true,
+      "bs_input_verified": true,
+      "bt_input_verified": true,
+      "local_candidates_audited": true,
+      "duplicate_sources_not_counted": true,
+      "t50_capability_quantified": true,
+      "source_cv_not_overclaimed": true,
+      "blocker_narrowed": true,
+      "no_future_inputs": true,
+      "user_action_generated": true,
+      "global_metric_blocked": true,
+      "global_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_bu_ucy_students_t50_source_support_pass_blocker_narrowed"
+  }
+}
