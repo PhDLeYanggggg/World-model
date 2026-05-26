@@ -136,6 +136,29 @@ SMC_enabled = false
 
 Stage42-AH refreshes the paper claim boundary after AF/AG. The allowed claim is now stronger than Stage42-AE: global all/t50/hard remain positive, horizon=25 no longer harms, and ETH_UCY t50/FDE@50 lower bounds are positive. The remaining limitations are also explicit: horizon=25 is a floor/non-harm slice rather than positive dynamics, TrajNet|100 remains safety-limited, and metric/seconds/true-3D/foundation claims remain rejected.
 
+Latest Stage42-AI TrajNet t100 easy-safety repair:
+
+```text
+source = fresh_run_from_stage42ag_trajnet_t100_validation_easy_safety
+verdict = stage42_ai_trajnet_t100_safety_repair_pass
+gates = 13 / 13
+target_slice = TrajNet|100
+validation_easy_nonharm_threshold = 0.0
+uses_test_metrics_for_threshold = false
+TrajNet100_ADE_CI_low_after = 0.048714
+TrajNet100_easy_CI_high_before = 0.084984
+TrajNet100_easy_CI_high_after = 0.000000
+global_ADE_all_CI_low = 0.085978
+global_ADE_t50_CI_low = 0.058513
+global_ADE_t100_raw_frame_diagnostic_CI_low = 0.068349
+global_ADE_hard_failure_CI_low = 0.090662
+global_easy_degradation_CI_high = 0.001168
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AI repairs the remaining TrajNet|100 easy-safety limit with a validation-only source safety guard. This strengthens t100 raw-frame diagnostic evidence and removes the TrajNet|100 easy harm, but it still does not permit seconds-level, metric, true-3D, foundation, Stage5C, or SMC claims.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`

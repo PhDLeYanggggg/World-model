@@ -1,13 +1,13 @@
 {
-  "current_stage": "stage42_ah_post_repair_claim_refresh",
-  "current_verdict": "stage42_ah_post_repair_claim_refresh_pass",
+  "current_stage": "stage42_ai_trajnet_t100_easy_safety_repair",
+  "current_verdict": "stage42_ai_trajnet_t100_safety_repair_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF/AG/AH evidence refreshes, and the user-requested detailed route review.",
+    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF/AG/AH/AI evidence refreshes, and the user-requested detailed route review.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AH post-repair claim refresh passed 11/11 gates; global all/t50/hard/FDE@50 lower bounds are positive after AF/AG, while horizon25 floor/non-harm, TrajNet t100 safety limits, and no-metric/no-seconds boundaries remain explicit.",
+    "latest_branch_success": "Stage42-AI TrajNet|100 validation-only easy-safety repair passed 13/13 gates; TrajNet|100 easy CI high drops to 0 while ADE lower bound remains positive, but t100 stays raw-frame diagnostic.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -24,7 +24,9 @@
       "stage42_ag_runner": "pass",
       "stage42_ag_focused_pytest": "2 passed",
       "stage42_ah_runner": "pass",
-      "stage42_ah_focused_pytest": "2 passed"
+      "stage42_ah_focused_pytest": "2 passed",
+      "stage42_ai_runner": "pass",
+      "stage42_ai_focused_pytest": "2 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -13702,5 +13704,45 @@
       "smc_enabled": false
     },
     "interpretation": "Stage42-AH updates the paper-ready claim matrix after AF/AG. The evidence is stronger than Stage42-AE but still bounded to protected dataset-local raw-frame 2.5D."
+  },
+  "stage42_ai_trajnet_t100_easy_safety_repair": {
+    "source": "fresh_run_from_stage42ag_trajnet_t100_validation_easy_safety",
+    "report": "outputs/stage42_long_research/trajnet_t100_safety_repair_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ai_gate.md",
+    "csv": "outputs/stage42_long_research/trajnet_t100_safety_repair_stage42.csv",
+    "gates_passed": 13,
+    "gates_total": 13,
+    "verdict": "stage42_ai_trajnet_t100_safety_repair_pass",
+    "source_repair_rule": {
+      "target_slice": "TrajNet|100",
+      "validation_easy_nonharm_threshold": 0.0,
+      "uses_test_metrics_for_threshold": false,
+      "fallback_action": "choose easy-safe positive validation source, otherwise floor"
+    },
+    "metrics": {
+      "ade_all_ci_low": 0.0859783492681093,
+      "ade_t50_ci_low": 0.05851255877278698,
+      "ade_t100_raw_frame_diagnostic_ci_low": 0.06834922663403784,
+      "ade_hard_failure_ci_low": 0.0906618058871814,
+      "easy_degradation_ci_high": 0.00116827749002908,
+      "fde_t50_ci_low": 0.14823015795452749
+    },
+    "repair_effect": {
+      "trajnet100_ade_before": 0.09875907078956987,
+      "trajnet100_ade_after": 0.11720354460558946,
+      "trajnet100_ade_ci_low_after": 0.048714385704072966,
+      "trajnet100_easy_ci_high_before": 0.08498424090178214,
+      "trajnet100_easy_ci_high_after": 0.0,
+      "trajnet100_safety_repaired": true
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Stage42-AI repairs the TrajNet|100 easy-safety limitation with validation-only source choice. t100 remains raw-frame diagnostic, not seconds-level."
   }
 }

@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair，以及 Stage42-AH post-repair claim refresh；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh，以及 Stage42-AI TrajNet t100 easy-safety repair；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -18,10 +18,12 @@ python3 run_stage42_unified_row_cache_stress.py = pass
 python3 run_stage42_weak_slice_guard.py = pass
 python3 run_stage42_eth_t50_fde_source_repair.py = pass
 python3 run_stage42_post_repair_claim_refresh.py = pass
+python3 run_stage42_trajnet_t100_safety_repair.py = pass
 python3 -m pytest tests/test_stage42_unified_ablation_evidence.py = 3 passed
 python3 -m pytest tests/test_stage42_weak_slice_guard.py = 3 passed
 python3 -m pytest tests/test_stage42_eth_t50_fde_source_repair.py = 2 passed
 python3 -m pytest tests/test_stage42_post_repair_claim_refresh.py = 2 passed
+python3 -m pytest tests/test_stage42_trajnet_t100_safety_repair.py = 2 passed
 python3 -m pytest tests = 346 passed
 ```
 
@@ -61,7 +63,7 @@ python3 -m pytest tests = 346 passed
 | Stage37 causal history + goal prototype | 构建 K=8/16/32/64 past-only history windows、scene-agnostic goal prototypes、switchability/gain/harm/conformal safety。 | 成功，是 external deployable 转折点。 | all +13.48%、t+50 +8.46%、t50 CI [+7.69%, +9.15%]、hard/failure +15.54%、easy degradation 0.041%、16/16 gates。 |
 | Stage38 bounded correction / dynamics head | 在 Stage37 保护下训练 bounded correction。 | 不部署。 | correction 未安全超过 Stage37；容易伤 easy 或不能稳定带来 dynamics lift。 |
 | Stage39/40 Transformer / JEPA / Hybrid neural | 训练 Causal Transformer、JEPA auxiliary、Hybrid 和 Stage37-protected neural。 | 无保护失败，受保护方向保留。 | neural without fallback 灾难性伤 easy；JEPA 无稳定 downstream lift；Hybrid 没有直接超过 Stage37，因此 Stage37 仍是 floor。 |
-| Stage41/42 protected neural / full-waypoint / row cache | 做 composite-tail safe-switch、full-waypoint dynamics、row prediction cache、UCY full-waypoint source、unified row-level cache、ablation、paper claim audit、标定刷新、weak-slice guard、ETH_UCY t50/FDE source repair 和 post-repair claim refresh。 | 成功形成 protected 2.5D world-state evidence package。 | Stage42-X 统一 row-level full-waypoint cache positive；Stage42-Y/Z/AA/AB/AC 明确贡献和边界；Stage42-AF 修复 horizon=25 weak slice；Stage42-AG 修复 ETH_UCY t50/FDE@50 下界；Stage42-AH 明确剩余 t100/floor/metric 限制；但仍依赖 safety floor，不是 ungated neural / true 3D。 |
+| Stage41/42 protected neural / full-waypoint / row cache | 做 composite-tail safe-switch、full-waypoint dynamics、row prediction cache、UCY full-waypoint source、unified row-level cache、ablation、paper claim audit、标定刷新、weak-slice guard、ETH_UCY t50/FDE source repair、post-repair claim refresh 和 TrajNet t100 easy-safety repair。 | 成功形成 protected 2.5D world-state evidence package。 | Stage42-X 统一 row-level full-waypoint cache positive；Stage42-Y/Z/AA/AB/AC 明确贡献和边界；Stage42-AF 修复 horizon=25 weak slice；Stage42-AG 修复 ETH_UCY t50/FDE@50 下界；Stage42-AI 修复 TrajNet|100 easy safety；但仍依赖 safety floor，不是 ungated neural / true 3D。 |
 
 ### 失败路线与失败原因
 
@@ -92,6 +94,7 @@ python3 -m pytest tests = 346 passed
 | Stage42-AF weak-slice guard | ADE all +9.068%，t50 +6.109%，t50 CI low +5.367%，hard/failure +9.465%，easy degradation CI high 0.623%；horizon=25 从 -0.478% 修复到 0。 | 只用 Stage42-R validation score `<0.02` 的预设 guard，把低 margin 非 UCY domain/horizon choices 回退 safety floor；没有用 test 调阈值。 |
 | Stage42-AG ETH_UCY t50/FDE source repair | ADE all +9.166%，t50 +6.496%，t50 CI low +5.851%，hard/failure +9.572%，easy degradation CI high 0.335%；ETH_UCY ADE@50 CI low 从 -1.322% 到 +0.282%，FDE@50 CI low 从 -4.199% 到 +2.104%。 | 只用 validation FDE@50 支持来决定 `ETH_UCY|50` 是否切到 static expert，否则回退 floor；修复 Stage42-AF 剩余 ETH_UCY t50/FDE 下界弱点。 |
 | Stage42-AH post-repair claim refresh | global all/t50/hard/FDE@50 CI low 均为正；horizon=25 为 floor/non-harm；ETH_UCY t50/FDE limitation 修复；TrajNet|100 safety-limited；metric/seconds claim rejected。 | 把 AF/AG 后能写的 claim 和仍需写的 limitation 绑定到 paper-ready matrix，避免旧限制残留或过度 claim。 |
+| Stage42-AI TrajNet t100 safety repair | TrajNet|100 ADE CI low +4.871%，easy CI high 从 8.498% 降到 0；global t100 raw-frame diagnostic CI low +6.835%，global easy degradation CI high 0.117%。 | 只用 validation easy-degradation 选 easy-safe positive source；修复 TrajNet|100 safety limit，但 t100 仍只是 raw-frame diagnostic。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界
@@ -158,7 +161,7 @@ SMC-ready model
 5. 后面我开始训练 neural dynamics。无保护 Transformer/JEPA/Hybrid 多次失败；有效结果都来自 Stage37/teacher floor 保护下的 bounded / safe-switch neural package。
 6. Stage41/42 把结果从 endpoint / selector 推到 all-agent、full-waypoint、row-level cache 和 retrained ablation evidence；这比早期 demo 更像研究证据链。
 7. 失败路线也很明确：JEPA non-collapse 但 downstream 无稳定 lift；hard-class selector 会严重伤 easy；ordinary residual/correction 不安全；ungated neural dynamics 不可部署；endpoint success 不能自动转成 full-waypoint success。
-8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF/AG/AH 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新、weak-slice safety repair、ETH_UCY t50/FDE source repair 和 post-repair claim refresh。
+8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF/AG/AH/AI 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新、weak-slice safety repair、ETH_UCY t50/FDE source repair、post-repair claim refresh 和 TrajNet t100 safety repair。
 9. 仍不能说 true 3D、metric、seconds-level、foundation，也不能执行 Stage5C 或 SMC。
 
 没有纳入为“已完成结果”的内容：
@@ -1007,3 +1010,38 @@ Stage42-AH 不训练新模型，而是把 AF/AG 后的 stress 和 claim boundary
 - horizon=25 是 floor/non-harm，不是 positive dynamics contribution。
 - TrajNet|100 仍 safety-limited，t100 仍只能 raw-frame diagnostic。
 - metric / seconds-level / true 3D / foundation / Stage5C / SMC claim 仍拒绝。
+
+## Stage42-AI TrajNet T100 Easy-Safety Repair
+
+```text
+source = fresh_run_from_stage42ag_trajnet_t100_validation_easy_safety
+verdict = stage42_ai_trajnet_t100_safety_repair_pass
+gates = 13 / 13
+target_slice = TrajNet|100
+validation_easy_nonharm_threshold = 0.0
+uses_test_metrics_for_threshold = false
+TrajNet100_ADE_CI_low_after = 0.048714
+TrajNet100_easy_CI_high_before = 0.084984
+TrajNet100_easy_CI_high_after = 0.000000
+global_ADE_all_CI_low = 0.085978
+global_ADE_t50_CI_low = 0.058513
+global_ADE_t100_raw_frame_diagnostic_CI_low = 0.068349
+global_ADE_hard_failure_CI_low = 0.090662
+global_easy_degradation_CI_high = 0.001168
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AI 修复的是 AH 里剩下的 `TrajNet|100` easy-safety 风险。它同样不使用 test 调阈值，只看 validation easy-degradation：
+
+- 如果某个 source 在 validation 上 easy degradation 大于 0，就不把它作为 t100 safety source。
+- 如果另一个 source 在 validation 上正收益且 easy-safe，就使用它。
+- 如果都不安全，就回退 floor。
+
+结果：
+
+- `TrajNet|100` easy CI high 从 `0.084984` 降到 `0.0`。
+- `TrajNet|100` ADE lower bound 仍为正。
+- 全局 t100 raw-frame diagnostic lower bound 也为正。
+- 但 t100 仍然只是 raw-frame diagnostic，不是 seconds-level long-horizon claim。
+- metric / true 3D / foundation / Stage5C / SMC 仍然不允许。

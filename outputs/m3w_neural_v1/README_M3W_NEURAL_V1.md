@@ -26,7 +26,7 @@ The required ablation coverage audit is now packaged. It covers no-history, no-n
 
 The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.
 
-The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard. Stage42-AH refreshes the post-repair paper-claim boundary: global all/t50/hard and FDE@50 are stronger, while horizon=25 remains floor/non-harm, TrajNet|100 remains safety-limited, and metric/seconds claims remain rejected.
+The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard. Stage42-AH refreshes the post-repair paper-claim boundary. Stage42-AI repairs the remaining TrajNet|100 easy-safety limit with a validation-only source guard while keeping t100 raw-frame diagnostic only.
 
 ## Stage42-A Data Calibration Follow-Up
 
@@ -172,6 +172,35 @@ metric/seconds claim = rejected
 Interpretation:
 
 The post-repair claim is stronger than Stage42-AE: the old horizon=25 negative slice is now floor/non-harm and ETH_UCY t50/FDE@50 lower bounds are positive. It is still bounded evidence. Horizon=25 should not be described as a positive dynamics contribution, t100 remains raw-frame diagnostic with a TrajNet|100 safety limit, and metric/seconds/true-3D/foundation claims remain disallowed.
+
+### Stage42-AI TrajNet T100 Easy-Safety Repair
+
+Stage42-AI targets the TrajNet|100 safety limitation recorded by Stage42-AH:
+
+- report: `outputs/stage42_long_research/trajnet_t100_safety_repair_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_ai_gate.md`
+- result: Stage42-AI gates `13 / 13`
+
+Key result:
+
+```text
+verdict = stage42_ai_trajnet_t100_safety_repair_pass
+target_slice = TrajNet|100
+validation_easy_nonharm_threshold = 0.0
+uses_test_metrics_for_threshold = false
+TrajNet|100 ADE CI low after = 0.048714
+TrajNet|100 easy CI high before = 0.084984
+TrajNet|100 easy CI high after = 0.000000
+global ADE all CI low = 0.085978
+global ADE t50 CI low = 0.058513
+global ADE t100 raw-frame diagnostic CI low = 0.068349
+global hard/failure CI low = 0.090662
+global easy degradation CI high = 0.001168
+```
+
+Interpretation:
+
+The repair uses validation easy-degradation only. It selects the easy-safe positive validation source for `TrajNet|100`, otherwise floor. This removes the TrajNet|100 easy harm while preserving positive raw-frame diagnostic t100 evidence. It still does not allow seconds-level, metric, true-3D, foundation, Stage5C, or SMC claims.
 
 ## Stage42-B External Validation Follow-Up
 

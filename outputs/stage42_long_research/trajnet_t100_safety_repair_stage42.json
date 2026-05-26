@@ -1,0 +1,1404 @@
+{
+  "source": "fresh_run_from_stage42ag_trajnet_t100_validation_easy_safety",
+  "stage": "Stage42-AI TrajNet|100 validation-only easy-safety repair",
+  "generated_at_utc": "2026-05-26T06:43:13.049315+00:00",
+  "git_commit": "74f4e07",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "input_hash": "560f21ac5e7f79d144fab7d1d2ac6e89dbc9cd72029faebac3f887f0ff181f92",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "Stage42-AI 是 TrajNet|100 validation-only easy-safety repair，不重新训练大模型。",
+    "t100 仍是 raw-frame diagnostic，不是 seconds-level long-horizon claim。",
+    "Source repair 使用 validation easy-degradation，不用 test 调阈值。",
+    "Future waypoints/endpoints 只作为 labels/eval，不作为 inference input。",
+    "External coordinates remain dataset-local / unverified weak metric diagnostic。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage42ah_gate": {
+    "source": "fresh_synthesis_post_repair_claim_refresh",
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage42_ah_post_repair_claim_refresh_pass",
+    "gates": [
+      {
+        "name": "Stage42-AG Input Verified",
+        "passed": true
+      },
+      {
+        "name": "Global All Positive",
+        "passed": true
+      },
+      {
+        "name": "Global T50 Positive",
+        "passed": true
+      },
+      {
+        "name": "Global Hard Positive",
+        "passed": true
+      },
+      {
+        "name": "Global Easy Preserved",
+        "passed": true
+      },
+      {
+        "name": "Horizon25 Non-Harm",
+        "passed": true
+      },
+      {
+        "name": "ETH_UCY T50/FDE Repaired",
+        "passed": true
+      },
+      {
+        "name": "T100 Diagnostic Limitation Preserved",
+        "passed": true
+      },
+      {
+        "name": "Metric/Seconds Claim Rejected",
+        "passed": true
+      },
+      {
+        "name": "Stage5C False",
+        "passed": true
+      },
+      {
+        "name": "SMC False",
+        "passed": true
+      }
+    ]
+  },
+  "source_repair_rule": {
+    "name": "trajnet_t100_validation_easy_safety_guard",
+    "target_slice": "TrajNet|100",
+    "validation_easy_nonharm_threshold": 0.0,
+    "fallback_action": "choose easy-safe positive validation source, otherwise floor",
+    "uses_test_metrics_for_threshold": false
+  },
+  "summary": {
+    "source": "fresh_run_from_trajnet_t100_safety_repair",
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ade_all": {
+      "mean": 0.09369923728285075,
+      "std": 0.0068229440413682604,
+      "ci_low": 0.0859783492681093,
+      "ci_high": 0.1014201252975922
+    },
+    "ade_t50": {
+      "mean": 0.06495706381315831,
+      "std": 0.005695005183447379,
+      "ci_low": 0.05851255877278698,
+      "ci_high": 0.07140156885352965
+    },
+    "ade_t100_raw_frame_diagnostic": {
+      "mean": 0.0867220504321401,
+      "std": 0.016236053212665157,
+      "ci_low": 0.06834922663403784,
+      "ci_high": 0.10509487423024236
+    },
+    "ade_hard_failure": {
+      "mean": 0.09795569707413114,
+      "std": 0.006445607204426437,
+      "ci_low": 0.0906618058871814,
+      "ci_high": 0.10524958826108088
+    },
+    "ade_easy_degradation": {
+      "mean": 0.00044927990217632124,
+      "std": 0.000635377730959411,
+      "ci_low": -0.0002697176856764375,
+      "ci_high": 0.00116827749002908
+    },
+    "fde_t50": {
+      "mean": 0.17785631342714833,
+      "std": 0.026180615567099007,
+      "ci_low": 0.14823015795452749,
+      "ci_high": 0.20748246889976918
+    },
+    "switch_rate": {
+      "mean": 0.23795202420400519,
+      "std": 0.0022498916131308737,
+      "ci_low": 0.23540603216816755,
+      "ci_high": 0.24049801623984282
+    }
+  },
+  "stress": {
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.045498640654735634,
+          "std": 0.015123610341632447,
+          "ci_low": 0.02838466447108905,
+          "ci_high": 0.06261261683838222
+        },
+        "ade_t50": {
+          "mean": 0.024635928198443218,
+          "std": 0.019278114349078248,
+          "ci_low": 0.002820688160982139,
+          "ci_high": 0.0464511682359043
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.02637860412148459,
+          "std": 0.014853612941990479,
+          "ci_low": 0.009570158757711032,
+          "ci_high": 0.043187049485258144
+        },
+        "ade_hard_failure": {
+          "mean": 0.047498590744830836,
+          "std": 0.015375464199949005,
+          "ci_low": 0.03009961509110905,
+          "ci_high": 0.06489756639855263
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.10547615864239786,
+          "std": 0.07461583432912473,
+          "ci_low": 0.021040393452369632,
+          "ci_high": 0.18991192383242608
+        },
+        "switch_rate": {
+          "mean": 0.1684877031774835,
+          "std": 0.028940156478378637,
+          "ci_low": 0.13573883319644717,
+          "ci_high": 0.2012365731585198
+        }
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.11042427567143616,
+          "std": 0.03578662744920846,
+          "ci_low": 0.06992789444870502,
+          "ci_high": 0.15092065689416728
+        },
+        "ade_t50": {
+          "mean": 0.0974649986079477,
+          "std": 0.0175788221194642,
+          "ci_low": 0.07757268874983766,
+          "ci_high": 0.11735730846605774
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.11720354460558946,
+          "std": 0.06052382805361469,
+          "ci_low": 0.048714385704072966,
+          "ci_high": 0.18569270350710596
+        },
+        "ade_hard_failure": {
+          "mean": 0.11769520215980848,
+          "std": 0.03574904148510233,
+          "ci_low": 0.07724135345940641,
+          "ci_high": 0.15814905086021055
+        },
+        "ade_easy_degradation": {
+          "mean": 0.00121430073439129,
+          "std": 0.0017172805673757719,
+          "ci_low": -0.0007289851653917998,
+          "ci_high": 0.0031575866341743797
+        },
+        "fde_t50": {
+          "mean": 0.23541252454524778,
+          "std": 0.02472991495394209,
+          "ci_low": 0.20742799135608553,
+          "ci_high": 0.26339705773441
+        },
+        "switch_rate": {
+          "mean": 0.22485521315610427,
+          "std": 0.012891914439854333,
+          "ci_low": 0.21026663862255401,
+          "ci_high": 0.23944378768965452
+        }
+      },
+      "UCY": {
+        "rows": 9540,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.19609079475331423,
+          "std": 0.06360789564612443,
+          "ci_low": 0.12411168483251812,
+          "ci_high": 0.26806990467411035
+        },
+        "ade_t50": {
+          "mean": 0.12289185352519343,
+          "std": 0.06613734008042096,
+          "ci_low": 0.04805040777131636,
+          "ci_high": 0.1977332992790705
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.21388011127028828,
+          "std": 0.049646858018135016,
+          "ci_low": 0.15769940266155708,
+          "ci_high": 0.2700608198790195
+        },
+        "ade_hard_failure": {
+          "mean": 0.20736023721199923,
+          "std": 0.06735259025059016,
+          "ci_low": 0.1311436064328775,
+          "ci_high": 0.2835768679911209
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.29223556763373615,
+          "std": 0.065273919423141,
+          "ci_low": 0.21837117433171183,
+          "ci_high": 0.36609996093576047
+        },
+        "switch_rate": {
+          "mean": 0.45412299091544367,
+          "std": 0.05168287746502986,
+          "ci_low": 0.395638309410262,
+          "ci_high": 0.5126076724206253
+        }
+      }
+    },
+    "by_horizon": {
+      "10": {
+        "rows": 16726,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.20145268922891502,
+          "std": 0.03190520710618295,
+          "ci_low": 0.16534854860275627,
+          "ci_high": 0.23755682985507376
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.2120068862548028,
+          "std": 0.03389952654769167,
+          "ci_low": 0.17364596073048993,
+          "ci_high": 0.25036781177911566
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.3728127864801307,
+          "std": 0.036589230353800364,
+          "ci_low": 0.3314081745714833,
+          "ci_high": 0.41421739838877814
+        }
+      },
+      "25": {
+        "rows": 15208,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        }
+      },
+      "50": {
+        "rows": 13689,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.06495706381315831,
+          "std": 0.005695005183447379,
+          "ci_low": 0.05851255877278698,
+          "ci_high": 0.07140156885352965
+        },
+        "ade_t50": {
+          "mean": 0.06495706381315831,
+          "std": 0.005695005183447379,
+          "ci_low": 0.05851255877278698,
+          "ci_high": 0.07140156885352965
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.06495706381315831,
+          "std": 0.005695005183447379,
+          "ci_low": 0.05851255877278698,
+          "ci_high": 0.07140156885352965
+        },
+        "ade_easy_degradation": {
+          "mean": 0.001550168426607638,
+          "std": 0.0021922692128710833,
+          "ci_low": -0.00093061772495937,
+          "ci_high": 0.004030954578174646
+        },
+        "fde_t50": {
+          "mean": 0.17785631342714833,
+          "std": 0.026180615567099007,
+          "ci_low": 0.14823015795452749,
+          "ci_high": 0.20748246889976918
+        },
+        "switch_rate": {
+          "mean": 0.3060608274283488,
+          "std": 0.06474813038334629,
+          "ci_low": 0.23279142043590284,
+          "ci_high": 0.3793302344207947
+        }
+      },
+      "100": {
+        "rows": 9905,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.0867220504321401,
+          "std": 0.016236053212665157,
+          "ci_low": 0.06834922663403784,
+          "ci_high": 0.10509487423024236
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0867220504321401,
+          "std": 0.016236053212665157,
+          "ci_low": 0.06834922663403784,
+          "ci_high": 0.10509487423024236
+        },
+        "ade_hard_failure": {
+          "mean": 0.0867220504321401,
+          "std": 0.016236053212665157,
+          "ci_low": 0.06834922663403784,
+          "ci_high": 0.10509487423024236
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.28144034999158674,
+          "std": 0.03380591223355316,
+          "ci_low": 0.2431853590362309,
+          "ci_high": 0.3196953409469426
+        }
+      }
+    },
+    "by_domain_horizon": {
+      "ETH_UCY|10": {
+        "rows": 7223,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.14054095935930547,
+          "std": 0.039042349025597806,
+          "ci_low": 0.096360382348646,
+          "ci_high": 0.18472153636996494
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.15483859200295244,
+          "std": 0.03980387369132623,
+          "ci_low": 0.1097962687096174,
+          "ci_high": 0.1998809152962875
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.3096589598043287,
+          "std": 0.013836045743832032,
+          "ci_low": 0.2940020001242748,
+          "ci_high": 0.32531591948438265
+        }
+      },
+      "ETH_UCY|25": {
+        "rows": 6823,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        }
+      },
+      "ETH_UCY|50": {
+        "rows": 6422,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.024635928198443218,
+          "std": 0.019278114349078248,
+          "ci_low": 0.002820688160982139,
+          "ci_high": 0.0464511682359043
+        },
+        "ade_t50": {
+          "mean": 0.024635928198443218,
+          "std": 0.019278114349078248,
+          "ci_low": 0.002820688160982139,
+          "ci_high": 0.0464511682359043
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.024635928198443218,
+          "std": 0.019278114349078248,
+          "ci_low": 0.002820688160982139,
+          "ci_high": 0.0464511682359043
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.10547615864239786,
+          "std": 0.07461583432912473,
+          "ci_low": 0.021040393452369632,
+          "ci_high": 0.18991192383242608
+        },
+        "switch_rate": {
+          "mean": 0.20730821135679434,
+          "std": 0.1465945555598797,
+          "ci_low": 0.041420855372903326,
+          "ci_high": 0.3731955673406854
+        }
+      },
+      "ETH_UCY|100": {
+        "rows": 5433,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.02637860412148459,
+          "std": 0.014853612941990479,
+          "ci_low": 0.009570158757711032,
+          "ci_high": 0.043187049485258144
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.02637860412148459,
+          "std": 0.014853612941990479,
+          "ci_low": 0.009570158757711032,
+          "ci_high": 0.043187049485258144
+        },
+        "ade_hard_failure": {
+          "mean": 0.02637860412148459,
+          "std": 0.014853612941990479,
+          "ci_low": 0.009570158757711032,
+          "ci_high": 0.043187049485258144
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.14651205595435304,
+          "std": 0.047114422011693385,
+          "ci_low": 0.09319706846127002,
+          "ci_high": 0.19982704344743607
+        }
+      },
+      "TrajNet|10": {
+        "rows": 6443,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.18592937079227193,
+          "std": 0.0844772443537806,
+          "ci_low": 0.090334369646888,
+          "ci_high": 0.28152437193765584
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.19192909927123178,
+          "std": 0.08087260513259888,
+          "ci_low": 0.10041313139822212,
+          "ci_high": 0.28344506714424145
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.31284598272026487,
+          "std": 0.018364509501559687,
+          "ci_low": 0.2920645838919135,
+          "ci_high": 0.33362738154861626
+        }
+      },
+      "TrajNet|25": {
+        "rows": 5685,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        }
+      },
+      "TrajNet|50": {
+        "rows": 4927,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.0974649986079477,
+          "std": 0.0175788221194642,
+          "ci_low": 0.07757268874983766,
+          "ci_high": 0.11735730846605774
+        },
+        "ade_t50": {
+          "mean": 0.0974649986079477,
+          "std": 0.0175788221194642,
+          "ci_low": 0.07757268874983766,
+          "ci_high": 0.11735730846605774
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.0974649986079477,
+          "std": 0.0175788221194642,
+          "ci_low": 0.07757268874983766,
+          "ci_high": 0.11735730846605774
+        },
+        "ade_easy_degradation": {
+          "mean": 0.004376200647690694,
+          "std": 0.0061888823076301025,
+          "ci_low": -0.0026271789702438843,
+          "ci_high": 0.011379580265625272
+        },
+        "fde_t50": {
+          "mean": 0.23541252454524778,
+          "std": 0.02472991495394209,
+          "ci_low": 0.20742799135608553,
+          "ci_high": 0.26339705773441
+        },
+        "switch_rate": {
+          "mean": 0.30255057167985927,
+          "std": 0.03512665501515783,
+          "ci_low": 0.26280101957154356,
+          "ci_high": 0.342300123788175
+        }
+      },
+      "TrajNet|100": {
+        "rows": 3032,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.11720354460558946,
+          "std": 0.06052382805361469,
+          "ci_low": 0.048714385704072966,
+          "ci_high": 0.18569270350710596
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.11720354460558946,
+          "std": 0.06052382805361469,
+          "ci_low": 0.048714385704072966,
+          "ci_high": 0.18569270350710596
+        },
+        "ade_hard_failure": {
+          "mean": 0.11720354460558946,
+          "std": 0.06052382805361469,
+          "ci_low": 0.048714385704072966,
+          "ci_high": 0.18569270350710596
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.3332233948988566,
+          "std": 0.02363241660957678,
+          "ci_low": 0.30648079800022116,
+          "ci_high": 0.35996599179749206
+        }
+      },
+      "UCY|10": {
+        "rows": 3060,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.36895573772764734,
+          "std": 0.12650586059382443,
+          "ci_low": 0.2258008800985441,
+          "ci_high": 0.5121105953567506
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.3818924459884416,
+          "std": 0.13278233764567088,
+          "ci_low": 0.23163508595706409,
+          "ci_high": 0.5321498060198191
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.6481481481481483,
+          "std": 0.13796174805747638,
+          "ci_low": 0.4920297334855918,
+          "ci_high": 0.8042665628107046
+        }
+      },
+      "UCY|25": {
+        "rows": 2700,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        }
+      },
+      "UCY|50": {
+        "rows": 2340,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.12289185352519343,
+          "std": 0.06613734008042096,
+          "ci_low": 0.04805040777131636,
+          "ci_high": 0.1977332992790705
+        },
+        "ade_t50": {
+          "mean": 0.12289185352519343,
+          "std": 0.06613734008042096,
+          "ci_low": 0.04805040777131636,
+          "ci_high": 0.1977332992790705
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_hard_failure": {
+          "mean": 0.12289185352519343,
+          "std": 0.06613734008042096,
+          "ci_low": 0.04805040777131636,
+          "ci_high": 0.1977332992790705
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.29223556763373615,
+          "std": 0.065273919423141,
+          "ci_low": 0.21837117433171183,
+          "ci_high": 0.36609996093576047
+        },
+        "switch_rate": {
+          "mean": 0.5844729344729345,
+          "std": 0.05646886074923314,
+          "ci_low": 0.520572403042308,
+          "ci_high": 0.6483734659035609
+        }
+      },
+      "UCY|100": {
+        "rows": 1440,
+        "source": "fresh_run_from_eth_t50_fde_source_repair",
+        "ade_all": {
+          "mean": 0.21388011127028828,
+          "std": 0.049646858018135016,
+          "ci_low": 0.15769940266155708,
+          "ci_high": 0.2700608198790195
+        },
+        "ade_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "ade_t100_raw_frame_diagnostic": {
+          "mean": 0.21388011127028828,
+          "std": 0.049646858018135016,
+          "ci_low": 0.15769940266155708,
+          "ci_high": 0.2700608198790195
+        },
+        "ade_hard_failure": {
+          "mean": 0.21388011127028828,
+          "std": 0.049646858018135016,
+          "ci_low": 0.15769940266155708,
+          "ci_high": 0.2700608198790195
+        },
+        "ade_easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "fde_t50": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "switch_rate": {
+          "mean": 0.6814814814814815,
+          "std": 0.07578959644086655,
+          "ci_low": 0.5957174794239429,
+          "ci_high": 0.76724548353902
+        }
+      }
+    }
+  },
+  "repair_effect": {
+    "trajnet100_ade_before": 0.09875907078956987,
+    "trajnet100_ade_after": 0.11720354460558946,
+    "trajnet100_ade_ci_low_before": 0.018233137455094597,
+    "trajnet100_ade_ci_low_after": 0.048714385704072966,
+    "trajnet100_easy_ci_high_before": 0.08498424090178214,
+    "trajnet100_easy_ci_high_after": 0.0,
+    "trajnet100_hard_ci_low_after": 0.048714385704072966,
+    "trajnet100_safety_repaired": true
+  },
+  "repaired_rows": [
+    {
+      "source": "fresh_run_from_stage42x_stage42r_validation_t100_safety_repair",
+      "pair_idx": 0,
+      "eth_t50_choice_inherited": "stage42j_static_expert",
+      "trajnet_t100_choice": "stage42j_static_expert",
+      "trajnet_t100_j_val_all": 0.0919490757052821,
+      "trajnet_t100_j_val_easy": 0.0,
+      "trajnet_t100_p_val_all": 0.11380660250942165,
+      "trajnet_t100_p_val_easy": 0.004136840071294889,
+      "margin_guarded_rows_by_key": {
+        "ETH_UCY|25": 6823,
+        "TrajNet|25": 5685
+      },
+      "test_metrics": {
+        "ade": {
+          "rows": 55528,
+          "all_improvement": 0.09931283925264323,
+          "t10_improvement": 0.2457178176214726,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.06658765694097113,
+          "t100_improvement": 0.07584012986031075,
+          "hard_failure_improvement": 0.10330063362933906,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.047534088735687596,
+          "switch_rate": 0.24072539979829996,
+          "regret_to_oracle": -0.06864344725431902,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.051175544275620655,
+              "t50_improvement": 0.026840939186181134,
+              "t100_improvement": 0.016222616119753952,
+              "hard_failure_improvement": 0.05258833043427824,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.17709740936643373
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.12351322079407245,
+              "t50_improvement": 0.11610302751663615,
+              "t100_improvement": 0.09767691444053894,
+              "hard_failure_improvement": 0.13051825167397368,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.23482849604221637
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.18995255146553514,
+              "t50_improvement": 0.09594216033002112,
+              "t100_improvement": 0.21401847886024328,
+              "hard_failure_improvement": 0.2018299613010056,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.42589098532494757
+            }
+          }
+        },
+        "fde": {
+          "rows": 55528,
+          "all_improvement": 0.15660447516566012,
+          "t10_improvement": 0.2723228464041626,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.20521594764341888,
+          "t100_improvement": 0.13634526117365242,
+          "hard_failure_improvement": 0.16644649409842927,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.10765419591956978,
+          "switch_rate": 0.24072539979829996,
+          "regret_to_oracle": 0.08003392981638391,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.11263267338338534,
+              "t50_improvement": 0.15549963532603206,
+              "t100_improvement": 0.08676332192888092,
+              "hard_failure_improvement": 0.11826804234417942,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.17709740936643373
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.1774601896294542,
+              "t50_improvement": 0.2586027054177671,
+              "t100_improvement": 0.1587372978122784,
+              "hard_failure_improvement": 0.1924752520977473,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.23482849604221637
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.2442022702105363,
+              "t50_improvement": 0.2617002281527592,
+              "t100_improvement": 0.24442584745897988,
+              "hard_failure_improvement": 0.26290663625319133,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.42589098532494757
+            }
+          }
+        },
+        "switch_rate": 0.24072539979829996
+      }
+    },
+    {
+      "source": "fresh_run_from_stage42x_stage42r_validation_t100_safety_repair",
+      "pair_idx": 1,
+      "eth_t50_choice_inherited": "floor",
+      "trajnet_t100_choice": "stage42j_static_expert",
+      "trajnet_t100_j_val_all": 0.10308863466246454,
+      "trajnet_t100_j_val_easy": 0.0,
+      "trajnet_t100_p_val_all": 0.15936124269048657,
+      "trajnet_t100_p_val_easy": 0.033877232593942264,
+      "margin_guarded_rows_by_key": {
+        "ETH_UCY|25": 6823,
+        "TrajNet|25": 5685
+      },
+      "test_metrics": {
+        "ade": {
+          "rows": 55528,
+          "all_improvement": 0.08409578618330094,
+          "t10_improvement": 0.17174634347878648,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.07097225043844768,
+          "t100_improvement": 0.074652956766452,
+          "hard_failure_improvement": 0.08888850298018192,
+          "easy_degradation": 0.0013478397065289638,
+          "harm_over_fallback": -0.040250753002493034,
+          "switch_rate": 0.2352146664745714,
+          "regret_to_oracle": -0.061360111521124465,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.02480199860542276,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.01553219367737213,
+              "hard_failure_improvement": 0.02664584659788083,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.12953167831357862
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.06154147894671824,
+              "t50_improvement": 0.10239345373457875,
+              "t100_improvement": 0.05479530241523001,
+              "hard_failure_improvement": 0.06893195959195342,
+              "easy_degradation": 0.00364290220317387,
+              "switch_rate": 0.23308607557126498
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.27688177985786333,
+              "t50_improvement": 0.21393284709995286,
+              "t100_improvement": 0.2746155441373441,
+              "hard_failure_improvement": 0.2924759620291393,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.5266247379454927
+            }
+          }
+        },
+        "fde": {
+          "rows": 55528,
+          "all_improvement": 0.11740504160970988,
+          "t10_improvement": 0.15478865221944205,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.1425726827928726,
+          "t100_improvement": 0.1283296939438685,
+          "hard_failure_improvement": 0.12559250776655673,
+          "easy_degradation": 0.0014484174361675262,
+          "harm_over_fallback": -0.08070743405018879,
+          "switch_rate": 0.2352146664745714,
+          "regret_to_oracle": 0.1069806916857649,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.016600508702268257,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.019151253305956795,
+              "hard_failure_improvement": 0.017728304525142624,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.12953167831357862
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.17777196099753445,
+              "t50_improvement": 0.24648932582028327,
+              "t100_improvement": 0.2353882592700548,
+              "hard_failure_improvement": 0.19780879571695453,
+              "easy_degradation": 0.003958173156899836,
+              "switch_rate": 0.23308607557126498
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.2987317338877453,
+              "t50_improvement": 0.38294673687798686,
+              "t100_improvement": 0.27918491328809214,
+              "hard_failure_improvement": 0.3199320735443869,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.5266247379454927
+            }
+          }
+        },
+        "switch_rate": 0.2352146664745714
+      }
+    },
+    {
+      "source": "fresh_run_from_stage42x_stage42r_validation_t100_safety_repair",
+      "pair_idx": 2,
+      "eth_t50_choice_inherited": "stage42j_static_expert",
+      "trajnet_t100_choice": "stage42p_t50_gain_harm",
+      "trajnet_t100_j_val_all": 0.07887856246938241,
+      "trajnet_t100_j_val_easy": 0.0,
+      "trajnet_t100_p_val_all": 0.13499327489289747,
+      "trajnet_t100_p_val_easy": 0.0,
+      "margin_guarded_rows_by_key": {
+        "ETH_UCY|25": 6823,
+        "TrajNet|25": 5685
+      },
+      "test_metrics": {
+        "ade": {
+          "rows": 55528,
+          "all_improvement": 0.0976890864126081,
+          "t10_improvement": 0.18689390658648597,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.057311284060056145,
+          "t100_improvement": 0.10967306466965754,
+          "hard_failure_improvement": 0.10167795461287243,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.046756912167543144,
+          "switch_rate": 0.23791600633914423,
+          "regret_to_oracle": -0.06786627068617457,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.06051837908316349,
+              "t50_improvement": 0.04706684540914852,
+              "t100_improvement": 0.04738100256732769,
+              "hard_failure_improvement": 0.06326159520233343,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.19883402185243812
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.1462181272735178,
+              "t50_improvement": 0.0738985145726282,
+              "t100_improvement": 0.19913841696099943,
+              "hard_failure_improvement": 0.15363539521349834,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.20665106785483148
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.1214380529365442,
+              "t50_improvement": 0.05880055314560628,
+              "t100_improvement": 0.15300631081327742,
+              "hard_failure_improvement": 0.12777478830585276,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.40985324947589097
+            }
+          }
+        },
+        "fde": {
+          "rows": 55528,
+          "all_improvement": 0.17041087381405629,
+          "t10_improvement": 0.1977478330346002,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.18578030984515348,
+          "t100_improvement": 0.2112826388925192,
+          "hard_failure_improvement": 0.1818798087061385,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.1171450916520567,
+          "switch_rate": 0.23791600633914423,
+          "regret_to_oracle": 0.07054303408389698,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 25901,
+              "all_improvement": 0.1356063731543249,
+              "t50_improvement": 0.16092884060116153,
+              "t100_improvement": 0.1479385438116101,
+              "hard_failure_improvement": 0.14356061304041345,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.19883402185243812
+            },
+            "TrajNet": {
+              "rows": 20087,
+              "all_improvement": 0.2136996879390204,
+              "t50_improvement": 0.201145542397693,
+              "t100_improvement": 0.288967985974264,
+              "hard_failure_improvement": 0.23011465700103273,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.20665106785483148
+            },
+            "UCY": {
+              "rows": 9540,
+              "all_improvement": 0.19817471160560718,
+              "t50_improvement": 0.2320597378704624,
+              "t100_improvement": 0.2753132691082988,
+              "hard_failure_improvement": 0.2159048409310531,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.40985324947589097
+            }
+          }
+        },
+        "switch_rate": 0.23791600633914423
+      }
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "t100_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_policy_tuning": false,
+    "source_choice_from_validation_metrics_only": true
+  },
+  "stage42_ai_gate": {
+    "source": "fresh_run_trajnet_t100_validation_easy_safety_repair",
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_ai_trajnet_t100_safety_repair_pass",
+    "gates": [
+      {
+        "name": "Stage42-AH Input Verified",
+        "passed": true
+      },
+      {
+        "name": "Source Repair Uses Validation Easy Safety Not Test Tuning",
+        "passed": true
+      },
+      {
+        "name": "TrajNet100 Easy Safety Repaired",
+        "passed": true
+      },
+      {
+        "name": "TrajNet100 ADE Lower Bound Positive",
+        "passed": true
+      },
+      {
+        "name": "Global All Positive",
+        "passed": true
+      },
+      {
+        "name": "Global T50 Positive",
+        "passed": true
+      },
+      {
+        "name": "Global T100 Diagnostic Positive",
+        "passed": true
+      },
+      {
+        "name": "Hard/Failure Positive",
+        "passed": true
+      },
+      {
+        "name": "Global Easy Preserved",
+        "passed": true
+      },
+      {
+        "name": "T100 Remains Raw-Frame Diagnostic",
+        "passed": true
+      },
+      {
+        "name": "No Metric/Seconds Overclaim",
+        "passed": true
+      },
+      {
+        "name": "Stage5C False",
+        "passed": true
+      },
+      {
+        "name": "SMC False",
+        "passed": true
+      }
+    ]
+  }
+}
