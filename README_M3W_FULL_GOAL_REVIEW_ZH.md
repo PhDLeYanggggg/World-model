@@ -332,7 +332,7 @@ ETH-Person XML 已经 official converted/evaluated。
 
 3. **做 source-specific calibrated subset 评估，而不是全局 metric claim。**
    Stage42-BN 已确认 ETH `seq_eth` / `seq_hotel` 和 UCY `zara01/02/03/students03` 有局部 H + annotation-step timing evidence。下一步如果要写 metric/time，只能在这些 source-specific calibrated subsets 上重评，并继续把全局 M3W 写成 raw-frame/dataset-local。
-   Stage42-BO/BP/BQ/BR 已完成第一轮重评、安全修复和 source-support gap audit：BO 有 macro 正信号但 easy harm；BP 修 easy；BQ 把 t50 负值守到 0；BR 证明 t50 正迁移失败来自 `ETH_seq` / `UCY_students` 同族源不足和 `UCY_zara` policy/model blocker。当前只能称 limited positive / source-family guarded safety repair；t50 正迁移仍未证明。
+   Stage42-BO/BP/BQ/BR/BS 已完成第一轮重评、安全修复、source-support gap audit 和 UCY_zara family-specific t50 repair：BO 有 macro 正信号但 easy harm；BP 修 easy；BQ 把 t50 负值守到 0；BR 证明 t50 blocker 来自 `ETH_seq` / `UCY_students` 同族源不足和 `UCY_zara` policy/model blocker；BS 已用 validation-only 保守 switch-rate guard 修复 `UCY_zara`，三折 t50 全正且 easy <2%。当前仍不能称 global calibrated t50 success，因为 `ETH_seq` / `UCY_students` 还 blocked。
 
 4. **如果继续追神经世界模型主贡献，要重训 graph/scene-rich neural protocol。**
    当前 source-level 主机制是 baseline-family rollout context。若要证明 neural dynamics，需要更强的 scene tokens、interaction graph、full-waypoint loss、multi-domain source split 和 multi-seed/bootstrap。
@@ -358,7 +358,7 @@ source-level strongest mechanism：baseline-family rollout context + validation-
 t100 global claim：否，仍 blocked
 ETH-Person XML：technical dry-run positive；Stage42-BM 已确认 terms/license blocker，official/deployable/global t100 claim 仍禁止
 metric/time：Stage42-BN 找到 ETH/UCY source-specific candidates，但 global metric/seconds claim 仍禁止
-calibrated subset：Stage42-BO partial，Stage42-BP limited positive safety repair，Stage42-BQ t50 non-harm repair；easy harm 已修、t50 负迁移已守到 0，但 t50 正迁移未证明，不能写成 global calibrated success
+calibrated subset：Stage42-BO partial，Stage42-BP limited positive safety repair，Stage42-BQ t50 non-harm repair，Stage42-BR source-support gap audit，Stage42-BS UCY_zara family-specific t50 repair；UCY_zara 已有局部 positive safe t50，ETH_seq / UCY_students 仍 source-support blocked，不能写成 global calibrated success
 
 current verdict:
   M3W 是一个有实证进展的 protected 2.5D multi-agent world-state candidate。

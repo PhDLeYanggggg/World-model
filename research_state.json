@@ -1,6 +1,46 @@
 {
-    "current_stage": "stage42_br_calibrated_t50_source_support_gap_audit",
-    "current_verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass",
+    "current_stage": "stage42_bs_ucy_zara_t50_family_policy",
+    "current_verdict": "stage42_bs_ucy_zara_t50_family_policy_pass_positive",
+  "stage42_bs_ucy_zara_t50_family_policy": {
+    "source": "fresh_ucy_zara_t50_family_policy",
+    "report": "outputs/stage42_long_research/ucy_zara_t50_family_policy_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bs_gate.md",
+    "verdict": "stage42_bs_ucy_zara_t50_family_policy_pass_positive",
+    "gates": "14/14",
+    "zara_sources_present": 3,
+    "source_cv_folds": 3,
+    "rows_total": 51544,
+    "t50_rows_total": 12750,
+    "candidate_t50_oracle_headroom_macro_mean": 0.431886,
+    "all_improvement_macro_mean": 0.06124,
+    "t50_improvement_macro_mean": 0.247189,
+    "t50_improvement_min": 0.150958,
+    "hard_failure_improvement_macro_mean": 0.067158,
+    "easy_degradation_max": 0.012388,
+    "positive_t50_fold_count": 3,
+    "positive_t50_claim_allowed": true,
+    "claim_scope": "UCY_zara source-family-specific annotation-step calibrated t50 repair only; not global metric/seconds-level M3W",
+    "remaining_blockers": [
+      "ETH_seq needs additional same-family calibrated support source",
+      "UCY_students needs additional same-family calibrated support sources",
+      "global metric/seconds-level claims remain blocked",
+      "Stage5C remains unexecuted",
+      "SMC remains disabled"
+    ],
+    "verification": {
+      "runner": "python3 run_stage42_ucy_zara_t50_family_policy.py -> 14/14",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_ucy_zara_t50_family_policy.py tests/test_stage42_calibrated_t50_source_support_gap_audit.py -> 6 passed",
+      "full_pytest": "python3 -m pytest tests -> 493 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "latest_user_requested_long_goal_retrospective_2026_05_26": {
     "source": "cached_verified_plus_stage42_br_calibrated_t50_source_support_gap_audit",
     "path": "README_M3W_LONG_GOAL_RETROSPECTIVE_ZH.md",

@@ -8,6 +8,28 @@ Current one-file research route/failure/success summary requested by the user:
 
 This is the newest detailed Chinese retrospective for the full M3W goal: what was attempted, which routes failed and why, which routes succeeded, the current best deployable model, the strict claim boundaries, and the latest Stage42-BR calibrated t50 source-support gap.
 
+Latest concrete Stage42 progress after that summary:
+
+```text
+Stage42-BS UCY_zara family-specific t50 policy
+source = fresh_ucy_zara_t50_family_policy
+verdict = stage42_bs_ucy_zara_t50_family_policy_pass_positive
+gates = 14 / 14
+rows_total = 51544
+t50_rows_total = 12750
+candidate_t50_oracle_headroom_macro_mean = 0.431886
+all_improvement_macro_mean = 0.061240
+t50_improvement_macro_mean = 0.247189
+t50_improvement_min = 0.150958
+hard_failure_improvement_macro_mean = 0.067158
+easy_degradation_max = 0.012388
+positive_t50_fold_count = 3 / 3
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BS resolves the `UCY_zara` part of the Stage42-BR calibrated t50 blocker with a validation-only conservative switch-rate guard. It does not resolve `ETH_seq` or `UCY_students` source-support blockers, and it does not permit global metric/seconds-level claims.
+
 Previous consolidated human-facing review:
 
 `/Users/yangyue/Downloads/World/README_M3W_FULL_GOAL_REVIEW_ZH.md`
