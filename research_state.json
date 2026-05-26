@@ -1,6 +1,33 @@
 {
-  "current_stage": "Stage42-CH metric/time claim guard",
-  "current_verdict": "stage42_ch_metric_time_claim_guard_pass",
+  "current_stage": "Stage42-Z post-CH paper claim evidence audit",
+  "current_verdict": "stage42_z_paper_claim_evidence_audit_pass",
+  "stage42_z_post_ch_paper_claim_evidence_audit": {
+    "source": "fresh_audit_from_stage42_wxy_and_paper_package_artifacts",
+    "report": "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_z_gate.md",
+    "csv": "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.csv",
+    "verdict": "stage42_z_paper_claim_evidence_audit_pass",
+    "gates": "22/22",
+    "claim_rows": 13,
+    "paper_ready_scope": "protected_2p5d_raw_frame_world_state_candidate",
+    "not_ready_scope": "true_3d_metric_seconds_foundation_or_stage5c_smc",
+    "legal_conversion_not_overclaimed": true,
+    "restricted_metric_time_not_overclaimed": true,
+    "conclusion": "Stage42-Z was refreshed after CG/CH. It keeps the supported protected raw-frame 2.5D paper claims while explicitly rejecting legal conversion, restricted metric/seconds, true 3D, foundation, Stage5C, and SMC overclaims.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_paper_claim_evidence_audit.py -> 22/22",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_paper_claim_evidence_audit.py tests/test_stage42_metric_time_claim_guard.py tests/test_stage42_source_terms_confirmation_validator.py -> 12 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 549 passed in 32.10s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "converted_source_diversity_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_ch_metric_time_claim_guard": {
     "source": "fresh_stage42_ch_metric_time_claim_guard",
     "report": "outputs/stage42_long_research/metric_time_claim_guard_stage42.md",
@@ -296,7 +323,7 @@
     }
   },
   "latest_user_requested_current_goal_retrospective_2026_05_26": {
-    "source": "cached_verified_stage18_to_stage42_plus_stage42_ch_metric_time_claim_guard",
+    "source": "cached_verified_stage18_to_stage42_plus_stage42_z_post_ch_paper_claim_evidence_audit",
     "path": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "scope": "detailed_current_goal_handoff_routes_tried_failure_roots_success_evidence_best_deployable_claim_boundaries_blockers_next_steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
@@ -313,7 +340,8 @@
       "Stage42-CE local conversion preflight proving parseability while preserving the source-CV blocker",
       "Stage42-CF legal/source-identity gate preventing any conversion until explicit terms confirmation exists",
       "Stage42-CG terms-confirmation validator and readiness manifest showing all targets remain blocked",
-      "Stage42-CH metric/time claim guard blocking global and restricted metric/seconds claims until legal conversion readiness and restricted-subset final evaluation exist"
+      "Stage42-CH metric/time claim guard blocking global and restricted metric/seconds claims until legal conversion readiness and restricted-subset final evaluation exist",
+      "Stage42-Z post-CH paper claim evidence matrix tying supported claims, legal blockers, and metric/time blockers into one 22/22-gate audit"
     ],
     "failed_or_limited_routes": [
       "JEPA downstream lift not proven",
@@ -358,6 +386,8 @@
       "source_conversion_legal_gate_ready": true,
       "source_terms_confirmation_validator_ready": true,
       "metric_time_claim_guard_ready": true,
+      "paper_claim_evidence_audit_post_ch_ready": true,
+      "paper_claim_evidence_audit_gates": "22/22",
       "source_specific_metric_time_candidates": 6,
       "restricted_subset_metric_seconds_claim_allowed_now": false,
       "source_conversion_ready_targets": 0,
@@ -16887,8 +16917,8 @@
       "full_pytest": "python3 -m pytest tests -> 499 passed"
     }
   },
-  "latest_stage42_source_support_summary": "Stage42-CH fresh-ran metric/time claim guard after Stage42-CG terms validation. Gates 11/11. Six ETH/UCY source-specific metric/time calibration candidates exist, but conversion_ready_targets=0 and no restricted-subset final evaluation has run; therefore global and restricted metric/seconds claims remain blocked. No automatic download, no legal conversion, no external evaluation, no Stage5C, no SMC.",
-  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 549 passed after Stage42-CH metric/time claim guard",
+  "latest_stage42_source_support_summary": "Stage42-Z refreshed the paper claim evidence audit after Stage42-CG/CH. Gates 22/22. The claim matrix now has 13 rows and explicitly blocks legal conversion overclaim and restricted metric/time overclaim while preserving the protected raw-frame 2.5D evidence package. No automatic download, no legal conversion, no external evaluation, no Stage5C, no SMC.",
+  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 549 passed after Stage42-Z post-CH claim audit refresh",
   "stage42_by_t50_floor_relaxability_repair": {
     "source": "fresh_stage42_by_t50_floor_relaxability_repair",
     "verdict": "stage42_by_t50_floor_relaxability_repair_pass",
@@ -17038,7 +17068,7 @@
     }
   },
   "last_test_command": ".venv-pytorch/bin/python -m pytest tests",
-  "last_test_result": "549 passed in 31.61s",
+  "last_test_result": "549 passed in 32.10s",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",

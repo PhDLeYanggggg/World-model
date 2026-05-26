@@ -1174,3 +1174,14 @@ restricted_subset_metric_seconds_claim_allowed_now = false
 ```
 
 Stage42-CH keeps the calibration story honest. ETH/UCY source-specific metric/time candidates exist, but they are not paper-allowed metric/seconds claims because legal conversion readiness is still zero and no restricted-subset final evaluation has run. The deployable M3W-Neural v1 claim therefore remains protected dataset-local/raw-frame 2.5D, not metric, not seconds-level, not true 3D, and not foundation-scale.
+
+## Stage42-Z Post-CH Paper Claim Evidence Audit
+
+```text
+source = fresh_audit_from_stage42_wxy_and_paper_package_artifacts
+verdict = stage42_z_paper_claim_evidence_audit_pass
+gates = 22 / 22
+claim_rows = 13
+```
+
+The paper claim matrix now includes the CG legal/source terms validator and the CH metric/time claim guard. This keeps M3W-Neural v1 paper-ready only as a protected dataset-local/raw-frame 2.5D world-state candidate. Legal source-diversity conversion is not ready, and restricted metric/seconds subset claims remain blocked even though source-specific calibration candidates exist.

@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CH metric/time claim guard。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-Z post-CH paper claim evidence audit。
 用途：这是当前 M3W 长期目标的单文件中文总览，用来回答“这个目标内到底做了什么、尝试了什么路线、哪些失败了、为什么失败、哪些成功了、当前最强模型是谁、下一步该怎么走”。
 
 ## 本次交付版摘要
@@ -26,6 +26,7 @@ not = true 3D / foundation / global metric / seconds-level / Stage5C / SMC
 - Stage42 full-waypoint / source-level evidence：protected full-waypoint all +18.58%，t+50 +14.80%，t+100 raw diagnostic +22.86%，hard +19.52%，easy 0。
 - Stage42-BY/BZ target t50 repair：target union t50 bootstrap CI [28.52%, 29.45%]，hard/failure CI low +28.51%，easy CI high -25.16%。
 - Stage42-CH claim guard：6 个 ETH/UCY source-specific metric/time candidates 存在，但 conversion_ready=0，所以当前 global/restricted metric-seconds claim 仍全部禁止。
+- Stage42-Z post-CH evidence matrix：13 条 claim 逐项映射到证据，22/22 gates；C12 明确 legal conversion 不能 claim，C13 明确 restricted metric/seconds subset 仍 blocked。
 
 最关键失败结论：
 
@@ -597,6 +598,7 @@ Broad source-level generalization is proven without caveats.
 | Stage42-CB source robustness | available major-source robust，但 source concentration limited。 | 可作为 caveated source robustness claim，不可作为 broad source generalization。 |
 | Stage42-CG source terms validator | 5 个 target validated，但 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。 | 只能作为 readiness / blocker evidence，不能作为 converted/evaluated dataset claim。 |
 | Stage42-CH metric/time claim guard | 6 个 ETH/UCY source-specific calibration candidates；global/restricted metric-seconds claim 仍全部 blocked。 | 可作为 claim-boundary evidence，不能作为 metric/seconds result claim。 |
+| Stage42-Z post-CH paper claim audit | 13 条 claim matrix，22/22 gates；source legality与metric/time guard纳入论文证据矩阵。 | 可作为 paper-ready claim boundary matrix；仍不能 claim legal conversion、metric/seconds、true 3D/foundation。 |
 | JEPA | non-collapse。 | 只能 auxiliary / diagnostic，不是主 claim。 |
 | Transformer/Hybrid | protected auxiliary / ablation evidence。 | 不能作为 floor-free deployable neural claim。 |
 | t100 | raw-frame diagnostic 局部正信号。 | 不能作为 global deployable t100 claim。 |

@@ -3922,3 +3922,29 @@ Artifacts:
 - `outputs/stage42_long_research/user_action_required_metric_time_claim_guard_stage42.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_metric_time_claim_guard.py` passed, focused CH/CG/BN/A-calibration tests passed with 16 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 549 tests.
+
+## Stage42-Z Post-CH Paper Claim Evidence Audit Refresh
+
+```text
+source = fresh_audit_from_stage42_wxy_and_paper_package_artifacts
+verdict = stage42_z_paper_claim_evidence_audit_pass
+gates = 22 / 22
+claim_rows = 13
+source_terms_validator_present = true
+metric_time_guard_present = true
+legal_conversion_not_overclaimed = true
+restricted_metric_time_not_overclaimed = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-Z was refreshed after CG/CH so that the paper claim matrix now includes both legal conversion blockers and metric/time blockers. The audit keeps the positive protected 2.5D raw-frame claims, but explicitly rejects two tempting overclaims: source-diversity conversion cannot be counted as converted/evaluated data (`terms_accepted=0`, `conversion_ready=0`, `converted=0`, `evaluated=0`), and restricted ETH/UCY metric/seconds subset claims are still blocked despite six source-specific calibration candidates.
+
+Artifacts:
+
+- `outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md`
+- `outputs/stage42_long_research/paper_claim_evidence_audit_stage42.json`
+- `outputs/stage42_long_research/paper_claim_evidence_audit_stage42.csv`
+- `outputs/stage42_long_research/stage42_stage_z_gate.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_paper_claim_evidence_audit.py` passed and focused Z/CH/CG tests passed with 12 tests.

@@ -281,3 +281,22 @@ Stage42-CH converts calibration evidence into enforceable paper-claim boundaries
 - The project still cannot say: M3W is metric, seconds-level, true 3D, or globally calibrated.
 - The shortest path to any metric/time subset claim is: legal confirmation -> guarded conversion -> restricted calibrated subset split -> no-leakage/source-CV -> final evaluation -> report only that subset.
 <!-- STAGE42_CH_REFRESH:END -->
+
+<!-- STAGE42_Z_POST_CH_REFRESH:START -->
+## Stage42-Z Post-CH Claim Matrix Refresh
+
+- source: `fresh_audit_from_stage42_wxy_and_paper_package_artifacts`
+- verdict: `stage42_z_paper_claim_evidence_audit_pass`
+- gates: `22 / 22`
+- claim rows: `13`
+- legal conversion overclaim blocked: `true`
+- restricted metric/time overclaim blocked: `true`
+
+Stage42-Z now incorporates Stage42-CG and Stage42-CH into the paper evidence matrix. The paper package can use the protected raw-frame 2.5D world-state evidence, source-level full-waypoint evidence, safety-floor necessity result, and calibrated claim-boundary infrastructure. It still cannot claim converted source-diversity repair, restricted metric/seconds subset results, true 3D, foundation-scale status, Stage5C, or SMC.
+
+### Updated Gap After Z Post-CH
+
+- The paper claim matrix is now explicit enough for drafting a protected 2.5D manuscript.
+- The two largest publication blockers remain: legally converted independent external sources and metric/time-calibrated restricted evaluation.
+- Goal/scene and neighbor/interaction remain mixed contributions rather than main positive claims.
+<!-- STAGE42_Z_POST_CH_REFRESH:END -->

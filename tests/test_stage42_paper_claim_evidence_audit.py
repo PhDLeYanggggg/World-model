@@ -7,8 +7,12 @@ def test_stage42_z_claim_matrix_contains_negative_boundaries():
     assert "supported_fresh" in statuses
     assert "rejected_by_evidence" in statuses
     assert "not_supported" in statuses
+    assert "rejected_by_legal_gate" in statuses
+    assert "candidate_evidence_but_claim_blocked" in statuses
     assert any(row["claim_id"] == "C9" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
     assert any(row["claim_id"] == "C10" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
+    assert any(row["claim_id"] == "C12" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
+    assert any(row["claim_id"] == "C13" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
 
 
 def test_stage42_z_gate_passes_with_paper_files_and_wxy_artifacts():
@@ -17,6 +21,10 @@ def test_stage42_z_gate_passes_with_paper_files_and_wxy_artifacts():
     assert gate["passed"] == gate["total"]
     assert gate["gates"]["stage42x_row_cache_gate_pass"]
     assert gate["gates"]["stage42y_ablation_gate_pass"]
+    assert gate["gates"]["stage42cg_source_terms_gate_pass"]
+    assert gate["gates"]["stage42ch_metric_time_gate_pass"]
+    assert gate["gates"]["legal_conversion_not_overclaimed"]
+    assert gate["gates"]["restricted_metric_time_not_overclaimed"]
     assert gate["gates"]["paper_files_exist"]
     assert gate["paper_ready_scope"] == "protected_2p5d_raw_frame_world_state_candidate"
 

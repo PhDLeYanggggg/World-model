@@ -1,10 +1,10 @@
 # Stage42-Z Paper Claim Evidence Audit
 
 - source: `fresh_audit_from_stage42_wxy_and_paper_package_artifacts`
-- generated_at_utc: `2026-05-26T05:47:16.188785+00:00`
-- git_commit: `40e84fb`
-- input_hash: `4ad0fd249b895f0e7bd7cde85f0f661430f9ddb9674a5645e2d4c8c628e2bf03`
-- gate: `16 / 16`
+- generated_at_utc: `2026-05-26T17:34:07.754019+00:00`
+- git_commit: `c7ab112`
+- input_hash: `d72803a8ce5a9618928254f5580742b53b84120a1ccb76db158056a2703347ba`
+- gate: `22 / 22`
 - verdict: `stage42_z_paper_claim_evidence_audit_pass`
 
 ## Current Facts
@@ -35,20 +35,22 @@
 | `C9` | Metric or seconds-level pedestrian world-model claims are supported. | `not_supported` | `fresh_run` | `False` | global_metric_claim_allowed=False; global_seconds_claim_allowed=False |
 | `C10` | M3W is a true 3D or foundation world model. | `not_supported` | `claim_boundary` | `False` | Stage42 claim boundaries keep true_3d=false and foundation_world_model=false. |
 | `C11` | A-journal evidence package is complete enough to draft a protected 2.5D paper, but not enough for broad foundation/3D claims. | `supported_as_gap_aware_package` | `fresh_run` | `True` | paper package claims=7; paper final verdict=stage42_f_paper_package_complete_not_full_a_journal_ready; Stage42-Z keeps non-claims explicit. |
+| `C12` | Source-diversity conversion is legally ready and can be counted as converted/evaluated external data. | `rejected_by_legal_gate` | `fresh_stage42_cg_source_terms_confirmation_validator` | `False` | targets_validated=5; terms_accepted=0; conversion_ready=0; converted=0; evaluated=0 |
+| `C13` | Restricted source-specific ETH/UCY metric/seconds subset claims are ready for paper results. | `candidate_evidence_but_claim_blocked` | `fresh_stage42_ch_metric_time_claim_guard` | `False` | source_specific_candidates=6; conversion_ready=0; restricted_metric_seconds_allowed_now=False; global_metric=False; global_seconds=False |
 
 ## Paper Files
 
 | file | exists | size_bytes |
 | --- | --- | ---: |
-| `outputs/stage42_long_research/paper_outline_stage42.md` | `True` | 3472 |
-| `outputs/stage42_long_research/method_draft_stage42.md` | `True` | 2533 |
-| `outputs/stage42_long_research/experiment_tables_stage42.md` | `True` | 1529 |
-| `outputs/stage42_long_research/ablation_tables_stage42.md` | `True` | 10174 |
-| `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | 2187 |
-| `outputs/stage42_long_research/model_card_stage42.md` | `True` | 1588 |
-| `outputs/stage42_long_research/data_card_stage42.md` | `True` | 1301 |
-| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 1466 |
-| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 5858 |
+| `outputs/stage42_long_research/paper_outline_stage42.md` | `True` | 8120 |
+| `outputs/stage42_long_research/method_draft_stage42.md` | `True` | 7181 |
+| `outputs/stage42_long_research/experiment_tables_stage42.md` | `True` | 6177 |
+| `outputs/stage42_long_research/ablation_tables_stage42.md` | `True` | 14822 |
+| `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | 6835 |
+| `outputs/stage42_long_research/model_card_stage42.md` | `True` | 6236 |
+| `outputs/stage42_long_research/data_card_stage42.md` | `True` | 5949 |
+| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 6114 |
+| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 21111 |
 
 ## Interpretation
 
@@ -56,4 +58,5 @@
 - The paper-ready claim is a protected, dataset-local raw-frame 2.5D world-state candidate, not true 3D/foundation/metric/seconds-level.
 - UCY full-waypoint source contribution and history-token contribution are supported; goal/scene and neighbor/interaction evidence is mixed and should be written as limitation or partial evidence.
 - The Stage37/teacher floor remains necessary; ungated neural is rejected for deployment safety.
+- Stage42-CG/CH now enforce the legal and metric/time claim boundaries: no converted/evaluated source-diversity repair and no global or restricted metric/seconds result can be claimed yet.
 - Stage5C and SMC remain disabled.

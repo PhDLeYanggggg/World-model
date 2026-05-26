@@ -1,10 +1,10 @@
 {
   "stage": "Stage42-Z paper claim evidence audit",
   "source": "fresh_audit_from_stage42_wxy_and_paper_package_artifacts",
-  "generated_at_utc": "2026-05-26T05:47:16.188785+00:00",
-  "git_commit": "40e84fb",
-  "python": "3.9.13",
-  "machine": "x86_64",
+  "generated_at_utc": "2026-05-26T17:34:07.754019+00:00",
+  "git_commit": "c7ab112",
+  "python": "3.11.1",
+  "machine": "arm64",
   "current_facts": [
     "当前不是 true 3D world model。",
     "当前不是 large-scale foundation world model。",
@@ -32,10 +32,16 @@
     "row_cache_exists": true,
     "unified_ablation": "outputs/stage42_long_research/unified_ablation_evidence_stage42.json",
     "unified_ablation_exists": true,
+    "source_terms": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+    "source_terms_exists": true,
+    "metric_time_guard": "outputs/stage42_long_research/metric_time_claim_guard_stage42.json",
+    "metric_time_guard_exists": true,
     "stage42x_gate_pass": true,
-    "stage42y_gate_pass": true
+    "stage42y_gate_pass": true,
+    "stage42cg_gate_pass": true,
+    "stage42ch_gate_pass": true
   },
-  "input_hash": "4ad0fd249b895f0e7bd7cde85f0f661430f9ddb9674a5645e2d4c8c628e2bf03",
+  "input_hash": "d72803a8ce5a9618928254f5580742b53b84120a1ccb76db158056a2703347ba",
   "claim_rows": [
     {
       "claim_id": "C1",
@@ -124,53 +130,69 @@
       "source": "fresh_run",
       "evidence": "paper package claims=7; paper final verdict=stage42_f_paper_package_complete_not_full_a_journal_ready; Stage42-Z keeps non-claims explicit.",
       "allowed_as_main_claim": true
+    },
+    {
+      "claim_id": "C12",
+      "claim": "Source-diversity conversion is legally ready and can be counted as converted/evaluated external data.",
+      "status": "rejected_by_legal_gate",
+      "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+      "evidence": "targets_validated=5; terms_accepted=0; conversion_ready=0; converted=0; evaluated=0",
+      "allowed_as_main_claim": false
+    },
+    {
+      "claim_id": "C13",
+      "claim": "Restricted source-specific ETH/UCY metric/seconds subset claims are ready for paper results.",
+      "status": "candidate_evidence_but_claim_blocked",
+      "source": "fresh_stage42_ch_metric_time_claim_guard",
+      "evidence": "source_specific_candidates=6; conversion_ready=0; restricted_metric_seconds_allowed_now=False; global_metric=False; global_seconds=False",
+      "allowed_as_main_claim": false
     }
   ],
   "paper_file_status": [
     {
       "file": "outputs/stage42_long_research/paper_outline_stage42.md",
       "exists": true,
-      "size_bytes": 3472
+      "size_bytes": 8120
     },
     {
       "file": "outputs/stage42_long_research/method_draft_stage42.md",
       "exists": true,
-      "size_bytes": 2533
+      "size_bytes": 7181
     },
     {
       "file": "outputs/stage42_long_research/experiment_tables_stage42.md",
       "exists": true,
-      "size_bytes": 1529
+      "size_bytes": 6177
     },
     {
       "file": "outputs/stage42_long_research/ablation_tables_stage42.md",
       "exists": true,
-      "size_bytes": 10174
+      "size_bytes": 14822
     },
     {
       "file": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
       "exists": true,
-      "size_bytes": 2187
+      "size_bytes": 6835
     },
     {
       "file": "outputs/stage42_long_research/model_card_stage42.md",
       "exists": true,
-      "size_bytes": 1588
+      "size_bytes": 6236
     },
     {
       "file": "outputs/stage42_long_research/data_card_stage42.md",
       "exists": true,
-      "size_bytes": 1301
+      "size_bytes": 5949
     },
     {
       "file": "outputs/stage42_long_research/reproducibility_stage42.md",
       "exists": true,
-      "size_bytes": 1466
+      "size_bytes": 6114
     },
     {
       "file": "outputs/stage42_long_research/a_journal_gap_stage42.md",
       "exists": true,
-      "size_bytes": 5858
+      "size_bytes": 21111
     }
   ],
   "no_leakage": {
@@ -195,21 +217,27 @@
       "external_validation_present": true,
       "full_waypoint_present": true,
       "paper_package_present": true,
+      "source_terms_validator_present": true,
+      "metric_time_guard_present": true,
       "stage42x_row_cache_gate_pass": true,
       "stage42y_ablation_gate_pass": true,
+      "stage42cg_source_terms_gate_pass": true,
+      "stage42ch_metric_time_gate_pass": true,
       "paper_files_exist": true,
       "claim_matrix_has_supported": true,
       "claim_matrix_has_rejected": true,
       "claim_matrix_has_not_supported": true,
       "mixed_contributions_not_overclaimed": true,
       "metric_seconds_not_overclaimed": true,
+      "legal_conversion_not_overclaimed": true,
+      "restricted_metric_time_not_overclaimed": true,
       "no_leakage_pass": true,
       "claim_boundary_ok": true,
       "stage5c_false": true,
       "smc_false": true
     },
-    "passed": 16,
-    "total": 16,
+    "passed": 22,
+    "total": 22,
     "verdict": "stage42_z_paper_claim_evidence_audit_pass",
     "paper_ready_scope": "protected_2p5d_raw_frame_world_state_candidate",
     "not_ready_scope": "true_3d_metric_seconds_foundation_or_stage5c_smc"
