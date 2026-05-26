@@ -179,6 +179,31 @@ SMC_enabled = false
 
 Stage42-BK closes a real loader-audit gap: local `ETH-Person/data/*.xml` files contain t100-capable ETH_UCY-style tracks and can potentially repair ETH_UCY source support after license/terms confirmation, conversion, no-leakage, and train-only source-CV. It does not count these XML files as converted/evaluated yet. For TrajNet, the local files parse as 8/20-step challenge snippets, so they cannot repair raw-frame t100; longer official/user-provided raw sources are still required.
 
+Latest Stage42-BL ETH-Person XML technical conversion dry-run:
+
+```text
+source = fresh_technical_dry_run_terms_unverified
+verdict = stage42_bl_eth_person_xml_t100_dry_run_pass
+gates = 13 / 13
+candidate_sources = 5
+strict_independent_sources = 5
+eth_person_xml_sources = 4
+t100_windows_total = 1485
+source_cv_folds = 5
+technical_t100_all_folds_safe_positive = true
+technical_t100_mean_improvement_vs_fallback = 0.683549
+technical_t100_min_improvement_vs_fallback = 0.496424
+technical_t100_max_easy_degradation = -0.014155
+license_terms_confirmed = false
+official_converted_dataset_claim_allowed = false
+deployable_t100_claim_allowed = false
+global_t100_positive_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BL proves the ETH-Person XML loader and strict source-CV pipeline are technically executable and strongly positive in a dry-run. It still does **not** change the official claim boundary: ETH-Person terms are unconfirmed, the result is not counted as official converted/evaluated data, and global/deployable t100 remains blocked until user confirmation plus official conversion/no-leakage/source-CV rerun.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

@@ -146,6 +146,7 @@ Stage42 把 Stage37 的 selector-level 成功继续往 full-waypoint 和 source-
 | Stage42-BI | source-robust easy guard repair：UCY mean +0.445914，min +0.425313，max easy 0.011340，gates 14/14 | UCY independent-source t100 easy blocker 修复；global t100 仍被 ETH_UCY/TrajNet 数据不足阻塞 |
 | Stage42-BJ | post-BI t100 source package：UCY repaired 保留；ETH_UCY 1 个 independent source、还差 2 个；TrajNet 0 个、还差 3 个；gates 14/14 | 明确下一步必须合法补 ETH_UCY/TrajNet independent t100 source；没有自动下载，没有 overclaim |
 | Stage42-BK | post-BJ local source verification：ETH-Person XML 发现 5 个 ETH_UCY t100-capable 候选；TrajNet 59 个本地文件均为短 snippet、t100 files=0；gates 11/11 | ETH_UCY 有本地 loader-gap 修复入口但需 license/terms + conversion/source-CV；TrajNet 仍需更长官方/用户 raw source |
+| Stage42-BL | ETH-Person XML technical dry-run：5 个 strict independent sources，t100 windows 1485，t100 all folds safe-positive，mean +0.683549，min +0.496424，easy -0.014155，gates 13/13 | 技术路径强正，但 terms 未确认，所以不能算 official converted/evaluated，也不能宣称 deployable/global t100 |
 
 ## 3. 路线复盘：试了什么，结果是什么
 
@@ -561,6 +562,7 @@ t+100 现在最容易被误读，所以单独写清楚。
 - Stage42-BJ 把 BI 后的 blocker 转成 source package：ETH_UCY 只有 1 个 independent t100 source、还差 2 个；TrajNet 0 个、还差 3 个；当前 local inventory 对这些独立源需求已经耗尽。
 - Stage42-BK 进一步检查 loader gap，发现 `ETH-Person/data/*.xml` 本地文件有 5 个 ETH_UCY t100-capable 独立候选；但它们仍只是 conversion candidates，必须先确认 license/terms，再转换、跑 no-leakage 和 train-only source-CV。
 - Stage42-BK 同时解释 TrajNet blocker：本地 TrajNet 文件都是 8/20-step challenge snippets，不是 raw long-track source，所以不能修 raw-frame t100。
+- Stage42-BL 对 ETH-Person XML 做技术 dry-run：严格去重后 5 个 independent sources，t100 source-CV 全 fold safe-positive，mean +0.683549，min +0.496424，easy -0.014155；但 license/terms 仍未确认，因此不能写成 official/deployable/global t100 success。
 - 所以 global t100 positive claim 仍不允许。
 
 当前 t+100 结论：
@@ -586,8 +588,8 @@ t100 remains raw-frame diagnostic / source-limited blocker。
 下一步建议：
 
 ```text
-Stage42-BL:
-  在 license/terms 确认后转换 ETH-Person XML 到 Stage42 external source rows，并跑 no-leakage + train-only source-CV。
+Stage42-BM:
+  如果用户确认 ETH-Person XML research-use terms，正式转换 ETH-Person XML 到 Stage42 external source rows，并 rerun official no-leakage + train-only source-CV。
   对 TrajNet 继续寻找官方/用户提供的 raw long-track source。
   不做 metric/seconds claim。
   不把 registry-only 写成 converted。
@@ -629,14 +631,14 @@ README_RESULTS.md
 
 ## 10. 最近验证状态
 
-最近 Stage42-BK 已完成：
+最近 Stage42-BL 已完成：
 
 ```text
 runner = pass
-focused pytest = 4 passed
+focused pytest = 5 passed
 full pytest = deferred for the ongoing long-running Stage42 goal
-verdict = stage42_bk_local_source_verification_pass
-gate = 11 / 11
+verdict = stage42_bl_eth_person_xml_t100_dry_run_pass
+gate = 13 / 13
 ```
 
 已知 runtime 注意事项：

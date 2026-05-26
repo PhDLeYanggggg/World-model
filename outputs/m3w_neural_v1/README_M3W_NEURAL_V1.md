@@ -80,6 +80,8 @@ Stage42-BJ packages that post-BI blocker into an explicit acquisition/readiness 
 
 Stage42-BK then verifies local source/path and loader gaps after BJ. It passes `11 / 11` gates and finds a concrete ETH_UCY repair path: local `ETH-Person/data/*.xml` files provide `5` t100-capable independent conversion candidates (`ETH_UCY` now has `6` local independent t100 groups in the scan, `5` potential new groups vs BJ). These are not counted as converted or evaluated until license/terms confirmation, XML conversion, no-leakage, and train-only source-CV. The same audit explains the TrajNet blocker: `59` local TrajNet files parse as fixed `8/20`-step snippets and provide `0` t100-capable raw-frame sources, so TrajNet still needs longer official/user-provided raw sources.
 
+Stage42-BL runs the ETH-Person XML path as a technical dry-run without upgrading claims. It deduplicates `seq0`/`seq0-interp`, builds `5` strict independent ETH_UCY sources, and completes validation-only source-CV: t100 is safe-positive on all folds with mean improvement `0.683549`, minimum improvement `0.496424`, and maximum easy degradation `-0.014155`. Because local ETH-Person license/terms are still unconfirmed, this remains `fresh_technical_dry_run_terms_unverified`: it is not official converted/evaluated data, not a deployable/global t100 claim, and not metric/seconds-level evidence.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
