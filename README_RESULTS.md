@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY/CZ/DA/DB：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier、paper-freeze manifest、next-action evidence queue、context rescue decision audit。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
 
 当前总判定：
 
@@ -27,7 +27,10 @@ latest batch runtime replay = Stage42-CV, 25 / 25 gates, frozen policy replay ex
 latest paper refresh = Stage42-CW, runtime replay evidence propagated into paper/reproducibility/model-card package
 latest provenance verifier = Stage42-CX, 21 artifacts audited, 21 gates passed
 latest worktree caveat classifier = Stage42-CY, Stage42 substantive dirty files = 0
-latest full pytest = 610 passed
+latest paper freeze manifest = Stage42-CZ, 74 files hashed, 14 / 14 gates, candidate_clean
+latest next-action queue = Stage42-DA, 15 / 15 gates, top priority is legal/source support for ETH_UCY and TrajNet t100/t50 calibration
+latest context rescue decision = Stage42-DB, 13 / 13 gates, decision is stop repeating current context residual/gated protocols
+latest full pytest = 623 passed
 ```
 
 ```text
