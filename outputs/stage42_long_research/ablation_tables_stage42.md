@@ -286,3 +286,17 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - alignment: `True`.
 - claim boundary: no true 3D, no foundation, no metric/seconds-level, no Stage5C, no SMC.
 <!-- STAGE42_CO_COMMON_VALIDATION_BRIDGE_SHAPE_COMPOSER:END -->
+
+<!-- STAGE42_CP_COMMON_VALIDATION_COMPOSER_SAFETY:START -->
+## Stage42-CP Common Validation Composer Safety / Bootstrap
+
+- source: `fresh_joint_safety_bootstrap_from_stage42_co_policy`
+- scope: Stage42-CO validation-selected composer, test evaluated once.
+- bootstrap vs endpoint-linear all CI: `[2.64%, 3.37%]`.
+- bootstrap vs endpoint-linear t50 CI: `[0.90%, 2.09%]`.
+- bootstrap vs endpoint-linear t100 raw diagnostic CI: `[5.39%, 6.94%]`.
+- bootstrap vs endpoint-linear hard/failure CI: `[2.90%, 3.68%]`.
+- near-collision@0.05 delta vs endpoint-linear: `0.34%`.
+- near-collision@0.05 delta vs strongest floor: `-0.05%`.
+- claim boundary: still dataset-local/raw-frame 2.5D; no metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_CP_COMMON_VALIDATION_COMPOSER_SAFETY:END -->

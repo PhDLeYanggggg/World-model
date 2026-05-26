@@ -46,6 +46,12 @@ Latest Stage42 common-validation bridge / shape composer:
 
 Stage42-CO passes `14 / 14` gates as `fresh_common_validation_eval_from_cached_verified_checkpoints`. It resolves the Stage42-CN blocker by verifying exact validation/test row alignment between endpoint-linear bridge and full-waypoint sequence. The validation-only composer selects full-waypoint only for `ETH_UCY|50` and `ETH_UCY|100`, then evaluates test once. Test ADE improves over endpoint-linear bridge by `+3.02%` all, `+1.50%` t50, `+6.12%` t100 raw-frame diagnostic, and `+3.28%` hard/failure, with easy degradation `+0.25%`. The result is a protected bridge/shape improvement, still dataset-local/raw-frame 2.5D and not metric/seconds-level, Stage5C, or SMC evidence.
 
+Latest Stage42 common-validation composer safety / bootstrap audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/common_validation_composer_safety_stage42.md`
+
+Stage42-CP passes `14 / 14` gates as `fresh_joint_safety_bootstrap_from_stage42_co_policy`. It adds `2000`-bootstrap statistical evidence and all-agent joint safety checks to the Stage42-CO composer. Against the endpoint-linear bridge, test ADE improves by `+3.02%` all with CI `[+2.64%, +3.37%]`, `+1.50%` t50 with CI `[+0.90%, +2.09%]`, `+6.12%` t100 raw-frame diagnostic with CI `[+5.39%, +6.94%]`, and `+3.28%` hard/failure with CI `[+2.90%, +3.68%]`. The safety caveat is explicit: near-collision@0.05 is `+0.34%` versus endpoint-linear but `-0.05%` versus the strongest floor, and jagged-rate does not worsen. This is protected dataset-local/raw-frame 2.5D evidence, not metric/seconds-level, Stage5C, or SMC evidence.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`
