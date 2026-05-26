@@ -1,6 +1,6 @@
 {
-    "current_stage": "stage42_bp_calibrated_subset_safety_repair",
-    "current_verdict": "stage42_bp_calibrated_subset_safety_repair_pass_limited_positive",
+    "current_stage": "stage42_bq_calibrated_subset_t50_support_repair",
+    "current_verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive",
   "latest_user_requested_goal_summary_2026_05_26": {
     "source": "cached_verified_plus_stage42_bn_source_time_geometry_calibration_plus_full_goal_review",
     "path": "README_M3W_FULL_GOAL_REVIEW_ZH.md",
@@ -19,7 +19,8 @@
             "Stage42-BL ETH-Person XML technical dry-run source-CV positive evidence",
             "Stage42-BM ETH-Person terms audit blocks official/deployable t100 overclaim until terms are confirmed",
             "Stage42-BN source-level time/geometry audit identifies ETH/UCY calibrated-subset candidates while blocking global metric/seconds claims",
-            "Stage42-BP source-family guarded calibrated-subset repair removes BO easy harm and provides limited positive source-specific evidence"
+            "Stage42-BP source-family guarded calibrated-subset repair removes BO easy harm and provides limited positive source-specific evidence",
+            "Stage42-BQ t50 source-family support repair removes negative calibrated-subset t50 transfer by guarding unsupported t50 slices to fallback"
     ],
     "major_failures_or_limits": [
       "JEPA downstream lift not proven",
@@ -32,7 +33,8 @@
             "ETH-Person XML technical result remains license/terms-blocked and cannot be counted as official converted/evaluated data",
             "global M3W metric/seconds claim remains blocked despite source-specific ETH/UCY calibration evidence",
             "Stage42-BO calibrated-subset source-CV was partial because UCY_students03 easy harm was severe and ETH_seq_eth t50 was negative",
-            "Stage42-BP repairs easy harm but remains limited: ETH_seq_eth t50 is still negative and several sources are fallback-only"
+            "Stage42-BP repairs easy harm but remains limited: ETH_seq_eth t50 is still negative and several sources are fallback-only",
+            "Stage42-BQ t50 support repair is non-harm rather than positive t50 transfer: positive_t50_fold_count is zero"
     ],
     "claim_boundary": {
       "true_3d": false,
@@ -130,6 +132,41 @@
             "runner": "python3 run_stage42_calibrated_subset_safety_repair.py -> 11/11",
             "focused_pytest": "11 passed",
             "full_pytest": "python3 -m pytest tests -> 484 passed"
+        },
+        "claim_boundary": {
+            "true_3d": false,
+            "foundation_world_model": false,
+            "global_metric_claim_allowed": false,
+            "global_seconds_claim_allowed": false,
+            "stage5c_executed": false,
+            "smc_enabled": false
+        }
+    },
+    "stage42_bq_calibrated_subset_t50_support_repair": {
+        "source": "fresh_calibrated_subset_t50_support_repair",
+        "report": "outputs/stage42_long_research/calibrated_subset_t50_support_repair_stage42.md",
+        "gate": "outputs/stage42_long_research/stage42_stage_bq_gate.md",
+        "verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive",
+        "gates": "12/12",
+        "calibrated_sources_evaluated": 6,
+        "rows_total": 160338,
+        "t50_min_source_family_support": 2,
+        "all_improvement_macro_mean": 0.04238,
+        "all_improvement_min": 0.0,
+        "t50_improvement_macro_mean": 0.0,
+        "t50_improvement_min": 0.0,
+        "t100_raw_frame_diagnostic_macro_mean": 0.027796,
+        "hard_failure_improvement_macro_mean": 0.040266,
+        "easy_degradation_max": 0.0,
+        "positive_fold_count": 3,
+        "positive_t50_fold_count": 0,
+        "limited_positive_t50_nonharm": true,
+        "deployable_scope": "limited source-specific calibrated subset with t50 unsupported source-families guarded to fallback; not positive t50 transfer",
+        "remaining_blocker": "no calibrated t50 fold remains positive after source-family support guard",
+        "verification": {
+            "runner": "python3 run_stage42_calibrated_subset_t50_support_repair.py -> 12/12",
+            "focused_pytest": "10 passed",
+            "full_pytest": "python3 -m pytest tests -> 487 passed"
         },
         "claim_boundary": {
             "true_3d": false,

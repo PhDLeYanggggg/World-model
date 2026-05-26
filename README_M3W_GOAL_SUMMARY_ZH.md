@@ -686,17 +686,30 @@ Stage42-BP:
   easy_max = 0.0
   positive_fold_count = 3
   positive_t50_fold_count = 2
+
+Stage42-BQ:
+  source = fresh_calibrated_subset_t50_support_repair
+  verdict = stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive
+  gates = 12 / 12
+  all_macro = +0.042380
+  t50_macro = 0.0
+  t50_min = 0.0
+  hard_macro = +0.040266
+  easy_max = 0.0
+  positive_fold_count = 3
+  positive_t50_fold_count = 0
 ```
 
-解释：BO 证明 calibrated-subset 有 macro 正信号，但 `UCY_students03` easy degradation 爆到 103%，`ETH_seq_eth` t50 为负，所以不能部署。BP 加入 train+val source/source-family support guard 后，`UCY_students03` 被安全回退，easy harm 修复为 0；但 `ETH_seq_eth` t50 仍为负，多个 source fallback-only，因此只能写 limited positive safety repair，不能写 global calibrated-subset / metric / seconds-level 成功。
+解释：BO 证明 calibrated-subset 有 macro 正信号，但 `UCY_students03` easy degradation 爆到 103%，`ETH_seq_eth` t50 为负，所以不能部署。BP 加入 train+val source/source-family support guard 后，`UCY_students03` 被安全回退，easy harm 修复为 0；BQ 进一步要求 t50 同 family 至少两个 train+val 支持源，把 `ETH_seq_eth` t50 负迁移守到 0。代价是 t50 正迁移也被守没了：positive_t50_fold_count = 0。因此只能写 limited positive all/hard + t50 non-harm repair，不能写 global calibrated-subset / metric / seconds-level / t50 positive success。
 
 验证：
 
 ```text
 python3 run_stage42_calibrated_subset_eval.py -> completed, BO partial
 python3 run_stage42_calibrated_subset_safety_repair.py -> 11 / 11
-focused pytest -> 11 passed
-python3 -m pytest tests -> 484 passed
+python3 run_stage42_calibrated_subset_t50_support_repair.py -> 12 / 12
+focused pytest -> 10 passed for BO/BP/BQ
+python3 -m pytest tests -> 487 passed
 ```
 
 已知 runtime 注意事项：

@@ -309,6 +309,34 @@ Stage42-BP adds train+val source/source-family support guards. It fixes BO's wor
 
 Verification: `python3 run_stage42_calibrated_subset_eval.py` passed with partial BO evidence, `python3 run_stage42_calibrated_subset_safety_repair.py` passed with `11 / 11` BP gates, focused pytest passed with `11` tests, and `python3 -m pytest tests` passed with `484` tests.
 
+Latest Stage42-BQ calibrated-subset t50 source-family support repair:
+
+```text
+source = fresh_calibrated_subset_t50_support_repair
+verdict = stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive
+gates = 12 / 12
+source_cv_folds = 6
+rows_total = 160338
+t50_min_source_family_support = 2
+all_improvement_macro_mean = 0.042380
+all_improvement_min = 0.0
+t50_improvement_macro_mean = 0.0
+t50_improvement_min = 0.0
+t100_raw_frame_diagnostic_macro_mean = 0.027796
+hard_failure_improvement_macro_mean = 0.040266
+easy_degradation_max = 0.0
+positive_fold_count = 3
+positive_t50_fold_count = 0
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BQ addresses BP's remaining `ETH_seq_eth` t50 negative slice by requiring at least two independent train+val sources from the same source-family before any t50 switch is allowed. This repairs t50 **non-harm**: the minimum t50 improvement becomes `0.0` and easy remains safe. It does not prove positive t50 transfer on calibrated subsets because every t50 fold is now fallback/non-positive; the correct claim is limited positive all/hard evidence with t50 guarded to the floor.
+
+Verification: `python3 run_stage42_calibrated_subset_t50_support_repair.py` passed with `12 / 12` BQ gates, focused pytest passed with `10` BO/BP/BQ tests, and `python3 -m pytest tests` passed with `487` tests.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

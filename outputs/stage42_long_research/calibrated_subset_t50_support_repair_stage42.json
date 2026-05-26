@@ -1,0 +1,1604 @@
+{
+  "source": "fresh_calibrated_subset_t50_support_repair",
+  "stage": "Stage42-BQ calibrated subset t50 source-family support repair",
+  "generated_at_utc": "2026-05-26T14:34:42.493792+00:00",
+  "git_commit": "23b6ea6",
+  "input_hash": "728190ab405838bf124af6104eb1cef45ea6873ffb1c0710a1b7bfbca4d7a212",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BQ 只修复 Stage42-BP 暴露出的 calibrated-subset t50 source-family support blocker。",
+    "t50 policy 只有同一 source-family 在 train+val 中至少两个独立支持源时才允许切换。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "bp_verdict": "stage42_bp_calibrated_subset_safety_repair_pass_limited_positive",
+  "summary": {
+    "source": "fresh_calibrated_subset_t50_support_repair",
+    "calibrated_sources_evaluated": 6,
+    "calibrated_source_ids": [
+      "ETH_seq_eth",
+      "ETH_seq_hotel",
+      "UCY_students03",
+      "UCY_zara01",
+      "UCY_zara02",
+      "UCY_zara03"
+    ],
+    "bp_previous_t50_min": -0.06660887331981802,
+    "bp_previous_easy_max": -0.0,
+    "source_cv_folds": 6,
+    "t50_min_source_family_support": 2,
+    "folds": 6,
+    "rows_total": 160338,
+    "all_improvement_macro_mean": 0.04238031883856982,
+    "all_improvement_min": 0.0,
+    "t50_improvement_macro_mean": 0.0,
+    "t50_improvement_min": 0.0,
+    "t100_raw_frame_diagnostic_macro_mean": 0.02779630214753681,
+    "hard_failure_improvement_macro_mean": 0.04026566086180111,
+    "easy_degradation_max": -0.0,
+    "easy_degradation_macro_mean": -0.09989782961673559,
+    "nonnegative_all_folds": true,
+    "nonnegative_t50_folds": true,
+    "easy_safe_all_folds": true,
+    "positive_fold_count": 3,
+    "positive_t50_fold_count": 0,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "training_run": true,
+    "auto_download_executed": false
+  },
+  "fold_results": [
+    {
+      "source": "fresh_calibrated_subset_t50_support_repair_fold",
+      "fold": {
+        "fold_id": 0,
+        "holdout_source": "ETH_seq_eth",
+        "validation_source": "ETH_seq_hotel",
+        "train_sources": [
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "ETH_seq_eth"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 122129,
+          "domains": {
+            "ETH_UCY": 112589,
+            "UCY": 9540
+          },
+          "sources": {
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara01/obsmat.txt": 16103,
+            "UCY/zara02/obsmat.txt": 25901,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 34079,
+          "t25": 32177,
+          "t50": 30279,
+          "t100": 25594,
+          "hard": 97037,
+          "failure": 48638,
+          "easy": 30969
+        },
+        "val": {
+          "rows": 16611,
+          "domains": {
+            "ETH_UCY": 16611
+          },
+          "sources": {
+            "ETH/seq_hotel/obsmat.txt": 16611
+          },
+          "t10": 5387,
+          "t25": 4670,
+          "t50": 3994,
+          "t100": 2560,
+          "hard": 14776,
+          "failure": 6307,
+          "easy": 5755
+        },
+        "test": {
+          "rows": 21598,
+          "domains": {
+            "ETH_UCY": 21598
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598
+          },
+          "t10": 7478,
+          "t25": 6432,
+          "t50": 5074,
+          "t100": 2614,
+          "hard": 18865,
+          "failure": 10862,
+          "easy": 1812
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "selected_lambda": 100.0,
+      "policy_slice_count": 3,
+      "validation_metric": {
+        "rows": 16611,
+        "all_improvement": 0.2624865752887464,
+        "t10_improvement": 0.6334818446520625,
+        "t25_improvement": 0.45998533767140637,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.07581268981548961,
+        "hard_failure_improvement": 0.2649708903098753,
+        "easy_degradation": -0.23952433531833883,
+        "switch_rate": 0.517488411293721,
+        "harm_over_fallback": -0.1331297618834749
+      },
+      "protected_ade": {
+        "rows": 21598,
+        "all_improvement": 0.10836334145080928,
+        "t10_improvement": 0.4845305729153008,
+        "t25_improvement": -0.029706482277646495,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0235931359895879,
+        "hard_failure_improvement": 0.10837574005074135,
+        "easy_degradation": -0.2985976185550603,
+        "switch_rate": 0.6440874155014353,
+        "harm_over_fallback": -0.1409623643847248
+      },
+      "protected_fde": {
+        "rows": 21598,
+        "all_improvement": 0.07898640495631626,
+        "t10_improvement": 0.4391824601752544,
+        "t25_improvement": -0.12515766171589537,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.021422513580441227,
+        "hard_failure_improvement": 0.08077878603645583,
+        "easy_degradation": -0.2723874917451652,
+        "switch_rate": 0.6440874155014353,
+        "harm_over_fallback": -0.1417552466147064
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.10526348366993797,
+          "mid": 0.10832746873275073,
+          "high": 0.11151987345787118,
+          "n": 21598,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 5074,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.10534487880905556,
+          "mid": 0.1084585942658019,
+          "high": 0.11155796716333732,
+          "n": 18865,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.4680816494478835,
+          "mid": -0.4251067341248329,
+          "high": -0.3851564134556895,
+          "n": 1812,
+          "bootstrap_n": 1000
+        }
+      },
+      "policy": {
+        "type": "stage42bq_t50_source_family_support_policy",
+        "selection_source": "train_val_support_guard_only",
+        "test_threshold_tuning": false,
+        "t50_min_source_family_support": 2,
+        "slices": {
+          "ETH_UCY|10": {
+            "direction": "high",
+            "residual_norm_threshold": 0.04526614032869085,
+            "alpha": 1.0,
+            "val_score": 1.4969083578249132,
+            "val_metric": {
+              "rows": 5387,
+              "all_improvement": 0.6334818446520625,
+              "t10_improvement": 0.6334818446520625,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.6433825779851275,
+              "easy_degradation": -0.1664811285058052,
+              "switch_rate": 0.6669760534620383,
+              "harm_over_fallback": -0.25990349774441546
+            },
+            "support_sources": [
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 1,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|25": {
+            "direction": "high",
+            "residual_norm_threshold": 0.02167311045916953,
+            "alpha": 0.75,
+            "val_score": 1.0927858169370954,
+            "val_metric": {
+              "rows": 4670,
+              "all_improvement": 0.45998533767140637,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.45998533767140637,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.4866221900215377,
+              "easy_degradation": -0.49806197094229687,
+              "switch_rate": 0.7563169164882227,
+              "harm_over_fallback": -0.12535599579958576
+            },
+            "support_sources": [
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 1,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|100": {
+            "direction": "high",
+            "residual_norm_threshold": 0.1618957150006099,
+            "alpha": 0.1,
+            "val_score": 0.15321998680717502,
+            "val_metric": {
+              "rows": 2560,
+              "all_improvement": 0.07581268981548961,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.07581268981548961,
+              "hard_failure_improvement": 0.07581268981548961,
+              "easy_degradation": 0.013265990976206066,
+              "switch_rate": 0.574609375,
+              "harm_over_fallback": -0.0882444655910821
+            },
+            "support_sources": [
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 1,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_t50_support_repair_fold",
+      "fold": {
+        "fold_id": 1,
+        "holdout_source": "ETH_seq_hotel",
+        "validation_source": "UCY_students03",
+        "train_sources": [
+          "ETH_seq_eth",
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "ETH_seq_hotel"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 73142,
+          "domains": {
+            "ETH_UCY": 63602,
+            "UCY": 9540
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "UCY/zara01/obsmat.txt": 16103,
+            "UCY/zara02/obsmat.txt": 25901,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 22341,
+          "t25": 20239,
+          "t50": 17824,
+          "t100": 12738,
+          "hard": 61302,
+          "failure": 33269,
+          "easy": 11357
+        },
+        "val": {
+          "rows": 70585,
+          "domains": {
+            "ETH_UCY": 70585
+          },
+          "sources": {
+            "UCY/students03/obsmat.txt": 70585
+          },
+          "t10": 19216,
+          "t25": 18370,
+          "t50": 17529,
+          "t100": 15470,
+          "hard": 54600,
+          "failure": 26231,
+          "easy": 21424
+        },
+        "test": {
+          "rows": 16611,
+          "domains": {
+            "ETH_UCY": 16611
+          },
+          "sources": {
+            "ETH/seq_hotel/obsmat.txt": 16611
+          },
+          "t10": 5387,
+          "t25": 4670,
+          "t50": 3994,
+          "t100": 2560,
+          "hard": 14776,
+          "failure": 6307,
+          "easy": 5755
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "selected_lambda": 100.0,
+      "policy_slice_count": 2,
+      "validation_metric": {
+        "rows": 70585,
+        "all_improvement": 0.029210609390178832,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.05087945542500394,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.05198898216646419,
+        "hard_failure_improvement": 0.029682354855902093,
+        "easy_degradation": 0.004327959077579324,
+        "switch_rate": 0.2878798611603032,
+        "harm_over_fallback": -0.012408277586209061
+      },
+      "protected_ade": {
+        "rows": 16611,
+        "all_improvement": 0.04245676143308508,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0979388136983651,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.07820982623648809,
+        "hard_failure_improvement": 0.04279026327910629,
+        "easy_degradation": -0.06066691550374137,
+        "switch_rate": 0.1804226115224851,
+        "harm_over_fallback": -0.021533514747230094
+      },
+      "protected_fde": {
+        "rows": 16611,
+        "all_improvement": 0.04339205114502076,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0954345688321242,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0740984605468854,
+        "hard_failure_improvement": 0.043677597112264266,
+        "easy_degradation": -0.05757331365518026,
+        "switch_rate": 0.1804226115224851,
+        "harm_over_fallback": -0.03013081444808498
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.04119770374892917,
+          "mid": 0.04244659772804249,
+          "high": 0.043728879056345406,
+          "n": 16611,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 3994,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.04141040356994062,
+          "mid": 0.04275620534979857,
+          "high": 0.04405955673735329,
+          "n": 14776,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.07220806558342133,
+          "mid": -0.06469807864713795,
+          "high": -0.056996212076271424,
+          "n": 5755,
+          "bootstrap_n": 1000
+        }
+      },
+      "policy": {
+        "type": "stage42bq_t50_source_family_support_policy",
+        "selection_source": "train_val_support_guard_only",
+        "test_threshold_tuning": false,
+        "t50_min_source_family_support": 2,
+        "slices": {
+          "ETH_UCY|25": {
+            "direction": "high",
+            "residual_norm_threshold": 0.07724008164807147,
+            "alpha": 0.2,
+            "val_score": 0.10489438684828524,
+            "val_metric": {
+              "rows": 18370,
+              "all_improvement": 0.05087945542500394,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.05087945542500394,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.0635325014579613,
+              "easy_degradation": 0.004120242623772752,
+              "switch_rate": 0.597387044093631,
+              "harm_over_fallback": -0.0126610213640715
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 1,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|100": {
+            "direction": "high",
+            "residual_norm_threshold": 0.1840785303784172,
+            "alpha": 0.1,
+            "val_score": 0.0945667052279562,
+            "val_metric": {
+              "rows": 15470,
+              "all_improvement": 0.05198898216646419,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.05198898216646419,
+              "hard_failure_improvement": 0.05198898216646419,
+              "easy_degradation": 0.014673762503842225,
+              "switch_rate": 0.604137039431157,
+              "harm_over_fallback": -0.04158082165252573
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 1,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_t50_support_repair_fold",
+      "fold": {
+        "fold_id": 2,
+        "holdout_source": "UCY_students03",
+        "validation_source": "UCY_zara01",
+        "train_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "UCY_students03"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 73650,
+          "domains": {
+            "ETH_UCY": 64110,
+            "UCY": 9540
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/zara02/obsmat.txt": 25901,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 23148,
+          "t25": 20625,
+          "t50": 17830,
+          "t100": 12047,
+          "hard": 61891,
+          "failure": 31945,
+          "easy": 15760
+        },
+        "val": {
+          "rows": 16103,
+          "domains": {
+            "ETH_UCY": 16103
+          },
+          "sources": {
+            "UCY/zara01/obsmat.txt": 16103
+          },
+          "t10": 4580,
+          "t25": 4284,
+          "t50": 3988,
+          "t100": 3251,
+          "hard": 14187,
+          "failure": 7631,
+          "easy": 1352
+        },
+        "test": {
+          "rows": 70585,
+          "domains": {
+            "ETH_UCY": 70585
+          },
+          "sources": {
+            "UCY/students03/obsmat.txt": 70585
+          },
+          "t10": 19216,
+          "t25": 18370,
+          "t50": 17529,
+          "t100": 15470,
+          "hard": 54600,
+          "failure": 26231,
+          "easy": 21424
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "selected_lambda": 10.0,
+      "policy_slice_count": 4,
+      "validation_metric": {
+        "rows": 16103,
+        "all_improvement": 0.3052465376240219,
+        "t10_improvement": 0.6061594561400117,
+        "t25_improvement": 0.43850962412378236,
+        "t50_improvement": 0.37827159236386,
+        "t100_raw_frame_diagnostic_improvement": 0.06945854212270253,
+        "hard_failure_improvement": 0.29084330696538707,
+        "easy_degradation": -0.3877625561440746,
+        "switch_rate": 0.8938086070918463,
+        "harm_over_fallback": -0.17823282465923945
+      },
+      "protected_ade": {
+        "rows": 70585,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "protected_fde": {
+        "rows": 70585,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 70585,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 17529,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 54600,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 21424,
+          "bootstrap_n": 1000
+        }
+      },
+      "policy": {
+        "type": "stage42bq_t50_source_family_support_policy",
+        "selection_source": "train_val_support_guard_only",
+        "test_threshold_tuning": false,
+        "t50_min_source_family_support": 2,
+        "slices": {
+          "ETH_UCY|10": {
+            "direction": "high",
+            "residual_norm_threshold": 0.05483133165737902,
+            "alpha": 0.75,
+            "val_score": 1.4103689940567505,
+            "val_metric": {
+              "rows": 4580,
+              "all_improvement": 0.6061594561400117,
+              "t10_improvement": 0.6061594561400117,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.6050754497838782,
+              "easy_degradation": -0.4515136038894221,
+              "switch_rate": 0.866593886462882,
+              "harm_over_fallback": -0.26537791104710207
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|25": {
+            "direction": "high",
+            "residual_norm_threshold": 0.008835022786974645,
+            "alpha": 0.75,
+            "val_score": 0.9978400495763615,
+            "val_metric": {
+              "rows": 4284,
+              "all_improvement": 0.43850962412378236,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.43850962412378236,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.4336114497526461,
+              "easy_degradation": -0.5404206582573683,
+              "switch_rate": 0.9936974789915967,
+              "harm_over_fallback": -0.12194769377534012
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|50": {
+            "direction": "high",
+            "residual_norm_threshold": 0.008696567001734068,
+            "alpha": 0.5,
+            "val_score": 1.765778869023559,
+            "val_metric": {
+              "rows": 3988,
+              "all_improvement": 0.37827159236386,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.37827159236386,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.37827159236386,
+              "easy_degradation": -0.277299704475938,
+              "switch_rate": 0.9984954864593781,
+              "harm_over_fallback": -0.21536490565460223
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|100": {
+            "direction": "high",
+            "residual_norm_threshold": 0.2027951652676364,
+            "alpha": 0.1,
+            "val_score": 0.13309545649282503,
+            "val_metric": {
+              "rows": 3251,
+              "all_improvement": 0.06945854212270253,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.06945854212270253,
+              "hard_failure_improvement": 0.06945854212270253,
+              "easy_degradation": -0.018701168143093305,
+              "switch_rate": 0.6721008920332205,
+              "harm_over_fallback": -0.08408279883355735
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_zara"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_t50_support_repair_fold",
+      "fold": {
+        "fold_id": 3,
+        "holdout_source": "UCY_zara01",
+        "validation_source": "UCY_zara02",
+        "train_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara03"
+        ],
+        "test_sources": [
+          "UCY_zara01"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 118334,
+          "domains": {
+            "ETH_UCY": 108794,
+            "UCY": 9540
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 35141,
+          "t25": 32172,
+          "t50": 28937,
+          "t100": 22084,
+          "hard": 95630,
+          "failure": 47702,
+          "easy": 30970
+        },
+        "val": {
+          "rows": 25901,
+          "domains": {
+            "ETH_UCY": 25901
+          },
+          "sources": {
+            "UCY/zara02/obsmat.txt": 25901
+          },
+          "t10": 7223,
+          "t25": 6823,
+          "t50": 6422,
+          "t100": 5433,
+          "hard": 20861,
+          "failure": 10474,
+          "easy": 6214
+        },
+        "test": {
+          "rows": 16103,
+          "domains": {
+            "ETH_UCY": 16103
+          },
+          "sources": {
+            "UCY/zara01/obsmat.txt": 16103
+          },
+          "t10": 4580,
+          "t25": 4284,
+          "t50": 3988,
+          "t100": 3251,
+          "hard": 14187,
+          "failure": 7631,
+          "easy": 1352
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "selected_lambda": 100.0,
+      "policy_slice_count": 3,
+      "validation_metric": {
+        "rows": 25901,
+        "all_improvement": 0.0945150420964479,
+        "t10_improvement": 0.14699167853681272,
+        "t25_improvement": 0.30691455639194654,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.05755789642335407,
+        "hard_failure_improvement": 0.08603815547812521,
+        "easy_degradation": -0.0022032149940868218,
+        "switch_rate": 0.522836956102081,
+        "harm_over_fallback": -0.04953753348055282
+      },
+      "protected_ade": {
+        "rows": 16103,
+        "all_improvement": 0.10346181014752454,
+        "t10_improvement": 0.16364226338474253,
+        "t25_improvement": 0.32649025441202584,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.06497485065914488,
+        "hard_failure_improvement": 0.09042796184095903,
+        "easy_degradation": -0.24012244364161184,
+        "switch_rate": 0.5944233993665776,
+        "harm_over_fallback": -0.06041113786412399
+      },
+      "protected_fde": {
+        "rows": 16103,
+        "all_improvement": 0.09456683271765365,
+        "t10_improvement": 0.17020059858021708,
+        "t25_improvement": 0.33131448187482115,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0586467328220166,
+        "hard_failure_improvement": 0.08111408563482525,
+        "easy_degradation": -0.24119970678200553,
+        "switch_rate": 0.5944233993665776,
+        "harm_over_fallback": -0.07982113586462254
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.10098458810690181,
+          "mid": 0.10343143249423231,
+          "high": 0.10577306794050167,
+          "n": 16103,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 3988,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.08813546337986662,
+          "mid": 0.09044466388718397,
+          "high": 0.092630162546364,
+          "n": 14187,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.3574674942859893,
+          "mid": -0.3164585557438033,
+          "high": -0.27202241898982465,
+          "n": 1352,
+          "bootstrap_n": 1000
+        }
+      },
+      "policy": {
+        "type": "stage42bq_t50_source_family_support_policy",
+        "selection_source": "train_val_support_guard_only",
+        "test_threshold_tuning": false,
+        "t50_min_source_family_support": 2,
+        "slices": {
+          "ETH_UCY|10": {
+            "direction": "high",
+            "residual_norm_threshold": 0.06924323438567505,
+            "alpha": 0.2,
+            "val_score": 0.3235429772345224,
+            "val_metric": {
+              "rows": 7223,
+              "all_improvement": 0.14699167853681272,
+              "t10_improvement": 0.14699167853681272,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.1452639724304302,
+              "easy_degradation": 0.006496632378678591,
+              "switch_rate": 0.5501869029489131,
+              "harm_over_fallback": -0.05588794597444248
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_students": 1,
+              "UCY_zara": 1
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|25": {
+            "direction": "high",
+            "residual_norm_threshold": 0.007833448103027076,
+            "alpha": 0.75,
+            "val_score": 0.7175032750725768,
+            "val_metric": {
+              "rows": 6823,
+              "all_improvement": 0.30691455639194654,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.30691455639194654,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.33735389421853146,
+              "easy_degradation": 0.0026207431058771213,
+              "switch_rate": 0.9906199618935952,
+              "harm_over_fallback": -0.0818203045661045
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_students": 1,
+              "UCY_zara": 1
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|100": {
+            "direction": "high",
+            "residual_norm_threshold": 0.18576716102036334,
+            "alpha": 0.1,
+            "val_score": 0.11228767219646574,
+            "val_metric": {
+              "rows": 5433,
+              "all_improvement": 0.05755789642335407,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.05755789642335407,
+              "hard_failure_improvement": 0.05755789642335407,
+              "easy_degradation": -0.026714978423886038,
+              "switch_rate": 0.5170255843916804,
+              "harm_over_fallback": -0.05910787462762187
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_students": 1,
+              "UCY_zara": 1
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_t50_support_repair_fold",
+      "fold": {
+        "fold_id": 4,
+        "holdout_source": "UCY_zara02",
+        "validation_source": "UCY_zara03",
+        "train_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara01"
+        ],
+        "test_sources": [
+          "UCY_zara02"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 124897,
+          "domains": {
+            "ETH_UCY": 124897
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598,
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara01/obsmat.txt": 16103
+          },
+          "t10": 36661,
+          "t25": 33756,
+          "t50": 30585,
+          "t100": 23895,
+          "hard": 102428,
+          "failure": 51031,
+          "easy": 30343
+        },
+        "val": {
+          "rows": 9540,
+          "domains": {
+            "UCY": 9540
+          },
+          "sources": {
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 3060,
+          "t25": 2700,
+          "t50": 2340,
+          "t100": 1440,
+          "hard": 7389,
+          "failure": 4302,
+          "easy": 1979
+        },
+        "test": {
+          "rows": 25901,
+          "domains": {
+            "ETH_UCY": 25901
+          },
+          "sources": {
+            "UCY/zara02/obsmat.txt": 25901
+          },
+          "t10": 7223,
+          "t25": 6823,
+          "t50": 6422,
+          "t100": 5433,
+          "hard": 20861,
+          "failure": 10474,
+          "easy": 6214
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "selected_lambda": 0.1,
+      "policy_slice_count": 3,
+      "validation_metric": {
+        "rows": 9540,
+        "all_improvement": 0.28971082343333154,
+        "t10_improvement": 0.7171029747266828,
+        "t25_improvement": 0.060500351660651375,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.30813208544759274,
+        "hard_failure_improvement": 0.28833316779148077,
+        "easy_degradation": -0.1347695695916239,
+        "switch_rate": 0.5660377358490566,
+        "harm_over_fallback": -0.15486958583017432
+      },
+      "protected_ade": {
+        "rows": 25901,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "protected_fde": {
+        "rows": 25901,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 25901,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 6422,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 20861,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 6214,
+          "bootstrap_n": 1000
+        }
+      },
+      "policy": {
+        "type": "stage42bq_t50_source_family_support_policy",
+        "selection_source": "train_val_support_guard_only",
+        "test_threshold_tuning": false,
+        "t50_min_source_family_support": 2,
+        "slices": {
+          "UCY|10": {
+            "direction": "high",
+            "residual_norm_threshold": 0.051144009760412286,
+            "alpha": 0.5,
+            "val_score": 1.7003195127733004,
+            "val_metric": {
+              "rows": 3060,
+              "all_improvement": 0.7171029747266828,
+              "t10_improvement": 0.7171029747266828,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.7413753481559444,
+              "easy_degradation": -0.21833125402437747,
+              "switch_rate": 0.9,
+              "harm_over_fallback": -0.2728241167591783
+            },
+            "support_sources": [
+              "UCY/zara03/crowds_zara03.txt"
+            ],
+            "support_source_family_counts": {
+              "UCY_zara": 1
+            },
+            "eligible_source_families": [
+              "UCY_zara"
+            ]
+          },
+          "UCY|25": {
+            "direction": "high",
+            "residual_norm_threshold": 0.14323189018292265,
+            "alpha": 0.1,
+            "val_score": 0.029720716554424313,
+            "val_metric": {
+              "rows": 2700,
+              "all_improvement": 0.060500351660651375,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.060500351660651375,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": -0.029979775770487604,
+              "easy_degradation": -0.21722802571139843,
+              "switch_rate": 0.5,
+              "harm_over_fallback": -0.016384884542677173
+            },
+            "support_sources": [
+              "UCY/zara03/crowds_zara03.txt"
+            ],
+            "support_source_family_counts": {
+              "UCY_zara": 1
+            },
+            "eligible_source_families": [
+              "UCY_zara"
+            ]
+          },
+          "UCY|100": {
+            "direction": "high",
+            "residual_norm_threshold": 0.07389444933329953,
+            "alpha": 0.2,
+            "val_score": 0.6945170050742225,
+            "val_metric": {
+              "rows": 1440,
+              "all_improvement": 0.30813208544759274,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.30813208544759274,
+              "hard_failure_improvement": 0.30813208544759274,
+              "easy_degradation": 0.0035267548562143425,
+              "switch_rate": 0.9,
+              "harm_over_fallback": -0.41553809949413106
+            },
+            "support_sources": [
+              "UCY/zara03/crowds_zara03.txt"
+            ],
+            "support_source_family_counts": {
+              "UCY_zara": 1
+            },
+            "eligible_source_families": [
+              "UCY_zara"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "source": "fresh_calibrated_subset_t50_support_repair_fold",
+      "fold": {
+        "fold_id": 5,
+        "holdout_source": "UCY_zara03",
+        "validation_source": "ETH_seq_eth",
+        "train_sources": [
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02"
+        ],
+        "test_sources": [
+          "UCY_zara03"
+        ]
+      },
+      "fold_stats": {
+        "train": {
+          "rows": 129200,
+          "domains": {
+            "ETH_UCY": 129200
+          },
+          "sources": {
+            "ETH/seq_hotel/obsmat.txt": 16611,
+            "UCY/students03/obsmat.txt": 70585,
+            "UCY/zara01/obsmat.txt": 16103,
+            "UCY/zara02/obsmat.txt": 25901
+          },
+          "t10": 36406,
+          "t25": 34147,
+          "t50": 31933,
+          "t100": 26714,
+          "hard": 104424,
+          "failure": 50643,
+          "easy": 34745
+        },
+        "val": {
+          "rows": 21598,
+          "domains": {
+            "ETH_UCY": 21598
+          },
+          "sources": {
+            "ETH/seq_eth/obsmat.txt": 21598
+          },
+          "t10": 7478,
+          "t25": 6432,
+          "t50": 5074,
+          "t100": 2614,
+          "hard": 18865,
+          "failure": 10862,
+          "easy": 1812
+        },
+        "test": {
+          "rows": 9540,
+          "domains": {
+            "UCY": 9540
+          },
+          "sources": {
+            "UCY/zara03/crowds_zara03.txt": 9540
+          },
+          "t10": 3060,
+          "t25": 2700,
+          "t50": 2340,
+          "t100": 1440,
+          "hard": 7389,
+          "failure": 4302,
+          "easy": 1979
+        },
+        "source_overlap": {
+          "train_val": [],
+          "train_test": [],
+          "val_test": []
+        },
+        "source_overlap_pass": true
+      },
+      "feature_count": 166,
+      "selected_lambda": 0.1,
+      "policy_slice_count": 3,
+      "validation_metric": {
+        "rows": 21598,
+        "all_improvement": 0.10620342116994741,
+        "t10_improvement": 0.4293169422365408,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.013282851603586332,
+        "t100_raw_frame_diagnostic_improvement": 0.026347150982164225,
+        "hard_failure_improvement": 0.10624783907153956,
+        "easy_degradation": -0.22927493942434118,
+        "switch_rate": 0.4234651356607093,
+        "harm_over_fallback": -0.13815267371261672
+      },
+      "protected_ade": {
+        "rows": 9540,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "protected_fde": {
+        "rows": 9540,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 7389,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 1979,
+          "bootstrap_n": 1000
+        }
+      },
+      "policy": {
+        "type": "stage42bq_t50_source_family_support_policy",
+        "selection_source": "train_val_support_guard_only",
+        "test_threshold_tuning": false,
+        "t50_min_source_family_support": 2,
+        "slices": {
+          "ETH_UCY|10": {
+            "direction": "high",
+            "residual_norm_threshold": 0.02666217549963766,
+            "alpha": 1.0,
+            "val_score": 0.982660426716313,
+            "val_metric": {
+              "rows": 7478,
+              "all_improvement": 0.4293169422365408,
+              "t10_improvement": 0.4293169422365408,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.42745115529844846,
+              "easy_degradation": -0.5581238651149011,
+              "switch_rate": 0.9166889542658465,
+              "harm_over_fallback": -0.3526409223666531
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|50": {
+            "direction": "low",
+            "residual_norm_threshold": 0.14233675777074933,
+            "alpha": 0.75,
+            "val_score": 0.052218468146564015,
+            "val_metric": {
+              "rows": 5074,
+              "all_improvement": 0.013282851603586332,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.013282851603586332,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.013282851603586332,
+              "easy_degradation": 0.01964399224683433,
+              "switch_rate": 0.2307843910130075,
+              "harm_over_fallback": -0.0174872996868395
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_zara"
+            ]
+          },
+          "ETH_UCY|100": {
+            "direction": "high",
+            "residual_norm_threshold": 0.15993271210105647,
+            "alpha": 0.2,
+            "val_score": 0.04181005600677333,
+            "val_metric": {
+              "rows": 2614,
+              "all_improvement": 0.026347150982164225,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.026347150982164225,
+              "hard_failure_improvement": 0.026347150982164225,
+              "easy_degradation": 0.01425030568445984,
+              "switch_rate": 0.42846212700841624,
+              "harm_over_fallback": -0.09871540580575368
+            },
+            "support_sources": [
+              "ETH/seq_eth/obsmat.txt",
+              "ETH/seq_hotel/obsmat.txt",
+              "UCY/students03/obsmat.txt",
+              "UCY/zara01/obsmat.txt",
+              "UCY/zara02/obsmat.txt"
+            ],
+            "support_source_family_counts": {
+              "ETH_seq": 2,
+              "UCY_students": 1,
+              "UCY_zara": 2
+            },
+            "eligible_source_families": [
+              "ETH_seq",
+              "UCY_students",
+              "UCY_zara"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "train_only_feature_normalization": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "source_specific_annotation_step_subset_claim_allowed": true,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_bq_gate": {
+    "source": "fresh_calibrated_subset_t50_support_repair",
+    "gates": {
+      "bp_input_verified": true,
+      "repair_rerun_completed": true,
+      "all_nonnegative": true,
+      "t50_nonnegative": true,
+      "easy_safe": true,
+      "limited_positive_support_exists": true,
+      "no_future_inputs": true,
+      "validation_only_selection": true,
+      "global_metric_blocked": true,
+      "global_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "limited_positive_t50_nonharm": true,
+    "verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive"
+  }
+}
