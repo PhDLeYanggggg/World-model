@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 长期目标结果总账 README
+
+本轮按用户要求新增详细中文总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_RESULTS_SUMMARY_ZH.md`
+
+它集中回答：在 M3W 长期目标内到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前模型大概是什么质量，以及哪些 claim 仍然禁止。最新纳入到 Stage42-DM reviewer replay package：group-consistency runtime rows `47458`，switch exact match `True`，all/t50/t100 raw-frame/hard improvement 分别约 `+24.72% / +22.36% / +14.35% / +23.89%`，near@0.05 从 `1.94%` 降到 `1.38%`。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## 当前目标总账 README
 
 最新按用户要求汇总的单文件中文总账：
