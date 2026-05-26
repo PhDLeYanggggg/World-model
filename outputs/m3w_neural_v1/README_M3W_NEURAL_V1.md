@@ -145,6 +145,29 @@ smc_enabled = false
 
 Stage42-F packages A-E into paper-ready artifacts under `outputs/stage42_long_research/`. It supports a protected raw-frame 2.5D external world-state manuscript package, but it is **not yet full A-journal ready** because metric/time calibration, all-component fresh retrained ablation, independent external expansion, and floor-free safety remain open.
 
+## Stage42-U UCY Candidate Bridge Audit
+
+```text
+source = fresh_run
+report = outputs/stage42_long_research/ucy_candidate_bridge_stage42.md
+gate = outputs/stage42_long_research/stage42_stage_u_gate.md
+verdict = stage42_u_ucy_endpoint_to_full_bridge_failed_blocker
+gates = 7 / 8
+```
+
+Stage42-U answers a narrow but important question after Stage42-T: can the strict Stage41 pure-UCY endpoint neural candidate become the missing non-floor UCY source for Stage42 full-waypoint evaluation?
+
+The answer is no under the tested linear endpoint-to-full bridge. The Stage41 pure-UCY endpoint candidate is available and row-aligned with Stage42 val/test rows, but when its endpoint residual is linearly interpolated into full waypoints, validation and UCY test full-waypoint metrics are negative:
+
+```text
+UCY_zara03_test ADE all = -0.070821
+UCY_zara03_test ADE t50 = -0.492070
+UCY_zara03_test hard/failure = -0.083302
+UCY_zara03_test easy degradation = 0.566646
+```
+
+This is a blocker diagnosis, not a success. It proves that endpoint-FDE success cannot be counted as full-waypoint world-state success. The next aligned action is to train/cache a UCY-aware full-waypoint candidate source or learn a validation-selected waypoint-shape bridge. Stage5C and SMC remain disabled, and no metric/seconds-level claim is made.
+
 ## Stage42-G Retrained Ablation Phase1
 
 ```text

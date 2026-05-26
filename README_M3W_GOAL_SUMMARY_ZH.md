@@ -127,6 +127,19 @@ Stage42-T 诊断 UCY：
 
 这意味着 UCY 当前不是 threshold 没调好，而是没有可切换的 UCY candidate source。下一步要训练 UCY-aware 或 source-agnostic candidate prediction source，或者重建合法 UCY train/val calibration。
 
+Stage42-U 继续检查一个最自然的修复：把 Stage41 strict pure-UCY endpoint neural candidate 桥接到 Stage42 full-waypoint。结果是 blocker，不是成功：
+
+| 指标 | UCY zara03 test |
+| --- | ---: |
+| ADE all | -0.070821 |
+| ADE t+50 | -0.492070 |
+| hard/failure | -0.083302 |
+| easy degradation | 0.566646 |
+| gates | 7 / 8 |
+| verdict | `stage42_u_ucy_endpoint_to_full_bridge_failed_blocker` |
+
+这个结果说明：Stage41 pure-UCY endpoint residual 在 endpoint 指标上成立，但不能直接通过线性插值当作 full-waypoint world-state success。下一步必须训练 UCY-aware full-waypoint candidate source，或学习 validation-selected waypoint-shape bridge。
+
 ## 3. 走过的路线
 
 ### 路线 A：早期 JEPA / WAM-style 表征
@@ -446,6 +459,7 @@ Stage42 已经让 full-waypoint / row-level protected branch 更可信，但 UCY
 | Stage42-J static-gated full-waypoint repair | 成功 | partial static/context validation-gated 后有效。 |
 | Stage42-R row prediction cache combo | 成功 | combo t50 CI low 为正，修复 Stage42-Q 只能 preflight 的问题。 |
 | Stage42-S frozen row combo policy | 成功但有 UCY 限制 | ETH_UCY/TrajNet 正；UCY fallback-only。 |
+| Stage42-U UCY endpoint-to-full bridge | 失败但有用 | 证明 pure-UCY endpoint 成功不能直接算 full-waypoint 成功；需要 UCY full-waypoint candidate。 |
 
 ## 6. 当前 best deployable 与 branch evidence 的关系
 

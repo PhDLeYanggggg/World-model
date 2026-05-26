@@ -47,6 +47,22 @@ available_nonfloor_source_for_UCY = false
 root_cause = current row cache has no non-floor Stage42-J/P candidate predictions for UCY
 ```
 
+Latest Stage42-U UCY endpoint-to-full bridge audit:
+
+```text
+source = fresh_run
+verdict = stage42_u_ucy_endpoint_to_full_bridge_failed_blocker
+gates = 7 / 8
+Stage41 pure-UCY endpoint candidate = available
+row_id alignment with Stage42 full-waypoint labels = available
+UCY full-waypoint ADE all = -0.070821
+UCY full-waypoint ADE t50 = -0.492070
+UCY full-waypoint hard/failure = -0.083302
+UCY easy degradation = 0.566646
+root_cause = endpoint residual success does not transfer to full-waypoint shape via linear interpolation
+next = train/cache a UCY-aware full-waypoint candidate or validation-selected waypoint-shape bridge
+```
+
 ## M3W-Neural v1 Goal Summary
 
 Latest detailed goal-level summary:
