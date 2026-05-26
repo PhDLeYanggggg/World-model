@@ -38,6 +38,8 @@ Stage42-AP then tests the same question as a two-stage residual problem. It trai
 
 Stage42-AQ repeats the residual-context question with a real PyTorch MLP in the arm64 `.venv-pytorch` runtime. It still does not find neural context increment: `neural_history`, `neural_goal_neighbor`, and `neural_history_goal_neighbor` all underperform the baseline-family first-stage on all/t50/hard. This rules out a simple tabular neural-context repair; the next credible route is graph/sequence/scene-rich context.
 
+Stage42-AR then tests temporal sequence context directly using a Conv1D encoder over past-only `history_seq` with shape `[337991, 64, 7]`. It also fails to beat the baseline-family first-stage: sequence-history and sequence-goal/neighbor variants underperform on all/t50/hard. The evidence now strongly says the current source-level ridge/residual/tabular/sequence context branches do not independently explain the gain beyond baseline-family rollout context.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

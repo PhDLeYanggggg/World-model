@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -125,6 +125,24 @@ SMC_enabled = false
 ```
 
 Stage42-AQ replaces the residual second stage with a real PyTorch MLP, trained in the arm64 `.venv-pytorch` runtime, to test whether tabular neural history/goal/neighbor context can learn residual full-waypoint dynamics beyond baseline-family rollout context. It still fails the increment gate: `neural_history`, `neural_goal_neighbor`, and `neural_history_goal_neighbor` all underperform the baseline-family first-stage on all/t50/hard. This rules out a simple tabular neural-context fix. The next meaningful direction is graph/sequence/scene-rich context, not another tabular MLP.
+
+Latest Stage42-AR proposed source-level sequence-context residual training:
+
+```text
+source = fresh_run
+runtime = .venv-pytorch/bin/python arm64, torch_threads=4, num_workers=0
+verdict = stage42_ar_sequence_context_evidence_partial_or_negative
+gates = 11 / 12
+history_seq_shape = [337991, 64, 7]
+baseline_family_only_ADE_all = 0.287773
+baseline_family_only_ADE_t50 = 0.315425
+baseline_family_only_ADE_hard_failure = 0.275812
+positive_sequence_context_variants = none
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AR upgrades AQ from tabular MLP to a temporal Conv1D sequence encoder over past-only `history_seq` plus goal/neighbor context. It still fails the increment gate: `sequence_history`, `sequence_goal_neighbor_no_history`, and `sequence_history_goal_neighbor` all underperform the baseline-family first-stage on all/t50/hard. This is now a strong boundary result: current source-level success is not explained by independent history/goal/neighbor residual modules under ridge, tabular MLP, or temporal Conv1D residual protocols. The next credible experiment must use richer graph/scene tokens, a different supervision target, or explicitly evaluate whether baseline-family rollout context itself should be the main paper contribution.
 
 Latest Stage42-AD calibration evidence refresh:
 

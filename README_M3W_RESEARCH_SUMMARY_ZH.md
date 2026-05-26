@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining，以及 Stage42-AQ proposed source-level neural residual-context retraining；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining，以及 Stage42-AR proposed source-level sequence-context retraining；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -36,11 +36,13 @@ python3 run_stage42_source_level_ablation.py = pass
 python3 run_stage42_source_level_incremental_ablation.py = pass
 python3 run_stage42_source_level_residual_context.py = pass
 python3 run_stage42_source_level_neural_context.py = pass
+python3 run_stage42_source_level_sequence_context.py = pass
 python3 -m pytest tests/test_stage42_source_level_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_incremental_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_residual_context.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_neural_context.py = 4 passed
-python3 -m pytest tests = 382 passed
+python3 -m pytest tests/test_stage42_source_level_sequence_context.py = 4 passed
+python3 -m pytest tests = 386 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -60,7 +62,7 @@ python3 -m pytest tests = 382 passed
 
 ## 给你的直接结论快照
 
-截至 Stage42-AQ，我在 M3W 这个长期目标里做的核心事情可以概括为十一条：
+截至 Stage42-AR，我在 M3W 这个长期目标里做的核心事情可以概括为十二条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -94,6 +96,9 @@ python3 -m pytest tests = 382 passed
 
 11. **Stage42-AQ 用真实 PyTorch MLP 试了 tabular neural residual-context，仍未修复。**  
    Stage42-AQ 使用 `.venv-pytorch/bin/python` arm64、`torch_threads=4`、`num_workers=0`，训练 `neural_history`、`neural_goal_neighbor`、`neural_history_goal_neighbor` 三个 residual-context MLP。结果 11/12 gates，失败 gate 是 `neural_context_increment_found`：三个 neural context variant 全部低于 `baseline_family_only` first stage。因此简单 tabular MLP 也不能证明 history/goal/neighbor 的独立增量；下一步必须转向 graph/sequence/scene-rich context，而不是继续堆 tabular context。
+
+12. **Stage42-AR 用 temporal Conv1D sequence encoder 处理完整 past history，仍未超过 baseline-family。**  
+   Stage42-AR 读取 `history_seq` `(337991, 64, 7)`，训练 `sequence_history`、`sequence_goal_neighbor_no_history`、`sequence_history_goal_neighbor` 三个 residual sequence variants。结果 11/12 gates，失败 gate 是 `sequence_context_increment_found`：所有 sequence-context variants 都低于 baseline-family first stage。因此当前 source-level 成功不是由这些独立 residual history/goal/neighbor 模块解释的；后续需要真正 graph/scene token 或改变监督目标，也可以把 baseline-family rollout context 作为论文的核心机制来重新组织贡献。
 
 最重要的失败原因也很清楚：
 
@@ -173,6 +178,7 @@ python3 -m pytest tests = 382 passed
 | Stage42-AO proposed source-level incremental ablation | 10/11 gates；`history_only` 和 `motion_goal_context` 有 standalone 正信号；`positive_incremental_context_variants = []`；`baseline_family_only` all +28.78%、t50 +31.54%，强于 full ridge。 | 进一步证明当前 ridge 协议的 source-level 成功主要来自 baseline-family rollout context；history/goal/neighbor 不能作为独立主贡献写入论文，必须用 neural/graph/richer context 再验证。 |
 | Stage42-AP proposed source-level residual context | 8/9 gates；baseline-family first stage all +28.78%、t50 +31.54%、hard/failure +27.58%；`positive_residual_context_variants = []`。 | 二阶段 residual 也没有证明 history/goal/neighbor 对 baseline-family 剩余误差有 >1% 增量；下一步需要真正 neural/graph context 或更强 scene/interaction features。 |
 | Stage42-AQ proposed source-level neural residual context | 11/12 gates；arm64 PyTorch MLP fresh run；`positive_neural_context_variants = []`；`neural_history` / `neural_goal_neighbor` / `neural_history_goal_neighbor` 均低于 baseline-family first stage。 | 排除了简单 tabular neural residual-context 修复；下一步应做 graph/sequence/scene-rich context，而不是继续包装 ridge/MLP context。 |
+| Stage42-AR proposed source-level sequence context | 11/12 gates；arm64 temporal Conv1D fresh run；`history_seq_shape = [337991, 64, 7]`；`positive_sequence_context_variants = []`。 | 完整 past sequence encoder 也没有超过 baseline-family first stage；下一步应转向 graph/scene-rich context 或重新把 baseline-family rollout context 定义为主要贡献。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界
