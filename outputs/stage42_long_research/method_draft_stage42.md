@@ -118,3 +118,21 @@ The deployable full-waypoint model should treat interaction/occupancy/physical h
 - Still required: teacher/floor rollout context, protected safe-switch, train/internal-validation policy selection.
 - Rejected: true 3D, foundation model, global metric prediction, seconds-level horizon, Stage5C execution, SMC readiness, and ungated/floor-free neural deployment.
 <!-- STAGE42_CA_REFRESH:END -->
+
+<!-- STAGE42_CW_RUNTIME_REPLAY_REFRESH:START -->
+## Stage42-CW Runtime Replay Paper / Reproducibility Refresh
+
+- source: `fresh_synthesis_from_stage42_cv_runtime_batch_replay`
+- role: paper-ready deployment reproducibility evidence.
+- Stage42-CV gate: `25 / 25`; verdict `stage42_cv_batch_runtime_replay_pass`.
+- frozen policy hash: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`.
+- validation/test replay rows: `53256` / `55528`.
+- exact runtime replay: validation `True`, test `True`.
+- selected_xy / ADE / FDE max diff vs original CQ guard on test: `0.0` / `0.0` / `0.0`.
+- test ADE vs endpoint-linear all/t50/t100 raw/hard: `1.77%` / `1.07%` / `3.48%` / `1.93%`.
+- easy degradation: `0.25%`; switch rate: `16.96%`.
+- near-collision@0.05 delta vs endpoint-linear: `-0.06%`; jagged-rate delta: `0.00%`.
+- The guard's second proximity input is the validation-selected base composer candidate rollout group min-distance, not future labels.
+- This refresh does not create a new metric/seconds/3D/foundation claim; it only strengthens deployable policy reproducibility under protected dataset-local/raw-frame 2.5D boundaries.
+- Stage5C remains unexecuted and SMC remains disabled.
+<!-- STAGE42_CW_RUNTIME_REPLAY_REFRESH:END -->
