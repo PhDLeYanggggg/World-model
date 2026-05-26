@@ -14,7 +14,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY/CZ/DA/DB/DC/DD：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier、paper-freeze manifest、next-action evidence queue、context rescue decision audit、context switchability / gain-harm gate、source support closure audit。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本纳入 Stage42-CV/CW/CX/CY/CZ/DA/DB/DC/DD/DE/DF/DG/DH：batch runtime replay、paper refresh、evidence provenance verifier、worktree caveat classifier、paper-freeze manifest、next-action evidence queue、context rescue decision audit、context switchability / gain-harm gate、source support closure audit、full-waypoint primary deployment gap audit、all/hard/proximity repair、all/hard weighted-loss retraining、proximity/occupancy-proxy weighted retraining。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
 
 当前总判定：
 
@@ -40,7 +40,11 @@ latest next-action queue = Stage42-DA, 15 / 15 gates, top priority is legal/sour
 latest context rescue decision = Stage42-DB, 13 / 13 gates, decision is stop repeating current context residual/gated protocols
 latest context switchability gate = Stage42-DC, 15 / 15 gates, decision is context_switchability_not_supported
 latest source support closure audit = Stage42-DD, 15 / 15 gates, DA-1 remains open with explicit ETH_UCY/TrajNet/UCY blockers
-latest full pytest = 629 passed
+latest full-waypoint deployment gap audit = Stage42-DE, 17 / 17 gates, primary deployable promotion blocked
+latest all-hard/proximity repair = Stage42-DF, 12 / 14 gates, threshold/proximity repair negative vs endpoint-linear and CQ
+latest all-hard weighted-loss retraining = Stage42-DG, 13 / 15 gates, reproduces Stage42-AM but does not improve it
+latest proximity/occupancy weighted retraining = Stage42-DH, 15 / 16 gates, slight all gain vs AM but hard/failure primary blocker remains
+latest full pytest = 641 passed
 ```
 
 ```text

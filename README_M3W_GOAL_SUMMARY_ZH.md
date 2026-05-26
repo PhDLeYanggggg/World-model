@@ -2,8 +2,8 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`，并纳入最近 Stage42-CV/CW/CX/CY/CZ 的 runtime replay、paper refresh、provenance、worktree caveat、paper-freeze manifest 证据，以及 Stage42 report-test isolation 的可复现性修复。
-用途：回答“在 M3W 这个长期目标内做了什么、试过什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、还有哪些不能 claim”。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`，并纳入最近 Stage42-CV/CW/CX/CY/CZ 的 runtime replay、paper refresh、provenance、worktree caveat、paper-freeze manifest 证据，Stage42 report-test isolation 的可复现性修复，以及 Stage42-DE/DF/DG/DH 对 full-waypoint primary deployment gap、all/hard/proximity repair、weighted-loss repair、proximity/occupancy-proxy loss repair 的最新 fresh evidence。
+用途：这是当前 canonical 单文件中文总账，回答“在 M3W 这个长期目标内做了什么、试过什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、还有哪些不能 claim”。
 
 这不是宣传稿，也不是论文最终版。凡是 `not_run`、technical dry-run、fallback-only、license-blocked、source-support 不足、metadata caveat，都不能写成完成或成功。
 
@@ -77,6 +77,10 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Stage42-CY | worktree caveat classifier | tracked dirty files 8；Stage42 dirty 0；Stage42 substantive dirty 0；11/11 gates | 当前 Stage42 tracked artifacts 已无 substantive dirty；剩余 dirty 为历史 Stage17-19 outside-scope 报告 |
 | Stage42-CZ | paper freeze candidate manifest | 74 files hashed；14/14 gates；freeze_status = candidate_clean；final_immutable_release = true | 当前 paper evidence candidate 有 clean manifest，但 claim 仍限于 protected dataset-local/raw-frame 2.5D |
 | Stage42 report-test isolation | pytest artifact hygiene | Stage42 report tests 改为写 `tmp_path`；focused tests 13 passed；full tests 615 passed | 修复 pytest 反复改写 tracked Stage42 evidence files 的 metadata churn |
+| Stage42-DE | full-waypoint deployment gap audit | 17/17 gates；primary promotion blocked | full-waypoint 有辅助/guarded composer 价值，但不能升为 primary deployable；all/hard/proximity/source-support 仍是 blocker |
+| Stage42-DF | all/hard/proximity repair search | 12/14 gates；test vs endpoint-linear all -0.67%；t50 -1.40%；hard -0.72%；easy +0.19% | validation-only threshold/proximity repair 没修好 primary gap；keep CQ/Stage37 floor |
+| Stage42-DG | all/hard weighted-loss retraining | 13/15 gates；protected all +24.58%；t50 +22.02%；t100 raw +14.37%；hard +23.75%；easy -25.66%；delta vs AM 0 | 重新训练复现 AM，但没有超过 AM；单纯 loss weighting 不够 |
+| Stage42-DH | proximity/occupancy-proxy weighted retraining | 15/16 gates；protected all +25.51%；t50 +22.14%；t100 raw +14.34%；hard +23.74%；easy -29.23%；delta vs AM all +0.93%、hard -0.01% | proximity/density weighting 有轻微 all gain，但没有修复 hard/failure primary blocker；不 promotion |
 
 ## 3. 路线复盘：试过什么，结果是什么
 
