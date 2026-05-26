@@ -6,7 +6,33 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB, the main successful routes, failed routes and failure reasons, current deployable model boundary, full-waypoint auxiliary-head mixed evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+
+Most important current summary:
+
+```text
+current best deployable =
+  M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+  under Stage37 / teacher safety floor
+
+honest claim =
+  protected dataset-local raw-frame 2.5D multi-agent world-state candidate
+
+not allowed =
+  true 3D / foundation / metric / seconds-level / ungated neural / Stage5C / SMC
+```
+
+The updated summary also records the main failed routes:
+
+```text
+JEPA downstream lift = not proven
+hard-class selector = failed due to margin ambiguity and easy harm
+SDD -> external zero-shot = failed due to coordinate/goal/horizon/domain gap
+ordinary residual/correction = not deployable
+ungated neural dynamics = unsafe
+endpoint-to-full UCY bridge = failed
+auxiliary heads = mixed/partial, not a uniform main claim
+```
 
 Root-level Chinese summary requested by the user:
 
