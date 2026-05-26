@@ -51,6 +51,24 @@ traffic_metric_diagnostic_only = TGSIM
 
 Stage42-AD separates “calibration-like evidence exists” from “metric/seconds claim allowed”. ETH/UCY and UCY have parseable homography-like files and some FPS/stride evidence, but official pedestrian metric/seconds claims remain blocked until source-specific homography direction, coordinate convention, annotation stride, FPS, and scale are manually verified.
 
+Latest Stage42-AE unified row-cache stress audit:
+
+```text
+source = fresh_synthesis_from_stage42x_row_level_cache
+verdict = stage42_ae_unified_row_cache_stress_pass_with_limitations
+gates = 12 / 12
+Stage42-X reference ADE all = 0.0900
+Stage42-X reference ADE t50 = 0.0611
+Stage42-X t50 seed CI low = 0.0537
+strong_domains = ETH_UCY, TrajNet, UCY
+weak_domain = ETH_UCY for t50/FDE@50 lower bounds
+weak_horizon = 25
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AE strengthens the Stage42-X paper evidence by identifying both stable and weak slices. Global t50 remains positive, but claims must not be written as uniformly positive across every domain/horizon/FDE slice.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`

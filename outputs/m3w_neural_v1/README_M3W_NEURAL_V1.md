@@ -26,6 +26,8 @@ The required ablation coverage audit is now packaged. It covers no-history, no-n
 
 The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.
 
+The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
@@ -61,6 +63,30 @@ TGSIM = traffic metric diagnostic only
 Interpretation:
 
 ETH/UCY and UCY have useful local calibration evidence, but this is not enough for a metric or seconds-level pedestrian claim. The allowed claim remains dataset-local raw-frame 2.5D until source-specific homography direction, coordinate convention, annotation stride, frame rate, and scale are verified. Stage5C and SMC remain disabled.
+
+### Stage42-AE Unified Row-Cache Stress Audit
+
+Stage42-AE stress-tests the Stage42-X unified row-level full-waypoint cache instead of only reporting the global mean:
+
+- report: `outputs/stage42_long_research/unified_row_cache_stress_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_ae_gate.md`
+- result: Stage42-AE gates `12 / 12`
+
+Key result:
+
+```text
+verdict = stage42_ae_unified_row_cache_stress_pass_with_limitations
+Stage42-X ADE all = 0.0900
+Stage42-X ADE t50 = 0.0611
+Stage42-X t50 seed CI low = 0.0537
+strong_domains = ETH_UCY, TrajNet, UCY
+weak_domain = ETH_UCY for t50/FDE@50 lower bounds
+weak_horizon = 25
+```
+
+Interpretation:
+
+The global unified row-cache evidence remains strong, but the paper must not claim uniform positivity across every slice. ETH_UCY t50/FDE@50 and horizon=25 should be written as limitations. Claims remain protected dataset-local raw-frame 2.5D.
 
 ## Stage42-B External Validation Follow-Up
 

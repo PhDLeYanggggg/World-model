@@ -1,20 +1,20 @@
 {
-  "current_stage": "stage42_ad_calibration_evidence_refresh",
-  "current_verdict": "stage42_ad_calibration_evidence_refresh_pass",
+  "current_stage": "stage42_ae_unified_row_cache_stress",
+  "current_verdict": "stage42_ae_unified_row_cache_stress_pass_with_limitations",
   "latest_user_requested_research_summary": {
     "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus the user-requested detailed route review.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "README_M3W_RESEARCH_SUMMARY_ZH.md refreshed as the canonical detailed Chinese route/failure/success summary; Stage42-AC paper package refresh passed 12/12 gates; all nine paper package files include Stage42-AB mixed auxiliary-head evidence; full pytest passed 339 tests.",
+    "latest_branch_success": "Stage42-AE unified row-cache stress audit passed 12/12 gates with explicit limitations; README/state refreshed; full pytest passed 346 tests.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
       "stage42_g_rerun": "pass",
       "stage42_aa_runner": "pass",
       "focused_pytest": "passed",
-      "full_pytest": "339 passed",
+      "full_pytest": "346 passed",
       "stage42_ab_runner": "pass",
       "stage42_ab_focused_pytest": "6 passed",
       "stage42_ac_runner": "pass",
@@ -79,6 +79,48 @@
       "smc_enabled": false
     },
     "interpretation": "Calibration-like evidence exists for ETH/UCY, UCY, and OpenTraj, but official pedestrian metric/seconds claims remain blocked until source-specific homography direction, coordinate convention, annotation stride, FPS, and scale are manually verified."
+  },
+  "stage42_ae_unified_row_cache_stress": {
+    "source": "fresh_synthesis_from_stage42x_row_level_cache",
+    "report": "outputs/stage42_long_research/unified_row_cache_stress_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ae_gate.md",
+    "gates_passed": 12,
+    "gates_total": 12,
+    "verdict": "stage42_ae_unified_row_cache_stress_pass_with_limitations",
+    "stage42x_reference": {
+      "ade_all": 0.0900136608879362,
+      "ade_t50": 0.06109367671246102,
+      "ade_t50_seed_ci_low": 0.05367075264893123,
+      "ade_hard_failure": 0.09374591375146946,
+      "easy_degradation_ci_high": 0.0032618559800165533
+    },
+    "strong_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "weak_domains": [
+      "ETH_UCY"
+    ],
+    "strong_horizons": [
+      "10",
+      "50",
+      "100"
+    ],
+    "weak_horizons": [
+      "25"
+    ],
+    "limitations": [
+      "ETH_UCY t50 and FDE@50 lower bounds are not positive; write domain t50/FDE@50 claims with caution.",
+      "horizon=25 has non-positive ADE lower bound/mean; Stage42-X is not uniformly positive across every horizon slice."
+    ],
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   },
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
