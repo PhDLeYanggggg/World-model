@@ -706,3 +706,17 @@ true 3D / foundation / global metric / seconds-level / ungated neural world dyna
 - User/external action remains required before official converted/evaluated metric-time or t100 source-CV claims.
 - Stage5C remains false; SMC remains false.
 <!-- STAGE42_DD_SOURCE_SUPPORT_CLOSURE_AUDIT:END -->
+
+<!-- STAGE42_DE_FULL_WAYPOINT_DEPLOYMENT_GAP_AUDIT:START -->
+## Stage42-DE Full-Waypoint Deployment Gap Audit
+
+- source: `fresh_stage42_de_full_waypoint_deployment_gap_audit`
+- role: decide whether full-waypoint can be promoted from auxiliary/composer evidence to primary deployable world dynamics.
+- gate: `17 / 17`; verdict `stage42_de_full_waypoint_deployment_gap_audit_pass_primary_promotion_blocked`.
+- decision: `protected_full_waypoint_composer_supported_deployment_promotion_blocked`.
+- horizon_auxiliary_supported: `True`; guarded_composer_supported: `True`.
+- primary deployable full-waypoint promotion: `False`.
+- blockers: `['protected_full_waypoint_does_not_beat_endpoint_linear_on_all_and_hard', 'ungated_full_waypoint_easy_degradation_unsafe', 'source_legal_time_t100_closure_open', 'graph_group_interaction_has_proximity_caveat']`.
+- Conclusion: keep Stage37/teacher or endpoint-linear safety floor; use guarded full-waypoint composer only as protected horizon/shape component until all/hard/proximity/source-support gaps are closed.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DE_FULL_WAYPOINT_DEPLOYMENT_GAP_AUDIT:END -->

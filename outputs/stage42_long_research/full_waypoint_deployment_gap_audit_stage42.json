@@ -1,0 +1,424 @@
+{
+  "source": "fresh_stage42_de_full_waypoint_deployment_gap_audit",
+  "stage": "Stage42-DE Full-Waypoint Deployment Gap Audit",
+  "generated_at_utc": "2026-05-26T21:35:53.724693+00:00",
+  "git_commit": "ca67893",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DE 是 full-waypoint deployment-gap audit，不重新训练，不用 test 调 threshold，不执行 Stage5C，不启用 SMC。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不能作为 inference input。",
+    "endpoint-only 或 endpoint-to-linear bridge 成功不能自动算 full-waypoint world-state dynamics 成功。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_status": {
+    "full_waypoint_boundary": {
+      "path": "outputs/stage42_long_research/full_waypoint_bridge_shape_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_synthesis_from_stage42_full_waypoint_artifacts",
+      "stage": "Stage42-CM endpoint bridge / full-waypoint shape audit",
+      "generated_at_utc": "2026-05-26T18:27:51.830273+00:00",
+      "gate_verdict": "stage42_cm_full_waypoint_bridge_shape_audit_pass"
+    },
+    "common_validation_composer": {
+      "path": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+      "exists": true,
+      "source": "fresh_common_validation_eval_from_cached_verified_checkpoints",
+      "stage": "Stage42-CO common validation bridge / shape composer",
+      "generated_at_utc": "2026-05-26T18:55:19.920132+00:00",
+      "gate_verdict": "stage42_co_common_validation_bridge_shape_composer_pass"
+    },
+    "proximity_guard": {
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "exists": true,
+      "source": "fresh_validation_selected_proximity_guard_from_stage42_co_policy",
+      "stage": "Stage42-CQ proximity-aware composer guard",
+      "generated_at_utc": "2026-05-26T19:21:12.883942+00:00",
+      "gate_verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+    },
+    "proximity_ablation": {
+      "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+      "exists": true,
+      "source": "fresh_synthesis_from_stage42_co_cp_cq_artifacts",
+      "stage": "Stage42-CR proximity guard ablation / Pareto audit",
+      "generated_at_utc": "2026-05-26T19:28:18.239312+00:00",
+      "gate_verdict": "stage42_cr_proximity_guard_ablation_pass"
+    },
+    "unified_row_cache": {
+      "path": "outputs/stage42_long_research/unified_row_level_full_waypoint_cache_stage42.json",
+      "exists": true,
+      "source": "fresh_run_from_stage42s_row_cache_and_stage42v_ucy_predictions",
+      "stage": "Stage42-X unified row-level full-waypoint cache",
+      "generated_at_utc": "2026-05-26T04:38:59.967645+00:00",
+      "gate_verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass"
+    },
+    "source_level_full_waypoint": {
+      "path": "outputs/stage42_long_research/source_level_full_waypoint_eval_stage42.json",
+      "exists": true,
+      "source": "fresh_run",
+      "stage": "Stage42-AM proposed source-level full-waypoint evaluation",
+      "generated_at_utc": "2026-05-26T07:28:53.783001+00:00",
+      "gate_verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive"
+    },
+    "source_support_closure": {
+      "path": "outputs/stage42_long_research/source_support_closure_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_dd_source_support_closure_audit",
+      "stage": "Stage42-DD Source Support Closure Audit",
+      "generated_at_utc": "2026-05-26T21:21:47.999405+00:00",
+      "gate_verdict": "stage42_dd_source_support_closure_audit_pass_open_blockers"
+    }
+  },
+  "evidence": {
+    "endpoint_linear_bridge_floor": {
+      "name": "m3w_neural_v1_composite_tail_linear_bridge",
+      "source": "fresh_run",
+      "status": "deployable_endpoint_linear_bridge_floor",
+      "rows": 55528,
+      "all_improvement": 0.2102513255185352,
+      "t50_improvement": 0.13652231450154184,
+      "t100_raw_frame_diagnostic_improvement": 0.14694086716388166,
+      "hard_failure_improvement": 0.20384916307933942,
+      "easy_degradation": -0.14511076140795587,
+      "switch_rate": 0.3410171445036738,
+      "note": "Current protected endpoint dynamics projected through a linear bridge."
+    },
+    "protected_full_waypoint_transformer": {
+      "name": "full_waypoint_transformer_protected",
+      "source": "fresh_run",
+      "status": "protected_full_waypoint_positive_two_domains",
+      "rows": 55528,
+      "all_improvement": 0.18577852429834418,
+      "t50_improvement": 0.14803699577731477,
+      "t100_raw_frame_diagnostic_improvement": 0.22857426649949408,
+      "hard_failure_improvement": 0.19518047277951456,
+      "easy_degradation": -0.0,
+      "switch_rate": 0.2946441434951736,
+      "note": "Actual full-waypoint sequence model under protected switch policy."
+    },
+    "ungated_full_waypoint_transformer": {
+      "name": "ungated_full_waypoint_transformer",
+      "source": "fresh_run",
+      "status": "diagnostic_unsafe_not_deployable",
+      "rows": 55528,
+      "all_improvement": 0.296621240422128,
+      "t50_improvement": 0.21520334842637612,
+      "t100_raw_frame_diagnostic_improvement": 0.359213230578716,
+      "hard_failure_improvement": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "switch_rate": 1.0,
+      "note": "Ungated neural/full-waypoint output has unsafe easy degradation."
+    },
+    "graph_interaction_group_consistency": {
+      "name": "graph_interaction_group_consistency",
+      "source": "cached_verified",
+      "status": "protected_positive_with_proximity_caveat",
+      "rows": 55528,
+      "all_improvement": 0.22240440177021437,
+      "t50_improvement": 0.1509377397722127,
+      "t100_raw_frame_diagnostic_improvement": 0.23019369783249866,
+      "hard_failure_improvement": 0.2241176936539857,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.265541708687509,
+      "note": "Protected graph/group policy positive, but collision_delta_vs_floor_005=0.00829083972266037; CK blocks graph as independent main claim."
+    },
+    "unified_row_level_full_waypoint_cache": {
+      "name": "unified_row_level_full_waypoint_cache",
+      "source": "fresh_run_from_stage42s_row_cache_and_stage42v_ucy_predictions",
+      "status": "row_level_full_waypoint_three_domain_positive",
+      "rows": 166584,
+      "all_improvement": 0.0900136608879362,
+      "t50_improvement": 0.06109367671246102,
+      "t100_raw_frame_diagnostic_improvement": 0.08153326024168321,
+      "hard_failure_improvement": 0.09374591375146946,
+      "easy_degradation": 0.001101978371627214,
+      "switch_rate": 0.23259136531719735,
+      "note": "Unified row-level cache merges verified external full-waypoint policy sources across ETH_UCY, TrajNet, and UCY."
+    },
+    "full_waypoint_minus_endpoint_linear": {
+      "all_improvement": -0.02447280122019102,
+      "t50_improvement": 0.011514681275772931,
+      "t100_raw_frame_diagnostic_improvement": 0.08163339933561242,
+      "hard_failure_improvement": -0.008668690299824866
+    },
+    "graph_group_minus_full_waypoint": {
+      "all_improvement": 0.03662587747187018,
+      "t50_improvement": 0.0029007439948979252,
+      "t100_raw_frame_diagnostic_improvement": 0.0016194313330045729,
+      "hard_failure_improvement": 0.028937220874471148,
+      "collision_delta_vs_floor_005": 0.00829083972266037
+    },
+    "common_validation_composer_vs_endpoint": {
+      "rows": 55528,
+      "all_improvement": 0.030166976195252437,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.01502943431774939,
+      "t100_raw_frame_diagnostic_improvement": 0.06118732156780071,
+      "hard_failure_improvement": 0.03280214089079592,
+      "easy_degradation": 0.002532827637569346,
+      "switch_rate": 0.21349589396340585,
+      "harm_over_ref": -0.011403035088396404,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.057628042208994756,
+          "t50_improvement": 0.029320310928036664,
+          "t100_raw_frame_diagnostic_improvement": 0.11313457373934888,
+          "hard_failure_improvement": 0.06164190853024154,
+          "easy_degradation": 0.006198452845325386
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0
+        }
+      }
+    },
+    "proximity_guarded_composer_vs_endpoint": {
+      "rows": 55528,
+      "all_improvement": 0.017743597342181783,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.010673426149055754,
+      "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+      "hard_failure_improvement": 0.01929354722729537,
+      "easy_degradation": 0.0024927762207753723,
+      "switch_rate": 0.1696441434951736,
+      "harm_over_ref": -0.0067070316155557475,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.03389563375382565,
+          "t50_improvement": 0.020822352108633257,
+          "t100_raw_frame_diagnostic_improvement": 0.06434705315417533,
+          "hard_failure_improvement": 0.03625650768857436,
+          "easy_degradation": 0.006100437167233963
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0
+        }
+      }
+    },
+    "proximity_guarded_joint_safety_delta": {
+      "near_collision_rate_002_delta": -3.6685131516209224e-05,
+      "near_collision_rate_005_delta": -0.0006053046700172371,
+      "p05_min_group_distance_delta": -0.0001248494575282963,
+      "mean_min_group_distance_delta": 0.00018132006569236692,
+      "jagged_rate_delta": 0.0,
+      "mean_max_normalized_step_delta": 0.00020605043625124622
+    },
+    "proximity_guard_ablation_no_guard": {
+      "name": "no_proximity_guard",
+      "role": "accuracy_priority_diagnostic",
+      "all_improvement": 0.030166976195252437,
+      "t50_improvement": 0.01502943431774939,
+      "t100_raw_frame_diagnostic_improvement": 0.06118732156780071,
+      "hard_failure_improvement": 0.03280214089079592,
+      "easy_degradation": 0.002532827637569346,
+      "switch_rate": 0.21349589396340585,
+      "near_collision_005_delta_vs_endpoint": 0.0033566895337319713,
+      "p05_min_distance_delta_vs_endpoint": -0.0015142309056838422,
+      "jagged_rate_delta_vs_endpoint": 0.0
+    },
+    "proximity_guard_ablation_guarded": {
+      "name": "proximity_guard",
+      "role": "safety_sensitive_deployable",
+      "all_improvement": 0.017743597342181783,
+      "t50_improvement": 0.010673426149055754,
+      "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+      "hard_failure_improvement": 0.01929354722729537,
+      "easy_degradation": 0.0024927762207753723,
+      "switch_rate": 0.1696441434951736,
+      "near_collision_005_delta_vs_endpoint": -0.0006053046700172371,
+      "p05_min_distance_delta_vs_endpoint": -0.0001248494575282963,
+      "jagged_rate_delta_vs_endpoint": 0.0
+    },
+    "unified_row_cache_summary": {
+      "source": "fresh_run_from_unified_row_level_cache",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "ade_all": {
+        "mean": 0.0900136608879362,
+        "std": 0.006685155961321358,
+        "ci_low": 0.0824486947640029,
+        "ci_high": 0.0975786270118695
+      },
+      "ade_t50": {
+        "mean": 0.06109367671246102,
+        "std": 0.006559633478958787,
+        "ci_low": 0.05367075264893123,
+        "ci_high": 0.06851660077599081
+      },
+      "ade_t100_raw_frame_diagnostic": {
+        "mean": 0.08153326024168321,
+        "std": 0.02540820290689218,
+        "ci_low": 0.0527811719773623,
+        "ci_high": 0.11028534850600413
+      },
+      "ade_hard_failure": {
+        "mean": 0.09374591375146946,
+        "std": 0.006375727252471933,
+        "ci_low": 0.08653109917430062,
+        "ci_high": 0.1009607283286383
+      },
+      "ade_easy_degradation": {
+        "mean": 0.001101978371627214,
+        "std": 0.001908682528500352,
+        "ci_low": -0.001057899236762125,
+        "ci_high": 0.0032618559800165533
+      },
+      "fde_t50": {
+        "mean": 0.1537620890856707,
+        "std": 0.02772921852590775,
+        "ci_low": 0.12238352439618314,
+        "ci_high": 0.1851406537751583
+      },
+      "switch_rate": {
+        "mean": 0.23259136531719735,
+        "std": 0.014540853376223555,
+        "ci_low": 0.21613684071961864,
+        "ci_high": 0.24904588991477605
+      }
+    },
+    "source_level_full_waypoint_ade": {
+      "rows": 47458,
+      "all_improvement": 0.24578838559866356,
+      "t10_improvement": 0.4584029803090398,
+      "t25_improvement": 0.23324144358920462,
+      "t50_improvement": 0.22017071087030715,
+      "t100_raw_frame_diagnostic_improvement": 0.14365240535176194,
+      "hard_failure_improvement": 0.23749387838492075,
+      "easy_degradation": -0.25662729975593146,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11319535181660002
+    },
+    "source_level_full_waypoint_fde": {
+      "rows": 47458,
+      "all_improvement": 0.221324826162014,
+      "t10_improvement": 0.4571524632705869,
+      "t25_improvement": 0.219654547956864,
+      "t50_improvement": 0.2223575896317289,
+      "t100_raw_frame_diagnostic_improvement": 0.12862320431780094,
+      "hard_failure_improvement": 0.21333849194227983,
+      "easy_degradation": -0.21876481451474306,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.1453142882715443
+    },
+    "source_support_closure": {
+      "domains_closed": [],
+      "domains_not_closed": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "global_metric_seconds_claim_allowed": false,
+      "global_t100_deployable_claim_allowed": false,
+      "restricted_source_specific_metric_time_candidate_exists": true,
+      "requires_user_or_external_state": true,
+      "paper_claim": "DA-1 remains open: source-specific calibration candidates exist for ETH/UCY, but legal conversion readiness and train-only t100 source-CV support are not closed for ETH_UCY, TrajNet, or UCY."
+    },
+    "support_flags": {
+      "horizon_auxiliary_supported": true,
+      "endpoint_linear_replacement_supported": false,
+      "guarded_composer_supported": true,
+      "ungated_full_waypoint_blocked": true,
+      "unified_three_domain_row_cache_support": true,
+      "source_support_closed": false
+    },
+    "deployment_decision": {
+      "decision": "protected_full_waypoint_composer_supported_deployment_promotion_blocked",
+      "promote_full_waypoint_as_primary_deployable_dynamics": false,
+      "use_guarded_full_waypoint_composer_for_safety_sensitive_reporting": true,
+      "keep_endpoint_linear_or_stage37_teacher_floor_as_safety_floor": true,
+      "blockers": [
+        "protected_full_waypoint_does_not_beat_endpoint_linear_on_all_and_hard",
+        "ungated_full_waypoint_easy_degradation_unsafe",
+        "source_legal_time_t100_closure_open",
+        "graph_group_interaction_has_proximity_caveat"
+      ],
+      "next_training_targets": [
+        "train all-agent full-waypoint sequence model with all/hard ADE objective strong enough to beat endpoint-linear, not only t50/t100 raw-frame slices",
+        "add proximity / collision / physical validity loss so graph or full-waypoint gains do not create proximity caveats",
+        "keep validation-only domain/horizon safe-switch and easy-preservation loss; do not remove Stage37/teacher floor until no-floor gates pass",
+        "replace current weak context/gain-harm protocol with richer joint occupancy or interaction-constraint target because Stage42-DC did not support context switchability",
+        "close source/legal/time/t100 support for ETH_UCY, TrajNet, and UCY before broad metric/seconds/t100 claims"
+      ]
+    }
+  },
+  "no_leakage_and_protocol": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "validation_only_policy_selection": true,
+    "stage42_de_training_run": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "full_waypoint_primary_deployable_claim_allowed": false,
+    "guarded_composer_claim_allowed": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_de_gate": {
+    "gates": {
+      "required_inputs_loaded": true,
+      "boundary_audit_loaded": true,
+      "common_validation_composer_loaded": true,
+      "proximity_guard_loaded": true,
+      "proximity_ablation_loaded": true,
+      "unified_row_cache_loaded": true,
+      "source_support_closure_loaded": true,
+      "horizon_auxiliary_support_recorded": true,
+      "endpoint_linear_replacement_blocker_recorded": true,
+      "ungated_full_waypoint_blocked_as_unsafe": true,
+      "guarded_composer_support_recorded": true,
+      "deployment_decision_honest": true,
+      "next_training_targets_emitted": true,
+      "no_future_or_test_leakage": true,
+      "global_metric_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 17,
+    "total": 17,
+    "verdict": "stage42_de_full_waypoint_deployment_gap_audit_pass_primary_promotion_blocked"
+  }
+}

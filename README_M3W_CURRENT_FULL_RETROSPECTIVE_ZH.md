@@ -634,3 +634,17 @@ not true 3D
 ```text
 M3W 现在有真实工程和实验价值，但它的强点是 protected 2.5D world-state policy，不是无保护、米制、秒级、3D、foundation world model。
 ```
+
+<!-- STAGE42_DE_FULL_WAYPOINT_DEPLOYMENT_GAP_AUDIT:START -->
+## Stage42-DE Full-Waypoint Deployment Gap Audit
+
+- source: `fresh_stage42_de_full_waypoint_deployment_gap_audit`
+- role: decide whether full-waypoint can be promoted from auxiliary/composer evidence to primary deployable world dynamics.
+- gate: `17 / 17`; verdict `stage42_de_full_waypoint_deployment_gap_audit_pass_primary_promotion_blocked`.
+- decision: `protected_full_waypoint_composer_supported_deployment_promotion_blocked`.
+- horizon_auxiliary_supported: `True`; guarded_composer_supported: `True`.
+- primary deployable full-waypoint promotion: `False`.
+- blockers: `['protected_full_waypoint_does_not_beat_endpoint_linear_on_all_and_hard', 'ungated_full_waypoint_easy_degradation_unsafe', 'source_legal_time_t100_closure_open', 'graph_group_interaction_has_proximity_caveat']`.
+- Conclusion: keep Stage37/teacher or endpoint-linear safety floor; use guarded full-waypoint composer only as protected horizon/shape component until all/hard/proximity/source-support gaps are closed.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DE_FULL_WAYPOINT_DEPLOYMENT_GAP_AUDIT:END -->
