@@ -1,0 +1,427 @@
+{
+  "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+  "stage": "Stage42-DL group-consistency runtime policy API",
+  "generated_at_utc": "2026-05-26T22:52:39.008600+00:00",
+  "git_commit": "9f5ca39",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DL 把 Stage42-DJ/DK frozen group-consistency full-waypoint policy 变成可调用 runtime policy API。",
+    "runtime policy 只使用 predicted full-waypoint rollouts、train-horizon causal floor rollout、source/frame/horizon group key、agent id、current xy、normalizer。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "DL 不重新训练、不重新选择阈值、不使用 test metrics 调参。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "26edd12e22c749429c1378f90b71c934670931a874298333f4ff2c3d63d4cf95",
+  "inputs": {
+    "stage42_dk": {
+      "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+      "stage42_dk_gate": {
+        "gates": {
+          "policy_artifact_exists": true,
+          "policy_hash_recomputed_matches_dj": true,
+          "policy_json_matches_dj_embedded_policy": true,
+          "di_gate_passed": true,
+          "dj_gate_passed": true,
+          "repair_rule_replays_di_selected": true,
+          "validation_score_replays_di": true,
+          "validation_metric_replays_di": true,
+          "all_metric_replays_di": true,
+          "t50_metric_replays_di": true,
+          "t100_metric_replays_di": true,
+          "hard_metric_replays_di": true,
+          "easy_metric_replays_di": true,
+          "base_near_replays_di": true,
+          "final_near_replays_di": true,
+          "floor_near_replays_di": true,
+          "bootstrap_replays_di": true,
+          "no_leakage_replays_di": true,
+          "claim_boundary_replays_di": true,
+          "all_positive": true,
+          "t50_positive": true,
+          "t100_raw_positive": true,
+          "hard_positive": true,
+          "easy_under_2pct": true,
+          "final_near_collision_reduced_vs_base": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true,
+          "paper_files_refreshed": true
+        },
+        "passed": 34,
+        "total": 34,
+        "verdict": "stage42_dk_group_consistency_policy_replay_pass"
+      }
+    }
+  },
+  "policy_artifact": {
+    "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json",
+    "exists": true,
+    "size_bytes": 5250
+  },
+  "policy_artifact_payload": {
+    "policy_name": "stage42_dj_frozen_group_consistency_full_waypoint_policy",
+    "source": "fresh_policy_freeze_from_stage42_di",
+    "base_stage": "Stage42-DI group-consistency full-waypoint repair",
+    "frozen_at_utc": "2026-05-26T22:39:10.675796+00:00",
+    "frozen_git_commit": "fa534ce",
+    "deployment_role": "promoted_protected_source_level_full_waypoint_group_consistency_policy",
+    "selection_scope": "validation_only",
+    "test_usage": "test_once_from_stage42_di_after_validation_selection",
+    "repair_rule": {
+      "type": "repel_unsafe",
+      "min_sep": 0.08,
+      "margin": 0.0,
+      "strength": 0.5,
+      "alpha": null,
+      "safe_min_sep": null,
+      "input": "predicted full-waypoint rollout geometry + source/frame/horizon group key + agent id",
+      "uses_future_labels": false
+    },
+    "group_schema": {
+      "source": "fresh_stage42_di_group_key",
+      "key": "source_file + frame_id*1000 + horizon",
+      "agent_deduplication": true,
+      "distance_unit": "normalized_by_dataset_local_scale",
+      "uses_future_inputs": false
+    },
+    "validation_selection": {
+      "val_score": 1.9103557229981505,
+      "val_metric": {
+        "rows": 23788,
+        "all_improvement": 0.44156489895599793,
+        "t10_improvement": 0.6933195833166081,
+        "t25_improvement": 0.3064878897392037,
+        "t50_improvement": 0.47594484424243677,
+        "t100_raw_frame_diagnostic_improvement": 0.3295930766716896,
+        "hard_failure_improvement": 0.4372599087028438,
+        "easy_degradation": -0.28703887951299933,
+        "switch_rate": 0.8334874726752984,
+        "harm_over_fallback": -0.23895228406192529
+      },
+      "val_diagnostics": {
+        "unsafe_rows": 1200,
+        "unsafe_rate": 0.05044560282495376,
+        "base_switch_rate": 0.8334874726752984,
+        "final_switch_rate": 0.8334874726752984,
+        "base_near_005": 0.015512022868673281,
+        "final_near_005": 0.004371952244829325,
+        "floor_near_005": 0.012737514713300825,
+        "base_p05_min_distance": 0.07308731743085398,
+        "final_p05_min_distance": 0.07964797237636109,
+        "floor_p05_min_distance": 0.0760265211798491
+      },
+      "no_test_threshold_tuning": true
+    },
+    "test_summary_vs_train_horizon_causal_floor": {
+      "rows": 47458,
+      "all_improvement": 0.24715658317833844,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021
+    },
+    "test_group_safety": {
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01382274853554722,
+      "floor_near_005": 0.022377681318218216,
+      "base_p05_min_distance": 0.07437689768396878,
+      "final_p05_min_distance": 0.07770240407545181,
+      "floor_p05_min_distance": 0.07354961919220622,
+      "unsafe_rows": 955,
+      "unsafe_rate": 0.02012305617598719
+    },
+    "delta_vs_stage42_am": {
+      "all_improvement": 0.001368197579674879,
+      "t50_improvement": 0.0034591684196666472,
+      "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+      "hard_failure_improvement": 0.0013803223197202952,
+      "easy_degradation": 0.00031875910508205596
+    },
+    "delta_vs_stage42_cq": {
+      "all_improvement": 0.22941298583615666,
+      "t50_improvement": 0.21295645314091805,
+      "t100_raw_frame_diagnostic_improvement": 0.10865987811683775,
+      "hard_failure_improvement": 0.21958065347734568,
+      "easy_degradation": -0.2588013168716248
+    },
+    "delta_vs_stage42_dh": {
+      "all_improvement": -0.00790447834428909,
+      "t50_improvement": 0.00226343727685574,
+      "t100_raw_frame_diagnostic_improvement": 6.639493340476754e-05,
+      "hard_failure_improvement": 0.0014814608235146354,
+      "easy_degradation": 0.03598402325558514
+    },
+    "bootstrap": {
+      "all": {
+        "low": 0.24398589342448532,
+        "mid": 0.24716645683401411,
+        "high": 0.25028958924895384,
+        "n": 47458,
+        "bootstrap_n": 1000
+      },
+      "t50": {
+        "low": 0.2192721133481516,
+        "mid": 0.22367135200280347,
+        "high": 0.2276000110961241,
+        "n": 11538,
+        "bootstrap_n": 1000
+      },
+      "t100_raw_frame_diagnostic": {
+        "low": 0.13746561835522514,
+        "mid": 0.14357574405988266,
+        "high": 0.14902997710800778,
+        "n": 7048,
+        "bootstrap_n": 1000
+      },
+      "hard_failure": {
+        "low": 0.2353474401829904,
+        "mid": 0.2388492111717208,
+        "high": 0.24233611448217454,
+        "n": 35076,
+        "bootstrap_n": 1000
+      },
+      "easy_degradation": {
+        "low": -0.35918353359601424,
+        "mid": -0.34466677241767063,
+        "high": -0.3300698133885259,
+        "n": 11192,
+        "bootstrap_n": 1000
+      }
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "future_waypoint_label_eval_only": true,
+      "group_features_predicted_rollout_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "validation_only_policy_selection": true,
+      "train_only_feature_normalization": true,
+      "source_overlap_pass": true
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "policy_hash": "617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141",
+  "runtime_policy": {
+    "mode": "repel_unsafe",
+    "min_sep": 0.08,
+    "margin": 0.0,
+    "strength": 0.5,
+    "alpha": null,
+    "safe_min_sep": null
+  },
+  "runtime_inputs": [
+    "base_xy_predicted_full_waypoint_candidate",
+    "floor_xy_train_horizon_causal_rollout",
+    "pred_xy_model_rollout_diagnostic",
+    "base_switch_from_validation_selected_policy",
+    "source_frame_horizon_group_key",
+    "normalizer",
+    "agent_id",
+    "current_xy"
+  ],
+  "smoke_case": {
+    "rows": 2,
+    "mode": "repel_unsafe",
+    "base_min_before": [
+      0.009999999776482582,
+      0.009999999776482582
+    ],
+    "final_min_after": [
+      0.07999999821186066,
+      0.07999999821186066
+    ],
+    "diagnostics": {
+      "rows": 2,
+      "switch_rate": 1.0,
+      "base_near_005": 1.0,
+      "final_near_005": 0.0,
+      "floor_near_005": 0.0,
+      "base_p05_min_distance": 0.009999999776482582,
+      "final_p05_min_distance": 0.07999999821186066,
+      "floor_p05_min_distance": 0.20000000298023224
+    },
+    "passes": true
+  },
+  "real_batch_replay": {
+    "source": "fresh_runtime_replay_on_reconstructed_stage42_di_test_rows",
+    "rows": 47458,
+    "selected_xy_max_abs_diff": 0.0,
+    "switch_exact_match": true,
+    "selected_ade_max_abs_diff": 0.0,
+    "selected_fde_max_abs_diff": 0.0,
+    "metric": {
+      "rows": 47458,
+      "all_improvement": 0.24715658317833844,
+      "t10_improvement": 0.4586454739489455,
+      "t25_improvement": 0.23617773697664124,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11382546135578223
+    },
+    "expected_metric": {
+      "rows": 47458,
+      "all_improvement": 0.24715658317833844,
+      "t10_improvement": 0.4586454739489455,
+      "t25_improvement": 0.23617773697664124,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11382546135578223
+    },
+    "metric_abs_diff": {
+      "rows": 0.0,
+      "all_improvement": 0.0,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.0,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "harm_over_fallback": 0.0
+    },
+    "diagnostics": {
+      "rows": 47458,
+      "switch_rate": 0.5880989506511021,
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01382274853554722,
+      "floor_near_005": 0.022377681318218216,
+      "base_p05_min_distance": 0.07437689768396878,
+      "final_p05_min_distance": 0.07770240407545181,
+      "floor_p05_min_distance": 0.07354961919220622
+    },
+    "expected_diagnostics": {
+      "unsafe_rows": 955,
+      "unsafe_rate": 0.02012305617598719,
+      "base_switch_rate": 0.5880989506511021,
+      "final_switch_rate": 0.5880989506511021,
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01382274853554722,
+      "floor_near_005": 0.022377681318218216,
+      "base_p05_min_distance": 0.07437689768396878,
+      "final_p05_min_distance": 0.07770240407545181,
+      "floor_p05_min_distance": 0.07354961919220622
+    },
+    "diagnostic_abs_diff": {
+      "base_near_005": 0.0,
+      "final_near_005": 0.0,
+      "floor_near_005": 0.0
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "runtime_inputs_predicted_or_causal_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "paper_file_status": [
+    {
+      "path": "outputs/stage42_long_research/method_draft_stage42.md",
+      "exists": true,
+      "contains_stage42_dl": true,
+      "contains_claim_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_dl": true,
+      "contains_claim_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_dl": true,
+      "contains_claim_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "contains_stage42_dl": true,
+      "contains_claim_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "contains_stage42_dl": true,
+      "contains_claim_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "contains_stage42_dl": true,
+      "contains_claim_boundary": true
+    }
+  ],
+  "stage42_dl_gate": {
+    "gates": {
+      "policy_artifact_exists": true,
+      "policy_hash_available": true,
+      "dk_replay_gate_passed": true,
+      "runtime_mode_matches_artifact": true,
+      "runtime_min_sep_matches_artifact": true,
+      "runtime_strength_matches_artifact": true,
+      "smoke_case_passed": true,
+      "real_batch_rows_present": true,
+      "real_batch_selected_xy_exact": true,
+      "real_batch_switch_exact": true,
+      "real_batch_ade_exact": true,
+      "real_batch_fde_exact": true,
+      "real_batch_metrics_exact": true,
+      "real_batch_diagnostics_exact": true,
+      "all_positive": true,
+      "t50_positive": true,
+      "t100_raw_positive": true,
+      "hard_positive": true,
+      "easy_under_2pct": true,
+      "near_collision_reduced_vs_base": true,
+      "runtime_inputs_are_causal_predictions_only": true,
+      "no_future_endpoint_input": true,
+      "no_future_waypoint_input": true,
+      "no_central_velocity": true,
+      "no_test_endpoint_goals": true,
+      "no_test_threshold_tuning": true,
+      "metric_seconds_overclaim_blocked": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true,
+      "paper_files_refreshed": true
+    },
+    "passed": 30,
+    "total": 30,
+    "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+  }
+}

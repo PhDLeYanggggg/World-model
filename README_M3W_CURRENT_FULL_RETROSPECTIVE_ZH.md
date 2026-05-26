@@ -729,3 +729,17 @@ M3W 现在有真实工程和实验价值，但它的强点是 protected 2.5D wor
 - near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_DK_GROUP_CONSISTENCY_POLICY_REPLAY:END -->
+
+<!-- STAGE42_DL_GROUP_CONSISTENCY_RUNTIME_POLICY:START -->
+## Stage42-DL Group-Consistency Runtime Policy API
+
+- source: `fresh_runtime_api_from_frozen_group_consistency_policy_artifact`
+- role: expose Stage42-DJ/DK frozen group-consistency full-waypoint repair as a callable runtime policy.
+- real batch replay uses reconstructed Stage42-DI source-level test rows and checks exact selected trajectory replay.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json`
+- policy hash: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
+- gate: `30 / 30`; verdict `stage42_dl_group_consistency_runtime_policy_pass`.
+- replayed ADE vs train-horizon causal floor: all `24.72%`, t50 `22.36%`, t100 raw `14.35%`, hard `23.89%`, easy `-25.63%`.
+- replayed near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- claim boundary: still protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_DL_GROUP_CONSISTENCY_RUNTIME_POLICY:END -->

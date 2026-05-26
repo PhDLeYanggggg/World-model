@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-DK group-consistency policy replay",
-  "current_verdict": "stage42_dk_group_consistency_policy_replay_pass",
+  "current_stage": "Stage42-DL group-consistency runtime policy API",
+  "current_verdict": "stage42_dl_group_consistency_runtime_policy_pass",
   "m3w_current_full_retrospective_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_reports_with_stage42_dc_dd_latest",
     "path": "README_M3W_CURRENT_FULL_RETROSPECTIVE_ZH.md",
@@ -19067,6 +19067,62 @@
     "verification": {
       "runner": ".venv-pytorch/bin/python run_stage42_replay_group_consistency_policy.py",
       "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_group_consistency_policy_replay.py"
+    }
+  },
+  "stage42_dl_group_consistency_runtime_policy": {
+    "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+    "report": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_dl_gate.md",
+    "verdict": "stage42_dl_group_consistency_runtime_policy_pass",
+    "gates": "30/30",
+    "policy_artifact": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json",
+    "policy_hash": "617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141",
+    "runtime_policy": {
+      "mode": "repel_unsafe",
+      "min_sep": 0.08,
+      "margin": 0.0,
+      "strength": 0.5,
+      "alpha": null,
+      "safe_min_sep": null
+    },
+    "real_batch_replay": {
+      "rows": 47458,
+      "selected_xy_max_abs_diff": 0.0,
+      "switch_exact_match": true,
+      "metric": {
+        "rows": 47458,
+        "all_improvement": 0.24715658317833844,
+        "t10_improvement": 0.4586454739489455,
+        "t25_improvement": 0.23617773697664124,
+        "t50_improvement": 0.2236298792899738,
+        "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+        "hard_failure_improvement": 0.23887420070464105,
+        "easy_degradation": -0.2563085406508494,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11382546135578223
+      },
+      "diagnostics": {
+        "rows": 47458,
+        "switch_rate": 0.5880989506511021,
+        "base_near_005": 0.019364490707573012,
+        "final_near_005": 0.01382274853554722,
+        "floor_near_005": 0.022377681318218216,
+        "base_p05_min_distance": 0.07437689768396878,
+        "final_p05_min_distance": 0.07770240407545181,
+        "floor_p05_min_distance": 0.07354961919220622
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-DL converts the frozen Stage42-DJ/DK group-consistency full-waypoint policy into a callable runtime API and verifies exact replay on reconstructed Stage42-DI test rows. It is deployment/reproducibility evidence, not new training.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_group_consistency_runtime_policy.py",
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_group_consistency_runtime_policy.py"
     }
   }
 }
