@@ -466,3 +466,24 @@ README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md
 当前 best deployable：M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor。
 当前最大 blocker：external source support、global metric/time calibration、t100 source-CV、floor-free neural dynamics。
 ```
+
+## 11. 最新 Stage42-BY 更新：protected t50 repair
+
+```text
+source = fresh_stage42_by_t50_floor_relaxability_repair
+verdict = stage42_by_t50_floor_relaxability_repair_pass
+gates = 15 / 15
+selected_variant = family_baseline_rel_only
+internal_val_group = UCY::UCY/zara03/crowds_zara03.txt
+repaired_t50_slices = TrajNet|50, UCY|50
+global_t50_improvement = 28.97%
+global_easy_degradation = -37.05%
+floor_free_neural_deployable = false
+teacher_floor_context_required = true
+Stage5C = 未执行
+SMC = 未启用
+```
+
+Stage42-BY 的意义是：Stage42-BX 里原先被挡住的两个 t50 slice，现在在 Stage42-AW 的 train-only internal validation protected policy 下被修复了。`TrajNet|50` 从 validation-safety blocker 变成 protected positive；`UCY|50` 从 no-validation-support blocker 变成 protected positive。
+
+但这不是 floor-free neural 成功，也不是 true 3D / foundation / metric / seconds-level 成功。它仍然依赖 teacher/floor rollout context、baseline-family protected selection 和 conservative fallback。当前最诚实的表述仍是：M3W 是 protected dataset-local raw-frame 2.5D 多智能体 world-state candidate，Stage5C 和 SMC 仍禁止。

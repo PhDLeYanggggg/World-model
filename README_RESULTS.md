@@ -3627,3 +3627,32 @@ smc_enabled = false
 The reader-facing Chinese execution summary has been refreshed through Stage42-BT. It now includes the full route history, major success and failure reasons, Stage42-BS UCY_zara source-family-specific calibrated t50 repair, and Stage42-BT ETH_seq support dry-run blocker. UCY_zara now has a local positive calibrated t50 result (`t50 macro +24.72%`, min fold `+15.10%`, easy max `1.24%`), while ETH_seq remains blocked because ETH-Person XML technical h50 positives do not safely transfer to the `ETH_seq_eth` holdout and ETH-Person terms remain unverified. The summary keeps all claim boundaries explicit: no true-3D, no foundation, no global metric/seconds-level claim, no Stage5C execution, and no SMC.
 
 Verification: `python3 run_stage42_ucy_zara_t50_family_policy.py` passed, `python3 run_stage42_eth_seq_t50_support_dry_run.py` passed, `python3 run_stage42_ucy_students_t50_source_support.py` passed, focused Stage42-BS/BT/BU tests passed with 7 tests, and `python3 -m pytest tests` passed with 497 tests.
+
+## Stage42-BY Protected T50 Floor-Relaxability Repair
+
+```text
+source = fresh_stage42_by_t50_floor_relaxability_repair
+verdict = stage42_by_t50_floor_relaxability_repair_pass
+gates = 15 / 15
+selected_variant = family_baseline_rel_only
+internal_val_group = UCY::UCY/zara03/crowds_zara03.txt
+repaired_t50_slices = TrajNet|50, UCY|50
+global_t50_improvement = 28.97%
+global_easy_degradation = -37.05%
+TrajNet|50 t50 improvement = 30.21%
+UCY|50 t50 improvement = 24.53%
+floor_free_neural_deployable = false
+teacher_floor_context_required = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BY repairs the Stage42-BX t50 blockers under the Stage42-AW protected validation policy. `TrajNet|50` moved from `blocked_by_validation_safety` to protected positive, and `UCY|50` moved from `blocked_no_validation_support` to protected positive using train-only UCY internal validation support. This is deliberately not a floor-free neural deployment: the teacher/floor rollout context and protected fallback policy remain required. Claims remain dataset-local / raw-frame 2.5D; no true-3D, foundation, metric, seconds-level, Stage5C, or SMC claim is allowed.
+
+Artifacts:
+
+- `outputs/stage42_long_research/t50_floor_relaxability_repair_stage42.md`
+- `outputs/stage42_long_research/t50_floor_relaxability_repair_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_by_gate.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_t50_floor_relaxability_repair.py` passed and `python3 -m pytest tests/test_stage42_t50_floor_relaxability_repair.py tests/test_stage42_floor_relaxability_audit.py` passed with 9 tests.

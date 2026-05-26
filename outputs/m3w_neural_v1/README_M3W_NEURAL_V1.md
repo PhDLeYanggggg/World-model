@@ -1009,3 +1009,22 @@ Stage42-BV turns the remaining source-support and claim-boundary blockers into a
 - `global_metric_seconds_claim`: only source-specific calibration evidence exists; global M3W remains raw-frame / dataset-local.
 
 No Stage5C execution, no SMC, no metric/seconds-level overclaim, and no automatic download occurred.
+
+## Stage42-BY Protected T50 Floor-Relaxability Repair
+
+```text
+source = fresh_stage42_by_t50_floor_relaxability_repair
+verdict = stage42_by_t50_floor_relaxability_repair_pass
+gates = 15 / 15
+selected_variant = family_baseline_rel_only
+internal_val_group = UCY::UCY/zara03/crowds_zara03.txt
+repaired_t50_slices = TrajNet|50, UCY|50
+global_t50_improvement = 28.97%
+global_easy_degradation = -37.05%
+floor_free_neural_deployable = false
+teacher_floor_context_required = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BY rechecks the slice-level t50 blocker from Stage42-BX with the Stage42-AW train-only internal validation policy. Both `TrajNet|50` and `UCY|50` become protected-positive slices, while the claim boundary stays conservative: the result depends on the teacher/floor rollout context and protected fallback, so it is not floor-free neural world dynamics.

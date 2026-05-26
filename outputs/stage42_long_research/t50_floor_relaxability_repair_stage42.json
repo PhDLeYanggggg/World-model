@@ -1,0 +1,288 @@
+{
+  "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+  "stage": "Stage42-BY Protected T50 Floor-Relaxability Repair",
+  "generated_at_utc": "2026-05-26T16:05:29.395021+00:00",
+  "git_commit": "6f54b66",
+  "input_hash": "2ae008cc66939eeae91e0a1e5e171d0c94fab7d9ff726d8abe0c916ec2f957ec",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BY 是 t50 floor-relaxability repair audit，不训练新模型，不执行 Stage5C，不启用 SMC。",
+    "本修复使用 Stage42-AW train-only UCY internal validation support；test source 不参与 policy/threshold 选择。",
+    "本修复不允许去掉 teacher/floor rollout context，也不是 ungated neural deployment。",
+    "future endpoints / waypoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。"
+  ],
+  "input_reports": {
+    "stage42_bx_verdict": "stage42_bx_floor_relaxability_audit_pass",
+    "stage42_aw_verdict": "stage42_aw_ucy_validation_support_repair_pass",
+    "stage42_bw_verdict": "stage42_bw_safety_floor_necessity_audit_pass"
+  },
+  "validation_policy": {
+    "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+    "selected_variant": "family_baseline_rel_only",
+    "selected_lambda": 0.1,
+    "selected_score": 1.7326326930780815,
+    "policy_slices": [
+      "ETH_UCY|10",
+      "ETH_UCY|100",
+      "ETH_UCY|25",
+      "ETH_UCY|50",
+      "TrajNet|10",
+      "TrajNet|100",
+      "TrajNet|25",
+      "TrajNet|50",
+      "UCY|10",
+      "UCY|100",
+      "UCY|25",
+      "UCY|50"
+    ],
+    "selection_source": "train_plus_internal_validation_only",
+    "test_threshold_tuning": false,
+    "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt"
+  },
+  "domain_horizon_metrics": {
+    "TrajNet|10": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 12342,
+      "metric": {
+        "rows": 12342,
+        "all_improvement": 0.6538933813210142,
+        "t10_improvement": 0.6538933813210142,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.6702075610519127,
+        "easy_degradation": -0.48633187026718994,
+        "switch_rate": 0.8513206935666828,
+        "harm_over_fallback": -0.18679815977321992
+      }
+    },
+    "TrajNet|25": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 10770,
+      "metric": {
+        "rows": 10770,
+        "all_improvement": 0.39532915680454395,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.39532915680454395,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.3546157224057963,
+        "easy_degradation": -0.4836851111615521,
+        "switch_rate": 0.8437325905292479,
+        "harm_over_fallback": -0.10199044607160872
+      }
+    },
+    "TrajNet|50": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 9198,
+      "metric": {
+        "rows": 9198,
+        "all_improvement": 0.30211874053555343,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.30211874053555343,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.30211874053555343,
+        "easy_degradation": -0.22949816726981975,
+        "switch_rate": 0.9525983909545553,
+        "harm_over_fallback": -0.14814648987161372
+      }
+    },
+    "TrajNet|100": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 5608,
+      "metric": {
+        "rows": 5608,
+        "all_improvement": 0.18884128010333856,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.18884128010333856,
+        "hard_failure_improvement": 0.18884128010333856,
+        "easy_degradation": 0.03546494534670952,
+        "switch_rate": 0.3104493580599144,
+        "harm_over_fallback": -0.20008615218416453
+      }
+    },
+    "UCY|10": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 3060,
+      "metric": {
+        "rows": 3060,
+        "all_improvement": 0.7707140371834793,
+        "t10_improvement": 0.7707140371834793,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.7790517563549291,
+        "easy_degradation": -0.6214357927386915,
+        "switch_rate": 0.9,
+        "harm_over_fallback": -0.2932206166745096
+      }
+    },
+    "UCY|25": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 2700,
+      "metric": {
+        "rows": 2700,
+        "all_improvement": 0.22983595443046967,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.22983595443046967,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.026491270736054395,
+        "easy_degradation": -0.6010928315705635,
+        "switch_rate": 0.25,
+        "harm_over_fallback": -0.062244854347656677
+      }
+    },
+    "UCY|50": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 2340,
+      "metric": {
+        "rows": 2340,
+        "all_improvement": 0.24532046629629067,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.24532046629629067,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.24532046629629067,
+        "easy_degradation": -0.12642697574288675,
+        "switch_rate": 0.65,
+        "harm_over_fallback": -0.13234820222281216
+      }
+    },
+    "UCY|100": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "test_rows": 1440,
+      "metric": {
+        "rows": 1440,
+        "all_improvement": 0.2753989097146191,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.2753989097146191,
+        "hard_failure_improvement": 0.2753989097146191,
+        "easy_degradation": -0.046127469252680964,
+        "switch_rate": 0.75,
+        "harm_over_fallback": -0.3713950768201724
+      }
+    }
+  },
+  "target_decisions": {
+    "TrajNet|50": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "before_bx_status": "blocked_by_validation_safety",
+      "before_bx_reason": "Validation slice is not simultaneously positive and easy-safe, so fallback relaxation is not deployable.",
+      "after_policy": "stage42_aw_train_only_internal_validation_best",
+      "after_metric": {
+        "rows": 9198,
+        "all_improvement": 0.30211874053555343,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.30211874053555343,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.30211874053555343,
+        "easy_degradation": -0.22949816726981975,
+        "switch_rate": 0.9525983909545553,
+        "harm_over_fallback": -0.14814648987161372
+      },
+      "after_test_rows": 9198,
+      "policy_slice_present": true,
+      "protected_t50_repaired": true
+    },
+    "UCY|50": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "before_bx_status": "blocked_no_validation_support",
+      "before_bx_reason": "No validation rows for this source/horizon; test evidence cannot be used to tune or authorize fallback relaxation.",
+      "after_policy": "stage42_aw_train_only_internal_validation_best",
+      "after_metric": {
+        "rows": 2340,
+        "all_improvement": 0.24532046629629067,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.24532046629629067,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.24532046629629067,
+        "easy_degradation": -0.12642697574288675,
+        "switch_rate": 0.65,
+        "harm_over_fallback": -0.13234820222281216
+      },
+      "after_test_rows": 2340,
+      "policy_slice_present": true,
+      "protected_t50_repaired": true
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+    "verdict_short": "protected_t50_relaxability_repaired_but_not_floor_free",
+    "selected_variant": "family_baseline_rel_only",
+    "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+    "target_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "repaired_t50_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "still_blocked_t50_slices": [],
+    "ucy_t50_repaired": true,
+    "trajnet_t50_repaired": true,
+    "global_t50_improvement": 0.28969780579498305,
+    "global_easy_degradation": -0.37048920988736844,
+    "teacher_floor_context_required": true,
+    "fallback_floor_required_outside_repaired_slices": true,
+    "floor_free_neural_deployable": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "internal_val_from_train_only": true,
+    "test_metrics_used_for_final_reporting_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_by_gate": {
+    "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+    "gates": {
+      "bx_input_verified": true,
+      "aw_input_verified": true,
+      "bw_input_verified": true,
+      "train_only_internal_validation_used": true,
+      "target_t50_slices_reported": true,
+      "ucy_t50_repaired": true,
+      "trajnet_t50_repaired": true,
+      "global_t50_positive": true,
+      "global_easy_safe": true,
+      "teacher_floor_context_required": true,
+      "not_floor_free_neural": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_by_t50_floor_relaxability_repair_pass"
+  }
+}
