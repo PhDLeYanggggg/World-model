@@ -6,6 +6,12 @@ It is not true 3D, not metric, not seconds-level, not a foundation model, and no
 
 Latest user-facing route/failure/success summary:
 
+`/Users/yangyue/Downloads/World/README_M3W_DETAILED_RESULTS_ZH.md`
+
+This is the current concise-but-detailed Chinese summary requested by the user. It covers attempted routes, failed routes and causes, successful evidence, current best deployable status, claim boundaries, and the Stage42-BD local t100 source inventory.
+
+Previous long-form research ledger:
+
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
 That README now starts with a direct “本次交付版总摘要” covering what was attempted, which routes failed and why, which routes succeeded, the current best deployable model, and the strict claim boundary. It keeps the core limitation explicit: M3W-Neural v1 is still a protected dataset-local raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
@@ -59,6 +65,8 @@ Stage42-AW repairs that UCY validation-support blocker. It carves `UCY::UCY/zara
 Stage42-BB packages the current t100 limitation as an actionable data/calibration gap. It reads Stage42-BA train-only source-CV support and the Stage42 calibration audit, then reports that no external domain currently has enough independent t100 support: ETH_UCY needs at least 2 additional safe t100-capable train sources or source-specific repair, TrajNet needs at least 1, and UCY needs at least 1 more t100-capable original-train source. After the source-CV guard, all/t50/hard remain positive and easy remains safe, but t100 raw-frame diagnostic remains `0.0`. The user-action file is `outputs/stage42_long_research/user_action_required_t100_stage42.md`; this is not a new deployment improvement, but a stricter evidence boundary for future data acquisition and calibration.
 
 Stage42-BC turns that data gap into an acquisition plan using official-source checks and local path scans. It ranks UCY Crowd, TrajNet++/AIcrowd, OpenTraj, and ETH/UCY original sources as the high-priority t100 repair path, records DLR AerialMPT and SDD as diagnostic or non-external-repair sources, and deliberately performs no automatic raw download because terms/login/restricted-license review is required. The user-action file is `outputs/stage42_long_research/user_action_required_t100_sources_stage42.md`; Stage42-BC passes `11 / 11` gates and keeps metric/seconds, Stage5C, and SMC claims disabled.
+
+Stage42-BD scans local OpenTraj / ETH / UCY / TrajNet paths for t100-capable source files. It passes `10 / 10` gates with `93` files scanned, `74` parseable, `8` t100-capable, `4` already used, and `4` novel local t100 candidates totaling an estimated `6257` novel t100 windows. This is only inventory evidence; Stage42-BE conversion, no-leakage, and train-only source-CV are still required before any t100 claim can change.
 
 ## Stage42-A Data Calibration Follow-Up
 

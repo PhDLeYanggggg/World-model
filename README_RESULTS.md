@@ -4,13 +4,38 @@
 
 Current one-file research route/failure/success summary requested by the user:
 
+`/Users/yangyue/Downloads/World/README_M3W_DETAILED_RESULTS_ZH.md`
+
+This newly consolidated Chinese README is the current user-facing detailed answer: what was attempted, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the Stage42-BD local t100 source inventory. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+
+Latest Stage42-BD local t100 source inventory:
+
+```text
+source = fresh_local_path_inventory
+verdict = stage42_bd_local_t100_source_inventory_pass
+gates = 10 / 10
+files_scanned = 93
+parseable_files = 74
+t100_capable_files = 8
+already_used_t100_files = 4
+novel_t100_candidate_files = 4
+estimated_novel_t100_windows = 6257
+stage42_be_conversion_recommended = true
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BD only identifies local conversion candidates; it does not convert, train, evaluate, or change t100 claims. The next meaningful step is Stage42-BE conversion + no-leakage + train-only source-CV for the four novel local t100 candidates.
+
+Previous long-form research ledger:
+
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, t100 easy-safety repair evidence, AY shadow-holdout robustness evidence, train-only t100 source-CV repair evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA/BB/BC/BD evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, t100 data/source-support blocker, local t100 source inventory, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for this summary refresh: `python3 -m pytest tests` -> `422 passed`.
+Validation for the latest detailed summary / Stage42-BD refresh: `python3 -m pytest tests` -> `434 passed`.
 
 Most important current summary:
 

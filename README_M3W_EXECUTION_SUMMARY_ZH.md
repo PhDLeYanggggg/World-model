@@ -651,6 +651,25 @@ and baseline-family / row-level full-waypoint evidence
 当前研究定位：protected dataset-local raw-frame 2.5D multi-agent world-state candidate
 ```
 
+### Stage42-BD 本轮新增 local t100 inventory
+
+```text
+source = fresh_local_path_inventory
+verdict = stage42_bd_local_t100_source_inventory_pass
+gates = 10 / 10
+files_scanned = 93
+parseable_files = 74
+t100_capable_files = 8
+already_used_t100_files = 4
+novel_t100_candidate_files = 4
+estimated_novel_t100_windows = 6257
+stage42_be_conversion_recommended = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+这一步只做本机 local source inventory：它发现了 4 个 novel t100-capable candidate files，但还没有转换、训练或评估。下一步必须进入 Stage42-BE conversion / no-leakage / train-only source-CV，才可能改变 t100 blocker。当前 t100 仍是 blocker / diagnostic，不是 stable success。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：
@@ -676,9 +695,11 @@ python3 run_stage42_ay_shadow_holdout_robustness.py = pass
 python3 run_stage42_t100_source_cv_repair.py = pass
 python3 run_stage42_t100_data_gap_audit.py = pass
 python3 run_stage42_t100_source_acquisition_plan.py = pass
+python3 run_stage42_local_t100_source_inventory.py = pass
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
-python3 -m pytest tests = 430 passed
+python3 -m pytest tests/test_stage42_local_t100_source_inventory.py = 4 passed
+python3 -m pytest tests = 434 passed
 ```
 
 ## 10. 总结成一句话
