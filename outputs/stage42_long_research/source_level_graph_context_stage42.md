@@ -1,8 +1,8 @@
 # Stage42-AS Proposed Source-Level Graph Interaction Context
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-26T09:52:44.928325+00:00`
-- git_commit: `8ccb3b6`
+- generated_at_utc: `2026-05-26T23:40:45.362187+00:00`
+- git_commit: `950aa86`
 - input_hash: `8a22fc1607cf0b38dc6476a870078ef3cbd6fcdfb7c546c9e304303db42faf6f`
 - gate: `10 / 11`
 - verdict: `stage42_as_graph_context_evidence_partial_or_negative`

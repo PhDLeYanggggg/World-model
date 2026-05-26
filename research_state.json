@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-DO source legal/time action package",
-  "current_verdict": "stage42_do_source_legal_time_action_package_pass",
+  "current_stage": "Stage42-DP context model closure",
+  "current_verdict": "stage42_dp_context_model_closure_pass",
   "m3w_goal_results_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_dm_reports",
     "path": "README_M3W_GOAL_RESULTS_SUMMARY_ZH.md",
@@ -19254,6 +19254,27 @@
       "global_seconds_claim_allowed": false,
       "m3w_official_metric_seconds_claim_allowed": false,
       "global_t100_deployable_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_dp_context_model_closure": {
+    "source": "fresh_synthesis_after_fresh_ar_as_rerun",
+    "report": "outputs/stage42_long_research/context_model_closure_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_dp_gate.md",
+    "verdict": "stage42_dp_context_model_closure_pass",
+    "gates": "19/19",
+    "closure_decision": "close_current_sequence_graph_residual_context_protocol",
+    "best_delta_all": -0.0230085146797967,
+    "best_delta_t50": -0.08305738715518596,
+    "best_delta_hard_failure": -0.026234695463867364,
+    "positive_context_rows": [],
+    "root_cause": "Fresh Stage42-AR/AS reruns show that temporal sequence context and current-frame kNN graph context both reduce all/t50/hard-failure improvements relative to the baseline-family first-stage control. The dominant current signal remains baseline-family rollout context plus safety floor; the present residual context target is not extracting independent scene/goal/interaction value.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
       "stage5c_executed": false,
       "smc_enabled": false
     }

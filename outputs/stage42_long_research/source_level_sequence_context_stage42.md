@@ -1,8 +1,8 @@
 # Stage42-AR Proposed Source-Level Sequence Context
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-26T09:14:48.649520+00:00`
-- git_commit: `6720e8f`
+- generated_at_utc: `2026-05-26T23:43:34.694500+00:00`
+- git_commit: `950aa86`
 - input_hash: `44f3603b226d542241da8571329b7b1c8c628941f94328a110c32aa74bd9ca0b`
 - gate: `11 / 12`
 - verdict: `stage42_ar_sequence_context_evidence_partial_or_negative`

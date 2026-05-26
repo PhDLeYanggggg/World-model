@@ -4525,3 +4525,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - global metric/seconds/t100 deployable claims remain blocked; Stage5C and SMC remain disabled.
 - user action file: `outputs/stage42_long_research/user_action_required_source_legal_time_stage42.md`.
 <!-- STAGE42_DO_SOURCE_LEGAL_TIME_ACTION_PACKAGE:END -->
+
+<!-- STAGE42_DP_CONTEXT_MODEL_CLOSURE:START -->
+## Stage42-DP Context Model Closure
+
+- source: `fresh_synthesis_after_fresh_ar_as_rerun`
+- verdict: `stage42_dp_context_model_closure_pass`; gates `19 / 19`.
+- fresh reruns: Stage42-AR sequence context and Stage42-AS graph context.
+- closure decision: `close_current_sequence_graph_residual_context_protocol`.
+- best delta all/t50/hard vs baseline-family control: `-0.0230` / `-0.0831` / `-0.0262`.
+- conclusion: current residual sequence/graph context protocol does not add independent lift beyond baseline-family rollout context.
+- next: change target/data/model before revisiting context, and keep protected Stage37/teacher/runtime policies as deployable floor.
+- Claim boundary: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no global metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_DP_CONTEXT_MODEL_CLOSURE:END -->
