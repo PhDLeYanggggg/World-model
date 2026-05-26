@@ -1047,3 +1047,19 @@ smc_enabled = false
 ```
 
 Stage42-BZ adds 3000-sample bootstrap evidence to the Stage42-BY protected repair. Both repaired t50 slices are statistically positive with easy-safety preserved. The deployment boundary is unchanged: Stage37/teacher floor and protected safe-switch remain required.
+
+## Stage42-CA Post-BZ Paper Package Refresh
+
+```text
+source = fresh_synthesis_from_stage42_by_bz_artifacts
+verdict = stage42_ca_post_bz_paper_package_refresh_pass
+gates = 10 / 10
+paper_files_refreshed = 9 / 9
+target_union_t50_CI = [28.52%, 29.45%]
+target_union_easy_degradation_CI_high = -25.16%
+floor_free_neural_deployable = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CA makes the BY/BZ evidence paper-package-visible across the Stage42 outline, method draft, experiment/ablation tables, failure taxonomy, model/data cards, reproducibility note, and A-journal gap analysis. It is a paper-evidence consistency refresh, not new model training.

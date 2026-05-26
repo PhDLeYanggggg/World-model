@@ -77,3 +77,39 @@ Interaction/occupancy/physical heads are present in the full-waypoint model inte
 - Supported as non-harm only: horizon=25 floor/non-harm slices; do not call them positive dynamics contributions.
 - Rejected: metric prediction, seconds-level horizon, true 3D, foundation model, Stage5C execution, SMC readiness, and ungated neural deployment.
 <!-- STAGE42_AJ_REFRESH:END -->
+
+<!-- STAGE42_CA_REFRESH:START -->
+## Stage42-CA Post-BZ Paper Evidence Refresh
+
+- source: `fresh_synthesis_from_stage42_by_bz_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-BY repaired the protected t50 slices; Stage42-BZ adds bootstrap evidence.
+- This is protected policy evidence under the Stage37/teacher floor, not floor-free neural world dynamics.
+- t+50/t+100 remain raw-frame horizons; no global metric or seconds-level claim is allowed.
+- Stage5C remains unexecuted and SMC remains disabled.
+
+### Post-BZ Headline Evidence
+
+- selected variant: `family_baseline_rel_only`
+- internal validation group: `UCY::UCY/zara03/crowds_zara03.txt`
+- robust t50 slices: `TrajNet|50, UCY|50`
+- target union t50 CI: `[28.52%, 29.45%]`
+- target union hard/failure CI low: `28.51%`
+- target union easy degradation CI high: `-25.16%`
+- bootstrap_n: `3000`
+
+### Evidence Rows
+
+| item | status | paper use | evidence |
+| --- | --- | --- | --- |
+| Stage42-BY protected t50 floor-relaxability repair | `stage42_by_t50_floor_relaxability_repair_pass` | point-estimate protected t50 slice repair | repaired=TrajNet|50, UCY|50; global t50=28.97%; easy=-37.05%; not floor-free neural |
+| Stage42-BZ protected t50 bootstrap evidence | `stage42_bz_t50_repair_statistical_evidence_pass` | bootstrap-backed t50 statistical evidence | target union t50 CI=[28.52%, 29.45%]; hard CI low=28.51%; easy CI high=-25.16%; n=3000 |
+| Stage42-BZ slice TrajNet|50 | `ci_positive_and_easy_safe` | slice-level t50 evidence | rows=9198; t50 CI=[29.80%, 30.67%]; easy CI high=-27.61%; switch=95.26% |
+| Stage42-BZ slice UCY|50 | `ci_positive_and_easy_safe` | slice-level t50 evidence | rows=2340; t50 CI=[23.02%, 26.08%]; easy CI high=-8.16%; switch=65.00% |
+
+### Claim Boundary
+
+- Supported: protected t50 slice repair with bootstrap evidence for `TrajNet|50` and `UCY|50`.
+- Still required: teacher/floor rollout context, protected safe-switch, train/internal-validation policy selection.
+- Rejected: true 3D, foundation model, global metric prediction, seconds-level horizon, Stage5C execution, SMC readiness, and ungated/floor-free neural deployment.
+<!-- STAGE42_CA_REFRESH:END -->

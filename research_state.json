@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-BZ protected t50 repair statistical evidence",
-  "current_verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
+  "current_stage": "Stage42-CA post-BZ paper package refresh",
+  "current_verdict": "stage42_ca_post_bz_paper_package_refresh_pass",
   "stage42_bx_floor_relaxability_audit": {
     "source": "fresh_stage42_bx_floor_relaxability_audit",
     "report": "outputs/stage42_long_research/floor_relaxability_audit_stage42.md",
@@ -15325,6 +15325,141 @@
         "focused": "python3 -m pytest tests/test_stage42_t50_repair_statistical_evidence.py tests/test_stage42_t50_floor_relaxability_repair.py passed with 8 tests",
         "full": "python3 -m pytest tests passed with 515 tests in 84.32s"
       }
+    },
+    "stage_ca_post_bz_paper_package_refresh": {
+      "source": "fresh_synthesis_from_stage42_by_bz_artifacts",
+      "verdict": "stage42_ca_post_bz_paper_package_refresh_pass",
+      "gates": {
+        "source": "fresh_synthesis_from_stage42_by_bz_artifacts",
+        "gates": {
+          "by_gate_passed": true,
+          "bz_gate_passed": true,
+          "bootstrap_n_3000": true,
+          "trajnet_t50_robust": true,
+          "ucy_t50_robust": true,
+          "paper_files_refreshed": true,
+          "floor_free_not_overclaimed": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 10,
+        "total": 10,
+        "verdict": "stage42_ca_post_bz_paper_package_refresh_pass"
+      },
+      "evidence_rows": [
+        {
+          "item": "Stage42-BY protected t50 floor-relaxability repair",
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "status": "stage42_by_t50_floor_relaxability_repair_pass",
+          "paper_use": "point-estimate protected t50 slice repair",
+          "evidence": "repaired=TrajNet|50, UCY|50; global t50=28.97%; easy=-37.05%; not floor-free neural"
+        },
+        {
+          "item": "Stage42-BZ protected t50 bootstrap evidence",
+          "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+          "status": "stage42_bz_t50_repair_statistical_evidence_pass",
+          "paper_use": "bootstrap-backed t50 statistical evidence",
+          "evidence": "target union t50 CI=[28.52%, 29.45%]; hard CI low=28.51%; easy CI high=-25.16%; n=3000"
+        },
+        {
+          "item": "Stage42-BZ slice TrajNet|50",
+          "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+          "status": "ci_positive_and_easy_safe",
+          "paper_use": "slice-level t50 evidence",
+          "evidence": "rows=9198; t50 CI=[29.80%, 30.67%]; easy CI high=-27.61%; switch=95.26%"
+        },
+        {
+          "item": "Stage42-BZ slice UCY|50",
+          "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+          "status": "ci_positive_and_easy_safe",
+          "paper_use": "slice-level t50 evidence",
+          "evidence": "rows=2340; t50 CI=[23.02%, 26.08%]; easy CI high=-8.16%; switch=65.00%"
+        }
+      ],
+      "paper_file_status": [
+        {
+          "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/method_draft_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/model_card_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/data_card_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+          "exists": true,
+          "contains_stage42_ca": true,
+          "contains_floor_boundary": true,
+          "contains_no_metric_boundary": true
+        }
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "floor_free_neural_deployable": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "artifacts": {
+        "report_json": "outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.json",
+        "report_md": "outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.md",
+        "report_csv": "outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.csv",
+        "gate_md": "outputs/stage42_long_research/stage42_stage_ca_gate.md"
+      },
+      "tests": {
+        "focused": "python3 -m pytest tests/test_stage42_post_bz_paper_package_refresh.py tests/test_stage42_t50_repair_statistical_evidence.py passed with 7 tests",
+        "full": "python3 -m pytest tests passed with 518 tests in 63.69s"
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
@@ -16394,7 +16529,7 @@
     }
   },
   "last_test_command": "python3 -m pytest tests",
-  "last_test_result": "515 passed in 84.32s",
+  "last_test_result": "518 passed in 63.69s",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
@@ -16650,6 +16785,141 @@
     "tests": {
       "focused": "python3 -m pytest tests/test_stage42_t50_repair_statistical_evidence.py tests/test_stage42_t50_floor_relaxability_repair.py passed with 8 tests",
       "full": "python3 -m pytest tests passed with 515 tests in 84.32s"
+    }
+  },
+  "stage42_ca_post_bz_paper_package_refresh": {
+    "source": "fresh_synthesis_from_stage42_by_bz_artifacts",
+    "verdict": "stage42_ca_post_bz_paper_package_refresh_pass",
+    "gates": {
+      "source": "fresh_synthesis_from_stage42_by_bz_artifacts",
+      "gates": {
+        "by_gate_passed": true,
+        "bz_gate_passed": true,
+        "bootstrap_n_3000": true,
+        "trajnet_t50_robust": true,
+        "ucy_t50_robust": true,
+        "paper_files_refreshed": true,
+        "floor_free_not_overclaimed": true,
+        "no_metric_seconds_overclaim": true,
+        "stage5c_false": true,
+        "smc_false": true
+      },
+      "passed": 10,
+      "total": 10,
+      "verdict": "stage42_ca_post_bz_paper_package_refresh_pass"
+    },
+    "evidence_rows": [
+      {
+        "item": "Stage42-BY protected t50 floor-relaxability repair",
+        "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+        "status": "stage42_by_t50_floor_relaxability_repair_pass",
+        "paper_use": "point-estimate protected t50 slice repair",
+        "evidence": "repaired=TrajNet|50, UCY|50; global t50=28.97%; easy=-37.05%; not floor-free neural"
+      },
+      {
+        "item": "Stage42-BZ protected t50 bootstrap evidence",
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "status": "stage42_bz_t50_repair_statistical_evidence_pass",
+        "paper_use": "bootstrap-backed t50 statistical evidence",
+        "evidence": "target union t50 CI=[28.52%, 29.45%]; hard CI low=28.51%; easy CI high=-25.16%; n=3000"
+      },
+      {
+        "item": "Stage42-BZ slice TrajNet|50",
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "status": "ci_positive_and_easy_safe",
+        "paper_use": "slice-level t50 evidence",
+        "evidence": "rows=9198; t50 CI=[29.80%, 30.67%]; easy CI high=-27.61%; switch=95.26%"
+      },
+      {
+        "item": "Stage42-BZ slice UCY|50",
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "status": "ci_positive_and_easy_safe",
+        "paper_use": "slice-level t50 evidence",
+        "evidence": "rows=2340; t50 CI=[23.02%, 26.08%]; easy CI high=-8.16%; switch=65.00%"
+      }
+    ],
+    "paper_file_status": [
+      {
+        "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/method_draft_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/model_card_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/data_card_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      },
+      {
+        "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+        "exists": true,
+        "contains_stage42_ca": true,
+        "contains_floor_boundary": true,
+        "contains_no_metric_boundary": true
+      }
+    ],
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "floor_free_neural_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "artifacts": {
+      "report_json": "outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.json",
+      "report_md": "outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.md",
+      "report_csv": "outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.csv",
+      "gate_md": "outputs/stage42_long_research/stage42_stage_ca_gate.md"
+    },
+    "tests": {
+      "focused": "python3 -m pytest tests/test_stage42_post_bz_paper_package_refresh.py tests/test_stage42_t50_repair_statistical_evidence.py passed with 7 tests",
+      "full": "python3 -m pytest tests passed with 518 tests in 63.69s"
     }
   }
 }

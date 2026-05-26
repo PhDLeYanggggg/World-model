@@ -3687,3 +3687,30 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_bz_gate.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_t50_repair_statistical_evidence.py` passed, focused Stage42-BY/BZ tests passed with 8 tests, and `python3 -m pytest tests` passed with 515 tests.
+
+## Stage42-CA Post-BZ Paper Package Refresh
+
+```text
+source = fresh_synthesis_from_stage42_by_bz_artifacts
+verdict = stage42_ca_post_bz_paper_package_refresh_pass
+gates = 10 / 10
+paper_files_refreshed = 9 / 9
+included_evidence = Stage42-BY protected t50 repair + Stage42-BZ bootstrap evidence
+target_union_t50_CI = [28.52%, 29.45%]
+target_union_easy_degradation_CI_high = -25.16%
+floor_free_neural_deployable = false
+metric_seconds_claim = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CA refreshes the paper package so the BY/BZ protected t50 repair evidence is visible in the outline, method draft, experiment tables, ablation tables, failure taxonomy, model card, data card, reproducibility note, and A-journal gap analysis. It does not train or tune anything. The refresh explicitly states that the result is protected policy evidence under the Stage37/teacher floor, not floor-free neural world dynamics, and it keeps raw-frame/dataset-local language.
+
+Artifacts:
+
+- `outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.md`
+- `outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.json`
+- `outputs/stage42_long_research/paper_package_post_bz_refresh_stage42.csv`
+- `outputs/stage42_long_research/stage42_stage_ca_gate.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_post_bz_paper_package_refresh.py` passed, focused CA/BZ tests passed with 7 tests, and `python3 -m pytest tests` passed with 518 tests.

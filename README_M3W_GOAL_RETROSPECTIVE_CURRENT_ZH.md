@@ -506,3 +506,19 @@ SMC = 未启用
 ```
 
 Stage42-BZ 把 BY 的点估计修复升级成 bootstrap 统计证据。也就是说，`TrajNet|50` 和 `UCY|50` 不是只在一次评估里为正；它们在 3000-sample bootstrap 下 CI 下界仍为正，同时 easy degradation 的 CI high 仍低于安全线。这个结果更接近论文证据，但边界不变：它仍是 protected policy evidence，不是无安全地板的神经动力学模型。
+
+## 13. 最新 Stage42-CA 更新：论文包同步刷新
+
+```text
+source = fresh_synthesis_from_stage42_by_bz_artifacts
+verdict = stage42_ca_post_bz_paper_package_refresh_pass
+gates = 10 / 10
+paper_files_refreshed = 9 / 9
+target_union_t50_CI = [28.52%, 29.45%]
+target_union_easy_degradation_CI_high = -25.16%
+floor_free_neural_deployable = false
+Stage5C = 未执行
+SMC = 未启用
+```
+
+Stage42-CA 做的是证据链同步：把 BY/BZ 的 protected t50 repair 和 bootstrap evidence 写入 paper outline、method、experiment tables、ablation tables、failure taxonomy、model card、data card、reproducibility 和 A-journal gap analysis。这样 README、报告和论文包之间不再脱节。它不是新训练，也不是更高 claim；只是让 paper-ready package 正确反映最新 fresh evidence。
