@@ -28,6 +28,8 @@ The package includes a calibrated learned-shape meta-policy as well. It selects 
 
 The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard. Stage42-AH refreshes the post-repair paper-claim boundary. Stage42-AI repairs the remaining TrajNet|100 easy-safety limit with a validation-only source guard while keeping t100 raw-frame diagnostic only. Stage42-AJ propagates AD-AI evidence into all Stage42 paper package files.
 
+Stage42-AL and Stage42-AM refine the source-level claim boundary. Stage42-AL shows that the locked post-repair stress pool is not a full proposed source-level split evaluation. Stage42-AM then evaluates the proposed source-level test split directly with a fresh past-only ridge full-waypoint probe and validation-only safe policy: test rows `47458`, TrajNet `37918`, UCY `9540`, ADE all `+0.245788`, t50 `+0.220171`, t100 raw-frame diagnostic `+0.143652`, hard/failure `+0.237494`, easy degradation `-0.256627`, gates `12 / 12`. This is strong source-level raw-frame full-waypoint evidence, but it is still a protected dataset-local 2.5D probe, not metric, seconds-level, true 3D, foundation, Stage5C, or SMC evidence.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

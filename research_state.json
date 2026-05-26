@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_al_source_level_coverage_audit",
-  "current_verdict": "stage42_al_source_level_coverage_audit_pass_with_full_split_eval_gap",
+  "current_stage": "stage42_am_source_level_full_waypoint_eval",
+  "current_verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 user-requested detailed route/failure/success summary refreshed with Stage42-AL source-level coverage gap; full pytest 363 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit and Stage42-AL source-level coverage/claim-gap audit.",
+    "last_readme_refresh": "2026-05-26 user-requested detailed route/failure/success summary refreshed with Stage42-AM proposed source-level full-waypoint evaluation; full pytest 366 passed.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL source-level coverage/claim-gap audit, and Stage42-AM proposed source-level full-waypoint fresh evaluation.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AL source-level coverage audit passed 12/12 gates and identified the remaining full proposed source-level evaluation gap without overclaiming.",
+    "latest_branch_success": "Stage42-AM evaluated the proposed source-level test split directly and passed 12/12 gates with positive protected full-waypoint ADE on all/t50/t100/hard, while preserving dataset-local raw-frame 2.5D claim boundaries.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -26,7 +26,10 @@
       "stage42_ak_runner": "pass",
       "stage42_ak_focused_pytest": "3 passed",
       "stage42_al_runner": "pass",
-      "stage42_al_focused_pytest": "3 passed"
+      "stage42_al_focused_pytest": "3 passed",
+      "stage42_am_runner": "pass",
+      "stage42_am_focused_pytest": "3 passed",
+      "stage42_am_full_pytest": "366 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -76,7 +79,53 @@
       "eth_ucy_stress_status": "extra_available_not_in_proposed_source_test",
       "full_proposed_source_level_eval": false,
       "conclusion": "Current locked-policy metrics are available row-level post-repair stress with explicit coverage gap, not full proposed source-level split evaluation."
+    },
+    "stage42_am_source_level_full_waypoint_eval": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/source_level_full_waypoint_eval_stage42.md",
+      "gate": "12/12",
+      "verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive",
+      "proposed_source_level_test_rows": 47458,
+      "trajnet_test_rows": 37918,
+      "ucy_test_rows": 9540,
+      "test_full_waypoint_rows": 32056,
+      "ade_all": 0.24578838559866356,
+      "ade_t50": 0.22017071087030715,
+      "ade_t100_raw_frame_diagnostic": 0.14365240535176194,
+      "ade_hard_failure": 0.23749387838492075,
+      "easy_degradation": -0.25662729975593146,
+      "ade_all_ci_low": 0.24255412523302317,
+      "ade_t50_ci_low": 0.2159234170345621,
+      "conclusion": "Stage42-AM closes the Stage42-AL proposed source-level coverage gap with a fresh past-only ridge full-waypoint probe and validation-only safety policy; claims remain protected dataset-local raw-frame 2.5D."
     }
+  },
+  "stage42_am_source_level_full_waypoint_eval": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/source_level_full_waypoint_eval_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_am_gate.md",
+    "gates_passed": 12,
+    "gates_total": 12,
+    "verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive",
+    "proposed_source_level_test_rows": 47458,
+    "trajnet_test_rows": 37918,
+    "ucy_test_rows": 9540,
+    "test_full_waypoint_rows": 32056,
+    "protected_ridge_source_level": {
+      "ade_all": 0.24578838559866356,
+      "ade_t50": 0.22017071087030715,
+      "ade_t100_raw_frame_diagnostic": 0.14365240535176194,
+      "ade_hard_failure": 0.23749387838492075,
+      "easy_degradation": -0.25662729975593146,
+      "switch_rate": 0.5880989506511021
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Proposed source-level split full-waypoint evaluation is now fresh-run and positive, but the model remains protected dataset-local raw-frame 2.5D; Stage5C and SMC remain disabled."
   },
   "stage42_ad_calibration_evidence_refresh": {
     "source": "fresh_run",

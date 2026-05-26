@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -33,6 +33,29 @@ ungated neural dynamics = unsafe
 endpoint-to-full UCY bridge = failed
 auxiliary heads = mixed/partial, not a uniform main claim
 ```
+
+Latest Stage42-AM proposed source-level full-waypoint evaluation:
+
+```text
+source = fresh_run
+verdict = stage42_am_source_level_full_waypoint_eval_pass_positive
+gates = 12 / 12
+proposed_source_level_test_rows = 47458
+TrajNet_test_rows = 37918
+UCY_test_rows = 9540
+test_full_waypoint_rows = 32056
+ADE_all = 0.245788
+ADE_t50 = 0.220171
+ADE_t100_raw_frame_diagnostic = 0.143652
+ADE_hard_failure = 0.237494
+easy_degradation = -0.256627
+ADE_all_CI_low = 0.242554
+ADE_t50_CI_low = 0.215923
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AM addresses the Stage42-AL coverage gap by evaluating the proposed source-level test split directly rather than reusing the locked-policy stress pool. It trains a past-only ridge full-waypoint probe on proposed train rows, selects the safety policy on validation only, and evaluates test once. It is positive source-level raw-frame full-waypoint evidence, but it is still a protected dataset-local 2.5D probe, not metric/seconds-level, true-3D, foundation, Stage5C, or SMC evidence.
 
 Latest Stage42-AD calibration evidence refresh:
 
