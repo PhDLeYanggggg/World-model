@@ -3799,3 +3799,34 @@ Artifacts:
 - `outputs/stage42_long_research/user_action_required_source_diversity_stage42.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_source_diversity_acquisition_package.py` passed, focused CD/CC/BV tests passed with 12 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 532 tests.
+
+## Stage42-CE Source Diversity Conversion Preflight
+
+```text
+source = fresh_stage42_ce_source_diversity_conversion_preflight
+verdict = stage42_ce_source_diversity_conversion_preflight_pass
+gates = 12 / 12
+targets_checked = 5
+targets_with_local_path = 4
+targets_with_schema_possible = 4
+targets_with_t50_files = 3
+targets_with_t100_files = 3
+targets_with_independent_t50_candidates = 0
+targets_source_cv_ready_now = 0
+converted_datasets_now = 0
+evaluated_datasets_now = 0
+source_diversity_repair_ready_now = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CE inspects the local paths from the CD acquisition package and performs a conversion preflight without converting or evaluating any dataset. UCY, ETH/BIWI, TrajNet/OpenTraj-related local paths are present and parseable, but none are source-CV ready: UCY/ETH/TrajNet still need official terms verification and source identity handling, OpenTraj is a toolkit/root scan rather than blanket data permission, and no target has an independent ready-to-claim t50 source. This makes the next source-diversity repair path more mechanical while preserving the blocker.
+
+Artifacts:
+
+- `outputs/stage42_long_research/source_diversity_conversion_preflight_stage42.md`
+- `outputs/stage42_long_research/source_diversity_conversion_preflight_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_ce_gate.md`
+- `outputs/stage42_long_research/user_action_required_source_conversion_preflight_stage42.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_source_diversity_conversion_preflight.py` passed, focused CE/CD/CC tests passed with 14 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 536 tests.

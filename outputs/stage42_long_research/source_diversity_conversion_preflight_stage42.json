@@ -1,0 +1,794 @@
+{
+  "source": "fresh_stage42_ce_source_diversity_conversion_preflight",
+  "stage": "Stage42-CE Source Diversity Conversion Preflight",
+  "generated_at_utc": "2026-05-26T17:02:36.785402+00:00",
+  "git_commit": "c7ec174",
+  "input_hash": "44de14580b13e621c06b186c74d89cec522f0b6ffe10a1336a010040a7fe8a6a",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CE 是 local path conversion preflight，不转换数据，不训练模型，不调 threshold。",
+    "本轮只检查本地路径结构和 track-like 文件；不绕过 license，不下载数据。",
+    "local path found 不等于 legal / converted / evaluated。",
+    "alternate representation 不等于 independent held-out source。",
+    "future endpoints / waypoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "Stage5C 未执行，SMC 未启用。"
+  ],
+  "input_reports": {
+    "stage42_cd_verdict": "stage42_cd_source_diversity_acquisition_package_pass",
+    "stage42_cd_source_diversity_repair_ready_now": false
+  },
+  "summary": {
+    "source": "fresh_stage42_ce_source_diversity_conversion_preflight",
+    "targets_checked": 5,
+    "targets_with_local_path": 4,
+    "targets_with_schema_possible": 4,
+    "targets_with_t50_files": 3,
+    "targets_with_t100_files": 3,
+    "targets_with_independent_t50_candidates": 0,
+    "targets_source_cv_ready_now": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "source_diversity_repair_ready_now": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "target_summaries": [
+    {
+      "id": "ucy_crowd_original",
+      "name": "UCY Crowd Data original source",
+      "priority": "critical",
+      "target_blocker": "UCY_students_t50_source_support",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "source_confidence": "official_url_known_manual_verification_required",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": false,
+      "auto_download_allowed": false,
+      "local_paths": [
+        {
+          "path": "/Users/yangyue/Downloads/UCY",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/UCY",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        }
+      ],
+      "local_path_found": true,
+      "track_like_files_scanned": 22,
+      "schema_possible": true,
+      "t50_capable_files": 6,
+      "t100_capable_files": 6,
+      "independent_t50_candidate_files": 0,
+      "alternate_current_source_files": 3,
+      "already_used_files": 5,
+      "diagnostic_t50_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "top_files": [
+        {
+          "source_name": "students03/obsmat_px.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat_px.txt",
+          "parsed_rows": 21859,
+          "max_track_points": 540,
+          "t50_windows": 6493,
+          "t100_windows": 3415,
+          "final_status": "alternate_representation_of_current_source",
+          "next_step": "same parent/source directory as current data; useful for split rebuild or format repair, not counted as independent source"
+        },
+        {
+          "source_name": "students03/obsmat.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+          "parsed_rows": 21846,
+          "max_track_points": 539,
+          "t50_windows": 6491,
+          "t100_windows": 3413,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "students01/students001.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+          "parsed_rows": 21813,
+          "max_track_points": 352,
+          "t50_windows": 6445,
+          "t100_windows": 1949,
+          "final_status": "alternate_representation_of_current_source",
+          "next_step": "same parent/source directory as current data; useful for split rebuild or format repair, not counted as independent source"
+        },
+        {
+          "source_name": "zara02/obsmat.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+          "parsed_rows": 9537,
+          "max_track_points": 583,
+          "t50_windows": 2823,
+          "t100_windows": 2095,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "students03/students003.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/students003.txt",
+          "parsed_rows": 17953,
+          "max_track_points": 289,
+          "t50_windows": 2793,
+          "t100_windows": 879,
+          "final_status": "alternate_representation_of_current_source",
+          "next_step": "same parent/source directory as current data; useful for split rebuild or format repair, not counted as independent source"
+        },
+        {
+          "source_name": "zara01/obsmat.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+          "parsed_rows": 5024,
+          "max_track_points": 197,
+          "t50_windows": 240,
+          "t100_windows": 97,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "students01/students001-trajnet.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+          "parsed_rows": 17820,
+          "max_track_points": 20,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "students03/H-old.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "students03/H.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "students03/groups.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/groups.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "zara01/H-cam.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "zara01/H.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        }
+      ],
+      "next_action": "verify/accept official dataset terms before conversion; local parseability is not legal permission"
+    },
+    {
+      "id": "eth_biwi_original",
+      "name": "ETH / BIWI walking pedestrians original source",
+      "priority": "critical",
+      "target_blocker": "ETH_seq_t50_source_support",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "source_confidence": "official_eth_page",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": false,
+      "auto_download_allowed": false,
+      "local_paths": [
+        {
+          "path": "/Users/yangyue/Downloads/ETH_UCY",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/ETH",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        }
+      ],
+      "local_path_found": true,
+      "track_like_files_scanned": 11,
+      "schema_possible": true,
+      "t50_capable_files": 3,
+      "t100_capable_files": 2,
+      "independent_t50_candidate_files": 0,
+      "alternate_current_source_files": 1,
+      "already_used_files": 2,
+      "diagnostic_t50_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "top_files": [
+        {
+          "source_name": "seq_eth/obsmat.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+          "parsed_rows": 8908,
+          "max_track_points": 190,
+          "t50_windows": 291,
+          "t100_windows": 91,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "seq_hotel/obsmat.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+          "parsed_rows": 6544,
+          "max_track_points": 100,
+          "t50_windows": 215,
+          "t100_windows": 0,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "seq_eth/biwi_eth_10fps.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/biwi_eth_10fps.txt",
+          "parsed_rows": 5492,
+          "max_track_points": 114,
+          "t50_windows": 82,
+          "t100_windows": 14,
+          "final_status": "alternate_representation_of_current_source",
+          "next_step": "same parent/source directory as current data; useful for split rebuild or format repair, not counted as independent source"
+        },
+        {
+          "source_name": "seq_eth/H.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_eth/destinations.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/destinations.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_eth/groups.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/groups.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_eth/info.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_hotel/H.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_hotel/destinations.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/destinations.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_hotel/groups.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/groups.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "auxiliary_metadata_not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        },
+        {
+          "source_name": "seq_hotel/info.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+          "parsed_rows": 0,
+          "max_track_points": 0,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "not_track_source",
+          "next_step": "ignore_for_t50_source_diversity"
+        }
+      ],
+      "next_action": "verify/accept official dataset terms before conversion; local parseability is not legal permission"
+    },
+    {
+      "id": "trajnetplusplus_official",
+      "name": "TrajNet++ official challenge/source page",
+      "priority": "high",
+      "target_blocker": "TrajNet_raw_long_t100_source_support",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "source_confidence": "official_epfl_and_aicrowd_reference",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": true,
+      "auto_download_allowed": false,
+      "local_paths": [
+        {
+          "path": "/Users/yangyue/Downloads/trajnetplusplusdataset",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/TrajNet",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        }
+      ],
+      "local_path_found": true,
+      "track_like_files_scanned": 59,
+      "schema_possible": true,
+      "t50_capable_files": 0,
+      "t100_capable_files": 0,
+      "independent_t50_candidate_files": 0,
+      "alternate_current_source_files": 0,
+      "already_used_files": 11,
+      "diagnostic_t50_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "top_files": [
+        {
+          "source_name": "biwi/biwi_eth.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+          "parsed_rows": 408,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "crowds/crowds_zara01.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+          "parsed_rows": 1464,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "crowds/students002.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+          "parsed_rows": 680,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "crowds/uni_examples.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+          "parsed_rows": 680,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "already_in_current_combined_split",
+          "next_step": "can only be reused through a new train/val/test split rebuild, not counted as new held-out source"
+        },
+        {
+          "source_name": "stanford/coupa_0.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_0.txt",
+          "parsed_rows": 2584,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/coupa_1.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_1.txt",
+          "parsed_rows": 1880,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/gates_2.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/gates_2.txt",
+          "parsed_rows": 1240,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/hyang_0.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+          "parsed_rows": 5040,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/hyang_1.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+          "parsed_rows": 3416,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/hyang_3.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+          "parsed_rows": 488,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/hyang_8.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_8.txt",
+          "parsed_rows": 96,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        },
+        {
+          "source_name": "stanford/little_0.txt",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+          "parsed_rows": 416,
+          "max_track_points": 8,
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "final_status": "diagnostic_sdd_or_stanford_derived",
+          "next_step": "do_not_count_as_independent_non_sdd_external_source"
+        }
+      ],
+      "next_action": "verify/accept official dataset terms before conversion; local parseability is not legal permission"
+    },
+    {
+      "id": "opentraj_toolkit",
+      "name": "OpenTraj official GitHub toolkit",
+      "priority": "medium",
+      "target_blocker": "loader_and_metadata_support",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "source_confidence": "official_github_toolkit",
+      "requires_manual_terms_acceptance": false,
+      "requires_login_or_application": false,
+      "auto_download_allowed": false,
+      "local_paths": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        }
+      ],
+      "local_path_found": true,
+      "track_like_files_scanned": 300,
+      "schema_possible": true,
+      "t50_capable_files": 270,
+      "t100_capable_files": 270,
+      "independent_t50_candidate_files": 0,
+      "alternate_current_source_files": 0,
+      "already_used_files": 0,
+      "diagnostic_t50_files": 0,
+      "legal_terms_blocked": false,
+      "source_cv_preflight_ready": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "top_files": [
+        {
+          "source_name": "back_interaction_01/p1.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p1.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p2.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p2.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p3.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p3.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p4.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p4.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p5.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p5.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p6.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p6.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p7.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p7.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/p8.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/p8.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "back_interaction_01/v1.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/v1.csv",
+          "parsed_rows": 421,
+          "max_track_points": 421,
+          "t50_windows": 371,
+          "t100_windows": 321,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "bidirection_no_vehicle_5v5_03/p1.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_03/p1.csv",
+          "parsed_rows": 381,
+          "max_track_points": 381,
+          "t50_windows": 331,
+          "t100_windows": 281,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "bidirection_no_vehicle_5v5_03/p10.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_03/p10.csv",
+          "parsed_rows": 381,
+          "max_track_points": 381,
+          "t50_windows": 331,
+          "t100_windows": 281,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        },
+        {
+          "source_name": "bidirection_no_vehicle_5v5_03/p2.csv",
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_03/p2.csv",
+          "parsed_rows": 381,
+          "max_track_points": 381,
+          "t50_windows": 331,
+          "t100_windows": 281,
+          "final_status": "diagnostic_only",
+          "next_step": "not_priority_for_non_sdd_t50_source_diversity"
+        }
+      ],
+      "next_action": "rebuild source split or provide independent source; current files are already-used, alternate, short, or diagnostic"
+    },
+    {
+      "id": "aerialmpt_or_other_topdown",
+      "name": "Additional legal top-down pedestrian/drone long-track source",
+      "priority": "medium",
+      "target_blocker": "external_source_diversity",
+      "official_url": "user_or_web_verified_official_url_required",
+      "source_confidence": "not_run_until_user_or_web_source_verified",
+      "requires_manual_terms_acceptance": true,
+      "requires_login_or_application": true,
+      "auto_download_allowed": false,
+      "local_paths": [
+        {
+          "path": "/Users/yangyue/Downloads/AerialMPT",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/AerialMPT",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false
+        }
+      ],
+      "local_path_found": false,
+      "track_like_files_scanned": 0,
+      "schema_possible": false,
+      "t50_capable_files": 0,
+      "t100_capable_files": 0,
+      "independent_t50_candidate_files": 0,
+      "alternate_current_source_files": 0,
+      "already_used_files": 0,
+      "diagnostic_t50_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "top_files": [],
+      "next_action": "provide a legal local path containing parseable trajectory rows"
+    }
+  ],
+  "user_action_required": [
+    {
+      "priority": "critical",
+      "target": "UCY Crowd Data original source",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "action": "verify/accept official dataset terms before conversion; local parseability is not legal permission"
+    },
+    {
+      "priority": "critical",
+      "target": "ETH / BIWI walking pedestrians original source",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "action": "verify/accept official dataset terms before conversion; local parseability is not legal permission"
+    },
+    {
+      "priority": "high",
+      "target": "TrajNet++ official challenge/source page",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "action": "verify/accept official dataset terms before conversion; local parseability is not legal permission"
+    },
+    {
+      "priority": "medium",
+      "target": "OpenTraj official GitHub toolkit",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "action": "rebuild source split or provide independent source; current files are already-used, alternate, short, or diagnostic"
+    },
+    {
+      "priority": "medium",
+      "target": "Additional legal top-down pedestrian/drone long-track source",
+      "official_url": "user_or_web_verified_official_url_required",
+      "action": "provide a legal local path containing parseable trajectory rows"
+    }
+  ],
+  "claim_boundary": {
+    "preflight_counted_as_conversion": false,
+    "local_path_counted_as_legal_permission": false,
+    "converted_dataset_claim": false,
+    "evaluated_dataset_claim": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ce_gate": {
+    "source": "fresh_stage42_ce_source_diversity_conversion_preflight",
+    "gates": {
+      "cd_input_verified": true,
+      "targets_checked": true,
+      "local_paths_inspected": true,
+      "schema_preflight_done": true,
+      "source_cv_not_overclaimed": true,
+      "no_conversion_claim": true,
+      "no_evaluation_claim": true,
+      "legal_blockers_explicit": true,
+      "user_action_written": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_ce_source_diversity_conversion_preflight_pass"
+  }
+}

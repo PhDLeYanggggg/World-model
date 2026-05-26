@@ -188,3 +188,29 @@ Stage42-CD converts the CC source-diversity blocker into an actionable acquisiti
 - Existing local paths are useful, but current evidence still cannot claim broad source-level generalization.
 - A future Stage42 source-diversity repair must start from a user-provided legal local path or verified official terms.
 <!-- STAGE42_CD_REFRESH:END -->
+
+<!-- STAGE42_CE_REFRESH:START -->
+## Stage42-CE Source Diversity Conversion Preflight
+
+- source: `fresh_stage42_ce_source_diversity_conversion_preflight`
+- verdict: `stage42_ce_source_diversity_conversion_preflight_pass`
+- gates: `12 / 12`
+- targets checked: `5`
+- targets with local path: `4`
+- targets with schema possible: `4`
+- targets with t50 files: `3`
+- targets with t100 files: `3`
+- independent t50 candidates ready to claim: `0`
+- source-CV-ready targets now: `0`
+- converted datasets now: `0`
+- evaluated datasets now: `0`
+- source-diversity repair ready now: `false`
+
+Stage42-CE is a useful engineering preflight, not a data-conversion success claim. It shows that UCY/ETH/BIWI/TrajNet/OpenTraj-related local paths are present and often parseable, but the legal/source-identity blockers remain: UCY/ETH/TrajNet still need official terms/path verification, OpenTraj is a toolkit/root scan rather than blanket independent data permission, and no target produces an unused independent ready-to-claim t50 source.
+
+### Updated Gap After CE
+
+- The source-diversity blocker is now narrower: local parseability exists, but legal permission, source identity, and source-CV readiness are still missing.
+- Do not count Stage42-CE as converted data, external evaluation, or broad source-level generalization.
+- The next valid repair step is legal terms/path verification followed by actual conversion, no-leakage audit, validation-only source-CV selection, and final test once.
+<!-- STAGE42_CE_REFRESH:END -->

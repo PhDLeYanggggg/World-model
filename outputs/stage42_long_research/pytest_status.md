@@ -2,7 +2,8 @@
 
 - source: `fresh_run`
 - command: `.venv-pytorch/bin/python -m pytest tests`
-- result: `532 passed in 31.61s`
+- result: `536 passed in 29.73s`
+- targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_diversity_conversion_preflight.py tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py` -> `14 passed in 0.68s`
 - targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py tests/test_stage42_source_acquisition_status.py` -> `12 passed in 0.66s`
 - targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_independent_t50_source_inventory.py tests/test_stage42_t50_source_robustness_audit.py` -> `10 passed in 1.38s`
 - note: authoritative full test now uses the arm64 `.venv-pytorch` runtime. A prior `python3 -m pytest tests` run hit the known x86_64 Conda/OpenMP/subprocess crash path near `stage42_source_time_geometry_calibration`, so it is not used as the authoritative result.

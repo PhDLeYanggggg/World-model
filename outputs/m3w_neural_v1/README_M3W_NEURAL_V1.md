@@ -1113,3 +1113,21 @@ smc_enabled = false
 ```
 
 Stage42-CD adds the official/manual acquisition package for the remaining source-diversity blocker. The target list covers UCY Crowd Data, ETH/BIWI, TrajNet++, OpenTraj as a toolkit/reference, and an additional legal top-down pedestrian/drone source. It intentionally does not download, convert, or claim success. Current M3W-Neural v1 remains protected dataset-local/raw-frame 2.5D; broad source-level generalization still waits on legal independent source conversion and source-CV.
+
+## Stage42-CE Source Diversity Conversion Preflight
+
+```text
+source = fresh_stage42_ce_source_diversity_conversion_preflight
+verdict = stage42_ce_source_diversity_conversion_preflight_pass
+gates = 12 / 12
+targets_with_local_path = 4
+targets_with_schema_possible = 4
+targets_with_t50_files = 3
+targets_with_t100_files = 3
+targets_with_independent_t50_candidates = 0
+targets_source_cv_ready_now = 0
+converted_datasets_now = 0
+evaluated_datasets_now = 0
+```
+
+Stage42-CE confirms that local paths are present and parseable for several source-diversity targets, but no target is ready for a source-CV repair claim. This is useful engineering evidence for future conversion, not a model improvement or generalization claim. The current deployable model and claim boundary are unchanged.

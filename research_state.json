@@ -1,6 +1,42 @@
 {
-  "current_stage": "Stage42-CD source diversity acquisition package",
-  "current_verdict": "stage42_cd_source_diversity_acquisition_package_pass",
+  "current_stage": "Stage42-CE source diversity conversion preflight",
+  "current_verdict": "stage42_ce_source_diversity_conversion_preflight_pass",
+  "stage42_ce_source_diversity_conversion_preflight": {
+    "source": "fresh_stage42_ce_source_diversity_conversion_preflight",
+    "report": "outputs/stage42_long_research/source_diversity_conversion_preflight_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ce_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_source_conversion_preflight_stage42.md",
+    "verdict": "stage42_ce_source_diversity_conversion_preflight_pass",
+    "gates": "12/12",
+    "targets_checked": 5,
+    "targets_with_local_path": 4,
+    "targets_with_schema_possible": 4,
+    "targets_with_t50_files": 3,
+    "targets_with_t100_files": 3,
+    "targets_with_independent_t50_candidates": 0,
+    "targets_source_cv_ready_now": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "source_diversity_repair_ready_now": false,
+    "conclusion": "Stage42-CE confirms local paths and schema parseability for several source-diversity targets, but no target is source-CV-ready. Terms/source-identity/alternate-current-source blockers remain; this is preflight only, not conversion or evaluation.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_source_diversity_conversion_preflight.py -> 12/12",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_source_diversity_conversion_preflight.py tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py -> 14 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 536 passed in 29.73s"
+    },
+    "claim_boundary": {
+      "preflight_counted_as_conversion": false,
+      "converted_dataset_claim": false,
+      "evaluated_dataset_claim": false,
+      "broad_source_level_generalization_claim_allowed": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_cd_source_diversity_acquisition_package": {
     "source": "fresh_stage42_cd_source_diversity_acquisition_package",
     "report": "outputs/stage42_long_research/source_diversity_acquisition_package_stage42.md",
@@ -158,7 +194,7 @@
     }
   },
   "latest_user_requested_current_goal_retrospective_2026_05_26": {
-    "source": "cached_verified_stage18_to_stage42_plus_stage42_cd_source_diversity_acquisition_package",
+    "source": "cached_verified_stage18_to_stage42_plus_stage42_ce_source_diversity_conversion_preflight",
     "path": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "scope": "detailed_current_goal_handoff_routes_tried_failure_roots_success_evidence_best_deployable_claim_boundaries_blockers_next_steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
@@ -171,7 +207,8 @@
       "Stage42-BY/BZ protected t50 slice repair with bootstrap evidence",
       "Stage42-CB source robustness audit with source-diversity caveat",
       "Stage42-CC conservative local source inventory confirming source-diversity blocker remains active",
-      "Stage42-CD official/manual source acquisition package for source-diversity repair"
+      "Stage42-CD official/manual source acquisition package for source-diversity repair",
+      "Stage42-CE local conversion preflight proving parseability while preserving the source-CV blocker"
     ],
     "failed_or_limited_routes": [
       "JEPA downstream lift not proven",
@@ -211,7 +248,10 @@
       "ungated_neural_deployable": false,
       "broad_source_level_generalization_claim_allowed": false,
       "local_unused_independent_t50_sources_ready": false,
-      "source_diversity_acquisition_package_ready": true
+      "source_diversity_acquisition_package_ready": true,
+      "source_diversity_conversion_preflight_ready": true,
+      "source_cv_repair_ready": false,
+      "converted_dataset_claim_from_stage42_ce": false
     }
   },
   "stage42_bt_eth_seq_t50_support_dry_run": {
@@ -16734,8 +16774,8 @@
       "full_pytest": "python3 -m pytest tests -> 499 passed"
     }
   },
-  "latest_stage42_source_support_summary": "Stage42-BV fresh-ran source acquisition/status blocker matrix. Gates 16/16. Five blockers remain active: ETH_seq t50 source support, UCY_students t50 source support, TrajNet raw long t100 source support, ETH_UCY global t100 source support, and global metric/seconds claim. No automatic download, no registry-only conversion claim, no Stage5C, no SMC.",
-  "latest_verification": "python3 -m pytest tests -> 499 passed after Stage42-BV source acquisition status audit",
+  "latest_stage42_source_support_summary": "Stage42-CE fresh-ran source diversity conversion preflight. Gates 12/12. Four local target paths are present and schema-parseable, three contain t50/t100-capable files, but zero targets are source-CV-ready and zero datasets were converted or evaluated. No automatic download, no registry-only conversion claim, no Stage5C, no SMC.",
+  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 536 passed after Stage42-CE source diversity conversion preflight",
   "stage42_by_t50_floor_relaxability_repair": {
     "source": "fresh_stage42_by_t50_floor_relaxability_repair",
     "verdict": "stage42_by_t50_floor_relaxability_repair_pass",
@@ -16884,8 +16924,8 @@
       "full": "python3 -m pytest tests passed with 511 tests in 63.61s"
     }
   },
-  "last_test_command": "python3 -m pytest tests",
-  "last_test_result": "522 passed in 108.80s",
+  "last_test_command": ".venv-pytorch/bin/python -m pytest tests",
+  "last_test_result": "536 passed in 29.73s",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
