@@ -17,6 +17,7 @@ not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as indepen
 latest audits = Stage42-CJ goal/scene gated expert and Stage42-CK neighbor/interaction gated expert
 latest gate status = CJ 10 / 10, CK 11 / 11
 latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
+latest full-waypoint boundary audit = Stage42-CM endpoint bridge / full-waypoint shape audit, 14 / 14 gates
 latest full pytest = 562 passed
 ```
 
@@ -67,6 +68,24 @@ SMC_enabled = false
 ```
 
 Stage42-CL propagates the CJ/CK negative context evidence into the paper package itself, so the package now explicitly blocks goal/scene and neighbor/interaction overclaims while preserving the supported main mechanism: baseline-family rollout context + causal history + guarded domain expert under a conservative safety floor.
+
+```text
+Stage42-CM endpoint bridge / full-waypoint shape audit
+source = fresh_synthesis_from_stage42_full_waypoint_artifacts
+verdict = stage42_cm_full_waypoint_bridge_shape_audit_pass
+gates = 14 / 14
+protected full-waypoint minus endpoint-linear bridge:
+  all = -2.45%
+  t50 = +1.15%
+  t100 raw diagnostic = +8.16%
+  hard/failure = -0.87%
+ungated full-waypoint easy degradation = 124.59%
+UCY endpoint-to-full bridge = failed blocker
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CM clarifies the full-waypoint boundary. There is real protected full-waypoint evidence, especially on t50/t100 raw-frame horizons, but endpoint-linear bridge remains stronger on all-ADE. Endpoint-only success cannot be counted as learned full-waypoint world-state success, and ungated full-waypoint neural remains unsafe.
 
 本次汇总版已吸收 Stage42-CG/CH 的最新 legal / metric-time guard：当前有 6 个 ETH/UCY source-specific calibration candidates，但 conversion_ready=0，因而 global/restricted metric-seconds claim 仍全部禁止；source terms validator 也仍为 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。
 

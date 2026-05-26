@@ -28,6 +28,12 @@ Latest Stage42 post-context-guard paper package refresh:
 
 Stage42-CL passes `11 / 11` gates as `fresh_synthesis_from_stage42_cj_ck_artifacts`. It propagates the CJ/CK negative evidence into the paper package files themselves: experiment tables, ablation tables, failure taxonomy, and A-journal gap. The refreshed package explicitly blocks goal/scene and neighbor/interaction as independent main claims while preserving the supported mechanism boundary: baseline-family rollout context, causal history, guarded domain expert, and conservative safety floor. This is a claim-boundary refresh, not new training, not metric/seconds-level evidence, not Stage5C, and not SMC.
 
+Latest Stage42 endpoint bridge / full-waypoint shape audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/full_waypoint_bridge_shape_audit_stage42.md`
+
+Stage42-CM passes `14 / 14` gates as `fresh_synthesis_from_stage42_full_waypoint_artifacts`. It clarifies a key world-state boundary: protected full-waypoint sequence dynamics improves t50 by `+1.15%` and t100 raw-frame diagnostic by `+8.16%` relative to the composite-tail endpoint-linear bridge, but loses `-2.45%` on all-ADE and `-0.87%` on hard/failure. Endpoint-linear bridge remains the stronger all-ADE floor; endpoint-only success cannot be counted as learned full-waypoint dynamics. Ungated full-waypoint neural still has unsafe easy degradation (`124.59%`), so deployment remains protected by Stage37/teacher floor and safe switch.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`
