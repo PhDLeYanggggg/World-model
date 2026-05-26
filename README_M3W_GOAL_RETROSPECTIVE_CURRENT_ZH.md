@@ -522,3 +522,18 @@ SMC = 未启用
 ```
 
 Stage42-CA 做的是证据链同步：把 BY/BZ 的 protected t50 repair 和 bootstrap evidence 写入 paper outline、method、experiment tables、ablation tables、failure taxonomy、model card、data card、reproducibility 和 A-journal gap analysis。这样 README、报告和论文包之间不再脱节。它不是新训练，也不是更高 claim；只是让 paper-ready package 正确反映最新 fresh evidence。
+
+## 14. 最新 Stage42-CB 更新：t50 source robustness 与 source concentration
+
+```text
+source = fresh_stage42_cb_t50_source_robustness_audit
+verdict = stage42_cb_t50_source_robustness_pass_with_source_diversity_limit
+gates = 11 / 11
+robust_major_source_slices = TrajNet|50, UCY|50
+concentration_limited_slices = TrajNet|50, UCY|50
+broad_source_generalization_claim_allowed = false
+TrajNet|50 largest_source_fraction = 99.08%
+UCY|50 largest_source_fraction = 100.00%
+```
+
+Stage42-CB 的作用是防止过度声明。BY/BZ 的 t50 修复在可用 major source 上是稳的，但数据源分布太集中：`TrajNet|50` 主要来自一个 source，`UCY|50` 只有一个 test source。因此现在可以说“available major-source robust”，但不能说“broad source-level generalization 已经证明”。下一步若要增强 A刊证据，必须继续补独立合法的 t50-capable external sources。

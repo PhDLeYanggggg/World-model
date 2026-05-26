@@ -3714,3 +3714,28 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_ca_gate.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_post_bz_paper_package_refresh.py` passed, focused CA/BZ tests passed with 7 tests, and `python3 -m pytest tests` passed with 518 tests.
+
+## Stage42-CB Protected T50 Source Robustness Audit
+
+```text
+source = fresh_stage42_cb_t50_source_robustness_audit
+verdict = stage42_cb_t50_source_robustness_pass_with_source_diversity_limit
+gates = 11 / 11
+robust_major_source_slices = TrajNet|50, UCY|50
+concentration_limited_slices = TrajNet|50, UCY|50
+broad_source_generalization_claim_allowed = false
+TrajNet|50 sources = 2, largest_source_fraction = 99.08%
+UCY|50 sources = 1, largest_source_fraction = 100.00%
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CB audits whether the BY/BZ protected t50 gains are source-robust or concentrated. The major available sources are positive: `TrajNet|50` has robust evidence on `students003` and the small `students002` slice, and `UCY|50` is positive on `crowds_zara03`. However, the evidence is source-concentrated: `TrajNet|50` is 99.08% one source and `UCY|50` has only one test source. The correct paper claim is therefore major-source robustness within available rows, not broad source-level generalization. More independent legal t50-capable sources remain needed.
+
+Artifacts:
+
+- `outputs/stage42_long_research/t50_source_robustness_audit_stage42.md`
+- `outputs/stage42_long_research/t50_source_robustness_audit_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_cb_gate.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_t50_source_robustness_audit.py` passed, focused CB/BZ tests passed with 8 tests, and `python3 -m pytest tests` passed with 522 tests.

@@ -1,0 +1,260 @@
+{
+  "source": "fresh_stage42_cb_t50_source_robustness_audit",
+  "stage": "Stage42-CB Protected T50 Source Robustness Audit",
+  "generated_at_utc": "2026-05-26T16:26:59.473768+00:00",
+  "git_commit": "d28b880",
+  "input_hash": "0e0447c133fada9b1ee16a1f11686f5fa5b49ca90b5ffcc9186ef3847cdbc6a8",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CB 是 BY/BZ protected t50 repair 的 source-level robustness / concentration audit。",
+    "Stage42-CB 不重新选择 policy，不调 threshold，不训练新模型。",
+    "test rows 只用于最终 source-level reporting/bootstrap，不用于 policy selection。",
+    "如果 evidence 集中在少数 source，必须报告 source concentration limitation，不能包装成 broad source-level generalization。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C 未执行，SMC 未启用。"
+  ],
+  "input_reports": {
+    "stage42_bz_verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
+    "stage42_ca_verdict": "stage42_ca_post_bz_paper_package_refresh_pass"
+  },
+  "slice_audits": {
+    "TrajNet|50": {
+      "source": "fresh_stage42_cb_t50_source_robustness_audit",
+      "slice": "TrajNet|50",
+      "total_rows": 9198,
+      "source_count": 2,
+      "largest_source_fraction": 0.9907588606218743,
+      "concentration_limited": true,
+      "robust_source_count": 2,
+      "robust_sources": [
+        "crowds/students002.txt",
+        "crowds/students003.txt"
+      ],
+      "underpowered_sources": [],
+      "source_rows": [
+        {
+          "source": "fresh_stage42_cb_t50_source_robustness_audit",
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+          "source_name": "crowds/students002.txt",
+          "rows": 85,
+          "hard_rows": 85,
+          "easy_rows": 2,
+          "metric": {
+            "rows": 85,
+            "all_improvement": 0.7135239074629596,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.7135239074629596,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.7135239074629596,
+            "easy_degradation": -0.7658770615346866,
+            "switch_rate": 1.0,
+            "harm_over_fallback": -0.9093540108857037
+          },
+          "bootstrap": {
+            "t50": {
+              "low": 0.6864237092455102,
+              "mid": 0.7140819611597333,
+              "high": 0.7395525057827186,
+              "n": 85,
+              "bootstrap_n": 3000
+            },
+            "hard_failure": {
+              "low": 0.6873264060797034,
+              "mid": 0.7137324767897734,
+              "high": 0.7400269095992111,
+              "n": 85,
+              "bootstrap_n": 3000
+            },
+            "easy_degradation": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0,
+              "n": 2,
+              "bootstrap_n": 0
+            }
+          },
+          "ci_available": true,
+          "hard_ci_available": true,
+          "easy_ci_available": false,
+          "robust_positive": true
+        },
+        {
+          "source": "fresh_stage42_cb_t50_source_robustness_audit",
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "source_name": "crowds/students003.txt",
+          "rows": 9113,
+          "hard_rows": 9113,
+          "easy_rows": 2778,
+          "metric": {
+            "rows": 9113,
+            "all_improvement": 0.2919944593748245,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.2919944593748245,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.2919944593748245,
+            "easy_degradation": -0.22901254753260447,
+            "switch_rate": 0.9521562602875013,
+            "harm_over_fallback": -0.14104645264060334
+          },
+          "bootstrap": {
+            "t50": {
+              "low": 0.2880431894642244,
+              "mid": 0.2919977996540685,
+              "high": 0.295920007859515,
+              "n": 9113,
+              "bootstrap_n": 3000
+            },
+            "hard_failure": {
+              "low": 0.28821700068503725,
+              "mid": 0.29204690610356043,
+              "high": 0.29587462659432484,
+              "n": 9113,
+              "bootstrap_n": 3000
+            },
+            "easy_degradation": {
+              "low": -0.31870809856355936,
+              "mid": -0.2967048863808276,
+              "high": -0.27487196561511806,
+              "n": 2778,
+              "bootstrap_n": 3000
+            }
+          },
+          "ci_available": true,
+          "hard_ci_available": true,
+          "easy_ci_available": true,
+          "robust_positive": true
+        }
+      ],
+      "broad_source_generalization_claim_allowed": false
+    },
+    "UCY|50": {
+      "source": "fresh_stage42_cb_t50_source_robustness_audit",
+      "slice": "UCY|50",
+      "total_rows": 2340,
+      "source_count": 1,
+      "largest_source_fraction": 1.0,
+      "concentration_limited": true,
+      "robust_source_count": 1,
+      "robust_sources": [
+        "crowds/crowds_zara03.txt"
+      ],
+      "underpowered_sources": [],
+      "source_rows": [
+        {
+          "source": "fresh_stage42_cb_t50_source_robustness_audit",
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "source_name": "crowds/crowds_zara03.txt",
+          "rows": 2340,
+          "hard_rows": 2340,
+          "easy_rows": 566,
+          "metric": {
+            "rows": 2340,
+            "all_improvement": 0.24532046629629067,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.24532046629629067,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65,
+            "harm_over_fallback": -0.13234820222281216
+          },
+          "bootstrap": {
+            "t50": {
+              "low": 0.23048398504821271,
+              "mid": 0.24535277850455955,
+              "high": 0.2600032880386212,
+              "n": 2340,
+              "bootstrap_n": 3000
+            },
+            "hard_failure": {
+              "low": 0.23090577466336887,
+              "mid": 0.24552443742922386,
+              "high": 0.2602455380921219,
+              "n": 2340,
+              "bootstrap_n": 3000
+            },
+            "easy_degradation": {
+              "low": -0.21095157870189435,
+              "mid": -0.1450645731830299,
+              "high": -0.08572525217012499,
+              "n": 566,
+              "bootstrap_n": 3000
+            }
+          },
+          "ci_available": true,
+          "hard_ci_available": true,
+          "easy_ci_available": true,
+          "robust_positive": true
+        }
+      ],
+      "broad_source_generalization_claim_allowed": false
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_cb_t50_source_robustness_audit",
+    "verdict_short": "aggregate_t50_bootstrap_strong_but_source_diversity_limited",
+    "target_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "robust_major_source_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "concentration_limited_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "broad_source_generalization_claim_allowed": false,
+    "source_level_claim": "major-source robust within available rows; not broad source-level generalization",
+    "selected_variant": "family_baseline_rel_only",
+    "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+    "floor_free_neural_deployable": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "test_rows_for_reporting_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "broad_source_generalization_claim_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_cb_gate": {
+    "source": "fresh_stage42_cb_t50_source_robustness_audit",
+    "gates": {
+      "bz_input_verified": true,
+      "ca_input_verified_or_optional": true,
+      "target_slices_audited": true,
+      "major_source_robustness_reported": true,
+      "source_concentration_limitation_reported": true,
+      "broad_source_generalization_not_overclaimed": true,
+      "no_leakage_pass": true,
+      "not_floor_free_neural": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage42_cb_t50_source_robustness_pass_with_source_diversity_limit"
+  }
+}

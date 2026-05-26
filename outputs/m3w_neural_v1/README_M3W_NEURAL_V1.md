@@ -1063,3 +1063,18 @@ smc_enabled = false
 ```
 
 Stage42-CA makes the BY/BZ evidence paper-package-visible across the Stage42 outline, method draft, experiment/ablation tables, failure taxonomy, model/data cards, reproducibility note, and A-journal gap analysis. It is a paper-evidence consistency refresh, not new model training.
+
+## Stage42-CB Protected T50 Source Robustness Audit
+
+```text
+source = fresh_stage42_cb_t50_source_robustness_audit
+verdict = stage42_cb_t50_source_robustness_pass_with_source_diversity_limit
+gates = 11 / 11
+robust_major_source_slices = TrajNet|50, UCY|50
+concentration_limited_slices = TrajNet|50, UCY|50
+broad_source_generalization_claim_allowed = false
+TrajNet|50 largest_source_fraction = 99.08%
+UCY|50 largest_source_fraction = 100.00%
+```
+
+Stage42-CB adds the source-level caveat to the t50 repair evidence. The available major sources are robust-positive, but source diversity is limited; broad source-level generalization is not yet allowed.

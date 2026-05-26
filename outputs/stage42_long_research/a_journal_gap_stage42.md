@@ -133,3 +133,15 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 - Still required: teacher/floor rollout context, protected safe-switch, train/internal-validation policy selection.
 - Rejected: true 3D, foundation model, global metric prediction, seconds-level horizon, Stage5C execution, SMC readiness, and ungated/floor-free neural deployment.
 <!-- STAGE42_CA_REFRESH:END -->
+
+<!-- STAGE42_CB_REFRESH:START -->
+## Stage42-CB Source Robustness Caveat
+
+- source: `fresh_stage42_cb_t50_source_robustness_audit`
+- verdict: `stage42_cb_t50_source_robustness_pass_with_source_diversity_limit`
+- robust major-source slices: `TrajNet|50`, `UCY|50`
+- concentration-limited slices: `TrajNet|50`, `UCY|50`
+- broad source-level generalization claim allowed: `false`
+
+Stage42-CB strengthens the honesty of the t50 claim: BY/BZ t50 gains are positive on the available major sources, but source diversity is still limited. `TrajNet|50` is dominated by `students003` and `UCY|50` currently has a single test source. This supports a paper claim of protected t50 repair with source-concentration caveat, not a broad source-level generalization claim. The shortest path remains acquiring or legally converting more independent t50-capable external top-down sources.
+<!-- STAGE42_CB_REFRESH:END -->
