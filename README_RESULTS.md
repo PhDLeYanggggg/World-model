@@ -3656,3 +3656,34 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_by_gate.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_t50_floor_relaxability_repair.py` passed and `python3 -m pytest tests/test_stage42_t50_floor_relaxability_repair.py tests/test_stage42_floor_relaxability_audit.py` passed with 9 tests.
+
+## Stage42-BZ Protected T50 Repair Statistical Evidence
+
+```text
+source = fresh_stage42_bz_t50_repair_statistical_evidence
+verdict = stage42_bz_t50_repair_statistical_evidence_pass
+gates = 13 / 13
+bootstrap_n = 3000
+selected_variant = family_baseline_rel_only
+internal_val_group = UCY::UCY/zara03/crowds_zara03.txt
+robust_t50_slices = TrajNet|50, UCY|50
+target_union_t50_improvement = 28.97%
+target_union_t50_CI = [28.52%, 29.45%]
+target_union_hard_failure_CI_low = 28.51%
+target_union_easy_degradation_CI_high = -25.16%
+TrajNet|50 t50_CI = [29.80%, 30.67%]
+UCY|50 t50_CI = [23.02%, 26.08%]
+floor_free_neural_deployable = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BZ upgrades Stage42-BY from a protected t50 point-estimate repair to bootstrap-backed statistical evidence. The repaired `TrajNet|50` and `UCY|50` slices both have positive 3000-sample bootstrap lower bounds and easy degradation remains safely below the 2% harm limit. This remains protected policy evidence selected by train/internal-validation only; test rows are used only for final reporting/bootstrap. It is still not floor-free neural deployment, not true 3D, not foundation, and not metric/seconds-level.
+
+Artifacts:
+
+- `outputs/stage42_long_research/t50_repair_statistical_evidence_stage42.md`
+- `outputs/stage42_long_research/t50_repair_statistical_evidence_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_bz_gate.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_t50_repair_statistical_evidence.py` passed, focused Stage42-BY/BZ tests passed with 8 tests, and `python3 -m pytest tests` passed with 515 tests.

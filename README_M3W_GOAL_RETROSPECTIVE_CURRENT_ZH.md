@@ -487,3 +487,22 @@ SMC = 未启用
 Stage42-BY 的意义是：Stage42-BX 里原先被挡住的两个 t50 slice，现在在 Stage42-AW 的 train-only internal validation protected policy 下被修复了。`TrajNet|50` 从 validation-safety blocker 变成 protected positive；`UCY|50` 从 no-validation-support blocker 变成 protected positive。
 
 但这不是 floor-free neural 成功，也不是 true 3D / foundation / metric / seconds-level 成功。它仍然依赖 teacher/floor rollout context、baseline-family protected selection 和 conservative fallback。当前最诚实的表述仍是：M3W 是 protected dataset-local raw-frame 2.5D 多智能体 world-state candidate，Stage5C 和 SMC 仍禁止。
+
+## 12. 最新 Stage42-BZ 更新：t50 repair bootstrap 统计证据
+
+```text
+source = fresh_stage42_bz_t50_repair_statistical_evidence
+verdict = stage42_bz_t50_repair_statistical_evidence_pass
+gates = 13 / 13
+bootstrap_n = 3000
+robust_t50_slices = TrajNet|50, UCY|50
+target_union_t50_CI = [28.52%, 29.45%]
+target_union_easy_degradation_CI_high = -25.16%
+TrajNet|50 t50_CI = [29.80%, 30.67%]
+UCY|50 t50_CI = [23.02%, 26.08%]
+floor_free_neural_deployable = false
+Stage5C = 未执行
+SMC = 未启用
+```
+
+Stage42-BZ 把 BY 的点估计修复升级成 bootstrap 统计证据。也就是说，`TrajNet|50` 和 `UCY|50` 不是只在一次评估里为正；它们在 3000-sample bootstrap 下 CI 下界仍为正，同时 easy degradation 的 CI high 仍低于安全线。这个结果更接近论文证据，但边界不变：它仍是 protected policy evidence，不是无安全地板的神经动力学模型。

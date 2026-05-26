@@ -1028,3 +1028,22 @@ smc_enabled = false
 ```
 
 Stage42-BY rechecks the slice-level t50 blocker from Stage42-BX with the Stage42-AW train-only internal validation policy. Both `TrajNet|50` and `UCY|50` become protected-positive slices, while the claim boundary stays conservative: the result depends on the teacher/floor rollout context and protected fallback, so it is not floor-free neural world dynamics.
+
+## Stage42-BZ Protected T50 Repair Statistical Evidence
+
+```text
+source = fresh_stage42_bz_t50_repair_statistical_evidence
+verdict = stage42_bz_t50_repair_statistical_evidence_pass
+gates = 13 / 13
+bootstrap_n = 3000
+robust_t50_slices = TrajNet|50, UCY|50
+target_union_t50_CI = [28.52%, 29.45%]
+target_union_easy_degradation_CI_high = -25.16%
+TrajNet|50 t50_CI = [29.80%, 30.67%]
+UCY|50 t50_CI = [23.02%, 26.08%]
+floor_free_neural_deployable = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BZ adds 3000-sample bootstrap evidence to the Stage42-BY protected repair. Both repaired t50 slices are statistically positive with easy-safety preserved. The deployment boundary is unchanged: Stage37/teacher floor and protected safe-switch remain required.
