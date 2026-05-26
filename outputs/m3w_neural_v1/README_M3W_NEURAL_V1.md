@@ -37,6 +37,31 @@ Stage42 Long Research Mode has started with a fresh data/calibration audit:
 
 The audit confirms that existing local converted state is sufficient to proceed to Stage42-B external validation and Stage42-C full-waypoint dynamics. It also confirms that global metric and seconds-level claims remain disallowed.
 
+### Stage42-AD Calibration Evidence Refresh
+
+Stage42-AD refreshes the calibration audit by scanning local metadata/README/H.txt/calibration/FPS/scale evidence and separating evidence existence from claim permission:
+
+- report: `outputs/stage42_long_research/calibration_evidence_refresh_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_ad_gate.md`
+- user actions: `outputs/stage42_long_research/user_action_required_stage42_calibration.md`
+- result: Stage42-AD gates `10 / 10`
+
+Key fresh-run result:
+
+```text
+datasets_audited = 7
+evidence_files_scanned = 1152
+parseable_homography_like = OpenTraj, ETH/UCY, UCY
+fps_evidence = SDD, OpenTraj, ETH/UCY, UCY
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+TGSIM = traffic metric diagnostic only
+```
+
+Interpretation:
+
+ETH/UCY and UCY have useful local calibration evidence, but this is not enough for a metric or seconds-level pedestrian claim. The allowed claim remains dataset-local raw-frame 2.5D until source-specific homography direction, coordinate convention, annotation stride, frame rate, and scale are verified. Stage5C and SMC remain disabled.
+
 ## Stage42-B External Validation Follow-Up
 
 Stage42-B rebuilt a source-level/fold stress protocol over the frozen external evaluation pool and reran the protected package comparisons:

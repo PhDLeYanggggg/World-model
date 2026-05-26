@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC 已生成并校验的轻量报告；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC 以及 Stage42-AD 标定证据刷新；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -13,6 +13,7 @@ python3 run_stage42_retrained_ablation.py = pass
 python3 run_stage42_retrained_ablation_matrix.py = pass
 python3 run_stage42_full_waypoint_auxiliary_ablation.py = pass
 python3 run_stage42_paper_package_refresh.py = pass
+python3 run_stage42_calibration_evidence_refresh.py = pass
 python3 -m pytest tests/test_stage42_unified_ablation_evidence.py = 3 passed
 python3 -m pytest tests = 339 passed
 ```
@@ -30,7 +31,7 @@ python3 -m pytest tests = 339 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation 和 paper package refresh evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC/AD 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation、paper package refresh 和 calibration evidence refresh。
 
 ## 本次请求版详细总结
 
@@ -132,7 +133,7 @@ SMC-ready model
 
 ### 最短下一步
 
-1. 做 Stage42-AD metric/time calibration evidence refresh：把 homography/FPS/scale 证据从“文件存在”升级成“可否支持 claim”的逐数据集审计。
+1. 基于 Stage42-AD 的 user_action_required，人工/官方验证 ETH/UCY、UCY、OpenTraj 的 homography direction、FPS、annotation stride 和 scale；验证前继续保持 raw-frame / dataset-local 口径。
 2. 把 Stage42-X unified row-level cache 继续做更严格 held-out / bootstrap / per-domain stress，尤其确认 UCY source 与 ETH_UCY/TrajNet source 的 row-level 合并边界。
 3. 针对 mixed 组件做更干净的 ablation：goal/scene、neighbor/interaction、auxiliary heads、JEPA，不把 partial evidence 写成主贡献。
 
@@ -831,3 +832,33 @@ smc_enabled = false
 ```
 
 Stage42-AC refreshes the paper outline, method draft, experiment tables, ablation tables, failure taxonomy, model card, data card, reproducibility notes, and A-journal gap analysis with Stage42-AB. The auxiliary heads are now explicitly recorded as mixed evidence: small t50/FDE@50 support, but not uniform all/hard ADE improvement.
+
+## Stage42-AD Calibration Evidence Refresh
+
+```text
+source = fresh_run
+verdict = stage42_ad_calibration_evidence_refresh_pass
+gates = 10 / 10
+datasets_audited = 7
+evidence_files_scanned = 1152
+datasets_with_parseable_homography_like_matrices = OpenTraj, ETH/UCY, UCY
+datasets_with_fps_evidence = SDD, OpenTraj, ETH/UCY, UCY
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+traffic_metric_diagnostic = TGSIM only
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AD 把 Stage42-A 的“calibration files found but not validated”推进成逐文件证据刷新。它扫描本地 metadata、README、H.txt、calibration、FPS、scale 小文件，并专门修正了一个容易出错的点：普通轨迹 `.txt` 里有很多 3 行数字，不能当作 homography 证据。
+
+结论：
+
+- ETH/UCY 和 UCY 有 parseable homography-like 文件。
+- SDD、OpenTraj、ETH/UCY、UCY 有 FPS 或 frame-rate 线索。
+- TGSIM 有 meter/time metadata，但只能作为 traffic diagnostic。
+- 所有 pedestrian / drone official metric claim 仍不允许。
+- 所有 pedestrian / drone seconds-level claim 仍不允许。
+- 需要人工或官方文档确认 homography direction、coordinate convention、annotation stride、FPS、scale 后，才能升级 metric/time claim。
+
+这一步没有训练模型，也没有下载 gated data；它只收紧 paper/data card 的 claim boundary。

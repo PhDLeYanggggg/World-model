@@ -34,6 +34,23 @@ endpoint-to-full UCY bridge = failed
 auxiliary heads = mixed/partial, not a uniform main claim
 ```
 
+Latest Stage42-AD calibration evidence refresh:
+
+```text
+source = fresh_run
+verdict = stage42_ad_calibration_evidence_refresh_pass
+gates = 10 / 10
+datasets_audited = 7
+evidence_files_scanned = 1152
+parseable_homography_like = OpenTraj, ETH/UCY, UCY
+fps_evidence = SDD, OpenTraj, ETH/UCY, UCY
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+traffic_metric_diagnostic_only = TGSIM
+```
+
+Stage42-AD separates “calibration-like evidence exists” from “metric/seconds claim allowed”. ETH/UCY and UCY have parseable homography-like files and some FPS/stride evidence, but official pedestrian metric/seconds claims remain blocked until source-specific homography direction, coordinate convention, annotation stride, FPS, and scale are manually verified.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`

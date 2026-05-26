@@ -1,0 +1,1957 @@
+{
+  "source": "fresh_run",
+  "stage": "Stage42-AD calibration evidence refresh",
+  "generated_at_utc": "2026-05-26T06:01:17.791747+00:00",
+  "git_commit": "a995971",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "SDD 是 pixel-space benchmark，不是 metric benchmark。",
+    "External domains 仍是 dataset-local / unverified weak-metric diagnostic。",
+    "t+50 / t+100 是 raw-frame horizons，不能说成 seconds-level。",
+    "homography / metric scale / effective seconds 未完成全局验证。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。",
+    "Stage42 当前只做数据与标定 fresh audit，不训练、不下载 gated data、不写 large cache。"
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "input_hash": "34f63382c36e1b55a02af3fea0a4b6c46f151ed442a3c07be45c77c8cb57636c",
+  "summary": {
+    "datasets_audited": 7,
+    "evidence_files_scanned": 1152,
+    "datasets_with_parseable_homography_like_matrices": [
+      "opentraj",
+      "eth_ucy",
+      "ucy"
+    ],
+    "datasets_with_fps_evidence": [
+      "sdd",
+      "opentraj",
+      "eth_ucy",
+      "ucy"
+    ],
+    "datasets_with_stride_or_dt_evidence": [
+      "sdd",
+      "opentraj",
+      "eth_ucy",
+      "ucy",
+      "tgsim",
+      "aerialmpt"
+    ],
+    "datasets_with_scale_or_meter_evidence": [
+      "sdd",
+      "opentraj",
+      "eth_ucy",
+      "tgsim",
+      "aerialmpt"
+    ],
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "pedestrian_metric_claim_ready": [],
+    "pedestrian_seconds_claim_ready": [],
+    "traffic_metric_diagnostic": [
+      "tgsim"
+    ]
+  },
+  "datasets": [
+    {
+      "source": "fresh_run",
+      "dataset_id": "sdd",
+      "dataset_name": "Stanford Drone Dataset",
+      "data_role": "official_eval / supervised_training",
+      "known_coordinate_unit": "pixel",
+      "known_metric_status": "pixel_space; no verified homography/scale",
+      "official_hint": "https://cvgl.stanford.edu/projects/uav_data/",
+      "local_paths_checked": [
+        {
+          "path": "external_data/StanfordDroneDataset",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/StanfordDroneDataset",
+          "exists": false
+        },
+        {
+          "path": "data/stage21_sdd_world_state",
+          "exists": true
+        },
+        {
+          "path": "data/stage24_sdd_fast_cache",
+          "exists": true
+        },
+        {
+          "path": "data/stage20_raw_index/stanford_drone/metadata.json",
+          "exists": true
+        },
+        {
+          "path": "outputs/stage30_m3w_verified/time_geometry_raw_audit.json",
+          "exists": true
+        },
+        {
+          "path": "outputs/reports/stage23_sdd_time_geometry_audit.json",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 5,
+      "evidence_file_samples": [
+        "data/stage20_raw_index/stanford_drone/metadata.json",
+        "data/stage21_sdd_world_state/manifest.json",
+        "data/stage24_sdd_fast_cache/manifest.json",
+        "outputs/reports/stage23_sdd_time_geometry_audit.json",
+        "outputs/stage30_m3w_verified/time_geometry_raw_audit.json"
+      ],
+      "homography_like_file_count": 4,
+      "parseable_homography_matrix_count": 0,
+      "fps_or_frame_rate_evidence_count": 3,
+      "stride_or_dt_evidence_count": 3,
+      "scale_or_meter_evidence_count": 3,
+      "coordinate_unit_evidence": {
+        "source pixel/world-2D; do not claim metric unless homography exists": 1,
+        "pixel": 1
+      },
+      "metadata_metric_true_count": 0,
+      "notable_evidence": [
+        {
+          "path": "data/stage20_raw_index/stanford_drone/metadata.json",
+          "bytes": 4426,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {
+            "coordinate_unit": "source pixel/world-2D; do not claim metric unless homography exists",
+            "horizon_audit_present": true
+          }
+        },
+        {
+          "path": "data/stage21_sdd_world_state/manifest.json",
+          "bytes": 62127,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps_or_dt\": \"raw annotation frame index; ef"
+          ],
+          "stride_terms": [
+            "dt\": \"raw annotation frame index; effectiv"
+          ],
+          "scale_terms": [
+            "scale verified\","
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel-space; no homography/scale verified"
+          }
+        },
+        {
+          "path": "outputs/reports/stage23_sdd_time_geometry_audit.json",
+          "bytes": 576,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps\": \"unknown\",",
+            "fps_stride\": \"unknown\","
+          ],
+          "stride_terms": [
+            "stride\": \"unknown\",",
+            "stride\": 1,"
+          ],
+          "scale_terms": [
+            "meter_can_be_estimated_safely\": false,",
+            "scale_available\": false,",
+            "scale_files_found\": [],"
+          ],
+          "json_evidence": {}
+        },
+        {
+          "path": "outputs/stage30_m3w_verified/time_geometry_raw_audit.json",
+          "bytes": 755,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps\": null,",
+            "fps_values_sample\": [],"
+          ],
+          "stride_terms": [
+            "stride\": 1,",
+            "stride_counts_top\": ["
+          ],
+          "scale_terms": [
+            "meter_per_pixel_verified\": false,"
+          ],
+          "json_evidence": {}
+        }
+      ],
+      "metric_claim_status": "not_allowed_pixel_space",
+      "seconds_claim_status": "not_allowed_effective_seconds_unverified",
+      "allowed_claim": "pixel raw-frame only",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "keep_dataset_local_raw_frame_claim"
+    },
+    {
+      "source": "fresh_run",
+      "dataset_id": "opentraj",
+      "dataset_name": "OpenTraj",
+      "data_role": "external top-down source hub / loader input",
+      "known_coordinate_unit": "dataset-local mixed",
+      "known_metric_status": "dataset-local; underlying licenses/scales vary",
+      "official_hint": "https://github.com/crowdbotp/OpenTraj",
+      "local_paths_checked": [
+        {
+          "path": "external_data/OpenTraj",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj",
+          "exists": false
+        },
+        {
+          "path": "data/stage31_external_latent_cache",
+          "exists": true
+        },
+        {
+          "path": "data/stage41_world_model",
+          "exists": true
+        },
+        {
+          "path": "data/stage20_raw_index/opentraj/metadata.json",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 1083,
+      "evidence_file_samples": [
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/README.md",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ATC/README.md",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_3v7_01/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_3v7_02/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_3v7_03/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_3v7_04/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_01/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_02/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_03/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_bi/bidirection_no_vehicle_5v5_04/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_uni/unidirection_no_vehicle_01/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_uni/unidirection_no_vehicle_02/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_uni/unidirection_no_vehicle_03/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/p2p_uni/unidirection_no_vehicle_04/ratio_pixel2meter_ground.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_01/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_02/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_03/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_back/back_interaction_04/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_front/front_interaction_01/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_front/front_interaction_02/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_front/front_interaction_03/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_front/front_interaction_04/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_lat_bi/bidirection_normal_driving_01/ratio_pixel2meter.txt",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories/vci_lat_bi/bidirection_normal_driving_02/ratio_pixel2meter.txt"
+      ],
+      "homography_like_file_count": 79,
+      "parseable_homography_matrix_count": 150,
+      "fps_or_frame_rate_evidence_count": 20,
+      "stride_or_dt_evidence_count": 34,
+      "scale_or_meter_evidence_count": 26,
+      "coordinate_unit_evidence": {
+        "source pixel/world-2D; do not claim metric unless homography exists": 1
+      },
+      "metadata_metric_true_count": 0,
+      "notable_evidence": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/README.md",
+          "bytes": 15132,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps=0</code> | [website](http://homepages.i",
+            "fps=0</code> | [website](http://viratdata.o",
+            "fps=0</code> | [website](https://lcas.linco",
+            "fps=0</code> | [website](https://megapixels",
+            "fps=10</code> |  [website](http://www.cvlib",
+            "fps=10</code> | [website](https://gamma.umd"
+          ],
+          "stride_terms": [
+            "dth='400px'\\>",
+            "dtjbrmyq0y9jl3007lrr) [paper](https://arxi",
+            "dtrack/) | "
+          ],
+          "scale_terms": [
+            "meter)</code> <code>fps=25</code> | [website](https://www.th-ab.d",
+            "scale autonomous driving dataset <code>#traj:[peds=222,164 vehicl"
+          ],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ATC/README.md",
+          "bytes": 1745,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth=480 \\>"
+          ],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/README.md",
+          "bytes": 3883,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth=300\\>",
+            "dth=320\\>",
+            "dtxt(os.path.join(opentraj_root, \"datasets"
+          ],
+          "scale_terms": [
+            "meters and are obtained with the homography matrix stored in h.tx"
+          ],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "bytes": 147,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+          "bytes": 216,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps, that is with a timestep of 0.4 seconds"
+          ],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "bytes": 147,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+          "bytes": 378,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps, that is with a timestep of 0.4 seconds",
+            "fps. however the annotation was done at 2.5"
+          ],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/Edinburgh/README.md",
+          "bytes": 14526,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "framerate=9    ",
+            "frames per second depending on the local ethernet and cap"
+          ],
+          "stride_terms": [
+            "dth, average_height,",
+            "dth='480px'\\>"
+          ],
+          "scale_terms": [
+            "meterisation whereby control points are spaced uniformly along th",
+            "meterisation, so regions with more detections get more control po"
+          ],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/GC/H-image.txt",
+          "bytes": 24,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/GC/H-world.txt",
+          "bytes": 34,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/GC/ReadMe.md",
+          "bytes": 2563,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "frame rate (fps) \t          | 1.25 (or 1.2) \t|",
+            "frame rate (fps)                      | 25  \t|"
+          ],
+          "stride_terms": [
+            "dth='400px'\\>  ",
+            "dth='400px'\\>    "
+          ],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/HERMES/H.txt",
+          "bytes": 60,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/HERMES/README.md",
+          "bytes": 6182,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "frame rate is 1/16s). "
+          ],
+          "stride_terms": [
+            "dth 1.8m. ",
+            "dth='480px'\\>  ",
+            "dth='640px'\\>  ",
+            "dths w=0.7, 0.95 1.2 and 1.8m. "
+          ],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/InD/README.md",
+          "bytes": 2698,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth='640px'\\>  "
+          ],
+          "scale_terms": [
+            "metres. the dataset is applicable on many tasks such as road user"
+          ],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/README.md",
+          "bytes": 1871,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth='480px' \\>"
+          ],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0000.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0001.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0002.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0003.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0004.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0005.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0006.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0007.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0008.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0009.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0010.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0011.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0012.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0013.txt",
+          "bytes": 1616,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/calib/0014.txt",
+          "bytes": 1619,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 3,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        }
+      ],
+      "metric_claim_status": "weak_metric_candidate_requires_manual_validation",
+      "seconds_claim_status": "effective_seconds_candidate_requires_manual_validation",
+      "allowed_claim": "dataset-local raw-frame only until source-specific homography/FPS/scale is manually validated",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim"
+    },
+    {
+      "source": "fresh_run",
+      "dataset_id": "eth_ucy",
+      "dataset_name": "ETH/UCY",
+      "data_role": "external_eval / supervised_training",
+      "known_coordinate_unit": "dataset-local",
+      "known_metric_status": "unverified weak metric / dataset-local; do not claim metric",
+      "official_hint": "ETH/BIWI + UCY original dataset pages; verify source-specific terms",
+      "local_paths_checked": [
+        {
+          "path": "external_data/OpenTraj/datasets/ETH",
+          "exists": true
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH-Person",
+          "exists": true
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/ETH_UCY",
+          "exists": false
+        },
+        {
+          "path": "data/stage5b_world_state/eth_ucy",
+          "exists": true
+        },
+        {
+          "path": "data/stage41_world_model",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/eth_ucy/metadata.json",
+          "exists": true
+        },
+        {
+          "path": "data/stage20_raw_index/eth_ucy_full/metadata.json",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 20,
+      "evidence_file_samples": [
+        "data/stage20_raw_index/eth_ucy_full/metadata.json",
+        "data/stage41_world_model/combined_meta.json",
+        "data/stage5b_world_state/eth_ucy/metadata.json",
+        "external_data/OpenTraj/datasets/ETH/ETH-ETH.json",
+        "external_data/OpenTraj/datasets/ETH/README.md",
+        "external_data/OpenTraj/datasets/ETH/eth-eth.yaml",
+        "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+        "external_data/OpenTraj/datasets/ETH/seq_eth/biwi_eth_10fps.txt",
+        "external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+        "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+        "external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+        "external_data/OpenTraj/datasets/UCY/README.md",
+        "external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+        "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+        "external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+        "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+        "external_data/OpenTraj/datasets/UCY/zara01/UCY-Zara01.json",
+        "external_data/OpenTraj/datasets/UCY/zara02/H-old.txt",
+        "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+        "external_data/OpenTraj/datasets/UCY/zara03/H.txt"
+      ],
+      "homography_like_file_count": 13,
+      "parseable_homography_matrix_count": 9,
+      "fps_or_frame_rate_evidence_count": 3,
+      "stride_or_dt_evidence_count": 2,
+      "scale_or_meter_evidence_count": 1,
+      "coordinate_unit_evidence": {
+        "world-2D if homography applied; otherwise pixel": 1,
+        "dataset_coordinate": 1
+      },
+      "metadata_metric_true_count": 0,
+      "notable_evidence": [
+        {
+          "path": "data/stage20_raw_index/eth_ucy_full/metadata.json",
+          "bytes": 959,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {
+            "coordinate_unit": "world-2D if homography applied; otherwise pixel",
+            "metric_status": "metric_or_pixel_must_be_verified_from_H.txt"
+          }
+        },
+        {
+          "path": "data/stage5b_world_state/eth_ucy/metadata.json",
+          "bytes": 346,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {
+            "coordinate_unit": "dataset_coordinate",
+            "whether_metric_coordinates": false
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH/README.md",
+          "bytes": 3883,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth=300\\>",
+            "dth=320\\>",
+            "dtxt(os.path.join(opentraj_root, \"datasets"
+          ],
+          "scale_terms": [
+            "meters and are obtained with the homography matrix stored in h.tx"
+          ],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "bytes": 147,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+          "bytes": 216,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps, that is with a timestep of 0.4 seconds"
+          ],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "bytes": 147,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+          "bytes": 378,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "fps, that is with a timestep of 0.4 seconds",
+            "fps. however the annotation was done at 2.5"
+          ],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/README.md",
+          "bytes": 3095,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "frame rate of 25 frames per second.",
+            "framerate of annotations are then 2.5 fps (every "
+          ],
+          "stride_terms": [
+            "dth='320px' \\>"
+          ],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+          "bytes": 174,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "bytes": 99,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+          "bytes": 144,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "bytes": 228,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara02/H-old.txt",
+          "bytes": 144,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+          "bytes": 228,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "bytes": 228,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        }
+      ],
+      "metric_claim_status": "weak_metric_candidate_requires_manual_validation",
+      "seconds_claim_status": "effective_seconds_candidate_requires_manual_validation",
+      "allowed_claim": "dataset-local raw-frame only until source-specific homography/FPS/scale is manually validated",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim"
+    },
+    {
+      "source": "fresh_run",
+      "dataset_id": "trajnet",
+      "dataset_name": "TrajNet++",
+      "data_role": "external_eval / supervised_training",
+      "known_coordinate_unit": "dataset-local",
+      "known_metric_status": "dataset-local; terms/scale must be verified per source",
+      "official_hint": "https://www.epfl.ch/labs/vita/datasets/",
+      "local_paths_checked": [
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet",
+          "exists": true
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet++",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/trajnetplusplusdataset",
+          "exists": false
+        },
+        {
+          "path": "data/stage5b_world_state/trajnet",
+          "exists": true
+        },
+        {
+          "path": "data/stage41_world_model",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/trajnet/metadata.json",
+          "exists": true
+        },
+        {
+          "path": "data/stage20_raw_index/trajnet_full/metadata.json",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 3,
+      "evidence_file_samples": [
+        "data/stage20_raw_index/trajnet_full/metadata.json",
+        "data/stage41_world_model/combined_meta.json",
+        "data/stage5b_world_state/trajnet/metadata.json"
+      ],
+      "homography_like_file_count": 1,
+      "parseable_homography_matrix_count": 0,
+      "fps_or_frame_rate_evidence_count": 0,
+      "stride_or_dt_evidence_count": 0,
+      "scale_or_meter_evidence_count": 0,
+      "coordinate_unit_evidence": {
+        "source pixel/world-2D; do not claim metric unless homography exists": 1,
+        "dataset_coordinate": 1
+      },
+      "metadata_metric_true_count": 1,
+      "notable_evidence": [
+        {
+          "path": "data/stage20_raw_index/trajnet_full/metadata.json",
+          "bytes": 4508,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {
+            "coordinate_unit": "source pixel/world-2D; do not claim metric unless homography exists",
+            "horizon_audit_present": true
+          }
+        },
+        {
+          "path": "data/stage5b_world_state/trajnet/metadata.json",
+          "bytes": 392,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {
+            "coordinate_unit": "dataset_coordinate",
+            "whether_metric_coordinates": true
+          }
+        }
+      ],
+      "metric_claim_status": "weak_metric_candidate_requires_manual_validation",
+      "seconds_claim_status": "not_allowed_no_verified_fps_stride_pair",
+      "allowed_claim": "dataset-local raw-frame only until source-specific homography/FPS/scale is manually validated",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim"
+    },
+    {
+      "source": "fresh_run",
+      "dataset_id": "ucy",
+      "dataset_name": "UCY Crowd",
+      "data_role": "external_eval / supervised_training",
+      "known_coordinate_unit": "dataset-local",
+      "known_metric_status": "dataset-local; not globally verified metric",
+      "official_hint": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "local_paths_checked": [
+        {
+          "path": "external_data/OpenTraj/datasets/UCY",
+          "exists": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/UCY",
+          "exists": false
+        },
+        {
+          "path": "data/stage41_world_model",
+          "exists": true
+        },
+        {
+          "path": "data/stage37_t50_history",
+          "exists": true
+        },
+        {
+          "path": "data/stage20_raw_index/ucy_crowd/metadata.json",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 11,
+      "evidence_file_samples": [
+        "data/stage20_raw_index/ucy_crowd/metadata.json",
+        "data/stage41_world_model/combined_meta.json",
+        "external_data/OpenTraj/datasets/UCY/README.md",
+        "external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+        "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+        "external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+        "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+        "external_data/OpenTraj/datasets/UCY/zara01/UCY-Zara01.json",
+        "external_data/OpenTraj/datasets/UCY/zara02/H-old.txt",
+        "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+        "external_data/OpenTraj/datasets/UCY/zara03/H.txt"
+      ],
+      "homography_like_file_count": 9,
+      "parseable_homography_matrix_count": 7,
+      "fps_or_frame_rate_evidence_count": 1,
+      "stride_or_dt_evidence_count": 1,
+      "scale_or_meter_evidence_count": 0,
+      "coordinate_unit_evidence": {
+        "source pixel/world-2D; do not claim metric unless homography exists": 1
+      },
+      "metadata_metric_true_count": 0,
+      "notable_evidence": [
+        {
+          "path": "data/stage20_raw_index/ucy_crowd/metadata.json",
+          "bytes": 2551,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {
+            "coordinate_unit": "source pixel/world-2D; do not claim metric unless homography exists",
+            "horizon_audit_present": true
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/README.md",
+          "bytes": 3095,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [
+            "frame rate of 25 frames per second.",
+            "framerate of annotations are then 2.5 fps (every "
+          ],
+          "stride_terms": [
+            "dth='320px' \\>"
+          ],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+          "bytes": 174,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "bytes": 99,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+          "bytes": 144,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "bytes": 228,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara02/H-old.txt",
+          "bytes": 144,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+          "bytes": 228,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "bytes": 228,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 1,
+          "fps_terms": [],
+          "stride_terms": [],
+          "scale_terms": [],
+          "json_evidence": {}
+        }
+      ],
+      "metric_claim_status": "weak_metric_candidate_requires_manual_validation",
+      "seconds_claim_status": "effective_seconds_candidate_requires_manual_validation",
+      "allowed_claim": "dataset-local raw-frame only until source-specific homography/FPS/scale is manually validated",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim"
+    },
+    {
+      "source": "fresh_run",
+      "dataset_id": "tgsim",
+      "dataset_name": "TGSIM",
+      "data_role": "diagnostic_only",
+      "known_coordinate_unit": "traffic metric if source units verified by prior stage",
+      "known_metric_status": "metric diagnostic for traffic only; not pedestrian world-model success",
+      "official_hint": "https://data.transportation.gov/",
+      "local_paths_checked": [
+        {
+          "path": "data/stage5b_world_state/tgsim",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/tgsim_i90",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/tgsim",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/tgsim_i90",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/tgsim/metadata.json",
+          "exists": true
+        },
+        {
+          "path": "data/stage5b_world_state/tgsim_i90/metadata.json",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 2,
+      "evidence_file_samples": [
+        "data/stage5b_world_state/tgsim/metadata.json",
+        "data/stage5b_world_state/tgsim_i90/metadata.json"
+      ],
+      "homography_like_file_count": 0,
+      "parseable_homography_matrix_count": 0,
+      "fps_or_frame_rate_evidence_count": 0,
+      "stride_or_dt_evidence_count": 2,
+      "scale_or_meter_evidence_count": 2,
+      "coordinate_unit_evidence": {
+        "meter": 2
+      },
+      "metadata_metric_true_count": 2,
+      "notable_evidence": [
+        {
+          "path": "data/stage5b_world_state/tgsim/metadata.json",
+          "bytes": 1058,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dt_note\": \"dt is inferred from consecutive",
+            "dth\": \"width_smoothed\","
+          ],
+          "scale_terms": [
+            "meter\","
+          ],
+          "json_evidence": {
+            "coordinate_unit": "meter",
+            "whether_metric_coordinates": true,
+            "dt_note": "dt is inferred from consecutive native TGSIM time values per agent; dense frame_id is only an index.",
+            "columns_inferred_present": true
+          }
+        },
+        {
+          "path": "data/stage5b_world_state/tgsim_i90/metadata.json",
+          "bytes": 1026,
+          "has_text": true,
+          "homography_hint": false,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dt_note\": \"dt is inferred from consecutive",
+            "dth\": \"width_smoothed\","
+          ],
+          "scale_terms": [
+            "meter\","
+          ],
+          "json_evidence": {
+            "coordinate_unit": "meter",
+            "whether_metric_coordinates": true,
+            "dt_note": "dt is inferred from consecutive native TGSIM time values per agent; dense frame_id is only an index.",
+            "columns_inferred_present": true
+          }
+        }
+      ],
+      "metric_claim_status": "traffic_metric_diagnostic_only",
+      "seconds_claim_status": "time_values_dataset_diagnostic_only",
+      "allowed_claim": "traffic diagnostic metric only; not pedestrian/drone world-model success",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "keep_as_traffic_diagnostic_only; do not use as pedestrian top-down world-model success"
+    },
+    {
+      "source": "fresh_run",
+      "dataset_id": "aerialmpt",
+      "dataset_name": "AerialMPT",
+      "data_role": "external_eval candidate / diagnostic",
+      "known_coordinate_unit": "unknown / derived local",
+      "known_metric_status": "not verified in Stage42 audit",
+      "official_hint": "DLR AerialMPT official page required; local prior stages have derived scene packs",
+      "local_paths_checked": [
+        {
+          "path": "/Users/yangyue/Downloads/AerialMPT",
+          "exists": false
+        },
+        {
+          "path": "external_data/AerialMPT",
+          "exists": false
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt",
+          "exists": true
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt",
+          "exists": true
+        }
+      ],
+      "evidence_files_scanned": 28,
+      "evidence_file_samples": [
+        "data/stage11_scene_packs/aerialmpt/bauma1/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/bauma2/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/bauma3/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/bauma4/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/bauma5/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/bauma6/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/karlsplatz/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/marienplatz/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/oac/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/pasing1L/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/pasing1R/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/pasing7/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/pasing8/scene_pack.json",
+        "data/stage11_scene_packs/aerialmpt/witt/scene_pack.json",
+        "data/stage11_visual_annotations/aerialmpt/bauma1/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/bauma2/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/bauma3/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/bauma4/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/bauma5/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/bauma6/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/karlsplatz/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/marienplatz/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/oac/scene_annotation.json",
+        "data/stage11_visual_annotations/aerialmpt/pasing1L/scene_annotation.json"
+      ],
+      "homography_like_file_count": 28,
+      "parseable_homography_matrix_count": 0,
+      "fps_or_frame_rate_evidence_count": 0,
+      "stride_or_dt_evidence_count": 28,
+      "scale_or_meter_evidence_count": 28,
+      "coordinate_unit_evidence": {
+        "pixel": 28
+      },
+      "metadata_metric_true_count": 0,
+      "notable_evidence": [
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/bauma1/scene_pack.json",
+          "bytes": 6007,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 462,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/bauma2/scene_pack.json",
+          "bytes": 5995,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 310,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/bauma3/scene_pack.json",
+          "bytes": 6005,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 611,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/bauma4/scene_pack.json",
+          "bytes": 6007,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 281,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/bauma5/scene_pack.json",
+          "bytes": 6007,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 281,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/bauma6/scene_pack.json",
+          "bytes": 5993,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 310,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/karlsplatz/scene_pack.json",
+          "bytes": 6021,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 283,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/marienplatz/scene_pack.json",
+          "bytes": 6183,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 316,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/oac/scene_pack.json",
+          "bytes": 5971,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 186,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/pasing1L/scene_pack.json",
+          "bytes": 6171,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 614,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/pasing1R/scene_pack.json",
+          "bytes": 6015,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 667,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/pasing7/scene_pack.json",
+          "bytes": 6009,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 667,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/pasing8/scene_pack.json",
+          "bytes": 6165,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 614,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_scene_packs/aerialmpt/witt/scene_pack.json",
+          "bytes": 6007,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 353,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel",
+            "metric_status": "pixel_only_no_homography"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/bauma1/scene_annotation.json",
+          "bytes": 5960,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 462,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/bauma2/scene_annotation.json",
+          "bytes": 5948,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 310,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/bauma3/scene_annotation.json",
+          "bytes": 5958,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 611,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/bauma4/scene_annotation.json",
+          "bytes": 5960,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 281,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/bauma5/scene_annotation.json",
+          "bytes": 5960,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 281,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/bauma6/scene_annotation.json",
+          "bytes": 5946,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 310,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/karlsplatz/scene_annotation.json",
+          "bytes": 5974,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 283,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/marienplatz/scene_annotation.json",
+          "bytes": 6136,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 316,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/oac/scene_annotation.json",
+          "bytes": 5924,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 186,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/pasing1L/scene_annotation.json",
+          "bytes": 6124,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 614,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/pasing1R/scene_annotation.json",
+          "bytes": 5968,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 667,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/pasing7/scene_annotation.json",
+          "bytes": 5962,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 667,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/pasing8/scene_annotation.json",
+          "bytes": 6118,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 614,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        },
+        {
+          "path": "data/stage11_visual_annotations/aerialmpt/witt/scene_annotation.json",
+          "bytes": 5960,
+          "has_text": true,
+          "homography_hint": true,
+          "parseable_homography_matrices": 0,
+          "fps_terms": [],
+          "stride_terms": [
+            "dth\": 353,"
+          ],
+          "scale_terms": [
+            "scale_m_per_px\": null,"
+          ],
+          "json_evidence": {
+            "coordinate_unit": "pixel"
+          }
+        }
+      ],
+      "metric_claim_status": "weak_metric_candidate_requires_manual_validation",
+      "seconds_claim_status": "not_allowed_no_verified_fps_stride_pair",
+      "allowed_claim": "dataset-local raw-frame only until source-specific homography/FPS/scale is manually validated",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_official_pedestrian": false,
+      "next_action": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim"
+    }
+  ],
+  "user_action_required": [
+    {
+      "dataset_id": "sdd",
+      "dataset_name": "Stanford Drone Dataset",
+      "official_hint": "https://cvgl.stanford.edu/projects/uav_data/",
+      "reason": "keep_dataset_local_raw_frame_claim",
+      "needed_for": "metric/time calibration claim boundary"
+    },
+    {
+      "dataset_id": "opentraj",
+      "dataset_name": "OpenTraj",
+      "official_hint": "https://github.com/crowdbotp/OpenTraj",
+      "reason": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim",
+      "needed_for": "metric/time calibration claim boundary"
+    },
+    {
+      "dataset_id": "eth_ucy",
+      "dataset_name": "ETH/UCY",
+      "official_hint": "ETH/BIWI + UCY original dataset pages; verify source-specific terms",
+      "reason": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim",
+      "needed_for": "metric/time calibration claim boundary"
+    },
+    {
+      "dataset_id": "trajnet",
+      "dataset_name": "TrajNet++",
+      "official_hint": "https://www.epfl.ch/labs/vita/datasets/",
+      "reason": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim",
+      "needed_for": "metric/time calibration claim boundary"
+    },
+    {
+      "dataset_id": "ucy",
+      "dataset_name": "UCY Crowd",
+      "official_hint": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "reason": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim",
+      "needed_for": "metric/time calibration claim boundary"
+    },
+    {
+      "dataset_id": "aerialmpt",
+      "dataset_name": "AerialMPT",
+      "official_hint": "DLR AerialMPT official page required; local prior stages have derived scene packs",
+      "reason": "manual_source_validation_required: confirm official coordinate convention, homography direction, frame rate, annotation stride, and meters-per-pixel before metric/seconds claim",
+      "needed_for": "metric/time calibration claim boundary"
+    }
+  ],
+  "stage42_ad_gate": {
+    "source": "fresh_run",
+    "passed": 10,
+    "total": 10,
+    "verdict": "stage42_ad_calibration_evidence_refresh_pass",
+    "gates": [
+      {
+        "name": "Stage42-A Prior Audit Present",
+        "passed": true
+      },
+      {
+        "name": "Required Dataset Coverage",
+        "passed": true
+      },
+      {
+        "name": "Evidence Files Scanned",
+        "passed": true
+      },
+      {
+        "name": "Homography/Scale Evidence Separated From Claim",
+        "passed": true
+      },
+      {
+        "name": "Pedestrian Metric Overclaim Guard",
+        "passed": true
+      },
+      {
+        "name": "Pedestrian Seconds Overclaim Guard",
+        "passed": true
+      },
+      {
+        "name": "TGSIM Diagnostic Boundary",
+        "passed": true
+      },
+      {
+        "name": "User Action Generated",
+        "passed": true
+      },
+      {
+        "name": "Stage5C Execution Gate",
+        "passed": true
+      },
+      {
+        "name": "SMC Execution Gate",
+        "passed": true
+      }
+    ]
+  }
+}

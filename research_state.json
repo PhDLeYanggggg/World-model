@@ -1,6 +1,6 @@
 {
-  "current_stage": "m3w_research_summary_refresh",
-  "current_verdict": "m3w_research_summary_refreshed_cached_verified",
+  "current_stage": "stage42_ad_calibration_evidence_refresh",
+  "current_verdict": "stage42_ad_calibration_evidence_refresh_pass",
   "latest_user_requested_research_summary": {
     "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
@@ -42,6 +42,43 @@
       "paper_files_refreshed": 9,
       "claim_boundary": "protected_dataset_local_raw_frame_2p5d_only"
     }
+  },
+  "stage42_ad_calibration_evidence_refresh": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/calibration_evidence_refresh_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ad_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_stage42_calibration.md",
+    "gates_passed": 10,
+    "gates_total": 10,
+    "verdict": "stage42_ad_calibration_evidence_refresh_pass",
+    "datasets_audited": 7,
+    "evidence_files_scanned": 1152,
+    "datasets_with_parseable_homography_like_matrices": [
+      "opentraj",
+      "eth_ucy",
+      "ucy"
+    ],
+    "datasets_with_fps_evidence": [
+      "sdd",
+      "opentraj",
+      "eth_ucy",
+      "ucy"
+    ],
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "pedestrian_metric_claim_ready": [],
+    "pedestrian_seconds_claim_ready": [],
+    "traffic_metric_diagnostic": [
+      "tgsim"
+    ],
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Calibration-like evidence exists for ETH/UCY, UCY, and OpenTraj, but official pedestrian metric/seconds claims remain blocked until source-specific homography direction, coordinate convention, annotation stride, FPS, and scale are manually verified."
   },
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
