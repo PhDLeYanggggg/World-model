@@ -266,3 +266,15 @@ Stage42-CZ paper freeze candidate manifest: 15 / 15 gates
 - group-consistency runtime all/t50/t100 raw/hard: `0.24715658317833844` / `0.2236298792899738` / `0.1434611214781808` / `0.23887420070464105`.
 - This is replay/provenance packaging only: no training, no threshold tuning, no Stage5C, no SMC, no metric/seconds-level claim.
 <!-- STAGE42_DM_REVIEWER_REPLAY_PACKAGE:END -->
+
+<!-- STAGE42_DN_DEPLOYMENT_VARIANT_CARD:START -->
+## Stage42-DN Deployment Variant Card
+
+- source: `fresh_deployment_variant_card_from_stage42_cr_cq_di_dl_dm`
+- role: separates safety-sensitive deployment, accuracy-priority diagnostics, and protocol-specific group-consistency runtime policy.
+- gate: `20 / 20`; verdict `stage42_dn_deployment_variant_card_pass`.
+- safety-sensitive default: `proximity_guard` for endpoint-linear bridge/shape deployment with joint-proximity safety.
+- strongest full-waypoint runtime evidence: `group_consistency_full_waypoint_runtime`, but it uses train-horizon causal-floor comparison and must not be rank-mixed with endpoint-linear composer variants without that caveat.
+- accuracy-priority diagnostic: `no_proximity_guard`; it has higher ADE gains but worsens near-collision@0.05 and is not the safety-sensitive deployment claim.
+- No Stage5C, no SMC, no metric/seconds/true-3D/foundation claim.
+<!-- STAGE42_DN_DEPLOYMENT_VARIANT_CARD:END -->

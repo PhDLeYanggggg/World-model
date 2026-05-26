@@ -1,0 +1,243 @@
+{
+  "source": "fresh_deployment_variant_card_from_stage42_cr_cq_di_dl_dm",
+  "stage": "Stage42-DN",
+  "generated_at_utc": "2026-05-26T23:23:16.195382+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DN 是 deployment variant card，不重新训练，不调 threshold。",
+    "DN 区分 safety-sensitive deployable、accuracy-priority diagnostic、source-level full-waypoint runtime policy，避免混用 claim。",
+    "future waypoints / endpoints 只作为 supervised/evaluation labels，不能作为 inference input。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "proximity_guard_ablation": {
+      "name": "proximity_guard_ablation",
+      "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+      "sha256": "6b290ecd9858c7c86dd39542f6759ab82072f4605be97638c5ae6ef95b38798c",
+      "stage42_cr_gate": {
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_cr_proximity_guard_ablation_pass"
+      }
+    },
+    "proximity_aware_guard": {
+      "name": "proximity_aware_guard",
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "sha256": "9d15e7338270fb43ef1eb1c8be7c87995054a9113f12f4d1a660393064258c79",
+      "stage42_cq_gate": {
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+      }
+    },
+    "group_consistency_repair": {
+      "name": "group_consistency_repair",
+      "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+      "sha256": "29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221",
+      "stage42_di_gate": {
+        "passed": 17,
+        "total": 17,
+        "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+      }
+    },
+    "group_consistency_runtime": {
+      "name": "group_consistency_runtime",
+      "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+      "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+      "stage42_dl_gate": {
+        "passed": 30,
+        "total": 30,
+        "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+      }
+    },
+    "reviewer_replay_package": {
+      "name": "reviewer_replay_package",
+      "path": "outputs/stage42_long_research/reviewer_replay_package_stage42.json",
+      "sha256": "0f602055709cb1c2f95166240fab4c60e57bcf97da2f81d8bc6c981b8e468521",
+      "stage42_dm_gate": {
+        "passed": 21,
+        "total": 21,
+        "verdict": "stage42_dm_reviewer_replay_package_pass"
+      }
+    }
+  },
+  "deployment_variants": [
+    {
+      "variant": "endpoint_linear_reference",
+      "role": "reference_floor",
+      "deployment_status": "reference_only",
+      "comparison_baseline": "endpoint_linear_bridge",
+      "metrics": {
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0
+      },
+      "safety": {
+        "near_collision_005_delta_vs_endpoint": 0.0
+      },
+      "claim_use": "reference floor for bridge/shape composer; not a new M3W deployment claim"
+    },
+    {
+      "variant": "no_proximity_guard",
+      "role": "accuracy_priority_diagnostic",
+      "deployment_status": "diagnostic_not_safety_sensitive",
+      "comparison_baseline": "endpoint_linear_bridge",
+      "metrics": {
+        "all_improvement": 0.030166976195252437,
+        "t50_improvement": 0.01502943431774939,
+        "t100_raw_frame_diagnostic_improvement": 0.06118732156780071,
+        "hard_failure_improvement": 0.03280214089079592,
+        "easy_degradation": 0.002532827637569346,
+        "switch_rate": 0.21349589396340585
+      },
+      "safety": {
+        "near_collision_005_delta_vs_endpoint": 0.0033566895337319713,
+        "safety_caveat": "worsens near-collision@0.05 versus endpoint-linear"
+      },
+      "claim_use": "may be reported as an accuracy-priority diagnostic Pareto point, not as safety-sensitive deployment"
+    },
+    {
+      "variant": "proximity_guard",
+      "role": "safety_sensitive_deployable_bridge_shape_policy",
+      "deployment_status": "deployable_when_joint_proximity_safety_is_required",
+      "comparison_baseline": "endpoint_linear_bridge",
+      "metrics": {
+        "all_improvement": 0.017743597342181783,
+        "t50_improvement": 0.010673426149055754,
+        "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+        "hard_failure_improvement": 0.01929354722729537,
+        "easy_degradation": 0.0024927762207753723,
+        "switch_rate": 0.1696441434951736
+      },
+      "safety": {
+        "near_collision_005_delta_vs_endpoint": -0.0006053046700172371,
+        "all_ci_low": 0.015001017840065956,
+        "t50_ci_low": 0.005939549853030457
+      },
+      "claim_use": "safety-sensitive protected bridge/shape composer variant"
+    },
+    {
+      "variant": "group_consistency_full_waypoint_runtime",
+      "role": "source_level_full_waypoint_group_consistency_runtime_policy",
+      "deployment_status": "runtime_ready_for_its_source_level_protocol",
+      "comparison_baseline": "train_horizon_causal_floor_not_endpoint_linear_bridge",
+      "metrics": {
+        "all_improvement": 0.24715658317833844,
+        "t50_improvement": 0.2236298792899738,
+        "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+        "hard_failure_improvement": 0.23887420070464105,
+        "easy_degradation": -0.2563085406508494,
+        "switch_rate": 0.5880989506511021
+      },
+      "safety": {
+        "base_near_005": 0.019364490707573012,
+        "final_near_005": 0.01382274853554722,
+        "floor_near_005": 0.022377681318218216,
+        "selected_xy_max_abs_diff": 0.0,
+        "switch_exact_match": true
+      },
+      "claim_use": "stronger full-waypoint runtime evidence, but its baseline/protocol differs from endpoint-linear composer; do not rank-mix without stating baseline"
+    }
+  ],
+  "input_summaries": [
+    {
+      "name": "proximity_guard_ablation",
+      "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+      "sha256": "6b290ecd9858c7c86dd39542f6759ab82072f4605be97638c5ae6ef95b38798c",
+      "stage42_cr_gate": {
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_cr_proximity_guard_ablation_pass"
+      }
+    },
+    {
+      "name": "proximity_aware_guard",
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "sha256": "9d15e7338270fb43ef1eb1c8be7c87995054a9113f12f4d1a660393064258c79",
+      "stage42_cq_gate": {
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+      }
+    },
+    {
+      "name": "group_consistency_repair",
+      "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+      "sha256": "29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221",
+      "stage42_di_gate": {
+        "passed": 17,
+        "total": 17,
+        "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+      }
+    },
+    {
+      "name": "group_consistency_runtime",
+      "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+      "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+      "stage42_dl_gate": {
+        "passed": 30,
+        "total": 30,
+        "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+      }
+    },
+    {
+      "name": "reviewer_replay_package",
+      "path": "outputs/stage42_long_research/reviewer_replay_package_stage42.json",
+      "sha256": "0f602055709cb1c2f95166240fab4c60e57bcf97da2f81d8bc6c981b8e468521",
+      "stage42_dm_gate": {
+        "passed": 21,
+        "total": 21,
+        "verdict": "stage42_dm_reviewer_replay_package_pass"
+      }
+    }
+  ],
+  "recommended_policy": {
+    "safety_sensitive_default": "proximity_guard",
+    "accuracy_priority_diagnostic": "no_proximity_guard",
+    "source_level_full_waypoint_runtime_candidate": "group_consistency_full_waypoint_runtime",
+    "deployment_floor": "Stage37 / teacher floor remains required"
+  },
+  "baseline_mixing_caveat": true,
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_dn_gate": {
+    "gates": {
+      "cr_ablation_passed": true,
+      "cq_guard_passed": true,
+      "di_group_repair_passed": true,
+      "dl_runtime_passed": true,
+      "dm_reviewer_replay_passed": true,
+      "no_guard_marked_diagnostic": true,
+      "no_guard_proximity_caveat_visible": true,
+      "proximity_guard_marked_safety_deployable": true,
+      "proximity_guard_near_collision_not_worse": true,
+      "proximity_guard_ci_positive": true,
+      "group_runtime_marked_protocol_specific": true,
+      "group_runtime_exact_replay_visible": true,
+      "group_runtime_near_collision_reduced": true,
+      "baseline_mixing_caveat_present": true,
+      "recommended_policy_declared": true,
+      "no_metric_seconds_overclaim": true,
+      "true_3d_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 20,
+    "total": 20,
+    "verdict": "stage42_dn_deployment_variant_card_pass"
+  }
+}
