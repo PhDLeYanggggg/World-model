@@ -4400,3 +4400,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `weighted_loss_not_enough_keep_stage42_am_or_cq_floor`.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DG_FULL_WAYPOINT_ALL_HARD_LOSS_REPAIR:END -->
+
+<!-- STAGE42_DH_FULL_WAYPOINT_PROXIMITY_OCCUPANCY_LOSS_REPAIR:START -->
+## Stage42-DH Full-Waypoint Proximity / Occupancy-Proxy Loss Repair
+
+- source: `fresh_stage42_dh_full_waypoint_proximity_occupancy_loss_repair`
+- role: actual retraining probe for proximity/density/occupancy-proxy weighted full-waypoint dynamics after Stage42-DE/DF/DG blockers.
+- selected candidate: `proximity_close_weighted` with `stage42_am_features` and lambda `100.0`.
+- gate: `15 / 16`; verdict `stage42_dh_proximity_occupancy_loss_repair_pass_positive_not_better_than_am`.
+- test vs train-horizon causal floor: all `25.51%`, t50 `22.14%`, t100 raw `14.34%`, hard `23.74%`, easy `-29.23%`.
+- delta vs Stage42-AM: all `0.93%`, t50 `0.12%`, t100 raw `-0.03%`, hard `-0.01%`, easy `-3.57%`.
+- decision: `proximity_occupancy_loss_not_enough_keep_stage42_am_or_cq_floor`.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DH_FULL_WAYPOINT_PROXIMITY_OCCUPANCY_LOSS_REPAIR:END -->
