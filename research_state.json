@@ -1,13 +1,13 @@
 {
-  "current_stage": "stage42_ae_unified_row_cache_stress",
-  "current_verdict": "stage42_ae_unified_row_cache_stress_pass_with_limitations",
+  "current_stage": "stage42_af_weak_slice_validation_margin_guard",
+  "current_verdict": "stage42_af_weak_slice_guard_repair_pass_with_eth_t50_limitation",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus the user-requested detailed route review.",
+    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF evidence refreshes, and the user-requested detailed route review.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AE unified row-cache stress audit passed 12/12 gates with explicit limitations; README/state refreshed; full pytest passed 346 tests.",
+    "latest_branch_success": "Stage42-AF weak-slice validation-margin guard repair passed 13/13 gates; horizon=25 repaired to non-harm/floor while ETH_UCY t50/FDE@50 limitation remains explicit.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -18,7 +18,9 @@
       "stage42_ab_runner": "pass",
       "stage42_ab_focused_pytest": "6 passed",
       "stage42_ac_runner": "pass",
-      "stage42_ac_focused_pytest": "9 passed"
+      "stage42_ac_focused_pytest": "9 passed",
+      "stage42_af_runner": "pass",
+      "stage42_af_focused_pytest": "3 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -121,6 +123,48 @@
       "stage5c_executed": false,
       "smc_enabled": false
     }
+  },
+  "stage42_af_weak_slice_validation_margin_guard": {
+    "source": "fresh_run_from_stage42x_cache_and_stage42r_validation_margin",
+    "report": "outputs/stage42_long_research/weak_slice_guard_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_af_gate.md",
+    "csv": "outputs/stage42_long_research/weak_slice_guard_stage42.csv",
+    "gates_passed": 13,
+    "gates_total": 13,
+    "verdict": "stage42_af_weak_slice_guard_repair_pass_with_eth_t50_limitation",
+    "guard_rule": {
+      "type": "validation_margin_guard",
+      "validation_score_threshold": 0.02,
+      "uses_test_metrics_for_threshold": false,
+      "fallback_action": "force safety floor for low-validation-margin non-UCY domain/horizon choices"
+    },
+    "metrics": {
+      "ade_all": 0.09068229132363603,
+      "ade_t50": 0.06109367671246102,
+      "ade_t50_ci_low": 0.05367075264893123,
+      "ade_t100_raw_frame_diagnostic": 0.08153326024168321,
+      "ade_hard_failure": 0.09464861943836626,
+      "easy_degradation_ci_high": 0.006232934803070727,
+      "fde_t50": 0.1537620890856707,
+      "switch_rate": 0.22896556692119294
+    },
+    "repair_effect": {
+      "horizon25_ade_before": -0.004781149088858072,
+      "horizon25_ade_after": 0.0,
+      "horizon25_delta": 0.004781149088858072,
+      "eth_ucy_t50_ade_after": 0.017092525274558956,
+      "eth_ucy_t50_ci_low_after": -0.013218100958604987,
+      "eth_ucy_fde_t50_ci_low_after": -0.04199023614248535,
+      "eth_ucy_t50_limitation_remaining": true
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Stage42-AF repairs the Stage42-AE horizon=25 weak slice using validation-only low-margin fallback. Global all/t50/hard remain positive and easy degradation remains under 2%, but ETH_UCY t50/FDE@50 lower-bound weakness remains a paper limitation."
   },
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",

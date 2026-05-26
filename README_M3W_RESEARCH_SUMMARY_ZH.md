@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新，以及 Stage42-AE unified row-cache stress audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit，以及 Stage42-AF validation-margin weak-slice guard repair；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -15,7 +15,9 @@ python3 run_stage42_full_waypoint_auxiliary_ablation.py = pass
 python3 run_stage42_paper_package_refresh.py = pass
 python3 run_stage42_calibration_evidence_refresh.py = pass
 python3 run_stage42_unified_row_cache_stress.py = pass
+python3 run_stage42_weak_slice_guard.py = pass
 python3 -m pytest tests/test_stage42_unified_ablation_evidence.py = 3 passed
+python3 -m pytest tests/test_stage42_weak_slice_guard.py = 3 passed
 python3 -m pytest tests = 346 passed
 ```
 
@@ -55,7 +57,7 @@ python3 -m pytest tests = 346 passed
 | Stage37 causal history + goal prototype | 构建 K=8/16/32/64 past-only history windows、scene-agnostic goal prototypes、switchability/gain/harm/conformal safety。 | 成功，是 external deployable 转折点。 | all +13.48%、t+50 +8.46%、t50 CI [+7.69%, +9.15%]、hard/failure +15.54%、easy degradation 0.041%、16/16 gates。 |
 | Stage38 bounded correction / dynamics head | 在 Stage37 保护下训练 bounded correction。 | 不部署。 | correction 未安全超过 Stage37；容易伤 easy 或不能稳定带来 dynamics lift。 |
 | Stage39/40 Transformer / JEPA / Hybrid neural | 训练 Causal Transformer、JEPA auxiliary、Hybrid 和 Stage37-protected neural。 | 无保护失败，受保护方向保留。 | neural without fallback 灾难性伤 easy；JEPA 无稳定 downstream lift；Hybrid 没有直接超过 Stage37，因此 Stage37 仍是 floor。 |
-| Stage41/42 protected neural / full-waypoint / row cache | 做 composite-tail safe-switch、full-waypoint dynamics、row prediction cache、UCY full-waypoint source、unified row-level cache、ablation、paper claim audit。 | 成功形成 protected 2.5D world-state evidence package。 | Stage42-X 统一 row-level full-waypoint cache positive；Stage42-Y/Z/AA/AB/AC 明确贡献和边界；但仍依赖 safety floor，不是 ungated neural / true 3D。 |
+| Stage41/42 protected neural / full-waypoint / row cache | 做 composite-tail safe-switch、full-waypoint dynamics、row prediction cache、UCY full-waypoint source、unified row-level cache、ablation、paper claim audit、标定刷新和 weak-slice guard。 | 成功形成 protected 2.5D world-state evidence package。 | Stage42-X 统一 row-level full-waypoint cache positive；Stage42-Y/Z/AA/AB/AC 明确贡献和边界；Stage42-AF 修复 horizon=25 weak slice；但仍依赖 safety floor，不是 ungated neural / true 3D。 |
 
 ### 失败路线与失败原因
 
@@ -83,6 +85,7 @@ python3 -m pytest tests = 346 passed
 | Stage42-R row-cache combo | ADE t50 +3.7934%，t50 CI low +2.7740%，hard/failure +5.4792%，easy degradation 0.1102%。 | 把 static expert 与 t50 gain/harm selector 的互补性变成 row-level cache combo。 |
 | Stage42-V strict pure-UCY full-waypoint | UCY ADE all +22.08%，t50 +29.03%，hard/failure +22.95%，easy 0。 | 不再用 endpoint-to-full 线性桥，直接训练 UCY full-waypoint candidate。 |
 | Stage42-X unified row-level cache | ADE all +9.00%，t50 +6.11%，t50 bootstrap CI low +2.788%，hard/failure +9.37%，easy 0.1102%。 | 合并 ETH_UCY/TrajNet row combo 与 UCY full-waypoint source，形成统一 row-level external full-waypoint evidence。 |
+| Stage42-AF weak-slice guard | ADE all +9.068%，t50 +6.109%，t50 CI low +5.367%，hard/failure +9.465%，easy degradation CI high 0.623%；horizon=25 从 -0.478% 修复到 0。 | 只用 Stage42-R validation score `<0.02` 的预设 guard，把低 margin 非 UCY domain/horizon choices 回退 safety floor；没有用 test 调阈值。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界
@@ -149,7 +152,7 @@ SMC-ready model
 5. 后面我开始训练 neural dynamics。无保护 Transformer/JEPA/Hybrid 多次失败；有效结果都来自 Stage37/teacher floor 保护下的 bounded / safe-switch neural package。
 6. Stage41/42 把结果从 endpoint / selector 推到 all-agent、full-waypoint、row-level cache 和 retrained ablation evidence；这比早期 demo 更像研究证据链。
 7. 失败路线也很明确：JEPA non-collapse 但 downstream 无稳定 lift；hard-class selector 会严重伤 easy；ordinary residual/correction 不安全；ungated neural dynamics 不可部署；endpoint success 不能自动转成 full-waypoint success。
-8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界和 auxiliary-head mixed-evidence。
+8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA/AB/AD/AE/AF 则提供 row-level full-waypoint cache、统一消融、论文 claim 边界、auxiliary-head mixed-evidence、标定证据刷新和 weak-slice safety repair。
 9. 仍不能说 true 3D、metric、seconds-level、foundation，也不能执行 Stage5C 或 SMC。
 
 没有纳入为“已完成结果”的内容：
@@ -887,3 +890,42 @@ Stage42-AE 不是重新训练模型，而是把 Stage42-X 的统一 row-level fu
 - ETH_UCY 的 t50 / FDE@50 lower bound 仍弱，不能写成所有 domain 的强 t50 保证。
 - horizon=25 是负切片，说明 Stage42-X 不是每个 horizon 都正。
 - paper claim 应写成 protected row-level full-waypoint evidence with explicit slice limitations，而不是 universal success。
+
+## Stage42-AF Weak-Slice Validation-Margin Guard Repair
+
+```text
+source = fresh_run_from_stage42x_cache_and_stage42r_validation_margin
+verdict = stage42_af_weak_slice_guard_repair_pass_with_eth_t50_limitation
+gates = 13 / 13
+guard_rule = validation_margin_guard
+guard_threshold = validation score < 0.02
+uses_test_metrics_for_threshold = false
+horizon25_ADE_before = -0.004781
+horizon25_ADE_after = 0.000000
+ADE_all = 0.090682
+ADE_t50 = 0.061094
+ADE_t50_CI_low = 0.053671
+ADE_t100_raw_frame_diagnostic = 0.081533
+ADE_hard_failure = 0.094649
+easy_degradation_CI_high = 0.006233
+ETH_UCY_t50_CI_low_after = -0.013218
+ETH_UCY_FDE50_CI_low_after = -0.041990
+ETH_UCY_t50_limitation_remaining = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AF 是对 Stage42-AE 暴露出来的 `horizon=25` weak slice 的安全修复。它没有重新训练大模型，也没有用 test set 调 threshold，而是使用 Stage42-R validation score 的预设低 margin guard：如果非 UCY 的某个 `domain|horizon` choice 的 validation score 小于 `0.02`，就把该切片回退到 safety floor。
+
+修复后：
+
+- horizon=25 从负值 `-0.004781` 修复为 non-harm/floor `0.0`。
+- 全局 all / t50 / hard-failure 仍保持正。
+- easy degradation CI high 约 `0.006233`，仍低于 2%。
+- Stage5C 和 SMC 仍然没有执行。
+
+但这不是 universal success：
+
+- ETH_UCY t50 / FDE@50 lower bound 仍然为负。
+- 所以论文或 README 里不能写“所有 domain/horizon 都稳定正迁移”。
+- 正确表述是：Stage42-AF 修复了 horizon=25 的低 margin 负切片，同时保留 ETH_UCY t50/FDE@50 作为明确 limitation。

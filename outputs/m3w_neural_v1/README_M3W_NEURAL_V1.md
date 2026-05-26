@@ -26,7 +26,7 @@ The required ablation coverage audit is now packaged. It covers no-history, no-n
 
 The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.
 
-The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive.
+The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF then repairs the horizon=25 weak slice with a validation-only low-margin guard while preserving the ETH_UCY t50/FDE@50 limitation.
 
 ## Stage42-A Data Calibration Follow-Up
 
@@ -87,6 +87,34 @@ weak_horizon = 25
 Interpretation:
 
 The global unified row-cache evidence remains strong, but the paper must not claim uniform positivity across every slice. ETH_UCY t50/FDE@50 and horizon=25 should be written as limitations. Claims remain protected dataset-local raw-frame 2.5D.
+
+### Stage42-AF Weak-Slice Validation-Margin Guard Repair
+
+Stage42-AF applies a predeclared validation-margin guard to Stage42-X/Stage42-R row-cache choices:
+
+- report: `outputs/stage42_long_research/weak_slice_guard_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_af_gate.md`
+- result: Stage42-AF gates `13 / 13`
+
+Key result:
+
+```text
+verdict = stage42_af_weak_slice_guard_repair_pass_with_eth_t50_limitation
+guard_threshold = validation score < 0.02
+uses_test_metrics_for_threshold = false
+horizon25 ADE before = -0.004781
+horizon25 ADE after = 0.000000
+ADE all = 0.090682
+ADE t50 = 0.061094
+ADE t50 CI low = 0.053671
+ADE hard/failure = 0.094649
+easy degradation CI high = 0.006233
+ETH_UCY t50 limitation remaining = true
+```
+
+Interpretation:
+
+The low-margin guard repairs the horizon=25 negative slice by falling back to the safety floor for low-validation-margin non-UCY domain/horizon choices. It does not use test metrics for threshold selection. This is a safety improvement, not a universal claim: ETH_UCY t50/FDE@50 lower-bound weakness remains a limitation.
 
 ## Stage42-B External Validation Follow-Up
 

@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -68,6 +68,28 @@ SMC_enabled = false
 ```
 
 Stage42-AE strengthens the Stage42-X paper evidence by identifying both stable and weak slices. Global t50 remains positive, but claims must not be written as uniformly positive across every domain/horizon/FDE slice.
+
+Latest Stage42-AF weak-slice validation-margin guard repair:
+
+```text
+source = fresh_run_from_stage42x_cache_and_stage42r_validation_margin
+verdict = stage42_af_weak_slice_guard_repair_pass_with_eth_t50_limitation
+gates = 13 / 13
+guard_threshold = validation score < 0.02
+uses_test_metrics_for_threshold = false
+horizon25_ADE_before = -0.004781
+horizon25_ADE_after = 0.000000
+ADE_all = 0.090682
+ADE_t50 = 0.061094
+ADE_t50_CI_low = 0.053671
+ADE_hard_failure = 0.094649
+easy_degradation_CI_high = 0.006233
+ETH_UCY_t50_limitation_remaining = true
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AF repairs the Stage42-AE horizon=25 weak slice with a validation-only low-margin guard that forces low-validation-margin non-UCY domain/horizon choices back to the safety floor. It is a real safety repair, but not a universal fix: ETH_UCY t50/FDE@50 lower-bound weakness remains and must stay in the limitations.
 
 Root-level Chinese summary requested by the user:
 
