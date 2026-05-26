@@ -4290,3 +4290,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - This is a paper evidence freeze candidate under protected dataset-local/raw-frame 2.5D boundaries.
 - It is not true 3D, not foundation, not metric/seconds-level, not Stage5C, and not SMC.
 <!-- STAGE42_CZ_PAPER_FREEZE_MANIFEST:END -->
+
+<!-- STAGE42_TEST_ISOLATION_ARTIFACT_HYGIENE:START -->
+## Stage42 Report-Test Artifact Hygiene
+
+- commit: `08a8b2a Isolate Stage42 report tests from tracked artifacts`.
+- role: reproducibility hygiene for the Stage42 paper/evidence package.
+- change: Stage42 report-writing pytest cases now monkeypatch outputs into `tmp_path` instead of rewriting tracked `outputs/stage42_long_research/*` paper artifacts and `run_ledger.jsonl`.
+- focused verification: `13 passed`.
+- full verification: `615 passed`.
+- post-fix worktree caveat classifier: Stage42 dirty tracked files `0`; Stage42 substantive dirty files `0`; remaining tracked dirty files are historical Stage17-19 outside-scope report drift.
+- This is not a new model result and does not alter the supported claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_TEST_ISOLATION_ARTIFACT_HYGIENE:END -->

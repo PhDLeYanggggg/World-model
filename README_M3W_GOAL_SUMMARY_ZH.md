@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`，并纳入最近 Stage42-CV/CW/CX/CY 的 runtime replay、paper refresh、provenance、worktree caveat 证据。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`，并纳入最近 Stage42-CV/CW/CX/CY/CZ 的 runtime replay、paper refresh、provenance、worktree caveat、paper-freeze manifest 证据，以及 Stage42 report-test isolation 的可复现性修复。
 用途：回答“在 M3W 这个长期目标内做了什么、试过什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、还有哪些不能 claim”。
 
 这不是宣传稿，也不是论文最终版。凡是 `not_run`、technical dry-run、fallback-only、license-blocked、source-support 不足、metadata caveat，都不能写成完成或成功。
@@ -74,7 +74,9 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Stage42-CV | frozen policy batch runtime replay | val 53256 rows，test 55528 rows；25/25 gates；runtime decisions 和 selected_xy/ADE/FDE 精确复现 | 冻结策略不是 report-only，能按 batch runtime 精确重放 |
 | Stage42-CW | runtime replay paper refresh | 25/25 gate 证据写入 paper/reproducibility/model card | paper package 吸收 runtime replay，不隐藏部署形态 |
 | Stage42-CX | evidence provenance verifier | 21 artifacts audited；21 gates passed；20 fresh_run，1 cached_verified | 证据来源和命令矩阵明确 |
-| Stage42-CY | worktree caveat classifier | tracked dirty files 21；Stage42 dirty 9；Stage42 substantive dirty 0；11/11 gates | 当前 dirty caveat 是 metadata/hash/paper-size/run-ledger，不是 metric 改写 |
+| Stage42-CY | worktree caveat classifier | tracked dirty files 8；Stage42 dirty 0；Stage42 substantive dirty 0；11/11 gates | 当前 Stage42 tracked artifacts 已无 substantive dirty；剩余 dirty 为历史 Stage17-19 outside-scope 报告 |
+| Stage42-CZ | paper freeze candidate manifest | 74 files hashed；14/14 gates；freeze_status = candidate_clean；final_immutable_release = true | 当前 paper evidence candidate 有 clean manifest，但 claim 仍限于 protected dataset-local/raw-frame 2.5D |
+| Stage42 report-test isolation | pytest artifact hygiene | Stage42 report tests 改为写 `tmp_path`；focused tests 13 passed；full tests 615 passed | 修复 pytest 反复改写 tracked Stage42 evidence files 的 metadata churn |
 
 ## 3. 路线复盘：试过什么，结果是什么
 
@@ -593,20 +595,30 @@ caveat:
   - full tests 604 passed。
 - `4b86379 Add Stage42 worktree caveat classifier`
   - Stage42-CY dirty caveat classifier。
-  - Stage42 substantive dirty files = 0。
+  - 当时记录 Stage42 substantive dirty files = 0。
   - full tests 610 passed。
+- `629c6fb Add Stage42 paper freeze candidate manifest`
+  - Stage42-CZ paper-freeze candidate manifest。
+  - 74 files hashed；14/14 gates。
+- `98a3aff Refresh Stage42 clean paper freeze manifest`
+  - Stage42-CZ clean manifest refresh。
+  - `freeze_status = candidate_clean`；`final_immutable_release = true`。
+- `08a8b2a Isolate Stage42 report tests from tracked artifacts`
+  - 把 Stage42 report-writing tests 隔离到 `tmp_path`。
+  - focused report tests 13 passed；full tests 615 passed。
 
 当前 caveat：
 
 - 仓库仍有历史遗留 dirty/untracked 数据和报告。
-- Stage42-CY 已分类 Stage42 相关 dirty tracked files：metadata/hash/paper-size/run-ledger 类型，无 substantive metric change。
-- 这不等于 final immutable release。要做 final release，还需要 clean manifest / archive / commit boundary。
+- Stage42-CY 当前分类结果：tracked dirty files = 8，Stage42 dirty = 0，Stage42 substantive dirty = 0；剩余 dirty 是历史 Stage17-19 outside-scope report drift，不应作为新 Stage42 证据引用。
+- Stage42-CZ 当前结果：paper freeze candidate manifest clean，74 files hashed，14/14 gates，`final_immutable_release = true`。
+- Stage42 report-test isolation 已修复 pytest 改写 tracked Stage42 report artifacts 的问题；这属于 reproducibility hygiene，不是新模型指标。
 
 ## 8. 下一步最值得做
 
-1. 完成 paper-freeze candidate manifest。
-   - 把当前 paper files、policy hash、provenance、worktree caveat 一起冻结。
-   - 状态应写 `candidate_with_metadata_caveats`，不能写 final immutable release。
+1. 继续把 paper-freeze candidate 变成真正可交付 archive。
+   - 当前 manifest 已 clean，但还需要外部 reviewer 可以按 manifest、runner、README 复现关键证据。
+   - 不要把 clean manifest 写成 broader foundation / metric / seconds-level success。
 
 2. 继续解决 t100 / source support。
    - ETH_UCY 本地 XML 技术路径有正信号，但 terms/conversion/source-CV 未闭环。

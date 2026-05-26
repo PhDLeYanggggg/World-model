@@ -1,8 +1,8 @@
 # Stage42-CY Worktree Caveat Classifier
 
 - source: `fresh_worktree_caveat_classification`
-- generated_at_utc: `2026-05-26T20:32:33.069916+00:00`
-- git_commit: `c0b12af`
+- generated_at_utc: `2026-05-26T20:40:39.858995+00:00`
+- git_commit: `08a8b2a`
 - gate: `11 / 11`
 - verdict: `stage42_cy_worktree_caveat_classifier_pass`
 

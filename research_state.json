@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-CZ paper freeze candidate manifest",
-  "current_verdict": "stage42_cz_paper_freeze_candidate_manifest_pass",
+  "current_stage": "Stage42 report-test artifact hygiene and M3W goal summary refresh",
+  "current_verdict": "stage42_report_test_isolation_pass_and_goal_summary_updated",
   "m3w_goal_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_reports",
     "path": "README_M3W_GOAL_SUMMARY_ZH.md",
@@ -21,8 +21,36 @@
       "Stage42-CV batch runtime replay, 25/25 gates",
       "Stage42-CW runtime replay paper refresh, full tests 600 passed",
       "Stage42-CX evidence provenance verifier, 21 artifacts audited",
-      "Stage42-CY worktree caveat classifier, Stage42 substantive dirty files 0"
+      "Stage42-CY worktree caveat classifier, Stage42 dirty tracked files 0 after test isolation",
+      "Stage42-CZ paper freeze candidate manifest, 74 files hashed, 14/14 gates, candidate_clean",
+      "Stage42 report-test artifact hygiene, focused report tests 13 passed, full tests 615 passed"
     ]
+  },
+  "stage42_report_test_artifact_hygiene": {
+    "source": "fresh_test_isolation_patch_and_cached_verified_test_results",
+    "commit": "08a8b2a Isolate Stage42 report tests from tracked artifacts",
+    "purpose": "Prevent Stage42 report-writing pytest cases from mutating tracked paper/evidence artifacts and run_ledger metadata during full test runs.",
+    "changed_tests": [
+      "tests/test_stage42_context_contribution_forensics.py",
+      "tests/test_stage42_paper_claim_evidence_audit.py",
+      "tests/test_stage42_retrained_ablation_matrix.py",
+      "tests/test_stage42_source_time_geometry_calibration.py"
+    ],
+    "focused_pytest": "13 passed",
+    "full_pytest": "615 passed",
+    "post_fix_worktree_caveat": {
+      "tracked_dirty_files": 8,
+      "stage42_dirty_files": 0,
+      "stage42_substantive_dirty_files": 0
+    },
+    "claim_boundary": {
+      "new_model_result": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   },
   "stage42_cr_proximity_guard_ablation": {
     "source": "fresh_synthesis_from_stage42_co_cp_cq_artifacts",
