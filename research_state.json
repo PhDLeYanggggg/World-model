@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42 report-test artifact hygiene and M3W goal summary refresh",
-  "current_verdict": "stage42_report_test_isolation_pass_and_goal_summary_updated",
+  "current_stage": "Stage42-DA next-action evidence queue",
+  "current_verdict": "stage42_da_next_action_queue_pass",
   "m3w_goal_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_reports",
     "path": "README_M3W_GOAL_SUMMARY_ZH.md",
@@ -18465,6 +18465,39 @@
       "files_with_git_caveat": 0
     },
     "manifest_hash": "bb6689cae4a1deb1ba2684d5b4814952267726fbec94767868510d4cfa5a3cce",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_da_next_action_queue": {
+    "source": "fresh_synthesis_from_cached_verified_stage42_artifacts",
+    "report": "outputs/stage42_long_research/next_action_queue_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_da_gate.md",
+    "verdict": "stage42_da_next_action_queue_pass",
+    "gates": "15/15",
+    "top_priority": {
+      "id": "DA-1",
+      "title": "Close legal/source support for ETH_UCY and TrajNet t100/t50 calibration",
+      "priority": 100,
+      "status": "not_run_next_action",
+      "why_now": "Global t100 and restricted metric/seconds claims are still blocked by independent source support and terms confirmation.",
+      "evidence": [
+        "outputs/stage42_long_research/t100_data_gap_audit_stage42.md",
+        "outputs/stage42_long_research/source_terms_validation_stage42.md",
+        "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md"
+      ],
+      "next_commands": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_source_time_geometry_calibration.py"
+      ],
+      "requires_user_or_external_state": true,
+      "blocked_claim_until_done": "global_or_restricted metric/seconds and global t100 deployable claim",
+      "success_gate": "official/terms-safe conversion + no-leakage + source-CV positive/easy-safe on ETH_UCY and TrajNet."
+    },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,

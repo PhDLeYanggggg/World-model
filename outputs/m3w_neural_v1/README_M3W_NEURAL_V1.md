@@ -1368,3 +1368,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - This is a paper evidence freeze candidate under protected dataset-local/raw-frame 2.5D boundaries.
 - It is not true 3D, not foundation, not metric/seconds-level, not Stage5C, and not SMC.
 <!-- STAGE42_CZ_PAPER_FREEZE_MANIFEST:END -->
+
+<!-- STAGE42_DA_NEXT_ACTION_QUEUE:START -->
+## Stage42-DA Next-Action Evidence Queue
+
+- source: `fresh_synthesis_from_cached_verified_stage42_artifacts`
+- role: convert current Stage42 paper gaps into prioritized executable next actions.
+- gate: `15 / 15`; verdict `stage42_da_next_action_queue_pass`.
+- top priority: `DA-1 Close legal/source support for ETH_UCY and TrajNet t100/t50 calibration`.
+- user/external blockers remain explicit; no not_run item is counted complete.
+- Current deployable claim remains protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_DA_NEXT_ACTION_QUEUE:END -->
