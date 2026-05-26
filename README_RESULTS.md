@@ -27,15 +27,35 @@ SMC_enabled = false
 
 Stage42-BD only identifies local conversion candidates; it does not convert, train, evaluate, or change t100 claims. The next meaningful step is Stage42-BE conversion + no-leakage + train-only source-CV for the four novel local t100 candidates.
 
+Latest Stage42-BE local t100 conversion-readiness audit:
+
+```text
+source = fresh_local_conversion_readiness
+verdict = stage42_be_local_t100_conversion_readiness_pass
+gates = 12 / 12
+candidate_files = 4
+schema_conversion_ready_files = 4
+estimated_t50_windows = 15813
+estimated_t100_windows = 6257
+domains_with_source_cv_after_conversion = UCY
+full_feature_store_written = false
+training_run = false
+evaluation_run = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BE parses the four local candidates and confirms they can map to the external row schema. UCY now has enough novel local t100-capable sources for a source-CV readiness plan after actual conversion. This is still readiness evidence only; it is not a converted dataset, trained model, evaluated model, metric/seconds claim, or t100 success claim.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA/BB/BC/BD evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, t100 data/source-support blocker, local t100 source inventory, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA/BB/BC/BD/BE evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, t100 data/source-support blocker, local t100 source inventory/readiness, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for the latest detailed summary / Stage42-BD refresh: `python3 -m pytest tests` -> `434 passed`.
+Validation for the latest detailed summary / Stage42-BE refresh: `python3 -m pytest tests` -> `438 passed`.
 
 Most important current summary:
 

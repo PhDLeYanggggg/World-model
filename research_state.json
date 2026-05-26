@@ -1,6 +1,42 @@
 {
-  "current_stage": "stage42_bd_local_t100_source_inventory",
-  "current_verdict": "stage42_bd_local_t100_source_inventory_pass",
+  "current_stage": "stage42_be_local_t100_conversion_readiness",
+  "current_verdict": "stage42_be_local_t100_conversion_readiness_pass",
+  "stage42_be_local_t100_conversion_readiness": {
+    "source": "fresh_local_conversion_readiness",
+    "report": "outputs/stage42_long_research/local_t100_conversion_readiness_stage42.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_local_t100_conversion_readiness_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_be_gate.md",
+    "verdict": "stage42_be_local_t100_conversion_readiness_pass",
+    "gates": "12/12",
+    "candidate_files": 4,
+    "schema_conversion_ready_files": 4,
+    "estimated_t10_windows": 51061,
+    "estimated_t25_windows": 32451,
+    "estimated_t50_windows": 15813,
+    "estimated_t100_windows": 6257,
+    "domains_with_source_cv_after_conversion": [
+      "UCY"
+    ],
+    "full_feature_store_written": false,
+    "training_run": false,
+    "evaluation_run": false,
+    "stage42_bf_actual_conversion_recommended": true,
+    "verification": {
+      "runner": "pass",
+      "focused_pytest": "4 passed",
+      "full_pytest": "438 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "converted_dataset_claim_allowed": false,
+      "t100_positive_claim_allowed": false
+    }
+  },
   "stage42_bd_local_t100_source_inventory": {
     "source": "fresh_local_path_inventory",
     "report": "outputs/stage42_long_research/local_t100_source_inventory_stage42.md",
@@ -128,10 +164,10 @@
     "source": "cached_verified_plus_stage42_bd_summary",
     "path": "README_M3W_DETAILED_RESULTS_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "User-facing detailed Chinese summary of M3W routes, failures, root causes, successes, current best deployable policy, strict claim boundaries, and Stage42-BD local t100 source inventory.",
+    "scope": "User-facing detailed Chinese summary of M3W routes, failures, root causes, successes, current best deployable policy, strict claim boundaries, Stage42-BD local t100 source inventory, and Stage42-BE conversion-readiness audit.",
     "current_best_deployable": "M3W-Neural v1 protected policy under Stage37/teacher safety floor",
     "current_claim": "protected dataset-local raw-frame 2.5D multi-agent world-state candidate",
-    "latest_inventory": "Stage42-BD found 4 novel local t100-capable candidate files with estimated 6257 novel t100 windows; conversion/no-leakage/source-CV still required.",
+    "latest_inventory": "Stage42-BE confirms all 4 novel local t100-capable candidate files are schema-ready with estimated 15813 t50 windows and 6257 t100 windows; actual conversion/no-leakage/source-CV still required.",
     "stage5c_executed": false,
     "smc_enabled": false
   },
@@ -139,7 +175,7 @@
     "source": "cached_verified_plus_stage42_ba_summary",
     "path": "README_M3W_EXECUTION_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, strict claim boundaries, Stage42-BB t100 data/source-support gap audit, Stage42-BC official-source acquisition plan, and Stage42-BD local t100 source inventory.",
+    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, strict claim boundaries, Stage42-BB t100 data/source-support gap audit, Stage42-BC official-source acquisition plan, Stage42-BD local t100 source inventory, and Stage42-BE conversion-readiness audit.",
     "current_best_deployable": "M3W-Neural v1 protected policy under Stage37/teacher safety floor",
     "current_claim": "protected dataset-local raw-frame 2.5D multi-agent world-state candidate",
     "t100_status": "blocker / diagnostic after Stage42-BA train-only source-CV guard and Stage42-BB data gap audit",
@@ -153,7 +189,7 @@
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-BA train-only t100 source-CV repair; focused pytest and full pytest passed.",
-    "scope": "Detailed M3W route/failure/success summary plus Stage42-BA train-only t100 source-CV support audit, Stage42-BB/BC t100 data/source acquisition planning, and Stage42-BD local t100 source inventory.",
+    "scope": "Detailed M3W route/failure/success summary plus Stage42-BA train-only t100 source-CV support audit, Stage42-BB/BC t100 data/source acquisition planning, Stage42-BD local t100 source inventory, and Stage42-BE conversion-readiness audit.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
     "latest_branch_success": "Stage42-BA uses train-only source-CV to guard unsupported t100 domain slices, preserving all/t50/hard/easy while honestly zeroing unsupported t100 gain.",
     "verification": {
@@ -222,7 +258,10 @@
       "stage42_ba_full_pytest": "422 passed",
       "stage42_bd_runner": "pass",
       "stage42_bd_focused_pytest": "4 passed",
-      "stage42_bd_full_pytest": "434 passed"
+      "stage42_bd_full_pytest": "434 passed",
+      "stage42_be_runner": "pass",
+      "stage42_be_focused_pytest": "4 passed",
+      "stage42_be_full_pytest": "438 passed"
     },
     "claim_boundary": {
       "true_3d": false,

@@ -1,0 +1,448 @@
+{
+  "source": "fresh_local_conversion_readiness",
+  "stage": "Stage42-BE Local T100 Conversion Readiness",
+  "generated_at_utc": "2026-05-26T12:24:15.930066+00:00",
+  "git_commit": "e86258f",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BE 是 local t100 conversion-readiness / no-leakage audit，不训练模型、不写大 feature store。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "本步骤不把 local candidate 写成 official converted dataset；full conversion / source-CV 仍需后续执行。",
+    "t100 仍是 raw-frame diagnostic / blocker，不能写成 seconds-level。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "8a4f5287b20b2a3f161e8885992c6b531906544ef2c8b2fe042e878fa7ff1666",
+  "bd_verdict": "stage42_bd_local_t100_source_inventory_pass",
+  "candidate_count": 4,
+  "source_readiness": [
+    {
+      "source": "fresh_local_conversion_readiness",
+      "source_id": "ETH/seq_eth/biwi_eth_10fps.txt",
+      "path": "external_data/OpenTraj/datasets/ETH/seq_eth/biwi_eth_10fps.txt",
+      "domain": "ETH_UCY",
+      "file_format": "txt",
+      "rows": 5492,
+      "agents": 360,
+      "unique_frames": 876,
+      "min_frame": 780,
+      "max_frame": 12380,
+      "max_track_points": 114,
+      "median_track_points": 15.0,
+      "horizon_counts": {
+        "10": 2085,
+        "25": 228,
+        "50": 82,
+        "100": 14
+      },
+      "history_horizon_counts": {
+        "k8_h50": 61,
+        "k8_h100": 7,
+        "k16_h50": 49,
+        "k16_h100": 0,
+        "k32_h50": 33,
+        "k32_h100": 0,
+        "k64_h50": 1,
+        "k64_h100": 0
+      },
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 360,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "unverified_dataset_local_not_metric",
+      "x_range": [
+        -7.69,
+        14.42
+      ],
+      "y_range": [
+        -3.17,
+        13.21
+      ],
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "schema_fields": [
+        "dataset_name",
+        "domain",
+        "source_id",
+        "scene_id",
+        "agent_id",
+        "frame_id",
+        "x",
+        "y",
+        "vx_causal",
+        "vy_causal",
+        "horizon",
+        "future_x_label",
+        "future_y_label",
+        "history_valid_mask",
+        "coordinate_unit",
+        "metric_status",
+        "source_role"
+      ],
+      "schema_conversion_ready": true,
+      "full_feature_store_written": false,
+      "training_or_eval_run": false
+    },
+    {
+      "source": "fresh_local_conversion_readiness",
+      "source_id": "UCY/students01/students001.txt",
+      "path": "external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+      "domain": "UCY",
+      "file_format": "txt",
+      "rows": 21813,
+      "agents": 415,
+      "unique_frames": 444,
+      "min_frame": 0,
+      "max_frame": 4430,
+      "max_track_points": 352,
+      "median_track_points": 41.0,
+      "horizon_counts": {
+        "10": 17707,
+        "25": 12289,
+        "50": 6445,
+        "100": 1949
+      },
+      "history_horizon_counts": {
+        "k8_h50": 5412,
+        "k8_h100": 1674,
+        "k16_h50": 4395,
+        "k16_h100": 1427,
+        "k32_h50": 2922,
+        "k32_h100": 1034,
+        "k64_h50": 1481,
+        "k64_h100": 523
+      },
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 415,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "unverified_dataset_local_not_metric",
+      "x_range": [
+        -0.461970915628,
+        15.4691855575
+      ],
+      "y_range": [
+        -0.318372172818,
+        13.8919096217
+      ],
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "schema_fields": [
+        "dataset_name",
+        "domain",
+        "source_id",
+        "scene_id",
+        "agent_id",
+        "frame_id",
+        "x",
+        "y",
+        "vx_causal",
+        "vy_causal",
+        "horizon",
+        "future_x_label",
+        "future_y_label",
+        "history_valid_mask",
+        "coordinate_unit",
+        "metric_status",
+        "source_role"
+      ],
+      "schema_conversion_ready": true,
+      "full_feature_store_written": false,
+      "training_or_eval_run": false
+    },
+    {
+      "source": "fresh_local_conversion_readiness",
+      "source_id": "UCY/students03/obsmat_px.txt",
+      "path": "external_data/OpenTraj/datasets/UCY/students03/obsmat_px.txt",
+      "domain": "UCY",
+      "file_format": "txt",
+      "rows": 21859,
+      "agents": 428,
+      "unique_frames": 540,
+      "min_frame": 1,
+      "max_frame": 5391,
+      "max_track_points": 540,
+      "median_track_points": 38.0,
+      "horizon_counts": {
+        "10": 17618,
+        "25": 11981,
+        "50": 6493,
+        "100": 3415
+      },
+      "history_horizon_counts": {
+        "k8_h50": 5714,
+        "k8_h100": 3172,
+        "k16_h50": 5033,
+        "k16_h100": 2915,
+        "k32_h50": 4185,
+        "k32_h100": 2455,
+        "k64_h50": 2977,
+        "k64_h100": 1662
+      },
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 428,
+        "tracks_with_gaps": 1,
+        "gap_ratio": 0.002336448598130841,
+        "max_gap": 20
+      },
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "unverified_dataset_local_not_metric",
+      "x_range": [
+        2.9331776,
+        783.0
+      ],
+      "y_range": [
+        0.0,
+        0.0
+      ],
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "schema_fields": [
+        "dataset_name",
+        "domain",
+        "source_id",
+        "scene_id",
+        "agent_id",
+        "frame_id",
+        "x",
+        "y",
+        "vx_causal",
+        "vy_causal",
+        "horizon",
+        "future_x_label",
+        "future_y_label",
+        "history_valid_mask",
+        "coordinate_unit",
+        "metric_status",
+        "source_role"
+      ],
+      "schema_conversion_ready": true,
+      "full_feature_store_written": false,
+      "training_or_eval_run": false
+    },
+    {
+      "source": "fresh_local_conversion_readiness",
+      "source_id": "UCY/students03/students003.txt",
+      "path": "external_data/OpenTraj/datasets/UCY/students03/students003.txt",
+      "domain": "UCY",
+      "file_format": "txt",
+      "rows": 17953,
+      "agents": 434,
+      "unique_frames": 541,
+      "min_frame": 0,
+      "max_frame": 5400,
+      "max_track_points": 289,
+      "median_track_points": 36.0,
+      "horizon_counts": {
+        "10": 13651,
+        "25": 7953,
+        "50": 2793,
+        "100": 879
+      },
+      "history_horizon_counts": {
+        "k8_h50": 2171,
+        "k8_h100": 785,
+        "k16_h50": 1676,
+        "k16_h100": 694,
+        "k32_h50": 1218,
+        "k32_h100": 549,
+        "k64_h50": 715,
+        "k64_h100": 352
+      },
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 434,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "coordinate_unit": "dataset_local_raw",
+      "metric_status": "unverified_dataset_local_not_metric",
+      "x_range": [
+        -0.174686040989,
+        15.4369843957
+      ],
+      "y_range": [
+        -0.222192273533,
+        13.8542013734
+      ],
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "schema_fields": [
+        "dataset_name",
+        "domain",
+        "source_id",
+        "scene_id",
+        "agent_id",
+        "frame_id",
+        "x",
+        "y",
+        "vx_causal",
+        "vy_causal",
+        "horizon",
+        "future_x_label",
+        "future_y_label",
+        "history_valid_mask",
+        "coordinate_unit",
+        "metric_status",
+        "source_role"
+      ],
+      "schema_conversion_ready": true,
+      "full_feature_store_written": false,
+      "training_or_eval_run": false
+    }
+  ],
+  "source_cv_plan": {
+    "source": "fresh_local_conversion_readiness",
+    "rule": "Use source-level leave-one-source-out CV only after full conversion; final test metrics must not select thresholds.",
+    "domains": {
+      "ETH_UCY": {
+        "source": "fresh_local_conversion_readiness",
+        "t100_capable_sources": 1,
+        "estimated_t100_windows": 14,
+        "source_cv_feasible_after_conversion": false,
+        "minimum_sources_required": 3,
+        "folds": []
+      },
+      "UCY": {
+        "source": "fresh_local_conversion_readiness",
+        "t100_capable_sources": 3,
+        "estimated_t100_windows": 6243,
+        "source_cv_feasible_after_conversion": true,
+        "minimum_sources_required": 3,
+        "folds": [
+          {
+            "source": "fresh_local_conversion_readiness",
+            "holdout_source": "UCY/students03/obsmat_px.txt",
+            "validation_source": "UCY/students01/students001.txt",
+            "train_sources": [
+              "UCY/students03/students003.txt"
+            ],
+            "holdout_t100_windows": 3415
+          },
+          {
+            "source": "fresh_local_conversion_readiness",
+            "holdout_source": "UCY/students01/students001.txt",
+            "validation_source": "UCY/students03/obsmat_px.txt",
+            "train_sources": [
+              "UCY/students03/students003.txt"
+            ],
+            "holdout_t100_windows": 1949
+          },
+          {
+            "source": "fresh_local_conversion_readiness",
+            "holdout_source": "UCY/students03/students003.txt",
+            "validation_source": "UCY/students03/obsmat_px.txt",
+            "train_sources": [
+              "UCY/students01/students001.txt"
+            ],
+            "holdout_t100_windows": 879
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "source": "fresh_local_conversion_readiness",
+    "candidate_files": 4,
+    "schema_conversion_ready_files": 4,
+    "estimated_t10_windows": 51061,
+    "estimated_t25_windows": 32451,
+    "estimated_t50_windows": 15813,
+    "estimated_t100_windows": 6257,
+    "domains_with_source_cv_after_conversion": [
+      "UCY"
+    ],
+    "full_feature_store_written": false,
+    "training_run": false,
+    "evaluation_run": false,
+    "stage42_bf_actual_conversion_recommended": true,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_loss_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_metrics_for_threshold": false,
+    "source_level_split_required_before_eval": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "t100_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "converted_dataset_claim_allowed": false,
+    "t100_positive_claim_allowed": false
+  },
+  "stage42_be_gate": {
+    "source": "fresh_local_conversion_readiness",
+    "gates": {
+      "bd_inventory_loaded": true,
+      "novel_candidates_loaded": true,
+      "schema_readiness_checked": true,
+      "t50_windows_available": true,
+      "t100_windows_available": true,
+      "source_cv_plan_built": true,
+      "at_least_one_domain_source_cv_feasible": true,
+      "no_feature_store_overclaim": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_be_local_t100_conversion_readiness_pass"
+  },
+  "user_action_required": [
+    {
+      "source": "fresh_local_conversion_readiness",
+      "priority": "high",
+      "action_type": "run_stage42_bf_actual_schema_conversion",
+      "notes": "Write the actual converted external schema rows outside Git, then run no-leakage and train-only source-CV. This Stage42-BE report is readiness only."
+    },
+    {
+      "source": "fresh_local_conversion_readiness",
+      "priority": "high",
+      "action_type": "keep_t100_claim_blocked_until_source_cv",
+      "notes": "The novel local files can support future t100 repair, but current t100 positive claim remains blocked until converted rows pass source-CV."
+    },
+    {
+      "source": "fresh_local_conversion_readiness",
+      "priority": "medium",
+      "action_type": "prioritize_ucy_source_cv",
+      "notes": "The three novel UCY-like t100 sources are enough for a leave-one-source-out readiness plan after conversion."
+    }
+  ]
+}

@@ -670,6 +670,26 @@ smc_enabled = false
 
 这一步只做本机 local source inventory：它发现了 4 个 novel t100-capable candidate files，但还没有转换、训练或评估。下一步必须进入 Stage42-BE conversion / no-leakage / train-only source-CV，才可能改变 t100 blocker。当前 t100 仍是 blocker / diagnostic，不是 stable success。
 
+### Stage42-BE 本轮 conversion-readiness audit
+
+```text
+source = fresh_local_conversion_readiness
+verdict = stage42_be_local_t100_conversion_readiness_pass
+gates = 12 / 12
+candidate_files = 4
+schema_conversion_ready_files = 4
+estimated_t50_windows = 15813
+estimated_t100_windows = 6257
+domains_with_source_cv_after_conversion = UCY
+full_feature_store_written = false
+training_run = false
+evaluation_run = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BE 解析这 4 个候选源并验证 schema-readiness：UCY 有 3 个 novel t100-capable sources，实际转换后具备 source-CV readiness；ETH_UCY 只新增 1 个很小 t100 source，仍不足以独立修复 t100 blocker。这仍然不是 converted dataset / trained model / evaluated model，下一步需要 Stage42-BF actual conversion 和 train-only source-CV。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：
@@ -696,10 +716,12 @@ python3 run_stage42_t100_source_cv_repair.py = pass
 python3 run_stage42_t100_data_gap_audit.py = pass
 python3 run_stage42_t100_source_acquisition_plan.py = pass
 python3 run_stage42_local_t100_source_inventory.py = pass
+python3 run_stage42_local_t100_conversion_readiness.py = pass
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_source_inventory.py = 4 passed
-python3 -m pytest tests = 434 passed
+python3 -m pytest tests/test_stage42_local_t100_conversion_readiness.py = 4 passed
+python3 -m pytest tests = 438 passed
 ```
 
 ## 10. 总结成一句话

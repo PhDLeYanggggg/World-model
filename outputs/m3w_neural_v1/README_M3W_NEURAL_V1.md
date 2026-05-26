@@ -68,6 +68,8 @@ Stage42-BC turns that data gap into an acquisition plan using official-source ch
 
 Stage42-BD scans local OpenTraj / ETH / UCY / TrajNet paths for t100-capable source files. It passes `10 / 10` gates with `93` files scanned, `74` parseable, `8` t100-capable, `4` already used, and `4` novel local t100 candidates totaling an estimated `6257` novel t100 windows. This is only inventory evidence; Stage42-BE conversion, no-leakage, and train-only source-CV are still required before any t100 claim can change.
 
+Stage42-BE parses those four novel local t100 candidates for conversion readiness. It passes `12 / 12` gates: all `4` candidates are schema-ready, with `15813` estimated t50 windows and `6257` estimated t100 windows. UCY has enough novel local sources for a source-CV readiness plan after actual conversion; ETH_UCY gains only one small source and remains under-supported. This remains readiness evidence only, not a converted feature store, training run, evaluation run, or t100 success claim.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

@@ -257,6 +257,30 @@ Stage42-BD 把 Stage42-BC 的 acquisition plan 往本机实际路径推进了一
 
 这一步仍然只是 inventory，不是 conversion / training / evaluation。正确下一步是 Stage42-BE：把这些 local candidates 转换到 external schema，构建 no-leakage split，重新跑 train-only source-CV，然后再判断 t100 blocker 是否能改变。当前仍不能把 t100 写成 stable success，也不能写成 seconds-level / metric claim。
 
+## Stage42-BE Local T100 Conversion Readiness
+
+```text
+source = fresh_local_conversion_readiness
+verdict = stage42_be_local_t100_conversion_readiness_pass
+gates = 12 / 12
+candidate_files = 4
+schema_conversion_ready_files = 4
+estimated_t10_windows = 51061
+estimated_t25_windows = 32451
+estimated_t50_windows = 15813
+estimated_t100_windows = 6257
+domains_with_source_cv_after_conversion = UCY
+full_feature_store_written = false
+training_run = false
+evaluation_run = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BE 不是又写计划，而是解析 Stage42-BD 找到的 4 个本地候选源，检查它们能否映射到统一 external row schema、是否有 causal velocity 可能性、t10/t25/t50/t100 window 数、history-window 可用性和 source-CV readiness。结论是 4 个文件都 schema-ready；UCY 三个 novel t100 sources 在实际转换后足以做 leave-one-source-out source-CV readiness；ETH_UCY 新增源只有 14 个 t100 windows，仍不足以独立修复 ETH_UCY t100 blocker。
+
+这一步仍然不写 full feature store、不训练、不评估、不改变 t100 claim。下一步是 Stage42-BF actual conversion + no-leakage + train-only source-CV。
+
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
 
 阅读索引：

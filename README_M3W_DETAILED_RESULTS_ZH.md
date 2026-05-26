@@ -108,6 +108,7 @@ SMC-ready model
 | Stage42-BB t100 data gap audit | ETH_UCY 需 2 个额外 t100-safe sources；TrajNet 需 1 个；UCY 需 1 个。 | 把 t100 blocker 转成行动清单。 |
 | Stage42-BC source acquisition plan | 6 candidates，5 official sources，6 local paths；high priority = UCY Crowd / TrajNet++ / OpenTraj / ETH-UCY。 | 不自动下载受限数据，不绕 license。 |
 | Stage42-BD local t100 inventory | 93 files scanned；74 parseable；8 t100-capable；4 already used；4 novel candidates；estimated novel t100 windows = 6,257。 | 仅 inventory；还没 conversion/eval。 |
+| Stage42-BE local t100 conversion readiness | 4 candidates；4 schema-ready；estimated t50 windows = 15,813；estimated t100 windows = 6,257；UCY source-CV feasible after conversion。 | 仍是 readiness；full feature store / source-CV / eval 还没跑。 |
 
 ## 5. Stage42-BD 本轮新增发现
 
@@ -141,7 +142,34 @@ Top novel t100 candidates:
 - 下一步必须做 Stage42-BE conversion、train/val/test split、no-leakage、source-CV。
 - 如果它们通过，才可能改变 t100 blocker；现在还不能把 t100 写成已修复。
 
-## 6. 为什么当前成果不是 true 3D / foundation
+## 6. Stage42-BE 本轮继续推进
+
+Stage42-BE 把 BD 的 4 个 local candidates 从“文件存在”推进到“schema conversion readiness / no-leakage readiness”：
+
+```text
+source = fresh_local_conversion_readiness
+verdict = stage42_be_local_t100_conversion_readiness_pass
+gates = 12 / 12
+candidate_files = 4
+schema_conversion_ready_files = 4
+estimated_t10_windows = 51061
+estimated_t25_windows = 32451
+estimated_t50_windows = 15813
+estimated_t100_windows = 6257
+domains_with_source_cv_after_conversion = UCY
+full_feature_store_written = false
+training_run = false
+evaluation_run = false
+```
+
+关键解释：
+
+- `UCY/students01/students001.txt`、`UCY/students03/obsmat_px.txt`、`UCY/students03/students003.txt` 三个 UCY-like sources 在 actual conversion 后足够构成 leave-one-source-out source-CV readiness。
+- `ETH/seq_eth/biwi_eth_10fps.txt` 只有 14 个 estimated t100 windows，只能补一点 ETH_UCY 支持，单独不足以修 ETH_UCY t100 blocker。
+- 本步骤不写 full feature store，不训练，不评估，不改变 t100 claim。
+- 下一步仍必须是 Stage42-BF actual schema conversion + no-leakage + train-only source-CV。
+
+## 7. 为什么当前成果不是 true 3D / foundation
 
 不能这么写的原因很具体：
 
@@ -165,9 +193,9 @@ strict no-leakage protected 2.5D multi-agent world-state modeling on real top-do
 true 3D foundation world model
 ```
 
-## 7. 现在最值得做的下一步
+## 8. 现在最值得做的下一步
 
-1. **Stage42-BE：把 Stage42-BD 找到的 4 个 novel local t100 candidates 转换进 external schema。**
+1. **Stage42-BF：把 Stage42-BE 证明 schema-ready 的 4 个 local t100 candidates 实际转换进 external schema。**
    必须做 no-leakage split、causal velocity、train-only goals/source-CV，不能只登记。
 
 2. **继续 t100 source-CV repair，但不 overclaim。**
@@ -176,7 +204,7 @@ true 3D foundation world model
 3. **如果继续冲神经世界模型主贡献，要换更强 graph/scene-rich protocol。**
    当前 ridge/MLP/Conv1D/hand-built graph residual context 都没证明独立增量；不能继续把 history/goal/neighbor 写成已证明主贡献。
 
-## 8. 最终简短 verdict
+## 9. 最终简短 verdict
 
 ```text
 项目是否跑通：是
@@ -191,5 +219,5 @@ SDD success：是
 external t50 success：是
 protected source-level full-waypoint success：是
 t100 stable success：否，当前仍是 blocker / diagnostic
-本轮新发现：本地有 4 个 novel t100-capable candidate files，估计 6,257 个 novel t100 windows，下一步建议 conversion + source-CV
+本轮新发现：4 个 novel t100 candidates 全部 schema-ready，估计 15,813 个 t50 windows / 6,257 个 t100 windows；UCY 在 actual conversion 后具备 source-CV readiness，下一步必须实际转换 + source-CV
 ```
