@@ -30,7 +30,7 @@ python3 -m pytest tests = 339 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
-- 后续追加：Stage42-W/X/Y/Z/AA/AB 的统一 full-waypoint、paper claim、retrained ablation 和 auxiliary-head ablation evidence。
+- 后续追加：Stage42-W/X/Y/Z/AA/AB/AC 的统一 full-waypoint、paper claim、retrained ablation、auxiliary-head ablation 和 paper package refresh evidence。
 
 ## 本次请求版详细总结
 
