@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## 当前目标总复盘 README
+
+最新单文件中文总复盘已更新：
+
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md`
+
+它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+
 ## 中文详细目标总结
 
 Current one-file research route/failure/success summary requested by the user:
