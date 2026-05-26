@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## 当前完整复盘 README
+
+本轮按用户要求新增详细中文复盘：
+
+`/Users/yangyue/Downloads/World/README_M3W_CURRENT_FULL_RETROSPECTIVE_ZH.md`
+
+它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及哪些 claim 仍然禁止。当前结论保持严格：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新 source support closure 仍显示 ETH_UCY / TrajNet / UCY 没有完全关闭 legal/source/time/t100 blocker。
+
 ## 当前目标总复盘 README
 
 最新单文件中文总复盘已更新：
