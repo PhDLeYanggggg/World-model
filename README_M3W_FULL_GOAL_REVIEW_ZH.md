@@ -145,6 +145,7 @@ Bootstrap lower bounds:
 | Stage42-BJ | UCY repaired；ETH_UCY 1 independent source、还差 2；TrajNet 0、还差 3；gates 14/14 | t100 进入 source acquisition / user-action 阶段 |
 | Stage42-BK | ETH-Person XML 发现 5 个 ETH_UCY t100-capable 候选；TrajNet 本地文件为短 snippet，t100 files=0 | ETH_UCY 有本地 loader-gap 修复入口；TrajNet 仍需更长官方/用户 raw source |
 | Stage42-BL | ETH-Person XML technical dry-run：5 strict independent sources，t100 windows 1485，mean +0.683549，min +0.496424，easy -0.014155，gates 13/13 | 技术路径强正，但 terms 未确认，不能算 official / deployable / global t100 |
+| Stage42-BM | ETH-Person terms audit：gates 14/14；OpenTraj MIT 被判定为 toolkit/software-only；ETH-Person local terms file 未找到；official URL 已记录但 terms 未验证 | 正确保留 BL 技术证据，同时阻止 official converted/evaluated、deployable t100、global t100 overclaim |
 
 ## 4. 失败路线和原因
 
@@ -318,8 +319,8 @@ ETH-Person XML 已经 official converted/evaluated。
 
 ## 6. 当前最值得继续做的事
 
-1. **先做 ETH-Person XML terms / license audit。**  
-   Stage42-BL 技术 dry-run 很强，但 terms 未确认。确认前不能把它算成 official converted dataset，也不能把 t100 写成 deployable/global。
+1. **等待或获取 ETH-Person XML 官方 terms / permission。**
+   Stage42-BM 已完成 terms audit：OpenTraj MIT 不能覆盖 ETH-Person 数据，local terms file 未找到。确认前不能把它算成 official converted dataset，也不能把 t100 写成 deployable/global。
 
 2. **补 TrajNet 原始长轨迹或合法官方 t100-capable source。**  
    本地 TrajNet 是短 snippet，不支持 raw-frame t100。TrajNet 是 global t100 claim 的硬 blocker。
@@ -346,11 +347,10 @@ external best deployable：Stage37 / teacher floor protected policy
 overall best package：M3W-Neural v1 protected dataset-local raw-frame package
 source-level strongest mechanism：baseline-family rollout context + validation-safe guard
 t100 global claim：否，仍 blocked
-ETH-Person XML：technical dry-run positive，但 terms/license 未确认
+ETH-Person XML：technical dry-run positive；Stage42-BM 已确认 terms/license blocker，official/deployable/global t100 claim 仍禁止
 
 current verdict:
   M3W 是一个有实证进展的 protected 2.5D multi-agent world-state candidate。
   它已经有 SDD 与 external raw-frame 的正迁移证据，
   但仍不能被宣传成 true 3D / foundation / metric / seconds-level / ungated neural world model。
 ```
-

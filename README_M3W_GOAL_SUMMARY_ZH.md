@@ -588,7 +588,8 @@ t100 remains raw-frame diagnostic / source-limited blocker。
 下一步建议：
 
 ```text
-Stage42-BM:
+Stage42-BN:
+  Stage42-BM 已确认 ETH-Person XML 仍是 terms/license blocker。
   如果用户确认 ETH-Person XML research-use terms，正式转换 ETH-Person XML 到 Stage42 external source rows，并 rerun official no-leakage + train-only source-CV。
   对 TrajNet 继续寻找官方/用户提供的 raw long-track source。
   不做 metric/seconds claim。
@@ -631,14 +632,17 @@ README_RESULTS.md
 
 ## 10. 最近验证状态
 
-最近 Stage42-BL 已完成：
+最近 Stage42-BM 已完成：
 
 ```text
 runner = pass
-focused pytest = 5 passed
+focused pytest = 9 passed
 full pytest = deferred for the ongoing long-running Stage42 goal
-verdict = stage42_bl_eth_person_xml_t100_dry_run_pass
-gate = 13 / 13
+verdict = stage42_bm_eth_person_terms_audit_pass_claim_blocked
+gate = 14 / 14
+official_converted_dataset_claim_allowed = false
+deployable_t100_claim_allowed = false
+global_t100_positive_claim_allowed = false
 ```
 
 已知 runtime 注意事项：

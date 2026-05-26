@@ -210,6 +210,29 @@ SMC_enabled = false
 
 Stage42-BL proves the ETH-Person XML loader and strict source-CV pipeline are technically executable and strongly positive in a dry-run. It still does **not** change the official claim boundary: ETH-Person terms are unconfirmed, the result is not counted as official converted/evaluated data, and global/deployable t100 remains blocked until user confirmation plus official conversion/no-leakage/source-CV rerun.
 
+Latest Stage42-BM ETH-Person terms / official-use audit:
+
+```text
+source = fresh_eth_person_terms_audit
+verdict = stage42_bm_eth_person_terms_audit_pass_claim_blocked
+gates = 14 / 14
+BL_technical_t100_all_folds_safe_positive = true
+BL_technical_t100_mean_improvement_vs_fallback = 0.683549
+BL_technical_t100_min_improvement_vs_fallback = 0.496424
+BL_technical_t100_max_easy_degradation = -0.014155
+OpenTraj_toolkit_license_can_cover_ETH_Person_dataset = false
+ETH_Person_local_terms_found = false
+official_source_url_recorded = true
+official_terms_verified = false
+official_converted_dataset_claim_allowed = false
+deployable_t100_claim_allowed = false
+global_t100_positive_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BM keeps the positive BL dry-run as technical evidence but blocks any official/deployable/global t100 claim. The OpenTraj root MIT license is treated as toolkit/software license only, not permission for ETH-Person data. The user-action file is `outputs/stage42_long_research/user_action_required_eth_person_terms_stage42.md`; ETH-Person XML can only advance after official terms or user-confirmed permission are provided.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

@@ -82,6 +82,8 @@ Stage42-BK then verifies local source/path and loader gaps after BJ. It passes `
 
 Stage42-BL runs the ETH-Person XML path as a technical dry-run without upgrading claims. It deduplicates `seq0`/`seq0-interp`, builds `5` strict independent ETH_UCY sources, and completes validation-only source-CV: t100 is safe-positive on all folds with mean improvement `0.683549`, minimum improvement `0.496424`, and maximum easy degradation `-0.014155`. Because local ETH-Person license/terms are still unconfirmed, this remains `fresh_technical_dry_run_terms_unverified`: it is not official converted/evaluated data, not a deployable/global t100 claim, and not metric/seconds-level evidence.
 
+Stage42-BM then audits that license/terms blocker directly. It passes `14 / 14` gates and preserves the positive Stage42-BL technical result, but confirms that the OpenTraj root MIT license is toolkit/software-only for this audit and cannot be treated as ETH-Person dataset permission. No ETH-Person-specific local terms file was found; the official URL is recorded from the OpenTraj README, but terms remain unverified. Therefore ETH-Person XML stays technical-only: no official converted/evaluated claim, no deployable/global t100 claim, no metric/seconds-level claim, no Stage5C, and no SMC.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
