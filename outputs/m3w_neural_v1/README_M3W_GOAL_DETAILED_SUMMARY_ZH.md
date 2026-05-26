@@ -1,6 +1,6 @@
 # M3W 目标内研究总结：尝试路线、失败原因、成功结果与当前结论
 
-来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R/S 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint、static-gated repair、fresh static-gated checkpoint、horizon-aware repair、policy-distilled static gate、row-level gain/harm static gate、explicit gain/harm selector、t50-specific gain/harm selector、static/gain-harm combo preflight、row prediction cache combo eval 和 frozen row combo policy stress audit 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
+来源状态：`cached_verified` 汇总 Stage18 到 Stage41 的已生成报告与 package evidence；Stage42-A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R/S/T 的新增审计、外部验证、full-waypoint、安全地板、论文包、重训消融、sequence ablation、sequence-to-waypoint、static-gated repair、fresh static-gated checkpoint、horizon-aware repair、policy-distilled static gate、row-level gain/harm static gate、explicit gain/harm selector、t50-specific gain/harm selector、static/gain-harm combo preflight、row prediction cache combo eval、frozen row combo policy stress audit 和 UCY unseen-domain transfer attempt 结果按报告内 source 字段标记为 `fresh_run` / `cached_verified` / `not_run`。  
 本文件是给项目长期目标使用的中文总 README：它不是论文结论包装，而是把真实做过的路线、失败原因、成功证据和仍然不能声称的内容集中写清楚。
 
 ## 0.0 给用户的目标级摘要
@@ -16,6 +16,7 @@
 7. 目前最强可部署仍需要 safety floor；它比 selector-only 更像 world-state dynamics，但仍不是 true 3D / metric / foundation。
 8. Stage42-R 最新完成 row prediction cache + validation-only combo eval，修复了 Stage42-Q 只能 report-level preflight 的问题，并给出 positive t50 CI low 的 full-waypoint combo 分支证据。
 9. Stage42-S 最新将 Stage42-R combo 冻结为 policy artifact，记录 policy hash/cache hash/schema hash，并报告 ETH_UCY、TrajNet、UCY 的 stress；UCY 当前仍 fallback-only，不能写成 foundation-scale 泛化。
+10. Stage42-T 尝试用 validation-only unseen-domain transfer rule 修复 UCY，但 fresh evidence 显示当前 Stage42-R row cache 对 UCY 没有任何非 floor Stage42-J/P 候选预测，因此 UCY 修复被标为 blocker，而不是成功。
 
 最关键的成功是：**M3W-Neural v1 composite-tail safe-switch bounded neural dynamics** 在 external dataset-local raw-frame benchmark 上形成稳定正提升，并且 Stage42-H/J/K/L 进一步证明 causal history、gated static/context、fresh static-gated checkpoint 与 horizon-aware t50 repair 对 full-waypoint world-state dynamics 有用。
 
@@ -222,6 +223,29 @@ Stage42-S 的意义：
 - 它记录 policy hash、cache hash、feature schema hash，便于后续复现和比较。
 - 它做了 per-domain/per-horizon stress：ETH_UCY 和 TrajNet 为正，UCY 在该 combo 中 fallback-only。
 - 它仍然不是 metric/seconds-level/true-3D/foundation 证据，也不执行 Stage5C 或 SMC。
+
+Stage42-T 最新 UCY unseen-domain transfer 证据：
+
+```text
+source = fresh_run
+verdict = stage42_t_ucy_transfer_blocked_no_candidate_predictions
+gates = 8 / 11
+validation_domains = ETH_UCY, TrajNet
+unseen_test_domain = UCY
+UCY_rows = 9540
+UCY_ADE_all = 0.0
+UCY_ADE_t50 = 0.0
+UCY_hard_failure = 0.0
+UCY_easy_degradation = 0.0
+available_nonfloor_source_for_UCY = false
+```
+
+Stage42-T 的意义：
+
+- 它不是又一次“只报告 UCY 失败”，而是执行了一个 validation-only unseen-domain transfer rule，并做了 test-once UCY 评估。
+- 结果显示 UCY 仍是 0，不是因为阈值不够激进，而是因为当前 row cache 中 Stage42-J 和 Stage42-P 对 UCY 的 switch count 都是 0，且误差差值全为 0。
+- 因此当前 Stage42-R/S policy 无法凭空修复 UCY；下一步必须训练/cache 一个 UCY-aware 或 source-agnostic candidate source，或重建带 UCY train/val calibration 的 external split。
+- 这仍然不是 metric/seconds-level/true-3D/foundation 证据，也不执行 Stage5C 或 SMC。
 
 Stage42-D 到 F 的证据边界：
 
@@ -1299,6 +1323,7 @@ Stage42-P 是否完成 t50-specific gain/harm 修复：门控通过。ADE t50 me
 Stage42-Q 是否完成 combo：没有，只是 report-level preflight，指出 Stage42-J/P 互补，需要 row cache。
 Stage42-R 是否完成 row-cache combo：是，fresh_run_from_row_prediction_cache，gates 15/15，cached combo ADE t50 0.0379 且 CI low 0.0277；但它仍是 dataset-local raw-frame 2.5D 分支证据，不是 metric/seconds-level/Stage5C/SMC。
 Stage42-S 是否冻结 combo policy：是，fresh_run_from_stage42r_row_cache，gates 13/13，policy/cache/schema hash 已记录；ETH_UCY 与 TrajNet 为正，UCY 当前 fallback-only，仍不能称 foundation 泛化。
+Stage42-T 是否修复 UCY：否。它完成 fresh_run 诊断和 validation-only transfer attempt，但发现当前 cache 没有 UCY 非 floor 候选预测，verdict 是 blocker。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -1340,10 +1365,11 @@ SMC 是否可启用：否。
 - Stage42-R row prediction cache combo：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/row_prediction_cache_stage42.md`
 - Stage42-S frozen row combo policy：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/frozen_row_combo_policy_stage42.md`
 - Stage42-S policy artifact：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/frozen_row_combo_policy_stage42_policy.json`
+- Stage42-T UCY unseen transfer attempt：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/ucy_unseen_transfer_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **Stage42-S 之后的外部域补强**：Stage42-S 已冻结 combo policy 并完成 stress；下一步应让 UCY 不再只是 fallback-only，继续补更多 seeds、held-out domains 和 external data。
+1. **Stage42-T 之后的 UCY 修复**：当前 UCY blocker 不是阈值问题，而是没有 UCY 非 floor candidate source。下一步应训练 UCY-aware/source-agnostic prediction source，或重建 external split 让 UCY 有合法 train/val calibration，再做 test-once 评估。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。

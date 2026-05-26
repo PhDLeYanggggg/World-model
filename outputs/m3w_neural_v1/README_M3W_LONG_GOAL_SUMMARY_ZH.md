@@ -1008,3 +1008,20 @@ smc_enabled = false
 ```
 
 Stage42-S freezes the Stage42-R row-cache combo into a lightweight policy artifact and reports per-domain/per-horizon stress. It remains dataset-local raw-frame 2.5D evidence and not a metric, seconds-level, Stage5C, or SMC result.
+
+## Stage42-T UCY Unseen-Domain Transfer Attempt
+
+```text
+source = fresh_run
+verdict = stage42_t_ucy_transfer_blocked_no_candidate_predictions
+gates = 8 / 11
+ucy_ade_all = 0.0
+ucy_ade_t50 = 0.0
+ucy_hard_failure = 0.0
+ucy_easy_degradation = 0.0
+available_nonfloor_source_for_ucy = False
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-T attempts a validation-only unseen-domain transfer rule for UCY. The current row cache has no non-floor Stage42-J/P UCY predictions, so UCY remains fallback-only; this is reported as a blocker, not as a success.

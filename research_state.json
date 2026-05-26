@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_s_frozen_row_combo_policy",
-  "current_verdict": "stage42_s_frozen_row_combo_policy_pass",
+  "current_stage": "stage42_t_ucy_unseen_transfer",
+  "current_verdict": "stage42_t_ucy_transfer_blocked_no_candidate_predictions",
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
@@ -62,7 +62,7 @@
     }
   },
   "latest_chinese_goal_summary": {
-    "source": "cached_verified_plus_stage42_a_to_s_fresh_runs_and_cached_verified_evidence",
+    "source": "cached_verified_plus_stage42_a_to_t_fresh_runs_and_cached_verified_evidence",
     "path": "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md",
     "detailed_path": "outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor",
@@ -70,6 +70,7 @@
     "latest_stage42_p_summary": "Stage42-P repaired mean ADE t50 with explicit t50-weighted gain/harm selection, train-only normalization, and validation-only policy selection, but the 3-seed t50 CI low remains negative, so it is not yet a paper-stable t50 claim.",
     "latest_stage42_r_summary": "Stage42-R built a local row prediction cache and completed validation-only row-level combo evaluation for floor / Stage42-J static expert / Stage42-P t50 gain-harm sources; gates 15/15, ADE t50 0.037934, t50 CI low 0.027740, hard/failure 0.054792, easy degradation 0.001102. It remains dataset-local raw-frame 2.5D branch evidence, not metric/seconds-level, Stage5C, or SMC.",
     "latest_stage42_s_summary": "Stage42-S froze the Stage42-R row-cache combo into a lightweight policy artifact with policy/cache/schema hashes and per-domain/per-horizon stress; gates 13/13, positive domains ETH_UCY and TrajNet, UCY fallback-only in this combo stress. It remains dataset-local raw-frame 2.5D branch evidence, not metric/seconds-level, Stage5C, or SMC.",
+    "latest_stage42_t_summary": "Stage42-T attempted a validation-only unseen-domain transfer rule for UCY and evaluated UCY once; gates 8/11, UCY all/t50/hard remained 0 because the current Stage42-R row cache has no non-floor Stage42-J/P candidate predictions for UCY. This is a blocker diagnosis, not a success.",
     "true_3d": false,
     "foundation_world_model": false,
     "metric_or_seconds_claim": false,
@@ -647,7 +648,10 @@
     "outputs/stage42_long_research/frozen_row_combo_policy_stage42.md",
     "outputs/stage42_long_research/frozen_row_combo_policy_stage42.json",
     "outputs/stage42_long_research/frozen_row_combo_policy_stage42_policy.json",
-    "outputs/stage42_long_research/stage42_stage_s_gate.md"
+    "outputs/stage42_long_research/stage42_stage_s_gate.md",
+    "outputs/stage42_long_research/ucy_unseen_transfer_stage42.md",
+    "outputs/stage42_long_research/ucy_unseen_transfer_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_t_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13094,10 +13098,31 @@
         "stage5c_executed": false,
         "smc_enabled": false
       }
+    },
+    "stage_t_ucy_unseen_transfer": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/ucy_unseen_transfer_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_t_gate.md",
+      "gates_passed": 8,
+      "gates_total": 11,
+      "verdict": "stage42_t_ucy_transfer_blocked_no_candidate_predictions",
+      "ucy_ade_all": 0.0,
+      "ucy_ade_t50": 0.0,
+      "ucy_hard_failure": 0.0,
+      "ucy_easy_degradation": 0.0,
+      "available_nonfloor_source_for_ucy": false,
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
-    "source": "cached_verified_plus_stage42_s_frozen_row_combo_policy",
+    "source": "cached_verified_plus_stage42_t_ucy_unseen_transfer_blocker",
     "path": "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md",
     "summary_scope": "detailed_routes_failures_successes_current_best_and_boundaries",
     "stage42_p_verdict": "stage42_p_t50_gain_harm_selector_pass",
@@ -13111,6 +13136,8 @@
       "ETH_UCY",
       "TrajNet"
     ],
+    "stage42_t_verdict": "stage42_t_ucy_transfer_blocked_no_candidate_predictions",
+    "stage42_t_available_nonfloor_source_for_ucy": false,
     "true_3d": false,
     "foundation_world_model": false,
     "metric_or_seconds_claim": false,
