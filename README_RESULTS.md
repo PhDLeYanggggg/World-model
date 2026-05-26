@@ -3039,3 +3039,18 @@ smc_enabled = false
 ```
 
 Stage42-AL audits whether the locked post-repair policy can be claimed as a full proposed source-level split evaluation. It cannot: UCY matches the proposed source-level test row count, but TrajNet is only partially covered by the current locked-policy stress pool and ETH_UCY stress rows are extra available rows outside the proposed source-level test split. The correct claim remains available row-level post-repair stress with explicit coverage gap, not full source-level split evaluation.
+
+## M3W Long-Term Execution Summary
+
+```text
+source = cached_verified_plus_stage42_ba_summary
+file = README_M3W_EXECUTION_SUMMARY_ZH.md
+scope = detailed route / failure / success / current best deployable summary
+current_best_deployable = M3W-Neural v1 protected policy under Stage37 / teacher safety floor
+current_claim = protected dataset-local raw-frame 2.5D multi-agent world-state candidate
+t100_status = blocker / diagnostic after train-only source-CV guard
+stage5c_executed = false
+smc_enabled = false
+```
+
+A new reader-facing Chinese summary has been added at `README_M3W_EXECUTION_SUMMARY_ZH.md`. It consolidates what was attempted, which routes failed and why, which routes succeeded, the strongest meaningful metrics, and the strict non-claims: no true-3D, no foundation, no metric/seconds-level claim, no Stage5C execution, and no SMC.
