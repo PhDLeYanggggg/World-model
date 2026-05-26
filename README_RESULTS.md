@@ -158,6 +158,27 @@ SMC_enabled = false
 
 Stage42-BJ turns the BI blocker into an explicit acquisition / user-action package. It distinguishes raw t100-capable files from independent scene/source groups: the local ETH_UCY files collapse to one independent `ETH/seq_eth` source, and TrajNet has no independent local t100 source. Therefore the next real progress requires legal official/user-provided independent t100 sources for ETH_UCY and TrajNet, followed by conversion and train-only source-CV. No data was auto-downloaded and no registry-only source was counted as converted/evaluated.
 
+Latest Stage42-BK post-BJ local source verification:
+
+```text
+source = fresh_post_bj_local_source_verification
+verdict = stage42_bk_local_source_verification_pass
+gates = 11 / 11
+ETH_UCY parsed files = 18
+ETH_UCY t100-capable files = 7
+ETH_UCY independent t100 groups = 6
+ETH_UCY potential new groups vs BJ = 5
+ETH-Person XML t100 candidates = 5
+TrajNet parsed files = 59
+TrajNet t100-capable files = 0
+TrajNet loader gap = fixed short snippets, not raw long tracks
+global_t100_positive_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BK closes a real loader-audit gap: local `ETH-Person/data/*.xml` files contain t100-capable ETH_UCY-style tracks and can potentially repair ETH_UCY source support after license/terms confirmation, conversion, no-leakage, and train-only source-CV. It does not count these XML files as converted/evaluated yet. For TrajNet, the local files parse as 8/20-step challenge snippets, so they cannot repair raw-frame t100; longer official/user-provided raw sources are still required.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

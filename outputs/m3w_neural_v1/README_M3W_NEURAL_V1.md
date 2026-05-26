@@ -78,6 +78,8 @@ Stage42-BI repairs the UCY independent-source easy-gate failure with a source-ro
 
 Stage42-BJ packages that post-BI blocker into an explicit acquisition/readiness queue. It passes `14 / 14` gates, preserves the UCY t100 repair, and clarifies strict independent-source deficits: ETH_UCY has only `1` independent t100 source and needs `2` more; TrajNet has `0` and needs `3`. The local inventory is exhausted for these independent-source requirements, no raw/gated data was auto-downloaded, and global t100 remains a raw-frame diagnostic blocker rather than a deployable positive claim.
 
+Stage42-BK then verifies local source/path and loader gaps after BJ. It passes `11 / 11` gates and finds a concrete ETH_UCY repair path: local `ETH-Person/data/*.xml` files provide `5` t100-capable independent conversion candidates (`ETH_UCY` now has `6` local independent t100 groups in the scan, `5` potential new groups vs BJ). These are not counted as converted or evaluated until license/terms confirmation, XML conversion, no-leakage, and train-only source-CV. The same audit explains the TrajNet blocker: `59` local TrajNet files parse as fixed `8/20`-step snippets and provide `0` t100-capable raw-frame sources, so TrajNet still needs longer official/user-provided raw sources.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
