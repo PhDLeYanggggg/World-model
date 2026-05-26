@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, t100 easy-safety repair evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
@@ -280,6 +280,39 @@ python3 -m pytest tests/test_stage42_repaired_protocol_robustness.py
   -> 4 passed
 python3 -m pytest tests
   -> 410 passed
+```
+
+Latest Stage42-AY AW repaired-protocol t100 easy-safety repair:
+
+```text
+source = fresh_run
+verdict = stage42_ay_t100_easy_safety_repair_pass
+gates = 17 / 17
+validation_best_variant = family_baseline_rel_only
+guarded_slice = TrajNet|100
+kept_t100_slices = ETH_UCY|100, UCY|100
+h100_easy_before = 0.023961
+h100_easy_after = -0.006504
+h100_easy_CI_high = 0.009833
+global_all_after = 0.305467
+global_t50_after = 0.289698
+global_t100_raw_frame_diagnostic_after = 0.067836
+global_hard_failure_after = 0.279764
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AY repairs the Stage42-AX horizon=100 easy-safety weak slice with a strict validation-only t100 guard. It sacrifices some t100 diagnostic gain for safety: h100 t100 raw-frame diagnostic drops from +21.02% to +6.78%, while h100 easy degradation improves from +2.396% to -0.650% and h100 easy CI high is below 2%. This is a safer repaired-policy candidate, not metric/seconds-level evidence and not an independent future holdout confirmation.
+
+Validation for Stage42-AY:
+
+```text
+python3 run_stage42_aw_t100_easy_safety_repair.py
+  -> stage42_ay_t100_easy_safety_repair_pass (17/17)
+python3 -m pytest tests/test_stage42_aw_t100_easy_safety_repair.py
+  -> 4 passed
+python3 -m pytest tests
+  -> 414 passed
 ```
 
 Latest Stage42-AD calibration evidence refresh:

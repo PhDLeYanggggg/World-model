@@ -853,3 +853,23 @@ smc_enabled = false
 ```
 
 Stage42-AX verifies the Stage42-AW repaired validation-support protocol without reusing test metrics for threshold selection. The repaired protocol supports global positive bootstrap evidence and positive TrajNet/UCY source-level evidence. It also keeps the remaining limitation explicit: horizon 100 remains raw-frame diagnostic and has an easy-safety weak slice, so uniform horizon success and metric/seconds-level claims remain disallowed.
+
+## Stage42-AY AW T100 Easy-Safety Repair
+
+```text
+source = fresh_run
+verdict = stage42_ay_t100_easy_safety_repair_pass
+gates = 17 / 17
+guarded_slice = TrajNet|100
+h100_easy_before = 0.023961
+h100_easy_after = -0.006504
+h100_easy_CI_high = 0.009833
+global_all_after = 0.305467
+global_t50_after = 0.289698
+global_t100_raw_frame_diagnostic_after = 0.067836
+global_hard_failure_after = 0.279764
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AY applies a stricter validation-only t100 easy-safety guard to the Stage42-AW repaired protocol. `TrajNet|100` is guarded back to the floor because its validation easy degradation is above the strict non-harm threshold, while `UCY|100` remains active. This repairs the Stage42-AX h100 easy-safety weak slice but reduces t100 diagnostic gain; it remains dataset-local raw-frame evidence and needs future held-out confirmation for stronger paper claims.

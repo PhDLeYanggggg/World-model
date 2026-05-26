@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_ax_repaired_protocol_robustness",
-  "current_verdict": "stage42_ax_repaired_protocol_robustness_pass_with_t100_limit",
+  "current_stage": "stage42_ay_t100_easy_safety_repair",
+  "current_verdict": "stage42_ay_t100_easy_safety_repair_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_ax_verified",
+    "source": "fresh_run_plus_stage42_ay_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AX repaired protocol robustness; focused pytest passed, full pytest pending.",
-    "scope": "Detailed M3W route/failure/success summary plus Stage42-AX repaired validation-support protocol robustness and t100 limitation.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AY t100 easy-safety repair; focused pytest passed, full pytest pending.",
+    "scope": "Detailed M3W route/failure/success summary plus Stage42-AY strict validation-only t100 easy-safety repair.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AX verifies the Stage42-AW repaired validation-support protocol with global bootstrap support and positive TrajNet/UCY evidence while preserving the t100 easy-safety limitation.",
+    "latest_branch_success": "Stage42-AY repairs the AX h100 easy-safety weak slice with a validation-only strict t100 guard while keeping raw-frame/2.5D/no-Stage5C/no-SMC boundaries.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -63,7 +63,10 @@
       "user_summary_refresh_full_pytest": "406 passed",
       "stage42_ax_runner": "pass",
       "stage42_ax_focused_pytest": "4 passed",
-      "stage42_ax_full_pytest": "410 passed"
+      "stage42_ax_full_pytest": "410 passed",
+      "stage42_ay_runner": "pass",
+      "stage42_ay_focused_pytest": "4 passed",
+      "stage42_ay_full_pytest": "414 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -14563,26 +14566,28 @@
     }
   },
   "latest_user_facing_summary_refresh": {
-    "source": "cached_verified_plus_stage42_ax",
+    "source": "fresh_run_plus_stage42_ay",
     "readme": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "also_updated": [
       "README_RESULTS.md",
       "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md"
     ],
-    "summary": "Added Stage42-AX repaired protocol robustness, positive TrajNet/UCY support, global bootstrap evidence, and t100 weak-slice limitation.",
+    "summary": "Added Stage42-AY t100 easy-safety repair, including validation-only TrajNet|100 guard, h100 easy repair, and reduced t100 diagnostic gain boundary.",
     "verification": {
-      "stage42_ax_runner": "pass",
-      "stage42_ax_focused_pytest": "4 passed",
-      "full_pytest": "410 passed"
+      "stage42_ay_runner": "pass",
+      "stage42_ay_focused_pytest": "4 passed",
+      "full_pytest": "414 passed"
     },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,
       "metric_or_seconds_claim": false,
       "raw_frame_dataset_local_only": true,
+      "t100_seconds_claim": false,
       "stage5c_executed": false,
       "smc_enabled": false,
-      "ungated_neural_deployable": false
+      "ungated_neural_deployable": false,
+      "post_ax_repair_needs_future_holdout_for_stronger_paper_claim": true
     }
   },
   "stage42_ax_repaired_protocol_robustness": {
@@ -14644,6 +14649,67 @@
       "runner": "python3 run_stage42_repaired_protocol_robustness.py -> stage42_ax_repaired_protocol_robustness_pass_with_t100_limit (14/14)",
       "focused_pytest": "python3 -m pytest tests/test_stage42_repaired_protocol_robustness.py -> 4 passed",
       "full_pytest": "python3 -m pytest tests -> 410 passed"
+    }
+  },
+  "stage42_ay_t100_easy_safety_repair": {
+    "source": "fresh_run",
+    "verdict": "stage42_ay_t100_easy_safety_repair_pass",
+    "gate": "17/17",
+    "report": "outputs/stage42_long_research/aw_t100_easy_safety_repair_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ay_gate.md",
+    "validation_best_variant": "family_baseline_rel_only",
+    "repair_policy": {
+      "type": "stage42ay_validation_only_strict_t100_easy_guard",
+      "threshold": 0.0,
+      "uses_test_metrics_for_threshold": false,
+      "guarded_slices": [
+        "TrajNet|100"
+      ],
+      "kept_slices": [
+        "ETH_UCY|100",
+        "UCY|100"
+      ]
+    },
+    "repair_effect": {
+      "source": "fresh_run",
+      "h100_easy_before": 0.02396103861802401,
+      "h100_easy_after": -0.006503620545102895,
+      "h100_t100_before": 0.2101619937931234,
+      "h100_t100_after": 0.06783574515846236,
+      "global_all_before": 0.3568057717890797,
+      "global_all_after": 0.30546665786585847,
+      "guarded_slice_count": 1
+    },
+    "metrics_after": {
+      "all_improvement": 0.30546665786585847,
+      "t50_improvement": 0.28969780579498305,
+      "t100_raw_frame_diagnostic_improvement": 0.06783574515846236,
+      "hard_failure_improvement": 0.2797638798753579,
+      "easy_degradation": -0.372957766876426,
+      "h100_easy_degradation": -0.006503620545102895
+    },
+    "bootstrap_after": {
+      "all_ci_low": 0.3016975194055898,
+      "t50_ci_low": 0.2849132545605384,
+      "t100_ci_low": 0.06324737053313008,
+      "hard_ci_low": 0.275586191250506,
+      "h100_easy_ci_high": 0.00983292305836788
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false,
+      "post_ax_repair_needs_future_holdout_for_stronger_paper_claim": true
+    },
+    "verification": {
+      "runner": "python3 run_stage42_aw_t100_easy_safety_repair.py -> stage42_ay_t100_easy_safety_repair_pass (17/17)",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_aw_t100_easy_safety_repair.py -> 4 passed",
+      "full_pytest": "python3 -m pytest tests -> 414 passed"
     }
   }
 }
