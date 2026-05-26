@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_r_row_prediction_cache",
-  "current_verdict": "stage42_r_row_cached_combo_pass",
+  "current_stage": "stage42_s_frozen_row_combo_policy",
+  "current_verdict": "stage42_s_frozen_row_combo_policy_pass",
   "stage42_c_full_waypoint_dynamics": {
     "source": "fresh_run",
     "report": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
@@ -62,13 +62,14 @@
     }
   },
   "latest_chinese_goal_summary": {
-    "source": "cached_verified_plus_stage42_a_to_r_fresh_runs_and_cached_verified_evidence",
+    "source": "cached_verified_plus_stage42_a_to_s_fresh_runs_and_cached_verified_evidence",
     "path": "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md",
     "detailed_path": "outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor",
     "summary_scope": "routes_tried_failure_reasons_successes_claim_boundaries_next_steps",
     "latest_stage42_p_summary": "Stage42-P repaired mean ADE t50 with explicit t50-weighted gain/harm selection, train-only normalization, and validation-only policy selection, but the 3-seed t50 CI low remains negative, so it is not yet a paper-stable t50 claim.",
     "latest_stage42_r_summary": "Stage42-R built a local row prediction cache and completed validation-only row-level combo evaluation for floor / Stage42-J static expert / Stage42-P t50 gain-harm sources; gates 15/15, ADE t50 0.037934, t50 CI low 0.027740, hard/failure 0.054792, easy degradation 0.001102. It remains dataset-local raw-frame 2.5D branch evidence, not metric/seconds-level, Stage5C, or SMC.",
+    "latest_stage42_s_summary": "Stage42-S froze the Stage42-R row-cache combo into a lightweight policy artifact with policy/cache/schema hashes and per-domain/per-horizon stress; gates 13/13, positive domains ETH_UCY and TrajNet, UCY fallback-only in this combo stress. It remains dataset-local raw-frame 2.5D branch evidence, not metric/seconds-level, Stage5C, or SMC.",
     "true_3d": false,
     "foundation_world_model": false,
     "metric_or_seconds_claim": false,
@@ -642,7 +643,11 @@
     "outputs/stage42_long_research/stage42_stage_q_gate.md",
     "outputs/stage42_long_research/row_prediction_cache_stage42.md",
     "outputs/stage42_long_research/row_prediction_cache_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_r_gate.md"
+    "outputs/stage42_long_research/stage42_stage_r_gate.md",
+    "outputs/stage42_long_research/frozen_row_combo_policy_stage42.md",
+    "outputs/stage42_long_research/frozen_row_combo_policy_stage42.json",
+    "outputs/stage42_long_research/frozen_row_combo_policy_stage42_policy.json",
+    "outputs/stage42_long_research/stage42_stage_s_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13057,10 +13062,42 @@
         "stage5c_executed": false,
         "smc_enabled": false
       }
+    },
+    "stage_s_frozen_row_combo_policy": {
+      "source": "fresh_run_from_stage42r_row_cache",
+      "report": "outputs/stage42_long_research/frozen_row_combo_policy_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_s_gate.md",
+      "policy_artifact": "outputs/stage42_long_research/frozen_row_combo_policy_stage42_policy.json",
+      "gates_passed": 13,
+      "gates_total": 13,
+      "verdict": "stage42_s_frozen_row_combo_policy_pass",
+      "policy_hash": "33450e033e14b10293b8a10796d934d7689e39358ab5eaa338d684a36b015d3f",
+      "cache_hash": "f338f5c57b735b013ca210e30e9a6bbcfeebb646d4e0bc2e7f9e799006ac4ed6",
+      "ade_all": 0.05238704221741153,
+      "ade_t50": 0.03793420310086152,
+      "ade_t50_ci_low": 0.02774018469754745,
+      "ade_hard_failure": 0.05479172593908743,
+      "ade_easy_degradation": 0.001101978371627214,
+      "positive_domains": [
+        "ETH_UCY",
+        "TrajNet"
+      ],
+      "t50_positive_domains": [
+        "ETH_UCY",
+        "TrajNet"
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
-    "source": "cached_verified_plus_stage42_r_row_prediction_cache_combo",
+    "source": "cached_verified_plus_stage42_s_frozen_row_combo_policy",
     "path": "outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md",
     "summary_scope": "detailed_routes_failures_successes_current_best_and_boundaries",
     "stage42_p_verdict": "stage42_p_t50_gain_harm_selector_pass",
@@ -13068,6 +13105,12 @@
     "stage42_r_verdict": "stage42_r_row_cached_combo_pass",
     "stage42_r_ade_t50": 0.03793420310086152,
     "stage42_r_t50_ci_low": 0.02774018469754745,
+    "stage42_s_verdict": "stage42_s_frozen_row_combo_policy_pass",
+    "stage42_s_policy_hash": "33450e033e14b10293b8a10796d934d7689e39358ab5eaa338d684a36b015d3f",
+    "stage42_s_positive_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
     "true_3d": false,
     "foundation_world_model": false,
     "metric_or_seconds_claim": false,

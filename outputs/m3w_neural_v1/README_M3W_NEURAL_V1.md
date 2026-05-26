@@ -375,3 +375,22 @@ smc_enabled = false
 ```
 
 Stage42-R builds a local NPZ row prediction cache for floor / Stage42-J static expert / Stage42-P t+50 gain-harm selected errors, then performs validation-only combo evaluation from cache. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+## Stage42-S Frozen Row Combo Policy
+
+```text
+source = fresh_run_from_stage42r_row_cache
+verdict = stage42_s_frozen_row_combo_policy_pass
+gates = 13 / 13
+policy_hash = 33450e033e14b10293b8a10796d934d7689e39358ab5eaa338d684a36b015d3f
+cache_hash = f338f5c57b735b013ca210e30e9a6bbcfeebb646d4e0bc2e7f9e799006ac4ed6
+ade_all = 0.05238704221741153
+ade_t50 = 0.03793420310086152
+ade_t50_ci_low = 0.02774018469754745
+ade_hard_failure = 0.05479172593908743
+ade_easy_degradation = 0.001101978371627214
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-S freezes the Stage42-R row-cache combo into a lightweight policy artifact and reports per-domain/per-horizon stress. It remains dataset-local raw-frame 2.5D evidence and not a metric, seconds-level, Stage5C, or SMC result.

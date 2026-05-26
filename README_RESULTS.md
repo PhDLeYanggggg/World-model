@@ -10,7 +10,7 @@ Full long-form Chinese route/failure/success summary for the current goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-R. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O/P investigated full-waypoint static/context repair and explicit gain/harm selector repair. Stage42-Q identified Stage42-J/Stage42-P complementarity as report-level preflight only, and Stage42-R then built a local row prediction cache for validation-only combo evaluation. Stage42-R passed its row-cache combo gates with positive t+50 CI, but it remains dataset-local raw-frame 2.5D branch evidence and does not change the no-metric/no-Stage5C/no-SMC boundary.
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-S. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O/P investigated full-waypoint static/context repair and explicit gain/harm selector repair. Stage42-Q identified Stage42-J/Stage42-P complementarity as report-level preflight only, Stage42-R built a local row prediction cache for validation-only combo evaluation, and Stage42-S froze that combo as a lightweight policy artifact with per-domain/per-horizon stress. Stage42-S passed 13/13 gates, but it remains dataset-local raw-frame 2.5D branch evidence and does not change the no-metric/no-Stage5C/no-SMC boundary.
 
 Latest Stage42-R row prediction cache combo:
 
@@ -2234,3 +2234,22 @@ smc_enabled = false
 ```
 
 Stage42-R builds a local NPZ row prediction cache for floor / Stage42-J static expert / Stage42-P t+50 gain-harm selected errors, then performs validation-only combo evaluation from cache. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+## Stage42-S Frozen Row Combo Policy
+
+```text
+source = fresh_run_from_stage42r_row_cache
+verdict = stage42_s_frozen_row_combo_policy_pass
+gates = 13 / 13
+policy_hash = 33450e033e14b10293b8a10796d934d7689e39358ab5eaa338d684a36b015d3f
+cache_hash = f338f5c57b735b013ca210e30e9a6bbcfeebb646d4e0bc2e7f9e799006ac4ed6
+ade_all = 0.05238704221741153
+ade_t50 = 0.03793420310086152
+ade_t50_ci_low = 0.02774018469754745
+ade_hard_failure = 0.05479172593908743
+ade_easy_degradation = 0.001101978371627214
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-S freezes the Stage42-R row-cache combo into a lightweight policy artifact and reports per-domain/per-horizon stress. It remains dataset-local raw-frame 2.5D evidence and not a metric, seconds-level, Stage5C, or SMC result.

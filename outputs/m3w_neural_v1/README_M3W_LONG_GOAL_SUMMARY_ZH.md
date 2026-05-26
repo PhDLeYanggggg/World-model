@@ -1,7 +1,7 @@
 # M3W 长期目标研究总账：路线、失败、成功与当前结论
 
 更新时间：2026-05-26  
-汇总状态：`cached_verified` 汇总 Stage18-Stage42 已生成报告；Stage42-A 到 Stage42-R 中明确标注 `fresh_run` 的实验按原报告记录。  
+汇总状态：`cached_verified` 汇总 Stage18-Stage42 已生成报告；Stage42-A 到 Stage42-S 中明确标注 `fresh_run` 的实验按原报告记录。  
 用途：这是给用户看的一个总 README，把“这个长期目标内我做了什么、尝试了哪些路线、哪些失败、为什么失败、哪些成功、当前最强可部署是谁、还不能声称什么”集中写清楚。
 
 这不是宣传稿，也不是论文 claim。它是研究状态账本。
@@ -52,6 +52,7 @@ not claim =
 9. Stage41/42 把 neural 做成受保护的世界状态候选：full-waypoint、sequence ablation、static-gated repair、gain/harm selector 等逐步推进。
 10. 到 Stage42-P，t+50 gain/harm selector 均值修复成功，但 seed-level t50 稳定性还不足，不能包装成完整 A刊级 t+50 结论。
 11. Stage42-Q 发现 Stage42-J static expert 与 Stage42-P gain/harm selector 互补，但只是 report-level preflight；Stage42-R 随后建立 row prediction cache，完成 validation-only combo eval，并把 cached combo t+50 CI low 修到正数。
+12. Stage42-S 将 Stage42-R combo 冻结成轻量 policy artifact，记录 policy hash/cache hash/schema hash，并完成 per-domain/per-horizon stress audit。
 
 核心规律：
 
@@ -988,3 +989,22 @@ smc_enabled = false
 ```
 
 Stage42-R builds a local NPZ row prediction cache for floor / Stage42-J static expert / Stage42-P t+50 gain-harm selected errors, then performs validation-only combo evaluation from cache. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+## Stage42-S Frozen Row Combo Policy
+
+```text
+source = fresh_run_from_stage42r_row_cache
+verdict = stage42_s_frozen_row_combo_policy_pass
+gates = 13 / 13
+policy_hash = 33450e033e14b10293b8a10796d934d7689e39358ab5eaa338d684a36b015d3f
+cache_hash = f338f5c57b735b013ca210e30e9a6bbcfeebb646d4e0bc2e7f9e799006ac4ed6
+ade_all = 0.05238704221741153
+ade_t50 = 0.03793420310086152
+ade_t50_ci_low = 0.02774018469754745
+ade_hard_failure = 0.05479172593908743
+ade_easy_degradation = 0.001101978371627214
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-S freezes the Stage42-R row-cache combo into a lightweight policy artifact and reports per-domain/per-horizon stress. It remains dataset-local raw-frame 2.5D evidence and not a metric, seconds-level, Stage5C, or SMC result.
