@@ -233,6 +233,29 @@ SMC_enabled = false
 
 Stage42-BM keeps the positive BL dry-run as technical evidence but blocks any official/deployable/global t100 claim. The OpenTraj root MIT license is treated as toolkit/software license only, not permission for ETH-Person data. The user-action file is `outputs/stage42_long_research/user_action_required_eth_person_terms_stage42.md`; ETH-Person XML can only advance after official terms or user-confirmed permission are provided.
 
+Latest Stage42-BN strict source time/geometry calibration audit:
+
+```text
+source = fresh_source_time_geometry_calibration_audit
+verdict = stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked
+gates = 13 / 13
+source_records_audited = 7
+ETH source-specific metric/time sources = 2
+UCY source-specific metric/time sources = 4
+source-specific calibrated candidates =
+  ETH_seq_eth, ETH_seq_hotel,
+  UCY_zara01, UCY_zara02, UCY_zara03, UCY_students03
+SDD scale_count = 60
+SDD metric claim allowed = false
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+M3W official metric/seconds claim allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BN moves calibration forward without overclaiming. ETH `seq_eth` / `seq_hotel` and several UCY sources have local evidence for source-specific annotation-step geometry/time calibration, but this does not upgrade the global M3W claim. Current reports must still use raw-frame / dataset-local wording unless a future evaluation explicitly restricts itself to a verified source-specific calibrated subset.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

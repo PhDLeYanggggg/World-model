@@ -146,6 +146,7 @@ Bootstrap lower bounds:
 | Stage42-BK | ETH-Person XML 发现 5 个 ETH_UCY t100-capable 候选；TrajNet 本地文件为短 snippet，t100 files=0 | ETH_UCY 有本地 loader-gap 修复入口；TrajNet 仍需更长官方/用户 raw source |
 | Stage42-BL | ETH-Person XML technical dry-run：5 strict independent sources，t100 windows 1485，mean +0.683549，min +0.496424，easy -0.014155，gates 13/13 | 技术路径强正，但 terms 未确认，不能算 official / deployable / global t100 |
 | Stage42-BM | ETH-Person terms audit：gates 14/14；OpenTraj MIT 被判定为 toolkit/software-only；ETH-Person local terms file 未找到；official URL 已记录但 terms 未验证 | 正确保留 BL 技术证据，同时阻止 official converted/evaluated、deployable t100、global t100 overclaim |
+| Stage42-BN | source time/geometry calibration：gates 13/13；ETH source-specific metric/time sources = 2，UCY = 4；SDD scale_count = 60 但 metric claim false | 为未来 source-specific calibrated subset 打开入口，同时继续禁止 global metric/seconds claim |
 
 ## 4. 失败路线和原因
 
@@ -325,10 +326,13 @@ ETH-Person XML 已经 official converted/evaluated。
 2. **补 TrajNet 原始长轨迹或合法官方 t100-capable source。**  
    本地 TrajNet 是短 snippet，不支持 raw-frame t100。TrajNet 是 global t100 claim 的硬 blocker。
 
-3. **如果继续追神经世界模型主贡献，要重训 graph/scene-rich neural protocol。**  
+3. **做 source-specific calibrated subset 评估，而不是全局 metric claim。**
+   Stage42-BN 已确认 ETH `seq_eth` / `seq_hotel` 和 UCY `zara01/02/03/students03` 有局部 H + annotation-step timing evidence。下一步如果要写 metric/time，只能在这些 source-specific calibrated subsets 上重评，并继续把全局 M3W 写成 raw-frame/dataset-local。
+
+4. **如果继续追神经世界模型主贡献，要重训 graph/scene-rich neural protocol。**
    当前 source-level 主机制是 baseline-family rollout context。若要证明 neural dynamics，需要更强的 scene tokens、interaction graph、full-waypoint loss、multi-domain source split 和 multi-seed/bootstrap。
 
-4. **继续保持 Stage37 / teacher safety floor。**  
+5. **继续保持 Stage37 / teacher safety floor。**
    在 neural 真的稳定超过 Stage37 前，部署不能脱离 fallback floor。
 
 ## 7. 最终当前 verdict
@@ -348,6 +352,7 @@ overall best package：M3W-Neural v1 protected dataset-local raw-frame package
 source-level strongest mechanism：baseline-family rollout context + validation-safe guard
 t100 global claim：否，仍 blocked
 ETH-Person XML：technical dry-run positive；Stage42-BM 已确认 terms/license blocker，official/deployable/global t100 claim 仍禁止
+metric/time：Stage42-BN 找到 ETH/UCY source-specific candidates，但 global metric/seconds claim 仍禁止
 
 current verdict:
   M3W 是一个有实证进展的 protected 2.5D multi-agent world-state candidate。

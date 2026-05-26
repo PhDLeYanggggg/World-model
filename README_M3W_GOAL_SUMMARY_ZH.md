@@ -645,6 +645,22 @@ deployable_t100_claim_allowed = false
 global_t100_positive_claim_allowed = false
 ```
 
+随后 Stage42-BN 已完成 source-level time/geometry calibration audit：
+
+```text
+runner = pass
+focused pytest = 11 passed
+verdict = stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked
+gate = 13 / 13
+ETH source-specific metric/time sources = 2
+UCY source-specific metric/time sources = 4
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+M3W official metric/seconds claim allowed = false
+```
+
+解释：ETH `seq_eth` / `seq_hotel` 和 UCY `zara01/02/03/students03` 有局部 H + 2.5fps / 0.4s annotation-step evidence，可作为未来 source-specific calibrated subset 的候选；但不能把整个 M3W 写成 metric 或 seconds-level。
+
 已知 runtime 注意事项：
 
 ```text

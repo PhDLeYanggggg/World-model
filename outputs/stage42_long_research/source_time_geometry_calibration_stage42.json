@@ -1,0 +1,364 @@
+{
+  "source": "fresh_source_time_geometry_calibration_audit",
+  "stage": "Stage42-BN Strict Source Time/Geometry Calibration",
+  "generated_at_utc": "2026-05-26T13:56:53.923385+00:00",
+  "git_commit": "05ab286",
+  "input_hash": "b03c732f021417561011d8da11cef983af722be1c61b827cb8f27e884b661320",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BN 是 strict source-level time/geometry calibration audit，不训练模型，不下载数据。",
+    "本步骤区分 source-specific calibration evidence 与全局 metric/seconds claim。",
+    "即使某些 ETH/UCY source 有 meters / FPS / homography evidence，也不能把整个 M3W 写成 metric 或 seconds-level。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "source_records": [
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "ETH_seq_eth",
+      "domain": "ETH_UCY",
+      "dataset": "ETH",
+      "root": "external_data/OpenTraj/datasets/ETH/seq_eth",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+      "trajectory_file_exists": true,
+      "license_status": "no_license_information_in_local_eth_readme",
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": 0.00037703075736272813
+      },
+      "timing": {
+        "video_fps": null,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "obsmat_positions_velocities_in_meters",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "README provides H.txt and world2image example; direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "allowed_local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "ETH_seq_hotel",
+      "domain": "ETH_UCY",
+      "dataset": "ETH",
+      "root": "external_data/OpenTraj/datasets/ETH/seq_hotel",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+      "trajectory_file_exists": true,
+      "license_status": "no_license_information_in_local_eth_readme",
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": 7.514896940835595e-05
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "obsmat_positions_velocities_in_meters",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "README provides H.txt and world2image example; direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "allowed_local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "UCY_zara01",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "root": "external_data/OpenTraj/datasets/UCY/zara01",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+      "trajectory_file_exists": true,
+      "license_status": "free_use_with_credit_per_local_ucy_readme",
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": -0.0005623305499386102
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "allowed_local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "UCY_zara02",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "root": "external_data/OpenTraj/datasets/UCY/zara02",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+      "trajectory_file_exists": true,
+      "license_status": "free_use_with_credit_per_local_ucy_readme",
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": -0.0005623305499386102
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "allowed_local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "UCY_zara03",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "root": "external_data/OpenTraj/datasets/UCY/zara03",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+      "trajectory_file_exists": true,
+      "license_status": "free_use_with_credit_per_local_ucy_readme",
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": -0.0005623305499386102
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "allowed_local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "UCY_students03",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "root": "external_data/OpenTraj/datasets/UCY/students03",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "trajectory_file_exists": true,
+      "license_status": "free_use_with_credit_per_local_ucy_readme",
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": 0.0005022955867298
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "allowed_local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    {
+      "source": "fresh_source_time_geometry_calibration_audit",
+      "source_id": "UCY_students01",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "root": "external_data/OpenTraj/datasets/UCY/students01",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+      "trajectory_file_exists": true,
+      "license_status": "free_use_with_credit_per_local_ucy_readme",
+      "homography": {
+        "path": null,
+        "exists": false,
+        "parseable": false,
+        "determinant": null
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "not_verified_or_missing_source_homography",
+        "meter_coordinates_evidence": false,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": false,
+      "allowed_local_claim": "source_specific_time_evidence_only_coordinate_not_verified",
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    }
+  ],
+  "sdd_audit": {
+    "source": "fresh_source_time_geometry_calibration_audit",
+    "source_id": "SDD_estimated_scale_audit",
+    "dataset": "SDD",
+    "domain": "SDD",
+    "estimated_scale_file": "external_data/OpenTraj/datasets/SDD/estimated_scales.yaml",
+    "scale_count": 60,
+    "certainty_min": 0.0,
+    "certainty_max": 1.0,
+    "open_traj_fps_row_mentions_30": true,
+    "estimated_scale_warning_present": true,
+    "allowed_local_claim": "pixel_raw_frame_with_estimated_scale_diagnostic_only",
+    "metric_claim_allowed": false,
+    "seconds_claim_allowed": false,
+    "reason": "SDD scales are estimated with explicit uncertainty; current Stage42 keeps SDD as pixel raw-frame benchmark."
+  },
+  "diagnostic_sources": [
+    {
+      "source_id": "TrajNet_local_snippets",
+      "dataset": "TrajNet",
+      "domain": "TrajNet",
+      "allowed_local_claim": "dataset_local_short_snippet_only",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "reason": "Local TrajNet files are fixed short snippets and have no verified homography/FPS/scale evidence."
+    },
+    {
+      "source_id": "TGSIM",
+      "dataset": "TGSIM",
+      "domain": "traffic_diagnostic",
+      "allowed_local_claim": "traffic_metric_diagnostic_only",
+      "metric_claim_allowed_for_pedestrian_world_model": false,
+      "seconds_claim_allowed_for_pedestrian_world_model": false,
+      "reason": "TGSIM can be metric traffic diagnostic only, not pedestrian top-down world-model success."
+    },
+    {
+      "source_id": "AerialMPT",
+      "dataset": "AerialMPT",
+      "domain": "aerial_diagnostic",
+      "allowed_local_claim": "dataset_local_raw_frame_only_until_source_terms_geometry_verified",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "reason": "Local Stage42 calibration evidence did not verify source-specific homography/FPS/scale enough for metric/seconds claims."
+    }
+  ],
+  "summary": {
+    "source": "fresh_source_time_geometry_calibration_audit",
+    "source_records_audited": 7,
+    "eth_source_specific_metric_time_sources": 2,
+    "ucy_source_specific_metric_time_sources": 4,
+    "source_specific_metric_time_sources": [
+      "ETH_seq_eth",
+      "ETH_seq_hotel",
+      "UCY_zara01",
+      "UCY_zara02",
+      "UCY_zara03",
+      "UCY_students03"
+    ],
+    "sdd_scale_count": 60,
+    "sdd_metric_claim_allowed": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "training_run": false,
+    "auto_download_executed": false,
+    "user_action_required": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "raw_frame_global_claim_required": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_bn_gate": {
+    "source": "fresh_source_time_geometry_calibration_audit",
+    "gates": {
+      "sources_audited": true,
+      "eth_source_specific_metric_time_evidence_found": true,
+      "ucy_source_specific_metric_time_evidence_found": true,
+      "sdd_estimated_scale_not_overclaimed": true,
+      "trajnet_gap_kept_raw_frame": true,
+      "global_metric_claim_blocked": true,
+      "global_seconds_claim_blocked": true,
+      "m3w_metric_seconds_claim_blocked": true,
+      "user_action_generated": true,
+      "no_training": true,
+      "no_auto_download": true,
+      "no_stage5c": true,
+      "no_smc": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked"
+  }
+}

@@ -84,6 +84,8 @@ Stage42-BL runs the ETH-Person XML path as a technical dry-run without upgrading
 
 Stage42-BM then audits that license/terms blocker directly. It passes `14 / 14` gates and preserves the positive Stage42-BL technical result, but confirms that the OpenTraj root MIT license is toolkit/software-only for this audit and cannot be treated as ETH-Person dataset permission. No ETH-Person-specific local terms file was found; the official URL is recorded from the OpenTraj README, but terms remain unverified. Therefore ETH-Person XML stays technical-only: no official converted/evaluated claim, no deployable/global t100 claim, no metric/seconds-level claim, no Stage5C, and no SMC.
 
+Stage42-BN adds a stricter source-level time/geometry calibration audit. It identifies source-specific calibration candidates (`ETH_seq_eth`, `ETH_seq_hotel`, `UCY_zara01`, `UCY_zara02`, `UCY_zara03`, `UCY_students03`) with local evidence for parseable H files plus 2.5fps / 0.4s annotation-step timing. It still blocks global M3W metric/seconds claims: SDD remains pixel raw-frame, TrajNet snippets remain dataset-local short snippets, TGSIM remains traffic diagnostic only, and no Stage5C/SMC claim is allowed.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
