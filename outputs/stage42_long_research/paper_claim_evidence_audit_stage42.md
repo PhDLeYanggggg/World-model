@@ -1,8 +1,8 @@
 # Stage42-Z Paper Claim Evidence Audit
 
 - source: `fresh_audit_from_stage42_wxy_and_paper_package_artifacts`
-- generated_at_utc: `2026-05-26T17:34:07.754019+00:00`
-- git_commit: `c7ab112`
+- generated_at_utc: `2026-05-26T17:43:17.464798+00:00`
+- git_commit: `0da6727`
 - input_hash: `d72803a8ce5a9618928254f5580742b53b84120a1ccb76db158056a2703347ba`
 - gate: `22 / 22`
 - verdict: `stage42_z_paper_claim_evidence_audit_pass`
@@ -50,7 +50,7 @@
 | `outputs/stage42_long_research/model_card_stage42.md` | `True` | 6236 |
 | `outputs/stage42_long_research/data_card_stage42.md` | `True` | 5949 |
 | `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 6114 |
-| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 21111 |
+| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 22534 |
 
 ## Interpretation
 

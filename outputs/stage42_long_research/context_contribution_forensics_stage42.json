@@ -1,0 +1,171 @@
+{
+  "stage": "Stage42-CI context contribution forensics",
+  "source": "fresh_synthesis_from_stage42_ablation_and_claim_audits",
+  "generated_at_utc": "2026-05-26T17:43:17.023713+00:00",
+  "git_commit": "0da6727",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CI 是 context contribution forensics，不下载、不转换、不执行 Stage5C、不启用 SMC。",
+    "本审计整合 retrained ablation / residual / neural / sequence / graph context 证据，防止把 mixed context 结果包装成主贡献。",
+    "future endpoints / waypoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。"
+  ],
+  "inputs": {
+    "unified_ablation_exists": true,
+    "retrained_matrix_exists": true,
+    "incremental_exists": true,
+    "residual_context_exists": true,
+    "neural_context_exists": true,
+    "sequence_context_exists": true,
+    "graph_context_exists": true,
+    "baseline_family_exists": true,
+    "safety_floor_exists": true,
+    "paper_claim_exists": true
+  },
+  "input_hash": "5022a2aee0983a0812852ef32e82c5d56d526069febe988e186f9620d40c3922",
+  "context_rows": [
+    {
+      "module": "baseline_family_rollout_context",
+      "status": "supported_dominant_mechanism",
+      "main_claim_allowed": true,
+      "evidence_sources": [
+        "Stage42-AU",
+        "Stage42-AO",
+        "Stage42-Z"
+      ],
+      "key_evidence": "AU verdict=baseline_family_rollout_context_supported_as_dominant_mechanism; baseline_family_only all=0.287773; t50=0.315425; hard=0.275812",
+      "failure_mode": "not a standalone learned scene/interaction world model; it is a causal baseline-family rollout mechanism under safety floor",
+      "next_action": "Keep as the current dominant mechanism and use it as the teacher/floor for any stronger neural dynamics experiment."
+    },
+    {
+      "module": "history_tokens",
+      "status": "supported_core_component",
+      "main_claim_allowed": true,
+      "evidence_sources": [
+        "Stage42-H",
+        "Stage42-Y",
+        "Stage42-AA"
+      ],
+      "key_evidence": "sequence full-minus-no-history t50=0.457817; hard=0.470799; matrix status=positive_contribution",
+      "failure_mode": "history helps when encoded as sequence/core context; flattened residual context after baseline-family is weaker",
+      "next_action": "Keep sequence history tokens in paper method and future models; do not reduce them to only flattened residual features."
+    },
+    {
+      "module": "domain_expert",
+      "status": "supported_secondary_component",
+      "main_claim_allowed": true,
+      "evidence_sources": [
+        "Stage42-H",
+        "Stage42-AA"
+      ],
+      "key_evidence": "sequence full-minus-no-domain t50=0.041885; hard=0.039867; matrix status=positive_contribution",
+      "failure_mode": "domain expert is smaller than baseline-family/history and must remain validation-gated",
+      "next_action": "Use domain expert as a guarded source/horizon conditioning module, not as a broad generalization claim."
+    },
+    {
+      "module": "goal_scene_context",
+      "status": "mixed_partial_not_main_claim",
+      "main_claim_allowed": false,
+      "evidence_sources": [
+        "Stage42-AO",
+        "Stage42-Y",
+        "Stage42-Z"
+      ],
+      "key_evidence": "AO positive standalone=['history_only', 'motion_goal_context']; AO positive incremental=[]; sequence full-minus-no-goal t50=-0.004259; Z C5 status=mixed_not_main_claim",
+      "failure_mode": "goal/scene has standalone signal but does not add reliably after baseline-family; sequence goal/scene can hurt t50",
+      "next_action": "Try a source/horizon validation-gated goal prototype expert rather than global goal/scene injection; require bootstrap-positive t50 and easy<=2 before main claim."
+    },
+    {
+      "module": "neighbor_interaction_context",
+      "status": "mixed_weak_not_main_claim",
+      "main_claim_allowed": false,
+      "evidence_sources": [
+        "Stage42-AS",
+        "Stage42-Y",
+        "Stage42-Z"
+      ],
+      "key_evidence": "AS verdict=stage42_as_graph_context_not_supported; sequence full-minus-no-neighbor all=-0.000078; hard=-0.001343; matrix status=positive_contribution",
+      "failure_mode": "hand-built kNN/graph residual and sequence neighbor variants are not consistently positive beyond baseline-family context",
+      "next_action": "Only keep neighbor features as auxiliary diagnostics unless a stronger graph-neural trial beats baseline-family with easy preservation."
+    },
+    {
+      "module": "jepa_auxiliary",
+      "status": "negative_or_inconclusive",
+      "main_claim_allowed": false,
+      "evidence_sources": [
+        "Stage18/19 cached",
+        "Stage42-AA"
+      ],
+      "key_evidence": "matrix no_JEPA status=cached_negative_or_inconclusive; interpretation=JEPA-only architecture evidence is cached verified and negative/unsafe; Stage42 does not have a fresh no-JEPA retrain that supports a positive JEPA claim.",
+      "failure_mode": "non-collapse did not translate into stable selector/failure/correction/full-waypoint lift",
+      "next_action": "Keep JEPA as diagnostic/auxiliary only until a downstream probe improves protected metrics."
+    },
+    {
+      "module": "transformer_dynamics",
+      "status": "negative_or_inconclusive_as_independent_claim",
+      "main_claim_allowed": false,
+      "evidence_sources": [
+        "Stage39/40 cached",
+        "Stage42-AA"
+      ],
+      "key_evidence": "matrix no_Transformer status=negative_or_inconclusive; delta_t50=-0.006705",
+      "failure_mode": "current Transformer/proxy evidence is protected/diagnostic and not floor-free deployable",
+      "next_action": "Future Transformer work should target full-waypoint source-level lift under Stage37 floor, then test floor relaxation separately."
+    },
+    {
+      "module": "stage37_teacher_floor_and_safe_switch",
+      "status": "supported_necessary_safety_mechanism",
+      "main_claim_allowed": true,
+      "evidence_sources": [
+        "Stage42-BW",
+        "Stage42-BX",
+        "Stage42-Z"
+      ],
+      "key_evidence": "ungated easy degradation=1.245861; no_teacher_floor status=negative_unsafe; no_safe_switch status=positive_contribution",
+      "failure_mode": "removing the floor/safe switch creates unsafe easy-case harm or weaker protected t50",
+      "next_action": "Frame the floor as a safety mechanism and current core contribution; only relax it on validation-supported source/horizon slices."
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "labels_eval_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ci_gate": {
+    "source": "fresh_synthesis_from_stage42_ablation_and_claim_audits",
+    "gates": {
+      "inputs_present": true,
+      "dominant_mechanism_identified": true,
+      "history_supported": true,
+      "safety_floor_supported": true,
+      "mixed_goal_scene_not_overclaimed": true,
+      "mixed_neighbor_not_overclaimed": true,
+      "jepa_not_overclaimed": true,
+      "transformer_not_overclaimed": true,
+      "rescue_actions_written": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_ci_context_contribution_forensics_pass"
+  }
+}

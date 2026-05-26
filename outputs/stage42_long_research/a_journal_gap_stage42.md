@@ -300,3 +300,24 @@ Stage42-Z now incorporates Stage42-CG and Stage42-CH into the paper evidence mat
 - The two largest publication blockers remain: legally converted independent external sources and metric/time-calibrated restricted evaluation.
 - Goal/scene and neighbor/interaction remain mixed contributions rather than main positive claims.
 <!-- STAGE42_Z_POST_CH_REFRESH:END -->
+
+<!-- STAGE42_CI_REFRESH:START -->
+## Stage42-CI Context Contribution Forensics
+
+- source: `fresh_synthesis_from_stage42_ablation_and_claim_audits`
+- verdict: `stage42_ci_context_contribution_forensics_pass`
+- gates: `13 / 13`
+- dominant mechanism: `baseline_family_rollout_context`
+- supported core component: `history_tokens`
+- supported secondary component: `domain_expert`
+- mixed / not-main components: `goal_scene_context`, `neighbor_interaction_context`
+- not independent main claims: `JEPA`, `Transformer`
+
+Stage42-CI makes the contribution boundary sharper. The current protected M3W evidence is strongest for causal baseline-family rollout context, causal sequence history, source/horizon domain conditioning, and the Stage37/teacher safety floor. Goal/scene and neighbor/interaction should be written as partial or diagnostic until a source/horizon validation-gated expert or stronger graph-neural trial proves bootstrap-positive t50/hard gains with easy preservation.
+
+### Updated Gap After CI
+
+- The paper can claim history and baseline-family rollout context as supported mechanisms.
+- The paper should not claim uniformly positive goal/scene or interaction contributions yet.
+- The next experimental route is not global context injection; it is validation-gated source/horizon experts for goal prototypes and a stronger graph-neural interaction trial under the Stage37 floor.
+<!-- STAGE42_CI_REFRESH:END -->

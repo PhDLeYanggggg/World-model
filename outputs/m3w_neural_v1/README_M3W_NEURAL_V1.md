@@ -1185,3 +1185,13 @@ claim_rows = 13
 ```
 
 The paper claim matrix now includes the CG legal/source terms validator and the CH metric/time claim guard. This keeps M3W-Neural v1 paper-ready only as a protected dataset-local/raw-frame 2.5D world-state candidate. Legal source-diversity conversion is not ready, and restricted metric/seconds subset claims remain blocked even though source-specific calibration candidates exist.
+
+## Stage42-CI Context Contribution Forensics
+
+```text
+source = fresh_synthesis_from_stage42_ablation_and_claim_audits
+verdict = stage42_ci_context_contribution_forensics_pass
+gates = 13 / 13
+```
+
+The context contribution map is now explicit: baseline-family rollout context is the dominant mechanism, causal history tokens are a supported core component, and domain expert is a smaller guarded component. Goal/scene and neighbor/interaction context remain mixed under the current protocols, while JEPA and Transformer are not independent deployable main claims. This sharpens the model-card language for M3W-Neural v1: the protected safety-floor mechanism is part of the contribution, not just an implementation detail.

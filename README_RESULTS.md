@@ -3948,3 +3948,28 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_z_gate.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_paper_claim_evidence_audit.py` passed and focused Z/CH/CG tests passed with 12 tests.
+
+## Stage42-CI Context Contribution Forensics
+
+```text
+source = fresh_synthesis_from_stage42_ablation_and_claim_audits
+verdict = stage42_ci_context_contribution_forensics_pass
+gates = 13 / 13
+dominant mechanism = baseline_family_rollout_context
+supported core component = history_tokens
+supported secondary component = domain_expert
+mixed/not-main = goal_scene_context, neighbor_interaction_context
+not independent main claim = JEPA, Transformer
+Stage5C = false
+SMC = false
+```
+
+Stage42-CI turns the mixed context evidence into a stricter contribution map. It confirms that the current working mechanism is baseline-family rollout context under Stage37/teacher floor, with causal sequence history as the strongest positive context component and domain expert as a smaller guarded component. It also prevents overclaiming: goal/scene has standalone signal but no reliable incremental gain after baseline-family context, neighbor/interaction is weak under current graph/sequence protocols, JEPA remains diagnostic, and Transformer is not yet an independent deployable world-dynamics claim.
+
+Artifacts:
+
+- `outputs/stage42_long_research/context_contribution_forensics_stage42.md`
+- `outputs/stage42_long_research/context_contribution_forensics_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_ci_gate.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensics.py` passed and focused CI/Z tests passed with 6 tests.

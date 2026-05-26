@@ -1,6 +1,41 @@
 {
-  "current_stage": "Stage42-Z post-CH paper claim evidence audit",
-  "current_verdict": "stage42_z_paper_claim_evidence_audit_pass",
+  "current_stage": "Stage42-CI context contribution forensics",
+  "current_verdict": "stage42_ci_context_contribution_forensics_pass",
+  "stage42_ci_context_contribution_forensics": {
+    "source": "fresh_synthesis_from_stage42_ablation_and_claim_audits",
+    "report": "outputs/stage42_long_research/context_contribution_forensics_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ci_gate.md",
+    "verdict": "stage42_ci_context_contribution_forensics_pass",
+    "gates": "13/13",
+    "dominant_mechanism": "baseline_family_rollout_context",
+    "supported_core_component": "history_tokens",
+    "supported_secondary_component": "domain_expert",
+    "mixed_not_main_components": [
+      "goal_scene_context",
+      "neighbor_interaction_context"
+    ],
+    "not_independent_main_claims": [
+      "JEPA",
+      "Transformer"
+    ],
+    "conclusion": "Stage42-CI confirms the currently supported mechanism boundary: baseline-family rollout context is dominant, causal sequence history is a core positive component, domain expert is a guarded secondary component, and goal/scene plus neighbor/interaction remain mixed rather than main claims.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_context_contribution_forensics.py -> 13/13",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_context_contribution_forensics.py tests/test_stage42_paper_claim_evidence_audit.py -> 6 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 552 passed in 30.82s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "goal_scene_main_claim_allowed": false,
+      "neighbor_interaction_main_claim_allowed": false,
+      "jepa_main_claim_allowed": false,
+      "transformer_main_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_z_post_ch_paper_claim_evidence_audit": {
     "source": "fresh_audit_from_stage42_wxy_and_paper_package_artifacts",
     "report": "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md",
@@ -323,7 +358,7 @@
     }
   },
   "latest_user_requested_current_goal_retrospective_2026_05_26": {
-    "source": "cached_verified_stage18_to_stage42_plus_stage42_z_post_ch_paper_claim_evidence_audit",
+    "source": "cached_verified_stage18_to_stage42_plus_stage42_ci_context_contribution_forensics",
     "path": "README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md",
     "scope": "detailed_current_goal_handoff_routes_tried_failure_roots_success_evidence_best_deployable_claim_boundaries_blockers_next_steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
@@ -341,7 +376,8 @@
       "Stage42-CF legal/source-identity gate preventing any conversion until explicit terms confirmation exists",
       "Stage42-CG terms-confirmation validator and readiness manifest showing all targets remain blocked",
       "Stage42-CH metric/time claim guard blocking global and restricted metric/seconds claims until legal conversion readiness and restricted-subset final evaluation exist",
-      "Stage42-Z post-CH paper claim evidence matrix tying supported claims, legal blockers, and metric/time blockers into one 22/22-gate audit"
+      "Stage42-Z post-CH paper claim evidence matrix tying supported claims, legal blockers, and metric/time blockers into one 22/22-gate audit",
+      "Stage42-CI context contribution forensics proving baseline-family/history/floor contribution boundaries and blocking goal/neighbor/JEPA/Transformer overclaims"
     ],
     "failed_or_limited_routes": [
       "JEPA downstream lift not proven",
@@ -388,6 +424,10 @@
       "metric_time_claim_guard_ready": true,
       "paper_claim_evidence_audit_post_ch_ready": true,
       "paper_claim_evidence_audit_gates": "22/22",
+      "context_contribution_forensics_ready": true,
+      "context_contribution_forensics_gates": "13/13",
+      "goal_scene_main_claim_allowed": false,
+      "neighbor_interaction_main_claim_allowed": false,
       "source_specific_metric_time_candidates": 6,
       "restricted_subset_metric_seconds_claim_allowed_now": false,
       "source_conversion_ready_targets": 0,
@@ -16917,8 +16957,8 @@
       "full_pytest": "python3 -m pytest tests -> 499 passed"
     }
   },
-  "latest_stage42_source_support_summary": "Stage42-Z refreshed the paper claim evidence audit after Stage42-CG/CH. Gates 22/22. The claim matrix now has 13 rows and explicitly blocks legal conversion overclaim and restricted metric/time overclaim while preserving the protected raw-frame 2.5D evidence package. No automatic download, no legal conversion, no external evaluation, no Stage5C, no SMC.",
-  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 549 passed after Stage42-Z post-CH claim audit refresh",
+  "latest_stage42_source_support_summary": "Stage42-CI fresh-ran context contribution forensics. Gates 13/13. It confirms baseline-family rollout context as the dominant mechanism, history tokens as a supported core component, domain expert as a guarded secondary component, and keeps goal/scene, neighbor/interaction, JEPA, and Transformer out of independent main-claim status. No automatic download, no legal conversion, no metric/seconds overclaim, no Stage5C, no SMC.",
+  "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 552 passed after Stage42-CI context contribution forensics",
   "stage42_by_t50_floor_relaxability_repair": {
     "source": "fresh_stage42_by_t50_floor_relaxability_repair",
     "verdict": "stage42_by_t50_floor_relaxability_repair_pass",
@@ -17068,7 +17108,7 @@
     }
   },
   "last_test_command": ".venv-pytorch/bin/python -m pytest tests",
-  "last_test_result": "549 passed in 32.10s",
+  "last_test_result": "552 passed in 30.82s",
   "stage42_bz_t50_repair_statistical_evidence": {
     "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
     "verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
