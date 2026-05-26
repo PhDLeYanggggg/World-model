@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit、Stage42-AU proposed source-level baseline-family mechanism audit、Stage42-AV baseline-family robustness / weak-slice audit、Stage42-AW UCY validation-support repair、Stage42-AX repaired validation-support protocol robustness audit，以及 Stage42-AY t100 easy-safety repair；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit、Stage42-AU proposed source-level baseline-family mechanism audit、Stage42-AV baseline-family robustness / weak-slice audit、Stage42-AW UCY validation-support repair、Stage42-AX repaired validation-support protocol robustness audit、Stage42-AY t100 easy-safety repair，以及 Stage42-AZ AY shadow-holdout robustness audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 ## 本次交付版总摘要
 
@@ -66,6 +66,7 @@ not allowed:
 | Stage42-AW UCY validation repair | UCY test all +37.45%，t50 +24.53%，hard/failure +35.51%，easy degradation 为负。 | 使用 UCY train-only internal validation 修复 blocker，不用 test 调阈值。 |
 | Stage42-AX repaired protocol robustness | gates 14/14；global CI lows: all +35.31%，t50 +28.54%，t100 raw diagnostic +20.29%，hard +33.52%；TrajNet 与 UCY 均 positive；horizon=100 easy degradation 2.396%。 | repaired protocol 有跨 TrajNet/UCY 支持，但 uniform horizon success 不允许，t100 仍是 raw-frame diagnostic weak slice。 |
 | Stage42-AY t100 easy-safety repair | fresh_run；gates 17/17；h100 easy degradation 从 2.396% 修到 -0.650%，h100 easy CI high 0.983%；global all +30.55%，t50 +28.97%，t100 raw diagnostic +6.78%，hard +27.98%。 | 用 validation-only strict t100 easy guard 回退 `TrajNet|100`；安全性修复成功，但 t100 收益变小，且仍需未来 holdout 做更强 paper claim。 |
+| Stage42-AZ AY shadow-holdout robustness | fresh_run；gates 16/16；AY strict guard 在 shadow holdout 上 h100 easy degradation = 12.29%，不够稳；source-support t100 guard 后 all +13.34%，t50 +12.18%，hard +12.78%，easy -2.22%，h100 easy 0，t100 raw diagnostic 0。 | 这是负/修复证据：AY 的 t100 正收益不能作为独立稳健 claim；更保守的 source-support guard 保护 easy 并保留 all/t50/hard，但牺牲 t100 正收益。 |
 
 ### 最重要的失败原因
 
@@ -117,8 +118,8 @@ History/goal/interaction are independently proven main contributions under curre
 
 ### 下一步最短路径
 
-1. **下一步给 Stage42-AY repaired t100 policy 做独立 holdout / source-level robustness。**
-   AY 已用 validation-only strict t100 guard 修复 AX 暴露的 easy-safety weak slice，但这是在 AX 之后做的 repaired policy；更强论文 claim 需要新的 held-out/source-level confirmation。
+1. **下一步修复 t100 source-support 下的正收益，或收集更多独立 t100 validation sources。**
+   AZ 已经完成 AY 的 shadow-holdout robustness audit：AY strict guard 在 shadow h100 上暴露 easy harm；source-support guard 可以保护 easy，但会把 t100 gain 回退为 0。因此 t100 不能作为稳健正迁移主 claim，下一步要么增加独立 t100 validation 支持，要么训练更强 t100-specific source/domain policy。
 
 2. **把 baseline-family rollout context 正式重写为当前主机制。**  
    现在最强证据不是“JEPA/Transformer 独立学出世界动力学”，而是“多候选因果 baseline family + validation-safe selector/policy 形成 protected world-state dynamics candidate”。
@@ -164,6 +165,9 @@ python3 run_stage42_source_level_safety_floor_audit.py = pass
 python3 run_stage42_source_level_baseline_family_mechanism.py = pass
 python3 run_stage42_source_level_baseline_family_robustness.py = pass
 python3 run_stage42_ucy_validation_support_repair.py = pass
+python3 run_stage42_repaired_protocol_robustness.py = pass
+python3 run_stage42_aw_t100_easy_safety_repair.py = pass
+python3 run_stage42_ay_shadow_holdout_robustness.py = pass
 python3 -m pytest tests/test_stage42_source_level_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_incremental_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_residual_context.py = 4 passed
@@ -174,7 +178,10 @@ python3 -m pytest tests/test_stage42_source_level_safety_floor_audit.py = 4 pass
 python3 -m pytest tests/test_stage42_source_level_baseline_family_mechanism.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_baseline_family_robustness.py = 4 passed
 python3 -m pytest tests/test_stage42_ucy_validation_support_repair.py = 4 passed
-python3 -m pytest tests = 406 passed
+python3 -m pytest tests/test_stage42_repaired_protocol_robustness.py = 4 passed
+python3 -m pytest tests/test_stage42_aw_t100_easy_safety_repair.py = 4 passed
+python3 -m pytest tests/test_stage42_ay_shadow_holdout_robustness.py = 4 passed
+python3 -m pytest tests = 418 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -194,7 +201,7 @@ python3 -m pytest tests = 406 passed
 
 ## 给你的直接结论快照
 
-截至 Stage42-AY，我在 M3W 这个长期目标里做的核心事情可以概括为十九条：
+截至 Stage42-AZ，我在 M3W 这个长期目标里做的核心事情可以概括为二十条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -252,6 +259,9 @@ python3 -m pytest tests = 406 passed
 
 19. **Stage42-AY 用 validation-only strict t100 guard 修复 AX 的 h100 easy-safety weak slice。**
    Stage42-AY 重新计算 AW validation-best `family_baseline_rel_only` 的 full-waypoint arrays，不用 test metrics 选 threshold；它只用 validation t100 easy-safety 判断是否回退 floor。`TrajNet|100` 因 validation easy degradation `1.52%` 高于 stricter non-harm threshold `0.0` 被回退；`UCY|100` 保留。结果 17/17 gates：h100 easy degradation 从 `2.396%` 修到 `-0.650%`，h100 easy CI high `0.983%`，global all `+30.55%`，t50 `+28.97%`，t100 raw-frame diagnostic `+6.78%`，hard/failure `+27.98%`。这是更安全的 repaired-policy candidate，但由于它是 AX 后的修复，强 paper claim 还需要未来独立 holdout / source-level confirmation。
+
+20. **Stage42-AZ 做 AY strict t100 guard 的 source-level shadow-holdout robustness audit，并把 t100 claim 再收紧。**
+   Stage42-AZ 只用 original train sources 构建 shadow train/val/holdout，不使用最终 test source 调阈值。结果 16/16 gates，但结论不是“t100 成功扩大”：AY strict guard 在 shadow holdout 上会留下 ETH_UCY t100 easy harm，horizon=100 easy degradation 达 `12.29%`；更保守的 source-support t100 guard 要求每个 domain 至少有两个独立 t100 validation sources，因而回退 `ETH_UCY|100`。回退后 shadow holdout 仍保持 all `+13.34%`、t50 `+12.18%`、hard `+12.78%`、easy `-2.22%`，但 t100 raw diagnostic 变成 `0.0`。这一步明确告诉我们：t100 positive 不能作为当前稳健主 claim，安全 guard 是必要机制。
 
 最重要的失败原因也很清楚：
 
@@ -339,6 +349,7 @@ python3 -m pytest tests = 406 passed
 | Stage42-AW UCY validation-support repair | 14/14 gates；从 UCY train source 切 internal validation 后，validation-best `family_baseline_rel_only` 在 UCY test all +37.45%、t50 +24.53%、hard/failure +35.51%，easy degradation 为负。 | 修复了 AV 的 UCY floor-only blocker；仍保持 dataset-local raw-frame / no-test-threshold-tuning 边界。 |
 | Stage42-AX repaired protocol robustness | 14/14 gates；global bootstrap all/t50/t100 raw diagnostic/hard 下界为正，TrajNet 和 UCY 均 positive；horizon=100 easy degradation 2.396%。 | 支持 repaired protocol 的 global + two-domain positive claim；拒绝 uniform horizon success / metric / seconds / true-3D claim。 |
 | Stage42-AY AW t100 easy-safety repair | fresh_run；17/17 gates；h100 easy degradation -0.650%，h100 easy CI high 0.983%，global all +30.55%，t50 +28.97%，t100 raw diagnostic +6.78%，hard/failure +27.98%。 | 修复 AX 的 t100 easy-safety weak slice；收益小于 AX，但部署更安全；仍是 raw-frame diagnostic，且 stronger paper claim 需新 holdout。 |
+| Stage42-AZ AY shadow-holdout robustness | fresh_run；16/16 gates；AY strict guard 在 shadow holdout 上 h100 easy degradation 12.29%；source-support guard 后 all +13.34%、t50 +12.18%、hard +12.78%、easy -2.22%、t100 raw diagnostic 0。 | 负/修复证据：AY t100 正收益没有独立 shadow 稳健性；source-support guard 保安全但牺牲 t100 gain。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界

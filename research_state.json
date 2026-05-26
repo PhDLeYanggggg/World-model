@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_ay_t100_easy_safety_repair",
-  "current_verdict": "stage42_ay_t100_easy_safety_repair_pass",
+  "current_stage": "stage42_az_shadow_holdout_robustness",
+  "current_verdict": "stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation",
   "latest_user_requested_research_summary": {
-    "source": "fresh_run_plus_stage42_ay_verified",
+    "source": "fresh_run_plus_stage42_az_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AY t100 easy-safety repair; focused pytest passed, full pytest pending.",
-    "scope": "Detailed M3W route/failure/success summary plus Stage42-AY strict validation-only t100 easy-safety repair.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AZ AY shadow-holdout t100 robustness audit; focused pytest and full pytest passed.",
+    "scope": "Detailed M3W route/failure/success summary plus Stage42-AZ shadow-holdout robustness showing AY t100 positive gain is not independently robust without stricter source-support guard.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AY repairs the AX h100 easy-safety weak slice with a validation-only strict t100 guard while keeping raw-frame/2.5D/no-Stage5C/no-SMC boundaries.",
+    "latest_branch_success": "Stage42-AZ keeps all/t50/hard positive under a stricter source-support t100 guard while exposing that AY strict t100 positive gain is not robust on source-level shadow holdout.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -66,7 +66,10 @@
       "stage42_ax_full_pytest": "410 passed",
       "stage42_ay_runner": "pass",
       "stage42_ay_focused_pytest": "4 passed",
-      "stage42_ay_full_pytest": "414 passed"
+      "stage42_ay_full_pytest": "414 passed",
+      "stage42_az_runner": "pass",
+      "stage42_az_focused_pytest": "4 passed",
+      "stage42_az_full_pytest": "418 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -14710,6 +14713,62 @@
       "runner": "python3 run_stage42_aw_t100_easy_safety_repair.py -> stage42_ay_t100_easy_safety_repair_pass (17/17)",
       "focused_pytest": "python3 -m pytest tests/test_stage42_aw_t100_easy_safety_repair.py -> 4 passed",
       "full_pytest": "python3 -m pytest tests -> 414 passed"
+    }
+  },
+  "stage42_az_shadow_holdout_robustness": {
+    "source": "fresh_run",
+    "verdict": "stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation",
+    "gate": "16/16",
+    "report": "outputs/stage42_long_research/ay_shadow_holdout_robustness_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_az_gate.md",
+    "input_commit": "37c30f7",
+    "shadow_split": {
+      "rule": "original train sources only; largest t100-capable source per domain held out, second largest used as shadow validation, final val/test excluded",
+      "shadow_train_rows": 46186,
+      "shadow_val_rows": 45988,
+      "shadow_holdout_rows": 117808,
+      "shadow_holdout_t100_rows": 22598,
+      "blocked_domains": {
+        "UCY": "fewer_than_three_t100_capable_original_train_sources"
+      }
+    },
+    "ay_strict_guard_shadow_holdout": {
+      "all_improvement": 0.160719,
+      "t50_improvement": 0.121766,
+      "t100_raw_frame_diagnostic_improvement": 0.069499,
+      "hard_failure_improvement": 0.158662,
+      "easy_degradation": -0.001709,
+      "h100_easy_degradation": 0.122946,
+      "verdict": "not_independently_robust_for_t100_easy_safety"
+    },
+    "source_support_guard_shadow_holdout": {
+      "all_improvement": 0.133351,
+      "t50_improvement": 0.121766,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "hard_failure_improvement": 0.127756,
+      "easy_degradation": -0.022205,
+      "h100_easy_degradation": 0.0,
+      "all_ci_low": 0.131153,
+      "t50_ci_low": 0.116767,
+      "hard_ci_low": 0.125429,
+      "h100_easy_ci_high": 0.0,
+      "verdict": "safe_but_t100_positive_gain_removed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false,
+      "t100_positive_claim_allowed": false
+    },
+    "verification": {
+      "runner": "python3 run_stage42_ay_shadow_holdout_robustness.py -> stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation (16/16)",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_ay_shadow_holdout_robustness.py -> 4 passed",
+      "full_pytest": "python3 -m pytest tests -> 418 passed"
     }
   }
 }

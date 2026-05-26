@@ -873,3 +873,21 @@ smc_enabled = false
 ```
 
 Stage42-AY applies a stricter validation-only t100 easy-safety guard to the Stage42-AW repaired protocol. `TrajNet|100` is guarded back to the floor because its validation easy degradation is above the strict non-harm threshold, while `UCY|100` remains active. This repairs the Stage42-AX h100 easy-safety weak slice but reduces t100 diagnostic gain; it remains dataset-local raw-frame evidence and needs future held-out confirmation for stronger paper claims.
+
+## Stage42-AZ AY Shadow-Holdout T100 Robustness Audit
+
+```text
+source = fresh_run
+verdict = stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation
+gates = 16 / 16
+AY_strict_guard_shadow_h100_easy_degradation = 0.122946
+source_support_guard_all = 0.133351
+source_support_guard_t50 = 0.121766
+source_support_guard_t100_raw_frame_diagnostic = 0.000000
+source_support_guard_hard_failure = 0.127756
+source_support_guard_easy_degradation = -0.022205
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AZ tests the Stage42-AY strict t100 guard on a source-level shadow split built only from original train sources. It finds that the AY strict guard is not independently robust for t100 easy safety: ETH_UCY t100 easy harm appears on the shadow holdout. A more conservative source-support guard keeps all/t50/hard positive and protects easy cases, but it gives up positive t100 gain on this shadow holdout. This is a useful safety result and a claim-boundary result, not a new t100 success: t100 remains raw-frame diagnostic and should not be written as seconds-level or uniformly robust long-horizon world-model evidence.

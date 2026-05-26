@@ -6,11 +6,11 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, t100 easy-safety repair evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, repaired-protocol robustness evidence, t100 easy-safety repair evidence, AY shadow-holdout robustness evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for this summary refresh: `python3 -m pytest tests` -> `406 passed`.
+Validation for this summary refresh: `python3 -m pytest tests` -> `418 passed`.
 
 Most important current summary:
 
@@ -37,6 +37,24 @@ ungated neural dynamics = unsafe
 endpoint-to-full UCY bridge = failed
 auxiliary heads = mixed/partial, not a uniform main claim
 ```
+
+Latest Stage42-AZ AY shadow-holdout t100 robustness audit:
+
+```text
+source = fresh_run
+verdict = stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation
+gates = 16 / 16
+AY_strict_guard_shadow_h100_easy_degradation = 0.122946
+source_support_guard_all = 0.133351
+source_support_guard_t50 = 0.121766
+source_support_guard_t100_raw_frame_diagnostic = 0.000000
+source_support_guard_hard_failure = 0.127756
+source_support_guard_easy_degradation = -0.022205
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AZ is negative/repair evidence, not a new t100 success. It builds shadow train/val/holdout only from original train sources and excludes final val/test from thresholding. The AY strict t100 guard is not independently robust on shadow holdout because ETH_UCY t100 easy harm appears. A stricter source-support guard protects easy and keeps all/t50/hard positive, but it removes positive t100 gain on this shadow holdout. The correct claim is therefore: t100 remains raw-frame diagnostic and needs more independent validation support; do not write it as a stable long-horizon success.
 
 Latest Stage42-AM proposed source-level full-waypoint evaluation:
 
@@ -313,6 +331,35 @@ python3 -m pytest tests/test_stage42_aw_t100_easy_safety_repair.py
   -> 4 passed
 python3 -m pytest tests
   -> 414 passed
+```
+
+Latest Stage42-AZ AY shadow-holdout t100 robustness audit:
+
+```text
+source = fresh_run
+verdict = stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation
+gates = 16 / 16
+AY_strict_guard_shadow_h100_easy_degradation = 0.122946
+source_support_guard_all = 0.133351
+source_support_guard_t50 = 0.121766
+source_support_guard_t100_raw_frame_diagnostic = 0.000000
+source_support_guard_hard_failure = 0.127756
+source_support_guard_easy_degradation = -0.022205
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AZ builds a shadow split only from original train sources and excludes final val/test from policy selection. It shows that the Stage42-AY strict guard is not independently robust for t100 easy safety on the shadow holdout: ETH_UCY t100 easy harm appears. A stricter source-support guard protects easy and keeps all/t50/hard positive, but removes positive t100 gain. This is a claim-boundary repair: t100 remains raw-frame diagnostic and should not be written as a stable seconds-level or uniformly robust long-horizon success.
+
+Validation for Stage42-AZ:
+
+```text
+python3 run_stage42_ay_shadow_holdout_robustness.py
+  -> stage42_az_shadow_holdout_robustness_pass_with_ay_t100_limitation (16/16)
+python3 -m pytest tests/test_stage42_ay_shadow_holdout_robustness.py
+  -> 4 passed
+python3 -m pytest tests
+  -> 418 passed
 ```
 
 Latest Stage42-AD calibration evidence refresh:
