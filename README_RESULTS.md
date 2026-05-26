@@ -4258,3 +4258,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Dirty/untracked generated files are not hidden; they are recorded as caveats and must not be treated as extra clean paper evidence.
 - This audit does not create metric/seconds/3D/foundation claims and does not execute Stage5C or SMC.
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
+
+<!-- STAGE42_CY_WORKTREE_CAVEAT_CLASSIFIER:START -->
+## Stage42-CY Worktree Caveat Classifier
+
+- source: `fresh_worktree_caveat_classification`
+- role: classify dirty tracked files before paper-freeze evidence claims.
+- gate: `11 / 11`; verdict `stage42_cy_worktree_caveat_classifier_pass`.
+- tracked dirty files inspected: `21`.
+- Stage42 dirty files inspected: `9`.
+- Stage42 substantive dirty files: `0`.
+- allowed classifications: `{'substantive_markdown_change': 3, 'substantive_json_change': 9, 'metadata_only': 6, 'metadata_and_paper_size_only': 2, 'append_only_run_ledger': 1}`.
+- Metadata-only, paper-size-only, and append-only ledger changes are recorded as caveats, not new model evidence.
+- This classifier does not execute Stage5C, does not enable SMC, and does not create metric/seconds/3D/foundation claims.
+<!-- STAGE42_CY_WORKTREE_CAVEAT_CLASSIFIER:END -->
