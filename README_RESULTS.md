@@ -6,7 +6,16 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_RETROSPECTIVE_CURRENT_ZH.md`
 
-它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本按“路线总表、成功路线、失败根因、当前最强模型、可写论文 claim、blocker、下一步”重写，结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+它集中回答当前长期目标内做了什么、尝试了哪些路线、哪些失败及原因、哪些成功及证据、当前 best deployable 是什么，以及仍然禁止的 claim 边界。最新版本在文件最前面新增“本次问题的直接答案”，明确列出成功路线、失败路线、根因和当前 best deployable。结论保持严格：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate，不是 true 3D，不是 foundation，不是 metric/seconds-level，Stage5C 未执行，SMC 未启用。
+
+当前总判定：
+
+```text
+best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor
+dominant mechanism = baseline-family rollout context + causal history + guarded domain expert + conservative safety floor
+not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as independent drivers
+latest audit = Stage42-CI context contribution forensics, 13 / 13 gates, full pytest 552 passed
+```
 
 本次汇总版已吸收 Stage42-CG/CH 的最新 legal / metric-time guard：当前有 6 个 ETH/UCY source-specific calibration candidates，但 conversion_ready=0，因而 global/restricted metric-seconds claim 仍全部禁止；source terms validator 也仍为 terms_accepted=0、conversion_ready=0、converted=0、evaluated=0。
 

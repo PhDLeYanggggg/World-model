@@ -2,8 +2,61 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CI context contribution forensics。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CI context contribution forensics。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
 用途：这是当前 M3W 长期目标的单文件中文总览，用来回答“这个目标内到底做了什么、尝试了什么路线、哪些失败了、为什么失败、哪些成功了、当前最强模型是谁、下一步该怎么走”。
+
+## 本次问题的直接答案
+
+在这个目标内，我做的核心事情不是一条单线训练，而是一整条研究状态机：
+
+1. 先把 BPSG-MA / SDD / external top-down 数据做成可审计的 2.5D world-state scaffold。
+2. 反复证明哪些东西不能夸大：不是 true 3D、不是 foundation、不是 metric、不是 seconds-level、Stage5C 没执行、SMC 没启用。
+3. 在 SDD 上从失败的 hard-class selector，修到 Stage26 cost-aware selector。
+4. 把 SDD-only 成功迁移到 external top-down 数据时，经历了 zero-shot、normalization、latent adapter、row geometry、train-only goals、selective transfer、t50-specific repair 等多轮失败和修复。
+5. 最后 Stage37 修复 external t+50，Stage41/42 做 protected neural / full-waypoint / source-level evidence package。
+6. 最近 Stage42-CI 把贡献边界重新审计清楚：当前最稳机制不是“JEPA/Transformer 单独起飞”，而是 `baseline-family rollout context + causal history + guarded domain expert + Stage37/teacher safety floor`。
+
+当前最强可部署结论：
+
+```text
+best deployable:
+  M3W-Neural v1 composite-tail safe-switch bounded neural dynamics
+  under Stage37 / teacher safety floor
+
+honest status:
+  protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
+
+not allowed to claim:
+  true 3D
+  foundation world model
+  global metric prediction
+  seconds-level horizon
+  ungated neural world dynamics
+  Stage5C latent generative execution
+  SMC readiness
+```
+
+最重要成功结果：
+
+| 阶段 | 成功点 | 关键指标 |
+| --- | --- | --- |
+| Stage26 | SDD cost-aware selector 成为 SDD best deployable baseline | t+50 约 +14.58%；hard/failure 约 +11.23%；easy degradation 约 1.81% |
+| Stage37 | external t+50 被修复为可部署正迁移 | all +13.48%；t+50 +8.46%；t50 CI [+7.69%, +9.15%]；hard/failure +15.54%；easy 0.041%；16/16 gates |
+| M3W-Neural v1 / Stage41 | protected neural candidate 成立 | all ADE +21.03%；t+50 ADE +13.65%；t+100 raw diagnostic +14.69%；hard/failure +20.38%；easy 0.00%；41/41 gates |
+| Stage42 source/full-waypoint | full-waypoint/source-level evidence 成立但仍 protected | source-level full-waypoint all +24.58%；t50 +22.02%；hard +23.75%；baseline-family mechanism t50 +31.54% |
+| Stage42-CI | 贡献边界被重新审计 | 13/13 gates；baseline-family rollout context 是 dominant mechanism；history 是 core；domain expert 是 secondary；goal/scene、neighbor、JEPA、Transformer 不能写主贡献 |
+
+最重要失败和原因：
+
+| 路线 | 失败表现 | 根因 |
+| --- | --- | --- |
+| JEPA | non-collapse 但 downstream lift 不稳定 | 表征目标和部署目标错位；non-collapse 不等于 selector/failure/t50 改善 |
+| Stage24 hard-class selector | t+50 -43.3%，easy degradation 11.33% | 低 margin oracle label 噪声；过度切换；没有 regret/harm/easy gate |
+| SDD -> external zero-shot | external transfer 严重负 | SDD pixel-space 与 external dataset-local 坐标/horizon/scene/agent-type 不兼容 |
+| normalization / CORAL / latent adapter | 分布距离缩小但预测没变好 | 跨域问题不是单纯 feature 分布，而是 source/horizon/family-specific safe switching |
+| 普通 residual / correction | hard 有时变好但 easy 容易伤 | baseline already-good 样本多；无可靠 harm gate 时 residual 不可部署 |
+| ungated Transformer / Hybrid | 不能替代 Stage37 | 无保护输出 easy harm 高；protected neural 多数仍依赖 teacher/floor |
+| metric / seconds / t100 global claim | 仍 blocked | legal terms、independent source support、FPS/stride/homography/scale 都未全局闭环 |
 
 ## 本次交付版摘要
 
