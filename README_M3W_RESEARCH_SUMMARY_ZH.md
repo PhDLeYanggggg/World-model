@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit，以及 Stage42-AU proposed source-level baseline-family mechanism audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit、Stage42-AU proposed source-level baseline-family mechanism audit，以及 Stage42-AV baseline-family robustness / weak-slice audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 本轮校验：
 
@@ -40,6 +40,7 @@ python3 run_stage42_source_level_sequence_context.py = pass
 python3 run_stage42_source_level_graph_context.py = pass
 python3 run_stage42_source_level_safety_floor_audit.py = pass
 python3 run_stage42_source_level_baseline_family_mechanism.py = pass
+python3 run_stage42_source_level_baseline_family_robustness.py = pass
 python3 -m pytest tests/test_stage42_source_level_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_incremental_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_residual_context.py = 4 passed
@@ -48,7 +49,8 @@ python3 -m pytest tests/test_stage42_source_level_sequence_context.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_graph_context.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_safety_floor_audit.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_baseline_family_mechanism.py = 4 passed
-python3 -m pytest tests = 398 passed
+python3 -m pytest tests/test_stage42_source_level_baseline_family_robustness.py = 4 passed
+python3 -m pytest tests = 402 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -68,7 +70,7 @@ python3 -m pytest tests = 398 passed
 
 ## 给你的直接结论快照
 
-截至 Stage42-AU，我在 M3W 这个长期目标里做的核心事情可以概括为十五条：
+截至 Stage42-AV，我在 M3W 这个长期目标里做的核心事情可以概括为十六条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -114,6 +116,9 @@ python3 -m pytest tests = 398 passed
 
 15. **Stage42-AU 把 baseline-family 机制拆开，确认当前主机制不是单个控制变量。**  
    Stage42-AU 结果是 11/11 gates：`horizon_domain_control` 不起作用，`floor_rel_only` 很弱，`safe_baseline_rel_only` 对 t50 甚至为负；真正强的是 `family_baseline_rel_only`（protected all `+27.38%`、t50 `+23.73%`），而 `baseline_family_all` 在 protected t50 上进一步到 `+31.54%`。结论是：当前 source-level 成功主要来自 baseline-family rollout context，特别是 family baseline relative rollout，不是 history/goal/graph residual context，也不是 metric/seconds/true-3D 证据。
+
+16. **Stage42-AV 检查 baseline-family 机制的统计稳健性和弱切片。**  
+   Stage42-AV 结果是 12/12 gates，但 verdict 是 `pass_with_limits`：`baseline_family_all` 的 global bootstrap 下界稳定为正（all CI low `+28.42%`、t50 CI low `+30.98%`、hard/failure CI low `+27.20%`，easy CI high `-45.94%`），TrajNet 很强；但 UCY 在 proposed source-level split 下没有 validation rows，因此 policy 对 UCY 只能 floor-only，不能写成 UCY positive transfer；horizon=100 raw-frame diagnostic 有 easy degradation `2.85%` 的弱点，不能写成 uniform horizon success。
 
 最重要的失败原因也很清楚：
 
@@ -197,6 +202,7 @@ python3 -m pytest tests = 398 passed
 | Stage42-AS proposed source-level graph interaction context | 10/11 gates；`rows_with_neighbors = 334525`；`max_unique_agents_per_frame = 65`；`positive_graph_context_variants = []`。 | current-frame kNN graph / interaction residual context 仍没有超过 baseline-family first stage；当前 source-level 成功仍由 baseline-family rollout context 主导。 |
 | Stage42-AT source-level safety floor / fallback audit | 11/11 gates；baseline-family ungated all +46.17%、t50 +41.19%、hard/failure +45.84%、easy degradation -30.56%；teacher/floor context removal 不支持全局替代。 | fallback floor 在这个 source-level ridge probe 上可局部去掉，但 teacher/floor rollout context 仍是输入机制；不能把它写成 floor-free neural dynamics。 |
 | Stage42-AU source-level baseline-family mechanism audit | 11/11 gates；`family_baseline_rel_only` protected all +27.38%、t50 +23.73%；`baseline_family_all` protected all +28.78%、t50 +31.54%；horizon/domain control 和 floor/safe 单独都不足。 | 当前 source-level 成功机制被定位为 baseline-family rollout context，特别是 family baseline relative rollout；这给论文机制叙事提供正证据，也收紧了 history/goal/neighbor/graph 的 claim 边界。 |
+| Stage42-AV baseline-family robustness / weak-slice audit | 12/12 gates；global CI 稳定为正；TrajNet positive；UCY floor-only blocker；horizon=100 easy-safety weak slice。 | 可以写 global / TrajNet baseline-family mechanism evidence；不能写 uniform source-level domain/horizon success。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界

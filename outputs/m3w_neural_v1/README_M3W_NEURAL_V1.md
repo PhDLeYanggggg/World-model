@@ -46,6 +46,8 @@ Stage42-AT audits the safety floor boundary on the same proposed source-level sp
 
 Stage42-AU decomposes that baseline-family mechanism. Horizon/domain controls alone do not work; `floor_rel_only` is weak; `safe_baseline_rel_only` is unsafe for t50; `family_baseline_rel_only` is the dominant single source-level mechanism, with protected all `+0.273815` and t50 `+0.237296`. The full `baseline_family_all` context improves protected t50 to `+0.315425`. The current mechanism claim should therefore focus on baseline-family rollout context, especially family relative rollout, while not overclaiming independent history/goal/neighbor/sequence/graph contributions.
 
+Stage42-AV checks robustness and weak slices for that mechanism. The global bootstrap lower bounds are strongly positive for `baseline_family_all` (all `+0.284243`, t50 `+0.309806`, hard/failure `+0.271961`, easy-degradation high `-0.459376`), and TrajNet is positive. But UCY has no validation rows in this proposed source-level split and is therefore floor-only, not positive transfer. Horizon 100 remains raw-frame diagnostic with an easy-safety weak slice. Uniform domain/horizon claims are still disallowed.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
