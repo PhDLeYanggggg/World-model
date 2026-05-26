@@ -48,6 +48,8 @@ Stage42-AU decomposes that baseline-family mechanism. Horizon/domain controls al
 
 Stage42-AV checks robustness and weak slices for that mechanism. The global bootstrap lower bounds are strongly positive for `baseline_family_all` (all `+0.284243`, t50 `+0.309806`, hard/failure `+0.271961`, easy-degradation high `-0.459376`), and TrajNet is positive. But UCY has no validation rows in this proposed source-level split and is therefore floor-only, not positive transfer. Horizon 100 remains raw-frame diagnostic with an easy-safety weak slice. Uniform domain/horizon claims are still disallowed.
 
+Stage42-AW repairs that UCY validation-support blocker. It carves `UCY::UCY/zara03/crowds_zara03.txt` from original UCY train sources as internal validation, keeps test sources unchanged, and selects policies without test metrics. The validation-best `family_baseline_rel_only` variant reaches global all `+0.356806`, t50 `+0.289698`, hard/failure `+0.338904`; UCY test all `+0.374492`, t50 `+0.245320`, hard/failure `+0.355073`, with negative easy degradation. This is a repaired validation-support protocol, not metric/seconds-level or true-3D evidence.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

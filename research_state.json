@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_av_baseline_family_robustness",
-  "current_verdict": "stage42_av_baseline_family_robustness_pass_with_limits",
+  "current_stage": "stage42_aw_ucy_validation_support_repair",
+  "current_verdict": "stage42_aw_ucy_validation_support_repair_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_as_at_au_av_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_ap_aq_ar_as_at_au_av_aw_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AV baseline-family robustness/weak-slice evidence; full pytest 402 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR/AS context contribution boundary evidence, Stage42-AT fallback/floor-context boundary evidence, Stage42-AU baseline-family mechanism evidence, and Stage42-AV robustness/weak-slice evidence.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AW UCY validation-support repair; full pytest 406 passed.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN/AO/AP/AQ/AR/AS context contribution boundary evidence, Stage42-AT fallback/floor-context boundary evidence, Stage42-AU baseline-family mechanism evidence, Stage42-AV robustness/weak-slice evidence, and Stage42-AW UCY validation-support repair.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AV confirms global/TrajNet baseline-family robustness while marking UCY floor-only and t100 easy-safety limitations.",
+    "latest_branch_success": "Stage42-AW repairs the UCY validation-support blocker with train-only internal validation and obtains positive UCY transfer while preserving test-once/no-leakage boundaries.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -56,7 +56,10 @@
       "stage42_au_full_pytest": "398 passed",
       "stage42_av_runner": "pass",
       "stage42_av_focused_pytest": "4 passed",
-      "stage42_av_full_pytest": "402 passed"
+      "stage42_av_full_pytest": "402 passed",
+      "stage42_aw_runner": "pass",
+      "stage42_aw_focused_pytest": "4 passed",
+      "stage42_aw_full_pytest": "406 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -274,6 +277,23 @@
         "100"
       ],
       "conclusion": "Global bootstrap and TrajNet evidence support baseline-family rollout context, but uniform domain/horizon claims are disallowed because UCY has no validation rows and t100 has an easy-safety weak slice."
+    },
+    "stage42_aw_ucy_validation_support_repair": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/ucy_validation_support_repair_stage42.md",
+      "gate": "14/14",
+      "verdict": "stage42_aw_ucy_validation_support_repair_pass",
+      "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+      "repaired_ucy_val_rows": 9540,
+      "validation_best_variant": "family_baseline_rel_only",
+      "global_all": 0.3568057717890797,
+      "global_t50": 0.28969780579498305,
+      "global_hard_failure": 0.33890447278985913,
+      "ucy_all": 0.37449206739500784,
+      "ucy_t50": 0.24532046628354087,
+      "ucy_hard_failure": 0.3550726481550319,
+      "ucy_easy_degradation": -0.41837632719435336,
+      "conclusion": "UCY floor-only blocker is repaired under a train-only internal-validation protocol. Test sources are unchanged and test metrics are not used for threshold/policy selection."
     }
   },
   "stage42_am_source_level_full_waypoint_eval": {
@@ -14489,6 +14509,46 @@
       "h100_easy_degradation": 0.028496674748135886
     },
     "paper_claim": "baseline-family rollout context is statistically stable globally and on TrajNet, but uniform source-level domain/horizon claims remain disallowed because UCY is floor-only under this split and t100 has easy-safety weakness.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false
+    }
+  },
+  "stage42_aw_ucy_validation_support_repair": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/ucy_validation_support_repair_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_aw_gate.md",
+    "gate": "14/14",
+    "gates_passed": 14,
+    "gates_total": 14,
+    "verdict": "stage42_aw_ucy_validation_support_repair_pass",
+    "internal_validation": {
+      "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+      "selected_from": "original_train_sources_only",
+      "uses_test_rows": false,
+      "test_rows_unchanged": true,
+      "original_ucy_val_rows": 0,
+      "repaired_ucy_val_rows": 9540
+    },
+    "validation_best_variant": "family_baseline_rel_only",
+    "validation_best_metrics": {
+      "global_all": 0.3568057717890797,
+      "global_t50": 0.28969780579498305,
+      "global_hard_failure": 0.33890447278985913,
+      "global_easy_degradation": -0.37048920988736844,
+      "ucy_all": 0.37449206739500784,
+      "ucy_t50": 0.24532046628354087,
+      "ucy_hard_failure": 0.3550726481550319,
+      "ucy_easy_degradation": -0.41837632719435336,
+      "trajnet_all": 0.3514230453837086,
+      "trajnet_t50": 0.3021187404984901,
+      "trajnet_easy_degradation": -0.36181722460825505
+    },
+    "conclusion": "The UCY no-validation blocker from Stage42-AV is repaired by carving internal validation from UCY train sources only. This supports UCY positive transfer under the repaired validation-support protocol, not metric/seconds-level or true-3D claims.",
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,

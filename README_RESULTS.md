@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, proposed source-level robustness/weak-slice evidence, UCY validation-support repair evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -223,6 +223,29 @@ SMC_enabled = false
 ```
 
 Stage42-AV prevents overclaiming the AU result. The global bootstrap evidence is strong and TrajNet is positive, but UCY has no validation rows in this proposed source-level split and therefore remains floor-only. Horizon 100 is still raw-frame diagnostic and has an easy-safety weak slice. The allowed claim is global / TrajNet source-level baseline-family mechanism evidence with explicit UCY and t100 limitations, not uniform domain/horizon success.
+
+Latest Stage42-AW UCY validation-support repair:
+
+```text
+source = fresh_run
+verdict = stage42_aw_ucy_validation_support_repair_pass
+gates = 14 / 14
+internal_val_group = UCY::UCY/zara03/crowds_zara03.txt
+original_UCY_val_rows = 0
+repaired_UCY_val_rows = 9540
+validation_best_variant = family_baseline_rel_only
+global_all = 0.356806
+global_t50 = 0.289698
+global_hard_failure = 0.338904
+UCY_all = 0.374492
+UCY_t50 = 0.245320
+UCY_hard_failure = 0.355073
+UCY_easy_degradation = -0.418376
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AW repairs the UCY floor-only blocker by carving an internal validation source from UCY train sources only. Test sources remain unchanged, and thresholds/policies are selected without test metrics. This supports UCY positive transfer under a repaired validation-support protocol, while preserving the raw-frame/dataset-local claim boundary.
 
 Latest Stage42-AD calibration evidence refresh:
 
