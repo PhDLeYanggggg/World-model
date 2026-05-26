@@ -1,7 +1,7 @@
 # Stage42-CX Gate
 
 - verdict: `stage42_cx_evidence_provenance_pass`
-- passed: `16 / 16`
+- passed: `20 / 20`
 
 | gate | passed |
 | --- | ---: |
@@ -15,6 +15,10 @@
 | `paper_files_have_claim_boundaries` | `True` |
 | `runtime_replay_included` | `True` |
 | `runtime_replay_refresh_included` | `True` |
+| `group_consistency_repair_included` | `True` |
+| `frozen_group_consistency_policy_included` | `True` |
+| `group_consistency_replay_included` | `True` |
+| `group_consistency_runtime_policy_included` | `True` |
 | `worktree_caveats_recorded` | `True` |
 | `no_metric_seconds_overclaim` | `True` |
 | `true_3d_overclaim_blocked` | `True` |

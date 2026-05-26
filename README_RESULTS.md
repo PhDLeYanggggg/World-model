@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## 当前目标总账 README
+
+最新按用户要求汇总的单文件中文总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_CURRENT_GOAL_SUMMARY_ZH.md`
+
+它集中总结了 M3W 长期目标内已经做过的路线、失败原因、成功证据、当前 best deployable、仍然禁止的 claim 边界，以及最新 Stage42-DI/DJ/DK/DL group-consistency full-waypoint runtime policy 证据。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## 当前完整复盘 README
 
 本轮按用户要求新增详细中文复盘：
@@ -4271,11 +4279,11 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 
 - source: `fresh_evidence_provenance_from_stage42_artifacts`
 - role: paper-ready provenance and reproducibility audit.
-- gate: `16 / 16`; verdict `stage42_cx_evidence_provenance_pass`.
-- artifacts audited: `21`.
-- artifacts with passing gates: `21`.
-- source-label counts: `{'fresh_run': 20, 'cached_verified': 1}`.
-- worktree caveat artifacts recorded: `2`.
+- gate: `20 / 20`; verdict `stage42_cx_evidence_provenance_pass`.
+- artifacts audited: `25`.
+- artifacts with passing gates: `25`.
+- source-label counts: `{'fresh_run': 24, 'cached_verified': 1}`.
+- worktree caveat artifacts recorded: `0`.
 - Dirty/untracked generated files are not hidden; they are recorded as caveats and must not be treated as extra clean paper evidence.
 - This audit does not create metric/seconds/3D/foundation claims and does not execute Stage5C or SMC.
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
@@ -4299,10 +4307,10 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 
 - source: `fresh_freeze_candidate_manifest_from_cx_cy`
 - role: hash manifest for the current Stage42 paper evidence candidate.
-- gate: `14 / 14`; verdict `stage42_cz_paper_freeze_candidate_manifest_pass`.
+- gate: `15 / 15`; verdict `stage42_cz_paper_freeze_candidate_manifest_pass`.
 - freeze status: `candidate_clean`.
 - final immutable release: `True`.
-- files hashed: `74`.
+- files hashed: `87`.
 - metadata caveats: `0`; substantive caveats: `0`.
 - This is a paper evidence freeze candidate under protected dataset-local/raw-frame 2.5D boundaries.
 - It is not true 3D, not foundation, not metric/seconds-level, not Stage5C, and not SMC.

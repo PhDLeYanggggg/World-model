@@ -65,6 +65,7 @@ def test_gate_passes_for_candidate_with_metadata_caveats(tmp_path: Path, monkeyp
             {"role": "paper_file", "exists": True, "sha256": "a" * 64},
             {"role": "paper_file", "exists": True, "sha256": "b" * 64},
             {"role": "frozen_runtime_policy_artifact", "exists": True, "sha256": "c" * 64},
+            {"role": "frozen_group_consistency_policy_artifact", "exists": True, "sha256": "d" * 64},
         ],
         "claim_boundary": _claim_boundary(),
     }
@@ -89,6 +90,7 @@ def test_gate_rejects_metadata_caveat_called_final_release(tmp_path: Path, monke
         "files": [
             {"role": "paper_file", "exists": True, "sha256": "a" * 64},
             {"role": "frozen_runtime_policy_artifact", "exists": True, "sha256": "b" * 64},
+            {"role": "frozen_group_consistency_policy_artifact", "exists": True, "sha256": "c" * 64},
         ],
         "claim_boundary": _claim_boundary(),
     }

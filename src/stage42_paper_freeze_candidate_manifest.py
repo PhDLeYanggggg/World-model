@@ -15,6 +15,7 @@ OUT_DIR = Path("outputs/stage42_long_research")
 CX_JSON = OUT_DIR / "evidence_provenance_stage42.json"
 CY_JSON = OUT_DIR / "worktree_caveat_classifier_stage42.json"
 POLICY_JSON = OUT_DIR / "frozen_proximity_guard_composer_policy_stage42_policy.json"
+GROUP_POLICY_JSON = OUT_DIR / "frozen_group_consistency_full_waypoint_policy_stage42_policy.json"
 
 REPORT_JSON = OUT_DIR / "paper_freeze_candidate_manifest_stage42.json"
 REPORT_MD = OUT_DIR / "paper_freeze_candidate_manifest_stage42.md"
@@ -101,6 +102,7 @@ def _manifest_files(cx: Mapping[str, Any]) -> list[dict[str, Any]]:
     for path in PAPER_FILES:
         add(path, "paper_file")
     add(POLICY_JSON, "frozen_runtime_policy_artifact")
+    add(GROUP_POLICY_JSON, "frozen_group_consistency_policy_artifact")
     for row in cx.get("artifact_rows", []):
         add(Path(row["json"]), f"evidence_json:{row['claim_area']}")
         add(Path(row["md"]), f"evidence_md:{row['claim_area']}")
@@ -185,6 +187,9 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "all_manifest_files_exist": all(row["exists"] for row in payload["files"]),
         "all_manifest_files_hashed": all(bool(row["sha256"]) for row in payload["files"]),
         "policy_artifact_included": any(row["role"] == "frozen_runtime_policy_artifact" for row in payload["files"]),
+        "group_consistency_policy_artifact_included": any(
+            row["role"] == "frozen_group_consistency_policy_artifact" for row in payload["files"]
+        ),
         "paper_files_included": sum(1 for row in payload["files"] if row["role"] == "paper_file") == len(PAPER_FILES),
         "no_substantive_stage42_caveats": status["substantive_caveats"] == 0,
         "freeze_status_explicit": status["freeze_status"] in {

@@ -146,10 +146,10 @@ python3 -m pytest tests
 | `causal_ablation` | `fresh_run` | `12/12` | `run_stage42_causal_ablation.py` | `False` |
 | `safety_floor` | `fresh_run` | `12/12` | `run_stage42_safety_floor.py` | `False` |
 | `paper_package` | `fresh_run` | `12/12` | `run_stage42_paper_package.py` | `False` |
-| `strict_time_geometry_calibration` | `fresh_run` | `13/13` | `run_stage42_source_time_geometry_calibration.py` | `True` |
+| `strict_time_geometry_calibration` | `fresh_run` | `13/13` | `run_stage42_source_time_geometry_calibration.py` | `False` |
 | `metric_time_claim_guard` | `fresh_run` | `11/11` | `run_stage42_metric_time_claim_guard.py` | `False` |
 | `source_terms_validation` | `fresh_run` | `11/11` | `run_stage42_source_terms_confirmation_validator.py` | `False` |
-| `context_contribution_forensics` | `fresh_run` | `13/13` | `run_stage42_context_contribution_forensics.py` | `True` |
+| `context_contribution_forensics` | `fresh_run` | `13/13` | `run_stage42_context_contribution_forensics.py` | `False` |
 | `goal_scene_gated_expert` | `fresh_run` | `10/10` | `run_stage42_goal_scene_gated_expert.py` | `False` |
 | `neighbor_interaction_gated_expert` | `fresh_run` | `11/11` | `run_stage42_neighbor_interaction_gated_expert.py` | `False` |
 | `common_validation_bridge_shape_composer` | `cached_verified` | `14/14` | `run_stage42_common_validation_bridge_shape_composer.py` | `False` |
@@ -161,6 +161,10 @@ python3 -m pytest tests
 | `runtime_policy_api` | `fresh_run` | `19/19` | `run_stage42_runtime_proximity_guard_policy.py` | `False` |
 | `batch_runtime_replay` | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `False` |
 | `runtime_replay_paper_refresh` | `fresh_run` | `25/25` | `run_stage42_runtime_replay_paper_refresh.py` | `False` |
+| `group_consistency_full_waypoint_repair` | `fresh_run` | `17/17` | `run_stage42_group_consistency_full_waypoint_repair.py` | `False` |
+| `frozen_group_consistency_policy` | `fresh_run` | `22/22` | `run_stage42_freeze_group_consistency_policy.py` | `False` |
+| `group_consistency_policy_replay` | `fresh_run` | `34/34` | `run_stage42_replay_group_consistency_policy.py` | `False` |
+| `group_consistency_runtime_policy` | `fresh_run` | `30/30` | `run_stage42_group_consistency_runtime_policy.py` | `False` |
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
 
 <!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:START -->

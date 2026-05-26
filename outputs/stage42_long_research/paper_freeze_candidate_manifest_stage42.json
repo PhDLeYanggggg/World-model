@@ -1,8 +1,8 @@
 {
   "source": "fresh_freeze_candidate_manifest_from_cx_cy",
   "stage": "Stage42-CZ paper freeze candidate manifest",
-  "generated_at_utc": "2026-05-26T20:33:18.405328+00:00",
-  "git_commit": "16fed1c",
+  "generated_at_utc": "2026-05-26T22:58:01.172686+00:00",
+  "git_commit": "31d01c1",
   "current_facts": [
     "当前不是 true 3D world model。",
     "当前不是 large-scale foundation world model。",
@@ -31,6 +31,10 @@
           "paper_files_have_claim_boundaries": true,
           "runtime_replay_included": true,
           "runtime_replay_refresh_included": true,
+          "group_consistency_repair_included": true,
+          "frozen_group_consistency_policy_included": true,
+          "group_consistency_replay_included": true,
+          "group_consistency_runtime_policy_included": true,
           "worktree_caveats_recorded": true,
           "no_metric_seconds_overclaim": true,
           "true_3d_overclaim_blocked": true,
@@ -38,19 +42,19 @@
           "stage5c_false": true,
           "smc_false": true
         },
-        "passed": 16,
-        "total": 16,
+        "passed": 20,
+        "total": 20,
         "verdict": "stage42_cx_evidence_provenance_pass"
       },
       "summary": {
-        "artifacts_total": 21,
-        "artifacts_gate_passed": 21,
+        "artifacts_total": 25,
+        "artifacts_gate_passed": 25,
         "source_label_counts": {
-          "fresh_run": 20,
+          "fresh_run": 24,
           "cached_verified": 1
         },
-        "artifacts_with_worktree_caveat": 2,
-        "paper_files_with_worktree_caveat": 1
+        "artifacts_with_worktree_caveat": 0,
+        "paper_files_with_worktree_caveat": 0
       }
     },
     "stage42_cy": {
@@ -104,24 +108,24 @@
       "path": "outputs/stage42_long_research/method_draft_stage42.md",
       "role": "paper_file",
       "exists": true,
-      "size_bytes": 8428,
-      "sha256": "eda8264c964ae30672f744f00a5b07789fc70010f623d45bc263ecb813746311",
+      "size_bytes": 11614,
+      "sha256": "415bd1baa90ab873c1f73e1fabc027f98d9b64311372192d296621c64b04afa1",
       "git_status": "clean"
     },
     {
       "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
       "role": "paper_file",
       "exists": true,
-      "size_bytes": 19032,
-      "sha256": "75dd9032bdc62bde575de1b572ea67553ff28cb40252987ffadb7ea8c7a2b039",
+      "size_bytes": 22218,
+      "sha256": "17c3a5048076339d400b60f8395be236ee84678bbf5f006bbc1d494dc2111680",
       "git_status": "clean"
     },
     {
       "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
       "role": "paper_file",
       "exists": true,
-      "size_bytes": 26430,
-      "sha256": "0e087615e5587d93f2d416b1c6c75fa422b97e0d45c179007091d7444138678a",
+      "size_bytes": 29616,
+      "sha256": "1a1d910fc421071e4a589515aba5d29a480de849076076b0a3c4fe7e6b50a1b6",
       "git_status": "clean"
     },
     {
@@ -136,8 +140,8 @@
       "path": "outputs/stage42_long_research/model_card_stage42.md",
       "role": "paper_file",
       "exists": true,
-      "size_bytes": 16747,
-      "sha256": "9ba9d4736267802ac875d70ed24dd629370ba44565b06e6e7598ec066be9c428",
+      "size_bytes": 19933,
+      "sha256": "dd89343c842d0a686e8f45be6ee01d2aedd8f4ee1969f0c45d048104396f46db",
       "git_status": "clean"
     },
     {
@@ -152,16 +156,16 @@
       "path": "outputs/stage42_long_research/reproducibility_stage42.md",
       "role": "paper_file",
       "exists": true,
-      "size_bytes": 10224,
-      "sha256": "ac43411a752c79ef8a10eb57a29d664f4e10e4774bb45da19d09d2a79cc557dc",
-      "git_status": "clean"
+      "size_bytes": 13920,
+      "sha256": "2636ce8b3e8c77d2cff7c5718c5c1ed98130961c2ed6985b59e317bf22646761",
+      "git_status": "M outputs/stage42_long_research/reproducibility_stage42.md"
     },
     {
       "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
       "role": "paper_file",
       "exists": true,
-      "size_bytes": 35389,
-      "sha256": "92a65874c7dd19c4455364766f0d13f4964ffafb28cf223837baaf37588ed054",
+      "size_bytes": 38575,
+      "sha256": "9727964d994ced53b7a41004f9c6f048b6966b2c67b4b685e669c9dc05328466",
       "git_status": "clean"
     },
     {
@@ -170,6 +174,14 @@
       "exists": true,
       "size_bytes": 3414,
       "sha256": "8cdfcc939a0f6c8261f2155e1a9a28efab1a691a7603859779d813e810a63707",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json",
+      "role": "frozen_group_consistency_policy_artifact",
+      "exists": true,
+      "size_bytes": 5250,
+      "sha256": "f48c6899518c84cdcfcbcc88bd76932dcaf8716512be0ddf184a7433da41bc35",
       "git_status": "clean"
     },
     {
@@ -313,7 +325,7 @@
       "role": "evidence_json:strict_time_geometry_calibration",
       "exists": true,
       "size_bytes": 15612,
-      "sha256": "7a5d8a525a008545c95c9adb729de789773c309884231cefee416a72c72a8a40",
+      "sha256": "2e3816099be5ba3d1174a6b071ea817ffd0c658f36c85b61f699a573ce9c7f3c",
       "git_status": "clean"
     },
     {
@@ -321,7 +333,7 @@
       "role": "evidence_md:strict_time_geometry_calibration",
       "exists": true,
       "size_bytes": 4205,
-      "sha256": "c650770f0020121b497e01c8150c86dd306966462289891c46c7c574f99eb985",
+      "sha256": "0f1799913972ad2145bb743e212500104ab31962358a755142bfe03cedf8d9df",
       "git_status": "clean"
     },
     {
@@ -361,7 +373,7 @@
       "role": "evidence_json:source_terms_validation",
       "exists": true,
       "size_bytes": 14852,
-      "sha256": "3712d080967d228e062952973614690aff69406e0ad8bb9baf6dd805c6a8b8db",
+      "sha256": "6419314cec6735d1badb44afaa22906650a9c2b679504bc7799d9410330757aa",
       "git_status": "clean"
     },
     {
@@ -369,7 +381,7 @@
       "role": "evidence_md:source_terms_validation",
       "exists": true,
       "size_bytes": 3060,
-      "sha256": "55dd6cbe95f3f3575eb15eb9683524ba7275e0582a139dbd632718160b55487a",
+      "sha256": "59be7a1e85d26dfdc4739d9b0280291333ef4f634f49860a70c2c799f875eb63",
       "git_status": "clean"
     },
     {
@@ -385,7 +397,7 @@
       "role": "evidence_json:context_contribution_forensics",
       "exists": true,
       "size_bytes": 8022,
-      "sha256": "2640333f20e52405de58920d65aef77200ec0938186b6bf88e786217809ed0dd",
+      "sha256": "0145bbafaac7c7847915aec8a5bc8931d6e018ef702ba2e0026f9602fd5f23e9",
       "git_status": "clean"
     },
     {
@@ -393,7 +405,7 @@
       "role": "evidence_md:context_contribution_forensics",
       "exists": true,
       "size_bytes": 4915,
-      "sha256": "dbbea434935b3b561345e8121bb16af88bed7325c62aecd9d3d57e6291186bf2",
+      "sha256": "1f81aa273a8175537a85de32665389253fe2985b4ece39df0c9a86d03d84b798",
       "git_status": "clean"
     },
     {
@@ -669,30 +681,126 @@
       "git_status": "clean"
     },
     {
+      "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+      "role": "evidence_json:group_consistency_full_waypoint_repair",
+      "exists": true,
+      "size_bytes": 123469,
+      "sha256": "29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.md",
+      "role": "evidence_md:group_consistency_full_waypoint_repair",
+      "exists": true,
+      "size_bytes": 5064,
+      "sha256": "0e0729df127bdbf74910a56105116ce9b253d150806a6abef30a0718a9227b0f",
+      "git_status": "clean"
+    },
+    {
+      "path": "run_stage42_group_consistency_full_waypoint_repair.py",
+      "role": "runner:group_consistency_full_waypoint_repair",
+      "exists": true,
+      "size_bytes": 403,
+      "sha256": "80a7029e20e76da5a00fe96bd4d4b445c5ad28742fbd472553ceb1e909bc859e",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json",
+      "role": "evidence_json:frozen_group_consistency_policy",
+      "exists": true,
+      "size_bytes": 10254,
+      "sha256": "1166f322199387be366bb1e01d4918339e0787a901f13893b2f7813ac9cf418d",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.md",
+      "role": "evidence_md:frozen_group_consistency_policy",
+      "exists": true,
+      "size_bytes": 2690,
+      "sha256": "a0059763e837e382ed113d69b96a57a3160450752bf72ecff1ffaf006e1daa01",
+      "git_status": "clean"
+    },
+    {
+      "path": "run_stage42_freeze_group_consistency_policy.py",
+      "role": "runner:frozen_group_consistency_policy",
+      "exists": true,
+      "size_bytes": 338,
+      "sha256": "7955f4698fb6a8ba33c43f1deb5bf6bfee41ecccd46d01d41dcde87cec4bc60f",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+      "role": "evidence_json:group_consistency_policy_replay",
+      "exists": true,
+      "size_bytes": 15359,
+      "sha256": "fdba2aabfbc5da547abfd479be1b001a6ac464f261acfcdd95d77edf403c0a95",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+      "role": "evidence_md:group_consistency_policy_replay",
+      "exists": true,
+      "size_bytes": 2432,
+      "sha256": "3a0fac7fe34764c55ecbacf159a7003f169c64735308b8cd4a01cbbbb1783fe9",
+      "git_status": "clean"
+    },
+    {
+      "path": "run_stage42_replay_group_consistency_policy.py",
+      "role": "runner:group_consistency_policy_replay",
+      "exists": true,
+      "size_bytes": 179,
+      "sha256": "af502456bb474dbda265c7ca1b765da891e9f7ee84fa9c9e71e9f596bff3be3c",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+      "role": "evidence_json:group_consistency_runtime_policy",
+      "exists": true,
+      "size_bytes": 15392,
+      "sha256": "e451c44978be0e8a0e6bbab1b5fd05198acb41b30fbd1309cf2a2a1b27176087",
+      "git_status": "clean"
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+      "role": "evidence_md:group_consistency_runtime_policy",
+      "exists": true,
+      "size_bytes": 2666,
+      "sha256": "dc567bd85e3f642375d4ac77b7653da51367d2d78ca10fe31afbb21841a2465f",
+      "git_status": "clean"
+    },
+    {
+      "path": "run_stage42_group_consistency_runtime_policy.py",
+      "role": "runner:group_consistency_runtime_policy",
+      "exists": true,
+      "size_bytes": 182,
+      "sha256": "1970147b66a95f1d10a629e88bbb58b95efab0d21ab0dc7e5eab967821643428",
+      "git_status": "clean"
+    },
+    {
       "path": "outputs/stage42_long_research/evidence_provenance_stage42.json",
       "role": "provenance_verifier_json",
       "exists": true,
-      "size_bytes": 23656,
-      "sha256": "1fc0a9030d5b38046fb507d0e49586661fd327bcbcef723ebf7c26f8d2db1019",
-      "git_status": "clean"
+      "size_bytes": 27449,
+      "sha256": "2facff0b3b542a0222c09beca48c4a2e9bc21499e6aac416372a3995c8208825",
+      "git_status": "M outputs/stage42_long_research/evidence_provenance_stage42.json"
     },
     {
       "path": "outputs/stage42_long_research/worktree_caveat_classifier_stage42.json",
       "role": "worktree_caveat_classifier_json",
       "exists": true,
       "size_bytes": 4151,
-      "sha256": "ac69d14565cd4f4d9b13873f1f6c80a21f4735efeb8b7ab984a18dcab91fb567",
+      "sha256": "d2c215b710df02c236be721ea14bf675b0cb69ec48453a141fb429854c4d9905",
       "git_status": "clean"
     }
   ],
-  "manifest_hash": "bb6689cae4a1deb1ba2684d5b4814952267726fbec94767868510d4cfa5a3cce",
+  "manifest_hash": "a036dacc3a0c95b9a8394e7557f83a7a23d95ab5925c1fbedbb5edc86ea8d7d1",
   "summary": {
-    "files_total": 74,
+    "files_total": 87,
     "paper_files": 9,
-    "evidence_json_files": 21,
-    "evidence_md_files": 20,
-    "runner_files": 21,
-    "files_with_git_caveat": 0
+    "evidence_json_files": 25,
+    "evidence_md_files": 24,
+    "runner_files": 25,
+    "files_with_git_caveat": 2
   },
   "claim_boundary": {
     "true_3d": false,
@@ -708,6 +816,7 @@
       "all_manifest_files_exist": true,
       "all_manifest_files_hashed": true,
       "policy_artifact_included": true,
+      "group_consistency_policy_artifact_included": true,
       "paper_files_included": true,
       "no_substantive_stage42_caveats": true,
       "freeze_status_explicit": true,
@@ -718,8 +827,8 @@
       "stage5c_false": true,
       "smc_false": true
     },
-    "passed": 14,
-    "total": 14,
+    "passed": 15,
+    "total": 15,
     "verdict": "stage42_cz_paper_freeze_candidate_manifest_pass"
   }
 }

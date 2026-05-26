@@ -1332,11 +1332,11 @@ The context contribution map is now explicit: baseline-family rollout context is
 
 - source: `fresh_evidence_provenance_from_stage42_artifacts`
 - role: paper-ready provenance and reproducibility audit.
-- gate: `16 / 16`; verdict `stage42_cx_evidence_provenance_pass`.
-- artifacts audited: `21`.
-- artifacts with passing gates: `21`.
-- source-label counts: `{'fresh_run': 20, 'cached_verified': 1}`.
-- worktree caveat artifacts recorded: `2`.
+- gate: `20 / 20`; verdict `stage42_cx_evidence_provenance_pass`.
+- artifacts audited: `25`.
+- artifacts with passing gates: `25`.
+- source-label counts: `{'fresh_run': 24, 'cached_verified': 1}`.
+- worktree caveat artifacts recorded: `0`.
 - Dirty/untracked generated files are not hidden; they are recorded as caveats and must not be treated as extra clean paper evidence.
 - This audit does not create metric/seconds/3D/foundation claims and does not execute Stage5C or SMC.
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
@@ -1360,10 +1360,10 @@ The context contribution map is now explicit: baseline-family rollout context is
 
 - source: `fresh_freeze_candidate_manifest_from_cx_cy`
 - role: hash manifest for the current Stage42 paper evidence candidate.
-- gate: `14 / 14`; verdict `stage42_cz_paper_freeze_candidate_manifest_pass`.
+- gate: `15 / 15`; verdict `stage42_cz_paper_freeze_candidate_manifest_pass`.
 - freeze status: `candidate_clean`.
 - final immutable release: `True`.
-- files hashed: `74`.
+- files hashed: `87`.
 - metadata caveats: `0`; substantive caveats: `0`.
 - This is a paper evidence freeze candidate under protected dataset-local/raw-frame 2.5D boundaries.
 - It is not true 3D, not foundation, not metric/seconds-level, not Stage5C, and not SMC.

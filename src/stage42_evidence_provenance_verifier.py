@@ -182,6 +182,34 @@ EVIDENCE_ARTIFACTS = [
         "runner": "run_stage42_runtime_replay_paper_refresh.py",
         "role": "paper/reproducibility refresh",
     },
+    {
+        "claim_area": "group_consistency_full_waypoint_repair",
+        "json": OUT_DIR / "group_consistency_full_waypoint_repair_stage42.json",
+        "md": OUT_DIR / "group_consistency_full_waypoint_repair_stage42.md",
+        "runner": "run_stage42_group_consistency_full_waypoint_repair.py",
+        "role": "all-agent group-consistency full-waypoint repair",
+    },
+    {
+        "claim_area": "frozen_group_consistency_policy",
+        "json": OUT_DIR / "frozen_group_consistency_full_waypoint_policy_stage42.json",
+        "md": OUT_DIR / "frozen_group_consistency_full_waypoint_policy_stage42.md",
+        "runner": "run_stage42_freeze_group_consistency_policy.py",
+        "role": "frozen group-consistency full-waypoint policy artifact",
+    },
+    {
+        "claim_area": "group_consistency_policy_replay",
+        "json": OUT_DIR / "group_consistency_policy_replay_stage42.json",
+        "md": OUT_DIR / "group_consistency_policy_replay_stage42.md",
+        "runner": "run_stage42_replay_group_consistency_policy.py",
+        "role": "group-consistency policy artifact replay verifier",
+    },
+    {
+        "claim_area": "group_consistency_runtime_policy",
+        "json": OUT_DIR / "group_consistency_runtime_policy_stage42.json",
+        "md": OUT_DIR / "group_consistency_runtime_policy_stage42.md",
+        "runner": "run_stage42_group_consistency_runtime_policy.py",
+        "role": "callable group-consistency full-waypoint runtime policy API",
+    },
 ]
 
 CURRENT_FACTS = [
@@ -379,6 +407,10 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "paper_files_have_claim_boundaries": all(row["has_claim_boundary"] for row in paper),
         "runtime_replay_included": any(row["claim_area"] == "batch_runtime_replay" for row in rows),
         "runtime_replay_refresh_included": any(row["claim_area"] == "runtime_replay_paper_refresh" for row in rows),
+        "group_consistency_repair_included": any(row["claim_area"] == "group_consistency_full_waypoint_repair" for row in rows),
+        "frozen_group_consistency_policy_included": any(row["claim_area"] == "frozen_group_consistency_policy" for row in rows),
+        "group_consistency_replay_included": any(row["claim_area"] == "group_consistency_policy_replay" for row in rows),
+        "group_consistency_runtime_policy_included": any(row["claim_area"] == "group_consistency_runtime_policy" for row in rows),
         "worktree_caveats_recorded": summary["artifacts_with_worktree_caveat"] >= 0,
         "no_metric_seconds_overclaim": claim["metric_or_seconds_claim"] is False,
         "true_3d_overclaim_blocked": claim["true_3d"] is False,

@@ -1,10 +1,10 @@
 # Stage42-CZ Paper Freeze Candidate Manifest
 
 - source: `fresh_freeze_candidate_manifest_from_cx_cy`
-- generated_at_utc: `2026-05-26T20:33:18.405328+00:00`
-- git_commit: `16fed1c`
-- manifest_hash: `bb6689cae4a1deb1ba2684d5b4814952267726fbec94767868510d4cfa5a3cce`
-- gate: `14 / 14`
+- generated_at_utc: `2026-05-26T22:58:01.172686+00:00`
+- git_commit: `31d01c1`
+- manifest_hash: `a036dacc3a0c95b9a8394e7557f83a7a23d95ab5925c1fbedbb5edc86ea8d7d1`
+- gate: `15 / 15`
 - verdict: `stage42_cz_paper_freeze_candidate_manifest_pass`
 - freeze_status: `candidate_clean`
 - final_immutable_release: `True`
@@ -25,27 +25,28 @@
 
 ## Summary
 
-- files_total: `74`
+- files_total: `87`
 - paper_files: `9`
-- evidence_json_files: `21`
-- evidence_md_files: `20`
-- runner_files: `21`
-- files_with_git_caveat: `0`
+- evidence_json_files: `25`
+- evidence_md_files: `24`
+- runner_files: `25`
+- files_with_git_caveat: `2`
 
 ## Files
 
 | role | path | size | sha256 | git status |
 | --- | --- | ---: | --- | --- |
 | `paper_file` | `outputs/stage42_long_research/paper_outline_stage42.md` | 8120 | `297405c91e2d85f15435807b40eaee4076f6282daf3e8213d7422cbe0b2304cb` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/method_draft_stage42.md` | 8428 | `eda8264c964ae30672f744f00a5b07789fc70010f623d45bc263ecb813746311` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/experiment_tables_stage42.md` | 19032 | `75dd9032bdc62bde575de1b572ea67553ff28cb40252987ffadb7ea8c7a2b039` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/ablation_tables_stage42.md` | 26430 | `0e087615e5587d93f2d416b1c6c75fa422b97e0d45c179007091d7444138678a` | `clean` |
+| `paper_file` | `outputs/stage42_long_research/method_draft_stage42.md` | 11614 | `415bd1baa90ab873c1f73e1fabc027f98d9b64311372192d296621c64b04afa1` | `clean` |
+| `paper_file` | `outputs/stage42_long_research/experiment_tables_stage42.md` | 22218 | `17c3a5048076339d400b60f8395be236ee84678bbf5f006bbc1d494dc2111680` | `clean` |
+| `paper_file` | `outputs/stage42_long_research/ablation_tables_stage42.md` | 29616 | `1a1d910fc421071e4a589515aba5d29a480de849076076b0a3c4fe7e6b50a1b6` | `clean` |
 | `paper_file` | `outputs/stage42_long_research/failure_taxonomy_stage42.md` | 9179 | `1728e27fe9c8b0c4d549bc9fd92cd76f851d5cfd553250f86bf69f67327f75a6` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/model_card_stage42.md` | 16747 | `9ba9d4736267802ac875d70ed24dd629370ba44565b06e6e7598ec066be9c428` | `clean` |
+| `paper_file` | `outputs/stage42_long_research/model_card_stage42.md` | 19933 | `dd89343c842d0a686e8f45be6ee01d2aedd8f4ee1969f0c45d048104396f46db` | `clean` |
 | `paper_file` | `outputs/stage42_long_research/data_card_stage42.md` | 5949 | `73a574b452323ec81a924c9add81bd10d41680eef0c33413e7721214e51c84dc` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/reproducibility_stage42.md` | 10224 | `ac43411a752c79ef8a10eb57a29d664f4e10e4774bb45da19d09d2a79cc557dc` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/a_journal_gap_stage42.md` | 35389 | `92a65874c7dd19c4455364766f0d13f4964ffafb28cf223837baaf37588ed054` | `clean` |
+| `paper_file` | `outputs/stage42_long_research/reproducibility_stage42.md` | 13920 | `2636ce8b3e8c77d2cff7c5718c5c1ed98130961c2ed6985b59e317bf22646761` | `M outputs/stage42_long_research/reproducibility_stage42.md` |
+| `paper_file` | `outputs/stage42_long_research/a_journal_gap_stage42.md` | 38575 | `9727964d994ced53b7a41004f9c6f048b6966b2c67b4b685e669c9dc05328466` | `clean` |
 | `frozen_runtime_policy_artifact` | `outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json` | 3414 | `8cdfcc939a0f6c8261f2155e1a9a28efab1a691a7603859779d813e810a63707` | `clean` |
+| `frozen_group_consistency_policy_artifact` | `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json` | 5250 | `f48c6899518c84cdcfcbcc88bd76932dcaf8716512be0ddf184a7433da41bc35` | `clean` |
 | `evidence_json:data_calibration` | `outputs/stage42_long_research/data_calibration_stage42.json` | 74705 | `9603ce75ba49f7cdb6c0abeaafe6c1b5bb9940262dec3999792ceb806e0c94c0` | `clean` |
 | `evidence_md:data_calibration` | `outputs/stage42_long_research/data_calibration_stage42.md` | 9490 | `0e1716b81a6a2760aa7a750fad74f187ee455b4fd7e91365c4f5d6504d5612de` | `clean` |
 | `runner:data_calibration` | `run_stage42_data_calibration.py` | 136 | `2f9afd769b91493e32ac5f39925b83946bb3b7a9bab207bf47db47a39b823895` | `clean` |
@@ -63,17 +64,17 @@
 | `runner:safety_floor` | `run_stage42_safety_floor.py` | 122 | `5259ebd2dbeb5a64b7aff53a3f78eb192d90d66f1a54caf35cd7e65f96d25c50` | `clean` |
 | `evidence_json:paper_package` | `outputs/stage42_long_research/paper_package_stage42.json` | 9537 | `4ec71440d909cd2beda738b57a7b8ca82329e4089da8333778e6b52156449b9e` | `clean` |
 | `runner:paper_package` | `run_stage42_paper_package.py` | 125 | `e4197e224712883040dcac5244e14c071b250279e6b473733fe8c7bc95353f61` | `clean` |
-| `evidence_json:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` | 15612 | `7a5d8a525a008545c95c9adb729de789773c309884231cefee416a72c72a8a40` | `clean` |
-| `evidence_md:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` | 4205 | `c650770f0020121b497e01c8150c86dd306966462289891c46c7c574f99eb985` | `clean` |
+| `evidence_json:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` | 15612 | `2e3816099be5ba3d1174a6b071ea817ffd0c658f36c85b61f699a573ce9c7f3c` | `clean` |
+| `evidence_md:strict_time_geometry_calibration` | `outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` | 4205 | `0f1799913972ad2145bb743e212500104ab31962358a755142bfe03cedf8d9df` | `clean` |
 | `runner:strict_time_geometry_calibration` | `run_stage42_source_time_geometry_calibration.py` | 295 | `92e4a6fcddadd10339c4e5ef2aa15a975a5557dbdb072cb8f68cec4e1e0b59e0` | `clean` |
 | `evidence_json:metric_time_claim_guard` | `outputs/stage42_long_research/metric_time_claim_guard_stage42.json` | 7724 | `21acab6b57b200e224d3d5c75dce34d86d1541f34814ac10451a930db0f0cb4c` | `clean` |
 | `evidence_md:metric_time_claim_guard` | `outputs/stage42_long_research/metric_time_claim_guard_stage42.md` | 3057 | `13ddb703c4b5c2953b16d657bf7f68f46afe919f5f504c2a1b09e55267f06f05` | `clean` |
 | `runner:metric_time_claim_guard` | `run_stage42_metric_time_claim_guard.py` | 155 | `0fa564ef5fad34202ba8ec5f48b87b2a97c28cf676a0083d8a1680a02c883fda` | `clean` |
-| `evidence_json:source_terms_validation` | `outputs/stage42_long_research/source_terms_validation_stage42.json` | 14852 | `3712d080967d228e062952973614690aff69406e0ad8bb9baf6dd805c6a8b8db` | `clean` |
-| `evidence_md:source_terms_validation` | `outputs/stage42_long_research/source_terms_validation_stage42.md` | 3060 | `55dd6cbe95f3f3575eb15eb9683524ba7275e0582a139dbd632718160b55487a` | `clean` |
+| `evidence_json:source_terms_validation` | `outputs/stage42_long_research/source_terms_validation_stage42.json` | 14852 | `6419314cec6735d1badb44afaa22906650a9c2b679504bc7799d9410330757aa` | `clean` |
+| `evidence_md:source_terms_validation` | `outputs/stage42_long_research/source_terms_validation_stage42.md` | 3060 | `59be7a1e85d26dfdc4739d9b0280291333ef4f634f49860a70c2c799f875eb63` | `clean` |
 | `runner:source_terms_validation` | `run_stage42_source_terms_confirmation_validator.py` | 191 | `91fcab4829f5defb379c5c405300df64b8143a0131ab1963ce27101f1dc1ef2c` | `clean` |
-| `evidence_json:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.json` | 8022 | `2640333f20e52405de58920d65aef77200ec0938186b6bf88e786217809ed0dd` | `clean` |
-| `evidence_md:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.md` | 4915 | `dbbea434935b3b561345e8121bb16af88bed7325c62aecd9d3d57e6291186bf2` | `clean` |
+| `evidence_json:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.json` | 8022 | `0145bbafaac7c7847915aec8a5bc8931d6e018ef702ba2e0026f9602fd5f23e9` | `clean` |
+| `evidence_md:context_contribution_forensics` | `outputs/stage42_long_research/context_contribution_forensics_stage42.md` | 4915 | `1f81aa273a8175537a85de32665389253fe2985b4ece39df0c9a86d03d84b798` | `clean` |
 | `runner:context_contribution_forensics` | `run_stage42_context_contribution_forensics.py` | 176 | `0a62177d9c3166315e1b0aed2261742c9c2661ea765eb532b561b730da018cb3` | `clean` |
 | `evidence_json:goal_scene_gated_expert` | `outputs/stage42_long_research/goal_scene_gated_expert_stage42.json` | 42002 | `d80b5cf912bc44ccfcd9b89f51ac37e315a98bf49bc67a9ff9ccb67becc15f71` | `clean` |
 | `evidence_md:goal_scene_gated_expert` | `outputs/stage42_long_research/goal_scene_gated_expert_stage42.md` | 4628 | `8183dfa140d739f28fb2d8d81f1b9f338dacb6ba55e416ea3a631656d81c2d1f` | `clean` |
@@ -108,8 +109,20 @@
 | `evidence_json:runtime_replay_paper_refresh` | `outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.json` | 60102 | `4daf68dcf18ab429052b9f94ec35b8001c3070b9492c62fbfd5a40bd2ff58828` | `clean` |
 | `evidence_md:runtime_replay_paper_refresh` | `outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.md` | 2826 | `8ace17b2d1d2a7ad6d8e18894aaa3c39057a5c027faa76599a78b694d3786e3a` | `clean` |
 | `runner:runtime_replay_paper_refresh` | `run_stage42_runtime_replay_paper_refresh.py` | 170 | `47568296ec4774c160d2b75f351837d70b4f230969896ce7fa86488b08c4071b` | `clean` |
-| `provenance_verifier_json` | `outputs/stage42_long_research/evidence_provenance_stage42.json` | 23656 | `1fc0a9030d5b38046fb507d0e49586661fd327bcbcef723ebf7c26f8d2db1019` | `clean` |
-| `worktree_caveat_classifier_json` | `outputs/stage42_long_research/worktree_caveat_classifier_stage42.json` | 4151 | `ac69d14565cd4f4d9b13873f1f6c80a21f4735efeb8b7ab984a18dcab91fb567` | `clean` |
+| `evidence_json:group_consistency_full_waypoint_repair` | `outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json` | 123469 | `29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221` | `clean` |
+| `evidence_md:group_consistency_full_waypoint_repair` | `outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.md` | 5064 | `0e0729df127bdbf74910a56105116ce9b253d150806a6abef30a0718a9227b0f` | `clean` |
+| `runner:group_consistency_full_waypoint_repair` | `run_stage42_group_consistency_full_waypoint_repair.py` | 403 | `80a7029e20e76da5a00fe96bd4d4b445c5ad28742fbd472553ceb1e909bc859e` | `clean` |
+| `evidence_json:frozen_group_consistency_policy` | `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json` | 10254 | `1166f322199387be366bb1e01d4918339e0787a901f13893b2f7813ac9cf418d` | `clean` |
+| `evidence_md:frozen_group_consistency_policy` | `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.md` | 2690 | `a0059763e837e382ed113d69b96a57a3160450752bf72ecff1ffaf006e1daa01` | `clean` |
+| `runner:frozen_group_consistency_policy` | `run_stage42_freeze_group_consistency_policy.py` | 338 | `7955f4698fb6a8ba33c43f1deb5bf6bfee41ecccd46d01d41dcde87cec4bc60f` | `clean` |
+| `evidence_json:group_consistency_policy_replay` | `outputs/stage42_long_research/group_consistency_policy_replay_stage42.json` | 15359 | `fdba2aabfbc5da547abfd479be1b001a6ac464f261acfcdd95d77edf403c0a95` | `clean` |
+| `evidence_md:group_consistency_policy_replay` | `outputs/stage42_long_research/group_consistency_policy_replay_stage42.md` | 2432 | `3a0fac7fe34764c55ecbacf159a7003f169c64735308b8cd4a01cbbbb1783fe9` | `clean` |
+| `runner:group_consistency_policy_replay` | `run_stage42_replay_group_consistency_policy.py` | 179 | `af502456bb474dbda265c7ca1b765da891e9f7ee84fa9c9e71e9f596bff3be3c` | `clean` |
+| `evidence_json:group_consistency_runtime_policy` | `outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json` | 15392 | `e451c44978be0e8a0e6bbab1b5fd05198acb41b30fbd1309cf2a2a1b27176087` | `clean` |
+| `evidence_md:group_consistency_runtime_policy` | `outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md` | 2666 | `dc567bd85e3f642375d4ac77b7653da51367d2d78ca10fe31afbb21841a2465f` | `clean` |
+| `runner:group_consistency_runtime_policy` | `run_stage42_group_consistency_runtime_policy.py` | 182 | `1970147b66a95f1d10a629e88bbb58b95efab0d21ab0dc7e5eab967821643428` | `clean` |
+| `provenance_verifier_json` | `outputs/stage42_long_research/evidence_provenance_stage42.json` | 27449 | `2facff0b3b542a0222c09beca48c4a2e9bc21499e6aac416372a3995c8208825` | `M outputs/stage42_long_research/evidence_provenance_stage42.json` |
+| `worktree_caveat_classifier_json` | `outputs/stage42_long_research/worktree_caveat_classifier_stage42.json` | 4151 | `d2c215b710df02c236be721ea14bf675b0cb69ec48453a141fb429854c4d9905` | `clean` |
 
 ## Interpretation
 

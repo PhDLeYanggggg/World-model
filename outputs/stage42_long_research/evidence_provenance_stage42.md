@@ -1,10 +1,10 @@
 # Stage42-CX Evidence Provenance Verifier
 
 - source: `fresh_evidence_provenance_from_stage42_artifacts`
-- generated_at_utc: `2026-05-26T20:08:33.053279+00:00`
-- git_commit: `8f7bc3f`
-- input_hash: `ff2aa47850cf3106370f9c2615bc2ea98231526a5fb99aae54e510b02fa0e3e5`
-- gate: `16 / 16`
+- generated_at_utc: `2026-05-26T22:57:58.794488+00:00`
+- git_commit: `31d01c1`
+- input_hash: `36005ac6fce16f6b09d201807b285be3d0080a91c7335ece1beb7e028b15de73`
+- gate: `20 / 20`
 - verdict: `stage42_cx_evidence_provenance_pass`
 
 ## Current Facts
@@ -23,11 +23,11 @@
 
 ## Summary
 
-- artifacts_total: `21`
-- artifacts_gate_passed: `21`
-- source_label_counts: `{'fresh_run': 20, 'cached_verified': 1}`
-- artifacts_with_worktree_caveat: `2`
-- paper_files_with_worktree_caveat: `1`
+- artifacts_total: `25`
+- artifacts_gate_passed: `25`
+- source_label_counts: `{'fresh_run': 24, 'cached_verified': 1}`
+- artifacts_with_worktree_caveat: `0`
+- paper_files_with_worktree_caveat: `0`
 
 ## Artifact Matrix
 
@@ -39,10 +39,10 @@
 | `causal_ablation` | causal component ablation | `fresh_run` | `12/12` | `run_stage42_causal_ablation.py` | `clean` | `clean` | `False` |
 | `safety_floor` | teacher/Stage37 floor necessity | `fresh_run` | `12/12` | `run_stage42_safety_floor.py` | `clean` | `clean` | `False` |
 | `paper_package` | paper package scaffold | `fresh_run` | `12/12` | `run_stage42_paper_package.py` | `clean` | `clean` | `False` |
-| `strict_time_geometry_calibration` | strict source time/geometry claim guard | `fresh_run` | `13/13` | `run_stage42_source_time_geometry_calibration.py` | `M outputs/stage42_long_research/source_time_geometry_calibration_stage42.json` | `M outputs/stage42_long_research/source_time_geometry_calibration_stage42.md` | `True` |
+| `strict_time_geometry_calibration` | strict source time/geometry claim guard | `fresh_run` | `13/13` | `run_stage42_source_time_geometry_calibration.py` | `clean` | `clean` | `False` |
 | `metric_time_claim_guard` | metric/seconds overclaim blocker | `fresh_run` | `11/11` | `run_stage42_metric_time_claim_guard.py` | `clean` | `clean` | `False` |
 | `source_terms_validation` | legal source terms conversion gate | `fresh_run` | `11/11` | `run_stage42_source_terms_confirmation_validator.py` | `clean` | `clean` | `False` |
-| `context_contribution_forensics` | context contribution boundary | `fresh_run` | `13/13` | `run_stage42_context_contribution_forensics.py` | `M outputs/stage42_long_research/context_contribution_forensics_stage42.json` | `M outputs/stage42_long_research/context_contribution_forensics_stage42.md` | `True` |
+| `context_contribution_forensics` | context contribution boundary | `fresh_run` | `13/13` | `run_stage42_context_contribution_forensics.py` | `clean` | `clean` | `False` |
 | `goal_scene_gated_expert` | goal/scene negative gated expert | `fresh_run` | `10/10` | `run_stage42_goal_scene_gated_expert.py` | `clean` | `clean` | `False` |
 | `neighbor_interaction_gated_expert` | neighbor/interaction negative gated expert | `fresh_run` | `11/11` | `run_stage42_neighbor_interaction_gated_expert.py` | `clean` | `clean` | `False` |
 | `common_validation_bridge_shape_composer` | endpoint/full-waypoint common-row composer | `cached_verified` | `14/14` | `run_stage42_common_validation_bridge_shape_composer.py` | `clean` | `clean` | `False` |
@@ -54,6 +54,10 @@
 | `runtime_policy_api` | runtime policy API smoke evidence | `fresh_run` | `19/19` | `run_stage42_runtime_proximity_guard_policy.py` | `clean` | `clean` | `False` |
 | `batch_runtime_replay` | real batch runtime exact replay | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `clean` | `clean` | `False` |
 | `runtime_replay_paper_refresh` | paper/reproducibility refresh | `fresh_run` | `25/25` | `run_stage42_runtime_replay_paper_refresh.py` | `clean` | `clean` | `False` |
+| `group_consistency_full_waypoint_repair` | all-agent group-consistency full-waypoint repair | `fresh_run` | `17/17` | `run_stage42_group_consistency_full_waypoint_repair.py` | `clean` | `clean` | `False` |
+| `frozen_group_consistency_policy` | frozen group-consistency full-waypoint policy artifact | `fresh_run` | `22/22` | `run_stage42_freeze_group_consistency_policy.py` | `clean` | `clean` | `False` |
+| `group_consistency_policy_replay` | group-consistency policy artifact replay verifier | `fresh_run` | `34/34` | `run_stage42_replay_group_consistency_policy.py` | `clean` | `clean` | `False` |
+| `group_consistency_runtime_policy` | callable group-consistency full-waypoint runtime policy API | `fresh_run` | `30/30` | `run_stage42_group_consistency_runtime_policy.py` | `clean` | `clean` | `False` |
 
 ## Paper File Status
 
@@ -66,7 +70,7 @@
 | `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | `True` | `clean` | `False` |
 | `outputs/stage42_long_research/model_card_stage42.md` | `True` | `True` | `clean` | `False` |
 | `outputs/stage42_long_research/data_card_stage42.md` | `True` | `True` | `clean` | `False` |
-| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | `True` | `M outputs/stage42_long_research/reproducibility_stage42.md` | `True` |
+| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | `True` | `clean` | `False` |
 | `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | `True` | `clean` | `False` |
 
 ## Interpretation

@@ -1,9 +1,9 @@
 {
   "source": "fresh_evidence_provenance_from_stage42_artifacts",
   "stage": "Stage42-CX evidence provenance verifier",
-  "generated_at_utc": "2026-05-26T20:08:33.053279+00:00",
-  "git_commit": "8f7bc3f",
-  "input_hash": "ff2aa47850cf3106370f9c2615bc2ea98231526a5fb99aae54e510b02fa0e3e5",
+  "generated_at_utc": "2026-05-26T22:57:58.794488+00:00",
+  "git_commit": "31d01c1",
+  "input_hash": "36005ac6fce16f6b09d201807b285be3d0080a91c7335ece1beb7e028b15de73",
   "current_facts": [
     "当前不是 true 3D world model。",
     "当前不是 large-scale foundation world model。",
@@ -186,12 +186,12 @@
         "verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
         "all_passed": true
       },
-      "json_git_status": "M outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
-      "md_git_status": "M outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
+      "json_git_status": "clean",
+      "md_git_status": "clean",
       "runner_git_status": "clean",
       "gate_md": "",
       "gate_md_git_status": "",
-      "worktree_caveat": true
+      "worktree_caveat": false
     },
     {
       "claim_area": "metric_time_claim_guard",
@@ -261,12 +261,12 @@
         "verdict": "stage42_ci_context_contribution_forensics_pass",
         "all_passed": true
       },
-      "json_git_status": "M outputs/stage42_long_research/context_contribution_forensics_stage42.json",
-      "md_git_status": "M outputs/stage42_long_research/context_contribution_forensics_stage42.md",
+      "json_git_status": "clean",
+      "md_git_status": "clean",
       "runner_git_status": "clean",
       "gate_md": "",
       "gate_md_git_status": "",
-      "worktree_caveat": true
+      "worktree_caveat": false
     },
     {
       "claim_area": "goal_scene_gated_expert",
@@ -542,6 +542,106 @@
       "gate_md": "",
       "gate_md_git_status": "",
       "worktree_caveat": false
+    },
+    {
+      "claim_area": "group_consistency_full_waypoint_repair",
+      "role": "all-agent group-consistency full-waypoint repair",
+      "json": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+      "md": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.md",
+      "runner": "run_stage42_group_consistency_full_waypoint_repair.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_stage42_di_group_consistency_full_waypoint_repair",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_di_gate",
+        "passed": 17,
+        "total": 17,
+        "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "",
+      "gate_md_git_status": "",
+      "worktree_caveat": false
+    },
+    {
+      "claim_area": "frozen_group_consistency_policy",
+      "role": "frozen group-consistency full-waypoint policy artifact",
+      "json": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json",
+      "md": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.md",
+      "runner": "run_stage42_freeze_group_consistency_policy.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_policy_freeze_from_stage42_di",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_dj_gate",
+        "passed": 22,
+        "total": 22,
+        "verdict": "stage42_dj_frozen_group_consistency_policy_pass",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "",
+      "gate_md_git_status": "",
+      "worktree_caveat": false
+    },
+    {
+      "claim_area": "group_consistency_policy_replay",
+      "role": "group-consistency policy artifact replay verifier",
+      "json": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+      "md": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+      "runner": "run_stage42_replay_group_consistency_policy.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_replay_from_frozen_group_consistency_policy_artifact",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_dk_gate",
+        "passed": 34,
+        "total": 34,
+        "verdict": "stage42_dk_group_consistency_policy_replay_pass",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "",
+      "gate_md_git_status": "",
+      "worktree_caveat": false
+    },
+    {
+      "claim_area": "group_consistency_runtime_policy",
+      "role": "callable group-consistency full-waypoint runtime policy API",
+      "json": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+      "md": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+      "runner": "run_stage42_group_consistency_runtime_policy.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_dl_gate",
+        "passed": 30,
+        "total": 30,
+        "verdict": "stage42_dl_group_consistency_runtime_policy_pass",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "",
+      "gate_md_git_status": "",
+      "worktree_caveat": false
     }
   ],
   "paper_file_status": [
@@ -604,10 +704,10 @@
     {
       "path": "outputs/stage42_long_research/reproducibility_stage42.md",
       "exists": true,
-      "git_status": "M outputs/stage42_long_research/reproducibility_stage42.md",
+      "git_status": "clean",
       "has_stage42_cw": true,
       "has_claim_boundary": true,
-      "worktree_caveat": true
+      "worktree_caveat": false
     },
     {
       "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
@@ -619,14 +719,14 @@
     }
   ],
   "summary": {
-    "artifacts_total": 21,
-    "artifacts_gate_passed": 21,
+    "artifacts_total": 25,
+    "artifacts_gate_passed": 25,
     "source_label_counts": {
-      "fresh_run": 20,
+      "fresh_run": 24,
       "cached_verified": 1
     },
-    "artifacts_with_worktree_caveat": 2,
-    "paper_files_with_worktree_caveat": 1
+    "artifacts_with_worktree_caveat": 0,
+    "paper_files_with_worktree_caveat": 0
   },
   "claim_boundary": {
     "true_3d": false,
@@ -647,6 +747,10 @@
       "paper_files_have_claim_boundaries": true,
       "runtime_replay_included": true,
       "runtime_replay_refresh_included": true,
+      "group_consistency_repair_included": true,
+      "frozen_group_consistency_policy_included": true,
+      "group_consistency_replay_included": true,
+      "group_consistency_runtime_policy_included": true,
       "worktree_caveats_recorded": true,
       "no_metric_seconds_overclaim": true,
       "true_3d_overclaim_blocked": true,
@@ -654,8 +758,8 @@
       "stage5c_false": true,
       "smc_false": true
     },
-    "passed": 16,
-    "total": 16,
+    "passed": 20,
+    "total": 20,
     "verdict": "stage42_cx_evidence_provenance_pass"
   }
 }
