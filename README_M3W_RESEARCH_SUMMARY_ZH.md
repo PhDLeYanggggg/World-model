@@ -2,14 +2,17 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并加入 Stage42-W/X/Y 本轮已生成/校验的轻量报告；本文件本身不重新训练大模型、不读取未提交 raw data。  
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA 已生成并校验的轻量报告；本文件本身不重新训练大模型、不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。  
 
 本轮校验：
 
 ```text
 python3 run_stage42_unified_ablation_evidence.py = pass
+python3 run_stage42_paper_claim_evidence_audit.py = pass
+python3 run_stage42_retrained_ablation.py = pass
+python3 run_stage42_retrained_ablation_matrix.py = pass
 python3 -m pytest tests/test_stage42_unified_ablation_evidence.py = 3 passed
-python3 -m pytest tests = 327 passed
+python3 -m pytest tests = 333 passed
 ```
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
@@ -25,6 +28,26 @@ python3 -m pytest tests = 327 passed
 - 第 6 节：为什么仍不能称 true 3D / foundation / metric。
 - 第 7 节：下一步最短路径。
 - 第 8 节：给你的直接结论。
+- 后续追加：Stage42-W/X/Y/Z/AA 的统一 full-waypoint、paper claim、retrained ablation evidence。
+
+## 本次用户版总览
+
+你问“在这个目标内我做了什么、尝试了什么路线、哪些失败、哪些成功”。最压缩但不失真的答案是：
+
+1. 我先把项目从早期 2.5D scaffold 推到可审计的 SDD pixel raw-frame benchmark，再用 Stage26 cost-aware selector 得到第一个稳定 SDD 基座。
+2. 我尝试把 SDD 直接 zero-shot 到 external top-down pedestrian 数据，结果严重失败，说明坐标、horizon、goal、agent-type 和 scene/context 都有 domain gap。
+3. 我没有把这个失败包装成泛化成功，而是逐步补 external row geometry、train-only goals、history windows、scene-agnostic goal prototypes、hard/easy/failure labels 和 conservative fallback。
+4. Stage37 是第一个 external deployable 转折点：all、t+50、hard/failure 都正，easy degradation 极低。
+5. 后面我开始训练 neural dynamics。无保护 Transformer/JEPA/Hybrid 多次失败；有效结果都来自 Stage37/teacher floor 保护下的 bounded / safe-switch neural package。
+6. Stage41/42 把结果从 endpoint / selector 推到 all-agent、full-waypoint、row-level cache 和 retrained ablation evidence；这比早期 demo 更像研究证据链。
+7. 失败路线也很明确：JEPA non-collapse 但 downstream 无稳定 lift；hard-class selector 会严重伤 easy；ordinary residual/correction 不安全；ungated neural dynamics 不可部署；endpoint success 不能自动转成 full-waypoint success。
+8. 当前最强可部署仍是 protected M3W-Neural v1 / Stage37-teacher-floor 路线，最新 Stage42-X/Y/Z/AA 则提供 row-level full-waypoint cache、统一消融和论文 claim 边界证据。
+9. 仍不能说 true 3D、metric、seconds-level、foundation，也不能执行 Stage5C 或 SMC。
+
+没有纳入为“已完成结果”的内容：
+
+- 尚未正式跑完/提交的 Stage42-AB auxiliary-head ablation，不写成成功也不写成失败。
+- 大 cache、checkpoint、heartbeat、raw data、第三方数据，不作为 GitHub 提交内容。
 
 ## 0. 必须先写清楚的边界
 

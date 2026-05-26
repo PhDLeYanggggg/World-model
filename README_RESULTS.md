@@ -6,6 +6,8 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA, the main successful routes, failed routes and failure reasons, current deployable model boundary, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`

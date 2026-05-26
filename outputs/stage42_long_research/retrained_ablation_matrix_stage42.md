@@ -1,9 +1,9 @@
 # Stage42-AA Retrained Ablation Matrix
 
 - source: `fresh_matrix_from_stage42g_rerun_plus_stage42h_i_d_z`
-- generated_at_utc: `2026-05-26T05:06:22.438351+00:00`
-- git_commit: `b1280f8`
-- input_hash: `03116e8dba7d537ba16a5b975ca2daa44d176e8225dd8339645184ee4d0676f5`
+- generated_at_utc: `2026-05-26T05:16:43.885720+00:00`
+- git_commit: `5177736`
+- input_hash: `8d028f2a24205ac51ba99f259a1ff253c634806aae070956992f72181e9a2b9a`
 - gate: `15 / 15`
 - verdict: `stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary`
 - fresh_required_coverage: `11 / 12`
