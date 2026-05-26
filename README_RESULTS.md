@@ -19,8 +19,34 @@ latest gate status = CJ 10 / 10, CK 11 / 11
 latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
 latest full-waypoint boundary audit = Stage42-CM endpoint bridge / full-waypoint shape audit, 14 / 14 gates
 latest bridge/shape composer audit = Stage42-CN, 15 / 15 gates, blocker documented
-latest full pytest = 570 passed
+latest common-validation composer = Stage42-CO, 14 / 14 gates, endpoint-vs-full rows aligned
+latest full pytest = 573 passed
 ```
+
+```text
+Stage42-CO common validation bridge / shape composer
+source = fresh_common_validation_eval_from_cached_verified_checkpoints
+verdict = stage42_co_common_validation_bridge_shape_composer_pass
+gates = 14 / 14
+validation/test row alignment = pass
+selected policy = domain_horizon_full_waypoint_composer
+selected full-waypoint slices = ETH_UCY|50 and ETH_UCY|100
+test vs endpoint-linear ADE:
+  all = +3.02%
+  t50 = +1.50%
+  t100 raw diagnostic = +6.12%
+  hard/failure = +3.28%
+  easy degradation = +0.25%
+test vs strongest floor ADE:
+  all = +23.41%
+  t50 = +14.95%
+  t100 raw diagnostic = +19.91%
+  hard/failure = +23.00%
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CO resolves the Stage42-CN row-alignment blocker with fresh common validation/test evidence. Endpoint-linear bridge and full-waypoint sequence rows align exactly on validation and test. A validation-only domain/horizon composer selects full-waypoint only for ETH_UCY t50/t100; test is evaluated once. This is a real protected bridge/shape improvement over the previous endpoint-linear deployment floor, while remaining dataset-local/raw-frame 2.5D evidence, not metric/seconds-level or Stage5C/SMC evidence.
 
 ```text
 Stage42-CN bridge / shape composer audit

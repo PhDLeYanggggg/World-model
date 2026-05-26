@@ -1,6 +1,43 @@
 {
-  "current_stage": "Stage42-CN bridge / shape composer audit",
-  "current_verdict": "stage42_cn_bridge_shape_composer_audit_pass_blocker_documented",
+  "current_stage": "Stage42-CO common validation bridge / shape composer",
+  "current_verdict": "stage42_co_common_validation_bridge_shape_composer_pass",
+  "stage42_co_common_validation_bridge_shape_composer": {
+    "source": "fresh_common_validation_eval_from_cached_verified_checkpoints",
+    "report": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_co_gate.md",
+    "verdict": "stage42_co_common_validation_bridge_shape_composer_pass",
+    "gates": "14/14",
+    "row_alignment": {
+      "validation_aligned": true,
+      "test_aligned": true
+    },
+    "selected_policy": "domain_horizon_full_waypoint_composer",
+    "selected_full_waypoint_slices": [
+      "ETH_UCY|50",
+      "ETH_UCY|100"
+    ],
+    "test_vs_endpoint_linear_ade": {
+      "all_improvement": 0.030167,
+      "t50_improvement": 0.015029,
+      "t100_raw_frame_diagnostic_improvement": 0.061187,
+      "hard_failure_improvement": 0.032802,
+      "easy_degradation": 0.002533
+    },
+    "test_vs_strongest_floor_ade": {
+      "all_improvement": 0.234076,
+      "t50_improvement": 0.1495,
+      "t100_raw_frame_diagnostic_improvement": 0.199137,
+      "hard_failure_improvement": 0.229965
+    },
+    "conclusion": "Stage42-CO resolves the Stage42-CN row-alignment blocker with fresh common validation/test evidence. Endpoint-linear bridge and protected full-waypoint sequence rows align exactly on validation and test. A validation-only domain/horizon composer selects full-waypoint for ETH_UCY t50/t100 and improves test ADE over endpoint-linear bridge while preserving easy safety. This remains protected dataset-local/raw-frame 2.5D evidence, not metric/seconds-level, true 3D, Stage5C, or SMC evidence.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "stage42_cn_bridge_shape_composer_audit": {
     "source": "fresh_synthesis_from_stage42_cm_j_x_artifacts",
     "report": "outputs/stage42_long_research/bridge_shape_composer_stage42.md",
@@ -139,7 +176,8 @@
       "Stage42-CK neighbor/interaction gated expert: neighbor_interaction_rescue_success=false, selected_variant=baseline_family_control",
       "Stage42-CL paper-package context guard: CJ/CK negative context evidence propagated into paper files",
       "Stage42-CM full-waypoint bridge shape audit: protected full-waypoint improves t50/t100 raw-frame over endpoint-linear bridge but loses all/hard, so endpoint-only success is not full-waypoint success",
-      "Stage42-CN bridge/shape composer audit: full-waypoint is auxiliary horizon evidence, but no new deployment switch is allowed until common validation endpoint-vs-full-waypoint row cache exists"
+      "Stage42-CN bridge/shape composer audit: full-waypoint is auxiliary horizon evidence, but no new deployment switch is allowed until common validation endpoint-vs-full-waypoint row cache exists",
+      "Stage42-CO common validation composer: endpoint/full rows align, validation selects ETH_UCY t50/t100 full-waypoint switch, test improves over endpoint-linear bridge with easy degradation below 2%"
     ],
     "best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor",
     "dominant_supported_mechanism": "baseline-family rollout context plus causal history and guarded domain expert under conservative safety floor",

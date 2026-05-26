@@ -40,6 +40,12 @@ Latest Stage42 bridge / shape composer audit:
 
 Stage42-CN passes `15 / 15` gates as `fresh_synthesis_from_stage42_cm_j_x_artifacts`, but it documents a blocker rather than a new deployment switch. Stage42-J static-gated full-waypoint evidence is validation-selected and easy-safe, and Stage42-CM shows full-waypoint has auxiliary t50/t100 raw-frame lift. However, there is still no common validation-aligned endpoint-linear-vs-full-waypoint row cache, so a bridge/shape composer cannot safely switch deployment policy yet. The deployable policy remains endpoint-linear bridge / Stage37-teacher floor, with full-waypoint reported as auxiliary horizon evidence.
 
+Latest Stage42 common-validation bridge / shape composer:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.md`
+
+Stage42-CO passes `14 / 14` gates as `fresh_common_validation_eval_from_cached_verified_checkpoints`. It resolves the Stage42-CN blocker by verifying exact validation/test row alignment between endpoint-linear bridge and full-waypoint sequence. The validation-only composer selects full-waypoint only for `ETH_UCY|50` and `ETH_UCY|100`, then evaluates test once. Test ADE improves over endpoint-linear bridge by `+3.02%` all, `+1.50%` t50, `+6.12%` t100 raw-frame diagnostic, and `+3.28%` hard/failure, with easy degradation `+0.25%`. The result is a protected bridge/shape improvement, still dataset-local/raw-frame 2.5D and not metric/seconds-level, Stage5C, or SMC evidence.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`

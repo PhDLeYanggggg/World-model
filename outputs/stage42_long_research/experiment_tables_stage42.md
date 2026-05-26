@@ -181,3 +181,16 @@
 - deployable bridge/shape composer available now: `False`
 - next required evidence: Build common validation-aligned endpoint-linear-vs-full-waypoint row cache before any deployment switch.
 <!-- STAGE42_CN_BRIDGE_SHAPE_COMPOSER:END -->
+
+<!-- STAGE42_CO_COMMON_VALIDATION_BRIDGE_SHAPE_COMPOSER:START -->
+## Stage42-CO Common Validation Bridge / Shape Composer
+
+- source: `fresh_common_validation_eval_from_cached_verified_checkpoints`
+- common validation/test row alignment is verified for endpoint-linear bridge and full-waypoint sequence.
+- policy is selected on validation rows only; test is evaluated once.
+- composer vs endpoint-linear bridge ADE: all `3.02%`, t50 `1.50%`, t100 raw diagnostic `6.12%`, hard `3.28%`, easy `0.25%`.
+- composer vs strongest causal floor ADE: all `23.41%`, t50 `14.95%`, t100 raw diagnostic `19.91%`, hard `23.00%`.
+- use_full_rate: `21.35%`.
+- alignment: `True`.
+- claim boundary: no true 3D, no foundation, no metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_CO_COMMON_VALIDATION_BRIDGE_SHAPE_COMPOSER:END -->
