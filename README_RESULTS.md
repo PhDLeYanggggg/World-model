@@ -91,6 +91,30 @@ SMC_enabled = false
 
 Stage42-AF repairs the Stage42-AE horizon=25 weak slice with a validation-only low-margin guard that forces low-validation-margin non-UCY domain/horizon choices back to the safety floor. It is a real safety repair, but not a universal fix: ETH_UCY t50/FDE@50 lower-bound weakness remains and must stay in the limitations.
 
+Latest Stage42-AG ETH_UCY t50/FDE validation-only source repair:
+
+```text
+source = fresh_run_from_stage42x_stage42r_stage42af_validation_fde_repair
+verdict = stage42_ag_eth_t50_fde_source_repair_pass
+gates = 13 / 13
+target_slice = ETH_UCY|50
+validation_FDE@50_threshold = 0.05
+uses_test_metrics_for_threshold = false
+ETH_UCY_t50_ADE_CI_low_before = -0.013218
+ETH_UCY_t50_ADE_CI_low_after = 0.002821
+ETH_UCY_FDE@50_CI_low_before = -0.041990
+ETH_UCY_FDE@50_CI_low_after = 0.021040
+ADE_all = 0.091656
+ADE_t50 = 0.064957
+ADE_t50_CI_low = 0.058513
+ADE_hard_failure = 0.095716
+easy_degradation_CI_high = 0.003348
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AG addresses the remaining Stage42-AF ETH_UCY t50/FDE@50 limitation. It promotes the static expert source on `ETH_UCY|50` only when validation FDE@50 support is strong and otherwise falls back to the safety floor. This repairs the ETH_UCY t50/FDE@50 lower bounds without test threshold tuning, while claims remain dataset-local raw-frame 2.5D.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`

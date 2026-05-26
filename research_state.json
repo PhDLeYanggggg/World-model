@@ -1,13 +1,13 @@
 {
-  "current_stage": "stage42_af_weak_slice_validation_margin_guard",
-  "current_verdict": "stage42_af_weak_slice_guard_repair_pass_with_eth_t50_limitation",
+  "current_stage": "stage42_ag_eth_t50_fde_validation_source_repair",
+  "current_verdict": "stage42_ag_eth_t50_fde_source_repair_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF evidence refreshes, and the user-requested detailed route review.",
+    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF/AG evidence refreshes, and the user-requested detailed route review.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AF weak-slice validation-margin guard repair passed 13/13 gates; horizon=25 repaired to non-harm/floor while ETH_UCY t50/FDE@50 limitation remains explicit.",
+    "latest_branch_success": "Stage42-AG ETH_UCY t50/FDE validation-only source repair passed 13/13 gates; ETH_UCY ADE@50 and FDE@50 lower bounds turned positive without test threshold tuning.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -20,7 +20,9 @@
       "stage42_ac_runner": "pass",
       "stage42_ac_focused_pytest": "9 passed",
       "stage42_af_runner": "pass",
-      "stage42_af_focused_pytest": "3 passed"
+      "stage42_af_focused_pytest": "3 passed",
+      "stage42_ag_runner": "pass",
+      "stage42_ag_focused_pytest": "2 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -13624,5 +13626,45 @@
       "stage5c_executed": false,
       "smc_enabled": false
     }
+  },
+  "stage42_ag_eth_t50_fde_validation_source_repair": {
+    "source": "fresh_run_from_stage42x_stage42r_stage42af_validation_fde_repair",
+    "report": "outputs/stage42_long_research/eth_t50_fde_source_repair_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ag_gate.md",
+    "csv": "outputs/stage42_long_research/eth_t50_fde_source_repair_stage42.csv",
+    "gates_passed": 13,
+    "gates_total": 13,
+    "verdict": "stage42_ag_eth_t50_fde_source_repair_pass",
+    "source_repair_rule": {
+      "target_slice": "ETH_UCY|50",
+      "validation_fde_t50_threshold": 0.05,
+      "uses_test_metrics_for_threshold": false,
+      "fallback_action": "floor when validation FDE@50 support is weak"
+    },
+    "metrics": {
+      "ade_all": 0.09165604913216159,
+      "ade_t50": 0.06495706381315831,
+      "ade_t50_ci_low": 0.05851255877278698,
+      "ade_t100_raw_frame_diagnostic": 0.08153326024168321,
+      "ade_hard_failure": 0.09571602094795917,
+      "easy_degradation_ci_high": 0.00334819268959823,
+      "fde_t50": 0.17785631342714833,
+      "switch_rate": 0.23703957162752723
+    },
+    "repair_effect": {
+      "eth_ucy_t50_ade_ci_low_before": -0.013218100958604987,
+      "eth_ucy_t50_ade_ci_low_after": 0.002820688160982139,
+      "eth_ucy_fde_t50_ci_low_before": -0.04199023614248535,
+      "eth_ucy_fde_t50_ci_low_after": 0.021040393452369632,
+      "eth_ucy_t50_limitation_repaired": true
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Stage42-AG repairs the ETH_UCY|50 ADE/FDE lower-bound weakness using validation-only FDE-aware source selection. Claims remain protected dataset-local raw-frame 2.5D."
   }
 }
