@@ -700,3 +700,17 @@ M3W 现在有真实工程和实验价值，但它的强点是 protected 2.5D wor
 - decision: `promote_stage42_di_group_consistency_full_waypoint_repair`.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DI_GROUP_CONSISTENCY_FULL_WAYPOINT_REPAIR:END -->
+
+<!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:START -->
+## Stage42-DJ Frozen Group-Consistency Full-Waypoint Policy
+
+- source: `fresh_policy_freeze_from_stage42_di`
+- role: freeze the Stage42-DI promoted group-consistency full-waypoint repair as a reproducible deployment/paper artifact.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json`
+- policy hash: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
+- gate: `22 / 22`; verdict `stage42_dj_frozen_group_consistency_policy_pass`.
+- test vs train-horizon causal floor: all `24.72%`, t50 `22.36%`, t100 raw `14.35%`, hard `23.89%`, easy `-25.63%`.
+- delta vs Stage42-AM all/t50/hard: `0.14%` / `0.35%` / `0.14%`.
+- near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:END -->

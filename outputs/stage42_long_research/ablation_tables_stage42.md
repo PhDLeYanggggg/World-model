@@ -326,3 +326,17 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - guard near-collision@0.05 repair versus no guard: `-0.40%`.
 - claim boundary: still dataset-local/raw-frame 2.5D; no metric/seconds-level, no Stage5C, no SMC.
 <!-- STAGE42_CR_PROXIMITY_GUARD_ABLATION:END -->
+
+<!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:START -->
+## Stage42-DJ Frozen Group-Consistency Full-Waypoint Policy
+
+- source: `fresh_policy_freeze_from_stage42_di`
+- role: freeze the Stage42-DI promoted group-consistency full-waypoint repair as a reproducible policy artifact.
+- repair uses predicted rollout geometry and source/frame/horizon group keys only; future waypoints remain labels/eval only.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json`
+- policy hash: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
+- test vs train-horizon causal floor ADE: all `24.72%`, t50 `22.36%`, t100 raw `14.35%`, hard `23.89%`, easy `-25.63%`.
+- delta vs Stage42-AM all/t50/hard: `0.14%` / `0.35%` / `0.14%`.
+- near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- claim boundary: still protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:END -->
