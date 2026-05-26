@@ -32,6 +32,8 @@ Stage42-AL and Stage42-AM refine the source-level claim boundary. Stage42-AL sho
 
 Stage42-AN adds a retrained source-level ablation boundary. It reruns ridge probes and validation-only safety policies for no-history, no-neighbor, no-goal, no-baseline-family, no-domain, and combined variants on the same proposed source-level split. The full variant remains strong, but the gate is `9 / 10`: only `baseline_family_context` is independently supported. History, neighbor/interaction, goal prototype, domain expert, and safe-switch necessity are not proven by this ridge ablation, so they must not be written as independent main claims yet.
 
+Stage42-AO sharpens that boundary with standalone and incremental variants. `history_only` and `motion_goal_context` show standalone positive signal, but no context variant improves over `baseline_family_only`; `baseline_family_only` is stronger than the full ridge variant on all/t50/hard. The current source-level ridge evidence is therefore dominated by baseline-family rollout context. History, goal, neighbor, and domain modules need stronger neural/graph retraining or richer context before becoming independent paper claims.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

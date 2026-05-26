@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_an_source_level_ablation",
-  "current_verdict": "stage42_an_source_level_ablation_partial_component_evidence",
+  "current_stage": "stage42_ao_source_level_incremental_ablation",
+  "current_verdict": "stage42_ao_incremental_component_evidence_partial_or_negative",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_ai_aj_ak_al_am_an_ao_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AN proposed source-level retrained ablation boundary; full pytest 370 passed.",
-    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, and Stage42-AN retrained ablation boundary.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AO proposed source-level incremental/standalone ablation boundary; full pytest 374 passed.",
+    "scope": "User-requested detailed M3W route/failure/success summary plus Stage42-AK locked policy audit, Stage42-AL coverage audit, Stage42-AM source-level full-waypoint eval, Stage42-AN retrained ablation boundary, and Stage42-AO incremental/standalone module evidence.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AN is a fresh partial ablation result that proves baseline/family context contribution but not two independent module contributions.",
+    "latest_branch_success": "Stage42-AM remains the latest positive source-level full-waypoint result; Stage42-AN/AO are fresh boundary ablations showing baseline-family rollout context dominates the current ridge evidence.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -32,7 +32,10 @@
       "stage42_am_full_pytest": "366 passed",
       "stage42_an_runner": "pass",
       "stage42_an_focused_pytest": "4 passed",
-      "stage42_an_full_pytest": "370 passed"
+      "stage42_an_full_pytest": "370 passed",
+      "stage42_ao_runner": "pass",
+      "stage42_ao_focused_pytest": "4 passed",
+      "stage42_ao_full_pytest": "374 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -123,6 +126,25 @@
         "safe_switch_necessity"
       ],
       "conclusion": "Stage42-AN is honest partial component evidence: full source-level ridge remains strong, but it does not prove two independent module contributions."
+    },
+    "stage42_ao_source_level_incremental_ablation": {
+      "source": "fresh_run",
+      "report": "outputs/stage42_long_research/source_level_incremental_ablation_stage42.md",
+      "gate": "10/11",
+      "verdict": "stage42_ao_incremental_component_evidence_partial_or_negative",
+      "full_ade_all": 0.24578838559866356,
+      "full_ade_t50": 0.22017071087030715,
+      "full_ade_hard_failure": 0.23749387838492075,
+      "baseline_family_only_ade_all": 0.2877734037648393,
+      "baseline_family_only_ade_t50": 0.31542535139554606,
+      "baseline_family_only_ade_hard_failure": 0.2758122379367457,
+      "positive_standalone_context_variants": [
+        "history_only",
+        "motion_goal_context"
+      ],
+      "positive_incremental_context_variants": [],
+      "failed_gate": "incremental_context_signal_found",
+      "conclusion": "History-only and motion+goal context have standalone positive signal, but no context module improves over baseline-family rollout context in this ridge protocol; do not claim independent history/goal/neighbor module contribution yet."
     }
   },
   "stage42_am_source_level_full_waypoint_eval": {
@@ -14053,5 +14075,34 @@
       "smc_enabled": false
     },
     "interpretation": "Do not claim history/goal/neighbor/domain/safe-switch as independent source-level ridge contributions from Stage42-AN; stronger neural/graph ablation is needed."
+  },
+  "stage42_ao_source_level_incremental_ablation": {
+    "source": "fresh_run",
+    "report": "outputs/stage42_long_research/source_level_incremental_ablation_stage42.md",
+    "gate": "10/11",
+    "verdict": "stage42_ao_incremental_component_evidence_partial_or_negative",
+    "full_ade_all": 0.24578838559866356,
+    "full_ade_t50": 0.22017071087030715,
+    "full_ade_hard_failure": 0.23749387838492075,
+    "baseline_family_only_ade_all": 0.2877734037648393,
+    "baseline_family_only_ade_t50": 0.31542535139554606,
+    "baseline_family_only_ade_hard_failure": 0.2758122379367457,
+    "positive_standalone_context_variants": [
+      "history_only",
+      "motion_goal_context"
+    ],
+    "positive_incremental_context_variants": [],
+    "failed_gate": "incremental_context_signal_found",
+    "conclusion": "History-only and motion+goal context have standalone positive signal, but no context module improves over baseline-family rollout context in this ridge protocol; do not claim independent history/goal/neighbor module contribution yet.",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ao_gate.md",
+    "gates_passed": 10,
+    "gates_total": 11,
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   }
 }

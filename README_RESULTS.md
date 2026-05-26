@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -74,6 +74,24 @@ SMC_enabled = false
 ```
 
 Stage42-AN is an important boundary result, not a clean success. Each ablation is retrained and validation-selected on the proposed source-level split. It confirms the full ridge probe remains strong, but it does **not** prove two independent module contributions: only baseline/family context is independently supported. History, neighbor, goal prototype, domain expert, and safe-switch necessity need stronger neural/graph ablation or richer source-level features before they can be paper main claims.
+
+Latest Stage42-AO proposed source-level incremental / standalone retrained ablation:
+
+```text
+source = fresh_run
+verdict = stage42_ao_incremental_component_evidence_partial_or_negative
+gates = 10 / 11
+full_ADE_all = 0.245788
+full_ADE_t50 = 0.220171
+baseline_family_only_ADE_all = 0.287773
+baseline_family_only_ADE_t50 = 0.315425
+positive_standalone_context_variants = history_only, motion_goal_context
+positive_incremental_context_variants = none
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AO answers the next question after Stage42-AN: whether history / goal / neighbor context has standalone or incremental value after baseline-family rollout context. The result is a useful boundary/negative finding. `history_only` and `motion_goal_context` show standalone positive signal, but no context variant improves over `baseline_family_only` by the meaningful threshold; in fact `baseline_family_only` is stronger than the full ridge variant on all/t50/hard. This means the current proposed source-level ridge evidence is dominated by baseline-family rollout context. It does not prove history/goal/neighbor are useless, but it does mean they cannot yet be written as independent paper main claims without a stronger neural/graph retraining protocol or richer source-level context.
 
 Latest Stage42-AD calibration evidence refresh:
 
