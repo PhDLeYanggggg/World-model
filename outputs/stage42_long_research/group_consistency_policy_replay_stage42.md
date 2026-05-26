@@ -1,8 +1,8 @@
 # Stage42-DK Group-Consistency Policy Replay
 
 - source: `fresh_replay_from_frozen_group_consistency_policy_artifact`
-- generated_at_utc: `2026-05-26T22:46:49.976600+00:00`
-- git_commit: `29b999a`
+- generated_at_utc: `2026-05-26T23:09:20.134924+00:00`
+- git_commit: `47b5df5`
 - input_hash: `f8398a2c8533d4c3a955b3f0dd07ea02dc1c76abf1044cb044ee8f4751f4dd6c`
 - policy_hash_recomputed: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
 - gate: `34 / 34`

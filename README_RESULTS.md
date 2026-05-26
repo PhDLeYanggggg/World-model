@@ -4283,7 +4283,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - artifacts audited: `25`.
 - artifacts with passing gates: `25`.
 - source-label counts: `{'fresh_run': 24, 'cached_verified': 1}`.
-- worktree caveat artifacts recorded: `0`.
+- worktree caveat artifacts recorded: `4`.
 - Dirty/untracked generated files are not hidden; they are recorded as caveats and must not be treated as extra clean paper evidence.
 - This audit does not create metric/seconds/3D/foundation claims and does not execute Stage5C or SMC.
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
@@ -4482,3 +4482,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - replayed near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
 - claim boundary: still protected dataset-local/raw-frame 2.5D; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_DL_GROUP_CONSISTENCY_RUNTIME_POLICY:END -->
+
+<!-- STAGE42_DM_REVIEWER_REPLAY_PACKAGE:START -->
+## Stage42-DM Reviewer Replay Package
+
+- source: `fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts`
+- role: reviewer-facing minimal replay package for provenance, manifest, and runtime policy exact replay.
+- gate: `21 / 21`; verdict `stage42_dm_reviewer_replay_package_pass`.
+- commands file: `outputs/stage42_long_research/reviewer_replay_commands_stage42.sh`.
+- group-consistency runtime all/t50/t100 raw/hard: `0.24715658317833844` / `0.2236298792899738` / `0.1434611214781808` / `0.23887420070464105`.
+- This is replay/provenance packaging only: no training, no threshold tuning, no Stage5C, no SMC, no metric/seconds-level claim.
+<!-- STAGE42_DM_REVIEWER_REPLAY_PACKAGE:END -->

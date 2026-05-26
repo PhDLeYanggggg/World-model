@@ -1,9 +1,9 @@
 # Stage42-CX Evidence Provenance Verifier
 
 - source: `fresh_evidence_provenance_from_stage42_artifacts`
-- generated_at_utc: `2026-05-26T22:57:58.794488+00:00`
-- git_commit: `31d01c1`
-- input_hash: `36005ac6fce16f6b09d201807b285be3d0080a91c7335ece1beb7e028b15de73`
+- generated_at_utc: `2026-05-26T23:10:15.181042+00:00`
+- git_commit: `47b5df5`
+- input_hash: `1186ed465e855c2392884966b9545b1c5bd57f53529c1b8e1f82bf49d0ea6030`
 - gate: `20 / 20`
 - verdict: `stage42_cx_evidence_provenance_pass`
 
@@ -26,7 +26,7 @@
 - artifacts_total: `25`
 - artifacts_gate_passed: `25`
 - source_label_counts: `{'fresh_run': 24, 'cached_verified': 1}`
-- artifacts_with_worktree_caveat: `0`
+- artifacts_with_worktree_caveat: `4`
 - paper_files_with_worktree_caveat: `0`
 
 ## Artifact Matrix
@@ -50,14 +50,14 @@
 | `proximity_aware_composer_guard` | validation-only proximity guard | `fresh_run` | `19/19` | `run_stage42_proximity_aware_composer_guard.py` | `clean` | `clean` | `False` |
 | `proximity_guard_ablation` | accuracy/safety Pareto ablation | `fresh_run` | `19/19` | `run_stage42_proximity_guard_ablation.py` | `clean` | `clean` | `False` |
 | `frozen_proximity_guard_policy` | frozen deployable policy artifact | `fresh_run` | `25/25` | `run_stage42_freeze_proximity_guard_policy.py` | `clean` | `clean` | `False` |
-| `frozen_policy_replay` | policy artifact replay verifier | `fresh_run` | `30/30` | `run_stage42_replay_proximity_guard_policy.py` | `clean` | `clean` | `False` |
+| `frozen_policy_replay` | policy artifact replay verifier | `fresh_run` | `30/30` | `run_stage42_replay_proximity_guard_policy.py` | `M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json` | `M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md` | `True` |
 | `runtime_policy_api` | runtime policy API smoke evidence | `fresh_run` | `19/19` | `run_stage42_runtime_proximity_guard_policy.py` | `clean` | `clean` | `False` |
-| `batch_runtime_replay` | real batch runtime exact replay | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `clean` | `clean` | `False` |
+| `batch_runtime_replay` | real batch runtime exact replay | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json` | `M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md` | `True` |
 | `runtime_replay_paper_refresh` | paper/reproducibility refresh | `fresh_run` | `25/25` | `run_stage42_runtime_replay_paper_refresh.py` | `clean` | `clean` | `False` |
 | `group_consistency_full_waypoint_repair` | all-agent group-consistency full-waypoint repair | `fresh_run` | `17/17` | `run_stage42_group_consistency_full_waypoint_repair.py` | `clean` | `clean` | `False` |
 | `frozen_group_consistency_policy` | frozen group-consistency full-waypoint policy artifact | `fresh_run` | `22/22` | `run_stage42_freeze_group_consistency_policy.py` | `clean` | `clean` | `False` |
-| `group_consistency_policy_replay` | group-consistency policy artifact replay verifier | `fresh_run` | `34/34` | `run_stage42_replay_group_consistency_policy.py` | `clean` | `clean` | `False` |
-| `group_consistency_runtime_policy` | callable group-consistency full-waypoint runtime policy API | `fresh_run` | `30/30` | `run_stage42_group_consistency_runtime_policy.py` | `clean` | `clean` | `False` |
+| `group_consistency_policy_replay` | group-consistency policy artifact replay verifier | `fresh_run` | `34/34` | `run_stage42_replay_group_consistency_policy.py` | `M outputs/stage42_long_research/group_consistency_policy_replay_stage42.json` | `M outputs/stage42_long_research/group_consistency_policy_replay_stage42.md` | `True` |
+| `group_consistency_runtime_policy` | callable group-consistency full-waypoint runtime policy API | `fresh_run` | `30/30` | `run_stage42_group_consistency_runtime_policy.py` | `M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json` | `M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md` | `True` |
 
 ## Paper File Status
 

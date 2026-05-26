@@ -1,0 +1,3187 @@
+{
+  "source": "fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts",
+  "stage": "Stage42-DM",
+  "generated_at_utc": "2026-05-26T23:10:22.988857+00:00",
+  "git_commit": "47b5df5",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DM 是 reviewer replay package，不重新训练，不调 threshold。",
+    "reviewer replay 只复现 freeze manifest、provenance、runtime replay 和 policy exact-replay 证据。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "evidence_provenance": {
+      "source": "fresh_evidence_provenance_from_stage42_artifacts",
+      "stage": "Stage42-CX evidence provenance verifier",
+      "generated_at_utc": "2026-05-26T23:10:15.181042+00:00",
+      "git_commit": "47b5df5",
+      "input_hash": "1186ed465e855c2392884966b9545b1c5bd57f53529c1b8e1f82bf49d0ea6030",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-CX 是 evidence provenance verifier，不重新训练，不调 threshold。",
+        "所有 artifact 均标注 fresh_run、cached_verified、not_run 或 unknown_source_label。",
+        "worktree dirty/untracked 状态会被记录为 provenance caveat，不会被隐藏。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "artifact_rows": [
+        {
+          "claim_area": "data_calibration",
+          "role": "data/metric-time boundary",
+          "json": "outputs/stage42_long_research/data_calibration_stage42.json",
+          "md": "outputs/stage42_long_research/data_calibration_stage42.md",
+          "runner": "run_stage42_data_calibration.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_stage_a_gate.md",
+            "passed": 7,
+            "total": 7,
+            "verdict": "",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "outputs/stage42_long_research/stage42_stage_a_gate.md",
+          "gate_md_git_status": "clean",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "external_validation",
+          "role": "external raw-frame validation",
+          "json": "outputs/stage42_long_research/external_validation_stage42.json",
+          "md": "outputs/stage42_long_research/external_validation_stage42.md",
+          "runner": "run_stage42_external_validation.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_b_gate",
+            "passed": 10,
+            "total": 10,
+            "verdict": "stage42_b_external_validation_pass_protected_neural_not_ungated",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "full_waypoint_dynamics",
+          "role": "full-waypoint all-agent dynamics",
+          "json": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.json",
+          "md": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
+          "runner": "run_stage42_full_waypoint_dynamics.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_c_gate",
+            "passed": 12,
+            "total": 12,
+            "verdict": "stage42_c_full_waypoint_dynamics_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "causal_ablation",
+          "role": "causal component ablation",
+          "json": "outputs/stage42_long_research/causal_ablation_stage42.json",
+          "md": "outputs/stage42_long_research/causal_ablation_stage42.md",
+          "runner": "run_stage42_causal_ablation.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_d_gate",
+            "passed": 12,
+            "total": 12,
+            "verdict": "stage42_d_causal_ablation_evidence_pass_with_retrain_boundary",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "safety_floor",
+          "role": "teacher/Stage37 floor necessity",
+          "json": "outputs/stage42_long_research/safety_floor_stage42.json",
+          "md": "outputs/stage42_long_research/safety_floor_stage42.md",
+          "runner": "run_stage42_safety_floor.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_e_gate",
+            "passed": 12,
+            "total": 12,
+            "verdict": "stage42_e_safety_floor_research_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "paper_package",
+          "role": "paper package scaffold",
+          "json": "outputs/stage42_long_research/paper_package_stage42.json",
+          "md": "outputs/stage42_long_research/paper_outline_stage42.md",
+          "runner": "run_stage42_paper_package.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_f_gate",
+            "passed": 12,
+            "total": 12,
+            "verdict": "stage42_f_paper_package_complete_not_full_a_journal_ready",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "strict_time_geometry_calibration",
+          "role": "strict source time/geometry claim guard",
+          "json": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+          "md": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
+          "runner": "run_stage42_source_time_geometry_calibration.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_source_time_geometry_calibration_audit",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_bn_gate",
+            "passed": 13,
+            "total": 13,
+            "verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "metric_time_claim_guard",
+          "role": "metric/seconds overclaim blocker",
+          "json": "outputs/stage42_long_research/metric_time_claim_guard_stage42.json",
+          "md": "outputs/stage42_long_research/metric_time_claim_guard_stage42.md",
+          "runner": "run_stage42_metric_time_claim_guard.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_stage42_ch_metric_time_claim_guard",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_ch_gate",
+            "passed": 11,
+            "total": 11,
+            "verdict": "stage42_ch_metric_time_claim_guard_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "source_terms_validation",
+          "role": "legal source terms conversion gate",
+          "json": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+          "md": "outputs/stage42_long_research/source_terms_validation_stage42.md",
+          "runner": "run_stage42_source_terms_confirmation_validator.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cg_gate",
+            "passed": 11,
+            "total": 11,
+            "verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "context_contribution_forensics",
+          "role": "context contribution boundary",
+          "json": "outputs/stage42_long_research/context_contribution_forensics_stage42.json",
+          "md": "outputs/stage42_long_research/context_contribution_forensics_stage42.md",
+          "runner": "run_stage42_context_contribution_forensics.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_synthesis_from_stage42_ablation_and_claim_audits",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_ci_gate",
+            "passed": 13,
+            "total": 13,
+            "verdict": "stage42_ci_context_contribution_forensics_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "goal_scene_gated_expert",
+          "role": "goal/scene negative gated expert",
+          "json": "outputs/stage42_long_research/goal_scene_gated_expert_stage42.json",
+          "md": "outputs/stage42_long_research/goal_scene_gated_expert_stage42.md",
+          "runner": "run_stage42_goal_scene_gated_expert.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cj_gate",
+            "passed": 10,
+            "total": 10,
+            "verdict": "stage42_cj_goal_scene_gated_expert_pass_diagnostic_no_overclaim",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "neighbor_interaction_gated_expert",
+          "role": "neighbor/interaction negative gated expert",
+          "json": "outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.json",
+          "md": "outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.md",
+          "runner": "run_stage42_neighbor_interaction_gated_expert.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_run",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_ck_gate",
+            "passed": 11,
+            "total": 11,
+            "verdict": "stage42_ck_neighbor_interaction_gated_expert_pass_diagnostic_no_overclaim",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "common_validation_bridge_shape_composer",
+          "role": "endpoint/full-waypoint common-row composer",
+          "json": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+          "md": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.md",
+          "runner": "run_stage42_common_validation_bridge_shape_composer.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_common_validation_eval_from_cached_verified_checkpoints",
+          "source_label": "cached_verified",
+          "gate": {
+            "key": "stage42_co_gate",
+            "passed": 14,
+            "total": 14,
+            "verdict": "stage42_co_common_validation_bridge_shape_composer_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "composer_safety_bootstrap",
+          "role": "composer bootstrap and joint safety",
+          "json": "outputs/stage42_long_research/common_validation_composer_safety_stage42.json",
+          "md": "outputs/stage42_long_research/common_validation_composer_safety_stage42.md",
+          "runner": "run_stage42_common_validation_composer_safety.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_joint_safety_bootstrap_from_stage42_co_policy",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cp_gate",
+            "passed": 14,
+            "total": 14,
+            "verdict": "stage42_cp_common_validation_composer_safety_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "proximity_aware_composer_guard",
+          "role": "validation-only proximity guard",
+          "json": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+          "md": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.md",
+          "runner": "run_stage42_proximity_aware_composer_guard.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_validation_selected_proximity_guard_from_stage42_co_policy",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cq_gate",
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cq_proximity_aware_composer_guard_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "proximity_guard_ablation",
+          "role": "accuracy/safety Pareto ablation",
+          "json": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+          "md": "outputs/stage42_long_research/proximity_guard_ablation_stage42.md",
+          "runner": "run_stage42_proximity_guard_ablation.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_synthesis_from_stage42_co_cp_cq_artifacts",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cr_gate",
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cr_proximity_guard_ablation_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "frozen_proximity_guard_policy",
+          "role": "frozen deployable policy artifact",
+          "json": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.json",
+          "md": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.md",
+          "runner": "run_stage42_freeze_proximity_guard_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_policy_freeze_from_stage42_cq_cr",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cs_gate",
+            "passed": 25,
+            "total": 25,
+            "verdict": "stage42_cs_frozen_proximity_guard_policy_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "frozen_policy_replay",
+          "role": "policy artifact replay verifier",
+          "json": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
+          "md": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md",
+          "runner": "run_stage42_replay_proximity_guard_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_replay_from_frozen_policy_artifact",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_ct_gate",
+            "passed": 30,
+            "total": 30,
+            "verdict": "stage42_ct_frozen_policy_replay_pass",
+            "all_passed": true
+          },
+          "json_git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
+          "md_git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": true
+        },
+        {
+          "claim_area": "runtime_policy_api",
+          "role": "runtime policy API smoke evidence",
+          "json": "outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.json",
+          "md": "outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.md",
+          "runner": "run_stage42_runtime_proximity_guard_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_runtime_api_from_frozen_policy_artifact",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cu_gate",
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cu_runtime_policy_api_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "batch_runtime_replay",
+          "role": "real batch runtime exact replay",
+          "json": "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
+          "md": "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md",
+          "runner": "run_stage42_batch_replay_proximity_guard_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_batch_runtime_replay_from_frozen_policy_artifact",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cv_gate",
+            "passed": 25,
+            "total": 25,
+            "verdict": "stage42_cv_batch_runtime_replay_pass",
+            "all_passed": true
+          },
+          "json_git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
+          "md_git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": true
+        },
+        {
+          "claim_area": "runtime_replay_paper_refresh",
+          "role": "paper/reproducibility refresh",
+          "json": "outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.json",
+          "md": "outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.md",
+          "runner": "run_stage42_runtime_replay_paper_refresh.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_synthesis_from_stage42_cv_runtime_batch_replay",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_cw_gate",
+            "passed": 25,
+            "total": 25,
+            "verdict": "stage42_cw_runtime_replay_paper_refresh_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "group_consistency_full_waypoint_repair",
+          "role": "all-agent group-consistency full-waypoint repair",
+          "json": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+          "md": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.md",
+          "runner": "run_stage42_group_consistency_full_waypoint_repair.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_stage42_di_group_consistency_full_waypoint_repair",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_di_gate",
+            "passed": 17,
+            "total": 17,
+            "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "frozen_group_consistency_policy",
+          "role": "frozen group-consistency full-waypoint policy artifact",
+          "json": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json",
+          "md": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.md",
+          "runner": "run_stage42_freeze_group_consistency_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_policy_freeze_from_stage42_di",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_dj_gate",
+            "passed": 22,
+            "total": 22,
+            "verdict": "stage42_dj_frozen_group_consistency_policy_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "group_consistency_policy_replay",
+          "role": "group-consistency policy artifact replay verifier",
+          "json": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+          "md": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+          "runner": "run_stage42_replay_group_consistency_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_replay_from_frozen_group_consistency_policy_artifact",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_dk_gate",
+            "passed": 34,
+            "total": 34,
+            "verdict": "stage42_dk_group_consistency_policy_replay_pass",
+            "all_passed": true
+          },
+          "json_git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+          "md_git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": true
+        },
+        {
+          "claim_area": "group_consistency_runtime_policy",
+          "role": "callable group-consistency full-waypoint runtime policy API",
+          "json": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+          "md": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+          "runner": "run_stage42_group_consistency_runtime_policy.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_dl_gate",
+            "passed": 30,
+            "total": 30,
+            "verdict": "stage42_dl_group_consistency_runtime_policy_pass",
+            "all_passed": true
+          },
+          "json_git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+          "md_git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+          "runner_git_status": "clean",
+          "gate_md": "",
+          "gate_md_git_status": "",
+          "worktree_caveat": true
+        }
+      ],
+      "paper_file_status": [
+        {
+          "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": false,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/method_draft_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": true,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": true,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": false,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": false,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/model_card_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": true,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/data_card_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": false,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": true,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        },
+        {
+          "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+          "exists": true,
+          "git_status": "clean",
+          "has_stage42_cw": true,
+          "has_claim_boundary": true,
+          "worktree_caveat": false
+        }
+      ],
+      "summary": {
+        "artifacts_total": 25,
+        "artifacts_gate_passed": 25,
+        "source_label_counts": {
+          "fresh_run": 24,
+          "cached_verified": 1
+        },
+        "artifacts_with_worktree_caveat": 4,
+        "paper_files_with_worktree_caveat": 0
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_cx_gate": {
+        "gates": {
+          "all_artifact_json_exists": true,
+          "all_artifact_md_exists": true,
+          "all_runners_exist": true,
+          "all_source_labels_known": true,
+          "all_gates_present": true,
+          "all_gates_passed": true,
+          "paper_files_exist": true,
+          "paper_files_have_claim_boundaries": true,
+          "runtime_replay_included": true,
+          "runtime_replay_refresh_included": true,
+          "group_consistency_repair_included": true,
+          "frozen_group_consistency_policy_included": true,
+          "group_consistency_replay_included": true,
+          "group_consistency_runtime_policy_included": true,
+          "worktree_caveats_recorded": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 20,
+        "total": 20,
+        "verdict": "stage42_cx_evidence_provenance_pass"
+      }
+    },
+    "paper_freeze_manifest": {
+      "source": "fresh_freeze_candidate_manifest_from_cx_cy",
+      "stage": "Stage42-CZ paper freeze candidate manifest",
+      "generated_at_utc": "2026-05-26T23:10:17.178082+00:00",
+      "git_commit": "47b5df5",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-CZ 是 paper freeze candidate manifest，不重新训练，不调 threshold。",
+        "manifest 冻结的是证据包候选，不是 broad foundation/3D/metric/seconds claim。",
+        "若仍有 metadata-only caveats，状态必须写 candidate_with_metadata_caveats，而不是 final immutable release。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "inputs": {
+        "stage42_cx": {
+          "path": "outputs/stage42_long_research/evidence_provenance_stage42.json",
+          "gate": {
+            "gates": {
+              "all_artifact_json_exists": true,
+              "all_artifact_md_exists": true,
+              "all_runners_exist": true,
+              "all_source_labels_known": true,
+              "all_gates_present": true,
+              "all_gates_passed": true,
+              "paper_files_exist": true,
+              "paper_files_have_claim_boundaries": true,
+              "runtime_replay_included": true,
+              "runtime_replay_refresh_included": true,
+              "group_consistency_repair_included": true,
+              "frozen_group_consistency_policy_included": true,
+              "group_consistency_replay_included": true,
+              "group_consistency_runtime_policy_included": true,
+              "worktree_caveats_recorded": true,
+              "no_metric_seconds_overclaim": true,
+              "true_3d_overclaim_blocked": true,
+              "foundation_overclaim_blocked": true,
+              "stage5c_false": true,
+              "smc_false": true
+            },
+            "passed": 20,
+            "total": 20,
+            "verdict": "stage42_cx_evidence_provenance_pass"
+          },
+          "summary": {
+            "artifacts_total": 25,
+            "artifacts_gate_passed": 25,
+            "source_label_counts": {
+              "fresh_run": 24,
+              "cached_verified": 1
+            },
+            "artifacts_with_worktree_caveat": 4,
+            "paper_files_with_worktree_caveat": 0
+          }
+        },
+        "stage42_cy": {
+          "path": "outputs/stage42_long_research/worktree_caveat_classifier_stage42.json",
+          "gate": {
+            "gates": {
+              "tracked_dirty_files_inspected": true,
+              "stage42_dirty_files_classified": true,
+              "stage42_no_substantive_dirty_changes": true,
+              "run_ledger_append_only_if_dirty": true,
+              "metadata_changes_not_promoted_to_new_results": true,
+              "no_raw_data_committed": true,
+              "no_metric_seconds_overclaim": true,
+              "true_3d_overclaim_blocked": true,
+              "foundation_overclaim_blocked": true,
+              "stage5c_false": true,
+              "smc_false": true
+            },
+            "passed": 11,
+            "total": 11,
+            "verdict": "stage42_cy_worktree_caveat_classifier_pass"
+          },
+          "summary": {
+            "tracked_dirty_files": 8,
+            "stage42_dirty_files": 0,
+            "stage42_substantive_dirty_files": 0,
+            "classification_counts": {
+              "substantive_json_change": 8
+            }
+          }
+        }
+      },
+      "freeze_status": {
+        "cx_pass": true,
+        "cy_pass": true,
+        "metadata_caveats": 0,
+        "substantive_caveats": 0,
+        "freeze_status": "candidate_clean",
+        "final_immutable_release": true
+      },
+      "files": [
+        {
+          "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 8120,
+          "sha256": "297405c91e2d85f15435807b40eaee4076f6282daf3e8213d7422cbe0b2304cb",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/method_draft_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 11614,
+          "sha256": "415bd1baa90ab873c1f73e1fabc027f98d9b64311372192d296621c64b04afa1",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 22218,
+          "sha256": "17c3a5048076339d400b60f8395be236ee84678bbf5f006bbc1d494dc2111680",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 29616,
+          "sha256": "1a1d910fc421071e4a589515aba5d29a480de849076076b0a3c4fe7e6b50a1b6",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 9179,
+          "sha256": "1728e27fe9c8b0c4d549bc9fd92cd76f851d5cfd553250f86bf69f67327f75a6",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/model_card_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 19933,
+          "sha256": "dd89343c842d0a686e8f45be6ee01d2aedd8f4ee1969f0c45d048104396f46db",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/data_card_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 5949,
+          "sha256": "73a574b452323ec81a924c9add81bd10d41680eef0c33413e7721214e51c84dc",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 13916,
+          "sha256": "9a7a7c15d76fed88e3308849d6491b17b2987bc9f3f83f8f450907dac66fb2d7",
+          "git_status": "M outputs/stage42_long_research/reproducibility_stage42.md"
+        },
+        {
+          "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+          "role": "paper_file",
+          "exists": true,
+          "size_bytes": 38575,
+          "sha256": "9727964d994ced53b7a41004f9c6f048b6966b2c67b4b685e669c9dc05328466",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json",
+          "role": "frozen_runtime_policy_artifact",
+          "exists": true,
+          "size_bytes": 3414,
+          "sha256": "8cdfcc939a0f6c8261f2155e1a9a28efab1a691a7603859779d813e810a63707",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json",
+          "role": "frozen_group_consistency_policy_artifact",
+          "exists": true,
+          "size_bytes": 5250,
+          "sha256": "f48c6899518c84cdcfcbcc88bd76932dcaf8716512be0ddf184a7433da41bc35",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/data_calibration_stage42.json",
+          "role": "evidence_json:data_calibration",
+          "exists": true,
+          "size_bytes": 74705,
+          "sha256": "9603ce75ba49f7cdb6c0abeaafe6c1b5bb9940262dec3999792ceb806e0c94c0",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/data_calibration_stage42.md",
+          "role": "evidence_md:data_calibration",
+          "exists": true,
+          "size_bytes": 9490,
+          "sha256": "0e1716b81a6a2760aa7a750fad74f187ee455b4fd7e91365c4f5d6504d5612de",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_data_calibration.py",
+          "role": "runner:data_calibration",
+          "exists": true,
+          "size_bytes": 136,
+          "sha256": "2f9afd769b91493e32ac5f39925b83946bb3b7a9bab207bf47db47a39b823895",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/external_validation_stage42.json",
+          "role": "evidence_json:external_validation",
+          "exists": true,
+          "size_bytes": 3841495,
+          "sha256": "739691e8db5421106581d375792e3c67ec15df5b167dd63b516d9b12d7a39136",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/external_validation_stage42.md",
+          "role": "evidence_md:external_validation",
+          "exists": true,
+          "size_bytes": 3189,
+          "sha256": "7fbd6b71ad5c89cde21f8ee5827037027195ae4eb690354a9740196b651b81e0",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_external_validation.py",
+          "role": "runner:external_validation",
+          "exists": true,
+          "size_bytes": 143,
+          "sha256": "755c28007e800ee59bf85ed590835542b26f3091f2c89be40b171edcab22257e",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.json",
+          "role": "evidence_json:full_waypoint_dynamics",
+          "exists": true,
+          "size_bytes": 39554,
+          "sha256": "80c16a7ec02d7e9cee0c9be02792e57d5dc272f67478734fb7ac1c048129cf89",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.md",
+          "role": "evidence_md:full_waypoint_dynamics",
+          "exists": true,
+          "size_bytes": 3789,
+          "sha256": "885382dccced48c51569dc34160238f917350fb7224a094f63dfd962de5250ae",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_full_waypoint_dynamics.py",
+          "role": "runner:full_waypoint_dynamics",
+          "exists": true,
+          "size_bytes": 152,
+          "sha256": "e5e18802641864facf37cb6559d19299bf3dafeb9f543a0f6c19eb1827c6600d",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/causal_ablation_stage42.json",
+          "role": "evidence_json:causal_ablation",
+          "exists": true,
+          "size_bytes": 16738,
+          "sha256": "4dba156313d7bf1d6c3d416ffb6984192cec21dfc0fd794ecf7b19c14c29fb18",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/causal_ablation_stage42.md",
+          "role": "evidence_md:causal_ablation",
+          "exists": true,
+          "size_bytes": 8282,
+          "sha256": "0d9332f299ea1073c7fec4c3b4531356a18095415b3b7de865b7595b78f61522",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_causal_ablation.py",
+          "role": "runner:causal_ablation",
+          "exists": true,
+          "size_bytes": 131,
+          "sha256": "0aa61ac98393998ec6ca904516f641bbc1afbc81f19f062eef594278e302f481",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/safety_floor_stage42.json",
+          "role": "evidence_json:safety_floor",
+          "exists": true,
+          "size_bytes": 27310,
+          "sha256": "5b73af2deefff3d5110005ed62b93353f6756380db14d44182774114057182c4",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/safety_floor_stage42.md",
+          "role": "evidence_md:safety_floor",
+          "exists": true,
+          "size_bytes": 5503,
+          "sha256": "b93041e0131ca61cccd4da98486e7a9d389fb4305f484067d54e4b04140f93f9",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_safety_floor.py",
+          "role": "runner:safety_floor",
+          "exists": true,
+          "size_bytes": 122,
+          "sha256": "5259ebd2dbeb5a64b7aff53a3f78eb192d90d66f1a54caf35cd7e65f96d25c50",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/paper_package_stage42.json",
+          "role": "evidence_json:paper_package",
+          "exists": true,
+          "size_bytes": 9537,
+          "sha256": "4ec71440d909cd2beda738b57a7b8ca82329e4089da8333778e6b52156449b9e",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_paper_package.py",
+          "role": "runner:paper_package",
+          "exists": true,
+          "size_bytes": 125,
+          "sha256": "e4197e224712883040dcac5244e14c071b250279e6b473733fe8c7bc95353f61",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+          "role": "evidence_json:strict_time_geometry_calibration",
+          "exists": true,
+          "size_bytes": 15612,
+          "sha256": "2e3816099be5ba3d1174a6b071ea817ffd0c658f36c85b61f699a573ce9c7f3c",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
+          "role": "evidence_md:strict_time_geometry_calibration",
+          "exists": true,
+          "size_bytes": 4205,
+          "sha256": "0f1799913972ad2145bb743e212500104ab31962358a755142bfe03cedf8d9df",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_source_time_geometry_calibration.py",
+          "role": "runner:strict_time_geometry_calibration",
+          "exists": true,
+          "size_bytes": 295,
+          "sha256": "92e4a6fcddadd10339c4e5ef2aa15a975a5557dbdb072cb8f68cec4e1e0b59e0",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/metric_time_claim_guard_stage42.json",
+          "role": "evidence_json:metric_time_claim_guard",
+          "exists": true,
+          "size_bytes": 7724,
+          "sha256": "21acab6b57b200e224d3d5c75dce34d86d1541f34814ac10451a930db0f0cb4c",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/metric_time_claim_guard_stage42.md",
+          "role": "evidence_md:metric_time_claim_guard",
+          "exists": true,
+          "size_bytes": 3057,
+          "sha256": "13ddb703c4b5c2953b16d657bf7f68f46afe919f5f504c2a1b09e55267f06f05",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_metric_time_claim_guard.py",
+          "role": "runner:metric_time_claim_guard",
+          "exists": true,
+          "size_bytes": 155,
+          "sha256": "0fa564ef5fad34202ba8ec5f48b87b2a97c28cf676a0083d8a1680a02c883fda",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+          "role": "evidence_json:source_terms_validation",
+          "exists": true,
+          "size_bytes": 14852,
+          "sha256": "6419314cec6735d1badb44afaa22906650a9c2b679504bc7799d9410330757aa",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/source_terms_validation_stage42.md",
+          "role": "evidence_md:source_terms_validation",
+          "exists": true,
+          "size_bytes": 3060,
+          "sha256": "59be7a1e85d26dfdc4739d9b0280291333ef4f634f49860a70c2c799f875eb63",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_source_terms_confirmation_validator.py",
+          "role": "runner:source_terms_validation",
+          "exists": true,
+          "size_bytes": 191,
+          "sha256": "91fcab4829f5defb379c5c405300df64b8143a0131ab1963ce27101f1dc1ef2c",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/context_contribution_forensics_stage42.json",
+          "role": "evidence_json:context_contribution_forensics",
+          "exists": true,
+          "size_bytes": 8022,
+          "sha256": "0145bbafaac7c7847915aec8a5bc8931d6e018ef702ba2e0026f9602fd5f23e9",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/context_contribution_forensics_stage42.md",
+          "role": "evidence_md:context_contribution_forensics",
+          "exists": true,
+          "size_bytes": 4915,
+          "sha256": "1f81aa273a8175537a85de32665389253fe2985b4ece39df0c9a86d03d84b798",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_context_contribution_forensics.py",
+          "role": "runner:context_contribution_forensics",
+          "exists": true,
+          "size_bytes": 176,
+          "sha256": "0a62177d9c3166315e1b0aed2261742c9c2661ea765eb532b561b730da018cb3",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/goal_scene_gated_expert_stage42.json",
+          "role": "evidence_json:goal_scene_gated_expert",
+          "exists": true,
+          "size_bytes": 42002,
+          "sha256": "d80b5cf912bc44ccfcd9b89f51ac37e315a98bf49bc67a9ff9ccb67becc15f71",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/goal_scene_gated_expert_stage42.md",
+          "role": "evidence_md:goal_scene_gated_expert",
+          "exists": true,
+          "size_bytes": 4628,
+          "sha256": "8183dfa140d739f28fb2d8d81f1b9f338dacb6ba55e416ea3a631656d81c2d1f",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_goal_scene_gated_expert.py",
+          "role": "runner:goal_scene_gated_expert",
+          "exists": true,
+          "size_bytes": 155,
+          "sha256": "20b9767154ff1fd708b1034dd19eb885ff0781c0a139a6020431e3f45c627e62",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.json",
+          "role": "evidence_json:neighbor_interaction_gated_expert",
+          "exists": true,
+          "size_bytes": 85532,
+          "sha256": "883118db5f5758e59f2248bf4783f739b9e8628b1df1d0da2d25894af2b2f1d4",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.md",
+          "role": "evidence_md:neighbor_interaction_gated_expert",
+          "exists": true,
+          "size_bytes": 7025,
+          "sha256": "aa978fabc031362f9c92dd529b4b5b40b108135d06744818cb2d0d0139d03a17",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_neighbor_interaction_gated_expert.py",
+          "role": "runner:neighbor_interaction_gated_expert",
+          "exists": true,
+          "size_bytes": 185,
+          "sha256": "26b4d095ee96f3a333534197827418f10e11d7ebb0a2ff0d76272bd4bcbd0fbe",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+          "role": "evidence_json:common_validation_bridge_shape_composer",
+          "exists": true,
+          "size_bytes": 91625,
+          "sha256": "e98658f341e1985741f4e26f938c30ee89955b6c99836fccc3c6ea8e33866340",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.md",
+          "role": "evidence_md:common_validation_bridge_shape_composer",
+          "exists": true,
+          "size_bytes": 2074,
+          "sha256": "fcef7fbff6891e30db1c7e9e8a1c920611f7e68f14773b2c21fc96f86c644992",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_common_validation_bridge_shape_composer.py",
+          "role": "runner:common_validation_bridge_shape_composer",
+          "exists": true,
+          "size_bytes": 261,
+          "sha256": "1b6de9d33c89389597bc45121038a84e10f9a34addebf5d8f4419d653e7a1d8f",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/common_validation_composer_safety_stage42.json",
+          "role": "evidence_json:composer_safety_bootstrap",
+          "exists": true,
+          "size_bytes": 112593,
+          "sha256": "03c2eb0528e17b1e8600a8450d9f0481af542c9855f3de9a7f4adade1db37b13",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/common_validation_composer_safety_stage42.md",
+          "role": "evidence_md:composer_safety_bootstrap",
+          "exists": true,
+          "size_bytes": 2277,
+          "sha256": "a28cc9d830b397426abcca74a81e3bc08ef1aded24b0fe9f531dd3436a18927d",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_common_validation_composer_safety.py",
+          "role": "runner:composer_safety_bootstrap",
+          "exists": true,
+          "size_bytes": 244,
+          "sha256": "9dd1e1c391da62aa4b8c8c9187f0ea88a76c51f765112e15f53fd02bfc2f0457",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+          "role": "evidence_json:proximity_aware_composer_guard",
+          "exists": true,
+          "size_bytes": 274975,
+          "sha256": "9d15e7338270fb43ef1eb1c8be7c87995054a9113f12f4d1a660393064258c79",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.md",
+          "role": "evidence_md:proximity_aware_composer_guard",
+          "exists": true,
+          "size_bytes": 2740,
+          "sha256": "f8ea21a56524e491e5956d7a705f57647f1310cba6311a0c37bd5f97452ed84f",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_proximity_aware_composer_guard.py",
+          "role": "runner:proximity_aware_composer_guard",
+          "exists": true,
+          "size_bytes": 248,
+          "sha256": "9c99ab4100a7940bea2e20f2925cdced56b0c6cd8f739083009fdca470067a28",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+          "role": "evidence_json:proximity_guard_ablation",
+          "exists": true,
+          "size_bytes": 536421,
+          "sha256": "6b290ecd9858c7c86dd39542f6759ab82072f4605be97638c5ae6ef95b38798c",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.md",
+          "role": "evidence_md:proximity_guard_ablation",
+          "exists": true,
+          "size_bytes": 2620,
+          "sha256": "973db8c29ecea85dd52be1ec05a8edfc84e66f3ad6d9a806f1092b2c3eb2f527",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_proximity_guard_ablation.py",
+          "role": "runner:proximity_guard_ablation",
+          "exists": true,
+          "size_bytes": 242,
+          "sha256": "6a6f70bdce9fd4e11e680aa9399fc945c885a2810606934c7f0a7bbaefe9a646",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.json",
+          "role": "evidence_json:frozen_proximity_guard_policy",
+          "exists": true,
+          "size_bytes": 8534,
+          "sha256": "30fad57044f009a6b01b5092d73020764998eceb776680e31df68e97802633e8",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.md",
+          "role": "evidence_md:frozen_proximity_guard_policy",
+          "exists": true,
+          "size_bytes": 2678,
+          "sha256": "66b0b75f410d15960aab28c4c655aafe02196c831feb6820e4802e68a1ff3d0a",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_freeze_proximity_guard_policy.py",
+          "role": "runner:frozen_proximity_guard_policy",
+          "exists": true,
+          "size_bytes": 173,
+          "sha256": "44d87377587f595963858a859b4626b77cac095eb878be3f87a37f06a1477e77",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
+          "role": "evidence_json:frozen_policy_replay",
+          "exists": true,
+          "size_bytes": 11827,
+          "sha256": "881452bf29da085492f396cef0f5c789addc9d246ec25d001d5d1250f622d733",
+          "git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md",
+          "role": "evidence_md:frozen_policy_replay",
+          "exists": true,
+          "size_bytes": 2162,
+          "sha256": "71778c1460281c605ad230dca141f08effe1e4f1f8ad9f613ce9d70b19c07662",
+          "git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md"
+        },
+        {
+          "path": "run_stage42_replay_proximity_guard_policy.py",
+          "role": "runner:frozen_policy_replay",
+          "exists": true,
+          "size_bytes": 173,
+          "sha256": "03d19a195208680faf460d3af0d2368bdd1927604c4075526189ffe01fd13cab",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.json",
+          "role": "evidence_json:runtime_policy_api",
+          "exists": true,
+          "size_bytes": 11386,
+          "sha256": "72f51caaaf17020f781bb9cec42ad02150c3741bb72ccf422df0583487337de9",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.md",
+          "role": "evidence_md:runtime_policy_api",
+          "exists": true,
+          "size_bytes": 2566,
+          "sha256": "157e24311de9682ac41a66ee02753243da643aeeed09f068da719862904e5861",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_runtime_proximity_guard_policy.py",
+          "role": "runner:runtime_policy_api",
+          "exists": true,
+          "size_bytes": 176,
+          "sha256": "75982b8bc544a1dfe2dbc82783b519e67d2f94aac9040e68083d248feb3a68dd",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
+          "role": "evidence_json:batch_runtime_replay",
+          "exists": true,
+          "size_bytes": 25316,
+          "sha256": "9e6cb21beba8e3f429113cb0eb6904c2f6ace55a3b7003411271eea7f9e6eb13",
+          "git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json"
+        },
+        {
+          "path": "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md",
+          "role": "evidence_md:batch_runtime_replay",
+          "exists": true,
+          "size_bytes": 2475,
+          "sha256": "5f3a92b41ba9e17b22a1cb67afe2a71a84d0d2c642bebd1c86d8b1f859f3037d",
+          "git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md"
+        },
+        {
+          "path": "run_stage42_batch_replay_proximity_guard_policy.py",
+          "role": "runner:batch_runtime_replay",
+          "exists": true,
+          "size_bytes": 184,
+          "sha256": "962578e2628b7e3c117decde8c63298d25a691c15fb7aed103b0fea71644155e",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.json",
+          "role": "evidence_json:runtime_replay_paper_refresh",
+          "exists": true,
+          "size_bytes": 60102,
+          "sha256": "4daf68dcf18ab429052b9f94ec35b8001c3070b9492c62fbfd5a40bd2ff58828",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.md",
+          "role": "evidence_md:runtime_replay_paper_refresh",
+          "exists": true,
+          "size_bytes": 2826,
+          "sha256": "8ace17b2d1d2a7ad6d8e18894aaa3c39057a5c027faa76599a78b694d3786e3a",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_runtime_replay_paper_refresh.py",
+          "role": "runner:runtime_replay_paper_refresh",
+          "exists": true,
+          "size_bytes": 170,
+          "sha256": "47568296ec4774c160d2b75f351837d70b4f230969896ce7fa86488b08c4071b",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+          "role": "evidence_json:group_consistency_full_waypoint_repair",
+          "exists": true,
+          "size_bytes": 123469,
+          "sha256": "29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.md",
+          "role": "evidence_md:group_consistency_full_waypoint_repair",
+          "exists": true,
+          "size_bytes": 5064,
+          "sha256": "0e0729df127bdbf74910a56105116ce9b253d150806a6abef30a0718a9227b0f",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_group_consistency_full_waypoint_repair.py",
+          "role": "runner:group_consistency_full_waypoint_repair",
+          "exists": true,
+          "size_bytes": 403,
+          "sha256": "80a7029e20e76da5a00fe96bd4d4b445c5ad28742fbd472553ceb1e909bc859e",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json",
+          "role": "evidence_json:frozen_group_consistency_policy",
+          "exists": true,
+          "size_bytes": 10254,
+          "sha256": "1166f322199387be366bb1e01d4918339e0787a901f13893b2f7813ac9cf418d",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.md",
+          "role": "evidence_md:frozen_group_consistency_policy",
+          "exists": true,
+          "size_bytes": 2690,
+          "sha256": "a0059763e837e382ed113d69b96a57a3160450752bf72ecff1ffaf006e1daa01",
+          "git_status": "clean"
+        },
+        {
+          "path": "run_stage42_freeze_group_consistency_policy.py",
+          "role": "runner:frozen_group_consistency_policy",
+          "exists": true,
+          "size_bytes": 338,
+          "sha256": "7955f4698fb6a8ba33c43f1deb5bf6bfee41ecccd46d01d41dcde87cec4bc60f",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+          "role": "evidence_json:group_consistency_policy_replay",
+          "exists": true,
+          "size_bytes": 15359,
+          "sha256": "c5c6582d3b8d9bc60e806fb89a0050f1073a4daa46df8d3708df1e59ec390c33",
+          "git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.json"
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+          "role": "evidence_md:group_consistency_policy_replay",
+          "exists": true,
+          "size_bytes": 2432,
+          "sha256": "7b938c99518232c68bc0d8d4be805ceafc8134f1b03735669b3caa0b125c382e",
+          "git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.md"
+        },
+        {
+          "path": "run_stage42_replay_group_consistency_policy.py",
+          "role": "runner:group_consistency_policy_replay",
+          "exists": true,
+          "size_bytes": 179,
+          "sha256": "af502456bb474dbda265c7ca1b765da891e9f7ee84fa9c9e71e9f596bff3be3c",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+          "role": "evidence_json:group_consistency_runtime_policy",
+          "exists": true,
+          "size_bytes": 15392,
+          "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+          "git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json"
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+          "role": "evidence_md:group_consistency_runtime_policy",
+          "exists": true,
+          "size_bytes": 2666,
+          "sha256": "3aa5948961aae918e61d4a2507834afa264dc2bf1540cd40453659a2b3925674",
+          "git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md"
+        },
+        {
+          "path": "run_stage42_group_consistency_runtime_policy.py",
+          "role": "runner:group_consistency_runtime_policy",
+          "exists": true,
+          "size_bytes": 182,
+          "sha256": "1970147b66a95f1d10a629e88bbb58b95efab0d21ab0dc7e5eab967821643428",
+          "git_status": "clean"
+        },
+        {
+          "path": "outputs/stage42_long_research/evidence_provenance_stage42.json",
+          "role": "provenance_verifier_json",
+          "exists": true,
+          "size_bytes": 28011,
+          "sha256": "f7ea646fca3a097597bdf922e57b282bc0011138b5d8776b46e7b0a0175dda34",
+          "git_status": "M outputs/stage42_long_research/evidence_provenance_stage42.json"
+        },
+        {
+          "path": "outputs/stage42_long_research/worktree_caveat_classifier_stage42.json",
+          "role": "worktree_caveat_classifier_json",
+          "exists": true,
+          "size_bytes": 4151,
+          "sha256": "d2c215b710df02c236be721ea14bf675b0cb69ec48453a141fb429854c4d9905",
+          "git_status": "clean"
+        }
+      ],
+      "manifest_hash": "1f86d537c2a6b1759275a5d654465964a87ce1e4d54b177c7ef7bec116881612",
+      "summary": {
+        "files_total": 87,
+        "paper_files": 9,
+        "evidence_json_files": 25,
+        "evidence_md_files": 24,
+        "runner_files": 25,
+        "files_with_git_caveat": 10
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_cz_gate": {
+        "gates": {
+          "cx_gate_passed": true,
+          "cy_gate_passed": true,
+          "all_manifest_files_exist": true,
+          "all_manifest_files_hashed": true,
+          "policy_artifact_included": true,
+          "group_consistency_policy_artifact_included": true,
+          "paper_files_included": true,
+          "no_substantive_stage42_caveats": true,
+          "freeze_status_explicit": true,
+          "metadata_caveat_not_called_final_release": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 15,
+        "total": 15,
+        "verdict": "stage42_cz_paper_freeze_candidate_manifest_pass"
+      }
+    },
+    "proximity_batch_replay": {
+      "source": "fresh_batch_runtime_replay_from_frozen_policy_artifact",
+      "stage": "Stage42-CV batch runtime policy replay",
+      "generated_at_utc": "2026-05-26T23:09:18.992450+00:00",
+      "git_commit": "47b5df5",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-CV 在真实 common validation/test rows 上重放 Stage42-CU runtime policy。",
+        "guard 的第二个 proximity 输入是 validation-selected base composer candidate rollout 的 group min-distance，不是 future label。",
+        "runtime batch replay 不重新选择阈值，不使用 test endpoint goals，不执行 Stage5C，不启用 SMC。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。"
+      ],
+      "inputs": {
+        "stage42_ct": {
+          "path": "outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
+          "stage42_ct_gate": {
+            "gates": {
+              "policy_artifact_exists": true,
+              "policy_hash_recomputed_matches_cs": true,
+              "policy_json_matches_cs_embedded_policy": true,
+              "cq_gate_passed": true,
+              "cr_gate_passed": true,
+              "cs_gate_passed": true,
+              "selected_policy_replays_cq": true,
+              "base_choices_replay_cq": true,
+              "all_metric_replays_cq": true,
+              "t50_metric_replays_cq": true,
+              "t100_metric_replays_cq": true,
+              "hard_metric_replays_cq": true,
+              "easy_metric_replays_cq": true,
+              "near_collision_replays_cq": true,
+              "jagged_rate_replays_cq": true,
+              "cr_recommendation_replayed": true,
+              "all_positive": true,
+              "t50_positive": true,
+              "t100_positive": true,
+              "hard_positive": true,
+              "easy_under_2pct": true,
+              "near_collision_not_worse_than_endpoint": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoints_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "metric_seconds_overclaim_blocked": true,
+              "stage5c_not_executed": true,
+              "smc_not_enabled": true
+            },
+            "passed": 30,
+            "total": 30,
+            "verdict": "stage42_ct_frozen_policy_replay_pass"
+          }
+        },
+        "stage42_cu": {
+          "path": "outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.json",
+          "stage42_cu_gate": {
+            "gates": {
+              "policy_artifact_exists": true,
+              "policy_hash_available": true,
+              "ct_replay_gate_passed": true,
+              "runtime_min_sep_matches_artifact": true,
+              "runtime_margin_matches_artifact": true,
+              "runtime_base_choices_match_artifact": true,
+              "full_slice_guard_clear_passed": true,
+              "full_slice_guarded_off_passed": true,
+              "endpoint_slice_never_switches_passed": true,
+              "nonfinite_geometry_replay_rule_passed": true,
+              "uses_domain_horizon_and_predicted_geometry_only": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoints_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "metric_seconds_overclaim_blocked": true,
+              "stage5c_not_executed": true,
+              "smc_not_enabled": true
+            },
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cu_runtime_policy_api_pass"
+          },
+          "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59"
+        }
+      },
+      "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+      "splits": {
+        "val": {
+          "source": "fresh_batch_runtime_replay_from_cached_verified_common_validation_rows",
+          "split": "val",
+          "rows": 53256,
+          "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+          "decision_match": true,
+          "selected_xy_max_abs_diff": 0.0,
+          "selected_ade_max_abs_diff": 0.0,
+          "selected_fde_max_abs_diff": 0.0,
+          "metric_diff_vs_expected": {
+            "all_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.0,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0
+          },
+          "runtime_metric_vs_endpoint_ade": {
+            "rows": 53256,
+            "all_improvement": 0.015405620249765106,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.008957561014464654,
+            "t100_raw_frame_diagnostic_improvement": 0.030563789017629794,
+            "hard_failure_improvement": 0.017305642797946663,
+            "easy_degradation": 0.0024710459015215847,
+            "switch_rate": 0.10404461469130238,
+            "harm_over_ref": -0.005728601441887581,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 16103,
+                "all_improvement": 0.041507490688403204,
+                "t50_improvement": 0.0248497401873915,
+                "t100_raw_frame_diagnostic_improvement": 0.07671482807237118,
+                "hard_failure_improvement": 0.04416092503562086,
+                "easy_degradation": 0.013416037457129715
+              },
+              "TrajNet": {
+                "rows": 37153,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_raw_frame_diagnostic_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": -0.0
+              }
+            }
+          },
+          "runtime_metric_vs_floor_ade": {
+            "rows": 53256,
+            "all_improvement": 0.24020026703892972,
+            "t10_improvement": 0.4952904941540973,
+            "t25_improvement": 0.14174037882139956,
+            "t50_improvement": 0.1865328971982222,
+            "t100_raw_frame_diagnostic_improvement": 0.17785885642277355,
+            "hard_failure_improvement": 0.23762029285315134,
+            "easy_degradation": -0.18483642600378025,
+            "switch_rate": 0.10404461469130238,
+            "harm_over_ref": -0.11574470208452119,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 16103,
+                "all_improvement": 0.25073463112190764,
+                "t50_improvement": 0.15208884786364363,
+                "t100_raw_frame_diagnostic_improvement": 0.21704618578782398,
+                "hard_failure_improvement": 0.2497802539883358,
+                "easy_degradation": -0.16484414413586768
+              },
+              "TrajNet": {
+                "rows": 37153,
+                "all_improvement": 0.23410860026131475,
+                "t50_improvement": 0.2042989780486284,
+                "t100_raw_frame_diagnostic_improvement": 0.1519041555015087,
+                "hard_failure_improvement": 0.22993225659050898,
+                "easy_degradation": -0.18927681058413814
+              }
+            }
+          },
+          "runtime_metric_vs_endpoint_fde": {
+            "rows": 53256,
+            "all_improvement": 0.01937626339985221,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.027762949245711765,
+            "t100_raw_frame_diagnostic_improvement": 0.02528270473945704,
+            "hard_failure_improvement": 0.021679053924452463,
+            "easy_degradation": 0.004802203738071054,
+            "switch_rate": 0.10404461469130238,
+            "harm_over_ref": -0.010509201820843236,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 16103,
+                "all_improvement": 0.05110231505050966,
+                "t50_improvement": 0.07352312322100363,
+                "t100_raw_frame_diagnostic_improvement": 0.06371316511794689,
+                "hard_failure_improvement": 0.054146471363915816,
+                "easy_degradation": 0.025625192092451954
+              },
+              "TrajNet": {
+                "rows": 37153,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_raw_frame_diagnostic_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": -0.0
+              }
+            }
+          },
+          "runtime_metric_vs_floor_fde": {
+            "rows": 53256,
+            "all_improvement": 0.23292682756058491,
+            "t10_improvement": 0.4941684559089625,
+            "t25_improvement": 0.15741279650689177,
+            "t50_improvement": 0.2398649830837536,
+            "t100_raw_frame_diagnostic_improvement": 0.1644238702943296,
+            "hard_failure_improvement": 0.23060367377163726,
+            "easy_degradation": -0.18173620989923744,
+            "switch_rate": 0.10404461469130238,
+            "harm_over_ref": -0.16150457223844325,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 16103,
+                "all_improvement": 0.23540538427474766,
+                "t50_improvement": 0.23956777732269752,
+                "t100_raw_frame_diagnostic_improvement": 0.1885554508827062,
+                "hard_failure_improvement": 0.23600873968885583,
+                "easy_degradation": -0.15525218291652165
+              },
+              "TrajNet": {
+                "rows": 37153,
+                "all_improvement": 0.23148306939086205,
+                "t50_improvement": 0.24003194005935913,
+                "t100_raw_frame_diagnostic_improvement": 0.14883196860843895,
+                "hard_failure_improvement": 0.22715045551170332,
+                "easy_degradation": -0.18775941751271497
+              }
+            }
+          },
+          "runtime_joint_safety": {
+            "floor": {
+              "name": "strongest_floor",
+              "rows": 53256,
+              "groups": 5428,
+              "multi_agent_rows": 53143,
+              "multi_agent_groups": 5315,
+              "mean_group_size": 9.811348563006632,
+              "switch_rate": 0.0,
+              "group_switch_rate": 0.0,
+              "mixed_group_switch_rate": 0.0,
+              "all_switch_group_rate": 0.0,
+              "no_switch_group_rate": 1.0,
+              "mean_min_group_distance": 0.08355213843698986,
+              "p05_min_group_distance": 0.013804942199445818,
+              "near_collision_rate_002": 0.10761530210940293,
+              "near_collision_rate_005": 0.4092166418907476,
+              "smoothness": {
+                "mean_max_normalized_step": 0.01218247489701932,
+                "jagged_rate": 0.0
+              }
+            },
+            "endpoint_linear": {
+              "name": "endpoint_linear_bridge",
+              "rows": 53256,
+              "groups": 5428,
+              "multi_agent_rows": 53143,
+              "multi_agent_groups": 5315,
+              "mean_group_size": 9.811348563006632,
+              "switch_rate": 0.44552726453357366,
+              "group_switch_rate": 0.8354826823876198,
+              "mixed_group_switch_rate": 0.7050478997789241,
+              "all_switch_group_rate": 0.13043478260869565,
+              "no_switch_group_rate": 0.16451731761238025,
+              "mean_min_group_distance": 0.08245746179114705,
+              "p05_min_group_distance": 0.015293348866665524,
+              "near_collision_rate_002": 0.09058577799522044,
+              "near_collision_rate_005": 0.39967634495606197,
+              "smoothness": {
+                "mean_max_normalized_step": 0.017416482596862893,
+                "jagged_rate": 0.0
+              }
+            },
+            "composer": {
+              "name": "proximity_aware_composer",
+              "rows": 53256,
+              "groups": 5428,
+              "multi_agent_rows": 53143,
+              "multi_agent_groups": 5315,
+              "mean_group_size": 9.811348563006632,
+              "switch_rate": 0.10404461469130238,
+              "group_switch_rate": 0.28334561532792923,
+              "mixed_group_switch_rate": 0.13135593220338984,
+              "all_switch_group_rate": 0.15198968312453942,
+              "no_switch_group_rate": 0.7166543846720708,
+              "mean_min_group_distance": 0.08257226035538666,
+              "p05_min_group_distance": 0.01511451056494552,
+              "near_collision_rate_002": 0.09192179590915078,
+              "near_collision_rate_005": 0.3990553788833901,
+              "smoothness": {
+                "mean_max_normalized_step": 0.017566228394261574,
+                "jagged_rate": 0.0
+              }
+            },
+            "composer_minus_endpoint": {
+              "near_collision_rate_002_delta": 0.001336017913930343,
+              "near_collision_rate_005_delta": -0.0006209660726718691,
+              "p05_min_group_distance_delta": -0.00017883830172000376,
+              "mean_min_group_distance_delta": 0.00011479856423961265,
+              "jagged_rate_delta": 0.0,
+              "mean_max_normalized_step_delta": 0.00014974579739868155
+            },
+            "composer_minus_floor": {
+              "near_collision_rate_002_delta": -0.015693506200252144,
+              "near_collision_rate_005_delta": -0.01016126300735748,
+              "p05_min_group_distance_delta": 0.0013095683654997022,
+              "mean_min_group_distance_delta": -0.0009798780816031999,
+              "jagged_rate_delta": 0.0,
+              "mean_max_normalized_step_delta": 0.005383753497242254
+            }
+          },
+          "guarded_off": 1698,
+          "guarded_off_rate": 0.03188373141054529,
+          "reason_counts": {
+            "base_choice_endpoint_linear": 46017,
+            "base_choice_full_waypoint_geometry_nonfinite_replay_no_guard": 75,
+            "base_choice_full_waypoint_guard_clear": 5466,
+            "proximity_guard_fallback_to_endpoint_linear": 1698
+          }
+        },
+        "test": {
+          "source": "fresh_batch_runtime_replay_from_cached_verified_common_validation_rows",
+          "split": "test",
+          "rows": 55528,
+          "policy_hash": "4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59",
+          "decision_match": true,
+          "selected_xy_max_abs_diff": 0.0,
+          "selected_ade_max_abs_diff": 0.0,
+          "selected_fde_max_abs_diff": 0.0,
+          "metric_diff_vs_expected": {
+            "all_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.0,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0
+          },
+          "runtime_metric_vs_endpoint_ade": {
+            "rows": 55528,
+            "all_improvement": 0.017743597342181783,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.010673426149055754,
+            "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+            "hard_failure_improvement": 0.01929354722729537,
+            "easy_degradation": 0.0024927762207753723,
+            "switch_rate": 0.1696441434951736,
+            "harm_over_ref": -0.0067070316155557475,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 25901,
+                "all_improvement": 0.03389563375382565,
+                "t50_improvement": 0.020822352108633257,
+                "t100_raw_frame_diagnostic_improvement": 0.06434705315417533,
+                "hard_failure_improvement": 0.03625650768857436,
+                "easy_degradation": 0.006100437167233963
+              },
+              "TrajNet": {
+                "rows": 20087,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_raw_frame_diagnostic_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": -0.0
+              },
+              "UCY": {
+                "rows": 9540,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_raw_frame_diagnostic_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": -0.0
+              }
+            }
+          },
+          "runtime_metric_vs_floor_ade": {
+            "rows": 55528,
+            "all_improvement": 0.22426430800005615,
+            "t10_improvement": 0.4810525302753197,
+            "t25_improvement": 0.10635705713395971,
+            "t50_improvement": 0.14573857980906724,
+            "t100_raw_frame_diagnostic_improvement": 0.17662838564732763,
+            "hard_failure_improvement": 0.219209736851519,
+            "easy_degradation": -0.14297971384259678,
+            "switch_rate": 0.1696441434951736,
+            "harm_over_ref": -0.10733959069603123,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 25901,
+                "all_improvement": 0.21806132581371984,
+                "t50_improvement": 0.15377519126524886,
+                "t100_raw_frame_diagnostic_improvement": 0.1902817151549394,
+                "hard_failure_improvement": 0.216550981792483,
+                "easy_degradation": -0.1308484671179333
+              },
+              "TrajNet": {
+                "rows": 20087,
+                "all_improvement": 0.2295029620675162,
+                "t50_improvement": 0.166209193926539,
+                "t100_raw_frame_diagnostic_improvement": 0.14024617113502336,
+                "hard_failure_improvement": 0.2195777066718413,
+                "easy_degradation": -0.14966415934330612
+              },
+              "UCY": {
+                "rows": 9540,
+                "all_improvement": 0.23265884628641076,
+                "t50_improvement": 0.0913767291690647,
+                "t100_raw_frame_diagnostic_improvement": 0.19255939765315455,
+                "hard_failure_improvement": 0.22601578755697505,
+                "easy_degradation": -0.15375935190404844
+              }
+            }
+          },
+          "runtime_metric_vs_endpoint_fde": {
+            "rows": 55528,
+            "all_improvement": 0.020122717053403183,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.026727156731286672,
+            "t100_raw_frame_diagnostic_improvement": 0.027480336986420273,
+            "hard_failure_improvement": 0.02175666452885383,
+            "easy_degradation": 0.007231905891243118,
+            "switch_rate": 0.1696441434951736,
+            "harm_over_ref": -0.011091644847699552,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 25901,
+                "all_improvement": 0.038110004467349023,
+                "t50_improvement": 0.05194368648448733,
+                "t100_raw_frame_diagnostic_improvement": 0.050482398935184025,
+                "hard_failure_improvement": 0.040594106579699196,
+                "easy_degradation": 0.017214368226506904
+              },
+              "TrajNet": {
+                "rows": 20087,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_raw_frame_diagnostic_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": -0.0
+              },
+              "UCY": {
+                "rows": 9540,
+                "all_improvement": 0.0,
+                "t50_improvement": 0.0,
+                "t100_raw_frame_diagnostic_improvement": 0.0,
+                "hard_failure_improvement": 0.0,
+                "easy_degradation": -0.0
+              }
+            }
+          },
+          "runtime_metric_vs_floor_fde": {
+            "rows": 55528,
+            "all_improvement": 0.2143045633530567,
+            "t10_improvement": 0.4850287492294132,
+            "t25_improvement": 0.11638311922958633,
+            "t50_improvement": 0.195958636647095,
+            "t100_raw_frame_diagnostic_improvement": 0.16421471205997007,
+            "hard_failure_improvement": 0.21001498941856067,
+            "easy_degradation": -0.1368791806094093,
+            "switch_rate": 0.1696441434951736,
+            "harm_over_ref": -0.14731881334527025,
+            "by_domain": {
+              "ETH_UCY": {
+                "rows": 25901,
+                "all_improvement": 0.21179633920034902,
+                "t50_improvement": 0.22993049206481475,
+                "t100_raw_frame_diagnostic_improvement": 0.16630912127400965,
+                "hard_failure_improvement": 0.211798530304807,
+                "easy_degradation": -0.1167469981670387
+              },
+              "TrajNet": {
+                "rows": 20087,
+                "all_improvement": 0.22520065387990684,
+                "t50_improvement": 0.2050202773029699,
+                "t100_raw_frame_diagnostic_improvement": 0.14294477056237087,
+                "hard_failure_improvement": 0.21551525344909206,
+                "easy_degradation": -0.147808738230785
+              },
+              "UCY": {
+                "rows": 9540,
+                "all_improvement": 0.20423429397984283,
+                "t50_improvement": 0.08477183613489314,
+                "t100_raw_frame_diagnostic_improvement": 0.1903142818853547,
+                "hard_failure_improvement": 0.19642046918121514,
+                "easy_degradation": -0.1566879372904887
+              }
+            }
+          },
+          "runtime_joint_safety": {
+            "floor": {
+              "name": "strongest_floor",
+              "rows": 55528,
+              "groups": 10666,
+              "multi_agent_rows": 54518,
+              "multi_agent_groups": 9656,
+              "mean_group_size": 5.206075379711232,
+              "switch_rate": 0.0,
+              "group_switch_rate": 0.0,
+              "mixed_group_switch_rate": 0.0,
+              "all_switch_group_rate": 0.0,
+              "no_switch_group_rate": 1.0,
+              "mean_min_group_distance": 0.09624551108396925,
+              "p05_min_group_distance": 0.011388677245126997,
+              "near_collision_rate_002": 0.13650537437176713,
+              "near_collision_rate_005": 0.45480391797204595,
+              "smoothness": {
+                "mean_max_normalized_step": 0.010526239728071407,
+                "jagged_rate": 0.0
+              }
+            },
+            "endpoint_linear": {
+              "name": "endpoint_linear_bridge",
+              "rows": 55528,
+              "groups": 10666,
+              "multi_agent_rows": 54518,
+              "multi_agent_groups": 9656,
+              "mean_group_size": 5.206075379711232,
+              "switch_rate": 0.3410171445036738,
+              "group_switch_rate": 0.6562910181886368,
+              "mixed_group_switch_rate": 0.5679729983123946,
+              "all_switch_group_rate": 0.08831801987624227,
+              "no_switch_group_rate": 0.3437089818113632,
+              "mean_min_group_distance": 0.09453906727512508,
+              "p05_min_group_distance": 0.012357933138430107,
+              "near_collision_rate_002": 0.12445430866869658,
+              "near_collision_rate_005": 0.4509336365970872,
+              "smoothness": {
+                "mean_max_normalized_step": 0.014817237769166361,
+                "jagged_rate": 0.0
+              }
+            },
+            "composer": {
+              "name": "proximity_aware_composer",
+              "rows": 55528,
+              "groups": 10666,
+              "multi_agent_rows": 54518,
+              "multi_agent_groups": 9656,
+              "mean_group_size": 5.206075379711232,
+              "switch_rate": 0.1696441434951736,
+              "group_switch_rate": 0.18835552222013877,
+              "mixed_group_switch_rate": 0.09628726795424714,
+              "all_switch_group_rate": 0.09206825426589162,
+              "no_switch_group_rate": 0.8116444777798613,
+              "mean_min_group_distance": 0.09472038734081745,
+              "p05_min_group_distance": 0.012233083680901811,
+              "near_collision_rate_002": 0.12441762353718037,
+              "near_collision_rate_005": 0.45032833192706995,
+              "smoothness": {
+                "mean_max_normalized_step": 0.015023288205417607,
+                "jagged_rate": 0.0
+              }
+            },
+            "composer_minus_endpoint": {
+              "near_collision_rate_002_delta": -3.6685131516209224e-05,
+              "near_collision_rate_005_delta": -0.0006053046700172371,
+              "p05_min_group_distance_delta": -0.0001248494575282963,
+              "mean_min_group_distance_delta": 0.00018132006569236692,
+              "jagged_rate_delta": 0.0,
+              "mean_max_normalized_step_delta": 0.00020605043625124622
+            },
+            "composer_minus_floor": {
+              "near_collision_rate_002_delta": -0.012087750834586755,
+              "near_collision_rate_005_delta": -0.004475586044975999,
+              "p05_min_group_distance_delta": 0.0008444064357748145,
+              "mean_min_group_distance_delta": -0.0015251237431518072,
+              "jagged_rate_delta": 0.0,
+              "mean_max_normalized_step_delta": 0.004497048477346201
+            }
+          },
+          "guarded_off": 2435,
+          "guarded_off_rate": 0.043851750468232246,
+          "reason_counts": {
+            "base_choice_endpoint_linear": 43673,
+            "base_choice_full_waypoint_geometry_nonfinite_replay_no_guard": 130,
+            "base_choice_full_waypoint_guard_clear": 9290,
+            "proximity_guard_fallback_to_endpoint_linear": 2435
+          }
+        }
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoints_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "runtime_inputs_use_predicted_geometry_only": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_cv_gate": {
+        "gates": {
+          "ct_gate_passed": true,
+          "cu_gate_passed": true,
+          "policy_hash_consistent": true,
+          "val_decision_exact_replay": true,
+          "test_decision_exact_replay": true,
+          "val_selected_xy_exact": true,
+          "test_selected_xy_exact": true,
+          "test_all_metric_exact": true,
+          "test_t50_metric_exact": true,
+          "test_t100_metric_exact": true,
+          "test_hard_metric_exact": true,
+          "test_all_positive": true,
+          "test_t50_positive": true,
+          "test_t100_positive": true,
+          "test_hard_positive": true,
+          "test_easy_under_2pct": true,
+          "test_near_collision_not_worse_than_endpoint": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoints_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 25,
+        "total": 25,
+        "verdict": "stage42_cv_batch_runtime_replay_pass"
+      }
+    },
+    "group_consistency_replay": {
+      "source": "fresh_replay_from_frozen_group_consistency_policy_artifact",
+      "stage": "Stage42-DK group-consistency policy replay / reproducibility verifier",
+      "generated_at_utc": "2026-05-26T23:09:20.134924+00:00",
+      "git_commit": "47b5df5",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-DK 是 Stage42-DJ frozen group-consistency full-waypoint policy 的 artifact replay / reproducibility verifier。",
+        "DK 不重新训练、不重新选择阈值、不使用 test metrics 调参。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "group-consistency replay 只验证 frozen artifact 与 Stage42-DI/DJ 源证据一致。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "input_hash": "f8398a2c8533d4c3a955b3f0dd07ea02dc1c76abf1044cb044ee8f4751f4dd6c",
+      "inputs": {
+        "stage42_di": {
+          "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+          "stage42_di_gate": {
+            "gates": {
+              "source_level_split_rebuilt": true,
+              "full_waypoint_labels_available": true,
+              "group_key_built": true,
+              "repair_candidates_run": true,
+              "validation_selected_repair": true,
+              "no_future_or_test_leakage": true,
+              "test_all_positive_vs_floor": true,
+              "test_t50_positive_vs_floor": true,
+              "test_hard_positive_vs_floor": true,
+              "easy_degradation_under_2pct": true,
+              "near_collision_not_worse_than_am": true,
+              "beats_stage42_am_all": true,
+              "beats_stage42_am_hard": true,
+              "bootstrap_reported": true,
+              "no_metric_seconds_overclaim": true,
+              "stage5c_false": true,
+              "smc_false": true
+            },
+            "passed": 17,
+            "total": 17,
+            "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+          }
+        },
+        "stage42_dj": {
+          "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json",
+          "stage42_dj_gate": {
+            "gates": {
+              "stage42_di_gate_passed": true,
+              "policy_artifact_written": true,
+              "policy_hash_recorded": true,
+              "validation_only_selection": true,
+              "test_once_usage": true,
+              "repair_uses_rollout_group_geometry_only": true,
+              "test_all_positive": true,
+              "test_t50_positive": true,
+              "test_hard_positive": true,
+              "easy_under_2pct": true,
+              "beats_stage42_am_all": true,
+              "beats_stage42_am_hard": true,
+              "near_collision_reduced_vs_base": true,
+              "paper_files_refreshed": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoint_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "metric_seconds_overclaim_blocked": true,
+              "stage5c_not_executed": true,
+              "smc_not_enabled": true
+            },
+            "passed": 22,
+            "total": 22,
+            "verdict": "stage42_dj_frozen_group_consistency_policy_pass"
+          }
+        }
+      },
+      "policy_artifact": {
+        "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json",
+        "exists": true,
+        "size_bytes": 5250
+      },
+      "policy_artifact_payload": {
+        "policy_name": "stage42_dj_frozen_group_consistency_full_waypoint_policy",
+        "source": "fresh_policy_freeze_from_stage42_di",
+        "base_stage": "Stage42-DI group-consistency full-waypoint repair",
+        "frozen_at_utc": "2026-05-26T22:39:10.675796+00:00",
+        "frozen_git_commit": "fa534ce",
+        "deployment_role": "promoted_protected_source_level_full_waypoint_group_consistency_policy",
+        "selection_scope": "validation_only",
+        "test_usage": "test_once_from_stage42_di_after_validation_selection",
+        "repair_rule": {
+          "type": "repel_unsafe",
+          "min_sep": 0.08,
+          "margin": 0.0,
+          "strength": 0.5,
+          "alpha": null,
+          "safe_min_sep": null,
+          "input": "predicted full-waypoint rollout geometry + source/frame/horizon group key + agent id",
+          "uses_future_labels": false
+        },
+        "group_schema": {
+          "source": "fresh_stage42_di_group_key",
+          "key": "source_file + frame_id*1000 + horizon",
+          "agent_deduplication": true,
+          "distance_unit": "normalized_by_dataset_local_scale",
+          "uses_future_inputs": false
+        },
+        "validation_selection": {
+          "val_score": 1.9103557229981505,
+          "val_metric": {
+            "rows": 23788,
+            "all_improvement": 0.44156489895599793,
+            "t10_improvement": 0.6933195833166081,
+            "t25_improvement": 0.3064878897392037,
+            "t50_improvement": 0.47594484424243677,
+            "t100_raw_frame_diagnostic_improvement": 0.3295930766716896,
+            "hard_failure_improvement": 0.4372599087028438,
+            "easy_degradation": -0.28703887951299933,
+            "switch_rate": 0.8334874726752984,
+            "harm_over_fallback": -0.23895228406192529
+          },
+          "val_diagnostics": {
+            "unsafe_rows": 1200,
+            "unsafe_rate": 0.05044560282495376,
+            "base_switch_rate": 0.8334874726752984,
+            "final_switch_rate": 0.8334874726752984,
+            "base_near_005": 0.015512022868673281,
+            "final_near_005": 0.004371952244829325,
+            "floor_near_005": 0.012737514713300825,
+            "base_p05_min_distance": 0.07308731743085398,
+            "final_p05_min_distance": 0.07964797237636109,
+            "floor_p05_min_distance": 0.0760265211798491
+          },
+          "no_test_threshold_tuning": true
+        },
+        "test_summary_vs_train_horizon_causal_floor": {
+          "rows": 47458,
+          "all_improvement": 0.24715658317833844,
+          "t50_improvement": 0.2236298792899738,
+          "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+          "hard_failure_improvement": 0.23887420070464105,
+          "easy_degradation": -0.2563085406508494,
+          "switch_rate": 0.5880989506511021
+        },
+        "test_group_safety": {
+          "base_near_005": 0.019364490707573012,
+          "final_near_005": 0.01382274853554722,
+          "floor_near_005": 0.022377681318218216,
+          "base_p05_min_distance": 0.07437689768396878,
+          "final_p05_min_distance": 0.07770240407545181,
+          "floor_p05_min_distance": 0.07354961919220622,
+          "unsafe_rows": 955,
+          "unsafe_rate": 0.02012305617598719
+        },
+        "delta_vs_stage42_am": {
+          "all_improvement": 0.001368197579674879,
+          "t50_improvement": 0.0034591684196666472,
+          "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+          "hard_failure_improvement": 0.0013803223197202952,
+          "easy_degradation": 0.00031875910508205596
+        },
+        "delta_vs_stage42_cq": {
+          "all_improvement": 0.22941298583615666,
+          "t50_improvement": 0.21295645314091805,
+          "t100_raw_frame_diagnostic_improvement": 0.10865987811683775,
+          "hard_failure_improvement": 0.21958065347734568,
+          "easy_degradation": -0.2588013168716248
+        },
+        "delta_vs_stage42_dh": {
+          "all_improvement": -0.00790447834428909,
+          "t50_improvement": 0.00226343727685574,
+          "t100_raw_frame_diagnostic_improvement": 6.639493340476754e-05,
+          "hard_failure_improvement": 0.0014814608235146354,
+          "easy_degradation": 0.03598402325558514
+        },
+        "bootstrap": {
+          "all": {
+            "low": 0.24398589342448532,
+            "mid": 0.24716645683401411,
+            "high": 0.25028958924895384,
+            "n": 47458,
+            "bootstrap_n": 1000
+          },
+          "t50": {
+            "low": 0.2192721133481516,
+            "mid": 0.22367135200280347,
+            "high": 0.2276000110961241,
+            "n": 11538,
+            "bootstrap_n": 1000
+          },
+          "t100_raw_frame_diagnostic": {
+            "low": 0.13746561835522514,
+            "mid": 0.14357574405988266,
+            "high": 0.14902997710800778,
+            "n": 7048,
+            "bootstrap_n": 1000
+          },
+          "hard_failure": {
+            "low": 0.2353474401829904,
+            "mid": 0.2388492111717208,
+            "high": 0.24233611448217454,
+            "n": 35076,
+            "bootstrap_n": 1000
+          },
+          "easy_degradation": {
+            "low": -0.35918353359601424,
+            "mid": -0.34466677241767063,
+            "high": -0.3300698133885259,
+            "n": 11192,
+            "bootstrap_n": 1000
+          }
+        },
+        "no_leakage": {
+          "future_endpoint_input": false,
+          "future_waypoint_input": false,
+          "future_waypoint_label_eval_only": true,
+          "group_features_predicted_rollout_only": true,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "test_threshold_tuning": false,
+          "validation_only_policy_selection": true,
+          "train_only_feature_normalization": true,
+          "source_overlap_pass": true
+        },
+        "claim_boundary": {
+          "true_3d": false,
+          "foundation_world_model": false,
+          "metric_or_seconds_claim": false,
+          "raw_frame_dataset_local_only": true,
+          "stage5c_executed": false,
+          "smc_enabled": false
+        }
+      },
+      "policy_hash_recomputed": "617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141",
+      "replay_checks": {
+        "policy_hash_recomputed_matches_dj": true,
+        "policy_json_matches_dj_embedded_policy": true,
+        "di_replay": {
+          "repair_rule_matches_selected_candidate": {
+            "mode": true,
+            "min_sep": true,
+            "margin": true,
+            "strength": true
+          },
+          "validation_selection_replays_di": {
+            "val_score": true,
+            "val_metric": {
+              "all_improvement": {
+                "artifact": 0.44156489895599793,
+                "source": 0.44156489895599793,
+                "match": true
+              },
+              "t50_improvement": {
+                "artifact": 0.47594484424243677,
+                "source": 0.47594484424243677,
+                "match": true
+              },
+              "t100_raw_frame_diagnostic_improvement": {
+                "artifact": 0.3295930766716896,
+                "source": 0.3295930766716896,
+                "match": true
+              },
+              "hard_failure_improvement": {
+                "artifact": 0.4372599087028438,
+                "source": 0.4372599087028438,
+                "match": true
+              },
+              "easy_degradation": {
+                "artifact": -0.28703887951299933,
+                "source": -0.28703887951299933,
+                "match": true
+              },
+              "switch_rate": {
+                "artifact": 0.8334874726752984,
+                "source": 0.8334874726752984,
+                "match": true
+              }
+            }
+          },
+          "metric_matches": {
+            "all_improvement": {
+              "artifact": 0.24715658317833844,
+              "source": 0.24715658317833844,
+              "match": true
+            },
+            "t50_improvement": {
+              "artifact": 0.2236298792899738,
+              "source": 0.2236298792899738,
+              "match": true
+            },
+            "t100_raw_frame_diagnostic_improvement": {
+              "artifact": 0.1434611214781808,
+              "source": 0.1434611214781808,
+              "match": true
+            },
+            "hard_failure_improvement": {
+              "artifact": 0.23887420070464105,
+              "source": 0.23887420070464105,
+              "match": true
+            },
+            "easy_degradation": {
+              "artifact": -0.2563085406508494,
+              "source": -0.2563085406508494,
+              "match": true
+            },
+            "switch_rate": {
+              "artifact": 0.5880989506511021,
+              "source": 0.5880989506511021,
+              "match": true
+            }
+          },
+          "safety_matches": {
+            "base_near_005": {
+              "artifact": 0.019364490707573012,
+              "source": 0.019364490707573012,
+              "match": true
+            },
+            "final_near_005": {
+              "artifact": 0.01382274853554722,
+              "source": 0.01382274853554722,
+              "match": true
+            },
+            "floor_near_005": {
+              "artifact": 0.022377681318218216,
+              "source": 0.022377681318218216,
+              "match": true
+            },
+            "base_p05_min_distance": {
+              "artifact": 0.07437689768396878,
+              "source": 0.07437689768396878,
+              "match": true
+            },
+            "final_p05_min_distance": {
+              "artifact": 0.07770240407545181,
+              "source": 0.07770240407545181,
+              "match": true
+            },
+            "floor_p05_min_distance": {
+              "artifact": 0.07354961919220622,
+              "source": 0.07354961919220622,
+              "match": true
+            }
+          },
+          "bootstrap_matches": true,
+          "no_leakage_matches": true,
+          "claim_boundary_matches": true
+        }
+      },
+      "paper_file_status": [
+        {
+          "path": "outputs/stage42_long_research/method_draft_stage42.md",
+          "exists": true,
+          "contains_stage42_dk": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+          "exists": true,
+          "contains_stage42_dk": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+          "exists": true,
+          "contains_stage42_dk": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/model_card_stage42.md",
+          "exists": true,
+          "contains_stage42_dk": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+          "exists": true,
+          "contains_stage42_dk": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+          "exists": true,
+          "contains_stage42_dk": true,
+          "contains_claim_boundary": true
+        }
+      ],
+      "stage42_dk_gate": {
+        "gates": {
+          "policy_artifact_exists": true,
+          "policy_hash_recomputed_matches_dj": true,
+          "policy_json_matches_dj_embedded_policy": true,
+          "di_gate_passed": true,
+          "dj_gate_passed": true,
+          "repair_rule_replays_di_selected": true,
+          "validation_score_replays_di": true,
+          "validation_metric_replays_di": true,
+          "all_metric_replays_di": true,
+          "t50_metric_replays_di": true,
+          "t100_metric_replays_di": true,
+          "hard_metric_replays_di": true,
+          "easy_metric_replays_di": true,
+          "base_near_replays_di": true,
+          "final_near_replays_di": true,
+          "floor_near_replays_di": true,
+          "bootstrap_replays_di": true,
+          "no_leakage_replays_di": true,
+          "claim_boundary_replays_di": true,
+          "all_positive": true,
+          "t50_positive": true,
+          "t100_raw_positive": true,
+          "hard_positive": true,
+          "easy_under_2pct": true,
+          "final_near_collision_reduced_vs_base": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true,
+          "paper_files_refreshed": true
+        },
+        "passed": 34,
+        "total": 34,
+        "verdict": "stage42_dk_group_consistency_policy_replay_pass"
+      }
+    },
+    "group_consistency_runtime": {
+      "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+      "stage": "Stage42-DL group-consistency runtime policy API",
+      "generated_at_utc": "2026-05-26T23:09:20.988772+00:00",
+      "git_commit": "47b5df5",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-DL 把 Stage42-DJ/DK frozen group-consistency full-waypoint policy 变成可调用 runtime policy API。",
+        "runtime policy 只使用 predicted full-waypoint rollouts、train-horizon causal floor rollout、source/frame/horizon group key、agent id、current xy、normalizer。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "DL 不重新训练、不重新选择阈值、不使用 test metrics 调参。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "input_hash": "78d18375551ff5f3e91d4199e401e7452e7ccd3ae81a0a50e02c2bf2f74d5b9a",
+      "inputs": {
+        "stage42_dk": {
+          "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+          "stage42_dk_gate": {
+            "gates": {
+              "policy_artifact_exists": true,
+              "policy_hash_recomputed_matches_dj": true,
+              "policy_json_matches_dj_embedded_policy": true,
+              "di_gate_passed": true,
+              "dj_gate_passed": true,
+              "repair_rule_replays_di_selected": true,
+              "validation_score_replays_di": true,
+              "validation_metric_replays_di": true,
+              "all_metric_replays_di": true,
+              "t50_metric_replays_di": true,
+              "t100_metric_replays_di": true,
+              "hard_metric_replays_di": true,
+              "easy_metric_replays_di": true,
+              "base_near_replays_di": true,
+              "final_near_replays_di": true,
+              "floor_near_replays_di": true,
+              "bootstrap_replays_di": true,
+              "no_leakage_replays_di": true,
+              "claim_boundary_replays_di": true,
+              "all_positive": true,
+              "t50_positive": true,
+              "t100_raw_positive": true,
+              "hard_positive": true,
+              "easy_under_2pct": true,
+              "final_near_collision_reduced_vs_base": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoint_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "metric_seconds_overclaim_blocked": true,
+              "stage5c_not_executed": true,
+              "smc_not_enabled": true,
+              "paper_files_refreshed": true
+            },
+            "passed": 34,
+            "total": 34,
+            "verdict": "stage42_dk_group_consistency_policy_replay_pass"
+          }
+        }
+      },
+      "policy_artifact": {
+        "path": "outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json",
+        "exists": true,
+        "size_bytes": 5250
+      },
+      "policy_artifact_payload": {
+        "policy_name": "stage42_dj_frozen_group_consistency_full_waypoint_policy",
+        "source": "fresh_policy_freeze_from_stage42_di",
+        "base_stage": "Stage42-DI group-consistency full-waypoint repair",
+        "frozen_at_utc": "2026-05-26T22:39:10.675796+00:00",
+        "frozen_git_commit": "fa534ce",
+        "deployment_role": "promoted_protected_source_level_full_waypoint_group_consistency_policy",
+        "selection_scope": "validation_only",
+        "test_usage": "test_once_from_stage42_di_after_validation_selection",
+        "repair_rule": {
+          "type": "repel_unsafe",
+          "min_sep": 0.08,
+          "margin": 0.0,
+          "strength": 0.5,
+          "alpha": null,
+          "safe_min_sep": null,
+          "input": "predicted full-waypoint rollout geometry + source/frame/horizon group key + agent id",
+          "uses_future_labels": false
+        },
+        "group_schema": {
+          "source": "fresh_stage42_di_group_key",
+          "key": "source_file + frame_id*1000 + horizon",
+          "agent_deduplication": true,
+          "distance_unit": "normalized_by_dataset_local_scale",
+          "uses_future_inputs": false
+        },
+        "validation_selection": {
+          "val_score": 1.9103557229981505,
+          "val_metric": {
+            "rows": 23788,
+            "all_improvement": 0.44156489895599793,
+            "t10_improvement": 0.6933195833166081,
+            "t25_improvement": 0.3064878897392037,
+            "t50_improvement": 0.47594484424243677,
+            "t100_raw_frame_diagnostic_improvement": 0.3295930766716896,
+            "hard_failure_improvement": 0.4372599087028438,
+            "easy_degradation": -0.28703887951299933,
+            "switch_rate": 0.8334874726752984,
+            "harm_over_fallback": -0.23895228406192529
+          },
+          "val_diagnostics": {
+            "unsafe_rows": 1200,
+            "unsafe_rate": 0.05044560282495376,
+            "base_switch_rate": 0.8334874726752984,
+            "final_switch_rate": 0.8334874726752984,
+            "base_near_005": 0.015512022868673281,
+            "final_near_005": 0.004371952244829325,
+            "floor_near_005": 0.012737514713300825,
+            "base_p05_min_distance": 0.07308731743085398,
+            "final_p05_min_distance": 0.07964797237636109,
+            "floor_p05_min_distance": 0.0760265211798491
+          },
+          "no_test_threshold_tuning": true
+        },
+        "test_summary_vs_train_horizon_causal_floor": {
+          "rows": 47458,
+          "all_improvement": 0.24715658317833844,
+          "t50_improvement": 0.2236298792899738,
+          "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+          "hard_failure_improvement": 0.23887420070464105,
+          "easy_degradation": -0.2563085406508494,
+          "switch_rate": 0.5880989506511021
+        },
+        "test_group_safety": {
+          "base_near_005": 0.019364490707573012,
+          "final_near_005": 0.01382274853554722,
+          "floor_near_005": 0.022377681318218216,
+          "base_p05_min_distance": 0.07437689768396878,
+          "final_p05_min_distance": 0.07770240407545181,
+          "floor_p05_min_distance": 0.07354961919220622,
+          "unsafe_rows": 955,
+          "unsafe_rate": 0.02012305617598719
+        },
+        "delta_vs_stage42_am": {
+          "all_improvement": 0.001368197579674879,
+          "t50_improvement": 0.0034591684196666472,
+          "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+          "hard_failure_improvement": 0.0013803223197202952,
+          "easy_degradation": 0.00031875910508205596
+        },
+        "delta_vs_stage42_cq": {
+          "all_improvement": 0.22941298583615666,
+          "t50_improvement": 0.21295645314091805,
+          "t100_raw_frame_diagnostic_improvement": 0.10865987811683775,
+          "hard_failure_improvement": 0.21958065347734568,
+          "easy_degradation": -0.2588013168716248
+        },
+        "delta_vs_stage42_dh": {
+          "all_improvement": -0.00790447834428909,
+          "t50_improvement": 0.00226343727685574,
+          "t100_raw_frame_diagnostic_improvement": 6.639493340476754e-05,
+          "hard_failure_improvement": 0.0014814608235146354,
+          "easy_degradation": 0.03598402325558514
+        },
+        "bootstrap": {
+          "all": {
+            "low": 0.24398589342448532,
+            "mid": 0.24716645683401411,
+            "high": 0.25028958924895384,
+            "n": 47458,
+            "bootstrap_n": 1000
+          },
+          "t50": {
+            "low": 0.2192721133481516,
+            "mid": 0.22367135200280347,
+            "high": 0.2276000110961241,
+            "n": 11538,
+            "bootstrap_n": 1000
+          },
+          "t100_raw_frame_diagnostic": {
+            "low": 0.13746561835522514,
+            "mid": 0.14357574405988266,
+            "high": 0.14902997710800778,
+            "n": 7048,
+            "bootstrap_n": 1000
+          },
+          "hard_failure": {
+            "low": 0.2353474401829904,
+            "mid": 0.2388492111717208,
+            "high": 0.24233611448217454,
+            "n": 35076,
+            "bootstrap_n": 1000
+          },
+          "easy_degradation": {
+            "low": -0.35918353359601424,
+            "mid": -0.34466677241767063,
+            "high": -0.3300698133885259,
+            "n": 11192,
+            "bootstrap_n": 1000
+          }
+        },
+        "no_leakage": {
+          "future_endpoint_input": false,
+          "future_waypoint_input": false,
+          "future_waypoint_label_eval_only": true,
+          "group_features_predicted_rollout_only": true,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "test_threshold_tuning": false,
+          "validation_only_policy_selection": true,
+          "train_only_feature_normalization": true,
+          "source_overlap_pass": true
+        },
+        "claim_boundary": {
+          "true_3d": false,
+          "foundation_world_model": false,
+          "metric_or_seconds_claim": false,
+          "raw_frame_dataset_local_only": true,
+          "stage5c_executed": false,
+          "smc_enabled": false
+        }
+      },
+      "policy_hash": "617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141",
+      "runtime_policy": {
+        "mode": "repel_unsafe",
+        "min_sep": 0.08,
+        "margin": 0.0,
+        "strength": 0.5,
+        "alpha": null,
+        "safe_min_sep": null
+      },
+      "runtime_inputs": [
+        "base_xy_predicted_full_waypoint_candidate",
+        "floor_xy_train_horizon_causal_rollout",
+        "pred_xy_model_rollout_diagnostic",
+        "base_switch_from_validation_selected_policy",
+        "source_frame_horizon_group_key",
+        "normalizer",
+        "agent_id",
+        "current_xy"
+      ],
+      "smoke_case": {
+        "rows": 2,
+        "mode": "repel_unsafe",
+        "base_min_before": [
+          0.009999999776482582,
+          0.009999999776482582
+        ],
+        "final_min_after": [
+          0.07999999821186066,
+          0.07999999821186066
+        ],
+        "diagnostics": {
+          "rows": 2,
+          "switch_rate": 1.0,
+          "base_near_005": 1.0,
+          "final_near_005": 0.0,
+          "floor_near_005": 0.0,
+          "base_p05_min_distance": 0.009999999776482582,
+          "final_p05_min_distance": 0.07999999821186066,
+          "floor_p05_min_distance": 0.20000000298023224
+        },
+        "passes": true
+      },
+      "real_batch_replay": {
+        "source": "fresh_runtime_replay_on_reconstructed_stage42_di_test_rows",
+        "rows": 47458,
+        "selected_xy_max_abs_diff": 0.0,
+        "switch_exact_match": true,
+        "selected_ade_max_abs_diff": 0.0,
+        "selected_fde_max_abs_diff": 0.0,
+        "metric": {
+          "rows": 47458,
+          "all_improvement": 0.24715658317833844,
+          "t10_improvement": 0.4586454739489455,
+          "t25_improvement": 0.23617773697664124,
+          "t50_improvement": 0.2236298792899738,
+          "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+          "hard_failure_improvement": 0.23887420070464105,
+          "easy_degradation": -0.2563085406508494,
+          "switch_rate": 0.5880989506511021,
+          "harm_over_fallback": -0.11382546135578223
+        },
+        "expected_metric": {
+          "rows": 47458,
+          "all_improvement": 0.24715658317833844,
+          "t10_improvement": 0.4586454739489455,
+          "t25_improvement": 0.23617773697664124,
+          "t50_improvement": 0.2236298792899738,
+          "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+          "hard_failure_improvement": 0.23887420070464105,
+          "easy_degradation": -0.2563085406508494,
+          "switch_rate": 0.5880989506511021,
+          "harm_over_fallback": -0.11382546135578223
+        },
+        "metric_abs_diff": {
+          "rows": 0.0,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0
+        },
+        "diagnostics": {
+          "rows": 47458,
+          "switch_rate": 0.5880989506511021,
+          "base_near_005": 0.019364490707573012,
+          "final_near_005": 0.01382274853554722,
+          "floor_near_005": 0.022377681318218216,
+          "base_p05_min_distance": 0.07437689768396878,
+          "final_p05_min_distance": 0.07770240407545181,
+          "floor_p05_min_distance": 0.07354961919220622
+        },
+        "expected_diagnostics": {
+          "unsafe_rows": 955,
+          "unsafe_rate": 0.02012305617598719,
+          "base_switch_rate": 0.5880989506511021,
+          "final_switch_rate": 0.5880989506511021,
+          "base_near_005": 0.019364490707573012,
+          "final_near_005": 0.01382274853554722,
+          "floor_near_005": 0.022377681318218216,
+          "base_p05_min_distance": 0.07437689768396878,
+          "final_p05_min_distance": 0.07770240407545181,
+          "floor_p05_min_distance": 0.07354961919220622
+        },
+        "diagnostic_abs_diff": {
+          "base_near_005": 0.0,
+          "final_near_005": 0.0,
+          "floor_near_005": 0.0
+        }
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "runtime_inputs_predicted_or_causal_only": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "paper_file_status": [
+        {
+          "path": "outputs/stage42_long_research/method_draft_stage42.md",
+          "exists": true,
+          "contains_stage42_dl": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+          "exists": true,
+          "contains_stage42_dl": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+          "exists": true,
+          "contains_stage42_dl": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/model_card_stage42.md",
+          "exists": true,
+          "contains_stage42_dl": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+          "exists": true,
+          "contains_stage42_dl": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+          "exists": true,
+          "contains_stage42_dl": true,
+          "contains_claim_boundary": true
+        }
+      ],
+      "stage42_dl_gate": {
+        "gates": {
+          "policy_artifact_exists": true,
+          "policy_hash_available": true,
+          "dk_replay_gate_passed": true,
+          "runtime_mode_matches_artifact": true,
+          "runtime_min_sep_matches_artifact": true,
+          "runtime_strength_matches_artifact": true,
+          "smoke_case_passed": true,
+          "real_batch_rows_present": true,
+          "real_batch_selected_xy_exact": true,
+          "real_batch_switch_exact": true,
+          "real_batch_ade_exact": true,
+          "real_batch_fde_exact": true,
+          "real_batch_metrics_exact": true,
+          "real_batch_diagnostics_exact": true,
+          "all_positive": true,
+          "t50_positive": true,
+          "t100_raw_positive": true,
+          "hard_positive": true,
+          "easy_under_2pct": true,
+          "near_collision_reduced_vs_base": true,
+          "runtime_inputs_are_causal_predictions_only": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true,
+          "paper_files_refreshed": true
+        },
+        "passed": 30,
+        "total": 30,
+        "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+      }
+    }
+  },
+  "required_files": [
+    {
+      "path": "outputs/stage42_long_research/evidence_provenance_stage42.json",
+      "exists": true,
+      "sha256": "f7ea646fca3a097597bdf922e57b282bc0011138b5d8776b46e7b0a0175dda34",
+      "size_bytes": 28011
+    },
+    {
+      "path": "outputs/stage42_long_research/paper_freeze_candidate_manifest_stage42.json",
+      "exists": true,
+      "sha256": "e5e027c648b2d7fd41b2963a0c62f3bf0a092c6ec994d98b198110df2a01f6a9",
+      "size_bytes": 32015
+    },
+    {
+      "path": "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
+      "exists": true,
+      "sha256": "9e6cb21beba8e3f429113cb0eb6904c2f6ace55a3b7003411271eea7f9e6eb13",
+      "size_bytes": 25316
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
+      "exists": true,
+      "sha256": "c5c6582d3b8d9bc60e806fb89a0050f1073a4daa46df8d3708df1e59ec390c33",
+      "size_bytes": 15359
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+      "exists": true,
+      "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+      "size_bytes": 15392
+    }
+  ],
+  "commands_file": {
+    "path": "outputs/stage42_long_research/reviewer_replay_commands_stage42.sh",
+    "exists": true,
+    "sha256": "223a1f983b4c10748a204675dd12533dd244e281bb2359a1f9c243d8f600ae95",
+    "size_bytes": 970
+  },
+  "replay_commands": [
+    ".venv-pytorch/bin/python run_stage42_replay_proximity_guard_policy.py",
+    ".venv-pytorch/bin/python run_stage42_batch_replay_proximity_guard_policy.py",
+    ".venv-pytorch/bin/python run_stage42_replay_group_consistency_policy.py",
+    ".venv-pytorch/bin/python run_stage42_group_consistency_runtime_policy.py",
+    ".venv-pytorch/bin/python run_stage42_evidence_provenance_verifier.py",
+    ".venv-pytorch/bin/python run_stage42_paper_freeze_candidate_manifest.py",
+    ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_policy_replay.py tests/test_stage42_proximity_guard_batch_replay.py tests/test_stage42_group_consistency_policy_replay.py tests/test_stage42_group_consistency_runtime_policy.py tests/test_stage42_evidence_provenance_verifier.py tests/test_stage42_paper_freeze_candidate_manifest.py"
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "package_hash": "422f6b3d47c33b6f87edda7b825e15825840712fc792852f15718ac51b14df90",
+  "stage42_dm_gate": {
+    "gates": {
+      "required_inputs_exist": true,
+      "commands_file_written": true,
+      "all_commands_use_arm64_venv": true,
+      "minimal_replay_has_no_training_commands": true,
+      "cx_provenance_passed": true,
+      "cz_manifest_passed": true,
+      "cv_batch_runtime_replay_passed": true,
+      "dk_group_policy_replay_passed": true,
+      "dl_runtime_policy_passed": true,
+      "paper_manifest_candidate_clean": true,
+      "manifest_hash_recorded": true,
+      "provenance_artifacts_count_ge_25": true,
+      "group_runtime_exact_replay": true,
+      "group_runtime_positive_all_t50_hard": true,
+      "group_runtime_t100_raw_reported": true,
+      "group_runtime_near_collision_reduced": true,
+      "no_metric_seconds_overclaim": true,
+      "true_3d_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 21,
+    "total": 21,
+    "verdict": "stage42_dm_reviewer_replay_package_pass"
+  }
+}

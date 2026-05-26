@@ -1,9 +1,9 @@
 # Stage42-CZ Paper Freeze Candidate Manifest
 
 - source: `fresh_freeze_candidate_manifest_from_cx_cy`
-- generated_at_utc: `2026-05-26T22:58:01.172686+00:00`
-- git_commit: `31d01c1`
-- manifest_hash: `a036dacc3a0c95b9a8394e7557f83a7a23d95ab5925c1fbedbb5edc86ea8d7d1`
+- generated_at_utc: `2026-05-26T23:10:17.178082+00:00`
+- git_commit: `47b5df5`
+- manifest_hash: `1f86d537c2a6b1759275a5d654465964a87ce1e4d54b177c7ef7bec116881612`
 - gate: `15 / 15`
 - verdict: `stage42_cz_paper_freeze_candidate_manifest_pass`
 - freeze_status: `candidate_clean`
@@ -30,7 +30,7 @@
 - evidence_json_files: `25`
 - evidence_md_files: `24`
 - runner_files: `25`
-- files_with_git_caveat: `2`
+- files_with_git_caveat: `10`
 
 ## Files
 
@@ -43,7 +43,7 @@
 | `paper_file` | `outputs/stage42_long_research/failure_taxonomy_stage42.md` | 9179 | `1728e27fe9c8b0c4d549bc9fd92cd76f851d5cfd553250f86bf69f67327f75a6` | `clean` |
 | `paper_file` | `outputs/stage42_long_research/model_card_stage42.md` | 19933 | `dd89343c842d0a686e8f45be6ee01d2aedd8f4ee1969f0c45d048104396f46db` | `clean` |
 | `paper_file` | `outputs/stage42_long_research/data_card_stage42.md` | 5949 | `73a574b452323ec81a924c9add81bd10d41680eef0c33413e7721214e51c84dc` | `clean` |
-| `paper_file` | `outputs/stage42_long_research/reproducibility_stage42.md` | 13920 | `2636ce8b3e8c77d2cff7c5718c5c1ed98130961c2ed6985b59e317bf22646761` | `M outputs/stage42_long_research/reproducibility_stage42.md` |
+| `paper_file` | `outputs/stage42_long_research/reproducibility_stage42.md` | 13916 | `9a7a7c15d76fed88e3308849d6491b17b2987bc9f3f83f8f450907dac66fb2d7` | `M outputs/stage42_long_research/reproducibility_stage42.md` |
 | `paper_file` | `outputs/stage42_long_research/a_journal_gap_stage42.md` | 38575 | `9727964d994ced53b7a41004f9c6f048b6966b2c67b4b685e669c9dc05328466` | `clean` |
 | `frozen_runtime_policy_artifact` | `outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42_policy.json` | 3414 | `8cdfcc939a0f6c8261f2155e1a9a28efab1a691a7603859779d813e810a63707` | `clean` |
 | `frozen_group_consistency_policy_artifact` | `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42_policy.json` | 5250 | `f48c6899518c84cdcfcbcc88bd76932dcaf8716512be0ddf184a7433da41bc35` | `clean` |
@@ -97,14 +97,14 @@
 | `evidence_json:frozen_proximity_guard_policy` | `outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.json` | 8534 | `30fad57044f009a6b01b5092d73020764998eceb776680e31df68e97802633e8` | `clean` |
 | `evidence_md:frozen_proximity_guard_policy` | `outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.md` | 2678 | `66b0b75f410d15960aab28c4c655aafe02196c831feb6820e4802e68a1ff3d0a` | `clean` |
 | `runner:frozen_proximity_guard_policy` | `run_stage42_freeze_proximity_guard_policy.py` | 173 | `44d87377587f595963858a859b4626b77cac095eb878be3f87a37f06a1477e77` | `clean` |
-| `evidence_json:frozen_policy_replay` | `outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json` | 11827 | `f4e0e86d119139f9df234be9647541fe1919420ff2cfdf4b0f19e161e03caf4a` | `clean` |
-| `evidence_md:frozen_policy_replay` | `outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md` | 2162 | `4fd18daab4eb6696eef377e588f55adc7bdbffd62a9e5027190e494e05f67442` | `clean` |
+| `evidence_json:frozen_policy_replay` | `outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json` | 11827 | `881452bf29da085492f396cef0f5c789addc9d246ec25d001d5d1250f622d733` | `M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json` |
+| `evidence_md:frozen_policy_replay` | `outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md` | 2162 | `71778c1460281c605ad230dca141f08effe1e4f1f8ad9f613ce9d70b19c07662` | `M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md` |
 | `runner:frozen_policy_replay` | `run_stage42_replay_proximity_guard_policy.py` | 173 | `03d19a195208680faf460d3af0d2368bdd1927604c4075526189ffe01fd13cab` | `clean` |
 | `evidence_json:runtime_policy_api` | `outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.json` | 11386 | `72f51caaaf17020f781bb9cec42ad02150c3741bb72ccf422df0583487337de9` | `clean` |
 | `evidence_md:runtime_policy_api` | `outputs/stage42_long_research/proximity_guard_runtime_policy_stage42.md` | 2566 | `157e24311de9682ac41a66ee02753243da643aeeed09f068da719862904e5861` | `clean` |
 | `runner:runtime_policy_api` | `run_stage42_runtime_proximity_guard_policy.py` | 176 | `75982b8bc544a1dfe2dbc82783b519e67d2f94aac9040e68083d248feb3a68dd` | `clean` |
-| `evidence_json:batch_runtime_replay` | `outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json` | 25316 | `c688f59e4c563b91c68be27310edd40ac014646603f536d0ec48d96fbc1873ed` | `clean` |
-| `evidence_md:batch_runtime_replay` | `outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md` | 2475 | `5a7790865bea9850bea1df32321fa3da4653dd2a2789d8be171f4e7ecd6df70f` | `clean` |
+| `evidence_json:batch_runtime_replay` | `outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json` | 25316 | `9e6cb21beba8e3f429113cb0eb6904c2f6ace55a3b7003411271eea7f9e6eb13` | `M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json` |
+| `evidence_md:batch_runtime_replay` | `outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md` | 2475 | `5f3a92b41ba9e17b22a1cb67afe2a71a84d0d2c642bebd1c86d8b1f859f3037d` | `M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md` |
 | `runner:batch_runtime_replay` | `run_stage42_batch_replay_proximity_guard_policy.py` | 184 | `962578e2628b7e3c117decde8c63298d25a691c15fb7aed103b0fea71644155e` | `clean` |
 | `evidence_json:runtime_replay_paper_refresh` | `outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.json` | 60102 | `4daf68dcf18ab429052b9f94ec35b8001c3070b9492c62fbfd5a40bd2ff58828` | `clean` |
 | `evidence_md:runtime_replay_paper_refresh` | `outputs/stage42_long_research/runtime_replay_paper_refresh_stage42.md` | 2826 | `8ace17b2d1d2a7ad6d8e18894aaa3c39057a5c027faa76599a78b694d3786e3a` | `clean` |
@@ -115,13 +115,13 @@
 | `evidence_json:frozen_group_consistency_policy` | `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.json` | 10254 | `1166f322199387be366bb1e01d4918339e0787a901f13893b2f7813ac9cf418d` | `clean` |
 | `evidence_md:frozen_group_consistency_policy` | `outputs/stage42_long_research/frozen_group_consistency_full_waypoint_policy_stage42.md` | 2690 | `a0059763e837e382ed113d69b96a57a3160450752bf72ecff1ffaf006e1daa01` | `clean` |
 | `runner:frozen_group_consistency_policy` | `run_stage42_freeze_group_consistency_policy.py` | 338 | `7955f4698fb6a8ba33c43f1deb5bf6bfee41ecccd46d01d41dcde87cec4bc60f` | `clean` |
-| `evidence_json:group_consistency_policy_replay` | `outputs/stage42_long_research/group_consistency_policy_replay_stage42.json` | 15359 | `fdba2aabfbc5da547abfd479be1b001a6ac464f261acfcdd95d77edf403c0a95` | `clean` |
-| `evidence_md:group_consistency_policy_replay` | `outputs/stage42_long_research/group_consistency_policy_replay_stage42.md` | 2432 | `3a0fac7fe34764c55ecbacf159a7003f169c64735308b8cd4a01cbbbb1783fe9` | `clean` |
+| `evidence_json:group_consistency_policy_replay` | `outputs/stage42_long_research/group_consistency_policy_replay_stage42.json` | 15359 | `c5c6582d3b8d9bc60e806fb89a0050f1073a4daa46df8d3708df1e59ec390c33` | `M outputs/stage42_long_research/group_consistency_policy_replay_stage42.json` |
+| `evidence_md:group_consistency_policy_replay` | `outputs/stage42_long_research/group_consistency_policy_replay_stage42.md` | 2432 | `7b938c99518232c68bc0d8d4be805ceafc8134f1b03735669b3caa0b125c382e` | `M outputs/stage42_long_research/group_consistency_policy_replay_stage42.md` |
 | `runner:group_consistency_policy_replay` | `run_stage42_replay_group_consistency_policy.py` | 179 | `af502456bb474dbda265c7ca1b765da891e9f7ee84fa9c9e71e9f596bff3be3c` | `clean` |
-| `evidence_json:group_consistency_runtime_policy` | `outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json` | 15392 | `e451c44978be0e8a0e6bbab1b5fd05198acb41b30fbd1309cf2a2a1b27176087` | `clean` |
-| `evidence_md:group_consistency_runtime_policy` | `outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md` | 2666 | `dc567bd85e3f642375d4ac77b7653da51367d2d78ca10fe31afbb21841a2465f` | `clean` |
+| `evidence_json:group_consistency_runtime_policy` | `outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json` | 15392 | `2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c` | `M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json` |
+| `evidence_md:group_consistency_runtime_policy` | `outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md` | 2666 | `3aa5948961aae918e61d4a2507834afa264dc2bf1540cd40453659a2b3925674` | `M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md` |
 | `runner:group_consistency_runtime_policy` | `run_stage42_group_consistency_runtime_policy.py` | 182 | `1970147b66a95f1d10a629e88bbb58b95efab0d21ab0dc7e5eab967821643428` | `clean` |
-| `provenance_verifier_json` | `outputs/stage42_long_research/evidence_provenance_stage42.json` | 27449 | `2facff0b3b542a0222c09beca48c4a2e9bc21499e6aac416372a3995c8208825` | `M outputs/stage42_long_research/evidence_provenance_stage42.json` |
+| `provenance_verifier_json` | `outputs/stage42_long_research/evidence_provenance_stage42.json` | 28011 | `f7ea646fca3a097597bdf922e57b282bc0011138b5d8776b46e7b0a0175dda34` | `M outputs/stage42_long_research/evidence_provenance_stage42.json` |
 | `worktree_caveat_classifier_json` | `outputs/stage42_long_research/worktree_caveat_classifier_stage42.json` | 4151 | `d2c215b710df02c236be721ea14bf675b0cb69ec48453a141fb429854c4d9905` | `clean` |
 
 ## Interpretation

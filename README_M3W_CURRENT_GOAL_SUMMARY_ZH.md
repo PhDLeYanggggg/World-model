@@ -255,3 +255,14 @@ Stage42-CZ paper freeze candidate manifest: 15 / 15 gates
 当前论文候选状态：protected dataset-local/raw-frame 2.5D evidence package candidate
 最主要短板：metric/time/source closure、t100 global robustness、independent neural context contribution
 ```
+
+<!-- STAGE42_DM_REVIEWER_REPLAY_PACKAGE:START -->
+## Stage42-DM Reviewer Replay Package
+
+- source: `fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts`
+- role: reviewer-facing minimal replay package for provenance, manifest, and runtime policy exact replay.
+- gate: `21 / 21`; verdict `stage42_dm_reviewer_replay_package_pass`.
+- commands file: `outputs/stage42_long_research/reviewer_replay_commands_stage42.sh`.
+- group-consistency runtime all/t50/t100 raw/hard: `0.24715658317833844` / `0.2236298792899738` / `0.1434611214781808` / `0.23887420070464105`.
+- This is replay/provenance packaging only: no training, no threshold tuning, no Stage5C, no SMC, no metric/seconds-level claim.
+<!-- STAGE42_DM_REVIEWER_REPLAY_PACKAGE:END -->

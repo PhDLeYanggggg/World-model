@@ -1,8 +1,8 @@
 # Stage42-CT Frozen Policy Replay / Reproducibility Verifier
 
 - source: `fresh_replay_from_frozen_policy_artifact`
-- generated_at_utc: `2026-05-26T19:42:16.916511+00:00`
-- git_commit: `b5cbc22`
+- generated_at_utc: `2026-05-26T23:08:06.195386+00:00`
+- git_commit: `47b5df5`
 - input_hash: `6ec42f5dbb0e9758f1cfa429a4b8f76e8405f5bb8eacb0fc0adb9e9dee56e64f`
 - policy_hash_recomputed: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`
 - gate: `30 / 30`

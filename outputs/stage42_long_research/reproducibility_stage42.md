@@ -157,14 +157,14 @@ python3 -m pytest tests
 | `proximity_aware_composer_guard` | `fresh_run` | `19/19` | `run_stage42_proximity_aware_composer_guard.py` | `False` |
 | `proximity_guard_ablation` | `fresh_run` | `19/19` | `run_stage42_proximity_guard_ablation.py` | `False` |
 | `frozen_proximity_guard_policy` | `fresh_run` | `25/25` | `run_stage42_freeze_proximity_guard_policy.py` | `False` |
-| `frozen_policy_replay` | `fresh_run` | `30/30` | `run_stage42_replay_proximity_guard_policy.py` | `False` |
+| `frozen_policy_replay` | `fresh_run` | `30/30` | `run_stage42_replay_proximity_guard_policy.py` | `True` |
 | `runtime_policy_api` | `fresh_run` | `19/19` | `run_stage42_runtime_proximity_guard_policy.py` | `False` |
-| `batch_runtime_replay` | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `False` |
+| `batch_runtime_replay` | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `True` |
 | `runtime_replay_paper_refresh` | `fresh_run` | `25/25` | `run_stage42_runtime_replay_paper_refresh.py` | `False` |
 | `group_consistency_full_waypoint_repair` | `fresh_run` | `17/17` | `run_stage42_group_consistency_full_waypoint_repair.py` | `False` |
 | `frozen_group_consistency_policy` | `fresh_run` | `22/22` | `run_stage42_freeze_group_consistency_policy.py` | `False` |
-| `group_consistency_policy_replay` | `fresh_run` | `34/34` | `run_stage42_replay_group_consistency_policy.py` | `False` |
-| `group_consistency_runtime_policy` | `fresh_run` | `30/30` | `run_stage42_group_consistency_runtime_policy.py` | `False` |
+| `group_consistency_policy_replay` | `fresh_run` | `34/34` | `run_stage42_replay_group_consistency_policy.py` | `True` |
+| `group_consistency_runtime_policy` | `fresh_run` | `30/30` | `run_stage42_group_consistency_runtime_policy.py` | `True` |
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
 
 <!-- STAGE42_DJ_FROZEN_GROUP_CONSISTENCY_POLICY:START -->

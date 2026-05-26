@@ -1,8 +1,8 @@
 # Stage42-CV Batch Runtime Policy Replay
 
 - source: `fresh_batch_runtime_replay_from_frozen_policy_artifact`
-- generated_at_utc: `2026-05-26T19:54:07.472974+00:00`
-- git_commit: `22ad5a5`
+- generated_at_utc: `2026-05-26T23:09:18.992450+00:00`
+- git_commit: `47b5df5`
 - policy_hash: `4af6536f86499d5b39efa535bb81978398586d65746bb983571b642af7c92d59`
 - gate: `25 / 25`
 - verdict: `stage42_cv_batch_runtime_replay_pass`
