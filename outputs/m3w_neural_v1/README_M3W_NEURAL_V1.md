@@ -1131,3 +1131,17 @@ evaluated_datasets_now = 0
 ```
 
 Stage42-CE confirms that local paths are present and parseable for several source-diversity targets, but no target is ready for a source-CV repair claim. This is useful engineering evidence for future conversion, not a model improvement or generalization claim. The current deployable model and claim boundary are unchanged.
+
+## Stage42-CF Source Conversion Legal Gate
+
+```text
+source = fresh_stage42_cf_source_conversion_legal_gate
+verdict = stage42_cf_source_conversion_legal_gate_pass
+gates = 13 / 13
+source_cv_ready_now = 0
+conversion_allowed_now_count = 0
+converted_datasets_now = 0
+evaluated_datasets_now = 0
+```
+
+Stage42-CF makes the source-diversity blocker enforceable. Local parseability from Stage42-CE is now passed through a legal/source-identity gate that refuses conversion until explicit official terms confirmation and an independent source-CV-ready held-out source exist. It writes a terms confirmation template, but the template is not permission. M3W-Neural v1 remains protected dataset-local/raw-frame 2.5D; broad source-level generalization is still not claimed.

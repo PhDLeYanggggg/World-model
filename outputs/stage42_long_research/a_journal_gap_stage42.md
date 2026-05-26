@@ -214,3 +214,28 @@ Stage42-CE is a useful engineering preflight, not a data-conversion success clai
 - Do not count Stage42-CE as converted data, external evaluation, or broad source-level generalization.
 - The next valid repair step is legal terms/path verification followed by actual conversion, no-leakage audit, validation-only source-CV selection, and final test once.
 <!-- STAGE42_CE_REFRESH:END -->
+
+<!-- STAGE42_CF_REFRESH:START -->
+## Stage42-CF Source Conversion Legal Gate
+
+- source: `fresh_stage42_cf_source_conversion_legal_gate`
+- verdict: `stage42_cf_source_conversion_legal_gate_pass`
+- gates: `13 / 13`
+- targets checked: `5`
+- local paths present: `4`
+- schema possible targets: `4`
+- targets with t50 files: `3`
+- targets with t100 files: `3`
+- source-CV-ready targets now: `0`
+- conversion allowed now: `0`
+- converted datasets now: `0`
+- evaluated datasets now: `0`
+
+Stage42-CF turns the Stage42-CE preflight into an enforceable legal/source-identity gate. It deliberately permits no conversion at this time: local parseability is not permission, OpenTraj toolkit/root scans are not independent data rights, and UCY/ETH/TrajNet still need explicit official terms/path verification before any conversion can be counted. The generated terms-confirmation JSON is a checklist only.
+
+### Updated Gap After CF
+
+- The next source-diversity step is no longer ambiguous: fill legal confirmation from official terms, isolate independent source identity, then run actual conversion/no-leakage/source-CV/final test.
+- Current paper evidence remains strong for protected dataset-local/raw-frame 2.5D dynamics, but broad source-level generalization is still blocked.
+- Do not cite Stage42-CF as data conversion, external validation, metric/time calibration, true-3D evidence, Stage5C readiness, or SMC readiness.
+<!-- STAGE42_CF_REFRESH:END -->

@@ -1,0 +1,336 @@
+{
+  "source": "fresh_stage42_cf_source_conversion_legal_gate",
+  "stage": "Stage42-CF Source Conversion Legal Gate",
+  "generated_at_utc": "2026-05-26T17:10:31.595849+00:00",
+  "git_commit": "944ec30",
+  "input_hash": "5da3baeb5063f1959cdc573ab4b0f37842e0d99ff803cd4308f056e9c9dbd7a2",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-CF 是 source conversion legal gate，不下载、不转换、不训练、不评估。",
+    "local path found / schema_possible 不等于 legal permission。",
+    "terms confirmed 必须是用户或官方条款确认后的显式记录，不能由脚本自动伪造。",
+    "future endpoints / waypoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "Stage5C 未执行，SMC 未启用。"
+  ],
+  "input_reports": {
+    "stage42_ce_verdict": "stage42_ce_source_diversity_conversion_preflight_pass",
+    "stage42_ce_source_diversity_repair_ready_now": false
+  },
+  "summary": {
+    "source": "fresh_stage42_cf_source_conversion_legal_gate",
+    "targets_checked": 5,
+    "local_paths_present": 4,
+    "schema_possible_targets": 4,
+    "targets_with_t50_files": 3,
+    "targets_with_t100_files": 3,
+    "source_cv_ready_now": 0,
+    "conversion_allowed_now_count": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "target_decisions": [
+    {
+      "id": "ucy_crowd_original",
+      "name": "UCY Crowd Data original source",
+      "priority": "critical",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "local_path_found": true,
+      "schema_possible": true,
+      "t50_capable_files": 6,
+      "t100_capable_files": 6,
+      "independent_t50_candidate_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "conversion_allowed_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "required_confirmation_fields": [
+        "dataset_id",
+        "official_url",
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "notes"
+      ],
+      "next_action": "verify/accept official dataset terms and record explicit confirmation before conversion"
+    },
+    {
+      "id": "eth_biwi_original",
+      "name": "ETH / BIWI walking pedestrians original source",
+      "priority": "critical",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "local_path_found": true,
+      "schema_possible": true,
+      "t50_capable_files": 3,
+      "t100_capable_files": 2,
+      "independent_t50_candidate_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "conversion_allowed_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "required_confirmation_fields": [
+        "dataset_id",
+        "official_url",
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "notes"
+      ],
+      "next_action": "verify/accept official dataset terms and record explicit confirmation before conversion"
+    },
+    {
+      "id": "trajnetplusplus_official",
+      "name": "TrajNet++ official challenge/source page",
+      "priority": "high",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "local_path_found": true,
+      "schema_possible": true,
+      "t50_capable_files": 0,
+      "t100_capable_files": 0,
+      "independent_t50_candidate_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "conversion_allowed_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "required_confirmation_fields": [
+        "dataset_id",
+        "official_url",
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "notes"
+      ],
+      "next_action": "verify/accept official dataset terms and record explicit confirmation before conversion"
+    },
+    {
+      "id": "opentraj_toolkit",
+      "name": "OpenTraj official GitHub toolkit",
+      "priority": "medium",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "local_path_found": true,
+      "schema_possible": true,
+      "t50_capable_files": 270,
+      "t100_capable_files": 270,
+      "independent_t50_candidate_files": 0,
+      "legal_terms_blocked": false,
+      "source_cv_preflight_ready": false,
+      "conversion_allowed_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "blockers": [
+        "no_independent_t50_candidate"
+      ],
+      "required_confirmation_fields": [
+        "dataset_id",
+        "official_url",
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "notes"
+      ],
+      "next_action": "provide or isolate an independent t50-capable source split before source-CV"
+    },
+    {
+      "id": "aerialmpt_or_other_topdown",
+      "name": "Additional legal top-down pedestrian/drone long-track source",
+      "priority": "medium",
+      "official_url": "user_or_web_verified_official_url_required",
+      "local_path_found": false,
+      "schema_possible": false,
+      "t50_capable_files": 0,
+      "t100_capable_files": 0,
+      "independent_t50_candidate_files": 0,
+      "legal_terms_blocked": true,
+      "source_cv_preflight_ready": false,
+      "conversion_allowed_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "blockers": [
+        "local_path_missing",
+        "schema_not_parseable",
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "required_confirmation_fields": [
+        "dataset_id",
+        "official_url",
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "notes"
+      ],
+      "next_action": "provide a legal local path for this official source"
+    }
+  ],
+  "confirmation_template": {
+    "source": "fresh_stage42_cf_source_conversion_legal_gate",
+    "purpose": "Template only. Fill manually after official terms/path verification; do not treat this template as permission.",
+    "generated_at_utc": "2026-05-26T17:10:31.595843+00:00",
+    "terms_confirmation_is_currently_absent": true,
+    "datasets": [
+      {
+        "dataset_id": "ucy_crowd_original",
+        "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+        "terms_accepted_by_user": false,
+        "terms_acceptance_date": "",
+        "allowed_use": "",
+        "local_path": "",
+        "source_identity": "",
+        "notes": "verify/accept official dataset terms and record explicit confirmation before conversion"
+      },
+      {
+        "dataset_id": "eth_biwi_original",
+        "official_url": "https://vision.ee.ethz.ch/datsets.html",
+        "terms_accepted_by_user": false,
+        "terms_acceptance_date": "",
+        "allowed_use": "",
+        "local_path": "",
+        "source_identity": "",
+        "notes": "verify/accept official dataset terms and record explicit confirmation before conversion"
+      },
+      {
+        "dataset_id": "trajnetplusplus_official",
+        "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+        "terms_accepted_by_user": false,
+        "terms_acceptance_date": "",
+        "allowed_use": "",
+        "local_path": "",
+        "source_identity": "",
+        "notes": "verify/accept official dataset terms and record explicit confirmation before conversion"
+      },
+      {
+        "dataset_id": "opentraj_toolkit",
+        "official_url": "https://github.com/crowdbotp/OpenTraj",
+        "terms_accepted_by_user": false,
+        "terms_acceptance_date": "",
+        "allowed_use": "",
+        "local_path": "",
+        "source_identity": "",
+        "notes": "provide or isolate an independent t50-capable source split before source-CV"
+      },
+      {
+        "dataset_id": "aerialmpt_or_other_topdown",
+        "official_url": "user_or_web_verified_official_url_required",
+        "terms_accepted_by_user": false,
+        "terms_acceptance_date": "",
+        "allowed_use": "",
+        "local_path": "",
+        "source_identity": "",
+        "notes": "provide a legal local path for this official source"
+      }
+    ]
+  },
+  "user_action_required": [
+    {
+      "priority": "critical",
+      "target": "UCY Crowd Data original source",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "action": "verify/accept official dataset terms and record explicit confirmation before conversion"
+    },
+    {
+      "priority": "critical",
+      "target": "ETH / BIWI walking pedestrians original source",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "action": "verify/accept official dataset terms and record explicit confirmation before conversion"
+    },
+    {
+      "priority": "high",
+      "target": "TrajNet++ official challenge/source page",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "action": "verify/accept official dataset terms and record explicit confirmation before conversion"
+    },
+    {
+      "priority": "medium",
+      "target": "OpenTraj official GitHub toolkit",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "blockers": [
+        "no_independent_t50_candidate"
+      ],
+      "action": "provide or isolate an independent t50-capable source split before source-CV"
+    },
+    {
+      "priority": "medium",
+      "target": "Additional legal top-down pedestrian/drone long-track source",
+      "official_url": "user_or_web_verified_official_url_required",
+      "blockers": [
+        "local_path_missing",
+        "schema_not_parseable",
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "action": "provide a legal local path for this official source"
+    }
+  ],
+  "claim_boundary": {
+    "legal_gate_counted_as_conversion": false,
+    "local_path_counted_as_permission": false,
+    "converted_dataset_claim": false,
+    "evaluated_dataset_claim": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_cf_gate": {
+    "source": "fresh_stage42_cf_source_conversion_legal_gate",
+    "gates": {
+      "ce_input_verified": true,
+      "legal_gate_built": true,
+      "confirmation_template_written": true,
+      "all_targets_have_decisions": true,
+      "blocked_targets_have_reasons": true,
+      "no_conversion_allowed_without_confirmation": true,
+      "no_conversion_claim": true,
+      "no_evaluation_claim": true,
+      "user_action_written": true,
+      "source_cv_not_overclaimed": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_cf_source_conversion_legal_gate_pass"
+  }
+}

@@ -2,7 +2,8 @@
 
 - source: `fresh_run`
 - command: `.venv-pytorch/bin/python -m pytest tests`
-- result: `536 passed in 29.73s`
+- result: `540 passed in 31.18s`
+- targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_conversion_legal_gate.py tests/test_stage42_source_diversity_conversion_preflight.py tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py` -> `18 passed in 0.72s`
 - targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_diversity_conversion_preflight.py tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py` -> `14 passed in 0.68s`
 - targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_diversity_acquisition_package.py tests/test_stage42_independent_t50_source_inventory.py tests/test_stage42_source_acquisition_status.py` -> `12 passed in 0.66s`
 - targeted: `.venv-pytorch/bin/python -m pytest tests/test_stage42_independent_t50_source_inventory.py tests/test_stage42_t50_source_robustness_audit.py` -> `10 passed in 1.38s`

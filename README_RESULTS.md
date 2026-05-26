@@ -3830,3 +3830,36 @@ Artifacts:
 - `outputs/stage42_long_research/user_action_required_source_conversion_preflight_stage42.md`
 
 Verification: `.venv-pytorch/bin/python run_stage42_source_diversity_conversion_preflight.py` passed, focused CE/CD/CC tests passed with 14 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 536 tests.
+
+## Stage42-CF Source Conversion Legal Gate
+
+```text
+source = fresh_stage42_cf_source_conversion_legal_gate
+verdict = stage42_cf_source_conversion_legal_gate_pass
+gates = 13 / 13
+targets_checked = 5
+local_paths_present = 4
+schema_possible_targets = 4
+targets_with_t50_files = 3
+targets_with_t100_files = 3
+source_cv_ready_now = 0
+conversion_allowed_now_count = 0
+converted_datasets_now = 0
+evaluated_datasets_now = 0
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-CF adds a hard legal/source-identity gate before any source-diversity conversion. It reads the Stage42-CE local parseability evidence and deliberately allows zero conversions now: UCY/ETH/BIWI/TrajNet still require explicit official terms/path verification, OpenTraj is a toolkit/root scan rather than independent data permission, and the available t50-capable files do not yet form an independent source-CV-ready held-out source.
+
+The generated `source_terms_confirmation_template_stage42.json` is a checklist, not permission. This keeps the next conversion path enforceable: explicit terms confirmation plus independent source identity must exist before any future conversion/no-leakage/source-CV/final-test stage can run.
+
+Artifacts:
+
+- `outputs/stage42_long_research/source_conversion_legal_gate_stage42.md`
+- `outputs/stage42_long_research/source_conversion_legal_gate_stage42.json`
+- `outputs/stage42_long_research/stage42_stage_cf_gate.md`
+- `outputs/stage42_long_research/source_terms_confirmation_template_stage42.json`
+- `outputs/stage42_long_research/user_action_required_source_legal_gate_stage42.md`
+
+Verification: `.venv-pytorch/bin/python run_stage42_source_conversion_legal_gate.py` passed, focused CF/CE/CD/CC tests passed with 18 tests, and `.venv-pytorch/bin/python -m pytest tests` passed with 540 tests.
