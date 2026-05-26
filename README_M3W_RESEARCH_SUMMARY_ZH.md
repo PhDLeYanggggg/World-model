@@ -350,6 +350,24 @@ global_t100_positive_claim_allowed = false
 
 Stage42-BH 把 BG 的宽松 local source 定义收紧：同一 scene/source 的 alternate formats 不再算作独立泛化源。这个更严格审计发现，UCY t100 均值收益仍为正，但 easy degradation 达到 `6.33%`，超过 `2%` gate；ETH_UCY 只有 1 个 independent t100 source，TrajNet 为 0。因此 BH 是一个重要的 negative/diagnostic result：t100 不能升级为 global success，下一步要先修 UCY independent-source easy guard，并继续补 ETH_UCY / TrajNet 独立源。
 
+## Stage42-BI Local T100 Source-Robust Easy Guard Repair
+
+```text
+source = fresh_source_robust_easy_guard_repair
+verdict = stage42_bi_ucy_t100_easy_guard_repair_pass_with_global_blocker
+gates = 14 / 14
+UCY_independent_sources = 4
+ETH_UCY_independent_sources = 1
+TrajNet_independent_sources = 0
+UCY_t100_mean_improvement_vs_fallback = 0.445914
+UCY_t100_min_improvement_vs_fallback = 0.425313
+UCY_t100_max_easy_degradation = 0.011340
+BH_previous_UCY_max_easy_degradation = 0.063323
+global_t100_positive_claim_allowed = false
+```
+
+Stage42-BI 修复了 BH 暴露的 UCY independent-source t100 easy blocker。修复规则是：候选 policy 必须在所有 non-holdout sources 上同时 positive 且 easy-safe，才允许去 holdout source 评估一次。这把 UCY max easy degradation 从 `6.33%` 降到 `1.13%`，同时保持全部 UCY t100 folds 正收益。边界仍然清楚：这不是全局 t100 成功，因为 ETH_UCY / TrajNet 独立 t100 source 仍不足。
+
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
 
 阅读索引：

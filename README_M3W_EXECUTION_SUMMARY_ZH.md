@@ -750,6 +750,21 @@ UCY_t100_max_easy_degradation = 0.063323
 
 Stage42-BH 把同一 scene/source 的 alternate formats 去重后重新审计。结果更严格也更诚实：UCY t100 仍有正均值收益，但 easy degradation 超过 2%，所以 UCY independent-source t100 还不能部署；ETH_UCY 和 TrajNet 仍缺足够独立 t100 source。
 
+### Stage42-BI 本轮 UCY independent-source easy repair
+
+```text
+source = fresh_source_robust_easy_guard_repair
+verdict = stage42_bi_ucy_t100_easy_guard_repair_pass_with_global_blocker
+gates = 14 / 14
+UCY_t100_mean_improvement_vs_fallback = 0.445914
+UCY_t100_min_improvement_vs_fallback = 0.425313
+UCY_t100_max_easy_degradation = 0.011340
+BH_previous_UCY_max_easy_degradation = 0.063323
+global_t100_positive_claim_allowed = false
+```
+
+Stage42-BI 使用 source-robust easy guard 修复了 UCY independent-source t100 easy degradation。候选策略必须在所有 non-holdout sources 上 positive/easy-safe，holdout 只评一次。UCY 局部 t100 支持现在成立；但 ETH_UCY / TrajNet 缺独立 t100 source，global t100 仍 blocked。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：

@@ -74,6 +74,8 @@ Stage42-BF then performs actual in-memory schema conversion and causal baseline/
 
 Stage42-BH tightens that evidence by deduplicating alternate files from the same scene/source before source-CV. It finds `8` t100-capable files but only `5` independent sources; UCY has `4`, ETH_UCY has `1`, and TrajNet has `0`. Under this stricter protocol UCY still has positive mean t100 gain (`0.483414`) but fails the easy gate (`max easy degradation = 0.063323`), so the honest verdict is partial: UCY t100 needs source-robust easy/harm repair and global t100 remains blocked.
 
+Stage42-BI repairs the UCY independent-source easy-gate failure with a source-robust guard: candidate policies must be positive and easy-safe on every non-holdout source before holdout evaluation. It passes `14 / 14` gates for UCY local t100 support (`mean improvement = 0.445914`, min `0.425313`, max easy degradation `0.011340`, previous BH easy degradation `0.063323`). Global t100 remains blocked because ETH_UCY and TrajNet still lack enough independent t100 sources.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

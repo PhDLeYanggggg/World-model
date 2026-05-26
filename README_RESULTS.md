@@ -4,9 +4,17 @@
 
 Current one-file research route/failure/success summary requested by the user:
 
-`/Users/yangyue/Downloads/World/README_M3W_DETAILED_RESULTS_ZH.md`
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-This newly consolidated Chinese README is the current user-facing detailed answer: what was attempted, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the Stage42-BD local t100 source inventory. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+This newly consolidated Chinese README is the current user-facing detailed answer: what was attempted across the M3W goal, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the latest Stage42-BI source-robust UCY t100 easy-guard repair. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+
+Companion detailed ledgers remain available:
+
+```text
+/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md
+/Users/yangyue/Downloads/World/README_M3W_DETAILED_RESULTS_ZH.md
+/Users/yangyue/Downloads/World/README_M3W_EXECUTION_SUMMARY_ZH.md
+```
 
 Latest Stage42-BD local t100 source inventory:
 
@@ -112,6 +120,24 @@ global_t100_positive_claim_allowed = false
 
 Stage42-BH is stricter than BG because it deduplicates alternate files from the same scene/source before source-CV. Under this stricter protocol UCY still has positive mean t100 gain, but easy degradation exceeds the 2% gate on one independent holdout, so UCY t100 support is not yet deployable. ETH_UCY and TrajNet remain hard blockers.
 
+Latest Stage42-BI source-robust t100 easy-guard repair:
+
+```text
+source = fresh_source_robust_easy_guard_repair
+verdict = stage42_bi_ucy_t100_easy_guard_repair_pass_with_global_blocker
+gates = 14 / 14
+UCY_independent_sources = 4
+ETH_UCY_independent_sources = 1
+TrajNet_independent_sources = 0
+UCY_t100_mean_improvement_vs_fallback = 0.445914
+UCY_t100_min_improvement_vs_fallback = 0.425313
+UCY_t100_max_easy_degradation = 0.011340
+BH_previous_UCY_max_easy_degradation = 0.063323
+global_t100_positive_claim_allowed = false
+```
+
+Stage42-BI repairs the UCY independent-source t100 easy-degradation blocker by requiring a candidate policy to be positive and easy-safe on every non-holdout source before holdout evaluation. This is a real fresh repair for UCY t100, but global t100 is still blocked because ETH_UCY and TrajNet lack enough independent t100 sources.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
@@ -120,7 +146,7 @@ Latest update: this canonical Chinese summary now explicitly includes Stage42-W/
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for the latest detailed summary / Stage42-BH refresh: focused pytest `9 passed`; full-suite pytest `452 passed`.
+Validation for the latest detailed summary / Stage42-BI refresh: focused pytest `12 passed`; full-suite pytest pending after BI.
 
 Most important current summary:
 
