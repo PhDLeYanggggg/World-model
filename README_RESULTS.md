@@ -3083,3 +3083,31 @@ Artifacts:
 - `outputs/stage42_long_research/stage42_stage_bb_gate.md`
 
 Verification: `python3 run_stage42_t100_data_gap_audit.py` passed, `python3 -m pytest tests/test_stage42_t100_data_gap_audit.py` passed with 4 tests, and `python3 -m pytest tests` passed with 426 tests.
+
+## Stage42-BC T100 Source Acquisition Plan
+
+```text
+source = fresh_synthesis_from_stage42_bb_plus_official_web_pages
+verdict = stage42_bc_t100_source_acquisition_plan_pass
+gates = 11 / 11
+candidate_sources = 6
+official_sources_found = 5
+local_path_found_sources = 6
+high_priority_sources = ucy_crowd_original, trajnetpp_epfl_aicrowd, opentraj_toolkit, eth_ucy_original_sources
+auto_download_allowed_sources = none
+auto_download_executed = false
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BC maps the Stage42-BB t100 source-support gap onto official-source and local-path actions. It uses official pages for TrajNet++ / VITA EPFL and DLR AerialMPT, plus local OpenTraj/SDD/UCY paths, and deliberately does not auto-download gated, terms-bound, or restricted-license raw data. The t100 repair priority is legal independent TrajNet++ / ETH-UCY / UCY source support followed by train-only source-CV reruns. AerialMPT is official and locally present but likely too short to solve t100 alone; SDD remains SDD-specific pixel raw-frame support, not an external t100 source-CV repair.
+
+Artifacts:
+
+- `outputs/stage42_long_research/t100_source_acquisition_plan_stage42.md`
+- `outputs/stage42_long_research/user_action_required_t100_sources_stage42.md`
+- `outputs/stage42_long_research/stage42_stage_bc_gate.md`
+
+Verification: `python3 run_stage42_t100_source_acquisition_plan.py` passed, `python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py` passed with 4 tests, and `python3 -m pytest tests` passed with 430 tests.

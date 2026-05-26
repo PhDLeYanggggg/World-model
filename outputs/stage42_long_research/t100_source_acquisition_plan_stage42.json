@@ -1,0 +1,1116 @@
+{
+  "source": "fresh_synthesis_from_stage42_bb_plus_official_web_pages",
+  "stage": "Stage42-BC T100 Source Acquisition Plan",
+  "generated_at_utc": "2026-05-26T12:04:15.083148+00:00",
+  "git_commit": "d64da9c",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BC 是 Stage42-BB 后的 t100 source acquisition planner，不训练模型、不执行 Stage5C、不启用 SMC。",
+    "t100 positive gain 仍缺独立 train-only source-CV 支持。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "所有 pedestrian / top-down claims 继续保持 raw-frame / dataset-local，除非未来官方 FPS/stride/homography/scale 验证完成。"
+  ],
+  "input_hash": "797ef87e226d38d7265b3fed76fa585e0823431b55f47db6026b657a4d201614",
+  "web_sources_used": [
+    {
+      "name": "AerialMPT DLR official page",
+      "url": "https://www.dlr.de/en/eoc/about-us/remote-sensing-technology-institute/photogrammetry-and-image-analysis/public-datasets/aerialmpt-a-dataset-for-pedestrian-tracking-in-aerial-imagery",
+      "retrieval_date": "2026-05-26",
+      "summary": "DLR reports 14 aerial pedestrian tracking sequences, 307 frames, co-registered/georeferenced crops, 2 fps, 2,528 pedestrians, and 44,740 point annotations. Public download is about 75 MB."
+    },
+    {
+      "name": "VITA EPFL datasets page",
+      "url": "https://www.epfl.ch/labs/vita/datasets/",
+      "retrieval_date": "2026-05-26",
+      "summary": "Lists TrajNet++ as an interaction-centric human trajectory forecasting benchmark."
+    },
+    {
+      "name": "TrajNet++ EPFL open-research page",
+      "url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "retrieval_date": "2026-05-26",
+      "summary": "EPFL describes TrajNet++ as an open trajectory forecasting challenge with accompanying data and evaluation code, curated categories, and reproducible sampling; challenge/data access is linked through AIcrowd."
+    }
+  ],
+  "bb_verdict": "stage42_bb_t100_data_gap_audit_pass_with_data_blocker",
+  "bb_unsupported_t100_domains": [
+    "ETH_UCY",
+    "TrajNet",
+    "UCY"
+  ],
+  "candidates": [
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "id": "ucy_crowd_original",
+      "dataset_name": "UCY Crowd",
+      "target_domains": [
+        "UCY",
+        "ETH_UCY"
+      ],
+      "official_url": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "secondary_url": "https://github.com/crowdbotp/OpenTraj",
+      "official_source_found": true,
+      "retrieval_date": "2026-05-26",
+      "official_evidence_summary": "UCY Crowd is a top-down/fixed-camera pedestrian crowd source used by ETH/UCY/TrajNet style benchmarks; current local source support is too small for stable t100 source-CV.",
+      "license_access_summary": "Manual official terms and citation verification required before new downloads/redistribution.",
+      "requires_login_or_terms": true,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "external_data/OpenTraj/datasets/UCY",
+        "/Users/yangyue/Downloads/UCY"
+      ],
+      "t100_repair_value": "high",
+      "expected_t100_role": "adds the missing independent UCY t100-capable original-train source if legally available",
+      "metric_time_value": "medium_if_homography_fps_stride_verified",
+      "local_status": {
+        "source": "fresh_local_path_scan",
+        "local_path_found": true,
+        "found_paths": [
+          "external_data/OpenTraj/datasets/UCY"
+        ],
+        "path_stats": [
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj/datasets/UCY",
+            "is_file": false,
+            "bytes": 172860459,
+            "size_mb": 164.853,
+            "file_count": 47,
+            "dir_count": 7,
+            "truncated": false,
+            "extensions": {
+              ".txt": 22,
+              ".vsp": 7,
+              ".png": 6,
+              ".avi": 4,
+              ".svg": 3,
+              ".xml": 2,
+              ".md": 1,
+              ".json": 1,
+              ".py": 1
+            },
+            "sample_files": [
+              "external_data/OpenTraj/datasets/UCY/README.md",
+              "external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+              "external_data/OpenTraj/datasets/UCY/students01/annotation.vsp",
+              "external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/annotation.vsp",
+              "external_data/OpenTraj/datasets/UCY/zara01/static.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/map.xml",
+              "external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/reference.png",
+              "external_data/OpenTraj/datasets/UCY/zara01/groups.txt"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [
+              "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+              "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara02/H.txt"
+            ],
+            "scale_like_files": []
+          },
+          {
+            "exists": false,
+            "path": "/Users/yangyue/Downloads/UCY"
+          }
+        ],
+        "has_video": true,
+        "has_image": true,
+        "homography_like_files_found": [
+          "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara02/H.txt"
+        ],
+        "scale_like_files_found": []
+      },
+      "priority_score": 87,
+      "priority_group": "A",
+      "download_policy": {
+        "auto_download_allowed": false,
+        "download_status": "not_run",
+        "blocked_reasons": [
+          "requires user confirmation of official terms/login/challenge access",
+          "auto_download_allowed is false by policy"
+        ],
+        "safe_next_step": "verify local path and official terms; do not auto-download raw/gated/restricted data"
+      }
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "id": "trajnetpp_epfl_aicrowd",
+      "dataset_name": "TrajNet++",
+      "target_domains": [
+        "TrajNet",
+        "ETH_UCY",
+        "UCY"
+      ],
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "secondary_url": "https://www.epfl.ch/labs/vita/datasets/",
+      "official_source_found": true,
+      "retrieval_date": "2026-05-26",
+      "official_evidence_summary": "EPFL describes TrajNet++ as an open trajectory forecasting challenge with accompanying data and evaluation code, curated categories, and reproducible sampling; challenge/data access is linked through AIcrowd.",
+      "license_access_summary": "Public benchmark page, but challenge/data access may require AIcrowd account or terms. Treat as manual terms until user confirms accepted access.",
+      "requires_login_or_terms": true,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "external_data/OpenTraj/datasets/TrajNet",
+        "external_data/OpenTraj/datasets/TrajNet++",
+        "/Users/yangyue/Downloads/trajnetplusplusdataset"
+      ],
+      "t100_repair_value": "high",
+      "expected_t100_role": "adds/validates independent trajectory sources for TrajNet and possibly ETH/UCY-style splits",
+      "metric_time_value": "low_without_source_specific_fps_stride",
+      "local_status": {
+        "source": "fresh_local_path_scan",
+        "local_path_found": true,
+        "found_paths": [
+          "external_data/OpenTraj/datasets/TrajNet",
+          "external_data/OpenTraj/datasets/TrajNet++"
+        ],
+        "path_stats": [
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj/datasets/TrajNet",
+            "is_file": false,
+            "bytes": 6278985,
+            "size_mb": 5.988,
+            "file_count": 59,
+            "dir_count": 9,
+            "truncated": false,
+            "extensions": {
+              ".txt": 59
+            },
+            "sample_files": [
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_0.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_2.txt"
+            ],
+            "has_video": false,
+            "has_image": false,
+            "homography_like_files": [],
+            "scale_like_files": []
+          },
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj/datasets/TrajNet++",
+            "is_file": false,
+            "bytes": 17634574,
+            "size_mb": 16.818,
+            "file_count": 1,
+            "dir_count": 2,
+            "truncated": false,
+            "extensions": {
+              ".ndjson": 1
+            },
+            "sample_files": [
+              "external_data/OpenTraj/datasets/TrajNet++/train/synth_data/orca_circle_crossing_5ped.ndjson"
+            ],
+            "has_video": false,
+            "has_image": false,
+            "homography_like_files": [],
+            "scale_like_files": []
+          },
+          {
+            "exists": false,
+            "path": "/Users/yangyue/Downloads/trajnetplusplusdataset"
+          }
+        ],
+        "has_video": false,
+        "has_image": false,
+        "homography_like_files_found": [],
+        "scale_like_files_found": []
+      },
+      "priority_score": 77,
+      "priority_group": "A",
+      "download_policy": {
+        "auto_download_allowed": false,
+        "download_status": "not_run",
+        "blocked_reasons": [
+          "requires user confirmation of official terms/login/challenge access",
+          "auto_download_allowed is false by policy"
+        ],
+        "safe_next_step": "verify local path and official terms; do not auto-download raw/gated/restricted data"
+      }
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "id": "opentraj_toolkit",
+      "dataset_name": "OpenTraj toolkit",
+      "target_domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "secondary_url": "",
+      "official_source_found": true,
+      "retrieval_date": "2026-05-26",
+      "official_evidence_summary": "OpenTraj is a toolkit/source hub for multiple pedestrian trajectory datasets and is useful for reproducible loaders and source grouping.",
+      "license_access_summary": "Toolkit availability does not override licenses/terms of underlying datasets.",
+      "requires_login_or_terms": false,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "external_data/OpenTraj",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+        "/Users/yangyue/Downloads/OpenTraj"
+      ],
+      "t100_repair_value": "medium",
+      "expected_t100_role": "source discovery/loader hub; may expose additional legal source files already local",
+      "metric_time_value": "low_without_underlying_source_calibration",
+      "local_status": {
+        "source": "fresh_local_path_scan",
+        "local_path_found": true,
+        "found_paths": [
+          "external_data/OpenTraj",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj"
+        ],
+        "path_stats": [
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj",
+            "is_file": false,
+            "bytes": 1338867821,
+            "size_mb": 1276.844,
+            "file_count": 15827,
+            "dir_count": 241,
+            "truncated": false,
+            "extensions": {
+              ".txt": 13071,
+              ".csv": 1971,
+              ".json": 403,
+              ".jpg": 82,
+              ".py": 64,
+              ".xml": 55,
+              ".pdf": 40,
+              ".png": 39,
+              ".md": 19,
+              "<none>": 18,
+              ".sample": 13,
+              ".m": 11
+            },
+            "sample_files": [
+              "external_data/OpenTraj/requirements.txt",
+              "external_data/OpenTraj/README.md",
+              "external_data/OpenTraj/setup.py",
+              "external_data/OpenTraj/.gitignore",
+              "external_data/OpenTraj/LICENSE.txt",
+              "external_data/OpenTraj/datasets/.DS_Store",
+              "external_data/OpenTraj/datasets/.gitignore",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+              "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [
+              "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+              "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+              "external_data/OpenTraj/datasets/HERMES/H.txt",
+              "external_data/OpenTraj/opentraj/toolkit/utils/calibration/find_homography.py"
+            ],
+            "scale_like_files": [
+              "external_data/OpenTraj/datasets/Town-Center/TownCentre-calibration-ci.txt",
+              "external_data/OpenTraj/datasets/KITTI/data/devkit/matlab/readCalibration.m",
+              "external_data/OpenTraj/datasets/SDD/estimated_scales.yaml",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_03_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_03_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_02_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_01_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_04_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_02_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_01_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_04_ratio_pixel2meter_ground.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_01_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_09_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_03_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_05_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_07_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_08_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_02_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_04_ratio_pixel2meter.txt",
+              "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_10_ratio_pixel2meter.txt"
+            ]
+          },
+          {
+            "exists": true,
+            "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+            "is_file": false,
+            "bytes": 1338867821,
+            "size_mb": 1276.844,
+            "file_count": 15827,
+            "dir_count": 241,
+            "truncated": false,
+            "extensions": {
+              ".txt": 13071,
+              ".csv": 1971,
+              ".json": 403,
+              ".jpg": 82,
+              ".py": 64,
+              ".xml": 55,
+              ".pdf": 40,
+              ".png": 39,
+              ".md": 19,
+              "<none>": 18,
+              ".sample": 13,
+              ".m": 11
+            },
+            "sample_files": [
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/requirements.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/README.md",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/setup.py",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/.gitignore",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/LICENSE.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/.DS_Store",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/.gitignore",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/HERMES/H.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/opentraj/toolkit/utils/calibration/find_homography.py"
+            ],
+            "scale_like_files": [
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/Town-Center/TownCentre-calibration-ci.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/KITTI/data/devkit/matlab/readCalibration.m",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/SDD/estimated_scales.yaml",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_03_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_03_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_02_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_01_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_04_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_02_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_01_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_04_ratio_pixel2meter_ground.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_01_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_09_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_03_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_05_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_07_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_08_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_02_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_04_ratio_pixel2meter.txt",
+              "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_10_ratio_pixel2meter.txt"
+            ]
+          },
+          {
+            "exists": false,
+            "path": "/Users/yangyue/Downloads/OpenTraj"
+          }
+        ],
+        "has_video": true,
+        "has_image": true,
+        "homography_like_files_found": [
+          "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+          "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "external_data/OpenTraj/datasets/HERMES/H.txt",
+          "external_data/OpenTraj/opentraj/toolkit/utils/calibration/find_homography.py",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/HERMES/H.txt",
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/opentraj/toolkit/utils/calibration/find_homography.py"
+        ],
+        "scale_like_files_found": [
+          "external_data/OpenTraj/datasets/Town-Center/TownCentre-calibration-ci.txt",
+          "external_data/OpenTraj/datasets/KITTI/data/devkit/matlab/readCalibration.m",
+          "external_data/OpenTraj/datasets/SDD/estimated_scales.yaml",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_03_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_03_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_02_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_01_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_04_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_02_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_3v7_01_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/p2p_bi/bidirection_no_vehicle_5v5_04_ratio_pixel2meter_ground.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_01_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_09_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_03_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_05_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_07_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_08_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_02_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_04_ratio_pixel2meter.txt",
+          "external_data/OpenTraj/datasets/CITR/data/trajectories_filtered/vci_lat_bi/bidirection_normal_driving_10_ratio_pixel2meter.txt"
+        ]
+      },
+      "priority_score": 70,
+      "priority_group": "B",
+      "download_policy": {
+        "auto_download_allowed": false,
+        "download_status": "not_run",
+        "blocked_reasons": [
+          "auto_download_allowed is false by policy"
+        ],
+        "safe_next_step": "verify local path and official terms; do not auto-download raw/gated/restricted data"
+      }
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "id": "eth_ucy_original_sources",
+      "dataset_name": "ETH/UCY original pedestrian sources",
+      "target_domains": [
+        "ETH_UCY",
+        "UCY"
+      ],
+      "official_url": "ETH/BIWI and UCY original dataset pages; source-specific terms must be manually verified",
+      "secondary_url": "https://github.com/crowdbotp/OpenTraj",
+      "official_source_found": false,
+      "retrieval_date": "2026-05-26",
+      "official_evidence_summary": "Current local evidence comes through OpenTraj/source files; Stage42 calibration found homography-like/FPS evidence, but official source terms and calibration direction still need manual verification.",
+      "license_access_summary": "Do not treat OpenTraj or local mirrored files as license override. User/source-specific verification required.",
+      "requires_login_or_terms": true,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "external_data/OpenTraj/datasets/ETH",
+        "external_data/OpenTraj/datasets/ETH-Person",
+        "external_data/OpenTraj/datasets/UCY",
+        "/Users/yangyue/Downloads/ETH_UCY"
+      ],
+      "t100_repair_value": "high",
+      "expected_t100_role": "highest-priority source-level repair target for ETH_UCY and UCY t100 support",
+      "metric_time_value": "medium_if_homography_fps_stride_verified",
+      "local_status": {
+        "source": "fresh_local_path_scan",
+        "local_path_found": true,
+        "found_paths": [
+          "external_data/OpenTraj/datasets/ETH",
+          "external_data/OpenTraj/datasets/ETH-Person",
+          "external_data/OpenTraj/datasets/UCY"
+        ],
+        "path_stats": [
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj/datasets/ETH",
+            "is_file": false,
+            "bytes": 87616099,
+            "size_mb": 83.557,
+            "file_count": 24,
+            "dir_count": 2,
+            "truncated": false,
+            "extensions": {
+              ".txt": 11,
+              ".png": 6,
+              ".xml": 2,
+              ".avi": 2,
+              ".md": 1,
+              ".json": 1,
+              ".yaml": 1
+            },
+            "sample_files": [
+              "external_data/OpenTraj/datasets/ETH/README.md",
+              "external_data/OpenTraj/datasets/ETH/ETH-ETH.json",
+              "external_data/OpenTraj/datasets/ETH/eth-eth.yaml",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/map.xml",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/map.png",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/reference.png",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/groups.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/destinations.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/bg.png"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [
+              "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+              "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt"
+            ],
+            "scale_like_files": []
+          },
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj/datasets/ETH-Person",
+            "is_file": false,
+            "bytes": 2332695,
+            "size_mb": 2.225,
+            "file_count": 6,
+            "dir_count": 1,
+            "truncated": false,
+            "extensions": {
+              ".xml": 5,
+              ".png": 1
+            },
+            "sample_files": [
+              "external_data/OpenTraj/datasets/ETH-Person/reference.png",
+              "external_data/OpenTraj/datasets/ETH-Person/data/seq0_assc_gt-interp.xml",
+              "external_data/OpenTraj/datasets/ETH-Person/data/jelmoli_assc_gt.xml",
+              "external_data/OpenTraj/datasets/ETH-Person/data/seq0_assc_gt.xml",
+              "external_data/OpenTraj/datasets/ETH-Person/data/sunnyday_assc_gt.xml",
+              "external_data/OpenTraj/datasets/ETH-Person/data/bahnhof_assc_gt.xml"
+            ],
+            "has_video": false,
+            "has_image": true,
+            "homography_like_files": [],
+            "scale_like_files": []
+          },
+          {
+            "exists": true,
+            "path": "external_data/OpenTraj/datasets/UCY",
+            "is_file": false,
+            "bytes": 172860459,
+            "size_mb": 164.853,
+            "file_count": 47,
+            "dir_count": 7,
+            "truncated": false,
+            "extensions": {
+              ".txt": 22,
+              ".vsp": 7,
+              ".png": 6,
+              ".avi": 4,
+              ".svg": 3,
+              ".xml": 2,
+              ".md": 1,
+              ".json": 1,
+              ".py": 1
+            },
+            "sample_files": [
+              "external_data/OpenTraj/datasets/UCY/README.md",
+              "external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+              "external_data/OpenTraj/datasets/UCY/students01/annotation.vsp",
+              "external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/annotation.vsp",
+              "external_data/OpenTraj/datasets/UCY/zara01/static.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/map.xml",
+              "external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara01/reference.png",
+              "external_data/OpenTraj/datasets/UCY/zara01/groups.txt"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [
+              "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+              "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+              "external_data/OpenTraj/datasets/UCY/zara02/H.txt"
+            ],
+            "scale_like_files": []
+          },
+          {
+            "exists": false,
+            "path": "/Users/yangyue/Downloads/ETH_UCY"
+          }
+        ],
+        "has_video": true,
+        "has_image": true,
+        "homography_like_files_found": [
+          "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "external_data/OpenTraj/datasets/UCY/zara02/H.txt"
+        ],
+        "scale_like_files_found": []
+      },
+      "priority_score": 67,
+      "priority_group": "B",
+      "download_policy": {
+        "auto_download_allowed": false,
+        "download_status": "not_run",
+        "blocked_reasons": [
+          "requires user confirmation of official terms/login/challenge access",
+          "official source not fully resolved in Stage42-BC",
+          "auto_download_allowed is false by policy"
+        ],
+        "safe_next_step": "verify local path and official terms; do not auto-download raw/gated/restricted data"
+      }
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "id": "aerialmpt_dlr",
+      "dataset_name": "AerialMPT",
+      "target_domains": [
+        "AerialMPT"
+      ],
+      "official_url": "https://www.dlr.de/en/eoc/about-us/remote-sensing-technology-institute/photogrammetry-and-image-analysis/public-datasets/aerialmpt-a-dataset-for-pedestrian-tracking-in-aerial-imagery",
+      "secondary_url": "https://elib.dlr.de/136057/",
+      "official_source_found": true,
+      "retrieval_date": "2026-05-26",
+      "official_evidence_summary": "DLR reports 14 aerial pedestrian tracking sequences, 307 frames, co-registered/georeferenced crops, 2 fps, 2,528 pedestrians, and 44,740 point annotations. Public download is about 75 MB.",
+      "license_access_summary": "DLR page credits CC BY-NC-ND 3.0; do not redistribute raw data or derived data without checking terms. Commercial/derivative use is restricted.",
+      "requires_login_or_terms": false,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+        "/Users/yangyue/Downloads/AerialMPT",
+        "external_data/AerialMPT",
+        "data/stage11_scene_packs/aerialmpt"
+      ],
+      "t100_repair_value": "low",
+      "expected_t100_role": "useful aerial calibration/scene diagnostic; likely too short for robust t100 raw-frame support because only 307 frames across 14 sequences",
+      "metric_time_value": "medium_for_aerial_diagnostic_if_terms_and_georeferencing_verified",
+      "local_status": {
+        "source": "fresh_local_path_scan",
+        "local_path_found": true,
+        "found_paths": [
+          "data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+          "data/stage11_scene_packs/aerialmpt"
+        ],
+        "path_stats": [
+          {
+            "exists": true,
+            "path": "data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+            "is_file": true,
+            "bytes": 78391230,
+            "file_count": 1,
+            "dir_count": 0,
+            "truncated": false,
+            "extensions": {
+              ".zip": 1
+            },
+            "sample_files": [
+              "data/aerialmpt/DLR_AerialMPT_Dataset.zip"
+            ],
+            "has_video": false,
+            "has_image": false,
+            "homography_like_files": [],
+            "scale_like_files": []
+          },
+          {
+            "exists": false,
+            "path": "/Users/yangyue/Downloads/AerialMPT"
+          },
+          {
+            "exists": false,
+            "path": "external_data/AerialMPT"
+          },
+          {
+            "exists": true,
+            "path": "data/stage11_scene_packs/aerialmpt",
+            "is_file": false,
+            "bytes": 84556,
+            "size_mb": 0.081,
+            "file_count": 14,
+            "dir_count": 14,
+            "truncated": false,
+            "extensions": {
+              ".json": 14
+            },
+            "sample_files": [
+              "data/stage11_scene_packs/aerialmpt/oac/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/karlsplatz/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/witt/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/bauma6/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/bauma1/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/pasing7/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/pasing8/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/pasing1L/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/bauma4/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/bauma3/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/bauma2/scene_pack.json",
+              "data/stage11_scene_packs/aerialmpt/bauma5/scene_pack.json"
+            ],
+            "has_video": false,
+            "has_image": false,
+            "homography_like_files": [],
+            "scale_like_files": []
+          }
+        ],
+        "has_video": false,
+        "has_image": false,
+        "homography_like_files_found": [],
+        "scale_like_files_found": []
+      },
+      "priority_score": 42,
+      "priority_group": "C",
+      "download_policy": {
+        "auto_download_allowed": false,
+        "download_status": "not_run",
+        "blocked_reasons": [
+          "license restricts derivative/commercial/redistribution use; keep manual review",
+          "auto_download_allowed is false by policy"
+        ],
+        "safe_next_step": "verify local path and official terms; do not auto-download raw/gated/restricted data"
+      }
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "id": "sdd_stanford",
+      "dataset_name": "Stanford Drone Dataset",
+      "target_domains": [
+        "SDD"
+      ],
+      "official_url": "https://cvgl.stanford.edu/projects/uav_data/",
+      "secondary_url": "",
+      "official_source_found": true,
+      "retrieval_date": "2026-05-26",
+      "official_evidence_summary": "SDD is already available locally and supports the SDD pixel raw-frame benchmark, but it does not by itself repair external ETH/UCY/TrajNet/UCY t100 source-CV gaps.",
+      "license_access_summary": "Use official terms; do not commit raw videos/images or derived large shards.",
+      "requires_login_or_terms": true,
+      "auto_download_allowed": false,
+      "local_path_candidates": [
+        "external_data/StanfordDroneDataset",
+        "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+        "data/stage21_sdd_world_state"
+      ],
+      "t100_repair_value": "low_for_external_high_for_sdd",
+      "expected_t100_role": "SDD-specific pixel raw-frame benchmark; not external source-CV repair unless a separate cross-domain protocol is designed",
+      "metric_time_value": "low_until_homography_scale_verified",
+      "local_status": {
+        "source": "fresh_local_path_scan",
+        "local_path_found": true,
+        "found_paths": [
+          "external_data/StanfordDroneDataset",
+          "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+          "data/stage21_sdd_world_state"
+        ],
+        "path_stats": [
+          {
+            "exists": true,
+            "path": "external_data/StanfordDroneDataset",
+            "is_file": false,
+            "bytes": 1651394507,
+            "size_mb": 1574.893,
+            "file_count": 180,
+            "dir_count": 138,
+            "truncated": false,
+            "extensions": {
+              ".mp4": 60,
+              ".txt": 60,
+              ".jpg": 60
+            },
+            "sample_files": [
+              "external_data/StanfordDroneDataset/video/gates/video3/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video4/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video5/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video2/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video7/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video0/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video8/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video1/video.mp4",
+              "external_data/StanfordDroneDataset/video/gates/video6/video.mp4",
+              "external_data/StanfordDroneDataset/video/little/video3/video.mp4",
+              "external_data/StanfordDroneDataset/video/little/video2/video.mp4",
+              "external_data/StanfordDroneDataset/video/little/video0/video.mp4"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [],
+            "scale_like_files": []
+          },
+          {
+            "exists": true,
+            "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+            "is_file": false,
+            "bytes": 1651394507,
+            "size_mb": 1574.893,
+            "file_count": 180,
+            "dir_count": 138,
+            "truncated": false,
+            "extensions": {
+              ".mp4": 60,
+              ".txt": 60,
+              ".jpg": 60
+            },
+            "sample_files": [
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video3/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video4/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video5/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video2/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video7/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video0/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video8/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video1/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video6/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video3/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video2/video.mp4",
+              "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video0/video.mp4"
+            ],
+            "has_video": true,
+            "has_image": true,
+            "homography_like_files": [],
+            "scale_like_files": []
+          },
+          {
+            "exists": true,
+            "path": "data/stage21_sdd_world_state",
+            "is_file": false,
+            "bytes": 30680313,
+            "size_mb": 29.259,
+            "file_count": 61,
+            "dir_count": 0,
+            "truncated": false,
+            "extensions": {
+              ".npz": 60,
+              ".json": 1
+            },
+            "sample_files": [
+              "data/stage21_sdd_world_state/sdd_quad_video1.npz",
+              "data/stage21_sdd_world_state/sdd_coupa_video3.npz",
+              "data/stage21_sdd_world_state/sdd_gates_video8.npz",
+              "data/stage21_sdd_world_state/sdd_coupa_video2.npz",
+              "data/stage21_sdd_world_state/sdd_quad_video0.npz",
+              "data/stage21_sdd_world_state/sdd_quad_video2.npz",
+              "data/stage21_sdd_world_state/sdd_coupa_video0.npz",
+              "data/stage21_sdd_world_state/sdd_coupa_video1.npz",
+              "data/stage21_sdd_world_state/sdd_quad_video3.npz",
+              "data/stage21_sdd_world_state/sdd_nexus_video9.npz",
+              "data/stage21_sdd_world_state/sdd_nexus_video8.npz",
+              "data/stage21_sdd_world_state/sdd_hyang_video3.npz"
+            ],
+            "has_video": false,
+            "has_image": false,
+            "homography_like_files": [],
+            "scale_like_files": []
+          }
+        ],
+        "has_video": true,
+        "has_image": true,
+        "homography_like_files_found": [],
+        "scale_like_files_found": []
+      },
+      "priority_score": 35,
+      "priority_group": "C",
+      "download_policy": {
+        "auto_download_allowed": false,
+        "download_status": "not_run",
+        "blocked_reasons": [
+          "requires user confirmation of official terms/login/challenge access",
+          "auto_download_allowed is false by policy"
+        ],
+        "safe_next_step": "verify local path and official terms; do not auto-download raw/gated/restricted data"
+      }
+    }
+  ],
+  "summary": {
+    "source": "fresh_synthesis_from_stage42_bb_plus_official_web_pages",
+    "candidate_sources": 6,
+    "official_sources_found": 5,
+    "local_path_found_sources": 6,
+    "high_priority_sources": [
+      "ucy_crowd_original",
+      "trajnetpp_epfl_aicrowd",
+      "opentraj_toolkit",
+      "eth_ucy_original_sources"
+    ],
+    "auto_download_allowed_sources": [],
+    "auto_download_executed": false,
+    "user_action_required_count": 6,
+    "t100_repair_priority_order": [
+      "ucy_crowd_original",
+      "trajnetpp_epfl_aicrowd",
+      "opentraj_toolkit",
+      "eth_ucy_original_sources"
+    ],
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "paper_claim": "T100 repair should prioritize legal independent TrajNet++ / ETH-UCY / UCY source support and source-specific safety repair. AerialMPT is useful diagnostic/calibration context but likely too short for robust t100."
+  },
+  "user_action_required": [
+    {
+      "source": "fresh_synthesis_from_stage42_bb",
+      "priority": "high",
+      "target": "ETH_UCY",
+      "minimum_extra_t100_sources_needed": 2,
+      "candidate_source_ids": [
+        "ucy_crowd_original",
+        "trajnetpp_epfl_aicrowd",
+        "opentraj_toolkit",
+        "eth_ucy_original_sources"
+      ],
+      "action": "Provide or approve legal source-specific t100-capable train data, then rerun source-CV without using test metrics."
+    },
+    {
+      "source": "fresh_synthesis_from_stage42_bb",
+      "priority": "high",
+      "target": "TrajNet",
+      "minimum_extra_t100_sources_needed": 1,
+      "candidate_source_ids": [
+        "trajnetpp_epfl_aicrowd",
+        "opentraj_toolkit"
+      ],
+      "action": "Provide or approve legal source-specific t100-capable train data, then rerun source-CV without using test metrics."
+    },
+    {
+      "source": "fresh_synthesis_from_stage42_bb",
+      "priority": "high",
+      "target": "UCY",
+      "minimum_extra_t100_sources_needed": 1,
+      "candidate_source_ids": [
+        "ucy_crowd_original",
+        "trajnetpp_epfl_aicrowd",
+        "opentraj_toolkit",
+        "eth_ucy_original_sources"
+      ],
+      "action": "Provide or approve legal source-specific t100-capable train data, then rerun source-CV without using test metrics."
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "priority": "high",
+      "target": "ucy_crowd_original",
+      "dataset_name": "UCY Crowd",
+      "official_url": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "local_paths_found": [
+        "external_data/OpenTraj/datasets/UCY"
+      ],
+      "action": "verify local path and official terms; do not auto-download raw/gated/restricted data",
+      "blocked_reasons": [
+        "requires user confirmation of official terms/login/challenge access",
+        "auto_download_allowed is false by policy"
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "priority": "high",
+      "target": "trajnetpp_epfl_aicrowd",
+      "dataset_name": "TrajNet++",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "local_paths_found": [
+        "external_data/OpenTraj/datasets/TrajNet",
+        "external_data/OpenTraj/datasets/TrajNet++"
+      ],
+      "action": "verify local path and official terms; do not auto-download raw/gated/restricted data",
+      "blocked_reasons": [
+        "requires user confirmation of official terms/login/challenge access",
+        "auto_download_allowed is false by policy"
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "priority": "medium",
+      "target": "opentraj_toolkit",
+      "dataset_name": "OpenTraj toolkit",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "local_paths_found": [
+        "external_data/OpenTraj",
+        "/Users/yangyue/Downloads/World/external_data/OpenTraj"
+      ],
+      "action": "verify local path and official terms; do not auto-download raw/gated/restricted data",
+      "blocked_reasons": [
+        "auto_download_allowed is false by policy"
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "priority": "medium",
+      "target": "eth_ucy_original_sources",
+      "dataset_name": "ETH/UCY original pedestrian sources",
+      "official_url": "ETH/BIWI and UCY original dataset pages; source-specific terms must be manually verified",
+      "local_paths_found": [
+        "external_data/OpenTraj/datasets/ETH",
+        "external_data/OpenTraj/datasets/ETH-Person",
+        "external_data/OpenTraj/datasets/UCY"
+      ],
+      "action": "verify local path and official terms; do not auto-download raw/gated/restricted data",
+      "blocked_reasons": [
+        "requires user confirmation of official terms/login/challenge access",
+        "official source not fully resolved in Stage42-BC",
+        "auto_download_allowed is false by policy"
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "priority": "medium",
+      "target": "aerialmpt_dlr",
+      "dataset_name": "AerialMPT",
+      "official_url": "https://www.dlr.de/en/eoc/about-us/remote-sensing-technology-institute/photogrammetry-and-image-analysis/public-datasets/aerialmpt-a-dataset-for-pedestrian-tracking-in-aerial-imagery",
+      "local_paths_found": [
+        "data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+        "data/stage11_scene_packs/aerialmpt"
+      ],
+      "action": "verify local path and official terms; do not auto-download raw/gated/restricted data",
+      "blocked_reasons": [
+        "license restricts derivative/commercial/redistribution use; keep manual review",
+        "auto_download_allowed is false by policy"
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_official_web_and_local_paths",
+      "priority": "medium",
+      "target": "sdd_stanford",
+      "dataset_name": "Stanford Drone Dataset",
+      "official_url": "https://cvgl.stanford.edu/projects/uav_data/",
+      "local_paths_found": [
+        "external_data/StanfordDroneDataset",
+        "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+        "data/stage21_sdd_world_state"
+      ],
+      "action": "verify local path and official terms; do not auto-download raw/gated/restricted data",
+      "blocked_reasons": [
+        "requires user confirmation of official terms/login/challenge access",
+        "auto_download_allowed is false by policy"
+      ]
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_metrics_for_threshold": false,
+    "no_raw_download_executed": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "t100_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_bc_gate": {
+    "source": "fresh_synthesis_from_stage42_bb_plus_official_web_pages",
+    "gates": {
+      "bb_input_verified": true,
+      "official_source_candidates_listed": true,
+      "local_paths_checked": true,
+      "t100_priority_sources_identified": true,
+      "user_actions_generated": true,
+      "no_auto_download_of_restricted_or_gated_data": true,
+      "web_sources_recorded": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage42_bc_t100_source_acquisition_plan_pass"
+  }
+}

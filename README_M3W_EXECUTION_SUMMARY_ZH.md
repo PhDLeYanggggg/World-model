@@ -462,6 +462,7 @@ baseline_family_all protected t+50 = +31.54%
 | Stage42-AY t100 easy repair | h100 easy CI high 修到 0.983%，all +30.55%，t50 +28.97% | t100 safety 修复，但 t100 claim 仍弱 |
 | Stage42-BA source-CV repair | all +28.10%，t50 +28.97%，hard +25.16%，t100=0 | 证明 t100 正收益源支持不足，安全回退 |
 | Stage42-BB t100 data gap audit | gates 14/14；ETH_UCY 缺 2 个安全 t100 source，TrajNet 缺 1 个，UCY 缺 1 个 t100-capable source | 把 t100 blocker 转成数据/标定行动清单 |
+| Stage42-BC t100 source acquisition plan | gates 11/11；6 个候选源，5 个官方源，6 个本地路径命中；不自动下载受限数据 | 把 t100 缺口映射到 UCY / TrajNet++ / OpenTraj / ETH-UCY 的合法获取与验证动作 |
 
 ## 5. 为什么 t100 现在仍是 blocker
 
@@ -519,6 +520,26 @@ outputs/stage42_long_research/user_action_required_t100_stage42.md
 ```
 
 这一步没有训练新模型；它的价值是把“t100 不能 claim”从一句 limitation 变成明确的数据需求：需要更多合法、独立、t100-capable 的 top-down pedestrian sources，或 source-specific t100 safety repair，并且需要官方 FPS/stride/homography/scale 证据才能升级时间/metric 口径。
+
+Stage42-BC 继续把这个行动清单落到具体官方来源和本地路径：
+
+```text
+verdict = stage42_bc_t100_source_acquisition_plan_pass
+gates = 11 / 11
+candidate_sources = 6
+official_sources_found = 5
+local_path_found_sources = 6
+high_priority_sources = ucy_crowd_original, trajnetpp_epfl_aicrowd, opentraj_toolkit, eth_ucy_original_sources
+auto_download_allowed_sources = none
+auto_download_executed = false
+```
+
+Stage42-BC 使用了 TrajNet++ / VITA EPFL 官方页面、DLR AerialMPT 官方页面和本地 OpenTraj/SDD/UCY 路径。它故意不自动下载 gated、terms-bound 或 restricted-license raw data。AerialMPT 是官方且本地可见，但 14 sequences / 307 frames 更适合 aerial calibration / diagnostic，不足以单独修复 t100 source-CV。对应文件是：
+
+```text
+outputs/stage42_long_research/t100_source_acquisition_plan_stage42.md
+outputs/stage42_long_research/user_action_required_t100_sources_stage42.md
+```
 
 ## 6. 哪些东西现在可以写进论文
 
@@ -600,6 +621,7 @@ outputs/stage42_long_research/user_action_required_t100_stage42.md
 - Stage42-AW 修复 UCY validation support。
 - Stage42-BA 明确 t100 blocker，同时保护 all/t50/hard/easy。
 - Stage42-BB 把 t100 blocker 转成 ETH_UCY / TrajNet / UCY 的具体 source-support 和 calibration 行动清单。
+- Stage42-BC 把 t100 行动清单映射到官方来源、本地路径和不自动下载的安全 acquisition policy。
 
 ### 当前最好模型是谁？
 
@@ -653,8 +675,10 @@ python3 run_stage42_aw_t100_easy_safety_repair.py = pass
 python3 run_stage42_ay_shadow_holdout_robustness.py = pass
 python3 run_stage42_t100_source_cv_repair.py = pass
 python3 run_stage42_t100_data_gap_audit.py = pass
+python3 run_stage42_t100_source_acquisition_plan.py = pass
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
-python3 -m pytest tests = 426 passed
+python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
+python3 -m pytest tests = 430 passed
 ```
 
 ## 10. 总结成一句话

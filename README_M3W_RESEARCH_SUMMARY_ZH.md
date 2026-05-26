@@ -171,6 +171,7 @@ python3 run_stage42_aw_t100_easy_safety_repair.py = pass
 python3 run_stage42_ay_shadow_holdout_robustness.py = pass
 python3 run_stage42_t100_source_cv_repair.py = pass
 python3 run_stage42_t100_data_gap_audit.py = pass
+python3 run_stage42_t100_source_acquisition_plan.py = pass
 python3 -m pytest tests/test_stage42_source_level_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_incremental_ablation.py = 4 passed
 python3 -m pytest tests/test_stage42_source_level_residual_context.py = 4 passed
@@ -186,7 +187,8 @@ python3 -m pytest tests/test_stage42_aw_t100_easy_safety_repair.py = 4 passed
 python3 -m pytest tests/test_stage42_ay_shadow_holdout_robustness.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_source_cv_repair.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
-python3 -m pytest tests = 426 passed
+python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
+python3 -m pytest tests = 430 passed
 ```
 
 ## Stage42-BB T100 Data Gap Audit
@@ -210,6 +212,27 @@ smc_enabled = false
 Stage42-BB 不训练新模型，而是把 Stage42-BA 的 t100 source-CV blocker 转成可执行的数据和标定缺口清单。结论很明确：ETH_UCY 当前需要至少 2 个额外安全 t100-capable train sources 或 source-specific repair；TrajNet 至少需要 1 个；UCY 至少还缺 1 个 t100-capable original-train source 才能形成足够 source-CV 支持。对应用户行动文件为 `outputs/stage42_long_research/user_action_required_t100_stage42.md`。
 
 这一步强化而不是放松 claim 边界：all/t50/hard 在 source-CV guard 后仍为正，easy 仍安全，但 t100 positive gain 仍不能写成稳定成功，也不能写成 seconds-level long-horizon。metric/time claim 仍需官方 FPS、annotation stride、homography direction、coordinate convention、scale / meter-per-pixel 证据。
+
+## Stage42-BC T100 Source Acquisition Plan
+
+```text
+source = fresh_synthesis_from_stage42_bb_plus_official_web_pages
+verdict = stage42_bc_t100_source_acquisition_plan_pass
+gates = 11 / 11
+candidate_sources = 6
+official_sources_found = 5
+local_path_found_sources = 6
+high_priority_sources = ucy_crowd_original, trajnetpp_epfl_aicrowd, opentraj_toolkit, eth_ucy_original_sources
+auto_download_allowed_sources = none
+auto_download_executed = false
+metric_seconds_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BC 将 Stage42-BB 的 t100 数据缺口映射到官方来源和本地路径。它使用 TrajNet++ / EPFL VITA 官方页面、DLR AerialMPT 官方页面，以及本地 OpenTraj / UCY / SDD 路径来生成 acquisition plan。结论是：当前最优 t100 修复路径不是下载一个随便的数据包，而是优先补 legal independent TrajNet++ / ETH-UCY / UCY source support，并在用户确认 terms / license / provenance 后重新跑 train-only source-CV。
+
+Stage42-BC 没有自动下载 gated、terms-bound 或 CC BY-NC-ND / restricted raw data。AerialMPT 官方且本地可见，但 14 sequences / 307 frames 更像 aerial calibration / diagnostic source，不足以单独修复 external t100 source-CV。对应行动文件为 `outputs/stage42_long_research/user_action_required_t100_sources_stage42.md`。
 
 这份 README 回答一个核心问题：在“训练真正强的真实世界多模态多智能体世界模型 M3W”这个长期目标里，我到底做了什么、尝试了哪些路线、哪些失败了、为什么失败、哪些成功了、现在能诚实 claim 什么、还不能 claim 什么。
 
