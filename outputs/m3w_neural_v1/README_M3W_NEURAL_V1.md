@@ -520,3 +520,17 @@ smc_enabled = false
 Stage42-Y turns the Stage42-X unified row-level cache into paper-table ablation evidence. It shows that removing the UCY full-waypoint source loses t50/hard performance, history tokens are the strongest retrained sequence contribution, domain expert helps, and safety floor remains necessary because ungated neural is unsafe. Goal/scene and neighbor/interaction remain mixed rather than overclaimed.
 
 Verification: Stage42-Y runner passed, focused Stage42-Y pytest passed with 3 tests, and the full repository test suite passed with 327 tests.
+
+## Stage42-Z Paper Claim Evidence Audit
+
+```text
+source = fresh_audit_from_stage42_wxy_and_paper_package_artifacts
+verdict = stage42_z_paper_claim_evidence_audit_pass
+gates = 16 / 16
+paper_ready_scope = protected_2p5d_raw_frame_world_state_candidate
+not_ready_scope = true_3d_metric_seconds_foundation_or_stage5c_smc
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-Z makes the claim boundary explicit for the paper package: unified row-level full-waypoint evidence, t50 positivity, UCY source contribution, history-token contribution, protected external floor, and protected full-waypoint dynamics are supported. Ungated neural replacement, metric/seconds-level claims, true-3D/foundation claims, and uniform goal/scene or neighbor/interaction positivity are not supported as main claims.

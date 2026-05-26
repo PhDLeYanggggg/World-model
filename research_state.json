@@ -1,17 +1,18 @@
 {
-  "current_stage": "stage42_y_unified_ablation_evidence",
-  "current_verdict": "stage42_y_unified_ablation_evidence_pass",
+  "current_stage": "stage42_z_paper_claim_evidence_audit",
+  "current_verdict": "stage42_z_paper_claim_evidence_audit_pass",
   "latest_user_requested_research_summary": {
     "source": "cached_verified_plus_stage42_wxy_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
     "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-X unified row-level full-waypoint cache passed and Stage42-Y unified ablation evidence passed; Stage42-Y shows UCY source contribution, history-token contribution, and safety-floor necessity.",
+    "latest_branch_success": "Stage42-Z paper claim evidence audit passed; claim-to-evidence matrix now separates supported main claims from rejected/non-supported overclaims.",
     "verification": {
       "stage42_y_runner": "pass",
       "focused_pytest": "3 passed",
-      "full_pytest": "327 passed"
+      "full_pytest": "327 passed",
+      "stage42_z_runner": "pass"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -685,7 +686,11 @@
     "outputs/stage42_long_research/unified_ablation_evidence_stage42.md",
     "outputs/stage42_long_research/unified_ablation_evidence_stage42.json",
     "outputs/stage42_long_research/unified_ablation_evidence_stage42.csv",
-    "outputs/stage42_long_research/stage42_stage_y_gate.md"
+    "outputs/stage42_long_research/stage42_stage_y_gate.md",
+    "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md",
+    "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.json",
+    "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.csv",
+    "outputs/stage42_long_research/stage42_stage_z_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -13236,6 +13241,38 @@
       "ucy_source_loss_if_removed_hard": 0.038954187812382024,
       "history_token_t50_contribution": 0.457817280518282,
       "history_token_hard_contribution": 0.47079873325328386,
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_z_paper_claim_evidence_audit": {
+      "source": "fresh_audit_from_stage42_wxy_and_paper_package_artifacts",
+      "report": "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.md",
+      "gate_report": "outputs/stage42_long_research/stage42_stage_z_gate.md",
+      "csv": "outputs/stage42_long_research/paper_claim_evidence_audit_stage42.csv",
+      "gates_passed": 16,
+      "gates_total": 16,
+      "verdict": "stage42_z_paper_claim_evidence_audit_pass",
+      "paper_ready_scope": "protected_2p5d_raw_frame_world_state_candidate",
+      "not_ready_scope": "true_3d_metric_seconds_foundation_or_stage5c_smc",
+      "supported_main_claims": [
+        "unified row-level full-waypoint cache over ETH_UCY/TrajNet/UCY",
+        "external t50 full-waypoint seed/bootstrap positive evidence",
+        "UCY full-waypoint source contribution",
+        "history-token and domain-expert contribution",
+        "protected external floor and protected full-waypoint dynamics"
+      ],
+      "non_claims_or_mixed_evidence": [
+        "ungated neural replacement rejected",
+        "metric/seconds-level not supported",
+        "true 3D/foundation not supported",
+        "goal/scene and neighbor/interaction uniform positivity mixed"
+      ],
       "claim_boundary": {
         "true_3d": false,
         "foundation_world_model": false,

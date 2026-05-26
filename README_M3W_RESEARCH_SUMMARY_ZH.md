@@ -642,3 +642,17 @@ smc_enabled = false
 ```
 
 Stage42-Y turns the Stage42-X unified row-level cache into paper-table ablation evidence. It shows that removing the UCY full-waypoint source loses t50/hard performance, history tokens are the strongest retrained sequence contribution, domain expert helps, and safety floor remains necessary because ungated neural is unsafe. Goal/scene and neighbor/interaction remain mixed rather than overclaimed.
+
+## Stage42-Z Paper Claim Evidence Audit
+
+```text
+source = fresh_audit_from_stage42_wxy_and_paper_package_artifacts
+verdict = stage42_z_paper_claim_evidence_audit_pass
+gates = 16 / 16
+paper_ready_scope = protected_2p5d_raw_frame_world_state_candidate
+not_ready_scope = true_3d_metric_seconds_foundation_or_stage5c_smc
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-Z 把“能写进论文的 claim”和“必须作为 limitation / negative evidence 的内容”逐条绑定到 artifact。它支持的主 claim 是：Stage42-X 统一 row-level full-waypoint cache、external t50 正证据、UCY full-waypoint source 贡献、history token / domain expert 贡献、protected external floor、protected full-waypoint dynamics。它明确拒绝：ungated neural 替代 safety floor、metric/seconds-level claim、true 3D / foundation claim，以及把 goal/scene 或 neighbor/interaction 的 mixed evidence 写成统一正贡献。
