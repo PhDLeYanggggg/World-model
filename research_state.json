@@ -1,14 +1,14 @@
 {
-  "current_stage": "stage42_user_research_summary_refresh",
-  "current_verdict": "cached_verified_summary_refresh_completed",
+  "current_stage": "stage42_ax_repaired_protocol_robustness",
+  "current_verdict": "stage42_ax_repaired_protocol_robustness_pass_with_t100_limit",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_aw_user_facing_summary_refresh",
+    "source": "cached_verified_plus_stage42_ax_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "last_readme_refresh": "2026-05-26 user-facing route/failure/success summary refreshed at top of README_M3W_RESEARCH_SUMMARY_ZH.md.",
-    "scope": "Detailed Chinese summary of M3W routes tried, failures and causes, successes and metrics, current best deployable status, claim boundaries, and next shortest path.",
+    "last_readme_refresh": "2026-05-26 summary refreshed with Stage42-AX repaired protocol robustness; focused pytest passed, full pytest pending.",
+    "scope": "Detailed M3W route/failure/success summary plus Stage42-AX repaired validation-support protocol robustness and t100 limitation.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AW repairs the UCY validation-support blocker with train-only internal validation and obtains positive UCY transfer while preserving test-once/no-leakage boundaries.",
+    "latest_branch_success": "Stage42-AX verifies the Stage42-AW repaired validation-support protocol with global bootstrap support and positive TrajNet/UCY evidence while preserving the t100 easy-safety limitation.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -60,7 +60,10 @@
       "stage42_aw_runner": "pass",
       "stage42_aw_focused_pytest": "4 passed",
       "stage42_aw_full_pytest": "406 passed",
-      "user_summary_refresh_full_pytest": "406 passed"
+      "user_summary_refresh_full_pytest": "406 passed",
+      "stage42_ax_runner": "pass",
+      "stage42_ax_focused_pytest": "4 passed",
+      "stage42_ax_full_pytest": "410 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -14560,23 +14563,87 @@
     }
   },
   "latest_user_facing_summary_refresh": {
-    "source": "cached_verified",
+    "source": "cached_verified_plus_stage42_ax",
     "readme": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "also_updated": [
       "README_RESULTS.md",
       "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md"
     ],
-    "summary": "Updated the canonical Chinese README with direct sections for attempted routes, failed routes and causes, successes, current best deployable model, and claim boundaries.",
+    "summary": "Added Stage42-AX repaired protocol robustness, positive TrajNet/UCY support, global bootstrap evidence, and t100 weak-slice limitation.",
+    "verification": {
+      "stage42_ax_runner": "pass",
+      "stage42_ax_focused_pytest": "4 passed",
+      "full_pytest": "410 passed"
+    },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,
       "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_neural_deployable": false
+    }
+  },
+  "stage42_ax_repaired_protocol_robustness": {
+    "source": "cached_verified_from_stage42_aw",
+    "verdict": "stage42_ax_repaired_protocol_robustness_pass_with_t100_limit",
+    "gate": "14/14",
+    "report": "outputs/stage42_long_research/repaired_protocol_robustness_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ax_gate.md",
+    "validation_best_variant": "family_baseline_rel_only",
+    "positive_domains": [
+      "TrajNet",
+      "UCY"
+    ],
+    "weak_horizons": [
+      "100"
+    ],
+    "uniform_domain_claim_allowed_under_repaired_protocol": true,
+    "uniform_horizon_claim_allowed": false,
+    "global_bootstrap_ci_low": {
+      "all": 0.3530761490055597,
+      "t50": 0.28539807157473973,
+      "t100_raw_frame_diagnostic": 0.20294438414803442,
+      "hard_failure": 0.3352294575706969,
+      "easy_degradation_high": -0.5667480564777061
+    },
+    "domain_metrics": {
+      "TrajNet": {
+        "rows": 37918,
+        "all_improvement": 0.3514230453837086,
+        "t50_improvement": 0.3021187404984901,
+        "hard_failure_improvement": 0.3337969846203974,
+        "easy_degradation": -0.36181722460825505
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.37449206739500784,
+        "t50_improvement": 0.24532046628354087,
+        "hard_failure_improvement": 0.3550726481550319,
+        "easy_degradation": -0.41837632719435336
+      }
+    },
+    "t100_limitation": {
+      "easy_degradation": 0.02396103861802401,
+      "weaknesses": [
+        "easy_degradation_over_2pct"
+      ],
+      "claim": "raw-frame diagnostic only; uniform horizon success disallowed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
       "stage5c_executed": false,
       "smc_enabled": false,
       "ungated_neural_deployable": false
     },
     "verification": {
-      "python3 -m pytest tests": "406 passed"
+      "runner": "python3 run_stage42_repaired_protocol_robustness.py -> stage42_ax_repaired_protocol_robustness_pass_with_t100_limit (14/14)",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_repaired_protocol_robustness.py -> 4 passed",
+      "full_pytest": "python3 -m pytest tests -> 410 passed"
     }
   }
 }

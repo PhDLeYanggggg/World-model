@@ -833,3 +833,23 @@ smc_enabled = false
 ```
 
 Stage42-AL audits whether the locked post-repair policy can be claimed as a full proposed source-level split evaluation. It cannot: UCY matches the proposed source-level test row count, but TrajNet is only partially covered by the current locked-policy stress pool and ETH_UCY stress rows are extra available rows outside the proposed source-level test split. The correct claim remains available row-level post-repair stress with explicit coverage gap, not full source-level split evaluation.
+
+## Stage42-AX Repaired Protocol Robustness
+
+```text
+source = cached_verified_from_stage42_aw
+verdict = stage42_ax_repaired_protocol_robustness_pass_with_t100_limit
+gates = 14 / 14
+global_all_CI_low = 0.353076
+global_t50_CI_low = 0.285398
+global_t100_raw_frame_diagnostic_CI_low = 0.202944
+global_hard_failure_CI_low = 0.335229
+global_easy_degradation_CI_high = -0.566748
+positive_domains = TrajNet, UCY
+weak_horizons = 100
+horizon100_easy_degradation = 0.023961
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AX verifies the Stage42-AW repaired validation-support protocol without reusing test metrics for threshold selection. The repaired protocol supports global positive bootstrap evidence and positive TrajNet/UCY source-level evidence. It also keeps the remaining limitation explicit: horizon 100 remains raw-frame diagnostic and has an easy-safety weak slice, so uniform horizon success and metric/seconds-level claims remain disallowed.

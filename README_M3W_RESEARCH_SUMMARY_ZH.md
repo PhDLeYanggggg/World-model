@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit、Stage42-AU proposed source-level baseline-family mechanism audit、Stage42-AV baseline-family robustness / weak-slice audit，以及 Stage42-AW UCY validation-support repair；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
+结果来源：`cached_verified` 汇总已有阶段报告、README、gate report 和 `research_state.json`，并纳入 Stage42-W/X/Y/Z/AA/AB/AC、Stage42-AD 标定证据刷新、Stage42-AE unified row-cache stress audit、Stage42-AF validation-margin weak-slice guard repair、Stage42-AG ETH_UCY t50/FDE source repair、Stage42-AH post-repair claim refresh、Stage42-AI TrajNet t100 easy-safety repair、Stage42-AJ post-repair paper package refresh、Stage42-AK post-repair locked policy/source-split audit、Stage42-AL source-level coverage / claim-gap audit、Stage42-AM proposed source-level full-waypoint evaluation、Stage42-AN proposed source-level retrained ablation、Stage42-AO proposed source-level incremental / standalone ablation、Stage42-AP proposed source-level residual-context retraining、Stage42-AQ proposed source-level neural residual-context retraining、Stage42-AR proposed source-level sequence-context retraining、Stage42-AS proposed source-level graph-interaction context retraining、Stage42-AT proposed source-level safety-floor / fallback audit、Stage42-AU proposed source-level baseline-family mechanism audit、Stage42-AV baseline-family robustness / weak-slice audit、Stage42-AW UCY validation-support repair，以及 Stage42-AX repaired validation-support protocol robustness audit；本文件本身不读取未提交 raw data。未完成或未正式评估的分支不会写成已完成结果。
 
 ## 本次交付版总摘要
 
@@ -64,6 +64,7 @@ not allowed:
 | Stage42-AM source-level full-waypoint | proposed source-level test rows 47458，ADE all +24.58%，t50 +22.02%，t100 raw diagnostic +14.37%，hard/failure +23.75%，easy degradation -25.66%。 | Fresh source-level raw-frame full-waypoint probe，仍非 metric/seconds。 |
 | Stage42-AU baseline-family mechanism | family_baseline_rel_only protected all +27.38%，t50 +23.73%；baseline_family_all protected all +28.78%，t50 +31.54%。 | 证明当前 source-level 主机制是 baseline-family rollout context。 |
 | Stage42-AW UCY validation repair | UCY test all +37.45%，t50 +24.53%，hard/failure +35.51%，easy degradation 为负。 | 使用 UCY train-only internal validation 修复 blocker，不用 test 调阈值。 |
+| Stage42-AX repaired protocol robustness | gates 14/14；global CI lows: all +35.31%，t50 +28.54%，t100 raw diagnostic +20.29%，hard +33.52%；TrajNet 与 UCY 均 positive；horizon=100 easy degradation 2.396%。 | repaired protocol 有跨 TrajNet/UCY 支持，但 uniform horizon success 不允许，t100 仍是 raw-frame diagnostic weak slice。 |
 
 ### 最重要的失败原因
 
@@ -115,8 +116,8 @@ History/goal/interaction are independently proven main contributions under curre
 
 ### 下一步最短路径
 
-1. **先把 Stage42-AW 后的 repaired protocol 做 robustness refresh。**  
-   目标是确认 global、UCY、TrajNet、t50、hard/failure、FDE 和 easy-safety 都在同一 repaired protocol 下稳定成立，同时诚实标记 t100 weak slice。
+1. **下一步修 Stage42-AX 暴露出的 t100 easy-safety weak slice。**
+   AX 已确认 AW repaired protocol 在 global、UCY、TrajNet、t50、hard/failure 上稳定，但 horizon=100 easy degradation 仍为 2.396%，不能写成 uniform horizon success。
 
 2. **把 baseline-family rollout context 正式重写为当前主机制。**  
    现在最强证据不是“JEPA/Transformer 独立学出世界动力学”，而是“多候选因果 baseline family + validation-safe selector/policy 形成 protected world-state dynamics candidate”。
@@ -192,7 +193,7 @@ python3 -m pytest tests = 406 passed
 
 ## 给你的直接结论快照
 
-截至 Stage42-AW，我在 M3W 这个长期目标里做的核心事情可以概括为十七条：
+截至 Stage42-AX，我在 M3W 这个长期目标里做的核心事情可以概括为十八条：
 
 1. **把项目从早期 2.5D trajectory scaffold 推到可审计 benchmark。**  
    SDD 被转换成 pixel-space official raw-frame benchmark；后续又接入 OpenTraj / ETH-UCY / UCY / TrajNet 等 external top-down pedestrian 数据，但所有 external 仍是 dataset-local / unverified weak-metric diagnostic，不是统一米制世界。
@@ -244,6 +245,9 @@ python3 -m pytest tests = 406 passed
 
 17. **Stage42-AW 修复 UCY validation-support blocker。**  
    Stage42-AW 从 UCY original train sources 里切出 `UCY::UCY/zara03/crowds_zara03.txt` 作为 internal validation，不碰 UCY test source，也不使用 test 调阈值。结果 14/14 gates：validation-best variant 是 `family_baseline_rel_only`，global all `+35.68%`、t50 `+28.97%`、hard/failure `+33.89%`、easy degradation 为负；UCY test all `+37.45%`、t50 `+24.53%`、hard/failure `+35.51%`、easy degradation 为负；TrajNet 也保持正。结论：AV 的 UCY floor-only blocker 可以通过 train-only internal validation 修复，但这是一套新的 validation-support protocol，不等于原 AV split 无条件 UCY positive。
+
+18. **Stage42-AX 固化 AW repaired protocol 的 robustness，同时明确 t100 limitation。**
+   Stage42-AX 不重训、不调 threshold，而是读取 AW/AV 已验证结果做 cached_verified robustness audit。结果 14/14 gates：global bootstrap 下界 all `+35.31%`、t50 `+28.54%`、t100 raw-frame diagnostic `+20.29%`、hard/failure `+33.52%`，easy degradation CI high 为负；TrajNet 和 UCY 两个 domains 均 positive。限制也很明确：horizon=100 的 row-level easy degradation 是 `2.396%`，超过 2% safety threshold，所以 uniform horizon success 仍不允许，t100 只能写 raw-frame diagnostic with easy-safety limitation。
 
 最重要的失败原因也很清楚：
 
@@ -329,6 +333,7 @@ python3 -m pytest tests = 406 passed
 | Stage42-AU source-level baseline-family mechanism audit | 11/11 gates；`family_baseline_rel_only` protected all +27.38%、t50 +23.73%；`baseline_family_all` protected all +28.78%、t50 +31.54%；horizon/domain control 和 floor/safe 单独都不足。 | 当前 source-level 成功机制被定位为 baseline-family rollout context，特别是 family baseline relative rollout；这给论文机制叙事提供正证据，也收紧了 history/goal/neighbor/graph 的 claim 边界。 |
 | Stage42-AV baseline-family robustness / weak-slice audit | 12/12 gates；global CI 稳定为正；TrajNet positive；UCY floor-only blocker；horizon=100 easy-safety weak slice。 | 可以写 global / TrajNet baseline-family mechanism evidence；不能写 uniform source-level domain/horizon success。 |
 | Stage42-AW UCY validation-support repair | 14/14 gates；从 UCY train source 切 internal validation 后，validation-best `family_baseline_rel_only` 在 UCY test all +37.45%、t50 +24.53%、hard/failure +35.51%，easy degradation 为负。 | 修复了 AV 的 UCY floor-only blocker；仍保持 dataset-local raw-frame / no-test-threshold-tuning 边界。 |
+| Stage42-AX repaired protocol robustness | 14/14 gates；global bootstrap all/t50/t100 raw diagnostic/hard 下界为正，TrajNet 和 UCY 均 positive；horizon=100 easy degradation 2.396%。 | 支持 repaired protocol 的 global + two-domain positive claim；拒绝 uniform horizon success / metric / seconds / true-3D claim。 |
 | Stage42-Y/Z/AA/AC evidence package | Gates 全部通过。 | 把可 claim / 不可 claim / mixed evidence 明确绑定到 artifact，避免过度叙事。 |
 
 ### 当前最强模型和部署边界
