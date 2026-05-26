@@ -461,6 +461,7 @@ baseline_family_all protected t+50 = +31.54%
 | Stage42-AX robustness | all CI low +35.31%，t50 CI low +28.54%，hard CI low +33.52% | repaired protocol robust，但 t100/easy 有弱切片 |
 | Stage42-AY t100 easy repair | h100 easy CI high 修到 0.983%，all +30.55%，t50 +28.97% | t100 safety 修复，但 t100 claim 仍弱 |
 | Stage42-BA source-CV repair | all +28.10%，t50 +28.97%，hard +25.16%，t100=0 | 证明 t100 正收益源支持不足，安全回退 |
+| Stage42-BB t100 data gap audit | gates 14/14；ETH_UCY 缺 2 个安全 t100 source，TrajNet 缺 1 个，UCY 缺 1 个 t100-capable source | 把 t100 blocker 转成数据/标定行动清单 |
 
 ## 5. 为什么 t100 现在仍是 blocker
 
@@ -496,6 +497,28 @@ so deployment-safe policy must guard unsupported t100 slices to floor.
 - all / t50 / hard/failure 仍有强 protected 正证据。
 - t100 只能写 raw-frame diagnostic blocker。
 - 不能把 t100 写成 stable long-horizon success，更不能写 seconds-level。
+
+Stage42-BB 把这个 blocker 进一步转成可执行的数据缺口清单：
+
+```text
+verdict = stage42_bb_t100_data_gap_audit_pass_with_data_blocker
+gates = 14 / 14
+unsupported_t100_domains = ETH_UCY, TrajNet, UCY
+ETH_UCY additional safe t100-capable train sources needed = 2
+TrajNet additional safe t100-capable train sources needed = 1
+UCY additional t100-capable train sources needed = 1
+metric/seconds claim allowed = false
+Stage5C = false
+SMC = false
+```
+
+对应行动文件是：
+
+```text
+outputs/stage42_long_research/user_action_required_t100_stage42.md
+```
+
+这一步没有训练新模型；它的价值是把“t100 不能 claim”从一句 limitation 变成明确的数据需求：需要更多合法、独立、t100-capable 的 top-down pedestrian sources，或 source-specific t100 safety repair，并且需要官方 FPS/stride/homography/scale 证据才能升级时间/metric 口径。
 
 ## 6. 哪些东西现在可以写进论文
 
@@ -576,6 +599,7 @@ so deployment-safe policy must guard unsupported t100 slices to floor.
 - Stage42-AU 证明 baseline-family rollout context 是当前主机制。
 - Stage42-AW 修复 UCY validation support。
 - Stage42-BA 明确 t100 blocker，同时保护 all/t50/hard/easy。
+- Stage42-BB 把 t100 blocker 转成 ETH_UCY / TrajNet / UCY 的具体 source-support 和 calibration 行动清单。
 
 ### 当前最好模型是谁？
 
@@ -628,7 +652,9 @@ python3 run_stage42_repaired_protocol_robustness.py = pass
 python3 run_stage42_aw_t100_easy_safety_repair.py = pass
 python3 run_stage42_ay_shadow_holdout_robustness.py = pass
 python3 run_stage42_t100_source_cv_repair.py = pass
-python3 -m pytest tests = 422 passed
+python3 run_stage42_t100_data_gap_audit.py = pass
+python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
+python3 -m pytest tests = 426 passed
 ```
 
 ## 10. 总结成一句话

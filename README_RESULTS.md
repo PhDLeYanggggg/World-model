@@ -3054,3 +3054,32 @@ smc_enabled = false
 ```
 
 A new reader-facing Chinese summary has been added at `README_M3W_EXECUTION_SUMMARY_ZH.md`. It consolidates what was attempted, which routes failed and why, which routes succeeded, the strongest meaningful metrics, and the strict non-claims: no true-3D, no foundation, no metric/seconds-level claim, no Stage5C execution, and no SMC.
+
+## Stage42-BB T100 Data Gap Audit
+
+```text
+source = fresh_synthesis_from_stage42_ba_and_calibration
+verdict = stage42_bb_t100_data_gap_audit_pass_with_data_blocker
+gates = 14 / 14
+unsupported_t100_domains = ETH_UCY, TrajNet, UCY
+additional_t100_sources_needed = ETH_UCY:2, TrajNet:1, UCY:1
+after_source_cv_guard_all = 0.280997
+after_source_cv_guard_t50 = 0.289698
+after_source_cv_guard_t100_raw_frame_diagnostic = 0.0
+after_source_cv_guard_hard_failure = 0.251576
+after_source_cv_guard_easy_degradation = -0.372431
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BB turns the Stage42-BA t100 blocker into a concrete data/calibration action list. ETH_UCY has 0 safe-positive t100 source-CV folds and needs at least two additional safe t100-capable train sources or source-specific repair; TrajNet has 1 safe-positive fold and needs at least one; UCY lacks enough t100-capable original-train sources and needs at least one more. The protected all/t50/hard metrics remain positive after the source-CV guard, but t100 remains a raw-frame diagnostic blocker and must not be claimed as stable positive transfer.
+
+Artifacts:
+
+- `outputs/stage42_long_research/t100_data_gap_audit_stage42.md`
+- `outputs/stage42_long_research/user_action_required_t100_stage42.md`
+- `outputs/stage42_long_research/stage42_stage_bb_gate.md`
+
+Verification: `python3 run_stage42_t100_data_gap_audit.py` passed, `python3 -m pytest tests/test_stage42_t100_data_gap_audit.py` passed with 4 tests, and `python3 -m pytest tests` passed with 426 tests.

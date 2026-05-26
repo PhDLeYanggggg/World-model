@@ -1,14 +1,53 @@
 {
-  "current_stage": "stage42_ba_t100_source_cv_repair",
-  "current_verdict": "stage42_ba_t100_source_cv_repair_pass_with_t100_blocker",
+  "current_stage": "stage42_bb_t100_data_gap_audit",
+  "current_verdict": "stage42_bb_t100_data_gap_audit_pass_with_data_blocker",
+  "stage42_bb_t100_data_gap_audit": {
+    "source": "fresh_synthesis_from_stage42_ba_and_calibration",
+    "report": "outputs/stage42_long_research/t100_data_gap_audit_stage42.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_t100_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_bb_gate.md",
+    "verdict": "stage42_bb_t100_data_gap_audit_pass_with_data_blocker",
+    "gates": "14/14",
+    "unsupported_t100_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "additional_t100_sources_needed_by_domain": {
+      "ETH_UCY": 2,
+      "TrajNet": 1,
+      "UCY": 1
+    },
+    "after_source_cv_guard": {
+      "all_improvement": 0.280997,
+      "t50_improvement": 0.289698,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "hard_failure_improvement": 0.251576,
+      "easy_degradation": -0.372431
+    },
+    "verification": {
+      "runner": "pass",
+      "focused_pytest": "4 passed",
+      "full_pytest": "426 passed"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "t100_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "latest_execution_summary_readme": {
     "source": "cached_verified_plus_stage42_ba_summary",
     "path": "README_M3W_EXECUTION_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, and strict claim boundaries.",
+    "scope": "Detailed Chinese summary of M3W long-term routes, failures, success evidence, current best deployable policy, strict claim boundaries, and Stage42-BB t100 data/source-support gap audit.",
     "current_best_deployable": "M3W-Neural v1 protected policy under Stage37/teacher safety floor",
     "current_claim": "protected dataset-local raw-frame 2.5D multi-agent world-state candidate",
-    "t100_status": "blocker / diagnostic after Stage42-BA train-only source-CV guard",
+    "t100_status": "blocker / diagnostic after Stage42-BA train-only source-CV guard and Stage42-BB data gap audit",
+    "latest_t100_user_action_file": "outputs/stage42_long_research/user_action_required_t100_stage42.md",
     "stage5c_executed": false,
     "smc_enabled": false
   },

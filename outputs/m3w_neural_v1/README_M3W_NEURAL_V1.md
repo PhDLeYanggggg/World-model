@@ -56,6 +56,8 @@ Stage42-AV checks robustness and weak slices for that mechanism. The global boot
 
 Stage42-AW repairs that UCY validation-support blocker. It carves `UCY::UCY/zara03/crowds_zara03.txt` from original UCY train sources as internal validation, keeps test sources unchanged, and selects policies without test metrics. The validation-best `family_baseline_rel_only` variant reaches global all `+0.356806`, t50 `+0.289698`, hard/failure `+0.338904`; UCY test all `+0.374492`, t50 `+0.245320`, hard/failure `+0.355073`, with negative easy degradation. This is a repaired validation-support protocol, not metric/seconds-level or true-3D evidence.
 
+Stage42-BB packages the current t100 limitation as an actionable data/calibration gap. It reads Stage42-BA train-only source-CV support and the Stage42 calibration audit, then reports that no external domain currently has enough independent t100 support: ETH_UCY needs at least 2 additional safe t100-capable train sources or source-specific repair, TrajNet needs at least 1, and UCY needs at least 1 more t100-capable original-train source. After the source-CV guard, all/t50/hard remain positive and easy remains safe, but t100 raw-frame diagnostic remains `0.0`. The user-action file is `outputs/stage42_long_research/user_action_required_t100_stage42.md`; this is not a new deployment improvement, but a stricter evidence boundary for future data acquisition and calibration.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

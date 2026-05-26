@@ -1,0 +1,501 @@
+{
+  "source": "fresh_synthesis_from_stage42_ba_and_calibration",
+  "stage": "Stage42-BB T100 Data Gap Audit",
+  "generated_at_utc": "2026-05-26T11:55:23.301162+00:00",
+  "git_commit": "de6d60e",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BB 是 Stage42-BA 后的 t100 数据/标定缺口审计，不重新训练模型。",
+    "t100 positive gain 在 Stage42-BA train-only source-CV 下缺少独立 source 支持。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t100 仍是 raw-frame diagnostic，不是 seconds-level long-horizon claim。",
+    "metric / seconds-level pedestrian claims 仍被禁止，除非未来完成官方 FPS/stride/homography/scale 验证。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "a69ff8ba72d4c2843ccc9bb2d76e6747d1bb2169a94bc19a1ef058faa5e31794",
+  "ba_verdict": "stage42_ba_t100_source_cv_repair_pass_with_t100_blocker",
+  "ba_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "ay_input_verified": true,
+      "az_input_verified": true,
+      "source_cv_folds_built": true,
+      "domain_support_decisions_reported": true,
+      "final_test_excluded_from_support_selection": true,
+      "cv_guard_applied": true,
+      "final_all_ci_positive": true,
+      "final_t50_ci_positive": true,
+      "final_hard_ci_positive": true,
+      "final_easy_safe": true,
+      "h100_easy_ci_safe": true,
+      "t100_not_overclaimed_if_unsupported": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage42_ba_t100_source_cv_repair_pass_with_t100_blocker"
+  },
+  "ba_final_after_cv_guard": {
+    "rows": 47458,
+    "all_improvement": 0.2809973341665003,
+    "t10_improvement": 0.6828918828498385,
+    "t25_improvement": 0.36085036949152227,
+    "t50_improvement": 0.28969780579498305,
+    "t100_raw_frame_diagnostic_improvement": 0.0,
+    "hard_failure_improvement": 0.2515762038285696,
+    "easy_degradation": -0.3724307772959805,
+    "switch_rate": 0.7017994858611826,
+    "harm_over_fallback": -0.12941047650819773
+  },
+  "source_gaps": {
+    "ETH_UCY": {
+      "source": "fresh_synthesis_from_stage42_ba",
+      "domain": "ETH_UCY",
+      "status": "fresh_run",
+      "fold_count": 4,
+      "t100_capable_original_train_sources": 4,
+      "safe_positive_fold_count": 0,
+      "supported_for_t100": false,
+      "missing_safe_positive_folds": 2,
+      "additional_t100_capable_train_sources_needed": 2,
+      "blocker_type": "t100_easy_safety_not_stable_across_source_cv",
+      "support_rule": ">=2 safe-positive folds, min t100 > 0, max easy <= 0.02",
+      "original_support": {
+        "source": "fresh_run",
+        "status": "fresh_run",
+        "fold_count": 4,
+        "safe_positive_fold_count": 0,
+        "min_t100_improvement": 0.0,
+        "median_t100_improvement": 0.0,
+        "max_easy_degradation": 0.39783898629931813,
+        "supported_for_t100": false,
+        "support_rule": ">=2 safe-positive folds, min t100 > 0, max easy <= 0.02"
+      }
+    },
+    "TrajNet": {
+      "source": "fresh_synthesis_from_stage42_ba",
+      "domain": "TrajNet",
+      "status": "fresh_run",
+      "fold_count": 3,
+      "t100_capable_original_train_sources": 3,
+      "safe_positive_fold_count": 1,
+      "supported_for_t100": false,
+      "missing_safe_positive_folds": 1,
+      "additional_t100_capable_train_sources_needed": 1,
+      "blocker_type": "t100_easy_safety_not_stable_across_source_cv",
+      "support_rule": ">=2 safe-positive folds, min t100 > 0, max easy <= 0.02",
+      "original_support": {
+        "source": "fresh_run",
+        "status": "fresh_run",
+        "fold_count": 3,
+        "safe_positive_fold_count": 1,
+        "min_t100_improvement": 0.15456595960382735,
+        "median_t100_improvement": 0.46707640500180736,
+        "max_easy_degradation": 0.0673639177746077,
+        "supported_for_t100": false,
+        "support_rule": ">=2 safe-positive folds, min t100 > 0, max easy <= 0.02"
+      }
+    },
+    "UCY": {
+      "source": "fresh_synthesis_from_stage42_ba",
+      "domain": "UCY",
+      "status": "not_run",
+      "fold_count": 0,
+      "t100_capable_original_train_sources": 2,
+      "safe_positive_fold_count": 0,
+      "supported_for_t100": false,
+      "missing_safe_positive_folds": 2,
+      "additional_t100_capable_train_sources_needed": 1,
+      "blocker_type": "insufficient_t100_capable_original_train_sources",
+      "support_rule": ">=2 safe-positive folds and easy <= 0.02",
+      "original_support": {
+        "source": "fresh_run",
+        "status": "not_run",
+        "reason": "fewer_than_three_t100_capable_original_train_sources",
+        "fold_count": 0,
+        "supported_for_t100": false
+      }
+    }
+  },
+  "dataset_actions": [
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "sdd",
+      "dataset_name": "Stanford Drone Dataset",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "pixel_raw_frame_only",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "official_hint": "https://cvgl.stanford.edu/projects/uav_data/",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "https://cvgl.stanford.edu/projects/uav_data/",
+        "license_name": "Stanford SDD non-commercial / custom access terms",
+        "license_summary": "Non-commercial/license-contact dataset; do not auto-download without user accepting terms.",
+        "requires_login": false,
+        "requires_application": false,
+        "requires_manual_terms_acceptance": true,
+        "auto_download_allowed": false,
+        "legal_risk_level": "high_without_manual_terms",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "Can support SDD pixel raw-frame work, but does not repair external t100 source support unless separately converted/aligned.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified.",
+        "do not auto-download without user accepting official terms/login/application."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "opentraj",
+      "dataset_name": "OpenTraj",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "calibration_files_found_but_not_validated",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "official_hint": "https://github.com/crowdbotp/OpenTraj",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "https://github.com/crowdbotp/OpenTraj",
+        "license_name": "MIT for toolkit; underlying datasets keep their own licenses",
+        "license_summary": "Toolkit is MIT; dataset downloads are license-specific and must be checked individually.",
+        "requires_login": false,
+        "requires_application": false,
+        "requires_manual_terms_acceptance": false,
+        "auto_download_allowed": false,
+        "legal_risk_level": "medium_dataset_specific",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "Use OpenTraj only through legal underlying dataset terms; do not treat toolkit mirror as license override.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "eth_ucy",
+      "dataset_name": "ETH/UCY",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "calibration_files_found_but_not_validated",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "official_hint": "ETH/BIWI + UCY original dataset pages; verify source-specific terms",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "https://icu.ee.ethz.ch/research/datsets.html",
+        "license_name": "research dataset terms; verify original source",
+        "license_summary": "Use as pedestrian trajectory benchmark only after verifying source files and homography.",
+        "requires_login": false,
+        "requires_application": false,
+        "requires_manual_terms_acceptance": false,
+        "auto_download_allowed": false,
+        "legal_risk_level": "medium",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "t100 source-CV blocker: t100_easy_safety_not_stable_across_source_cv; needs at least 2 additional safe t100-capable train source(s) or source-specific repair.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "trajnet",
+      "dataset_name": "TrajNet++",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "not_verified",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "official_hint": "https://www.epfl.ch/labs/vita/datasets/",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "https://www.epfl.ch/labs/vita/datasets/",
+        "license_name": "dataset-specific / challenge terms",
+        "license_summary": "Use local/original files only after preserving original license/citation.",
+        "requires_login": false,
+        "requires_application": false,
+        "requires_manual_terms_acceptance": false,
+        "auto_download_allowed": false,
+        "legal_risk_level": "medium_dataset_specific",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "t100 source-CV blocker: t100_easy_safety_not_stable_across_source_cv; needs at least 1 additional safe t100-capable train source(s) or source-specific repair.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "ucy",
+      "dataset_name": "UCY Crowd",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "calibration_files_found_but_not_validated",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "official_hint": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+        "license_name": "UCY crowd research terms; verify before use",
+        "license_summary": "license/access status must be verified before use",
+        "requires_login": false,
+        "requires_application": false,
+        "requires_manual_terms_acceptance": false,
+        "auto_download_allowed": false,
+        "legal_risk_level": "medium",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "t100 source-CV blocker: insufficient_t100_capable_original_train_sources; needs at least 1 additional safe t100-capable train source(s) or source-specific repair.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "tgsim",
+      "dataset_name": "TGSIM",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "traffic_metric_diagnostic_only",
+      "metric_claim_allowed": true,
+      "seconds_claim_allowed": false,
+      "official_hint": "https://data.transportation.gov/",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "https://data.transportation.gov/",
+        "license_name": "trajectory data; official portal required",
+        "license_summary": "Traffic diagnostic only. Do not report as pedestrian/drone world-model success.",
+        "requires_login": true,
+        "requires_application": false,
+        "requires_manual_terms_acceptance": true,
+        "auto_download_allowed": false,
+        "legal_risk_level": "medium",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "Traffic metric diagnostic only; do not use as pedestrian/drone world-model success.",
+        "do not auto-download without user accepting official terms/login/application."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration_and_stage42_ba",
+      "dataset_id": "aerialmpt",
+      "dataset_name": "AerialMPT",
+      "raw_path_found": false,
+      "converted_path_found": true,
+      "calibration_state": "not_verified",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "official_hint": "DLR AerialMPT official page required; local prior stages have derived scene packs",
+      "legal_status": {
+        "source": "cached_verified",
+        "official_url": "https://www.dlr.de/",
+        "license_name": "unknown",
+        "license_summary": "Official source must be resolved before download or benchmark use.",
+        "requires_login": false,
+        "requires_application": true,
+        "requires_manual_terms_acceptance": false,
+        "auto_download_allowed": false,
+        "legal_risk_level": "high_until_official_source_resolved",
+        "download_status": "not_downloaded_by_agent"
+      },
+      "next_action": "user_action_or_source_specific_repair_required",
+      "reasons": [
+        "Potential long aerial/top-down source, but official terms, raw sequences, FPS/stride and calibration must be verified before claims.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified.",
+        "do not auto-download without user accepting official terms/login/application."
+      ]
+    }
+  ],
+  "summary": {
+    "source": "fresh_synthesis_from_stage42_ba_and_calibration",
+    "domains_audited": 3,
+    "unsupported_t100_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "supported_t100_domains": [],
+    "additional_t100_sources_needed_by_domain": {
+      "ETH_UCY": 2,
+      "TrajNet": 1,
+      "UCY": 1
+    },
+    "any_t100_domain_supported": false,
+    "final_all_positive_after_guard": true,
+    "final_t50_positive_after_guard": true,
+    "final_hard_positive_after_guard": true,
+    "final_easy_safe_after_guard": true,
+    "final_t100_positive_after_guard": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "paper_claim": "t100 remains a data/support blocker. Protected all/t50/hard remain positive after source-CV guard, but t100 positive gain must not be claimed until independent source-level support is added or repaired."
+  },
+  "user_action_required": [
+    {
+      "source": "fresh_synthesis_from_stage42_ba",
+      "priority": "high",
+      "target": "ETH_UCY",
+      "action_type": "provide_more_independent_t100_capable_topdown_sources_or_source_specific_repair",
+      "reason": "t100_easy_safety_not_stable_across_source_cv",
+      "minimum_extra_sources": 2,
+      "notes": "Provide legal raw/source files with train/val/test provenance, long enough t100 tracks, and official FPS/stride/homography/scale if available. Do not use test endpoints for goals or threshold selection."
+    },
+    {
+      "source": "fresh_synthesis_from_stage42_ba",
+      "priority": "high",
+      "target": "TrajNet",
+      "action_type": "provide_more_independent_t100_capable_topdown_sources_or_source_specific_repair",
+      "reason": "t100_easy_safety_not_stable_across_source_cv",
+      "minimum_extra_sources": 1,
+      "notes": "Provide legal raw/source files with train/val/test provenance, long enough t100 tracks, and official FPS/stride/homography/scale if available. Do not use test endpoints for goals or threshold selection."
+    },
+    {
+      "source": "fresh_synthesis_from_stage42_ba",
+      "priority": "high",
+      "target": "UCY",
+      "action_type": "provide_more_independent_t100_capable_topdown_sources_or_source_specific_repair",
+      "reason": "insufficient_t100_capable_original_train_sources",
+      "minimum_extra_sources": 1,
+      "notes": "Provide legal raw/source files with train/val/test provenance, long enough t100 tracks, and official FPS/stride/homography/scale if available. Do not use test endpoints for goals or threshold selection."
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "medium",
+      "target": "sdd",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "https://cvgl.stanford.edu/projects/uav_data/",
+      "reasons": [
+        "Can support SDD pixel raw-frame work, but does not repair external t100 source support unless separately converted/aligned.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified.",
+        "do not auto-download without user accepting official terms/login/application."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "medium",
+      "target": "opentraj",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "https://github.com/crowdbotp/OpenTraj",
+      "reasons": [
+        "Use OpenTraj only through legal underlying dataset terms; do not treat toolkit mirror as license override.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "high",
+      "target": "eth_ucy",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "ETH/BIWI + UCY original dataset pages; verify source-specific terms",
+      "reasons": [
+        "t100 source-CV blocker: t100_easy_safety_not_stable_across_source_cv; needs at least 2 additional safe t100-capable train source(s) or source-specific repair.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "high",
+      "target": "trajnet",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "https://www.epfl.ch/labs/vita/datasets/",
+      "reasons": [
+        "t100 source-CV blocker: t100_easy_safety_not_stable_across_source_cv; needs at least 1 additional safe t100-capable train source(s) or source-specific repair.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "high",
+      "target": "ucy",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "reasons": [
+        "t100 source-CV blocker: insufficient_t100_capable_original_train_sources; needs at least 1 additional safe t100-capable train source(s) or source-specific repair.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "medium",
+      "target": "tgsim",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "https://data.transportation.gov/",
+      "reasons": [
+        "Traffic metric diagnostic only; do not use as pedestrian/drone world-model success.",
+        "do not auto-download without user accepting official terms/login/application."
+      ]
+    },
+    {
+      "source": "fresh_synthesis_from_calibration",
+      "priority": "medium",
+      "target": "aerialmpt",
+      "action_type": "user_action_or_source_specific_repair_required",
+      "official_hint": "DLR AerialMPT official page required; local prior stages have derived scene packs",
+      "reasons": [
+        "Potential long aerial/top-down source, but official terms, raw sequences, FPS/stride and calibration must be verified before claims.",
+        "keep dataset-local/raw-frame claim until official FPS/stride/homography/scale are verified.",
+        "do not auto-download without user accepting official terms/login/application."
+      ]
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_metrics_for_threshold": false,
+    "reads_stage42_ba_source_cv_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "t100_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_bb_gate": {
+    "source": "fresh_synthesis_from_stage42_ba_and_calibration",
+    "gates": {
+      "ba_input_verified": true,
+      "source_gap_quantified": true,
+      "unsupported_domains_reported": true,
+      "data_actions_built": true,
+      "user_action_generated": true,
+      "all_remains_positive_after_guard": true,
+      "t50_remains_positive_after_guard": true,
+      "hard_remains_positive_after_guard": true,
+      "easy_remains_safe_after_guard": true,
+      "t100_not_overclaimed": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_bb_t100_data_gap_audit_pass_with_data_blocker"
+  }
+}
