@@ -4,9 +4,15 @@
 
 Current one-file research route/failure/success summary requested by the user:
 
+`/Users/yangyue/Downloads/World/README_M3W_FULL_GOAL_REVIEW_ZH.md`
+
+This is the newest consolidated human-facing review for the full M3W goal: routes tried, failures and root causes, successful evidence, current best deployable model, current claim boundaries, and the latest Stage42-BL ETH-Person XML technical dry-run limitation.
+
+Previous canonical summary:
+
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-This newly consolidated Chinese README is the current user-facing detailed answer: what was attempted across the M3W goal, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the latest Stage42-BJ post-BI t100 source package. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+This Chinese README remains the longer ongoing ledger: what was attempted across the M3W goal, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the latest Stage42 source package updates. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
 
 Companion detailed ledgers remain available:
 
