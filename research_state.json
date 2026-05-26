@@ -1,6 +1,6 @@
 {
-  "current_stage": "stage42_bt_eth_seq_t50_support_dry_run",
-  "current_verdict": "stage42_bt_eth_seq_t50_support_dry_run_pass_blocker_confirmed",
+  "current_stage": "Stage42-BV source acquisition status / blocker matrix",
+  "current_verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
   "stage42_bt_eth_seq_t50_support_dry_run": {
     "source": "fresh_eth_seq_t50_support_dry_run_terms_unverified",
     "report": "outputs/stage42_long_research/eth_seq_t50_support_dry_run_stage42.md",
@@ -15701,5 +15701,36 @@
       "stage5c_executed": false,
       "smc_enabled": false
     }
-  }
+  },
+  "stage42_bv_source_acquisition_status": {
+    "source": "fresh_stage42_bv_source_acquisition_status",
+    "verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
+    "gates_passed": 16,
+    "gates_total": 16,
+    "blockers_total": 5,
+    "blockers_active": 5,
+    "ucy_students_blocker_narrowed": true,
+    "eth_seq_blocker_resolved": false,
+    "trajnet_raw_long_source_resolved": false,
+    "global_t100_positive_claim_allowed": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "auto_download_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "next_best_actions": [
+      "provide one more independent t50-capable UCY_students-family source",
+      "verify ETH-Person terms before using XML dry-run as official evidence",
+      "provide legal raw long TrajNet-compatible tracks if t100 source-CV is required"
+    ],
+    "report": "outputs/stage42_long_research/source_acquisition_status_stage42.json",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_source_acquisition_stage42.md",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_source_acquisition_status.py -> pass",
+      "focused_pytest": "python3 -m pytest tests/test_stage42_source_acquisition_status.py tests/test_stage42_ucy_students_t50_source_support.py tests/test_stage42_eth_seq_t50_support_dry_run.py -> 6 passed",
+      "full_pytest": "python3 -m pytest tests -> 499 passed"
+    }
+  },
+  "latest_stage42_source_support_summary": "Stage42-BV fresh-ran source acquisition/status blocker matrix. Gates 16/16. Five blockers remain active: ETH_seq t50 source support, UCY_students t50 source support, TrajNet raw long t100 source support, ETH_UCY global t100 source support, and global metric/seconds claim. No automatic download, no registry-only conversion claim, no Stage5C, no SMC.",
+  "latest_verification": "python3 -m pytest tests -> 499 passed after Stage42-BV source acquisition status audit"
 }

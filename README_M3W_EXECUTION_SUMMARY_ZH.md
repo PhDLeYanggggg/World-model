@@ -958,6 +958,27 @@ ucy_students_t50_support_repaired = false
 
 这一步把 `UCY_students` 的 blocker 缩小了：本地 `students001` 是真正新增的 t50-capable 同族源，`students003` 是已有 calibrated source；但 `students002` 本地 TrajNet 文件太短，不能提供 t50，其他 `students001/003` 文件只是 duplicate 或 alternate format，不能当独立源。现在 `UCY_students` 还缺 1 个独立 t50-capable students-family source，才能做 train/val/holdout source-CV。它仍不是 positive t50 transfer。
 
+Stage42-BV 把 BU/BT/BM/BK/BJ/BN 的剩余 source blocker 合并成 acquisition/status matrix：
+
+```text
+source = fresh_stage42_bv_source_acquisition_status
+verdict = stage42_bv_source_acquisition_status_pass_blockers_actionable
+gates = 16 / 16
+blockers_total = 5
+blockers_active = 5
+eth_seq_blocker_resolved = false
+ucy_students_blocker_narrowed = true
+trajnet_raw_long_source_resolved = false
+global_t100_positive_claim_allowed = false
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+auto_download_executed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+这一步没有训练模型，也没有把任何 registry-only / terms-blocked / snippet-only 数据算作 converted/evaluated。它明确当前 5 个 active blockers：`ETH_seq_t50_source_support`、`UCY_students_t50_source_support`、`TrajNet_raw_long_t100_source_support`、`ETH_UCY_global_t100_source_support`、`global_metric_seconds_claim`。下一步必须先补合法独立源或确认 terms，再重跑 conversion / no-leakage / source-CV。
+
 ## 9. 主要验证命令记录
 
 最近累计通过的关键验证包括：
@@ -989,6 +1010,7 @@ python3 run_stage42_local_t100_schema_conversion.py = pass
 python3 run_stage42_ucy_zara_t50_family_policy.py = pass
 python3 run_stage42_eth_seq_t50_support_dry_run.py = pass
 python3 run_stage42_ucy_students_t50_source_support.py = pass
+python3 run_stage42_source_acquisition_status.py = pass
 python3 -m pytest tests/test_stage42_t100_data_gap_audit.py = 4 passed
 python3 -m pytest tests/test_stage42_t100_source_acquisition_plan.py = 4 passed
 python3 -m pytest tests/test_stage42_local_t100_source_inventory.py = 4 passed
@@ -997,7 +1019,8 @@ python3 -m pytest tests/test_stage42_local_t100_schema_conversion.py = 4 passed
 python3 -m pytest tests/test_stage42_ucy_zara_t50_family_policy.py = 3 passed
 python3 -m pytest tests/test_stage42_eth_seq_t50_support_dry_run.py = 2 passed
 python3 -m pytest tests/test_stage42_ucy_students_t50_source_support.py = 2 passed
-python3 -m pytest tests = 497 passed
+python3 -m pytest tests/test_stage42_source_acquisition_status.py = 2 passed
+python3 -m pytest tests = 499 passed
 ```
 
 ## 10. 总结成一句话
@@ -1006,5 +1029,5 @@ python3 -m pytest tests = 497 passed
 M3W 现在最有价值的成果，不是“已经做成 true 3D/foundation 神经世界模型”，而是严谨地证明了：
 在真实 top-down 多智能体 raw-frame 数据上，只有把因果 baseline family、past-only history、目标原型、source-family support、gain/harm/easy guard、validation-only policy 和 safety floor 结合起来，才能获得可部署或局部可部署的 external t50 / full-waypoint 正迁移；同时，JEPA、无保护 neural、plain domain alignment、terms 未确认数据、source-support 不足的 t50/t100 claim 都必须被明确限制。
 
-截至 Stage42-BU，最强正结果是 Stage37 / M3W-Neural v1 protected policy 和 Stage42 source-level/full-waypoint/UCY_zara family-specific repair；最重要未解 blocker 是 ETH_seq 的 source-compatible calibrated t50 support、UCY_students 还缺 1 个 independent t50-capable students-family source，以及 ETH_UCY / TrajNet 的 global t100 独立源支持与合法数据条款。
+截至 Stage42-BV，最强正结果是 Stage37 / M3W-Neural v1 protected policy 和 Stage42 source-level/full-waypoint/UCY_zara family-specific repair；最重要未解 blocker 是 ETH_seq 的 source-compatible calibrated t50 support、UCY_students 还缺 1 个 independent t50-capable students-family source、TrajNet 缺 raw long-track source，以及 ETH_UCY / TrajNet 的 global t100 独立源支持与合法数据条款。
 ```

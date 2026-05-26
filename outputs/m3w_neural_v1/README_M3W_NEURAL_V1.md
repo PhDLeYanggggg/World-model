@@ -968,3 +968,32 @@ smc_enabled = false
 ```
 
 Stage42-BU narrows the remaining calibrated t50 blocker for `UCY_students`. The local `students001` source is t50-capable and independent from the existing `students003` calibrated source, but `students002` is too short for t50 and duplicate/alternate `students001/003` files are not counted as independent. UCY_students therefore still needs one more independent t50-capable same-family source before a protected train/val/holdout source-CV t50 repair can be attempted.
+
+## Stage42-BV Source Acquisition / Blocker Matrix
+
+```text
+source = fresh_stage42_bv_source_acquisition_status
+verdict = stage42_bv_source_acquisition_status_pass_blockers_actionable
+gates = 16 / 16
+blockers_total = 5
+blockers_active = 5
+ucy_students_blocker_narrowed = true
+eth_seq_blocker_resolved = false
+trajnet_raw_long_source_resolved = false
+global_t100_positive_claim_allowed = false
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+auto_download_executed = false
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-BV turns the remaining source-support and claim-boundary blockers into an explicit acquisition/status matrix. It preserves the positive Stage37/M3W-Neural protected evidence, but refuses to upgrade any terms-blocked, snippet-only, or source-under-supported result into a deployable global claim. The active blockers are:
+
+- `ETH_seq_t50_source_support`: ETH-Person XML has technical h50 signal, but terms remain unverified and the dry-run did not safely repair the actual `ETH_seq_eth` holdout.
+- `UCY_students_t50_source_support`: BU found `students001` as a new t50-capable independent source, but one more independent students-family source is still needed.
+- `TrajNet_raw_long_t100_source_support`: local TrajNet files are short challenge snippets, not raw long tracks for raw-frame t100 source-CV.
+- `ETH_UCY_global_t100_source_support`: ETH-Person XML t100 dry-run remains technical-only until terms and official conversion are resolved.
+- `global_metric_seconds_claim`: only source-specific calibration evidence exists; global M3W remains raw-frame / dataset-local.
+
+No Stage5C execution, no SMC, no metric/seconds-level overclaim, and no automatic download occurred.

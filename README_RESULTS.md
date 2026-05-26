@@ -11,6 +11,28 @@ This is the newest detailed Chinese retrospective for the full M3W goal: what wa
 Latest concrete Stage42 progress after that summary:
 
 ```text
+Stage42-BV source acquisition / blocker matrix
+source = fresh_stage42_bv_source_acquisition_status
+verdict = stage42_bv_source_acquisition_status_pass_blockers_actionable
+gates = 16 / 16
+blockers_total = 5
+blockers_active = 5
+ucy_students_blocker_narrowed = true
+eth_seq_blocker_resolved = false
+trajnet_raw_long_source_resolved = false
+global_t100_positive_claim_allowed = false
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+auto_download_executed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BV converts the remaining external source-support problems into an actionable blocker matrix. It keeps five blockers active rather than overclaiming them: `ETH_seq_t50_source_support`, `UCY_students_t50_source_support`, `TrajNet_raw_long_t100_source_support`, `ETH_UCY_global_t100_source_support`, and `global_metric_seconds_claim`. It records official/source references for TrajNet++/AIcrowd, OpenTraj, ETH CVL, and UCY crowd data, but does not auto-download anything and does not count registry-only or terms-blocked data as converted/evaluated. Current next actions remain: provide one more independent t50-capable UCY_students source, verify ETH-Person terms, and provide legal raw long TrajNet-compatible tracks if t100 source-CV is required.
+
+Previous concrete Stage42 progress:
+
+```text
 Stage42-BS UCY_zara family-specific t50 policy
 source = fresh_ucy_zara_t50_family_policy
 verdict = stage42_bs_ucy_zara_t50_family_policy_pass_positive
