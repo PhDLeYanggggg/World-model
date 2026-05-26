@@ -14,11 +14,11 @@
 best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor
 dominant mechanism = baseline-family rollout context + causal history + guarded domain expert + conservative safety floor
 not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as independent drivers
-latest audits = Stage42-CJ goal/scene gated expert and Stage42-CK neighbor/interaction gated expert
+latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, and Stage42-CM full-waypoint boundary audit
 latest gate status = CJ 10 / 10, CK 11 / 11
 latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
 latest full-waypoint boundary audit = Stage42-CM endpoint bridge / full-waypoint shape audit, 14 / 14 gates
-latest full pytest = 562 passed
+latest full pytest = 568 passed
 ```
 
 Latest concrete Stage42 progress after the goal retrospective:

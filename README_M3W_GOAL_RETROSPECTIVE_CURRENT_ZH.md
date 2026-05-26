@@ -2,7 +2,7 @@
 
 更新时间：2026-05-26
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CJ goal/scene gated expert audit 与 Stage42-CK neighbor/interaction gated expert audit。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
+结果来源：`cached_verified` 汇总 Stage18-Stage42 已生成报告、gate、README、`research_state.json`；最近可验证 fresh 证据截至 Stage42-CM endpoint bridge / full-waypoint shape audit，并包含 Stage42-CJ/CK context negative evidence 与 Stage42-CL paper-package claim guard refresh。本文是面向用户的“一个 README 总账”，专门回答：这个长期目标内到底做了什么、尝试了什么路线、哪些失败、为什么失败、哪些成功、当前 best deployable 是谁、哪些 claim 仍然禁止。
 用途：这是当前 M3W 长期目标的单文件中文总览，用来回答“这个目标内到底做了什么、尝试了什么路线、哪些失败了、为什么失败、哪些成功了、当前最强模型是谁、下一步该怎么走”。
 
 ## 本次问题的直接答案
@@ -16,6 +16,7 @@
 5. 最后 Stage37 修复 external t+50，Stage41/42 做 protected neural / full-waypoint / source-level evidence package。
 6. Stage42-CI 把贡献边界重新审计清楚：当前最稳机制不是“JEPA/Transformer 单独起飞”，而是 `baseline-family rollout context + causal history + guarded domain expert + Stage37/teacher safety floor`。
 7. Stage42-CJ/CK 又专门尝试把 goal/scene 与 neighbor/interaction 做成 validation-only gated expert，结果都没有超过 `baseline_family_control`，所以这两类上下文继续只能写 diagnostic / auxiliary，不能写成主贡献。
+8. Stage42-CL 已把 CJ/CK 的负证据同步进 paper package，Stage42-CM 又把 endpoint-linear bridge 与 full-waypoint sequence 的边界审计清楚：full-waypoint 对 t50/t100 raw-frame horizon 有真实辅助增益，但还不能替代 endpoint-linear bridge 的 all-ADE floor。
 
 当前最强可部署结论：
 
