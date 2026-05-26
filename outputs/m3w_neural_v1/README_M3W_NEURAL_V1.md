@@ -58,6 +58,12 @@ Latest Stage42 proximity-aware composer guard:
 
 Stage42-CQ passes `19 / 19` gates as `fresh_validation_selected_proximity_guard_from_stage42_co_policy`. It directly repairs the Stage42-CP safety caveat by selecting a predicted-proximity guard on validation only (`min_sep=0.2`, `margin=0.005`) and evaluating test once. Against endpoint-linear bridge, the guarded composer keeps positive ADE gains: all `+1.77%`, t50 `+1.07%`, t100 raw-frame diagnostic `+3.48%`, hard/failure `+1.93%`, easy degradation `+0.25%`; bootstrap lower bounds are positive for all and t50. Near-collision@0.05 becomes `-0.06%` versus endpoint-linear and `-0.45%` versus the strongest floor. This is a safer protected composer variant, not metric/seconds-level, Stage5C, or SMC evidence.
 
+Latest Stage42 proximity guard ablation / Pareto audit:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/proximity_guard_ablation_stage42.md`
+
+Stage42-CR passes `19 / 19` gates as `fresh_synthesis_from_stage42_co_cp_cq_artifacts`. It makes the safety/accuracy tradeoff explicit: the no-guard composer has higher ADE gain (`+3.02%` all, `+1.50%` t50, `+6.12%` t100 raw, `+3.28%` hard/failure) but worsens near-collision@0.05 by `+0.34%` versus endpoint-linear. The guarded composer gives up accuracy (`+1.77%` all, `+1.07%` t50, `+3.48%` t100 raw, `+1.93%` hard/failure) but repairs near-collision@0.05 to `-0.06%`. The recommended safety-sensitive policy is therefore the proximity guard; the no-guard variant is diagnostic/accuracy-priority only.
+
 Latest Stage42 safety-floor audit:
 
 `/Users/yangyue/Downloads/World/outputs/stage42_long_research/safety_floor_necessity_audit_stage42.md`

@@ -314,3 +314,15 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - near-collision@0.05 delta vs strongest floor: `-0.45%`.
 - claim boundary: still dataset-local/raw-frame 2.5D; no metric/seconds-level, no Stage5C, no SMC.
 <!-- STAGE42_CQ_PROXIMITY_AWARE_COMPOSER_GUARD:END -->
+
+<!-- STAGE42_CR_PROXIMITY_GUARD_ABLATION:START -->
+## Stage42-CR Proximity Guard Ablation / Pareto Audit
+
+- source: `fresh_synthesis_from_stage42_co_cp_cq_artifacts`
+- scope: CO/CP unguarded composer versus CQ proximity-aware composer guard.
+- no proximity guard ADE all/t50/t100/hard: `3.02%` / `1.50%` / `6.12%` / `3.28%`.
+- proximity guard ADE all/t50/t100/hard: `1.77%` / `1.07%` / `3.48%` / `1.93%`.
+- guard accuracy cost all/t50/t100/hard: `1.24%` / `0.44%` / `2.64%` / `1.35%`.
+- guard near-collision@0.05 repair versus no guard: `-0.40%`.
+- claim boundary: still dataset-local/raw-frame 2.5D; no metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_CR_PROXIMITY_GUARD_ABLATION:END -->

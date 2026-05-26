@@ -14,7 +14,7 @@
 best deployable = M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37 / teacher safety floor
 dominant mechanism = baseline-family rollout context + causal history + guarded domain expert + conservative safety floor
 not main claims = JEPA, Transformer, goal/scene, neighbor/interaction as independent drivers
-latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, Stage42-CM full-waypoint boundary audit, Stage42-CN bridge/shape composer audit, Stage42-CP composer safety/bootstrap audit, and Stage42-CQ proximity-aware composer guard
+latest audits = Stage42-CJ goal/scene gated expert, Stage42-CK neighbor/interaction gated expert, Stage42-CL paper-package context guard, Stage42-CM full-waypoint boundary audit, Stage42-CN bridge/shape composer audit, Stage42-CP composer safety/bootstrap audit, Stage42-CQ proximity-aware composer guard, and Stage42-CR proximity guard ablation
 latest gate status = CJ 10 / 10, CK 11 / 11
 latest paper-package refresh = Stage42-CL post-CJ/CK context guard, 11 / 11 gates
 latest full-waypoint boundary audit = Stage42-CM endpoint bridge / full-waypoint shape audit, 14 / 14 gates
@@ -22,7 +22,8 @@ latest bridge/shape composer audit = Stage42-CN, 15 / 15 gates, blocker document
 latest common-validation composer = Stage42-CO, 14 / 14 gates, endpoint-vs-full rows aligned
 latest composer safety/bootstrap = Stage42-CP, 14 / 14 gates, 2000-bootstrap CI and all-agent joint safety audit
 latest proximity-aware composer guard = Stage42-CQ, 19 / 19 gates, near-collision caveat repaired with positive all/t50/t100/hard bootstrap evidence
-latest full pytest = 579 passed
+latest proximity guard ablation = Stage42-CR, 19 / 19 gates, no-guard accuracy vs guarded safety Pareto boundary documented
+latest full pytest = 582 passed
 ```
 
 ```text
@@ -93,6 +94,30 @@ SMC_enabled = false
 ```
 
 Stage42-CQ turns the Stage42-CP proximity caveat into a validation-selected safety policy. It gives up part of the Stage42-CO/CP accuracy gain, but it keeps all/t50/t100 raw-frame/hard-failure positive with positive bootstrap lower bounds while making near-collision@0.05 no worse than endpoint-linear or the strongest floor. This is the safer composer variant for safety-sensitive reporting; it remains protected dataset-local/raw-frame 2.5D evidence, not metric/seconds-level, true 3D, Stage5C, or SMC evidence.
+
+```text
+Stage42-CR proximity guard ablation / Pareto audit
+source = fresh_synthesis_from_stage42_co_cp_cq_artifacts
+verdict = stage42_cr_proximity_guard_ablation_pass
+gates = 19 / 19
+ablation rows:
+  endpoint_linear_reference: all/t50/t100/hard = 0.00% / 0.00% / 0.00% / 0.00%, near@0.05 delta = 0.00%
+  no_proximity_guard: all/t50/t100/hard = +3.02% / +1.50% / +6.12% / +3.28%, near@0.05 delta = +0.34%
+  proximity_guard: all/t50/t100/hard = +1.77% / +1.07% / +3.48% / +1.93%, near@0.05 delta = -0.06%
+guard contribution:
+  all-ADE cost = -1.24%
+  t50-ADE cost = -0.44%
+  t100 raw diagnostic cost = -2.64%
+  hard/failure cost = -1.35%
+  near-collision@0.05 repair = -0.40%
+recommendation:
+  accuracy-priority diagnostic policy = no_proximity_guard
+  safety-sensitive deployment policy = proximity_guard
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-CR turns CQ into an explicit causal/Pareto ablation. Removing the proximity guard gives higher ADE gain but worsens near-collision@0.05; adding the guard repairs the proximity caveat while preserving positive all/t50/t100 raw-frame/hard-failure gains. This is useful paper evidence for safe-switch / guard contribution, but it remains protected dataset-local/raw-frame 2.5D evidence only.
 
 ```text
 Stage42-CN bridge / shape composer audit
