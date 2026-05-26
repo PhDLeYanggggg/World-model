@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`
 
-This newly consolidated Chinese README is the current user-facing detailed answer: what was attempted across the M3W goal, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the latest Stage42-BI source-robust UCY t100 easy-guard repair. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+This newly consolidated Chinese README is the current user-facing detailed answer: what was attempted across the M3W goal, which routes failed and why, which routes succeeded, current best deployable status, strict claim boundaries, and the latest Stage42-BJ post-BI t100 source package. It keeps the key boundary explicit: current M3W is still a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
 
 Companion detailed ledgers remain available:
 
@@ -138,6 +138,26 @@ global_t100_positive_claim_allowed = false
 
 Stage42-BI repairs the UCY independent-source t100 easy-degradation blocker by requiring a candidate policy to be positive and easy-safe on every non-holdout source before holdout evaluation. This is a real fresh repair for UCY t100, but global t100 is still blocked because ETH_UCY and TrajNet lack enough independent t100 sources.
 
+Latest Stage42-BJ post-BI t100 source package:
+
+```text
+source = fresh_post_bi_t100_source_package
+verdict = stage42_bj_post_bi_t100_source_package_pass
+gates = 14 / 14
+UCY_t100_repaired = true
+ETH_UCY_independent_sources = 1
+ETH_UCY_additional_sources_needed = 2
+TrajNet_independent_sources = 0
+TrajNet_additional_sources_needed = 3
+local_inventory_exhausted_for_domains = ETH_UCY, TrajNet
+global_t100_positive_claim_allowed = false
+auto_download_executed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BJ turns the BI blocker into an explicit acquisition / user-action package. It distinguishes raw t100-capable files from independent scene/source groups: the local ETH_UCY files collapse to one independent `ETH/seq_eth` source, and TrajNet has no independent local t100 source. Therefore the next real progress requires legal official/user-provided independent t100 sources for ETH_UCY and TrajNet, followed by conversion and train-only source-CV. No data was auto-downloaded and no registry-only source was counted as converted/evaluated.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
@@ -146,7 +166,7 @@ Latest update: this canonical Chinese summary now explicitly includes Stage42-W/
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
-Validation for the latest detailed summary / Stage42-BI refresh: focused pytest `12 passed`; full-suite pytest pending after BI.
+Validation for the latest detailed summary / Stage42-BJ refresh: focused pytest `5 passed`; full-suite pytest remains deferred for the ongoing long-running Stage42 goal.
 
 Most important current summary:
 

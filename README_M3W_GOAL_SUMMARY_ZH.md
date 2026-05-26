@@ -144,6 +144,7 @@ Stage42 把 Stage37 的 selector-level 成功继续往 full-waypoint 和 source-
 | Stage42-BG | local t100 protected policy：UCY mean +0.440938，easy 0.01134，global t100 blocked | UCY local t100 有正 evidence，但不能 global claim |
 | Stage42-BH | independent-source audit：UCY mean +0.483414，但 easy 0.063323 > 2% | 独立源协议下 UCY t100 仍不 deployable |
 | Stage42-BI | source-robust easy guard repair：UCY mean +0.445914，min +0.425313，max easy 0.011340，gates 14/14 | UCY independent-source t100 easy blocker 修复；global t100 仍被 ETH_UCY/TrajNet 数据不足阻塞 |
+| Stage42-BJ | post-BI t100 source package：UCY repaired 保留；ETH_UCY 1 个 independent source、还差 2 个；TrajNet 0 个、还差 3 个；gates 14/14 | 明确下一步必须合法补 ETH_UCY/TrajNet independent t100 source；没有自动下载，没有 overclaim |
 
 ## 3. 路线复盘：试了什么，结果是什么
 
@@ -556,7 +557,8 @@ t+100 现在最容易被误读，所以单独写清楚。
 - Stage42-BG local UCY t100 source-CV positive/easy-safe。
 - Stage42-BH independent-source audit 发现 UCY mean positive，但 easy degradation 6.33% > 2%。
 - Stage42-BI 用 source-robust easy guard 修复 UCY independent-source t100 easy：mean +0.445914、min +0.425313、max easy 0.011340。
-- 但 ETH_UCY 只有 1 个 independent t100 source，TrajNet 0 个，所以 global t100 positive claim 仍不允许。
+- Stage42-BJ 把 BI 后的 blocker 转成 source package：ETH_UCY 只有 1 个 independent t100 source、还差 2 个；TrajNet 0 个、还差 3 个；当前 local inventory 对这些独立源需求已经耗尽。
+- 所以 global t100 positive claim 仍不允许。
 
 当前 t+100 结论：
 
@@ -581,7 +583,7 @@ t100 remains raw-frame diagnostic / source-limited blocker。
 下一步建议：
 
 ```text
-Stage42-BJ:
+Stage42-BK:
   找/转 ETH_UCY 与 TrajNet 的 independent t100-capable sources。
   不做 metric/seconds claim。
   不把 registry-only 写成 converted。
@@ -623,12 +625,14 @@ README_RESULTS.md
 
 ## 10. 最近验证状态
 
-最近 Stage42-BI 已完成：
+最近 Stage42-BJ 已完成：
 
 ```text
 runner = pass
-focused pytest = 12 passed
-full pytest = pending / interrupted by known x86_64 Conda subprocess issue unless using fork-safety workaround
+focused pytest = 5 passed
+full pytest = deferred for the ongoing long-running Stage42 goal
+verdict = stage42_bj_post_bi_t100_source_package_pass
+gate = 14 / 14
 ```
 
 已知 runtime 注意事项：

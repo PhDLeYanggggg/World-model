@@ -1,0 +1,274 @@
+{
+  "source": "fresh_post_bi_t100_source_package",
+  "stage": "Stage42-BJ Post-BI T100 Source Package",
+  "generated_at_utc": "2026-05-26T13:22:34.860624+00:00",
+  "git_commit": "260a4ad",
+  "input_hash": "f5ddf095e6062ff59383bfbc2abacce8705805971c459a5c8b66b07b6b3c3c5a",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BI 已修复 UCY independent-source t100 easy guard，但这不是 global t100 success。",
+    "ETH_UCY 和 TrajNet 仍缺足够 independent t100 sources，不能写全局 t100 positive claim。",
+    "Stage42-BJ 不训练模型、不下载 gated/restricted raw data、不执行 Stage5C、不启用 SMC。",
+    "future waypoints / endpoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t100 仍是 raw-frame diagnostic，不能写成 seconds-level。"
+  ],
+  "bi_verdict": "stage42_bi_ucy_t100_easy_guard_repair_pass_with_global_blocker",
+  "bc_verdict": "stage42_bc_t100_source_acquisition_plan_pass",
+  "bd_verdict": "stage42_bd_local_t100_source_inventory_pass",
+  "strict_protocol": {
+    "source": "fresh_post_bi_protocol",
+    "minimum_independent_sources_per_domain": 3,
+    "selection_uses_holdout_source": false,
+    "test_metrics_for_threshold": false,
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false
+  },
+  "domain_support": {
+    "ETH_UCY": {
+      "source": "cached_verified_from_stage42_bi",
+      "domain": "ETH_UCY",
+      "independent_sources": 1,
+      "minimum_required_independent_sources": 3,
+      "additional_independent_sources_needed": 2,
+      "source_cv_feasible": false,
+      "t100_source_cv_supported": false,
+      "mean_improvement_vs_fallback": null,
+      "minimum_improvement_vs_fallback": null,
+      "maximum_easy_degradation": null,
+      "blocker": "needs_2_additional_independent_t100_sources_under_strict_post_bi_protocol"
+    },
+    "UCY": {
+      "source": "cached_verified_from_stage42_bi",
+      "domain": "UCY",
+      "independent_sources": 4,
+      "minimum_required_independent_sources": 3,
+      "additional_independent_sources_needed": 0,
+      "source_cv_feasible": true,
+      "t100_source_cv_supported": true,
+      "mean_improvement_vs_fallback": 0.44591415479775254,
+      "minimum_improvement_vs_fallback": 0.42531297412698216,
+      "maximum_easy_degradation": 0.011339719285930428,
+      "blocker": null
+    },
+    "TrajNet": {
+      "source": "cached_verified_from_stage42_bi",
+      "domain": "TrajNet",
+      "independent_sources": 0,
+      "minimum_required_independent_sources": 3,
+      "additional_independent_sources_needed": 3,
+      "source_cv_feasible": false,
+      "t100_source_cv_supported": false,
+      "mean_improvement_vs_fallback": null,
+      "minimum_improvement_vs_fallback": null,
+      "maximum_easy_degradation": null,
+      "blocker": "needs_3_additional_independent_t100_sources_under_strict_post_bi_protocol"
+    }
+  },
+  "local_inventory_exhaustion": {
+    "source": "fresh_post_bi_inventory_exhaustion_audit",
+    "bd_verdict": "stage42_bd_local_t100_source_inventory_pass",
+    "raw_t100_capable_file_count": 8,
+    "t100_file_count_by_domain": {
+      "ETH_UCY": 2,
+      "UCY": 6,
+      "TrajNet": 0
+    },
+    "independent_t100_group_count_by_domain": {
+      "ETH_UCY": 1,
+      "UCY": 4,
+      "TrajNet": 0
+    },
+    "independent_t100_groups_by_domain": {
+      "ETH_UCY": [
+        "ETH_UCY::ETH/seq_eth"
+      ],
+      "UCY": [
+        "UCY::UCY/students01",
+        "UCY::UCY/students03",
+        "UCY::UCY/zara01",
+        "UCY::UCY/zara02"
+      ],
+      "TrajNet": []
+    },
+    "local_inventory_exhausted_for_domains": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "interpretation": "The current local inventory has already been consumed for BI-style strict source support when independent scene/source groups do not exceed BI support counts."
+  },
+  "action_queue": [
+    {
+      "source": "fresh_post_bi_action_queue",
+      "domain": "ETH_UCY",
+      "priority": "critical",
+      "additional_independent_t100_sources_needed": 2,
+      "candidate_source_ids": [
+        "ucy_crowd_original",
+        "trajnetpp_epfl_aicrowd",
+        "opentraj_toolkit",
+        "eth_ucy_original_sources"
+      ],
+      "candidate_sources": [
+        {
+          "id": "ucy_crowd_original",
+          "dataset_name": "UCY Crowd",
+          "official_url": "http://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+          "local_path_found": true,
+          "found_paths": [
+            "external_data/OpenTraj/datasets/UCY"
+          ],
+          "auto_download_allowed": false,
+          "blocked_reasons": [
+            "requires user confirmation of official terms/login/challenge access",
+            "auto_download_allowed is false by policy"
+          ],
+          "expected_t100_role": "adds the missing independent UCY t100-capable original-train source if legally available"
+        },
+        {
+          "id": "trajnetpp_epfl_aicrowd",
+          "dataset_name": "TrajNet++",
+          "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+          "local_path_found": true,
+          "found_paths": [
+            "external_data/OpenTraj/datasets/TrajNet",
+            "external_data/OpenTraj/datasets/TrajNet++"
+          ],
+          "auto_download_allowed": false,
+          "blocked_reasons": [
+            "requires user confirmation of official terms/login/challenge access",
+            "auto_download_allowed is false by policy"
+          ],
+          "expected_t100_role": "adds/validates independent trajectory sources for TrajNet and possibly ETH/UCY-style splits"
+        },
+        {
+          "id": "opentraj_toolkit",
+          "dataset_name": "OpenTraj toolkit",
+          "official_url": "https://github.com/crowdbotp/OpenTraj",
+          "local_path_found": true,
+          "found_paths": [
+            "external_data/OpenTraj",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj"
+          ],
+          "auto_download_allowed": false,
+          "blocked_reasons": [
+            "auto_download_allowed is false by policy"
+          ],
+          "expected_t100_role": "source discovery/loader hub; may expose additional legal source files already local"
+        },
+        {
+          "id": "eth_ucy_original_sources",
+          "dataset_name": "ETH/UCY original pedestrian sources",
+          "official_url": "ETH/BIWI and UCY original dataset pages; source-specific terms must be manually verified",
+          "local_path_found": true,
+          "found_paths": [
+            "external_data/OpenTraj/datasets/ETH",
+            "external_data/OpenTraj/datasets/ETH-Person",
+            "external_data/OpenTraj/datasets/UCY"
+          ],
+          "auto_download_allowed": false,
+          "blocked_reasons": [
+            "requires user confirmation of official terms/login/challenge access",
+            "official source not fully resolved in Stage42-BC",
+            "auto_download_allowed is false by policy"
+          ],
+          "expected_t100_role": "highest-priority source-level repair target for ETH_UCY and UCY t100 support"
+        }
+      ],
+      "next_action": "provide_or_approve_legal_independent_t100_sources_then_rerun_conversion_and_source_cv"
+    },
+    {
+      "source": "fresh_post_bi_action_queue",
+      "domain": "TrajNet",
+      "priority": "critical",
+      "additional_independent_t100_sources_needed": 3,
+      "candidate_source_ids": [
+        "trajnetpp_epfl_aicrowd",
+        "opentraj_toolkit"
+      ],
+      "candidate_sources": [
+        {
+          "id": "trajnetpp_epfl_aicrowd",
+          "dataset_name": "TrajNet++",
+          "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+          "local_path_found": true,
+          "found_paths": [
+            "external_data/OpenTraj/datasets/TrajNet",
+            "external_data/OpenTraj/datasets/TrajNet++"
+          ],
+          "auto_download_allowed": false,
+          "blocked_reasons": [
+            "requires user confirmation of official terms/login/challenge access",
+            "auto_download_allowed is false by policy"
+          ],
+          "expected_t100_role": "adds/validates independent trajectory sources for TrajNet and possibly ETH/UCY-style splits"
+        },
+        {
+          "id": "opentraj_toolkit",
+          "dataset_name": "OpenTraj toolkit",
+          "official_url": "https://github.com/crowdbotp/OpenTraj",
+          "local_path_found": true,
+          "found_paths": [
+            "external_data/OpenTraj",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj"
+          ],
+          "auto_download_allowed": false,
+          "blocked_reasons": [
+            "auto_download_allowed is false by policy"
+          ],
+          "expected_t100_role": "source discovery/loader hub; may expose additional legal source files already local"
+        }
+      ],
+      "next_action": "provide_or_approve_legal_independent_t100_sources_then_rerun_conversion_and_source_cv"
+    }
+  ],
+  "summary": {
+    "source": "fresh_post_bi_t100_source_package",
+    "ucy_t100_repaired": true,
+    "eth_ucy_additional_sources_needed": 2,
+    "trajnet_additional_sources_needed": 3,
+    "domains_still_blocked": [
+      "ETH_UCY",
+      "TrajNet"
+    ],
+    "global_t100_positive_claim_allowed": false,
+    "auto_download_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "next_stage_recommended": "Stage42-BK legal source acquisition / user path verification for ETH_UCY and TrajNet independent t100 sources"
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "t100_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "global_t100_positive_claim_allowed": false
+  },
+  "stage42_bj_gate": {
+    "source": "fresh_post_bi_t100_source_package",
+    "gates": {
+      "bi_input_verified": true,
+      "bc_input_verified": true,
+      "bd_input_verified": true,
+      "ucy_repair_preserved": true,
+      "eth_ucy_blocker_explicit": true,
+      "trajnet_blocker_explicit": true,
+      "local_inventory_exhaustion_checked": true,
+      "action_queue_generated": true,
+      "no_auto_download": true,
+      "no_leakage_pass": true,
+      "no_global_t100_overclaim": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_bj_post_bi_t100_source_package_pass"
+  }
+}

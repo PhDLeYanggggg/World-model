@@ -76,6 +76,8 @@ Stage42-BH tightens that evidence by deduplicating alternate files from the same
 
 Stage42-BI repairs the UCY independent-source easy-gate failure with a source-robust guard: candidate policies must be positive and easy-safe on every non-holdout source before holdout evaluation. It passes `14 / 14` gates for UCY local t100 support (`mean improvement = 0.445914`, min `0.425313`, max easy degradation `0.011340`, previous BH easy degradation `0.063323`). Global t100 remains blocked because ETH_UCY and TrajNet still lack enough independent t100 sources.
 
+Stage42-BJ packages that post-BI blocker into an explicit acquisition/readiness queue. It passes `14 / 14` gates, preserves the UCY t100 repair, and clarifies strict independent-source deficits: ETH_UCY has only `1` independent t100 source and needs `2` more; TrajNet has `0` and needs `3`. The local inventory is exhausted for these independent-source requirements, no raw/gated data was auto-downloaded, and global t100 remains a raw-frame diagnostic blocker rather than a deployable positive claim.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:
