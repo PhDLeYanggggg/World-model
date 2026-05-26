@@ -1,8 +1,8 @@
 # Stage42-BN Strict Source Time/Geometry Calibration Audit
 
 - source: `fresh_source_time_geometry_calibration_audit`
-- generated_at_utc: `2026-05-26T13:56:53.923385+00:00`
-- git_commit: `05ab286`
+- generated_at_utc: `2026-05-26T20:30:28.464547+00:00`
+- git_commit: `b136c10`
 - input_hash: `b03c732f021417561011d8da11cef983af722be1c61b827cb8f27e884b661320`
 - gate: `13 / 13`
 - verdict: `stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked`
