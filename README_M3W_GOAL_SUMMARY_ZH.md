@@ -698,9 +698,20 @@ Stage42-BQ:
   easy_max = 0.0
   positive_fold_count = 3
   positive_t50_fold_count = 0
+
+Stage42-BR:
+  source = fresh_calibrated_t50_source_support_gap_audit
+  verdict = stage42_br_calibrated_t50_source_support_gap_audit_pass
+  gates = 12 / 12
+  families_audited = 3
+  unsupported_family_holdout_count = 3
+  families_with_additional_sources_needed = ETH_seq, UCY_students
+  families_with_support_but_no_positive_t50 = UCY_zara
+  ETH-Person XML local candidates = 5
+  ETH-Person terms verified = false
 ```
 
-解释：BO 证明 calibrated-subset 有 macro 正信号，但 `UCY_students03` easy degradation 爆到 103%，`ETH_seq_eth` t50 为负，所以不能部署。BP 加入 train+val source/source-family support guard 后，`UCY_students03` 被安全回退，easy harm 修复为 0；BQ 进一步要求 t50 同 family 至少两个 train+val 支持源，把 `ETH_seq_eth` t50 负迁移守到 0。代价是 t50 正迁移也被守没了：positive_t50_fold_count = 0。因此只能写 limited positive all/hard + t50 non-harm repair，不能写 global calibrated-subset / metric / seconds-level / t50 positive success。
+解释：BO 证明 calibrated-subset 有 macro 正信号，但 `UCY_students03` easy degradation 爆到 103%，`ETH_seq_eth` t50 为负，所以不能部署。BP 加入 train+val source/source-family support guard 后，`UCY_students03` 被安全回退，easy harm 修复为 0；BQ 进一步要求 t50 同 family 至少两个 train+val 支持源，把 `ETH_seq_eth` t50 负迁移守到 0。代价是 t50 正迁移也被守没了：positive_t50_fold_count = 0。BR 将原因拆开：`ETH_seq` 少 1 个同族 calibrated source，`UCY_students` 少 2 个，`UCY_zara` 源数量够但 validation-safe t50 policy 没有正收益。因此只能写 limited positive all/hard + t50 non-harm repair，不能写 global calibrated-subset / metric / seconds-level / t50 positive success。
 
 验证：
 
@@ -708,8 +719,9 @@ Stage42-BQ:
 python3 run_stage42_calibrated_subset_eval.py -> completed, BO partial
 python3 run_stage42_calibrated_subset_safety_repair.py -> 11 / 11
 python3 run_stage42_calibrated_subset_t50_support_repair.py -> 12 / 12
-focused pytest -> 10 passed for BO/BP/BQ
-python3 -m pytest tests -> 487 passed
+python3 run_stage42_calibrated_t50_source_support_gap_audit.py -> 12 / 12
+focused pytest -> 6 passed for BQ/BR
+python3 -m pytest tests -> 490 passed
 ```
 
 已知 runtime 注意事项：

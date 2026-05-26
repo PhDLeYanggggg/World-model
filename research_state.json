@@ -1,6 +1,6 @@
 {
-    "current_stage": "stage42_bq_calibrated_subset_t50_support_repair",
-    "current_verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive",
+    "current_stage": "stage42_br_calibrated_t50_source_support_gap_audit",
+    "current_verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass",
   "latest_user_requested_goal_summary_2026_05_26": {
     "source": "cached_verified_plus_stage42_bn_source_time_geometry_calibration_plus_full_goal_review",
     "path": "README_M3W_FULL_GOAL_REVIEW_ZH.md",
@@ -20,7 +20,8 @@
             "Stage42-BM ETH-Person terms audit blocks official/deployable t100 overclaim until terms are confirmed",
             "Stage42-BN source-level time/geometry audit identifies ETH/UCY calibrated-subset candidates while blocking global metric/seconds claims",
             "Stage42-BP source-family guarded calibrated-subset repair removes BO easy harm and provides limited positive source-specific evidence",
-            "Stage42-BQ t50 source-family support repair removes negative calibrated-subset t50 transfer by guarding unsupported t50 slices to fallback"
+            "Stage42-BQ t50 source-family support repair removes negative calibrated-subset t50 transfer by guarding unsupported t50 slices to fallback",
+            "Stage42-BR quantifies the calibrated t50 source-support gap and maps ETH-Person XML/user-action blockers"
     ],
     "major_failures_or_limits": [
       "JEPA downstream lift not proven",
@@ -34,7 +35,8 @@
             "global M3W metric/seconds claim remains blocked despite source-specific ETH/UCY calibration evidence",
             "Stage42-BO calibrated-subset source-CV was partial because UCY_students03 easy harm was severe and ETH_seq_eth t50 was negative",
             "Stage42-BP repairs easy harm but remains limited: ETH_seq_eth t50 is still negative and several sources are fallback-only",
-            "Stage42-BQ t50 support repair is non-harm rather than positive t50 transfer: positive_t50_fold_count is zero"
+            "Stage42-BQ t50 support repair is non-harm rather than positive t50 transfer: positive_t50_fold_count is zero",
+            "Stage42-BR shows ETH_seq and UCY_students lack enough same-family calibrated support, while UCY_zara has support but no safe positive t50 policy"
     ],
     "claim_boundary": {
       "true_3d": false,
@@ -167,6 +169,45 @@
             "runner": "python3 run_stage42_calibrated_subset_t50_support_repair.py -> 12/12",
             "focused_pytest": "10 passed",
             "full_pytest": "python3 -m pytest tests -> 487 passed"
+        },
+        "claim_boundary": {
+            "true_3d": false,
+            "foundation_world_model": false,
+            "global_metric_claim_allowed": false,
+            "global_seconds_claim_allowed": false,
+            "stage5c_executed": false,
+            "smc_enabled": false
+        }
+    },
+    "stage42_br_calibrated_t50_source_support_gap_audit": {
+        "source": "fresh_calibrated_t50_source_support_gap_audit",
+        "report": "outputs/stage42_long_research/calibrated_t50_source_support_gap_stage42.md",
+        "gate": "outputs/stage42_long_research/stage42_stage_br_gate.md",
+        "user_action_required": "outputs/stage42_long_research/user_action_required_calibrated_t50_sources_stage42.md",
+        "verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass",
+        "gates": "12/12",
+        "families_audited": 3,
+        "calibrated_sources_audited": 6,
+        "unsupported_family_holdout_count": 3,
+        "families_with_additional_sources_needed": [
+            "ETH_seq",
+            "UCY_students"
+        ],
+        "families_with_support_but_no_positive_t50": [
+            "UCY_zara"
+        ],
+        "bq_t50_macro": 0.0,
+        "bq_t50_min": 0.0,
+        "bq_positive_t50_fold_count": 0,
+        "eth_person_candidate_count": 5,
+        "eth_person_terms_verified": false,
+        "trajnet_t100_capable_files": 0,
+        "positive_t50_claim_allowed": false,
+        "t50_nonharm_claim_allowed": true,
+        "verification": {
+            "runner": "python3 run_stage42_calibrated_t50_source_support_gap_audit.py -> 12/12",
+            "focused_pytest": "6 passed",
+            "full_pytest": "python3 -m pytest tests -> 490 passed"
         },
         "claim_boundary": {
             "true_3d": false,

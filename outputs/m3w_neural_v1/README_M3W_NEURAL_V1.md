@@ -90,6 +90,8 @@ Stage42-BO evaluates those calibrated candidates with source-CV. It finds useful
 
 Stage42-BQ then tightens the t50 slice specifically: a t50 switch is allowed only when the same source-family has at least two independent train+val support sources. This removes the remaining negative t50 transfer (`t50_min` becomes 0.0) and keeps `easy_degradation_max` at 0.0, but it also removes all positive t50 folds (`positive_t50_fold_count` is 0). The honest conclusion is t50 non-harm under calibrated-subset support, not positive calibrated t50 transfer.
 
+Stage42-BR audits why positive calibrated-subset t50 disappeared. The answer is mixed: `ETH_seq` has only two calibrated sources, so leave-one-source-out t50 has only one same-family support source and needs one more; `UCY_students` has only one calibrated source and needs two more; `UCY_zara` has enough sources but still has no validation-safe positive t50 policy. Local ETH-Person XML files may repair ETH-style support after terms confirmation, but they remain terms-blocked and are not official/deployable evidence.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

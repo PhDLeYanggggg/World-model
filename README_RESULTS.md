@@ -337,6 +337,35 @@ Stage42-BQ addresses BP's remaining `ETH_seq_eth` t50 negative slice by requirin
 
 Verification: `python3 run_stage42_calibrated_subset_t50_support_repair.py` passed with `12 / 12` BQ gates, focused pytest passed with `10` BO/BP/BQ tests, and `python3 -m pytest tests` passed with `487` tests.
 
+Latest Stage42-BR calibrated t50 source-support gap audit:
+
+```text
+source = fresh_calibrated_t50_source_support_gap_audit
+verdict = stage42_br_calibrated_t50_source_support_gap_audit_pass
+gates = 12 / 12
+families_audited = 3
+calibrated_sources_audited = 6
+unsupported_family_holdout_count = 3
+families_with_additional_sources_needed = ETH_seq, UCY_students
+families_with_support_but_no_positive_t50 = UCY_zara
+BQ_t50_macro = 0.0
+BQ_t50_min = 0.0
+BQ_positive_t50_fold_count = 0
+ETH-Person XML local candidates = 5
+ETH-Person terms verified = false
+TrajNet local t100-capable files = 0
+positive_t50_claim_allowed = false
+t50_nonharm_claim_allowed = true
+global_metric_claim_allowed = false
+global_seconds_claim_allowed = false
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-BR turns the BQ non-harm result into a concrete blocker/action list. `ETH_seq` needs one more same-family calibrated source and has five local ETH-Person XML candidates, but they remain blocked by unverified terms. `UCY_students` needs two additional same-family calibrated sources. `UCY_zara` already has enough source-family support, so its failure is policy/model-side: the validation-safe t50 policy still falls back to the floor. This is gap evidence and user-action evidence, not positive calibrated t50 transfer.
+
+Verification: `python3 run_stage42_calibrated_t50_source_support_gap_audit.py` passed with `12 / 12` BR gates, focused pytest passed with `6` BQ/BR tests, and `python3 -m pytest tests` passed with `490` tests.
+
 Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`

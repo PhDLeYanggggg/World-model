@@ -1,0 +1,273 @@
+{
+  "source": "fresh_calibrated_t50_source_support_gap_audit",
+  "stage": "Stage42-BR calibrated t50 source-support gap audit",
+  "generated_at_utc": "2026-05-26T14:41:16.001977+00:00",
+  "git_commit": "8dc7263",
+  "input_hash": "9b684b11bb91ffbb3dfb495f0836e3ff9dd0582fb731e4449e0f509b506fc716",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-BR 是 t50 source-family support gap audit，不是训练或部署成功声明。",
+    "Stage42-BQ 已把 calibrated-subset t50 负迁移守到 0，但没有产生 t50 正迁移。",
+    "source-specific calibration evidence 不能升级为全局 metric/seconds-level M3W claim。",
+    "ETH-Person XML 本地技术信号仍受 terms/license blocker 限制。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "bq_verdict": "stage42_bq_calibrated_subset_t50_support_repair_pass_t50_nonharm_limited_positive",
+  "bn_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+  "bm_verdict": "stage42_bm_eth_person_terms_audit_pass_claim_blocked",
+  "family_support": {
+    "ETH_seq": {
+      "calibrated_sources": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel"
+      ],
+      "calibrated_source_count": 2,
+      "minimum_sources_needed_for_leave_one_out_t50_support": 3,
+      "additional_calibrated_sources_needed": 1,
+      "supported_holdouts": [],
+      "unsupported_holdouts": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel"
+      ],
+      "positive_t50_holdouts": [],
+      "nonharm_t50_holdouts": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel"
+      ],
+      "source_rows": {
+        "ETH_seq_eth": {
+          "source_id": "ETH_seq_eth",
+          "family": "ETH_seq",
+          "same_family_non_test_support_sources": 1,
+          "t50_family_support_pass": false,
+          "bq_t50_improvement": 0.0,
+          "bq_all_improvement": 0.10836334145080928
+        },
+        "ETH_seq_hotel": {
+          "source_id": "ETH_seq_hotel",
+          "family": "ETH_seq",
+          "same_family_non_test_support_sources": 1,
+          "t50_family_support_pass": false,
+          "bq_t50_improvement": 0.0,
+          "bq_all_improvement": 0.04245676143308508
+        }
+      },
+      "primary_blocker": "insufficient_same_family_source_support"
+    },
+    "UCY_students": {
+      "calibrated_sources": [
+        "UCY_students03"
+      ],
+      "calibrated_source_count": 1,
+      "minimum_sources_needed_for_leave_one_out_t50_support": 3,
+      "additional_calibrated_sources_needed": 2,
+      "supported_holdouts": [],
+      "unsupported_holdouts": [
+        "UCY_students03"
+      ],
+      "positive_t50_holdouts": [],
+      "nonharm_t50_holdouts": [
+        "UCY_students03"
+      ],
+      "source_rows": {
+        "UCY_students03": {
+          "source_id": "UCY_students03",
+          "family": "UCY_students",
+          "same_family_non_test_support_sources": 0,
+          "t50_family_support_pass": false,
+          "bq_t50_improvement": 0.0,
+          "bq_all_improvement": 0.0
+        }
+      },
+      "primary_blocker": "insufficient_same_family_source_support"
+    },
+    "UCY_zara": {
+      "calibrated_sources": [
+        "UCY_zara01",
+        "UCY_zara02",
+        "UCY_zara03"
+      ],
+      "calibrated_source_count": 3,
+      "minimum_sources_needed_for_leave_one_out_t50_support": 3,
+      "additional_calibrated_sources_needed": 0,
+      "supported_holdouts": [
+        "UCY_zara01",
+        "UCY_zara02",
+        "UCY_zara03"
+      ],
+      "unsupported_holdouts": [],
+      "positive_t50_holdouts": [],
+      "nonharm_t50_holdouts": [
+        "UCY_zara01",
+        "UCY_zara02",
+        "UCY_zara03"
+      ],
+      "source_rows": {
+        "UCY_zara01": {
+          "source_id": "UCY_zara01",
+          "family": "UCY_zara",
+          "same_family_non_test_support_sources": 2,
+          "t50_family_support_pass": true,
+          "bq_t50_improvement": 0.0,
+          "bq_all_improvement": 0.10346181014752454
+        },
+        "UCY_zara02": {
+          "source_id": "UCY_zara02",
+          "family": "UCY_zara",
+          "same_family_non_test_support_sources": 2,
+          "t50_family_support_pass": true,
+          "bq_t50_improvement": 0.0,
+          "bq_all_improvement": 0.0
+        },
+        "UCY_zara03": {
+          "source_id": "UCY_zara03",
+          "family": "UCY_zara",
+          "same_family_non_test_support_sources": 2,
+          "t50_family_support_pass": true,
+          "bq_t50_improvement": 0.0,
+          "bq_all_improvement": 0.0
+        }
+      },
+      "primary_blocker": "enough_family_sources_but_no_safe_positive_t50_policy"
+    }
+  },
+  "local_candidates": {
+    "eth_person_xml_candidates": [
+      "ETH-Person/data/bahnhof_assc_gt.xml",
+      "ETH-Person/data/jelmoli_assc_gt.xml",
+      "ETH-Person/data/seq0_assc_gt.xml",
+      "ETH-Person/data/seq0_assc_gt-interp.xml",
+      "ETH-Person/data/sunnyday_assc_gt.xml"
+    ],
+    "eth_person_candidate_count": 5,
+    "eth_person_can_repair_after_terms_confirmation": true,
+    "eth_person_terms_verified": false,
+    "eth_person_license_terms_confirmed": false,
+    "eth_person_official_conversion_allowed": false,
+    "trajnet_t100_capable_files": 0,
+    "trajnet_independent_t100_groups": 0,
+    "trajnet_local_long_track_blocker": true,
+    "auto_download_executed": false
+  },
+  "action_items": [
+    {
+      "family": "ETH_seq",
+      "priority": "high",
+      "action": "confirm_eth_person_terms_then_convert_xml_candidates",
+      "additional_sources_needed": 1,
+      "available_local_candidates": [
+        "ETH-Person/data/bahnhof_assc_gt.xml",
+        "ETH-Person/data/jelmoli_assc_gt.xml",
+        "ETH-Person/data/seq0_assc_gt.xml",
+        "ETH-Person/data/seq0_assc_gt-interp.xml",
+        "ETH-Person/data/sunnyday_assc_gt.xml"
+      ],
+      "blocked_by": "ETH-Person official terms/license not confirmed"
+    },
+    {
+      "family": "UCY_students",
+      "priority": "high",
+      "action": "provide_or_locate_additional_source_specific_calibrated_tracks",
+      "additional_sources_needed": 2,
+      "available_local_candidates": [],
+      "blocked_by": "no verified local same-family calibrated source support"
+    },
+    {
+      "family": "UCY_zara",
+      "priority": "medium",
+      "action": "train_family_specific_t50_policy_or_add_more_validation_sources",
+      "additional_sources_needed": 0,
+      "available_local_candidates": [],
+      "blocked_by": "source support exists but validation-safe t50 policy falls back to floor"
+    }
+  ],
+  "summary": {
+    "source": "fresh_calibrated_t50_source_support_gap_audit",
+    "families_audited": 3,
+    "calibrated_sources_audited": 6,
+    "unsupported_family_holdout_count": 3,
+    "families_with_additional_sources_needed": [
+      "ETH_seq",
+      "UCY_students"
+    ],
+    "families_with_support_but_no_positive_t50": [
+      "UCY_zara"
+    ],
+    "bq_all_macro": 0.04238031883856982,
+    "bq_t50_macro": 0.0,
+    "bq_t50_min": 0.0,
+    "bq_easy_max": -0.0,
+    "bq_positive_t50_fold_count": 0,
+    "eth_person_candidate_count": 5,
+    "eth_person_terms_verified": false,
+    "trajnet_t100_capable_files": 0,
+    "auto_download_executed": false,
+    "training_run": false
+  },
+  "user_action_required": [
+    {
+      "family": "ETH_seq",
+      "priority": "high",
+      "action": "confirm_eth_person_terms_then_convert_xml_candidates",
+      "additional_sources_needed": 1,
+      "available_local_candidates": [
+        "ETH-Person/data/bahnhof_assc_gt.xml",
+        "ETH-Person/data/jelmoli_assc_gt.xml",
+        "ETH-Person/data/seq0_assc_gt.xml",
+        "ETH-Person/data/seq0_assc_gt-interp.xml",
+        "ETH-Person/data/sunnyday_assc_gt.xml"
+      ],
+      "blocked_by": "ETH-Person official terms/license not confirmed"
+    },
+    {
+      "family": "UCY_students",
+      "priority": "high",
+      "action": "provide_or_locate_additional_source_specific_calibrated_tracks",
+      "additional_sources_needed": 2,
+      "available_local_candidates": [],
+      "blocked_by": "no verified local same-family calibrated source support"
+    },
+    {
+      "family": "UCY_zara",
+      "priority": "medium",
+      "action": "train_family_specific_t50_policy_or_add_more_validation_sources",
+      "additional_sources_needed": 0,
+      "available_local_candidates": [],
+      "blocked_by": "source support exists but validation-safe t50 policy falls back to floor"
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "m3w_official_metric_seconds_claim_allowed": false,
+    "positive_t50_claim_allowed": false,
+    "t50_nonharm_claim_allowed": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_br_gate": {
+    "source": "fresh_calibrated_t50_source_support_gap_audit",
+    "gates": {
+      "bq_input_verified": true,
+      "family_gap_quantified": true,
+      "unsupported_family_holdouts_identified": true,
+      "safe_nonharm_confirmed": true,
+      "positive_t50_not_overclaimed": true,
+      "local_candidates_checked": true,
+      "eth_person_terms_blocker_recorded": true,
+      "user_action_generated": true,
+      "global_metric_blocked": true,
+      "global_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_br_calibrated_t50_source_support_gap_audit_pass"
+  }
+}

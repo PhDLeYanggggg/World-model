@@ -150,6 +150,7 @@ Bootstrap lower bounds:
 | Stage42-BO | calibrated-subset source-CV：6 sources、160338 rows；macro all +9.05%、t50 +7.07%、t100 raw diag +10.41%，但 t50 min -10.78%、easy max +103.25%，gates 10/13 | 有 calibrated subset 正信号，但过切换严重，不可部署，不能写成成功 |
 | Stage42-BP | 加 source/source-family support guard 后 gates 11/11；macro all +5.76%、t50 +6.19%、hard +5.63%，easy max 0；`UCY_students03` 被安全回退 | 修复 BO 的 easy harm，形成 limited positive safety repair；但 `ETH_seq_eth` t50 仍 -6.66%，不是 global calibrated-subset success |
 | Stage42-BQ | t50 source-family support repair：要求同 family 至少 2 个 train+val 支持源；gates 12/12；macro all +4.24%、hard +4.03%、easy max 0、t50 min 0、t50 macro 0 | 修复 BP 的 t50 负迁移为 non-harm，但没有 t50 正迁移；只能写 t50 guarded floor / limited positive all-hard |
+| Stage42-BR | calibrated t50 source-support gap audit：families 3；`ETH_seq` 还差 1 个同族源，`UCY_students` 还差 2 个，`UCY_zara` 有源但 t50 policy 无正收益；ETH-Person XML 5 个候选但 terms 未确认 | 把 t50 non-harm 的原因拆清楚：源支持不足 + policy/model blocker；不是 positive t50 claim |
 
 ## 4. 失败路线和原因
 
@@ -331,7 +332,7 @@ ETH-Person XML 已经 official converted/evaluated。
 
 3. **做 source-specific calibrated subset 评估，而不是全局 metric claim。**
    Stage42-BN 已确认 ETH `seq_eth` / `seq_hotel` 和 UCY `zara01/02/03/students03` 有局部 H + annotation-step timing evidence。下一步如果要写 metric/time，只能在这些 source-specific calibrated subsets 上重评，并继续把全局 M3W 写成 raw-frame/dataset-local。
-   Stage42-BO/BP/BQ 已完成第一轮重评和安全修复：BO 有 macro 正信号但 easy harm；BP 修 easy；BQ 把 t50 负值守到 0。当前只能称 limited positive / source-family guarded safety repair；t50 正迁移仍未证明，fallback-only sources 仍是 blocker。
+   Stage42-BO/BP/BQ/BR 已完成第一轮重评、安全修复和 source-support gap audit：BO 有 macro 正信号但 easy harm；BP 修 easy；BQ 把 t50 负值守到 0；BR 证明 t50 正迁移失败来自 `ETH_seq` / `UCY_students` 同族源不足和 `UCY_zara` policy/model blocker。当前只能称 limited positive / source-family guarded safety repair；t50 正迁移仍未证明。
 
 4. **如果继续追神经世界模型主贡献，要重训 graph/scene-rich neural protocol。**
    当前 source-level 主机制是 baseline-family rollout context。若要证明 neural dynamics，需要更强的 scene tokens、interaction graph、full-waypoint loss、multi-domain source split 和 multi-seed/bootstrap。
