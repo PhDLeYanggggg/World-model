@@ -37,3 +37,17 @@ A protected neural dynamics model with a Stage37/teacher safety floor can delive
 | true 3D or foundation world model | `not_supported` | all Stage42 claim boundaries keep true_3d=false and foundation_world_model=false |
 | scene/goal/interaction/history/neighbor contributions are proven | `partially_supported` | ablation coverage=True; all Stage42-D component retraining=False |
 | A-journal submission candidate | `candidate_package_not_final_claim` | A-E evidence is organized and strong for a protected 2.5D paper; full retrained ablation, metric/time calibration, independent external expansion, and floor-free safety remain gaps. |
+
+<!-- STAGE42_AC_REFRESH:START -->
+## Stage42-AC Latest Evidence Refresh
+
+- source: `fresh_synthesis_from_stage42_wxyz_aa_ab_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-AB is now included as auxiliary-head evidence.
+- Auxiliary-head conclusion: mixed / partial; not a uniform main contribution claim.
+- Stage5C and SMC remain disabled.
+
+### Latest Claim Boundary
+
+The paper-ready scope remains a protected 2.5D raw-frame world-state candidate. Stage42-AB adds a useful negative/mixed result: interaction/occupancy/physical auxiliary losses help t50 slightly but do not improve all/hard ADE uniformly.
+<!-- STAGE42_AC_REFRESH:END -->

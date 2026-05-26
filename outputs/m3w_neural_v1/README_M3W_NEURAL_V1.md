@@ -567,3 +567,17 @@ smc_enabled = false
 ```
 
 Stage42-AB removes supervised interaction / occupancy / physical auxiliary losses while keeping the same full-waypoint model inputs, outputs, and validation-only policy interface. Positive deltas mean the auxiliary heads helped; mixed or negative deltas are recorded as limitation evidence, not overclaimed.
+
+## Stage42-AC Paper Package Refresh
+
+```text
+source = fresh_synthesis_from_stage42_wxyz_aa_ab_artifacts
+verdict = stage42_ac_paper_package_refresh_pass
+gates = 12 / 12
+auxiliary_head_evidence = mixed_partial_not_uniform_main_claim
+paper_ready_scope = protected_dataset_local_raw_frame_2p5d_world_state_candidate
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-AC refreshes the paper outline, method draft, experiment tables, ablation tables, failure taxonomy, model card, data card, reproducibility notes, and A-journal gap analysis with Stage42-AB. The auxiliary heads are now explicitly recorded as mixed evidence: small t50/FDE@50 support, but not uniform all/hard ADE improvement.

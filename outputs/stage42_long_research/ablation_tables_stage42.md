@@ -85,3 +85,30 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - Goal/scene and neighbor/interaction evidence is mixed in the current retrained sequence table and should not be overstated.
 - Safety-floor evidence remains essential: ungated neural improves raw errors but is not deployable when easy degradation violates the gate.
 - All claims remain raw-frame dataset-local 2.5D; Stage5C and SMC remain disabled.
+
+<!-- STAGE42_AC_REFRESH:START -->
+## Stage42-AC Latest Evidence Refresh
+
+- source: `fresh_synthesis_from_stage42_wxyz_aa_ab_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-AB is now included as auxiliary-head evidence.
+- Auxiliary-head conclusion: mixed / partial; not a uniform main contribution claim.
+- Stage5C and SMC remain disabled.
+
+| item | source | status | paper use | evidence |
+| --- | --- | --- | --- | --- |
+| Stage42-X unified row-level full-waypoint cache | `fresh_run_from_stage42s_row_cache_and_stage42v_ucy_predictions` | `stage42_x_unified_row_level_full_waypoint_cache_pass` | main protected 2.5D full-waypoint evidence | ADE all=0.090014, t50=0.061094, hard=0.093746, easy=0.001102 |
+| Stage42-Y unified ablation evidence | `fresh_synthesis_from_stage42x_row_cache_and_retrained_ablation_reports` | `stage42_y_unified_ablation_evidence_pass` | paper-table ablation synthesis | gate=13/13; history/domain positive, goal/neighbor mixed |
+| Stage42-Z claim evidence audit | `fresh_audit_from_stage42_wxy_and_paper_package_artifacts` | `stage42_z_paper_claim_evidence_audit_pass` | claim boundary audit | supports protected 2.5D raw-frame paper scope; rejects metric/seconds/foundation/ungated claims |
+| Stage42-AA retrained ablation matrix | `fresh_matrix_from_stage42g_rerun_plus_stage42h_i_d_z` | `stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary` | required ablation coverage matrix | gate=15/15; no-JEPA cached negative; no-Transformer proxy boundary |
+| Stage42-AB auxiliary-head retrained ablation | `fresh_run` | `stage42_ab_full_waypoint_auxiliary_ablation_pass` | mixed/partial auxiliary evidence, not main uniform-positive claim | no_aux all=-0.002339, t50=-0.037443; full-minus-no-aux t50=0.005361, all=-0.008219; uniform_positive=False |
+
+### Auxiliary-Head Delta
+
+| delta | value |
+| --- | ---: |
+| `ade_all_delta_full_minus_no_aux` | -0.008219 |
+| `ade_t50_delta_full_minus_no_aux` | 0.005361 |
+| `ade_hard_delta_full_minus_no_aux` | -0.009027 |
+| `fde_t50_delta_full_minus_no_aux` | 0.005084 |
+<!-- STAGE42_AC_REFRESH:END -->

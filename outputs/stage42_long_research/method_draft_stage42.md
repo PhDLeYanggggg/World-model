@@ -33,3 +33,17 @@ Stage42-E evaluates internal self-gates, uncertainty gates, harm gates, conforma
 - self-audited / visual-prior labels 不是 human gold。
 - Stage5C latent generative 未执行。
 - SMC 未启用。
+
+<!-- STAGE42_AC_REFRESH:START -->
+## Stage42-AC Latest Evidence Refresh
+
+- source: `fresh_synthesis_from_stage42_wxyz_aa_ab_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-AB is now included as auxiliary-head evidence.
+- Auxiliary-head conclusion: mixed / partial; not a uniform main contribution claim.
+- Stage5C and SMC remain disabled.
+
+### Method Update
+
+The deployable full-waypoint model should treat interaction/occupancy/physical heads as auxiliary diagnostics. They may regularize t50/FDE@50, but the current evidence does not justify making them a central uniform contribution.
+<!-- STAGE42_AC_REFRESH:END -->

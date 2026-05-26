@@ -46,3 +46,19 @@ Stage42 is strong enough to support a serious protected 2.5D external world-stat
 - Not metric/seconds-level pedestrian prediction.
 - Not Stage5C or SMC.
 - Not ungated neural deployment.
+
+<!-- STAGE42_AC_REFRESH:START -->
+## Stage42-AC Latest Evidence Refresh
+
+- source: `fresh_synthesis_from_stage42_wxyz_aa_ab_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-AB is now included as auxiliary-head evidence.
+- Auxiliary-head conclusion: mixed / partial; not a uniform main contribution claim.
+- Stage5C and SMC remain disabled.
+
+### Updated A-Journal Gap
+
+- Need stronger uniformly positive scene/goal/interaction evidence or a cleaner theoretical framing that treats these heads as safety/diagnostic auxiliaries rather than core dynamics modules.
+- Need metric/time calibration or continue strict raw-frame language.
+- Need broader external legal datasets and stronger floor-reduction evidence before claiming foundation-track generalization.
+<!-- STAGE42_AC_REFRESH:END -->

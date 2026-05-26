@@ -28,3 +28,17 @@ Research evaluation for dataset-local raw-frame top-down multi-agent trajectory/
 ## Safety
 
 The Stage37/teacher floor is required for current deployment. Ungated neural is explicitly rejected.
+
+<!-- STAGE42_AC_REFRESH:START -->
+## Stage42-AC Latest Evidence Refresh
+
+- source: `fresh_synthesis_from_stage42_wxyz_aa_ab_artifacts`
+- scope: protected dataset-local raw-frame 2.5D paper package only.
+- Stage42-AB is now included as auxiliary-head evidence.
+- Auxiliary-head conclusion: mixed / partial; not a uniform main contribution claim.
+- Stage5C and SMC remain disabled.
+
+### Model-Card Update
+
+Interaction/occupancy/physical heads are present in the full-waypoint model interface, but Stage42-AB shows they should be described as auxiliary diagnostics/regularizers with mixed evidence, not as uniformly beneficial deployable heads.
+<!-- STAGE42_AC_REFRESH:END -->

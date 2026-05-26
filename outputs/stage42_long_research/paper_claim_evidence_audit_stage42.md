@@ -1,8 +1,8 @@
 # Stage42-Z Paper Claim Evidence Audit
 
 - source: `fresh_audit_from_stage42_wxy_and_paper_package_artifacts`
-- generated_at_utc: `2026-05-26T05:40:46.685697+00:00`
-- git_commit: `adc08ac`
+- generated_at_utc: `2026-05-26T05:47:16.188785+00:00`
+- git_commit: `40e84fb`
 - input_hash: `4ad0fd249b895f0e7bd7cde85f0f661430f9ddb9674a5645e2d4c8c628e2bf03`
 - gate: `16 / 16`
 - verdict: `stage42_z_paper_claim_evidence_audit_pass`
@@ -40,15 +40,15 @@
 
 | file | exists | size_bytes |
 | --- | --- | ---: |
-| `outputs/stage42_long_research/paper_outline_stage42.md` | `True` | 2794 |
-| `outputs/stage42_long_research/method_draft_stage42.md` | `True` | 1871 |
-| `outputs/stage42_long_research/experiment_tables_stage42.md` | `True` | 796 |
-| `outputs/stage42_long_research/ablation_tables_stage42.md` | `True` | 8047 |
-| `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | 1379 |
-| `outputs/stage42_long_research/model_card_stage42.md` | `True` | 913 |
-| `outputs/stage42_long_research/data_card_stage42.md` | `True` | 731 |
-| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 802 |
-| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 5029 |
+| `outputs/stage42_long_research/paper_outline_stage42.md` | `True` | 3472 |
+| `outputs/stage42_long_research/method_draft_stage42.md` | `True` | 2533 |
+| `outputs/stage42_long_research/experiment_tables_stage42.md` | `True` | 1529 |
+| `outputs/stage42_long_research/ablation_tables_stage42.md` | `True` | 10174 |
+| `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | 2187 |
+| `outputs/stage42_long_research/model_card_stage42.md` | `True` | 1588 |
+| `outputs/stage42_long_research/data_card_stage42.md` | `True` | 1301 |
+| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 1466 |
+| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 5858 |
 
 ## Interpretation
 
