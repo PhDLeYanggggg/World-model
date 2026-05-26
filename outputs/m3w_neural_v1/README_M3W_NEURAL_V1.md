@@ -44,6 +44,8 @@ Stage42-AS adds a structured current-frame kNN graph / interaction-context resid
 
 Stage42-AT audits the safety floor boundary on the same proposed source-level split. It finds that fallback removal is supported for the baseline-family ridge probe itself: ungated all-row prediction reaches all `+0.461656`, t50 `+0.411874`, hard/failure `+0.458447`, with easy degradation still negative. But this is not a floor-free neural claim, because baseline/floor rollout context remains an input mechanism. Removing floor/safe rollout context hurts protected t50, so teacher/floor context removal is not supported as a global replacement.
 
+Stage42-AU decomposes that baseline-family mechanism. Horizon/domain controls alone do not work; `floor_rel_only` is weak; `safe_baseline_rel_only` is unsafe for t50; `family_baseline_rel_only` is the dominant single source-level mechanism, with protected all `+0.273815` and t50 `+0.237296`. The full `baseline_family_all` context improves protected t50 to `+0.315425`. The current mechanism claim should therefore focus on baseline-family rollout context, especially family relative rollout, while not overclaiming independent history/goal/neighbor/sequence/graph contributions.
+
 ## Stage42-A Data Calibration Follow-Up
 
 Stage42 Long Research Mode has started with a fresh data/calibration audit:

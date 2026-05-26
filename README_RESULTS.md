@@ -6,7 +6,7 @@ Current one-file research route/failure/success summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, post-repair paper package refresh, post-repair locked policy/source-split audit, source-level coverage / claim-gap audit, proposed source-level full-waypoint evaluation repair, proposed source-level retrained ablation evidence, proposed source-level incremental/standalone module evidence, proposed source-level residual context evidence, proposed source-level neural residual context evidence, proposed source-level sequence-context evidence, proposed source-level graph-interaction context evidence, proposed source-level safety-floor/fallback evidence, proposed source-level baseline-family mechanism evidence, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Most important current summary:
 
@@ -184,6 +184,26 @@ SMC_enabled = false
 ```
 
 Stage42-AT separates two things that should not be conflated. Removing the fallback switch for the source-level baseline-family ridge probe is safe and stronger on this split. Removing teacher/floor rollout context as a global replacement is not supported: floor/safe context removals hurt protected t50 and do not justify a floor-free neural claim. The correct claim is therefore narrower but useful: source-level baseline-family rollout context is strong enough that fallback can be relaxed in this probe; it is not evidence that unrestricted neural dynamics can replace the Stage37/teacher floor.
+
+Latest Stage42-AU proposed source-level baseline-family mechanism audit:
+
+```text
+source = fresh_run
+verdict = stage42_au_baseline_family_mechanism_pass
+gates = 11 / 11
+horizon_domain_control_protected_all = 0.000000
+floor_rel_only_protected_all = 0.036215
+safe_baseline_rel_only_protected_t50 = -0.099422
+family_baseline_rel_only_protected_all = 0.273815
+family_baseline_rel_only_protected_t50 = 0.237296
+baseline_family_all_protected_all = 0.287773
+baseline_family_all_protected_t50 = 0.315425
+protected_multi_family_increment_supported = true
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AU explains the mechanism behind the recent source-level positives. The result is not just horizon/domain control, and not a single floor-relative feature. The strongest single component is `family_baseline_rel_only`, while `baseline_family_all` improves protected t50 further. The paper claim should therefore foreground baseline-family rollout context as the current supported mechanism, while keeping the boundary that history/goal/neighbor/sequence/graph context remains unproven as an independent contribution under the tested protocols.
 
 Latest Stage42-AD calibration evidence refresh:
 
