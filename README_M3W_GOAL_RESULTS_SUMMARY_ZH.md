@@ -360,3 +360,15 @@ M3W-Neural v1 / Stage41-42 已经有 protected neural/full-waypoint evidence，�
 ```text
 README_M3W_GOAL_RESULTS_SUMMARY_ZH.md
 ```
+
+<!-- STAGE42_DO_SOURCE_LEGAL_TIME_ACTION_PACKAGE:START -->
+## Stage42-DO Source Legal/Time Action Package
+
+- source: `fresh_synthesis_from_stage42_cg_bn_dd_after_da1_rerun`
+- role: closes the current DA-1 pass as an honest blocker/action package, not as conversion or evaluation.
+- gate: `13 / 13`; verdict `stage42_do_source_legal_time_action_package_pass`.
+- conversion-ready targets: `0`; converted/evaluated now: `0` / `0`.
+- source-specific metric/time candidate count: `6`.
+- global metric/seconds/t100 deployable claims remain blocked; Stage5C and SMC remain disabled.
+- user action file: `outputs/stage42_long_research/user_action_required_source_legal_time_stage42.md`.
+<!-- STAGE42_DO_SOURCE_LEGAL_TIME_ACTION_PACKAGE:END -->
