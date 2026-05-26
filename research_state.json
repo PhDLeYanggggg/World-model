@@ -1,13 +1,13 @@
 {
-  "current_stage": "stage42_ag_eth_t50_fde_validation_source_repair",
-  "current_verdict": "stage42_ag_eth_t50_fde_source_repair_pass",
+  "current_stage": "stage42_ah_post_repair_claim_refresh",
+  "current_verdict": "stage42_ah_post_repair_claim_refresh_pass",
   "latest_user_requested_research_summary": {
-    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_verified",
+    "source": "cached_verified_plus_stage42_wxyz_aa_ab_ac_ad_ae_af_ag_ah_verified",
     "path": "README_M3W_RESEARCH_SUMMARY_ZH.md",
     "updated_at": "2026-05-26",
-    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF/AG evidence refreshes, and the user-requested detailed route review.",
+    "scope": "M3W long-goal routes tried, failures, failure reasons, successes, current deployable status, claim boundaries, and next steps; now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC, Stage42-AD/AE/AF/AG/AH evidence refreshes, and the user-requested detailed route review.",
     "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher safety floor",
-    "latest_branch_success": "Stage42-AG ETH_UCY t50/FDE validation-only source repair passed 13/13 gates; ETH_UCY ADE@50 and FDE@50 lower bounds turned positive without test threshold tuning.",
+    "latest_branch_success": "Stage42-AH post-repair claim refresh passed 11/11 gates; global all/t50/hard/FDE@50 lower bounds are positive after AF/AG, while horizon25 floor/non-harm, TrajNet t100 safety limits, and no-metric/no-seconds boundaries remain explicit.",
     "verification": {
       "stage42_y_runner": "pass",
       "stage42_z_runner": "pass",
@@ -22,7 +22,9 @@
       "stage42_af_runner": "pass",
       "stage42_af_focused_pytest": "3 passed",
       "stage42_ag_runner": "pass",
-      "stage42_ag_focused_pytest": "2 passed"
+      "stage42_ag_focused_pytest": "2 passed",
+      "stage42_ah_runner": "pass",
+      "stage42_ah_focused_pytest": "2 passed"
     },
     "claim_boundary": {
       "true_3d": false,
@@ -13666,5 +13668,39 @@
       "smc_enabled": false
     },
     "interpretation": "Stage42-AG repairs the ETH_UCY|50 ADE/FDE lower-bound weakness using validation-only FDE-aware source selection. Claims remain protected dataset-local raw-frame 2.5D."
+  },
+  "stage42_ah_post_repair_claim_refresh": {
+    "source": "fresh_synthesis_from_stage42ag_post_repair_stress",
+    "report": "outputs/stage42_long_research/post_repair_claim_refresh_stage42.md",
+    "gate_report": "outputs/stage42_long_research/stage42_stage_ah_gate.md",
+    "csv": "outputs/stage42_long_research/post_repair_claim_refresh_stage42.csv",
+    "gates_passed": 11,
+    "gates_total": 11,
+    "verdict": "stage42_ah_post_repair_claim_refresh_pass",
+    "global_post_repair": {
+      "ade_all_ci_low": 0.08525846671997603,
+      "ade_t50_ci_low": 0.05851255877278698,
+      "ade_hard_failure_ci_low": 0.08976713874728331,
+      "easy_degradation_ci_high": 0.00334819268959823,
+      "fde_t50_ci_low": 0.14823015795452749
+    },
+    "repaired_limitations": [
+      "Stage42-AE horizon=25 negative slice is now floor/non-harm.",
+      "Stage42-AF ETH_UCY t50/FDE@50 lower-bound weakness is repaired."
+    ],
+    "remaining_limitations": [
+      "Horizon=25 slices are floor/non-harm, not positive dynamics contributions.",
+      "TrajNet|100 remains safety-limited; t100 remains raw-frame diagnostic.",
+      "Metric and seconds-level pedestrian claims remain blocked.",
+      "True 3D, foundation, Stage5C, and SMC claims remain rejected."
+    ],
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "interpretation": "Stage42-AH updates the paper-ready claim matrix after AF/AG. The evidence is stronger than Stage42-AE but still bounded to protected dataset-local raw-frame 2.5D."
   }
 }

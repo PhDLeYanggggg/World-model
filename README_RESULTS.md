@@ -115,6 +115,27 @@ SMC_enabled = false
 
 Stage42-AG addresses the remaining Stage42-AF ETH_UCY t50/FDE@50 limitation. It promotes the static expert source on `ETH_UCY|50` only when validation FDE@50 support is strong and otherwise falls back to the safety floor. This repairs the ETH_UCY t50/FDE@50 lower bounds without test threshold tuning, while claims remain dataset-local raw-frame 2.5D.
 
+Latest Stage42-AH post-repair stress / paper-claim refresh:
+
+```text
+source = fresh_synthesis_from_stage42ag_post_repair_stress
+verdict = stage42_ah_post_repair_claim_refresh_pass
+gates = 11 / 11
+global_ADE_all_CI_low = 0.085258
+global_ADE_t50_CI_low = 0.058513
+global_ADE_hard_failure_CI_low = 0.089767
+global_easy_degradation_CI_high = 0.003348
+global_FDE@50_CI_low = 0.148230
+ETH_UCY_t50_FDE_limitation = repaired
+horizon25_status = floor_non_harm_not_positive_dynamics
+TrajNet_t100_status = safety_limited
+metric_seconds_claim = rejected
+Stage5C_executed = false
+SMC_enabled = false
+```
+
+Stage42-AH refreshes the paper claim boundary after AF/AG. The allowed claim is now stronger than Stage42-AE: global all/t50/hard remain positive, horizon=25 no longer harms, and ETH_UCY t50/FDE@50 lower bounds are positive. The remaining limitations are also explicit: horizon=25 is a floor/non-harm slice rather than positive dynamics, TrajNet|100 remains safety-limited, and metric/seconds/true-3D/foundation claims remain rejected.
+
 Root-level Chinese summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_SUMMARY_ZH.md`

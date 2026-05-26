@@ -26,7 +26,7 @@ The required ablation coverage audit is now packaged. It covers no-history, no-n
 
 The package includes a calibrated learned-shape meta-policy as well. It selects protected waypoint-shape residual sources on validation, evaluates test once, and remains positive on ETH_UCY and TrajNet. The learned-shape contribution is small and protected, not an ungated neural replacement.
 
-The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard.
+The Stage42-AE row-cache stress audit is now packaged too. It confirms Stage42-X global t50 remains seed/bootstrap positive, but it records limitations rather than overclaiming: ETH_UCY has weak t50/FDE@50 lower bounds and horizon=25 is not uniformly positive. Stage42-AF repairs the horizon=25 weak slice with a validation-only low-margin guard. Stage42-AG then repairs the ETH_UCY t50/FDE@50 lower-bound weakness with a validation-only FDE-aware source guard. Stage42-AH refreshes the post-repair paper-claim boundary: global all/t50/hard and FDE@50 are stronger, while horizon=25 remains floor/non-harm, TrajNet|100 remains safety-limited, and metric/seconds claims remain rejected.
 
 ## Stage42-A Data Calibration Follow-Up
 
@@ -145,6 +145,33 @@ easy degradation CI high = 0.003348
 Interpretation:
 
 The source repair promotes `stage42j_static_expert` on `ETH_UCY|50` only when validation FDE@50 support is strong and validation ADE@50 is nonnegative; otherwise it falls back to the floor. This repairs the ETH_UCY t50/FDE@50 lower-bound weakness without using test metrics to tune the threshold. Claims remain protected dataset-local raw-frame 2.5D, not metric or seconds-level.
+
+### Stage42-AH Post-Repair Claim Refresh
+
+Stage42-AH refreshes the paper-ready claim matrix after AF/AG:
+
+- report: `outputs/stage42_long_research/post_repair_claim_refresh_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_ah_gate.md`
+- result: Stage42-AH gates `11 / 11`
+
+Key result:
+
+```text
+verdict = stage42_ah_post_repair_claim_refresh_pass
+global ADE all CI low = 0.085258
+global ADE t50 CI low = 0.058513
+global hard/failure CI low = 0.089767
+global easy degradation CI high = 0.003348
+global FDE@50 CI low = 0.148230
+ETH_UCY t50/FDE limitation = repaired
+horizon25 = floor/non-harm, not positive dynamics
+TrajNet|100 = safety-limited
+metric/seconds claim = rejected
+```
+
+Interpretation:
+
+The post-repair claim is stronger than Stage42-AE: the old horizon=25 negative slice is now floor/non-harm and ETH_UCY t50/FDE@50 lower bounds are positive. It is still bounded evidence. Horizon=25 should not be described as a positive dynamics contribution, t100 remains raw-frame diagnostic with a TrajNet|100 safety limit, and metric/seconds/true-3D/foundation claims remain disallowed.
 
 ## Stage42-B External Validation Follow-Up
 

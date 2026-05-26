@@ -1,0 +1,445 @@
+{
+  "source": "fresh_synthesis_from_stage42ag_post_repair_stress",
+  "stage": "Stage42-AH post-repair stress / paper-claim refresh",
+  "generated_at_utc": "2026-05-26T06:34:25.992662+00:00",
+  "git_commit": "adc5d74",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "input_hash": "2a1f7bf5079d2fbc605ec179caeb126123a17fe2df9b22753b26de70e5dcc3cb",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 dataset-local / raw-frame 2.5D 多智能体轨迹世界状态模型。",
+    "Stage42-AH 是 post-repair stress / paper-claim refresh，不重新训练大模型。",
+    "Stage42-AH 读取 Stage42-AG fresh report 并刷新可写 claim 与剩余 limitation。",
+    "Future waypoints/endpoints 只作为 labels/eval，不作为 inference input。",
+    "t+50 / t+100 是 raw-frame horizons，不能说成 seconds-level。",
+    "External coordinates remain dataset-local / unverified weak metric diagnostic。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage42ag_gate": {
+    "source": "fresh_run_eth_t50_fde_validation_source_repair",
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_ag_eth_t50_fde_source_repair_pass",
+    "gates": [
+      {
+        "name": "Stage42-AF Input Verified",
+        "passed": true
+      },
+      {
+        "name": "Stage42-R Validation Cache Available",
+        "passed": true
+      },
+      {
+        "name": "Source Repair Uses Validation FDE Not Test Tuning",
+        "passed": true
+      },
+      {
+        "name": "ETH_UCY T50 ADE Lower Bound Positive",
+        "passed": true
+      },
+      {
+        "name": "ETH_UCY FDE@50 Lower Bound Positive",
+        "passed": true
+      },
+      {
+        "name": "Global All Positive",
+        "passed": true
+      },
+      {
+        "name": "Global T50 Positive",
+        "passed": true
+      },
+      {
+        "name": "Hard/Failure Positive",
+        "passed": true
+      },
+      {
+        "name": "Easy Preserved",
+        "passed": true
+      },
+      {
+        "name": "No Leakage Inherited",
+        "passed": true
+      },
+      {
+        "name": "No Metric/Seconds Overclaim",
+        "passed": true
+      },
+      {
+        "name": "Stage5C Execution Gate",
+        "passed": true
+      },
+      {
+        "name": "SMC Execution Gate",
+        "passed": true
+      }
+    ]
+  },
+  "summary": {
+    "source": "fresh_run_from_eth_t50_fde_source_repair",
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ade_all": {
+      "mean": 0.09165604913216159,
+      "std": 0.00565353968546655,
+      "ci_low": 0.08525846671997603,
+      "ci_high": 0.09805363154434715
+    },
+    "ade_t50": {
+      "mean": 0.06495706381315831,
+      "std": 0.005695005183447379,
+      "ci_low": 0.05851255877278698,
+      "ci_high": 0.07140156885352965
+    },
+    "ade_t100_raw_frame_diagnostic": {
+      "mean": 0.08153326024168321,
+      "std": 0.020745710800995375,
+      "ci_low": 0.058057278479332994,
+      "ci_high": 0.10500924200403343
+    },
+    "ade_hard_failure": {
+      "mean": 0.09571602094795917,
+      "std": 0.005257023581537113,
+      "ci_low": 0.08976713874728331,
+      "ci_high": 0.10166490314863502
+    },
+    "ade_easy_degradation": {
+      "mean": 0.0016566769121269715,
+      "std": 0.0014947914634615258,
+      "ci_low": -3.483886534428682e-05,
+      "ci_high": 0.00334819268959823
+    },
+    "fde_t50": {
+      "mean": 0.17785631342714833,
+      "std": 0.026180615567099007,
+      "ci_low": 0.14823015795452749,
+      "ci_high": 0.20748246889976918
+    },
+    "switch_rate": {
+      "mean": 0.23703957162752723,
+      "std": 0.0012907378767079382,
+      "ci_low": 0.2355789642208089,
+      "ci_high": 0.23850017903424556
+    }
+  },
+  "slice_table": [
+    {
+      "slice": "ETH_UCY|10",
+      "domain": "ETH_UCY",
+      "horizon": 10,
+      "rows": 7223,
+      "status": "positive_supported",
+      "ade_all": 0.14054095935930547,
+      "ade_all_ci_low": 0.096360382348646,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.15483859200295244,
+      "hard_failure_ci_low": 0.1097962687096174,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.3096589598043287
+    },
+    {
+      "slice": "ETH_UCY|100",
+      "domain": "ETH_UCY",
+      "horizon": 100,
+      "rows": 5433,
+      "status": "positive_supported",
+      "ade_all": 0.02637860412148459,
+      "ade_all_ci_low": 0.009570158757711032,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.02637860412148459,
+      "hard_failure_ci_low": 0.009570158757711032,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.14651205595435304
+    },
+    {
+      "slice": "ETH_UCY|25",
+      "domain": "ETH_UCY",
+      "horizon": 25,
+      "rows": 6823,
+      "status": "floor_non_harm",
+      "ade_all": 0.0,
+      "ade_all_ci_low": 0.0,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.0,
+      "hard_failure_ci_low": 0.0,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.0
+    },
+    {
+      "slice": "ETH_UCY|50",
+      "domain": "ETH_UCY",
+      "horizon": 50,
+      "rows": 6422,
+      "status": "positive_supported",
+      "ade_all": 0.024635928198443218,
+      "ade_all_ci_low": 0.002820688160982139,
+      "ade_t50": 0.024635928198443218,
+      "ade_t50_ci_low": 0.002820688160982139,
+      "fde_t50": 0.10547615864239786,
+      "fde_t50_ci_low": 0.021040393452369632,
+      "hard_failure": 0.024635928198443218,
+      "hard_failure_ci_low": 0.002820688160982139,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.20730821135679434
+    },
+    {
+      "slice": "TrajNet|10",
+      "domain": "TrajNet",
+      "horizon": 10,
+      "rows": 6443,
+      "status": "positive_supported",
+      "ade_all": 0.18592937079227193,
+      "ade_all_ci_low": 0.090334369646888,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.19192909927123178,
+      "hard_failure_ci_low": 0.10041313139822212,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.31284598272026487
+    },
+    {
+      "slice": "TrajNet|100",
+      "domain": "TrajNet",
+      "horizon": 100,
+      "rows": 3032,
+      "status": "safety_limited",
+      "ade_all": 0.09875907078956987,
+      "ade_all_ci_low": 0.018233137455094597,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.09875907078956987,
+      "hard_failure_ci_low": 0.018233137455094597,
+      "easy_degradation_ci_high": 0.08498424090178214,
+      "switch_rate": 0.31651275285839925
+    },
+    {
+      "slice": "TrajNet|25",
+      "domain": "TrajNet",
+      "horizon": 25,
+      "rows": 5685,
+      "status": "floor_non_harm",
+      "ade_all": 0.0,
+      "ade_all_ci_low": 0.0,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.0,
+      "hard_failure_ci_low": 0.0,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.0
+    },
+    {
+      "slice": "TrajNet|50",
+      "domain": "TrajNet",
+      "horizon": 50,
+      "rows": 4927,
+      "status": "positive_supported",
+      "ade_all": 0.0974649986079477,
+      "ade_all_ci_low": 0.07757268874983766,
+      "ade_t50": 0.0974649986079477,
+      "ade_t50_ci_low": 0.07757268874983766,
+      "fde_t50": 0.23541252454524778,
+      "fde_t50_ci_low": 0.20742799135608553,
+      "hard_failure": 0.0974649986079477,
+      "hard_failure_ci_low": 0.07757268874983766,
+      "easy_degradation_ci_high": 0.011379580265625272,
+      "switch_rate": 0.30255057167985927
+    },
+    {
+      "slice": "UCY|10",
+      "domain": "UCY",
+      "horizon": 10,
+      "rows": 3060,
+      "status": "positive_supported",
+      "ade_all": 0.36895573772764734,
+      "ade_all_ci_low": 0.2258008800985441,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.3818924459884416,
+      "hard_failure_ci_low": 0.23163508595706409,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.6481481481481483
+    },
+    {
+      "slice": "UCY|100",
+      "domain": "UCY",
+      "horizon": 100,
+      "rows": 1440,
+      "status": "positive_supported",
+      "ade_all": 0.21388011127028828,
+      "ade_all_ci_low": 0.15769940266155708,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.21388011127028828,
+      "hard_failure_ci_low": 0.15769940266155708,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.6814814814814815
+    },
+    {
+      "slice": "UCY|25",
+      "domain": "UCY",
+      "horizon": 25,
+      "rows": 2700,
+      "status": "floor_non_harm",
+      "ade_all": 0.0,
+      "ade_all_ci_low": 0.0,
+      "ade_t50": 0.0,
+      "ade_t50_ci_low": 0.0,
+      "fde_t50": 0.0,
+      "fde_t50_ci_low": 0.0,
+      "hard_failure": 0.0,
+      "hard_failure_ci_low": 0.0,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.0
+    },
+    {
+      "slice": "UCY|50",
+      "domain": "UCY",
+      "horizon": 50,
+      "rows": 2340,
+      "status": "positive_supported",
+      "ade_all": 0.12289185352519343,
+      "ade_all_ci_low": 0.04805040777131636,
+      "ade_t50": 0.12289185352519343,
+      "ade_t50_ci_low": 0.04805040777131636,
+      "fde_t50": 0.29223556763373615,
+      "fde_t50_ci_low": 0.21837117433171183,
+      "hard_failure": 0.12289185352519343,
+      "hard_failure_ci_low": 0.04805040777131636,
+      "easy_degradation_ci_high": 0.0,
+      "switch_rate": 0.5844729344729345
+    }
+  ],
+  "claim_matrix": [
+    {
+      "claim": "Global protected row-level full-waypoint ADE remains positive after AF/AG repairs.",
+      "status": "supported",
+      "evidence": "ADE all=0.091656, CI low=0.085258"
+    },
+    {
+      "claim": "Global protected row-level t50 remains positive after AF/AG repairs.",
+      "status": "supported",
+      "evidence": "ADE t50=0.064957, CI low=0.058513; FDE@50=0.177856"
+    },
+    {
+      "claim": "Horizon=25 negative slice from Stage42-AE is repaired to non-harm floor.",
+      "status": "supported_as_non_harm_not_positive_dynamics",
+      "evidence": "before=-0.004781149088858072, after=0.0"
+    },
+    {
+      "claim": "ETH_UCY t50/FDE@50 lower-bound weakness from Stage42-AF is repaired.",
+      "status": "supported",
+      "evidence": "ADE@50 CI low -0.013218100958604987 -> 0.002820688160982139; FDE@50 CI low -0.04199023614248535 -> 0.021040393452369632"
+    },
+    {
+      "claim": "t100 can be written as a uniformly deployable long-horizon result.",
+      "status": "rejected",
+      "evidence": "t100 remains raw-frame diagnostic; some t100 slices retain easy-degradation safety limits."
+    },
+    {
+      "claim": "Metric or seconds-level pedestrian claims are allowed.",
+      "status": "rejected",
+      "evidence": "Stage42-AD global_metric_claim_allowed=False; global_seconds_claim_allowed=False"
+    },
+    {
+      "claim": "True 3D / foundation / Stage5C / SMC claims are allowed.",
+      "status": "rejected",
+      "evidence": "Stage5C not executed; SMC disabled; current model remains protected dataset-local raw-frame 2.5D."
+    },
+    {
+      "claim": "Stage42-AE weak-slice limitations have been fully erased.",
+      "status": "partially_repaired_not_fully_erased",
+      "evidence": "AE weak findings were ['ETH_UCY FDE@50 seed-CI lower bound is not positive; keep FDE@50 as stress evidence, not universal guarantee.', 'ETH_UCY t50 seed-CI lower bound is not positive; write t50 domain claim with caution.', 'horizon=25 has non-positive ADE lower bound or mean; Stage42-X is not uniformly positive across every horizon slice.']; AF/AG repair horizon=25 and ETH_UCY|50, but t100 diagnostic/safety limits remain."
+    }
+  ],
+  "remaining_limitations": [
+    "TrajNet|100 remains safety_limited: all_low=0.018233, hard_low=0.018233, fde50_low=0.000000, easy_high=0.084984.",
+    "ETH_UCY|25, TrajNet|25, UCY|25 are floor/non-harm slices, not positive dynamics contributions.",
+    "Metric claim remains blocked until source-specific homography direction, coordinate convention, scale, FPS, and stride are verified.",
+    "Seconds-level horizon claim remains blocked; t50/t100 stay raw-frame horizons."
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ah_gate": {
+    "source": "fresh_synthesis_post_repair_claim_refresh",
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage42_ah_post_repair_claim_refresh_pass",
+    "gates": [
+      {
+        "name": "Stage42-AG Input Verified",
+        "passed": true
+      },
+      {
+        "name": "Global All Positive",
+        "passed": true
+      },
+      {
+        "name": "Global T50 Positive",
+        "passed": true
+      },
+      {
+        "name": "Global Hard Positive",
+        "passed": true
+      },
+      {
+        "name": "Global Easy Preserved",
+        "passed": true
+      },
+      {
+        "name": "Horizon25 Non-Harm",
+        "passed": true
+      },
+      {
+        "name": "ETH_UCY T50/FDE Repaired",
+        "passed": true
+      },
+      {
+        "name": "T100 Diagnostic Limitation Preserved",
+        "passed": true
+      },
+      {
+        "name": "Metric/Seconds Claim Rejected",
+        "passed": true
+      },
+      {
+        "name": "Stage5C False",
+        "passed": true
+      },
+      {
+        "name": "SMC False",
+        "passed": true
+      }
+    ]
+  }
+}
