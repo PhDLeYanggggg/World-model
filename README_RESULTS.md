@@ -4244,3 +4244,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - This refresh does not create a new metric/seconds/3D/foundation claim; it only strengthens deployable policy reproducibility under protected dataset-local/raw-frame 2.5D boundaries.
 - Stage5C remains unexecuted and SMC remains disabled.
 <!-- STAGE42_CW_RUNTIME_REPLAY_PAPER_REFRESH:END -->
+
+<!-- STAGE42_CX_EVIDENCE_PROVENANCE:START -->
+## Stage42-CX Evidence Provenance / Command Matrix
+
+- source: `fresh_evidence_provenance_from_stage42_artifacts`
+- role: paper-ready provenance and reproducibility audit.
+- gate: `16 / 16`; verdict `stage42_cx_evidence_provenance_pass`.
+- artifacts audited: `21`.
+- artifacts with passing gates: `21`.
+- source-label counts: `{'fresh_run': 20, 'cached_verified': 1}`.
+- worktree caveat artifacts recorded: `2`.
+- Dirty/untracked generated files are not hidden; they are recorded as caveats and must not be treated as extra clean paper evidence.
+- This audit does not create metric/seconds/3D/foundation claims and does not execute Stage5C or SMC.
+<!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->

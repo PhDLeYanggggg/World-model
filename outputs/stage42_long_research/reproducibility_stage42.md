@@ -130,3 +130,35 @@ python3 -m pytest tests
 - This refresh does not create a new metric/seconds/3D/foundation claim; it only strengthens deployable policy reproducibility under protected dataset-local/raw-frame 2.5D boundaries.
 - Stage5C remains unexecuted and SMC remains disabled.
 <!-- STAGE42_CW_RUNTIME_REPLAY_REFRESH:END -->
+
+<!-- STAGE42_CX_EVIDENCE_PROVENANCE:START -->
+## Stage42-CX Evidence Provenance / Command Matrix
+
+- source: `fresh_evidence_provenance_from_stage42_artifacts`
+- This section lists high-value Stage42 evidence artifacts, their source labels, gates, runners, and worktree caveats.
+- A worktree caveat is not hidden evidence; it means the current file differs from committed HEAD or is untracked.
+
+| claim area | source label | gate | runner | worktree caveat |
+| --- | --- | --- | --- | ---: |
+| `data_calibration` | `fresh_run` | `7/7` | `run_stage42_data_calibration.py` | `False` |
+| `external_validation` | `fresh_run` | `10/10` | `run_stage42_external_validation.py` | `False` |
+| `full_waypoint_dynamics` | `fresh_run` | `12/12` | `run_stage42_full_waypoint_dynamics.py` | `False` |
+| `causal_ablation` | `fresh_run` | `12/12` | `run_stage42_causal_ablation.py` | `False` |
+| `safety_floor` | `fresh_run` | `12/12` | `run_stage42_safety_floor.py` | `False` |
+| `paper_package` | `fresh_run` | `12/12` | `run_stage42_paper_package.py` | `False` |
+| `strict_time_geometry_calibration` | `fresh_run` | `13/13` | `run_stage42_source_time_geometry_calibration.py` | `True` |
+| `metric_time_claim_guard` | `fresh_run` | `11/11` | `run_stage42_metric_time_claim_guard.py` | `False` |
+| `source_terms_validation` | `fresh_run` | `11/11` | `run_stage42_source_terms_confirmation_validator.py` | `False` |
+| `context_contribution_forensics` | `fresh_run` | `13/13` | `run_stage42_context_contribution_forensics.py` | `True` |
+| `goal_scene_gated_expert` | `fresh_run` | `10/10` | `run_stage42_goal_scene_gated_expert.py` | `False` |
+| `neighbor_interaction_gated_expert` | `fresh_run` | `11/11` | `run_stage42_neighbor_interaction_gated_expert.py` | `False` |
+| `common_validation_bridge_shape_composer` | `cached_verified` | `14/14` | `run_stage42_common_validation_bridge_shape_composer.py` | `False` |
+| `composer_safety_bootstrap` | `fresh_run` | `14/14` | `run_stage42_common_validation_composer_safety.py` | `False` |
+| `proximity_aware_composer_guard` | `fresh_run` | `19/19` | `run_stage42_proximity_aware_composer_guard.py` | `False` |
+| `proximity_guard_ablation` | `fresh_run` | `19/19` | `run_stage42_proximity_guard_ablation.py` | `False` |
+| `frozen_proximity_guard_policy` | `fresh_run` | `25/25` | `run_stage42_freeze_proximity_guard_policy.py` | `False` |
+| `frozen_policy_replay` | `fresh_run` | `30/30` | `run_stage42_replay_proximity_guard_policy.py` | `False` |
+| `runtime_policy_api` | `fresh_run` | `19/19` | `run_stage42_runtime_proximity_guard_policy.py` | `False` |
+| `batch_runtime_replay` | `fresh_run` | `25/25` | `run_stage42_batch_replay_proximity_guard_policy.py` | `False` |
+| `runtime_replay_paper_refresh` | `fresh_run` | `25/25` | `run_stage42_runtime_replay_paper_refresh.py` | `False` |
+<!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->
