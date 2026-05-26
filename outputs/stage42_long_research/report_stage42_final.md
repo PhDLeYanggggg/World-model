@@ -126,3 +126,14 @@ The result is a useful negative/partial result, not a deployment improvement. St
 Stage42-N directly follows the Stage42-M failure by replacing slice-level alpha distillation with row-level train/val static gain, floor gain, harm, and switchability supervision. It also fixes the runtime rough edge from the first attempt by caching train/val row-teacher targets and writing heartbeats. The run is intentionally marked as a single-teacher-seed pilot, not a full teacher ensemble.
 
 The result is mixed and must not be packaged as a t+50 success. It improves ADE all (`0.0250`) and ADE hard/failure (`0.0269`) over Stage42-L/M while preserving easy cases (`0.0` degradation), but ADE t50 becomes negative (`-0.0278`). Row-level teacher diagnostics show large static/switchable mass on t50 (`train t50 switchable 0.462`, `val t50 switchable 0.572`), yet the learned deployment policy still switches the wrong t50 rows. The new failure taxonomy is therefore sharper: alpha-style static-gate supervision is not enough, even when row-level; the next repair needs an explicit row-level gain/harm/switchability selector head or t50-specific teacher ensemble, not just a static gate target.
+
+## Stage42-O Addendum
+
+- source: `fresh_run`
+- report: `outputs/stage42_long_research/explicit_gain_harm_selector_stage42.md`
+- gate: `outputs/stage42_long_research/stage42_stage_o_gate.md`
+- verdict: `stage42_o_explicit_gain_harm_selector_partial`
+
+Stage42-O tests the Stage42-N diagnosis by adding an explicit row-level selector head for switch probability, expected gain, harm probability, and uncertainty. It also fixes the strict evaluation protocol by using train-split feature normalization for train/val/test and adding a `no_test_statistics_normalization` gate. Future waypoints remain labels only, not inference inputs.
+
+The strict result is useful but partial: ADE all improves to `0.0526`, hard/failure to `0.0535`, t+100 raw-frame diagnostic to `0.0602`, and easy degradation stays under the mean 2% gate at `0.0155`. However ADE t50 remains slightly negative at `-0.0008`, so Stage42-O must not be packaged as a t+50 success. It confirms that explicit gain/harm prediction is better than alpha-only distillation, but the next repair needs a t+50-specific teacher ensemble or per-domain horizon calibration.

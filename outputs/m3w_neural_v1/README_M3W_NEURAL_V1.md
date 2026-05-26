@@ -298,3 +298,24 @@ smc_enabled = false
 Stage42-N replaces Stage42-M's coarse domain/horizon alpha teacher with row-level train/val static gain, floor gain, harm, and switchability supervision. This run is a single-teacher-seed row-level pilot with cached train/val teacher targets for recoverability. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 It is not a t+50 repair. ADE all (`0.0250`) and hard/failure (`0.0269`) improve over Stage42-L/M with easy degradation `0.0`, but ADE t50 is negative (`-0.0278`). The diagnosis is now sharper: row-level alpha supervision alone still does not teach the model which t+50 rows are safe to switch. Next work should train an explicit gain/harm/switchability selector head or a t+50-specific teacher ensemble.
+
+## Stage42-O Explicit Row-Level Gain/Harm Selector Head
+
+```text
+source = fresh_run
+verdict = stage42_o_explicit_gain_harm_selector_partial
+gates = 13 / 14
+explicit_selector_ade_all = 0.0526457864037421
+explicit_selector_ade_t50 = -0.0007755414586538093
+explicit_selector_ade_hard_failure = 0.0535270529782426
+explicit_selector_ade_easy_degradation = 0.015491233410829327
+explicit_selector_fde_t50 = 0.05761440213671524
+feature_normalization = train_split_stats_only
+no_test_statistics_normalization = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-O adds an explicit row-level gain/harm/switchability selector head on top of cached-verified Stage42-N full-waypoint predictors. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+After fixing normalization to use train-split statistics only, Stage42-O is a useful partial result rather than a t+50 pass. It improves all and hard/failure over Stage42-N and keeps easy degradation below the mean 2% gate, but ADE t50 remains slightly negative.

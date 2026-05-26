@@ -6,7 +6,11 @@ Latest Chinese detailed summary of the M3W goal:
 
 `/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_GOAL_DETAILED_SUMMARY_ZH.md`
 
-It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-J plus Stage42-K as an explicitly `in_progress` fresh checkpoint run. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package, Stage42-G added fresh retrained selector ablations, Stage42-H proved history tokens are strongly positive under a causal sequence encoder, Stage42-I exposed unconditional static/context failure in full-waypoint training, and Stage42-J repaired it at policy level with validation-gated static experts. The package is still not full A-journal ready.
+Full long-form Chinese route/failure/success summary for the current goal:
+
+`/Users/yangyue/Downloads/World/outputs/m3w_neural_v1/README_M3W_LONG_GOAL_SUMMARY_ZH.md`
+
+It records what was tried, what failed, why it failed, what worked, and the current claim boundary, now including Stage42-A through Stage42-O. The current best deployable candidate remains M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under the Stage37/teacher floor. It is still not true 3D, not metric/seconds-level, not a foundation model, and Stage5C/SMC remain disabled. Stage42-F produced a strong protected 2.5D manuscript evidence package; Stage42-G/H added fresh ablation and sequence-history evidence; Stage42-I/J/K/L/M/N/O investigated full-waypoint static/context repair. Stage42-O is a useful partial gain/harm selector result after train-only normalization, but it still does not pass ADE t+50, so the package is still not full A-journal ready.
 
 ## M3W-Neural v1 Goal Summary
 
@@ -2140,3 +2144,24 @@ smc_enabled = false
 Stage42-N replaces Stage42-M's coarse domain/horizon alpha teacher with row-level train/val static gain, floor gain, harm, and switchability supervision. This run is a single-teacher-seed row-level pilot with cached train/val teacher targets for recoverability. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
 
 Stage42-N interpretation: this is a partial/negative t+50 result. It improves ADE all (`0.0250`) and hard/failure (`0.0269`) over Stage42-L/M while preserving easy cases, but ADE t50 becomes negative (`-0.0278`). Row-level alpha supervision is therefore not sufficient; the next repair needs an explicit row-level gain/harm/switchability selector head or t+50-specific teacher ensemble rather than only a static-gate alpha target.
+
+## Stage42-O Explicit Row-Level Gain/Harm Selector Head
+
+```text
+source = fresh_run
+verdict = stage42_o_explicit_gain_harm_selector_partial
+gates = 13 / 14
+explicit_selector_ade_all = 0.0526457864037421
+explicit_selector_ade_t50 = -0.0007755414586538093
+explicit_selector_ade_hard_failure = 0.0535270529782426
+explicit_selector_ade_easy_degradation = 0.015491233410829327
+explicit_selector_fde_t50 = 0.05761440213671524
+feature_normalization = train_split_stats_only
+no_test_statistics_normalization = true
+stage5c_executed = false
+smc_enabled = false
+```
+
+Stage42-O adds an explicit row-level gain/harm/switchability selector head on top of cached-verified Stage42-N full-waypoint predictors. It remains dataset-local raw-frame 2.5D evidence and not Stage5C/SMC.
+
+Stage42-O interpretation: after fixing normalization to use train-split statistics only, the result is a useful partial repair rather than a t+50 pass. It improves ADE all and hard/failure over Stage42-N and keeps easy degradation below the mean 2% gate, but ADE t50 remains slightly negative, so it must not be packaged as a t+50 success.

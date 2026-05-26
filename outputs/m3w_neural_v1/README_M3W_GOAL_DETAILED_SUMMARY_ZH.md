@@ -1219,7 +1219,7 @@ SMC-ready model
 8. **teacher-floor dependence**：Stage42-E 证明当前 teacher floor 必要；下一步要研究 proximity-safe internal gate，减少 floor 依赖。
 9. **更多独立外部数据**：需要再接入合法 top-down pedestrian/drone 数据源，而不是只依赖当前 converted external 状态。
 10. **sequence-to-full-waypoint bridge**：Stage42-H 证明 sequence history 对 family selection 有用，但还要把 causal sequence encoder 直接接到 full-waypoint all-agent dynamics。
-11. **static-gated full-waypoint repair**：Stage42-J 已完成 policy-level repair，Stage42-K 已完成 fresh checkpoint training，Stage42-L 已修复 fresh checkpoint 的 t50 ADE 负号；Stage42-M 证明 coarse policy alpha distillation 不够，Stage42-N 证明 row-level alpha teacher 仍不够，下一步需要显式 row-level gain/harm/switchability selector head。
+11. **static-gated full-waypoint repair**：Stage42-J 已完成 policy-level repair，Stage42-K 已完成 fresh checkpoint training，Stage42-L 已修复 fresh checkpoint 的 t50 ADE 负号；Stage42-M 证明 coarse policy alpha distillation 不够，Stage42-N 证明 row-level alpha teacher 仍不够，Stage42-O 证明显式 gain/harm selector 能改善 all/hard，但严格 train-only normalization 后 t50 仍未过 gate。
 
 ## 8. 直接回答
 
@@ -1240,6 +1240,7 @@ Stage42-K 是否完成 fresh static-gated checkpoint：是，fresh_run gates 9/9
 Stage42-L 是否修复 K 的 t50：是，ADE t50 从 -0.0122 修到 +0.0020；但仍未超过 Stage42-J policy gate。
 Stage42-M 是否完成 policy distillation：部分失败。FDE t50 提升到 0.0729，但 ADE t50 仍为负，未超过 Stage42-L/J。
 Stage42-N 是否完成 row-level teacher 修复：部分失败。all/hard 超过 L/M 且 easy 安全，但 t50 ADE 为 -0.0278，说明 alpha-style row teacher 不足。
+Stage42-O 是否完成显式 gain/harm selector 修复：部分失败。严格 train-only normalization 后 all/hard 为正、easy mean 小于 2%，但 ADE t50 为 -0.0008，不能写成 t50 修复成功。
 是否 true 3D：否。
 是否 foundation：否。
 Stage5C 是否可执行：否。
@@ -1275,10 +1276,11 @@ SMC 是否可启用：否。
 - Stage42-L horizon-aware t50 static-gate repair：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/horizon_static_gate_repair_stage42.md`
 - Stage42-M policy-distilled static gate：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/policy_distilled_static_gate_stage42.md`
 - Stage42-N row-level gain/harm static gate：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/row_gain_static_gate_stage42.md`
+- Stage42-O explicit gain/harm selector：`/Users/yangyue/Downloads/World/outputs/stage42_long_research/explicit_gain_harm_selector_stage42.md`
 
 ## 10. 下一步最值得做
 
-1. **显式 row-level gain/harm selector head**：Stage42-N 证明 row-level alpha teacher 仍不够；下一步要让模型直接预测 expected ADE gain、harm risk 和 switchability，尤其是 t+50 切换，而不是只监督 static gate。
+1. **t+50-specific gain/harm selector ensemble**：Stage42-O 证明显式 gain/harm/switchability 比 alpha teacher 更好，但严格 normalization 后 t50 仍为小负；下一步需要 t+50-specific teacher ensemble、per-domain horizon calibration 和更强 easy-risk CI 约束。
 2. **proximity-safe internal gate**：减少 Stage37/teacher floor 依赖，但不能牺牲 easy/proximity/collision safety。
 3. **Metric/time audit**：补 FPS、annotation stride、homography、scale；不完成前继续禁止 metric/seconds claims。
 4. **新增外部 top-down 数据**：优先 legal scene image + trajectory 的 pedestrian/drone top-down 数据，扩大 external breadth。
