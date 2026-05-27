@@ -5022,3 +5022,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `group_constraint_training_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EU_GROUP_CONSISTENCY_CONSTRAINT_TRAINING:END -->
+
+<!-- STAGE42_EV_CONSTRAINT_AWARE_COMPOSER:START -->
+## Stage42-EV Constraint-Aware Composer
+
+- source: `fresh_stage42_constraint_aware_composer`
+- role: validation-only composer over floor / Stage42-AM / Stage42-DI / Stage42-EU by domain, horizon, and group-risk buckets.
+- gate: `12 / 14`; verdict `stage42_ev_constraint_aware_composer_positive_not_promoted`.
+- selected composer mode: `domain_horizon`.
+- test all/t50/t100raw/hard/easy: `24.71%` / `22.35%` / `14.35%` / `23.88%` / `-25.10%`.
+- delta vs Stage42-DI all/hard/easy: `-0.00%` / `-0.00%` / `0.53%`.
+- near@0.05 base/final: `1.94%` / `1.37%`.
+- decision: `constraint_aware_composer_positive_but_keep_stage42_di`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EV_CONSTRAINT_AWARE_COMPOSER:END -->
