@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-HC floor-alternative gate stress matrix",
-  "current_verdict": "stage42_hc_floor_alternative_gate_stress_pass",
+  "current_stage": "Stage42-HD floor-free proximity-guard repair",
+  "current_verdict": "stage42_hd_floor_free_proximity_guard_repair_pass",
   "stage42_hc_floor_alternative_gate_stress": {
     "source": "fresh_stage42_hc_floor_alternative_gate_stress",
     "report": "outputs/stage42_long_research/floor_alternative_gate_stress_stage42.md",
@@ -31248,6 +31248,49 @@
     "verification": {
       "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_teacher_floor_necessity_meta_audit.py -> 3 passed in 0.74s",
       "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 951 passed in 108.91s"
+    }
+  },
+  "stage42_hd_floor_free_proximity_guard_repair": {
+    "source": "fresh_stage42_hd_floor_free_proximity_guard_repair",
+    "report": "outputs/stage42_long_research/floor_free_proximity_guard_repair_stage42.md",
+    "json": "outputs/stage42_long_research/floor_free_proximity_guard_repair_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_hd_gate.md",
+    "verdict": "stage42_hd_floor_free_proximity_guard_repair_pass",
+    "gates": "13/13",
+    "summary": {
+      "candidate_count": 4,
+      "pre_guard_deployable_count": 0,
+      "post_guard_deployable_count": 4,
+      "best_post_guard_family": "harm_predictor_gate",
+      "best_post_guard_selected_min_sep": 0.05,
+      "best_post_guard_all_improvement": 0.20741832176407393,
+      "best_post_guard_t50_improvement": 0.13824909063914304,
+      "best_post_guard_t100_raw_improvement": 0.13676652178234783,
+      "best_post_guard_hard_failure_improvement": 0.19988199720371558,
+      "best_post_guard_easy_degradation": 0.0,
+      "best_post_guard_collision_delta_vs_floor_005": -0.004714039399831282,
+      "teacher_gate_used": false,
+      "causal_floor_fallback_used": true,
+      "global_floor_removal_allowed": false,
+      "deployment_decision": "teacherless_floor_free_gate_can_be_proximity_repaired_but_only_with_causal_floor_safety_fallback",
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_floor_free_proximity_guard_repair.py -> 3 passed in 118.27s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 957 passed in 214.50s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "global_floor_removal_allowed": false,
+      "teacher_gate_removed_for_repaired_floor_free_candidate": true,
+      "causal_floor_safety_fallback_still_required": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
     }
   }
 }

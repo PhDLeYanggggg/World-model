@@ -2806,3 +2806,16 @@ The context contribution map is now explicit: baseline-family rollout context is
 - Deployment decision remains: keep Stage37/teacher floor globally; allow only validation-backed partial t50 relaxation on selected slices.
 - No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
 <!-- STAGE42_HC_FLOOR_ALTERNATIVE_GATE_STRESS:END -->
+
+<!-- STAGE42_HD_FLOOR_FREE_PROXIMITY_GUARD_REPAIR:START -->
+## Stage42-HD Floor-Free Proximity-Guard Repair
+
+- source: `fresh_stage42_hd_floor_free_proximity_guard_repair`
+- gate: `13 / 13`
+- verdict: `stage42_hd_floor_free_proximity_guard_repair_pass`
+- Tested floor-free internal/harm/uncertainty/conformal gates with a validation-selected proximity guard.
+- pre-guard deployable count: `0`; post-guard deployable count: `4`.
+- best post-guard family `harm_predictor_gate` reaches all/t50/t100raw/hard `20.74%` / `13.82%` / `13.68%` / `19.99%` with easy `0.00%` and collision delta `-0.47%`.
+- The teacher gate is not used in this repair, but causal floor fallback remains required; this is not global floor removal.
+- No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
+<!-- STAGE42_HD_FLOOR_FREE_PROXIMITY_GUARD_REPAIR:END -->
