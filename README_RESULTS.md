@@ -6129,3 +6129,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - inherited guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HT_T100_EASY_GUARD_RUNTIME:END -->
+
+<!-- STAGE42_HU_T100_RUNTIME_BATCH_REPLAY_SUFFICIENCY:START -->
+## Stage42-HU T100 Runtime Batch Replay Sufficiency Audit
+
+- source: `fresh_audit_from_stage42_hr_hs_ht_artifacts`
+- role: audit whether the frozen/runtime t100 easy guard evidence supports real row-level batch replay.
+- gate: `17 / 17`; verdict `stage42_hu_t100_runtime_batch_replay_sufficiency_pass_with_blocker`.
+- runtime API ready: `True`; frozen policy ready: `True`.
+- real batch replay status: `not_run`; blocker: `missing_row_level_candidate_floor_selected_arrays`.
+- conclusion: HT is callable and smoke-tested, but not a real batch replay because row-level candidate/floor/selected arrays are absent from HR/HS/HT artifacts.
+- inherited guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HU_T100_RUNTIME_BATCH_REPLAY_SUFFICIENCY:END -->

@@ -1,0 +1,498 @@
+{
+  "source": "fresh_audit_from_stage42_hr_hs_ht_artifacts",
+  "stage": "Stage42-HU t100 runtime batch replay sufficiency audit",
+  "generated_at_utc": "2026-05-27T20:07:15.615054+00:00",
+  "git_commit": "b2c819e",
+  "input_hash": "3fef8a81de3f6d3f24b5eae5d1e1fb147a20edf65033d5d20c2a6977f60734f6",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HU 审计 Stage42-HR/HS/HT 是否足以支持真实 row-level runtime batch replay。",
+    "HT 已有 callable runtime API 和 smoke replay，但 HR/HS/HT artifact 不包含 per-row candidate/floor/selected_xy arrays。",
+    "因此 real batch replay 当前标记为 not_run，而不是包装成完成。",
+    "future waypoints / endpoints 只能作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "stage42_hr": {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+      "exists": true,
+      "stage42_hr_gate": {
+        "gates": {
+          "hq_input_loaded": true,
+          "hq_t100_easy_was_weak": true,
+          "fresh_guard_source": true,
+          "validation_only_decisions": true,
+          "guarded_or_kept_slices_recorded": true,
+          "t100_easy_repaired_under_2pct": true,
+          "t100_raw_remains_positive": true,
+          "global_all_positive": true,
+          "global_t50_positive": true,
+          "global_hard_positive": true,
+          "global_easy_preserved": true,
+          "ucy_remains_positive": true,
+          "near005_not_worse_vs_pre_guard": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "internal_val_from_train_only": true,
+          "source_overlap_pass": true,
+          "no_metric_seconds_claim": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 23,
+        "total": 23,
+        "verdict": "stage42_hr_t100_easy_guard_pass"
+      }
+    },
+    "stage42_hs": {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+      "exists": true,
+      "stage42_hs_gate": {
+        "gates": {
+          "hr_artifact_loaded": true,
+          "hr_gate_passed": true,
+          "policy_artifact_written": true,
+          "policy_hash_recorded": true,
+          "validation_only_selection": true,
+          "test_once_usage": true,
+          "decision_table_exact_replay": true,
+          "metric_summary_exact_replay": true,
+          "trajnet_t100_guarded": true,
+          "ucy_t100_kept": true,
+          "t100_easy_repaired": true,
+          "test_all_positive": true,
+          "test_t50_positive": true,
+          "test_t100_raw_positive": true,
+          "test_hard_positive": true,
+          "easy_preserved": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "internal_val_from_train_only": true,
+          "source_overlap_pass": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true,
+          "paper_files_updated": true
+        },
+        "passed": 27,
+        "total": 27,
+        "verdict": "stage42_hs_t100_easy_guard_freeze_pass"
+      }
+    },
+    "stage42_ht": {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+      "exists": true,
+      "stage42_ht_gate": {
+        "gates": {
+          "policy_artifact_exists": true,
+          "policy_hash_available": true,
+          "hs_gate_passed": true,
+          "runtime_guarded_slices_match_policy": true,
+          "runtime_kept_slices_match_policy": true,
+          "smoke_cases_pass": true,
+          "trajnet_t100_fallbacks": true,
+          "ucy_t100_keeps_candidate": true,
+          "non_t100_not_guarded": true,
+          "unknown_t100_fallbacks": true,
+          "runtime_inputs_past_only_or_predictions": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_ht_t100_easy_guard_runtime_policy_pass"
+      }
+    }
+  },
+  "policy_artifact": {
+    "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+    "exists": true
+  },
+  "policy_artifact_payload": {
+    "policy_name": "stage42_hs_frozen_group_consistency_t100_easy_guard_policy",
+    "source": "cached_verified_stage42_hr_policy_freeze_from_fresh_artifact",
+    "base_stage": "Stage42-HR group-consistency t100 easy guard",
+    "frozen_at_utc": "2026-05-27T19:37:47.757151+00:00",
+    "frozen_git_commit": "3c934ac",
+    "selection_scope": "validation_only_domain_horizon_t100",
+    "test_usage": "test_once_from_stage42_hr_after_validation_only_guard_decisions",
+    "deployment_role": "protected_t100_easy_guard_for_group_consistency_policy",
+    "decision_rule": {
+      "type": "domain_horizon_t100_easy_guard",
+      "threshold_easy_degradation": 0.0,
+      "keep_if": "validation_all_gain > 0 and validation_easy_degradation <= threshold",
+      "fallback_if": "validation_easy_degradation_above_threshold_or_nonpositive_gain",
+      "fallback_target": "train-horizon causal floor for guarded domain|t100 slice",
+      "uses_future_labels": false,
+      "uses_test_metrics_for_guard": false
+    },
+    "decision_table": {
+      "guarded_slices": {
+        "TrajNet|100": {
+          "source": "fresh_validation_only_domain_t100_easy_guard",
+          "domain": "TrajNet",
+          "val_rows": 1160,
+          "test_rows": 5608,
+          "val_all_improvement": 0.23260462520508085,
+          "val_easy_degradation": 0.017118176622190173,
+          "threshold": 0.0,
+          "keep": false,
+          "reason": "validation_easy_degradation_above_threshold_or_nonpositive_gain"
+        }
+      },
+      "kept_slices": {
+        "UCY|100": {
+          "source": "fresh_validation_only_domain_t100_easy_guard",
+          "domain": "UCY",
+          "val_rows": 1440,
+          "test_rows": 1440,
+          "val_all_improvement": 0.27564518723015075,
+          "val_easy_degradation": -0.021788147627511134,
+          "threshold": 0.0,
+          "keep": true
+        }
+      }
+    },
+    "test_summary_vs_train_horizon_causal_floor": {
+      "rows": 47458,
+      "all_improvement": 0.2772246357901642,
+      "t50_improvement": 0.2698641437531575,
+      "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+      "hard_failure_improvement": 0.2593323287861573,
+      "easy_degradation": -0.32326305969341285,
+      "switch_rate": 0.6816132158961609,
+      "harm_over_fallback": -0.1276729984781961,
+      "t100_easy_degradation": -0.0030719622568884386
+    },
+    "by_domain": {
+      "TrajNet": {
+        "rows": 37918,
+        "all_improvement": 0.2533081097444263,
+        "t10_improvement": 0.6134767936987296,
+        "t25_improvement": 0.2917282083706334,
+        "t50_improvement": 0.2818040039056995,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.23452951987659187,
+        "easy_degradation": -0.30827316296760277,
+        "switch_rate": 0.6940766918086397,
+        "harm_over_fallback": -0.11194070467652854
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.3558083715508603,
+        "t10_improvement": 0.7158164172117882,
+        "t25_improvement": 0.2175535659376392,
+        "t50_improvement": 0.22720558058086227,
+        "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+        "hard_failure_improvement": 0.33784766757762896,
+        "easy_degradation": -0.40603798605973707,
+        "switch_rate": 0.6320754716981132,
+        "harm_over_fallback": -0.19020309453392253
+      }
+    },
+    "by_horizon": {
+      "10": {
+        "rows": 15402,
+        "all_improvement": 0.6388806547369797,
+        "t10_improvement": 0.6388806547369797,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.6467129340645261,
+        "easy_degradation": -0.4985469155627218,
+        "switch_rate": 0.818530061031035,
+        "harm_over_fallback": -0.19454020343519454
+      },
+      "25": {
+        "rows": 13470,
+        "all_improvement": 0.27627469310280717,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.27627469310280717,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.21545184782385285,
+        "easy_degradation": -0.41525616348763417,
+        "switch_rate": 0.7221232368225686,
+        "harm_over_fallback": -0.07198647966265898
+      },
+      "50": {
+        "rows": 11538,
+        "all_improvement": 0.2698641437531575,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.2698641437531575,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.2698641437531575,
+        "easy_degradation": -0.1810089917350668,
+        "switch_rate": 0.7743109724388976,
+        "harm_over_fallback": -0.13501923209927238
+      },
+      "100": {
+        "rows": 7048,
+        "all_improvement": 0.06789640774516092,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+        "hard_failure_improvement": 0.06789640774516092,
+        "easy_degradation": -0.0030719622568884386,
+        "switch_rate": 0.1532349602724177,
+        "harm_over_fallback": -0.0759488035544754
+      }
+    },
+    "pre_guard": {
+      "source": "fresh_pre_guard_hq_rebuild",
+      "metric": {
+        "rows": 47458,
+        "all_improvement": 0.3289036158786902,
+        "t10_improvement": 0.6388806547369797,
+        "t25_improvement": 0.27627469310280717,
+        "t50_improvement": 0.2698641437531575,
+        "t100_raw_frame_diagnostic_improvement": 0.21116485955882547,
+        "hard_failure_improvement": 0.31886443384396834,
+        "easy_degradation": -0.3209397447157065,
+        "switch_rate": 0.7189514939525475,
+        "harm_over_fallback": -0.15147322938982127
+      },
+      "t100_easy_degradation": 0.025600253632051873
+    },
+    "no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "future_waypoint_label_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_threshold_tuning": false,
+      "internal_val_from_train_only": true,
+      "source_overlap_pass": true
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e"
+  },
+  "artifact_summaries": [
+    {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+      "exists": true,
+      "top_level_keys": [
+        "source",
+        "stage",
+        "generated_at_utc",
+        "git_commit",
+        "current_facts",
+        "input_hash",
+        "hq_input",
+        "pre_guard",
+        "guarded",
+        "uses_test_metrics_for_guard",
+        "no_leakage",
+        "claim_boundary",
+        "stage42_hr_gate"
+      ],
+      "row_like_top_level_keys": [],
+      "row_like_nested_keys": [],
+      "has_per_row_rollout_arrays": false
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+      "exists": true,
+      "top_level_keys": [
+        "source",
+        "stage",
+        "generated_at_utc",
+        "git_commit",
+        "input_hash",
+        "current_facts",
+        "inputs",
+        "frozen_policy",
+        "policy_hash",
+        "policy_artifact",
+        "replay",
+        "paper_file_status",
+        "stage42_hs_gate"
+      ],
+      "row_like_top_level_keys": [],
+      "row_like_nested_keys": [],
+      "has_per_row_rollout_arrays": false
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+      "exists": true,
+      "top_level_keys": [
+        "source",
+        "stage",
+        "generated_at_utc",
+        "git_commit",
+        "input_hash",
+        "current_facts",
+        "policy_artifact",
+        "policy_hash",
+        "policy_artifact_payload",
+        "runtime_policy",
+        "inputs",
+        "runtime_inputs",
+        "smoke_case",
+        "no_leakage",
+        "claim_boundary",
+        "stage42_ht_gate"
+      ],
+      "row_like_top_level_keys": [],
+      "row_like_nested_keys": [],
+      "has_per_row_rollout_arrays": false
+    },
+    {
+      "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+      "exists": true,
+      "top_level_keys": [
+        "policy_name",
+        "source",
+        "base_stage",
+        "frozen_at_utc",
+        "frozen_git_commit",
+        "selection_scope",
+        "test_usage",
+        "deployment_role",
+        "decision_rule",
+        "decision_table",
+        "test_summary_vs_train_horizon_causal_floor",
+        "by_domain",
+        "by_horizon",
+        "pre_guard",
+        "no_leakage",
+        "claim_boundary",
+        "policy_hash"
+      ],
+      "row_like_top_level_keys": [],
+      "row_like_nested_keys": [],
+      "has_per_row_rollout_arrays": false
+    }
+  ],
+  "required_row_cache_fields": [
+    "row_id",
+    "split",
+    "domain",
+    "source_file",
+    "scene_id_optional",
+    "frame_id",
+    "agent_id",
+    "horizon",
+    "candidate_xy_predicted_rollout",
+    "floor_xy_train_horizon_causal_rollout",
+    "original_selected_xy_from_stage42_hr_optional",
+    "candidate_switch_optional",
+    "future_xy_label_eval_only_optional",
+    "normalizer_optional",
+    "hard_failure_label_optional",
+    "easy_label_optional"
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required": {
+    "path": "outputs/stage42_long_research/user_action_required_t100_runtime_batch_replay_stage42.md",
+    "written": true
+  },
+  "sufficiency": {
+    "runtime_api_ready": true,
+    "frozen_policy_ready": true,
+    "row_level_batch_replay_ready": false,
+    "real_batch_replay_status": "not_run",
+    "blocker": "missing_row_level_candidate_floor_selected_arrays",
+    "missing_required_fields": [
+      "row_id",
+      "split",
+      "domain",
+      "source_file",
+      "scene_id_optional",
+      "frame_id",
+      "agent_id",
+      "horizon",
+      "candidate_xy_predicted_rollout",
+      "floor_xy_train_horizon_causal_rollout",
+      "original_selected_xy_from_stage42_hr_optional",
+      "candidate_switch_optional",
+      "future_xy_label_eval_only_optional",
+      "normalizer_optional",
+      "hard_failure_label_optional",
+      "easy_label_optional"
+    ],
+    "required_row_cache_fields": [
+      "row_id",
+      "split",
+      "domain",
+      "source_file",
+      "scene_id_optional",
+      "frame_id",
+      "agent_id",
+      "horizon",
+      "candidate_xy_predicted_rollout",
+      "floor_xy_train_horizon_causal_rollout",
+      "original_selected_xy_from_stage42_hr_optional",
+      "candidate_switch_optional",
+      "future_xy_label_eval_only_optional",
+      "normalizer_optional",
+      "hard_failure_label_optional",
+      "easy_label_optional"
+    ]
+  },
+  "stage42_hu_gate": {
+    "gates": {
+      "hr_artifact_present": true,
+      "hs_artifact_present": true,
+      "ht_artifact_present": true,
+      "policy_artifact_present": true,
+      "hs_gate_passed": true,
+      "ht_runtime_api_passed": true,
+      "row_level_replay_not_overclaimed": true,
+      "required_row_cache_schema_written": true,
+      "user_action_or_engineering_action_written": true,
+      "no_future_endpoint_input": true,
+      "no_future_waypoint_input": true,
+      "no_central_velocity": true,
+      "no_test_endpoint_goals": true,
+      "no_test_threshold_tuning": true,
+      "metric_seconds_overclaim_blocked": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 17,
+    "total": 17,
+    "verdict": "stage42_hu_t100_runtime_batch_replay_sufficiency_pass_with_blocker"
+  }
+}
