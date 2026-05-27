@@ -1,0 +1,1921 @@
+{
+  "source": "fresh_stage42_fh_horizon_conservative_easy_guard",
+  "stage": "Stage42-FN FH horizon conservative easy guard",
+  "generated_at_utc": "2026-05-27T08:44:28.320565+00:00",
+  "git_commit": "6cebb31",
+  "input_hash": "cca81fa5f5fa99919f4093c1e1ca0b943095640f53f2c305a33295dc6568e432",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-FM 修复 UCY|50，但 TrajNet|100 与 UCY|100 仍是 horizon weak slices。",
+    "Stage42-FN 只针对 FM 剩余 weak horizon 做 validation-only conservative easy guard，不用 test 调 threshold。",
+    "future waypoints / endpoints 只作为 supervised labels 或 diagnostic/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "selection_rule": {
+    "source": "validation_only",
+    "target_keys": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "features": [
+      "endpoint_delta_floor",
+      "endpoint_delta_fh",
+      "path_length",
+      "min_distance",
+      "delta_min_vs_fh"
+    ],
+    "replacement_candidates": [
+      "floor",
+      "fh",
+      "fc",
+      "di",
+      "fa",
+      "fb"
+    ],
+    "strict_validation_easy_limit": 0.005,
+    "uses_test_metrics_for_policy_selection": false
+  },
+  "policies": {
+    "TrajNet|100": {
+      "key": "TrajNet|100",
+      "base_row": {
+        "name": "TrajNet|100",
+        "rows": 1160,
+        "metric": {
+          "rows": 1160,
+          "all_improvement": 0.23279578816699775,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.23279578816699775,
+          "hard_failure_improvement": 0.23279578816699775,
+          "easy_degradation": 0.016067917407523336,
+          "switch_rate": 0.2508620689655172,
+          "harm_over_fallback": -0.2741733937253998
+        },
+        "bootstrap": {
+          "easy_degradation": {
+            "high": 0.016067917407523336
+          }
+        },
+        "near_bootstrap": {
+          "delta_final_minus_fc": {
+            "high": -0.0034482758620689655
+          }
+        },
+        "robust_positive": false,
+        "weak_reasons": [
+          "fast_validation_selection_no_bootstrap"
+        ]
+      },
+      "selected": {
+        "policy": {
+          "mode": "feature_guard",
+          "replacement": "floor",
+          "feature": "path_length",
+          "direction": "le",
+          "threshold": 0.3749999749633932
+        },
+        "row": {
+          "name": "TrajNet|100",
+          "rows": 1160,
+          "metric": {
+            "rows": 1160,
+            "all_improvement": 0.22188880924504917,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.22188880924504917,
+            "hard_failure_improvement": 0.22188880924504917,
+            "easy_degradation": 0.005132501442430382,
+            "switch_rate": 0.2293103448275862,
+            "harm_over_fallback": -0.2613277857791906
+          },
+          "bootstrap": {
+            "easy_degradation": {
+              "high": 0.005132501442430382
+            }
+          },
+          "near_bootstrap": {
+            "delta_final_minus_fc": {
+              "high": -0.0034482758620689655
+            }
+          },
+          "robust_positive": false,
+          "weak_reasons": [
+            "fast_validation_selection_no_bootstrap"
+          ]
+        },
+        "score": 0.6726689863686701,
+        "guard_rows": 580
+      },
+      "candidate_count": 323,
+      "top_candidates": [
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.3749999749633932
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.22188880924504917,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.22188880924504917,
+              "hard_failure_improvement": 0.22188880924504917,
+              "easy_degradation": 0.005132501442430382,
+              "switch_rate": 0.2293103448275862,
+              "harm_over_fallback": -0.2613277857791906
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.005132501442430382
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.0034482758620689655
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.6726689863686701,
+          "guard_rows": 580
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.37500000468491834
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.22188880924504917,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.22188880924504917,
+              "hard_failure_improvement": 0.22188880924504917,
+              "easy_degradation": 0.005132501442430382,
+              "switch_rate": 0.2293103448275862,
+              "harm_over_fallback": -0.2613277857791906
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.005132501442430382
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.0034482758620689655
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.6726689863686701,
+          "guard_rows": 754
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "endpoint_delta_fh",
+            "direction": "le",
+            "threshold": 0.0
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.21785723526141876,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.21785723526141876,
+              "hard_failure_improvement": 0.21785723526141876,
+              "easy_degradation": 0.005132501442430382,
+              "switch_rate": 0.225,
+              "harm_over_fallback": -0.25657963148546237
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.005132501442430382
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.6602573139159676,
+          "guard_rows": 899
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "endpoint_delta_floor",
+            "direction": "le",
+            "threshold": 0.27657740189938546
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.19954604326533454,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.19954604326533454,
+              "hard_failure_improvement": 0.19954604326533454,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.2,
+              "harm_over_fallback": -0.23501377029762016
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.0
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.0034482758620689655
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.614592734122537,
+          "guard_rows": 928
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.44563532621011637
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.1991235796808667,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.1991235796808667,
+              "hard_failure_improvement": 0.1991235796808667,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.2,
+              "harm_over_fallback": -0.23451621716063686
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.0
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.0034482758620689655
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.6132830970106866,
+          "guard_rows": 928
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "endpoint_delta_fh",
+            "direction": "le",
+            "threshold": 0.008539120159204007
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.19760348234863934,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.19760348234863934,
+              "hard_failure_improvement": 0.19760348234863934,
+              "easy_degradation": 0.005132501442430382,
+              "switch_rate": 0.2,
+              "harm_over_fallback": -0.23272593458013444
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.005132501442430382
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.5979706798863514,
+          "guard_rows": 928
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "min_distance",
+            "direction": "le",
+            "threshold": 0.23267371252655125
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.127417902477181,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.127417902477181,
+              "hard_failure_improvement": 0.127417902477181,
+              "easy_degradation": 0.005132501442430382,
+              "switch_rate": 0.13189655172413794,
+              "harm_over_fallback": -0.15006542437305662
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.005132501442430382
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.3817574512503478,
+          "guard_rows": 580
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "endpoint_delta_floor",
+            "direction": "le",
+            "threshold": 0.40051747649677866
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.11489377514798105,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.11489377514798105,
+              "hard_failure_improvement": 0.11489377514798105,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.1,
+              "harm_over_fallback": -0.13531523271223272
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.0
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.0034482758620689655
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.3541707029587412,
+          "guard_rows": 1044
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "endpoint_delta_fh",
+            "direction": "le",
+            "threshold": 0.015565143015281963
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.11060802654676694,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.11060802654676694,
+              "hard_failure_improvement": 0.11060802654676694,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.1,
+              "harm_over_fallback": -0.13026772627794186
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.0
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.3408848822949775,
+          "guard_rows": 1044
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.5516503765138897
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.10620512041343311,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.10620512041343311,
+              "hard_failure_improvement": 0.10620512041343311,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.1,
+              "harm_over_fallback": -0.1250822384891142
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.0
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.3272358732816426,
+          "guard_rows": 1044
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "delta_min_vs_fh",
+            "direction": "le",
+            "threshold": 0.0
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.10596815357717837,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.10596815357717837,
+              "hard_failure_improvement": 0.10596815357717837,
+              "easy_degradation": 0.005132501442430382,
+              "switch_rate": 0.11120689655172414,
+              "harm_over_fallback": -0.12480315267657441
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.005132501442430382
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.31567702276378795,
+          "guard_rows": 985
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "min_distance",
+            "direction": "le",
+            "threshold": 0.4116157802508338
+          },
+          "row": {
+            "name": "TrajNet|100",
+            "rows": 1160,
+            "metric": {
+              "rows": 1160,
+              "all_improvement": 0.09645043813777276,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.09645043813777276,
+              "hard_failure_improvement": 0.09645043813777276,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.09827586206896552,
+              "harm_over_fallback": -0.11359373878175558
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.0
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.005172413793103448
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.29703084098571625,
+          "guard_rows": 755
+        }
+      ]
+    },
+    "UCY|100": {
+      "key": "UCY|100",
+      "base_row": {
+        "name": "UCY|100",
+        "rows": 1440,
+        "metric": {
+          "rows": 1440,
+          "all_improvement": 0.27757032455165087,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.27757032455165087,
+          "hard_failure_improvement": 0.27757032455165087,
+          "easy_degradation": -0.01913301236674103,
+          "switch_rate": 0.7520833333333333,
+          "harm_over_fallback": -0.37432338463752557
+        },
+        "bootstrap": {
+          "easy_degradation": {
+            "high": -0.01913301236674103
+          }
+        },
+        "near_bootstrap": {
+          "delta_final_minus_fc": {
+            "high": -0.022222222222222223
+          }
+        },
+        "robust_positive": false,
+        "weak_reasons": [
+          "fast_validation_selection_no_bootstrap"
+        ]
+      },
+      "selected": {
+        "policy": {
+          "mode": "feature_guard",
+          "replacement": "fa",
+          "feature": "min_distance",
+          "direction": "le",
+          "threshold": 0.12583341276755197
+        },
+        "row": {
+          "name": "UCY|100",
+          "rows": 1440,
+          "metric": {
+            "rows": 1440,
+            "all_improvement": 0.27815602718057597,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.27815602718057597,
+            "hard_failure_improvement": 0.27815602718057597,
+            "easy_degradation": -0.02101868640353488,
+            "switch_rate": 0.7520833333333333,
+            "harm_over_fallback": -0.3751132464168945
+          },
+          "bootstrap": {
+            "easy_degradation": {
+              "high": -0.02101868640353488
+            }
+          },
+          "near_bootstrap": {
+            "delta_final_minus_fc": {
+              "high": -0.019444444444444445
+            }
+          },
+          "robust_positive": false,
+          "weak_reasons": [
+            "fast_validation_selection_no_bootstrap"
+          ]
+        },
+        "score": 0.8472420175931188,
+        "guard_rows": 288
+      },
+      "candidate_count": 426,
+      "top_candidates": [
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "min_distance",
+            "direction": "le",
+            "threshold": 0.12583341276755197
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.27815602718057597,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.27815602718057597,
+              "hard_failure_improvement": 0.27815602718057597,
+              "easy_degradation": -0.02101868640353488,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.3751132464168945
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.02101868640353488
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8472420175931188,
+          "guard_rows": 288
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "min_distance",
+            "direction": "le",
+            "threshold": 0.07978248396896205
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.278094295886399,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.278094295886399,
+              "hard_failure_improvement": 0.278094295886399,
+              "easy_degradation": -0.020326866018788414,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.37502999736276116
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.020326866018788414
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8470506505811702,
+          "guard_rows": 72
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.5661547410706754
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.27808923912876826,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.27808923912876826,
+              "hard_failure_improvement": 0.27808923912876826,
+              "easy_degradation": -0.023968254313703752,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.37502317796434476
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.023968254313703752
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.847034974632515,
+          "guard_rows": 1296
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "endpoint_delta_floor",
+            "direction": "le",
+            "threshold": 0.3691600599398798
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.278088796046149,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.278088796046149,
+              "hard_failure_improvement": 0.278088796046149,
+              "easy_degradation": -0.023968254313703752,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.37502258043582326
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.023968254313703752
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8470336010763952,
+          "guard_rows": 1368
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.5970984885336327
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.2780857571416516,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.2780857571416516,
+              "hard_failure_improvement": 0.2780857571416516,
+              "easy_degradation": -0.023968254313703752,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.37501848225631185
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.023968254313703752
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8470241804724533,
+          "guard_rows": 1368
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.012104040292411388
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.277751097144346,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.277751097144346,
+              "hard_failure_improvement": 0.277751097144346,
+              "easy_degradation": -0.03492118403932265,
+              "switch_rate": 0.7020833333333333,
+              "harm_over_fallback": -0.3745671693751651
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.03492118403932265
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.022222222222222223
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8469867344808059,
+          "guard_rows": 72
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "min_distance",
+            "direction": "le",
+            "threshold": 0.08927154798090912
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.27807282298935887,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.27807282298935887,
+              "hard_failure_improvement": 0.27807282298935887,
+              "easy_degradation": -0.020326866018788414,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.3750010396292175
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.020326866018788414
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8469840846003459,
+          "guard_rows": 144
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "endpoint_delta_floor",
+            "direction": "le",
+            "threshold": 0.3236167731085254
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.2780586226489523,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.2780586226489523,
+              "hard_failure_improvement": 0.2780586226489523,
+              "easy_degradation": -0.023968254313703752,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.3749818894571211
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.023968254313703752
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.019444444444444445
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8469400635450856,
+          "guard_rows": 1296
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "endpoint_delta_floor",
+            "direction": "le",
+            "threshold": 0.02468522044734526
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.27730712271420765,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.27730712271420765,
+              "hard_failure_improvement": 0.27730712271420765,
+              "easy_degradation": 0.0013256172494815477,
+              "switch_rate": 0.65,
+              "harm_over_fallback": -0.37396843818280756
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": 0.0013256172494815477
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.022222222222222223
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8466520804140437,
+          "guard_rows": 504
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "endpoint_delta_floor",
+            "direction": "le",
+            "threshold": 0.24660378797720703
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.2779586480870996,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.2779586480870996,
+              "hard_failure_improvement": 0.2779586480870996,
+              "easy_degradation": -0.023968254313703752,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.3748470666282367
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.023968254313703752
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.02013888888888889
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8466301424033421,
+          "guard_rows": 1152
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "fa",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.5141438156514484
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.27794076271019774,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.27794076271019774,
+              "hard_failure_improvement": 0.27794076271019774,
+              "easy_degradation": -0.023968254313703752,
+              "switch_rate": 0.7520833333333333,
+              "harm_over_fallback": -0.3748229469215345
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.023968254313703752
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.02013888888888889
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8465746977349463,
+          "guard_rows": 1152
+        },
+        {
+          "policy": {
+            "mode": "feature_guard",
+            "replacement": "floor",
+            "feature": "path_length",
+            "direction": "le",
+            "threshold": 0.04055417967373216
+          },
+          "row": {
+            "name": "UCY|100",
+            "rows": 1440,
+            "metric": {
+              "rows": 1440,
+              "all_improvement": 0.2772768496999778,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.2772768496999778,
+              "hard_failure_improvement": 0.2772768496999778,
+              "easy_degradation": -0.004612587360343978,
+              "switch_rate": 0.6520833333333333,
+              "harm_over_fallback": -0.37392761286342946
+            },
+            "bootstrap": {
+              "easy_degradation": {
+                "high": -0.004612587360343978
+              }
+            },
+            "near_bootstrap": {
+              "delta_final_minus_fc": {
+                "high": -0.022222222222222223
+              }
+            },
+            "robust_positive": false,
+            "weak_reasons": [
+              "fast_validation_selection_no_bootstrap"
+            ]
+          },
+          "score": 0.8465165674032645,
+          "guard_rows": 144
+        }
+      ]
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_fh_horizon_conservative_easy_guard",
+    "test_rows": 47458,
+    "weak_domain_horizons_before": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "weak_domain_horizons_after": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "robust_domain_horizons_after": [
+      "TrajNet|10",
+      "TrajNet|25",
+      "TrajNet|50",
+      "UCY|10",
+      "UCY|25",
+      "UCY|50"
+    ],
+    "weak_horizon_count_before": 2,
+    "weak_horizon_count_after": 2,
+    "repaired_horizon_count": 0,
+    "applied_guards": {
+      "TrajNet|100": {
+        "key": "TrajNet|100",
+        "mode": "feature_guard",
+        "replacement": "floor",
+        "feature": "path_length",
+        "direction": "le",
+        "threshold": 0.3749999749633932,
+        "rows": 5608,
+        "guard_rows": 2593
+      },
+      "UCY|100": {
+        "key": "UCY|100",
+        "mode": "feature_guard",
+        "replacement": "fa",
+        "feature": "min_distance",
+        "direction": "le",
+        "threshold": 0.12583341276755197,
+        "rows": 1440,
+        "guard_rows": 288
+      }
+    },
+    "uniform_horizon_claim_allowed": false,
+    "decision": "conservative_guard_partial_keep_stage42_fh_fi_with_horizon_limit",
+    "fm_verdict": "stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit"
+  },
+  "metric_vs_floor": {
+    "rows": 47458,
+    "all_improvement": 0.3485728219731252,
+    "t10_improvement": 0.6726250922029268,
+    "t25_improvement": 0.3407781814066436,
+    "t50_improvement": 0.2903171498775704,
+    "t100_raw_frame_diagnostic_improvement": 0.20192772398718484,
+    "hard_failure_improvement": 0.32958044997927627,
+    "easy_degradation": -0.37143065335018866,
+    "switch_rate": 0.742762021155548,
+    "harm_over_fallback": -0.16053168306081075
+  },
+  "diagnostics": {
+    "final_near_005": 0.012389902650764888,
+    "delta_near_vs_fc": -0.0073117282649922035,
+    "delta_near_vs_di": -0.0007585654684141767
+  },
+  "domain_horizon_rows": {
+    "TrajNet|10": {
+      "name": "TrajNet|10",
+      "rows": 12342,
+      "metric": {
+        "rows": 12342,
+        "all_improvement": 0.6469369008988801,
+        "t10_improvement": 0.6469369008988801,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.6609705200448774,
+        "easy_degradation": -0.5054937994852914,
+        "switch_rate": 0.8424890617403986,
+        "harm_over_fallback": -0.18481089735632883
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.6436112098577544,
+          "mid": 0.6469385042237101,
+          "high": 0.6499947574577419,
+          "n": 12342,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.6575046117833928,
+          "mid": 0.6610011437960042,
+          "high": 0.6645001910585993,
+          "n": 8890,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.0785752870528116,
+          "mid": -1.0231440891209191,
+          "high": -0.9735993926371124,
+          "n": 2410,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.00016204829039053638,
+          "mid": 0.0004861448711716091,
+          "high": 0.00089126559714795,
+          "n": 12342,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.0015394587587100957,
+          "mid": -0.0009722897423432182,
+          "high": -0.0004861448711716091,
+          "n": 12342,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.00024307243558580456,
+          "mid": -8.102414519526819e-05,
+          "high": 0.0,
+          "n": 12342,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet|25": {
+      "name": "TrajNet|25",
+      "rows": 10770,
+      "metric": {
+        "rows": 10770,
+        "all_improvement": 0.37099635492490113,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.37099635492490113,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.30043905117319103,
+        "easy_degradation": -0.49628161494732626,
+        "switch_rate": 0.8269266480965646,
+        "harm_over_fallback": -0.09571285871140334
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.36527581672192,
+          "mid": 0.3710010339704524,
+          "high": 0.37701087735191996,
+          "n": 10770,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.28950096773715345,
+          "mid": 0.3001982941589104,
+          "high": 0.3105858191395426,
+          "n": 3991,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.0274135350983047,
+          "mid": -0.9849962102209435,
+          "high": -0.9459954210151141,
+          "n": 3241,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.010304085422469824,
+          "mid": 0.012256267409470752,
+          "high": 0.014298978644382544,
+          "n": 10770,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.006223305478180129,
+          "mid": -0.004735376044568245,
+          "high": -0.0032497678737233053,
+          "n": 10770,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0011142061281337048,
+          "mid": 0.0,
+          "high": 0.0011142061281337048,
+          "n": 10770,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet|50": {
+      "name": "TrajNet|50",
+      "rows": 9198,
+      "metric": {
+        "rows": 9198,
+        "all_improvement": 0.2934738556604529,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.2934738556604529,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.2934738556604529,
+        "easy_degradation": -0.21855658316701032,
+        "switch_rate": 0.9058490976299195,
+        "harm_over_fallback": -0.1439073971648188
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.28891421912474224,
+          "mid": 0.29344476024120675,
+          "high": 0.2976080547310073,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.2893917990799542,
+          "mid": 0.29342758316507106,
+          "high": 0.29758844320268013,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.28926167603208885,
+          "mid": 0.2933310461368511,
+          "high": 0.29768407857428386,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.3010240679589803,
+          "mid": -0.27988871952329986,
+          "high": -0.260471540427037,
+          "n": 2780,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.016957490758860622,
+          "mid": 0.019678190911067622,
+          "high": 0.022396173081104587,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.020439225918677972,
+          "mid": -0.017721243748641008,
+          "high": -0.015003261578604044,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0034790171776473144,
+          "mid": -0.00228310502283105,
+          "high": -0.0011931941726462298,
+          "n": 9198,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet|100": {
+      "name": "TrajNet|100",
+      "rows": 5608,
+      "metric": {
+        "rows": 5608,
+        "all_improvement": 0.1770148076842799,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.1770148076842799,
+        "hard_failure_improvement": 0.1770148076842799,
+        "easy_degradation": 0.027524305028999052,
+        "switch_rate": 0.28191868758915833,
+        "harm_over_fallback": -0.18755545254610523
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.17052938192632358,
+          "mid": 0.17689823212833666,
+          "high": 0.1838391142758573,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.16952823001323608,
+          "mid": 0.17697805556488322,
+          "high": 0.18399458393341894,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.16981883458453625,
+          "mid": 0.17696957737556418,
+          "high": 0.18412575942042747,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.002566256508945014,
+          "mid": 0.025703381986077467,
+          "high": 0.05360122583272421,
+          "n": 782,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.02050641940085592,
+          "mid": 0.024607703281027102,
+          "high": 0.028887303851640515,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.0076676176890156916,
+          "mid": -0.005527817403708987,
+          "high": -0.003566333808844508,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.004462375178316691,
+          "mid": -0.0028530670470756064,
+          "high": -0.0012482168330955777,
+          "n": 5608,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": false,
+      "weak_reasons": [
+        "easy_ci_exceeds_2pct"
+      ]
+    },
+    "UCY|10": {
+      "name": "UCY|10",
+      "rows": 3060,
+      "metric": {
+        "rows": 3060,
+        "all_improvement": 0.7504219507828036,
+        "t10_improvement": 0.7504219507828036,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.747439841045737,
+        "easy_degradation": -0.6135141423235939,
+        "switch_rate": 0.9,
+        "harm_over_fallback": -0.28550042760183797
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.7445866050041328,
+          "mid": 0.750298582306699,
+          "high": 0.7563042099932002,
+          "n": 3060,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.7406964357601133,
+          "mid": 0.7472295802700314,
+          "high": 0.7538527500170579,
+          "n": 2194,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.8878592878874927,
+          "mid": -1.5905898482662526,
+          "high": -1.2955380059633532,
+          "n": 558,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.0,
+          "mid": 0.000326797385620915,
+          "high": 0.000980392156862745,
+          "n": 3060,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.01568627450980392,
+          "mid": -0.011437908496732025,
+          "high": -0.00784313725490196,
+          "n": 3060,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": 0.0,
+          "mid": 0.000326797385620915,
+          "high": 0.000980392156862745,
+          "n": 3060,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "UCY|25": {
+      "name": "UCY|25",
+      "rows": 2700,
+      "metric": {
+        "rows": 2700,
+        "all_improvement": 0.22595348429976436,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.22595348429976436,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.023875984531007477,
+        "easy_degradation": -0.6017551719551197,
+        "switch_rate": 0.25,
+        "harm_over_fallback": -0.061193392280315166
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.21144252934887192,
+          "mid": 0.2260491191554489,
+          "high": 0.24230786723893602,
+          "n": 2700,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.015050437100022563,
+          "mid": 0.023851352635585465,
+          "high": 0.033761197790134465,
+          "n": 1415,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.6552271397712521,
+          "mid": -1.5147816028334409,
+          "high": -1.3709770169408053,
+          "n": 662,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.01888888888888889,
+          "mid": 0.024814814814814814,
+          "high": 0.030740740740740742,
+          "n": 2700,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2700,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2700,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "UCY|50": {
+      "name": "UCY|50",
+      "rows": 2340,
+      "metric": {
+        "rows": 2340,
+        "all_improvement": 0.27903891618512855,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.27903891618512855,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.27903891618512855,
+        "easy_degradation": -0.047193938173541894,
+        "switch_rate": 0.65,
+        "harm_over_fallback": -0.15053900502007198
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.26238098125901826,
+          "mid": 0.2789121992468867,
+          "high": 0.2954487710421792,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.2623096277280644,
+          "mid": 0.27891459369380855,
+          "high": 0.29585149684945933,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.26334610986128,
+          "mid": 0.27938373540765543,
+          "high": 0.2959313479577228,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.11127743658812078,
+          "mid": -0.047757947203177276,
+          "high": 0.014999897870621686,
+          "n": 566,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.018376068376068377,
+          "mid": 0.02435897435897436,
+          "high": 0.031196581196581197,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.017094017094017096,
+          "mid": -0.011538461538461539,
+          "high": -0.005982905982905983,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.002136752136752137,
+          "mid": 0.00042735042735042735,
+          "high": 0.0029914529914529917,
+          "n": 2340,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "UCY|100": {
+      "name": "UCY|100",
+      "rows": 1440,
+      "metric": {
+        "rows": 1440,
+        "all_improvement": 0.27815602718057597,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.27815602718057597,
+        "hard_failure_improvement": 0.27815602718057597,
+        "easy_degradation": -0.02101868640353488,
+        "switch_rate": 0.7520833333333333,
+        "harm_over_fallback": -0.3751132464168945
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.2609596874751189,
+          "mid": 0.2780604763407141,
+          "high": 0.295874941909558,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.2612138653415242,
+          "mid": 0.2779884724600497,
+          "high": 0.29652472420008696,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.26004135915936877,
+          "mid": 0.27847431665675126,
+          "high": 0.2955080866400281,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.13336825293565624,
+          "mid": -0.022981915450182355,
+          "high": 0.08063034738403232,
+          "n": 193,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.001388888888888889,
+          "mid": 0.004166666666666667,
+          "high": 0.007638888888888889,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.027777777777777776,
+          "mid": -0.019444444444444445,
+          "high": -0.0125,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.003472222222222222,
+          "mid": 0.0,
+          "high": 0.003489583333333317,
+          "n": 1440,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": false,
+      "weak_reasons": [
+        "easy_ci_exceeds_2pct"
+      ]
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "validation_only_policy_selection": true,
+    "test_rows_reporting_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "uniform_horizon_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_fn_gate": {
+    "source": "fresh_stage42_fh_horizon_conservative_easy_guard",
+    "gates": {
+      "source_fresh": true,
+      "fm_input_verified": true,
+      "weak_horizon_targets_loaded": true,
+      "validation_only_selection": true,
+      "easy_guard_attempted": true,
+      "global_all_positive": true,
+      "global_t50_positive": true,
+      "global_hard_positive": true,
+      "global_easy_safe": true,
+      "weak_horizon_not_increased": true,
+      "uniform_horizon_claim_only_if_no_weak_horizons": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_fn_conservative_easy_guard_pass_with_horizon_limit"
+  }
+}

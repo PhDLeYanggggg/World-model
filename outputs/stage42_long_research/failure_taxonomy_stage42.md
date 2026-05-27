@@ -562,3 +562,17 @@ Keep `current_composite_tail_policy` as the deployable policy. Do not execute St
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FM_FH_HORIZON_ROW_SWITCH_SPECIALIST:END -->
+
+<!-- STAGE42_FN_FH_HORIZON_CONSERVATIVE_EASY_GUARD:START -->
+## Stage42-FN FH Horizon Conservative Easy Guard
+
+- source: `fresh_stage42_fh_horizon_conservative_easy_guard`
+- role: validation-only conservative easy-safety guard for FM remaining weak horizon slices; no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fn_conservative_easy_guard_pass_with_horizon_limit`.
+- global all/t50/t100raw/hard/easy: `34.86%` / `29.03%` / `20.19%` / `32.96%` / `-37.14%`.
+- weak horizons before: `['TrajNet|100', 'UCY|100']`.
+- weak horizons after: `['TrajNet|100', 'UCY|100']`.
+- applied guards: `{'TrajNet|100': {'key': 'TrajNet|100', 'mode': 'feature_guard', 'replacement': 'floor', 'feature': 'path_length', 'direction': 'le', 'threshold': 0.3749999749633932, 'rows': 5608, 'guard_rows': 2593}, 'UCY|100': {'key': 'UCY|100', 'mode': 'feature_guard', 'replacement': 'fa', 'feature': 'min_distance', 'direction': 'le', 'threshold': 0.12583341276755197, 'rows': 1440, 'guard_rows': 288}}`.
+- uniform horizon claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FN_FH_HORIZON_CONSERVATIVE_EASY_GUARD:END -->
