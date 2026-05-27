@@ -1,0 +1,237 @@
+{
+  "source": "fresh_stage42_gs_paper_gap_reconciler",
+  "generated_at": "2026-05-27T13:56:55.645519+00:00",
+  "git_commit": "1aac5df",
+  "input_status": {
+    "module_ledger": {
+      "path": "outputs/stage42_long_research/module_contribution_ledger_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de"
+    },
+    "floor_map": {
+      "path": "outputs/stage42_long_research/floor_removability_decision_map_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_floor_removability_decision_map"
+    },
+    "long_objective": {
+      "path": "outputs/stage42_long_research/long_objective_state_reconciler_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_gr_long_objective_state_reconciler"
+    },
+    "package_linter": {
+      "path": "outputs/stage42_long_research/source_terms_package_claim_linter_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_gq_source_terms_package_claim_linter"
+    },
+    "gap_md": {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "source": ""
+    }
+  },
+  "current_facts": [
+    "Current model is not a true 3D world model.",
+    "Current model is not a large-scale foundation world model.",
+    "Current model remains a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate.",
+    "Stage42-GS reconciles stale A-journal gap statements against latest module/floor/source/legal guards.",
+    "Stage42-GS does not download, convert, train, or evaluate data/models.",
+    "Future endpoints/waypoints remain labels or evaluation targets only, not inference inputs.",
+    "No central velocity, no test endpoints for goals, and no test-threshold tuning are allowed.",
+    "t+50/t+100 remain raw-frame horizons unless a future source-specific guard proves otherwise.",
+    "Dataset-local/raw-frame evidence is not global metric or seconds-level evidence.",
+    "Stage5C latent generative execution remains disabled.",
+    "SMC remains disabled."
+  ],
+  "stale_findings": [
+    {
+      "finding_id": "stage42_p_t50_ci_low_negative",
+      "matches": [
+        {
+          "line": 28,
+          "text": "- Policy distillation and row selector: Stage42-M shows that distilling only slice-level static alpha can improve FDE t50 but harms ADE t50. Stage42-N shows that row-level alpha/gain/harm supervision improves all/hard but still harms ADE t50. Stage42-O shows that an explicit gain/harm selector improves all/hard more cleanly under train-only normalization, but ADE t50 is still slightly negative. Stage42-P repairs the mean ADE t50 sign with t+50-specific weighting, but the 3-seed t50 CI low remains negative, so it still needs statistical strengthening before becoming a paper-level stable t50 claim."
+        },
+        {
+          "line": 36,
+          "text": "1. Add more seeds/bootstrap and per-domain horizon calibration for Stage42-P, because it passes the mean t50 gate but still has negative 3-seed t50 CI low."
+        }
+      ],
+      "resolution": "Superseded/refined by later protected t50 bootstrap and floor-removability evidence; remaining blocker is source diversity/legal conversion, not Stage42-P mean sign.",
+      "status": "reconciled_in_stage42_gs_section"
+    },
+    {
+      "finding_id": "full_waypoint_shape_open_without_boundary",
+      "matches": [
+        {
+          "line": 26,
+          "text": "- Full retrained ablation for every named component: Stage42-G/H cover key feature/safety selector and causal sequence-history ablations, but JEPA, full Transformer, endpoint-bridge, and full-waypoint-shape retraining remain open."
+        }
+      ],
+      "resolution": "Refined by the module contribution ledger: endpoint_bridge/full_waypoint_shape are supported bounded components, but not floor-free/global primary dynamics.",
+      "status": "reconciled_in_stage42_gs_section"
+    },
+    {
+      "finding_id": "proximity_self_gate_open",
+      "matches": [
+        {
+          "line": 39,
+          "text": "4. Build a proximity-safe internal self-gate that reduces teacher-floor dependence without increasing collision/proximity risk."
+        }
+      ],
+      "resolution": "Refined by proximity guard and floor-removability evidence: proximity guard is required for safety-sensitive claims; floor-free deployment remains blocked.",
+      "status": "reconciled_in_stage42_gs_section"
+    },
+    {
+      "finding_id": "external_expansion_open",
+      "matches": [
+        {
+          "line": 30,
+          "text": "- External expansion beyond the current converted top-down state with independent legal datasets."
+        },
+        {
+          "line": 38,
+          "text": "3. Add one more legally verified external top-down pedestrian/drone dataset or a stronger held-out source split."
+        }
+      ],
+      "resolution": "Still open and active: latest source/legal contract has contract_ready_now=0 and auto_download_allowed_now=0.",
+      "status": "reconciled_in_stage42_gs_section"
+    }
+  ],
+  "gap_rows": [
+    {
+      "gap": "source_legal_conversion",
+      "current_status": "open_blocker",
+      "result_source": "fresh_run",
+      "evidence": "outputs/stage42_long_research/long_objective_state_reconciler_stage42.json",
+      "current_value": {
+        "contract_ready_now": 0,
+        "auto_download_allowed_now": 0,
+        "after_terms_t50_opportunity": 10060,
+        "after_terms_t100_opportunity": 5696
+      },
+      "paper_claim": "No new external conversion/evaluation claim until user-confirmed terms/path/source identity and guarded conversion pass.",
+      "next_action": "User source confirmation -> guarded conversion -> no-leakage -> source-CV -> final test once."
+    },
+    {
+      "gap": "module_contribution_boundary",
+      "current_status": "claim_locked",
+      "result_source": "cached_verified",
+      "evidence": "outputs/stage42_long_research/module_contribution_ledger_stage42.json",
+      "current_value": {
+        "main_claim_allowed_modules": [
+          "history",
+          "domain_expert",
+          "safe_switch",
+          "teacher_floor",
+          "group_consistency_full_waypoint",
+          "full_waypoint_shape",
+          "endpoint_bridge"
+        ],
+        "blocked_or_auxiliary_modules": [
+          "scene_goal",
+          "neighbor_interaction",
+          "JEPA",
+          "Transformer"
+        ]
+      },
+      "paper_claim": "Allowed core claims are protected history/domain/safe-switch/teacher-floor/group-consistency full-waypoint family; JEPA/Transformer/scene-goal/neighbor-interaction remain auxiliary/negative.",
+      "next_action": "Do not promote auxiliary context modules unless a new retrained protocol proves material lift."
+    },
+    {
+      "gap": "floor_free_neural_deployment",
+      "current_status": "blocked_with_partial_floor_relaxation",
+      "result_source": "cached_verified",
+      "evidence": "outputs/stage42_long_research/floor_removability_decision_map_stage42.json",
+      "current_value": {
+        "floor_free_neural_deployable": false,
+        "safe_partial_floor_relaxation_available": true,
+        "partial_relaxation_components": [
+          "t50_slice_relaxation::TrajNet|50",
+          "t50_slice_relaxation::UCY|50"
+        ],
+        "proximity_guard_required_for_safety_claim": true
+      },
+      "paper_claim": "Teacher/Stage37 floor remains required globally; narrow validation-backed t50 slice relaxation is allowed only inside protected policy.",
+      "next_action": "Any floor relaxation must keep proximity guard and validation-only selection."
+    },
+    {
+      "gap": "paper_package_source_claim_safety",
+      "current_status": "clean_with_open_blocker",
+      "result_source": "fresh_run",
+      "evidence": "outputs/stage42_long_research/source_terms_package_claim_linter_stage42.json",
+      "current_value": {
+        "files_scanned": 14,
+        "violation_count": 0,
+        "underlying_data_license_confirmed": 0
+      },
+      "paper_claim": "Package source/legal language is currently clean, but it must keep explicit open source-term blockers.",
+      "next_action": "Run package linter after every future paper-package refresh."
+    },
+    {
+      "gap": "stale_gap_text",
+      "current_status": "reconciled",
+      "result_source": "fresh_run",
+      "evidence": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "current_value": {
+        "stale_findings": [
+          "stage42_p_t50_ci_low_negative",
+          "full_waypoint_shape_open_without_boundary",
+          "proximity_self_gate_open",
+          "external_expansion_open"
+        ],
+        "stale_finding_count": 4
+      },
+      "paper_claim": "Older gap statements are preserved historically but superseded/refined by the latest Stage42-GS refresh section.",
+      "next_action": "Use the Stage42-GS section as the current gap summary."
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_gs_paper_gap_reconciler",
+    "gap_rows": 5,
+    "fresh_rows": 3,
+    "cached_verified_rows": 2,
+    "stale_findings_reconciled": 4,
+    "open_blockers": [
+      "source_legal_conversion",
+      "floor_free_neural_deployment",
+      "paper_package_source_claim_safety"
+    ],
+    "current_paper_position": "protected_2_5d_external_world_state_candidate_not_true3d_not_foundation",
+    "download_executed": false,
+    "conversion_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false
+  },
+  "stage42_gs_gate": {
+    "gates": {
+      "source_fresh": true,
+      "inputs_loaded": true,
+      "gap_rows_written": true,
+      "stale_findings_reconciled": true,
+      "source_blocker_preserved": true,
+      "floor_free_blocker_preserved": true,
+      "module_boundary_present": true,
+      "package_claim_linter_clean": true,
+      "no_download_conversion_training_eval": true,
+      "claim_boundary_no_metric_seconds": true,
+      "claim_boundary_no_true3d_foundation": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_gs_paper_gap_reconciler_pass"
+  },
+  "evidence_hash": "e11a2bd1f7a13d0582415bf3ca1d9aa61661544abe801e922197a4ecb771e9d1"
+}

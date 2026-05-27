@@ -1114,3 +1114,17 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 | `trajnetplusplus_official` | trajnetplusplus_official is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that trajnetplusplus_official has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
 | `aerialmpt_or_other_topdown` | aerialmpt_or_other_topdown is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that aerialmpt_or_other_topdown has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
 <!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:END -->
+
+<!-- STAGE42_GS_REFRESH:START -->
+## Stage42-GS Current Gap Reconciliation
+
+- source: `fresh_stage42_gs_paper_gap_reconciler`
+- verdict: `stage42_gs_paper_gap_reconciler_pass`
+- gates: `13 / 13`
+- This section supersedes older Stage42-P/BY/BZ/EN gap wording where explicitly noted; older sections remain historical provenance.
+- Current paper position: protected dataset-local/raw-frame 2.5D world-state candidate, not true 3D, not foundation, not metric/seconds-level.
+- Source/legal conversion remains the main external expansion blocker: contract_ready_now=0, auto_download_allowed_now=0.
+- Floor-free neural deployment remains blocked; partial t50 floor relaxation is allowed only in validation-backed protected slices.
+- Core supported modules remain history, domain expert, safe-switch, teacher/Stage37 floor, group-consistency full-waypoint, full-waypoint shape, and endpoint bridge.
+- JEPA, Transformer, scene/goal, and neighbor/interaction remain auxiliary/negative or non-main claims under current evidence.
+<!-- STAGE42_GS_REFRESH:END -->
