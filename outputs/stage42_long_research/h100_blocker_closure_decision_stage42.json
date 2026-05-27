@@ -1,0 +1,319 @@
+{
+  "source": "fresh_stage42_gw_h100_blocker_closure_decision",
+  "stage": "Stage42-GW H100 blocker closure decision",
+  "generated_at_utc": "2026-05-27T15:00:27.177303+00:00",
+  "git_commit": "fcf6ae0",
+  "input_hash": "e885e2747c2e343ef978477ef42bcbe691f6adc7bbc6e486ac4387e49a02af77",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-GW 是 h100/source/legal blocker closure decision，不下载、不转换、不训练、不评估。",
+    "technical local candidate 不等于 legal conversion readiness。",
+    "terms accepted、local path、source identity、guarded conversion、no-leakage/source-CV 都通过前，不能把 repair 写成完成。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_status": {
+    "fp": {
+      "path": "outputs/stage42_long_research/h100_weak_horizon_source_support_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_h100_weak_horizon_source_support_audit",
+      "verdict": "stage42_fp_h100_source_support_audit_pass",
+      "generated_at_utc": "2026-05-27T09:15:56.156994+00:00"
+    },
+    "fq": {
+      "path": "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_h100_source_support_repair_queue",
+      "verdict": "stage42_fq_h100_source_support_repair_queue_pass",
+      "generated_at_utc": "2026-05-27T09:36:49.592560+00:00"
+    },
+    "bv": {
+      "path": "outputs/stage42_long_research/source_acquisition_status_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_bv_source_acquisition_status",
+      "verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
+      "generated_at_utc": "2026-05-26T15:34:18.872948+00:00"
+    },
+    "cg": {
+      "path": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+      "verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+      "generated_at_utc": "2026-05-27T12:14:18.582633+00:00"
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_gw_h100_blocker_closure_decision",
+    "weak_keys": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "weak_key_count": 2,
+    "technical_support_exists_count": 1,
+    "legal_conversion_ready_count": 0,
+    "hard_blocker_count": 1,
+    "can_run_repair_now_count": 0,
+    "requires_user_action_count": 2,
+    "uniform_h100_or_t100_claim_allowed": false,
+    "download_conversion_training_eval_executed": false,
+    "fp_verdict": "stage42_fp_h100_source_support_audit_pass",
+    "fq_verdict": "stage42_fq_h100_source_support_repair_queue_pass",
+    "bv_verdict": "stage42_bv_source_acquisition_status_pass_blockers_actionable",
+    "cg_verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "closure_decisions": [
+    {
+      "key": "TrajNet|100",
+      "domain": "TrajNet",
+      "result_source": "fresh_run_decision_from_cached_verified_inputs",
+      "technical_support_exists": false,
+      "candidate_count": 0,
+      "top_candidates": [],
+      "legal_dataset_id": "trajnetplusplus_official",
+      "legal_conversion_ready": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "fp_blockers": [
+        "long_horizon_h100_context_still_insufficient",
+        "low_material_headroom",
+        "oracle_low_margin_ambiguous",
+        "single_or_sparse_validation_source_support",
+        "source_specific_easy_safety_ci_failure",
+        "validation_to_test_source_family_shift"
+      ],
+      "bv_related_blocker": {
+        "blocker_id": "TrajNet_raw_long_t100_source_support",
+        "status": "blocked",
+        "root_cause": "Local TrajNet files parse as fixed short challenge snippets rather than raw long tracks, so they cannot repair raw-frame t100 source-CV.",
+        "claim_allowed": "short_scene_diagnostic_only"
+      },
+      "hard_blocker": "missing_official_long_raw_trajnet_source",
+      "can_run_repair_now": false,
+      "closure_status": "hard_blocked_missing_source_support",
+      "not_run_reason": "legal_or_source_support_not_closed",
+      "next_action": "provide a legal official long raw source before any h100/t100 repair can run",
+      "claim_guard": "Do not write h100/t100/uniform-horizon repair as complete until guarded conversion, no-leakage, source-CV, and final eval pass."
+    },
+    {
+      "key": "UCY|100",
+      "domain": "UCY",
+      "result_source": "fresh_run_decision_from_cached_verified_inputs",
+      "technical_support_exists": true,
+      "candidate_count": 6,
+      "top_candidates": [
+        {
+          "relative_path": "UCY/zara02/obsmat.txt",
+          "domain": "UCY",
+          "independent_key": "UCY::UCY/zara02",
+          "family_bucket": "zara",
+          "target_bucket_match": true,
+          "file_format": "txt",
+          "max_track_points": 583,
+          "estimated_t100_windows": 2095,
+          "license_status": "local_path_present_terms_unverified",
+          "conversion_status": "not_converted_not_evaluated",
+          "priority_score": 40
+        },
+        {
+          "relative_path": "UCY/zara01/obsmat.txt",
+          "domain": "UCY",
+          "independent_key": "UCY::UCY/zara01",
+          "family_bucket": "zara",
+          "target_bucket_match": true,
+          "file_format": "txt",
+          "max_track_points": 197,
+          "estimated_t100_windows": 97,
+          "license_status": "local_path_present_terms_unverified",
+          "conversion_status": "not_converted_not_evaluated",
+          "priority_score": 23
+        },
+        {
+          "relative_path": "UCY/students01/students001.txt",
+          "domain": "UCY",
+          "independent_key": "UCY::UCY/students01",
+          "family_bucket": "students",
+          "target_bucket_match": false,
+          "file_format": "txt",
+          "max_track_points": 352,
+          "estimated_t100_windows": 1949,
+          "license_status": "local_path_present_terms_unverified",
+          "conversion_status": "not_converted_not_evaluated",
+          "priority_score": 25
+        },
+        {
+          "relative_path": "UCY/students03/obsmat.txt",
+          "domain": "UCY",
+          "independent_key": "UCY::UCY/students03",
+          "family_bucket": "students",
+          "target_bucket_match": false,
+          "file_format": "txt",
+          "max_track_points": 539,
+          "estimated_t100_windows": 3413,
+          "license_status": "local_path_present_terms_unverified",
+          "conversion_status": "not_converted_not_evaluated",
+          "priority_score": 25
+        },
+        {
+          "relative_path": "UCY/students03/obsmat_px.txt",
+          "domain": "UCY",
+          "independent_key": "UCY::UCY/students03",
+          "family_bucket": "students",
+          "target_bucket_match": false,
+          "file_format": "txt",
+          "max_track_points": 540,
+          "estimated_t100_windows": 3415,
+          "license_status": "local_path_present_terms_unverified",
+          "conversion_status": "not_converted_not_evaluated",
+          "priority_score": 25
+        },
+        {
+          "relative_path": "UCY/students03/students003.txt",
+          "domain": "UCY",
+          "independent_key": "UCY::UCY/students03",
+          "family_bucket": "students",
+          "target_bucket_match": false,
+          "file_format": "txt",
+          "max_track_points": 289,
+          "estimated_t100_windows": 879,
+          "license_status": "local_path_present_terms_unverified",
+          "conversion_status": "not_converted_not_evaluated",
+          "priority_score": 15
+        }
+      ],
+      "legal_dataset_id": "ucy_crowd_original",
+      "legal_conversion_ready": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "fp_blockers": [
+        "gain_harm_policy_abstained_due_to_validation_safety",
+        "long_horizon_h100_context_still_insufficient",
+        "low_material_headroom",
+        "oracle_low_margin_ambiguous",
+        "single_or_sparse_validation_source_support",
+        "source_specific_easy_safety_ci_failure",
+        "validation_to_test_source_family_shift"
+      ],
+      "bv_related_blocker": {
+        "blocker_id": "ETH_UCY_global_t100_source_support",
+        "status": "blocked",
+        "root_cause": "ETH-Person XML t100 dry-run is technically positive but still terms-unverified; official/deployable global t100 cannot advance without permission and rerun.",
+        "claim_allowed": "technical_dry_run_only"
+      },
+      "hard_blocker": null,
+      "can_run_repair_now": false,
+      "closure_status": "blocked_by_terms_and_conversion_readiness",
+      "not_run_reason": "legal_or_source_support_not_closed",
+      "next_action": "confirm official terms, allowed use, local path, and source identity; then run guarded conversion/no-leakage/source-CV",
+      "claim_guard": "Do not write h100/t100/uniform-horizon repair as complete until guarded conversion, no-leakage, source-CV, and final eval pass."
+    }
+  ],
+  "user_action_required": [
+    {
+      "key": "TrajNet|100",
+      "domain": "TrajNet",
+      "action_type": "provide_legal_official_long_raw_source",
+      "closure_status": "hard_blocked_missing_source_support",
+      "hard_blocker": "missing_official_long_raw_trajnet_source",
+      "required_fields": [
+        "official source URL",
+        "terms accepted / allowed use",
+        "local path",
+        "source identity",
+        "track length sufficient for raw-frame h100/t100"
+      ],
+      "next_action": "provide a legal official long raw source before any h100/t100 repair can run",
+      "claim_guard": "Do not write h100/t100/uniform-horizon repair as complete until guarded conversion, no-leakage, source-CV, and final eval pass."
+    },
+    {
+      "key": "UCY|100",
+      "domain": "UCY",
+      "action_type": "confirm_terms_and_run_guarded_conversion",
+      "closure_status": "blocked_by_terms_and_conversion_readiness",
+      "hard_blocker": null,
+      "required_fields": [
+        "terms accepted / allowed use",
+        "acceptance date",
+        "local path confirmation",
+        "source identity",
+        "guarded conversion and no-leakage/source-CV after confirmation"
+      ],
+      "next_action": "confirm official terms, allowed use, local path, and source identity; then run guarded conversion/no-leakage/source-CV",
+      "claim_guard": "Do not write h100/t100/uniform-horizon repair as complete until guarded conversion, no-leakage, source-CV, and final eval pass."
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "local_inventory_and_decision_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "uniform_h100_or_t100_claim_allowed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required_written": true,
+  "stage42_gw_gate": {
+    "source": "fresh_stage42_gw_h100_blocker_closure_decision",
+    "gates": {
+      "fp_input_loaded": true,
+      "fq_input_loaded": true,
+      "bv_input_loaded": true,
+      "cg_input_loaded": true,
+      "weak_h100_keys_mapped": true,
+      "per_key_decision_built": true,
+      "trajnet_hard_blocker_preserved": true,
+      "ucy_technical_support_preserved": true,
+      "ucy_legal_blocker_preserved": true,
+      "no_repair_claimed_ready_now": true,
+      "user_action_written": true,
+      "uniform_horizon_claim_blocked": true,
+      "no_download_conversion_training_eval": true,
+      "no_future_test_or_central_velocity_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 17,
+    "total": 17,
+    "verdict": "stage42_gw_h100_blocker_closure_decision_pass"
+  }
+}
