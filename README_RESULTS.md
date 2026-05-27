@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 当前长期目标工作总结
+
+本轮按用户要求新增详细中文总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_TARGET_WORK_SUMMARY_ZH.md`
+
+它集中总结了 M3W 长期目标内已经做过的路线、失败原因、成功证据、当前 best deployable、当前模型质量，以及仍然禁止的 claim 边界。最新纳入 Stage42-DP / DQ / DR：当前 sequence/graph residual context protocol 已关闭；protected source-level group-consistency full-waypoint runtime policy 得到 fresh promotion checkpoint；paper package 已同步 post-DP/DQ evidence。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 长期目标结果总账 README
 
 本轮按用户要求新增详细中文总账：

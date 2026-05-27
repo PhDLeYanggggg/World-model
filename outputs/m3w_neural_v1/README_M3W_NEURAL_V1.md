@@ -4,6 +4,12 @@ M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combine
 
 It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.
 
+Latest current-goal work summary requested by the user:
+
+`/Users/yangyue/Downloads/World/README_M3W_TARGET_WORK_SUMMARY_ZH.md`
+
+This root README summarizes what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, the current best deployable family, and the strict claim boundaries. It includes the latest Stage42-DP/DQ/DR evidence: closure of the current sequence/graph residual context protocol, promotion of the protected source-level group-consistency full-waypoint runtime policy, and paper-package refresh after those positive/negative findings.
+
 Latest user-facing route/failure/success summary:
 
 `/Users/yangyue/Downloads/World/README_M3W_DETAILED_RESULTS_ZH.md`
