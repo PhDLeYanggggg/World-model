@@ -2608,3 +2608,16 @@ The context contribution map is now explicit: baseline-family rollout context is
 - No download, conversion, feature-store build, no-leakage audit, source-CV, training, or evaluation was executed.
 - Boundary: this is not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
 <!-- STAGE42_GM_GUARDED_CONVERSION_HARNESS:END -->
+
+<!-- STAGE42_GN_SOURCE_CONFIRMATION_PRIORITY_BOARD:START -->
+## Stage42-GN Source Confirmation Priority Board
+
+- source: `fresh_stage42_gn_source_confirmation_priority_board`
+- role: ranks user-confirmation actions needed before any guarded source conversion can legally run.
+- gate: `14 / 14`; verdict `stage42_gn_source_confirmation_priority_board_pass`.
+- targets_ranked: `5`; ready_now: `0`; blocked_now: `5`.
+- top priority: `ucy_crowd_original` / `UCY`; value class `calibrated_t50_t100_unlock`.
+- after-terms opportunity: t50 `10060`, t100 `5696`; calibrated t50/t100 `10060` / `5696`.
+- No download, conversion, feature-store build, no-leakage audit, source-CV, training, or evaluation was executed.
+- Boundary: this is a source/legal/calibration unblock queue only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
+<!-- STAGE42_GN_SOURCE_CONFIRMATION_PRIORITY_BOARD:END -->
