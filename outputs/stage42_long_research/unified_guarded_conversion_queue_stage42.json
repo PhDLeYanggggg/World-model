@@ -1,0 +1,265 @@
+{
+  "source": "fresh_stage42_unified_guarded_conversion_queue",
+  "stage": "Stage42-FT unified guarded conversion queue",
+  "generated_at_utc": "2026-05-27T10:01:18.102738+00:00",
+  "git_commit": "bdd9352",
+  "input_hash": "23d17cda489dcbaa7c63077dad3d088bda277e31bd4d2f7c11dc155e07df2a26",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-FT 统一全局 source conversion readiness 与 UCY h100 candidate queue；不下载、不转换、不训练、不评估。",
+    "ready queue 只允许来自显式 terms/path/source identity confirmation 和 guarded preflight。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "summary": {
+    "source": "fresh_stage42_unified_guarded_conversion_queue",
+    "source_manifest_source": "fresh_stage42_cg_source_terms_confirmation_validator",
+    "h100_queue_source": "fresh_stage42_ucy_h100_terms_intake_validator",
+    "fs_verdict": "stage42_fs_ucy_h100_terms_intake_validator_pass",
+    "source_ready_targets": 0,
+    "h100_ready_candidates": 0,
+    "unified_queue_count": 0,
+    "source_queue_count": 0,
+    "h100_queue_count": 0,
+    "blocked_action_count": 11,
+    "downloaded_now": 0,
+    "converted_now": 0,
+    "evaluated_now": 0,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "unified_queue": [],
+  "blocked_actions": [
+    {
+      "scope": "global_source_manifest",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "ucy_crowd_original",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate",
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "scope": "global_source_manifest",
+      "dataset_id": "eth_biwi_original",
+      "candidate_id": "eth_biwi_original",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate",
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "scope": "global_source_manifest",
+      "dataset_id": "trajnetplusplus_official",
+      "candidate_id": "trajnetplusplus_official",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate",
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "scope": "global_source_manifest",
+      "dataset_id": "opentraj_toolkit",
+      "candidate_id": "opentraj_toolkit",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "blockers": [
+        "no_independent_t50_candidate",
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "scope": "global_source_manifest",
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "candidate_id": "aerialmpt_or_other_topdown",
+      "official_url": "user_or_web_verified_official_url_required",
+      "blockers": [
+        "local_path_missing",
+        "schema_not_parseable",
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate",
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "scope": "ucy_h100_candidate",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "UCY_zara02::obsmat",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "redistribution_policy_unknown",
+        "derived_data_policy_unknown",
+        "local_path_confirmation_missing",
+        "source_identity_missing",
+        "confirmed_by_user_missing"
+      ],
+      "next_action": "fill outputs/stage42_long_research/ucy_h100_candidate_terms_template_stage42.json after official UCY terms/path/source identity confirmation"
+    },
+    {
+      "scope": "ucy_h100_candidate",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "UCY_zara01::obsmat",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "redistribution_policy_unknown",
+        "derived_data_policy_unknown",
+        "local_path_confirmation_missing",
+        "source_identity_missing",
+        "confirmed_by_user_missing"
+      ],
+      "next_action": "fill outputs/stage42_long_research/ucy_h100_candidate_terms_template_stage42.json after official UCY terms/path/source identity confirmation"
+    },
+    {
+      "scope": "ucy_h100_candidate",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "UCY_students03::obsmat_px",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "redistribution_policy_unknown",
+        "derived_data_policy_unknown",
+        "local_path_confirmation_missing",
+        "source_identity_missing",
+        "confirmed_by_user_missing"
+      ],
+      "next_action": "fill outputs/stage42_long_research/ucy_h100_candidate_terms_template_stage42.json after official UCY terms/path/source identity confirmation"
+    },
+    {
+      "scope": "ucy_h100_candidate",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "UCY_students03::obsmat",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "redistribution_policy_unknown",
+        "derived_data_policy_unknown",
+        "local_path_confirmation_missing",
+        "source_identity_missing",
+        "confirmed_by_user_missing"
+      ],
+      "next_action": "fill outputs/stage42_long_research/ucy_h100_candidate_terms_template_stage42.json after official UCY terms/path/source identity confirmation"
+    },
+    {
+      "scope": "ucy_h100_candidate",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "UCY_students01::students001",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "redistribution_policy_unknown",
+        "derived_data_policy_unknown",
+        "local_path_confirmation_missing",
+        "source_identity_missing",
+        "confirmed_by_user_missing"
+      ],
+      "next_action": "fill outputs/stage42_long_research/ucy_h100_candidate_terms_template_stage42.json after official UCY terms/path/source identity confirmation"
+    },
+    {
+      "scope": "ucy_h100_candidate",
+      "dataset_id": "ucy_crowd_original",
+      "candidate_id": "UCY_students03::students003",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "redistribution_policy_unknown",
+        "derived_data_policy_unknown",
+        "local_path_confirmation_missing",
+        "source_identity_missing",
+        "confirmed_by_user_missing"
+      ],
+      "next_action": "fill outputs/stage42_long_research/ucy_h100_candidate_terms_template_stage42.json after official UCY terms/path/source identity confirmation"
+    }
+  ],
+  "user_action_required_written": true,
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "converted_dataset_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "verification": {
+    "runner": ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py -> 12/12",
+    "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_unified_guarded_conversion_queue.py -> 4 passed",
+    "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 848 passed"
+  },
+  "stage42_ft_gate": {
+    "source": "fresh_stage42_unified_guarded_conversion_queue",
+    "gates": {
+      "source_manifest_loaded": true,
+      "h100_fs_input_verified": true,
+      "queue_count_matches_components": true,
+      "queue_entries_are_nonexecuting": true,
+      "blocked_actions_preserved_when_empty": true,
+      "no_download_conversion_eval": true,
+      "user_action_written": true,
+      "no_future_or_test_leakage": true,
+      "no_converted_dataset_overclaim": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_ft_unified_guarded_conversion_queue_pass"
+  }
+}

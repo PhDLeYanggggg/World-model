@@ -1035,3 +1035,15 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - Boundary: protected source-level raw-frame 2.5D; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_ucy_h100_terms_intake_validator.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_ucy_h100_terms_intake_validator.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 844 passed'}`.
 <!-- STAGE42_FS_UCY_H100_TERMS_INTAKE_VALIDATOR:END -->
+
+<!-- STAGE42_FT_UNIFIED_GUARDED_CONVERSION_QUEUE:START -->
+## Stage42-FT Unified Guarded Conversion Queue
+
+- source: `fresh_stage42_unified_guarded_conversion_queue`
+- role: unifies global source readiness and UCY H100 candidate readiness into one non-executing guarded conversion queue.
+- gate: `12 / 12`; verdict `stage42_ft_unified_guarded_conversion_queue_pass`.
+- source_ready_targets: `0`; h100_ready_candidates `0`; unified_queue_count `0`.
+- blocked_action_count: `11`; downloaded/converted/evaluated now `0` / `0` / `0`.
+- Boundary: queue only; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+- verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py -> 12/12', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_unified_guarded_conversion_queue.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 848 passed'}`.
+<!-- STAGE42_FT_UNIFIED_GUARDED_CONVERSION_QUEUE:END -->
