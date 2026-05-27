@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-FU module contribution ledger",
-  "current_verdict": "stage42_fu_module_contribution_ledger_pass",
+  "current_stage": "Stage42-FV claim-boundary linter",
+  "current_verdict": "stage42_fv_claim_boundary_linter_pass",
   "m3w_one_file_detailed_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_fu_plus_current_readme_refresh",
     "path": "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",
@@ -29509,5 +29509,42 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FU separates supported module claims from weak/blocked claims: history, domain expert, safe-switch/teacher floor, and source-level group-consistency are supported; JEPA, Transformer-only, scene/goal, and neighbor/interaction remain blocked or auxiliary as main claims."
+  },
+  "stage42_fv_claim_boundary_linter": {
+    "source": "fresh_stage42_claim_boundary_linter_from_paper_package_and_fu",
+    "report": "outputs/stage42_long_research/claim_boundary_linter_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fv_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_claim_boundary_linter_stage42.md",
+    "verdict": "stage42_fv_claim_boundary_linter_pass",
+    "gates": "15/15",
+    "summary": {
+      "files_scanned": 15,
+      "violations_total": 0,
+      "violations_by_check": {
+        "true_3d": 0,
+        "foundation": 0,
+        "metric_seconds": 0,
+        "stage5c": 0,
+        "smc": 0,
+        "human_gold": 0,
+        "jepa_main": 0,
+        "transformer_main": 0,
+        "scene_goal_main": 0,
+        "neighbor_interaction_main": 0
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "jepa_main_claim_allowed": false,
+      "transformer_main_claim_allowed": false,
+      "scene_goal_main_claim_allowed": false,
+      "neighbor_interaction_main_claim_allowed": false
+    },
+    "conclusion": "Stage42-FV scans paper/README artifacts for unsupported claim wording and keeps Stage42 claims inside protected dataset-local/raw-frame 2.5D boundaries."
   }
 }

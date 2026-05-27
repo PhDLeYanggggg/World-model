@@ -637,3 +637,15 @@ No new metric/time calibration was introduced by Stage42-AB/AC. All updated pape
 - Blocked as main independent claims under current evidence: JEPA downstream lift, Transformer-only contribution, scene/goal, neighbor/interaction, ungated neural/global metric/seconds.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_module_contribution_ledger.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_module_contribution_ledger.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 852 passed'}`.
 <!-- STAGE42_FU_MODULE_CONTRIBUTION_LEDGER:END -->
+
+<!-- STAGE42_FV_CLAIM_BOUNDARY_LINTER:START -->
+## Stage42-FV Claim Boundary / No-Overclaim Linter
+
+- source: `fresh_stage42_claim_boundary_linter_from_paper_package_and_fu`
+- gate: `15 / 15`; verdict `stage42_fv_claim_boundary_linter_pass`.
+- scanned files: `15`; violations: `0`.
+- role: paper-package claim hygiene guard; no training, no threshold tuning, no conversion.
+- boundary: M3W remains protected dataset-local/raw-frame 2.5D; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
+- blocked as independent main claims: JEPA, Transformer, scene/goal, neighbor/interaction.
+- verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_claim_boundary_linter.py -> 15/15', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_claim_boundary_linter.py tests/test_stage42_module_contribution_ledger.py -> 9 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 857 passed'}`.
+<!-- STAGE42_FV_CLAIM_BOUNDARY_LINTER:END -->

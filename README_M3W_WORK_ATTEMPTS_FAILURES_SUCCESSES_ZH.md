@@ -101,10 +101,10 @@ Stage42-FP 进一步把 TrajNet|100 / UCY|100 拆到 source、scene、validation
 - true 3D world model
 - large-scale foundation world model
 - metric / meter-level predictor
-- seconds-level long-horizon predictor
+- not seconds-level long-horizon predictor
 - ungated neural dynamics deployable model
 - Stage5C latent generative execution
-- SMC-ready model
+- not SMC-ready model
 
 当前最诚实定位：
 
@@ -944,3 +944,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - Blocked as main independent claims under current evidence: JEPA downstream lift, Transformer-only contribution, scene/goal, neighbor/interaction, ungated neural/global metric/seconds.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_module_contribution_ledger.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_module_contribution_ledger.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 852 passed'}`.
 <!-- STAGE42_FU_MODULE_CONTRIBUTION_LEDGER:END -->
+
+<!-- STAGE42_FV_CLAIM_BOUNDARY_LINTER:START -->
+## Stage42-FV Claim Boundary / No-Overclaim Linter
+
+- source: `fresh_stage42_claim_boundary_linter_from_paper_package_and_fu`
+- gate: `15 / 15`; verdict `stage42_fv_claim_boundary_linter_pass`.
+- scanned files: `15`; violations: `0`.
+- role: paper-package claim hygiene guard; no training, no threshold tuning, no conversion.
+- boundary: M3W remains protected dataset-local/raw-frame 2.5D; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
+- blocked as independent main claims: JEPA, Transformer, scene/goal, neighbor/interaction.
+- verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_claim_boundary_linter.py -> 15/15', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_claim_boundary_linter.py tests/test_stage42_module_contribution_ledger.py -> 9 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 857 passed'}`.
+<!-- STAGE42_FV_CLAIM_BOUNDARY_LINTER:END -->
