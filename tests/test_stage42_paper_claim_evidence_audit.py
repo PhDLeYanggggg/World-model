@@ -22,6 +22,7 @@ def test_stage42_z_claim_matrix_contains_negative_boundaries(tmp_path, monkeypat
     assert any(row["claim_id"] == "C10" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
     assert any(row["claim_id"] == "C12" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
     assert any(row["claim_id"] == "C13" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
+    assert any(row["claim_id"] == "C14" and row["status"] == "post_confirmation_candidate_but_not_claimable" and not row["allowed_as_main_claim"] for row in result["claim_rows"])
 
 
 def test_stage42_z_gate_passes_with_paper_files_and_wxy_artifacts(tmp_path, monkeypatch):
@@ -33,8 +34,10 @@ def test_stage42_z_gate_passes_with_paper_files_and_wxy_artifacts(tmp_path, monk
     assert gate["gates"]["stage42y_ablation_gate_pass"]
     assert gate["gates"]["stage42cg_source_terms_gate_pass"]
     assert gate["gates"]["stage42ch_metric_time_gate_pass"]
+    assert gate["gates"]["stage42gh_calibrated_subset_gate_pass"]
     assert gate["gates"]["legal_conversion_not_overclaimed"]
     assert gate["gates"]["restricted_metric_time_not_overclaimed"]
+    assert gate["gates"]["post_confirmation_candidates_not_overclaimed"]
     assert gate["gates"]["paper_files_exist"]
     assert gate["paper_ready_scope"] == "protected_2p5d_raw_frame_world_state_candidate"
 

@@ -2549,3 +2549,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verification: focused GH/GF/BN/FT tests `15 passed`; full test suite `896 passed`.
 - boundary: source-specific restricted subset candidate only after user terms + guarded conversion + no-leakage eval; global M3W remains raw-frame/dataset-local 2.5D.
 <!-- STAGE42_GH_CALIBRATED_POST_CONFIRMATION_SUBSET_PLAN:END -->
+
+<!-- STAGE42_GI_PAPER_CLAIM_EVIDENCE_REFRESH:START -->
+## Stage42-GI Paper Claim Evidence Refresh With Calibrated Subset Plan
+
+- source: `fresh_audit_from_stage42_wxy_paper_package_and_gh_calibrated_plan`
+- gate: `25 / 25`; verdict `stage42_z_paper_claim_evidence_audit_pass`.
+- role: refreshes the paper claim matrix with Stage42-GH calibrated post-confirmation subset candidates.
+- C14 status: `post_confirmation_candidate_but_not_claimable`; main claim allowed: `False`.
+- C14 evidence: restricted_candidates_after_terms=5; ready_now=0; calibrated_t50/t100=10060/5696; domains=['ETH_UCY', 'UCY']; converted/evaluated=0/0
+- boundary: calibrated candidates are not converted/evaluated and cannot support current metric/seconds claims; no true-3D/foundation/Stage5C/SMC claim.
+<!-- STAGE42_GI_PAPER_CLAIM_EVIDENCE_REFRESH:END -->

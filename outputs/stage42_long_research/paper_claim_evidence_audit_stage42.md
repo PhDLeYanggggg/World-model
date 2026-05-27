@@ -1,10 +1,10 @@
 # Stage42-Z Paper Claim Evidence Audit
 
-- source: `fresh_audit_from_stage42_wxy_and_paper_package_artifacts`
-- generated_at_utc: `2026-05-26T20:35:05.192737+00:00`
-- git_commit: `16fed1c`
-- input_hash: `d72803a8ce5a9618928254f5580742b53b84120a1ccb76db158056a2703347ba`
-- gate: `22 / 22`
+- source: `fresh_audit_from_stage42_wxy_paper_package_and_gh_calibrated_plan`
+- generated_at_utc: `2026-05-27T12:22:01.386724+00:00`
+- git_commit: `37261f0`
+- input_hash: `aeead62a04b61261d1daf9bfd94bef24e7f8a4dc56cfaa3c6ad58868dc5fb23c`
+- gate: `25 / 25`
 - verdict: `stage42_z_paper_claim_evidence_audit_pass`
 
 ## Current Facts
@@ -37,20 +37,21 @@
 | `C11` | A-journal evidence package is complete enough to draft a protected 2.5D paper, but not enough for broad foundation/3D claims. | `supported_as_gap_aware_package` | `fresh_run` | `True` | paper package claims=7; paper final verdict=stage42_f_paper_package_complete_not_full_a_journal_ready; Stage42-Z keeps non-claims explicit. |
 | `C12` | Source-diversity conversion is legally ready and can be counted as converted/evaluated external data. | `rejected_by_legal_gate` | `fresh_stage42_cg_source_terms_confirmation_validator` | `False` | targets_validated=5; terms_accepted=0; conversion_ready=0; converted=0; evaluated=0 |
 | `C13` | Restricted source-specific ETH/UCY metric/seconds subset claims are ready for paper results. | `candidate_evidence_but_claim_blocked` | `fresh_stage42_ch_metric_time_claim_guard` | `False` | source_specific_candidates=6; conversion_ready=0; restricted_metric_seconds_allowed_now=False; global_metric=False; global_seconds=False |
+| `C14` | Post-confirmation calibrated ETH/UCY subset candidates are identified, but not yet converted/evaluated or claimable. | `post_confirmation_candidate_but_not_claimable` | `fresh_stage42_gh_calibrated_post_confirmation_subset_plan` | `False` | restricted_candidates_after_terms=5; ready_now=0; calibrated_t50/t100=10060/5696; domains=['ETH_UCY', 'UCY']; converted/evaluated=0/0 |
 
 ## Paper Files
 
 | file | exists | size_bytes |
 | --- | --- | ---: |
-| `outputs/stage42_long_research/paper_outline_stage42.md` | `True` | 8120 |
-| `outputs/stage42_long_research/method_draft_stage42.md` | `True` | 8428 |
-| `outputs/stage42_long_research/experiment_tables_stage42.md` | `True` | 19032 |
-| `outputs/stage42_long_research/ablation_tables_stage42.md` | `True` | 26430 |
-| `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | 9179 |
-| `outputs/stage42_long_research/model_card_stage42.md` | `True` | 16747 |
-| `outputs/stage42_long_research/data_card_stage42.md` | `True` | 5949 |
-| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 10224 |
-| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 35389 |
+| `outputs/stage42_long_research/paper_outline_stage42.md` | `True` | 47729 |
+| `outputs/stage42_long_research/method_draft_stage42.md` | `True` | 51251 |
+| `outputs/stage42_long_research/experiment_tables_stage42.md` | `True` | 61829 |
+| `outputs/stage42_long_research/ablation_tables_stage42.md` | `True` | 69290 |
+| `outputs/stage42_long_research/failure_taxonomy_stage42.md` | `True` | 48823 |
+| `outputs/stage42_long_research/model_card_stage42.md` | `True` | 59497 |
+| `outputs/stage42_long_research/data_card_stage42.md` | `True` | 45537 |
+| `outputs/stage42_long_research/reproducibility_stage42.md` | `True` | 53843 |
+| `outputs/stage42_long_research/a_journal_gap_stage42.md` | `True` | 78255 |
 
 ## Interpretation
 
@@ -59,4 +60,5 @@
 - UCY full-waypoint source contribution and history-token contribution are supported; goal/scene and neighbor/interaction evidence is mixed and should be written as limitation or partial evidence.
 - The Stage37/teacher floor remains necessary; ungated neural is rejected for deployment safety.
 - Stage42-CG/CH now enforce the legal and metric/time claim boundaries: no converted/evaluated source-diversity repair and no global or restricted metric/seconds result can be claimed yet.
+- Stage42-GH adds a newer post-confirmation calibrated subset plan: source-level ETH/UCY candidates are mapped, but ready-now remains zero and the claim is still blocked.
 - Stage5C and SMC remain disabled.

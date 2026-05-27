@@ -12,6 +12,7 @@ import numpy as np
 
 from src.stage14_pipeline import ensure_dir, read_json, write_json, write_md
 from src.stage30_m3w_verified import _combined_hash
+from src.stage42_proximity_guard_policy_freeze import _replace_section
 
 
 OUT_DIR = Path("outputs/stage42_long_research")
@@ -30,6 +31,10 @@ ROW_CACHE_JSON = OUT_DIR / "unified_row_level_full_waypoint_cache_stage42.json"
 ABLATION_JSON = OUT_DIR / "unified_ablation_evidence_stage42.json"
 SOURCE_TERMS_JSON = OUT_DIR / "source_terms_validation_stage42.json"
 METRIC_TIME_GUARD_JSON = OUT_DIR / "metric_time_claim_guard_stage42.json"
+CALIBRATED_SUBSET_PLAN_JSON = OUT_DIR / "calibrated_post_confirmation_subset_plan_stage42.json"
+README_RESULTS = Path("README_RESULTS.md")
+M3W_README = Path("outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md")
+ONE_FILE_SUMMARY = Path("README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md")
 
 PAPER_FILES = [
     OUT_DIR / "paper_outline_stage42.md",
@@ -144,6 +149,7 @@ def _claim_rows(
     ablation: Mapping[str, Any],
     source_terms: Mapping[str, Any],
     metric_time_guard: Mapping[str, Any],
+    calibrated_subset_plan: Mapping[str, Any],
 ) -> list[dict[str, Any]]:
     row_summary = row_cache.get("summary", {})
     row_gate = row_cache.get("stage42_x_gate", {})
@@ -160,6 +166,7 @@ def _claim_rows(
     ablation_rows = ablation.get("retrained_sequence_ablation_rows", [])
     terms_summary = source_terms.get("summary", {})
     metric_time_summary = metric_time_guard.get("summary", {})
+    calibrated_subset_summary = calibrated_subset_plan.get("summary", {})
 
     history_row = next((row for row in ablation_rows if row.get("module") == "history tokens"), {})
     domain_row = next((row for row in ablation_rows if row.get("module") == "domain expert"), {})
@@ -272,6 +279,14 @@ def _claim_rows(
             "evidence": f"source_specific_candidates={metric_time_summary.get('source_specific_metric_time_candidates')}; conversion_ready={metric_time_summary.get('conversion_ready_targets')}; restricted_metric_seconds_allowed_now={metric_time_summary.get('restricted_subset_metric_seconds_claim_allowed_now')}; global_metric={metric_time_summary.get('global_metric_claim_allowed')}; global_seconds={metric_time_summary.get('global_seconds_claim_allowed')}",
             "allowed_as_main_claim": False,
         },
+        {
+            "claim_id": "C14",
+            "claim": "Post-confirmation calibrated ETH/UCY subset candidates are identified, but not yet converted/evaluated or claimable.",
+            "status": "post_confirmation_candidate_but_not_claimable",
+            "source": calibrated_subset_plan.get("source"),
+            "evidence": f"restricted_candidates_after_terms={calibrated_subset_summary.get('restricted_metric_time_candidates_after_terms')}; ready_now={calibrated_subset_summary.get('restricted_ready_now')}; calibrated_t50/t100={calibrated_subset_summary.get('calibrated_t50_windows_after_terms')}/{calibrated_subset_summary.get('calibrated_t100_windows_after_terms')}; domains={calibrated_subset_summary.get('domains_with_candidates')}; converted/evaluated={calibrated_subset_summary.get('converted_now')}/{calibrated_subset_summary.get('evaluated_now')}",
+            "allowed_as_main_claim": False,
+        },
     ]
 
 
@@ -285,10 +300,12 @@ def _gate(result: Mapping[str, Any]) -> dict[str, Any]:
         "paper_package_present": result.get("inputs", {}).get("paper_package_exists") is True,
         "source_terms_validator_present": result.get("inputs", {}).get("source_terms_exists") is True,
         "metric_time_guard_present": result.get("inputs", {}).get("metric_time_guard_exists") is True,
+        "calibrated_subset_plan_present": result.get("inputs", {}).get("calibrated_subset_plan_exists") is True,
         "stage42x_row_cache_gate_pass": result.get("inputs", {}).get("stage42x_gate_pass") is True,
         "stage42y_ablation_gate_pass": result.get("inputs", {}).get("stage42y_gate_pass") is True,
         "stage42cg_source_terms_gate_pass": result.get("inputs", {}).get("stage42cg_gate_pass") is True,
         "stage42ch_metric_time_gate_pass": result.get("inputs", {}).get("stage42ch_gate_pass") is True,
+        "stage42gh_calibrated_subset_gate_pass": result.get("inputs", {}).get("stage42gh_gate_pass") is True,
         "paper_files_exist": all(row.get("exists") for row in result.get("paper_file_status", [])),
         "claim_matrix_has_supported": any(str(status).startswith("supported") for status in statuses),
         "claim_matrix_has_rejected": "rejected_by_evidence" in statuses,
@@ -297,6 +314,7 @@ def _gate(result: Mapping[str, Any]) -> dict[str, Any]:
         "metric_seconds_not_overclaimed": any(row.get("claim_id") == "C9" and row.get("allowed_as_main_claim") is False for row in claims),
         "legal_conversion_not_overclaimed": any(row.get("claim_id") == "C12" and row.get("allowed_as_main_claim") is False for row in claims),
         "restricted_metric_time_not_overclaimed": any(row.get("claim_id") == "C13" and row.get("allowed_as_main_claim") is False for row in claims),
+        "post_confirmation_candidates_not_overclaimed": any(row.get("claim_id") == "C14" and row.get("allowed_as_main_claim") is False for row in claims),
         "no_leakage_pass": result.get("no_leakage", {}).get("future_endpoint_input") is False
         and result.get("no_leakage", {}).get("future_waypoint_input") is False
         and result.get("no_leakage", {}).get("central_velocity") is False
@@ -375,10 +393,27 @@ def _write_md(result: Mapping[str, Any]) -> None:
             "- UCY full-waypoint source contribution and history-token contribution are supported; goal/scene and neighbor/interaction evidence is mixed and should be written as limitation or partial evidence.",
             "- The Stage37/teacher floor remains necessary; ungated neural is rejected for deployment safety.",
             "- Stage42-CG/CH now enforce the legal and metric/time claim boundaries: no converted/evaluated source-diversity repair and no global or restricted metric/seconds result can be claimed yet.",
+            "- Stage42-GH adds a newer post-confirmation calibrated subset plan: source-level ETH/UCY candidates are mapped, but ready-now remains zero and the claim is still blocked.",
             "- Stage5C and SMC remain disabled.",
         ]
     )
     write_md(REPORT_MD, lines)
+
+
+def _refresh_readmes(result: Mapping[str, Any]) -> None:
+    c14 = next((row for row in result["claim_rows"] if row.get("claim_id") == "C14"), {})
+    section = [
+        "## Stage42-GI Paper Claim Evidence Refresh With Calibrated Subset Plan",
+        "",
+        f"- source: `{result['source']}`",
+        f"- gate: `{result['stage42_z_gate']['passed']} / {result['stage42_z_gate']['total']}`; verdict `{result['stage42_z_gate']['verdict']}`.",
+        "- role: refreshes the paper claim matrix with Stage42-GH calibrated post-confirmation subset candidates.",
+        f"- C14 status: `{c14.get('status')}`; main claim allowed: `{c14.get('allowed_as_main_claim')}`.",
+        f"- C14 evidence: {c14.get('evidence')}",
+        "- boundary: calibrated candidates are not converted/evaluated and cannot support current metric/seconds claims; no true-3D/foundation/Stage5C/SMC claim.",
+    ]
+    for path in [README_RESULTS, M3W_README, ONE_FILE_SUMMARY]:
+        _replace_section(path, "STAGE42_GI_PAPER_CLAIM_EVIDENCE_REFRESH", section)
 
 
 def _write_gate_md(gate: Mapping[str, Any]) -> None:
@@ -410,11 +445,12 @@ def run_stage42_paper_claim_evidence_audit() -> dict[str, Any]:
     ablation = read_json(ABLATION_JSON, {})
     source_terms = read_json(SOURCE_TERMS_JSON, {})
     metric_time_guard = read_json(METRIC_TIME_GUARD_JSON, {})
-    claim_rows = _claim_rows(data, external, full, safety, paper, row_cache, ablation, source_terms, metric_time_guard)
+    calibrated_subset_plan = read_json(CALIBRATED_SUBSET_PLAN_JSON, {})
+    claim_rows = _claim_rows(data, external, full, safety, paper, row_cache, ablation, source_terms, metric_time_guard, calibrated_subset_plan)
     paper_file_status = _paper_file_status()
     result = {
         "stage": "Stage42-Z paper claim evidence audit",
-        "source": "fresh_audit_from_stage42_wxy_and_paper_package_artifacts",
+        "source": "fresh_audit_from_stage42_wxy_paper_package_and_gh_calibrated_plan",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "git_commit": _git_commit(),
         "python": platform.python_version(),
@@ -439,12 +475,15 @@ def run_stage42_paper_claim_evidence_audit() -> dict[str, Any]:
             "source_terms_exists": SOURCE_TERMS_JSON.exists(),
             "metric_time_guard": str(METRIC_TIME_GUARD_JSON),
             "metric_time_guard_exists": METRIC_TIME_GUARD_JSON.exists(),
+            "calibrated_subset_plan": str(CALIBRATED_SUBSET_PLAN_JSON),
+            "calibrated_subset_plan_exists": CALIBRATED_SUBSET_PLAN_JSON.exists(),
             "stage42x_gate_pass": _gate_passed(row_cache, "stage42_x_gate"),
             "stage42y_gate_pass": _gate_passed(ablation, "stage42_y_gate"),
             "stage42cg_gate_pass": _gate_passed(source_terms, "stage42_cg_gate"),
             "stage42ch_gate_pass": _gate_passed(metric_time_guard, "stage42_ch_gate"),
+            "stage42gh_gate_pass": _gate_passed(calibrated_subset_plan, "stage42_gh_gate"),
         },
-        "input_hash": _combined_hash([DATA_JSON, EXTERNAL_JSON, FULL_WAYPOINT_JSON, SAFETY_JSON, PAPER_JSON, ROW_CACHE_JSON, ABLATION_JSON, SOURCE_TERMS_JSON, METRIC_TIME_GUARD_JSON]),
+        "input_hash": _combined_hash([DATA_JSON, EXTERNAL_JSON, FULL_WAYPOINT_JSON, SAFETY_JSON, PAPER_JSON, ROW_CACHE_JSON, ABLATION_JSON, SOURCE_TERMS_JSON, METRIC_TIME_GUARD_JSON, CALIBRATED_SUBSET_PLAN_JSON]),
         "claim_rows": claim_rows,
         "paper_file_status": paper_file_status,
         "no_leakage": {
@@ -468,6 +507,7 @@ def run_stage42_paper_claim_evidence_audit() -> dict[str, Any]:
     _write_csv(claim_rows)
     _write_md(result)
     _write_gate_md(result["stage42_z_gate"])
+    _refresh_readmes(result)
     with LEDGER_JSONL.open("a", encoding="utf-8") as f:
         f.write(json.dumps({"stage": result["stage"], "source": result["source"], "verdict": result["stage42_z_gate"]["verdict"], "generated_at_utc": result["generated_at_utc"]}, ensure_ascii=False) + "\n")
     return result
