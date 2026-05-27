@@ -4538,3 +4538,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - next: change target/data/model before revisiting context, and keep protected Stage37/teacher/runtime policies as deployable floor.
 - Claim boundary: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no global metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_DP_CONTEXT_MODEL_CLOSURE:END -->
+
+<!-- STAGE42_DQ_FULL_WAYPOINT_PROMOTION_CHECKPOINT:START -->
+## Stage42-DQ Full-Waypoint Promotion Checkpoint
+
+- source: `fresh_synthesis_after_da3_full_waypoint_rerun`
+- verdict: `stage42_dq_full_waypoint_promotion_checkpoint_pass`; gates `24 / 24`.
+- fresh chain: Stage42-C full-waypoint dynamics, Stage42-CO common-validation composer, Stage42-DI group-consistency repair, Stage42-DL runtime replay.
+- group-consistency runtime vs train-horizon causal floor all/t50/t100 raw/hard: `24.72%` / `22.36%` / `14.35%` / `23.89%`.
+- runtime replay exact: switch `True`, selected_xy max abs diff `0.0`.
+- near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- promotion: protected source-level group-consistency full-waypoint runtime policy is supported; ungated full-waypoint and global primary replacement remain blocked.
+- Claim boundary: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no global metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_DQ_FULL_WAYPOINT_PROMOTION_CHECKPOINT:END -->

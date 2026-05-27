@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-DP context model closure",
-  "current_verdict": "stage42_dp_context_model_closure_pass",
+  "current_stage": "Stage42-DQ full-waypoint promotion checkpoint",
+  "current_verdict": "stage42_dq_full_waypoint_promotion_checkpoint_pass",
   "m3w_goal_results_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_dm_reports",
     "path": "README_M3W_GOAL_RESULTS_SUMMARY_ZH.md",
@@ -18931,12 +18931,7 @@
       "stage5c_executed": false,
       "smc_enabled": false
     },
-    "conclusion": "Stage42-DI is a fresh explicit group-consistency/proximity repair over source-level full-waypoint rollouts. Promotion requires all+hard improvement over Stage42-AM plus proximity safety; otherwise keep Stage42-AM/CQ or Stage37/teacher floor.",
-    "verification": {
-      "focused_pytest": "3 passed in tests/test_stage42_group_consistency_full_waypoint_repair.py",
-      "full_pytest": "644 passed in 32.24s",
-      "runner": ".venv-pytorch/bin/python run_stage42_group_consistency_full_waypoint_repair.py"
-    }
+    "conclusion": "Stage42-DI is a fresh explicit group-consistency/proximity repair over source-level full-waypoint rollouts. Promotion requires all+hard improvement over Stage42-AM plus proximity safety; otherwise keep Stage42-AM/CQ or Stage37/teacher floor."
   },
   "stage42_dj_frozen_group_consistency_policy": {
     "source": "fresh_policy_freeze_from_stage42_di",
@@ -19270,6 +19265,49 @@
     "best_delta_hard_failure": -0.026234695463867364,
     "positive_context_rows": [],
     "root_cause": "Fresh Stage42-AR/AS reruns show that temporal sequence context and current-frame kNN graph context both reduce all/t50/hard-failure improvements relative to the baseline-family first-stage control. The dominant current signal remains baseline-family rollout context plus safety floor; the present residual context target is not extracting independent scene/goal/interaction value.",
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_dq_full_waypoint_promotion_checkpoint": {
+    "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+    "report": "outputs/stage42_long_research/full_waypoint_promotion_checkpoint_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_dq_gate.md",
+    "verdict": "stage42_dq_full_waypoint_promotion_checkpoint_pass",
+    "gates": "24/24",
+    "runtime_metric_vs_train_horizon_causal_floor": {
+      "rows": 47458.0,
+      "all_improvement": 0.24715658317833844,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021
+    },
+    "group_consistency_safety": {
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01382274853554722,
+      "floor_near_005": 0.022377681318218216,
+      "runtime_base_near_005": 0.019364490707573012,
+      "runtime_final_near_005": 0.01382274853554722,
+      "runtime_floor_near_005": 0.022377681318218216,
+      "selected_xy_max_abs_diff": 0.0,
+      "switch_exact_match": true,
+      "selected_ade_max_abs_diff": 0.0,
+      "selected_fde_max_abs_diff": 0.0
+    },
+    "promotion_decision": {
+      "source_level_group_consistency_runtime_policy_promoted": true,
+      "common_validation_endpoint_composer_remains_safety_sensitive_bridge": true,
+      "global_primary_full_waypoint_replacement_claim_allowed": false,
+      "ungated_full_waypoint_deployable": false,
+      "reason": "Fresh DI/DL support a protected source-level group-consistency full-waypoint runtime policy with exact replay and proximity repair. However, common-validation endpoint-linear bridge/composer and source-level train-horizon floor use different comparison protocols, so the result cannot be collapsed into a single global primary full-waypoint replacement claim."
+    },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,

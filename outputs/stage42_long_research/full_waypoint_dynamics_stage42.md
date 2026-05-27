@@ -1,8 +1,8 @@
 # Stage42-C Full-Waypoint Dynamics
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-25T19:58:04.329388+00:00`
-- git_commit: `915d528`
+- generated_at_utc: `2026-05-26T23:52:30.763544+00:00`
+- git_commit: `c11f73d`
 - input_hash: `1d3fdc849dbf7708a7fd39bc0ff5412792726ae7d69fc2c643de8bab3f0a85f9`
 
 ## Claim Boundary

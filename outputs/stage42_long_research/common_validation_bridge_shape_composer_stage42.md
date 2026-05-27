@@ -1,8 +1,8 @@
 # Stage42-CO Common Validation Bridge / Shape Composer
 
 - source: `fresh_common_validation_eval_from_cached_verified_checkpoints`
-- generated_at_utc: `2026-05-26T18:55:19.920132+00:00`
-- git_commit: `840046d`
+- generated_at_utc: `2026-05-26T23:53:38.575968+00:00`
+- git_commit: `c11f73d`
 - input_hash: `0310b4beef0ce7237f210b3d6125609e666d1f3fb46bad7b08ba02ee53dd8601`
 - gate: `14 / 14`
 - verdict: `stage42_co_common_validation_bridge_shape_composer_pass`

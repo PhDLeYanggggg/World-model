@@ -1,0 +1,198 @@
+{
+  "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+  "stage": "Stage42-DQ",
+  "generated_at_utc": "2026-05-26T23:58:54.000718+00:00",
+  "git_commit": "c11f73d",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DQ 是 DA-3 fresh full-waypoint promotion checkpoint，不执行 Stage5C，不启用 SMC。",
+    "本阶段整合 fresh Stage42-C full-waypoint dynamics、fresh Stage42-CO common-validation composer、fresh Stage42-DI group-consistency repair、fresh Stage42-DL runtime replay。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。"
+  ],
+  "inputs": {
+    "stage42_c_full_waypoint_dynamics": {
+      "path": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.json",
+      "source": "fresh_run",
+      "generated_at_utc": "2026-05-26T23:52:30.763544+00:00",
+      "gate": "12/12",
+      "verdict": "stage42_c_full_waypoint_dynamics_pass"
+    },
+    "stage42_co_common_validation_composer": {
+      "path": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+      "source": "fresh_common_validation_eval_from_cached_verified_checkpoints",
+      "generated_at_utc": "2026-05-26T23:53:38.575968+00:00",
+      "gate": "14/14",
+      "verdict": "stage42_co_common_validation_bridge_shape_composer_pass"
+    },
+    "stage42_di_group_consistency_repair": {
+      "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+      "source": "fresh_stage42_di_group_consistency_full_waypoint_repair",
+      "generated_at_utc": "2026-05-26T23:55:04.962245+00:00",
+      "gate": "17/17",
+      "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+    },
+    "stage42_dl_runtime_replay": {
+      "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+      "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+      "generated_at_utc": "2026-05-26T23:55:09.000409+00:00",
+      "gate": "30/30",
+      "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+    },
+    "stage42_dp_context_closure": {
+      "path": "outputs/stage42_long_research/context_model_closure_stage42.json",
+      "source": "fresh_synthesis_after_fresh_ar_as_rerun",
+      "verdict": "stage42_dp_context_model_closure_pass"
+    }
+  },
+  "summary": {
+    "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+    "full_waypoint_transformer_protected_vs_floor": {
+      "rows": 55528.0,
+      "all_improvement": 0.18577852429834418,
+      "t50_improvement": 0.14803699577731477,
+      "t100_improvement": 0.22857426649949408,
+      "hard_failure_improvement": 0.19518047277951456,
+      "easy_degradation": -0.0,
+      "switch_rate": 0.2946441434951736
+    },
+    "ungated_full_waypoint_transformer_vs_floor": {
+      "rows": 55528.0,
+      "all_improvement": 0.296621240422128,
+      "t50_improvement": 0.21520334842637612,
+      "t100_improvement": 0.359213230578716,
+      "hard_failure_improvement": 0.32937413785262626,
+      "easy_degradation": 1.2458611044726973,
+      "switch_rate": 1.0
+    },
+    "m3w_neural_v1_endpoint_linear_bridge_vs_floor": {
+      "rows": 55528.0,
+      "all_improvement": 0.2102513255185352,
+      "t50_improvement": 0.13652231450154184,
+      "t100_improvement": 0.14694086716388166,
+      "hard_failure_improvement": 0.20384916307933942,
+      "easy_degradation": -0.14511076140795587,
+      "switch_rate": 0.3410171445036738
+    },
+    "common_validation_composer_vs_endpoint_linear": {
+      "rows": 55528.0,
+      "all_improvement": 0.030166976195252437,
+      "t50_improvement": 0.01502943431774939,
+      "t100_raw_frame_diagnostic_improvement": 0.06118732156780071,
+      "hard_failure_improvement": 0.03280214089079592,
+      "easy_degradation": 0.002532827637569346,
+      "switch_rate": 0.21349589396340585
+    },
+    "common_validation_composer_vs_floor": {
+      "rows": 55528.0,
+      "all_improvement": 0.2340756549818498,
+      "t50_improvement": 0.1494998956605832,
+      "t100_raw_frame_diagnostic_improvement": 0.19913727064107445,
+      "hard_failure_improvement": 0.22996461500233611,
+      "easy_degradation": -0.14294547431738935,
+      "switch_rate": 0.21349589396340585
+    },
+    "group_consistency_repair_vs_train_horizon_causal_floor": {
+      "rows": 47458.0,
+      "all_improvement": 0.24715658317833844,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021
+    },
+    "group_consistency_runtime_replay_vs_train_horizon_causal_floor": {
+      "rows": 47458.0,
+      "all_improvement": 0.24715658317833844,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021
+    },
+    "group_consistency_delta_vs_stage42_am": {
+      "all_improvement": 0.001368197579674879,
+      "t50_improvement": 0.0034591684196666472,
+      "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+      "hard_failure_improvement": 0.0013803223197202952,
+      "easy_degradation": 0.00031875910508205596
+    },
+    "group_consistency_safety": {
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01382274853554722,
+      "floor_near_005": 0.022377681318218216,
+      "runtime_base_near_005": 0.019364490707573012,
+      "runtime_final_near_005": 0.01382274853554722,
+      "runtime_floor_near_005": 0.022377681318218216,
+      "selected_xy_max_abs_diff": 0.0,
+      "switch_exact_match": true,
+      "selected_ade_max_abs_diff": 0.0,
+      "selected_fde_max_abs_diff": 0.0
+    },
+    "context_closure_decision": "close_current_sequence_graph_residual_context_protocol",
+    "promotion_decision": {
+      "source_level_group_consistency_runtime_policy_promoted": true,
+      "common_validation_endpoint_composer_remains_safety_sensitive_bridge": true,
+      "global_primary_full_waypoint_replacement_claim_allowed": false,
+      "ungated_full_waypoint_deployable": false,
+      "reason": "Fresh DI/DL support a protected source-level group-consistency full-waypoint runtime policy with exact replay and proximity repair. However, common-validation endpoint-linear bridge/composer and source-level train-horizon floor use different comparison protocols, so the result cannot be collapsed into a single global primary full-waypoint replacement claim."
+    },
+    "next_best_action": [
+      "Keep Stage42-DL group-consistency runtime as source-level full-waypoint runtime evidence.",
+      "Use Stage42-CQ proximity-aware composer as the safety-sensitive endpoint bridge/shape policy when endpoint-linear baseline is the comparison floor.",
+      "Do not deploy ungated full-waypoint because easy degradation remains unsafe.",
+      "Prioritize source/legal/time closure and protocol-aligned external sources before broader metric/seconds or global t100/full-waypoint claims."
+    ]
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_dq_gate": {
+    "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+    "gates": {
+      "fresh_full_waypoint_dynamics_loaded": true,
+      "fresh_common_validation_composer_loaded": true,
+      "fresh_group_consistency_repair_loaded": true,
+      "fresh_runtime_replay_loaded": true,
+      "runtime_exact_replay": true,
+      "group_consistency_all_positive": true,
+      "group_consistency_t50_positive": true,
+      "group_consistency_hard_positive": true,
+      "group_consistency_improves_stage42_am_all": true,
+      "group_consistency_improves_stage42_am_hard": true,
+      "group_consistency_proximity_repaired": true,
+      "ungated_full_waypoint_blocked": true,
+      "context_residual_protocol_closed": true,
+      "primary_global_replacement_not_overclaimed": true,
+      "future_endpoint_blocked": true,
+      "future_waypoint_blocked": true,
+      "central_velocity_blocked": true,
+      "test_endpoint_goals_blocked": true,
+      "no_test_threshold_tuning": true,
+      "no_metric_seconds_overclaim": true,
+      "true_3d_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 24,
+    "total": 24,
+    "verdict": "stage42_dq_full_waypoint_promotion_checkpoint_pass"
+  }
+}

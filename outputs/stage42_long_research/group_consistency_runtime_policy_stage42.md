@@ -1,8 +1,8 @@
 # Stage42-DL Group-Consistency Runtime Policy API
 
 - source: `fresh_runtime_api_from_frozen_group_consistency_policy_artifact`
-- generated_at_utc: `2026-05-26T23:09:20.988772+00:00`
-- git_commit: `47b5df5`
+- generated_at_utc: `2026-05-26T23:55:09.000409+00:00`
+- git_commit: `c11f73d`
 - input_hash: `78d18375551ff5f3e91d4199e401e7452e7ccd3ae81a0a50e02c2bf2f74d5b9a`
 - policy_hash: `617ef9952b1439f3678318129a4979c7a171f2ba882742cd18acd46c5ae92141`
 - gate: `30 / 30`

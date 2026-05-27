@@ -1,8 +1,8 @@
 # Stage42-DI Group-Consistency Full-Waypoint Repair
 
 - source: `fresh_stage42_di_group_consistency_full_waypoint_repair`
-- generated_at_utc: `2026-05-26T22:33:45.069908+00:00`
-- git_commit: `8270d93`
+- generated_at_utc: `2026-05-26T23:55:04.962245+00:00`
+- git_commit: `c11f73d`
 - gate: `17 / 17`
 - verdict: `stage42_di_group_consistency_full_waypoint_repair_pass_promotable`
 - decision: `promote_stage42_di_group_consistency_full_waypoint_repair`
