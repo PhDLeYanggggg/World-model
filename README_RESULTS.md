@@ -2,11 +2,11 @@
 
 ## M3W 当前工作路线/失败/成功总账
 
-本轮按用户要求新增一个单文件中文总账：
+本轮按用户要求刷新了一个单文件中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-EL/EM/EN/EO/EP/EQ/ER：context gain router 与 sequence+graph context router 都没有证明独立 context materiality；official source link audit 显示 conversion_ready_now 仍为 0；floor removability decision map 显示 global floor-free neural 仍 blocked，只允许 validation-backed t50 slice partial relaxation；deployment contract guard 已明确 unknown future policy 默认拒绝；post-EQ refresh 关闭当前 shallow sequence/graph context protocol。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES/ET：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-ET group-schema ablation 显示 source_frame_horizon 相比 agent-isolated no-interaction control 有小但正的 all/t50/hard 增量，并修复 own-base near@0.05。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
