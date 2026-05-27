@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-DW source-specific conversion dry-run",
-  "current_verdict": "stage42_dw_source_specific_conversion_dry_run_pass",
+  "current_stage": "Stage42-DX full-waypoint loss-family fresh replay",
+  "current_verdict": "stage42_dx_loss_family_replay_pass_blocker_confirmed",
   "m3w_target_work_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_dr_reports",
     "path": "README_M3W_TARGET_WORK_SUMMARY_ZH.md",
@@ -19579,6 +19579,90 @@
       "source_specific_conversion_executable_now": false,
       "converted_datasets_now": 0,
       "evaluated_datasets_now": 0,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_dx_full_waypoint_loss_family_replay": {
+    "source": "fresh_rerun_dg_dh_loss_family_replay",
+    "report": "outputs/stage42_long_research/full_waypoint_loss_family_replay_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_dx_gate.md",
+    "verdict": "stage42_dx_loss_family_replay_pass_blocker_confirmed",
+    "gates": "10/10",
+    "summary": {
+      "candidate_count": 2,
+      "any_promotable_over_stage42_am": false,
+      "promotion_decision": "do_not_promote_keep_stage42_am_or_cq_floor",
+      "promotion_blockers": [
+        "no_loss_family_candidate_beats_stage42_am_on_all_and_hard",
+        "primary_full_waypoint_promotion_blocked",
+        "next_step_requires_model_architecture_or_explicit_physical_consistency_target_not_more_scalar_weighting"
+      ],
+      "best_candidate_name": "proximity_occupancy_loss",
+      "best_candidate_all": 0.25506106152262753,
+      "best_candidate_t50": 0.22136644201311806,
+      "best_candidate_hard": 0.2373927398811264,
+      "best_candidate_easy": -0.29229256390643454
+    },
+    "best_candidate": {
+      "name": "proximity_occupancy_loss",
+      "source": "fresh_stage42_dh_full_waypoint_proximity_occupancy_loss_repair",
+      "gate": {
+        "gates": {
+          "source_level_split_rebuilt": true,
+          "full_waypoint_labels_available": true,
+          "graph_proximity_features_built": true,
+          "proximity_occupancy_variants_run": true,
+          "validation_selected_model": true,
+          "no_future_or_test_leakage": true,
+          "test_all_positive_vs_floor": true,
+          "test_hard_positive_vs_floor": true,
+          "easy_degradation_under_2pct": true,
+          "bootstrap_reported": true,
+          "comparison_to_stage42_am_recorded": true,
+          "beats_stage42_am_all": true,
+          "beats_stage42_am_hard": false,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 15,
+        "total": 16,
+        "verdict": "stage42_dh_proximity_occupancy_loss_repair_pass_positive_not_better_than_am"
+      },
+      "selected_variant": "proximity_close_weighted",
+      "selected_feature_mode": "stage42_am_features",
+      "selected_lambda": 100.0,
+      "selected_val_score": 2.416931576120985,
+      "metric_vs_floor": {
+        "rows": 47458,
+        "all_improvement": 0.25506106152262753,
+        "t10_improvement": 0.4518805313847154,
+        "t25_improvement": 0.29831288193446703,
+        "t50_improvement": 0.22136644201311806,
+        "t100_raw_frame_diagnostic_improvement": 0.14339472654477603,
+        "hard_failure_improvement": 0.2373927398811264,
+        "easy_degradation": -0.29229256390643454,
+        "switch_rate": 0.5846011209911922,
+        "harm_over_fallback": -0.11746578880628065
+      },
+      "delta_vs_stage42_am": {
+        "all_improvement": 0.009272675923963969,
+        "t50_improvement": 0.0011957311428109074,
+        "t100_raw_frame_diagnostic_improvement": -0.00025767880698590595,
+        "hard_failure_improvement": -0.0001011385037943402,
+        "easy_degradation": -0.035665264150503084,
+        "switch_rate": -0.003497829659909857
+      },
+      "promotable_over_stage42_am": false,
+      "decision": "proximity_occupancy_loss_not_enough_keep_stage42_am_or_cq_floor"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "full_waypoint_primary_promotion_allowed": false,
       "stage5c_executed": false,
       "smc_enabled": false
     }

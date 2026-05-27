@@ -4663,3 +4663,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - source-CV domains after terms: `['UCY']`; conversion allowed now remains `0`.
 - report: `outputs/stage42_long_research/source_specific_conversion_dry_run_stage42.md`.
 <!-- STAGE42_DW_SOURCE_SPECIFIC_CONVERSION_DRY_RUN:END -->
+
+<!-- STAGE42_DX_FULL_WAYPOINT_LOSS_FAMILY_REPLAY:START -->
+## Stage42-DX Full-Waypoint Loss-Family Fresh Replay
+
+- source: `fresh_rerun_dg_dh_loss_family_replay`
+- role: reruns DG/DH full-waypoint loss-family probes and applies one promotion gate over Stage42-AM.
+- gate: `10 / 10`; verdict `stage42_dx_loss_family_replay_pass_blocker_confirmed`.
+- best replay candidate: `proximity_occupancy_loss`; all `0.255061`, t50 `0.221366`, hard `0.237393`, easy `-0.292293`.
+- promotion decision: `do_not_promote_keep_stage42_am_or_cq_floor`; blockers: `['no_loss_family_candidate_beats_stage42_am_on_all_and_hard', 'primary_full_waypoint_promotion_blocked', 'next_step_requires_model_architecture_or_explicit_physical_consistency_target_not_more_scalar_weighting']`.
+- Stage5C remains false; SMC remains false; no metric/seconds claim.
+<!-- STAGE42_DX_FULL_WAYPOINT_LOSS_FAMILY_REPLAY:END -->
