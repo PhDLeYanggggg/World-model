@@ -397,3 +397,16 @@ M3W 已经做出了有价值的真实路线探索：从 SDD cost-aware selector�
 - t100 easy degradation after guard: `-0.31%`.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; t100 remains raw-frame diagnostic; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:END -->
+
+<!-- STAGE42_HT_T100_EASY_GUARD_RUNTIME:START -->
+## Stage42-HT Runtime T100 Easy Guard Policy
+
+- source: `fresh_runtime_api_from_frozen_stage42_hs_t100_easy_guard_policy`
+- role: convert the frozen Stage42-HS domain|t100 easy guard into a callable runtime policy API.
+- gate: `19 / 19`; verdict `stage42_ht_t100_easy_guard_runtime_policy_pass`.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json`
+- policy hash: `8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e`
+- runtime rule: TrajNet|100 falls back to floor; UCY|100 keeps candidate; unknown t100 domains fallback to floor; non-t100 rows are unchanged.
+- inherited guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HT_T100_EASY_GUARD_RUNTIME:END -->

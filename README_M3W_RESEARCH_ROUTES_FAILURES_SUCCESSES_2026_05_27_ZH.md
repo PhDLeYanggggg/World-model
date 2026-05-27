@@ -1,7 +1,7 @@
 # M3W 目标内研究路线、失败原因、成功证据与当前质量总账
 
 更新时间：2026-05-27  
-结果来源：`cached_verified_summary`，汇总既有 Stage18 到 Stage42-HS 报告、gate、model/data card、README 与 `research_state.json`。  
+结果来源：`cached_verified_summary`，汇总既有 Stage18 到 Stage42-HT 报告、gate、model/data card、README 与 `research_state.json`。  
 本文件不是新训练、不是新评估、不是新数据转换；它是给当前长期目标使用的单文件中文总账。
 
 ## 0. 必须先说清楚的边界
@@ -55,7 +55,7 @@ causal feature store
 - external t+50：Stage37 safe selector 是第一条真正可部署正迁移路线。
 - protected neural / world-state：M3W-Neural v1 与 Stage42 full-waypoint / group-consistency 分支有可写论文的 protected 2.5D evidence。
 - metric/time：仍未 ready；Stage42-HM/HN 已经把未来 restricted metric/time conversion path 做成 guarded queue，但当前 ready candidates = 0。
-- t100 raw-frame：Stage42-HR/HS 增加了 validation-only t100 easy guard 与冻结复放证据，修复了 HQ 暴露的 t100 easy harm；但 t100 仍只能写 raw-frame diagnostic，不能写 seconds-level。
+- t100 raw-frame：Stage42-HR/HS 增加了 validation-only t100 easy guard 与冻结复放证据，修复了 HQ 暴露的 t100 easy harm；Stage42-HT 又把该 frozen policy 做成可调用 runtime API。但 t100 仍只能写 raw-frame diagnostic，不能写 seconds-level。
 
 ## 2. 阶段路线总览
 
@@ -81,7 +81,7 @@ causal feature store
 | Stage40 | 5-10 trial neural optimization | best neural 等于 Stage37 subset；without fallback 灾难性失败 | Stage37 仍 best deployable |
 | Stage41 | M3W-Neural v1 package / protected composite-tail candidate | protected neural candidate 形成，bootstrap/multiseed/pure-UCY/full-waypoint bridge 证据 | 是 protected neural world-state candidate，不是 ungated dynamics |
 | Stage42 | long research mode：source/domain/full-waypoint/group-consistency/claim guards/metric-time guards | 多个 protected full-waypoint / source-level / group-consistency 分支通过；sequence/graph context 主 claim 被关闭；metric/time conversion queue ready=0 | 形成 protected 2.5D paper package，但仍非 foundation / true 3D |
-| Stage42-HR/HS | t100 easy guard + frozen replay | HR：all +27.72%，t50 +26.99%，t100 raw +6.79%，hard +25.93%，t100 easy degradation -0.31%，gate 23/23；HS：policy hash/replay 固化，gate 27/27 | 修复 t100 easy harm，但 t100 仍是 raw-frame diagnostic，不是 seconds-level |
+| Stage42-HR/HS/HT | t100 easy guard + frozen replay + runtime API | HR：all +27.72%，t50 +26.99%，t100 raw +6.79%，hard +25.93%，t100 easy degradation -0.31%，gate 23/23；HS：policy hash/replay 固化，gate 27/27；HT：runtime API gate 19/19 | 修复 t100 easy harm，并可运行复放；但 t100 仍是 raw-frame diagnostic，不是 seconds-level |
 
 ## 3. 成功路线与关键证据
 
@@ -220,7 +220,7 @@ Stage42 中，最有价值的不是又跑一个大模型，而是把 endpoint se
 - neighbor/interaction independent main claim。
 - ungated global full-waypoint replacement。
 
-#### Stage42-HR/HS t100 easy guard
+#### Stage42-HR/HS/HT t100 easy guard and runtime policy
 
 Stage42-HQ 曾经把 group-consistency full-waypoint policy 推到更高 t100 raw-frame diagnostic gain，但暴露出一个关键安全问题：t100 easy slice 有正 easy degradation。Stage42-HR 没有继续追求更高 t100 数字，而是做 validation-only domain|t100 easy guard。
 
@@ -239,7 +239,7 @@ HR 的 validation-only 决策：
 - `TrajNet|100`：validation easy degradation > 0，因此 t100 slice 回退 floor。
 - `UCY|100`：validation all gain 为正且 easy degradation 为负，因此保留 candidate。
 
-Stage42-HS 把 HR policy 冻结为轻量 artifact：
+Stage42-HS 把 HR policy 冻结为轻量 artifact，Stage42-HT 再把它变成可调用 runtime API：
 
 | 项目 | 结果 |
 | --- | --- |
@@ -248,13 +248,16 @@ Stage42-HS 把 HR policy 冻结为轻量 artifact：
 | decision replay | exact |
 | metric replay | exact |
 | max metric diff | 0 |
-| gates | 27 / 27 |
-| verdict | `stage42_hs_t100_easy_guard_freeze_pass` |
+| HS gates | 27 / 27 |
+| HS verdict | `stage42_hs_t100_easy_guard_freeze_pass` |
+| HT runtime gate | 19 / 19 |
+| HT runtime verdict | `stage42_ht_t100_easy_guard_runtime_policy_pass` |
 
 意义：
 
 - 成功点：t100 easy harm 被修复，all/t50/hard 仍保持明显正收益。
 - 代价：t100 raw diagnostic 从 +21.12% 降到 +6.79%，因为安全优先。
+- 工程化进展：HT runtime policy 的规则是 `TrajNet|100` 回退 floor、`UCY|100` 保留 candidate、未知 t100 domain 默认回退 floor、非 t100 行不 guard。
 - 边界：这不是 seconds-level t100，也不是 metric long-horizon；只是 dataset-local/raw-frame t100 diagnostic safety guard。
 
 ## 4. 失败路线、失败原因、后续处置
@@ -439,7 +442,7 @@ Stage42-HS 把 HR policy 冻结为轻量 artifact：
 | External t+50 dataset-local raw-frame | Stage37 causal-history + goal-prototype safe selector | 是 | external deployable selector candidate |
 | Protected neural world-state | M3W-Neural v1 composite-tail safe-switch bounded dynamics | 候选 | 必须在 Stage37/teacher floor 下 |
 | Full-waypoint / group consistency | Stage42-DJ / W protected full-waypoint group-consistency family | 候选 | source-level protected evidence |
-| t100 raw-frame diagnostic safety | Stage42-HR/HS group-consistency t100 easy guard | 候选 | 只修 t100 easy harm；不能写 seconds-level |
+| t100 raw-frame diagnostic safety | Stage42-HR/HS/HT group-consistency t100 easy guard runtime policy | 候选 | 只修 t100 easy harm并提供 runtime API；不能写 seconds-level |
 | JEPA-only | 无 | 否 | non-collapse 但无 downstream lift |
 | Transformer/Hybrid ungated | 无 | 否 | 不安全，easy 会被破坏 |
 | Metric/time restricted benchmark | 无 | 否 | ready candidates = 0 |
@@ -534,7 +537,7 @@ Large-Scale 3D Foundation World Model
 - M3W-Neural v1 protected candidate：all +21.03%，t50 +13.65%，t100 raw +14.69%，hard +20.38%，easy 0。
 - Stage42-DJ group-consistency full-waypoint：all +24.72%，t50 +22.36%，t100 raw +14.35%，hard +23.89%，near@0.05 改善。
 - Stage42-W unified full-waypoint package：ETH_UCY、TrajNet、UCY 三域 policy package。
-- Stage42-HR/HS t100 easy guard：all +27.72%，t50 +26.99%，t100 raw diagnostic +6.79%，hard +25.93%，t100 easy degradation -0.31%，frozen replay exact。
+- Stage42-HR/HS/HT t100 easy guard：all +27.72%，t50 +26.99%，t100 raw diagnostic +6.79%，hard +25.93%，t100 easy degradation -0.31%，frozen replay exact，runtime policy gate 19/19。
 
 ### Claim / Safety / Legal
 
