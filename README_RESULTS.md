@@ -5479,3 +5479,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - highest-priority next action: `FW-TERMS-ucy_crowd_original`.
 - boundary: local file presence is not legal conversion readiness; protected dataset-local/raw-frame 2.5D only; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
 <!-- STAGE42_GA_LIVE_SOURCE_CALIBRATION_RECHECK:END -->
+
+<!-- STAGE42_GB_SOURCE_TERMS_PREFILL:START -->
+## Stage42-GB Source Terms Prefill
+
+- source: `fresh_stage42_gb_source_terms_prefill`
+- gate: `15 / 15`; verdict `stage42_gb_source_terms_prefill_pass`.
+- role: converts Stage42-GA local path evidence into a user-facing source-terms prefill draft; no download, conversion, training, evaluation, or permission claim.
+- datasets prefilled: `5`; with suggested local path `5`; raw-source candidates `5`.
+- conversion_ready_now: `0`; highest-priority next action `FW-TERMS-ucy_crowd_original`.
+- prefill draft: `outputs/stage42_long_research/source_terms_confirmation_prefill_stage42.json`.
+- boundary: prefill is not legal permission; protected dataset-local/raw-frame 2.5D only; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
+<!-- STAGE42_GB_SOURCE_TERMS_PREFILL:END -->
