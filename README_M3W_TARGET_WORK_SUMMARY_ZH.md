@@ -476,3 +476,15 @@ SMC 是否启用：否
 - promotion decision: `do_not_promote_keep_stage42_am_or_cq_floor`; blockers: `['no_loss_family_candidate_beats_stage42_am_on_all_and_hard', 'primary_full_waypoint_promotion_blocked', 'next_step_requires_model_architecture_or_explicit_physical_consistency_target_not_more_scalar_weighting']`.
 - Stage5C remains false; SMC remains false; no metric/seconds claim.
 <!-- STAGE42_DX_FULL_WAYPOINT_LOSS_FAMILY_REPLAY:END -->
+
+<!-- STAGE42_DY_EXPLICIT_PHYSICAL_CONSISTENCY_CHECKPOINT:START -->
+## Stage42-DY Explicit Physical Consistency Checkpoint
+
+- source: `fresh_dg_dh_di_physical_consistency_checkpoint`
+- role: follows Stage42-DX by comparing scalar loss-family replay with explicit group/physical consistency repair.
+- gate: `16 / 16`; verdict `stage42_dy_explicit_physical_consistency_checkpoint_pass_source_level_promoted`.
+- loss-family any promotable over Stage42-AM: `False`; best scalar candidate `proximity_occupancy_loss` all/t50/hard `0.255061` / `0.221366` / `0.237393`.
+- group-consistency source-level policy all/t50/t100 raw/hard/easy `0.247157` / `0.223630` / `0.143461` / `0.238874` / `-0.256309`.
+- group-consistency beats Stage42-AM on all/hard by `0.001368` / `0.001380` and repairs near@0.05 from `0.019364` to `0.013823`.
+- deployment boundary: promote explicit group-consistency as source-level full-waypoint physical policy; do not claim global primary full-waypoint replacement, metric/seconds-level, Stage5C, or SMC.
+<!-- STAGE42_DY_EXPLICIT_PHYSICAL_CONSISTENCY_CHECKPOINT:END -->
