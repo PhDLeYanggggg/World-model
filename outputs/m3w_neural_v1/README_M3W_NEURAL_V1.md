@@ -10,6 +10,12 @@ Latest single-file Chinese work ledger requested by the user:
 
 This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FO: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence, Stage42-FJ confirms dual-domain/source robustness while blocking uniform horizon overclaim, Stage42-FK attempts validation-only horizon repair but still keeps the uniform-horizon claim blocked, Stage42-FL diagnoses the remaining weak horizons as low-margin ambiguous slices, Stage42-FM shows a row-level horizon specialist can repair UCY|50 and improve global all/t50/t100raw/hard to 35.20% / 29.03% / 21.14% / 33.35% while still leaving TrajNet|100 and UCY|100 as horizon-specific safety blockers, Stage42-FN shows that adding a stricter conservative easy guard keeps global safety but does not repair those remaining two weak horizons, and Stage42-FO shows that a validation-only gain/harm specialist using Stage37/past/prototype/rollout features still cannot unlock the remaining h100 weak slices.
 
+Canonical concise Chinese evidence ledger:
+
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md`
+
+This is the current user-facing single-file summary of attempted routes, failed routes and causes, successful evidence, best deployable policies, strict claim boundaries, and the remaining h100 weak-horizon blocker.
+
 Latest current-goal work summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_TARGET_WORK_SUMMARY_ZH.md`

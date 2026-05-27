@@ -1,6 +1,40 @@
 {
   "current_stage": "Stage42-FO FH horizon gain/harm specialist",
   "current_verdict": "stage42_fo_gain_harm_specialist_pass_with_horizon_limit",
+  "m3w_goal_evidence_ledger_readme": {
+    "source": "cached_verified_summary_from_stage18_to_stage42_fo_reports",
+    "path": "README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md",
+    "updated_at": "2026-05-27",
+    "purpose": "Canonical single-file Chinese evidence ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, best deployable policies, strict claim boundaries, and next actions.",
+    "summary_refresh_only": true,
+    "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+    "current_best_deployable_families": {
+      "sdd": "Stage26 cost-aware selector",
+      "external_t50": "Stage37 causal-history and goal-prototype safe selector",
+      "source_domain_robust": "Stage42-FH/FI frozen protected policy family"
+    },
+    "current_blockers": [
+      "uniform_horizon_robustness_blocked_by_TrajNet_100_and_UCY_100",
+      "t100_remains_raw_frame_diagnostic",
+      "global_metric_seconds_claim_not_allowed",
+      "JEPA_downstream_lift_not_stable",
+      "ungated_neural_dynamics_not_deployable"
+    ],
+    "not_claimed": [
+      "true_3d_world_model",
+      "large_scale_foundation_world_model",
+      "global_metric_predictor",
+      "seconds_level_long_horizon_predictor",
+      "ungated_neural_dynamics",
+      "stage5c_execution",
+      "smc_enabled"
+    ],
+    "verification": {
+      "json": ".venv-pytorch/bin/python -m json.tool research_state.json -> passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 828 passed in 31.08s"
+    },
+    "latest_conclusion": "M3W has meaningful protected 2.5D raw-frame world-state evidence, but uniform horizon robustness and true neural dynamics claims remain blocked."
+  },
   "m3w_work_attempts_failures_successes_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fo_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",

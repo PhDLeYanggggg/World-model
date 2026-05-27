@@ -5302,3 +5302,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FO_FH_HORIZON_GAIN_HARM_SPECIALIST:END -->
+
+<!-- M3W_GOAL_EVIDENCE_LEDGER_REFRESH:START -->
+## M3W Goal Evidence Ledger Refresh
+
+- source: `cached_verified_summary_from_stage18_to_stage42_fo_reports`
+- role: user-requested single-file Chinese summary of what was attempted under the M3W long-term goal, which routes failed and why, which routes succeeded, current model quality, current best deployable policies, claim boundaries, and next actions.
+- canonical README: `README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md`.
+- current positioning: protected dataset-local/raw-frame 2.5D multi-agent world-state candidate.
+- current best deployable families: Stage26 for SDD pixel raw-frame; Stage37 for external t50 selective transfer; Stage42-FH/FI family for frozen source/domain robust protected policy.
+- current blocker: uniform horizon robustness is still blocked by `TrajNet|100` and `UCY|100`; Stage42-FN/FO did not repair these h100 weak slices.
+- not claimed: true 3D, foundation model, global metric prediction, seconds-level horizon, ungated neural dynamics deployment, Stage5C execution, or SMC readiness.
+- This is a documentation/evidence-ledger refresh, not a new training run.
+- verification: `.venv-pytorch/bin/python -m json.tool research_state.json` passed; `.venv-pytorch/bin/python -m pytest tests` -> `828 passed in 31.08s`.
+<!-- M3W_GOAL_EVIDENCE_LEDGER_REFRESH:END -->
