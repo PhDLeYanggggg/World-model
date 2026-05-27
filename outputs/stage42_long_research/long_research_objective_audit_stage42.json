@@ -1,0 +1,189 @@
+{
+  "source": "fresh_stage42_ho_long_research_objective_audit",
+  "stage": "Stage42-HO Long Research Objective Audit",
+  "generated_at_utc": "2026-05-27T18:39:06.578300+00:00",
+  "git_commit": "49fe456",
+  "input_hash": "ba28ee344f37f7b924ab661ced9fb0545228b8c82890d629eacd98ddb72a8cc7",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HO 是长期目标覆盖审计：不下载、不转换、不训练、不调 test threshold。",
+    "本阶段把 Stage42 Long Research Mode A-F 要求映射到当前 authoritative evidence。",
+    "future endpoint / future waypoint 只可作为 supervised/evaluation labels，不可作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_status": {
+    "data_calibration": true,
+    "external_validation": true,
+    "full_waypoint": true,
+    "unified_full_waypoint": true,
+    "group_consistency": true,
+    "sequence_context": true,
+    "graph_context": true,
+    "metric_time_queue": true,
+    "m3w_evidence": true,
+    "stage37_gate": true,
+    "stage40_gate": true
+  },
+  "stage37": {
+    "source": "cached_verified",
+    "gate": [
+      0,
+      0,
+      ""
+    ],
+    "all_improvement": 0.0,
+    "t50_improvement": 0.0,
+    "hard_failure_improvement": 0.0,
+    "easy_degradation": 0.0
+  },
+  "external_validation": {
+    "source": "fresh_run",
+    "protected_all": 0.0,
+    "protected_t50": 0.0,
+    "protected_t100_raw": 0.0,
+    "protected_hard": 0.0,
+    "easy_degradation": 0.0
+  },
+  "m3w_neural_v1": {
+    "source": "cached_verified",
+    "gates": {},
+    "all_improvement": 0.2102513255185352,
+    "t50_improvement": 0.13652231450154184,
+    "t100_raw_improvement": 0.0,
+    "hard_failure_improvement": 0.20384916307933942,
+    "easy_degradation": 0.0
+  },
+  "full_waypoint": {
+    "source": "cached_verified",
+    "protected_full_waypoint_all": 0.18577852429834418,
+    "protected_full_waypoint_t50": 0.14803699577731477,
+    "protected_full_waypoint_t100_raw": 0.22857426649949408,
+    "protected_full_waypoint_hard": 0.19518047277951456,
+    "unified_full_waypoint_rows": 55528,
+    "group_consistency_verdict": "stage42_ec_group_consistency_contribution_audit_pass",
+    "group_consistency_supported": true
+  },
+  "context": {
+    "sequence_source": "fresh_run",
+    "graph_source": "fresh_run",
+    "sequence_verdict": "stage42_ar_sequence_context_evidence_partial_or_negative",
+    "graph_verdict": "stage42_as_graph_context_evidence_partial_or_negative",
+    "scene_goal_independent_claim": "not_supported",
+    "neighbor_interaction_independent_claim": "not_supported",
+    "reason": "Fresh sequence and graph residual context variants underperformed the baseline-family rollout control on all/t50/hard."
+  },
+  "metric_time": {
+    "source": "fresh_stage42_hn_restricted_metric_time_conversion_queue_v2",
+    "ready_candidates": 0,
+    "conversion_queue_count": 0,
+    "blocked_action_count": 11,
+    "blocked_t50_windows_after_terms": 14457,
+    "blocked_t100_windows_after_terms": 7129,
+    "restricted_metric_time_claim_allowed_now": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_seconds_claim_allowed": false,
+    "ungated_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "coverage": {
+    "stage_a_data_and_calibration": {
+      "status": "partial_blocked",
+      "evidence": "data calibration and source/legal guards exist; metric/time conversion queue is empty.",
+      "pass_for_objective": false,
+      "next_action": "user-confirmed source terms/path/source identity, then guarded conversion and no-leakage/source-CV.",
+      "blocked_by": [
+        "restricted metric/time ready candidates = 0",
+        "blocked after-terms t50/t100 windows retained = 14457 / 7129"
+      ]
+    },
+    "stage_b_external_validation": {
+      "status": "protected_positive",
+      "evidence": "Stage37/M3W-Neural/Stage42 protected external validation is positive under raw-frame dataset-local protocol.",
+      "pass_for_objective": true,
+      "next_action": "expand independent legal source diversity; do not broaden metric/time claim."
+    },
+    "stage_c_full_waypoint_dynamics": {
+      "status": "protected_positive_not_ungated",
+      "evidence": "Protected full-waypoint and group-consistency policies are positive; ungated/global replacement remains blocked.",
+      "pass_for_objective": true,
+      "next_action": "continue source-level group-consistency/full-waypoint training rather than endpoint-only bridge overclaims."
+    },
+    "stage_d_causal_ablation": {
+      "status": "mixed",
+      "evidence": "history/safe-switch/floor/group-consistency supported; JEPA/scene/goal/neighbor independent main claims blocked under current protocols.",
+      "pass_for_objective": false,
+      "next_action": "if revisiting context, change target to gain-harm/switchability or source-level full-waypoint consistency; do not repeat residual context protocol.",
+      "blocked_by": [
+        "Fresh sequence and graph residual context variants underperformed the baseline-family rollout control on all/t50/hard.",
+        "JEPA non-collapse without stable downstream lift."
+      ]
+    },
+    "stage_e_safety_floor": {
+      "status": "necessary_floor_proven",
+      "evidence": "Protected candidates pass; ungated neural remains unsafe; floor-free/global removal is blocked.",
+      "pass_for_objective": true,
+      "next_action": "study slice-specific floor relaxation only under validation-selected proximity/conformal guards."
+    },
+    "stage_f_paper_package": {
+      "status": "paper_package_partial_strong",
+      "evidence": "paper package, model/data cards, claim guards, and gap analysis exist; metric/time/source-diversity still blocked.",
+      "pass_for_objective": false,
+      "next_action": "keep paper framing as protected raw-frame 2.5D world-state dynamics; add legal external source or restricted metric/time subset before stronger claims."
+    },
+    "overall_stage42_long_goal": {
+      "status": "active_not_complete",
+      "evidence": "Strong protected 2.5D evidence exists, but full objective still requires metric/time or broader external/source evidence and stronger independent module proof.",
+      "pass_for_objective": false,
+      "next_action": "continue long research mode; do not mark goal complete."
+    },
+    "headline_metrics": {
+      "m3w_neural_v1_all": 0.2102513255185352,
+      "m3w_neural_v1_t50": 0.13652231450154184,
+      "m3w_neural_v1_hard_failure": 0.20384916307933942,
+      "full_waypoint_protected_all": 0.18577852429834418,
+      "full_waypoint_protected_t50": 0.14803699577731477
+    }
+  },
+  "stage42_ho_gate": {
+    "source": "fresh_stage42_ho_long_research_objective_audit",
+    "gates": {
+      "source_fresh": true,
+      "inputs_loaded": true,
+      "stage_a_blocker_recorded": true,
+      "stage_b_external_positive_recorded": true,
+      "stage_c_full_waypoint_positive_recorded": true,
+      "stage_d_mixed_ablation_recorded": true,
+      "stage_e_floor_needed_recorded": true,
+      "stage_f_partial_package_recorded": true,
+      "overall_not_marked_complete": true,
+      "context_overclaim_blocked": true,
+      "metric_time_not_overclaimed": true,
+      "future_endpoint_blocked": true,
+      "central_velocity_blocked": true,
+      "test_endpoint_goals_blocked": true,
+      "no_metric_seconds_claim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 17,
+    "total": 17,
+    "verdict": "stage42_ho_long_research_objective_audit_pass_keep_goal_active"
+  }
+}

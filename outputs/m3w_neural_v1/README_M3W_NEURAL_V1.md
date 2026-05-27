@@ -2931,3 +2931,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - blocked after-terms t50/t100 windows retained: `14457` / `7129`.
 - conclusion: the restricted metric/time execution path is now guarded by HM ready-candidate validation; current conversion remains refused until user-confirmed terms/source identity/path are supplied.
 <!-- STAGE42_HN_RESTRICTED_METRIC_TIME_CONVERSION_QUEUE_V2:END -->
+
+<!-- STAGE42_HO_LONG_OBJECTIVE_AUDIT:START -->
+## Stage42-HO Long Research Objective Audit
+
+本轮继续 Stage42 Long Research Mode，新增长期目标覆盖审计：
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/long_research_objective_audit_stage42.md`
+
+结果来源：`fresh_stage42_ho_long_research_objective_audit`；gate `17 / 17`；verdict `stage42_ho_long_research_objective_audit_pass_keep_goal_active`。
+该审计不下载、不转换、不训练、不调 test threshold；它把 Stage42 A-F 要求映射到当前 authoritative evidence，并明确保持长期目标 active。
+
+结论：external/protected full-waypoint/group-consistency evidence 已经很强，但 full objective 尚未完成。metric/time conversion 仍因 ready candidates = 0 被阻塞；JEPA、scene/goal、neighbor/interaction 独立主 claim 仍不支持；Stage5C 与 SMC 仍禁止。
+
+<!-- STAGE42_HO_LONG_OBJECTIVE_AUDIT:END -->
