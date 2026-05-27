@@ -1,0 +1,301 @@
+{
+  "source": "fresh_stage42_ea_dual_domain_group_consistency_statistics",
+  "stage": "Stage42-EA",
+  "generated_at_utc": "2026-05-27T01:20:24.248175+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EA fresh-runs the Stage42-DZ UCY-supported group-consistency repair and adds 2000-bootstrap dual-domain statistical evidence。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "405a19bf6a81a8d2d814d29179bf1368e4659ca46dc54282f792fec16612b590",
+  "internal_validation": {
+    "source": "fresh_run",
+    "domain": "UCY",
+    "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+    "selected_from": "original_train_sources_only",
+    "uses_test_rows": false
+  },
+  "test_rows": 47458,
+  "repair_metric": {
+    "rows": 47458,
+    "all_improvement": 0.3289036158786902,
+    "t10_improvement": 0.6388806547369797,
+    "t25_improvement": 0.27627469310280717,
+    "t50_improvement": 0.2698641437531575,
+    "t100_raw_frame_diagnostic_improvement": 0.21116485955882547,
+    "hard_failure_improvement": 0.31886443384396834,
+    "easy_degradation": -0.3209397447157065,
+    "switch_rate": 0.7189514939525475,
+    "harm_over_fallback": -0.15147322938982127
+  },
+  "repair_by_domain": {
+    "TrajNet": {
+      "rows": 37918,
+      "all_improvement": 0.32071530205574905,
+      "t10_improvement": 0.6134767936987296,
+      "t25_improvement": 0.2917282083706334,
+      "t50_improvement": 0.2818040039056995,
+      "t100_raw_frame_diagnostic_improvement": 0.1900914138809887,
+      "hard_failure_improvement": 0.3128676754267107,
+      "easy_degradation": -0.305529113679325,
+      "switch_rate": 0.7408091144047682,
+      "harm_over_fallback": -0.14172896773375485
+    },
+    "UCY": {
+      "rows": 9540,
+      "all_improvement": 0.3558083715508603,
+      "t10_improvement": 0.7158164172117882,
+      "t25_improvement": 0.2175535659376392,
+      "t50_improvement": 0.22720558058086227,
+      "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+      "hard_failure_improvement": 0.33784766757762896,
+      "easy_degradation": -0.40603798605973707,
+      "switch_rate": 0.6320754716981132,
+      "harm_over_fallback": -0.19020309453392253
+    }
+  },
+  "bootstrap_ci": {
+    "global": {
+      "all": {
+        "low": 0.32561590986908956,
+        "mid": 0.3289486467309499,
+        "high": 0.33230875062193826,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "t50": {
+        "low": 0.2653276586221581,
+        "mid": 0.26984190379140555,
+        "high": 0.2744262798482424,
+        "n": 11538,
+        "bootstrap_n": 2000
+      },
+      "t100_raw_frame_diagnostic": {
+        "low": 0.20449851875109923,
+        "mid": 0.2113203849876336,
+        "high": 0.21758459798664986,
+        "n": 7048,
+        "bootstrap_n": 2000
+      },
+      "hard_failure": {
+        "low": 0.31511510693704503,
+        "mid": 0.3189281222722403,
+        "high": 0.32263423203968705,
+        "n": 35076,
+        "bootstrap_n": 2000
+      },
+      "easy_degradation": {
+        "low": -0.3296098469948161,
+        "mid": -0.3209696348033007,
+        "high": -0.3128132004361849,
+        "n": 11192,
+        "bootstrap_n": 2000
+      }
+    },
+    "by_domain": {
+      "TrajNet": {
+        "all": {
+          "low": 0.31717499688785056,
+          "mid": 0.3207579138142264,
+          "high": 0.32413665625991983,
+          "n": 37918,
+          "bootstrap_n": 2000
+        },
+        "t50": {
+          "low": 0.2772435358408893,
+          "mid": 0.2817802246672905,
+          "high": 0.2860729694340778,
+          "n": 9198,
+          "bootstrap_n": 2000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.18307252825488513,
+          "mid": 0.19011895372500187,
+          "high": 0.19712826871526903,
+          "n": 5608,
+          "bootstrap_n": 2000
+        },
+        "hard_failure": {
+          "low": 0.30898178888065136,
+          "mid": 0.3129194432194536,
+          "high": 0.3166415538126789,
+          "n": 27687,
+          "bootstrap_n": 2000
+        },
+        "easy_degradation": {
+          "low": -0.31387311405248297,
+          "mid": -0.3055785020363016,
+          "high": -0.297361795326585,
+          "n": 9213,
+          "bootstrap_n": 2000
+        }
+      },
+      "UCY": {
+        "all": {
+          "low": 0.34698323393445824,
+          "mid": 0.35590238438215405,
+          "high": 0.3648767314486125,
+          "n": 9540,
+          "bootstrap_n": 2000
+        },
+        "t50": {
+          "low": 0.21378395919812104,
+          "mid": 0.22754431185845797,
+          "high": 0.24180207367830855,
+          "n": 2340,
+          "bootstrap_n": 2000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.25824217205707845,
+          "mid": 0.27515040375286365,
+          "high": 0.2933257120676431,
+          "n": 1440,
+          "bootstrap_n": 2000
+        },
+        "hard_failure": {
+          "low": 0.3283727068909241,
+          "mid": 0.3378534646292015,
+          "high": 0.3476133732716153,
+          "n": 7389,
+          "bootstrap_n": 2000
+        },
+        "easy_degradation": {
+          "low": -0.431495681706942,
+          "mid": -0.40660862618424565,
+          "high": -0.37907629053693515,
+          "n": 1979,
+          "bootstrap_n": 2000
+        }
+      }
+    }
+  },
+  "near_collision_ci": {
+    "global": {
+      "base_near005": {
+        "low": 0.019554132074676555,
+        "mid": 0.020797336592355345,
+        "high": 0.02206161237304564,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "final_near005": {
+        "low": 0.012094904968603819,
+        "mid": 0.013148468119179064,
+        "high": 0.014160415525306584,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "delta_final_minus_base": {
+        "low": -0.008554932782670993,
+        "mid": -0.0076277972101647775,
+        "high": -0.0067217329006700665,
+        "n": 47458,
+        "bootstrap_n": 2000
+      }
+    },
+    "by_domain": {
+      "TrajNet": {
+        "base_near005": {
+          "low": 0.018698243578247797,
+          "mid": 0.020122369323276545,
+          "high": 0.021625613165251332,
+          "n": 37918,
+          "bootstrap_n": 2000
+        },
+        "final_near005": {
+          "low": 0.011893427923413682,
+          "mid": 0.01305448599609684,
+          "high": 0.014241257450287462,
+          "n": 37918,
+          "bootstrap_n": 2000
+        },
+        "delta_final_minus_base": {
+          "low": -0.008096418587478242,
+          "mid": -0.007094256026161717,
+          "high": -0.0060920934648451925,
+          "n": 37918,
+          "bootstrap_n": 2000
+        }
+      },
+      "UCY": {
+        "base_near005": {
+          "low": 0.020335429769392035,
+          "mid": 0.023375262054507337,
+          "high": 0.026415094339622643,
+          "n": 9540,
+          "bootstrap_n": 2000
+        },
+        "final_near005": {
+          "low": 0.011215932914046121,
+          "mid": 0.013522012578616353,
+          "high": 0.015830712788259944,
+          "n": 9540,
+          "bootstrap_n": 2000
+        },
+        "delta_final_minus_base": {
+          "low": -0.011844863731656184,
+          "mid": -0.009853249475890986,
+          "high": -0.007859014675052425,
+          "n": 9540,
+          "bootstrap_n": 2000
+        }
+      }
+    }
+  },
+  "summary": {
+    "bootstrap_n": 2000,
+    "ci_positive_safe_domains": 2,
+    "global_ci_positive_safe": true,
+    "ucy_ci_positive_safe": true,
+    "trajnet_ci_positive_safe": true,
+    "near005_delta_high": -0.0067217329006700665,
+    "ucy_val_rows_after": 9540
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "internal_val_from_train_only": true,
+    "test_sources_unchanged": true,
+    "train_only_feature_normalization": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "ungated_full_waypoint_deployable": false
+  },
+  "stage42_ea_gate": {
+    "gates": {
+      "fresh_repair_rebuilt": true,
+      "bootstrap_n_2000": true,
+      "global_ci_positive_safe": true,
+      "ucy_ci_positive_safe": true,
+      "trajnet_ci_positive_safe": true,
+      "two_domain_ci_supported": true,
+      "near_collision_not_worse": true,
+      "test_sources_unchanged": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_ea_dual_domain_group_consistency_statistics_pass"
+  }
+}

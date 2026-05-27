@@ -4697,3 +4697,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - positive safe domains: `2`; UCY all/t50/hard `0.355808` / `0.227206` / `0.337848`; TrajNet all/t50/hard `0.320715` / `0.281804` / `0.312868`.
 - near@0.05 base/final `0.020797` / `0.013148`; still raw-frame/dataset-local, no metric/seconds claim, Stage5C false, SMC false.
 <!-- STAGE42_DZ_UCY_SUPPORTED_GROUP_CONSISTENCY:END -->
+
+<!-- STAGE42_EA_DUAL_DOMAIN_GROUP_CONSISTENCY_STATISTICS:START -->
+## Stage42-EA Dual-Domain Group-Consistency Statistical Evidence
+
+- source: `fresh_stage42_ea_dual_domain_group_consistency_statistics`
+- role: fresh row-level 2000-bootstrap evidence for the Stage42-DZ UCY-supported group-consistency policy.
+- gate: `12 / 12`; verdict `stage42_ea_dual_domain_group_consistency_statistics_pass`.
+- global all/t50/hard CI lows: `0.325616` / `0.265328` / `0.315115`; easy high `-0.312813`.
+- UCY all/t50/hard CI lows: `0.346983` / `0.213784` / `0.328373`; TrajNet all/t50/hard CI lows `0.317175` / `0.277244` / `0.308982`.
+- near@0.05 final-base delta high `-0.006722`; raw-frame/dataset-local only; Stage5C false; SMC false.
+<!-- STAGE42_EA_DUAL_DOMAIN_GROUP_CONSISTENCY_STATISTICS:END -->
