@@ -589,3 +589,15 @@ M3W has become a strong protected 2.5D external multi-agent world-state candidat
 with validated SDD and external raw-frame gains, but it is not yet a true 3D,
 metric-time calibrated, foundation-scale, or ungated neural world model.
 ```
+
+<!-- STAGE42_HW_REPLAY_EVIDENCE_TIER_REFRESH:START -->
+## Stage42-HW Replay Evidence Tier Refresh
+
+- source: `fresh_replay_evidence_tier_refresh_from_stage42_hs_ht_hu_hv`
+- role: integrate HS/HT/HU/HV replay levels into reviewer replay and paper evidence matrix.
+- gate: `30 / 30`; verdict `stage42_hw_replay_evidence_tier_refresh_pass`.
+- evidence tiers: T1 runtime smoke, T2 frozen metric replay, T2.5 blocker audit, T3 row-level batch replay.
+- T3 row-level rows/t100 rows: `47458` / `7048`.
+- T3 all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HW_REPLAY_EVIDENCE_TIER_REFRESH:END -->

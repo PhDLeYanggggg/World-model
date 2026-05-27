@@ -107,3 +107,19 @@
 - Stage42-DM gives reviewers a minimal deterministic replay path for the current Stage42 evidence package.
 - It replays/freshens artifact checks and policy exact replay; it does not train, tune, or create new metric/seconds/3D/foundation claims.
 - The supported claim remains protected dataset-local/raw-frame 2.5D multi-agent world-state evidence.
+
+<!-- STAGE42_HW_REPLAY_EVIDENCE_TIER_REFRESH:START -->
+## Stage42-HW Replay Evidence Tier Refresh
+
+- Stage42-HW adds the Stage42-HV row-level batch replay command to the reviewer replay evidence set.
+- commands file: `outputs/stage42_long_research/reviewer_replay_commands_stage42_hv.sh`.
+- Evidence tiers are now explicit: smoke replay, frozen metric replay, blocker audit, row-level batch replay.
+
+| tier | status | source | claim | rows | key metric | evidence |
+| --- | --- | --- | --- | ---: | --- | --- |
+| `T0_artifact_presence` | `pass` | `cached_verified_artifact_presence` | Required replay artifacts exist and are hashable. | 0 |  | outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json<br>outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json<br>outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json<br>outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json |
+| `T1_runtime_smoke_replay` | `pass` | `fresh_runtime_api_from_frozen_stage42_hs_t100_easy_guard_policy` | Frozen t100 guard is callable and smoke-tested. | 4 |  | outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json |
+| `T2_frozen_metric_replay` | `pass` | `cached_verified_stage42_hr_policy_freeze_from_fresh_artifact` | Frozen policy decision table and metric summary replay exactly. | 0 | all 27.72%, t50 26.99%, t100raw 6.79%, hard 25.93% | outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json |
+| `T2_5_blocker_audit` | `resolved_by_hv` | `fresh_audit_from_stage42_hr_hs_ht_artifacts` | HU identified that HT smoke replay was insufficient for row-level batch replay; HV resolves this locally. | 0 | missing_row_level_candidate_floor_selected_arrays | outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json<br>outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json |
+| `T3_row_level_batch_replay` | `pass` | `cached_verified_row_cache_runtime_batch_replay_from_stage42_hr_ht` | Frozen t100 runtime guard replayed over full row-level test cache with exact selected XY/ADE/switch/metric match. | 47458 | all 27.72%, t50 26.99%, t100raw 6.79%, hard 25.93% | outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json |
+<!-- STAGE42_HW_REPLAY_EVIDENCE_TIER_REFRESH:END -->

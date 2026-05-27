@@ -1,0 +1,1825 @@
+{
+  "stage": "Stage42-HW",
+  "source": "fresh_replay_evidence_tier_refresh_from_stage42_hs_ht_hu_hv",
+  "generated_at_utc": "2026-05-27T20:37:18.682284+00:00",
+  "git_commit": "2888731",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HW 把 HS/HT/HU/HV 的 replay 证据整理成 reviewer/paper evidence tiers。",
+    "HW 不训练、不调阈值、不下载、不转换；它只刷新证据包和复现命令。",
+    "HV row-level cache 是本地 derived artifact，不提交 GitHub。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "stage42_hs": {
+      "source": "cached_verified_stage42_hr_policy_freeze_from_fresh_artifact",
+      "stage": "Stage42-HS frozen t100 easy guard policy",
+      "generated_at_utc": "2026-05-27T19:37:47.773405+00:00",
+      "git_commit": "3c934ac",
+      "input_hash": "25c0aec9647c35090ab84c8ca613a2277431f1ec96b2d50b3ef398932ce5e090",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-HS 冻结 Stage42-HR validation-only domain|t100 easy guard policy。",
+        "HS 不重新调阈值，不使用 test metrics 做 policy decision；只把 HR fresh artifact 固化为轻量 policy/replay 证据。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "inputs": {
+        "hr_artifact_exists": true,
+        "hr_artifact": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+        "stage42_hr_gate": {
+          "gates": {
+            "hq_input_loaded": true,
+            "hq_t100_easy_was_weak": true,
+            "fresh_guard_source": true,
+            "validation_only_decisions": true,
+            "guarded_or_kept_slices_recorded": true,
+            "t100_easy_repaired_under_2pct": true,
+            "t100_raw_remains_positive": true,
+            "global_all_positive": true,
+            "global_t50_positive": true,
+            "global_hard_positive": true,
+            "global_easy_preserved": true,
+            "ucy_remains_positive": true,
+            "near005_not_worse_vs_pre_guard": true,
+            "no_future_endpoint_input": true,
+            "no_future_waypoint_input": true,
+            "no_central_velocity": true,
+            "no_test_endpoint_goals": true,
+            "no_test_threshold_tuning": true,
+            "internal_val_from_train_only": true,
+            "source_overlap_pass": true,
+            "no_metric_seconds_claim": true,
+            "stage5c_not_executed": true,
+            "smc_not_enabled": true
+          },
+          "passed": 23,
+          "total": 23,
+          "verdict": "stage42_hr_t100_easy_guard_pass"
+        }
+      },
+      "frozen_policy": {
+        "policy_name": "stage42_hs_frozen_group_consistency_t100_easy_guard_policy",
+        "source": "cached_verified_stage42_hr_policy_freeze_from_fresh_artifact",
+        "base_stage": "Stage42-HR group-consistency t100 easy guard",
+        "frozen_at_utc": "2026-05-27T19:37:47.757151+00:00",
+        "frozen_git_commit": "3c934ac",
+        "selection_scope": "validation_only_domain_horizon_t100",
+        "test_usage": "test_once_from_stage42_hr_after_validation_only_guard_decisions",
+        "deployment_role": "protected_t100_easy_guard_for_group_consistency_policy",
+        "decision_rule": {
+          "type": "domain_horizon_t100_easy_guard",
+          "threshold_easy_degradation": 0.0,
+          "keep_if": "validation_all_gain > 0 and validation_easy_degradation <= threshold",
+          "fallback_if": "validation_easy_degradation_above_threshold_or_nonpositive_gain",
+          "fallback_target": "train-horizon causal floor for guarded domain|t100 slice",
+          "uses_future_labels": false,
+          "uses_test_metrics_for_guard": false
+        },
+        "decision_table": {
+          "guarded_slices": {
+            "TrajNet|100": {
+              "source": "fresh_validation_only_domain_t100_easy_guard",
+              "domain": "TrajNet",
+              "val_rows": 1160,
+              "test_rows": 5608,
+              "val_all_improvement": 0.23260462520508085,
+              "val_easy_degradation": 0.017118176622190173,
+              "threshold": 0.0,
+              "keep": false,
+              "reason": "validation_easy_degradation_above_threshold_or_nonpositive_gain"
+            }
+          },
+          "kept_slices": {
+            "UCY|100": {
+              "source": "fresh_validation_only_domain_t100_easy_guard",
+              "domain": "UCY",
+              "val_rows": 1440,
+              "test_rows": 1440,
+              "val_all_improvement": 0.27564518723015075,
+              "val_easy_degradation": -0.021788147627511134,
+              "threshold": 0.0,
+              "keep": true
+            }
+          }
+        },
+        "test_summary_vs_train_horizon_causal_floor": {
+          "rows": 47458,
+          "all_improvement": 0.2772246357901642,
+          "t50_improvement": 0.2698641437531575,
+          "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+          "hard_failure_improvement": 0.2593323287861573,
+          "easy_degradation": -0.32326305969341285,
+          "switch_rate": 0.6816132158961609,
+          "harm_over_fallback": -0.1276729984781961,
+          "t100_easy_degradation": -0.0030719622568884386
+        },
+        "by_domain": {
+          "TrajNet": {
+            "rows": 37918,
+            "all_improvement": 0.2533081097444263,
+            "t10_improvement": 0.6134767936987296,
+            "t25_improvement": 0.2917282083706334,
+            "t50_improvement": 0.2818040039056995,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.23452951987659187,
+            "easy_degradation": -0.30827316296760277,
+            "switch_rate": 0.6940766918086397,
+            "harm_over_fallback": -0.11194070467652854
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.3558083715508603,
+            "t10_improvement": 0.7158164172117882,
+            "t25_improvement": 0.2175535659376392,
+            "t50_improvement": 0.22720558058086227,
+            "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+            "hard_failure_improvement": 0.33784766757762896,
+            "easy_degradation": -0.40603798605973707,
+            "switch_rate": 0.6320754716981132,
+            "harm_over_fallback": -0.19020309453392253
+          }
+        },
+        "by_horizon": {
+          "10": {
+            "rows": 15402,
+            "all_improvement": 0.6388806547369797,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.6467129340645261,
+            "easy_degradation": -0.4985469155627218,
+            "switch_rate": 0.818530061031035,
+            "harm_over_fallback": -0.19454020343519454
+          },
+          "25": {
+            "rows": 13470,
+            "all_improvement": 0.27627469310280717,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.21545184782385285,
+            "easy_degradation": -0.41525616348763417,
+            "switch_rate": 0.7221232368225686,
+            "harm_over_fallback": -0.07198647966265898
+          },
+          "50": {
+            "rows": 11538,
+            "all_improvement": 0.2698641437531575,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.2698641437531575,
+            "easy_degradation": -0.1810089917350668,
+            "switch_rate": 0.7743109724388976,
+            "harm_over_fallback": -0.13501923209927238
+          },
+          "100": {
+            "rows": 7048,
+            "all_improvement": 0.06789640774516092,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+            "hard_failure_improvement": 0.06789640774516092,
+            "easy_degradation": -0.0030719622568884386,
+            "switch_rate": 0.1532349602724177,
+            "harm_over_fallback": -0.0759488035544754
+          }
+        },
+        "pre_guard": {
+          "source": "fresh_pre_guard_hq_rebuild",
+          "metric": {
+            "rows": 47458,
+            "all_improvement": 0.3289036158786902,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.21116485955882547,
+            "hard_failure_improvement": 0.31886443384396834,
+            "easy_degradation": -0.3209397447157065,
+            "switch_rate": 0.7189514939525475,
+            "harm_over_fallback": -0.15147322938982127
+          },
+          "t100_easy_degradation": 0.025600253632051873
+        },
+        "no_leakage": {
+          "future_endpoint_input": false,
+          "future_waypoint_input": false,
+          "future_waypoint_label_eval_only": true,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "test_threshold_tuning": false,
+          "internal_val_from_train_only": true,
+          "source_overlap_pass": true
+        },
+        "claim_boundary": {
+          "true_3d": false,
+          "foundation_world_model": false,
+          "metric_or_seconds_claim": false,
+          "raw_frame_dataset_local_only": true,
+          "stage5c_executed": false,
+          "smc_enabled": false
+        },
+        "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e"
+      },
+      "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e",
+      "policy_artifact": {
+        "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+        "sha256": "8f22e8f2a562cbd2ca84daea3ac76dd532a4e018af6eb6fb8b47533d772834cc",
+        "size_bytes": 6221
+      },
+      "replay": {
+        "source": "deterministic_compact_replay_from_frozen_policy_and_hr_artifact",
+        "hr_artifact": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+        "decision_table_exact_replay": true,
+        "metric_summary_exact_replay": true,
+        "max_metric_abs_diff": 0.0,
+        "metric_diffs": {
+          "rows": 0.0,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "harm_over_fallback": 0.0,
+          "t100_easy_degradation": 0.0
+        },
+        "guarded_slices": {
+          "TrajNet|100": {
+            "source": "fresh_validation_only_domain_t100_easy_guard",
+            "domain": "TrajNet",
+            "val_rows": 1160,
+            "test_rows": 5608,
+            "val_all_improvement": 0.23260462520508085,
+            "val_easy_degradation": 0.017118176622190173,
+            "threshold": 0.0,
+            "keep": false,
+            "reason": "validation_easy_degradation_above_threshold_or_nonpositive_gain"
+          }
+        },
+        "kept_slices": {
+          "UCY|100": {
+            "source": "fresh_validation_only_domain_t100_easy_guard",
+            "domain": "UCY",
+            "val_rows": 1440,
+            "test_rows": 1440,
+            "val_all_improvement": 0.27564518723015075,
+            "val_easy_degradation": -0.021788147627511134,
+            "threshold": 0.0,
+            "keep": true
+          }
+        },
+        "test_summary_vs_train_horizon_causal_floor": {
+          "rows": 47458,
+          "all_improvement": 0.2772246357901642,
+          "t50_improvement": 0.2698641437531575,
+          "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+          "hard_failure_improvement": 0.2593323287861573,
+          "easy_degradation": -0.32326305969341285,
+          "switch_rate": 0.6816132158961609,
+          "harm_over_fallback": -0.1276729984781961,
+          "t100_easy_degradation": -0.0030719622568884386
+        },
+        "by_domain": {
+          "TrajNet": {
+            "rows": 37918,
+            "all_improvement": 0.2533081097444263,
+            "t10_improvement": 0.6134767936987296,
+            "t25_improvement": 0.2917282083706334,
+            "t50_improvement": 0.2818040039056995,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.23452951987659187,
+            "easy_degradation": -0.30827316296760277,
+            "switch_rate": 0.6940766918086397,
+            "harm_over_fallback": -0.11194070467652854
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.3558083715508603,
+            "t10_improvement": 0.7158164172117882,
+            "t25_improvement": 0.2175535659376392,
+            "t50_improvement": 0.22720558058086227,
+            "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+            "hard_failure_improvement": 0.33784766757762896,
+            "easy_degradation": -0.40603798605973707,
+            "switch_rate": 0.6320754716981132,
+            "harm_over_fallback": -0.19020309453392253
+          }
+        },
+        "by_horizon": {
+          "10": {
+            "rows": 15402,
+            "all_improvement": 0.6388806547369797,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.6467129340645261,
+            "easy_degradation": -0.4985469155627218,
+            "switch_rate": 0.818530061031035,
+            "harm_over_fallback": -0.19454020343519454
+          },
+          "25": {
+            "rows": 13470,
+            "all_improvement": 0.27627469310280717,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.21545184782385285,
+            "easy_degradation": -0.41525616348763417,
+            "switch_rate": 0.7221232368225686,
+            "harm_over_fallback": -0.07198647966265898
+          },
+          "50": {
+            "rows": 11538,
+            "all_improvement": 0.2698641437531575,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.2698641437531575,
+            "easy_degradation": -0.1810089917350668,
+            "switch_rate": 0.7743109724388976,
+            "harm_over_fallback": -0.13501923209927238
+          },
+          "100": {
+            "rows": 7048,
+            "all_improvement": 0.06789640774516092,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+            "hard_failure_improvement": 0.06789640774516092,
+            "easy_degradation": -0.0030719622568884386,
+            "switch_rate": 0.1532349602724177,
+            "harm_over_fallback": -0.0759488035544754
+          }
+        }
+      },
+      "paper_file_status": [
+        {
+          "path": "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
+          "exists": true,
+          "contains_stage42_hs": true,
+          "contains_claim_boundary": true
+        },
+        {
+          "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+          "exists": true,
+          "contains_stage42_hs": true,
+          "contains_claim_boundary": true
+        }
+      ],
+      "stage42_hs_gate": {
+        "gates": {
+          "hr_artifact_loaded": true,
+          "hr_gate_passed": true,
+          "policy_artifact_written": true,
+          "policy_hash_recorded": true,
+          "validation_only_selection": true,
+          "test_once_usage": true,
+          "decision_table_exact_replay": true,
+          "metric_summary_exact_replay": true,
+          "trajnet_t100_guarded": true,
+          "ucy_t100_kept": true,
+          "t100_easy_repaired": true,
+          "test_all_positive": true,
+          "test_t50_positive": true,
+          "test_t100_raw_positive": true,
+          "test_hard_positive": true,
+          "easy_preserved": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "internal_val_from_train_only": true,
+          "source_overlap_pass": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true,
+          "paper_files_updated": true
+        },
+        "passed": 27,
+        "total": 27,
+        "verdict": "stage42_hs_t100_easy_guard_freeze_pass"
+      }
+    },
+    "stage42_ht": {
+      "source": "fresh_runtime_api_from_frozen_stage42_hs_t100_easy_guard_policy",
+      "stage": "Stage42-HT runtime t100 easy guard policy",
+      "generated_at_utc": "2026-05-27T19:59:35.881981+00:00",
+      "git_commit": "c38c2b0",
+      "input_hash": "d4c1cd805eda97f17d4d094f87c5e8e07939532a11ec269a86aaed6e66d0a43f",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-HT 把 Stage42-HS frozen t100 easy guard policy 变成可调用 runtime API。",
+        "runtime policy 只使用 domain、horizon、候选 rollout 和 train-horizon causal floor rollout。",
+        "未知 domain 的 t100 默认回退 floor，因为没有 validation support。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "policy_artifact": {
+        "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+        "exists": true,
+        "sha256": "c1d0292d1a5f4413543e8548fb581e5bdc4c44211e50352c03bed4ec95fa19eb"
+      },
+      "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e",
+      "policy_artifact_payload": {
+        "policy_name": "stage42_hs_frozen_group_consistency_t100_easy_guard_policy",
+        "source": "cached_verified_stage42_hr_policy_freeze_from_fresh_artifact",
+        "base_stage": "Stage42-HR group-consistency t100 easy guard",
+        "frozen_at_utc": "2026-05-27T19:37:47.757151+00:00",
+        "frozen_git_commit": "3c934ac",
+        "selection_scope": "validation_only_domain_horizon_t100",
+        "test_usage": "test_once_from_stage42_hr_after_validation_only_guard_decisions",
+        "deployment_role": "protected_t100_easy_guard_for_group_consistency_policy",
+        "decision_rule": {
+          "type": "domain_horizon_t100_easy_guard",
+          "threshold_easy_degradation": 0.0,
+          "keep_if": "validation_all_gain > 0 and validation_easy_degradation <= threshold",
+          "fallback_if": "validation_easy_degradation_above_threshold_or_nonpositive_gain",
+          "fallback_target": "train-horizon causal floor for guarded domain|t100 slice",
+          "uses_future_labels": false,
+          "uses_test_metrics_for_guard": false
+        },
+        "decision_table": {
+          "guarded_slices": {
+            "TrajNet|100": {
+              "source": "fresh_validation_only_domain_t100_easy_guard",
+              "domain": "TrajNet",
+              "val_rows": 1160,
+              "test_rows": 5608,
+              "val_all_improvement": 0.23260462520508085,
+              "val_easy_degradation": 0.017118176622190173,
+              "threshold": 0.0,
+              "keep": false,
+              "reason": "validation_easy_degradation_above_threshold_or_nonpositive_gain"
+            }
+          },
+          "kept_slices": {
+            "UCY|100": {
+              "source": "fresh_validation_only_domain_t100_easy_guard",
+              "domain": "UCY",
+              "val_rows": 1440,
+              "test_rows": 1440,
+              "val_all_improvement": 0.27564518723015075,
+              "val_easy_degradation": -0.021788147627511134,
+              "threshold": 0.0,
+              "keep": true
+            }
+          }
+        },
+        "test_summary_vs_train_horizon_causal_floor": {
+          "rows": 47458,
+          "all_improvement": 0.2772246357901642,
+          "t50_improvement": 0.2698641437531575,
+          "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+          "hard_failure_improvement": 0.2593323287861573,
+          "easy_degradation": -0.32326305969341285,
+          "switch_rate": 0.6816132158961609,
+          "harm_over_fallback": -0.1276729984781961,
+          "t100_easy_degradation": -0.0030719622568884386
+        },
+        "by_domain": {
+          "TrajNet": {
+            "rows": 37918,
+            "all_improvement": 0.2533081097444263,
+            "t10_improvement": 0.6134767936987296,
+            "t25_improvement": 0.2917282083706334,
+            "t50_improvement": 0.2818040039056995,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.23452951987659187,
+            "easy_degradation": -0.30827316296760277,
+            "switch_rate": 0.6940766918086397,
+            "harm_over_fallback": -0.11194070467652854
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.3558083715508603,
+            "t10_improvement": 0.7158164172117882,
+            "t25_improvement": 0.2175535659376392,
+            "t50_improvement": 0.22720558058086227,
+            "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+            "hard_failure_improvement": 0.33784766757762896,
+            "easy_degradation": -0.40603798605973707,
+            "switch_rate": 0.6320754716981132,
+            "harm_over_fallback": -0.19020309453392253
+          }
+        },
+        "by_horizon": {
+          "10": {
+            "rows": 15402,
+            "all_improvement": 0.6388806547369797,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.6467129340645261,
+            "easy_degradation": -0.4985469155627218,
+            "switch_rate": 0.818530061031035,
+            "harm_over_fallback": -0.19454020343519454
+          },
+          "25": {
+            "rows": 13470,
+            "all_improvement": 0.27627469310280717,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.21545184782385285,
+            "easy_degradation": -0.41525616348763417,
+            "switch_rate": 0.7221232368225686,
+            "harm_over_fallback": -0.07198647966265898
+          },
+          "50": {
+            "rows": 11538,
+            "all_improvement": 0.2698641437531575,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.2698641437531575,
+            "easy_degradation": -0.1810089917350668,
+            "switch_rate": 0.7743109724388976,
+            "harm_over_fallback": -0.13501923209927238
+          },
+          "100": {
+            "rows": 7048,
+            "all_improvement": 0.06789640774516092,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+            "hard_failure_improvement": 0.06789640774516092,
+            "easy_degradation": -0.0030719622568884386,
+            "switch_rate": 0.1532349602724177,
+            "harm_over_fallback": -0.0759488035544754
+          }
+        },
+        "pre_guard": {
+          "source": "fresh_pre_guard_hq_rebuild",
+          "metric": {
+            "rows": 47458,
+            "all_improvement": 0.3289036158786902,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.21116485955882547,
+            "hard_failure_improvement": 0.31886443384396834,
+            "easy_degradation": -0.3209397447157065,
+            "switch_rate": 0.7189514939525475,
+            "harm_over_fallback": -0.15147322938982127
+          },
+          "t100_easy_degradation": 0.025600253632051873
+        },
+        "no_leakage": {
+          "future_endpoint_input": false,
+          "future_waypoint_input": false,
+          "future_waypoint_label_eval_only": true,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "test_threshold_tuning": false,
+          "internal_val_from_train_only": true,
+          "source_overlap_pass": true
+        },
+        "claim_boundary": {
+          "true_3d": false,
+          "foundation_world_model": false,
+          "metric_or_seconds_claim": false,
+          "raw_frame_dataset_local_only": true,
+          "stage5c_executed": false,
+          "smc_enabled": false
+        },
+        "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e"
+      },
+      "runtime_policy": {
+        "guarded_slices": {
+          "TrajNet|100": {
+            "source": "fresh_validation_only_domain_t100_easy_guard",
+            "domain": "TrajNet",
+            "val_rows": 1160,
+            "test_rows": 5608,
+            "val_all_improvement": 0.23260462520508085,
+            "val_easy_degradation": 0.017118176622190173,
+            "threshold": 0.0,
+            "keep": false,
+            "reason": "validation_easy_degradation_above_threshold_or_nonpositive_gain"
+          }
+        },
+        "kept_slices": {
+          "UCY|100": {
+            "source": "fresh_validation_only_domain_t100_easy_guard",
+            "domain": "UCY",
+            "val_rows": 1440,
+            "test_rows": 1440,
+            "val_all_improvement": 0.27564518723015075,
+            "val_easy_degradation": -0.021788147627511134,
+            "threshold": 0.0,
+            "keep": true
+          }
+        },
+        "threshold_easy_degradation": 0.0
+      },
+      "inputs": {
+        "stage42_hs": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+          "exists": true,
+          "stage42_hs_gate": {
+            "gates": {
+              "hr_artifact_loaded": true,
+              "hr_gate_passed": true,
+              "policy_artifact_written": true,
+              "policy_hash_recorded": true,
+              "validation_only_selection": true,
+              "test_once_usage": true,
+              "decision_table_exact_replay": true,
+              "metric_summary_exact_replay": true,
+              "trajnet_t100_guarded": true,
+              "ucy_t100_kept": true,
+              "t100_easy_repaired": true,
+              "test_all_positive": true,
+              "test_t50_positive": true,
+              "test_t100_raw_positive": true,
+              "test_hard_positive": true,
+              "easy_preserved": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoint_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "internal_val_from_train_only": true,
+              "source_overlap_pass": true,
+              "no_metric_seconds_overclaim": true,
+              "stage5c_false": true,
+              "smc_false": true,
+              "paper_files_updated": true
+            },
+            "passed": 27,
+            "total": 27,
+            "verdict": "stage42_hs_t100_easy_guard_freeze_pass"
+          }
+        }
+      },
+      "runtime_inputs": [
+        "domain",
+        "horizon",
+        "candidate_xy_predicted_rollout",
+        "floor_xy_train_horizon_causal_rollout",
+        "candidate_switch_optional"
+      ],
+      "smoke_case": {
+        "rows": 4,
+        "decisions": [
+          {
+            "domain": "TrajNet",
+            "horizon": 100,
+            "key": "TrajNet|100",
+            "use_candidate": false,
+            "fallback_to_floor": true,
+            "reason": "validation_easy_harm_t100_fallback_floor"
+          },
+          {
+            "domain": "UCY",
+            "horizon": 100,
+            "key": "UCY|100",
+            "use_candidate": true,
+            "fallback_to_floor": false,
+            "reason": "validation_supported_t100_keep_candidate"
+          },
+          {
+            "domain": "TrajNet",
+            "horizon": 50,
+            "key": "TrajNet|50",
+            "use_candidate": true,
+            "fallback_to_floor": false,
+            "reason": "non_t100_not_guarded"
+          },
+          {
+            "domain": "UnknownDomain",
+            "horizon": 100,
+            "key": "UnknownDomain|100",
+            "use_candidate": false,
+            "fallback_to_floor": true,
+            "reason": "unknown_t100_domain_no_validation_support_fallback_floor"
+          }
+        ],
+        "diagnostics": {
+          "rows": 4,
+          "switch_rate": 0.5,
+          "fallback_rows": 2,
+          "reason_counts": {
+            "non_t100_not_guarded": 1,
+            "unknown_t100_domain_no_validation_support_fallback_floor": 1,
+            "validation_easy_harm_t100_fallback_floor": 1,
+            "validation_supported_t100_keep_candidate": 1
+          }
+        },
+        "expected_switch": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "actual_switch": [
+          false,
+          true,
+          true,
+          false
+        ],
+        "expected_reasons": [
+          "validation_easy_harm_t100_fallback_floor",
+          "validation_supported_t100_keep_candidate",
+          "non_t100_not_guarded",
+          "unknown_t100_domain_no_validation_support_fallback_floor"
+        ],
+        "actual_reasons": [
+          "validation_easy_harm_t100_fallback_floor",
+          "validation_supported_t100_keep_candidate",
+          "non_t100_not_guarded",
+          "unknown_t100_domain_no_validation_support_fallback_floor"
+        ],
+        "selected_matches_floor_for_guarded_rows": true,
+        "selected_keeps_candidate_for_supported_rows": true,
+        "passes": true
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_ht_gate": {
+        "gates": {
+          "policy_artifact_exists": true,
+          "policy_hash_available": true,
+          "hs_gate_passed": true,
+          "runtime_guarded_slices_match_policy": true,
+          "runtime_kept_slices_match_policy": true,
+          "smoke_cases_pass": true,
+          "trajnet_t100_fallbacks": true,
+          "ucy_t100_keeps_candidate": true,
+          "non_t100_not_guarded": true,
+          "unknown_t100_fallbacks": true,
+          "runtime_inputs_past_only_or_predictions": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_ht_t100_easy_guard_runtime_policy_pass"
+      }
+    },
+    "stage42_hu": {
+      "source": "fresh_audit_from_stage42_hr_hs_ht_artifacts",
+      "stage": "Stage42-HU t100 runtime batch replay sufficiency audit",
+      "generated_at_utc": "2026-05-27T20:07:15.615054+00:00",
+      "git_commit": "b2c819e",
+      "input_hash": "3fef8a81de3f6d3f24b5eae5d1e1fb147a20edf65033d5d20c2a6977f60734f6",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-HU 审计 Stage42-HR/HS/HT 是否足以支持真实 row-level runtime batch replay。",
+        "HT 已有 callable runtime API 和 smoke replay，但 HR/HS/HT artifact 不包含 per-row candidate/floor/selected_xy arrays。",
+        "因此 real batch replay 当前标记为 not_run，而不是包装成完成。",
+        "future waypoints / endpoints 只能作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "inputs": {
+        "stage42_hr": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+          "exists": true,
+          "stage42_hr_gate": {
+            "gates": {
+              "hq_input_loaded": true,
+              "hq_t100_easy_was_weak": true,
+              "fresh_guard_source": true,
+              "validation_only_decisions": true,
+              "guarded_or_kept_slices_recorded": true,
+              "t100_easy_repaired_under_2pct": true,
+              "t100_raw_remains_positive": true,
+              "global_all_positive": true,
+              "global_t50_positive": true,
+              "global_hard_positive": true,
+              "global_easy_preserved": true,
+              "ucy_remains_positive": true,
+              "near005_not_worse_vs_pre_guard": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoint_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "internal_val_from_train_only": true,
+              "source_overlap_pass": true,
+              "no_metric_seconds_claim": true,
+              "stage5c_not_executed": true,
+              "smc_not_enabled": true
+            },
+            "passed": 23,
+            "total": 23,
+            "verdict": "stage42_hr_t100_easy_guard_pass"
+          }
+        },
+        "stage42_hs": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+          "exists": true,
+          "stage42_hs_gate": {
+            "gates": {
+              "hr_artifact_loaded": true,
+              "hr_gate_passed": true,
+              "policy_artifact_written": true,
+              "policy_hash_recorded": true,
+              "validation_only_selection": true,
+              "test_once_usage": true,
+              "decision_table_exact_replay": true,
+              "metric_summary_exact_replay": true,
+              "trajnet_t100_guarded": true,
+              "ucy_t100_kept": true,
+              "t100_easy_repaired": true,
+              "test_all_positive": true,
+              "test_t50_positive": true,
+              "test_t100_raw_positive": true,
+              "test_hard_positive": true,
+              "easy_preserved": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoint_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "internal_val_from_train_only": true,
+              "source_overlap_pass": true,
+              "no_metric_seconds_overclaim": true,
+              "stage5c_false": true,
+              "smc_false": true,
+              "paper_files_updated": true
+            },
+            "passed": 27,
+            "total": 27,
+            "verdict": "stage42_hs_t100_easy_guard_freeze_pass"
+          }
+        },
+        "stage42_ht": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+          "exists": true,
+          "stage42_ht_gate": {
+            "gates": {
+              "policy_artifact_exists": true,
+              "policy_hash_available": true,
+              "hs_gate_passed": true,
+              "runtime_guarded_slices_match_policy": true,
+              "runtime_kept_slices_match_policy": true,
+              "smoke_cases_pass": true,
+              "trajnet_t100_fallbacks": true,
+              "ucy_t100_keeps_candidate": true,
+              "non_t100_not_guarded": true,
+              "unknown_t100_fallbacks": true,
+              "runtime_inputs_past_only_or_predictions": true,
+              "no_future_endpoint_input": true,
+              "no_future_waypoint_input": true,
+              "no_central_velocity": true,
+              "no_test_endpoint_goals": true,
+              "no_test_threshold_tuning": true,
+              "metric_seconds_overclaim_blocked": true,
+              "stage5c_not_executed": true,
+              "smc_not_enabled": true
+            },
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_ht_t100_easy_guard_runtime_policy_pass"
+          }
+        }
+      },
+      "policy_artifact": {
+        "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+        "exists": true
+      },
+      "policy_artifact_payload": {
+        "policy_name": "stage42_hs_frozen_group_consistency_t100_easy_guard_policy",
+        "source": "cached_verified_stage42_hr_policy_freeze_from_fresh_artifact",
+        "base_stage": "Stage42-HR group-consistency t100 easy guard",
+        "frozen_at_utc": "2026-05-27T19:37:47.757151+00:00",
+        "frozen_git_commit": "3c934ac",
+        "selection_scope": "validation_only_domain_horizon_t100",
+        "test_usage": "test_once_from_stage42_hr_after_validation_only_guard_decisions",
+        "deployment_role": "protected_t100_easy_guard_for_group_consistency_policy",
+        "decision_rule": {
+          "type": "domain_horizon_t100_easy_guard",
+          "threshold_easy_degradation": 0.0,
+          "keep_if": "validation_all_gain > 0 and validation_easy_degradation <= threshold",
+          "fallback_if": "validation_easy_degradation_above_threshold_or_nonpositive_gain",
+          "fallback_target": "train-horizon causal floor for guarded domain|t100 slice",
+          "uses_future_labels": false,
+          "uses_test_metrics_for_guard": false
+        },
+        "decision_table": {
+          "guarded_slices": {
+            "TrajNet|100": {
+              "source": "fresh_validation_only_domain_t100_easy_guard",
+              "domain": "TrajNet",
+              "val_rows": 1160,
+              "test_rows": 5608,
+              "val_all_improvement": 0.23260462520508085,
+              "val_easy_degradation": 0.017118176622190173,
+              "threshold": 0.0,
+              "keep": false,
+              "reason": "validation_easy_degradation_above_threshold_or_nonpositive_gain"
+            }
+          },
+          "kept_slices": {
+            "UCY|100": {
+              "source": "fresh_validation_only_domain_t100_easy_guard",
+              "domain": "UCY",
+              "val_rows": 1440,
+              "test_rows": 1440,
+              "val_all_improvement": 0.27564518723015075,
+              "val_easy_degradation": -0.021788147627511134,
+              "threshold": 0.0,
+              "keep": true
+            }
+          }
+        },
+        "test_summary_vs_train_horizon_causal_floor": {
+          "rows": 47458,
+          "all_improvement": 0.2772246357901642,
+          "t50_improvement": 0.2698641437531575,
+          "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+          "hard_failure_improvement": 0.2593323287861573,
+          "easy_degradation": -0.32326305969341285,
+          "switch_rate": 0.6816132158961609,
+          "harm_over_fallback": -0.1276729984781961,
+          "t100_easy_degradation": -0.0030719622568884386
+        },
+        "by_domain": {
+          "TrajNet": {
+            "rows": 37918,
+            "all_improvement": 0.2533081097444263,
+            "t10_improvement": 0.6134767936987296,
+            "t25_improvement": 0.2917282083706334,
+            "t50_improvement": 0.2818040039056995,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.23452951987659187,
+            "easy_degradation": -0.30827316296760277,
+            "switch_rate": 0.6940766918086397,
+            "harm_over_fallback": -0.11194070467652854
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.3558083715508603,
+            "t10_improvement": 0.7158164172117882,
+            "t25_improvement": 0.2175535659376392,
+            "t50_improvement": 0.22720558058086227,
+            "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+            "hard_failure_improvement": 0.33784766757762896,
+            "easy_degradation": -0.40603798605973707,
+            "switch_rate": 0.6320754716981132,
+            "harm_over_fallback": -0.19020309453392253
+          }
+        },
+        "by_horizon": {
+          "10": {
+            "rows": 15402,
+            "all_improvement": 0.6388806547369797,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.6467129340645261,
+            "easy_degradation": -0.4985469155627218,
+            "switch_rate": 0.818530061031035,
+            "harm_over_fallback": -0.19454020343519454
+          },
+          "25": {
+            "rows": 13470,
+            "all_improvement": 0.27627469310280717,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.21545184782385285,
+            "easy_degradation": -0.41525616348763417,
+            "switch_rate": 0.7221232368225686,
+            "harm_over_fallback": -0.07198647966265898
+          },
+          "50": {
+            "rows": 11538,
+            "all_improvement": 0.2698641437531575,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.2698641437531575,
+            "easy_degradation": -0.1810089917350668,
+            "switch_rate": 0.7743109724388976,
+            "harm_over_fallback": -0.13501923209927238
+          },
+          "100": {
+            "rows": 7048,
+            "all_improvement": 0.06789640774516092,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+            "hard_failure_improvement": 0.06789640774516092,
+            "easy_degradation": -0.0030719622568884386,
+            "switch_rate": 0.1532349602724177,
+            "harm_over_fallback": -0.0759488035544754
+          }
+        },
+        "pre_guard": {
+          "source": "fresh_pre_guard_hq_rebuild",
+          "metric": {
+            "rows": 47458,
+            "all_improvement": 0.3289036158786902,
+            "t10_improvement": 0.6388806547369797,
+            "t25_improvement": 0.27627469310280717,
+            "t50_improvement": 0.2698641437531575,
+            "t100_raw_frame_diagnostic_improvement": 0.21116485955882547,
+            "hard_failure_improvement": 0.31886443384396834,
+            "easy_degradation": -0.3209397447157065,
+            "switch_rate": 0.7189514939525475,
+            "harm_over_fallback": -0.15147322938982127
+          },
+          "t100_easy_degradation": 0.025600253632051873
+        },
+        "no_leakage": {
+          "future_endpoint_input": false,
+          "future_waypoint_input": false,
+          "future_waypoint_label_eval_only": true,
+          "central_velocity": false,
+          "test_endpoint_goals": false,
+          "test_threshold_tuning": false,
+          "internal_val_from_train_only": true,
+          "source_overlap_pass": true
+        },
+        "claim_boundary": {
+          "true_3d": false,
+          "foundation_world_model": false,
+          "metric_or_seconds_claim": false,
+          "raw_frame_dataset_local_only": true,
+          "stage5c_executed": false,
+          "smc_enabled": false
+        },
+        "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e"
+      },
+      "artifact_summaries": [
+        {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+          "exists": true,
+          "top_level_keys": [
+            "source",
+            "stage",
+            "generated_at_utc",
+            "git_commit",
+            "current_facts",
+            "input_hash",
+            "hq_input",
+            "pre_guard",
+            "guarded",
+            "uses_test_metrics_for_guard",
+            "no_leakage",
+            "claim_boundary",
+            "stage42_hr_gate"
+          ],
+          "row_like_top_level_keys": [],
+          "row_like_nested_keys": [],
+          "has_per_row_rollout_arrays": false
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+          "exists": true,
+          "top_level_keys": [
+            "source",
+            "stage",
+            "generated_at_utc",
+            "git_commit",
+            "input_hash",
+            "current_facts",
+            "inputs",
+            "frozen_policy",
+            "policy_hash",
+            "policy_artifact",
+            "replay",
+            "paper_file_status",
+            "stage42_hs_gate"
+          ],
+          "row_like_top_level_keys": [],
+          "row_like_nested_keys": [],
+          "has_per_row_rollout_arrays": false
+        },
+        {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+          "exists": true,
+          "top_level_keys": [
+            "source",
+            "stage",
+            "generated_at_utc",
+            "git_commit",
+            "input_hash",
+            "current_facts",
+            "policy_artifact",
+            "policy_hash",
+            "policy_artifact_payload",
+            "runtime_policy",
+            "inputs",
+            "runtime_inputs",
+            "smoke_case",
+            "no_leakage",
+            "claim_boundary",
+            "stage42_ht_gate"
+          ],
+          "row_like_top_level_keys": [],
+          "row_like_nested_keys": [],
+          "has_per_row_rollout_arrays": false
+        },
+        {
+          "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+          "exists": true,
+          "top_level_keys": [
+            "policy_name",
+            "source",
+            "base_stage",
+            "frozen_at_utc",
+            "frozen_git_commit",
+            "selection_scope",
+            "test_usage",
+            "deployment_role",
+            "decision_rule",
+            "decision_table",
+            "test_summary_vs_train_horizon_causal_floor",
+            "by_domain",
+            "by_horizon",
+            "pre_guard",
+            "no_leakage",
+            "claim_boundary",
+            "policy_hash"
+          ],
+          "row_like_top_level_keys": [],
+          "row_like_nested_keys": [],
+          "has_per_row_rollout_arrays": false
+        }
+      ],
+      "required_row_cache_fields": [
+        "row_id",
+        "split",
+        "domain",
+        "source_file",
+        "scene_id_optional",
+        "frame_id",
+        "agent_id",
+        "horizon",
+        "candidate_xy_predicted_rollout",
+        "floor_xy_train_horizon_causal_rollout",
+        "original_selected_xy_from_stage42_hr_optional",
+        "candidate_switch_optional",
+        "future_xy_label_eval_only_optional",
+        "normalizer_optional",
+        "hard_failure_label_optional",
+        "easy_label_optional"
+      ],
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "user_action_required": {
+        "path": "outputs/stage42_long_research/user_action_required_t100_runtime_batch_replay_stage42.md",
+        "written": true
+      },
+      "sufficiency": {
+        "runtime_api_ready": true,
+        "frozen_policy_ready": true,
+        "row_level_batch_replay_ready": false,
+        "real_batch_replay_status": "not_run",
+        "blocker": "missing_row_level_candidate_floor_selected_arrays",
+        "missing_required_fields": [
+          "row_id",
+          "split",
+          "domain",
+          "source_file",
+          "scene_id_optional",
+          "frame_id",
+          "agent_id",
+          "horizon",
+          "candidate_xy_predicted_rollout",
+          "floor_xy_train_horizon_causal_rollout",
+          "original_selected_xy_from_stage42_hr_optional",
+          "candidate_switch_optional",
+          "future_xy_label_eval_only_optional",
+          "normalizer_optional",
+          "hard_failure_label_optional",
+          "easy_label_optional"
+        ],
+        "required_row_cache_fields": [
+          "row_id",
+          "split",
+          "domain",
+          "source_file",
+          "scene_id_optional",
+          "frame_id",
+          "agent_id",
+          "horizon",
+          "candidate_xy_predicted_rollout",
+          "floor_xy_train_horizon_causal_rollout",
+          "original_selected_xy_from_stage42_hr_optional",
+          "candidate_switch_optional",
+          "future_xy_label_eval_only_optional",
+          "normalizer_optional",
+          "hard_failure_label_optional",
+          "easy_label_optional"
+        ]
+      },
+      "stage42_hu_gate": {
+        "gates": {
+          "hr_artifact_present": true,
+          "hs_artifact_present": true,
+          "ht_artifact_present": true,
+          "policy_artifact_present": true,
+          "hs_gate_passed": true,
+          "ht_runtime_api_passed": true,
+          "row_level_replay_not_overclaimed": true,
+          "required_row_cache_schema_written": true,
+          "user_action_or_engineering_action_written": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "metric_seconds_overclaim_blocked": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 17,
+        "total": 17,
+        "verdict": "stage42_hu_t100_runtime_batch_replay_sufficiency_pass_with_blocker"
+      }
+    },
+    "stage42_hv": {
+      "stage": "Stage42-HV t100 runtime row-cache batch replay",
+      "source": "cached_verified_row_cache_runtime_batch_replay_from_stage42_hr_ht",
+      "generated_at_utc": "2026-05-27T20:24:37.082680+00:00",
+      "git_commit": "130ef59",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-HV 修复 Stage42-HU 暴露的 row-level replay blocker：从 HR 的可重建路径生成本地 row-level replay cache。",
+        "cache 是 derived local artifact，写在 data/ 下，不提交 GitHub。",
+        "runtime replay 只使用 domain、horizon、candidate rollout、floor rollout 和 optional candidate switch。",
+        "future waypoints / endpoints 只作为 evaluation labels 存储，不作为 runtime input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "input_hash": "9eb7611b8ea8881282c3105f05a463befc40afc33a41765abd541a9d6bb7ad13",
+      "cache_hash": "166fdede23d8f14bbf6eb4c0398b32b9c90d489a03d3e6e9acdbc608db5ed127",
+      "cache_status": "cached_verified",
+      "cache_build": {
+        "source": "cached_verified_existing_cache"
+      },
+      "cache_summary": {
+        "exists": true,
+        "path": "data/stage42_t100_runtime_replay_cache/stage42hv_t100_runtime_replay_test_cache.npz",
+        "size_bytes": 7576461,
+        "fields": [
+          "row_id",
+          "split",
+          "domain",
+          "source_file",
+          "scene_id",
+          "frame_id",
+          "agent_id",
+          "horizon",
+          "candidate_xy_predicted_rollout",
+          "floor_xy_train_horizon_causal_rollout",
+          "selected_xy_stage42_hr",
+          "selected_xy_runtime_replay",
+          "candidate_switch",
+          "runtime_switch",
+          "runtime_reason",
+          "future_xy_label_eval_only",
+          "future_valid_label_eval_only",
+          "normalizer",
+          "hard_label",
+          "failure_label",
+          "easy_label",
+          "candidate_ade",
+          "candidate_fde",
+          "floor_ade",
+          "floor_fde",
+          "selected_ade",
+          "selected_fde"
+        ],
+        "shapes": {
+          "row_id": [
+            47458
+          ],
+          "split": [
+            47458
+          ],
+          "domain": [
+            47458
+          ],
+          "source_file": [
+            47458
+          ],
+          "scene_id": [
+            47458
+          ],
+          "frame_id": [
+            47458
+          ],
+          "agent_id": [
+            47458
+          ],
+          "horizon": [
+            47458
+          ],
+          "candidate_xy_predicted_rollout": [
+            47458,
+            4,
+            2
+          ],
+          "floor_xy_train_horizon_causal_rollout": [
+            47458,
+            4,
+            2
+          ],
+          "selected_xy_stage42_hr": [
+            47458,
+            4,
+            2
+          ],
+          "selected_xy_runtime_replay": [
+            47458,
+            4,
+            2
+          ],
+          "candidate_switch": [
+            47458
+          ],
+          "runtime_switch": [
+            47458
+          ],
+          "runtime_reason": [
+            47458
+          ],
+          "future_xy_label_eval_only": [
+            47458,
+            4,
+            2
+          ],
+          "future_valid_label_eval_only": [
+            47458,
+            4
+          ],
+          "normalizer": [
+            47458
+          ],
+          "hard_label": [
+            47458
+          ],
+          "failure_label": [
+            47458
+          ],
+          "easy_label": [
+            47458
+          ],
+          "candidate_ade": [
+            47458
+          ],
+          "candidate_fde": [
+            47458
+          ],
+          "floor_ade": [
+            47458
+          ],
+          "floor_fde": [
+            47458
+          ],
+          "selected_ade": [
+            47458
+          ],
+          "selected_fde": [
+            47458
+          ]
+        },
+        "dtypes": {
+          "row_id": "int64",
+          "split": "<U8",
+          "domain": "<U64",
+          "source_file": "<U512",
+          "scene_id": "<U256",
+          "frame_id": "float64",
+          "agent_id": "int64",
+          "horizon": "int64",
+          "candidate_xy_predicted_rollout": "float32",
+          "floor_xy_train_horizon_causal_rollout": "float32",
+          "selected_xy_stage42_hr": "float32",
+          "selected_xy_runtime_replay": "float32",
+          "candidate_switch": "bool",
+          "runtime_switch": "bool",
+          "runtime_reason": "<U96",
+          "future_xy_label_eval_only": "float32",
+          "future_valid_label_eval_only": "bool",
+          "normalizer": "float32",
+          "hard_label": "bool",
+          "failure_label": "bool",
+          "easy_label": "bool",
+          "candidate_ade": "float64",
+          "candidate_fde": "float64",
+          "floor_ade": "float64",
+          "floor_fde": "float64",
+          "selected_ade": "float64",
+          "selected_fde": "float64"
+        },
+        "missing_required_fields": []
+      },
+      "policy_artifact": {
+        "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+        "exists": true,
+        "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e"
+      },
+      "inputs": {
+        "stage42_hr": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+          "exists": true,
+          "verdict": "stage42_hr_t100_easy_guard_pass"
+        },
+        "stage42_hs": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+          "exists": true,
+          "verdict": "stage42_hs_t100_easy_guard_freeze_pass"
+        },
+        "stage42_ht": {
+          "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+          "exists": true,
+          "verdict": "stage42_ht_t100_easy_guard_runtime_policy_pass"
+        },
+        "stage42_hu": {
+          "path": "outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json",
+          "exists": true,
+          "verdict": "stage42_hu_t100_runtime_batch_replay_sufficiency_pass_with_blocker"
+        }
+      },
+      "runtime_batch_replay": {
+        "rows": 47458,
+        "row_id_min": 160589,
+        "row_id_max": 281227,
+        "selected_xy_max_abs_diff_vs_stored_hr": 0.0,
+        "selected_xy_max_abs_diff_vs_stored_runtime": 0.0,
+        "selected_ade_max_abs_diff_vs_stored": 0.0,
+        "floor_ade_max_abs_diff_vs_stored": 0.0,
+        "switch_mismatch_vs_stored": 0,
+        "metric": {
+          "rows": 47458,
+          "all_improvement": 0.2772246357901642,
+          "t10_improvement": 0.6388806547369797,
+          "t25_improvement": 0.27627469310280717,
+          "t50_improvement": 0.2698641437531575,
+          "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+          "hard_failure_improvement": 0.2593323287861573,
+          "easy_degradation": -0.32326305969341285,
+          "t100_easy_degradation": -0.0030719622568884386,
+          "switch_rate": 0.6816132158961609,
+          "harm_over_fallback": -0.1276729984781961
+        },
+        "runtime_diagnostics": {
+          "rows": 47458,
+          "switch_rate": 0.6816132158961609,
+          "fallback_rows": 15110,
+          "reason_counts": {
+            "non_t100_not_guarded": 40410,
+            "validation_easy_harm_t100_fallback_floor": 5608,
+            "validation_supported_t100_keep_candidate": 1440
+          }
+        },
+        "t100_rows": 7048,
+        "t100_easy_rows": 975,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "metric_diff_vs_hr": {
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "t100_easy_degradation": 0.0,
+          "switch_rate": 0.0
+        },
+        "status": "cached_verified"
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "future_waypoints_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "runtime_inputs": [
+          "domain",
+          "horizon",
+          "candidate_xy_predicted_rollout",
+          "floor_xy_train_horizon_causal_rollout",
+          "candidate_switch_optional"
+        ]
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_hv_gate": {
+        "gates": {
+          "hr_artifact_present": true,
+          "hs_artifact_present": true,
+          "ht_artifact_present": true,
+          "hu_artifact_present": true,
+          "policy_artifact_present": true,
+          "row_cache_exists": true,
+          "required_cache_fields_present": true,
+          "row_level_batch_replay_ready": true,
+          "selected_xy_replay_exact": true,
+          "selected_ade_replay_exact": true,
+          "floor_ade_replay_exact": true,
+          "switch_replay_exact": true,
+          "metric_replay_matches_hr": true,
+          "t100_easy_guard_preserved": true,
+          "t100_raw_still_positive": true,
+          "global_all_positive": true,
+          "global_t50_positive": true,
+          "hard_failure_positive": true,
+          "easy_preserved": true,
+          "future_labels_eval_only": true,
+          "no_future_endpoint_input": true,
+          "no_future_waypoint_input": true,
+          "no_central_velocity": true,
+          "no_test_endpoint_goals": true,
+          "no_test_threshold_tuning": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_not_executed": true,
+          "smc_not_enabled": true
+        },
+        "passed": 28,
+        "total": 28,
+        "verdict": "stage42_hv_t100_runtime_row_cache_replay_pass"
+      }
+    }
+  },
+  "input_hash": "0a97309af73c139dd7e350a1aaa3b8ece0589c10ce3b1b7382e1482488b64a85",
+  "evidence_tiers": [
+    {
+      "tier": "T0_artifact_presence",
+      "status": "pass",
+      "source": "cached_verified_artifact_presence",
+      "claim": "Required replay artifacts exist and are hashable.",
+      "evidence": [
+        "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+        "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+        "outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json",
+        "outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json"
+      ]
+    },
+    {
+      "tier": "T1_runtime_smoke_replay",
+      "status": "pass",
+      "source": "fresh_runtime_api_from_frozen_stage42_hs_t100_easy_guard_policy",
+      "claim": "Frozen t100 guard is callable and smoke-tested.",
+      "rows": 4,
+      "evidence": [
+        "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json"
+      ]
+    },
+    {
+      "tier": "T2_frozen_metric_replay",
+      "status": "pass",
+      "source": "cached_verified_stage42_hr_policy_freeze_from_fresh_artifact",
+      "claim": "Frozen policy decision table and metric summary replay exactly.",
+      "all_improvement": 0.2772246357901642,
+      "t50_improvement": 0.2698641437531575,
+      "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+      "hard_failure_improvement": 0.2593323287861573,
+      "easy_degradation": -0.32326305969341285,
+      "evidence": [
+        "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json"
+      ]
+    },
+    {
+      "tier": "T2_5_blocker_audit",
+      "status": "resolved_by_hv",
+      "source": "fresh_audit_from_stage42_hr_hs_ht_artifacts",
+      "claim": "HU identified that HT smoke replay was insufficient for row-level batch replay; HV resolves this locally.",
+      "hu_blocker": "missing_row_level_candidate_floor_selected_arrays",
+      "evidence": [
+        "outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json",
+        "outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json"
+      ]
+    },
+    {
+      "tier": "T3_row_level_batch_replay",
+      "status": "pass",
+      "source": "cached_verified_row_cache_runtime_batch_replay_from_stage42_hr_ht",
+      "claim": "Frozen t100 runtime guard replayed over full row-level test cache with exact selected XY/ADE/switch/metric match.",
+      "rows": 47458,
+      "t100_rows": 7048,
+      "domains": {
+        "TrajNet": 37918,
+        "UCY": 9540
+      },
+      "all_improvement": 0.2772246357901642,
+      "t50_improvement": 0.2698641437531575,
+      "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+      "hard_failure_improvement": 0.2593323287861573,
+      "easy_degradation": -0.32326305969341285,
+      "t100_easy_degradation": -0.0030719622568884386,
+      "cache_path": "data/stage42_t100_runtime_replay_cache/stage42hv_t100_runtime_replay_test_cache.npz",
+      "cache_hash": "166fdede23d8f14bbf6eb4c0398b32b9c90d489a03d3e6e9acdbc608db5ed127",
+      "cache_committed": false,
+      "evidence": [
+        "outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json"
+      ]
+    }
+  ],
+  "required_files": [
+    {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+      "exists": true,
+      "sha256": "4794fed8a6296e54fb0e1f4fe3d12d57a93b922a3de8e3ba76c40b4519de7e49",
+      "size_bytes": 15596
+    },
+    {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+      "exists": true,
+      "sha256": "c577759efafb853101c722b6bd9c6f57406299f3eb935c978e93e934cf042728",
+      "size_bytes": 13992
+    },
+    {
+      "path": "outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json",
+      "exists": true,
+      "sha256": "1236a28c353b641bb374bff3bf577f4930422123ef64b77a7e7aac3e01c41fd3",
+      "size_bytes": 17584
+    },
+    {
+      "path": "outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json",
+      "exists": true,
+      "sha256": "a630aa2b3c040f68d4fc4f65e9a87ae4a510944143d5c8decf90139492b62e46",
+      "size_bytes": 9342
+    },
+    {
+      "path": "outputs/stage42_long_research/reviewer_replay_package_stage42.json",
+      "exists": true,
+      "sha256": "bf7b8d5951fdba0604fcbf96dadfcfc98aed538f459538d2b1e6710c3c642a4e",
+      "size_bytes": 185330
+    },
+    {
+      "path": "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
+      "exists": true,
+      "sha256": "7acae0a162eb93a57da6823307d4a05af5045f877e0d84b76e611c9215fb1ab1",
+      "size_bytes": 12442
+    },
+    {
+      "path": "outputs/stage42_long_research/reviewer_replay_package_stage42.md",
+      "exists": true,
+      "sha256": "4e825fd99e6f723edb212e68a8bebae3eecfa2c88b6d4b9344510fdc8c16e264",
+      "size_bytes": 8499
+    },
+    {
+      "path": "outputs/stage42_long_research/reviewer_replay_commands_stage42_hv.sh",
+      "exists": true,
+      "sha256": "fc2587b25a8baf53b4f73c6fec8b176b6964af666820a9713357dfd491dc2159",
+      "size_bytes": 646
+    }
+  ],
+  "commands_file": {
+    "path": "outputs/stage42_long_research/reviewer_replay_commands_stage42_hv.sh",
+    "exists": true,
+    "sha256": "fc2587b25a8baf53b4f73c6fec8b176b6964af666820a9713357dfd491dc2159",
+    "size_bytes": 646
+  },
+  "replay_commands": [
+    ".venv-pytorch/bin/python run_stage42_group_consistency_t100_easy_guard_runtime.py",
+    ".venv-pytorch/bin/python run_stage42_t100_runtime_batch_replay_sufficiency.py",
+    ".venv-pytorch/bin/python run_stage42_t100_runtime_row_cache_replay.py",
+    ".venv-pytorch/bin/python -m pytest tests/test_stage42_group_consistency_t100_easy_guard_runtime.py tests/test_stage42_t100_runtime_batch_replay_sufficiency.py tests/test_stage42_t100_runtime_row_cache_replay.py"
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_hw_gate": {
+    "gates": {
+      "hs_artifact_passed": true,
+      "ht_runtime_smoke_passed": true,
+      "hu_blocker_audit_present": true,
+      "hv_row_level_replay_passed": true,
+      "tier0_present": true,
+      "tier1_present": true,
+      "tier2_present": true,
+      "tier25_blocker_resolved": true,
+      "tier3_row_level_present": true,
+      "row_level_rows_positive": true,
+      "cache_not_committed": true,
+      "row_level_metric_positive_all_t50_hard": true,
+      "t100_raw_reported_not_overclaimed": true,
+      "t100_easy_guard_preserved": true,
+      "replay_commands_written": true,
+      "commands_use_arm64_venv": true,
+      "commands_do_not_train_or_execute_forbidden": true,
+      "reviewer_package_updated": true,
+      "paper_matrix_updated": true,
+      "readmes_updated": true,
+      "no_future_endpoint_input": true,
+      "no_future_waypoint_input": true,
+      "no_central_velocity": true,
+      "no_test_endpoint_goals": true,
+      "no_test_threshold_tuning": true,
+      "no_metric_seconds_claim": true,
+      "true_3d_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 30,
+    "total": 30,
+    "verdict": "stage42_hw_replay_evidence_tier_refresh_pass"
+  },
+  "paper_updates": {
+    "paper_matrix_updated": true,
+    "reviewer_package_updated": true,
+    "readmes_updated": true
+  },
+  "package_hash": "85683955feffc9f0de8564150ab7dd7589254b7dcdd390ae29a432865f72a20d"
+}
