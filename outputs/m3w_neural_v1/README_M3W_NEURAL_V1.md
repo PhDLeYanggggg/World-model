@@ -4,6 +4,12 @@ M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combine
 
 It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.
 
+Latest Stage42-GT floor-relaxation safety stress test:
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/floor_relaxation_safety_stress_stage42.md`
+
+Stage42-GT is a `fresh_run` all-agent safety stress test for the Stage42-BY/BZ validation-backed t50 floor-relaxation policy. It replays the alpha-blended policy, groups rows by `source_file + frame_id + horizon`, and compares partial relaxation against the teacher/floor rollout. Target union t50 rows = `11538`; t50 improvement = `+28.97%`; hard/failure = `+28.97%`; easy degradation = `-21.41%`; near-collision@0.05 delta = `-0.74pp`; jagged-rate delta = `0.00pp`; gate = `14 / 14`. This supports narrow validation-backed t50 floor relaxation, not global floor removal or floor-free neural deployment.
+
 Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`

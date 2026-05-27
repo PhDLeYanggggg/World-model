@@ -1,5 +1,15 @@
 # Physical World Model 2.5D Results
 
+## Stage42-GT Floor-Relaxation Safety Stress Test
+
+本轮继续 Stage42 Long Research Mode，补足 Stage42-BY/BZ partial t50 floor-relaxation 的 all-agent safety stress test：
+
+`/Users/yangyue/Downloads/World/outputs/stage42_long_research/floor_relaxation_safety_stress_stage42.md`
+
+结果来源：`fresh_run`。Stage42-GT 重新复放 BY 的 validation-selected alpha-blended policy，并按同一 `source_file + frame_id + horizon` 组做 all-agent proximity/smoothness stress。结果：target union t50 rows `11538`，t50 improvement `+28.97%`，hard/failure `+28.97%`，easy degradation `-21.41%`，near@0.05 delta `-0.74pp`，jagged delta `0.00pp`，gate `14 / 14`。单 slice：TrajNet|50 t50 `+30.21%` 且 near@0.05 `-0.95pp`；UCY|50 t50 `+24.53%`，near@0.05 `+0.13pp`，仍低于 safety epsilon。结论：validation-backed t50 partial floor-relaxation 有 all-agent safety support；但 global floor removal、floor-free neural deployment、metric/seconds-level claim、Stage5C、SMC 仍全部禁止。
+
+本次 Stage42-GT 校验：focused pytest `1 passed in 51.39s`；full pytest `.venv-pytorch/bin/python -m pytest tests` = `928 passed in 96.58s`。
+
 ## 当前长期目标总账 README
 
 本轮按用户要求，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的当前版中文总账：

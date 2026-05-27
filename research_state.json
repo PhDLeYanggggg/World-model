@@ -1,6 +1,44 @@
 {
-  "current_stage": "M3W current goal consolidated summary",
-  "current_verdict": "summary_refresh_only_current_goal_ledger",
+  "current_stage": "Stage42-GT floor-relaxation safety stress",
+  "current_verdict": "stage42_gt_floor_relaxation_safety_stress_pass",
+  "stage42_gt_floor_relaxation_safety_stress": {
+    "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+    "report": "outputs/stage42_long_research/floor_relaxation_safety_stress_stage42.md",
+    "json": "outputs/stage42_long_research/floor_relaxation_safety_stress_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_gt_gate.md",
+    "verdict": "stage42_gt_floor_relaxation_safety_stress_pass",
+    "gates": "14/14",
+    "summary": {
+      "target_union_rows": 11538,
+      "target_union_t50_improvement": 0.28969780582672955,
+      "target_union_hard_failure_improvement": 0.28969780582672955,
+      "target_union_easy_degradation": -0.21406723960013185,
+      "target_union_near_collision_005_delta": -0.007379425459017833,
+      "target_union_jagged_rate_delta": 0.0,
+      "target_union_safety_pass": true,
+      "deployment_decision": "partial_t50_floor_relaxation_safety_supported",
+      "global_floor_removal_allowed": false,
+      "floor_free_neural_deployable": false,
+      "teacher_floor_context_required": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "json_load": ".venv-pytorch/bin/python -m json.tool research_state.json -> passed",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_floor_relaxation_safety_stress.py -> 1 passed in 51.39s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 928 passed in 96.58s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "global_floor_removal_allowed": false,
+      "floor_free_neural_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
   "m3w_current_goal_consolidated_summary_readme": {
     "source": "cached_verified_summary_from_stage26_to_stage42_gs",
     "path": "README_M3W_CURRENT_GOAL_CONSOLIDATED_SUMMARY_ZH.md",
