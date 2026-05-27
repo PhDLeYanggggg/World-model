@@ -44,8 +44,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "Stage42-HP group-consistency source-level breakdown",
-  "current_verdict": "stage42_hp_group_consistency_breakdown_pass",
+  "current_stage": "Stage42-HQ UCY weak-slice group-consistency repair",
+  "current_verdict": "stage42_hq_group_consistency_weak_slice_repair_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -32122,6 +32122,97 @@
     "verification": {
       "runner": ".venv-pytorch/bin/python run_stage42_group_consistency_breakdown.py",
       "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_group_consistency_breakdown.py"
+    }
+  },
+  "stage42_hq_group_consistency_weak_slice_repair": {
+    "source": "fresh_stage42_hq_ucy_weak_slice_repair",
+    "report": "outputs/stage42_long_research/group_consistency_weak_slice_repair_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_hq_gate.md",
+    "verdict": "stage42_hq_group_consistency_weak_slice_repair_pass",
+    "gates": "23/23",
+    "hp_ucy_before": {
+      "name": "domain:UCY",
+      "rows": 9540,
+      "t10_rows": 3060,
+      "t25_rows": 2700,
+      "t50_rows": 2340,
+      "t100_rows": 1440,
+      "ade_all_improvement": 0.0,
+      "ade_t10_improvement": 0.0,
+      "ade_t25_improvement": 0.0,
+      "ade_t50_improvement": 0.0,
+      "ade_t100_raw_frame_diagnostic_improvement": 0.0,
+      "ade_hard_failure_improvement": 0.0,
+      "ade_easy_degradation": -0.0,
+      "fde_all_improvement": 0.0,
+      "fde_t50_improvement": 0.0,
+      "fde_t100_raw_frame_diagnostic_improvement": 0.0,
+      "switch_rate": 0.0,
+      "harm_over_floor_ade": 0.0,
+      "safety": {
+        "rows": 9540,
+        "base_near_005": 0.018972746331236898,
+        "final_near_005": 0.018972746331236898,
+        "floor_near_005": 0.018972746331236898,
+        "near_005_delta_vs_base": 0.0,
+        "base_p05_min_distance": 0.06921488867082957,
+        "final_p05_min_distance": 0.06921488867082957
+      }
+    },
+    "repair_metric": {
+      "rows": 47458,
+      "all_improvement": 0.3289036158786902,
+      "t10_improvement": 0.6388806547369797,
+      "t25_improvement": 0.27627469310280717,
+      "t50_improvement": 0.2698641437531575,
+      "t100_raw_frame_diagnostic_improvement": 0.21116485955882547,
+      "hard_failure_improvement": 0.31886443384396834,
+      "easy_degradation": -0.3209397447157065,
+      "switch_rate": 0.7189514939525475,
+      "harm_over_fallback": -0.15147322938982127
+    },
+    "repair_by_domain": {
+      "TrajNet": {
+        "rows": 37918,
+        "all_improvement": 0.32071530205574905,
+        "t10_improvement": 0.6134767936987296,
+        "t25_improvement": 0.2917282083706334,
+        "t50_improvement": 0.2818040039056995,
+        "t100_raw_frame_diagnostic_improvement": 0.1900914138809887,
+        "hard_failure_improvement": 0.3128676754267107,
+        "easy_degradation": -0.305529113679325,
+        "switch_rate": 0.7408091144047682,
+        "harm_over_fallback": -0.14172896773375485
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.3558083715508603,
+        "t10_improvement": 0.7158164172117882,
+        "t25_improvement": 0.2175535659376392,
+        "t50_improvement": 0.22720558058086227,
+        "t100_raw_frame_diagnostic_improvement": 0.27564518723015075,
+        "hard_failure_improvement": 0.33784766757762896,
+        "easy_degradation": -0.40603798605973707,
+        "switch_rate": 0.6320754716981132,
+        "harm_over_fallback": -0.19020309453392253
+      }
+    },
+    "t100_easy_status": {
+      "rows": 975,
+      "degradation": 0.025600253632051873
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Fresh UCY-internal-validation-supported group-consistency repair fixes the Stage42-HP UCY zero-gain weak slice while keeping no-leakage and raw-frame claim boundaries.",
+    "verification": {
+      "runner": ".venv-pytorch/bin/python run_stage42_group_consistency_weak_slice_repair.py",
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_group_consistency_weak_slice_repair.py"
     }
   }
 }

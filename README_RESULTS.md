@@ -6063,3 +6063,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - weak slices recorded: `6`; top examples `['domain:UCY', 'source:UCY::TrajNet/Train/crowds/crowds_zara03.txt', 'scene:UCY::UCY_crowds', 'fallback_only', 'horizon:100']`.
 - claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HP_GROUP_CONSISTENCY_BREAKDOWN:END -->
+
+<!-- STAGE42_HQ_GROUP_CONSISTENCY_WEAK_SLICE_REPAIR:START -->
+## Stage42-HQ UCY Weak-Slice Group-Consistency Repair
+
+- source: `fresh_ucy_internal_validation_supported_repair`
+- role: repair the Stage42-HP UCY zero-gain weak slice with train-only UCY internal validation support.
+- gate: `23 / 23`; verdict `stage42_hq_group_consistency_weak_slice_repair_pass`.
+- HP UCY before: all `0.00%`, t50 `0.00%`.
+- repaired global all/t50/t100 raw/hard/easy: `32.89%` / `26.99%` / `21.12%` / `31.89%` / `-32.09%`.
+- repaired UCY all/t50/hard/easy: `35.58%` / `22.72%` / `33.78%` / `-40.60%`.
+- t100 easy status: rows `975`, degradation `2.56%`; recorded as raw-frame diagnostic, not seconds-level.
+- claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HQ_GROUP_CONSISTENCY_WEAK_SLICE_REPAIR:END -->
