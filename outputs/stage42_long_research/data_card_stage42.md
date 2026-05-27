@@ -599,3 +599,16 @@ No new metric/time calibration was introduced by Stage42-AB/AC. All updated pape
 - Boundary: protected source-level raw-frame 2.5D; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 - verification: `{'runner': '.venv-pytorch/bin/python run_stage42_ucy_h100_terms_gated_conversion_preflight.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_ucy_h100_terms_gated_conversion_preflight.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 840 passed'}`.
 <!-- STAGE42_FR_UCY_H100_TERMS_GATED_PREFLIGHT:END -->
+
+<!-- STAGE42_FS_UCY_H100_TERMS_INTAKE_VALIDATOR:START -->
+## Stage42-FS UCY H100 Terms Intake Validator
+
+- source: `fresh_stage42_ucy_h100_terms_intake_validator`
+- role: validates candidate-level UCY h100 terms intake and writes a guarded conversion queue; no conversion, training, download, or evaluation.
+- gate: `14 / 14`; verdict `stage42_fs_ucy_h100_terms_intake_validator_pass`.
+- candidate_rows_validated: `6`; target_family_candidates `2`.
+- terms_ready_candidates: `0`; guarded_conversion_queue_count `0`.
+- top blockers: `{'allowed_use_missing': 6, 'confirmed_by_user_missing': 6, 'derived_data_policy_unknown': 6, 'local_path_confirmation_missing': 6, 'redistribution_policy_unknown': 6, 'source_identity_missing': 6, 'terms_acceptance_date_missing': 6, 'terms_not_accepted': 6}`.
+- Boundary: protected source-level raw-frame 2.5D; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+- verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_ucy_h100_terms_intake_validator.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_ucy_h100_terms_intake_validator.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 844 passed'}`.
+<!-- STAGE42_FS_UCY_H100_TERMS_INTAKE_VALIDATOR:END -->
