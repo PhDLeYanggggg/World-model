@@ -2,12 +2,19 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES / Stage42-ET 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-EY 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
 
 M3W 已经从早期 SDD-only selector scaffold，推进到一个有 SDD 与 external top-down dataset-local raw-frame 证据的 **protected 2.5D multi-agent world-state candidate**。
+
+最新补充结论：
+
+```text
+Stage42-EU/EV/EW/EX/EY 都没有提升到超过 Stage42-DI 的新 deployable policy。
+它们的价值是负结果定位：group-consistency repair 的瓶颈不在 risk bucket 粒度，而在 repair candidate family / temporal shape / objective 本身。
+```
 
 但是当前仍然不是：
 
@@ -34,6 +41,7 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41-42 protected policy family | 有 protected neural/full-waypoint/runtime evidence，但仍依赖 Stage37 / teacher safety floor。 |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | 用一部分 ADE 增益换 near-collision 安全修复。 |
 | Source-level full-waypoint policy | Stage42-DL/DQ/ES/ET group-consistency full-waypoint family | source/frame/horizon group-consistency 目标得到 fresh 支持；仍是 protected raw-frame 2.5D evidence。 |
+| Group-risk/adaptive repair follow-up | Stage42-EU/EV/EW/EX/EY | 证明“再细分 risk/adaptive bucket”没有超过 Stage42-DI；下一步应改 repair candidate family 本身，而不是继续堆 risk bucket。 |
 | Paper claim | 受限 claim | 可以写 protected dataset-local raw-frame 2.5D world-state candidate；不能写 true 3D / foundation / metric / seconds-level / Stage5C / SMC。 |
 
 ## 1. 永久边界
@@ -469,8 +477,13 @@ M3W 当前是 protected dataset-local/raw-frame 2.5D multi-agent world-state can
 ```text
 Stage42-ES run: 17 / 17 gates
 Stage42-ET run: 16 / 16 gates
-latest focused tests for Stage42-ES/ET: passed
-latest full pytest before this README refresh: 749 passed in 51.44s
+Stage42-EU run: 15 / 18 gates
+Stage42-EV run: 12 / 14 gates
+Stage42-EW run: 14 / 16 gates
+Stage42-EX run: 15 / 17 gates
+Stage42-EY run: 16 / 18 gates
+latest focused tests for Stage42-ES/ET/EU/EV/EW/EX/EY: passed
+latest full pytest before this README refresh: 770 passed
 ```
 
 本次 README 更新本身是总结与索引更新，不是新训练，不改变模型 gate。
