@@ -733,3 +733,17 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - decision: `stage42_ew_adaptive_group_repair_positive_not_promoted`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EW_ADAPTIVE_GROUP_REPAIR:END -->
+
+<!-- STAGE42_EX_GROUP_LEVEL_RISK_REPAIR:START -->
+## Stage42-EX Group-Level Risk Repair
+
+- source: `fresh_stage42_group_level_risk_repair`
+- role: validation-only adaptive repair where risk is aggregated to source/frame/horizon groups before selecting repair candidates.
+- selected mode: `domain_horizon`.
+- test all/t50/t100raw/hard/easy: `24.70%` / `22.36%` / `14.35%` / `23.88%` / `-25.64%`.
+- delta vs Stage42-DI all/hard/easy: `-0.01%` / `-0.01%` / `-0.01%`.
+- near@0.05 base/final: `1.94%` / `1.44%`.
+- mixed group selection rate: `0.00%`.
+- decision: `stage42_ex_group_level_risk_repair_positive_not_promoted`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EX_GROUP_LEVEL_RISK_REPAIR:END -->
