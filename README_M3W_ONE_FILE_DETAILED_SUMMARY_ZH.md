@@ -12,7 +12,104 @@
 
 本文用途：把 M3W 长期目标内的关键尝试、路线、失败原因、成功证据、当前 best deployable、论文 claim 边界和下一步 blocker 集中写到一个 README。本文是总结文件，不是新训练结果，不把 cached 写成 fresh，不把失败包装成成功。
 
-最新核验范围：本文已纳入 Stage42-FU module contribution ledger、Stage42-FV claim-boundary linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map。Stage42-DM 当前 gate 为 27/27；Stage42-FX gate 为 15/15；Stage42-FY gate 为 14/14。reviewer replay commands 已覆盖 runtime replay、module ledger、claim linter、source-action consolidator、provenance verifier 和 paper-freeze manifest。它不重新训练、不下载、不转换、不调 threshold。
+最新核验范围：本文已纳入 Stage42-FU module contribution ledger、Stage42-FV claim-boundary linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map、Stage42-GA live source/calibration recheck、Stage42-GB source terms prefill、Stage42-GC prefill-to-intake bridge、Stage42-GD calibration-hint-to-intake bridge。Stage42-DM 当前 gate 为 27/27；Stage42-FX gate 为 15/15；Stage42-FY gate 为 14/14；Stage42-GA/GB/GC/GD 分别为 15/15、15/15、16/16、18/18。reviewer replay commands 已覆盖 runtime replay、module ledger、claim linter、source-action consolidator、provenance verifier 和 paper-freeze manifest。它不重新训练、不下载、不转换、不调 threshold。
+
+## 本次请求版总览：做了什么、试了什么、什么失败、什么成功
+
+你要的是一个能直接读的总账。下面是按长期目标归纳后的版本。
+
+### A. 我实际推进过的路线
+
+1. **数据与 benchmark 路线。**
+   从早期 EWAP/ETH-UCY/OpenTraj 到 SDD，再到 UCY/TrajNet/ETH_UCY external source-level row cache，逐步建立了 world-state rows、scene packs、lazy episode/index、HardBench、BaselineFailureBench、GoalBench、source-level split、no-leakage audit、bootstrap/replay package。SDD 被固化为 pixel raw-frame official benchmark；external 仍是 dataset-local / unverified weak-metric diagnostic。
+
+2. **强因果 baseline 与 fallback 路线。**
+   系统实现并比较 constant position、causal constant velocity、damped velocity、constant acceleration、turn-rate、scene-clamped、goal/prototype-directed 等 baseline。后续所有 learned selector / neural / correction 都必须和 strongest causal baseline、Stage26、Stage37 floor 比。这条路线最终成为最稳定的安全骨架。
+
+3. **Selector 路线。**
+   先试 hard-class selector，失败后改为 expected-FDE / regret-aware / confidence-gated / easy-safe / fallback-safe selector。Stage26 在 SDD 上成功，Stage37 在 external t+50 上成功，Stage42-FH/FI 在 source/domain protected policy 上进一步成功。
+
+4. **JEPA 表征路线。**
+   多轮训练 trajectory-only、scene/trajectory、interaction-aware JEPA。多数阶段 latent non-collapse，但 selector/failure/goal/t50/correction 没有稳定 downstream lift。因此 JEPA 被降级为 auxiliary/diagnostic，不作为主 claim，不写成 latent generative world model。
+
+5. **Transformer / Hybrid neural dynamics 路线。**
+   训练过 Transformer-only、JEPA+Transformer hybrid、causal temporal Transformer、protected neural dynamics、full-waypoint sequence dynamics。无保护 neural 不安全；protected neural/full-waypoint 在 Stage37/teacher floor 下有证据，但不能说成独立 ungated neural world model。
+
+6. **外部跨域迁移路线。**
+   SDD->external zero-shot 大失败后，逐步引入 coordinate-invariant features、relative targets、external row geometry、train-only goals、scene-agnostic goal prototypes、past-only history windows、hard/easy/failure labels、selective transfer、conformal safety。Stage37 修复 external t+50，Stage42 则继续推进 source/domain/full-waypoint/group-consistency。
+
+7. **安全/物理有效性路线。**
+   持续跟踪 easy degradation、harm over fallback、near-collision@0.05、jagged-rate、group consistency。bounded residual/correction 和 unprotected neural 只要伤 easy 就不部署；Stage42-CQ/CR/FE 证明 proximity/safety guard 是必要的。
+
+8. **论文证据与 claim 边界路线。**
+   建立 exact replay、policy hash、schema hash、bootstrap CI、claim-boundary linter、module contribution ledger、paper-freeze manifest、reviewer replay package、source action consolidator。Stage42-FU/FV/FW/DM/FX/FY 和 GA-GD 的作用是防止把 diagnostic/cache/not-run 写成成功。
+
+### B. 明确失败的路线和原因
+
+| 路线 | 失败表现 | 主要原因 | 当前处理 |
+| --- | --- | --- | --- |
+| hard-class selector | Stage24 t50 improvement 约 -43.3%，easy degradation 约 11.33% | low-margin oracle label 被硬分类放大；easy cases 被错误切换 | 改为 expected-FDE/regret-aware/fallback-safe selector |
+| JEPA 主线 | 多次 non-collapse，但 downstream heads 无稳定 lift | representation objective 和部署目标错位；latent variance 不等于 gain/harm/easy-safety 信号 | 只保留 auxiliary/diagnostic |
+| SDD->external zero-shot | all 约 -92.67%，t50 约 -278.57% | 坐标、scale、horizon、agent type、scene/goal/context 不兼容 | 改为 external-specific row geometry + relative target + history/prototype |
+| latent adapter / CORAL | latent gap 变小但预测无提升 | 分布对齐不等于任务/收益/风险对齐 | 不作为成功 claim |
+| bounded residual/correction | 未稳定超过 Stage37，容易伤 easy | 直接改轨迹风险高，selected baseline 已强 | 不部署 correction |
+| unprotected Transformer/Hybrid | neural without fallback 灾难性或不安全 | 数据仍是 dataset-local/raw-frame，metric/scene grounding 不足 | 只允许 protected neural evidence |
+| scalar proximity/occupancy | 有局部提升但不稳定超过 group-consistency / safety floor | scalar loss 表达不了完整群体时空约束 | 采用 explicit source/frame/horizon group-consistency |
+| temporal/waypoint repel / Pareto repair | accuracy 和 proximity 常互相牺牲 | post-hoc 几何修复容易牺牲 ADE/hard | 用 constrained safety fallback |
+| uniform horizon robustness | TrajNet|100、UCY|100 仍 weak | low-margin ambiguity、source support 稀疏、h100 long-horizon context 不足 | Stage42-FY 决定暂停同特征重试，转 source/legal/guarded conversion |
+| source/legal/calibration | conversion_ready 仍为 0 | terms/path/source identity/calibration 仍需用户确认 | Stage42-GB/GC/GD 只做 prefill/hints，不声称 permission |
+
+### C. 明确成功的路线和证据
+
+| 成功点 | 关键证据 | 结论 |
+| --- | --- | --- |
+| Stage26 SDD cost-aware selector | t+50 约 +14.58%，hard/failure 约 +11.23%，easy degradation 约 +1.81% | SDD pixel raw-frame best deployable |
+| Stage37 external t50 repair | all +13.48%，t50 +8.46%，t50 CI [+7.69%, +9.15%]，hard/failure +15.54%，easy 0.041%，gate 16/16 | external selector-level deployable success |
+| Stage42-CO/CP bridge-shape composer | all +3.02%，t50 +1.50%，t100 raw +6.12%，hard +3.28%，2000-bootstrap positive | protected full-waypoint auxiliary evidence |
+| Stage42-CQ proximity guard | all +1.77%，t50 +1.07%，t100 raw +3.48%，hard +1.93%，near@0.05 不劣于 endpoint-linear | safety-sensitive protected composer |
+| Stage42-DL/DM reviewer replay | rows 47,458，switch exact match true，all/t50/t100raw/hard 约 +24.72% / +22.36% / +14.35% / +23.89%，near@0.05 1.94% -> 1.38% | runtime replay 证明 policy 可复放 |
+| Stage42-FE constrained FC/safety composer | all/t50/hard 26.41% / 23.15% / 24.81%，near@0.05 1.32%，gate 19/19 | 把 FC 精度和 DI safety floor 组合成功 |
+| Stage42-FH UCY-supported FE composer | all/t50/t100raw/hard 34.98% / 28.97% / 20.57% / 33.10%，TrajNet 与 UCY 都 positive-safe，gate 20/20 | 从 TrajNet-only robust 推进到 dual-domain positive-safe |
+| Stage42-FI frozen replay | policy hash 固化，exact replay diff 0，2000-bootstrap CI low all/t50/t100raw/hard 34.62% / 28.46% / 19.96% / 32.73%，gate 25/25 | 不是 test-tuned 偶然输出 |
+| Stage42-FU module ledger | main claim 只允许 history、domain expert、safe switch、teacher floor、group-consistency full-waypoint | 防止把 JEPA/Transformer/scene/neighbor 过度写成主贡献 |
+| Stage42-FV/FW/FX/FY | claim linter、source action consolidator、objective coverage、horizon retry map 均通过 | 论文/项目边界更稳，不继续盲目重试弱 horizon |
+| Stage42-GA-GD | source/calibration recheck、source terms prefill、intake bridge、calibration hint bridge 均通过；conversion_ready 仍为 0 | 把下一步 user-confirmed legal/source/calibration intake 准备好，但不越权转换 |
+
+### D. 当前质量判断
+
+当前最诚实定位：
+
+```text
+M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+它有 SDD、external t50、source/domain protected policy、runtime replay、bootstrap、no-leakage 和 claim-boundary 证据。
+它不是 true 3D，不是 foundation，不是 metric predictor，不是 seconds-level long-horizon predictor，也不是 ungated neural dynamics deployable model。
+```
+
+当前 best deployable 分层：
+
+| 用途 | 当前最好结果 | 是否可部署 |
+| --- | --- | --- |
+| SDD pixel raw-frame | Stage26 cost-aware selector | 是，但仅限 SDD pixel/raw-frame claim |
+| external t50 selector | Stage37 causal-history + goal-prototype safe selector | 是，external dataset-local/raw-frame claim |
+| source/domain protected full-waypoint | Stage42-FH/FI frozen protected policy family | 是，protected source/domain evidence；不允许 uniform horizon overclaim |
+| reviewer/runtime replay | Stage42-DM / DL runtime policy | 是，复放/审稿证据 |
+| neural dynamics | M3W-Neural v1 protected family | 只在 Stage37/teacher floor 保护下报告；不部署 ungated neural |
+| h100 / uniform horizon | Stage42-FY 后仍 blocked | 不可作为成功 claim |
+| legal/source conversion | Stage42-GA-GD prefill/hints ready | 不是 permission，不是 converted data |
+
+### E. 下一步最短路径
+
+1. **先关掉 source/legal/calibration blocker。**
+   用 Stage42-GB/GC/GD 生成的 intake prefill/hints，让用户逐项确认 terms、allowed use、local path、source identity、calibration evidence。没有这个确认，conversion_ready 必须继续是 0。
+
+2. **只对 legally ready 的 source 做 guarded conversion。**
+   不能把 registry、prefill、hint 当 converted/evaluated data。转换后必须重新跑 no-leakage、source-CV、baseline、policy replay。
+
+3. **再重启 h100 / uniform horizon 修复。**
+   TrajNet|100 和 UCY|100 的问题不是继续调同一套 threshold，而是需要 source support、long-horizon context、terms-confirmed source-CV 和更强 h100 features。
+
+4. **如果继续 neural world dynamics，必须学 safety-relevant targets。**
+   不要训练普通 residual；应训练 gain/harm、group-consistency、source/horizon-aware switchability、full-waypoint consistency，并保留 Stage37/teacher floor。
 
 ## 给用户的直接总结
 
