@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FC: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, and objective-level proximity training improved all/t50/hard while still failing the proximity safety gate.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FD: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, and FA safety-teacher target blending was selected away by validation rather than fixing the Pareto boundary.
 
 Latest current-goal work summary requested by the user:
 
@@ -2152,3 +2152,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->
+
+<!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:START -->
+## Stage42-FD Safety-Aware Joint Objective Training
+
+- source: `fresh_stage42_safety_aware_joint_objective_training`
+- role: tests whether FA safety-teacher regularization inside the training objective can break the FC accuracy/proximity tradeoff.
+- selected objective: `fc_label_proximity_control`; feature mode `stage42_am_features`; lambda `100.0`; teacher alpha `0.0`.
+- gate: `22 / 26`; verdict `stage42_fd_safety_aware_joint_objective_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.33%` / `22.70%` / `14.02%` / `24.69%` / `-31.11%`.
+- delta vs Stage42-FC all/hard/near005: `-0.04%` / `-0.07%` / `0.01%`.
+- delta vs Stage42-DI all/hard/near005: `1.62%` / `0.80%` / `0.48%`.
+- decision: `safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:END -->

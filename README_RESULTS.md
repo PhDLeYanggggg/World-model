@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FC：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 则提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp，因此同样不是新 best deployable。当前结论是：post-hoc repair 已接近 Pareto 边界，objective-level training 能提高精度但还需要 safety-aware joint loss。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FD：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 仍被 validation 选回 teacher_alpha=0 的 FC-like 控制项，说明简单 FA teacher target blend 不能打破 accuracy/proximity Pareto。当前结论是：post-hoc repair 已接近 Pareto 边界，objective-level training 能提高精度，但 proximity safety 需要显式 safety-aware constraint / joint loss，而不是简单 teacher blend。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -5136,3 +5136,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->
+
+<!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:START -->
+## Stage42-FD Safety-Aware Joint Objective Training
+
+- source: `fresh_stage42_safety_aware_joint_objective_training`
+- role: tests whether FA safety-teacher regularization inside the training objective can break the FC accuracy/proximity tradeoff.
+- selected objective: `fc_label_proximity_control`; feature mode `stage42_am_features`; lambda `100.0`; teacher alpha `0.0`.
+- gate: `22 / 26`; verdict `stage42_fd_safety_aware_joint_objective_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.33%` / `22.70%` / `14.02%` / `24.69%` / `-31.11%`.
+- delta vs Stage42-FC all/hard/near005: `-0.04%` / `-0.07%` / `0.01%`.
+- delta vs Stage42-DI all/hard/near005: `1.62%` / `0.80%` / `0.48%`.
+- decision: `safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:END -->

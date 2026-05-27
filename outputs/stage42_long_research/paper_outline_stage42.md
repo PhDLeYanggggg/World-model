@@ -414,3 +414,17 @@ The paper-ready scope remains a protected 2.5D raw-frame world-state candidate. 
 - decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->
+
+<!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:START -->
+## Stage42-FD Safety-Aware Joint Objective Training
+
+- source: `fresh_stage42_safety_aware_joint_objective_training`
+- role: tests whether FA safety-teacher regularization inside the training objective can break the FC accuracy/proximity tradeoff.
+- selected objective: `fc_label_proximity_control`; feature mode `stage42_am_features`; lambda `100.0`; teacher alpha `0.0`.
+- gate: `22 / 26`; verdict `stage42_fd_safety_aware_joint_objective_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.33%` / `22.70%` / `14.02%` / `24.69%` / `-31.11%`.
+- delta vs Stage42-FC all/hard/near005: `-0.04%` / `-0.07%` / `0.01%`.
+- delta vs Stage42-DI all/hard/near005: `1.62%` / `0.80%` / `0.48%`.
+- decision: `safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:END -->

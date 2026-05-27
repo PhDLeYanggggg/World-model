@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FC objective-level proximity training",
-  "current_verdict": "stage42_fc_objective_level_proximity_training_positive_not_promoted",
+  "current_stage": "Stage42-FD safety-aware joint objective training",
+  "current_verdict": "stage42_fd_safety_aware_joint_objective_positive_not_promoted",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fc_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fd_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -17,7 +17,8 @@
       "Stage42-EZ temporal group-repel repair",
       "Stage42-FA waypoint-wise group-repel repair",
       "Stage42-FB proximity Pareto composer",
-      "Stage42-FC objective-level proximity training"
+      "Stage42-FC objective-level proximity training",
+      "Stage42-FD safety-aware joint objective training"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -31,8 +32,8 @@
       "smc_enabled"
     ],
     "summary_refresh_only": true,
-        "latest_full_pytest_after_stage42_fc_refresh": "786 passed in 36.07s",
-    "latest_conclusion": "Stage42-FB showed DI/FA post-hoc composition is Pareto-bounded. Stage42-FC moves proximity/group-interaction into supervised training objective and reports whether this breaks the all/hard/proximity tradeoff without changing metric/seconds or Stage5C/SMC boundaries."
+    "latest_full_pytest_after_stage42_fc_refresh": "786 passed in 36.07s",
+    "latest_conclusion": "Stage42-FD follows FC by adding FA safety-teacher regularization inside the supervised objective, testing whether all/hard gains and proximity safety can be achieved together without changing raw-frame/dataset-local boundaries."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -28160,5 +28161,172 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FC tests whether proximity/group-interaction should move into the training objective after Stage42-FB exposed a post-hoc Pareto boundary."
+  },
+  "stage42_fd_safety_aware_joint_objective_training": {
+    "source": "fresh_stage42_safety_aware_joint_objective_training",
+    "report": "outputs/stage42_long_research/safety_aware_joint_objective_training_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fd_gate.md",
+    "verdict": "stage42_fd_safety_aware_joint_objective_positive_not_promoted",
+    "gates": "22/26",
+    "selected_objective": {
+      "variant": "fc_label_proximity_control",
+      "feature_mode": "stage42_am_features",
+      "lambda": 100.0,
+      "teacher_alpha": 0.0,
+      "safety_mask_mode": "none",
+      "train_safety_mask_rate": 0.0,
+      "val_score": 1.7746909343220274,
+      "val_metric": {
+        "rows": 23788,
+        "all_improvement": 0.4599832746130835,
+        "t10_improvement": 0.7373235770932081,
+        "t25_improvement": 0.3452726195132091,
+        "t50_improvement": 0.49584364370610323,
+        "t100_raw_frame_diagnostic_improvement": 0.3270384163366197,
+        "hard_failure_improvement": 0.4559230663993815,
+        "easy_degradation": -0.31649354143084285,
+        "switch_rate": 0.8453842273415167,
+        "harm_over_fallback": -0.2489193646482147
+      },
+      "val_near_diagnostics": {
+        "near_005": 0.013872540776862284,
+        "near_008": 0.06700857575248025,
+        "p05_min_distance": 0.07365441057937523
+      },
+      "val_near_delta_vs_di": 0.009500588532032958,
+      "policy_slice_count": 8,
+      "mean_train_weight": 1.0,
+      "max_train_weight": 2.817320494036369
+    },
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.2633495082354004,
+      "t10_improvement": 0.4842871367491448,
+      "t25_improvement": 0.3045923846830305,
+      "t50_improvement": 0.2270070641898998,
+      "t100_raw_frame_diagnostic_improvement": 0.14016898328753757,
+      "hard_failure_improvement": 0.24689413516032277,
+      "easy_degradation": -0.3111118062509005,
+      "switch_rate": 0.6198954865354629,
+      "harm_over_fallback": -0.12128294900032427
+    },
+    "comparison_to_prior": {
+      "stage42_am_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24578838559866356,
+        "t10_improvement": 0.4584029803090398,
+        "t25_improvement": 0.23324144358920462,
+        "t50_improvement": 0.22017071087030715,
+        "t100_raw_frame_diagnostic_improvement": 0.14365240535176194,
+        "hard_failure_improvement": 0.23749387838492075,
+        "easy_degradation": -0.25662729975593146,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11319535181660002
+      },
+      "stage42_di_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24715658317833844,
+        "t10_improvement": 0.4586454739489455,
+        "t25_improvement": 0.23617773697664124,
+        "t50_improvement": 0.2236298792899738,
+        "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+        "hard_failure_improvement": 0.23887420070464105,
+        "easy_degradation": -0.2563085406508494,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11382546135578223
+      },
+      "stage42_fa_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24605288256560842,
+        "t10_improvement": 0.4586732917104648,
+        "t25_improvement": 0.23400154741081725,
+        "t50_improvement": 0.22050673344862604,
+        "t100_raw_frame_diagnostic_improvement": 0.1436404358960347,
+        "hard_failure_improvement": 0.23772605298948868,
+        "easy_degradation": -0.2566564819582313,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11331716321608831
+      },
+      "stage42_fb_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24646988046247176,
+        "t10_improvement": 0.4585544550999535,
+        "t25_improvement": 0.23486459312960029,
+        "t50_improvement": 0.22185472575437526,
+        "t100_raw_frame_diagnostic_improvement": 0.14349592498302977,
+        "hard_failure_improvement": 0.23815346713533803,
+        "easy_degradation": -0.25640074237317567,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.113509207374429
+      },
+      "stage42_fc_metric": {
+        "rows": 47458,
+        "all_improvement": 0.2637123937710437,
+        "t10_improvement": 0.48323119524852154,
+        "t25_improvement": 0.3031552216712542,
+        "t50_improvement": 0.2300615855403101,
+        "t100_raw_frame_diagnostic_improvement": 0.14020637764373833,
+        "hard_failure_improvement": 0.24759637279187285,
+        "easy_degradation": -0.31103933754911095,
+        "switch_rate": 0.619937629061486,
+        "harm_over_fallback": -0.12145007225871682
+      },
+      "delta_vs_stage42_am": {
+        "all_improvement": 0.017561122636736815,
+        "t50_improvement": 0.006836353319592647,
+        "t100_raw_frame_diagnostic_improvement": -0.003483422064224362,
+        "hard_failure_improvement": 0.009400256775402016,
+        "easy_degradation": -0.054484506494969054
+      },
+      "delta_vs_stage42_di": {
+        "all_improvement": 0.016192925057061935,
+        "t50_improvement": 0.003377184899926,
+        "t100_raw_frame_diagnostic_improvement": -0.0032921381906432234,
+        "hard_failure_improvement": 0.008019934455681721,
+        "easy_degradation": -0.05480326560005111
+      },
+      "delta_vs_stage42_fa": {
+        "all_improvement": 0.017296625669791954,
+        "t50_improvement": 0.006500330741273763,
+        "t100_raw_frame_diagnostic_improvement": -0.0034714526084971276,
+        "hard_failure_improvement": 0.009168082170834091,
+        "easy_degradation": -0.054455324292669194
+      },
+      "delta_vs_stage42_fb": {
+        "all_improvement": 0.016879627772928618,
+        "t50_improvement": 0.005152338435524539,
+        "t100_raw_frame_diagnostic_improvement": -0.0033269416954921915,
+        "hard_failure_improvement": 0.008740668024984743,
+        "easy_degradation": -0.05471106387772484
+      },
+      "delta_vs_stage42_fc": {
+        "all_improvement": -0.00036288553564334247,
+        "t50_improvement": -0.0030545213504102886,
+        "t100_raw_frame_diagnostic_improvement": -3.739435620075948e-05,
+        "hard_failure_improvement": -0.0007022376315500845,
+        "easy_degradation": -7.24687017895631e-05
+      },
+      "near_delta_vs_stage42_di": 0.004825319229634625,
+      "near_delta_vs_stage42_fb": 0.007691010999199293,
+      "near_delta_vs_stage42_fc": 6.321378903451427e-05,
+      "stage42_di_near_005": 0.01382274853554722,
+      "stage42_fb_near_005": 0.010957056765982553,
+      "stage42_fc_near_005": 0.01858485397614733
+    },
+    "deployment_decision": {
+      "promote_safety_aware_objective": false,
+      "diagnostic_positive": true,
+      "decision": "safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor",
+      "reason": "Promotion requires positive all+hard, easy safe, no all/hard loss vs Stage42-DI/FB/FC, and no worse near@0.05 than Stage42-DI."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FD tests whether safety-teacher regularization inside the supervised objective can break the Stage42-FC all/hard vs proximity tradeoff."
   }
 }
