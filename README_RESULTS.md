@@ -1,5 +1,19 @@
 # Physical World Model 2.5D Results
 
+## M3W 长期目标完整总结 README（当前用户主文件）
+
+本轮按用户要求，把“这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”集中写到一个新的单文件 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_FULL_SUMMARY_ZH.md`
+
+该文件是 summary-only，不包含新训练、下载、转换或评估；结果来源为 `cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-HC floor-alternative gate stress 与 Stage42-HD floor-free proximity-guard repair。它明确写清：
+
+- 当前 M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+- 当前不是 true 3D、不是 foundation、不是 metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
+- 成功路线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42-FH/FI source/domain frozen protected policy、Stage42-DL/DM runtime replay、Stage42-HD teacherless proximity-guard repaired gate。
+- 失败或 blocked 路线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim、global floor removal。
+- 最新 Stage42-HD 结论：teacher gate 可以不使用，但 causal floor fallback 仍必须存在；best repaired family `harm_predictor_gate` 的 all/t50/t100raw/hard 为 `+20.74% / +13.82% / +13.68% / +19.99%`，easy degradation `0.00%`，collision delta@0.05 `-0.47%`，gate `13 / 13`。
+
 ## M3W 用户版详细总账（当前最新主入口）
 
 本轮按用户要求，把“这个目标内做了什么、尝试过什么路线、哪些失败、失败原因、哪些成功、当前大概是什么质量”整理成一个新的主 README：
