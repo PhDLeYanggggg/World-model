@@ -2634,3 +2634,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - No download, conversion, feature-store build, training, or evaluation was executed.
 - Boundary: source/terms audit only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
 <!-- STAGE42_GO_OFFICIAL_SOURCE_TERMS_LIVE_VERIFIER:END -->
+
+<!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:START -->
+## Stage42-GP Source Terms Paper Claim Guard
+
+- source: `fresh_stage42_gp_source_terms_paper_claim_guard`
+- role: writes the GO source/terms blocker into data card, method draft, and A-journal gap so paper claims cannot overrun legal/source evidence.
+- gate: `12 / 12`; verdict `stage42_gp_source_terms_paper_claim_guard_pass`.
+- paper files refreshed: `3`; unsafe source-claim violations: `0`.
+- No source is license-confirmed, auto-downloadable, conversion-ready, converted, trained, or evaluated by this step.
+- Boundary: source/terms paper guard only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
+<!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:END -->

@@ -668,3 +668,26 @@ No new metric/time calibration was introduced by Stage42-AB/AC. All updated pape
 
 Data claims remain dataset-local/raw-frame. Legal/source actions are required before new h100 conversion or uniform horizon claims.
 <!-- STAGE42_FZ_FXFY_PAPER_PACKAGE_REFRESH:END -->
+
+<!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:START -->
+## Source / Terms Claim Guard
+
+- source: `fresh_stage42_gp_source_terms_paper_claim_guard`
+- upstream GO verdict: `stage42_go_official_source_terms_live_verifier_pass`
+- datasets guarded: `5`
+- underlying data licenses confirmed now: `0`
+- auto-download allowed now: `0`
+- contract-ready sources now: `0`
+- OpenTraj toolkit/code metadata may be cited separately from underlying ETH/UCY/TrajNet dataset permission.
+- UCY / ETH-BIWI / TrajNet / AerialMPT remain source candidates until user-confirmed terms, path, source identity, guarded conversion, no-leakage audit, and source-CV pass.
+- No result in this paper package may say these candidates are newly converted/evaluated data yet.
+- No result may claim global metric or seconds-level prediction from these sources yet.
+
+| dataset | allowed wording | disallowed wording |
+| --- | --- | --- |
+| `ucy_crowd_original` | ucy_crowd_original is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that ucy_crowd_original has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
+| `eth_biwi_original` | eth_biwi_original is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that eth_biwi_original has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
+| `opentraj_toolkit` | OpenTraj is used only as toolkit/metadata/source-discovery evidence; underlying dataset terms are separate. | Do not write that OpenTraj MIT license grants permission for ETH/UCY/TrajNet underlying data. |
+| `trajnetplusplus_official` | trajnetplusplus_official is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that trajnetplusplus_official has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
+| `aerialmpt_or_other_topdown` | aerialmpt_or_other_topdown is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that aerialmpt_or_other_topdown has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
+<!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:END -->
