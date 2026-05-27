@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 单文件详细总结
+
+本轮按用户要求新增一个更明确的单文件中文总结：
+
+`/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
+
+它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 当前工作路线/失败/成功总账
 
 本轮按用户要求刷新了一个单文件中文总账：
@@ -5382,3 +5390,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Boundary: queue only; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py -> 12/12', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_unified_guarded_conversion_queue.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 848 passed'}`.
 <!-- STAGE42_FT_UNIFIED_GUARDED_CONVERSION_QUEUE:END -->
+
+<!-- STAGE42_FU_MODULE_CONTRIBUTION_LEDGER:START -->
+## Stage42-FU Module Contribution Ledger
+
+- source: `fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de`
+- role: machine-readable claim ledger over AA/Y/BW/EC/DP/DE evidence; no new training or threshold tuning.
+- gate: `14 / 14`; verdict `stage42_fu_module_contribution_ledger_pass`.
+- main claim modules: `['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint', 'full_waypoint_shape', 'endpoint_bridge']`.
+- blocked/auxiliary modules: `['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']`.
+- Core supported claims: history, domain expert, safe-switch/teacher floor, and source-level group-consistency full-waypoint.
+- Blocked as main independent claims under current evidence: JEPA downstream lift, Transformer-only contribution, scene/goal, neighbor/interaction, ungated neural/global metric/seconds.
+- verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_module_contribution_ledger.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_module_contribution_ledger.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 852 passed'}`.
+<!-- STAGE42_FU_MODULE_CONTRIBUTION_LEDGER:END -->

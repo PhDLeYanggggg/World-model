@@ -811,3 +811,16 @@ Interaction/occupancy/physical heads are present in the full-waypoint model inte
 - Boundary: queue only; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py -> 12/12', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_unified_guarded_conversion_queue.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 848 passed'}`.
 <!-- STAGE42_FT_UNIFIED_GUARDED_CONVERSION_QUEUE:END -->
+
+<!-- STAGE42_FU_MODULE_CONTRIBUTION_LEDGER:START -->
+## Stage42-FU Module Contribution Ledger
+
+- source: `fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de`
+- role: machine-readable claim ledger over AA/Y/BW/EC/DP/DE evidence; no new training or threshold tuning.
+- gate: `14 / 14`; verdict `stage42_fu_module_contribution_ledger_pass`.
+- main claim modules: `['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint', 'full_waypoint_shape', 'endpoint_bridge']`.
+- blocked/auxiliary modules: `['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']`.
+- Core supported claims: history, domain expert, safe-switch/teacher floor, and source-level group-consistency full-waypoint.
+- Blocked as main independent claims under current evidence: JEPA downstream lift, Transformer-only contribution, scene/goal, neighbor/interaction, ungated neural/global metric/seconds.
+- verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_module_contribution_ledger.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_module_contribution_ledger.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 852 passed'}`.
+<!-- STAGE42_FU_MODULE_CONTRIBUTION_LEDGER:END -->

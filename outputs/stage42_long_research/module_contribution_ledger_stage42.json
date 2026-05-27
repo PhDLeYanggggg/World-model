@@ -1,0 +1,459 @@
+{
+  "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+  "stage": "Stage42-FU module contribution ledger",
+  "generated_at_utc": "2026-05-27T10:12:19.963927+00:00",
+  "git_commit": "8e66700",
+  "input_hash": "5dc00be8374fd057b4375df474a1a6908426f2c2710544df1a5d0ec5d5e0836b",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-FU 是模块贡献 claim ledger；它整合已有 fresh/cached_verified evidence，不重新训练、不调 test threshold。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_gates": {
+    "aa": "stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary",
+    "y": "stage42_y_unified_ablation_evidence_pass",
+    "bw": "stage42_bw_safety_floor_necessity_audit_pass",
+    "ec": "stage42_ec_group_consistency_contribution_audit_pass",
+    "dp": "stage42_dp_context_model_closure_pass",
+    "de": "stage42_de_full_waypoint_deployment_gap_audit_pass_primary_promotion_blocked"
+  },
+  "module_rows": [
+    {
+      "module": "history",
+      "status": "supported_main_claim",
+      "source": "fresh_run",
+      "evidence_kind": "retrained_ablation",
+      "main_claim_allowed": true,
+      "metrics": {
+        "all": 0.3304355789876775,
+        "t50": 0.32554495133960887,
+        "t100_raw_frame_diagnostic": 0.3585103910963155,
+        "hard_failure": 0.3372746847605039,
+        "easy_degradation": -0.3256412431992857,
+        "status": "positive_contribution"
+      },
+      "contribution_delta": {
+        "delta_all": 0.4480355451357656,
+        "delta_t50": 0.457817280518282,
+        "delta_hard": 0.47079873325328386
+      },
+      "claim": "History tokens are a strong positive contributor in the retrained causal sequence ablation.",
+      "limitation": "Still dataset-local raw-frame 2.5D; not metric/seconds evidence.",
+      "next_action": "Keep history in deployable/full-waypoint variants and report it as a supported module."
+    },
+    {
+      "module": "domain_expert",
+      "status": "supported_main_claim",
+      "source": "fresh_run",
+      "evidence_kind": "retrained_ablation",
+      "main_claim_allowed": true,
+      "metrics": {
+        "all": 0.7369295383136194,
+        "t50": 0.7414769743658925,
+        "t100_raw_frame_diagnostic": 0.893435911421307,
+        "hard_failure": 0.768206646252081,
+        "easy_degradation": -0.6963264311534142,
+        "status": "positive_contribution"
+      },
+      "contribution_delta": {
+        "delta_all": 0.0415415858098237,
+        "delta_t50": 0.04188525749199834,
+        "delta_hard": 0.03986677176170672
+      },
+      "claim": "Domain expert routing contributes positively in retrained source-level evidence.",
+      "limitation": "Does not prove foundation-style domain generalization; source support remains bounded.",
+      "next_action": "Keep domain expert and add source-CV once legal/source queue is unblocked."
+    },
+    {
+      "module": "safe_switch",
+      "status": "supported_safety_mechanism",
+      "source": "fresh_run",
+      "evidence_kind": "retrained_ablation_plus_floor_audit",
+      "main_claim_allowed": true,
+      "metrics": {
+        "all": 0.7908202715372842,
+        "t50": 0.9052931208257475,
+        "t100_raw_frame_diagnostic": 0.9559784726753651,
+        "hard_failure": 0.8010113378885025,
+        "easy_degradation": -0.9109976297714985,
+        "status": "positive_contribution"
+      },
+      "contribution_delta": {
+        "delta_all": 0.021396849506247984,
+        "delta_t50": -0.059151137892635486,
+        "delta_hard": 0.04487697623564679
+      },
+      "claim": "Safe switch/fallback is necessary for deployability; no-safe-switch harms at least one key slice.",
+      "limitation": "Safe switch is a protected deployment mechanism, not an ungated neural dynamics claim.",
+      "next_action": "Keep safe switch active; study partial relaxation only in source/horizon slices with validation proof."
+    },
+    {
+      "module": "teacher_floor",
+      "status": "necessary_not_removable",
+      "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+      "evidence_kind": "safety_floor_necessity_audit",
+      "main_claim_allowed": true,
+      "metrics": {
+        "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+        "verdict_short": "teacher_floor_required_but_baseline_family_probe_can_relax_fallback",
+        "current_deployable_family": "current_composite_tail_policy",
+        "current_all_improvement": 0.2102513255185352,
+        "current_t50_improvement": 0.13652231450154184,
+        "current_t100_raw_frame_diagnostic": 0.14694086716388166,
+        "current_hard_failure_improvement": 0.20384916307933942,
+        "current_easy_degradation": 0.0,
+        "ungated_endpoint_easy_degradation": 1.2458611044726973,
+        "ungated_full_waypoint_easy_degradation": 1.2458611044726973,
+        "fallback_floor_is_core_deployment_safety": true,
+        "teacher_floor_context_is_core_feature_mechanism": true,
+        "floor_free_neural_deployable": false,
+        "baseline_family_rollout_context_supported": true,
+        "small_tabular_neural_context_supported": false,
+        "row_level_full_waypoint_evidence_positive": true,
+        "source_blockers_active": 5,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "contribution_delta": {
+        "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+        "fallback_removal_for_baseline_family_probe": "supported_on_this_source_level_split",
+        "teacher_floor_context_removal": "not_supported_as_global_replacement",
+        "no_floor_rel_context_protected_delta_t50": -0.09205317177637129,
+        "no_safe_baseline_context_protected_delta_t50": -0.09502721842335304,
+        "context_removal_hurts_protected_t50": true,
+        "interpretation": "Fallback relaxation in one baseline-family probe is not equivalent to removing teacher/floor rollout context or deploying ungated neural dynamics."
+      },
+      "claim": "Teacher/Stage37 floor remains required: ungated neural variants are not deployable due easy degradation.",
+      "limitation": "This means current best model is protected, not floor-free neural world dynamics.",
+      "next_action": "Do not remove teacher floor globally; only test validated partial relaxation."
+    },
+    {
+      "module": "group_consistency_full_waypoint",
+      "status": "supported_source_level_claim",
+      "source": "fresh_synthesis_from_stage42_dy_dz_ea_dp",
+      "evidence_kind": "physical_group_consistency_contribution_audit",
+      "main_claim_allowed": true,
+      "metrics": {
+        "global_all_ci_low": 0.32561590986908956,
+        "global_t50_ci_low": 0.2653276586221581,
+        "global_hard_ci_low": 0.31511510693704503,
+        "global_easy_ci_high": -0.3128132004361849,
+        "ucy_positive_safe_ci": true,
+        "trajnet_positive_safe_ci": true,
+        "near005_delta_high": -0.0067217329006700665
+      },
+      "contribution_delta": {
+        "status": "supported_source_level",
+        "evidence": "DY source-level promotion plus DZ dual-domain repair plus EA bootstrap.",
+        "all": 0.24715658317833844,
+        "t50": 0.2236298792899738,
+        "t100_raw_frame_diagnostic": 0.1434611214781808,
+        "hard": 0.23887420070464105,
+        "easy": -0.2563085406508494,
+        "near005_base": 0.019364490707573012,
+        "near005_final": 0.01382274853554722
+      },
+      "claim": "Explicit group-consistency full-waypoint dynamics has source-level bootstrap-backed positive-safe evidence.",
+      "limitation": "Not an ungated/global primary full-waypoint replacement.",
+      "next_action": "Use as source-level physical/world-state contribution; keep global overclaim blocked."
+    },
+    {
+      "module": "full_waypoint_shape",
+      "status": "partial_horizon_shape_support",
+      "source": "fresh_run",
+      "evidence_kind": "full_waypoint_shape_ablation_and_deployment_gap",
+      "main_claim_allowed": true,
+      "metrics": {
+        "all": 0.2102513255185352,
+        "t50": 0.13652231450154184,
+        "t100_raw_frame_diagnostic": 0.14694086716388166,
+        "hard_failure": 0.20384916307933942,
+        "easy_degradation": -0.14511076140795587,
+        "status": "positive_safe"
+      },
+      "contribution_delta": {
+        "delta_all": -0.02447280122019102,
+        "delta_t50": 0.011514681275772931,
+        "delta_hard": -0.008668690299824866
+      },
+      "claim": "Full-waypoint shape is useful as protected horizon/shape evidence, especially t50/t100 raw-frame slices.",
+      "limitation": "It does not replace endpoint-linear/teacher floor on all and hard/failure.",
+      "next_action": "Frame as protected shape/horizon component, not primary global dynamics head."
+    },
+    {
+      "module": "endpoint_bridge",
+      "status": "supported_floor_component",
+      "source": "fresh_run",
+      "evidence_kind": "bridge_vs_full_waypoint_boundary",
+      "main_claim_allowed": true,
+      "metrics": {
+        "all": 0.2102513255185352,
+        "t50": 0.13652231450154184,
+        "t100_raw_frame_diagnostic": 0.14694086716388166,
+        "hard_failure": 0.20384916307933942,
+        "easy_degradation": -0.14511076140795587,
+        "status": "positive_safe"
+      },
+      "contribution_delta": {
+        "delta_all": -0.02447280122019102,
+        "delta_t50": 0.011514681275772931,
+        "delta_hard": -0.008668690299824866
+      },
+      "claim": "Endpoint-linear bridge remains an important safety/accuracy floor component.",
+      "limitation": "Endpoint success alone cannot be claimed as learned full-waypoint dynamics.",
+      "next_action": "Keep bridge/floor in deployment comparisons and separate it from full-waypoint claims."
+    },
+    {
+      "module": "scene_goal",
+      "status": "weak_or_mixed_not_main_claim",
+      "source": "fresh_run",
+      "evidence_kind": "retrained_ablation_positive_but_context_closure_blocks_main_claim",
+      "main_claim_allowed": false,
+      "metrics": {
+        "no_scene": {
+          "all": 0.8025795431358819,
+          "t50": 0.8460640190119193,
+          "t100_raw_frame_diagnostic": 0.9526920055221376,
+          "hard_failure": 0.8350345810763843,
+          "easy_degradation": -0.8415163077598001,
+          "status": "positive_contribution"
+        },
+        "no_goal": {
+          "all": 0.8025795431358819,
+          "t50": 0.8460640190119193,
+          "t100_raw_frame_diagnostic": 0.9526920055221376,
+          "hard_failure": 0.8350345810763843,
+          "easy_degradation": -0.8415163077598001,
+          "status": "positive_contribution"
+        },
+        "sequence_goal_scene": {
+          "module": "goal/scene tokens",
+          "ablation": "sequence_no_goal_scene_tokens",
+          "source": "fresh_run",
+          "metrics": {
+            "all": 0.7731505704668217,
+            "t50": 0.7876211484182892,
+            "t100_raw_frame_diagnostic": 0.9118188737123679,
+            "hard_failure": 0.8037016848055435,
+            "easy_degradation": -0.7571316550217917
+          },
+          "full_minus_ablation": {
+            "all": 0.0053205536566214295,
+            "t50": -0.00425891656039834,
+            "hard_failure": 0.004371733208244244,
+            "easy_delta_ablation_minus_full": 0.01127187607038127
+          },
+          "positive_contribution": true
+        }
+      },
+      "contribution_delta": {
+        "no_scene": {
+          "delta_all": 0.009637577907650297,
+          "delta_t50": 7.796392119274742e-05,
+          "delta_hard": 0.010853733047765046
+        },
+        "no_goal": {
+          "delta_all": 0.009637577907650297,
+          "delta_t50": 7.796392119274742e-05,
+          "delta_hard": 0.010853733047765046
+        }
+      },
+      "claim": "Scene/goal has weak retrained evidence but not enough to be an independent main contribution under current protocols.",
+      "limitation": "Current context closure and prior goal/scene expert runs do not support a main independent contribution claim.",
+      "next_action": "Revisit only with changed target/data support; do not write as main claim now."
+    },
+    {
+      "module": "neighbor_interaction",
+      "status": "weak_or_mixed_not_main_claim",
+      "source": "fresh_run",
+      "evidence_kind": "retrained_ablation_positive_but_graph_context_negative",
+      "main_claim_allowed": false,
+      "metrics": {
+        "no_neighbor": {
+          "all": 0.8087518067705028,
+          "t50": 0.8460362922676209,
+          "t100_raw_frame_diagnostic": 0.9530560020140664,
+          "hard_failure": 0.8423387865152415,
+          "easy_degradation": -0.8396881053143659,
+          "status": "positive_contribution"
+        },
+        "no_interaction": {
+          "all": 0.8087518067705028,
+          "t50": 0.8460362922676209,
+          "t100_raw_frame_diagnostic": 0.9530560020140664,
+          "hard_failure": 0.8423387865152415,
+          "easy_degradation": -0.8396881053143659,
+          "status": "positive_contribution"
+        },
+        "sequence_neighbor_interaction": {
+          "module": "neighbor/interaction tokens",
+          "ablation": "sequence_no_neighbor_interaction_tokens",
+          "source": "fresh_run",
+          "metrics": {
+            "all": 0.778549392169928,
+            "t50": 0.782063751648341,
+            "t100_raw_frame_diagnostic": 0.917928855104648,
+            "hard_failure": 0.8094168572093686,
+            "easy_degradation": -0.7497884260727141
+          },
+          "full_minus_ablation": {
+            "all": -7.826804648491947e-05,
+            "t50": 0.0012984802095499237,
+            "hard_failure": -0.0013434391955808866,
+            "easy_delta_ablation_minus_full": 0.018615105019458844
+          },
+          "positive_contribution": true
+        }
+      },
+      "contribution_delta": {
+        "no_neighbor": {
+          "delta_all": 0.0034653142730293185,
+          "delta_t50": 0.0001056906654911538,
+          "delta_hard": 0.00354952760890781
+        },
+        "no_interaction": {
+          "delta_all": 0.0034653142730293185,
+          "delta_t50": 0.0001056906654911538,
+          "delta_hard": 0.00354952760890781
+        }
+      },
+      "claim": "Neighbor/interaction has small or mixed contribution; current graph residual protocol is negative.",
+      "limitation": "Current graph/interaction rows remain below baseline-family control.",
+      "next_action": "Report as auxiliary/diagnostic unless a new target proves stronger contribution."
+    },
+    {
+      "module": "JEPA",
+      "status": "blocked_negative_or_inconclusive",
+      "source": "cached_verified",
+      "evidence_kind": "cached_verified_negative_boundary",
+      "main_claim_allowed": false,
+      "metrics": {
+        "all": -0.026777069471576986,
+        "t50": -0.015065713704299988,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": -0.024300942834727834,
+        "easy_degradation": 0.026903930506348317,
+        "status": "cached_negative_or_inconclusive"
+      },
+      "contribution_delta": {
+        "delta_all": null,
+        "delta_t50": null,
+        "delta_hard": null
+      },
+      "claim": "JEPA cannot be claimed as a downstream contributor in current evidence.",
+      "limitation": "Existing JEPA is non-collapse but downstream lift is not stable.",
+      "next_action": "Do not use JEPA as main claim unless a fresh retrained downstream lift appears."
+    },
+    {
+      "module": "Transformer",
+      "status": "fresh_proxy_negative_or_inconclusive",
+      "source": "fresh_run",
+      "evidence_kind": "fresh_proxy_ablation_not_full_no_transformer",
+      "main_claim_allowed": false,
+      "metrics": {
+        "all": 0.8178337407401962,
+        "t50": 0.8528474053699812,
+        "t100_raw_frame_diagnostic": 0.9500782392124639,
+        "hard_failure": 0.8599020897660544,
+        "easy_degradation": -0.8046504463843118,
+        "status": "negative_or_inconclusive"
+      },
+      "contribution_delta": {
+        "delta_all": -0.005616619696664049,
+        "delta_t50": -0.006705422436869113,
+        "delta_hard": -0.01401377564190509
+      },
+      "claim": "Transformer contribution is not independently proven as a main claim under the current proxy.",
+      "limitation": "This is a proxy boundary, not a complete no-Transformer retrain claim.",
+      "next_action": "If revisited, run a proper architecture-controlled retrain instead of using proxy evidence."
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+    "modules_total": 11,
+    "supported_or_necessary_modules": 6,
+    "main_claim_allowed_modules": [
+      "history",
+      "domain_expert",
+      "safe_switch",
+      "teacher_floor",
+      "group_consistency_full_waypoint",
+      "full_waypoint_shape",
+      "endpoint_bridge"
+    ],
+    "blocked_or_auxiliary_modules": [
+      "scene_goal",
+      "neighbor_interaction",
+      "JEPA",
+      "Transformer"
+    ],
+    "paper_claim_core": [
+      "history",
+      "domain_expert",
+      "safe_switch",
+      "teacher_floor",
+      "group_consistency_full_waypoint"
+    ],
+    "paper_claim_blocked": [
+      "JEPA_downstream_lift",
+      "ungated_neural_dynamics",
+      "scene_goal_independent_main_claim",
+      "neighbor_interaction_independent_main_claim",
+      "global_metric_seconds_claim"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "synthesis_only_no_training": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "verification": {
+    "runner": ".venv-pytorch/bin/python run_stage42_module_contribution_ledger.py -> 14/14",
+    "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_module_contribution_ledger.py -> 4 passed",
+    "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 852 passed"
+  },
+  "stage42_fu_gate": {
+    "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+    "gates": {
+      "aa_input_passed": true,
+      "y_input_passed": true,
+      "bw_input_passed": true,
+      "ec_input_passed": true,
+      "core_modules_supported": true,
+      "at_least_two_positive_contributions": true,
+      "scene_goal_overclaim_blocked": true,
+      "neighbor_interaction_overclaim_blocked": true,
+      "jepa_overclaim_blocked": true,
+      "transformer_boundary_recorded": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_fu_module_contribution_ledger_pass"
+  }
+}

@@ -1,0 +1,411 @@
+# M3W 单文件详细总结：做过什么、失败什么、成功什么、当前质量如何
+
+更新时间：2026-05-27
+
+工作目录：`/Users/yangyue/Downloads/World`
+
+结果来源：
+
+- `fresh_run`：本轮或对应 Stage 实际重新运行、重新训练、重新评估得到。
+- `cached_verified`：读取已有结果，但已有 hash / schema / no-leakage / gate / replay / pytest 记录支撑。
+- `diagnostic_only`：有分析价值，但不能当 deployable 或主 claim。
+
+本文用途：把 M3W 长期目标内的关键尝试、路线、失败原因、成功证据、当前 best deployable、论文 claim 边界和下一步 blocker 集中写到一个 README。本文是总结文件，不是新训练结果，不把 cached 写成 fresh，不把失败包装成成功。
+
+## 0. 最短结论
+
+M3W 已经从早期的 SDD-only 2.5D trajectory scaffold，推进为一个有 SDD 与 external top-down pedestrian 数据证据的 **protected dataset-local / raw-frame 2.5D multi-agent world-state candidate**。
+
+但它仍然不是：
+
+- true 3D world model
+- large-scale foundation world model
+- global metric / meter-level predictor
+- seconds-level long-horizon predictor
+- ungated neural dynamics deployable model
+- Stage5C latent generative rollout
+- SMC-ready model
+
+当前最强部署分层：
+
+| 场景 | 当前最好结果 | 证据状态 |
+| --- | --- | --- |
+| SDD pixel raw-frame | Stage26 cost-aware selector | t+50 约 +14.58%，hard/failure 约 +11.23%，easy degradation 约 +1.81%。 |
+| External t+50 transfer | Stage37 causal-history + goal-prototype safe selector | all +13.48%，t50 +8.46%，t50 bootstrap CI [+7.69%, +9.15%]，hard/failure +15.54%，easy degradation 0.041%，gate 16/16。 |
+| Protected neural / world-state candidate | M3W-Neural v1 composite-tail safe-switch under Stage37/teacher floor | all +21.03%，t50 +13.65%，t100 raw diagnostic +14.69%，hard/failure +20.38%，easy degradation 0；仍是 protected，不是 ungated neural deployment。 |
+| Source/domain robust protected policy | Stage42-FH/FI frozen policy family | all/t50/t100raw/hard 约 34.98% / 28.97% / 20.57% / 33.10%；FI exact replay diff 0；CI low 34.62% / 28.46% / 19.96% / 32.73%；TrajNet 和 UCY domain positive-safe。 |
+| Module claim ledger | Stage42-FU | gate 14/14；允许主 claim: history、domain expert、safe switch、teacher floor、group-consistency full-waypoint；阻止主 claim: JEPA、Transformer、scene/goal、neighbor/interaction。 |
+
+一句话：**当前最好成果是“受安全 floor 保护的 dataset-local/raw-frame 2.5D 多智能体 world-state candidate”，不是 true 3D 或 foundation world model。**
+
+## 1. 已尝试的主路线
+
+### 1.1 强因果基线与 fallback 路线
+
+做了什么：
+
+- 构建 constant position、constant velocity causal finite difference、damped velocity、constant acceleration、turn-rate、scene-clamped、goal-directed 等 baseline。
+- 每个 learned selector / neural model 都必须和 strongest causal baseline、Stage26、Stage37 floor 比。
+- 建立 oracle headroom、selector regret、easy/hard/failure 切片、harm over fallback。
+
+结果：
+
+- 成功，是当前最可靠的骨架。
+- Stage26、Stage37、Stage42 protected policies 都源自这条路线。
+
+原因：
+
+- 真实轨迹预测里强 causal baseline 非常强。
+- 学习模型如果在 easy cases 上乱切换，整体就不可部署。
+- fallback floor 把“模型偶尔有用”变成“只在有把握时切换”。
+
+### 1.2 SDD official pixel-space benchmark 路线
+
+做了什么：
+
+- 下载并转换 Stanford Drone Dataset。
+- 构建 SDD world-state shards、scene packs、lazy episodes。
+- 建立 GoalBench、HardBench、BaselineFailureBench、strongest causal baseline。
+- 训练 selector、failure predictor、JEPA heads。
+
+成功：
+
+- Stage26 cost-aware selector 成为 SDD best deployable。
+- 关键指标：t+50 约 +14.58%，hard/failure 约 +11.23%，easy degradation 约 +1.81%。
+
+边界：
+
+- SDD 是 pixel-space，不是 metric。
+- t+50/t+100 是 raw annotation-frame horizon，不是 seconds-level。
+- homography、scale、effective seconds 没有全局验证。
+
+### 1.3 hard-class selector 路线
+
+做了什么：
+
+- 早期 selector 直接预测“哪个 baseline 最好”。
+
+失败：
+
+- Stage24 hard-class selector t+50 improvement 约 -43.3%。
+- easy degradation 约 11.33%。
+
+原因：
+
+- oracle best baseline label 经常 low-margin。
+- best 和 second-best 差距很小，hard label 噪声大。
+- selector 过度切换 easy cases。
+
+修复：
+
+- 改成 expected-FDE / regret-aware / cost-aware selector。
+- 加 confidence gate、predicted gain margin、easy guard、fallback strongest baseline。
+
+### 1.4 JEPA 表征路线
+
+做了什么：
+
+- Stage18/19/22/23/24 与 M3W 期间多轮训练 JEPA-only、trajectory JEPA、scene/trajectory JEPA、interaction-aware JEPA。
+- 检查 latent variance / non-collapse。
+- 训练 selector/failure/goal/hard probe。
+
+失败：
+
+- JEPA 多次 non-collapse，但没有稳定 downstream lift。
+- failure predictor、selector、t50、correction 没有稳定改善。
+
+原因：
+
+- non-collapse 不等于对下游决策有用。
+- 表征目标和部署目标错位。
+- scene/video/raw frame grounding 与 metric/time calibration 不足。
+- latent distribution alignment 不等于 gain/harm target alignment。
+
+当前结论：
+
+- JEPA 只能作为 auxiliary / diagnostic。
+- 不能写成 latent generative world model。
+- 不能作为主贡献 claim。
+
+### 1.5 Transformer / Hybrid neural dynamics 路线
+
+做了什么：
+
+- 训练 Transformer-only、JEPA+Transformer hybrid、Causal Transformer with history/neighbor tokens、protected neural dynamics、full-waypoint sequence dynamics。
+- 输出 trajectory、failure/gain/harm、selector、interaction、occupancy、physical validity proxy。
+
+失败/部分成功：
+
+- Stage39/40 神经模型没有超过 Stage37，部署仍保持 Stage37 selector。
+- neural without fallback 往往灾难性失败或伤 easy。
+- Stage41/42 的 protected neural/full-waypoint evidence 有明显贡献，但仍依赖 Stage37/teacher safety floor。
+
+原因：
+
+- Stage37 floor 已经强。
+- 无保护 residual 或 endpoint dynamics 容易伤 easy。
+- 数据是 dataset-local/raw-frame，不是统一物理世界坐标。
+- t100 长时程仍受 source support、horizon ambiguity、track length 限制。
+
+当前结论：
+
+- 可以写 protected neural/world-state candidate。
+- 不能写 ungated neural dynamics 已可部署。
+- Transformer 独立主贡献尚未被 Stage42-FU ledger 允许。
+
+### 1.6 External zero-shot / domain alignment 路线
+
+做了什么：
+
+- 将 SDD / M3W-LAS 直接迁移到 OpenTraj、ETH-UCY、TrajNet、UCY。
+- 尝试 zscore、velocity/path normalization、relative target、CORAL、linear latent adapter、domain-conditioned selector。
+
+失败：
+
+- Stage31 zero-shot all improvement 约 -92.67%，t50 约 -278.57%。
+- adapted selector 初期约 0 improvement。
+
+原因：
+
+- SDD pixel 与 external dataset-local 坐标不兼容。
+- 外部 scene/goal/interaction 缺失。
+- agent type 与 horizon 分布不匹配。
+- latent adapter 缩小分布距离但没有带来 predictive lift。
+
+修复：
+
+- 补 external row geometry、train-only goals、relative-error targets、coordinate-invariant features。
+- 后续转向 selective transfer 和 t50-specific history/prototype features。
+
+### 1.7 External selective transfer 路线
+
+做了什么：
+
+- 构建 external hard/easy/failure labels。
+- 训练 hard detector、failure predictor、gain predictor、harm predictor。
+- 只在 hard/failure probability 高、predicted gain 高、harm 低时切换。
+
+中间成功：
+
+- Stage35 all +12.13%，hard/failure +13.98%，easy degradation 0.041%。
+
+失败：
+
+- Stage35 t+50 improvement = 0.0，不可部署。
+
+原因：
+
+- all-test objective 淹没 t50。
+- 长时程缺完整 past-only history window。
+- held-out scene 缺 train-scene goals。
+- policy 对 t50 切换太保守。
+
+### 1.8 Stage37 causal history + scene-agnostic goal prototypes
+
+做了什么：
+
+- 构建 K=8/16/32/64 past-only history window。
+- 构建 scene-agnostic goal prototypes：straight、slow-stop、left/right turn、group-follow、density-avoid、exit-like direction。
+- 训练 t50 switchability/gain/harm predictors。
+- 用 conformal / validation safety 控制 easy degradation。
+
+成功：
+
+```text
+all improvement: +13.48%
+t+50 improvement: +8.46%
+t+50 bootstrap CI: [+7.69%, +9.15%]
+hard/failure improvement: +15.54%
+easy degradation: 0.041%
+gates: 16 / 16
+verdict: stage37_t50_transfer_repaired_deployable
+```
+
+意义：
+
+- 修复 external t50 gate。
+- 是当前 external selector-level best deployable。
+
+边界：
+
+- 仍是 dataset-local raw-frame。
+- 不是 metric/seconds-level。
+- 不是 true 3D 或 foundation。
+
+### 1.9 Bounded correction / residual 路线
+
+做了什么：
+
+- 训练 `prediction = selected_baseline + alpha * bounded_delta`。
+- 尝试 linear/ridge/small MLP/horizon-specific/hard-only/t50-only correction。
+
+失败：
+
+- Stage38 correction 没有安全超过 Stage37。
+- residual without enough gating 容易伤 easy。
+
+原因：
+
+- correction 直接改轨迹，风险比 selector 更高。
+- Stage37 floor 已经捕获大部分安全收益。
+- 如果 all/t50/hard 没同时提升并 easy<=2%，不能部署。
+
+当前结论：
+
+- correction 不部署。
+- 继续保留 Stage37 / teacher floor。
+
+### 1.10 Full-waypoint / source-level / group-consistency 路线
+
+做了什么：
+
+- 从 endpoint bridge 走向 full-waypoint sequence、source-level full-waypoint evaluation、group-consistency、proximity guard、paper evidence package。
+- 训练/评估 static-gated full-waypoint、horizon static gate、row-gain static gate、gain/harm selector、t50 selector、source-level group consistency、proximity/occupancy objectives。
+
+关键成功：
+
+- Stage42-CO common-validation composer：all +3.02%，t50 +1.50%，t100 raw +6.12%，hard +3.28%。
+- Stage42-CQ proximity-aware guard：all +1.77%，t50 +1.07%，t100 raw +3.48%，hard +1.93%，near@0.05 不劣于 endpoint-linear。
+- Stage42-DL group-consistency runtime：all/t50/t100raw/hard 约 +24.72% / +22.36% / +14.35% / +23.89%，near@0.05 从 1.94% 降到 1.38%。
+- Stage42-FE constrained FC/safety composer：all/t50/hard 26.41% / 23.15% / 24.81%，near@0.05 1.32%。
+- Stage42-FH UCY-supported composer：all/t50/t100raw/hard 34.98% / 28.97% / 20.57% / 33.10%，TrajNet 和 UCY 都 positive-safe。
+- Stage42-FI frozen replay：exact replay diff 0，2000-bootstrap CI low all/t50/t100raw/hard 34.62% / 28.46% / 19.96% / 32.73%，gate 25/25。
+
+剩余失败：
+
+- Stage42-FJ/FK/FL/FM/FN/FO/FP 表明 uniform horizon robustness 仍未解决。
+- TrajNet|100 与 UCY|100 weak slices 仍存在。
+
+原因：
+
+- h100 source support 不足。
+- oracle label low-margin ambiguity 很高。
+- validation-to-test source-family shift。
+- 单/稀疏 validation source support。
+- current history/prototype/rollout gain-harm features 对剩余 h100 weak slices 不够。
+
+## 2. 当前允许的 claim 与禁止的 claim
+
+允许写：
+
+- M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate。
+- SDD 上 Stage26 cost-aware selector 是 best deployable。
+- External t50 transfer 被 Stage37 修复。
+- Stage42-FH/FI policy family 有 dual-domain/source positive-safe evidence。
+- History、domain expert、safe switch、teacher floor、group-consistency full-waypoint 是当前可写主贡献。
+- Full-waypoint shape 和 endpoint bridge 是支持组件。
+
+不允许写：
+
+- true 3D world model。
+- foundation world model。
+- global metric predictor。
+- seconds-level t50/t100 predictor。
+- JEPA downstream main contribution。
+- Transformer independent main contribution。
+- scene/goal independent main contribution。
+- neighbor/interaction independent main contribution。
+- ungated neural dynamics deployable。
+- Stage5C 已执行。
+- SMC 已启用。
+
+## 3. 模块贡献 ledger 结论
+
+Stage42-FU 生成了模块贡献总账，gate 14/14。
+
+主 claim 允许：
+
+- `history`
+- `domain_expert`
+- `safe_switch`
+- `teacher_floor`
+- `group_consistency_full_waypoint`
+
+支持/边界组件：
+
+- `full_waypoint_shape`
+- `endpoint_bridge`
+
+暂不允许主 claim：
+
+- `scene_goal`
+- `neighbor_interaction`
+- `JEPA`
+- `Transformer`
+
+解释：
+
+- history 和 domain expert 在 retrained/source-level evidence 中有正贡献。
+- safe switch 和 teacher floor 是 deployability 必要条件。
+- group-consistency full-waypoint 有 source-level bootstrap-backed positive-safe evidence。
+- scene/goal、neighbor/interaction 有混合或弱证据，不能作为独立主贡献。
+- JEPA non-collapse 但 downstream lift 不稳。
+- Transformer 当前 proxy evidence 不足以写独立主贡献。
+
+## 4. 为什么很多路线失败
+
+### 4.1 为什么 JEPA 没成为主线
+
+JEPA 学到了非塌缩 latent，但 latent 没有稳定改善部署目标。世界模型不是只要 latent variance 非零就成功；必须能改善 selector/failure/t50/hard/failure，并且不能伤 easy。当前 JEPA 没做到。
+
+### 4.2 为什么普通 neural dynamics 没替代 Stage37
+
+无保护 neural 会在 easy cases 上乱改轨迹；有保护 neural 又经常被 Stage37 floor 吃掉收益。Stage41/42 的有效形式更像 protected composition，而不是一个可以直接裸部署的 neural dynamics head。
+
+### 4.3 为什么 external zero-shot 崩
+
+坐标、尺度、horizon、agent type、scene/goal context 都不一致。把 SDD pixel-space 学到的规则直接迁移到 external dataset-local 坐标，会导致预测尺度和切换策略失真。
+
+### 4.4 为什么 t50 曾经修不好
+
+t50 需要长历史、目标方向、停走/转向/密度规避信息。早期模型只有浅层 metadata / all-objective，导致 t50 policy 选择 fallback，不敢切换。Stage37 加 past-only history + goal prototypes 后才修复。
+
+### 4.5 为什么 t100 / h100 仍是 blocker
+
+t100 raw-frame/h100 切片存在低 margin、高歧义、source support 稀疏和 validation-to-test source-family shift。不是简单加 threshold 或全局模型容量能修复。
+
+## 5. 当前项目质量判断
+
+如果按“工程可部署候选”看：
+
+- SDD 和 external selector-level protected policy 已有强证据。
+- Stage42-FH/FI 的 dual-domain/source-level frozen policy 证据更强，且有 replay/CI。
+
+如果按“论文候选”看：
+
+- 可以形成一篇 protected 2.5D world-state / safe-switch / source-level group-consistency 方向的论文候选。
+- 但不能写 foundation 或 true 3D。
+- 不能把 JEPA/Transformer 当主贡献。
+- 需要非常明确地写 limitations。
+
+如果按“真正强的世界模型”看：
+
+- 还差 metric/time calibration。
+- 还差更多合法、可转换、带 scene/time/scale 支持的 external datasets。
+- 还差能脱离 teacher floor 仍安全的 neural dynamics。
+- 还差 t100/h100 robust horizon。
+- 还差 scene/goal/interaction 的独立强贡献。
+
+## 6. 最短下一步
+
+1. **补 source support / legal terms / raw source conversion。**
+   TrajNet|100、UCY|100 的 blocker 很大一部分是 source support，不是模型小修能解决。
+
+2. **针对 h100 做 source-specific row-level long-horizon model。**
+   不要再全局 threshold；要用更强 history、neighbor、goal、source-family features。
+
+3. **继续把 claim 写窄。**
+   当前主 claim 应该是 protected dataset-local/raw-frame 2.5D world-state candidate + safe-switch + group-consistency/full-waypoint source-level evidence。
+
+4. **不要启用 Stage5C / SMC。**
+   当前 gates 还不支持 latent generative execution 或 SMC。
+
+## 7. 验证记录
+
+最近相关验证：
+
+- Stage42-FU module contribution ledger runner：14/14。
+- Focused pytest：`tests/test_stage42_module_contribution_ledger.py`，4 passed。
+- Full pytest：852 passed。
+
+本文没有新增训练；它是针对用户要求的详细总结 README。

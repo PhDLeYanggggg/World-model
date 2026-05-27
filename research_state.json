@@ -1,6 +1,45 @@
 {
-  "current_stage": "Stage42-FT unified guarded conversion queue",
-  "current_verdict": "stage42_ft_unified_guarded_conversion_queue_pass",
+  "current_stage": "Stage42-FU module contribution ledger",
+  "current_verdict": "stage42_fu_module_contribution_ledger_pass",
+  "m3w_one_file_detailed_summary_readme": {
+    "source": "cached_verified_summary_from_stage18_to_stage42_fu_plus_current_readme_refresh",
+    "path": "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",
+    "updated_at": "2026-05-27",
+    "purpose": "Single-file Chinese summary requested by user: what was tried under the M3W goal, which routes failed and why, which routes succeeded, current model quality, current best deployable policies, strict claim boundaries, and shortest next actions.",
+    "summary_refresh_only": true,
+    "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+    "current_best_deployable_families": {
+      "sdd": "Stage26 cost-aware selector",
+      "external_t50": "Stage37 causal-history and goal-prototype safe selector",
+      "protected_neural": "M3W-Neural v1 composite-tail safe-switch under Stage37/teacher floor",
+      "source_domain_robust": "Stage42-FH/FI frozen protected policy family"
+    },
+    "module_claim_boundary": {
+      "main_claim_allowed": [
+        "history",
+        "domain_expert",
+        "safe_switch",
+        "teacher_floor",
+        "group_consistency_full_waypoint"
+      ],
+      "blocked_as_main_claim": [
+        "JEPA",
+        "Transformer",
+        "scene_goal",
+        "neighbor_interaction"
+      ]
+    },
+    "not_claimed": [
+      "true_3d_world_model",
+      "large_scale_foundation_world_model",
+      "global_metric_predictor",
+      "seconds_level_long_horizon_predictor",
+      "ungated_neural_dynamics",
+      "stage5c_execution",
+      "smc_enabled"
+    ],
+    "latest_conclusion": "The project has strong protected 2.5D world-state evidence, but remains blocked from true 3D/foundation/metric/seconds-level claims; JEPA and Transformer are not independent main claims under the current ledger."
+  },
   "m3w_goal_evidence_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_fo_reports",
     "path": "README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md",
@@ -29417,5 +29456,58 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FT creates a single non-executing conversion entry point and keeps conversion blocked until global source or UCY h100 candidate terms are confirmed."
+  },
+  "stage42_fu_module_contribution_ledger": {
+    "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+    "report": "outputs/stage42_long_research/module_contribution_ledger_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fu_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_module_contribution_stage42.md",
+    "verdict": "stage42_fu_module_contribution_ledger_pass",
+    "gates": "14/14",
+    "summary": {
+      "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+      "modules_total": 11,
+      "supported_or_necessary_modules": 6,
+      "main_claim_allowed_modules": [
+        "history",
+        "domain_expert",
+        "safe_switch",
+        "teacher_floor",
+        "group_consistency_full_waypoint",
+        "full_waypoint_shape",
+        "endpoint_bridge"
+      ],
+      "blocked_or_auxiliary_modules": [
+        "scene_goal",
+        "neighbor_interaction",
+        "JEPA",
+        "Transformer"
+      ],
+      "paper_claim_core": [
+        "history",
+        "domain_expert",
+        "safe_switch",
+        "teacher_floor",
+        "group_consistency_full_waypoint"
+      ],
+      "paper_claim_blocked": [
+        "JEPA_downstream_lift",
+        "ungated_neural_dynamics",
+        "scene_goal_independent_main_claim",
+        "neighbor_interaction_independent_main_claim",
+        "global_metric_seconds_claim"
+      ],
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FU separates supported module claims from weak/blocked claims: history, domain expert, safe-switch/teacher floor, and source-level group-consistency are supported; JEPA, Transformer-only, scene/goal, and neighbor/interaction remain blocked or auxiliary as main claims."
   }
 }
