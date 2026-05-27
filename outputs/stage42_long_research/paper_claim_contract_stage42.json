@@ -1,0 +1,264 @@
+{
+  "stage": "Stage42-ID",
+  "source": "fresh_stage42_id_paper_claim_contract",
+  "generated_at_utc": "2026-05-27T21:50:58.264144+00:00",
+  "git_commit": "0e7bf13",
+  "input_hash": "6b56de19b903d58986b4a5aac6741a79600d77da6fa697afde622721487182e4",
+  "summary": {
+    "closure_verdict": "stage42_ic_current_claim_evidence_closure_pass",
+    "closure_gate_passed": true,
+    "supported_claim_count": 6,
+    "blocked_claim_count": 7,
+    "contract_row_count": 13,
+    "paper_files_total": 8,
+    "paper_files_existing": 8,
+    "paper_files_with_claim_caveat": 8,
+    "paper_files_with_stage5c_smc_boundary": 8,
+    "metric_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "new_training_or_conversion": false
+  },
+  "contract": [
+    {
+      "claim": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+      "source_status": "supported",
+      "paper_role": "main framing only with strict boundary",
+      "allowed_language": "main framing only with strict boundary",
+      "forbidden_language": "true 3D world model; foundation world model; metric prediction; seconds-level; Stage5C executed; SMC enabled",
+      "evidence": "Stage42 paper matrix + module claim lock + M3W master summary",
+      "claim_boundary": "must retain dataset-local/raw-frame 2.5D caveat unless future calibration verifies otherwise",
+      "deployment_boundary": "claim-specific protected use only"
+    },
+    {
+      "claim": "Stage26 SDD cost-aware selector remains the SDD deployable baseline",
+      "source_status": "supported_cached_verified",
+      "paper_role": "baseline and historical development evidence",
+      "allowed_language": "SDD deployable baseline under pixel-space raw-frame evaluation.",
+      "forbidden_language": "true 3D world model; foundation world model; metric prediction; seconds-level; Stage5C executed; SMC enabled",
+      "evidence": "M3W master summary records t50 +14.58%, hard/failure +11.23%, easy degradation 1.81%",
+      "claim_boundary": "must retain dataset-local/raw-frame 2.5D caveat unless future calibration verifies otherwise",
+      "deployment_boundary": "deployable for SDD fallback/selector use only"
+    },
+    {
+      "claim": "Stage37 external t50 safe selector is deployable for dataset-local raw-frame external t50 transfer",
+      "source_status": "supported_cached_verified",
+      "paper_role": "external safety floor / comparison baseline",
+      "allowed_language": "External dataset-local raw-frame t50 safety floor / deployable selector baseline.",
+      "forbidden_language": "true 3D world model; foundation world model; metric prediction; seconds-level; Stage5C executed; SMC enabled",
+      "evidence": "M3W master summary records all +13.48%, t50 +8.46%, t50 CI [+7.69%, +9.15%], hard/failure +15.54%, easy 0.041%",
+      "claim_boundary": "must retain dataset-local/raw-frame 2.5D caveat unless future calibration verifies otherwise",
+      "deployment_boundary": "deployable external t50 safety floor under current dataset-local setup"
+    },
+    {
+      "claim": "M3W-Neural v1 is a protected neural world-state candidate, not ungated neural deployment",
+      "source_status": "supported_cached_verified",
+      "paper_role": "protected neural candidate evidence",
+      "allowed_language": "Protected neural world-state candidate; not ungated neural deployment.",
+      "forbidden_language": "true 3D world model; foundation world model; metric prediction; seconds-level; Stage5C executed; SMC enabled",
+      "evidence": "M3W-Neural README and master summary record all +21.03%, t50 +13.65%, t100 raw +14.69%, hard/failure +20.38%, easy 0.00%",
+      "claim_boundary": "must retain dataset-local/raw-frame 2.5D caveat unless future calibration verifies otherwise",
+      "deployment_boundary": "protected deployment only with floor/safe-switch; not floor-free"
+    },
+    {
+      "claim": "Stage42 protected full-waypoint/group-consistency policies are current source-level world-state evidence",
+      "source_status": "supported",
+      "paper_role": "main Stage42 world-state evidence",
+      "allowed_language": "Protected full-waypoint/group-consistency 2.5D world-state evidence.",
+      "forbidden_language": "true 3D world model; foundation world model; metric prediction; seconds-level; Stage5C executed; SMC enabled",
+      "evidence": "module claim lock supports group_consistency_full_waypoint, full_waypoint_shape, endpoint_bridge",
+      "claim_boundary": "must retain dataset-local/raw-frame 2.5D caveat unless future calibration verifies otherwise",
+      "deployment_boundary": "protected deployment only with floor/safe-switch; not floor-free"
+    },
+    {
+      "claim": "Stage42-HV provides row-level batch replay for the t100 easy-guard runtime policy",
+      "source_status": "supported_cached_verified",
+      "paper_role": "runtime/replay evidence, raw-frame diagnostic only",
+      "allowed_language": "Raw-frame t100 replay/runtime evidence only, not seconds-level long-horizon claim.",
+      "forbidden_language": "true 3D world model; foundation world model; metric prediction; seconds-level; Stage5C executed; SMC enabled",
+      "evidence": "rows=47458; all=27.72%; t50=26.99%; t100raw=6.79%; hard=25.93%; t100 easy=-0.31%",
+      "claim_boundary": "must retain dataset-local/raw-frame 2.5D caveat unless future calibration verifies otherwise",
+      "deployment_boundary": "diagnostic raw-frame runtime replay"
+    },
+    {
+      "claim": "true 3D or foundation world model",
+      "source_status": "blocked",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: claim boundary explicitly false in module lock, linter, and replay artifacts",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "claim boundary explicitly false in module lock, linter, and replay artifacts",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    },
+    {
+      "claim": "global metric or seconds-level performance",
+      "source_status": "blocked",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: restricted metric/time/source terms ready candidates remain zero; calibration/source confirmation incomplete",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "restricted metric/time/source terms ready candidates remain zero; calibration/source confirmation incomplete",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    },
+    {
+      "claim": "Stage5C latent generative execution or SMC readiness",
+      "source_status": "blocked",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: all current artifacts keep Stage5C false and SMC false",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "all current artifacts keep Stage5C false and SMC false",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    },
+    {
+      "claim": "JEPA or Transformer as independent main contribution",
+      "source_status": "blocked_or_diagnostic",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: module lock blocked modules: ['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "module lock blocked modules: ['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    },
+    {
+      "claim": "scene/goal or neighbor/interaction as independent main contribution",
+      "source_status": "blocked_or_diagnostic",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: Stage42-CJ/CK and context closure select baseline-family control / close current residual context protocol",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "Stage42-CJ/CK and context closure select baseline-family control / close current residual context protocol",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    },
+    {
+      "claim": "new external converted/evaluated metric-time data from HZ/IA/IB",
+      "source_status": "blocked",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: IB conversion_ready_targets=0; converted=0; evaluated=0",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "IB conversion_ready_targets=0; converted=0; evaluated=0",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    },
+    {
+      "claim": "t100 seconds-level long-horizon prediction",
+      "source_status": "blocked",
+      "paper_role": "blocked_or_limitation_only",
+      "allowed_language": "Limitation/blocker: Stage42-HV t100 is exact row-level raw-frame replay, not verified seconds-level calibration",
+      "forbidden_language": "do not present as achieved contribution",
+      "evidence": "Stage42-HV t100 is exact row-level raw-frame replay, not verified seconds-level calibration",
+      "claim_boundary": "blocked claim; may appear only in limitations or next steps",
+      "deployment_boundary": "not deployable"
+    }
+  ],
+  "paper_file_status": [
+    {
+      "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+      "exists": true,
+      "bytes": 47729,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "bytes": 63952,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "bytes": 70602,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "exists": true,
+      "bytes": 50135,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "bytes": 60809,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/data_card_stage42.md",
+      "exists": true,
+      "bytes": 49368,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "bytes": 55155,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "bytes": 92463,
+      "has_raw_frame_or_dataset_local_caveat": true,
+      "mentions_stage5c_or_smc_boundary": true
+    }
+  ],
+  "mandatory_caveats": [
+    "dataset-local/raw-frame",
+    "2.5D",
+    "not metric/seconds-level",
+    "Stage5C false",
+    "SMC false"
+  ],
+  "forbidden_claim_phrases": [
+    "true 3D world model",
+    "foundation world model",
+    "metric prediction",
+    "seconds-level",
+    "Stage5C executed",
+    "SMC enabled"
+  ],
+  "actions": {
+    "downloaded": false,
+    "converted": false,
+    "trained": false,
+    "evaluated": false,
+    "paper_claim_contract_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_id_gate": {
+    "gates": {
+      "stage42_ic_closure_passed": true,
+      "supported_claims_imported": true,
+      "blocked_claims_imported": true,
+      "contract_rows_complete": true,
+      "paper_files_exist": true,
+      "paper_files_have_claim_caveats": true,
+      "paper_files_have_stage5c_smc_boundary": true,
+      "supported_rows_have_boundaries": true,
+      "blocked_rows_are_limitation_only": true,
+      "no_metric_seconds_claim": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true,
+      "no_new_training_or_conversion_claim": true,
+      "contract_has_deployment_boundaries": true,
+      "paper_package_not_empty": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_id_paper_claim_contract_pass"
+  }
+}

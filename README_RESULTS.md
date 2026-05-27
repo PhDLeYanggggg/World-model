@@ -6245,3 +6245,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - IC closes the current paper-package claim map: supported claims remain protected dataset-local/raw-frame 2.5D, while true-3D/foundation/metric-seconds/Stage5C/SMC and JEPA/Transformer independent-main claims remain blocked.
 - This is not new training, download, conversion, or evaluation; it is a claim/evidence closure over existing fresh/cached_verified artifacts.
 <!-- STAGE42_IC_CURRENT_CLAIM_EVIDENCE_CLOSURE:END -->
+
+<!-- STAGE42_ID_PAPER_CLAIM_CONTRACT:START -->
+## Stage42-ID Paper Claim Contract
+
+- source: `fresh_stage42_id_paper_claim_contract`
+- verdict: `stage42_id_paper_claim_contract_pass`; gates `15 / 15`.
+- contract rows: `13`; supported claims `6`; blocked claims `7`.
+- paper files existing: `8 / 8`; files with raw/dataset caveat `8`; files with Stage5C/SMC boundary `8`.
+- ID locks manuscript wording: supported claims are protected dataset-local/raw-frame 2.5D; true-3D/foundation/metric-seconds/Stage5C/SMC claims remain forbidden.
+- This is a paper-claim contract only, not new training, conversion, download, or evaluation.
+<!-- STAGE42_ID_PAPER_CLAIM_CONTRACT:END -->
