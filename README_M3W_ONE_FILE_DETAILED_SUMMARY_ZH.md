@@ -12,7 +12,59 @@
 
 本文用途：把 M3W 长期目标内的关键尝试、路线、失败原因、成功证据、当前 best deployable、论文 claim 边界和下一步 blocker 集中写到一个 README。本文是总结文件，不是新训练结果，不把 cached 写成 fresh，不把失败包装成成功。
 
-最新核验范围：本文已纳入 Stage42-FU module contribution ledger、Stage42-FV claim-boundary linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map、Stage42-GA live source/calibration recheck、Stage42-GB source terms prefill、Stage42-GC prefill-to-intake bridge、Stage42-GD calibration-hint-to-intake bridge、Stage42-GE conversion-capability-to-intake bridge。Stage42-DM 当前 gate 为 27/27；Stage42-FX gate 为 15/15；Stage42-FY gate 为 14/14；Stage42-GA/GB/GC/GD/GE 分别为 15/15、15/15、16/16、18/18、20/20。reviewer replay commands 已覆盖 runtime replay、module ledger、claim linter、source-action consolidator、provenance verifier 和 paper-freeze manifest。它不重新训练、不下载、不转换、不调 threshold。
+最新核验范围：本文已纳入 Stage42-FU module contribution ledger、Stage42-FV claim-boundary linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map、Stage42-GA live source/calibration recheck、Stage42-GB source terms prefill、Stage42-GC prefill-to-intake bridge、Stage42-GD calibration-hint-to-intake bridge、Stage42-GE conversion-capability-to-intake bridge、Stage42-GH calibrated post-confirmation subset plan、Stage42-GI paper claim evidence refresh、Stage42-GJ module claim lock、Stage42-GK context switchability family audit。Stage42-DM 当前 gate 为 27/27；Stage42-FX gate 为 15/15；Stage42-FY gate 为 14/14；Stage42-GA/GB/GC/GD/GE 分别为 15/15、15/15、16/16、18/18、20/20；Stage42-GH 为 17/17；Stage42-GI 为 25/25；Stage42-GJ 为 19/19；Stage42-GK 为 14/14。reviewer replay commands 已覆盖 runtime replay、module ledger、claim linter、source-action consolidator、provenance verifier 和 paper-freeze manifest。它不重新训练、不下载、不转换、不调 threshold。
+
+## 本轮最新补充：Stage42-GJ / GK 后的当前结论
+
+本轮你要的是“把这个目标内做过什么、试过什么、失败什么、成功什么都发给我，并集中到一个 README”。这个文件就是当前单文件总账。最新补充如下：
+
+```text
+当前最诚实质量：
+  protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
+
+仍然不能说：
+  true 3D
+  foundation world model
+  global metric / meter-level predictor
+  seconds-level t50/t100 predictor
+  ungated neural dynamics deployable
+  Stage5C executed
+  SMC ready
+```
+
+最新两个 guard / audit 的意义：
+
+1. **Stage42-GJ module claim lock 已把模块 claim 锁死。**
+   允许写主贡献的模块仍是 `history`、`domain_expert`、`safe_switch`、`teacher_floor`、`group_consistency_full_waypoint`、`full_waypoint_shape`、`endpoint_bridge`。必须阻止作为主贡献的模块是 `scene_goal`、`neighbor_interaction`、`JEPA`、`Transformer`。这不是新训练，而是论文/README/报告层面的防夸大机制。
+
+2. **Stage42-GK 改成 switchability / gain-harm 目标后，context family 仍没有 material lift。**
+   GK 测试了 `history_only`、`goal_only`、`neighbor_only`、`motion_goal_context`、`baseline_plus_history`、`baseline_plus_goal`、`baseline_plus_neighbor`、`baseline_plus_history_goal_neighbor`。最佳 family 是 `baseline_plus_history_goal_neighbor`，但相对 baseline-family control 的 all/t50/t100raw/hard 增量约为 `-0.000003 / 0.000000 / 0.000000 / 0.000006`，easy degradation 约 `0.000093`。结论是：即使把目标从 residual/trajectory 改为 gain-harm/switchability，当前 scene/goal/neighbor/history context family 仍不能作为独立主 claim。下一步若要救 context，必须换数据支持、source/legal/calibration 支持，或换成真正不同的 full-sequence/group objective；不能继续用同一批特征同一类目标反复重试。
+
+当前最重要的 blocker：
+
+- post-confirmation calibrated subset candidates 有 `5` 个，但 `ready_now = 0`，因为 terms、local path、source identity、allowed use 仍需用户确认。
+- 这些候选不是 permission、不是 converted data、不是 evaluated result。
+- `TrajNet|100`、`UCY|100` 的 uniform horizon claim 仍 blocked。
+- JEPA / Transformer / scene-goal / neighbor-interaction 仍不能写成独立主贡献。
+
+因此当前可以写的主线是：
+
+```text
+protected source/domain raw-frame 2.5D world-state policy
+核心机制 = baseline-family rollout context + causal history + domain expert + safe switch + teacher floor + group-consistency full-waypoint
+```
+
+不能写的主线是：
+
+```text
+foundation model
+true 3D model
+metric / seconds-level model
+ungated neural dynamics model
+JEPA-led world model
+Transformer-led world model
+scene/goal or neighbor/interaction independent main contribution
+```
 
 ## 本次请求版总览：做了什么、试了什么、什么失败、什么成功
 

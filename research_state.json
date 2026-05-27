@@ -2,12 +2,16 @@
   "current_stage": "Stage42-GK context switchability family audit",
   "current_verdict": "stage42_gk_context_switchability_family_audit_pass",
   "m3w_one_file_detailed_summary_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_gd_plus_current_user_request_refresh",
+    "source": "cached_verified_summary_from_stage18_to_stage42_gk_plus_current_user_request_refresh",
     "path": "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese summary requested by user: what was tried under the M3W goal, which routes failed and why, which routes succeeded, current model quality, current best deployable policies, strict claim boundaries, and shortest next actions.",
     "summary_refresh_only": true,
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+    "verification": {
+      "json_load": ".venv-pytorch/bin/python -c \"import json; json.load(open('research_state.json'))\" -> passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 902 passed in 33.87s"
+    },
     "current_best_deployable_families": {
       "sdd": "Stage26 cost-aware selector",
       "external_t50": "Stage37 causal-history and goal-prototype safe selector",
@@ -26,7 +30,11 @@
       "Stage42-GB source terms prefill",
       "Stage42-GC prefill-to-intake bridge",
       "Stage42-GD calibration-hint-to-intake bridge",
-      "Stage42-GE conversion-capability-to-intake bridge"
+      "Stage42-GE conversion-capability-to-intake bridge",
+      "Stage42-GH calibrated post-confirmation subset plan",
+      "Stage42-GI paper claim evidence refresh",
+      "Stage42-GJ module claim lock",
+      "Stage42-GK context switchability family audit"
     ],
     "module_claim_boundary": {
       "main_claim_allowed": [
@@ -34,7 +42,9 @@
         "domain_expert",
         "safe_switch",
         "teacher_floor",
-        "group_consistency_full_waypoint"
+        "group_consistency_full_waypoint",
+        "full_waypoint_shape",
+        "endpoint_bridge"
       ],
       "blocked_as_main_claim": [
         "JEPA",
@@ -52,7 +62,7 @@
       "stage5c_execution",
       "smc_enabled"
     ],
-    "latest_conclusion": "User-facing detailed summary refreshed for the latest request: successful route is protected selector/safe-switch/group-consistency full-waypoint; failed routes include hard-class selector, unprotected neural dynamics, JEPA downstream, zero-shot external, latent distance alignment, and bounded residual; h100/uniform horizon remains blocked by source/legal/guarded conversion support rather than another same-feature retry; Stage42-GA/GD prefill and calibration hints are not permission, conversion, or evaluation."
+    "latest_conclusion": "User-facing detailed summary refreshed for the latest request. Successful route is protected selector/safe-switch/group-consistency full-waypoint under a teacher/Stage37 floor. Failed or blocked routes include hard-class selector, unprotected neural dynamics, JEPA downstream, zero-shot external, latent distance alignment, bounded residual, and scene/goal or neighbor/interaction as independent main claims. Stage42-GJ locks allowed module claims; Stage42-GK confirms that even gain-harm/switchability context-family targets do not show material context lift. Post-confirmation calibrated subset candidates remain candidate-only: ready_now is 0, so they are not permission, conversion, or evaluation evidence."
   },
   "m3w_goal_evidence_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_fo_reports",
@@ -90,7 +100,7 @@
     "latest_conclusion": "Stage42-FQ confirms h100 repair now depends on source-support closure: UCY terms/conversion and TrajNet longer raw sources."
   },
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_gi_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_gk_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -120,7 +130,9 @@
       "Stage42-FO FH horizon gain/harm specialist",
       "Stage42-FP H100 weak-horizon source/support audit",
       "Stage42-GH calibrated post-confirmation subset plan",
-      "Stage42-GI paper claim evidence refresh with calibrated subset plan"
+      "Stage42-GI paper claim evidence refresh with calibrated subset plan",
+      "Stage42-GJ module claim lock",
+      "Stage42-GK context switchability family audit"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -134,8 +146,8 @@
       "smc_enabled"
     ],
     "summary_refresh_only": true,
-    "latest_full_pytest_after_stage42_gi_refresh": "896 passed",
-    "latest_conclusion": "Summary refreshed for the latest user request. Current success routes are protected cost-aware selector, causal-history/goal-prototype safe selector, safe-switch, teacher floor, and group-consistency full-waypoint. Current blocked/non-main routes include hard-class selector, JEPA downstream, unprotected Transformer/Hybrid, latent distance alignment, ordinary residual/correction, and scene/goal or neighbor/interaction as independent main claims. Stage42-GH identifies calibrated post-confirmation candidates but ready_now remains 0, so it is not permission, conversion, or evaluation evidence."
+    "latest_full_pytest_after_stage42_gk_refresh": "902 passed",
+    "latest_conclusion": "Summary refreshed for the latest user request. Current success routes are protected cost-aware selector, causal-history/goal-prototype safe selector, safe-switch, teacher floor, and group-consistency full-waypoint. Current blocked/non-main routes include hard-class selector, JEPA downstream, unprotected Transformer/Hybrid, latent distance alignment, ordinary residual/correction, and scene/goal or neighbor/interaction as independent main claims. Stage42-GJ locks module claims; Stage42-GK confirms context switchability families still do not provide material independent lift. Stage42-GH identifies calibrated post-confirmation candidates but ready_now remains 0, so it is not permission, conversion, or evaluation evidence."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",

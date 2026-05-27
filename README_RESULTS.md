@@ -2,11 +2,19 @@
 
 ## 最新用户请求总结文件
 
-本轮按用户要求，把“在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”统一刷新到：
+本轮按用户要求，把“在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”统一刷新到一个单文件总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
+
+该 README 是当前用户可直接阅读的主总结文件，最新已纳入 Stage42-GJ module claim lock 和 Stage42-GK context switchability family audit。当前严格结论保持：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新边界是：允许主 claim 的模块为 history、domain expert、safe switch、teacher floor、group-consistency full-waypoint、full-waypoint shape、endpoint bridge；JEPA、Transformer、scene/goal、neighbor/interaction 仍不能写成独立主贡献。Stage42-GK 说明即使用 gain-harm/switchability 目标，当前 context family 仍没有 material lift。
+
+本次 summary-only 更新后校验：`research_state.json` JSON load passed；`.venv-pytorch/bin/python -m pytest tests` = `902 passed in 33.87s`。
+
+历史长版总账仍保留在：
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-该 README 现在纳入 Stage26、Stage37、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU module ledger、Stage42-GH calibrated post-confirmation subset plan、Stage42-GI paper claim evidence refresh。当前结论保持严格：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新可写结论是：成功主线为 cost-aware selector、causal-history/goal-prototype safe selector、safe-switch、teacher floor、group-consistency full-waypoint；失败或不可主张主贡献的路线包括 hard-class selector、JEPA downstream、unprotected Transformer/Hybrid、latent distance alignment、ordinary residual/correction、scene/goal 与 neighbor/interaction 独立主 claim。Post-confirmation calibrated subset 仍是 candidate plan：restricted candidates after terms = `5`，ready now = `0`，不是 permission、converted data 或 evaluated result。
+历史长版 README 现在纳入 Stage26、Stage37、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU module ledger、Stage42-GH calibrated post-confirmation subset plan、Stage42-GI paper claim evidence refresh。Post-confirmation calibrated subset 仍是 candidate plan：restricted candidates after terms = `5`，ready now = `0`，不是 permission、converted data 或 evaluated result。
 
 ## M3W 单文件详细总结
 
