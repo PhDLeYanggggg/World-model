@@ -6268,3 +6268,13 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - IE verifies the current paper package obeys the Stage42-ID contract: protected dataset-local/raw-frame 2.5D only; no true-3D/foundation/metric-seconds/Stage5C/SMC overclaim.
 - This is compliance verification only, not new training, conversion, download, or evaluation.
 <!-- STAGE42_IE_PAPER_CONTRACT_COMPLIANCE:END -->
+
+<!-- PUBLIC_README_HUMAN_TONE_UPDATE:START -->
+## Public GitHub README Human-Tone Update
+
+- source: `fresh_public_readme_human_tone_update`
+- Updated root `README.md` from stage-log style into a project-owner introduction for GitHub readers.
+- The public README now explains M3W in first-person project language: what it is, what it currently does, what it does not claim, current trusted evidence, safety-floor role, repository map, and reproducibility entry points.
+- Claim boundary preserved: protected dataset-local/raw-frame 2.5D only; not true 3D, not foundation, not metric/seconds-level, no Stage5C execution, no SMC.
+- This is documentation tone cleanup only, not new training, conversion, download, or evaluation.
+<!-- PUBLIC_README_HUMAN_TONE_UPDATE:END -->
