@@ -1212,3 +1212,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - blocked: global floor-free neural deployment, causal floor removal, ungated neural deployment, metric/seconds/true-3D/foundation claims, Stage5C, and SMC.
 - role: applies Stage42-HF contract to the paper/README surface; this is not new training or threshold tuning.
 <!-- STAGE42_HG_TEACHERLESS_CLAIM_LINTER:END -->
+
+<!-- STAGE42_HI_RESTRICTED_METRIC_TIME_READINESS:START -->
+## Stage42-HI Restricted Metric/Time Readiness
+
+- source: `fresh_stage42_hi_restricted_metric_time_readiness`
+- verdict: `stage42_hi_restricted_metric_time_readiness_pass_blocked_by_terms`
+- gates: `14 / 14`
+- restricted metric/time candidates: `6` across `['ETH_UCY', 'UCY']`.
+- technical ready after terms: `6`; ready now: `0`.
+- conclusion: ETH/UCY source-level H/FPS/stride evidence exists, but no metric/seconds claim is allowed until user-confirmed source terms plus conversion/no-leakage/source-CV/final-test.
+- no training, conversion, download, Stage5C, or SMC occurred.
+<!-- STAGE42_HI_RESTRICTED_METRIC_TIME_READINESS:END -->

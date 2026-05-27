@@ -1,0 +1,348 @@
+{
+  "source": "fresh_stage42_hi_restricted_metric_time_readiness",
+  "stage": "Stage42-HI Restricted Metric/Time Readiness",
+  "generated_at_utc": "2026-05-27T17:22:48.879726+00:00",
+  "git_commit": "d42b4eb",
+  "input_hash": "2751531223effb6aa8709c4a7faf448ea72e61a2014fb113273f4272d3e6a5fc",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HI 是 restricted metric/time readiness recheck，不训练、不转换、不下载、不调 threshold。",
+    "ETH/UCY 源级 H/FPS/stride 线索存在，但 legal/source terms readiness 仍是独立前置条件。",
+    "restricted metric/time subset 只有在 user terms/path/source identity 确认、conversion、no-leakage、source-CV、final test 后才能写。",
+    "SDD 仍是 pixel raw-frame；TrajNet snippets 仍无可用 homography/FPS/scale；TGSIM 只可 traffic diagnostic。",
+    "future endpoint / future waypoint 只可作为 supervised/evaluation labels，不可作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 建 goals，不使用 test metrics 调 threshold。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "bn_gate_passed": true,
+    "ch_gate_passed": true,
+    "cg_gate_passed": true
+  },
+  "summary": {
+    "source": "fresh_stage42_hi_restricted_metric_time_readiness",
+    "data_calibration_source": "fresh_run",
+    "bn_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+    "ch_verdict": "stage42_ch_metric_time_claim_guard_pass",
+    "cg_verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+    "restricted_metric_time_candidate_count": 6,
+    "candidate_domains": [
+      "ETH_UCY",
+      "UCY"
+    ],
+    "technical_ready_after_terms_count": 6,
+    "restricted_metric_time_ready_now_count": 0,
+    "paper_claim_allowed_now": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "training_run": false,
+    "conversion_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "readiness_rows": [
+    {
+      "source": "fresh_run",
+      "source_id": "ETH_seq_eth",
+      "dataset": "ETH",
+      "domain": "ETH_UCY",
+      "terms_target_id": "eth_biwi_original",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "source_specific_metric_time_evidence": true,
+      "terms_accepted_by_user": false,
+      "conversion_ready_now": false,
+      "technical_conversion_ready_after_terms": true,
+      "restricted_metric_time_ready_now": false,
+      "paper_claim_allowed_now": false,
+      "blockers": [
+        "source_terms_or_source_cv_not_conversion_ready"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "ETH_seq_hotel",
+      "dataset": "ETH",
+      "domain": "ETH_UCY",
+      "terms_target_id": "eth_biwi_original",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "source_specific_metric_time_evidence": true,
+      "terms_accepted_by_user": false,
+      "conversion_ready_now": false,
+      "technical_conversion_ready_after_terms": true,
+      "restricted_metric_time_ready_now": false,
+      "paper_claim_allowed_now": false,
+      "blockers": [
+        "source_terms_or_source_cv_not_conversion_ready"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_zara01",
+      "dataset": "UCY",
+      "domain": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "source_specific_metric_time_evidence": true,
+      "terms_accepted_by_user": false,
+      "conversion_ready_now": false,
+      "technical_conversion_ready_after_terms": true,
+      "restricted_metric_time_ready_now": false,
+      "paper_claim_allowed_now": false,
+      "blockers": [
+        "source_terms_or_source_cv_not_conversion_ready"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_zara02",
+      "dataset": "UCY",
+      "domain": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "source_specific_metric_time_evidence": true,
+      "terms_accepted_by_user": false,
+      "conversion_ready_now": false,
+      "technical_conversion_ready_after_terms": true,
+      "restricted_metric_time_ready_now": false,
+      "paper_claim_allowed_now": false,
+      "blockers": [
+        "source_terms_or_source_cv_not_conversion_ready"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_zara03",
+      "dataset": "UCY",
+      "domain": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "source_specific_metric_time_evidence": true,
+      "terms_accepted_by_user": false,
+      "conversion_ready_now": false,
+      "technical_conversion_ready_after_terms": true,
+      "restricted_metric_time_ready_now": false,
+      "paper_claim_allowed_now": false,
+      "blockers": [
+        "source_terms_or_source_cv_not_conversion_ready"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_students03",
+      "dataset": "UCY",
+      "domain": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "source_specific_metric_time_evidence": true,
+      "terms_accepted_by_user": false,
+      "conversion_ready_now": false,
+      "technical_conversion_ready_after_terms": true,
+      "restricted_metric_time_ready_now": false,
+      "paper_claim_allowed_now": false,
+      "blockers": [
+        "source_terms_or_source_cv_not_conversion_ready"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+    }
+  ],
+  "user_action_required": [
+    {
+      "terms_target_id": "eth_biwi_original",
+      "source_id": "ETH_seq_eth",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "action": "confirm official terms/local path/source identity, then rerun source terms validator",
+      "template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+      "next_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "terms_target_id": "eth_biwi_original",
+      "source_id": "ETH_seq_hotel",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "action": "confirm official terms/local path/source identity, then rerun source terms validator",
+      "template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+      "next_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "terms_target_id": "ucy_crowd_original",
+      "source_id": "UCY_zara01",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "action": "confirm official terms/local path/source identity, then rerun source terms validator",
+      "template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+      "next_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "terms_target_id": "ucy_crowd_original",
+      "source_id": "UCY_zara02",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "action": "confirm official terms/local path/source identity, then rerun source terms validator",
+      "template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+      "next_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "terms_target_id": "ucy_crowd_original",
+      "source_id": "UCY_zara03",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "action": "confirm official terms/local path/source identity, then rerun source terms validator",
+      "template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+      "next_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "terms_target_id": "ucy_crowd_original",
+      "source_id": "UCY_students03",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "action": "confirm official terms/local path/source identity, then rerun source terms validator",
+      "template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+      "next_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    }
+  ],
+  "claim_boundary": {
+    "restricted_metric_time_claim_allowed_now": false,
+    "restricted_claim_requires_future_conversion_eval": true,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "sdd_metric_claim_allowed": false,
+    "trajnet_metric_time_claim_allowed": false,
+    "tgsim_pedestrian_world_model_metric_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_hi_gate": {
+    "source": "fresh_stage42_hi_restricted_metric_time_readiness",
+    "gates": {
+      "source_fresh": true,
+      "bn_input_passed": true,
+      "ch_input_passed": true,
+      "cg_input_passed": true,
+      "restricted_candidates_identified": true,
+      "eth_and_ucy_candidates_present": true,
+      "technical_after_terms_candidates_present": true,
+      "ready_now_zero": true,
+      "paper_claim_blocked_now": true,
+      "global_metric_seconds_blocked": true,
+      "user_action_written": true,
+      "no_training_or_conversion": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_hi_restricted_metric_time_readiness_pass_blocked_by_terms"
+  }
+}

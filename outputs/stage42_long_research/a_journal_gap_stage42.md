@@ -1202,3 +1202,15 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - It does not support global causal floor removal, ungated neural deployment, metric/seconds-level prediction, true 3D, foundation model, Stage5C, or SMC.
 - A-journal gap after HG: still need legal source expansion / source diversity, metric-time calibration, and stronger independently positive scene/goal/interaction or neural dynamics evidence.
 <!-- STAGE42_HG_TEACHERLESS_CLAIM_BOUNDARY:END -->
+
+<!-- STAGE42_HI_RESTRICTED_METRIC_TIME_READINESS:START -->
+## Stage42-HI Restricted Metric/Time Readiness Refresh
+
+- source: `fresh_stage42_hi_restricted_metric_time_readiness`
+- verdict: `stage42_hi_restricted_metric_time_readiness_pass_blocked_by_terms`
+- restricted metric/time candidates: `6`.
+- technical ready after terms: `6`.
+- restricted metric/time ready now: `0`.
+- Paper implication: source-specific ETH/UCY calibration can become a restricted subset claim only after user-confirmed terms, guarded conversion, no-leakage, source-CV, and final test.
+- Current global M3W claim remains raw-frame / dataset-local 2.5D.
+<!-- STAGE42_HI_RESTRICTED_METRIC_TIME_READINESS:END -->
