@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 当前权威总总结（2026-05-27）
+
+按用户要求，已把“这个目标内做了什么、尝试了什么路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的单文件 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_MASTER_SUMMARY_2026_05_27_ZH.md`
+
+这是 `cached_verified_summary`，汇总已有 Stage18 到 Stage42-IB 报告、gate、README、model/data card 与 `research_state.json`；本次不是新训练、下载、转换或评估。该文件详细列出 Stage26 SDD cost-aware selector、Stage37 external t50 repair、M3W-Neural v1 protected candidate、Stage42 protected full-waypoint/group-consistency family，以及 JEPA、hard-class selector、zero-shot external、latent-only alignment、ordinary residual、unprotected Transformer/Hybrid、metric/time/source legal blockers 等失败路线和原因。当前严格结论保持：M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 当前主总账（2026-05-27）
 
 最新单文件总账已刷新：
