@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-GK 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-GY 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 当前更便于阅读的单文件总账已同步到：`README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`。该文件是本轮面向用户的主 summary；本文件保留为更长的历史总账。
@@ -29,6 +29,7 @@
   External t+50: Stage37 causal-history + goal-prototype safe selector
   Protected source/domain/full-waypoint: Stage42-FH/FI frozen policy family
   Paper/evidence boundary: Stage42-FU/FV/FW/FX/FY/GH/GI claim guards
+  Source/legal blocker handling: Stage42-GW/GX/GY h100 blocker closure + UCY integrity/terms prefill
 ```
 
 最重要的进展链：
@@ -47,6 +48,80 @@
 
 5. **Stage42-GH 给出下一步可校准数据路线，但不能写成已完成。**
    GH 识别 post-confirmation calibrated ETH/UCY subset candidates：restricted candidates after terms = `5`，ready now = `0`，after-terms calibrated t50/t100 windows = `10060 / 5696`，domains = `ETH_UCY, UCY`。这只是用户确认 terms/path/source identity 后的候选图，不是下载、转换、评估或 metric/seconds claim。
+
+6. **Stage42-GW/GX/GY 把 h100 / UCY legal blocker 从“模糊阻塞”变成可执行清单。**
+   GW 明确：`TrajNet|100` 是 hard blocker，原因是缺少 official long raw TrajNet source；`UCY|100` 有技术候选但 legal conversion not ready，因此 `can_run_repair_now_count = 0`。GX 对 UCY candidate files 做 integrity manifest：`6 / 6` 文件存在，target-family candidates = `2`，parsed rows = `98,032`，parsed t100 windows = `11,848`，但 conversion_ready_now 仍为 `0`。GY 基于 GX 生成 terms prefill：prefill rows = `6`，hash/source identity suggestion 均已填入，但 `terms_accepted_by_user=false`、`allowed_use=""`、`confirmed_by_user=""`，agent 不能自动填写 legal acceptance。结论：这三步成功关闭了 h100 blocker 的证据链，但没有下载、转换、评估，也没有解除 legal blocker。
+
+## 0. 最新当前版：路线、失败、成功、质量判断
+
+### 0.1 我在这个长期目标内真正尝试过的路线
+
+| 路线 | 做了什么 | 当前结论 |
+| --- | --- | --- |
+| 数据采集与 registry | 搜索/登记 SDD、OpenTraj、ETH-UCY、UCY、TrajNet、egocentric/video、simulation/traffic diagnostic；建立 license/action/user-required reports。 | 成功建立数据采集框架；但 registry-only 不算 converted，legal/terms 未确认的数据不能用作 official success。 |
+| SDD official pixel benchmark | SDD 解压、转换 world-state shards、scene packs、lazy episodes、HardBench/FailureBench/GoalBench、no-leakage audit、strong causal baselines。 | 成功；但 SDD 是 pixel-space raw-frame，不是 metric/seconds-level。 |
+| SDD selector | 从 hard-class selector 到 expected-FDE / regret-aware / fallback-safe selector。 | hard-class 失败，Stage26 cost-aware selector 成功，成为 SDD best deployable。 |
+| 外部跨域迁移 | OpenTraj/UCY/ETH-UCY/TrajNet feature store、row geometry、normalization、relative target、external baselines、selective transfer。 | zero-shot 大失败；Stage37 通过 history/prototype/safety 修复 external t50。 |
+| 神经网络世界动力学 | JEPA-only、Transformer-only、Hybrid、bounded correction、full-waypoint sequence、protected neural candidate。 | 无保护 neural 不部署；protected neural / full-waypoint 有证据，但仍依赖 Stage37/teacher safety floor。 |
+| 安全/物理有效性 | easy degradation、harm over fallback、near@0.05、jagged-rate、proximity guard、group-consistency。 | 成功建立 safety gate；多条高精度路线因 proximity/easy 失败而不 promoted。 |
+| Source/domain/full-waypoint policy | Stage42-DL/DM runtime replay、CO/CP/CQ bridge/shape、FE/FH/FI source-domain protected policies。 | 当前最强 source/domain protected evidence，已 freeze/replay/bootstrap，但仍不允许 uniform horizon claim。 |
+| Claim/paper guard | module ledger、claim linter、paper evidence audit、paper freeze manifest、source-action consolidator、horizon retry map。 | 成功防止过度 claim：JEPA/Transformer/scene-goal/neighbor-interaction 不能写独立主贡献。 |
+| Legal/source blocker closure | Stage42-GW/GX/GY 对 h100 与 UCY candidate 做 blocker decision、integrity manifest、terms prefill。 | 成功把下一步用户动作具体化；但 legal 未确认前 conversion/eval 必须是 `not_run`。 |
+
+### 0.2 失败路线与失败原因
+
+| 失败/受阻路线 | 失败表现 | 根因 | 现在的处理 |
+| --- | --- | --- | --- |
+| hard-class selector | Stage24 t50 improvement 约 `-43.3%`，easy degradation 约 `11.33%`。 | oracle best-baseline label 低 margin、高歧义；hard label 迫使 easy case 过度切换。 | 改成 expected-FDE / regret-aware / fallback-safe selector。 |
+| Stage18/19/22/23 JEPA 主线 | 多次 non-collapse，但 selector/failure/goal/t50/correction 无稳定 downstream lift。 | 表征目标和部署收益/风险目标不对齐；latent variance 不等于可用 gain/harm 信号。 | 只能写 auxiliary/diagnostic，不能当主贡献或生成式 world model。 |
+| SDD->external zero-shot | Stage31 外部 all improvement 约 `-92.67%`，t50 约 `-278.57%`。 | SDD pixel 与 external dataset-local 坐标、scale、horizon、agent type、scene/goal context 不兼容。 | 做 external row geometry、relative target、history window、goal prototype。 |
+| 普通 normalization / latent adapter | latent gap 缩小但 selector 无正提升。 | 分布距离变小不代表任务损失、gain/harm、easy-safety 对齐。 | 不再把 latent distance reduction 写成 predictive success。 |
+| Stage34/35 early selective transfer | t50/hard 局部正，但 all/easy 不稳，或 t50=0。 | all objective 淹没 long-horizon；缺 t50 专用 history/goal/switchability。 | Stage37 专门修 t50。 |
+| bounded residual / correction | 未稳定超过 Stage37，普通 residual 容易伤 easy。 | 直接改轨迹比选择/回退更危险，strong baseline floor 已很强。 | correction 不部署，除非先过 selector/failure/safety gate。 |
+| 无保护 Transformer/Hybrid | neural without fallback 不安全或不超过 Stage37。 | 当前数据仍是 dataset-local/raw-frame，metric/scene grounding 不足；模型学会复制或错误切换。 | 只允许 Stage37/teacher floor protected neural evidence。 |
+| scene/goal 独立主 claim | 多轮 gate 后贡献不稳定或被 baseline/context 吸收。 | train-only goal/scene proxy 对 held-out/domain shift 支持有限。 | Stage42-FU/GJ 明确不能作为独立主贡献。 |
+| neighbor/interaction 独立主 claim | scalar neighbor/interaction 有时局部正，但无法稳定独立提升。 | 原始 neighbor scalar 不足以表达群体时空约束。 | 只允许 group-consistency full-waypoint 作为受限贡献。 |
+| uniform h100/horizon claim | TrajNet|100、UCY|100 持续 weak；UCY|50 后被 FM 修复但 h100 仍阻塞。 | low-margin ambiguity、source support 稀疏、h100 long-horizon context 不足、legal conversion 未 ready。 | GW/GX/GY 先建立 blocker/integrity/terms prefill，不强行跑。 |
+
+### 0.3 成功路线与核心证据
+
+| 成功点 | 关键数字 | 质量边界 |
+| --- | --- | --- |
+| Stage26 SDD cost-aware selector | t50 `+14.58%`；hard/failure `+11.23%`；easy degradation `+1.81%`。 | SDD pixel/raw-frame best deployable；不是 metric。 |
+| Stage37 external t50 repair | all `+13.48%`；t50 `+8.46%`；t50 CI `[+7.69%, +9.15%]`; hard/failure `+15.54%`; easy `0.041%`; gates `16/16`。 | external dataset-local/raw-frame deployable selector。 |
+| M3W-Neural v1 protected candidate | all `+21.03%`; t50 `+13.65%`; t100 raw `+14.69%`; hard/failure `+20.38%`; easy `0.00%`; gates `41/41`。 | protected neural candidate under Stage37/teacher floor；不是 ungated neural deployment。 |
+| Stage42-DL/DM runtime replay | runtime rows `47,458`; switch exact match true; all/t50/t100raw/hard `+24.72% / +22.36% / +14.35% / +23.89%`; near@0.05 `1.94% -> 1.38%`。 | reviewer replay / runtime evidence。 |
+| Stage42-CQ proximity guard | all/t50/t100raw/hard `+1.77% / +1.07% / +3.48% / +1.93%`; near@0.05 不劣于 endpoint-linear/floor。 | safety-sensitive composer，牺牲部分 ADE 换安全。 |
+| Stage42-FE constrained safety composer | all/t50/hard `26.41% / 23.15% / 24.81%`; near@0.05 `1.32%`; gate `19/19`。 | 修复 FC proximity blocker，promotable protected policy。 |
+| Stage42-FH UCY-supported composer | all/t50/t100raw/hard `34.98% / 28.97% / 20.57% / 33.10%`; TrajNet/UCY 都 positive-safe; gate `20/20`。 | source/domain protected policy。 |
+| Stage42-FI freeze/replay | policy hash `f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6`; replay diff `0`; CI low all/t50/t100raw/hard `34.62% / 28.46% / 19.96% / 32.73%`; gate `25/25`。 | frozen policy 非 test-tuned 偶然结果。 |
+| Stage42-FU/GJ module claim lock | allowed main modules = history、domain expert、safe switch、teacher floor、group-consistency full-waypoint、full-waypoint shape、endpoint bridge；blocked = JEPA、Transformer、scene_goal、neighbor_interaction。 | 论文 claim 边界已锁。 |
+| Stage42-GW/GX/GY h100 blocker closure | GW gate `17/17`; GX candidate files `6/6`, rows `98,032`, t100 windows `11,848`; GY terms prefill rows `6`, gate `14/14`。 | 只说明 blocker 被结构化；legal 未确认前不可 conversion/eval。 |
+
+### 0.4 当前 best deployable 分层
+
+| 场景 | 当前 best | 是否部署 |
+| --- | --- | --- |
+| SDD pixel/raw-frame | Stage26 cost-aware selector | 可部署于 SDD pixel/raw-frame benchmark。 |
+| External t50 | Stage37 causal-history + goal-prototype safe selector | 可部署于 external dataset-local/raw-frame selector task。 |
+| Protected neural/world-state | M3W-Neural v1 composite-tail safe-switch | 仅作为 Stage37/teacher floor protected candidate。 |
+| Source/domain/full-waypoint | Stage42-FH/FI frozen protected policy family | 可作为 protected source/domain evidence；不能写 uniform horizon。 |
+| h100/uniform horizon | 仍 blocked | TrajNet|100 缺 raw source；UCY|100 需 legal confirmation/guarded conversion。 |
+
+### 0.5 当前一句话质量判断
+
+```text
+M3W 当前是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+它已经有 SDD、external t50、source/domain protected policy、runtime replay、bootstrap、no-leakage、claim guard 证据。
+它还不是 true 3D、不是 foundation、不是 global metric/seconds-level、不是 ungated neural dynamics deployable。
+```
+
+### 0.6 下一步最短路径
+
+1. **先解决 legal/source blocker。** 使用 Stage42-GY prefill，让用户明确确认 UCY/ETH_UCY/TrajNet 的 official source identity、terms accepted、allowed use、local path。agent 不能代填 legal acceptance。
+2. **只对 legal-ready source 做 guarded conversion。** conversion 后重新跑 no-leakage、source-CV、baseline、Stage37/Stage42 policy replay。
+3. **再修 h100/uniform horizon。** 对 TrajNet|100 / UCY|100 需要真实 long-horizon source support、row-level h100 context 和 stricter easy-safety gate。
+4. **神经网络路线继续但不越界。** 只训练 gain/harm、group-consistency、full-waypoint consistency、source/horizon-aware switchability；不训练普通无保护 residual，不执行 Stage5C/SMC。
 
 ## 一句话结论
 

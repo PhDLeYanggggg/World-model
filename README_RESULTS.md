@@ -1,5 +1,21 @@
 # Physical World Model 2.5D Results
 
+## M3W 长期目标路线/失败/成功总账 README（当前主入口）
+
+本轮按用户要求，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”集中刷新到一个主 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
+
+该文件是当前中文总账入口，结果来源为 `cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-GW/GX/GY h100 blocker closure、UCY h100 candidate integrity manifest、UCY h100 terms prefill。它明确写清：
+
+- 当前 M3W 的真实定位是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+- 当前不是 true 3D、不是 foundation、不是 metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
+- 成功主线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42-FH/FI source/domain protected policy、Stage42-DL/DM runtime replay、Stage42-FU/GJ module claim lock。
+- 失败/blocked 主线包括 hard-class selector、JEPA downstream、zero-shot external transfer、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim。
+- 最新 h100/source 结论：TrajNet|100 仍是 missing official long raw source hard blocker；UCY|100 有候选文件与 t100 windows，但 legal acceptance/allowed use/local path/source identity 仍需用户确认；conversion/evaluation 仍为 `not_run`。
+
+本次 summary-only 更新不包含新训练、下载、转换或评估；不会把 cached 结果写成 fresh，也不会把 legal prefill 写成 permission。
+
 ## Stage42-GT Floor-Relaxation Safety Stress Test
 
 本轮继续 Stage42 Long Research Mode，补足 Stage42-BY/BZ partial t50 floor-relaxation 的 all-agent safety stress test：
