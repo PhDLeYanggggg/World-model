@@ -1,6 +1,55 @@
 {
-  "current_stage": "Stage42-GS paper gap reconciler",
-  "current_verdict": "stage42_gs_paper_gap_reconciler_pass",
+  "current_stage": "M3W current goal consolidated summary",
+  "current_verdict": "summary_refresh_only_current_goal_ledger",
+  "m3w_current_goal_consolidated_summary_readme": {
+    "source": "cached_verified_summary_from_stage26_to_stage42_gs",
+    "path": "README_M3W_CURRENT_GOAL_CONSOLIDATED_SUMMARY_ZH.md",
+    "updated_at": "2026-05-27",
+    "purpose": "Current user-requested Chinese ledger summarizing what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current quality, current best deployable family, and strict claim boundaries.",
+    "summary_refresh_only": true,
+    "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+    "verification": {
+      "json_load": ".venv-pytorch/bin/python -m json.tool research_state.json -> passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 927 passed in 31.80s"
+    },
+    "current_best_deployable_families": {
+      "sdd": "Stage26 cost-aware selector",
+      "external_t50": "Stage37 causal-history and goal-prototype safe selector",
+      "protected_neural": "M3W-Neural v1 composite-tail safe-switch under Stage37/teacher floor",
+      "source_domain_robust": "Stage42-FH/FI frozen protected policy family",
+      "reviewer_runtime_replay": "Stage42-DM/DL runtime replay path"
+    },
+    "successful_routes": [
+      "cost-aware fallback-safe selector",
+      "Stage37 external t50 causal history and goal prototype selector",
+      "Stage42 source/domain protected policy",
+      "group-consistency full-waypoint protected evidence",
+      "proximity-aware safety guard",
+      "runtime replay and bootstrap evidence",
+      "claim-boundary linter and paper gap reconciler"
+    ],
+    "failed_or_blocked_routes": [
+      "hard-class selector",
+      "JEPA downstream main contribution",
+      "zero-shot external transfer",
+      "latent-only domain alignment",
+      "unprotected neural dynamics",
+      "ordinary residual correction",
+      "scene_goal independent main claim",
+      "neighbor_interaction independent main claim",
+      "uniform horizon h100 robustness",
+      "source legal conversion without user-confirmed terms"
+    ],
+    "not_claimed": [
+      "true_3d_world_model",
+      "large_scale_foundation_world_model",
+      "global_metric_predictor",
+      "seconds_level_long_horizon_predictor",
+      "ungated_neural_dynamics",
+      "stage5c_execution",
+      "smc_enabled"
+    ]
+  },
   "m3w_one_file_detailed_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_gk_plus_current_user_request_refresh",
     "path": "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",

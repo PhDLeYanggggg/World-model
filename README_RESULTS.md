@@ -1,5 +1,15 @@
 # Physical World Model 2.5D Results
 
+## 当前长期目标总账 README
+
+本轮按用户要求，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的当前版中文总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_CURRENT_GOAL_CONSOLIDATED_SUMMARY_ZH.md`
+
+该文件是 summary/evidence ledger，不是新训练。它汇总 Stage26、Stage37、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU/FV/GJ/GK/GS 等关键结果，并保持严格 claim boundary：当前 M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。当前成功主线是 cost-aware selector、safe-switch、teacher/Stage37 floor、group-consistency full-waypoint protected policy；失败或 blocked 主线是 hard-class selector、JEPA downstream、unprotected neural dynamics、zero-shot external、latent-only alignment、ordinary residual/correction、scene/goal/neighbor 独立主贡献、uniform horizon/h100 和 source/legal conversion。
+
+本次 summary-only 更新后校验：`research_state.json` JSON load passed；`.venv-pytorch/bin/python -m pytest tests` = `927 passed in 31.80s`。
+
 ## 最新用户请求总结文件
 
 本轮按用户要求，把“在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”统一刷新到一个单文件总账：
