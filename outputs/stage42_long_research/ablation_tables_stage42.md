@@ -647,3 +647,16 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - decision: `proximity_pareto_composer_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FB_PROXIMITY_PARETO_COMPOSER:END -->
+
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:START -->
+## Stage42-FC Objective-Level Proximity Training
+
+- source: `fresh_stage42_objective_level_proximity_training`
+- role: moves proximity/group-interaction signal from post-hoc repair into supervised full-waypoint training objective.
+- selected objective: `label_proximity_objective`; feature mode `stage42_am_features`; lambda `10.0`.
+- gate: `22 / 23`; verdict `stage42_fc_objective_level_proximity_training_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.37%` / `23.01%` / `14.02%` / `24.76%` / `-31.10%`.
+- delta vs Stage42-DI all/hard/near005: `1.66%` / `0.87%` / `0.48%`.
+- decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->

@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FB：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp，因此是 safety-sensitive diagnostic，不是新 best deployable。当前结论是：post-hoc repair 已接近 Pareto 边界，下一步要做 training/objective-level 改动。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FC：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 则提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp，因此同样不是新 best deployable。当前结论是：post-hoc repair 已接近 Pareto 边界，objective-level training 能提高精度但还需要 safety-aware joint loss。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -89,7 +89,7 @@ latest source terms gap audit = Stage42-EF, 13 / 13 gates, conversion_ready_now 
 latest paper claim refresh = Stage42-EG, 12 / 12 gates, supported claim limited to protected source-level group-consistency full-waypoint dynamics
 latest source terms intake = Stage42-EH, 14 / 14 gates, fillable manual confirmation package written with conversion_ready_now still 0
 latest source terms intake validator bridge = Stage42-EI, 10 / 10 gates, CG validator now reads EH intake template
-latest full pytest = 783 passed in 30.91s
+latest full pytest = 786 passed in 36.07s
 ```
 
 ```text
@@ -5123,3 +5123,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `proximity_pareto_composer_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FB_PROXIMITY_PARETO_COMPOSER:END -->
+
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:START -->
+## Stage42-FC Objective-Level Proximity Training
+
+- source: `fresh_stage42_objective_level_proximity_training`
+- role: moves proximity/group-interaction signal from post-hoc repair into supervised full-waypoint training objective.
+- selected objective: `label_proximity_objective`; feature mode `stage42_am_features`; lambda `10.0`.
+- gate: `22 / 23`; verdict `stage42_fc_objective_level_proximity_training_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.37%` / `23.01%` / `14.02%` / `24.76%` / `-31.10%`.
+- delta vs Stage42-DI all/hard/near005: `1.66%` / `0.87%` / `0.48%`.
+- decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->

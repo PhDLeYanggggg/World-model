@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FB: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, and later group-risk/repel/Pareto repair attempts did not become a new best deployable policy.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FC: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, and objective-level proximity training improved all/t50/hard while still failing the proximity safety gate.
 
 Latest current-goal work summary requested by the user:
 
@@ -2139,3 +2139,16 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: `proximity_pareto_composer_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FB_PROXIMITY_PARETO_COMPOSER:END -->
+
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:START -->
+## Stage42-FC Objective-Level Proximity Training
+
+- source: `fresh_stage42_objective_level_proximity_training`
+- role: moves proximity/group-interaction signal from post-hoc repair into supervised full-waypoint training objective.
+- selected objective: `label_proximity_objective`; feature mode `stage42_am_features`; lambda `10.0`.
+- gate: `22 / 23`; verdict `stage42_fc_objective_level_proximity_training_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.37%` / `23.01%` / `14.02%` / `24.76%` / `-31.10%`.
+- delta vs Stage42-DI all/hard/near005: `1.66%` / `0.87%` / `0.48%`.
+- decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->

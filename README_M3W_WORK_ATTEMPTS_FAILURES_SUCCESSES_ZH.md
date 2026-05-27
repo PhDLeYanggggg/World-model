@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FB 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FC 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
@@ -16,7 +16,8 @@ Stage42-EU/EV/EW/EX/EY 都没有提升到超过 Stage42-DI 的新 deployable pol
 Stage42-EZ 进一步测试 temporal group-repel shape，all/t50/hard 有极小正增量，但 near@0.05 比 Stage42-DI 差，因此不 promoted。
 Stage42-FA waypoint-wise repel 修复了 proximity，但 all/hard 低于 Stage42-DI，因此同样不 promoted。
 Stage42-FB 在 DI/FA 之间做 validation-only Pareto composer，near@0.05 进一步下降到 1.10%，但 all/hard 各损失约 0.07pp，因此是 safety-sensitive diagnostic，不是新 best deployable。
-这些结果的价值是负结果定位：group-consistency repair 的瓶颈不在 risk bucket 粒度，也不只是 post-hoc repel 的 temporal/waypoint shape；下一步需要训练或目标层面的改变。
+Stage42-FC 把 proximity / group-interaction signal 放进 supervised training objective 后，all/t50/hard 分别高于 Stage42-DI/FB，但 near@0.05 比 Stage42-DI 差约 0.48pp，因此不 promoted。
+这些结果的价值是负结果定位：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard，但还没有解决 proximity safety。下一步应做 safety-aware objective / joint loss，而不是只改 composer threshold。
 ```
 
 但是当前仍然不是：
@@ -44,7 +45,7 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41-42 protected policy family | 有 protected neural/full-waypoint/runtime evidence，但仍依赖 Stage37 / teacher safety floor。 |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | 用一部分 ADE 增益换 near-collision 安全修复。 |
 | Source-level full-waypoint policy | Stage42-DL/DQ/ES/ET group-consistency full-waypoint family | source/frame/horizon group-consistency 目标得到 fresh 支持；仍是 protected raw-frame 2.5D evidence。 |
-| Group-risk/adaptive/temporal/waypoint/Pareto repair follow-up | Stage42-EU/EV/EW/EX/EY/EZ/FA/FB | 证明 risk bucket、temporal/waypoint repel、DI/FA Pareto composer 都没有形成新的 accuracy+safety 双赢 deployable policy；下一步应做 training/objective-level 改动，而不是继续堆 post-hoc repair。 |
+| Group-risk/adaptive/temporal/waypoint/Pareto/objective follow-up | Stage42-EU/EV/EW/EX/EY/EZ/FA/FB/FC | 证明 risk bucket、temporal/waypoint repel、DI/FA Pareto composer 都没有形成新的 accuracy+safety 双赢 deployable policy；FC 证明 objective-level training 可提高 all/t50/hard，但 proximity safety 未同步通过。 |
 | Paper claim | 受限 claim | 可以写 protected dataset-local raw-frame 2.5D world-state candidate；不能写 true 3D / foundation / metric / seconds-level / Stage5C / SMC。 |
 
 ## 1. 永久边界
@@ -488,8 +489,9 @@ Stage42-EY run: 16 / 18 gates
 Stage42-EZ run: 17 / 18 gates
 Stage42-FA run: 15 / 17 gates
 Stage42-FB run: 14 / 16 gates
-latest focused tests for Stage42-ES/ET/EU/EV/EW/EX/EY/EZ/FA/FB: passed
-latest full pytest after this README refresh: 783 passed in 30.91s
+Stage42-FC run: 22 / 23 gates
+latest focused tests for Stage42-ES/ET/EU/EV/EW/EX/EY/EZ/FA/FB/FC: passed
+latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 ```
 
 本次 README 更新本身是总结与索引更新，不是新训练，不改变模型 gate。
@@ -608,3 +610,16 @@ latest full pytest after this README refresh: 783 passed in 30.91s
 - decision: `proximity_pareto_composer_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FB_PROXIMITY_PARETO_COMPOSER:END -->
+
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:START -->
+## Stage42-FC Objective-Level Proximity Training
+
+- source: `fresh_stage42_objective_level_proximity_training`
+- role: moves proximity/group-interaction signal from post-hoc repair into supervised full-waypoint training objective.
+- selected objective: `label_proximity_objective`; feature mode `stage42_am_features`; lambda `10.0`.
+- gate: `22 / 23`; verdict `stage42_fc_objective_level_proximity_training_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `26.37%` / `23.01%` / `14.02%` / `24.76%` / `-31.10%`.
+- delta vs Stage42-DI all/hard/near005: `1.66%` / `0.87%` / `0.48%`.
+- decision: `objective_level_training_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FC_OBJECTIVE_LEVEL_PROXIMITY_TRAINING:END -->

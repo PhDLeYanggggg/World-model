@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FB proximity Pareto composer",
-  "current_verdict": "stage42_fb_proximity_pareto_composer_positive_not_promoted",
+  "current_stage": "Stage42-FC objective-level proximity training",
+  "current_verdict": "stage42_fc_objective_level_proximity_training_positive_not_promoted",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_et_eu_ev_ew_ex_ey_ez_fa_fb_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fc_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -16,7 +16,8 @@
       "Stage42-EY continuous group-risk repair",
       "Stage42-EZ temporal group-repel repair",
       "Stage42-FA waypoint-wise group-repel repair",
-      "Stage42-FB proximity Pareto composer"
+      "Stage42-FB proximity Pareto composer",
+      "Stage42-FC objective-level proximity training"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -30,8 +31,8 @@
       "smc_enabled"
     ],
     "summary_refresh_only": true,
-    "latest_full_pytest_after_summary_refresh": "783 passed in 30.91s",
-    "latest_conclusion": "Stage42-EU/EV/EW/EX/EY did not beat Stage42-DI. Stage42-EZ simple temporal repel had tiny all/t50/hard gains but failed proximity. Stage42-FA waypoint-wise repel repaired proximity but lost all/hard vs DI. Stage42-FB DI/FA Pareto composer further reduced near@0.05 to 1.10% but still lost about 0.07pp all/hard vs DI, so post-hoc repair remains Pareto-bounded; next repair should move to training/objective-level changes."
+        "latest_full_pytest_after_stage42_fc_refresh": "786 passed in 36.07s",
+    "latest_conclusion": "Stage42-FB showed DI/FA post-hoc composition is Pareto-bounded. Stage42-FC moves proximity/group-interaction into supervised training objective and reports whether this breaks the all/hard/proximity tradeoff without changing metric/seconds or Stage5C/SMC boundaries."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -28035,5 +28036,129 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FB composes Stage42-DI and Stage42-FA using validation-only predicted proximity risk to test whether safety can be improved without material all/hard loss."
+  },
+  "stage42_fc_objective_level_proximity_training": {
+    "source": "fresh_stage42_objective_level_proximity_training",
+    "report": "outputs/stage42_long_research/objective_level_proximity_training_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fc_gate.md",
+    "verdict": "stage42_fc_objective_level_proximity_training_positive_not_promoted",
+    "gates": "22/23",
+    "selected_objective": {
+      "variant": "label_proximity_objective",
+      "feature_mode": "stage42_am_features",
+      "lambda": 10.0,
+      "val_score": 1.872562161943545,
+      "val_metric": {
+        "rows": 23788,
+        "all_improvement": 0.460389621841957,
+        "t10_improvement": 0.7368245779341817,
+        "t25_improvement": 0.34188215486515083,
+        "t50_improvement": 0.4971590143425426,
+        "t100_raw_frame_diagnostic_improvement": 0.3286022389255683,
+        "hard_failure_improvement": 0.45636828601170043,
+        "easy_degradation": -0.31582791974047275,
+        "switch_rate": 0.8453842273415167,
+        "harm_over_fallback": -0.24913925893485547
+      },
+      "val_near_diagnostics": {
+        "near_005": 0.01416680679334118,
+        "near_008": 0.06810156381368758,
+        "p05_min_distance": 0.07366691339120889
+      },
+      "policy_slice_count": 8,
+      "mean_train_weight": 1.0,
+      "max_train_weight": 2.817320494036369
+    },
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.2637123937710437,
+      "t10_improvement": 0.48323119524852154,
+      "t25_improvement": 0.3031552216712542,
+      "t50_improvement": 0.2300615855403101,
+      "t100_raw_frame_diagnostic_improvement": 0.14020637764373833,
+      "hard_failure_improvement": 0.24759637279187285,
+      "easy_degradation": -0.31103933754911095,
+      "switch_rate": 0.619937629061486,
+      "harm_over_fallback": -0.12145007225871682
+    },
+    "comparison_to_prior": {
+      "stage42_am_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24578838559866356,
+        "t10_improvement": 0.4584029803090398,
+        "t25_improvement": 0.23324144358920462,
+        "t50_improvement": 0.22017071087030715,
+        "t100_raw_frame_diagnostic_improvement": 0.14365240535176194,
+        "hard_failure_improvement": 0.23749387838492075,
+        "easy_degradation": -0.25662729975593146,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11319535181660002
+      },
+      "stage42_di_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24715658317833844,
+        "t10_improvement": 0.4586454739489455,
+        "t25_improvement": 0.23617773697664124,
+        "t50_improvement": 0.2236298792899738,
+        "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+        "hard_failure_improvement": 0.23887420070464105,
+        "easy_degradation": -0.2563085406508494,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11382546135578223
+      },
+      "stage42_fb_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24646988046247176,
+        "t10_improvement": 0.4585544550999535,
+        "t25_improvement": 0.23486459312960029,
+        "t50_improvement": 0.22185472575437526,
+        "t100_raw_frame_diagnostic_improvement": 0.14349592498302977,
+        "hard_failure_improvement": 0.23815346713533803,
+        "easy_degradation": -0.25640074237317567,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.113509207374429
+      },
+      "delta_vs_stage42_am": {
+        "all_improvement": 0.017924008172380157,
+        "t50_improvement": 0.009890874670002936,
+        "t100_raw_frame_diagnostic_improvement": -0.0034460277080236024,
+        "hard_failure_improvement": 0.0101024944069521,
+        "easy_degradation": -0.05441203779317949
+      },
+      "delta_vs_stage42_di": {
+        "all_improvement": 0.016555810592705278,
+        "t50_improvement": 0.006431706250336289,
+        "t100_raw_frame_diagnostic_improvement": -0.003254743834442464,
+        "hard_failure_improvement": 0.008722172087231805,
+        "easy_degradation": -0.05473079689826155
+      },
+      "delta_vs_stage42_fb": {
+        "all_improvement": 0.01724251330857196,
+        "t50_improvement": 0.008206859785934828,
+        "t100_raw_frame_diagnostic_improvement": -0.003289547339291432,
+        "hard_failure_improvement": 0.009442905656534828,
+        "easy_degradation": -0.05463859517593528
+      },
+      "near_delta_vs_stage42_di": 0.004762105440600111,
+      "near_delta_vs_stage42_fb": 0.007627797210164778,
+      "stage42_di_near_005": 0.01382274853554722,
+      "stage42_fb_near_005": 0.010957056765982553
+    },
+    "deployment_decision": {
+      "promote_objective_level_training": false,
+      "diagnostic_positive": true,
+      "decision": "objective_level_training_not_enough_keep_stage42_di_or_cq_floor",
+      "reason": "Promotion requires positive all+hard, easy safe, no all/hard loss vs Stage42-DI/FB, and no worse near@0.05 than Stage42-DI.",
+      "protected_near_005": 0.01858485397614733
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FC tests whether proximity/group-interaction should move into the training objective after Stage42-FB exposed a post-hoc Pareto boundary."
   }
 }
