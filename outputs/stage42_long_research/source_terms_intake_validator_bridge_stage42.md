@@ -1,9 +1,9 @@
 # Stage42-EI Source Terms Intake -> Validator Bridge
 
 - source: `fresh_validator_bridge_from_stage42_eh_intake`
-- generated_at_utc: `2026-05-27T02:19:15.801182+00:00`
-- git_commit: `bcf647b`
-- input_hash: `3ece77a4c326fb1c9e89540c1f182f53830d1dca32a9e71f7946198da0492cbd`
+- generated_at_utc: `2026-05-27T11:30:53.184739+00:00`
+- git_commit: `77ea60b`
+- input_hash: `12f97618c12d426c9dfe64071f3e11b177b1686974b09e97fba73d3ae9134233`
 - gate: `10 / 10`
 - verdict: `stage42_ei_intake_validator_bridge_pass`
 

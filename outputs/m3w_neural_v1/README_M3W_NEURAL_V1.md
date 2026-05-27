@@ -2491,3 +2491,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - prefill draft: `outputs/stage42_long_research/source_terms_confirmation_prefill_stage42.json`.
 - boundary: prefill is not legal permission; protected dataset-local/raw-frame 2.5D only; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
 <!-- STAGE42_GB_SOURCE_TERMS_PREFILL:END -->
+
+<!-- STAGE42_GC_PREFILL_INTAKE_BRIDGE:START -->
+## Stage42-GC Prefill -> Intake Bridge
+
+- source: `fresh_stage42_gc_prefill_intake_bridge`
+- gate: `16 / 16`; verdict `stage42_gc_prefill_intake_bridge_pass`.
+- role: adds GB local path/source identity suggestions into the EH intake template as non-permission `prefill_suggestion` hints.
+- intake rows: `5`; suggestions added `5`; user-confirmed rows `0`.
+- conversion_ready_now: `0`; updated intake template `outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json`.
+- boundary: user_confirmation is still blank; no download/conversion/training/evaluation; protected dataset-local/raw-frame 2.5D only.
+<!-- STAGE42_GC_PREFILL_INTAKE_BRIDGE:END -->
