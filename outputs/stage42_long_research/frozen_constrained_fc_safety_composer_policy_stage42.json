@@ -1,0 +1,29 @@
+{
+  "policy_name": "stage42_fe_constrained_fc_safety_composer",
+  "source": "fresh_stage42_fe_policy_freeze_replay",
+  "frozen_from": "outputs/stage42_long_research/constrained_fc_safety_composer_stage42.json",
+  "frozen_at_utc": "2026-05-27T07:12:11.402716+00:00",
+  "git_commit": "d37e569",
+  "selected_candidate": {
+    "mode": "fc_to_safety",
+    "fallback": "di",
+    "scope": "row",
+    "threshold": 0.05,
+    "margin": 0.0025
+  },
+  "policy_hash": "a78db26aa155b38799f5b866f32a2d205018adf2054d9409a016da3163328dff",
+  "runtime_inputs": [
+    "predicted_fc_rollout_geometry",
+    "predicted_di_fallback_geometry",
+    "predicted_fa_fallback_geometry",
+    "predicted_fb_fallback_geometry",
+    "source_frame_horizon_group_key",
+    "agent_id",
+    "normalizer"
+  ],
+  "validation_selection_rule": "candidate selected on validation only; test evaluated once",
+  "test_usage_rule": "test labels used only for final evaluation and bootstrap, not for policy selection",
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "metric_or_seconds_claim": false
+}

@@ -528,3 +528,16 @@ python3 -m pytest tests
 - decision: `promote_stage42_fe_constrained_fc_safety_composer`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:END -->
+
+<!-- STAGE42_FF_FE_POLICY_FREEZE_REPLAY:START -->
+## Stage42-FF FE Policy Freeze / Bootstrap / Replay
+
+- source: `fresh_stage42_fe_policy_freeze_replay`
+- role: freeze Stage42-FE constrained FC/safety composer and add 2000-bootstrap plus exact replay evidence.
+- gate: `23 / 23`; verdict `stage42_ff_fe_policy_freeze_replay_pass`.
+- frozen policy hash: `a78db26aa155b38799f5b866f32a2d205018adf2054d9409a016da3163328dff`.
+- replay all/t50/t100raw/hard/easy: `26.41%` / `23.15%` / `14.01%` / `24.81%` / `-31.06%`.
+- bootstrap lows all/t50/t100raw/hard: `26.08%` / `22.71%` / `13.46%` / `24.46%`.
+- exact replay max metric/diagnostic diff: `0.0` / `0.0`.
+- Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FF_FE_POLICY_FREEZE_REPLAY:END -->

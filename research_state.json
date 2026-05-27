@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FE constrained FC/safety composer",
-  "current_verdict": "stage42_fe_constrained_fc_safety_composer_pass_promotable",
+  "current_stage": "Stage42-FF FE policy freeze / bootstrap / replay",
+  "current_verdict": "stage42_ff_fe_policy_freeze_replay_pass",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fe_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_ff_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -19,7 +19,8 @@
       "Stage42-FB proximity Pareto composer",
       "Stage42-FC objective-level proximity training",
       "Stage42-FD safety-aware joint objective training",
-      "Stage42-FE constrained FC/safety composer"
+      "Stage42-FE constrained FC/safety composer",
+      "Stage42-FF FE policy freeze / bootstrap / replay"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -34,7 +35,7 @@
     ],
     "summary_refresh_only": true,
     "latest_full_pytest_after_stage42_fc_refresh": "786 passed in 36.07s",
-    "latest_conclusion": "Stage42-FE follows FD by trying validation-only constrained composition between high-accuracy FC and safety fallbacks, testing whether proximity safety can be restored without losing FC all/hard gains."
+    "latest_conclusion": "Stage42-FF freezes the Stage42-FE constrained composer and adds bootstrap/replay evidence, strengthening FE from promotable single-run evidence to frozen reproducible evidence."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -28391,5 +28392,102 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FE tests whether high-accuracy FC can be safely composed with DI/FA/FB predicted-proximity fallbacks under validation-only constraints."
+  },
+  "stage42_ff_fe_policy_freeze_replay": {
+    "source": "fresh_stage42_fe_policy_freeze_replay",
+    "report": "outputs/stage42_long_research/fe_policy_freeze_replay_stage42.md",
+    "policy": "outputs/stage42_long_research/frozen_constrained_fc_safety_composer_policy_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_ff_gate.md",
+    "verdict": "stage42_ff_fe_policy_freeze_replay_pass",
+    "gates": "23/23",
+    "policy_hash": "a78db26aa155b38799f5b866f32a2d205018adf2054d9409a016da3163328dff",
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.2640839033584901,
+      "t10_improvement": 0.4831766064625891,
+      "t25_improvement": 0.30340552226539697,
+      "t50_improvement": 0.23150842874319189,
+      "t100_raw_frame_diagnostic_improvement": 0.14009794349523075,
+      "hard_failure_improvement": 0.2480752028360811,
+      "easy_degradation": -0.310596562786841,
+      "switch_rate": 0.6195162038012558,
+      "harm_over_fallback": -0.1216211672368291
+    },
+    "bootstrap_ci": {
+      "all": {
+        "low": 0.2608300822442725,
+        "mid": 0.26402544957288376,
+        "high": 0.26707518165256905,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "t50": {
+        "low": 0.2270619395769471,
+        "mid": 0.23149730348831704,
+        "high": 0.235528319074685,
+        "n": 11538,
+        "bootstrap_n": 2000
+      },
+      "t100_raw_frame_diagnostic": {
+        "low": 0.13463982625416118,
+        "mid": 0.1401103933407007,
+        "high": 0.1459853296564354,
+        "n": 7048,
+        "bootstrap_n": 2000
+      },
+      "hard_failure": {
+        "low": 0.2445515049348692,
+        "mid": 0.24808530090523628,
+        "high": 0.25145590680128715,
+        "n": 35076,
+        "bootstrap_n": 2000
+      },
+      "easy_degradation": {
+        "low": -0.4676538425563008,
+        "mid": -0.4502541954889152,
+        "high": -0.4334994802211664,
+        "n": 11192,
+        "bootstrap_n": 2000
+      }
+    },
+    "near_bootstrap_ci": {
+      "final_near_005": {
+        "low": 0.012179190020649837,
+        "mid": 0.013232753171225083,
+        "high": 0.014223102532765814,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "delta_final_minus_fc": {
+        "low": -0.005984238695267394,
+        "mid": -0.005352100804922247,
+        "high": -0.004698891651565595,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "delta_final_minus_di": {
+        "low": -0.0009692780985292259,
+        "mid": -0.0005899953643221375,
+        "high": -0.00021071263011504908,
+        "n": 47458,
+        "bootstrap_n": 2000
+      },
+      "delta_final_minus_fb": {
+        "low": 0.0017910573559779173,
+        "mid": 0.0022756964052425303,
+        "high": 0.0027603354545071433,
+        "n": 47458,
+        "bootstrap_n": 2000
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FF freezes Stage42-FE and adds exact replay plus 2000-bootstrap evidence without reselection or test tuning."
   }
 }

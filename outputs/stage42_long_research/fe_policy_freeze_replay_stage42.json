@@ -1,0 +1,217 @@
+{
+  "source": "fresh_stage42_fe_policy_freeze_replay",
+  "stage": "Stage42-FF FE policy freeze, 2000-bootstrap, and replay",
+  "generated_at_utc": "2026-05-27T07:12:11.445508+00:00",
+  "git_commit": "d37e569",
+  "input_hash": "36a1aa92bcf845488ec1cc4a716e8ec2ec7fdd7e243d4c6a4ebde7b8bc0ae282",
+  "fe_artifact": {
+    "exists": true,
+    "report": "outputs/stage42_long_research/constrained_fc_safety_composer_stage42.md",
+    "verdict": "stage42_fe_constrained_fc_safety_composer_pass_promotable",
+    "selected_candidate": {
+      "mode": "fc_to_safety",
+      "fallback": "di",
+      "scope": "row",
+      "threshold": 0.05,
+      "margin": 0.0025
+    }
+  },
+  "frozen_policy": {
+    "policy_name": "stage42_fe_constrained_fc_safety_composer",
+    "source": "fresh_stage42_fe_policy_freeze_replay",
+    "frozen_from": "outputs/stage42_long_research/constrained_fc_safety_composer_stage42.json",
+    "frozen_at_utc": "2026-05-27T07:12:11.402716+00:00",
+    "git_commit": "d37e569",
+    "selected_candidate": {
+      "mode": "fc_to_safety",
+      "fallback": "di",
+      "scope": "row",
+      "threshold": 0.05,
+      "margin": 0.0025
+    },
+    "policy_hash": "a78db26aa155b38799f5b866f32a2d205018adf2054d9409a016da3163328dff",
+    "runtime_inputs": [
+      "predicted_fc_rollout_geometry",
+      "predicted_di_fallback_geometry",
+      "predicted_fa_fallback_geometry",
+      "predicted_fb_fallback_geometry",
+      "source_frame_horizon_group_key",
+      "agent_id",
+      "normalizer"
+    ],
+    "validation_selection_rule": "candidate selected on validation only; test evaluated once",
+    "test_usage_rule": "test labels used only for final evaluation and bootstrap, not for policy selection",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false
+  },
+  "replay": {
+    "candidate_exact_replay": true,
+    "test_rows": 47458,
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.2640839033584901,
+      "t10_improvement": 0.4831766064625891,
+      "t25_improvement": 0.30340552226539697,
+      "t50_improvement": 0.23150842874319189,
+      "t100_raw_frame_diagnostic_improvement": 0.14009794349523075,
+      "hard_failure_improvement": 0.2480752028360811,
+      "easy_degradation": -0.310596562786841,
+      "switch_rate": 0.6195162038012558,
+      "harm_over_fallback": -0.1216211672368291
+    },
+    "test_diagnostics": {
+      "use_fallback_rate": 0.016562012727042857,
+      "use_fallback_rows": 786,
+      "fc_near_005": 0.01858485397614733,
+      "final_near_005": 0.013232753171225083,
+      "final_near_008": 0.05714526528720131,
+      "final_p05_min_distance": 0.07593579538865941
+    },
+    "metric_abs_diffs_vs_fe_artifact": {
+      "all_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "hard_failure_improvement": 0.0,
+      "harm_over_fallback": 0.0,
+      "rows": 0.0,
+      "switch_rate": 0.0,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.0
+    },
+    "diagnostic_abs_diffs_vs_fe_artifact": {
+      "fc_near_005": 0.0,
+      "final_near_005": 0.0,
+      "final_near_008": 0.0,
+      "final_p05_min_distance": 0.0,
+      "use_fallback_rate": 0.0,
+      "use_fallback_rows": 0.0
+    },
+    "max_metric_abs_diff": 0.0,
+    "max_diagnostic_abs_diff": 0.0,
+    "near_delta_vs_fc": -0.005352100804922249,
+    "near_delta_vs_di": -0.0005899953643221378,
+    "near_delta_vs_fb": 0.0022756964052425294
+  },
+  "bootstrap_ci": {
+    "all": {
+      "low": 0.2608300822442725,
+      "mid": 0.26402544957288376,
+      "high": 0.26707518165256905,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "t50": {
+      "low": 0.2270619395769471,
+      "mid": 0.23149730348831704,
+      "high": 0.235528319074685,
+      "n": 11538,
+      "bootstrap_n": 2000
+    },
+    "t100_raw_frame_diagnostic": {
+      "low": 0.13463982625416118,
+      "mid": 0.1401103933407007,
+      "high": 0.1459853296564354,
+      "n": 7048,
+      "bootstrap_n": 2000
+    },
+    "hard_failure": {
+      "low": 0.2445515049348692,
+      "mid": 0.24808530090523628,
+      "high": 0.25145590680128715,
+      "n": 35076,
+      "bootstrap_n": 2000
+    },
+    "easy_degradation": {
+      "low": -0.4676538425563008,
+      "mid": -0.4502541954889152,
+      "high": -0.4334994802211664,
+      "n": 11192,
+      "bootstrap_n": 2000
+    }
+  },
+  "near_bootstrap_ci": {
+    "final_near_005": {
+      "low": 0.012179190020649837,
+      "mid": 0.013232753171225083,
+      "high": 0.014223102532765814,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "delta_final_minus_fc": {
+      "low": -0.005984238695267394,
+      "mid": -0.005352100804922247,
+      "high": -0.004698891651565595,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "delta_final_minus_di": {
+      "low": -0.0009692780985292259,
+      "mid": -0.0005899953643221375,
+      "high": -0.00021071263011504908,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "delta_final_minus_fb": {
+      "low": 0.0017910573559779173,
+      "mid": 0.0022756964052425303,
+      "high": 0.0027603354545071433,
+      "n": 47458,
+      "bootstrap_n": 2000
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "validation_only_policy_selection": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "decision": "freeze_and_promote_stage42_fe_if_replay_and_ci_hold",
+  "notes": [
+    "This step does not reselect thresholds or tune on test.",
+    "It freezes the Stage42-FE selected candidate, recomputes the same policy, and adds 2000-bootstrap evidence.",
+    "Near-collision bootstrap is reported as safety evidence; dataset-local/raw-frame boundaries remain unchanged."
+  ],
+  "stage42_ff_gate": {
+    "gates": {
+      "source_fresh": true,
+      "fe_artifact_loaded": true,
+      "policy_hash_recorded": true,
+      "candidate_exact_replay": true,
+      "metric_exact_replay": true,
+      "diagnostic_exact_replay": true,
+      "bootstrap_n_2000": true,
+      "bootstrap_all_positive": true,
+      "bootstrap_t50_positive": true,
+      "bootstrap_t100_raw_positive": true,
+      "bootstrap_hard_positive": true,
+      "easy_ci_safe": true,
+      "near_bootstrap_reported": true,
+      "near_point_better_than_fc": true,
+      "near_point_not_worse_than_di": true,
+      "test_all_positive": true,
+      "test_t50_positive": true,
+      "test_hard_positive": true,
+      "easy_degradation_under_2pct": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 23,
+    "total": 23,
+    "verdict": "stage42_ff_fe_policy_freeze_replay_pass"
+  }
+}
