@@ -857,3 +857,28 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - exact replay max metric/diagnostic diff: `0.0` / `0.0`.
 - Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FF_FE_POLICY_FREEZE_REPLAY:END -->
+
+<!-- STAGE42_FG_FE_SOURCE_ROBUSTNESS:START -->
+## Stage42-FG FE Source / Domain / Horizon Robustness Audit
+
+- source: `fresh_stage42_fe_source_robustness_audit`
+- role: audit frozen Stage42-FE/FF across domain/source/horizon/scene slices without retraining or threshold reselection.
+- gate: `11 / 12`; verdict `stage42_fg_fe_source_robustness_partial`.
+- robust domains: `['TrajNet']`.
+- weak domain-horizon slices: `['TrajNet|100', 'UCY|10', 'UCY|25', 'UCY|50', 'UCY|100']`.
+- weak sources: `['TrajNet/Train/crowds/crowds_zara03.txt']`.
+- broad uniform source claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D audit; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FG_FE_SOURCE_ROBUSTNESS:END -->
+
+<!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:START -->
+## Stage42-FH UCY-Supported FE Composer
+
+- source: `fresh_stage42_ucy_supported_fe_composer`
+- role: repair Stage42-FG UCY fallback-only weakness by adding train-only UCY internal validation before FE composer selection.
+- gate: `20 / 20`; verdict `stage42_fh_ucy_supported_fe_composer_pass`.
+- positive safe domains: `['TrajNet', 'UCY']`; weak domains: `[]`.
+- all/t50/t100raw/hard/easy: `34.98%` / `28.97%` / `20.57%` / `33.10%` / `-36.91%`.
+- decision: `promote_stage42_fh_ucy_supported_fe_composer`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:END -->

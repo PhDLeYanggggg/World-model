@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FG 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FH 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
@@ -21,7 +21,8 @@ Stage42-FD 进一步把 FA waypoint-wise safety teacher 放进 train-only object
 Stage42-FE 用 validation-only constrained FC→DI safety fallback，把 FC 高精度和 DI proximity safety 组合起来：all/t50/hard 为 26.41% / 23.15% / 24.81%，near@0.05 为 1.32%，比 FC 低 0.54pp 且不劣于 DI，因此 promotable。
 Stage42-FF 已冻结 FE policy，并做 exact replay + 2000-bootstrap：all/t50/t100raw/hard 的 CI low 分别为 26.08% / 22.71% / 13.46% / 24.46%，replay max diff = 0。
 Stage42-FG 随后做 source/domain/horizon 鲁棒性审计，结果是 partial：TrajNet robust，但 UCY 仍是 weak domain，TrajNet|100 也有 easy-safety 弱切片；因此不能把 FE/FF 的 global positive 包装成“每个 external source 都 positive”。
-这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker；但 source/domain/horizon 审计提醒我们，下一步必须补 UCY support / weak-slice repair，而不是直接写 broad uniform source-level claim。
+Stage42-FH 用 UCY train-only internal validation 重新选择 FE composer family，修复 FG 暴露的 UCY fallback-only 弱域：all/t50/t100raw/hard 为 34.98% / 28.97% / 20.57% / 33.10%，TrajNet 和 UCY 都 positive-safe，gate 20/20。
+这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker；source/domain/horizon 审计发现 UCY weak；UCY internal-val support 进一步把 weak domain 修成 dual-domain positive-safe。但这仍是 dataset-local raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。
 ```
 
 但是当前仍然不是：
@@ -681,3 +682,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - broad uniform source claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D audit; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FG_FE_SOURCE_ROBUSTNESS:END -->
+
+<!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:START -->
+## Stage42-FH UCY-Supported FE Composer
+
+- source: `fresh_stage42_ucy_supported_fe_composer`
+- role: repair Stage42-FG UCY fallback-only weakness by adding train-only UCY internal validation before FE composer selection.
+- gate: `20 / 20`; verdict `stage42_fh_ucy_supported_fe_composer_pass`.
+- positive safe domains: `['TrajNet', 'UCY']`; weak domains: `[]`.
+- all/t50/t100raw/hard/easy: `34.98%` / `28.97%` / `20.57%` / `33.10%` / `-36.91%`.
+- decision: `promote_stage42_fh_ucy_supported_fe_composer`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:END -->
