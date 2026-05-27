@@ -737,3 +737,16 @@ SMC 是否启用：否
 - sequence_graph_increment_verdict: `stage42_eq_sequence_graph_context_router_not_supported`.
 - Boundary: fresh router audit only; raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EQ_SEQUENCE_GRAPH_CONTEXT_ROUTER:END -->
+
+<!-- STAGE42_ER_POST_EQ_CONTEXT_CLAIM_REFRESH:START -->
+## Stage42-ER Post-EQ Context Claim Refresh
+
+- source: `fresh_post_eq_context_claim_refresh`
+- role: updates paper/action boundaries after the fresh Stage42-EQ sequence+graph router result.
+- gate: `14 / 14`; verdict `stage42_er_post_eq_context_claim_refresh_pass`.
+- Stage42-EQ best all/t50/t100raw/hard delta: `0.01%` / `-0.02%` / `0.01%` / `0.02%`.
+- context decision: `close_current_shallow_sequence_graph_context_protocol`; independent context main claim allowed `False`.
+- DA-2 is closed negative under the current shallow sequence/graph residual/router protocols.
+- New priority: source/legal/time conversion plus stronger joint occupancy or interaction-constraint targets.
+- Boundary: raw-frame/dataset-local 2.5D only; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_ER_POST_EQ_CONTEXT_CLAIM_REFRESH:END -->

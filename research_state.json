@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EQ sequence graph context router",
-  "current_verdict": "stage42_eq_sequence_graph_context_router_pass",
+  "current_stage": "Stage42-ER post-EQ context claim refresh",
+  "current_verdict": "stage42_er_post_eq_context_claim_refresh_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -21109,5 +21109,266 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-EQ freshly tests whether past-only sequence summary and current-frame graph summary can act as a context gain router over the protected baseline-family control. The result is bounded as positive or negative evidence and cannot be used for metric/seconds, true-3D, Stage5C, or SMC claims."
+  },
+  "stage42_er_post_eq_context_claim_refresh": {
+    "source": "fresh_post_eq_context_claim_refresh",
+    "report": "outputs/stage42_long_research/post_eq_context_claim_refresh_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_er_gate.md",
+    "verdict": "stage42_er_post_eq_context_claim_refresh_pass",
+    "gates": "14/14",
+    "summary": {
+      "source": "fresh_post_eq_context_claim_refresh",
+      "context_evidence_matrix": [
+        {
+          "protocol": "context_gain_router",
+          "source": "cached_verified",
+          "report": "outputs/stage42_long_research/context_gain_router_stage42.json",
+          "positive_variants": [],
+          "best_variant": "baseline_plus_history_goal_neighbor",
+          "all_delta": 0.0002777062145067344,
+          "t50_delta": -1.9298584715388145e-05,
+          "hard_delta": 0.0003214139546370287,
+          "verdict": "stage42_el_context_gain_router_not_supported"
+        },
+        {
+          "protocol": "sequence_residual_context",
+          "source": "cached_verified",
+          "report": "outputs/stage42_long_research/source_level_sequence_context_stage42.json",
+          "positive_variants": [],
+          "best_variant": "",
+          "all_delta": null,
+          "t50_delta": null,
+          "hard_delta": null,
+          "verdict": "stage42_ar_sequence_context_not_supported"
+        },
+        {
+          "protocol": "graph_residual_context",
+          "source": "cached_verified",
+          "report": "outputs/stage42_long_research/source_level_graph_context_stage42.json",
+          "positive_variants": [],
+          "best_variant": "graph_history_goal",
+          "all_delta": -0.0230085146797967,
+          "t50_delta": -0.08641736345762652,
+          "hard_delta": -0.026234695463867364,
+          "verdict": "stage42_as_graph_context_not_supported"
+        },
+        {
+          "protocol": "sequence_graph_context_router",
+          "source": "fresh_run",
+          "report": "outputs/stage42_long_research/sequence_graph_context_router_stage42.json",
+          "positive_variants": [],
+          "best_variant": "baseline_plus_history_goal_neighbor",
+          "all_delta": 0.00011750614011707405,
+          "t50_delta": -0.00019718851524008763,
+          "hard_delta": 0.00016873634079317412,
+          "verdict": "stage42_eq_sequence_graph_context_router_not_supported"
+        }
+      ],
+      "context_claim_decision": {
+        "source": "fresh_decision_from_stage42_eq_plus_cached_context_evidence",
+        "meaningful_context_threshold": 0.01,
+        "independent_context_main_claim_allowed": false,
+        "positive_protocols": [],
+        "closed_protocols": [
+          "context_gain_router",
+          "sequence_residual_context",
+          "graph_residual_context",
+          "sequence_graph_context_router"
+        ],
+        "decision": "close_current_shallow_sequence_graph_context_protocol",
+        "paper_wording": "Scene/goal/neighbor/sequence/graph context can be reported as an auxiliary or diagnostic probe under the current protocols; it must not be written as an independent main contribution until a future protocol produces validation-selected, bootstrap-positive all/t50/hard lift with easy preservation."
+      },
+      "best_eq_metric": {
+        "best_router": "baseline_plus_history_goal_neighbor",
+        "all_delta": 0.00011750614011707405,
+        "t50_delta": -0.00019718851524008763,
+        "t100_raw_delta": 8.265833648135601e-05,
+        "hard_delta": 0.00016873634079317412,
+        "easy_delta": -0.001971095493363495
+      },
+      "updated_next_actions": [
+        {
+          "id": "ER-1",
+          "title": "Use official terms confirmation to unlock independent external sources",
+          "priority": 105,
+          "status": "not_run_next_action",
+          "why_now": "Context protocols are closed negative; the largest remaining publication blocker is legally converted independent source diversity.",
+          "evidence": [
+            "outputs/stage42_long_research/official_source_link_audit_stage42.json",
+            "outputs/stage42_long_research/source_terms_gap_audit_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+          ],
+          "requires_user_or_external_state": true,
+          "blocked_claim_until_done": "broader external generalization and metric/time subset claims",
+          "success_gate": "user-confirmed terms/local path/source identity followed by conversion/no-leakage/source-CV/final test-once.",
+          "current_blocker_numbers": {
+            "auto_download_allowed_now": 0,
+            "conversion_ready_now": 0,
+            "manual_terms_required_targets": 5
+          }
+        },
+        {
+          "id": "DA-1",
+          "title": "Close legal/source support for ETH_UCY and TrajNet t100/t50 calibration",
+          "priority": 100,
+          "status": "not_run_next_action",
+          "why_now": "Global t100 and restricted metric/seconds claims are still blocked by independent source support and terms confirmation.",
+          "evidence": [
+            "outputs/stage42_long_research/t100_data_gap_audit_stage42.md",
+            "outputs/stage42_long_research/source_terms_validation_stage42.md",
+            "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_source_time_geometry_calibration.py"
+          ],
+          "requires_user_or_external_state": true,
+          "blocked_claim_until_done": "global_or_restricted metric/seconds and global t100 deployable claim",
+          "success_gate": "official/terms-safe conversion + no-leakage + source-CV positive/easy-safe on ETH_UCY and TrajNet."
+        },
+        {
+          "id": "ER-2",
+          "title": "Replace shallow context probes with joint occupancy or interaction-constraint target",
+          "priority": 96,
+          "status": "not_run_next_action",
+          "why_now": "EQ/EL/AR/AS close shallow context routing/residual protocols, but interaction may still help if trained against a physical group/occupancy target.",
+          "evidence": [
+            "outputs/stage42_long_research/sequence_graph_context_router_stage42.json",
+            "outputs/stage42_long_research/source_level_sequence_context_stage42.json",
+            "outputs/stage42_long_research/source_level_graph_context_stage42.json",
+            "outputs/stage42_long_research/group_consistency_contribution_audit_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_group_consistency_contribution_audit.py",
+            ".venv-pytorch/bin/python run_stage42_full_waypoint_proximity_occupancy_loss_repair.py"
+          ],
+          "requires_user_or_external_state": false,
+          "blocked_claim_until_done": "scene/goal/neighbor/interaction as an independent main contribution",
+          "success_gate": "new target beats protected baseline-family/floor on all/t50/hard and improves proximity/occupancy without easy degradation."
+        },
+        {
+          "id": "DA-2",
+          "title": "Train a stronger source-compatible sequence/graph context model beyond baseline-family rollout",
+          "priority": 92,
+          "status": "closed_negative_fresh_run",
+          "why_now": "Current context forensics says baseline-family rollout context dominates; history/goal/neighbor/interaction are not independent main drivers yet.",
+          "evidence": [
+            "outputs/stage42_long_research/context_contribution_forensics_stage42.md",
+            "outputs/stage42_long_research/goal_scene_gated_expert_stage42.md",
+            "outputs/stage42_long_research/neighbor_interaction_gated_expert_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_source_level_sequence_context.py",
+            ".venv-pytorch/bin/python run_stage42_source_level_graph_context.py"
+          ],
+          "requires_user_or_external_state": false,
+          "blocked_claim_until_done": "scene/goal/neighbor/interaction as independent main contribution",
+          "success_gate": "retrained context model beats baseline-family control on all/t50/hard with easy degradation <=2%.",
+          "closed_by": "outputs/stage42_long_research/post_eq_context_claim_refresh_stage42.json",
+          "closure_reason": "close_current_shallow_sequence_graph_context_protocol",
+          "next_valid_variant": "Do not repeat shallow residual/router context. Replace target with joint occupancy, interaction-constraint, or new data/source support."
+        },
+        {
+          "id": "ER-3",
+          "title": "Map safe slice-level floor relaxation without global floor removal",
+          "priority": 88,
+          "status": "not_run_next_action",
+          "why_now": "EN blocks global floor removal but permits validation-backed t50 slice relaxation.",
+          "evidence": [
+            "outputs/stage42_long_research/floor_removability_decision_map_stage42.json",
+            "outputs/stage42_long_research/t50_floor_relaxability_repair_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_t50_floor_relaxability_repair.py",
+            ".venv-pytorch/bin/python run_stage42_weak_slice_guard.py"
+          ],
+          "requires_user_or_external_state": false,
+          "blocked_claim_until_done": "floor-reduction evidence beyond narrow t50 slices",
+          "success_gate": "slice-level relaxation remains validation-backed, source/horizon scoped, easy-safe, and never advertised as global floor-free neural.",
+          "partial_relaxation_components": [
+            "t50_slice_relaxation::TrajNet|50",
+            "t50_slice_relaxation::UCY|50"
+          ]
+        },
+        {
+          "id": "DA-3",
+          "title": "Promote protected full-waypoint from bridge/composer to learned all-agent sequence dynamics",
+          "priority": 88,
+          "status": "not_run_next_action",
+          "why_now": "Common-validation composer is positive, but endpoint-linear bridge remains the stronger all-ADE floor and ungated full-waypoint is unsafe.",
+          "evidence": [
+            "outputs/stage42_long_research/full_waypoint_bridge_shape_audit_stage42.md",
+            "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.md",
+            "outputs/stage42_long_research/proximity_guard_ablation_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_full_waypoint_dynamics.py",
+            ".venv-pytorch/bin/python run_stage42_common_validation_bridge_shape_composer.py"
+          ],
+          "requires_user_or_external_state": false,
+          "blocked_claim_until_done": "ungated or independently learned full-waypoint world dynamics",
+          "success_gate": "learned sequence dynamics improves endpoint-linear/proximity-guard composer on all/t50/hard without proximity/easy regression."
+        },
+        {
+          "id": "DA-4",
+          "title": "Convert paper-freeze candidate into reviewer-replay package",
+          "priority": 76,
+          "status": "not_run_next_action",
+          "why_now": "Stage42-CZ has a clean hash manifest, but a reviewer still needs a minimal replay sequence and immutable archive boundary.",
+          "evidence": [
+            "outputs/stage42_long_research/paper_freeze_candidate_manifest_stage42.md",
+            "outputs/stage42_long_research/evidence_provenance_stage42.md",
+            "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_paper_freeze_candidate_manifest.py",
+            ".venv-pytorch/bin/python -m pytest tests/test_stage42_paper_freeze_candidate_manifest.py tests/test_stage42_evidence_provenance_verifier.py"
+          ],
+          "requires_user_or_external_state": false,
+          "blocked_claim_until_done": "paper-ready reproducibility package beyond internal manifest",
+          "success_gate": "manifest, replay, and provenance can be regenerated without tracked artifact churn."
+        },
+        {
+          "id": "DA-5",
+          "title": "Audit deployment variants as safety-sensitive vs accuracy-priority policies",
+          "priority": 72,
+          "status": "not_run_next_action",
+          "why_now": "No-guard composer has higher ADE, proximity guard is safer. Paper and deployment must not mix these claims.",
+          "evidence": [
+            "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.md",
+            "outputs/stage42_long_research/proximity_guard_ablation_stage42.md"
+          ],
+          "next_commands": [
+            ".venv-pytorch/bin/python run_stage42_proximity_guard_ablation.py",
+            ".venv-pytorch/bin/python run_stage42_runtime_replay_paper_refresh.py"
+          ],
+          "requires_user_or_external_state": false,
+          "blocked_claim_until_done": "single deployment policy claim with explicit risk/accuracy tradeoff",
+          "success_gate": "deployment card separates safety-sensitive deployable from diagnostic accuracy-priority variant."
+        }
+      ],
+      "paper_verdict": {
+        "post_eq_refresh_complete": true,
+        "independent_context_main_claim_allowed": false,
+        "source_legal_blocker_still_primary": true,
+        "floor_free_neural_deployable": false,
+        "global_floor_removal_allowed": false,
+        "metric_seconds_claim_allowed": false,
+        "stage5c_execution_allowed": false,
+        "smc_allowed": false,
+        "recommended_next_primary_action": "ER-1"
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   }
 }

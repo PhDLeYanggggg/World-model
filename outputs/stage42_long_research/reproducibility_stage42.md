@@ -338,3 +338,18 @@ python3 -m pytest tests
 - Blocked: source conversion without user terms/path/source identity; global floor-free neural; teacher-floor rollout context removal.
 - Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
 <!-- STAGE42_EO_POST_EM_EN_PAPER_REFRESH:END -->
+
+<!-- STAGE42_ER_POST_EQ_CONTEXT_CLAIM_REFRESH:START -->
+## Stage42-ER Post-EQ Context Claim Refresh
+
+- source: `fresh_post_eq_context_claim_refresh`
+- role: integrate the fresh Stage42-EQ sequence+graph router result into the paper/gap/action package.
+- This is not new training, conversion, download, or threshold tuning.
+- Stage42-EQ best router: `baseline_plus_history_goal_neighbor` with all/t50/t100raw/hard deltas `0.01%` / `-0.02%` / `0.01%` / `0.02%`.
+- context decision: `close_current_shallow_sequence_graph_context_protocol`.
+- independent context main claim allowed: `False`.
+- closed protocols: `['context_gain_router', 'sequence_residual_context', 'graph_residual_context', 'sequence_graph_context_router']`.
+- Paper wording: sequence/graph/goal/neighbor context remains auxiliary or diagnostic under current protocols, not an independent main contribution.
+- Next primary route: source/legal/time conversion and stronger joint occupancy / interaction-constraint targets, not repeating shallow context routers.
+- Boundary: raw-frame/dataset-local 2.5D only; no true 3D, no foundation, no metric/seconds, no Stage5C, no SMC.
+<!-- STAGE42_ER_POST_EQ_CONTEXT_CLAIM_REFRESH:END -->
