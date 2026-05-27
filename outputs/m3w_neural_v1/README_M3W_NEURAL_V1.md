@@ -3204,3 +3204,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - validation-selected seed: `151` with ADE t50 `0.028352`
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IH_T50_GAIN_HARM_SEED_EXPANSION:END -->
+
+<!-- STAGE42_II_T50_GAIN_HARM_ENSEMBLE_REPAIR:START -->
+## Stage42-II T50 Gain/Harm Ensemble Repair
+
+- source: `fresh_stage42_ii_t50_gain_harm_ensemble_repair`
+- verdict: `stage42_ii_ensemble_repair_stabilizes_t50`
+- gates: `15 / 15`
+- ADE all / t50 / hard: `0.121192` / `0.081363` / `0.124775`
+- ADE t50 row CI low: `0.074234`
+- FDE t50 / CI low: `0.209983` / `0.202250`
+- easy degradation: `0.000000`
+- TrajNet t50: `0.164168`
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_II_T50_GAIN_HARM_ENSEMBLE_REPAIR:END -->

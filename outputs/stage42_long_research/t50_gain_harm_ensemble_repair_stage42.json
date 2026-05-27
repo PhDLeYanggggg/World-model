@@ -1,0 +1,726 @@
+{
+  "stage": "Stage42-II",
+  "source": "fresh_stage42_ii_t50_gain_harm_ensemble_repair",
+  "generated_at_utc": "2026-05-27T23:45:28.257132+00:00",
+  "git_commit": "692eb92",
+  "input_hash": "58ca8e94b967e251db26ebd5bdf22d728784c6adce28bd969855f2c6090f7223",
+  "selector_seeds": [
+    149,
+    151,
+    157,
+    163,
+    167,
+    173
+  ],
+  "base_seeds": [
+    109,
+    113,
+    127,
+    109,
+    113,
+    127
+  ],
+  "summary": {
+    "ade_all": 0.12119213944179186,
+    "ade_t50": 0.08136295402065519,
+    "ade_t50_ci_low": 0.07423387155123097,
+    "ade_t50_ci_high": 0.0881622926310656,
+    "ade_t100_raw_frame_diagnostic": 0.1410414296962642,
+    "ade_hard_failure": 0.12477536764968988,
+    "ade_easy_degradation": 0.0,
+    "fde_t50": 0.2099833908993084,
+    "fde_t50_ci_low": 0.20224983098522212,
+    "switch_rate": 0.2196369399222014,
+    "trajnet_t50": 0.16416814956649317,
+    "eth_ucy_t50": 0.06289589000604334,
+    "ucy_t50": 0.0
+  },
+  "val_metrics": {
+    "ade": {
+      "rows": 53256,
+      "all_improvement": 0.17637782075494524,
+      "t10_improvement": 0.2369661062923718,
+      "t25_improvement": 0.038014034572611544,
+      "t50_improvement": 0.1880975786319995,
+      "t100_improvement": 0.18951100383188613,
+      "hard_failure_improvement": 0.18812105181386218,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.08499073947444667,
+      "switch_rate": 0.29391993390416105,
+      "regret_to_oracle": -0.0834556393485234,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 16103,
+          "all_improvement": 0.12409766884516327,
+          "t50_improvement": 0.08807069212727214,
+          "t100_improvement": 0.13395409554454674,
+          "hard_failure_improvement": 0.13102896023363564,
+          "easy_degradation": 0.010904398989062702,
+          "switch_rate": 0.277650127305471
+        },
+        "TrajNet": {
+          "rows": 37153,
+          "all_improvement": 0.20660966598156982,
+          "t50_improvement": 0.23969098263613786,
+          "t100_improvement": 0.22630766647953449,
+          "hard_failure_improvement": 0.22421706112666162,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.30097165773961726
+        }
+      }
+    },
+    "fde": {
+      "rows": 53256,
+      "all_improvement": 0.22785305499130037,
+      "t10_improvement": 0.2255968496214692,
+      "t25_improvement": 0.0859124993378606,
+      "t50_improvement": 0.29612292146200225,
+      "t100_improvement": 0.2340554888784564,
+      "hard_failure_improvement": 0.2424840171800271,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.15798656842145353,
+      "switch_rate": 0.29391993390416105,
+      "regret_to_oracle": 0.05505145202019735,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 16103,
+          "all_improvement": 0.19307860573306712,
+          "t50_improvement": 0.23372773539341374,
+          "t100_improvement": 0.2099312672247099,
+          "hard_failure_improvement": 0.20344240873613328,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.277650127305471
+        },
+        "TrajNet": {
+          "rows": 37153,
+          "all_improvement": 0.24810915602271932,
+          "t50_improvement": 0.331173761396341,
+          "t100_improvement": 0.2496426358080287,
+          "hard_failure_improvement": 0.26742713484787173,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.30097165773961726
+        }
+      }
+    },
+    "switch_rate": 0.29391993390416105,
+    "slice_diagnostics": {
+      "ETH_UCY|10": {
+        "selected": true,
+        "score": 0.03644161662726428,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.016477293277893046,
+          "t10_improvement": 0.07989911492893809,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.018316594021581922,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.007939872112215076,
+          "switch_rate": 0.0257999098693105,
+          "regret_to_oracle": -0.006404771986291797,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.04497159751809987,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.04728746042002341,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0853257157051481
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            }
+          }
+        }
+      },
+      "ETH_UCY|25": {
+        "selected": true,
+        "score": 0.0011594090139532165,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.0006563019634047151,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.004408790434840437,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.00043747685420802984,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.0003162505860972118,
+          "switch_rate": 0.0024034850533273247,
+          "regret_to_oracle": 0.0012188495398260692,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.0017912497672284422,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0011294222825306566,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.00794882941066882
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            }
+          }
+        }
+      },
+      "ETH_UCY|50": {
+        "selected": true,
+        "score": 0.24447452609656,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.0077922268746584145,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.02996872506045478,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.008799970518627354,
+          "easy_degradation": 0.0030833720626548544,
+          "harm_over_fallback": -0.0037548208805121036,
+          "switch_rate": 0.03744179059636473,
+          "regret_to_oracle": -0.002219720754588822,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.021267382018806846,
+              "t50_improvement": 0.08807069212727214,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.02271864829818515,
+              "easy_degradation": 0.016965873063341075,
+              "switch_rate": 0.1238278581630752
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            }
+          }
+        }
+      },
+      "ETH_UCY|100": {
+        "selected": true,
+        "score": 0.08315663515293567,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.02054273576308341,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.05337166299171425,
+          "hard_failure_improvement": 0.02319946171934395,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.009898876717375835,
+          "switch_rate": 0.01830779630464173,
+          "regret_to_oracle": -0.008363776591452553,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.05606743954102833,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.13395409554454674,
+              "hard_failure_improvement": 0.059893429232896755,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.060547724026578896
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            }
+          }
+        }
+      },
+      "TrajNet|10": {
+        "selected": true,
+        "score": 0.06787051277537287,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.03239133353696566,
+          "t10_improvement": 0.1570669913634336,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.03224004588471063,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.015608330900601436,
+          "switch_rate": 0.06712858645035301,
+          "regret_to_oracle": -0.014073230774678154,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.05112214717085439,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.05262355197616764,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0962237235216537
+            }
+          }
+        }
+      },
+      "TrajNet|25": {
+        "selected": true,
+        "score": 0.0050208817074908875,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.005002548439142052,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.03360524413777133,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": -0.0004819215755653694,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.0024105655080643214,
+          "switch_rate": 0.025706023734414902,
+          "regret_to_oracle": -0.0008754653821410409,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.007895353158068996,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": -0.0007866125616222686,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.03684763007025005
+            }
+          }
+        }
+      },
+      "TrajNet|50": {
+        "selected": true,
+        "score": 1.2899606660313845,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.0411153927961071,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.1581288535715445,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.04643271433025109,
+          "easy_degradation": 0.0013530459922563853,
+          "harm_over_fallback": -0.019812171522283168,
+          "switch_rate": 0.08554904611686946,
+          "regret_to_oracle": -0.018277071396359888,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.0648910351008345,
+              "t50_improvement": 0.23969098263613786,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.07578941930449601,
+              "easy_degradation": 0.0016535641922408306,
+              "switch_rate": 0.12262805157053266
+            }
+          }
+        }
+      },
+      "TrajNet|100": {
+        "selected": true,
+        "score": 0.21211423556288425,
+        "metric": {
+          "rows": 53256,
+          "all_improvement": 0.05239998810369051,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.1361393408401721,
+          "hard_failure_improvement": 0.05917671006070424,
+          "easy_degradation": 0.0,
+          "harm_over_fallback": -0.02524985124729753,
+          "switch_rate": 0.031583295778879375,
+          "regret_to_oracle": -0.023714751121374254,
+          "by_domain": {
+            "ETH_UCY": {
+              "rows": 16103,
+              "all_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0
+            },
+            "TrajNet": {
+              "rows": 37153,
+              "all_improvement": 0.08270113055181216,
+              "t50_improvement": 0.0,
+              "t100_improvement": 0.22630766647953449,
+              "hard_failure_improvement": 0.09659070240762024,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.045272252577180844
+            }
+          }
+        }
+      }
+    }
+  },
+  "test_metrics": {
+    "ade": {
+      "rows": 55528,
+      "all_improvement": 0.12119213944179186,
+      "t10_improvement": 0.21057925856020143,
+      "t25_improvement": 8.84162912949682e-05,
+      "t50_improvement": 0.08136295402065519,
+      "t100_improvement": 0.1410414296962642,
+      "hard_failure_improvement": 0.12477536764968988,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.0580061747643546,
+      "switch_rate": 0.2196369399222014,
+      "regret_to_oracle": -0.07911553330466199,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.1017781776940796,
+          "t50_improvement": 0.06289589000604334,
+          "t100_improvement": 0.10248287730835504,
+          "hard_failure_improvement": 0.10608372660929133,
+          "easy_degradation": 0.005423638819791021,
+          "switch_rate": 0.2521524265472376
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.23275507314323118,
+          "t50_improvement": 0.16416814956649317,
+          "t100_improvement": 0.3071440794014333,
+          "hard_failure_improvement": 0.23880805062179178,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.28202319908398465
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        }
+      }
+    },
+    "fde": {
+      "rows": 55528,
+      "all_improvement": 0.16846496140399225,
+      "t10_improvement": 0.2037687809718267,
+      "t25_improvement": 0.03895670971421106,
+      "t50_improvement": 0.2099833908993084,
+      "t100_improvement": 0.17280859250654923,
+      "hard_failure_improvement": 0.1750361146953915,
+      "easy_degradation": 0.0,
+      "harm_over_fallback": -0.11580741826484726,
+      "switch_rate": 0.2196369399222014,
+      "regret_to_oracle": 0.07188070736074324,
+      "by_domain": {
+        "ETH_UCY": {
+          "rows": 25901,
+          "all_improvement": 0.15885222257275666,
+          "t50_improvement": 0.2240085425587388,
+          "t100_improvement": 0.14490619767057467,
+          "hard_failure_improvement": 0.16686631705041122,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.2521524265472376
+        },
+        "TrajNet": {
+          "rows": 20087,
+          "all_improvement": 0.29388934832166924,
+          "t50_improvement": 0.3166648687870498,
+          "t100_improvement": 0.34025512338523745,
+          "hard_failure_improvement": 0.30287184201952977,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.28202319908398465
+        },
+        "UCY": {
+          "rows": 9540,
+          "all_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0
+        }
+      }
+    },
+    "switch_rate": 0.2196369399222014
+  },
+  "bootstrap": {
+    "switch_rate": 0.2196369399222014,
+    "ade": {
+      "all_improvement": 0.12119213944179186,
+      "t50_improvement": 0.08136295402065519,
+      "t100_improvement": 0.1410414296962642,
+      "hard_failure_improvement": 0.12477536764968988,
+      "easy_degradation": 0.0
+    },
+    "fde": {
+      "all_improvement": 0.16846496140399225,
+      "t50_improvement": 0.2099833908993084,
+      "t100_improvement": 0.17280859250654923,
+      "hard_failure_improvement": 0.1750361146953915,
+      "easy_degradation": 0.0
+    },
+    "bootstrap": {
+      "ade": {
+        "all": {
+          "low": 0.11730036121902401,
+          "mid": 0.12120117926117313,
+          "high": 0.12520882258799668,
+          "n": 55528,
+          "bootstrap_n": 2000
+        },
+        "t50": {
+          "low": 0.07423387155123097,
+          "mid": 0.08140512404128908,
+          "high": 0.0881622926310656,
+          "n": 13689,
+          "bootstrap_n": 2000
+        },
+        "t100": {
+          "low": 0.1330764609396505,
+          "mid": 0.14108335406672207,
+          "high": 0.14908371030739223,
+          "n": 9905,
+          "bootstrap_n": 2000
+        },
+        "hard_failure": {
+          "low": 0.12051675501368582,
+          "mid": 0.12483545681532576,
+          "high": 0.12916999594276599,
+          "n": 41741,
+          "bootstrap_n": 2000
+        }
+      },
+      "fde": {
+        "all": {
+          "low": 0.16372583292183326,
+          "mid": 0.16850362691803739,
+          "high": 0.17317910013492666,
+          "n": 55528,
+          "bootstrap_n": 2000
+        },
+        "t50": {
+          "low": 0.20224983098522212,
+          "mid": 0.21001783120852952,
+          "high": 0.21769417133241517,
+          "n": 13689,
+          "bootstrap_n": 2000
+        },
+        "t100": {
+          "low": 0.16377338614352097,
+          "mid": 0.17284490753987058,
+          "high": 0.18193872924501472,
+          "n": 9905,
+          "bootstrap_n": 2000
+        },
+        "hard_failure": {
+          "low": 0.17045605449889906,
+          "mid": 0.17505836097618216,
+          "high": 0.17982447120240486,
+          "n": 41741,
+          "bootstrap_n": 2000
+        }
+      },
+      "easy": {
+        "ade": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0003699316448197099,
+          "n": 16739,
+          "bootstrap_n": 2000
+        },
+        "fde": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 16739,
+          "bootstrap_n": 2000
+        }
+      }
+    },
+    "by_domain": {
+      "ETH_UCY": {
+        "rows": 25901,
+        "all_improvement": 0.1017781776940796,
+        "t50_improvement": 0.06289589000604334,
+        "hard_failure_improvement": 0.10608372660929133,
+        "easy_degradation": 0.005423638819791021,
+        "switch_rate": 0.2521524265472376
+      },
+      "TrajNet": {
+        "rows": 20087,
+        "all_improvement": 0.23275507314323118,
+        "t50_improvement": 0.16416814956649317,
+        "hard_failure_improvement": 0.23880805062179178,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.28202319908398465
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0
+      }
+    }
+  },
+  "policy": {
+    "type": "stage42p_t50_gain_harm_policy_no_easy_label_input",
+    "slices": {
+      "ETH_UCY|10": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.3
+      },
+      "ETH_UCY|25": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.03
+      },
+      "ETH_UCY|50": {
+        "switch_min": 0.6,
+        "gain_min": 0.07975418120622635,
+        "harm_max": 0.45,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.5
+      },
+      "ETH_UCY|100": {
+        "switch_min": 0.45,
+        "gain_min": 0.778110682964325,
+        "harm_max": 0.2,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.3
+      },
+      "TrajNet|10": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.3
+      },
+      "TrajNet|25": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2,
+        "uncertainty_max": 0.65,
+        "max_switch": 0.18
+      },
+      "TrajNet|50": {
+        "switch_min": 0.5,
+        "gain_min": 0.04961770996451378,
+        "harm_max": 0.35,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.5
+      },
+      "TrajNet|100": {
+        "switch_min": 0.45,
+        "gain_min": 0.0,
+        "harm_max": 0.2,
+        "uncertainty_max": 0.5,
+        "max_switch": 0.3
+      }
+    }
+  },
+  "source_labels": {
+    "selector_checkpoints": "cached_verified_stage42p_ih",
+    "base_checkpoints": "cached_verified_stage42n",
+    "cache_dir": "data/stage42_t50_gain_harm_ensemble_cache",
+    "heartbeat": "outputs/stage42_long_research/stage42_ii_t50_gain_harm_ensemble_repair_heartbeat.json",
+    "score_ensemble": "fresh_replay",
+    "prediction_ensemble": "fresh_replay",
+    "validation_policy_selection": "fresh_run",
+    "test_evaluation": "fresh_run_once",
+    "new_training": "not_run"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "future_waypoints_used_as_eval_label_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_statistics_normalization": false,
+    "thresholds_selected_on_val": true,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ii_gate": {
+    "source": "fresh_stage42_ii_t50_gain_harm_ensemble_repair",
+    "gates": {
+      "selector_ensemble_built": true,
+      "prediction_ensemble_built": true,
+      "validation_policy_selected": true,
+      "ade_all_positive": true,
+      "ade_t50_positive": true,
+      "ade_t50_row_ci_positive": true,
+      "fde_t50_ci_positive": true,
+      "hard_positive": true,
+      "easy_preserved": true,
+      "trajnet_t50_nonnegative": true,
+      "no_future_endpoint_or_waypoint_input": true,
+      "no_central_velocity_or_test_goal": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_ii_ensemble_repair_stabilizes_t50"
+  }
+}
