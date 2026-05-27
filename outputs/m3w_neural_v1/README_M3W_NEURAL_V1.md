@@ -2467,3 +2467,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - highest-priority next action: `FW-TERMS-ucy_crowd_original`.
 - boundary: protected dataset-local/raw-frame 2.5D only; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
 <!-- STAGE42_FZ_PAPER_PACKAGE_FXFY_REFRESH:END -->
+
+<!-- STAGE42_GA_LIVE_SOURCE_CALIBRATION_RECHECK:START -->
+## Stage42-GA Live Source / Calibration Recheck
+
+- source: `fresh_stage42_live_source_calibration_recheck`
+- gate: `15 / 15`; verdict `stage42_ga_live_source_calibration_recheck_pass`.
+- role: fresh local path scan plus cached legal/calibration readiness recheck; no download, no conversion, no training, no evaluation.
+- targets audited: `7`; local-path-found targets `7`; existing converted/cache targets `1`.
+- new conversion-ready targets: `0`; source_action conversion_ready_now `0`; unified queue `0`.
+- highest-priority next action: `FW-TERMS-ucy_crowd_original`.
+- boundary: local file presence is not legal conversion readiness; protected dataset-local/raw-frame 2.5D only; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
+<!-- STAGE42_GA_LIVE_SOURCE_CALIBRATION_RECHECK:END -->
