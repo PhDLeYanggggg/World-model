@@ -2453,3 +2453,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - role: retry decision map for h100 weak slices; no training, no download, no conversion, no threshold tuning.
 - boundary: uniform horizon robustness remains blocked; protected dataset-local/raw-frame 2.5D only; no metric/seconds, true 3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_FY_HORIZON_RETRY_DECISION_MAP:END -->
+
+<!-- STAGE42_FZ_PAPER_PACKAGE_FXFY_REFRESH:START -->
+## Stage42-FZ Paper Package FX/FY Refresh
+
+- source: `fresh_stage42_paper_package_fxfy_refresh`
+- gate: `20 / 20`; verdict `stage42_fz_paper_package_fxfy_refresh_pass`.
+- role: paper-package refresh over Stage42-FX objective coverage and Stage42-FY horizon retry decision map; no training, no download, no conversion, no test-threshold tuning.
+- supported core claims: `['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint']`.
+- blocked main claims: `['JEPA_downstream_lift', 'ungated_neural_dynamics', 'scene_goal_independent_main_claim', 'neighbor_interaction_independent_main_claim', 'global_metric_seconds_claim']`.
+- objective status: blocked `['A']`, partial `['B', 'C', 'D']`, passed `['E']`, goal_complete `False`.
+- weak horizons: `['TrajNet|100', 'UCY|100']`; stop_repeat_modeling_now `True`; uniform_horizon_claim_allowed `False`.
+- highest-priority next action: `FW-TERMS-ucy_crowd_original`.
+- boundary: protected dataset-local/raw-frame 2.5D only; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
+<!-- STAGE42_FZ_PAPER_PACKAGE_FXFY_REFRESH:END -->

@@ -1,0 +1,651 @@
+{
+  "source": "fresh_stage42_paper_package_fxfy_refresh",
+  "generated_at_utc": "2026-05-27T11:09:31.973663+00:00",
+  "git_commit": "a35d38e",
+  "input_hash": "e28d3e64c5fa38e7f4cf6ddb442375d3f94d066d5033b991f62ee77b63694532",
+  "inputs": {
+    "module_ledger": {
+      "stage42_fu_gate": {
+        "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+        "gates": {
+          "aa_input_passed": true,
+          "y_input_passed": true,
+          "bw_input_passed": true,
+          "ec_input_passed": true,
+          "core_modules_supported": true,
+          "at_least_two_positive_contributions": true,
+          "scene_goal_overclaim_blocked": true,
+          "neighbor_interaction_overclaim_blocked": true,
+          "jepa_overclaim_blocked": true,
+          "transformer_boundary_recorded": true,
+          "no_future_or_test_leakage": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 14,
+        "total": 14,
+        "verdict": "stage42_fu_module_contribution_ledger_pass"
+      }
+    },
+    "claim_linter": {
+      "stage42_fv_gate": {
+        "gates": {
+          "source_fresh": true,
+          "files_scanned": true,
+          "fu_module_boundary_loaded": true,
+          "no_true_3d_overclaim": true,
+          "no_foundation_overclaim": true,
+          "no_metric_seconds_overclaim": true,
+          "no_stage5c_overclaim": true,
+          "no_smc_overclaim": true,
+          "no_human_gold_overclaim": true,
+          "no_jepa_main_overclaim": true,
+          "no_transformer_main_overclaim": true,
+          "no_scene_goal_main_overclaim": true,
+          "no_neighbor_interaction_main_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 15,
+        "total": 15,
+        "verdict": "stage42_fv_claim_boundary_linter_pass"
+      }
+    },
+    "source_action": {
+      "stage42_fw_gate": {
+        "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+        "gates": {
+          "input_terms_gap_loaded": true,
+          "input_source_closure_loaded": true,
+          "input_h100_queue_loaded": true,
+          "input_unified_queue_loaded": true,
+          "actions_consolidated": true,
+          "ucy_terms_action_present": true,
+          "ucy_h100_action_present": true,
+          "trajnet_h100_action_present": true,
+          "conversion_queue_empty_preserved": true,
+          "no_action_marked_complete": true,
+          "all_actions_have_claim_guards": true,
+          "user_action_written": true,
+          "no_download_conversion_eval": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 16,
+        "total": 16,
+        "verdict": "stage42_fw_source_action_consolidator_pass"
+      }
+    },
+    "reviewer_replay": {
+      "stage42_dm_gate": {
+        "gates": {
+          "required_inputs_exist": true,
+          "commands_file_written": true,
+          "all_commands_use_arm64_venv": true,
+          "minimal_replay_has_no_training_commands": true,
+          "cx_provenance_passed": true,
+          "cz_manifest_passed": true,
+          "cv_batch_runtime_replay_passed": true,
+          "dk_group_policy_replay_passed": true,
+          "dl_runtime_policy_passed": true,
+          "paper_manifest_candidate_clean": true,
+          "manifest_hash_recorded": true,
+          "provenance_artifacts_count_ge_28": true,
+          "fu_module_ledger_passed": true,
+          "fv_claim_linter_passed": true,
+          "fv_claim_linter_zero_violations": true,
+          "fw_source_action_passed": true,
+          "fw_source_action_no_conversion_eval": true,
+          "fw_source_action_not_claim_ready": true,
+          "group_runtime_exact_replay": true,
+          "group_runtime_positive_all_t50_hard": true,
+          "group_runtime_t100_raw_reported": true,
+          "group_runtime_near_collision_reduced": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 27,
+        "total": 27,
+        "verdict": "stage42_dm_reviewer_replay_package_pass"
+      }
+    },
+    "objective_coverage": {
+      "stage42_fx_gate": {
+        "passed": 15,
+        "total": 15,
+        "gates": {
+          "source_fresh": true,
+          "six_objectives_a_to_f_covered": true,
+          "every_objective_has_evidence": true,
+          "every_objective_has_missing_or_next": true,
+          "goal_not_marked_complete": true,
+          "data_blocker_preserved": true,
+          "source_action_gate_passed": true,
+          "conversion_ready_not_overclaimed": true,
+          "no_true_3d_overclaim": true,
+          "no_foundation_overclaim": true,
+          "no_metric_seconds_overclaim": true,
+          "no_download_conversion_training": true,
+          "no_test_threshold_tuning": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "verdict": "stage42_fx_objective_coverage_audit_pass"
+      }
+    },
+    "horizon_retry": {
+      "stage42_fy_gate": {
+        "passed": 14,
+        "total": 14,
+        "gates": {
+          "source_fresh": true,
+          "weak_horizons_identified": true,
+          "multiple_model_retries_considered": true,
+          "no_policy_promoted_from_failed_retries": true,
+          "stop_repeat_modeling_now": true,
+          "uniform_horizon_not_claimed": true,
+          "every_weak_key_has_decision": true,
+          "each_decision_has_allowed_retry_conditions": true,
+          "each_decision_has_user_actions": true,
+          "no_download_conversion_training_eval": true,
+          "no_metric_seconds_overclaim": true,
+          "no_true3d_foundation_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "verdict": "stage42_fy_horizon_retry_decision_pass"
+      }
+    }
+  },
+  "input_summary": {
+    "module_ledger": {
+      "gate": {
+        "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+        "gates": {
+          "aa_input_passed": true,
+          "y_input_passed": true,
+          "bw_input_passed": true,
+          "ec_input_passed": true,
+          "core_modules_supported": true,
+          "at_least_two_positive_contributions": true,
+          "scene_goal_overclaim_blocked": true,
+          "neighbor_interaction_overclaim_blocked": true,
+          "jepa_overclaim_blocked": true,
+          "transformer_boundary_recorded": true,
+          "no_future_or_test_leakage": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 14,
+        "total": 14,
+        "verdict": "stage42_fu_module_contribution_ledger_pass"
+      },
+      "summary": {
+        "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+        "modules_total": 11,
+        "supported_or_necessary_modules": 6,
+        "main_claim_allowed_modules": [
+          "history",
+          "domain_expert",
+          "safe_switch",
+          "teacher_floor",
+          "group_consistency_full_waypoint",
+          "full_waypoint_shape",
+          "endpoint_bridge"
+        ],
+        "blocked_or_auxiliary_modules": [
+          "scene_goal",
+          "neighbor_interaction",
+          "JEPA",
+          "Transformer"
+        ],
+        "paper_claim_core": [
+          "history",
+          "domain_expert",
+          "safe_switch",
+          "teacher_floor",
+          "group_consistency_full_waypoint"
+        ],
+        "paper_claim_blocked": [
+          "JEPA_downstream_lift",
+          "ungated_neural_dynamics",
+          "scene_goal_independent_main_claim",
+          "neighbor_interaction_independent_main_claim",
+          "global_metric_seconds_claim"
+        ],
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "claim_linter": {
+      "gate": {
+        "gates": {
+          "source_fresh": true,
+          "files_scanned": true,
+          "fu_module_boundary_loaded": true,
+          "no_true_3d_overclaim": true,
+          "no_foundation_overclaim": true,
+          "no_metric_seconds_overclaim": true,
+          "no_stage5c_overclaim": true,
+          "no_smc_overclaim": true,
+          "no_human_gold_overclaim": true,
+          "no_jepa_main_overclaim": true,
+          "no_transformer_main_overclaim": true,
+          "no_scene_goal_main_overclaim": true,
+          "no_neighbor_interaction_main_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 15,
+        "total": 15,
+        "verdict": "stage42_fv_claim_boundary_linter_pass"
+      },
+      "summary": {
+        "files_scanned": 15,
+        "violations_total": 0,
+        "violations_by_check": {
+          "true_3d": 0,
+          "foundation": 0,
+          "metric_seconds": 0,
+          "stage5c": 0,
+          "smc": 0,
+          "human_gold": 0,
+          "jepa_main": 0,
+          "transformer_main": 0,
+          "scene_goal_main": 0,
+          "neighbor_interaction_main": 0
+        }
+      }
+    },
+    "source_action": {
+      "gate": {
+        "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+        "gates": {
+          "input_terms_gap_loaded": true,
+          "input_source_closure_loaded": true,
+          "input_h100_queue_loaded": true,
+          "input_unified_queue_loaded": true,
+          "actions_consolidated": true,
+          "ucy_terms_action_present": true,
+          "ucy_h100_action_present": true,
+          "trajnet_h100_action_present": true,
+          "conversion_queue_empty_preserved": true,
+          "no_action_marked_complete": true,
+          "all_actions_have_claim_guards": true,
+          "user_action_written": true,
+          "no_download_conversion_eval": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 16,
+        "total": 16,
+        "verdict": "stage42_fw_source_action_consolidator_pass"
+      },
+      "summary": {
+        "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+        "actions_total": 10,
+        "categories": {
+          "legal_terms_and_local_path": 5,
+          "h100_weak_horizon_source_support": 2,
+          "domain_closure": 3
+        },
+        "top_actions": [
+          "FW-TERMS-ucy_crowd_original",
+          "FW-H100-TrajNet|100",
+          "FW-DOMAIN-TrajNet",
+          "FW-DOMAIN-UCY",
+          "FW-H100-UCY|100"
+        ],
+        "conversion_ready_now": 0,
+        "blocked_action_count": 11,
+        "downloads_or_conversions_executed": 0,
+        "evaluations_executed": 0,
+        "claim_ready_after_this_stage": false,
+        "highest_priority_blocker": "FW-TERMS-ucy_crowd_original"
+      }
+    },
+    "reviewer_replay": {
+      "gate": {
+        "gates": {
+          "required_inputs_exist": true,
+          "commands_file_written": true,
+          "all_commands_use_arm64_venv": true,
+          "minimal_replay_has_no_training_commands": true,
+          "cx_provenance_passed": true,
+          "cz_manifest_passed": true,
+          "cv_batch_runtime_replay_passed": true,
+          "dk_group_policy_replay_passed": true,
+          "dl_runtime_policy_passed": true,
+          "paper_manifest_candidate_clean": true,
+          "manifest_hash_recorded": true,
+          "provenance_artifacts_count_ge_28": true,
+          "fu_module_ledger_passed": true,
+          "fv_claim_linter_passed": true,
+          "fv_claim_linter_zero_violations": true,
+          "fw_source_action_passed": true,
+          "fw_source_action_no_conversion_eval": true,
+          "fw_source_action_not_claim_ready": true,
+          "group_runtime_exact_replay": true,
+          "group_runtime_positive_all_t50_hard": true,
+          "group_runtime_t100_raw_reported": true,
+          "group_runtime_near_collision_reduced": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 27,
+        "total": 27,
+        "verdict": "stage42_dm_reviewer_replay_package_pass"
+      }
+    },
+    "objective_coverage": {
+      "gate": {
+        "passed": 15,
+        "total": 15,
+        "gates": {
+          "source_fresh": true,
+          "six_objectives_a_to_f_covered": true,
+          "every_objective_has_evidence": true,
+          "every_objective_has_missing_or_next": true,
+          "goal_not_marked_complete": true,
+          "data_blocker_preserved": true,
+          "source_action_gate_passed": true,
+          "conversion_ready_not_overclaimed": true,
+          "no_true_3d_overclaim": true,
+          "no_foundation_overclaim": true,
+          "no_metric_seconds_overclaim": true,
+          "no_download_conversion_training": true,
+          "no_test_threshold_tuning": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "verdict": "stage42_fx_objective_coverage_audit_pass"
+      },
+      "summary": {
+        "objectives_total": 6,
+        "status_counts": {
+          "blocked_user_action_required": 1,
+          "partial_positive_with_source_blockers": 1,
+          "partial_protected_not_ungated": 1,
+          "partial_main_modules_identified": 1,
+          "pass_floor_required": 1,
+          "paper_package_candidate_clean_with_open_blockers": 1
+        },
+        "blocked_objectives": [
+          "A"
+        ],
+        "partial_objectives": [
+          "B",
+          "C",
+          "D"
+        ],
+        "passed_objectives": [
+          "E"
+        ],
+        "goal_complete": false,
+        "current_best_status": "protected_dataset_local_raw_frame_2_5d_candidate",
+        "highest_priority_next_action": "FW-TERMS-ucy_crowd_original"
+      }
+    },
+    "horizon_retry": {
+      "gate": {
+        "passed": 14,
+        "total": 14,
+        "gates": {
+          "source_fresh": true,
+          "weak_horizons_identified": true,
+          "multiple_model_retries_considered": true,
+          "no_policy_promoted_from_failed_retries": true,
+          "stop_repeat_modeling_now": true,
+          "uniform_horizon_not_claimed": true,
+          "every_weak_key_has_decision": true,
+          "each_decision_has_allowed_retry_conditions": true,
+          "each_decision_has_user_actions": true,
+          "no_download_conversion_training_eval": true,
+          "no_metric_seconds_overclaim": true,
+          "no_true3d_foundation_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "verdict": "stage42_fy_horizon_retry_decision_pass"
+      },
+      "summary": {
+        "weak_horizon_count": 2,
+        "weak_horizons": [
+          "TrajNet|100",
+          "UCY|100"
+        ],
+        "model_retry_attempts_considered": 5,
+        "promoted_policy_count": 0,
+        "stop_repeat_modeling_now": true,
+        "uniform_horizon_claim_allowed": false,
+        "highest_priority_data_action": "FW-TERMS-ucy_crowd_original"
+      },
+      "decisions": [
+        {
+          "weak_key": "TrajNet|100",
+          "domain": "TrajNet",
+          "decision": "stop_model_retry_until_longer_legal_source",
+          "result_source": "fresh_decision_from_cached_verified_repair_attempts",
+          "repair_status": "hard_blocker_no_local_trajnet_h100_long_source",
+          "candidate_count": 0,
+          "required_before_retry": [
+            "official longer TrajNet-compatible raw source",
+            "terms confirmation",
+            "guarded conversion",
+            "no-leakage audit",
+            "train-only source-CV"
+          ],
+          "blocked_retries": [
+            "repeat row_switch on same features",
+            "repeat conservative easy guard on same features",
+            "repeat gain/harm specialist on same source support",
+            "claim uniform horizon robustness"
+          ],
+          "allowed_retry_after": [
+            "new legal source support",
+            "new train-only validation source family",
+            "new guarded converted h100 rows",
+            "fresh no-leakage and source-CV pass"
+          ],
+          "next_action_ids": [
+            "FW-H100-TrajNet|100",
+            "FW-DOMAIN-TrajNet",
+            "FW-TERMS-trajnetplusplus_official"
+          ],
+          "next_actions": [
+            "FW-H100-TrajNet|100",
+            "FW-DOMAIN-TrajNet",
+            "FW-TERMS-trajnetplusplus_official"
+          ]
+        },
+        {
+          "weak_key": "UCY|100",
+          "domain": "UCY",
+          "decision": "stop_model_retry_until_terms_and_guarded_conversion",
+          "result_source": "fresh_decision_from_cached_verified_repair_attempts",
+          "repair_status": "candidate_support_exists_terms_unverified",
+          "candidate_count": 6,
+          "required_before_retry": [
+            "UCY original terms/user confirmation",
+            "guarded conversion of local h100 candidates",
+            "no-leakage audit",
+            "train-only source-CV"
+          ],
+          "blocked_retries": [
+            "repeat row_switch on same features",
+            "repeat conservative easy guard on same features",
+            "repeat gain/harm specialist on same source support",
+            "claim uniform horizon robustness"
+          ],
+          "allowed_retry_after": [
+            "new legal source support",
+            "new train-only validation source family",
+            "new guarded converted h100 rows",
+            "fresh no-leakage and source-CV pass"
+          ],
+          "next_action_ids": [
+            "FW-TERMS-ucy_crowd_original",
+            "FW-H100-UCY|100",
+            "FW-DOMAIN-UCY"
+          ],
+          "next_actions": [
+            "FW-TERMS-ucy_crowd_original",
+            "FW-H100-UCY|100",
+            "FW-DOMAIN-UCY"
+          ]
+        }
+      ]
+    }
+  },
+  "summary": {
+    "supported_core_claims": [
+      "history",
+      "domain_expert",
+      "safe_switch",
+      "teacher_floor",
+      "group_consistency_full_waypoint"
+    ],
+    "blocked_main_claims": [
+      "JEPA_downstream_lift",
+      "ungated_neural_dynamics",
+      "scene_goal_independent_main_claim",
+      "neighbor_interaction_independent_main_claim",
+      "global_metric_seconds_claim"
+    ],
+    "objective_status_counts": {
+      "blocked_user_action_required": 1,
+      "partial_positive_with_source_blockers": 1,
+      "partial_protected_not_ungated": 1,
+      "partial_main_modules_identified": 1,
+      "pass_floor_required": 1,
+      "paper_package_candidate_clean_with_open_blockers": 1
+    },
+    "blocked_objectives": [
+      "A"
+    ],
+    "partial_objectives": [
+      "B",
+      "C",
+      "D"
+    ],
+    "passed_objectives": [
+      "E"
+    ],
+    "goal_complete": false,
+    "highest_priority_next_action": "FW-TERMS-ucy_crowd_original",
+    "weak_horizons": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "stop_repeat_modeling_now": true,
+    "uniform_horizon_claim_allowed": false,
+    "conversion_ready_now": 0,
+    "claim_ready_after_this_stage": false
+  },
+  "paper_file_status": [
+    {
+      "file": "outputs/stage42_long_research/paper_outline_stage42.md",
+      "exists": true,
+      "size_bytes": 47729,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/method_draft_stage42.md",
+      "exists": true,
+      "size_bytes": 51251,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "size_bytes": 61829,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "size_bytes": 69290,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "exists": true,
+      "size_bytes": 48823,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "size_bytes": 59497,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/data_card_stage42.md",
+      "exists": true,
+      "size_bytes": 45537,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "size_bytes": 53843,
+      "contains_fz_marker": true
+    },
+    {
+      "file": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "size_bytes": 78255,
+      "contains_fz_marker": true
+    }
+  ],
+  "overclaim_violations": [],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "training_executed": false,
+    "threshold_tuned_on_test": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_fz_gate": {
+    "passed": 20,
+    "total": 20,
+    "gates": {
+      "source_fresh": true,
+      "fu_gate_passed": true,
+      "fv_gate_passed": true,
+      "fw_gate_passed": true,
+      "dm_gate_passed": true,
+      "fx_gate_passed": true,
+      "fy_gate_passed": true,
+      "all_paper_files_refreshed": true,
+      "goal_not_marked_complete": true,
+      "data_blocker_preserved": true,
+      "weak_horizon_blocker_preserved": true,
+      "stop_repeat_retry_recorded": true,
+      "uniform_horizon_not_claimed": true,
+      "no_overclaim_violations": true,
+      "no_download_conversion_training_eval": true,
+      "no_test_threshold_tuning": true,
+      "no_metric_seconds_overclaim": true,
+      "no_true3d_foundation_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "verdict": "stage42_fz_paper_package_fxfy_refresh_pass"
+  }
+}

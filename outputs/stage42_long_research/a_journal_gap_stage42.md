@@ -1072,3 +1072,22 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - blocked as independent main claims: JEPA, Transformer, scene/goal, neighbor/interaction.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_claim_boundary_linter.py -> 15/15', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_claim_boundary_linter.py tests/test_stage42_module_contribution_ledger.py -> 9 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 857 passed'}`.
 <!-- STAGE42_FV_CLAIM_BOUNDARY_LINTER:END -->
+
+<!-- STAGE42_FZ_FXFY_PAPER_PACKAGE_REFRESH:START -->
+## Stage42-FZ FX/FY Evidence Package Refresh
+
+- source: `fresh_stage42_paper_package_fxfy_refresh`
+- result type: paper-package refresh over verified Stage42-FX/FY/FU/FV/FW/DM evidence; no training, no download, no conversion, no threshold tuning.
+- current model status: protected dataset-local/raw-frame 2.5D multi-agent world-state candidate.
+- not claimed: true 3D, foundation world model, global metric predictor, seconds-level horizon, ungated neural dynamics, Stage5C execution, SMC readiness.
+- supported current core claims: `['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint']`.
+- blocked main claims: `['JEPA_downstream_lift', 'ungated_neural_dynamics', 'scene_goal_independent_main_claim', 'neighbor_interaction_independent_main_claim', 'global_metric_seconds_claim']`.
+- objective coverage: blocked `['A']`, partial `['B', 'C', 'D']`, passed `['E']`, goal_complete `False`.
+- source/action status: conversion_ready_now `0`, claim_ready_after_this_stage `False`, highest_priority_next_action `FW-TERMS-ucy_crowd_original`.
+- horizon retry decision: weak_horizons `['TrajNet|100', 'UCY|100']`, stop_repeat_modeling_now `True`, uniform_horizon_claim_allowed `False`.
+- paper implication: keep protected 2.5D safe-switch/group-consistency claim; do not repeat same-feature h100 retries until legal/source/guarded-conversion support exists.
+
+### Updated A-Journal Gap
+
+The package is paper-candidate evidence for protected 2.5D world-state modeling, but A-journal/foundation-level claims still need legal source closure, broader domain conversion, metric/time calibration, and robust h100 support.
+<!-- STAGE42_FZ_FXFY_PAPER_PACKAGE_REFRESH:END -->
