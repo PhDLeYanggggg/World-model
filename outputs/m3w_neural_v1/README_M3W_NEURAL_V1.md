@@ -2560,3 +2560,16 @@ The context contribution map is now explicit: baseline-family rollout context is
 - C14 evidence: restricted_candidates_after_terms=5; ready_now=0; calibrated_t50/t100=10060/5696; domains=['ETH_UCY', 'UCY']; converted/evaluated=0/0
 - boundary: calibrated candidates are not converted/evaluated and cannot support current metric/seconds claims; no true-3D/foundation/Stage5C/SMC claim.
 <!-- STAGE42_GI_PAPER_CLAIM_EVIDENCE_REFRESH:END -->
+
+<!-- STAGE42_GJ_MODULE_CLAIM_LOCK:START -->
+## Stage42-GJ Module Claim Lock
+
+- source: `fresh_stage42_gj_module_claim_lock_from_fu_z_dp_dq_gh`
+- gate: `19 / 19`; verdict `stage42_gj_module_claim_lock_pass`.
+- locked supported modules: `['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint', 'full_waypoint_shape', 'endpoint_bridge']`.
+- locked blocked modules: `['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']`.
+- protected full-waypoint runtime supported: `True`; ungated full-waypoint deployable: `False`.
+- calibrated post-confirmation candidates: `5`; ready now: `0`; after-terms t50/t100: `10060` / `5696`.
+- next admissible experiments are restricted to terms-confirmed guarded conversion, changed-target gain/harm or full-sequence context, protected full-waypoint runtime replay, and source/horizon-specific h100 support repair.
+- Still no true-3D, foundation, global metric, seconds-level, Stage5C, SMC, or post-confirmation-candidate-as-data claim.
+<!-- STAGE42_GJ_MODULE_CLAIM_LOCK:END -->

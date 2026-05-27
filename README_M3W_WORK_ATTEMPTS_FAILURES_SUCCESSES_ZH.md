@@ -1006,3 +1006,16 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - Highest-value path remains UCY terms/path confirmation plus guarded conversion/no-leakage/source-CV; TrajNet h100 needs a longer legal source because local snippets are too short.
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; not true 3D, not foundation, not metric/seconds-level.
 <!-- STAGE42_FW_SOURCE_ACTION_CONSOLIDATOR:END -->
+
+<!-- STAGE42_GJ_MODULE_CLAIM_LOCK:START -->
+## Stage42-GJ Module Claim Lock
+
+- source: `fresh_stage42_gj_module_claim_lock_from_fu_z_dp_dq_gh`
+- gate: `19 / 19`; verdict `stage42_gj_module_claim_lock_pass`.
+- locked supported modules: `['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint', 'full_waypoint_shape', 'endpoint_bridge']`.
+- locked blocked modules: `['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']`.
+- protected full-waypoint runtime supported: `True`; ungated full-waypoint deployable: `False`.
+- calibrated post-confirmation candidates: `5`; ready now: `0`; after-terms t50/t100: `10060` / `5696`.
+- next admissible experiments are restricted to terms-confirmed guarded conversion, changed-target gain/harm or full-sequence context, protected full-waypoint runtime replay, and source/horizon-specific h100 support repair.
+- Still no true-3D, foundation, global metric, seconds-level, Stage5C, SMC, or post-confirmation-candidate-as-data claim.
+<!-- STAGE42_GJ_MODULE_CLAIM_LOCK:END -->
