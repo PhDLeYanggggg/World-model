@@ -5613,3 +5613,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - No download, conversion, training, or evaluation was executed.
 - Boundary: these candidates are not permission, converted data, metric/seconds claims, Stage5C, or SMC evidence.
 <!-- STAGE42_GL_SOURCE_CONVERSION_CONTRACT:END -->
+
+<!-- STAGE42_GM_GUARDED_CONVERSION_HARNESS:START -->
+## Stage42-GM Guarded Conversion Harness
+
+- source: `fresh_stage42_gm_guarded_conversion_harness`
+- role: executable barrier for future source-specific conversion; current run is dry-run and refuses conversion because no contract row is ready.
+- gate: `14 / 14`; verdict `stage42_gm_guarded_conversion_harness_pass`.
+- contract_ready_now: `0`; execution_plan_count: `0`; blocked_contract_rows: `5`.
+- No download, conversion, feature-store build, no-leakage audit, source-CV, training, or evaluation was executed.
+- Boundary: this is not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
+<!-- STAGE42_GM_GUARDED_CONVERSION_HARNESS:END -->

@@ -1,0 +1,603 @@
+{
+  "source": "fresh_stage42_gm_guarded_conversion_harness",
+  "stage": "Stage42-GM",
+  "generated_at_utc": "2026-05-27T13:13:27.697719+00:00",
+  "git_commit": "748ec29",
+  "input_hash": "6a150731c36023e325aa2f6e0c8e64411d71224082ba55ef269d154881d6a1eb",
+  "input_status": {
+    "contract_exists": true
+  },
+  "contract_gate": {
+    "gates": {
+      "source_fresh": true,
+      "intake_loaded": true,
+      "manifest_loaded": true,
+      "gh_loaded": true,
+      "ej_loaded": true,
+      "required_fields_enforced": true,
+      "blank_or_incomplete_rows_not_ready": true,
+      "contract_ready_matches_launcher_queue": true,
+      "post_confirmation_candidates_recorded": true,
+      "calibrated_opportunity_recorded": true,
+      "no_download_conversion_training_eval": true,
+      "post_confirmation_candidates_not_claimed_as_data": true,
+      "user_action_written": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage42_gl_source_conversion_contract_pass"
+  },
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-GM 是 guarded converter execution harness；默认 dry-run，并且当前 contract_ready_now=0 时必须拒绝转换。",
+    "本阶段不下载、不转换、不训练、不评估；没有生成新 feature store。",
+    "prefill、terms hints、parseability、technical dry-run、contract opportunity 都不等于 legal converted data。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "summary": {
+    "source": "fresh_stage42_gm_guarded_conversion_harness",
+    "execute_requested": false,
+    "contract_source": "fresh_stage42_gl_source_conversion_contract",
+    "contract_verdict": "stage42_gl_source_conversion_contract_pass",
+    "contract_ready_now": 0,
+    "blocked_contract_rows": 5,
+    "execution_plan_count": 0,
+    "conversion_refused_reason": "contract_ready_now_is_zero",
+    "download_executed": false,
+    "conversion_executed": false,
+    "feature_store_built": false,
+    "no_leakage_audit_executed": false,
+    "source_cv_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false,
+    "next_required_action": "fill terms/path/source identity and rerun validator, GL contract, then GM harness"
+  },
+  "execution_plan": [],
+  "blocked_contract_rows": [
+    {
+      "priority_rank": 1,
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "confirmation": {
+        "field_status": {
+          "terms_accepted_by_user": false,
+          "terms_acceptance_date": false,
+          "official_terms_url": true,
+          "accepted_terms_version_or_access_date": false,
+          "allowed_use": false,
+          "redistribution_allowed": false,
+          "derived_data_allowed": false,
+          "local_path": false,
+          "source_identity": false,
+          "confirmed_by_user": false
+        },
+        "missing_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "accepted_terms_version_or_access_date",
+          "allowed_use",
+          "redistribution_allowed",
+          "derived_data_allowed",
+          "local_path",
+          "source_identity",
+          "confirmed_by_user"
+        ],
+        "all_required_fields_filled": false,
+        "local_path": "",
+        "local_path_found": false,
+        "official_terms_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+        "terms_accepted_by_user": false,
+        "source_identity": "",
+        "agent_may_fill": false
+      },
+      "manifest_conversion_ready": false,
+      "manifest_blockers": {
+        "confirmation_blockers": [
+          "terms_not_accepted",
+          "terms_acceptance_date_missing",
+          "allowed_use_missing",
+          "local_path_confirmation_missing",
+          "source_identity_missing"
+        ],
+        "cf_blockers": [
+          "manual_terms_or_application_required",
+          "no_independent_t50_candidate"
+        ],
+        "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+      },
+      "after_terms_potential": {
+        "estimated_t50_windows": 9554,
+        "estimated_t100_windows": 5605,
+        "source_cv_after_terms": true,
+        "technical_ready_source_ids": [
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02"
+        ]
+      },
+      "calibrated_subset_after_terms": {
+        "dataset_id": "ucy_crowd_original",
+        "domain": "UCY",
+        "restricted_metric_time_candidates_after_terms": 3,
+        "restricted_ready_now": 0,
+        "calibrated_t50_windows_after_terms": 9554,
+        "calibrated_t100_windows_after_terms": 5605,
+        "candidate_source_ids_after_terms": [
+          "UCY_students03",
+          "UCY_zara02",
+          "UCY_zara01"
+        ],
+        "allowed_local_claim_after_legal_conversion": [
+          "source_specific_annotation_step_meter_coordinate_evidence"
+        ]
+      },
+      "suggested_local_paths_for_user_review": [
+        {
+          "path": "external_data/OpenTraj/datasets/UCY",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 164.853
+        },
+        {
+          "path": "data/stage20_world_state/ucy_crowd",
+          "exists": true,
+          "is_raw_source_candidate": false,
+          "is_derived_or_cache": true,
+          "size_mb": 0.002
+        }
+      ],
+      "contract_status": "blocked_until_user_terms_path_source_confirmation",
+      "contract_conversion_ready_now": false,
+      "download_executed": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "next_safe_commands": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        "future guarded converter only after queued target appears"
+      ]
+    },
+    {
+      "priority_rank": 2,
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "confirmation": {
+        "field_status": {
+          "terms_accepted_by_user": false,
+          "terms_acceptance_date": false,
+          "official_terms_url": true,
+          "accepted_terms_version_or_access_date": false,
+          "allowed_use": false,
+          "redistribution_allowed": false,
+          "derived_data_allowed": false,
+          "local_path": false,
+          "source_identity": false,
+          "confirmed_by_user": false
+        },
+        "missing_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "accepted_terms_version_or_access_date",
+          "allowed_use",
+          "redistribution_allowed",
+          "derived_data_allowed",
+          "local_path",
+          "source_identity",
+          "confirmed_by_user"
+        ],
+        "all_required_fields_filled": false,
+        "local_path": "",
+        "local_path_found": false,
+        "official_terms_url": "https://vision.ee.ethz.ch/datsets.html",
+        "terms_accepted_by_user": false,
+        "source_identity": "",
+        "agent_may_fill": false
+      },
+      "manifest_conversion_ready": false,
+      "manifest_blockers": {
+        "confirmation_blockers": [
+          "terms_not_accepted",
+          "terms_acceptance_date_missing",
+          "allowed_use_missing",
+          "local_path_confirmation_missing",
+          "source_identity_missing"
+        ],
+        "cf_blockers": [
+          "manual_terms_or_application_required",
+          "no_independent_t50_candidate"
+        ],
+        "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+      },
+      "after_terms_potential": {
+        "estimated_t50_windows": 506,
+        "estimated_t100_windows": 91,
+        "source_cv_after_terms": true,
+        "technical_ready_source_ids": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ]
+      },
+      "calibrated_subset_after_terms": {
+        "dataset_id": "eth_biwi_original",
+        "domain": "ETH_UCY",
+        "restricted_metric_time_candidates_after_terms": 2,
+        "restricted_ready_now": 0,
+        "calibrated_t50_windows_after_terms": 506,
+        "calibrated_t100_windows_after_terms": 91,
+        "candidate_source_ids_after_terms": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ],
+        "allowed_local_claim_after_legal_conversion": [
+          "source_specific_annotation_step_meter_coordinate_evidence"
+        ]
+      },
+      "suggested_local_paths_for_user_review": [
+        {
+          "path": "external_data/OpenTraj/datasets/ETH",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 83.557
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/ETH-Person",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 2.225
+        },
+        {
+          "path": "data/stage20_world_state/eth_ucy_full",
+          "exists": true,
+          "is_raw_source_candidate": false,
+          "is_derived_or_cache": true,
+          "size_mb": 0.001
+        }
+      ],
+      "contract_status": "blocked_until_user_terms_path_source_confirmation",
+      "contract_conversion_ready_now": false,
+      "download_executed": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "next_safe_commands": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        "future guarded converter only after queued target appears"
+      ]
+    },
+    {
+      "priority_rank": 3,
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "official_url": "user_or_web_verified_official_url_required",
+      "confirmation": {
+        "field_status": {
+          "terms_accepted_by_user": false,
+          "terms_acceptance_date": false,
+          "official_terms_url": false,
+          "accepted_terms_version_or_access_date": false,
+          "allowed_use": false,
+          "redistribution_allowed": false,
+          "derived_data_allowed": false,
+          "local_path": false,
+          "source_identity": false,
+          "confirmed_by_user": false
+        },
+        "missing_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "official_terms_url",
+          "accepted_terms_version_or_access_date",
+          "allowed_use",
+          "redistribution_allowed",
+          "derived_data_allowed",
+          "local_path",
+          "source_identity",
+          "confirmed_by_user"
+        ],
+        "all_required_fields_filled": false,
+        "local_path": "",
+        "local_path_found": false,
+        "official_terms_url": "user_or_web_verified_official_url_required",
+        "terms_accepted_by_user": false,
+        "source_identity": "",
+        "agent_may_fill": false
+      },
+      "manifest_conversion_ready": false,
+      "manifest_blockers": {
+        "confirmation_blockers": [
+          "terms_not_accepted",
+          "terms_acceptance_date_missing",
+          "allowed_use_missing",
+          "local_path_confirmation_missing",
+          "source_identity_missing"
+        ],
+        "cf_blockers": [
+          "local_path_missing",
+          "schema_not_parseable",
+          "manual_terms_or_application_required",
+          "no_independent_t50_candidate"
+        ],
+        "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+      },
+      "after_terms_potential": {
+        "estimated_t50_windows": 0,
+        "estimated_t100_windows": 0,
+        "source_cv_after_terms": false,
+        "technical_ready_source_ids": []
+      },
+      "calibrated_subset_after_terms": {
+        "restricted_metric_time_candidates_after_terms": 0,
+        "restricted_ready_now": 0,
+        "calibrated_t50_windows_after_terms": 0,
+        "calibrated_t100_windows_after_terms": 0,
+        "candidate_source_ids_after_terms": [],
+        "allowed_local_claim_after_legal_conversion": []
+      },
+      "suggested_local_paths_for_user_review": [
+        {
+          "path": "data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 74.76
+        },
+        {
+          "path": "data/stage14_multimodal_episodes/aerialmpt",
+          "exists": true,
+          "is_raw_source_candidate": false,
+          "is_derived_or_cache": true,
+          "size_mb": 0.518
+        }
+      ],
+      "contract_status": "blocked_until_user_terms_path_source_confirmation",
+      "contract_conversion_ready_now": false,
+      "download_executed": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "next_safe_commands": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        "future guarded converter only after queued target appears"
+      ]
+    },
+    {
+      "priority_rank": 4,
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "confirmation": {
+        "field_status": {
+          "terms_accepted_by_user": false,
+          "terms_acceptance_date": false,
+          "official_terms_url": true,
+          "accepted_terms_version_or_access_date": false,
+          "allowed_use": false,
+          "redistribution_allowed": false,
+          "derived_data_allowed": false,
+          "local_path": false,
+          "source_identity": false,
+          "confirmed_by_user": false
+        },
+        "missing_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "accepted_terms_version_or_access_date",
+          "allowed_use",
+          "redistribution_allowed",
+          "derived_data_allowed",
+          "local_path",
+          "source_identity",
+          "confirmed_by_user"
+        ],
+        "all_required_fields_filled": false,
+        "local_path": "",
+        "local_path_found": false,
+        "official_terms_url": "https://github.com/crowdbotp/OpenTraj",
+        "terms_accepted_by_user": false,
+        "source_identity": "",
+        "agent_may_fill": false
+      },
+      "manifest_conversion_ready": false,
+      "manifest_blockers": {
+        "confirmation_blockers": [
+          "terms_not_accepted",
+          "terms_acceptance_date_missing",
+          "allowed_use_missing",
+          "local_path_confirmation_missing",
+          "source_identity_missing"
+        ],
+        "cf_blockers": [
+          "no_independent_t50_candidate"
+        ],
+        "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+      },
+      "after_terms_potential": {
+        "estimated_t50_windows": 0,
+        "estimated_t100_windows": 0,
+        "source_cv_after_terms": false,
+        "technical_ready_source_ids": []
+      },
+      "calibrated_subset_after_terms": {
+        "restricted_metric_time_candidates_after_terms": 0,
+        "restricted_ready_now": 0,
+        "calibrated_t50_windows_after_terms": 0,
+        "calibrated_t100_windows_after_terms": 0,
+        "candidate_source_ids_after_terms": [],
+        "allowed_local_claim_after_legal_conversion": []
+      },
+      "suggested_local_paths_for_user_review": [
+        {
+          "path": "external_data/OpenTraj",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 241.607
+        }
+      ],
+      "contract_status": "blocked_until_user_terms_path_source_confirmation",
+      "contract_conversion_ready_now": false,
+      "download_executed": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "next_safe_commands": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        "future guarded converter only after queued target appears"
+      ]
+    },
+    {
+      "priority_rank": 5,
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "confirmation": {
+        "field_status": {
+          "terms_accepted_by_user": false,
+          "terms_acceptance_date": false,
+          "official_terms_url": true,
+          "accepted_terms_version_or_access_date": false,
+          "allowed_use": false,
+          "redistribution_allowed": false,
+          "derived_data_allowed": false,
+          "local_path": false,
+          "source_identity": false,
+          "confirmed_by_user": false
+        },
+        "missing_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "accepted_terms_version_or_access_date",
+          "allowed_use",
+          "redistribution_allowed",
+          "derived_data_allowed",
+          "local_path",
+          "source_identity",
+          "confirmed_by_user"
+        ],
+        "all_required_fields_filled": false,
+        "local_path": "",
+        "local_path_found": false,
+        "official_terms_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+        "terms_accepted_by_user": false,
+        "source_identity": "",
+        "agent_may_fill": false
+      },
+      "manifest_conversion_ready": false,
+      "manifest_blockers": {
+        "confirmation_blockers": [
+          "terms_not_accepted",
+          "terms_acceptance_date_missing",
+          "allowed_use_missing",
+          "local_path_confirmation_missing",
+          "source_identity_missing"
+        ],
+        "cf_blockers": [
+          "manual_terms_or_application_required",
+          "no_independent_t50_candidate"
+        ],
+        "next_action": "fill explicit official terms/path/source-identity confirmation before conversion"
+      },
+      "after_terms_potential": {
+        "estimated_t50_windows": 0,
+        "estimated_t100_windows": 0,
+        "source_cv_after_terms": false,
+        "technical_ready_source_ids": []
+      },
+      "calibrated_subset_after_terms": {
+        "restricted_metric_time_candidates_after_terms": 0,
+        "restricted_ready_now": 0,
+        "calibrated_t50_windows_after_terms": 0,
+        "calibrated_t100_windows_after_terms": 0,
+        "candidate_source_ids_after_terms": [],
+        "allowed_local_claim_after_legal_conversion": []
+      },
+      "suggested_local_paths_for_user_review": [
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 5.988
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet++",
+          "exists": true,
+          "is_raw_source_candidate": true,
+          "is_derived_or_cache": false,
+          "size_mb": 16.818
+        },
+        {
+          "path": "data/stage5b_raw/trajnetplusplusdataset",
+          "exists": true,
+          "is_raw_source_candidate": false,
+          "is_derived_or_cache": false,
+          "size_mb": 11.905
+        }
+      ],
+      "contract_status": "blocked_until_user_terms_path_source_confirmation",
+      "contract_conversion_ready_now": false,
+      "download_executed": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "next_safe_commands": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        "future guarded converter only after queued target appears"
+      ]
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "converted_dataset_claim_allowed": false,
+    "restricted_subset_claim_allowed_now": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "feature_store_built": false,
+    "no_leakage_audit_executed": false,
+    "source_cv_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required_written": true,
+  "stage42_gm_gate": {
+    "gates": {
+      "source_fresh": true,
+      "contract_loaded": true,
+      "contract_gate_passed": true,
+      "dry_run_default": true,
+      "no_ready_refuses_conversion": true,
+      "blocked_rows_preserved": true,
+      "no_download_conversion_feature_store": true,
+      "no_no_leakage_or_source_cv_claim": true,
+      "no_training_eval_claim": true,
+      "user_action_written": true,
+      "no_metric_seconds_overclaim": true,
+      "no_converted_data_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_gm_guarded_conversion_harness_pass"
+  }
+}
