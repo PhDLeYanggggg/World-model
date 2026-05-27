@@ -4325,10 +4325,10 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - source: `fresh_evidence_provenance_from_stage42_artifacts`
 - role: paper-ready provenance and reproducibility audit.
 - gate: `20 / 20`; verdict `stage42_cx_evidence_provenance_pass`.
-- artifacts audited: `25`.
-- artifacts with passing gates: `25`.
-- source-label counts: `{'fresh_run': 24, 'cached_verified': 1}`.
-- worktree caveat artifacts recorded: `4`.
+- artifacts audited: `28`.
+- artifacts with passing gates: `28`.
+- source-label counts: `{'fresh_run': 27, 'cached_verified': 1}`.
+- worktree caveat artifacts recorded: `0`.
 - Dirty/untracked generated files are not hidden; they are recorded as caveats and must not be treated as extra clean paper evidence.
 - This audit does not create metric/seconds/3D/foundation claims and does not execute Stage5C or SMC.
 <!-- STAGE42_CX_EVIDENCE_PROVENANCE:END -->

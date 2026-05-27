@@ -210,6 +210,30 @@ EVIDENCE_ARTIFACTS = [
         "runner": "run_stage42_group_consistency_runtime_policy.py",
         "role": "callable group-consistency full-waypoint runtime policy API",
     },
+    {
+        "claim_area": "module_contribution_ledger",
+        "json": OUT_DIR / "module_contribution_ledger_stage42.json",
+        "md": OUT_DIR / "module_contribution_ledger_stage42.md",
+        "gate_md": OUT_DIR / "stage42_stage_fu_gate.md",
+        "runner": "run_stage42_module_contribution_ledger.py",
+        "role": "module-level supported/blocked contribution ledger",
+    },
+    {
+        "claim_area": "claim_boundary_linter",
+        "json": OUT_DIR / "claim_boundary_linter_stage42.json",
+        "md": OUT_DIR / "claim_boundary_linter_stage42.md",
+        "gate_md": OUT_DIR / "stage42_stage_fv_gate.md",
+        "runner": "run_stage42_claim_boundary_linter.py",
+        "role": "paper/README no-overclaim linter",
+    },
+    {
+        "claim_area": "source_action_consolidator",
+        "json": OUT_DIR / "source_action_consolidator_stage42.json",
+        "md": OUT_DIR / "source_action_consolidator_stage42.md",
+        "gate_md": OUT_DIR / "stage42_stage_fw_gate.md",
+        "runner": "run_stage42_source_action_consolidator.py",
+        "role": "consolidated source/legal/horizon action queue",
+    },
 ]
 
 CURRENT_FACTS = [

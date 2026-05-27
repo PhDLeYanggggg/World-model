@@ -1,9 +1,9 @@
 {
   "source": "fresh_evidence_provenance_from_stage42_artifacts",
   "stage": "Stage42-CX evidence provenance verifier",
-  "generated_at_utc": "2026-05-26T23:10:15.181042+00:00",
-  "git_commit": "47b5df5",
-  "input_hash": "1186ed465e855c2392884966b9545b1c5bd57f53529c1b8e1f82bf49d0ea6030",
+  "generated_at_utc": "2026-05-27T10:32:47.767328+00:00",
+  "git_commit": "f36229d",
+  "input_hash": "bee6417ffa291e920f1dccd07e75ec9ba1b0ca5a20838ffc510f04c171247a55",
   "current_facts": [
     "当前不是 true 3D world model。",
     "当前不是 large-scale foundation world model。",
@@ -461,12 +461,12 @@
         "verdict": "stage42_ct_frozen_policy_replay_pass",
         "all_passed": true
       },
-      "json_git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
-      "md_git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md",
+      "json_git_status": "clean",
+      "md_git_status": "clean",
       "runner_git_status": "clean",
       "gate_md": "",
       "gate_md_git_status": "",
-      "worktree_caveat": true
+      "worktree_caveat": false
     },
     {
       "claim_area": "runtime_policy_api",
@@ -511,12 +511,12 @@
         "verdict": "stage42_cv_batch_runtime_replay_pass",
         "all_passed": true
       },
-      "json_git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
-      "md_git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md",
+      "json_git_status": "clean",
+      "md_git_status": "clean",
       "runner_git_status": "clean",
       "gate_md": "",
       "gate_md_git_status": "",
-      "worktree_caveat": true
+      "worktree_caveat": false
     },
     {
       "claim_area": "runtime_replay_paper_refresh",
@@ -611,12 +611,12 @@
         "verdict": "stage42_dk_group_consistency_policy_replay_pass",
         "all_passed": true
       },
-      "json_git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
-      "md_git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+      "json_git_status": "clean",
+      "md_git_status": "clean",
       "runner_git_status": "clean",
       "gate_md": "",
       "gate_md_git_status": "",
-      "worktree_caveat": true
+      "worktree_caveat": false
     },
     {
       "claim_area": "group_consistency_runtime_policy",
@@ -636,12 +636,87 @@
         "verdict": "stage42_dl_group_consistency_runtime_policy_pass",
         "all_passed": true
       },
-      "json_git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
-      "md_git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+      "json_git_status": "clean",
+      "md_git_status": "clean",
       "runner_git_status": "clean",
       "gate_md": "",
       "gate_md_git_status": "",
-      "worktree_caveat": true
+      "worktree_caveat": false
+    },
+    {
+      "claim_area": "module_contribution_ledger",
+      "role": "module-level supported/blocked contribution ledger",
+      "json": "outputs/stage42_long_research/module_contribution_ledger_stage42.json",
+      "md": "outputs/stage42_long_research/module_contribution_ledger_stage42.md",
+      "runner": "run_stage42_module_contribution_ledger.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_fu_gate",
+        "passed": 14,
+        "total": 14,
+        "verdict": "stage42_fu_module_contribution_ledger_pass",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "outputs/stage42_long_research/stage42_stage_fu_gate.md",
+      "gate_md_git_status": "clean",
+      "worktree_caveat": false
+    },
+    {
+      "claim_area": "claim_boundary_linter",
+      "role": "paper/README no-overclaim linter",
+      "json": "outputs/stage42_long_research/claim_boundary_linter_stage42.json",
+      "md": "outputs/stage42_long_research/claim_boundary_linter_stage42.md",
+      "runner": "run_stage42_claim_boundary_linter.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_stage42_claim_boundary_linter_from_paper_package_and_fu",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_fv_gate",
+        "passed": 15,
+        "total": 15,
+        "verdict": "stage42_fv_claim_boundary_linter_pass",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "outputs/stage42_long_research/stage42_stage_fv_gate.md",
+      "gate_md_git_status": "clean",
+      "worktree_caveat": false
+    },
+    {
+      "claim_area": "source_action_consolidator",
+      "role": "consolidated source/legal/horizon action queue",
+      "json": "outputs/stage42_long_research/source_action_consolidator_stage42.json",
+      "md": "outputs/stage42_long_research/source_action_consolidator_stage42.md",
+      "runner": "run_stage42_source_action_consolidator.py",
+      "json_exists": true,
+      "md_exists": true,
+      "runner_exists": true,
+      "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+      "source_label": "fresh_run",
+      "gate": {
+        "key": "stage42_fw_gate",
+        "passed": 16,
+        "total": 16,
+        "verdict": "stage42_fw_source_action_consolidator_pass",
+        "all_passed": true
+      },
+      "json_git_status": "clean",
+      "md_git_status": "clean",
+      "runner_git_status": "clean",
+      "gate_md": "outputs/stage42_long_research/stage42_stage_fw_gate.md",
+      "gate_md_git_status": "clean",
+      "worktree_caveat": false
     }
   ],
   "paper_file_status": [
@@ -719,13 +794,13 @@
     }
   ],
   "summary": {
-    "artifacts_total": 25,
-    "artifacts_gate_passed": 25,
+    "artifacts_total": 28,
+    "artifacts_gate_passed": 28,
     "source_label_counts": {
-      "fresh_run": 24,
+      "fresh_run": 27,
       "cached_verified": 1
     },
-    "artifacts_with_worktree_caveat": 4,
+    "artifacts_with_worktree_caveat": 0,
     "paper_files_with_worktree_caveat": 0
   },
   "claim_boundary": {
