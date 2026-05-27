@@ -2,11 +2,11 @@
 
 ## M3W 单文件详细总结
 
-本轮按用户要求新增一个更明确的单文件中文总结：
+本轮按用户要求刷新了更明确的单文件中文总结：
 
 `/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
 
-它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger、Stage42-FV claim linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger、Stage42-FV claim linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新直接结论是：成功主线为 protected selector / safe-switch / group-consistency full-waypoint；失败主线为 hard-class selector、无保护 neural dynamics、JEPA downstream、zero-shot external、latent distance alignment、bounded residual；当前 h100/uniform horizon blocker 仍需 source/legal/guarded conversion 后才能继续。
 
 ## M3W 当前工作路线/失败/成功总账
 

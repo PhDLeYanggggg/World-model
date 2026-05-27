@@ -12,7 +12,35 @@
 
 本文用途：把 M3W 长期目标内的关键尝试、路线、失败原因、成功证据、当前 best deployable、论文 claim 边界和下一步 blocker 集中写到一个 README。本文是总结文件，不是新训练结果，不把 cached 写成 fresh，不把失败包装成成功。
 
-最新核验范围：本文已纳入 Stage42-FU module contribution ledger、Stage42-FV claim-boundary linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package。Stage42-DM 当前 gate 为 27/27；reviewer replay commands 已覆盖 runtime replay、module ledger、claim linter、source-action consolidator、provenance verifier 和 paper-freeze manifest。它不重新训练、不下载、不转换、不调 threshold。
+最新核验范围：本文已纳入 Stage42-FU module contribution ledger、Stage42-FV claim-boundary linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map。Stage42-DM 当前 gate 为 27/27；Stage42-FX gate 为 15/15；Stage42-FY gate 为 14/14。reviewer replay commands 已覆盖 runtime replay、module ledger、claim linter、source-action consolidator、provenance verifier 和 paper-freeze manifest。它不重新训练、不下载、不转换、不调 threshold。
+
+## 给用户的直接总结
+
+你问“在这个目标内我做了什么、尝试了什么路线、哪些失败了、原因是什么、哪些成功了”。最短回答如下：
+
+1. **真正成功的主线不是无保护大模型，而是 protected selector / safe-switch world-state policy。**
+   最早的强因果基线和 fallback 体系最后变成 Stage26、Stage37、Stage42 policy family 的核心。它解决的是“什么时候允许切换、什么时候必须回退”的部署问题。
+
+2. **SDD 内部成功：Stage26 cost-aware selector。**
+   SDD 是 pixel-space raw-frame benchmark。Stage26 在 SDD 上达到 t+50 约 +14.58%、hard/failure 约 +11.23%、easy degradation 约 +1.81%。这证明 cost-aware / regret-aware / fallback-safe selector 比 hard classification selector 更靠谱。
+
+3. **External t+50 成功：Stage37 causal history + scene-agnostic goal prototype。**
+   Stage31-36 的外部迁移多次失败后，Stage37 用 past-only history window、scene-agnostic goal prototypes、t50 switchability/gain/harm 和 conformal safety 修复了 external t50：all +13.48%、t50 +8.46%、t50 bootstrap CI [+7.69%, +9.15%]、hard/failure +15.54%、easy degradation 0.041%、gate 16/16。
+
+4. **更强的 source/domain protected evidence：Stage42-FH/FI。**
+   Stage42-FH/FI 的 frozen protected policy family 在 source/domain 层面更强：all/t50/t100 raw/hard 约 +34.98% / +28.97% / +20.57% / +33.10%；FI exact replay diff 为 0；2000-bootstrap CI low all/t50/t100raw/hard 为 34.62% / 28.46% / 19.96% / 32.73%。这说明 frozen policy 不是一次性偶然输出。
+
+5. **神经网络路线有贡献但不能夸大。**
+   M3W-Neural v1 / Stage41/42 证明 protected neural / full-waypoint / group-consistency 组件可以在 teacher/Stage37 floor 保护下提供 evidence；但 JEPA、Transformer、scene/goal、neighbor/interaction 不能写成独立主贡献。Stage42-FU ledger 只允许 history、domain expert、safe switch、teacher floor、group-consistency full-waypoint 作为主 claim。
+
+6. **主要失败路线很清楚：**
+   hard-class selector 伤 easy；JEPA non-collapse 但无稳定 downstream lift；unprotected Transformer/Hybrid 不可部署；external zero-shot 因坐标/尺度/horizon/scene context mismatch 崩；latent adapter 缩小分布距离但不带来 predictive lift；bounded residual/correction 不安全；uniform horizon robustness 仍被 TrajNet|100 和 UCY|100 卡住。
+
+7. **当前质量判断：**
+   这是一个有强 replay、bootstrap、no-leakage、claim-linter 支撑的 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate。它有投稿候选证据链，但不是 true 3D、不是 foundation、不是 metric predictor、不是 seconds-level long-horizon predictor，也没有执行 Stage5C 或 SMC。
+
+8. **下一步不是继续重复同特征模型重试。**
+   Stage42-FY 已明确：TrajNet|100 与 UCY|100 的弱 horizon 不能继续靠相同特征/相同 threshold 反复训练修复。下一步优先是合法 source support / UCY terms / guarded conversion / source-CV，然后再重启 h100/horizon robustness。
 
 ## 0. 最短结论
 
