@@ -681,3 +681,15 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - group near@0.05 base/final: `1.94%` / `1.38%`.
 - Claim boundary: protected source-level raw-frame full-waypoint evidence only; not true 3D, not foundation, not metric/seconds, no Stage5C, no SMC.
 <!-- STAGE42_ES_INTERACTION_OCCUPANCY_TARGET_SELECTION:END -->
+
+<!-- STAGE42_ET_GROUP_CONSISTENCY_TARGET_ABLATION:START -->
+## Stage42-ET Group-Consistency Target Ablation
+
+- source: `fresh_stage42_group_consistency_target_ablation`
+- role: tests whether the Stage42-ES selected group-consistency target depends on the real source/frame/horizon multi-agent grouping.
+- source/frame/horizon all/t50/t100raw/hard/easy: `24.72%` / `22.36%` / `14.35%` / `23.89%` / `-25.63%`.
+- agent-isolated control all/t50/hard/easy: `24.58%` / `22.02%` / `23.75%` / `-25.66%`.
+- source/frame/horizon vs isolated hard increment `0.14%`; own-base near@0.05 reduction `0.55%`.
+- decision: `keep_source_frame_horizon_group_consistency_target`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_ET_GROUP_CONSISTENCY_TARGET_ABLATION:END -->

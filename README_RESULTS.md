@@ -4995,3 +4995,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - near@0.05 base/final: `1.94%` / `1.38%`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_ES_INTERACTION_OCCUPANCY_TARGET_SELECTION:END -->
+
+<!-- STAGE42_ET_GROUP_CONSISTENCY_TARGET_ABLATION:START -->
+## Stage42-ET Group-Consistency Target Ablation
+
+- source: `fresh_stage42_group_consistency_target_ablation`
+- role: tests whether the Stage42-ES selected interaction/occupancy target depends on real source/frame/horizon multi-agent grouping.
+- gate: `16 / 16`; verdict `stage42_et_group_consistency_target_ablation_pass`.
+- selected target for next stage: `source_frame_horizon`; decision `keep_source_frame_horizon_group_consistency_target`.
+- source/frame/horizon all/t50/t100raw/hard/easy: `24.72%` / `22.36%` / `14.35%` / `23.89%` / `-25.63%`.
+- agent-isolated control all/t50/hard/easy: `24.58%` / `22.02%` / `23.75%` / `-25.66%`.
+- hard increment vs isolated `0.14%`; own-base near@0.05 reduction `0.55%`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_ET_GROUP_CONSISTENCY_TARGET_ABLATION:END -->

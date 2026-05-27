@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-ES interaction occupancy target selection",
-  "current_verdict": "stage42_es_interaction_occupancy_target_selection_pass",
+  "current_stage": "Stage42-ET group consistency target ablation",
+  "current_verdict": "stage42_et_group_consistency_target_ablation_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -21707,6 +21707,57 @@
       ],
       "decision": "continue_with_explicit_group_consistency_interaction_target",
       "rationale": "Explicit group-consistency is selected only if it improves the protected full-waypoint floor, improves over Stage42-AM on all/hard, preserves easy, and does not worsen near@0.05. Scalar proximity/occupancy weighting is retained only as diagnostic when it is positive but not better than the baseline-family full-waypoint control."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_et_group_consistency_target_ablation": {
+    "source": "fresh_stage42_group_consistency_target_ablation",
+    "report": "outputs/stage42_long_research/group_consistency_target_ablation_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_et_gate.md",
+    "verdict": "stage42_et_group_consistency_target_ablation_pass",
+    "gates": "16/16",
+    "selected_target_for_next_stage": "source_frame_horizon",
+    "decision": "keep_source_frame_horizon_group_consistency_target",
+    "source_frame_horizon_metric": {
+      "rows": 47458,
+      "all_improvement": 0.24715658317833844,
+      "t10_improvement": 0.4586454739489455,
+      "t25_improvement": 0.23617773697664124,
+      "t50_improvement": 0.2236298792899738,
+      "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "hard_failure_improvement": 0.23887420070464105,
+      "easy_degradation": -0.2563085406508494,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11382546135578223
+    },
+    "agent_isolated_metric": {
+      "rows": 47458,
+      "all_improvement": 0.24578838559866356,
+      "t10_improvement": 0.4584029803090398,
+      "t25_improvement": 0.23324144358920462,
+      "t50_improvement": 0.22017071087030715,
+      "t100_raw_frame_diagnostic_improvement": 0.14365240535176194,
+      "hard_failure_improvement": 0.23749387838492075,
+      "easy_degradation": -0.25662729975593146,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11319535181660002
+    },
+    "source_frame_horizon_vs_agent_isolated": {
+      "all_increment": 0.001368197579674879,
+      "t50_increment": 0.0034591684196666472,
+      "t100_raw_frame_diagnostic_increment": -0.0001912838735811384,
+      "hard_failure_increment": 0.0013803223197202952,
+      "easy_degradation_increment": 0.00031875910508205596,
+      "near005_reduction_vs_correct_base": 0.005541742172025792,
+      "isolated_near005_not_comparable": 0.0,
+      "p05_min_distance_gain_vs_isolated": 0.07770240407545181
     },
     "claim_boundary": {
       "true_3d": false,
