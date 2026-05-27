@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-ER post-EQ context claim refresh",
-  "current_verdict": "stage42_er_post_eq_context_claim_refresh_pass",
+  "current_stage": "Stage42-ES interaction occupancy target selection",
+  "current_verdict": "stage42_es_interaction_occupancy_target_selection_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -21365,6 +21365,348 @@
         "smc_allowed": false,
         "recommended_next_primary_action": "ER-1"
       }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_es_interaction_occupancy_target_selection": {
+    "source": "fresh_stage42_interaction_occupancy_target_selection",
+    "report": "outputs/stage42_long_research/interaction_occupancy_target_selection_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_es_gate.md",
+    "verdict": "stage42_es_interaction_occupancy_target_selection_pass",
+    "gates": "17/17",
+    "target_selection": {
+      "source": "fresh_selection_from_dh_di_rerun",
+      "selected_target_family": "explicit_group_consistency_repair",
+      "selection_score": 1.018400423855032,
+      "selected_promotable": true,
+      "target_rows": [
+        {
+          "target_family": "scalar_proximity_occupancy_loss",
+          "source": "fresh_run",
+          "source_gate_verdict": "stage42_dh_proximity_occupancy_loss_repair_pass_positive_not_better_than_am",
+          "source_gate_passed": 15,
+          "source_gate_total": 16,
+          "selected": {
+            "variant": "proximity_close_weighted",
+            "feature_mode": "stage42_am_features",
+            "lambda": 100.0,
+            "val_score": 2.416931576120985,
+            "val_metric": {
+              "rows": 23788,
+              "all_improvement": 0.44837323217811875,
+              "t10_improvement": 0.6904242831994981,
+              "t25_improvement": 0.3491562809581683,
+              "t50_improvement": 0.4858473289420322,
+              "t100_raw_frame_diagnostic_improvement": 0.3284948268722231,
+              "hard_failure_improvement": 0.44383398421624254,
+              "easy_degradation": -0.28802722107673506,
+              "switch_rate": 0.8334874726752984,
+              "harm_over_fallback": -0.24263660493509
+            },
+            "test_metric": {
+              "rows": 47458,
+              "all_improvement": 0.25506106152262753,
+              "t10_improvement": 0.4518805313847154,
+              "t25_improvement": 0.29831288193446703,
+              "t50_improvement": 0.22136644201311806,
+              "t100_raw_frame_diagnostic_improvement": 0.14339472654477603,
+              "hard_failure_improvement": 0.2373927398811264,
+              "easy_degradation": -0.29229256390643454,
+              "switch_rate": 0.5846011209911922,
+              "harm_over_fallback": -0.11746578880628065
+            },
+            "ungated_test_metric": {
+              "rows": 47458,
+              "all_improvement": 0.44392419485396073,
+              "t10_improvement": 0.5917668984588884,
+              "t25_improvement": 0.2920413873615566,
+              "t50_improvement": 0.3996325166548065,
+              "t100_raw_frame_diagnostic_improvement": 0.45602273031394036,
+              "hard_failure_improvement": 0.4362223072654605,
+              "easy_degradation": -0.26635293156213746,
+              "switch_rate": 1.0,
+              "harm_over_fallback": -0.20444479218983974
+            },
+            "policy_slice_count": 8,
+            "mean_train_weight": 1.0,
+            "max_train_weight": 1.2151703416478015,
+            "policy": {
+              "type": "stage42am_source_level_ridge_validation_safe_policy",
+              "selection_source": "validation_only",
+              "slices": {
+                "ETH_UCY|10": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.041283998487033444,
+                  "alpha": 0.75,
+                  "val_score": 1.5982997521621944,
+                  "val_rows": 4580,
+                  "val_metric": {
+                    "rows": 4580,
+                    "all_improvement": 0.7064274536471304,
+                    "t10_improvement": 0.7064274536471304,
+                    "t25_improvement": 0.0,
+                    "t50_improvement": 0.0,
+                    "t100_raw_frame_diagnostic_improvement": 0.0,
+                    "hard_failure_improvement": 0.7082607343505798,
+                    "easy_degradation": -0.5567857611062625,
+                    "switch_rate": 0.95,
+                    "harm_over_fallback": -0.30927545558556263
+                  }
+                },
+                "ETH_UCY|25": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.016559071527332717,
+                  "alpha": 0.75,
+                  "val_score": 0.8034378412924001,
+                  "val_rows": 4284,
+                  "val_metric": {
+                    "rows": 4284,
+                    "all_improvement": 0.37466723012181236,
+                    "t10_improvement": 0.0,
+                    "t25_improvement": 0.37466723012181236,
+                    "t50_improvement": 0.0,
+                    "t100_raw_frame_diagnostic_improvement": 0.0,
+                    "hard_failure_improvement": 0.3475741480957536,
+                    "easy_degradation": -0.6004102378620448,
+                    "switch_rate": 0.949813258636788,
+                    "harm_over_fallback": -0.10419339082430802
+                  }
+                },
+                "ETH_UCY|50": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.036223840972053695,
+                  "alpha": 1.0,
+                  "val_score": 2.1921824288046494,
+                  "val_rows": 3988,
+                  "val_metric": {
+                    "rows": 3988,
+                    "all_improvement": 0.5416287598204944,
+                    "t10_improvement": 0.0,
+                    "t25_improvement": 0.0,
+                    "t50_improvement": 0.5416287598204944,
+                    "t100_raw_frame_diagnostic_improvement": 0.0,
+                    "hard_failure_improvement": 0.5416287598204944,
+                    "easy_degradation": -0.19624220970786765,
+                    "switch_rate": 0.9498495486459378,
+                    "harm_over_fallback": -0.30837057054592754
+                  }
+                },
+                "ETH_UCY|100": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.06717835659156292,
+                  "alpha": 0.5,
+                  "val_score": 0.8100451893179468,
+                  "val_rows": 3251,
+                  "val_metric": {
+                    "rows": 3251,
+                    "all_improvement": 0.3645830594563071,
+                    "t10_improvement": 0.0,
+                    "t25_improvement": 0.0,
+                    "t50_improvement": 0.0,
+                    "t100_raw_frame_diagnostic_improvement": 0.3645830594563071,
+                    "hard_failure_improvement": 0.3645830594563071,
+                    "easy_degradation": -0.014951637249039251,
+                    "switch_rate": 0.949861581051984,
+                    "harm_over_fallback": -0.4413447663821308
+                  }
+                },
+                "TrajNet|10": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.03950320738262669,
+                  "alpha": 0.75,
+                  "val_score": 1.4797973420397779,
+                  "val_rows": 2465,
+                  "val_metric": {
+                    "rows": 2465,
+                    "all_improvement": 0.6518670867145343,
+                    "t10_improvement": 0.6518670867145343,
+                    "t25_improvement": 0.0,
+                    "t50_improvement": 0.0,
+                    "t100_raw_frame_diagnostic_improvement": 0.0,
+                    "hard_failure_improvement": 0.6518670867145343,
+                    "easy_degradation": -0.08502784986199241,
+                    "switch_rate": 0.6498985801217039,
+                    "harm_over_fallback": -0.2200827869576871
+                  }
+                },
+                "TrajNet|25": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.026585852515604656,
+                  "alpha": 0.75,
+                  "val_score": 0.6382931638274056,
+                  "val_rows": 2175,
+                  "val_metric": {
+                    "rows": 2175,
+                    "all_improvement": 0.2859985270014207,
+                    "t10_improvement": 0.0,
+                    "t25_improvement": 0.2859985270014207,
+                    "t50_improvement": 0.0,
+                    "t100_raw_frame_diagnostic_improvement": 0.0,
+                    "hard_failure_improvement": 0.2859985270014207,
+                    "easy_degradation": -0.3307340436943813,
+                    "switch_rate": 0.6501149425287356,
+                    "harm_over_fallback": -0.06327736699182819
+                  }
+                },
+                "TrajNet|50": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.05903628177327864,
+                  "alpha": 0.5,
+                  "val_score": 1.3157505185122367,
+                  "val_rows": 1885,
+                  "val_metric": {
+                    "rows": 1885,
+                    "all_improvement": 0.3256698877396087,
+                    "t10_improvement": 0.0,
+                    "t25_improvement": 0.0,
+                    "t50_improvement": 0.3256698877396087,
+                    "t100_raw_frame_diagnostic_improvement": 0.0,
+                    "hard_failure_improvement": 0.3256698877396087,
+                    "easy_degradation": -0.010459566472471815,
+                    "switch_rate": 0.649867374005305,
+                    "harm_over_fallback": -0.136609501270295
+                  }
+                },
+                "TrajNet|100": {
+                  "direction": "high",
+                  "residual_norm_threshold": 0.45524941361358934,
+                  "alpha": 0.5,
+                  "val_score": 0.3994320392539604,
+                  "val_rows": 1160,
+                  "val_metric": {
+                    "rows": 1160,
+                    "all_improvement": 0.22453730936600413,
+                    "t10_improvement": 0.0,
+                    "t25_improvement": 0.0,
+                    "t50_improvement": 0.0,
+                    "t100_raw_frame_diagnostic_improvement": 0.22453730936600413,
+                    "hard_failure_improvement": 0.22453730936600413,
+                    "easy_degradation": 0.015475188614392454,
+                    "switch_rate": 0.25,
+                    "harm_over_fallback": -0.2644470357972513
+                  }
+                }
+              },
+              "test_threshold_tuning": false
+            }
+          },
+          "metric_vs_floor": {
+            "rows": 47458,
+            "all_improvement": 0.25506106152262753,
+            "t10_improvement": 0.4518805313847154,
+            "t25_improvement": 0.29831288193446703,
+            "t50_improvement": 0.22136644201311806,
+            "t100_raw_frame_diagnostic_improvement": 0.14339472654477603,
+            "hard_failure_improvement": 0.2373927398811264,
+            "easy_degradation": -0.29229256390643454,
+            "switch_rate": 0.5846011209911922,
+            "harm_over_fallback": -0.11746578880628065
+          },
+          "delta_vs_stage42_am": {
+            "all_improvement": 0.009272675923963969,
+            "t50_improvement": 0.0011957311428109074,
+            "t100_raw_frame_diagnostic_improvement": -0.00025767880698590595,
+            "hard_failure_improvement": -0.0001011385037943402,
+            "easy_degradation": -0.035665264150503084,
+            "switch_rate": -0.003497829659909857
+          },
+          "deployment_decision": {
+            "promote_proximity_occupancy_loss_candidate": false,
+            "decision": "proximity_occupancy_loss_not_enough_keep_stage42_am_or_cq_floor",
+            "reason": "Promotion requires test all+hard positive, easy safe, and improvement over Stage42-AM on all+hard."
+          },
+          "near_diagnostics": null,
+          "promotable": false,
+          "selection_score": 1.0134779886075058
+        },
+        {
+          "target_family": "explicit_group_consistency_repair",
+          "source": "fresh_run",
+          "source_gate_verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable",
+          "source_gate_passed": 17,
+          "source_gate_total": 17,
+          "selected": {
+            "candidate": {
+              "mode": "repel_unsafe",
+              "min_sep": 0.08,
+              "margin": 0.0,
+              "strength": 0.5
+            },
+            "val_score": 1.9103557229981505,
+            "val_metric": {
+              "rows": 23788,
+              "all_improvement": 0.44156489895599793,
+              "t10_improvement": 0.6933195833166081,
+              "t25_improvement": 0.3064878897392037,
+              "t50_improvement": 0.47594484424243677,
+              "t100_raw_frame_diagnostic_improvement": 0.3295930766716896,
+              "hard_failure_improvement": 0.4372599087028438,
+              "easy_degradation": -0.28703887951299933,
+              "switch_rate": 0.8334874726752984,
+              "harm_over_fallback": -0.23895228406192529
+            },
+            "val_diagnostics": {
+              "unsafe_rows": 1200,
+              "unsafe_rate": 0.05044560282495376,
+              "base_switch_rate": 0.8334874726752984,
+              "final_switch_rate": 0.8334874726752984,
+              "base_near_005": 0.015512022868673281,
+              "final_near_005": 0.004371952244829325,
+              "floor_near_005": 0.012737514713300825,
+              "base_p05_min_distance": 0.07308731743085398,
+              "final_p05_min_distance": 0.07964797237636109,
+              "floor_p05_min_distance": 0.0760265211798491
+            }
+          },
+          "metric_vs_floor": {
+            "rows": 47458,
+            "all_improvement": 0.24715658317833844,
+            "t10_improvement": 0.4586454739489455,
+            "t25_improvement": 0.23617773697664124,
+            "t50_improvement": 0.2236298792899738,
+            "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+            "hard_failure_improvement": 0.23887420070464105,
+            "easy_degradation": -0.2563085406508494,
+            "switch_rate": 0.5880989506511021,
+            "harm_over_fallback": -0.11382546135578223
+          },
+          "delta_vs_stage42_am": {
+            "all_improvement": 0.001368197579674879,
+            "t50_improvement": 0.0034591684196666472,
+            "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+            "hard_failure_improvement": 0.0013803223197202952,
+            "easy_degradation": 0.00031875910508205596
+          },
+          "deployment_decision": {
+            "promote_group_consistency_full_waypoint_repair": true,
+            "decision": "promote_stage42_di_group_consistency_full_waypoint_repair",
+            "reason": "Promotion requires all+hard positive, easy safe, improvement over Stage42-AM on all+hard, and no worse near@0.05 than rebuilt AM selected rollout."
+          },
+          "near_diagnostics": {
+            "unsafe_rows": 955,
+            "unsafe_rate": 0.02012305617598719,
+            "base_switch_rate": 0.5880989506511021,
+            "final_switch_rate": 0.5880989506511021,
+            "base_near_005": 0.019364490707573012,
+            "final_near_005": 0.01382274853554722,
+            "floor_near_005": 0.022377681318218216,
+            "base_p05_min_distance": 0.07437689768396878,
+            "final_p05_min_distance": 0.07770240407545181,
+            "floor_p05_min_distance": 0.07354961919220622
+          },
+          "promotable": true,
+          "selection_score": 1.018400423855032
+        }
+      ],
+      "decision": "continue_with_explicit_group_consistency_interaction_target",
+      "rationale": "Explicit group-consistency is selected only if it improves the protected full-waypoint floor, improves over Stage42-AM on all/hard, preserves easy, and does not worsen near@0.05. Scalar proximity/occupancy weighting is retained only as diagnostic when it is positive but not better than the baseline-family full-waypoint control."
     },
     "claim_boundary": {
       "true_3d": false,

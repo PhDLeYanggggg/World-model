@@ -267,3 +267,15 @@ The paper-ready scope remains a protected 2.5D raw-frame world-state candidate. 
 - Next primary route: source/legal/time conversion and stronger joint occupancy / interaction-constraint targets, not repeating shallow context routers.
 - Boundary: raw-frame/dataset-local 2.5D only; no true 3D, no foundation, no metric/seconds, no Stage5C, no SMC.
 <!-- STAGE42_ER_POST_EQ_CONTEXT_CLAIM_REFRESH:END -->
+
+<!-- STAGE42_ES_INTERACTION_OCCUPANCY_TARGET_SELECTION:START -->
+## Stage42-ES Interaction / Occupancy Target Selection
+
+- source: `fresh_stage42_interaction_occupancy_target_selection`
+- role: fresh-reruns scalar proximity/occupancy loss and explicit group-consistency repair to choose the next interaction/occupancy target.
+- selected target family: `explicit_group_consistency_repair`; decision `continue_with_explicit_group_consistency_interaction_target`.
+- scalar proximity/occupancy target all/t50/hard/easy: `25.51%` / `22.14%` / `23.74%` / `-29.23%`.
+- explicit group-consistency target all/t50/t100raw/hard/easy: `24.72%` / `22.36%` / `14.35%` / `23.89%` / `-25.63%`.
+- group near@0.05 base/final: `1.94%` / `1.38%`.
+- Claim boundary: protected source-level raw-frame full-waypoint evidence only; not true 3D, not foundation, not metric/seconds, no Stage5C, no SMC.
+<!-- STAGE42_ES_INTERACTION_OCCUPANCY_TARGET_SELECTION:END -->

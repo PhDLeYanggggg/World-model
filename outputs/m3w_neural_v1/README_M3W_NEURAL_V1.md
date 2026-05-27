@@ -1999,3 +1999,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - New priority: source/legal/time conversion plus stronger joint occupancy or interaction-constraint targets.
 - Boundary: raw-frame/dataset-local 2.5D only; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_ER_POST_EQ_CONTEXT_CLAIM_REFRESH:END -->
+
+<!-- STAGE42_ES_INTERACTION_OCCUPANCY_TARGET_SELECTION:START -->
+## Stage42-ES Interaction / Occupancy Target Selection
+
+- source: `fresh_stage42_interaction_occupancy_target_selection`
+- role: fresh-reruns DH scalar proximity/occupancy target and DI explicit group-consistency target to choose the next interaction/occupancy training route.
+- gate: `17 / 17`; verdict `stage42_es_interaction_occupancy_target_selection_pass`.
+- selected target family: `explicit_group_consistency_repair`; decision `continue_with_explicit_group_consistency_interaction_target`.
+- selected group-consistency all/t50/t100raw/hard/easy: `24.72%` / `22.36%` / `14.35%` / `23.89%` / `-25.63%`.
+- near@0.05 base/final: `1.94%` / `1.38%`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_ES_INTERACTION_OCCUPANCY_TARGET_SELECTION:END -->
