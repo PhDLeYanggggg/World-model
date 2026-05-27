@@ -2919,3 +2919,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - template: `outputs/stage42_long_research/restricted_metric_time_terms_intake_v2_template_stage42.json`.
 - conclusion: UCY/ETH_UCY restricted metric/time source-level candidates are now represented in a user-fillable intake v2, but all conversion/evaluation remains blocked until user-confirmed terms/source identity/path and a guarded rerun.
 <!-- STAGE42_HM_RESTRICTED_METRIC_TIME_TERMS_INTAKE_V2:END -->
+
+<!-- STAGE42_HN_RESTRICTED_METRIC_TIME_CONVERSION_QUEUE_V2:START -->
+## Stage42-HN Restricted Metric/Time Conversion Queue v2
+
+- source: `fresh_stage42_hn_restricted_metric_time_conversion_queue_v2`
+- verdict: `stage42_hn_restricted_metric_time_conversion_queue_v2_pass_blocked_until_ready_candidates`
+- gates: `15 / 15`
+- ready / blocked candidates: `0` / `11`.
+- conversion queue count: `0`.
+- blocked after-terms t50/t100 windows retained: `14457` / `7129`.
+- conclusion: the restricted metric/time execution path is now guarded by HM ready-candidate validation; current conversion remains refused until user-confirmed terms/source identity/path are supplied.
+<!-- STAGE42_HN_RESTRICTED_METRIC_TIME_CONVERSION_QUEUE_V2:END -->
