@@ -1147,3 +1147,17 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - Global floor removal and floor-free neural deployment remain false.
 - No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
 <!-- STAGE42_HB_TEACHER_FLOOR_NECESSITY_META_AUDIT:END -->
+
+<!-- STAGE42_HC_FLOOR_ALTERNATIVE_GATE_STRESS:START -->
+## Stage42-HC Floor-Alternative Gate Stress Matrix
+
+- source: `fresh_stage42_hc_floor_alternative_gate_stress`
+- gate: `14 / 14`
+- verdict: `stage42_hc_floor_alternative_gate_stress_pass`
+- Tested Stage42-E internal self-gate, uncertainty gate, conformal risk gate, harm predictor, teacher-dependent gates, and bounded residual families as floor alternatives.
+- floor-free deployable count: `0`; teacher-dependent deployable count: `6`.
+- best floor-free candidate `harm_predictor_gate` reaches all/t50/hard `35.95%` / `25.20%` / `35.86%` but is not deployable because `['near_collision_delta_over_1pp']`.
+- best deployable teacher-dependent candidate `current_composite_tail_policy` reaches all/t50/hard `21.03%` / `13.65%` / `20.38%` with easy `0.00%`.
+- Deployment decision remains: keep Stage37/teacher floor globally; allow only validation-backed partial t50 relaxation on selected slices.
+- No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
+<!-- STAGE42_HC_FLOOR_ALTERNATIVE_GATE_STRESS:END -->

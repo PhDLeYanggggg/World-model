@@ -1,0 +1,563 @@
+{
+  "source": "fresh_stage42_hc_floor_alternative_gate_stress",
+  "stage": "Stage42-HC floor-alternative gate stress matrix",
+  "generated_at_utc": "2026-05-27T16:12:56.903808+00:00",
+  "git_commit": "5814bb9",
+  "input_hash": "da6334c640d2de5ec03b9310f0f52aedca03dd245665383da30639305e642099",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HC 是 floor-alternative gate stress matrix，不重新训练，不下载，不转换，不调 test threshold。",
+    "本审计使用 Stage42-E fresh validation-selected gate families，并把结果按 floor-free / teacher-dependent / bounded residual 分组。",
+    "future endpoint / future waypoint 只允许作为监督或评估标签，不允许作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "Stage5C latent generative 未执行，SMC 未启用。"
+  ],
+  "input_status": {
+    "stage42_e_safety_floor": {
+      "path": "outputs/stage42_long_research/safety_floor_stage42.json",
+      "source": "fresh_run",
+      "gate_passed": true,
+      "verdict": "stage42_e_safety_floor_research_pass"
+    },
+    "stage42_hb_meta_audit": {
+      "path": "outputs/stage42_long_research/teacher_floor_necessity_meta_audit_stage42.json",
+      "source": "fresh_stage42_hb_teacher_floor_necessity_meta_audit",
+      "gate_passed": true,
+      "verdict": "stage42_hb_teacher_floor_necessity_meta_audit_pass"
+    },
+    "stage42_gt_floor_relaxation_stress": {
+      "path": "outputs/stage42_long_research/floor_relaxation_safety_stress_stage42.json",
+      "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+      "gate_passed": true,
+      "verdict": "stage42_gt_floor_relaxation_safety_stress_pass"
+    }
+  },
+  "candidate_rows": [
+    {
+      "family": "teacher_repaired_floor",
+      "family_type": "teacher_dependent_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 1,
+      "val_eligible_count": 1,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.20359710771827477,
+        "t10_improvement": 0.4808062018590501,
+        "t25_improvement": 0.10605934536724371,
+        "t50_improvement": 0.13116399043122728,
+        "t100_improvement": 0.13371172832175005,
+        "hard_failure_improvement": 0.19657225579495552,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.09744765185448034,
+        "switch_rate": 0.2954185275896845,
+        "collision_delta_vs_floor_005": -0.003961994203749264
+      }
+    },
+    {
+      "family": "teacher_prob_gate",
+      "family_type": "teacher_dependent_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 108,
+      "val_eligible_count": 108,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.12117143028974986,
+        "t10_improvement": 0.13579391413881092,
+        "t25_improvement": 0.024639816824923,
+        "t50_improvement": 0.09307036485505338,
+        "t100_improvement": 0.16548254058647816,
+        "hard_failure_improvement": 0.12699871141983932,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.057996262746148504,
+        "switch_rate": 0.12501800893243048,
+        "collision_delta_vs_floor_005": 0.0044022157819435526
+      }
+    },
+    {
+      "family": "harm_predictor_gate",
+      "family_type": "floor_free_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 12,
+      "val_eligible_count": 12,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.35954392093793963,
+        "t10_improvement": 0.6065347468876006,
+        "t25_improvement": 0.15477738209432224,
+        "t50_improvement": 0.2519769905692425,
+        "t100_improvement": 0.3666779052571525,
+        "hard_failure_improvement": 0.35864193491919594,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.17208845069860598,
+        "switch_rate": 0.5055467511885895,
+        "collision_delta_vs_floor_005": 0.019718258189955595
+      }
+    },
+    {
+      "family": "uncertainty_gate",
+      "family_type": "floor_free_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 36,
+      "val_eligible_count": 36,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.3592208973228892,
+        "t10_improvement": 0.6065603927723868,
+        "t25_improvement": 0.15459835866472316,
+        "t50_improvement": 0.25103258383175686,
+        "t100_improvement": 0.3665116939587536,
+        "hard_failure_improvement": 0.3581882916637088,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.171933841956208,
+        "switch_rate": 0.5073656533640686,
+        "collision_delta_vs_floor_005": 0.019571517663890814
+      }
+    },
+    {
+      "family": "internal_self_gate",
+      "family_type": "floor_free_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 36,
+      "val_eligible_count": 36,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.3586805602028258,
+        "t10_improvement": 0.6064985779312442,
+        "t25_improvement": 0.15468225827255844,
+        "t50_improvement": 0.25002343088154844,
+        "t100_improvement": 0.36578927551835905,
+        "hard_failure_improvement": 0.35773547442793574,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.17167522048486142,
+        "switch_rate": 0.501224607405273,
+        "collision_delta_vs_floor_005": 0.01953483253237459
+      }
+    },
+    {
+      "family": "conformal_risk_gate",
+      "family_type": "floor_free_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 108,
+      "val_eligible_count": 108,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.3512626137290059,
+        "t10_improvement": 0.6014177129494227,
+        "t25_improvement": 0.14599863711599004,
+        "t50_improvement": 0.2351734441107286,
+        "t100_improvement": 0.3623058890721005,
+        "hard_failure_improvement": 0.3518209616910193,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.16812476992317557,
+        "switch_rate": 0.450889641262066,
+        "collision_delta_vs_floor_005": 0.018599361678711623
+      }
+    },
+    {
+      "family": "teacher_raw_policy",
+      "family_type": "teacher_dependent_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 1,
+      "val_eligible_count": 1,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.35147372419646705,
+        "t10_improvement": 0.6053046394540129,
+        "t25_improvement": 0.1510837734096614,
+        "t50_improvement": 0.23666446707361,
+        "t100_improvement": 0.3579659237738704,
+        "hard_failure_improvement": 0.350941376256631,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.16822581369322984,
+        "switch_rate": 0.46194712577438407,
+        "collision_delta_vs_floor_005": 0.018672731941744014
+      }
+    },
+    {
+      "family": "floor_only",
+      "family_type": "other_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 1,
+      "val_eligible_count": 0,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "all_not_positive",
+        "t50_and_hard_not_positive",
+        "no_intervention"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": 0.0,
+        "switch_rate": 0.0,
+        "collision_delta_vs_floor_005": 0.0
+      }
+    },
+    {
+      "family": "current_composite_tail_policy",
+      "family_type": "teacher_dependent_bounded_or_current",
+      "source": "cached_verified_policy_fresh_eval",
+      "candidate_count": 1,
+      "val_eligible_count": 1,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.2102513255185352,
+        "t10_improvement": 0.4810525302753197,
+        "t25_improvement": 0.10635705713395971,
+        "t50_improvement": 0.13652231450154184,
+        "t100_improvement": 0.14694086716388166,
+        "hard_failure_improvement": 0.20384916307933942,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1006325590804755,
+        "switch_rate": 0.3410171445036738,
+        "alpha_mean": 0.29906641694280367,
+        "alpha_positive_rate": 0.3410171445036738,
+        "collision_delta_vs_floor_005": -0.0038702813749587617,
+        "smoothness_jagged_delta": 0.0
+      }
+    },
+    {
+      "family": "bounded_teacher_switch_alpha",
+      "family_type": "teacher_dependent_bounded_or_current",
+      "source": "fresh_run",
+      "candidate_count": 10,
+      "val_eligible_count": 10,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.20359710771827477,
+        "t10_improvement": 0.4808062018590501,
+        "t25_improvement": 0.10605934536724371,
+        "t50_improvement": 0.13116399043122728,
+        "t100_improvement": 0.13371172832175005,
+        "hard_failure_improvement": 0.19657225579495552,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.09744765185448034,
+        "switch_rate": 0.2954185275896845,
+        "alpha_mean": 0.2954185275896845,
+        "alpha_positive_rate": 0.2954185275896845,
+        "collision_delta_vs_floor_005": -0.003961994203749264,
+        "smoothness_jagged_delta": 0.0
+      }
+    },
+    {
+      "family": "bounded_teacher_prob70_alpha",
+      "family_type": "teacher_dependent_bounded_or_current",
+      "source": "fresh_run",
+      "candidate_count": 10,
+      "val_eligible_count": 10,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.08383193655687204,
+        "t10_improvement": 0.07605139751549528,
+        "t25_improvement": 0.02091532548843189,
+        "t50_improvement": 0.08583860919096786,
+        "t100_improvement": 0.10912738821663093,
+        "hard_failure_improvement": 0.08896849329022771,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.04012446669519991,
+        "switch_rate": 0.08678504538250972,
+        "alpha_mean": 0.08678504538250972,
+        "alpha_positive_rate": 0.08678504538250972,
+        "collision_delta_vs_floor_005": 0.004090392164055878,
+        "smoothness_jagged_delta": 0.0
+      }
+    },
+    {
+      "family": "bounded_horizon_teacher_switch_alpha",
+      "family_type": "teacher_dependent_bounded_or_current",
+      "source": "fresh_run",
+      "candidate_count": 4,
+      "val_eligible_count": 4,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.0383724975287042,
+        "t10_improvement": 0.03166437090788998,
+        "t25_improvement": 0.015491566794586853,
+        "t50_improvement": 0.04807878157542356,
+        "t100_improvement": 0.04393711445327109,
+        "hard_failure_improvement": 0.039460178707942606,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.018366222496334808,
+        "switch_rate": 0.2954185275896845,
+        "alpha_mean": 0.03139947413917303,
+        "alpha_positive_rate": 0.2954185275896845,
+        "collision_delta_vs_floor_005": -0.0006053046700172371,
+        "smoothness_jagged_delta": 0.0
+      }
+    },
+    {
+      "family": "bounded_horizon_alpha",
+      "family_type": "floor_free_bounded_residual",
+      "source": "fresh_run",
+      "candidate_count": 4,
+      "val_eligible_count": 4,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "easy_degradation_over_2pct"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.09919076156517093,
+        "t10_improvement": 0.039691627565093035,
+        "t25_improvement": 0.042443427920753396,
+        "t50_improvement": 0.12314649220340024,
+        "t100_improvement": 0.13639713853130164,
+        "hard_failure_improvement": 0.10552038614398185,
+        "easy_degradation": 0.05089085599102661,
+        "harm_over_fallback": -0.04747565870905509,
+        "switch_rate": 1.0,
+        "alpha_mean": 0.1274294049848725,
+        "alpha_positive_rate": 1.0,
+        "collision_delta_vs_floor_005": 0.0026780146006823435,
+        "smoothness_jagged_delta": 0.0
+      }
+    },
+    {
+      "family": "bounded_all_rows_alpha",
+      "family_type": "floor_free_bounded_residual",
+      "source": "fresh_run",
+      "candidate_count": 10,
+      "val_eligible_count": 10,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "easy_degradation_over_2pct",
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.296621240422128,
+        "t10_improvement": 0.49983686172432895,
+        "t25_improvement": -0.044336116247622126,
+        "t50_improvement": 0.21520334842637612,
+        "t100_improvement": 0.359213230578716,
+        "hard_failure_improvement": 0.32937413785262626,
+        "easy_degradation": 1.2458611044726973,
+        "harm_over_fallback": -0.14197177795519889,
+        "switch_rate": 1.0,
+        "alpha_mean": 1.0,
+        "alpha_positive_rate": 1.0,
+        "collision_delta_vs_floor_005": 0.0376572875013757,
+        "smoothness_jagged_delta": 0.0
+      }
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_hc_floor_alternative_gate_stress",
+    "candidate_rows_total": 14,
+    "floor_free_candidate_rows": 6,
+    "teacher_dependent_candidate_rows": 7,
+    "floor_free_deployable_count": 0,
+    "teacher_dependent_deployable_count": 6,
+    "floor_free_positive_but_unsafe_count": 6,
+    "best_floor_free_candidate": {
+      "family": "harm_predictor_gate",
+      "family_type": "floor_free_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 12,
+      "val_eligible_count": 12,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.35954392093793963,
+        "t10_improvement": 0.6065347468876006,
+        "t25_improvement": 0.15477738209432224,
+        "t50_improvement": 0.2519769905692425,
+        "t100_improvement": 0.3666779052571525,
+        "hard_failure_improvement": 0.35864193491919594,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.17208845069860598,
+        "switch_rate": 0.5055467511885895,
+        "collision_delta_vs_floor_005": 0.019718258189955595
+      }
+    },
+    "best_teacher_dependent_candidate": {
+      "family": "teacher_raw_policy",
+      "family_type": "teacher_dependent_switch_gate",
+      "source": "fresh_run",
+      "candidate_count": 1,
+      "val_eligible_count": 1,
+      "stage42e_test_deployable": false,
+      "strict_deployable": false,
+      "failure_reasons": [
+        "near_collision_delta_over_1pp"
+      ],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.35147372419646705,
+        "t10_improvement": 0.6053046394540129,
+        "t25_improvement": 0.1510837734096614,
+        "t50_improvement": 0.23666446707361,
+        "t100_improvement": 0.3579659237738704,
+        "hard_failure_improvement": 0.350941376256631,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.16822581369322984,
+        "switch_rate": 0.46194712577438407,
+        "collision_delta_vs_floor_005": 0.018672731941744014
+      }
+    },
+    "best_deployable_teacher_dependent_candidate": {
+      "family": "current_composite_tail_policy",
+      "family_type": "teacher_dependent_bounded_or_current",
+      "source": "cached_verified_policy_fresh_eval",
+      "candidate_count": 1,
+      "val_eligible_count": 1,
+      "stage42e_test_deployable": true,
+      "strict_deployable": true,
+      "failure_reasons": [],
+      "test_metrics": {
+        "rows": 55528,
+        "all_improvement": 0.2102513255185352,
+        "t10_improvement": 0.4810525302753197,
+        "t25_improvement": 0.10635705713395971,
+        "t50_improvement": 0.13652231450154184,
+        "t100_improvement": 0.14694086716388166,
+        "hard_failure_improvement": 0.20384916307933942,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1006325590804755,
+        "switch_rate": 0.3410171445036738,
+        "alpha_mean": 0.29906641694280367,
+        "alpha_positive_rate": 0.3410171445036738,
+        "collision_delta_vs_floor_005": -0.0038702813749587617,
+        "smoothness_jagged_delta": 0.0
+      }
+    },
+    "partial_t50_relaxation_supported": true,
+    "partial_t50_target_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "partial_t50_improvement": 0.28969780582672955,
+    "partial_t50_easy": -0.21406723960013185,
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "deployment_decision": "keep_stage37_teacher_floor_globally_allow_only_validation_backed_partial_t50_relaxation",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "fresh_matrix_no_training": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_hc_gate": {
+    "source": "fresh_stage42_hc_floor_alternative_gate_stress",
+    "gates": {
+      "required_inputs_passed": true,
+      "floor_free_gate_families_evaluated": true,
+      "teacher_dependent_gate_families_evaluated": true,
+      "floor_free_positive_but_unsafe_detected": true,
+      "floor_free_deployable_none": true,
+      "teacher_dependent_deployable_exists": true,
+      "best_floor_free_failure_reason_recorded": true,
+      "partial_t50_relaxation_preserved": true,
+      "global_floor_removal_blocked": true,
+      "floor_free_neural_not_deployable": true,
+      "no_future_test_or_central_velocity_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_hc_floor_alternative_gate_stress_pass"
+  },
+  "doc_refresh_status": [
+    {
+      "path": "README_RESULTS.md",
+      "exists": true,
+      "contains_stage42_hc": true,
+      "blocks_floor_free": true
+    },
+    {
+      "path": "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+      "exists": true,
+      "contains_stage42_hc": true,
+      "blocks_floor_free": true
+    },
+    {
+      "path": "README_M3W_USER_DETAILED_SUMMARY_ZH.md",
+      "exists": true,
+      "contains_stage42_hc": true,
+      "blocks_floor_free": true
+    },
+    {
+      "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
+      "exists": true,
+      "contains_stage42_hc": true,
+      "blocks_floor_free": true
+    }
+  ]
+}
