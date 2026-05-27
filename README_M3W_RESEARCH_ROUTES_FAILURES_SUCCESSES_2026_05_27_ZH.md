@@ -613,3 +613,15 @@ metric-time calibrated, foundation-scale, or ungated neural world model.
 - A-F objective coverage is preserved as: A partial/blocked, B/C/E pass-with-boundary, D mixed, F pass-with-open-gaps.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HX_PAPER_PACKAGE_INTEGRITY:END -->
+
+<!-- STAGE42_HY_SOURCE_LOCAL_PATH_PREFILL:START -->
+## Stage42-HY Source Local Path Prefill
+
+- source: `fresh_stage42_hy_source_local_path_prefill_from_local_files`
+- role: reduce source/legal blocker by pre-filling local path and parseability candidates without claiming legal conversion.
+- gate: `19 / 19`; verdict `stage42_hy_source_local_path_prefill_pass`.
+- targets audited: `5`; local path candidates found: `5`.
+- estimated after-terms t50/t100 windows preserved: `10060` / `5696`.
+- Remaining blocker: user must confirm official terms, allowed use, acceptance date, local path, and source identity before guarded conversion.
+- Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
+<!-- STAGE42_HY_SOURCE_LOCAL_PATH_PREFILL:END -->

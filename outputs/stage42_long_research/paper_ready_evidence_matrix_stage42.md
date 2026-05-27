@@ -114,3 +114,12 @@ This section refines the paper evidence matrix by separating replay evidence str
 - A-F evidence status remains intentionally nuanced: A is blocked for source/metric-time, D is mixed, and F is package-ready with open gaps.
 - T3 row-level replay evidence from Stage42-HW is linked, but the claim remains raw-frame/dataset-local 2.5D.
 <!-- STAGE42_HX_PAPER_PACKAGE_INTEGRITY:END -->
+
+<!-- STAGE42_HY_SOURCE_LOCAL_PATH_PREFILL:START -->
+## Stage42-HY Source Local Path Prefill
+
+- HY pre-fills local path candidates for source terms targets, reducing but not closing A-stage source/legal blockers.
+- gate: `19 / 19`.
+- local path candidates found: `5` / `5`.
+- No terms were accepted, no conversion/evaluation happened, and metric/seconds claims remain blocked.
+<!-- STAGE42_HY_SOURCE_LOCAL_PATH_PREFILL:END -->
