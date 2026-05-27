@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EA dual-domain group-consistency statistical evidence",
-  "current_verdict": "stage42_ea_dual_domain_group_consistency_statistics_pass",
+  "current_stage": "Stage42-EB post-EA paper evidence refresh",
+  "current_verdict": "stage42_eb_post_ea_paper_refresh_pass",
   "m3w_target_work_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_dr_reports",
     "path": "README_M3W_TARGET_WORK_SUMMARY_ZH.md",
@@ -19762,6 +19762,162 @@
       "stage5c_executed": false,
       "smc_enabled": false,
       "ungated_full_waypoint_deployable": false
+    }
+  },
+  "stage42_eb_post_ea_paper_refresh": {
+    "source": "fresh_paper_refresh_from_stage42_dy_dz_ea",
+    "report": "outputs/stage42_long_research/paper_package_post_ea_refresh_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_eb_gate.md",
+    "verdict": "stage42_eb_post_ea_paper_refresh_pass",
+    "gates": "12/12",
+    "paper_refresh_summary": {
+      "source": "fresh_paper_refresh_from_stage42_dy_dz_ea",
+      "loss_family_boundary": {
+        "any_loss_family_promotable": false,
+        "best_loss_family_candidate": "proximity_occupancy_loss",
+        "best_loss_family_all": 0.25506106152262753,
+        "best_loss_family_t50": 0.22136644201311806,
+        "best_loss_family_hard": 0.2373927398811264,
+        "claim": "Scalar loss-family weighting is not enough for primary full-waypoint promotion."
+      },
+      "explicit_group_consistency": {
+        "source_level_promoted": true,
+        "all": 0.24715658317833844,
+        "t50": 0.2236298792899738,
+        "t100_raw_frame_diagnostic": 0.1434611214781808,
+        "hard": 0.23887420070464105,
+        "easy": -0.2563085406508494,
+        "delta_all_vs_stage42_am": 0.001368197579674879,
+        "delta_hard_vs_stage42_am": 0.0013803223197202952,
+        "near005_base": 0.019364490707573012,
+        "near005_final": 0.01382274853554722,
+        "claim": "Explicit group/physical consistency over predicted all-agent full-waypoint rollouts is the supported source-level repair route."
+      },
+      "dual_domain_support": {
+        "positive_safe_domains": 2,
+        "ucy_all": 0.3558083715508603,
+        "ucy_t50": 0.22720558058086227,
+        "ucy_hard": 0.33784766757762896,
+        "trajnet_all": 0.32071530205574905,
+        "trajnet_t50": 0.2818040039056995,
+        "trajnet_hard": 0.3128676754267107,
+        "claim": "UCY validation support turns group consistency from a TrajNet-dominant policy into a UCY+TrajNet dual-domain source-level policy."
+      },
+      "statistical_evidence": {
+        "bootstrap_n": 2000,
+        "ci_positive_safe_domains": 2,
+        "global_all_ci": {
+          "low": 0.32561590986908956,
+          "mid": 0.3289486467309499,
+          "high": 0.33230875062193826,
+          "n": 47458,
+          "bootstrap_n": 2000
+        },
+        "global_t50_ci": {
+          "low": 0.2653276586221581,
+          "mid": 0.26984190379140555,
+          "high": 0.2744262798482424,
+          "n": 11538,
+          "bootstrap_n": 2000
+        },
+        "global_hard_ci": {
+          "low": 0.31511510693704503,
+          "mid": 0.3189281222722403,
+          "high": 0.32263423203968705,
+          "n": 35076,
+          "bootstrap_n": 2000
+        },
+        "global_easy_ci": {
+          "low": -0.3296098469948161,
+          "mid": -0.3209696348033007,
+          "high": -0.3128132004361849,
+          "n": 11192,
+          "bootstrap_n": 2000
+        },
+        "ucy_all_ci": {
+          "low": 0.34698323393445824,
+          "mid": 0.35590238438215405,
+          "high": 0.3648767314486125,
+          "n": 9540,
+          "bootstrap_n": 2000
+        },
+        "ucy_t50_ci": {
+          "low": 0.21378395919812104,
+          "mid": 0.22754431185845797,
+          "high": 0.24180207367830855,
+          "n": 2340,
+          "bootstrap_n": 2000
+        },
+        "ucy_hard_ci": {
+          "low": 0.3283727068909241,
+          "mid": 0.3378534646292015,
+          "high": 0.3476133732716153,
+          "n": 7389,
+          "bootstrap_n": 2000
+        },
+        "trajnet_all_ci": {
+          "low": 0.31717499688785056,
+          "mid": 0.3207579138142264,
+          "high": 0.32413665625991983,
+          "n": 37918,
+          "bootstrap_n": 2000
+        },
+        "trajnet_t50_ci": {
+          "low": 0.2772435358408893,
+          "mid": 0.2817802246672905,
+          "high": 0.2860729694340778,
+          "n": 9198,
+          "bootstrap_n": 2000
+        },
+        "trajnet_hard_ci": {
+          "low": 0.30898178888065136,
+          "mid": 0.3129194432194536,
+          "high": 0.3166415538126789,
+          "n": 27687,
+          "bootstrap_n": 2000
+        },
+        "near005_delta_global_ci": {
+          "low": -0.008554932782670993,
+          "mid": -0.0076277972101647775,
+          "high": -0.0067217329006700665,
+          "n": 47458,
+          "bootstrap_n": 2000
+        },
+        "claim": "Dual-domain group-consistency evidence is now bootstrap-supported on global, UCY, and TrajNet slices."
+      },
+      "paper_verdict": {
+        "paper_ready_evidence_package_strengthened": true,
+        "full_waypoint_group_consistency_claim_allowed": true,
+        "dual_domain_bootstrap_claim_allowed": true,
+        "loss_family_primary_claim_allowed": false,
+        "goal_scene_main_claim_allowed": false,
+        "neighbor_interaction_main_claim_allowed": false,
+        "ungated_full_waypoint_deployment_allowed": false,
+        "global_primary_full_waypoint_replacement_claim_allowed": false,
+        "metric_seconds_claim_allowed": false,
+        "foundation_claim_allowed": false,
+        "stage5c_execution_allowed": false,
+        "smc_allowed": false
+      }
+    },
+    "paper_files": [
+      "outputs/stage42_long_research/paper_outline_stage42.md",
+      "outputs/stage42_long_research/method_draft_stage42.md",
+      "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "outputs/stage42_long_research/model_card_stage42.md",
+      "outputs/stage42_long_research/data_card_stage42.md",
+      "outputs/stage42_long_research/reproducibility_stage42.md",
+      "outputs/stage42_long_research/a_journal_gap_stage42.md"
+    ],
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
     }
   }
 }

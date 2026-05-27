@@ -253,3 +253,40 @@ python3 -m pytest tests
 - Do not claim Stage5C execution.
 - Do not claim SMC readiness.
 <!-- STAGE42_DR_POST_DQ_PAPER_REFRESH:END -->
+
+<!-- STAGE42_EB_POST_EA_PAPER_REFRESH:START -->
+## Stage42-EB Post-EA Paper Evidence Refresh
+
+- source: `fresh_paper_refresh_from_stage42_dy_dz_ea`
+- role: synchronize paper-ready artifacts after explicit physical consistency and dual-domain bootstrap evidence.
+- This is a paper-package update from fresh Stage42-DY/DZ/EA evidence, not new training and not a threshold search.
+
+### What Changed After EA
+
+- scalar loss-family promotion remains blocked: best `proximity_occupancy_loss` all/t50/hard `25.51%` / `22.14%` / `23.74%`.
+- explicit group-consistency is source-level promoted: all/t50/t100 raw/hard `24.72%` / `22.36%` / `14.35%` / `23.89%`.
+- group-consistency delta vs Stage42-AM all/hard: `0.14%` / `0.14%`.
+- near@0.05 is repaired from `1.94%` to `1.38%` in the DY checkpoint.
+
+### Dual-Domain Evidence
+
+- positive safe domains: `2`.
+- UCY all/t50/hard: `35.58%` / `22.72%` / `33.78%`.
+- TrajNet all/t50/hard: `32.07%` / `28.18%` / `31.29%`.
+
+### Bootstrap Evidence
+
+- bootstrap_n: `2000`.
+- global all/t50/hard CI: `[32.56%, 33.23%]` / `[26.53%, 27.44%]` / `[31.51%, 32.26%]`; easy degradation CI `[-32.96%, -31.28%]`.
+- UCY all/t50/hard CI: `[34.70%, 36.49%]` / `[21.38%, 24.18%]` / `[32.84%, 34.76%]`.
+- TrajNet all/t50/hard CI: `[31.72%, 32.41%]` / `[27.72%, 28.61%]` / `[30.90%, 31.66%]`.
+- near@0.05 final-base delta CI: `[-0.86%, -0.67%]`.
+
+### Updated Paper Claim Boundary
+
+- Supported: protected source-level group-consistency full-waypoint dynamics with UCY+TrajNet bootstrap-backed raw-frame evidence.
+- Supported: explicit physical/group-consistency as a source-level full-waypoint repair route.
+- Not supported as main claims: scalar loss weighting, goal/scene context, and neighbor/interaction context under current protocols.
+- Not supported: ungated full-waypoint deployment or global primary full-waypoint replacement.
+- Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
+<!-- STAGE42_EB_POST_EA_PAPER_REFRESH:END -->
