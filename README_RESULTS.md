@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## 最新用户请求总结文件
+
+本轮按用户要求，把“在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”统一刷新到：
+
+`/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
+
+该 README 现在纳入 Stage26、Stage37、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU module ledger、Stage42-GH calibrated post-confirmation subset plan、Stage42-GI paper claim evidence refresh。当前结论保持严格：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新可写结论是：成功主线为 cost-aware selector、causal-history/goal-prototype safe selector、safe-switch、teacher floor、group-consistency full-waypoint；失败或不可主张主贡献的路线包括 hard-class selector、JEPA downstream、unprotected Transformer/Hybrid、latent distance alignment、ordinary residual/correction、scene/goal 与 neighbor/interaction 独立主 claim。Post-confirmation calibrated subset 仍是 candidate plan：restricted candidates after terms = `5`，ready now = `0`，不是 permission、converted data 或 evaluated result。
+
 ## M3W 单文件详细总结
 
 本轮按用户要求刷新了更明确的单文件中文总结：

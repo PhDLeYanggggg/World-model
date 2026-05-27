@@ -2,14 +2,51 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FP 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-GI 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
-交付版单文件总账：`README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md`
+## 本次交付版摘要
 
-这份新 README 是本文件的更清晰整理版，按路线、失败原因、成功证据、当前 best deployable、claim 边界和下一步 blocker 汇总，适合先读。
+你要的总结已经集中写在本文件中。最短结论如下：
 
-## 0. 一句话结论
+```text
+当前 M3W 的真实质量：
+  protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
+
+当前不是：
+  true 3D world model
+  large-scale foundation world model
+  metric / meter-level predictor
+  seconds-level long-horizon predictor
+  ungated neural dynamics deployable model
+  Stage5C latent generative execution
+  SMC-ready system
+
+当前 best deployable 分层：
+  SDD: Stage26 cost-aware selector
+  External t+50: Stage37 causal-history + goal-prototype safe selector
+  Protected source/domain/full-waypoint: Stage42-FH/FI frozen policy family
+  Paper/evidence boundary: Stage42-FU/FV/FW/FX/FY/GH/GI claim guards
+```
+
+最重要的进展链：
+
+1. **Stage26 在 SDD pixel/raw-frame 上成功。**
+   Cost-aware selector 达到 t+50 约 `+14.58%`、hard/failure 约 `+11.23%`、easy degradation 约 `+1.81%`。这证明 hard-class selector 失败后，expected-FDE / regret-aware / fallback-safe selector 是正确方向。
+
+2. **Stage37 修复 external t+50 transfer。**
+   Past-only history window、scene-agnostic goal prototypes、gain/harm/safety gate 让 external 迁移从 t50=0 推进到 all `+13.48%`、t+50 `+8.46%`、t50 bootstrap CI `[+7.69%, +9.15%]`、hard/failure `+15.54%`、easy degradation `0.041%`、gate `16 / 16`。
+
+3. **Stage42-FH/FI 把 source/domain protected policy 固化。**
+   FH 通过 UCY train-only internal validation 修复 UCY weak-domain：all/t50/t100raw/hard 为 `34.98% / 28.97% / 20.57% / 33.10%`，TrajNet 与 UCY 都 positive-safe。FI 冻结并 exact replay：policy hash `f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6`，replay diff `0`，2000-bootstrap CI low all/t50/t100raw/hard 为 `34.62% / 28.46% / 19.96% / 32.73%`，gate `25 / 25`。
+
+4. **Stage42-FU/GI 约束论文 claim。**
+   Stage42-FU module ledger 允许主 claim 的模块只有：`history`、`domain_expert`、`safe_switch`、`teacher_floor`、`group_consistency_full_waypoint`、`full_waypoint_shape`、`endpoint_bridge`。被阻止作为主 claim 的模块是：`scene_goal`、`neighbor_interaction`、`JEPA`、`Transformer`。Stage42-GI 刷新 paper claim evidence audit，gate `25 / 25`，明确 post-confirmation calibrated subset 只是候选计划，不是 permission、conversion 或 evaluation。
+
+5. **Stage42-GH 给出下一步可校准数据路线，但不能写成已完成。**
+   GH 识别 post-confirmation calibrated ETH/UCY subset candidates：restricted candidates after terms = `5`，ready now = `0`，after-terms calibrated t50/t100 windows = `10060 / 5696`，domains = `ETH_UCY, UCY`。这只是用户确认 terms/path/source identity 后的候选图，不是下载、转换、评估或 metric/seconds claim。
+
+## 一句话结论
 
 M3W 已经从早期 SDD-only selector scaffold，推进到一个有 SDD 与 external top-down dataset-local raw-frame 证据的 **protected 2.5D multi-agent world-state candidate**。
 
