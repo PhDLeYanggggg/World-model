@@ -2990,3 +2990,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - guarded slices: `{'TrajNet|100': {'source': 'fresh_validation_only_domain_t100_easy_guard', 'domain': 'TrajNet', 'val_rows': 1160, 'test_rows': 5608, 'val_all_improvement': 0.23260462520508085, 'val_easy_degradation': 0.017118176622190173, 'threshold': 0.0, 'keep': False, 'reason': 'validation_easy_degradation_above_threshold_or_nonpositive_gain'}}`; kept slices: `{'UCY|100': {'source': 'fresh_validation_only_domain_t100_easy_guard', 'domain': 'UCY', 'val_rows': 1440, 'test_rows': 1440, 'val_all_improvement': 0.27564518723015075, 'val_easy_degradation': -0.021788147627511134, 'threshold': 0.0, 'keep': True}}`.
 - claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HR_GROUP_CONSISTENCY_T100_EASY_GUARD:END -->
+
+<!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:START -->
+## Stage42-HS Frozen T100 Easy Guard
+
+- source: `cached_verified_stage42_hr_policy_freeze_from_fresh_artifact`
+- role: freeze Stage42-HR validation-only domain|t100 easy guard as a lightweight policy/replay artifact.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json`
+- policy hash: `8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e`
+- gate: `27 / 27`; verdict `stage42_hs_t100_easy_guard_freeze_pass`.
+- replay: decision table exact `True`, metric summary exact `True`.
+- guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- t100 easy degradation after guard: `-0.31%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; t100 remains raw-frame diagnostic; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:END -->

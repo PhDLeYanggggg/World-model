@@ -383,3 +383,17 @@ Not deployable:
 ## 9. 最终一句话
 
 M3W 已经做出了有价值的真实路线探索：从 SDD cost-aware selector，到 external t50 repaired deployable selector，再到 protected neural / full-waypoint / group-consistency world-state candidate。失败也很清楚：JEPA、raw latent alignment、hard-class selector、ordinary residual、unprotected Transformer/Hybrid、scene/goal/neighbor 独立贡献都没有稳定站住。当前项目质量是 **强 protected 2.5D multi-agent world-state candidate**，不是 true 3D，也不是 foundation；下一步要从 protected candidate 继续推进 source/time/geometry 闭环和更强结构化 world dynamics。
+
+<!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:START -->
+## Stage42-HS Frozen T100 Easy Guard
+
+- source: `cached_verified_stage42_hr_policy_freeze_from_fresh_artifact`
+- role: freeze Stage42-HR validation-only domain|t100 easy guard as a lightweight policy/replay artifact.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json`
+- policy hash: `8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e`
+- gate: `27 / 27`; verdict `stage42_hs_t100_easy_guard_freeze_pass`.
+- replay: decision table exact `True`, metric summary exact `True`.
+- guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- t100 easy degradation after guard: `-0.31%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; t100 remains raw-frame diagnostic; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:END -->

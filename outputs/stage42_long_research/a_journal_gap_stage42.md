@@ -1276,3 +1276,17 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - blocked after-terms t50/t100 windows retained: `14457` / `7129`.
 - conclusion: the restricted metric/time execution path is now guarded by HM ready-candidate validation; current conversion remains refused until user-confirmed terms/source identity/path are supplied.
 <!-- STAGE42_HN_RESTRICTED_METRIC_TIME_CONVERSION_QUEUE_V2:END -->
+
+<!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:START -->
+## Stage42-HS Frozen T100 Easy Guard
+
+- source: `cached_verified_stage42_hr_policy_freeze_from_fresh_artifact`
+- role: freeze Stage42-HR validation-only domain|t100 easy guard as a lightweight policy artifact.
+- policy artifact: `outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json`
+- policy hash: `8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e`
+- replay: decision table exact `True`, metric summary exact `True`.
+- guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- t100 easy degradation after guard: `-0.31%`.
+- t100 remains raw-frame diagnostic; this is not metric/seconds-level evidence.
+- Stage5C remains false; SMC remains false.
+<!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:END -->
