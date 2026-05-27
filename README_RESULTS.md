@@ -6049,3 +6049,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 结论：external/protected full-waypoint/group-consistency evidence 已经很强，但 full objective 尚未完成。metric/time conversion 仍因 ready candidates = 0 被阻塞；JEPA、scene/goal、neighbor/interaction 独立主 claim 仍不支持；Stage5C 与 SMC 仍禁止。
 
 <!-- STAGE42_HO_LONG_OBJECTIVE_AUDIT:END -->
+
+<!-- STAGE42_HP_GROUP_CONSISTENCY_BREAKDOWN:START -->
+## Stage42-HP Group-Consistency Source Breakdown
+
+- source: `fresh_run_group_consistency_source_breakdown`
+- role: break down frozen group-consistency full-waypoint policy by domain/source/scene/horizon/subset.
+- gate: `23 / 23`; verdict `stage42_hp_group_consistency_breakdown_pass`.
+- rows: `47458`; domains `{'TrajNet': 37918, 'UCY': 9540}`.
+- ADE vs train-horizon causal floor: all `24.72%`, t50 `22.36%`, t100 raw `14.35%`, hard `23.89%`, easy `-25.63%`.
+- FDE: all `22.29%`, t50 `22.57%`, t100 raw `12.85%`.
+- group safety near@0.05 delta vs base: `-0.55%`.
+- weak slices recorded: `6`; top examples `['domain:UCY', 'source:UCY::TrajNet/Train/crowds/crowds_zara03.txt', 'scene:UCY::UCY_crowds', 'fallback_only', 'horizon:100']`.
+- claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HP_GROUP_CONSISTENCY_BREAKDOWN:END -->
