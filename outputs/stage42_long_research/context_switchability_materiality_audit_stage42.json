@@ -1,0 +1,234 @@
+{
+  "source": "fresh_rerun_stage42_dc_context_switchability_materiality",
+  "stage": "Stage42-EE",
+  "generated_at_utc": "2026-05-27T01:53:35.262802+00:00",
+  "git_commit": "3de43c8",
+  "input_hash": "6007b636bb3f47cf9ed3e21ae61404a3f071a452e6c06d38be69bb3545a82bca",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EE fresh-runs Stage42-DC context switchability and applies a materiality gate.",
+    "目标是防止把微小 context 增量包装成 scene/goal/neighbor/interaction 主贡献。",
+    "future endpoints / waypoints 只作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "dc_rerun": {
+    "source": "fresh_run",
+    "stage42_dc_gate": {
+      "gates": {
+        "source_level_split_used": true,
+        "baseline_family_control_positive": true,
+        "multiple_context_candidates_evaluated": true,
+        "gain_harm_target_used": true,
+        "validation_only_threshold_selection": true,
+        "test_evaluated_once": true,
+        "decision_recorded": true,
+        "no_context_overclaim_if_negative": true,
+        "bootstrap_available": true,
+        "no_leakage_pass": true,
+        "no_metric_seconds_overclaim": true,
+        "true_3d_overclaim_blocked": true,
+        "foundation_overclaim_blocked": true,
+        "stage5c_false": true,
+        "smc_false": true
+      },
+      "passed": 15,
+      "total": 15,
+      "verdict": "stage42_dc_context_switchability_gate_pass"
+    },
+    "selected_context_switchability_policy": {
+      "source": "fresh_run",
+      "selected_candidate": "baseline_plus_knn_graph",
+      "test_metric": {
+        "rows": 47458,
+        "all_improvement": 0.28814146384660755,
+        "t10_improvement": 0.47629831934874767,
+        "t25_improvement": 0.3183830229714819,
+        "t50_improvement": 0.31535142784214254,
+        "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+        "hard_failure_improvement": 0.27623622833705697,
+        "easy_degradation": -0.3265738537676721,
+        "switch_rate": 0.034261873656706986,
+        "harm_over_fallback": -0.1327006330816806
+      },
+      "delta_vs_baseline_family_control": {
+        "all_improvement": 0.0003680600817682622,
+        "t50_improvement": -7.392355340352097e-05,
+        "hard_failure_improvement": 0.00042399040031126933,
+        "easy_degradation": -0.0023880285207875662,
+        "switch_rate": -0.626364364279995
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.2846884893747185,
+          "mid": 0.2881624621108217,
+          "high": 0.2916689172556473,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.3096687584475198,
+          "mid": 0.31550298592514164,
+          "high": 0.3212573378507764,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.272567855004691,
+          "mid": 0.27621081680170817,
+          "high": 0.28002467856376523,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.5057055578557327,
+          "mid": -0.48469842143418684,
+          "high": -0.4640919538332773,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "context_switchability_supported": false,
+      "decision": "context_switchability_not_supported"
+    }
+  },
+  "summary": {
+    "source": "fresh_rerun_stage42_dc_context_switchability_materiality",
+    "material_delta_threshold": 0.01,
+    "selected_candidate": "baseline_plus_knn_graph",
+    "dc_decision": "context_switchability_not_supported",
+    "dc_context_switchability_supported": false,
+    "selected_delta_all": 0.0003680600817682622,
+    "selected_delta_t50": -7.392355340352097e-05,
+    "selected_delta_hard": 0.00042399040031126933,
+    "selected_delta_easy": -0.0023880285207875662,
+    "selected_switch_rate_delta": -0.626364364279995,
+    "material_axes": {
+      "all": false,
+      "t50": false,
+      "hard": false
+    },
+    "material_context_contribution": false,
+    "best_candidate_by_any_delta": {
+      "candidate": "baseline_plus_knn_graph",
+      "all": 0.28814146384660755,
+      "t50": 0.31535142784214254,
+      "hard": 0.27623622833705697,
+      "easy": -0.3265738537676721,
+      "switch_rate": 0.034261873656706986,
+      "delta_all": 0.0003680600817682622,
+      "delta_t50": -7.392355340352097e-05,
+      "delta_hard": 0.00042399040031126933,
+      "delta_easy": -0.0023880285207875662
+    },
+    "candidate_delta_rows": [
+      {
+        "candidate": "baseline_plus_knn_graph",
+        "all": 0.28814146384660755,
+        "t50": 0.31535142784214254,
+        "hard": 0.27623622833705697,
+        "easy": -0.3265738537676721,
+        "switch_rate": 0.034261873656706986,
+        "delta_all": 0.0003680600817682622,
+        "delta_t50": -7.392355340352097e-05,
+        "delta_hard": 0.00042399040031126933,
+        "delta_easy": -0.0023880285207875662
+      },
+      {
+        "candidate": "baseline_plus_graph_history_scalar",
+        "all": 0.28807111271742114,
+        "t50": 0.3153477828061103,
+        "hard": 0.2761551866677653,
+        "easy": -0.32621174331671254,
+        "switch_rate": 0.04313287538455055,
+        "delta_all": 0.00029770895258185437,
+        "delta_t50": -7.756858943575029e-05,
+        "delta_hard": 0.0003429487310195878,
+        "delta_easy": -0.002025918069827992
+      },
+      {
+        "candidate": "baseline_plus_scalar_neighbor",
+        "all": 0.2877734037648393,
+        "t50": 0.31542535139554606,
+        "hard": 0.2758122379367457,
+        "easy": -0.32418582524688455,
+        "switch_rate": 0.003097475662691222,
+        "delta_all": 0.0,
+        "delta_t50": 0.0,
+        "delta_hard": 0.0,
+        "delta_easy": 0.0
+      },
+      {
+        "candidate": "baseline_plus_graph_goal",
+        "all": 0.2876910990197683,
+        "t50": 0.3152636669157275,
+        "hard": 0.27572034060853734,
+        "easy": -0.3238217506250396,
+        "switch_rate": 0.03596864596063888,
+        "delta_all": -8.23047450709824e-05,
+        "delta_t50": -0.00016168447981856904,
+        "delta_hard": -9.189732820835683e-05,
+        "delta_easy": 0.0003640746218449564
+      },
+      {
+        "candidate": "baseline_plus_goal_scene",
+        "all": 0.28747103093937176,
+        "t50": 0.3151819047611544,
+        "hard": 0.27547279907023303,
+        "easy": -0.3237668774651209,
+        "switch_rate": 0.03883433773020355,
+        "delta_all": -0.00030237282546752287,
+        "delta_t50": -0.00024344663439168635,
+        "delta_hard": -0.00033943886651266464,
+        "delta_easy": 0.00041894778176365666
+      }
+    ],
+    "decision": "context_switchability_materiality_blocked",
+    "root_cause": "Gain/harm context switchability can slightly adjust the baseline-family policy, but the best validation-selected test deltas are far below the 1 percentage-point materiality threshold and t50 is not improved.",
+    "next_action": "Do not repeat the current context switchability protocol. If context is revisited, change the target or data support: source-specific calibrated conversion, graph-neural interaction tokens, or full-waypoint group-consistency objectives."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "gain_label_train_only_for_model_fit": true,
+    "validation_only_threshold_selection": true,
+    "test_threshold_tuning": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "context_main_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ee_gate": {
+    "gates": {
+      "dc_fresh_rerun_passed": true,
+      "multiple_context_candidates_checked": true,
+      "materiality_threshold_recorded": true,
+      "selected_delta_recorded": true,
+      "context_materiality_decision_recorded": true,
+      "micro_delta_not_overclaimed": true,
+      "root_cause_written": true,
+      "next_action_written": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_ee_context_switchability_materiality_audit_pass"
+  }
+}

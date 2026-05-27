@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED 证据刷新。
-最近完整测试记录：Stage42-ED 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`703 passed in 31.90s`。
+结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE 证据刷新。
+最近完整测试记录：Stage42-EE 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`705 passed in 32.22s`。
 
 这份 README 是给人的总账。它回答：在 M3W 这个长期目标里到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、现在模型大概是什么质量，以及哪些结论仍然禁止写。
 
@@ -572,3 +572,14 @@ SMC 是否启用：否
 - domains_with_source_cv_after_terms: `['UCY']`; first unblock targets remain UCY and ETH/BIWI terms/path/source identity.
 - boundary: local path and parseability are not legal conversion; metric/seconds, Stage5C, and SMC remain blocked.
 <!-- STAGE42_ED_SOURCE_CONVERSION_UNBLOCKER:END -->
+
+<!-- STAGE42_EE_CONTEXT_SWITCHABILITY_MATERIALITY:START -->
+## Stage42-EE Context Switchability Materiality Audit
+
+- source: `fresh_rerun_stage42_dc_context_switchability_materiality`
+- role: fresh-reruns gain/harm context switchability and applies a 1pp materiality threshold.
+- gate: `12 / 12`; verdict `stage42_ee_context_switchability_materiality_audit_pass`.
+- selected context candidate `baseline_plus_knn_graph` delta all/t50/hard/easy `0.000368` / `-0.000074` / `0.000424` / `-0.002388`.
+- material_context_contribution: `False`; decision `context_switchability_materiality_blocked`.
+- boundary: current context switchability has micro-deltas only, so scene/goal/neighbor/interaction main claims remain blocked under this protocol.
+<!-- STAGE42_EE_CONTEXT_SWITCHABILITY_MATERIALITY:END -->

@@ -1,8 +1,8 @@
 # Stage42-DC Context Switchability / Gain-Harm Gate
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-26T21:15:09.872881+00:00`
-- git_commit: `cfb6c07`
+- generated_at_utc: `2026-05-27T01:53:35.163953+00:00`
+- git_commit: `3de43c8`
 - gate: `15 / 15`
 - verdict: `stage42_dc_context_switchability_gate_pass`
 - decision: `context_switchability_not_supported`

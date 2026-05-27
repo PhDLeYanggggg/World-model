@@ -1,6 +1,6 @@
 {
-  "current_stage": "M3W detailed goal ledger",
-  "current_verdict": "cached_verified_m3w_goal_detailed_summary_written",
+  "current_stage": "Stage42-EE context switchability materiality audit",
+  "current_verdict": "stage42_ee_context_switchability_materiality_audit_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ed_reports",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -20070,6 +20070,121 @@
       "global_seconds_claim_allowed": false,
       "converted_datasets_now": 0,
       "evaluated_datasets_now": 0,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_ee_context_switchability_materiality": {
+    "source": "fresh_rerun_stage42_dc_context_switchability_materiality",
+    "report": "outputs/stage42_long_research/context_switchability_materiality_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ee_gate.md",
+    "verdict": "stage42_ee_context_switchability_materiality_audit_pass",
+    "gates": "12/12",
+    "verification": {
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_context_switchability_materiality_audit.py -> 2 passed in 1.02s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 705 passed in 32.22s"
+    },
+    "summary": {
+      "source": "fresh_rerun_stage42_dc_context_switchability_materiality",
+      "material_delta_threshold": 0.01,
+      "selected_candidate": "baseline_plus_knn_graph",
+      "dc_decision": "context_switchability_not_supported",
+      "dc_context_switchability_supported": false,
+      "selected_delta_all": 0.0003680600817682622,
+      "selected_delta_t50": -7.392355340352097e-05,
+      "selected_delta_hard": 0.00042399040031126933,
+      "selected_delta_easy": -0.0023880285207875662,
+      "selected_switch_rate_delta": -0.626364364279995,
+      "material_axes": {
+        "all": false,
+        "t50": false,
+        "hard": false
+      },
+      "material_context_contribution": false,
+      "best_candidate_by_any_delta": {
+        "candidate": "baseline_plus_knn_graph",
+        "all": 0.28814146384660755,
+        "t50": 0.31535142784214254,
+        "hard": 0.27623622833705697,
+        "easy": -0.3265738537676721,
+        "switch_rate": 0.034261873656706986,
+        "delta_all": 0.0003680600817682622,
+        "delta_t50": -7.392355340352097e-05,
+        "delta_hard": 0.00042399040031126933,
+        "delta_easy": -0.0023880285207875662
+      },
+      "candidate_delta_rows": [
+        {
+          "candidate": "baseline_plus_knn_graph",
+          "all": 0.28814146384660755,
+          "t50": 0.31535142784214254,
+          "hard": 0.27623622833705697,
+          "easy": -0.3265738537676721,
+          "switch_rate": 0.034261873656706986,
+          "delta_all": 0.0003680600817682622,
+          "delta_t50": -7.392355340352097e-05,
+          "delta_hard": 0.00042399040031126933,
+          "delta_easy": -0.0023880285207875662
+        },
+        {
+          "candidate": "baseline_plus_graph_history_scalar",
+          "all": 0.28807111271742114,
+          "t50": 0.3153477828061103,
+          "hard": 0.2761551866677653,
+          "easy": -0.32621174331671254,
+          "switch_rate": 0.04313287538455055,
+          "delta_all": 0.00029770895258185437,
+          "delta_t50": -7.756858943575029e-05,
+          "delta_hard": 0.0003429487310195878,
+          "delta_easy": -0.002025918069827992
+        },
+        {
+          "candidate": "baseline_plus_scalar_neighbor",
+          "all": 0.2877734037648393,
+          "t50": 0.31542535139554606,
+          "hard": 0.2758122379367457,
+          "easy": -0.32418582524688455,
+          "switch_rate": 0.003097475662691222,
+          "delta_all": 0.0,
+          "delta_t50": 0.0,
+          "delta_hard": 0.0,
+          "delta_easy": 0.0
+        },
+        {
+          "candidate": "baseline_plus_graph_goal",
+          "all": 0.2876910990197683,
+          "t50": 0.3152636669157275,
+          "hard": 0.27572034060853734,
+          "easy": -0.3238217506250396,
+          "switch_rate": 0.03596864596063888,
+          "delta_all": -8.23047450709824e-05,
+          "delta_t50": -0.00016168447981856904,
+          "delta_hard": -9.189732820835683e-05,
+          "delta_easy": 0.0003640746218449564
+        },
+        {
+          "candidate": "baseline_plus_goal_scene",
+          "all": 0.28747103093937176,
+          "t50": 0.3151819047611544,
+          "hard": 0.27547279907023303,
+          "easy": -0.3237668774651209,
+          "switch_rate": 0.03883433773020355,
+          "delta_all": -0.00030237282546752287,
+          "delta_t50": -0.00024344663439168635,
+          "delta_hard": -0.00033943886651266464,
+          "delta_easy": 0.00041894778176365666
+        }
+      ],
+      "decision": "context_switchability_materiality_blocked",
+      "root_cause": "Gain/harm context switchability can slightly adjust the baseline-family policy, but the best validation-selected test deltas are far below the 1 percentage-point materiality threshold and t50 is not improved.",
+      "next_action": "Do not repeat the current context switchability protocol. If context is revisited, change the target or data support: source-specific calibrated conversion, graph-neural interaction tokens, or full-waypoint group-consistency objectives."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "context_main_claim_allowed": false,
       "stage5c_executed": false,
       "smc_enabled": false
     }
