@@ -2894,3 +2894,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - cached BL technical t100 safe-positive: `True`; ready now: `False`.
 - conclusion: ETH_UCY source-CV blocker is technically repairable after terms using ETH-Person XML candidates, but conversion/evaluation and metric/seconds claims remain blocked until user-confirmed terms and guarded rerun.
 <!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:END -->
+
+<!-- STAGE42_HL_RESTRICTED_METRIC_TIME_POST_HK_CLAIM_GUARD:START -->
+## Stage42-HL Restricted Metric/Time Post-HK Claim Guard
+
+- source: `fresh_stage42_hl_restricted_metric_time_post_hk_claim_guard`
+- verdict: `stage42_hl_restricted_metric_time_post_hk_claim_guard_pass`
+- gates: `15 / 15`
+- files scanned / violations: `14` / `0`.
+- HK after-terms source support: `5` sources, t50/t100 windows `4397` / `1433`.
+- ready now: `False`; conversion ready targets now: `0`.
+- conclusion: the paper/README package remains claim-safe after HK; ETH_UCY source support is technically repairable after terms, but restricted metric/time conversion/evaluation remains blocked until user confirmation and guarded rerun.
+<!-- STAGE42_HL_RESTRICTED_METRIC_TIME_POST_HK_CLAIM_GUARD:END -->
