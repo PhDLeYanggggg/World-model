@@ -1,0 +1,179 @@
+{
+  "source": "fresh_stage42_hb_teacher_floor_necessity_meta_audit",
+  "stage": "Stage42-HB teacher-floor necessity meta-audit",
+  "generated_at_utc": "2026-05-27T16:02:50.335265+00:00",
+  "git_commit": "da8d07d",
+  "input_hash": "094261f27dd05ebc4987654ac7319ceeb333cf015fd61dea83ec60d9ea905d11",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HB 是 teacher / Stage37 floor necessity meta-audit，不重新训练，不下载，不转换，不调 test threshold。",
+    "Stage5C latent generative 仍未执行，SMC 仍未启用。",
+    "future endpoint / future waypoint 只允许作为监督或评估标签，不允许作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 结果不能写成 global metric 或 true 3D。"
+  ],
+  "input_status": {
+    "stage42_e_safety_floor": {
+      "path": "outputs/stage42_long_research/safety_floor_stage42.json",
+      "source": "fresh_run",
+      "gate_passed": true,
+      "verdict": "stage42_e_safety_floor_research_pass"
+    },
+    "stage42_bw_safety_floor_necessity": {
+      "path": "outputs/stage42_long_research/safety_floor_necessity_audit_stage42.json",
+      "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+      "gate_passed": true,
+      "verdict": "stage42_bw_safety_floor_necessity_audit_pass"
+    },
+    "stage42_gt_floor_relaxation_stress": {
+      "path": "outputs/stage42_long_research/floor_relaxation_safety_stress_stage42.json",
+      "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+      "gate_passed": true,
+      "verdict": "stage42_gt_floor_relaxation_safety_stress_pass"
+    },
+    "stage42_cq_proximity_guard": {
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "source": "fresh_validation_selected_proximity_guard_from_stage42_co_policy",
+      "gate_passed": true,
+      "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+    },
+    "stage42_gz_full_waypoint_claim_guard": {
+      "path": "outputs/stage42_long_research/full_waypoint_claim_guard_stage42.json",
+      "source": "fresh_stage42_gz_full_waypoint_claim_guard",
+      "gate_passed": true,
+      "verdict": "stage42_gz_full_waypoint_claim_guard_pass"
+    },
+    "stage42_ha_full_waypoint_linter": {
+      "path": "outputs/stage42_long_research/full_waypoint_overclaim_linter_stage42.json",
+      "source": "fresh_stage42_ha_full_waypoint_overclaim_linter",
+      "gate_passed": true,
+      "verdict": "stage42_ha_full_waypoint_overclaim_linter_pass"
+    },
+    "m3w_neural_v1_evidence_matrix": {
+      "path": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json",
+      "source": "cached_verified",
+      "gate_passed": true,
+      "verdict": "composite_tail_safe_switch_bounded_neural_dynamics_candidate"
+    }
+  },
+  "floor_taxonomy": {
+    "global_teacher_floor_required": true,
+    "protected_composite_deployable": true,
+    "ungated_endpoint_unsafe": true,
+    "ungated_full_waypoint_unsafe": true,
+    "teacher_raw_not_deployable_due_proximity": true,
+    "partial_t50_floor_relaxation_supported": true,
+    "partial_relaxation_target_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "teacher_floor_context_required": true,
+    "proximity_guard_required_for_safety_sensitive_full_waypoint": true,
+    "full_waypoint_claim_guard_blocks_ungated": true,
+    "full_waypoint_linter_clean": true
+  },
+  "summary": {
+    "source": "fresh_stage42_hb_teacher_floor_necessity_meta_audit",
+    "verdict_short": "teacher_floor_is_core_current_safety_mechanism_partial_t50_relaxation_only",
+    "current_protected_all": 0.2102513255185352,
+    "current_protected_t50": 0.13652231450154184,
+    "current_protected_t100_raw": 0.14694086716388166,
+    "current_protected_hard_failure": 0.20384916307933942,
+    "current_protected_easy": 0.0,
+    "ungated_endpoint_easy": 1.2458611044726973,
+    "ungated_full_waypoint_easy": 1.2458611044726973,
+    "teacher_raw_collision_delta_vs_floor_005": 0.018672731941744014,
+    "partial_t50_relaxation_rows": 11538,
+    "partial_t50_relaxation_improvement": 0.28969780582672955,
+    "partial_t50_relaxation_hard": 0.28969780582672955,
+    "partial_t50_relaxation_easy": -0.21406723960013185,
+    "partial_t50_relaxation_near_collision_delta": -0.007379425459017833,
+    "proximity_guard_all_vs_endpoint": 0.017743597342181783,
+    "proximity_guard_t50_vs_endpoint": 0.010673426149055754,
+    "proximity_guard_hard_vs_endpoint": 0.01929354722729537,
+    "m3w_neural_v1_protected_all": 0.2102513255185352,
+    "m3w_neural_v1_protected_t50": 0.13652231450154184,
+    "m3w_neural_v1_protected_t100_raw": 0.14694086716388166,
+    "m3w_neural_v1_protected_hard": 0.20384916307933942,
+    "m3w_neural_v1_protected_easy": 0.0,
+    "deployment_answer": "Stage37/teacher floor is not just a temporary crutch; it is the current safety floor and rollout-context mechanism. Narrow t50 slices can relax part of the floor only under validation-backed protection.",
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "fresh_meta_audit_no_training": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_hb_gate": {
+    "source": "fresh_stage42_hb_teacher_floor_necessity_meta_audit",
+    "gates": {
+      "required_inputs_loaded_and_passed": true,
+      "protected_current_positive_easy_safe": true,
+      "ungated_neural_unsafe_detected": true,
+      "teacher_raw_proximity_warning_detected": true,
+      "teacher_floor_required_recorded": true,
+      "partial_t50_relaxation_supported": true,
+      "partial_relaxation_not_global_removal": true,
+      "floor_free_neural_not_deployable": true,
+      "proximity_guard_required": true,
+      "full_waypoint_claim_guard_blocks_ungated": true,
+      "full_waypoint_linter_clean": true,
+      "m3w_protected_candidate_positive": true,
+      "no_future_test_or_central_velocity_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage42_hb_teacher_floor_necessity_meta_audit_pass"
+  },
+  "doc_refresh_status": [
+    {
+      "path": "README_RESULTS.md",
+      "exists": true,
+      "contains_stage42_hb": true,
+      "blocks_floor_free": true
+    },
+    {
+      "path": "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+      "exists": true,
+      "contains_stage42_hb": true,
+      "blocks_floor_free": true
+    },
+    {
+      "path": "README_M3W_USER_DETAILED_SUMMARY_ZH.md",
+      "exists": true,
+      "contains_stage42_hb": true,
+      "blocks_floor_free": true
+    },
+    {
+      "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
+      "exists": true,
+      "contains_stage42_hb": true,
+      "blocks_floor_free": true
+    }
+  ]
+}

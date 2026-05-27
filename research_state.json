@@ -1,6 +1,6 @@
 {
-  "current_stage": "M3W user detailed summary refresh",
-  "current_verdict": "m3w_user_detailed_summary_refreshed_tests_passed",
+  "current_stage": "Stage42-HB teacher-floor necessity meta-audit",
+  "current_verdict": "stage42_hb_teacher_floor_necessity_meta_audit_pass",
   "m3w_work_attempts_failures_successes_readme_current": {
     "source": "cached_verified_summary_from_stage18_to_stage42_gy_plus_current_user_request_refresh",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
@@ -31126,6 +31126,77 @@
       "json_load": ".venv-pytorch/bin/python -m json.tool research_state.json -> passed",
       "pytest": ".venv-pytorch/bin/python -m pytest tests -> 948 passed in 98.63s",
       "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 948 passed in 98.63s"
+    }
+  },
+  "stage42_hb_teacher_floor_necessity_meta_audit": {
+    "source": "fresh_stage42_hb_teacher_floor_necessity_meta_audit",
+    "report": "outputs/stage42_long_research/teacher_floor_necessity_meta_audit_stage42.md",
+    "json": "outputs/stage42_long_research/teacher_floor_necessity_meta_audit_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_hb_gate.md",
+    "verdict": "stage42_hb_teacher_floor_necessity_meta_audit_pass",
+    "gates": "16/16",
+    "summary": {
+      "source": "fresh_stage42_hb_teacher_floor_necessity_meta_audit",
+      "verdict_short": "teacher_floor_is_core_current_safety_mechanism_partial_t50_relaxation_only",
+      "current_protected_all": 0.2102513255185352,
+      "current_protected_t50": 0.13652231450154184,
+      "current_protected_t100_raw": 0.14694086716388166,
+      "current_protected_hard_failure": 0.20384916307933942,
+      "current_protected_easy": 0.0,
+      "ungated_endpoint_easy": 1.2458611044726973,
+      "ungated_full_waypoint_easy": 1.2458611044726973,
+      "teacher_raw_collision_delta_vs_floor_005": 0.018672731941744014,
+      "partial_t50_relaxation_rows": 11538,
+      "partial_t50_relaxation_improvement": 0.28969780582672955,
+      "partial_t50_relaxation_hard": 0.28969780582672955,
+      "partial_t50_relaxation_easy": -0.21406723960013185,
+      "partial_t50_relaxation_near_collision_delta": -0.007379425459017833,
+      "proximity_guard_all_vs_endpoint": 0.017743597342181783,
+      "proximity_guard_t50_vs_endpoint": 0.010673426149055754,
+      "proximity_guard_hard_vs_endpoint": 0.01929354722729537,
+      "m3w_neural_v1_protected_all": 0.2102513255185352,
+      "m3w_neural_v1_protected_t50": 0.13652231450154184,
+      "m3w_neural_v1_protected_t100_raw": 0.14694086716388166,
+      "m3w_neural_v1_protected_hard": 0.20384916307933942,
+      "m3w_neural_v1_protected_easy": 0.0,
+      "deployment_answer": "Stage37/teacher floor is not just a temporary crutch; it is the current safety floor and rollout-context mechanism. Narrow t50 slices can relax part of the floor only under validation-backed protection.",
+      "global_floor_removal_allowed": false,
+      "floor_free_neural_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "floor_taxonomy": {
+      "global_teacher_floor_required": true,
+      "protected_composite_deployable": true,
+      "ungated_endpoint_unsafe": true,
+      "ungated_full_waypoint_unsafe": true,
+      "teacher_raw_not_deployable_due_proximity": true,
+      "partial_t50_floor_relaxation_supported": true,
+      "partial_relaxation_target_slices": [
+        "TrajNet|50",
+        "UCY|50"
+      ],
+      "global_floor_removal_allowed": false,
+      "floor_free_neural_deployable": false,
+      "teacher_floor_context_required": true,
+      "proximity_guard_required_for_safety_sensitive_full_waypoint": true,
+      "full_waypoint_claim_guard_blocks_ungated": true,
+      "full_waypoint_linter_clean": true
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "global_floor_removal_allowed": false,
+      "floor_free_neural_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_teacher_floor_necessity_meta_audit.py -> 3 passed in 0.74s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 951 passed in 108.91s"
     }
   }
 }

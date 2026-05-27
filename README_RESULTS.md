@@ -5840,3 +5840,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Endpoint/full-waypoint, ungated full-waypoint, group/neighbor independent-main, metric/seconds, Stage5C and SMC overclaims were scanned.
 - No unsupported full-waypoint overclaim lines were found.
 <!-- STAGE42_HA_FULL_WAYPOINT_OVERCLAIM_LINTER:END -->
+
+<!-- STAGE42_HB_TEACHER_FLOOR_NECESSITY_META_AUDIT:START -->
+## Stage42-HB Teacher-Floor Necessity Meta-Audit
+
+- source: `fresh_stage42_hb_teacher_floor_necessity_meta_audit`
+- gate: `16 / 16`
+- verdict: `stage42_hb_teacher_floor_necessity_meta_audit_pass`
+- Direct conclusion: Stage37 / teacher floor is the current safety mechanism and rollout-context floor, not merely a disposable crutch.
+- Protected current all/t50/t100raw/hard/easy: `21.03%` / `13.65%` / `14.69%` / `20.38%` / `0.00%`.
+- Ungated endpoint/full-waypoint easy degradation remains unsafe: `124.59%` / `124.59%`.
+- Narrow t50 floor relaxation is supported only on selected slices: rows `11538`, t50 `28.97%`, hard `28.97%`, easy `-21.41%`.
+- Global floor removal and floor-free neural deployment remain false.
+- No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
+<!-- STAGE42_HB_TEACHER_FLOOR_NECESSITY_META_AUDIT:END -->
