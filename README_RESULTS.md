@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_ROUTES_FAILURES_SUCCESSES_2026_05_27_ZH.md`
 
-这是 `cached_verified_summary`，汇总 Stage18 到 Stage42-HU 的已有报告/gate/model card/data card/README/research_state；本次不是新训练、下载、转换或评估。它详细总结了长期目标内尝试过的路线、失败原因、成功证据、当前 best deployable 分层，以及严格 claim boundary。最新补入 Stage42-HR/HS/HT/HU：validation-only t100 easy guard 修复 HQ 的 t100 easy harm，HR 后 all/t50/t100raw/hard 为 `+27.72% / +26.99% / +6.79% / +25.93%`，t100 easy degradation `-0.31%`，HS 冻结复放 exact、gate `27 / 27`，HT runtime policy gate `19 / 19`；HU gate `17 / 17` 并明确真实 row-level batch replay 仍 `not_run`，blocker 是缺少 `candidate/floor/selected` rollout arrays。t100 仍是 raw-frame diagnostic，不能写成 seconds-level；Stage5C 未执行，SMC 未启用。
+这是 `cached_verified_summary`，汇总 Stage18 到 Stage42-HV 的已有报告/gate/model card/data card/README/research_state；本次不是新训练、下载、转换或评估。它详细总结了长期目标内尝试过的路线、失败原因、成功证据、当前 best deployable 分层，以及严格 claim boundary。最新补入 Stage42-HR/HS/HT/HU/HV：validation-only t100 easy guard 修复 HQ 的 t100 easy harm，HR/HV replay 后 all/t50/t100raw/hard 为 `+27.72% / +26.99% / +6.79% / +25.93%`，t100 easy degradation `-0.31%`，HS 冻结复放 exact、gate `27 / 27`，HT runtime policy gate `19 / 19`，HU gate `17 / 17` 定位 row-level blocker，HV 重建本地 row-level replay cache 并对 `47,458` test rows 完成 exact batch replay、gate `28 / 28`。t100 仍是 raw-frame diagnostic，不能写成 seconds-level；Stage5C 未执行，SMC 未启用。
 
 按用户要求，已把“在这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的当前主 README：
 
@@ -6142,3 +6142,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - inherited guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HU_T100_RUNTIME_BATCH_REPLAY_SUFFICIENCY:END -->
+
+<!-- STAGE42_HV_T100_RUNTIME_ROW_CACHE_REPLAY:START -->
+## Stage42-HV T100 Runtime Row-Cache Batch Replay
+
+- source: `fresh_or_cached_row_cache_reconstruction_and_runtime_batch_replay_from_stage42_hr_ht`
+- role: close the Stage42-HU blocker by reconstructing a local row-level cache and replaying the frozen Stage42-HT runtime policy over full test rows.
+- gate: `28 / 28`; verdict `stage42_hv_t100_runtime_row_cache_replay_pass`.
+- cache path: `data/stage42_t100_runtime_replay_cache/stage42hv_t100_runtime_replay_test_cache.npz` (derived local data; not committed).
+- cache hash: `166fdede23d8f14bbf6eb4c0398b32b9c90d489a03d3e6e9acdbc608db5ed127`.
+- runtime replay rows/domains/t100 rows: `47458` / `{'TrajNet': 37918, 'UCY': 9540}` / `7048`.
+- replay all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- t100 easy degradation: `-0.31%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HV_T100_RUNTIME_ROW_CACHE_REPLAY:END -->

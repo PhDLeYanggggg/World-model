@@ -423,3 +423,17 @@ M3W 已经做出了有价值的真实路线探索：从 SDD cost-aware selector�
 - inherited guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HU_T100_RUNTIME_BATCH_REPLAY_SUFFICIENCY:END -->
+
+<!-- STAGE42_HV_T100_RUNTIME_ROW_CACHE_REPLAY:START -->
+## Stage42-HV T100 Runtime Row-Cache Batch Replay
+
+- source: `fresh_or_cached_row_cache_reconstruction_and_runtime_batch_replay_from_stage42_hr_ht`
+- role: close the Stage42-HU blocker by reconstructing a local row-level cache and replaying the frozen Stage42-HT runtime policy over full test rows.
+- gate: `28 / 28`; verdict `stage42_hv_t100_runtime_row_cache_replay_pass`.
+- cache path: `data/stage42_t100_runtime_replay_cache/stage42hv_t100_runtime_replay_test_cache.npz` (derived local data; not committed).
+- cache hash: `166fdede23d8f14bbf6eb4c0398b32b9c90d489a03d3e6e9acdbc608db5ed127`.
+- runtime replay rows/domains/t100 rows: `47458` / `{'TrajNet': 37918, 'UCY': 9540}` / `7048`.
+- replay all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- t100 easy degradation: `-0.31%`.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HV_T100_RUNTIME_ROW_CACHE_REPLAY:END -->

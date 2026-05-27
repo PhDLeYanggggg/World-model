@@ -1,0 +1,318 @@
+{
+  "stage": "Stage42-HV t100 runtime row-cache batch replay",
+  "source": "cached_verified_row_cache_runtime_batch_replay_from_stage42_hr_ht",
+  "generated_at_utc": "2026-05-27T20:24:37.082680+00:00",
+  "git_commit": "130ef59",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HV 修复 Stage42-HU 暴露的 row-level replay blocker：从 HR 的可重建路径生成本地 row-level replay cache。",
+    "cache 是 derived local artifact，写在 data/ 下，不提交 GitHub。",
+    "runtime replay 只使用 domain、horizon、candidate rollout、floor rollout 和 optional candidate switch。",
+    "future waypoints / endpoints 只作为 evaluation labels 存储，不作为 runtime input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "9eb7611b8ea8881282c3105f05a463befc40afc33a41765abd541a9d6bb7ad13",
+  "cache_hash": "166fdede23d8f14bbf6eb4c0398b32b9c90d489a03d3e6e9acdbc608db5ed127",
+  "cache_status": "cached_verified",
+  "cache_build": {
+    "source": "cached_verified_existing_cache"
+  },
+  "cache_summary": {
+    "exists": true,
+    "path": "data/stage42_t100_runtime_replay_cache/stage42hv_t100_runtime_replay_test_cache.npz",
+    "size_bytes": 7576461,
+    "fields": [
+      "row_id",
+      "split",
+      "domain",
+      "source_file",
+      "scene_id",
+      "frame_id",
+      "agent_id",
+      "horizon",
+      "candidate_xy_predicted_rollout",
+      "floor_xy_train_horizon_causal_rollout",
+      "selected_xy_stage42_hr",
+      "selected_xy_runtime_replay",
+      "candidate_switch",
+      "runtime_switch",
+      "runtime_reason",
+      "future_xy_label_eval_only",
+      "future_valid_label_eval_only",
+      "normalizer",
+      "hard_label",
+      "failure_label",
+      "easy_label",
+      "candidate_ade",
+      "candidate_fde",
+      "floor_ade",
+      "floor_fde",
+      "selected_ade",
+      "selected_fde"
+    ],
+    "shapes": {
+      "row_id": [
+        47458
+      ],
+      "split": [
+        47458
+      ],
+      "domain": [
+        47458
+      ],
+      "source_file": [
+        47458
+      ],
+      "scene_id": [
+        47458
+      ],
+      "frame_id": [
+        47458
+      ],
+      "agent_id": [
+        47458
+      ],
+      "horizon": [
+        47458
+      ],
+      "candidate_xy_predicted_rollout": [
+        47458,
+        4,
+        2
+      ],
+      "floor_xy_train_horizon_causal_rollout": [
+        47458,
+        4,
+        2
+      ],
+      "selected_xy_stage42_hr": [
+        47458,
+        4,
+        2
+      ],
+      "selected_xy_runtime_replay": [
+        47458,
+        4,
+        2
+      ],
+      "candidate_switch": [
+        47458
+      ],
+      "runtime_switch": [
+        47458
+      ],
+      "runtime_reason": [
+        47458
+      ],
+      "future_xy_label_eval_only": [
+        47458,
+        4,
+        2
+      ],
+      "future_valid_label_eval_only": [
+        47458,
+        4
+      ],
+      "normalizer": [
+        47458
+      ],
+      "hard_label": [
+        47458
+      ],
+      "failure_label": [
+        47458
+      ],
+      "easy_label": [
+        47458
+      ],
+      "candidate_ade": [
+        47458
+      ],
+      "candidate_fde": [
+        47458
+      ],
+      "floor_ade": [
+        47458
+      ],
+      "floor_fde": [
+        47458
+      ],
+      "selected_ade": [
+        47458
+      ],
+      "selected_fde": [
+        47458
+      ]
+    },
+    "dtypes": {
+      "row_id": "int64",
+      "split": "<U8",
+      "domain": "<U64",
+      "source_file": "<U512",
+      "scene_id": "<U256",
+      "frame_id": "float64",
+      "agent_id": "int64",
+      "horizon": "int64",
+      "candidate_xy_predicted_rollout": "float32",
+      "floor_xy_train_horizon_causal_rollout": "float32",
+      "selected_xy_stage42_hr": "float32",
+      "selected_xy_runtime_replay": "float32",
+      "candidate_switch": "bool",
+      "runtime_switch": "bool",
+      "runtime_reason": "<U96",
+      "future_xy_label_eval_only": "float32",
+      "future_valid_label_eval_only": "bool",
+      "normalizer": "float32",
+      "hard_label": "bool",
+      "failure_label": "bool",
+      "easy_label": "bool",
+      "candidate_ade": "float64",
+      "candidate_fde": "float64",
+      "floor_ade": "float64",
+      "floor_fde": "float64",
+      "selected_ade": "float64",
+      "selected_fde": "float64"
+    },
+    "missing_required_fields": []
+  },
+  "policy_artifact": {
+    "path": "outputs/stage42_long_research/frozen_group_consistency_t100_easy_guard_policy_stage42.json",
+    "exists": true,
+    "policy_hash": "8dcc60f145df211084868a57b57246b69364adf51add1578c88cd012a6121e6e"
+  },
+  "inputs": {
+    "stage42_hr": {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_stage42.json",
+      "exists": true,
+      "verdict": "stage42_hr_t100_easy_guard_pass"
+    },
+    "stage42_hs": {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_freeze_stage42.json",
+      "exists": true,
+      "verdict": "stage42_hs_t100_easy_guard_freeze_pass"
+    },
+    "stage42_ht": {
+      "path": "outputs/stage42_long_research/group_consistency_t100_easy_guard_runtime_stage42.json",
+      "exists": true,
+      "verdict": "stage42_ht_t100_easy_guard_runtime_policy_pass"
+    },
+    "stage42_hu": {
+      "path": "outputs/stage42_long_research/t100_runtime_batch_replay_sufficiency_stage42.json",
+      "exists": true,
+      "verdict": "stage42_hu_t100_runtime_batch_replay_sufficiency_pass_with_blocker"
+    }
+  },
+  "runtime_batch_replay": {
+    "rows": 47458,
+    "row_id_min": 160589,
+    "row_id_max": 281227,
+    "selected_xy_max_abs_diff_vs_stored_hr": 0.0,
+    "selected_xy_max_abs_diff_vs_stored_runtime": 0.0,
+    "selected_ade_max_abs_diff_vs_stored": 0.0,
+    "floor_ade_max_abs_diff_vs_stored": 0.0,
+    "switch_mismatch_vs_stored": 0,
+    "metric": {
+      "rows": 47458,
+      "all_improvement": 0.2772246357901642,
+      "t10_improvement": 0.6388806547369797,
+      "t25_improvement": 0.27627469310280717,
+      "t50_improvement": 0.2698641437531575,
+      "t100_raw_frame_diagnostic_improvement": 0.06789640774516092,
+      "hard_failure_improvement": 0.2593323287861573,
+      "easy_degradation": -0.32326305969341285,
+      "t100_easy_degradation": -0.0030719622568884386,
+      "switch_rate": 0.6816132158961609,
+      "harm_over_fallback": -0.1276729984781961
+    },
+    "runtime_diagnostics": {
+      "rows": 47458,
+      "switch_rate": 0.6816132158961609,
+      "fallback_rows": 15110,
+      "reason_counts": {
+        "non_t100_not_guarded": 40410,
+        "validation_easy_harm_t100_fallback_floor": 5608,
+        "validation_supported_t100_keep_candidate": 1440
+      }
+    },
+    "t100_rows": 7048,
+    "t100_easy_rows": 975,
+    "domains": {
+      "TrajNet": 37918,
+      "UCY": 9540
+    },
+    "metric_diff_vs_hr": {
+      "all_improvement": 0.0,
+      "t50_improvement": 0.0,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "hard_failure_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "t100_easy_degradation": 0.0,
+      "switch_rate": 0.0
+    },
+    "status": "cached_verified"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoints_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "runtime_inputs": [
+      "domain",
+      "horizon",
+      "candidate_xy_predicted_rollout",
+      "floor_xy_train_horizon_causal_rollout",
+      "candidate_switch_optional"
+    ]
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_hv_gate": {
+    "gates": {
+      "hr_artifact_present": true,
+      "hs_artifact_present": true,
+      "ht_artifact_present": true,
+      "hu_artifact_present": true,
+      "policy_artifact_present": true,
+      "row_cache_exists": true,
+      "required_cache_fields_present": true,
+      "row_level_batch_replay_ready": true,
+      "selected_xy_replay_exact": true,
+      "selected_ade_replay_exact": true,
+      "floor_ade_replay_exact": true,
+      "switch_replay_exact": true,
+      "metric_replay_matches_hr": true,
+      "t100_easy_guard_preserved": true,
+      "t100_raw_still_positive": true,
+      "global_all_positive": true,
+      "global_t50_positive": true,
+      "hard_failure_positive": true,
+      "easy_preserved": true,
+      "future_labels_eval_only": true,
+      "no_future_endpoint_input": true,
+      "no_future_waypoint_input": true,
+      "no_central_velocity": true,
+      "no_test_endpoint_goals": true,
+      "no_test_threshold_tuning": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 28,
+    "total": 28,
+    "verdict": "stage42_hv_t100_runtime_row_cache_replay_pass"
+  }
+}
