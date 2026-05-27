@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EO post-EM/EN paper package refresh",
-  "current_verdict": "stage42_eo_post_em_en_paper_refresh_pass",
+  "current_stage": "Stage42-EP deployment contract guard",
+  "current_verdict": "stage42_ep_deployment_contract_guard_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -20862,6 +20862,188 @@
       "floor_free_neural_deployable": false,
       "global_floor_removal_allowed": false,
       "teacher_floor_rollout_context_removal_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_ep_deployment_contract_guard": {
+    "source": "fresh_stage42_deployment_contract_guard",
+    "report": "outputs/stage42_long_research/deployment_contract_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ep_gate.md",
+    "verdict": "stage42_ep_deployment_contract_guard_pass",
+    "gates": "16/16",
+    "contract": {
+      "requests": [
+        {
+          "request": "safety_sensitive_bridge_shape_deployment",
+          "allowed": true,
+          "status": "allowed_protected",
+          "deployment_role": "safety_sensitive_deployable_bridge_shape_policy",
+          "required_conditions": [
+            "use proximity_guard variant",
+            "keep Stage37/teacher floor",
+            "report dataset-local/raw-frame only",
+            "do not use future endpoint/waypoint inputs"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "DN proximity_guard status=deployable_when_joint_proximity_safety_is_required",
+            "EN proximity_guard required for safety-sensitive reporting"
+          ]
+        },
+        {
+          "request": "accuracy_priority_no_guard_reporting",
+          "allowed": true,
+          "status": "allowed_diagnostic_only",
+          "deployment_role": "accuracy_priority_diagnostic",
+          "required_conditions": [
+            "label as diagnostic/accuracy-priority",
+            "do not present as safety-sensitive deployable",
+            "include near-collision caveat"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "DN no_guard status=diagnostic_not_safety_sensitive",
+            "CR/EN: no-guard has higher ADE but worsens near-collision"
+          ]
+        },
+        {
+          "request": "source_level_full_waypoint_runtime",
+          "allowed": true,
+          "status": "allowed_protocol_specific",
+          "deployment_role": "source_level_full_waypoint_group_consistency_runtime_policy",
+          "required_conditions": [
+            "state source-level protocol baseline",
+            "keep protected floor context",
+            "do not rank-mix with endpoint-linear composer without baseline caveat",
+            "report raw-frame/dataset-local only"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "DN group runtime status=runtime_ready_for_its_source_level_protocol",
+            "EO supported claim: protected source-level group-consistency full-waypoint raw-frame 2.5D evidence"
+          ]
+        },
+        {
+          "request": "global_floor_free_neural_deployment",
+          "allowed": false,
+          "status": "blocked",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "global floor-free neural is not deployable",
+            "ungated endpoint/full-waypoint easy degradation violates the 2% safety limit"
+          ],
+          "evidence": [
+            "EN floor_free_neural_deployable=False",
+            "EN ungated decision=blocked"
+          ]
+        },
+        {
+          "request": "teacher_floor_rollout_context_removal",
+          "allowed": false,
+          "status": "blocked_required_mechanism",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "teacher/floor rollout context remains a core mechanism",
+            "removing floor/safe baseline rollout context hurts protected t50"
+          ],
+          "evidence": [
+            "EN teacher removal allowed=False",
+            "EN teacher decision=required"
+          ]
+        },
+        {
+          "request": "validation_backed_t50_slice_relaxation",
+          "allowed": true,
+          "status": "allowed_slice_only",
+          "deployment_role": "partial_t50_floor_relaxation",
+          "required_conditions": [
+            "only on mapped t50 slices",
+            "use train/internal-validation policy",
+            "do not generalize to global floor-free deployment",
+            "keep teacher/floor rollout context"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "EN partial slices=['t50_slice_relaxation::TrajNet|50', 't50_slice_relaxation::UCY|50']",
+            "EN fallback decision=required_globally_partial_relaxation_allowed"
+          ]
+        },
+        {
+          "request": "source_conversion_without_user_terms",
+          "allowed": false,
+          "status": "blocked_manual_terms_required",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "official links are not license acceptance",
+            "user must confirm terms, allowed use, local path, and source identity",
+            "auto download/conversion/evaluation are not allowed now"
+          ],
+          "evidence": [
+            "EM conversion_ready_now=0",
+            "EM auto_download_allowed_now=0",
+            "EN source decision=blocked"
+          ]
+        },
+        {
+          "request": "metric_seconds_or_foundation_claim",
+          "allowed": false,
+          "status": "forbidden",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "raw-frame/dataset-local evidence does not support metric or seconds-level claims",
+            "current model is not true 3D and not a foundation model",
+            "Stage5C and SMC remain disabled"
+          ],
+          "evidence": [
+            "EO claim boundary: true 3D/foundation/metric/seconds/Stage5C/SMC forbidden"
+          ]
+        },
+        {
+          "request": "unknown_future_policy_request",
+          "allowed": false,
+          "status": "unknown_request_blocked_by_default",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "unknown request is blocked until explicitly added to the contract"
+          ],
+          "evidence": [
+            "default-deny contract behavior"
+          ]
+        }
+      ],
+      "allowed_requests": [
+        "safety_sensitive_bridge_shape_deployment",
+        "accuracy_priority_no_guard_reporting",
+        "source_level_full_waypoint_runtime",
+        "validation_backed_t50_slice_relaxation"
+      ],
+      "blocked_requests": [
+        "global_floor_free_neural_deployment",
+        "teacher_floor_rollout_context_removal",
+        "source_conversion_without_user_terms",
+        "metric_seconds_or_foundation_claim",
+        "unknown_future_policy_request"
+      ],
+      "default_deny_unknown": true,
+      "deployment_defaults": {
+        "safety_sensitive_default": "proximity_guard",
+        "source_level_runtime_candidate": "group_consistency_full_waypoint_runtime",
+        "accuracy_priority_diagnostic": "no_proximity_guard",
+        "global_floor_free_neural": "blocked",
+        "source_conversion_without_terms": "blocked",
+        "metric_seconds_foundation_claim": "blocked"
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
       "stage5c_executed": false,
       "smc_enabled": false
     }

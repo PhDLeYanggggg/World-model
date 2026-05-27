@@ -709,3 +709,17 @@ Source-level runtime policy:
 - Blocked: source conversion without user terms/path/source identity; global floor-free neural; teacher-floor rollout context removal.
 - Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
 <!-- STAGE42_EO_POST_EM_EN_PAPER_REFRESH:END -->
+
+<!-- STAGE42_EP_DEPLOYMENT_CONTRACT_GUARD:START -->
+## Stage42-EP Deployment Contract Guard
+
+- source: `fresh_stage42_deployment_contract_guard`
+- verdict: `stage42_ep_deployment_contract_guard_pass`
+- gates: `16 / 16`
+- role: machine-readable guard for deployment and paper-claim requests after Stage42-DN/EM/EN/EO.
+- safety_sensitive_default: `proximity_guard`.
+- source_level_runtime_candidate: `group_consistency_full_waypoint_runtime`.
+- allowed only as diagnostic: `no_proximity_guard` accuracy-priority reporting.
+- blocked: global floor-free neural deployment, teacher-floor rollout context removal, source conversion without user terms, metric/seconds/foundation claims, Stage5C execution, and SMC.
+- unknown future policy requests are denied by default until explicitly added to the contract.
+<!-- STAGE42_EP_DEPLOYMENT_CONTRACT_GUARD:END -->
