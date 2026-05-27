@@ -1227,3 +1227,15 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - Paper implication: the metric/time gap is narrowed for UCY, while ETH_UCY still needs more t100-capable source support before source-CV.
 - Still forbidden: claiming metric/seconds-level results from this preflight alone.
 <!-- STAGE42_HJ_RESTRICTED_METRIC_TIME_SOURCE_CV_PREFLIGHT:END -->
+
+<!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:START -->
+## Stage42-HK ETH_UCY Source-Support Preflight Refresh
+
+- source: `fresh_stage42_hk_restricted_metric_time_eth_ucy_source_support_preflight`
+- verdict: `stage42_hk_eth_ucy_source_support_preflight_pass_terms_blocked`
+- gates: `16 / 16`
+- augmented ETH_UCY independent sources after terms: `5`.
+- augmented ETH_UCY t50/t100 windows after terms: `4397` / `1433`.
+- cached BL technical t100 safe-positive: `True`; ready now: `False`.
+- conclusion: ETH_UCY source-CV blocker is technically repairable after terms using ETH-Person XML candidates, but conversion/evaluation and metric/seconds claims remain blocked until user-confirmed terms and guarded rerun.
+<!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:END -->

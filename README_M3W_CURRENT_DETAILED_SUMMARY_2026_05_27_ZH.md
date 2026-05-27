@@ -475,3 +475,15 @@ SMC 是否启用：否。
 当前 best protected neural candidate：M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor。  
 当前最新 bounded teacherless claim：Stage42-HF `teacherless proximity-guarded switch gate with causal floor fallback`。  
 当前最大 blocker：restricted metric/time legal-confirmed conversion + source-CV + uniform h100/horizon/source-diversity closure。
+
+<!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:START -->
+## Stage42-HK ETH_UCY Restricted Metric/Time Source-Support Preflight
+
+- source: `fresh_stage42_hk_restricted_metric_time_eth_ucy_source_support_preflight`
+- verdict: `stage42_hk_eth_ucy_source_support_preflight_pass_terms_blocked`
+- gates: `16 / 16`
+- augmented ETH_UCY independent sources after terms: `5`.
+- augmented ETH_UCY t50/t100 windows after terms: `4397` / `1433`.
+- cached BL technical t100 safe-positive: `True`; ready now: `False`.
+- conclusion: ETH_UCY source-CV blocker is technically repairable after terms using ETH-Person XML candidates, but conversion/evaluation and metric/seconds claims remain blocked until user-confirmed terms and guarded rerun.
+<!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:END -->

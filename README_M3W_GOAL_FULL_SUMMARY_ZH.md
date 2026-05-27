@@ -400,3 +400,15 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 - window potential after terms: t50 `9845`, t100 `5696`.
 - conclusion: restricted metric/time source-CV is technically plannable for UCY and blocked for ETH_UCY by current t100 source support; source terms still block all conversion/evaluation claims.
 <!-- STAGE42_HJ_RESTRICTED_METRIC_TIME_SOURCE_CV_PREFLIGHT:END -->
+
+<!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:START -->
+## Stage42-HK ETH_UCY Restricted Metric/Time Source-Support Preflight
+
+- source: `fresh_stage42_hk_restricted_metric_time_eth_ucy_source_support_preflight`
+- verdict: `stage42_hk_eth_ucy_source_support_preflight_pass_terms_blocked`
+- gates: `16 / 16`
+- augmented ETH_UCY independent sources after terms: `5`.
+- augmented ETH_UCY t50/t100 windows after terms: `4397` / `1433`.
+- cached BL technical t100 safe-positive: `True`; ready now: `False`.
+- conclusion: ETH_UCY source-CV blocker is technically repairable after terms using ETH-Person XML candidates, but conversion/evaluation and metric/seconds claims remain blocked until user-confirmed terms and guarded rerun.
+<!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:END -->
