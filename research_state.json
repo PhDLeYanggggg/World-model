@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EB post-EA paper evidence refresh",
-  "current_verdict": "stage42_eb_post_ea_paper_refresh_pass",
+  "current_stage": "Stage42-EC group-consistency contribution audit",
+  "current_verdict": "stage42_ec_group_consistency_contribution_audit_pass",
   "m3w_target_work_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_dr_reports",
     "path": "README_M3W_TARGET_WORK_SUMMARY_ZH.md",
@@ -19918,6 +19918,100 @@
       "raw_frame_dataset_local_only": true,
       "stage5c_executed": false,
       "smc_enabled": false
+    }
+  },
+  "stage42_ec_group_consistency_contribution_audit": {
+    "source": "fresh_synthesis_from_stage42_dy_dz_ea_dp",
+    "report": "outputs/stage42_long_research/group_consistency_contribution_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ec_gate.md",
+    "verdict": "stage42_ec_group_consistency_contribution_audit_pass",
+    "gates": "17/17",
+    "summary": {
+      "source": "fresh_synthesis_from_stage42_dy_dz_ea_dp",
+      "supported_contributions": {
+        "explicit_group_consistency_full_waypoint": {
+          "status": "supported_source_level",
+          "evidence": "DY source-level promotion plus DZ dual-domain repair plus EA bootstrap.",
+          "all": 0.24715658317833844,
+          "t50": 0.2236298792899738,
+          "t100_raw_frame_diagnostic": 0.1434611214781808,
+          "hard": 0.23887420070464105,
+          "easy": -0.2563085406508494,
+          "near005_base": 0.019364490707573012,
+          "near005_final": 0.01382274853554722
+        },
+        "dual_domain_raw_frame_support": {
+          "status": "supported",
+          "evidence": "DZ reports UCY and TrajNet positive-safe domains; EA adds 2000-bootstrap positive-safe CIs for both domains.",
+          "positive_safe_domains": 2,
+          "ucy_all": 0.3558083715508603,
+          "ucy_t50": 0.22720558058086227,
+          "ucy_hard": 0.33784766757762896,
+          "trajnet_all": 0.32071530205574905,
+          "trajnet_t50": 0.2818040039056995,
+          "trajnet_hard": 0.3128676754267107,
+          "bootstrap_n": 2000,
+          "ci_positive_safe_domains": 2
+        },
+        "baseline_family_rollout_context": {
+          "status": "dominant_control_not_new_context_claim",
+          "all": 0.2877734037648393,
+          "t50": 0.31542535139554606,
+          "hard": 0.2758122379367457,
+          "interpretation": "The baseline-family rollout context remains the dominant first-stage control; group consistency should be framed as a source-level physical consistency repair over this protected family."
+        }
+      },
+      "blocked_or_negative_contributions": {
+        "scalar_loss_family_primary": {
+          "status": "blocked",
+          "best_candidate": "proximity_occupancy_loss",
+          "best_all": 0.25506106152262753,
+          "best_t50": 0.22136644201311806,
+          "best_hard": 0.2373927398811264,
+          "any_promotable": false,
+          "reason": "No scalar loss-family candidate beats Stage42-AM on the required all+hard promotion gate."
+        },
+        "current_sequence_graph_residual_context": {
+          "status": "closed_current_protocol",
+          "positive_context_rows": 0,
+          "best_delta_all": -0.0230085146797967,
+          "best_delta_t50": -0.08305738715518596,
+          "best_delta_hard_failure": -0.026234695463867364,
+          "reason": "Fresh Stage42-AR/AS reruns show that temporal sequence context and current-frame kNN graph context both reduce all/t50/hard-failure improvements relative to the baseline-family first-stage control. The dominant current signal remains baseline-family rollout context plus safety floor; the present residual context target is not extracting independent scene/goal/interaction value."
+        },
+        "goal_scene_main_claim": {
+          "status": "not_supported_under_current_protocols",
+          "reason": "Current context closure and prior goal/scene expert runs do not support a main independent contribution claim."
+        },
+        "neighbor_interaction_main_claim": {
+          "status": "not_supported_under_current_protocols",
+          "reason": "Current graph/interaction rows remain below baseline-family control."
+        },
+        "ungated_global_full_waypoint_replacement": {
+          "status": "blocked",
+          "reason": "The supported group-consistency result is source-level protected evidence, not ungated or global primary replacement."
+        }
+      },
+      "statistical_evidence": {
+        "global_all_ci_low": 0.32561590986908956,
+        "global_t50_ci_low": 0.2653276586221581,
+        "global_hard_ci_low": 0.31511510693704503,
+        "global_easy_ci_high": -0.3128132004361849,
+        "ucy_positive_safe_ci": true,
+        "trajnet_positive_safe_ci": true,
+        "near005_delta_high": -0.0067217329006700665
+      },
+      "paper_ready_claim": "A paper can claim protected source-level group-consistency full-waypoint dynamics with UCY+TrajNet bootstrap-backed raw-frame evidence, while explicitly blocking scalar-loss, current sequence/graph residual context, ungated/global, metric/seconds, Stage5C, and SMC overclaims."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "ungated_full_waypoint_deployable": false,
+      "global_primary_full_waypoint_replacement_claim_allowed": false
     }
   }
 }

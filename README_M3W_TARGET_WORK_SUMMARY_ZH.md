@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB 证据刷新。
-最近完整测试记录：Stage42-EB 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`699 passed in 33.35s`。
+结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC 证据刷新。
+最近完整测试记录：Stage42-EC 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`701 passed in 32.82s`。
 
 这份 README 是给人的总账。它回答：在 M3W 这个长期目标里到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、现在模型大概是什么质量，以及哪些结论仍然禁止写。
 
@@ -547,3 +547,16 @@ SMC 是否启用：否
 - Not supported: ungated full-waypoint deployment or global primary full-waypoint replacement.
 - Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
 <!-- STAGE42_EB_POST_EA_PAPER_REFRESH:END -->
+
+<!-- STAGE42_EC_GROUP_CONSISTENCY_CONTRIBUTION_AUDIT:START -->
+## Stage42-EC Group-Consistency Contribution Audit
+
+- source: `fresh_synthesis_from_stage42_dy_dz_ea_dp`
+- role: converts the latest positive and negative evidence into a contribution/claim matrix.
+- gate: `17 / 17`; verdict `stage42_ec_group_consistency_contribution_audit_pass`.
+- supported contribution: explicit group-consistency full-waypoint source-level repair, all/t50/t100 raw/hard `0.247157` / `0.223630` / `0.143461` / `0.238874`.
+- dual-domain evidence: UCY all/t50/hard `0.355808` / `0.227206` / `0.337848`; TrajNet all/t50/hard `0.320715` / `0.281804` / `0.312868`.
+- bootstrap CI lows global all/t50/hard `0.325616` / `0.265328` / `0.315115`; easy high `-0.312813`.
+- blocked contributions: scalar loss-family primary `blocked`, current sequence/graph residual context `closed_current_protocol`, goal/scene main claim `not_supported_under_current_protocols`, neighbor/interaction main claim `not_supported_under_current_protocols`.
+- claim boundary: supported as protected source-level raw-frame full-waypoint evidence only; no true-3D, foundation, metric/seconds, Stage5C, SMC, or ungated/global primary replacement claim.
+<!-- STAGE42_EC_GROUP_CONSISTENCY_CONTRIBUTION_AUDIT:END -->
