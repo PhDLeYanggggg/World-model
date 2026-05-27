@@ -689,3 +689,16 @@ The paper-ready scope remains a protected 2.5D raw-frame world-state candidate. 
 
 The paper outline should foreground protected safe-switch/group-consistency evidence and explicitly separate supported modules from blocked auxiliary modules.
 <!-- STAGE42_FZ_FXFY_PAPER_PACKAGE_REFRESH:END -->
+
+<!-- STAGE42_IE_CLAIM_CONTRACT_APPENDIX:START -->
+## Stage42-IE Claim Contract Appendix
+
+- source: `fresh_stage42_ie_paper_contract_compliance`
+- This appendix is inserted by the compliance verifier so the manuscript outline carries the current claim contract anchors.
+- Stage26 SDD remains the historical SDD deployable cost-aware selector baseline under pixel-space raw-frame evaluation.
+- Stage37 external t50 remains the dataset-local raw-frame external safety floor.
+- M3W-Neural v1 and Stage42 full-waypoint/group-consistency evidence are protected by teacher/floor safe-switches; they are not ungated neural deployment.
+- t100 evidence is raw-frame runtime/replay diagnostic only, not seconds-level long-horizon prediction.
+- Forbidden overclaims: true 3D, foundation world model, metric prediction, seconds-level claim, Stage5C execution, SMC readiness.
+- Contract rows: `13`; supported `6`; blocked `7`.
+<!-- STAGE42_IE_CLAIM_CONTRACT_APPENDIX:END -->

@@ -3136,3 +3136,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - ID locks manuscript wording: supported claims are protected dataset-local/raw-frame 2.5D; true-3D/foundation/metric-seconds/Stage5C/SMC claims remain forbidden.
 - This is a paper-claim contract only, not new training, conversion, download, or evaluation.
 <!-- STAGE42_ID_PAPER_CLAIM_CONTRACT:END -->
+
+<!-- STAGE42_IE_PAPER_CONTRACT_COMPLIANCE:START -->
+## Stage42-IE Paper Contract Compliance
+
+- source: `fresh_stage42_ie_paper_contract_compliance`
+- verdict: `stage42_ie_paper_contract_compliance_pass`; gates `14 / 14`.
+- paper files checked: `9 / 9`.
+- supported anchors covered: `5 / 5`; unbounded overclaim hits: `0`.
+- blocked claims covered as limitations: `7 / 7`.
+- IE verifies the current paper package obeys the Stage42-ID contract: protected dataset-local/raw-frame 2.5D only; no true-3D/foundation/metric-seconds/Stage5C/SMC overclaim.
+- This is compliance verification only, not new training, conversion, download, or evaluation.
+<!-- STAGE42_IE_PAPER_CONTRACT_COMPLIANCE:END -->
