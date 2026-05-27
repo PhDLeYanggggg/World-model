@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 长期目标详细总账
+
+本轮按用户要求新增单文件详细中文总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_GOAL_DETAILED_LEDGER_ZH.md`
+
+它集中总结了 M3W 长期目标内做过的路线、失败原因、成功证据、当前 best deployable、当前模型质量、仍然禁止的 claim，以及最短下一步。该文件是 `cached_verified` 汇总，不是新训练，也不把 cached 结果写成 fresh。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 当前长期目标工作总结
 
 本轮按用户要求新增详细中文总账：
