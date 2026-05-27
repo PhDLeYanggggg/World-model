@@ -2537,3 +2537,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verification: focused GF/GE/FT tests `11 passed`; full test suite `893 passed`.
 - boundary: plan is not permission, not conversion, not evaluation; no metric/seconds/true-3D/foundation/Stage5C/SMC claim.
 <!-- STAGE42_GF_POST_CONFIRMATION_CONVERSION_PLAN:END -->
+
+<!-- STAGE42_GH_CALIBRATED_POST_CONFIRMATION_SUBSET_PLAN:START -->
+## Stage42-GH Calibrated Post-Confirmation Subset Plan
+
+- source: `fresh_stage42_gh_calibrated_post_confirmation_subset_plan`
+- gate: `14 / 14`; verdict `stage42_gh_calibrated_post_confirmation_subset_plan_pass`.
+- role: combines GF conversion planning with BN source-level H/FPS/geometry evidence.
+- restricted metric/time candidates after terms: `5`; ready now `0`.
+- calibrated after-terms t50/t100 windows: `10060` / `5696`.
+- verification: focused GH/GF/BN/FT tests `15 passed`; full test suite `896 passed`.
+- boundary: source-specific restricted subset candidate only after user terms + guarded conversion + no-leakage eval; global M3W remains raw-frame/dataset-local 2.5D.
+<!-- STAGE42_GH_CALIBRATED_POST_CONFIRMATION_SUBSET_PLAN:END -->

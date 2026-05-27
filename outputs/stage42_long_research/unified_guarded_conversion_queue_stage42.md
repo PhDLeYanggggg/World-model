@@ -1,7 +1,7 @@
 # Stage42-FT Unified Guarded Conversion Queue
 
 - source: `fresh_stage42_unified_guarded_conversion_queue`
-- generated_at_utc: `2026-05-27T12:02:04.617475+00:00`
+- generated_at_utc: `2026-05-27T12:14:19.591887+00:00`
 - gate: `12 / 12`
 - verdict: `stage42_ft_unified_guarded_conversion_queue_pass`
 - source_ready_targets: `0`
