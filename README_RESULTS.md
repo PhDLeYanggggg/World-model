@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 当前主总账（2026-05-27）
+
+按用户要求，已把“在这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的当前主 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_CURRENT_MASTER_SUMMARY_ZH.md`
+
+该文件是 `cached_verified` 总结，不是新训练、下载、转换或评估。它把 Stage26 SDD cost-aware selector、Stage37 external t50 修复、Stage41/M3W-Neural v1 protected candidate、Stage42 protected full-waypoint / group-consistency family，以及 JEPA、zero-shot external、latent-only alignment、ordinary residual、unprotected neural dynamics 等失败路线集中整理到一个文件里。当前严格结论保持：M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 目标内路线/失败/成功总账（2026-05-27 最新权威入口）
 
 本轮按用户要求，把“在这个 M3W 长期目标内做了什么、尝试了什么路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的单文件 README：
@@ -6076,3 +6084,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - t100 easy status: rows `975`, degradation `2.56%`; recorded as raw-frame diagnostic, not seconds-level.
 - claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HQ_GROUP_CONSISTENCY_WEAK_SLICE_REPAIR:END -->
+
+<!-- STAGE42_HR_GROUP_CONSISTENCY_T100_EASY_GUARD:START -->
+## Stage42-HR Group-Consistency T100 Easy Guard
+
+- source: `fresh_validation_only_domain_t100_easy_guard`
+- role: repair Stage42-HQ t100 easy degradation with validation-only domain|t100 fallback decisions.
+- gate: `23 / 23`; verdict `stage42_hr_t100_easy_guard_pass`.
+- HQ t100 easy before: `2.56%`; after guard `-0.31%`.
+- guarded all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
+- guarded slices: `{'TrajNet|100': {'source': 'fresh_validation_only_domain_t100_easy_guard', 'domain': 'TrajNet', 'val_rows': 1160, 'test_rows': 5608, 'val_all_improvement': 0.23260462520508085, 'val_easy_degradation': 0.017118176622190173, 'threshold': 0.0, 'keep': False, 'reason': 'validation_easy_degradation_above_threshold_or_nonpositive_gain'}}`; kept slices: `{'UCY|100': {'source': 'fresh_validation_only_domain_t100_easy_guard', 'domain': 'UCY', 'val_rows': 1440, 'test_rows': 1440, 'val_all_improvement': 0.27564518723015075, 'val_easy_degradation': -0.021788147627511134, 'threshold': 0.0, 'keep': True}}`.
+- claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HR_GROUP_CONSISTENCY_T100_EASY_GUARD:END -->
