@@ -1,0 +1,259 @@
+{
+  "source": "fresh_stage42_official_source_link_audit",
+  "stage": "Stage42-EM Official Source Link Audit",
+  "generated_at_utc": "2026-05-27T02:50:20.490298+00:00",
+  "retrieval_date": "2026-05-27",
+  "git_commit": "13097e8",
+  "input_hash": "b539b13687576e1595ae7aee7b5f1d5cd98eb7dcf97ba9a96252244cf6af8955",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EM only resolves official source-link and manual confirmation gaps; it does not download, convert, train, or evaluate data.",
+    "Official source links are not legal acceptance; user must still confirm terms, allowed use, local path, and source identity.",
+    "local path, parseability, toolkit mirrors, or GitHub code licenses are not blanket permission for third-party datasets.",
+    "future endpoints / waypoints are labels/eval only, never inference inputs.",
+    "No central velocity, no test endpoints for goals, no test-threshold tuning.",
+    "t+50 / t+100 remain raw-frame horizons; no seconds-level claim.",
+    "dataset-local/raw-frame coordinates are not global metric coordinates.",
+    "Stage5C latent generative was not executed.",
+    "SMC was not enabled."
+  ],
+  "readiness_manifest": {
+    "exists": true,
+    "conversion_ready_targets": 0,
+    "blocked_targets": 5,
+    "conversion_executed": false,
+    "evaluation_executed": false
+  },
+  "official_source_rows": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "priority_rank": 1,
+      "retrieval_date": "2026-05-27",
+      "result_source": "fresh_stage42_official_source_link_audit",
+      "official_url_candidates": [
+        "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+        "https://graphics.cs.ucy.ac.cy/portfolio"
+      ],
+      "official_source_evidence": "UCY Graphics pages identify the crowd dataset as publicly accessible crowd data with video/.vsp and csv files, but the agent still cannot accept terms or infer redistribution/derived-use permission.",
+      "source_confidence": "official_primary_plus_official_lab_portfolio",
+      "manual_terms_required": true,
+      "auto_download_allowed_now": false,
+      "agent_may_fill_legal_acceptance": false,
+      "conversion_ready_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "after_terms_potential": {
+        "estimated_t50_windows": 9554,
+        "estimated_t100_windows": 5605,
+        "source_cv_after_terms": true,
+        "technical_ready_source_ids": [
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02"
+        ]
+      },
+      "missing_user_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "confirmed_by_user"
+      ],
+      "recommended_user_action": "Open the UCY crowd-data page, confirm official terms/allowed use, then fill local_path and source_identity for UCY_students03 / UCY_zara01 / UCY_zara02.",
+      "allowed_next_command_after_user_fills_fields": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "priority_rank": 2,
+      "retrieval_date": "2026-05-27",
+      "result_source": "fresh_stage42_official_source_link_audit",
+      "official_url_candidates": [
+        "https://vision.ee.ethz.ch/datsets.html"
+      ],
+      "official_source_evidence": "ETH Zurich CVL dataset page lists BIWI Walking Pedestrians with annotations/videos and states datasets are for research purposes unless stated otherwise.",
+      "source_confidence": "official_primary",
+      "manual_terms_required": true,
+      "auto_download_allowed_now": false,
+      "agent_may_fill_legal_acceptance": false,
+      "conversion_ready_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "after_terms_potential": {
+        "estimated_t50_windows": 506,
+        "estimated_t100_windows": 91,
+        "source_cv_after_terms": true,
+        "technical_ready_source_ids": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ]
+      },
+      "missing_user_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "confirmed_by_user"
+      ],
+      "recommended_user_action": "Open the ETH CVL dataset page, confirm research-only terms and local BIWI ETH/Hotel source identity before guarded conversion.",
+      "allowed_next_command_after_user_fills_fields": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "priority_rank": 3,
+      "retrieval_date": "2026-05-27",
+      "result_source": "fresh_stage42_official_source_link_audit",
+      "official_url_candidates": [
+        "user_or_web_verified_official_url_required"
+      ],
+      "official_source_evidence": "No confirmed official usable source is recorded in the current intake; user or future web audit must provide official page and terms.",
+      "source_confidence": "missing_official_source",
+      "manual_terms_required": true,
+      "auto_download_allowed_now": false,
+      "agent_may_fill_legal_acceptance": false,
+      "conversion_ready_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "after_terms_potential": {
+        "estimated_t50_windows": 0,
+        "estimated_t100_windows": 0,
+        "source_cv_after_terms": false,
+        "technical_ready_source_ids": []
+      },
+      "missing_user_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "confirmed_by_user"
+      ],
+      "recommended_user_action": "Provide an official HTTPS source page, terms/license, local path, and source identity before any conversion.",
+      "allowed_next_command_after_user_fills_fields": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "priority_rank": 4,
+      "retrieval_date": "2026-05-27",
+      "result_source": "fresh_stage42_official_source_link_audit",
+      "official_url_candidates": [
+        "https://github.com/crowdbotp/OpenTraj"
+      ],
+      "official_source_evidence": "OpenTraj is an official toolkit/benchmark repository that references many datasets; it is not blanket independent permission for every referenced dataset.",
+      "source_confidence": "official_github_toolkit_only",
+      "manual_terms_required": true,
+      "auto_download_allowed_now": false,
+      "agent_may_fill_legal_acceptance": false,
+      "conversion_ready_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "after_terms_potential": {
+        "estimated_t50_windows": 0,
+        "estimated_t100_windows": 0,
+        "source_cv_after_terms": false,
+        "technical_ready_source_ids": []
+      },
+      "missing_user_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "confirmed_by_user"
+      ],
+      "recommended_user_action": "Use OpenTraj for loaders/toolkit context only after confirming each underlying dataset's official terms and source identity.",
+      "allowed_next_command_after_user_fills_fields": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "priority_rank": 5,
+      "retrieval_date": "2026-05-27",
+      "result_source": "fresh_stage42_official_source_link_audit",
+      "official_url_candidates": [
+        "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+        "https://www.epfl.ch/labs/vita/datasets/",
+        "https://github.com/vita-epfl/trajnetplusplusbaselines"
+      ],
+      "official_source_evidence": "EPFL/VITA pages identify TrajNet++ as an interaction-centric human trajectory forecasting benchmark; the GitHub code license does not by itself grant blanket rights to every underlying dataset.",
+      "source_confidence": "official_project_plus_official_github_code",
+      "manual_terms_required": true,
+      "auto_download_allowed_now": false,
+      "agent_may_fill_legal_acceptance": false,
+      "conversion_ready_now": false,
+      "converted_now": false,
+      "evaluated_now": false,
+      "after_terms_potential": {
+        "estimated_t50_windows": 0,
+        "estimated_t100_windows": 0,
+        "source_cv_after_terms": false,
+        "technical_ready_source_ids": []
+      },
+      "missing_user_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity",
+        "confirmed_by_user"
+      ],
+      "recommended_user_action": "Confirm the official TrajNet++ data/challenge access path and underlying dataset terms, then provide a local official/source-identified copy.",
+      "allowed_next_command_after_user_fills_fields": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py"
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_official_source_link_audit",
+    "targets": 5,
+    "official_or_toolkit_source_candidates": 4,
+    "manual_terms_required_targets": 5,
+    "auto_download_allowed_now": 0,
+    "conversion_ready_now": 0,
+    "converted_now": 0,
+    "evaluated_now": 0,
+    "estimated_t50_after_terms": 10060,
+    "estimated_t100_after_terms": 5696,
+    "next_validator_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+    "next_guarded_launcher_command": ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_written": true,
+  "stage42_em_gate": {
+    "source": "fresh_stage42_official_source_link_audit",
+    "gates": {
+      "intake_template_exists": true,
+      "readiness_manifest_checked": true,
+      "targets_audited": true,
+      "official_candidates_recorded": true,
+      "ucy_has_official_url": true,
+      "eth_has_official_url": true,
+      "trajnet_has_official_url": true,
+      "manual_terms_preserved": true,
+      "no_auto_download": true,
+      "no_conversion_or_eval": true,
+      "user_action_written": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_em_official_source_link_audit_pass"
+  }
+}

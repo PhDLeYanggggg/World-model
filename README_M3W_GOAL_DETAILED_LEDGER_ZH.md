@@ -650,3 +650,15 @@ with Stage42 source-level group-consistency full-waypoint runtime evidence as pr
 当前 best deployable：Stage37/teacher-floor protected M3W policy family；source-level runtime 用 Stage42 group-consistency full-waypoint policy
 当前 verdict：protected dataset-local/raw-frame 2.5D multi-agent world-state candidate, with source-level full-waypoint and group-consistency evidence, but not a true 3D/foundation/metric world model
 ```
+
+<!-- STAGE42_EM_OFFICIAL_SOURCE_LINK_AUDIT:START -->
+## Stage42-EM Official Source Link Audit
+
+- source: `fresh_stage42_official_source_link_audit`
+- role: record official source candidates and user confirmation blockers for the next guarded conversion.
+- gate: `14 / 14`; verdict `stage42_em_official_source_link_audit_pass`.
+- official/toolkit source candidates: `4` / `5`.
+- conversion_ready_now: `0`; auto_download_allowed_now: `0`.
+- estimated after-terms t50/t100 potential: `10060` / `5696`.
+- No download, conversion, training, evaluation, metric/seconds claim, Stage5C, or SMC execution.
+<!-- STAGE42_EM_OFFICIAL_SOURCE_LINK_AUDIT:END -->
