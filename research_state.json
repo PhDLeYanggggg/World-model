@@ -85,8 +85,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_ig_t50_gain_harm_row_bootstrap",
-  "current_verdict": "stage42_ig_row_bootstrap_validates_selected_seed_with_multiseed_blocker",
+  "current_stage": "stage42_ih_t50_gain_harm_seed_expansion",
+  "current_verdict": "stage42_ih_t50_seed_expansion_mean_positive_ci_blocker_remains",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -3500,7 +3500,10 @@
     "outputs/stage42_long_research/stage42_stage_if_gate.md",
     "outputs/stage42_long_research/t50_gain_harm_row_bootstrap_stage42.md",
     "outputs/stage42_long_research/t50_gain_harm_row_bootstrap_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_ig_gate.md"
+    "outputs/stage42_long_research/stage42_stage_ig_gate.md",
+    "outputs/stage42_long_research/t50_gain_harm_seed_expansion_stage42.md",
+    "outputs/stage42_long_research/t50_gain_harm_seed_expansion_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_ih_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18219,6 +18222,41 @@
       "selected_ade_hard_failure_improvement": 0.05467681010380976,
       "selected_ade_easy_degradation": 0.007574226595513656,
       "multiseed_ade_t50_ci_low": -0.01793137718168797,
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_ih_t50_gain_harm_seed_expansion": {
+      "source": "fresh_stage42_ih_t50_gain_harm_seed_expansion",
+      "report": "outputs/stage42_long_research/t50_gain_harm_seed_expansion_stage42.md",
+      "json": "outputs/stage42_long_research/t50_gain_harm_seed_expansion_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_ih_gate.md",
+      "verdict": "stage42_ih_t50_seed_expansion_mean_positive_ci_blocker_remains",
+      "gates": "15/16",
+      "combined_seed_count": 6,
+      "expanded_ade_t50_mean": 0.006726909095719602,
+      "expanded_ade_t50_ci_low": -0.008182596975488936,
+      "expanded_fde_t50_mean": 0.059986938096667664,
+      "expanded_fde_t50_ci_low": 0.05434288540728083,
+      "expanded_ade_hard_failure_mean": 0.053456082660384686,
+      "expanded_ade_easy_degradation_mean": 0.01111241829921276,
+      "validation_selected": {
+        "selected": true,
+        "selection_rule": "validation_only_t50_weighted_score_no_test_threshold_tuning",
+        "seed": 151,
+        "base_seed": 113,
+        "validation_score": 1.0017630895618566,
+        "test_ade_all": 0.051532403733529186,
+        "test_ade_t50": 0.02835156467125788,
+        "test_ade_hard_failure": 0.05467681010380976,
+        "test_ade_easy_degradation": 0.007574226595513656,
+        "test_fde_t50": 0.06756639271119047
+      },
       "claim_boundary": {
         "true_3d": false,
         "foundation_world_model": false,

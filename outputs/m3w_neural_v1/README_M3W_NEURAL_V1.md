@@ -3189,3 +3189,18 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conclusion: validation-selected row-level t+50 evidence is positive, but seed-stable ADE t+50 remains an open blocker.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IG_T50_GAIN_HARM_ROW_BOOTSTRAP:END -->
+
+<!-- STAGE42_IH_T50_GAIN_HARM_SEED_EXPANSION:START -->
+## Stage42-IH T50 Gain/Harm Seed Expansion
+
+- source: `fresh_stage42_ih_t50_gain_harm_seed_expansion`
+- verdict: `stage42_ih_t50_seed_expansion_mean_positive_ci_blocker_remains`
+- gates: `15 / 16`
+- combined seeds: `6`
+- expanded ADE t50 mean / CI low: `0.006727` / `-0.008183`
+- expanded FDE t50 mean / CI low: `0.059987` / `0.054343`
+- expanded ADE hard/failure mean: `0.053456`
+- expanded ADE easy degradation mean: `0.011112`
+- validation-selected seed: `151` with ADE t50 `0.028352`
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IH_T50_GAIN_HARM_SEED_EXPANSION:END -->
