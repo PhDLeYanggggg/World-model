@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-FX objective coverage audit",
-  "current_verdict": "stage42_fx_objective_coverage_audit_pass",
+  "current_stage": "Stage42-FY horizon retry decision map",
+  "current_verdict": "stage42_fy_horizon_retry_decision_pass",
   "m3w_one_file_detailed_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_dm_plus_current_readme_refresh",
     "path": "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",
@@ -29651,5 +29651,55 @@
       "threshold_tuned_on_test": false
     },
     "goal_complete": false
+  },
+  "stage42_fy_horizon_retry_decision_map": {
+    "source": "fresh_stage42_horizon_retry_decision_map_from_fl_fq",
+    "path": "outputs/stage42_long_research/horizon_retry_decision_map_stage42.md",
+    "json": "outputs/stage42_long_research/horizon_retry_decision_map_stage42.json",
+    "updated_at": "2026-05-27T10:55:08.523883+00:00",
+    "gate": {
+      "passed": 14,
+      "total": 14,
+      "gates": {
+        "source_fresh": true,
+        "weak_horizons_identified": true,
+        "multiple_model_retries_considered": true,
+        "no_policy_promoted_from_failed_retries": true,
+        "stop_repeat_modeling_now": true,
+        "uniform_horizon_not_claimed": true,
+        "every_weak_key_has_decision": true,
+        "each_decision_has_allowed_retry_conditions": true,
+        "each_decision_has_user_actions": true,
+        "no_download_conversion_training_eval": true,
+        "no_metric_seconds_overclaim": true,
+        "no_true3d_foundation_overclaim": true,
+        "stage5c_false": true,
+        "smc_false": true
+      },
+      "verdict": "stage42_fy_horizon_retry_decision_pass"
+    },
+    "summary": {
+      "weak_horizon_count": 2,
+      "weak_horizons": [
+        "TrajNet|100",
+        "UCY|100"
+      ],
+      "model_retry_attempts_considered": 5,
+      "promoted_policy_count": 0,
+      "stop_repeat_modeling_now": true,
+      "uniform_horizon_claim_allowed": false,
+      "highest_priority_data_action": "FW-TERMS-ucy_crowd_original"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_seconds_claim": false,
+      "download_executed": false,
+      "conversion_executed": false,
+      "training_executed": false,
+      "evaluation_executed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   }
 }

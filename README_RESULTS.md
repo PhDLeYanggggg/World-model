@@ -5440,3 +5440,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - role: requirement coverage audit for the active Stage42 A-F long objective; no training, no download, no conversion, no threshold tuning.
 - boundary: goal remains active and incomplete; M3W remains protected dataset-local/raw-frame 2.5D; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
 <!-- STAGE42_FX_OBJECTIVE_COVERAGE_AUDIT:END -->
+
+<!-- STAGE42_FY_HORIZON_RETRY_DECISION_MAP:START -->
+## Stage42-FY Horizon Retry Decision Map
+
+- source: `fresh_stage42_horizon_retry_decision_map_from_fl_fq`
+- gate: `14 / 14`; verdict `stage42_fy_horizon_retry_decision_pass`.
+- weak horizons: `['TrajNet|100', 'UCY|100']`.
+- model retry attempts considered: `5`; promoted policy count `0`.
+- decision: stop repeating same-feature weak-horizon model retries now = `True`.
+- highest-priority unblocker: `FW-TERMS-ucy_crowd_original`.
+- role: retry decision map for h100 weak slices; no training, no download, no conversion, no threshold tuning.
+- boundary: uniform horizon robustness remains blocked; protected dataset-local/raw-frame 2.5D only; no metric/seconds, true 3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_FY_HORIZON_RETRY_DECISION_MAP:END -->

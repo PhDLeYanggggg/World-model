@@ -1,0 +1,192 @@
+{
+  "source": "fresh_stage42_horizon_retry_decision_map_from_fl_fq",
+  "generated_at_utc": "2026-05-27T10:55:08.523883+00:00",
+  "git_commit": "c1a3d27",
+  "input_hash": "33c730670dff7f2f643c638bbc9d250f3d1af0f326cf5d469a646e18b93e1ba6",
+  "input_status": {
+    "fl_forensics": {
+      "exists": true,
+      "verdict": "stage42_fl_horizon_weak_slice_forensics_pass"
+    },
+    "fm_row_switch": {
+      "exists": true,
+      "verdict": "stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit"
+    },
+    "fn_easy_guard": {
+      "exists": true,
+      "verdict": "stage42_fn_conservative_easy_guard_pass_with_horizon_limit"
+    },
+    "fo_gain_harm": {
+      "exists": true,
+      "verdict": "stage42_fo_gain_harm_specialist_pass_with_horizon_limit"
+    },
+    "fp_source_support": {
+      "exists": true,
+      "verdict": "stage42_fp_h100_source_support_audit_pass"
+    },
+    "fq_repair_queue": {
+      "exists": true,
+      "verdict": "stage42_fq_h100_source_support_repair_queue_pass"
+    },
+    "fw_source_action": {
+      "exists": true,
+      "verdict": "stage42_fw_source_action_consolidator_pass"
+    }
+  },
+  "prior_attempts": [
+    {
+      "attempt": "FL weak-horizon forensics",
+      "source": "fresh_run",
+      "verdict": "stage42_fl_horizon_weak_slice_forensics_pass",
+      "outcome": "diagnosed low-margin ambiguous oracle labels",
+      "policy_promoted": false
+    },
+    {
+      "attempt": "FM row-level switch specialist",
+      "source": "fresh_run",
+      "verdict": "stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit",
+      "outcome": "repaired one weak horizon but left TrajNet|100 and UCY|100 weak",
+      "policy_promoted": false
+    },
+    {
+      "attempt": "FN conservative easy guard",
+      "source": "fresh_run",
+      "verdict": "stage42_fn_conservative_easy_guard_pass_with_horizon_limit",
+      "outcome": "did not repair remaining h100 weak horizons",
+      "policy_promoted": false
+    },
+    {
+      "attempt": "FO gain/harm specialist",
+      "source": "fresh_run",
+      "verdict": "stage42_fo_gain_harm_specialist_pass_with_horizon_limit",
+      "outcome": "partial global metrics but uniform horizon claim still blocked",
+      "policy_promoted": false
+    },
+    {
+      "attempt": "FP/FQ source-support audit and repair queue",
+      "source": "fresh_run",
+      "verdict": "stage42_fq_h100_source_support_repair_queue_pass",
+      "outcome": "TrajNet h100 needs longer legal source; UCY h100 needs terms and guarded conversion",
+      "policy_promoted": false
+    }
+  ],
+  "horizon_retry_decisions": [
+    {
+      "weak_key": "TrajNet|100",
+      "domain": "TrajNet",
+      "decision": "stop_model_retry_until_longer_legal_source",
+      "result_source": "fresh_decision_from_cached_verified_repair_attempts",
+      "repair_status": "hard_blocker_no_local_trajnet_h100_long_source",
+      "candidate_count": 0,
+      "required_before_retry": [
+        "official longer TrajNet-compatible raw source",
+        "terms confirmation",
+        "guarded conversion",
+        "no-leakage audit",
+        "train-only source-CV"
+      ],
+      "blocked_retries": [
+        "repeat row_switch on same features",
+        "repeat conservative easy guard on same features",
+        "repeat gain/harm specialist on same source support",
+        "claim uniform horizon robustness"
+      ],
+      "allowed_retry_after": [
+        "new legal source support",
+        "new train-only validation source family",
+        "new guarded converted h100 rows",
+        "fresh no-leakage and source-CV pass"
+      ],
+      "next_action_ids": [
+        "FW-H100-TrajNet|100",
+        "FW-DOMAIN-TrajNet",
+        "FW-TERMS-trajnetplusplus_official"
+      ],
+      "next_actions": [
+        "FW-H100-TrajNet|100",
+        "FW-DOMAIN-TrajNet",
+        "FW-TERMS-trajnetplusplus_official"
+      ]
+    },
+    {
+      "weak_key": "UCY|100",
+      "domain": "UCY",
+      "decision": "stop_model_retry_until_terms_and_guarded_conversion",
+      "result_source": "fresh_decision_from_cached_verified_repair_attempts",
+      "repair_status": "candidate_support_exists_terms_unverified",
+      "candidate_count": 6,
+      "required_before_retry": [
+        "UCY original terms/user confirmation",
+        "guarded conversion of local h100 candidates",
+        "no-leakage audit",
+        "train-only source-CV"
+      ],
+      "blocked_retries": [
+        "repeat row_switch on same features",
+        "repeat conservative easy guard on same features",
+        "repeat gain/harm specialist on same source support",
+        "claim uniform horizon robustness"
+      ],
+      "allowed_retry_after": [
+        "new legal source support",
+        "new train-only validation source family",
+        "new guarded converted h100 rows",
+        "fresh no-leakage and source-CV pass"
+      ],
+      "next_action_ids": [
+        "FW-TERMS-ucy_crowd_original",
+        "FW-H100-UCY|100",
+        "FW-DOMAIN-UCY"
+      ],
+      "next_actions": [
+        "FW-TERMS-ucy_crowd_original",
+        "FW-H100-UCY|100",
+        "FW-DOMAIN-UCY"
+      ]
+    }
+  ],
+  "summary": {
+    "weak_horizon_count": 2,
+    "weak_horizons": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "model_retry_attempts_considered": 5,
+    "promoted_policy_count": 0,
+    "stop_repeat_modeling_now": true,
+    "uniform_horizon_claim_allowed": false,
+    "highest_priority_data_action": "FW-TERMS-ucy_crowd_original"
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_seconds_claim": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_fy_gate": {
+    "passed": 14,
+    "total": 14,
+    "gates": {
+      "source_fresh": true,
+      "weak_horizons_identified": true,
+      "multiple_model_retries_considered": true,
+      "no_policy_promoted_from_failed_retries": true,
+      "stop_repeat_modeling_now": true,
+      "uniform_horizon_not_claimed": true,
+      "every_weak_key_has_decision": true,
+      "each_decision_has_allowed_retry_conditions": true,
+      "each_decision_has_user_actions": true,
+      "no_download_conversion_training_eval": true,
+      "no_metric_seconds_overclaim": true,
+      "no_true3d_foundation_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "verdict": "stage42_fy_horizon_retry_decision_pass"
+  }
+}
