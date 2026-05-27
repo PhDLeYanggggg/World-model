@@ -1,149 +1,133 @@
 # M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W is my long-running research project on real-world multi-agent world modeling.
+M3W is my research project on multi-agent world modeling from real scene and trajectory data.
 
-The short version: I am trying to build a model that can read a real scene, understand how multiple agents move together, and predict future world-state trajectories safely enough to be useful. The current system is already much stronger than the early baselines on my external raw-frame 2.5D benchmark, but I am keeping the claims deliberately narrow: this is not a true 3D model, not a foundation model, and not a metric/seconds-calibrated system yet.
+The practical question I am working on is simple to state and hard to solve:
 
-This repository contains the code, evaluation harnesses, reports, and reproducibility artifacts behind that work.
+> Given a real top-down scene and the recent motion of every visible agent, can a model predict what the world state is likely to do next, without leaking future information and without becoming unsafe on easy cases?
 
-## Current Status
+The current answer is promising but still deliberately bounded. M3W is not a true 3D world model, not a foundation model, and not a metric or seconds-calibrated system yet. The evidence in this repository is mainly for protected raw-frame / dataset-local 2.5D multi-agent trajectory world-state modeling.
 
-The current best line of work is:
+## Current Position
 
-**M3W-Neural v1 composite-tail safe-switch bounded neural dynamics**
+The best current model family is a protected M3W-Neural v1 line built around a teacher-floor / safety-floor policy.
 
-It is protected by the Stage37 / teacher-floor policy. In plain language, the neural model is allowed to help only when the safety policy says the switch is likely to improve the prediction without hurting easy cases. If the model is uncertain or risky, it falls back to a strong causal baseline.
+In plain terms, the neural model is allowed to improve a strong causal prediction only when a validation-selected safety policy says the switch is likely to help. When the model is uncertain, risky, or likely to hurt an easy case, the system keeps the safer baseline prediction.
 
-That protection is not a cosmetic detail. It is one of the main findings of the project so far: ungated neural predictions can look promising on average but become unsafe or unstable on easy / close-proximity cases.
+That design choice came from the experiments, not from taste. Ungated neural variants often improved one slice of the benchmark while damaging easy cases, proximity behavior, or long-horizon stability. The protected policy is currently part of the method.
 
-## What The Model Currently Does
+## What M3W Currently Does
 
-M3W currently works as a protected 2.5D multi-agent world-state model:
+M3W currently operates as a protected 2.5D multi-agent world-state model. It uses:
 
-- predicts future agent trajectories in top-down / trajectory-style datasets
-- uses causal history windows, neighbor context, goal/prototype context, source/domain information, and baseline rollouts
-- compares neural proposals against strong causal / teacher-floor predictions
-- uses safe-switch and bounded correction policies rather than unbounded residuals
-- evaluates all-agent waypoint predictions, endpoint behavior, hard/failure subsets, easy-case preservation, and proximity/smoothness proxies
+- causal history windows
+- neighbor and density context
+- goal / route prototype features
+- source and domain information
+- baseline rollout features
+- safe-switch and bounded correction policies
+- waypoint and endpoint evaluation
+- hard/failure and easy-case audits
+- no-leakage gates
 
-The strongest evidence at the moment supports a **protected dataset-local / raw-frame 2.5D world-state dynamics candidate**.
+The model is evaluated against strong causal baselines and earlier selector baselines, not just against weak neural demos.
 
-## What It Does Not Claim
+## Results I Currently Trust
 
-I am intentionally not claiming the following:
+These are the results I am comfortable summarizing at the project level. They are still raw-frame / dataset-local results, not metric or seconds-level claims.
 
-- not a true 3D world model
-- not a large-scale foundation world model
-- not a globally metric-calibrated prediction system
-- not seconds-level long-horizon prediction
-- not ungated neural deployment
-- not Stage5C latent generative execution
-- not SMC readiness
-
-The current benchmarks are raw-frame / dataset-local. SDD is pixel-space. External datasets are also treated as dataset-local or weak/diagnostic unless homography, scale, FPS, and source terms are verified.
-
-## Best Current Results
-
-These are the headline results I currently trust enough to summarize publicly. They are still bounded by the raw-frame / dataset-local setup above.
-
-| Model / policy | Role | Main evidence |
+| Line of work | What it contributes | Current interpretation |
 | --- | --- | --- |
-| Stage26 cost-aware selector | SDD deployable baseline | improves SDD t+50 and hard/failure while preserving easy cases |
-| Stage37 external t+50 safe selector | external safety floor | repairs external t+50 transfer with positive bootstrap CI |
-| M3W-Neural v1 protected neural dynamics | current protected neural candidate | improves external all / t+50 / t+100 raw diagnostic / hard-failure under teacher-floor protection |
-| Stage42 full-waypoint / group-consistency family | current world-state evidence | extends endpoint-style success toward all-agent full-waypoint prediction, still protected |
+| Stage26 SDD cost-aware selector | Strong SDD pixel-space deployable baseline | Reliable SDD safety baseline |
+| Stage37 external t+50 safe selector | Repaired external t+50 transfer with positive bootstrap evidence | External safety floor |
+| M3W-Neural v1 protected dynamics | Neural proposals under Stage37 / teacher-floor protection | Current protected neural candidate |
+| Stage42 full-waypoint / group-consistency family | Moves beyond endpoint-only behavior toward all-agent waypoint evidence | Best current world-state evidence |
 
-The strongest current public-facing claim is not "the model solves world modeling." It is:
+The short version:
 
-> M3W is a protected raw-frame 2.5D multi-agent world-state modeling system that improves over strong causal and selector baselines on the current external trajectory benchmark, while preserving easy-case safety under a teacher-floor policy.
+> M3W is currently a protected raw-frame 2.5D multi-agent world-state candidate that improves over strong causal and selector baselines on the current benchmarks while preserving easy-case safety under a conservative floor policy.
 
-## Why The Safety Floor Matters
+That is the claim. I am not claiming more than that.
 
-A large part of this project has been learning what not to deploy.
+## What I Am Not Claiming
 
-Several neural variants improved some aggregate numbers but failed on easy cases, t+100 slices, proximity, or domain transfer. That is why the current system uses a conservative protected policy:
+The following are still blocked or out of scope for current claims:
 
-1. compute strong causal / teacher-floor rollouts
-2. let neural models propose endpoint or full-waypoint improvements
-3. estimate gain, harm, uncertainty, and proximity risk
-4. switch only when the validation-selected guard allows it
-5. otherwise keep the safe baseline
+- true 3D world modeling
+- foundation-model scale or generality
+- global metric coordinates
+- seconds-level horizon claims
+- ungated neural deployment
+- Stage5C latent generative execution
+- SMC readiness
+- human-gold labels for self-audited or visual-prior annotations
 
-This is not just a fallback hack. Right now it is part of the method.
+SDD is treated as pixel-space. External datasets are treated as dataset-local or weak/diagnostic unless their source terms, homography, scale, FPS, and frame stride are verified.
 
-## Research Direction
+## Why The Repository Has So Many Reports
 
-The long-term goal is bigger than the current selector/protected-policy system. I want M3W to become a genuinely useful multimodal multi-agent world model.
+I keep the failed routes because they are part of the result.
 
-The next research questions are:
+Some important negative findings so far:
 
-- Can full-waypoint sequence dynamics beat endpoint-to-linear bridge policies more broadly?
-- Can scene, goal, neighbor, and interaction context become independent positive contributors rather than auxiliary diagnostics?
-- Can I add legally verified external top-down datasets and reduce source concentration?
-- Can any subset be calibrated to metric coordinates or seconds-level horizons without overclaiming?
-- Can the model reduce dependence on the Stage37 / teacher floor without losing safety?
+- Hard one-hot baseline selection was not safe enough.
+- JEPA did not become an independent downstream contribution yet.
+- Zero-shot SDD to external transfer failed before domain and horizon repairs.
+- Latent distribution alignment alone did not give predictive lift.
+- Ordinary residual correction was not deployable.
+- Ungated Transformer / Hybrid predictions did not beat the protected floor.
+- Scene/goal and neighbor/interaction features are useful in protected settings but are not yet stable standalone main claims.
 
-If those are not solved, the honest conclusion remains: strong protected 2.5D evidence, but not a true 3D or foundation-track world model.
+Those failures shaped the current protected design.
 
-## Repository Map
+## How To Read This Repo
 
-The repo is large because I keep the research history and negative results. The most useful entry points are:
+The root README is the public overview. The detailed research ledger is elsewhere.
 
 | Path | Purpose |
 | --- | --- |
 | `src/` | data processing, models, evaluation, gates, report builders |
-| `configs/` | training / evaluation configs |
+| `configs/` | training and evaluation configs |
 | `tests/` | regression tests and evidence checks |
 | `outputs/m3w_neural_v1/` | current M3W-Neural v1 summaries and model cards |
-| `outputs/stage42_long_research/` | Stage42 evidence package, gates, ablations, claim guards |
-| `README_RESULTS.md` | full internal experiment ledger |
+| `outputs/stage42_long_research/` | current long-run evidence package, gates, claim guards, ablations |
+| `README_RESULTS.md` | internal experiment ledger |
 | `research_state.json` | machine-readable project state |
 
-Raw data, large caches, checkpoints, and third-party datasets are intentionally not committed.
+Large local data, fast caches, checkpoints, third-party raw files, videos, and image assets are intentionally not committed.
 
-## Reproducibility
+## Reproducibility Notes
 
-The local training environment I use on Apple Silicon is:
+On my Apple Silicon machine I use the arm64 PyTorch environment:
 
 ```bash
 .venv-pytorch/bin/python
 ```
 
-Important runtime choices:
+Runtime choices that matter:
 
-- arm64 Python / PyTorch environment
 - `num_workers = 0`
 - CPU-safe and MPS-safe paths where applicable
-- checkpoint / heartbeat / resume support for long runs
+- checkpoint / heartbeat / resume support for longer runs
+- no future endpoint input
+- no central velocity as official input
+- no test endpoints for goal construction
 
-Typical verification command:
+Typical verification:
 
 ```bash
 .venv-pytorch/bin/python -m pytest tests
 ```
 
-The current test suite is large because many reports and gates are checked as part of reproducibility.
+## Current Research Direction
 
-## Reading The Results
+The next steps are not about making a louder claim. They are about making the claim harder to break:
 
-If you only want the latest story, start with:
+- broader external top-down validation
+- cleaner source and horizon support
+- stronger all-agent waypoint evidence
+- safer floor relaxation where validation supports it
+- better independent contribution from scene, goal, interaction, and neural dynamics modules
+- eventual metric/time calibration only when source evidence allows it
 
-- `outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md`
-- `outputs/stage42_long_research/paper_claim_contract_stage42.md`
-- `outputs/stage42_long_research/paper_contract_compliance_stage42.md`
-- `README_RESULTS.md`
-
-I keep both positive and negative results because they matter here. Some examples of negative or bounded findings:
-
-- JEPA has not yet become an independent main contribution.
-- Transformer-only / ungated neural variants are not currently deployable.
-- Scene/goal and neighbor/interaction features are not yet stable independent main claims under the current protocol.
-- Metric/time claims remain blocked until source terms, FPS/stride, homography, and scale are verified.
-
-## Current Verdict
-
-M3W is currently a strong protected 2.5D multi-agent world-state candidate, not the final world model I want.
-
-The project has crossed an important line: it is no longer just a baseline selector demo. It has protected neural dynamics, full-waypoint / group-consistency evidence, safety-floor analysis, reproducibility checks, and a paper-ready claim boundary. But the main open problems are still real: broader external validation, metric/time calibration, stronger independent module contributions, and safer floor relaxation.
-
-That is the work I am continuing here.
+Until those are solved, I consider M3W a strong protected 2.5D world-state candidate rather than a finished world model.

@@ -1,5 +1,11 @@
 # Physical World Model 2.5D Results
 
+## GitHub README public-facing rewrite（2026-05-28）
+
+按用户要求，已重写根目录 `README.md` 的 GitHub 展示内容，让它更像项目作者在向访问者介绍 M3W，而不是 AI 生成的阶段报告或内部实验流水账。
+
+本次更新只调整 public-facing project README，不包含新训练、下载、转换或评估。新的 README 采用第一人称项目介绍结构：先说明研究问题和当前定位，再写当前能力、可信结果、明确不主张的内容、失败路线为何保留、仓库阅读路径和复现说明。严格边界保持不变：M3W 当前仍是 protected raw-frame / dataset-local 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 当前权威总总结（2026-05-27）
 
 按用户要求，已把“这个目标内做了什么、尝试了什么路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的单文件 README：
