@@ -247,3 +247,16 @@ Stage42 can proceed to external validation and full-waypoint dynamics from exist
 - conversion-ready targets: `0`; converted/evaluated now: `0` / `0`.
 - Candidate status remains blocked by user-confirmed terms/source/path/version and no-leakage conversion.
 <!-- STAGE42_DV_CALIBRATION_CANDIDATE_MANIFEST:END -->
+
+<!-- STAGE42_DW_SOURCE_SPECIFIC_CONVERSION_DRY_RUN:START -->
+## Stage42-DW Source-Specific Conversion Dry-Run
+
+- source: `fresh_source_specific_conversion_dry_run_from_stage42_dv`
+- role: technical dry-run for calibrated UCY/ETH candidates; no conversion, no evaluation, no metric/seconds claim.
+- gate: `15 / 15`; verdict `stage42_dw_source_specific_conversion_dry_run_pass`.
+- sources checked: `6`; technical ready after terms: `5`.
+- technical not-ready sources: `['UCY_zara03']`.
+- estimated t50/t100 windows: `10060` / `5696`.
+- source-CV domains after terms: `['UCY']`.
+- Conversion remains blocked by terms/source/path/version confirmation.
+<!-- STAGE42_DW_SOURCE_SPECIFIC_CONVERSION_DRY_RUN:END -->

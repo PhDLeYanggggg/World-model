@@ -1,0 +1,586 @@
+{
+  "source": "fresh_source_specific_conversion_dry_run_from_stage42_dv",
+  "stage": "Stage42-DW",
+  "generated_at_utc": "2026-05-27T00:39:13.105974+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DW 是 source-specific calibrated conversion dry-run，不转换数据、不训练、不评估。",
+    "本步骤只验证 UCY/ETH source-specific candidates 的技术可转换性、horizon support 与 source-CV readiness。",
+    "terms/source/path/version 未确认前，source-specific metric/time subset 仍不能执行转换或声明 official result。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍不能写成全局 seconds-level；source-specific seconds 也必须等 legal conversion 后限定声明。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage42_dv_report": "outputs/stage42_long_research/calibration_candidate_manifest_stage42.json",
+  "stage42_dv_verdict": "stage42_dv_calibration_candidate_manifest_pass",
+  "stage42_bn_report": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+  "stage42_bn_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+  "source_rows": [
+    {
+      "source": "fresh_source_specific_conversion_dry_run",
+      "source_id": "ETH_seq_eth",
+      "domain": "ETH_UCY",
+      "dataset": "ETH",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+      "path_exists": true,
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": 0.00037703075736272813
+      },
+      "timing": {
+        "video_fps": null,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "obsmat_positions_velocities_in_meters",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "README provides H.txt and world2image example; direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "rows": 8908,
+      "agents": 360,
+      "unique_frames": 1448,
+      "track_count": 360,
+      "max_track_points": 190,
+      "median_track_points": 24.0,
+      "common_frame_step": 6,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 6,
+        "tracks_checked": 360,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "horizon_counts": {
+        "10": 5408,
+        "25": 1214,
+        "50": 291,
+        "100": 91
+      },
+      "history_horizon_counts": {
+        "k8_h50": 237,
+        "k8_h100": 83,
+        "k16_h50": 191,
+        "k16_h100": 75,
+        "k32_h50": 143,
+        "k32_h100": 59,
+        "k64_h50": 77,
+        "k64_h100": 27
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "metric_status_if_terms_confirmed": "source_specific_candidate_only_not_global_metric",
+      "seconds_status_if_terms_confirmed": "source_specific_annotation_step_candidate_only_not_global_seconds",
+      "conversion_allowed_now": false,
+      "full_world_state_rows_written": 0,
+      "evaluation_rows_written": 0,
+      "technical_conversion_ready_after_terms": true,
+      "blocked_by": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "source": "fresh_source_specific_conversion_dry_run",
+      "source_id": "ETH_seq_hotel",
+      "domain": "ETH_UCY",
+      "dataset": "ETH",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+      "path_exists": true,
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": 7.514896940835595e-05
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "obsmat_positions_velocities_in_meters",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "README provides H.txt and world2image example; direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "rows": 6544,
+      "agents": 390,
+      "unique_frames": 1168,
+      "track_count": 390,
+      "max_track_points": 100,
+      "median_track_points": 15.0,
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 389,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "horizon_counts": {
+        "10": 3090,
+        "25": 706,
+        "50": 215,
+        "100": 0
+      },
+      "history_horizon_counts": {
+        "k8_h50": 129,
+        "k8_h100": 0,
+        "k16_h50": 73,
+        "k16_h100": 0,
+        "k32_h50": 25,
+        "k32_h100": 0,
+        "k64_h50": 0,
+        "k64_h100": 0
+      },
+      "t50_capable": true,
+      "t100_capable": false,
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "metric_status_if_terms_confirmed": "source_specific_candidate_only_not_global_metric",
+      "seconds_status_if_terms_confirmed": "source_specific_annotation_step_candidate_only_not_global_seconds",
+      "conversion_allowed_now": false,
+      "full_world_state_rows_written": 0,
+      "evaluation_rows_written": 0,
+      "technical_conversion_ready_after_terms": true,
+      "blocked_by": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "source": "fresh_source_specific_conversion_dry_run",
+      "source_id": "UCY_students03",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "path_exists": true,
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/students03/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": 0.0005022955867298
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "rows": 21846,
+      "agents": 428,
+      "unique_frames": 540,
+      "track_count": 428,
+      "max_track_points": 539,
+      "median_track_points": 38.0,
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 428,
+        "tracks_with_gaps": 1,
+        "gap_ratio": 0.002336448598130841,
+        "max_gap": 20
+      },
+      "horizon_counts": {
+        "10": 17608,
+        "25": 11976,
+        "50": 6491,
+        "100": 3413
+      },
+      "history_horizon_counts": {
+        "k8_h50": 5712,
+        "k8_h100": 3170,
+        "k16_h50": 5031,
+        "k16_h100": 2913,
+        "k32_h50": 4183,
+        "k32_h100": 2453,
+        "k64_h50": 2975,
+        "k64_h100": 1660
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "metric_status_if_terms_confirmed": "source_specific_candidate_only_not_global_metric",
+      "seconds_status_if_terms_confirmed": "source_specific_annotation_step_candidate_only_not_global_seconds",
+      "conversion_allowed_now": false,
+      "full_world_state_rows_written": 0,
+      "evaluation_rows_written": 0,
+      "technical_conversion_ready_after_terms": true,
+      "blocked_by": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "source": "fresh_source_specific_conversion_dry_run",
+      "source_id": "UCY_zara01",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+      "path_exists": true,
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": -0.0005623305499386102
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "rows": 5024,
+      "agents": 148,
+      "unique_frames": 866,
+      "track_count": 148,
+      "max_track_points": 197,
+      "median_track_points": 31.5,
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 148,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "horizon_counts": {
+        "10": 3545,
+        "25": 1423,
+        "50": 240,
+        "100": 97
+      },
+      "history_horizon_counts": {
+        "k8_h50": 162,
+        "k8_h100": 90,
+        "k16_h50": 132,
+        "k16_h100": 82,
+        "k32_h50": 116,
+        "k32_h100": 66,
+        "k64_h50": 84,
+        "k64_h100": 34
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "metric_status_if_terms_confirmed": "source_specific_candidate_only_not_global_metric",
+      "seconds_status_if_terms_confirmed": "source_specific_annotation_step_candidate_only_not_global_seconds",
+      "conversion_allowed_now": false,
+      "full_world_state_rows_written": 0,
+      "evaluation_rows_written": 0,
+      "technical_conversion_ready_after_terms": true,
+      "blocked_by": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "source": "fresh_source_specific_conversion_dry_run",
+      "source_id": "UCY_zara02",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+      "path_exists": true,
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": -0.0005623305499386102
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "rows": 9537,
+      "agents": 204,
+      "unique_frames": 1052,
+      "track_count": 204,
+      "max_track_points": 583,
+      "median_track_points": 32.5,
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 204,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "horizon_counts": {
+        "10": 7504,
+        "25": 4647,
+        "50": 2823,
+        "100": 2095
+      },
+      "history_horizon_counts": {
+        "k8_h50": 2697,
+        "k8_h100": 2030,
+        "k16_h50": 2567,
+        "k16_h100": 1973,
+        "k32_h50": 2337,
+        "k32_h100": 1861,
+        "k64_h50": 1987,
+        "k64_h100": 1637
+      },
+      "t50_capable": true,
+      "t100_capable": true,
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": true,
+      "metric_status_if_terms_confirmed": "source_specific_candidate_only_not_global_metric",
+      "seconds_status_if_terms_confirmed": "source_specific_annotation_step_candidate_only_not_global_seconds",
+      "conversion_allowed_now": false,
+      "full_world_state_rows_written": 0,
+      "evaluation_rows_written": 0,
+      "technical_conversion_ready_after_terms": true,
+      "blocked_by": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "source": "fresh_source_specific_conversion_dry_run",
+      "source_id": "UCY_zara03",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+      "path_exists": true,
+      "homography": {
+        "path": "external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+        "exists": true,
+        "parseable": true,
+        "determinant": -0.0005623305499386102
+      },
+      "timing": {
+        "video_fps": 25.0,
+        "annotation_fps": 2.5,
+        "annotation_timestep_seconds": 0.4,
+        "h10_annotation_seconds": 4.0,
+        "h25_annotation_seconds": 10.0,
+        "h50_annotation_seconds": 20.0,
+        "h100_annotation_seconds": 40.0
+      },
+      "coordinate": {
+        "coordinate_evidence": "world_2d_candidate_with_homography",
+        "meter_coordinates_evidence": true,
+        "homography_direction_evidence": "UCY README documents H.txt for zara/students03 and OpenTraj table marks Coord=world-2D; source-specific numeric direction still should be validated before image projection claims."
+      },
+      "source_specific_metric_time_evidence": true,
+      "rows": 3600,
+      "agents": 180,
+      "unique_frames": 730,
+      "track_count": 180,
+      "max_track_points": 20,
+      "median_track_points": 20.0,
+      "common_frame_step": 10,
+      "continuity": {
+        "source": "fresh_local_conversion_readiness",
+        "common_step": 10,
+        "tracks_checked": 180,
+        "tracks_with_gaps": 0,
+        "gap_ratio": 0.0,
+        "max_gap": 0
+      },
+      "horizon_counts": {
+        "10": 1800,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "history_horizon_counts": {
+        "k8_h50": 0,
+        "k8_h100": 0,
+        "k16_h50": 0,
+        "k16_h100": 0,
+        "k32_h50": 0,
+        "k32_h100": 0,
+        "k64_h50": 0,
+        "k64_h100": 0
+      },
+      "t50_capable": false,
+      "t100_capable": false,
+      "causal_velocity_possible": true,
+      "central_velocity_used": false,
+      "future_labels_available_for_loss_eval_only": false,
+      "metric_status_if_terms_confirmed": "source_specific_candidate_only_not_global_metric",
+      "seconds_status_if_terms_confirmed": "source_specific_annotation_step_candidate_only_not_global_seconds",
+      "conversion_allowed_now": false,
+      "full_world_state_rows_written": 0,
+      "evaluation_rows_written": 0,
+      "technical_conversion_ready_after_terms": false,
+      "blocked_by": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    }
+  ],
+  "source_cv_plan": {
+    "source": "fresh_source_specific_conversion_dry_run",
+    "min_sources_for_source_cv": 3,
+    "domains": {
+      "ETH_UCY": {
+        "sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ],
+        "source_count": 2,
+        "t50_windows": 506,
+        "t100_windows": 91,
+        "source_cv_feasible_after_terms": false,
+        "folds": []
+      },
+      "UCY": {
+        "sources": [
+          "UCY_students03",
+          "UCY_zara02",
+          "UCY_zara01"
+        ],
+        "source_count": 3,
+        "t50_windows": 9554,
+        "t100_windows": 5605,
+        "source_cv_feasible_after_terms": true,
+        "folds": [
+          {
+            "holdout_source": "UCY_students03",
+            "validation_source": "UCY_zara02",
+            "train_sources": [
+              "UCY_zara01"
+            ],
+            "holdout_t50_windows": 6491,
+            "holdout_t100_windows": 3413
+          },
+          {
+            "holdout_source": "UCY_zara02",
+            "validation_source": "UCY_students03",
+            "train_sources": [
+              "UCY_zara01"
+            ],
+            "holdout_t50_windows": 2823,
+            "holdout_t100_windows": 2095
+          },
+          {
+            "holdout_source": "UCY_zara01",
+            "validation_source": "UCY_students03",
+            "train_sources": [
+              "UCY_zara02"
+            ],
+            "holdout_t50_windows": 240,
+            "holdout_t100_windows": 97
+          }
+        ]
+      }
+    },
+    "domains_with_source_cv_after_terms": [
+      "UCY"
+    ]
+  },
+  "summary": {
+    "source_specific_sources_checked": 6,
+    "technical_conversion_ready_after_terms_sources": 5,
+    "technical_not_ready_sources": [
+      "UCY_zara03"
+    ],
+    "t50_capable_sources": 5,
+    "t100_capable_sources": 4,
+    "estimated_t50_windows": 10060,
+    "estimated_t100_windows": 5696,
+    "domains_with_source_cv_after_terms": [
+      "UCY"
+    ],
+    "conversion_allowed_now_sources": 0,
+    "full_world_state_rows_written": 0,
+    "evaluation_rows_written": 0
+  },
+  "no_leakage_preflight": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_metrics_for_threshold": false,
+    "future_labels_loss_eval_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "source_specific_conversion_executable_now": false,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_dw_gate": {
+    "gates": {
+      "dv_input_passed": true,
+      "bn_input_passed": true,
+      "source_specific_candidates_loaded": true,
+      "technical_ready_after_terms_present": true,
+      "short_source_blocker_reported": true,
+      "t50_support_present": true,
+      "t100_support_present": true,
+      "source_cv_feasible_domain_present": true,
+      "legal_blocker_preserved": true,
+      "no_world_state_rows_written": true,
+      "no_evaluation_rows_written": true,
+      "no_leakage_preflight": true,
+      "global_metric_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_dw_source_specific_conversion_dry_run_pass"
+  }
+}

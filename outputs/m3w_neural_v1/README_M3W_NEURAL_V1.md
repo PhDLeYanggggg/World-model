@@ -1681,3 +1681,16 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conversion-ready targets: `0`; global metric/seconds claim remains `False`.
 - report: `outputs/stage42_long_research/calibration_candidate_manifest_stage42.md`.
 <!-- STAGE42_DV_CALIBRATION_CANDIDATE_MANIFEST:END -->
+
+<!-- STAGE42_DW_SOURCE_SPECIFIC_CONVERSION_DRY_RUN:START -->
+## Stage42-DW Source-Specific Conversion Dry-Run
+
+- source: `fresh_source_specific_conversion_dry_run_from_stage42_dv`
+- role: parses calibrated UCY/ETH source candidates for horizon/source-CV readiness; no conversion/evaluation.
+- gate: `15 / 15`; verdict `stage42_dw_source_specific_conversion_dry_run_pass`.
+- sources checked: `6`; technical ready after terms: `5`.
+- technical not-ready sources: `['UCY_zara03']`.
+- estimated t50/t100 windows: `10060` / `5696`.
+- source-CV domains after terms: `['UCY']`; conversion allowed now remains `0`.
+- report: `outputs/stage42_long_research/source_specific_conversion_dry_run_stage42.md`.
+<!-- STAGE42_DW_SOURCE_SPECIFIC_CONVERSION_DRY_RUN:END -->
