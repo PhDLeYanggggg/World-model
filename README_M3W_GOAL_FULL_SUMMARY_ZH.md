@@ -350,3 +350,16 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 - robust_positive_domains: `ETH_UCY, TrajNet, UCY`; weak_domain_horizon_slices: `none`.
 - Teacher gate is not used, but causal floor fallback remains required. This is not global floor removal, not metric/seconds, not true 3D, not Stage5C, and not SMC.
 <!-- STAGE42_HE_FLOOR_FREE_PROXIMITY_GUARD_ROBUSTNESS:END -->
+
+<!-- STAGE42_HF_TEACHERLESS_GATE_DEPLOYMENT_CONTRACT:START -->
+## Stage42-HF Teacherless Gate Deployment Contract
+
+- source: `fresh_stage42_hf_teacherless_gate_deployment_contract`
+- verdict: `stage42_hf_teacherless_gate_deployment_contract_pass`
+- gates: `15 / 15`
+- result: Stage42-HE supports a teacherless proximity-guarded switch gate, but only with causal floor fallback.
+- metrics: all `20.74%`, t50 `13.82%`, t100 raw diagnostic `13.68%`, hard/failure `19.99%`, easy degradation `0.00%`.
+- allowed claim: `teacherless proximity-guarded switch gate with causal floor fallback`.
+- blocked claims: global causal floor removal, ungated neural deployment, metric/seconds/true-3D/foundation claims, Stage5C execution, and SMC.
+- deployment default remains protected causal-floor fallback; Stage42-HF is a claim/deployment contract refresh, not new training.
+<!-- STAGE42_HF_TEACHERLESS_GATE_DEPLOYMENT_CONTRACT:END -->

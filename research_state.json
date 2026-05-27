@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-HE floor-free proximity-guard robustness audit",
-  "current_verdict": "stage42_he_floor_free_proximity_guard_robustness_pass",
+  "current_stage": "Stage42-HF teacherless gate deployment contract",
+  "current_verdict": "stage42_hf_teacherless_gate_deployment_contract_pass",
   "m3w_goal_full_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hd_plus_current_user_request_refresh",
     "path": "README_M3W_GOAL_FULL_SUMMARY_ZH.md",
@@ -31379,10 +31379,10 @@
       "stage5c_executed": false,
       "smc_enabled": false
     },
-        "verification": {
-            "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_floor_free_proximity_guard_robustness.py -> 3 passed in 0.73s",
-            "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 960 passed in 214.74s"
-        },
+    "verification": {
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_floor_free_proximity_guard_robustness.py -> 3 passed in 0.73s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 960 passed in 214.74s"
+    },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,
@@ -31394,6 +31394,221 @@
       "causal_floor_safety_fallback_still_required": true,
       "stage5c_executed": false,
       "smc_enabled": false
+    }
+  },
+  "stage42_hf_teacherless_gate_deployment_contract": {
+    "source": "fresh_stage42_hf_teacherless_gate_deployment_contract",
+    "report": "outputs/stage42_long_research/teacherless_gate_deployment_contract_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_hf_gate.md",
+    "verdict": "stage42_hf_teacherless_gate_deployment_contract_pass",
+    "gates": "15/15",
+    "teacherless_gate_summary": {
+      "policy_family": "harm_predictor_gate",
+      "min_sep": 0.05,
+      "teacher_gate_used": false,
+      "causal_floor_fallback_used": true,
+      "global_floor_removal_allowed": false,
+      "all_improvement": 0.20741832176407393,
+      "t50_improvement": 0.13824909063914304,
+      "t100_raw_frame_diagnostic_improvement": 0.13676652178234783,
+      "hard_failure_improvement": 0.19988199720371558,
+      "easy_degradation": 0.0,
+      "bootstrap_n": 2000,
+      "robust_positive_domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "weak_domain_horizon_slices": []
+    },
+    "contract": {
+      "requests": [
+        {
+          "request": "teacherless_proximity_guarded_switch_gate",
+          "allowed": true,
+          "status": "allowed_protected",
+          "deployment_role": "teacherless_proximity_guarded_switch_gate_with_causal_floor_fallback",
+          "required_conditions": [
+            "use the Stage42-HE repaired harm_predictor_gate plus validation-selected proximity guard",
+            "keep causal floor fallback active",
+            "report dataset-local/raw-frame 2.5D only",
+            "do not tune thresholds on test"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "HE gate=21/21",
+            "all=20.74%, t50=13.82%, hard=19.99%, easy_degradation=0.00%",
+            "teacher_gate_used=False, causal_floor_fallback_used=True"
+          ]
+        },
+        {
+          "request": "teacher_gate_removal_for_repaired_gate",
+          "allowed": true,
+          "status": "allowed_policy_specific_not_global",
+          "deployment_role": "teacher_gate_removed_only_for_repaired_floor_free_switch_gate",
+          "required_conditions": [
+            "scope the claim to the repaired proximity-guard switch gate",
+            "state that teacher/floor mechanisms remain required elsewhere",
+            "keep causal baseline floor fallback and proximity safety guard"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "HD best_post_guard_family=harm_predictor_gate",
+            "HD post_guard_deployable_count=4",
+            "HE claim boundary keeps causal floor safety fallback required."
+          ]
+        },
+        {
+          "request": "causal_floor_removal",
+          "allowed": false,
+          "status": "blocked_required_safety_floor",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "Stage42-HE robust candidate still uses causal floor fallback",
+            "Stage42-HC found zero globally deployable floor-free candidates",
+            "global floor removal would overclaim beyond protected switch-gate evidence"
+          ],
+          "evidence": [
+            "HE global_floor_removal_allowed=False",
+            "HC floor_free_deployable_count=0",
+            "HC floor_free_positive_but_unsafe_count=6"
+          ]
+        },
+        {
+          "request": "ungated_neural_or_floor_free_global_deployment",
+          "allowed": false,
+          "status": "blocked_unsafe",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "ungated/floor-free global policies are not deployable",
+            "positive raw floor-free switches were unsafe under near-collision/proximity stress",
+            "protected deployment must preserve fallback and guard"
+          ],
+          "evidence": [
+            "HC floor_free_deployable_count=0",
+            "HC best_floor_free_candidate=harm_predictor_gate"
+          ]
+        },
+        {
+          "request": "partial_t50_floor_relaxation",
+          "allowed": true,
+          "status": "allowed_slice_only",
+          "deployment_role": "bounded_validation_backed_t50_slice_relaxation",
+          "required_conditions": [
+            "only use validation-backed mapped t50 slices",
+            "do not present as global floor-free deployment",
+            "keep fallback outside validated slices"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "Stage42-HC / floor-relaxation reports support only slice-bounded relaxation, not global deployment.",
+            "HE weak_domain_horizon_slices=[]"
+          ]
+        },
+        {
+          "request": "teacherless_gate_as_paper_claim",
+          "allowed": true,
+          "status": "allowed_with_boundary",
+          "deployment_role": "paper_claim_teacherless_switch_gate_evidence",
+          "required_conditions": [
+            "write 'teacherless proximity-guarded switch gate' rather than 'floor-free world model'",
+            "include causal floor fallback as a required safety mechanism",
+            "include raw-frame/dataset-local/2.5D limitations",
+            "state that Stage5C and SMC were not executed"
+          ],
+          "denied_reasons": [],
+          "evidence": [
+            "HE robustness: positive all/t50/t100 raw/hard with 2000 bootstrap and no weak domain-horizon slices.",
+            "HC stress: global floor-free deployable count remains zero."
+          ]
+        },
+        {
+          "request": "metric_seconds_true3d_foundation_claim",
+          "allowed": false,
+          "status": "forbidden",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "dataset-local/raw-frame evidence does not verify metric coordinates or seconds-level horizons",
+            "current system is not true 3D and not a large-scale foundation world model"
+          ],
+          "evidence": [
+            "All Stage42 reports preserve the 2.5D raw-frame claim boundary."
+          ]
+        },
+        {
+          "request": "stage5c_execution_or_smc_enabled",
+          "allowed": false,
+          "status": "forbidden",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "Stage5C latent generative execution remains explicitly disabled",
+            "SMC remains explicitly disabled",
+            "this contract is a guard/report refresh, not a stochastic generative rollout stage"
+          ],
+          "evidence": [
+            "HE stage5c_executed=False",
+            "HE smc_enabled=False"
+          ]
+        },
+        {
+          "request": "unknown_future_policy_request",
+          "allowed": false,
+          "status": "unknown_request_blocked_by_default",
+          "deployment_role": "forbidden",
+          "required_conditions": [],
+          "denied_reasons": [
+            "unknown request is blocked until added to the contract"
+          ],
+          "evidence": [
+            "default-deny contract behavior"
+          ]
+        }
+      ],
+      "allowed_requests": [
+        "teacherless_proximity_guarded_switch_gate",
+        "teacher_gate_removal_for_repaired_gate",
+        "partial_t50_floor_relaxation",
+        "teacherless_gate_as_paper_claim"
+      ],
+      "blocked_requests": [
+        "causal_floor_removal",
+        "ungated_neural_or_floor_free_global_deployment",
+        "metric_seconds_true3d_foundation_claim",
+        "stage5c_execution_or_smc_enabled",
+        "unknown_future_policy_request"
+      ],
+      "default_deny_unknown": true,
+      "deployment_defaults": {
+        "deployable_default": "Stage37/Stage42 protected causal-floor fallback policy",
+        "teacherless_candidate": "Stage42-HE proximity-guarded harm_predictor_gate",
+        "required_safety_floor": "causal floor fallback remains required",
+        "global_floor_free": "blocked",
+        "ungated_neural": "blocked",
+        "metric_seconds_true3d_foundation_claim": "forbidden",
+        "stage5c": "not executed",
+        "smc": "disabled"
+      }
+    },
+    "claim_boundary": {
+      "teacherless_gate_paper_claim_allowed": true,
+      "teacherless_gate_scope": "repaired proximity-guarded switch gate only",
+      "causal_floor_safety_fallback_still_required": true,
+      "global_floor_removal_allowed": false,
+      "ungated_neural_deployment_allowed": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "focused_pytest": "3 passed in 0.74s",
+      "full_pytest": "963 passed in 218.20s",
+      "status": "passed"
     }
   }
 }
