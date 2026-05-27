@@ -5524,3 +5524,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - t50/t100 windows after terms: `10060` / `5696`; conversion_ready_now `0`.
 - boundary: dry-run capability is not permission or conversion readiness; no download/conversion/training/evaluation; no metric/seconds/Stage5C/SMC claim.
 <!-- STAGE42_GE_CONVERSION_CAPABILITY_INTAKE_BRIDGE:END -->
+
+<!-- STAGE42_GF_POST_CONFIRMATION_CONVERSION_PLAN:START -->
+## Stage42-GF Post-Confirmation Conversion Plan
+
+- source: `fresh_stage42_gf_post_confirmation_conversion_plan`
+- gate: `16 / 16`; verdict `stage42_gf_post_confirmation_conversion_plan_pass`.
+- role: ranks GE source-specific conversion capability rows into a post-confirmation execution plan.
+- planned source rows: `6`; technical-ready-after-terms sources `5`; source-CV-capable datasets `1`.
+- t50/t100 after-terms windows: `10060` / `5696`; source_ready_now `0`; manifest ready targets `0`.
+- EI validator recheck: `10 / 10`; FT unified guarded queue recheck: `12 / 12`, queue count `0`.
+- verification: focused GF/GE/FT tests `11 passed`; full test suite `893 passed`.
+- boundary: plan is not permission, not conversion, not evaluation; no metric/seconds/true-3D/foundation/Stage5C/SMC claim.
+<!-- STAGE42_GF_POST_CONFIRMATION_CONVERSION_PLAN:END -->
