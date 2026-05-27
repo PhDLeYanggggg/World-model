@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-GY UCY h100 terms prefill from integrity",
-  "current_verdict": "stage42_gy_ucy_h100_terms_prefill_pass",
+  "current_stage": "Stage42-GZ full-waypoint claim guard",
+  "current_verdict": "stage42_gz_full_waypoint_claim_guard_pass",
   "m3w_work_attempts_failures_successes_readme_current": {
     "source": "cached_verified_summary_from_stage18_to_stage42_gy_plus_current_user_request_refresh",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
@@ -31009,5 +31009,39 @@
       "smc_enabled": false
     },
     "conclusion": "UCY h100 source identity/hash prefill is ready for user terms confirmation, but no legal acceptance, conversion, evaluation, or h100 repair is claimed."
+  },
+  "stage42_gz_full_waypoint_claim_guard": {
+    "source": "fresh_stage42_gz_full_waypoint_claim_guard",
+    "report": "outputs/stage42_long_research/full_waypoint_claim_guard_stage42.md",
+    "json": "outputs/stage42_long_research/full_waypoint_claim_guard_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_gz_gate.md",
+    "verdict": "stage42_gz_full_waypoint_claim_guard_pass",
+    "gates": "18/18",
+    "summary": {
+      "protected_full_waypoint_claim_allowed_with_boundary": true,
+      "endpoint_only_as_full_waypoint_rejected": true,
+      "ungated_full_waypoint_deployable": false,
+      "global_primary_full_waypoint_replacement_claim_allowed": false,
+      "group_consistency_full_waypoint_allowed_limited": true,
+      "neighbor_interaction_independent_main_claim_allowed": false,
+      "uniform_horizon_claim_allowed": false,
+      "metric_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "run": ".venv-pytorch/bin/python run_stage42_full_waypoint_claim_guard.py -> passed",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_full_waypoint_claim_guard.py -> 3 passed",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 944 passed in 107.04s",
+      "rerun_after_lightweight_json": ".venv-pytorch/bin/python run_stage42_full_waypoint_claim_guard.py -> passed with lightweight JSON"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_seconds_claim": false,
+      "ungated_neural_dynamics_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   }
 }

@@ -1,0 +1,183 @@
+{
+  "source": "fresh_stage42_gz_full_waypoint_claim_guard",
+  "stage": "Stage42-GZ full-waypoint claim guard",
+  "generated_at_utc": "2026-05-27T15:34:47.493823+00:00",
+  "git_commit": "20906e9",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-GZ 是 full-waypoint claim guard，不重新训练，不调 threshold，不执行 Stage5C，不启用 SMC。",
+    "full-waypoint future labels 只允许作为 supervised/eval label，不允许作为 inference input。",
+    "endpoint-only 或 endpoint-linear bridge 成功不能直接写成 learned full-waypoint dynamics 成功。",
+    "ungated full-waypoint neural 仍不可部署。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。"
+  ],
+  "input_hash": "ab6da4087569ee454184400617b678a03984c434f47f951089fa272ca2ec15de",
+  "claim_rows": [
+    {
+      "claim_id": "GZ-C1",
+      "claim": "Protected full-waypoint sequence evidence exists and can be cited as protected raw-frame 2.5D world-state evidence.",
+      "status": "allowed_with_boundary",
+      "evidence": "CM protected full-waypoint all/t50/t100raw/hard = 18.58% / 14.80% / 22.86% / 19.52%; GJ protected_full_waypoint_runtime_supported=True",
+      "allowed_as_main_claim": true,
+      "required_boundary": "protected dataset-local/raw-frame 2.5D; not ungated, not metric, not seconds-level"
+    },
+    {
+      "claim_id": "GZ-C2",
+      "claim": "Endpoint-only or endpoint-linear bridge success is equivalent to learned full-waypoint dynamics.",
+      "status": "rejected",
+      "evidence": "CM endpoint status=diagnostic_only_not_full_waypoint; linear bridge all=21.03%, protected full-waypoint all=18.58%; endpoint bridge may remain a floor but cannot be counted as learned shape.",
+      "allowed_as_main_claim": false,
+      "required_boundary": "endpoint bridge and full-waypoint shape must be reported separately"
+    },
+    {
+      "claim_id": "GZ-C3",
+      "claim": "Ungated full-waypoint neural dynamics is deployable.",
+      "status": "rejected_by_safety",
+      "evidence": "CM ungated full-waypoint easy degradation=124.59%; GJ ungated_full_waypoint_deployable=False",
+      "allowed_as_main_claim": false,
+      "required_boundary": "deployment requires protected switch / teacher floor"
+    },
+    {
+      "claim_id": "GZ-C4",
+      "claim": "Common-validation full-waypoint composer has positive protected endpoint-bridge replacement evidence.",
+      "status": "allowed_with_safety_caveat",
+      "evidence": "CO vs endpoint ADE all/t50/t100raw/hard/easy = 3.02% / 1.50% / 6.12% / 3.28% / 0.25%; use_full_rate=21.35%",
+      "allowed_as_main_claim": true,
+      "required_boundary": "protected common-validation composer, not global floor-free replacement"
+    },
+    {
+      "claim_id": "GZ-C5",
+      "claim": "Proximity-aware guard can be omitted without changing the safety claim.",
+      "status": "rejected_by_joint_safety",
+      "evidence": "CQ guarded vs endpoint ADE all/t50/hard = 1.77% / 1.07% / 1.93%; near@0.05 delta vs endpoint=-0.06%",
+      "allowed_as_main_claim": false,
+      "required_boundary": "safety-sensitive reports must use proximity-aware guard or explicitly mark caveat"
+    },
+    {
+      "claim_id": "GZ-C6",
+      "claim": "Graph/group consistency can be cited as a protected full-waypoint module, but not as independent neighbor/interaction dominance.",
+      "status": "allowed_limited_claim",
+      "evidence": "CM graph/group all/t50/hard=22.24% / 15.09% / 22.41%; supported_modules=['history', 'domain_expert', 'safe_switch', 'teacher_floor', 'group_consistency_full_waypoint', 'full_waypoint_shape', 'endpoint_bridge']; blocked_modules=['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']",
+      "allowed_as_main_claim": true,
+      "required_boundary": "claim must be group-consistency full-waypoint under protected policy; neighbor_interaction remains blocked as independent main claim"
+    },
+    {
+      "claim_id": "GZ-C7",
+      "claim": "Unified row-level full-waypoint evidence supports broad protected source/domain evidence, but not uniform horizon success.",
+      "status": "allowed_with_horizon_limit",
+      "evidence": "W unified ADE all/t50/t100raw/hard/easy mean = 9.93% / 9.40% / 8.48% / 10.49% / 0.24%",
+      "allowed_as_main_claim": true,
+      "required_boundary": "source/domain protected evidence only; weak horizon/h100 blocker remains separate"
+    },
+    {
+      "claim_id": "GZ-C8",
+      "claim": "Global primary full-waypoint replacement claim is allowed.",
+      "status": "rejected_by_protocol_boundary",
+      "evidence": "GJ global_primary_full_waypoint_replacement_claim_allowed=False; reason=Fresh DI/DL support a protected source-level group-consistency full-waypoint runtime policy with exact replay and proximity repair. However, common-validation endpoint-linear bridge/composer and source-level train-horizon floor use different comparison protocols, so the result cannot be collapsed into a single global primary full-waypoint replacement claim.",
+      "allowed_as_main_claim": false,
+      "required_boundary": "report source-level/protected components; do not collapse protocols into global primary replacement"
+    },
+    {
+      "claim_id": "GZ-C9",
+      "claim": "Metric/seconds-level, true-3D, foundation, Stage5C, or SMC claims are allowed.",
+      "status": "rejected_global_boundary",
+      "evidence": "All inputs are dataset-local/raw-frame 2.5D evidence; Stage5C and SMC remain false.",
+      "allowed_as_main_claim": false,
+      "required_boundary": "raw-frame / dataset-local only"
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "ungated_full_waypoint_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_gz_gate": {
+    "source": "fresh_stage42_gz_full_waypoint_claim_guard",
+    "gates": {
+      "stage42_cm_input_pass": true,
+      "stage42_co_input_pass": true,
+      "stage42_cq_input_pass": true,
+      "stage42_w_input_pass": true,
+      "stage42_gj_input_pass": true,
+      "protected_full_waypoint_positive_recorded": true,
+      "linear_bridge_all_advantage_preserved": true,
+      "common_validation_composer_positive": true,
+      "proximity_guard_positive_and_safe": true,
+      "ungated_full_waypoint_blocked": true,
+      "endpoint_as_full_waypoint_blocked": true,
+      "global_primary_replacement_blocked": true,
+      "group_consistency_allowed_only_with_boundary": true,
+      "uniform_horizon_overclaim_blocked": true,
+      "no_future_test_or_central_velocity_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 18,
+    "total": 18,
+    "verdict": "stage42_gz_full_waypoint_claim_guard_pass"
+  },
+  "input_status": {
+    "cm": {
+      "path": "outputs/stage42_long_research/full_waypoint_bridge_shape_audit_stage42.json",
+      "source": "fresh_synthesis_from_stage42_full_waypoint_artifacts",
+      "verdict": "stage42_cm_full_waypoint_bridge_shape_audit_pass"
+    },
+    "co": {
+      "path": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+      "source": "fresh_common_validation_eval_from_cached_verified_checkpoints",
+      "verdict": "stage42_co_common_validation_bridge_shape_composer_pass"
+    },
+    "cq": {
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "source": "fresh_validation_selected_proximity_guard_from_stage42_co_policy",
+      "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+    },
+    "unified": {
+      "path": "outputs/stage42_long_research/unified_external_full_waypoint_policy_stage42.json",
+      "source": "fresh_unified_from_cached_verified_stage42s_and_stage42v",
+      "verdict": "stage42_w_unified_external_full_waypoint_policy_pass"
+    },
+    "module_claim_lock": {
+      "path": "outputs/stage42_long_research/module_claim_lock_stage42.json",
+      "source": "fresh_stage42_gj_module_claim_lock_from_fu_z_dp_dq_gh",
+      "verdict": "stage42_gj_module_claim_lock_pass"
+    }
+  },
+  "doc_refresh_status": [
+    {
+      "path": "README_RESULTS.md",
+      "exists": true,
+      "contains_stage42_gz": true,
+      "blocks_endpoint_overclaim": true,
+      "blocks_ungated_full_waypoint": true
+    },
+    {
+      "path": "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+      "exists": true,
+      "contains_stage42_gz": true,
+      "blocks_endpoint_overclaim": true,
+      "blocks_ungated_full_waypoint": true
+    },
+    {
+      "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
+      "exists": true,
+      "contains_stage42_gz": true,
+      "blocks_endpoint_overclaim": true,
+      "blocks_ungated_full_waypoint": true
+    }
+  ]
+}

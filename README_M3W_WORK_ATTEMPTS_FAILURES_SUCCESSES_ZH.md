@@ -1108,3 +1108,16 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - If no material family is supported, scene/goal/neighbor context remains blocked as an independent main claim under this changed-target audit.
 - Still no true-3D, foundation, global metric, seconds-level, Stage5C, SMC, or test-endpoint claim.
 <!-- STAGE42_GK_CONTEXT_SWITCHABILITY_FAMILY_AUDIT:END -->
+
+<!-- STAGE42_GZ_FULL_WAYPOINT_CLAIM_GUARD:START -->
+## Stage42-GZ Full-Waypoint Claim Guard
+
+- source: `fresh_stage42_gz_full_waypoint_claim_guard`
+- gate: `18 / 18`
+- verdict: `stage42_gz_full_waypoint_claim_guard_pass`
+- Protected full-waypoint evidence can be cited only as dataset-local/raw-frame 2.5D evidence.
+- Endpoint-only or endpoint-linear bridge success must not be counted as learned full-waypoint dynamics.
+- Ungated full-waypoint neural deployment remains rejected.
+- Group-consistency full-waypoint is supported under protected policy; neighbor/interaction alone remains blocked as an independent main claim.
+- No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
+<!-- STAGE42_GZ_FULL_WAYPOINT_CLAIM_GUARD:END -->

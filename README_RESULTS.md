@@ -5799,3 +5799,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Legal acceptance fields remain blank and must be user-confirmed. This is not conversion, evaluation, h100 repair, metric evidence, or seconds-level evidence.
 - `UCY|100` remains blocked until terms/path/source identity are confirmed and guarded conversion/no-leakage/source-CV pass.
 <!-- STAGE42_GY_UCY_H100_TERMS_PREFILL:END -->
+
+<!-- STAGE42_GZ_FULL_WAYPOINT_CLAIM_GUARD:START -->
+## Stage42-GZ Full-Waypoint Claim Guard
+
+- source: `fresh_stage42_gz_full_waypoint_claim_guard`
+- gate: `18 / 18`
+- verdict: `stage42_gz_full_waypoint_claim_guard_pass`
+- Protected full-waypoint evidence can be cited only as dataset-local/raw-frame 2.5D evidence.
+- Endpoint-only or endpoint-linear bridge success must not be counted as learned full-waypoint dynamics.
+- Ungated full-waypoint neural deployment remains rejected.
+- Group-consistency full-waypoint is supported under protected policy; neighbor/interaction alone remains blocked as an independent main claim.
+- No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
+<!-- STAGE42_GZ_FULL_WAYPOINT_CLAIM_GUARD:END -->
