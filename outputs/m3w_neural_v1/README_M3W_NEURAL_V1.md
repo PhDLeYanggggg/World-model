@@ -1861,3 +1861,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conversion_ready_targets remains `0`; converted/evaluated now `0` / `0`.
 - This fixes the EH->CG workflow bridge while preserving legal blocker, no metric/seconds claim, no Stage5C, and no SMC.
 <!-- STAGE42_EI_SOURCE_TERMS_INTAKE_VALIDATOR_BRIDGE:END -->
+
+<!-- STAGE42_EJ_GUARDED_SOURCE_CONVERSION_LAUNCHER:START -->
+## Stage42-EJ Guarded Source Conversion Launcher
+
+- source: `fresh_guarded_source_conversion_launcher_from_stage42_ei_manifest`
+- role: reads the validator readiness manifest and creates a non-executing guarded conversion queue.
+- gate: `12 / 12`; verdict `stage42_ej_guarded_source_conversion_launcher_pass`.
+- ready targets: `0`; blocked targets: `5`; queued conversions: `0`.
+- download/convert/evaluate executed: `False` / `False` / `False`.
+- Current result preserves the legal blocker: no ready target means no conversion queue and no converted-data claim.
+- Boundary: no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EJ_GUARDED_SOURCE_CONVERSION_LAUNCHER:END -->

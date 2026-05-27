@@ -1,0 +1,167 @@
+{
+  "source": "fresh_guarded_source_conversion_launcher_from_stage42_ei_manifest",
+  "stage": "Stage42-EJ",
+  "generated_at_utc": "2026-05-27T02:25:45.725779+00:00",
+  "git_commit": "c42bc93",
+  "input_manifest_hash": "b4f30fb659fd859d757820763f080c784d7b92ebbc28d23823feaabdf6a2ef63",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EJ 是 guarded source conversion launcher；它只生成受保护转换队列，不下载、不转换、不训练、不评估。",
+    "只有 source_conversion_readiness_manifest_stage42.json 中 conversion_ready_targets 非空时，才允许排队未来转换。",
+    "空白 terms intake、local path、parseability、technical dry-run 都不等于 legal conversion readiness。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_manifest_path": "outputs/stage42_long_research/source_conversion_readiness_manifest_stage42.json",
+  "input_manifest_source": "fresh_stage42_cg_source_terms_confirmation_validator",
+  "summary": {
+    "source": "fresh_guarded_source_conversion_launcher_from_stage42_ei_manifest",
+    "manifest_source": "fresh_stage42_cg_source_terms_confirmation_validator",
+    "manifest_generated_at_utc": "2026-05-27T02:19:15.787339+00:00",
+    "ready_targets_in_manifest": 0,
+    "blocked_targets_in_manifest": 5,
+    "conversion_queue_count": 0,
+    "conversion_executed": false,
+    "evaluation_executed": false,
+    "download_executed": false,
+    "stage42_ej_is_launcher_only": true,
+    "user_action_required_targets": 5,
+    "next_if_queue_nonempty": "run a future guarded converter that performs parser/no-leakage/source-CV evaluation; Stage42-EJ does not execute it",
+    "next_if_queue_empty": "fill source_terms_confirmation_intake_template_stage42.json and rerun validator before conversion"
+  },
+  "conversion_queue": [],
+  "blocked_actions": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "name": "UCY Crowd Data original source",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion",
+      "conversion_ready": false,
+      "queued": false
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "name": "ETH / BIWI walking pedestrians original source",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion",
+      "conversion_ready": false,
+      "queued": false
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "name": "TrajNet++ official challenge/source page",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion",
+      "conversion_ready": false,
+      "queued": false
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "name": "OpenTraj official GitHub toolkit",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "cf_blockers": [
+        "no_independent_t50_candidate"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion",
+      "conversion_ready": false,
+      "queued": false
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "name": "Additional legal top-down pedestrian/drone long-track source",
+      "official_url": "user_or_web_verified_official_url_required",
+      "cf_blockers": [
+        "local_path_missing",
+        "schema_not_parseable",
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "fill explicit official terms/path/source-identity confirmation before conversion",
+      "conversion_ready": false,
+      "queued": false
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required_written": true,
+  "stage42_ej_gate": {
+    "gates": {
+      "manifest_loaded": true,
+      "ready_targets_scanned": true,
+      "blocked_targets_preserved": true,
+      "ready_targets_queued_only": true,
+      "blank_intake_refuses_conversion": true,
+      "no_download_executed": true,
+      "no_conversion_executed": true,
+      "no_evaluation_executed": true,
+      "user_action_written": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_ej_guarded_source_conversion_launcher_pass"
+  }
+}
