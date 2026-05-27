@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_ROUTES_FAILURES_SUCCESSES_2026_05_27_ZH.md`
 
-这是 `cached_verified_summary`，汇总 Stage18 到 Stage42-HT 的已有报告/gate/model card/data card/README/research_state；本次不是新训练、下载、转换或评估。它详细总结了长期目标内尝试过的路线、失败原因、成功证据、当前 best deployable 分层，以及严格 claim boundary。最新补入 Stage42-HR/HS/HT：validation-only t100 easy guard 修复 HQ 的 t100 easy harm，HR 后 all/t50/t100raw/hard 为 `+27.72% / +26.99% / +6.79% / +25.93%`，t100 easy degradation `-0.31%`，HS 冻结复放 exact、gate `27 / 27`，HT runtime policy gate `19 / 19`。t100 仍是 raw-frame diagnostic，不能写成 seconds-level；Stage5C 未执行，SMC 未启用。
+这是 `cached_verified_summary`，汇总 Stage18 到 Stage42-HU 的已有报告/gate/model card/data card/README/research_state；本次不是新训练、下载、转换或评估。它详细总结了长期目标内尝试过的路线、失败原因、成功证据、当前 best deployable 分层，以及严格 claim boundary。最新补入 Stage42-HR/HS/HT/HU：validation-only t100 easy guard 修复 HQ 的 t100 easy harm，HR 后 all/t50/t100raw/hard 为 `+27.72% / +26.99% / +6.79% / +25.93%`，t100 easy degradation `-0.31%`，HS 冻结复放 exact、gate `27 / 27`，HT runtime policy gate `19 / 19`；HU gate `17 / 17` 并明确真实 row-level batch replay 仍 `not_run`，blocker 是缺少 `candidate/floor/selected` rollout arrays。t100 仍是 raw-frame diagnostic，不能写成 seconds-level；Stage5C 未执行，SMC 未启用。
 
 按用户要求，已把“在这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的当前主 README：
 
