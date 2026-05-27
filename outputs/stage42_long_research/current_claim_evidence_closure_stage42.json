@@ -1,0 +1,163 @@
+{
+  "stage": "Stage42-IC",
+  "source": "fresh_stage42_ic_current_claim_evidence_closure",
+  "generated_at_utc": "2026-05-27T21:41:15.463305+00:00",
+  "git_commit": "7766e9a",
+  "input_hash": "e6aa9beb3fece0072520e69c75d8ce0524a4ce7e80160f081ca3e30e3e42fa6a",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-IC 是 claim/evidence closure，不重新训练、不下载、不转换、不评估。",
+    "本阶段只把已有 fresh/cached_verified evidence 映射成当前可写/不可写 claim 闭环。",
+    "future endpoints / waypoints 只作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "evidence_files": [
+    "README_M3W_MASTER_SUMMARY_2026_05_27_ZH.md",
+    "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
+    "outputs/stage42_long_research/module_claim_lock_stage42.json",
+    "outputs/stage42_long_research/claim_boundary_linter_stage42.json",
+    "outputs/stage42_long_research/context_model_closure_stage42.md",
+    "outputs/stage42_long_research/a_journal_gap_stage42.md",
+    "outputs/stage42_long_research/t100_runtime_row_cache_replay_stage42.json",
+    "outputs/stage42_long_research/source_terms_ia_bridged_validator_dry_run_stage42.json"
+  ],
+  "supported_claims": [
+    {
+      "claim": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+      "status": "supported",
+      "evidence": "Stage42 paper matrix + module claim lock + M3W master summary",
+      "paper_use": "main framing only with strict boundary"
+    },
+    {
+      "claim": "Stage26 SDD cost-aware selector remains the SDD deployable baseline",
+      "status": "supported_cached_verified",
+      "evidence": "M3W master summary records t50 +14.58%, hard/failure +11.23%, easy degradation 1.81%",
+      "paper_use": "baseline and historical development evidence"
+    },
+    {
+      "claim": "Stage37 external t50 safe selector is deployable for dataset-local raw-frame external t50 transfer",
+      "status": "supported_cached_verified",
+      "evidence": "M3W master summary records all +13.48%, t50 +8.46%, t50 CI [+7.69%, +9.15%], hard/failure +15.54%, easy 0.041%",
+      "paper_use": "external safety floor / comparison baseline"
+    },
+    {
+      "claim": "M3W-Neural v1 is a protected neural world-state candidate, not ungated neural deployment",
+      "status": "supported_cached_verified",
+      "evidence": "M3W-Neural README and master summary record all +21.03%, t50 +13.65%, t100 raw +14.69%, hard/failure +20.38%, easy 0.00%",
+      "paper_use": "protected neural candidate evidence"
+    },
+    {
+      "claim": "Stage42 protected full-waypoint/group-consistency policies are current source-level world-state evidence",
+      "status": "supported",
+      "evidence": "module claim lock supports group_consistency_full_waypoint, full_waypoint_shape, endpoint_bridge",
+      "paper_use": "main Stage42 world-state evidence"
+    },
+    {
+      "claim": "Stage42-HV provides row-level batch replay for the t100 easy-guard runtime policy",
+      "status": "supported_cached_verified",
+      "evidence": "rows=47458; all=27.72%; t50=26.99%; t100raw=6.79%; hard=25.93%; t100 easy=-0.31%",
+      "paper_use": "runtime/replay evidence, raw-frame diagnostic only"
+    }
+  ],
+  "blocked_claims": [
+    {
+      "claim": "true 3D or foundation world model",
+      "status": "blocked",
+      "reason": "claim boundary explicitly false in module lock, linter, and replay artifacts"
+    },
+    {
+      "claim": "global metric or seconds-level performance",
+      "status": "blocked",
+      "reason": "restricted metric/time/source terms ready candidates remain zero; calibration/source confirmation incomplete"
+    },
+    {
+      "claim": "Stage5C latent generative execution or SMC readiness",
+      "status": "blocked",
+      "reason": "all current artifacts keep Stage5C false and SMC false"
+    },
+    {
+      "claim": "JEPA or Transformer as independent main contribution",
+      "status": "blocked_or_diagnostic",
+      "reason": "module lock blocked modules: ['scene_goal', 'neighbor_interaction', 'JEPA', 'Transformer']"
+    },
+    {
+      "claim": "scene/goal or neighbor/interaction as independent main contribution",
+      "status": "blocked_or_diagnostic",
+      "reason": "Stage42-CJ/CK and context closure select baseline-family control / close current residual context protocol"
+    },
+    {
+      "claim": "new external converted/evaluated metric-time data from HZ/IA/IB",
+      "status": "blocked",
+      "reason": "IB conversion_ready_targets=0; converted=0; evaluated=0"
+    },
+    {
+      "claim": "t100 seconds-level long-horizon prediction",
+      "status": "blocked",
+      "reason": "Stage42-HV t100 is exact row-level raw-frame replay, not verified seconds-level calibration"
+    }
+  ],
+  "summary": {
+    "supported_claim_count": 6,
+    "blocked_claim_count": 7,
+    "module_lock_verdict": "stage42_gj_module_claim_lock_pass",
+    "module_lock_gate_passed": true,
+    "claim_linter_violations": 0,
+    "t100_row_replay_rows": 47458,
+    "t100_row_replay_gate_passed": true,
+    "source_terms_conversion_ready": 0,
+    "source_terms_converted_now": 0,
+    "source_terms_evaluated_now": 0,
+    "metric_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "actions": {
+    "downloaded": false,
+    "converted": false,
+    "trained": false,
+    "evaluated": false,
+    "summary_closure_only": true
+  },
+  "next_actions": [
+    "Use this closure as the paper/package claim map for the next Stage42 manuscript refresh.",
+    "Do not run guarded conversion until user-confirmed source terms/local path/source identity exist.",
+    "If modeling continues without new legal sources, prioritize gain/harm or switchability targets rather than repeating closed residual context protocols."
+  ],
+  "stage42_ic_gate": {
+    "gates": {
+      "master_summary_exists": true,
+      "paper_matrix_exists": true,
+      "module_lock_passed": true,
+      "claim_linter_clean": true,
+      "context_closure_recorded": true,
+      "a_journal_gap_recorded": true,
+      "supported_claims_present": true,
+      "blocked_claims_present": true,
+      "t100_row_replay_gate_passed": true,
+      "t100_replay_large_enough": true,
+      "source_terms_still_block_conversion": true,
+      "no_conversion_claim": true,
+      "no_evaluation_claim": true,
+      "no_metric_seconds_claim": true,
+      "stage5c_not_executed": true,
+      "smc_not_enabled": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage42_ic_current_claim_evidence_closure_pass"
+  }
+}

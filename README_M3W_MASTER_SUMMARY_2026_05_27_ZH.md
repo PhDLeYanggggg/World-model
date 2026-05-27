@@ -431,5 +431,15 @@ but not a true 3D or foundation world model
 Stage5C 是否执行：否。  
 SMC 是否启用：否。  
 当前 best deployable：分层部署，SDD 用 Stage26，external t50 用 Stage37，protected neural/full-waypoint 用 M3W-Neural v1 + Stage42 protected policies。  
-当前最大阻塞：legal/source confirmation、external source diversity、metric/time calibration、JEPA/Transformer 独立 downstream lift、floor-free safety。  
+当前最大阻塞：legal/source confirmation、external source diversity、metric/time calibration、JEPA/Transformer 独立 downstream lift、floor-free safety。
 
+<!-- STAGE42_IC_CURRENT_CLAIM_EVIDENCE_CLOSURE:START -->
+## Stage42-IC Current Claim / Evidence Closure
+
+- source: `fresh_stage42_ic_current_claim_evidence_closure`
+- verdict: `stage42_ic_current_claim_evidence_closure_pass`; gates `16 / 16`.
+- supported claims: `6`; blocked/diagnostic claims: `7`.
+- t100 row replay rows: `47458`; source terms conversion-ready now: `0`.
+- IC closes the current paper-package claim map: supported claims remain protected dataset-local/raw-frame 2.5D, while true-3D/foundation/metric-seconds/Stage5C/SMC and JEPA/Transformer independent-main claims remain blocked.
+- This is not new training, download, conversion, or evaluation; it is a claim/evidence closure over existing fresh/cached_verified artifacts.
+<!-- STAGE42_IC_CURRENT_CLAIM_EVIDENCE_CLOSURE:END -->

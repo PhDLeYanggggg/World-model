@@ -3114,3 +3114,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - Current result is correctly blocked because HZ user-confirmation fields remain blank.
 - Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
 <!-- STAGE42_IB_IA_BRIDGED_VALIDATOR_DRY_RUN:END -->
+
+<!-- STAGE42_IC_CURRENT_CLAIM_EVIDENCE_CLOSURE:START -->
+## Stage42-IC Current Claim / Evidence Closure
+
+- source: `fresh_stage42_ic_current_claim_evidence_closure`
+- verdict: `stage42_ic_current_claim_evidence_closure_pass`; gates `16 / 16`.
+- supported claims: `6`; blocked/diagnostic claims: `7`.
+- t100 row replay rows: `47458`; source terms conversion-ready now: `0`.
+- IC closes the current paper-package claim map: supported claims remain protected dataset-local/raw-frame 2.5D, while true-3D/foundation/metric-seconds/Stage5C/SMC and JEPA/Transformer independent-main claims remain blocked.
+- This is not new training, download, conversion, or evaluation; it is a claim/evidence closure over existing fresh/cached_verified artifacts.
+<!-- STAGE42_IC_CURRENT_CLAIM_EVIDENCE_CLOSURE:END -->
