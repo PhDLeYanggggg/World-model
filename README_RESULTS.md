@@ -5672,3 +5672,18 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - No source is license-confirmed, auto-downloadable, conversion-ready, converted, trained, or evaluated by this step.
 - Boundary: package-wide claim lint only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
 <!-- STAGE42_GQ_SOURCE_TERMS_PACKAGE_CLAIM_LINTER:END -->
+
+<!-- STAGE42_GR_REFRESH:START -->
+## Stage42-GR Long Objective State Reconciler
+
+- source: `fresh_stage42_gr_long_objective_state_reconciler`
+- verdict: `stage42_gr_long_objective_state_reconciler_pass`
+- gates: `14 / 14`
+- objectives reconciled: `6`
+- contract ready now: `0`
+- auto-download allowed now: `0`
+- package source-claim violations: `0`
+- after-terms opportunity: t50 `10060`, t100 `5696`
+- This is a fresh reconciliation step, not a data/model execution step.
+- Current deployable status remains protected dataset-local/raw-frame 2.5D candidate; no true 3D, no foundation, no global metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_GR_REFRESH:END -->
