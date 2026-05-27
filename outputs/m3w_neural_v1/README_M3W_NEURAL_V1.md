@@ -2513,3 +2513,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conversion_ready_now: `0`; metric/seconds claim allowed now `False` / `False`.
 - boundary: hints are not permission, not conversion readiness, and not global metric/seconds evidence; Stage5C/SMC remain false.
 <!-- STAGE42_GD_CALIBRATION_HINT_INTAKE_BRIDGE:END -->
+
+<!-- STAGE42_GE_CONVERSION_CAPABILITY_INTAKE_BRIDGE:START -->
+## Stage42-GE Conversion Capability -> Intake Bridge
+
+- source: `fresh_stage42_ge_conversion_capability_intake_bridge`
+- gate: `20 / 20`; verdict `stage42_ge_conversion_capability_intake_bridge_pass`.
+- role: adds DW source-specific dry-run capability into the intake template as non-permission `conversion_capability_prefill`.
+- source-specific rows available for `2` dataset rows; source-CV feasible after terms for `1` row.
+- t50/t100 windows after terms: `10060` / `5696`; conversion_ready_now `0`.
+- boundary: dry-run capability is not permission or conversion readiness; no download/conversion/training/evaluation; no metric/seconds/Stage5C/SMC claim.
+<!-- STAGE42_GE_CONVERSION_CAPABILITY_INTAKE_BRIDGE:END -->

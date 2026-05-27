@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
 
-它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger、Stage42-FV claim linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map，以及 Stage42-GA/GB/GC/GD 的 source/calibration recheck、terms prefill、intake bridge、calibration hint bridge。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新直接结论是：成功主线为 protected selector / safe-switch / group-consistency full-waypoint；失败主线为 hard-class selector、无保护 neural dynamics、JEPA downstream、zero-shot external、latent distance alignment、bounded residual；当前 h100/uniform horizon blocker 仍需 source/legal/guarded conversion 后才能继续，且 GA-GD 只提供 prefill/hints，不代表 permission、conversion 或 evaluation。
+它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger、Stage42-FV claim linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package、Stage42-FX objective coverage audit、Stage42-FY horizon retry decision map，以及 Stage42-GA/GB/GC/GD/GE 的 source/calibration recheck、terms prefill、intake bridge、calibration hint bridge、conversion capability bridge。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。最新直接结论是：成功主线为 protected selector / safe-switch / group-consistency full-waypoint；失败主线为 hard-class selector、无保护 neural dynamics、JEPA downstream、zero-shot external、latent distance alignment、bounded residual；当前 h100/uniform horizon blocker 仍需 source/legal/guarded conversion 后才能继续，且 GA-GE 只提供 source/calibration/capability prefill/hints，不代表 permission、conversion 或 evaluation。
 
 ## M3W 当前工作路线/失败/成功总账
 
@@ -5513,3 +5513,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - conversion_ready_now: `0`; metric/seconds claim allowed now `False` / `False`.
 - boundary: hints are not permission, not conversion readiness, and not global metric/seconds evidence; Stage5C/SMC remain false.
 <!-- STAGE42_GD_CALIBRATION_HINT_INTAKE_BRIDGE:END -->
+
+<!-- STAGE42_GE_CONVERSION_CAPABILITY_INTAKE_BRIDGE:START -->
+## Stage42-GE Conversion Capability -> Intake Bridge
+
+- source: `fresh_stage42_ge_conversion_capability_intake_bridge`
+- gate: `20 / 20`; verdict `stage42_ge_conversion_capability_intake_bridge_pass`.
+- role: adds DW source-specific dry-run capability into the intake template as non-permission `conversion_capability_prefill`.
+- source-specific rows available for `2` dataset rows; source-CV feasible after terms for `1` row.
+- t50/t100 windows after terms: `10060` / `5696`; conversion_ready_now `0`.
+- boundary: dry-run capability is not permission or conversion readiness; no download/conversion/training/evaluation; no metric/seconds/Stage5C/SMC claim.
+<!-- STAGE42_GE_CONVERSION_CAPABILITY_INTAKE_BRIDGE:END -->
