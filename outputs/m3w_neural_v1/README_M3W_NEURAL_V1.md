@@ -1647,3 +1647,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - No dataset was converted or evaluated in this step; legal/source blockers remain preserved.
 - report: `outputs/stage42_long_research/source_conversion_readiness_recheck_stage42.md`.
 <!-- STAGE42_DS_SOURCE_CONVERSION_READINESS_RECHECK:END -->
+
+<!-- STAGE42_DT_RAW_SOURCE_PARSEABILITY_DRY_RUN:START -->
+## Stage42-DT Raw Source Parseability Dry Run
+
+- source: `fresh_sample_only_raw_source_parseability_dry_run`
+- role: sample-only technical parser preflight after Stage42-DS; no conversion, no evaluation.
+- gate: `11 / 11`; verdict `stage42_dt_raw_source_parseability_dry_run_pass`.
+- dry-run parseable targets: `4`; targets with homography/time hints: `2`.
+- legal conversion ready targets: `0`; generated rows: `0`.
+- Homography/time hints remain hints only; no metric/seconds claim is made.
+- report: `outputs/stage42_long_research/raw_source_parseability_dry_run_stage42.md`.
+<!-- STAGE42_DT_RAW_SOURCE_PARSEABILITY_DRY_RUN:END -->

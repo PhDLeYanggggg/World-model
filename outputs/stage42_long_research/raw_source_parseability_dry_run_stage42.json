@@ -1,0 +1,1516 @@
+{
+  "source": "fresh_sample_only_raw_source_parseability_dry_run",
+  "stage": "Stage42-DT",
+  "generated_at_utc": "2026-05-27T00:20:12.458762+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DT 是 raw source parseability dry-run：只做文件形态和少量样例行解析，不生成转换数据。",
+    "本步骤不下载、不解压 gated 数据、不训练、不评估、不生成 world-state rows。",
+    "sample parseability 不等于 legal conversion permission，也不等于 official benchmark readiness。",
+    "derived cache 不算 raw official source。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；dataset-local/raw-frame 不能写成 global metric/seconds。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage42_ds_report": "outputs/stage42_long_research/source_conversion_readiness_recheck_stage42.json",
+  "stage42_ds_verdict": "stage42_ds_source_conversion_readiness_recheck_pass",
+  "target_rows": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 47,
+      "parser_families": {
+        "homography_matrix_candidate": 7,
+        "obsmat_like_8col_trajectory": 4,
+        "raw_video_candidate": 4,
+        "scene_image_candidate": 6,
+        "trajnet_4col_trajectory": 5,
+        "unknown_or_non_trajectory": 21
+      },
+      "suffix_counts": {
+        ".avi": 4,
+        ".json": 1,
+        ".md": 1,
+        ".png": 6,
+        ".py": 1,
+        ".svg": 3,
+        ".txt": 22,
+        ".vsp": 7,
+        ".xml": 2
+      },
+      "trajectory_like_files_sampled": 9,
+      "calibration_like_files_sampled": 7,
+      "has_homography_hint": true,
+      "has_time_hint": false,
+      "dry_run_parseable": true,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/README.md",
+          "suffix": ".md",
+          "sample_lines_read": 15,
+          "numeric_column_counts_first5": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/arxiepiskopi/Arxiepiskopi_flock.avi",
+          "suffix": ".avi",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "raw_video_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/arxiepiskopi/annotation.vsp",
+          "suffix": ".vsp",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/arxiepiskopi/reference.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/annotation.vsp",
+          "suffix": ".vsp",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 3,
+          "numeric_column_counts_first5": [
+            3,
+            3,
+            3
+          ],
+          "parser_family": "homography_matrix_candidate",
+          "trajectory_like": false,
+          "calibration_like": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 3,
+          "numeric_column_counts_first5": [
+            3,
+            3,
+            3
+          ],
+          "parser_family": "homography_matrix_candidate",
+          "trajectory_like": false,
+          "calibration_like": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/annotated.svg",
+          "suffix": ".svg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/annotation.vsp",
+          "suffix": ".vsp",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/ground_plane_measurements_003.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/groups.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            1,
+            6,
+            2,
+            3,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat_px.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/px2ground.py",
+          "suffix": ".py",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/reference.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/students003.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/video.avi",
+          "suffix": ".avi",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "raw_video_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/uni_examples/annotation.vsp",
+          "suffix": ".vsp",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        }
+      ],
+      "technical_next_step": "after user terms/source confirmation, run no-leakage conversion plus source-specific time/geometry audit"
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 30,
+      "parser_families": {
+        "eth_person_xml_tracks": 5,
+        "homography_matrix_candidate": 2,
+        "obsmat_like_8col_trajectory": 2,
+        "raw_video_candidate": 2,
+        "scene_image_candidate": 7,
+        "time_metadata_candidate": 2,
+        "trajnet_4col_trajectory": 2,
+        "unknown_or_non_trajectory": 8
+      },
+      "suffix_counts": {
+        ".avi": 2,
+        ".json": 1,
+        ".md": 1,
+        ".png": 7,
+        ".txt": 11,
+        ".xml": 7,
+        ".yaml": 1
+      },
+      "trajectory_like_files_sampled": 9,
+      "calibration_like_files_sampled": 4,
+      "has_homography_hint": true,
+      "has_time_hint": true,
+      "dry_run_parseable": true,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/ETH-ETH.json",
+          "suffix": ".json",
+          "sample_lines_read": 16,
+          "numeric_column_counts_first5": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/README.md",
+          "suffix": ".md",
+          "sample_lines_read": 14,
+          "numeric_column_counts_first5": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/eth-eth.yaml",
+          "suffix": ".yaml",
+          "sample_lines_read": 17,
+          "numeric_column_counts_first5": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 3,
+          "numeric_column_counts_first5": [
+            3,
+            3,
+            3
+          ],
+          "parser_family": "homography_matrix_candidate",
+          "trajectory_like": false,
+          "calibration_like": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/bg.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/biwi_eth_10fps.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/destinations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 4,
+          "numeric_column_counts_first5": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/groups.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            2,
+            3,
+            3,
+            6,
+            2
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 4,
+          "numeric_column_counts_first5": [
+            0,
+            2,
+            0,
+            1
+          ],
+          "parser_family": "time_metadata_candidate",
+          "trajectory_like": false,
+          "calibration_like": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/map.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/map.xml",
+          "suffix": ".xml",
+          "sample_lines_read": 16,
+          "numeric_column_counts_first5": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            8,
+            8,
+            8,
+            8,
+            8
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/reference.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/video.avi",
+          "suffix": ".avi",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "raw_video_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 3,
+          "numeric_column_counts_first5": [
+            3,
+            3,
+            3
+          ],
+          "parser_family": "homography_matrix_candidate",
+          "trajectory_like": false,
+          "calibration_like": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/bg.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/destinations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/groups.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            2,
+            2,
+            2,
+            2,
+            3
+          ],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 4,
+          "numeric_column_counts_first5": [
+            0,
+            3,
+            0,
+            1
+          ],
+          "parser_family": "time_metadata_candidate",
+          "trajectory_like": false,
+          "calibration_like": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/map.png",
+          "suffix": ".png",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        }
+      ],
+      "technical_next_step": "after user terms/source confirmation, run no-leakage conversion plus source-specific time/geometry audit"
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 80,
+      "parser_families": {
+        "trajnet_4col_trajectory": 59,
+        "trajnetpp_ndjson_scene_or_track": 1,
+        "unknown_or_non_trajectory": 20
+      },
+      "suffix_counts": {
+        ".ndjson": 1,
+        ".sample": 13,
+        ".txt": 59,
+        "<none>": 7
+      },
+      "trajectory_like_files_sampled": 60,
+      "calibration_like_files_sampled": 0,
+      "has_homography_hint": false,
+      "has_time_hint": false,
+      "dry_run_parseable": true,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet++/train/synth_data/orca_circle_crossing_5ped.ndjson",
+          "suffix": ".ndjson",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            5,
+            5,
+            5,
+            5,
+            5
+          ],
+          "parser_family": "trajnetpp_ndjson_scene_or_track",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_0.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_1.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/gates_2.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_8.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_0.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "parser_family": "trajnet_4col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        }
+      ],
+      "technical_next_step": "after user terms/source confirmation, run no-leakage conversion as dataset-local raw-frame source"
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 80,
+      "parser_families": {
+        "scene_image_candidate": 2,
+        "unknown_or_non_trajectory": 78
+      },
+      "suffix_counts": {
+        ".csv": 41,
+        ".idx": 1,
+        ".jpg": 1,
+        ".md": 2,
+        ".pack": 1,
+        ".png": 1,
+        ".sample": 13,
+        ".txt": 5,
+        "<none>": 15
+      },
+      "trajectory_like_files_sampled": 0,
+      "calibration_like_files_sampled": 0,
+      "has_homography_hint": false,
+      "has_time_hint": false,
+      "dry_run_parseable": false,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/HEAD",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/config",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/description",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/applypatch-msg.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/commit-msg.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/fsmonitor-watchman.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/post-update.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/pre-applypatch.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/pre-commit.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/pre-merge-commit.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/pre-push.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/pre-rebase.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/pre-receive.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/prepare-commit-msg.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/push-to-checkout.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/hooks/update.sample",
+          "suffix": ".sample",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/index",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/info/exclude",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/logs/HEAD",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/.git/logs/refs/heads/master",
+          "suffix": "<none>",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "unknown_or_non_trajectory",
+          "trajectory_like": false,
+          "calibration_like": false
+        }
+      ],
+      "technical_next_step": "locate raw trajectory files or official extraction instructions after terms confirmation"
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 2,
+      "parser_families": {
+        "archive_requires_explicit_terms_before_extraction": 2
+      },
+      "suffix_counts": {
+        ".zip": 2
+      },
+      "trajectory_like_files_sampled": 0,
+      "calibration_like_files_sampled": 0,
+      "has_homography_hint": false,
+      "has_time_hint": false,
+      "dry_run_parseable": false,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [
+        {
+          "path": "/Users/yangyue/Downloads/World/data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+          "suffix": ".zip",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "archive_requires_explicit_terms_before_extraction",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+          "suffix": ".zip",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "archive_requires_explicit_terms_before_extraction",
+          "trajectory_like": false,
+          "calibration_like": false
+        }
+      ],
+      "technical_next_step": "locate raw trajectory files or official extraction instructions after terms confirmation"
+    },
+    {
+      "dataset_id": "stanford_drone_dataset",
+      "domain": "SDD",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 80,
+      "parser_families": {
+        "obsmat_like_8col_trajectory": 40,
+        "scene_image_candidate": 40
+      },
+      "suffix_counts": {
+        ".jpg": 40,
+        ".txt": 40
+      },
+      "trajectory_like_files_sampled": 40,
+      "calibration_like_files_sampled": 0,
+      "has_homography_hint": false,
+      "has_time_hint": false,
+      "dry_run_parseable": true,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video0/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video0/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video1/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video1/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video2/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video2/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video3/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video3/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video4/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video4/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video5/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video5/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video6/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video6/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video0/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video0/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video1/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video1/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video2/annotations.txt",
+          "suffix": ".txt",
+          "sample_lines_read": 20,
+          "numeric_column_counts_first5": [
+            9,
+            9,
+            9,
+            9,
+            9
+          ],
+          "parser_family": "obsmat_like_8col_trajectory",
+          "trajectory_like": true,
+          "calibration_like": false
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video2/reference.jpg",
+          "suffix": ".jpg",
+          "sample_lines_read": 0,
+          "numeric_column_counts_first5": [],
+          "parser_family": "scene_image_candidate",
+          "trajectory_like": false,
+          "calibration_like": false
+        }
+      ],
+      "technical_next_step": "already converted SDD reference; use only for SDD pixel raw-frame work"
+    },
+    {
+      "dataset_id": "tgsim_diagnostic",
+      "domain": "traffic_diagnostic",
+      "source_from_ds": "cached_verified_from_stage42_ds",
+      "files_sampled": 0,
+      "parser_families": {},
+      "suffix_counts": {},
+      "trajectory_like_files_sampled": 0,
+      "calibration_like_files_sampled": 0,
+      "has_homography_hint": false,
+      "has_time_hint": false,
+      "dry_run_parseable": false,
+      "legal_conversion_ready": false,
+      "conversion_executed": false,
+      "evaluation_executed": false,
+      "world_state_rows_generated": 0,
+      "sampled_files": [],
+      "technical_next_step": "diagnostic traffic source only; not pedestrian topdown official"
+    }
+  ],
+  "summary": {
+    "targets_checked": 7,
+    "files_sampled_total": 319,
+    "dry_run_parseable_targets": 4,
+    "targets_with_homography_or_time_hints": 2,
+    "legal_conversion_ready_targets": 0,
+    "user_action_required_targets": 7,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "world_state_rows_generated": 0,
+    "archives_extracted_now": 0
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "global_t100_deployable_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_dt_gate": {
+    "gates": {
+      "stage42_ds_input_present": true,
+      "sample_only_no_conversion": true,
+      "sample_only_no_evaluation": true,
+      "parseable_sources_identified": true,
+      "homography_or_time_hints_reported": true,
+      "legal_readiness_not_overclaimed": true,
+      "archives_not_extracted": true,
+      "user_action_present": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage42_dt_raw_source_parseability_dry_run_pass"
+  }
+}
