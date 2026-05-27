@@ -4,7 +4,7 @@
 
 工作目录：`/Users/yangyue/Downloads/World`
 
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近已经完成并提交的 Stage42-ES 到 Stage42-FO 结果。本文是总结与索引，不是新的训练或新的评估。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近已经完成并提交的 Stage42-ES 到 Stage42-FP 结果。本文是总结与索引，不是新的训练或新的评估。
 
 ## 1. 最短结论
 
@@ -31,6 +31,8 @@ M3W 目前已经从早期的 SDD-only 2.5D trajectory scaffold，推进到一个
 | External t+50 transfer | Stage37 causal-history + goal-prototype safe selector | external all/t50/hard/easy 同时过 gate，是 external selector best deployable。 |
 | Source-level protected full-waypoint / group-consistency | Stage42-FH/FI frozen policy family，后续 FJ/FK/FL/FM/FN/FO 审计 | dual-domain/source robust 可以写，uniform horizon 不能写。 |
 | Neural dynamics | Stage39/40/41/42 protected neural / full-waypoint evidence | 只能写 protected world-state candidate，不能写 ungated neural world model 已部署。 |
+
+最新 Stage42-FP 结论：TrajNet|100 与 UCY|100 的 blocker 不是简单模型容量或 threshold 问题，而是 h100 source/support/context 问题。两个切片都同时出现 low-margin ambiguity、low material headroom、validation-to-test source-family shift、single/sparse validation source support，以及 source-specific easy-safety CI failure。因此 uniform horizon robustness 仍然禁止 claim。
 
 ## 2. 你问的“这个目标内做了什么”
 
@@ -361,6 +363,7 @@ weak horizons after: TrajNet|100, UCY|100
 | Stage42-FJ source audit | TrajNet/UCY robust，powered sources robust，uniform horizon blocked | claim 边界精确化 |
 | Stage42-FM row-level specialist | all/t50/t100raw/hard 35.20% / 29.03% / 21.14% / 33.35%；UCY|50 repaired | row-level weak-horizon repair 有效但不充分 |
 | Stage42-FN/FO negative evidence | stricter guard / gain-harm model 仍修不好 h100 weak slices | 证明剩余 blocker 不是简单 threshold/model 调整 |
+| Stage42-FP h100 source/support audit | TrajNet|100 与 UCY|100 均有 source-family shift、稀疏 validation support、low-margin/low-headroom、easy-safety CI failure | 下一步需要补 source support 或更强 h100 long-horizon context，不应继续盲目调全局 policy |
 
 ## 5. 为什么现在还不能叫“真正世界模型成功”
 
@@ -436,3 +439,17 @@ SMC ready：否
 - `outputs/stage42_long_research/fh_horizon_row_switch_specialist_stage42.md`
 - `outputs/stage42_long_research/fh_horizon_weak_slice_forensics_stage42.md`
 - `outputs/stage42_long_research/fh_source_robustness_audit_stage42.md`
+
+<!-- STAGE42_FP_H100_WEAK_HORIZON_SOURCE_SUPPORT_AUDIT:START -->
+## Stage42-FP H100 Weak-Horizon Source / Support Audit
+
+- source: `fresh_stage42_h100_weak_horizon_source_support_audit`
+- role: diagnostic source/support decomposition for remaining h100 weak horizons after Stage42-FO; no new training and no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fp_h100_source_support_audit_pass`.
+- h100 weak horizons: `['TrajNet|100', 'UCY|100']`.
+- blocker counts: `{'long_horizon_h100_context_still_insufficient': 2, 'low_material_headroom': 2, 'oracle_low_margin_ambiguous': 2, 'single_or_sparse_validation_source_support': 2, 'source_specific_easy_safety_ci_failure': 2, 'validation_to_test_source_family_shift': 2, 'gain_harm_policy_abstained_due_to_validation_safety': 1}`.
+- recommended next action: `source_support_or_long_horizon_context_repair_before_retrying_policy_promotion`.
+- conclusion: uniform horizon robustness remains blocked; TrajNet|100 and UCY|100 need source/support or stronger long-horizon context repair before any policy promotion.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+- verification: `.venv-pytorch/bin/python run_stage42_h100_weak_horizon_source_support_audit.py` -> `15 / 15`; focused pytest `4 passed`; full pytest `832 passed in 30.13s`.
+<!-- STAGE42_FP_H100_WEAK_HORIZON_SOURCE_SUPPORT_AUDIT:END -->

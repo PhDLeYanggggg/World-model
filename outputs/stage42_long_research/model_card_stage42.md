@@ -746,3 +746,16 @@ Interaction/occupancy/physical heads are present in the full-waypoint model inte
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FO_FH_HORIZON_GAIN_HARM_SPECIALIST:END -->
+
+<!-- STAGE42_FP_H100_WEAK_HORIZON_SOURCE_SUPPORT_AUDIT:START -->
+## Stage42-FP H100 Weak-Horizon Source / Support Audit
+
+- source: `fresh_stage42_h100_weak_horizon_source_support_audit`
+- role: diagnostic source/support decomposition for remaining h100 weak horizons after Stage42-FO; no new training and no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fp_h100_source_support_audit_pass`.
+- h100 weak horizons: `['TrajNet|100', 'UCY|100']`.
+- blocker counts: `{'long_horizon_h100_context_still_insufficient': 2, 'low_material_headroom': 2, 'oracle_low_margin_ambiguous': 2, 'single_or_sparse_validation_source_support': 2, 'source_specific_easy_safety_ci_failure': 2, 'validation_to_test_source_family_shift': 2, 'gain_harm_policy_abstained_due_to_validation_safety': 1}`.
+- recommended next action: `source_support_or_long_horizon_context_repair_before_retrying_policy_promotion`.
+- conclusion: uniform horizon robustness remains blocked; TrajNet|100 and UCY|100 need source/support or stronger long-horizon context repair before any policy promotion.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FP_H100_WEAK_HORIZON_SOURCE_SUPPORT_AUDIT:END -->

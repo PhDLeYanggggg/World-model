@@ -1,0 +1,596 @@
+{
+  "source": "fresh_stage42_h100_weak_horizon_source_support_audit",
+  "stage": "Stage42-FP H100 weak-horizon source/support audit",
+  "generated_at_utc": "2026-05-27T09:15:56.156994+00:00",
+  "git_commit": "9d8737f",
+  "input_hash": "9d828a4649bab41c4d563ef1497bc400c66eda65f1887ab3c4ce6a76137a195d",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-FO 证明 validation-only gain/harm specialist 仍未修复 TrajNet|100 和 UCY|100。",
+    "Stage42-FP 不训练新 policy，不调 test threshold；它把剩余 h100 weak horizons 拆到 source / scene / support / margin 层面。",
+    "future waypoints / endpoints 只作为 supervised labels 或 diagnostic/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "summary": {
+    "source": "fresh_stage42_h100_weak_horizon_source_support_audit",
+    "test_rows": 47458,
+    "input_fo_verdict": "stage42_fo_gain_harm_specialist_pass_with_horizon_limit",
+    "h100_weak_horizons": [
+      "TrajNet|100",
+      "UCY|100"
+    ],
+    "h100_weak_horizon_count": 2,
+    "blocker_counts": {
+      "long_horizon_h100_context_still_insufficient": 2,
+      "low_material_headroom": 2,
+      "oracle_low_margin_ambiguous": 2,
+      "single_or_sparse_validation_source_support": 2,
+      "source_specific_easy_safety_ci_failure": 2,
+      "validation_to_test_source_family_shift": 2,
+      "gain_harm_policy_abstained_due_to_validation_safety": 1
+    },
+    "uniform_horizon_claim_allowed": false,
+    "recommended_next_action": "source_support_or_long_horizon_context_repair_before_retrying_policy_promotion",
+    "decision": "diagnostic_only_keep_stage42_fh_fi_with_horizon_limit"
+  },
+  "metric_vs_floor_reconstructed_fo": {
+    "rows": 47458,
+    "all_improvement": 0.35199805819426944,
+    "t10_improvement": 0.6726250922029268,
+    "t25_improvement": 0.3407781814066436,
+    "t50_improvement": 0.2903171498775704,
+    "t100_raw_frame_diagnostic_improvement": 0.2114234278431587,
+    "hard_failure_improvement": 0.3335261842452327,
+    "easy_degradation": -0.3710209367693875,
+    "switch_rate": 0.74684984617978,
+    "harm_over_fallback": -0.16210914091408973
+  },
+  "audits": {
+    "TrajNet|100": {
+      "support": {
+        "key": "TrajNet|100",
+        "val_rows": 1160,
+        "test_rows": 5608,
+        "val_source_count": 1,
+        "test_source_count": 1,
+        "val_scene_count": 1,
+        "test_scene_count": 1,
+        "shared_source_count": 0,
+        "shared_family_count": 0,
+        "shared_sources": [],
+        "shared_families": [],
+        "test_source_rows": [
+          {
+            "name": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "rows": 5608
+          }
+        ],
+        "test_scene_rows": [
+          {
+            "name": "TrajNet_crowds",
+            "rows": 5608
+          }
+        ],
+        "val_source_rows": [
+          {
+            "name": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+            "rows": 1160
+          }
+        ],
+        "val_scene_rows": [
+          {
+            "name": "TrajNet_biwi",
+            "rows": 1160
+          }
+        ]
+      },
+      "fo_applied_policy": {
+        "key": "TrajNet|100",
+        "mode": "gain_harm_model",
+        "gain_min": 0.0,
+        "harm_max": 0.35,
+        "max_switch": 0.35,
+        "rows": 5608,
+        "switch_rows": 1962
+      },
+      "test_oracle": {
+        "rows": 5608,
+        "oracle_improvement_vs_floor": 0.19341156790213,
+        "oracle_improvement_vs_fh": 0.010640985250966684,
+        "best_candidate_distribution": {
+          "fh": 3963,
+          "fc": 5,
+          "di": 1502,
+          "fa": 90,
+          "fb": 0,
+          "floor": 48
+        },
+        "low_margin_share": {
+          "0.01": 0.9880527817403709,
+          "0.025": 0.9909058487874465,
+          "0.05": 0.9917974322396577
+        }
+      },
+      "candidate_delta_vs_fh": {
+        "fh": 0.0,
+        "fc": 0.00016787715689681182,
+        "di": 0.006568494026876315,
+        "fa": 0.0068507424394096406,
+        "fb": 0.006619585410310824,
+        "floor": -0.22659707897842285
+      },
+      "source_rows": [
+        {
+          "name": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "rows": 5608,
+          "metric": {
+            "rows": 5608,
+            "all_improvement": 0.18980531446058968,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.18980531446058968,
+            "hard_failure_improvement": 0.18980531446058968,
+            "easy_degradation": 0.033101065011506,
+            "switch_rate": 0.31651212553495006,
+            "harm_over_fallback": -0.20110759159089922
+          },
+          "bootstrap": {
+            "all": {
+              "low": 0.18249161832179814,
+              "mid": 0.18974637125440397,
+              "high": 0.19639553463146414,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "t50": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0,
+              "n": 0,
+              "bootstrap_n": 0
+            },
+            "t100_raw_frame_diagnostic": {
+              "low": 0.18286120887479174,
+              "mid": 0.1897185590560208,
+              "high": 0.19707919680451064,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "hard_failure": {
+              "low": 0.18274971170006019,
+              "mid": 0.19011999167881422,
+              "high": 0.19684144535932058,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "easy_degradation": {
+              "low": 0.008184032710613532,
+              "mid": 0.03141587264703721,
+              "high": 0.0592169852118658,
+              "n": 782,
+              "bootstrap_n": 1000
+            }
+          },
+          "near_bootstrap": {
+            "final_near_005": {
+              "low": 0.022106811697574894,
+              "mid": 0.02585592011412268,
+              "high": 0.029957203994293864,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_fc": {
+              "low": -0.006062767475035664,
+              "mid": -0.004101283880171184,
+              "high": -0.002670292439372329,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_di": {
+              "low": -0.0028530670470756064,
+              "mid": -0.0016048502139800285,
+              "high": -0.0003566333808844508,
+              "n": 5608,
+              "bootstrap_n": 1000
+            }
+          },
+          "robust_positive": false,
+          "weak_reasons": [
+            "easy_ci_exceeds_2pct"
+          ]
+        }
+      ],
+      "scene_rows": [
+        {
+          "name": "TrajNet_crowds",
+          "rows": 5608,
+          "metric": {
+            "rows": 5608,
+            "all_improvement": 0.18980531446058968,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.18980531446058968,
+            "hard_failure_improvement": 0.18980531446058968,
+            "easy_degradation": 0.033101065011506,
+            "switch_rate": 0.31651212553495006,
+            "harm_over_fallback": -0.20110759159089922
+          },
+          "bootstrap": {
+            "all": {
+              "low": 0.18249002775074347,
+              "mid": 0.18983284073557188,
+              "high": 0.19634830972135858,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "t50": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0,
+              "n": 0,
+              "bootstrap_n": 0
+            },
+            "t100_raw_frame_diagnostic": {
+              "low": 0.18225659958074128,
+              "mid": 0.18969977597478505,
+              "high": 0.19649838320507185,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "hard_failure": {
+              "low": 0.1829029876501801,
+              "mid": 0.1897733202445212,
+              "high": 0.19642696672014284,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "easy_degradation": {
+              "low": 0.007783712465029349,
+              "mid": 0.03169634961156209,
+              "high": 0.058778068519177905,
+              "n": 782,
+              "bootstrap_n": 1000
+            }
+          },
+          "near_bootstrap": {
+            "final_near_005": {
+              "low": 0.021576319543509272,
+              "mid": 0.026034236804564907,
+              "high": 0.029961661911554915,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_fc": {
+              "low": -0.006062767475035664,
+              "mid": -0.0042796005706134095,
+              "high": -0.0024964336661911554,
+              "n": 5608,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_di": {
+              "low": -0.003031383737517832,
+              "mid": -0.0016048502139800285,
+              "high": -0.0003566333808844508,
+              "n": 5608,
+              "bootstrap_n": 1000
+            }
+          },
+          "robust_positive": false,
+          "weak_reasons": [
+            "easy_ci_exceeds_2pct"
+          ]
+        }
+      ],
+      "blockers": [
+        "long_horizon_h100_context_still_insufficient",
+        "low_material_headroom",
+        "oracle_low_margin_ambiguous",
+        "single_or_sparse_validation_source_support",
+        "source_specific_easy_safety_ci_failure",
+        "validation_to_test_source_family_shift"
+      ],
+      "next_action": "add_train_only_h100_source_support_or_build_source_family_specific_validation_before_more_modeling"
+    },
+    "UCY|100": {
+      "support": {
+        "key": "UCY|100",
+        "val_rows": 1440,
+        "test_rows": 1440,
+        "val_source_count": 1,
+        "test_source_count": 1,
+        "val_scene_count": 1,
+        "test_scene_count": 1,
+        "shared_source_count": 0,
+        "shared_family_count": 0,
+        "shared_sources": [],
+        "shared_families": [],
+        "test_source_rows": [
+          {
+            "name": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+            "rows": 1440
+          }
+        ],
+        "test_scene_rows": [
+          {
+            "name": "UCY_crowds",
+            "rows": 1440
+          }
+        ],
+        "val_source_rows": [
+          {
+            "name": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+            "rows": 1440
+          }
+        ],
+        "val_scene_rows": [
+          {
+            "name": "UCY_zara03",
+            "rows": 1440
+          }
+        ]
+      },
+      "fo_applied_policy": {
+        "key": "UCY|100",
+        "mode": "keep_fm",
+        "rows": 1440,
+        "switch_rows": 0
+      },
+      "test_oracle": {
+        "rows": 1440,
+        "oracle_improvement_vs_floor": 0.289892571427546,
+        "oracle_improvement_vs_fh": 0.027359666298423346,
+        "best_candidate_distribution": {
+          "fh": 547,
+          "fc": 9,
+          "di": 620,
+          "fa": 106,
+          "fb": 0,
+          "floor": 158
+        },
+        "low_margin_share": {
+          "0.01": 0.8631944444444445,
+          "0.025": 0.8916666666666667,
+          "0.05": 0.9027777777777778
+        }
+      },
+      "candidate_delta_vs_fh": {
+        "fh": 0.0,
+        "fc": 8.175780679475775e-05,
+        "di": 0.007844899993292187,
+        "fa": 0.008678564560764435,
+        "fb": 0.007877262903924653,
+        "floor": -0.36970871528114957
+      },
+      "source_rows": [
+        {
+          "name": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "rows": 1440,
+          "metric": {
+            "rows": 1440,
+            "all_improvement": 0.27757032455165087,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.27757032455165087,
+            "hard_failure_improvement": 0.27757032455165087,
+            "easy_degradation": -0.01913301236674103,
+            "switch_rate": 0.7520833333333333,
+            "harm_over_fallback": -0.37432338463752557
+          },
+          "bootstrap": {
+            "all": {
+              "low": 0.2613526838106001,
+              "mid": 0.2777922331549535,
+              "high": 0.294490202927037,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "t50": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0,
+              "n": 0,
+              "bootstrap_n": 0
+            },
+            "t100_raw_frame_diagnostic": {
+              "low": 0.2596397099197736,
+              "mid": 0.2774747242182342,
+              "high": 0.2969762628755877,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "hard_failure": {
+              "low": 0.26015902984176864,
+              "mid": 0.27748791757013286,
+              "high": 0.2949262524256815,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "easy_degradation": {
+              "low": -0.13672909960094085,
+              "mid": -0.021885674769877572,
+              "high": 0.09045439890361427,
+              "n": 193,
+              "bootstrap_n": 1000
+            }
+          },
+          "near_bootstrap": {
+            "final_near_005": {
+              "low": 0.0,
+              "mid": 0.001388888888888889,
+              "high": 0.003472222222222222,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_fc": {
+              "low": -0.029861111111111113,
+              "mid": -0.022222222222222223,
+              "high": -0.015277777777777777,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_di": {
+              "low": -0.005555555555555556,
+              "mid": -0.002777777777777778,
+              "high": -0.0006944444444444445,
+              "n": 1440,
+              "bootstrap_n": 1000
+            }
+          },
+          "robust_positive": false,
+          "weak_reasons": [
+            "easy_ci_exceeds_2pct"
+          ]
+        }
+      ],
+      "scene_rows": [
+        {
+          "name": "UCY_crowds",
+          "rows": 1440,
+          "metric": {
+            "rows": 1440,
+            "all_improvement": 0.27757032455165087,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.27757032455165087,
+            "hard_failure_improvement": 0.27757032455165087,
+            "easy_degradation": -0.01913301236674103,
+            "switch_rate": 0.7520833333333333,
+            "harm_over_fallback": -0.37432338463752557
+          },
+          "bootstrap": {
+            "all": {
+              "low": 0.26044159754439955,
+              "mid": 0.2777610317577911,
+              "high": 0.29646267285972594,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "t50": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0,
+              "n": 0,
+              "bootstrap_n": 0
+            },
+            "t100_raw_frame_diagnostic": {
+              "low": 0.26052436852699973,
+              "mid": 0.27768934165187564,
+              "high": 0.2956869378135786,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "hard_failure": {
+              "low": 0.2611445588578434,
+              "mid": 0.2779912692839757,
+              "high": 0.2951097234393799,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "easy_degradation": {
+              "low": -0.14156935778079152,
+              "mid": -0.02278482914840263,
+              "high": 0.09279664530897061,
+              "n": 193,
+              "bootstrap_n": 1000
+            }
+          },
+          "near_bootstrap": {
+            "final_near_005": {
+              "low": 0.0,
+              "mid": 0.001388888888888889,
+              "high": 0.003472222222222222,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_fc": {
+              "low": -0.030555555555555555,
+              "mid": -0.022222222222222223,
+              "high": -0.015277777777777777,
+              "n": 1440,
+              "bootstrap_n": 1000
+            },
+            "delta_final_minus_di": {
+              "low": -0.00625,
+              "mid": -0.002777777777777778,
+              "high": -0.0006944444444444445,
+              "n": 1440,
+              "bootstrap_n": 1000
+            }
+          },
+          "robust_positive": false,
+          "weak_reasons": [
+            "easy_ci_exceeds_2pct"
+          ]
+        }
+      ],
+      "blockers": [
+        "gain_harm_policy_abstained_due_to_validation_safety",
+        "long_horizon_h100_context_still_insufficient",
+        "low_material_headroom",
+        "oracle_low_margin_ambiguous",
+        "single_or_sparse_validation_source_support",
+        "source_specific_easy_safety_ci_failure",
+        "validation_to_test_source_family_shift"
+      ],
+      "next_action": "add_train_only_h100_source_support_or_build_source_family_specific_validation_before_more_modeling"
+    }
+  },
+  "selection_rule": {
+    "diagnostic_only": true,
+    "does_not_train_new_policy": true,
+    "uses_test_metrics_for_policy_selection": false,
+    "oracle_uses_future_labels_for_diagnostic_only": true,
+    "test_rows_reporting_only": true
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "diagnostic_oracle_not_deployed": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "uniform_horizon_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_fp_gate": {
+    "source": "fresh_stage42_h100_weak_horizon_source_support_audit",
+    "gates": {
+      "source_fresh": true,
+      "fo_input_verified": true,
+      "h100_weak_horizons_present": true,
+      "source_support_audited": true,
+      "source_rows_audited": true,
+      "scene_rows_audited": true,
+      "oracle_margin_carried_forward": true,
+      "blockers_identified": true,
+      "next_actions_defined": true,
+      "diagnostic_only_no_policy_promotion": true,
+      "uniform_horizon_claim_false": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_fp_h100_source_support_audit_pass"
+  }
+}

@@ -5316,3 +5316,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - This is a documentation/evidence-ledger refresh, not a new training run.
 - verification: `.venv-pytorch/bin/python -m json.tool research_state.json` passed; `.venv-pytorch/bin/python -m pytest tests` -> `828 passed in 31.08s`.
 <!-- M3W_GOAL_EVIDENCE_LEDGER_REFRESH:END -->
+
+<!-- STAGE42_FP_H100_WEAK_HORIZON_SOURCE_SUPPORT_AUDIT:START -->
+## Stage42-FP H100 Weak-Horizon Source / Support Audit
+
+- source: `fresh_stage42_h100_weak_horizon_source_support_audit`
+- role: diagnostic source/support decomposition for remaining h100 weak horizons after Stage42-FO; no new training and no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fp_h100_source_support_audit_pass`.
+- h100 weak horizons: `['TrajNet|100', 'UCY|100']`.
+- blocker counts: `{'long_horizon_h100_context_still_insufficient': 2, 'low_material_headroom': 2, 'oracle_low_margin_ambiguous': 2, 'single_or_sparse_validation_source_support': 2, 'source_specific_easy_safety_ci_failure': 2, 'validation_to_test_source_family_shift': 2, 'gain_harm_policy_abstained_due_to_validation_safety': 1}`.
+- recommended next action: `source_support_or_long_horizon_context_repair_before_retrying_policy_promotion`.
+- conclusion: uniform horizon robustness remains blocked; TrajNet|100 and UCY|100 need source/support or stronger long-horizon context repair before any policy promotion.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+- verification: `.venv-pytorch/bin/python run_stage42_h100_weak_horizon_source_support_audit.py` -> `15 / 15`; focused pytest `4 passed`; full pytest `832 passed in 30.13s`.
+<!-- STAGE42_FP_H100_WEAK_HORIZON_SOURCE_SUPPORT_AUDIT:END -->
