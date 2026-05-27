@@ -1,0 +1,1100 @@
+{
+  "source": "fresh_paper_refresh_from_stage42_dp_dq_dn_do",
+  "stage": "Stage42-DR",
+  "generated_at_utc": "2026-05-27T00:03:21.621938+00:00",
+  "git_commit": "b43961a",
+  "input_hash": "d67fc2888632da41768ce89e0960edff92a7854129a4ec68e2da037d929c992c",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DR 是 paper-ready evidence refresh，不重新训练，不调 threshold，不把 paper update 当模型成功。",
+    "本阶段同步 Stage42-DP context closure 和 Stage42-DQ full-waypoint promotion checkpoint。",
+    "future endpoints / waypoints 只作为 supervised/evaluation labels，不能作为 inference input。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "stage42_dp": {
+      "source": "fresh_synthesis_after_fresh_ar_as_rerun",
+      "stage": "Stage42-DP",
+      "generated_at_utc": "2026-05-26T23:47:02.993401+00:00",
+      "git_commit": "950aa86",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-DP 是 source-level sequence/graph context closure，不重新训练新模型，不调 test threshold。",
+        "本阶段整合 fresh Stage42-AR sequence-context 和 fresh Stage42-AS graph-context rerun。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "inputs": {
+        "stage42_ar_sequence_context": {
+          "path": "outputs/stage42_long_research/source_level_sequence_context_stage42.json",
+          "source": "fresh_run",
+          "generated_at_utc": "2026-05-26T23:43:34.694500+00:00",
+          "verdict": "stage42_ar_sequence_context_evidence_partial_or_negative",
+          "gate": "11/12"
+        },
+        "stage42_as_graph_context": {
+          "path": "outputs/stage42_long_research/source_level_graph_context_stage42.json",
+          "source": "fresh_run",
+          "generated_at_utc": "2026-05-26T23:40:45.362187+00:00",
+          "verdict": "stage42_as_graph_context_evidence_partial_or_negative",
+          "gate": "10/11"
+        },
+        "stage42_db_context_rescue_decision": {
+          "path": "outputs/stage42_long_research/context_rescue_decision_stage42.json",
+          "source": "fresh_synthesis_from_cached_verified_context_runs"
+        },
+        "stage42_dc_context_switchability_gate": {
+          "path": "outputs/stage42_long_research/context_switchability_gate_stage42.json",
+          "source": "fresh_run"
+        }
+      },
+      "summary": {
+        "source": "fresh_synthesis_after_fresh_ar_as_rerun",
+        "baseline_family_metric": {
+          "rows": 47458.0,
+          "all_improvement": 0.2877734037648393,
+          "t10_improvement": 0.47618706265543653,
+          "t25_improvement": 0.31611808582214795,
+          "t50_improvement": 0.31542535139554606,
+          "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+          "hard_failure_improvement": 0.2758122379367457,
+          "easy_degradation": -0.32418582524688455,
+          "switch_rate": 0.6606262379367019,
+          "harm_over_fallback": -0.13253112673847436
+        },
+        "sequence_rows": [
+          {
+            "protocol": "sequence_context",
+            "variant": "sequence_history",
+            "protected": {
+              "all_improvement": 0.2633152586326496,
+              "t50_improvement": 0.2323679642403601,
+              "t100_raw_frame_diagnostic_improvement": 0.1417107914185527,
+              "hard_failure_improvement": 0.24741418790487835,
+              "easy_degradation": -0.30982823445844976
+            },
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.02445814513218969,
+              "t50_improvement": -0.08305738715518596,
+              "hard_failure_improvement": -0.02839805003186735,
+              "easy_degradation": 0.014357590788434793
+            }
+          },
+          {
+            "protocol": "sequence_context",
+            "variant": "sequence_goal_neighbor_no_history",
+            "protected": {
+              "all_improvement": 0.26130002736023783,
+              "t50_improvement": 0.2232892377764233,
+              "t100_raw_frame_diagnostic_improvement": 0.14122213265107564,
+              "hard_failure_improvement": 0.2467397948665826,
+              "easy_degradation": -0.28601953415774817
+            },
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.026473376404601456,
+              "t50_improvement": -0.09213611361912277,
+              "hard_failure_improvement": -0.0290724430701631,
+              "easy_degradation": 0.038166291089136384
+            }
+          },
+          {
+            "protocol": "sequence_context",
+            "variant": "sequence_history_goal_neighbor",
+            "protected": {
+              "all_improvement": 0.20024997391877342,
+              "t50_improvement": 0.2278968439041842,
+              "t100_raw_frame_diagnostic_improvement": 0.13998693960945707,
+              "hard_failure_improvement": 0.1797244742637072,
+              "easy_degradation": -0.27044076380100046
+            },
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.08752342984606587,
+              "t50_improvement": -0.08752850749136187,
+              "hard_failure_improvement": -0.0960877636730385,
+              "easy_degradation": 0.05374506144588409
+            }
+          }
+        ],
+        "graph_rows": [
+          {
+            "protocol": "graph_context",
+            "variant": "graph_only",
+            "protected": {
+              "all_improvement": 0.26427016918217416,
+              "t50_improvement": 0.22967318481501453,
+              "t100_raw_frame_diagnostic_improvement": 0.14272321843884295,
+              "hard_failure_improvement": 0.24880998931431964,
+              "easy_degradation": -0.3175381477489213
+            },
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.023503234582665122,
+              "t50_improvement": -0.08575216658053153,
+              "hard_failure_improvement": -0.02700224862242606,
+              "easy_degradation": 0.006647677497963245
+            }
+          },
+          {
+            "protocol": "graph_context",
+            "variant": "graph_goal",
+            "protected": {
+              "all_improvement": 0.2646507299807236,
+              "t50_improvement": 0.22903525133547764,
+              "t100_raw_frame_diagnostic_improvement": 0.14257885840173,
+              "hard_failure_improvement": 0.2494716891363956,
+              "easy_degradation": -0.3163125928245055
+            },
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.0231226737841157,
+              "t50_improvement": -0.08639010006006842,
+              "hard_failure_improvement": -0.026340548800350083,
+              "easy_degradation": 0.007873232422379028
+            }
+          },
+          {
+            "protocol": "graph_context",
+            "variant": "graph_history_goal",
+            "protected": {
+              "all_improvement": 0.2647648890850426,
+              "t50_improvement": 0.22900798793791954,
+              "t100_raw_frame_diagnostic_improvement": 0.142317743986642,
+              "hard_failure_improvement": 0.24957754247287833,
+              "easy_degradation": -0.31638833681258816
+            },
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.0230085146797967,
+              "t50_improvement": -0.08641736345762652,
+              "hard_failure_improvement": -0.026234695463867364,
+              "easy_degradation": 0.007797488434296396
+            }
+          }
+        ],
+        "positive_context_rows": [],
+        "best_delta_all": -0.0230085146797967,
+        "best_delta_t50": -0.08305738715518596,
+        "best_delta_hard_failure": -0.026234695463867364,
+        "worst_delta_all": -0.08752342984606587,
+        "worst_delta_t50": -0.09213611361912277,
+        "prior_context_rescue_decision": "stop_repeating_current_context_residual_or_gated_protocols",
+        "prior_context_switchability_decision": "context_switchability_not_supported",
+        "closure_decision": "close_current_sequence_graph_residual_context_protocol",
+        "root_cause": "Fresh Stage42-AR/AS reruns show that temporal sequence context and current-frame kNN graph context both reduce all/t50/hard-failure improvements relative to the baseline-family first-stage control. The dominant current signal remains baseline-family rollout context plus safety floor; the present residual context target is not extracting independent scene/goal/interaction value.",
+        "next_best_action": [
+          "Do not repeat the same residual sequence/graph context protocol without changing target or data support.",
+          "Prioritize source/legal/time closure for ETH_UCY, TrajNet, and UCY so context can be tested on better-calibrated sources.",
+          "If context modeling is revisited, use switchability/gain-harm or full sequence architecture with baseline-family control, not blind residual deltas.",
+          "Keep Stage37/teacher floor and Stage42 protected runtime policies as deployable evidence while context remains auxiliary/diagnostic."
+        ]
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "source_overlap_pass": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_dp_gate": {
+        "source": "fresh_synthesis_after_fresh_ar_as_rerun",
+        "gates": {
+          "fresh_ar_rerun_loaded": true,
+          "fresh_as_rerun_loaded": true,
+          "sequence_variants_complete": true,
+          "graph_variants_complete": true,
+          "sequence_graph_increment_not_overclaimed": true,
+          "baseline_family_control_recorded": true,
+          "closure_decision_recorded": true,
+          "root_cause_written": true,
+          "next_action_written": true,
+          "future_endpoint_blocked": true,
+          "future_waypoint_blocked": true,
+          "central_velocity_blocked": true,
+          "test_endpoint_goals_blocked": true,
+          "no_test_threshold_tuning": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 19,
+        "total": 19,
+        "verdict": "stage42_dp_context_model_closure_pass"
+      }
+    },
+    "stage42_dq": {
+      "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+      "stage": "Stage42-DQ",
+      "generated_at_utc": "2026-05-26T23:58:54.000718+00:00",
+      "git_commit": "c11f73d",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-DQ 是 DA-3 fresh full-waypoint promotion checkpoint，不执行 Stage5C，不启用 SMC。",
+        "本阶段整合 fresh Stage42-C full-waypoint dynamics、fresh Stage42-CO common-validation composer、fresh Stage42-DI group-consistency repair、fresh Stage42-DL runtime replay。",
+        "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。"
+      ],
+      "inputs": {
+        "stage42_c_full_waypoint_dynamics": {
+          "path": "outputs/stage42_long_research/full_waypoint_dynamics_stage42.json",
+          "source": "fresh_run",
+          "generated_at_utc": "2026-05-26T23:52:30.763544+00:00",
+          "gate": "12/12",
+          "verdict": "stage42_c_full_waypoint_dynamics_pass"
+        },
+        "stage42_co_common_validation_composer": {
+          "path": "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+          "source": "fresh_common_validation_eval_from_cached_verified_checkpoints",
+          "generated_at_utc": "2026-05-26T23:53:38.575968+00:00",
+          "gate": "14/14",
+          "verdict": "stage42_co_common_validation_bridge_shape_composer_pass"
+        },
+        "stage42_di_group_consistency_repair": {
+          "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+          "source": "fresh_stage42_di_group_consistency_full_waypoint_repair",
+          "generated_at_utc": "2026-05-26T23:55:04.962245+00:00",
+          "gate": "17/17",
+          "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+        },
+        "stage42_dl_runtime_replay": {
+          "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+          "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
+          "generated_at_utc": "2026-05-26T23:55:09.000409+00:00",
+          "gate": "30/30",
+          "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+        },
+        "stage42_dp_context_closure": {
+          "path": "outputs/stage42_long_research/context_model_closure_stage42.json",
+          "source": "fresh_synthesis_after_fresh_ar_as_rerun",
+          "verdict": "stage42_dp_context_model_closure_pass"
+        }
+      },
+      "summary": {
+        "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+        "full_waypoint_transformer_protected_vs_floor": {
+          "rows": 55528.0,
+          "all_improvement": 0.18577852429834418,
+          "t50_improvement": 0.14803699577731477,
+          "t100_improvement": 0.22857426649949408,
+          "hard_failure_improvement": 0.19518047277951456,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.2946441434951736
+        },
+        "ungated_full_waypoint_transformer_vs_floor": {
+          "rows": 55528.0,
+          "all_improvement": 0.296621240422128,
+          "t50_improvement": 0.21520334842637612,
+          "t100_improvement": 0.359213230578716,
+          "hard_failure_improvement": 0.32937413785262626,
+          "easy_degradation": 1.2458611044726973,
+          "switch_rate": 1.0
+        },
+        "m3w_neural_v1_endpoint_linear_bridge_vs_floor": {
+          "rows": 55528.0,
+          "all_improvement": 0.2102513255185352,
+          "t50_improvement": 0.13652231450154184,
+          "t100_improvement": 0.14694086716388166,
+          "hard_failure_improvement": 0.20384916307933942,
+          "easy_degradation": -0.14511076140795587,
+          "switch_rate": 0.3410171445036738
+        },
+        "common_validation_composer_vs_endpoint_linear": {
+          "rows": 55528.0,
+          "all_improvement": 0.030166976195252437,
+          "t50_improvement": 0.01502943431774939,
+          "t100_raw_frame_diagnostic_improvement": 0.06118732156780071,
+          "hard_failure_improvement": 0.03280214089079592,
+          "easy_degradation": 0.002532827637569346,
+          "switch_rate": 0.21349589396340585
+        },
+        "common_validation_composer_vs_floor": {
+          "rows": 55528.0,
+          "all_improvement": 0.2340756549818498,
+          "t50_improvement": 0.1494998956605832,
+          "t100_raw_frame_diagnostic_improvement": 0.19913727064107445,
+          "hard_failure_improvement": 0.22996461500233611,
+          "easy_degradation": -0.14294547431738935,
+          "switch_rate": 0.21349589396340585
+        },
+        "group_consistency_repair_vs_train_horizon_causal_floor": {
+          "rows": 47458.0,
+          "all_improvement": 0.24715658317833844,
+          "t50_improvement": 0.2236298792899738,
+          "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+          "hard_failure_improvement": 0.23887420070464105,
+          "easy_degradation": -0.2563085406508494,
+          "switch_rate": 0.5880989506511021
+        },
+        "group_consistency_runtime_replay_vs_train_horizon_causal_floor": {
+          "rows": 47458.0,
+          "all_improvement": 0.24715658317833844,
+          "t50_improvement": 0.2236298792899738,
+          "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+          "hard_failure_improvement": 0.23887420070464105,
+          "easy_degradation": -0.2563085406508494,
+          "switch_rate": 0.5880989506511021
+        },
+        "group_consistency_delta_vs_stage42_am": {
+          "all_improvement": 0.001368197579674879,
+          "t50_improvement": 0.0034591684196666472,
+          "t100_raw_frame_diagnostic_improvement": -0.0001912838735811384,
+          "hard_failure_improvement": 0.0013803223197202952,
+          "easy_degradation": 0.00031875910508205596
+        },
+        "group_consistency_safety": {
+          "base_near_005": 0.019364490707573012,
+          "final_near_005": 0.01382274853554722,
+          "floor_near_005": 0.022377681318218216,
+          "runtime_base_near_005": 0.019364490707573012,
+          "runtime_final_near_005": 0.01382274853554722,
+          "runtime_floor_near_005": 0.022377681318218216,
+          "selected_xy_max_abs_diff": 0.0,
+          "switch_exact_match": true,
+          "selected_ade_max_abs_diff": 0.0,
+          "selected_fde_max_abs_diff": 0.0
+        },
+        "context_closure_decision": "close_current_sequence_graph_residual_context_protocol",
+        "promotion_decision": {
+          "source_level_group_consistency_runtime_policy_promoted": true,
+          "common_validation_endpoint_composer_remains_safety_sensitive_bridge": true,
+          "global_primary_full_waypoint_replacement_claim_allowed": false,
+          "ungated_full_waypoint_deployable": false,
+          "reason": "Fresh DI/DL support a protected source-level group-consistency full-waypoint runtime policy with exact replay and proximity repair. However, common-validation endpoint-linear bridge/composer and source-level train-horizon floor use different comparison protocols, so the result cannot be collapsed into a single global primary full-waypoint replacement claim."
+        },
+        "next_best_action": [
+          "Keep Stage42-DL group-consistency runtime as source-level full-waypoint runtime evidence.",
+          "Use Stage42-CQ proximity-aware composer as the safety-sensitive endpoint bridge/shape policy when endpoint-linear baseline is the comparison floor.",
+          "Do not deploy ungated full-waypoint because easy degradation remains unsafe.",
+          "Prioritize source/legal/time closure and protocol-aligned external sources before broader metric/seconds or global t100/full-waypoint claims."
+        ]
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_dq_gate": {
+        "source": "fresh_synthesis_after_da3_full_waypoint_rerun",
+        "gates": {
+          "fresh_full_waypoint_dynamics_loaded": true,
+          "fresh_common_validation_composer_loaded": true,
+          "fresh_group_consistency_repair_loaded": true,
+          "fresh_runtime_replay_loaded": true,
+          "runtime_exact_replay": true,
+          "group_consistency_all_positive": true,
+          "group_consistency_t50_positive": true,
+          "group_consistency_hard_positive": true,
+          "group_consistency_improves_stage42_am_all": true,
+          "group_consistency_improves_stage42_am_hard": true,
+          "group_consistency_proximity_repaired": true,
+          "ungated_full_waypoint_blocked": true,
+          "context_residual_protocol_closed": true,
+          "primary_global_replacement_not_overclaimed": true,
+          "future_endpoint_blocked": true,
+          "future_waypoint_blocked": true,
+          "central_velocity_blocked": true,
+          "test_endpoint_goals_blocked": true,
+          "no_test_threshold_tuning": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 24,
+        "total": 24,
+        "verdict": "stage42_dq_full_waypoint_promotion_checkpoint_pass"
+      }
+    },
+    "stage42_dn": {
+      "source": "fresh_deployment_variant_card_from_stage42_cr_cq_di_dl_dm",
+      "stage": "Stage42-DN",
+      "generated_at_utc": "2026-05-26T23:23:16.195382+00:00",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-DN 是 deployment variant card，不重新训练，不调 threshold。",
+        "DN 区分 safety-sensitive deployable、accuracy-priority diagnostic、source-level full-waypoint runtime policy，避免混用 claim。",
+        "future waypoints / endpoints 只作为 supervised/evaluation labels，不能作为 inference input。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "inputs": {
+        "proximity_guard_ablation": {
+          "name": "proximity_guard_ablation",
+          "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+          "sha256": "6b290ecd9858c7c86dd39542f6759ab82072f4605be97638c5ae6ef95b38798c",
+          "stage42_cr_gate": {
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cr_proximity_guard_ablation_pass"
+          }
+        },
+        "proximity_aware_guard": {
+          "name": "proximity_aware_guard",
+          "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+          "sha256": "9d15e7338270fb43ef1eb1c8be7c87995054a9113f12f4d1a660393064258c79",
+          "stage42_cq_gate": {
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+          }
+        },
+        "group_consistency_repair": {
+          "name": "group_consistency_repair",
+          "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+          "sha256": "29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221",
+          "stage42_di_gate": {
+            "passed": 17,
+            "total": 17,
+            "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+          }
+        },
+        "group_consistency_runtime": {
+          "name": "group_consistency_runtime",
+          "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+          "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+          "stage42_dl_gate": {
+            "passed": 30,
+            "total": 30,
+            "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+          }
+        },
+        "reviewer_replay_package": {
+          "name": "reviewer_replay_package",
+          "path": "outputs/stage42_long_research/reviewer_replay_package_stage42.json",
+          "sha256": "0f602055709cb1c2f95166240fab4c60e57bcf97da2f81d8bc6c981b8e468521",
+          "stage42_dm_gate": {
+            "passed": 21,
+            "total": 21,
+            "verdict": "stage42_dm_reviewer_replay_package_pass"
+          }
+        }
+      },
+      "deployment_variants": [
+        {
+          "variant": "endpoint_linear_reference",
+          "role": "reference_floor",
+          "deployment_status": "reference_only",
+          "comparison_baseline": "endpoint_linear_bridge",
+          "metrics": {
+            "all_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.0,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.0
+          },
+          "safety": {
+            "near_collision_005_delta_vs_endpoint": 0.0
+          },
+          "claim_use": "reference floor for bridge/shape composer; not a new M3W deployment claim"
+        },
+        {
+          "variant": "no_proximity_guard",
+          "role": "accuracy_priority_diagnostic",
+          "deployment_status": "diagnostic_not_safety_sensitive",
+          "comparison_baseline": "endpoint_linear_bridge",
+          "metrics": {
+            "all_improvement": 0.030166976195252437,
+            "t50_improvement": 0.01502943431774939,
+            "t100_raw_frame_diagnostic_improvement": 0.06118732156780071,
+            "hard_failure_improvement": 0.03280214089079592,
+            "easy_degradation": 0.002532827637569346,
+            "switch_rate": 0.21349589396340585
+          },
+          "safety": {
+            "near_collision_005_delta_vs_endpoint": 0.0033566895337319713,
+            "safety_caveat": "worsens near-collision@0.05 versus endpoint-linear"
+          },
+          "claim_use": "may be reported as an accuracy-priority diagnostic Pareto point, not as safety-sensitive deployment"
+        },
+        {
+          "variant": "proximity_guard",
+          "role": "safety_sensitive_deployable_bridge_shape_policy",
+          "deployment_status": "deployable_when_joint_proximity_safety_is_required",
+          "comparison_baseline": "endpoint_linear_bridge",
+          "metrics": {
+            "all_improvement": 0.017743597342181783,
+            "t50_improvement": 0.010673426149055754,
+            "t100_raw_frame_diagnostic_improvement": 0.03480124336134305,
+            "hard_failure_improvement": 0.01929354722729537,
+            "easy_degradation": 0.0024927762207753723,
+            "switch_rate": 0.1696441434951736
+          },
+          "safety": {
+            "near_collision_005_delta_vs_endpoint": -0.0006053046700172371,
+            "all_ci_low": 0.015001017840065956,
+            "t50_ci_low": 0.005939549853030457
+          },
+          "claim_use": "safety-sensitive protected bridge/shape composer variant"
+        },
+        {
+          "variant": "group_consistency_full_waypoint_runtime",
+          "role": "source_level_full_waypoint_group_consistency_runtime_policy",
+          "deployment_status": "runtime_ready_for_its_source_level_protocol",
+          "comparison_baseline": "train_horizon_causal_floor_not_endpoint_linear_bridge",
+          "metrics": {
+            "all_improvement": 0.24715658317833844,
+            "t50_improvement": 0.2236298792899738,
+            "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+            "hard_failure_improvement": 0.23887420070464105,
+            "easy_degradation": -0.2563085406508494,
+            "switch_rate": 0.5880989506511021
+          },
+          "safety": {
+            "base_near_005": 0.019364490707573012,
+            "final_near_005": 0.01382274853554722,
+            "floor_near_005": 0.022377681318218216,
+            "selected_xy_max_abs_diff": 0.0,
+            "switch_exact_match": true
+          },
+          "claim_use": "stronger full-waypoint runtime evidence, but its baseline/protocol differs from endpoint-linear composer; do not rank-mix without stating baseline"
+        }
+      ],
+      "input_summaries": [
+        {
+          "name": "proximity_guard_ablation",
+          "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+          "sha256": "6b290ecd9858c7c86dd39542f6759ab82072f4605be97638c5ae6ef95b38798c",
+          "stage42_cr_gate": {
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cr_proximity_guard_ablation_pass"
+          }
+        },
+        {
+          "name": "proximity_aware_guard",
+          "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+          "sha256": "9d15e7338270fb43ef1eb1c8be7c87995054a9113f12f4d1a660393064258c79",
+          "stage42_cq_gate": {
+            "passed": 19,
+            "total": 19,
+            "verdict": "stage42_cq_proximity_aware_composer_guard_pass"
+          }
+        },
+        {
+          "name": "group_consistency_repair",
+          "path": "outputs/stage42_long_research/group_consistency_full_waypoint_repair_stage42.json",
+          "sha256": "29bde3215487a1f90d1395250f15fd09accfdb174e7ea5a43fbc94ef91828221",
+          "stage42_di_gate": {
+            "passed": 17,
+            "total": 17,
+            "verdict": "stage42_di_group_consistency_full_waypoint_repair_pass_promotable"
+          }
+        },
+        {
+          "name": "group_consistency_runtime",
+          "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
+          "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+          "stage42_dl_gate": {
+            "passed": 30,
+            "total": 30,
+            "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
+          }
+        },
+        {
+          "name": "reviewer_replay_package",
+          "path": "outputs/stage42_long_research/reviewer_replay_package_stage42.json",
+          "sha256": "0f602055709cb1c2f95166240fab4c60e57bcf97da2f81d8bc6c981b8e468521",
+          "stage42_dm_gate": {
+            "passed": 21,
+            "total": 21,
+            "verdict": "stage42_dm_reviewer_replay_package_pass"
+          }
+        }
+      ],
+      "recommended_policy": {
+        "safety_sensitive_default": "proximity_guard",
+        "accuracy_priority_diagnostic": "no_proximity_guard",
+        "source_level_full_waypoint_runtime_candidate": "group_consistency_full_waypoint_runtime",
+        "deployment_floor": "Stage37 / teacher floor remains required"
+      },
+      "baseline_mixing_caveat": true,
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_dn_gate": {
+        "gates": {
+          "cr_ablation_passed": true,
+          "cq_guard_passed": true,
+          "di_group_repair_passed": true,
+          "dl_runtime_passed": true,
+          "dm_reviewer_replay_passed": true,
+          "no_guard_marked_diagnostic": true,
+          "no_guard_proximity_caveat_visible": true,
+          "proximity_guard_marked_safety_deployable": true,
+          "proximity_guard_near_collision_not_worse": true,
+          "proximity_guard_ci_positive": true,
+          "group_runtime_marked_protocol_specific": true,
+          "group_runtime_exact_replay_visible": true,
+          "group_runtime_near_collision_reduced": true,
+          "baseline_mixing_caveat_present": true,
+          "recommended_policy_declared": true,
+          "no_metric_seconds_overclaim": true,
+          "true_3d_overclaim_blocked": true,
+          "foundation_overclaim_blocked": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 20,
+        "total": 20,
+        "verdict": "stage42_dn_deployment_variant_card_pass"
+      }
+    },
+    "stage42_do": {
+      "source": "fresh_synthesis_from_stage42_cg_bn_dd_after_da1_rerun",
+      "stage": "Stage42-DO",
+      "generated_at_utc": "2026-05-26T23:28:27.142949+00:00",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-DO 是 DA-1 source/legal/time closure action package，不训练模型、不下载数据、不转换数据。",
+        "本步骤复核 Stage42-CG terms validator 与 Stage42-BN time/geometry calibration，并生成明确 user_action_required。",
+        "local path、parseability、H/FPS evidence 不等于 legal conversion permission。",
+        "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon；只有 source-specific calibrated subset 可以在未来单独声明。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "input_summaries": {
+        "terms": {
+          "path": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+          "sha256": "3490ef7846ee5db32c127ad5ed14bb05041d57e4aceba0d2267ace17d3820f21",
+          "stage42_cg_gate": {
+            "passed": 11,
+            "total": 11,
+            "verdict": "stage42_cg_source_terms_confirmation_validator_pass"
+          }
+        },
+        "time_geometry": {
+          "path": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+          "sha256": "070bb33f20b6780150568d0bfde93ad7333118c6635d2a187dd3b634905afd27",
+          "stage42_bn_gate": {
+            "passed": 13,
+            "total": 13,
+            "verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked"
+          }
+        },
+        "closure": {
+          "path": "outputs/stage42_long_research/source_support_closure_audit_stage42.json",
+          "sha256": "90d6cf5d4bb7ef4df65df58a3bcc72efdc136923acf0f0ce6a53667098341daa",
+          "stage42_dd_gate": {
+            "passed": 15,
+            "total": 15,
+            "verdict": "stage42_dd_source_support_closure_audit_pass_open_blockers"
+          }
+        }
+      },
+      "summary": {
+        "targets_checked": 5,
+        "conversion_ready_targets": 0,
+        "conversion_ready_ids": [],
+        "converted_datasets_now": 0,
+        "evaluated_datasets_now": 0,
+        "source_specific_metric_time_sources_count": 6,
+        "source_specific_metric_time_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel",
+          "UCY_students03",
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03"
+        ],
+        "global_metric_seconds_claim_allowed": false,
+        "global_t100_deployable_claim_allowed": false
+      },
+      "user_action_rows": [
+        {
+          "dataset_id": "ucy_crowd_original",
+          "domain": "UCY",
+          "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+          "terms_accepted": false,
+          "conversion_ready": false,
+          "conversion_allowed_now": false,
+          "confirmed_local_path": "",
+          "source_identity": "",
+          "terms_blockers": [
+            "terms_not_accepted",
+            "terms_acceptance_date_missing",
+            "allowed_use_missing",
+            "local_path_confirmation_missing",
+            "source_identity_missing"
+          ],
+          "cf_blockers": [
+            "manual_terms_or_application_required",
+            "no_independent_t50_candidate"
+          ],
+          "domain_claim_status": "not_closed",
+          "domain_blockers": [
+            "source_terms_confirmation_or_conversion_readiness_missing",
+            "train_only_t100_source_cv_support_missing",
+            "additional_t100_sources_needed=1",
+            "legal_terms_blocked_targets=ucy_crowd_original"
+          ],
+          "source_specific_metric_time_sources": [
+            "UCY_zara01",
+            "UCY_zara02",
+            "UCY_zara03",
+            "UCY_students03"
+          ],
+          "source_specific_time_only_sources": [
+            "UCY_students01"
+          ],
+          "required_user_action": "accept/confirm official terms, allowed use, acceptance date, local path, and source identity"
+        },
+        {
+          "dataset_id": "eth_biwi_original",
+          "domain": "ETH_UCY",
+          "official_url": "https://vision.ee.ethz.ch/datsets.html",
+          "terms_accepted": false,
+          "conversion_ready": false,
+          "conversion_allowed_now": false,
+          "confirmed_local_path": "",
+          "source_identity": "",
+          "terms_blockers": [
+            "terms_not_accepted",
+            "terms_acceptance_date_missing",
+            "allowed_use_missing",
+            "local_path_confirmation_missing",
+            "source_identity_missing"
+          ],
+          "cf_blockers": [
+            "manual_terms_or_application_required",
+            "no_independent_t50_candidate"
+          ],
+          "domain_claim_status": "not_closed",
+          "domain_blockers": [
+            "source_terms_confirmation_or_conversion_readiness_missing",
+            "train_only_t100_source_cv_support_missing",
+            "additional_t100_sources_needed=2",
+            "legal_terms_blocked_targets=eth_biwi_original"
+          ],
+          "source_specific_metric_time_sources": [
+            "ETH_seq_eth",
+            "ETH_seq_hotel"
+          ],
+          "source_specific_time_only_sources": [],
+          "required_user_action": "accept/confirm official terms, allowed use, acceptance date, local path, and source identity"
+        },
+        {
+          "dataset_id": "trajnetplusplus_official",
+          "domain": "TrajNet",
+          "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+          "terms_accepted": false,
+          "conversion_ready": false,
+          "conversion_allowed_now": false,
+          "confirmed_local_path": "",
+          "source_identity": "",
+          "terms_blockers": [
+            "terms_not_accepted",
+            "terms_acceptance_date_missing",
+            "allowed_use_missing",
+            "local_path_confirmation_missing",
+            "source_identity_missing"
+          ],
+          "cf_blockers": [
+            "manual_terms_or_application_required",
+            "no_independent_t50_candidate"
+          ],
+          "domain_claim_status": "not_closed",
+          "domain_blockers": [
+            "source_terms_confirmation_or_conversion_readiness_missing",
+            "train_only_t100_source_cv_support_missing",
+            "additional_t100_sources_needed=1",
+            "source_specific_metric_time_calibration_missing",
+            "legal_terms_blocked_targets=trajnetplusplus_official"
+          ],
+          "source_specific_metric_time_sources": [],
+          "source_specific_time_only_sources": [],
+          "required_user_action": "accept/confirm official terms, allowed use, acceptance date, local path, and source identity"
+        },
+        {
+          "dataset_id": "opentraj_toolkit",
+          "domain": "OpenTraj",
+          "official_url": "https://github.com/crowdbotp/OpenTraj",
+          "terms_accepted": false,
+          "conversion_ready": false,
+          "conversion_allowed_now": false,
+          "confirmed_local_path": "",
+          "source_identity": "",
+          "terms_blockers": [
+            "terms_not_accepted",
+            "terms_acceptance_date_missing",
+            "allowed_use_missing",
+            "local_path_confirmation_missing",
+            "source_identity_missing"
+          ],
+          "cf_blockers": [
+            "no_independent_t50_candidate"
+          ],
+          "domain_claim_status": "not_closed",
+          "domain_blockers": [],
+          "source_specific_metric_time_sources": [],
+          "source_specific_time_only_sources": [],
+          "required_user_action": "accept/confirm official terms, allowed use, acceptance date, local path, and source identity"
+        },
+        {
+          "dataset_id": "aerialmpt_or_other_topdown",
+          "domain": "other_topdown",
+          "official_url": "user_or_web_verified_official_url_required",
+          "terms_accepted": false,
+          "conversion_ready": false,
+          "conversion_allowed_now": false,
+          "confirmed_local_path": "",
+          "source_identity": "",
+          "terms_blockers": [
+            "terms_not_accepted",
+            "terms_acceptance_date_missing",
+            "allowed_use_missing",
+            "local_path_confirmation_missing",
+            "source_identity_missing"
+          ],
+          "cf_blockers": [
+            "local_path_missing",
+            "schema_not_parseable",
+            "manual_terms_or_application_required",
+            "no_independent_t50_candidate"
+          ],
+          "domain_claim_status": "not_closed",
+          "domain_blockers": [],
+          "source_specific_metric_time_sources": [],
+          "source_specific_time_only_sources": [],
+          "required_user_action": "accept/confirm official terms, allowed use, acceptance date, local path, and source identity"
+        }
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "m3w_official_metric_seconds_claim_allowed": false,
+        "global_t100_deployable_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_do_gate": {
+        "gates": {
+          "terms_validator_passed": true,
+          "time_geometry_passed": true,
+          "closure_audit_passed": true,
+          "zero_conversion_ready_recorded": true,
+          "global_metric_seconds_blocked": true,
+          "global_t100_blocked": true,
+          "user_action_rows_present": true,
+          "official_urls_present": true,
+          "source_specific_candidates_reported": true,
+          "no_conversion_claim": true,
+          "no_evaluation_claim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 13,
+        "total": 13,
+        "verdict": "stage42_do_source_legal_time_action_package_pass"
+      }
+    }
+  },
+  "paper_refresh_summary": {
+    "source": "fresh_paper_refresh_from_stage42_dp_dq_dn_do",
+    "context_closure": {
+      "decision": "close_current_sequence_graph_residual_context_protocol",
+      "best_delta_all": -0.0230085146797967,
+      "best_delta_t50": -0.08305738715518596,
+      "best_delta_hard_failure": -0.026234695463867364,
+      "positive_context_rows": [],
+      "claim": "sequence/graph residual context is closed under the current protocol; context remains auxiliary/diagnostic until target/data/model changes."
+    },
+    "full_waypoint_checkpoint": {
+      "runtime_all_improvement": 0.24715658317833844,
+      "runtime_t50_improvement": 0.2236298792899738,
+      "runtime_t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+      "runtime_hard_failure_improvement": 0.23887420070464105,
+      "runtime_easy_degradation": -0.2563085406508494,
+      "runtime_switch_rate": 0.5880989506511021,
+      "switch_exact_match": true,
+      "selected_xy_max_abs_diff": 0.0,
+      "runtime_base_near_005": 0.019364490707573012,
+      "runtime_final_near_005": 0.01382274853554722,
+      "runtime_floor_near_005": 0.022377681318218216,
+      "claim": "protected source-level group-consistency full-waypoint runtime policy is supported; ungated/global primary full-waypoint replacement is not supported."
+    },
+    "deployment_variant_boundary": {
+      "safety_sensitive_default": "proximity_guard",
+      "accuracy_priority_diagnostic": "no_proximity_guard",
+      "source_level_full_waypoint_runtime_candidate": "group_consistency_full_waypoint_runtime",
+      "baseline_mixing_caveat": true
+    },
+    "source_legal_time_boundary": {
+      "conversion_ready_targets": 0,
+      "converted_datasets_now": 0,
+      "evaluated_datasets_now": 0,
+      "global_metric_seconds_claim_allowed": false,
+      "global_t100_deployable_claim_allowed": false
+    },
+    "paper_verdict": {
+      "paper_ready_evidence_package_strengthened": true,
+      "context_main_claim_allowed": false,
+      "full_waypoint_runtime_evidence_allowed": true,
+      "ungated_neural_or_full_waypoint_deployment_allowed": false,
+      "metric_seconds_claim_allowed": false,
+      "foundation_claim_allowed": false,
+      "stage5c_execution_allowed": false,
+      "smc_allowed": false
+    }
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "paper_file_status": [
+    {
+      "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/method_draft_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/data_card_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    },
+    {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "contains_stage42_dr": true,
+      "contains_context_closure": true,
+      "contains_full_waypoint_runtime": true,
+      "contains_source_time_boundary": true,
+      "contains_stage5c_smc_boundary": true
+    }
+  ],
+  "stage42_dr_gate": {
+    "source": "fresh_paper_refresh_from_stage42_dp_dq_dn_do",
+    "gates": {
+      "dp_gate_passed": true,
+      "dq_gate_passed": true,
+      "dn_gate_passed": true,
+      "do_gate_passed": true,
+      "paper_files_refreshed": true,
+      "context_main_claim_blocked": true,
+      "full_waypoint_runtime_evidence_allowed": true,
+      "ungated_deployment_blocked": true,
+      "source_time_metric_blocked": true,
+      "no_metric_seconds_overclaim": true,
+      "true_3d_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_dr_post_dq_paper_refresh_pass"
+  }
+}

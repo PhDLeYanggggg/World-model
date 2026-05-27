@@ -132,3 +132,48 @@ Keep `current_composite_tail_policy` as the deployable policy. Do not execute St
 - Neighbor/interaction context is not a standalone main contribution under the current source-level ridge/full-waypoint protocol.
 - Rejected: true 3D, foundation model, global metric prediction, seconds-level horizon, Stage5C execution, SMC readiness, and ungated/floor-free neural deployment.
 <!-- STAGE42_CL_CONTEXT_GUARD_REFRESH:END -->
+
+<!-- STAGE42_DR_POST_DQ_PAPER_REFRESH:START -->
+## Stage42-DR Post-DP/DQ Paper Evidence Refresh
+
+- source: `fresh_paper_refresh_from_stage42_dp_dq_dn_do`
+- role: synchronize paper-ready evidence after the fresh context-closure and full-waypoint-promotion checkpoints.
+- This is not new training and not a threshold search; it updates claim hygiene and paper artifacts.
+
+### Context Claim Boundary
+
+- closure decision: `close_current_sequence_graph_residual_context_protocol`.
+- best context deltas vs baseline-family control all/t50/hard: `-2.30%` / `-8.31%` / `-2.62%`.
+- positive context rows: `[]`.
+- Paper wording: sequence/graph/neighbor/goal context remains auxiliary or diagnostic under the current residual protocol, not an independent main contribution.
+
+### Full-Waypoint Runtime Evidence
+
+- runtime all/t50/t100 raw/hard vs train-horizon causal floor: `24.72%` / `22.36%` / `14.35%` / `23.89%`.
+- runtime easy degradation: `-25.63%`; switch rate: `58.81%`.
+- exact replay: switch `True`, selected_xy max abs diff `0.0`.
+- near@0.05 base/final/floor: `1.94%` / `1.38%` / `2.24%`.
+- Paper wording: protected source-level group-consistency full-waypoint runtime policy is valid evidence, but ungated full-waypoint and global primary replacement remain blocked.
+
+### Deployment Variant Boundary
+
+- safety-sensitive default: `proximity_guard`.
+- accuracy-priority diagnostic: `no_proximity_guard`.
+- source-level full-waypoint runtime candidate: `group_consistency_full_waypoint_runtime`.
+- baseline mixing caveat: `True`.
+
+### Source / Time / Metric Boundary
+
+- conversion-ready targets: `0`; converted now: `0`; evaluated now: `0`.
+- global metric/seconds claim allowed: `False`.
+- global t100 deployable claim allowed: `False`.
+- Paper wording: dataset-local/raw-frame only unless future source/legal/time calibration closes the blocker.
+
+### Non-Claims
+
+- Do not claim true 3D.
+- Do not claim foundation world model.
+- Do not claim global metric or seconds-level prediction.
+- Do not claim Stage5C execution.
+- Do not claim SMC readiness.
+<!-- STAGE42_DR_POST_DQ_PAPER_REFRESH:END -->
