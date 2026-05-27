@@ -1,0 +1,1108 @@
+{
+  "source": "fresh_hint_audit_from_local_raw_sources_after_stage42_dt",
+  "stage": "Stage42-DU",
+  "generated_at_utc": "2026-05-27T00:27:19.408256+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DU 是 raw source time/geometry hint audit：只抽取 H/FPS/stride hints，不转换轨迹。",
+    "H matrix、FPS、frame stride 线索不是 metric/seconds-level claim。",
+    "legal/source blocker 未关闭时，不能把 hints 写成 official metric conversion。",
+    "本步骤不下载、不解压 gated 数据、不训练、不评估、不生成 world-state rows。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；dataset-local/raw-frame 不能写成 global metric/seconds。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage42_ds_report": "outputs/stage42_long_research/source_conversion_readiness_recheck_stage42.json",
+  "stage42_ds_verdict": "stage42_ds_source_conversion_readiness_recheck_pass",
+  "stage42_dt_report": "outputs/stage42_long_research/raw_source_parseability_dry_run_stage42.json",
+  "stage42_dt_verdict": "stage42_dt_raw_source_parseability_dry_run_pass",
+  "target_rows": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "files_scanned": 47,
+      "h_matrix_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+          "matrix": [
+            [
+              0.032529736503653,
+              -0.000730604859308,
+              -7.969749046103707
+            ],
+            [
+              0.000883577230612,
+              0.026589331317173,
+              -8.754694531864281
+            ],
+            [
+              0.001039809003515,
+              2.5010101498e-05,
+              1.007920696981254
+            ]
+          ],
+          "determinant": 0.001106389100803254,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H.txt",
+          "matrix": [
+            [
+              0.02104651,
+              0.0,
+              7.57676355
+            ],
+            [
+              0.0,
+              0.02386598,
+              6.87340224
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "determinant": 0.0005022955867298,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+          "matrix": [
+            [
+              -6.35627859e-08,
+              -0.0259593448,
+              17.1722817
+            ],
+            [
+              -0.0216636305,
+              -0.00109238972,
+              12.0125638
+            ],
+            [
+              -7.28782648e-08,
+              -6.76369677e-07,
+              1.0004854
+            ]
+          ],
+          "determinant": -0.0005623735828998843,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+          "matrix": [
+            [
+              -0.025956517,
+              -5.1572804e-18,
+              7.8388680999999965
+            ],
+            [
+              -0.0010953873999999999,
+              0.021664330000000002,
+              5.566045600000004
+            ],
+            [
+              1.9540125000000005e-20,
+              4.2171410000000026e-19,
+              1.0000000000000004
+            ]
+          ],
+          "determinant": -0.0005623305499386102,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/H-old.txt",
+          "matrix": [
+            [
+              -0.0259593448,
+              6.35627859e-08,
+              7.82685405
+            ],
+            [
+              -0.00109238972,
+              0.0216636305,
+              -10.044327
+            ],
+            [
+              -6.76369677e-07,
+              7.28782648e-08,
+              1.00016903
+            ]
+          ],
+          "determinant": -0.0005623735836576635,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/H.txt",
+          "matrix": [
+            [
+              -0.025956517,
+              -5.1572804e-18,
+              7.8388680999999965
+            ],
+            [
+              -0.0010953873999999999,
+              0.021664330000000002,
+              5.566045600000004
+            ],
+            [
+              1.9540125000000005e-20,
+              4.2171410000000026e-19,
+              1.0000000000000004
+            ]
+          ],
+          "determinant": -0.0005623305499386102,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/H.txt",
+          "matrix": [
+            [
+              -0.025956517,
+              -5.1572804e-18,
+              7.8388680999999965
+            ],
+            [
+              -0.0010953873999999999,
+              0.021664330000000002,
+              5.566045600000004
+            ],
+            [
+              1.9540125000000005e-20,
+              4.2171410000000026e-19,
+              1.0000000000000004
+            ]
+          ],
+          "determinant": -0.0005623305499386102,
+          "non_singular_hint": true
+        }
+      ],
+      "time_metadata_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/README.md",
+          "fps_values": [
+            2.5
+          ],
+          "timestep_seconds_values": [],
+          "annotation_fps_hint": 2.5
+        }
+      ],
+      "ndjson_fps_hints": [],
+      "frame_stride_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+          "unique_frames_sampled": 123,
+          "min_frame": 0.0,
+          "max_frame": 1220.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 122,
+          "stride_values_sample": [
+            10.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+          "unique_frames_sampled": 87,
+          "min_frame": 0.0,
+          "max_frame": 860.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 86,
+          "stride_values_sample": [
+            10.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/groups.txt",
+          "unique_frames_sampled": 8,
+          "min_frame": 6.0,
+          "max_frame": 353.0,
+          "mode_frame_stride": 4.0,
+          "mode_count": 1,
+          "stride_values_sample": [
+            4.0,
+            9.0,
+            18.0,
+            24.0,
+            65.0,
+            105.0,
+            122.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+          "unique_frames_sampled": 101,
+          "min_frame": 1.0,
+          "max_frame": 1001.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 100,
+          "stride_values_sample": [
+            10.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat_px.txt",
+          "unique_frames_sampled": 101,
+          "min_frame": 1.0,
+          "max_frame": 1001.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 100,
+          "stride_values_sample": [
+            10.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/students003.txt",
+          "unique_frames_sampled": 127,
+          "min_frame": 0.0,
+          "max_frame": 1260.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 126,
+          "stride_values_sample": [
+            10.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+          "unique_frames_sampled": 865,
+          "min_frame": 1.0,
+          "max_frame": 9001.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 860,
+          "stride_values_sample": [
+            10.0,
+            20.0,
+            80.0,
+            120.0,
+            180.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+          "unique_frames_sampled": 974,
+          "min_frame": 7.0,
+          "max_frame": 9737.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 973,
+          "stride_values_sample": [
+            10.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+          "unique_frames_sampled": 730,
+          "min_frame": 0.0,
+          "max_frame": 7480.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 727,
+          "stride_values_sample": [
+            10.0,
+            30.0,
+            180.0
+          ]
+        }
+      ],
+      "h_matrix_hint_count": 7,
+      "time_metadata_hint_count": 1,
+      "frame_stride_hint_count": 9,
+      "metric_time_subset_hint": true,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "files_scanned": 30,
+      "h_matrix_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+          "matrix": [
+            [
+              0.0281287,
+              0.00200919,
+              -4.66936
+            ],
+            [
+              0.000806257,
+              0.0251955,
+              -5.06088
+            ],
+            [
+              0.000345554,
+              9.25122e-05,
+              0.462553
+            ]
+          ],
+          "determinant": 0.00037703075736272813,
+          "non_singular_hint": true
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+          "matrix": [
+            [
+              0.0110482,
+              0.000669589,
+              -3.32953
+            ],
+            [
+              -0.0015966,
+              0.0116324,
+              -5.39514
+            ],
+            [
+              0.000111907,
+              1.36174e-05,
+              0.542766
+            ]
+          ],
+          "determinant": 7.514896940835595e-05,
+          "non_singular_hint": true
+        }
+      ],
+      "time_metadata_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+          "fps_values": [
+            2.5
+          ],
+          "timestep_seconds_values": [
+            0.4
+          ],
+          "annotation_fps_hint": 2.5
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+          "fps_values": [
+            25.0,
+            2.5
+          ],
+          "timestep_seconds_values": [
+            0.4
+          ],
+          "annotation_fps_hint": 2.5
+        }
+      ],
+      "ndjson_fps_hints": [],
+      "frame_stride_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/biwi_eth_10fps.txt",
+          "unique_frames_sampled": 816,
+          "min_frame": 780.0,
+          "max_frame": 11700.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 801,
+          "stride_values_sample": [
+            10.0,
+            60.0,
+            70.0,
+            90.0,
+            110.0,
+            120.0,
+            140.0,
+            190.0,
+            390.0,
+            400.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/groups.txt",
+          "unique_frames_sampled": 13,
+          "min_frame": 16.0,
+          "max_frame": 334.0,
+          "mode_frame_stride": 28.0,
+          "mode_count": 2,
+          "stride_values_sample": [
+            1.0,
+            5.0,
+            6.0,
+            9.0,
+            12.0,
+            23.0,
+            26.0,
+            28.0,
+            170.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+          "unique_frames_sampled": 1010,
+          "min_frame": 780.0,
+          "max_frame": 9351.0,
+          "mode_frame_stride": 6.0,
+          "mode_count": 998,
+          "stride_values_sample": [
+            6.0,
+            54.0,
+            66.0,
+            72.0,
+            96.0,
+            112.0,
+            126.0,
+            192.0,
+            395.0,
+            402.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+          "unique_frames_sampled": 945,
+          "min_frame": 1.0,
+          "max_frame": 14501.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 922,
+          "stride_values_sample": [
+            10.0,
+            30.0,
+            40.0,
+            50.0,
+            60.0,
+            70.0,
+            110.0,
+            120.0,
+            140.0,
+            170.0
+          ]
+        }
+      ],
+      "h_matrix_hint_count": 2,
+      "time_metadata_hint_count": 2,
+      "frame_stride_hint_count": 4,
+      "metric_time_subset_hint": true,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "files_scanned": 146,
+      "h_matrix_hints": [],
+      "time_metadata_hints": [],
+      "ndjson_fps_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet++/train/synth_data/orca_circle_crossing_5ped.ndjson",
+          "fps_values": [
+            2.5
+          ]
+        }
+      ],
+      "frame_stride_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+          "unique_frames_sampled": 425,
+          "min_frame": 800.0,
+          "max_frame": 12210.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 414,
+          "stride_values_sample": [
+            10.0,
+            30.0,
+            170.0,
+            190.0,
+            200.0,
+            340.0,
+            1280.0,
+            1510.0,
+            1620.0,
+            1900.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+          "unique_frames_sampled": 828,
+          "min_frame": 0.0,
+          "max_frame": 8940.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 822,
+          "stride_values_sample": [
+            10.0,
+            60.0,
+            100.0,
+            110.0,
+            150.0,
+            300.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+          "unique_frames_sampled": 622,
+          "min_frame": 0.0,
+          "max_frame": 7370.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 605,
+          "stride_values_sample": [
+            10.0,
+            30.0,
+            40.0,
+            50.0,
+            60.0,
+            70.0,
+            90.0,
+            100.0,
+            110.0,
+            260.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+          "unique_frames_sampled": 622,
+          "min_frame": 0.0,
+          "max_frame": 7370.0,
+          "mode_frame_stride": 10.0,
+          "mode_count": 605,
+          "stride_values_sample": [
+            10.0,
+            30.0,
+            40.0,
+            50.0,
+            60.0,
+            70.0,
+            90.0,
+            100.0,
+            110.0,
+            260.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_0.txt",
+          "unique_frames_sampled": 742,
+          "min_frame": 0.0,
+          "max_frame": 8892.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 741,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_1.txt",
+          "unique_frames_sampled": 961,
+          "min_frame": 0.0,
+          "max_frame": 11832.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 957,
+          "stride_values_sample": [
+            12.0,
+            36.0,
+            72.0,
+            240.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/gates_2.txt",
+          "unique_frames_sampled": 660,
+          "min_frame": 0.0,
+          "max_frame": 8988.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 657,
+          "stride_values_sample": [
+            12.0,
+            384.0,
+            720.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+          "unique_frames_sampled": 487,
+          "min_frame": 0.0,
+          "max_frame": 5832.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 486,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+          "unique_frames_sampled": 691,
+          "min_frame": 0.0,
+          "max_frame": 8280.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 690,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+          "unique_frames_sampled": 492,
+          "min_frame": 0.0,
+          "max_frame": 9720.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 486,
+          "stride_values_sample": [
+            12.0,
+            168.0,
+            372.0,
+            744.0,
+            1200.0,
+            1404.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_8.txt",
+          "unique_frames_sampled": 49,
+          "min_frame": 0.0,
+          "max_frame": 576.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 48,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+          "unique_frames_sampled": 126,
+          "min_frame": 0.0,
+          "max_frame": 1500.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 125,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+          "unique_frames_sampled": 935,
+          "min_frame": 312.0,
+          "max_frame": 13992.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 930,
+          "stride_values_sample": [
+            12.0,
+            144.0,
+            528.0,
+            912.0,
+            936.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+          "unique_frames_sampled": 508,
+          "min_frame": 0.0,
+          "max_frame": 12636.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 499,
+          "stride_values_sample": [
+            12.0,
+            36.0,
+            60.0,
+            252.0,
+            420.0,
+            828.0,
+            948.0,
+            1728.0,
+            2376.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+          "unique_frames_sampled": 863,
+          "min_frame": 0.0,
+          "max_frame": 10620.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 861,
+          "stride_values_sample": [
+            12.0,
+            288.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+          "unique_frames_sampled": 43,
+          "min_frame": 504.0,
+          "max_frame": 1008.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 42,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+          "unique_frames_sampled": 682,
+          "min_frame": 0.0,
+          "max_frame": 8292.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 680,
+          "stride_values_sample": [
+            12.0,
+            132.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_0.txt",
+          "unique_frames_sampled": 40,
+          "min_frame": 0.0,
+          "max_frame": 468.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 39,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+          "unique_frames_sampled": 40,
+          "min_frame": 0.0,
+          "max_frame": 468.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 39,
+          "stride_values_sample": [
+            12.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_2.txt",
+          "unique_frames_sampled": 43,
+          "min_frame": 0.0,
+          "max_frame": 504.0,
+          "mode_frame_stride": 12.0,
+          "mode_count": 42,
+          "stride_values_sample": [
+            12.0
+          ]
+        }
+      ],
+      "h_matrix_hint_count": 0,
+      "time_metadata_hint_count": 1,
+      "frame_stride_hint_count": 97,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "files_scanned": 180,
+      "h_matrix_hints": [],
+      "time_metadata_hints": [],
+      "ndjson_fps_hints": [],
+      "frame_stride_hints": [],
+      "h_matrix_hint_count": 0,
+      "time_metadata_hint_count": 0,
+      "frame_stride_hint_count": 0,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "files_scanned": 2,
+      "h_matrix_hints": [],
+      "time_metadata_hints": [],
+      "ndjson_fps_hints": [],
+      "frame_stride_hints": [],
+      "h_matrix_hint_count": 0,
+      "time_metadata_hint_count": 0,
+      "frame_stride_hint_count": 0,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    },
+    {
+      "dataset_id": "stanford_drone_dataset",
+      "domain": "SDD",
+      "files_scanned": 180,
+      "h_matrix_hints": [],
+      "time_metadata_hints": [],
+      "ndjson_fps_hints": [],
+      "frame_stride_hints": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video0/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video1/annotations.txt",
+          "unique_frames_sampled": 6,
+          "min_frame": 0.0,
+          "max_frame": 5.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 5,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video2/annotations.txt",
+          "unique_frames_sampled": 6,
+          "min_frame": 0.0,
+          "max_frame": 5.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 5,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video3/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video4/annotations.txt",
+          "unique_frames_sampled": 7,
+          "min_frame": 0.0,
+          "max_frame": 6.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 6,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video5/annotations.txt",
+          "unique_frames_sampled": 6,
+          "min_frame": 0.0,
+          "max_frame": 5.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 5,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/bookstore/video6/annotations.txt",
+          "unique_frames_sampled": 7,
+          "min_frame": 0.0,
+          "max_frame": 6.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 6,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video0/annotations.txt",
+          "unique_frames_sampled": 6,
+          "min_frame": 0.0,
+          "max_frame": 5.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 5,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video1/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/coupa/video2/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/deathCircle/video0/annotations.txt",
+          "unique_frames_sampled": 6,
+          "min_frame": 0.0,
+          "max_frame": 5.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 5,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/deathCircle/video1/annotations.txt",
+          "unique_frames_sampled": 7,
+          "min_frame": 0.0,
+          "max_frame": 6.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 6,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/deathCircle/video2/annotations.txt",
+          "unique_frames_sampled": 12,
+          "min_frame": 0.0,
+          "max_frame": 11.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 11,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/deathCircle/video3/annotations.txt",
+          "unique_frames_sampled": 6,
+          "min_frame": 0.0,
+          "max_frame": 5.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 5,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/deathCircle/video4/annotations.txt",
+          "unique_frames_sampled": 12,
+          "min_frame": 0.0,
+          "max_frame": 11.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 11,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video0/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video1/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video2/annotations.txt",
+          "unique_frames_sampled": 5,
+          "min_frame": 0.0,
+          "max_frame": 4.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 4,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video3/annotations.txt",
+          "unique_frames_sampled": 7,
+          "min_frame": 0.0,
+          "max_frame": 6.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 6,
+          "stride_values_sample": [
+            1.0
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/annotations/gates/video4/annotations.txt",
+          "unique_frames_sampled": 7,
+          "min_frame": 0.0,
+          "max_frame": 6.0,
+          "mode_frame_stride": 1.0,
+          "mode_count": 6,
+          "stride_values_sample": [
+            1.0
+          ]
+        }
+      ],
+      "h_matrix_hint_count": 0,
+      "time_metadata_hint_count": 0,
+      "frame_stride_hint_count": 57,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    },
+    {
+      "dataset_id": "tgsim_diagnostic",
+      "domain": "traffic_diagnostic",
+      "files_scanned": 0,
+      "h_matrix_hints": [],
+      "time_metadata_hints": [],
+      "ndjson_fps_hints": [],
+      "frame_stride_hints": [],
+      "h_matrix_hint_count": 0,
+      "time_metadata_hint_count": 0,
+      "frame_stride_hint_count": 0,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "claim_allowed_now": false,
+      "reason_claim_not_allowed": "hints_only_and_terms_source_confirmation_missing"
+    }
+  ],
+  "summary": {
+    "targets_checked": 7,
+    "files_scanned_total": 585,
+    "targets_with_h_matrix_hints": 2,
+    "targets_with_time_hints": 3,
+    "targets_with_frame_stride_hints": 4,
+    "metric_time_subset_hint_targets": 2,
+    "legal_conversion_ready_targets": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "world_state_rows_generated": 0
+  },
+  "data_calibration_addendum_written": true,
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "global_t100_deployable_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_du_gate": {
+    "gates": {
+      "stage42_ds_input_present": true,
+      "stage42_dt_input_present": true,
+      "hints_audited": true,
+      "h_matrix_hints_found": true,
+      "time_hints_found": true,
+      "frame_stride_hints_found": true,
+      "metric_time_subset_hints_separated": true,
+      "legal_readiness_not_overclaimed": true,
+      "no_conversion_or_rows": true,
+      "no_evaluation_claim": true,
+      "data_calibration_addendum_written": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_du_raw_source_time_geometry_hint_audit_pass"
+  }
+}

@@ -430,3 +430,14 @@ SMC 是否启用：否
 - Homography/time hints remain hints only; no metric/seconds claim is made.
 - report: `outputs/stage42_long_research/raw_source_parseability_dry_run_stage42.md`.
 <!-- STAGE42_DT_RAW_SOURCE_PARSEABILITY_DRY_RUN:END -->
+
+<!-- STAGE42_DU_RAW_SOURCE_TIME_GEOMETRY_HINT_AUDIT:START -->
+## Stage42-DU Raw Source Time/Geometry Hint Audit
+
+- source: `fresh_hint_audit_from_local_raw_sources_after_stage42_dt`
+- role: extracts H/FPS/stride hints only; no conversion, no evaluation, no metric/seconds claim.
+- gate: `14 / 14`; verdict `stage42_du_raw_source_time_geometry_hint_audit_pass`.
+- H-hint targets: `2`; time-hint targets: `3`; stride-hint targets: `4`.
+- metric/time subset hint targets: `2`; legal conversion ready targets: `0`.
+- report: `outputs/stage42_long_research/raw_source_time_geometry_hint_audit_stage42.md`.
+<!-- STAGE42_DU_RAW_SOURCE_TIME_GEOMETRY_HINT_AUDIT:END -->

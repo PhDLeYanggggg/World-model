@@ -225,3 +225,14 @@ Next actions:
 ## Stage42-A Conclusion
 
 Stage42 can proceed to external validation and full-waypoint dynamics from existing local converted state, but it cannot make metric or seconds-level claims. SDD remains pixel raw-frame. External pedestrian domains remain dataset-local raw-frame / unverified weak-metric diagnostics. TGSIM may carry traffic metric diagnostics only and cannot be used as pedestrian world-model success.
+
+<!-- STAGE42_DU_RAW_SOURCE_TIME_GEOMETRY_HINT_AUDIT:START -->
+## Stage42-DU Raw Source Time/Geometry Hint Addendum
+
+- source: `fresh_hint_audit_from_local_raw_sources_after_stage42_dt`
+- role: H/FPS/stride hint extraction only; no conversion and no metric/seconds claim.
+- gate: `14 / 14`; verdict `stage42_du_raw_source_time_geometry_hint_audit_pass`.
+- targets checked: `7`; H-hint targets: `2`; time-hint targets: `3`; stride-hint targets: `4`.
+- metric/time subset hint targets: `2`; legal conversion ready targets: `0`.
+- H/FPS/stride hints remain hints until source/legal confirmation and no-leakage conversion are complete.
+<!-- STAGE42_DU_RAW_SOURCE_TIME_GEOMETRY_HINT_AUDIT:END -->
