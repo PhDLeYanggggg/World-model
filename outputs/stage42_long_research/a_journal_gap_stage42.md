@@ -1181,3 +1181,13 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - This locks file identity/hash/parse stats only. It is not legal permission, not conversion, not evaluation, and not h100 repair.
 - `UCY|100` remains terms/source-identity blocked; `TrajNet|100` remains long-source blocked. No metric/seconds, no Stage5C, no SMC.
 <!-- STAGE42_GX_UCY_H100_CANDIDATE_INTEGRITY:END -->
+
+<!-- STAGE42_GY_UCY_H100_TERMS_PREFILL:START -->
+## Stage42-GY UCY H100 Terms Prefill From Integrity
+
+- source: `fresh_stage42_gy_ucy_h100_terms_prefill_from_integrity`
+- gate: `14 / 14`; verdict `stage42_gy_ucy_h100_terms_prefill_pass`
+- prefill rows: `6`; rows with hash/source identity suggestions: `6` / `6`.
+- Legal acceptance fields remain blank and must be user-confirmed. This is not conversion, evaluation, h100 repair, metric evidence, or seconds-level evidence.
+- `UCY|100` remains blocked until terms/path/source identity are confirmed and guarded conversion/no-leakage/source-CV pass.
+<!-- STAGE42_GY_UCY_H100_TERMS_PREFILL:END -->
