@@ -1170,3 +1170,14 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - `TrajNet|100`: hard blocker remains because current local TrajNet snippets are too short for raw-frame h100/t100 repair.
 - Boundary: no download, no conversion, no training, no evaluation; uniform h100/t100 claim remains blocked; no metric/seconds, no Stage5C, no SMC.
 <!-- STAGE42_GW_H100_BLOCKER_CLOSURE_DECISION:END -->
+
+<!-- STAGE42_GX_UCY_H100_CANDIDATE_INTEGRITY:START -->
+## Stage42-GX UCY H100 Candidate Integrity Manifest
+
+- source: `fresh_stage42_gx_ucy_h100_candidate_integrity_manifest`
+- gate: `17 / 17`; verdict `stage42_gx_ucy_h100_candidate_integrity_manifest_pass`
+- UCY candidate files: `6`; existing `6`; target-family candidates `2`.
+- parsed rows: `98032`; parsed t100 windows: `11848`; unique hashes `6`.
+- This locks file identity/hash/parse stats only. It is not legal permission, not conversion, not evaluation, and not h100 repair.
+- `UCY|100` remains terms/source-identity blocked; `TrajNet|100` remains long-source blocked. No metric/seconds, no Stage5C, no SMC.
+<!-- STAGE42_GX_UCY_H100_CANDIDATE_INTEGRITY:END -->
