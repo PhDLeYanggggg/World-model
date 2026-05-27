@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-EZ 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FA 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
@@ -14,7 +14,8 @@ M3W 已经从早期 SDD-only selector scaffold，推进到一个有 SDD 与 exte
 ```text
 Stage42-EU/EV/EW/EX/EY 都没有提升到超过 Stage42-DI 的新 deployable policy。
 Stage42-EZ 进一步测试 temporal group-repel shape，all/t50/hard 有极小正增量，但 near@0.05 比 Stage42-DI 差，因此不 promoted。
-这些结果的价值是负结果定位：group-consistency repair 的瓶颈不在 risk bucket 粒度，也不只是同 offset temporal shape；下一步需要改更深的 objective / trajectory family。
+Stage42-FA waypoint-wise repel 修复了 proximity，但 all/hard 低于 Stage42-DI，因此同样不 promoted。
+这些结果的价值是负结果定位：group-consistency repair 的瓶颈不在 risk bucket 粒度，也不只是 post-hoc repel 的 temporal/waypoint shape；下一步需要训练或目标层面的改变。
 ```
 
 但是当前仍然不是：
@@ -42,7 +43,7 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41-42 protected policy family | 有 protected neural/full-waypoint/runtime evidence，但仍依赖 Stage37 / teacher safety floor。 |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | 用一部分 ADE 增益换 near-collision 安全修复。 |
 | Source-level full-waypoint policy | Stage42-DL/DQ/ES/ET group-consistency full-waypoint family | source/frame/horizon group-consistency 目标得到 fresh 支持；仍是 protected raw-frame 2.5D evidence。 |
-| Group-risk/adaptive/temporal repair follow-up | Stage42-EU/EV/EW/EX/EY/EZ | 证明“再细分 risk/adaptive bucket”和简单 temporal repel shape 都没有形成新的 deployable policy；下一步应改 objective / trajectory family，而不是继续堆 bucket。 |
+| Group-risk/adaptive/temporal/waypoint repair follow-up | Stage42-EU/EV/EW/EX/EY/EZ/FA | 证明“再细分 risk/adaptive bucket”、简单 temporal repel、waypoint-wise repel 都没有形成新的 deployable policy；下一步应做 training/objective-level 改动，而不是继续堆 post-hoc repair。 |
 | Paper claim | 受限 claim | 可以写 protected dataset-local raw-frame 2.5D world-state candidate；不能写 true 3D / foundation / metric / seconds-level / Stage5C / SMC。 |
 
 ## 1. 永久边界
@@ -484,7 +485,8 @@ Stage42-EW run: 14 / 16 gates
 Stage42-EX run: 15 / 17 gates
 Stage42-EY run: 16 / 18 gates
 Stage42-EZ run: 17 / 18 gates
-latest focused tests for Stage42-ES/ET/EU/EV/EW/EX/EY/EZ: passed
+Stage42-FA run: 15 / 17 gates
+latest focused tests for Stage42-ES/ET/EU/EV/EW/EX/EY/EZ/FA: passed
 latest full pytest before this README refresh: 770 passed
 ```
 
@@ -576,3 +578,17 @@ latest full pytest before this README refresh: 770 passed
 - decision: `temporal_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:END -->
+
+<!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:START -->
+## Stage42-FA Waypoint-Wise Group-Repel Repair
+
+- source: `fresh_stage42_waypointwise_group_repel_repair`
+- role: tests per-waypoint group-consistency offsets after Stage42-EZ temporal single-direction repair failed proximity promotion.
+- selected candidate: `{'mode': 'waypointwise_repel', 'min_sep': 0.12, 'strength': 0.2, 'temporal_kind': 'sqrt_tail', 'gamma': 1.0, 'smooth': True, 'cap_scale': 0.75}`.
+- gate: `15 / 17`; verdict `stage42_fa_waypointwise_group_repel_repair_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `24.61%` / `22.05%` / `14.36%` / `23.77%` / `-25.67%`.
+- delta vs Stage42-DI all/t50/t100raw/hard/easy: `-0.11%` / `-0.31%` / `0.02%` / `-0.11%` / `-0.03%`.
+- near@0.05 base/final: `1.94%` / `1.21%`.
+- decision: `waypointwise_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:END -->

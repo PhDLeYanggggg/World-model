@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-EZ：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ 进一步证明简单 temporal repel shape 虽有极小 all/t50/hard 增量，但 near@0.05 比 Stage42-DI 差，因此不 promoted。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FA：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ 证明简单 temporal repel shape 虽有极小 all/t50/hard 增量但 proximity 不过；Stage42-FA waypoint-wise repel 修复 proximity 但 all/hard 低于 DI。因此当前结论是：post-hoc repel family 已接近 Pareto 边界，下一步要做 training/objective-level 改动。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -5095,3 +5095,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `temporal_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:END -->
+
+<!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:START -->
+## Stage42-FA Waypoint-Wise Group-Repel Repair
+
+- source: `fresh_stage42_waypointwise_group_repel_repair`
+- role: tests per-waypoint group-consistency offsets after Stage42-EZ temporal single-direction repair failed proximity promotion.
+- selected candidate: `{'mode': 'waypointwise_repel', 'min_sep': 0.12, 'strength': 0.2, 'temporal_kind': 'sqrt_tail', 'gamma': 1.0, 'smooth': True, 'cap_scale': 0.75}`.
+- gate: `15 / 17`; verdict `stage42_fa_waypointwise_group_repel_repair_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `24.61%` / `22.05%` / `14.36%` / `23.77%` / `-25.67%`.
+- delta vs Stage42-DI all/t50/t100raw/hard/easy: `-0.11%` / `-0.31%` / `0.02%` / `-0.11%` / `-0.03%`.
+- near@0.05 base/final: `1.94%` / `1.21%`.
+- decision: `waypointwise_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:END -->

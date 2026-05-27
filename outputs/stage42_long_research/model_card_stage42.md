@@ -539,3 +539,17 @@ Interaction/occupancy/physical heads are present in the full-waypoint model inte
 - decision: `temporal_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:END -->
+
+<!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:START -->
+## Stage42-FA Waypoint-Wise Group-Repel Repair
+
+- source: `fresh_stage42_waypointwise_group_repel_repair`
+- role: tests per-waypoint group-consistency offsets after Stage42-EZ temporal single-direction repair failed proximity promotion.
+- selected candidate: `{'mode': 'waypointwise_repel', 'min_sep': 0.12, 'strength': 0.2, 'temporal_kind': 'sqrt_tail', 'gamma': 1.0, 'smooth': True, 'cap_scale': 0.75}`.
+- gate: `15 / 17`; verdict `stage42_fa_waypointwise_group_repel_repair_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `24.61%` / `22.05%` / `14.36%` / `23.77%` / `-25.67%`.
+- delta vs Stage42-DI all/t50/t100raw/hard/easy: `-0.11%` / `-0.31%` / `0.02%` / `-0.11%` / `-0.03%`.
+- near@0.05 base/final: `1.94%` / `1.21%`.
+- decision: `waypointwise_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:END -->
