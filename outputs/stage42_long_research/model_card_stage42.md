@@ -773,3 +773,16 @@ Interaction/occupancy/physical heads are present in the full-waypoint model inte
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 - verification: `{'runner': '.venv-pytorch/bin/python run_stage42_h100_source_support_repair_queue.py -> 15/15', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_h100_source_support_repair_queue.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 836 passed'}`.
 <!-- STAGE42_FQ_H100_SOURCE_SUPPORT_REPAIR_QUEUE:END -->
+
+<!-- STAGE42_FR_UCY_H100_TERMS_GATED_PREFLIGHT:START -->
+## Stage42-FR UCY H100 Terms-Gated Conversion Preflight
+
+- source: `fresh_stage42_ucy_h100_terms_gated_conversion_preflight`
+- role: file-level UCY h100 candidate preflight from FQ; no conversion, no training, no auto-download.
+- gate: `14 / 14`; verdict `stage42_fr_ucy_h100_terms_gated_preflight_pass`.
+- candidates: `6` total, `2` target-family candidates.
+- conversion_preflight_ready_count: `0`; blockers `['terms_not_accepted', 'terms_acceptance_date_missing', 'allowed_use_missing', 'redistribution_policy_unknown', 'derived_data_policy_unknown', 'local_path_confirmation_missing', 'source_identity_missing', 'confirmed_by_user_missing']`.
+- recommended first sources after user confirmation: `['UCY_zara02', 'UCY_zara01']`.
+- Boundary: protected source-level raw-frame 2.5D; no converted dataset claim, no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+- verification: `{'runner': '.venv-pytorch/bin/python run_stage42_ucy_h100_terms_gated_conversion_preflight.py -> 14/14', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_ucy_h100_terms_gated_conversion_preflight.py -> 4 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 840 passed'}`.
+<!-- STAGE42_FR_UCY_H100_TERMS_GATED_PREFLIGHT:END -->
