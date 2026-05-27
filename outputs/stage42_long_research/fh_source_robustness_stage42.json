@@ -1,0 +1,1170 @@
+{
+  "source": "fresh_stage42_fh_source_robustness_audit",
+  "stage": "Stage42-FJ FH source/domain/horizon robustness audit",
+  "generated_at_utc": "2026-05-27T07:54:26.255579+00:00",
+  "git_commit": "107bbf0",
+  "input_hash": "d5d6a71ad551487190a5ffcc5ec311581a961cfa26ffc92df14bcd33bb7bf8af",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-FI 已冻结 Stage42-FH policy，并做 exact replay + 2000-bootstrap。",
+    "Stage42-FJ 不重新训练、不重新选择 policy、不调 test threshold；它只审计 frozen FH 在 domain/source/horizon/scene 切片上的稳健性。",
+    "弱 source / weak slice 必须显式报告；不能把 global positive 包装成每个外部源、每个 horizon 都 positive。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "fh_policy": {
+    "policy_hash": "f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6",
+    "selected_candidate": {
+      "mode": "fc_to_safety",
+      "fallback": "di",
+      "scope": "row",
+      "threshold": 0.05,
+      "margin": 0.01
+    },
+    "fi_verdict": "stage42_fi_fh_policy_freeze_replay_pass"
+  },
+  "summary": {
+    "source": "fresh_stage42_fh_source_robustness_audit",
+    "test_rows": 47458,
+    "domain_count": 2,
+    "source_count": 3,
+    "domain_horizon_count": 8,
+    "robust_domains": [
+      "TrajNet",
+      "UCY"
+    ],
+    "robust_domain_horizons": [
+      "TrajNet|10",
+      "TrajNet|25",
+      "TrajNet|50",
+      "UCY|10",
+      "UCY|25"
+    ],
+    "robust_sources": [
+      "TrajNet/Test/crowds/students002.txt",
+      "TrajNet/Train/crowds/crowds_zara03.txt",
+      "TrajNet/Train/crowds/students003.txt"
+    ],
+    "weak_domains": [],
+    "weak_domain_horizons": [
+      "TrajNet|100",
+      "UCY|50",
+      "UCY|100"
+    ],
+    "weak_sources": [],
+    "dual_domain_positive_safe_claim_allowed": true,
+    "broad_uniform_source_claim_allowed": true,
+    "broad_uniform_horizon_claim_allowed": false,
+    "paper_claim": "Stage42-FH/FI is frozen and bootstrap-positive globally; Stage42-FJ reports whether the UCY-supported policy is robust by powered domain/source/horizon slices. Broad source or horizon claims are allowed only when powered weak slices disappear."
+  },
+  "domain_rows": {
+    "TrajNet": {
+      "name": "TrajNet",
+      "rows": 37918,
+      "metric": {
+        "rows": 37918,
+        "all_improvement": 0.34214196702863964,
+        "t10_improvement": 0.6469369008988801,
+        "t25_improvement": 0.37099635492490113,
+        "t50_improvement": 0.2934738556604529,
+        "t100_raw_frame_diagnostic_improvement": 0.18473635952822043,
+        "hard_failure_improvement": 0.32360046881274795,
+        "easy_degradation": -0.3675489816092945,
+        "switch_rate": 0.7753573500712063,
+        "harm_over_fallback": -0.15119773672955697
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.33863337258011994,
+          "mid": 0.3422097236680016,
+          "high": 0.34573398678927597,
+          "n": 37918,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.28941710551251226,
+          "mid": 0.29358786457266933,
+          "high": 0.29821664266847525,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.17763834155230598,
+          "mid": 0.1848303929260613,
+          "high": 0.19194720747401084,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.3197560683197849,
+          "mid": 0.32364687766323696,
+          "high": 0.32738971591343313,
+          "n": 27687,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.6017678110994068,
+          "mid": -0.5809183638826085,
+          "high": -0.5594802778829631,
+          "n": 9213,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.011287515164301916,
+          "mid": 0.012368795822564482,
+          "high": 0.013477108497283612,
+          "n": 37918,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.007305237618017828,
+          "mid": -0.006434938551611372,
+          "high": -0.0056694709636584215,
+          "n": 37918,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0011340260562265941,
+          "mid": -0.0006593174745503455,
+          "high": -0.00023669497336357463,
+          "n": 37918,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "UCY": {
+      "name": "UCY",
+      "rows": 9540,
+      "metric": {
+        "rows": 9540,
+        "all_improvement": 0.3748961280431409,
+        "t10_improvement": 0.7504219507828036,
+        "t25_improvement": 0.22595348429976436,
+        "t50_improvement": 0.27634638943749945,
+        "t100_raw_frame_diagnostic_improvement": 0.26991776511056387,
+        "hard_failure_improvement": 0.3543251046635524,
+        "easy_degradation": -0.37791183888031155,
+        "switch_rate": 0.6313417190775681,
+        "harm_over_fallback": -0.2004067621337524
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.3654548628481407,
+          "mid": 0.37487522216178093,
+          "high": 0.3847041036331524,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.2591535349116392,
+          "mid": 0.2765896047566554,
+          "high": 0.2930045281343442,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.25185003078072893,
+          "mid": 0.2702963289521104,
+          "high": 0.28782592748811103,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.34377836574632015,
+          "mid": 0.3542172717839883,
+          "high": 0.3643957069000848,
+          "n": 7389,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.6932231520017624,
+          "mid": -0.6051372214631642,
+          "high": -0.5287370421225512,
+          "n": 1979,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.01090146750524109,
+          "mid": 0.013207547169811321,
+          "high": 0.01551362683438155,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.012159329140461216,
+          "mid": -0.009958071278825996,
+          "high": -0.007966457023060796,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0012578616352201257,
+          "mid": -0.00031446540880503143,
+          "high": 0.0006289308176100629,
+          "n": 9540,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    }
+  },
+  "domain_horizon_rows": {
+    "TrajNet|10": {
+      "name": "TrajNet|10",
+      "rows": 12342,
+      "metric": {
+        "rows": 12342,
+        "all_improvement": 0.6469369008988801,
+        "t10_improvement": 0.6469369008988801,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.6609705200448774,
+        "easy_degradation": -0.5054937994852914,
+        "switch_rate": 0.8424890617403986,
+        "harm_over_fallback": -0.18481089735632883
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.6436220837787685,
+          "mid": 0.6468935737119041,
+          "high": 0.6501416132209473,
+          "n": 12342,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.6574012574833448,
+          "mid": 0.6608718779701764,
+          "high": 0.6643526455970233,
+          "n": 8890,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.0778623639405527,
+          "mid": -1.022126928243408,
+          "high": -0.9706466796558267,
+          "n": 2410,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 8.102414519526819e-05,
+          "mid": 0.0004861448711716091,
+          "high": 0.00089126559714795,
+          "n": 12342,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.0016204829039053639,
+          "mid": -0.0009722897423432182,
+          "high": -0.0004861448711716091,
+          "n": 12342,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.00024307243558580456,
+          "mid": -8.102414519526819e-05,
+          "high": 0.0,
+          "n": 12342,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet|25": {
+      "name": "TrajNet|25",
+      "rows": 10770,
+      "metric": {
+        "rows": 10770,
+        "all_improvement": 0.37099635492490113,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.37099635492490113,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.30043905117319103,
+        "easy_degradation": -0.49628161494732626,
+        "switch_rate": 0.8269266480965646,
+        "harm_over_fallback": -0.09571285871140334
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.3654311042507335,
+          "mid": 0.371056985237137,
+          "high": 0.3767166021536296,
+          "n": 10770,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.2907533943535319,
+          "mid": 0.3001405476301037,
+          "high": 0.3102262976227356,
+          "n": 3991,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.0240708433792993,
+          "mid": -0.9839881903708595,
+          "high": -0.9453787182980481,
+          "n": 3241,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.01021355617455896,
+          "mid": 0.012256267409470752,
+          "high": 0.014301299907149487,
+          "n": 10770,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.006313834726090994,
+          "mid": -0.004642525533890436,
+          "high": -0.003340297121634171,
+          "n": 10770,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.001023676880222841,
+          "mid": 0.0,
+          "high": 0.001021355617455896,
+          "n": 10770,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet|50": {
+      "name": "TrajNet|50",
+      "rows": 9198,
+      "metric": {
+        "rows": 9198,
+        "all_improvement": 0.2934738556604529,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.2934738556604529,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.2934738556604529,
+        "easy_degradation": -0.21855658316701032,
+        "switch_rate": 0.9058490976299195,
+        "harm_over_fallback": -0.1439073971648188
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.2892889516045503,
+          "mid": 0.2934883101612128,
+          "high": 0.29777185016837443,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.2891786667691581,
+          "mid": 0.2934891614133309,
+          "high": 0.29762072419136704,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.28935403365815604,
+          "mid": 0.2933459388984042,
+          "high": 0.2973136080355221,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.3004622325481331,
+          "mid": -0.27924475437591356,
+          "high": -0.25923350414690544,
+          "n": 2780,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.016960208741030658,
+          "mid": 0.019569471624266144,
+          "high": 0.022396173081104587,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.020982822352685365,
+          "mid": -0.017721243748641008,
+          "high": -0.015111980865405522,
+          "n": 9198,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.003370297890845836,
+          "mid": -0.00228310502283105,
+          "high": -0.0010871928680147858,
+          "n": 9198,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet|100": {
+      "name": "TrajNet|100",
+      "rows": 5608,
+      "metric": {
+        "rows": 5608,
+        "all_improvement": 0.18473635952822043,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.18473635952822043,
+        "hard_failure_improvement": 0.18473635952822043,
+        "easy_degradation": 0.030751889077329286,
+        "switch_rate": 0.3145506419400856,
+        "harm_over_fallback": -0.19573679719966372
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.1784823099821384,
+          "mid": 0.1851375772326786,
+          "high": 0.1919401657266921,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.17798130144962257,
+          "mid": 0.184659329103453,
+          "high": 0.19145276475840148,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.17820175582821562,
+          "mid": 0.18464167528148484,
+          "high": 0.19159516796725282,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.005796515474519133,
+          "mid": 0.029151205167754435,
+          "high": 0.05560466134073633,
+          "n": 782,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.023176711840228247,
+          "mid": 0.026925820256776034,
+          "high": 0.03138373751783167,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.004814550641940085,
+          "mid": -0.003209700427960057,
+          "high": -0.001783166904422254,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0014265335235378032,
+          "mid": -0.0005349500713266762,
+          "high": 0.0003566333808844508,
+          "n": 5608,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": false,
+      "weak_reasons": [
+        "easy_ci_exceeds_2pct"
+      ]
+    },
+    "UCY|10": {
+      "name": "UCY|10",
+      "rows": 3060,
+      "metric": {
+        "rows": 3060,
+        "all_improvement": 0.7504219507828036,
+        "t10_improvement": 0.7504219507828036,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.747439841045737,
+        "easy_degradation": -0.6135141423235939,
+        "switch_rate": 0.9,
+        "harm_over_fallback": -0.28550042760183797
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.7447058802791783,
+          "mid": 0.7503446270785243,
+          "high": 0.7561241015817585,
+          "n": 3060,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.7410436048986575,
+          "mid": 0.7474255083151571,
+          "high": 0.7540118291395493,
+          "n": 2194,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.8896770056865178,
+          "mid": -1.5865111477909999,
+          "high": -1.2883094440206202,
+          "n": 558,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.0,
+          "mid": 0.000326797385620915,
+          "high": 0.00130718954248366,
+          "n": 3060,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.01568627450980392,
+          "mid": -0.011437908496732025,
+          "high": -0.007516339869281046,
+          "n": 3060,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": 0.0,
+          "mid": 0.000326797385620915,
+          "high": 0.000980392156862745,
+          "n": 3060,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "UCY|25": {
+      "name": "UCY|25",
+      "rows": 2700,
+      "metric": {
+        "rows": 2700,
+        "all_improvement": 0.22595348429976436,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.22595348429976436,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.023875984531007477,
+        "easy_degradation": -0.6017551719551197,
+        "switch_rate": 0.25,
+        "harm_over_fallback": -0.061193392280315166
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.20983712378528466,
+          "mid": 0.22567872621355345,
+          "high": 0.24136533159743098,
+          "n": 2700,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.014825664750119556,
+          "mid": 0.02392539160600471,
+          "high": 0.03337315528009899,
+          "n": 1415,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.6500025877480002,
+          "mid": -1.5078664586676422,
+          "high": -1.3585764952714003,
+          "n": 662,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.01888888888888889,
+          "mid": 0.024444444444444446,
+          "high": 0.03111111111111111,
+          "n": 2700,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2700,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 2700,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "UCY|50": {
+      "name": "UCY|50",
+      "rows": 2340,
+      "metric": {
+        "rows": 2340,
+        "all_improvement": 0.27634638943749945,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.27634638943749945,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.27634638943749945,
+        "easy_degradation": 0.00038165814807200604,
+        "switch_rate": 0.647008547008547,
+        "harm_over_fallback": -0.14908641086897845
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.25959614333411124,
+          "mid": 0.2764293169036353,
+          "high": 0.29318133264217405,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.25967723756150524,
+          "mid": 0.27643197589443685,
+          "high": 0.29306106369757723,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.2589086703047474,
+          "mid": 0.27572861401662363,
+          "high": 0.29340903570243093,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.07053236560378903,
+          "mid": 0.000188724622353309,
+          "high": 0.06214134308236895,
+          "n": 566,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.01752136752136752,
+          "mid": 0.023504273504273504,
+          "high": 0.029914529914529916,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.01752136752136752,
+          "mid": -0.012393162393162393,
+          "high": -0.007692307692307693,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0038461538461538464,
+          "mid": -0.00042735042735042735,
+          "high": 0.002564102564102564,
+          "n": 2340,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": false,
+      "weak_reasons": [
+        "easy_ci_exceeds_2pct"
+      ]
+    },
+    "UCY|100": {
+      "name": "UCY|100",
+      "rows": 1440,
+      "metric": {
+        "rows": 1440,
+        "all_improvement": 0.26991776511056387,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.26991776511056387,
+        "hard_failure_improvement": 0.26991776511056387,
+        "easy_degradation": -0.03453664086546859,
+        "switch_rate": 0.75,
+        "harm_over_fallback": -0.3640033622945229
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.25196751721885496,
+          "mid": 0.2699617665238509,
+          "high": 0.28760808883378913,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.2516489020474974,
+          "mid": 0.26979279163697967,
+          "high": 0.28766378396339354,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.2543582585389469,
+          "mid": 0.2698602446465091,
+          "high": 0.28770062088116,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.15646223791896213,
+          "mid": -0.041654788319281155,
+          "high": 0.07110932628579855,
+          "n": 193,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.0,
+          "mid": 0.0020833333333333333,
+          "high": 0.004184027777777762,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.029166666666666667,
+          "mid": -0.021527777777777778,
+          "high": -0.013888888888888888,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.004184027777777777,
+          "mid": -0.0020833333333333333,
+          "high": 0.0,
+          "n": 1440,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": false,
+      "weak_reasons": [
+        "easy_ci_exceeds_2pct"
+      ]
+    }
+  },
+  "source_rows": {
+    "TrajNet/Test/crowds/students002.txt": {
+      "name": "TrajNet/Test/crowds/students002.txt",
+      "rows": 765,
+      "metric": {
+        "rows": 765,
+        "all_improvement": 0.6126014854164832,
+        "t10_improvement": 0.6900883964889599,
+        "t25_improvement": 0.44934181043554844,
+        "t50_improvement": 0.667593010899076,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.6126014854164832,
+        "easy_degradation": -0.5124430055186437,
+        "switch_rate": 0.9934640522875817,
+        "harm_over_fallback": -0.39776143566181993
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.5984302945075558,
+          "mid": 0.6126883725337708,
+          "high": 0.6274279841318977,
+          "n": 765,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.6446098918343036,
+          "mid": 0.6681263135000765,
+          "high": 0.6929280337332201,
+          "n": 85,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 0,
+          "bootstrap_n": 0
+        },
+        "hard_failure": {
+          "low": 0.5967924417273022,
+          "mid": 0.6128688592016731,
+          "high": 0.6260845465564517,
+          "n": 765,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -1.217373826678118,
+          "mid": -1.0489075888318546,
+          "high": -0.9073030928189291,
+          "n": 148,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 765,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 765,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 765,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet/Train/crowds/crowds_zara03.txt": {
+      "name": "TrajNet/Train/crowds/crowds_zara03.txt",
+      "rows": 9540,
+      "metric": {
+        "rows": 9540,
+        "all_improvement": 0.3748961280431409,
+        "t10_improvement": 0.7504219507828036,
+        "t25_improvement": 0.22595348429976436,
+        "t50_improvement": 0.27634638943749945,
+        "t100_raw_frame_diagnostic_improvement": 0.26991776511056387,
+        "hard_failure_improvement": 0.3543251046635524,
+        "easy_degradation": -0.37791183888031155,
+        "switch_rate": 0.6313417190775681,
+        "harm_over_fallback": -0.2004067621337524
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.3660808741932349,
+          "mid": 0.37488734724877854,
+          "high": 0.3850345899070182,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.25892257108596384,
+          "mid": 0.2762378722888957,
+          "high": 0.2919766989916932,
+          "n": 2340,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.2536237153988039,
+          "mid": 0.2707545344274509,
+          "high": 0.2883390800584037,
+          "n": 1440,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.3440415462527009,
+          "mid": 0.3543200440716818,
+          "high": 0.3641961185351341,
+          "n": 7389,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.6912730846163812,
+          "mid": -0.610296422539527,
+          "high": -0.5278968964030157,
+          "n": 1979,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.01090146750524109,
+          "mid": 0.013312368972746331,
+          "high": 0.015408805031446541,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.011949685534591196,
+          "mid": -0.009853249475890986,
+          "high": -0.007966457023060796,
+          "n": 9540,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.0012578616352201257,
+          "mid": -0.00031446540880503143,
+          "high": 0.0005241090146750524,
+          "n": 9540,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    },
+    "TrajNet/Train/crowds/students003.txt": {
+      "name": "TrajNet/Train/crowds/students003.txt",
+      "rows": 37153,
+      "metric": {
+        "rows": 37153,
+        "all_improvement": 0.3338798296337151,
+        "t10_improvement": 0.6438042321531869,
+        "t25_improvement": 0.36653335955102384,
+        "t50_improvement": 0.28426714699527345,
+        "t100_raw_frame_diagnostic_improvement": 0.18473635952822043,
+        "hard_failure_improvement": 0.3132891695698169,
+        "easy_degradation": -0.3602359234356266,
+        "switch_rate": 0.7708664172475977,
+        "harm_over_fallback": -0.14612085923155732
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.330518655094602,
+          "mid": 0.3339868881685975,
+          "high": 0.3375023059368775,
+          "n": 37153,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.2807429954530797,
+          "mid": 0.28415495093906384,
+          "high": 0.2882684417750136,
+          "n": 9113,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.17798130144962257,
+          "mid": 0.184659329103453,
+          "high": 0.19145276475840148,
+          "n": 5608,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.30939190541961054,
+          "mid": 0.31334059308256434,
+          "high": 0.3171740457362239,
+          "n": 26922,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.5832213592755071,
+          "mid": -0.56361804769688,
+          "high": -0.5414723830097906,
+          "n": 9065,
+          "bootstrap_n": 1000
+        }
+      },
+      "near_bootstrap": {
+        "final_near_005": {
+          "low": 0.011466099642020833,
+          "mid": 0.012623475896966597,
+          "high": 0.013807767878771566,
+          "n": 37153,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_fc": {
+          "low": -0.007482572066858665,
+          "mid": -0.006540521626786531,
+          "high": -0.005733049821010416,
+          "n": 37153,
+          "bootstrap_n": 1000
+        },
+        "delta_final_minus_di": {
+          "low": -0.001130460528086561,
+          "mid": -0.0006728931714800958,
+          "high": -0.0002422415417328345,
+          "n": 37153,
+          "bootstrap_n": 1000
+        }
+      },
+      "robust_positive": true,
+      "weak_reasons": []
+    }
+  },
+  "weak_scene_rows_top": [
+    {
+      "scene": "TrajNet_crowds",
+      "rows": 37918,
+      "metric": {
+        "rows": 37918,
+        "all_improvement": 0.34214196702863964,
+        "t10_improvement": 0.6469369008988801,
+        "t25_improvement": 0.37099635492490113,
+        "t50_improvement": 0.2934738556604529,
+        "t100_raw_frame_diagnostic_improvement": 0.18473635952822043,
+        "hard_failure_improvement": 0.32360046881274795,
+        "easy_degradation": -0.3675489816092945,
+        "switch_rate": 0.7753573500712063,
+        "harm_over_fallback": -0.15119773672955697
+      }
+    },
+    {
+      "scene": "UCY_crowds",
+      "rows": 9540,
+      "metric": {
+        "rows": 9540,
+        "all_improvement": 0.3748961280431409,
+        "t10_improvement": 0.7504219507828036,
+        "t25_improvement": 0.22595348429976436,
+        "t50_improvement": 0.27634638943749945,
+        "t100_raw_frame_diagnostic_improvement": 0.26991776511056387,
+        "hard_failure_improvement": 0.3543251046635524,
+        "easy_degradation": -0.37791183888031155,
+        "switch_rate": 0.6313417190775681,
+        "harm_over_fallback": -0.2004067621337524
+      }
+    }
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "validation_only_policy_selection": true,
+    "test_rows_reporting_only": true,
+    "internal_val_from_train_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "dual_domain_positive_safe_claim": true,
+    "broad_uniform_source_claim": true,
+    "broad_uniform_horizon_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_fj_gate": {
+    "source": "fresh_stage42_fh_source_robustness_audit",
+    "gates": {
+      "source_fresh": true,
+      "fi_input_verified": true,
+      "domains_audited": true,
+      "sources_audited": true,
+      "domain_horizons_audited": true,
+      "at_least_two_robust_domains": true,
+      "weak_slices_reported": true,
+      "dual_domain_claim_only_if_no_weak_domains": true,
+      "broad_source_claim_only_if_no_weak_sources": true,
+      "broad_horizon_claim_only_if_no_weak_horizons": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_fj_fh_source_robustness_pass"
+  }
+}

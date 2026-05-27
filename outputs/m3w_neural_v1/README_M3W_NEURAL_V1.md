@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FI: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, and Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FJ: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence, and Stage42-FJ confirms dual-domain/source robustness while blocking uniform horizon overclaim.
 
 Latest current-goal work summary requested by the user:
 
@@ -2232,3 +2232,21 @@ The context contribution map is now explicit: baseline-family rollout context is
 - dual-domain support: UCY `True`, TrajNet `True`.
 - Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:END -->
+
+<!-- STAGE42_FJ_FH_SOURCE_ROBUSTNESS:START -->
+## Stage42-FJ FH Source / Domain / Horizon Robustness Audit
+
+- source: `fresh_stage42_fh_source_robustness_audit`
+- role: audit frozen Stage42-FH/FI policy across domain/source/horizon/scene slices without retraining or threshold reselection.
+- gate: `14 / 14`; verdict `stage42_fj_fh_source_robustness_pass`.
+- robust domains: `['TrajNet', 'UCY']`.
+- weak domains: `[]`.
+- robust domain-horizon slices: `['TrajNet|10', 'TrajNet|25', 'TrajNet|50', 'UCY|10', 'UCY|25']`.
+- weak domain-horizon slices: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- robust sources: `['TrajNet/Test/crowds/students002.txt', 'TrajNet/Train/crowds/crowds_zara03.txt', 'TrajNet/Train/crowds/students003.txt']`.
+- weak sources: `[]`.
+- dual-domain positive-safe claim allowed: `True`.
+- broad uniform source claim allowed: `True`.
+- broad uniform horizon claim allowed: `False`.
+- Boundary: frozen protected source-level raw-frame 2.5D audit; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FJ_FH_SOURCE_ROBUSTNESS:END -->

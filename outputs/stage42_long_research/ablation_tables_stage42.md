@@ -740,3 +740,21 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - dual-domain support: UCY `True`, TrajNet `True`.
 - Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:END -->
+
+<!-- STAGE42_FJ_FH_SOURCE_ROBUSTNESS:START -->
+## Stage42-FJ FH Source / Domain / Horizon Robustness Audit
+
+- source: `fresh_stage42_fh_source_robustness_audit`
+- role: audit frozen Stage42-FH/FI policy across domain/source/horizon/scene slices without retraining or threshold reselection.
+- gate: `14 / 14`; verdict `stage42_fj_fh_source_robustness_pass`.
+- robust domains: `['TrajNet', 'UCY']`.
+- weak domains: `[]`.
+- robust domain-horizon slices: `['TrajNet|10', 'TrajNet|25', 'TrajNet|50', 'UCY|10', 'UCY|25']`.
+- weak domain-horizon slices: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- robust sources: `['TrajNet/Test/crowds/students002.txt', 'TrajNet/Train/crowds/crowds_zara03.txt', 'TrajNet/Train/crowds/students003.txt']`.
+- weak sources: `[]`.
+- dual-domain positive-safe claim allowed: `True`.
+- broad uniform source claim allowed: `True`.
+- broad uniform horizon claim allowed: `False`.
+- Boundary: frozen protected source-level raw-frame 2.5D audit; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FJ_FH_SOURCE_ROBUSTNESS:END -->
