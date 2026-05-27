@@ -1,5 +1,21 @@
 # Physical World Model 2.5D Results
 
+## M3W 用户版详细总账（当前最新主入口）
+
+本轮按用户要求，把“这个目标内做了什么、尝试过什么路线、哪些失败、失败原因、哪些成功、当前大概是什么质量”整理成一个新的主 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_USER_DETAILED_SUMMARY_ZH.md`
+
+该文件是当前最清晰的用户版总账，结果来源为 `cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 Stage42-GZ full-waypoint claim guard、Stage42-HA overclaim linter、Stage42-GT floor-relaxation safety stress 等关键边界。它明确写清：
+
+- 当前 M3W 的真实定位是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+- 当前不是 true 3D、不是 foundation、不是 metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
+- 成功路线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42-FH/FI source/domain frozen protected policy、Stage42-DL/DM runtime replay、Stage42-GZ/HA claim guards。
+- 失败或 blocked 路线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim。
+- 当前 best deployable 是分层的：SDD 用 Stage26，external t50 用 Stage37，source/domain protected world-state 用 Stage42-FH/FI，neural/full-waypoint 只能在 Stage37/teacher floor 保护下报告。
+
+本次是 summary/readme 更新，不包含新训练、下载、转换或评估；不会把 cached 结果写成 fresh，也不会把 legal prefill 写成 permission。
+
 ## M3W 长期目标路线/失败/成功总账 README（当前主入口）
 
 本轮按用户要求，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”集中刷新到一个主 README：

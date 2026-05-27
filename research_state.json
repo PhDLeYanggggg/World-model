@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-HA full-waypoint overclaim linter",
-  "current_verdict": "stage42_ha_full_waypoint_overclaim_linter_pass",
+  "current_stage": "M3W user detailed summary refresh",
+  "current_verdict": "m3w_user_detailed_summary_refreshed_tests_passed",
   "m3w_work_attempts_failures_successes_readme_current": {
     "source": "cached_verified_summary_from_stage18_to_stage42_gy_plus_current_user_request_refresh",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
@@ -31076,6 +31076,56 @@
       "ungated_full_waypoint_deployable": false,
       "stage5c_executed": false,
       "smc_enabled": false
+    }
+  },
+  "m3w_user_detailed_summary_readme": {
+    "source": "cached_verified_summary_from_stage18_to_stage42_ha_plus_current_user_request_refresh",
+    "path": "README_M3W_USER_DETAILED_SUMMARY_ZH.md",
+    "updated_at": "2026-05-27",
+    "purpose": "User-requested detailed one-file README summarizing what was attempted under the M3W long goal, failed routes and causes, successful evidence, current quality, best deployable layers, strict claim boundaries, and next actions.",
+    "summary_refresh_only": true,
+    "new_training_or_conversion": false,
+    "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
+    "latest_included_evidence": [
+      "Stage26 SDD cost-aware selector",
+      "Stage37 external t50 safe selector",
+      "M3W-Neural v1 protected candidate",
+      "Stage42-FH/FI source-domain frozen protected policy",
+      "Stage42-GT floor-relaxation safety stress",
+      "Stage42-GZ full-waypoint claim guard",
+      "Stage42-HA full-waypoint overclaim linter"
+    ],
+    "current_best_deployable_layers": {
+      "sdd_pixel_raw_frame": "Stage26 cost-aware selector",
+      "external_t50_dataset_local_raw_frame": "Stage37 causal-history and goal-prototype safe selector",
+      "protected_neural_candidate": "M3W-Neural v1 composite-tail safe-switch under Stage37/teacher floor",
+      "source_domain_full_waypoint": "Stage42-FH/FI frozen protected policy family",
+      "h100_uniform_horizon": "blocked_pending_source_legal_support"
+    },
+    "failed_or_blocked_routes": [
+      "hard-class selector",
+      "JEPA downstream main claim",
+      "SDD-to-external zero-shot",
+      "latent-only domain alignment",
+      "ordinary residual correction",
+      "unprotected Transformer/Hybrid neural dynamics",
+      "scene_goal independent main claim",
+      "neighbor_interaction independent main claim",
+      "uniform h100 horizon claim",
+      "source/legal conversion without user-confirmed terms"
+    ],
+    "claim_boundary": {
+      "true_3d_world_model": false,
+      "foundation_world_model": false,
+      "metric_seconds_claim": false,
+      "ungated_neural_dynamics_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "json_load": ".venv-pytorch/bin/python -m json.tool research_state.json -> passed",
+      "pytest": ".venv-pytorch/bin/python -m pytest tests -> 948 passed in 98.63s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 948 passed in 98.63s"
     }
   }
 }
