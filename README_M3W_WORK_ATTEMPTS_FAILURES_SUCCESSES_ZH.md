@@ -723,3 +723,15 @@ Source-level runtime policy:
 - blocked: global floor-free neural deployment, teacher-floor rollout context removal, source conversion without user terms, metric/seconds/foundation claims, Stage5C execution, and SMC.
 - unknown future policy requests are denied by default until explicitly added to the contract.
 <!-- STAGE42_EP_DEPLOYMENT_CONTRACT_GUARD:END -->
+
+<!-- STAGE42_EQ_SEQUENCE_GRAPH_CONTEXT_ROUTER:START -->
+## Stage42-EQ Sequence+Graph Context Router
+
+- source: `fresh_stage42_sequence_graph_context_router`
+- role: tests whether past-only sequence summary + current-frame graph summary can improve context gain routing over baseline-family protected control.
+- gate: `12 / 12`; verdict `stage42_eq_sequence_graph_context_router_pass`.
+- positive_sequence_graph_context_routers: `[]`; best router `baseline_plus_history_goal_neighbor`.
+- best all/t50/t100raw/hard delta vs baseline-family: `0.000118` / `-0.000197` / `0.000083` / `0.000169`; easy `-0.001971`.
+- sequence_graph_increment_verdict: `stage42_eq_sequence_graph_context_router_not_supported`.
+- Boundary: fresh router audit only; raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EQ_SEQUENCE_GRAPH_CONTEXT_ROUTER:END -->

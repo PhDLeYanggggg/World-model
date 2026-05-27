@@ -725,3 +725,15 @@ SMC 是否启用：否
 - Blocked: source conversion without user terms/path/source identity; global floor-free neural; teacher-floor rollout context removal.
 - Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
 <!-- STAGE42_EO_POST_EM_EN_PAPER_REFRESH:END -->
+
+<!-- STAGE42_EQ_SEQUENCE_GRAPH_CONTEXT_ROUTER:START -->
+## Stage42-EQ Sequence+Graph Context Router
+
+- source: `fresh_stage42_sequence_graph_context_router`
+- role: tests whether past-only sequence summary + current-frame graph summary can improve context gain routing over baseline-family protected control.
+- gate: `12 / 12`; verdict `stage42_eq_sequence_graph_context_router_pass`.
+- positive_sequence_graph_context_routers: `[]`; best router `baseline_plus_history_goal_neighbor`.
+- best all/t50/t100raw/hard delta vs baseline-family: `0.000118` / `-0.000197` / `0.000083` / `0.000169`; easy `-0.001971`.
+- sequence_graph_increment_verdict: `stage42_eq_sequence_graph_context_router_not_supported`.
+- Boundary: fresh router audit only; raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EQ_SEQUENCE_GRAPH_CONTEXT_ROUTER:END -->

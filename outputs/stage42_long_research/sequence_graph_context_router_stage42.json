@@ -1,0 +1,554 @@
+{
+  "source": "fresh_stage42_sequence_graph_context_router",
+  "stage": "Stage42-EQ Sequence+Graph Context Router",
+  "generated_at_utc": "2026-05-27T03:23:27.074561+00:00",
+  "git_commit": "c0e8255",
+  "input_hash": "3b2c8dc2606a2a66dd6c7cd36a3c76fc8d900513a1898ec30469e5913a45dc35",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EQ 是 source-compatible sequence+graph context router fresh probe，不是新数据转换或 metric/seconds-level 结果。",
+    "该实验不让 sequence/graph 直接替代 floor，而是用 past-only sequence summary 与 current-frame graph summary 决定 context proposal 是否值得切换。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "split_stats": {
+    "by_split": {
+      "train": {
+        "rows": 266745,
+        "domains": {
+          "ETH_UCY": 134695,
+          "TrajNet": 75287,
+          "UCY": 56763
+        },
+        "scenes": 9,
+        "sources": 13,
+        "t10": 83107,
+        "t25": 73802,
+        "t50": 64551,
+        "t100": 45285,
+        "hard": 198685,
+        "failure": 96981,
+        "easy": 80855
+      },
+      "val": {
+        "rows": 23788,
+        "domains": {
+          "ETH_UCY": 16103,
+          "TrajNet": 7685
+        },
+        "scenes": 2,
+        "sources": 2,
+        "t10": 7045,
+        "t25": 6459,
+        "t50": 5873,
+        "t100": 4411,
+        "hard": 21872,
+        "failure": 10450,
+        "easy": 4454
+      },
+      "test": {
+        "rows": 47458,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "scenes": 2,
+        "sources": 3,
+        "t10": 15402,
+        "t25": 13470,
+        "t50": 11538,
+        "t100": 7048,
+        "hard": 35076,
+        "failure": 19056,
+        "easy": 11192
+      }
+    },
+    "group_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_overlap_pass": true
+  },
+  "baseline_family_control": {
+    "lambda": 10.0,
+    "policy_slice_count": 8,
+    "val_metric_vs_causal_floor": {
+      "rows": 23788,
+      "all_improvement": 0.4789907245805979,
+      "t10_improvement": 0.7997866798190578,
+      "t25_improvement": 0.3275477337994004,
+      "t50_improvement": 0.5204114900752006,
+      "t100_raw_frame_diagnostic_improvement": 0.3311669004317135,
+      "hard_failure_improvement": 0.47410736359756456,
+      "easy_degradation": -0.33737155000181906,
+      "switch_rate": 0.8590886161089625,
+      "harm_over_fallback": -0.25920522204917384
+    }
+  },
+  "sequence_summary_schema": {
+    "feature_names": [
+      "seq_valid_count",
+      "seq_mean_speed",
+      "seq_speed_std",
+      "seq_max_speed",
+      "seq_min_speed",
+      "seq_speed_range",
+      "seq_heading_cos_mean",
+      "seq_heading_sin_mean",
+      "seq_displacement",
+      "seq_path_length",
+      "seq_path_efficiency"
+    ],
+    "stats": {
+      "source": "fresh_run",
+      "rows": 337991,
+      "feature_count": 11,
+      "valid_history_mean": 16.604490280151367,
+      "valid_history_min": 3.0,
+      "valid_history_max": 64.0,
+      "uses_future_endpoint": false,
+      "uses_future_waypoint": false
+    }
+  },
+  "graph_summary_schema": {
+    "feature_names": [
+      "graph_neighbor_count",
+      "graph_min_dist_norm",
+      "graph_mean_k_dist_norm",
+      "graph_inv_min_dist",
+      "graph_density_r1",
+      "graph_density_r2",
+      "graph_density_r5",
+      "graph_mean_speed_diff",
+      "graph_mean_heading_cos",
+      "graph_mean_heading_sin",
+      "graph_k0_dx_norm",
+      "graph_k0_dy_norm",
+      "graph_k0_dist_norm",
+      "graph_k0_closing_speed",
+      "graph_k0_heading_cos",
+      "graph_k0_heading_sin",
+      "graph_k1_dx_norm",
+      "graph_k1_dy_norm",
+      "graph_k1_dist_norm",
+      "graph_k1_closing_speed",
+      "graph_k1_heading_cos",
+      "graph_k1_heading_sin",
+      "graph_k2_dx_norm",
+      "graph_k2_dy_norm",
+      "graph_k2_dist_norm",
+      "graph_k2_closing_speed",
+      "graph_k2_heading_cos",
+      "graph_k2_heading_sin",
+      "graph_k3_dx_norm",
+      "graph_k3_dy_norm",
+      "graph_k3_dist_norm",
+      "graph_k3_closing_speed",
+      "graph_k3_heading_cos",
+      "graph_k3_heading_sin"
+    ],
+    "stats": {
+      "source": "fresh_run",
+      "rows": 337991,
+      "frame_groups": 11224,
+      "rows_with_neighbors": 334525,
+      "unique_agent_nodes_with_neighbors": 104125,
+      "max_unique_agents_per_frame": 65,
+      "feature_count": 34,
+      "uses_future_endpoint": false,
+      "uses_future_waypoint": false
+    },
+    "group_key": "source_file + frame_id",
+    "current_and_past_only": true
+  },
+  "routers": {
+    "history_only": {
+      "source": "fresh_run",
+      "candidate": "history_only",
+      "validation_selection": {
+        "source": "validation_only",
+        "test_threshold_tuning": false,
+        "candidate_count": 36,
+        "selected_lambda": 0.1,
+        "selected_pred_gain_threshold": 0.02408820886818224,
+        "selected_val_score": -0.004082162007088423,
+        "selected_val_metric": {
+          "rows": 23788,
+          "all_improvement": -0.0008869166762919267,
+          "t10_improvement": -0.006872300229514572,
+          "t25_improvement": -0.0013453954697082438,
+          "t50_improvement": -0.0003618362584623114,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.0007870909511487056,
+          "easy_degradation": 0.0030267887160162488,
+          "switch_rate": 0.05002522280141248,
+          "harm_over_fallback": 0.0002500603985305522
+        }
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": -0.0014024001337038516,
+        "t10_improvement": -0.0011296674602030432,
+        "t25_improvement": -0.007482006406923869,
+        "t50_improvement": -0.00027751216487614805,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": -0.0011527505146680106,
+        "easy_degradation": -0.00035847460649840457,
+        "switch_rate": 0.13805891525138017,
+        "harm_over_fallback": 0.0004599995092031126
+      },
+      "bootstrap_vs_baseline_family": {
+        "all": {
+          "low": -0.0018544436659288844,
+          "mid": -0.0013987402796792336,
+          "high": -0.0008964873389079867,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -0.00046814745833841375,
+          "mid": -0.0002733606189140314,
+          "high": -8.780803653293813e-05,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": -0.0016606705340273364,
+          "mid": -0.0011454256465195378,
+          "high": -0.0006811133204233601,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.0019171198752556905,
+          "mid": -0.0003555449264405208,
+          "high": 0.0012306618708476324,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "router_switch_rate_test": 0.13805891525138017,
+      "increment_supported": false,
+      "router_feature_schema": {
+        "candidate_feature_count": 128,
+        "graph_feature_count": 34,
+        "sequence_summary_feature_count": 11,
+        "total_feature_count": 173,
+        "uses_future_endpoint": false,
+        "uses_future_waypoint": false
+      },
+      "candidate_policy": {
+        "lambda": 0.1,
+        "policy_slice_count": 8,
+        "val_metric_vs_causal_floor": {
+          "rows": 23788,
+          "all_improvement": 0.27869840530150214,
+          "t10_improvement": 0.7574401131825683,
+          "t25_improvement": 0.1168849086476278,
+          "t50_improvement": 0.3966551930920249,
+          "t100_raw_frame_diagnostic_improvement": 0.0054237465718756095,
+          "hard_failure_improvement": 0.2709829099083536,
+          "easy_degradation": -0.22467583037254657,
+          "switch_rate": 0.5565831511686564,
+          "harm_over_fallback": -0.15081728794264146
+        }
+      },
+      "delta_vs_stage42_el_best_router": {
+        "all_improvement": -0.001680106348210586,
+        "t50_improvement": -0.0002582135801607599,
+        "t100_raw_frame_diagnostic_improvement": -4.067379614114408e-05,
+        "hard_failure_improvement": -0.0014741644693050393,
+        "easy_degradation": 0.002307638872042439,
+        "switch_rate": 0.11066627333642379
+      }
+    },
+    "motion_goal_context": {
+      "source": "fresh_run",
+      "candidate": "motion_goal_context",
+      "validation_selection": {
+        "source": "validation_only",
+        "test_threshold_tuning": false,
+        "candidate_count": 36,
+        "selected_lambda": 0.1,
+        "selected_pred_gain_threshold": 0.04418797520825782,
+        "selected_val_score": -0.0019226337907746235,
+        "selected_val_metric": {
+          "rows": 23788,
+          "all_improvement": -0.00015567503656055415,
+          "t10_improvement": -0.0015316765006954114,
+          "t25_improvement": -0.00010559971897605713,
+          "t50_improvement": -3.760499862992539e-05,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.00015216187756883492,
+          "easy_degradation": 0.00232488144617804,
+          "switch_rate": 0.05002522280141248,
+          "harm_over_fallback": 4.389156583045958e-05
+        }
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": -0.0009796858231607697,
+        "t10_improvement": -0.00484046156403295,
+        "t25_improvement": -0.0013625300022412912,
+        "t50_improvement": -2.2439104309324165e-05,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": -0.0004191401880071499,
+        "easy_degradation": 0.007992656331766046,
+        "switch_rate": 0.05213030469046315,
+        "harm_over_fallback": 0.00032134551829869634
+      },
+      "bootstrap_vs_baseline_family": {
+        "all": {
+          "low": -0.0012737483199694532,
+          "mid": -0.0009703517602297485,
+          "high": -0.0006810956540186597,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -6.48225651919021e-05,
+          "mid": -2.0229605606436607e-05,
+          "high": 1.808388107890357e-05,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": -0.000694592513903175,
+          "mid": -0.0004065100246030129,
+          "high": -0.00012076890147806329,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.006179814895569921,
+          "mid": 0.007923314766741352,
+          "high": 0.009693960803440385,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "router_switch_rate_test": 0.05213030469046315,
+      "increment_supported": false,
+      "router_feature_schema": {
+        "candidate_feature_count": 138,
+        "graph_feature_count": 34,
+        "sequence_summary_feature_count": 11,
+        "total_feature_count": 183,
+        "uses_future_endpoint": false,
+        "uses_future_waypoint": false
+      },
+      "candidate_policy": {
+        "lambda": 100.0,
+        "policy_slice_count": 8,
+        "val_metric_vs_causal_floor": {
+          "rows": 23788,
+          "all_improvement": 0.2784062326150293,
+          "t10_improvement": 0.7566186966888624,
+          "t25_improvement": 0.11660041843320501,
+          "t50_improvement": 0.39637423343330713,
+          "t100_raw_frame_diagnostic_improvement": 0.0054059182400404415,
+          "hard_failure_improvement": 0.2707492154749781,
+          "easy_degradation": -0.2277622986519393,
+          "switch_rate": 0.5565831511686564,
+          "harm_over_fallback": -0.15065917906456203
+        }
+      },
+      "delta_vs_stage42_el_best_router": {
+        "all_improvement": -0.001257392037667504,
+        "t50_improvement": -3.1405195939360198e-06,
+        "t100_raw_frame_diagnostic_improvement": -4.067379614114408e-05,
+        "hard_failure_improvement": -0.0007405541426441786,
+        "easy_degradation": 0.01065876981030689,
+        "switch_rate": 0.024737662775506764
+      }
+    },
+    "baseline_plus_history_goal_neighbor": {
+      "source": "fresh_run",
+      "candidate": "baseline_plus_history_goal_neighbor",
+      "validation_selection": {
+        "source": "validation_only",
+        "test_threshold_tuning": false,
+        "candidate_count": 13,
+        "selected_lambda": 100.0,
+        "selected_pred_gain_threshold": 0.0194186647275828,
+        "selected_val_score": -0.016174643089754675,
+        "selected_val_metric": {
+          "rows": 23788,
+          "all_improvement": -0.001884753154842267,
+          "t10_improvement": -0.00661326403885476,
+          "t25_improvement": -0.003639179781169899,
+          "t50_improvement": -0.005872320319969981,
+          "t100_raw_frame_diagnostic_improvement": 0.0010802497768347408,
+          "hard_failure_improvement": -0.0016745509490505572,
+          "easy_degradation": 0.009173405037966376,
+          "switch_rate": 0.05002522280141248,
+          "harm_over_fallback": 0.0005313939151556008
+        }
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": 0.00011750614011707405,
+        "t10_improvement": -0.000132453529682941,
+        "t25_improvement": 0.0009895735342537737,
+        "t50_improvement": -0.00019718851524008763,
+        "t100_raw_frame_diagnostic_improvement": 8.265833648135601e-05,
+        "hard_failure_improvement": 0.00016873634079317412,
+        "easy_degradation": -0.001971095493363495,
+        "switch_rate": 0.045956424628092206,
+        "harm_over_fallback": -3.854304166337273e-05
+      },
+      "bootstrap_vs_baseline_family": {
+        "all": {
+          "low": -8.641693508626424e-06,
+          "mid": 0.00011292754563763108,
+          "high": 0.00025505868211154185,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -0.0004362425819605109,
+          "mid": -0.00018531553900091868,
+          "high": -1.3139593005367959e-05,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 3.343107574593218e-05,
+          "mid": 0.0001665381386368736,
+          "high": 0.0003320710035528168,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.0033015741532432087,
+          "mid": -0.0019470911197182472,
+          "high": -0.0008086059133203874,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "router_switch_rate_test": 0.045956424628092206,
+      "increment_supported": false,
+      "router_feature_schema": {
+        "candidate_feature_count": 166,
+        "graph_feature_count": 34,
+        "sequence_summary_feature_count": 11,
+        "total_feature_count": 211,
+        "uses_future_endpoint": false,
+        "uses_future_waypoint": false
+      },
+      "candidate_policy": {
+        "lambda": 100.0,
+        "policy_slice_count": 8,
+        "val_metric_vs_causal_floor": {
+          "rows": 23788,
+          "all_improvement": 0.4408939341861645,
+          "t10_improvement": 0.6928791809089825,
+          "t25_improvement": 0.3042341730290602,
+          "t50_improvement": 0.47362173836075094,
+          "t100_raw_frame_diagnostic_improvement": 0.33025201024339657,
+          "hard_failure_improvement": 0.43658325454875535,
+          "easy_degradation": -0.2874272837926436,
+          "switch_rate": 0.8334874726752984,
+          "harm_over_fallback": -0.2385891923291905
+        }
+      },
+      "delta_vs_stage42_el_best_router": {
+        "all_improvement": -0.00016020007438966033,
+        "t50_improvement": -0.00017788993052469948,
+        "t100_raw_frame_diagnostic_improvement": 4.198454034021193e-05,
+        "hard_failure_improvement": -0.0001526776138438546,
+        "easy_degradation": 0.0006950179851773486,
+        "switch_rate": 0.018563782713135822
+      }
+    }
+  },
+  "positive_sequence_graph_context_routers": [],
+  "best_router": "baseline_plus_history_goal_neighbor",
+  "stage42_el_best_router_reference": {
+    "source": "cached_verified",
+    "best_router": "baseline_plus_history_goal_neighbor",
+    "metric_vs_baseline_family": {
+      "rows": 47458,
+      "all_improvement": 0.0002777062145067344,
+      "t10_improvement": -7.966778287538112e-05,
+      "t25_improvement": 0.001799831183767031,
+      "t50_improvement": -1.9298584715388145e-05,
+      "t100_raw_frame_diagnostic_improvement": 4.067379614114408e-05,
+      "hard_failure_improvement": 0.0003214139546370287,
+      "easy_degradation": -0.0026661134785408436,
+      "switch_rate": 0.027392641914956384,
+      "harm_over_fallback": -9.109006716813104e-05
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_sequence_graph_context_router",
+    "router_target": "predict supervised gain of context proposal over baseline-family protected control using sequence+graph past-only summaries",
+    "candidates": [
+      "history_only",
+      "motion_goal_context",
+      "baseline_plus_history_goal_neighbor"
+    ],
+    "positive_sequence_graph_context_routers": [],
+    "best_router": "baseline_plus_history_goal_neighbor",
+    "best_router_test_metric_vs_baseline_family": {
+      "rows": 47458,
+      "all_improvement": 0.00011750614011707405,
+      "t10_improvement": -0.000132453529682941,
+      "t25_improvement": 0.0009895735342537737,
+      "t50_improvement": -0.00019718851524008763,
+      "t100_raw_frame_diagnostic_improvement": 8.265833648135601e-05,
+      "hard_failure_improvement": 0.00016873634079317412,
+      "easy_degradation": -0.001971095493363495,
+      "switch_rate": 0.045956424628092206,
+      "harm_over_fallback": -3.854304166337273e-05
+    },
+    "sequence_graph_increment_verdict": "stage42_eq_sequence_graph_context_router_not_supported",
+    "interpretation": "Stage42-EQ tests whether sequence/graph context is useful as a safe switchability signal after direct sequence and graph residual prediction failed. Positive routers would support a narrow deployment-router contribution. Negative routers keep context as diagnostic under this protocol."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "sequence_summary_current_past_only": true,
+    "graph_summary_current_past_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "validation_selected_thresholds": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_eq_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "source_level_split_used": true,
+      "baseline_family_control_loaded": true,
+      "sequence_summary_built": true,
+      "graph_summary_built": true,
+      "router_candidates_complete": true,
+      "validation_only_selection": true,
+      "sequence_graph_increment_measured": true,
+      "negative_or_positive_claim_bounded": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_eq_sequence_graph_context_router_pass"
+  }
+}

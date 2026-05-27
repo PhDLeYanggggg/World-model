@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EP deployment contract guard",
-  "current_verdict": "stage42_ep_deployment_contract_guard_pass",
+  "current_stage": "Stage42-EQ sequence graph context router",
+  "current_verdict": "stage42_eq_sequence_graph_context_router_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -21047,5 +21047,67 @@
       "stage5c_executed": false,
       "smc_enabled": false
     }
+  },
+  "stage42_eq_sequence_graph_context_router": {
+    "source": "fresh_stage42_sequence_graph_context_router",
+    "report": "outputs/stage42_long_research/sequence_graph_context_router_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_eq_gate.md",
+    "verdict": "stage42_eq_sequence_graph_context_router_pass",
+    "gates": "12/12",
+    "summary": {
+      "source": "fresh_stage42_sequence_graph_context_router",
+      "router_target": "predict supervised gain of context proposal over baseline-family protected control using sequence+graph past-only summaries",
+      "candidates": [
+        "history_only",
+        "motion_goal_context",
+        "baseline_plus_history_goal_neighbor"
+      ],
+      "positive_sequence_graph_context_routers": [],
+      "best_router": "baseline_plus_history_goal_neighbor",
+      "best_router_test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": 0.00011750614011707405,
+        "t10_improvement": -0.000132453529682941,
+        "t25_improvement": 0.0009895735342537737,
+        "t50_improvement": -0.00019718851524008763,
+        "t100_raw_frame_diagnostic_improvement": 8.265833648135601e-05,
+        "hard_failure_improvement": 0.00016873634079317412,
+        "easy_degradation": -0.001971095493363495,
+        "switch_rate": 0.045956424628092206,
+        "harm_over_fallback": -3.854304166337273e-05
+      },
+      "sequence_graph_increment_verdict": "stage42_eq_sequence_graph_context_router_not_supported",
+      "interpretation": "Stage42-EQ tests whether sequence/graph context is useful as a safe switchability signal after direct sequence and graph residual prediction failed. Positive routers would support a narrow deployment-router contribution. Negative routers keep context as diagnostic under this protocol."
+    },
+    "sequence_summary_stats": {
+      "source": "fresh_run",
+      "rows": 337991,
+      "feature_count": 11,
+      "valid_history_mean": 16.604490280151367,
+      "valid_history_min": 3.0,
+      "valid_history_max": 64.0,
+      "uses_future_endpoint": false,
+      "uses_future_waypoint": false
+    },
+    "graph_summary_stats": {
+      "source": "fresh_run",
+      "rows": 337991,
+      "frame_groups": 11224,
+      "rows_with_neighbors": 334525,
+      "unique_agent_nodes_with_neighbors": 104125,
+      "max_unique_agents_per_frame": 65,
+      "feature_count": 34,
+      "uses_future_endpoint": false,
+      "uses_future_waypoint": false
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-EQ freshly tests whether past-only sequence summary and current-frame graph summary can act as a context gain router over the protected baseline-family control. The result is bounded as positive or negative evidence and cannot be used for metric/seconds, true-3D, Stage5C, or SMC claims."
   }
 }
