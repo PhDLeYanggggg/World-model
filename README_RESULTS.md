@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FH：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 被 validation 选回 teacher_alpha=0 的 FC-like 控制项；Stage42-FE constrained FC/safety composer 把 FC 高精度与 DI proximity safety 组合起来：all/t50/hard `26.41% / 23.15% / 24.81%`，near@0.05 `1.32%`，比 FC 低 `0.54pp` 且不劣于 DI；Stage42-FF 冻结 FE policy 并做 exact replay + 2000-bootstrap，all/t50/t100raw/hard CI low 为 `26.08% / 22.71% / 13.46% / 24.46%`，replay diff 为 0；Stage42-FG 做 source/domain/horizon 鲁棒性审计，TrajNet robust 但 UCY 仍 weak，TrajNet|100 也有 easy-safety 弱切片，因此 broad uniform source-level claim 仍不允许；Stage42-FH 用 UCY train-only internal validation 重新选择 FE composer family，修复 UCY fallback-only 弱域，global all/t50/t100raw/hard 为 `34.98% / 28.97% / 20.57% / 33.10%`，TrajNet 和 UCY 都 positive-safe，gate `20 / 20`。当前结论是：validation-only constrained FC→DI safety fallback 能打破 FC 的 proximity blocker，而 UCY internal-val support 使该 composer 从 TrajNet-only robust 推进到 dual-domain positive-safe；但仍然只能写 protected dataset-local/raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FI：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 被 validation 选回 teacher_alpha=0 的 FC-like 控制项；Stage42-FE constrained FC/safety composer 把 FC 高精度与 DI proximity safety 组合起来：all/t50/hard `26.41% / 23.15% / 24.81%`，near@0.05 `1.32%`，比 FC 低 `0.54pp` 且不劣于 DI；Stage42-FF 冻结 FE policy 并做 exact replay + 2000-bootstrap，all/t50/t100raw/hard CI low 为 `26.08% / 22.71% / 13.46% / 24.46%`，replay diff 为 0；Stage42-FG 做 source/domain/horizon 鲁棒性审计，TrajNet robust 但 UCY 仍 weak，TrajNet|100 也有 easy-safety 弱切片，因此 broad uniform source-level claim 仍不允许；Stage42-FH 用 UCY train-only internal validation 重新选择 FE composer family，修复 UCY fallback-only 弱域，global all/t50/t100raw/hard 为 `34.98% / 28.97% / 20.57% / 33.10%`，TrajNet 和 UCY 都 positive-safe，gate `20 / 20`；Stage42-FI 冻结 FH policy 并做 exact replay + 2000-bootstrap，policy hash `f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6`，replay diff 为 `0`，CI low all/t50/t100raw/hard 为 `34.62% / 28.46% / 19.96% / 32.73%`，gate `25 / 25`。当前结论是：validation-only constrained FC→DI safety fallback 能打破 FC 的 proximity blocker，而 UCY internal-val support 使该 composer 从 TrajNet-only robust 推进到 dual-domain positive-safe；FI freeze/replay 证明该结果不是 test-tuned 偶然输出。但仍然只能写 protected dataset-local/raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -5202,3 +5202,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `promote_stage42_fh_ucy_supported_fe_composer`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:END -->
+
+<!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:START -->
+## Stage42-FI FH Policy Freeze / Bootstrap / Replay
+
+- source: `fresh_stage42_fh_policy_freeze_replay`
+- role: freeze Stage42-FH UCY-supported FE composer and add 2000-bootstrap plus exact replay evidence.
+- gate: `25 / 25`; verdict `stage42_fi_fh_policy_freeze_replay_pass`.
+- frozen policy hash: `f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6`.
+- replay all/t50/t100raw/hard/easy: `34.98%` / `28.97%` / `20.57%` / `33.10%` / `-36.91%`.
+- bootstrap lows all/t50/t100raw/hard: `34.62%` / `28.46%` / `19.96%` / `32.73%`.
+- exact replay max metric/diagnostic diff: `0.0` / `0.0`.
+- dual-domain support: UCY `True`, TrajNet `True`.
+- Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:END -->

@@ -1,0 +1,248 @@
+{
+  "source": "fresh_stage42_fh_policy_freeze_replay",
+  "stage": "Stage42-FI FH policy freeze, 2000-bootstrap, and replay",
+  "generated_at_utc": "2026-05-27T07:43:44.782843+00:00",
+  "git_commit": "15a74fe",
+  "input_hash": "1dc83fc68616bbbc9327f8ebcdaaa4c9d85fc00ea025c4f9b30e78a75fdfc584",
+  "fh_artifact": {
+    "exists": true,
+    "report": "outputs/stage42_long_research/ucy_supported_fe_composer_stage42.md",
+    "verdict": "stage42_fh_ucy_supported_fe_composer_pass",
+    "selected_candidate": {
+      "mode": "fc_to_safety",
+      "fallback": "di",
+      "scope": "row",
+      "threshold": 0.05,
+      "margin": 0.01
+    }
+  },
+  "frozen_policy": {
+    "policy_name": "stage42_fh_ucy_supported_fe_composer",
+    "source": "fresh_stage42_fh_policy_freeze_replay",
+    "frozen_from": "outputs/stage42_long_research/ucy_supported_fe_composer_stage42.json",
+    "frozen_at_utc": "2026-05-27T07:43:44.736132+00:00",
+    "git_commit": "15a74fe",
+    "selected_candidate": {
+      "mode": "fc_to_safety",
+      "fallback": "di",
+      "scope": "row",
+      "threshold": 0.05,
+      "margin": 0.01
+    },
+    "policy_hash": "f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6",
+    "runtime_inputs": [
+      "predicted_fc_rollout_geometry",
+      "predicted_di_fallback_geometry",
+      "predicted_fa_fallback_geometry",
+      "predicted_fb_fallback_geometry",
+      "source_frame_horizon_group_key",
+      "agent_id",
+      "normalizer"
+    ],
+    "validation_selection_rule": "UCY train-only internal validation plus existing validation; candidate selected on validation only",
+    "test_usage_rule": "test labels used only for final evaluation and bootstrap, not for policy selection",
+    "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "metric_or_seconds_claim": false
+  },
+  "replay": {
+    "candidate_exact_replay": true,
+    "test_rows": 47458,
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.34978454014214977,
+      "t10_improvement": 0.6726250922029268,
+      "t25_improvement": 0.3407781814066436,
+      "t50_improvement": 0.2897283344710814,
+      "t100_raw_frame_diagnostic_improvement": 0.20571808427313942,
+      "hard_failure_improvement": 0.33097630054008964,
+      "easy_degradation": -0.3691378778540151,
+      "switch_rate": 0.7464073496565384,
+      "harm_over_fallback": -0.16108972759213072
+    },
+    "test_diagnostics": {
+      "use_fallback_rate": 0.018521640187112817,
+      "use_fallback_rows": 879,
+      "fc_near_005": 0.01970163091575709,
+      "final_near_005": 0.012558472754856926,
+      "final_near_008": 0.05883096632812171,
+      "final_p05_min_distance": 0.07559446390532108
+    },
+    "by_domain": {
+      "TrajNet": {
+        "rows": 37918,
+        "all_improvement": 0.34214196702863964,
+        "t10_improvement": 0.6469369008988801,
+        "t25_improvement": 0.37099635492490113,
+        "t50_improvement": 0.2934738556604529,
+        "t100_raw_frame_diagnostic_improvement": 0.18473635952822043,
+        "hard_failure_improvement": 0.32360046881274795,
+        "easy_degradation": -0.3675489816092945,
+        "switch_rate": 0.7753573500712063,
+        "harm_over_fallback": -0.15119773672955697
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement": 0.3748961280431409,
+        "t10_improvement": 0.7504219507828036,
+        "t25_improvement": 0.22595348429976436,
+        "t50_improvement": 0.27634638943749945,
+        "t100_raw_frame_diagnostic_improvement": 0.26991776511056387,
+        "hard_failure_improvement": 0.3543251046635524,
+        "easy_degradation": -0.37791183888031155,
+        "switch_rate": 0.6313417190775681,
+        "harm_over_fallback": -0.2004067621337524
+      }
+    },
+    "metric_abs_diffs_vs_fh_artifact": {
+      "all_improvement": 0.0,
+      "easy_degradation": 0.0,
+      "hard_failure_improvement": 0.0,
+      "harm_over_fallback": 0.0,
+      "rows": 0.0,
+      "switch_rate": 0.0,
+      "t100_raw_frame_diagnostic_improvement": 0.0,
+      "t10_improvement": 0.0,
+      "t25_improvement": 0.0,
+      "t50_improvement": 0.0
+    },
+    "diagnostic_abs_diffs_vs_fh_artifact": {
+      "fc_near_005": 0.0,
+      "final_near_005": 0.0,
+      "final_near_008": 0.0,
+      "final_p05_min_distance": 0.0,
+      "use_fallback_rate": 0.0,
+      "use_fallback_rows": 0.0
+    },
+    "max_metric_abs_diff": 0.0,
+    "max_diagnostic_abs_diff": 0.0,
+    "near_delta_vs_fc": -0.007143158160900163,
+    "near_delta_vs_di": -0.0005899953643221378,
+    "near_delta_vs_fb": 0.0026760504024611245
+  },
+  "bootstrap_ci": {
+    "all": {
+      "low": 0.34623500522923367,
+      "mid": 0.3497681114251202,
+      "high": 0.35322454494677746,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "t50": {
+      "low": 0.284628550843088,
+      "mid": 0.28967745791812916,
+      "high": 0.2947902714165139,
+      "n": 11538,
+      "bootstrap_n": 2000
+    },
+    "t100_raw_frame_diagnostic": {
+      "low": 0.19957908124351711,
+      "mid": 0.20570295181924098,
+      "high": 0.21265163574399057,
+      "n": 7048,
+      "bootstrap_n": 2000
+    },
+    "hard_failure": {
+      "low": 0.32726953125254005,
+      "mid": 0.3309156961623762,
+      "high": 0.33475166469186735,
+      "n": 35076,
+      "bootstrap_n": 2000
+    },
+    "easy_degradation": {
+      "low": -0.6073754817288983,
+      "mid": -0.5848923963797449,
+      "high": -0.5631974121880607,
+      "n": 11192,
+      "bootstrap_n": 2000
+    }
+  },
+  "near_bootstrap_ci": {
+    "final_near_005": {
+      "low": 0.011504909604281681,
+      "mid": 0.01253740149184542,
+      "high": 0.013548822116397657,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "delta_final_minus_fc": {
+      "low": -0.007923321673901133,
+      "mid": -0.007143158160900164,
+      "high": -0.0063635214294744825,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "delta_final_minus_di": {
+      "low": -0.0010114206245522357,
+      "mid": -0.0005899953643221375,
+      "high": -0.00018964136710354417,
+      "n": 47458,
+      "bootstrap_n": 2000
+    },
+    "delta_final_minus_fb": {
+      "low": 0.002149268827173501,
+      "mid": 0.0026760504024611236,
+      "high": 0.003244974503771756,
+      "n": 47458,
+      "bootstrap_n": 2000
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "validation_only_policy_selection": true,
+    "internal_val_from_train_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "decision": "freeze_and_promote_stage42_fh_ucy_supported_fe_composer_if_replay_and_ci_hold",
+  "notes": [
+    "This step does not reselect thresholds or tune on test.",
+    "It freezes the Stage42-FH selected candidate, recomputes the same policy, and adds 2000-bootstrap evidence.",
+    "UCY internal validation is carved from train sources only; test rows remain final-eval only.",
+    "Dataset-local/raw-frame boundaries remain unchanged."
+  ],
+  "stage42_fi_gate": {
+    "gates": {
+      "source_fresh": true,
+      "fh_artifact_loaded": true,
+      "policy_hash_recorded": true,
+      "candidate_exact_replay": true,
+      "metric_exact_replay": true,
+      "diagnostic_exact_replay": true,
+      "bootstrap_n_2000": true,
+      "bootstrap_all_positive": true,
+      "bootstrap_t50_positive": true,
+      "bootstrap_t100_raw_positive": true,
+      "bootstrap_hard_positive": true,
+      "easy_ci_safe": true,
+      "near_bootstrap_reported": true,
+      "near_point_better_than_fc": true,
+      "near_point_not_worse_than_di": true,
+      "test_all_positive": true,
+      "test_t50_positive": true,
+      "test_hard_positive": true,
+      "easy_degradation_under_2pct": true,
+      "ucy_positive_safe": true,
+      "trajnet_positive_safe": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 25,
+    "total": 25,
+    "verdict": "stage42_fi_fh_policy_freeze_replay_pass"
+  }
+}

@@ -726,3 +726,17 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - decision: `promote_stage42_fh_ucy_supported_fe_composer`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:END -->
+
+<!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:START -->
+## Stage42-FI FH Policy Freeze / Bootstrap / Replay
+
+- source: `fresh_stage42_fh_policy_freeze_replay`
+- role: freeze Stage42-FH UCY-supported FE composer and add 2000-bootstrap plus exact replay evidence.
+- gate: `25 / 25`; verdict `stage42_fi_fh_policy_freeze_replay_pass`.
+- frozen policy hash: `f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6`.
+- replay all/t50/t100raw/hard/easy: `34.98%` / `28.97%` / `20.57%` / `33.10%` / `-36.91%`.
+- bootstrap lows all/t50/t100raw/hard: `34.62%` / `28.46%` / `19.96%` / `32.73%`.
+- exact replay max metric/diagnostic diff: `0.0` / `0.0`.
+- dual-domain support: UCY `True`, TrajNet `True`.
+- Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:END -->

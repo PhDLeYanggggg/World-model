@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FE: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, and the Stage42-FE constrained FC-to-DI safety fallback finally restored proximity safety while preserving FC-level all/t50/hard gains.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FI: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, and Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence.
 
 Latest current-goal work summary requested by the user:
 
@@ -2218,3 +2218,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: `promote_stage42_fh_ucy_supported_fe_composer`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FH_UCY_SUPPORTED_FE_COMPOSER:END -->
+
+<!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:START -->
+## Stage42-FI FH Policy Freeze / Bootstrap / Replay
+
+- source: `fresh_stage42_fh_policy_freeze_replay`
+- role: freeze Stage42-FH UCY-supported FE composer and add 2000-bootstrap plus exact replay evidence.
+- gate: `25 / 25`; verdict `stage42_fi_fh_policy_freeze_replay_pass`.
+- frozen policy hash: `f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6`.
+- replay all/t50/t100raw/hard/easy: `34.98%` / `28.97%` / `20.57%` / `33.10%` / `-36.91%`.
+- bootstrap lows all/t50/t100raw/hard: `34.62%` / `28.46%` / `19.96%` / `32.73%`.
+- exact replay max metric/diagnostic diff: `0.0` / `0.0`.
+- dual-domain support: UCY `True`, TrajNet `True`.
+- Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FI_FH_POLICY_FREEZE_REPLAY:END -->
