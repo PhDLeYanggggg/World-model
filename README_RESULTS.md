@@ -5637,3 +5637,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - No download, conversion, feature-store build, no-leakage audit, source-CV, training, or evaluation was executed.
 - Boundary: this is a source/legal/calibration unblock queue only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
 <!-- STAGE42_GN_SOURCE_CONFIRMATION_PRIORITY_BOARD:END -->
+
+<!-- STAGE42_GO_OFFICIAL_SOURCE_TERMS_LIVE_VERIFIER:START -->
+## Stage42-GO Official Source / Terms Live Verifier
+
+- source: `fresh_stage42_go_official_source_terms_live_verifier`
+- role: official source/terms live audit for the Stage42-GN priority queue; it does not accept terms or download data.
+- gate: `14 / 14`; verdict `stage42_go_official_source_terms_live_verifier_pass`.
+- datasets_audited: `5`; official_sources_reachable: `3`; auto_download_allowed_now: `0`.
+- top priority remains `ucy_crowd_original`; terms status `not_verified_by_agent`.
+- OpenTraj toolkit license is explicitly not counted as underlying dataset permission.
+- No download, conversion, feature-store build, training, or evaluation was executed.
+- Boundary: source/terms audit only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
+<!-- STAGE42_GO_OFFICIAL_SOURCE_TERMS_LIVE_VERIFIER:END -->
