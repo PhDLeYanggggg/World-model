@@ -4758,3 +4758,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - blocked contributions: scalar loss-family primary `blocked`, current sequence/graph residual context `closed_current_protocol`, goal/scene main claim `not_supported_under_current_protocols`, neighbor/interaction main claim `not_supported_under_current_protocols`.
 - claim boundary: supported as protected source-level raw-frame full-waypoint evidence only; no true-3D, foundation, metric/seconds, Stage5C, SMC, or ungated/global primary replacement claim.
 <!-- STAGE42_EC_GROUP_CONSISTENCY_CONTRIBUTION_AUDIT:END -->
+
+<!-- STAGE42_ED_SOURCE_CONVERSION_UNBLOCKER:START -->
+## Stage42-ED Source Conversion Unblocker Package
+
+- source: `fresh_synthesis_from_stage42_cg_dw_do_ds`
+- role: convert local parseability/source-specific calibration hints into exact user actions; no download/conversion/evaluation.
+- gate: `15 / 15`; verdict `stage42_ed_source_conversion_unblocker_pass`.
+- conversion_ready_now: `0`; conversion_allowed_now: `0`; converted/evaluated now `0` / `0`.
+- technical_ready_after_terms_targets: `2`; estimated t50/t100 windows after terms `10060` / `5696`.
+- domains_with_source_cv_after_terms: `['UCY']`; first unblock targets remain UCY and ETH/BIWI terms/path/source identity.
+- boundary: local path and parseability are not legal conversion; metric/seconds, Stage5C, and SMC remain blocked.
+<!-- STAGE42_ED_SOURCE_CONVERSION_UNBLOCKER:END -->
