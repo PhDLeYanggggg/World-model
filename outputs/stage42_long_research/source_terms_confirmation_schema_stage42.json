@@ -1,0 +1,40 @@
+{
+  "source": "fresh_source_terms_confirmation_intake_from_stage42_ef",
+  "purpose": "Manual user confirmation schema. Do not treat a blank or partially filled record as permission.",
+  "required_fields": [
+    "terms_accepted_by_user",
+    "terms_acceptance_date",
+    "official_terms_url",
+    "accepted_terms_version_or_access_date",
+    "allowed_use",
+    "redistribution_allowed",
+    "derived_data_allowed",
+    "local_path",
+    "source_identity",
+    "confirmed_by_user"
+  ],
+  "field_rules": {
+    "terms_accepted_by_user": "must be true only after the user manually accepts or verifies official dataset terms",
+    "terms_acceptance_date": "YYYY-MM-DD; user-provided",
+    "official_terms_url": "official page or official terms/license URL; not a random mirror",
+    "accepted_terms_version_or_access_date": "terms version if known, otherwise date accessed by user",
+    "allowed_use": "e.g. research_only, academic_noncommercial, commercial_allowed, unknown; user-provided",
+    "redistribution_allowed": "true/false/unknown from official terms; user-provided",
+    "derived_data_allowed": "true/false/unknown from official terms; user-provided",
+    "local_path": "absolute local path to the official/source-identified dataset copy",
+    "source_identity": "official archive/file/source name or source-specific subdirectory identity",
+    "confirmed_by_user": "short user confirmation string; not filled by the agent"
+  },
+  "hard_blocks": [
+    "terms_accepted_by_user is false",
+    "allowed_use is blank or unknown",
+    "local_path is blank",
+    "source_identity is blank",
+    "official_terms_url is blank or not official"
+  ],
+  "non_claims": [
+    "This schema does not grant permission.",
+    "This schema does not convert or evaluate data.",
+    "This schema does not allow metric/seconds-level claims."
+  ]
+}

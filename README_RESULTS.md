@@ -79,7 +79,8 @@ latest proximity/occupancy weighted retraining = Stage42-DH, 15 / 16 gates, slig
 latest context materiality audit = Stage42-EE, 12 / 12 gates, selected context deltas below 1pp materiality threshold
 latest source terms gap audit = Stage42-EF, 13 / 13 gates, conversion_ready_now remains 0
 latest paper claim refresh = Stage42-EG, 12 / 12 gates, supported claim limited to protected source-level group-consistency full-waypoint dynamics
-latest full pytest = 710 passed
+latest source terms intake = Stage42-EH, 14 / 14 gates, fillable manual confirmation package written with conversion_ready_now still 0
+latest full pytest = 713 passed
 ```
 
 ```text
@@ -4819,3 +4820,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Source unlock potential after terms: t50/t100 `10060` / `5696`, top targets `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`.
 - Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
 <!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:END -->
+
+<!-- STAGE42_EH_SOURCE_TERMS_CONFIRMATION_INTAKE:START -->
+## Stage42-EH Source Terms Confirmation Intake Package
+
+- source: `fresh_source_terms_confirmation_intake_from_stage42_ef`
+- role: turns the Stage42-EF source terms blocker into a fillable, auditable confirmation package.
+- gate: `14 / 14`; verdict `stage42_eh_source_terms_confirmation_intake_pass`.
+- intake template: `outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json`; schema: `outputs/stage42_long_research/source_terms_confirmation_schema_stage42.json`.
+- top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; after-terms t50/t100 potential `10060` / `5696`.
+- conversion_ready_now remains `0`; this stage does not download, convert, train, evaluate, or make metric/seconds claims.
+<!-- STAGE42_EH_SOURCE_TERMS_CONFIRMATION_INTAKE:END -->

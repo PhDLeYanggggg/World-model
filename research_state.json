@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EG post-EE/EF paper claim refresh",
-  "current_verdict": "stage42_eg_post_ee_ef_paper_refresh_pass",
+  "current_stage": "Stage42-EH source terms confirmation intake package",
+  "current_verdict": "stage42_eh_source_terms_confirmation_intake_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ed_reports",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -26,11 +26,12 @@
     "latest_included_evidence": [
       "Stage42-EE context switchability materiality audit",
       "Stage42-EF source terms gap audit",
-      "Stage42-EG post-EE/EF paper claim refresh"
+      "Stage42-EG post-EE/EF paper claim refresh",
+      "Stage42-EH source terms confirmation intake package"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime via Stage42-DL/DQ group-consistency full-waypoint policy",
-    "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 710 passed in 31.40s",
+    "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 713 passed in 31.00s",
     "not_claimed": [
       "true_3d_world_model",
       "large_scale_foundation_world_model",
@@ -20387,6 +20388,48 @@
       "global_seconds_claim_allowed": false,
       "context_main_claim_allowed": false,
       "source_conversion_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_eh_source_terms_confirmation_intake": {
+    "source": "fresh_source_terms_confirmation_intake_from_stage42_ef",
+    "report": "outputs/stage42_long_research/source_terms_confirmation_intake_package_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_eh_gate.md",
+    "schema": "outputs/stage42_long_research/source_terms_confirmation_schema_stage42.json",
+    "intake_template": "outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_source_terms_confirmation_intake_stage42.md",
+    "verdict": "stage42_eh_source_terms_confirmation_intake_pass",
+    "gates": "14/14",
+    "verification": {
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_source_terms_confirmation_intake.py -> 3 passed in 0.78s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 713 passed in 31.00s"
+    },
+    "summary": {
+      "source": "fresh_source_terms_confirmation_intake_from_stage42_ef",
+      "targets": 5,
+      "high_priority_after_terms_targets": 2,
+      "conversion_ready_now": 0,
+      "converted_datasets_now": 0,
+      "evaluated_datasets_now": 0,
+      "estimated_t50_windows_after_terms": 10060,
+      "estimated_t100_windows_after_terms": 5696,
+      "top_unblock_targets": [
+        "ucy_crowd_original",
+        "eth_biwi_original",
+        "aerialmpt_or_other_topdown"
+      ],
+      "first_action": "fill outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json manually after official terms/path/source verification",
+      "validator_command": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+      "ef_verdict": "stage42_ef_source_terms_gap_audit_pass"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "converted_datasets_now": 0,
+      "evaluated_datasets_now": 0,
       "stage5c_executed": false,
       "smc_enabled": false
     }

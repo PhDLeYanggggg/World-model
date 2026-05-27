@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF / EG 证据刷新。
-最近完整测试记录：Stage42-EG 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`710 passed in 31.40s`。
+结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF / EG / EH 证据刷新。
+最近完整测试记录：Stage42-EH 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`713 passed in 31.00s`。
 
 这份 README 是给人的总账。它回答：在 M3W 这个长期目标里到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、现在模型大概是什么质量，以及哪些结论仍然禁止写。
 
@@ -610,3 +610,14 @@ SMC 是否启用：否
 - Source unlock potential after terms: t50/t100 `10060` / `5696`, top targets `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`.
 - Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
 <!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:END -->
+
+<!-- STAGE42_EH_SOURCE_TERMS_CONFIRMATION_INTAKE:START -->
+## Stage42-EH Source Terms Confirmation Intake Package
+
+- source: `fresh_source_terms_confirmation_intake_from_stage42_ef`
+- role: turns the Stage42-EF source terms blocker into a fillable, auditable confirmation package.
+- gate: `14 / 14`; verdict `stage42_eh_source_terms_confirmation_intake_pass`.
+- intake template: `outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json`; schema: `outputs/stage42_long_research/source_terms_confirmation_schema_stage42.json`.
+- top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; after-terms t50/t100 potential `10060` / `5696`.
+- conversion_ready_now remains `0`; this stage does not download, convert, train, evaluate, or make metric/seconds claims.
+<!-- STAGE42_EH_SOURCE_TERMS_CONFIRMATION_INTAKE:END -->
