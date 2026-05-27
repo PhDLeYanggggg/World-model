@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FA waypoint-wise group-repel repair",
-  "current_verdict": "stage42_fa_waypointwise_group_repel_repair_positive_not_promoted",
+  "current_stage": "Stage42-FB proximity Pareto composer",
+  "current_verdict": "stage42_fb_proximity_pareto_composer_positive_not_promoted",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_et_eu_ev_ew_ex_ey_ez_fa_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_et_eu_ev_ew_ex_ey_ez_fa_fb_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -15,7 +15,8 @@
       "Stage42-EX group-level risk repair",
       "Stage42-EY continuous group-risk repair",
       "Stage42-EZ temporal group-repel repair",
-      "Stage42-FA waypoint-wise group-repel repair"
+      "Stage42-FA waypoint-wise group-repel repair",
+      "Stage42-FB proximity Pareto composer"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -29,8 +30,8 @@
       "smc_enabled"
     ],
     "summary_refresh_only": true,
-    "latest_full_pytest_before_summary_refresh": "770 passed",
-    "latest_conclusion": "Stage42-EU/EV/EW/EX/EY did not beat Stage42-DI. Stage42-EZ simple temporal repel had tiny all/t50/hard gains but failed proximity. Stage42-FA waypoint-wise repel repaired proximity but lost all/hard vs DI. Next repair should move from post-hoc repel tweaks to training/objective-level changes."
+    "latest_full_pytest_after_summary_refresh": "783 passed in 30.91s",
+    "latest_conclusion": "Stage42-EU/EV/EW/EX/EY did not beat Stage42-DI. Stage42-EZ simple temporal repel had tiny all/t50/hard gains but failed proximity. Stage42-FA waypoint-wise repel repaired proximity but lost all/hard vs DI. Stage42-FB DI/FA Pareto composer further reduced near@0.05 to 1.10% but still lost about 0.07pp all/hard vs DI, so post-hoc repair remains Pareto-bounded; next repair should move to training/objective-level changes."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -27979,5 +27980,60 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FA tests per-waypoint neighbor-geometry repel after Stage42-EZ temporal single-direction repair failed proximity promotion."
+  },
+  "stage42_fb_proximity_pareto_composer": {
+    "source": "fresh_stage42_proximity_pareto_composer",
+    "report": "outputs/stage42_long_research/proximity_pareto_composer_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fb_gate.md",
+    "verdict": "stage42_fb_proximity_pareto_composer_positive_not_promoted",
+    "gates": "14/16",
+    "deployment_decision": {
+      "promote_proximity_pareto_composer": false,
+      "decision": "proximity_pareto_composer_not_enough_keep_stage42_di_or_cq_floor",
+      "reason": "Promotion requires positive all+hard, easy safe, no material all/hard loss vs Stage42-DI, and lower near@0.05 than Stage42-DI."
+    },
+    "selected_candidate": {
+      "mode": "group_di_near_fa_safer",
+      "threshold": 0.05,
+      "margin": 0.0
+    },
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.24646988046247176,
+      "t10_improvement": 0.4585544550999535,
+      "t25_improvement": 0.23486459312960029,
+      "t50_improvement": 0.22185472575437526,
+      "t100_raw_frame_diagnostic_improvement": 0.14349592498302977,
+      "hard_failure_improvement": 0.23815346713533803,
+      "easy_degradation": -0.25640074237317567,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.113509207374429
+    },
+    "test_diagnostics": {
+      "use_fa_rate": 0.09338783766698976,
+      "use_fa_rows": 4432,
+      "di_near_005": 0.01382274853554722,
+      "fa_near_005": 0.012073833705592313,
+      "final_near_005": 0.010957056765982553,
+      "di_p05_min_distance": 0.07770240407545181,
+      "fa_p05_min_distance": 0.08049500133764587,
+      "final_p05_min_distance": 0.0783484216653993
+    },
+    "test_delta_vs_di": {
+      "all_improvement": -0.0006867027158666827,
+      "t50_improvement": -0.0017751535355985393,
+      "t100_raw_frame_diagnostic_improvement": 3.48035048489681e-05,
+      "hard_failure_improvement": -0.0007207335693030226,
+      "easy_degradation": -9.220172232626833e-05
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FB composes Stage42-DI and Stage42-FA using validation-only predicted proximity risk to test whether safety can be improved without material all/hard loss."
   }
 }

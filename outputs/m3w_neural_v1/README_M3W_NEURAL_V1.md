@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It includes Stage42-EL/EM/EN: context gain routing remains below independent materiality, legal source conversion remains blocked until terms/path/source identity confirmation, and global floor-free neural deployment remains blocked while narrow validation-backed t50 slice relaxation is allowed.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FB: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, and later group-risk/repel/Pareto repair attempts did not become a new best deployable policy.
 
 Latest current-goal work summary requested by the user:
 
@@ -2125,3 +2125,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: `waypointwise_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FA_WAYPOINTWISE_GROUP_REPEL_REPAIR:END -->
+
+<!-- STAGE42_FB_PROXIMITY_PARETO_COMPOSER:START -->
+## Stage42-FB Proximity Pareto Composer
+
+- source: `fresh_stage42_proximity_pareto_composer`
+- role: validation-only composer between Stage42-DI accuracy policy and Stage42-FA proximity-safety policy.
+- selected candidate: `{'mode': 'group_di_near_fa_safer', 'threshold': 0.05, 'margin': 0.0}`.
+- gate: `14 / 16`; verdict `stage42_fb_proximity_pareto_composer_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `24.65%` / `22.19%` / `14.35%` / `23.82%` / `-25.64%`.
+- delta vs Stage42-DI all/t50/t100raw/hard/easy: `-0.07%` / `-0.18%` / `0.00%` / `-0.07%` / `-0.01%`.
+- near@0.05 final/use_fa_rate: `1.10%` / `9.34%`.
+- decision: `proximity_pareto_composer_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FB_PROXIMITY_PARETO_COMPOSER:END -->
