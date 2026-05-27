@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-HF teacherless gate deployment contract",
-  "current_verdict": "stage42_hf_teacherless_gate_deployment_contract_pass",
+  "current_stage": "Stage42-HG teacherless claim linter",
+  "current_verdict": "stage42_hg_teacherless_claim_linter_pass",
   "m3w_goal_full_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hd_plus_current_user_request_refresh",
     "path": "README_M3W_GOAL_FULL_SUMMARY_ZH.md",
@@ -31608,6 +31608,50 @@
     "verification": {
       "focused_pytest": "3 passed in 0.74s",
       "full_pytest": "963 passed in 218.20s",
+      "status": "passed"
+    }
+  },
+  "stage42_hg_teacherless_claim_linter": {
+    "source": "fresh_stage42_hg_teacherless_claim_linter",
+    "report": "outputs/stage42_long_research/teacherless_claim_linter_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_hg_gate.md",
+    "verdict": "stage42_hg_teacherless_claim_linter_pass",
+    "gates": "15/15",
+    "summary": {
+      "files_scanned": 18,
+      "violations_total": 0,
+      "violations_by_check": {
+        "teacherless_as_global_floor_free": 0,
+        "floor_free_deployable_overclaim": 0,
+        "ungated_neural_deployable": 0,
+        "causal_floor_removal_allowed": 0,
+        "metric_seconds_true3d_foundation": 0,
+        "stage5c_smc_enabled": 0
+      },
+      "allowed_phrase": "teacherless proximity-guarded switch gate",
+      "allowed_phrase_hits": 17,
+      "causal_floor_fallback_phrase_hits": 39,
+      "global_floor_free_claim_allowed": false,
+      "ungated_neural_deployment_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "claim_boundary": {
+      "allowed_claim": "teacherless proximity-guarded switch gate with causal floor fallback",
+      "blocked_claims": [
+        "global floor-free neural deployment",
+        "causal floor removal",
+        "ungated neural deployment",
+        "metric/seconds/true-3D/foundation claim",
+        "Stage5C execution",
+        "SMC readiness"
+      ],
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "focused_pytest": "4 passed in 0.73s",
+      "full_pytest": "967 passed in 230.53s",
       "status": "passed"
     }
   }

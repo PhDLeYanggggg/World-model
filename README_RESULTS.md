@@ -5921,3 +5921,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - blocked claims: global causal floor removal, ungated neural deployment, metric/seconds/true-3D/foundation claims, Stage5C execution, and SMC.
 - deployment default remains protected causal-floor fallback; Stage42-HF is a claim/deployment contract refresh, not new training.
 <!-- STAGE42_HF_TEACHERLESS_GATE_DEPLOYMENT_CONTRACT:END -->
+
+<!-- STAGE42_HG_TEACHERLESS_CLAIM_LINTER:START -->
+## Stage42-HG Teacherless / Floor-Free Claim Linter
+
+- source: `fresh_stage42_hg_teacherless_claim_linter`
+- verdict: `stage42_hg_teacherless_claim_linter_pass`
+- gates: `15 / 15`
+- scanned files: `18`; violations: `0`.
+- allowed phrase: `teacherless proximity-guarded switch gate with causal floor fallback`.
+- blocked: global floor-free neural deployment, causal floor removal, ungated neural deployment, metric/seconds/true-3D/foundation claims, Stage5C, and SMC.
+- role: applies Stage42-HF contract to the paper/README surface; this is not new training or threshold tuning.
+<!-- STAGE42_HG_TEACHERLESS_CLAIM_LINTER:END -->

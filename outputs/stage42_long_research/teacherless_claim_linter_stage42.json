@@ -1,0 +1,103 @@
+{
+  "source": "fresh_stage42_hg_teacherless_claim_linter",
+  "stage": "Stage42-HG",
+  "generated_at_utc": "2026-05-27T17:14:22.361597+00:00",
+  "git_commit": "b1cf5df",
+  "input_hash": "b971e9aac8ed3ac0f4d57d8648e608f808fb61b7b13b3d7fbd3a97045e4a2487",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HG 是 teacherless/floor-free claim linter，不训练、不转换、不调 threshold。",
+    "允许表述：teacherless proximity-guarded switch gate with causal floor fallback。",
+    "禁止表述：global floor-free neural deployment、causal floor removal、ungated neural deployment。",
+    "future endpoint / future waypoint 只可作为 supervised/evaluation labels，不可作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "hf_gate_passed": true,
+    "he_gate_passed": true,
+    "hc_gate_passed": true
+  },
+  "hf_contract_ok": true,
+  "files_scanned": [
+    "README_RESULTS.md",
+    "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+    "README_M3W_USER_DETAILED_SUMMARY_ZH.md",
+    "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
+    "README_M3W_GOAL_FULL_SUMMARY_ZH.md",
+    "outputs/stage42_long_research/teacherless_gate_deployment_contract_stage42.md",
+    "outputs/stage42_long_research/floor_free_proximity_guard_robustness_stage42.md",
+    "outputs/stage42_long_research/floor_alternative_gate_stress_stage42.md",
+    "outputs/stage42_long_research/paper_outline_stage42.md",
+    "outputs/stage42_long_research/method_draft_stage42.md",
+    "outputs/stage42_long_research/experiment_tables_stage42.md",
+    "outputs/stage42_long_research/ablation_tables_stage42.md",
+    "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+    "outputs/stage42_long_research/model_card_stage42.md",
+    "outputs/stage42_long_research/data_card_stage42.md",
+    "outputs/stage42_long_research/reproducibility_stage42.md",
+    "outputs/stage42_long_research/a_journal_gap_stage42.md",
+    "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md"
+  ],
+  "violations": [],
+  "summary": {
+    "files_scanned": 18,
+    "violations_total": 0,
+    "violations_by_check": {
+      "teacherless_as_global_floor_free": 0,
+      "floor_free_deployable_overclaim": 0,
+      "ungated_neural_deployable": 0,
+      "causal_floor_removal_allowed": 0,
+      "metric_seconds_true3d_foundation": 0,
+      "stage5c_smc_enabled": 0
+    },
+    "allowed_phrase": "teacherless proximity-guarded switch gate",
+    "allowed_phrase_hits": 17,
+    "causal_floor_fallback_phrase_hits": 39,
+    "global_floor_free_claim_allowed": false,
+    "ungated_neural_deployment_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "claim_boundary": {
+    "allowed_claim": "teacherless proximity-guarded switch gate with causal floor fallback",
+    "blocked_claims": [
+      "global floor-free neural deployment",
+      "causal floor removal",
+      "ungated neural deployment",
+      "metric/seconds/true-3D/foundation claim",
+      "Stage5C execution",
+      "SMC readiness"
+    ],
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_hg_gate": {
+    "source": "fresh_stage42_hg_teacherless_claim_linter",
+    "gates": {
+      "source_fresh": true,
+      "hf_contract_loaded": true,
+      "he_input_passed": true,
+      "hc_input_passed": true,
+      "files_scanned": true,
+      "no_teacherless_global_floor_free_overclaim": true,
+      "no_floor_free_deployable_overclaim": true,
+      "no_ungated_neural_deployable_overclaim": true,
+      "no_causal_floor_removal_allowed_overclaim": true,
+      "no_metric_seconds_true3d_foundation_overclaim": true,
+      "no_stage5c_smc_overclaim": true,
+      "allowed_phrase_present": true,
+      "required_floor_phrase_present": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_hg_teacherless_claim_linter_pass"
+  }
+}

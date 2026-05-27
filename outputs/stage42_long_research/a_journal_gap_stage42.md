@@ -1191,3 +1191,14 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - Legal acceptance fields remain blank and must be user-confirmed. This is not conversion, evaluation, h100 repair, metric evidence, or seconds-level evidence.
 - `UCY|100` remains blocked until terms/path/source identity are confirmed and guarded conversion/no-leakage/source-CV pass.
 <!-- STAGE42_GY_UCY_H100_TERMS_PREFILL:END -->
+
+<!-- STAGE42_HG_TEACHERLESS_CLAIM_BOUNDARY:START -->
+## Stage42-HG Teacherless Claim Boundary Refresh
+
+- source: `fresh_stage42_hg_teacherless_claim_linter`
+- verdict: `stage42_hg_teacherless_claim_linter_pass`
+- New supported wording: `teacherless proximity-guarded switch gate with causal floor fallback`.
+- This strengthens the safety-floor study by showing a teacher gate can be removed for the repaired proximity-guarded switch policy.
+- It does not support global causal floor removal, ungated neural deployment, metric/seconds-level prediction, true 3D, foundation model, Stage5C, or SMC.
+- A-journal gap after HG: still need legal source expansion / source diversity, metric-time calibration, and stronger independently positive scene/goal/interaction or neural dynamics evidence.
+<!-- STAGE42_HG_TEACHERLESS_CLAIM_BOUNDARY:END -->
