@@ -5601,3 +5601,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - If no material family is supported, scene/goal/neighbor context remains blocked as an independent main claim under this changed-target audit.
 - Still no true-3D, foundation, global metric, seconds-level, Stage5C, SMC, or test-endpoint claim.
 <!-- STAGE42_GK_CONTEXT_SWITCHABILITY_FAMILY_AUDIT:END -->
+
+<!-- STAGE42_GL_SOURCE_CONVERSION_CONTRACT:START -->
+## Stage42-GL Source Conversion Contract
+
+- source: `fresh_stage42_gl_source_conversion_contract`
+- role: locks the path from user terms/path/source identity confirmation to future guarded conversion.
+- gate: `16 / 16`; verdict `stage42_gl_source_conversion_contract_pass`.
+- intake datasets: `5`; manifest ready targets: `0`; contract ready now: `0`.
+- post-confirmation calibrated source rows: `5`; calibrated t50/t100 opportunity after terms: `10060` / `5696`.
+- No download, conversion, training, or evaluation was executed.
+- Boundary: these candidates are not permission, converted data, metric/seconds claims, Stage5C, or SMC evidence.
+<!-- STAGE42_GL_SOURCE_CONVERSION_CONTRACT:END -->
