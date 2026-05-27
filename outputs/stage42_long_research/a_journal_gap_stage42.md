@@ -693,3 +693,16 @@ Stage42-CI makes the contribution boundary sharper. The current protected M3W ev
 - decision: `keep_source_frame_horizon_group_consistency_target`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_ET_GROUP_CONSISTENCY_TARGET_ABLATION:END -->
+
+<!-- STAGE42_EU_GROUP_CONSISTENCY_CONSTRAINT_TRAINING:START -->
+## Stage42-EU Group-Consistency Constraint Training
+
+- source: `fresh_stage42_group_consistency_constraint_training`
+- role: trains full-waypoint dynamics with source/frame/horizon group-risk weighted losses, then applies validation-selected group repair.
+- selected training variant: `group_unsafe_weighted` with `stage42_am_features` lambda `10.0`.
+- test all/t50/t100raw/hard/easy: `22.81%` / `22.35%` / `12.68%` / `21.97%` / `-23.91%`.
+- delta vs Stage42-DI all/hard/easy: `-1.90%` / `-1.91%` / `1.72%`.
+- near@0.05 base/final: `1.88%` / `1.33%`.
+- decision: `group_constraint_training_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EU_GROUP_CONSISTENCY_CONSTRAINT_TRAINING:END -->

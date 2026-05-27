@@ -2024,3 +2024,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - hard increment vs isolated `0.14%`; own-base near@0.05 reduction `0.55%`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_ET_GROUP_CONSISTENCY_TARGET_ABLATION:END -->
+
+<!-- STAGE42_EU_GROUP_CONSISTENCY_CONSTRAINT_TRAINING:START -->
+## Stage42-EU Group-Consistency Constraint Training
+
+- source: `fresh_stage42_group_consistency_constraint_training`
+- role: trains source/frame/horizon group-risk weighted full-waypoint dynamics, then applies validation-selected group repair.
+- gate: `15 / 18`; verdict `stage42_eu_group_consistency_constraint_training_positive_not_promoted`.
+- selected training variant: `group_unsafe_weighted` with lambda `10.0`.
+- test all/t50/t100raw/hard/easy: `22.81%` / `22.35%` / `12.68%` / `21.97%` / `-23.91%`.
+- delta vs Stage42-DI all/hard/easy: `-1.90%` / `-1.91%` / `1.72%`.
+- near@0.05 base/final: `1.88%` / `1.33%`.
+- decision: `group_constraint_training_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EU_GROUP_CONSISTENCY_CONSTRAINT_TRAINING:END -->
