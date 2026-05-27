@@ -678,3 +678,34 @@ Source-level runtime policy:
 
 本 README 是轻量文档，可以提交。
 
+<!-- STAGE42_EO_POST_EM_EN_PAPER_REFRESH:START -->
+## Stage42-EO Post-EM/EN Paper Package Refresh
+
+- source: `fresh_paper_refresh_from_stage42_eg_em_en`
+- role: propagate official-source/manual-terms blockers and floor-removability decisions into the paper package.
+- This is a paper-package refresh, not new training, conversion, download, or threshold tuning.
+
+### Source / Legal Boundary
+
+- official/toolkit source candidates: `4` / `5`.
+- manual terms required targets: `5`.
+- auto_download_allowed_now: `0`; conversion_ready_now: `0`; converted/evaluated now: `0` / `0`.
+- after-terms potential t50/t100 windows: `10060` / `5696`.
+- Official links are not license acceptance; user must confirm terms, allowed use, local path, and source identity before conversion.
+
+### Safety Floor Boundary
+
+- floor_free_neural_deployable: `False`.
+- global_floor_removal_allowed: `False`.
+- teacher_floor_rollout_context_removal_allowed: `False`.
+- safe_partial_floor_relaxation_available: `True` on `['t50_slice_relaxation::TrajNet|50', 't50_slice_relaxation::UCY|50']`.
+- proximity_guard_required_for_safety_claim: `True`.
+
+### Updated Paper Claim Boundary
+
+- Supported: protected source-level group-consistency full-waypoint raw-frame 2.5D evidence.
+- Supported only as narrow slice evidence: validation-backed t50 floor relaxation on mapped slices.
+- Required: Stage37/teacher floor rollout context, deployment fallback floor, and proximity guard for safety-sensitive reporting.
+- Blocked: source conversion without user terms/path/source identity; global floor-free neural; teacher-floor rollout context removal.
+- Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
+<!-- STAGE42_EO_POST_EM_EN_PAPER_REFRESH:END -->
