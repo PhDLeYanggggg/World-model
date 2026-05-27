@@ -644,3 +644,16 @@ SMC 是否启用：否
 - Current result preserves the legal blocker: no ready target means no conversion queue and no converted-data claim.
 - Boundary: no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EJ_GUARDED_SOURCE_CONVERSION_LAUNCHER:END -->
+
+<!-- STAGE42_EK_LONG_OBJECTIVE_COVERAGE_AUDIT:START -->
+## Stage42-EK Long Objective Coverage Audit
+
+- source: `fresh_stage42_long_objective_coverage_audit`
+- role: maps the active Stage42 A-F long objective to evidence rows, status labels, blockers, and paper-safe claims.
+- gate: `10 / 10`; verdict `stage42_ek_long_objective_coverage_audit_pass_open_blockers`.
+- requirements audited: `7` across phases `['A data and calibration', 'B external validation', 'C full-waypoint dynamics', 'D causal ablation', 'E safety floor', 'F paper package']`.
+- paper files present: `9 / 9`.
+- open blockers preserved: `['global_metric_seconds_claim_blocked', 'global_primary_full_waypoint_blocked', 'legal_conversion_ready_now_zero', 'neighbor_interaction_main_claim_blocked', 'scene_goal_main_claim_blocked', 'source_terms_confirmation_missing']`.
+- completion/A-journal-ready claims remain disallowed; this is a coverage audit, not conversion/training/evaluation.
+- Boundary: no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EK_LONG_OBJECTIVE_COVERAGE_AUDIT:END -->

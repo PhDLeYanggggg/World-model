@@ -1,0 +1,265 @@
+{
+  "source": "fresh_stage42_long_objective_coverage_audit",
+  "stage": "Stage42-EK",
+  "generated_at_utc": "2026-05-27T02:30:46.341447+00:00",
+  "git_commit": "12e53fc",
+  "input_hash": "59d5676c25ff53aeaa34b80129ac5c138287f4ac637748c60b423503b357a098",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EK 是 long-objective coverage audit，不下载、不转换、不训练、不评估。",
+    "本审计把 Stage42 A-F 目标映射到 fresh/cached/not_run 证据和 blocker，防止 paper package 过度 claim。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "requirements": [
+    {
+      "phase": "A data and calibration",
+      "requirement_id": "A1",
+      "requirement": "Audit external_data/OpenTraj/ETH_UCY/TrajNet/SDD/TGSIM/AerialMPT and preserve legal source blockers.",
+      "status": "partial_blocked",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/data_calibration_stage42.json",
+        "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+        "outputs/stage42_long_research/guarded_source_conversion_launcher_stage42.json",
+        "outputs/stage42_long_research/source_terms_validation_stage42.json"
+      ],
+      "evidence_summary": "data calibration files exist=True / True; conversion_ready_targets=0; guarded_queue=0.",
+      "blockers": [
+        "source_terms_confirmation_missing",
+        "conversion_queue_empty"
+      ],
+      "next_action": "User must fill source terms intake before any guarded conversion."
+    },
+    {
+      "phase": "A data and calibration",
+      "requirement_id": "A2",
+      "requirement": "Metric/time calibration may be used only for verified source-specific subsets.",
+      "status": "partial_blocked",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/raw_source_time_geometry_hint_audit_stage42.json",
+        "outputs/stage42_long_research/calibration_candidate_manifest_stage42.json",
+        "outputs/stage42_long_research/source_terms_gap_audit_stage42.json"
+      ],
+      "evidence_summary": "Hint/candidate manifests exist, but legal conversion-ready sources remain zero; no global metric/seconds claim is allowed.",
+      "blockers": [
+        "global_metric_seconds_claim_blocked",
+        "legal_conversion_ready_now_zero"
+      ],
+      "next_action": "After terms confirmation, run source-specific conversion/no-leakage/time-geometry audit."
+    },
+    {
+      "phase": "B external validation",
+      "requirement_id": "B1",
+      "requirement": "External validation must include source/domain-level all, t50, t100 diagnostic, hard/failure, easy evidence.",
+      "status": "pass_with_boundary",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/dual_domain_group_consistency_statistics_stage42.json",
+        "outputs/stage42_long_research/full_waypoint_promotion_checkpoint_stage42.json",
+        "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json"
+      ],
+      "evidence_summary": "Dual-domain group-consistency statistics and runtime replay exist; evidence remains dataset-local/raw-frame.",
+      "blockers": [
+        "not_true_metric_seconds",
+        "source_terms_for_new_conversion_open"
+      ],
+      "next_action": "Close source terms for additional independent top-down sources before broadening the claim."
+    },
+    {
+      "phase": "C full-waypoint dynamics",
+      "requirement_id": "C1",
+      "requirement": "Compare endpoint-only, bridge, full-waypoint shape, protected full-waypoint, and proximity-safe variants.",
+      "status": "pass_with_boundary",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/common_validation_bridge_shape_composer_stage42.json",
+        "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+        "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+        "outputs/stage42_long_research/full_waypoint_promotion_checkpoint_stage42.json"
+      ],
+      "evidence_summary": "Common-validation composer, proximity guard, and promotion checkpoint exist; full-waypoint is protected/source-level, not global ungated replacement.",
+      "blockers": [
+        "ungated_full_waypoint_not_promoted",
+        "global_primary_full_waypoint_blocked"
+      ],
+      "next_action": "Only promote broader full-waypoint if additional sources pass guarded conversion and source-CV."
+    },
+    {
+      "phase": "D causal ablation",
+      "requirement_id": "D1",
+      "requirement": "Prove scene/goal/interaction/neighbor/history/safe-switch/teacher-floor contributions with retrained or source-level evidence.",
+      "status": "mixed",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/group_consistency_contribution_audit_stage42.json",
+        "outputs/stage42_long_research/context_model_closure_stage42.json",
+        "outputs/stage42_long_research/context_switchability_materiality_stage42.json",
+        "outputs/stage42_long_research/unified_ablation_evidence_stage42.json"
+      ],
+      "evidence_summary": "Group-consistency and safety floor are supported; current scene/goal/neighbor/interaction context protocols are below materiality or closed.",
+      "blockers": [
+        "scene_goal_main_claim_blocked",
+        "neighbor_interaction_main_claim_blocked",
+        "current_context_protocol_closed"
+      ],
+      "next_action": "If context is retried, change target/architecture rather than repeating current residual context protocol."
+    },
+    {
+      "phase": "E safety floor",
+      "requirement_id": "E1",
+      "requirement": "Study whether Stage37/teacher floor is removable or necessary, and keep ungated neural unsafe if it fails.",
+      "status": "pass_with_boundary",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/source_level_safety_floor_audit_stage42.json",
+        "outputs/stage42_long_research/frozen_proximity_guard_composer_policy_stage42.json",
+        "outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
+        "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json"
+      ],
+      "evidence_summary": "Safety-floor and proximity-guard evidence exists; deployable policies remain protected.",
+      "blockers": [
+        "ungated_neural_not_deployable",
+        "teacher_floor_still_required"
+      ],
+      "next_action": "Report floor as safety mechanism unless future ungated model passes easy/hard/all/proximity gates."
+    },
+    {
+      "phase": "F paper package",
+      "requirement_id": "F1",
+      "requirement": "Maintain paper outline, method, experiments, ablation, failure taxonomy, model/data cards, reproducibility, and A-journal gap package.",
+      "status": "pass_with_open_gaps",
+      "result_source": "cached_verified",
+      "evidence_files": [
+        "outputs/stage42_long_research/paper_outline_stage42.md",
+        "outputs/stage42_long_research/method_draft_stage42.md",
+        "outputs/stage42_long_research/experiment_tables_stage42.md",
+        "outputs/stage42_long_research/ablation_tables_stage42.md",
+        "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+        "outputs/stage42_long_research/model_card_stage42.md",
+        "outputs/stage42_long_research/data_card_stage42.md",
+        "outputs/stage42_long_research/reproducibility_stage42.md",
+        "outputs/stage42_long_research/a_journal_gap_stage42.md"
+      ],
+      "evidence_summary": "paper_files_present=9/9; latest source terms and context blockers must remain in claims.",
+      "blockers": [
+        "source_terms_open",
+        "context_materiality_negative_evidence"
+      ],
+      "next_action": "Keep post-EE/EF/EJ claim boundary in paper package; do not claim foundation/metric/Stage5C/SMC."
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_long_objective_coverage_audit",
+    "requirements_audited": 7,
+    "phases_audited": [
+      "A data and calibration",
+      "B external validation",
+      "C full-waypoint dynamics",
+      "D causal ablation",
+      "E safety floor",
+      "F paper package"
+    ],
+    "status_counts": {
+      "partial_blocked": 2,
+      "pass_with_boundary": 3,
+      "mixed": 1,
+      "pass_with_open_gaps": 1
+    },
+    "paper_files_present": 9,
+    "paper_files_total": 9,
+    "open_blockers": [
+      "global_metric_seconds_claim_blocked",
+      "global_primary_full_waypoint_blocked",
+      "legal_conversion_ready_now_zero",
+      "neighbor_interaction_main_claim_blocked",
+      "scene_goal_main_claim_blocked",
+      "source_terms_confirmation_missing"
+    ],
+    "completion_claim_allowed": false,
+    "a_journal_ready_claim_allowed": false,
+    "current_verdict": "stage42_long_objective_has_strong_evidence_but_open_source_context_metric_gaps"
+  },
+  "paper_files": [
+    {
+      "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+      "exists": true,
+      "bytes": 13325
+    },
+    {
+      "path": "outputs/stage42_long_research/method_draft_stage42.md",
+      "exists": true,
+      "bytes": 16819
+    },
+    {
+      "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "bytes": 27423
+    },
+    {
+      "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "bytes": 34821
+    },
+    {
+      "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "exists": true,
+      "bytes": 14384
+    },
+    {
+      "path": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "bytes": 25138
+    },
+    {
+      "path": "outputs/stage42_long_research/data_card_stage42.md",
+      "exists": true,
+      "bytes": 11154
+    },
+    {
+      "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "bytes": 19121
+    },
+    {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "bytes": 43780
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "conversion_executed_in_stage42_ek": false,
+    "evaluation_executed_in_stage42_ek": false,
+    "training_executed_in_stage42_ek": false
+  },
+  "stage42_ek_gate": {
+    "gates": {
+      "all_phases_audited": true,
+      "requirements_written": true,
+      "paper_files_checked": true,
+      "open_blockers_preserved": true,
+      "no_completion_overclaim": true,
+      "no_a_journal_overclaim": true,
+      "no_conversion_training_eval_in_audit": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 10,
+    "total": 10,
+    "verdict": "stage42_ek_long_objective_coverage_audit_pass_open_blockers"
+  }
+}
