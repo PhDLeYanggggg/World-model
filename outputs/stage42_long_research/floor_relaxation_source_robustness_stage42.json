@@ -1,0 +1,363 @@
+{
+  "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+  "stage": "Stage42-GV Floor Relaxation Source Robustness Audit",
+  "generated_at_utc": "2026-05-27T14:45:06.521419+00:00",
+  "git_commit": "4e9d39b",
+  "input_hash": "02d9a2c2427c5588fb82b66fc8e4cb3b7e60ff9b4c9c5f5caa3b52adf4f991a2",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-GV 是 Stage42-GT partial t50 floor-relaxation 的 source-level all-agent robustness audit。",
+    "本阶段不训练新模型，不下载数据，不转换新数据，不执行 Stage5C，不启用 SMC。",
+    "future endpoints / waypoints 只作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 坐标不能写成 global metric。",
+    "如果 source 过于集中，必须保留 source-concentration caveat，不能写成 broad source-level generalization。"
+  ],
+  "input_reports": {
+    "gt_verdict": "stage42_gt_floor_relaxation_safety_stress_pass",
+    "gu_verdict": "stage42_gu_floor_relaxation_paper_refresh_pass"
+  },
+  "slice_audits": {
+    "TrajNet|50": {
+      "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+      "slice": "TrajNet|50",
+      "total_rows": 9198,
+      "source_count": 2,
+      "largest_source_fraction": 0.9907588606218743,
+      "source_concentration_limited": true,
+      "safety_positive_source_count": 2,
+      "safety_positive_sources": [
+        "crowds/students002.txt",
+        "crowds/students003.txt"
+      ],
+      "source_rows": [
+        {
+          "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+          "slice": "TrajNet|50",
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+          "source_name": "crowds/students002.txt",
+          "rows": 85,
+          "groups": 66,
+          "metric": {
+            "rows": 85,
+            "all_improvement": 0.7135239074629596,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.7135239074629596,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.7135239074629596,
+            "easy_degradation": -0.7658770615346866,
+            "switch_rate": 1.0,
+            "harm_over_fallback": -0.9093540108857037
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 85,
+            "groups": 66,
+            "multi_agent_rows": 36,
+            "multi_agent_groups": 17,
+            "mean_group_size": 1.2878787878787878,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.8043380106995839,
+            "p05_min_group_distance": 0.15217196874932326,
+            "near_collision_rate_002": 0.0,
+            "near_collision_rate_005": 0.0,
+            "smoothness": {
+              "mean_max_normalized_step": 0.10145119696741331,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 85,
+            "groups": 66,
+            "multi_agent_rows": 36,
+            "multi_agent_groups": 17,
+            "mean_group_size": 1.2878787878787878,
+            "switch_rate": 1.0,
+            "group_switch_rate": 1.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 1.0,
+            "no_switch_group_rate": 0.0,
+            "mean_min_group_distance": 0.6077513519888686,
+            "p05_min_group_distance": 0.1100413415789331,
+            "near_collision_rate_002": 0.0,
+            "near_collision_rate_005": 0.0,
+            "smoothness": {
+              "mean_max_normalized_step": 0.3160016878360336,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": 0.0,
+            "near_collision_rate_005_delta": 0.0,
+            "p05_min_group_distance_delta": -0.042130627170390164,
+            "mean_min_group_distance_delta": -0.19658665871071523,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.2145504908686203
+          },
+          "near_collision_delta_bootstrap": {
+            "low": 0.0,
+            "mid": 0.0,
+            "high": 0.0,
+            "n": 36,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        },
+        {
+          "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+          "slice": "TrajNet|50",
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "source_name": "crowds/students003.txt",
+          "rows": 9113,
+          "groups": 531,
+          "metric": {
+            "rows": 9113,
+            "all_improvement": 0.2919944593748245,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.2919944593748245,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.2919944593748245,
+            "easy_degradation": -0.22901254753260447,
+            "switch_rate": 0.9521562602875013,
+            "harm_over_fallback": -0.14104645264060334
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 9113,
+            "groups": 531,
+            "multi_agent_rows": 9112,
+            "multi_agent_groups": 530,
+            "mean_group_size": 17.16195856873823,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.29585984309331564,
+            "p05_min_group_distance": 0.05108416826129312,
+            "near_collision_rate_002": 0.00888937664618086,
+            "near_collision_rate_005": 0.04817822651448639,
+            "smoothness": {
+              "mean_max_normalized_step": 0.09676405508140003,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 9113,
+            "groups": 531,
+            "multi_agent_rows": 9112,
+            "multi_agent_groups": 530,
+            "mean_group_size": 17.16195856873823,
+            "switch_rate": 0.9521562602875013,
+            "group_switch_rate": 1.0,
+            "mixed_group_switch_rate": 0.455743879472693,
+            "all_switch_group_rate": 0.544256120527307,
+            "no_switch_group_rate": 0.0,
+            "mean_min_group_distance": 0.29888007020905427,
+            "p05_min_group_distance": 0.05722008591530293,
+            "near_collision_rate_002": 0.0052677787532923615,
+            "near_collision_rate_005": 0.038630377524143986,
+            "smoothness": {
+              "mean_max_normalized_step": 0.11771797167528682,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": -0.0036215978928884982,
+            "near_collision_rate_005_delta": -0.009547848990342403,
+            "p05_min_group_distance_delta": 0.006135917654009809,
+            "mean_min_group_distance_delta": 0.0030202271157386273,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.02095391659388679
+          },
+          "near_collision_delta_bootstrap": {
+            "low": -0.014376646180860405,
+            "mid": -0.009547848990342406,
+            "high": -0.005265035118525024,
+            "n": 9112,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        }
+      ],
+      "broad_source_generalization_claim_allowed": false
+    },
+    "UCY|50": {
+      "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+      "slice": "UCY|50",
+      "total_rows": 2340,
+      "source_count": 1,
+      "largest_source_fraction": 1.0,
+      "source_concentration_limited": true,
+      "safety_positive_source_count": 1,
+      "safety_positive_sources": [
+        "crowds/crowds_zara03.txt"
+      ],
+      "source_rows": [
+        {
+          "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+          "slice": "UCY|50",
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "source_name": "crowds/crowds_zara03.txt",
+          "rows": 2340,
+          "groups": 663,
+          "metric": {
+            "rows": 2340,
+            "all_improvement": 0.24532046629629067,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.24532046629629067,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65,
+            "harm_over_fallback": -0.13234820222281216
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 2340,
+            "groups": 663,
+            "multi_agent_rows": 2235,
+            "multi_agent_groups": 558,
+            "mean_group_size": 3.5294117647058822,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.4220253526916771,
+            "p05_min_group_distance": 0.0629027319767948,
+            "near_collision_rate_002": 0.0044742729306487695,
+            "near_collision_rate_005": 0.032662192393736016,
+            "smoothness": {
+              "mean_max_normalized_step": 0.10265721391951295,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 2340,
+            "groups": 663,
+            "multi_agent_rows": 2235,
+            "multi_agent_groups": 558,
+            "mean_group_size": 3.5294117647058822,
+            "switch_rate": 0.65,
+            "group_switch_rate": 0.8702865761689291,
+            "mixed_group_switch_rate": 0.5339366515837104,
+            "all_switch_group_rate": 0.33634992458521873,
+            "no_switch_group_rate": 0.1297134238310709,
+            "mean_min_group_distance": 0.4074771188945792,
+            "p05_min_group_distance": 0.060881427442532624,
+            "near_collision_rate_002": 0.004026845637583893,
+            "near_collision_rate_005": 0.03400447427293065,
+            "smoothness": {
+              "mean_max_normalized_step": 0.14001831157298467,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": -0.00044742729306487643,
+            "near_collision_rate_005_delta": 0.0013422818791946345,
+            "p05_min_group_distance_delta": -0.0020213045342621777,
+            "mean_min_group_distance_delta": -0.01454823379709791,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.03736109765347172
+          },
+          "near_collision_delta_bootstrap": {
+            "low": -0.004038031319910514,
+            "mid": 0.0013422818791946308,
+            "high": 0.0071588366890380315,
+            "n": 2235,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        }
+      ],
+      "broad_source_generalization_claim_allowed": false
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+    "gt_verdict": "stage42_gt_floor_relaxation_safety_stress_pass",
+    "gu_verdict": "stage42_gu_floor_relaxation_paper_refresh_pass",
+    "target_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "source_safety_positive_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "source_concentration_limited_slices": [
+      "TrajNet|50",
+      "UCY|50"
+    ],
+    "broad_source_generalization_claim_allowed": false,
+    "source_level_claim": "major-source all-agent safety support with source-concentration caveat; not broad source-level generalization",
+    "target_union_rows": 11538,
+    "target_union_t50_improvement": 0.28969780582672955,
+    "target_union_near_collision_005_delta": -0.007379425459017833,
+    "training_executed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "threshold_tuned_on_test": false,
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "test_rows_for_reporting_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "broad_source_generalization_claim_allowed": false,
+    "global_floor_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_gv_gate": {
+    "source": "fresh_stage42_gv_floor_relaxation_source_robustness",
+    "gates": {
+      "gt_input_passed": true,
+      "gu_input_passed": true,
+      "target_slices_audited": true,
+      "source_rows_present": true,
+      "major_source_safety_positive": true,
+      "source_concentration_caveat_recorded": true,
+      "broad_source_generalization_not_overclaimed": true,
+      "no_training_download_conversion_or_test_tuning": true,
+      "no_leakage_pass": true,
+      "global_floor_removal_false": true,
+      "floor_free_neural_false": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage42_gv_floor_relaxation_source_robustness_pass_with_source_concentration_caveat"
+  }
+}
