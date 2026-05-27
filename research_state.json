@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-GZ full-waypoint claim guard",
-  "current_verdict": "stage42_gz_full_waypoint_claim_guard_pass",
+  "current_stage": "Stage42-HA full-waypoint overclaim linter",
+  "current_verdict": "stage42_ha_full_waypoint_overclaim_linter_pass",
   "m3w_work_attempts_failures_successes_readme_current": {
     "source": "cached_verified_summary_from_stage18_to_stage42_gy_plus_current_user_request_refresh",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
@@ -31040,6 +31040,40 @@
       "foundation_world_model": false,
       "metric_seconds_claim": false,
       "ungated_neural_dynamics_deployable": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_ha_full_waypoint_overclaim_linter": {
+    "source": "fresh_stage42_ha_full_waypoint_overclaim_linter",
+    "report": "outputs/stage42_long_research/full_waypoint_overclaim_linter_stage42.md",
+    "json": "outputs/stage42_long_research/full_waypoint_overclaim_linter_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_ha_gate.md",
+    "verdict": "stage42_ha_full_waypoint_overclaim_linter_pass",
+    "gates": "14/14",
+    "summary": {
+      "files_scanned": 15,
+      "violations_total": 0,
+      "endpoint_as_full_waypoint_overclaims": 0,
+      "ungated_full_waypoint_deployable_overclaims": 0,
+      "global_primary_replacement_overclaims": 0,
+      "neighbor_interaction_independent_overclaims": 0,
+      "metric_seconds_or_3d_overclaims": 0,
+      "stage5c_smc_overclaims": 0,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "verification": {
+      "run": ".venv-pytorch/bin/python run_stage42_full_waypoint_overclaim_linter.py -> passed",
+      "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_full_waypoint_overclaim_linter.py -> 4 passed in 0.99s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 948 passed in 111.25s"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_seconds_claim": false,
+      "endpoint_as_full_waypoint_claim": false,
+      "ungated_full_waypoint_deployable": false,
       "stage5c_executed": false,
       "smc_enabled": false
     }

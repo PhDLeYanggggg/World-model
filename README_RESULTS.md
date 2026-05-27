@@ -5812,3 +5812,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Group-consistency full-waypoint is supported under protected policy; neighbor/interaction alone remains blocked as an independent main claim.
 - No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
 <!-- STAGE42_GZ_FULL_WAYPOINT_CLAIM_GUARD:END -->
+
+<!-- STAGE42_HA_FULL_WAYPOINT_OVERCLAIM_LINTER:START -->
+## Stage42-HA Full-Waypoint Overclaim Linter
+
+- source: `fresh_stage42_ha_full_waypoint_overclaim_linter`
+- gate: `14 / 14`
+- verdict: `stage42_ha_full_waypoint_overclaim_linter_pass`
+- files_scanned: `15`
+- violations_total: `0`
+- Endpoint/full-waypoint, ungated full-waypoint, group/neighbor independent-main, metric/seconds, Stage5C and SMC overclaims were scanned.
+- No unsupported full-waypoint overclaim lines were found.
+<!-- STAGE42_HA_FULL_WAYPOINT_OVERCLAIM_LINTER:END -->
