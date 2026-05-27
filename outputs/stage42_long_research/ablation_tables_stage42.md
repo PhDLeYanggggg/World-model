@@ -812,3 +812,17 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FN_FH_HORIZON_CONSERVATIVE_EASY_GUARD:END -->
+
+<!-- STAGE42_FO_FH_HORIZON_GAIN_HARM_SPECIALIST:START -->
+## Stage42-FO FH Horizon Gain/Harm Specialist
+
+- source: `fresh_stage42_fh_horizon_gain_harm_specialist`
+- role: validation-only row-level gain/harm specialist for remaining weak horizon slices; no test threshold tuning.
+- gate: `16 / 16`; verdict `stage42_fo_gain_harm_specialist_pass_with_horizon_limit`.
+- global all/t50/t100raw/hard/easy: `35.20%` / `29.03%` / `21.14%` / `33.35%` / `-37.10%`.
+- weak horizons before: `['TrajNet|100', 'UCY|100']`.
+- weak horizons after: `['TrajNet|100', 'UCY|100']`.
+- applied policies: `{'TrajNet|100': {'key': 'TrajNet|100', 'mode': 'gain_harm_model', 'gain_min': 0.0, 'harm_max': 0.35, 'max_switch': 0.35, 'rows': 5608, 'switch_rows': 1962}, 'UCY|100': {'key': 'UCY|100', 'mode': 'keep_fm', 'rows': 1440, 'switch_rows': 0}}`.
+- uniform horizon claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FO_FH_HORIZON_GAIN_HARM_SPECIALIST:END -->

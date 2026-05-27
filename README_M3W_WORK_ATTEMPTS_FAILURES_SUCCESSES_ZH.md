@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FN 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FO 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
@@ -28,7 +28,8 @@ Stage42-FK 针对这些 weak horizon 做 validation-only repair：全局 all/t50
 Stage42-FL 对 FK/FJ 剩余 weak horizon 做 fresh 取证：三个弱切片共同根因是 oracle label low-margin ambiguous；TrajNet|100 的 diagnostic oracle vs FH 只有 1.06%，UCY|50 为 6.75%，UCY|100 为 2.74%，且 0.05 relative-margin 内的低 margin 比例分别约 99.18%、92.52%、90.28%。因此下一步不是继续整片候选替换，而是训练 horizon-specific row-level switch model，且必须用更强 history/neighbor/goal features 和保守 safety gate。
 Stage42-FM 按 FL 的诊断训练 validation-only row-level weak-horizon switch specialist：全局 all/t50/t100raw/hard 变为 35.20% / 29.03% / 21.14% / 33.35%，easy degradation 为 -37.10%，near@0.05 为 1.25%；弱切片从 3 个降到 2 个，UCY|50 被修复，但 TrajNet|100 与 UCY|100 仍因 easy-safety / low-margin ambiguity 没过 robust horizon gate。因此 FM 是有价值的 row-level repair，但 verdict 仍是 pass_with_horizon_limit，不允许 uniform horizon claim。
 Stage42-FN 在 FM 后增加 validation-only conservative easy guard：全局 all/t50/t100raw/hard 为 34.86% / 29.03% / 20.19% / 32.96%，easy degradation 为 -37.14%，near@0.05 为 1.24%；但弱切片仍是 TrajNet|100 和 UCY|100，没有新增修复。FN 因此是有价值的负结果：更保守的 easy guard 可以保持全局安全，但会牺牲 all/t100/hard，仍不能解除 uniform horizon blocker。
-这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker；source/domain/horizon 审计发现 UCY weak；UCY internal-val support 进一步把 weak domain 修成 dual-domain positive-safe；FI 冻结和复放证明这个 policy 不是临时 test-tuned 结果；FJ/FK/FL/FM/FN 则把允许 claim 精确收窄到 dual-domain/source robust，但不允许 uniform horizon overclaim，并解释 uniform horizon blocker 来自低 margin/高歧义 weak horizon；FM 证明 row-level switch 能修复一部分弱切片，FN 证明单纯更保守 easy guard 不能修复剩余 TrajNet|100 / UCY|100。 但这仍是 dataset-local raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。
+Stage42-FO 进一步训练 validation-only row-level gain/harm specialist，输入包括 Stage37/past history/prototype/rollout diagnostics，future labels 只用于 validation training target。它在 TrajNet|100 上切换 1962 行、UCY|100 上选择 keep_fm；全局 all/t50/t100raw/hard 回到 35.20% / 29.03% / 21.14% / 33.35%，但 weak horizons 仍是 TrajNet|100 与 UCY|100。因此 FO 证明“更像模型的 gain/harm specialist”也还没有足够信号解除 low-margin horizon blocker。
+这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker；source/domain/horizon 审计发现 UCY weak；UCY internal-val support 进一步把 weak domain 修成 dual-domain positive-safe；FI 冻结和复放证明这个 policy 不是临时 test-tuned 结果；FJ/FK/FL/FM/FN/FO 则把允许 claim 精确收窄到 dual-domain/source robust，但不允许 uniform horizon overclaim，并解释 uniform horizon blocker 来自低 margin/高歧义 weak horizon；FM 证明 row-level switch 能修复一部分弱切片，FN 证明单纯更保守 easy guard 不能修复剩余 TrajNet|100 / UCY|100，FO 证明当前 past/prototype/rollout gain-harm features 仍不足以可靠预测剩余 h100 weak-slice safety。 但这仍是 dataset-local raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。
 ```
 
 ## 0.1 本次给你的详细总结
@@ -88,6 +89,7 @@ Stage42-FN 在 FM 后增加 validation-only conservative easy guard：全局 all
 | Stage42-FL weak-horizon forensics | TrajNet|100、UCY|50、UCY|100 的 root cause 都是 oracle label low-margin ambiguous；gate 15/15 | 解释 FK 为什么修不掉 uniform horizon：整片替换不够，需要 row-level horizon specialist |
 | Stage42-FM row-level weak-horizon specialist | all/t50/t100raw/hard 35.20% / 29.03% / 21.14% / 33.35%；UCY|50 repaired；weak horizons reduced from 3 to 2；gate 15/15 | row-level switch 有效但不充分；TrajNet|100 和 UCY|100 仍 blocked，因此 uniform horizon claim 仍禁止 |
 | Stage42-FN conservative easy guard | all/t50/t100raw/hard 34.86% / 29.03% / 20.19% / 32.96%；weak horizons 仍为 TrajNet|100、UCY|100；gate 15/15 | 更保守 easy guard 保持全局安全但牺牲 all/t100/hard，不能修复 uniform horizon blocker |
+| Stage42-FO gain/harm specialist | all/t50/t100raw/hard 35.20% / 29.03% / 21.14% / 33.35%；TrajNet|100 切 1962 行，UCY|100 keep_fm；gate 16/16 | 模型化 gain/harm specialist 仍不能修复剩余 h100 weak horizons；需要更强 source/horizon-specific data 或更真实 long-horizon context |
 
 但是当前仍然不是：
 
@@ -844,3 +846,17 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FN_FH_HORIZON_CONSERVATIVE_EASY_GUARD:END -->
+
+<!-- STAGE42_FO_FH_HORIZON_GAIN_HARM_SPECIALIST:START -->
+## Stage42-FO FH Horizon Gain/Harm Specialist
+
+- source: `fresh_stage42_fh_horizon_gain_harm_specialist`
+- role: validation-only row-level gain/harm specialist for remaining weak horizon slices; no test threshold tuning.
+- gate: `16 / 16`; verdict `stage42_fo_gain_harm_specialist_pass_with_horizon_limit`.
+- global all/t50/t100raw/hard/easy: `35.20%` / `29.03%` / `21.14%` / `33.35%` / `-37.10%`.
+- weak horizons before: `['TrajNet|100', 'UCY|100']`.
+- weak horizons after: `['TrajNet|100', 'UCY|100']`.
+- applied policies: `{'TrajNet|100': {'key': 'TrajNet|100', 'mode': 'gain_harm_model', 'gain_min': 0.0, 'harm_max': 0.35, 'max_switch': 0.35, 'rows': 5608, 'switch_rows': 1962}, 'UCY|100': {'key': 'UCY|100', 'mode': 'keep_fm', 'rows': 1440, 'switch_rows': 0}}`.
+- uniform horizon claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FO_FH_HORIZON_GAIN_HARM_SPECIALIST:END -->
