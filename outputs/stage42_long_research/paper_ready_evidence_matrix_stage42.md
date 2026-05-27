@@ -123,3 +123,12 @@ This section refines the paper evidence matrix by separating replay evidence str
 - local path candidates found: `5` / `5`.
 - No terms were accepted, no conversion/evaluation happened, and metric/seconds claims remain blocked.
 <!-- STAGE42_HY_SOURCE_LOCAL_PATH_PREFILL:END -->
+
+<!-- STAGE42_HZ_SOURCE_TERMS_CONFIRMATION_PACKET:START -->
+## Stage42-HZ Source Terms Confirmation Packet
+
+- HZ adds a user-fillable source/terms confirmation template and readiness validator.
+- gate: `22 / 22`.
+- ready for guarded conversion now: `0`.
+- This reduces A-stage friction but does not close legal/source blockers or authorize metric/time conversion.
+<!-- STAGE42_HZ_SOURCE_TERMS_CONFIRMATION_PACKET:END -->

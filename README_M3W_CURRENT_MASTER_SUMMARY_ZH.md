@@ -473,3 +473,15 @@ M3W 已经做出了有价值的真实路线探索：从 SDD cost-aware selector�
 - Remaining blocker: user must confirm official terms, allowed use, acceptance date, local path, and source identity before guarded conversion.
 - Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
 <!-- STAGE42_HY_SOURCE_LOCAL_PATH_PREFILL:END -->
+
+<!-- STAGE42_HZ_SOURCE_TERMS_CONFIRMATION_PACKET:START -->
+## Stage42-HZ Source Terms Confirmation Packet
+
+- source: `fresh_stage42_hz_source_terms_confirmation_packet_from_hy_prefill`
+- role: turn HY local path prefill into a user-confirmable source/terms packet and readiness validator.
+- gate: `22 / 22`; verdict `stage42_hz_source_terms_confirmation_packet_pass`.
+- sources in packet: `5`; ready for guarded conversion now: `0`.
+- potential after-terms t50/t100 windows preserved: `10060` / `5696`.
+- Remaining blocker: user must fill and confirm terms/source/local-path fields before conversion.
+- Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
+<!-- STAGE42_HZ_SOURCE_TERMS_CONFIRMATION_PACKET:END -->
