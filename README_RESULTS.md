@@ -1,5 +1,19 @@
 # Physical World Model 2.5D Results
 
+## M3W 当前详细总结（2026-05-27 用户请求版）
+
+本轮按用户要求，把“这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成新的单文件 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md`
+
+该文件是 `cached_verified` 总结，不是新训练、转换、下载或评估。它纳入 Stage26、Stage37、M3W-Neural v1、Stage38-40、Stage42-FH/FI、Stage42-HE/HF/HG/HI 等关键证据，并明确写清：
+
+- 当前 M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+- 当前不是 true 3D、不是 foundation、不是 global metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
+- 成功路线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42 source/domain protected full-waypoint family、Stage42 teacherless proximity-guarded switch gate with causal floor fallback。
+- 失败/blocked 路线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim、global floor removal、metric/seconds claim。
+- 当前最新边界：teacher gate 可以在 repaired proximity-guard switch gate 中不用，但 causal floor fallback 仍必须存在；ETH/UCY restricted metric/time 只有 after-terms 技术候选，ready now = 0，不能写成当前 metric/time result。
+
 ## M3W 长期目标完整总结 README（当前用户主文件）
 
 本轮按用户要求，把“这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”集中写到一个新的单文件 README：
