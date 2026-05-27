@@ -36,7 +36,7 @@ M3W 当前已经从早期 SDD-only selector 进化为一个 **protected dataset-
 | Protected neural/world-state | M3W-Neural v1 composite-tail safe-switch bounded neural dynamics | protected candidate | 必须在 Stage37/teacher floor 或 causal floor fallback 保护下。 |
 | Source/domain/full-waypoint | Stage42-FH/FI frozen protected source/domain policy | paper-usable protected evidence | 允许 source/domain protected claim，不允许 uniform horizon overclaim。 |
 | Teacherless switch gate | Stage42-HE/HF teacherless proximity-guarded switch gate | bounded paper/deployment claim | teacher gate 可移除，但 causal floor fallback 必须保留。 |
-| Restricted metric/time | Stage42-HI restricted metric/time readiness | technical-after-terms candidate | ready now = 0；必须用户确认 terms/path/source identity 后再 conversion/no-leakage/source-CV/final-test。 |
+| Restricted metric/time | Stage42-HI/HJ restricted metric/time readiness + source-CV preflight | technical-after-terms candidate | ready now = 0；UCY after terms 可规划 robust source-CV；ETH_UCY 因当前 t100 source support 不足仍 blocked；必须用户确认 terms/path/source identity 后再 conversion/no-leakage/source-CV/final-test。 |
 
 ## 1. 你问“这个目标内做了什么”，实际做过的主线
 
@@ -62,11 +62,13 @@ M3W 当前已经从早期 SDD-only selector 进化为一个 **protected dataset-
 - 外部数据不能直接写成 global metric/seconds-level。
 - 一些 source 仍受 legal/source/path/terms 阻塞。
 - Stage42-HI 只证明 ETH/UCY 有 H/FPS/stride 技术线索，`restricted_metric_time_ready_now_count = 0`，不能写成当前 metric/time result。
+- Stage42-HJ 进一步解析本地 candidate rows：UCY 有 3 个 usable-after-terms sources，可规划 leave-one-source style robust source-CV；ETH_UCY 只有 `ETH_seq_eth` 同时具备 t50/t100，`ETH_seq_hotel` t100=0，所以 ETH_UCY source-CV 仍 blocked。
 
 原因：
 
 - SDD 是 pixel-space annotation；homography/scale/effective seconds 未验证。
 - External source 的 official terms、source identity、local path confirmation、conversion/no-leakage/source-CV 还未全部闭环。
+- ETH_UCY 当前缺第二个 t100-capable usable source；这不是模型失败，而是 source-CV 支持不足。
 - registry 或 prefill 不是 permission，也不是 converted/evaluated data。
 
 ### 1.2 Strongest causal baseline 与 safety floor 主线
@@ -444,8 +446,9 @@ teacherless proximity-guarded switch gate with causal floor fallback
 
 1. **完成 restricted metric/time source terms confirmation**
    - Stage42-HI 已识别 6 个 ETH/UCY 技术候选。
+   - Stage42-HJ 显示 UCY 在 terms confirmed 后可做 robust source-CV，t50/t100 after-terms windows 约 `9554 / 5605`；ETH_UCY 仍需要更多 t100-capable usable source。
    - 但 ready now = 0。
-   - 需要用户确认 source terms/path/source identity 后，才能做 conversion/no-leakage/source-CV/final-test。
+   - 需要用户确认 source terms/path/source identity 后，才能做 conversion/no-leakage/source-CV/final-test；不能把 preflight 写成 conversion/evaluation。
 
 2. **继续 source-CV / independent source 修复**
    - 当前 evidence 已强，但 source diversity 和 uniform horizon 仍是限制。
@@ -472,4 +475,3 @@ SMC 是否启用：否。
 当前 best protected neural candidate：M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor。  
 当前最新 bounded teacherless claim：Stage42-HF `teacherless proximity-guarded switch gate with causal floor fallback`。  
 当前最大 blocker：restricted metric/time legal-confirmed conversion + source-CV + uniform h100/horizon/source-diversity closure。
-

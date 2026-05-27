@@ -1,0 +1,505 @@
+{
+  "source": "fresh_stage42_hj_restricted_metric_time_source_cv_preflight",
+  "stage": "Stage42-HJ Restricted Metric/Time Source-CV Preflight",
+  "generated_at_utc": "2026-05-27T17:40:03.030933+00:00",
+  "git_commit": "fa87e65",
+  "input_hash": "183cfe1046c959c0eb2b54d6e4ff6f097af385e817811e0ccfc7f0b203985352",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-HJ 是 restricted metric/time source-CV preflight，不训练、不转换、不下载、不调 threshold。",
+    "本阶段只解析本地 ETH/UCY technical candidate rows 来估计 source-CV / history / horizon 可行性。",
+    "local parseability 和 source-CV feasibility 不等于 legal conversion readiness。",
+    "future endpoint / future waypoint 只可作为 supervised/evaluation labels，不可作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 建 goals，不使用 test metrics 调 threshold。",
+    "restricted seconds/metric wording 仍需 user terms confirmation、guarded conversion、no-leakage、source-CV、final test。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "hi_gate_passed": true,
+    "bn_gate_passed": true,
+    "cg_gate_passed": true
+  },
+  "source_rows": [
+    {
+      "source": "fresh_run",
+      "source_id": "ETH_seq_eth",
+      "domain": "ETH_UCY",
+      "dataset": "ETH",
+      "terms_target_id": "eth_biwi_original",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "track_stats": {
+        "rows": 8908,
+        "agents": 360,
+        "unique_frames": 1448,
+        "min_frame": 780,
+        "max_frame": 12381,
+        "common_frame_step": 6,
+        "track_count": 360,
+        "min_track_points": 2,
+        "median_track_points": 24.0,
+        "max_track_points": 190,
+        "horizon_counts": {
+          "10": 5408,
+          "25": 1214,
+          "50": 291,
+          "100": 91
+        },
+        "history_horizon_counts": {
+          "k8_h50": 237,
+          "k8_h100": 83,
+          "k16_h50": 191,
+          "k16_h100": 75,
+          "k32_h50": 143,
+          "k32_h100": 59,
+          "k64_h50": 77,
+          "k64_h100": 27
+        },
+        "continuity": {
+          "source": "fresh_local_conversion_readiness",
+          "common_step": 6,
+          "tracks_checked": 360,
+          "tracks_with_gaps": 0,
+          "gap_ratio": 0.0,
+          "max_gap": 0
+        }
+      },
+      "t50_windows": 291,
+      "t100_windows": 91,
+      "k64_h100_windows": 27,
+      "source_cv_usable_after_terms": true,
+      "legal_ready_now": false,
+      "restricted_metric_time_ready_now": false
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "ETH_seq_hotel",
+      "domain": "ETH_UCY",
+      "dataset": "ETH",
+      "terms_target_id": "eth_biwi_original",
+      "trajectory_file": "external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "track_stats": {
+        "rows": 6544,
+        "agents": 390,
+        "unique_frames": 1168,
+        "min_frame": 1,
+        "max_frame": 18061,
+        "common_frame_step": 10,
+        "track_count": 390,
+        "min_track_points": 1,
+        "median_track_points": 15.0,
+        "max_track_points": 100,
+        "horizon_counts": {
+          "10": 3090,
+          "25": 706,
+          "50": 215,
+          "100": 0
+        },
+        "history_horizon_counts": {
+          "k8_h50": 129,
+          "k8_h100": 0,
+          "k16_h50": 73,
+          "k16_h100": 0,
+          "k32_h50": 25,
+          "k32_h100": 0,
+          "k64_h50": 0,
+          "k64_h100": 0
+        },
+        "continuity": {
+          "source": "fresh_local_conversion_readiness",
+          "common_step": 10,
+          "tracks_checked": 389,
+          "tracks_with_gaps": 0,
+          "gap_ratio": 0.0,
+          "max_gap": 0
+        }
+      },
+      "t50_windows": 215,
+      "t100_windows": 0,
+      "k64_h100_windows": 0,
+      "source_cv_usable_after_terms": false,
+      "legal_ready_now": false,
+      "restricted_metric_time_ready_now": false
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_zara01",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "track_stats": {
+        "rows": 5024,
+        "agents": 148,
+        "unique_frames": 866,
+        "min_frame": 1,
+        "max_frame": 9011,
+        "common_frame_step": 10,
+        "track_count": 148,
+        "min_track_points": 9,
+        "median_track_points": 31.5,
+        "max_track_points": 197,
+        "horizon_counts": {
+          "10": 3545,
+          "25": 1423,
+          "50": 240,
+          "100": 97
+        },
+        "history_horizon_counts": {
+          "k8_h50": 162,
+          "k8_h100": 90,
+          "k16_h50": 132,
+          "k16_h100": 82,
+          "k32_h50": 116,
+          "k32_h100": 66,
+          "k64_h50": 84,
+          "k64_h100": 34
+        },
+        "continuity": {
+          "source": "fresh_local_conversion_readiness",
+          "common_step": 10,
+          "tracks_checked": 148,
+          "tracks_with_gaps": 0,
+          "gap_ratio": 0.0,
+          "max_gap": 0
+        }
+      },
+      "t50_windows": 240,
+      "t100_windows": 97,
+      "k64_h100_windows": 34,
+      "source_cv_usable_after_terms": true,
+      "legal_ready_now": false,
+      "restricted_metric_time_ready_now": false
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_zara02",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "track_stats": {
+        "rows": 9537,
+        "agents": 204,
+        "unique_frames": 1052,
+        "min_frame": 7,
+        "max_frame": 10517,
+        "common_frame_step": 10,
+        "track_count": 204,
+        "min_track_points": 6,
+        "median_track_points": 32.5,
+        "max_track_points": 583,
+        "horizon_counts": {
+          "10": 7504,
+          "25": 4647,
+          "50": 2823,
+          "100": 2095
+        },
+        "history_horizon_counts": {
+          "k8_h50": 2697,
+          "k8_h100": 2030,
+          "k16_h50": 2567,
+          "k16_h100": 1973,
+          "k32_h50": 2337,
+          "k32_h100": 1861,
+          "k64_h50": 1987,
+          "k64_h100": 1637
+        },
+        "continuity": {
+          "source": "fresh_local_conversion_readiness",
+          "common_step": 10,
+          "tracks_checked": 204,
+          "tracks_with_gaps": 0,
+          "gap_ratio": 0.0,
+          "max_gap": 0
+        }
+      },
+      "t50_windows": 2823,
+      "t100_windows": 2095,
+      "k64_h100_windows": 1637,
+      "source_cv_usable_after_terms": true,
+      "legal_ready_now": false,
+      "restricted_metric_time_ready_now": false
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_zara03",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "track_stats": {
+        "rows": 3600,
+        "agents": 180,
+        "unique_frames": 730,
+        "min_frame": 0,
+        "max_frame": 7480,
+        "common_frame_step": 10,
+        "track_count": 180,
+        "min_track_points": 20,
+        "median_track_points": 20.0,
+        "max_track_points": 20,
+        "horizon_counts": {
+          "10": 1800,
+          "25": 0,
+          "50": 0,
+          "100": 0
+        },
+        "history_horizon_counts": {
+          "k8_h50": 0,
+          "k8_h100": 0,
+          "k16_h50": 0,
+          "k16_h100": 0,
+          "k32_h50": 0,
+          "k32_h100": 0,
+          "k64_h50": 0,
+          "k64_h100": 0
+        },
+        "continuity": {
+          "source": "fresh_local_conversion_readiness",
+          "common_step": 10,
+          "tracks_checked": 180,
+          "tracks_with_gaps": 0,
+          "gap_ratio": 0.0,
+          "max_gap": 0
+        }
+      },
+      "t50_windows": 0,
+      "t100_windows": 0,
+      "k64_h100_windows": 0,
+      "source_cv_usable_after_terms": false,
+      "legal_ready_now": false,
+      "restricted_metric_time_ready_now": false
+    },
+    {
+      "source": "fresh_run",
+      "source_id": "UCY_students03",
+      "domain": "UCY",
+      "dataset": "UCY",
+      "terms_target_id": "ucy_crowd_original",
+      "trajectory_file": "external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "trajectory_file_found": true,
+      "homography_parseable": true,
+      "annotation_fps": 2.5,
+      "annotation_timestep_seconds": 0.4,
+      "h50_seconds_if_restricted": 20.0,
+      "h100_seconds_if_restricted": 40.0,
+      "track_stats": {
+        "rows": 21846,
+        "agents": 428,
+        "unique_frames": 540,
+        "min_frame": 1,
+        "max_frame": 5391,
+        "common_frame_step": 10,
+        "track_count": 428,
+        "min_track_points": 2,
+        "median_track_points": 38.0,
+        "max_track_points": 539,
+        "horizon_counts": {
+          "10": 17608,
+          "25": 11976,
+          "50": 6491,
+          "100": 3413
+        },
+        "history_horizon_counts": {
+          "k8_h50": 5712,
+          "k8_h100": 3170,
+          "k16_h50": 5031,
+          "k16_h100": 2913,
+          "k32_h50": 4183,
+          "k32_h100": 2453,
+          "k64_h50": 2975,
+          "k64_h100": 1660
+        },
+        "continuity": {
+          "source": "fresh_local_conversion_readiness",
+          "common_step": 10,
+          "tracks_checked": 428,
+          "tracks_with_gaps": 1,
+          "gap_ratio": 0.002336448598130841,
+          "max_gap": 20
+        }
+      },
+      "t50_windows": 6491,
+      "t100_windows": 3413,
+      "k64_h100_windows": 1660,
+      "source_cv_usable_after_terms": true,
+      "legal_ready_now": false,
+      "restricted_metric_time_ready_now": false
+    }
+  ],
+  "domain_plans": {
+    "ETH_UCY": {
+      "source": "fresh_preflight_source_cv_plan",
+      "source_count": 2,
+      "usable_after_terms_count": 1,
+      "blocked_after_terms_count": 1,
+      "source_cv_feasible_after_terms": false,
+      "robust_source_cv_feasible_after_terms": false,
+      "fold_count": 0,
+      "folds": [],
+      "total_t50_windows": 291,
+      "total_t100_windows": 91,
+      "blockers": [
+        {
+          "source_id": "ETH_seq_hotel",
+          "t50_windows": 215,
+          "t100_windows": 0,
+          "reason": "missing_t50_or_t100_or_continuity_for_source_cv"
+        }
+      ]
+    },
+    "UCY": {
+      "source": "fresh_preflight_source_cv_plan",
+      "source_count": 4,
+      "usable_after_terms_count": 3,
+      "blocked_after_terms_count": 1,
+      "source_cv_feasible_after_terms": true,
+      "robust_source_cv_feasible_after_terms": true,
+      "fold_count": 3,
+      "folds": [
+        {
+          "source": "fresh_preflight_source_cv_plan",
+          "holdout_source": "UCY_zara01",
+          "train_sources_after_terms": [
+            "UCY_zara02",
+            "UCY_students03"
+          ],
+          "val_source_policy": "use train-source internal validation or leave-one-train-source if >=3 sources",
+          "t50_windows_holdout": 240,
+          "t100_windows_holdout": 97
+        },
+        {
+          "source": "fresh_preflight_source_cv_plan",
+          "holdout_source": "UCY_zara02",
+          "train_sources_after_terms": [
+            "UCY_zara01",
+            "UCY_students03"
+          ],
+          "val_source_policy": "use train-source internal validation or leave-one-train-source if >=3 sources",
+          "t50_windows_holdout": 2823,
+          "t100_windows_holdout": 2095
+        },
+        {
+          "source": "fresh_preflight_source_cv_plan",
+          "holdout_source": "UCY_students03",
+          "train_sources_after_terms": [
+            "UCY_zara01",
+            "UCY_zara02"
+          ],
+          "val_source_policy": "use train-source internal validation or leave-one-train-source if >=3 sources",
+          "t50_windows_holdout": 6491,
+          "t100_windows_holdout": 3413
+        }
+      ],
+      "total_t50_windows": 9554,
+      "total_t100_windows": 5605,
+      "blockers": [
+        {
+          "source_id": "UCY_zara03",
+          "t50_windows": 0,
+          "t100_windows": 0,
+          "reason": "missing_t50_or_t100_or_continuity_for_source_cv"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "source": "fresh_stage42_hj_restricted_metric_time_source_cv_preflight",
+    "hi_verdict": "stage42_hi_restricted_metric_time_readiness_pass_blocked_by_terms",
+    "bn_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+    "cg_verdict": "stage42_cg_source_terms_confirmation_validator_pass",
+    "candidate_sources": 6,
+    "source_counts_by_domain": {
+      "ETH_UCY": 2,
+      "UCY": 4
+    },
+    "usable_after_terms_sources": 4,
+    "restricted_metric_time_ready_now_sources": 0,
+    "domains_source_cv_feasible_after_terms": [
+      "UCY"
+    ],
+    "domains_robust_source_cv_feasible_after_terms": [
+      "UCY"
+    ],
+    "domains_source_cv_blocked_after_terms": [
+      "ETH_UCY"
+    ],
+    "total_t50_windows_after_terms": 9845,
+    "total_t100_windows_after_terms": 5696,
+    "training_run": false,
+    "conversion_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "claim_boundary": {
+    "source_cv_preflight_is_conversion": false,
+    "source_cv_preflight_is_evaluation": false,
+    "restricted_metric_time_claim_allowed_now": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required": [
+    "Confirm official ETH/BIWI and UCY terms, local paths, and source identity.",
+    "Rerun `.venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py`.",
+    "Only then run a guarded restricted metric/time conversion and source-CV evaluation; this preflight is not conversion/evaluation."
+  ],
+  "stage42_hj_gate": {
+    "source": "fresh_stage42_hj_restricted_metric_time_source_cv_preflight",
+    "gates": {
+      "source_fresh": true,
+      "hi_input_passed": true,
+      "bn_input_passed": true,
+      "cg_input_passed": true,
+      "sources_parsed": true,
+      "usable_after_terms_sources_present": true,
+      "eth_ucy_preflight_complete_or_blocker_recorded": true,
+      "ucy_source_cv_feasible_after_terms": true,
+      "ucy_robust_source_cv_feasible_after_terms": true,
+      "h50_h100_windows_present": true,
+      "ready_now_zero": true,
+      "no_conversion_or_evaluation_claim": true,
+      "global_metric_seconds_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_hj_restricted_metric_time_source_cv_preflight_pass_with_eth_ucy_source_cv_limit"
+  }
+}

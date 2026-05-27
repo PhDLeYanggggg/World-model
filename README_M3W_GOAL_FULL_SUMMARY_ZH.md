@@ -387,3 +387,16 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 - conclusion: ETH/UCY source-level H/FPS/stride evidence exists, but no metric/seconds claim is allowed until user-confirmed source terms plus conversion/no-leakage/source-CV/final-test.
 - no training, conversion, download, Stage5C, or SMC occurred.
 <!-- STAGE42_HI_RESTRICTED_METRIC_TIME_READINESS:END -->
+
+<!-- STAGE42_HJ_RESTRICTED_METRIC_TIME_SOURCE_CV_PREFLIGHT:START -->
+## Stage42-HJ Restricted Metric/Time Source-CV Preflight
+
+- source: `fresh_stage42_hj_restricted_metric_time_source_cv_preflight`
+- verdict: `stage42_hj_restricted_metric_time_source_cv_preflight_pass_with_eth_ucy_source_cv_limit`
+- gates: `15 / 15`
+- usable after terms sources: `4`; ready now: `0`.
+- source-CV feasible after terms: `['UCY']`; robust after terms: `['UCY']`.
+- source-CV blocked after terms: `['ETH_UCY']`.
+- window potential after terms: t50 `9845`, t100 `5696`.
+- conclusion: restricted metric/time source-CV is technically plannable for UCY and blocked for ETH_UCY by current t100 source support; source terms still block all conversion/evaluation claims.
+<!-- STAGE42_HJ_RESTRICTED_METRIC_TIME_SOURCE_CV_PREFLIGHT:END -->

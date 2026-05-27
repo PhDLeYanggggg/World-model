@@ -1214,3 +1214,16 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - Paper implication: source-specific ETH/UCY calibration can become a restricted subset claim only after user-confirmed terms, guarded conversion, no-leakage, source-CV, and final test.
 - Current global M3W claim remains raw-frame / dataset-local 2.5D.
 <!-- STAGE42_HI_RESTRICTED_METRIC_TIME_READINESS:END -->
+
+<!-- STAGE42_HJ_RESTRICTED_METRIC_TIME_SOURCE_CV_PREFLIGHT:START -->
+## Stage42-HJ Restricted Metric/Time Source-CV Preflight Refresh
+
+- source: `fresh_stage42_hj_restricted_metric_time_source_cv_preflight`
+- verdict: `stage42_hj_restricted_metric_time_source_cv_preflight_pass_with_eth_ucy_source_cv_limit`
+- source-CV feasible after terms: `['UCY']`.
+- robust source-CV feasible after terms: `['UCY']`.
+- source-CV blocked after terms: `['ETH_UCY']`.
+- t50/t100 potential after terms: `9845` / `5696`.
+- Paper implication: the metric/time gap is narrowed for UCY, while ETH_UCY still needs more t100-capable source support before source-CV.
+- Still forbidden: claiming metric/seconds-level results from this preflight alone.
+<!-- STAGE42_HJ_RESTRICTED_METRIC_TIME_SOURCE_CV_PREFLIGHT:END -->
