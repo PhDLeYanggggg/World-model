@@ -1,0 +1,1462 @@
+{
+  "source": "fresh_stage42_gu_floor_relaxation_paper_refresh",
+  "stage": "Stage42-GU Floor Relaxation Paper Refresh",
+  "generated_at_utc": "2026-05-27T14:37:46.917324+00:00",
+  "git_commit": "5784563",
+  "input_hash": "6d3204e2de82e34d8dd16afac428e9a9a5a09f79aaeb1426afc3a62b0326be46",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-GU 是 paper package refresh 与 floor-relaxation claim linter；不训练、不下载、不转换、不调 threshold。",
+    "Stage42-GT 只支持 validation-backed t50 partial floor relaxation 的 all-agent safety stress evidence。",
+    "Global floor removal、floor-free neural deployment、teacher/floor context removal 均不被支持。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 坐标不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_status": {
+    "gt_exists": true,
+    "by_exists": true,
+    "bz_exists": true,
+    "en_exists": true
+  },
+  "inputs": {
+    "gt": {
+      "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+      "stage": "Stage42-GT Floor-Relaxation Safety Stress Test",
+      "generated_at_utc": "2026-05-27T14:36:43.964940+00:00",
+      "git_commit": "5784563",
+      "input_hash": "e1bbd7da5c17c848e512997406b79830ef21026e0a0d96d9d01bfa3cfa491075",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-GT 是 Stage42-BY/BZ partial t50 floor-relaxation 的 all-agent safety stress test。",
+        "本阶段不训练新模型，不下载数据，不转换新数据，不执行 Stage5C，不启用 SMC。",
+        "future endpoints / waypoints 只作为 supervised/evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 坐标不能写成 global metric。"
+      ],
+      "input_reports": {
+        "by_verdict": "stage42_by_t50_floor_relaxability_repair_pass",
+        "bz_verdict": "stage42_bz_t50_repair_statistical_evidence_pass",
+        "en_verdict": "stage42_en_floor_removability_decision_map_pass"
+      },
+      "policy_replay": {
+        "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+        "selected_variant": "family_baseline_rel_only",
+        "selected_lambda": 0.1,
+        "policy_slices": [
+          "ETH_UCY|10",
+          "ETH_UCY|100",
+          "ETH_UCY|25",
+          "ETH_UCY|50",
+          "TrajNet|10",
+          "TrajNet|100",
+          "TrajNet|25",
+          "TrajNet|50",
+          "UCY|10",
+          "UCY|100",
+          "UCY|25",
+          "UCY|50"
+        ],
+        "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+        "test_threshold_tuning": false
+      },
+      "stress_tests": {
+        "target_union_t50": {
+          "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+          "name": "target_union_t50",
+          "rows": 11538,
+          "groups": 1260,
+          "metric": {
+            "rows": 11538,
+            "all_improvement": 0.28969780582672955,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.28969780582672955,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.28969780582672955,
+            "easy_degradation": -0.21406723960013185,
+            "switch_rate": 0.891228982492633,
+            "harm_over_fallback": -0.14494246897560092
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 11538,
+            "groups": 1260,
+            "multi_agent_rows": 11383,
+            "multi_agent_groups": 1105,
+            "mean_group_size": 9.157142857142857,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.3222399825983814,
+            "p05_min_group_distance": 0.05328475653395051,
+            "near_collision_rate_002": 0.007994377580602653,
+            "near_collision_rate_005": 0.04497935517877537,
+            "smoothness": {
+              "mean_max_normalized_step": 0.09799376549407947,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 11538,
+            "groups": 1260,
+            "multi_agent_rows": 11383,
+            "multi_agent_groups": 1105,
+            "mean_group_size": 9.157142857142857,
+            "switch_rate": 0.891228982492633,
+            "group_switch_rate": 0.9317460317460318,
+            "mixed_group_switch_rate": 0.473015873015873,
+            "all_switch_group_rate": 0.4587301587301587,
+            "no_switch_group_rate": 0.06825396825396825,
+            "mean_min_group_distance": 0.3211794438325473,
+            "p05_min_group_distance": 0.057955045618164454,
+            "near_collision_rate_002": 0.005007467275762101,
+            "near_collision_rate_005": 0.037599929719757536,
+            "smoothness": {
+              "mean_max_normalized_step": 0.12370140998645655,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": -0.002986910304840552,
+            "near_collision_rate_005_delta": -0.007379425459017833,
+            "p05_min_group_distance_delta": 0.0046702890842139425,
+            "mean_min_group_distance_delta": -0.0010605387658340626,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.025707644492377085
+          },
+          "near_collision_delta_bootstrap": {
+            "low": -0.01107133444610384,
+            "mid": -0.0073794254590178335,
+            "high": -0.0037753667750153757,
+            "n": 11383,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        },
+        "all_test_t50": {
+          "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+          "name": "all_test_t50",
+          "rows": 11538,
+          "groups": 1260,
+          "metric": {
+            "rows": 11538,
+            "all_improvement": 0.28969780582672955,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.28969780582672955,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.28969780582672955,
+            "easy_degradation": -0.21406723960013185,
+            "switch_rate": 0.891228982492633,
+            "harm_over_fallback": -0.14494246897560092
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 11538,
+            "groups": 1260,
+            "multi_agent_rows": 11383,
+            "multi_agent_groups": 1105,
+            "mean_group_size": 9.157142857142857,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.3222399825983814,
+            "p05_min_group_distance": 0.05328475653395051,
+            "near_collision_rate_002": 0.007994377580602653,
+            "near_collision_rate_005": 0.04497935517877537,
+            "smoothness": {
+              "mean_max_normalized_step": 0.09799376549407947,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 11538,
+            "groups": 1260,
+            "multi_agent_rows": 11383,
+            "multi_agent_groups": 1105,
+            "mean_group_size": 9.157142857142857,
+            "switch_rate": 0.891228982492633,
+            "group_switch_rate": 0.9317460317460318,
+            "mixed_group_switch_rate": 0.473015873015873,
+            "all_switch_group_rate": 0.4587301587301587,
+            "no_switch_group_rate": 0.06825396825396825,
+            "mean_min_group_distance": 0.3211794438325473,
+            "p05_min_group_distance": 0.057955045618164454,
+            "near_collision_rate_002": 0.005007467275762101,
+            "near_collision_rate_005": 0.037599929719757536,
+            "smoothness": {
+              "mean_max_normalized_step": 0.12370140998645655,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": -0.002986910304840552,
+            "near_collision_rate_005_delta": -0.007379425459017833,
+            "p05_min_group_distance_delta": 0.0046702890842139425,
+            "mean_min_group_distance_delta": -0.0010605387658340626,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.025707644492377085
+          },
+          "near_collision_delta_bootstrap": {
+            "low": -0.01107133444610384,
+            "mid": -0.0073794254590178335,
+            "high": -0.0037753667750153757,
+            "n": 11383,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        },
+        "TrajNet|50": {
+          "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+          "name": "TrajNet|50",
+          "rows": 9198,
+          "groups": 597,
+          "metric": {
+            "rows": 9198,
+            "all_improvement": 0.30211874053555343,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.30211874053555343,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.30211874053555343,
+            "easy_degradation": -0.22949816726981975,
+            "switch_rate": 0.9525983909545553,
+            "harm_over_fallback": -0.14814648987161372
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 9198,
+            "groups": 597,
+            "multi_agent_rows": 9148,
+            "multi_agent_groups": 547,
+            "mean_group_size": 15.407035175879397,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.297860850311705,
+            "p05_min_group_distance": 0.051164266702567664,
+            "near_collision_rate_002": 0.00885439440314823,
+            "near_collision_rate_005": 0.0479886313948404,
+            "smoothness": {
+              "mean_max_normalized_step": 0.09680736961285372,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 9198,
+            "groups": 597,
+            "multi_agent_rows": 9148,
+            "multi_agent_groups": 547,
+            "mean_group_size": 15.407035175879397,
+            "switch_rate": 0.9525983909545553,
+            "group_switch_rate": 1.0,
+            "mixed_group_switch_rate": 0.4053601340033501,
+            "all_switch_group_rate": 0.5946398659966499,
+            "no_switch_group_rate": 0.0,
+            "mean_min_group_distance": 0.30009556716402513,
+            "p05_min_group_distance": 0.05726431444788886,
+            "near_collision_rate_002": 0.005247048535198951,
+            "near_collision_rate_005": 0.038478355924792304,
+            "smoothness": {
+              "mean_max_normalized_step": 0.11955033913274099,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": -0.003607345867949279,
+            "near_collision_rate_005_delta": -0.009510275470048096,
+            "p05_min_group_distance_delta": 0.006100047745321198,
+            "mean_min_group_distance_delta": 0.002234716852320129,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.022742969519887274
+          },
+          "near_collision_delta_bootstrap": {
+            "low": -0.01410417577612593,
+            "mid": -0.009619588981198076,
+            "high": -0.004916375163970269,
+            "n": 9148,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        },
+        "UCY|50": {
+          "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+          "name": "UCY|50",
+          "rows": 2340,
+          "groups": 663,
+          "metric": {
+            "rows": 2340,
+            "all_improvement": 0.24532046629629067,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.24532046629629067,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65,
+            "harm_over_fallback": -0.13234820222281216
+          },
+          "floor_joint_stats": {
+            "name": "floor",
+            "rows": 2340,
+            "groups": 663,
+            "multi_agent_rows": 2235,
+            "multi_agent_groups": 558,
+            "mean_group_size": 3.5294117647058822,
+            "switch_rate": 0.0,
+            "group_switch_rate": 0.0,
+            "mixed_group_switch_rate": 0.0,
+            "all_switch_group_rate": 0.0,
+            "no_switch_group_rate": 1.0,
+            "mean_min_group_distance": 0.4220253526916771,
+            "p05_min_group_distance": 0.0629027319767948,
+            "near_collision_rate_002": 0.0044742729306487695,
+            "near_collision_rate_005": 0.032662192393736016,
+            "smoothness": {
+              "mean_max_normalized_step": 0.10265721391951295,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_joint_stats": {
+            "name": "partial_floor_relaxation",
+            "rows": 2340,
+            "groups": 663,
+            "multi_agent_rows": 2235,
+            "multi_agent_groups": 558,
+            "mean_group_size": 3.5294117647058822,
+            "switch_rate": 0.65,
+            "group_switch_rate": 0.8702865761689291,
+            "mixed_group_switch_rate": 0.5339366515837104,
+            "all_switch_group_rate": 0.33634992458521873,
+            "no_switch_group_rate": 0.1297134238310709,
+            "mean_min_group_distance": 0.4074771188945792,
+            "p05_min_group_distance": 0.060881427442532624,
+            "near_collision_rate_002": 0.004026845637583893,
+            "near_collision_rate_005": 0.03400447427293065,
+            "smoothness": {
+              "mean_max_normalized_step": 0.14001831157298467,
+              "jagged_rate": 0.0
+            }
+          },
+          "selected_minus_floor": {
+            "near_collision_rate_002_delta": -0.00044742729306487643,
+            "near_collision_rate_005_delta": 0.0013422818791946345,
+            "p05_min_group_distance_delta": -0.0020213045342621777,
+            "mean_min_group_distance_delta": -0.01454823379709791,
+            "jagged_rate_delta": 0.0,
+            "mean_max_normalized_step_delta": 0.03736109765347172
+          },
+          "near_collision_delta_bootstrap": {
+            "low": -0.004038031319910514,
+            "mid": 0.0013422818791946308,
+            "high": 0.0071588366890380315,
+            "n": 2235,
+            "bootstrap_n": 1000
+          },
+          "safety_pass": true
+        }
+      },
+      "summary": {
+        "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+        "selected_variant": "family_baseline_rel_only",
+        "selected_lambda": 0.1,
+        "policy_slices": [
+          "ETH_UCY|10",
+          "ETH_UCY|100",
+          "ETH_UCY|25",
+          "ETH_UCY|50",
+          "TrajNet|10",
+          "TrajNet|100",
+          "TrajNet|25",
+          "TrajNet|50",
+          "UCY|10",
+          "UCY|100",
+          "UCY|25",
+          "UCY|50"
+        ],
+        "target_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "target_union_rows": 11538,
+        "target_union_t50_improvement": 0.28969780582672955,
+        "target_union_hard_failure_improvement": 0.28969780582672955,
+        "target_union_easy_degradation": -0.21406723960013185,
+        "target_union_near_collision_005_delta": -0.007379425459017833,
+        "target_union_jagged_rate_delta": 0.0,
+        "target_union_safety_pass": true,
+        "deployment_decision": "partial_t50_floor_relaxation_safety_supported",
+        "global_floor_removal_allowed": false,
+        "floor_free_neural_deployable": false,
+        "teacher_floor_context_required": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "train_only_internal_validation": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "floor_free_neural_deployable": false,
+        "global_floor_removal_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_gt_gate": {
+        "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+        "gates": {
+          "source_fresh": true,
+          "by_input_passed": true,
+          "bz_input_passed_or_present": true,
+          "en_input_passed": true,
+          "policy_replayed": true,
+          "target_rows_present": true,
+          "all_agent_stress_metrics_written": true,
+          "safety_decision_recorded": true,
+          "no_leakage_pass": true,
+          "floor_free_neural_not_claimed": true,
+          "global_floor_removal_not_claimed": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 14,
+        "total": 14,
+        "verdict": "stage42_gt_floor_relaxation_safety_stress_pass"
+      }
+    },
+    "by": {
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "stage": "Stage42-BY Protected T50 Floor-Relaxability Repair",
+      "generated_at_utc": "2026-05-26T16:05:29.395021+00:00",
+      "git_commit": "6f54b66",
+      "input_hash": "2ae008cc66939eeae91e0a1e5e171d0c94fab7d9ff726d8abe0c916ec2f957ec",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-BY 是 t50 floor-relaxability repair audit，不训练新模型，不执行 Stage5C，不启用 SMC。",
+        "本修复使用 Stage42-AW train-only UCY internal validation support；test source 不参与 policy/threshold 选择。",
+        "本修复不允许去掉 teacher/floor rollout context，也不是 ungated neural deployment。",
+        "future endpoints / waypoints 只允许作为 supervised labels 或 evaluation labels，不作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。"
+      ],
+      "input_reports": {
+        "stage42_bx_verdict": "stage42_bx_floor_relaxability_audit_pass",
+        "stage42_aw_verdict": "stage42_aw_ucy_validation_support_repair_pass",
+        "stage42_bw_verdict": "stage42_bw_safety_floor_necessity_audit_pass"
+      },
+      "validation_policy": {
+        "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+        "selected_variant": "family_baseline_rel_only",
+        "selected_lambda": 0.1,
+        "selected_score": 1.7326326930780815,
+        "policy_slices": [
+          "ETH_UCY|10",
+          "ETH_UCY|100",
+          "ETH_UCY|25",
+          "ETH_UCY|50",
+          "TrajNet|10",
+          "TrajNet|100",
+          "TrajNet|25",
+          "TrajNet|50",
+          "UCY|10",
+          "UCY|100",
+          "UCY|25",
+          "UCY|50"
+        ],
+        "selection_source": "train_plus_internal_validation_only",
+        "test_threshold_tuning": false,
+        "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt"
+      },
+      "domain_horizon_metrics": {
+        "TrajNet|10": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 12342,
+          "metric": {
+            "rows": 12342,
+            "all_improvement": 0.6538933813210142,
+            "t10_improvement": 0.6538933813210142,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.6702075610519127,
+            "easy_degradation": -0.48633187026718994,
+            "switch_rate": 0.8513206935666828,
+            "harm_over_fallback": -0.18679815977321992
+          }
+        },
+        "TrajNet|25": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 10770,
+          "metric": {
+            "rows": 10770,
+            "all_improvement": 0.39532915680454395,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.39532915680454395,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.3546157224057963,
+            "easy_degradation": -0.4836851111615521,
+            "switch_rate": 0.8437325905292479,
+            "harm_over_fallback": -0.10199044607160872
+          }
+        },
+        "TrajNet|50": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 9198,
+          "metric": {
+            "rows": 9198,
+            "all_improvement": 0.30211874053555343,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.30211874053555343,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.30211874053555343,
+            "easy_degradation": -0.22949816726981975,
+            "switch_rate": 0.9525983909545553,
+            "harm_over_fallback": -0.14814648987161372
+          }
+        },
+        "TrajNet|100": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 5608,
+          "metric": {
+            "rows": 5608,
+            "all_improvement": 0.18884128010333856,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.18884128010333856,
+            "hard_failure_improvement": 0.18884128010333856,
+            "easy_degradation": 0.03546494534670952,
+            "switch_rate": 0.3104493580599144,
+            "harm_over_fallback": -0.20008615218416453
+          }
+        },
+        "UCY|10": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 3060,
+          "metric": {
+            "rows": 3060,
+            "all_improvement": 0.7707140371834793,
+            "t10_improvement": 0.7707140371834793,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.7790517563549291,
+            "easy_degradation": -0.6214357927386915,
+            "switch_rate": 0.9,
+            "harm_over_fallback": -0.2932206166745096
+          }
+        },
+        "UCY|25": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 2700,
+          "metric": {
+            "rows": 2700,
+            "all_improvement": 0.22983595443046967,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.22983595443046967,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.026491270736054395,
+            "easy_degradation": -0.6010928315705635,
+            "switch_rate": 0.25,
+            "harm_over_fallback": -0.062244854347656677
+          }
+        },
+        "UCY|50": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 2340,
+          "metric": {
+            "rows": 2340,
+            "all_improvement": 0.24532046629629067,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.24532046629629067,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65,
+            "harm_over_fallback": -0.13234820222281216
+          }
+        },
+        "UCY|100": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "test_rows": 1440,
+          "metric": {
+            "rows": 1440,
+            "all_improvement": 0.2753989097146191,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.2753989097146191,
+            "hard_failure_improvement": 0.2753989097146191,
+            "easy_degradation": -0.046127469252680964,
+            "switch_rate": 0.75,
+            "harm_over_fallback": -0.3713950768201724
+          }
+        }
+      },
+      "target_decisions": {
+        "TrajNet|50": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "before_bx_status": "blocked_by_validation_safety",
+          "before_bx_reason": "Validation slice is not simultaneously positive and easy-safe, so fallback relaxation is not deployable.",
+          "after_policy": "stage42_aw_train_only_internal_validation_best",
+          "after_metric": {
+            "rows": 9198,
+            "all_improvement": 0.30211874053555343,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.30211874053555343,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.30211874053555343,
+            "easy_degradation": -0.22949816726981975,
+            "switch_rate": 0.9525983909545553,
+            "harm_over_fallback": -0.14814648987161372
+          },
+          "after_test_rows": 9198,
+          "policy_slice_present": true,
+          "protected_t50_repaired": true
+        },
+        "UCY|50": {
+          "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+          "before_bx_status": "blocked_no_validation_support",
+          "before_bx_reason": "No validation rows for this source/horizon; test evidence cannot be used to tune or authorize fallback relaxation.",
+          "after_policy": "stage42_aw_train_only_internal_validation_best",
+          "after_metric": {
+            "rows": 2340,
+            "all_improvement": 0.24532046629629067,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.24532046629629067,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65,
+            "harm_over_fallback": -0.13234820222281216
+          },
+          "after_test_rows": 2340,
+          "policy_slice_present": true,
+          "protected_t50_repaired": true
+        }
+      },
+      "summary": {
+        "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+        "verdict_short": "protected_t50_relaxability_repaired_but_not_floor_free",
+        "selected_variant": "family_baseline_rel_only",
+        "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+        "target_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "repaired_t50_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "still_blocked_t50_slices": [],
+        "ucy_t50_repaired": true,
+        "trajnet_t50_repaired": true,
+        "global_t50_improvement": 0.28969780579498305,
+        "global_easy_degradation": -0.37048920988736844,
+        "teacher_floor_context_required": true,
+        "fallback_floor_required_outside_repaired_slices": true,
+        "floor_free_neural_deployable": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "internal_val_from_train_only": true,
+        "test_metrics_used_for_final_reporting_only": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "floor_free_neural_deployable": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_by_gate": {
+        "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+        "gates": {
+          "bx_input_verified": true,
+          "aw_input_verified": true,
+          "bw_input_verified": true,
+          "train_only_internal_validation_used": true,
+          "target_t50_slices_reported": true,
+          "ucy_t50_repaired": true,
+          "trajnet_t50_repaired": true,
+          "global_t50_positive": true,
+          "global_easy_safe": true,
+          "teacher_floor_context_required": true,
+          "not_floor_free_neural": true,
+          "no_leakage_pass": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 15,
+        "total": 15,
+        "verdict": "stage42_by_t50_floor_relaxability_repair_pass"
+      }
+    },
+    "bz": {
+      "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+      "stage": "Stage42-BZ Protected T50 Repair Statistical Evidence",
+      "generated_at_utc": "2026-05-26T16:13:17.940946+00:00",
+      "git_commit": "2719eb7",
+      "input_hash": "8c091e67aad92d45c67ef0e6362ffdbac77b3c943d4fd77d39ebaf8b0cb4fc49",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-BZ 给 Stage42-BY 的 protected t50 repair 补 bootstrap statistical evidence。",
+        "Stage42-BZ 不重新选择 threshold，不使用 test metric 调 policy，不训练新模型。",
+        "本审计使用 Stage42-AW train-only internal validation policy；test rows 只用于最终报告和 bootstrap。",
+        "teacher/floor rollout context 仍然是部署安全地板；本结果不是 floor-free neural deployment。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C 未执行，SMC 未启用。"
+      ],
+      "input_reports": {
+        "stage42_by_verdict": "stage42_by_t50_floor_relaxability_repair_pass",
+        "stage42_by_source": "fresh_stage42_by_t50_floor_relaxability_repair"
+      },
+      "validation_policy": {
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "selected_variant": "family_baseline_rel_only",
+        "selected_lambda": 0.1,
+        "selected_score": 1.7326326930780815,
+        "policy_slices": [
+          "ETH_UCY|10",
+          "ETH_UCY|100",
+          "ETH_UCY|25",
+          "ETH_UCY|50",
+          "TrajNet|10",
+          "TrajNet|100",
+          "TrajNet|25",
+          "TrajNet|50",
+          "UCY|10",
+          "UCY|100",
+          "UCY|25",
+          "UCY|50"
+        ],
+        "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+        "selection_source": "train_plus_internal_validation_only",
+        "test_threshold_tuning": false
+      },
+      "slice_evidence": {
+        "TrajNet|50": {
+          "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+          "slice": "TrajNet|50",
+          "rows": 9198,
+          "metric": {
+            "rows": 9198,
+            "all_improvement": 0.30211874053555343,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.30211874053555343,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.30211874053555343,
+            "easy_degradation": -0.22949816726981975,
+            "switch_rate": 0.9525983909545553,
+            "harm_over_fallback": -0.14814648987161372
+          },
+          "bootstrap": {
+            "all": {
+              "low": 0.2976498979366915,
+              "mid": 0.30211099856505064,
+              "high": 0.3067037392392511,
+              "n": 9198,
+              "bootstrap_n": 3000
+            },
+            "t50": {
+              "low": 0.29795255422970995,
+              "mid": 0.3021047084647322,
+              "high": 0.3067200634297965,
+              "n": 9198,
+              "bootstrap_n": 3000
+            },
+            "hard_failure": {
+              "low": 0.2974422008931102,
+              "mid": 0.3020949560467862,
+              "high": 0.3065311328492804,
+              "n": 9198,
+              "bootstrap_n": 3000
+            },
+            "easy_degradation": {
+              "low": -0.320305994333283,
+              "mid": -0.29783352528534524,
+              "high": -0.2761301093027351,
+              "n": 2780,
+              "bootstrap_n": 3000
+            }
+          },
+          "ci_positive_and_easy_safe": true,
+          "switch_rate_positive": true
+        },
+        "UCY|50": {
+          "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+          "slice": "UCY|50",
+          "rows": 2340,
+          "metric": {
+            "rows": 2340,
+            "all_improvement": 0.24532046629629067,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.24532046629629067,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65,
+            "harm_over_fallback": -0.13234820222281216
+          },
+          "bootstrap": {
+            "all": {
+              "low": 0.23082299476994983,
+              "mid": 0.2454075873005266,
+              "high": 0.2602830318453517,
+              "n": 2340,
+              "bootstrap_n": 3000
+            },
+            "t50": {
+              "low": 0.2301551102909703,
+              "mid": 0.2453108926453098,
+              "high": 0.26076132955140574,
+              "n": 2340,
+              "bootstrap_n": 3000
+            },
+            "hard_failure": {
+              "low": 0.23031372488821192,
+              "mid": 0.24517277741399734,
+              "high": 0.2598213167774724,
+              "n": 2340,
+              "bootstrap_n": 3000
+            },
+            "easy_degradation": {
+              "low": -0.20968124431514815,
+              "mid": -0.14407575610632728,
+              "high": -0.08157880169362317,
+              "n": 566,
+              "bootstrap_n": 3000
+            }
+          },
+          "ci_positive_and_easy_safe": true,
+          "switch_rate_positive": true
+        }
+      },
+      "target_union_evidence": {
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "target_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "rows": 11538,
+        "metric": {
+          "rows": 11538,
+          "all_improvement": 0.28969780582672955,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.28969780582672955,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.28969780582672955,
+          "easy_degradation": -0.21406723960013185,
+          "switch_rate": 0.891228982492633,
+          "harm_over_fallback": -0.14494246897560092
+        },
+        "bootstrap": {
+          "all": {
+            "low": 0.28495524628726576,
+            "mid": 0.28965171583998445,
+            "high": 0.29421523920922016,
+            "n": 11538,
+            "bootstrap_n": 3000
+          },
+          "t50": {
+            "low": 0.28519426089826805,
+            "mid": 0.28965611817236153,
+            "high": 0.2945053481018389,
+            "n": 11538,
+            "bootstrap_n": 3000
+          },
+          "hard_failure": {
+            "low": 0.2850598129414562,
+            "mid": 0.28963093762353004,
+            "high": 0.29444603060171626,
+            "n": 11538,
+            "bootstrap_n": 3000
+          },
+          "easy_degradation": {
+            "low": -0.2944744104896561,
+            "mid": -0.2724586397544627,
+            "high": -0.25161170273238326,
+            "n": 3346,
+            "bootstrap_n": 3000
+          }
+        },
+        "slice_robustness": {
+          "TrajNet|50": true,
+          "UCY|50": true
+        },
+        "ci_positive_and_easy_safe": true
+      },
+      "summary": {
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "verdict_short": "protected_t50_repair_has_positive_bootstrap_evidence_but_not_floor_free",
+        "selected_variant": "family_baseline_rel_only",
+        "selected_lambda": 0.1,
+        "internal_val_group": "UCY::UCY/zara03/crowds_zara03.txt",
+        "target_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "robust_t50_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "weak_t50_slices": [],
+        "target_union_t50_ci_low": 0.28519426089826805,
+        "target_union_easy_ci_high": -0.25161170273238326,
+        "target_union_ci_positive_and_easy_safe": true,
+        "bootstrap_n": 3000,
+        "floor_free_neural_deployable": false,
+        "teacher_floor_context_required": true,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "internal_val_from_train_only": true,
+        "test_metrics_used_for_final_reporting_only": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "floor_free_neural_deployable": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_bz_gate": {
+        "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+        "gates": {
+          "by_input_verified": true,
+          "target_union_bootstrap_positive": true,
+          "trajnet_t50_bootstrap_positive": true,
+          "ucy_t50_bootstrap_positive": true,
+          "bootstrap_n_at_least_3000": true,
+          "train_only_internal_validation_used": true,
+          "test_threshold_tuning_false": true,
+          "teacher_floor_context_required": true,
+          "not_floor_free_neural": true,
+          "no_leakage_pass": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 13,
+        "total": 13,
+        "verdict": "stage42_bz_t50_repair_statistical_evidence_pass"
+      }
+    },
+    "en": {
+      "source": "fresh_stage42_floor_removability_decision_map",
+      "stage": "Stage42-EN Floor Removability Decision Map",
+      "generated_at_utc": "2026-05-27T02:55:35.905361+00:00",
+      "git_commit": "c740c24",
+      "input_hash": "352ee9ba2b1ed531816a6d61db9990e91f32bebdfc92df138b30ac33c6fb61e7",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-EN is a fresh synthesis audit over cached-verified safety-floor evidence; it does not train or tune a model.",
+        "This audit distinguishes deployment fallback, teacher/floor rollout context, proximity guard, and narrow t50 fallback relaxation.",
+        "future endpoints / waypoints remain supervised/evaluation labels only, never inference inputs.",
+        "No central velocity, no test endpoints for goals, no test-threshold tuning.",
+        "t+50 / t+100 remain raw-frame horizons; no seconds-level claim.",
+        "dataset-local/raw-frame coordinates are not global metric coordinates.",
+        "Stage5C latent generative was not executed.",
+        "SMC was not enabled."
+      ],
+      "input_reports": {
+        "bw": {
+          "path": "outputs/stage42_long_research/safety_floor_necessity_audit_stage42.json",
+          "exists": true
+        },
+        "by": {
+          "path": "outputs/stage42_long_research/t50_floor_relaxability_repair_stage42.json",
+          "exists": true
+        },
+        "cq": {
+          "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+          "exists": true
+        },
+        "cr": {
+          "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+          "exists": true
+        },
+        "em": {
+          "path": "outputs/stage42_long_research/official_source_link_audit_stage42.json",
+          "exists": true
+        }
+      },
+      "component_decision_map": [
+        {
+          "component": "ungated_neural_endpoint_or_full_waypoint",
+          "decision": "blocked",
+          "evidence": "ungated raw errors improve but easy degradation violates deployment safety",
+          "key_metrics": {
+            "ungated_endpoint_easy_degradation": 1.2458611044726973,
+            "ungated_full_waypoint_easy_degradation": 1.2458611044726973,
+            "easy_limit": 0.02
+          },
+          "deployment_action": "do_not_deploy_ungated_neural"
+        },
+        {
+          "component": "teacher_floor_rollout_context",
+          "decision": "required",
+          "evidence": "removing floor/safe baseline rollout context hurts protected t50",
+          "key_metrics": {
+            "no_floor_rel_context_t50_delta": -0.09205317177637129,
+            "no_safe_baseline_context_t50_delta": -0.09502721842335304
+          },
+          "deployment_action": "keep_teacher_floor_rollout_context"
+        },
+        {
+          "component": "deployment_fallback_floor",
+          "decision": "required_globally_partial_relaxation_allowed",
+          "evidence": "global floor-free neural is not deployable, but protected t50 fallback relaxation is supported on selected validation-backed slices",
+          "key_metrics": {
+            "floor_free_neural_deployable": false,
+            "repaired_t50_slices": [
+              "TrajNet|50",
+              "UCY|50"
+            ],
+            "global_t50_improvement_after_repair": 0.28969780579498305,
+            "global_easy_degradation_after_repair": -0.37048920988736844
+          },
+          "deployment_action": "allow_only_validation_backed_t50_slice_relaxation"
+        },
+        {
+          "component": "proximity_guard",
+          "decision": "required_for_safety_sensitive_reporting",
+          "evidence": "no-guard has higher ADE gain but worsens near-collision; guard repairs proximity while preserving positive all/t50/t100/hard gains",
+          "key_metrics": {
+            "no_guard_all_improvement": 0.030166976195252437,
+            "no_guard_near_collision_delta": 0.0033566895337319713,
+            "guard_all_improvement": 0.017743597342181783,
+            "guard_t50_improvement": 0.010673426149055754,
+            "guard_near_collision_delta": -0.0006053046700172371
+          },
+          "deployment_action": "use_guarded_variant_for_safety_sensitive_claims"
+        },
+        {
+          "component": "source_expansion_without_terms",
+          "decision": "blocked",
+          "evidence": "official source candidates exist but conversion-ready targets remain zero",
+          "key_metrics": {
+            "official_or_toolkit_source_candidates": 4,
+            "conversion_ready_now": 0,
+            "auto_download_allowed_now": 0
+          },
+          "deployment_action": "wait_for_user_terms_path_source_identity_confirmation"
+        },
+        {
+          "component": "t50_slice_relaxation::TrajNet|50",
+          "decision": "partial_supported",
+          "evidence": "Validation slice is not simultaneously positive and easy-safe, so fallback relaxation is not deployable.",
+          "key_metrics": {
+            "rows": 9198,
+            "t50_improvement": 0.30211874053555343,
+            "hard_failure_improvement": 0.30211874053555343,
+            "easy_degradation": -0.22949816726981975,
+            "switch_rate": 0.9525983909545553
+          },
+          "deployment_action": "slice_only_under_train_internal_validation_policy"
+        },
+        {
+          "component": "t50_slice_relaxation::UCY|50",
+          "decision": "partial_supported",
+          "evidence": "No validation rows for this source/horizon; test evidence cannot be used to tune or authorize fallback relaxation.",
+          "key_metrics": {
+            "rows": 2340,
+            "t50_improvement": 0.24532046629629067,
+            "hard_failure_improvement": 0.24532046629629067,
+            "easy_degradation": -0.12642697574288675,
+            "switch_rate": 0.65
+          },
+          "deployment_action": "slice_only_under_train_internal_validation_policy"
+        }
+      ],
+      "summary": {
+        "source": "fresh_stage42_floor_removability_decision_map",
+        "components_audited": 7,
+        "blocked_or_required_components": [
+          "ungated_neural_endpoint_or_full_waypoint",
+          "teacher_floor_rollout_context",
+          "source_expansion_without_terms"
+        ],
+        "partial_relaxation_components": [
+          "t50_slice_relaxation::TrajNet|50",
+          "t50_slice_relaxation::UCY|50"
+        ],
+        "safety_required_components": [
+          "teacher_floor_rollout_context",
+          "deployment_fallback_floor",
+          "proximity_guard"
+        ],
+        "floor_free_neural_deployable": false,
+        "safe_partial_floor_relaxation_available": true,
+        "global_floor_removal_allowed": false,
+        "teacher_floor_rollout_context_removal_allowed": false,
+        "proximity_guard_required_for_safety_claim": true,
+        "conversion_ready_now": 0
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "fresh_synthesis_from_cached_verified_reports": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "floor_free_neural_deployable": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "stage42_en_gate": {
+        "source": "fresh_stage42_floor_removability_decision_map",
+        "gates": {
+          "inputs_present": true,
+          "components_audited": true,
+          "ungated_neural_blocked": true,
+          "teacher_context_required": true,
+          "fallback_global_removal_blocked": true,
+          "partial_t50_relaxation_mapped": true,
+          "proximity_guard_required": true,
+          "source_terms_blocker_preserved": true,
+          "floor_free_neural_not_claimed": true,
+          "no_leakage_pass": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 13,
+        "total": 13,
+        "verdict": "stage42_en_floor_removability_decision_map_pass"
+      }
+    }
+  },
+  "evidence_rows": [
+    {
+      "item": "Stage42-BY protected t50 floor-relaxability repair",
+      "source": "fresh_stage42_by_t50_floor_relaxability_repair",
+      "status": "protected_positive_not_floor_free",
+      "evidence": "repaired_slices=['TrajNet|50', 'UCY|50']; global_t50=28.97%; selected_variant=family_baseline_rel_only; floor_free=False"
+    },
+    {
+      "item": "Stage42-BZ bootstrap evidence",
+      "source": "fresh_stage42_bz_t50_repair_statistical_evidence",
+      "status": "statistically_positive_protected_t50",
+      "evidence": "bootstrap_n=3000; target_union_t50_ci_low=28.52%; target_union_easy_ci_high=-25.16%; ci_positive_easy_safe=True"
+    },
+    {
+      "item": "Stage42-GT all-agent safety stress",
+      "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+      "status": "all_agent_safety_supported_for_narrow_t50_relaxation",
+      "evidence": "rows=11538; t50=28.97%; hard=28.97%; easy=-21.41%; near@0.05_delta=-0.74%; jagged_delta=0.00%"
+    },
+    {
+      "item": "Stage42-GT per-slice stress",
+      "source": "fresh_stage42_gt_floor_relaxation_safety_stress",
+      "status": "slice_limited_not_global",
+      "evidence": "TrajNet|50 rows=9198, t50=30.21%, near@0.05_delta=-0.95%; UCY|50 rows=2340, t50=24.53%, near@0.05_delta=0.13%"
+    },
+    {
+      "item": "Stage42-EN floor removability decision map",
+      "source": "fresh_stage42_floor_removability_decision_map",
+      "status": "global_floor_removal_blocked",
+      "evidence": "safe_partial_floor_relaxation_available=True; global_floor_removal_allowed=False; floor_free_neural_deployable=False; teacher_floor_context_removal_allowed=False"
+    }
+  ],
+  "paper_file_status": [
+    {
+      "path": "outputs/stage42_long_research/method_draft_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/data_card_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    },
+    {
+      "path": "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
+      "exists": true,
+      "contains_stage42_gu": true,
+      "contains_gt_rows": true,
+      "blocks_global_floor_removal": true,
+      "blocks_floor_free_neural": true,
+      "blocks_metric_seconds": true
+    }
+  ],
+  "scan_rows": [
+    {
+      "file": "README_RESULTS.md",
+      "size_bytes": 335890,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+      "size_bytes": 184658,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "README_M3W_CURRENT_GOAL_CONSOLIDATED_SUMMARY_ZH.md",
+      "size_bytes": 19661,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/method_draft_stage42.md",
+      "size_bytes": 55082,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "size_bytes": 63141,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "size_bytes": 70602,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "size_bytes": 50135,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/model_card_stage42.md",
+      "size_bytes": 60809,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/data_card_stage42.md",
+      "size_bytes": 49368,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "size_bytes": 55155,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "size_bytes": 83137,
+      "violation_count": 0,
+      "violations": []
+    },
+    {
+      "file": "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
+      "size_bytes": 6168,
+      "violation_count": 0,
+      "violations": []
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_gu_floor_relaxation_paper_refresh",
+    "gt_verdict": "stage42_gt_floor_relaxation_safety_stress_pass",
+    "by_gate_passed": true,
+    "bz_gate_passed": true,
+    "en_gate_passed": true,
+    "target_union_rows": 11538,
+    "target_union_t50_improvement": 0.28969780582672955,
+    "target_union_hard_failure_improvement": 0.28969780582672955,
+    "target_union_easy_degradation": -0.21406723960013185,
+    "target_union_near_collision_005_delta": -0.007379425459017833,
+    "target_union_jagged_rate_delta": 0.0,
+    "target_union_safety_pass": true,
+    "deployment_decision": "partial_t50_floor_relaxation_safety_supported",
+    "floor_free_neural_deployable": false,
+    "global_floor_removal_allowed": false,
+    "paper_files_refreshed": [
+      "outputs/stage42_long_research/method_draft_stage42.md",
+      "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "outputs/stage42_long_research/model_card_stage42.md",
+      "outputs/stage42_long_research/data_card_stage42.md",
+      "outputs/stage42_long_research/reproducibility_stage42.md",
+      "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md"
+    ],
+    "scan_files": 12,
+    "floor_claim_violation_count": 0,
+    "training_executed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "threshold_tuned_on_test": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "partial_t50_floor_relaxation_allowed": true,
+    "global_floor_removal_allowed": false,
+    "teacher_floor_context_removal_allowed": false,
+    "floor_free_neural_deployable": false,
+    "training_executed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "threshold_tuned_on_test": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_gu_gate": {
+    "source": "fresh_stage42_gu_floor_relaxation_paper_refresh",
+    "gates": {
+      "gt_loaded_and_passed": true,
+      "by_bz_en_loaded_and_passed": true,
+      "partial_t50_relaxation_supported": true,
+      "paper_files_refreshed": true,
+      "paper_files_contain_claim_boundaries": true,
+      "floor_claim_linter_clean": true,
+      "global_floor_removal_false": true,
+      "floor_free_neural_false": true,
+      "teacher_floor_context_removal_false": true,
+      "no_metric_seconds_overclaim": true,
+      "no_training_download_conversion_or_test_tuning": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_gu_floor_relaxation_paper_refresh_pass"
+  }
+}

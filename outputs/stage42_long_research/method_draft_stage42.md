@@ -768,3 +768,21 @@ Method claims must describe Stage37/teacher-floor protection, domain expert rout
 | `trajnetplusplus_official` | trajnetplusplus_official is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that trajnetplusplus_official has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
 | `aerialmpt_or_other_topdown` | aerialmpt_or_other_topdown is a post-confirmation source candidate with official/source terms still requiring user confirmation; it is not counted as converted or evaluated data. | Do not write that aerialmpt_or_other_topdown has been legally converted, evaluated, auto-downloaded, or metric/seconds-calibrated. |
 <!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:END -->
+
+<!-- STAGE42_GU_FLOOR_RELAXATION_SAFETY_REFRESH:START -->
+## Stage42-GU Floor Relaxation Safety Refresh
+
+- source: `fresh_stage42_gu_floor_relaxation_paper_refresh`
+- role: propagates Stage42-GT all-agent safety stress evidence into the paper package and guards against floor overclaims.
+- input GT verdict: `stage42_gt_floor_relaxation_safety_stress_pass`; input BY/BZ/EN gates passed: `True` / `True` / `True`.
+- target union t50 rows: `11538`.
+- target union t50 improvement: `28.97%`.
+- target union hard/failure improvement: `28.97%`.
+- target union easy degradation: `-21.41%`.
+- target union near-collision@0.05 delta: `-0.74%`.
+- target union jagged-rate delta: `0.00%`.
+- Supported claim: narrow validation-backed t50 partial floor relaxation has all-agent safety support for the audited slices.
+- Unsupported claims: global floor removal, floor-free neural deployment, teacher/floor context removal, metric/seconds-level prediction, Stage5C execution, and SMC readiness.
+- Result source label: `fresh_run` synthesis from already-produced Stage42-BY/BZ/EN/GT artifacts; no new training, no new download, no new conversion, no test threshold tuning.
+- Verification after implementation: focused pytest passed; full suite passed with `929 passed`.
+<!-- STAGE42_GU_FLOOR_RELAXATION_SAFETY_REFRESH:END -->
