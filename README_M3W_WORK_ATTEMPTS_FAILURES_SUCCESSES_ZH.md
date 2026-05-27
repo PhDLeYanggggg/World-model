@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README 与 `research_state.json`；最新已纳入 Stage42-EL/EM/EN 的 `fresh_run` 审计结果。  
-用途：这是给用户阅读的单文件中文总账，回答“这个长期目标里到底做了什么、试过什么、哪些失败、为什么失败、哪些成功、当前大概是什么质量”。它不是新训练结果，也不把 cached 结果写成 fresh。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README 与 `research_state.json`；最新已纳入 Stage42-EL/EM/EN/EO/EP/EQ/ER 的 `fresh_run` 审计与 claim-refresh 结果。  
+用途：这是给用户阅读的统一单文件中文总账，回答“这个长期目标里到底做了什么、试过什么、哪些失败、为什么失败、哪些成功、当前大概是什么质量”。它不是新训练结果，也不把 cached 结果写成 fresh。
 
 ## 0. 最短结论
 
@@ -34,7 +34,7 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41-42 protected policy family | 有 protected neural/full-waypoint/runtime evidence，但仍依赖 Stage37/teacher safety floor。 |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | 用一部分 ADE 增益换 near-collision 安全修复。 |
 | Source-level runtime policy | Stage42-DL/DQ group-consistency full-waypoint runtime | runtime exact replay 通过，source-level protected full-waypoint 证据成立。 |
-| Paper package claim | Stage42-EG/EL/EM/EN 后的受限 claim | 只能写 protected source-level group-consistency full-waypoint 2.5D evidence；source conversion 和 floor-free neural 仍 blocked。 |
+| Paper package claim | Stage42-EG/EL/EM/EN/EO/EP/EQ/ER 后的受限 claim | 只能写 protected source-level group-consistency full-waypoint 2.5D evidence；source conversion、floor-free neural、当前 shallow sequence/graph context main claim 仍 blocked。 |
 
 ## 1. 永久边界
 
