@@ -389,3 +389,16 @@ Neural/full-waypoint: protected candidate only, under Stage37/teacher floor
 - The teacher gate is not used in this repair, but causal floor fallback remains required; this is not global floor removal.
 - No metric/seconds/true-3D/foundation/Stage5C/SMC claim is allowed.
 <!-- STAGE42_HD_FLOOR_FREE_PROXIMITY_GUARD_REPAIR:END -->
+
+<!-- STAGE42_HE_FLOOR_FREE_PROXIMITY_GUARD_ROBUSTNESS:START -->
+## Stage42-HE Floor-Free Proximity-Guard Robustness Audit
+
+- source: `fresh_stage42_he_floor_free_proximity_guard_robustness`
+- gate: `21 / 21`
+- verdict: `stage42_he_floor_free_proximity_guard_robustness_pass`
+- Audits the Stage42-HD teacherless proximity-guard repaired gate with 2000-bootstrap and per-domain/per-horizon checks.
+- policy `harm_predictor_gate` with min_sep `0.05` reaches all/t50/t100raw/hard `20.74%` / `13.82%` / `13.68%` / `19.99%`.
+- bootstrap CI lows all/t50/t100raw/hard `20.38%` / `13.22%` / `12.94%` / `19.57%`; easy CI high `-16.17%`.
+- robust_positive_domains: `ETH_UCY, TrajNet, UCY`; weak_domain_horizon_slices: `none`.
+- Teacher gate is not used, but causal floor fallback remains required. This is not global floor removal, not metric/seconds, not true 3D, not Stage5C, and not SMC.
+<!-- STAGE42_HE_FLOOR_FREE_PROXIMITY_GUARD_ROBUSTNESS:END -->

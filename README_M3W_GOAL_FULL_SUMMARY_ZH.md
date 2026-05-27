@@ -312,18 +312,18 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 - Cost-aware selector、causal history、goal prototype、safe switch、teacher/floor safety、group-consistency full-waypoint、source/domain policy 有实验证据。
 - Stage37 在 external t50 上可部署。
 - Stage42-FH/FI 在 source/domain protected policy 上有 frozen replay/bootstrap 证据。
-- Stage42-HD 证明 teacherless floor-free gate 可以经 proximity guard 修复，但仍需要 causal floor fallback。
+- Stage42-HD/HE 证明 teacherless floor-free gate 可以经 proximity guard 修复并通过 2000-bootstrap/per-domain/per-horizon 稳健性审计，但仍需要 causal floor fallback。
 
 ## 8. 当前最重要的下一步
 
-1. **做 Stage42-HE robustness audit。**
-   对 Stage42-HD teacherless proximity-guard repaired gate 做 2000-bootstrap、per-domain/per-horizon/source-slice 稳健性审计，确认它是否能从“通过 gate”升级成论文可写 evidence。
-
-2. **继续关掉 h100/uniform horizon blocker。**
+1. **继续关掉 h100/uniform horizon blocker。**
    TrajNet|100 与 UCY|100 仍需要合法 source、long-horizon support、row-level history/neighbor/goal context；不能靠调阈值硬写成功。
 
+2. **把 HE 写进 paper-ready evidence package。**
+   Stage42-HE 已把 HD 的 teacherless proximity-guard repaired gate 从单次 gate 升级成 robust evidence：all/t50/t100raw/hard bootstrap CI low 全为正，ETH_UCY/TrajNet/UCY 三个 domain robust positive，weak domain-horizon slices 为 none。
+
 3. **保留 Stage37 / causal floor 作为部署底座。**
-   当前任何 neural/floor-free/full-waypoint 变体都不能绕过 safety floor。Stage42-HD 的价值是减少 teacher gate 依赖，不是移除 causal floor。
+   当前任何 neural/floor-free/full-waypoint 变体都不能绕过 safety floor。Stage42-HD/HE 的价值是减少 teacher gate 依赖，不是移除 causal floor。
 
 4. **神经网络路线继续，但只做 protected dynamics。**
    重点应是 gain/harm、switchability、group consistency、full-waypoint shape、proximity guard，而不是普通 residual 或无保护 rollout。
@@ -337,3 +337,16 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 真正失败的是：**硬分类、单纯 JEPA、无保护 neural、普通 residual、单纯 latent alignment、zero-shot external、把 scene/goal/neighbor 当独立主贡献、uniform h100 claim**。
 
 当前 M3W 已经是一个有实证链的 protected 2.5D multi-agent world-state candidate；但它还不是 true 3D，也不是 foundation，也不能去掉 safety floor。
+
+<!-- STAGE42_HE_FLOOR_FREE_PROXIMITY_GUARD_ROBUSTNESS:START -->
+## Stage42-HE Floor-Free Proximity-Guard Robustness Audit
+
+- source: `fresh_stage42_he_floor_free_proximity_guard_robustness`
+- gate: `21 / 21`
+- verdict: `stage42_he_floor_free_proximity_guard_robustness_pass`
+- Audits the Stage42-HD teacherless proximity-guard repaired gate with 2000-bootstrap and per-domain/per-horizon checks.
+- policy `harm_predictor_gate` with min_sep `0.05` reaches all/t50/t100raw/hard `20.74%` / `13.82%` / `13.68%` / `19.99%`.
+- bootstrap CI lows all/t50/t100raw/hard `20.38%` / `13.22%` / `12.94%` / `19.57%`; easy CI high `-16.17%`.
+- robust_positive_domains: `ETH_UCY, TrajNet, UCY`; weak_domain_horizon_slices: `none`.
+- Teacher gate is not used, but causal floor fallback remains required. This is not global floor removal, not metric/seconds, not true 3D, not Stage5C, and not SMC.
+<!-- STAGE42_HE_FLOOR_FREE_PROXIMITY_GUARD_ROBUSTNESS:END -->

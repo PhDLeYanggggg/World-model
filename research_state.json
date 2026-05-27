@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-HD floor-free proximity-guard repair",
-  "current_verdict": "stage42_hd_floor_free_proximity_guard_repair_pass",
+  "current_stage": "Stage42-HE floor-free proximity-guard robustness audit",
+  "current_verdict": "stage42_he_floor_free_proximity_guard_robustness_pass",
   "m3w_goal_full_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hd_plus_current_user_request_refresh",
     "path": "README_M3W_GOAL_FULL_SUMMARY_ZH.md",
@@ -31330,6 +31330,59 @@
       "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_floor_free_proximity_guard_repair.py -> 3 passed in 118.27s",
       "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 957 passed in 214.50s"
     },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "global_floor_removal_allowed": false,
+      "teacher_gate_removed_for_repaired_floor_free_candidate": true,
+      "causal_floor_safety_fallback_still_required": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_he_floor_free_proximity_guard_robustness": {
+    "source": "fresh_stage42_he_floor_free_proximity_guard_robustness",
+    "report": "outputs/stage42_long_research/floor_free_proximity_guard_robustness_stage42.md",
+    "json": "outputs/stage42_long_research/floor_free_proximity_guard_robustness_stage42.json",
+    "gate": "outputs/stage42_long_research/stage42_stage_he_gate.md",
+    "verdict": "stage42_he_floor_free_proximity_guard_robustness_pass",
+    "gates": "21/21",
+    "summary": {
+      "policy_family": "harm_predictor_gate",
+      "min_sep": 0.05,
+      "all_improvement": 0.20741832176407393,
+      "t50_improvement": 0.13824909063914304,
+      "t100_raw_frame_diagnostic_improvement": 0.13676652178234783,
+      "hard_failure_improvement": 0.19988199720371558,
+      "easy_degradation": 0.0,
+      "collision_delta_vs_floor_005": -0.004714039399831282,
+      "bootstrap_n": 2000,
+      "global_ci_low": {
+        "all": 0.20382192458793905,
+        "t50": 0.13222414210794606,
+        "t100_raw_frame_diagnostic": 0.1294381545681769,
+        "hard_failure": 0.19572898476848208
+      },
+      "easy_ci_high": -0.16165742528950214,
+      "robust_positive_domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "weak_domain_horizon_slices": [],
+      "teacher_gate_used": false,
+      "causal_floor_fallback_used": true,
+      "global_floor_removal_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+        "verification": {
+            "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_floor_free_proximity_guard_robustness.py -> 3 passed in 0.73s",
+            "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 960 passed in 214.74s"
+        },
     "claim_boundary": {
       "true_3d": false,
       "foundation_world_model": false,
