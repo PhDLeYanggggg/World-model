@@ -698,3 +698,15 @@
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FK_FH_HORIZON_WEAK_SLICE_REPAIR:END -->
+
+<!-- STAGE42_FL_FH_HORIZON_WEAK_SLICE_FORENSICS:START -->
+## Stage42-FL FH Weak-Horizon Forensics
+
+- source: `fresh_stage42_fh_horizon_weak_slice_forensics`
+- role: fresh diagnostic for FK/FJ weak horizons; no policy promotion and no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fl_horizon_weak_slice_forensics_pass`.
+- analyzed weak horizons: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- root cause counts: `{'oracle_label_low_margin_ambiguous': 3}`.
+- next action: `train_horizon_specific_row_level_switch_model_with_stronger_history_neighbor_goal_features`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC; uniform horizon claim still blocked.
+<!-- STAGE42_FL_FH_HORIZON_WEAK_SLICE_FORENSICS:END -->

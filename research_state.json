@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FK FH horizon weak-slice validation repair",
-  "current_verdict": "stage42_fk_fh_horizon_weak_slice_repair_pass_with_horizon_limit",
+  "current_stage": "Stage42-FL FH weak-horizon forensics",
+  "current_verdict": "stage42_fl_horizon_weak_slice_forensics_pass",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fk_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fl_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -25,7 +25,8 @@
       "Stage42-FH UCY-supported FE composer",
       "Stage42-FI FH policy freeze / bootstrap / replay",
       "Stage42-FJ FH source/domain/horizon robustness audit",
-      "Stage42-FK FH horizon weak-slice validation repair"
+      "Stage42-FK FH horizon weak-slice validation repair",
+      "Stage42-FL FH weak-horizon forensics"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -39,8 +40,8 @@
       "smc_enabled"
     ],
     "summary_refresh_only": true,
-    "latest_full_pytest_after_stage42_fk_refresh": "816 passed in 30.72s",
-    "latest_conclusion": "Stage42-FK attempts validation-only repair for FH/FI weak horizon slices and records whether uniform horizon claims remain blocked."
+    "latest_full_pytest_after_stage42_fl_refresh": "819 passed in 30.68s",
+    "latest_conclusion": "Stage42-FL diagnoses remaining weak horizon slices after FK and defines the next row-level horizon-specialist action."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -28862,5 +28863,38 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FK attempts to repair FJ weak horizon slices with validation-only overrides and preserves the uniform-horizon claim boundary."
+  },
+  "stage42_fl_fh_horizon_weak_slice_forensics": {
+    "source": "fresh_stage42_fh_horizon_weak_slice_forensics",
+    "report": "outputs/stage42_long_research/fh_horizon_weak_slice_forensics_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fl_gate.md",
+    "verdict": "stage42_fl_horizon_weak_slice_forensics_pass",
+    "gates": "15/15",
+    "summary": {
+      "source": "fresh_stage42_fh_horizon_weak_slice_forensics",
+      "weak_domain_horizons": [
+        "TrajNet|100",
+        "UCY|50",
+        "UCY|100"
+      ],
+      "weak_horizon_count": 3,
+      "fk_verdict": "stage42_fk_fh_horizon_weak_slice_repair_pass_with_horizon_limit",
+      "fj_verdict": "stage42_fj_fh_source_robustness_pass",
+      "fi_verdict": "stage42_fi_fh_policy_freeze_replay_pass",
+      "root_cause_counts": {
+        "oracle_label_low_margin_ambiguous": 3
+      },
+      "next_action": "train_horizon_specific_row_level_switch_model_with_stronger_history_neighbor_goal_features"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "uniform_horizon_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FL diagnoses why FK validation-only horizon repair did not remove TrajNet|100, UCY|50, or UCY|100 weak slices."
   }
 }

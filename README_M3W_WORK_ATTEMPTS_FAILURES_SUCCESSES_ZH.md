@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FK 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FL 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
@@ -25,7 +25,8 @@ Stage42-FH 用 UCY train-only internal validation 重新选择 FE composer famil
 Stage42-FI 冻结 FH policy，并做 exact replay + 2000-bootstrap：policy hash f1f6e0636167fae8721a3f7195f188dcbe1a83194b04fa0625b378ad38b5aed6，replay diff 为 0，bootstrap CI low all/t50/t100raw/hard 为 34.62% / 28.46% / 19.96% / 32.73%，gate 25/25。
 Stage42-FJ 对 frozen FH/FI policy 做 source/domain/horizon/scene 鲁棒性审计：TrajNet 与 UCY 两个 domain 均 robust positive-safe，所有 powered sources 都 robust，但 TrajNet|100、UCY|50、UCY|100 仍是 horizon weak slices；因此 dual-domain 与 broad source claim 可以写，uniform horizon claim 不能写。
 Stage42-FK 针对这些 weak horizon 做 validation-only repair：全局 all/t50/t100raw/hard 变为 35.18% / 28.97% / 21.13% / 33.33%，但弱 horizon 数没有减少，仍是 TrajNet|100、UCY|50、UCY|100；因此 verdict 是 pass_with_horizon_limit，不允许 uniform horizon claim。
-这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker；source/domain/horizon 审计发现 UCY weak；UCY internal-val support 进一步把 weak domain 修成 dual-domain positive-safe；FI 冻结和复放证明这个 policy 不是临时 test-tuned 结果；FJ/FK 则把允许 claim 精确收窄到 dual-domain/source robust，但不允许 uniform horizon overclaim。但这仍是 dataset-local raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。
+Stage42-FL 对 FK/FJ 剩余 weak horizon 做 fresh 取证：三个弱切片共同根因是 oracle label low-margin ambiguous；TrajNet|100 的 diagnostic oracle vs FH 只有 1.06%，UCY|50 为 6.75%，UCY|100 为 2.74%，且 0.05 relative-margin 内的低 margin 比例分别约 99.18%、92.52%、90.28%。因此下一步不是继续整片候选替换，而是训练 horizon-specific row-level switch model，且必须用更强 history/neighbor/goal features 和保守 safety gate。
+这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker；source/domain/horizon 审计发现 UCY weak；UCY internal-val support 进一步把 weak domain 修成 dual-domain positive-safe；FI 冻结和复放证明这个 policy 不是临时 test-tuned 结果；FJ/FK/FL 则把允许 claim 精确收窄到 dual-domain/source robust，但不允许 uniform horizon overclaim，并解释 uniform horizon blocker 来自低 margin/高歧义 weak horizon。 但这仍是 dataset-local raw-frame 2.5D evidence，不能写 metric/seconds/true-3D/foundation。
 ```
 
 ## 0.1 本次给你的详细总结
@@ -82,6 +83,7 @@ Stage42-FK 针对这些 weak horizon 做 validation-only repair：全局 all/t50
 | Stage42-FI frozen replay | replay diff 0；2000-bootstrap CI low all/t50/t100raw/hard 34.62% / 28.46% / 19.96% / 32.73%；gate 25/25 | FH policy 已冻结，可复放，不是 test-tuned 偶然结果 |
 | Stage42-FJ robustness audit | TrajNet 与 UCY domain robust；powered sources robust；TrajNet|100、UCY|50、UCY|100 仍 weak；gate 14/14 | 允许 dual-domain/source claim，但禁止 uniform horizon claim |
 | Stage42-FK horizon repair attempt | all/t50/t100raw/hard 35.18% / 28.97% / 21.13% / 33.33%；weak horizons 仍为 TrajNet|100、UCY|50、UCY|100；gate 15/15 | 全局小幅提升，但 uniform horizon claim 仍 blocked |
+| Stage42-FL weak-horizon forensics | TrajNet|100、UCY|50、UCY|100 的 root cause 都是 oracle label low-margin ambiguous；gate 15/15 | 解释 FK 为什么修不掉 uniform horizon：整片替换不够，需要 row-level horizon specialist |
 
 但是当前仍然不是：
 
@@ -798,3 +800,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - uniform horizon claim allowed: `False`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FK_FH_HORIZON_WEAK_SLICE_REPAIR:END -->
+
+<!-- STAGE42_FL_FH_HORIZON_WEAK_SLICE_FORENSICS:START -->
+## Stage42-FL FH Weak-Horizon Forensics
+
+- source: `fresh_stage42_fh_horizon_weak_slice_forensics`
+- role: fresh diagnostic for FK/FJ weak horizons; no policy promotion and no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fl_horizon_weak_slice_forensics_pass`.
+- analyzed weak horizons: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- root cause counts: `{'oracle_label_low_margin_ambiguous': 3}`.
+- next action: `train_horizon_specific_row_level_switch_model_with_stronger_history_neighbor_goal_features`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC; uniform horizon claim still blocked.
+<!-- STAGE42_FL_FH_HORIZON_WEAK_SLICE_FORENSICS:END -->
