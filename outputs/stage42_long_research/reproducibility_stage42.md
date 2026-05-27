@@ -403,3 +403,17 @@ python3 -m pytest tests
 - decision: `constraint_aware_composer_positive_but_keep_stage42_di`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EV_CONSTRAINT_AWARE_COMPOSER:END -->
+
+<!-- STAGE42_EW_ADAPTIVE_GROUP_REPAIR:START -->
+## Stage42-EW Adaptive Group Repair
+
+- source: `fresh_stage42_adaptive_group_repair`
+- role: validation-only adaptive selection over Stage42-DI repair candidates by global / domain+horizon / domain+horizon+risk slices.
+- selected mode: `domain_horizon`.
+- test all/t50/t100raw/hard/easy: `24.70%` / `22.36%` / `14.35%` / `23.88%` / `-25.64%`.
+- delta vs Stage42-DI all/hard/easy: `-0.01%` / `-0.01%` / `-0.01%`.
+- near@0.05 base/final: `1.94%` / `1.44%`.
+- mixed group selection rate: `0.00%`.
+- decision: `stage42_ew_adaptive_group_repair_positive_not_promoted`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EW_ADAPTIVE_GROUP_REPAIR:END -->
