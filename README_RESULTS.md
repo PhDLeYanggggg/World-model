@@ -4686,3 +4686,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - group-consistency beats Stage42-AM on all/hard by `0.001368` / `0.001380` and repairs near@0.05 from `0.019364` to `0.013823`.
 - deployment boundary: promote explicit group-consistency as source-level full-waypoint physical policy; do not claim global primary full-waypoint replacement, metric/seconds-level, Stage5C, or SMC.
 <!-- STAGE42_DY_EXPLICIT_PHYSICAL_CONSISTENCY_CHECKPOINT:END -->
+
+<!-- STAGE42_DZ_UCY_SUPPORTED_GROUP_CONSISTENCY:START -->
+## Stage42-DZ UCY-Supported Group-Consistency Full-Waypoint Repair
+
+- source: `fresh_ucy_internal_validation_group_consistency_repair`
+- role: reruns explicit group/physical consistency on the UCY validation-supported split, addressing the prior TrajNet-only/floor-only domain boundary.
+- gate: `15 / 15`; verdict `stage42_dz_ucy_supported_group_consistency_pass_dual_domain`.
+- global all/t50/t100 raw/hard/easy `0.328904` / `0.269864` / `0.211165` / `0.318864` / `-0.320940`.
+- positive safe domains: `2`; UCY all/t50/hard `0.355808` / `0.227206` / `0.337848`; TrajNet all/t50/hard `0.320715` / `0.281804` / `0.312868`.
+- near@0.05 base/final `0.020797` / `0.013148`; still raw-frame/dataset-local, no metric/seconds claim, Stage5C false, SMC false.
+<!-- STAGE42_DZ_UCY_SUPPORTED_GROUP_CONSISTENCY:END -->
