@@ -1850,3 +1850,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; after-terms t50/t100 potential `10060` / `5696`.
 - conversion_ready_now remains `0`; this stage does not download, convert, train, evaluate, or make metric/seconds claims.
 <!-- STAGE42_EH_SOURCE_TERMS_CONFIRMATION_INTAKE:END -->
+
+<!-- STAGE42_EI_SOURCE_TERMS_INTAKE_VALIDATOR_BRIDGE:START -->
+## Stage42-EI Source Terms Intake Validator Bridge
+
+- source: `fresh_validator_bridge_from_stage42_eh_intake`
+- role: verifies that the CG validator now consumes the EH intake template and nested confirmation schema.
+- gate: `10 / 10`; verdict `stage42_ei_intake_validator_bridge_pass`.
+- validator_template_format: `stage42_eh_intake`; path `outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json`.
+- conversion_ready_targets remains `0`; converted/evaluated now `0` / `0`.
+- This fixes the EH->CG workflow bridge while preserving legal blocker, no metric/seconds claim, no Stage5C, and no SMC.
+<!-- STAGE42_EI_SOURCE_TERMS_INTAKE_VALIDATOR_BRIDGE:END -->

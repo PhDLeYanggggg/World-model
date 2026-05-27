@@ -12,6 +12,7 @@ from src.stage30_m3w_verified import _combined_hash, _git_commit
 OUT_DIR = Path("outputs/stage42_long_research")
 CF_JSON = OUT_DIR / "source_conversion_legal_gate_stage42.json"
 CONFIRMATION_JSON = OUT_DIR / "source_terms_confirmation_template_stage42.json"
+INTAKE_CONFIRMATION_JSON = OUT_DIR / "source_terms_confirmation_intake_template_stage42.json"
 
 REPORT_JSON = OUT_DIR / "source_terms_validation_stage42.json"
 REPORT_MD = OUT_DIR / "source_terms_validation_stage42.md"
@@ -41,8 +42,36 @@ def _load_json(path: Path) -> dict[str, Any]:
         return json.load(f)
 
 
+def _confirmation_template_path() -> Path:
+    if INTAKE_CONFIRMATION_JSON.exists():
+        return INTAKE_CONFIRMATION_JSON
+    return CONFIRMATION_JSON
+
+
+def _normalise_confirmation(row: Mapping[str, Any]) -> dict[str, Any]:
+    if "user_confirmation" not in row:
+        return dict(row)
+
+    user = dict(row.get("user_confirmation", {}))
+    official_url = user.get("official_terms_url") or row.get("official_url_from_prior_audit", "")
+    return {
+        "dataset_id": row.get("dataset_id", ""),
+        "official_url": official_url,
+        "terms_accepted_by_user": user.get("terms_accepted_by_user", False),
+        "terms_acceptance_date": user.get("terms_acceptance_date", ""),
+        "allowed_use": user.get("allowed_use", ""),
+        "local_path": user.get("local_path", ""),
+        "source_identity": user.get("source_identity", ""),
+        "notes": user.get("notes", ""),
+        "redistribution_allowed": user.get("redistribution_allowed", "unknown"),
+        "derived_data_allowed": user.get("derived_data_allowed", "unknown"),
+        "confirmed_by_user": user.get("confirmed_by_user", ""),
+        "template_row_source": row.get("source", "stage42_eh_intake_row"),
+    }
+
+
 def _confirmation_by_id(template: Mapping[str, Any]) -> dict[str, Mapping[str, Any]]:
-    return {str(row.get("dataset_id", "")): row for row in template.get("datasets", [])}
+    return {str(row.get("dataset_id", "")): _normalise_confirmation(row) for row in template.get("datasets", [])}
 
 
 def _validate_confirmation(decision: Mapping[str, Any], confirmation: Mapping[str, Any] | None) -> dict[str, Any]:
@@ -95,10 +124,11 @@ def _next_action(cf_blockers: list[str], confirmation_blockers: list[str]) -> st
 
 def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
     s = payload["summary"]
+    source = payload["input_reports"]["confirmation_template_source"]
     gates = {
         "cf_input_verified": payload["input_reports"]["stage42_cf_verdict"] == "stage42_cf_source_conversion_legal_gate_pass",
-        "confirmation_template_loaded": payload["input_reports"]["confirmation_template_source"]
-        == "fresh_stage42_cf_source_conversion_legal_gate",
+        "confirmation_template_loaded": source
+        in {"fresh_stage42_cf_source_conversion_legal_gate", "fresh_source_terms_confirmation_intake_from_stage42_ef"},
         "all_targets_validated": s["targets_validated"] >= 5,
         "readiness_manifest_written": "manifest" in payload,
         "empty_template_blocks_conversion": s["conversion_ready_targets"] == 0,
@@ -118,7 +148,8 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
 def _build_payload() -> dict[str, Any]:
     ensure_dir(OUT_DIR)
     cf = _load_json(CF_JSON)
-    template = _load_json(CONFIRMATION_JSON)
+    confirmation_path = _confirmation_template_path()
+    template = _load_json(confirmation_path)
     confirmations = _confirmation_by_id(template)
     validations = [_validate_confirmation(row, confirmations.get(row["id"])) for row in cf["target_decisions"]]
     summary = {
@@ -145,11 +176,13 @@ def _build_payload() -> dict[str, Any]:
         "stage": "Stage42-CG Source Terms Confirmation Validator",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "git_commit": _git_commit(),
-        "input_hash": _combined_hash([str(CF_JSON), str(CONFIRMATION_JSON)]),
+        "input_hash": _combined_hash([str(CF_JSON), str(confirmation_path)]),
         "current_facts": CURRENT_FACTS,
         "input_reports": {
             "stage42_cf_verdict": cf["stage42_cf_gate"]["verdict"],
             "confirmation_template_source": template.get("source", ""),
+            "confirmation_template_path": str(confirmation_path),
+            "confirmation_template_format": "stage42_eh_intake" if confirmation_path == INTAKE_CONFIRMATION_JSON else "stage42_cf_template",
             "terms_confirmation_is_currently_absent": template.get("terms_confirmation_is_currently_absent", None),
         },
         "summary": summary,

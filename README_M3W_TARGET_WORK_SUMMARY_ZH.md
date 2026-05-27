@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF / EG / EH 证据刷新。
-最近完整测试记录：Stage42-EH 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`713 passed in 31.00s`。
+结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF / EG / EH / EI 证据刷新。
+最近完整测试记录：Stage42-EI 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`717 passed in 29.98s`。
 
 这份 README 是给人的总账。它回答：在 M3W 这个长期目标里到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、现在模型大概是什么质量，以及哪些结论仍然禁止写。
 
@@ -621,3 +621,14 @@ SMC 是否启用：否
 - top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; after-terms t50/t100 potential `10060` / `5696`.
 - conversion_ready_now remains `0`; this stage does not download, convert, train, evaluate, or make metric/seconds claims.
 <!-- STAGE42_EH_SOURCE_TERMS_CONFIRMATION_INTAKE:END -->
+
+<!-- STAGE42_EI_SOURCE_TERMS_INTAKE_VALIDATOR_BRIDGE:START -->
+## Stage42-EI Source Terms Intake Validator Bridge
+
+- source: `fresh_validator_bridge_from_stage42_eh_intake`
+- role: verifies that the CG validator now consumes the EH intake template and nested confirmation schema.
+- gate: `10 / 10`; verdict `stage42_ei_intake_validator_bridge_pass`.
+- validator_template_format: `stage42_eh_intake`; path `outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json`.
+- conversion_ready_targets remains `0`; converted/evaluated now `0` / `0`.
+- This fixes the EH->CG workflow bridge while preserving legal blocker, no metric/seconds claim, no Stage5C, and no SMC.
+<!-- STAGE42_EI_SOURCE_TERMS_INTAKE_VALIDATOR_BRIDGE:END -->
