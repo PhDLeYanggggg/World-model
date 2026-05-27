@@ -5661,3 +5661,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - No source is license-confirmed, auto-downloadable, conversion-ready, converted, trained, or evaluated by this step.
 - Boundary: source/terms paper guard only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
 <!-- STAGE42_GP_SOURCE_TERMS_PAPER_CLAIM_GUARD:END -->
+
+<!-- STAGE42_GQ_SOURCE_TERMS_PACKAGE_CLAIM_LINTER:START -->
+## Stage42-GQ Source Terms Package Claim Linter
+
+- source: `fresh_stage42_gq_source_terms_package_claim_linter`
+- role: scans README and Stage42 paper package for source/legal overclaims after GO/GP.
+- gate: `13 / 13`; verdict `stage42_gq_source_terms_package_claim_linter_pass`.
+- files scanned: `14`; violations: `0`.
+- No source is license-confirmed, auto-downloadable, conversion-ready, converted, trained, or evaluated by this step.
+- Boundary: package-wide claim lint only; not converted data, not metric/seconds evidence, not Stage5C, and not SMC.
+<!-- STAGE42_GQ_SOURCE_TERMS_PACKAGE_CLAIM_LINTER:END -->
