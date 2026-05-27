@@ -6204,3 +6204,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Remaining blocker: user must fill and confirm terms/source/local-path fields before conversion.
 - Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
 <!-- STAGE42_HZ_SOURCE_TERMS_CONFIRMATION_PACKET:END -->
+
+<!-- STAGE42_IA_HZ_TO_CG_INTAKE_BRIDGE:START -->
+## Stage42-IA HZ to CG Intake Bridge
+
+- source: `fresh_stage42_ia_hz_to_cg_intake_bridge`
+- role: bridge the new HZ confirmation packet into the older CG validator intake schema without activating conversion.
+- gate: `17 / 17`; verdict `stage42_ia_hz_to_cg_intake_bridge_pass`.
+- mapped rows: `5`; ready if activated now: `0`.
+- Remaining blocker: HZ confirmation fields are blank and require user-confirmed terms/source identity before guarded conversion.
+- Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
+<!-- STAGE42_IA_HZ_TO_CG_INTAKE_BRIDGE:END -->

@@ -132,3 +132,12 @@ This section refines the paper evidence matrix by separating replay evidence str
 - ready for guarded conversion now: `0`.
 - This reduces A-stage friction but does not close legal/source blockers or authorize metric/time conversion.
 <!-- STAGE42_HZ_SOURCE_TERMS_CONFIRMATION_PACKET:END -->
+
+<!-- STAGE42_IA_HZ_TO_CG_INTAKE_BRIDGE:START -->
+## Stage42-IA HZ to CG Intake Bridge
+
+- IA maps HZ confirmation rows into a CG-compatible inactive intake candidate.
+- gate: `17 / 17`.
+- ready if activated now: `0`.
+- No conversion/evaluation occurred; source/legal blockers remain until user confirmation and guarded conversion pass.
+<!-- STAGE42_IA_HZ_TO_CG_INTAKE_BRIDGE:END -->
