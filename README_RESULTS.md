@@ -1,5 +1,19 @@
 # Physical World Model 2.5D Results
 
+## M3W 目标内路线/失败/成功总账（2026-05-27 最新权威入口）
+
+本轮按用户要求，把“在这个 M3W 长期目标内做了什么、尝试了什么路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的单文件 README：
+
+`/Users/yangyue/Downloads/World/README_M3W_RESEARCH_ROUTES_FAILURES_SUCCESSES_2026_05_27_ZH.md`
+
+该文件是 `cached_verified_summary`：只汇总已有 Stage18 到 Stage42-HN 的报告、gate、model/data card、README 和 `research_state.json`，不包含新训练、下载、转换或评估。它明确写清：
+
+- 当前 M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
+- 当前不是 true 3D，不是 foundation，不是 global metric / seconds-level，不是 ungated neural dynamics；Stage5C 未执行，SMC 未启用。
+- 成功主线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42 protected full-waypoint / group-consistency family。
+- 失败或 blocked 主线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、restricted metric/time conversion readiness。
+- 当前 best deployable 分层：SDD 用 Stage26，external t50 用 Stage37，protected neural/world-state 用 M3W-Neural v1 + Stage42 protected full-waypoint/group-consistency；metric/time、Stage5C、SMC 均不 ready。
+
 ## M3W 当前详细总结（2026-05-27 用户请求版）
 
 本轮按用户要求，把“这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成新的单文件 README：
