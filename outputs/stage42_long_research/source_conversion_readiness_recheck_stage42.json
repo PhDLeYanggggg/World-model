@@ -1,0 +1,1204 @@
+{
+  "source": "fresh_local_path_scan_after_stage42_do",
+  "stage": "Stage42-DS",
+  "generated_at_utc": "2026-05-27T00:15:38.816030+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DS 只做本地 source conversion readiness recheck，不下载、不转换、不训练、不评估。",
+    "local path found 不等于 legal conversion ready。",
+    "derived cache found 不等于 raw official dataset verified。",
+    "terms/source identity/allowed use 未确认时，conversion_ready 必须保持 false。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；dataset-local/raw-frame 不能写成 global metric/seconds。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "terms_json": "outputs/stage42_long_research/source_terms_validation_stage42.json",
+    "legal_time_json": "outputs/stage42_long_research/source_legal_time_action_package_stage42.json",
+    "time_geometry_json": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+    "prior_legal_time_verdict": "stage42_do_source_legal_time_action_package_pass"
+  },
+  "target_rows": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "role": "external_topdown_pedestrian_source_candidate",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "official_source_confirmed": true,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "technical_preflight_possible": true,
+      "conversion_ready": false,
+      "parseability_hint": "trajectory_like_files_present",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 47,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".avi": 4,
+            ".json": 1,
+            ".md": 1,
+            ".png": 6,
+            ".py": 1,
+            ".svg": 3,
+            ".txt": 22,
+            ".vsp": 7,
+            ".xml": 2
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/README.md",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/annotation.vsp",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/annotation.vsp",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/static.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H-cam.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/map.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/H.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/reference.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/groups.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/annotated.svg",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/destinations.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/UCY-Zara01.json",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/bg.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/video.avi",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/arxiepiskopi/annotation.vsp",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/arxiepiskopi/Arxiepiskopi_flock.avi",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/arxiepiskopi/reference.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/uni_examples/annotation.vsp",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat_px.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/annotation.vsp",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/students003.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/ground_plane_measurements_003.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H-old.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/H.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/reference.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/groups.txt"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/UCY",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        },
+        {
+          "path": "/Users/yangyue/Downloads/ETH_UCY/UCY",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage20_world_state/ucy_crowd",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 1
+          },
+          "sample_files": [
+            "data/stage20_world_state/ucy_crowd/conversion_status.json"
+          ]
+        },
+        {
+          "path": "data/stage32_domain_alignment/UCY",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        },
+        {
+          "path": "outputs/stage37_t50_history",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 26,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 11,
+            ".jsonl": 1,
+            ".md": 14
+          },
+          "sample_files": [
+            "outputs/stage37_t50_history/stage37_conformal_safety_report.md",
+            "outputs/stage37_t50_history/stage37_goal_prototype_report.md",
+            "outputs/stage37_t50_history/world_model_gate_stage37.json",
+            "outputs/stage37_t50_history/pytest_status.md",
+            "outputs/stage37_t50_history/report_stage37_final.md",
+            "outputs/stage37_t50_history/history_window_schema.json",
+            "outputs/stage37_t50_history/stage37_t50_baseline_family.json",
+            "outputs/stage37_t50_history/run_ledger.md",
+            "outputs/stage37_t50_history/stage37_history_window_report.md",
+            "outputs/stage37_t50_history/stage37_switchability_report.json",
+            "outputs/stage37_t50_history/stage37_goal_prototype_report.json",
+            "outputs/stage37_t50_history/project_world_model_gap_stage37.md",
+            "outputs/stage37_t50_history/cross_domain_eval_stage37.md",
+            "outputs/stage37_t50_history/stage37_t50_quality_audit.md",
+            "outputs/stage37_t50_history/stage37_t50_failure_analysis.md",
+            "outputs/stage37_t50_history/world_model_gate_stage37.md",
+            "outputs/stage37_t50_history/stage37_history_window_report.json",
+            "outputs/stage37_t50_history/stage37_t50_baseline_family.md",
+            "outputs/stage37_t50_history/stage37_t50_quality_audit.json",
+            "outputs/stage37_t50_history/run_ledger.jsonl",
+            "outputs/stage37_t50_history/stage37_switchability_report.md",
+            "outputs/stage37_t50_history/cross_domain_eval_stage37.json",
+            "outputs/stage37_t50_history/stage37_t50_failure_analysis.json",
+            "outputs/stage37_t50_history/stage37_t50_selector_report.json",
+            "outputs/stage37_t50_history/stage37_t50_selector_report.md",
+            "outputs/stage37_t50_history/stage37_conformal_safety_report.json"
+          ]
+        }
+      ],
+      "blockers": [
+        "derived_cache_found_but_not_counted_as_raw_verified_dataset",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "user must confirm terms acceptance, allowed use, acceptance date, local path, and source identity before conversion"
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "role": "external_topdown_pedestrian_source_candidate",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "official_source_confirmed": true,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "technical_preflight_possible": true,
+      "conversion_ready": false,
+      "parseability_hint": "trajectory_like_files_present",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 24,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".avi": 2,
+            ".json": 1,
+            ".md": 1,
+            ".png": 6,
+            ".txt": 11,
+            ".xml": 2,
+            ".yaml": 1
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/README.md",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/ETH-ETH.json",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/eth-eth.yaml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/map.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/map.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/reference.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/groups.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/destinations.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/bg.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/video.avi",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/info.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/map.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/map.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/H.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/biwi_eth_10fps.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/reference.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/groups.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/destinations.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/bg.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/video.avi"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 6,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".png": 1,
+            ".xml": 5
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person/reference.png",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person/data/seq0_assc_gt-interp.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person/data/jelmoli_assc_gt.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person/data/seq0_assc_gt.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person/data/sunnyday_assc_gt.xml",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH-Person/data/bahnhof_assc_gt.xml"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj/datasets/ETH",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        },
+        {
+          "path": "/Users/yangyue/Downloads/ETH_UCY/ETH",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage20_world_state/eth_ucy_full",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 1
+          },
+          "sample_files": [
+            "data/stage20_world_state/eth_ucy_full/conversion_status.json"
+          ]
+        },
+        {
+          "path": "data/stage5b_world_state/eth_ucy",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 2,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".csv": 1,
+            ".json": 1
+          },
+          "sample_files": [
+            "data/stage5b_world_state/eth_ucy/metadata.json",
+            "data/stage5b_world_state/eth_ucy/world_state.csv"
+          ]
+        },
+        {
+          "path": "outputs/stage41_domain_local",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 51,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 25,
+            ".jsonl": 1,
+            ".md": 15,
+            ".pt": 10
+          },
+          "sample_files": [
+            "outputs/stage41_domain_local/stage41_domain_local_full_traj_ETH_UCY_domain_full_long_horizon_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.md",
+            "outputs/stage41_domain_local/stage41_domain_local_TrajNet_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_learned_waypoint_shape_ETH_UCY_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.md",
+            "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json",
+            "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json",
+            "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.json",
+            "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.md",
+            "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md",
+            "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md",
+            "outputs/stage41_domain_local/stage41_shape_policy_composer.md",
+            "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.md",
+            "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
+            "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json",
+            "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.md",
+            "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json",
+            "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
+            "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.md",
+            "outputs/stage41_domain_local/stage41_domain_local_UCY_expanded_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_domain_local_full_traj_ETH_UCY_domain_full_balanced_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_domain_local_UCY_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_shape_policy_composer.json",
+            "outputs/stage41_domain_local/stage41_pairwise_shape_switch_policy.json",
+            "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
+            "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_repair.json",
+            "outputs/stage41_domain_local/run_ledger.jsonl",
+            "outputs/stage41_domain_local/stage41_domain_local_full_traj_TrajNet_domain_full_balanced_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
+            "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json"
+          ]
+        }
+      ],
+      "blockers": [
+        "derived_cache_found_but_not_counted_as_raw_verified_dataset",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "user must confirm terms acceptance, allowed use, acceptance date, local path, and source identity before conversion"
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "role": "external_topdown_pedestrian_source_candidate",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "official_source_confirmed": true,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "technical_preflight_possible": true,
+      "conversion_ready": false,
+      "parseability_hint": "trajectory_like_files_present",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet++",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".ndjson": 1
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet++/train/synth_data/orca_circle_crossing_5ped.ndjson"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 59,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".txt": 59
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_8.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/gates_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_7.txt"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 86,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".idx": 1,
+            ".pack": 1,
+            ".py": 9,
+            ".rar": 3,
+            ".rst": 1,
+            ".sample": 13,
+            ".sh": 2,
+            ".tgz": 1,
+            ".txt": 39,
+            ".zip": 2,
+            "<none>": 14
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/setup_orca.sh",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.pylintrc",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/setup.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.gitignore",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/edinburgh_informatics_forum_urls.txt",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/README.rst",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/setup_social_force.sh",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/readers.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/convert.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/__init__.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/scene.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/controlled_data.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/orca_helper.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/trajnetdataset/get_type.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/scripts/convert_original.py",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/config",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/shallow",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/HEAD",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/description",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/index",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/packed-refs",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/objects/pack/pack-c1d72206febded41c1e6255c9540e98b4e71153f.idx",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/objects/pack/pack-c1d72206febded41c1e6255c9540e98b4e71153f.pack",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/info/exclude",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/logs/HEAD",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/logs/refs/heads/master",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/logs/refs/remotes/origin/HEAD",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/hooks/commit-msg.sample",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/hooks/pre-rebase.sample",
+            "/Users/yangyue/Downloads/World/data/stage5b_raw/trajnetplusplusdataset/.git/hooks/pre-commit.sample"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/trajnetplusplusdataset",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage20_world_state/trajnet_full",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 1
+          },
+          "sample_files": [
+            "data/stage20_world_state/trajnet_full/conversion_status.json"
+          ]
+        },
+        {
+          "path": "data/stage5b_world_state/trajnet",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 2,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".csv": 1,
+            ".json": 1
+          },
+          "sample_files": [
+            "data/stage5b_world_state/trajnet/metadata.json",
+            "data/stage5b_world_state/trajnet/world_state.csv"
+          ]
+        },
+        {
+          "path": "outputs/stage41_domain_local",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 51,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 25,
+            ".jsonl": 1,
+            ".md": 15,
+            ".pt": 10
+          },
+          "sample_files": [
+            "outputs/stage41_domain_local/stage41_domain_local_full_traj_ETH_UCY_domain_full_long_horizon_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_world_state.md",
+            "outputs/stage41_domain_local/stage41_domain_local_TrajNet_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_learned_waypoint_shape_ETH_UCY_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.md",
+            "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.json",
+            "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.json",
+            "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.json",
+            "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.md",
+            "outputs/stage41_domain_local/stage41_domain_local_neural_retrain.md",
+            "outputs/stage41_domain_local/stage41_learned_shape_gain_gate.md",
+            "outputs/stage41_domain_local/stage41_shape_policy_composer.md",
+            "outputs/stage41_domain_local/stage41_weighted_pairwise_shape_switch_policy.md",
+            "outputs/stage41_domain_local/stage41_fixed_prior_oracle_audit.json",
+            "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.json",
+            "outputs/stage41_domain_local/stage41_calibrated_shape_meta_policy.md",
+            "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.json",
+            "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.json",
+            "outputs/stage41_domain_local/stage41_domain_local_all_agent_world_state.md",
+            "outputs/stage41_domain_local/stage41_domain_local_UCY_expanded_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_domain_local_full_traj_ETH_UCY_domain_full_balanced_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_domain_local_UCY_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_shape_policy_composer.json",
+            "outputs/stage41_domain_local/stage41_pairwise_shape_switch_policy.json",
+            "outputs/stage41_domain_local/stage41_learned_waypoint_shape_bridge.md",
+            "outputs/stage41_domain_local/stage41_domain_local_full_trajectory_repair.json",
+            "outputs/stage41_domain_local/run_ledger.jsonl",
+            "outputs/stage41_domain_local/stage41_domain_local_full_traj_TrajNet_domain_full_balanced_heartbeat.json",
+            "outputs/stage41_domain_local/stage41_fixed_prior_source_switch_policy.md",
+            "outputs/stage41_domain_local/stage41_dynamic_shape_meta_policy.json"
+          ]
+        }
+      ],
+      "blockers": [
+        "derived_cache_found_but_not_counted_as_raw_verified_dataset",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "user must confirm terms acceptance, allowed use, acceptance date, local path, and source identity before conversion"
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "role": "toolkit_or_mirror_requires_source_identity_confirmation",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "official_source_confirmed": true,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "technical_preflight_possible": true,
+      "conversion_ready": false,
+      "parseability_hint": "trajectory_like_files_present",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/OpenTraj",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 250,
+          "cap_reached": true,
+          "suffix_counts": {
+            ".jpg": 3,
+            ".json": 151,
+            ".md": 5,
+            ".png": 3,
+            ".py": 1,
+            ".txt": 63,
+            ".xml": 21,
+            "<none>": 3
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/requirements.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/README.md",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/setup.py",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/.gitignore",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/LICENSE.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/.DS_Store",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/.gitignore",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_3.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_8.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_0.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/stanford/gates_2.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_1.txt",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_0.txt"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/OpenTraj",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage20_world_state/opentraj",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 1
+          },
+          "sample_files": [
+            "data/stage20_world_state/opentraj/conversion_status.json"
+          ]
+        },
+        {
+          "path": "outputs/stage31_m3w_external",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 21,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 8,
+            ".jsonl": 1,
+            ".md": 12
+          },
+          "sample_files": [
+            "outputs/stage31_m3w_external/pytest_status.md",
+            "outputs/stage31_m3w_external/external_domain_gap_analysis.md",
+            "outputs/stage31_m3w_external/run_ledger.md",
+            "outputs/stage31_m3w_external/external_latent_cache_report.json",
+            "outputs/stage31_m3w_external/external_no_leakage_report.md",
+            "outputs/stage31_m3w_external/world_model_gate_stage31.json",
+            "outputs/stage31_m3w_external/report_stage31_final.md",
+            "outputs/stage31_m3w_external/world_model_gate_stage31.md",
+            "outputs/stage31_m3w_external/external_baseline_table.md",
+            "outputs/stage31_m3w_external/external_baseline_table.json",
+            "outputs/stage31_m3w_external/external_no_leakage_report.json",
+            "outputs/stage31_m3w_external/external_adaptation_report.json",
+            "outputs/stage31_m3w_external/external_domain_gap_analysis.json",
+            "outputs/stage31_m3w_external/project_world_model_gap_stage31.md",
+            "outputs/stage31_m3w_external/external_latent_cache_report.md",
+            "outputs/stage31_m3w_external/external_feature_store_report.md",
+            "outputs/stage31_m3w_external/run_ledger.jsonl",
+            "outputs/stage31_m3w_external/external_transfer_eval.md",
+            "outputs/stage31_m3w_external/external_transfer_eval.json",
+            "outputs/stage31_m3w_external/external_adaptation_report.md",
+            "outputs/stage31_m3w_external/external_feature_store_report.json"
+          ]
+        },
+        {
+          "path": "outputs/stage32_domain_alignment",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 21,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 8,
+            ".jsonl": 1,
+            ".md": 12
+          },
+          "sample_files": [
+            "outputs/stage32_domain_alignment/domain_adapted_selector_report.md",
+            "outputs/stage32_domain_alignment/pytest_status.md",
+            "outputs/stage32_domain_alignment/run_ledger.md",
+            "outputs/stage32_domain_alignment/domain_adapted_selector_report.json",
+            "outputs/stage32_domain_alignment/latent_domain_alignment_report.json",
+            "outputs/stage32_domain_alignment/cross_domain_eval_matrix.md",
+            "outputs/stage32_domain_alignment/cross_domain_eval_matrix.json",
+            "outputs/stage32_domain_alignment/external_reaudit.md",
+            "outputs/stage32_domain_alignment/project_world_model_gap_stage32.md",
+            "outputs/stage32_domain_alignment/external_domain_failure_analysis.json",
+            "outputs/stage32_domain_alignment/external_baseline_reaudit.md",
+            "outputs/stage32_domain_alignment/external_baseline_reaudit.json",
+            "outputs/stage32_domain_alignment/run_ledger.jsonl",
+            "outputs/stage32_domain_alignment/world_model_gate_stage32.md",
+            "outputs/stage32_domain_alignment/domain_feature_stats.json",
+            "outputs/stage32_domain_alignment/world_model_gate_stage32.json",
+            "outputs/stage32_domain_alignment/external_domain_failure_analysis.md",
+            "outputs/stage32_domain_alignment/domain_normalization_report.md",
+            "outputs/stage32_domain_alignment/latent_domain_alignment_report.md",
+            "outputs/stage32_domain_alignment/external_reaudit.json",
+            "outputs/stage32_domain_alignment/report_stage32_final.md"
+          ]
+        }
+      ],
+      "blockers": [
+        "derived_cache_found_but_not_counted_as_raw_verified_dataset",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing"
+      ],
+      "next_action": "user must confirm terms acceptance, allowed use, acceptance date, local path, and source identity before conversion"
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "role": "drone_or_topdown_candidate_diagnostic_until_official_source_confirmed",
+      "official_url": "user_or_web_verified_official_url_required",
+      "official_source_confirmed": false,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "technical_preflight_possible": true,
+      "conversion_ready": false,
+      "parseability_hint": "trajectory_like_files_present",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/data/aerialmpt/DLR_AerialMPT_Dataset.zip",
+          "exists": true,
+          "is_dir": false,
+          "is_file": true,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".zip": 1
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/data/aerialmpt/DLR_AerialMPT_Dataset.zip"
+          ]
+        },
+        {
+          "path": "/Users/yangyue/Downloads/World/data/aerialmpt",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 1,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".zip": 1
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/data/aerialmpt/DLR_AerialMPT_Dataset.zip"
+          ]
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage14_multimodal_episodes/aerialmpt",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 20,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".npz": 20
+          },
+          "sample_files": [
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00009.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00008.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00018.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00019.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00017.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00003.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00002.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00016.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00000.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00014.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00015.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00001.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00005.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00011.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00010.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00004.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00012.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00006.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00007.npz",
+            "data/stage14_multimodal_episodes/aerialmpt/episode_00013.npz"
+          ]
+        },
+        {
+          "path": "data/stage12_annotations/aerialmpt",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 14,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 14
+          },
+          "sample_files": [
+            "data/stage12_annotations/aerialmpt/oac/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/karlsplatz/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/witt/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/bauma6/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/bauma1/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/pasing7/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/pasing8/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/pasing1L/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/bauma4/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/bauma3/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/bauma2/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/bauma5/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/marienplatz/scene_annotation.json",
+            "data/stage12_annotations/aerialmpt/pasing1R/scene_annotation.json"
+          ]
+        }
+      ],
+      "blockers": [
+        "derived_cache_found_but_not_counted_as_raw_verified_dataset",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing",
+        "official_source_url_missing_or_user_verification_required"
+      ],
+      "next_action": "provide/verify official dataset URL before any conversion claim"
+    },
+    {
+      "dataset_id": "stanford_drone_dataset",
+      "domain": "SDD",
+      "role": "already_converted_sdd_pixel_raw_frame_reference_not_external_repair",
+      "official_url": "https://cvgl.stanford.edu/projects/uav_data/",
+      "official_source_confirmed": true,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "technical_preflight_possible": true,
+      "conversion_ready": false,
+      "parseability_hint": "trajectory_like_files_present",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 180,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".jpg": 60,
+            ".mp4": 60,
+            ".txt": 60
+          },
+          "sample_files": [
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video3/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video4/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video5/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video2/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video7/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video0/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video8/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video1/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/gates/video6/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video3/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video2/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video0/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/little/video1/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/deathCircle/video3/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/deathCircle/video4/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/deathCircle/video2/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/deathCircle/video0/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/deathCircle/video1/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/quad/video3/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/quad/video2/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/quad/video0/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/quad/video1/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video3/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video4/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video5/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video2/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video0/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video1/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/bookstore/video6/video.mp4",
+            "/Users/yangyue/Downloads/World/external_data/StanfordDroneDataset/video/hyang/video3/video.mp4"
+          ]
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage21_sdd_world_state",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 61,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".json": 1,
+            ".npz": 60
+          },
+          "sample_files": [
+            "data/stage21_sdd_world_state/sdd_quad_video1.npz",
+            "data/stage21_sdd_world_state/sdd_coupa_video3.npz",
+            "data/stage21_sdd_world_state/sdd_gates_video8.npz",
+            "data/stage21_sdd_world_state/sdd_coupa_video2.npz",
+            "data/stage21_sdd_world_state/sdd_quad_video0.npz",
+            "data/stage21_sdd_world_state/sdd_quad_video2.npz",
+            "data/stage21_sdd_world_state/sdd_coupa_video0.npz",
+            "data/stage21_sdd_world_state/sdd_coupa_video1.npz",
+            "data/stage21_sdd_world_state/sdd_quad_video3.npz",
+            "data/stage21_sdd_world_state/sdd_nexus_video9.npz",
+            "data/stage21_sdd_world_state/sdd_nexus_video8.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video3.npz",
+            "data/stage21_sdd_world_state/sdd_deathCircle_video1.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video14.npz",
+            "data/stage21_sdd_world_state/sdd_deathCircle_video0.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video2.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video0.npz",
+            "data/stage21_sdd_world_state/sdd_deathCircle_video2.npz",
+            "data/stage21_sdd_world_state/sdd_deathCircle_video3.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video1.npz",
+            "data/stage21_sdd_world_state/sdd_nexus_video10.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video5.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video13.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video12.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video4.npz",
+            "data/stage21_sdd_world_state/sdd_nexus_video11.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video6.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video10.npz",
+            "data/stage21_sdd_world_state/sdd_deathCircle_video4.npz",
+            "data/stage21_sdd_world_state/sdd_hyang_video11.npz"
+          ]
+        },
+        {
+          "path": "data/stage24_sdd_fast_cache",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 250,
+          "cap_reached": true,
+          "suffix_counts": {
+            ".json": 1,
+            ".npy": 249
+          },
+          "sample_files": [
+            "data/stage24_sdd_fast_cache/manifest.json",
+            "data/stage24_sdd_fast_cache/gates/video3/frame_values.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/label_id.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/valid_velocity.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/generated.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/time_s.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/bbox_h.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/agent_id.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/valid.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/ay.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/frame.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/ax.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/frame_order.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/vy.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/vx.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/frame_stops.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/frame_starts.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/z.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/x.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/y.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/speed.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/heading.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/lost.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/valid_acceleration.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/bbox_w.npy",
+            "data/stage24_sdd_fast_cache/gates/video3/occluded.npy",
+            "data/stage24_sdd_fast_cache/gates/video4/frame_values.npy",
+            "data/stage24_sdd_fast_cache/gates/video4/label_id.npy",
+            "data/stage24_sdd_fast_cache/gates/video4/valid_velocity.npy",
+            "data/stage24_sdd_fast_cache/gates/video4/generated.npy"
+          ]
+        },
+        {
+          "path": "data/stage24_sdd_medium_index",
+          "exists": true,
+          "is_dir": true,
+          "is_file": false,
+          "file_count_capped": 12,
+          "cap_reached": false,
+          "suffix_counts": {
+            ".jsonl": 12
+          },
+          "sample_files": [
+            "data/stage24_sdd_medium_index/within_scene_train_index.jsonl",
+            "data/stage24_sdd_medium_index/cross_scene_test_baseline_eval.jsonl",
+            "data/stage24_sdd_medium_index/cross_scene_val_baseline_eval.jsonl",
+            "data/stage24_sdd_medium_index/cross_scene_train_baseline_eval.jsonl",
+            "data/stage24_sdd_medium_index/within_scene_test_baseline_eval.jsonl",
+            "data/stage24_sdd_medium_index/cross_scene_train_index.jsonl",
+            "data/stage24_sdd_medium_index/within_scene_val_index.jsonl",
+            "data/stage24_sdd_medium_index/within_scene_val_baseline_eval.jsonl",
+            "data/stage24_sdd_medium_index/within_scene_train_baseline_eval.jsonl",
+            "data/stage24_sdd_medium_index/cross_scene_test_index.jsonl",
+            "data/stage24_sdd_medium_index/cross_scene_val_index.jsonl",
+            "data/stage24_sdd_medium_index/within_scene_test_index.jsonl"
+          ]
+        }
+      ],
+      "blockers": [
+        "derived_cache_found_but_not_counted_as_raw_verified_dataset",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing",
+        "already_sdd_reference_not_new_external_source"
+      ],
+      "next_action": "keep_as_sdd_pixel_raw_frame_reference; do not count as new external source"
+    },
+    {
+      "dataset_id": "tgsim_diagnostic",
+      "domain": "traffic_diagnostic",
+      "role": "traffic_metric_time_diagnostic_only_not_pedestrian_official",
+      "official_url": "https://github.com/NextGen-Cities-Institute/TGSIM",
+      "official_source_confirmed": true,
+      "terms_confirmed": false,
+      "local_path_confirmed_by_user": false,
+      "source_identity_confirmed": false,
+      "raw_path_found": false,
+      "derived_cache_found": false,
+      "technical_preflight_possible": false,
+      "conversion_ready": false,
+      "parseability_hint": "missing_or_empty",
+      "raw_path_summaries": [
+        {
+          "path": "/Users/yangyue/Downloads/World/external_data/TGSIM",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        },
+        {
+          "path": "/Users/yangyue/Downloads/TGSIM",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        }
+      ],
+      "derived_path_summaries": [
+        {
+          "path": "data/stage20_world_state/tgsim",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        },
+        {
+          "path": "outputs/reports/tgsim_units.md",
+          "exists": false,
+          "is_dir": false,
+          "is_file": false,
+          "file_count_capped": 0,
+          "cap_reached": false,
+          "suffix_counts": {},
+          "sample_files": []
+        }
+      ],
+      "blockers": [
+        "raw_local_path_missing_or_empty",
+        "terms_allowed_use_or_acceptance_not_confirmed",
+        "user_confirmed_local_path_missing",
+        "source_identity_missing",
+        "traffic_diagnostic_only_not_pedestrian_official"
+      ],
+      "next_action": "keep_as_diagnostic_only; do not use as pedestrian topdown official benchmark"
+    }
+  ],
+  "time_geometry_candidates_by_domain": {
+    "ETH_UCY": [
+      "ETH_seq_eth",
+      "ETH_seq_hotel"
+    ],
+    "UCY": [
+      "UCY_zara01",
+      "UCY_zara02",
+      "UCY_zara03",
+      "UCY_students03",
+      "UCY_students01"
+    ]
+  },
+  "summary": {
+    "targets_checked": 7,
+    "raw_path_found_targets": 6,
+    "derived_cache_found_targets": 6,
+    "technical_preflight_possible_targets": 6,
+    "conversion_ready_targets": 0,
+    "conversion_ready_ids": [],
+    "user_action_required_targets": 7,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "raw_path_found_ids": [
+      "ucy_crowd_original",
+      "eth_biwi_original",
+      "trajnetplusplus_official",
+      "opentraj_toolkit",
+      "aerialmpt_or_other_topdown",
+      "stanford_drone_dataset"
+    ],
+    "derived_cache_found_ids": [
+      "ucy_crowd_original",
+      "eth_biwi_original",
+      "trajnetplusplus_official",
+      "opentraj_toolkit",
+      "aerialmpt_or_other_topdown",
+      "stanford_drone_dataset"
+    ]
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "global_t100_deployable_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ds_gate": {
+    "gates": {
+      "targets_checked": true,
+      "raw_path_scan_completed": true,
+      "derived_cache_not_counted_ready": true,
+      "legal_blockers_preserved": true,
+      "technical_preflight_separated": true,
+      "user_action_required_present": true,
+      "sdd_not_new_external": true,
+      "traffic_diagnostic_not_official": true,
+      "no_conversion_claim": true,
+      "no_evaluation_claim": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_ds_source_conversion_readiness_recheck_pass"
+  }
+}

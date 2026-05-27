@@ -4604,3 +4604,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Do not claim Stage5C execution.
 - Do not claim SMC readiness.
 <!-- STAGE42_DR_POST_DQ_PAPER_REFRESH:END -->
+
+<!-- STAGE42_DS_SOURCE_CONVERSION_READINESS_RECHECK:START -->
+## Stage42-DS Source Conversion Readiness Recheck
+
+- source: `fresh_local_path_scan_after_stage42_do`
+- role: separates local raw-path/derived-cache hints from legal conversion readiness.
+- gate: `13 / 13`; verdict `stage42_ds_source_conversion_readiness_recheck_pass`.
+- targets checked: `7`; raw-path found: `6`; derived-cache found: `6`.
+- technical preflight possible: `6`; conversion-ready targets: `0`.
+- No dataset was converted or evaluated in this step; legal/source blockers remain preserved.
+- report: `outputs/stage42_long_research/source_conversion_readiness_recheck_stage42.md`.
+<!-- STAGE42_DS_SOURCE_CONVERSION_READINESS_RECHECK:END -->
