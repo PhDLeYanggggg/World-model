@@ -2502,3 +2502,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conversion_ready_now: `0`; updated intake template `outputs/stage42_long_research/source_terms_confirmation_intake_template_stage42.json`.
 - boundary: user_confirmation is still blank; no download/conversion/training/evaluation; protected dataset-local/raw-frame 2.5D only.
 <!-- STAGE42_GC_PREFILL_INTAKE_BRIDGE:END -->
+
+<!-- STAGE42_GD_CALIBRATION_HINT_INTAKE_BRIDGE:START -->
+## Stage42-GD Calibration Hint -> Intake Bridge
+
+- source: `fresh_stage42_gd_calibration_hint_intake_bridge`
+- gate: `18 / 18`; verdict `stage42_gd_calibration_hint_intake_bridge_pass`.
+- role: adds DU metadata-only H/FPS/stride hints into the intake template as non-claim `calibration_prefill` leads.
+- rows with hints: `3`; metric/time subset hint rows `2`.
+- conversion_ready_now: `0`; metric/seconds claim allowed now `False` / `False`.
+- boundary: hints are not permission, not conversion readiness, and not global metric/seconds evidence; Stage5C/SMC remain false.
+<!-- STAGE42_GD_CALIBRATION_HINT_INTAKE_BRIDGE:END -->
