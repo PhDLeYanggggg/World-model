@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FD：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 仍被 validation 选回 teacher_alpha=0 的 FC-like 控制项，说明简单 FA teacher target blend 不能打破 accuracy/proximity Pareto。当前结论是：post-hoc repair 已接近 Pareto 边界，objective-level training 能提高精度，但 proximity safety 需要显式 safety-aware constraint / joint loss，而不是简单 teacher blend。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FE：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 被 validation 选回 teacher_alpha=0 的 FC-like 控制项；Stage42-FE constrained FC/safety composer 终于把 FC 高精度与 DI proximity safety 组合起来：all/t50/hard `26.41% / 23.15% / 24.81%`，near@0.05 `1.32%`，比 FC 低 `0.54pp` 且不劣于 DI。当前结论是：简单 teacher blend 不足，但 validation-only constrained FC→DI safety fallback 能打破 FC 的 proximity blocker，是新的 promotable protected source-level policy。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -5150,3 +5150,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:END -->
+
+<!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:START -->
+## Stage42-FE Constrained FC/Safety Composer
+
+- source: `fresh_stage42_constrained_fc_safety_composer`
+- role: validation-only constrained composer from high-accuracy Stage42-FC to DI/FA/FB safety fallbacks.
+- selected candidate: `{'mode': 'fc_to_safety', 'fallback': 'di', 'scope': 'row', 'threshold': 0.05, 'margin': 0.0025}`.
+- gate: `19 / 19`; verdict `stage42_fe_constrained_fc_safety_composer_pass_promotable`.
+- test all/t50/t100raw/hard/easy: `26.41%` / `23.15%` / `14.01%` / `24.81%` / `-31.06%`.
+- delta vs FC all/hard/near005: `0.04%` / `0.05%` / `-0.54%`.
+- delta vs DI all/hard/near005: `1.69%` / `0.92%` / `-0.06%`.
+- decision: `promote_stage42_fe_constrained_fc_safety_composer`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:END -->

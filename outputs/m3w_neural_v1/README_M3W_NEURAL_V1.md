@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FD: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, and FA safety-teacher target blending was selected away by validation rather than fixing the Pareto boundary.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FE: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, and the Stage42-FE constrained FC-to-DI safety fallback finally restored proximity safety while preserving FC-level all/t50/hard gains.
 
 Latest current-goal work summary requested by the user:
 
@@ -2166,3 +2166,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: `safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:END -->
+
+<!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:START -->
+## Stage42-FE Constrained FC/Safety Composer
+
+- source: `fresh_stage42_constrained_fc_safety_composer`
+- role: validation-only constrained composer from high-accuracy Stage42-FC to DI/FA/FB safety fallbacks.
+- selected candidate: `{'mode': 'fc_to_safety', 'fallback': 'di', 'scope': 'row', 'threshold': 0.05, 'margin': 0.0025}`.
+- gate: `19 / 19`; verdict `stage42_fe_constrained_fc_safety_composer_pass_promotable`.
+- test all/t50/t100raw/hard/easy: `26.41%` / `23.15%` / `14.01%` / `24.81%` / `-31.06%`.
+- delta vs FC all/hard/near005: `0.04%` / `0.05%` / `-0.54%`.
+- delta vs DI all/hard/near005: `1.69%` / `0.92%` / `-0.06%`.
+- decision: `promote_stage42_fe_constrained_fc_safety_composer`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:END -->

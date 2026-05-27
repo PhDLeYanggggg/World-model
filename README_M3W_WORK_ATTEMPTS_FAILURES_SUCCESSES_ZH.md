@@ -2,7 +2,7 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FD 结果。
+结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-FE 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
 ## 0. 一句话结论
@@ -18,7 +18,8 @@ Stage42-FA waypoint-wise repel 修复了 proximity，但 all/hard 低于 Stage42
 Stage42-FB 在 DI/FA 之间做 validation-only Pareto composer，near@0.05 进一步下降到 1.10%，但 all/hard 各损失约 0.07pp，因此是 safety-sensitive diagnostic，不是新 best deployable。
 Stage42-FC 把 proximity / group-interaction signal 放进 supervised training objective 后，all/t50/hard 分别高于 Stage42-DI/FB，但 near@0.05 比 Stage42-DI 差约 0.48pp，因此不 promoted。
 Stage42-FD 进一步把 FA waypoint-wise safety teacher 放进 train-only objective regularization，但 validation 选择回 teacher_alpha=0 的 FC-like 控制项；all/t50/hard 仍为正但略低于 FC，near@0.05 仍比 Stage42-DI 差约 0.48pp，因此不 promoted。
-这些结果的价值是负结果定位：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足以同步修复 proximity。下一步应做显式 safety-aware constraint / joint loss，而不是只改 composer threshold 或 teacher blend。
+Stage42-FE 用 validation-only constrained FC→DI safety fallback，把 FC 高精度和 DI proximity safety 组合起来：all/t50/hard 为 26.41% / 23.15% / 24.81%，near@0.05 为 1.32%，比 FC 低 0.54pp 且不劣于 DI，因此 promotable。
+这些结果的价值是负结果定位加正向修复：post-hoc repair 接近 Pareto 边界；objective-level training 能突破 all/hard；简单 safety-teacher target blend 不足；显式 constrained safety fallback 能修复 FC 的 proximity blocker。下一步应做 FE 的 bootstrap / runtime freeze / replay，以及检验它是否能替代或补充 Stage42-DI/CQ 作为 source-level protected policy。
 ```
 
 但是当前仍然不是：
@@ -46,7 +47,7 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41-42 protected policy family | 有 protected neural/full-waypoint/runtime evidence，但仍依赖 Stage37 / teacher safety floor。 |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | 用一部分 ADE 增益换 near-collision 安全修复。 |
 | Source-level full-waypoint policy | Stage42-DL/DQ/ES/ET group-consistency full-waypoint family | source/frame/horizon group-consistency 目标得到 fresh 支持；仍是 protected raw-frame 2.5D evidence。 |
-| Group-risk/adaptive/temporal/waypoint/Pareto/objective follow-up | Stage42-EU/EV/EW/EX/EY/EZ/FA/FB/FC | 证明 risk bucket、temporal/waypoint repel、DI/FA Pareto composer 都没有形成新的 accuracy+safety 双赢 deployable policy；FC 证明 objective-level training 可提高 all/t50/hard，但 proximity safety 未同步通过。 |
+| Group-risk/adaptive/temporal/waypoint/Pareto/objective follow-up | Stage42-EU/EV/EW/EX/EY/EZ/FA/FB/FC/FD/FE | 证明 risk bucket、temporal/waypoint repel、DI/FA Pareto composer、teacher blend 都不足；FE constrained FC→DI safety fallback 首次同时保留 FC all/t50/hard 并修复 proximity 到不劣于 DI。 |
 | Paper claim | 受限 claim | 可以写 protected dataset-local raw-frame 2.5D world-state candidate；不能写 true 3D / foundation / metric / seconds-level / Stage5C / SMC。 |
 
 ## 1. 永久边界
@@ -638,3 +639,17 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `safety_aware_objective_not_enough_keep_stage42_di_or_cq_floor`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FD_SAFETY_AWARE_JOINT_OBJECTIVE:END -->
+
+<!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:START -->
+## Stage42-FE Constrained FC/Safety Composer
+
+- source: `fresh_stage42_constrained_fc_safety_composer`
+- role: validation-only constrained composer from high-accuracy Stage42-FC to DI/FA/FB safety fallbacks.
+- selected candidate: `{'mode': 'fc_to_safety', 'fallback': 'di', 'scope': 'row', 'threshold': 0.05, 'margin': 0.0025}`.
+- gate: `19 / 19`; verdict `stage42_fe_constrained_fc_safety_composer_pass_promotable`.
+- test all/t50/t100raw/hard/easy: `26.41%` / `23.15%` / `14.01%` / `24.81%` / `-31.06%`.
+- delta vs FC all/hard/near005: `0.04%` / `0.05%` / `-0.54%`.
+- delta vs DI all/hard/near005: `1.69%` / `0.92%` / `-0.06%`.
+- decision: `promote_stage42_fe_constrained_fc_safety_composer`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FE_CONSTRAINED_FC_SAFETY_COMPOSER:END -->
