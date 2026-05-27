@@ -236,3 +236,14 @@ Stage42 can proceed to external validation and full-waypoint dynamics from exist
 - metric/time subset hint targets: `2`; legal conversion ready targets: `0`.
 - H/FPS/stride hints remain hints until source/legal confirmation and no-leakage conversion are complete.
 <!-- STAGE42_DU_RAW_SOURCE_TIME_GEOMETRY_HINT_AUDIT:END -->
+
+<!-- STAGE42_DV_CALIBRATION_CANDIDATE_MANIFEST:START -->
+## Stage42-DV Calibration Candidate Manifest
+
+- source: `fresh_synthesis_from_stage42_du_bn`
+- role: ranks raw-source calibration candidates; no conversion, no evaluation, no metric/seconds claim.
+- gate: `13 / 13`; verdict `stage42_dv_calibration_candidate_manifest_pass`.
+- source-specific candidate targets: `2`; time/stride candidate targets: `1`.
+- conversion-ready targets: `0`; converted/evaluated now: `0` / `0`.
+- Candidate status remains blocked by user-confirmed terms/source/path/version and no-leakage conversion.
+<!-- STAGE42_DV_CALIBRATION_CANDIDATE_MANIFEST:END -->

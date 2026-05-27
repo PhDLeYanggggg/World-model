@@ -1,0 +1,223 @@
+{
+  "source": "fresh_synthesis_from_stage42_du_bn",
+  "stage": "Stage42-DV",
+  "generated_at_utc": "2026-05-27T00:33:47.940416+00:00",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-DV 是 calibration candidate manifest：合并 raw H/FPS/stride hints 与 source-specific calibration evidence。",
+    "本步骤不转换数据、不训练、不评估，只给出下一步 terms/source/time/geometry closure 优先级。",
+    "H/FPS/stride/source-specific evidence 不能写成全局 metric 或 seconds-level claim。",
+    "source-specific calibrated subset 也必须等 legal terms、source identity、path/version 和 no-leakage conversion 完成后才能声明。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon；dataset-local/raw-frame 不能写成 global metric/seconds。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "stage42_du_report": "outputs/stage42_long_research/raw_source_time_geometry_hint_audit_stage42.json",
+  "stage42_du_verdict": "stage42_du_raw_source_time_geometry_hint_audit_pass",
+  "stage42_bn_report": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+  "stage42_bn_verdict": "stage42_bn_source_time_geometry_calibration_pass_with_global_claim_blocked",
+  "candidate_rows": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "candidate_class": "source_specific_metric_time_candidate_after_terms",
+      "priority_score": 95,
+      "bn_source_specific_candidates": [
+        "UCY_students03",
+        "UCY_zara01",
+        "UCY_zara02",
+        "UCY_zara03"
+      ],
+      "h_matrix_hints": 7,
+      "time_hints": 1,
+      "frame_stride_hints": 9,
+      "metric_time_subset_hint": true,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "confirm UCY official terms/credit requirements, source identity, local path/version, and H.txt convention before conversion",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "candidate_class": "source_specific_metric_time_candidate_after_terms",
+      "priority_score": 95,
+      "bn_source_specific_candidates": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel"
+      ],
+      "h_matrix_hints": 2,
+      "time_hints": 2,
+      "frame_stride_hints": 4,
+      "metric_time_subset_hint": true,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "confirm ETH/BIWI terms, source identity, local path/version, annotation fps, and meter-coordinate convention before conversion",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed"
+      ]
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "candidate_class": "time_stride_candidate_dataset_local_only",
+      "priority_score": 55,
+      "bn_source_specific_candidates": [],
+      "h_matrix_hints": 0,
+      "time_hints": 1,
+      "frame_stride_hints": 97,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "confirm TrajNet++ official terms, train/val/test split license, and ndjson fps/coordinate convention before conversion",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed",
+        "homography_or_coordinate_transform_missing"
+      ]
+    },
+    {
+      "dataset_id": "stanford_drone_dataset",
+      "domain": "SDD",
+      "candidate_class": "reference_only_not_new_external",
+      "priority_score": 20,
+      "bn_source_specific_candidates": [],
+      "h_matrix_hints": 0,
+      "time_hints": 0,
+      "frame_stride_hints": 57,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "keep SDD as already converted pixel raw-frame reference; do not count as new external metric/time source",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed",
+        "homography_or_coordinate_transform_missing",
+        "fps_or_annotation_timestep_missing",
+        "already_sdd_reference_not_external_expansion"
+      ]
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "candidate_class": "not_calibration_candidate_now",
+      "priority_score": 10,
+      "bn_source_specific_candidates": [],
+      "h_matrix_hints": 0,
+      "time_hints": 0,
+      "frame_stride_hints": 0,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "confirm OpenTraj toolkit role as loader/mirror only; do not treat toolkit as dataset license by itself",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed",
+        "homography_or_coordinate_transform_missing",
+        "fps_or_annotation_timestep_missing"
+      ]
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "candidate_class": "not_calibration_candidate_now",
+      "priority_score": 10,
+      "bn_source_specific_candidates": [],
+      "h_matrix_hints": 0,
+      "time_hints": 0,
+      "frame_stride_hints": 0,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "provide official URL, terms, and raw data identity before conversion",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed",
+        "homography_or_coordinate_transform_missing",
+        "fps_or_annotation_timestep_missing"
+      ]
+    },
+    {
+      "dataset_id": "tgsim_diagnostic",
+      "domain": "traffic_diagnostic",
+      "candidate_class": "diagnostic_only_missing_or_traffic",
+      "priority_score": 0,
+      "bn_source_specific_candidates": [],
+      "h_matrix_hints": 0,
+      "time_hints": 0,
+      "frame_stride_hints": 0,
+      "metric_time_subset_hint": false,
+      "legal_conversion_ready": false,
+      "conversion_allowed_now": false,
+      "evaluation_allowed_now": false,
+      "global_metric_or_seconds_claim_allowed": false,
+      "next_action": "diagnostic only; do not use as pedestrian top-down official benchmark",
+      "blockers": [
+        "terms/source_identity/path_version_not_confirmed",
+        "homography_or_coordinate_transform_missing",
+        "fps_or_annotation_timestep_missing",
+        "traffic_diagnostic_not_pedestrian_topdown_official"
+      ]
+    }
+  ],
+  "summary": {
+    "targets_checked": 7,
+    "source_specific_candidate_targets": 2,
+    "time_stride_candidate_targets": 1,
+    "stride_only_candidate_targets": 0,
+    "conversion_ready_targets": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "recommended_first_targets": [
+      "ucy_crowd_original",
+      "eth_biwi_original"
+    ]
+  },
+  "user_action_required_written": true,
+  "data_calibration_updated": true,
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "source_specific_candidate_claim_allowed_after_terms_only": true,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_dv_gate": {
+    "gates": {
+      "du_input_present": true,
+      "bn_input_present": true,
+      "candidate_manifest_written": true,
+      "source_specific_candidates_ranked": true,
+      "time_stride_candidates_ranked": true,
+      "legal_blockers_preserved": true,
+      "no_conversion_claim": true,
+      "no_evaluation_claim": true,
+      "global_metric_seconds_blocked": true,
+      "user_action_required_written": true,
+      "data_calibration_updated": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_dv_calibration_candidate_manifest_pass"
+  }
+}

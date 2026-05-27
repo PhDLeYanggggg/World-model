@@ -441,3 +441,14 @@ SMC 是否启用：否
 - metric/time subset hint targets: `2`; legal conversion ready targets: `0`.
 - report: `outputs/stage42_long_research/raw_source_time_geometry_hint_audit_stage42.md`.
 <!-- STAGE42_DU_RAW_SOURCE_TIME_GEOMETRY_HINT_AUDIT:END -->
+
+<!-- STAGE42_DV_CALIBRATION_CANDIDATE_MANIFEST:START -->
+## Stage42-DV Calibration Candidate Manifest
+
+- source: `fresh_synthesis_from_stage42_du_bn`
+- role: ranks source-specific calibration candidates from raw H/FPS/stride hints; no conversion/evaluation.
+- gate: `13 / 13`; verdict `stage42_dv_calibration_candidate_manifest_pass`.
+- source-specific candidate targets: `2`; time/stride candidate targets: `1`.
+- conversion-ready targets: `0`; global metric/seconds claim remains `False`.
+- report: `outputs/stage42_long_research/calibration_candidate_manifest_stage42.md`.
+<!-- STAGE42_DV_CALIBRATION_CANDIDATE_MANIFEST:END -->
