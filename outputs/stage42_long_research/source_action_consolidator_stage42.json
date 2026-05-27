@@ -1,0 +1,486 @@
+{
+  "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+  "stage": "Stage42-FW source action consolidator",
+  "generated_at_utc": "2026-05-27T10:28:52.617366+00:00",
+  "git_commit": "5abdecf",
+  "input_hash": "a9b92dd389f087734c544a182d7da68485332107d3c9a89df080bb42b282a7c2",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-FW consolidates existing source/legal/horizon blockers; it does not download, convert, train, or evaluate.",
+    "Local paths, parseable files, and technical dry-runs are not legal conversion readiness.",
+    "Every result remains labeled as fresh_run, cached_verified, or not_run.",
+    "future endpoints / waypoints can only be supervised/evaluation labels, never inference inputs.",
+    "No central velocity, no test endpoint goals, and no test metric threshold tuning are used.",
+    "t+50 / t+100 remain raw-frame horizons, not seconds-level claims.",
+    "dataset-local/raw-frame results are not global metric claims.",
+    "Stage5C latent generative is not executed.",
+    "SMC is not enabled."
+  ],
+  "input_status": {
+    "source_terms_gap": {
+      "path": "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_rerun_cg_plus_ed_source_terms_gap_audit",
+      "generated_at_utc": "2026-05-27T02:00:35.053179+00:00",
+      "verdict": "stage42_ef_source_terms_gap_audit_pass"
+    },
+    "source_closure": {
+      "path": "outputs/stage42_long_research/source_support_closure_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_dd_source_support_closure_audit",
+      "generated_at_utc": "2026-05-26T21:21:47.999405+00:00",
+      "verdict": "stage42_dd_source_support_closure_audit_pass_open_blockers"
+    },
+    "h100_queue": {
+      "path": "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_h100_source_support_repair_queue",
+      "generated_at_utc": "2026-05-27T09:36:49.592560+00:00",
+      "verdict": "stage42_fq_h100_source_support_repair_queue_pass"
+    },
+    "unified_queue": {
+      "path": "outputs/stage42_long_research/unified_guarded_conversion_queue_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_unified_guarded_conversion_queue",
+      "generated_at_utc": "2026-05-27T10:01:18.102738+00:00",
+      "verdict": "stage42_ft_unified_guarded_conversion_queue_pass"
+    },
+    "official_links": {
+      "path": "outputs/stage42_long_research/official_source_link_audit_stage42.json",
+      "exists": true,
+      "source": "fresh_stage42_official_source_link_audit",
+      "generated_at_utc": "2026-05-27T02:50:20.490298+00:00",
+      "verdict": "stage42_em_official_source_link_audit_pass"
+    }
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "evaluation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "consolidated_actions": [
+    {
+      "action_id": "FW-TERMS-ucy_crowd_original",
+      "target": "ucy_crowd_original",
+      "domain": "UCY",
+      "category": "legal_terms_and_local_path",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 113,
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "blocking_claims": [
+        "official converted/evaluated external source",
+        "source-specific metric/time subset if calibration later passes",
+        "global t100 deployable claim"
+      ],
+      "missing": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "estimated_t50_rows_after_unblock": 9554,
+      "estimated_t100_rows_after_unblock": 5605,
+      "evidence_files": [
+        "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+        "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+      ],
+      "next_user_action": "Confirm official terms and fill `ucy_crowd_original` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+      ],
+      "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+    },
+    {
+      "action_id": "FW-H100-TrajNet|100",
+      "target": "TrajNet|100",
+      "domain": "TrajNet",
+      "category": "h100_weak_horizon_source_support",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 98,
+      "official_url": "",
+      "blocking_claims": [
+        "uniform horizon robustness",
+        "global t100 deployable claim",
+        "h100 raw-frame positive-safe claim for this source/horizon"
+      ],
+      "missing": [
+        "official longer TrajNet-compatible raw source",
+        "timing/geometry evidence",
+        "terms confirmation",
+        "local path"
+      ],
+      "target_bucket": "students",
+      "candidate_count": 0,
+      "top_candidate_paths": [],
+      "evidence_files": [
+        "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json"
+      ],
+      "next_user_action": "Provide or legally confirm a longer official raw source for `TrajNet|100`; current local TrajNet snippets cannot support h100.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        ".venv-pytorch/bin/python run_stage42_h100_weak_horizon_source_support_audit.py"
+      ],
+      "claim_guard": "Candidate paths are inventory only; do not convert/evaluate or claim repair until legal terms, conversion, no-leakage, and source-CV pass."
+    },
+    {
+      "action_id": "FW-DOMAIN-TrajNet",
+      "target": "TrajNet",
+      "domain": "TrajNet",
+      "category": "domain_closure",
+      "result_source": "cached_verified",
+      "status": "not_run_open_blocker",
+      "priority": 97,
+      "official_url": "",
+      "blocking_claims": [
+        "domain closed for source/time support",
+        "metric/seconds subset claim if applicable",
+        "global source-level robustness claim"
+      ],
+      "missing": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=1",
+        "source_specific_metric_time_calibration_missing",
+        "legal_terms_blocked_targets=trajnetplusplus_official"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [],
+        "local_t100_schema_source_cv_evaluated": false,
+        "local_t100_schema_positive_vs_constant_velocity": false,
+        "preflight_targets_with_t50_files": 1,
+        "preflight_targets_with_t100_files": 1
+      },
+      "evidence_files": [
+        "outputs/stage42_long_research/source_support_closure_audit_stage42.json"
+      ],
+      "next_user_action": "provide/confirm legal TrajNet++ or TrajNet-compatible long-track source with timing/geometry evidence, then rerun conversion, no-leakage, and train-only source-CV",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_support_closure_audit.py"
+      ],
+      "claim_guard": "Domain remains not_closed until this action passes with no leakage and no terms blocker."
+    },
+    {
+      "action_id": "FW-DOMAIN-UCY",
+      "target": "UCY",
+      "domain": "UCY",
+      "category": "domain_closure",
+      "result_source": "cached_verified",
+      "status": "not_run_open_blocker",
+      "priority": 97,
+      "official_url": "",
+      "blocking_claims": [
+        "domain closed for source/time support",
+        "metric/seconds subset claim if applicable",
+        "global source-level robustness claim"
+      ],
+      "missing": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=1",
+        "legal_terms_blocked_targets=ucy_crowd_original"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [
+          "UCY_zara01",
+          "UCY_zara02",
+          "UCY_zara03",
+          "UCY_students03",
+          "UCY_students01"
+        ],
+        "local_t100_schema_source_cv_evaluated": true,
+        "local_t100_schema_positive_vs_constant_velocity": true,
+        "preflight_targets_with_t50_files": 2,
+        "preflight_targets_with_t100_files": 2
+      },
+      "evidence_files": [
+        "outputs/stage42_long_research/source_support_closure_audit_stage42.json"
+      ],
+      "next_user_action": "confirm UCY original terms/source identity and add one independent t100-capable UCY source or source split before claiming stable t100",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_support_closure_audit.py"
+      ],
+      "claim_guard": "Domain remains not_closed until this action passes with no leakage and no terms blocker."
+    },
+    {
+      "action_id": "FW-H100-UCY|100",
+      "target": "UCY|100",
+      "domain": "UCY",
+      "category": "h100_weak_horizon_source_support",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 94,
+      "official_url": "",
+      "blocking_claims": [
+        "uniform horizon robustness",
+        "global t100 deployable claim",
+        "h100 raw-frame positive-safe claim for this source/horizon"
+      ],
+      "missing": [
+        "terms/license confirmation",
+        "guarded conversion",
+        "no-leakage audit",
+        "train-only source-CV"
+      ],
+      "target_bucket": "zara",
+      "candidate_count": 6,
+      "top_candidate_paths": [
+        "UCY/zara02/obsmat.txt",
+        "UCY/zara01/obsmat.txt",
+        "UCY/students01/students001.txt",
+        "UCY/students03/obsmat.txt",
+        "UCY/students03/obsmat_px.txt",
+        "UCY/students03/students003.txt"
+      ],
+      "evidence_files": [
+        "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json"
+      ],
+      "next_user_action": "Confirm terms/license for the listed local candidates for `UCY|100`, then run guarded conversion and source-CV.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+        ".venv-pytorch/bin/python run_stage42_h100_weak_horizon_source_support_audit.py"
+      ],
+      "claim_guard": "Candidate paths are inventory only; do not convert/evaluate or claim repair until legal terms, conversion, no-leakage, and source-CV pass."
+    },
+    {
+      "action_id": "FW-DOMAIN-ETH_UCY",
+      "target": "ETH_UCY",
+      "domain": "ETH_UCY",
+      "category": "domain_closure",
+      "result_source": "cached_verified",
+      "status": "not_run_open_blocker",
+      "priority": 90,
+      "official_url": "",
+      "blocking_claims": [
+        "domain closed for source/time support",
+        "metric/seconds subset claim if applicable",
+        "global source-level robustness claim"
+      ],
+      "missing": [
+        "source_terms_confirmation_or_conversion_readiness_missing",
+        "train_only_t100_source_cv_support_missing",
+        "additional_t100_sources_needed=2",
+        "legal_terms_blocked_targets=eth_biwi_original"
+      ],
+      "partial_support": {
+        "source_specific_metric_time_sources": [
+          "ETH_seq_eth",
+          "ETH_seq_hotel"
+        ],
+        "local_t100_schema_source_cv_evaluated": true,
+        "local_t100_schema_positive_vs_constant_velocity": false,
+        "preflight_targets_with_t50_files": 2,
+        "preflight_targets_with_t100_files": 2
+      },
+      "evidence_files": [
+        "outputs/stage42_long_research/source_support_closure_audit_stage42.json"
+      ],
+      "next_user_action": "confirm ETH/BIWI or ETH-Person source terms and add enough independent t100-capable ETH_UCY train sources, then rerun source-CV without test tuning",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_support_closure_audit.py"
+      ],
+      "claim_guard": "Domain remains not_closed until this action passes with no leakage and no terms blocker."
+    },
+    {
+      "action_id": "FW-TERMS-trajnetplusplus_official",
+      "target": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "category": "legal_terms_and_local_path",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 60,
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "blocking_claims": [
+        "official converted/evaluated external source",
+        "source-specific metric/time subset if calibration later passes",
+        "global t100 deployable claim"
+      ],
+      "missing": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "estimated_t50_rows_after_unblock": 0,
+      "estimated_t100_rows_after_unblock": 0,
+      "evidence_files": [
+        "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+        "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+      ],
+      "next_user_action": "Confirm official terms and fill `trajnetplusplus_official` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+      ],
+      "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+    },
+    {
+      "action_id": "FW-TERMS-eth_biwi_original",
+      "target": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "category": "legal_terms_and_local_path",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 59,
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "blocking_claims": [
+        "official converted/evaluated external source",
+        "source-specific metric/time subset if calibration later passes",
+        "global t100 deployable claim"
+      ],
+      "missing": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "estimated_t50_rows_after_unblock": 506,
+      "estimated_t100_rows_after_unblock": 91,
+      "evidence_files": [
+        "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+        "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+      ],
+      "next_user_action": "Confirm official terms and fill `eth_biwi_original` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+      ],
+      "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+    },
+    {
+      "action_id": "FW-TERMS-aerialmpt_or_other_topdown",
+      "target": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "category": "legal_terms_and_local_path",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 50,
+      "official_url": "user_or_web_verified_official_url_required",
+      "blocking_claims": [
+        "official converted/evaluated external source",
+        "source-specific metric/time subset if calibration later passes",
+        "global t100 deployable claim"
+      ],
+      "missing": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "estimated_t50_rows_after_unblock": 0,
+      "estimated_t100_rows_after_unblock": 0,
+      "evidence_files": [
+        "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+        "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+      ],
+      "next_user_action": "Confirm official terms and fill `aerialmpt_or_other_topdown` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+      ],
+      "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+    },
+    {
+      "action_id": "FW-TERMS-opentraj_toolkit",
+      "target": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "category": "legal_terms_and_local_path",
+      "result_source": "cached_verified",
+      "status": "not_run_user_action_required",
+      "priority": 50,
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "blocking_claims": [
+        "official converted/evaluated external source",
+        "source-specific metric/time subset if calibration later passes",
+        "global t100 deployable claim"
+      ],
+      "missing": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "estimated_t50_rows_after_unblock": 0,
+      "estimated_t100_rows_after_unblock": 0,
+      "evidence_files": [
+        "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+        "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+      ],
+      "next_user_action": "Confirm official terms and fill `opentraj_toolkit` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+      "next_commands_after_user_confirmation": [
+        ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+        ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+        ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+      ],
+      "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+    "actions_total": 10,
+    "categories": {
+      "legal_terms_and_local_path": 5,
+      "h100_weak_horizon_source_support": 2,
+      "domain_closure": 3
+    },
+    "top_actions": [
+      "FW-TERMS-ucy_crowd_original",
+      "FW-H100-TrajNet|100",
+      "FW-DOMAIN-TrajNet",
+      "FW-DOMAIN-UCY",
+      "FW-H100-UCY|100"
+    ],
+    "conversion_ready_now": 0,
+    "blocked_action_count": 11,
+    "downloads_or_conversions_executed": 0,
+    "evaluations_executed": 0,
+    "claim_ready_after_this_stage": false,
+    "highest_priority_blocker": "FW-TERMS-ucy_crowd_original"
+  },
+  "user_action_required_written": true,
+  "stage42_fw_gate": {
+    "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+    "gates": {
+      "input_terms_gap_loaded": true,
+      "input_source_closure_loaded": true,
+      "input_h100_queue_loaded": true,
+      "input_unified_queue_loaded": true,
+      "actions_consolidated": true,
+      "ucy_terms_action_present": true,
+      "ucy_h100_action_present": true,
+      "trajnet_h100_action_present": true,
+      "conversion_queue_empty_preserved": true,
+      "no_action_marked_complete": true,
+      "all_actions_have_claim_guards": true,
+      "user_action_written": true,
+      "no_download_conversion_eval": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage42_fw_source_action_consolidator_pass"
+  }
+}

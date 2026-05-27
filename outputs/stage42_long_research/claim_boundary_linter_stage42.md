@@ -1,12 +1,12 @@
 # Stage42-FV Claim Boundary / No-Overclaim Linter
 
 - source: `fresh_stage42_claim_boundary_linter_from_paper_package_and_fu`
-- generated_at_utc: `2026-05-27T10:20:32.250517+00:00`
+- generated_at_utc: `2026-05-27T10:28:48.382554+00:00`
 - gate: `15 / 15`
 - verdict: `stage42_fv_claim_boundary_linter_pass`
 - files_scanned: `15`
 - violations_total: `0`
-- input_hash: `f19a46f0792072c41b88de62e1ef5110994ca134d263c48bec95b368cf2861f4`
+- input_hash: `e3a5095e20afdfef4a1a9c107d3c9bed9f1f754039570ebe32248551a85150ff`
 
 ## Claim Boundary
 

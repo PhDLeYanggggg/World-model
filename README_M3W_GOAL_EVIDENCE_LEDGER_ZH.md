@@ -530,3 +530,16 @@ SMC ready：否
 - blocked as independent main claims: JEPA, Transformer, scene/goal, neighbor/interaction.
 - verification commands: `{'runner': '.venv-pytorch/bin/python run_stage42_claim_boundary_linter.py -> 15/15', 'focused_pytest': '.venv-pytorch/bin/python -m pytest tests/test_stage42_claim_boundary_linter.py tests/test_stage42_module_contribution_ledger.py -> 9 passed', 'full_pytest': '.venv-pytorch/bin/python -m pytest tests -> 857 passed'}`.
 <!-- STAGE42_FV_CLAIM_BOUNDARY_LINTER:END -->
+
+<!-- STAGE42_FW_SOURCE_ACTION_CONSOLIDATOR:START -->
+## Stage42-FW Source Action Consolidator
+
+- source: `fresh_stage42_source_action_consolidator_from_existing_blockers`
+- gate: `16 / 16`; verdict `stage42_fw_source_action_consolidator_pass`
+- consolidated actions: `10`; categories `{'legal_terms_and_local_path': 5, 'h100_weak_horizon_source_support': 2, 'domain_closure': 3}`
+- top actions: `['FW-TERMS-ucy_crowd_original', 'FW-H100-TrajNet|100', 'FW-DOMAIN-TrajNet', 'FW-DOMAIN-UCY', 'FW-H100-UCY|100']`
+- conversion_ready_now: `0`; blocked_action_count: `11`
+- This is a source/legal/horizon action router only: no download, conversion, training, evaluation, metric/seconds claim, Stage5C execution, or SMC.
+- Highest-value path remains UCY terms/path confirmation plus guarded conversion/no-leakage/source-CV; TrajNet h100 needs a longer legal source because local snippets are too short.
+- Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; not true 3D, not foundation, not metric/seconds-level.
+<!-- STAGE42_FW_SOURCE_ACTION_CONSOLIDATOR:END -->
