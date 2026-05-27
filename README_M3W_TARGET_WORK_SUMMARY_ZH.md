@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE 证据刷新。
-最近完整测试记录：Stage42-EE 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`705 passed in 32.22s`。
+结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF 证据刷新。
+最近完整测试记录：Stage42-EF 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`707 passed in 32.55s`。
 
 这份 README 是给人的总账。它回答：在 M3W 这个长期目标里到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、现在模型大概是什么质量，以及哪些结论仍然禁止写。
 
@@ -583,3 +583,14 @@ SMC 是否启用：否
 - material_context_contribution: `False`; decision `context_switchability_materiality_blocked`.
 - boundary: current context switchability has micro-deltas only, so scene/goal/neighbor/interaction main claims remain blocked under this protocol.
 <!-- STAGE42_EE_CONTEXT_SWITCHABILITY_MATERIALITY:END -->
+
+<!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:START -->
+## Stage42-EF Source Terms Gap Audit
+
+- source: `fresh_rerun_cg_plus_ed_source_terms_gap_audit`
+- role: reruns source terms validator and merges it with ED technical-after-terms potential.
+- gate: `13 / 13`; verdict `stage42_ef_source_terms_gap_audit_pass`.
+- conversion_ready_now: `0`; converted/evaluated now `0` / `0`.
+- top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; estimated t50/t100 after terms `10060` / `5696`.
+- boundary: no legal conversion, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:END -->

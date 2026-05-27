@@ -1,0 +1,353 @@
+{
+  "source": "fresh_rerun_cg_plus_ed_source_terms_gap_audit",
+  "stage": "Stage42-EF",
+  "generated_at_utc": "2026-05-27T02:00:35.053179+00:00",
+  "git_commit": "cad81ce",
+  "input_hash": "d5067cf46f72dd51089824ce381160718544740c275763ed45ed6099345bd4d6",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EF reruns the source terms validator and merges it with Stage42-ED technical-after-terms potential.",
+    "本阶段不下载、不转换、不训练、不评估，只生成 legal/source/time blocker closure checklist。",
+    "local path、parseability、technical dry-run 都不等于 legal conversion readiness。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_reports": {
+    "stage42_cg_gate": {
+      "source": "fresh_stage42_cg_source_terms_confirmation_validator",
+      "gates": {
+        "cf_input_verified": true,
+        "confirmation_template_loaded": true,
+        "all_targets_validated": true,
+        "readiness_manifest_written": true,
+        "empty_template_blocks_conversion": true,
+        "no_conversion_claim": true,
+        "no_evaluation_claim": true,
+        "user_action_written": true,
+        "no_metric_seconds_overclaim": true,
+        "stage5c_false": true,
+        "smc_false": true
+      },
+      "passed": 11,
+      "total": 11,
+      "verdict": "stage42_cg_source_terms_confirmation_validator_pass"
+    },
+    "stage42_ed_gate": {
+      "gates": {
+        "cg_input_passed": true,
+        "dw_input_passed": true,
+        "do_input_passed": true,
+        "ds_input_passed": true,
+        "action_rows_written": true,
+        "ucy_priority_present": true,
+        "eth_priority_present": true,
+        "technical_ready_after_terms_recorded": true,
+        "t50_t100_after_terms_recorded": true,
+        "legal_blocker_preserved": true,
+        "no_conversion_or_eval_claim": true,
+        "user_action_written": true,
+        "no_metric_seconds_overclaim": true,
+        "stage5c_false": true,
+        "smc_false": true
+      },
+      "passed": 15,
+      "total": 15,
+      "verdict": "stage42_ed_source_conversion_unblocker_pass"
+    }
+  },
+  "gap_rows": [
+    {
+      "dataset_id": "ucy_crowd_original",
+      "domain": "UCY",
+      "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "conversion_ready_now": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "missing_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "technical_ready_source_ids_after_terms": [
+        "UCY_students03",
+        "UCY_zara01",
+        "UCY_zara02"
+      ],
+      "technical_ready_source_count_after_terms": 3,
+      "estimated_t50_windows_after_terms": 9554,
+      "estimated_t100_windows_after_terms": 5605,
+      "source_cv_after_terms": true,
+      "purpose": "source-specific metric/time and source-CV repair",
+      "blocker_class": "local_path_and_terms_required",
+      "unlock_score": 18159,
+      "next_command_after_confirmation": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+      "then_required_future_stage": "guarded source conversion + no-leakage + source-CV evaluation; Stage42-EF does not convert"
+    },
+    {
+      "dataset_id": "eth_biwi_original",
+      "domain": "ETH_UCY",
+      "official_url": "https://vision.ee.ethz.ch/datsets.html",
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "conversion_ready_now": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "missing_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "technical_ready_source_ids_after_terms": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel"
+      ],
+      "technical_ready_source_count_after_terms": 2,
+      "estimated_t50_windows_after_terms": 506,
+      "estimated_t100_windows_after_terms": 91,
+      "source_cv_after_terms": true,
+      "purpose": "source-specific metric/time and source-CV repair",
+      "blocker_class": "local_path_and_terms_required",
+      "unlock_score": 2597,
+      "next_command_after_confirmation": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+      "then_required_future_stage": "guarded source conversion + no-leakage + source-CV evaluation; Stage42-EF does not convert"
+    },
+    {
+      "dataset_id": "aerialmpt_or_other_topdown",
+      "domain": "other_topdown",
+      "official_url": "user_or_web_verified_official_url_required",
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "conversion_ready_now": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "local_path_missing",
+        "schema_not_parseable",
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "missing_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "technical_ready_source_ids_after_terms": [],
+      "technical_ready_source_count_after_terms": 0,
+      "estimated_t50_windows_after_terms": 0,
+      "estimated_t100_windows_after_terms": 0,
+      "source_cv_after_terms": false,
+      "purpose": "source-diversity acquisition or identity repair",
+      "blocker_class": "new_official_source_required",
+      "unlock_score": 0,
+      "next_command_after_confirmation": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+      "then_required_future_stage": "guarded source conversion + no-leakage + source-CV evaluation; Stage42-EF does not convert"
+    },
+    {
+      "dataset_id": "opentraj_toolkit",
+      "domain": "OpenTraj",
+      "official_url": "https://github.com/crowdbotp/OpenTraj",
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "conversion_ready_now": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "no_independent_t50_candidate"
+      ],
+      "missing_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "technical_ready_source_ids_after_terms": [],
+      "technical_ready_source_count_after_terms": 0,
+      "estimated_t50_windows_after_terms": 0,
+      "estimated_t100_windows_after_terms": 0,
+      "source_cv_after_terms": false,
+      "purpose": "source-diversity acquisition or identity repair",
+      "blocker_class": "toolkit_not_independent_source",
+      "unlock_score": 0,
+      "next_command_after_confirmation": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+      "then_required_future_stage": "guarded source conversion + no-leakage + source-CV evaluation; Stage42-EF does not convert"
+    },
+    {
+      "dataset_id": "trajnetplusplus_official",
+      "domain": "TrajNet",
+      "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+      "raw_path_found": true,
+      "derived_cache_found": true,
+      "conversion_ready_now": false,
+      "terms_accepted_by_user": false,
+      "confirmation_blockers": [
+        "terms_not_accepted",
+        "terms_acceptance_date_missing",
+        "allowed_use_missing",
+        "local_path_confirmation_missing",
+        "source_identity_missing"
+      ],
+      "cf_blockers": [
+        "manual_terms_or_application_required",
+        "no_independent_t50_candidate"
+      ],
+      "missing_confirmation_fields": [
+        "terms_accepted_by_user",
+        "terms_acceptance_date",
+        "allowed_use",
+        "local_path",
+        "source_identity"
+      ],
+      "technical_ready_source_ids_after_terms": [],
+      "technical_ready_source_count_after_terms": 0,
+      "estimated_t50_windows_after_terms": 0,
+      "estimated_t100_windows_after_terms": 0,
+      "source_cv_after_terms": false,
+      "purpose": "source-diversity acquisition or identity repair",
+      "blocker_class": "local_path_and_terms_required",
+      "unlock_score": 0,
+      "next_command_after_confirmation": ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+      "then_required_future_stage": "guarded source conversion + no-leakage + source-CV evaluation; Stage42-EF does not convert"
+    }
+  ],
+  "summary": {
+    "source": "fresh_rerun_cg_plus_ed_source_terms_gap_audit",
+    "targets": 5,
+    "cg_terms_accepted_targets": 0,
+    "cg_conversion_ready_targets": 0,
+    "ed_technical_ready_after_terms_targets": 2,
+    "conversion_ready_now": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "user_action_required_targets": 5,
+    "estimated_t50_windows_after_terms": 10060,
+    "estimated_t100_windows_after_terms": 5696,
+    "technical_ready_source_count_after_terms": 5,
+    "top_unblock_targets": [
+      "ucy_crowd_original",
+      "eth_biwi_original",
+      "aerialmpt_or_other_topdown"
+    ],
+    "top_unblock_actions": [
+      {
+        "dataset_id": "ucy_crowd_original",
+        "domain": "UCY",
+        "missing_confirmation_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "allowed_use",
+          "local_path",
+          "source_identity"
+        ],
+        "estimated_t50_windows_after_terms": 9554,
+        "estimated_t100_windows_after_terms": 5605,
+        "source_cv_after_terms": true
+      },
+      {
+        "dataset_id": "eth_biwi_original",
+        "domain": "ETH_UCY",
+        "missing_confirmation_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "allowed_use",
+          "local_path",
+          "source_identity"
+        ],
+        "estimated_t50_windows_after_terms": 506,
+        "estimated_t100_windows_after_terms": 91,
+        "source_cv_after_terms": true
+      },
+      {
+        "dataset_id": "aerialmpt_or_other_topdown",
+        "domain": "other_topdown",
+        "missing_confirmation_fields": [
+          "terms_accepted_by_user",
+          "terms_acceptance_date",
+          "allowed_use",
+          "local_path",
+          "source_identity"
+        ],
+        "estimated_t50_windows_after_terms": 0,
+        "estimated_t100_windows_after_terms": 0,
+        "source_cv_after_terms": false
+      }
+    ]
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "user_action_required_written": true,
+  "stage42_ef_gate": {
+    "gates": {
+      "cg_fresh_rerun_passed": true,
+      "ed_input_passed": true,
+      "all_targets_gap_scored": true,
+      "empty_template_still_blocks_conversion": true,
+      "ucy_priority_preserved": true,
+      "eth_priority_present": true,
+      "technical_potential_recorded": true,
+      "missing_fields_are_concrete": true,
+      "user_action_written": true,
+      "no_conversion_or_eval_claim": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_ef_source_terms_gap_audit_pass"
+  }
+}

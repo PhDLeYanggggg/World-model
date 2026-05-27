@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EE context switchability materiality audit",
-  "current_verdict": "stage42_ee_context_switchability_materiality_audit_pass",
+  "current_stage": "Stage42-EF source terms gap audit",
+  "current_verdict": "stage42_ef_source_terms_gap_audit_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ed_reports",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -20185,6 +20185,91 @@
       "global_metric_claim_allowed": false,
       "global_seconds_claim_allowed": false,
       "context_main_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_ef_source_terms_gap_audit": {
+    "source": "fresh_rerun_cg_plus_ed_source_terms_gap_audit",
+    "report": "outputs/stage42_long_research/source_terms_gap_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ef_gate.md",
+    "user_action_required": "outputs/stage42_long_research/user_action_required_source_terms_gap_stage42.md",
+    "verdict": "stage42_ef_source_terms_gap_audit_pass",
+    "gates": "13/13",
+    "verification": {
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_source_terms_gap_audit.py -> 2 passed in 0.68s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 707 passed in 32.55s"
+    },
+    "summary": {
+      "source": "fresh_rerun_cg_plus_ed_source_terms_gap_audit",
+      "targets": 5,
+      "cg_terms_accepted_targets": 0,
+      "cg_conversion_ready_targets": 0,
+      "ed_technical_ready_after_terms_targets": 2,
+      "conversion_ready_now": 0,
+      "converted_datasets_now": 0,
+      "evaluated_datasets_now": 0,
+      "user_action_required_targets": 5,
+      "estimated_t50_windows_after_terms": 10060,
+      "estimated_t100_windows_after_terms": 5696,
+      "technical_ready_source_count_after_terms": 5,
+      "top_unblock_targets": [
+        "ucy_crowd_original",
+        "eth_biwi_original",
+        "aerialmpt_or_other_topdown"
+      ],
+      "top_unblock_actions": [
+        {
+          "dataset_id": "ucy_crowd_original",
+          "domain": "UCY",
+          "missing_confirmation_fields": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_windows_after_terms": 9554,
+          "estimated_t100_windows_after_terms": 5605,
+          "source_cv_after_terms": true
+        },
+        {
+          "dataset_id": "eth_biwi_original",
+          "domain": "ETH_UCY",
+          "missing_confirmation_fields": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_windows_after_terms": 506,
+          "estimated_t100_windows_after_terms": 91,
+          "source_cv_after_terms": true
+        },
+        {
+          "dataset_id": "aerialmpt_or_other_topdown",
+          "domain": "other_topdown",
+          "missing_confirmation_fields": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_windows_after_terms": 0,
+          "estimated_t100_windows_after_terms": 0,
+          "source_cv_after_terms": false
+        }
+      ]
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "converted_datasets_now": 0,
+      "evaluated_datasets_now": 0,
       "stage5c_executed": false,
       "smc_enabled": false
     }

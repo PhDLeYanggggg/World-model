@@ -1812,3 +1812,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - material_context_contribution: `False`; decision `context_switchability_materiality_blocked`.
 - boundary: current context switchability has micro-deltas only, so scene/goal/neighbor/interaction main claims remain blocked under this protocol.
 <!-- STAGE42_EE_CONTEXT_SWITCHABILITY_MATERIALITY:END -->
+
+<!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:START -->
+## Stage42-EF Source Terms Gap Audit
+
+- source: `fresh_rerun_cg_plus_ed_source_terms_gap_audit`
+- role: reruns source terms validator and merges it with ED technical-after-terms potential.
+- gate: `13 / 13`; verdict `stage42_ef_source_terms_gap_audit_pass`.
+- conversion_ready_now: `0`; converted/evaluated now `0` / `0`.
+- top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; estimated t50/t100 after terms `10060` / `5696`.
+- boundary: no legal conversion, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:END -->
