@@ -141,3 +141,12 @@ This section refines the paper evidence matrix by separating replay evidence str
 - ready if activated now: `0`.
 - No conversion/evaluation occurred; source/legal blockers remain until user confirmation and guarded conversion pass.
 <!-- STAGE42_IA_HZ_TO_CG_INTAKE_BRIDGE:END -->
+
+<!-- STAGE42_IB_IA_BRIDGED_VALIDATOR_DRY_RUN:START -->
+## Stage42-IB IA Bridged Validator Dry Run
+
+- IB validates the IA bridged intake against CG source-terms semantics in dry-run mode.
+- gate: `16 / 16`.
+- ready targets: `0`.
+- No conversion/evaluation occurred; source/legal blockers remain until user confirmation and guarded conversion pass.
+<!-- STAGE42_IB_IA_BRIDGED_VALIDATOR_DRY_RUN:END -->

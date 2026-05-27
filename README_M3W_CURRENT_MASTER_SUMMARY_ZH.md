@@ -496,3 +496,14 @@ M3W 已经做出了有价值的真实路线探索：从 SDD cost-aware selector�
 - Remaining blocker: HZ confirmation fields are blank and require user-confirmed terms/source identity before guarded conversion.
 - Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
 <!-- STAGE42_IA_HZ_TO_CG_INTAKE_BRIDGE:END -->
+
+<!-- STAGE42_IB_IA_BRIDGED_VALIDATOR_DRY_RUN:START -->
+## Stage42-IB IA Bridged Validator Dry Run
+
+- source: `fresh_stage42_ib_ia_bridged_validator_dry_run`
+- role: dry-run validate the IA bridged intake using CG source-terms semantics without activating conversion.
+- gate: `16 / 16`; verdict `stage42_ib_ia_bridged_validator_dry_run_pass`.
+- targets validated: `5`; ready targets: `0`.
+- Current result is correctly blocked because HZ user-confirmation fields remain blank.
+- Claim boundary: no download, no conversion, no training, no evaluation, no metric/seconds-level claim, no Stage5C, no SMC.
+<!-- STAGE42_IB_IA_BRIDGED_VALIDATOR_DRY_RUN:END -->
