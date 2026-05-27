@@ -1,0 +1,192 @@
+{
+  "source": "fresh_stage42_floor_removability_decision_map",
+  "stage": "Stage42-EN Floor Removability Decision Map",
+  "generated_at_utc": "2026-05-27T02:55:35.905361+00:00",
+  "git_commit": "c740c24",
+  "input_hash": "352ee9ba2b1ed531816a6d61db9990e91f32bebdfc92df138b30ac33c6fb61e7",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EN is a fresh synthesis audit over cached-verified safety-floor evidence; it does not train or tune a model.",
+    "This audit distinguishes deployment fallback, teacher/floor rollout context, proximity guard, and narrow t50 fallback relaxation.",
+    "future endpoints / waypoints remain supervised/evaluation labels only, never inference inputs.",
+    "No central velocity, no test endpoints for goals, no test-threshold tuning.",
+    "t+50 / t+100 remain raw-frame horizons; no seconds-level claim.",
+    "dataset-local/raw-frame coordinates are not global metric coordinates.",
+    "Stage5C latent generative was not executed.",
+    "SMC was not enabled."
+  ],
+  "input_reports": {
+    "bw": {
+      "path": "outputs/stage42_long_research/safety_floor_necessity_audit_stage42.json",
+      "exists": true
+    },
+    "by": {
+      "path": "outputs/stage42_long_research/t50_floor_relaxability_repair_stage42.json",
+      "exists": true
+    },
+    "cq": {
+      "path": "outputs/stage42_long_research/proximity_aware_composer_guard_stage42.json",
+      "exists": true
+    },
+    "cr": {
+      "path": "outputs/stage42_long_research/proximity_guard_ablation_stage42.json",
+      "exists": true
+    },
+    "em": {
+      "path": "outputs/stage42_long_research/official_source_link_audit_stage42.json",
+      "exists": true
+    }
+  },
+  "component_decision_map": [
+    {
+      "component": "ungated_neural_endpoint_or_full_waypoint",
+      "decision": "blocked",
+      "evidence": "ungated raw errors improve but easy degradation violates deployment safety",
+      "key_metrics": {
+        "ungated_endpoint_easy_degradation": 1.2458611044726973,
+        "ungated_full_waypoint_easy_degradation": 1.2458611044726973,
+        "easy_limit": 0.02
+      },
+      "deployment_action": "do_not_deploy_ungated_neural"
+    },
+    {
+      "component": "teacher_floor_rollout_context",
+      "decision": "required",
+      "evidence": "removing floor/safe baseline rollout context hurts protected t50",
+      "key_metrics": {
+        "no_floor_rel_context_t50_delta": -0.09205317177637129,
+        "no_safe_baseline_context_t50_delta": -0.09502721842335304
+      },
+      "deployment_action": "keep_teacher_floor_rollout_context"
+    },
+    {
+      "component": "deployment_fallback_floor",
+      "decision": "required_globally_partial_relaxation_allowed",
+      "evidence": "global floor-free neural is not deployable, but protected t50 fallback relaxation is supported on selected validation-backed slices",
+      "key_metrics": {
+        "floor_free_neural_deployable": false,
+        "repaired_t50_slices": [
+          "TrajNet|50",
+          "UCY|50"
+        ],
+        "global_t50_improvement_after_repair": 0.28969780579498305,
+        "global_easy_degradation_after_repair": -0.37048920988736844
+      },
+      "deployment_action": "allow_only_validation_backed_t50_slice_relaxation"
+    },
+    {
+      "component": "proximity_guard",
+      "decision": "required_for_safety_sensitive_reporting",
+      "evidence": "no-guard has higher ADE gain but worsens near-collision; guard repairs proximity while preserving positive all/t50/t100/hard gains",
+      "key_metrics": {
+        "no_guard_all_improvement": 0.030166976195252437,
+        "no_guard_near_collision_delta": 0.0033566895337319713,
+        "guard_all_improvement": 0.017743597342181783,
+        "guard_t50_improvement": 0.010673426149055754,
+        "guard_near_collision_delta": -0.0006053046700172371
+      },
+      "deployment_action": "use_guarded_variant_for_safety_sensitive_claims"
+    },
+    {
+      "component": "source_expansion_without_terms",
+      "decision": "blocked",
+      "evidence": "official source candidates exist but conversion-ready targets remain zero",
+      "key_metrics": {
+        "official_or_toolkit_source_candidates": 4,
+        "conversion_ready_now": 0,
+        "auto_download_allowed_now": 0
+      },
+      "deployment_action": "wait_for_user_terms_path_source_identity_confirmation"
+    },
+    {
+      "component": "t50_slice_relaxation::TrajNet|50",
+      "decision": "partial_supported",
+      "evidence": "Validation slice is not simultaneously positive and easy-safe, so fallback relaxation is not deployable.",
+      "key_metrics": {
+        "rows": 9198,
+        "t50_improvement": 0.30211874053555343,
+        "hard_failure_improvement": 0.30211874053555343,
+        "easy_degradation": -0.22949816726981975,
+        "switch_rate": 0.9525983909545553
+      },
+      "deployment_action": "slice_only_under_train_internal_validation_policy"
+    },
+    {
+      "component": "t50_slice_relaxation::UCY|50",
+      "decision": "partial_supported",
+      "evidence": "No validation rows for this source/horizon; test evidence cannot be used to tune or authorize fallback relaxation.",
+      "key_metrics": {
+        "rows": 2340,
+        "t50_improvement": 0.24532046629629067,
+        "hard_failure_improvement": 0.24532046629629067,
+        "easy_degradation": -0.12642697574288675,
+        "switch_rate": 0.65
+      },
+      "deployment_action": "slice_only_under_train_internal_validation_policy"
+    }
+  ],
+  "summary": {
+    "source": "fresh_stage42_floor_removability_decision_map",
+    "components_audited": 7,
+    "blocked_or_required_components": [
+      "ungated_neural_endpoint_or_full_waypoint",
+      "teacher_floor_rollout_context",
+      "source_expansion_without_terms"
+    ],
+    "partial_relaxation_components": [
+      "t50_slice_relaxation::TrajNet|50",
+      "t50_slice_relaxation::UCY|50"
+    ],
+    "safety_required_components": [
+      "teacher_floor_rollout_context",
+      "deployment_fallback_floor",
+      "proximity_guard"
+    ],
+    "floor_free_neural_deployable": false,
+    "safe_partial_floor_relaxation_available": true,
+    "global_floor_removal_allowed": false,
+    "teacher_floor_rollout_context_removal_allowed": false,
+    "proximity_guard_required_for_safety_claim": true,
+    "conversion_ready_now": 0
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "fresh_synthesis_from_cached_verified_reports": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "floor_free_neural_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_en_gate": {
+    "source": "fresh_stage42_floor_removability_decision_map",
+    "gates": {
+      "inputs_present": true,
+      "components_audited": true,
+      "ungated_neural_blocked": true,
+      "teacher_context_required": true,
+      "fallback_global_removal_blocked": true,
+      "partial_t50_relaxation_mapped": true,
+      "proximity_guard_required": true,
+      "source_terms_blocker_preserved": true,
+      "floor_free_neural_not_claimed": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_en_floor_removability_decision_map_pass"
+  }
+}

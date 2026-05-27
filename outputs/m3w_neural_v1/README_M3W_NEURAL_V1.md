@@ -1910,3 +1910,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - estimated after-terms t50/t100 potential: `10060` / `5696`.
 - No download, conversion, training, evaluation, metric/seconds claim, Stage5C, or SMC execution.
 <!-- STAGE42_EM_OFFICIAL_SOURCE_LINK_AUDIT:END -->
+
+<!-- STAGE42_EN_FLOOR_REMOVABILITY_DECISION_MAP:START -->
+## Stage42-EN Floor Removability Decision Map
+
+- source: `fresh_stage42_floor_removability_decision_map`
+- role: maps which parts of Stage37/teacher floor can be removed, partially relaxed, or must remain.
+- gate: `13 / 13`; verdict `stage42_en_floor_removability_decision_map_pass`.
+- floor_free_neural_deployable: `False`; global_floor_removal_allowed: `False`.
+- partial t50 relaxation available: `True`; teacher rollout context removal allowed: `False`.
+- proximity guard required for safety-sensitive claim: `True`.
+- Boundary: no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EN_FLOOR_REMOVABILITY_DECISION_MAP:END -->
