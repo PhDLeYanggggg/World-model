@@ -4,6 +4,12 @@ M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combine
 
 It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.
 
+Latest single-file Chinese work ledger requested by the user:
+
+`/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
+
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It includes Stage42-EL/EM/EN: context gain routing remains below independent materiality, legal source conversion remains blocked until terms/path/source identity confirmation, and global floor-free neural deployment remains blocked while narrow validation-backed t50 slice relaxation is allowed.
+
 Latest current-goal work summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_TARGET_WORK_SUMMARY_ZH.md`

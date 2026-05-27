@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## M3W 当前工作路线/失败/成功总账
+
+本轮按用户要求新增一个单文件中文总账：
+
+`/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
+
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-EL/EM/EN：context gain router 没有证明独立 context materiality；official source link audit 显示 conversion_ready_now 仍为 0；floor removability decision map 显示 global floor-free neural 仍 blocked，只允许 validation-backed t50 slice partial relaxation。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## M3W 长期目标详细总账
 
 本轮按用户要求新增单文件详细中文总账：
