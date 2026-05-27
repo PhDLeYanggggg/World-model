@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-GJ module claim lock and experiment guard",
-  "current_verdict": "stage42_gj_module_claim_lock_pass",
+  "current_stage": "Stage42-GK context switchability family audit",
+  "current_verdict": "stage42_gk_context_switchability_family_audit_pass",
   "m3w_one_file_detailed_summary_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_gd_plus_current_user_request_refresh",
     "path": "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",
@@ -30224,5 +30224,67 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-GJ locks the current paper/evidence boundary: supported main modules are history/domain_expert/safe_switch/teacher_floor/group_consistency_full_waypoint/full_waypoint_shape/endpoint_bridge; JEPA/Transformer/scene_goal/neighbor_interaction remain blocked as independent main claims; calibrated subset candidates remain post-confirmation only and ready_now is zero."
+  },
+  "stage42_gk_context_switchability_family_audit": {
+    "source": "fresh_stage42_gk_context_switchability_family_audit",
+    "report": "outputs/stage42_long_research/context_switchability_family_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_gk_gate.md",
+    "verdict": "stage42_gk_context_switchability_family_audit_pass",
+    "gates": "14/14",
+    "summary": {
+      "source": "fresh_stage42_gk_context_switchability_family_audit",
+      "baseline_family_control_val_metric": {
+        "rows": 23788,
+        "all_improvement": 0.4789907245805979,
+        "t10_improvement": 0.7997866798190578,
+        "t25_improvement": 0.3275477337994004,
+        "t50_improvement": 0.5204114900752006,
+        "t100_raw_frame_diagnostic_improvement": 0.3311669004317135,
+        "hard_failure_improvement": 0.47410736359756456,
+        "easy_degradation": -0.33737155000181906,
+        "switch_rate": 0.8590886161089625,
+        "harm_over_fallback": -0.25920522204917384
+      },
+      "feature_families_checked": [
+        "history_only",
+        "goal_only",
+        "neighbor_only",
+        "motion_goal_context",
+        "baseline_plus_history",
+        "baseline_plus_goal",
+        "baseline_plus_neighbor",
+        "baseline_plus_history_goal_neighbor"
+      ],
+      "families_checked_count": 8,
+      "material_delta_threshold": 0.01,
+      "best_family": "baseline_plus_history_goal_neighbor",
+      "best_test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": -2.6907472252535314e-06,
+        "t10_improvement": 0.0,
+        "t25_improvement": -1.7958596563172335e-05,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 1.804468203747689e-07,
+        "hard_failure_improvement": 5.65169701682855e-06,
+        "easy_degradation": 9.347069022602739e-05,
+        "switch_rate": 0.031733322095326394,
+        "harm_over_fallback": 8.825886231205736e-07
+      },
+      "material_context_families": [],
+      "material_context_contribution_supported": false,
+      "decision": "context_switchability_family_not_supported",
+      "root_cause": "Feature-family context gain/harm targets still do not yield a material positive, easy-safe lift over baseline-family control.",
+      "next_action": "Do not claim scene/goal/neighbor as independent main contribution if material families remain empty; next attempt must change source support or full-sequence target."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "context_main_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Feature-family context gain/harm targets still do not yield a material positive, easy-safe lift over baseline-family control."
   }
 }

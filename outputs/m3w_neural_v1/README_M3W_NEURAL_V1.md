@@ -2573,3 +2573,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - next admissible experiments are restricted to terms-confirmed guarded conversion, changed-target gain/harm or full-sequence context, protected full-waypoint runtime replay, and source/horizon-specific h100 support repair.
 - Still no true-3D, foundation, global metric, seconds-level, Stage5C, SMC, or post-confirmation-candidate-as-data claim.
 <!-- STAGE42_GJ_MODULE_CLAIM_LOCK:END -->
+
+<!-- STAGE42_GK_CONTEXT_SWITCHABILITY_FAMILY_AUDIT:START -->
+## Stage42-GK Context Switchability Family Audit
+
+- source: `fresh_stage42_gk_context_switchability_family_audit`
+- gate: `14 / 14`; verdict `stage42_gk_context_switchability_family_audit_pass`.
+- decision: `context_switchability_family_not_supported`; material context families: `[]`.
+- best family `baseline_plus_history_goal_neighbor` vs baseline-family control: all/t50/t100raw/hard/easy = `-0.000003` / `0.000000` / `0.000000` / `0.000006` / `0.000093`.
+- Target changed from residual trajectory deltas to gain/harm/switchability. Future labels are train/val/eval labels only, never inference inputs.
+- If no material family is supported, scene/goal/neighbor context remains blocked as an independent main claim under this changed-target audit.
+- Still no true-3D, foundation, global metric, seconds-level, Stage5C, SMC, or test-endpoint claim.
+<!-- STAGE42_GK_CONTEXT_SWITCHABILITY_FAMILY_AUDIT:END -->
