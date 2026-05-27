@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-EY continuous group-risk repair",
-  "current_verdict": "stage42_ey_continuous_group_risk_repair_positive_not_promoted",
+  "current_stage": "Stage42-EZ temporal group-repel repair",
+  "current_verdict": "stage42_ez_temporal_group_repel_repair_positive_not_promoted",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_et_eu_ev_ew_ex_ey_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_et_eu_ev_ew_ex_ey_ez_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -13,7 +13,8 @@
       "Stage42-EV constraint-aware composer",
       "Stage42-EW adaptive group repair",
       "Stage42-EX group-level risk repair",
-      "Stage42-EY continuous group-risk repair"
+      "Stage42-EY continuous group-risk repair",
+      "Stage42-EZ temporal group-repel repair"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -28,7 +29,7 @@
     ],
     "summary_refresh_only": true,
     "latest_full_pytest_before_summary_refresh": "770 passed",
-    "latest_conclusion": "Stage42-EU/EV/EW/EX/EY did not beat Stage42-DI; next repair should change candidate-family temporal/objective shape rather than add more risk buckets."
+    "latest_conclusion": "Stage42-EU/EV/EW/EX/EY did not beat Stage42-DI. Stage42-EZ simple temporal repel shape had tiny all/t50/hard gains but failed near@0.05 vs Stage42-DI, so it is not promoted; next repair should change objective/trajectory family more deeply."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -27763,5 +27764,95 @@
       "stage5c_executed": false,
       "smc_enabled": false
     }
+  },
+  "stage42_ez_temporal_group_repel_repair": {
+    "source": "fresh_stage42_temporal_group_repel_repair",
+    "report": "outputs/stage42_long_research/temporal_group_repel_repair_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_ez_gate.md",
+    "verdict": "stage42_ez_temporal_group_repel_repair_positive_not_promoted",
+    "gates": "17/18",
+    "deployment_decision": {
+      "promote_temporal_group_repel": false,
+      "decision": "temporal_group_repel_not_enough_keep_stage42_di_or_cq_floor",
+      "reason": "Promotion requires all+hard positive, easy safe, improvement over Stage42-DI on all+hard, and no worse near@0.05 than Stage42-DI."
+    },
+    "selected_candidate": {
+      "mode": "temporal_repel",
+      "temporal_kind": "tail",
+      "gamma": 1.0,
+      "direction_mode": "nearest_current",
+      "min_sep": 0.12,
+      "margin": 0.0,
+      "strength": 0.25
+    },
+    "test_metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.24726151011328978,
+      "t10_improvement": 0.45801577871891064,
+      "t25_improvement": 0.2370081221373852,
+      "t50_improvement": 0.224029588269129,
+      "t100_raw_frame_diagnostic_improvement": 0.14346425199102208,
+      "hard_failure_improvement": 0.23889194446652096,
+      "easy_degradation": -0.25641653999141334,
+      "switch_rate": 0.5880989506511021,
+      "harm_over_fallback": -0.11387378439304832
+    },
+    "test_proximity_diagnostics": {
+      "unsafe_rows": 2659,
+      "unsafe_rate": 0.056028488347591554,
+      "base_switch_rate": 0.5880989506511021,
+      "final_switch_rate": 0.5880989506511021,
+      "base_near_005": 0.019364490707573012,
+      "final_near_005": 0.01510809557924902,
+      "floor_near_005": 0.022377681318218216,
+      "base_p05_min_distance": 0.07437689768396878,
+      "final_p05_min_distance": 0.07883038640032343,
+      "floor_p05_min_distance": 0.07354961919220622,
+      "temporal_first_weight": 0.25,
+      "temporal_last_weight": 1.0
+    },
+    "comparison_to_stage42_di": {
+      "stage42_di_metric": {
+        "rows": 47458,
+        "all_improvement": 0.24715658317833844,
+        "t10_improvement": 0.4586454739489455,
+        "t25_improvement": 0.23617773697664124,
+        "t50_improvement": 0.2236298792899738,
+        "t100_raw_frame_diagnostic_improvement": 0.1434611214781808,
+        "hard_failure_improvement": 0.23887420070464105,
+        "easy_degradation": -0.2563085406508494,
+        "switch_rate": 0.5880989506511021,
+        "harm_over_fallback": -0.11382546135578223
+      },
+      "stage42_di_diagnostics": {
+        "unsafe_rows": 955,
+        "unsafe_rate": 0.02012305617598719,
+        "base_switch_rate": 0.5880989506511021,
+        "final_switch_rate": 0.5880989506511021,
+        "base_near_005": 0.019364490707573012,
+        "final_near_005": 0.01382274853554722,
+        "floor_near_005": 0.022377681318218216,
+        "base_p05_min_distance": 0.07437689768396878,
+        "final_p05_min_distance": 0.07770240407545181,
+        "floor_p05_min_distance": 0.07354961919220622
+      },
+      "delta_vs_stage42_di": {
+        "all_improvement": 0.00010492693495134375,
+        "t50_improvement": 0.0003997089791552,
+        "t100_raw_frame_diagnostic_improvement": 3.130512841287292e-06,
+        "hard_failure_improvement": 1.7743761879907005e-05,
+        "easy_degradation": -0.00010799934056393568
+      },
+      "near_delta_vs_stage42_di": 0.0012853470437018
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-EZ tests temporal weighting of group-repel offsets after adaptive/risk bucket repairs failed; promotion requires beating Stage42-DI on all+hard while preserving easy and proximity."
   }
 }

@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-EY：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 进一步证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI，下一步应改 repair candidate family / temporal shape，而不是继续堆 risk bucket。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-EZ：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ 进一步证明简单 temporal repel shape 虽有极小 all/t50/hard 增量，但 near@0.05 比 Stage42-DI 差，因此不 promoted。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -5081,3 +5081,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `stage42_ey_continuous_group_risk_repair_positive_not_promoted`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EY_CONTINUOUS_GROUP_RISK_REPAIR:END -->
+
+<!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:START -->
+## Stage42-EZ Temporal Group-Repel Repair
+
+- source: `fresh_stage42_temporal_group_repel_repair`
+- role: tests temporal weighting for group-repel offsets after Stage42-EW/EX/EY risk-bucket repairs failed to beat Stage42-DI.
+- selected candidate: `{'mode': 'temporal_repel', 'temporal_kind': 'tail', 'gamma': 1.0, 'direction_mode': 'nearest_current', 'min_sep': 0.12, 'margin': 0.0, 'strength': 0.25}`.
+- gate: `17 / 18`; verdict `stage42_ez_temporal_group_repel_repair_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `24.73%` / `22.40%` / `14.35%` / `23.89%` / `-25.64%`.
+- delta vs Stage42-DI all/t50/t100raw/hard/easy: `0.01%` / `0.04%` / `0.00%` / `0.00%` / `-0.01%`.
+- near@0.05 base/final: `1.94%` / `1.51%`.
+- decision: `temporal_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:END -->

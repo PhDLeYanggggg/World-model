@@ -359,3 +359,17 @@ The paper-ready scope remains a protected 2.5D raw-frame world-state candidate. 
 - decision: `stage42_ey_continuous_group_risk_repair_positive_not_promoted`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_EY_CONTINUOUS_GROUP_RISK_REPAIR:END -->
+
+<!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:START -->
+## Stage42-EZ Temporal Group-Repel Repair
+
+- source: `fresh_stage42_temporal_group_repel_repair`
+- role: tests temporal weighting for group-repel offsets after Stage42-EW/EX/EY risk-bucket repairs failed to beat Stage42-DI.
+- selected candidate: `{'mode': 'temporal_repel', 'temporal_kind': 'tail', 'gamma': 1.0, 'direction_mode': 'nearest_current', 'min_sep': 0.12, 'margin': 0.0, 'strength': 0.25}`.
+- gate: `17 / 18`; verdict `stage42_ez_temporal_group_repel_repair_positive_not_promoted`.
+- test all/t50/t100raw/hard/easy: `24.73%` / `22.40%` / `14.35%` / `23.89%` / `-25.64%`.
+- delta vs Stage42-DI all/t50/t100raw/hard/easy: `0.01%` / `0.04%` / `0.00%` / `0.00%` / `-0.01%`.
+- near@0.05 base/final: `1.94%` / `1.51%`.
+- decision: `temporal_group_repel_not_enough_keep_stage42_di_or_cq_floor`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_EZ_TEMPORAL_GROUP_REPEL_REPAIR:END -->
