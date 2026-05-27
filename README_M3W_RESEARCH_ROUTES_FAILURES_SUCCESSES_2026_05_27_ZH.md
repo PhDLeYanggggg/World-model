@@ -601,3 +601,15 @@ metric-time calibrated, foundation-scale, or ungated neural world model.
 - T3 all/t50/t100 raw/hard/easy: `27.72%` / `26.99%` / `6.79%` / `25.93%` / `-32.33%`.
 - Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
 <!-- STAGE42_HW_REPLAY_EVIDENCE_TIER_REFRESH:END -->
+
+<!-- STAGE42_HX_PAPER_PACKAGE_INTEGRITY:START -->
+## Stage42-HX Paper Package Integrity
+
+- source: `fresh_stage42_hx_paper_package_integrity_from_current_artifacts`
+- role: verify Stage42 paper package deliverables, evidence provenance, replay-tier linkage, and claim boundaries.
+- gate: `25 / 25`; verdict `stage42_hx_paper_package_integrity_pass`.
+- paper deliverables checked: `9`.
+- support/evidence files checked: `10`.
+- A-F objective coverage is preserved as: A partial/blocked, B/C/E pass-with-boundary, D mixed, F pass-with-open-gaps.
+- Claim boundary: protected dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds-level, no Stage5C execution, no SMC.
+<!-- STAGE42_HX_PAPER_PACKAGE_INTEGRITY:END -->

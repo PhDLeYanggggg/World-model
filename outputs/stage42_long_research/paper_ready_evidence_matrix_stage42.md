@@ -105,3 +105,12 @@ This section refines the paper evidence matrix by separating replay evidence str
 - `T3_row_level_batch_replay` is the strongest replay evidence currently available for the t100 easy-guard runtime policy.
 - It remains raw-frame/dataset-local 2.5D evidence. It does not authorize metric/seconds-level, true-3D, Stage5C, or SMC claims.
 <!-- STAGE42_HW_REPLAY_EVIDENCE_TIER_REFRESH:END -->
+
+<!-- STAGE42_HX_PAPER_PACKAGE_INTEGRITY:START -->
+## Stage42-HX Paper Package Integrity
+
+- Stage42-HX verifies that all required Stage42 paper deliverables exist, are hashable, and preserve the current claim boundary.
+- gate: `25 / 25`.
+- A-F evidence status remains intentionally nuanced: A is blocked for source/metric-time, D is mixed, and F is package-ready with open gaps.
+- T3 row-level replay evidence from Stage42-HW is linked, but the claim remains raw-frame/dataset-local 2.5D.
+<!-- STAGE42_HX_PAPER_PACKAGE_INTEGRITY:END -->
