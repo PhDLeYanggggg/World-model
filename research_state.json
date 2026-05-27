@@ -1,11 +1,12 @@
 {
-  "current_stage": "Stage42-EK long objective coverage audit",
-  "current_verdict": "stage42_ek_long_objective_coverage_audit_pass_open_blockers",
+  "current_stage": "Stage42-EL context gain router",
+  "current_verdict": "stage42_el_context_gain_router_pass",
   "m3w_goal_detailed_ledger_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_ed_reports",
+    "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
     "updated_at": "2026-05-27",
-    "purpose": "Single-file detailed Chinese ledger requested by user: attempted routes, failed routes and causes, successful routes and evidence, current model quality, current best deployable family, strict claim boundaries, and next steps.",
+    "purpose": "Single-file detailed Chinese ledger requested by user: attempted routes, failed routes and causes, successful routes and evidence, current model quality, current best deployable family, strict claim boundaries, and next steps. Updated through Stage42-EL context gain router.",
+    "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 724 passed in 32.58s",
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
     "not_claimed": [
@@ -20552,6 +20553,46 @@
       "conversion_executed_in_stage42_ek": false,
       "evaluation_executed_in_stage42_ek": false,
       "training_executed_in_stage42_ek": false
+    }
+  },
+  "stage42_el_context_gain_router": {
+    "source": "fresh_stage42_context_gain_router",
+    "report": "outputs/stage42_long_research/context_gain_router_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_el_gate.md",
+    "verdict": "stage42_el_context_gain_router_pass",
+    "gates": "10/10",
+    "summary": {
+      "source": "fresh_stage42_context_gain_router",
+      "router_target": "predict supervised gain of context proposal over baseline-family protected control",
+      "candidates": [
+        "history_only",
+        "motion_goal_context",
+        "baseline_plus_history_goal_neighbor"
+      ],
+      "positive_context_gain_routers": [],
+      "best_router": "baseline_plus_history_goal_neighbor",
+      "best_router_test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": 0.0002777062145067344,
+        "t10_improvement": -7.966778287538112e-05,
+        "t25_improvement": 0.001799831183767031,
+        "t50_improvement": -1.9298584715388145e-05,
+        "t100_raw_frame_diagnostic_improvement": 4.067379614114408e-05,
+        "hard_failure_improvement": 0.0003214139546370287,
+        "easy_degradation": -0.0026661134785408436,
+        "switch_rate": 0.027392641914956384,
+        "harm_over_fallback": -9.109006716813104e-05
+      },
+      "context_increment_verdict": "stage42_el_context_gain_router_not_supported",
+      "interpretation": "This is a deployment-aligned context target. Positive routers would support context as a safe switchability signal over the baseline-family control. Negative routers preserve the current conclusion that context is not yet an independent deployable contribution under this source-level protocol."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
     }
   }
 }

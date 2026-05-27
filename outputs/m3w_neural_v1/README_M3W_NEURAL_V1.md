@@ -1886,3 +1886,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - completion/A-journal-ready claims remain disallowed; this is a coverage audit, not conversion/training/evaluation.
 - Boundary: no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EK_LONG_OBJECTIVE_COVERAGE_AUDIT:END -->
+
+<!-- STAGE42_EL_CONTEXT_GAIN_ROUTER:START -->
+## Stage42-EL Context Gain Router
+
+- source: `fresh_stage42_context_gain_router`
+- role: tests a deployment-aligned context target: supervised gain/harm routing over baseline-family protected control.
+- gate: `10 / 10`; verdict `stage42_el_context_gain_router_pass`.
+- positive_context_gain_routers: `[]`; best router `baseline_plus_history_goal_neighbor`.
+- best all/t50/hard delta vs baseline-family: `0.000278` / `-0.000019` / `0.000321`; easy `-0.002666`.
+- context_increment_verdict: `stage42_el_context_gain_router_not_supported`.
+- Boundary: source-level raw-frame only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EL_CONTEXT_GAIN_ROUTER:END -->

@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_DETAILED_LEDGER_ZH.md`
 
-它集中总结了 M3W 长期目标内做过的路线、失败原因、成功证据、当前 best deployable、当前模型质量、仍然禁止的 claim，以及最短下一步。该文件是 `cached_verified` 汇总，不是新训练，也不把 cached 结果写成 fresh。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它集中总结了 M3W 长期目标内做过的路线、失败原因、成功证据、当前 best deployable、当前模型质量、仍然禁止的 claim，以及最短下一步。最新纳入 Stage42-EJ/EK/EL：guarded conversion 在 legal-ready target 为 0 时保持空队列，long-objective coverage 保留 open blockers，deployment-aligned context gain-router 仍未证明 context 独立贡献。该文件是 `cached_verified` 汇总加 Stage42-EL fresh 结果，不是新训练，也不把 cached 结果写成 fresh。当前严格结论保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 当前长期目标工作总结
 
@@ -4868,3 +4868,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - completion/A-journal-ready claims remain disallowed; this is a coverage audit, not conversion/training/evaluation.
 - Boundary: no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EK_LONG_OBJECTIVE_COVERAGE_AUDIT:END -->
+
+<!-- STAGE42_EL_CONTEXT_GAIN_ROUTER:START -->
+## Stage42-EL Context Gain Router
+
+- source: `fresh_stage42_context_gain_router`
+- role: tests a deployment-aligned context target: supervised gain/harm routing over baseline-family protected control.
+- gate: `10 / 10`; verdict `stage42_el_context_gain_router_pass`.
+- positive_context_gain_routers: `[]`; best router `baseline_plus_history_goal_neighbor`.
+- best all/t50/hard delta vs baseline-family: `0.000278` / `-0.000019` / `0.000321`; easy `-0.002666`.
+- context_increment_verdict: `stage42_el_context_gain_router_not_supported`.
+- Boundary: source-level raw-frame only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_EL_CONTEXT_GAIN_ROUTER:END -->

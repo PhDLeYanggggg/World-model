@@ -2,8 +2,9 @@
 
 更新时间：2026-05-27
 工作目录：`/Users/yangyue/Downloads/World`
-结果来源：`cached_verified` 汇总既有报告、gate、README、`research_state.json`。本文件是总结，不是新训练、不新调参、不把 cached 结果写成 fresh。
-最新纳入证据：Stage26、Stage37、Stage38、Stage39、Stage40、Stage41、Stage42-DY/DZ/EA/EB/EC/ED。
+结果来源：`cached_verified` 汇总既有报告、gate、README、`research_state.json`；最新 Stage42-EL 为 `fresh_run` 结果。本文件是总结，不是新训练、不新调参、不把 cached 结果写成 fresh。
+最新纳入证据：Stage26、Stage37、Stage38、Stage39、Stage40、Stage41、Stage42-DY/DZ/EA/EB/EC/ED/EE/EF/EG/EH/EI/EJ/EK/EL。
+最近完整测试记录：`.venv-pytorch/bin/python -m pytest tests` 通过，`724 passed in 32.58s`。
 
 ## 0. 总结先说结论
 
@@ -32,7 +33,7 @@ SMC-ready model
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41 protected policy family | all ADE `+21.03%`，t50 ADE `+13.65%`，t100 raw diagnostic `+14.69%`，hard `+20.38%`，easy `0.00%` | 有 protected neural contribution，但依赖 safety floor，不是 ungated neural |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | all `+1.77%`，t50 `+1.07%`，t100 raw `+3.48%`，hard `+1.93%`，near@0.05 改善 | 安全优先策略成立，但牺牲部分准确率 |
 | Source-level full-waypoint runtime policy | Stage42-DL/DQ group-consistency full-waypoint runtime | rows `47458`，all `+24.72%`，t50 `+22.36%`，t100 raw `+14.35%`，hard `+23.89%`，exact replay pass | source-level protected runtime 证据成立，不是 global ungated replacement |
-| 论文证据包 | Stage42-EB/EC/ED | group-consistency 贡献可写；source conversion legal blocker 仍在 | 可以写 protected 2.5D 候选论文包，不能写 foundation/metric/Stage5C |
+| 论文证据包 | Stage42-EB/EC/ED/EG/EK | group-consistency 贡献可写；context main claim/source conversion legal blocker 仍在 | 可以写 protected 2.5D 候选论文包，不能写 foundation/metric/Stage5C |
 
 ## 1. 永久边界和不能越线的说法
 
@@ -473,6 +474,13 @@ Stage42-DZ / EA dual-domain group-consistency:
   UCY all/t50/hard = +35.58% / +22.72% / +33.78%
   TrajNet all/t50/hard = +32.07% / +28.18% / +31.29%
   global all/t50/hard CI lows = +32.56% / +26.53% / +31.51%
+
+Stage42-EJ / EK:
+  guarded source conversion launcher gate = 12 / 12
+  conversion_ready = 0
+  long-objective coverage audit gate = 10 / 10
+  paper files present = 9 / 9
+  open blockers preserved = source terms, metric/seconds, context main claims, global primary full-waypoint
 ```
 
 重要负结果：
@@ -496,6 +504,19 @@ Stage42-ED:
   converted/evaluated now = 0
   technical_ready_after_terms_targets = 2
   estimated t50/t100 windows after terms = 10060 / 5696
+
+Stage42-EE / EL:
+  context switchability / gain-router both below materiality.
+  Stage42-EE selected context delta all/t50/hard = +0.000368 / -0.000074 / +0.000424
+  Stage42-EL best context gain-router all/t50/hard = +0.000278 / -0.000019 / +0.000321
+  positive_context_gain_routers = []
+  conclusion = context is not yet an independent deployable contribution under the current source-level protocol.
+
+Stage42-EF / EH / EI / EJ:
+  source terms gap remains open.
+  source intake package and validator bridge are built.
+  guarded launcher correctly refuses conversion when ready targets = 0.
+  no download, conversion, training, or evaluation was executed from unconfirmed terms.
 ```
 
 Stage42 总结：
@@ -519,6 +540,7 @@ Stage42 总结：
 | goal/scene gated expert | 没超过 baseline-family control | 当前 scene/goal proxy 不足 | 不写独立主贡献 |
 | neighbor/interaction gated expert | 没超过 baseline-family control | 当前 kNN/hand-built graph 不够 | 不写独立主贡献 |
 | current sequence/graph residual context | 低于 baseline-family control | residual target 没抽出独立 value | Stage42-DP 关闭当前 protocol |
+| context switchability / gain-router | micro-deltas，低于 1pp materiality；EL 最好 all/t50/hard `+0.000278/-0.000019/+0.000321` | 当前 context 信号没有超过 baseline-family protected control | 不写 context 独立主贡献，除非换 target/数据/架构 |
 | t100 global deployable | source-CV/easy 不稳 | independent t100 source support 不足 | 保持 diagnostic |
 | metric/seconds claim | 未闭环 | H/FPS/stride/scale/legal/source 不完整 | 禁止 claim |
 
@@ -532,6 +554,7 @@ Stage42 总结：
 | Stage42-CQ proximity guard | predicted rollout geometry guard | near@0.05 repaired while all/t50/hard positive | safety-sensitive composer |
 | Stage42-DL/DQ runtime replay | frozen policy exact replay | selected_xy/ADE/FDE diff `0.0` | reproducible runtime policy |
 | Stage42-DZ/EA dual-domain group consistency | explicit group-consistency source-level repair | UCY+TrajNet positive, bootstrap lows positive | source-level paper evidence |
+| Stage42-EJ/EK evidence hygiene | guarded launcher + long objective coverage audit | conversion queue `0` when legal ready target `0`; paper files `9/9`; open blockers preserved | 防止把 not_run/cached/blocker 包装成完成 |
 
 ## 5. 现在模型大概是什么质量
 
@@ -546,7 +569,7 @@ M3W 已经达到“protected 2.5D multi-agent world-state paper-candidate eviden
 更具体地：
 
 - **工程质量**：较高。已有大量 runner、reports、gates、tests、runtime replay、frozen policy、hash/schema/README/state。
-- **实验质量**：中高。SDD medium、external transfer、bootstrap、多阶段 ablation、negative result closure 都做了。
+- **实验质量**：中高。SDD medium、external transfer、bootstrap、多阶段 ablation、negative result closure、guarded not-run/source blocker audit 都做了。
 - **论文候选质量**：有 protected 2.5D world-state candidate 的论文包雏形；还不是完整 A刊/foundation claim。
 - **部署质量**：只能部署 protected selector / guarded policy，不部署无保护 neural / Stage5C / SMC。
 - **泛化质量**：external dataset-local 正迁移已出现，但 source/legal/time/metric closure 仍未完全完成。
@@ -609,7 +632,7 @@ with Stage42 source-level group-consistency full-waypoint runtime evidence as pr
    保留 frozen policy、schema hash、cache hash、runtime replay commands、pytest 状态，继续做 reviewer replay 和 minimal dependency path。
 
 3. **如果继续做 neural/context，不要重复当前 residual protocol**
-   Stage42-DP/EC 已经关闭当前 sequence/graph residual route。下一轮必须换 target 或架构，比如 explicit physical consistency / graph-neural interaction target / scene-rich source-level protocol，而不是继续标量 loss 或同一 residual。
+   Stage42-DP/EC/EE/EL 已经关闭当前 sequence/graph residual、context switchability 和 context gain-router route。下一轮必须换 target 或架构，比如 explicit physical consistency / graph-neural interaction target / scene-rich source-level protocol，而不是继续标量 loss、同一 residual 或同一微弱 context gate。
 
 ## 9. 最终总判定
 

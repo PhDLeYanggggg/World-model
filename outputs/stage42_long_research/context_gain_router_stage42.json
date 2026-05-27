@@ -1,0 +1,412 @@
+{
+  "source": "fresh_stage42_context_gain_router",
+  "stage": "Stage42-EL Context Gain Router",
+  "generated_at_utc": "2026-05-27T02:39:40.067047+00:00",
+  "git_commit": "2df9224",
+  "input_hash": "aa0ffc5e6a7105a48a4544f56338524924924b5685d73ffcb8b49bb4fc878004",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EL 是 context gain-router fresh probe，不是重复 sequence/graph residual-delta protocol。",
+    "router target 是 baseline-family protected floor 与 context proposal 的 supervised gain/harm，而不是直接预测 residual 轨迹。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "split_stats": {
+    "by_split": {
+      "train": {
+        "rows": 266745,
+        "domains": {
+          "ETH_UCY": 134695,
+          "TrajNet": 75287,
+          "UCY": 56763
+        },
+        "scenes": 9,
+        "sources": 13,
+        "t10": 83107,
+        "t25": 73802,
+        "t50": 64551,
+        "t100": 45285,
+        "hard": 198685,
+        "failure": 96981,
+        "easy": 80855
+      },
+      "val": {
+        "rows": 23788,
+        "domains": {
+          "ETH_UCY": 16103,
+          "TrajNet": 7685
+        },
+        "scenes": 2,
+        "sources": 2,
+        "t10": 7045,
+        "t25": 6459,
+        "t50": 5873,
+        "t100": 4411,
+        "hard": 21872,
+        "failure": 10450,
+        "easy": 4454
+      },
+      "test": {
+        "rows": 47458,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "scenes": 2,
+        "sources": 3,
+        "t10": 15402,
+        "t25": 13470,
+        "t50": 11538,
+        "t100": 7048,
+        "hard": 35076,
+        "failure": 19056,
+        "easy": 11192
+      }
+    },
+    "group_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_overlap_pass": true
+  },
+  "baseline_family_control": {
+    "lambda": 10.0,
+    "policy_slice_count": 8,
+    "val_metric_vs_causal_floor": {
+      "rows": 23788,
+      "all_improvement": 0.4789907245805979,
+      "t10_improvement": 0.7997866798190578,
+      "t25_improvement": 0.3275477337994004,
+      "t50_improvement": 0.5204114900752006,
+      "t100_raw_frame_diagnostic_improvement": 0.3311669004317135,
+      "hard_failure_improvement": 0.47410736359756456,
+      "easy_degradation": -0.33737155000181906,
+      "switch_rate": 0.8590886161089625,
+      "harm_over_fallback": -0.25920522204917384
+    }
+  },
+  "routers": {
+    "history_only": {
+      "source": "fresh_run",
+      "candidate": "history_only",
+      "validation_selection": {
+        "source": "validation_only",
+        "test_threshold_tuning": false,
+        "candidate_count": 32,
+        "selected_lambda": 100.0,
+        "selected_pred_gain_threshold": 0.015116438896385706,
+        "selected_val_score": -0.007478416278237425,
+        "selected_val_metric": {
+          "rows": 23788,
+          "all_improvement": -0.0014751637894061531,
+          "t10_improvement": -0.008566496004429158,
+          "t25_improvement": -0.00243821719314008,
+          "t50_improvement": -0.0015563691264104396,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.0012781805630626142,
+          "easy_degradation": 0.0067812819424457604,
+          "switch_rate": 0.05002522280141248,
+          "harm_over_fallback": 0.0004159128528499144
+        }
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": -0.0071827846425360775,
+        "t10_improvement": -0.012324142727211385,
+        "t25_improvement": -0.029364950523842692,
+        "t50_improvement": -0.0027967005172990778,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": -0.004945087951140126,
+        "easy_degradation": 0.00516646602139148,
+        "switch_rate": 0.20142020312697542,
+        "harm_over_fallback": 0.002356016183164126
+      },
+      "bootstrap_vs_baseline_family": {
+        "all": {
+          "low": -0.007813300327781509,
+          "mid": -0.007180327961646138,
+          "high": -0.006453167338788102,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -0.003509954267691956,
+          "mid": -0.0027777621810927133,
+          "high": -0.002168227175253379,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": -0.00555011116840255,
+          "mid": -0.004921601330888703,
+          "high": -0.0042949778238864705,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.00317180462276932,
+          "mid": 0.005126486852990275,
+          "high": 0.007075848284314548,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "router_switch_rate_test": 0.20142020312697542,
+      "increment_supported": false,
+      "candidate_policy": {
+        "lambda": 0.1,
+        "policy_slice_count": 8,
+        "val_metric_vs_causal_floor": {
+          "rows": 23788,
+          "all_improvement": 0.27869840530150214,
+          "t10_improvement": 0.7574401131825683,
+          "t25_improvement": 0.1168849086476278,
+          "t50_improvement": 0.3966551930920249,
+          "t100_raw_frame_diagnostic_improvement": 0.0054237465718756095,
+          "hard_failure_improvement": 0.2709829099083536,
+          "easy_degradation": -0.22467583037254657,
+          "switch_rate": 0.5565831511686564,
+          "harm_over_fallback": -0.15081728794264146
+        }
+      }
+    },
+    "motion_goal_context": {
+      "source": "fresh_run",
+      "candidate": "motion_goal_context",
+      "validation_selection": {
+        "source": "validation_only",
+        "test_threshold_tuning": false,
+        "candidate_count": 35,
+        "selected_lambda": 1.0,
+        "selected_pred_gain_threshold": 0.035417333698390535,
+        "selected_val_score": -0.0027799724754199832,
+        "selected_val_metric": {
+          "rows": 23788,
+          "all_improvement": -0.00039847284142857653,
+          "t10_improvement": -0.0028307980284343337,
+          "t25_improvement": -0.0006469399235204953,
+          "t50_improvement": -0.00022937839249359548,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.00035517232301462975,
+          "easy_degradation": 0.002036531139947506,
+          "switch_rate": 0.04994114679670422,
+          "harm_over_fallback": 0.00011234683053636029
+        }
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": -0.004645511309289363,
+        "t10_improvement": -0.01485918784037854,
+        "t25_improvement": -0.013101433412107566,
+        "t50_improvement": -0.001104374447666867,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": -0.0034112991788557423,
+        "easy_degradation": 0.01022229760404847,
+        "switch_rate": 0.09935100509924565,
+        "harm_over_fallback": 0.0015237683389451426
+      },
+      "bootstrap_vs_baseline_family": {
+        "all": {
+          "low": -0.005124207395480185,
+          "mid": -0.0046358528392766996,
+          "high": -0.004166845265108687,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -0.0015130985000051888,
+          "mid": -0.0010983492094980285,
+          "high": -0.0006509010294392437,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": -0.0038837168858253,
+          "mid": -0.003401852644644654,
+          "high": -0.00293526277877178,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.00820982708726491,
+          "mid": 0.010146896792801119,
+          "high": 0.012099000447864976,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "router_switch_rate_test": 0.09935100509924565,
+      "increment_supported": false,
+      "candidate_policy": {
+        "lambda": 100.0,
+        "policy_slice_count": 8,
+        "val_metric_vs_causal_floor": {
+          "rows": 23788,
+          "all_improvement": 0.2784062326150293,
+          "t10_improvement": 0.7566186966888624,
+          "t25_improvement": 0.11660041843320501,
+          "t50_improvement": 0.39637423343330713,
+          "t100_raw_frame_diagnostic_improvement": 0.0054059182400404415,
+          "hard_failure_improvement": 0.2707492154749781,
+          "easy_degradation": -0.2277622986519393,
+          "switch_rate": 0.5565831511686564,
+          "harm_over_fallback": -0.15065917906456203
+        }
+      }
+    },
+    "baseline_plus_history_goal_neighbor": {
+      "source": "fresh_run",
+      "candidate": "baseline_plus_history_goal_neighbor",
+      "validation_selection": {
+        "source": "validation_only",
+        "test_threshold_tuning": false,
+        "candidate_count": 4,
+        "selected_lambda": 0.1,
+        "selected_pred_gain_threshold": 0.02049279494091685,
+        "selected_val_score": -0.021271615286518202,
+        "selected_val_metric": {
+          "rows": 23788,
+          "all_improvement": -0.0032758486211930116,
+          "t10_improvement": -0.00909601192250431,
+          "t25_improvement": -0.009500367355820938,
+          "t50_improvement": -0.00715190656173359,
+          "t100_raw_frame_diagnostic_improvement": 0.0012357410710120975,
+          "hard_failure_improvement": -0.002696734950839774,
+          "easy_degradation": 0.015286825322151865,
+          "switch_rate": 0.05002522280141248,
+          "harm_over_fallback": 0.0009236042501378103
+        }
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 47458,
+        "all_improvement": 0.0002777062145067344,
+        "t10_improvement": -7.966778287538112e-05,
+        "t25_improvement": 0.001799831183767031,
+        "t50_improvement": -1.9298584715388145e-05,
+        "t100_raw_frame_diagnostic_improvement": 4.067379614114408e-05,
+        "hard_failure_improvement": 0.0003214139546370287,
+        "easy_degradation": -0.0026661134785408436,
+        "switch_rate": 0.027392641914956384,
+        "harm_over_fallback": -9.109006716813104e-05
+      },
+      "bootstrap_vs_baseline_family": {
+        "all": {
+          "low": 0.0001462156362464856,
+          "mid": 0.0002748380317723065,
+          "high": 0.00042640996028056876,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": -9.026780983494853e-05,
+          "mid": -1.3459371392854358e-05,
+          "high": 4.23207146641319e-05,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0001777142396157866,
+          "mid": 0.0003174317855387798,
+          "high": 0.000475139320849624,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.004062112749092794,
+          "mid": -0.0026174556100356794,
+          "high": -0.001459322098187205,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      },
+      "router_switch_rate_test": 0.027392641914956384,
+      "increment_supported": false,
+      "candidate_policy": {
+        "lambda": 100.0,
+        "policy_slice_count": 8,
+        "val_metric_vs_causal_floor": {
+          "rows": 23788,
+          "all_improvement": 0.4408939341861645,
+          "t10_improvement": 0.6928791809089825,
+          "t25_improvement": 0.3042341730290602,
+          "t50_improvement": 0.47362173836075094,
+          "t100_raw_frame_diagnostic_improvement": 0.33025201024339657,
+          "hard_failure_improvement": 0.43658325454875535,
+          "easy_degradation": -0.2874272837926436,
+          "switch_rate": 0.8334874726752984,
+          "harm_over_fallback": -0.2385891923291905
+        }
+      }
+    }
+  },
+  "positive_context_gain_routers": [],
+  "best_router": "baseline_plus_history_goal_neighbor",
+  "summary": {
+    "source": "fresh_stage42_context_gain_router",
+    "router_target": "predict supervised gain of context proposal over baseline-family protected control",
+    "candidates": [
+      "history_only",
+      "motion_goal_context",
+      "baseline_plus_history_goal_neighbor"
+    ],
+    "positive_context_gain_routers": [],
+    "best_router": "baseline_plus_history_goal_neighbor",
+    "best_router_test_metric_vs_baseline_family": {
+      "rows": 47458,
+      "all_improvement": 0.0002777062145067344,
+      "t10_improvement": -7.966778287538112e-05,
+      "t25_improvement": 0.001799831183767031,
+      "t50_improvement": -1.9298584715388145e-05,
+      "t100_raw_frame_diagnostic_improvement": 4.067379614114408e-05,
+      "hard_failure_improvement": 0.0003214139546370287,
+      "easy_degradation": -0.0026661134785408436,
+      "switch_rate": 0.027392641914956384,
+      "harm_over_fallback": -9.109006716813104e-05
+    },
+    "context_increment_verdict": "stage42_el_context_gain_router_not_supported",
+    "interpretation": "This is a deployment-aligned context target. Positive routers would support context as a safe switchability signal over the baseline-family control. Negative routers preserve the current conclusion that context is not yet an independent deployable contribution under this source-level protocol."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "train_supervised_gain_label_only": true,
+    "validation_selected_thresholds": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_el_gate": {
+    "gates": {
+      "source_level_split_used": true,
+      "baseline_family_control_loaded": true,
+      "gain_router_candidates_complete": true,
+      "validation_only_selection": true,
+      "context_increment_measured": true,
+      "negative_or_positive_claim_bounded": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 10,
+    "total": 10,
+    "verdict": "stage42_el_context_gain_router_pass"
+  }
+}
