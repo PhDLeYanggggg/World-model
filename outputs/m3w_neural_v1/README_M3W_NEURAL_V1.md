@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FJ: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence, and Stage42-FJ confirms dual-domain/source robustness while blocking uniform horizon overclaim.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FK: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence, Stage42-FJ confirms dual-domain/source robustness while blocking uniform horizon overclaim, and Stage42-FK attempts validation-only horizon repair but still keeps the uniform-horizon claim blocked.
 
 Latest current-goal work summary requested by the user:
 
@@ -2250,3 +2250,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - broad uniform horizon claim allowed: `False`.
 - Boundary: frozen protected source-level raw-frame 2.5D audit; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FJ_FH_SOURCE_ROBUSTNESS:END -->
+
+<!-- STAGE42_FK_FH_HORIZON_WEAK_SLICE_REPAIR:START -->
+## Stage42-FK FH Horizon Weak-Slice Validation Repair
+
+- source: `fresh_stage42_fh_horizon_weak_slice_repair`
+- role: validation-only repair attempt for FJ weak horizon slices; no retraining and no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fk_fh_horizon_weak_slice_repair_pass_with_horizon_limit`.
+- global all/t50/t100raw/hard/easy: `35.18%` / `28.97%` / `21.13%` / `33.33%` / `-36.88%`.
+- weak horizons before: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- weak horizons after: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- applied overrides: `{'TrajNet|100': {'candidate': 'fb', 'rows': 5608, 'reason': 'validation_safe_best_score'}, 'UCY|50': {'candidate': 'fh', 'rows': 2340, 'reason': 'validation_safe_best_score'}, 'UCY|100': {'candidate': 'fa', 'rows': 1440, 'reason': 'validation_safe_best_score'}}`.
+- uniform horizon claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FK_FH_HORIZON_WEAK_SLICE_REPAIR:END -->
