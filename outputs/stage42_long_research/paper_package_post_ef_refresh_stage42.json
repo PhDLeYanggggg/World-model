@@ -1,0 +1,320 @@
+{
+  "source": "fresh_paper_refresh_from_stage42_eb_ec_ee_ef",
+  "stage": "Stage42-EG",
+  "generated_at_utc": "2026-05-27T02:06:32.360061+00:00",
+  "git_commit": "65c213e",
+  "input_hash": "d01b72d099be39fc0456f2e9cf198a86df983dd14b54a944e9761f2f13cec5a5",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-EG is a post-EE/EF paper claim refresh; it does not train, convert, download, or tune thresholds.",
+    "本阶段把 context materiality negative result 和 source terms gap 写入 paper claim/gap matrix。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "inputs": {
+    "stage42_eb": {
+      "stage42_eb_gate": {
+        "source": "fresh_paper_refresh_from_stage42_dy_dz_ea",
+        "gates": {
+          "dy_gate_passed": true,
+          "dz_gate_passed": true,
+          "ea_gate_passed": true,
+          "paper_files_refreshed": true,
+          "dual_domain_bootstrap_recorded": true,
+          "loss_family_primary_blocked": true,
+          "group_consistency_claim_allowed": true,
+          "context_overclaims_blocked": true,
+          "ungated_and_global_primary_blocked": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 12,
+        "total": 12,
+        "verdict": "stage42_eb_post_ea_paper_refresh_pass"
+      }
+    },
+    "stage42_ec": {
+      "stage42_ec_gate": {
+        "gates": {
+          "dy_input_passed": true,
+          "dz_input_passed": true,
+          "ea_input_passed": true,
+          "dp_input_passed": true,
+          "group_consistency_supported": true,
+          "dual_domain_bootstrap_supported": true,
+          "ucy_ci_positive_safe": true,
+          "trajnet_ci_positive_safe": true,
+          "near_collision_repaired": true,
+          "scalar_loss_family_blocked": true,
+          "context_residual_protocol_closed": true,
+          "goal_scene_overclaim_blocked": true,
+          "neighbor_interaction_overclaim_blocked": true,
+          "ungated_global_replacement_blocked": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 17,
+        "total": 17,
+        "verdict": "stage42_ec_group_consistency_contribution_audit_pass"
+      }
+    },
+    "stage42_ee": {
+      "stage42_ee_gate": {
+        "gates": {
+          "dc_fresh_rerun_passed": true,
+          "multiple_context_candidates_checked": true,
+          "materiality_threshold_recorded": true,
+          "selected_delta_recorded": true,
+          "context_materiality_decision_recorded": true,
+          "micro_delta_not_overclaimed": true,
+          "root_cause_written": true,
+          "next_action_written": true,
+          "no_future_or_test_leakage": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 12,
+        "total": 12,
+        "verdict": "stage42_ee_context_switchability_materiality_audit_pass"
+      }
+    },
+    "stage42_ef": {
+      "stage42_ef_gate": {
+        "gates": {
+          "cg_fresh_rerun_passed": true,
+          "ed_input_passed": true,
+          "all_targets_gap_scored": true,
+          "empty_template_still_blocks_conversion": true,
+          "ucy_priority_preserved": true,
+          "eth_priority_present": true,
+          "technical_potential_recorded": true,
+          "missing_fields_are_concrete": true,
+          "user_action_written": true,
+          "no_conversion_or_eval_claim": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 13,
+        "total": 13,
+        "verdict": "stage42_ef_source_terms_gap_audit_pass"
+      }
+    }
+  },
+  "paper_refresh_summary": {
+    "source": "fresh_paper_refresh_from_stage42_eb_ec_ee_ef",
+    "supported_main_claims": [
+      "protected_source_level_group_consistency_full_waypoint"
+    ],
+    "blocked_or_diagnostic_claims": [
+      "current_context_switchability_scene_goal_neighbor_interaction",
+      "source_conversion_metric_time_expansion",
+      "global_metric_or_seconds_level_world_model"
+    ],
+    "context_materiality": {
+      "selected_candidate": "baseline_plus_knn_graph",
+      "material_context_contribution": false,
+      "delta_all": 0.0003680600817682622,
+      "delta_t50": -7.392355340352097e-05,
+      "delta_hard": 0.00042399040031126933,
+      "threshold": 0.01
+    },
+    "source_terms_gap": {
+      "conversion_ready_now": 0,
+      "converted_datasets_now": 0,
+      "evaluated_datasets_now": 0,
+      "estimated_t50_windows_after_terms": 10060,
+      "estimated_t100_windows_after_terms": 5696,
+      "top_unblock_targets": [
+        "ucy_crowd_original",
+        "eth_biwi_original",
+        "aerialmpt_or_other_topdown"
+      ]
+    },
+    "paper_claim_matrix": [
+      {
+        "claim": "protected_source_level_group_consistency_full_waypoint",
+        "status": "supported_source_level",
+        "evidence": "Stage42-EC/DY/DZ/EA supports explicit group-consistency full-waypoint source-level repair with dual-domain bootstrap.",
+        "main_claim_allowed": true,
+        "boundary": "protected, source-level, dataset-local/raw-frame only; not global ungated replacement",
+        "key_numbers": {
+          "global_all_ci_low": 0.32561590986908956,
+          "global_t50_ci_low": 0.2653276586221581,
+          "global_hard_ci_low": 0.31511510693704503
+        }
+      },
+      {
+        "claim": "current_context_switchability_scene_goal_neighbor_interaction",
+        "status": "blocked_materiality_too_small",
+        "evidence": "Stage42-EE fresh-reruns Stage42-DC and finds selected context deltas far below 1pp materiality threshold.",
+        "main_claim_allowed": false,
+        "boundary": "may be discussed as negative evidence and future work only",
+        "key_numbers": {
+          "delta_all": 0.0003680600817682622,
+          "delta_t50": -7.392355340352097e-05,
+          "delta_hard": 0.00042399040031126933,
+          "material_delta_threshold": 0.01
+        }
+      },
+      {
+        "claim": "source_conversion_metric_time_expansion",
+        "status": "blocked_until_terms_confirmation",
+        "evidence": "Stage42-EF reruns source terms validation and records conversion_ready_now=0 with concrete missing fields.",
+        "main_claim_allowed": false,
+        "boundary": "technical-after-terms potential can be reported, but no conversion/evaluation/metric-time claim is allowed now",
+        "key_numbers": {
+          "conversion_ready_now": 0,
+          "estimated_t50_windows_after_terms": 10060,
+          "estimated_t100_windows_after_terms": 5696,
+          "top_unblock_targets": [
+            "ucy_crowd_original",
+            "eth_biwi_original",
+            "aerialmpt_or_other_topdown"
+          ]
+        }
+      },
+      {
+        "claim": "global_metric_or_seconds_level_world_model",
+        "status": "forbidden",
+        "evidence": "Metric/time calibration remains source-specific and legally blocked for new conversion; SDD/external remain raw-frame/dataset-local.",
+        "main_claim_allowed": false,
+        "boundary": "no global metric, no seconds-level horizon, no true-3D/foundation claim",
+        "key_numbers": {}
+      }
+    ],
+    "paper_verdict": {
+      "paper_package_refreshed_after_ee_ef": true,
+      "group_consistency_main_claim_allowed": true,
+      "context_main_claim_allowed": false,
+      "source_conversion_claim_allowed": false,
+      "metric_seconds_claim_allowed": false,
+      "foundation_claim_allowed": false,
+      "stage5c_execution_allowed": false,
+      "smc_allowed": false,
+      "a_journal_candidate_status": "protected_2p5d_candidate_package_strengthened_but_not_foundation_or_metric_ready"
+    },
+    "eb_verdict": "stage42_eb_post_ea_paper_refresh_pass"
+  },
+  "paper_file_status": [
+    {
+      "path": "outputs/stage42_long_research/paper_outline_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/method_draft_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/experiment_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/ablation_tables_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/model_card_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/data_card_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/reproducibility_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    },
+    {
+      "path": "outputs/stage42_long_research/a_journal_gap_stage42.md",
+      "exists": true,
+      "contains_stage42_eg": true,
+      "contains_context_blocker": true,
+      "contains_source_terms_blocker": true,
+      "contains_group_claim": true,
+      "contains_non_claims": true
+    }
+  ],
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "context_main_claim_allowed": false,
+    "source_conversion_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_eg_gate": {
+    "gates": {
+      "eb_input_passed": true,
+      "ec_input_passed": true,
+      "ee_input_passed": true,
+      "ef_input_passed": true,
+      "paper_files_refreshed": true,
+      "group_consistency_claim_preserved": true,
+      "context_main_claim_blocked": true,
+      "source_conversion_claim_blocked": true,
+      "metric_seconds_overclaim_blocked": true,
+      "foundation_overclaim_blocked": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_eg_post_ee_ef_paper_refresh_pass"
+  }
+}

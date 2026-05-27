@@ -2,8 +2,8 @@
 
 更新时间：2026-05-27  
 工作目录：`/Users/yangyue/Downloads/World`  
-结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF 证据刷新。
-最近完整测试记录：Stage42-EF 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`707 passed in 32.55s`。
+结果来源：`cached_verified` 汇总已生成报告、gate、README、`research_state.json`，并纳入最新 Stage42-DY / DZ / EA / EB / EC / ED / EE / EF / EG 证据刷新。
+最近完整测试记录：Stage42-EG 后 `.venv-pytorch/bin/python -m pytest tests` 通过，`710 passed in 31.40s`。
 
 这份 README 是给人的总账。它回答：在 M3W 这个长期目标里到底做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、现在模型大概是什么质量，以及哪些结论仍然禁止写。
 
@@ -36,7 +36,7 @@ protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
 | Protected neural/world-state candidate | M3W-Neural v1 / Stage41-42 protected composer family | 有 protected neural / full-waypoint / runtime replay 证据，但仍依赖 safety floor。 |
 | Safety-sensitive bridge/shape policy | Stage42-CQ proximity-aware composer guard | 牺牲部分 ADE 增益，修复 near-collision caveat。 |
 | Source-level full-waypoint runtime policy | Stage42-DL / DQ group-consistency full-waypoint runtime policy | 可调用、exact replay、source-level promotable；不是 global ungated replacement。 |
-| Paper/evidence package | Stage42-DR post-DP/DQ refresh | 论文包已同步 latest negative/positive evidence；仍不是 full A-journal-ready / foundation claim。 |
+| Paper/evidence package | Stage42-EG post-EE/EF refresh | 论文包已同步 context materiality negative evidence 和 source terms gap；仍不是 full A-journal-ready / foundation claim。 |
 
 ## 1. 永久边界
 
@@ -594,3 +594,19 @@ SMC 是否启用：否
 - top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; estimated t50/t100 after terms `10060` / `5696`.
 - boundary: no legal conversion, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:END -->
+
+<!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:START -->
+## Stage42-EG Post-EE/EF Paper Claim Refresh
+
+- source: `fresh_paper_refresh_from_stage42_eb_ec_ee_ef`
+- role: integrate context materiality and source terms gap evidence into the paper claim/gap matrix.
+- This is a paper-package refresh, not new training, conversion, download, or threshold tuning.
+
+### Main Claim Boundary After EE/EF
+
+- Supported main claim: protected source-level group-consistency full-waypoint dynamics with dual-domain bootstrap evidence.
+- Context main claim remains blocked: selected `baseline_plus_knn_graph` deltas all/t50/hard `0.000368` / `-0.000074` / `0.000424`, below threshold `0.01`.
+- Source conversion remains blocked: conversion_ready_now `0`, converted/evaluated now `0` / `0`.
+- Source unlock potential after terms: t50/t100 `10060` / `5696`, top targets `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`.
+- Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
+<!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:END -->

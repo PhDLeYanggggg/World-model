@@ -76,7 +76,10 @@ latest full-waypoint deployment gap audit = Stage42-DE, 17 / 17 gates, primary d
 latest all-hard/proximity repair = Stage42-DF, 12 / 14 gates, threshold/proximity repair negative vs endpoint-linear and CQ
 latest all-hard weighted-loss retraining = Stage42-DG, 13 / 15 gates, reproduces Stage42-AM but does not improve it
 latest proximity/occupancy weighted retraining = Stage42-DH, 15 / 16 gates, slight all gain vs AM but hard/failure primary blocker remains
-latest full pytest = 644 passed
+latest context materiality audit = Stage42-EE, 12 / 12 gates, selected context deltas below 1pp materiality threshold
+latest source terms gap audit = Stage42-EF, 13 / 13 gates, conversion_ready_now remains 0
+latest paper claim refresh = Stage42-EG, 12 / 12 gates, supported claim limited to protected source-level group-consistency full-waypoint dynamics
+latest full pytest = 710 passed
 ```
 
 ```text
@@ -4800,3 +4803,19 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; estimated t50/t100 after terms `10060` / `5696`.
 - boundary: no legal conversion, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:END -->
+
+<!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:START -->
+## Stage42-EG Post-EE/EF Paper Claim Refresh
+
+- source: `fresh_paper_refresh_from_stage42_eb_ec_ee_ef`
+- role: integrate context materiality and source terms gap evidence into the paper claim/gap matrix.
+- This is a paper-package refresh, not new training, conversion, download, or threshold tuning.
+
+### Main Claim Boundary After EE/EF
+
+- Supported main claim: protected source-level group-consistency full-waypoint dynamics with dual-domain bootstrap evidence.
+- Context main claim remains blocked: selected `baseline_plus_knn_graph` deltas all/t50/hard `0.000368` / `-0.000074` / `0.000424`, below threshold `0.01`.
+- Source conversion remains blocked: conversion_ready_now `0`, converted/evaluated now `0` / `0`.
+- Source unlock potential after terms: t50/t100 `10060` / `5696`, top targets `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`.
+- Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
+<!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:END -->

@@ -1,6 +1,6 @@
 {
-  "current_stage": "Stage42-EF source terms gap audit",
-  "current_verdict": "stage42_ef_source_terms_gap_audit_pass",
+  "current_stage": "Stage42-EG post-EE/EF paper claim refresh",
+  "current_verdict": "stage42_eg_post_ee_ef_paper_refresh_pass",
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ed_reports",
     "path": "README_M3W_GOAL_DETAILED_LEDGER_ZH.md",
@@ -19,17 +19,18 @@
     ]
   },
   "m3w_target_work_summary_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_dr_reports",
+    "source": "cached_verified_summary_from_stage18_to_stage42_eg_reports",
     "path": "README_M3W_TARGET_WORK_SUMMARY_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Detailed Chinese summary requested by user: what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current quality, current best deployable family, and strict claim boundaries.",
     "latest_included_evidence": [
-      "Stage42-DP context model closure",
-      "Stage42-DQ full-waypoint promotion checkpoint",
-      "Stage42-DR post-DP/DQ paper package refresh"
+      "Stage42-EE context switchability materiality audit",
+      "Stage42-EF source terms gap audit",
+      "Stage42-EG post-EE/EF paper claim refresh"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime via Stage42-DL/DQ group-consistency full-waypoint policy",
+    "latest_verification": ".venv-pytorch/bin/python -m pytest tests -> 710 passed in 31.40s",
     "not_claimed": [
       "true_3d_world_model",
       "large_scale_foundation_world_model",
@@ -20270,6 +20271,122 @@
       "global_seconds_claim_allowed": false,
       "converted_datasets_now": 0,
       "evaluated_datasets_now": 0,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
+  },
+  "stage42_eg_post_ee_ef_paper_refresh": {
+    "source": "fresh_paper_refresh_from_stage42_eb_ec_ee_ef",
+    "report": "outputs/stage42_long_research/paper_package_post_ef_refresh_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_eg_gate.md",
+    "verdict": "stage42_eg_post_ee_ef_paper_refresh_pass",
+    "gates": "12/12",
+    "verification": {
+      "targeted_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_post_ef_paper_refresh.py -> 3 passed in 1.02s",
+      "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 710 passed in 31.40s"
+    },
+    "summary": {
+      "source": "fresh_paper_refresh_from_stage42_eb_ec_ee_ef",
+      "supported_main_claims": [
+        "protected_source_level_group_consistency_full_waypoint"
+      ],
+      "blocked_or_diagnostic_claims": [
+        "current_context_switchability_scene_goal_neighbor_interaction",
+        "source_conversion_metric_time_expansion",
+        "global_metric_or_seconds_level_world_model"
+      ],
+      "context_materiality": {
+        "selected_candidate": "baseline_plus_knn_graph",
+        "material_context_contribution": false,
+        "delta_all": 0.0003680600817682622,
+        "delta_t50": -7.392355340352097e-05,
+        "delta_hard": 0.00042399040031126933,
+        "threshold": 0.01
+      },
+      "source_terms_gap": {
+        "conversion_ready_now": 0,
+        "converted_datasets_now": 0,
+        "evaluated_datasets_now": 0,
+        "estimated_t50_windows_after_terms": 10060,
+        "estimated_t100_windows_after_terms": 5696,
+        "top_unblock_targets": [
+          "ucy_crowd_original",
+          "eth_biwi_original",
+          "aerialmpt_or_other_topdown"
+        ]
+      },
+      "paper_claim_matrix": [
+        {
+          "claim": "protected_source_level_group_consistency_full_waypoint",
+          "status": "supported_source_level",
+          "evidence": "Stage42-EC/DY/DZ/EA supports explicit group-consistency full-waypoint source-level repair with dual-domain bootstrap.",
+          "main_claim_allowed": true,
+          "boundary": "protected, source-level, dataset-local/raw-frame only; not global ungated replacement",
+          "key_numbers": {
+            "global_all_ci_low": 0.32561590986908956,
+            "global_t50_ci_low": 0.2653276586221581,
+            "global_hard_ci_low": 0.31511510693704503
+          }
+        },
+        {
+          "claim": "current_context_switchability_scene_goal_neighbor_interaction",
+          "status": "blocked_materiality_too_small",
+          "evidence": "Stage42-EE fresh-reruns Stage42-DC and finds selected context deltas far below 1pp materiality threshold.",
+          "main_claim_allowed": false,
+          "boundary": "may be discussed as negative evidence and future work only",
+          "key_numbers": {
+            "delta_all": 0.0003680600817682622,
+            "delta_t50": -7.392355340352097e-05,
+            "delta_hard": 0.00042399040031126933,
+            "material_delta_threshold": 0.01
+          }
+        },
+        {
+          "claim": "source_conversion_metric_time_expansion",
+          "status": "blocked_until_terms_confirmation",
+          "evidence": "Stage42-EF reruns source terms validation and records conversion_ready_now=0 with concrete missing fields.",
+          "main_claim_allowed": false,
+          "boundary": "technical-after-terms potential can be reported, but no conversion/evaluation/metric-time claim is allowed now",
+          "key_numbers": {
+            "conversion_ready_now": 0,
+            "estimated_t50_windows_after_terms": 10060,
+            "estimated_t100_windows_after_terms": 5696,
+            "top_unblock_targets": [
+              "ucy_crowd_original",
+              "eth_biwi_original",
+              "aerialmpt_or_other_topdown"
+            ]
+          }
+        },
+        {
+          "claim": "global_metric_or_seconds_level_world_model",
+          "status": "forbidden",
+          "evidence": "Metric/time calibration remains source-specific and legally blocked for new conversion; SDD/external remain raw-frame/dataset-local.",
+          "main_claim_allowed": false,
+          "boundary": "no global metric, no seconds-level horizon, no true-3D/foundation claim",
+          "key_numbers": {}
+        }
+      ],
+      "paper_verdict": {
+        "paper_package_refreshed_after_ee_ef": true,
+        "group_consistency_main_claim_allowed": true,
+        "context_main_claim_allowed": false,
+        "source_conversion_claim_allowed": false,
+        "metric_seconds_claim_allowed": false,
+        "foundation_claim_allowed": false,
+        "stage5c_execution_allowed": false,
+        "smc_allowed": false,
+        "a_journal_candidate_status": "protected_2p5d_candidate_package_strengthened_but_not_foundation_or_metric_ready"
+      },
+      "eb_verdict": "stage42_eb_post_ea_paper_refresh_pass"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "context_main_claim_allowed": false,
+      "source_conversion_claim_allowed": false,
       "stage5c_executed": false,
       "smc_enabled": false
     }

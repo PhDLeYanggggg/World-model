@@ -8,7 +8,7 @@ Latest current-goal work summary requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_TARGET_WORK_SUMMARY_ZH.md`
 
-This root README summarizes what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, the current best deployable family, and the strict claim boundaries. It includes the latest Stage42-DP/DQ/DR evidence: closure of the current sequence/graph residual context protocol, promotion of the protected source-level group-consistency full-waypoint runtime policy, and paper-package refresh after those positive/negative findings.
+This root README summarizes what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, the current best deployable family, and the strict claim boundaries. It now includes the latest Stage42-EE/EF/EG evidence: context switchability remains below materiality threshold, source conversion remains legally blocked until terms/path confirmation, and the paper claim matrix only allows the protected source-level group-consistency full-waypoint claim.
 
 Latest user-facing route/failure/success summary:
 
@@ -1823,3 +1823,19 @@ The context contribution map is now explicit: baseline-family rollout context is
 - top unblock targets: `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`; estimated t50/t100 after terms `10060` / `5696`.
 - boundary: no legal conversion, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_EF_SOURCE_TERMS_GAP_AUDIT:END -->
+
+<!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:START -->
+## Stage42-EG Post-EE/EF Paper Claim Refresh
+
+- source: `fresh_paper_refresh_from_stage42_eb_ec_ee_ef`
+- role: integrate context materiality and source terms gap evidence into the paper claim/gap matrix.
+- This is a paper-package refresh, not new training, conversion, download, or threshold tuning.
+
+### Main Claim Boundary After EE/EF
+
+- Supported main claim: protected source-level group-consistency full-waypoint dynamics with dual-domain bootstrap evidence.
+- Context main claim remains blocked: selected `baseline_plus_knn_graph` deltas all/t50/hard `0.000368` / `-0.000074` / `0.000424`, below threshold `0.01`.
+- Source conversion remains blocked: conversion_ready_now `0`, converted/evaluated now `0` / `0`.
+- Source unlock potential after terms: t50/t100 `10060` / `5696`, top targets `['ucy_crowd_original', 'eth_biwi_original', 'aerialmpt_or_other_topdown']`.
+- Still forbidden: true 3D, foundation model, global metric/seconds-level claims, Stage5C execution, and SMC readiness.
+<!-- STAGE42_EG_POST_EE_EF_PAPER_REFRESH:END -->
