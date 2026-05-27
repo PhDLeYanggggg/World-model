@@ -481,3 +481,19 @@ SMC 是否启用：否。
 - conclusion: Stage42-P is positive on mean t+50 and stable on FDE t+50, but ADE t+50 is not yet seed-CI stable enough for a paper-level t+50 ADE claim.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IF_T50_GAIN_HARM_STABILITY_AUDIT:END -->
+
+<!-- STAGE42_IG_T50_GAIN_HARM_ROW_BOOTSTRAP:START -->
+## Stage42-IG T50 Gain/Harm Row Bootstrap
+
+- source: `fresh_stage42_ig_t50_gain_harm_row_bootstrap`
+- verdict: `stage42_ig_row_bootstrap_validates_selected_seed_with_multiseed_blocker`
+- gates: `15 / 15`
+- validation-selected seed: `151`
+- selected ADE t50 / CI low: `0.028352` / `0.023371`
+- selected FDE t50 / CI low: `0.067566` / `0.060976`
+- selected ADE hard/failure: `0.054677`
+- selected ADE easy degradation: `0.007574`
+- multiseed ADE t50 CI low remains: `-0.017931`
+- conclusion: validation-selected row-level t+50 evidence is positive, but seed-stable ADE t+50 remains an open blocker.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IG_T50_GAIN_HARM_ROW_BOOTSTRAP:END -->
