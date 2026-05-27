@@ -466,3 +466,18 @@ SMC 是否启用：否。
 - IE verifies the current paper package obeys the Stage42-ID contract: protected dataset-local/raw-frame 2.5D only; no true-3D/foundation/metric-seconds/Stage5C/SMC overclaim.
 - This is compliance verification only, not new training, conversion, download, or evaluation.
 <!-- STAGE42_IE_PAPER_CONTRACT_COMPLIANCE:END -->
+
+<!-- STAGE42_IF_T50_GAIN_HARM_STABILITY_AUDIT:START -->
+## Stage42-IF T50 Gain/Harm Stability Audit
+
+- source: `fresh_stage42_if_t50_gain_harm_stability_audit`
+- verdict: `stage42_if_t50_gain_harm_ci_blocker_identified`
+- gates: `13 / 14`
+- ADE t50 mean / CI low: `0.006596` / `-0.017931`
+- FDE t50 mean / CI low: `0.057431` / `0.046360`
+- negative ADE t50 seeds: `1`
+- validation-selected seed test ADE t50: `0.028352`
+- row bootstrap status: `not_run_blocked_by_missing_row_errors_in_stage42p_artifact`
+- conclusion: Stage42-P is positive on mean t+50 and stable on FDE t+50, but ADE t+50 is not yet seed-CI stable enough for a paper-level t+50 ADE claim.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IF_T50_GAIN_HARM_STABILITY_AUDIT:END -->
