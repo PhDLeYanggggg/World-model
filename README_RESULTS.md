@@ -5428,3 +5428,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - Highest-value path remains UCY terms/path confirmation plus guarded conversion/no-leakage/source-CV; TrajNet h100 needs a longer legal source because local snippets are too short.
 - Claim boundary unchanged: protected dataset-local/raw-frame 2.5D only; not true 3D, not foundation, not metric/seconds-level.
 <!-- STAGE42_FW_SOURCE_ACTION_CONSOLIDATOR:END -->
+
+<!-- STAGE42_FX_OBJECTIVE_COVERAGE_AUDIT:START -->
+## Stage42-FX Objective Coverage Audit
+
+- source: `fresh_stage42_objective_coverage_audit_from_current_evidence`
+- gate: `15 / 15`; verdict `stage42_fx_objective_coverage_audit_pass`.
+- objectives covered: `6`; blocked objectives `['A']`; partial objectives `['B', 'C', 'D']`; passed objectives `['E']`.
+- current best status: `protected_dataset_local_raw_frame_2_5d_candidate`.
+- highest-priority next action: `FW-TERMS-ucy_crowd_original`.
+- role: requirement coverage audit for the active Stage42 A-F long objective; no training, no download, no conversion, no threshold tuning.
+- boundary: goal remains active and incomplete; M3W remains protected dataset-local/raw-frame 2.5D; no true 3D/foundation/global metric/seconds/Stage5C/SMC claim.
+<!-- STAGE42_FX_OBJECTIVE_COVERAGE_AUDIT:END -->
