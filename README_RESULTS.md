@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FE：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 被 validation 选回 teacher_alpha=0 的 FC-like 控制项；Stage42-FE constrained FC/safety composer 终于把 FC 高精度与 DI proximity safety 组合起来：all/t50/hard `26.41% / 23.15% / 24.81%`，near@0.05 `1.32%`，比 FC 低 `0.54pp` 且不劣于 DI。当前结论是：简单 teacher blend 不足，但 validation-only constrained FC→DI safety fallback 能打破 FC 的 proximity blocker，是新的 promotable protected source-level policy。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它详细总结了 M3W 长期目标内已经尝试过的路线、失败原因、成功证据、当前 best deployable 分层、当前模型质量、仍然禁止的 claim，以及下一步最短路径。最新纳入 Stage42-ES 到 Stage42-FG：scalar proximity/occupancy 目标保留为 diagnostic，explicit source/frame/horizon group-consistency 被选为下一步 interaction/occupancy target；Stage42-EU/EV/EW/EX/EY 证明 group-risk/adaptive repair bucket 没有超过 Stage42-DI；Stage42-EZ/FA 证明 temporal/waypoint repel 分别落在 accuracy/proximity 两侧；Stage42-FB DI/FA Pareto composer 把 near@0.05 降到 1.10%，但 all/hard 各损失约 0.07pp；Stage42-FC objective-level proximity training 提升 all/t50/hard 但 near@0.05 比 DI 差约 0.48pp；Stage42-FD safety-aware teacher regularization 被 validation 选回 teacher_alpha=0 的 FC-like 控制项；Stage42-FE constrained FC/safety composer 把 FC 高精度与 DI proximity safety 组合起来：all/t50/hard `26.41% / 23.15% / 24.81%`，near@0.05 `1.32%`，比 FC 低 `0.54pp` 且不劣于 DI；Stage42-FF 冻结 FE policy 并做 exact replay + 2000-bootstrap，all/t50/t100raw/hard CI low 为 `26.08% / 22.71% / 13.46% / 24.46%`，replay diff 为 0；Stage42-FG 做 source/domain/horizon 鲁棒性审计，TrajNet robust 但 UCY 仍 weak，TrajNet|100 也有 easy-safety 弱切片，因此 broad uniform source-level claim 仍不允许。当前结论是：validation-only constrained FC→DI safety fallback 能打破 FC 的 proximity blocker，但必须继续做 UCY support / weak-slice repair，不能把 global positive 写成所有 external source 都 positive。严格边界保持不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 长期目标详细总账
 
@@ -5177,3 +5177,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - exact replay max metric/diagnostic diff: `0.0` / `0.0`.
 - Boundary: frozen protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
 <!-- STAGE42_FF_FE_POLICY_FREEZE_REPLAY:END -->
+
+<!-- STAGE42_FG_FE_SOURCE_ROBUSTNESS:START -->
+## Stage42-FG FE Source / Domain / Horizon Robustness Audit
+
+- source: `fresh_stage42_fe_source_robustness_audit`
+- role: audit frozen Stage42-FE/FF across domain/source/horizon/scene slices without retraining or threshold reselection.
+- gate: `11 / 12`; verdict `stage42_fg_fe_source_robustness_partial`.
+- robust domains: `['TrajNet']`.
+- weak domain-horizon slices: `['TrajNet|100', 'UCY|10', 'UCY|25', 'UCY|50', 'UCY|100']`.
+- weak sources: `['TrajNet/Train/crowds/crowds_zara03.txt']`.
+- broad uniform source claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D audit; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FG_FE_SOURCE_ROBUSTNESS:END -->

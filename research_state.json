@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FF FE policy freeze / bootstrap / replay",
-  "current_verdict": "stage42_ff_fe_policy_freeze_replay_pass",
+  "current_stage": "Stage42-FG FE source/domain/horizon robustness audit",
+  "current_verdict": "stage42_fg_fe_source_robustness_partial",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_ff_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fg_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -20,7 +20,8 @@
       "Stage42-FC objective-level proximity training",
       "Stage42-FD safety-aware joint objective training",
       "Stage42-FE constrained FC/safety composer",
-      "Stage42-FF FE policy freeze / bootstrap / replay"
+      "Stage42-FF FE policy freeze / bootstrap / replay",
+      "Stage42-FG FE source/domain/horizon robustness audit"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -35,7 +36,7 @@
     ],
     "summary_refresh_only": true,
     "latest_full_pytest_after_stage42_fc_refresh": "786 passed in 36.07s",
-    "latest_conclusion": "Stage42-FF freezes the Stage42-FE constrained composer and adds bootstrap/replay evidence, strengthening FE from promotable single-run evidence to frozen reproducible evidence."
+    "latest_conclusion": "Stage42-FG keeps FE honest by auditing source/domain/horizon weak slices after FF freeze/bootstrap, rather than treating global positive evidence as uniform source generalization."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -28489,5 +28490,48 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FF freezes Stage42-FE and adds exact replay plus 2000-bootstrap evidence without reselection or test tuning."
+  },
+  "stage42_fg_fe_source_robustness_audit": {
+    "source": "fresh_stage42_fe_source_robustness_audit",
+    "report": "outputs/stage42_long_research/fe_source_robustness_audit_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fg_gate.md",
+    "verdict": "stage42_fg_fe_source_robustness_partial",
+    "gates": "11/12",
+    "fe_policy_hash": "a78db26aa155b38799f5b866f32a2d205018adf2054d9409a016da3163328dff",
+    "summary": {
+      "source": "fresh_stage42_fe_source_robustness_audit",
+      "test_rows": 47458,
+      "domain_count": 2,
+      "source_count": 3,
+      "domain_horizon_count": 8,
+      "robust_domains": [
+        "TrajNet"
+      ],
+      "weak_domains": [
+        "UCY"
+      ],
+      "weak_domain_horizons": [
+        "TrajNet|100",
+        "UCY|10",
+        "UCY|25",
+        "UCY|50",
+        "UCY|100"
+      ],
+      "weak_sources": [
+        "TrajNet/Train/crowds/crowds_zara03.txt"
+      ],
+      "broad_uniform_source_claim_allowed": false,
+      "paper_claim": "Stage42-FE/FF is frozen and bootstrap-positive globally; Stage42-FG reports source/domain weak slices and only allows broad source claims if no powered weak sources remain."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "broad_uniform_source_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FG audits the frozen FE policy across domain/source/horizon/scene slices and prevents broad source-level overclaiming when weak slices remain."
   }
 }
