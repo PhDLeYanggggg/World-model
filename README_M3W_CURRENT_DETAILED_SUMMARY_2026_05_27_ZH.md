@@ -499,3 +499,16 @@ SMC 是否启用：否。
 - ready now: `False`; conversion ready targets now: `0`.
 - conclusion: the paper/README package remains claim-safe after HK; ETH_UCY source support is technically repairable after terms, but restricted metric/time conversion/evaluation remains blocked until user confirmation and guarded rerun.
 <!-- STAGE42_HL_RESTRICTED_METRIC_TIME_POST_HK_CLAIM_GUARD:END -->
+
+<!-- STAGE42_HM_RESTRICTED_METRIC_TIME_TERMS_INTAKE_V2:START -->
+## Stage42-HM Restricted Metric/Time Terms Intake v2
+
+- source: `fresh_stage42_hm_restricted_metric_time_terms_intake_v2`
+- verdict: `stage42_hm_restricted_metric_time_terms_intake_v2_pass_blocked_until_user_confirmation`
+- gates: `15 / 15`
+- source-level candidates / ready now: `11` / `0`.
+- after-terms domains: `{'UCY': 3, 'ETH_UCY': 6}`.
+- after-terms t50/t100 windows: `14457` / `7129`.
+- template: `outputs/stage42_long_research/restricted_metric_time_terms_intake_v2_template_stage42.json`.
+- conclusion: UCY/ETH_UCY restricted metric/time source-level candidates are now represented in a user-fillable intake v2, but all conversion/evaluation remains blocked until user-confirmed terms/source identity/path and a guarded rerun.
+<!-- STAGE42_HM_RESTRICTED_METRIC_TIME_TERMS_INTAKE_V2:END -->
