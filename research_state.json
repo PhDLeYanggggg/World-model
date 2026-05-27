@@ -1,8 +1,8 @@
 {
-  "current_stage": "Stage42-FL FH weak-horizon forensics",
-  "current_verdict": "stage42_fl_horizon_weak_slice_forensics_pass",
+  "current_stage": "Stage42-FM FH weak-horizon row-level switch specialist",
+  "current_verdict": "stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit",
   "m3w_work_attempts_failures_successes_readme": {
-    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fl_fresh_audits",
+    "source": "cached_verified_summary_from_stage18_to_stage42_reports_plus_stage42_es_to_fm_fresh_audits",
     "path": "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
     "updated_at": "2026-05-27",
     "purpose": "Single-file Chinese ledger requested by user: attempted routes, failed routes and causes, successful evidence, current model quality, current best deployable families, strict claim boundaries, and next steps.",
@@ -26,7 +26,8 @@
       "Stage42-FI FH policy freeze / bootstrap / replay",
       "Stage42-FJ FH source/domain/horizon robustness audit",
       "Stage42-FK FH horizon weak-slice validation repair",
-      "Stage42-FL FH weak-horizon forensics"
+      "Stage42-FL FH weak-horizon forensics",
+      "Stage42-FM FH weak-horizon row-level switch specialist"
     ],
     "current_positioning": "protected dataset-local/raw-frame 2.5D multi-agent world-state candidate",
     "current_best_deployable_family": "Stage37/teacher-floor protected M3W policy family; source-level runtime evidence via Stage42 group-consistency full-waypoint policy",
@@ -40,8 +41,8 @@
       "smc_enabled"
     ],
     "summary_refresh_only": true,
-    "latest_full_pytest_after_stage42_fl_refresh": "819 passed in 30.68s",
-    "latest_conclusion": "Stage42-FL diagnoses remaining weak horizon slices after FK and defines the next row-level horizon-specialist action."
+    "latest_full_pytest_after_stage42_fm_refresh": "822 passed in 31.21s",
+    "latest_conclusion": "Stage42-FM tests whether row-level validation-selected weak-horizon switches can repair the remaining uniform-horizon blocker."
   },
   "m3w_goal_detailed_ledger_readme": {
     "source": "cached_verified_summary_from_stage18_to_stage42_ek_reports_plus_stage42_el_fresh_result",
@@ -28896,5 +28897,95 @@
       "smc_enabled": false
     },
     "conclusion": "Stage42-FL diagnoses why FK validation-only horizon repair did not remove TrajNet|100, UCY|50, or UCY|100 weak slices."
+  },
+  "stage42_fm_fh_horizon_row_switch_specialist": {
+    "source": "fresh_stage42_fh_horizon_row_switch_specialist",
+    "report": "outputs/stage42_long_research/fh_horizon_row_switch_specialist_stage42.md",
+    "gate": "outputs/stage42_long_research/stage42_stage_fm_gate.md",
+    "verdict": "stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit",
+    "gates": "15/15",
+    "summary": {
+      "source": "fresh_stage42_fh_horizon_row_switch_specialist",
+      "test_rows": 47458,
+      "weak_domain_horizons_before": [
+        "TrajNet|100",
+        "UCY|50",
+        "UCY|100"
+      ],
+      "weak_domain_horizons_after": [
+        "TrajNet|100",
+        "UCY|100"
+      ],
+      "robust_domain_horizons_after": [
+        "TrajNet|10",
+        "TrajNet|25",
+        "TrajNet|50",
+        "UCY|10",
+        "UCY|25",
+        "UCY|50"
+      ],
+      "weak_horizon_count_before": 3,
+      "weak_horizon_count_after": 2,
+      "repaired_horizon_count": 1,
+      "applied_policies": {
+        "TrajNet|100": {
+          "key": "TrajNet|100",
+          "mode": "feature_threshold",
+          "candidate": "fb",
+          "feature": "path_length",
+          "direction": "ge",
+          "threshold": 0.3749999749633932,
+          "rows": 5608,
+          "switch_rows": 3008
+        },
+        "UCY|50": {
+          "key": "UCY|50",
+          "mode": "feature_threshold",
+          "candidate": "di",
+          "feature": "endpoint_delta_fh",
+          "direction": "le",
+          "threshold": 0.026976035023941254,
+          "rows": 2340,
+          "switch_rows": 1170
+        },
+        "UCY|100": {
+          "key": "UCY|100",
+          "mode": "feature_threshold",
+          "candidate": "fb",
+          "feature": "endpoint_delta_floor",
+          "direction": "ge",
+          "threshold": 0.02336742544527692,
+          "rows": 1440,
+          "switch_rows": 936
+        }
+      },
+      "uniform_horizon_claim_allowed": false,
+      "decision": "row_switch_partial_keep_stage42_fh_fi_with_horizon_limit",
+      "fl_root_cause_counts": {
+        "oracle_label_low_margin_ambiguous": 3
+      }
+    },
+    "metric_vs_floor": {
+      "rows": 47458,
+      "all_improvement": 0.35199779481056936,
+      "t10_improvement": 0.6726250922029268,
+      "t25_improvement": 0.3407781814066436,
+      "t50_improvement": 0.2903171498775704,
+      "t100_raw_frame_diagnostic_improvement": 0.21142269767056454,
+      "hard_failure_improvement": 0.333525880837811,
+      "easy_degradation": -0.3710209367693875,
+      "switch_rate": 0.74684984617978,
+      "harm_over_fallback": -0.162109019615394
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "raw_frame_dataset_local_only": true,
+      "uniform_horizon_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "conclusion": "Stage42-FM tests a validation-only row-level weak-horizon specialist after FL identified low-margin horizon ambiguity."
   }
 }

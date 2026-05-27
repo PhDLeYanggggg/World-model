@@ -784,3 +784,17 @@ Stage42-D fresh-runs safety/floor/full-waypoint ablations and cached-verifies pr
 - next action: `train_horizon_specific_row_level_switch_model_with_stronger_history_neighbor_goal_features`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC; uniform horizon claim still blocked.
 <!-- STAGE42_FL_FH_HORIZON_WEAK_SLICE_FORENSICS:END -->
+
+<!-- STAGE42_FM_FH_HORIZON_ROW_SWITCH_SPECIALIST:START -->
+## Stage42-FM FH Weak-Horizon Row-Level Switch Specialist
+
+- source: `fresh_stage42_fh_horizon_row_switch_specialist`
+- role: validation-only row-level specialist attempt for FK/FJ/FL weak horizon slices; no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit`.
+- global all/t50/t100raw/hard/easy: `35.20%` / `29.03%` / `21.14%` / `33.35%` / `-37.10%`.
+- weak horizons before: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- weak horizons after: `['TrajNet|100', 'UCY|100']`.
+- applied policies: `{'TrajNet|100': {'key': 'TrajNet|100', 'mode': 'feature_threshold', 'candidate': 'fb', 'feature': 'path_length', 'direction': 'ge', 'threshold': 0.3749999749633932, 'rows': 5608, 'switch_rows': 3008}, 'UCY|50': {'key': 'UCY|50', 'mode': 'feature_threshold', 'candidate': 'di', 'feature': 'endpoint_delta_fh', 'direction': 'le', 'threshold': 0.026976035023941254, 'rows': 2340, 'switch_rows': 1170}, 'UCY|100': {'key': 'UCY|100', 'mode': 'feature_threshold', 'candidate': 'fb', 'feature': 'endpoint_delta_floor', 'direction': 'ge', 'threshold': 0.02336742544527692, 'rows': 1440, 'switch_rows': 936}}`.
+- uniform horizon claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FM_FH_HORIZON_ROW_SWITCH_SPECIALIST:END -->

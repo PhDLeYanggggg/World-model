@@ -8,7 +8,7 @@ Latest single-file Chinese work ledger requested by the user:
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
-This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FL: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence, Stage42-FJ confirms dual-domain/source robustness while blocking uniform horizon overclaim, Stage42-FK attempts validation-only horizon repair but still keeps the uniform-horizon claim blocked, and Stage42-FL diagnoses the remaining weak horizons as low-margin ambiguous slices that need a row-level horizon-specialist rather than more whole-slice replacement.
+This README summarizes, in one place, what was attempted under the M3W long goal, which routes failed and why, which routes succeeded, current model quality, current best deployable families, strict claim boundaries, and next actions. It now includes Stage42-ES through Stage42-FM: interaction/occupancy scalar targets remain diagnostic, explicit source/frame/horizon group-consistency is the supported target family, later group-risk/repel/Pareto repairs did not become a new best deployable policy, objective-level proximity training improved all/t50/hard while still failing the proximity safety gate, FA safety-teacher target blending was selected away by validation, Stage42-FE constrained FC-to-DI safety fallback restored proximity safety while preserving FC-level all/t50/hard gains, Stage42-FH repaired the UCY weak-domain problem with train-only internal validation, Stage42-FI froze/replayed that FH policy with exact replay plus 2000-bootstrap evidence, Stage42-FJ confirms dual-domain/source robustness while blocking uniform horizon overclaim, Stage42-FK attempts validation-only horizon repair but still keeps the uniform-horizon claim blocked, Stage42-FL diagnoses the remaining weak horizons as low-margin ambiguous slices, and Stage42-FM shows a row-level horizon specialist can repair UCY|50 and improve global all/t50/t100raw/hard to 35.20% / 29.03% / 21.14% / 33.35% while still leaving TrajNet|100 and UCY|100 as horizon-specific safety blockers.
 
 Latest current-goal work summary requested by the user:
 
@@ -2276,3 +2276,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - next action: `train_horizon_specific_row_level_switch_model_with_stronger_history_neighbor_goal_features`.
 - Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC; uniform horizon claim still blocked.
 <!-- STAGE42_FL_FH_HORIZON_WEAK_SLICE_FORENSICS:END -->
+
+<!-- STAGE42_FM_FH_HORIZON_ROW_SWITCH_SPECIALIST:START -->
+## Stage42-FM FH Weak-Horizon Row-Level Switch Specialist
+
+- source: `fresh_stage42_fh_horizon_row_switch_specialist`
+- role: validation-only row-level specialist attempt for FK/FJ/FL weak horizon slices; no test threshold tuning.
+- gate: `15 / 15`; verdict `stage42_fm_horizon_row_switch_specialist_pass_with_horizon_limit`.
+- global all/t50/t100raw/hard/easy: `35.20%` / `29.03%` / `21.14%` / `33.35%` / `-37.10%`.
+- weak horizons before: `['TrajNet|100', 'UCY|50', 'UCY|100']`.
+- weak horizons after: `['TrajNet|100', 'UCY|100']`.
+- applied policies: `{'TrajNet|100': {'key': 'TrajNet|100', 'mode': 'feature_threshold', 'candidate': 'fb', 'feature': 'path_length', 'direction': 'ge', 'threshold': 0.3749999749633932, 'rows': 5608, 'switch_rows': 3008}, 'UCY|50': {'key': 'UCY|50', 'mode': 'feature_threshold', 'candidate': 'di', 'feature': 'endpoint_delta_fh', 'direction': 'le', 'threshold': 0.026976035023941254, 'rows': 2340, 'switch_rows': 1170}, 'UCY|100': {'key': 'UCY|100', 'mode': 'feature_threshold', 'candidate': 'fb', 'feature': 'endpoint_delta_floor', 'direction': 'ge', 'threshold': 0.02336742544527692, 'rows': 1440, 'switch_rows': 936}}`.
+- uniform horizon claim allowed: `False`.
+- Boundary: protected source-level raw-frame 2.5D; no metric/seconds claim, no true 3D, no Stage5C, no SMC.
+<!-- STAGE42_FM_FH_HORIZON_ROW_SWITCH_SPECIALIST:END -->
