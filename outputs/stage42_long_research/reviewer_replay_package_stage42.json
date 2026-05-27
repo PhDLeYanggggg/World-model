@@ -1,8 +1,8 @@
 {
   "source": "fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts",
   "stage": "Stage42-DM",
-  "generated_at_utc": "2026-05-26T23:10:22.988857+00:00",
-  "git_commit": "47b5df5",
+  "generated_at_utc": "2026-05-27T10:36:26.211498+00:00",
+  "git_commit": "27e5858",
   "current_facts": [
     "当前不是 true 3D world model。",
     "当前不是 large-scale foundation world model。",
@@ -19,9 +19,9 @@
     "evidence_provenance": {
       "source": "fresh_evidence_provenance_from_stage42_artifacts",
       "stage": "Stage42-CX evidence provenance verifier",
-      "generated_at_utc": "2026-05-26T23:10:15.181042+00:00",
-      "git_commit": "47b5df5",
-      "input_hash": "1186ed465e855c2392884966b9545b1c5bd57f53529c1b8e1f82bf49d0ea6030",
+      "generated_at_utc": "2026-05-27T10:32:47.767328+00:00",
+      "git_commit": "f36229d",
+      "input_hash": "bee6417ffa291e920f1dccd07e75ec9ba1b0ca5a20838ffc510f04c171247a55",
       "current_facts": [
         "当前不是 true 3D world model。",
         "当前不是 large-scale foundation world model。",
@@ -479,12 +479,12 @@
             "verdict": "stage42_ct_frozen_policy_replay_pass",
             "all_passed": true
           },
-          "json_git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.json",
-          "md_git_status": "M outputs/stage42_long_research/frozen_proximity_guard_policy_replay_stage42.md",
+          "json_git_status": "clean",
+          "md_git_status": "clean",
           "runner_git_status": "clean",
           "gate_md": "",
           "gate_md_git_status": "",
-          "worktree_caveat": true
+          "worktree_caveat": false
         },
         {
           "claim_area": "runtime_policy_api",
@@ -529,12 +529,12 @@
             "verdict": "stage42_cv_batch_runtime_replay_pass",
             "all_passed": true
           },
-          "json_git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.json",
-          "md_git_status": "M outputs/stage42_long_research/proximity_guard_batch_replay_stage42.md",
+          "json_git_status": "clean",
+          "md_git_status": "clean",
           "runner_git_status": "clean",
           "gate_md": "",
           "gate_md_git_status": "",
-          "worktree_caveat": true
+          "worktree_caveat": false
         },
         {
           "claim_area": "runtime_replay_paper_refresh",
@@ -629,12 +629,12 @@
             "verdict": "stage42_dk_group_consistency_policy_replay_pass",
             "all_passed": true
           },
-          "json_git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.json",
-          "md_git_status": "M outputs/stage42_long_research/group_consistency_policy_replay_stage42.md",
+          "json_git_status": "clean",
+          "md_git_status": "clean",
           "runner_git_status": "clean",
           "gate_md": "",
           "gate_md_git_status": "",
-          "worktree_caveat": true
+          "worktree_caveat": false
         },
         {
           "claim_area": "group_consistency_runtime_policy",
@@ -654,12 +654,87 @@
             "verdict": "stage42_dl_group_consistency_runtime_policy_pass",
             "all_passed": true
           },
-          "json_git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
-          "md_git_status": "M outputs/stage42_long_research/group_consistency_runtime_policy_stage42.md",
+          "json_git_status": "clean",
+          "md_git_status": "clean",
           "runner_git_status": "clean",
           "gate_md": "",
           "gate_md_git_status": "",
-          "worktree_caveat": true
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "module_contribution_ledger",
+          "role": "module-level supported/blocked contribution ledger",
+          "json": "outputs/stage42_long_research/module_contribution_ledger_stage42.json",
+          "md": "outputs/stage42_long_research/module_contribution_ledger_stage42.md",
+          "runner": "run_stage42_module_contribution_ledger.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_fu_gate",
+            "passed": 14,
+            "total": 14,
+            "verdict": "stage42_fu_module_contribution_ledger_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "outputs/stage42_long_research/stage42_stage_fu_gate.md",
+          "gate_md_git_status": "clean",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "claim_boundary_linter",
+          "role": "paper/README no-overclaim linter",
+          "json": "outputs/stage42_long_research/claim_boundary_linter_stage42.json",
+          "md": "outputs/stage42_long_research/claim_boundary_linter_stage42.md",
+          "runner": "run_stage42_claim_boundary_linter.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_stage42_claim_boundary_linter_from_paper_package_and_fu",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_fv_gate",
+            "passed": 15,
+            "total": 15,
+            "verdict": "stage42_fv_claim_boundary_linter_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "outputs/stage42_long_research/stage42_stage_fv_gate.md",
+          "gate_md_git_status": "clean",
+          "worktree_caveat": false
+        },
+        {
+          "claim_area": "source_action_consolidator",
+          "role": "consolidated source/legal/horizon action queue",
+          "json": "outputs/stage42_long_research/source_action_consolidator_stage42.json",
+          "md": "outputs/stage42_long_research/source_action_consolidator_stage42.md",
+          "runner": "run_stage42_source_action_consolidator.py",
+          "json_exists": true,
+          "md_exists": true,
+          "runner_exists": true,
+          "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+          "source_label": "fresh_run",
+          "gate": {
+            "key": "stage42_fw_gate",
+            "passed": 16,
+            "total": 16,
+            "verdict": "stage42_fw_source_action_consolidator_pass",
+            "all_passed": true
+          },
+          "json_git_status": "clean",
+          "md_git_status": "clean",
+          "runner_git_status": "clean",
+          "gate_md": "outputs/stage42_long_research/stage42_stage_fw_gate.md",
+          "gate_md_git_status": "clean",
+          "worktree_caveat": false
         }
       ],
       "paper_file_status": [
@@ -737,13 +812,13 @@
         }
       ],
       "summary": {
-        "artifacts_total": 25,
-        "artifacts_gate_passed": 25,
+        "artifacts_total": 28,
+        "artifacts_gate_passed": 28,
         "source_label_counts": {
-          "fresh_run": 24,
+          "fresh_run": 27,
           "cached_verified": 1
         },
-        "artifacts_with_worktree_caveat": 4,
+        "artifacts_with_worktree_caveat": 0,
         "paper_files_with_worktree_caveat": 0
       },
       "claim_boundary": {
@@ -2676,8 +2751,8 @@
     "group_consistency_runtime": {
       "source": "fresh_runtime_api_from_frozen_group_consistency_policy_artifact",
       "stage": "Stage42-DL group-consistency runtime policy API",
-      "generated_at_utc": "2026-05-26T23:09:20.988772+00:00",
-      "git_commit": "47b5df5",
+      "generated_at_utc": "2026-05-26T23:55:09.000409+00:00",
+      "git_commit": "c11f73d",
       "current_facts": [
         "当前不是 true 3D world model。",
         "当前不是 large-scale foundation world model。",
@@ -3099,14 +3174,1039 @@
         "total": 30,
         "verdict": "stage42_dl_group_consistency_runtime_policy_pass"
       }
+    },
+    "module_contribution_ledger": {
+      "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+      "stage": "Stage42-FU module contribution ledger",
+      "generated_at_utc": "2026-05-27T10:12:19.963927+00:00",
+      "git_commit": "8e66700",
+      "input_hash": "5dc00be8374fd057b4375df474a1a6908426f2c2710544df1a5d0ec5d5e0836b",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-FU 是模块贡献 claim ledger；它整合已有 fresh/cached_verified evidence，不重新训练、不调 test threshold。",
+        "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不能作为 inference input。",
+        "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+        "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+        "dataset-local/raw-frame 不能写成 global metric。",
+        "Stage5C latent generative 未执行。",
+        "SMC 未启用。"
+      ],
+      "input_gates": {
+        "aa": "stage42_aa_retrained_ablation_matrix_pass_with_jepa_transformer_boundary",
+        "y": "stage42_y_unified_ablation_evidence_pass",
+        "bw": "stage42_bw_safety_floor_necessity_audit_pass",
+        "ec": "stage42_ec_group_consistency_contribution_audit_pass",
+        "dp": "stage42_dp_context_model_closure_pass",
+        "de": "stage42_de_full_waypoint_deployment_gap_audit_pass_primary_promotion_blocked"
+      },
+      "module_rows": [
+        {
+          "module": "history",
+          "status": "supported_main_claim",
+          "source": "fresh_run",
+          "evidence_kind": "retrained_ablation",
+          "main_claim_allowed": true,
+          "metrics": {
+            "all": 0.3304355789876775,
+            "t50": 0.32554495133960887,
+            "t100_raw_frame_diagnostic": 0.3585103910963155,
+            "hard_failure": 0.3372746847605039,
+            "easy_degradation": -0.3256412431992857,
+            "status": "positive_contribution"
+          },
+          "contribution_delta": {
+            "delta_all": 0.4480355451357656,
+            "delta_t50": 0.457817280518282,
+            "delta_hard": 0.47079873325328386
+          },
+          "claim": "History tokens are a strong positive contributor in the retrained causal sequence ablation.",
+          "limitation": "Still dataset-local raw-frame 2.5D; not metric/seconds evidence.",
+          "next_action": "Keep history in deployable/full-waypoint variants and report it as a supported module."
+        },
+        {
+          "module": "domain_expert",
+          "status": "supported_main_claim",
+          "source": "fresh_run",
+          "evidence_kind": "retrained_ablation",
+          "main_claim_allowed": true,
+          "metrics": {
+            "all": 0.7369295383136194,
+            "t50": 0.7414769743658925,
+            "t100_raw_frame_diagnostic": 0.893435911421307,
+            "hard_failure": 0.768206646252081,
+            "easy_degradation": -0.6963264311534142,
+            "status": "positive_contribution"
+          },
+          "contribution_delta": {
+            "delta_all": 0.0415415858098237,
+            "delta_t50": 0.04188525749199834,
+            "delta_hard": 0.03986677176170672
+          },
+          "claim": "Domain expert routing contributes positively in retrained source-level evidence.",
+          "limitation": "Does not prove foundation-style domain generalization; source support remains bounded.",
+          "next_action": "Keep domain expert and add source-CV once legal/source queue is unblocked."
+        },
+        {
+          "module": "safe_switch",
+          "status": "supported_safety_mechanism",
+          "source": "fresh_run",
+          "evidence_kind": "retrained_ablation_plus_floor_audit",
+          "main_claim_allowed": true,
+          "metrics": {
+            "all": 0.7908202715372842,
+            "t50": 0.9052931208257475,
+            "t100_raw_frame_diagnostic": 0.9559784726753651,
+            "hard_failure": 0.8010113378885025,
+            "easy_degradation": -0.9109976297714985,
+            "status": "positive_contribution"
+          },
+          "contribution_delta": {
+            "delta_all": 0.021396849506247984,
+            "delta_t50": -0.059151137892635486,
+            "delta_hard": 0.04487697623564679
+          },
+          "claim": "Safe switch/fallback is necessary for deployability; no-safe-switch harms at least one key slice.",
+          "limitation": "Safe switch is a protected deployment mechanism, not an ungated neural dynamics claim.",
+          "next_action": "Keep safe switch active; study partial relaxation only in source/horizon slices with validation proof."
+        },
+        {
+          "module": "teacher_floor",
+          "status": "necessary_not_removable",
+          "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+          "evidence_kind": "safety_floor_necessity_audit",
+          "main_claim_allowed": true,
+          "metrics": {
+            "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+            "verdict_short": "teacher_floor_required_but_baseline_family_probe_can_relax_fallback",
+            "current_deployable_family": "current_composite_tail_policy",
+            "current_all_improvement": 0.2102513255185352,
+            "current_t50_improvement": 0.13652231450154184,
+            "current_t100_raw_frame_diagnostic": 0.14694086716388166,
+            "current_hard_failure_improvement": 0.20384916307933942,
+            "current_easy_degradation": 0.0,
+            "ungated_endpoint_easy_degradation": 1.2458611044726973,
+            "ungated_full_waypoint_easy_degradation": 1.2458611044726973,
+            "fallback_floor_is_core_deployment_safety": true,
+            "teacher_floor_context_is_core_feature_mechanism": true,
+            "floor_free_neural_deployable": false,
+            "baseline_family_rollout_context_supported": true,
+            "small_tabular_neural_context_supported": false,
+            "row_level_full_waypoint_evidence_positive": true,
+            "source_blockers_active": 5,
+            "global_metric_claim_allowed": false,
+            "global_seconds_claim_allowed": false,
+            "stage5c_executed": false,
+            "smc_enabled": false
+          },
+          "contribution_delta": {
+            "source": "fresh_stage42_bw_safety_floor_necessity_audit",
+            "fallback_removal_for_baseline_family_probe": "supported_on_this_source_level_split",
+            "teacher_floor_context_removal": "not_supported_as_global_replacement",
+            "no_floor_rel_context_protected_delta_t50": -0.09205317177637129,
+            "no_safe_baseline_context_protected_delta_t50": -0.09502721842335304,
+            "context_removal_hurts_protected_t50": true,
+            "interpretation": "Fallback relaxation in one baseline-family probe is not equivalent to removing teacher/floor rollout context or deploying ungated neural dynamics."
+          },
+          "claim": "Teacher/Stage37 floor remains required: ungated neural variants are not deployable due easy degradation.",
+          "limitation": "This means current best model is protected, not floor-free neural world dynamics.",
+          "next_action": "Do not remove teacher floor globally; only test validated partial relaxation."
+        },
+        {
+          "module": "group_consistency_full_waypoint",
+          "status": "supported_source_level_claim",
+          "source": "fresh_synthesis_from_stage42_dy_dz_ea_dp",
+          "evidence_kind": "physical_group_consistency_contribution_audit",
+          "main_claim_allowed": true,
+          "metrics": {
+            "global_all_ci_low": 0.32561590986908956,
+            "global_t50_ci_low": 0.2653276586221581,
+            "global_hard_ci_low": 0.31511510693704503,
+            "global_easy_ci_high": -0.3128132004361849,
+            "ucy_positive_safe_ci": true,
+            "trajnet_positive_safe_ci": true,
+            "near005_delta_high": -0.0067217329006700665
+          },
+          "contribution_delta": {
+            "status": "supported_source_level",
+            "evidence": "DY source-level promotion plus DZ dual-domain repair plus EA bootstrap.",
+            "all": 0.24715658317833844,
+            "t50": 0.2236298792899738,
+            "t100_raw_frame_diagnostic": 0.1434611214781808,
+            "hard": 0.23887420070464105,
+            "easy": -0.2563085406508494,
+            "near005_base": 0.019364490707573012,
+            "near005_final": 0.01382274853554722
+          },
+          "claim": "Explicit group-consistency full-waypoint dynamics has source-level bootstrap-backed positive-safe evidence.",
+          "limitation": "Not an ungated/global primary full-waypoint replacement.",
+          "next_action": "Use as source-level physical/world-state contribution; keep global overclaim blocked."
+        },
+        {
+          "module": "full_waypoint_shape",
+          "status": "partial_horizon_shape_support",
+          "source": "fresh_run",
+          "evidence_kind": "full_waypoint_shape_ablation_and_deployment_gap",
+          "main_claim_allowed": true,
+          "metrics": {
+            "all": 0.2102513255185352,
+            "t50": 0.13652231450154184,
+            "t100_raw_frame_diagnostic": 0.14694086716388166,
+            "hard_failure": 0.20384916307933942,
+            "easy_degradation": -0.14511076140795587,
+            "status": "positive_safe"
+          },
+          "contribution_delta": {
+            "delta_all": -0.02447280122019102,
+            "delta_t50": 0.011514681275772931,
+            "delta_hard": -0.008668690299824866
+          },
+          "claim": "Full-waypoint shape is useful as protected horizon/shape evidence, especially t50/t100 raw-frame slices.",
+          "limitation": "It does not replace endpoint-linear/teacher floor on all and hard/failure.",
+          "next_action": "Frame as protected shape/horizon component, not primary global dynamics head."
+        },
+        {
+          "module": "endpoint_bridge",
+          "status": "supported_floor_component",
+          "source": "fresh_run",
+          "evidence_kind": "bridge_vs_full_waypoint_boundary",
+          "main_claim_allowed": true,
+          "metrics": {
+            "all": 0.2102513255185352,
+            "t50": 0.13652231450154184,
+            "t100_raw_frame_diagnostic": 0.14694086716388166,
+            "hard_failure": 0.20384916307933942,
+            "easy_degradation": -0.14511076140795587,
+            "status": "positive_safe"
+          },
+          "contribution_delta": {
+            "delta_all": -0.02447280122019102,
+            "delta_t50": 0.011514681275772931,
+            "delta_hard": -0.008668690299824866
+          },
+          "claim": "Endpoint-linear bridge remains an important safety/accuracy floor component.",
+          "limitation": "Endpoint success alone cannot be claimed as learned full-waypoint dynamics.",
+          "next_action": "Keep bridge/floor in deployment comparisons and separate it from full-waypoint claims."
+        },
+        {
+          "module": "scene_goal",
+          "status": "weak_or_mixed_not_main_claim",
+          "source": "fresh_run",
+          "evidence_kind": "retrained_ablation_positive_but_context_closure_blocks_main_claim",
+          "main_claim_allowed": false,
+          "metrics": {
+            "no_scene": {
+              "all": 0.8025795431358819,
+              "t50": 0.8460640190119193,
+              "t100_raw_frame_diagnostic": 0.9526920055221376,
+              "hard_failure": 0.8350345810763843,
+              "easy_degradation": -0.8415163077598001,
+              "status": "positive_contribution"
+            },
+            "no_goal": {
+              "all": 0.8025795431358819,
+              "t50": 0.8460640190119193,
+              "t100_raw_frame_diagnostic": 0.9526920055221376,
+              "hard_failure": 0.8350345810763843,
+              "easy_degradation": -0.8415163077598001,
+              "status": "positive_contribution"
+            },
+            "sequence_goal_scene": {
+              "module": "goal/scene tokens",
+              "ablation": "sequence_no_goal_scene_tokens",
+              "source": "fresh_run",
+              "metrics": {
+                "all": 0.7731505704668217,
+                "t50": 0.7876211484182892,
+                "t100_raw_frame_diagnostic": 0.9118188737123679,
+                "hard_failure": 0.8037016848055435,
+                "easy_degradation": -0.7571316550217917
+              },
+              "full_minus_ablation": {
+                "all": 0.0053205536566214295,
+                "t50": -0.00425891656039834,
+                "hard_failure": 0.004371733208244244,
+                "easy_delta_ablation_minus_full": 0.01127187607038127
+              },
+              "positive_contribution": true
+            }
+          },
+          "contribution_delta": {
+            "no_scene": {
+              "delta_all": 0.009637577907650297,
+              "delta_t50": 7.796392119274742e-05,
+              "delta_hard": 0.010853733047765046
+            },
+            "no_goal": {
+              "delta_all": 0.009637577907650297,
+              "delta_t50": 7.796392119274742e-05,
+              "delta_hard": 0.010853733047765046
+            }
+          },
+          "claim": "Scene/goal has weak retrained evidence but not enough to be an independent main contribution under current protocols.",
+          "limitation": "Current context closure and prior goal/scene expert runs do not support a main independent contribution claim.",
+          "next_action": "Revisit only with changed target/data support; do not write as main claim now."
+        },
+        {
+          "module": "neighbor_interaction",
+          "status": "weak_or_mixed_not_main_claim",
+          "source": "fresh_run",
+          "evidence_kind": "retrained_ablation_positive_but_graph_context_negative",
+          "main_claim_allowed": false,
+          "metrics": {
+            "no_neighbor": {
+              "all": 0.8087518067705028,
+              "t50": 0.8460362922676209,
+              "t100_raw_frame_diagnostic": 0.9530560020140664,
+              "hard_failure": 0.8423387865152415,
+              "easy_degradation": -0.8396881053143659,
+              "status": "positive_contribution"
+            },
+            "no_interaction": {
+              "all": 0.8087518067705028,
+              "t50": 0.8460362922676209,
+              "t100_raw_frame_diagnostic": 0.9530560020140664,
+              "hard_failure": 0.8423387865152415,
+              "easy_degradation": -0.8396881053143659,
+              "status": "positive_contribution"
+            },
+            "sequence_neighbor_interaction": {
+              "module": "neighbor/interaction tokens",
+              "ablation": "sequence_no_neighbor_interaction_tokens",
+              "source": "fresh_run",
+              "metrics": {
+                "all": 0.778549392169928,
+                "t50": 0.782063751648341,
+                "t100_raw_frame_diagnostic": 0.917928855104648,
+                "hard_failure": 0.8094168572093686,
+                "easy_degradation": -0.7497884260727141
+              },
+              "full_minus_ablation": {
+                "all": -7.826804648491947e-05,
+                "t50": 0.0012984802095499237,
+                "hard_failure": -0.0013434391955808866,
+                "easy_delta_ablation_minus_full": 0.018615105019458844
+              },
+              "positive_contribution": true
+            }
+          },
+          "contribution_delta": {
+            "no_neighbor": {
+              "delta_all": 0.0034653142730293185,
+              "delta_t50": 0.0001056906654911538,
+              "delta_hard": 0.00354952760890781
+            },
+            "no_interaction": {
+              "delta_all": 0.0034653142730293185,
+              "delta_t50": 0.0001056906654911538,
+              "delta_hard": 0.00354952760890781
+            }
+          },
+          "claim": "Neighbor/interaction has small or mixed contribution; current graph residual protocol is negative.",
+          "limitation": "Current graph/interaction rows remain below baseline-family control.",
+          "next_action": "Report as auxiliary/diagnostic unless a new target proves stronger contribution."
+        },
+        {
+          "module": "JEPA",
+          "status": "blocked_negative_or_inconclusive",
+          "source": "cached_verified",
+          "evidence_kind": "cached_verified_negative_boundary",
+          "main_claim_allowed": false,
+          "metrics": {
+            "all": -0.026777069471576986,
+            "t50": -0.015065713704299988,
+            "t100_raw_frame_diagnostic": 0.0,
+            "hard_failure": -0.024300942834727834,
+            "easy_degradation": 0.026903930506348317,
+            "status": "cached_negative_or_inconclusive"
+          },
+          "contribution_delta": {
+            "delta_all": null,
+            "delta_t50": null,
+            "delta_hard": null
+          },
+          "claim": "JEPA cannot be claimed as a downstream contributor in current evidence.",
+          "limitation": "Existing JEPA is non-collapse but downstream lift is not stable.",
+          "next_action": "Do not use JEPA as main claim unless a fresh retrained downstream lift appears."
+        },
+        {
+          "module": "Transformer",
+          "status": "fresh_proxy_negative_or_inconclusive",
+          "source": "fresh_run",
+          "evidence_kind": "fresh_proxy_ablation_not_full_no_transformer",
+          "main_claim_allowed": false,
+          "metrics": {
+            "all": 0.8178337407401962,
+            "t50": 0.8528474053699812,
+            "t100_raw_frame_diagnostic": 0.9500782392124639,
+            "hard_failure": 0.8599020897660544,
+            "easy_degradation": -0.8046504463843118,
+            "status": "negative_or_inconclusive"
+          },
+          "contribution_delta": {
+            "delta_all": -0.005616619696664049,
+            "delta_t50": -0.006705422436869113,
+            "delta_hard": -0.01401377564190509
+          },
+          "claim": "Transformer contribution is not independently proven as a main claim under the current proxy.",
+          "limitation": "This is a proxy boundary, not a complete no-Transformer retrain claim.",
+          "next_action": "If revisited, run a proper architecture-controlled retrain instead of using proxy evidence."
+        }
+      ],
+      "summary": {
+        "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+        "modules_total": 11,
+        "supported_or_necessary_modules": 6,
+        "main_claim_allowed_modules": [
+          "history",
+          "domain_expert",
+          "safe_switch",
+          "teacher_floor",
+          "group_consistency_full_waypoint",
+          "full_waypoint_shape",
+          "endpoint_bridge"
+        ],
+        "blocked_or_auxiliary_modules": [
+          "scene_goal",
+          "neighbor_interaction",
+          "JEPA",
+          "Transformer"
+        ],
+        "paper_claim_core": [
+          "history",
+          "domain_expert",
+          "safe_switch",
+          "teacher_floor",
+          "group_consistency_full_waypoint"
+        ],
+        "paper_claim_blocked": [
+          "JEPA_downstream_lift",
+          "ungated_neural_dynamics",
+          "scene_goal_independent_main_claim",
+          "neighbor_interaction_independent_main_claim",
+          "global_metric_seconds_claim"
+        ],
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_threshold_tuning": false,
+        "synthesis_only_no_training": true
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "verification": {
+        "runner": ".venv-pytorch/bin/python run_stage42_module_contribution_ledger.py -> 14/14",
+        "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_module_contribution_ledger.py -> 4 passed",
+        "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 852 passed"
+      },
+      "stage42_fu_gate": {
+        "source": "fresh_stage42_module_contribution_ledger_from_aa_y_bw_ec_dp_de",
+        "gates": {
+          "aa_input_passed": true,
+          "y_input_passed": true,
+          "bw_input_passed": true,
+          "ec_input_passed": true,
+          "core_modules_supported": true,
+          "at_least_two_positive_contributions": true,
+          "scene_goal_overclaim_blocked": true,
+          "neighbor_interaction_overclaim_blocked": true,
+          "jepa_overclaim_blocked": true,
+          "transformer_boundary_recorded": true,
+          "no_future_or_test_leakage": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 14,
+        "total": 14,
+        "verdict": "stage42_fu_module_contribution_ledger_pass"
+      }
+    },
+    "claim_boundary_linter": {
+      "source": "fresh_stage42_claim_boundary_linter_from_paper_package_and_fu",
+      "generated_at_utc": "2026-05-27T10:28:48.382554+00:00",
+      "git_commit": "5abdecf",
+      "input_hash": "e3a5095e20afdfef4a1a9c107d3c9bed9f1f754039570ebe32248551a85150ff",
+      "scanned_files": [
+        "README_RESULTS.md",
+        "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+        "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md",
+        "README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md",
+        "README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md",
+        "outputs/stage42_long_research/module_contribution_ledger_stage42.md",
+        "outputs/stage42_long_research/paper_outline_stage42.md",
+        "outputs/stage42_long_research/method_draft_stage42.md",
+        "outputs/stage42_long_research/experiment_tables_stage42.md",
+        "outputs/stage42_long_research/ablation_tables_stage42.md",
+        "outputs/stage42_long_research/failure_taxonomy_stage42.md",
+        "outputs/stage42_long_research/model_card_stage42.md",
+        "outputs/stage42_long_research/data_card_stage42.md",
+        "outputs/stage42_long_research/reproducibility_stage42.md",
+        "outputs/stage42_long_research/a_journal_gap_stage42.md"
+      ],
+      "fu_module_boundary_ok": true,
+      "violations": [],
+      "summary": {
+        "files_scanned": 15,
+        "violations_total": 0,
+        "violations_by_check": {
+          "true_3d": 0,
+          "foundation": 0,
+          "metric_seconds": 0,
+          "stage5c": 0,
+          "smc": 0,
+          "human_gold": 0,
+          "jepa_main": 0,
+          "transformer_main": 0,
+          "scene_goal_main": 0,
+          "neighbor_interaction_main": 0
+        }
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "jepa_main_claim_allowed": false,
+        "transformer_main_claim_allowed": false,
+        "scene_goal_main_claim_allowed": false,
+        "neighbor_interaction_main_claim_allowed": false
+      },
+      "verification": {
+        "runner": ".venv-pytorch/bin/python run_stage42_claim_boundary_linter.py -> 15/15",
+        "focused_pytest": ".venv-pytorch/bin/python -m pytest tests/test_stage42_claim_boundary_linter.py tests/test_stage42_module_contribution_ledger.py -> 9 passed",
+        "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 857 passed"
+      },
+      "stage42_fv_gate": {
+        "gates": {
+          "source_fresh": true,
+          "files_scanned": true,
+          "fu_module_boundary_loaded": true,
+          "no_true_3d_overclaim": true,
+          "no_foundation_overclaim": true,
+          "no_metric_seconds_overclaim": true,
+          "no_stage5c_overclaim": true,
+          "no_smc_overclaim": true,
+          "no_human_gold_overclaim": true,
+          "no_jepa_main_overclaim": true,
+          "no_transformer_main_overclaim": true,
+          "no_scene_goal_main_overclaim": true,
+          "no_neighbor_interaction_main_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 15,
+        "total": 15,
+        "verdict": "stage42_fv_claim_boundary_linter_pass"
+      }
+    },
+    "source_action_consolidator": {
+      "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+      "stage": "Stage42-FW source action consolidator",
+      "generated_at_utc": "2026-05-27T10:28:52.617366+00:00",
+      "git_commit": "5abdecf",
+      "input_hash": "a9b92dd389f087734c544a182d7da68485332107d3c9a89df080bb42b282a7c2",
+      "current_facts": [
+        "当前不是 true 3D world model。",
+        "当前不是 large-scale foundation world model。",
+        "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+        "Stage42-FW consolidates existing source/legal/horizon blockers; it does not download, convert, train, or evaluate.",
+        "Local paths, parseable files, and technical dry-runs are not legal conversion readiness.",
+        "Every result remains labeled as fresh_run, cached_verified, or not_run.",
+        "future endpoints / waypoints can only be supervised/evaluation labels, never inference inputs.",
+        "No central velocity, no test endpoint goals, and no test metric threshold tuning are used.",
+        "t+50 / t+100 remain raw-frame horizons, not seconds-level claims.",
+        "dataset-local/raw-frame results are not global metric claims.",
+        "Stage5C latent generative is not executed.",
+        "SMC is not enabled."
+      ],
+      "input_status": {
+        "source_terms_gap": {
+          "path": "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+          "exists": true,
+          "source": "fresh_rerun_cg_plus_ed_source_terms_gap_audit",
+          "generated_at_utc": "2026-05-27T02:00:35.053179+00:00",
+          "verdict": "stage42_ef_source_terms_gap_audit_pass"
+        },
+        "source_closure": {
+          "path": "outputs/stage42_long_research/source_support_closure_audit_stage42.json",
+          "exists": true,
+          "source": "fresh_stage42_dd_source_support_closure_audit",
+          "generated_at_utc": "2026-05-26T21:21:47.999405+00:00",
+          "verdict": "stage42_dd_source_support_closure_audit_pass_open_blockers"
+        },
+        "h100_queue": {
+          "path": "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json",
+          "exists": true,
+          "source": "fresh_stage42_h100_source_support_repair_queue",
+          "generated_at_utc": "2026-05-27T09:36:49.592560+00:00",
+          "verdict": "stage42_fq_h100_source_support_repair_queue_pass"
+        },
+        "unified_queue": {
+          "path": "outputs/stage42_long_research/unified_guarded_conversion_queue_stage42.json",
+          "exists": true,
+          "source": "fresh_stage42_unified_guarded_conversion_queue",
+          "generated_at_utc": "2026-05-27T10:01:18.102738+00:00",
+          "verdict": "stage42_ft_unified_guarded_conversion_queue_pass"
+        },
+        "official_links": {
+          "path": "outputs/stage42_long_research/official_source_link_audit_stage42.json",
+          "exists": true,
+          "source": "fresh_stage42_official_source_link_audit",
+          "generated_at_utc": "2026-05-27T02:50:20.490298+00:00",
+          "verdict": "stage42_em_official_source_link_audit_pass"
+        }
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "download_executed": false,
+        "conversion_executed": false,
+        "evaluation_executed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "consolidated_actions": [
+        {
+          "action_id": "FW-TERMS-ucy_crowd_original",
+          "target": "ucy_crowd_original",
+          "domain": "UCY",
+          "category": "legal_terms_and_local_path",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 113,
+          "official_url": "https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data",
+          "blocking_claims": [
+            "official converted/evaluated external source",
+            "source-specific metric/time subset if calibration later passes",
+            "global t100 deployable claim"
+          ],
+          "missing": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_rows_after_unblock": 9554,
+          "estimated_t100_rows_after_unblock": 5605,
+          "evidence_files": [
+            "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+            "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+          ],
+          "next_user_action": "Confirm official terms and fill `ucy_crowd_original` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+          ],
+          "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+        },
+        {
+          "action_id": "FW-H100-TrajNet|100",
+          "target": "TrajNet|100",
+          "domain": "TrajNet",
+          "category": "h100_weak_horizon_source_support",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 98,
+          "official_url": "",
+          "blocking_claims": [
+            "uniform horizon robustness",
+            "global t100 deployable claim",
+            "h100 raw-frame positive-safe claim for this source/horizon"
+          ],
+          "missing": [
+            "official longer TrajNet-compatible raw source",
+            "timing/geometry evidence",
+            "terms confirmation",
+            "local path"
+          ],
+          "target_bucket": "students",
+          "candidate_count": 0,
+          "top_candidate_paths": [],
+          "evidence_files": [
+            "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json"
+          ],
+          "next_user_action": "Provide or legally confirm a longer official raw source for `TrajNet|100`; current local TrajNet snippets cannot support h100.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+            ".venv-pytorch/bin/python run_stage42_h100_weak_horizon_source_support_audit.py"
+          ],
+          "claim_guard": "Candidate paths are inventory only; do not convert/evaluate or claim repair until legal terms, conversion, no-leakage, and source-CV pass."
+        },
+        {
+          "action_id": "FW-DOMAIN-TrajNet",
+          "target": "TrajNet",
+          "domain": "TrajNet",
+          "category": "domain_closure",
+          "result_source": "cached_verified",
+          "status": "not_run_open_blocker",
+          "priority": 97,
+          "official_url": "",
+          "blocking_claims": [
+            "domain closed for source/time support",
+            "metric/seconds subset claim if applicable",
+            "global source-level robustness claim"
+          ],
+          "missing": [
+            "source_terms_confirmation_or_conversion_readiness_missing",
+            "train_only_t100_source_cv_support_missing",
+            "additional_t100_sources_needed=1",
+            "source_specific_metric_time_calibration_missing",
+            "legal_terms_blocked_targets=trajnetplusplus_official"
+          ],
+          "partial_support": {
+            "source_specific_metric_time_sources": [],
+            "local_t100_schema_source_cv_evaluated": false,
+            "local_t100_schema_positive_vs_constant_velocity": false,
+            "preflight_targets_with_t50_files": 1,
+            "preflight_targets_with_t100_files": 1
+          },
+          "evidence_files": [
+            "outputs/stage42_long_research/source_support_closure_audit_stage42.json"
+          ],
+          "next_user_action": "provide/confirm legal TrajNet++ or TrajNet-compatible long-track source with timing/geometry evidence, then rerun conversion, no-leakage, and train-only source-CV",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_support_closure_audit.py"
+          ],
+          "claim_guard": "Domain remains not_closed until this action passes with no leakage and no terms blocker."
+        },
+        {
+          "action_id": "FW-DOMAIN-UCY",
+          "target": "UCY",
+          "domain": "UCY",
+          "category": "domain_closure",
+          "result_source": "cached_verified",
+          "status": "not_run_open_blocker",
+          "priority": 97,
+          "official_url": "",
+          "blocking_claims": [
+            "domain closed for source/time support",
+            "metric/seconds subset claim if applicable",
+            "global source-level robustness claim"
+          ],
+          "missing": [
+            "source_terms_confirmation_or_conversion_readiness_missing",
+            "train_only_t100_source_cv_support_missing",
+            "additional_t100_sources_needed=1",
+            "legal_terms_blocked_targets=ucy_crowd_original"
+          ],
+          "partial_support": {
+            "source_specific_metric_time_sources": [
+              "UCY_zara01",
+              "UCY_zara02",
+              "UCY_zara03",
+              "UCY_students03",
+              "UCY_students01"
+            ],
+            "local_t100_schema_source_cv_evaluated": true,
+            "local_t100_schema_positive_vs_constant_velocity": true,
+            "preflight_targets_with_t50_files": 2,
+            "preflight_targets_with_t100_files": 2
+          },
+          "evidence_files": [
+            "outputs/stage42_long_research/source_support_closure_audit_stage42.json"
+          ],
+          "next_user_action": "confirm UCY original terms/source identity and add one independent t100-capable UCY source or source split before claiming stable t100",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_support_closure_audit.py"
+          ],
+          "claim_guard": "Domain remains not_closed until this action passes with no leakage and no terms blocker."
+        },
+        {
+          "action_id": "FW-H100-UCY|100",
+          "target": "UCY|100",
+          "domain": "UCY",
+          "category": "h100_weak_horizon_source_support",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 94,
+          "official_url": "",
+          "blocking_claims": [
+            "uniform horizon robustness",
+            "global t100 deployable claim",
+            "h100 raw-frame positive-safe claim for this source/horizon"
+          ],
+          "missing": [
+            "terms/license confirmation",
+            "guarded conversion",
+            "no-leakage audit",
+            "train-only source-CV"
+          ],
+          "target_bucket": "zara",
+          "candidate_count": 6,
+          "top_candidate_paths": [
+            "UCY/zara02/obsmat.txt",
+            "UCY/zara01/obsmat.txt",
+            "UCY/students01/students001.txt",
+            "UCY/students03/obsmat.txt",
+            "UCY/students03/obsmat_px.txt",
+            "UCY/students03/students003.txt"
+          ],
+          "evidence_files": [
+            "outputs/stage42_long_research/h100_source_support_repair_queue_stage42.json"
+          ],
+          "next_user_action": "Confirm terms/license for the listed local candidates for `UCY|100`, then run guarded conversion and source-CV.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py",
+            ".venv-pytorch/bin/python run_stage42_h100_weak_horizon_source_support_audit.py"
+          ],
+          "claim_guard": "Candidate paths are inventory only; do not convert/evaluate or claim repair until legal terms, conversion, no-leakage, and source-CV pass."
+        },
+        {
+          "action_id": "FW-DOMAIN-ETH_UCY",
+          "target": "ETH_UCY",
+          "domain": "ETH_UCY",
+          "category": "domain_closure",
+          "result_source": "cached_verified",
+          "status": "not_run_open_blocker",
+          "priority": 90,
+          "official_url": "",
+          "blocking_claims": [
+            "domain closed for source/time support",
+            "metric/seconds subset claim if applicable",
+            "global source-level robustness claim"
+          ],
+          "missing": [
+            "source_terms_confirmation_or_conversion_readiness_missing",
+            "train_only_t100_source_cv_support_missing",
+            "additional_t100_sources_needed=2",
+            "legal_terms_blocked_targets=eth_biwi_original"
+          ],
+          "partial_support": {
+            "source_specific_metric_time_sources": [
+              "ETH_seq_eth",
+              "ETH_seq_hotel"
+            ],
+            "local_t100_schema_source_cv_evaluated": true,
+            "local_t100_schema_positive_vs_constant_velocity": false,
+            "preflight_targets_with_t50_files": 2,
+            "preflight_targets_with_t100_files": 2
+          },
+          "evidence_files": [
+            "outputs/stage42_long_research/source_support_closure_audit_stage42.json"
+          ],
+          "next_user_action": "confirm ETH/BIWI or ETH-Person source terms and add enough independent t100-capable ETH_UCY train sources, then rerun source-CV without test tuning",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_support_closure_audit.py"
+          ],
+          "claim_guard": "Domain remains not_closed until this action passes with no leakage and no terms blocker."
+        },
+        {
+          "action_id": "FW-TERMS-trajnetplusplus_official",
+          "target": "trajnetplusplus_official",
+          "domain": "TrajNet",
+          "category": "legal_terms_and_local_path",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 60,
+          "official_url": "https://www.epfl.ch/schools/enac/about/open-science/open-research/trajnet/",
+          "blocking_claims": [
+            "official converted/evaluated external source",
+            "source-specific metric/time subset if calibration later passes",
+            "global t100 deployable claim"
+          ],
+          "missing": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_rows_after_unblock": 0,
+          "estimated_t100_rows_after_unblock": 0,
+          "evidence_files": [
+            "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+            "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+          ],
+          "next_user_action": "Confirm official terms and fill `trajnetplusplus_official` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+          ],
+          "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+        },
+        {
+          "action_id": "FW-TERMS-eth_biwi_original",
+          "target": "eth_biwi_original",
+          "domain": "ETH_UCY",
+          "category": "legal_terms_and_local_path",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 59,
+          "official_url": "https://vision.ee.ethz.ch/datsets.html",
+          "blocking_claims": [
+            "official converted/evaluated external source",
+            "source-specific metric/time subset if calibration later passes",
+            "global t100 deployable claim"
+          ],
+          "missing": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_rows_after_unblock": 506,
+          "estimated_t100_rows_after_unblock": 91,
+          "evidence_files": [
+            "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+            "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+          ],
+          "next_user_action": "Confirm official terms and fill `eth_biwi_original` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+          ],
+          "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+        },
+        {
+          "action_id": "FW-TERMS-aerialmpt_or_other_topdown",
+          "target": "aerialmpt_or_other_topdown",
+          "domain": "other_topdown",
+          "category": "legal_terms_and_local_path",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 50,
+          "official_url": "user_or_web_verified_official_url_required",
+          "blocking_claims": [
+            "official converted/evaluated external source",
+            "source-specific metric/time subset if calibration later passes",
+            "global t100 deployable claim"
+          ],
+          "missing": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_rows_after_unblock": 0,
+          "estimated_t100_rows_after_unblock": 0,
+          "evidence_files": [
+            "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+            "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+          ],
+          "next_user_action": "Confirm official terms and fill `aerialmpt_or_other_topdown` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+          ],
+          "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+        },
+        {
+          "action_id": "FW-TERMS-opentraj_toolkit",
+          "target": "opentraj_toolkit",
+          "domain": "OpenTraj",
+          "category": "legal_terms_and_local_path",
+          "result_source": "cached_verified",
+          "status": "not_run_user_action_required",
+          "priority": 50,
+          "official_url": "https://github.com/crowdbotp/OpenTraj",
+          "blocking_claims": [
+            "official converted/evaluated external source",
+            "source-specific metric/time subset if calibration later passes",
+            "global t100 deployable claim"
+          ],
+          "missing": [
+            "terms_accepted_by_user",
+            "terms_acceptance_date",
+            "allowed_use",
+            "local_path",
+            "source_identity"
+          ],
+          "estimated_t50_rows_after_unblock": 0,
+          "estimated_t100_rows_after_unblock": 0,
+          "evidence_files": [
+            "outputs/stage42_long_research/source_terms_gap_audit_stage42.json",
+            "outputs/stage42_long_research/official_source_link_audit_stage42.json"
+          ],
+          "next_user_action": "Confirm official terms and fill `opentraj_toolkit` fields in source_terms_confirmation_template_stage42.json: terms_accepted_by_user, terms_acceptance_date, allowed_use, local_path, source_identity.",
+          "next_commands_after_user_confirmation": [
+            ".venv-pytorch/bin/python run_stage42_source_terms_confirmation_validator.py",
+            ".venv-pytorch/bin/python run_stage42_unified_guarded_conversion_queue.py",
+            ".venv-pytorch/bin/python run_stage42_guarded_source_conversion_launcher.py"
+          ],
+          "claim_guard": "Do not count this as converted/evaluated until validator, guarded conversion, no-leakage, and source-CV all pass."
+        }
+      ],
+      "summary": {
+        "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+        "actions_total": 10,
+        "categories": {
+          "legal_terms_and_local_path": 5,
+          "h100_weak_horizon_source_support": 2,
+          "domain_closure": 3
+        },
+        "top_actions": [
+          "FW-TERMS-ucy_crowd_original",
+          "FW-H100-TrajNet|100",
+          "FW-DOMAIN-TrajNet",
+          "FW-DOMAIN-UCY",
+          "FW-H100-UCY|100"
+        ],
+        "conversion_ready_now": 0,
+        "blocked_action_count": 11,
+        "downloads_or_conversions_executed": 0,
+        "evaluations_executed": 0,
+        "claim_ready_after_this_stage": false,
+        "highest_priority_blocker": "FW-TERMS-ucy_crowd_original"
+      },
+      "user_action_required_written": true,
+      "stage42_fw_gate": {
+        "source": "fresh_stage42_source_action_consolidator_from_existing_blockers",
+        "gates": {
+          "input_terms_gap_loaded": true,
+          "input_source_closure_loaded": true,
+          "input_h100_queue_loaded": true,
+          "input_unified_queue_loaded": true,
+          "actions_consolidated": true,
+          "ucy_terms_action_present": true,
+          "ucy_h100_action_present": true,
+          "trajnet_h100_action_present": true,
+          "conversion_queue_empty_preserved": true,
+          "no_action_marked_complete": true,
+          "all_actions_have_claim_guards": true,
+          "user_action_written": true,
+          "no_download_conversion_eval": true,
+          "no_metric_seconds_overclaim": true,
+          "stage5c_false": true,
+          "smc_false": true
+        },
+        "passed": 16,
+        "total": 16,
+        "verdict": "stage42_fw_source_action_consolidator_pass"
+      }
     }
   },
   "required_files": [
     {
       "path": "outputs/stage42_long_research/evidence_provenance_stage42.json",
       "exists": true,
-      "sha256": "f7ea646fca3a097597bdf922e57b282bc0011138b5d8776b46e7b0a0175dda34",
-      "size_bytes": 28011
+      "sha256": "53238f8dfa86acacaac0e8a6c999b72dcc827c7fe20e4cefc231750ab034ef08",
+      "size_bytes": 30399
     },
     {
       "path": "outputs/stage42_long_research/paper_freeze_candidate_manifest_stage42.json",
@@ -3129,24 +4229,45 @@
     {
       "path": "outputs/stage42_long_research/group_consistency_runtime_policy_stage42.json",
       "exists": true,
-      "sha256": "2ebb6ac0d1d7b418a69a590f2b98c58612b0730a50c03627dfccdab7596ba48c",
+      "sha256": "462d71d79a6797ddf6b44ad224fb46455b79da508944fcc8049b592d43d60305",
       "size_bytes": 15392
+    },
+    {
+      "path": "outputs/stage42_long_research/module_contribution_ledger_stage42.json",
+      "exists": true,
+      "sha256": "66dc12358d61bfd497778ee3227d7753c3bb545a84404cab713a66f7c2c525c1",
+      "size_bytes": 19500
+    },
+    {
+      "path": "outputs/stage42_long_research/claim_boundary_linter_stage42.json",
+      "exists": true,
+      "sha256": "02507d984d4fd6de7d69017555ca2214304ffa50af5ca81280980a322795c064",
+      "size_bytes": 2998
+    },
+    {
+      "path": "outputs/stage42_long_research/source_action_consolidator_stage42.json",
+      "exists": true,
+      "sha256": "cf2187206c2364451f45dafaddd4865b77c544dad72c7b8a93ab49c8c624ec16",
+      "size_bytes": 21529
     }
   ],
   "commands_file": {
     "path": "outputs/stage42_long_research/reviewer_replay_commands_stage42.sh",
     "exists": true,
-    "sha256": "223a1f983b4c10748a204675dd12533dd244e281bb2359a1f9c243d8f600ae95",
-    "size_bytes": 970
+    "sha256": "5cc503c444ae97bc7886ad1ff405fe4c0e7ecd9f06e99b1b5305878a0f599439",
+    "size_bytes": 1308
   },
   "replay_commands": [
     ".venv-pytorch/bin/python run_stage42_replay_proximity_guard_policy.py",
     ".venv-pytorch/bin/python run_stage42_batch_replay_proximity_guard_policy.py",
     ".venv-pytorch/bin/python run_stage42_replay_group_consistency_policy.py",
     ".venv-pytorch/bin/python run_stage42_group_consistency_runtime_policy.py",
+    ".venv-pytorch/bin/python run_stage42_module_contribution_ledger.py",
+    ".venv-pytorch/bin/python run_stage42_claim_boundary_linter.py",
+    ".venv-pytorch/bin/python run_stage42_source_action_consolidator.py",
     ".venv-pytorch/bin/python run_stage42_evidence_provenance_verifier.py",
     ".venv-pytorch/bin/python run_stage42_paper_freeze_candidate_manifest.py",
-    ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_policy_replay.py tests/test_stage42_proximity_guard_batch_replay.py tests/test_stage42_group_consistency_policy_replay.py tests/test_stage42_group_consistency_runtime_policy.py tests/test_stage42_evidence_provenance_verifier.py tests/test_stage42_paper_freeze_candidate_manifest.py"
+    ".venv-pytorch/bin/python -m pytest tests/test_stage42_proximity_guard_policy_replay.py tests/test_stage42_proximity_guard_batch_replay.py tests/test_stage42_group_consistency_policy_replay.py tests/test_stage42_group_consistency_runtime_policy.py tests/test_stage42_module_contribution_ledger.py tests/test_stage42_claim_boundary_linter.py tests/test_stage42_source_action_consolidator.py tests/test_stage42_evidence_provenance_verifier.py tests/test_stage42_paper_freeze_candidate_manifest.py"
   ],
   "claim_boundary": {
     "true_3d": false,
@@ -3155,7 +4276,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "package_hash": "422f6b3d47c33b6f87edda7b825e15825840712fc792852f15718ac51b14df90",
+  "package_hash": "68bbb48d3b04c341eeb161c1bb54e9e873af7425b5c4059d2820c91330ae8b51",
   "stage42_dm_gate": {
     "gates": {
       "required_inputs_exist": true,
@@ -3169,7 +4290,13 @@
       "dl_runtime_policy_passed": true,
       "paper_manifest_candidate_clean": true,
       "manifest_hash_recorded": true,
-      "provenance_artifacts_count_ge_25": true,
+      "provenance_artifacts_count_ge_28": true,
+      "fu_module_ledger_passed": true,
+      "fv_claim_linter_passed": true,
+      "fv_claim_linter_zero_violations": true,
+      "fw_source_action_passed": true,
+      "fw_source_action_no_conversion_eval": true,
+      "fw_source_action_not_claim_ready": true,
       "group_runtime_exact_replay": true,
       "group_runtime_positive_all_t50_hard": true,
       "group_runtime_t100_raw_reported": true,
@@ -3180,8 +4307,8 @@
       "stage5c_false": true,
       "smc_false": true
     },
-    "passed": 21,
-    "total": 21,
+    "passed": 27,
+    "total": 27,
     "verdict": "stage42_dm_reviewer_replay_package_pass"
   }
 }

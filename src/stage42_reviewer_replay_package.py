@@ -21,6 +21,9 @@ CZ_JSON = OUT_DIR / "paper_freeze_candidate_manifest_stage42.json"
 CV_JSON = OUT_DIR / "proximity_guard_batch_replay_stage42.json"
 DK_JSON = OUT_DIR / "group_consistency_policy_replay_stage42.json"
 DL_JSON = OUT_DIR / "group_consistency_runtime_policy_stage42.json"
+FU_JSON = OUT_DIR / "module_contribution_ledger_stage42.json"
+FV_JSON = OUT_DIR / "claim_boundary_linter_stage42.json"
+FW_JSON = OUT_DIR / "source_action_consolidator_stage42.json"
 
 README_RESULTS = Path("README_RESULTS.md")
 M3W_README = Path("outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md")
@@ -46,6 +49,9 @@ REPLAY_COMMANDS = [
     ".venv-pytorch/bin/python run_stage42_batch_replay_proximity_guard_policy.py",
     ".venv-pytorch/bin/python run_stage42_replay_group_consistency_policy.py",
     ".venv-pytorch/bin/python run_stage42_group_consistency_runtime_policy.py",
+    ".venv-pytorch/bin/python run_stage42_module_contribution_ledger.py",
+    ".venv-pytorch/bin/python run_stage42_claim_boundary_linter.py",
+    ".venv-pytorch/bin/python run_stage42_source_action_consolidator.py",
     ".venv-pytorch/bin/python run_stage42_evidence_provenance_verifier.py",
     ".venv-pytorch/bin/python run_stage42_paper_freeze_candidate_manifest.py",
     (
@@ -54,6 +60,9 @@ REPLAY_COMMANDS = [
         "tests/test_stage42_proximity_guard_batch_replay.py "
         "tests/test_stage42_group_consistency_policy_replay.py "
         "tests/test_stage42_group_consistency_runtime_policy.py "
+        "tests/test_stage42_module_contribution_ledger.py "
+        "tests/test_stage42_claim_boundary_linter.py "
+        "tests/test_stage42_source_action_consolidator.py "
         "tests/test_stage42_evidence_provenance_verifier.py "
         "tests/test_stage42_paper_freeze_candidate_manifest.py"
     ),
@@ -94,6 +103,9 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
     cv = payload["inputs"]["proximity_batch_replay"]
     dk = payload["inputs"]["group_consistency_replay"]
     dl = payload["inputs"]["group_consistency_runtime"]
+    fu = payload["inputs"]["module_contribution_ledger"]
+    fv = payload["inputs"]["claim_boundary_linter"]
+    fw = payload["inputs"]["source_action_consolidator"]
     files = payload["required_files"]
     commands = payload["replay_commands"]
     claim = payload["claim_boundary"]
@@ -115,7 +127,15 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "dl_runtime_policy_passed": _passed_gate(dl, "stage42_dl_gate"),
         "paper_manifest_candidate_clean": cz.get("freeze_status", {}).get("freeze_status") == "candidate_clean",
         "manifest_hash_recorded": bool(cz.get("manifest_hash")),
-        "provenance_artifacts_count_ge_25": int(cx.get("summary", {}).get("artifacts_total", 0)) >= 25,
+        "provenance_artifacts_count_ge_28": int(cx.get("summary", {}).get("artifacts_total", 0)) >= 28,
+        "fu_module_ledger_passed": _passed_gate(fu, "stage42_fu_gate"),
+        "fv_claim_linter_passed": _passed_gate(fv, "stage42_fv_gate"),
+        "fv_claim_linter_zero_violations": int(fv.get("summary", {}).get("violations_total", -1)) == 0,
+        "fw_source_action_passed": _passed_gate(fw, "stage42_fw_gate"),
+        "fw_source_action_no_conversion_eval": fw.get("claim_boundary", {}).get("download_executed") is False
+        and fw.get("claim_boundary", {}).get("conversion_executed") is False
+        and fw.get("claim_boundary", {}).get("evaluation_executed") is False,
+        "fw_source_action_not_claim_ready": fw.get("summary", {}).get("claim_ready_after_this_stage") is False,
         "group_runtime_exact_replay": dl_replay.get("selected_xy_max_abs_diff") == 0.0
         and dl_replay.get("selected_ade_max_abs_diff") == 0.0
         and dl_replay.get("selected_fde_max_abs_diff") == 0.0
@@ -207,6 +227,11 @@ def _render_report(payload: Mapping[str, Any]) -> list[str]:
         f"- easy degradation: `{dl_metric.get('easy_degradation')}`",
         f"- base near@0.05: `{dl_diag.get('base_near_005')}`",
         f"- final near@0.05: `{dl_diag.get('final_near_005')}`",
+        f"- module ledger supported modules: `{payload['inputs']['module_contribution_ledger'].get('summary', {}).get('main_claim_allowed_modules')}`",
+        f"- blocked modules: `{payload['inputs']['module_contribution_ledger'].get('summary', {}).get('blocked_or_auxiliary_modules')}`",
+        f"- claim linter violations: `{payload['inputs']['claim_boundary_linter'].get('summary', {}).get('violations_total')}`",
+        f"- source-action top actions: `{payload['inputs']['source_action_consolidator'].get('summary', {}).get('top_actions')}`",
+        f"- source-action conversion_ready_now: `{payload['inputs']['source_action_consolidator'].get('summary', {}).get('conversion_ready_now')}`",
         "",
         "## Gate",
         "",
@@ -284,8 +309,11 @@ def run_stage42_reviewer_replay_package() -> dict[str, Any]:
         "proximity_batch_replay": read_json(CV_JSON, {}),
         "group_consistency_replay": read_json(DK_JSON, {}),
         "group_consistency_runtime": read_json(DL_JSON, {}),
+        "module_contribution_ledger": read_json(FU_JSON, {}),
+        "claim_boundary_linter": read_json(FV_JSON, {}),
+        "source_action_consolidator": read_json(FW_JSON, {}),
     }
-    required_files = [_file_row(path) for path in [CX_JSON, CZ_JSON, CV_JSON, DK_JSON, DL_JSON]]
+    required_files = [_file_row(path) for path in [CX_JSON, CZ_JSON, CV_JSON, DK_JSON, DL_JSON, FU_JSON, FV_JSON, FW_JSON]]
     commands_file = _file_row(COMMANDS_SH)
     payload: dict[str, Any] = {
         "source": "fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts",

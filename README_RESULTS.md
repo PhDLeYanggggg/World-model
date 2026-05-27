@@ -6,7 +6,7 @@
 
 `/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
 
-它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+它集中回答：在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前 best deployable 是谁、当前大概是什么质量，以及哪些 claim 仍然禁止。该文件明确纳入 Stage26、Stage37、Stage38-40、M3W-Neural v1、Stage41/42、Stage42-FH/FI、Stage42-FU 模块贡献 ledger、Stage42-FV claim linter、Stage42-FW source-action consolidator、Stage42-DM reviewer replay package。当前严格结论不变：M3W 是 protected dataset-local/raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
 
 ## M3W 当前工作路线/失败/成功总账
 
@@ -4533,7 +4533,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 
 - source: `fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts`
 - role: reviewer-facing minimal replay package for provenance, manifest, and runtime policy exact replay.
-- gate: `21 / 21`; verdict `stage42_dm_reviewer_replay_package_pass`.
+- gate: `27 / 27`; verdict `stage42_dm_reviewer_replay_package_pass`.
 - commands file: `outputs/stage42_long_research/reviewer_replay_commands_stage42.sh`.
 - group-consistency runtime all/t50/t100 raw/hard: `0.24715658317833844` / `0.2236298792899738` / `0.1434611214781808` / `0.23887420070464105`.
 - This is replay/provenance packaging only: no training, no threshold tuning, no Stage5C, no SMC, no metric/seconds-level claim.

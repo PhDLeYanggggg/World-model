@@ -1547,7 +1547,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 
 - source: `fresh_reviewer_replay_package_from_stage42_runtime_and_manifest_artifacts`
 - role: reviewer-facing minimal replay package for provenance, manifest, and runtime policy exact replay.
-- gate: `21 / 21`; verdict `stage42_dm_reviewer_replay_package_pass`.
+- gate: `27 / 27`; verdict `stage42_dm_reviewer_replay_package_pass`.
 - commands file: `outputs/stage42_long_research/reviewer_replay_commands_stage42.sh`.
 - group-consistency runtime all/t50/t100 raw/hard: `0.24715658317833844` / `0.2236298792899738` / `0.1434611214781808` / `0.23887420070464105`.
 - This is replay/provenance packaging only: no training, no threshold tuning, no Stage5C, no SMC, no metric/seconds-level claim.

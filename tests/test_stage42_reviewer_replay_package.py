@@ -10,7 +10,7 @@ def _gate_payload() -> dict:
         "inputs": {
             "evidence_provenance": {
                 "stage42_cx_gate": {"passed": 20, "total": 20},
-                "summary": {"artifacts_total": 25},
+                "summary": {"artifacts_total": 28},
             },
             "paper_freeze_manifest": {
                 "stage42_cz_gate": {"passed": 15, "total": 15},
@@ -33,6 +33,26 @@ def _gate_payload() -> dict:
                         "hard_failure_improvement": 0.2,
                     },
                     "diagnostics": {"base_near_005": 0.02, "final_near_005": 0.01},
+                },
+            },
+            "module_contribution_ledger": {
+                "stage42_fu_gate": {"passed": 14, "total": 14},
+                "summary": {
+                    "main_claim_allowed_modules": ["history", "teacher_floor"],
+                    "blocked_or_auxiliary_modules": ["JEPA"],
+                },
+            },
+            "claim_boundary_linter": {
+                "stage42_fv_gate": {"passed": 15, "total": 15},
+                "summary": {"violations_total": 0},
+            },
+            "source_action_consolidator": {
+                "stage42_fw_gate": {"passed": 16, "total": 16},
+                "summary": {"claim_ready_after_this_stage": False},
+                "claim_boundary": {
+                    "download_executed": False,
+                    "conversion_executed": False,
+                    "evaluation_executed": False,
                 },
             },
         },
