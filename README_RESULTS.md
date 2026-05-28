@@ -6683,3 +6683,13 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `blocked_sources_not_repaired_family_support_diagnostic`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
 - boundary: static causal family support does not globally repair ETH_UCY; blocked sources stay fallback-only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JJ_ETH_UCY_BLOCKED_SOURCE_GEOMETRY_SUPPORT:END -->
+
+<!-- STAGE42_JK_ETH_UCY_ROW_FAMILY_SELECTOR:START -->
+## Stage42-JK ETH_UCY Row-Level Family Selector
+
+- source: `fresh_stage42_jk_eth_ucy_row_family_selector`
+- gate: `11 / 11`; verdict: `stage42_jk_eth_ucy_row_family_selector_pass`
+- row-family heldout results: ETH/seq_eth/obsmat.txt: all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, oracle t50 53.80%, deployable=False; UCY/students03/obsmat.txt: all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, oracle t50 39.14%, deployable=False.
+- decision: `row_family_selector_not_deployable_on_blocked_sources`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
+- boundary: no full ETH_UCY/cross-domain overclaim; still dataset-local raw-frame 2.5D, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JK_ETH_UCY_ROW_FAMILY_SELECTOR:END -->
