@@ -6642,3 +6642,13 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `easy_guard_repair_partial_domain_bounded`; deployable domains after easy guard: `['TrajNet', 'UCY']`; still blocked: `['ETH_UCY']`.
 - boundary: validation-only switch budget; no test threshold tuning, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JF_SOURCE_ROTATION_EASY_GUARD_REPAIR:END -->
+
+<!-- STAGE42_JG_ETH_UCY_SOURCE_SPECIFIC_EASY_GUARD:START -->
+## Stage42-JG ETH_UCY Source-Specific Easy-Guard Feasibility
+
+- source: `fresh_stage42_jg_eth_ucy_source_specific_easy_guard`
+- gate: `11 / 11`; verdict: `stage42_jg_eth_ucy_source_specific_easy_guard_pass`
+- source-CV folds: ETH/seq_eth/obsmat.txt: all 0.58%, t50 -32.47%, hard 0.63%, easy -11.79%; ETH/seq_hotel/obsmat.txt: all 8.64%, t50 15.05%, hard 8.70%, easy -15.89%; UCY/students03/obsmat.txt: all 8.73%, t50 9.39%, hard 10.24%, easy 19.42%; UCY/zara01/obsmat.txt: all 12.50%, t50 17.97%, hard 11.43%, easy -24.69%; UCY/zara02/obsmat.txt: all 27.54%, t50 36.18%, hard 28.92%, easy 81.62%.
+- decision: `eth_ucy_source_specific_policy_partial_source_support`; deployable sources: `['ETH/seq_hotel/obsmat.txt', 'UCY/zara01/obsmat.txt']`; blocked sources: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt', 'UCY/zara02/obsmat.txt']`.
+- boundary: this is ETH_UCY source-specific support only, not cross-domain zero-shot success; still no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JG_ETH_UCY_SOURCE_SPECIFIC_EASY_GUARD:END -->
