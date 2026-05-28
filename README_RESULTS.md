@@ -6398,9 +6398,22 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `8d6da7dbd3ebada46f7de5e56c16ec133fe315c709584c8384d4d2d3fc0cacc8`
+- policy hash: `9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
 - boundary: frozen source-specialist t50 policy; dataset-local/raw-frame 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IM_T50_SOURCE_SPECIALIST_POLICY_FREEZE:END -->
+
+<!-- STAGE42_IN_T50_SOURCE_SPECIALIST_REVIEWER_REPLAY:START -->
+## Stage42-IN T50 Source-Specialist Reviewer Replay Package
+
+- source: `cached_verified_stage42_ik_il_im_t50_source_specialist_reviewer_replay`
+- verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
+- gates: `25 / 25`
+- commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
+- policy hash: `9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2`
+- ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
+- UCY t50 before -> after: `0.000000` -> `0.122892`
+- boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_IN_T50_SOURCE_SPECIALIST_REVIEWER_REPLAY:END -->

@@ -6,7 +6,7 @@
 - selection_scope: `prevalidated_source_routing_no_new_threshold_selection`
 - default_route: `stage42ii_t50_gain_harm_ensemble`
 - ucy_route: `stage42x_row_aligned_ucy_full_waypoint_specialist`
-- sha256: `902cf924c7581bb0d2b5efb8eced961c98dcb52d36812b7cf3b7d51a3a6317b2`
+- sha256: `2a60a3b37f9681e2d2583255eccc13fa3d091e225735caf21eefd175d202366d`
 
 ## Test Summary
 

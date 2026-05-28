@@ -3542,7 +3542,11 @@
     "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
     "outputs/stage42_long_research/stage42_stage_im_gate.md",
     "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-    "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.md"
+    "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.md",
+    "outputs/stage42_long_research/t50_source_specialist_reviewer_replay_stage42.md",
+    "outputs/stage42_long_research/t50_source_specialist_reviewer_replay_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_in_gate.md",
+    "outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18475,7 +18479,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "8d6da7dbd3ebada46f7de5e56c16ec133fe315c709584c8384d4d2d3fc0cacc8",
+      "policy_hash": "9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -34003,6 +34007,154 @@
       "raw_frame_dataset_local_only": true,
       "stage5c_executed": false,
       "smc_enabled": false
+    }
+  },
+  "stage42_long_research": {
+    "stage_in_t50_source_specialist_reviewer_replay": {
+      "source": "cached_verified_stage42_ik_il_im_t50_source_specialist_reviewer_replay",
+      "report": "outputs/stage42_long_research/t50_source_specialist_reviewer_replay_stage42.md",
+      "json": "outputs/stage42_long_research/t50_source_specialist_reviewer_replay_stage42.json",
+      "commands_file": "outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh",
+      "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
+      "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
+      "gates": "25/25",
+      "package_hash": "b7bc0ea17544d98ecb602174605e793fe159f9857d2cd11582120af2d786b52e",
+      "metric": {
+        "source": "compact_review_replay_from_stage42_ik_il_im",
+        "rows": 55528,
+        "ade_all": 0.15881873347151387,
+        "ade_t50": 0.10452245900619994,
+        "ade_t50_ci_low": 0.09732837708716266,
+        "ade_t100_raw_frame_diagnostic": 0.18072885369108016,
+        "ade_hard_failure": 0.16372957102696828,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.26368667007040403,
+        "fde_t50_ci_low": 0.2563576769579816,
+        "switch_rate": 0.30643999423714163,
+        "ucy_t50_before": 0.0,
+        "ucy_t50_after": 0.12289194124200009,
+        "ucy_t50_delta": 0.12289194124200009,
+        "non_ucy_max_abs_delta": 1.0197926370025812e-07,
+        "source_rows": [
+          {
+            "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+            "rows": 20087,
+            "t50_rows": 4927,
+            "t100_rows": 3032,
+            "all_improvement": 0.23275513137665094,
+            "t50_improvement": 0.16416815176718114,
+            "t100_raw_frame_diagnostic_improvement": 0.3071439782784,
+            "hard_failure_improvement": 0.23880809747202758,
+            "easy_degradation": 0.0
+          },
+          {
+            "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+            "rows": 25901,
+            "t50_rows": 6422,
+            "t100_rows": 5433,
+            "all_improvement": 0.1017782796733433,
+            "t50_improvement": 0.06289589211082625,
+            "t100_raw_frame_diagnostic_improvement": 0.10248278920262976,
+            "hard_failure_improvement": 0.10608369347992885,
+            "easy_degradation": 0.005423585130763131
+          },
+          {
+            "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+            "rows": 9540,
+            "t50_rows": 2340,
+            "t100_rows": 1440,
+            "all_improvement": 0.19609075332403936,
+            "t50_improvement": 0.12289194124200009,
+            "t100_raw_frame_diagnostic_improvement": 0.21388003644773856,
+            "hard_failure_improvement": 0.20736027560276749,
+            "easy_degradation": 0.0
+          }
+        ],
+        "domain_rows": {
+          "ETH_UCY": {
+            "rows": 25901,
+            "switch_rate": 0.2521524265472376,
+            "all_improvement": 0.1017782796733433,
+            "t50_improvement": 0.06289589211082625,
+            "t100_raw_frame_diagnostic_improvement": 0.10248278920262976,
+            "hard_failure_improvement": 0.10608369347992885,
+            "easy_degradation": 0.005423585130763131
+          },
+          "TrajNet": {
+            "rows": 20087,
+            "switch_rate": 0.28202319908398465,
+            "all_improvement": 0.23275513137665094,
+            "t50_improvement": 0.16416815176718114,
+            "t100_raw_frame_diagnostic_improvement": 0.3071439782784,
+            "hard_failure_improvement": 0.23880809747202758,
+            "easy_degradation": 0.0
+          },
+          "UCY": {
+            "rows": 9540,
+            "switch_rate": 0.5052410901467506,
+            "all_improvement": 0.19609075332403936,
+            "t50_improvement": 0.12289194124200009,
+            "t100_raw_frame_diagnostic_improvement": 0.21388003644773856,
+            "hard_failure_improvement": 0.20736027560276749,
+            "easy_degradation": 0.0
+          }
+        },
+        "policy_hash": "9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2",
+        "policy_artifact_sha256": "2a60a3b37f9681e2d2583255eccc13fa3d091e225735caf21eefd175d202366d",
+        "supported_claims": [
+          {
+            "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
+            "status": "supported_fresh_composition_eval",
+            "evidence": "UCY t50 0.000000 -> 0.122892; alignment rows 9540"
+          },
+          {
+            "claim": "The Stage42-II non-UCY ensemble decisions are unchanged by the IK composition.",
+            "status": "supported_fresh_audit",
+            "evidence": "max_abs_non_ucy_domain_metric_delta=0.000000101979"
+          },
+          {
+            "claim": "All powered t50 source files are nonnegative/positive after IK.",
+            "status": "supported_fresh_audit",
+            "evidence": "positive_powered_t50_source_count=3/3"
+          },
+          {
+            "claim": "IK improves the global Stage42-II ensemble while preserving easy cases.",
+            "status": "supported_fresh_audit",
+            "evidence": "all_delta=0.037627; t50_delta=0.023160; easy_degradation=0.000000"
+          }
+        ],
+        "blocked_claims": [
+          {
+            "claim": "IK proves a new independent external-domain generalization result.",
+            "status": "blocked",
+            "reason": "IK is a source-specialist composition using cached-verified row-aligned UCY full-waypoint branch evidence."
+          },
+          {
+            "claim": "IK is new training.",
+            "status": "blocked",
+            "reason": "IK source labels mark new_training=not_run; it is a fresh composition/evaluation audit."
+          },
+          {
+            "claim": "IK allows metric or seconds-level claims.",
+            "status": "blocked",
+            "reason": "claim boundary remains dataset-local/raw-frame only."
+          },
+          {
+            "claim": "IK permits Stage5C or SMC.",
+            "status": "blocked",
+            "reason": "Stage5C and SMC remain false in all relevant artifacts."
+          }
+        ]
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "independent_new_domain_claim": false,
+        "source_specialist_replay_only": true
+      }
     }
   }
 }

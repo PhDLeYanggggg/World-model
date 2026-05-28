@@ -1,9 +1,9 @@
 # Stage42-IM T50 Source-Specialist Policy Freeze
 
 - source: `cached_verified_stage42_ik_il_t50_source_specialist_policy_freeze`
-- generated_at_utc: `2026-05-28T01:49:09.793445+00:00`
-- input_hash: `528e2dc5ddc0b9c03b7f32dc413879383b53cfa2760af15db72dd13922128931`
-- policy_hash: `8d6da7dbd3ebada46f7de5e56c16ec133fe315c709584c8384d4d2d3fc0cacc8`
+- generated_at_utc: `2026-05-28T01:59:58.125103+00:00`
+- input_hash: `995a7bed2d1ad99b7a56be9a9dbe8a104d57de1ab5a7a8bf906a8ae58d5ea016`
+- policy_hash: `9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2`
 - policy_artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
 - gate: `22 / 22`
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
