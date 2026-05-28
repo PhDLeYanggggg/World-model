@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_iu_source_level_ucy_full_waypoint_integration",
-  "current_verdict": "stage42_iu_source_level_ucy_full_waypoint_integration_pass",
+  "current_stage": "stage42_iv_source_level_row_cache_integration",
+  "current_verdict": "stage42_iv_source_level_row_cache_integration_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -3562,7 +3562,10 @@
     "outputs/stage42_long_research/source_level_ucy_full_waypoint_integration_stage42.md",
     "outputs/stage42_long_research/source_level_ucy_full_waypoint_integration_stage42.json",
     "outputs/stage42_long_research/stage42_stage_iu_gate.md",
-    "outputs/stage42_long_research/source_level_ucy_full_waypoint_integration_policy_stage42.json"
+    "outputs/stage42_long_research/source_level_ucy_full_waypoint_integration_policy_stage42.json",
+    "outputs/stage42_long_research/source_level_row_cache_integration_stage42.md",
+    "outputs/stage42_long_research/source_level_row_cache_integration_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_iv_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18557,6 +18560,43 @@
         "focused_pytest": "3 passed in 0.91s",
         "related_pytest": "11 passed in 0.98s",
         "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 1113 passed in 841.55s (0:14:01)"
+      }
+    },
+    "stage_iv_source_level_row_cache_integration": {
+      "source": "fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy",
+      "report": "outputs/stage42_long_research/source_level_row_cache_integration_stage42.md",
+      "json": "outputs/stage42_long_research/source_level_row_cache_integration_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_iv_gate.md",
+      "cache_path": "data/stage42_source_level_full_waypoint_cache/stage42iv_source_level_merged_cache.npz",
+      "cache_hash": "ff0213ae55c873796c8ed6e374a20729ec60db1ea2662b9ca703ace0d809a87f",
+      "verdict": "stage42_iv_source_level_row_cache_integration_pass",
+      "gates": "20/20",
+      "rows": 47458,
+      "domains": {
+        "TrajNet": 37918,
+        "UCY": 9540
+      },
+      "ade_all": 0.2915425184910424,
+      "ade_t50": 0.2470453241712095,
+      "ade_t100_raw_frame_diagnostic": 0.19633495524496603,
+      "ade_hard_failure": 0.2872732875159937,
+      "easy_degradation": 0.0,
+      "bootstrap_t50_ci": [
+        0.24292968809604645,
+        0.25138823240995406
+      ],
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "verification": {
+        "focused_pytest": "3 passed in 53.29s",
+        "related_pytest": "14 passed in 54.49s",
+        "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 1116 passed in 841.57s (0:14:01)"
       }
     }
   },

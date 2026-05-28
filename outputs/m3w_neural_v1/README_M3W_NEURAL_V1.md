@@ -3381,3 +3381,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - boundary: protected dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no Stage5C, no SMC.
 - verification: focused pytest `3 passed in 0.91s`; related pytest `11 passed in 0.98s`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1113 passed in 841.55s (0:14:01)`.
 <!-- STAGE42_IU_SOURCE_LEVEL_UCY_FULL_WAYPOINT_INTEGRATION:END -->
+<!-- STAGE42_IV_SOURCE_LEVEL_ROW_CACHE_INTEGRATION:START -->
+## Stage42-IV Source-Level Row-Cache Full-Waypoint Integration
+
+- source: `fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy`
+- role: turns the Stage42-IU TrajNet+UCY source-level policy package into a single row-level merged cache with bootstrap.
+- gate: `20 / 20`; verdict `stage42_iv_source_level_row_cache_integration_pass`.
+- rows: `47458`; domains: `{'TrajNet': 37918, 'UCY': 9540}`.
+- ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
+- easy degradation: `0.000000`.
+- bootstrap t50 CI: `[0.242930, 0.251388]`; bootstrap_n `2000`.
+- limitation: cache is local and not committed; claims remain dataset-local/raw-frame 2.5D.
+- boundary: no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+- verification: focused pytest `3 passed in 53.29s`; related pytest `14 passed in 54.49s`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1116 passed in 841.57s (0:14:01)`.
+<!-- STAGE42_IV_SOURCE_LEVEL_ROW_CACHE_INTEGRATION:END -->
