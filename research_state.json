@@ -3537,7 +3537,12 @@
     "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.json",
     "outputs/stage42_long_research/t50_ucy_specialist_claim_audit_stage42.md",
     "outputs/stage42_long_research/t50_ucy_specialist_claim_audit_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_il_gate.md"
+    "outputs/stage42_long_research/stage42_stage_il_gate.md",
+    "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
+    "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_im_gate.md",
+    "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
+    "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18453,6 +18458,38 @@
         "metric_seconds_claim_allowed": false,
         "stage5c_executed": false,
         "smc_enabled": false
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "source_specialist_claim_only": true,
+        "independent_new_domain_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_im_t50_source_specialist_policy_freeze": {
+      "source": "cached_verified_stage42_ik_il_t50_source_specialist_policy_freeze",
+      "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
+      "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
+      "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
+      "policy_hash": "8d6da7dbd3ebada46f7de5e56c16ec133fe315c709584c8384d4d2d3fc0cacc8",
+      "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
+      "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
+      "gates": "22/22",
+      "metric": {
+        "rows": 55528,
+        "ade_all": 0.15881873347151387,
+        "ade_t50": 0.10452245900619994,
+        "ade_t50_ci_low": 0.09732837708716266,
+        "ade_t100_raw_frame_diagnostic": 0.18072885369108016,
+        "ade_hard_failure": 0.16372957102696828,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.26368667007040403,
+        "fde_t50_ci_low": 0.2563576769579816,
+        "switch_rate": 0.30643999423714163
       },
       "claim_boundary": {
         "true_3d": false,
