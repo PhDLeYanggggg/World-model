@@ -1541,3 +1541,13 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `source_support_policy_not_deployable_support_blocker`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`; unsupported: `['UCY/students03/obsmat.txt']`.
 - boundary: this is a source-support diagnostic/repair attempt, still dataset-local raw-frame 2.5D, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JL_ETH_UCY_SOURCE_SUPPORT_COVERAGE:END -->
+
+<!-- STAGE42_JM_ETH_UCY_CALIBRATED_SUPPORT_RECHECK:START -->
+## Stage42-JM ETH_UCY Calibrated Support Recheck
+
+- source: `fresh_stage42_jm_eth_ucy_calibrated_support_recheck`
+- gate: `11 / 11`; verdict: `stage42_jm_eth_ucy_calibrated_support_recheck_pass`
+- calibrated-support heldout results: ETH/seq_eth/obsmat.txt: local_calib=source_specific_annotation_step_meter_coordinate_evidence, all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, deployable=False; UCY/students03/obsmat.txt: local_calib=source_specific_annotation_step_meter_coordinate_evidence, all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, deployable=False.
+- decision: `calibrated_support_recheck_blocked_no_safe_deployment`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
+- boundary: source-specific calibration evidence is recorded, but the main claim remains dataset-local/raw-frame 2.5D; no global metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JM_ETH_UCY_CALIBRATED_SUPPORT_RECHECK:END -->
