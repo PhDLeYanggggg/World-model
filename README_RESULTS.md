@@ -6693,3 +6693,13 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `row_family_selector_not_deployable_on_blocked_sources`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
 - boundary: no full ETH_UCY/cross-domain overclaim; still dataset-local raw-frame 2.5D, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JK_ETH_UCY_ROW_FAMILY_SELECTOR:END -->
+
+<!-- STAGE42_JL_ETH_UCY_SOURCE_SUPPORT_COVERAGE:START -->
+## Stage42-JL ETH_UCY Source Support Coverage
+
+- source: `fresh_stage42_jl_eth_ucy_source_support_coverage`
+- gate: `11 / 11`; verdict: `stage42_jl_eth_ucy_source_support_coverage_pass`
+- source-support heldout results: ETH/seq_eth/obsmat.txt: support=True, all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, oracle t50 53.80%; UCY/students03/obsmat.txt: support=False, all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, oracle t50 39.14%.
+- decision: `source_support_policy_not_deployable_support_blocker`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`; unsupported: `['UCY/students03/obsmat.txt']`.
+- boundary: this is a source-support diagnostic/repair attempt, still dataset-local raw-frame 2.5D, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JL_ETH_UCY_SOURCE_SUPPORT_COVERAGE:END -->
