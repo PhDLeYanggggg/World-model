@@ -1511,3 +1511,13 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `eth_ucy_blocked_sources_still_blocked`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`; easy improved: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
 - boundary: held-out sources still blocked remain fallback-only; no global ETH_UCY/cross-domain overclaim, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JI_ETH_UCY_SOURCE_ROBUST_BLOCKED_REPAIR:END -->
+
+<!-- STAGE42_JJ_ETH_UCY_BLOCKED_SOURCE_GEOMETRY_SUPPORT:START -->
+## Stage42-JJ ETH_UCY Blocked-Source Geometry/Family Support
+
+- source: `fresh_stage42_jj_eth_ucy_blocked_source_geometry_support`
+- gate: `11 / 11`; verdict: `stage42_jj_eth_ucy_blocked_source_geometry_support_pass`
+- family/geometry support audit: ETH/seq_eth/obsmat.txt: static all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, family-oracle t50 53.80%, deployable=False; UCY/students03/obsmat.txt: static all 0.00%, t50 0.00%, hard 0.00%, easy -0.00%, family-oracle t50 39.14%, deployable=False.
+- decision: `blocked_sources_not_repaired_family_support_diagnostic`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
+- boundary: static causal family support does not globally repair ETH_UCY; blocked sources stay fallback-only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JJ_ETH_UCY_BLOCKED_SOURCE_GEOMETRY_SUPPORT:END -->
