@@ -1551,3 +1551,13 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `calibrated_support_recheck_blocked_no_safe_deployment`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
 - boundary: source-specific calibration evidence is recorded, but the main claim remains dataset-local/raw-frame 2.5D; no global metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JM_ETH_UCY_CALIBRATED_SUPPORT_RECHECK:END -->
+
+<!-- STAGE42_JN_LOCAL_CALIBRATED_SOURCE_SUPPORT_INTAKE:START -->
+## Stage42-JN Local Calibrated Source Support Intake
+
+- source: `fresh_stage42_jn_local_calibrated_source_support_intake`
+- gate: `12 / 12`; verdict: `stage42_jn_local_calibrated_source_support_intake_pass`
+- parseable support candidates: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`; long-horizon candidates: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`.
+- decision: `candidate_sources_found_but_user_terms_required`; auto_convert_allowed: `[]`.
+- boundary: candidate-source intake only; no conversion, no deployment claim, no global metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JN_LOCAL_CALIBRATED_SOURCE_SUPPORT_INTAKE:END -->
