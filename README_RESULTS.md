@@ -6575,3 +6575,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - blocker_counts: `{'no_powered_positive_context_slice': 0, 'context_below_baseline_family': 55, 'easy_or_safety_not_primary_blocker': 2}`.
 - boundary: train-only slice thresholds, validation-selected safe policy, test-once audit; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_IZ_SOURCE_LEVEL_NONLINEAR_CONTEXT_SLICE_AUDIT:END -->
+
+<!-- STAGE42_JA_CONTEXT_SLICE_POLICY_PROMOTION:START -->
+## Stage42-JA Context-Slice Policy Promotion Audit
+
+- source: `fresh_run_validation_selected_context_slice_policy`
+- role: promote Stage42-IZ slice-level context evidence into a validation-selected fallback-safe policy, or reject promotion.
+- gate: `10 / 12`; verdict `stage42_ja_context_slice_policy_not_promotable`.
+- selected_rule_count: `13`; test_context_rule_coverage_rate `0.977327`.
+- context policy all/t50/t100raw/hard/easy: `0.203253` / `0.190761` / `0.107057` / `0.195825` / `-0.211871`.
+- delta vs baseline-family all/t50/t100raw/hard/easy: `-0.023421` / `-0.070733` / `-0.084708` / `-0.042885` / `-0.069684`.
+- decision: `validation_selected_context_slice_policy_not_promoted`.
+- boundary: validation-only slice policy selection, test-once evaluation; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_JA_CONTEXT_SLICE_POLICY_PROMOTION:END -->

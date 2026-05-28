@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_iz_source_level_nonlinear_context_slice_audit",
-  "current_verdict": "stage42_iz_context_slice_audit_positive",
+  "current_stage": "stage42_ja_context_slice_policy_promotion",
+  "current_verdict": "stage42_ja_context_slice_policy_not_promotable",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -3577,7 +3577,10 @@
     "outputs/stage42_long_research/stage42_stage_iy_gate.md",
     "outputs/stage42_long_research/source_level_nonlinear_context_slice_audit_stage42.md",
     "outputs/stage42_long_research/source_level_nonlinear_context_slice_audit_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_iz_gate.md"
+    "outputs/stage42_long_research/stage42_stage_iz_gate.md",
+    "outputs/stage42_long_research/context_slice_policy_promotion_stage42.md",
+    "outputs/stage42_long_research/context_slice_policy_promotion_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_ja_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18825,6 +18828,48 @@
         "no_powered_positive_context_slice": 0,
         "context_below_baseline_family": 55,
         "easy_or_safety_not_primary_blocker": 2
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_ja_context_slice_policy_promotion": {
+      "source": "fresh_run_validation_selected_context_slice_policy",
+      "report": "outputs/stage42_long_research/context_slice_policy_promotion_stage42.md",
+      "json": "outputs/stage42_long_research/context_slice_policy_promotion_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_ja_gate.md",
+      "verdict": "stage42_ja_context_slice_policy_not_promotable",
+      "gates": "10/12",
+      "decision": "validation_selected_context_slice_policy_not_promoted",
+      "selected_rule_count": 13,
+      "test_context_rule_coverage_rate": 0.9773273209996207,
+      "context_policy_metric": {
+        "rows": 47458,
+        "all_improvement": 0.20325261408303208,
+        "t10_improvement": 0.36435357907414334,
+        "t25_improvement": 0.22460825142480612,
+        "t50_improvement": 0.19076090921757605,
+        "t100_raw_frame_diagnostic_improvement": 0.10705697996896946,
+        "hard_failure_improvement": 0.19582452229477887,
+        "easy_degradation": -0.2118714178085198,
+        "switch_rate": 0.5553120654052004,
+        "harm_over_fallback": -0.09360593301727413
+      },
+      "delta_vs_baseline_family": {
+        "all_improvement": -0.023421352305094012,
+        "t10_improvement": 0.01130861283455431,
+        "t25_improvement": 0.14565416461480984,
+        "t50_improvement": -0.07073278796807614,
+        "t100_raw_frame_diagnostic_improvement": -0.0847084004242814,
+        "hard_failure_improvement": -0.042885258839016505,
+        "easy_degradation": -0.0696839234921599,
+        "switch_rate": -0.06302414766741116,
+        "harm_over_fallback": 0.010786466609226414
       },
       "claim_boundary": {
         "true_3d": false,
