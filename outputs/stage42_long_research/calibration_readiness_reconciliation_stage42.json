@@ -1,0 +1,427 @@
+{
+  "stage": "Stage42-JD",
+  "source": "fresh_stage42_jd_calibration_readiness_reconciliation",
+  "generated_at_utc": "2026-05-28T15:01:41.598286+00:00",
+  "git_commit": "0f6b172",
+  "input_hash": "21eb76de69bba8fc5ce85f9ee46f2b8f61b82c68f9c3ed88ee9d463dfb9820ba",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-JD 是 data/time/geometry calibration readiness reconciliation，不训练、不下载、不转换、不评估。",
+    "ETH/UCY 等 source-specific metric/time hints 只能写成 candidates；除非 terms、guarded conversion、no-leakage 和 restricted eval 都完成，否则不能写成 metric/seconds result。",
+    "SDD 仍是 pixel/raw-frame；TrajNet/OpenTraj 当前仍是 dataset-local/raw-frame 或 source-dependent。",
+    "future endpoints / waypoints 只允许作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_reports": {
+    "data_calibration": "outputs/stage42_long_research/data_calibration_stage42.json",
+    "source_time_geometry_calibration": "outputs/stage42_long_research/source_time_geometry_calibration_stage42.json",
+    "restricted_metric_time_claim_guard": "outputs/stage42_long_research/restricted_metric_time_post_hk_claim_guard_stage42.json",
+    "calibration_candidate_manifest": "outputs/stage42_long_research/calibration_candidate_manifest_stage42.json",
+    "terms_snapshot": "outputs/stage42_long_research/source_terms_confirmation_intake_calibration_snapshot_stage42.json"
+  },
+  "input_gate_status": {
+    "data_calibration_present": true,
+    "source_time_geometry_gate_passed": true,
+    "restricted_metric_time_claim_guard_passed": true,
+    "calibration_manifest_gate_passed": true
+  },
+  "path_status": {
+    "rows": [
+      {
+        "key": "sdd_raw",
+        "candidates": [
+          "external_data/StanfordDroneDataset"
+        ],
+        "found": true,
+        "existing": [
+          "external_data/StanfordDroneDataset"
+        ]
+      },
+      {
+        "key": "sdd_converted",
+        "candidates": [
+          "data/stage21_sdd_world_state",
+          "data/stage24_sdd_fast_cache"
+        ],
+        "found": true,
+        "existing": [
+          "data/stage21_sdd_world_state",
+          "data/stage24_sdd_fast_cache"
+        ]
+      },
+      {
+        "key": "opentraj_raw",
+        "candidates": [
+          "external_data/OpenTraj"
+        ],
+        "found": true,
+        "existing": [
+          "external_data/OpenTraj"
+        ]
+      },
+      {
+        "key": "opentraj_converted",
+        "candidates": [
+          "data/stage20_world_state/opentraj",
+          "data/stage31_external_feature_store"
+        ],
+        "found": true,
+        "existing": [
+          "data/stage20_world_state/opentraj",
+          "data/stage31_external_feature_store"
+        ]
+      },
+      {
+        "key": "eth_ucy_converted",
+        "candidates": [
+          "data/stage20_world_state/eth_ucy_full",
+          "data/stage5b_world_state/eth_ucy"
+        ],
+        "found": true,
+        "existing": [
+          "data/stage20_world_state/eth_ucy_full",
+          "data/stage5b_world_state/eth_ucy"
+        ]
+      },
+      {
+        "key": "trajnet_converted",
+        "candidates": [
+          "data/stage20_world_state/trajnet_full",
+          "data/stage5b_world_state/trajnet"
+        ],
+        "found": true,
+        "existing": [
+          "data/stage20_world_state/trajnet_full",
+          "data/stage5b_world_state/trajnet"
+        ]
+      },
+      {
+        "key": "ucy_converted",
+        "candidates": [
+          "data/stage20_world_state/ucy_crowd",
+          "data/stage37_t50_history"
+        ],
+        "found": true,
+        "existing": [
+          "data/stage20_world_state/ucy_crowd",
+          "data/stage37_t50_history"
+        ]
+      },
+      {
+        "key": "tgsim_converted",
+        "candidates": [
+          "data/stage5_world_state/tgsim",
+          "data/stage5b_world_state/tgsim"
+        ],
+        "found": true,
+        "existing": [
+          "data/stage5_world_state/tgsim",
+          "data/stage5b_world_state/tgsim"
+        ]
+      },
+      {
+        "key": "aerialmpt_converted",
+        "candidates": [
+          "data/aerialmpt",
+          "data/stage11_multiagent_episodes/aerialmpt"
+        ],
+        "found": true,
+        "existing": [
+          "data/aerialmpt",
+          "data/stage11_multiagent_episodes/aerialmpt"
+        ]
+      }
+    ],
+    "groups_checked": 9,
+    "groups_found": 9
+  },
+  "dataset_rows": [
+    {
+      "dataset": "sdd",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "pixel_raw_frame_only",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "do_not_auto_download: requires terms/login/application or source-specific approval",
+        "keep_raw_frame_dataset_local_claim_until_fps_stride_homography_scale_verified"
+      ]
+    },
+    {
+      "dataset": "opentraj",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "calibration_files_found_but_not_validated",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "keep_raw_frame_dataset_local_claim_until_fps_stride_homography_scale_verified",
+        "Stage42-B: rebuild source/scene-level split from raw/feature rows before new validation"
+      ]
+    },
+    {
+      "dataset": "eth_ucy",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "calibration_files_found_but_not_validated",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "keep_raw_frame_dataset_local_claim_until_fps_stride_homography_scale_verified",
+        "Stage42-B: rebuild source/scene-level split from raw/feature rows before new validation",
+        "Stage42-C: use as priority external full-waypoint dynamics domain"
+      ]
+    },
+    {
+      "dataset": "trajnet",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "not_verified",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "keep_raw_frame_dataset_local_claim_until_fps_stride_homography_scale_verified",
+        "Stage42-B: rebuild source/scene-level split from raw/feature rows before new validation",
+        "Stage42-C: use as priority external full-waypoint dynamics domain"
+      ]
+    },
+    {
+      "dataset": "ucy",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "calibration_files_found_but_not_validated",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "keep_raw_frame_dataset_local_claim_until_fps_stride_homography_scale_verified",
+        "Stage42-B: rebuild source/scene-level split from raw/feature rows before new validation",
+        "Stage42-C: use as priority external full-waypoint dynamics domain"
+      ]
+    },
+    {
+      "dataset": "tgsim",
+      "raw_path_found": true,
+      "converted_path_found": true,
+      "calibration_state": "traffic_metric_diagnostic_only",
+      "metric_claim_allowed": true,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "do_not_auto_download: requires terms/login/application or source-specific approval"
+      ]
+    },
+    {
+      "dataset": "aerialmpt",
+      "raw_path_found": false,
+      "converted_path_found": true,
+      "calibration_state": "not_verified",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "auto_download_allowed": false,
+      "requires_terms_or_login_or_application": false,
+      "next_actions": [
+        "do_not_auto_download: requires terms/login/application or source-specific approval",
+        "keep_raw_frame_dataset_local_claim_until_fps_stride_homography_scale_verified"
+      ]
+    }
+  ],
+  "source_specific_candidate_rows": [
+    {
+      "source_id": "ETH_seq_eth",
+      "domain": "ETH_UCY",
+      "h_parseable": true,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    },
+    {
+      "source_id": "ETH_seq_hotel",
+      "domain": "ETH_UCY",
+      "h_parseable": true,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    },
+    {
+      "source_id": "UCY_zara01",
+      "domain": "UCY",
+      "h_parseable": true,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    },
+    {
+      "source_id": "UCY_zara02",
+      "domain": "UCY",
+      "h_parseable": true,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    },
+    {
+      "source_id": "UCY_zara03",
+      "domain": "UCY",
+      "h_parseable": true,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    },
+    {
+      "source_id": "UCY_students03",
+      "domain": "UCY",
+      "h_parseable": true,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_annotation_step_meter_coordinate_evidence",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    },
+    {
+      "source_id": "UCY_students01",
+      "domain": "UCY",
+      "h_parseable": false,
+      "annotation_fps": 2.5,
+      "timestep_s": 0.4,
+      "local_claim": "source_specific_time_evidence_only_coordinate_not_verified",
+      "claimable_now": false,
+      "status": "candidate_after_terms_not_converted_or_evaluated",
+      "blocker": "requires user-confirmed terms/source identity/local path, guarded conversion, no-leakage audit, and restricted source-CV/final-test evaluation"
+    }
+  ],
+  "terms_snapshot_summary": {
+    "exists": true,
+    "agent_may_fill_legal_acceptance": false
+  },
+  "summary": {
+    "source": "fresh_stage42_jd_calibration_readiness_reconciliation",
+    "datasets_audited": 7,
+    "required_datasets": [
+      "sdd",
+      "opentraj",
+      "eth_ucy",
+      "trajnet",
+      "ucy",
+      "tgsim",
+      "aerialmpt"
+    ],
+    "required_datasets_covered": [
+      "aerialmpt",
+      "eth_ucy",
+      "opentraj",
+      "sdd",
+      "tgsim",
+      "trajnet",
+      "ucy"
+    ],
+    "required_dataset_coverage_complete": true,
+    "direct_path_groups_checked": 9,
+    "direct_path_groups_found": 9,
+    "source_specific_metric_time_hint_sources": [
+      "ETH_seq_eth",
+      "ETH_seq_hotel",
+      "UCY_zara01",
+      "UCY_zara02",
+      "UCY_zara03",
+      "UCY_students03"
+    ],
+    "source_specific_candidate_count": 7,
+    "manifest_conversion_ready_targets": 0,
+    "restricted_terms_confirmed": false,
+    "restricted_metric_time_ready_now": false,
+    "restricted_conversion_ready_targets_now": 0,
+    "converted_datasets_now": 0,
+    "evaluated_datasets_now": 0,
+    "global_metric_claim_allowed": false,
+    "global_seconds_claim_allowed": false,
+    "restricted_metric_time_claim_allowed_now": false,
+    "stage42_b_external_validation_ready": true,
+    "stage42_c_full_waypoint_prereq_ready": true,
+    "decision": "calibration_hints_reconciled_metric_time_claim_still_blocked",
+    "next_action": "Ask user to confirm official source terms/local source identity for ETH/UCY calibrated candidates before guarded conversion; keep all current claims raw-frame/dataset-local."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "download_executed": false,
+    "conversion_executed": false,
+    "training_executed": false,
+    "evaluation_executed": false,
+    "claim_reconciliation_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_claim": false,
+    "global_seconds_claim": false,
+    "restricted_metric_time_claim_allowed_now": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_jd_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "data_calibration_present": true,
+      "source_time_geometry_gate_passed": true,
+      "restricted_metric_time_guard_passed": true,
+      "required_dataset_coverage_complete": true,
+      "direct_paths_inspected": true,
+      "direct_paths_found": true,
+      "source_specific_candidates_recorded": true,
+      "restricted_terms_not_confirmed": true,
+      "restricted_ready_now_false": true,
+      "conversion_ready_now_zero": true,
+      "converted_now_zero": true,
+      "evaluated_now_zero": true,
+      "global_metric_blocked": true,
+      "global_seconds_blocked": true,
+      "restricted_claim_blocked": true,
+      "external_validation_ready": true,
+      "full_waypoint_prereq_ready": true,
+      "no_download_conversion_training_eval": true,
+      "no_future_or_test_leakage": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 21,
+    "total": 21,
+    "verdict": "stage42_jd_calibration_readiness_reconciliation_pass"
+  }
+}

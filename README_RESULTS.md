@@ -6611,3 +6611,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - context boundary: Stage42-IZ has `14` local supported context slices, but JA/JB failed promotion, so context is not a deployable/global main contribution.
 - claim boundary: still protected dataset-local/raw-frame 2.5D; not true 3D, not foundation, not metric/seconds-level, no Stage5C, no SMC.
 <!-- STAGE42_JC_LATEST_EVIDENCE_TIER_CONSOLIDATION:END -->
+
+<!-- STAGE42_JD_CALIBRATION_READINESS_RECONCILIATION:START -->
+## Stage42-JD Calibration Readiness Reconciliation
+
+- source: `fresh_stage42_jd_calibration_readiness_reconciliation`
+- gate: `21 / 21`; verdict: `stage42_jd_calibration_readiness_reconciliation_pass`
+- required datasets covered: `['aerialmpt', 'eth_ucy', 'opentraj', 'sdd', 'tgsim', 'trajnet', 'ucy']`; direct path groups found `9 / 9`.
+- source-specific metric/time candidates: `7`; ready now: `False`.
+- conclusion: external validation/full-waypoint work can continue in raw-frame/dataset-local mode, but metric/seconds claims remain blocked until user-confirmed terms, guarded conversion, no-leakage, and restricted evaluation.
+- Stage5C not executed; SMC not enabled.
+<!-- STAGE42_JD_CALIBRATION_READINESS_RECONCILIATION:END -->
