@@ -1,0 +1,280 @@
+{
+  "stage": "Stage42-JO",
+  "source": "fresh_stage42_jo_local_calibrated_source_guarded_conversion_preflight",
+  "generated_at_utc": "2026-05-28T21:51:52.559975+00:00",
+  "git_commit": "f090537",
+  "input_report": "outputs/stage42_long_research/local_calibrated_source_support_intake_stage42.json",
+  "input_hash": "1b77a8f790fb4165e235dec33261bc646e66145492dc473a38af427fbd159d59",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-JO consumes Stage42-JN local support-candidate evidence and builds a guarded conversion preflight.",
+    "This stage does not convert Town-Center, Wild-Track, or PETS into the benchmark because dataset-specific terms are not confirmed.",
+    "Future endpoints may appear only as future labels after legal conversion; they are not inference inputs in this preflight.",
+    "Local calibration files are treated as projection hints, not permission for global metric/seconds claims.",
+    "Stage5C and SMC remain disabled."
+  ],
+  "stage42_jn_summary": {
+    "source": "fresh_stage42_jn_local_calibrated_source_support_intake",
+    "candidate_count": 3,
+    "parseable_candidates": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ],
+    "long_horizon_candidates": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ],
+    "can_help_blocked_eth_ucy": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ],
+    "auto_convert_allowed": [],
+    "decision": "candidate_sources_found_but_user_terms_required",
+    "next_action": "Ask for/record official terms for parseable candidate sources, then run guarded conversion/no-leakage before using them as support."
+  },
+  "confirmation_template": {
+    "source": "fresh_stage42_jo_local_calibrated_source_guarded_conversion_preflight",
+    "purpose": "User-fillable confirmation template. The agent must not fill acceptance fields.",
+    "terms_confirmation_is_currently_absent": true,
+    "datasets": [
+      {
+        "dataset_name": "Town-Center",
+        "local_path": "external_data/OpenTraj/datasets/Town-Center",
+        "official_url": "",
+        "official_terms_url": "",
+        "license_name": "",
+        "terms_accepted_by_user": false,
+        "accepted_by_user": "",
+        "accepted_at_utc": "",
+        "allowed_use": "",
+        "commercial_use_allowed": null,
+        "derived_data_allowed": null,
+        "redistribution_allowed": null,
+        "source_identity_confirmed": false,
+        "conversion_scope_confirmed": false,
+        "notes_from_user": ""
+      },
+      {
+        "dataset_name": "Wild-Track",
+        "local_path": "external_data/OpenTraj/datasets/Wild-Track",
+        "official_url": "",
+        "official_terms_url": "",
+        "license_name": "",
+        "terms_accepted_by_user": false,
+        "accepted_by_user": "",
+        "accepted_at_utc": "",
+        "allowed_use": "",
+        "commercial_use_allowed": null,
+        "derived_data_allowed": null,
+        "redistribution_allowed": null,
+        "source_identity_confirmed": false,
+        "conversion_scope_confirmed": false,
+        "notes_from_user": ""
+      },
+      {
+        "dataset_name": "PETS-2009-S2L1",
+        "local_path": "external_data/OpenTraj/datasets/PETS-2009/data",
+        "official_url": "",
+        "official_terms_url": "",
+        "license_name": "",
+        "terms_accepted_by_user": false,
+        "accepted_by_user": "",
+        "accepted_at_utc": "",
+        "allowed_use": "",
+        "commercial_use_allowed": null,
+        "derived_data_allowed": null,
+        "redistribution_allowed": null,
+        "source_identity_confirmed": false,
+        "conversion_scope_confirmed": false,
+        "notes_from_user": ""
+      }
+    ]
+  },
+  "candidate_preflights": [
+    {
+      "dataset_name": "Town-Center",
+      "source": "fresh_run_from_stage42_jn_cached_verified_input",
+      "technical_ready_for_guarded_conversion_after_terms": true,
+      "after_terms_possible": true,
+      "conversion_allowed_now": false,
+      "conversion_status": "not_run_user_terms_required",
+      "local_path": "external_data/OpenTraj/datasets/Town-Center",
+      "coordinate_unit": "image_pixel_bbox_bottom_center",
+      "metric_status": "calibration_file_present_but_world_projection_not_integrated",
+      "calibration_file_count": 1,
+      "t50_rows": 60417,
+      "t100_rows": 50132,
+      "agent_tracks": 230,
+      "legal_blockers": [
+        "terms_not_accepted_by_user",
+        "source_identity_not_confirmed",
+        "conversion_scope_not_confirmed",
+        "official_terms_url_missing",
+        "allowed_use_missing"
+      ],
+      "geometry_blockers": [
+        "world_projection_not_integrated",
+        "pixel_coordinate_requires_source_specific_projection_audit"
+      ],
+      "required_before_conversion": [
+        "user confirms dataset-specific terms and official source identity",
+        "guarded converter maps rows into source-level feature schema",
+        "causal velocity is computed from current/past only",
+        "train/val/test or source-CV split is rebuilt without leakage",
+        "future endpoints are stored only as labels/evaluation targets",
+        "metric/time claims remain disabled until source-specific projection/timing audit passes"
+      ],
+      "forbidden_claims_now": [
+        "converted_dataset",
+        "deployable_external_support_source",
+        "global_metric_coordinates",
+        "seconds_level_t50_or_t100",
+        "stage5c_or_smc_readiness"
+      ]
+    },
+    {
+      "dataset_name": "Wild-Track",
+      "source": "fresh_run_from_stage42_jn_cached_verified_input",
+      "technical_ready_for_guarded_conversion_after_terms": true,
+      "after_terms_possible": true,
+      "conversion_allowed_now": false,
+      "conversion_status": "not_run_user_terms_required",
+      "local_path": "external_data/OpenTraj/datasets/Wild-Track",
+      "coordinate_unit": "ground_grid_meter_candidate_2.5cm_spacing",
+      "metric_status": "README documents 2.5cm ground grid and camera calibration files",
+      "calibration_file_count": 16,
+      "t50_rows": 2539,
+      "t100_rows": 1770,
+      "agent_tracks": 313,
+      "legal_blockers": [
+        "terms_not_accepted_by_user",
+        "source_identity_not_confirmed",
+        "conversion_scope_not_confirmed",
+        "official_terms_url_missing",
+        "allowed_use_missing"
+      ],
+      "geometry_blockers": [
+        "ground_grid_requires_dataset_specific_geometry_audit_before_metric_claim"
+      ],
+      "required_before_conversion": [
+        "user confirms dataset-specific terms and official source identity",
+        "guarded converter maps rows into source-level feature schema",
+        "causal velocity is computed from current/past only",
+        "train/val/test or source-CV split is rebuilt without leakage",
+        "future endpoints are stored only as labels/evaluation targets",
+        "metric/time claims remain disabled until source-specific projection/timing audit passes"
+      ],
+      "forbidden_claims_now": [
+        "converted_dataset",
+        "deployable_external_support_source",
+        "global_metric_coordinates",
+        "seconds_level_t50_or_t100",
+        "stage5c_or_smc_readiness"
+      ]
+    },
+    {
+      "dataset_name": "PETS-2009-S2L1",
+      "source": "fresh_run_from_stage42_jn_cached_verified_input",
+      "technical_ready_for_guarded_conversion_after_terms": true,
+      "after_terms_possible": true,
+      "conversion_allowed_now": false,
+      "conversion_status": "not_run_user_terms_required",
+      "local_path": "external_data/OpenTraj/datasets/PETS-2009/data",
+      "coordinate_unit": "image_pixel_bbox_bottom_center",
+      "metric_status": "camera_calibration_files_present_but_ground_projection_not_integrated",
+      "calibration_file_count": 8,
+      "t50_rows": 3700,
+      "t100_rows": 2768,
+      "agent_tracks": 19,
+      "legal_blockers": [
+        "terms_not_accepted_by_user",
+        "source_identity_not_confirmed",
+        "conversion_scope_not_confirmed",
+        "official_terms_url_missing",
+        "allowed_use_missing"
+      ],
+      "geometry_blockers": [
+        "world_projection_not_integrated",
+        "pixel_coordinate_requires_source_specific_projection_audit"
+      ],
+      "required_before_conversion": [
+        "user confirms dataset-specific terms and official source identity",
+        "guarded converter maps rows into source-level feature schema",
+        "causal velocity is computed from current/past only",
+        "train/val/test or source-CV split is rebuilt without leakage",
+        "future endpoints are stored only as labels/evaluation targets",
+        "metric/time claims remain disabled until source-specific projection/timing audit passes"
+      ],
+      "forbidden_claims_now": [
+        "converted_dataset",
+        "deployable_external_support_source",
+        "global_metric_coordinates",
+        "seconds_level_t50_or_t100",
+        "stage5c_or_smc_readiness"
+      ]
+    }
+  ],
+  "summary": {
+    "candidate_count": 3,
+    "technical_ready_after_terms": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ],
+    "conversion_allowed_now": [],
+    "blocked_by_terms": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ],
+    "blocked_by_geometry_audit": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ],
+    "decision": "guarded_conversion_preflight_blocked_pending_user_terms",
+    "next_action": "User confirms dataset-specific official terms/source identity, then rerun this preflight before guarded conversion."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "conversion_executed": false,
+    "preflight_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "global_metric_or_seconds_claim": false,
+    "converted_external_support_source": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_jo_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "stage42_jn_input_loaded": true,
+      "candidate_preflights_built": true,
+      "technical_preflight_computed": true,
+      "confirmation_template_written": true,
+      "conversion_blocked_without_terms": true,
+      "legal_blockers_explicit": true,
+      "geometry_or_metric_blockers_explicit": true,
+      "no_candidate_marked_converted": true,
+      "user_action_required": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage42_jo_local_calibrated_source_guarded_preflight_pass"
+  }
+}

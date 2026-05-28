@@ -3597,3 +3597,13 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: `candidate_sources_found_but_user_terms_required`; auto_convert_allowed: `[]`.
 - boundary: candidate-source intake only; no conversion, no deployment claim, no global metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JN_LOCAL_CALIBRATED_SOURCE_SUPPORT_INTAKE:END -->
+
+<!-- STAGE42_JO_LOCAL_CALIBRATED_SOURCE_GUARDED_CONVERSION_PREFLIGHT:START -->
+## Stage42-JO Local Calibrated Source Guarded Conversion Preflight
+
+- source: `fresh_stage42_jo_local_calibrated_source_guarded_conversion_preflight`
+- gate: `13 / 13`; verdict: `stage42_jo_local_calibrated_source_guarded_preflight_pass`
+- technical_ready_after_terms: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`; conversion_allowed_now: `[]`.
+- decision: `guarded_conversion_preflight_blocked_pending_user_terms`; blocked_by_terms: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`.
+- boundary: preflight only; no conversion, no deployable source-support claim, no metric/seconds overclaim, no Stage5C, no SMC.
+<!-- STAGE42_JO_LOCAL_CALIBRATED_SOURCE_GUARDED_CONVERSION_PREFLIGHT:END -->
