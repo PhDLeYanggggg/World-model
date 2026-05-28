@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_ij_t50_ensemble_source_robustness",
-  "current_verdict": "stage42_ij_t50_ensemble_source_robustness_pass",
+  "current_stage": "stage42_ik_t50_ensemble_ucy_specialist_integration",
+  "current_verdict": "stage42_ik_ucy_specialist_integration_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -3531,7 +3531,10 @@
     "outputs/stage42_long_research/stage42_stage_ii_gate.md",
     "outputs/stage42_long_research/t50_ensemble_source_robustness_stage42.md",
     "outputs/stage42_long_research/t50_ensemble_source_robustness_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_ij_gate.md"
+    "outputs/stage42_long_research/stage42_stage_ij_gate.md",
+    "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.md",
+    "outputs/stage42_long_research/stage42_stage_ik_gate.md",
+    "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.json"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18355,6 +18358,53 @@
         "foundation_world_model": false,
         "metric_or_seconds_claim": false,
         "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_ik_t50_ensemble_ucy_specialist_integration": {
+      "source": "fresh_stage42_ik_t50_ensemble_ucy_specialist_integration",
+      "report": "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.md",
+      "json": "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_ik_gate.md",
+      "verdict": "stage42_ik_ucy_specialist_integration_pass",
+      "gates": "16/16",
+      "summary": {
+        "rows": 55528,
+        "ade_all": 0.15881873347151387,
+        "ade_t50": 0.10452245900619994,
+        "ade_t50_ci_low": 0.09732837708716266,
+        "ade_t100_raw_frame_diagnostic": 0.18072885369108016,
+        "ade_hard_failure": 0.16372957102696828,
+        "ade_easy_degradation": 0.0,
+        "fde_t50": 0.26368667007040403,
+        "fde_t50_ci_low": 0.2563576769579816,
+        "switch_rate": 0.30643999423714163,
+        "ucy_t50": 0.12289194124200009,
+        "eth_ucy_t50": 0.06289589211082625,
+        "trajnet_t50": 0.16416815176718114,
+        "t50_source_group_ci_low": 0.06289599666533818,
+        "t50_scene_group_ci_low": 0.06289599666533818,
+        "powered_t50_source_count": 3,
+        "positive_powered_t50_source_count": 3,
+        "negative_powered_t50_source_count": 0
+      },
+      "alignment": {
+        "stage42x_ucy_rows": 9540,
+        "stage42ii_ucy_rows": 9540,
+        "ucy_mask_matches_domain": true,
+        "horizon_order_available": true,
+        "source_file_order_available": true,
+        "floor_ade_max_abs_delta": 1.5758981941615957e-07,
+        "floor_fde_max_abs_delta": 2.3840437091138256e-07
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "source_specialist_claim_only": true,
+        "independent_new_domain_claim": false,
         "stage5c_executed": false,
         "smc_enabled": false
       }

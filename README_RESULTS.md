@@ -6364,3 +6364,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - easy degradation: `0.000000`
 - boundary: cached-verified Stage42-II intermediates plus fresh source/scene eval; dataset-local/raw-frame 2.5D only; no metric/seconds, no Stage5C, no SMC.
 <!-- STAGE42_IJ_T50_ENSEMBLE_SOURCE_ROBUSTNESS:END -->
+
+<!-- STAGE42_IK_T50_ENSEMBLE_UCY_SPECIALIST_INTEGRATION:START -->
+## Stage42-IK T50 Ensemble UCY Specialist Integration
+
+- source: `fresh_stage42_ik_t50_ensemble_ucy_specialist_integration`
+- verdict: `stage42_ik_ucy_specialist_integration_pass`
+- gates: `16 / 16`
+- ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
+- ADE t50 row CI low: `0.097328`
+- FDE t50 / CI low: `0.263687` / `0.256358`
+- easy degradation: `0.000000`
+- UCY t50: `0.122892`
+- boundary: source-specialist composition evidence only; dataset-local/raw-frame 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IK_T50_ENSEMBLE_UCY_SPECIALIST_INTEGRATION:END -->
