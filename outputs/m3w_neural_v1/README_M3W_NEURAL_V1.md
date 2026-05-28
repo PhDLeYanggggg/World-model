@@ -3496,3 +3496,13 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conclusion: external validation/full-waypoint work can continue in raw-frame/dataset-local mode, but metric/seconds claims remain blocked until user-confirmed terms, guarded conversion, no-leakage, and restricted evaluation.
 - Stage5C not executed; SMC not enabled.
 <!-- STAGE42_JD_CALIBRATION_READINESS_RECONCILIATION:END -->
+
+<!-- STAGE42_JE_SOURCE_ROTATION_FULL_WAYPOINT_EVAL:START -->
+## Stage42-JE Source-Rotation Full-Waypoint Evaluation
+
+- source: `fresh_stage42_je_source_rotation_full_waypoint_eval`
+- gate: `14 / 14`; verdict: `stage42_je_source_rotation_full_waypoint_eval_pass`
+- held-out domain rotations: ETH_UCY: all 25.23%, t50 21.07%, hard 26.08%, easy 27.83%; TrajNet: all 30.11%, t50 39.29%, hard 29.21%, easy -24.27%; UCY: all 21.86%, t50 23.73%, hard 20.19%, easy -21.09%.
+- decision: `source_rotation_positive_but_not_global_deployable`; deployable held-out domains: `['TrajNet', 'UCY']`.
+- boundary: this is stricter cross-domain raw-frame evidence; it does not change the no-metric/no-seconds/no-Stage5C/no-SMC boundary.
+<!-- STAGE42_JE_SOURCE_ROTATION_FULL_WAYPOINT_EVAL:END -->
