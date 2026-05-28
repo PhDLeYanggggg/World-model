@@ -6456,3 +6456,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - conclusion: if unsupported, do not continue pure threshold tuning; next step needs changed supervision/source support/candidate family.
 - Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IQ_T50_SWITCHABILITY_CALIBRATION_REPAIR:END -->
+
+<!-- STAGE42_IR_T50_SOURCE_PATTERN_SWITCHABILITY_REPAIR:START -->
+## Stage42-IR t50 Source-Pattern Switchability Repair
+
+- source: `fresh_stage42_t50_source_pattern_switchability_repair`
+- role: formal source-support repair attempt for Stage42-IQ t50 switchability failure.
+- gate: `11 / 11`; verdict `stage42_ir_t50_source_pattern_switchability_repair_pass`.
+- repair_supported: `False`; repair_verdict `t50_source_pattern_switchability_repair_not_supported`.
+- best_trial: `history_only__gain_only`.
+- best test t50 / hard / easy: `0.000000` / `0.000000` / `-0.000000`.
+- conclusion: source-pattern support does not repair the context t50 route under this protocol; future repair needs new candidate policies or source data.
+- Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IR_T50_SOURCE_PATTERN_SWITCHABILITY_REPAIR:END -->
