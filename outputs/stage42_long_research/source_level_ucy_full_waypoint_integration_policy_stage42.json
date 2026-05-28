@@ -1,0 +1,30 @@
+{
+  "policy_name": "stage42_iu_source_level_ucy_full_waypoint_integration",
+  "source": "fresh_composition_from_stage42_it_and_cached_verified_stage42_v",
+  "selection_scope": "source_level_policy_package_only",
+  "test_usage": "test_once_metrics_from_stage42_it_and_stage42_v_reports",
+  "domain_sources": {
+    "TrajNet": "stage42_it_source_level_full_waypoint_eval",
+    "UCY": "stage42_v_strict_pure_ucy_full_waypoint_specialist"
+  },
+  "replacement_rule": "Replace the Stage42-IT UCY fallback-only slice with the Stage42-V UCY-domain full-waypoint specialist; retain Stage42-IT TrajNet.",
+  "excluded_domains": {
+    "ETH_UCY": "not part of the Stage42-IT proposed source-level test; remains train/val in that protocol"
+  },
+  "single_row_cache_status": "not_run_policy_package_only_no_merged_row_cache_artifact",
+  "stage42_it_generated_at_utc": "2026-05-28T04:49:25.419437+00:00",
+  "stage42_v_generated_at_utc": "2026-05-26T04:16:48.847524+00:00",
+  "stage42_v_best_trial": "ucy_full_waypoint_t50_hard",
+  "domains": {
+    "TrajNet": {
+      "rows": 37918,
+      "source_stage": "Stage42-IT",
+      "source": "fresh_stage42it_source_level_trajnet_slice"
+    },
+    "UCY": {
+      "rows": 9540,
+      "source_stage": "Stage42-V",
+      "source": "cached_verified_stage42v_ucy_full_waypoint_specialist_slice"
+    }
+  }
+}

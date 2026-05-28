@@ -3366,3 +3366,18 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conclusion: full-waypoint source-level evidence remains positive on current HEAD, but still protected dataset-local/raw-frame 2.5D; no metric/seconds, no true 3D, no Stage5C, no SMC.
 - verification: focused pytest `3 passed`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1110 passed in 4392.72s (1:13:12)`.
 <!-- STAGE42_IT_SOURCE_LEVEL_FULL_WAYPOINT_REFRESH:END -->
+
+<!-- STAGE42_IU_SOURCE_LEVEL_UCY_FULL_WAYPOINT_INTEGRATION:START -->
+## Stage42-IU Source-Level UCY Full-Waypoint Specialist Integration
+
+- source: `fresh_composition_from_current_stage42_it_and_cached_verified_stage42_v`
+- role: closes the Stage42-IT UCY fallback-only source-level weakness by retaining Stage42-IT TrajNet and importing the cached-verified Stage42-V UCY specialist slice.
+- gate: `17 / 17`; verdict `stage42_iu_source_level_ucy_full_waypoint_integration_pass`.
+- rows: `47458`; domains: TrajNet + UCY.
+- weighted ADE all/t50/t100raw/hard: `0.305568` / `0.284549` / `0.195280` / `0.302105`.
+- weighted easy degradation: `-0.242171`.
+- positive domains all/t50/t100raw/hard: `['TrajNet', 'UCY']` / `['TrajNet', 'UCY']` / `['TrajNet', 'UCY']` / `['TrajNet', 'UCY']`.
+- limitation: no single merged row-cache artifact yet; this is source-level policy-package composition evidence.
+- boundary: protected dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no Stage5C, no SMC.
+- verification: focused pytest `3 passed in 0.91s`; related pytest `11 passed in 0.98s`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1113 passed in 841.55s (0:14:01)`.
+<!-- STAGE42_IU_SOURCE_LEVEL_UCY_FULL_WAYPOINT_INTEGRATION:END -->
