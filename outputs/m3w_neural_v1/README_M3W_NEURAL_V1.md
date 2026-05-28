@@ -3337,3 +3337,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conclusion: source-pattern support does not repair the context t50 route under this protocol; future repair needs new candidate policies or source data.
 - Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IR_T50_SOURCE_PATTERN_SWITCHABILITY_REPAIR:END -->
+
+<!-- STAGE42_IS_DATA_CALIBRATION_REFRESH:START -->
+## Stage42-IS Data Calibration / Source-Specific Dry-Run Refresh
+
+- source: `fresh_run_on_current_head_after_stage42_ir`
+- role: refreshes Stage42-A/BN/DW data and calibration evidence after the t50 source-pattern repair failed.
+- gates: Stage42-A `7 / 7`, Stage42-BN `13 / 13`, Stage42-DW `15 / 15`.
+- external ready from existing state: `opentraj, eth_ucy, trajnet, ucy`.
+- source-specific calibration candidates: `ETH_seq_eth`, `ETH_seq_hotel`, `UCY_zara01`, `UCY_zara02`, `UCY_zara03`, `UCY_students03`.
+- technical conversion ready after terms: `5 / 6`; estimated t50/t100 windows: `10060 / 5696`.
+- source-CV after terms: `UCY` only; ETH/BIWI has too few calibrated sources, TrajNet remains short-snippet diagnostic, AerialMPT raw path remains missing.
+- conclusion: next credible progress should use legal/confirmed source-specific UCY conversion or new source data; no global metric/seconds claim is allowed.
+- verification: focused pytest `10 passed`; full pytest `1110 passed in 1980.35s`.
+<!-- STAGE42_IS_DATA_CALIBRATION_REFRESH:END -->

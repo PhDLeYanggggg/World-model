@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_il_t50_ucy_specialist_claim_audit",
-  "current_verdict": "stage42_il_ucy_specialist_claim_audit_pass",
+  "current_stage": "stage42_is_data_calibration_refresh",
+  "current_verdict": "stage42_is_data_calibration_refresh_pass_with_global_metric_seconds_blocked",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -34468,6 +34468,58 @@
         "easy_degradation": -0.0,
         "switch_rate": 0.0,
         "harm_over_fallback": 0.0
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_is_data_calibration_refresh": {
+      "source": "fresh_run_on_current_head_after_stage42_ir",
+      "reports": [
+        "outputs/stage42_long_research/data_calibration_stage42.md",
+        "outputs/stage42_long_research/source_time_geometry_calibration_stage42.md",
+        "outputs/stage42_long_research/source_specific_conversion_dry_run_stage42.md"
+      ],
+      "gates": {
+        "stage42_a_data_calibration": "7/7",
+        "stage42_bn_source_time_geometry": "13/13",
+        "stage42_dw_source_specific_conversion_dry_run": "15/15"
+      },
+      "verdict": "stage42_is_data_calibration_refresh_pass_with_global_metric_seconds_blocked",
+      "external_ready_from_existing_state": [
+        "opentraj",
+        "eth_ucy",
+        "trajnet",
+        "ucy"
+      ],
+      "source_specific_metric_time_sources": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel",
+        "UCY_zara01",
+        "UCY_zara02",
+        "UCY_zara03",
+        "UCY_students03"
+      ],
+      "technical_conversion_ready_after_terms_sources": 5,
+      "estimated_t50_windows": 10060,
+      "estimated_t100_windows": 5696,
+      "source_cv_domains_after_terms": [
+        "UCY"
+      ],
+      "blocked_or_diagnostic": {
+        "ETH_BIWI": "two calibrated sources only; weak for source-CV by itself",
+        "TrajNet": "local files remain short snippet diagnostic for long raw-frame repair",
+        "AerialMPT": "raw path not found in current audit",
+        "global_metric_seconds": "blocked"
+      },
+      "verification": {
+        "focused_pytest": "10 passed",
+        "full_pytest": "1110 passed in 1980.35s"
       },
       "claim_boundary": {
         "true_3d": false,

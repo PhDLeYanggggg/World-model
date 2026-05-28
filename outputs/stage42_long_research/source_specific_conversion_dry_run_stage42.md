@@ -1,7 +1,7 @@
 # Stage42-DW Source-Specific Calibrated Conversion Dry-Run
 
 - source: `fresh_source_specific_conversion_dry_run_from_stage42_dv`
-- generated_at_utc: `2026-05-27T00:39:13.105974+00:00`
+- generated_at_utc: `2026-05-28T04:09:12.766181+00:00`
 - gate: `15 / 15`
 - verdict: `stage42_dw_source_specific_conversion_dry_run_pass`
 

@@ -1,9 +1,9 @@
 # Stage42-A Data And Calibration Audit
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-25T19:27:01.408542+00:00`
-- git_commit: `a2a368f`
-- input_hash: `a6ca6bc9180dc01a00d7b8f41c1914464a1278258bbec3bfada9cc02c117cec7`
+- generated_at_utc: `2026-05-28T04:09:05.238251+00:00`
+- git_commit: `e367db0`
+- input_hash: `6244c742121001522b1e9b7576bfdbc7b6b8afa7c9066c814f48200b3c12199f`
 
 ## Current Claim Boundary
 

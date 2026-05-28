@@ -1301,3 +1301,17 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - conclusion: source-pattern support does not repair the context t50 route under this protocol; future repair needs new candidate policies or source data.
 - Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IR_T50_SOURCE_PATTERN_SWITCHABILITY_REPAIR:END -->
+
+<!-- STAGE42_IS_DATA_CALIBRATION_REFRESH:START -->
+## Stage42-IS 数据与标定刷新
+
+- source: `fresh_run_on_current_head_after_stage42_ir`
+- 做了什么：在 source-pattern t50 修复失败后，重新跑 Stage42-A/BN/DW 数据标定和 source-specific conversion dry-run。
+- gates: Stage42-A `7 / 7`, Stage42-BN `13 / 13`, Stage42-DW `15 / 15`。
+- 当前可继续外部域：`opentraj, eth_ucy, trajnet, ucy`。
+- source-specific calibration candidates: `ETH_seq_eth`, `ETH_seq_hotel`, `UCY_zara01`, `UCY_zara02`, `UCY_zara03`, `UCY_students03`。
+- terms 确认后技术可转换：`5 / 6`；估计 t50/t100 windows: `10060 / 5696`。
+- source-CV 条件：只有 `UCY` 达到“terms 确认后可做 source-CV”；ETH/BIWI source 数不足，TrajNet 仍是短 snippet diagnostic，AerialMPT raw path 未找到。
+- 结论：下一步最可信路线是 legal/confirmed UCY source-specific conversion 或补新 source；仍不能写 global metric/seconds claim。
+- 验证：focused pytest `10 passed`；full pytest `1110 passed in 1980.35s`。
+<!-- STAGE42_IS_DATA_CALIBRATION_REFRESH:END -->
