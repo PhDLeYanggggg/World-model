@@ -6733,3 +6733,13 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `guarded_conversion_preflight_blocked_pending_user_terms`; blocked_by_terms: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`.
 - boundary: preflight only; no conversion, no deployable source-support claim, no metric/seconds overclaim, no Stage5C, no SMC.
 <!-- STAGE42_JO_LOCAL_CALIBRATED_SOURCE_GUARDED_CONVERSION_PREFLIGHT:END -->
+
+<!-- STAGE42_JP_LOCAL_CALIBRATED_SOURCE_TERMS_PREFILL:START -->
+## Stage42-JP Local Calibrated Source Terms Prefill
+
+- source: `fresh_stage42_jp_local_calibrated_source_terms_prefill`
+- gate: `15 / 15`; verdict: `stage42_jp_local_calibrated_source_terms_prefill_pass`
+- official_hint_rows: `3`; license_found_rows: `1`; conversion_ready_now: `0`.
+- high_confidence_official_source_rows: `['Wild-Track']`; manual_only_rows: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`.
+- boundary: terms prefill only; no permission, no conversion, no evaluation, no metric/seconds overclaim, no Stage5C, no SMC.
+<!-- STAGE42_JP_LOCAL_CALIBRATED_SOURCE_TERMS_PREFILL:END -->
