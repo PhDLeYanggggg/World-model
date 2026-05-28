@@ -3409,3 +3409,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - interpretation: safe-switch and teacher/floor protection are directly supported by this row-cache; waypoint labels are sequence-capable but not complete for every row; history/neighbor/goal/interaction still require retrained ablation evidence.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_IW_ROW_CACHE_MECHANISM_AUDIT:END -->
+
+<!-- STAGE42_IX_SOURCE_LEVEL_CONTEXT_REPAIR:START -->
+## Stage42-IX Source-Level Context Repair Trials
+
+- source: `fresh_run_weighted_floor_residual_context_repair`
+- role: retrained repair attempt after Stage42-AO showed context was not incremental after baseline-family rollout features.
+- gate: `11 / 12`; verdict `stage42_ix_context_repair_completed_context_not_proven`.
+- tested: `6` weighted/floor-residual variants.
+- best_trial: `baseline_family_absolute_weighted`; best all/t50/t100raw/hard `0.280381` / `0.317359` / `0.143387` / `0.269583`.
+- easy degradation: `-0.311860`.
+- positive_context_repair_trials: `[]`.
+- context_claim_verdict: `stage42_ix_context_repair_negative_context_still_not_incremental`.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_IX_SOURCE_LEVEL_CONTEXT_REPAIR:END -->
