@@ -1315,3 +1315,18 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - 结论：下一步最可信路线是 legal/confirmed UCY source-specific conversion 或补新 source；仍不能写 global metric/seconds claim。
 - 验证：focused pytest `10 passed`；full pytest `1110 passed in 1980.35s`。
 <!-- STAGE42_IS_DATA_CALIBRATION_REFRESH:END -->
+
+<!-- STAGE42_IT_SOURCE_LEVEL_FULL_WAYPOINT_REFRESH:START -->
+## Stage42-IT Source-Level Full-Waypoint Fresh Refresh
+
+- source: `fresh_run_on_current_head`
+- 做了什么：在 Stage42-IS 标定刷新之后，重跑 Stage42-AM proposed source-level split full-waypoint evaluation。
+- gate: `12 / 12`; verdict `stage42_am_source_level_full_waypoint_eval_pass_positive`。
+- test rows: `47458`; domains: TrajNet `37918`, UCY `9540`; full-waypoint rows: `32056`。
+- protected full-waypoint ADE all/t50/t100raw/hard: `0.245788` / `0.220171` / `0.143652` / `0.237494`。
+- protected full-waypoint FDE all/t50/t100raw/hard: `0.221325` / `0.222358` / `0.128623` / `0.213338`。
+- bootstrap CI low all/t50/t100raw/hard: `0.242554` / `0.215923` / `0.137653` / `0.233887`。
+- domain split: TrajNet positive；UCY 在这个 proposed source-level test 里仍是 fallback-only。
+- 结论：full-waypoint source-level evidence 在当前 HEAD 下仍为正，但仍是 protected dataset-local/raw-frame 2.5D，不是 metric/seconds、true 3D、Stage5C 或 SMC。
+- 验证：focused pytest `3 passed`；full pytest `.venv-pytorch/bin/python -m pytest tests -> 1110 passed in 4392.72s (1:13:12)`。
+<!-- STAGE42_IT_SOURCE_LEVEL_FULL_WAYPOINT_REFRESH:END -->

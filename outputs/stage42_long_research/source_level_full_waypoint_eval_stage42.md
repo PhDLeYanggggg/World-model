@@ -1,9 +1,9 @@
 # Stage42-AM Proposed Source-Level Full-Waypoint Evaluation
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-26T07:28:53.783001+00:00`
-- git_commit: `fbab4f9`
-- input_hash: `ae4cdfe4eaebae0c912241b92fd992a8db4137c897162a144c104ba8e60c495f`
+- generated_at_utc: `2026-05-28T04:49:25.419437+00:00`
+- git_commit: `cd619fb`
+- input_hash: `d58853ad5efe0062b68f81cd6184ec4e5200a0843862541ba4285626a4d5c2e8`
 - gate: `12 / 12`
 - verdict: `stage42_am_source_level_full_waypoint_eval_pass_positive`
 

@@ -3351,3 +3351,18 @@ The context contribution map is now explicit: baseline-family rollout context is
 - conclusion: next credible progress should use legal/confirmed source-specific UCY conversion or new source data; no global metric/seconds claim is allowed.
 - verification: focused pytest `10 passed`; full pytest `1110 passed in 1980.35s`.
 <!-- STAGE42_IS_DATA_CALIBRATION_REFRESH:END -->
+
+<!-- STAGE42_IT_SOURCE_LEVEL_FULL_WAYPOINT_REFRESH:START -->
+## Stage42-IT Source-Level Full-Waypoint Fresh Refresh
+
+- source: `fresh_run_on_current_head`
+- role: reruns Stage42-AM proposed source-level split full-waypoint evaluation after the Stage42-IS calibration refresh.
+- gate: `12 / 12`; verdict `stage42_am_source_level_full_waypoint_eval_pass_positive`.
+- test rows: `47458`; domains: TrajNet `37918`, UCY `9540`; full-waypoint rows: `32056`.
+- protected full-waypoint ADE improvement all/t50/t100raw/hard: `0.245788` / `0.220171` / `0.143652` / `0.237494`.
+- protected full-waypoint FDE improvement all/t50/t100raw/hard: `0.221325` / `0.222358` / `0.128623` / `0.213338`.
+- bootstrap CI low all/t50/t100raw/hard: `0.242554` / `0.215923` / `0.137653` / `0.233887`.
+- domain split: TrajNet positive; UCY remains fallback-only in this proposed source-level test.
+- conclusion: full-waypoint source-level evidence remains positive on current HEAD, but still protected dataset-local/raw-frame 2.5D; no metric/seconds, no true 3D, no Stage5C, no SMC.
+- verification: focused pytest `3 passed`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1110 passed in 4392.72s (1:13:12)`.
+<!-- STAGE42_IT_SOURCE_LEVEL_FULL_WAYPOINT_REFRESH:END -->

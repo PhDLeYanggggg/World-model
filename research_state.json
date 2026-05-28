@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_is_data_calibration_refresh",
-  "current_verdict": "stage42_is_data_calibration_refresh_pass_with_global_metric_seconds_blocked",
+  "current_stage": "stage42_it_source_level_full_waypoint_refresh",
+  "current_verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -34520,6 +34520,54 @@
       "verification": {
         "focused_pytest": "10 passed",
         "full_pytest": "1110 passed in 1980.35s"
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_it_source_level_full_waypoint_refresh": {
+      "source": "fresh_run_on_current_head",
+      "report": "outputs/stage42_long_research/source_level_full_waypoint_eval_stage42.md",
+      "json": "outputs/stage42_long_research/source_level_full_waypoint_eval_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_am_gate.md",
+      "verdict": "stage42_am_source_level_full_waypoint_eval_pass_positive",
+      "gates": "12/12",
+      "proposed_source_level_test_rows": 47458,
+      "trajnet_test_rows": 37918,
+      "ucy_test_rows": 9540,
+      "test_full_waypoint_rows": 32056,
+      "protected_full_waypoint_ade": {
+        "all": 0.24578838559866356,
+        "t50": 0.22017071087030715,
+        "t100_raw_frame_diagnostic": 0.14365240535176194,
+        "hard_failure": 0.23749387838492075,
+        "easy_degradation": -0.25662729975593146
+      },
+      "protected_full_waypoint_fde": {
+        "all": 0.221324826162014,
+        "t50": 0.2223575896317289,
+        "t100_raw_frame_diagnostic": 0.12862320431780094,
+        "hard_failure": 0.21333849194227983,
+        "easy_degradation": -0.21876481451474306
+      },
+      "bootstrap_ci_low": {
+        "all": 0.24255412523302317,
+        "t50": 0.2159234170345621,
+        "t100_raw_frame_diagnostic": 0.13765311323746493,
+        "hard_failure": 0.23388726971152693
+      },
+      "domain_result": {
+        "TrajNet": "positive source-level full-waypoint evidence",
+        "UCY": "fallback-only in this proposed source-level test"
+      },
+      "verification": {
+        "focused_pytest": "3 passed",
+        "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 1110 passed in 4392.72s (1:13:12)"
       },
       "claim_boundary": {
         "true_3d": false,
