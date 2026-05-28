@@ -6430,3 +6430,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - horizon_specific_increment_verdict: `stage42_io_horizon_sequence_graph_context_router_supported`.
 - Boundary: fresh horizon-specific router audit only; raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IO_HORIZON_SEQUENCE_GRAPH_CONTEXT_ROUTER:END -->
+
+<!-- STAGE42_IP_T50_T100_SEQUENCE_GRAPH_BLOCKER_AUDIT:START -->
+## Stage42-IP t50/t100 Sequence+Graph Blocker Audit
+
+- source: `fresh_stage42_t50_t100_sequence_graph_blocker_audit`
+- role: explains why Stage42-IO sequence+graph context did not become deployable at t50/t100.
+- gate: `12 / 12`; verdict `stage42_ip_t50_t100_sequence_graph_blocker_audit_pass`.
+- t50_diagnosis: `router_under_switches_despite_headroom`.
+- t100_diagnosis: `weak_predictive_signal_or_baseline_family_dominance`.
+- blocker_counts: `{'unsafe_or_uncalibrated_switching': 2, 'weak_predictive_signal_or_baseline_family_dominance': 2, 'router_under_switches_despite_headroom': 1, 'low_margin_candidate_ambiguity': 1}`.
+- conclusion: blocker audit only; no new deployable model and no t50/t100 context contribution claim.
+- Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IP_T50_T100_SEQUENCE_GRAPH_BLOCKER_AUDIT:END -->
