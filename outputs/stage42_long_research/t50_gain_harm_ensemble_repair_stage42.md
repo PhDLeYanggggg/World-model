@@ -1,7 +1,7 @@
 # Stage42-II T50 Gain/Harm Ensemble Repair
 
 - source: `fresh_stage42_ii_t50_gain_harm_ensemble_repair`
-- generated_at_utc: `2026-05-27T23:45:28.257132+00:00`
+- generated_at_utc: `2026-05-27T23:57:27.305922+00:00`
 - input_hash: `58ca8e94b967e251db26ebd5bdf22d728784c6adce28bd969855f2c6090f7223`
 - gate: `15 / 15`
 - verdict: `stage42_ii_ensemble_repair_stabilizes_t50`
@@ -47,6 +47,7 @@ Stage42-IH showed that simply adding same-family selector seeds did not make ADE
 ## Interpretation
 
 - This is a fresh replay/evaluation, not new training.
+- Base predictions and selector scores are cached as Stage42-II local intermediates after first computation; final policy selection and test evaluation are still freshly recomputed from those intermediates.
 - The policy is selected on validation only, then evaluated once on test.
 - If this passes, ensemble selection is a stronger deployable t+50 repair than any single seed.
 - If this fails, the blocker is a model-family or domain-specific TrajNet t+50 issue, not seed count alone.

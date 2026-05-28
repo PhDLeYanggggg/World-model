@@ -6344,3 +6344,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - TrajNet t50: `0.164168`
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_II_T50_GAIN_HARM_ENSEMBLE_REPAIR:END -->
+
+<!-- STAGE42_IJ_T50_ENSEMBLE_SOURCE_ROBUSTNESS:START -->
+## Stage42-IJ T50 Ensemble Source Robustness
+
+- source: `fresh_stage42_ij_t50_ensemble_source_robustness`
+- verdict: `stage42_ij_t50_ensemble_source_robustness_pass`
+- gates: `15 / 15`
+- all / t50 / hard: `0.121192` / `0.081363` / `0.124775`
+- source-group t50 CI low: `0.000000`
+- scene-group t50 CI low: `0.000000`
+- powered t50 source positives: `2 / 3`
+- easy degradation: `0.000000`
+- boundary: cached-verified Stage42-II intermediates plus fresh source/scene eval; dataset-local/raw-frame 2.5D only; no metric/seconds, no Stage5C, no SMC.
+<!-- STAGE42_IJ_T50_ENSEMBLE_SOURCE_ROBUSTNESS:END -->

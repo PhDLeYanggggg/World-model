@@ -120,12 +120,17 @@ def _load_prediction_cache(path: Path) -> dict[str, dict[str, np.ndarray]]:
     return out
 
 
-def _base_predictions(splits: Mapping[str, Mapping[str, np.ndarray]]) -> dict[int, dict[str, dict[str, np.ndarray]]]:
+def _base_predictions(
+    splits: Mapping[str, Mapping[str, np.ndarray]],
+    cache_events: list[dict[str, Any]] | None = None,
+) -> dict[int, dict[str, dict[str, np.ndarray]]]:
     preds: dict[int, dict[str, dict[str, np.ndarray]]] = {}
     for base_seed in sorted(set(BASE_SEEDS)):
         path = _cache_path_base(base_seed)
         if path.exists():
             _heartbeat("base_prediction_cache_hit", base_seed=base_seed, cache_path=str(path))
+            if cache_events is not None:
+                cache_events.append({"artifact": "base_prediction", "seed": base_seed, "source": "cached_verified", "cache_path": str(path)})
             preds[base_seed] = _load_prediction_cache(path)
             continue
         _heartbeat("base_prediction_start", base_seed=base_seed)
@@ -133,6 +138,8 @@ def _base_predictions(splits: Mapping[str, Mapping[str, np.ndarray]]) -> dict[in
         row = {split: s42m._predict(info, splits[split]) for split in ["train", "val", "test"]}
         _save_prediction_cache(path, row)
         _heartbeat("base_prediction_complete", base_seed=base_seed, cache_path=str(path))
+        if cache_events is not None:
+            cache_events.append({"artifact": "base_prediction", "seed": base_seed, "source": "fresh_run", "cache_path": str(path)})
         preds[base_seed] = row
     return preds
 
@@ -156,12 +163,24 @@ def _score_ensemble(
     splits: Mapping[str, Mapping[str, np.ndarray]],
     base_preds: Mapping[int, Mapping[str, Mapping[str, np.ndarray]]],
     vocab: Mapping[str, int],
+    cache_events: list[dict[str, Any]] | None = None,
 ) -> dict[str, np.ndarray]:
     score_rows: list[dict[str, np.ndarray]] = []
     for seed, base_seed in zip(SELECTOR_SEEDS, BASE_SEEDS):
         path = _score_cache_path(seed, base_seed, split_name)
         if path.exists():
             _heartbeat("selector_score_cache_hit", seed=seed, base_seed=base_seed, split=split_name, cache_path=str(path))
+            if cache_events is not None:
+                cache_events.append(
+                    {
+                        "artifact": "selector_score",
+                        "seed": seed,
+                        "base_seed": base_seed,
+                        "split": split_name,
+                        "source": "cached_verified",
+                        "cache_path": str(path),
+                    }
+                )
             score_rows.append(_load_score_cache(path))
             continue
         _heartbeat("selector_score_start", seed=seed, base_seed=base_seed, split=split_name)
@@ -170,6 +189,17 @@ def _score_ensemble(
         scores = s42p._predict_selector(_selector_info(seed), x)
         _save_score_cache(path, scores)
         _heartbeat("selector_score_complete", seed=seed, base_seed=base_seed, split=split_name, cache_path=str(path))
+        if cache_events is not None:
+            cache_events.append(
+                {
+                    "artifact": "selector_score",
+                    "seed": seed,
+                    "base_seed": base_seed,
+                    "split": split_name,
+                    "source": "fresh_run",
+                    "cache_path": str(path),
+                }
+            )
         score_rows.append(scores)
     return _average_dicts(score_rows)
 
@@ -248,18 +278,19 @@ def _bootstrap_summary(arrays: Mapping[str, np.ndarray], labels: Mapping[str, np
 def _build_payload() -> dict[str, Any]:
     ensure_dir(OUT_DIR)
     ensure_dir(CACHE_DIR)
+    cache_events: list[dict[str, Any]] = []
     data = _prepare_data()
     splits = data["splits"]
     labels_val = data["labels"]["val"]
     labels_test = data["labels"]["test"]
-    base_preds = _base_predictions(splits)
+    base_preds = _base_predictions(splits, cache_events)
     _heartbeat("prediction_ensemble_start")
     pred_val = _prediction_ensemble(base_preds, "val")
     pred_test = _prediction_ensemble(base_preds, "test")
     _heartbeat("score_ensemble_val_start")
-    scores_val = _score_ensemble("val", splits, base_preds, data["vocab"])
+    scores_val = _score_ensemble("val", splits, base_preds, data["vocab"], cache_events)
     _heartbeat("score_ensemble_test_start")
-    scores_test = _score_ensemble("test", splits, base_preds, data["vocab"])
+    scores_test = _score_ensemble("test", splits, base_preds, data["vocab"], cache_events)
     _heartbeat("validation_policy_start")
     policy, val_metrics = s42p._fit_policy_t50(scores_val, pred_val, labels_val)
     _heartbeat("test_eval_start")
@@ -310,8 +341,9 @@ def _build_payload() -> dict[str, Any]:
             "base_checkpoints": "cached_verified_stage42n",
             "cache_dir": str(CACHE_DIR),
             "heartbeat": str(HEARTBEAT_JSON),
-            "score_ensemble": "fresh_replay",
-            "prediction_ensemble": "fresh_replay",
+            "base_prediction_events": cache_events,
+            "score_ensemble": "fresh_run_from_cached_or_fresh_stage42ii_intermediates",
+            "prediction_ensemble": "fresh_run_from_cached_or_fresh_stage42ii_intermediates",
             "validation_policy_selection": "fresh_run",
             "test_evaluation": "fresh_run_once",
             "new_training": "not_run",
@@ -430,6 +462,7 @@ def _write_report(payload: Mapping[str, Any]) -> None:
             "## Interpretation",
             "",
             "- This is a fresh replay/evaluation, not new training.",
+            "- Base predictions and selector scores are cached as Stage42-II local intermediates after first computation; final policy selection and test evaluation are still freshly recomputed from those intermediates.",
             "- The policy is selected on validation only, then evaluated once on test.",
             "- If this passes, ensemble selection is a stronger deployable t+50 repair than any single seed.",
             "- If this fails, the blocker is a model-family or domain-specific TrajNet t+50 issue, not seed count alone.",
