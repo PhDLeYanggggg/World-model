@@ -6549,3 +6549,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - context_claim_verdict: `stage42_ix_context_repair_negative_context_still_not_incremental`.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_IX_SOURCE_LEVEL_CONTEXT_REPAIR:END -->
+
+<!-- STAGE42_IY_SOURCE_LEVEL_NONLINEAR_CONTEXT_REPAIR:START -->
+## Stage42-IY Source-Level Nonlinear Context Repair
+
+- source: `fresh_run_sampled_extra_trees_context_capacity_repair`
+- role: nonlinear capacity test after Stage42-IX still failed to make context incremental.
+- gate: `12 / 13`; verdict `stage42_iy_nonlinear_context_repair_completed_context_not_proven`.
+- trials: `4` ExtraTrees residual models; deterministic train cap `120000`.
+- best_trial: `tree_baseline_family_residual`; best all/t50/t100raw/hard `0.221602` / `0.246937` / `0.187483` / `0.232718`.
+- easy degradation: `-0.125700`.
+- positive_nonlinear_context_trials: `[]`.
+- capacity_hypothesis_verdict: `stage42_iy_nonlinear_context_capacity_not_sufficient`.
+- boundary: sampled train-only nonlinear repair; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_IY_SOURCE_LEVEL_NONLINEAR_CONTEXT_REPAIR:END -->

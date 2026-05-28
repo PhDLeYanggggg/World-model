@@ -1,0 +1,577 @@
+{
+  "stage": "Stage42-IY source-level nonlinear context repair",
+  "source": "fresh_run_sampled_extra_trees_context_capacity_repair",
+  "generated_at_utc": "2026-05-28T08:46:56.602469+00:00",
+  "git_commit": "7eeaf1a",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-IY 是 Stage42-IX negative result 后的非线性 context repair trial，用 ExtraTrees 多输出 residual 模型测试容量不足假设。",
+    "训练使用 train split 的 deterministic capped subset；validation 选 safe policy；test 只评一次。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "本阶段仍是 dataset-local/raw-frame 2.5D evidence，不是 metric 或 seconds-level 结果。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "d68e9b96215fac749f9f5d7924aed6773d630b0888d5b841350577df49f94d85",
+  "split_stats": {
+    "by_split": {
+      "train": {
+        "rows": 266745,
+        "domains": {
+          "ETH_UCY": 134695,
+          "TrajNet": 75287,
+          "UCY": 56763
+        },
+        "scenes": 9,
+        "sources": 13,
+        "t10": 83107,
+        "t25": 73802,
+        "t50": 64551,
+        "t100": 45285,
+        "hard": 198685,
+        "failure": 96981,
+        "easy": 80855
+      },
+      "val": {
+        "rows": 23788,
+        "domains": {
+          "ETH_UCY": 16103,
+          "TrajNet": 7685
+        },
+        "scenes": 2,
+        "sources": 2,
+        "t10": 7045,
+        "t25": 6459,
+        "t50": 5873,
+        "t100": 4411,
+        "hard": 21872,
+        "failure": 10450,
+        "easy": 4454
+      },
+      "test": {
+        "rows": 47458,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "scenes": 2,
+        "sources": 3,
+        "t10": 15402,
+        "t25": 13470,
+        "t50": 11538,
+        "t100": 7048,
+        "hard": 35076,
+        "failure": 19056,
+        "easy": 11192
+      }
+    },
+    "group_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_overlap_pass": true
+  },
+  "feature_groups": {
+    "history": 121,
+    "neighbor_interaction": 5,
+    "goal_prototype": 10,
+    "baseline_family": 28,
+    "domain": 3,
+    "horizon": 4
+  },
+  "feature_sets": {
+    "full": 166,
+    "baseline_family": 35,
+    "context_only": 138,
+    "goal_neighbor_context": 22,
+    "history_context": 128,
+    "goal_context": 17,
+    "neighbor_context": 12
+  },
+  "tree_train_sampling": {
+    "strategy": "deterministic_train_only_domain_horizon_hard_stratified_cap",
+    "train_rows_available": 266745,
+    "train_rows_used": 120000,
+    "max_train_rows": 120000
+  },
+  "trials": {
+    "tree_baseline_family_residual": {
+      "source": "fresh_run_sampled_train_nonlinear_tree",
+      "trial": {
+        "name": "tree_baseline_family_residual",
+        "feature_set": "baseline_family",
+        "target_mode": "floor_residual"
+      },
+      "model": {
+        "type": "ExtraTreesRegressor",
+        "n_estimators": 64,
+        "max_depth": 16,
+        "min_samples_leaf": 32,
+        "n_jobs": 1,
+        "random_state": 42092
+      },
+      "feature_count": 35,
+      "train_rows_available": 266745,
+      "train_rows_used": 120000,
+      "validation_policy_slices": 8,
+      "protected": {
+        "rows": 47458,
+        "all_improvement": 0.22160245665510847,
+        "t10_improvement": 0.35391261721259715,
+        "t25_improvement": 0.07977582003976613,
+        "t50_improvement": 0.24693677777281242,
+        "t100_raw_frame_diagnostic_improvement": 0.18748263636272988,
+        "hard_failure_improvement": 0.23271774449957205,
+        "easy_degradation": -0.1257000068072721,
+        "switch_rate": 0.5892789413797463,
+        "harm_over_fallback": -0.10205676717962159
+      },
+      "ungated_diagnostic": {
+        "rows": 47458,
+        "all_improvement": 0.5125485939968951,
+        "t10_improvement": 0.790696857700207,
+        "t25_improvement": 0.36113089074781923,
+        "t50_improvement": 0.4354354503917527,
+        "t100_raw_frame_diagnostic_improvement": 0.4709568740784932,
+        "hard_failure_improvement": 0.5188489441213449,
+        "easy_degradation": -0.36428890163387795,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.23604906423575817
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.2176077158275533,
+          "mid": 0.22163356938092682,
+          "high": 0.22542482320828838,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.24174040584205286,
+          "mid": 0.24722985892996574,
+          "high": 0.25265769578851377,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.17853915144086166,
+          "mid": 0.18727740282403055,
+          "high": 0.1957161613102156,
+          "n": 7048,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.22833972636645758,
+          "mid": 0.23261804428579252,
+          "high": 0.23671518100417357,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.15335483488027976,
+          "mid": -0.14380000915546132,
+          "high": -0.13468868224935185,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      }
+    },
+    "tree_context_only_residual": {
+      "source": "fresh_run_sampled_train_nonlinear_tree",
+      "trial": {
+        "name": "tree_context_only_residual",
+        "feature_set": "context_only",
+        "target_mode": "floor_residual"
+      },
+      "model": {
+        "type": "ExtraTreesRegressor",
+        "n_estimators": 64,
+        "max_depth": 16,
+        "min_samples_leaf": 32,
+        "n_jobs": 1,
+        "random_state": 42092
+      },
+      "feature_count": 138,
+      "train_rows_available": 266745,
+      "train_rows_used": 120000,
+      "validation_policy_slices": 8,
+      "protected": {
+        "rows": 47458,
+        "all_improvement": 0.20704079669949405,
+        "t10_improvement": 0.3619737225437234,
+        "t25_improvement": 0.2244659016620072,
+        "t50_improvement": 0.192905882858306,
+        "t100_raw_frame_diagnostic_improvement": 0.11746737342227254,
+        "hard_failure_improvement": 0.2000057969767186,
+        "easy_degradation": -0.22305051842278723,
+        "switch_rate": 0.5875932403388259,
+        "harm_over_fallback": -0.09535054215725247
+      },
+      "ungated_diagnostic": {
+        "rows": 47458,
+        "all_improvement": 0.4881730443250084,
+        "t10_improvement": 0.6695556413820472,
+        "t25_improvement": 0.4353263158346403,
+        "t50_improvement": 0.42810431829937423,
+        "t100_raw_frame_diagnostic_improvement": 0.44778268401829513,
+        "hard_failure_improvement": 0.4917598838203888,
+        "easy_degradation": -0.2382848984526491,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.2248231516926911
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.20422581365123188,
+          "mid": 0.2070738167749378,
+          "high": 0.20972811188118362,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.18905700281231738,
+          "mid": 0.19308753892271308,
+          "high": 0.1968354701703189,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.11234041076139384,
+          "mid": 0.1173133679941854,
+          "high": 0.12251142747272263,
+          "n": 7048,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.19699853288595245,
+          "mid": 0.19993167051969857,
+          "high": 0.20287746332686785,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.30087283950273286,
+          "mid": -0.2872447615393664,
+          "high": -0.2742655769316923,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      }
+    },
+    "tree_full_residual": {
+      "source": "fresh_run_sampled_train_nonlinear_tree",
+      "trial": {
+        "name": "tree_full_residual",
+        "feature_set": "full",
+        "target_mode": "floor_residual"
+      },
+      "model": {
+        "type": "ExtraTreesRegressor",
+        "n_estimators": 64,
+        "max_depth": 16,
+        "min_samples_leaf": 32,
+        "n_jobs": 1,
+        "random_state": 42092
+      },
+      "feature_count": 166,
+      "train_rows_available": 266745,
+      "train_rows_used": 120000,
+      "validation_policy_slices": 8,
+      "protected": {
+        "rows": 47458,
+        "all_improvement": 0.22927372605056373,
+        "t10_improvement": 0.37739113513085343,
+        "t25_improvement": 0.18182656354455184,
+        "t50_improvement": 0.19616839640799688,
+        "t100_raw_frame_diagnostic_improvement": 0.1865251422071572,
+        "hard_failure_improvement": 0.23003129040661963,
+        "easy_degradation": -0.1996911419252141,
+        "switch_rate": 0.5642041383960554,
+        "harm_over_fallback": -0.10558969261050977
+      },
+      "ungated_diagnostic": {
+        "rows": 47458,
+        "all_improvement": 0.5070756191947386,
+        "t10_improvement": 0.6985212199769311,
+        "t25_improvement": 0.417891681678094,
+        "t50_improvement": 0.45170515490814833,
+        "t100_raw_frame_diagnostic_improvement": 0.47343552345710205,
+        "hard_failure_improvement": 0.5116963099744753,
+        "easy_degradation": -0.3543033564291208,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.2335285411170414
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.22523223181176974,
+          "mid": 0.22940179412354744,
+          "high": 0.2329137248736194,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.1924873465557595,
+          "mid": 0.19634388961027793,
+          "high": 0.20014325850152628,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.17769040310131617,
+          "mid": 0.18634273439808313,
+          "high": 0.19488303718013802,
+          "n": 7048,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.22573151453180604,
+          "mid": 0.22981160341326018,
+          "high": 0.23418766848456973,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": -0.26235893161184815,
+          "mid": -0.24956162590476638,
+          "high": -0.23705264209038937,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      }
+    },
+    "tree_goal_neighbor_residual": {
+      "source": "fresh_run_sampled_train_nonlinear_tree",
+      "trial": {
+        "name": "tree_goal_neighbor_residual",
+        "feature_set": "goal_neighbor_context",
+        "target_mode": "floor_residual"
+      },
+      "model": {
+        "type": "ExtraTreesRegressor",
+        "n_estimators": 64,
+        "max_depth": 16,
+        "min_samples_leaf": 32,
+        "n_jobs": 1,
+        "random_state": 42092
+      },
+      "feature_count": 22,
+      "train_rows_available": 266745,
+      "train_rows_used": 120000,
+      "validation_policy_slices": 0,
+      "protected": {
+        "rows": 47458,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0,
+        "harm_over_fallback": 0.0
+      },
+      "ungated_diagnostic": {
+        "rows": 47458,
+        "all_improvement": 0.23606940555403755,
+        "t10_improvement": 0.42940350695258567,
+        "t25_improvement": 0.13782036718840684,
+        "t50_improvement": 0.1459343334097294,
+        "t100_raw_frame_diagnostic_improvement": 0.23079680702139083,
+        "hard_failure_improvement": 0.255153844179676,
+        "easy_degradation": 0.1553602170881787,
+        "switch_rate": 1.0,
+        "harm_over_fallback": -0.10871937398400087
+      },
+      "bootstrap": {
+        "all": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 47458,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 11538,
+          "bootstrap_n": 1000
+        },
+        "t100_raw_frame_diagnostic": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 7048,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 35076,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mid": 0.0,
+          "high": 0.0,
+          "n": 11192,
+          "bootstrap_n": 1000
+        }
+      }
+    }
+  },
+  "summary": {
+    "tree_baseline_family_reference": {
+      "rows": 47458,
+      "all_improvement": 0.22160245665510847,
+      "t10_improvement": 0.35391261721259715,
+      "t25_improvement": 0.07977582003976613,
+      "t50_improvement": 0.24693677777281242,
+      "t100_raw_frame_diagnostic_improvement": 0.18748263636272988,
+      "hard_failure_improvement": 0.23271774449957205,
+      "easy_degradation": -0.1257000068072721,
+      "switch_rate": 0.5892789413797463,
+      "harm_over_fallback": -0.10205676717962159
+    },
+    "stage42_ix_ridge_baseline_reference": {
+      "rows": 47458,
+      "all_improvement": 0.28038144421821254,
+      "t10_improvement": 0.44541917432461364,
+      "t25_improvement": 0.3067573898248167,
+      "t50_improvement": 0.31735901122138277,
+      "t100_raw_frame_diagnostic_improvement": 0.14338663475946867,
+      "hard_failure_improvement": 0.26958338365608747,
+      "easy_degradation": -0.3118595993189832,
+      "switch_rate": 0.6597412448902187,
+      "harm_over_fallback": -0.12912683462981145
+    },
+    "delta_vs_tree_baseline_family": {
+      "tree_context_only_residual": {
+        "all_improvement": -0.014561659955614425,
+        "t50_improvement": -0.05403089491450641,
+        "t100_raw_frame_diagnostic_improvement": -0.07001526294045735,
+        "hard_failure_improvement": -0.032711947522853446,
+        "easy_degradation": -0.09735051161551511,
+        "switch_rate": -0.0016857010409204731,
+        "harm_over_fallback": 0.006706225022369117
+      },
+      "tree_full_residual": {
+        "all_improvement": 0.00767126939545526,
+        "t50_improvement": -0.05076838136481554,
+        "t100_raw_frame_diagnostic_improvement": -0.000957494155572669,
+        "hard_failure_improvement": -0.0026864540929524283,
+        "easy_degradation": -0.07399113511794198,
+        "switch_rate": -0.025074802983690914,
+        "harm_over_fallback": -0.0035329254308881786
+      },
+      "tree_goal_neighbor_residual": {
+        "all_improvement": -0.22160245665510847,
+        "t50_improvement": -0.24693677777281242,
+        "t100_raw_frame_diagnostic_improvement": -0.18748263636272988,
+        "hard_failure_improvement": -0.23271774449957205,
+        "easy_degradation": 0.1257000068072721,
+        "switch_rate": -0.5892789413797463,
+        "harm_over_fallback": 0.10205676717962159
+      }
+    },
+    "delta_vs_stage42_ix_ridge_baseline": {
+      "tree_baseline_family_residual": {
+        "all_improvement": -0.05877898756310407,
+        "t50_improvement": -0.07042223344857035,
+        "t100_raw_frame_diagnostic_improvement": 0.044096001603261215,
+        "hard_failure_improvement": -0.03686563915651542,
+        "easy_degradation": 0.1861595925117111,
+        "switch_rate": -0.07046230351047233,
+        "harm_over_fallback": 0.02707006745018986
+      },
+      "tree_context_only_residual": {
+        "all_improvement": -0.0733406475187185,
+        "t50_improvement": -0.12445312836307676,
+        "t100_raw_frame_diagnostic_improvement": -0.02591926133719613,
+        "hard_failure_improvement": -0.06957758667936886,
+        "easy_degradation": 0.08880908089619599,
+        "switch_rate": -0.07214800455139281,
+        "harm_over_fallback": 0.03377629247255898
+      },
+      "tree_full_residual": {
+        "all_improvement": -0.05110771816764881,
+        "t50_improvement": -0.12119061481338589,
+        "t100_raw_frame_diagnostic_improvement": 0.043138507447688546,
+        "hard_failure_improvement": -0.039552093249467846,
+        "easy_degradation": 0.11216845739376913,
+        "switch_rate": -0.09553710649416325,
+        "harm_over_fallback": 0.023537142019301682
+      },
+      "tree_goal_neighbor_residual": {
+        "all_improvement": -0.28038144421821254,
+        "t50_improvement": -0.31735901122138277,
+        "t100_raw_frame_diagnostic_improvement": -0.14338663475946867,
+        "hard_failure_improvement": -0.26958338365608747,
+        "easy_degradation": 0.3118595993189832,
+        "switch_rate": -0.6597412448902187,
+        "harm_over_fallback": 0.12912683462981145
+      }
+    },
+    "positive_nonlinear_context_trials": [],
+    "best_trial": "tree_baseline_family_residual",
+    "best_trial_metric": {
+      "rows": 47458,
+      "all_improvement": 0.22160245665510847,
+      "t10_improvement": 0.35391261721259715,
+      "t25_improvement": 0.07977582003976613,
+      "t50_improvement": 0.24693677777281242,
+      "t100_raw_frame_diagnostic_improvement": 0.18748263636272988,
+      "hard_failure_improvement": 0.23271774449957205,
+      "easy_degradation": -0.1257000068072721,
+      "switch_rate": 0.5892789413797463,
+      "harm_over_fallback": -0.10205676717962159
+    },
+    "capacity_hypothesis_verdict": "stage42_iy_nonlinear_context_capacity_not_sufficient",
+    "interpretation": "If nonlinear context trials still fail to beat the nonlinear baseline-family tree, the context gap is not explained by simple linear capacity alone. If a context trial wins, that supports a limited nonlinear context contribution claim under source-level split."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "train_only_feature_normalization": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_iy_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "source_level_split_used": true,
+      "tree_trials_complete": true,
+      "sampled_training_recorded": true,
+      "context_tree_trial_tested": true,
+      "full_tree_trial_tested": true,
+      "best_trial_safe": true,
+      "best_trial_positive": true,
+      "nonlinear_context_claim_supported": false,
+      "negative_or_positive_result_recorded": true,
+      "no_leakage_pass": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 13,
+    "verdict": "stage42_iy_nonlinear_context_repair_completed_context_not_proven"
+  }
+}
