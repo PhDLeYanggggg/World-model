@@ -1426,3 +1426,16 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `validation_selected_context_slice_policy_not_promoted`.
 - boundary: validation-only slice policy selection, test-once evaluation; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_JA_CONTEXT_SLICE_POLICY_PROMOTION:END -->
+
+<!-- STAGE42_JB_CONSERVATIVE_CONTEXT_SLICE_POLICY_REPAIR:START -->
+## Stage42-JB Conservative Context-Slice Policy Repair
+
+- source: `fresh_run_validation_greedy_conservative_context_slice_repair`
+- role: after Stage42-JA failed, try a stricter validation-greedy, inference-safe, core-preserving context slice repair.
+- gate: `11 / 13`; verdict `stage42_jb_conservative_context_policy_not_promotable`.
+- selected_rule_count: `4`; test_context_rule_coverage_rate `0.526950`.
+- conservative policy all/t50/t100raw/hard/easy: `0.231382` / `0.190761` / `0.191765` / `0.227164` / `-0.220374`.
+- delta vs baseline-family all/t50/t100raw/hard/easy: `0.004708` / `-0.070733` / `0.000000` / `-0.011546` / `-0.078187`.
+- primary_blocker: `context_policy_has_core_metric_regression`.
+- boundary: validation-greedy policy selection, test-once evaluation; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_JB_CONSERVATIVE_CONTEXT_SLICE_POLICY_REPAIR:END -->
