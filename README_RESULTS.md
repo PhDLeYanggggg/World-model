@@ -6632,3 +6632,13 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: `source_rotation_positive_but_not_global_deployable`; deployable held-out domains: `['TrajNet', 'UCY']`.
 - boundary: this is stricter cross-domain raw-frame evidence; it does not change the no-metric/no-seconds/no-Stage5C/no-SMC boundary.
 <!-- STAGE42_JE_SOURCE_ROTATION_FULL_WAYPOINT_EVAL:END -->
+
+<!-- STAGE42_JF_SOURCE_ROTATION_EASY_GUARD_REPAIR:START -->
+## Stage42-JF Source-Rotation Easy-Guard Repair
+
+- source: `fresh_stage42_jf_source_rotation_easy_guard_repair`
+- gate: `9 / 9`; verdict: `stage42_jf_source_rotation_easy_guard_repair_pass`
+- held-out easy-guard rotations: ETH_UCY: cap 1.00, all 25.23%, t50 21.07%, hard 26.08%, easy 27.83%; TrajNet: cap 0.75, all 30.13%, t50 39.29%, hard 29.19%, easy -25.02%; UCY: cap 0.75, all 21.86%, t50 23.73%, hard 20.19%, easy -21.09%.
+- decision: `easy_guard_repair_partial_domain_bounded`; deployable domains after easy guard: `['TrajNet', 'UCY']`; still blocked: `['ETH_UCY']`.
+- boundary: validation-only switch budget; no test threshold tuning, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JF_SOURCE_ROTATION_EASY_GUARD_REPAIR:END -->
