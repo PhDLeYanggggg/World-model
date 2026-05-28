@@ -1,76 +1,72 @@
-# M3W
+# M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W is my research project on real-world multimodal, multi-agent world modeling.
+M3W is my research project on real-world multi-agent world modeling.
 
-The problem I am trying to solve is simple to state and hard to do honestly:
+The question I care about is:
 
-> From a real top-down scene and the recent motion of all visible agents, predict the next world state without using future information and without making easy cases worse.
+> Given a real top-down scene and the recent motion of every visible agent, can a model predict what happens next without peeking into the future, without leaning on weak shortcuts, and without making the easy cases worse?
 
-I am not treating this as a demo project. The repository keeps the useful results, the failed routes, the safety checks, and the uncomfortable audit notes because those are what made the current system better.
+That sounds simple, but most of the work has been in making the setup honest. The project tracks not only the models that worked, but also the baselines, failed ideas, leakage checks, and negative results that shaped the current direction.
 
-## Current Status
+## Where The Project Stands
 
-M3W is currently a protected 2.5D multi-agent world-state model. It is not a true 3D world model, not a foundation model, and not a metric or seconds-calibrated system.
+The current system is a protected 2.5D multi-agent world-state model. It is not a true 3D world model, not a foundation model, and not a metric or seconds-calibrated predictor.
 
-The current evidence should be read with these boundaries:
+The current claims are intentionally narrow:
 
-- SDD results are pixel-space.
-- External top-down pedestrian results are dataset-local unless the source geometry is verified.
-- t+50 and t+100 are raw-frame horizons, not seconds-level claims.
+- SDD experiments are pixel-space.
+- External pedestrian experiments are dataset-local unless geometry is verified.
+- `t+50` and `t+100` are raw-frame horizons, not seconds.
 - self-audited and visual-prior labels are not human-gold labels.
 - latent generative execution has not been run.
 - SMC is not enabled.
 
-I would rather keep the claim narrow and defensible than make the project sound more finished than it is.
+I would rather keep the project useful and defensible than make it sound more finished than it is.
 
-## What Is Working
+## What Works So Far
 
-The strongest pattern so far is a protected policy, not an unconstrained neural replacement.
+The strongest result so far is not an unconstrained neural rollout. It is a protected policy that starts from strong causal motion baselines and only switches when the model has enough evidence that switching is safer and better.
 
-It starts with a strong causal baseline, then uses causal history, neighbor context, route and goal prototypes, source/domain context, and learned risk signals to decide whether switching is worth it. If the case looks easy, uncertain, or likely to be harmed, the model falls back.
+The current best pieces are:
 
-That design has produced the most reliable evidence so far:
+- a strong SDD pixel-space selector baseline;
+- an external `t+50` repair that turned failed transfer into a deployable raw-frame selector candidate;
+- source-aware, history-aware, and waypoint-aware policies that improve long-horizon behavior under a fallback floor;
+- no-leakage checks that keep future endpoints, central velocity, and test-built goals out of inference;
+- bootstrap and replay reports for the results that look promising.
 
-- an SDD pixel-space cost-aware selector that remains the SDD safety baseline;
-- an external t+50 repair that turned failed transfer into a deployable raw-frame selector candidate;
-- protected full-waypoint and group-consistency policies that move beyond endpoint-only behavior;
-- reviewer-style replay packages and no-leakage checks that make the results easier to audit.
+In plain terms: M3W is useful today as a guarded trajectory/world-state research system. It is not yet the final world model I want it to become.
 
-My current short description is:
+## What Did Not Work
 
-> M3W is a protected raw-frame 2.5D multi-agent world-state candidate. It has useful evidence on the current benchmarks, but it is still bounded, safety-floored, and not yet a true 3D or foundation world model.
+Several routes were worth trying but did not become main claims:
 
-## What Did Not Hold Up
-
-Some directions were useful scientifically but did not become main claims:
-
-- hard one-hot baseline classification over-switched and damaged easy cases;
-- JEPA did not collapse, but it has not yet given reliable downstream lift;
+- hard one-label baseline selection switched too often and hurt easy samples;
+- JEPA representations did not collapse, but have not yet produced reliable downstream lift;
 - zero-shot SDD-to-external transfer failed before domain and horizon repair;
-- latent alignment reduced distribution distance without reliably improving prediction;
+- latent distribution alignment reduced distance without reliably improving prediction;
 - ordinary residual correction was not safe enough to deploy;
-- ungated Transformer and Hybrid dynamics did not beat the protected floor;
-- scene, goal, and interaction context help inside guarded policies but are not yet standalone contributions.
+- ungated Transformer and Hybrid dynamics did not beat the protected floor.
 
-I keep these results in the repo because they explain why the current system is conservative.
+These negative results are part of the project. They are the reason the current model is conservative.
 
-## Repository Map
+## How To Read This Repository
 
-The detailed experiment ledger is separate from this public overview.
+The root README is only the front door. The detailed research record lives in the reports.
 
-| Path | What it is for |
+| Path | Purpose |
 | --- | --- |
-| `src/` | data processing, models, evaluators, gates, report builders |
+| `src/` | data processing, model code, evaluators, gates, report builders |
 | `configs/` | training and evaluation configs |
 | `tests/` | regression tests and evidence checks |
-| `outputs/m3w_neural_v1/` | current M3W-Neural v1 summaries and model cards |
-| `outputs/stage42_long_research/` | long-run evidence, gates, claim guards, ablations |
-| `README_RESULTS.md` | internal experiment ledger |
+| `outputs/m3w_neural_v1/` | current M3W-Neural summaries and model cards |
+| `outputs/stage42_long_research/` | long-run reports, ablations, guards, and evidence tables |
+| `README_RESULTS.md` | detailed experiment ledger |
 | `research_state.json` | machine-readable project state |
 
-Large local data, caches, checkpoints, third-party raw files, videos, and image assets are not committed.
+Large local data, caches, checkpoints, third-party raw files, videos, and image assets are intentionally not committed.
 
-## Reproducibility
+## Reproducing The Local Setup
 
 On my Apple Silicon machine I use the arm64 PyTorch environment:
 
@@ -82,7 +78,7 @@ Important runtime choices:
 
 - `num_workers = 0`
 - CPU-safe and MPS-safe paths where applicable
-- checkpoint / heartbeat / resume support for long runs
+- checkpoint, heartbeat, and resume support for long runs
 - no future endpoint input
 - no central velocity as official input
 - no test endpoints for goal construction
@@ -95,13 +91,12 @@ Typical verification:
 
 ## Current Direction
 
-The next step is to make the claim harder to break:
+The next version of the project is about making the result harder to break:
 
-- broaden external top-down validation;
-- strengthen all-agent waypoint evidence;
-- keep source / horizon / scene breakdowns visible;
-- improve neural dynamics only where it beats the protected floor;
-- continue separating deployable results from diagnostic ones;
-- attempt metric and time calibration only when the source evidence supports it.
+- broader external top-down validation;
+- stronger all-agent waypoint evidence;
+- clearer source, horizon, and scene breakdowns;
+- neural dynamics only where they beat the protected floor;
+- metric and time calibration only when the dataset evidence supports it.
 
-Until those pieces are stronger, I describe M3W as a protected 2.5D world-state candidate, not a finished world model.
+My longer-term goal is still a real multimodal agent-scene world model. The current repository is the honest research path toward that goal, not a polished claim that the goal is already solved.
