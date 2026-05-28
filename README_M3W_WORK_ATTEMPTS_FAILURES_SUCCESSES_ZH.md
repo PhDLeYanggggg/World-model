@@ -1490,3 +1490,13 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `eth_ucy_source_specific_policy_partial_source_support`; deployable sources: `['ETH/seq_hotel/obsmat.txt', 'UCY/zara01/obsmat.txt']`; blocked sources: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt', 'UCY/zara02/obsmat.txt']`.
 - boundary: this is ETH_UCY source-specific support only, not cross-domain zero-shot success; still no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JG_ETH_UCY_SOURCE_SPECIFIC_EASY_GUARD:END -->
+
+<!-- STAGE42_JH_ETH_UCY_HARM_AWARE_SOURCE_GUARD:START -->
+## Stage42-JH ETH_UCY Harm-Aware Source Guard
+
+- source: `fresh_stage42_jh_eth_ucy_harm_aware_source_guard`
+- gate: `9 / 9`; verdict: `stage42_jh_eth_ucy_harm_aware_source_guard_pass`
+- source-CV harm-aware folds: ETH/seq_eth/obsmat.txt: all 0.58%, t50 -32.47%, hard 0.63%, easy -11.82%; ETH/seq_hotel/obsmat.txt: all 8.64%, t50 15.05%, hard 8.70%, easy -15.89%; UCY/students03/obsmat.txt: all 9.09%, t50 9.03%, hard 10.02%, easy 10.78%; UCY/zara01/obsmat.txt: all 12.50%, t50 17.97%, hard 11.43%, easy -24.69%; UCY/zara02/obsmat.txt: all 30.39%, t50 38.99%, hard 30.27%, easy -2.52%.
+- decision: `eth_ucy_harm_aware_guard_partial_support`; deployable sources: `['ETH/seq_hotel/obsmat.txt', 'UCY/zara01/obsmat.txt', 'UCY/zara02/obsmat.txt']`; blocked sources: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`; easy repaired: `['UCY/zara02/obsmat.txt']`.
+- boundary: this is ETH_UCY source-specific support only, not global/cross-domain success; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JH_ETH_UCY_HARM_AWARE_SOURCE_GUARD:END -->
