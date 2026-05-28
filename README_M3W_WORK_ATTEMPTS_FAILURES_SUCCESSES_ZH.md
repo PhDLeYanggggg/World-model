@@ -1500,3 +1500,14 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: `eth_ucy_harm_aware_guard_partial_support`; deployable sources: `['ETH/seq_hotel/obsmat.txt', 'UCY/zara01/obsmat.txt', 'UCY/zara02/obsmat.txt']`; blocked sources: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`; easy repaired: `['UCY/zara02/obsmat.txt']`.
 - boundary: this is ETH_UCY source-specific support only, not global/cross-domain success; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_JH_ETH_UCY_HARM_AWARE_SOURCE_GUARD:END -->
+
+<!-- STAGE42_JI_ETH_UCY_SOURCE_ROBUST_BLOCKED_REPAIR:START -->
+## Stage42-JI ETH_UCY Source-Robust Blocked-Source Repair
+
+- source: `fresh_stage42_ji_eth_ucy_source_robust_blocked_repair`
+- gate: `10 / 10`; verdict: `stage42_ji_eth_ucy_source_robust_blocked_repair_pass`
+- targets from JH blocked sources: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`
+- repair folds: ETH/seq_eth/obsmat.txt: all 0.97%, t50 -31.92%, hard 1.05%, easy -14.48%, deployable=False; UCY/students03/obsmat.txt: all 5.42%, t50 3.69%, hard 6.23%, easy 7.24%, deployable=False.
+- decision: `eth_ucy_blocked_sources_still_blocked`; repaired: `[]`; still blocked: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`; easy improved: `['ETH/seq_eth/obsmat.txt', 'UCY/students03/obsmat.txt']`.
+- boundary: held-out sources still blocked remain fallback-only; no global ETH_UCY/cross-domain overclaim, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_JI_ETH_UCY_SOURCE_ROBUST_BLOCKED_REPAIR:END -->
