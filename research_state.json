@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_iv_source_level_row_cache_integration",
-  "current_verdict": "stage42_iv_source_level_row_cache_integration_pass",
+  "current_stage": "stage42_iw_source_level_row_cache_mechanism_audit",
+  "current_verdict": "stage42_iw_row_cache_mechanism_audit_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -3565,7 +3565,10 @@
     "outputs/stage42_long_research/source_level_ucy_full_waypoint_integration_policy_stage42.json",
     "outputs/stage42_long_research/source_level_row_cache_integration_stage42.md",
     "outputs/stage42_long_research/source_level_row_cache_integration_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_iv_gate.md"
+    "outputs/stage42_long_research/stage42_stage_iv_gate.md",
+    "outputs/stage42_long_research/source_level_row_cache_mechanism_audit_stage42.md",
+    "outputs/stage42_long_research/source_level_row_cache_mechanism_audit_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_iw_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18597,6 +18600,80 @@
         "focused_pytest": "3 passed in 53.29s",
         "related_pytest": "14 passed in 54.49s",
         "full_pytest": ".venv-pytorch/bin/python -m pytest tests -> 1116 passed in 841.57s (0:14:01)"
+      }
+    },
+    "stage_iw_source_level_row_cache_mechanism_audit": {
+      "source": "fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache",
+      "report": "outputs/stage42_long_research/source_level_row_cache_mechanism_audit_stage42.md",
+      "json": "outputs/stage42_long_research/source_level_row_cache_mechanism_audit_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_iw_gate.md",
+      "verdict": "stage42_iw_row_cache_mechanism_audit_pass",
+      "gates": "18/18",
+      "rows": 47458,
+      "domain_rows": {
+        "TrajNet": 37918,
+        "UCY": 9540
+      },
+      "metric": {
+        "rows": 47458,
+        "all_improvement": 0.29154251839434175,
+        "t10_improvement": 0.5499892105342297,
+        "t25_improvement": 0.23324144375268985,
+        "t50_improvement": 0.24704532362593956,
+        "t100_improvement": 0.19633495535901813,
+        "t100_raw_frame_diagnostic_improvement": 0.19633495535901813,
+        "hard_failure_improvement": 0.28727328735465274,
+        "easy_degradation": 0.0,
+        "harm_over_fallback": -0.1342669542918388,
+        "switch_rate": 0.7028319777487463,
+        "by_domain": {
+          "TrajNet": {
+            "rows": 37918,
+            "all_improvement": 0.3205927234238002,
+            "t50_improvement": 0.2817950901367978,
+            "t100_raw_frame_diagnostic_improvement": 0.19060085082963363,
+            "hard_failure_improvement": 0.31251762988380105,
+            "easy_degradation": 0.0,
+            "switch_rate": 0.7360620285880057
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement": 0.19609079471511848,
+            "t50_improvement": 0.12289185019244553,
+            "t100_raw_frame_diagnostic_improvement": 0.2138801135757602,
+            "hard_failure_improvement": 0.20736023747423504,
+            "easy_degradation": 2.775200291793567e-09,
+            "switch_rate": 0.5707547169811321
+          }
+        }
+      },
+      "switch_mechanism": {
+        "switch_rows": 33355,
+        "fallback_rows": 14103,
+        "switch_rate": 0.7028319777487463,
+        "fallback_exact_floor_rate": 1.0
+      },
+      "full_waypoint_shape": {
+        "rows": 47458,
+        "waypoint_count": 4,
+        "rows_with_any_waypoint": 47458,
+        "rows_with_full_waypoints": 32056,
+        "rows_with_at_least_two_waypoints": 47458,
+        "full_waypoint_rate": 0.6754604070968013,
+        "mean_valid_waypoints_per_row": 3.3509208141936027,
+        "mean_raw_residual_from_linear_bridge": 0.10409730351609679,
+        "median_raw_residual_from_linear_bridge": 0.06988248934302863,
+        "p90_raw_residual_from_linear_bridge": 0.2777690561132196,
+        "mean_turn_angle_radians": 0.7327477683713391,
+        "note": "Residuals and turn angles are dataset-local/raw-frame shape diagnostics, not metric distances or seconds-level dynamics."
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
       }
     }
   },

@@ -6527,3 +6527,17 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - boundary: no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 - verification: focused pytest `3 passed in 53.29s`; related pytest `14 passed in 54.49s`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1116 passed in 841.57s (0:14:01)`.
 <!-- STAGE42_IV_SOURCE_LEVEL_ROW_CACHE_INTEGRATION:END -->
+
+<!-- STAGE42_IW_ROW_CACHE_MECHANISM_AUDIT:START -->
+## Stage42-IW Source-Level Row-Cache Mechanism Audit
+
+- source: `fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache`
+- role: mechanism audit over the Stage42-IV single merged row-cache, not a new metric-only summary.
+- gate: `18 / 18`; verdict `stage42_iw_row_cache_mechanism_audit_pass`.
+- rows: `47458`; domain rows: `{'TrajNet': 37918, 'UCY': 9540}`.
+- ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
+- easy degradation: `0.000000`; switch rows `33355`; fallback exact floor rate `1.000000`.
+- full-waypoint coverage: `0.675460`; bootstrap t50 CI `[0.242612, 0.251123]`.
+- interpretation: safe-switch and teacher/floor protection are directly supported by this row-cache; waypoint labels are sequence-capable but not complete for every row; history/neighbor/goal/interaction still require retrained ablation evidence.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_IW_ROW_CACHE_MECHANISM_AUDIT:END -->
