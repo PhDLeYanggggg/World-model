@@ -1,0 +1,227 @@
+{
+  "stage": "Stage42-IL",
+  "source": "fresh_stage42_il_t50_ucy_specialist_claim_audit",
+  "generated_at_utc": "2026-05-28T01:33:41.078727+00:00",
+  "git_commit": "6b5939e",
+  "input_hash": "634df1825cec271170d6a9164af6fe91428c2822b3cdb4611aac07c7e9fea900",
+  "purpose": "Audit the Stage42-IK UCY source-specialist composition so the positive result is captured with clear delta evidence and strict claim boundaries.",
+  "summary": {
+    "stage42ii_verdict": "stage42_ii_ensemble_repair_stabilizes_t50",
+    "stage42ij_verdict": "stage42_ij_t50_ensemble_source_robustness_pass",
+    "stage42ik_verdict": "stage42_ik_ucy_specialist_integration_pass",
+    "stage42x_verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
+    "global_delta": {
+      "ade_all_delta_vs_stage42ii": 0.037626594029722016,
+      "ade_t50_delta_vs_stage42ii": 0.023159504985544754,
+      "ade_t100_raw_delta_vs_stage42ii": 0.03968742399481595,
+      "ade_hard_delta_vs_stage42ii": 0.038954203377278396,
+      "easy_degradation_delta_vs_stage42ii": 0.0,
+      "switch_rate_delta_vs_stage42ii": 0.08680305431494023
+    },
+    "ucy_delta": {
+      "before_rows": 9540,
+      "after_rows": 9540,
+      "before_t50": 0.0,
+      "after_t50": 0.12289194124200009,
+      "delta_t50": 0.12289194124200009,
+      "before_all": 0.0,
+      "after_all": 0.19609075332403936,
+      "before_hard": 0.0,
+      "after_hard": 0.20736027560276749,
+      "after_easy_degradation": 0.0
+    },
+    "non_ucy_max_abs_delta": 1.0197926370025812e-07,
+    "all_powered_t50_sources_positive": true,
+    "supported_claim_count": 4,
+    "blocked_claim_count": 4,
+    "new_training": "not_run",
+    "source_scope": "source_specialist_composition",
+    "metric_seconds_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "non_ucy_delta_rows": [
+    {
+      "domain": "ETH_UCY",
+      "metric": "all_improvement",
+      "delta": 1.0197926370025812e-07
+    },
+    {
+      "domain": "ETH_UCY",
+      "metric": "t50_improvement",
+      "delta": 2.104782903522562e-09
+    },
+    {
+      "domain": "ETH_UCY",
+      "metric": "hard_failure_improvement",
+      "delta": -3.312936247557019e-08
+    },
+    {
+      "domain": "ETH_UCY",
+      "metric": "easy_degradation",
+      "delta": -5.368902789015806e-08
+    },
+    {
+      "domain": "ETH_UCY",
+      "metric": "switch_rate",
+      "delta": 0.0
+    },
+    {
+      "domain": "TrajNet",
+      "metric": "all_improvement",
+      "delta": 5.823341975297325e-08
+    },
+    {
+      "domain": "TrajNet",
+      "metric": "t50_improvement",
+      "delta": 2.2006879651925715e-09
+    },
+    {
+      "domain": "TrajNet",
+      "metric": "hard_failure_improvement",
+      "delta": 4.6850235801976226e-08
+    },
+    {
+      "domain": "TrajNet",
+      "metric": "easy_degradation",
+      "delta": 0.0
+    },
+    {
+      "domain": "TrajNet",
+      "metric": "switch_rate",
+      "delta": 0.0
+    }
+  ],
+  "supported_claims": [
+    {
+      "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
+      "status": "supported_fresh_composition_eval",
+      "evidence": "UCY t50 0.000000 -> 0.122892; alignment rows 9540"
+    },
+    {
+      "claim": "The Stage42-II non-UCY ensemble decisions are unchanged by the IK composition.",
+      "status": "supported_fresh_audit",
+      "evidence": "max_abs_non_ucy_domain_metric_delta=0.000000101979"
+    },
+    {
+      "claim": "All powered t50 source files are nonnegative/positive after IK.",
+      "status": "supported_fresh_audit",
+      "evidence": "positive_powered_t50_source_count=3/3"
+    },
+    {
+      "claim": "IK improves the global Stage42-II ensemble while preserving easy cases.",
+      "status": "supported_fresh_audit",
+      "evidence": "all_delta=0.037627; t50_delta=0.023160; easy_degradation=0.000000"
+    }
+  ],
+  "blocked_claims": [
+    {
+      "claim": "IK proves a new independent external-domain generalization result.",
+      "status": "blocked",
+      "reason": "IK is a source-specialist composition using cached-verified row-aligned UCY full-waypoint branch evidence."
+    },
+    {
+      "claim": "IK is new training.",
+      "status": "blocked",
+      "reason": "IK source labels mark new_training=not_run; it is a fresh composition/evaluation audit."
+    },
+    {
+      "claim": "IK allows metric or seconds-level claims.",
+      "status": "blocked",
+      "reason": "claim boundary remains dataset-local/raw-frame only."
+    },
+    {
+      "claim": "IK permits Stage5C or SMC.",
+      "status": "blocked",
+      "reason": "Stage5C and SMC remain false in all relevant artifacts."
+    }
+  ],
+  "source_labels": {
+    "stage42ii": "cached_verified",
+    "stage42ij": "cached_verified",
+    "stage42ik": "fresh_run_composition_eval",
+    "stage42x": "cached_verified_row_aligned_full_waypoint_cache",
+    "stage42il": "fresh_run_claim_delta_audit",
+    "new_training": "not_run"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoints_input": false,
+    "future_waypoints_used_as_eval_label_only": true,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false,
+    "stage42ii_no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoints_input": false,
+      "future_waypoints_used_as_eval_label_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_statistics_normalization": false,
+      "thresholds_selected_on_val": true,
+      "test_threshold_tuning": false
+    },
+    "stage42x_no_leakage": {
+      "future_endpoint_input": false,
+      "future_waypoints_input": false,
+      "future_waypoints_used_as_train_val_label_and_eval_only": true,
+      "central_velocity": false,
+      "test_endpoint_goals": false,
+      "test_policy_tuning": false,
+      "stage42s_no_leakage": {
+        "future_endpoint_input": false,
+        "future_waypoints_input": false,
+        "future_waypoints_used_as_train_val_label_and_eval_only": true,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_statistics_normalization": false,
+        "test_threshold_tuning": false,
+        "combo_sources_selected_on_val": true
+      },
+      "stage42v_no_leakage": {
+        "future_waypoint_input": false,
+        "future_waypoint_label_eval_only": true,
+        "future_endpoint_input": false,
+        "central_velocity": false,
+        "test_endpoint_goals": false,
+        "test_policy_tuning": false,
+        "train_only_normalization": true,
+        "val_only_policy_selection": true
+      }
+    }
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "source_specialist_claim_only": true,
+    "independent_new_domain_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_il_gate": {
+    "source": "fresh_stage42_il_t50_ucy_specialist_claim_audit",
+    "gates": {
+      "stage42ii_passed": true,
+      "stage42ij_passed": true,
+      "stage42ik_passed": true,
+      "stage42x_passed": true,
+      "ucy_was_fallback_before": true,
+      "ucy_t50_repaired": true,
+      "non_ucy_unchanged": true,
+      "global_delta_positive": true,
+      "easy_not_worse": true,
+      "all_powered_sources_positive": true,
+      "supported_and_blocked_claims_present": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "scope_not_overclaimed": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage42_il_ucy_specialist_claim_audit_pass"
+  }
+}

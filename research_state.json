@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_ik_t50_ensemble_ucy_specialist_integration",
-  "current_verdict": "stage42_ik_ucy_specialist_integration_pass",
+  "current_stage": "stage42_il_t50_ucy_specialist_claim_audit",
+  "current_verdict": "stage42_il_ucy_specialist_claim_audit_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -3534,7 +3534,10 @@
     "outputs/stage42_long_research/stage42_stage_ij_gate.md",
     "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.md",
     "outputs/stage42_long_research/stage42_stage_ik_gate.md",
-    "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.json"
+    "outputs/stage42_long_research/t50_ensemble_ucy_specialist_integration_stage42.json",
+    "outputs/stage42_long_research/t50_ucy_specialist_claim_audit_stage42.md",
+    "outputs/stage42_long_research/t50_ucy_specialist_claim_audit_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_il_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18397,6 +18400,59 @@
         "source_file_order_available": true,
         "floor_ade_max_abs_delta": 1.5758981941615957e-07,
         "floor_fde_max_abs_delta": 2.3840437091138256e-07
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "source_specialist_claim_only": true,
+        "independent_new_domain_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_il_t50_ucy_specialist_claim_audit": {
+      "source": "fresh_stage42_il_t50_ucy_specialist_claim_audit",
+      "report": "outputs/stage42_long_research/t50_ucy_specialist_claim_audit_stage42.md",
+      "json": "outputs/stage42_long_research/t50_ucy_specialist_claim_audit_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_il_gate.md",
+      "verdict": "stage42_il_ucy_specialist_claim_audit_pass",
+      "gates": "16/16",
+      "summary": {
+        "stage42ii_verdict": "stage42_ii_ensemble_repair_stabilizes_t50",
+        "stage42ij_verdict": "stage42_ij_t50_ensemble_source_robustness_pass",
+        "stage42ik_verdict": "stage42_ik_ucy_specialist_integration_pass",
+        "stage42x_verdict": "stage42_x_unified_row_level_full_waypoint_cache_pass",
+        "global_delta": {
+          "ade_all_delta_vs_stage42ii": 0.037626594029722016,
+          "ade_t50_delta_vs_stage42ii": 0.023159504985544754,
+          "ade_t100_raw_delta_vs_stage42ii": 0.03968742399481595,
+          "ade_hard_delta_vs_stage42ii": 0.038954203377278396,
+          "easy_degradation_delta_vs_stage42ii": 0.0,
+          "switch_rate_delta_vs_stage42ii": 0.08680305431494023
+        },
+        "ucy_delta": {
+          "before_rows": 9540,
+          "after_rows": 9540,
+          "before_t50": 0.0,
+          "after_t50": 0.12289194124200009,
+          "delta_t50": 0.12289194124200009,
+          "before_all": 0.0,
+          "after_all": 0.19609075332403936,
+          "before_hard": 0.0,
+          "after_hard": 0.20736027560276749,
+          "after_easy_degradation": 0.0
+        },
+        "non_ucy_max_abs_delta": 1.0197926370025812e-07,
+        "all_powered_t50_sources_positive": true,
+        "supported_claim_count": 4,
+        "blocked_claim_count": 4,
+        "new_training": "not_run",
+        "source_scope": "source_specialist_composition",
+        "metric_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
       },
       "claim_boundary": {
         "true_3d": false,

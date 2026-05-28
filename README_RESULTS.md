@@ -6378,3 +6378,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - UCY t50: `0.122892`
 - boundary: source-specialist composition evidence only; dataset-local/raw-frame 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IK_T50_ENSEMBLE_UCY_SPECIALIST_INTEGRATION:END -->
+
+<!-- STAGE42_IL_T50_UCY_SPECIALIST_CLAIM_AUDIT:START -->
+## Stage42-IL T50 UCY Specialist Claim Audit
+
+- source: `fresh_stage42_il_t50_ucy_specialist_claim_audit`
+- verdict: `stage42_il_ucy_specialist_claim_audit_pass`
+- gates: `16 / 16`
+- Stage42-IK vs Stage42-II delta all/t50/hard: `0.037627` / `0.023160` / `0.038954`
+- UCY t50 before/after: `0.000000` -> `0.122892`
+- non-UCY max abs metric delta: `0.000000101979`
+- boundary: claim audit only; IK is source-specialist composition evidence, not independent-domain, metric/seconds, Stage5C, or SMC evidence.
+<!-- STAGE42_IL_T50_UCY_SPECIALIST_CLAIM_AUDIT:END -->
