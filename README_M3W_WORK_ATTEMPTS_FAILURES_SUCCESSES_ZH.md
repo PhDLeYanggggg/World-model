@@ -1249,3 +1249,16 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - cached BL technical t100 safe-positive: `True`; ready now: `False`.
 - conclusion: ETH_UCY source-CV blocker is technically repairable after terms using ETH-Person XML candidates, but conversion/evaluation and metric/seconds claims remain blocked until user-confirmed terms and guarded rerun.
 <!-- STAGE42_HK_ETH_UCY_SOURCE_SUPPORT_PREFLIGHT:END -->
+
+<!-- STAGE42_IO_HORIZON_SEQUENCE_GRAPH_CONTEXT_ROUTER:START -->
+## Stage42-IO Horizon-Specific Sequence+Graph Context Router
+
+- source: `fresh_stage42_horizon_sequence_graph_context_router`
+- role: tests whether splitting t10/t25/t50/t100 fixes the negative Stage42-EQ global sequence+graph context router.
+- gate: `13 / 13`; verdict `stage42_io_horizon_sequence_graph_context_router_pass`.
+- positive_horizon_sequence_graph_context_routers: `['h10_history_only', 'h10_motion_goal_context', 'h25_baseline_plus_history_goal_neighbor']`.
+- best_overall_router: `h10_motion_goal_context`.
+- best all/t50/t100raw/hard/easy: `0.069270` / `0.000000` / `0.000000` / `0.072655` / `-0.035269`.
+- horizon_specific_increment_verdict: `stage42_io_horizon_sequence_graph_context_router_supported`.
+- Boundary: fresh horizon-specific router audit only; raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IO_HORIZON_SEQUENCE_GRAPH_CONTEXT_ROUTER:END -->

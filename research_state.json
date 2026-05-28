@@ -3546,7 +3546,10 @@
     "outputs/stage42_long_research/t50_source_specialist_reviewer_replay_stage42.md",
     "outputs/stage42_long_research/t50_source_specialist_reviewer_replay_stage42.json",
     "outputs/stage42_long_research/stage42_stage_in_gate.md",
-    "outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh"
+    "outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh",
+    "outputs/stage42_long_research/horizon_sequence_graph_context_router_stage42.md",
+    "outputs/stage42_long_research/horizon_sequence_graph_context_router_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_io_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -34154,6 +34157,185 @@
         "smc_enabled": false,
         "independent_new_domain_claim": false,
         "source_specialist_replay_only": true
+      }
+    },
+    "stage_io_horizon_sequence_graph_context_router": {
+      "source": "fresh_stage42_horizon_sequence_graph_context_router",
+      "report": "outputs/stage42_long_research/horizon_sequence_graph_context_router_stage42.md",
+      "json": "outputs/stage42_long_research/horizon_sequence_graph_context_router_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_io_gate.md",
+      "verdict": "stage42_io_horizon_sequence_graph_context_router_pass",
+      "gates": "13/13",
+      "summary": {
+        "source": "fresh_stage42_horizon_sequence_graph_context_router",
+        "router_target": "horizon-specific supervised gain/harm routing for context proposal over baseline-family protected control",
+        "horizons": [
+          10,
+          25,
+          50,
+          100
+        ],
+        "candidates": [
+          "history_only",
+          "motion_goal_context",
+          "baseline_plus_history_goal_neighbor"
+        ],
+        "positive_horizon_sequence_graph_context_routers": [
+          "h10_history_only",
+          "h10_motion_goal_context",
+          "h25_baseline_plus_history_goal_neighbor"
+        ],
+        "best_by_horizon": {
+          "10": {
+            "best_key": "h10_motion_goal_context",
+            "candidate": "motion_goal_context",
+            "metric": {
+              "rows": 15402,
+              "all_improvement": 0.06927016739432212,
+              "t10_improvement": 0.06927016739432212,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.07265514908237858,
+              "easy_degradation": -0.03526867082209395,
+              "switch_rate": 0.4442929489676665,
+              "harm_over_fallback": -0.011048722997111701
+            },
+            "supported": true
+          },
+          "25": {
+            "best_key": "h25_baseline_plus_history_goal_neighbor",
+            "candidate": "baseline_plus_history_goal_neighbor",
+            "metric": {
+              "rows": 13470,
+              "all_improvement": 0.006985905497988831,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.006985905497988831,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.016654644785632278,
+              "easy_degradation": -0.02189560921240641,
+              "switch_rate": 0.10475129918337045,
+              "harm_over_fallback": -0.001244840346413952
+            },
+            "supported": true
+          },
+          "50": {
+            "best_key": "h50_baseline_plus_history_goal_neighbor",
+            "candidate": "baseline_plus_history_goal_neighbor",
+            "metric": {
+              "rows": 11538,
+              "all_improvement": 7.553223548839583e-07,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 7.553223548839583e-07,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 7.553223548839583e-07,
+              "easy_degradation": -0.0,
+              "switch_rate": 0.01594730455884902,
+              "harm_over_fallback": -2.5870427159787825e-07
+            },
+            "supported": false
+          },
+          "100": {
+            "best_key": "h100_history_only",
+            "candidate": "history_only",
+            "metric": {
+              "rows": 7048,
+              "all_improvement": 0.0014476444941737832,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0014476444941737832,
+              "hard_failure_improvement": 0.0014476444941737832,
+              "easy_degradation": 0.011561680819277553,
+              "switch_rate": 0.12840522133938706,
+              "harm_over_fallback": -0.00138805182655149
+            },
+            "supported": false
+          }
+        },
+        "best_overall_router": "h10_motion_goal_context",
+        "horizon_specific_increment_verdict": "stage42_io_horizon_sequence_graph_context_router_supported",
+        "interpretation": "Stage42-IO separates horizons after Stage42-EQ's global sequence+graph router failed. A positive row supports only a narrow horizon-specific routing contribution. If no horizon is positive, horizon mixing is not the main reason sequence/graph context failed."
+      },
+      "best_by_horizon": {
+        "10": {
+          "best_key": "h10_motion_goal_context",
+          "candidate": "motion_goal_context",
+          "metric": {
+            "rows": 15402,
+            "all_improvement": 0.06927016739432212,
+            "t10_improvement": 0.06927016739432212,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.07265514908237858,
+            "easy_degradation": -0.03526867082209395,
+            "switch_rate": 0.4442929489676665,
+            "harm_over_fallback": -0.011048722997111701
+          },
+          "supported": true
+        },
+        "25": {
+          "best_key": "h25_baseline_plus_history_goal_neighbor",
+          "candidate": "baseline_plus_history_goal_neighbor",
+          "metric": {
+            "rows": 13470,
+            "all_improvement": 0.006985905497988831,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.006985905497988831,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.016654644785632278,
+            "easy_degradation": -0.02189560921240641,
+            "switch_rate": 0.10475129918337045,
+            "harm_over_fallback": -0.001244840346413952
+          },
+          "supported": true
+        },
+        "50": {
+          "best_key": "h50_baseline_plus_history_goal_neighbor",
+          "candidate": "baseline_plus_history_goal_neighbor",
+          "metric": {
+            "rows": 11538,
+            "all_improvement": 7.553223548839583e-07,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 7.553223548839583e-07,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 7.553223548839583e-07,
+            "easy_degradation": -0.0,
+            "switch_rate": 0.01594730455884902,
+            "harm_over_fallback": -2.5870427159787825e-07
+          },
+          "supported": false
+        },
+        "100": {
+          "best_key": "h100_history_only",
+          "candidate": "history_only",
+          "metric": {
+            "rows": 7048,
+            "all_improvement": 0.0014476444941737832,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0014476444941737832,
+            "hard_failure_improvement": 0.0014476444941737832,
+            "easy_degradation": 0.011561680819277553,
+            "switch_rate": 0.12840522133938706,
+            "harm_over_fallback": -0.00138805182655149
+          },
+          "supported": false
+        }
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
       }
     }
   }

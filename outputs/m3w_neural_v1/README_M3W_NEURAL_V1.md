@@ -3285,3 +3285,16 @@ The context contribution map is now explicit: baseline-family rollout context is
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_IN_T50_SOURCE_SPECIALIST_REVIEWER_REPLAY:END -->
+
+<!-- STAGE42_IO_HORIZON_SEQUENCE_GRAPH_CONTEXT_ROUTER:START -->
+## Stage42-IO Horizon-Specific Sequence+Graph Context Router
+
+- source: `fresh_stage42_horizon_sequence_graph_context_router`
+- role: tests whether splitting t10/t25/t50/t100 fixes the negative Stage42-EQ global sequence+graph context router.
+- gate: `13 / 13`; verdict `stage42_io_horizon_sequence_graph_context_router_pass`.
+- positive_horizon_sequence_graph_context_routers: `['h10_history_only', 'h10_motion_goal_context', 'h25_baseline_plus_history_goal_neighbor']`.
+- best_overall_router: `h10_motion_goal_context`.
+- best all/t50/t100raw/hard/easy: `0.069270` / `0.000000` / `0.000000` / `0.072655` / `-0.035269`.
+- horizon_specific_increment_verdict: `stage42_io_horizon_sequence_graph_context_router_supported`.
+- Boundary: fresh horizon-specific router audit only; raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IO_HORIZON_SEQUENCE_GRAPH_CONTEXT_ROUTER:END -->

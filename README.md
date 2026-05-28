@@ -2,63 +2,61 @@
 
 M3W is my research project on real-world multimodal, multi-agent world modeling.
 
-The question I am working on is:
+The problem I am trying to solve is simple to state and hard to do honestly:
 
-> Given a real top-down scene and the recent motion of every visible agent, can a model predict the next world state without leaking future information and without becoming unsafe on easy cases?
+> From a real top-down scene and the recent motion of all visible agents, predict the next world state without using future information and without making easy cases worse.
 
-I am interested in the practical version of that problem, not a polished demo. The repository therefore keeps both the working route and the failed routes: strong causal baselines, selectors, neural dynamics heads, safety floors, no-leakage audits, and the reports that explain why some ideas were rejected.
+I am not treating this as a demo project. The repository keeps the useful results, the failed routes, the safety checks, and the uncomfortable audit notes because those are what made the current system better.
 
-## Where The Project Stands
+## Current Status
 
-M3W is currently a protected 2.5D multi-agent world-state modeling system. It is not a true 3D world model, not a foundation model, and not a metric or seconds-calibrated system yet.
+M3W is currently a protected 2.5D multi-agent world-state model. It is not a true 3D world model, not a foundation model, and not a metric or seconds-calibrated system.
 
-The current evidence is raw-frame / dataset-local:
+The current evidence should be read with these boundaries:
 
 - SDD results are pixel-space.
-- External top-down pedestrian results are dataset-local unless source geometry is verified.
+- External top-down pedestrian results are dataset-local unless the source geometry is verified.
 - t+50 and t+100 are raw-frame horizons, not seconds-level claims.
 - self-audited and visual-prior labels are not human-gold labels.
-- Stage5C latent generative execution has not been run.
+- latent generative execution has not been run.
 - SMC is not enabled.
 
-That boundary matters. I would rather have a narrower claim that survives scrutiny than a louder one that collapses under audit.
+I would rather keep the claim narrow and defensible than make the project sound more finished than it is.
 
-## What Works So Far
+## What Is Working
 
-The strongest useful pattern so far is not “let a neural model overwrite everything.” It is a protected policy:
+The strongest pattern so far is a protected policy, not an unconstrained neural replacement.
 
-1. start from a strong causal baseline;
-2. use causal history, neighbor context, route / goal prototypes, source/domain context, and learned risk signals;
-3. switch only when validation evidence says the change is likely to help;
-4. fall back when the case looks easy, uncertain, or likely to be harmed.
+It starts with a strong causal baseline, then uses causal history, neighbor context, route and goal prototypes, source/domain context, and learned risk signals to decide whether switching is worth it. If the case looks easy, uncertain, or likely to be harmed, the model falls back.
 
-The best current evidence comes from three parts of the project:
+That design has produced the most reliable evidence so far:
 
-- an SDD pixel-space cost-aware selector that is still the SDD safety baseline;
-- an external t+50 repair that turned earlier failed transfer into a deployable raw-frame selector candidate;
-- protected full-waypoint / group-consistency policies that move the work beyond endpoint-only behavior.
+- an SDD pixel-space cost-aware selector that remains the SDD safety baseline;
+- an external t+50 repair that turned failed transfer into a deployable raw-frame selector candidate;
+- protected full-waypoint and group-consistency policies that move beyond endpoint-only behavior;
+- reviewer-style replay packages and no-leakage checks that make the results easier to audit.
 
-The short version:
+My current short description is:
 
-> M3W is currently a protected raw-frame 2.5D multi-agent world-state candidate. It has useful evidence on the current benchmarks, but it is still deliberately bounded and safety-floored.
+> M3W is a protected raw-frame 2.5D multi-agent world-state candidate. It has useful evidence on the current benchmarks, but it is still bounded, safety-floored, and not yet a true 3D or foundation world model.
 
-## What Failed And Why It Stayed In The Repo
+## What Did Not Hold Up
 
-Several routes did not become main claims:
+Some directions were useful scientifically but did not become main claims:
 
-- hard one-hot baseline classification over-switched and hurt easy cases;
-- JEPA avoided collapse but did not yet produce reliable downstream lift;
+- hard one-hot baseline classification over-switched and damaged easy cases;
+- JEPA did not collapse, but it has not yet given reliable downstream lift;
 - zero-shot SDD-to-external transfer failed before domain and horizon repair;
-- latent distribution alignment reduced distance but did not reliably improve prediction;
+- latent alignment reduced distribution distance without reliably improving prediction;
 - ordinary residual correction was not safe enough to deploy;
-- ungated Transformer / Hybrid dynamics did not beat the protected floor;
-- scene, goal, and interaction features help inside guarded policies but are not yet standalone main contributions.
+- ungated Transformer and Hybrid dynamics did not beat the protected floor;
+- scene, goal, and interaction context help inside guarded policies but are not yet standalone contributions.
 
-Those negative results are part of the work. They shaped the current safety-first design.
+I keep these results in the repo because they explain why the current system is conservative.
 
-## How To Read The Repository
+## Repository Map
 
-The root README is the public overview. The detailed experiment ledger is intentionally separate.
+The detailed experiment ledger is separate from this public overview.
 
 | Path | What it is for |
 | --- | --- |
