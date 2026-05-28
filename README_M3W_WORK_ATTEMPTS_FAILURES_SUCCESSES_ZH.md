@@ -1439,3 +1439,13 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - primary_blocker: `context_policy_has_core_metric_regression`.
 - boundary: validation-greedy policy selection, test-once evaluation; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_JB_CONSERVATIVE_CONTEXT_SLICE_POLICY_REPAIR:END -->
+
+<!-- STAGE42_JC_LATEST_EVIDENCE_TIER_CONSOLIDATION:START -->
+## Stage42-JC Latest Evidence Tier Consolidation
+
+- source: `fresh_stage42_jc_latest_evidence_tier_consolidation`
+- gate: `20 / 20`; verdict: `stage42_jc_latest_evidence_tier_consolidation_pass`
+- main evidence: `T1_source_level_row_cache_full_waypoint` with all `29.15%`, t50 `24.70%`, t100 raw-frame diagnostic `19.63%`, hard/failure `28.73%`, easy degradation `0.00%`.
+- context boundary: Stage42-IZ has `14` local supported context slices, but JA/JB failed promotion, so context is not a deployable/global main contribution.
+- claim boundary: still protected dataset-local/raw-frame 2.5D; not true 3D, not foundation, not metric/seconds-level, no Stage5C, no SMC.
+<!-- STAGE42_JC_LATEST_EVIDENCE_TIER_CONSOLIDATION:END -->
