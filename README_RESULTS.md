@@ -1,5 +1,11 @@
 # Physical World Model 2.5D Results
 
+## GitHub README human-owner voice policy（2026-05-28）
+
+按用户要求，根目录 `README.md` 已再次改写为更自然的项目作者介绍语气：少写阶段流水账，少写“AI 生成式总结”口吻，重点讲 M3W 的研究问题、当前真实能力、可信里程碑、失败路线、复现方式和严格边界。
+
+之后 GitHub-facing README 内容应默认采用“我在向人们介绍我的项目”的表达方式。内部阶段编号、gate、cached/fresh provenance 和长表格继续保留在 `README_RESULTS.md`、`research_state.json`、`outputs/` 报告中；根目录 README 只保留访问者需要理解项目的高信号内容。边界不变：M3W 当前仍是 protected raw-frame / dataset-local 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+
 ## GitHub README public-facing rewrite（2026-05-28）
 
 按用户要求，已重写根目录 `README.md` 的 GitHub 展示内容，让它更像项目作者在向访问者介绍 M3W，而不是 AI 生成的阶段报告或内部实验流水账。
