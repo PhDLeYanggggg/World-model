@@ -1401,3 +1401,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - capacity_hypothesis_verdict: `stage42_iy_nonlinear_context_capacity_not_sufficient`.
 - boundary: sampled train-only nonlinear repair; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_IY_SOURCE_LEVEL_NONLINEAR_CONTEXT_REPAIR:END -->
+
+<!-- STAGE42_IZ_SOURCE_LEVEL_NONLINEAR_CONTEXT_SLICE_AUDIT:START -->
+## Stage42-IZ Source-Level Nonlinear Context Slice Audit
+
+- source: `fresh_run_retrained_extra_trees_context_slice_audit`
+- role: after Stage42-IY, test whether nonlinear context has only local slice-level utility.
+- gate: `11 / 11`; verdict `stage42_iz_context_slice_audit_positive`.
+- supported_context_slice_count: `14`.
+- decision: `context_has_powered_slice_level_support`.
+- blocker_counts: `{'no_powered_positive_context_slice': 0, 'context_below_baseline_family': 55, 'easy_or_safety_not_primary_blocker': 2}`.
+- boundary: train-only slice thresholds, validation-selected safe policy, test-once audit; dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_IZ_SOURCE_LEVEL_NONLINEAR_CONTEXT_SLICE_AUDIT:END -->
