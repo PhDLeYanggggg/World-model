@@ -1,16 +1,10 @@
 # Physical World Model 2.5D Results
 
-## GitHub README human-owner voice policy（2026-05-28）
+## Public README update（2026-05-28）
 
-按用户要求，根目录 `README.md` 已再次改写为更自然的项目作者介绍语气：少写阶段流水账，少写“AI 生成式总结”口吻，重点讲 M3W 的研究问题、当前真实能力、可信里程碑、失败路线、复现方式和严格边界。
+The root `README.md` has been rewritten as a public project introduction rather than an internal stage ledger. The GitHub front page now reads like the project owner explaining M3W to other researchers: what problem I am working on, what currently works, what failed, what I do not claim, and how to read the repository.
 
-之后 GitHub-facing README 内容应默认采用“我在向人们介绍我的项目”的表达方式。内部阶段编号、gate、cached/fresh provenance 和长表格继续保留在 `README_RESULTS.md`、`research_state.json`、`outputs/` 报告中；根目录 README 只保留访问者需要理解项目的高信号内容。边界不变：M3W 当前仍是 protected raw-frame / dataset-local 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
-
-## GitHub README public-facing rewrite（2026-05-28）
-
-按用户要求，已重写根目录 `README.md` 的 GitHub 展示内容，让它更像项目作者在向访问者介绍 M3W，而不是 AI 生成的阶段报告或内部实验流水账。
-
-本次更新只调整 public-facing project README，不包含新训练、下载、转换或评估。新的 README 采用第一人称项目介绍结构：先说明研究问题和当前定位，再写当前能力、可信结果、明确不主张的内容、失败路线为何保留、仓库阅读路径和复现说明。严格边界保持不变：M3W 当前仍是 protected raw-frame / dataset-local 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+Detailed stage numbers, cached/fresh provenance, gate counts, and long evidence tables stay here in `README_RESULTS.md`, in `research_state.json`, and in the `outputs/` reports. The public README should stay concise, human, and project-facing. The claim boundary is unchanged: M3W is currently a protected raw-frame / dataset-local 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
 
 ## M3W 当前权威总总结（2026-05-27）
 
