@@ -3552,7 +3552,10 @@
     "outputs/stage42_long_research/stage42_stage_io_gate.md",
     "outputs/stage42_long_research/t50_t100_sequence_graph_blocker_audit_stage42.md",
     "outputs/stage42_long_research/t50_t100_sequence_graph_blocker_audit_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_ip_gate.md"
+    "outputs/stage42_long_research/stage42_stage_ip_gate.md",
+    "outputs/stage42_long_research/t50_switchability_calibration_repair_stage42.md",
+    "outputs/stage42_long_research/t50_switchability_calibration_repair_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_iq_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -34106,7 +34109,7 @@
           }
         },
         "policy_hash": "9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2",
-        "policy_artifact_sha256": "8a52c86b9fb2d95b90886f4504d63f234bd393394d1bd1112a9f7dd3ada90f2a",
+        "policy_artifact_sha256": "569d6d77cb0e833f62e0dbba8e918c52f5d45b883bfc712ea95ec019d603b7b0",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -34400,6 +34403,37 @@
           "best_capture_rate": 0.3476047147224963,
           "dominant_blocker": "weak_predictive_signal_or_baseline_family_dominance"
         }
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "global_metric_claim_allowed": false,
+        "global_seconds_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_iq_t50_switchability_calibration_repair": {
+      "source": "fresh_stage42_t50_switchability_calibration_repair",
+      "report": "outputs/stage42_long_research/t50_switchability_calibration_repair_stage42.md",
+      "json": "outputs/stage42_long_research/t50_switchability_calibration_repair_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_iq_gate.md",
+      "verdict": "stage42_iq_t50_switchability_calibration_repair_pass",
+      "gates": "11/11",
+      "repair_supported": false,
+      "repair_verdict": "validation_selected_gain_harm_router_still_fails_to_capture_t50_headroom",
+      "best_trial_key": "baseline_plus_history_goal_neighbor__gain_only",
+      "best_trial_metric": {
+        "rows": 11538,
+        "all_improvement": 7.553223548839583e-07,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 7.553223548839583e-07,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 7.553223548839583e-07,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.005720228809152366,
+        "harm_over_fallback": -2.5870427159787825e-07
       },
       "claim_boundary": {
         "true_3d": false,

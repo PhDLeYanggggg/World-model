@@ -6443,3 +6443,16 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - conclusion: blocker audit only; no new deployable model and no t50/t100 context contribution claim.
 - Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE42_IP_T50_T100_SEQUENCE_GRAPH_BLOCKER_AUDIT:END -->
+
+<!-- STAGE42_IQ_T50_SWITCHABILITY_CALIBRATION_REPAIR:START -->
+## Stage42-IQ t50 Switchability Calibration Repair
+
+- source: `fresh_stage42_t50_switchability_calibration_repair`
+- role: formal repair attempt for Stage42-IP t50 under-switching using validation-selected gain/harm calibration.
+- gate: `11 / 11`; verdict `stage42_iq_t50_switchability_calibration_repair_pass`.
+- repair_supported: `False`; repair_verdict `validation_selected_gain_harm_router_still_fails_to_capture_t50_headroom`.
+- best_trial: `baseline_plus_history_goal_neighbor__gain_only`.
+- best test t50 / hard / easy: `0.000001` / `0.000001` / `-0.000000`.
+- conclusion: if unsupported, do not continue pure threshold tuning; next step needs changed supervision/source support/candidate family.
+- Boundary: raw-frame/dataset-local 2.5D; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE42_IQ_T50_SWITCHABILITY_CALIBRATION_REPAIR:END -->
