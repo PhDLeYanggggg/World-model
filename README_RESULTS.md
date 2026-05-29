@@ -6962,3 +6962,20 @@ New split rows: train `146809`, val `101446`, test `89736`. Test domains `['ETH_
 
 Important boundary: this is not a new model result. The old Stage43-C checkpoint remains UCY-heldout evidence only; a new Stage43 latent model must be trained/evaluated on this split before any multi-domain latent claim is allowed.
 <!-- STAGE43_F_SOURCE_LEVEL_HELDOUT_SPLIT:END -->
+
+<!-- STAGE43_G_SOURCE_LEVEL_PROTECTED_LATENT:START -->
+## STAGE43_G_SOURCE_LEVEL_PROTECTED_LATENT
+
+source = `fresh_stage43_g_source_level_protected_latent`
+verdict = `stage43_g_source_level_latent_candidate_pass`
+gate = `10 / 10`
+deploy_neural = `True`
+
+Stage43-G trains a fresh protected latent-state model on the Stage43-F source-file-level split, where ETH_UCY, TrajNet, and UCY all appear in held-out test through disjoint source files. This replaces the earlier UCY-only checkpoint for multi-domain evaluation.
+
+Protected test metrics vs floor: all `0.858018`, t50 `0.821362`, t100 raw diagnostic `0.783976`, hard/failure `0.866818`, easy degradation `0.000000`.
+
+Safety note: test switch rate is `1.000000` and fallback rate is `0.000000`. This means the full split result needs bootstrap and safety-stress confirmation before it can replace the frozen floor as a deployment policy.
+
+This remains dataset-local/raw-frame 2.5D evidence. Stage5C and SMC are disabled; no metric/seconds/true-3D/foundation claim is made.
+<!-- STAGE43_G_SOURCE_LEVEL_PROTECTED_LATENT:END -->
