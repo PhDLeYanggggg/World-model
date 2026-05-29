@@ -3805,3 +3805,18 @@ Bootstrap CI lows: all `0.159866`, t50 `0.130597`, hard/failure `0.160986`, easy
 
 Scope limitation: this proves UCY held-out dataset-local/raw-frame robustness only; multi-domain robustness remains a next gate.
 <!-- STAGE43_D_LATENT_STATE_ROBUSTNESS_AUDIT:END -->
+
+<!-- STAGE43_E_MULTIDOMAIN_LATENT_EVAL:START -->
+## STAGE43_E_MULTIDOMAIN_LATENT_EVAL
+
+source = `fresh_stage43_e_multidomain_latent_eval`
+verdict = `stage43_e_multidomain_latent_eval_blocker_mapped`
+gate = `8 / 8`
+multi_domain_latent_candidate = `False`
+
+Stage43-E evaluates the Stage43 protected latent-state checkpoint across the currently available train/val/test domains. It confirms UCY heldout support but refuses a multi-domain claim because ETH_UCY and TrajNet are not present as held-out test domains in the current Stage43 split.
+
+UCY heldout: all `0.163151`, t50 `0.136820`, t100 raw diagnostic `0.009722`, hard/failure `0.164765`, easy degradation `0.000000`.
+
+Missing heldout domains for a real multi-domain latent claim: `['ETH_UCY', 'TrajNet']`. Next required step is a source-level or scene-level split containing ETH_UCY, TrajNet, and UCY as held-out domains without test endpoint goal leakage.
+<!-- STAGE43_E_MULTIDOMAIN_LATENT_EVAL:END -->

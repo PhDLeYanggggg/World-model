@@ -36887,5 +36887,50 @@
     "report": "outputs/stage43_latent_state/stage43_latent_state_robustness_audit.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_e_multidomain_latent_eval": {
+    "source": "fresh_stage43_e_multidomain_latent_eval",
+    "verdict": "stage43_e_multidomain_latent_eval_blocker_mapped",
+    "gate": "8 / 8",
+    "multi_domain_latent_candidate": false,
+    "heldout_coverage": {
+      "all_domains_observed": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "train_domains": [
+        "ETH_UCY",
+        "TrajNet"
+      ],
+      "val_domains": [
+        "TrajNet"
+      ],
+      "test_domains": [
+        "UCY"
+      ],
+      "multi_domain_heldout_test": false,
+      "missing_heldout_domains": [
+        "ETH_UCY",
+        "TrajNet"
+      ],
+      "current_final_test_scope": "UCY-only heldout",
+      "required_next_split": "source-level or scene-level heldout split containing ETH_UCY, TrajNet, and UCY without test endpoint goal leakage"
+    },
+    "ucy_test_metrics": {
+      "rows": 66303,
+      "all_improvement_vs_floor": 0.16315114070871017,
+      "t50_improvement_vs_floor": 0.13681985271682773,
+      "t100_raw_frame_diagnostic_vs_floor": 0.00972247620289246,
+      "hard_failure_improvement_vs_floor": 0.16476528862434603,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.17011296623078895,
+      "harm_over_floor": -0.1711866706609726,
+      "mean_floor_err": 1.0492521524429321,
+      "mean_selected_err": 0.8780654668807983
+    },
+    "report": "outputs/stage43_latent_state/stage43_multidomain_latent_eval.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
