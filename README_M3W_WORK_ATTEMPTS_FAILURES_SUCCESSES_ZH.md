@@ -1635,3 +1635,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - current package locks the latest claim boundary: protected source-level full-waypoint row-cache + safe-switch/floor is supported; independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated, metric/time, true-3D and foundation claims remain blocked.
 - public README remains a human project introduction; detailed replay/provenance stays in internal result files.
 <!-- STAGE42_JU_CURRENT_REVIEWER_REPLAY_PACKAGE:END -->
+
+<!-- STAGE42_JV_SOURCE_SLICE_EVIDENCE_MATRIX:START -->
+## Stage42-JV Source Slice Evidence Matrix
+
+- source: `fresh_stage42_jv_source_slice_evidence_matrix_from_cached_verified_row_cache`
+- gate: `18 / 18`; verdict: `stage42_jv_source_slice_evidence_matrix_pass`.
+- cache rows/domains/source-files: `47458` / `2` / `3`.
+- all-slice ADE/FDE improvement: `0.291543` / `0.278634`; easy degradation `0.000000`.
+- domain metrics available for: `['TrajNet', 'UCY']`; horizon metrics available for: `['10', '100', '25', '50']`.
+- this strengthens the paper evidence table by decomposing protected row-cache/full-waypoint evidence across domain, horizon, source-file, hard/easy, switch/fallback, and waypoint-completeness slices.
+- boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_JV_SOURCE_SLICE_EVIDENCE_MATRIX:END -->

@@ -6392,7 +6392,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `f8a2e1d5a959c0c7416ff6f1d6a1d023a4ba012d0ec6edd804f29d3d8bf9ee8f`
+- policy hash: `50171f017c016460f417ab52d6fafd5894e6cd13ac5f6de998eed96176b9a5a4`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6406,7 +6406,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `f8a2e1d5a959c0c7416ff6f1d6a1d023a4ba012d0ec6edd804f29d3d8bf9ee8f`
+- policy hash: `50171f017c016460f417ab52d6fafd5894e6cd13ac5f6de998eed96176b9a5a4`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -6797,3 +6797,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - current package locks the latest claim boundary: protected source-level full-waypoint row-cache + safe-switch/floor is supported; independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated, metric/time, true-3D and foundation claims remain blocked.
 - public README remains a human project introduction; detailed replay/provenance stays in internal result files.
 <!-- STAGE42_JU_CURRENT_REVIEWER_REPLAY_PACKAGE:END -->
+
+<!-- STAGE42_JV_SOURCE_SLICE_EVIDENCE_MATRIX:START -->
+## Stage42-JV Source Slice Evidence Matrix
+
+- source: `fresh_stage42_jv_source_slice_evidence_matrix_from_cached_verified_row_cache`
+- gate: `18 / 18`; verdict: `stage42_jv_source_slice_evidence_matrix_pass`.
+- cache rows/domains/source-files: `47458` / `2` / `3`.
+- all-slice ADE/FDE improvement: `0.291543` / `0.278634`; easy degradation `0.000000`.
+- domain metrics available for: `['TrajNet', 'UCY']`; horizon metrics available for: `['10', '100', '25', '50']`.
+- this strengthens the paper evidence table by decomposing protected row-cache/full-waypoint evidence across domain, horizon, source-file, hard/easy, switch/fallback, and waypoint-completeness slices.
+- boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_JV_SOURCE_SLICE_EVIDENCE_MATRIX:END -->
