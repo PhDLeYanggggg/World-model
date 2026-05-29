@@ -3617,3 +3617,13 @@ The context contribution map is now explicit: baseline-family rollout context is
 - high_confidence_official_source_rows: `['Wild-Track']`; manual_only_rows: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`.
 - boundary: terms prefill only; no permission, no conversion, no evaluation, no metric/seconds overclaim, no Stage5C, no SMC.
 <!-- STAGE42_JP_LOCAL_CALIBRATED_SOURCE_TERMS_PREFILL:END -->
+
+<!-- STAGE42_JQ_LOCAL_CALIBRATED_SOURCE_TERMS_VALIDATION:START -->
+## Stage42-JQ Local Calibrated Source Terms Validation
+
+- source: `fresh_stage42_jq_local_calibrated_source_terms_validator`
+- gate: `14 / 14`; verdict: `stage42_jq_local_calibrated_source_terms_validation_pass`
+- datasets_validated: `3`; terms_accepted_rows: `0`; conversion_ready_rows: `0`.
+- blocked_rows: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`; ready_for_future_guarded_conversion: `[]`.
+- boundary: user terms validator only; no download, no conversion, no evaluation, no metric/seconds overclaim, no Stage5C, no SMC.
+<!-- STAGE42_JQ_LOCAL_CALIBRATED_SOURCE_TERMS_VALIDATION:END -->
