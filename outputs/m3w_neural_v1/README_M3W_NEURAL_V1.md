@@ -3820,3 +3820,19 @@ UCY heldout: all `0.163151`, t50 `0.136820`, t100 raw diagnostic `0.009722`, har
 
 Missing heldout domains for a real multi-domain latent claim: `['ETH_UCY', 'TrajNet']`. Next required step is a source-level or scene-level split containing ETH_UCY, TrajNet, and UCY as held-out domains without test endpoint goal leakage.
 <!-- STAGE43_E_MULTIDOMAIN_LATENT_EVAL:END -->
+
+<!-- STAGE43_F_SOURCE_LEVEL_HELDOUT_SPLIT:START -->
+## STAGE43_F_SOURCE_LEVEL_HELDOUT_SPLIT
+
+source = `fresh_stage43_f_source_level_heldout_split`
+verdict = `stage43_f_source_level_split_ready`
+gate = `11 / 11`
+
+Stage43-F builds the source-file-level heldout split required by Stage43-E. It reuses the existing Stage35/36/37 external artifacts as a data pool, but creates a new split manifest where ETH_UCY, TrajNet, and UCY all appear in test through disjoint source files.
+
+Pool rows `337991`, domains `{'ETH_UCY': 150798, 'TrajNet': 120890, 'UCY': 66303}`, row hash `9c8b4d51e0f7a1618dce410c7dd23fbf7f21da5de587d4ae021257775164c3c5`.
+
+New split rows: train `146809`, val `101446`, test `89736`. Test domains `['ETH_UCY', 'TrajNet', 'UCY']`.
+
+Important boundary: this is not a new model result. The old Stage43-C checkpoint remains UCY-heldout evidence only; a new Stage43 latent model must be trained/evaluated on this split before any multi-domain latent claim is allowed.
+<!-- STAGE43_F_SOURCE_LEVEL_HELDOUT_SPLIT:END -->

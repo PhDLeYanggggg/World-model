@@ -36932,5 +36932,166 @@
     "report": "outputs/stage43_latent_state/stage43_multidomain_latent_eval.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_f_source_level_heldout_split": {
+    "source": "fresh_stage43_f_source_level_heldout_split",
+    "verdict": "stage43_f_source_level_split_ready",
+    "gate": "11 / 11",
+    "pool": {
+      "rows": 337991,
+      "domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "domain_counts": {
+        "ETH_UCY": 150798,
+        "TrajNet": 120890,
+        "UCY": 66303
+      },
+      "source_count": 18,
+      "scene_count": 11,
+      "horizon_counts": {
+        "10": 105554,
+        "25": 93731,
+        "50": 81962,
+        "100": 56744
+      },
+      "row_hash": "9c8b4d51e0f7a1618dce410c7dd23fbf7f21da5de587d4ae021257775164c3c5"
+    },
+    "split_summary": {
+      "train": {
+        "rows": 146809,
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "domain_counts": {
+          "ETH_UCY": 63602,
+          "TrajNet": 73667,
+          "UCY": 9540
+        },
+        "scene_count": 5,
+        "source_count": 10,
+        "source_ids": [
+          "0707bfbb8ee14ad9",
+          "c91ec4d4c2c05a29",
+          "7f003983eabd111b",
+          "66f867bd19e9794b",
+          "f39e86fd7efe1907",
+          "92012cfde1f19158",
+          "9d741345f4a44fd1",
+          "7ab91f9389661560",
+          "483b8f0476235d5a",
+          "e869f8a217f3b3bd"
+        ],
+        "horizon_counts": {
+          "10": 46716,
+          "25": 41248,
+          "50": 35467,
+          "100": 23378
+        },
+        "hard_rows": 112218,
+        "failure_rows": 57390,
+        "easy_rows": 37837
+      },
+      "val": {
+        "rows": 101446,
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "domain_counts": {
+          "ETH_UCY": 16611,
+          "TrajNet": 37612,
+          "UCY": 47223
+        },
+        "scene_count": 4,
+        "source_count": 4,
+        "source_ids": [
+          "12b324ed892df46b",
+          "d2c1bb36b138e813",
+          "bcca94a8f7fc4be3",
+          "e39391d53f68771a"
+        ],
+        "horizon_counts": {
+          "10": 32706,
+          "25": 28703,
+          "50": 24741,
+          "100": 15296
+        },
+        "hard_rows": 73296,
+        "failure_rows": 35300,
+        "easy_rows": 31737
+      },
+      "test": {
+        "rows": 89736,
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "domain_counts": {
+          "ETH_UCY": 70585,
+          "TrajNet": 9611,
+          "UCY": 9540
+        },
+        "scene_count": 4,
+        "source_count": 4,
+        "source_ids": [
+          "603561046c16aa3a",
+          "7c5c7053cb97abc4",
+          "83b0417df499ccae",
+          "d9c8e12e56a017c8"
+        ],
+        "horizon_counts": {
+          "10": 26132,
+          "25": 23780,
+          "50": 21754,
+          "100": 18070
+        },
+        "hard_rows": 70119,
+        "failure_rows": 33797,
+        "easy_rows": 26927
+      }
+    },
+    "no_leakage": {
+      "source_file_disjoint": true,
+      "source_overlap_counts": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "scene_overlap_counts": {
+        "train_val": 1,
+        "train_test": 0,
+        "val_test": 1
+      },
+      "scene_overlap_allowed_for_source_level_split": true,
+      "row_duplicate_count": 0,
+      "row_overlap_pass": true,
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "central_velocity_input": false,
+      "test_endpoint_goals_constructed": false,
+      "test_statistics_normalization": false,
+      "split_granularity": "source_file_level"
+    },
+    "claim_boundary": {
+      "old_split_pool_reused_for_new_stage43_split": true,
+      "previous_stage43_checkpoint_not_official_for_new_split": true,
+      "new_training_or_evaluation_not_run": true,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "true_3d": false,
+      "foundation_world_model": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "report": "outputs/stage43_latent_state/stage43_source_level_heldout_split.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
