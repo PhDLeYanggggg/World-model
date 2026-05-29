@@ -6859,3 +6859,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - decision: do not promote scene/goal/neighbor/interaction as independent global main claims; next context attempt must use row-level source/horizon objectives under Stage37/teacher floor.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_KA_CONTEXT_SOURCE_HORIZON_OBJECTIVE_CONTRACT:END -->
+
+<!-- STAGE42_KB_T50_ROW_LEVEL_CONTEXT_OBJECTIVE:START -->
+## Stage42-KB t50 Row-Level Context Objective
+
+- source: `fresh_stage42_kb_t50_row_level_context_objective`
+- gate: `12 / 12`; verdict: `stage42_kb_t50_row_level_context_objective_pass`.
+- best trial: `baseline_plus_history` with `context_only` and margin `0.0`.
+- t50/all/hard/easy vs baseline-family: `0.00%` / `0.00%` / `0.00%` / `-0.00%`.
+- deployable_increment_supported: `False`; reason: `validation_safe_policy_under_switches`.
+- boundary: validation-selected t50 row-level experiment only; raw-frame/dataset-local 2.5D, no metric/seconds, no true-3D/foundation, no Stage5C, no SMC.
+<!-- STAGE42_KB_T50_ROW_LEVEL_CONTEXT_OBJECTIVE:END -->

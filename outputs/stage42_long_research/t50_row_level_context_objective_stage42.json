@@ -1,0 +1,540 @@
+{
+  "stage": "Stage42-KB t50 row-level context objective",
+  "source": "fresh_stage42_kb_t50_row_level_context_objective",
+  "generated_at_utc": "2026-05-29T08:54:57.587059+00:00",
+  "git_commit": "bd9e19c",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "input_hash": "e0cd67ab94778cf36df534fef2a5aefcba5f4addfd7408b81a11c992029bfd0d",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-KB 是 KA 后续 t50 row-level source/horizon objective fresh experiment，不是 metric 或 seconds-level 结果。",
+    "本实验训练 expected-gain switcher 来决定何时从 baseline-family protected control 切到 context proposal。",
+    "future waypoints / endpoints 只作为 supervised labels 或 evaluation labels，不作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "split_stats": {
+    "by_split": {
+      "train": {
+        "rows": 266745,
+        "domains": {
+          "ETH_UCY": 134695,
+          "TrajNet": 75287,
+          "UCY": 56763
+        },
+        "scenes": 9,
+        "sources": 13,
+        "t10": 83107,
+        "t25": 73802,
+        "t50": 64551,
+        "t100": 45285,
+        "hard": 198685,
+        "failure": 96981,
+        "easy": 80855
+      },
+      "val": {
+        "rows": 23788,
+        "domains": {
+          "ETH_UCY": 16103,
+          "TrajNet": 7685
+        },
+        "scenes": 2,
+        "sources": 2,
+        "t10": 7045,
+        "t25": 6459,
+        "t50": 5873,
+        "t100": 4411,
+        "hard": 21872,
+        "failure": 10450,
+        "easy": 4454
+      },
+      "test": {
+        "rows": 47458,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "scenes": 2,
+        "sources": 3,
+        "t10": 15402,
+        "t25": 13470,
+        "t50": 11538,
+        "t100": 7048,
+        "hard": 35076,
+        "failure": 19056,
+        "easy": 11192
+      }
+    },
+    "group_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_overlap_pass": true
+  },
+  "feature_sets": {
+    "context_only": 138,
+    "context_plus_baseline_family": 166,
+    "baseline_family_only": 35,
+    "all_source_features": 166
+  },
+  "candidate_count": 6,
+  "summary": {
+    "result_source_label": "fresh_t50_row_level_training_validation_selected",
+    "target_horizon": 50,
+    "trial_count": 72,
+    "best_trial": {
+      "candidate": "baseline_plus_history",
+      "feature_set": "context_only",
+      "min_abs_gain_margin": 0.0,
+      "rows": {
+        "train": 64551,
+        "train_fit": 64551,
+        "val": 5873,
+        "test": 11538
+      },
+      "validation_selection": {
+        "source": "validation_only",
+        "lambda": 10.0,
+        "pred_gain_threshold": 0.05432435305332178,
+        "candidate_count": 19,
+        "val_score": -0.021589795270329306,
+        "val_metric": {
+          "rows": 5873,
+          "all_improvement": -0.004055615254379363,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": -0.004055615254379363,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.004055615254379363,
+          "easy_degradation": 0.0029019538240047105,
+          "switch_rate": 0.025029797377830752,
+          "harm_over_fallback": 0.0010138216768453793
+        },
+        "test_threshold_tuning": false
+      },
+      "test_metric_vs_baseline_family": {
+        "rows": 11538,
+        "all_improvement": 0.0,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.0,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.0,
+        "easy_degradation": -0.0,
+        "switch_rate": 0.0020800832033281333,
+        "harm_over_fallback": 0.0
+      },
+      "oracle_metric_vs_baseline_family": {
+        "rows": 11538,
+        "all_improvement": 0.011984662784422562,
+        "t10_improvement": 0.0,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.011984662784422562,
+        "t100_raw_frame_diagnostic_improvement": 0.0,
+        "hard_failure_improvement": 0.011984662784422562,
+        "easy_degradation": -0.06486647056748762,
+        "switch_rate": 0.13529207834980067,
+        "harm_over_fallback": -0.004104847997912083
+      },
+      "switch_diagnostics": {
+        "switch_rate_test": 0.0020800832033281333,
+        "positive_gain_rate_test": 0.13529207834980067,
+        "switched_positive_rate": 0.0,
+        "switched_harm_rate": 0.0,
+        "missed_positive_rate": 0.13557408372416188,
+        "capture_rate": 0.0,
+        "mean_pred_gain_switched": 0.0587780004118106
+      }
+    },
+    "bootstrap": {
+      "t50": {
+        "low": 0.0,
+        "mid": 0.0,
+        "high": 0.0,
+        "n": 11538,
+        "bootstrap_n": 1000
+      },
+      "hard_failure_t50": {
+        "low": 0.0,
+        "mid": 0.0,
+        "high": 0.0,
+        "n": 11538,
+        "bootstrap_n": 1000
+      },
+      "easy_t50_degradation": {
+        "low": 0.0,
+        "mid": 0.0,
+        "high": 0.0,
+        "n": 3346,
+        "bootstrap_n": 1000
+      }
+    },
+    "deployable_increment_supported": false,
+    "failure_or_success_reason": "validation_safe_policy_under_switches",
+    "ka_contract_status": {
+      "source": "cached_verified",
+      "verdict": "stage42_ka_context_source_horizon_objective_contract_pass",
+      "t50_required_new_row_level_objective": true
+    },
+    "top_trials_by_t50": [
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "context_only",
+        "min_abs_gain_margin": 0.0,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.0020800832033281333,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.0020800832033281333,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.13557408372416188,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.0587780004118106
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "context_only",
+        "min_abs_gain_margin": 0.01,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.06266250650026,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.06266250650026,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.14433656957928803,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.07725531625161569
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "context_only",
+        "min_abs_gain_margin": 0.05,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.09395042468365401,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.09395042468365401,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.14932083413047637,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.11069228517542348
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "context_plus_baseline_family",
+        "min_abs_gain_margin": 0.0,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.00026001040041601667,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.00026001040041601667,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.1353272648461205,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.05590140973197815
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "context_plus_baseline_family",
+        "min_abs_gain_margin": 0.01,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.03674813659213035,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.03674813659213035,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.14045348209465539,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.07351307675665358
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "context_plus_baseline_family",
+        "min_abs_gain_margin": 0.05,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.08363667880048535,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.08363667880048535,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.14764021564362054,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.10653581132368604
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "baseline_family_only",
+        "min_abs_gain_margin": 0.0,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.000953371468192061,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.000953371468192061,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.13542118504381018,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.031984955836612323
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "baseline_family_only",
+        "min_abs_gain_margin": 0.01,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.11648465938637545,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.11648465938637545,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.15312929174023934,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.03437175661272977
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "baseline_family_only",
+        "min_abs_gain_margin": 0.05,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.019934130698561276,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.019934130698561276,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.13804386275203395,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.05642384664262342
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "all_source_features",
+        "min_abs_gain_margin": 0.0,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.00026001040041601667,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.00026001040041601667,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.1353272648461205,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.05590140973197815
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "all_source_features",
+        "min_abs_gain_margin": 0.01,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.03674813659213035,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.03674813659213035,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.14045348209465539,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.07351307675665358
+        }
+      },
+      {
+        "candidate": "baseline_plus_history",
+        "feature_set": "all_source_features",
+        "min_abs_gain_margin": 0.05,
+        "test_metric_vs_baseline_family": {
+          "rows": 11538,
+          "all_improvement": 0.0,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0,
+          "easy_degradation": -0.0,
+          "switch_rate": 0.08363667880048535,
+          "harm_over_fallback": 0.0
+        },
+        "switch_diagnostics": {
+          "switch_rate_test": 0.08363667880048535,
+          "positive_gain_rate_test": 0.13529207834980067,
+          "switched_positive_rate": 0.0,
+          "switched_harm_rate": 0.0,
+          "missed_positive_rate": 0.14764021564362054,
+          "capture_rate": 0.0,
+          "mean_pred_gain_switched": 0.10653581132368604
+        }
+      }
+    ]
+  },
+  "no_leakage": {
+    "future_endpoint_input_absent": true,
+    "future_waypoint_input_absent": true,
+    "future_labels_eval_only": true,
+    "central_velocity_absent": true,
+    "test_endpoint_goals_absent": true,
+    "test_threshold_tuning_absent": true,
+    "train_only_normalization": true,
+    "validation_only_model_selection": true,
+    "source_overlap_pass": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_kb_gate": {
+    "source": "fresh_stage42_kb_t50_row_level_context_objective",
+    "gates": {
+      "ka_contract_loaded": true,
+      "t50_row_level_trials_complete": true,
+      "validation_only_selection": true,
+      "t50_test_rows_present": true,
+      "oracle_headroom_measured": true,
+      "deployable_increment_supported_or_failure_reason_recorded": true,
+      "easy_safety_enforced": true,
+      "bootstrap_available": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_3d_foundation": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_kb_t50_row_level_context_objective_pass"
+  }
+}
