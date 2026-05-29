@@ -150,3 +150,22 @@ This section refines the paper evidence matrix by separating replay evidence str
 - ready targets: `0`.
 - No conversion/evaluation occurred; source/legal blockers remain until user confirmation and guarded conversion pass.
 <!-- STAGE42_IB_IA_BRIDGED_VALIDATOR_DRY_RUN:END -->
+
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:START -->
+## Stage42-JX Current Paper Evidence Refresh (matrix)
+
+- source: `fresh_stage42_jx_current_paper_evidence_refresh`
+- gate: `15 / 15`; verdict: `stage42_jx_current_paper_evidence_refresh_pass`.
+- current row-cache evidence: rows `47458`, domains `['TrajNet', 'UCY']`, horizons `['10', '25', '50', '100']`.
+- ADE all/t50/t100raw/hard: `29.15%` / `24.70%` / `19.63%` / `28.73%`; easy degradation `0.00%`.
+- teacher/floor: fallback rows `14103`, fallback exact floor rate `1.000000`, floor-free neural deployable `False`.
+- current paper claim: protected source-level full-waypoint row-cache plus safe-switch/teacher-floor necessity.
+- blocked: independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated/floor-free neural, metric/seconds, true-3D, foundation, Stage5C, and SMC claims.
+
+| requirement | refreshed status | current claim | blocked overclaim |
+| --- | --- | --- | --- |
+| Source/domain/horizon evidence | pass with raw-frame boundary | protected row-cache positive across current domains/horizons | broad source-level generalization without new legal sources |
+| Teacher/floor evidence | pass | floor required for deployability | global floor-free neural deployment |
+| Context modules | mixed/blocked | auxiliary or diagnostic evidence only | independent main contribution |
+| Time/metric calibration | blocked globally | dataset-local/raw-frame only | metric/seconds-level claim |
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->

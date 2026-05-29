@@ -1659,3 +1659,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: keep the teacher/floor globally; only guarded t50 relaxation is supported, and floor-free neural deployment remains forbidden.
 - boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_JW_TEACHER_FLOOR_NECESSITY_SLICE_AUDIT:END -->
+
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:START -->
+## Stage42-JX Current Paper Evidence Refresh
+
+- source: `fresh_stage42_jx_current_paper_evidence_refresh`
+- gate: `15 / 15`; verdict: `stage42_jx_current_paper_evidence_refresh_pass`.
+- current evidence rows/domains/horizons: `47458` / `['TrajNet', 'UCY']` / `['10', '25', '50', '100']`.
+- ADE all/t50/t100raw/hard: `29.15%` / `24.70%` / `19.63%` / `28.73%`; easy `0.00%`.
+- teacher/floor necessity: fallback rows `14103`, exact-floor rate `1.000000`, global floor-free neural deployable `False`.
+- README-facing decision: public GitHub README stays project-owner style; detailed staged evidence remains internal.
+- paper boundary: protected dataset-local/raw-frame 2.5D only; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->

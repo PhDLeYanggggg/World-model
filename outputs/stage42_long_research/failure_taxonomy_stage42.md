@@ -717,3 +717,22 @@ Remaining weak horizons are attributed to low-margin ambiguity plus source/legal
 - Result source label: `fresh_run` synthesis from already-produced Stage42-BY/BZ/EN/GT artifacts; no new training, no new download, no new conversion, no test threshold tuning.
 - Verification after implementation: focused pytest passed; full suite passed with `929 passed`.
 <!-- STAGE42_GU_FLOOR_RELAXATION_SAFETY_REFRESH:END -->
+
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:START -->
+## Stage42-JX Current Paper Evidence Refresh (failure)
+
+- source: `fresh_stage42_jx_current_paper_evidence_refresh`
+- gate: `15 / 15`; verdict: `stage42_jx_current_paper_evidence_refresh_pass`.
+- current row-cache evidence: rows `47458`, domains `['TrajNet', 'UCY']`, horizons `['10', '25', '50', '100']`.
+- ADE all/t50/t100raw/hard: `29.15%` / `24.70%` / `19.63%` / `28.73%`; easy degradation `0.00%`.
+- teacher/floor: fallback rows `14103`, fallback exact floor rate `1.000000`, floor-free neural deployable `False`.
+- current paper claim: protected source-level full-waypoint row-cache plus safe-switch/teacher-floor necessity.
+- blocked: independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated/floor-free neural, metric/seconds, true-3D, foundation, Stage5C, and SMC claims.
+
+### Updated Failure Taxonomy
+
+- Source/file coverage is now decomposed, but broader source-diversity remains limited by legal/source-term blockers.
+- Teacher/floor dependence is confirmed as a mechanism, not just a conservative implementation choice.
+- Independent scene/goal, neighbor/interaction, JEPA, and Transformer main claims remain unsupported under the current evidence.
+- Metric/time claims remain blocked by global calibration status.
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->

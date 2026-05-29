@@ -1290,3 +1290,21 @@ The package is paper-candidate evidence for protected 2.5D world-state modeling,
 - t100 remains raw-frame diagnostic; this is not metric/seconds-level evidence.
 - Stage5C remains false; SMC remains false.
 <!-- STAGE42_HS_T100_EASY_GUARD_FREEZE:END -->
+
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:START -->
+## Stage42-JX Current Paper Evidence Refresh (gap)
+
+- source: `fresh_stage42_jx_current_paper_evidence_refresh`
+- gate: `15 / 15`; verdict: `stage42_jx_current_paper_evidence_refresh_pass`.
+- current row-cache evidence: rows `47458`, domains `['TrajNet', 'UCY']`, horizons `['10', '25', '50', '100']`.
+- ADE all/t50/t100raw/hard: `29.15%` / `24.70%` / `19.63%` / `28.73%`; easy degradation `0.00%`.
+- teacher/floor: fallback rows `14103`, fallback exact floor rate `1.000000`, floor-free neural deployable `False`.
+- current paper claim: protected source-level full-waypoint row-cache plus safe-switch/teacher-floor necessity.
+- blocked: independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated/floor-free neural, metric/seconds, true-3D, foundation, Stage5C, and SMC claims.
+
+### Updated A-Journal Gap
+
+- The strongest paper claim is now a protected source-slice/full-waypoint 2.5D claim with explicit floor necessity.
+- To move beyond this, the shortest path is legal independent source expansion plus a new context/latent mechanism that beats the baseline-family floor without relying on test tuning.
+- Do not promote Stage5C, SMC, metric/seconds, true-3D, foundation, or floor-free neural language.
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->

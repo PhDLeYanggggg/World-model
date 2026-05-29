@@ -953,3 +953,23 @@ Ablation claims should follow Stage42-FU: history/domain expert/safe switch/teac
 - Result source label: `fresh_run` synthesis from already-produced Stage42-BY/BZ/EN/GT artifacts; no new training, no new download, no new conversion, no test threshold tuning.
 - Verification after implementation: focused pytest passed; full suite passed with `929 passed`.
 <!-- STAGE42_GU_FLOOR_RELAXATION_SAFETY_REFRESH:END -->
+
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:START -->
+## Stage42-JX Current Paper Evidence Refresh (ablations)
+
+- source: `fresh_stage42_jx_current_paper_evidence_refresh`
+- gate: `15 / 15`; verdict: `stage42_jx_current_paper_evidence_refresh_pass`.
+- current row-cache evidence: rows `47458`, domains `['TrajNet', 'UCY']`, horizons `['10', '25', '50', '100']`.
+- ADE all/t50/t100raw/hard: `29.15%` / `24.70%` / `19.63%` / `28.73%`; easy degradation `0.00%`.
+- teacher/floor: fallback rows `14103`, fallback exact floor rate `1.000000`, floor-free neural deployable `False`.
+- current paper claim: protected source-level full-waypoint row-cache plus safe-switch/teacher-floor necessity.
+- blocked: independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated/floor-free neural, metric/seconds, true-3D, foundation, Stage5C, and SMC claims.
+
+| ablation / mechanism | current status | paper use | boundary |
+| --- | --- | --- | --- |
+| Stage37/teacher floor | necessary | safety mechanism | global removal forbidden |
+| safe switch | supported | deployability mechanism | fallback exact-floor rows remain |
+| scene/goal context | blocked as independent main claim | diagnostic/auxiliary only | current protocol does not beat baseline-family control |
+| neighbor/interaction context | blocked as independent main claim | diagnostic/auxiliary only | current protocol does not support standalone contribution |
+| JEPA / Transformer | blocked as main contribution | negative/mixed evidence | no downstream main lift claim |
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->

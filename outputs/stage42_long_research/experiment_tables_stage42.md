@@ -891,3 +891,20 @@ Experiment tables should include FX requirement coverage and FY weak-horizon dec
 - broad source-level generalization claim allowed: `False`.
 - Claim boundary: major-source support only; not broad source-level generalization, not global floor removal, not floor-free neural, not metric/seconds-level, not Stage5C, not SMC.
 <!-- STAGE42_GV_FLOOR_RELAXATION_SOURCE_ROBUSTNESS:END -->
+
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:START -->
+## Stage42-JX Current Paper Evidence Refresh (experiments)
+
+- source: `fresh_stage42_jx_current_paper_evidence_refresh`
+- gate: `15 / 15`; verdict: `stage42_jx_current_paper_evidence_refresh_pass`.
+- current row-cache evidence: rows `47458`, domains `['TrajNet', 'UCY']`, horizons `['10', '25', '50', '100']`.
+- ADE all/t50/t100raw/hard: `29.15%` / `24.70%` / `19.63%` / `28.73%`; easy degradation `0.00%`.
+- teacher/floor: fallback rows `14103`, fallback exact floor rate `1.000000`, floor-free neural deployable `False`.
+- current paper claim: protected source-level full-waypoint row-cache plus safe-switch/teacher-floor necessity.
+- blocked: independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated/floor-free neural, metric/seconds, true-3D, foundation, Stage5C, and SMC claims.
+
+| evidence | source | rows | all ADE | t50 ADE | t100raw ADE | hard ADE | easy degradation | role |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Current protected row-cache source slices | `JV cached-verified row cache` | 47458 | 29.15% | 24.70% | 19.63% | 28.73% | 0.00% | paper-facing protected evidence |
+| Teacher/floor necessity | `JW fresh synthesis` | 47458 | n/a | 28.97% | n/a | n/a | safe | deployment boundary |
+<!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->
