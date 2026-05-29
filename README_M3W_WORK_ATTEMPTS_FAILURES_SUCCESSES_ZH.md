@@ -1350,7 +1350,6 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - source: `fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy`
 - role: turns the Stage42-IU TrajNet+UCY source-level policy package into a single row-level merged cache with bootstrap.
 - gate: `20 / 20`; verdict `stage42_iv_source_level_row_cache_integration_pass`.
-- replay: fresh on current HEAD `e043235`; focused pytest `6 passed`; full pytest `1193 passed`.
 - rows: `47458`; domains: `{'TrajNet': 37918, 'UCY': 9540}`.
 - ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
 - easy degradation: `0.000000`.
@@ -1365,7 +1364,6 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - source: `fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache`
 - role: mechanism audit over the Stage42-IV single merged row-cache, not a new metric-only summary.
 - gate: `18 / 18`; verdict `stage42_iw_row_cache_mechanism_audit_pass`.
-- replay: fresh on current HEAD `e043235`; focused pytest `6 passed`; full pytest `1193 passed`.
 - rows: `47458`; domain rows: `{'TrajNet': 37918, 'UCY': 9540}`.
 - ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
 - easy degradation: `0.000000`; switch rows `33355`; fallback exact floor rate `1.000000`.
@@ -1626,3 +1624,14 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - decision: current paper wording should center protected row-cache/full-waypoint + safe-switch/teacher-floor; keep scene/goal, neighbor/interaction, JEPA, Transformer, and sequence/graph t50/t100 as blocked or auxiliary.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_JT_CURRENT_MODULE_CLAIM_REFRESH:END -->
+
+<!-- STAGE42_JU_CURRENT_REVIEWER_REPLAY_PACKAGE:START -->
+## Stage42-JU Current Reviewer Replay Package
+
+- source: `fresh_stage42_ju_current_reviewer_replay_package`
+- gate: `17 / 17`; verdict: `stage42_ju_current_reviewer_replay_package_pass`.
+- replay commands: `outputs/stage42_long_research/current_reviewer_replay_commands_stage42.sh`.
+- row-cache ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
+- current package locks the latest claim boundary: protected source-level full-waypoint row-cache + safe-switch/floor is supported; independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated, metric/time, true-3D and foundation claims remain blocked.
+- public README remains a human project introduction; detailed replay/provenance stays in internal result files.
+<!-- STAGE42_JU_CURRENT_REVIEWER_REPLAY_PACKAGE:END -->

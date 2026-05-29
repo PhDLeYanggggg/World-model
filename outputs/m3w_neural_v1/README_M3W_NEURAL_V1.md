@@ -3266,7 +3266,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `20df05705d9038ed8c3ba8b05128ca4b211aacf4b3ccbb6ea2d8f8cdb5a93ec5`
+- policy hash: `f8a2e1d5a959c0c7416ff6f1d6a1d023a4ba012d0ec6edd804f29d3d8bf9ee8f`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -3280,7 +3280,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `20df05705d9038ed8c3ba8b05128ca4b211aacf4b3ccbb6ea2d8f8cdb5a93ec5`
+- policy hash: `f8a2e1d5a959c0c7416ff6f1d6a1d023a4ba012d0ec6edd804f29d3d8bf9ee8f`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -3386,7 +3386,6 @@ The context contribution map is now explicit: baseline-family rollout context is
 - source: `fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy`
 - role: turns the Stage42-IU TrajNet+UCY source-level policy package into a single row-level merged cache with bootstrap.
 - gate: `20 / 20`; verdict `stage42_iv_source_level_row_cache_integration_pass`.
-- replay: fresh on current HEAD `e043235`; focused pytest `6 passed`; full pytest `1193 passed`.
 - rows: `47458`; domains: `{'TrajNet': 37918, 'UCY': 9540}`.
 - ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
 - easy degradation: `0.000000`.
@@ -3401,7 +3400,6 @@ The context contribution map is now explicit: baseline-family rollout context is
 - source: `fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache`
 - role: mechanism audit over the Stage42-IV single merged row-cache, not a new metric-only summary.
 - gate: `18 / 18`; verdict `stage42_iw_row_cache_mechanism_audit_pass`.
-- replay: fresh on current HEAD `e043235`; focused pytest `6 passed`; full pytest `1193 passed`.
 - rows: `47458`; domain rows: `{'TrajNet': 37918, 'UCY': 9540}`.
 - ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
 - easy degradation: `0.000000`; switch rows `33355`; fallback exact floor rate `1.000000`.
@@ -3662,3 +3660,14 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: current paper wording should center protected row-cache/full-waypoint + safe-switch/teacher-floor; keep scene/goal, neighbor/interaction, JEPA, Transformer, and sequence/graph t50/t100 as blocked or auxiliary.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
 <!-- STAGE42_JT_CURRENT_MODULE_CLAIM_REFRESH:END -->
+
+<!-- STAGE42_JU_CURRENT_REVIEWER_REPLAY_PACKAGE:START -->
+## Stage42-JU Current Reviewer Replay Package
+
+- source: `fresh_stage42_ju_current_reviewer_replay_package`
+- gate: `17 / 17`; verdict: `stage42_ju_current_reviewer_replay_package_pass`.
+- replay commands: `outputs/stage42_long_research/current_reviewer_replay_commands_stage42.sh`.
+- row-cache ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
+- current package locks the latest claim boundary: protected source-level full-waypoint row-cache + safe-switch/floor is supported; independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated, metric/time, true-3D and foundation claims remain blocked.
+- public README remains a human project introduction; detailed replay/provenance stays in internal result files.
+<!-- STAGE42_JU_CURRENT_REVIEWER_REPLAY_PACKAGE:END -->

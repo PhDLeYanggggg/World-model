@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_jt_current_module_claim_refresh",
-  "current_verdict": "stage42_jt_current_module_claim_refresh_pass",
+  "current_stage": "stage42_il_t50_ucy_specialist_claim_audit",
+  "current_verdict": "stage42_il_ucy_specialist_claim_audit_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -2983,7 +2983,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_current_module_claim_refresh.py",
+  "last_successful_command": "python run_stage42_current_reviewer_replay_package.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -3586,7 +3586,11 @@
     "outputs/stage42_long_research/stage42_stage_jb_gate.md",
     "outputs/stage42_long_research/current_module_claim_refresh_stage42.md",
     "outputs/stage42_long_research/current_module_claim_refresh_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_jt_gate.md"
+    "outputs/stage42_long_research/stage42_stage_jt_gate.md",
+    "outputs/stage42_long_research/current_reviewer_replay_package_stage42.md",
+    "outputs/stage42_long_research/current_reviewer_replay_package_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_ju_gate.md",
+    "outputs/stage42_long_research/current_reviewer_replay_commands_stage42.sh"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18519,7 +18523,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "6f4147debe0cd8464412b1eaaa08807b1c0d1d516cd8a7f748b4bc16cfc0a6d3",
+      "policy_hash": "f8a2e1d5a959c0c7416ff6f1d6a1d023a4ba012d0ec6edd804f29d3d8bf9ee8f",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -19367,6 +19371,126 @@
           "switch_rate": -0.07252728728559987,
           "harm_over_fallback": 0.01933577492187434
         }
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_ju_current_reviewer_replay_package": {
+      "source": "fresh_stage42_ju_current_reviewer_replay_package",
+      "generated_at_utc": "2026-05-29T05:50:17.565367+00:00",
+      "report": "outputs/stage42_long_research/current_reviewer_replay_package_stage42.md",
+      "json": "outputs/stage42_long_research/current_reviewer_replay_package_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_ju_gate.md",
+      "commands_file": "outputs/stage42_long_research/current_reviewer_replay_commands_stage42.sh",
+      "verdict": "stage42_ju_current_reviewer_replay_package_pass",
+      "gates": "17/17",
+      "package_hash": "7afc573dd16122fbaf35c94d8ea73540aba4bb014c55aa26bde97bb18d66d50b",
+      "summary": {
+        "row_cache": {
+          "rows": 47458,
+          "domains": {
+            "TrajNet": 37918,
+            "UCY": 9540
+          },
+          "ade_all": 0.2915425184910424,
+          "ade_t50": 0.2470453241712095,
+          "ade_t100_raw_frame_diagnostic": 0.19633495524496603,
+          "ade_hard_failure": 0.2872732875159937,
+          "easy_degradation": 0.0,
+          "bootstrap_t50_ci": [
+            0.24292968809604645,
+            0.25138823240995406
+          ]
+        },
+        "safe_switch": {
+          "switch_rows": 33355,
+          "fallback_rows": 14103,
+          "switch_rate": 0.7028319777487463,
+          "fallback_exact_floor_rate": 1.0,
+          "hard_failure_switch_rate": 0.7296442011631885,
+          "easy_switch_rate": 0.41261615439599714
+        },
+        "waypoint_shape": {
+          "rows": 47458,
+          "waypoint_count": 4,
+          "rows_with_any_waypoint": 47458,
+          "rows_with_full_waypoints": 32056,
+          "rows_with_at_least_two_waypoints": 47458,
+          "full_waypoint_rate": 0.6754604070968013,
+          "mean_valid_waypoints_per_row": 3.3509208141936027,
+          "mean_raw_residual_from_linear_bridge": 0.10409730351609679,
+          "median_raw_residual_from_linear_bridge": 0.06988248934302863,
+          "p90_raw_residual_from_linear_bridge": 0.2777690561132196,
+          "mean_turn_angle_radians": 0.7327477683713391,
+          "note": "Residuals and turn angles are dataset-local/raw-frame shape diagnostics, not metric distances or seconds-level dynamics."
+        },
+        "ao": {
+          "component_evidence_verdict": "stage42_ao_context_components_not_independently_supported",
+          "positive_standalone_context_variants": [
+            "history_only",
+            "motion_goal_context"
+          ],
+          "positive_incremental_context_variants": [],
+          "baseline_family_only": {
+            "rows": 47458,
+            "all_improvement": 0.2877734037648393,
+            "t10_improvement": 0.47618706265543653,
+            "t25_improvement": 0.31611808582214795,
+            "t50_improvement": 0.31542535139554606,
+            "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+            "hard_failure_improvement": 0.2758122379367457,
+            "easy_degradation": -0.32418582524688455,
+            "switch_rate": 0.6606262379367019,
+            "harm_over_fallback": -0.13253112673847436
+          },
+          "full_minus_baseline_family_only": {
+            "all_improvement": -0.041985018166175725,
+            "t50_improvement": -0.09525464052523891,
+            "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+            "hard_failure_improvement": -0.03831835955182494,
+            "easy_degradation": 0.06755852549095309,
+            "switch_rate": -0.07252728728559987,
+            "harm_over_fallback": 0.01933577492187434
+          }
+        },
+        "js": {
+          "narrow_positive_horizon_routers": [
+            "h10_history_only",
+            "h10_motion_goal_context",
+            "h25_baseline_plus_history_goal_neighbor"
+          ],
+          "t50_diagnosis": "router_under_switches_despite_headroom",
+          "t100_diagnosis": "weak_predictive_signal_or_baseline_family_dominance",
+          "decision": "close_current_source_sequence_graph_gain_harm_family_for_t50_t100_main_claim"
+        },
+        "allowed_claims": [
+          "protected source-level full-waypoint row-cache is positive on TrajNet+UCY under safe-switch/floor protection",
+          "safe-switch and teacher/floor fallback are directly supported by row-cache mechanism evidence",
+          "baseline-family rollout context remains the strongest current source-level driver",
+          "history-only and motion-goal-context have standalone positive signal under AO, but only as bounded evidence"
+        ],
+        "blocked_independent_claims": [
+          "incremental_context_after_baseline_family",
+          "scene_goal_independent_main_claim",
+          "neighbor_interaction_independent_main_claim",
+          "sequence_graph_t50_t100_independent_main_claim",
+          "JEPA_downstream_main_claim",
+          "Transformer_independent_main_claim",
+          "ungated_full_waypoint_deployment",
+          "metric_seconds_or_true3d_claim"
+        ],
+        "source_domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "mechanism_rows": 47458,
+        "package_interpretation": "Current replay supports protected source-level full-waypoint row-cache evidence with safe-switch/floor. It explicitly blocks independent scene/goal, neighbor/interaction, JEPA, Transformer, ungated, metric/time, true-3D and foundation claims."
       },
       "claim_boundary": {
         "true_3d": false,
@@ -34889,7 +35013,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "6f045a042c5821f0a26e69644c28645d219a63419e868b9566cd55b0bb25be20",
+      "package_hash": "81112adb886e9c1ef143a6314d530f2786a72d0a2c06f6add2e9c84fc20a7d6d",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -34970,8 +35094,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "6f4147debe0cd8464412b1eaaa08807b1c0d1d516cd8a7f748b4bc16cfc0a6d3",
-        "policy_artifact_sha256": "146d97c9ffb5476f35b74d269db2335f48fe4f299654c6aa130107a1e184d3a5",
+        "policy_hash": "f8a2e1d5a959c0c7416ff6f1d6a1d023a4ba012d0ec6edd804f29d3d8bf9ee8f",
+        "policy_artifact_sha256": "9b442edb8168b4a6b10c449d9ff348031bd094996f26c988cd0780d33bf67ff7",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -35455,5 +35579,5 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T05:39:49.906879+00:00"
+  "last_updated_utc": "2026-05-29T05:50:17.565367+00:00"
 }
