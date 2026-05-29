@@ -1,0 +1,157 @@
+{
+  "stage": "Stage42-JR",
+  "source": "fresh_stage42_jr_source_context_fresh_replay",
+  "generated_at_utc": "2026-05-29T03:51:38.863806+00:00",
+  "git_commit": "05de10c",
+  "input_hash": "48507e74c9c2446619a101aec89152c8c905b0b16cd0527ddf9f1d83bf74ac36",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-JR consolidates fresh AR/AS source-level sequence and graph context replay evidence.",
+    "Negative sequence/graph residual results are not hidden or packaged as a contribution.",
+    "future endpoints / waypoints are labels/evaluation only, not inference input.",
+    "No central velocity, no test endpoint goals, no test threshold tuning.",
+    "No metric/seconds claim, no Stage5C execution, no SMC."
+  ],
+  "inputs": {
+    "sequence_context_json": "outputs/stage42_long_research/source_level_sequence_context_stage42.json",
+    "graph_context_json": "outputs/stage42_long_research/source_level_graph_context_stage42.json",
+    "sequence_generated_at_utc": "2026-05-29T02:59:54.364940+00:00",
+    "graph_generated_at_utc": "2026-05-29T02:18:16.301365+00:00"
+  },
+  "summary": {
+    "source": "fresh_stage42_jr_source_context_fresh_replay",
+    "sequence_report_verdict": "stage42_ar_sequence_context_evidence_partial_or_negative",
+    "graph_report_verdict": "stage42_as_graph_context_evidence_partial_or_negative",
+    "sequence_positive_variants": [],
+    "graph_positive_variants": [],
+    "sequence_context_supported": false,
+    "graph_context_supported": false,
+    "best_sequence_all_delta": -0.02445814513218969,
+    "best_sequence_t50_delta": -0.08305738715518596,
+    "best_sequence_hard_delta": -0.02839805003186735,
+    "best_graph_all_delta": -0.0230085146797967,
+    "best_graph_t50_delta": -0.08575216658053153,
+    "best_graph_hard_delta": -0.026234695463867364,
+    "baseline_family_all_improvement": 0.2877734037648393,
+    "baseline_family_t50_improvement": 0.31542535139554606,
+    "baseline_family_hard_failure_improvement": 0.2758122379367457,
+    "decision": "sequence_and_graph_context_negative_keep_baseline_family_rollout_context_as_dominant_mechanism",
+    "next_repair_hypothesis": "Switch from residual full-waypoint deltas to gain/harm/intervention or source-slice objectives before claiming independent scene/goal/interaction contribution."
+  },
+  "sequence_deltas": [
+    {
+      "variant": "sequence_history",
+      "all_delta": -0.02445814513218969,
+      "t50_delta": -0.08305738715518596,
+      "t100_raw_delta": -0.0011139647816026388,
+      "hard_failure_delta": -0.02839805003186735,
+      "easy_delta": 0.014357590788434793,
+      "positive": false,
+      "interpretation": "sequence_history does not improve over baseline-family-only by > 0.01; sequence context contribution not proven."
+    },
+    {
+      "variant": "sequence_goal_neighbor_no_history",
+      "all_delta": -0.026473376404601456,
+      "t50_delta": -0.09213611361912277,
+      "t100_raw_delta": -0.0016026235490796958,
+      "hard_failure_delta": -0.0290724430701631,
+      "easy_delta": 0.038166291089136384,
+      "positive": false,
+      "interpretation": "sequence_goal_neighbor_no_history does not improve over baseline-family-only by > 0.01; sequence context contribution not proven."
+    },
+    {
+      "variant": "sequence_history_goal_neighbor",
+      "all_delta": -0.08752342984606587,
+      "t50_delta": -0.08752850749136187,
+      "t100_raw_delta": -0.002837816590698261,
+      "hard_failure_delta": -0.0960877636730385,
+      "easy_delta": 0.05374506144588409,
+      "positive": false,
+      "interpretation": "sequence_history_goal_neighbor does not improve over baseline-family-only by > 0.01; sequence context contribution not proven."
+    }
+  ],
+  "graph_deltas": [
+    {
+      "variant": "graph_only",
+      "all_delta": -0.023503234582665122,
+      "t50_delta": -0.08575216658053153,
+      "t100_raw_delta": -0.0001015377613123869,
+      "hard_failure_delta": -0.02700224862242606,
+      "easy_delta": 0.006647677497963245,
+      "positive": false,
+      "interpretation": "graph_only does not improve over baseline-family-only by > 0.01; graph/interaction contribution not proven."
+    },
+    {
+      "variant": "graph_goal",
+      "all_delta": -0.0231226737841157,
+      "t50_delta": -0.08639010006006842,
+      "t100_raw_delta": -0.0002458977984253208,
+      "hard_failure_delta": -0.026340548800350083,
+      "easy_delta": 0.007873232422379028,
+      "positive": false,
+      "interpretation": "graph_goal does not improve over baseline-family-only by > 0.01; graph/interaction contribution not proven."
+    },
+    {
+      "variant": "graph_history_goal",
+      "all_delta": -0.0230085146797967,
+      "t50_delta": -0.08641736345762652,
+      "t100_raw_delta": -0.000507012213513347,
+      "hard_failure_delta": -0.026234695463867364,
+      "easy_delta": 0.007797488434296396,
+      "positive": false,
+      "interpretation": "graph_history_goal does not improve over baseline-family-only by > 0.01; graph/interaction contribution not proven."
+    }
+  ],
+  "failure_taxonomy": {
+    "dominant_success_mechanism": "baseline_family_rollout_context",
+    "sequence_failure": "temporal history residuals reduced all/t50/hard improvement versus the protected baseline-family first stage.",
+    "graph_failure": "current-frame kNN graph and goal/history graph variants reduced all/t50/hard improvement versus the protected baseline-family first stage.",
+    "likely_cause": "The current residual-delta objective rewards small unsafe corrections after a strong protected rollout floor; it does not learn switchability/gain/harm enough to capture independent interaction value.",
+    "what_not_to_claim": [
+      "sequence context is an independent main contribution",
+      "graph/interaction context is an independent main contribution",
+      "JEPA/Transformer/scene context is proven by these AR/AS runs"
+    ]
+  },
+  "no_leakage": {
+    "sequence_no_leakage_pass": true,
+    "graph_no_leakage_pass": true,
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity": false,
+    "test_endpoint_goals": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "sequence_context_main_claim": false,
+    "graph_interaction_main_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_jr_gate": {
+    "source": "fresh_run",
+    "gates": {
+      "sequence_report_loaded": true,
+      "graph_report_loaded": true,
+      "sequence_fresh_negative_recorded": true,
+      "graph_fresh_negative_recorded": true,
+      "sequence_core_deltas_nonpositive": true,
+      "graph_core_deltas_nonpositive": true,
+      "baseline_family_positive": true,
+      "no_leakage_pass": true,
+      "negative_result_not_overclaimed": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage42_jr_source_context_negative_evidence_pass"
+  }
+}

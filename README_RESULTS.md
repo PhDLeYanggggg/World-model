@@ -6392,7 +6392,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2`
+- policy hash: `7b0887cdbb1b211ad4f7d0cc51d78119977820f6233e4860517891ea370d8010`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6406,7 +6406,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `9a73915ec3a74378def61d3a168f2d18c3fe0d6911fda1fcd971c8ada55ee1b2`
+- policy hash: `7b0887cdbb1b211ad4f7d0cc51d78119977820f6233e4860517891ea370d8010`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -6505,7 +6505,6 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - positive domains all/t50/t100raw/hard: `['TrajNet', 'UCY']` / `['TrajNet', 'UCY']` / `['TrajNet', 'UCY']` / `['TrajNet', 'UCY']`.
 - limitation: no single merged row-cache artifact yet; this is source-level policy-package composition evidence.
 - boundary: protected dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no Stage5C, no SMC.
-- verification: focused pytest `3 passed in 0.91s`; related pytest `11 passed in 0.98s`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1113 passed in 841.55s (0:14:01)`.
 <!-- STAGE42_IU_SOURCE_LEVEL_UCY_FULL_WAYPOINT_INTEGRATION:END -->
 <!-- STAGE42_IV_SOURCE_LEVEL_ROW_CACHE_INTEGRATION:START -->
 ## Stage42-IV Source-Level Row-Cache Full-Waypoint Integration
@@ -6519,7 +6518,6 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - bootstrap t50 CI: `[0.242930, 0.251388]`; bootstrap_n `2000`.
 - limitation: cache is local and not committed; claims remain dataset-local/raw-frame 2.5D.
 - boundary: no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
-- verification: focused pytest `3 passed in 53.29s`; related pytest `14 passed in 54.49s`; full pytest `.venv-pytorch/bin/python -m pytest tests -> 1116 passed in 841.57s (0:14:01)`.
 <!-- STAGE42_IV_SOURCE_LEVEL_ROW_CACHE_INTEGRATION:END -->
 
 <!-- STAGE42_IW_ROW_CACHE_MECHANISM_AUDIT:START -->
@@ -6753,3 +6751,14 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - blocked_rows: `['Town-Center', 'Wild-Track', 'PETS-2009-S2L1']`; ready_for_future_guarded_conversion: `[]`.
 - boundary: user terms validator only; no download, no conversion, no evaluation, no metric/seconds overclaim, no Stage5C, no SMC.
 <!-- STAGE42_JQ_LOCAL_CALIBRATED_SOURCE_TERMS_VALIDATION:END -->
+
+<!-- STAGE42_JR_SOURCE_CONTEXT_FRESH_REPLAY:START -->
+## Stage42-JR Source Context Fresh Replay
+
+- source: `fresh_stage42_jr_source_context_fresh_replay`
+- gate: `12 / 12`; verdict: `stage42_jr_source_context_negative_evidence_pass`
+- baseline-family all/t50/hard remains positive: `0.2878` / `0.3154` / `0.2758`.
+- sequence context did not add lift: best all/t50/hard delta `-0.0245` / `-0.0831` / `-0.0284`.
+- graph context did not add lift: best all/t50/hard delta `-0.0230` / `-0.0858` / `-0.0262`.
+- boundary: negative result preserved; no sequence/graph independent main claim, no metric/seconds overclaim, no Stage5C, no SMC.
+<!-- STAGE42_JR_SOURCE_CONTEXT_FRESH_REPLAY:END -->
