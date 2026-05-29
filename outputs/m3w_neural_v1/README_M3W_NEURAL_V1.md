@@ -3788,3 +3788,20 @@ Protected eval vs floor: all `0.177665`, t50 `0.137515`, t100 raw diagnostic `0.
 
 This is not Stage5C, not SMC, not metric/seconds-level, not true 3D, and not a foundation model.
 <!-- STAGE43_C_PROTECTED_LATENT_STATE_SMALL:END -->
+
+<!-- STAGE43_D_LATENT_STATE_ROBUSTNESS_AUDIT:START -->
+## STAGE43_D_LATENT_STATE_ROBUSTNESS_AUDIT
+
+source = `fresh_stage43_d_latent_state_robustness_audit`
+verdict = `stage43_d_latent_state_robustness_ucy_pass`
+gate = `9 / 9`
+multi_domain_claim_allowed = `False`
+
+Stage43-D re-evaluates the Stage43-C protected latent-state checkpoint on the full held-out UCY test split and adds bootstrap confidence intervals. This is a robustness audit, not a new threshold-tuning run and not a Stage5C/SMC execution.
+
+Full UCY test metrics: all `0.163151`, t50 `0.136820`, t100 raw diagnostic `0.009722`, hard/failure `0.164765`, easy degradation `0.000000`, switch rate `0.170113`.
+
+Bootstrap CI lows: all `0.159866`, t50 `0.130597`, hard/failure `0.160986`, easy CI high `0.000000`.
+
+Scope limitation: this proves UCY held-out dataset-local/raw-frame robustness only; multi-domain robustness remains a next gate.
+<!-- STAGE43_D_LATENT_STATE_ROBUSTNESS_AUDIT:END -->

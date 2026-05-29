@@ -1,0 +1,165 @@
+{
+  "source": "fresh_stage43_d_latent_state_robustness_audit",
+  "result_source": "fresh_run_eval_from_stage43_c_checkpoint",
+  "generated_at_utc": "2026-05-29T09:22:05.760435+00:00",
+  "git_commit": "e0b3ee8",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_protected_latent_small.pt",
+  "checkpoint_committed": false,
+  "stage43_c_verdict": "stage43_c_protected_latent_state_candidate_pass",
+  "policy": {
+    "gain_threshold": 0.55,
+    "harm_threshold": 0.5,
+    "failure_threshold": 0.0
+  },
+  "metrics": {
+    "rows": 66303,
+    "all_improvement_vs_floor": 0.16315114070871017,
+    "t50_improvement_vs_floor": 0.13681985271682773,
+    "t100_raw_frame_diagnostic_vs_floor": 0.00972247620289246,
+    "hard_failure_improvement_vs_floor": 0.16476528862434603,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.17011296623078895,
+    "harm_over_floor": -0.1711866706609726,
+    "mean_floor_err": 1.0492521524429321,
+    "mean_selected_err": 0.8780654668807983
+  },
+  "ungated_candidate_metrics": {
+    "rows": 66303,
+    "all_improvement_vs_floor": 0.5980275547006766,
+    "t50_improvement_vs_floor": 0.6457188112667005,
+    "t100_raw_frame_diagnostic_vs_floor": 0.48922606442440486,
+    "hard_failure_improvement_vs_floor": 0.6403676510189389,
+    "easy_degradation_vs_floor": 0.04606114006297912,
+    "switch_rate": 1.0,
+    "harm_over_floor": -0.6274816989898682,
+    "mean_floor_err": 1.0492521524429321,
+    "mean_selected_err": 0.42177045345306396
+  },
+  "bootstrap": {
+    "all": {
+      "rows": 66303,
+      "mean": 0.16315114070871017,
+      "ci_low": 0.1598662574072663,
+      "ci_high": 0.16650934213517135,
+      "bootstrap_n": 2000
+    },
+    "t50": {
+      "rows": 16263,
+      "mean": 0.13681985271682773,
+      "ci_low": 0.13059660022498878,
+      "ci_high": 0.1427785679991564,
+      "bootstrap_n": 2000
+    },
+    "t100_raw_frame_diagnostic": {
+      "rows": 10008,
+      "mean": 0.00972247620289246,
+      "ci_low": 0.007416397569863115,
+      "ci_high": 0.012160019417225228,
+      "bootstrap_n": 2000
+    },
+    "hard_failure": {
+      "rows": 45917,
+      "mean": 0.16476528862434603,
+      "ci_low": 0.16098649182811325,
+      "ci_high": 0.1684080200083891,
+      "bootstrap_n": 2000
+    },
+    "easy_degradation": {
+      "rows": 20798,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0,
+      "bootstrap_n": 2000
+    }
+  },
+  "slice_table": {
+    "domain:UCY": {
+      "rows": 66303,
+      "all_improvement_vs_floor": 0.16315114070871017,
+      "t50_improvement_vs_floor": 0.13681985271682773,
+      "t100_raw_frame_diagnostic_vs_floor": 0.00972247620289246,
+      "hard_failure_improvement_vs_floor": 0.16476528862434603,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.17011296623078895,
+      "harm_over_floor": -0.1711866706609726,
+      "mean_floor_err": 1.0492521524429321,
+      "mean_selected_err": 0.8780654668807983,
+      "mask_rows": 66303,
+      "improvement": 0.16315114070871017
+    },
+    "horizon:10": {
+      "mask_rows": 21267,
+      "improvement": 0.14979327418727684,
+      "switch_rate": 0.15742699957680914
+    },
+    "horizon:25": {
+      "mask_rows": 18765,
+      "improvement": 0.34397507072871814,
+      "switch_rate": 0.31089794830802026
+    },
+    "horizon:50": {
+      "mask_rows": 16263,
+      "improvement": 0.13681985271682773,
+      "switch_rate": 0.11793642009469348
+    },
+    "horizon:100": {
+      "mask_rows": 10008,
+      "improvement": 0.00972247620289246,
+      "switch_rate": 0.017885691446842527
+    },
+    "subset:hard_failure": {
+      "mask_rows": 45917,
+      "improvement": 0.16476528862434603,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.18522551560424244
+    },
+    "subset:easy": {
+      "mask_rows": 20798,
+      "improvement": 0.04347961245028009,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.06313107029522069
+    },
+    "subset:not_easy": {
+      "mask_rows": 45505,
+      "improvement": 0.17523502806738367,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.21900890012086585
+    }
+  },
+  "latent_variance": 0.40000659227371216,
+  "domain_scope": {
+    "test_domains": [
+      "UCY"
+    ],
+    "multi_domain_test": false,
+    "limitation": "Current Stage43-D robustness audit evaluates the full held-out UCY test split only; it does not yet prove multi-external-domain robustness."
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_d_gate": {
+    "source": "fresh_stage43_d_latent_state_robustness_audit",
+    "gates": {
+      "stage43_c_checkpoint_exists": true,
+      "full_or_larger_test_eval_completed": true,
+      "latent_noncollapse": true,
+      "all_ci_low_positive": true,
+      "t50_ci_low_positive": true,
+      "hard_failure_ci_low_positive": true,
+      "easy_ci_high_safe": true,
+      "domain_scope_recorded": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 9,
+    "total": 9,
+    "verdict": "stage43_d_latent_state_robustness_ucy_pass",
+    "multi_domain_claim_allowed": false
+  }
+}
