@@ -1,0 +1,408 @@
+{
+  "stage": "Stage43-B latent-state dataset contract",
+  "source": "fresh_stage43_b_latent_state_dataset_contract",
+  "result_source": "fresh_run_contract_from_cached_verified_stage35_37_42_artifacts",
+  "generated_at_utc": "2026-05-29T09:07:17.176928+00:00",
+  "git_commit": "7542ab9",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "stage43_a_precondition": {
+    "source": "fresh_stage43_a_safety_floor_replay",
+    "gates": {
+      "stage26_floor_evidence_frozen": true,
+      "stage37_policy_frozen": true,
+      "m3w_neural_v1_manifest_frozen": true,
+      "stage42_cache_exists": true,
+      "stage42_exact_replay_diff_zero": true,
+      "stage42_all_t50_t100_hard_positive": true,
+      "easy_preserved": true,
+      "fallback_exact_floor_rate_ok": true,
+      "source_domains_present": true,
+      "row_hash_recorded": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_3d_or_foundation_claim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_a_safety_floor_replay_pass",
+    "latent_state_training_precondition": true
+  },
+  "input_hash": "ed6a22d7d4275d740151126bfc5713e3bdbfec703f3ba25a640efd0dc58e2e3f",
+  "token_schema": {
+    "context_observation": [
+      "dataset",
+      "scene_id",
+      "source_file",
+      "agent_id",
+      "frame_id",
+      "current_x",
+      "current_y",
+      "horizon",
+      "scale",
+      "split",
+      "data_role"
+    ],
+    "agent_history": [
+      "history_x",
+      "history_y",
+      "history_dx",
+      "history_dy",
+      "history_speed",
+      "history_accel",
+      "history_heading",
+      "history_valid_mask",
+      "history_curvature",
+      "history_turn_angle",
+      "history_stop_go",
+      "history_dwell",
+      "history_path_length",
+      "history_velocity_decay"
+    ],
+    "all_agent_graph": [
+      "history_neighbor_count",
+      "history_min_neighbor_dist",
+      "history_density",
+      "history_TTC",
+      "history_closing_speed"
+    ],
+    "scene_goal_proxy": [
+      "prototype_vectors",
+      "prototype_likelihood",
+      "prototype_entropy",
+      "goal_ambiguity",
+      "prototype_distance",
+      "prototype_angle"
+    ],
+    "baseline_rollout_family": [
+      "baseline_family_prediction",
+      "baseline_family_y_fde",
+      "baseline_family_relative_y",
+      "strongest_idx",
+      "oracle_idx",
+      "stage37_selected_family",
+      "stage35_selected_family"
+    ],
+    "safety_floor_state": [
+      "easy",
+      "hard",
+      "failure",
+      "oracle_margin",
+      "stage37_confidence",
+      "stage36_predicted_gain",
+      "stage36_hard_prob",
+      "stage36_fail_prob",
+      "stage36_easy_prob"
+    ],
+    "labels_only": [
+      "future_endpoint_x",
+      "future_endpoint_y",
+      "future_relative_y",
+      "future_fde_by_baseline",
+      "full_waypoint_xy_partial",
+      "waypoint_valid_partial",
+      "occupancy_density_proxy",
+      "failure_label",
+      "gain_label",
+      "harm_label"
+    ]
+  },
+  "splits": {
+    "train": {
+      "split": "train",
+      "data_role": "supervised_training",
+      "files": {
+        "geometry": {
+          "path": "data/stage35_selective_transfer/expanded_external_train.npz",
+          "exists": true,
+          "size_bytes": 2117926,
+          "sha256": ""
+        },
+        "labels": {
+          "path": "data/stage35_selective_transfer/labels_train.npz",
+          "exists": true,
+          "size_bytes": 5055413,
+          "sha256": ""
+        },
+        "stage35_selection": {
+          "path": "data/stage36_t50_repair/stage35_selection_train.npz",
+          "exists": true,
+          "size_bytes": 4948433,
+          "sha256": ""
+        },
+        "stage36_t50_features": {
+          "path": "data/stage36_t50_repair/t50_features_train.npz",
+          "exists": true,
+          "size_bytes": 8023259,
+          "sha256": ""
+        },
+        "history": {
+          "path": "data/stage37_t50_history/history_windows_train.npz",
+          "exists": true,
+          "size_bytes": 4999125,
+          "sha256": ""
+        },
+        "goal_prototypes": {
+          "path": "data/stage37_t50_history/goal_prototypes_train.npz",
+          "exists": true,
+          "size_bytes": 11737682,
+          "sha256": ""
+        },
+        "baseline_family": {
+          "path": "data/stage37_t50_history/t50_baseline_family_train.npz",
+          "exists": true,
+          "size_bytes": 16025179,
+          "sha256": ""
+        }
+      },
+      "rows_by_artifact": {
+        "geometry": 158942,
+        "labels": 158942,
+        "stage35_selection": 158942,
+        "stage36_t50_features": 158942,
+        "history": 158942,
+        "goal_prototypes": 158942,
+        "baseline_family": 158942
+      },
+      "row_alignment_pass": true,
+      "rows": 158942,
+      "domain_counts": {
+        "ETH_UCY": 150798,
+        "TrajNet": 8144
+      },
+      "horizon_counts": {
+        "10": 46604,
+        "25": 42907,
+        "50": 38943,
+        "100": 30488
+      },
+      "history_k_available": {
+        "8": 128439,
+        "16": 87695,
+        "32": 44059,
+        "64": 20715
+      },
+      "hard_rows": 131433,
+      "failure_rows": 64528,
+      "easy_rows": 39736
+    },
+    "val": {
+      "split": "val",
+      "data_role": "supervised_training",
+      "files": {
+        "geometry": {
+          "path": "data/stage35_selective_transfer/expanded_external_val.npz",
+          "exists": true,
+          "size_bytes": 1526701,
+          "sha256": ""
+        },
+        "labels": {
+          "path": "data/stage35_selective_transfer/labels_val.npz",
+          "exists": true,
+          "size_bytes": 3119294,
+          "sha256": ""
+        },
+        "stage35_selection": {
+          "path": "data/stage36_t50_repair/stage35_selection_val.npz",
+          "exists": true,
+          "size_bytes": 3545733,
+          "sha256": ""
+        },
+        "stage36_t50_features": {
+          "path": "data/stage36_t50_repair/t50_features_val.npz",
+          "exists": true,
+          "size_bytes": 4901019,
+          "sha256": ""
+        },
+        "history": {
+          "path": "data/stage37_t50_history/history_windows_val.npz",
+          "exists": true,
+          "size_bytes": 4027008,
+          "sha256": ""
+        },
+        "goal_prototypes": {
+          "path": "data/stage37_t50_history/goal_prototypes_val.npz",
+          "exists": true,
+          "size_bytes": 8934905,
+          "sha256": ""
+        },
+        "baseline_family": {
+          "path": "data/stage37_t50_history/t50_baseline_family_val.npz",
+          "exists": true,
+          "size_bytes": 11990985,
+          "sha256": ""
+        }
+      },
+      "rows_by_artifact": {
+        "geometry": 112746,
+        "labels": 112746,
+        "stage35_selection": 112746,
+        "stage36_t50_features": 112746,
+        "history": 112746,
+        "goal_prototypes": 112746,
+        "baseline_family": 112746
+      },
+      "row_alignment_pass": true,
+      "rows": 112746,
+      "domain_counts": {
+        "TrajNet": 112746
+      },
+      "horizon_counts": {
+        "10": 37683,
+        "25": 32059,
+        "50": 26756,
+        "100": 16248
+      },
+      "history_k_available": {
+        "8": 67879,
+        "16": 12186,
+        "32": 0,
+        "64": 0
+      },
+      "hard_rows": 78283,
+      "failure_rows": 39068,
+      "easy_rows": 35967
+    },
+    "test": {
+      "split": "test",
+      "data_role": "official_eval_dataset_local_raw_frame",
+      "files": {
+        "geometry": {
+          "path": "data/stage35_selective_transfer/expanded_external_test.npz",
+          "exists": true,
+          "size_bytes": 902870,
+          "sha256": ""
+        },
+        "labels": {
+          "path": "data/stage35_selective_transfer/labels_test.npz",
+          "exists": true,
+          "size_bytes": 1890920,
+          "sha256": ""
+        },
+        "stage35_selection": {
+          "path": "data/stage36_t50_repair/stage35_selection_test.npz",
+          "exists": true,
+          "size_bytes": 2083022,
+          "sha256": ""
+        },
+        "stage36_t50_features": {
+          "path": "data/stage36_t50_repair/t50_features_test.npz",
+          "exists": true,
+          "size_bytes": 2960566,
+          "sha256": ""
+        },
+        "history": {
+          "path": "data/stage37_t50_history/history_windows_test.npz",
+          "exists": true,
+          "size_bytes": 2331100,
+          "sha256": ""
+        },
+        "goal_prototypes": {
+          "path": "data/stage37_t50_history/goal_prototypes_test.npz",
+          "exists": true,
+          "size_bytes": 5331656,
+          "sha256": ""
+        },
+        "baseline_family": {
+          "path": "data/stage37_t50_history/t50_baseline_family_test.npz",
+          "exists": true,
+          "size_bytes": 7225609,
+          "sha256": ""
+        }
+      },
+      "rows_by_artifact": {
+        "geometry": 66303,
+        "labels": 66303,
+        "stage35_selection": 66303,
+        "stage36_t50_features": 66303,
+        "history": 66303,
+        "goal_prototypes": 66303,
+        "baseline_family": 66303
+      },
+      "row_alignment_pass": true,
+      "rows": 66303,
+      "domain_counts": {
+        "UCY": 66303
+      },
+      "horizon_counts": {
+        "10": 21267,
+        "25": 18765,
+        "50": 16263,
+        "100": 10008
+      },
+      "history_k_available": {
+        "8": 41283,
+        "16": 7506,
+        "32": 0,
+        "64": 0
+      },
+      "hard_rows": 45917,
+      "failure_rows": 22891,
+      "easy_rows": 20798
+    }
+  },
+  "label_availability": {
+    "future_endpoint_labels_all_splits": true,
+    "baseline_fde_labels_all_splits": true,
+    "failure_gain_harm_labels_all_splits": true,
+    "occupancy_density_proxy_all_splits": true,
+    "full_waypoint": {
+      "status": "partial_eval_cache",
+      "cache_file": {
+        "path": "data/stage42_source_level_full_waypoint_cache/stage42iv_source_level_merged_cache.npz",
+        "exists": true,
+        "size_bytes": 1574433,
+        "sha256": ""
+      },
+      "rows": 47458,
+      "waypoint_shape": [
+        47458,
+        4,
+        2
+      ],
+      "valid_waypoint_rows": 47458,
+      "train_val_supervised_full_waypoint_ready": false,
+      "limitation": "Full-waypoint labels are present in the Stage42 current source-level evaluation cache, but a train/val full-waypoint latent-state supervised cache is not yet frozen."
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity_official_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "future_labels_are_loss_eval_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_b_gate": {
+    "source": "fresh_stage43_b_latent_state_dataset_contract",
+    "gates": {
+      "stage43_a_precondition_passed": true,
+      "all_split_artifacts_exist": true,
+      "all_split_rows_align": true,
+      "train_val_test_roles_explicit": true,
+      "history_windows_available": true,
+      "goal_prototypes_available": true,
+      "baseline_family_available": true,
+      "endpoint_labels_available_all_splits": true,
+      "full_waypoint_limitation_recorded": true,
+      "labels_separated_from_inputs": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_b_latent_state_dataset_contract_pass",
+    "endpoint_latent_state_training_ready": true,
+    "full_waypoint_supervised_training_ready": false
+  },
+  "decision": "Endpoint/failure/gain/harm/occupancy latent-state dataset contract is ready; full-waypoint supervised training remains blocked until train/val full-waypoint labels are frozen."
+}

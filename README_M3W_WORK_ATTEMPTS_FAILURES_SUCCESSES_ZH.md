@@ -1723,3 +1723,17 @@ Fresh Stage42 replay: all `0.291543`, t50 `0.247045`, t100 raw-frame diagnostic 
 
 No Stage5C execution, no SMC, no metric/seconds/true-3D/foundation claim. Future endpoints/waypoints remain labels only.
 <!-- STAGE43_A_SAFETY_FLOOR_REPLAY:END -->
+
+<!-- STAGE43_B_LATENT_STATE_DATASET_CONTRACT:START -->
+## STAGE43_B_LATENT_STATE_DATASET_CONTRACT
+
+source = `fresh_stage43_b_latent_state_dataset_contract`
+verdict = `stage43_b_latent_state_dataset_contract_pass`
+gate = `12 / 12`
+endpoint_latent_state_training_ready = `True`
+full_waypoint_supervised_training_ready = `False`
+
+Stage43-B builds the latent-state dataset contract from Stage35/36/37 external geometry/history/goal/baseline artifacts and the Stage42 source-level full-waypoint cache. It separates inference tokens from labels: future endpoint/waypoint labels are loss/eval only and are not model inputs.
+
+Endpoint/failure/gain/harm/occupancy latent-state training is contract-ready; full-waypoint supervised latent training is still blocked until train/val full-waypoint labels are frozen. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made.
+<!-- STAGE43_B_LATENT_STATE_DATASET_CONTRACT:END -->
