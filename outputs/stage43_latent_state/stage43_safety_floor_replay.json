@@ -1,0 +1,324 @@
+{
+  "stage": "Stage43-A safety floor freeze and exact replay",
+  "source": "fresh_stage43_a_safety_floor_replay",
+  "result_source": {
+    "stage42_current_floor": "fresh_run",
+    "stage26_stage37_m3w_historical_floors": "cached_verified"
+  },
+  "generated_at_utc": "2026-05-29T09:02:49.948791+00:00",
+  "git_commit": "a3bc890",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local/raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage43-A 只做训练前 safety-floor freeze/replay，不训练 latent-state model。",
+    "Stage26 SDD、Stage37 external t50、M3W-Neural v1 和 Stage42 source/full-waypoint protected policy 均作为安全地板证据冻结。",
+    "future endpoint / waypoint 只能作为 supervised/evaluation label，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoint 构建 goals，不使用 test metric 调 threshold。",
+    "t+50/t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local / pixel-space 不能写成 metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "74e9f8538f9a2e0ff015168bf3427e00361668a2c68bd380574a3f55fcc926f9",
+  "historical_floors": {
+    "stage26_sdd_selector": {
+      "source_status": "cached_verified",
+      "report_file": {
+        "path": "outputs/reports/report_stage26_final.json",
+        "exists": true,
+        "size_bytes": 640,
+        "sha256": "ff2a59c20d19d2ba246ee13931428a3a82fc621556246717a68478644334ace7"
+      },
+      "selector_file": {
+        "path": "outputs/reports/stage26_failure_assisted_selector_metrics.json",
+        "exists": true,
+        "size_bytes": 3129,
+        "sha256": "f51c5183b4ccdbc770f0408d78bd29a2a39023aa1c32c78187ff9b051d40fc31"
+      },
+      "verdict": "stage26_feature_complete_cost_aware_selector_executed_not_stage5c_ready",
+      "selected_model": "stage26_failure_assisted_selector",
+      "t50_improvement": 0.14583655843823773,
+      "hard_failure_improvement": 0.11234058960663984,
+      "easy_degradation": 0.01808836280803794,
+      "note": "Stage26 remains the SDD pixel-space best deployable floor; this Stage43-A run freezes and hashes the evidence rather than rerunning SDD training."
+    },
+    "stage37_external_t50_selector": {
+      "source_status": "cached_verified",
+      "policy_file": {
+        "path": "outputs/stage38_external_robustness/frozen_stage37_policy.json",
+        "exists": true,
+        "size_bytes": 3366,
+        "sha256": "e5bef71e7a8bfabcd91541d4c258a716a599a0f73ac673bd592818bcdeee7ef8"
+      },
+      "floor_file": {
+        "path": "outputs/stage39_neural_dynamics/stage39_stage37_floor_report.json",
+        "exists": true,
+        "size_bytes": 3029,
+        "sha256": "ad2f17119a3d1dd24120a1258ae2926da6cd24d4bd5134f73b83a5f0fa2caa8e"
+      },
+      "policy_hash": "3ee52d057ab49e3952b076d59657a0a2a7f939d74d99a3f3cea8cf37a55673af",
+      "feature_schema_hash": "f52823ae883e1c0dbb15eb970ad60432aebc8583ba848f3565e7676eed5d936a",
+      "verdict": "stage37_t50_transfer_repaired_deployable",
+      "metrics": {
+        "rows": 66303,
+        "all_improvement": 0.1348254070727205,
+        "t10_improvement": 0.30620476404756647,
+        "t25_improvement": 0.0,
+        "t50_improvement": 0.08457292542209705,
+        "t100_improvement": 0.0,
+        "hard_failure_improvement": 0.1554340386904196,
+        "easy_degradation": 0.0004114683717719725,
+        "selector_regret": 0.493665392606631,
+        "harm_over_fallback": -0.14194807778019042,
+        "switch_rate": 0.0990452920682322,
+        "mean_confidence": 0.04121534153819084,
+        "stage35_non_t50_plus_stage37_t50": true,
+        "status": "fresh_run",
+        "reason": "Stage37 final safety-selected external policy."
+      },
+      "note": "Stage37 is the external t50 safety floor and remains dataset-local/raw-frame, not metric or seconds-level."
+    },
+    "m3w_neural_v1_protected_composite": {
+      "source_status": "cached_verified",
+      "manifest_file": {
+        "path": "outputs/m3w_neural_v1/package_manifest_m3w_neural_v1.json",
+        "exists": true,
+        "size_bytes": 8975,
+        "sha256": "f5bf38b1cd7543897d8d266390d2b8e59d350fd3cca327f20b873ca4f99f4bdd"
+      },
+      "policy_file": {
+        "path": "outputs/m3w_neural_v1/selector_policy_m3w_neural_v1.json",
+        "exists": true,
+        "size_bytes": 4333,
+        "sha256": "9a8ace4fd655000899c1a55284bb85f532859970b0a5c0f92b4f369c4b927c27"
+      },
+      "package_hash": "0c7d68766c52d8da34703e18047a57ad1758592f55b18cf81de9cf572e95c9df",
+      "best_candidate": "composite_tail_safe_switch_bounded_neural_dynamics",
+      "deployment_state": "composite_tail_candidate_pending_final_package_acceptance",
+      "evidence_summary": {
+        "gates": "41 / 41",
+        "all_improvement": 0.2102513255185352,
+        "t50_improvement": 0.13652231450154184,
+        "t100_diagnostic": 0.14694086716388166,
+        "hard_failure_improvement": 0.20384916307933942,
+        "easy_degradation": 0.0,
+        "positive_external_domains": 3,
+        "pure_ucy_source_heldout_gate": true,
+        "pure_ucy_three_way_train_val_test_gate": false,
+        "strict_pure_ucy_neural_retrain_gate": true,
+        "strict_pure_ucy_neural_best_trial": "pure_ucy_transformer",
+        "strict_pure_ucy_neural_best_mode": "bounded_endpoint_residual",
+        "strict_pure_ucy_neural_all_improvement": 0.09008338741058997,
+        "strict_pure_ucy_neural_t50_improvement": 0.08800918427966675,
+        "strict_pure_ucy_neural_t100_diagnostic": 0.08310612104619552,
+        "strict_pure_ucy_neural_hard_failure_improvement": 0.09358425348430643,
+        "strict_pure_ucy_neural_easy_degradation": 0.0,
+        "strict_pure_ucy_neural_remaining_blocker": "",
+        "strict_pure_ucy_neural_statistically_stable": true,
+        "strict_pure_ucy_neural_bootstrap_all_low": 0.08888491295965614,
+        "strict_pure_ucy_neural_bootstrap_t50_low": 0.08630755189944371,
+        "strict_pure_ucy_neural_bootstrap_t100_low": 0.08069804446646152,
+        "strict_pure_ucy_neural_bootstrap_hard_low": 0.09229635491900144,
+        "endpoint_to_full_bridge_gate": true,
+        "endpoint_to_full_bridge_positive_domains": [
+          "ETH_UCY",
+          "TrajNet"
+        ],
+        "endpoint_to_full_statistical_gate": true,
+        "endpoint_to_full_statistical_positive_domains": [
+          "ETH_UCY",
+          "TrajNet"
+        ],
+        "endpoint_to_full_statistical_domain_lows": {
+          "ETH_UCY": {
+            "ade_all": 0.014989124720870283,
+            "ade_t50": 0.001358729620311877,
+            "ade_t100": 0.003205122362247967,
+            "ade_hard": 0.01477184652828257,
+            "ade_multi": 0.015119963379165813,
+            "fde_all": 0.01541917336054947,
+            "fde_t50": 0.0020177568013793916
+          },
+          "TrajNet": {
+            "ade_all": 0.03381106629559396,
+            "ade_t50": 0.018640699426599426,
+            "ade_t100": 0.007743473232062962,
+            "ade_hard": 0.03437455061849066,
+            "ade_multi": 0.03594728364084391,
+            "fde_all": 0.03386172479233887,
+            "fde_t50": 0.025763665503977688
+          }
+        },
+        "required_ablation_coverage_gate": true,
+        "required_ablation_coverage_missing": [],
+        "required_ablation_cross_protocol_limitations": [],
+        "same_protocol_architecture_ablation_gate": true,
+        "same_protocol_best_protected_architecture": "Stage41_fresh_self_gated_endpoint_candidate",
+        "same_protocol_transformer_only_deployable": false,
+        "same_protocol_jepa_only_deployable": false,
+        "same_protocol_hybrid_deployable": false,
+        "calibrated_learned_shape_meta_gate": true,
+        "calibrated_learned_shape_positive_domains": [
+          "ETH_UCY",
+          "TrajNet"
+        ],
+        "composite_tail_evidence_pass": true,
+        "composite_tail_multiseed_pass": true,
+        "strict_delta_vs_teacher_repair_pass": true,
+        "all_agent_composite_world_state_pass": true,
+        "all_agent_composite_ade_all_improvement": 0.2102513255185352,
+        "all_agent_composite_ade_t50_improvement": 0.13652231450154184,
+        "all_agent_composite_fde_all_improvement": 0.19816955620782206,
+        "all_agent_composite_fde_t50_improvement": 0.17387876491801468,
+        "endpoint_geometry_pass": true,
+        "fixed_prior_source_switch_beats_fixed": false,
+        "fixed_prior_residual_oracle_headroom": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      },
+      "note": "M3W-Neural v1 is protected by the Stage37/teacher floor; ungated neural replacement remains forbidden."
+    }
+  },
+  "stage42_floors": {
+    "stage42_source_full_waypoint_current_floor": {
+      "source_status": "fresh_run",
+      "stage42_iv_file": {
+        "path": "outputs/stage42_long_research/source_level_row_cache_integration_stage42.json",
+        "exists": true,
+        "size_bytes": 29546,
+        "sha256": "0d63c943290fd7a58348e78350888e4e9b5ffe9be0b10a19d696d9572f53aa3a"
+      },
+      "stage42_ju_file": {
+        "path": "outputs/stage42_long_research/current_reviewer_replay_package_stage42.json",
+        "exists": true,
+        "size_bytes": 9738,
+        "sha256": "3e8989abf4e4db3529fc8411038627e4445a019536ee3ac8e49ea3ff5db093c6"
+      },
+      "stage42_jw_file": {
+        "path": "outputs/stage42_long_research/teacher_floor_necessity_slice_audit_stage42.json",
+        "exists": true,
+        "size_bytes": 9288,
+        "sha256": "0d5173ecd26a59acc50fa4687fe1803312692fcd18992d093ba403ae0ca31bbd"
+      },
+      "cache_file": {
+        "path": "data/stage42_source_level_full_waypoint_cache/stage42iv_source_level_merged_cache.npz",
+        "exists": true,
+        "size_bytes": 1574433,
+        "sha256": "3e2b1f1452a4267abbb27ca9a4b3e6e645aefd8b354fd4da8c6b6ea7e8c2abab"
+      },
+      "cache_hash_from_stage42_iv": "ff0213ae55c873796c8ed6e374a20729ec60db1ea2662b9ca703ace0d809a87f",
+      "fresh_replay": {
+        "status": "fresh_run",
+        "cache_path": "data/stage42_source_level_full_waypoint_cache/stage42iv_source_level_merged_cache.npz",
+        "cache_file_sha256": "3e2b1f1452a4267abbb27ca9a4b3e6e645aefd8b354fd4da8c6b6ea7e8c2abab",
+        "row_hash": "63459ece3d6578cfbce35288fc6a1f95193e4e20252a33e319ef4478d760b1c7",
+        "metrics": {
+          "rows": 47458,
+          "switch_rows": 33355,
+          "fallback_rows": 14103,
+          "fallback_exact_floor_rate": 1.0,
+          "seed_mean_fallback_exact_floor_rate_diagnostic": 0.9908530099978728,
+          "ade_all": 0.29154251839434175,
+          "ade_t50": 0.24704532362593956,
+          "ade_t100_raw_frame_diagnostic": 0.19633495535901813,
+          "ade_hard_failure": 0.28727328735465274,
+          "easy_degradation": 0.0,
+          "fde_t50": 0.2876780410452724,
+          "domains": {
+            "TrajNet": 37918,
+            "UCY": 9540
+          },
+          "horizon_counts": {
+            "10": 15402,
+            "25": 13470,
+            "50": 11538,
+            "100": 7048
+          }
+        },
+        "reference_metrics": {
+          "ade_all": 0.29154253005981445,
+          "ade_t50": 0.2470453381538391,
+          "ade_t100_raw_frame_diagnostic": 0.19633495807647705,
+          "ade_hard_failure": 0.2872733473777771,
+          "easy_degradation": 0.0,
+          "fde_t50": 0.287678062915802
+        },
+        "replay_diff": {
+          "ade_all": 1.1665472698929591e-08,
+          "ade_t50": 1.4527899550031975e-08,
+          "ade_t100_raw_frame_diagnostic": 2.717458924550442e-09,
+          "ade_hard_failure": 6.002312435970936e-08,
+          "easy_degradation": 0.0,
+          "fde_t50": 2.187052960955782e-08
+        },
+        "max_replay_diff": 6.002312435970936e-08,
+        "exact_replay_pass": true,
+        "fallback_exactness_note": "Deployment fallback exactness is taken from the Stage42-IW/JW replay audit. The seed-mean selected ADE cache is diagnostic and can include tiny seed-aggregation drift on no-switch rows."
+      },
+      "ju_verdict": "stage42_ju_current_reviewer_replay_package_pass",
+      "jw_verdict": "stage42_jw_teacher_floor_necessity_slice_audit_pass"
+    },
+    "stage42_context_objective_negative_evidence": {
+      "source_status": "cached_verified",
+      "ka_file": {
+        "path": "outputs/stage42_long_research/context_source_horizon_objective_contract_stage42.json",
+        "exists": true,
+        "size_bytes": 34010,
+        "sha256": "d84a3764bfeb7af485c6d01d81e39c47ba441c17b73c08bea4e36bbcc73d061f"
+      },
+      "kb_file": {
+        "path": "outputs/stage42_long_research/t50_row_level_context_objective_stage42.json",
+        "exists": true,
+        "size_bytes": 18607,
+        "sha256": "ec8e41ced4510190c6dc8b911510f840deb605b815a402b4ddbc5fcd86aeadc0"
+      },
+      "ka_verdict": "stage42_ka_context_source_horizon_objective_contract_pass",
+      "kb_verdict": "stage42_kb_t50_row_level_context_objective_pass",
+      "kb_deployable_increment_supported": false,
+      "note": "Context/source/horizon objective evidence is recorded before latent training; KB remains negative for deployable t50 increment."
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity_official_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_metric_threshold_tuning": false,
+    "stage42_cache_waypoints_are_labels_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "pixel_or_dataset_local_raw_frame_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_a_gate": {
+    "source": "fresh_stage43_a_safety_floor_replay",
+    "gates": {
+      "stage26_floor_evidence_frozen": true,
+      "stage37_policy_frozen": true,
+      "m3w_neural_v1_manifest_frozen": true,
+      "stage42_cache_exists": true,
+      "stage42_exact_replay_diff_zero": true,
+      "stage42_all_t50_t100_hard_positive": true,
+      "easy_preserved": true,
+      "fallback_exact_floor_rate_ok": true,
+      "source_domains_present": true,
+      "row_hash_recorded": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_3d_or_foundation_claim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_a_safety_floor_replay_pass",
+    "latent_state_training_precondition": true
+  },
+  "decision": "Safety floor replay is closed; Stage43 latent-state dataset construction may start next under this frozen floor."
+}

@@ -3744,3 +3744,18 @@ The context contribution map is now explicit: baseline-family rollout context is
 - deployable_increment_supported: `False`; reason: `validation_safe_policy_under_switches`.
 - boundary: validation-selected t50 row-level experiment only; raw-frame/dataset-local 2.5D, no metric/seconds, no true-3D/foundation, no Stage5C, no SMC.
 <!-- STAGE42_KB_T50_ROW_LEVEL_CONTEXT_OBJECTIVE:END -->
+
+<!-- STAGE43_A_SAFETY_FLOOR_REPLAY:START -->
+## STAGE43_A_SAFETY_FLOOR_REPLAY
+
+source = `fresh_stage43_a_safety_floor_replay`
+verdict = `stage43_a_safety_floor_replay_pass`
+gate = `14 / 14`
+latent_state_training_precondition = `True`
+
+Stage43-A freezes the safety floor before any latent-state model training. Historical floors are cached-verified and hashed: Stage26 SDD selector, Stage37 external t50 selector, and M3W-Neural v1 protected composite. The current Stage42 source/domain full-waypoint protected policy is replayed fresh from the row cache.
+
+Fresh Stage42 replay: all `0.291543`, t50 `0.247045`, t100 raw-frame diagnostic `0.196335`, hard/failure `0.287273`, easy degradation `0.000000`, fallback exact floor rate `1.000000`.
+
+No Stage5C execution, no SMC, no metric/seconds/true-3D/foundation claim. Future endpoints/waypoints remain labels only.
+<!-- STAGE43_A_SAFETY_FLOOR_REPLAY:END -->
