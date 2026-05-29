@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_il_t50_ucy_specialist_claim_audit",
-  "current_verdict": "stage42_il_ucy_specialist_claim_audit_pass",
+  "current_stage": "stage42_jt_current_module_claim_refresh",
+  "current_verdict": "stage42_jt_current_module_claim_refresh_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -2983,7 +2983,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_source_context_gain_harm_closure.py",
+  "last_successful_command": "python run_stage42_current_module_claim_refresh.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -3583,7 +3583,10 @@
     "outputs/stage42_long_research/stage42_stage_ja_gate.md",
     "outputs/stage42_long_research/context_slice_policy_conservative_repair_stage42.md",
     "outputs/stage42_long_research/context_slice_policy_conservative_repair_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_jb_gate.md"
+    "outputs/stage42_long_research/stage42_stage_jb_gate.md",
+    "outputs/stage42_long_research/current_module_claim_refresh_stage42.md",
+    "outputs/stage42_long_research/current_module_claim_refresh_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_jt_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -19295,6 +19298,84 @@
       "global_metric_or_seconds_claim": false,
       "stage5c_executed": false,
       "smc_enabled": false
+    },
+    "stage_jt_current_module_claim_refresh": {
+      "source": "fresh_stage42_jt_current_module_claim_refresh",
+      "generated_at_utc": "2026-05-29T05:39:49.906879+00:00",
+      "report": "outputs/stage42_long_research/current_module_claim_refresh_stage42.md",
+      "json": "outputs/stage42_long_research/current_module_claim_refresh_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_jt_gate.md",
+      "verdict": "stage42_jt_current_module_claim_refresh_pass",
+      "gates": "15/15",
+      "allowed_claims": [
+        "protected source-level full-waypoint row-cache is positive on TrajNet+UCY under safe-switch/floor protection",
+        "safe-switch and teacher/floor fallback are directly supported by row-cache mechanism evidence",
+        "baseline-family rollout context remains the strongest current source-level driver",
+        "history-only and motion-goal-context have standalone positive signal under AO, but only as bounded evidence"
+      ],
+      "blocked_independent_claims": [
+        "incremental_context_after_baseline_family",
+        "scene_goal_independent_main_claim",
+        "neighbor_interaction_independent_main_claim",
+        "sequence_graph_t50_t100_independent_main_claim",
+        "JEPA_downstream_main_claim",
+        "Transformer_independent_main_claim",
+        "ungated_full_waypoint_deployment",
+        "metric_seconds_or_true3d_claim"
+      ],
+      "row_cache": {
+        "rows": 47458,
+        "domains": {
+          "TrajNet": 37918,
+          "UCY": 9540
+        },
+        "ade_all": 0.2915425184910424,
+        "ade_t50": 0.2470453241712095,
+        "ade_t100_raw_frame_diagnostic": 0.19633495524496603,
+        "ade_hard_failure": 0.2872732875159937,
+        "easy_degradation": 0.0,
+        "bootstrap_t50_ci": [
+          0.24292968809604645,
+          0.25138823240995406
+        ]
+      },
+      "ao": {
+        "component_evidence_verdict": "stage42_ao_context_components_not_independently_supported",
+        "positive_standalone_context_variants": [
+          "history_only",
+          "motion_goal_context"
+        ],
+        "positive_incremental_context_variants": [],
+        "baseline_family_only": {
+          "rows": 47458,
+          "all_improvement": 0.2877734037648393,
+          "t10_improvement": 0.47618706265543653,
+          "t25_improvement": 0.31611808582214795,
+          "t50_improvement": 0.31542535139554606,
+          "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+          "hard_failure_improvement": 0.2758122379367457,
+          "easy_degradation": -0.32418582524688455,
+          "switch_rate": 0.6606262379367019,
+          "harm_over_fallback": -0.13253112673847436
+        },
+        "full_minus_baseline_family_only": {
+          "all_improvement": -0.041985018166175725,
+          "t50_improvement": -0.09525464052523891,
+          "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+          "hard_failure_improvement": -0.03831835955182494,
+          "easy_degradation": 0.06755852549095309,
+          "switch_rate": -0.07252728728559987,
+          "harm_over_fallback": 0.01933577492187434
+        }
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
@@ -35374,5 +35455,5 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T04:46:07.320545+00:00"
+  "last_updated_utc": "2026-05-29T05:39:49.906879+00:00"
 }

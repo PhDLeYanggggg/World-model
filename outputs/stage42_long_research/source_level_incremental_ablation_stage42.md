@@ -1,9 +1,9 @@
 # Stage42-AO Proposed Source-Level Incremental Ablation
 
 - source: `fresh_run`
-- generated_at_utc: `2026-05-26T08:08:55.070539+00:00`
-- git_commit: `804c0dd`
-- input_hash: `6cd1e19f0a7cff61066be059d7877eb00d67edb38b7ce361d98a05b5e8ea903a`
+- generated_at_utc: `2026-05-29T05:21:02.598251+00:00`
+- git_commit: `5a83e6d`
+- input_hash: `9df575dc442002dae50e94edcffb64e4435fe18c35c72bf2ad673c885accea51`
 - gate: `10 / 11`
 - verdict: `stage42_ao_incremental_component_evidence_partial_or_negative`
 
@@ -65,6 +65,11 @@
 
 - no_leakage: `{'future_endpoint_input': False, 'future_waypoint_input': False, 'future_waypoint_label_eval_only': True, 'family_fde_input': False, 'safe_strongest_idx_old_input': False, 'central_velocity': False, 'test_endpoint_goals': False, 'test_threshold_tuning': False, 'train_only_feature_normalization': True, 'source_overlap_pass': True}`
 - claim_boundary: `{'true_3d': False, 'foundation_world_model': False, 'metric_or_seconds_claim': False, 'raw_frame_dataset_local_only': True, 'stage5c_executed': False, 'smc_enabled': False}`
+
+## Verification
+
+- focused pytest: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_level_incremental_ablation.py tests/test_stage42_current_module_claim_refresh.py -> 7 passed in 0.76s`
+- full pytest: `.venv-pytorch/bin/python -m pytest tests -> 1196 passed in 827.27s (0:13:47)`
 
 ## Interpretation
 

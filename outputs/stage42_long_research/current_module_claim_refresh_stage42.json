@@ -1,0 +1,167 @@
+{
+  "stage": "Stage42-JT current module claim refresh",
+  "source": "fresh_stage42_jt_current_module_claim_refresh",
+  "generated_at_utc": "2026-05-29T05:39:49.906879+00:00",
+  "git_commit": "5a83e6d",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-JT 汇总当前 HEAD 上 fresh replay 的 IV/IW row-cache、AO incremental ablation、JS gain/harm closure。",
+    "Stage42-JT 不重新调 threshold，不使用 test 指标调参，不把 synthesis 当训练结果。",
+    "future waypoints / endpoints 只允许作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_hash": "1bcded06a5f79c62aac6d554e8a1347e3d0e108aa5b394ae5bbad6c6d1009156",
+  "input_status": {
+    "iv_source": "fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy",
+    "iv_verdict": "stage42_iv_source_level_row_cache_integration_pass",
+    "iw_source": "fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache",
+    "iw_verdict": "stage42_iw_row_cache_mechanism_audit_pass",
+    "ao_source": "fresh_run",
+    "ao_verdict": "stage42_ao_incremental_component_evidence_partial_or_negative",
+    "js_source": "fresh_stage42_js_source_context_gain_harm_closure",
+    "js_verdict": "stage42_js_source_context_gain_harm_closure_pass"
+  },
+  "summary": {
+    "row_cache": {
+      "rows": 47458,
+      "domains": {
+        "TrajNet": 37918,
+        "UCY": 9540
+      },
+      "ade_all": 0.2915425184910424,
+      "ade_t50": 0.2470453241712095,
+      "ade_t100_raw_frame_diagnostic": 0.19633495524496603,
+      "ade_hard_failure": 0.2872732875159937,
+      "easy_degradation": 0.0,
+      "bootstrap_t50_ci": [
+        0.24292968809604645,
+        0.25138823240995406
+      ]
+    },
+    "safe_switch": {
+      "switch_rows": 33355,
+      "fallback_rows": 14103,
+      "switch_rate": 0.7028319777487463,
+      "fallback_exact_floor_rate": 1.0,
+      "hard_failure_switch_rate": 0.7296442011631885,
+      "easy_switch_rate": 0.41261615439599714
+    },
+    "waypoint_shape": {
+      "rows": 47458,
+      "waypoint_count": 4,
+      "rows_with_any_waypoint": 47458,
+      "rows_with_full_waypoints": 32056,
+      "rows_with_at_least_two_waypoints": 47458,
+      "full_waypoint_rate": 0.6754604070968013,
+      "mean_valid_waypoints_per_row": 3.3509208141936027,
+      "mean_raw_residual_from_linear_bridge": 0.10409730351609679,
+      "median_raw_residual_from_linear_bridge": 0.06988248934302863,
+      "p90_raw_residual_from_linear_bridge": 0.2777690561132196,
+      "mean_turn_angle_radians": 0.7327477683713391,
+      "note": "Residuals and turn angles are dataset-local/raw-frame shape diagnostics, not metric distances or seconds-level dynamics."
+    },
+    "ao": {
+      "component_evidence_verdict": "stage42_ao_context_components_not_independently_supported",
+      "positive_standalone_context_variants": [
+        "history_only",
+        "motion_goal_context"
+      ],
+      "positive_incremental_context_variants": [],
+      "baseline_family_only": {
+        "rows": 47458,
+        "all_improvement": 0.2877734037648393,
+        "t10_improvement": 0.47618706265543653,
+        "t25_improvement": 0.31611808582214795,
+        "t50_improvement": 0.31542535139554606,
+        "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+        "hard_failure_improvement": 0.2758122379367457,
+        "easy_degradation": -0.32418582524688455,
+        "switch_rate": 0.6606262379367019,
+        "harm_over_fallback": -0.13253112673847436
+      },
+      "full_minus_baseline_family_only": {
+        "all_improvement": -0.041985018166175725,
+        "t50_improvement": -0.09525464052523891,
+        "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+        "hard_failure_improvement": -0.03831835955182494,
+        "easy_degradation": 0.06755852549095309,
+        "switch_rate": -0.07252728728559987,
+        "harm_over_fallback": 0.01933577492187434
+      }
+    },
+    "js": {
+      "narrow_positive_horizon_routers": [
+        "h10_history_only",
+        "h10_motion_goal_context",
+        "h25_baseline_plus_history_goal_neighbor"
+      ],
+      "t50_diagnosis": "router_under_switches_despite_headroom",
+      "t100_diagnosis": "weak_predictive_signal_or_baseline_family_dominance",
+      "decision": "close_current_source_sequence_graph_gain_harm_family_for_t50_t100_main_claim"
+    },
+    "allowed_claims": [
+      "protected source-level full-waypoint row-cache is positive on TrajNet+UCY under safe-switch/floor protection",
+      "safe-switch and teacher/floor fallback are directly supported by row-cache mechanism evidence",
+      "baseline-family rollout context remains the strongest current source-level driver",
+      "history-only and motion-goal-context have standalone positive signal under AO, but only as bounded evidence"
+    ],
+    "blocked_independent_claims": [
+      "incremental_context_after_baseline_family",
+      "scene_goal_independent_main_claim",
+      "neighbor_interaction_independent_main_claim",
+      "sequence_graph_t50_t100_independent_main_claim",
+      "JEPA_downstream_main_claim",
+      "Transformer_independent_main_claim",
+      "ungated_full_waypoint_deployment",
+      "metric_seconds_or_true3d_claim"
+    ],
+    "next_action": "Use new candidate policies or row/source-slice objectives for context modules; do not repeat the closed residual/sequence/graph gain-harm family unchanged."
+  },
+  "no_leakage": {
+    "future_endpoint_input_absent": true,
+    "future_waypoint_input_absent": true,
+    "central_velocity_absent": true,
+    "test_endpoint_goals_absent": true,
+    "test_threshold_tuning_absent": true,
+    "future_labels_eval_only": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_jt_gate": {
+    "source": "fresh_stage42_jt_current_module_claim_refresh",
+    "gates": {
+      "iv_row_cache_passed": true,
+      "iw_mechanism_audit_passed": true,
+      "ao_fresh_incremental_ablation_completed": true,
+      "js_context_gain_harm_closed": true,
+      "row_cache_positive_all_t50_hard": true,
+      "easy_preserved": true,
+      "safe_switch_mechanism_recorded": true,
+      "standalone_history_recorded": true,
+      "incremental_context_not_overclaimed": true,
+      "sequence_graph_t50_t100_closed": true,
+      "claim_lists_nonempty": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_overclaim": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_jt_current_module_claim_refresh_pass"
+  }
+}

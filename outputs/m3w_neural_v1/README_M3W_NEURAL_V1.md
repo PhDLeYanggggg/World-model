@@ -3650,3 +3650,15 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: close the current source-level sequence/graph gain-harm candidate family for t50/t100 independent contribution; next work needs new candidate policies or row/source-slice objectives.
 - boundary: raw-frame/dataset-local 2.5D only; no metric/seconds overclaim, no Stage5C, no SMC.
 <!-- STAGE42_JS_SOURCE_CONTEXT_GAIN_HARM_CLOSURE:END -->
+
+<!-- STAGE42_JT_CURRENT_MODULE_CLAIM_REFRESH:START -->
+## Stage42-JT Current Module Claim Refresh
+
+- source: `fresh_stage42_jt_current_module_claim_refresh`
+- gate: `15 / 15`; verdict: `stage42_jt_current_module_claim_refresh_pass`
+- row-cache ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`; easy `0.000000`.
+- AO standalone context variants: `['history_only', 'motion_goal_context']`; incremental after baseline-family: `[]`.
+- blocked independent claims: `['incremental_context_after_baseline_family', 'scene_goal_independent_main_claim', 'neighbor_interaction_independent_main_claim', 'sequence_graph_t50_t100_independent_main_claim', 'JEPA_downstream_main_claim', 'Transformer_independent_main_claim', 'ungated_full_waypoint_deployment', 'metric_seconds_or_true3d_claim']`.
+- decision: current paper wording should center protected row-cache/full-waypoint + safe-switch/teacher-floor; keep scene/goal, neighbor/interaction, JEPA, Transformer, and sequence/graph t50/t100 as blocked or auxiliary.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
+<!-- STAGE42_JT_CURRENT_MODULE_CLAIM_REFRESH:END -->
