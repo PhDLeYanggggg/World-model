@@ -1,9 +1,9 @@
 # Stage42-IW Source-Level Row-Cache Mechanism Audit
 
 - source: `fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache`
-- generated_at_utc: `2026-05-28T07:31:46.533933+00:00`
-- git_commit: `85442d8`
-- input_hash: `a3d120a819753ae5e9cbd5f5a055beaacb22d2f90690927b16926eacdf587656`
+- generated_at_utc: `2026-05-29T04:58:57.532912+00:00`
+- git_commit: `e043235`
+- input_hash: `e10b2f74bfe7950e5bbd38a6b15b31dbaefc49d5103b2ac43297aeada75c6aa9`
 - gate: `18 / 18`
 - verdict: `stage42_iw_row_cache_mechanism_audit_pass`
 
@@ -90,6 +90,11 @@
 
 - no_leakage: `{'future_endpoint_input': False, 'future_waypoint_input': False, 'future_waypoint_label_eval_only': True, 'central_velocity': False, 'test_endpoint_goals': False, 'test_threshold_tuning': False, 'train_only_feature_normalization': True}`
 - claim_boundary: `{'true_3d': False, 'foundation_world_model': False, 'metric_or_seconds_claim': False, 'raw_frame_dataset_local_only': True, 'stage5c_executed': False, 'smc_enabled': False}`
+
+## Verification
+
+- focused pytest: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_level_row_cache_integration.py tests/test_stage42_source_level_row_cache_mechanism_audit.py -> 6 passed in 57.12s`
+- full pytest: `.venv-pytorch/bin/python -m pytest tests -> 1193 passed in 857.42s (0:14:17)`
 
 ## Interpretation
 

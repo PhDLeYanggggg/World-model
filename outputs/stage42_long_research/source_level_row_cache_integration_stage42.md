@@ -1,8 +1,8 @@
 # Stage42-IV Source-Level Row-Cache Full-Waypoint Integration
 
 - source: `fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy`
-- generated_at_utc: `2026-05-28T06:52:44.998607+00:00`
-- git_commit: `ca35c2c`
+- generated_at_utc: `2026-05-29T04:58:57.306037+00:00`
+- git_commit: `e043235`
 - input_hash: `715efb270a4c0334b568fcdb1cd1dc57b3cfcd23f57fb54093b16b745e86f380`
 - cache_hash: `ff0213ae55c873796c8ed6e374a20729ec60db1ea2662b9ca703ace0d809a87f`
 - gate: `20 / 20`
@@ -71,9 +71,8 @@
 
 ## Verification
 
-- focused pytest: `3 passed in 53.29s`
-- related pytest: `14 passed in 54.49s`
-- full pytest: `.venv-pytorch/bin/python -m pytest tests -> 1116 passed in 841.57s (0:14:01)`
+- focused pytest: `.venv-pytorch/bin/python -m pytest tests/test_stage42_source_level_row_cache_integration.py tests/test_stage42_source_level_row_cache_mechanism_audit.py -> 6 passed in 57.12s`
+- full pytest: `.venv-pytorch/bin/python -m pytest tests -> 1193 passed in 857.42s (0:14:17)`
 
 ## Interpretation
 

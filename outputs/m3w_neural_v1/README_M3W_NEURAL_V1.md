@@ -3386,6 +3386,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - source: `fresh_run_current_source_level_row_cache_and_cached_verified_stage42v_ucy`
 - role: turns the Stage42-IU TrajNet+UCY source-level policy package into a single row-level merged cache with bootstrap.
 - gate: `20 / 20`; verdict `stage42_iv_source_level_row_cache_integration_pass`.
+- replay: fresh on current HEAD `e043235`; focused pytest `6 passed`; full pytest `1193 passed`.
 - rows: `47458`; domains: `{'TrajNet': 37918, 'UCY': 9540}`.
 - ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
 - easy degradation: `0.000000`.
@@ -3400,6 +3401,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - source: `fresh_run_row_cache_mechanism_audit_from_cached_verified_stage42iv_cache`
 - role: mechanism audit over the Stage42-IV single merged row-cache, not a new metric-only summary.
 - gate: `18 / 18`; verdict `stage42_iw_row_cache_mechanism_audit_pass`.
+- replay: fresh on current HEAD `e043235`; focused pytest `6 passed`; full pytest `1193 passed`.
 - rows: `47458`; domain rows: `{'TrajNet': 37918, 'UCY': 9540}`.
 - ADE all/t50/t100raw/hard: `0.291543` / `0.247045` / `0.196335` / `0.287273`.
 - easy degradation: `0.000000`; switch rows `33355`; fallback exact floor rate `1.000000`.
