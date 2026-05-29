@@ -2983,7 +2983,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_source_slice_evidence_matrix.py",
+  "last_successful_command": "python run_stage42_teacher_floor_necessity_slice_audit.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -3593,7 +3593,10 @@
     "outputs/stage42_long_research/current_reviewer_replay_commands_stage42.sh",
     "outputs/stage42_long_research/source_slice_evidence_matrix_stage42.md",
     "outputs/stage42_long_research/source_slice_evidence_matrix_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_jv_gate.md"
+    "outputs/stage42_long_research/stage42_stage_jv_gate.md",
+    "outputs/stage42_long_research/teacher_floor_necessity_slice_audit_stage42.md",
+    "outputs/stage42_long_research/teacher_floor_necessity_slice_audit_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_jw_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -18526,7 +18529,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "50171f017c016460f417ab52d6fafd5894e6cd13ac5f6de998eed96176b9a5a4",
+      "policy_hash": "5c9fb42f6142d6bbef19429bfead728c1bacf47a432fa9eda4ae53720efd837f",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -19767,6 +19770,185 @@
         "metric_or_seconds_claim": false,
         "raw_frame_dataset_local_only": true,
         "slice_synthesis_not_new_training": true,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "stage_jw_teacher_floor_necessity_slice_audit": {
+      "source": "fresh_stage42_jw_teacher_floor_necessity_slice_audit",
+      "generated_at_utc": "2026-05-29T06:32:15.352810+00:00",
+      "report": "outputs/stage42_long_research/teacher_floor_necessity_slice_audit_stage42.md",
+      "json": "outputs/stage42_long_research/teacher_floor_necessity_slice_audit_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_jw_gate.md",
+      "verdict": "stage42_jw_teacher_floor_necessity_slice_audit_pass",
+      "gates": "14/14",
+      "summary": {
+        "rows": 47458,
+        "switch_rows": 33355,
+        "fallback_rows": 14103,
+        "fallback_rate": 0.2971680222512537,
+        "switch_rate": 0.7028319777487463,
+        "fallback_exact_floor_rate": 1.0,
+        "mean_gain_all_rows": 0.1342669542918388,
+        "mean_gain_switched_rows": 0.19103705941350357,
+        "harm_rate_all_rows": 0.06616376585612542,
+        "harm_rate_switched_rows": 0.07660020986358866,
+        "hard_failure_switch_rate": 0.7296442011631885,
+        "easy_switch_rate": 0.41261615439599714,
+        "easy_mean_harm": 0.003128815692621307,
+        "domain_floor_usage": {
+          "TrajNet": {
+            "rows": 37918,
+            "switch_rate": 0.7360620285880057,
+            "mean_gain": 0.14167479834844104,
+            "harm_rate": 0.05029273695870035,
+            "metric": {
+              "rows": 37918,
+              "all_improvement": 0.3205927234238002,
+              "t10_improvement": 0.609765691935042,
+              "t25_improvement": 0.29462310299804784,
+              "t50_improvement": 0.2817950901367978,
+              "t100_improvement": 0.19060085082963363,
+              "t100_raw_frame_diagnostic_improvement": 0.19060085082963363,
+              "hard_failure_improvement": 0.31251762988380105,
+              "easy_degradation": 0.0,
+              "harm_over_fallback": -0.14167479834844104,
+              "switch_rate": 0.7360620285880057,
+              "by_domain": {
+                "TrajNet": {
+                  "rows": 37918,
+                  "all_improvement": 0.3205927234238002,
+                  "t50_improvement": 0.2817950901367978,
+                  "t100_raw_frame_diagnostic_improvement": 0.19060085082963363,
+                  "hard_failure_improvement": 0.31251762988380105,
+                  "easy_degradation": 0.0,
+                  "switch_rate": 0.7360620285880057
+                }
+              }
+            }
+          },
+          "UCY": {
+            "rows": 9540,
+            "switch_rate": 0.5707547169811321,
+            "mean_gain": 0.10482349192933949,
+            "harm_rate": 0.12924528301886792,
+            "metric": {
+              "rows": 9540,
+              "all_improvement": 0.19609079471511848,
+              "t10_improvement": 0.36895573807623727,
+              "t25_improvement": -4.2655412535452797e-10,
+              "t50_improvement": 0.12289185019244553,
+              "t100_improvement": 0.2138801135757602,
+              "t100_raw_frame_diagnostic_improvement": 0.2138801135757602,
+              "hard_failure_improvement": 0.20736023747423504,
+              "easy_degradation": 2.775200291793567e-09,
+              "harm_over_fallback": -0.10482349192933949,
+              "switch_rate": 0.5707547169811321,
+              "by_domain": {
+                "UCY": {
+                  "rows": 9540,
+                  "all_improvement": 0.19609079471511848,
+                  "t50_improvement": 0.12289185019244553,
+                  "t100_raw_frame_diagnostic_improvement": 0.2138801135757602,
+                  "hard_failure_improvement": 0.20736023747423504,
+                  "easy_degradation": 2.775200291793567e-09,
+                  "switch_rate": 0.5707547169811321
+                }
+              }
+            }
+          }
+        },
+        "switch_slice": {
+          "label": "switched",
+          "rows": 33355,
+          "floor_ade_mean": 0.5125462515510876,
+          "selected_ade_mean": 0.321509192137584,
+          "ade_improvement": 0.3727216009001719,
+          "floor_fde_mean": 0.7205802521058625,
+          "selected_fde_mean": 0.46028811501922046,
+          "fde_improvement": 0.361225743178432,
+          "easy_degradation": 0.0,
+          "switch_rate": 1.0,
+          "full_waypoint_rate": 0.6349572777694499,
+          "mean_valid_waypoints": 3.2699145555388998,
+          "positive_ade": true,
+          "easy_safe": true
+        },
+        "fallback_slice": {
+          "label": "fallback",
+          "rows": 14103,
+          "floor_ade_mean": 0.33753960543746625,
+          "selected_ade_mean": 0.3375396054342985,
+          "ade_improvement": 9.384806387108831e-12,
+          "floor_fde_mean": 0.505164888842715,
+          "selected_fde_mean": 0.5051648890781087,
+          "fde_improvement": -4.659740012172737e-10,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.0,
+          "full_waypoint_rate": 0.7712543430475786,
+          "mean_valid_waypoints": 3.542508686095157,
+          "positive_ade": true,
+          "easy_safe": true
+        },
+        "easy_slice": {
+          "label": "easy",
+          "rows": 11192,
+          "floor_ade_mean": 0.1523725170567204,
+          "selected_ade_mean": 0.11326956948278134,
+          "ade_improvement": 0.2566272995239886,
+          "floor_fde_mean": 0.19682025645135706,
+          "selected_fde_mean": 0.15376290964333444,
+          "fde_improvement": 0.2187648140711776,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.41261615439599714,
+          "full_waypoint_rate": 0.7348105789849892,
+          "mean_valid_waypoints": 3.4696211579699785,
+          "positive_ade": true,
+          "easy_safe": true
+        },
+        "hard_failure_slice": {
+          "label": "hard_or_failure",
+          "rows": 35076,
+          "floor_ade_mean": 0.5409153446292678,
+          "selected_ade_mean": 0.38552481539704314,
+          "ade_improvement": 0.28727328735465274,
+          "floor_fde_mean": 0.7734484306110758,
+          "selected_fde_mean": 0.55908175941067,
+          "fde_improvement": 0.27715703169898726,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.7296442011631885,
+          "full_waypoint_rate": 0.6840004561523549,
+          "mean_valid_waypoints": 3.36800091230471,
+          "positive_ade": true,
+          "easy_safe": true
+        },
+        "partial_t50_floor_relaxation": {
+          "target_union_rows": 11538,
+          "target_union_t50_improvement": 0.28969780582672955,
+          "target_union_hard_failure_improvement": 0.28969780582672955,
+          "target_union_easy_degradation": -0.21406723960013185,
+          "target_union_near_collision_005_delta": -0.007379425459017833,
+          "target_union_jagged_rate_delta": 0.0,
+          "target_union_safety_pass": true,
+          "target_slices": [
+            "TrajNet|50",
+            "UCY|50"
+          ]
+        },
+        "global_floor_removal_allowed": false,
+        "floor_free_neural_deployable": false,
+        "teacher_floor_context_required": true,
+        "deployment_decision": "keep_teacher_floor_globally_allow_only_guarded_t50_relaxation_as_diagnostic_or_restricted_policy",
+        "interpretation": "The teacher/floor is not merely cosmetic: a nontrivial fallback share remains exact-floor, hard/failure rows switch more often than easy rows, and global floor-free neural deployment remains forbidden. A restricted t50 relaxation has safety evidence but does not remove the global floor."
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "floor_free_neural_deployable": false,
+        "global_teacher_floor_removal_allowed": false,
+        "partial_floor_relaxation_limited_to_guarded_t50": true,
         "stage5c_executed": false,
         "smc_enabled": false
       }
@@ -35283,7 +35465,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "a6cd47f57444a7ca90716b39ec379ffe3f62a6b42f5a66a6f4a60705f8608a74",
+      "package_hash": "c03b9e84cd5842043f0426beab2c55943de52b9ff1d20637d24e0fa1ceb0805a",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -35364,8 +35546,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "50171f017c016460f417ab52d6fafd5894e6cd13ac5f6de998eed96176b9a5a4",
-        "policy_artifact_sha256": "e091c1b8c7463cda9fc7159219b240390349d352ec0791acf3a91840030af47e",
+        "policy_hash": "5c9fb42f6142d6bbef19429bfead728c1bacf47a432fa9eda4ae53720efd837f",
+        "policy_artifact_sha256": "b02ec55e62eb1f0f4714e8e39c783867f592ae3e3e674207666d2c80fec01cb1",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -35849,5 +36031,5 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T06:12:30.463751+00:00"
+  "last_updated_utc": "2026-05-29T06:32:15.352810+00:00"
 }

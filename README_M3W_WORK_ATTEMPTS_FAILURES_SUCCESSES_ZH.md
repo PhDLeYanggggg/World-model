@@ -1647,3 +1647,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - this strengthens the paper evidence table by decomposing protected row-cache/full-waypoint evidence across domain, horizon, source-file, hard/easy, switch/fallback, and waypoint-completeness slices.
 - boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_JV_SOURCE_SLICE_EVIDENCE_MATRIX:END -->
+
+<!-- STAGE42_JW_TEACHER_FLOOR_NECESSITY_SLICE_AUDIT:START -->
+## Stage42-JW Teacher Floor Necessity Slice Audit
+
+- source: `fresh_stage42_jw_teacher_floor_necessity_slice_audit`
+- gate: `14 / 14`; verdict: `stage42_jw_teacher_floor_necessity_slice_audit_pass`.
+- switch/fallback rows: `33355` / `14103`; fallback exact floor rate `1.000000`.
+- hard/failure switch rate `0.729644` vs easy switch rate `0.412616`.
+- guarded t50 relaxation safety: `True` with t50 `0.289698`.
+- decision: keep the teacher/floor globally; only guarded t50 relaxation is supported, and floor-free neural deployment remains forbidden.
+- boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_JW_TEACHER_FLOOR_NECESSITY_SLICE_AUDIT:END -->

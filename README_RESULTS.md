@@ -6392,7 +6392,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `50171f017c016460f417ab52d6fafd5894e6cd13ac5f6de998eed96176b9a5a4`
+- policy hash: `5c9fb42f6142d6bbef19429bfead728c1bacf47a432fa9eda4ae53720efd837f`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6406,7 +6406,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `50171f017c016460f417ab52d6fafd5894e6cd13ac5f6de998eed96176b9a5a4`
+- policy hash: `5c9fb42f6142d6bbef19429bfead728c1bacf47a432fa9eda4ae53720efd837f`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -6809,3 +6809,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - this strengthens the paper evidence table by decomposing protected row-cache/full-waypoint evidence across domain, horizon, source-file, hard/easy, switch/fallback, and waypoint-completeness slices.
 - boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_JV_SOURCE_SLICE_EVIDENCE_MATRIX:END -->
+
+<!-- STAGE42_JW_TEACHER_FLOOR_NECESSITY_SLICE_AUDIT:START -->
+## Stage42-JW Teacher Floor Necessity Slice Audit
+
+- source: `fresh_stage42_jw_teacher_floor_necessity_slice_audit`
+- gate: `14 / 14`; verdict: `stage42_jw_teacher_floor_necessity_slice_audit_pass`.
+- switch/fallback rows: `33355` / `14103`; fallback exact floor rate `1.000000`.
+- hard/failure switch rate `0.729644` vs easy switch rate `0.412616`.
+- guarded t50 relaxation safety: `True` with t50 `0.289698`.
+- decision: keep the teacher/floor globally; only guarded t50 relaxation is supported, and floor-free neural deployment remains forbidden.
+- boundary remains dataset-local/raw-frame 2.5D; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_JW_TEACHER_FLOOR_NECESSITY_SLICE_AUDIT:END -->
