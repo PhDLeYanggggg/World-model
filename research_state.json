@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_jx_current_paper_evidence_refresh",
-  "current_verdict": "stage42_jx_current_paper_evidence_refresh_pass",
+  "current_stage": "stage42_jy_context_materiality_by_source_slice",
+  "current_verdict": "stage42_jy_context_materiality_by_source_slice_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -2983,7 +2983,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_paper_evidence_current_refresh.py",
+  "last_successful_command": "python run_stage42_context_materiality_by_source_slice.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -3600,7 +3600,10 @@
     "outputs/stage42_long_research/paper_evidence_current_refresh_stage42.md",
     "outputs/stage42_long_research/paper_evidence_current_refresh_stage42.json",
     "outputs/stage42_long_research/stage42_stage_jx_gate.md",
-    "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md"
+    "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
+    "outputs/stage42_long_research/context_materiality_by_source_slice_stage42.md",
+    "outputs/stage42_long_research/context_materiality_by_source_slice_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_jy_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -20085,6 +20088,58 @@
         "stage5c_executed": false,
         "smc_enabled": false
       }
+    },
+    "stage_jy_context_materiality_by_source_slice": {
+      "source": "fresh_stage42_jy_context_materiality_by_source_slice",
+      "generated_at_utc": "2026-05-29T07:48:26.241591+00:00",
+      "report": "outputs/stage42_long_research/context_materiality_by_source_slice_stage42.md",
+      "json": "outputs/stage42_long_research/context_materiality_by_source_slice_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_jy_gate.md",
+      "verdict": "stage42_jy_context_materiality_by_source_slice_pass",
+      "gates": "14/14",
+      "summary": {
+        "baseline_family_control": {
+          "rows": 47458,
+          "all_improvement": 0.2877734037648393,
+          "t10_improvement": 0.47618706265543653,
+          "t25_improvement": 0.31611808582214795,
+          "t50_improvement": 0.31542535139554606,
+          "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+          "hard_failure_improvement": 0.2758122379367457,
+          "easy_degradation": -0.32418582524688455,
+          "switch_rate": 0.6606262379367019,
+          "harm_over_fallback": -0.13253112673847436
+        },
+        "positive_standalone_context_variants": [
+          "history_only",
+          "motion_goal_context"
+        ],
+        "material_global_incremental_variants": [],
+        "best_narrow_slice_signal": {
+          "variant": "motion_goal_context",
+          "slice": "horizon=10",
+          "metric": "all_improvement",
+          "delta": 0.02748739379455012
+        },
+        "context_claim_decision": "block_independent_context_main_claim_keep_as_auxiliary_or_new_objective",
+        "next_training_spec": [
+          "Do not repeat the closed residual/sequence/graph context family unchanged.",
+          "If context is retried, optimize source/horizon-slice objectives against baseline-family control, not only global raw ADE.",
+          "Use validation-only source/horizon routing and preserve Stage37/teacher floor for deployment.",
+          "Treat history/motion-goal as auxiliary candidates; require material all/t50/hard improvement and easy <=2% before paper main claim.",
+          "For t100 raw-frame diagnostic, test a dedicated source-slice objective because only micro-slice deltas appear in current evidence."
+        ]
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "context_materiality_synthesis_not_new_training": true,
+        "independent_context_main_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
@@ -36164,5 +36219,5 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T07:10:14.956184+00:00"
+  "last_updated_utc": "2026-05-29T07:48:26.241591+00:00"
 }

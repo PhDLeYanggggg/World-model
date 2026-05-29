@@ -6833,3 +6833,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - README-facing decision: public GitHub README stays project-owner style; detailed staged evidence remains internal.
 - paper boundary: protected dataset-local/raw-frame 2.5D only; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_JX_CURRENT_PAPER_EVIDENCE_REFRESH:END -->
+
+<!-- STAGE42_JY_CONTEXT_MATERIALITY_BY_SOURCE_SLICE:START -->
+## Stage42-JY Context Materiality By Source Slice
+
+- source: `fresh_stage42_jy_context_materiality_by_source_slice`
+- gate: `14 / 14`; verdict: `stage42_jy_context_materiality_by_source_slice_pass`.
+- baseline-family control remains dominant: all/t50/hard `28.78%` / `31.54%` / `27.58%`.
+- material global incremental context variants: `[]`.
+- best narrow context slice signal: `{'variant': 'motion_goal_context', 'slice': 'horizon=10', 'metric': 'all_improvement', 'delta': 0.02748739379455012}`.
+- decision: keep independent scene/goal/neighbor/interaction as blocked main claims; next context attempt must use source/horizon-slice objectives rather than repeating the closed protocol.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_JY_CONTEXT_MATERIALITY_BY_SOURCE_SLICE:END -->
