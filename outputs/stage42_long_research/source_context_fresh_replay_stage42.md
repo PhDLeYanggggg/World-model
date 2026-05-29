@@ -1,8 +1,8 @@
 # Stage42-JR Source Context Fresh Replay
 
 - source: `fresh_stage42_jr_source_context_fresh_replay`
-- generated_at_utc: `2026-05-29T03:51:38.863806+00:00`
-- git_commit: `05de10c`
+- generated_at_utc: `2026-05-29T04:34:58.411682+00:00`
+- git_commit: `0ca07d9`
 - input_hash: `48507e74c9c2446619a101aec89152c8c905b0b16cd0527ddf9f1d83bf74ac36`
 - gate: `12 / 12`
 - verdict: `stage42_jr_source_context_negative_evidence_pass`

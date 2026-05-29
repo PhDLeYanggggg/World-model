@@ -1600,3 +1600,15 @@ latest full pytest after Stage42-FC refresh: 786 passed in 36.07s
 - graph context did not add lift: best all/t50/hard delta `-0.0230` / `-0.0858` / `-0.0262`.
 - boundary: negative result preserved; no sequence/graph independent main claim, no metric/seconds overclaim, no Stage5C, no SMC.
 <!-- STAGE42_JR_SOURCE_CONTEXT_FRESH_REPLAY:END -->
+
+<!-- STAGE42_JS_SOURCE_CONTEXT_GAIN_HARM_CLOSURE:START -->
+## Stage42-JS Source Context Gain/Harm Closure
+
+- source: `fresh_stage42_js_source_context_gain_harm_closure`
+- gate: `14 / 14`; verdict: `stage42_js_source_context_gain_harm_closure_pass`
+- narrow horizon positives: `['h10_history_only', 'h10_motion_goal_context', 'h25_baseline_plus_history_goal_neighbor']`; these are not t50/t100 main-claim evidence.
+- t50 blocker: `router_under_switches_despite_headroom` with oracle headroom `0.0352`; IQ repair t50 `0.000001`, IR repair t50 `0.000000`.
+- t100 blocker: `weak_predictive_signal_or_baseline_family_dominance` with oracle headroom `0.0112`.
+- decision: close the current source-level sequence/graph gain-harm candidate family for t50/t100 independent contribution; next work needs new candidate policies or row/source-slice objectives.
+- boundary: raw-frame/dataset-local 2.5D only; no metric/seconds overclaim, no Stage5C, no SMC.
+<!-- STAGE42_JS_SOURCE_CONTEXT_GAIN_HARM_CLOSURE:END -->

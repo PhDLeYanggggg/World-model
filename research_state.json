@@ -2983,7 +2983,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_source_context_fresh_replay.py",
+  "last_successful_command": "python run_stage42_source_context_gain_harm_closure.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -18516,7 +18516,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "7b0887cdbb1b211ad4f7d0cc51d78119977820f6233e4860517891ea370d8010",
+      "policy_hash": "20df05705d9038ed8c3ba8b05128ca4b211aacf4b3ccbb6ea2d8f8cdb5a93ec5",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -19270,6 +19270,28 @@
       "best_sequence_t50_delta": -0.08305738715518596,
       "best_graph_t50_delta": -0.08575216658053153,
       "negative_result_not_overclaimed": true,
+      "global_metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "source_context_gain_harm_closure": {
+      "source": "fresh_stage42_js_source_context_gain_harm_closure",
+      "generated_at_utc": "2026-05-29T04:46:07.320545+00:00",
+      "verdict": "stage42_js_source_context_gain_harm_closure_pass",
+      "gate": {
+        "passed": 14,
+        "total": 14
+      },
+      "narrow_positive_horizon_routers": [
+        "h10_history_only",
+        "h10_motion_goal_context",
+        "h25_baseline_plus_history_goal_neighbor"
+      ],
+      "t50_diagnosis": "router_under_switches_despite_headroom",
+      "t100_diagnosis": "weak_predictive_signal_or_baseline_family_dominance",
+      "iq_repair_supported": false,
+      "ir_repair_supported": false,
+      "decision": "close_current_source_sequence_graph_gain_harm_family_for_t50_t100_main_claim",
       "global_metric_or_seconds_claim": false,
       "stage5c_executed": false,
       "smc_enabled": false
@@ -34786,7 +34808,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "f27738ff97f96974ea31f4256a789d54f45768d5f99d3a42baf5f5eb28dd6932",
+      "package_hash": "055ec5d36f9a6e4e57ee9dfa21d4f5032d3f020116f90458f3f39c7639bcab8f",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -34867,8 +34889,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "7b0887cdbb1b211ad4f7d0cc51d78119977820f6233e4860517891ea370d8010",
-        "policy_artifact_sha256": "c1b6ad3ea7ef30536cafffeffad4d5262261330ee31eb1f28b93bb6a37cc1fa2",
+        "policy_hash": "20df05705d9038ed8c3ba8b05128ca4b211aacf4b3ccbb6ea2d8f8cdb5a93ec5",
+        "policy_artifact_sha256": "cd8a5bdbc97d8e5ebab04e99653e5c5dc3ff6f27399f4cc172d1ee6fa415fb74",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -35352,5 +35374,5 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T03:51:31.040773+00:00"
+  "last_updated_utc": "2026-05-29T04:46:07.320545+00:00"
 }

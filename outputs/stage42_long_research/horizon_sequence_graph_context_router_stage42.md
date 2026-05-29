@@ -1,8 +1,8 @@
 # Stage42-IO Horizon-Specific Sequence+Graph Context Router
 
 - source: `fresh_stage42_horizon_sequence_graph_context_router`
-- generated_at_utc: `2026-05-28T02:08:49.476577+00:00`
-- git_commit: `64cd737`
+- generated_at_utc: `2026-05-29T04:01:45.901801+00:00`
+- git_commit: `0ca07d9`
 - input_hash: `7a2bf47de6031d5b1421d8d86fcc6278cc85dbb5e451550ad0156064cd8208be`
 - gate: `13 / 13`
 - verdict: `stage42_io_horizon_sequence_graph_context_router_pass`

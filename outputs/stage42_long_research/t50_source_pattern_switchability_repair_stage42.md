@@ -1,9 +1,9 @@
 # Stage42-IR t50 Source-Pattern Switchability Repair
 
 - source: `fresh_stage42_t50_source_pattern_switchability_repair`
-- generated_at_utc: `2026-05-28T03:26:39.230674+00:00`
-- git_commit: `5cba11c`
-- input_hash: `e8b7f59a3e8104475843a9a8001ab0419c498e6d57b4b21748349ee471ff4124`
+- generated_at_utc: `2026-05-29T04:39:49.610229+00:00`
+- git_commit: `0ca07d9`
+- input_hash: `dfcd7f207169d9c750927c19b00769c36492558311b3df734279b58e7237c4f1`
 - gate: `11 / 11`
 - verdict: `stage42_ir_t50_source_pattern_switchability_repair_pass`
 - repair_supported: `False`

@@ -6392,7 +6392,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `7b0887cdbb1b211ad4f7d0cc51d78119977820f6233e4860517891ea370d8010`
+- policy hash: `20df05705d9038ed8c3ba8b05128ca4b211aacf4b3ccbb6ea2d8f8cdb5a93ec5`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6406,7 +6406,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `7b0887cdbb1b211ad4f7d0cc51d78119977820f6233e4860517891ea370d8010`
+- policy hash: `20df05705d9038ed8c3ba8b05128ca4b211aacf4b3ccbb6ea2d8f8cdb5a93ec5`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -6762,3 +6762,15 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - graph context did not add lift: best all/t50/hard delta `-0.0230` / `-0.0858` / `-0.0262`.
 - boundary: negative result preserved; no sequence/graph independent main claim, no metric/seconds overclaim, no Stage5C, no SMC.
 <!-- STAGE42_JR_SOURCE_CONTEXT_FRESH_REPLAY:END -->
+
+<!-- STAGE42_JS_SOURCE_CONTEXT_GAIN_HARM_CLOSURE:START -->
+## Stage42-JS Source Context Gain/Harm Closure
+
+- source: `fresh_stage42_js_source_context_gain_harm_closure`
+- gate: `14 / 14`; verdict: `stage42_js_source_context_gain_harm_closure_pass`
+- narrow horizon positives: `['h10_history_only', 'h10_motion_goal_context', 'h25_baseline_plus_history_goal_neighbor']`; these are not t50/t100 main-claim evidence.
+- t50 blocker: `router_under_switches_despite_headroom` with oracle headroom `0.0352`; IQ repair t50 `0.000001`, IR repair t50 `0.000000`.
+- t100 blocker: `weak_predictive_signal_or_baseline_family_dominance` with oracle headroom `0.0112`.
+- decision: close the current source-level sequence/graph gain-harm candidate family for t50/t100 independent contribution; next work needs new candidate policies or row/source-slice objectives.
+- boundary: raw-frame/dataset-local 2.5D only; no metric/seconds overclaim, no Stage5C, no SMC.
+<!-- STAGE42_JS_SOURCE_CONTEXT_GAIN_HARM_CLOSURE:END -->
