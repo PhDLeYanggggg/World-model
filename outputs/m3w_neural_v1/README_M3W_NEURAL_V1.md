@@ -3719,3 +3719,17 @@ The context contribution map is now explicit: baseline-family rollout context is
 - decision: keep independent scene/goal/neighbor/interaction as blocked main claims; next context attempt must use source/horizon-slice objectives rather than repeating the closed protocol.
 - boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 <!-- STAGE42_JY_CONTEXT_MATERIALITY_BY_SOURCE_SLICE:END -->
+
+<!-- STAGE42_KA_CONTEXT_SOURCE_HORIZON_OBJECTIVE_CONTRACT:START -->
+## Stage42-KA Context Source/Horizon Objective Contract
+
+- source: `fresh_stage42_ka_context_source_horizon_objective_contract`
+- gate: `15 / 15`; verdict: `stage42_ka_context_source_horizon_objective_contract_pass`.
+- global material context variants over baseline-family control: `[]`.
+- narrow auxiliary context slices preserved for future source/horizon training: `[{'variant': 'history_only', 'horizon': 10}, {'variant': 'motion_goal_context', 'horizon': 10}]`.
+- diagnostic router conflicts: `[{'horizon': 25, 'candidate': 'baseline_plus_history_goal_neighbor', 'decision': 'diagnostic_router_only_not_baseline_family_positive'}]`.
+- t50 blocker: `router_under_switches_despite_headroom`; t50 oracle headroom `3.52%`.
+- t100 blocker: `weak_predictive_signal_or_baseline_family_dominance`; t100 raw oracle headroom `1.12%`.
+- decision: do not promote scene/goal/neighbor/interaction as independent global main claims; next context attempt must use row-level source/horizon objectives under Stage37/teacher floor.
+- boundary: dataset-local/raw-frame 2.5D only; no metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
+<!-- STAGE42_KA_CONTEXT_SOURCE_HORIZON_OBJECTIVE_CONTRACT:END -->

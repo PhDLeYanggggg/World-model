@@ -1,0 +1,796 @@
+{
+  "stage": "Stage42-KA context source/horizon objective contract",
+  "source": "fresh_stage42_ka_context_source_horizon_objective_contract",
+  "generated_at_utc": "2026-05-29T08:14:49.911210+00:00",
+  "git_commit": "4316f32",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "input_hash": "55c277ce40cc5cd75cba6fc0c83f01106cbd2493f8f1670d7dd7eed249b6dc62",
+  "current_facts": [
+    "当前不是 true 3D world model。",
+    "当前不是 large-scale foundation world model。",
+    "当前仍是 protected dataset-local / raw-frame 2.5D 多智能体 world-state candidate。",
+    "Stage42-KA 不是新训练；它把 AO/JY/JS/IO 的 fresh/cached-verified context 证据转成 source+horizon objective contract。",
+    "future endpoints / future waypoints 只能作为 supervised/evaluation labels，不能作为 inference input。",
+    "不使用 central velocity，不使用 test endpoints 构建 goals，不使用 test metrics 调 threshold。",
+    "t+50 / t+100 仍是 raw-frame horizon，不能写成 seconds-level。",
+    "dataset-local/raw-frame 不能写成 global metric。",
+    "Stage5C latent generative 未执行。",
+    "SMC 未启用。"
+  ],
+  "input_status": {
+    "ao_verdict": "stage42_ao_incremental_component_evidence_partial_or_negative",
+    "io_verdict": "stage42_io_horizon_sequence_graph_context_router_pass",
+    "js_verdict": "stage42_js_source_context_gain_harm_closure_pass",
+    "jy_verdict": "stage42_jy_context_materiality_by_source_slice_pass"
+  },
+  "summary": {
+    "result_source_label": "fresh_synthesis_from_stage42_ao_io_js_jy_artifacts",
+    "baseline_family_control": {
+      "rows": 47458,
+      "all_improvement": 0.2877734037648393,
+      "t10_improvement": 0.47618706265543653,
+      "t25_improvement": 0.31611808582214795,
+      "t50_improvement": 0.31542535139554606,
+      "t100_raw_frame_diagnostic_improvement": 0.14282475620015533,
+      "hard_failure_improvement": 0.2758122379367457,
+      "easy_degradation": -0.32418582524688455,
+      "switch_rate": 0.6606262379367019,
+      "harm_over_fallback": -0.13253112673847436
+    },
+    "global_material_context_variants": [],
+    "narrow_auxiliary_context_slices": [
+      {
+        "variant": "history_only",
+        "horizon": 10
+      },
+      {
+        "variant": "motion_goal_context",
+        "horizon": 10
+      }
+    ],
+    "diagnostic_router_conflicts": [
+      {
+        "horizon": 25,
+        "candidate": "baseline_plus_history_goal_neighbor",
+        "decision": "diagnostic_router_only_not_baseline_family_positive"
+      }
+    ],
+    "context_delta_summary": {
+      "full": {
+        "feature_count": 166,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.041985018166175725,
+          "t10_improvement": -0.017784082346396723,
+          "t25_improvement": -0.08287664223294333,
+          "t50_improvement": -0.09525464052523891,
+          "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+          "hard_failure_improvement": -0.03831835955182494,
+          "easy_degradation": 0.06755852549095309,
+          "switch_rate": -0.07252728728559987
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.017784082346396723,
+            "t10_improvement": -0.017784082346396723,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.023650664570292412,
+            "easy_degradation": -0.007290779022049887,
+            "switch_rate": -0.0468770289572783
+          },
+          "25": {
+            "all_improvement": -0.08287664223294333,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.08287664223294333,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.06453239563591862,
+            "easy_degradation": 0.11686812894451293,
+            "switch_rate": -0.1008908685968819
+          },
+          "50": {
+            "all_improvement": -0.09525464052523891,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.09525464052523891,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.09525464052523891,
+            "easy_degradation": 0.05876172678238134,
+            "switch_rate": -0.11943144392442373
+          },
+          "100": {
+            "all_improvement": 0.000827649151606602,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+            "hard_failure_improvement": 0.000827649151606602,
+            "easy_degradation": -0.0011285469897130973,
+            "switch_rate": 0.0024120317820658377
+          }
+        },
+        "positive_horizon_slices": [
+          "100"
+        ],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "horizon_domain_only": {
+        "feature_count": 7,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.2877734037648393,
+          "t10_improvement": -0.47618706265543653,
+          "t25_improvement": -0.31611808582214795,
+          "t50_improvement": -0.31542535139554606,
+          "t100_raw_frame_diagnostic_improvement": -0.14282475620015533,
+          "hard_failure_improvement": -0.2758122379367457,
+          "easy_degradation": 0.32418582524688455,
+          "switch_rate": -0.6606262379367019
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.47618706265543653,
+            "t10_improvement": -0.47618706265543653,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.48501103991039596,
+            "easy_degradation": 0.42216823180102825,
+            "switch_rate": -0.6759511751720556
+          },
+          "25": {
+            "all_improvement": -0.31611808582214795,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.31611808582214795,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.27862579607376936,
+            "easy_degradation": 0.432191038726762,
+            "switch_rate": -0.7655530809205642
+          },
+          "50": {
+            "all_improvement": -0.31542535139554606,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.31542535139554606,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.31542535139554606,
+            "easy_degradation": 0.21128970595572083,
+            "switch_rate": -0.7660773097590571
+          },
+          "100": {
+            "all_improvement": -0.14282475620015533,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": -0.14282475620015533,
+            "hard_failure_improvement": -0.14282475620015533,
+            "easy_degradation": -0.028496674748135886,
+            "switch_rate": -0.2539727582292849
+          }
+        },
+        "positive_horizon_slices": [],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "history_only": {
+        "feature_count": 128,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.11237309003895812,
+          "t10_improvement": 0.020382557975151316,
+          "t25_improvement": -0.20981927514009702,
+          "t50_improvement": -0.11566469678158675,
+          "t100_raw_frame_diagnostic_improvement": -0.14555484305476185,
+          "hard_failure_improvement": -0.10773207031422505,
+          "easy_degradation": 0.18261042800279503,
+          "switch_rate": -0.19128492561844157
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": 0.020382557975151316,
+            "t10_improvement": 0.020382557975151316,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.0176430049188534,
+            "easy_degradation": -0.039297422665673376,
+            "switch_rate": -0.010907674328009431
+          },
+          "25": {
+            "all_improvement": -0.20981927514009702,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.20981927514009702,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.21001826190905637,
+            "easy_degradation": 0.23261380849855162,
+            "switch_rate": -0.5080920564216778
+          },
+          "50": {
+            "all_improvement": -0.11566469678158675,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.11566469678158675,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.11566469678158675,
+            "easy_degradation": 0.2765319311961043,
+            "switch_rate": -0.2354827526434391
+          },
+          "100": {
+            "all_improvement": -0.14555484305476185,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": -0.14555484305476185,
+            "hard_failure_improvement": -0.14555484305476185,
+            "easy_degradation": 0.030631363046833116,
+            "switch_rate": 0.09236662883087404
+          }
+        },
+        "positive_horizon_slices": [
+          "10"
+        ],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "goal_only": {
+        "feature_count": 17,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.2877734037648393,
+          "t10_improvement": -0.47618706265543653,
+          "t25_improvement": -0.31611808582214795,
+          "t50_improvement": -0.31542535139554606,
+          "t100_raw_frame_diagnostic_improvement": -0.14282475620015533,
+          "hard_failure_improvement": -0.2758122379367457,
+          "easy_degradation": 0.32418582524688455,
+          "switch_rate": -0.6606262379367019
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.47618706265543653,
+            "t10_improvement": -0.47618706265543653,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.48501103991039596,
+            "easy_degradation": 0.42216823180102825,
+            "switch_rate": -0.6759511751720556
+          },
+          "25": {
+            "all_improvement": -0.31611808582214795,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.31611808582214795,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.27862579607376936,
+            "easy_degradation": 0.432191038726762,
+            "switch_rate": -0.7655530809205642
+          },
+          "50": {
+            "all_improvement": -0.31542535139554606,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.31542535139554606,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.31542535139554606,
+            "easy_degradation": 0.21128970595572083,
+            "switch_rate": -0.7660773097590571
+          },
+          "100": {
+            "all_improvement": -0.14282475620015533,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": -0.14282475620015533,
+            "hard_failure_improvement": -0.14282475620015533,
+            "easy_degradation": -0.028496674748135886,
+            "switch_rate": -0.2539727582292849
+          }
+        },
+        "positive_horizon_slices": [],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "neighbor_only": {
+        "feature_count": 12,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.2877734037648393,
+          "t10_improvement": -0.47618706265543653,
+          "t25_improvement": -0.31611808582214795,
+          "t50_improvement": -0.31542535139554606,
+          "t100_raw_frame_diagnostic_improvement": -0.14282475620015533,
+          "hard_failure_improvement": -0.2758122379367457,
+          "easy_degradation": 0.32418582524688455,
+          "switch_rate": -0.6606262379367019
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.47618706265543653,
+            "t10_improvement": -0.47618706265543653,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.48501103991039596,
+            "easy_degradation": 0.42216823180102825,
+            "switch_rate": -0.6759511751720556
+          },
+          "25": {
+            "all_improvement": -0.31611808582214795,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.31611808582214795,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.27862579607376936,
+            "easy_degradation": 0.432191038726762,
+            "switch_rate": -0.7655530809205642
+          },
+          "50": {
+            "all_improvement": -0.31542535139554606,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.31542535139554606,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.31542535139554606,
+            "easy_degradation": 0.21128970595572083,
+            "switch_rate": -0.7660773097590571
+          },
+          "100": {
+            "all_improvement": -0.14282475620015533,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": -0.14282475620015533,
+            "hard_failure_improvement": -0.14282475620015533,
+            "easy_degradation": -0.028496674748135886,
+            "switch_rate": -0.2539727582292849
+          }
+        },
+        "positive_horizon_slices": [],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "motion_goal_context": {
+        "feature_count": 138,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.10896326859437921,
+          "t10_improvement": 0.02748739379455012,
+          "t25_improvement": -0.2085263142156244,
+          "t50_improvement": -0.11314254115249411,
+          "t100_raw_frame_diagnostic_improvement": -0.1427507448540567,
+          "hard_failure_improvement": -0.10399483142941723,
+          "easy_degradation": 0.1726154673879493,
+          "switch_rate": -0.18586961102448485
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": 0.02748739379455012,
+            "t10_improvement": 0.02748739379455012,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.0269384941864792,
+            "easy_degradation": -0.01712534079296546,
+            "switch_rate": 0.014218932606155033
+          },
+          "25": {
+            "all_improvement": -0.2085263142156244,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.2085263142156244,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.21143580859595312,
+            "easy_degradation": 0.21773091880162054,
+            "switch_rate": -0.5083147735708983
+          },
+          "50": {
+            "all_improvement": -0.11314254115249411,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.11314254115249411,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.11314254115249411,
+            "easy_degradation": 0.25394710666593623,
+            "switch_rate": -0.2390362281157914
+          },
+          "100": {
+            "all_improvement": -0.1427507448540567,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": -0.1427507448540567,
+            "hard_failure_improvement": -0.1427507448540567,
+            "easy_degradation": 0.026112695270708697,
+            "switch_rate": 0.08016458569807039
+          }
+        },
+        "positive_horizon_slices": [
+          "10"
+        ],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "baseline_plus_history": {
+        "feature_count": 156,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.029386570218492447,
+          "t10_improvement": -0.021432299496959795,
+          "t25_improvement": -0.010341294290715952,
+          "t50_improvement": -0.08891708411908683,
+          "t100_raw_frame_diagnostic_improvement": 0.0009923809471835687,
+          "hard_failure_improvement": -0.03562727231648655,
+          "easy_degradation": 0.011168142065411057,
+          "switch_rate": -0.043975725905010754
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.021432299496959795,
+            "t10_improvement": -0.021432299496959795,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.02944405172162856,
+            "easy_degradation": -0.0225717381157865,
+            "switch_rate": -0.03239838981950394
+          },
+          "25": {
+            "all_improvement": -0.010341294290715952,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.010341294290715952,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.03928989401979288,
+            "easy_degradation": 0.01876149881689604,
+            "switch_rate": -0.08700816629547137
+          },
+          "50": {
+            "all_improvement": -0.08891708411908683,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.08891708411908683,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.08891708411908683,
+            "easy_degradation": 0.02341027844542365,
+            "switch_rate": -0.0376148379268505
+          },
+          "100": {
+            "all_improvement": 0.0009923809471835687,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0009923809471835687,
+            "hard_failure_improvement": 0.0009923809471835687,
+            "easy_degradation": -0.0040406516730782105,
+            "switch_rate": 0.002553916004540302
+          }
+        },
+        "positive_horizon_slices": [
+          "100"
+        ],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "baseline_plus_goal": {
+        "feature_count": 45,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.025271087429678207,
+          "t10_improvement": 0.0006929679483581586,
+          "t25_improvement": -0.01373904035439466,
+          "t50_improvement": -0.08778510130370532,
+          "t100_raw_frame_diagnostic_improvement": -7.640362647587384e-05,
+          "hard_failure_improvement": -0.02716396288003531,
+          "easy_degradation": 0.022474030929674704,
+          "switch_rate": -0.026886931602680297
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": 0.0006929679483581586,
+            "t10_improvement": 0.0006929679483581586,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": 0.004082955589034487,
+            "easy_degradation": 0.02860448062535792,
+            "switch_rate": -0.001493312556810844
+          },
+          "25": {
+            "all_improvement": -0.01373904035439466,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.01373904035439466,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.016900054780849993,
+            "easy_degradation": 0.019466773407495475,
+            "switch_rate": -0.07379361544172236
+          },
+          "50": {
+            "all_improvement": -0.08778510130370532,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.08778510130370532,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.08778510130370532,
+            "easy_degradation": 0.029177087105766386,
+            "switch_rate": -0.022447564569249456
+          },
+          "100": {
+            "all_improvement": -7.640362647587384e-05,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": -7.640362647587384e-05,
+            "hard_failure_improvement": -7.640362647587384e-05,
+            "easy_degradation": -0.0004479030363300218,
+            "switch_rate": 0.0
+          }
+        },
+        "positive_horizon_slices": [],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "baseline_plus_neighbor": {
+        "feature_count": 40,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.024026338092572153,
+          "t10_improvement": -0.0018207029689809584,
+          "t25_improvement": -0.006851949127237411,
+          "t50_improvement": -0.08580985102313365,
+          "t100_raw_frame_diagnostic_improvement": 0.0003573865989914271,
+          "hard_failure_improvement": -0.027021234227791013,
+          "easy_degradation": 0.010997420761498455,
+          "switch_rate": -0.03164903704328037
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.0018207029689809584,
+            "t10_improvement": -0.0018207029689809584,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.0009311442158922434,
+            "easy_degradation": 0.0092110167335826,
+            "switch_rate": -0.0024022854174783337
+          },
+          "25": {
+            "all_improvement": -0.006851949127237411,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.006851949127237411,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.011650263362176783,
+            "easy_degradation": 0.008205536132094404,
+            "switch_rate": -0.08136599851521897
+          },
+          "50": {
+            "all_improvement": -0.08580985102313365,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.08580985102313365,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.08580985102313365,
+            "easy_degradation": 0.01884440363757267,
+            "switch_rate": -0.03293465071936219
+          },
+          "100": {
+            "all_improvement": 0.0003573865989914271,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0003573865989914271,
+            "hard_failure_improvement": 0.0003573865989914271,
+            "easy_degradation": -0.0004696525009217911,
+            "switch_rate": 0.0015607264472191074
+          }
+        },
+        "positive_horizon_slices": [
+          "100"
+        ],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      },
+      "baseline_plus_history_goal_neighbor": {
+        "feature_count": 166,
+        "global_delta_vs_baseline_family": {
+          "all_improvement": -0.041985018166175725,
+          "t10_improvement": -0.017784082346396723,
+          "t25_improvement": -0.08287664223294333,
+          "t50_improvement": -0.09525464052523891,
+          "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+          "hard_failure_improvement": -0.03831835955182494,
+          "easy_degradation": 0.06755852549095309,
+          "switch_rate": -0.07252728728559987
+        },
+        "global_material_core_positive": false,
+        "horizon_delta_vs_baseline_family": {
+          "10": {
+            "all_improvement": -0.017784082346396723,
+            "t10_improvement": -0.017784082346396723,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.023650664570292412,
+            "easy_degradation": -0.007290779022049887,
+            "switch_rate": -0.0468770289572783
+          },
+          "25": {
+            "all_improvement": -0.08287664223294333,
+            "t10_improvement": 0.0,
+            "t25_improvement": -0.08287664223294333,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.06453239563591862,
+            "easy_degradation": 0.11686812894451293,
+            "switch_rate": -0.1008908685968819
+          },
+          "50": {
+            "all_improvement": -0.09525464052523891,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": -0.09525464052523891,
+            "t100_raw_frame_diagnostic_improvement": 0.0,
+            "hard_failure_improvement": -0.09525464052523891,
+            "easy_degradation": 0.05876172678238134,
+            "switch_rate": -0.11943144392442373
+          },
+          "100": {
+            "all_improvement": 0.000827649151606602,
+            "t10_improvement": 0.0,
+            "t25_improvement": 0.0,
+            "t50_improvement": 0.0,
+            "t100_raw_frame_diagnostic_improvement": 0.000827649151606602,
+            "hard_failure_improvement": 0.000827649151606602,
+            "easy_degradation": -0.0011285469897130973,
+            "switch_rate": 0.0024120317820658377
+          }
+        },
+        "positive_horizon_slices": [
+          "100"
+        ],
+        "t50_supported_vs_baseline_family": false,
+        "t100_supported_vs_baseline_family": false
+      }
+    },
+    "horizon_objective_matrix": {
+      "10": {
+        "horizon": 10,
+        "best_current_router": "",
+        "candidate": "motion_goal_context",
+        "current_router_supported": true,
+        "delta_vs_baseline_family": {
+          "all_improvement": 0.02748739379455012,
+          "t10_improvement": 0.02748739379455012,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": 0.0269384941864792,
+          "easy_degradation": -0.01712534079296546,
+          "switch_rate": 0.014218932606155033
+        },
+        "objective_decision": "auxiliary_retrain_candidate_only",
+        "reason": "narrow horizon-positive router exists, but it is not a global context contribution.",
+        "allowed_claim": "narrow_auxiliary_context_signal"
+      },
+      "25": {
+        "horizon": 25,
+        "best_current_router": "",
+        "candidate": "baseline_plus_history_goal_neighbor",
+        "current_router_supported": true,
+        "delta_vs_baseline_family": {
+          "all_improvement": -0.08287664223294333,
+          "t10_improvement": 0.0,
+          "t25_improvement": -0.08287664223294333,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.06453239563591862,
+          "easy_degradation": 0.11686812894451293,
+          "switch_rate": -0.1008908685968819
+        },
+        "objective_decision": "diagnostic_router_only_not_baseline_family_positive",
+        "reason": "horizon router was positive in the sequence/graph protocol, but it is not positive versus baseline-family control in this contract.",
+        "allowed_claim": "no_main_claim"
+      },
+      "50": {
+        "horizon": 50,
+        "best_current_router": "",
+        "candidate": "baseline_plus_history_goal_neighbor",
+        "current_router_supported": false,
+        "delta_vs_baseline_family": {
+          "all_improvement": -0.09525464052523891,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": -0.09525464052523891,
+          "t100_raw_frame_diagnostic_improvement": 0.0,
+          "hard_failure_improvement": -0.09525464052523891,
+          "easy_degradation": 0.05876172678238134,
+          "switch_rate": -0.11943144392442373
+        },
+        "objective_decision": "blocked_until_new_row_level_objective",
+        "reason": "router_under_switches_despite_headroom",
+        "allowed_claim": "no_main_claim"
+      },
+      "100": {
+        "horizon": 100,
+        "best_current_router": "",
+        "candidate": "history_only",
+        "current_router_supported": false,
+        "delta_vs_baseline_family": {
+          "all_improvement": -0.14555484305476185,
+          "t10_improvement": 0.0,
+          "t25_improvement": 0.0,
+          "t50_improvement": 0.0,
+          "t100_raw_frame_diagnostic_improvement": -0.14555484305476185,
+          "hard_failure_improvement": -0.14555484305476185,
+          "easy_degradation": 0.030631363046833116,
+          "switch_rate": 0.09236662883087404
+        },
+        "objective_decision": "diagnostic_blocked_until_new_source_slice_objective",
+        "reason": "weak_predictive_signal_or_baseline_family_dominance",
+        "allowed_claim": "no_main_claim"
+      }
+    },
+    "t50_oracle_headroom": 0.035245639767331305,
+    "t100_oracle_headroom": 0.011162596566188565,
+    "claim_decision": "keep_scene_goal_neighbor_interaction_blocked_as_independent_main_claims",
+    "deployment_decision": "keep_baseline_family_stage37_teacher_floor_as_deployable_context_mechanism",
+    "next_training_contract": [
+      "Do not promote any current context variant globally: none beats baseline-family control on all+t50+hard with easy<=2%.",
+      "Use h10 context routers only as auxiliary/narrow evidence unless retrained source-level validation proves material global lift.",
+      "Treat h25 as diagnostic-only when it is positive in the router protocol but negative versus baseline-family control.",
+      "For t50, build a new row-level source/horizon objective because current gain/harm context routers under-switch despite oracle headroom.",
+      "For t100 raw-frame diagnostic, build a separate source-slice objective; current evidence is micro-positive but not material.",
+      "Preserve Stage37/teacher floor and baseline-family rollout context for any deployable policy.",
+      "Keep future endpoints/waypoints as labels only; no central velocity, no test endpoint goals, no test threshold tuning."
+    ]
+  },
+  "no_leakage": {
+    "future_endpoint_input_absent": true,
+    "future_waypoint_input_absent": true,
+    "future_labels_eval_only": true,
+    "central_velocity_absent": true,
+    "test_endpoint_goals_absent": true,
+    "test_threshold_tuning_absent": true
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "raw_frame_dataset_local_only": true,
+    "not_new_training": true,
+    "independent_context_main_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage42_ka_gate": {
+    "source": "fresh_stage42_ka_context_source_horizon_objective_contract",
+    "gates": {
+      "ao_incremental_ablation_loaded": true,
+      "io_horizon_router_loaded": true,
+      "js_context_closure_loaded": true,
+      "jy_materiality_loaded": true,
+      "baseline_family_control_positive": true,
+      "no_global_context_promotion": true,
+      "narrow_h10_auxiliary_recorded": true,
+      "diagnostic_h25_conflict_recorded": true,
+      "t50_context_blocker_recorded": true,
+      "t100_context_blocker_recorded": true,
+      "next_training_contract_emitted": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_3d_foundation": true,
+      "stage5c_false": true,
+      "smc_false": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage42_ka_context_source_horizon_objective_contract_pass"
+  }
+}

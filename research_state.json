@@ -107,8 +107,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage42_jy_context_materiality_by_source_slice",
-  "current_verdict": "stage42_jy_context_materiality_by_source_slice_pass",
+  "current_stage": "stage42_ka_context_source_horizon_objective_contract",
+  "current_verdict": "stage42_ka_context_source_horizon_objective_contract_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -2983,7 +2983,7 @@
   "blockers_requiring_user": [
     "Verify EWAP t+100 episode construction or provide additional long-horizon pedestrian/drone data."
   ],
-  "last_successful_command": "python run_stage42_context_materiality_by_source_slice.py",
+  "last_successful_command": "python run_stage42_context_source_horizon_objective_contract.py",
   "last_failed_command": "",
   "generated_reports": [
     "outputs/data_registry/stage20_dataset_registry.md",
@@ -3603,7 +3603,10 @@
     "outputs/stage42_long_research/paper_ready_evidence_matrix_stage42.md",
     "outputs/stage42_long_research/context_materiality_by_source_slice_stage42.md",
     "outputs/stage42_long_research/context_materiality_by_source_slice_stage42.json",
-    "outputs/stage42_long_research/stage42_stage_jy_gate.md"
+    "outputs/stage42_long_research/stage42_stage_jy_gate.md",
+    "outputs/stage42_long_research/context_source_horizon_objective_contract_stage42.md",
+    "outputs/stage42_long_research/context_source_horizon_objective_contract_stage42.json",
+    "outputs/stage42_long_research/stage42_stage_ka_gate.md"
   ],
   "generated_figures": [
     "outputs/final_model/figures/demo_baseline_vs_final.png"
@@ -20140,6 +20143,134 @@
         "stage5c_executed": false,
         "smc_enabled": false
       }
+    },
+    "stage_ka_context_source_horizon_objective_contract": {
+      "source": "fresh_stage42_ka_context_source_horizon_objective_contract",
+      "generated_at_utc": "2026-05-29T08:14:49.911210+00:00",
+      "report": "outputs/stage42_long_research/context_source_horizon_objective_contract_stage42.md",
+      "json": "outputs/stage42_long_research/context_source_horizon_objective_contract_stage42.json",
+      "gate": "outputs/stage42_long_research/stage42_stage_ka_gate.md",
+      "verdict": "stage42_ka_context_source_horizon_objective_contract_pass",
+      "gates": "15/15",
+      "summary": {
+        "global_material_context_variants": [],
+        "narrow_auxiliary_context_slices": [
+          {
+            "variant": "history_only",
+            "horizon": 10
+          },
+          {
+            "variant": "motion_goal_context",
+            "horizon": 10
+          }
+        ],
+        "diagnostic_router_conflicts": [
+          {
+            "horizon": 25,
+            "candidate": "baseline_plus_history_goal_neighbor",
+            "decision": "diagnostic_router_only_not_baseline_family_positive"
+          }
+        ],
+        "horizon_objective_matrix": {
+          "10": {
+            "horizon": 10,
+            "best_current_router": "",
+            "candidate": "motion_goal_context",
+            "current_router_supported": true,
+            "delta_vs_baseline_family": {
+              "all_improvement": 0.02748739379455012,
+              "t10_improvement": 0.02748739379455012,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": 0.0269384941864792,
+              "easy_degradation": -0.01712534079296546,
+              "switch_rate": 0.014218932606155033
+            },
+            "objective_decision": "auxiliary_retrain_candidate_only",
+            "reason": "narrow horizon-positive router exists, but it is not a global context contribution.",
+            "allowed_claim": "narrow_auxiliary_context_signal"
+          },
+          "25": {
+            "horizon": 25,
+            "best_current_router": "",
+            "candidate": "baseline_plus_history_goal_neighbor",
+            "current_router_supported": true,
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.08287664223294333,
+              "t10_improvement": 0.0,
+              "t25_improvement": -0.08287664223294333,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": -0.06453239563591862,
+              "easy_degradation": 0.11686812894451293,
+              "switch_rate": -0.1008908685968819
+            },
+            "objective_decision": "diagnostic_router_only_not_baseline_family_positive",
+            "reason": "horizon router was positive in the sequence/graph protocol, but it is not positive versus baseline-family control in this contract.",
+            "allowed_claim": "no_main_claim"
+          },
+          "50": {
+            "horizon": 50,
+            "best_current_router": "",
+            "candidate": "baseline_plus_history_goal_neighbor",
+            "current_router_supported": false,
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.09525464052523891,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": -0.09525464052523891,
+              "t100_raw_frame_diagnostic_improvement": 0.0,
+              "hard_failure_improvement": -0.09525464052523891,
+              "easy_degradation": 0.05876172678238134,
+              "switch_rate": -0.11943144392442373
+            },
+            "objective_decision": "blocked_until_new_row_level_objective",
+            "reason": "router_under_switches_despite_headroom",
+            "allowed_claim": "no_main_claim"
+          },
+          "100": {
+            "horizon": 100,
+            "best_current_router": "",
+            "candidate": "history_only",
+            "current_router_supported": false,
+            "delta_vs_baseline_family": {
+              "all_improvement": -0.14555484305476185,
+              "t10_improvement": 0.0,
+              "t25_improvement": 0.0,
+              "t50_improvement": 0.0,
+              "t100_raw_frame_diagnostic_improvement": -0.14555484305476185,
+              "hard_failure_improvement": -0.14555484305476185,
+              "easy_degradation": 0.030631363046833116,
+              "switch_rate": 0.09236662883087404
+            },
+            "objective_decision": "diagnostic_blocked_until_new_source_slice_objective",
+            "reason": "weak_predictive_signal_or_baseline_family_dominance",
+            "allowed_claim": "no_main_claim"
+          }
+        },
+        "claim_decision": "keep_scene_goal_neighbor_interaction_blocked_as_independent_main_claims",
+        "deployment_decision": "keep_baseline_family_stage37_teacher_floor_as_deployable_context_mechanism",
+        "next_training_contract": [
+          "Do not promote any current context variant globally: none beats baseline-family control on all+t50+hard with easy<=2%.",
+          "Use h10 context routers only as auxiliary/narrow evidence unless retrained source-level validation proves material global lift.",
+          "Treat h25 as diagnostic-only when it is positive in the router protocol but negative versus baseline-family control.",
+          "For t50, build a new row-level source/horizon objective because current gain/harm context routers under-switch despite oracle headroom.",
+          "For t100 raw-frame diagnostic, build a separate source-slice objective; current evidence is micro-positive but not material.",
+          "Preserve Stage37/teacher floor and baseline-family rollout context for any deployable policy.",
+          "Keep future endpoints/waypoints as labels only; no central velocity, no test endpoint goals, no test threshold tuning."
+        ]
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "metric_or_seconds_claim": false,
+        "raw_frame_dataset_local_only": true,
+        "not_new_training": true,
+        "independent_context_main_claim_allowed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
     }
   },
   "latest_long_chinese_goal_summary": {
@@ -36219,5 +36350,5 @@
       "smc_enabled": false
     }
   },
-  "last_updated_utc": "2026-05-29T07:48:26.241591+00:00"
+  "last_updated_utc": "2026-05-29T08:14:49.911210+00:00"
 }
