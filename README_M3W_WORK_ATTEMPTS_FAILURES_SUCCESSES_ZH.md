@@ -1817,3 +1817,18 @@ Safety note: test switch rate is `1.000000` and fallback rate is `0.000000`. Thi
 
 This remains dataset-local/raw-frame 2.5D evidence. Stage5C and SMC are disabled; no metric/seconds/true-3D/foundation claim is made.
 <!-- STAGE43_G_SOURCE_LEVEL_PROTECTED_LATENT:END -->
+
+<!-- STAGE43_H_SOURCE_LEVEL_LATENT_ROBUSTNESS:START -->
+## STAGE43_H_SOURCE_LEVEL_LATENT_ROBUSTNESS
+
+source = `fresh_stage43_h_source_level_latent_robustness`
+verdict = `stage43_h_unit_consistent_audit_failed_keep_floor`
+gate = `9 / 10`
+deploy_stage43_g = `False`
+
+Stage43-H audits Stage43-G and finds a unit-consistency issue: the Stage43-G headline compared normalized neural delta error against dataset-local floor FDE. After multiplying neural error by each row's scale, all/t50/hard remain positive but easy degradation becomes unsafe.
+
+Unit-consistent metrics: all `0.351410`, t50 `0.158059`, t100 raw diagnostic `0.004466`, hard/failure `0.377402`, easy degradation `1.597489`.
+
+Conclusion: keep the frozen Stage37/Stage42 safety floor. Stage43-G is a useful neural dynamics signal but not a deployable replacement until a calibrated safe-switch repair passes unit-consistent easy/proximity gates.
+<!-- STAGE43_H_SOURCE_LEVEL_LATENT_ROBUSTNESS:END -->

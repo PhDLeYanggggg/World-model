@@ -37273,5 +37273,47 @@
     "report": "outputs/stage43_latent_state/stage43_source_level_latent_eval.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_h_source_level_latent_robustness": {
+    "source": "fresh_stage43_h_source_level_latent_robustness",
+    "verdict": "stage43_h_unit_consistent_audit_failed_keep_floor",
+    "gate": "9 / 10",
+    "deploy_stage43_g": false,
+    "keep_frozen_floor": true,
+    "unit_consistent_metrics": {
+      "rows": 89736,
+      "all_improvement_vs_floor": 0.35141047362868716,
+      "t50_improvement_vs_floor": 0.15805879713904114,
+      "t100_raw_frame_diagnostic_vs_floor": 0.004465702584407372,
+      "hard_failure_improvement_vs_floor": 0.3774023713328153,
+      "easy_degradation_vs_floor": 1.597488871365405,
+      "switch_rate": 1.0,
+      "harm_over_floor": -0.36691683530807495,
+      "mean_floor_err": 1.0441255569458008,
+      "mean_selected_err": 0.6772089004516602
+    },
+    "unit_consistency": {
+      "normalized_error_definition": "sqrt((pred_delta_norm - label_delta_norm)^2)",
+      "unit_consistent_error_definition": "normalized_error * row_scale before comparing with floor FDE",
+      "normalized_all_minus_unit_all": 0.506607042549402,
+      "normalized_t50_minus_unit_t50": 0.6633036133270765,
+      "stage43_g_normalized_metrics_not_deployment_evidence": true
+    },
+    "proximity": {
+      "rows": 89736,
+      "grouped_rows_selected": 88199,
+      "grouped_rows_floor": 88199,
+      "selected_near_005": 0.03350378122200932,
+      "floor_near_005": 0.037551446161521104,
+      "selected_near_010": 0.16844862186646106,
+      "floor_near_010": 0.16079547387158585,
+      "selected_p05_min_distance": 0.06054427441448205,
+      "floor_p05_min_distance": 0.05823717964036628,
+      "near_005_delta_vs_floor": -0.004047664939511787,
+      "near_010_delta_vs_floor": 0.007653147994875209
+    },
+    "report": "outputs/stage43_latent_state/stage43_source_level_latent_robustness_audit.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
