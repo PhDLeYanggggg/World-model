@@ -1737,3 +1737,18 @@ Stage43-B builds the latent-state dataset contract from Stage35/36/37 external g
 
 Endpoint/failure/gain/harm/occupancy latent-state training is contract-ready; full-waypoint supervised latent training is still blocked until train/val full-waypoint labels are frozen. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made.
 <!-- STAGE43_B_LATENT_STATE_DATASET_CONTRACT:END -->
+
+<!-- STAGE43_C_PROTECTED_LATENT_STATE_SMALL:START -->
+## STAGE43_C_PROTECTED_LATENT_STATE_SMALL
+
+source = `fresh_stage43_c_protected_latent_state_small`
+verdict = `stage43_c_protected_latent_state_candidate_pass`
+gate = `8 / 8`
+deploy_neural = `True`
+
+Stage43-C trains a real PyTorch protected latent-state head on the Stage43 contract. Inputs are causal/current-or-past only; future endpoint/full-waypoint labels remain loss/eval only. The model learns z_t and z_t -> z_{t+h}, plus endpoint/failure/gain/harm/occupancy heads, then evaluates only through a safety-floor fallback policy.
+
+Protected eval vs floor: all `0.177665`, t50 `0.137515`, t100 raw diagnostic `0.018234`, hard/failure `0.181572`, easy degradation `0.000000`.
+
+This is not Stage5C, not SMC, not metric/seconds-level, not true 3D, and not a foundation model.
+<!-- STAGE43_C_PROTECTED_LATENT_STATE_SMALL:END -->

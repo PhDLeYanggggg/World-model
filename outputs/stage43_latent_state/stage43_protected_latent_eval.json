@@ -1,0 +1,103 @@
+{
+  "source": "fresh_stage43_c_protected_latent_state_small",
+  "result_source": "fresh_run",
+  "generated_at_utc": "2026-05-29T09:16:34.578040+00:00",
+  "git_commit": "86cbc9f",
+  "mode": "quick",
+  "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_protected_latent_small.pt",
+  "checkpoint_sha256": "20f15f683a5e2be0e363275202c329d032298246ec7537b2e06875e413c8db6f",
+  "runtime": {
+    "python": "3.11.1",
+    "machine": "arm64",
+    "torch_version": "2.12.0",
+    "torch_threads": 4,
+    "torch_interop_threads": 1,
+    "device": "cpu",
+    "num_workers": 0
+  },
+  "data_rows": {
+    "train": 4000,
+    "val": 2000,
+    "test": 2000
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.7491409480571747,
+      "val_candidate_mse_to_oracle": 0.263358473777771,
+      "latent_variance": 0.6223296374082565
+    }
+  ],
+  "validation_selected_policy": {
+    "policy": {
+      "gain_threshold": 0.55,
+      "harm_threshold": 0.5,
+      "failure_threshold": 0.0
+    },
+    "metrics": {
+      "rows": 2000,
+      "all_improvement_vs_floor": 0.18883074659649246,
+      "t50_improvement_vs_floor": 0.07163008962532058,
+      "t100_raw_frame_diagnostic_vs_floor": 0.02868593823386012,
+      "hard_failure_improvement_vs_floor": 0.18845737265567952,
+      "easy_degradation_vs_floor": 0.04073543573975513,
+      "switch_rate": 0.1975,
+      "harm_over_floor": -0.17629125714302063,
+      "mean_floor_err": 0.9335938692092896,
+      "mean_selected_err": 0.7573026418685913
+    },
+    "objective": 0.022458064363914364
+  },
+  "test_metrics_with_floor": {
+    "rows": 2000,
+    "all_improvement_vs_floor": 0.17766455770318457,
+    "t50_improvement_vs_floor": 0.13751452592291835,
+    "t100_raw_frame_diagnostic_vs_floor": 0.01823382989958844,
+    "hard_failure_improvement_vs_floor": 0.18157231430054366,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.1765,
+    "harm_over_floor": -0.18501967191696167,
+    "mean_floor_err": 1.0413988828659058,
+    "mean_selected_err": 0.8563792109489441
+  },
+  "test_metrics_neural_without_floor": {
+    "rows": 2000,
+    "all_improvement_vs_floor": 0.5986094772059208,
+    "t50_improvement_vs_floor": 0.6335179370021695,
+    "t100_raw_frame_diagnostic_vs_floor": 0.47559050087541677,
+    "hard_failure_improvement_vs_floor": 0.6383894718784499,
+    "easy_degradation_vs_floor": 0.014066343810585025,
+    "switch_rate": 1.0,
+    "harm_over_floor": -0.6233912110328674,
+    "mean_floor_err": 1.0413988828659058,
+    "mean_selected_err": 0.41800764203071594
+  },
+  "latent_variance": 0.4024827480316162,
+  "jepa_or_latent_noncollapse": true,
+  "deploy_neural": true,
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "ordinary_residual": false
+  },
+  "stage43_c_gate": {
+    "source": "fresh_stage43_c_protected_latent_state_small",
+    "gates": {
+      "torch_training_fresh_run": true,
+      "stage43_a_b_preconditions_used": true,
+      "latent_noncollapse": true,
+      "protected_eval_completed": true,
+      "easy_preserved": true,
+      "neural_has_any_protected_lift": true,
+      "ungated_neural_reported": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 8,
+    "total": 8,
+    "verdict": "stage43_c_protected_latent_state_candidate_pass",
+    "deploy_neural": true
+  }
+}
