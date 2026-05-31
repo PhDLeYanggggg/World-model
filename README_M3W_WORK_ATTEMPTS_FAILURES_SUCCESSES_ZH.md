@@ -1975,3 +1975,23 @@ Result source: `fresh_train_val_selected_tail_horizon_adapter`. A train-split ri
 
 Boundary: this is a stronger protected tail-horizon full-waypoint adapter, but t100 remains fallback-only rather than positive. The result remains dataset-local/raw-frame 2.5D evidence with no metric/seconds-level claim, no Stage5C, and no SMC.
 <!-- STAGE43_P_TAIL_HORIZON_WAYPOINT_ADAPTER:END -->
+
+<!-- STAGE43_Q_T100_GUARDED_TRIAL:START -->
+## Stage43-Q t100 guarded trial
+
+Result source: `fresh_validation_selected_t100_guarded_trial`. This is a validation-selected h100 add-on trial over the Stage43-P safety floor; the test set is used only once for confirmation.
+
+- gate: `11 / 11`
+- verdict: `stage43_q_t100_guarded_trial_honest_blocker`
+- t100 status: `honest_blocker_no_t100_deployment`
+- t100 blocker: `validation_positive_h100_did_not_generalize_to_test_safely`
+- allowed h100 rules: `UCY|100`
+- full-waypoint ADE improvement vs floor: `50.25%`
+- t50 full-waypoint ADE improvement vs floor: `51.23%`
+- t100 raw-frame diagnostic: `0.00%`
+- t100 delta vs Stage43-P: `0.00%`
+- rejected h100 candidate t100 delta vs Stage43-P: `-2.22%`
+- easy degradation: `0.00%`
+
+Boundary: Stage43-Q does not execute Stage5C or SMC, does not make metric/seconds claims, and does not deploy h100 unless the validation-selected h100 rule is test-safe.
+<!-- STAGE43_Q_T100_GUARDED_TRIAL:END -->
