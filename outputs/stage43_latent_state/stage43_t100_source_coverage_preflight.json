@@ -1,0 +1,418 @@
+{
+  "source": "fresh_stage43_s_t100_source_coverage_preflight",
+  "result_source": "fresh_h100_source_coverage_preflight",
+  "generated_at_utc": "2026-05-31T16:20:13.391569+00:00",
+  "git_commit": "26cd756",
+  "stage43_r_precondition": {
+    "verdict": "stage43_r_source_stable_h100_guard_blocks_t100_false_positive",
+    "t100_status": "h100_blocked_insufficient_source_stability"
+  },
+  "cache_inputs": {
+    "train": {
+      "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+      "exists": true,
+      "sha256": "7cb12a873447bc9f59d135ced4db4dd4aeeea43257982c397596fb29e90b63e8"
+    },
+    "val": {
+      "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+      "exists": true,
+      "sha256": "ec68b9f3fda0166f918f18bda124262cf974829e752f89770a489f14f099df5d"
+    },
+    "test": {
+      "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz",
+      "exists": true,
+      "sha256": "62f4a079bfa7e3eba5ca5ebdadf864d7a1342b4dc4431412ecaed910520ab22f"
+    }
+  },
+  "protocol": {
+    "audit_only": true,
+    "rewrites_cache": false,
+    "test_threshold_tuning": false,
+    "min_val_source_count": 2,
+    "min_source_rows": 100,
+    "future_labels_used_for_inputs": false,
+    "split_hash": "23c8005d83a5f2db8e62a7a21701da0d7ab41b7ace9cbf7be907b9b97fd4e519"
+  },
+  "records": [
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+      "source_short": "OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+      "source_family": "ETH_UCY",
+      "h100_rows": 2614,
+      "all_rows_in_split": 21598
+    },
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+      "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 480,
+      "all_rows_in_split": 3180
+    },
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+      "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 3032,
+      "all_rows_in_split": 20087
+    },
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+      "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 7128,
+      "all_rows_in_split": 47223
+    },
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+      "source_short": "OpenTraj/datasets/UCY/zara01/obsmat.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 3251,
+      "all_rows_in_split": 16103
+    },
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+      "source_short": "OpenTraj/datasets/UCY/zara02/obsmat.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 5433,
+      "all_rows_in_split": 25901
+    },
+    {
+      "split": "train",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+      "source_short": "OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 1440,
+      "all_rows_in_split": 9540
+    },
+    {
+      "split": "val",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+      "source_short": "OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+      "source_family": "ETH_UCY",
+      "h100_rows": 2560,
+      "all_rows_in_split": 16611
+    },
+    {
+      "split": "val",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+      "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 5608,
+      "all_rows_in_split": 37153
+    },
+    {
+      "split": "val",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+      "source_short": "OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+      "source_family": "UCY",
+      "h100_rows": 7128,
+      "all_rows_in_split": 47223
+    },
+    {
+      "split": "test",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "source_short": "OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "source_family": "TrajNet_biwi",
+      "h100_rows": 1160,
+      "all_rows_in_split": 7685
+    },
+    {
+      "split": "test",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+      "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+      "source_family": "TrajNet_crowds",
+      "h100_rows": 1440,
+      "all_rows_in_split": 9540
+    },
+    {
+      "split": "test",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "source_short": "OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "source_family": "UCY",
+      "h100_rows": 15470,
+      "all_rows_in_split": 70585
+    }
+  ],
+  "family_summary": {
+    "ETH_UCY": {
+      "source_count": 2,
+      "eligible_source_count": 2,
+      "h100_rows": 5174,
+      "current_by_split": {
+        "train": {
+          "source_count": 1,
+          "h100_rows": 2614
+        },
+        "val": {
+          "source_count": 1,
+          "h100_rows": 2560
+        },
+        "test": {
+          "source_count": 0,
+          "h100_rows": 0
+        }
+      },
+      "feasible_source_stable_validation": false,
+      "reason": "blocked_cannot_hold_train_val_test_with_source_stable_validation",
+      "source_level_split_proposal": {
+        "status": "not_feasible",
+        "train_sources": [],
+        "val_sources": [],
+        "test_sources": []
+      },
+      "sources": [
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+          "source_short": "OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+          "current_split": "train",
+          "h100_rows": 2614,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+          "source_short": "OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+          "current_split": "val",
+          "h100_rows": 2560,
+          "eligible_for_validation": true
+        }
+      ]
+    },
+    "TrajNet_biwi": {
+      "source_count": 1,
+      "eligible_source_count": 1,
+      "h100_rows": 1160,
+      "current_by_split": {
+        "train": {
+          "source_count": 0,
+          "h100_rows": 0
+        },
+        "val": {
+          "source_count": 0,
+          "h100_rows": 0
+        },
+        "test": {
+          "source_count": 1,
+          "h100_rows": 1160
+        }
+      },
+      "feasible_source_stable_validation": false,
+      "reason": "blocked_too_few_h100_sources",
+      "source_level_split_proposal": {
+        "status": "not_feasible",
+        "train_sources": [],
+        "val_sources": [],
+        "test_sources": []
+      },
+      "sources": [
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+          "source_short": "OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+          "current_split": "test",
+          "h100_rows": 1160,
+          "eligible_for_validation": true
+        }
+      ]
+    },
+    "TrajNet_crowds": {
+      "source_count": 8,
+      "eligible_source_count": 8,
+      "h100_rows": 27812,
+      "current_by_split": {
+        "train": {
+          "source_count": 6,
+          "h100_rows": 20764
+        },
+        "val": {
+          "source_count": 1,
+          "h100_rows": 5608
+        },
+        "test": {
+          "source_count": 1,
+          "h100_rows": 1440
+        }
+      },
+      "feasible_source_stable_validation": true,
+      "reason": "feasible_with_source_level_resplit",
+      "source_level_split_proposal": {
+        "status": "feasible",
+        "train_sources": [
+          "OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+          "OpenTraj/datasets/UCY/zara02/obsmat.txt",
+          "OpenTraj/datasets/UCY/zara01/obsmat.txt",
+          "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+          "OpenTraj/datasets/UCY/zara03/crowds_zara03.txt"
+        ],
+        "val_sources": [
+          "OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt"
+        ],
+        "test_sources": [
+          "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt"
+        ],
+        "train_h100_rows": 20284,
+        "val_h100_rows": 6088,
+        "test_h100_rows": 1440
+      },
+      "sources": [
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "current_split": "test",
+          "h100_rows": 1440,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+          "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+          "current_split": "train",
+          "h100_rows": 7128,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+          "source_short": "OpenTraj/datasets/UCY/zara02/obsmat.txt",
+          "current_split": "train",
+          "h100_rows": 5433,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+          "source_short": "OpenTraj/datasets/UCY/zara01/obsmat.txt",
+          "current_split": "train",
+          "h100_rows": 3251,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+          "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+          "current_split": "train",
+          "h100_rows": 3032,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+          "source_short": "OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+          "current_split": "train",
+          "h100_rows": 1440,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+          "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+          "current_split": "train",
+          "h100_rows": 480,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "source_short": "OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "current_split": "val",
+          "h100_rows": 5608,
+          "eligible_for_validation": true
+        }
+      ]
+    },
+    "UCY": {
+      "source_count": 2,
+      "eligible_source_count": 2,
+      "h100_rows": 22598,
+      "current_by_split": {
+        "train": {
+          "source_count": 0,
+          "h100_rows": 0
+        },
+        "val": {
+          "source_count": 1,
+          "h100_rows": 7128
+        },
+        "test": {
+          "source_count": 1,
+          "h100_rows": 15470
+        }
+      },
+      "feasible_source_stable_validation": false,
+      "reason": "blocked_cannot_hold_train_val_test_with_source_stable_validation",
+      "source_level_split_proposal": {
+        "status": "not_feasible",
+        "train_sources": [],
+        "val_sources": [],
+        "test_sources": []
+      },
+      "sources": [
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+          "source_short": "OpenTraj/datasets/UCY/students03/obsmat.txt",
+          "current_split": "test",
+          "h100_rows": 15470,
+          "eligible_for_validation": true
+        },
+        {
+          "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+          "source_short": "OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+          "current_split": "val",
+          "h100_rows": 7128,
+          "eligible_for_validation": true
+        }
+      ]
+    }
+  },
+  "preflight_summary": {
+    "h100_source_count": 13,
+    "feasible_families": [
+      "TrajNet_crowds"
+    ],
+    "blocked_families": [
+      "ETH_UCY",
+      "TrajNet_biwi",
+      "UCY"
+    ],
+    "family_count": 4,
+    "feasible_family_count": 1,
+    "blocked_family_count": 3,
+    "can_rebuild_source_stable_h100_validation": true,
+    "needs_more_h100_sources_for_uniform_t100": true
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "t100_positive_success": false
+  },
+  "stage43_s_gate": {
+    "source": "fresh_stage43_s_t100_source_coverage_preflight",
+    "gates": {
+      "stage43_r_precondition_available": true,
+      "cache_inputs_exist": true,
+      "fresh_audit_only": true,
+      "source_coverage_reported": true,
+      "feasible_or_blocker_reported": true,
+      "test_threshold_not_tuned": true,
+      "no_future_inputs": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 8,
+    "total": 8,
+    "verdict": "stage43_s_t100_source_coverage_preflight_pass",
+    "rebuild_source_stable_h100_split_recommended": true,
+    "uniform_t100_blocker": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

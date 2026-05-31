@@ -7208,3 +7208,18 @@ Result source: `fresh_validation_source_stable_t100_guard`. This adds a validati
 
 Boundary: t100 remains fallback-only. The h100 blocker is now localized to insufficient source-stable validation evidence; no metric/seconds claim, Stage5C, or SMC.
 <!-- STAGE43_R_T100_SOURCE_STABILITY_GUARD:END -->
+
+<!-- STAGE43_S_T100_SOURCE_COVERAGE_PREFLIGHT:START -->
+## Stage43-S t100 source coverage preflight
+
+Result source: `fresh_h100_source_coverage_preflight`. This audits h100 source coverage and prepares a source-stable split preflight without rewriting caches or tuning test thresholds.
+
+- gate: `8 / 8`
+- verdict: `stage43_s_t100_source_coverage_preflight_pass`
+- feasible h100 families: `TrajNet_crowds`
+- blocked h100 families: `ETH_UCY, TrajNet_biwi, UCY`
+- rebuild source-stable h100 split recommended: `True`
+- uniform t100 blocker remains: `True`
+
+Boundary: this is a preflight audit, not a new t100 deployment. It keeps the Stage43-P/R fallback and preserves the dataset-local/raw-frame 2.5D claim boundary.
+<!-- STAGE43_S_T100_SOURCE_COVERAGE_PREFLIGHT:END -->
