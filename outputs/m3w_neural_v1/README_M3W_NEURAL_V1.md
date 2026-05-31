@@ -3993,3 +3993,21 @@ Result source: `fresh_validation_only_safe_repair_from_stage43_m_checkpoint`. Th
 
 Boundary: Stage43-O is a safety repair. It removes negative-source and t100 harm by fallback, but t100 is not a positive success and some source families are fallback-only. The result remains dataset-local/raw-frame 2.5D evidence with no metric/seconds-level claim, no Stage5C, and no SMC.
 <!-- STAGE43_O_FULL_WAYPOINT_LATENT_SAFE_REPAIR:END -->
+
+<!-- STAGE43_P_TAIL_HORIZON_WAYPOINT_ADAPTER:START -->
+## Stage43-P tail-horizon full-waypoint adapter
+
+Result source: `fresh_train_val_selected_tail_horizon_adapter`. A train-split ridge full-waypoint adapter was trained on tail horizons and selected on validation only, then tested once against the Stage43-O safe repair floor.
+
+- gate: `13 / 13`
+- verdict: `stage43_p_tail_horizon_adapter_pass_t100_still_fallback`
+- full-test rows: `89736`
+- full-waypoint ADE improvement vs floor: `50.25%`
+- t50 full-waypoint ADE improvement vs floor: `51.23%`
+- t100 raw-frame diagnostic: `0.00%`
+- hard/failure ADE improvement vs floor: `47.88%`
+- easy degradation: `0.00%`
+- t50 bootstrap CI: `[50.76%, 51.74%]`
+
+Boundary: this is a stronger protected tail-horizon full-waypoint adapter, but t100 remains fallback-only rather than positive. The result remains dataset-local/raw-frame 2.5D evidence with no metric/seconds-level claim, no Stage5C, and no SMC.
+<!-- STAGE43_P_TAIL_HORIZON_WAYPOINT_ADAPTER:END -->
