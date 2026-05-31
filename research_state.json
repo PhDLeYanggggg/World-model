@@ -175,8 +175,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_s_t100_source_coverage_preflight",
-  "current_verdict": "stage43_s_t100_source_coverage_preflight_pass",
+  "current_stage": "stage43_t_t100_source_stable_specialist",
+  "current_verdict": "stage43_t_source_stable_h100_specialist_deployable",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -38493,6 +38493,99 @@
       "stage5c_executed": false,
       "smc_enabled": false,
       "t100_positive_success": false
+    }
+  },
+  "stage43_t_t100_source_stable_specialist": {
+    "source": "fresh_stage43_t_t100_source_stable_specialist",
+    "result_source": "fresh_source_stable_trajnet_crowds_h100_specialist",
+    "updated_at": "2026-05-31T17:35:04.737582+00:00",
+    "report": "outputs/stage43_latent_state/stage43_t100_source_stable_specialist.json",
+    "gate": "12 / 12",
+    "verdict": "stage43_t_source_stable_h100_specialist_deployable",
+    "selected_specialist": {
+      "target": "residual",
+      "l2": 100000.0,
+      "model_hash": "490af945ba1d40d588e1f7d6a939612777948457ae7122ea4b447707639433ef",
+      "validation_metrics": {
+        "rows": 6088,
+        "full_waypoint_ade_improvement_vs_floor": 0.025628084864736445,
+        "endpoint_fde_improvement_vs_floor": 0.02470345637892568,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.025628084864736445,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.025628084864736445,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 1.0,
+        "harm_over_floor_ade": -0.004636168014258146,
+        "mean_floor_ade": 0.18090187013149261,
+        "mean_selected_ade": 0.17626570165157318
+      },
+      "validation_source_table": {
+        "OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt": {
+          "rows": 480,
+          "mean_floor_ade": 0.12614449858665466,
+          "easy_rows": 12,
+          "hard_failure_rows": 480,
+          "full_waypoint_ade_improvement_vs_floor": 0.0648417785592057,
+          "easy_degradation_vs_floor": 0.0
+        },
+        "OpenTraj/datasets/TrajNet/Train/crowds/students003.txt": {
+          "rows": 5608,
+          "mean_floor_ade": 0.18558867275714874,
+          "easy_rows": 782,
+          "hard_failure_rows": 5608,
+          "full_waypoint_ade_improvement_vs_floor": 0.023346711206943316,
+          "easy_degradation_vs_floor": 0.0
+        }
+      },
+      "validation_source_safety": {
+        "min_source_improvement": 0.023346711206943316,
+        "max_source_easy_degradation": 0.0,
+        "source_safe": true
+      }
+    },
+    "source_stable_h100_test_metrics": {
+      "rows": 1440,
+      "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+      "endpoint_fde_improvement_vs_floor": -0.005459442217583321,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+      "t50_endpoint_fde_improvement_vs_floor": 0.0,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.025918246955633606,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 1.0,
+      "harm_over_floor_ade": -0.003363788826391101,
+      "mean_floor_ade": 0.12978455424308777,
+      "mean_selected_ade": 0.1264207661151886
+    },
+    "deployment": {
+      "deploy_source_stable_h100_specialist": true,
+      "positive_candidate": true,
+      "easy_safe_candidate": true,
+      "reason": "deployable_source_stable_h100_specialist"
+    },
+    "deployment_metrics": {
+      "rows": 1440,
+      "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+      "endpoint_fde_improvement_vs_floor": -0.005459442217583321,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+      "t50_endpoint_fde_improvement_vs_floor": 0.0,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.025918246955633606,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 1.0,
+      "harm_over_floor_ade": -0.003363788826391101,
+      "mean_floor_ade": 0.12978455424308777,
+      "mean_selected_ade": 0.1264207661151886
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "uniform_t100_success": false
     }
   }
 }

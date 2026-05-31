@@ -7223,3 +7223,21 @@ Result source: `fresh_h100_source_coverage_preflight`. This audits h100 source c
 
 Boundary: this is a preflight audit, not a new t100 deployment. It keeps the Stage43-P/R fallback and preserves the dataset-local/raw-frame 2.5D claim boundary.
 <!-- STAGE43_S_T100_SOURCE_COVERAGE_PREFLIGHT:END -->
+
+<!-- STAGE43_T_T100_SOURCE_STABLE_SPECIALIST:START -->
+## Stage43-T source-stable h100 specialist
+
+Result source: `fresh_source_stable_trajnet_crowds_h100_specialist`. This trains a source-stable h100 specialist only for the feasible TrajNet_crowds family, using source-level train/val/test split from Stage43-S.
+
+- gate: `12 / 12`
+- verdict: `stage43_t_source_stable_h100_specialist_deployable`
+- positive h100 dynamics signal: `True`
+- validation source safe: `True`
+- easy safe: `True`
+- deployed: `True`
+- held-out h100 ADE improvement: `2.59%`
+- held-out h100 easy degradation: `0.00%`
+- deployment ADE improvement: `2.59%`
+
+Boundary: this is a source-stable h100 family trial, not a uniform t100 claim. Deployment is allowed only when validation-source safety and held-out easy preservation both pass; otherwise Stage43-P/R remain the safety floor and t100 remains fallback-only.
+<!-- STAGE43_T_T100_SOURCE_STABLE_SPECIALIST:END -->
