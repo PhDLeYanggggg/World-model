@@ -1921,3 +1921,21 @@ Result source: `fresh_run`. A torch latent dynamics head was trained on the froz
 
 Claim boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds-level claim; Stage5C not executed; SMC not enabled.
 <!-- STAGE43_M_FULL_WAYPOINT_LATENT_DYNAMICS:END -->
+
+<!-- STAGE43_N_FULL_WAYPOINT_LATENT_ROBUSTNESS:START -->
+## Stage43-N full-waypoint latent robustness audit
+
+Result source: `fresh_full_test_replay_from_stage43_m_checkpoint`. The Stage43-M checkpoint and validation-selected protected policy were replayed on the full Stage43-L test cache, then broken down by domain, horizon, source, and scene.
+
+- gate: `12 / 12`
+- verdict: `stage43_n_full_test_positive_with_source_t100_blockers`
+- full-test rows: `89736`
+- full-waypoint ADE improvement vs floor: `29.42%`
+- t50 full-waypoint ADE improvement vs floor: `16.60%`
+- t100 raw-frame diagnostic: `-16.57%`
+- hard/failure ADE improvement vs floor: `28.66%`
+- easy degradation: `0.00%`
+- negative source count: `1`
+
+Boundary: this supports a protected full-test latent dynamics candidate with t100 and source-level caveats; it is still dataset-local/raw-frame 2.5D only, with no metric/seconds-level claim, no Stage5C, and no SMC.
+<!-- STAGE43_N_FULL_WAYPOINT_LATENT_ROBUSTNESS:END -->

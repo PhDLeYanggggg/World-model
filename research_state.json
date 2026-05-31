@@ -175,8 +175,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_m_full_waypoint_latent_dynamics",
-  "current_verdict": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+  "current_stage": "stage43_n_full_waypoint_latent_robustness_audit",
+  "current_verdict": "stage43_n_full_test_positive_with_source_t100_blockers",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -37848,5 +37848,48 @@
       "smc_enabled": false
     },
     "checkpoint_committed": false
+  },
+  "stage43_n_full_waypoint_latent_robustness_audit": {
+    "source": "fresh_stage43_n_full_waypoint_latent_robustness_audit",
+    "result_source": "fresh_full_test_replay_from_stage43_m_checkpoint",
+    "updated_at": "2026-05-31T13:45:48.254349+00:00",
+    "report": "outputs/stage43_latent_state/stage43_full_waypoint_latent_robustness_audit.json",
+    "gate": "12 / 12",
+    "verdict": "stage43_n_full_test_positive_with_source_t100_blockers",
+    "full_test_rows": 89736,
+    "overall_full_test_metrics": {
+      "rows": 89736,
+      "full_waypoint_ade_improvement_vs_floor": 0.2942174592576926,
+      "endpoint_fde_improvement_vs_floor": 0.3928400262219911,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.1660268789983027,
+      "t50_endpoint_fde_improvement_vs_floor": 0.28568254565886375,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.16572313100285108,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.2866071058920402,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.6830591958634216,
+      "harm_over_floor_ade": -0.057667460292577744,
+      "mean_floor_ade": 0.1960028111934662,
+      "mean_selected_ade": 0.13833536207675934
+    },
+    "t100_failure_attribution": {
+      "rows": 18070,
+      "protected_t100_improvement": -0.16572313100285108,
+      "ungated_t100_improvement": -0.7228151979599085,
+      "switch_rate": 0.28566685113447704,
+      "mean_selected_minus_floor_ade": 0.024616092443466187,
+      "mean_ungated_minus_floor_ade": 0.10736513137817383,
+      "diagnosis": "t100 remains negative because the neural waypoint shape is worse than the floor on long raw-frame rows; fallback gate still switches too often for t100."
+    },
+    "negative_source_count": 1,
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "uniform_source_success": false,
+      "t100_success": false
+    }
   }
 }

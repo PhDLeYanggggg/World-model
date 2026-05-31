@@ -1,0 +1,394 @@
+{
+  "source": "fresh_stage43_n_full_waypoint_latent_robustness_audit",
+  "result_source": "fresh_full_test_replay_from_stage43_m_checkpoint",
+  "generated_at_utc": "2026-05-31T13:45:48.254349+00:00",
+  "git_commit": "ffbab1a",
+  "stage43_m_precondition": {
+    "verdict": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+    "deploy_neural_full_waypoint": true,
+    "sampled_test_rows": 16000
+  },
+  "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_full_waypoint_latent_dynamics.pt",
+  "checkpoint_sha256": "a21a621d9bd5061d728dc80fd43a4d4bf302489b6395cf5562810fabf7c4318f",
+  "checkpoint_sha256_matches_stage43_m": true,
+  "policy_replayed": {
+    "gain_threshold": 0.25,
+    "harm_threshold": 0.75,
+    "failure_threshold": 0.0
+  },
+  "full_test_rows": 89736,
+  "feature_count": 162,
+  "overall_full_test_metrics": {
+    "rows": 89736,
+    "full_waypoint_ade_improvement_vs_floor": 0.2942174592576926,
+    "endpoint_fde_improvement_vs_floor": 0.3928400262219911,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.1660268789983027,
+    "t50_endpoint_fde_improvement_vs_floor": 0.28568254565886375,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.16572313100285108,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.2866071058920402,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.6830591958634216,
+    "harm_over_floor_ade": -0.057667460292577744,
+    "mean_floor_ade": 0.1960028111934662,
+    "mean_selected_ade": 0.13833536207675934
+  },
+  "by_domain": {
+    "ETH_UCY": {
+      "rows": 70585,
+      "full_waypoint_ade_improvement_vs_floor": 0.294049723447419,
+      "endpoint_fde_improvement_vs_floor": 0.38880235673460084,
+      "ungated_full_waypoint_ade_improvement_vs_floor": 0.15040061617315859,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.6633562371608699,
+      "mean_floor_ade": 0.1912616640329361,
+      "mean_selected_ade": 0.13502122461795807,
+      "mean_ungated_ade": 0.16249579191207886
+    },
+    "TrajNet": {
+      "rows": 9611,
+      "full_waypoint_ade_improvement_vs_floor": 0.06347317278917775,
+      "endpoint_fde_improvement_vs_floor": 0.21027989604735187,
+      "ungated_full_waypoint_ade_improvement_vs_floor": -0.17284740611905502,
+      "easy_degradation_vs_floor": 0.1981263075802293,
+      "switch_rate": 0.6646550827177192,
+      "mean_floor_ade": 0.1691557615995407,
+      "mean_selected_ade": 0.1584189087152481,
+      "mean_ungated_ade": 0.19839389622211456
+    },
+    "UCY": {
+      "rows": 9540,
+      "full_waypoint_ade_improvement_vs_floor": 0.4474731116253745,
+      "endpoint_fde_improvement_vs_floor": 0.5451015223250454,
+      "ungated_full_waypoint_ade_improvement_vs_floor": 0.37721662546453427,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.8473794549266247,
+      "mean_floor_ade": 0.2581287622451782,
+      "mean_selected_ade": 0.14262308180332184,
+      "mean_ungated_ade": 0.16075830161571503
+    }
+  },
+  "by_horizon": {
+    "10": {
+      "rows": 26132,
+      "full_waypoint_ade_improvement_vs_floor": 0.5019752129276984,
+      "endpoint_fde_improvement_vs_floor": 0.6103037304752692,
+      "ungated_full_waypoint_ade_improvement_vs_floor": 0.39144538980895915,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.861740394918108,
+      "mean_floor_ade": 0.21607372164726257,
+      "mean_selected_ade": 0.1076100692152977,
+      "mean_ungated_ade": 0.13149265944957733
+    },
+    "100": {
+      "rows": 18070,
+      "full_waypoint_ade_improvement_vs_floor": -0.16572313100285108,
+      "endpoint_fde_improvement_vs_floor": -0.11699583810280023,
+      "ungated_full_waypoint_ade_improvement_vs_floor": -0.7228151979599085,
+      "easy_degradation_vs_floor": 0.12584993787441423,
+      "switch_rate": 0.28566685113447704,
+      "mean_floor_ade": 0.14853745698928833,
+      "mean_selected_ade": 0.17315354943275452,
+      "mean_ungated_ade": 0.25590258836746216
+    },
+    "25": {
+      "rows": 23780,
+      "full_waypoint_ade_improvement_vs_floor": 0.40400704751124883,
+      "endpoint_fde_improvement_vs_floor": 0.5712456360578119,
+      "ungated_full_waypoint_ade_improvement_vs_floor": 0.33813886818385386,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.8291000841042894,
+      "mean_floor_ade": 0.2205643206834793,
+      "mean_selected_ade": 0.13145478069782257,
+      "mean_ungated_ade": 0.14598295092582703
+    },
+    "50": {
+      "rows": 21754,
+      "full_waypoint_ade_improvement_vs_floor": 0.1660268789983027,
+      "endpoint_fde_improvement_vs_floor": 0.28568254565886375,
+      "ungated_full_waypoint_ade_improvement_vs_floor": 0.15814053540219464,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.6388710122276363,
+      "mean_floor_ade": 0.18447083234786987,
+      "mean_selected_ade": 0.1538437157869339,
+      "mean_ungated_ade": 0.15529851615428925
+    }
+  },
+  "by_source_summary": {
+    "source_count": 4,
+    "negative_source_count": 1,
+    "worst_sources": [
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+        "rows": 1926,
+        "full_waypoint_ade_improvement_vs_floor": -1.1533402609233128,
+        "endpoint_fde_improvement_vs_floor": -0.7432611230609365,
+        "ungated_full_waypoint_ade_improvement_vs_floor": -1.1714409762174336,
+        "easy_degradation_vs_floor": 1.6400952214949558,
+        "switch_rate": 0.9631360332294912,
+        "mean_floor_ade": 0.174832284450531,
+        "mean_selected_ade": 0.37647339701652527,
+        "mean_ungated_ade": 0.3796379864215851
+      },
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+        "rows": 70585,
+        "full_waypoint_ade_improvement_vs_floor": 0.294049723447419,
+        "endpoint_fde_improvement_vs_floor": 0.38880235673460084,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.15040061617315859,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6633562371608699,
+        "mean_floor_ade": 0.1912616640329361,
+        "mean_selected_ade": 0.13502122461795807,
+        "mean_ungated_ade": 0.16249579191207886
+      },
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+        "rows": 7685,
+        "full_waypoint_ade_improvement_vs_floor": 0.38133567476145525,
+        "endpoint_fde_improvement_vs_floor": 0.48271844570653455,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.08801054833091071,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.589850357839948,
+        "mean_floor_ade": 0.1677331030368805,
+        "mean_selected_ade": 0.10377048701047897,
+        "mean_ungated_ade": 0.1529708206653595
+      },
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+        "rows": 9540,
+        "full_waypoint_ade_improvement_vs_floor": 0.4474731116253745,
+        "endpoint_fde_improvement_vs_floor": 0.5451015223250454,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.37721662546453427,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.8473794549266247,
+        "mean_floor_ade": 0.2581287622451782,
+        "mean_selected_ade": 0.14262308180332184,
+        "mean_ungated_ade": 0.16075830161571503
+      }
+    ],
+    "best_sources": [
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+        "rows": 9540,
+        "full_waypoint_ade_improvement_vs_floor": 0.4474731116253745,
+        "endpoint_fde_improvement_vs_floor": 0.5451015223250454,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.37721662546453427,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.8473794549266247,
+        "mean_floor_ade": 0.2581287622451782,
+        "mean_selected_ade": 0.14262308180332184,
+        "mean_ungated_ade": 0.16075830161571503
+      },
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+        "rows": 7685,
+        "full_waypoint_ade_improvement_vs_floor": 0.38133567476145525,
+        "endpoint_fde_improvement_vs_floor": 0.48271844570653455,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.08801054833091071,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.589850357839948,
+        "mean_floor_ade": 0.1677331030368805,
+        "mean_selected_ade": 0.10377048701047897,
+        "mean_ungated_ade": 0.1529708206653595
+      },
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+        "rows": 70585,
+        "full_waypoint_ade_improvement_vs_floor": 0.294049723447419,
+        "endpoint_fde_improvement_vs_floor": 0.38880235673460084,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.15040061617315859,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6633562371608699,
+        "mean_floor_ade": 0.1912616640329361,
+        "mean_selected_ade": 0.13502122461795807,
+        "mean_ungated_ade": 0.16249579191207886
+      },
+      {
+        "slice": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+        "rows": 1926,
+        "full_waypoint_ade_improvement_vs_floor": -1.1533402609233128,
+        "endpoint_fde_improvement_vs_floor": -0.7432611230609365,
+        "ungated_full_waypoint_ade_improvement_vs_floor": -1.1714409762174336,
+        "easy_degradation_vs_floor": 1.6400952214949558,
+        "switch_rate": 0.9631360332294912,
+        "mean_floor_ade": 0.174832284450531,
+        "mean_selected_ade": 0.37647339701652527,
+        "mean_ungated_ade": 0.3796379864215851
+      }
+    ]
+  },
+  "by_scene_summary": {
+    "scene_count": 4,
+    "negative_scene_count": 1,
+    "worst_scenes": [
+      {
+        "slice": "TrajNet_mot",
+        "rows": 1926,
+        "full_waypoint_ade_improvement_vs_floor": -1.1533402609233128,
+        "endpoint_fde_improvement_vs_floor": -0.7432611230609365,
+        "ungated_full_waypoint_ade_improvement_vs_floor": -1.1714409762174336,
+        "easy_degradation_vs_floor": 1.6400952214949558,
+        "switch_rate": 0.9631360332294912,
+        "mean_floor_ade": 0.174832284450531,
+        "mean_selected_ade": 0.37647339701652527,
+        "mean_ungated_ade": 0.3796379864215851
+      },
+      {
+        "slice": "ETH_UCY_students03",
+        "rows": 70585,
+        "full_waypoint_ade_improvement_vs_floor": 0.294049723447419,
+        "endpoint_fde_improvement_vs_floor": 0.38880235673460084,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.15040061617315859,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6633562371608699,
+        "mean_floor_ade": 0.1912616640329361,
+        "mean_selected_ade": 0.13502122461795807,
+        "mean_ungated_ade": 0.16249579191207886
+      },
+      {
+        "slice": "TrajNet_biwi",
+        "rows": 7685,
+        "full_waypoint_ade_improvement_vs_floor": 0.38133567476145525,
+        "endpoint_fde_improvement_vs_floor": 0.48271844570653455,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.08801054833091071,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.589850357839948,
+        "mean_floor_ade": 0.1677331030368805,
+        "mean_selected_ade": 0.10377048701047897,
+        "mean_ungated_ade": 0.1529708206653595
+      },
+      {
+        "slice": "UCY_crowds",
+        "rows": 9540,
+        "full_waypoint_ade_improvement_vs_floor": 0.4474731116253745,
+        "endpoint_fde_improvement_vs_floor": 0.5451015223250454,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.37721662546453427,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.8473794549266247,
+        "mean_floor_ade": 0.2581287622451782,
+        "mean_selected_ade": 0.14262308180332184,
+        "mean_ungated_ade": 0.16075830161571503
+      }
+    ],
+    "best_scenes": [
+      {
+        "slice": "UCY_crowds",
+        "rows": 9540,
+        "full_waypoint_ade_improvement_vs_floor": 0.4474731116253745,
+        "endpoint_fde_improvement_vs_floor": 0.5451015223250454,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.37721662546453427,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.8473794549266247,
+        "mean_floor_ade": 0.2581287622451782,
+        "mean_selected_ade": 0.14262308180332184,
+        "mean_ungated_ade": 0.16075830161571503
+      },
+      {
+        "slice": "TrajNet_biwi",
+        "rows": 7685,
+        "full_waypoint_ade_improvement_vs_floor": 0.38133567476145525,
+        "endpoint_fde_improvement_vs_floor": 0.48271844570653455,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.08801054833091071,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.589850357839948,
+        "mean_floor_ade": 0.1677331030368805,
+        "mean_selected_ade": 0.10377048701047897,
+        "mean_ungated_ade": 0.1529708206653595
+      },
+      {
+        "slice": "ETH_UCY_students03",
+        "rows": 70585,
+        "full_waypoint_ade_improvement_vs_floor": 0.294049723447419,
+        "endpoint_fde_improvement_vs_floor": 0.38880235673460084,
+        "ungated_full_waypoint_ade_improvement_vs_floor": 0.15040061617315859,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6633562371608699,
+        "mean_floor_ade": 0.1912616640329361,
+        "mean_selected_ade": 0.13502122461795807,
+        "mean_ungated_ade": 0.16249579191207886
+      },
+      {
+        "slice": "TrajNet_mot",
+        "rows": 1926,
+        "full_waypoint_ade_improvement_vs_floor": -1.1533402609233128,
+        "endpoint_fde_improvement_vs_floor": -0.7432611230609365,
+        "ungated_full_waypoint_ade_improvement_vs_floor": -1.1714409762174336,
+        "easy_degradation_vs_floor": 1.6400952214949558,
+        "switch_rate": 0.9631360332294912,
+        "mean_floor_ade": 0.174832284450531,
+        "mean_selected_ade": 0.37647339701652527,
+        "mean_ungated_ade": 0.3796379864215851
+      }
+    ]
+  },
+  "source_domain_caveats": {
+    "negative_source_count": 1,
+    "domain_easy_harm_count": 1,
+    "domains_with_easy_harm": [
+      {
+        "domain": "TrajNet",
+        "rows": 9611,
+        "full_waypoint_ade_improvement_vs_floor": 0.06347317278917775,
+        "endpoint_fde_improvement_vs_floor": 0.21027989604735187,
+        "ungated_full_waypoint_ade_improvement_vs_floor": -0.17284740611905502,
+        "easy_degradation_vs_floor": 0.1981263075802293,
+        "switch_rate": 0.6646550827177192,
+        "mean_floor_ade": 0.1691557615995407,
+        "mean_selected_ade": 0.1584189087152481,
+        "mean_ungated_ade": 0.19839389622211456
+      }
+    ],
+    "uniform_source_success": false,
+    "uniform_domain_easy_safety": false
+  },
+  "t100_failure_attribution": {
+    "rows": 18070,
+    "protected_t100_improvement": -0.16572313100285108,
+    "ungated_t100_improvement": -0.7228151979599085,
+    "switch_rate": 0.28566685113447704,
+    "mean_selected_minus_floor_ade": 0.024616092443466187,
+    "mean_ungated_minus_floor_ade": 0.10736513137817383,
+    "diagnosis": "t100 remains negative because the neural waypoint shape is worse than the floor on long raw-frame rows; fallback gate still switches too often for t100."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "uniform_source_success": false,
+    "t100_success": false
+  },
+  "stage43_n_gate": {
+    "source": "fresh_stage43_n_full_waypoint_latent_robustness_audit",
+    "gates": {
+      "stage43_m_precondition_deployable": true,
+      "checkpoint_replayed": true,
+      "full_test_eval_larger_than_stage43_m_sample": true,
+      "domain_breakdown_complete": true,
+      "horizon_breakdown_complete": true,
+      "source_breakdown_complete": true,
+      "source_domain_caveats_recorded": true,
+      "overall_positive_on_full_test": true,
+      "t50_positive_on_full_test": true,
+      "easy_preserved_on_full_test": true,
+      "t100_failure_reported_honestly": true,
+      "no_leakage_claim_boundary": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_n_full_test_positive_with_source_t100_blockers",
+    "full_test_protected_candidate": true,
+    "uniform_source_success": false,
+    "t100_success": false
+  }
+}
