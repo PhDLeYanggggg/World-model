@@ -7294,3 +7294,20 @@ Result source: `fresh_checkpoint_replay_world_state_head_audit`. I replayed the 
 
 Boundary: this is an auxiliary world-state head audit, not a Stage5C/SMC/generative rollout. Physical validity remains a gap because the current checkpoint exposes a validity logit but did not train it with a dedicated loss.
 <!-- STAGE43_V_WORLD_STATE_HEAD_AUDIT:END -->
+
+<!-- STAGE43_W_AUXILIARY_HEAD_REPAIR:START -->
+## Stage43-W auxiliary density/validity head repair
+
+Result source: `fresh_train_val_selected_auxiliary_head_repair`. I froze the Stage43-M latent checkpoint and trained train/val-selected ridge calibrators for the weak density and waypoint-validity proxy heads.
+
+- gate: `10 / 10`
+- verdict: `stage43_w_density_proxy_repaired_validity_proxy_diagnostic`
+- density feature set: `latent_heads_causal_x`
+- density R2 before -> after: `-0.5639` -> `0.8178`
+- density corr after: `0.9252`
+- validity proxy R2 before -> after: `-2.5067` -> `0.9223`
+- deploy density proxy head: `True`
+- true physical validity claim: `False`
+
+Boundary: this repairs a causal history-density proxy head from frozen latent/context features. It is not a future occupancy claim. The validity head remains a label-availability proxy, not a true physical-validity certificate.
+<!-- STAGE43_W_AUXILIARY_HEAD_REPAIR:END -->
