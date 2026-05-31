@@ -7261,3 +7261,21 @@ Result source: `fresh_integrated_stage43_p_tail_adapter_plus_stage43_t_h100_spec
 
 Boundary: this is a family-limited h100 full-waypoint ADE improvement integrated into the protected policy. It is not a uniform t100 solution, not endpoint-FDE success, not metric/seconds-level, not Stage5C, and not SMC.
 <!-- STAGE43_U_INTEGRATED_TAIL_H100_POLICY:END -->
+
+<!-- STAGE43_V_WORLD_STATE_HEAD_AUDIT:START -->
+## Stage43-V world-state head audit
+
+Result source: `fresh_checkpoint_replay_world_state_head_audit`. I replayed the Stage43-M latent checkpoint and audited failure/gain/harm/density/validity heads on the test split without test threshold tuning.
+
+- gate: `9 / 9`
+- verdict: `stage43_v_world_state_head_audit_partial`
+- informative binary heads: `failure, gain, harm`
+- failure AUROC/AUPRC: `0.8648` / `0.7901`
+- gain AUROC/AUPRC: `0.8737` / `0.9215`
+- harm AUROC/AUPRC: `0.9047` / `0.8891`
+- density R2/corr: `-0.5639` / `0.2055`
+- latent mean variance: `0.482653`
+- physical validity head deployable: `False` (no explicit training loss yet)
+
+Boundary: this is an auxiliary world-state head audit, not a Stage5C/SMC/generative rollout. Physical validity remains a gap because the current checkpoint exposes a validity logit but did not train it with a dedicated loss.
+<!-- STAGE43_V_WORLD_STATE_HEAD_AUDIT:END -->
