@@ -175,8 +175,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_t_t100_source_stable_specialist",
-  "current_verdict": "stage43_t_source_stable_h100_specialist_deployable",
+  "current_stage": "stage43_u_integrated_tail_h100_policy",
+  "current_verdict": "stage43_u_integrated_tail_h100_policy_pass_family_limited",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -38586,6 +38586,98 @@
       "stage5c_executed": false,
       "smc_enabled": false,
       "uniform_t100_success": false
+    }
+  },
+  "stage43_u_integrated_tail_h100_policy": {
+    "source": "fresh_stage43_u_integrated_tail_h100_policy",
+    "result_source": "fresh_integrated_stage43_p_tail_adapter_plus_stage43_t_h100_specialist",
+    "updated_at": "2026-05-31T18:03:49.861169+00:00",
+    "report": "outputs/stage43_latent_state/stage43_integrated_tail_h100_policy.json",
+    "gate": "15 / 15",
+    "verdict": "stage43_u_integrated_tail_h100_policy_pass_family_limited",
+    "integrated_policy": {
+      "base_policy": "stage43_p_tail_horizon_waypoint_adapter",
+      "added_specialist": "stage43_t_source_stable_h100_specialist",
+      "specialist_family": "TrajNet_crowds",
+      "specialist_horizon": 100,
+      "specialist_test_sources": [
+        "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt"
+      ],
+      "specialist_rows_in_full_test": 1440,
+      "deployment_rule": "stage43_p_everywhere_except_stage43_t_source_stable_h100_sources"
+    },
+    "integrated_full_test_metrics": {
+      "rows": 89736,
+      "full_waypoint_ade_improvement_vs_floor": 0.5028120216586792,
+      "endpoint_fde_improvement_vs_floor": 0.5114809252015476,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.5123378909285481,
+      "t50_endpoint_fde_improvement_vs_floor": 0.5512817551451819,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0018046423720278204,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4791015584569419,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.720502362485513,
+      "harm_over_floor_ade": -0.09855258464813232,
+      "mean_floor_ade": 0.1960028111934662,
+      "mean_selected_ade": 0.09745024144649506
+    },
+    "delta_vs_stage43_p": {
+      "full_waypoint_ade_improvement_delta": 0.0002754014398876903,
+      "endpoint_fde_delta": -6.577760974690872e-05,
+      "t50_delta": 0.0,
+      "t100_delta": 0.0018046423720278204,
+      "hard_failure_delta": 0.0003331839258647884,
+      "easy_degradation_delta": 0.0
+    },
+    "h100_specialist_slice": {
+      "stage43_p_slice": {
+        "rows": 1440,
+        "full_waypoint_ade_improvement_vs_floor": 0.0,
+        "endpoint_fde_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0
+      },
+      "integrated_slice": {
+        "rows": 1440,
+        "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+        "endpoint_fde_improvement_vs_floor": -0.005459442217583321,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 1.0,
+        "delta_vs_stage43_p_full_waypoint_ade": 0.025918246955633606,
+        "delta_vs_stage43_p_endpoint_fde": -0.005459442217583321
+      },
+      "source_table": {
+        "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt": {
+          "rows": 1440,
+          "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 1.0,
+          "easy_rows": 193,
+          "hard_failure_rows": 1440
+        }
+      },
+      "negative_source_count": 0,
+      "worst_sources": [
+        {
+          "slice": "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "rows": 1440,
+          "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 1.0,
+          "easy_rows": 193,
+          "hard_failure_rows": 1440
+        }
+      ]
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "uniform_t100_success": false,
+      "endpoint_fde_success": false
     }
   }
 }

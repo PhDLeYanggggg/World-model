@@ -4082,3 +4082,23 @@ Result source: `fresh_source_stable_trajnet_crowds_h100_specialist`. This trains
 
 Boundary: this is a source-stable h100 family trial, not a uniform t100 claim. Deployment is allowed only when validation-source safety and held-out easy preservation both pass; otherwise Stage43-P/R remain the safety floor and t100 remains fallback-only.
 <!-- STAGE43_T_T100_SOURCE_STABLE_SPECIALIST:END -->
+
+<!-- STAGE43_U_INTEGRATED_TAIL_H100_POLICY:START -->
+## Stage43-U integrated tail + h100 policy
+
+Result source: `fresh_integrated_stage43_p_tail_adapter_plus_stage43_t_h100_specialist`. This composes Stage43-P with the Stage43-T source-stable h100 specialist without changing test thresholds.
+
+- gate: `15 / 15`
+- verdict: `stage43_u_integrated_tail_h100_policy_pass_family_limited`
+- deployed: `True`
+- full-waypoint ADE improvement vs floor: `50.28%`
+- t50 full-waypoint ADE improvement vs floor: `51.23%`
+- t100 raw-frame diagnostic: `0.18%`
+- hard/failure ADE improvement vs floor: `47.91%`
+- easy degradation: `0.00%`
+- h100 source-slice ADE lift: `2.59%`
+- h100 source-slice endpoint FDE lift: `-0.55%`
+- all delta vs Stage43-P: `0.03%`
+
+Boundary: this is a family-limited h100 full-waypoint ADE improvement integrated into the protected policy. It is not a uniform t100 solution, not endpoint-FDE success, not metric/seconds-level, not Stage5C, and not SMC.
+<!-- STAGE43_U_INTEGRATED_TAIL_H100_POLICY:END -->
