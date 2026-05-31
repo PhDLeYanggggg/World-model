@@ -1,35 +1,35 @@
 # M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W is my long-running research project on real-world multi-agent world modeling.
+This repository is where I am building M3W, a research project on real-world multi-agent world modeling from top-down pedestrian and agent-scene data.
 
-The core question is:
+The question I keep coming back to is simple:
 
 > Can a model look at only past motion, scene context, and agent interactions, then predict what happens next without cheating on the future or damaging easy cases?
 
-I am especially interested in the part after "without". In this project, a result only matters if it survives strong causal baselines, no-leakage checks, conservative fallback, and slice-level audits. Improving a hard subset while quietly hurting normal motion is not good enough.
+The important part is the "without". A result only counts here if it survives strong causal baselines, no-leakage checks, conservative fallback, and slice-level audits. A model that improves a difficult slice while quietly breaking normal motion is not a useful world model.
 
-## Current Status
+## Where It Stands
 
 M3W is currently a protected 2.5D / pseudo-3D multi-agent world-state model. It is not a true 3D world model, and it is not a large-scale foundation model.
 
-The strongest deployable system right now is safety-first: learned heads estimate failure risk, expected gain, switch harm, long-horizon drift, interaction context, and latent world-state signals. Those learned components are allowed to act only when validation-selected safety rules say the switch is worth it. Otherwise the model falls back to a strong causal baseline.
+The strongest version today is safety-first. Learned heads estimate failure risk, expected gain, switch harm, long-horizon drift, interaction context, and latent world-state signals. They are allowed to act only when validation-selected safety rules say the switch is worth it. Otherwise the system falls back to a strong causal baseline.
 
-That fallback is part of the design, not a backup excuse. The practical goal is to build a model that improves hard motion cases while knowing when to leave easy cases alone.
+That fallback is part of the design, not a backup excuse. The practical goal is to improve hard motion cases while knowing when to leave easy cases alone.
 
 ## What Has Worked
 
-The best evidence so far is in protected, raw-frame settings:
+The strongest evidence so far is in protected, raw-frame settings:
 
 - On SDD, cost-aware selection improved the pixel-space benchmark while keeping easy-case degradation under control.
 - On external top-down pedestrian data, causal history windows and scene-agnostic goal prototypes repaired the earlier `t+50` transfer failure.
 - Source-aware and horizon-aware policies produced deployable external raw-frame gains under conservative fallback.
 - Full-waypoint latent dynamics improved external full-trajectory prediction under safety guards, with strong `t+50` gains.
 
-The honest summary is: M3W has useful protected world-state behavior, but it still has source-level and horizon-level caveats. I do not claim uniform cross-source success.
+The honest summary: M3W has useful protected world-state behavior, but it still has source-level and horizon-level caveats. I do not claim uniform cross-source success.
 
 ## What Has Not Worked Yet
 
-The negative results are part of the project:
+The negative results matter just as much:
 
 - A hard "best baseline" classifier switched too often and damaged easy cases.
 - JEPA-style representation learning avoided collapse, but has not yet become a reliable standalone downstream driver.
@@ -43,7 +43,7 @@ These failures are kept visible because they mark the real boundary of the curre
 
 ## Claim Boundary
 
-I am deliberately strict about what this repository claims:
+I am deliberately strict about the language in this repository:
 
 - SDD results are pixel-space benchmark results.
 - External results are dataset-local raw-frame results unless timing and geometry are verified for that source.
@@ -54,9 +54,9 @@ I am deliberately strict about what this repository claims:
 
 In short: this is a serious world-modeling track, but it is not yet a true 3D or foundation world model.
 
-## Repository Map
+## How To Read This Repository
 
-This front page is meant to be readable. The detailed evidence lives in the result ledgers:
+This front page is the plain-language entry point. The detailed evidence lives in the result ledgers:
 
 | Path | What it contains |
 | --- | --- |
