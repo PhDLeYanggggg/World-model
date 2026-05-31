@@ -3975,3 +3975,21 @@ Result source: `fresh_full_test_replay_from_stage43_m_checkpoint`. The Stage43-M
 
 Boundary: this supports a protected full-test latent dynamics candidate with t100 and source-level caveats; it is still dataset-local/raw-frame 2.5D only, with no metric/seconds-level claim, no Stage5C, and no SMC.
 <!-- STAGE43_N_FULL_WAYPOINT_LATENT_ROBUSTNESS:END -->
+
+<!-- STAGE43_O_FULL_WAYPOINT_LATENT_SAFE_REPAIR:START -->
+## Stage43-O full-waypoint latent safe repair
+
+Result source: `fresh_validation_only_safe_repair_from_stage43_m_checkpoint`. This step keeps the Stage43-M latent model frozen and uses validation-only source-family/horizon support to repair the Stage43-N negative source and t100 harm.
+
+- gate: `12 / 12`
+- verdict: `stage43_o_safe_repair_pass_t100_fallback_not_positive`
+- full-test rows: `89736`
+- full-waypoint ADE improvement vs floor: `31.34%`
+- t50 full-waypoint ADE improvement vs floor: `15.13%`
+- t100 raw-frame diagnostic: `0.00%`
+- hard/failure ADE improvement vs floor: `29.18%`
+- easy degradation: `0.00%`
+- negative source count after repair: `0`
+
+Boundary: Stage43-O is a safety repair. It removes negative-source and t100 harm by fallback, but t100 is not a positive success and some source families are fallback-only. The result remains dataset-local/raw-frame 2.5D evidence with no metric/seconds-level claim, no Stage5C, and no SMC.
+<!-- STAGE43_O_FULL_WAYPOINT_LATENT_SAFE_REPAIR:END -->

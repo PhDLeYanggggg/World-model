@@ -175,8 +175,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_n_full_waypoint_latent_robustness_audit",
-  "current_verdict": "stage43_n_full_test_positive_with_source_t100_blockers",
+  "current_stage": "stage43_o_full_waypoint_latent_safe_repair",
+  "current_verdict": "stage43_o_safe_repair_pass_t100_fallback_not_positive",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -37890,6 +37890,73 @@
       "smc_enabled": false,
       "uniform_source_success": false,
       "t100_success": false
+    }
+  },
+  "stage43_o_full_waypoint_latent_safe_repair": {
+    "source": "fresh_stage43_o_full_waypoint_latent_safe_repair",
+    "result_source": "fresh_validation_only_safe_repair_from_stage43_m_checkpoint",
+    "updated_at": "2026-05-31T14:23:03.561294+00:00",
+    "report": "outputs/stage43_latent_state/stage43_full_waypoint_latent_safe_repair.json",
+    "gate": "12 / 12",
+    "verdict": "stage43_o_safe_repair_pass_t100_fallback_not_positive",
+    "repair_policy": {
+      "policy_type": "validation_only_source_family_horizon_support_guard",
+      "min_support_rows": 1000,
+      "min_improvement": 0.0,
+      "max_easy_degradation": 0.02,
+      "allowed_source_family_horizon_rules": [
+        "ETH_UCY|25",
+        "ETH_UCY|50",
+        "TrajNet_crowds|10",
+        "TrajNet_crowds|25",
+        "TrajNet_crowds|50",
+        "UCY|10",
+        "UCY|25",
+        "UCY|50"
+      ],
+      "selection_data": "validation_only",
+      "test_threshold_tuning": false
+    },
+    "overall_full_test_metrics": {
+      "rows": 89736,
+      "full_waypoint_ade_improvement_vs_floor": 0.31337125877882477,
+      "endpoint_fde_improvement_vs_floor": 0.39245178653000035,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.15132902216447863,
+      "t50_endpoint_fde_improvement_vs_floor": 0.2590313416307627,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.2918013394346015,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.5549612195774272,
+      "harm_over_floor_ade": -0.061421651393175125,
+      "mean_floor_ade": 0.1960028111934662,
+      "mean_selected_ade": 0.13458116352558136
+    },
+    "source_domain_caveats": {
+      "negative_source_count": 0,
+      "domain_easy_harm_count": 0,
+      "domains_with_easy_harm": [],
+      "uniform_positive_source_success": false,
+      "fallback_only_source_families": [
+        "TrajNet_biwi",
+        "TrajNet_mot"
+      ]
+    },
+    "t100_repair": {
+      "rows": 18070,
+      "improvement": 0.0,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "status": "t100_harm_repaired_by_fallback_not_positive"
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "uniform_source_positive_success": false,
+      "t100_positive_success": false
     }
   }
 }
