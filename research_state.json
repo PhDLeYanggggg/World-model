@@ -37470,5 +37470,49 @@
     "report": "outputs/stage43_latent_state/stage43_unit_consistent_safe_switch.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_j_source_level_caveat_audit": {
+    "source": "fresh_stage43_j_source_level_caveat_audit",
+    "verdict": "stage43_j_source_level_caveat_mapped",
+    "gate": "7 / 7",
+    "source_uniform_candidate": false,
+    "domain_level_candidate": true,
+    "source_count": 4,
+    "nonpositive_source_count": 1,
+    "nonpositive_t50_source_count": 2,
+    "worst_source": {
+      "source_id": "83b0417df499ccae",
+      "domains": [
+        "TrajNet"
+      ],
+      "scenes": [
+        "TrajNet_mot"
+      ],
+      "rows": 1926,
+      "all_improvement_vs_floor": -0.0010341128048443338,
+      "t50_improvement_vs_floor": 0.0,
+      "t100_raw_frame_diagnostic_vs_floor": 0.0,
+      "hard_failure_improvement_vs_floor": 0.0,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.002596053997923157
+    },
+    "recommended_next_action": {
+      "action": "stage43_k_source_slice_repair_without_test_threshold_tuning",
+      "reason": "Stage43-I passes domain-level safety, but one small TrajNet source is slightly negative and several source-level t50 slices are floor-only.",
+      "allowed_methods": [
+        "train/validation-only source-family gate",
+        "source-conditioned uncertainty gate",
+        "source-level conformal risk guard",
+        "retrain with source-balanced objective"
+      ],
+      "forbidden_methods": [
+        "disable a test source by source id",
+        "choose thresholds from test source metrics",
+        "claim uniform source-level success before repair"
+      ]
+    },
+    "report": "outputs/stage43_latent_state/stage43_source_level_caveat_audit.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

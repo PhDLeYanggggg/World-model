@@ -1851,3 +1851,19 @@ Source caveat: worst source all improvement is `-0.001034`, so this is not a uni
 
 This is still protected dataset-local/raw-frame 2.5D evidence. It is not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
 <!-- STAGE43_I_UNIT_CONSISTENT_SAFE_SWITCH:END -->
+
+<!-- STAGE43_J_SOURCE_LEVEL_CAVEAT_AUDIT:START -->
+## STAGE43_J_SOURCE_LEVEL_CAVEAT_AUDIT
+
+source = `fresh_stage43_j_source_level_caveat_audit`
+verdict = `stage43_j_source_level_caveat_mapped`
+gate = `7 / 7`
+source_uniform_candidate = `False`
+domain_level_candidate = `True`
+
+Stage43-J audits the Stage43-I source-level slices and blocks a uniform per-source claim. Stage43-I remains a unit-consistent domain-level protected latent candidate, but one small TrajNet source is slightly negative and multiple source t50 slices remain floor-only.
+
+Worst source `83b0417df499ccae`: all `-0.001034`, t50 `0.000000`, easy degradation `0.000000`.
+
+Next allowed repair: source-family gate or source-balanced retraining selected on train/validation only. Forbidden: disabling a test source by source id or tuning thresholds from test source metrics.
+<!-- STAGE43_J_SOURCE_LEVEL_CAVEAT_AUDIT:END -->

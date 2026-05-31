@@ -1,0 +1,162 @@
+{
+  "source": "fresh_stage43_j_source_level_caveat_audit",
+  "result_source": "fresh_run_source_level_caveat_audit_from_stage43_i_outputs",
+  "generated_at_utc": "2026-05-31T12:54:10.518022+00:00",
+  "git_commit": "9031c07",
+  "stage43_i_precondition": {
+    "path": "outputs/stage43_latent_state/stage43_unit_consistent_safe_switch.json",
+    "verdict": "stage43_i_unit_consistent_safe_switch_pass",
+    "gate": "13 / 13",
+    "policy": "domain_capped_prior_easy_guard",
+    "policy_hash": "3f8118f6ba5fbc74c9f724deb6237d090bb014569b3c79247701ed64be29f1e2"
+  },
+  "source_count": 4,
+  "source_rows": [
+    {
+      "source_id": "603561046c16aa3a",
+      "domains": [
+        "TrajNet"
+      ],
+      "scenes": [
+        "TrajNet_biwi"
+      ],
+      "rows": 7685,
+      "all_improvement_vs_floor": 0.08685516396731208,
+      "t50_improvement_vs_floor": 0.0,
+      "t100_raw_frame_diagnostic_vs_floor": 0.0,
+      "hard_failure_improvement_vs_floor": 0.08685516396731208,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.12439817826935588
+    },
+    {
+      "source_id": "7c5c7053cb97abc4",
+      "domains": [
+        "UCY"
+      ],
+      "scenes": [
+        "UCY_crowds"
+      ],
+      "rows": 9540,
+      "all_improvement_vs_floor": 0.5357152565021417,
+      "t50_improvement_vs_floor": 0.4752917313288888,
+      "t100_raw_frame_diagnostic_vs_floor": 0.15696385056906836,
+      "hard_failure_improvement_vs_floor": 0.5478754646785036,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.5320754716981132
+    },
+    {
+      "source_id": "83b0417df499ccae",
+      "domains": [
+        "TrajNet"
+      ],
+      "scenes": [
+        "TrajNet_mot"
+      ],
+      "rows": 1926,
+      "all_improvement_vs_floor": -0.0010341128048443338,
+      "t50_improvement_vs_floor": 0.0,
+      "t100_raw_frame_diagnostic_vs_floor": 0.0,
+      "hard_failure_improvement_vs_floor": 0.0,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.002596053997923157
+    },
+    {
+      "source_id": "d9c8e12e56a017c8",
+      "domains": [
+        "ETH_UCY"
+      ],
+      "scenes": [
+        "ETH_UCY_students03"
+      ],
+      "rows": 70585,
+      "all_improvement_vs_floor": 0.1924742121556947,
+      "t50_improvement_vs_floor": 0.0016180587258077805,
+      "t100_raw_frame_diagnostic_vs_floor": -0.007173465733374185,
+      "hard_failure_improvement_vs_floor": 0.20408126998368104,
+      "easy_degradation_vs_floor": 0.009491428258890044,
+      "switch_rate": 0.1499893745129985
+    }
+  ],
+  "nonpositive_source_count": 1,
+  "nonpositive_sources": [
+    {
+      "source_id": "83b0417df499ccae",
+      "domains": [
+        "TrajNet"
+      ],
+      "scenes": [
+        "TrajNet_mot"
+      ],
+      "rows": 1926,
+      "all_improvement_vs_floor": -0.0010341128048443338,
+      "t50_improvement_vs_floor": 0.0,
+      "t100_raw_frame_diagnostic_vs_floor": 0.0,
+      "hard_failure_improvement_vs_floor": 0.0,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.002596053997923157
+    }
+  ],
+  "nonpositive_t50_source_count": 2,
+  "worst_source": {
+    "source_id": "83b0417df499ccae",
+    "domains": [
+      "TrajNet"
+    ],
+    "scenes": [
+      "TrajNet_mot"
+    ],
+    "rows": 1926,
+    "all_improvement_vs_floor": -0.0010341128048443338,
+    "t50_improvement_vs_floor": 0.0,
+    "t100_raw_frame_diagnostic_vs_floor": 0.0,
+    "hard_failure_improvement_vs_floor": 0.0,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.002596053997923157
+  },
+  "source_uniform_candidate": false,
+  "domain_level_candidate": true,
+  "repair_attempted": false,
+  "recommended_next_action": {
+    "action": "stage43_k_source_slice_repair_without_test_threshold_tuning",
+    "reason": "Stage43-I passes domain-level safety, but one small TrajNet source is slightly negative and several source-level t50 slices are floor-only.",
+    "allowed_methods": [
+      "train/validation-only source-family gate",
+      "source-conditioned uncertainty gate",
+      "source-level conformal risk guard",
+      "retrain with source-balanced objective"
+    ],
+    "forbidden_methods": [
+      "disable a test source by source id",
+      "choose thresholds from test source metrics",
+      "claim uniform source-level success before repair"
+    ]
+  },
+  "claim_boundary": {
+    "domain_level_candidate": true,
+    "uniform_per_source_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "t100_raw_frame_diagnostic_only": true,
+    "metric_or_seconds_claim": false,
+    "true_3d": false,
+    "foundation_world_model": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_j_gate": {
+    "source": "fresh_stage43_j_source_level_caveat_audit",
+    "gates": {
+      "stage43_i_passed": true,
+      "source_metrics_present": true,
+      "nonpositive_source_detected": true,
+      "uniform_source_claim_blocked": true,
+      "domain_level_claim_preserved": true,
+      "no_test_tuned_repair_attempted": true,
+      "claim_boundary_recorded": true
+    },
+    "passed": 7,
+    "total": 7,
+    "verdict": "stage43_j_source_level_caveat_mapped",
+    "source_uniform_candidate": false,
+    "domain_level_candidate": true
+  }
+}
