@@ -2149,3 +2149,17 @@ Stage43-Z audits what the current protected latent-state cache actually covers. 
 
 It also records the limits: there is still no explicit scene image/raster token, no SDF token, no full all-agent graph tensor, no future occupancy label, no human-gold interaction label, and no true physical-validity label. These are gaps, not hidden successes. The current claim remains protected dataset-local/raw-frame 2.5D multimodal latent-state evidence, not true 3D or foundation modeling.
 <!-- STAGE43_Z_LATENT_TOKEN_SCHEMA_COVERAGE:END -->
+
+<!-- STAGE43_AA_SCENE_RASTER_PROXY_TOKENS:START -->
+## STAGE43_AA_SCENE_RASTER_PROXY_TOKENS
+
+source = `fresh_stage43_aa_scene_raster_proxy_tokens`
+verdict = `stage43_aa_scene_raster_proxy_tokens_pass`
+gate = `10 / 10`
+source_proxy_hash = `c56451af9f0be2fb8720e67111d7fb39e58014dbfc358794ff4e1e584acc1cc5`
+manifest_sha256 = `87dc956e45a682b3a1c6bb8397e3c393745dc5f1ea44edb57a9d76f87693dfec`
+
+Stage43-AA fills the explicit scene/raster/SDF-token gap with a train-only proxy: source/domain route bounds, route occupancy grids, boundary-SDF proxy, density prior, and scene-agnostic goal-vector priors. It writes row-aligned auxiliary features for train/val/test and records row/feature hashes.
+
+This is still a proxy, not raw scene imagery, not annotated walkable geometry, and not verified metric SDF. It is not yet retrained into Stage43-M; it is an auxiliary scene/raster token cache for the next latent-state training step. No future endpoints, future waypoints, central velocity, or test endpoint goals are used.
+<!-- STAGE43_AA_SCENE_RASTER_PROXY_TOKENS:END -->
