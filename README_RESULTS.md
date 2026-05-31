@@ -7311,3 +7311,20 @@ Result source: `fresh_train_val_selected_auxiliary_head_repair`. I froze the Sta
 
 Boundary: this repairs a causal history-density proxy head from frozen latent/context features. It is not a future occupancy claim. The validity head remains a label-availability proxy, not a true physical-validity certificate.
 <!-- STAGE43_W_AUXILIARY_HEAD_REPAIR:END -->
+
+<!-- STAGE43_X_INTERACTION_VALIDITY_PROXY:START -->
+## Stage43-X interaction / validity proxy head audit
+
+Result source: `fresh_future_label_proxy_head_audit`. I froze the Stage43-M latent checkpoint and trained train/val-selected proxy heads for future-proximity interaction risk and waypoint smoothness/validity.
+
+- gate: `10 / 10`
+- verdict: `stage43_x_interaction_proxy_signal_validity_proxy_diagnostic`
+- interaction feature set: `causal_x`
+- interaction AUROC/AUPRC: `0.7694` / `0.3254`
+- interaction positive rate: `0.1349`
+- smoothness proxy R2/corr: `0.9216` / `0.9617`
+- deploy interaction risk proxy head: `True`
+- true physical validity claim: `False`
+
+Boundary: future waypoints are labels/evaluation only, never inference inputs. Interaction risk is a future-proximity proxy, not human interaction annotation; smoothness/validity remains diagnostic, not true physical validity.
+<!-- STAGE43_X_INTERACTION_VALIDITY_PROXY:END -->

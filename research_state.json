@@ -199,8 +199,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_w_auxiliary_head_repair",
-  "current_verdict": "stage43_w_density_proxy_repaired_validity_proxy_diagnostic",
+  "current_stage": "stage43_x_interaction_validity_proxy",
+  "current_verdict": "stage43_x_interaction_proxy_signal_validity_proxy_diagnostic",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -38888,6 +38888,84 @@
       "smc_enabled": false,
       "physical_validity_true_claim": false,
       "density_proxy_is_causal_history_density_not_future_occupancy": true
+    }
+  },
+  "stage43_x_interaction_validity_proxy": {
+    "source": "fresh_stage43_x_interaction_validity_proxy",
+    "result_source": "fresh_future_label_proxy_head_audit",
+    "updated_at": "2026-05-31T19:36:19.905009+00:00",
+    "report": "outputs/stage43_latent_state/stage43_interaction_validity_proxy.json",
+    "gate": "10 / 10",
+    "verdict": "stage43_x_interaction_proxy_signal_validity_proxy_diagnostic",
+    "interaction_risk_head": {
+      "target": "future_interaction_risk",
+      "feature_set": "causal_x",
+      "l2": 0.1,
+      "feature_count": 162,
+      "validation_metrics": {
+        "rows": 101446,
+        "positives": 9485,
+        "negatives": 91961,
+        "positive_rate": 0.09349801865031643,
+        "brier": 0.06580401033343719,
+        "baseline_brier": 0.08475613915878148,
+        "auroc": 0.8982098757835031,
+        "auprc": 0.5075831646768759,
+        "average_precision": 0.5075831646768759,
+        "defined": true,
+        "f1_at_0_5": 0.13447456015216358,
+        "ece": 0.05889316243583901,
+        "brier_improvement_vs_prevalence": 0.2236077411435592
+      },
+      "test_metrics": {
+        "rows": 89736,
+        "positives": 12101,
+        "negatives": 77635,
+        "positive_rate": 0.13485111883747883,
+        "brier": 0.10551270311406957,
+        "baseline_brier": 0.116666294585759,
+        "auroc": 0.7694167124859295,
+        "auprc": 0.3253544068762024,
+        "average_precision": 0.3253544068762024,
+        "defined": true,
+        "f1_at_0_5": 0.11484652328252246,
+        "ece": 0.03891758989036327,
+        "brier_improvement_vs_prevalence": 0.0956025175162365
+      }
+    },
+    "smoothness_validity_proxy_head": {
+      "target": "future_waypoint_smoothness_validity_proxy",
+      "feature_set": "latent_heads_context",
+      "l2": 1000.0,
+      "feature_count": 45,
+      "validation_metrics": {
+        "rows": 101446,
+        "mse": 0.00011765998876289066,
+        "mae": 0.007629691947919263,
+        "rmse": 0.010847118915310676,
+        "baseline_mse": 0.20773686507972158,
+        "r2": 0.999433610453697,
+        "corr": 0.9997296828736542
+      },
+      "test_metrics": {
+        "rows": 89736,
+        "mse": 0.014933054483775129,
+        "mae": 0.02415092126757039,
+        "rmse": 0.12220087759003669,
+        "baseline_mse": 0.1905501503729263,
+        "r2": 0.9216318934697789,
+        "corr": 0.961701679917564
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "future_interaction_risk_is_proxy_label": true,
+      "smoothness_validity_proxy_not_true_physical_validity": true,
+      "stage5c_executed": false,
+      "smc_enabled": false
     }
   }
 }
