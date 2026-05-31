@@ -3903,3 +3903,24 @@ Worst source `83b0417df499ccae`: all `-0.001034`, t50 `0.000000`, easy degradati
 
 Next allowed repair: source-family gate or source-balanced retraining selected on train/validation only. Forbidden: disabling a test source by source id or tuning thresholds from test source metrics.
 <!-- STAGE43_J_SOURCE_LEVEL_CAVEAT_AUDIT:END -->
+
+<!-- STAGE43_K_SOURCE_SLICE_REPAIR:START -->
+## STAGE43_K_SOURCE_SLICE_REPAIR
+
+source = `fresh_stage43_k_source_slice_repair`
+verdict = `stage43_k_source_slice_negative_repaired`
+gate = `12 / 12`
+source_safe_candidate = `True`
+uniform_positive_source_candidate = `False`
+
+Stage43-K addresses the Stage43-J source-level caveat without test-source threshold tuning. It starts from Stage43-I's unit-consistent safe switch and adds a validation-only source-family guard: source families unsupported or unsafe on validation are floored. This removes negative source-slice harm, but it is not a uniform positive per-source claim.
+
+Metrics: all `0.231096`, t50 `0.113648`, t100 raw diagnostic `0.013513`, hard/failure `0.244058`, easy degradation `0.000000`, switch rate `0.185199`.
+
+Bootstrap CI lows: all `0.227633`, t50 `0.106998`, hard/failure `0.240332`; easy CI high `0.000000`.
+
+Source safety: negative source count `0`, min source all improvement `0.000000`, max source easy degradation `0.009491`.
+Blocked test source families under the validation-only guard: `TrajNet_mot`.
+
+Claim boundary remains: protected dataset-local/raw-frame 2.5D evidence only; no metric/seconds claim, no Stage5C execution, no SMC.
+<!-- STAGE43_K_SOURCE_SLICE_REPAIR:END -->

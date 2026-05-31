@@ -37537,5 +37537,119 @@
     "report": "outputs/stage43_latent_state/stage43_source_level_caveat_audit.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_k_source_slice_repair": {
+    "source": "fresh_stage43_k_source_slice_repair",
+    "verdict": "stage43_k_source_slice_negative_repaired",
+    "gate": "12 / 12",
+    "source_safe_candidate": true,
+    "uniform_positive_source_candidate": false,
+    "policy": {
+      "family_rule": "source-family switch allowed only when the family is supported and safe on the source-level validation split",
+      "allowed_families_source": "validation_only",
+      "family_min_val_rows": 100,
+      "family_allow_conditions": {
+        "val_all_improvement_vs_floor_min": 0.0,
+        "val_easy_degradation_vs_floor_max": 0.02
+      },
+      "stage35_easy_prob_max": 0.03,
+      "domain_switch_caps": {
+        "ETH_UCY": 0.15,
+        "TrajNet": 0.1,
+        "UCY": 1.0
+      },
+      "source_family_mapping": "domain-level for ETH_UCY/UCY; TrajNet split into biwi/crowds/mot using scene/source name",
+      "uses_test_threshold_tuning": false,
+      "forbidden_action_not_used": "No test source id was disabled and no threshold was chosen from test source metrics."
+    },
+    "policy_hash": "e3ba25ea629c538b9e2c704a47acde68b432fcfc4f2e8c68358f4579fcf01732",
+    "metrics": {
+      "rows": 89736,
+      "all_improvement_vs_floor": 0.23109641090748,
+      "t50_improvement_vs_floor": 0.11364813506531013,
+      "t100_raw_frame_diagnostic_vs_floor": 0.013512996394212884,
+      "hard_failure_improvement_vs_floor": 0.24405762495546435,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.18519880538468397,
+      "harm_over_floor": -0.24129381775856018,
+      "mean_floor_err": 1.0441255569458008,
+      "mean_selected_err": 0.8028318881988525
+    },
+    "bootstrap": {
+      "unit_all": {
+        "rows": 89736,
+        "mean": 0.23109641090748,
+        "ci_low": 0.2276334928891609,
+        "ci_high": 0.23455956499381192,
+        "bootstrap_n": 1000
+      },
+      "unit_t50": {
+        "rows": 21754,
+        "mean": 0.11364813506531013,
+        "ci_low": 0.10699763247052575,
+        "ci_high": 0.12068785077107488,
+        "bootstrap_n": 1000
+      },
+      "unit_t100_raw_frame_diagnostic": {
+        "rows": 18070,
+        "mean": 0.013512996394212884,
+        "ci_low": 0.010352462097131438,
+        "ci_high": 0.016983826331206334,
+        "bootstrap_n": 1000
+      },
+      "unit_hard_failure": {
+        "rows": 70119,
+        "mean": 0.24405762495546435,
+        "ci_low": 0.24033184016652928,
+        "ci_high": 0.24771141812664157,
+        "bootstrap_n": 1000
+      },
+      "unit_easy_degradation": {
+        "rows": 26927,
+        "mean": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "bootstrap_n": 1000
+      }
+    },
+    "source_negative_count": 0,
+    "min_source_all_improvement": 0.0,
+    "max_source_easy_degradation": 0.009491428258890044,
+    "allowed_families": {
+      "ETH_UCY": {
+        "rows": 16611,
+        "all_improvement_vs_floor": 0.12422331552809829,
+        "easy_degradation_vs_floor": 0.0,
+        "allowed": true,
+        "rule": "val rows >= 100 and val all improvement >= 0 and val easy degradation <= 0.02"
+      },
+      "TrajNet_biwi": {
+        "rows": 459,
+        "all_improvement_vs_floor": 0.10037181021411612,
+        "easy_degradation_vs_floor": 0.0,
+        "allowed": true,
+        "rule": "val rows >= 100 and val all improvement >= 0 and val easy degradation <= 0.02"
+      },
+      "TrajNet_crowds": {
+        "rows": 37153,
+        "all_improvement_vs_floor": 0.11464632500265326,
+        "easy_degradation_vs_floor": 0.0,
+        "allowed": true,
+        "rule": "val rows >= 100 and val all improvement >= 0 and val easy degradation <= 0.02"
+      },
+      "UCY": {
+        "rows": 47223,
+        "all_improvement_vs_floor": 0.3386525643470374,
+        "easy_degradation_vs_floor": 0.0,
+        "allowed": true,
+        "rule": "val rows >= 100 and val all improvement >= 0 and val easy degradation <= 0.02"
+      }
+    },
+    "blocked_test_families": [
+      "TrajNet_mot"
+    ],
+    "report": "outputs/stage43_latent_state/stage43_source_slice_repair.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
