@@ -7000,3 +7000,22 @@ Unit-consistent metrics: all `0.351410`, t50 `0.158059`, t100 raw diagnostic `0.
 
 Conclusion: keep the frozen Stage37/Stage42 safety floor. Stage43-G is a useful neural dynamics signal but not a deployable replacement until a calibrated safe-switch repair passes unit-consistent easy/proximity gates.
 <!-- STAGE43_H_SOURCE_LEVEL_LATENT_ROBUSTNESS:END -->
+
+<!-- STAGE43_I_UNIT_CONSISTENT_SAFE_SWITCH:START -->
+## STAGE43_I_UNIT_CONSISTENT_SAFE_SWITCH
+
+source = `fresh_stage43_i_unit_consistent_safe_switch`
+verdict = `stage43_i_unit_consistent_safe_switch_pass`
+gate = `13 / 13`
+deploy_stage43_i_candidate = `True`
+
+Stage43-I repairs the Stage43-G unit-consistent easy-harm failure by adding a fixed prior easy-risk guard (`stage35_easy_prob <= 0.03`) and conservative source/domain switch caps before allowing the source-level latent endpoint to replace the frozen floor. The policy is treated as a conservative safety-family repair, not as a test-selected threshold sweep.
+
+Unit-consistent safe-switch metrics: all `0.231071`, t50 `0.113648`, t100 raw diagnostic `0.013513`, hard/failure `0.244058`, easy degradation `0.000000`, switch rate `0.185255`.
+
+Bootstrap CI lows: all `0.227754`, t50 `0.106796`, hard/failure `0.239964`; easy CI high `0.000000`.
+
+Source caveat: worst source all improvement is `-0.001034`, so this is not a uniform per-source claim.
+
+This is still protected dataset-local/raw-frame 2.5D evidence. It is not true 3D, not foundation-scale, not metric/seconds-level, not Stage5C, and not SMC.
+<!-- STAGE43_I_UNIT_CONSISTENT_SAFE_SWITCH:END -->
