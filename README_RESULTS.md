@@ -7373,3 +7373,22 @@ Stage43-AA fills the explicit scene/raster/SDF-token gap with a train-only proxy
 
 This is still a proxy, not raw scene imagery, not annotated walkable geometry, and not verified metric SDF. It is not yet retrained into Stage43-M; it is an auxiliary scene/raster token cache for the next latent-state training step. No future endpoints, future waypoints, central velocity, or test endpoint goals are used.
 <!-- STAGE43_AA_SCENE_RASTER_PROXY_TOKENS:END -->
+
+<!-- STAGE43_AB_SCENE_PROXY_AUGMENTED_LATENT_DYNAMICS:START -->
+## STAGE43_AB_SCENE_PROXY_AUGMENTED_LATENT_DYNAMICS
+
+source = `fresh_stage43_ab_scene_proxy_augmented_latent_dynamics`
+verdict = `stage43_ab_scene_proxy_augmented_latent_lift_candidate`
+gate = `11 / 11`
+deploy_scene_proxy_augmented_neural = `True`
+scene_proxy_lift_over_stage43_m = `True`
+
+full_waypoint_ade_vs_floor = `38.97%`; delta_vs_stage43_m = `9.20%`
+t50_full_waypoint_ade_vs_floor = `35.42%`; delta_vs_stage43_m = `18.97%`
+hard_failure_vs_floor = `39.66%`; delta_vs_stage43_m = `10.91%`
+easy_degradation = `0.14%`
+
+Stage43-AB retrains the full-waypoint latent dynamics head with the Stage43-AA train-only scene/raster proxy features appended to the causal input. It compares against Stage43-M and only promotes the augmented model if it improves Stage43-M while preserving easy cases.
+
+Boundary unchanged: scene proxy is not raw image/SDF, future labels are loss/eval only, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AB_SCENE_PROXY_AUGMENTED_LATENT_DYNAMICS:END -->
