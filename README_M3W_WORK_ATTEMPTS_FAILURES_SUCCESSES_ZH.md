@@ -2135,3 +2135,17 @@ Result source: `fresh_consolidated_stage43_vwx_head_suite`. I consolidated Stage
 
 Boundary: this consolidates deployable proxy heads under the existing safety floor. It does not create a true physical-validity certificate, future occupancy claim, metric/seconds-level result, Stage5C execution, or SMC.
 <!-- STAGE43_Y_MULTIMODAL_LATENT_HEAD_SUITE:END -->
+
+<!-- STAGE43_Z_LATENT_TOKEN_SCHEMA_COVERAGE:START -->
+## STAGE43_Z_LATENT_TOKEN_SCHEMA_COVERAGE
+
+source = `fresh_stage43_z_latent_token_schema_coverage`
+verdict = `stage43_z_latent_token_schema_coverage_pass`
+gate = `12 / 12`
+feature_schema_hash = `fba36ccddae43a4776793fb92ef305162abf4649f632f0d9696a463bac31022b`
+train_row_hash = `92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0`
+
+Stage43-Z audits what the current protected latent-state cache actually covers. It confirms causal agent/history, goal-prototype, baseline-rollout, safety-floor, horizon/domain, density, interaction-risk proxy, and failure/gain/harm heads are represented under row/schema hashes.
+
+It also records the limits: there is still no explicit scene image/raster token, no SDF token, no full all-agent graph tensor, no future occupancy label, no human-gold interaction label, and no true physical-validity label. These are gaps, not hidden successes. The current claim remains protected dataset-local/raw-frame 2.5D multimodal latent-state evidence, not true 3D or foundation modeling.
+<!-- STAGE43_Z_LATENT_TOKEN_SCHEMA_COVERAGE:END -->

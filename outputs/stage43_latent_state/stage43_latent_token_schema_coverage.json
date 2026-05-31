@@ -1,0 +1,953 @@
+{
+  "stage": "Stage43-Z latent token schema coverage",
+  "source": "fresh_stage43_z_latent_token_schema_coverage",
+  "result_source": "fresh_schema_audit_from_cached_verified_stage43_full_waypoint_cache",
+  "generated_at_utc": "2026-05-31T20:37:06.863940+00:00",
+  "git_commit": "a16d2ba",
+  "stage43_y_precondition": {
+    "source": "fresh_stage43_y_multimodal_latent_head_suite",
+    "gates": {
+      "stage43_v_passed": true,
+      "stage43_w_passed": true,
+      "stage43_x_passed": true,
+      "latent_noncollapse": true,
+      "failure_gain_harm_heads_strong": true,
+      "density_proxy_positive": true,
+      "interaction_proxy_positive": true,
+      "diagnostic_validity_reported_not_deployed": true,
+      "safety_floor_required": true,
+      "not_ungated_policy": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_y_protected_multimodal_latent_head_suite_candidate",
+    "protected_multimodal_latent_state_candidate": true,
+    "standalone_world_model_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "split_schemas": {
+    "train": {
+      "split": "train",
+      "exists": true,
+      "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+      "rows": 146809,
+      "keys": [
+        "old_split",
+        "local_row",
+        "dataset",
+        "scene_id",
+        "source_file",
+        "agent_id",
+        "frame_id",
+        "horizon",
+        "current_xy",
+        "future_xy",
+        "waypoint_xy",
+        "waypoint_valid",
+        "missing_track",
+        "scale",
+        "hard",
+        "failure",
+        "easy",
+        "valid_mask",
+        "dt_frame_step",
+        "track_length"
+      ],
+      "shapes": {
+        "old_split": [
+          146809
+        ],
+        "local_row": [
+          146809
+        ],
+        "dataset": [
+          146809
+        ],
+        "scene_id": [
+          146809
+        ],
+        "source_file": [
+          146809
+        ],
+        "agent_id": [
+          146809
+        ],
+        "frame_id": [
+          146809
+        ],
+        "horizon": [
+          146809
+        ],
+        "current_xy": [
+          146809,
+          2
+        ],
+        "future_xy": [
+          146809,
+          2
+        ],
+        "waypoint_xy": [
+          146809,
+          4,
+          2
+        ],
+        "waypoint_valid": [
+          146809,
+          4
+        ],
+        "missing_track": [
+          146809
+        ],
+        "scale": [
+          146809
+        ],
+        "hard": [
+          146809
+        ],
+        "failure": [
+          146809
+        ],
+        "easy": [
+          146809
+        ],
+        "valid_mask": [
+          146809
+        ],
+        "dt_frame_step": [
+          146809
+        ],
+        "track_length": [
+          146809
+        ]
+      },
+      "dtypes": {
+        "old_split": "<U5",
+        "local_row": "int64",
+        "dataset": "<U32",
+        "scene_id": "<U96",
+        "source_file": "<U256",
+        "agent_id": "int64",
+        "frame_id": "float64",
+        "horizon": "int16",
+        "current_xy": "float32",
+        "future_xy": "float32",
+        "waypoint_xy": "float32",
+        "waypoint_valid": "bool",
+        "missing_track": "bool",
+        "scale": "float32",
+        "hard": "bool",
+        "failure": "bool",
+        "easy": "bool",
+        "valid_mask": "bool",
+        "dt_frame_step": "float32",
+        "track_length": "float32"
+      },
+      "row_hash": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "schema_hash": "65e5ad4c174207130b7aa5fd4dc726cd0b49080963b39af1a745112d62bf22c0",
+      "domains": {
+        "ETH_UCY": 63602,
+        "TrajNet": 73667,
+        "UCY": 9540
+      },
+      "horizons": {
+        "10": 46716,
+        "25": 41248,
+        "50": 35467,
+        "100": 23378
+      }
+    },
+    "val": {
+      "split": "val",
+      "exists": true,
+      "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+      "rows": 101446,
+      "keys": [
+        "old_split",
+        "local_row",
+        "dataset",
+        "scene_id",
+        "source_file",
+        "agent_id",
+        "frame_id",
+        "horizon",
+        "current_xy",
+        "future_xy",
+        "waypoint_xy",
+        "waypoint_valid",
+        "missing_track",
+        "scale",
+        "hard",
+        "failure",
+        "easy",
+        "valid_mask",
+        "dt_frame_step",
+        "track_length"
+      ],
+      "shapes": {
+        "old_split": [
+          101446
+        ],
+        "local_row": [
+          101446
+        ],
+        "dataset": [
+          101446
+        ],
+        "scene_id": [
+          101446
+        ],
+        "source_file": [
+          101446
+        ],
+        "agent_id": [
+          101446
+        ],
+        "frame_id": [
+          101446
+        ],
+        "horizon": [
+          101446
+        ],
+        "current_xy": [
+          101446,
+          2
+        ],
+        "future_xy": [
+          101446,
+          2
+        ],
+        "waypoint_xy": [
+          101446,
+          4,
+          2
+        ],
+        "waypoint_valid": [
+          101446,
+          4
+        ],
+        "missing_track": [
+          101446
+        ],
+        "scale": [
+          101446
+        ],
+        "hard": [
+          101446
+        ],
+        "failure": [
+          101446
+        ],
+        "easy": [
+          101446
+        ],
+        "valid_mask": [
+          101446
+        ],
+        "dt_frame_step": [
+          101446
+        ],
+        "track_length": [
+          101446
+        ]
+      },
+      "dtypes": {
+        "old_split": "<U5",
+        "local_row": "int64",
+        "dataset": "<U32",
+        "scene_id": "<U96",
+        "source_file": "<U256",
+        "agent_id": "int64",
+        "frame_id": "float64",
+        "horizon": "int16",
+        "current_xy": "float32",
+        "future_xy": "float32",
+        "waypoint_xy": "float32",
+        "waypoint_valid": "bool",
+        "missing_track": "bool",
+        "scale": "float32",
+        "hard": "bool",
+        "failure": "bool",
+        "easy": "bool",
+        "valid_mask": "bool",
+        "dt_frame_step": "float32",
+        "track_length": "float32"
+      },
+      "row_hash": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "schema_hash": "9ae5728c714a354b152fa0b46b854b424b25bbddb2cf2eabde91f8530980fb43",
+      "domains": {
+        "ETH_UCY": 16611,
+        "TrajNet": 37612,
+        "UCY": 47223
+      },
+      "horizons": {
+        "10": 32706,
+        "25": 28703,
+        "50": 24741,
+        "100": 15296
+      }
+    },
+    "test": {
+      "split": "test",
+      "exists": true,
+      "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz",
+      "rows": 89736,
+      "keys": [
+        "old_split",
+        "local_row",
+        "dataset",
+        "scene_id",
+        "source_file",
+        "agent_id",
+        "frame_id",
+        "horizon",
+        "current_xy",
+        "future_xy",
+        "waypoint_xy",
+        "waypoint_valid",
+        "missing_track",
+        "scale",
+        "hard",
+        "failure",
+        "easy",
+        "valid_mask",
+        "dt_frame_step",
+        "track_length"
+      ],
+      "shapes": {
+        "old_split": [
+          89736
+        ],
+        "local_row": [
+          89736
+        ],
+        "dataset": [
+          89736
+        ],
+        "scene_id": [
+          89736
+        ],
+        "source_file": [
+          89736
+        ],
+        "agent_id": [
+          89736
+        ],
+        "frame_id": [
+          89736
+        ],
+        "horizon": [
+          89736
+        ],
+        "current_xy": [
+          89736,
+          2
+        ],
+        "future_xy": [
+          89736,
+          2
+        ],
+        "waypoint_xy": [
+          89736,
+          4,
+          2
+        ],
+        "waypoint_valid": [
+          89736,
+          4
+        ],
+        "missing_track": [
+          89736
+        ],
+        "scale": [
+          89736
+        ],
+        "hard": [
+          89736
+        ],
+        "failure": [
+          89736
+        ],
+        "easy": [
+          89736
+        ],
+        "valid_mask": [
+          89736
+        ],
+        "dt_frame_step": [
+          89736
+        ],
+        "track_length": [
+          89736
+        ]
+      },
+      "dtypes": {
+        "old_split": "<U5",
+        "local_row": "int64",
+        "dataset": "<U32",
+        "scene_id": "<U96",
+        "source_file": "<U256",
+        "agent_id": "int64",
+        "frame_id": "float64",
+        "horizon": "int16",
+        "current_xy": "float32",
+        "future_xy": "float32",
+        "waypoint_xy": "float32",
+        "waypoint_valid": "bool",
+        "missing_track": "bool",
+        "scale": "float32",
+        "hard": "bool",
+        "failure": "bool",
+        "easy": "bool",
+        "valid_mask": "bool",
+        "dt_frame_step": "float32",
+        "track_length": "float32"
+      },
+      "row_hash": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80",
+      "schema_hash": "bc22ada0398548f221ee20ea3b03615a62b41721aa05a5912eaf38ec0a5a510d",
+      "domains": {
+        "ETH_UCY": 70585,
+        "TrajNet": 9611,
+        "UCY": 9540
+      },
+      "horizons": {
+        "10": 26132,
+        "25": 23780,
+        "50": 21754,
+        "100": 18070
+      }
+    }
+  },
+  "feature_schema": {
+    "feature_dim": 162,
+    "feature_schema_hash": "fba36ccddae43a4776793fb92ef305162abf4649f632f0d9696a463bac31022b",
+    "feature_names": [
+      "current_x_over_scale",
+      "current_y_over_scale",
+      "horizon_norm",
+      "domain_ETH_UCY",
+      "domain_TrajNet",
+      "domain_UCY",
+      "horizon_10",
+      "horizon_25",
+      "horizon_50",
+      "horizon_100",
+      "history_dx_tail0",
+      "history_dx_tail1",
+      "history_dx_tail2",
+      "history_dx_tail3",
+      "history_dx_tail4",
+      "history_dx_tail5",
+      "history_dx_tail6",
+      "history_dx_tail7",
+      "history_dx_tail8",
+      "history_dx_tail9",
+      "history_dx_tail10",
+      "history_dx_tail11",
+      "history_dx_tail12",
+      "history_dx_tail13",
+      "history_dx_tail14",
+      "history_dx_tail15",
+      "history_dy_tail0",
+      "history_dy_tail1",
+      "history_dy_tail2",
+      "history_dy_tail3",
+      "history_dy_tail4",
+      "history_dy_tail5",
+      "history_dy_tail6",
+      "history_dy_tail7",
+      "history_dy_tail8",
+      "history_dy_tail9",
+      "history_dy_tail10",
+      "history_dy_tail11",
+      "history_dy_tail12",
+      "history_dy_tail13",
+      "history_dy_tail14",
+      "history_dy_tail15",
+      "history_speed_tail0",
+      "history_speed_tail1",
+      "history_speed_tail2",
+      "history_speed_tail3",
+      "history_speed_tail4",
+      "history_speed_tail5",
+      "history_speed_tail6",
+      "history_speed_tail7",
+      "history_speed_tail8",
+      "history_speed_tail9",
+      "history_speed_tail10",
+      "history_speed_tail11",
+      "history_speed_tail12",
+      "history_speed_tail13",
+      "history_speed_tail14",
+      "history_speed_tail15",
+      "history_accel_tail0",
+      "history_accel_tail1",
+      "history_accel_tail2",
+      "history_accel_tail3",
+      "history_accel_tail4",
+      "history_accel_tail5",
+      "history_accel_tail6",
+      "history_accel_tail7",
+      "history_accel_tail8",
+      "history_accel_tail9",
+      "history_accel_tail10",
+      "history_accel_tail11",
+      "history_accel_tail12",
+      "history_accel_tail13",
+      "history_accel_tail14",
+      "history_accel_tail15",
+      "history_heading_tail0",
+      "history_heading_tail1",
+      "history_heading_tail2",
+      "history_heading_tail3",
+      "history_heading_tail4",
+      "history_heading_tail5",
+      "history_heading_tail6",
+      "history_heading_tail7",
+      "history_heading_tail8",
+      "history_heading_tail9",
+      "history_heading_tail10",
+      "history_heading_tail11",
+      "history_heading_tail12",
+      "history_heading_tail13",
+      "history_heading_tail14",
+      "history_heading_tail15",
+      "history_valid_mask_tail0",
+      "history_valid_mask_tail1",
+      "history_valid_mask_tail2",
+      "history_valid_mask_tail3",
+      "history_valid_mask_tail4",
+      "history_valid_mask_tail5",
+      "history_valid_mask_tail6",
+      "history_valid_mask_tail7",
+      "history_valid_mask_tail8",
+      "history_valid_mask_tail9",
+      "history_valid_mask_tail10",
+      "history_valid_mask_tail11",
+      "history_valid_mask_tail12",
+      "history_valid_mask_tail13",
+      "history_valid_mask_tail14",
+      "history_valid_mask_tail15",
+      "history_curvature",
+      "history_turn_angle",
+      "history_stop_go",
+      "history_dwell",
+      "history_path_length",
+      "history_velocity_decay",
+      "history_goal_alignment_proxy",
+      "history_neighbor_count",
+      "history_min_neighbor_dist",
+      "history_density",
+      "history_TTC",
+      "history_closing_speed",
+      "prototype_likelihood_0",
+      "prototype_likelihood_1",
+      "prototype_likelihood_2",
+      "prototype_likelihood_3",
+      "prototype_likelihood_4",
+      "prototype_likelihood_5",
+      "prototype_likelihood_6",
+      "prototype_likelihood_7",
+      "prototype_distance_0",
+      "prototype_distance_1",
+      "prototype_distance_2",
+      "prototype_distance_3",
+      "prototype_distance_4",
+      "prototype_distance_5",
+      "prototype_distance_6",
+      "prototype_distance_7",
+      "prototype_angle_0",
+      "prototype_angle_1",
+      "prototype_angle_2",
+      "prototype_angle_3",
+      "prototype_angle_4",
+      "prototype_angle_5",
+      "prototype_angle_6",
+      "prototype_angle_7",
+      "prototype_entropy",
+      "goal_ambiguity",
+      "baseline_endpoint_rel_0",
+      "baseline_endpoint_rel_1",
+      "baseline_endpoint_rel_2",
+      "baseline_endpoint_rel_3",
+      "baseline_endpoint_rel_4",
+      "baseline_endpoint_rel_5",
+      "baseline_endpoint_rel_6",
+      "baseline_endpoint_rel_7",
+      "baseline_endpoint_rel_8",
+      "baseline_endpoint_rel_9",
+      "baseline_endpoint_rel_10",
+      "baseline_endpoint_rel_11",
+      "baseline_endpoint_rel_12",
+      "baseline_endpoint_rel_13",
+      "baseline_endpoint_rel_14",
+      "baseline_endpoint_rel_15",
+      "floor_endpoint_rel_x",
+      "floor_endpoint_rel_y"
+    ],
+    "sample_rows_used_for_schema": 512
+  },
+  "token_coverage": {
+    "agent_state": {
+      "kind": "inference_input",
+      "claim": "covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "current_x_over_scale": true,
+        "current_y_over_scale": true,
+        "horizon_norm": true
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {
+        "current_xy": true,
+        "agent_id": true,
+        "frame_id": true,
+        "horizon": true
+      },
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "agent_history": {
+      "kind": "inference_input",
+      "claim": "covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "history_curvature": true,
+        "history_turn_angle": true,
+        "history_stop_go": true,
+        "history_dwell": true,
+        "history_path_length": true,
+        "history_velocity_decay": true
+      },
+      "found_prefixes": {
+        "history_dx_tail": true,
+        "history_dy_tail": true,
+        "history_speed_tail": true,
+        "history_accel_tail": true,
+        "history_heading_tail": true,
+        "history_valid_mask_tail": true
+      },
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "all_agent_current_state": {
+      "kind": "row_metadata_grouping",
+      "claim": "partial_grouped_rows_not_explicit_tensor",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {},
+      "found_cache_keys": {
+        "source_file": true,
+        "scene_id": true,
+        "frame_id": true,
+        "agent_id": true,
+        "current_xy": true
+      },
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "neighbor_graph": {
+      "kind": "inference_proxy",
+      "claim": "proxy_only_not_full_graph_tensor",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "history_neighbor_count": true,
+        "history_min_neighbor_dist": true,
+        "history_density": true,
+        "history_TTC": true,
+        "history_closing_speed": true
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "scene_patch": {
+      "kind": "missing_modality",
+      "claim": "missing_explicit_scene_image_or_raster_token",
+      "status": "recorded_gap",
+      "present": false,
+      "passed_for_gate": true,
+      "found_features": {
+        "scene_patch_embedding": false
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "scene_sdf": {
+      "kind": "missing_modality",
+      "claim": "missing_explicit_scene_sdf_token",
+      "status": "recorded_gap",
+      "present": false,
+      "passed_for_gate": true,
+      "found_features": {
+        "scene_sdf": false
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "goal_region": {
+      "kind": "inference_proxy",
+      "claim": "scene_agnostic_goal_proxy_covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "prototype_entropy": true,
+        "goal_ambiguity": true
+      },
+      "found_prefixes": {
+        "prototype_likelihood_": true,
+        "prototype_distance_": true,
+        "prototype_angle_": true
+      },
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "interaction_edge": {
+      "kind": "inference_proxy_and_label_proxy",
+      "claim": "proxy_only_not_human_interaction_annotation",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "history_neighbor_count": true,
+        "history_min_neighbor_dist": true,
+        "history_TTC": true,
+        "history_closing_speed": true
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "baseline_rollout": {
+      "kind": "inference_input",
+      "claim": "baseline_family_endpoint_rollouts_covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {
+        "baseline_endpoint_rel_": true
+      },
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "safety_floor_prediction": {
+      "kind": "inference_input",
+      "claim": "stage37_stage42_floor_endpoint_covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "floor_endpoint_rel_x": true,
+        "floor_endpoint_rel_y": true
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "domain_source_horizon": {
+      "kind": "inference_input_and_metadata",
+      "claim": "domain_horizon_features_source_metadata_covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {
+        "domain_": true,
+        "horizon_": true
+      },
+      "found_cache_keys": {
+        "dataset": true,
+        "source_file": true,
+        "horizon": true
+      },
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "time_frame": {
+      "kind": "metadata_only",
+      "claim": "frame_metadata_covered_not_seconds_verified",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {},
+      "found_cache_keys": {
+        "frame_id": true,
+        "dt_frame_step": true
+      },
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "future_endpoint_label": {
+      "kind": "label_only",
+      "claim": "label_only_not_input",
+      "status": "label_only_separated",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {},
+      "found_cache_keys": {
+        "future_xy": true
+      },
+      "forbidden_feature_terms": [
+        "future",
+        "endpoint_x",
+        "endpoint_y"
+      ],
+      "forbidden_terms_present_in_features": false
+    },
+    "future_full_waypoint_label": {
+      "kind": "label_only",
+      "claim": "label_only_not_input",
+      "status": "label_only_separated",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {},
+      "found_cache_keys": {
+        "waypoint_xy": true,
+        "waypoint_valid": true
+      },
+      "forbidden_feature_terms": [
+        "waypoint",
+        "future"
+      ],
+      "forbidden_terms_present_in_features": false
+    },
+    "occupancy_density_label": {
+      "kind": "proxy_label",
+      "claim": "causal_history_density_proxy_not_future_occupancy",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {
+        "history_density": true
+      },
+      "found_prefixes": {},
+      "found_cache_keys": {},
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "failure_gain_harm_label": {
+      "kind": "proxy_label",
+      "claim": "covered_training_labels",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {},
+      "found_cache_keys": {
+        "failure": true,
+        "easy": true,
+        "hard": true
+      },
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    },
+    "mask_validity": {
+      "kind": "label_and_input_mask",
+      "claim": "covered",
+      "status": "covered",
+      "present": true,
+      "passed_for_gate": true,
+      "found_features": {},
+      "found_prefixes": {
+        "history_valid_mask_tail": true
+      },
+      "found_cache_keys": {
+        "valid_mask": true,
+        "waypoint_valid": true
+      },
+      "forbidden_feature_terms": [],
+      "forbidden_terms_present_in_features": false
+    }
+  },
+  "explicit_gaps": {
+    "explicit_scene_image_raster_token": "missing",
+    "explicit_scene_sdf_token": "missing",
+    "full_all_agent_graph_tensor": "missing_proxy_only",
+    "future_occupancy_true_label": "missing_proxy_only",
+    "true_physical_validity_label": "missing_proxy_only",
+    "human_interaction_annotation": "missing_proxy_only",
+    "verified_metric_or_seconds_calibration": "missing"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_loss_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "future_occupancy_claim": false,
+    "true_physical_validity_claim": false
+  },
+  "deployment_contract": {
+    "safety_floor_required": true,
+    "standalone_ungated_policy": false,
+    "allowed_claim": "protected multimodal latent-state head suite with proxy scene/goal/interaction/density signals",
+    "disallowed_claims": [
+      "true 3D world model",
+      "foundation world model",
+      "metric trajectory prediction",
+      "seconds-level long horizon",
+      "future occupancy prediction",
+      "human-gold interaction labels",
+      "standalone ungated deployment"
+    ]
+  },
+  "stage43_z_gate": {
+    "source": "fresh_stage43_z_latent_token_schema_coverage",
+    "gates": {
+      "stage43_y_head_suite_passed": true,
+      "split_caches_exist": true,
+      "row_hashes_recorded": true,
+      "feature_schema_recorded": true,
+      "core_causal_inputs_covered": true,
+      "all_agent_and_neighbor_scope_honest": true,
+      "future_labels_separated_from_inputs": true,
+      "scene_raster_sdf_gaps_recorded": true,
+      "proxy_boundaries_recorded": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_preserved": true,
+      "protected_not_standalone": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_z_latent_token_schema_coverage_pass",
+    "protected_multimodal_latent_state_schema_supported": true,
+    "standalone_world_model_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
