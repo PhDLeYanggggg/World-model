@@ -2,8 +2,8 @@
   "stage": "Stage43-B latent-state dataset contract",
   "source": "fresh_stage43_b_latent_state_dataset_contract",
   "result_source": "fresh_run_contract_from_cached_verified_stage35_37_42_artifacts",
-  "generated_at_utc": "2026-05-29T09:07:17.176928+00:00",
-  "git_commit": "7542ab9",
+  "generated_at_utc": "2026-05-31T13:24:25.155556+00:00",
+  "git_commit": "24bc667",
   "python": "3.11.1",
   "machine": "arm64",
   "stage43_a_precondition": {
@@ -29,7 +29,7 @@
     "verdict": "stage43_a_safety_floor_replay_pass",
     "latent_state_training_precondition": true
   },
-  "input_hash": "ed6a22d7d4275d740151126bfc5713e3bdbfec703f3ba25a640efd0dc58e2e3f",
+  "input_hash": "a4544175b69c26adaf385b404b4c3dce4f2b783c309931b8fc07d1821547377b",
   "token_schema": {
     "context_observation": [
       "dataset",
@@ -348,22 +348,60 @@
     "failure_gain_harm_labels_all_splits": true,
     "occupancy_density_proxy_all_splits": true,
     "full_waypoint": {
-      "status": "partial_eval_cache",
-      "cache_file": {
-        "path": "data/stage42_source_level_full_waypoint_cache/stage42iv_source_level_merged_cache.npz",
-        "exists": true,
-        "size_bytes": 1574433,
-        "sha256": ""
+      "status": "frozen_source_level_train_val_test_cache",
+      "cache_dir": "data/stage43_full_waypoint_supervision_cache",
+      "split_rows": {
+        "train": {
+          "rows": 146809,
+          "waypoint_shape": [
+            146809,
+            4,
+            2
+          ],
+          "valid_waypoint_rows": 146809,
+          "all_waypoints_valid_rows": 100093,
+          "cache_file": {
+            "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+            "exists": true,
+            "size_bytes": 2881920,
+            "sha256": ""
+          }
+        },
+        "val": {
+          "rows": 101446,
+          "waypoint_shape": [
+            101446,
+            4,
+            2
+          ],
+          "valid_waypoint_rows": 101446,
+          "all_waypoints_valid_rows": 68740,
+          "cache_file": {
+            "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+            "exists": true,
+            "size_bytes": 1951023,
+            "sha256": ""
+          }
+        },
+        "test": {
+          "rows": 89736,
+          "waypoint_shape": [
+            89736,
+            4,
+            2
+          ],
+          "valid_waypoint_rows": 89736,
+          "all_waypoints_valid_rows": 64992,
+          "cache_file": {
+            "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz",
+            "exists": true,
+            "size_bytes": 1585297,
+            "sha256": ""
+          }
+        }
       },
-      "rows": 47458,
-      "waypoint_shape": [
-        47458,
-        4,
-        2
-      ],
-      "valid_waypoint_rows": 47458,
-      "train_val_supervised_full_waypoint_ready": false,
-      "limitation": "Full-waypoint labels are present in the Stage42 current source-level evaluation cache, but a train/val full-waypoint latent-state supervised cache is not yet frozen."
+      "train_val_supervised_full_waypoint_ready": true,
+      "limitation": "Full-waypoint labels are frozen in a local Stage43 source-level supervision cache. The cache is not committed; reports record hashes and row counts."
     }
   },
   "no_leakage": {
@@ -393,7 +431,7 @@
       "goal_prototypes_available": true,
       "baseline_family_available": true,
       "endpoint_labels_available_all_splits": true,
-      "full_waypoint_limitation_recorded": true,
+      "full_waypoint_status_recorded": true,
       "labels_separated_from_inputs": true,
       "no_future_or_test_leakage": true,
       "no_metric_seconds_stage5c_smc_claim": true
@@ -402,7 +440,7 @@
     "total": 12,
     "verdict": "stage43_b_latent_state_dataset_contract_pass",
     "endpoint_latent_state_training_ready": true,
-    "full_waypoint_supervised_training_ready": false
+    "full_waypoint_supervised_training_ready": true
   },
-  "decision": "Endpoint/failure/gain/harm/occupancy latent-state dataset contract is ready; full-waypoint supervised training remains blocked until train/val full-waypoint labels are frozen."
+  "decision": "Endpoint/failure/gain/harm/occupancy and full-waypoint supervised latent-state training are ready under the frozen local Stage43 source-level supervision cache."
 }

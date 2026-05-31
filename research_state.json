@@ -36848,7 +36848,7 @@
     "verdict": "stage43_b_latent_state_dataset_contract_pass",
     "gate": "12 / 12",
     "endpoint_latent_state_training_ready": true,
-    "full_waypoint_supervised_training_ready": false,
+    "full_waypoint_supervised_training_ready": true,
     "report": "outputs/stage43_latent_state/stage43_latent_state_dataset_contract.md",
     "schema": "outputs/stage43_latent_state/stage43_latent_state_token_schema.json",
     "stage5c_executed": false,
@@ -37649,6 +37649,105 @@
       "TrajNet_mot"
     ],
     "report": "outputs/stage43_latent_state/stage43_source_slice_repair.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_l_full_waypoint_supervision_cache": {
+    "source": "fresh_stage43_l_full_waypoint_supervision_cache",
+    "verdict": "stage43_l_full_waypoint_supervision_cache_pass",
+    "gate": "10 / 10",
+    "full_waypoint_supervised_training_ready": true,
+    "cache_dir": "data/stage43_full_waypoint_supervision_cache",
+    "cache_committed": false,
+    "split_summaries": {
+      "train": {
+        "split": "train",
+        "cache_path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+        "cache_sha256": "7cb12a873447bc9f59d135ced4db4dd4aeeea43257982c397596fb29e90b63e8",
+        "row_hash": "7a9ed6e07f1199a5791f035a463d14792959293ecab9c8a6f747f6f9a57cc076",
+        "rows": 146809,
+        "domains": {
+          "ETH_UCY": 63602,
+          "TrajNet": 73667,
+          "UCY": 9540
+        },
+        "scene_count": 5,
+        "source_count": 10,
+        "horizon_counts": {
+          "10": 46716,
+          "25": 41248,
+          "50": 35467,
+          "100": 23378
+        },
+        "full_waypoint_rows": 146809,
+        "all_waypoints_valid_rows": 100093,
+        "missing_track_rows": 0,
+        "max_endpoint_diff_last_waypoint": 0.0,
+        "hard_rows": 112218,
+        "failure_rows": 57390,
+        "easy_rows": 37837
+      },
+      "val": {
+        "split": "val",
+        "cache_path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+        "cache_sha256": "ec68b9f3fda0166f918f18bda124262cf974829e752f89770a489f14f099df5d",
+        "row_hash": "d5160c4cbcff9c2fdebd53b8171b9955d48729ec0ee31433f0b78d8dc5b736bf",
+        "rows": 101446,
+        "domains": {
+          "ETH_UCY": 16611,
+          "TrajNet": 37612,
+          "UCY": 47223
+        },
+        "scene_count": 4,
+        "source_count": 4,
+        "horizon_counts": {
+          "10": 32706,
+          "25": 28703,
+          "50": 24741,
+          "100": 15296
+        },
+        "full_waypoint_rows": 101446,
+        "all_waypoints_valid_rows": 68740,
+        "missing_track_rows": 0,
+        "max_endpoint_diff_last_waypoint": 0.0,
+        "hard_rows": 73296,
+        "failure_rows": 35300,
+        "easy_rows": 31737
+      },
+      "test": {
+        "split": "test",
+        "cache_path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz",
+        "cache_sha256": "62f4a079bfa7e3eba5ca5ebdadf864d7a1342b4dc4431412ecaed910520ab22f",
+        "row_hash": "18f6ded3c61645488becef8f842401669037776875508686a37bd9da74544a5b",
+        "rows": 89736,
+        "domains": {
+          "ETH_UCY": 70585,
+          "TrajNet": 9611,
+          "UCY": 9540
+        },
+        "scene_count": 4,
+        "source_count": 4,
+        "horizon_counts": {
+          "10": 26132,
+          "25": 23780,
+          "50": 21754,
+          "100": 18070
+        },
+        "full_waypoint_rows": 89736,
+        "all_waypoints_valid_rows": 64992,
+        "missing_track_rows": 0,
+        "max_endpoint_diff_last_waypoint": 0.0,
+        "hard_rows": 70119,
+        "failure_rows": 33797,
+        "easy_rows": 26927
+      }
+    },
+    "source_overlap_counts": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "report": "outputs/stage43_latent_state/stage43_full_waypoint_supervision_cache.md",
     "stage5c_executed": false,
     "smc_enabled": false
   }

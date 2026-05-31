@@ -3,7 +3,7 @@
 - verdict: `stage43_b_latent_state_dataset_contract_pass`
 - gate: `12 / 12`
 - endpoint latent-state training ready: `True`
-- full-waypoint supervised training ready: `False`
+- full-waypoint supervised training ready: `True`
 
 | gate | passed |
 | --- | --- |
@@ -15,7 +15,7 @@
 | goal_prototypes_available | True |
 | baseline_family_available | True |
 | endpoint_labels_available_all_splits | True |
-| full_waypoint_limitation_recorded | True |
+| full_waypoint_status_recorded | True |
 | labels_separated_from_inputs | True |
 | no_future_or_test_leakage | True |
 | no_metric_seconds_stage5c_smc_claim | True |

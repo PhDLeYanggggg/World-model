@@ -4,7 +4,7 @@
 - verdict: `stage43_b_latent_state_dataset_contract_pass`
 - gate: `12 / 12`
 - endpoint latent-state training ready: `True`
-- full-waypoint supervised training ready: `False`
+- full-waypoint supervised training ready: `True`
 
 ## Split Summary
 
@@ -28,8 +28,8 @@
 
 - Future endpoint, future relative error, full-waypoint, occupancy/density, failure/gain/harm are label/loss/eval targets only.
 - They are not listed in any inference input token group.
-- Full-waypoint status: `partial_eval_cache`.
-- Full-waypoint limitation: Full-waypoint labels are present in the Stage42 current source-level evaluation cache, but a train/val full-waypoint latent-state supervised cache is not yet frozen.
+- Full-waypoint status: `frozen_source_level_train_val_test_cache`.
+- Full-waypoint limitation: Full-waypoint labels are frozen in a local Stage43 source-level supervision cache. The cache is not committed; reports record hashes and row counts.
 
 ## Gate
 
@@ -43,13 +43,13 @@
 | goal_prototypes_available | True |
 | baseline_family_available | True |
 | endpoint_labels_available_all_splits | True |
-| full_waypoint_limitation_recorded | True |
+| full_waypoint_status_recorded | True |
 | labels_separated_from_inputs | True |
 | no_future_or_test_leakage | True |
 | no_metric_seconds_stage5c_smc_claim | True |
 
 ## Decision
 
-Endpoint/failure/gain/harm/occupancy latent-state dataset contract is ready; full-waypoint supervised training remains blocked until train/val full-waypoint labels are frozen.
+Endpoint/failure/gain/harm/occupancy and full-waypoint supervised latent-state training are ready under the frozen local Stage43 source-level supervision cache.
 
 No Stage5C, no SMC, no metric/seconds/true-3D/foundation claim.

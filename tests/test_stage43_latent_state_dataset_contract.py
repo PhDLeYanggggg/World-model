@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from src.stage43_full_waypoint_supervision_cache import run_full_waypoint_supervision_cache
 from src.stage43_latent_state_dataset_contract import main
 
 
@@ -9,6 +10,7 @@ _PAYLOAD = None
 def _payload():
     global _PAYLOAD
     if _PAYLOAD is None:
+        run_full_waypoint_supervision_cache()
         _PAYLOAD = main()
     return _PAYLOAD
 
@@ -47,9 +49,9 @@ def test_stage43_latent_dataset_keeps_future_labels_out_of_inputs():
     assert payload["no_leakage"]["test_endpoint_goal_construction"] is False
 
 
-def test_stage43_latent_dataset_records_full_waypoint_blocker():
+def test_stage43_latent_dataset_records_full_waypoint_supervision_ready():
     payload = _payload()
     full = payload["label_availability"]["full_waypoint"]
-    assert full["status"] == "partial_eval_cache"
-    assert full["train_val_supervised_full_waypoint_ready"] is False
-    assert payload["stage43_b_gate"]["full_waypoint_supervised_training_ready"] is False
+    assert full["status"] == "frozen_source_level_train_val_test_cache"
+    assert full["train_val_supervised_full_waypoint_ready"] is True
+    assert payload["stage43_b_gate"]["full_waypoint_supervised_training_ready"] is True

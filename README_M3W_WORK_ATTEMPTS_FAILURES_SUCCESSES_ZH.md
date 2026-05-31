@@ -1731,11 +1731,11 @@ source = `fresh_stage43_b_latent_state_dataset_contract`
 verdict = `stage43_b_latent_state_dataset_contract_pass`
 gate = `12 / 12`
 endpoint_latent_state_training_ready = `True`
-full_waypoint_supervised_training_ready = `False`
+full_waypoint_supervised_training_ready = `True`
 
 Stage43-B builds the latent-state dataset contract from Stage35/36/37 external geometry/history/goal/baseline artifacts and the Stage42 source-level full-waypoint cache. It separates inference tokens from labels: future endpoint/waypoint labels are loss/eval only and are not model inputs.
 
-Endpoint/failure/gain/harm/occupancy latent-state training is contract-ready; full-waypoint supervised latent training is still blocked until train/val full-waypoint labels are frozen. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made.
+Endpoint/failure/gain/harm/occupancy and full-waypoint supervised latent-state training are now contract-ready under the frozen local Stage43 source-level supervision cache. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made.
 <!-- STAGE43_B_LATENT_STATE_DATASET_CONTRACT:END -->
 
 <!-- STAGE43_C_PROTECTED_LATENT_STATE_SMALL:START -->
@@ -1888,3 +1888,18 @@ Blocked test source families under the validation-only guard: `TrajNet_mot`.
 
 Claim boundary remains: protected dataset-local/raw-frame 2.5D evidence only; no metric/seconds claim, no Stage5C execution, no SMC.
 <!-- STAGE43_K_SOURCE_SLICE_REPAIR:END -->
+
+<!-- STAGE43_L_FULL_WAYPOINT_SUPERVISION_CACHE:START -->
+## STAGE43_L_FULL_WAYPOINT_SUPERVISION_CACHE
+
+source = `fresh_stage43_l_full_waypoint_supervision_cache`
+verdict = `stage43_l_full_waypoint_supervision_cache_pass`
+gate = `10 / 10`
+full_waypoint_supervised_training_ready = `True`
+
+Stage43-L freezes source-level train/val/test full-waypoint supervision labels under the Stage43 source split. The cache is local and intentionally not committed. This closes the Stage43-B blocker for supervised full-waypoint latent-state training while keeping future waypoints as labels/eval only.
+
+Rows: train `146809`, val `101446`, test `89736`. Test full-waypoint rows `89736`; source overlaps train/val/test `{'train_val': 0, 'train_test': 0, 'val_test': 0}`.
+
+No Stage5C, no SMC, no metric/seconds/true-3D/foundation claim.
+<!-- STAGE43_L_FULL_WAYPOINT_SUPERVISION_CACHE:END -->

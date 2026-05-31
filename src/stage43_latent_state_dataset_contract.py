@@ -20,6 +20,7 @@ DATA35 = Path("data/stage35_selective_transfer")
 DATA36 = Path("data/stage36_t50_repair")
 DATA37 = Path("data/stage37_t50_history")
 DATA42 = Path("data/stage42_source_level_full_waypoint_cache")
+DATA43_FULL_WAYPOINT = Path("data/stage43_full_waypoint_supervision_cache")
 
 REPORT_JSON = OUT_DIR / "stage43_latent_state_dataset_contract.json"
 REPORT_MD = OUT_DIR / "stage43_latent_state_dataset_contract.md"
@@ -221,6 +222,29 @@ def _split_summary(split: str) -> dict[str, Any]:
 
 
 def _full_waypoint_availability() -> dict[str, Any]:
+    stage43_paths = {
+        split: DATA43_FULL_WAYPOINT / f"stage43_full_waypoint_supervision_{split}.npz"
+        for split in SPLITS
+    }
+    if all(path.exists() for path in stage43_paths.values()):
+        split_rows: dict[str, Any] = {}
+        for split, path in stage43_paths.items():
+            z = np.load(path, allow_pickle=False)
+            split_rows[split] = {
+                "rows": int(len(z["horizon"])),
+                "waypoint_shape": list(z["waypoint_xy"].shape),
+                "valid_waypoint_rows": int(np.sum(np.any(z["waypoint_valid"], axis=1))),
+                "all_waypoints_valid_rows": int(np.sum(np.all(z["waypoint_valid"], axis=1))),
+                "cache_file": _file(path, hash_file=False),
+            }
+        return {
+            "status": "frozen_source_level_train_val_test_cache",
+            "cache_dir": str(DATA43_FULL_WAYPOINT),
+            "split_rows": split_rows,
+            "train_val_supervised_full_waypoint_ready": split_rows["train"]["valid_waypoint_rows"] > 0
+            and split_rows["val"]["valid_waypoint_rows"] > 0,
+            "limitation": "Full-waypoint labels are frozen in a local Stage43 source-level supervision cache. The cache is not committed; reports record hashes and row counts.",
+        }
     cache = DATA42 / "stage42iv_source_level_merged_cache.npz"
     if not cache.exists():
         return {"status": "not_run", "reason": "missing Stage42 source-level full-waypoint cache"}
@@ -249,8 +273,9 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "goal_prototypes_available": all(row["files"]["goal_prototypes"]["exists"] for row in splits.values()),
         "baseline_family_available": all(row["files"]["baseline_family"]["exists"] for row in splits.values()),
         "endpoint_labels_available_all_splits": labels["future_endpoint_labels_all_splits"] is True,
-        "full_waypoint_limitation_recorded": labels["full_waypoint"]["status"] == "partial_eval_cache"
-        and labels["full_waypoint"]["train_val_supervised_full_waypoint_ready"] is False,
+        "full_waypoint_status_recorded": labels["full_waypoint"]["status"]
+        in {"partial_eval_cache", "frozen_source_level_train_val_test_cache"}
+        and "train_val_supervised_full_waypoint_ready" in labels["full_waypoint"],
         "labels_separated_from_inputs": "labels_only" in payload["token_schema"]
         and not any(
             name in sum((payload["token_schema"][token] for token in payload["token_schema"] if token != "labels_only"), [])
@@ -326,9 +351,14 @@ def _build_payload() -> dict[str, Any]:
     }
     payload["stage43_b_gate"] = _gate(payload)
     payload["decision"] = (
-        "Endpoint/failure/gain/harm/occupancy latent-state dataset contract is ready; full-waypoint supervised training remains blocked until train/val full-waypoint labels are frozen."
+        "Endpoint/failure/gain/harm/occupancy and full-waypoint supervised latent-state training are ready under the frozen local Stage43 source-level supervision cache."
         if payload["stage43_b_gate"]["endpoint_latent_state_training_ready"]
-        else "Do not train Stage43 latent-state models until dataset-contract blockers are fixed."
+        and payload["stage43_b_gate"]["full_waypoint_supervised_training_ready"]
+        else (
+            "Endpoint/failure/gain/harm/occupancy latent-state dataset contract is ready; full-waypoint supervised training remains blocked until train/val full-waypoint labels are frozen."
+            if payload["stage43_b_gate"]["endpoint_latent_state_training_ready"]
+            else "Do not train Stage43 latent-state models until dataset-contract blockers are fixed."
+        )
     )
     return payload
 
@@ -364,7 +394,7 @@ def _write_reports(payload: Mapping[str, Any]) -> None:
         "- Future endpoint, future relative error, full-waypoint, occupancy/density, failure/gain/harm are label/loss/eval targets only.",
         "- They are not listed in any inference input token group.",
         f"- Full-waypoint status: `{payload['label_availability']['full_waypoint']['status']}`.",
-        f"- Full-waypoint limitation: {payload['label_availability']['full_waypoint']['limitation']}",
+        f"- Full-waypoint limitation: {payload['label_availability']['full_waypoint'].get('limitation', '')}",
         "",
         "## Gate",
         "",
@@ -409,7 +439,11 @@ def _update_text_outputs(payload: Mapping[str, Any]) -> None:
         "",
         "Stage43-B builds the latent-state dataset contract from Stage35/36/37 external geometry/history/goal/baseline artifacts and the Stage42 source-level full-waypoint cache. It separates inference tokens from labels: future endpoint/waypoint labels are loss/eval only and are not model inputs.",
         "",
-        "Endpoint/failure/gain/harm/occupancy latent-state training is contract-ready; full-waypoint supervised latent training is still blocked until train/val full-waypoint labels are frozen. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made.",
+        (
+            "Endpoint/failure/gain/harm/occupancy and full-waypoint supervised latent-state training are now contract-ready under the frozen local Stage43 source-level supervision cache. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made."
+            if gate["full_waypoint_supervised_training_ready"]
+            else "Endpoint/failure/gain/harm/occupancy latent-state training is contract-ready; full-waypoint supervised latent training is still blocked until train/val full-waypoint labels are frozen. No Stage5C/SMC/metric/seconds/true-3D/foundation claim is made."
+        ),
     ]
     for path in [README_RESULTS, M3W_README, WORK_SUMMARY]:
         if path.exists():
