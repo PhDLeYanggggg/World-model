@@ -4031,3 +4031,21 @@ Result source: `fresh_validation_selected_t100_guarded_trial`. This is a validat
 
 Boundary: Stage43-Q does not execute Stage5C or SMC, does not make metric/seconds claims, and does not deploy h100 unless the validation-selected h100 rule is test-safe.
 <!-- STAGE43_Q_T100_GUARDED_TRIAL:END -->
+
+<!-- STAGE43_R_T100_SOURCE_STABILITY_GUARD:START -->
+## Stage43-R t100 source-stability guard
+
+Result source: `fresh_validation_source_stable_t100_guard`. This adds a validation-only source-stability requirement for h100 deployment over the Stage43-P safety floor.
+
+- gate: `13 / 13`
+- verdict: `stage43_r_source_stable_h100_guard_blocks_t100_false_positive`
+- h100 status: `h100_blocked_insufficient_source_stability`
+- h100 allowed rules: `none`
+- blocks Stage43-Q false positive: `True`
+- full-waypoint ADE improvement vs floor: `50.25%`
+- t50 full-waypoint ADE improvement vs floor: `51.23%`
+- t100 raw-frame diagnostic: `0.00%`
+- easy degradation: `0.00%`
+
+Boundary: t100 remains fallback-only. The h100 blocker is now localized to insufficient source-stable validation evidence; no metric/seconds claim, Stage5C, or SMC.
+<!-- STAGE43_R_T100_SOURCE_STABILITY_GUARD:END -->
