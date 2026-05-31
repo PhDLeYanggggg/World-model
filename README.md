@@ -1,62 +1,62 @@
-# M3W
+# M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W is my research project on real-world multimodal, multi-agent world modeling.
+This repository is where I am building M3W, a research project about real-world multi-agent world modeling from top-down scenes, trajectories, and scene context.
 
-The current question is deliberately concrete:
+The question I keep coming back to is simple:
 
-> Given a top-down scene and the recent motion of multiple agents, can the model predict what is likely to happen next, improve the hard cases, and avoid damaging the easy ones?
+> Can a model use only causal scene and motion history to predict what agents will do next, help on genuinely hard cases, and leave easy cases alone?
 
-I care about that last part. In trajectory forecasting it is easy to make a model look better on selected difficult examples while quietly making ordinary motion worse. A lot of this repository is therefore about causal inputs, no-leakage audits, conservative switching, and negative results.
+That last requirement matters. A model can look impressive if it only improves difficult slices while quietly making normal motion worse. Most of the work here is about avoiding that trap: no future leakage, no test-endpoint goal construction, strong causal baselines, conservative fallback, and explicit negative results.
 
-## Current State
+## Where the Project Is Now
 
-M3W is currently a protected 2.5D multi-agent world-state model. It is not a true 3D world model and it is not a foundation model.
+M3W is currently a protected 2.5D multi-agent world-state model. It is not a true 3D world model, and it is not a foundation model.
 
-The strongest deployable system is still safety-first: learned components estimate failure risk, expected gain, switch harm, long-horizon drift, and interaction context, but deployment falls back to a causal baseline when those signals are not trustworthy enough.
+The best deployable versions are safety-first systems. Learned components estimate things like failure risk, expected gain, switch harm, long-horizon drift, interaction context, and latent world-state signals. They are only allowed to act when the evidence is strong enough; otherwise the system falls back to a causal baseline.
 
-The latest protected latent-state work is promising, but it is not a blank check for neural rollout. A unit-consistent safe-switch policy improved external dataset-local raw-frame results while keeping the easy-case guard intact. A source-level audit also found weak slices, so I describe the result as a protected domain-level candidate with source-level caveats, not as uniform cross-source success.
+That fallback is not an afterthought. It is part of the model. The goal is not to make a neural component win a leaderboard slice once, but to build a world model that knows when not to intervene.
 
-## Evidence So Far
+## What Has Worked
 
-The useful progress has come from guarded policies rather than unconstrained generation:
+The strongest evidence so far is protected rather than unconstrained:
 
 - On SDD, a cost-aware selector improved the pixel-space raw-frame benchmark while keeping easy cases under control.
-- On external top-down pedestrian data, causal history windows and scene-agnostic goal prototypes repaired the earlier `t+50` transfer failure.
-- Later source/domain-aware policies improved external raw-frame performance under conservative fallback.
-- Protected latent-state experiments now show neural dynamics signal, but only the unit-consistent, easy-safe switch is deployable.
+- On external top-down pedestrian data, causal history windows and scene-agnostic goal prototypes fixed an earlier `t+50` transfer failure.
+- Source/domain-aware policies improved external dataset-local raw-frame results under conservative fallback.
+- Protected latent-state experiments show useful neural dynamics signal, but only after unit-consistent safety checks and easy-case guards.
 
-The short version: M3W has real protected world-state behavior. The protection is part of the model design, not decoration.
+The honest version is: M3W has real protected world-state behavior, with source-level caveats. I do not describe it as uniform cross-source success.
 
-## What Did Not Work
+## What Failed
 
-Several directions failed clearly enough to change the project:
+A lot of the project has been useful because it failed:
 
-- Hard classification of the "best baseline" switched too aggressively and hurt easy trajectories.
-- JEPA-style representation learning avoided collapse, but has not yet become a reliable downstream driver.
-- SDD-to-external zero-shot transfer failed before coordinate, horizon, and goal-context repair.
+- A hard classifier for the "best baseline" switched too aggressively and damaged easy trajectories.
+- JEPA-style representation learning did not collapse, but it has not yet become a reliable downstream driver.
+- Direct SDD-to-external transfer failed before coordinate, horizon, and goal-context repair.
 - Latent alignment reduced distribution distance without automatically improving prediction.
 - Ordinary residual correction was not safe enough to deploy.
 - Ungated Transformer and Hybrid dynamics did not beat the protected floor.
-- A source-level latent model looked strong in normalized space, but a unit-consistent audit exposed easy-case harm.
+- A normalized-space source-level latent model looked strong until a unit-consistent audit exposed easy-case harm.
 
-Those failures are useful. They keep the project honest about what is actually working.
+I keep these failures visible because they define the real boundary of the work.
 
-## What I Am Not Claiming
+## Claim Boundary
 
-The current boundary is strict:
+For now, the claims are deliberately narrow:
 
 - SDD results are pixel-space benchmark results.
-- External results are dataset-local raw-frame results unless a source has verified timing and geometry.
+- External results are dataset-local raw-frame results unless timing and geometry are verified for that source.
 - `t+50` and `t+100` are raw-frame horizons, not seconds-level claims.
 - Inferred scene, goal, and visual-prior labels are not human gold labels.
-- Stage5C latent generative execution is not enabled.
+- Latent generative execution is not enabled.
 - SMC is not enabled.
 
-M3W is moving toward stronger multimodal world modeling, but I would rather state the boundary plainly than make the project sound more finished than it is.
+M3W is moving toward stronger multimodal world modeling, but I would rather understate the result than make the project sound more finished than it is.
 
-## Repository Map
+## Reading the Repository
 
-The GitHub front page is intentionally short. The detailed evidence is kept in the result files:
+This front page is intentionally short. The detailed evidence is kept in result files:
 
 | Path | Purpose |
 | --- | --- |
@@ -92,8 +92,6 @@ Basic verification:
 ```
 
 ## Next
-
-The next step is not to make the README louder. It is to earn stronger evidence:
 
 - repair weak source slices without test-threshold tuning;
 - audit timing, geometry, and scale source by source;
