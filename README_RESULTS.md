@@ -7696,3 +7696,17 @@ repair_training_allowed_now = `0`
 
 I scanned the raw TrajNet/OpenTraj files behind the blocked source families. The result is useful but conservative: biwi has possible raw support to convert, while mot lacks an independent support file. I am not training a repair from this scan; it only defines what support must be rebuilt before any safe source-specific repair can be tested.
 <!-- STAGE43_BC_BLOCKED_FAMILY_SUPPORT_SCAN:END -->
+
+<!-- STAGE43_BD_BIWI_SUPPORT_REBUILD_PREFLIGHT:START -->
+## STAGE43_BD_BIWI_SUPPORT_REBUILD_PREFLIGHT
+
+source = `fresh_stage43_bd_biwi_support_rebuild_preflight`
+result_source = `fresh_biwi_source_family_support_rebuild_preflight`
+verdict = `stage43_bd_biwi_support_rebuild_preflight_pass`
+gate = `14 / 14`
+biwi_sources = `2`
+current_train_val_test_rows = `0 / 459 / 7685`
+deployable_repair_options_now = `0`
+
+I checked whether the raw biwi support found in BC can actually become a safe repair split. It cannot yet: the useful `biwi_hotel` rows are the current held-out biwi test source, and the small `biwi_eth` support is not enough for an independent deployable train/val/test story. I am keeping biwi floor-only and treating any within-source support split as diagnostic only.
+<!-- STAGE43_BD_BIWI_SUPPORT_REBUILD_PREFLIGHT:END -->

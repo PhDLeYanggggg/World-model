@@ -1,0 +1,251 @@
+{
+  "source": "fresh_stage43_bd_biwi_support_rebuild_preflight",
+  "result_source": "fresh_biwi_source_family_support_rebuild_preflight",
+  "generated_at_utc": "2026-06-01T16:19:28.692878+00:00",
+  "git_commit": "943d64e",
+  "input_artifacts": {
+    "stage43_bc": "outputs/stage43_latent_state/stage43_blocked_family_support_scan.json",
+    "stage43_f": "outputs/stage43_latent_state/stage43_source_level_heldout_split.json",
+    "stage35_feature_store": "data/stage35_selective_transfer"
+  },
+  "input_verdicts": {
+    "stage43_bc": "stage43_bc_blocked_family_support_scan_pass",
+    "stage43_f": "stage43_f_source_level_split_ready"
+  },
+  "protocol": {
+    "purpose": "preflight_only_no_repair_training",
+    "family": "TrajNet_biwi",
+    "minimum_validation_rows": 1000,
+    "minimum_test_rows": 1000,
+    "minimum_t50_validation_rows": 200,
+    "test_threshold_tuning_allowed": false,
+    "raw_test_dir_training_allowed": false,
+    "current_heldout_test_reuse_for_training_allowed": false
+  },
+  "raw_scan_action": {
+    "family": "TrajNet_biwi",
+    "raw_file_count": 2,
+    "raw_train_dir_files": 1,
+    "raw_test_dir_files": 1,
+    "raw_t50_candidate_windows": 2175,
+    "raw_t100_candidate_windows": 1450,
+    "current_train_family_rows": 0,
+    "current_val_family_rows": 459,
+    "current_test_family_rows": 7685,
+    "support_candidate_exists_in_raw_scan": true,
+    "repair_training_allowed_now": false,
+    "blockers": [
+      "current_feature_store_has_no_train_family_rows",
+      "current_validation_support_below_threshold",
+      "existing_ungated_transfer_catastrophic_negative"
+    ],
+    "recommendation": "rebuild_source_family_split_with_raw_candidate_support_before_any_repair_training"
+  },
+  "biwi_sources": {
+    "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt": {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+      "source_id": "d2c1bb36b138e813",
+      "raw_role": "raw_test_dir",
+      "rows": 459,
+      "horizon_counts": {
+        "10": 255,
+        "25": 153,
+        "50": 51
+      },
+      "hard_rows": 459,
+      "failure_rows": 204,
+      "easy_rows": 77,
+      "agent_count": 51,
+      "frame_min": 820.0,
+      "frame_max": 12080.0,
+      "old_split_counts": {
+        "train": 459
+      }
+    },
+    "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt": {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "source_id": "603561046c16aa3a",
+      "raw_role": "raw_train_dir",
+      "rows": 7685,
+      "horizon_counts": {
+        "10": 2465,
+        "25": 2175,
+        "50": 1885,
+        "100": 1160
+      },
+      "hard_rows": 7685,
+      "failure_rows": 2819,
+      "easy_rows": 3102,
+      "agent_count": 145,
+      "frame_min": 20.0,
+      "frame_max": 17950.0,
+      "old_split_counts": {
+        "train": 7685
+      }
+    }
+  },
+  "current_stage43_assignment": {
+    "assignment_name": "current_stage43_source_level_split",
+    "source_ids_by_split": {
+      "train": [],
+      "val": [
+        "d2c1bb36b138e813"
+      ],
+      "test": [
+        "603561046c16aa3a"
+      ]
+    },
+    "rows_by_split": {
+      "train": 0,
+      "val": 459,
+      "test": 7685
+    },
+    "t50_rows_by_split": {
+      "train": 0,
+      "val": 51,
+      "test": 1885
+    },
+    "repair_training_allowed": false,
+    "reason": "current_source_level_split_has_no_biwi_train_rows"
+  },
+  "candidate_rebuild_options": [
+    {
+      "option": "raw_train_support_raw_test_validation",
+      "uses_raw_test_dir_for_training": false,
+      "uses_current_test_source_for_training": true,
+      "split_type": "family_support_candidate_not_deployable",
+      "train_sources": [
+        "603561046c16aa3a"
+      ],
+      "val_sources": [
+        "d2c1bb36b138e813"
+      ],
+      "test_sources": [],
+      "rows_by_split": {
+        "train": 7685,
+        "val": 459,
+        "test": 0
+      },
+      "t50_rows_by_split": {
+        "train": 1885,
+        "val": 51,
+        "test": 0
+      },
+      "repair_training_allowed": false,
+      "blockers": [
+        "no_independent_biwi_test_source_after_support_rebuild",
+        "current_stage43_test_source_would_move_to_train_support",
+        "validation_rows_below_threshold",
+        "validation_t50_rows_below_threshold"
+      ]
+    },
+    {
+      "option": "within_source_agent_split_support_diagnostic",
+      "uses_raw_test_dir_for_training": false,
+      "uses_current_test_source_for_training": true,
+      "split_type": "diagnostic_within_source_cv_not_official_source_level",
+      "split_rule": "deterministic_agent_hash_mod5_validation",
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "source_id": "603561046c16aa3a",
+      "train_agent_count": 118,
+      "val_agent_count": 27,
+      "rows_by_split": {
+        "train": 6254,
+        "val": 1431
+      },
+      "t50_rows_by_split": {
+        "train": 1534,
+        "val": 351
+      },
+      "test_sources": [],
+      "repair_training_allowed": false,
+      "blockers": [
+        "within_source_split_not_source_level_heldout",
+        "no_independent_biwi_test_source",
+        "current_stage43_test_source_would_be_reused_for_support"
+      ]
+    },
+    {
+      "option": "keep_current_stage43_floor_only",
+      "split_type": "deployable_current_floor",
+      "rows_by_split": {
+        "train": 0,
+        "val": 0,
+        "test": 8144
+      },
+      "t50_rows_by_split": {
+        "train": 0,
+        "val": 0,
+        "test": 1936
+      },
+      "repair_training_allowed": false,
+      "blockers": [
+        "no_train_family_rows_for_repair"
+      ]
+    }
+  ],
+  "summary": {
+    "biwi_source_count_in_feature_store": 2,
+    "current_train_rows": 0,
+    "current_val_rows": 459,
+    "current_test_rows": 7685,
+    "current_t50_train_rows": 0,
+    "current_t50_val_rows": 51,
+    "current_t50_test_rows": 1885,
+    "candidate_option_count": 3,
+    "deployable_repair_option_count": 0,
+    "diagnostic_support_option_count": 2
+  },
+  "next_required_actions": [
+    "Do not train a biwi-specific repair on the current Stage43 source-level test source.",
+    "If biwi repair remains important, acquire or locate an independent biwi-like source so train, validation, and test support are disjoint.",
+    "A within-source agent split can be used only as a diagnostic conversion smoke test, not as deployable evidence.",
+    "Keep Stage43-P/AZ floor behavior for TrajNet_biwi until a source-level validation gate has enough rows and positive easy-safe evidence."
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false,
+    "raw_test_dir_training": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "deployable_biwi_repair_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "input_hash": "e551a9a601963772ab13c62390a5297ee0f5aa05f6151bfb1d541e5b6ff402a4",
+  "stage43_bd_gate": {
+    "source": "fresh_stage43_bd_biwi_support_rebuild_preflight",
+    "gates": {
+      "stage43_bc_precondition_passed": true,
+      "stage43_source_split_precondition_passed": true,
+      "biwi_sources_found_in_feature_store": true,
+      "current_train_gap_reconfirmed": true,
+      "candidate_rebuild_options_evaluated": true,
+      "deployable_repair_correctly_blocked": true,
+      "diagnostic_support_option_recorded": true,
+      "raw_test_training_blocked": true,
+      "current_test_reuse_blocked_for_deployment": true,
+      "next_actions_recorded": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_bd_biwi_support_rebuild_preflight_pass",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "goal_complete": false
+  }
+}

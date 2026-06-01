@@ -293,8 +293,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_bc_blocked_family_support_scan",
-  "current_verdict": "stage43_bc_blocked_family_support_scan_pass",
+  "current_stage": "stage43_bd_biwi_support_rebuild_preflight",
+  "current_verdict": "stage43_bd_biwi_support_rebuild_preflight_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41572,6 +41572,105 @@
       }
     ],
     "report": "outputs/stage43_latent_state/stage43_blocked_family_support_scan.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bd_biwi_support_rebuild_preflight": {
+    "source": "fresh_stage43_bd_biwi_support_rebuild_preflight",
+    "result_source": "fresh_biwi_source_family_support_rebuild_preflight",
+    "updated_at": "2026-06-01T16:19:28.692878+00:00",
+    "verdict": "stage43_bd_biwi_support_rebuild_preflight_pass",
+    "gate": "14 / 14",
+    "summary": {
+      "biwi_source_count_in_feature_store": 2,
+      "current_train_rows": 0,
+      "current_val_rows": 459,
+      "current_test_rows": 7685,
+      "current_t50_train_rows": 0,
+      "current_t50_val_rows": 51,
+      "current_t50_test_rows": 1885,
+      "candidate_option_count": 3,
+      "deployable_repair_option_count": 0,
+      "diagnostic_support_option_count": 2
+    },
+    "candidate_rebuild_options": [
+      {
+        "option": "raw_train_support_raw_test_validation",
+        "uses_raw_test_dir_for_training": false,
+        "uses_current_test_source_for_training": true,
+        "split_type": "family_support_candidate_not_deployable",
+        "train_sources": [
+          "603561046c16aa3a"
+        ],
+        "val_sources": [
+          "d2c1bb36b138e813"
+        ],
+        "test_sources": [],
+        "rows_by_split": {
+          "train": 7685,
+          "val": 459,
+          "test": 0
+        },
+        "t50_rows_by_split": {
+          "train": 1885,
+          "val": 51,
+          "test": 0
+        },
+        "repair_training_allowed": false,
+        "blockers": [
+          "no_independent_biwi_test_source_after_support_rebuild",
+          "current_stage43_test_source_would_move_to_train_support",
+          "validation_rows_below_threshold",
+          "validation_t50_rows_below_threshold"
+        ]
+      },
+      {
+        "option": "within_source_agent_split_support_diagnostic",
+        "uses_raw_test_dir_for_training": false,
+        "uses_current_test_source_for_training": true,
+        "split_type": "diagnostic_within_source_cv_not_official_source_level",
+        "split_rule": "deterministic_agent_hash_mod5_validation",
+        "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+        "source_id": "603561046c16aa3a",
+        "train_agent_count": 118,
+        "val_agent_count": 27,
+        "rows_by_split": {
+          "train": 6254,
+          "val": 1431
+        },
+        "t50_rows_by_split": {
+          "train": 1534,
+          "val": 351
+        },
+        "test_sources": [],
+        "repair_training_allowed": false,
+        "blockers": [
+          "within_source_split_not_source_level_heldout",
+          "no_independent_biwi_test_source",
+          "current_stage43_test_source_would_be_reused_for_support"
+        ]
+      },
+      {
+        "option": "keep_current_stage43_floor_only",
+        "split_type": "deployable_current_floor",
+        "rows_by_split": {
+          "train": 0,
+          "val": 0,
+          "test": 8144
+        },
+        "t50_rows_by_split": {
+          "train": 0,
+          "val": 0,
+          "test": 1936
+        },
+        "repair_training_allowed": false,
+        "blockers": [
+          "no_train_family_rows_for_repair"
+        ]
+      }
+    ],
+    "report": "outputs/stage43_latent_state/stage43_biwi_support_rebuild_preflight.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
