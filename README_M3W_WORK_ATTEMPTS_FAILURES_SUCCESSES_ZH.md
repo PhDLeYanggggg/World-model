@@ -2316,12 +2316,15 @@ Stage43-AI repeats the Stage43-AH retrained feature-family ablation across multi
 
 source = `fresh_stage43_aj_safety_floor_necessity_audit`
 verdict = `stage43_aj_safety_floor_necessity_confirmed`
-gate = `10 / 10`
+gate = `13 / 13`
 floor_necessity_confirmed = `True`
-protected_easy_vs_ungated_easy = `0.00%` vs `55.72%`
-no_baseline_floor_t50_delta_mean = `12.83%`
+protected_easy_vs_ungated_easy = `0.00%` vs `7.86%`
+no_baseline_floor_t50_delta_mean = `11.12%`
+latest_stage43_p_t50 = `51.23%`
+latest_stage43_p_easy = `0.00%`
+latest_stage43_p_t100 = `0.00%`
 
-Stage43-AJ consolidates current Stage43 floor evidence: protected-vs-ungated neural dynamics, multi-seed no-baseline-floor ablation, scene-proxy safe-vs-unsafe variants, and h100 floor guards. Conclusion: the safety floor is currently a core safety mechanism and cannot be globally removed; only validation-selected partial relaxation is supported.
+Stage43-AJ consolidates current Stage43 floor evidence: protected-vs-ungated neural dynamics, multi-seed no-baseline-floor ablation, self/conformal safety gates, bounded residual relaxation, scene-proxy safe-vs-unsafe variants, and the latest tail-horizon adapter. Conclusion: the safety floor is currently a core safety mechanism and cannot be globally removed; only validation-selected partial relaxation is supported.
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AJ_SAFETY_FLOOR_NECESSITY_AUDIT:END -->

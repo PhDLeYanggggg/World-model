@@ -1,8 +1,8 @@
 {
   "source": "fresh_stage43_aj_safety_floor_necessity_audit",
   "result_source": "fresh_audit_over_cached_verified_prior_fresh_evidence",
-  "generated_at_utc": "2026-06-01T05:43:14.999455+00:00",
-  "git_commit": "aaac8bd",
+  "generated_at_utc": "2026-06-01T09:25:24.666435+00:00",
+  "git_commit": "3a03954",
   "evidence_sources": {
     "stage43_a_safety_floor_replay": {
       "path": "outputs/stage43_latent_state/stage43_safety_floor_replay.json",
@@ -25,6 +25,30 @@
       "verdict": "stage43_ai_feature_family_multiseed_confirmation_pass",
       "result_source": "cached_verified_prior_fresh_run"
     },
+    "stage43_ak_self_gate_conformal": {
+      "path": "outputs/stage43_latent_state/stage43_self_gate_conformal_audit.json",
+      "source": "fresh_stage43_ak_self_gate_conformal_audit",
+      "verdict": "stage43_ak_self_gate_conformal_audit_pass",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
+    "stage43_al_bounded_residual": {
+      "path": "outputs/stage43_latent_state/stage43_bounded_residual_safety_audit.json",
+      "source": "fresh_stage43_al_bounded_residual_safety_audit",
+      "verdict": "stage43_al_bounded_residual_candidate_pass",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
+    "stage43_o_safe_repair": {
+      "path": "outputs/stage43_latent_state/stage43_full_waypoint_latent_safe_repair.json",
+      "source": "fresh_stage43_o_full_waypoint_latent_safe_repair",
+      "verdict": "stage43_o_safe_repair_pass_t100_fallback_not_positive",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
+    "stage43_p_tail_horizon_adapter": {
+      "path": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json",
+      "source": "fresh_stage43_p_tail_horizon_waypoint_adapter",
+      "verdict": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
     "stage43_ag_scene_proxy_retrained": {
       "path": "outputs/stage43_latent_state/stage43_scene_proxy_retrained_ablation.json",
       "source": "fresh_stage43_ag_scene_proxy_retrained_ablation",
@@ -39,35 +63,38 @@
     }
   },
   "protected_vs_ungated": {
-    "protected_all": 0.2976556598917486,
-    "ungated_all": 0.16289036353166597,
-    "protected_t50": 0.16448889263357025,
-    "ungated_t50": 0.1625019447399093,
-    "protected_hard": 0.2875229202597176,
-    "ungated_hard": 0.1812770688446469,
-    "protected_t100": -0.17794905441649167,
-    "ungated_t100": -0.7212458897008174,
+    "protected_all": 0.37232757031002817,
+    "ungated_all": 0.36010009838633583,
+    "protected_t50": 0.32936456461801455,
+    "ungated_t50": 0.30301742511054597,
+    "protected_hard": 0.38768628311162145,
+    "ungated_hard": 0.3697213871291004,
+    "protected_t100": -0.27898648756508826,
+    "ungated_t100": -0.3404698749143489,
     "protected_easy": 0.0,
-    "ungated_easy": 0.5571793057175356,
-    "easy_harm_reduction": 0.5571793057175356,
-    "t100_harm_reduction": 0.5432968352843257,
-    "all_gain_from_protection": 0.1347652963600826,
-    "hard_gain_from_protection": 0.1062458514150707
+    "ungated_easy": 0.07862886616192877,
+    "easy_harm_reduction": 0.07862886616192877,
+    "t100_harm_reduction": 0.06148338734926062,
+    "all_gain_from_protection": 0.012227471923692335,
+    "hard_gain_from_protection": 0.017964895982521045
   },
   "multiseed_floor_feature_evidence": {
     "stable_t50_variants": [
-      "no_baseline_floor"
+      "no_neighbor_interaction",
+      "no_baseline_floor",
+      "no_domain"
     ],
     "stable_hard_or_all_variants": [
       "no_goal",
-      "no_baseline_floor"
+      "no_baseline_floor",
+      "no_domain"
     ],
-    "no_baseline_floor_t50_delta_mean": 0.12826915436999528,
-    "no_baseline_floor_t50_positive_seed_count": 3,
+    "no_baseline_floor_t50_delta_mean": 0.11120490079243099,
+    "no_baseline_floor_t50_positive_seed_count": 2,
     "seed_count": 3,
     "no_baseline_floor_easy_mean": 0.25328495091684416,
-    "no_baseline_floor_all_delta_mean": -0.004278391647920654,
-    "no_baseline_floor_hard_delta_mean": -0.023567304888351865
+    "no_baseline_floor_all_delta_mean": 0.010864085293664227,
+    "no_baseline_floor_hard_delta_mean": -0.00904593516174379
   },
   "scene_proxy_floor_guard_evidence": {
     "raw_best_variant": "full_scene",
@@ -86,11 +113,67 @@
     "h100_floor_rate": 1.0,
     "stage43_ab_rate": 0.455375
   },
+  "self_gate_conformal_evidence": {
+    "ungated_all": 0.16289036353166597,
+    "ungated_t50": 0.1625019447399093,
+    "ungated_t100": -0.7212458897008174,
+    "ungated_hard": 0.1812770688446469,
+    "ungated_easy": 0.5571793057175356,
+    "stored_self_gate_all": 0.2976556598917486,
+    "stored_self_gate_t50": 0.16448889263357025,
+    "stored_self_gate_t100": -0.17794905441649167,
+    "stored_self_gate_easy": 0.0,
+    "conformal_all": 0.3240570618121865,
+    "conformal_t50": 0.16448889263357025,
+    "conformal_t100": 0.0,
+    "conformal_hard": 0.31961579981850163,
+    "conformal_easy": 0.0,
+    "conformal_switch_rate": 0.6308125,
+    "global_floor_removable": false
+  },
+  "bounded_residual_evidence": {
+    "ungated_all": 0.16289036353166597,
+    "ungated_t50": 0.1625019447399093,
+    "ungated_t100": -0.7212458897008174,
+    "ungated_hard": 0.1812770688446469,
+    "ungated_easy": 0.5571793057175356,
+    "hard_switch_all": 0.2976556598917486,
+    "hard_switch_t50": 0.16448889263357025,
+    "hard_switch_t100": -0.17794905441649167,
+    "hard_switch_hard": 0.2875229202597176,
+    "hard_switch_easy": 0.0,
+    "safe_bounded_all": 0.37999220149702595,
+    "safe_bounded_t50": 0.269646290665144,
+    "safe_bounded_t100": 0.0,
+    "safe_bounded_hard": 0.3771314228696524,
+    "safe_bounded_easy": 0.0,
+    "safe_bounded_switch_rate": 0.6308125,
+    "deploy_bounded_residual": true,
+    "global_floor_removed": false
+  },
+  "latest_protected_policy_evidence": {
+    "stage43_o_verdict": "stage43_o_safe_repair_pass_t100_fallback_not_positive",
+    "stage43_o_all": 0.39219890544938296,
+    "stage43_o_t50": 0.3006063671703221,
+    "stage43_o_t100": 0.0,
+    "stage43_o_hard": 0.3984622794538759,
+    "stage43_o_easy": 0.0,
+    "stage43_o_switch_rate": 0.6456606044396898,
+    "stage43_p_verdict": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback",
+    "stage43_p_all": 0.5025366202187915,
+    "stage43_p_t50": 0.5123378909285481,
+    "stage43_p_t100": 0.0,
+    "stage43_p_hard": 0.4787683745310771,
+    "stage43_p_easy": 0.0,
+    "stage43_p_switch_rate": 0.7044552910760453,
+    "stage43_p_t100_positive_success": false,
+    "stage43_p_deploy_tail_horizon_adapter": true
+  },
   "conclusion": {
     "global_floor_removable": false,
     "floor_is_core_safety_mechanism": true,
     "partial_floor_relaxation_supported": true,
-    "safe_relaxation_scope": "validation-selected h25/h50 and supported scene-proxy slices only",
+    "safe_relaxation_scope": "validation-selected source/horizon and supported scene-proxy slices only",
     "unsupported_scope": "ungated global neural deployment, h10/h100 global switching, metric/seconds/true-3D claims"
   },
   "no_leakage": {
@@ -109,7 +192,7 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "input_hash": "9e88bc4c35359b22d40b4f978985f2074f945892bda5267ac624542e91175b03",
+  "input_hash": "3d2b967d8c6cd5e5caf8eebc90065aaf03ba15e51d5b209f159729d07a6cc17b",
   "stage43_aj_gate": {
     "source": "fresh_stage43_aj_safety_floor_necessity_audit",
     "gates": {
@@ -120,12 +203,15 @@
       "no_baseline_floor_t50_degradation_stable": true,
       "unsafe_raw_scene_proxy_blocked": true,
       "partial_floor_relaxation_supported": true,
+      "self_gate_conformal_still_floor_protected": true,
+      "bounded_residual_is_floor_protected_relaxation": true,
+      "latest_tail_policy_uses_safe_floor": true,
       "global_floor_not_removable": true,
       "no_future_or_test_leakage": true,
       "no_metric_seconds_stage5c_smc_claim": true
     },
-    "passed": 10,
-    "total": 10,
+    "passed": 13,
+    "total": 13,
     "verdict": "stage43_aj_safety_floor_necessity_confirmed",
     "floor_necessity_confirmed": true,
     "stage5c_executed": false,

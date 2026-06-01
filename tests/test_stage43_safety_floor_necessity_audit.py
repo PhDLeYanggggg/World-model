@@ -18,8 +18,9 @@ def _payload(*, unsafe_ungated: bool = True) -> dict:
             "t100_harm_reduction": 0.54,
         },
         "multiseed_floor_feature_evidence": {
+            "stable_t50_variants": ["no_baseline_floor"],
             "no_baseline_floor_t50_delta_mean": 0.12,
-            "no_baseline_floor_t50_positive_seed_count": 3,
+            "no_baseline_floor_t50_positive_seed_count": 2,
             "seed_count": 3,
         },
         "scene_proxy_floor_guard_evidence": {
@@ -28,6 +29,25 @@ def _payload(*, unsafe_ungated: bool = True) -> dict:
             "slice_safe_t50": 0.37,
             "slice_safe_easy": 0.0,
             "h100_floor_rate": 1.0,
+        },
+        "self_gate_conformal_evidence": {
+            "ungated_easy": 0.55 if unsafe_ungated else 0.0,
+            "conformal_easy": 0.0,
+            "conformal_t100": 0.0,
+            "global_floor_removable": False,
+        },
+        "bounded_residual_evidence": {
+            "deploy_bounded_residual": True,
+            "safe_bounded_easy": 0.0,
+            "safe_bounded_t100": 0.0,
+            "global_floor_removed": False,
+        },
+        "latest_protected_policy_evidence": {
+            "stage43_p_deploy_tail_horizon_adapter": True,
+            "stage43_p_t50": 0.51,
+            "stage43_p_easy": 0.0,
+            "stage43_p_t100": 0.0,
+            "stage43_p_switch_rate": 0.70,
         },
         "conclusion": {
             "global_floor_removable": False,
