@@ -7,6 +7,7 @@ def _manifest(*, easy: float = 0.0, replay_diff: float = 0.0, complete: bool = F
     return {
         "source": aq.SOURCE,
         "policy_hash": "abc",
+        "frozen_replayable_policy_hash": "frozen-abc",
         "input_gate_verdicts": {
             "stage43_aj": "pass",
             "stage43_ak": "pass",
@@ -15,6 +16,7 @@ def _manifest(*, easy: float = 0.0, replay_diff: float = 0.0, complete: bool = F
             "stage43_an": "pass",
             "stage43_ao": "pass",
             "stage43_ap": "pass",
+            "stage43_p": "pass",
         },
         "current_best_deployable": {"global_floor_removed": False, "h100_guarded": True},
         "metrics": {
@@ -26,8 +28,17 @@ def _manifest(*, easy: float = 0.0, replay_diff: float = 0.0, complete: bool = F
                 "t50_delta_improvement": {"low": 0.01},
                 "hard_failure_delta_improvement": {"low": 0.01},
             },
+            "latest_bootstrap_ci": {
+                "full_waypoint_ade_improvement_vs_floor": {"low": 0.10},
+                "t50_full_waypoint_ade_improvement_vs_floor": {"low": 0.10},
+                "hard_failure_full_waypoint_ade_improvement_vs_floor": {"low": 0.10},
+                "easy_degradation_vs_floor": {"high": 0.0},
+            },
             "domain_deltas_vs_stored_hard_switch": {"ETH_UCY": 0.01, "TrajNet": 0.02, "UCY": 0.03},
             "horizon_deltas_vs_stored_hard_switch": {"10": 0.01, "25": 0.02, "50": 0.03, "100": 0.04},
+            "latest_domain_metrics": {"ETH_UCY": {}, "TrajNet": {}, "UCY": {}},
+            "latest_horizon_metrics": {"10": {}, "25": {}, "50": {}, "100": {}},
+            "latest_delta_vs_frozen_replay": {"all": 0.10, "t50": 0.10, "hard_failure": 0.10, "easy": 0.0},
         },
         "claim_boundary": {
             "true_3d_world_model": False,

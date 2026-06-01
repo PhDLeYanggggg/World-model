@@ -31,6 +31,7 @@ STAGE43_AM = OUT_DIR / "stage43_bounded_residual_statistical_confirmation.json"
 STAGE43_AN = OUT_DIR / "stage43_bounded_residual_policy_freeze.json"
 STAGE43_AO = OUT_DIR / "stage43_bounded_residual_reviewer_replay.json"
 STAGE43_AP = OUT_DIR / "stage43_paper_evidence_refresh.json"
+STAGE43_P = OUT_DIR / "stage43_tail_horizon_waypoint_adapter.json"
 FROZEN_POLICY = OUT_DIR / "frozen_stage43_bounded_residual_policy.json"
 
 
@@ -75,13 +76,17 @@ def _build_manifest(
     an_payload: Mapping[str, Any],
     ao: Mapping[str, Any],
     ap: Mapping[str, Any],
+    tail_p: Mapping[str, Any],
     frozen_policy: Mapping[str, Any],
 ) -> dict[str, Any]:
-    metrics = frozen_policy["metrics"]["stage43_al_point_metrics"]
+    frozen_metrics = frozen_policy["metrics"]["stage43_al_point_metrics"]
+    latest_metrics = tail_p["overall_full_test_metrics"]
     bootstrap = am["bootstrap_delta_ci"]["metrics"]
+    latest_bootstrap = tail_p["bootstrap_ci"]["metrics"]
     domain_deltas = _domain_deltas(am)
     horizon_deltas = _horizon_deltas(am)
-    policy_hash = frozen_policy["policy_hash"]
+    frozen_policy_hash = frozen_policy["policy_hash"]
+    latest_policy_hash = tail_p["selected_model"]["model_hash"]
     claim_boundary = {
         "true_3d_world_model": False,
         "foundation_world_model": False,
@@ -92,11 +97,13 @@ def _build_manifest(
         "smc_enabled": False,
     }
     return {
-        "candidate_name": "Stage43 Protected Bounded-Residual Latent Waypoint Policy",
-        "policy_hash": policy_hash,
-        "policy_artifact": str(FROZEN_POLICY),
+        "candidate_name": "Stage43 Protected Tail-Horizon Full-Waypoint Adapter",
+        "policy_hash": latest_policy_hash,
+        "policy_artifact": str(STAGE43_P),
+        "frozen_replayable_policy_hash": frozen_policy_hash,
+        "frozen_replayable_policy_artifact": str(FROZEN_POLICY),
         "source": SOURCE,
-        "result_source": "fresh_integrated_manifest_from_stage43_aj_to_ap_artifacts",
+        "result_source": "fresh_integrated_manifest_from_stage43_aj_to_ap_plus_stage43_p_artifacts",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "git_commit": m._git_commit(),
         "input_artifacts": {
@@ -107,6 +114,7 @@ def _build_manifest(
             "stage43_an": str(STAGE43_AN),
             "stage43_ao": str(STAGE43_AO),
             "stage43_ap": str(STAGE43_AP),
+            "stage43_p": str(STAGE43_P),
             "frozen_policy": str(FROZEN_POLICY),
         },
         "input_gate_verdicts": {
@@ -117,27 +125,57 @@ def _build_manifest(
             "stage43_an": an_payload.get("stage43_an_gate", {}).get("verdict"),
             "stage43_ao": ao.get("stage43_ao_gate", {}).get("verdict"),
             "stage43_ap": ap.get("stage43_ap_gate", {}).get("verdict"),
+            "stage43_p": tail_p.get("stage43_p_gate", {}).get("verdict"),
         },
         "current_best_deployable": {
+            "name": "Stage43-P protected tail-horizon full-waypoint adapter under Stage37/teacher safety floor",
+            "deployable": True,
+            "global_floor_removed": False,
+            "h100_guarded": True,
+            "why": "Validation-selected tail-horizon full-waypoint adapter improves full-test all/t50/hard over the frozen bounded-residual replay, preserves easy cases, and explicitly floors unsafe h100/t100 switches.",
+        },
+        "frozen_replayable_candidate": {
             "name": "frozen Stage43 bounded-residual policy under Stage37/teacher safety floor",
             "deployable": True,
             "global_floor_removed": False,
             "h100_guarded": True,
+            "policy_hash": frozen_policy_hash,
             "why": "Exact reviewer replay, positive bootstrap deltas over stored hard-switch policy, zero easy degradation, and explicit t100 raw-frame guard.",
+            "metrics": {
+                "all_improvement_vs_floor": float(frozen_metrics["all"]),
+                "endpoint_improvement_vs_floor": float(frozen_metrics["endpoint"]),
+                "t50_full_waypoint_improvement_vs_floor": float(frozen_metrics["t50"]),
+                "t50_endpoint_improvement_vs_floor": float(frozen_metrics["t50_endpoint"]),
+                "t100_raw_frame_diagnostic_vs_floor": float(frozen_metrics["t100"]),
+                "hard_failure_improvement_vs_floor": float(frozen_metrics["hard_failure"]),
+                "easy_degradation_vs_floor": float(frozen_metrics["easy"]),
+                "switch_rate": float(frozen_metrics["switch_rate"]),
+            },
         },
         "metrics": {
-            "all_improvement_vs_floor": float(metrics["all"]),
-            "endpoint_improvement_vs_floor": float(metrics["endpoint"]),
-            "t50_full_waypoint_improvement_vs_floor": float(metrics["t50"]),
-            "t50_endpoint_improvement_vs_floor": float(metrics["t50_endpoint"]),
-            "t100_raw_frame_diagnostic_vs_floor": float(metrics["t100"]),
-            "hard_failure_improvement_vs_floor": float(metrics["hard_failure"]),
-            "easy_degradation_vs_floor": float(metrics["easy"]),
-            "switch_rate": float(metrics["switch_rate"]),
+            "all_improvement_vs_floor": float(latest_metrics["full_waypoint_ade_improvement_vs_floor"]),
+            "endpoint_improvement_vs_floor": float(latest_metrics["endpoint_fde_improvement_vs_floor"]),
+            "t50_full_waypoint_improvement_vs_floor": float(latest_metrics["t50_full_waypoint_ade_improvement_vs_floor"]),
+            "t50_endpoint_improvement_vs_floor": float(latest_metrics["t50_endpoint_fde_improvement_vs_floor"]),
+            "t100_raw_frame_diagnostic_vs_floor": float(latest_metrics["t100_raw_frame_full_waypoint_diagnostic_vs_floor"]),
+            "hard_failure_improvement_vs_floor": float(latest_metrics["hard_failure_full_waypoint_ade_improvement_vs_floor"]),
+            "easy_degradation_vs_floor": float(latest_metrics["easy_degradation_vs_floor"]),
+            "switch_rate": float(latest_metrics["switch_rate"]),
             "t50_delta_ci_vs_stored_hard_switch": an_payload["frozen_metrics"]["t50_delta_ci"],
             "bootstrap_delta_ci": bootstrap,
+            "latest_bootstrap_ci": latest_bootstrap,
             "domain_deltas_vs_stored_hard_switch": domain_deltas,
             "horizon_deltas_vs_stored_hard_switch": horizon_deltas,
+            "latest_domain_metrics": tail_p["by_domain"],
+            "latest_horizon_metrics": tail_p["by_horizon"],
+            "latest_delta_vs_frozen_replay": {
+                "all": float(latest_metrics["full_waypoint_ade_improvement_vs_floor"]) - float(frozen_metrics["all"]),
+                "t50": float(latest_metrics["t50_full_waypoint_ade_improvement_vs_floor"]) - float(frozen_metrics["t50"]),
+                "t100": float(latest_metrics["t100_raw_frame_full_waypoint_diagnostic_vs_floor"]) - float(frozen_metrics["t100"]),
+                "hard_failure": float(latest_metrics["hard_failure_full_waypoint_ade_improvement_vs_floor"])
+                - float(frozen_metrics["hard_failure"]),
+                "easy": float(latest_metrics["easy_degradation_vs_floor"]) - float(frozen_metrics["easy"]),
+            },
             "reviewer_replay_max_abs_diff": float(ao["replay_diff"]["max_abs_diff"]),
         },
         "evidence_summary": {
@@ -146,7 +184,8 @@ def _build_manifest(
             "statistical_confirmation": "AM confirms positive bootstrap deltas over stored hard switch on all/t50/hard and safe easy degradation.",
             "policy_freeze": "AN freezes the policy hash and artifact.",
             "reviewer_replay": "AO replays from the frozen artifact with zero metric diff.",
-            "paper_claim_boundary": "AP refreshes paper-facing evidence and keeps A-journal/3D/foundation claims blocked.",
+            "tail_horizon_adapter": "Stage43-P adds a validation-selected full-test tail-horizon adapter with stronger all/t50/hard metrics and h100/t100 fallback.",
+            "paper_claim_boundary": "AP refreshes paper-facing evidence and keeps A-journal/3D/foundation claims blocked; it remains a boundary source until refreshed for Stage43-P.",
         },
         "claim_boundary": claim_boundary,
         "answers": {
@@ -158,7 +197,7 @@ def _build_manifest(
                 "Stage5C and SMC remain disabled.",
             ],
             "is_a_journal_candidate_now": False,
-            "strongest_allowed_claim": "A frozen, exact-replayable, floor-protected bounded-residual latent waypoint policy improves dataset-local/raw-frame external full-waypoint metrics while preserving easy cases.",
+            "strongest_allowed_claim": "A floor-protected, validation-selected tail-horizon full-waypoint adapter improves dataset-local/raw-frame external full-waypoint metrics while preserving easy cases; the frozen bounded-residual policy remains the exact replayable safety artifact.",
         },
         "no_leakage": {
             "future_endpoint_input": False,
@@ -169,7 +208,7 @@ def _build_manifest(
             "test_statistics_normalization": False,
         },
         "input_hash": _combined_hash(
-            [STAGE43_AJ, STAGE43_AK, STAGE43_AL, STAGE43_AM, STAGE43_AN, STAGE43_AO, STAGE43_AP, FROZEN_POLICY]
+            [STAGE43_AJ, STAGE43_AK, STAGE43_AL, STAGE43_AM, STAGE43_AN, STAGE43_AO, STAGE43_AP, STAGE43_P, FROZEN_POLICY]
         ),
     }
 
@@ -180,18 +219,32 @@ def _gate(manifest: Mapping[str, Any]) -> dict[str, Any]:
     no_leakage = manifest["no_leakage"]
     domain_deltas = metrics["domain_deltas_vs_stored_hard_switch"]
     horizon_deltas = metrics["horizon_deltas_vs_stored_hard_switch"]
+    latest_bootstrap = metrics["latest_bootstrap_ci"]
+    latest_domains = metrics["latest_domain_metrics"]
+    latest_horizons = metrics["latest_horizon_metrics"]
+    latest_delta = metrics["latest_delta_vs_frozen_replay"]
     gates = {
         "input_gate_verdicts_present": all(bool(v) for v in manifest["input_gate_verdicts"].values()),
         "frozen_policy_hash_present": bool(manifest["policy_hash"]),
         "reviewer_replay_exact": metrics["reviewer_replay_max_abs_diff"] == 0.0,
-        "bootstrap_delta_positive": metrics["bootstrap_delta_ci"]["all_delta_improvement"]["low"] > 0.0
+        "frozen_replay_bootstrap_delta_positive": metrics["bootstrap_delta_ci"]["all_delta_improvement"]["low"] > 0.0
         and metrics["bootstrap_delta_ci"]["t50_delta_improvement"]["low"] > 0.0
         and metrics["bootstrap_delta_ci"]["hard_failure_delta_improvement"]["low"] > 0.0,
+        "latest_tail_bootstrap_positive": latest_bootstrap["full_waypoint_ade_improvement_vs_floor"]["low"] > 0.0
+        and latest_bootstrap["t50_full_waypoint_ade_improvement_vs_floor"]["low"] > 0.0
+        and latest_bootstrap["hard_failure_full_waypoint_ade_improvement_vs_floor"]["low"] > 0.0
+        and latest_bootstrap["easy_degradation_vs_floor"]["high"] <= 0.02,
+        "latest_tail_beats_frozen_replay": latest_delta["all"] > 0.0
+        and latest_delta["t50"] > 0.0
+        and latest_delta["hard_failure"] > 0.0
+        and latest_delta["easy"] <= 0.02,
         "easy_preserved": metrics["easy_degradation_vs_floor"] <= 0.02,
         "t100_guarded_not_overclaimed": metrics["t100_raw_frame_diagnostic_vs_floor"] >= -1e-8
         and manifest["current_best_deployable"]["h100_guarded"] is True,
         "external_domains_reported": {"ETH_UCY", "TrajNet", "UCY"}.issubset(set(domain_deltas)),
         "positive_horizon_deltas_reported": {"10", "25", "50", "100"}.issubset(set(horizon_deltas)),
+        "latest_external_domains_reported": {"ETH_UCY", "TrajNet", "UCY"}.issubset(set(latest_domains)),
+        "latest_horizon_metrics_reported": {"10", "25", "50", "100"}.issubset(set(latest_horizons)),
         "global_floor_not_removed": manifest["current_best_deployable"]["global_floor_removed"] is False,
         "no_future_or_test_leakage": no_leakage["future_endpoint_input"] is False
         and no_leakage["future_waypoint_input"] is False
@@ -237,6 +290,7 @@ def _write_outputs(manifest: Mapping[str, Any]) -> None:
         f"- verdict: `{gate['verdict']}`",
         f"- gate: `{gate['passed']} / {gate['total']}`",
         f"- policy hash: `{manifest['policy_hash']}`",
+        f"- frozen replayable policy hash: `{manifest['frozen_replayable_policy_hash']}`",
         f"- current candidate supported: `{gate['current_candidate_supported']}`",
         f"- long objective complete: `{gate['goal_complete']}`",
         "",
@@ -247,6 +301,16 @@ def _write_outputs(manifest: Mapping[str, Any]) -> None:
         f"- global floor removed: `{manifest['current_best_deployable']['global_floor_removed']}`",
         f"- h100 guarded: `{manifest['current_best_deployable']['h100_guarded']}`",
         f"- why: {manifest['current_best_deployable']['why']}",
+        "",
+        "## Frozen Replayable Safety Artifact",
+        "",
+        f"- name: {manifest['frozen_replayable_candidate']['name']}",
+        f"- policy hash: `{manifest['frozen_replayable_candidate']['policy_hash']}`",
+        f"- reviewer replay max abs diff: `{metrics['reviewer_replay_max_abs_diff']:.8f}`",
+        f"- all improvement vs floor: `{_pct(manifest['frozen_replayable_candidate']['metrics']['all_improvement_vs_floor'])}`",
+        f"- t50 full-waypoint improvement vs floor: `{_pct(manifest['frozen_replayable_candidate']['metrics']['t50_full_waypoint_improvement_vs_floor'])}`",
+        f"- hard/failure improvement vs floor: `{_pct(manifest['frozen_replayable_candidate']['metrics']['hard_failure_improvement_vs_floor'])}`",
+        f"- easy degradation vs floor: `{_pct(manifest['frozen_replayable_candidate']['metrics']['easy_degradation_vs_floor'])}`",
         "",
         "## Metrics",
         "",
@@ -259,6 +323,14 @@ def _write_outputs(manifest: Mapping[str, Any]) -> None:
         f"- easy degradation vs floor: `{_pct(metrics['easy_degradation_vs_floor'])}`",
         f"- switch rate: `{_pct(metrics['switch_rate'])}`",
         f"- reviewer replay max abs diff: `{metrics['reviewer_replay_max_abs_diff']:.8f}`",
+        "",
+        "## Latest Tail Adapter Delta Vs Frozen Replay",
+        "",
+        f"- all delta: `{_pct(metrics['latest_delta_vs_frozen_replay']['all'])}`",
+        f"- t50 delta: `{_pct(metrics['latest_delta_vs_frozen_replay']['t50'])}`",
+        f"- t100 delta: `{_pct(metrics['latest_delta_vs_frozen_replay']['t100'])}`",
+        f"- hard/failure delta: `{_pct(metrics['latest_delta_vs_frozen_replay']['hard_failure'])}`",
+        f"- easy degradation delta: `{_pct(metrics['latest_delta_vs_frozen_replay']['easy'])}`",
         "",
         "## Domain Deltas Vs Stored Hard Switch",
         "",
@@ -318,11 +390,12 @@ def _update_ledgers(manifest: Mapping[str, Any]) -> None:
         f"verdict = `{gate['verdict']}`",
         f"gate = `{gate['passed']} / {gate['total']}`",
         f"policy_hash = `{manifest['policy_hash']}`",
+        f"frozen_replayable_policy_hash = `{manifest['frozen_replayable_policy_hash']}`",
         f"current_candidate_supported = `{gate['current_candidate_supported']}`",
         f"long_objective_complete = `{gate['goal_complete']}`",
         f"current_all_t50_t100_hard_easy = `{_pct(metrics['all_improvement_vs_floor'])}` / `{_pct(metrics['t50_full_waypoint_improvement_vs_floor'])}` / `{_pct(metrics['t100_raw_frame_diagnostic_vs_floor'])}` / `{_pct(metrics['hard_failure_improvement_vs_floor'])}` / `{_pct(metrics['easy_degradation_vs_floor'])}`",
         "",
-        "Stage43-AQ integrates AJ-AO/AP into one current candidate manifest and world-model gate. The current best deployable is the frozen Stage43 bounded-residual policy under the Stage37/teacher safety floor. This is a protected dataset-local/raw-frame 2.5D latent waypoint candidate, not a true 3D/foundation/metric/seconds-level model.",
+        "Stage43-AQ integrates AJ-AO/AP plus Stage43-P into one current candidate manifest and world-model gate. The current strongest deployable evidence is the Stage43-P protected tail-horizon full-waypoint adapter under the Stage37/teacher safety floor; the frozen Stage43 bounded-residual policy remains the exact replayable safety artifact. This is a protected dataset-local/raw-frame 2.5D latent waypoint candidate, not a true 3D/foundation/metric/seconds-level model.",
         "",
         "Boundary unchanged: Stage5C is not executed; SMC is not enabled; global floor removal is not supported; the long Stage43 objective remains active.",
     ]
@@ -339,7 +412,9 @@ def _update_ledgers(manifest: Mapping[str, Any]) -> None:
         "current_candidate_supported": gate["current_candidate_supported"],
         "goal_complete": gate["goal_complete"],
         "policy_hash": manifest["policy_hash"],
+        "frozen_replayable_policy_hash": manifest["frozen_replayable_policy_hash"],
         "metrics": metrics,
+        "frozen_replayable_candidate": manifest["frozen_replayable_candidate"],
         "manifest": str(MANIFEST_JSON),
         "world_gate": str(WORLD_GATE_MD),
         "report": str(REPORT_MD),
@@ -382,8 +457,9 @@ def _run(_: argparse.Namespace) -> dict[str, Any]:
     an_payload = _load(STAGE43_AN)
     ao = _load(STAGE43_AO)
     ap = _load(STAGE43_AP)
+    tail_p = _load(STAGE43_P)
     frozen_policy = _load(FROZEN_POLICY)
-    manifest = _build_manifest(aj, ak, al, am, an_payload, ao, ap, frozen_policy)
+    manifest = _build_manifest(aj, ak, al, am, an_payload, ao, ap, tail_p, frozen_policy)
     manifest["stage43_aq_gate"] = _gate(manifest)
     _write_outputs(manifest)
     return manifest
