@@ -4464,3 +4464,20 @@ Stage43-AP consolidates AJ-AO evidence into paper-facing claim boundaries, evide
 
 Boundary unchanged: not true 3D; not foundation; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AP_PAPER_EVIDENCE_REFRESH:END -->
+
+<!-- STAGE43_AQ_INTEGRATED_CANDIDATE_GATE:START -->
+## STAGE43_AQ_INTEGRATED_CANDIDATE_GATE
+
+source = `fresh_stage43_aq_integrated_candidate_gate`
+result_source = `fresh_integrated_manifest_from_stage43_aj_to_ap_artifacts`
+verdict = `stage43_aq_integrated_protected_latent_state_candidate_pass`
+gate = `14 / 14`
+policy_hash = `4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493`
+current_candidate_supported = `True`
+long_objective_complete = `False`
+current_all_t50_t100_hard_easy = `38.00%` / `26.96%` / `0.00%` / `37.71%` / `0.00%`
+
+Stage43-AQ integrates AJ-AO/AP into one current candidate manifest and world-model gate. The current best deployable is the frozen Stage43 bounded-residual policy under the Stage37/teacher safety floor. This is a protected dataset-local/raw-frame 2.5D latent waypoint candidate, not a true 3D/foundation/metric/seconds-level model.
+
+Boundary unchanged: Stage5C is not executed; SMC is not enabled; global floor removal is not supported; the long Stage43 objective remains active.
+<!-- STAGE43_AQ_INTEGRATED_CANDIDATE_GATE:END -->

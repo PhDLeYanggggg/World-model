@@ -1,0 +1,164 @@
+{
+  "candidate_name": "Stage43 Protected Bounded-Residual Latent Waypoint Policy",
+  "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+  "policy_artifact": "outputs/stage43_latent_state/frozen_stage43_bounded_residual_policy.json",
+  "source": "fresh_stage43_aq_integrated_candidate_gate",
+  "result_source": "fresh_integrated_manifest_from_stage43_aj_to_ap_artifacts",
+  "generated_at_utc": "2026-06-01T06:31:57.289504+00:00",
+  "git_commit": "4ed8910",
+  "input_artifacts": {
+    "stage43_aj": "outputs/stage43_latent_state/stage43_safety_floor_necessity_audit.json",
+    "stage43_ak": "outputs/stage43_latent_state/stage43_self_gate_conformal_audit.json",
+    "stage43_al": "outputs/stage43_latent_state/stage43_bounded_residual_safety_audit.json",
+    "stage43_am": "outputs/stage43_latent_state/stage43_bounded_residual_statistical_confirmation.json",
+    "stage43_an": "outputs/stage43_latent_state/stage43_bounded_residual_policy_freeze.json",
+    "stage43_ao": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json",
+    "stage43_ap": "outputs/stage43_latent_state/stage43_paper_evidence_refresh.json",
+    "frozen_policy": "outputs/stage43_latent_state/frozen_stage43_bounded_residual_policy.json"
+  },
+  "input_gate_verdicts": {
+    "stage43_aj": "stage43_aj_safety_floor_necessity_confirmed",
+    "stage43_ak": "stage43_ak_self_gate_conformal_audit_pass",
+    "stage43_al": "stage43_al_bounded_residual_candidate_pass",
+    "stage43_am": "stage43_am_bounded_residual_statistically_confirmed",
+    "stage43_an": "stage43_an_bounded_residual_policy_frozen",
+    "stage43_ao": "stage43_ao_bounded_residual_reviewer_replay_pass",
+    "stage43_ap": "stage43_ap_paper_evidence_refresh_pass"
+  },
+  "current_best_deployable": {
+    "name": "frozen Stage43 bounded-residual policy under Stage37/teacher safety floor",
+    "deployable": true,
+    "global_floor_removed": false,
+    "h100_guarded": true,
+    "why": "Exact reviewer replay, positive bootstrap deltas over stored hard-switch policy, zero easy degradation, and explicit t100 raw-frame guard."
+  },
+  "metrics": {
+    "all_improvement_vs_floor": 0.37999220149702595,
+    "endpoint_improvement_vs_floor": 0.4420681380425501,
+    "t50_full_waypoint_improvement_vs_floor": 0.269646290665144,
+    "t50_endpoint_improvement_vs_floor": 0.355881862474431,
+    "t100_raw_frame_diagnostic_vs_floor": 0.0,
+    "hard_failure_improvement_vs_floor": 0.3771314228696524,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.6308125,
+    "t50_delta_ci_vs_stored_hard_switch": {
+      "low": 0.09860902265137161,
+      "mean": 0.10522010418320703,
+      "high": 0.11214061038498835,
+      "rows": 3856
+    },
+    "bootstrap_delta_ci": {
+      "all_delta_improvement": {
+        "low": 0.07776789805238205,
+        "mean": 0.08230197212941977,
+        "high": 0.08677068051786171,
+        "rows": 16000
+      },
+      "t50_delta_improvement": {
+        "low": 0.09860902265137161,
+        "mean": 0.10522010418320703,
+        "high": 0.11214061038498835,
+        "rows": 3856
+      },
+      "t100_delta_improvement": {
+        "low": 0.1607170192558832,
+        "mean": 0.17800756888017757,
+        "high": 0.19580710267752158,
+        "rows": 3180
+      },
+      "hard_failure_delta_improvement": {
+        "low": 0.08469543811391197,
+        "mean": 0.08968090298936754,
+        "high": 0.09453327908132154,
+        "rows": 12510
+      },
+      "easy_degradation_bounded": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 4771
+      },
+      "easy_degradation_delta": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 4771
+      }
+    },
+    "domain_deltas_vs_stored_hard_switch": {
+      "ETH_UCY": 0.08208802254506475,
+      "TrajNet": 0.1501540956721108,
+      "UCY": 0.03778895402502069
+    },
+    "horizon_deltas_vs_stored_hard_switch": {
+      "10": 0.027496503529007343,
+      "25": 0.07805638075216137,
+      "50": 0.10515739803157376,
+      "100": 0.17794905441649167
+    },
+    "reviewer_replay_max_abs_diff": 0.0
+  },
+  "evidence_summary": {
+    "safety_floor_necessity": "AJ/AK show ungated/self-gated alternatives do not justify global floor removal.",
+    "bounded_residual_candidate": "AL finds a validation-selected bounded residual config with h100 guard and easy preservation.",
+    "statistical_confirmation": "AM confirms positive bootstrap deltas over stored hard switch on all/t50/hard and safe easy degradation.",
+    "policy_freeze": "AN freezes the policy hash and artifact.",
+    "reviewer_replay": "AO replays from the frozen artifact with zero metric diff.",
+    "paper_claim_boundary": "AP refreshes paper-facing evidence and keeps A-journal/3D/foundation claims blocked."
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "self_audited_labels_are_human_gold": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "answers": {
+    "is_current_goal_complete": false,
+    "why_goal_not_complete": [
+      "The long objective still asks for broader multimodal latent world-state evidence, more source calibration, and final full-suite replay.",
+      "The current candidate remains protected and floor-dependent.",
+      "Metric/time calibration and true 3D evidence remain unavailable.",
+      "Stage5C and SMC remain disabled."
+    ],
+    "is_a_journal_candidate_now": false,
+    "strongest_allowed_claim": "A frozen, exact-replayable, floor-protected bounded-residual latent waypoint policy improves dataset-local/raw-frame external full-waypoint metrics while preserving easy cases."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false
+  },
+  "input_hash": "213d677eb13ccc2ac5399537c8c0b5ca6cee45316dfaf1625af779a025228931",
+  "stage43_aq_gate": {
+    "source": "fresh_stage43_aq_integrated_candidate_gate",
+    "gates": {
+      "input_gate_verdicts_present": true,
+      "frozen_policy_hash_present": true,
+      "reviewer_replay_exact": true,
+      "bootstrap_delta_positive": true,
+      "easy_preserved": true,
+      "t100_guarded_not_overclaimed": true,
+      "external_domains_reported": true,
+      "positive_horizon_deltas_reported": true,
+      "global_floor_not_removed": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true,
+      "a_journal_not_overclaimed": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_aq_integrated_protected_latent_state_candidate_pass",
+    "current_candidate_supported": true,
+    "goal_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
