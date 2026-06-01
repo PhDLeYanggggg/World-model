@@ -2,80 +2,77 @@
 
 **Real-World Multimodal Agent-Scene World Model**
 
-M3W is my long-running research project on real-world multi-agent world modeling from top-down pedestrian and agent-scene data.
+M3W is my long-running research project on multi-agent world modeling from top-down pedestrian and agent-scene data.
 
-The question behind the project is:
+The project started from a simple question: can a model use only past motion, scene context, and local interactions to predict future multi-agent behavior better than strong causal baselines, without cheating through future endpoints or test-set information?
 
-> Can a model use only past motion, scene context, and local interactions to predict future multi-agent behavior better than strong causal baselines, while staying safe on easy cases and avoiding leakage?
+I am deliberately conservative about the claims here. The current system is not a true 3D world model, and it is not a foundation model. It is best described as a protected, dataset-local 2.5D world-state model. The point of the repository is to push that system forward while keeping the evidence honest.
 
-I care about this because many trajectory systems look good only when the benchmark is forgiving: weak baselines, future endpoint hints, optimistic geometry, or test-set information can all make a model seem stronger than it is. M3W is built under stricter rules. At inference time the model only gets past information. If a learned component cannot beat the protected fallback under validation-selected rules, it stays diagnostic.
+## What This Repo Is For
 
-## Current Position
+M3W studies how far a real-world multi-agent model can go under strict evaluation rules:
 
-M3W is currently a protected, dataset-local 2.5D multi-agent world-state model. It is not a true 3D world model, and it is not a foundation model.
+- inference uses past information only;
+- future endpoints are labels for training and evaluation, not inputs;
+- test endpoints are never used to build goals;
+- central velocity is not used as an official input;
+- SDD remains pixel-space unless geometry is verified;
+- external top-down data remains dataset-local unless timing, homography, and scale are verified.
 
-The strongest evidence so far comes from conservative policies that combine causal history, interaction features, scene or goal context when it is legally available from training data, and a strong fallback baseline. These policies have improved hard and longer-horizon raw-frame slices while keeping easy-case degradation small.
+That framing matters. A model that looks strong with leaked goals, optimistic scale assumptions, or weak baselines is not useful to me. I want improvements that survive strong fallback policies and no-leakage audits.
 
-The neural and latent-state work is active, but I treat it carefully. A Transformer, JEPA encoder, hybrid head, residual correction, or latent policy only matters if it improves the protected policy without breaking the safety constraints. Otherwise it remains an experiment, not the deployed model.
+## Current State
 
-## What M3W Uses
+The strongest deployable line so far is a protected policy stack: causal history features, interaction cues, train-only goal prototypes when available, horizon-specific switching, and conservative fallback to strong physical baselines.
 
-The project has explored several families of signals:
+This approach has worked better than hard "pick the oracle baseline" classification. The reliable policies estimate gain, harm, and failure risk, then switch only when the validation-selected safety rule says the learned component is worth trusting.
 
-- past-only trajectory history;
-- speed, acceleration, heading, curvature, stop/go, and drift cues;
-- local density, nearest-neighbor, and time-to-collision features;
-- train-only goal prototypes and route priors;
-- strong physical baselines such as causal velocity and damped velocity;
-- failure, gain, harm, and switchability predictors;
-- protected latent-state and bounded-residual policies;
-- conservative fallback rules that choose the causal floor when learned switching is uncertain.
+The neural and latent-state parts are active research. Transformer, JEPA, hybrid, residual, and latent-state heads are only treated as deployable when they improve the protected policy without breaking easy cases. When they fail, they stay in the reports as negative evidence.
 
-The design principle is simple: learning is useful only when it knows when to defer.
+Detailed metrics and stage-by-stage evidence live in [`README_RESULTS.md`](README_RESULTS.md). I keep the top-level README focused on what the project is and how to read it.
 
 ## What Has Worked
 
-The most reliable progress has come from cost-aware selection rather than hard class prediction. Earlier selectors that tried to predict the single oracle-best baseline switched too aggressively and damaged easy cases. Later policies predict risk, expected gain, and harm, then switch only when the validation-selected safety rule allows it.
-
-The external transfer story also changed over time. Raw SDD-to-external zero-shot transfer failed. Coordinate repair, causal history windows, scene-agnostic goal prototypes, and horizon-specific policies were needed before external raw-frame `t+50` transfer became useful. That result is still dataset-local and raw-frame, but it is real evidence that the system can learn something beyond an SDD-only policy.
+- Cost-aware baseline selection has been more reliable than hard best-baseline classification.
+- Conservative fallback is essential; learned switching without a safety floor damages easy cases.
+- External transfer did not work as zero-shot SDD transfer, but improved after causal history windows, scene-agnostic goal prototypes, and horizon-specific policies were added.
+- Raw-frame `t+50` external transfer became useful only after the model learned when not to switch.
+- Protected latent-state and bounded policies are promising, but they are still judged against the same safety floor.
 
 ## What Has Not Worked Yet
 
-Some directions are still open or negative:
-
-- JEPA-style representation learning has avoided collapse but has not consistently produced downstream lift.
-- Latent distribution alignment can reduce domain distance without improving prediction.
-- Ordinary residual correction is unsafe unless it is tightly bounded and protected by fallback.
-- Unprotected neural dynamics has not replaced the Stage37-style protected policy.
-- Raw-frame `t+100` remains mostly diagnostic and is not a seconds-level claim.
+- JEPA-style representation learning has avoided collapse, but downstream lift is still inconsistent.
+- Latent distribution alignment can make domains look closer without improving prediction.
+- Unbounded residual correction is unsafe.
+- Unprotected neural dynamics has not replaced the protected policy.
+- Raw-frame `t+100` is still mostly diagnostic.
 - ETH/TrajNet-style external coverage still needs stronger held-out validation before I would call the model broadly cross-domain.
 
-I keep these failures visible because they are part of the research, not cleanup.
+These failures are not hidden. They are part of the research record.
 
 ## Claim Boundaries
 
-These are the boundaries I use when reading the results:
+When reading the results, I use these boundaries:
 
-- SDD is a pixel-space benchmark unless a source-specific calibration proves otherwise.
-- External top-down pedestrian data is dataset-local/raw-frame unless timing, homography, and scale are verified.
+- SDD is pixel-space unless source-specific calibration proves otherwise.
+- External data is dataset-local/raw-frame unless timing and scale are verified.
 - Raw-frame `t+50` and `t+100` are not seconds-level horizons.
 - Self-audited or inferred scene labels are not human gold labels.
-- Future endpoints, central velocity, and test endpoints are not inference inputs.
 - Latent-generative Stage5C has not been executed.
 - SMC is not enabled.
 
-The current project is a serious step toward multimodal multi-agent world modeling, but the honest description is still: protected dataset-local 2.5D world-state modeling.
+The honest description today is: protected, dataset-local 2.5D multi-agent world-state modeling, with ongoing work toward stronger multimodal neural dynamics.
 
 ## Repository Map
 
 | Path | Purpose |
 | --- | --- |
-| `README_RESULTS.md` | Main experiment ledger and high-level results |
-| `README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md` | Chinese route-by-route summary of successes, failures, and causes |
+| [`README_RESULTS.md`](README_RESULTS.md) | Main experiment ledger and high-level results |
+| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | Chinese route-by-route summary of attempts, failures, and successes |
 | `outputs/m3w_neural_v1/` | Neural model reports and model cards |
 | `outputs/stage42_long_research/` | Long-run audits, ablations, replay reports, and source/domain analysis |
 | `outputs/stage43_latent_state/` | Protected latent-state and bounded-residual evidence |
-| `research_state.json` | Machine-readable project state |
+| [`research_state.json`](research_state.json) | Machine-readable project state |
 
 Large datasets, generated caches, checkpoints, videos, third-party raw data, and local virtual environments are intentionally not committed.
 
