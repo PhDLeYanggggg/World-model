@@ -2513,3 +2513,12 @@ Delta vs Stage43-K: all `0.29%`, t50 `1.44%`, hard/failure `0.32%`, easy degrada
 
 Decision: `candidate_requires_reviewer_replay_before_deployment`. This remains dataset-local/raw-frame 2.5D evidence; Stage5C and SMC remain disabled.
 <!-- STAGE43_AW_SOURCE_HORIZON_EXPERT_POLICY:END -->
+
+<!-- STAGE43_AX_SOURCE_HORIZON_EXPERT_REPLAY:START -->
+Stage43-AX exact-replays the Stage43-AW source/horizon expert artifact without validation reselection or test threshold tuning. Gate: `12 / 12` with verdict `stage43_ax_source_horizon_expert_replay_pass`.
+
+Replay metrics: all `23.40%`, t50 `12.80%`, t100 raw-frame diagnostic `1.35%`, hard/failure `24.73%`, easy degradation `0.00%`.
+Replay max metric diff vs AW artifact: `0.0000000000`. Policy hash `824b4be3be967cc96872fa8c627eb141e9859f2a01eb15d92697507441e38f22`, row hash `9d27e3a5fba7583152ed8fb175f21685e989a7be93f23d12c2e4aba36bd1212c`.
+
+Decision: reviewer replay passed = `True`; candidate for deployment update = `True`. This remains dataset-local/raw-frame 2.5D evidence; Stage5C and SMC remain disabled.
+<!-- STAGE43_AX_SOURCE_HORIZON_EXPERT_REPLAY:END -->
