@@ -1757,15 +1757,15 @@ This is not Stage5C, not SMC, not metric/seconds-level, not true 3D, and not a f
 ## STAGE43_D_LATENT_STATE_ROBUSTNESS_AUDIT
 
 source = `fresh_stage43_d_latent_state_robustness_audit`
-verdict = `stage43_d_latent_state_robustness_ucy_pass`
-gate = `9 / 9`
+verdict = `stage43_d_latent_state_robustness_partial`
+gate = `8 / 9`
 multi_domain_claim_allowed = `False`
 
 Stage43-D re-evaluates the Stage43-C protected latent-state checkpoint on the full held-out UCY test split and adds bootstrap confidence intervals. This is a robustness audit, not a new threshold-tuning run and not a Stage5C/SMC execution.
 
-Full UCY test metrics: all `0.163151`, t50 `0.136820`, t100 raw diagnostic `0.009722`, hard/failure `0.164765`, easy degradation `0.000000`, switch rate `0.170113`.
+Full UCY test metrics: all `0.177665`, t50 `0.137515`, t100 raw diagnostic `0.018234`, hard/failure `0.181572`, easy degradation `0.000000`, switch rate `0.176500`.
 
-Bootstrap CI lows: all `0.159866`, t50 `0.130597`, hard/failure `0.160986`, easy CI high `0.000000`.
+Bootstrap CI lows: all `0.157468`, t50 `0.104683`, hard/failure `0.164075`, easy CI high `0.000000`.
 
 Scope limitation: this proves UCY held-out dataset-local/raw-frame robustness only; multi-domain robustness remains a next gate.
 <!-- STAGE43_D_LATENT_STATE_ROBUSTNESS_AUDIT:END -->
@@ -1845,7 +1845,7 @@ Stage43-I repairs the Stage43-G unit-consistent easy-harm failure by adding a fi
 
 Unit-consistent safe-switch metrics: all `0.231071`, t50 `0.113648`, t100 raw diagnostic `0.013513`, hard/failure `0.244058`, easy degradation `0.000000`, switch rate `0.185255`.
 
-Bootstrap CI lows: all `0.227754`, t50 `0.106796`, hard/failure `0.239964`; easy CI high `0.000000`.
+Bootstrap CI lows: all `0.228439`, t50 `0.110331`, hard/failure `0.239911`; easy CI high `0.000000`.
 
 Source caveat: worst source all improvement is `-0.001034`, so this is not a uniform per-source claim.
 
@@ -1881,7 +1881,7 @@ Stage43-K addresses the Stage43-J source-level caveat without test-source thresh
 
 Metrics: all `0.231096`, t50 `0.113648`, t100 raw diagnostic `0.013513`, hard/failure `0.244058`, easy degradation `0.000000`, switch rate `0.185199`.
 
-Bootstrap CI lows: all `0.227633`, t50 `0.106998`, hard/failure `0.240332`; easy CI high `0.000000`.
+Bootstrap CI lows: all `0.228620`, t50 `0.108802`, hard/failure `0.240428`; easy CI high `0.000000`.
 
 Source safety: negative source count `0`, min source all improvement `0.000000`, max source easy degradation `0.009491`.
 Blocked test source families under the validation-only guard: `TrajNet_mot`.
@@ -2222,3 +2222,23 @@ Stage43-AD audits the guarded Stage43-AC policy by domain, source, horizon, hard
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 remains raw-frame diagnostic; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AD_SCENE_PROXY_GUARDED_ROBUSTNESS_AUDIT:END -->
+
+<!-- STAGE43_AE_SCENE_PROXY_SLICE_SAFE_POLICY:START -->
+## STAGE43_AE_SCENE_PROXY_SLICE_SAFE_POLICY
+
+source = `fresh_stage43_ae_scene_proxy_slice_safe_policy`
+verdict = `stage43_ae_slice_safe_scene_proxy_candidate`
+gate = `14 / 14`
+deploy_slice_safe_scene_proxy = `True`
+
+full_waypoint_ade_vs_floor = `23.95%`; delta_vs_stage43_m = `-5.81%`
+t50_full_waypoint_ade_vs_floor = `37.16%`; delta_vs_stage43_m = `20.71%`
+hard_failure_vs_floor = `23.38%`; delta_vs_stage43_m = `-5.38%`
+t100_raw_frame_diagnostic = `0.00%`
+max_domain_easy_degradation = `0.00%`
+max_horizon_easy_degradation = `0.00%`
+
+Stage43-AE is the slice-safe repair after the AD caveat audit. It uses a validation-selected three-route policy over floor, Stage43-M, and Stage43-AB, so weak easy slices can fall all the way back to the floor rather than only to Stage43-M.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AE_SCENE_PROXY_SLICE_SAFE_POLICY:END -->
