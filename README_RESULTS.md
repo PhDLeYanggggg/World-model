@@ -1,10 +1,10 @@
 # M3W Results Ledger
 
-这是 M3W 的长期实验总账。根目录的 [`README.md`](README.md) 负责对外介绍项目；这里保留更细的路线、失败原因、gate、replay、bootstrap、source/domain 审计和 claim 边界。
+这份文件是 M3W 的实验总账。根目录的 [`README.md`](README.md) 用来介绍项目本身；这里记录更细的证据：哪些路线做过、为什么失败、哪些结果复现过、哪些结论还不能写得太满。
 
-我把这份文件当作研究日志，而不是宣传材料。它会比较啰嗦，因为 M3W 的价值不只在正结果，也在那些被安全门槛、跨域迁移、easy-case 保护或 no-leakage 审计挡下来的路线。旧记录会保留，方便回看为什么某条路线没有继续 promoted。
+我保留这份长账，是因为 M3W 不是靠单次漂亮结果推进的。很多路线在小切片上能赢，但会伤 easy case；有些模型能缩小 latent distance，却不带来预测收益；有些外部迁移看起来正向，换一个 source 就会退回安全 floor。这些失败记录和正结果一样重要。
 
-当前总边界不变：
+当前项目边界保持不变：
 
 ```text
 M3W = protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
@@ -15,11 +15,11 @@ Stage5C not executed
 SMC not enabled
 ```
 
-## GitHub 展示口径（2026-06-01）
+## GitHub 首页口径（2026-06-01）
 
-公开 GitHub 首页只写成项目作者视角的介绍：为什么做 M3W、现在做到什么程度、哪些路线有效、哪些路线失败、哪些结论不能夸大。阶段号、长表格、provenance、gate 细节和 replay 证据继续放在这份总账、`research_state.json` 和 `outputs/` 里。
+GitHub 首页现在按项目作者视角写：我为什么做 M3W、目前做到什么程度、哪些路线有效、哪些路线失败、哪些边界不能越过。阶段号、长表格、provenance、gate 细节和 replay 证据继续留在这份总账、`research_state.json` 和 `outputs/` 里。
 
-这次只是文档口径整理，没有新训练、下载、转换或评估。
+这次是文档口径整理，没有新训练、下载、转换或评估。
 
 ## 当前读者入口
 
