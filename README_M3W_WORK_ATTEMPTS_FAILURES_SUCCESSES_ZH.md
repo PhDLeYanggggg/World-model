@@ -2661,3 +2661,19 @@ training_allowed_now = `0`
 
 I validated the Stage43-BF terms/source template as-is. The result is intentionally blocked: no candidate source has user-confirmed terms, source identity, calibration scope, conversion scope, or Stage43 support permission yet. The manifest is useful for the next guarded conversion step, but it is not permission and it does not convert or train anything.
 <!-- STAGE43_BG_BLOCKED_SOURCE_TERMS_VALIDATOR:END -->
+
+<!-- STAGE43_BH_PROTECTED_MULTIMODAL_LATENT_CANDIDATE_LOCK:START -->
+## STAGE43_BH_PROTECTED_MULTIMODAL_LATENT_CANDIDATE_LOCK
+
+source = `fresh_stage43_bh_protected_multimodal_latent_candidate_lock`
+result_source = `fresh_evidence_lock_from_verified_stage43_artifacts`
+verdict = `stage43_bh_protected_multimodal_latent_candidate_lock_pass`
+gate = `16 / 16`
+protected_multimodal_latent_state_candidate = `True`
+standalone_world_model_deployable = `False`
+latest_candidate_all = `50.25%`
+latest_candidate_t50 = `51.23%`
+latest_candidate_hard_failure = `47.88%`
+
+I locked the current Stage43 evidence stack into a single protected multimodal latent-state candidate record. The model family has real protected latent/head/full-waypoint evidence, but it still needs the safety floor, still uses dataset-local/raw-frame units, and still has source/terms blockers for additional support data. This is not a true-3D, foundation, metric, seconds-level, Stage5C, or SMC claim.
+<!-- STAGE43_BH_PROTECTED_MULTIMODAL_LATENT_CANDIDATE_LOCK:END -->

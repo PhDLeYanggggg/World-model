@@ -293,8 +293,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_bg_blocked_source_terms_validator",
-  "current_verdict": "stage43_bg_blocked_source_terms_validation_pass",
+  "current_stage": "stage43_bh_protected_multimodal_latent_candidate_lock",
+  "current_verdict": "stage43_bh_protected_multimodal_latent_candidate_lock_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -18728,7 +18728,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "dd7c9fe69b489ba96ca26b2429f19141560416ecb4edfc44bc023a0dc887fcad",
+      "policy_hash": "fd1e316203beea71e2c95fbd53e37e65f433651a86c4c3f65881d7c564b50bc8",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -36403,7 +36403,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "4e6f7956b0a889386c3433a5b83a20684855dba9c5c2e759182e08aedd1e0ce8",
+      "package_hash": "471ee99169b25e334bf24d0229f938d94213fc16413579931b487cded4a65e87",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -36484,8 +36484,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "dd7c9fe69b489ba96ca26b2429f19141560416ecb4edfc44bc023a0dc887fcad",
-        "policy_artifact_sha256": "548e0282cef1ad02403673d01ae77972cac79013b0db645bdcd5c67bcd845a8d",
+        "policy_hash": "fd1e316203beea71e2c95fbd53e37e65f433651a86c4c3f65881d7c564b50bc8",
+        "policy_artifact_sha256": "1ac005ea9a940e30d6613901710301b8052caddf81b05266c52005004bc7570c",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -41782,6 +41782,69 @@
     "report": "outputs/stage43_latent_state/stage43_blocked_source_terms_validation.md",
     "manifest": "outputs/stage43_latent_state/stage43_blocked_source_guarded_conversion_manifest.md",
     "user_action": "outputs/stage43_latent_state/user_action_required_stage43_blocked_source_terms_validation.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bh_protected_multimodal_latent_candidate_lock": {
+    "source": "fresh_stage43_bh_protected_multimodal_latent_candidate_lock",
+    "result_source": "fresh_evidence_lock_from_verified_stage43_artifacts",
+    "updated_at": "2026-06-01T18:19:44.541805+00:00",
+    "verdict": "stage43_bh_protected_multimodal_latent_candidate_lock_pass",
+    "gate": "16 / 16",
+    "summary": {
+      "candidate_label": "protected_multimodal_latent_state_world_model_candidate",
+      "protected_multimodal_latent_state_candidate": true,
+      "standalone_world_model_deployable": false,
+      "safety_floor_required": true,
+      "deployable_proxy_head_count": 5,
+      "diagnostic_head_count": 2,
+      "latest_full_test_tail_adapter_candidate": {
+        "name": "Stage43-P tail-horizon full-waypoint adapter",
+        "role": "latest_full_test_tail_adapter_candidate",
+        "deployable": true,
+        "rows": 89736,
+        "all": 0.5025366202187915,
+        "t50": 0.5123378909285481,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": 0.4787683745310771,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.7044552910760453,
+        "caveat": "Latest full-test protected tail-horizon adapter; materially stronger on all/t50/hard, but h100 remains validation-blocked and falls back to the floor."
+      },
+      "source_safe_candidate": {
+        "name": "Stage43-K validation source-family guarded repair",
+        "deployable": true,
+        "all": 0.23109641090748,
+        "t50": 0.11364813506531013,
+        "t100_raw_frame_diagnostic": 0.013512996394212884,
+        "hard_failure": 0.24405762495546435,
+        "easy_degradation": 0.0
+      },
+      "external_domains": [
+        "ETH_UCY",
+        "TrajNet",
+        "UCY"
+      ],
+      "source_level_test_rows": 89736,
+      "blocked_source_ready_for_guarded_conversion_preflight_rows": 0,
+      "blocked_source_training_allowed_now": 0,
+      "remaining_blockers": [
+        "not_true_3d",
+        "not_foundation_scale",
+        "dataset_local_raw_frame_only",
+        "metric_seconds_unverified",
+        "safety_floor_required",
+        "not_standalone_ungated_deployment",
+        "uniform_positive_external_transfer_not_allowed",
+        "t100_raw_frame_still_guarded_diagnostic",
+        "blocked_source_terms_identity_not_confirmed",
+        "stage5c_not_executed",
+        "smc_not_enabled"
+      ],
+      "decision": "protected_multimodal_latent_state_candidate_locked_with_floor_and_source_blockers"
+    },
+    "report": "outputs/stage43_latent_state/stage43_protected_multimodal_latent_candidate_lock.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false

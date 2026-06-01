@@ -1,0 +1,314 @@
+{
+  "source": "fresh_stage43_bh_protected_multimodal_latent_candidate_lock",
+  "result_source": "fresh_evidence_lock_from_verified_stage43_artifacts",
+  "generated_at_utc": "2026-06-01T18:19:44.541805+00:00",
+  "git_commit": "2568b35",
+  "input_artifacts": {
+    "safety_floor_replay": "outputs/stage43_latent_state/stage43_safety_floor_replay.json",
+    "latent_dataset_contract": "outputs/stage43_latent_state/stage43_latent_state_dataset_contract.json",
+    "protected_latent_eval": "outputs/stage43_latent_state/stage43_protected_latent_eval.json",
+    "full_waypoint_latent_dynamics": "outputs/stage43_latent_state/stage43_full_waypoint_latent_dynamics.json",
+    "multimodal_latent_head_suite": "outputs/stage43_latent_state/stage43_multimodal_latent_head_suite.json",
+    "feature_family_multiseed_confirmation": "outputs/stage43_latent_state/stage43_feature_family_multiseed_confirmation.json",
+    "external_validation_matrix": "outputs/stage43_latent_state/stage43_external_validation_matrix.json",
+    "current_candidate_reconciliation": "outputs/stage43_latent_state/stage43_current_candidate_reconciliation.json",
+    "blocked_source_terms_validation": "outputs/stage43_latent_state/stage43_blocked_source_terms_validation.json"
+  },
+  "input_hash": "a47a3a04e2ece3851acc805a0e6bc707ffd49af01e755f412b1b28412fb722d1",
+  "input_verdicts": {
+    "safety_floor_replay": "stage43_a_safety_floor_replay_pass",
+    "latent_dataset_contract": "stage43_b_latent_state_dataset_contract_pass",
+    "protected_latent_eval": "stage43_c_protected_latent_state_candidate_pass",
+    "full_waypoint_latent_dynamics": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+    "multimodal_latent_head_suite": "stage43_y_protected_multimodal_latent_head_suite_candidate",
+    "feature_family_multiseed_confirmation": "stage43_ai_feature_family_multiseed_confirmation_pass",
+    "external_validation_matrix": "stage43_at_external_validation_matrix_pass",
+    "current_candidate_reconciliation": "stage43_ay_current_candidate_reconciliation_pass",
+    "blocked_source_terms_validation": "stage43_bg_blocked_source_terms_validation_pass"
+  },
+  "summary": {
+    "candidate_label": "protected_multimodal_latent_state_world_model_candidate",
+    "protected_multimodal_latent_state_candidate": true,
+    "standalone_world_model_deployable": false,
+    "safety_floor_required": true,
+    "deployable_proxy_head_count": 5,
+    "diagnostic_head_count": 2,
+    "latest_full_test_tail_adapter_candidate": {
+      "name": "Stage43-P tail-horizon full-waypoint adapter",
+      "role": "latest_full_test_tail_adapter_candidate",
+      "deployable": true,
+      "rows": 89736,
+      "all": 0.5025366202187915,
+      "t50": 0.5123378909285481,
+      "t100_raw_frame_diagnostic": 0.0,
+      "hard_failure": 0.4787683745310771,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.7044552910760453,
+      "caveat": "Latest full-test protected tail-horizon adapter; materially stronger on all/t50/hard, but h100 remains validation-blocked and falls back to the floor."
+    },
+    "source_safe_candidate": {
+      "name": "Stage43-K validation source-family guarded repair",
+      "deployable": true,
+      "all": 0.23109641090748,
+      "t50": 0.11364813506531013,
+      "t100_raw_frame_diagnostic": 0.013512996394212884,
+      "hard_failure": 0.24405762495546435,
+      "easy_degradation": 0.0
+    },
+    "external_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "source_level_test_rows": 89736,
+    "blocked_source_ready_for_guarded_conversion_preflight_rows": 0,
+    "blocked_source_training_allowed_now": 0,
+    "remaining_blockers": [
+      "not_true_3d",
+      "not_foundation_scale",
+      "dataset_local_raw_frame_only",
+      "metric_seconds_unverified",
+      "safety_floor_required",
+      "not_standalone_ungated_deployment",
+      "uniform_positive_external_transfer_not_allowed",
+      "t100_raw_frame_still_guarded_diagnostic",
+      "blocked_source_terms_identity_not_confirmed",
+      "stage5c_not_executed",
+      "smc_not_enabled"
+    ],
+    "decision": "protected_multimodal_latent_state_candidate_locked_with_floor_and_source_blockers"
+  },
+  "latent_state": {
+    "dim": 32,
+    "min_variance": 0.10856052488088608,
+    "mean_variance": 0.48265281319618225,
+    "noncollapse_threshold": 0.01
+  },
+  "head_suite": {
+    "deployable_proxy_heads": [
+      "failure_risk",
+      "gain_opportunity",
+      "harm_guard",
+      "causal_history_density",
+      "future_interaction_risk"
+    ],
+    "diagnostic_only_heads": [
+      "waypoint_label_availability",
+      "smoothness_validity_proxy"
+    ],
+    "heads": {
+      "failure_risk": {
+        "source_stage": "Stage43-V",
+        "target": "baseline failure risk",
+        "status": "deployable_proxy",
+        "primary": "auroc",
+        "auroc": 0.864830017016087,
+        "auprc": 0.7900837616659703,
+        "ece": 0.12539399600290296
+      },
+      "gain_opportunity": {
+        "source_stage": "Stage43-V",
+        "target": "switch/gain opportunity",
+        "status": "deployable_proxy",
+        "primary": "auroc",
+        "auroc": 0.8737429101109737,
+        "auprc": 0.921540579528616,
+        "ece": 0.11213920361133989
+      },
+      "harm_guard": {
+        "source_stage": "Stage43-V",
+        "target": "easy/harm guard",
+        "status": "deployable_proxy",
+        "primary": "auroc",
+        "auroc": 0.9046972304136244,
+        "auprc": 0.8891159673133527,
+        "ece": 0.13297878625415208
+      },
+      "causal_history_density": {
+        "source_stage": "Stage43-W",
+        "target": "causal history-density proxy",
+        "status": "deployable_proxy_not_future_occupancy",
+        "primary": "r2",
+        "r2": 0.8177894439596907,
+        "corr": 0.9251677017968366,
+        "rmse": 0.14033108280256545,
+        "feature_set": "latent_heads_causal_x"
+      },
+      "future_interaction_risk": {
+        "source_stage": "Stage43-X",
+        "target": "future-proximity interaction risk proxy",
+        "status": "deployable_proxy_not_human_annotation",
+        "primary": "auroc",
+        "auroc": 0.7694167124859295,
+        "auprc": 0.3253544068762024,
+        "ece": 0.03891758989036327,
+        "positive_rate": 0.13485111883747883,
+        "feature_set": "causal_x"
+      },
+      "waypoint_label_availability": {
+        "source_stage": "Stage43-W",
+        "target": "waypoint label availability proxy",
+        "status": "diagnostic_only",
+        "primary": "r2",
+        "r2": 0.9222842838701513,
+        "corr": 0.9625034366488198,
+        "rmse": 0.062290661131031225
+      },
+      "smoothness_validity_proxy": {
+        "source_stage": "Stage43-X",
+        "target": "future waypoint smoothness/validity proxy",
+        "status": "diagnostic_only_not_true_physical_validity",
+        "primary": "r2",
+        "r2": 0.9216318934697789,
+        "corr": 0.961701679917564,
+        "rmse": 0.12220087759003669
+      }
+    }
+  },
+  "ablation_evidence": {
+    "stage43_ai_verdict": "stage43_ai_feature_family_multiseed_confirmation_pass",
+    "stable_positive_t50_variants": [],
+    "gate_supports_multiseed_module_contribution": true
+  },
+  "external_validation": {
+    "test_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "test_rows": 89736,
+    "latest_full_test_tail_adapter_candidate": {
+      "name": "Stage43-P tail-horizon full-waypoint adapter",
+      "role": "latest_full_test_tail_adapter_candidate",
+      "deployable": true,
+      "rows": 89736,
+      "all": 0.5025366202187915,
+      "t50": 0.5123378909285481,
+      "t100_raw_frame_diagnostic": 0.0,
+      "hard_failure": 0.4787683745310771,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.7044552910760453,
+      "caveat": "Latest full-test protected tail-horizon adapter; materially stronger on all/t50/hard, but h100 remains validation-blocked and falls back to the floor."
+    },
+    "source_safe_candidate": {
+      "name": "Stage43-K validation source-family guarded repair",
+      "deployable": true,
+      "all": 0.23109641090748,
+      "t50": 0.11364813506531013,
+      "t100_raw_frame_diagnostic": 0.013512996394212884,
+      "hard_failure": 0.24405762495546435,
+      "easy_degradation": 0.0
+    },
+    "uniform_positive_per_source_claim_allowed": false,
+    "source_repair_summary": {
+      "stage43_i_negative_source_count": 1,
+      "stage43_k_negative_source_count": 0,
+      "min_source_all_improvement": 0.0,
+      "uniform_positive_per_source_claim_allowed": false,
+      "reason_uniform_positive_still_blocked": "Unsupported or low-support source families may be safely floored to zero; that repairs harm but is not positive transfer."
+    },
+    "per_domain_external_validation": {
+      "ETH_UCY": {
+        "rows": 70585,
+        "all_improvement_vs_floor": 0.1924742121556947,
+        "t50_improvement_vs_floor": 0.0016180587258077805,
+        "t100_raw_frame_diagnostic_vs_floor": -0.007173465733374185,
+        "hard_failure_improvement_vs_floor": 0.20408126998368104,
+        "easy_degradation_vs_floor": 0.009491428258890044,
+        "switch_rate": 0.1499893745129985,
+        "harm_over_floor": -0.19022394716739655,
+        "mean_floor_err": 0.9883086681365967,
+        "mean_selected_err": 0.7980847358703613
+      },
+      "TrajNet": {
+        "rows": 9611,
+        "all_improvement_vs_floor": 0.06612155031679467,
+        "t50_improvement_vs_floor": 0.0,
+        "t100_raw_frame_diagnostic_vs_floor": 0.0,
+        "hard_failure_improvement_vs_floor": 0.074662965714689,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.09998959525543648,
+        "harm_over_floor": -0.06738372892141342,
+        "mean_floor_err": 1.0190911293029785,
+        "mean_selected_err": 0.9517072439193726
+      },
+      "UCY": {
+        "rows": 9540,
+        "all_improvement_vs_floor": 0.5357152565021417,
+        "t50_improvement_vs_floor": 0.4752917313288888,
+        "t100_raw_frame_diagnostic_vs_floor": 0.15696385056906836,
+        "hard_failure_improvement_vs_floor": 0.5478754646785036,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.5320754716981132,
+        "harm_over_floor": -0.7941059470176697,
+        "mean_floor_err": 1.4823284149169922,
+        "mean_selected_err": 0.6882224678993225
+      }
+    }
+  },
+  "source_guard": {
+    "stage43_bg_verdict": "stage43_bg_blocked_source_terms_validation_pass",
+    "ready_for_guarded_conversion_preflight_rows": 0,
+    "training_allowed_now": 0,
+    "blocked_rows": [
+      "Town-Center",
+      "Wild-Track",
+      "PETS-2009-S2L1"
+    ]
+  },
+  "no_leakage_and_execution": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false,
+    "new_training_executed": false,
+    "new_conversion_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "standalone_ungated_deployable": false,
+    "uniform_positive_external_transfer_claim": false,
+    "source_terms_permission_claim": false,
+    "converted_external_support_source": false,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bh_gate": {
+    "source": "fresh_stage43_bh_protected_multimodal_latent_candidate_lock",
+    "gates": {
+      "safety_floor_replay_passed": true,
+      "latent_dataset_contract_passed": true,
+      "protected_latent_eval_passed": true,
+      "full_waypoint_latent_passed": true,
+      "multimodal_head_suite_candidate": true,
+      "multiseed_ablation_support_present": true,
+      "external_validation_matrix_passed": true,
+      "current_candidate_reconciled": true,
+      "latest_protected_candidate_positive_easy_safe": true,
+      "safety_floor_required_not_hidden": true,
+      "source_guard_passed_and_blocks_unconfirmed_sources": true,
+      "no_future_or_test_leakage": true,
+      "no_new_training_or_conversion": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 16,
+    "total": 16,
+    "verdict": "stage43_bh_protected_multimodal_latent_candidate_lock_pass",
+    "protected_multimodal_latent_state_candidate": true,
+    "standalone_world_model_deployable": false,
+    "goal_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
