@@ -4612,3 +4612,17 @@ uniform_positive_transfer_claim_allowed = `False`
 
 Stage43-BA audits why the replayed Stage43-P tail adapter cannot be claimed as uniform positive source transfer. The source-level blocker is not hidden: TrajNet_biwi and TrajNet_mot remain floor-only because ungated full-waypoint transfer is catastrophically negative. The safety floor is therefore necessary for these slices.
 <!-- STAGE43_BA_TAIL_ADAPTER_SOURCE_BLOCKER_AUDIT:END -->
+
+<!-- STAGE43_BB_BLOCKED_SOURCE_REPAIR_FEASIBILITY:START -->
+## STAGE43_BB_BLOCKED_SOURCE_REPAIR_FEASIBILITY
+
+source = `fresh_stage43_bb_blocked_source_repair_feasibility`
+result_source = `fresh_blocked_source_repair_feasibility_from_validation_support_and_split_counts`
+verdict = `stage43_bb_blocked_source_repair_feasibility_pass`
+gate = `12 / 12`
+blocked_sources = `2`
+repairable_now = `0`
+floor_only_now = `2`
+
+I checked the blocked tail-adapter sources before attempting another repair. The result is deliberately conservative: TrajNet_biwi and TrajNet_mot stay floor-only because ungated transfer is strongly negative and validation support is not strong enough to justify a source-specific switch policy.
+<!-- STAGE43_BB_BLOCKED_SOURCE_REPAIR_FEASIBILITY:END -->

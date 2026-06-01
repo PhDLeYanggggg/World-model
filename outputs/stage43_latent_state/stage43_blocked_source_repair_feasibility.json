@@ -1,0 +1,215 @@
+{
+  "source": "fresh_stage43_bb_blocked_source_repair_feasibility",
+  "result_source": "fresh_blocked_source_repair_feasibility_from_validation_support_and_split_counts",
+  "generated_at_utc": "2026-06-01T15:14:52.792619+00:00",
+  "git_commit": "d0ce918",
+  "input_artifacts": {
+    "stage43_p": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json",
+    "stage43_ba": "outputs/stage43_latent_state/stage43_tail_adapter_source_blocker_audit.json"
+  },
+  "input_verdicts": {
+    "stage43_p": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback",
+    "stage43_ba": "stage43_ba_tail_adapter_source_blocker_audit_pass"
+  },
+  "repair_protocol": {
+    "selection_data_required": "validation_only",
+    "test_threshold_tuning_allowed": false,
+    "min_validation_rows": 1000,
+    "max_easy_degradation": 0.02,
+    "future_labels_eval_or_loss_only": true,
+    "diagnostic_test_rows_not_used_for_training": true
+  },
+  "blocked_source_rows": [
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "family": "TrajNet_biwi",
+      "test_rows": 7685,
+      "selected_improvement": 0.0,
+      "ungated_improvement": -10.127500515707629,
+      "switch_rate": 0.0,
+      "validation_support": {
+        "total_rows": 459,
+        "horizons": {
+          "10": {
+            "rows": 255,
+            "improvement": 0.1869006971670808,
+            "easy_degradation": 0.0,
+            "allowed": false,
+            "reason": "blocked_insufficient_validation_support"
+          },
+          "25": {
+            "rows": 153,
+            "improvement": 0.5001052782250528,
+            "easy_degradation": 0.0,
+            "allowed": false,
+            "reason": "blocked_insufficient_validation_support"
+          },
+          "50": {
+            "rows": 51,
+            "improvement": 0.45714492234482307,
+            "easy_degradation": 0.7186902854597319,
+            "allowed": false,
+            "reason": "blocked_insufficient_validation_support"
+          }
+        },
+        "allowed_horizons": [],
+        "block_reasons": {
+          "blocked_insufficient_validation_support": 3
+        }
+      },
+      "split_support": {
+        "train": {
+          "source_rows": 0,
+          "source_horizon_counts": {},
+          "family_rows": 0,
+          "family_horizon_counts": {}
+        },
+        "val": {
+          "source_rows": 0,
+          "source_horizon_counts": {},
+          "family_rows": 459,
+          "family_horizon_counts": {
+            "10": 255,
+            "25": 153,
+            "50": 51
+          }
+        },
+        "test": {
+          "source_rows": 7685,
+          "source_horizon_counts": {
+            "10": 2465,
+            "25": 2175,
+            "50": 1885,
+            "100": 1160
+          },
+          "family_rows": 7685,
+          "family_horizon_counts": {
+            "10": 2465,
+            "25": 2175,
+            "50": 1885,
+            "100": 1160
+          }
+        }
+      },
+      "repair_decision": {
+        "repairable_now": false,
+        "status": "not_repairable_now_keep_floor",
+        "blockers": [
+          "insufficient_validation_rows",
+          "no_validation_allowed_horizon",
+          "ungated_transfer_catastrophic_negative",
+          "no_train_family_rows"
+        ],
+        "next_action": "Keep floor-only deployment until validation support proves a source-specific repair is safe."
+      }
+    },
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+      "family": "TrajNet_mot",
+      "test_rows": 1926,
+      "selected_improvement": 0.0,
+      "ungated_improvement": -5.065788921924493,
+      "switch_rate": 0.0,
+      "validation_support": {
+        "total_rows": 0,
+        "horizons": {},
+        "allowed_horizons": [],
+        "block_reasons": {}
+      },
+      "split_support": {
+        "train": {
+          "source_rows": 0,
+          "source_horizon_counts": {},
+          "family_rows": 0,
+          "family_horizon_counts": {}
+        },
+        "val": {
+          "source_rows": 0,
+          "source_horizon_counts": {},
+          "family_rows": 0,
+          "family_horizon_counts": {}
+        },
+        "test": {
+          "source_rows": 1926,
+          "source_horizon_counts": {
+            "10": 1391,
+            "25": 535
+          },
+          "family_rows": 1926,
+          "family_horizon_counts": {
+            "10": 1391,
+            "25": 535
+          }
+        }
+      },
+      "repair_decision": {
+        "repairable_now": false,
+        "status": "not_repairable_now_keep_floor",
+        "blockers": [
+          "insufficient_validation_rows",
+          "no_validation_allowed_horizon",
+          "ungated_transfer_catastrophic_negative",
+          "no_train_family_rows",
+          "no_val_family_rows"
+        ],
+        "next_action": "Keep floor-only deployment until validation support proves a source-specific repair is safe."
+      }
+    }
+  ],
+  "summary": {
+    "blocked_source_count": 2,
+    "repairable_now_count": 0,
+    "floor_only_count": 2,
+    "catastrophic_ungated_count": 2,
+    "insufficient_validation_support_count": 2
+  },
+  "next_required_actions": [
+    "Keep Stage43-P/AZ floor-only behavior on blocked TrajNet_biwi and TrajNet_mot sources.",
+    "Do not train or deploy source-specific repair until validation support is sufficient and positive.",
+    "If more external data is added, rebuild source-family validation support before touching test rows.",
+    "Report Stage43-P/AZ as aggregate protected transfer, not uniform positive source transfer."
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "uniform_positive_external_transfer_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "input_hash": "3ae86abd097eb119ad31e5c7b65edd43f718e7263e2cd951987f8157e339f3c6",
+  "stage43_bb_gate": {
+    "source": "fresh_stage43_bb_blocked_source_repair_feasibility",
+    "gates": {
+      "stage43_ba_precondition_passed": true,
+      "blocked_sources_inspected": true,
+      "split_support_quantified": true,
+      "validation_support_quantified": true,
+      "unsafe_repair_correctly_blocked": true,
+      "catastrophic_ungated_transfer_not_deployed": true,
+      "diagnostic_test_not_used_for_training": true,
+      "next_actions_recorded": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_bb_blocked_source_repair_feasibility_pass",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "goal_complete": false
+  }
+}
