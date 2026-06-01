@@ -4376,3 +4376,19 @@ Stage43-AK replayed the frozen Stage43-M checkpoint and policy, then compared st
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AK_SELF_GATE_CONFORMAL_AUDIT:END -->
+
+<!-- STAGE43_AL_BOUNDED_RESIDUAL_SAFETY_AUDIT:START -->
+## STAGE43_AL_BOUNDED_RESIDUAL_SAFETY_AUDIT
+
+source = `fresh_stage43_al_bounded_residual_safety_audit`
+result_source = `fresh_bounded_residual_audit_over_frozen_stage43_m_checkpoint`
+verdict = `stage43_al_bounded_residual_candidate_pass`
+gate = `12 / 12`
+deploy_bounded_residual = `True`
+safe_bounded_all_t50_t100_hard_easy = `38.00%` / `26.96%` / `0.00%` / `37.71%` / `0.00%`
+safe_minus_stored_all_t50_t100_hard_easy = `8.23%` / `10.52%` / `17.79%` / `8.96%` / `0.00%`
+
+Stage43-AL tested bounded residual relaxation over the frozen Stage43-M latent waypoint model. Residual deltas are norm-clipped and validation-selected, with future labels used only for validation/eval. If the bounded residual does not beat the stored hard switch while preserving easy/t100 safety, it remains diagnostic and the Stage43-M floor policy stays active.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AL_BOUNDED_RESIDUAL_SAFETY_AUDIT:END -->
