@@ -1,14 +1,14 @@
 # Stage43 A-Journal Gap Refresh
 
-Stage43 evidence is materially stronger after the bounded-residual freeze and reviewer replay, but it is not yet enough to claim an A-journal-ready system.
+Stage43 evidence is materially stronger after Stage43-P, but it is not yet enough to claim an A-journal-ready system.
 
 ## What Is Strong Now
 
-- Frozen policy artifact with stable hash.
+- Latest Stage43-P full-test all/t50/hard metrics exceed the frozen safety artifact while preserving easy cases.
+- Frozen policy artifact with stable hash remains available for reviewer replay.
 - Exact reviewer replay with zero metric diff.
-- Bootstrap-positive all/t50/hard deltas over stored Stage43-M hard-switch policy.
-- Positive external dataset-local slices for ETH_UCY, TrajNet, and UCY.
-- Easy degradation remains zero under the frozen policy.
+- Bootstrap-positive Stage43-P all/t50/hard evidence with zero easy degradation.
+- Positive external dataset-local evidence on ETH_UCY and UCY; TrajNet is safely floored rather than overclaimed.
 
 ## Remaining Gaps
 

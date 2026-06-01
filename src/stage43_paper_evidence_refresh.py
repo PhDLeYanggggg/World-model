@@ -32,6 +32,7 @@ STAGE43_AL = OUT_DIR / "stage43_bounded_residual_safety_audit.json"
 STAGE43_AM = OUT_DIR / "stage43_bounded_residual_statistical_confirmation.json"
 STAGE43_AN = OUT_DIR / "stage43_bounded_residual_policy_freeze.json"
 STAGE43_AO = OUT_DIR / "stage43_bounded_residual_reviewer_replay.json"
+STAGE43_P = OUT_DIR / "stage43_tail_horizon_waypoint_adapter.json"
 FROZEN_POLICY = OUT_DIR / "frozen_stage43_bounded_residual_policy.json"
 
 
@@ -62,9 +63,14 @@ def _build_evidence_rows(
     am: Mapping[str, Any],
     an_payload: Mapping[str, Any],
     ao: Mapping[str, Any],
+    tail_p: Mapping[str, Any],
 ) -> list[dict[str, str]]:
     frozen = an_payload["frozen_metrics"]
     ci = am["bootstrap_delta_ci"]["metrics"]
+    p_metrics = tail_p["overall_full_test_metrics"]
+    p_ci = tail_p["bootstrap_ci"]["metrics"]
+    p_domains = tail_p["by_domain"]
+    p_selected = tail_p["selected_model"]
     rows = [
         _evidence_row(
             "Reviewer-replayable protected bounded residual policy",
@@ -74,27 +80,42 @@ def _build_evidence_rows(
             "Requires local checkpoint/cache not committed to git; dataset-local/raw-frame only.",
         ),
         _evidence_row(
-            "Protected full-waypoint latent dynamics lift",
+            "Latest protected tail-horizon full-waypoint adapter",
             "supported",
-            f"AN frozen all {_pct(frozen['all'])}, t50 {_pct(frozen['t50'])}, hard {_pct(frozen['hard_failure'])}, easy {_pct(frozen['easy'])}",
-            "Protected bounded residual latent waypoint policy improves full-waypoint metrics under safety floor.",
-            "This is protected residual dynamics, not ungated generative rollout.",
+            f"Stage43-P full-test all {_pct(p_metrics['full_waypoint_ade_improvement_vs_floor'])}, t50 {_pct(p_metrics['t50_full_waypoint_ade_improvement_vs_floor'])}, hard {_pct(p_metrics['hard_failure_full_waypoint_ade_improvement_vs_floor'])}, easy {_pct(p_metrics['easy_degradation_vs_floor'])}, t100 {_pct(p_metrics['t100_raw_frame_full_waypoint_diagnostic_vs_floor'])}",
+            "Stage43-P is the current strongest protected full-waypoint evidence block under the safety floor.",
+            "It is validation-selected and floor-protected; h100/t100 is fallback-guarded and not solved.",
         ),
         _evidence_row(
-            "Bootstrap-supported delta over stored hard switch",
+            "Protected full-waypoint latent dynamics lift",
+            "supported",
+            f"Stage43-P improves over frozen AO by all {_pct(p_metrics['full_waypoint_ade_improvement_vs_floor'] - frozen['all'])}, t50 {_pct(p_metrics['t50_full_waypoint_ade_improvement_vs_floor'] - frozen['t50'])}, hard {_pct(p_metrics['hard_failure_full_waypoint_ade_improvement_vs_floor'] - frozen['hard_failure'])}, easy delta {_pct(p_metrics['easy_degradation_vs_floor'] - frozen['easy'])}",
+            "Protected full-waypoint dynamics improves the frozen replayable policy while preserving easy cases.",
+            "This is protected dynamics, not ungated generative rollout and not global floor removal.",
+        ),
+        _evidence_row(
+            "Bootstrap-supported latest full-test lift",
+            "supported",
+            f"Stage43-P all CI [{_pct(p_ci['full_waypoint_ade_improvement_vs_floor']['low'])}, {_pct(p_ci['full_waypoint_ade_improvement_vs_floor']['high'])}], t50 [{_pct(p_ci['t50_full_waypoint_ade_improvement_vs_floor']['low'])}, {_pct(p_ci['t50_full_waypoint_ade_improvement_vs_floor']['high'])}], hard [{_pct(p_ci['hard_failure_full_waypoint_ade_improvement_vs_floor']['low'])}, {_pct(p_ci['hard_failure_full_waypoint_ade_improvement_vs_floor']['high'])}], easy high {_pct(p_ci['easy_degradation_vs_floor']['high'])}",
+            "Stage43-P has bootstrap-positive all/t50/hard full-test evidence with zero easy degradation.",
+            "Bootstrap is over dataset-local/raw-frame rows; not metric/seconds evidence.",
+        ),
+        _evidence_row(
+            "Frozen replay bootstrap-supported delta over stored hard switch",
             "supported",
             f"AM all delta CI [{_pct(ci['all_delta_improvement']['low'])}, {_pct(ci['all_delta_improvement']['high'])}], t50 [{_pct(ci['t50_delta_improvement']['low'])}, {_pct(ci['t50_delta_improvement']['high'])}], hard [{_pct(ci['hard_failure_delta_improvement']['low'])}, {_pct(ci['hard_failure_delta_improvement']['high'])}]",
-            "Bounded residual has positive bootstrap delta over stored Stage43-M hard switch on all/t50/hard slices.",
-            "Bootstrap over frozen rows; not a new external dataset acquisition claim.",
+            "The frozen bounded-residual safety artifact has positive bootstrap delta over stored Stage43-M hard switch on all/t50/hard slices.",
+            "This remains the exact replayable safety artifact; Stage43-P is stronger but not yet frozen as the primary reviewer replay artifact.",
         ),
         _evidence_row(
             "Per-domain external support",
             "partially_supported",
             "; ".join(
-                f"{row['slice']} delta {_pct(row['delta'])}" for row in am["slice_rows"] if row["slice"].startswith("domain:")
+                f"{domain} all {_pct(metrics['full_waypoint_ade_improvement_vs_floor'])}, easy {_pct(metrics['easy_degradation_vs_floor'])}, switch {_pct(metrics['switch_rate'])}"
+                for domain, metrics in p_domains.items()
             ),
-            "Positive dataset-local/raw-frame deltas are observed across ETH_UCY, TrajNet, and UCY slices.",
-            "Domain labels are from existing external conversion; metric/seconds calibration remains unverified.",
+            "Stage43-P is positive on ETH_UCY and UCY and safely floors TrajNet to non-harmful zero transfer.",
+            "This is not uniform positive transfer across every source/domain; metric/seconds calibration remains unverified.",
         ),
         _evidence_row(
             "Global floor removal",
@@ -106,14 +127,14 @@ def _build_evidence_rows(
         _evidence_row(
             "h100 / t100 raw-frame behavior",
             "guarded_only",
-            f"AN t100 diagnostic {_pct(frozen['t100'])}; h100 guard {an_payload['policy']['deployment_rule']['h100_guard']}",
+            f"Stage43-P t100 diagnostic {_pct(p_metrics['t100_raw_frame_full_waypoint_diagnostic_vs_floor'])}; h100 allow flag {p_selected['h100_contract']['allow_h100']}",
             "Report t100 only as raw-frame diagnostic with h100 floor guard.",
             "No seconds-level long-horizon claim.",
         ),
         _evidence_row(
             "A-journal readiness",
             "not_yet",
-            "Stage43 has replayable protected bounded residual evidence, but metric/time calibration, true 3D evidence, and broader raw-data multimodal validation remain incomplete.",
+            "Stage43-P is stronger than the frozen AO artifact, but metric/time calibration, true 3D evidence, raw scene/video multimodal evidence, and paper package coherence remain incomplete.",
             "The current package is a stronger candidate evidence block, not a complete A-journal submission claim.",
             "Need source-level calibration, more multimodal scene evidence, full paper package coherence, and broader external verification.",
         ),
@@ -123,7 +144,11 @@ def _build_evidence_rows(
 
 def _write_csv(rows: list[Mapping[str, str]]) -> None:
     with TABLE_CSV.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["claim_name", "status", "evidence", "allowed_claim", "caveat"])
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["claim_name", "status", "evidence", "allowed_claim", "caveat"],
+            lineterminator="\n",
+        )
         writer.writeheader()
         for row in rows:
             writer.writerow(dict(row))
@@ -137,15 +162,19 @@ def _run(_: argparse.Namespace) -> dict[str, Any]:
     am = _load(STAGE43_AM)
     an_payload = _load(STAGE43_AN)
     ao = _load(STAGE43_AO)
+    tail_p = _load(STAGE43_P)
     policy = _load(FROZEN_POLICY)
-    rows = _build_evidence_rows(aj, ak, al, am, an_payload, ao)
+    rows = _build_evidence_rows(aj, ak, al, am, an_payload, ao, tail_p)
+    p_metrics = tail_p["overall_full_test_metrics"]
+    p_ci = tail_p["bootstrap_ci"]["metrics"]
+    frozen_metrics = an_payload["frozen_metrics"]
     answers = {
         "still_2_5d": True,
         "metric_time_subset_available": False,
         "full_waypoint_dynamics_available": True,
-        "cross_domain_external_evidence": "positive dataset-local/raw-frame slices for ETH_UCY, TrajNet, UCY in Stage43-AM",
+        "cross_domain_external_evidence": "Stage43-P is positive on ETH_UCY and UCY and safely floors TrajNet to zero/non-harm; uniform positive per-source transfer remains blocked.",
         "exceeds_stored_stage43_m_hard_switch": True,
-        "exceeds_stage37_floor": "not directly re-benchmarked in AP; bounded residual is compared to stored Stage43-M hard-switch/floor lineage",
+        "exceeds_stage37_floor": "Stage43-P is reported as improvement vs the Stage37/teacher safety floor on full-test external rows.",
         "scene_goal_interaction_effective": "partially supported by earlier Stage43 ablations; bounded residual evidence itself is policy-level/full-waypoint",
         "a_journal_candidate": False,
         "why_not_a_journal_yet": [
@@ -157,20 +186,41 @@ def _run(_: argparse.Namespace) -> dict[str, Any]:
     }
     payload: dict[str, Any] = {
         "source": SOURCE,
-        "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao",
+        "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao_plus_stage43_p",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "git_commit": m._git_commit(),
         "evidence_rows": rows,
         "answers": answers,
-        "policy_hash": policy["policy_hash"],
+        "policy_hash": tail_p["selected_model"]["model_hash"],
+        "frozen_policy_hash": policy["policy_hash"],
         "frozen_policy": str(FROZEN_POLICY),
+        "latest_policy_artifact": str(STAGE43_P),
         "key_metrics": {
-            "all": an_payload["frozen_metrics"]["all"],
-            "t50": an_payload["frozen_metrics"]["t50"],
-            "t100": an_payload["frozen_metrics"]["t100"],
-            "hard_failure": an_payload["frozen_metrics"]["hard_failure"],
-            "easy": an_payload["frozen_metrics"]["easy"],
-            "t50_delta_ci": an_payload["frozen_metrics"]["t50_delta_ci"],
+            "all": p_metrics["full_waypoint_ade_improvement_vs_floor"],
+            "endpoint": p_metrics["endpoint_fde_improvement_vs_floor"],
+            "t50": p_metrics["t50_full_waypoint_ade_improvement_vs_floor"],
+            "t50_endpoint": p_metrics["t50_endpoint_fde_improvement_vs_floor"],
+            "t100": p_metrics["t100_raw_frame_full_waypoint_diagnostic_vs_floor"],
+            "hard_failure": p_metrics["hard_failure_full_waypoint_ade_improvement_vs_floor"],
+            "easy": p_metrics["easy_degradation_vs_floor"],
+            "switch_rate": p_metrics["switch_rate"],
+            "latest_ci": p_ci,
+            "delta_vs_frozen": {
+                "all": p_metrics["full_waypoint_ade_improvement_vs_floor"] - frozen_metrics["all"],
+                "t50": p_metrics["t50_full_waypoint_ade_improvement_vs_floor"] - frozen_metrics["t50"],
+                "hard_failure": p_metrics["hard_failure_full_waypoint_ade_improvement_vs_floor"]
+                - frozen_metrics["hard_failure"],
+                "easy": p_metrics["easy_degradation_vs_floor"] - frozen_metrics["easy"],
+                "t100": p_metrics["t100_raw_frame_full_waypoint_diagnostic_vs_floor"] - frozen_metrics["t100"],
+            },
+            "frozen_replay": {
+                "all": frozen_metrics["all"],
+                "t50": frozen_metrics["t50"],
+                "t100": frozen_metrics["t100"],
+                "hard_failure": frozen_metrics["hard_failure"],
+                "easy": frozen_metrics["easy"],
+                "t50_delta_ci": frozen_metrics["t50_delta_ci"],
+            },
             "ao_replay_diff": ao["replay_diff"]["max_abs_diff"],
         },
         "evidence_sources": {
@@ -180,6 +230,7 @@ def _run(_: argparse.Namespace) -> dict[str, Any]:
             "stage43_am": str(STAGE43_AM),
             "stage43_an": str(STAGE43_AN),
             "stage43_ao": str(STAGE43_AO),
+            "stage43_p": str(STAGE43_P),
         },
         "no_leakage": {
             "future_endpoint_input": False,
@@ -197,7 +248,9 @@ def _run(_: argparse.Namespace) -> dict[str, Any]:
             "stage5c_executed": False,
             "smc_enabled": False,
         },
-        "input_hash": _combined_hash([STAGE43_AJ, STAGE43_AK, STAGE43_AL, STAGE43_AM, STAGE43_AN, STAGE43_AO, FROZEN_POLICY]),
+        "input_hash": _combined_hash(
+            [STAGE43_AJ, STAGE43_AK, STAGE43_AL, STAGE43_AM, STAGE43_AN, STAGE43_AO, STAGE43_P, FROZEN_POLICY]
+        ),
     }
     payload["stage43_ap_gate"] = _gate(payload)
     _write_outputs(payload)
@@ -211,12 +264,26 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "replayable_policy_claim_supported": statuses["Reviewer-replayable protected bounded residual policy"]
         == "supported"
         and metrics["ao_replay_diff"] == 0.0,
+        "latest_tail_adapter_claim_supported": statuses["Latest protected tail-horizon full-waypoint adapter"]
+        == "supported"
+        and metrics["all"] > 0.0
+        and metrics["t50"] > 0.0
+        and metrics["hard_failure"] > 0.0
+        and metrics["easy"] <= 0.02,
         "full_waypoint_claim_supported": statuses["Protected full-waypoint latent dynamics lift"] == "supported"
         and metrics["all"] > 0.0
         and metrics["t50"] > 0.0
         and metrics["hard_failure"] > 0.0,
-        "bootstrap_delta_claim_supported": statuses["Bootstrap-supported delta over stored hard switch"] == "supported"
-        and metrics["t50_delta_ci"]["low"] > 0.0,
+        "latest_bootstrap_claim_supported": statuses["Bootstrap-supported latest full-test lift"] == "supported"
+        and metrics["latest_ci"]["full_waypoint_ade_improvement_vs_floor"]["low"] > 0.0
+        and metrics["latest_ci"]["t50_full_waypoint_ade_improvement_vs_floor"]["low"] > 0.0
+        and metrics["latest_ci"]["hard_failure_full_waypoint_ade_improvement_vs_floor"]["low"] > 0.0
+        and metrics["latest_ci"]["easy_degradation_vs_floor"]["high"] <= 0.02,
+        "frozen_replay_bootstrap_claim_supported": statuses[
+            "Frozen replay bootstrap-supported delta over stored hard switch"
+        ]
+        == "supported"
+        and metrics["frozen_replay"]["t50_delta_ci"]["low"] > 0.0,
         "global_floor_not_overclaimed": statuses["Global floor removal"] == "not_supported",
         "a_journal_not_overclaimed": payload["answers"]["a_journal_candidate"] is False,
         "claim_boundary_answers_present": payload["answers"]["still_2_5d"] is True
@@ -261,16 +328,31 @@ def _write_outputs(payload: Mapping[str, Any]) -> None:
         f"- gate: `{gate['passed']} / {gate['total']}`",
         f"- verdict: `{gate['verdict']}`",
         f"- policy hash: `{payload['policy_hash']}`",
+        f"- frozen replayable policy hash: `{payload['frozen_policy_hash']}`",
         "",
         "## Key Current Metrics",
         "",
         f"- all: `{_pct(metrics['all'])}`",
+        f"- endpoint: `{_pct(metrics['endpoint'])}`",
         f"- t50: `{_pct(metrics['t50'])}`",
+        f"- t50 endpoint: `{_pct(metrics['t50_endpoint'])}`",
         f"- t100 raw-frame diagnostic: `{_pct(metrics['t100'])}`",
         f"- hard/failure: `{_pct(metrics['hard_failure'])}`",
         f"- easy degradation: `{_pct(metrics['easy'])}`",
-        f"- t50 delta CI vs stored hard switch: `[{_pct(metrics['t50_delta_ci']['low'])}, {_pct(metrics['t50_delta_ci']['high'])}]`",
+        f"- switch rate: `{_pct(metrics['switch_rate'])}`",
+        f"- latest t50 CI: `[{_pct(metrics['latest_ci']['t50_full_waypoint_ade_improvement_vs_floor']['low'])}, {_pct(metrics['latest_ci']['t50_full_waypoint_ade_improvement_vs_floor']['high'])}]`",
+        f"- latest all CI: `[{_pct(metrics['latest_ci']['full_waypoint_ade_improvement_vs_floor']['low'])}, {_pct(metrics['latest_ci']['full_waypoint_ade_improvement_vs_floor']['high'])}]`",
         f"- reviewer replay diff: `{metrics['ao_replay_diff']:.8f}`",
+        "",
+        "## Frozen Replayable Safety Artifact",
+        "",
+        f"- frozen all: `{_pct(metrics['frozen_replay']['all'])}`",
+        f"- frozen t50: `{_pct(metrics['frozen_replay']['t50'])}`",
+        f"- frozen hard/failure: `{_pct(metrics['frozen_replay']['hard_failure'])}`",
+        f"- frozen easy: `{_pct(metrics['frozen_replay']['easy'])}`",
+        f"- latest-vs-frozen all delta: `{_pct(metrics['delta_vs_frozen']['all'])}`",
+        f"- latest-vs-frozen t50 delta: `{_pct(metrics['delta_vs_frozen']['t50'])}`",
+        f"- latest-vs-frozen hard delta: `{_pct(metrics['delta_vs_frozen']['hard_failure'])}`",
         "",
         "## Claim Evidence Table",
         "",
@@ -304,14 +386,15 @@ def _write_outputs(payload: Mapping[str, Any]) -> None:
             "# Stage43 Claim Boundary Refresh",
             "",
             "- Current model remains a protected dataset-local/raw-frame 2.5D multi-agent world-state candidate.",
-            "- The strongest current Stage43 claim is a reviewer-replayable protected bounded-residual latent waypoint policy.",
+            "- The strongest current Stage43 evidence is the Stage43-P protected tail-horizon full-waypoint adapter.",
+            "- The frozen bounded-residual policy remains the exact reviewer-replayable safety artifact.",
             "- It is not true 3D, not a large-scale foundation model, and not metric/seconds-level.",
             "- Stage5C latent generative execution remains disabled.",
             "- SMC remains disabled.",
             "",
             "## Allowed Current Claim",
             "",
-            "Stage43 provides a frozen, exact-replayable, floor-protected bounded-residual latent waypoint policy with positive bootstrap-supported deltas over the stored Stage43-M hard-switch policy on dataset-local/raw-frame external slices.",
+            "Stage43 provides a floor-protected, validation-selected tail-horizon full-waypoint adapter with positive bootstrap-supported dataset-local/raw-frame external all/t50/hard metrics and zero easy degradation; the frozen bounded-residual policy remains the exact reviewer-replayable safety artifact.",
             "",
             "## Disallowed Claims",
             "",
@@ -327,15 +410,15 @@ def _write_outputs(payload: Mapping[str, Any]) -> None:
         [
             "# Stage43 A-Journal Gap Refresh",
             "",
-            "Stage43 evidence is materially stronger after the bounded-residual freeze and reviewer replay, but it is not yet enough to claim an A-journal-ready system.",
+            "Stage43 evidence is materially stronger after Stage43-P, but it is not yet enough to claim an A-journal-ready system.",
             "",
             "## What Is Strong Now",
             "",
-            "- Frozen policy artifact with stable hash.",
+            "- Latest Stage43-P full-test all/t50/hard metrics exceed the frozen safety artifact while preserving easy cases.",
+            "- Frozen policy artifact with stable hash remains available for reviewer replay.",
             "- Exact reviewer replay with zero metric diff.",
-            "- Bootstrap-positive all/t50/hard deltas over stored Stage43-M hard-switch policy.",
-            "- Positive external dataset-local slices for ETH_UCY, TrajNet, and UCY.",
-            "- Easy degradation remains zero under the frozen policy.",
+            "- Bootstrap-positive Stage43-P all/t50/hard evidence with zero easy degradation.",
+            "- Positive external dataset-local evidence on ETH_UCY and UCY; TrajNet is safely floored rather than overclaimed.",
             "",
             "## Remaining Gaps",
             "",
@@ -377,10 +460,12 @@ def _update_text_outputs(payload: Mapping[str, Any]) -> None:
         f"gate = `{gate['passed']} / {gate['total']}`",
         f"paper_evidence_refreshed = `{gate['paper_evidence_refreshed']}`",
         f"policy_hash = `{payload['policy_hash']}`",
+        f"frozen_replayable_policy_hash = `{payload['frozen_policy_hash']}`",
         f"current_all_t50_t100_hard_easy = `{_pct(metrics['all'])}` / `{_pct(metrics['t50'])}` / `{_pct(metrics['t100'])}` / `{_pct(metrics['hard_failure'])}` / `{_pct(metrics['easy'])}`",
-        f"t50_delta_ci = `[{_pct(metrics['t50_delta_ci']['low'])}, {_pct(metrics['t50_delta_ci']['high'])}]`",
+        f"latest_t50_ci = `[{_pct(metrics['latest_ci']['t50_full_waypoint_ade_improvement_vs_floor']['low'])}, {_pct(metrics['latest_ci']['t50_full_waypoint_ade_improvement_vs_floor']['high'])}]`",
+        f"latest_vs_frozen_all_t50_hard_delta = `{_pct(metrics['delta_vs_frozen']['all'])}` / `{_pct(metrics['delta_vs_frozen']['t50'])}` / `{_pct(metrics['delta_vs_frozen']['hard_failure'])}`",
         "",
-        "Stage43-AP consolidates AJ-AO evidence into paper-facing claim boundaries, evidence table, and A-journal gap refresh. The strongest allowed claim is a reviewer-replayable, floor-protected bounded-residual latent waypoint policy in dataset-local/raw-frame 2.5D space.",
+        "Stage43-AP consolidates AJ-AO plus Stage43-P evidence into paper-facing claim boundaries, evidence table, and A-journal gap refresh. The strongest allowed claim is a floor-protected, validation-selected tail-horizon full-waypoint adapter in dataset-local/raw-frame 2.5D space; the frozen bounded-residual policy remains the exact reviewer-replayable safety artifact.",
         "",
         "Boundary unchanged: not true 3D; not foundation; no metric/seconds claim; no Stage5C; no SMC.",
     ]
@@ -396,6 +481,7 @@ def _update_text_outputs(payload: Mapping[str, Any]) -> None:
         "gate": f"{gate['passed']} / {gate['total']}",
         "paper_evidence_refreshed": gate["paper_evidence_refreshed"],
         "policy_hash": payload["policy_hash"],
+        "frozen_replayable_policy_hash": payload["frozen_policy_hash"],
         "key_metrics": payload["key_metrics"],
         "answers": payload["answers"],
         "report": str(REPORT_MD),

@@ -7581,15 +7581,17 @@ Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; 
 ## STAGE43_AP_PAPER_EVIDENCE_REFRESH
 
 source = `fresh_stage43_ap_paper_evidence_refresh`
-result_source = `fresh_paper_evidence_refresh_from_stage43_aj_to_ao`
+result_source = `fresh_paper_evidence_refresh_from_stage43_aj_to_ao_plus_stage43_p`
 verdict = `stage43_ap_paper_evidence_refresh_pass`
-gate = `8 / 8`
+gate = `10 / 10`
 paper_evidence_refreshed = `True`
-policy_hash = `4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493`
-current_all_t50_t100_hard_easy = `38.00%` / `26.96%` / `0.00%` / `37.71%` / `0.00%`
-t50_delta_ci = `[9.86%, 11.21%]`
+policy_hash = `03497313f878a1ec69fd7d2824842fee0acfa79c38dc9d667c6d6ac53ef4c331`
+frozen_replayable_policy_hash = `4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493`
+current_all_t50_t100_hard_easy = `50.25%` / `51.23%` / `0.00%` / `47.88%` / `0.00%`
+latest_t50_ci = `[50.76%, 51.74%]`
+latest_vs_frozen_all_t50_hard_delta = `12.25%` / `24.27%` / `10.16%`
 
-Stage43-AP consolidates AJ-AO evidence into paper-facing claim boundaries, evidence table, and A-journal gap refresh. The strongest allowed claim is a reviewer-replayable, floor-protected bounded-residual latent waypoint policy in dataset-local/raw-frame 2.5D space.
+Stage43-AP consolidates AJ-AO plus Stage43-P evidence into paper-facing claim boundaries, evidence table, and A-journal gap refresh. The strongest allowed claim is a floor-protected, validation-selected tail-horizon full-waypoint adapter in dataset-local/raw-frame 2.5D space; the frozen bounded-residual policy remains the exact reviewer-replayable safety artifact.
 
 Boundary unchanged: not true 3D; not foundation; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AP_PAPER_EVIDENCE_REFRESH:END -->

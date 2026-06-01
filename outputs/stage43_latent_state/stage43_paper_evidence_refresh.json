@@ -1,8 +1,8 @@
 {
   "source": "fresh_stage43_ap_paper_evidence_refresh",
-  "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao",
-  "generated_at_utc": "2026-06-01T06:21:36.562371+00:00",
-  "git_commit": "bce02ac",
+  "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao_plus_stage43_p",
+  "generated_at_utc": "2026-06-01T09:41:23.048074+00:00",
+  "git_commit": "7f9d5fe",
   "evidence_rows": [
     {
       "claim_name": "Reviewer-replayable protected bounded residual policy",
@@ -12,25 +12,39 @@
       "caveat": "Requires local checkpoint/cache not committed to git; dataset-local/raw-frame only."
     },
     {
-      "claim_name": "Protected full-waypoint latent dynamics lift",
+      "claim_name": "Latest protected tail-horizon full-waypoint adapter",
       "status": "supported",
-      "evidence": "AN frozen all 38.00%, t50 26.96%, hard 37.71%, easy 0.00%",
-      "allowed_claim": "Protected bounded residual latent waypoint policy improves full-waypoint metrics under safety floor.",
-      "caveat": "This is protected residual dynamics, not ungated generative rollout."
+      "evidence": "Stage43-P full-test all 50.25%, t50 51.23%, hard 47.88%, easy 0.00%, t100 0.00%",
+      "allowed_claim": "Stage43-P is the current strongest protected full-waypoint evidence block under the safety floor.",
+      "caveat": "It is validation-selected and floor-protected; h100/t100 is fallback-guarded and not solved."
     },
     {
-      "claim_name": "Bootstrap-supported delta over stored hard switch",
+      "claim_name": "Protected full-waypoint latent dynamics lift",
+      "status": "supported",
+      "evidence": "Stage43-P improves over frozen AO by all 12.25%, t50 24.27%, hard 10.16%, easy delta 0.00%",
+      "allowed_claim": "Protected full-waypoint dynamics improves the frozen replayable policy while preserving easy cases.",
+      "caveat": "This is protected dynamics, not ungated generative rollout and not global floor removal."
+    },
+    {
+      "claim_name": "Bootstrap-supported latest full-test lift",
+      "status": "supported",
+      "evidence": "Stage43-P all CI [49.96%, 50.53%], t50 [50.76%, 51.74%], hard [47.52%, 48.22%], easy high 0.00%",
+      "allowed_claim": "Stage43-P has bootstrap-positive all/t50/hard full-test evidence with zero easy degradation.",
+      "caveat": "Bootstrap is over dataset-local/raw-frame rows; not metric/seconds evidence."
+    },
+    {
+      "claim_name": "Frozen replay bootstrap-supported delta over stored hard switch",
       "status": "supported",
       "evidence": "AM all delta CI [7.78%, 8.68%], t50 [9.86%, 11.21%], hard [8.47%, 9.45%]",
-      "allowed_claim": "Bounded residual has positive bootstrap delta over stored Stage43-M hard switch on all/t50/hard slices.",
-      "caveat": "Bootstrap over frozen rows; not a new external dataset acquisition claim."
+      "allowed_claim": "The frozen bounded-residual safety artifact has positive bootstrap delta over stored Stage43-M hard switch on all/t50/hard slices.",
+      "caveat": "This remains the exact replayable safety artifact; Stage43-P is stronger but not yet frozen as the primary reviewer replay artifact."
     },
     {
       "claim_name": "Per-domain external support",
       "status": "partially_supported",
-      "evidence": "domain:ETH_UCY delta 8.21%; domain:TrajNet delta 15.02%; domain:UCY delta 3.78%",
-      "allowed_claim": "Positive dataset-local/raw-frame deltas are observed across ETH_UCY, TrajNet, and UCY slices.",
-      "caveat": "Domain labels are from existing external conversion; metric/seconds calibration remains unverified."
+      "evidence": "ETH_UCY all 54.01%, easy 0.00%, switch 78.08%; TrajNet all 0.00%, easy 0.00%, switch 0.00%; UCY all 62.84%, easy 0.00%, switch 84.91%",
+      "allowed_claim": "Stage43-P is positive on ETH_UCY and UCY and safely floors TrajNet to non-harmful zero transfer.",
+      "caveat": "This is not uniform positive transfer across every source/domain; metric/seconds calibration remains unverified."
     },
     {
       "claim_name": "Global floor removal",
@@ -42,14 +56,14 @@
     {
       "claim_name": "h100 / t100 raw-frame behavior",
       "status": "guarded_only",
-      "evidence": "AN t100 diagnostic 0.00%; h100 guard True",
+      "evidence": "Stage43-P t100 diagnostic 0.00%; h100 allow flag False",
       "allowed_claim": "Report t100 only as raw-frame diagnostic with h100 floor guard.",
       "caveat": "No seconds-level long-horizon claim."
     },
     {
       "claim_name": "A-journal readiness",
       "status": "not_yet",
-      "evidence": "Stage43 has replayable protected bounded residual evidence, but metric/time calibration, true 3D evidence, and broader raw-data multimodal validation remain incomplete.",
+      "evidence": "Stage43-P is stronger than the frozen AO artifact, but metric/time calibration, true 3D evidence, raw scene/video multimodal evidence, and paper package coherence remain incomplete.",
       "allowed_claim": "The current package is a stronger candidate evidence block, not a complete A-journal submission claim.",
       "caveat": "Need source-level calibration, more multimodal scene evidence, full paper package coherence, and broader external verification."
     }
@@ -58,9 +72,9 @@
     "still_2_5d": true,
     "metric_time_subset_available": false,
     "full_waypoint_dynamics_available": true,
-    "cross_domain_external_evidence": "positive dataset-local/raw-frame slices for ETH_UCY, TrajNet, UCY in Stage43-AM",
+    "cross_domain_external_evidence": "Stage43-P is positive on ETH_UCY and UCY and safely floors TrajNet to zero/non-harm; uniform positive per-source transfer remains blocked.",
     "exceeds_stored_stage43_m_hard_switch": true,
-    "exceeds_stage37_floor": "not directly re-benchmarked in AP; bounded residual is compared to stored Stage43-M hard-switch/floor lineage",
+    "exceeds_stage37_floor": "Stage43-P is reported as improvement vs the Stage37/teacher safety floor on full-test external rows.",
     "scene_goal_interaction_effective": "partially supported by earlier Stage43 ablations; bounded residual evidence itself is policy-level/full-waypoint",
     "a_journal_candidate": false,
     "why_not_a_journal_yet": [
@@ -70,19 +84,76 @@
       "Need final integrated paper package, broader source calibration, and full test-suite replay."
     ]
   },
-  "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+  "policy_hash": "03497313f878a1ec69fd7d2824842fee0acfa79c38dc9d667c6d6ac53ef4c331",
+  "frozen_policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
   "frozen_policy": "outputs/stage43_latent_state/frozen_stage43_bounded_residual_policy.json",
+  "latest_policy_artifact": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json",
   "key_metrics": {
-    "all": 0.37999220149702595,
-    "t50": 0.269646290665144,
+    "all": 0.5025366202187915,
+    "endpoint": 0.5115467028112946,
+    "t50": 0.5123378909285481,
+    "t50_endpoint": 0.5512817551451819,
     "t100": 0.0,
-    "hard_failure": 0.3771314228696524,
+    "hard_failure": 0.4787683745310771,
     "easy": 0.0,
-    "t50_delta_ci": {
-      "low": 0.09860902265137161,
-      "mean": 0.10522010418320703,
-      "high": 0.11214061038498835,
-      "rows": 3856
+    "switch_rate": 0.7044552910760453,
+    "latest_ci": {
+      "full_waypoint_ade_improvement_vs_floor": {
+        "low": 0.49955394016048166,
+        "mean": 0.5024743525983716,
+        "high": 0.5052649865966246,
+        "rows": 89736
+      },
+      "endpoint_fde_improvement_vs_floor": {
+        "low": 0.5082767796313581,
+        "mean": 0.5114775159098757,
+        "high": 0.5145826408172376,
+        "rows": 89736
+      },
+      "t50_full_waypoint_ade_improvement_vs_floor": {
+        "low": 0.5075613281849501,
+        "mean": 0.5123592169732774,
+        "high": 0.5173551680868302,
+        "rows": 21754
+      },
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 18070
+      },
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": {
+        "low": 0.4751867865091124,
+        "mean": 0.4787843200692615,
+        "high": 0.4822067418814998,
+        "rows": 70119
+      },
+      "easy_degradation_vs_floor": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 26927
+      }
+    },
+    "delta_vs_frozen": {
+      "all": 0.12254441872176558,
+      "t50": 0.24269160026340408,
+      "hard_failure": 0.10163695166142472,
+      "easy": 0.0,
+      "t100": 0.0
+    },
+    "frozen_replay": {
+      "all": 0.37999220149702595,
+      "t50": 0.269646290665144,
+      "t100": 0.0,
+      "hard_failure": 0.3771314228696524,
+      "easy": 0.0,
+      "t50_delta_ci": {
+        "low": 0.09860902265137161,
+        "mean": 0.10522010418320703,
+        "high": 0.11214061038498835,
+        "rows": 3856
+      }
     },
     "ao_replay_diff": 0.0
   },
@@ -92,7 +163,8 @@
     "stage43_al": "outputs/stage43_latent_state/stage43_bounded_residual_safety_audit.json",
     "stage43_am": "outputs/stage43_latent_state/stage43_bounded_residual_statistical_confirmation.json",
     "stage43_an": "outputs/stage43_latent_state/stage43_bounded_residual_policy_freeze.json",
-    "stage43_ao": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json"
+    "stage43_ao": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json",
+    "stage43_p": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json"
   },
   "no_leakage": {
     "future_endpoint_input": false,
@@ -110,21 +182,23 @@
     "stage5c_executed": false,
     "smc_enabled": false
   },
-  "input_hash": "9d48332510f533656e4c21e3ee37e34c1752c71b59a70a246d844ad391cf7368",
+  "input_hash": "eb187898611d30d19ebf8aaabb0a657b2245c5eafaa003c5ef05089911e155c4",
   "stage43_ap_gate": {
     "source": "fresh_stage43_ap_paper_evidence_refresh",
     "gates": {
       "replayable_policy_claim_supported": true,
+      "latest_tail_adapter_claim_supported": true,
       "full_waypoint_claim_supported": true,
-      "bootstrap_delta_claim_supported": true,
+      "latest_bootstrap_claim_supported": true,
+      "frozen_replay_bootstrap_claim_supported": true,
       "global_floor_not_overclaimed": true,
       "a_journal_not_overclaimed": true,
       "claim_boundary_answers_present": true,
       "no_future_or_test_leakage": true,
       "no_metric_seconds_stage5c_smc_claim": true
     },
-    "passed": 8,
-    "total": 8,
+    "passed": 10,
+    "total": 10,
     "verdict": "stage43_ap_paper_evidence_refresh_pass",
     "paper_evidence_refreshed": true,
     "stage5c_executed": false,

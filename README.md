@@ -2,9 +2,9 @@
 
 **Real-World Multimodal Agent-Scene World Model**
 
-M3W is my long-running research project on real-world multi-agent world modeling. I am interested in a practical question: if a model only sees past motion, scene context, and nearby agents, can it make better future predictions than strong causal baselines without relying on leaked future information?
+M3W is my long-running research project on real-world multi-agent world modeling. The question I keep coming back to is simple: if a model only sees past motion, scene context, and nearby agents, can it make better future predictions than strong causal baselines without cheating with future information?
 
-The project is intentionally empirical. I build a model, compare it against conservative baselines, break down where it fails, and then tighten the next experiment around the failure mode. The repository is therefore both a model codebase and a research record.
+This repo is not meant to read like a polished product page. It is a research notebook with working code: I build a model, compare it against conservative baselines, find where it fails, and tighten the next experiment around that failure mode.
 
 ## What I Am Building
 
@@ -33,7 +33,7 @@ That line of work has produced the strongest external transfer result so far:
 
 Newer latent-state and neural dynamics experiments are promising in some slices, but I do not treat them as replacements unless they beat the protected policy while preserving easy cases. Negative results stay in the repo because they are useful: they show which ideas look good in isolation but do not survive deployment rules.
 
-Detailed numbers, confidence intervals, and stage-by-stage reports are in [`README_RESULTS.md`](README_RESULTS.md).
+I keep the detailed numbers, confidence intervals, and stage-by-stage reports in [`README_RESULTS.md`](README_RESULTS.md) so this front page can stay readable.
 
 ## What Has Worked
 
@@ -71,7 +71,7 @@ Latent-generative Stage5C has not been executed, and SMC is not enabled.
 | `outputs/stage43_latent_state/` | Protected latent-state and bounded-residual evidence |
 | [`research_state.json`](research_state.json) | Machine-readable project state |
 
-Large datasets, generated caches, checkpoints, videos, third-party raw data, and local virtual environments are intentionally left out of Git.
+Large datasets, generated caches, checkpoints, videos, third-party raw data, and local virtual environments are intentionally left out of Git. The repository should stay reviewable; the heavy artifacts live locally.
 
 ## Running Locally
 

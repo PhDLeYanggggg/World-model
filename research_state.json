@@ -267,8 +267,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_aq_integrated_candidate_gate",
-  "current_verdict": "stage43_aq_integrated_protected_latent_state_candidate_pass",
+  "current_stage": "stage43_ap_paper_evidence_refresh",
+  "current_verdict": "stage43_ap_paper_evidence_refresh_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -40479,23 +40479,79 @@
   },
   "stage43_ap_paper_evidence_refresh": {
     "source": "fresh_stage43_ap_paper_evidence_refresh",
-    "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao",
-    "updated_at": "2026-06-01T06:21:36.562371+00:00",
+    "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao_plus_stage43_p",
+    "updated_at": "2026-06-01T09:41:23.048074+00:00",
     "verdict": "stage43_ap_paper_evidence_refresh_pass",
-    "gate": "8 / 8",
+    "gate": "10 / 10",
     "paper_evidence_refreshed": true,
-    "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+    "policy_hash": "03497313f878a1ec69fd7d2824842fee0acfa79c38dc9d667c6d6ac53ef4c331",
+    "frozen_replayable_policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
     "key_metrics": {
-      "all": 0.37999220149702595,
-      "t50": 0.269646290665144,
+      "all": 0.5025366202187915,
+      "endpoint": 0.5115467028112946,
+      "t50": 0.5123378909285481,
+      "t50_endpoint": 0.5512817551451819,
       "t100": 0.0,
-      "hard_failure": 0.3771314228696524,
+      "hard_failure": 0.4787683745310771,
       "easy": 0.0,
-      "t50_delta_ci": {
-        "low": 0.09860902265137161,
-        "mean": 0.10522010418320703,
-        "high": 0.11214061038498835,
-        "rows": 3856
+      "switch_rate": 0.7044552910760453,
+      "latest_ci": {
+        "full_waypoint_ade_improvement_vs_floor": {
+          "low": 0.49955394016048166,
+          "mean": 0.5024743525983716,
+          "high": 0.5052649865966246,
+          "rows": 89736
+        },
+        "endpoint_fde_improvement_vs_floor": {
+          "low": 0.5082767796313581,
+          "mean": 0.5114775159098757,
+          "high": 0.5145826408172376,
+          "rows": 89736
+        },
+        "t50_full_waypoint_ade_improvement_vs_floor": {
+          "low": 0.5075613281849501,
+          "mean": 0.5123592169732774,
+          "high": 0.5173551680868302,
+          "rows": 21754
+        },
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": {
+          "low": 0.0,
+          "mean": 0.0,
+          "high": 0.0,
+          "rows": 18070
+        },
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": {
+          "low": 0.4751867865091124,
+          "mean": 0.4787843200692615,
+          "high": 0.4822067418814998,
+          "rows": 70119
+        },
+        "easy_degradation_vs_floor": {
+          "low": 0.0,
+          "mean": 0.0,
+          "high": 0.0,
+          "rows": 26927
+        }
+      },
+      "delta_vs_frozen": {
+        "all": 0.12254441872176558,
+        "t50": 0.24269160026340408,
+        "hard_failure": 0.10163695166142472,
+        "easy": 0.0,
+        "t100": 0.0
+      },
+      "frozen_replay": {
+        "all": 0.37999220149702595,
+        "t50": 0.269646290665144,
+        "t100": 0.0,
+        "hard_failure": 0.3771314228696524,
+        "easy": 0.0,
+        "t50_delta_ci": {
+          "low": 0.09860902265137161,
+          "mean": 0.10522010418320703,
+          "high": 0.11214061038498835,
+          "rows": 3856
+        }
       },
       "ao_replay_diff": 0.0
     },
@@ -40503,9 +40559,9 @@
       "still_2_5d": true,
       "metric_time_subset_available": false,
       "full_waypoint_dynamics_available": true,
-      "cross_domain_external_evidence": "positive dataset-local/raw-frame slices for ETH_UCY, TrajNet, UCY in Stage43-AM",
+      "cross_domain_external_evidence": "Stage43-P is positive on ETH_UCY and UCY and safely floors TrajNet to zero/non-harm; uniform positive per-source transfer remains blocked.",
       "exceeds_stored_stage43_m_hard_switch": true,
-      "exceeds_stage37_floor": "not directly re-benchmarked in AP; bounded residual is compared to stored Stage43-M hard-switch/floor lineage",
+      "exceeds_stage37_floor": "Stage43-P is reported as improvement vs the Stage37/teacher safety floor on full-test external rows.",
       "scene_goal_interaction_effective": "partially supported by earlier Stage43 ablations; bounded residual evidence itself is policy-level/full-waypoint",
       "a_journal_candidate": false,
       "why_not_a_journal_yet": [
