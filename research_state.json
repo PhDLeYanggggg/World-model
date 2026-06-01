@@ -223,8 +223,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_ae_scene_proxy_slice_safe_policy",
-  "current_verdict": "stage43_ae_slice_safe_scene_proxy_candidate",
+  "current_stage": "stage43_af_scene_proxy_counterfactual_ablation",
+  "current_verdict": "stage43_af_scene_proxy_counterfactual_contribution_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -18658,7 +18658,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "8cacc3846080cd91c4770d8e8658cac36cece93aa86c621d34caa6932d0a1301",
+      "policy_hash": "280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -36333,7 +36333,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "e9b21133e3c478cb8e8989c0b53516dd0b6362ef8480e54114f3b7613f7fa684",
+      "package_hash": "f107686ce923c690e62fdcd0e76c459ec44f362bd413b9a769423e48808fb892",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -36414,8 +36414,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "8cacc3846080cd91c4770d8e8658cac36cece93aa86c621d34caa6932d0a1301",
-        "policy_artifact_sha256": "d466b01619c917d1a9a35a51a005ba9c3718e776987ad8598592629d1e9e921e",
+        "policy_hash": "280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6",
+        "policy_artifact_sha256": "9241b45b30530364f9468e92b2a34ac727bd06709f005f0e841a922772ddab48",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -39404,6 +39404,49 @@
     },
     "report": "outputs/stage43_latent_state/stage43_scene_proxy_slice_safe_policy.md",
     "gate_report": "outputs/stage43_latent_state/stage43_stage_ae_scene_proxy_slice_safe_gate.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_af_scene_proxy_counterfactual_ablation": {
+    "source": "fresh_stage43_af_scene_proxy_counterfactual_ablation",
+    "verdict": "stage43_af_scene_proxy_counterfactual_contribution_pass",
+    "gate": "12 / 12",
+    "scene_proxy_counterfactual_contribution_supported": true,
+    "actual_metrics": {
+      "rows": 16000,
+      "full_waypoint_ade_improvement_vs_floor": 0.23953727876744435,
+      "endpoint_fde_improvement_vs_floor": 0.3053435364415502,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.3716084920697583,
+      "t50_endpoint_fde_improvement_vs_floor": 0.44633868939537247,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.23376765343850492,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.502375,
+      "harm_over_floor_ade": -0.04732629284262657,
+      "mean_floor_ade": 0.19757382571697235,
+      "mean_selected_ade": 0.15024752914905548,
+      "floor_rate": 0.497625,
+      "stage43_m_rate": 0.047,
+      "stage43_ab_rate": 0.455375,
+      "h10_floor_rate": 1.0,
+      "h10_stage43_ab_rate": 0.0,
+      "h100_floor_rate": 1.0,
+      "h100_stage43_ab_rate": 0.0,
+      "trajnet_floor_rate": 0.5148986889153755,
+      "trajnet_stage43_m_rate": 0.07866507747318235
+    },
+    "scene_proxy_contribution_vs_stage43_m_counterfactual": {
+      "full_waypoint_ade_improvement_vs_floor": 0.08237066948337934,
+      "endpoint_fde_improvement_vs_floor": 0.047230575558736776,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.20711959943618807,
+      "t50_endpoint_fde_improvement_vs_floor": 0.15808901238264672,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.09233305664153502,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.0
+    },
+    "report": "outputs/stage43_latent_state/stage43_scene_proxy_counterfactual_ablation.md",
+    "gate_report": "outputs/stage43_latent_state/stage43_stage_af_scene_proxy_counterfactual_gate.md",
     "stage5c_executed": false,
     "smc_enabled": false
   }

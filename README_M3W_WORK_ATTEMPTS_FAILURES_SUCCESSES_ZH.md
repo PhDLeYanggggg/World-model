@@ -2242,3 +2242,23 @@ Stage43-AE is the slice-safe repair after the AD caveat audit. It uses a validat
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AE_SCENE_PROXY_SLICE_SAFE_POLICY:END -->
+
+<!-- STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION:START -->
+## STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION
+
+source = `fresh_stage43_af_scene_proxy_counterfactual_ablation`
+verdict = `stage43_af_scene_proxy_counterfactual_contribution_pass`
+gate = `12 / 12`
+scene_proxy_counterfactual_contribution_supported = `True`
+
+actual_slice_safe_all = `23.95%`
+actual_slice_safe_t50 = `37.16%`
+scene_proxy_t50_contribution_vs_stage43_m_counterfactual = `20.71%`
+scene_proxy_t50_endpoint_contribution_vs_stage43_m_counterfactual = `15.81%`
+scene_proxy_hard_contribution_vs_stage43_m_counterfactual = `9.23%`
+actual_easy_degradation = `0.00%`
+
+Stage43-AF uses the same Stage43-AE route and replaces only the scene-proxy AB branch with a no-scene Stage43-M counterfactual. This gives a direct model-family contribution estimate for scene/goal proxy latent features under the same safety contract.
+
+Boundary unchanged: same-route counterfactual, not full factorial retraining; dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION:END -->

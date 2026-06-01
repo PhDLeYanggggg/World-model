@@ -6448,7 +6448,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `8cacc3846080cd91c4770d8e8658cac36cece93aa86c621d34caa6932d0a1301`
+- policy hash: `280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6462,7 +6462,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `8cacc3846080cd91c4770d8e8658cac36cece93aa86c621d34caa6932d0a1301`
+- policy hash: `280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -7460,3 +7460,23 @@ Stage43-AE is the slice-safe repair after the AD caveat audit. It uses a validat
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AE_SCENE_PROXY_SLICE_SAFE_POLICY:END -->
+
+<!-- STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION:START -->
+## STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION
+
+source = `fresh_stage43_af_scene_proxy_counterfactual_ablation`
+verdict = `stage43_af_scene_proxy_counterfactual_contribution_pass`
+gate = `12 / 12`
+scene_proxy_counterfactual_contribution_supported = `True`
+
+actual_slice_safe_all = `23.95%`
+actual_slice_safe_t50 = `37.16%`
+scene_proxy_t50_contribution_vs_stage43_m_counterfactual = `20.71%`
+scene_proxy_t50_endpoint_contribution_vs_stage43_m_counterfactual = `15.81%`
+scene_proxy_hard_contribution_vs_stage43_m_counterfactual = `9.23%`
+actual_easy_degradation = `0.00%`
+
+Stage43-AF uses the same Stage43-AE route and replaces only the scene-proxy AB branch with a no-scene Stage43-M counterfactual. This gives a direct model-family contribution estimate for scene/goal proxy latent features under the same safety contract.
+
+Boundary unchanged: same-route counterfactual, not full factorial retraining; dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION:END -->
