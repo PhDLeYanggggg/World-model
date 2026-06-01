@@ -6448,7 +6448,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6`
+- policy hash: `f98adc6f207eb0c1fbb91d80561742dc200493442ab99e2f7e2d098b409ae2e3`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6462,7 +6462,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6`
+- policy hash: `f98adc6f207eb0c1fbb91d80561742dc200493442ab99e2f7e2d098b409ae2e3`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -7480,3 +7480,21 @@ Stage43-AF uses the same Stage43-AE route and replaces only the scene-proxy AB b
 
 Boundary unchanged: same-route counterfactual, not full factorial retraining; dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION:END -->
+
+<!-- STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION:START -->
+## STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION
+
+source = `fresh_stage43_ag_scene_proxy_retrained_ablation`
+verdict = `stage43_ag_scene_proxy_retrained_ablation_pass`
+gate = `11 / 11`
+scene_proxy_retrained_ablation_supports_contribution = `True`
+best_t50_variant = `full_scene`
+best_t50_delta_vs_retrained_no_scene = `5.79%`
+best_safe_t50_variant = `geometry_route`
+best_safe_t50_delta_vs_retrained_no_scene = `5.02%`
+best_hard_variant = `full_scene`
+
+Stage43-AG fresh-trains no-scene, geometry/route, goal-only, and full-scene proxy variants under the same protected full-waypoint latent dynamics protocol. This is a focused retrained scene-proxy subset ablation, not a full all-module factorial ablation. The report separates raw-best t50 from safety-preserving t50 evidence.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; scene proxy is not raw image/SDF; future labels are supervision/eval only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION:END -->

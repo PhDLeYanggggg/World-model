@@ -223,8 +223,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_af_scene_proxy_counterfactual_ablation",
-  "current_verdict": "stage43_af_scene_proxy_counterfactual_contribution_pass",
+  "current_stage": "stage43_ag_scene_proxy_retrained_ablation",
+  "current_verdict": "stage43_ag_scene_proxy_retrained_ablation_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -18658,7 +18658,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6",
+      "policy_hash": "f98adc6f207eb0c1fbb91d80561742dc200493442ab99e2f7e2d098b409ae2e3",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -36333,7 +36333,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "f107686ce923c690e62fdcd0e76c459ec44f362bd413b9a769423e48808fb892",
+      "package_hash": "6d639eea94e0b7baa4d7bca96f9c4125978e48a29dd154ca0145313646dd7133",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -36414,8 +36414,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "280988f7945f01eab9a2419556336320a97941e9561ae3776fc4b2da65dbc9e6",
-        "policy_artifact_sha256": "9241b45b30530364f9468e92b2a34ac727bd06709f005f0e841a922772ddab48",
+        "policy_hash": "f98adc6f207eb0c1fbb91d80561742dc200493442ab99e2f7e2d098b409ae2e3",
+        "policy_artifact_sha256": "8c6671bcddf59ba9e4f1cdac1d6d1579b2bd126197bc99d4f293d9167071f930",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -39447,6 +39447,138 @@
     },
     "report": "outputs/stage43_latent_state/stage43_scene_proxy_counterfactual_ablation.md",
     "gate_report": "outputs/stage43_latent_state/stage43_stage_af_scene_proxy_counterfactual_gate.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_ag_scene_proxy_retrained_ablation": {
+    "source": "fresh_stage43_ag_scene_proxy_retrained_ablation",
+    "verdict": "stage43_ag_scene_proxy_retrained_ablation_pass",
+    "gate": "11 / 11",
+    "scene_proxy_retrained_ablation_supports_contribution": true,
+    "best_variant_by_t50_delta": "full_scene",
+    "best_safe_variant_by_t50_delta": "geometry_route",
+    "best_variant_by_hard_delta": "full_scene",
+    "best_variant_by_all_delta": "full_scene",
+    "variants": [
+      {
+        "variant": "no_scene",
+        "metrics": {
+          "rows": 16000,
+          "full_waypoint_ade_improvement_vs_floor": 0.36010009838633583,
+          "endpoint_fde_improvement_vs_floor": 0.44931385789566836,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.30301742511054597,
+          "t50_endpoint_fde_improvement_vs_floor": 0.46544744554783,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.3404698749143489,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3697213871291004,
+          "easy_degradation_vs_floor": 0.07862886616192877,
+          "switch_rate": 1.0,
+          "harm_over_floor_ade": -0.07114635407924652,
+          "mean_floor_ade": 0.19757382571697235,
+          "mean_selected_ade": 0.12642747163772583
+        },
+        "delta_vs_retrained_no_scene": {
+          "full_waypoint_ade_improvement_vs_floor": 0.0,
+          "endpoint_fde_improvement_vs_floor": 0.0,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+          "t50_endpoint_fde_improvement_vs_floor": 0.0,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.0
+        },
+        "latent_variance": 0.4222394824028015,
+        "checkpoint_committed": false
+      },
+      {
+        "variant": "geometry_route",
+        "metrics": {
+          "rows": 16000,
+          "full_waypoint_ade_improvement_vs_floor": 0.364419683015172,
+          "endpoint_fde_improvement_vs_floor": 0.42863367093407023,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.3532359203907205,
+          "t50_endpoint_fde_improvement_vs_floor": 0.48580272676550307,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.36242837374722936,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3719656217866132,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.9998125,
+          "harm_over_floor_ade": -0.07158954441547394,
+          "mean_floor_ade": 0.19644807279109955,
+          "mean_selected_ade": 0.12485852837562561
+        },
+        "delta_vs_retrained_no_scene": {
+          "full_waypoint_ade_improvement_vs_floor": 0.004319584628836193,
+          "endpoint_fde_improvement_vs_floor": -0.020680186961598124,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.050218495280174524,
+          "t50_endpoint_fde_improvement_vs_floor": 0.02035528121767305,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.02195849883288048,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.002244234657512778,
+          "easy_degradation_vs_floor": -0.07862886616192877,
+          "switch_rate": -0.0001875000000000071
+        },
+        "latent_variance": 0.356743723154068,
+        "checkpoint_committed": false
+      },
+      {
+        "variant": "goal_only",
+        "metrics": {
+          "rows": 16000,
+          "full_waypoint_ade_improvement_vs_floor": 0.27867604394087664,
+          "endpoint_fde_improvement_vs_floor": 0.36316326390775433,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.26801372201170526,
+          "t50_endpoint_fde_improvement_vs_floor": 0.40968857392596725,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.41065077375770476,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.2891511062240124,
+          "easy_degradation_vs_floor": 0.06783294490751746,
+          "switch_rate": 0.8101875,
+          "harm_over_floor_ade": -0.05487745627760887,
+          "mean_floor_ade": 0.19692200422286987,
+          "mean_selected_ade": 0.1420445591211319
+        },
+        "delta_vs_retrained_no_scene": {
+          "full_waypoint_ade_improvement_vs_floor": -0.08142405444545919,
+          "endpoint_fde_improvement_vs_floor": -0.08615059398791403,
+          "t50_full_waypoint_ade_improvement_vs_floor": -0.03500370309884071,
+          "t50_endpoint_fde_improvement_vs_floor": -0.05575887162186277,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.07018089884335588,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": -0.080570280905088,
+          "easy_degradation_vs_floor": -0.010795921254411311,
+          "switch_rate": -0.18981250000000005
+        },
+        "latent_variance": 0.3334786295890808,
+        "checkpoint_committed": false
+      },
+      {
+        "variant": "full_scene",
+        "metrics": {
+          "rows": 16000,
+          "full_waypoint_ade_improvement_vs_floor": 0.3706386933315001,
+          "endpoint_fde_improvement_vs_floor": 0.4122480726810033,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.36093487648763034,
+          "t50_endpoint_fde_improvement_vs_floor": 0.4512282593059369,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.35911736430025054,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.37942647992427625,
+          "easy_degradation_vs_floor": 0.0958593682894453,
+          "switch_rate": 1.0,
+          "harm_over_floor_ade": -0.07343097031116486,
+          "mean_floor_ade": 0.1981200873851776,
+          "mean_selected_ade": 0.12468911707401276
+        },
+        "delta_vs_retrained_no_scene": {
+          "full_waypoint_ade_improvement_vs_floor": 0.010538594945164292,
+          "endpoint_fde_improvement_vs_floor": -0.03706578521466508,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.05791745137708437,
+          "t50_endpoint_fde_improvement_vs_floor": -0.014219186241893111,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.01864748938590166,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.00970509279517584,
+          "easy_degradation_vs_floor": 0.017230502127516534,
+          "switch_rate": 0.0
+        },
+        "latent_variance": 0.2894797623157501,
+        "checkpoint_committed": false
+      }
+    ],
+    "report": "outputs/stage43_latent_state/stage43_scene_proxy_retrained_ablation.md",
+    "gate_report": "outputs/stage43_latent_state/stage43_stage_ag_scene_proxy_retrained_ablation_gate.md",
     "stage5c_executed": false,
     "smc_enabled": false
   }

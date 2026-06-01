@@ -2262,3 +2262,21 @@ Stage43-AF uses the same Stage43-AE route and replaces only the scene-proxy AB b
 
 Boundary unchanged: same-route counterfactual, not full factorial retraining; dataset-local/raw-frame 2.5D only; t100 remains diagnostic; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AF_SCENE_PROXY_COUNTERFACTUAL_ABLATION:END -->
+
+<!-- STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION:START -->
+## STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION
+
+source = `fresh_stage43_ag_scene_proxy_retrained_ablation`
+verdict = `stage43_ag_scene_proxy_retrained_ablation_pass`
+gate = `11 / 11`
+scene_proxy_retrained_ablation_supports_contribution = `True`
+best_t50_variant = `full_scene`
+best_t50_delta_vs_retrained_no_scene = `5.79%`
+best_safe_t50_variant = `geometry_route`
+best_safe_t50_delta_vs_retrained_no_scene = `5.02%`
+best_hard_variant = `full_scene`
+
+Stage43-AG fresh-trains no-scene, geometry/route, goal-only, and full-scene proxy variants under the same protected full-waypoint latent dynamics protocol. This is a focused retrained scene-proxy subset ablation, not a full all-module factorial ablation. The report separates raw-best t50 from safety-preserving t50 evidence.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; scene proxy is not raw image/SDF; future labels are supervision/eval only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION:END -->
