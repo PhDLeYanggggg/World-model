@@ -2745,3 +2745,21 @@ Next executable artifacts are `stage43_all_agent_graph_cache` and `stage43_raw_s
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future labels are supervision/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BL_RAW_SCENE_GRAPH_ABLATION_READINESS:END -->
+
+<!-- STAGE43_BM_ALL_AGENT_CURRENT_GRAPH_CACHE:START -->
+## STAGE43_BM_ALL_AGENT_CURRENT_GRAPH_CACHE
+
+source = `fresh_stage43_bm_all_agent_current_graph_cache`
+result_source = `fresh_build_current_frame_all_agent_knn_graph_cache_from_stage43_full_waypoint_rows`
+verdict = `stage43_bm_all_agent_current_graph_cache_pass_partial_history_blocker`
+gate = `14 / 14`
+all_agent_current_graph_cache_ready = `True`
+all_agent_history_graph_cache_ready = `False`
+raw_scene_or_sdf_cache_ready = `False`
+
+Stage43-BM builds current-frame all-agent KNN graph tensors from the full-waypoint row cache. Test rows `89736`, test edges `630502`, test multi-agent rows `88199`, mean degree `7.026`.
+
+This closes the current-state neighbor graph cache gap needed for future graph-aware retraining, but it does not close the all-agent history graph or raw-scene/SDF blocker. No graph ablation or training was executed in BM.
+
+Boundary unchanged: current-frame/past-available graph inputs only; future labels are not cached as inputs; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BM_ALL_AGENT_CURRENT_GRAPH_CACHE:END -->

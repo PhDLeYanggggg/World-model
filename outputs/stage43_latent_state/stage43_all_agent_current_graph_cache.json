@@ -1,0 +1,243 @@
+{
+  "source": "fresh_stage43_bm_all_agent_current_graph_cache",
+  "result_source": "fresh_build_current_frame_all_agent_knn_graph_cache_from_stage43_full_waypoint_rows",
+  "generated_at_utc": "2026-06-01T21:10:05.616353+00:00",
+  "git_commit": "8269b94",
+  "input_artifacts": [
+    "outputs/stage43_latent_state/stage43_raw_scene_graph_ablation_readiness.json",
+    "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+    "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+    "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz"
+  ],
+  "input_hash": "43d6f2a84a3cd2fc2634ca95a406d1fb120c9f35aab02df039fae63c47250d86",
+  "preconditions": {
+    "stage43_bl_verdict": "stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented",
+    "stage43_bl_raw_scene_ready": false,
+    "stage43_bl_graph_rich_ready": false
+  },
+  "cache_dir": "data/stage43_all_agent_current_graph_cache",
+  "graph_schema": {
+    "top_k": 8,
+    "group_key": [
+      "source_file",
+      "frame_id",
+      "horizon"
+    ],
+    "edge_index_shape": "[2, num_edges]",
+    "edge_attr_names": [
+      "rel_x",
+      "rel_y",
+      "distance",
+      "inv_distance",
+      "bearing_cos",
+      "bearing_sin"
+    ],
+    "dense_neighbor_views": [
+      "neighbor_index",
+      "neighbor_agent_ids",
+      "neighbor_mask",
+      "neighbor_rel_xy",
+      "neighbor_distance",
+      "neighbor_edge_attr"
+    ],
+    "row_aligned_current_state": "all_agent_current_xy",
+    "all_agent_history_xy": "not_available_in_stage43_full_waypoint_cache"
+  },
+  "split_summaries": {
+    "train": {
+      "split": "train",
+      "rows": 146809,
+      "groups": 22657,
+      "singleton_rows": 3103,
+      "multi_agent_rows": 143706,
+      "multi_agent_row_fraction": 0.9788636936427603,
+      "edge_count": 896302,
+      "top_k": 8,
+      "max_agent_count_per_group": 65,
+      "mean_agent_count_per_group": 6.479631019111092,
+      "mean_degree": 6.105225156495855,
+      "horizon_counts": {
+        "10": 46716,
+        "25": 41248,
+        "50": 35467,
+        "100": 23378
+      },
+      "dataset_counts": {
+        "ETH_UCY": 63602,
+        "TrajNet": 73667,
+        "UCY": 9540
+      },
+      "cache_path": "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_train.npz",
+      "cache_sha256": "5b0c42592757a6ae89f076e5c0267fdb78aee582ab0af649170966c89a194c4e",
+      "row_hash": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "contains_edge_index": true,
+      "contains_edge_attr": true,
+      "contains_all_agent_current_xy": true,
+      "contains_all_agent_history_xy": false
+    },
+    "val": {
+      "split": "val",
+      "rows": 101446,
+      "groups": 7911,
+      "singleton_rows": 698,
+      "multi_agent_rows": 100748,
+      "multi_agent_row_fraction": 0.9931194921436035,
+      "edge_count": 749786,
+      "top_k": 8,
+      "max_agent_count_per_group": 65,
+      "mean_agent_count_per_group": 12.82341044115788,
+      "mean_degree": 7.390986337558898,
+      "horizon_counts": {
+        "10": 32706,
+        "25": 28703,
+        "50": 24741,
+        "100": 15296
+      },
+      "dataset_counts": {
+        "ETH_UCY": 16611,
+        "TrajNet": 37612,
+        "UCY": 47223
+      },
+      "cache_path": "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_val.npz",
+      "cache_sha256": "70b9109f469c999320aaca6439757d823b452f82806517534bb8fcf230558691",
+      "row_hash": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "contains_edge_index": true,
+      "contains_edge_attr": true,
+      "contains_all_agent_current_xy": true,
+      "contains_all_agent_history_xy": false
+    },
+    "test": {
+      "split": "test",
+      "rows": 89736,
+      "groups": 8278,
+      "singleton_rows": 1537,
+      "multi_agent_rows": 88199,
+      "multi_agent_row_fraction": 0.9828719800303112,
+      "edge_count": 630502,
+      "top_k": 8,
+      "max_agent_count_per_group": 58,
+      "mean_agent_count_per_group": 10.840299589272771,
+      "mean_degree": 7.0261879290362845,
+      "horizon_counts": {
+        "10": 26132,
+        "25": 23780,
+        "50": 21754,
+        "100": 18070
+      },
+      "dataset_counts": {
+        "ETH_UCY": 70585,
+        "TrajNet": 9611,
+        "UCY": 9540
+      },
+      "cache_path": "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_test.npz",
+      "cache_sha256": "b90114f0afa73d619d5f16e993c77471b65b7da48460c936da7713ba0d538ff1",
+      "row_hash": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80",
+      "contains_edge_index": true,
+      "contains_edge_attr": true,
+      "contains_all_agent_current_xy": true,
+      "contains_all_agent_history_xy": false
+    }
+  },
+  "validation": {
+    "train": {
+      "split": "train",
+      "row_hash_full_waypoint": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "row_hash_graph": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "row_alignment_preserved": true,
+      "edge_index_in_range": true,
+      "no_self_edges": true,
+      "finite_edge_attr": true,
+      "neighbor_dense_views_consistent": true,
+      "future_label_keys_absent_from_graph_cache": true,
+      "rows": 146809,
+      "edge_count": 896302,
+      "multi_agent_rows": 143706
+    },
+    "val": {
+      "split": "val",
+      "row_hash_full_waypoint": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "row_hash_graph": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "row_alignment_preserved": true,
+      "edge_index_in_range": true,
+      "no_self_edges": true,
+      "finite_edge_attr": true,
+      "neighbor_dense_views_consistent": true,
+      "future_label_keys_absent_from_graph_cache": true,
+      "rows": 101446,
+      "edge_count": 749786,
+      "multi_agent_rows": 100748
+    },
+    "test": {
+      "split": "test",
+      "row_hash_full_waypoint": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80",
+      "row_hash_graph": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80",
+      "row_alignment_preserved": true,
+      "edge_index_in_range": true,
+      "no_self_edges": true,
+      "finite_edge_attr": true,
+      "neighbor_dense_views_consistent": true,
+      "future_label_keys_absent_from_graph_cache": true,
+      "rows": 89736,
+      "edge_count": 630502,
+      "multi_agent_rows": 88199
+    }
+  },
+  "readiness_decision": {
+    "all_agent_current_graph_ready": true,
+    "all_agent_history_graph_ready": false,
+    "raw_scene_or_sdf_ready": false,
+    "graph_rich_retrained_ablation_ready_now": false,
+    "reason": "Stage43-BM builds row-aligned current-frame all-agent KNN edge tensors. It closes the current-state neighbor graph cache gap, but all-agent history graph and raw-scene/SDF tensors remain unavailable, so graph-rich history main claims and raw-scene ablations are still blocked."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_cached_as_input": false,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "graph_edges_use": "current_frame_source_file_frame_id_horizon_only"
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "current_frame_graph_cache_claim_allowed": true,
+    "graph_rich_history_main_claim_allowed": false,
+    "raw_scene_or_sdf_main_claim_allowed": false,
+    "retrained_graph_ablation_executed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "stage43_bm_gate": {
+    "source": "fresh_stage43_bm_all_agent_current_graph_cache",
+    "gates": {
+      "bl_precondition_passed": true,
+      "cache_files_written": true,
+      "train_val_test_rows_present": true,
+      "edge_tensors_present": true,
+      "all_agent_current_state_present": true,
+      "multi_agent_rows_present": true,
+      "row_alignment_preserved": true,
+      "edge_validation_passed": true,
+      "future_labels_not_in_inputs": true,
+      "current_graph_ready_but_history_graph_blocked": true,
+      "no_overclaim": true,
+      "no_future_or_test_leakage": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_bm_all_agent_current_graph_cache_pass_partial_history_blocker",
+    "all_agent_current_graph_cache_ready": true,
+    "all_agent_history_graph_cache_ready": false,
+    "raw_scene_or_sdf_cache_ready": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

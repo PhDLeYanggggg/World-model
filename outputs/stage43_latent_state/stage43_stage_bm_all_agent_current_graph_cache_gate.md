@@ -1,22 +1,13 @@
-# Stage43 Current World-Model Gate
+# Stage43-BM All-Agent Current Graph Cache Gate
 
-- source: `fresh_stage43_bm_all_agent_current_graph_cache`
 - verdict: `stage43_bm_all_agent_current_graph_cache_pass_partial_history_blocker`
 - passed: `14 / 14`
-- protected multimodal latent state candidate: `True`
 - all-agent current graph cache ready: `True`
 - all-agent history graph cache ready: `False`
 - raw scene/SDF cache ready: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BM builds row-aligned current-frame all-agent KNN graph tensors.
-- This enables the next graph-aware retraining step, but all-agent history graph and raw-scene/SDF caches remain unavailable.
-- No retrained graph ablation has been executed in BM.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
