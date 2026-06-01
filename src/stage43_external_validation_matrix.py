@@ -328,6 +328,10 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
             "stage43_bp_scene_graph_multimodal_ablation_pass_contribution_supported",
             "stage43_bp_scene_graph_multimodal_ablation_pass_mixed_diagnostic",
             "stage43_bp_scene_graph_multimodal_ablation_pass_negative_unsafe_diagnostic",
+            "stage43_bq_gated_scene_graph_fusion_pass_contribution_supported",
+            "stage43_bq_gated_scene_graph_fusion_pass_safe_no_best_single_lift_diagnostic",
+            "stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic",
+            "stage43_bq_gated_scene_graph_fusion_pass_unsafe_diagnostic",
         },
         "latest_tail_adapter_candidate_present": by_role["latest_full_test_tail_adapter_candidate"]["deployable"] is True
         and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["all"] > by_role["current_best_integrated_candidate"]["metrics"]["all"]

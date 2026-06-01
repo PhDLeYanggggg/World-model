@@ -7915,3 +7915,25 @@ This is multimodal retrained contribution evidence, not a deployment policy upda
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BP_SCENE_GRAPH_MULTIMODAL_ABLATION:END -->
+
+<!-- STAGE43_BQ_GATED_SCENE_GRAPH_FUSION:START -->
+## STAGE43_BQ_GATED_SCENE_GRAPH_FUSION
+
+source = `fresh_stage43_bq_gated_scene_graph_fusion`
+result_source = `fresh_gated_scene_graph_latent_fusion`
+verdict = `stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic`
+gate = `13 / 13`
+gated_fusion_executed = `True`
+beats_best_single = `False`
+beats_no_context = `False`
+full_multimodal_unsafe = `False`
+deployable_policy_changed = `False`
+
+Stage43-BQ trains a learned gated scene-proxy + graph-history latent fusion model after Stage43-BP showed raw concatenation was unsafe. Protected metrics: all `29.97%`, t50 `1.18%`, hard/failure `31.60%`, easy degradation `0.50%`.
+
+Against the Stage43-BP best single-context t50 variant `graph_history_only`, gated fusion delta is all `-6.95%`, t50 `-14.44%`, hard/failure `-6.04%`.
+
+This is gated multimodal latent-fusion evidence, not a deployment policy update. Scene remains train-only proxy scene/goal/raster evidence, not raw image/SDF evidence.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BQ_GATED_SCENE_GRAPH_FUSION:END -->

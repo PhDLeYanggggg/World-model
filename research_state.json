@@ -344,8 +344,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_bp_scene_graph_multimodal_ablation",
-  "current_verdict": "stage43_bp_scene_graph_multimodal_ablation_pass_negative_unsafe_diagnostic",
+  "current_stage": "stage43_bq_gated_scene_graph_fusion",
+  "current_verdict": "stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -42676,6 +42676,64 @@
       }
     ],
     "report": "outputs/stage43_latent_state/stage43_scene_graph_multimodal_ablation.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bq_gated_scene_graph_fusion": {
+    "source": "fresh_stage43_bq_gated_scene_graph_fusion",
+    "result_source": "fresh_gated_scene_graph_latent_fusion",
+    "updated_at": "2026-06-01T23:25:45.474095+00:00",
+    "verdict": "stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic",
+    "gate": "13 / 13",
+    "gated_fusion_executed": true,
+    "beats_best_single": false,
+    "beats_no_context": false,
+    "full_multimodal_unsafe": false,
+    "deployable_policy_changed": false,
+    "metrics": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.29965555738879046,
+      "endpoint_fde_improvement_vs_floor": 0.3172548693652508,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.011815787825210311,
+      "t50_endpoint_fde_improvement_vs_floor": 0.052243666403669065,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.002624024999512198,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.31602063625208043,
+      "easy_degradation_vs_floor": 0.0049513221364752,
+      "switch_rate": 0.42575,
+      "harm_over_floor_ade": -0.05913345515727997,
+      "mean_floor_ade": 0.19733808934688568,
+      "mean_selected_ade": 0.1382046341896057
+    },
+    "gated_minus_best_single_by_t50": {
+      "full_waypoint_ade_improvement_vs_floor": -0.06948747872090233,
+      "endpoint_fde_improvement_vs_floor": -0.07924595721314731,
+      "t50_full_waypoint_ade_improvement_vs_floor": -0.1443725424994552,
+      "t50_endpoint_fde_improvement_vs_floor": -0.1577805498656093,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.029942589752420368,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": -0.060381445396160416,
+      "easy_degradation_vs_floor": 0.0049513221364752,
+      "switch_rate": -0.15933333333333327
+    },
+    "gated_minus_no_context": {
+      "full_waypoint_ade_improvement_vs_floor": -0.02760704127581748,
+      "endpoint_fde_improvement_vs_floor": -0.05075218445583474,
+      "t50_full_waypoint_ade_improvement_vs_floor": -0.049454180801399406,
+      "t50_endpoint_fde_improvement_vs_floor": -0.12399082739967238,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.026781656950642496,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": -0.013591998412080475,
+      "easy_degradation_vs_floor": 0.0049513221364752,
+      "switch_rate": -0.1434166666666667
+    },
+    "gate_summary": {
+      "scene_gate_mean": 0.18748311698436737,
+      "graph_gate_mean": 0.1909346729516983,
+      "scene_gate_easy_mean": 0.08902552723884583,
+      "graph_gate_easy_mean": 0.08965030312538147,
+      "scene_gate_hard_mean": 0.21080546081066132,
+      "graph_gate_hard_mean": 0.21185919642448425
+    },
+    "report": "outputs/stage43_latent_state/stage43_gated_scene_graph_fusion.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false

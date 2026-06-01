@@ -1,23 +1,15 @@
-# Stage43 Current World-Model Gate
+# Stage43-BQ Gated Scene-Graph Fusion Gate
 
-- source: `fresh_stage43_bq_gated_scene_graph_fusion`
 - verdict: `stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic`
 - passed: `13 / 13`
-- protected multimodal latent state candidate: `True`
 - gated fusion executed: `True`
 - beats best single: `False`
+- beats no context: `False`
 - full multimodal unsafe: `False`
 - deployable policy changed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BQ executes a fresh retrained gated scene-proxy + graph-history latent fusion model.
-- It tests whether learned context gates repair Stage43-BP raw-concat easy damage.
-- Scene evidence remains proxy-based, not raw image/SDF evidence.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
