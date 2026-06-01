@@ -1,0 +1,288 @@
+{
+  "source": "fresh_stage43_an_bounded_residual_policy_freeze",
+  "result_source": "fresh_freeze_from_statistically_confirmed_stage43_am_candidate",
+  "generated_at_utc": "2026-06-01T06:11:43.039382+00:00",
+  "git_commit": "93700a8",
+  "policy": {
+    "policy_name": "stage43_bounded_residual_policy_v1",
+    "policy_type": "protected_bounded_residual_latent_waypoint",
+    "version": "stage43-an",
+    "result_source": "frozen_from_stage43_al_am_fresh_evidence",
+    "created_at_utc": "2026-06-01T06:11:43.039086+00:00",
+    "deployment_rule": {
+      "base_prediction": "Stage43-M floor waypoint",
+      "residual_source": "Stage43-M latent full-waypoint neural head",
+      "formula": "selected = floor_waypoint + alpha * clip_norm(neural_waypoint - floor_waypoint)",
+      "fallback": "floor waypoint",
+      "global_floor_removal": false,
+      "h100_guard": true,
+      "test_threshold_tuning": false
+    },
+    "bounded_residual_config": {
+      "alpha": 0.75,
+      "clip_norm": 0.75,
+      "policy": {
+        "gain_threshold": 0.0,
+        "harm_threshold": 0.75,
+        "failure_threshold": 0.0
+      },
+      "force_h100_floor": true
+    },
+    "safety_constraints": {
+      "easy_degradation_max": 0.02,
+      "t100_raw_frame_guard": true,
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "central_velocity_input": false,
+      "test_endpoint_goal_construction": false,
+      "test_statistics_normalization": false
+    },
+    "metrics": {
+      "stage43_al_point_metrics": {
+        "name": "bounded_residual_safe_val_best",
+        "config": {
+          "alpha": 0.75,
+          "clip_norm": 0.75,
+          "policy": {
+            "gain_threshold": 0.0,
+            "harm_threshold": 0.75,
+            "failure_threshold": 0.0
+          },
+          "force_h100_floor": true
+        },
+        "all": 0.37999220149702595,
+        "endpoint": 0.4420681380425501,
+        "t50": 0.269646290665144,
+        "t50_endpoint": 0.355881862474431,
+        "t100": 0.0,
+        "hard_failure": 0.3771314228696524,
+        "easy": 0.0,
+        "switch_rate": 0.6308125,
+        "switch_count": 10093,
+        "mean_residual_norm": 0.13202365787729695,
+        "max_residual_norm": 0.5395127458545564,
+        "safe_easy": true,
+        "safe_t100": true
+      },
+      "stage43_am_bootstrap_delta_ci": {
+        "n": 2000,
+        "seed": 2131,
+        "metrics": {
+          "all_delta_improvement": {
+            "low": 0.07776789805238205,
+            "mean": 0.08230197212941977,
+            "high": 0.08677068051786171,
+            "rows": 16000
+          },
+          "t50_delta_improvement": {
+            "low": 0.09860902265137161,
+            "mean": 0.10522010418320703,
+            "high": 0.11214061038498835,
+            "rows": 3856
+          },
+          "t100_delta_improvement": {
+            "low": 0.1607170192558832,
+            "mean": 0.17800756888017757,
+            "high": 0.19580710267752158,
+            "rows": 3180
+          },
+          "hard_failure_delta_improvement": {
+            "low": 0.08469543811391197,
+            "mean": 0.08968090298936754,
+            "high": 0.09453327908132154,
+            "rows": 12510
+          },
+          "easy_degradation_bounded": {
+            "low": 0.0,
+            "mean": 0.0,
+            "high": 0.0,
+            "rows": 4771
+          },
+          "easy_degradation_delta": {
+            "low": 0.0,
+            "mean": 0.0,
+            "high": 0.0,
+            "rows": 4771
+          }
+        }
+      },
+      "stage43_am_slice_rows": [
+        {
+          "slice": "domain:ETH_UCY",
+          "rows": 12648,
+          "stored_improvement": 0.2980318550719342,
+          "bounded_improvement": 0.38011987761699895,
+          "delta": 0.08208802254506475,
+          "switch_rate": 0.6070524984187223
+        },
+        {
+          "slice": "domain:TrajNet",
+          "rows": 1678,
+          "stored_improvement": 0.09175006045720424,
+          "bounded_improvement": 0.24190415612931504,
+          "delta": 0.1501540956721108,
+          "switch_rate": 0.6555423122765197
+        },
+        {
+          "slice": "domain:UCY",
+          "rows": 1674,
+          "stored_improvement": 0.435078368048735,
+          "bounded_improvement": 0.4728673220737557,
+          "delta": 0.03778895402502069,
+          "switch_rate": 0.7855436081242533
+        },
+        {
+          "slice": "horizon:10",
+          "rows": 4782,
+          "stored_improvement": 0.5060742660623547,
+          "bounded_improvement": 0.5335707695913621,
+          "delta": 0.027496503529007343,
+          "switch_rate": 0.8615641990798829
+        },
+        {
+          "slice": "horizon:25",
+          "rows": 4182,
+          "stored_improvement": 0.4058156907262427,
+          "bounded_improvement": 0.48387207147840405,
+          "delta": 0.07805638075216137,
+          "switch_rate": 0.836441893830703
+        },
+        {
+          "slice": "horizon:50",
+          "rows": 3856,
+          "stored_improvement": 0.16448889263357025,
+          "bounded_improvement": 0.269646290665144,
+          "delta": 0.10515739803157376,
+          "switch_rate": 0.6418568464730291
+        },
+        {
+          "slice": "horizon:100",
+          "rows": 3180,
+          "stored_improvement": -0.17794905441649167,
+          "bounded_improvement": 0.0,
+          "delta": 0.17794905441649167,
+          "switch_rate": 0.0
+        }
+      ]
+    },
+    "evidence": {
+      "stage43_al_verdict": "stage43_al_bounded_residual_candidate_pass",
+      "stage43_al_gate": "12 / 12",
+      "stage43_am_verdict": "stage43_am_bounded_residual_statistically_confirmed",
+      "stage43_am_gate": "12 / 12",
+      "stage43_m_replay_max_abs_diff": 0.0
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493"
+  },
+  "policy_artifact": "outputs/stage43_latent_state/frozen_stage43_bounded_residual_policy.json",
+  "hashes": {
+    "stage43_m_report_sha256": "4cef03834308250a6e80b98188f2c8c88d367fef91ecb52ec8a9df683c7ca539",
+    "stage43_m_checkpoint_sha256": "a21a621d9bd5061d728dc80fd43a4d4bf302489b6395cf5562810fabf7c4318f",
+    "stage43_al_report_sha256": "7381dbd9b13ed9b7f61a47ef019e0dd96aae7ba2b3aa078a10fd862e7a8a88b0",
+    "stage43_am_report_sha256": "2ec9a668520f49a5784d1b360a4a6b8944fc621304bb0fb2f06d266f8b697d80",
+    "cache_row_hashes": {
+      "train": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "val": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "test": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80"
+    },
+    "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493"
+  },
+  "evidence_sources": {
+    "stage43_m": {
+      "report": "outputs/stage43_latent_state/stage43_full_waypoint_latent_dynamics.json",
+      "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_full_waypoint_latent_dynamics.pt",
+      "verdict": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+      "checkpoint_tracked_by_git": false
+    },
+    "stage43_al": {
+      "report": "outputs/stage43_latent_state/stage43_bounded_residual_safety_audit.json",
+      "verdict": "stage43_al_bounded_residual_candidate_pass",
+      "deploy_bounded_residual": true
+    },
+    "stage43_am": {
+      "report": "outputs/stage43_latent_state/stage43_bounded_residual_statistical_confirmation.json",
+      "verdict": "stage43_am_bounded_residual_statistically_confirmed",
+      "statistically_confirmed": true
+    }
+  },
+  "frozen_metrics": {
+    "all": 0.37999220149702595,
+    "t50": 0.269646290665144,
+    "t100": 0.0,
+    "hard_failure": 0.3771314228696524,
+    "easy": 0.0,
+    "switch_rate": 0.6308125,
+    "all_delta_ci": {
+      "low": 0.07776789805238205,
+      "mean": 0.08230197212941977,
+      "high": 0.08677068051786171,
+      "rows": 16000
+    },
+    "t50_delta_ci": {
+      "low": 0.09860902265137161,
+      "mean": 0.10522010418320703,
+      "high": 0.11214061038498835,
+      "rows": 3856
+    },
+    "hard_failure_delta_ci": {
+      "low": 0.08469543811391197,
+      "mean": 0.08968090298936754,
+      "high": 0.09453327908132154,
+      "rows": 12510
+    },
+    "easy_degradation_ci": {
+      "low": 0.0,
+      "mean": 0.0,
+      "high": 0.0,
+      "rows": 4771
+    }
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "thresholds_selected_on_test": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "input_hash": "04ef81e6d242bb112a8b618968f0b22a0c2cc2e5bf34f64ec356d588395c70c6",
+  "stage43_an_gate": {
+    "source": "fresh_stage43_an_bounded_residual_policy_freeze",
+    "gates": {
+      "stage43_al_candidate_passed": true,
+      "stage43_am_statistically_confirmed": true,
+      "policy_hash_present": true,
+      "policy_artifact_written": true,
+      "checkpoint_not_tracked_by_git": true,
+      "replay_diff_zero": true,
+      "bootstrap_ci_supports_policy": true,
+      "frozen_metrics_safe": true,
+      "global_floor_not_removed": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage43_an_bounded_residual_policy_frozen",
+    "policy_frozen": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

@@ -2375,3 +2375,19 @@ Stage43-AM bootstrap-confirms the Stage43-AL bounded residual candidate against 
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AM_BOUNDED_RESIDUAL_STATISTICAL_CONFIRMATION:END -->
+
+<!-- STAGE43_AN_BOUNDED_RESIDUAL_POLICY_FREEZE:START -->
+## STAGE43_AN_BOUNDED_RESIDUAL_POLICY_FREEZE
+
+source = `fresh_stage43_an_bounded_residual_policy_freeze`
+result_source = `fresh_freeze_from_statistically_confirmed_stage43_am_candidate`
+verdict = `stage43_an_bounded_residual_policy_frozen`
+gate = `11 / 11`
+policy_frozen = `True`
+policy_hash = `4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493`
+frozen_all_t50_t100_hard_easy = `38.00%` / `26.96%` / `0.00%` / `37.71%` / `0.00%`
+
+Stage43-AN freezes the statistically confirmed Stage43 bounded-residual latent waypoint policy into a reproducible artifact with policy/config/checkpoint/report/row hashes. It remains floor-protected and h100-guarded; this is not global floor removal.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AN_BOUNDED_RESIDUAL_POLICY_FREEZE:END -->
