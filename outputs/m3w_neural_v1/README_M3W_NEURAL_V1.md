@@ -4799,3 +4799,21 @@ This closes the current-state neighbor graph cache gap needed for future graph-a
 
 Boundary unchanged: current-frame/past-available graph inputs only; future labels are not cached as inputs; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BM_ALL_AGENT_CURRENT_GRAPH_CACHE:END -->
+
+<!-- STAGE43_BN_ALL_AGENT_HISTORY_GRAPH_CACHE:START -->
+## STAGE43_BN_ALL_AGENT_HISTORY_GRAPH_CACHE
+
+source = `fresh_stage43_bn_all_agent_history_graph_cache`
+result_source = `fresh_build_past_only_all_agent_history_graph_cache_from_stage37_history_and_stage43_current_graph`
+verdict = `stage43_bn_all_agent_history_graph_cache_pass_raw_scene_blocker`
+gate = `13 / 13`
+all_agent_history_graph_cache_ready = `True`
+raw_scene_or_sdf_cache_ready = `False`
+retrained_graph_ablation_executed = `False`
+
+Stage43-BN builds past-only target and neighbor history graph tensors from Stage37 history windows plus Stage43-BM current graph neighbors. Test rows `89736`, rows with full target history `52050`, rows with any neighbor history `88199`, edge count `630502`.
+
+This makes graph-history retraining feasible next, but no retrained graph ablation was executed in BN. Raw-scene/SDF remains the next unresolved cache blocker.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future labels are not cached as inputs; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BN_ALL_AGENT_HISTORY_GRAPH_CACHE:END -->

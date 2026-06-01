@@ -1,22 +1,13 @@
-# Stage43 Current World-Model Gate
+# Stage43-BN All-Agent History Graph Cache Gate
 
-- source: `fresh_stage43_bn_all_agent_history_graph_cache`
 - verdict: `stage43_bn_all_agent_history_graph_cache_pass_raw_scene_blocker`
 - passed: `13 / 13`
-- protected multimodal latent state candidate: `True`
 - all-agent history graph cache ready: `True`
 - raw scene/SDF cache ready: `False`
 - retrained graph ablation executed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BN builds row-aligned past-only all-agent history graph tensors.
-- This enables graph-history retraining next, but no retrained graph ablation has been executed in BN.
-- Raw-scene/SDF cache remains unavailable.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |

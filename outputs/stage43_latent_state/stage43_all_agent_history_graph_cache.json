@@ -1,0 +1,184 @@
+{
+  "source": "fresh_stage43_bn_all_agent_history_graph_cache",
+  "result_source": "fresh_build_past_only_all_agent_history_graph_cache_from_stage37_history_and_stage43_current_graph",
+  "generated_at_utc": "2026-06-01T21:40:51.192041+00:00",
+  "git_commit": "2f06d35",
+  "input_artifacts": [
+    "outputs/stage43_latent_state/stage43_all_agent_current_graph_cache.json",
+    "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_train.npz",
+    "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_val.npz",
+    "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_test.npz",
+    "data/stage37_t50_history/history_windows_train.npz",
+    "data/stage37_t50_history/history_windows_val.npz",
+    "data/stage37_t50_history/history_windows_test.npz"
+  ],
+  "input_hash": "c1ec56ad34d6411965723cecdacfbf654a32ede908c5e13bbc77160ea91ea749",
+  "preconditions": {
+    "stage43_bm_verdict": "stage43_bm_all_agent_current_graph_cache_pass_partial_history_blocker",
+    "stage43_bm_current_graph_ready": true
+  },
+  "cache_dir": "data/stage43_all_agent_history_graph_cache",
+  "history_graph_schema": {
+    "history_k": 16,
+    "slot_0": "target_agent_history",
+    "slots_1_to_top_k": "neighbor_agent_history_from_stage43_current_graph_neighbor_index",
+    "all_agent_history_xy": "[rows, top_k_plus_target, history_k, 2]",
+    "all_agent_history_dxdy": "[rows, top_k_plus_target, history_k, 2]",
+    "all_agent_history_speed": "[rows, top_k_plus_target, history_k]",
+    "edge_history_attr_names": [
+      "shared_valid_count",
+      "neighbor_path_length",
+      "target_path_length",
+      "neighbor_mean_speed",
+      "target_mean_speed",
+      "neighbor_minus_target_mean_speed"
+    ]
+  },
+  "split_summaries": {
+    "train": {
+      "split": "train",
+      "rows": 146809,
+      "history_k": 16,
+      "top_k": 8,
+      "edge_count": 896302,
+      "rows_with_target_history": 146809,
+      "rows_with_full_target_history": 40968,
+      "rows_with_any_neighbor_history": 143706,
+      "rows_with_full_target_history_fraction": 0.2790564611161441,
+      "rows_with_any_neighbor_history_fraction": 0.9788636936427603,
+      "mean_neighbor_history_degree": 6.105225156495855,
+      "future_label_keys_present": [],
+      "cache_path": "data/stage43_all_agent_history_graph_cache/stage43_all_agent_history_graph_train.npz",
+      "cache_sha256": "00fb7fa0d088b0549f39b70dc896618a8a6c148bec1fe14efca22f30ca9570fc",
+      "row_hash": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0"
+    },
+    "val": {
+      "split": "val",
+      "rows": 101446,
+      "history_k": 16,
+      "top_k": 8,
+      "edge_count": 749786,
+      "rows_with_target_history": 101446,
+      "rows_with_full_target_history": 14369,
+      "rows_with_any_neighbor_history": 100748,
+      "rows_with_full_target_history_fraction": 0.14164185872286733,
+      "rows_with_any_neighbor_history_fraction": 0.9931194921436035,
+      "mean_neighbor_history_degree": 7.390986337558898,
+      "future_label_keys_present": [],
+      "cache_path": "data/stage43_all_agent_history_graph_cache/stage43_all_agent_history_graph_val.npz",
+      "cache_sha256": "0084597421fb7d59c157e768cb567db0c32b085042f656be45ca20a4a721e410",
+      "row_hash": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f"
+    },
+    "test": {
+      "split": "test",
+      "rows": 89736,
+      "history_k": 16,
+      "top_k": 8,
+      "edge_count": 630502,
+      "rows_with_target_history": 89736,
+      "rows_with_full_target_history": 52050,
+      "rows_with_any_neighbor_history": 88199,
+      "rows_with_full_target_history_fraction": 0.5800347686547205,
+      "rows_with_any_neighbor_history_fraction": 0.9828719800303112,
+      "mean_neighbor_history_degree": 7.0261879290362845,
+      "future_label_keys_present": [],
+      "cache_path": "data/stage43_all_agent_history_graph_cache/stage43_all_agent_history_graph_test.npz",
+      "cache_sha256": "881450156deee4038af190f7efd8d98384ef946bead9255c94dc56f0b55098e0",
+      "row_hash": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80"
+    }
+  },
+  "validation": {
+    "train": {
+      "split": "train",
+      "row_hash_current_graph": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "row_hash_history_graph": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "row_alignment_preserved": true,
+      "valid_shapes": true,
+      "finite_history_values": true,
+      "edge_index_in_range": true,
+      "future_label_keys_absent_from_history_graph_cache": true,
+      "rows_with_full_target_history": 40968,
+      "rows_with_any_neighbor_history": 143706
+    },
+    "val": {
+      "split": "val",
+      "row_hash_current_graph": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "row_hash_history_graph": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "row_alignment_preserved": true,
+      "valid_shapes": true,
+      "finite_history_values": true,
+      "edge_index_in_range": true,
+      "future_label_keys_absent_from_history_graph_cache": true,
+      "rows_with_full_target_history": 14369,
+      "rows_with_any_neighbor_history": 100748
+    },
+    "test": {
+      "split": "test",
+      "row_hash_current_graph": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80",
+      "row_hash_history_graph": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80",
+      "row_alignment_preserved": true,
+      "valid_shapes": true,
+      "finite_history_values": true,
+      "edge_index_in_range": true,
+      "future_label_keys_absent_from_history_graph_cache": true,
+      "rows_with_full_target_history": 52050,
+      "rows_with_any_neighbor_history": 88199
+    }
+  },
+  "readiness_decision": {
+    "all_agent_current_graph_ready": true,
+    "all_agent_history_graph_ready": true,
+    "raw_scene_or_sdf_ready": false,
+    "retrained_graph_ablation_ready_next": true,
+    "reason": "Stage43-BN adds past-only target and neighbor history tensors on top of the BM current graph. This makes graph-history retraining feasible, while raw-scene/SDF ablations remain blocked."
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_cached_as_input": false,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "history_source": "stage37_past_only_history_windows"
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "graph_rich_history_cache_claim_allowed": true,
+    "retrained_graph_ablation_executed": false,
+    "raw_scene_or_sdf_main_claim_allowed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "stage43_bn_gate": {
+    "source": "fresh_stage43_bn_all_agent_history_graph_cache",
+    "gates": {
+      "bm_precondition_passed": true,
+      "history_cache_files_written": true,
+      "train_val_test_rows_present": true,
+      "target_history_present": true,
+      "neighbor_history_present": true,
+      "row_alignment_preserved": true,
+      "shape_and_finite_validation_passed": true,
+      "future_labels_not_in_history_graph_inputs": true,
+      "history_graph_ready_but_raw_scene_blocked": true,
+      "no_overclaim": true,
+      "no_future_or_test_leakage": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage43_bn_all_agent_history_graph_cache_pass_raw_scene_blocker",
+    "all_agent_history_graph_cache_ready": true,
+    "raw_scene_or_sdf_cache_ready": false,
+    "retrained_graph_ablation_executed": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
