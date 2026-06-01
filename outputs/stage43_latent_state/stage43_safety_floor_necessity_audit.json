@@ -1,0 +1,134 @@
+{
+  "source": "fresh_stage43_aj_safety_floor_necessity_audit",
+  "result_source": "fresh_audit_over_cached_verified_prior_fresh_evidence",
+  "generated_at_utc": "2026-06-01T05:43:14.999455+00:00",
+  "git_commit": "aaac8bd",
+  "evidence_sources": {
+    "stage43_a_safety_floor_replay": {
+      "path": "outputs/stage43_latent_state/stage43_safety_floor_replay.json",
+      "source": "fresh_stage43_a_safety_floor_replay",
+      "verdict": "stage43_a_safety_floor_replay_pass",
+      "result_source": {
+        "stage42_current_floor": "fresh_run",
+        "stage26_stage37_m3w_historical_floors": "cached_verified"
+      }
+    },
+    "stage43_m_protected_vs_ungated": {
+      "path": "outputs/stage43_latent_state/stage43_full_waypoint_latent_dynamics.json",
+      "source": "fresh_stage43_m_full_waypoint_latent_dynamics",
+      "verdict": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
+    "stage43_ai_multiseed_no_floor": {
+      "path": "outputs/stage43_latent_state/stage43_feature_family_multiseed_confirmation.json",
+      "source": "fresh_stage43_ai_feature_family_multiseed_confirmation",
+      "verdict": "stage43_ai_feature_family_multiseed_confirmation_pass",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
+    "stage43_ag_scene_proxy_retrained": {
+      "path": "outputs/stage43_latent_state/stage43_scene_proxy_retrained_ablation.json",
+      "source": "fresh_stage43_ag_scene_proxy_retrained_ablation",
+      "verdict": "stage43_ag_scene_proxy_retrained_ablation_pass",
+      "result_source": "cached_verified_prior_fresh_run"
+    },
+    "stage43_ae_slice_safe_floor_guard": {
+      "path": "outputs/stage43_latent_state/stage43_scene_proxy_slice_safe_policy.json",
+      "source": "fresh_stage43_ae_scene_proxy_slice_safe_policy",
+      "verdict": "stage43_ae_slice_safe_scene_proxy_candidate",
+      "result_source": "cached_verified_prior_fresh_run"
+    }
+  },
+  "protected_vs_ungated": {
+    "protected_all": 0.2976556598917486,
+    "ungated_all": 0.16289036353166597,
+    "protected_t50": 0.16448889263357025,
+    "ungated_t50": 0.1625019447399093,
+    "protected_hard": 0.2875229202597176,
+    "ungated_hard": 0.1812770688446469,
+    "protected_t100": -0.17794905441649167,
+    "ungated_t100": -0.7212458897008174,
+    "protected_easy": 0.0,
+    "ungated_easy": 0.5571793057175356,
+    "easy_harm_reduction": 0.5571793057175356,
+    "t100_harm_reduction": 0.5432968352843257,
+    "all_gain_from_protection": 0.1347652963600826,
+    "hard_gain_from_protection": 0.1062458514150707
+  },
+  "multiseed_floor_feature_evidence": {
+    "stable_t50_variants": [
+      "no_baseline_floor"
+    ],
+    "stable_hard_or_all_variants": [
+      "no_goal",
+      "no_baseline_floor"
+    ],
+    "no_baseline_floor_t50_delta_mean": 0.12826915436999528,
+    "no_baseline_floor_t50_positive_seed_count": 3,
+    "seed_count": 3,
+    "no_baseline_floor_easy_mean": 0.25328495091684416,
+    "no_baseline_floor_all_delta_mean": -0.004278391647920654,
+    "no_baseline_floor_hard_delta_mean": -0.023567304888351865
+  },
+  "scene_proxy_floor_guard_evidence": {
+    "raw_best_variant": "full_scene",
+    "raw_best_t50": 0.36093487648763034,
+    "raw_best_easy": 0.0958593682894453,
+    "safe_best_variant": "geometry_route",
+    "safe_best_t50": 0.3532359203907205,
+    "safe_best_easy": 0.0,
+    "slice_safe_all": 0.23953727876744435,
+    "slice_safe_t50": 0.3716084920697583,
+    "slice_safe_hard": 0.23376765343850492,
+    "slice_safe_easy": 0.0,
+    "slice_safe_t100": 0.0,
+    "floor_rate": 0.497625,
+    "h10_floor_rate": 1.0,
+    "h100_floor_rate": 1.0,
+    "stage43_ab_rate": 0.455375
+  },
+  "conclusion": {
+    "global_floor_removable": false,
+    "floor_is_core_safety_mechanism": true,
+    "partial_floor_relaxation_supported": true,
+    "safe_relaxation_scope": "validation-selected h25/h50 and supported scene-proxy slices only",
+    "unsupported_scope": "ungated global neural deployment, h10/h100 global switching, metric/seconds/true-3D claims"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "input_hash": "9e88bc4c35359b22d40b4f978985f2074f945892bda5267ac624542e91175b03",
+  "stage43_aj_gate": {
+    "source": "fresh_stage43_aj_safety_floor_necessity_audit",
+    "gates": {
+      "safety_floor_replay_available": true,
+      "protected_vs_ungated_reported": true,
+      "protected_reduces_easy_harm_materially": true,
+      "protected_reduces_t100_harm": true,
+      "no_baseline_floor_t50_degradation_stable": true,
+      "unsafe_raw_scene_proxy_blocked": true,
+      "partial_floor_relaxation_supported": true,
+      "global_floor_not_removable": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 10,
+    "total": 10,
+    "verdict": "stage43_aj_safety_floor_necessity_confirmed",
+    "floor_necessity_confirmed": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

@@ -2308,3 +2308,18 @@ stable_positive_hard_or_all_contribution_variants = `['no_goal', 'no_baseline_fl
 
 Stage43-AI repeats the Stage43-AH retrained feature-family ablation across multiple seeds. It tests whether baseline/floor, goal, history, neighbor/interaction, and domain feature-family contributions survive seed variation. Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AI_FEATURE_FAMILY_MULTISEED_CONFIRMATION:END -->
+
+<!-- STAGE43_AJ_SAFETY_FLOOR_NECESSITY_AUDIT:START -->
+## STAGE43_AJ_SAFETY_FLOOR_NECESSITY_AUDIT
+
+source = `fresh_stage43_aj_safety_floor_necessity_audit`
+verdict = `stage43_aj_safety_floor_necessity_confirmed`
+gate = `10 / 10`
+floor_necessity_confirmed = `True`
+protected_easy_vs_ungated_easy = `0.00%` vs `55.72%`
+no_baseline_floor_t50_delta_mean = `12.83%`
+
+Stage43-AJ consolidates current Stage43 floor evidence: protected-vs-ungated neural dynamics, multi-seed no-baseline-floor ablation, scene-proxy safe-vs-unsafe variants, and h100 floor guards. Conclusion: the safety floor is currently a core safety mechanism and cannot be globally removed; only validation-selected partial relaxation is supported.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AJ_SAFETY_FLOOR_NECESSITY_AUDIT:END -->
