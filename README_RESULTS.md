@@ -7893,3 +7893,25 @@ This is retrained contribution evidence, not a deployment policy update. Raw-sce
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BO_GRAPH_HISTORY_RETRAINED_ABLATION:END -->
+
+<!-- STAGE43_BP_SCENE_GRAPH_MULTIMODAL_ABLATION:START -->
+## STAGE43_BP_SCENE_GRAPH_MULTIMODAL_ABLATION
+
+source = `fresh_stage43_bp_scene_graph_multimodal_ablation`
+result_source = `fresh_retrained_scene_graph_multimodal_ablation`
+verdict = `stage43_bp_scene_graph_multimodal_ablation_pass_negative_unsafe_diagnostic`
+gate = `16 / 16`
+multimodal_scene_graph_ablation_executed = `True`
+multimodal_contribution_supported = `True`
+best_single_lift_supported = `False`
+full_multimodal_unsafe = `True`
+deployable_policy_changed = `False`
+
+Stage43-BP fresh-trains no_context, scene_proxy_only, graph_history_only, and scene_graph_full variants. Scene_graph_full minus no_context: all `-1.03%`, t50 `-1.81%`, hard/failure `1.19%`.
+
+Against the best single-context t50 variant `graph_history_only`, scene_graph_full delta is all `-5.22%`, t50 `-11.30%`, hard/failure `-3.49%`.
+
+This is multimodal retrained contribution evidence, not a deployment policy update. Scene remains train-only proxy scene/goal/raster evidence, not raw image/SDF evidence.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BP_SCENE_GRAPH_MULTIMODAL_ABLATION:END -->

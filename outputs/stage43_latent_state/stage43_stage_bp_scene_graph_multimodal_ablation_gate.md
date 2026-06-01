@@ -1,10 +1,8 @@
-# Stage43 Current World-Model Gate
+# Stage43-BP Scene-Graph Multimodal Ablation Gate
 
-- source: `fresh_stage43_bp_scene_graph_multimodal_ablation`
 - verdict: `stage43_bp_scene_graph_multimodal_ablation_pass_negative_unsafe_diagnostic`
 - passed: `16 / 16`
-- protected multimodal latent state candidate: `True`
-- scene-graph multimodal ablation executed: `True`
+- multimodal ablation executed: `True`
 - multimodal contribution supported: `True`
 - best-single lift supported: `False`
 - full multimodal unsafe: `True`
@@ -12,13 +10,6 @@
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BP executes a fresh retrained scene-proxy + graph-history multimodal ablation.
-- It compares scene_graph_full against no_context, scene_proxy_only, and graph_history_only.
-- Scene evidence remains proxy-based, not raw image/SDF evidence.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
