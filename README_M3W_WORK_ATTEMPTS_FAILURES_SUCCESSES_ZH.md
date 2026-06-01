@@ -2709,3 +2709,21 @@ I audited the Stage43 long objective against the current BH/BI evidence stack. T
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT:END -->
+
+<!-- STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION:START -->
+## STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION
+
+source = `fresh_stage43_bk_t100_family_limited_reconciliation`
+result_source = `fresh_reconciliation_from_stage43_p_t_u_bi_bj_verified_artifacts`
+verdict = `stage43_bk_t100_family_limited_reconciliation_pass`
+gate = `15 / 15`
+t100_family_limited_ade_signal = `True`
+uniform_t100_success = `False`
+t100_endpoint_success = `False`
+
+Stage43-BK reconciles the t100/h100 evidence: Stage43-U gives integrated t100 raw-frame full-waypoint ADE diagnostic `0.18%` with CI `[0.14%, 0.22%]`; the source-stable h100 slice gives ADE lift `2.59%`.
+
+The blocker remains: h100 endpoint FDE is `-0.55%`, so this is not endpoint success and not a uniform t100 solution. The long objective stays active.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION:END -->

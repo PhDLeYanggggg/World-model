@@ -3268,7 +3268,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `b963b17a26c5dc3078e9f84b44bf6199f03a7b13d8285df45c5ec8114bc54b34`
+- policy hash: `1b5024eca40572beaaf916046d5e6a37b607baa026d5fd76253b6569453c6613`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -3282,7 +3282,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `b963b17a26c5dc3078e9f84b44bf6199f03a7b13d8285df45c5ec8114bc54b34`
+- policy hash: `1b5024eca40572beaaf916046d5e6a37b607baa026d5fd76253b6569453c6613`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -4745,3 +4745,21 @@ I audited the Stage43 long objective against the current BH/BI evidence stack. T
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT:END -->
+
+<!-- STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION:START -->
+## STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION
+
+source = `fresh_stage43_bk_t100_family_limited_reconciliation`
+result_source = `fresh_reconciliation_from_stage43_p_t_u_bi_bj_verified_artifacts`
+verdict = `stage43_bk_t100_family_limited_reconciliation_pass`
+gate = `15 / 15`
+t100_family_limited_ade_signal = `True`
+uniform_t100_success = `False`
+t100_endpoint_success = `False`
+
+Stage43-BK reconciles the t100/h100 evidence: Stage43-U gives integrated t100 raw-frame full-waypoint ADE diagnostic `0.18%` with CI `[0.14%, 0.22%]`; the source-stable h100 slice gives ADE lift `2.59%`.
+
+The blocker remains: h100 endpoint FDE is `-0.55%`, so this is not endpoint success and not a uniform t100 solution. The long objective stays active.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION:END -->

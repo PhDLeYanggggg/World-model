@@ -1,0 +1,188 @@
+{
+  "source": "fresh_stage43_bk_t100_family_limited_reconciliation",
+  "result_source": "fresh_reconciliation_from_stage43_p_t_u_bi_bj_verified_artifacts",
+  "generated_at_utc": "2026-06-01T20:10:22.420850+00:00",
+  "git_commit": "dc44a7c",
+  "input_artifacts": {
+    "stage43_p_tail_adapter": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json",
+    "stage43_t_source_stable_h100_specialist": "outputs/stage43_latent_state/stage43_t100_source_stable_specialist.json",
+    "stage43_u_integrated_tail_h100_policy": "outputs/stage43_latent_state/stage43_integrated_tail_h100_policy.json",
+    "stage43_bi_locked_candidate_package": "outputs/stage43_latent_state/stage43_locked_candidate_paper_package_refresh.json",
+    "stage43_bj_long_objective_audit": "outputs/stage43_latent_state/stage43_long_objective_evidence_audit.json"
+  },
+  "input_hash": "c22bde44444c72e2ed7a1260313cf437029be31709e2bb66e68226da669f05de",
+  "input_verdicts": {
+    "stage43_p": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback",
+    "stage43_t": "stage43_t_source_stable_h100_specialist_deployable",
+    "stage43_u": "stage43_u_integrated_tail_h100_policy_pass_family_limited",
+    "stage43_bi": "stage43_bi_locked_candidate_paper_package_refresh_pass",
+    "stage43_bj": "stage43_bj_long_objective_evidence_audit_pass_keep_goal_active"
+  },
+  "locked_candidate_context": {
+    "current_locked_package": "stage43_bi_locked_candidate_paper_package_refresh",
+    "locked_package_metrics": {
+      "rows": 89736,
+      "all": 0.5025366202187915,
+      "t50": 0.5123378909285481,
+      "t100_raw_frame_diagnostic": 0.0,
+      "hard_failure": 0.4787683745310771,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.7044552910760453
+    },
+    "long_objective_prior_blocker": "t100_raw_frame_diagnostic_not_solved",
+    "bk_reconciliation": "t100 is no longer simply zero-evidence: Stage43-T/U provide a small source-stable h100 full-waypoint ADE signal. Uniform t100 and endpoint-FDE success remain blocked."
+  },
+  "stage43_p_reference": {
+    "rows": 89736,
+    "all_full_waypoint_ade_improvement_vs_floor": 0.5025366202187915,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.5123378909285481,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4787683745310771,
+    "easy_degradation_vs_floor": 0.0,
+    "gate_verdict": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback"
+  },
+  "stage43_t_source_stable_h100": {
+    "rows": 1440,
+    "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+    "endpoint_fde_improvement_vs_floor": -0.005459442217583321,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.025918246955633606,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+    "easy_degradation_vs_floor": 0.0,
+    "bootstrap_full_waypoint_ade_ci": {
+      "low": 0.020562452984455845,
+      "mean": 0.025955014370933747,
+      "high": 0.031412517203305575
+    },
+    "test_sources": [
+      "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt"
+    ],
+    "gate_verdict": "stage43_t_source_stable_h100_specialist_deployable"
+  },
+  "stage43_u_integrated_policy": {
+    "rows": 89736,
+    "all_full_waypoint_ade_improvement_vs_floor": 0.5028120216586792,
+    "endpoint_fde_improvement_vs_floor": 0.5114809252015476,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.5123378909285481,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0018046423720278204,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4791015584569419,
+    "easy_degradation_vs_floor": 0.0,
+    "t100_bootstrap_ci": {
+      "low": 0.0013973084630425098,
+      "mean": 0.001811632274596476,
+      "high": 0.002203633027509047
+    },
+    "all_bootstrap_ci": {
+      "low": 0.49969940569605603,
+      "mean": 0.5027769655505514,
+      "high": 0.505752960177359
+    },
+    "delta_vs_stage43_p": {
+      "full_waypoint_ade_improvement_delta": 0.0002754014398876903,
+      "endpoint_fde_delta": -6.577760974690872e-05,
+      "t50_delta": 0.0,
+      "t100_delta": 0.0018046423720278204,
+      "hard_failure_delta": 0.0003331839258647884,
+      "easy_degradation_delta": 0.0
+    },
+    "gate_verdict": "stage43_u_integrated_tail_h100_policy_pass_family_limited"
+  },
+  "h100_source_stable_slice": {
+    "stage43_p_slice": {
+      "rows": 1440,
+      "full_waypoint_ade_improvement_vs_floor": 0.0,
+      "endpoint_fde_improvement_vs_floor": 0.0,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.0
+    },
+    "integrated_slice": {
+      "rows": 1440,
+      "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+      "endpoint_fde_improvement_vs_floor": -0.005459442217583321,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 1.0,
+      "delta_vs_stage43_p_full_waypoint_ade": 0.025918246955633606,
+      "delta_vs_stage43_p_endpoint_fde": -0.005459442217583321
+    },
+    "source_table": {
+      "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt": {
+        "rows": 1440,
+        "full_waypoint_ade_improvement_vs_floor": 0.025918246955633606,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 1.0,
+        "easy_rows": 193,
+        "hard_failure_rows": 1440
+      }
+    },
+    "negative_source_count": 0
+  },
+  "claim_update": {
+    "t100_family_limited_ade_signal": true,
+    "current_aggregate_candidate_can_report_family_limited_t100_diagnostic": true,
+    "uniform_t100_success": false,
+    "t100_endpoint_success": false,
+    "h100_endpoint_fde_negative_explicitly_reported": true,
+    "replacement_for_stage43_bi_locked_candidate": false,
+    "why_not_replacement": "Stage43-U adds a small source-stable h100 ADE diagnostic without harming t50/easy, but h100 endpoint FDE is negative and uniform t100 remains false. Keep the locked candidate package intact while updating the t100 evidence boundary."
+  },
+  "no_leakage_and_execution": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false,
+    "new_training_executed": false,
+    "new_conversion_executed": false,
+    "fresh_reconciliation_only": true
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "uniform_positive_external_transfer_claim": false,
+    "uniform_t100_success": false,
+    "t100_endpoint_success": false,
+    "long_objective_complete": false
+  },
+  "next_priority_order": [
+    "keep reporting t100 as family-limited raw-frame ADE diagnostic, not uniform success",
+    "close blocked source terms/identity and guarded conversion preflight",
+    "seek independent h100 source support before any uniform t100 claim",
+    "replace proxy-heavy scene/interaction ablations with retrained raw-scene/graph-rich ablations"
+  ],
+  "stage43_bk_gate": {
+    "source": "fresh_stage43_bk_t100_family_limited_reconciliation",
+    "gates": {
+      "stage43_p_precondition_passed": true,
+      "stage43_t_precondition_passed": true,
+      "stage43_u_precondition_passed": true,
+      "stage43_bi_bj_preconditions_passed": true,
+      "integrated_policy_preserves_core_metrics": true,
+      "integrated_t100_improves_over_stage43_p": true,
+      "integrated_t100_ci_positive": true,
+      "h100_source_stable_ade_positive": true,
+      "h100_endpoint_blocker_explicit": true,
+      "uniform_t100_not_overclaimed": true,
+      "fresh_reconciliation_only": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage43_bk_t100_family_limited_reconciliation_pass",
+    "t100_family_limited_ade_signal": true,
+    "uniform_t100_success": false,
+    "t100_endpoint_success": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

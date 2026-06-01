@@ -1,22 +1,13 @@
-# Stage43 Current World-Model Gate
+# Stage43-BK T100 Family-Limited Reconciliation Gate
 
-- source: `fresh_stage43_bk_t100_family_limited_reconciliation`
 - verdict: `stage43_bk_t100_family_limited_reconciliation_pass`
 - passed: `15 / 15`
-- protected multimodal latent state candidate: `True`
 - t100 family-limited ADE signal: `True`
 - uniform t100 success: `False`
 - t100 endpoint success: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BK reconciles existing t100/h100 evidence without new training or conversion.
-- A family-limited raw-frame h100/t100 full-waypoint ADE diagnostic signal exists.
-- Uniform t100 success and endpoint-FDE success remain blocked.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
