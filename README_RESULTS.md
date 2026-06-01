@@ -7666,3 +7666,12 @@ Best t50 diagnostic trial `all_guard0.05_eth0.40_traj0.35` reaches t50 `15.06%` 
 
 The result confirms the next useful work is source/horizon-specific safety modeling rather than another global cap. Stage5C and SMC remain disabled.
 <!-- STAGE43_AV_SOURCE_HORIZON_SAFETY_ENVELOPE:END -->
+
+<!-- STAGE43_AW_SOURCE_HORIZON_EXPERT_POLICY:START -->
+Stage43-AW turns the Stage43-AV diagnostic into a validation-selected source/horizon expert policy: Stage43-K remains the non-t50 base, and a t50 expert is selected on validation only. Gate: `12 / 12` with verdict `stage43_aw_source_horizon_expert_policy_pass`.
+
+Selected t50 expert `t50_guard0.03_eth0.15_traj0.10` test metrics: all `23.40%`, t50 `12.80%`, t100 raw-frame diagnostic `1.35%`, hard/failure `24.73%`, easy degradation `0.00%`.
+Delta vs Stage43-K: all `0.29%`, t50 `1.44%`, hard/failure `0.32%`, easy degradation `0.00%`.
+
+Decision: `candidate_requires_reviewer_replay_before_deployment`. This remains dataset-local/raw-frame 2.5D evidence; Stage5C and SMC remain disabled.
+<!-- STAGE43_AW_SOURCE_HORIZON_EXPERT_POLICY:END -->
