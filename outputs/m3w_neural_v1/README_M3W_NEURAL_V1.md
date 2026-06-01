@@ -4341,8 +4341,8 @@ source = `fresh_stage43_ai_feature_family_multiseed_confirmation`
 verdict = `stage43_ai_feature_family_multiseed_confirmation_pass`
 gate = `8 / 8`
 seeds = `[431, 443, 457]`
-stable_positive_t50_contribution_variants = `['no_baseline_floor']`
-stable_positive_hard_or_all_contribution_variants = `['no_goal', 'no_baseline_floor']`
+stable_positive_t50_contribution_variants = `['no_neighbor_interaction', 'no_baseline_floor', 'no_domain']`
+stable_positive_hard_or_all_contribution_variants = `['no_goal', 'no_baseline_floor', 'no_domain']`
 
 Stage43-AI repeats the Stage43-AH retrained feature-family ablation across multiple seeds. It tests whether baseline/floor, goal, history, neighbor/interaction, and domain feature-family contributions survive seed variation. Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AI_FEATURE_FAMILY_MULTISEED_CONFIRMATION:END -->

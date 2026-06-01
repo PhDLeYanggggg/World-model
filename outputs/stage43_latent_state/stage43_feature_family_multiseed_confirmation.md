@@ -6,19 +6,19 @@
 - seeds: `[431, 443, 457]`
 - gate: `8 / 8`
 - verdict: `stage43_ai_feature_family_multiseed_confirmation_pass`
-- stable positive t50 variants: `['no_baseline_floor']`
-- stable positive hard/all variants: `['no_goal', 'no_baseline_floor']`
+- stable positive t50 variants: `['no_neighbor_interaction', 'no_baseline_floor', 'no_domain']`
+- stable positive hard/all variants: `['no_goal', 'no_baseline_floor', 'no_domain']`
 
 ## Summary
 
 | variant | mean all | mean t50 | mean hard | mean easy | delta all mean | delta t50 mean | delta hard mean | t50 positive seeds |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `full_features` | `32.48%` | `29.43%` | `33.56%` | `10.31%` | `0.00%` | `0.00%` | `0.00%` | `0` |
-| `no_history` | `35.33%` | `33.82%` | `37.92%` | `16.42%` | `-2.84%` | `-4.39%` | `-4.36%` | `1` |
-| `no_goal` | `28.14%` | `33.73%` | `32.66%` | `28.43%` | `4.34%` | `-4.30%` | `0.90%` | `1` |
-| `no_neighbor_interaction` | `37.11%` | `35.98%` | `38.21%` | `6.29%` | `-4.63%` | `-6.55%` | `-4.65%` | `1` |
-| `no_baseline_floor` | `32.91%` | `16.60%` | `35.91%` | `25.33%` | `-0.43%` | `12.83%` | `-2.36%` | `3` |
-| `no_domain` | `34.84%` | `34.97%` | `35.98%` | `11.47%` | `-2.36%` | `-5.54%` | `-2.43%` | `1` |
+| `full_features` | `33.99%` | `27.72%` | `35.01%` | `4.26%` | `0.00%` | `0.00%` | `0.00%` | `0` |
+| `no_history` | `38.12%` | `34.61%` | `39.19%` | `0.00%` | `-4.13%` | `-6.88%` | `-4.19%` | `0` |
+| `no_goal` | `29.07%` | `27.83%` | `33.91%` | `26.69%` | `4.93%` | `-0.10%` | `1.10%` | `2` |
+| `no_neighbor_interaction` | `35.80%` | `23.35%` | `37.52%` | `9.49%` | `-1.81%` | `4.37%` | `-2.52%` | `2` |
+| `no_baseline_floor` | `32.91%` | `16.60%` | `35.91%` | `25.33%` | `1.09%` | `11.12%` | `-0.90%` | `2` |
+| `no_domain` | `34.35%` | `24.97%` | `36.52%` | `21.59%` | `-0.35%` | `2.76%` | `-1.51%` | `2` |
 
 ## Interpretation
 
