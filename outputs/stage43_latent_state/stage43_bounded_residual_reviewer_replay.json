@@ -1,0 +1,195 @@
+{
+  "source": "fresh_stage43_ao_bounded_residual_reviewer_replay",
+  "result_source": "fresh_replay_from_frozen_policy_artifact",
+  "generated_at_utc": "2026-06-01T06:16:46.544870+00:00",
+  "git_commit": "fbf986a",
+  "runtime": {
+    "python": "3.11.1",
+    "machine": "arm64",
+    "torch_version": "2.12.0",
+    "torch_threads": 4,
+    "torch_interop_threads": 1,
+    "device": "cpu",
+    "num_workers": 0
+  },
+  "policy_artifact": "outputs/stage43_latent_state/frozen_stage43_bounded_residual_policy.json",
+  "freeze_report": "outputs/stage43_latent_state/stage43_bounded_residual_policy_freeze.json",
+  "policy_hash": {
+    "expected": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+    "recomputed": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+    "match": true
+  },
+  "feature_schema_match": true,
+  "current_hashes": {
+    "stage43_m_report_sha256": "4cef03834308250a6e80b98188f2c8c88d367fef91ecb52ec8a9df683c7ca539",
+    "stage43_m_checkpoint_sha256": "a21a621d9bd5061d728dc80fd43a4d4bf302489b6395cf5562810fabf7c4318f",
+    "policy_artifact_sha256": "09384e07132f9508f61d4fe84bdb9ad52d139299d1b254c7fe25734ede61ef83",
+    "cache_row_hashes": {
+      "train": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "val": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "test": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80"
+    }
+  },
+  "freeze_hashes": {
+    "stage43_m_report_sha256": "4cef03834308250a6e80b98188f2c8c88d367fef91ecb52ec8a9df683c7ca539",
+    "stage43_m_checkpoint_sha256": "a21a621d9bd5061d728dc80fd43a4d4bf302489b6395cf5562810fabf7c4318f",
+    "stage43_al_report_sha256": "7381dbd9b13ed9b7f61a47ef019e0dd96aae7ba2b3aa078a10fd862e7a8a88b0",
+    "stage43_am_report_sha256": "2ec9a668520f49a5784d1b360a4a6b8944fc621304bb0fb2f06d266f8b697d80",
+    "cache_row_hashes": {
+      "train": "92421511e9e27416567537326bfc9b6f9bf469d3e81f8788b8bebd4d5072fae0",
+      "val": "788e001810b712369a3d0935db829db56fcce9b6a3a2a8d35a1a016793b0852f",
+      "test": "1613ed7188f26c78a53d07c90c65ee106e7cc1526385c6aed191bf5e0837af80"
+    },
+    "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493"
+  },
+  "checkpoint_not_tracked_by_git": true,
+  "cache_row_hash_match_prior": true,
+  "checkpoint_hash_match_freeze": true,
+  "stage43_m_report_hash_match_freeze": true,
+  "policy_config": {
+    "alpha": 0.75,
+    "clip_norm": 0.75,
+    "policy": {
+      "gain_threshold": 0.0,
+      "harm_threshold": 0.75,
+      "failure_threshold": 0.0
+    },
+    "force_h100_floor": true
+  },
+  "replayed_metrics": {
+    "rows": 16000,
+    "full_waypoint_ade_improvement_vs_floor": 0.37999220149702595,
+    "endpoint_fde_improvement_vs_floor": 0.4420681380425501,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.269646290665144,
+    "t50_endpoint_fde_improvement_vs_floor": 0.355881862474431,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3771314228696524,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.6308125,
+    "harm_over_floor_ade": -0.07507652044296265,
+    "mean_floor_ade": 0.19757382571697235,
+    "mean_selected_ade": 0.1224973127245903
+  },
+  "frozen_point_metrics": {
+    "name": "bounded_residual_safe_val_best",
+    "config": {
+      "alpha": 0.75,
+      "clip_norm": 0.75,
+      "policy": {
+        "gain_threshold": 0.0,
+        "harm_threshold": 0.75,
+        "failure_threshold": 0.0
+      },
+      "force_h100_floor": true
+    },
+    "all": 0.37999220149702595,
+    "endpoint": 0.4420681380425501,
+    "t50": 0.269646290665144,
+    "t50_endpoint": 0.355881862474431,
+    "t100": 0.0,
+    "hard_failure": 0.3771314228696524,
+    "easy": 0.0,
+    "switch_rate": 0.6308125,
+    "switch_count": 10093,
+    "mean_residual_norm": 0.13202365787729695,
+    "max_residual_norm": 0.5395127458545564,
+    "safe_easy": true,
+    "safe_t100": true
+  },
+  "replay_diff": {
+    "max_abs_diff": 0.0,
+    "by_metric": {
+      "all": {
+        "expected": 0.37999220149702595,
+        "replayed": 0.37999220149702595,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "endpoint": {
+        "expected": 0.4420681380425501,
+        "replayed": 0.4420681380425501,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "t50": {
+        "expected": 0.269646290665144,
+        "replayed": 0.269646290665144,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "t50_endpoint": {
+        "expected": 0.355881862474431,
+        "replayed": 0.355881862474431,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "t100": {
+        "expected": 0.0,
+        "replayed": 0.0,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "hard_failure": {
+        "expected": 0.3771314228696524,
+        "replayed": 0.3771314228696524,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "easy": {
+        "expected": 0.0,
+        "replayed": 0.0,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      },
+      "switch_rate": {
+        "expected": 0.6308125,
+        "replayed": 0.6308125,
+        "signed_diff": 0.0,
+        "abs_diff": 0.0
+      }
+    }
+  },
+  "switch_count": 10093,
+  "mean_residual_norm": 0.13202365787729695,
+  "max_residual_norm": 0.5395127458545564,
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "thresholds_selected_on_test": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "input_hash": "e47123aca5d4200ddb5cda89bf5acd481ee0c969d43855012ac12b809a00fb05",
+  "stage43_ao_gate": {
+    "source": "fresh_stage43_ao_bounded_residual_reviewer_replay",
+    "gates": {
+      "frozen_policy_artifact_present": true,
+      "policy_hash_recomputed": true,
+      "feature_schema_matches_checkpoint": true,
+      "cache_row_hashes_match_prior": true,
+      "checkpoint_hash_matches_freeze": true,
+      "stage43_m_report_hash_matches_freeze": true,
+      "checkpoint_not_tracked_by_git": true,
+      "replay_metrics_exact": true,
+      "replayed_policy_safe": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 11,
+    "total": 11,
+    "verdict": "stage43_ao_bounded_residual_reviewer_replay_pass",
+    "reviewer_replay_passed": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
