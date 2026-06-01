@@ -2295,3 +2295,16 @@ Stage43-AH fresh-trains full_features plus no_history, no_goal, no_neighbor_inte
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are supervision/eval only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AH_FEATURE_FAMILY_RETRAINED_ABLATION:END -->
+
+<!-- STAGE43_AI_FEATURE_FAMILY_MULTISEED_CONFIRMATION:START -->
+## STAGE43_AI_FEATURE_FAMILY_MULTISEED_CONFIRMATION
+
+source = `fresh_stage43_ai_feature_family_multiseed_confirmation`
+verdict = `stage43_ai_feature_family_multiseed_confirmation_pass`
+gate = `8 / 8`
+seeds = `[431, 443, 457]`
+stable_positive_t50_contribution_variants = `['no_baseline_floor']`
+stable_positive_hard_or_all_contribution_variants = `['no_goal', 'no_baseline_floor']`
+
+Stage43-AI repeats the Stage43-AH retrained feature-family ablation across multiple seeds. It tests whether baseline/floor, goal, history, neighbor/interaction, and domain feature-family contributions survive seed variation. Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AI_FEATURE_FAMILY_MULTISEED_CONFIRMATION:END -->

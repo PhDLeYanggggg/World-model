@@ -98,7 +98,8 @@ def _train_one(args: argparse.Namespace, *, variant: str, rows: Mapping[str, int
     model.to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=float(args.lr), weight_decay=1e-4)
     best_val = float("inf")
-    ckpt_path = CKPT_DIR / f"stage43_feature_family_retrained_ablation_{variant}.pt"
+    checkpoint_tag = str(getattr(args, "checkpoint_tag", "stage43_feature_family_retrained_ablation"))
+    ckpt_path = CKPT_DIR / f"{checkpoint_tag}_{variant}.pt"
     history: list[dict[str, Any]] = []
     start = time.time()
     for epoch in range(int(args.epochs)):
