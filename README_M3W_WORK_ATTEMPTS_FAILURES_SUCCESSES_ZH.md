@@ -2618,3 +2618,18 @@ deployable_repair_options_now = `0`
 
 I checked whether the raw biwi support found in BC can actually become a safe repair split. It cannot yet: the useful `biwi_hotel` rows are the current held-out biwi test source, and the small `biwi_eth` support is not enough for an independent deployable train/val/test story. I am keeping biwi floor-only and treating any within-source support split as diagnostic only.
 <!-- STAGE43_BD_BIWI_SUPPORT_REBUILD_PREFLIGHT:END -->
+
+<!-- STAGE43_BE_BLOCKED_SOURCE_SUPPORT_ACQUISITION_PREFLIGHT:START -->
+## STAGE43_BE_BLOCKED_SOURCE_SUPPORT_ACQUISITION_PREFLIGHT
+
+source = `fresh_stage43_be_blocked_source_support_acquisition_preflight`
+result_source = `fresh_support_acquisition_preflight_from_local_candidates_and_stage43_blocker_artifacts`
+verdict = `stage43_be_blocked_source_support_acquisition_preflight_pass`
+gate = `13 / 13`
+local_candidates = `3`
+technical_support_candidates = `3`
+conversion_ready_now = `0`
+repair_training_allowed_now = `0`
+
+I checked the local source-support options for the blocked biwi/mot families. The useful takeaway is not a new model win: biwi still needs an independent held-out source before repair training, while PETS/Town-Center/Wild-Track are technical MOT-like support candidates but still need terms/source-identity/calibration closure before guarded conversion. I am keeping these sources floor-only until those support gates clear.
+<!-- STAGE43_BE_BLOCKED_SOURCE_SUPPORT_ACQUISITION_PREFLIGHT:END -->

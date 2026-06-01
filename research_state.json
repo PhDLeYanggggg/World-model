@@ -293,8 +293,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_bd_biwi_support_rebuild_preflight",
-  "current_verdict": "stage43_bd_biwi_support_rebuild_preflight_pass",
+  "current_stage": "stage43_be_blocked_source_support_acquisition_preflight",
+  "current_verdict": "stage43_be_blocked_source_support_acquisition_preflight_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41685,6 +41685,52 @@
     ],
     "summary": "Root GitHub-facing README was rewritten in a project-owner voice. README_RESULTS keeps the technical evidence ledger while explaining why detailed stage/gate/provenance material stays out of the public project introduction.",
     "claim_boundary": "No new model result, no new training, no dataset conversion, no Stage5C execution, no SMC, and no metric or seconds-level claim.",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_be_blocked_source_support_acquisition_preflight": {
+    "source": "fresh_stage43_be_blocked_source_support_acquisition_preflight",
+    "result_source": "fresh_support_acquisition_preflight_from_local_candidates_and_stage43_blocker_artifacts",
+    "updated_at": "2026-06-01T16:56:26.332020+00:00",
+    "verdict": "stage43_be_blocked_source_support_acquisition_preflight_pass",
+    "gate": "13 / 13",
+    "summary": {
+      "blocked_family_count": 2,
+      "local_candidate_count": 3,
+      "local_technical_support_candidate_count": 3,
+      "local_conversion_ready_now_count": 0,
+      "repair_training_allowed_now_count": 0,
+      "biwi_status": "blocked_until_independent_biwi_like_source_available",
+      "mot_status": "local_topdown_candidates_exist_but_terms_and_conversion_not_closed"
+    },
+    "family_readiness": {
+      "TrajNet_biwi": {
+        "status": "blocked_until_independent_biwi_like_source_available",
+        "technical_candidate_count": 2,
+        "conversion_ready_count": 0,
+        "repair_training_allowed_now": false,
+        "reason": "current useful biwi support would reuse the held-out biwi source; no independent source-level train/val/test story yet"
+      },
+      "TrajNet_mot": {
+        "status": "local_topdown_candidates_exist_but_terms_and_conversion_not_closed",
+        "technical_candidate_count": 3,
+        "technical_candidate_names": [
+          "Town-Center",
+          "Wild-Track",
+          "PETS-2009-S2L1"
+        ],
+        "conversion_ready_count": 0,
+        "repair_training_allowed_now": false,
+        "reason": "PETS/Town-Center/Wild-Track are support candidates only until terms/source identity/calibration projection and guarded conversion pass"
+      },
+      "overall": {
+        "technical_support_candidate_count": 3,
+        "conversion_ready_now_count": 0,
+        "repair_training_allowed_now_count": 0
+      }
+    },
+    "report": "outputs/stage43_latent_state/stage43_blocked_source_support_acquisition_preflight.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
   }

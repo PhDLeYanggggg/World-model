@@ -1,0 +1,245 @@
+{
+  "source": "fresh_stage43_be_blocked_source_support_acquisition_preflight",
+  "result_source": "fresh_support_acquisition_preflight_from_local_candidates_and_stage43_blocker_artifacts",
+  "generated_at_utc": "2026-06-01T16:56:26.332020+00:00",
+  "git_commit": "e33c4de",
+  "input_artifacts": {
+    "stage43_bc": "outputs/stage43_latent_state/stage43_blocked_family_support_scan.json",
+    "stage43_bd": "outputs/stage43_latent_state/stage43_biwi_support_rebuild_preflight.json",
+    "stage42_jn_cached_if_present": "outputs/stage42_long_research/local_calibrated_source_support_intake_stage42.json"
+  },
+  "input_verdicts": {
+    "stage43_bc": "stage43_bc_blocked_family_support_scan_pass",
+    "stage43_bd": "stage43_bd_biwi_support_rebuild_preflight_pass",
+    "stage42_jn_cached": "stage42_jn_local_calibrated_source_support_intake_pass"
+  },
+  "protocol": {
+    "purpose": "source_support_acquisition_preflight_only",
+    "conversion_executed": false,
+    "training_executed": false,
+    "threshold_search_executed": false,
+    "test_used_for_training_or_thresholds": false,
+    "technical_candidate_is_not_conversion_ready": true,
+    "raw_file_counts_are_support_diagnostics": true
+  },
+  "blocked_family_records": [
+    {
+      "source": "cached_verified_stage43_bc_raw_scan",
+      "family": "TrajNet_biwi",
+      "raw_file_count": 2,
+      "raw_train_dir_files": 1,
+      "raw_test_dir_files": 1,
+      "raw_t50_candidate_windows": 2175,
+      "raw_t100_candidate_windows": 1450,
+      "current_train_family_rows": 0,
+      "current_val_family_rows": 459,
+      "current_test_family_rows": 7685,
+      "support_candidate_exists_in_raw_scan": true,
+      "repair_training_allowed_now": false,
+      "blockers": [
+        "current_feature_store_has_no_train_family_rows",
+        "current_validation_support_below_threshold",
+        "existing_ungated_transfer_catastrophic_negative"
+      ],
+      "recommendation": "rebuild_source_family_split_with_raw_candidate_support_before_any_repair_training"
+    },
+    {
+      "source": "cached_verified_stage43_bc_raw_scan",
+      "family": "TrajNet_mot",
+      "raw_file_count": 1,
+      "raw_train_dir_files": 1,
+      "raw_test_dir_files": 0,
+      "raw_t50_candidate_windows": 0,
+      "raw_t100_candidate_windows": 0,
+      "current_train_family_rows": 0,
+      "current_val_family_rows": 0,
+      "current_test_family_rows": 1926,
+      "support_candidate_exists_in_raw_scan": false,
+      "repair_training_allowed_now": false,
+      "blockers": [
+        "current_feature_store_has_no_train_family_rows",
+        "current_validation_support_below_threshold",
+        "raw_scan_has_no_t50_candidate_windows",
+        "existing_ungated_transfer_catastrophic_negative",
+        "single_source_family_no_independent_support_file"
+      ],
+      "recommendation": "acquire_additional_source_family_data_before_repair_training"
+    },
+    {
+      "source": "cached_verified_stage43_bd_biwi_preflight",
+      "family": "TrajNet_biwi",
+      "raw_file_count": 2,
+      "raw_train_dir_files": 1,
+      "raw_test_dir_files": 1,
+      "raw_t50_candidate_windows": 1885,
+      "raw_t100_candidate_windows": 0,
+      "current_train_family_rows": 0,
+      "current_val_family_rows": 459,
+      "current_test_family_rows": 7685,
+      "support_candidate_exists_in_raw_scan": true,
+      "repair_training_allowed_now": false,
+      "blockers": [
+        "biwi_hotel_is_current_stage43_heldout_test_source",
+        "biwi_eth_validation_support_too_small",
+        "no_independent_biwi_like_test_source_after_rebuild"
+      ],
+      "recommendation": "keep_biwi_floor_only_until_independent_source_support_exists"
+    }
+  ],
+  "local_source_candidates": [
+    {
+      "source": "fresh_local_scan",
+      "dataset_name": "Town-Center",
+      "support_family": "mot_like_or_external_topdown_support",
+      "local_path": "external_data/OpenTraj/datasets/Town-Center",
+      "parseable": true,
+      "point_rows": 71460,
+      "agent_tracks": 230,
+      "t50_candidate_rows": 60417,
+      "t100_candidate_rows": 50132,
+      "calibration_file_count": 1,
+      "coordinate_unit": "image_pixel_bbox_bottom_center",
+      "metric_status": "calibration_file_present_but_world_projection_not_integrated",
+      "legal_conversion_ready": false,
+      "technical_support_candidate": true,
+      "conversion_ready_now": false,
+      "blockers": [
+        "terms_or_license_not_confirmed_for_benchmark_conversion",
+        "not_converted_into_stage43_feature_store"
+      ],
+      "recommended_action": "record_terms_then_guarded_conversion_preflight"
+    },
+    {
+      "source": "fresh_local_scan",
+      "dataset_name": "Wild-Track",
+      "support_family": "mot_like_or_external_topdown_support",
+      "local_path": "external_data/OpenTraj/datasets/Wild-Track",
+      "parseable": true,
+      "point_rows": 9518,
+      "agent_tracks": 313,
+      "t50_candidate_rows": 2539,
+      "t100_candidate_rows": 1770,
+      "calibration_file_count": 16,
+      "coordinate_unit": "ground_grid_meter_candidate_2.5cm_spacing",
+      "metric_status": "README documents 2.5cm ground grid and camera calibration files",
+      "legal_conversion_ready": false,
+      "technical_support_candidate": true,
+      "conversion_ready_now": false,
+      "blockers": [
+        "terms_or_license_not_confirmed_for_benchmark_conversion",
+        "not_converted_into_stage43_feature_store"
+      ],
+      "recommended_action": "record_terms_then_guarded_conversion_preflight"
+    },
+    {
+      "source": "fresh_local_scan",
+      "dataset_name": "PETS-2009-S2L1",
+      "support_family": "mot_like",
+      "local_path": "external_data/OpenTraj/datasets/PETS-2009/data",
+      "parseable": true,
+      "point_rows": 4650,
+      "agent_tracks": 19,
+      "t50_candidate_rows": 3700,
+      "t100_candidate_rows": 2768,
+      "calibration_file_count": 8,
+      "coordinate_unit": "image_pixel_bbox_bottom_center",
+      "metric_status": "camera_calibration_files_present_but_ground_projection_not_integrated",
+      "legal_conversion_ready": false,
+      "technical_support_candidate": true,
+      "conversion_ready_now": false,
+      "blockers": [
+        "terms_or_license_not_confirmed_for_benchmark_conversion",
+        "not_converted_into_stage43_feature_store"
+      ],
+      "recommended_action": "record_terms_then_guarded_conversion_preflight"
+    }
+  ],
+  "family_readiness": {
+    "TrajNet_biwi": {
+      "status": "blocked_until_independent_biwi_like_source_available",
+      "technical_candidate_count": 2,
+      "conversion_ready_count": 0,
+      "repair_training_allowed_now": false,
+      "reason": "current useful biwi support would reuse the held-out biwi source; no independent source-level train/val/test story yet"
+    },
+    "TrajNet_mot": {
+      "status": "local_topdown_candidates_exist_but_terms_and_conversion_not_closed",
+      "technical_candidate_count": 3,
+      "technical_candidate_names": [
+        "Town-Center",
+        "Wild-Track",
+        "PETS-2009-S2L1"
+      ],
+      "conversion_ready_count": 0,
+      "repair_training_allowed_now": false,
+      "reason": "PETS/Town-Center/Wild-Track are support candidates only until terms/source identity/calibration projection and guarded conversion pass"
+    },
+    "overall": {
+      "technical_support_candidate_count": 3,
+      "conversion_ready_now_count": 0,
+      "repair_training_allowed_now_count": 0
+    }
+  },
+  "summary": {
+    "blocked_family_count": 2,
+    "local_candidate_count": 3,
+    "local_technical_support_candidate_count": 3,
+    "local_conversion_ready_now_count": 0,
+    "repair_training_allowed_now_count": 0,
+    "biwi_status": "blocked_until_independent_biwi_like_source_available",
+    "mot_status": "local_topdown_candidates_exist_but_terms_and_conversion_not_closed"
+  },
+  "next_required_actions": [
+    "Keep TrajNet_biwi and TrajNet_mot floor-only in deployable Stage43 policy until source-support gates clear.",
+    "For biwi, acquire or locate an independent biwi-like source so train, validation, and test support are source-disjoint.",
+    "For mot-like repair, record terms/source identity for PETS/Town-Center/Wild-Track before guarded conversion.",
+    "After any conversion, rerun no-leakage, source-level split, strongest baseline, and Stage43 replay before model repair training."
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false,
+    "conversion_executed": false,
+    "training_executed": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "external_not_run_written_as_success": false,
+    "blocked_source_repair_success_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "input_hash": "bac7cecf3f3eb8783241b68b953ae812d1a8ef86fc1fb5ba7c8942d8001f1b89",
+  "stage43_be_gate": {
+    "source": "fresh_stage43_be_blocked_source_support_acquisition_preflight",
+    "gates": {
+      "stage43_bc_precondition_passed": true,
+      "stage43_bd_precondition_passed": true,
+      "blocked_families_loaded": true,
+      "local_candidate_sources_scanned": true,
+      "technical_candidates_separated_from_conversion_ready": true,
+      "biwi_independent_support_blocker_preserved": true,
+      "mot_candidate_terms_blocker_preserved": true,
+      "repair_training_still_disallowed": true,
+      "next_actions_recorded": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage43_be_blocked_source_support_acquisition_preflight_pass",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "goal_complete": false
+  }
+}
