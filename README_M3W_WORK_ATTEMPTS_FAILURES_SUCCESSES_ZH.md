@@ -2486,3 +2486,12 @@ Source-safe protected neural repair: all `23.11%`, t50 `11.36%`, hard/failure `2
 
 This is still dataset-local/raw-frame 2.5D evidence. It is not true 3D, not foundation-scale, not metric/seconds-level, and it does not execute Stage5C or SMC.
 <!-- STAGE43_AT_EXTERNAL_VALIDATION_MATRIX:END -->
+
+<!-- STAGE43_AU_DOMAIN_FAILURE_REPAIR:START -->
+Stage43-AU runs a bounded validation-only repair attempt for the weak external t50 slices exposed by Stage43-AT. Gate: `12 / 12` with verdict `stage43_au_domain_failure_repair_attempt_pass`.
+
+Selected trial `all_guard0.05_eth0.25_traj0.25` test metrics: all `27.28%`, t50 `13.79%`, t100 raw-frame diagnostic `0.48%`, hard/failure `28.89%`, easy degradation `0.30%`.
+Delta vs Stage43-K source-safe repair: all `4.17%`, t50 `2.42%`, hard/failure `4.49%`, easy degradation `0.30%`.
+
+Deployment is not upgraded by this repair attempt. The selected validation policy improves aggregate/t50 over Stage43-K, but per-domain easy harm and remaining weak t50/t100/source slices make it unsafe. Stage5C and SMC remain disabled.
+<!-- STAGE43_AU_DOMAIN_FAILURE_REPAIR:END -->
