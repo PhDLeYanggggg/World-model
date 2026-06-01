@@ -2495,3 +2495,12 @@ Delta vs Stage43-K source-safe repair: all `4.17%`, t50 `2.42%`, hard/failure `4
 
 Deployment is not upgraded by this repair attempt. The selected validation policy improves aggregate/t50 over Stage43-K, but per-domain easy harm and remaining weak t50/t100/source slices make it unsafe. Stage5C and SMC remain disabled.
 <!-- STAGE43_AU_DOMAIN_FAILURE_REPAIR:END -->
+
+<!-- STAGE43_AV_SOURCE_HORIZON_SAFETY_ENVELOPE:START -->
+Stage43-AV audits the full source/horizon safety envelope of the Stage43-AU bounded repair trials. Gate: `12 / 12` with verdict `stage43_av_source_horizon_safety_envelope_pass`.
+
+Across `30` diagnostic trials, aggregate-safe trial count = `29`, domain-easy-safe trial count = `19`, deployable-like trial count = `6`.
+Best t50 diagnostic trial `all_guard0.05_eth0.40_traj0.35` reaches t50 `15.06%` but is not a deployment selection.
+
+The result confirms the next useful work is source/horizon-specific safety modeling rather than another global cap. Stage5C and SMC remain disabled.
+<!-- STAGE43_AV_SOURCE_HORIZON_SAFETY_ENVELOPE:END -->
