@@ -1,0 +1,335 @@
+{
+  "source": "fresh_stage43_ba_tail_adapter_source_blocker_audit",
+  "result_source": "fresh_source_family_blocker_audit_from_stage43_p_and_az",
+  "generated_at_utc": "2026-06-01T13:05:34.127786+00:00",
+  "git_commit": "f8467eb",
+  "input_artifacts": {
+    "stage43_p": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json",
+    "stage43_az": "outputs/stage43_latent_state/stage43_tail_adapter_reviewer_replay.json"
+  },
+  "input_verdicts": {
+    "stage43_p": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback",
+    "stage43_az": "stage43_az_tail_adapter_reviewer_replay_pass"
+  },
+  "performance_leader_policy_hash": "9155067aacf42bc8d8e67745c1cf5e05b729f95a88cf65d33d88b9a06c21484b",
+  "performance_leader_model_hash": "03497313f878a1ec69fd7d2824842fee0acfa79c38dc9d667c6d6ac53ef4c331",
+  "source_rows": [
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+      "family": "TrajNet_crowds",
+      "rows": 9540,
+      "selected_improvement": 0.6284225556159515,
+      "endpoint_improvement": 0.6348703044126154,
+      "ungated_improvement": 0.6191705486572323,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.8490566037735849,
+      "status": "positive_switched"
+    },
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "family": "UCY",
+      "rows": 70585,
+      "selected_improvement": 0.5400917294600311,
+      "endpoint_improvement": 0.5526539856062076,
+      "ungated_improvement": 0.534512256889234,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.7808316214493164,
+      "status": "positive_switched"
+    },
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "family": "TrajNet_biwi",
+      "rows": 7685,
+      "selected_improvement": 0.0,
+      "endpoint_improvement": 0.0,
+      "ungated_improvement": -10.127500515707629,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "status": "safe_floor_blocked"
+    },
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+      "family": "TrajNet_mot",
+      "rows": 1926,
+      "selected_improvement": 0.0,
+      "endpoint_improvement": 0.0,
+      "ungated_improvement": -5.065788921924493,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "status": "safe_floor_blocked"
+    }
+  ],
+  "validation_by_family": {
+    "ETH_UCY": {
+      "family": "ETH_UCY",
+      "allowed_horizons": [],
+      "blocked_horizons": [
+        {
+          "horizon": 10,
+          "rows": 5387,
+          "improvement": -36.16646621645917,
+          "easy_degradation": 664.4201995607162,
+          "reason": "blocked_validation_nonpositive"
+        },
+        {
+          "horizon": 25,
+          "rows": 4670,
+          "improvement": -19.852355326436275,
+          "easy_degradation": 112.31645587813794,
+          "reason": "blocked_validation_nonpositive"
+        },
+        {
+          "horizon": 50,
+          "rows": 3994,
+          "improvement": -21.334610412230667,
+          "easy_degradation": 131.40417515140004,
+          "reason": "blocked_validation_nonpositive"
+        },
+        {
+          "horizon": 100,
+          "rows": 2560,
+          "improvement": -49.63942470112528,
+          "easy_degradation": 290.9324537747558,
+          "reason": "blocked_validation_nonpositive"
+        }
+      ],
+      "block_reasons": {
+        "blocked_validation_nonpositive": 4
+      },
+      "h100_blocked": true,
+      "validation_rows": 16611
+    },
+    "TrajNet_biwi": {
+      "family": "TrajNet_biwi",
+      "allowed_horizons": [],
+      "blocked_horizons": [
+        {
+          "horizon": 10,
+          "rows": 255,
+          "improvement": 0.1869006971670808,
+          "easy_degradation": 0.0,
+          "reason": "blocked_insufficient_validation_support"
+        },
+        {
+          "horizon": 25,
+          "rows": 153,
+          "improvement": 0.5001052782250528,
+          "easy_degradation": 0.0,
+          "reason": "blocked_insufficient_validation_support"
+        },
+        {
+          "horizon": 50,
+          "rows": 51,
+          "improvement": 0.45714492234482307,
+          "easy_degradation": 0.7186902854597319,
+          "reason": "blocked_insufficient_validation_support"
+        }
+      ],
+      "block_reasons": {
+        "blocked_insufficient_validation_support": 3
+      },
+      "h100_blocked": false,
+      "validation_rows": 459
+    },
+    "TrajNet_crowds": {
+      "family": "TrajNet_crowds",
+      "allowed_horizons": [
+        {
+          "horizon": 10,
+          "rows": 11917,
+          "improvement": 0.7649119688965056,
+          "easy_degradation": 0.0,
+          "reason": "allowed_by_validation"
+        },
+        {
+          "horizon": 25,
+          "rows": 10515,
+          "improvement": 0.8082462910845196,
+          "easy_degradation": 0.0,
+          "reason": "allowed_by_validation"
+        },
+        {
+          "horizon": 50,
+          "rows": 9113,
+          "improvement": 0.6416770363145952,
+          "easy_degradation": 0.0,
+          "reason": "allowed_by_validation"
+        }
+      ],
+      "blocked_horizons": [
+        {
+          "horizon": 100,
+          "rows": 5608,
+          "improvement": 0.003078690721413535,
+          "easy_degradation": 0.09876208213895166,
+          "reason": "blocked_validation_easy_harm"
+        }
+      ],
+      "block_reasons": {
+        "blocked_validation_easy_harm": 1
+      },
+      "h100_blocked": true,
+      "validation_rows": 37153
+    },
+    "UCY": {
+      "family": "UCY",
+      "allowed_horizons": [
+        {
+          "horizon": 10,
+          "rows": 15147,
+          "improvement": 0.8035186758351702,
+          "easy_degradation": 0.0,
+          "reason": "allowed_by_validation"
+        },
+        {
+          "horizon": 25,
+          "rows": 13365,
+          "improvement": 0.8176950193090967,
+          "easy_degradation": 0.0,
+          "reason": "allowed_by_validation"
+        },
+        {
+          "horizon": 50,
+          "rows": 11583,
+          "improvement": 0.6083455180486802,
+          "easy_degradation": 0.0,
+          "reason": "allowed_by_validation"
+        }
+      ],
+      "blocked_horizons": [
+        {
+          "horizon": 100,
+          "rows": 7128,
+          "improvement": 0.012556605549461808,
+          "easy_degradation": 0.003267833191476388,
+          "reason": "blocked_h100_global_validation_contract"
+        }
+      ],
+      "block_reasons": {
+        "blocked_h100_global_validation_contract": 1
+      },
+      "h100_blocked": true,
+      "validation_rows": 47223
+    }
+  },
+  "blocked_sources": [
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+      "family": "TrajNet_biwi",
+      "rows": 7685,
+      "selected_improvement": 0.0,
+      "endpoint_improvement": 0.0,
+      "ungated_improvement": -10.127500515707629,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "status": "safe_floor_blocked",
+      "validation_allowed_horizons": [],
+      "validation_block_reasons": {
+        "blocked_insufficient_validation_support": 3
+      },
+      "h100_blocked_by_validation": false,
+      "diagnosis": "floor_required_ungated_catastrophic_negative_transfer"
+    },
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+      "family": "TrajNet_mot",
+      "rows": 1926,
+      "selected_improvement": 0.0,
+      "endpoint_improvement": 0.0,
+      "ungated_improvement": -5.065788921924493,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.0,
+      "status": "safe_floor_blocked",
+      "validation_allowed_horizons": [],
+      "validation_block_reasons": {},
+      "h100_blocked_by_validation": false,
+      "diagnosis": "floor_required_ungated_catastrophic_negative_transfer"
+    }
+  ],
+  "positive_sources": [
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+      "family": "TrajNet_crowds",
+      "rows": 9540,
+      "selected_improvement": 0.6284225556159515,
+      "endpoint_improvement": 0.6348703044126154,
+      "ungated_improvement": 0.6191705486572323,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.8490566037735849,
+      "status": "positive_switched"
+    },
+    {
+      "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+      "family": "UCY",
+      "rows": 70585,
+      "selected_improvement": 0.5400917294600311,
+      "endpoint_improvement": 0.5526539856062076,
+      "ungated_improvement": 0.534512256889234,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.7808316214493164,
+      "status": "positive_switched"
+    }
+  ],
+  "summary": {
+    "test_source_count": 4,
+    "positive_switched_source_count": 2,
+    "safe_floor_blocked_source_count": 2,
+    "catastrophic_ungated_blocked_source_count": 2,
+    "domain_count": 3,
+    "positive_domain_count": 2,
+    "nonnegative_domain_count": 3,
+    "uniform_positive_transfer_claim_allowed": false,
+    "uniform_nonnegative_transfer_supported": true,
+    "floor_necessity_supported_for_blocked_sources": true
+  },
+  "next_required_actions": [
+    "Do not claim uniform positive source transfer for Stage43-P.",
+    "Repair blocked TrajNet_biwi and TrajNet_mot with source-specific training only if validation support becomes safe.",
+    "Keep the safety floor for blocked sources because ungated full-waypoint transfer is strongly negative.",
+    "Separate source-family labels from coarse domain labels in future paper tables."
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "uniform_positive_external_transfer_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "input_hash": "03f690138cce980204cd322ca4d46df20eb91c7d30e3cab18f4ee0139e7408ee",
+  "stage43_ba_gate": {
+    "source": "fresh_stage43_ba_tail_adapter_source_blocker_audit",
+    "gates": {
+      "stage43_p_and_az_passed": true,
+      "source_rows_audited": true,
+      "positive_and_blocked_sources_separated": true,
+      "blocked_sources_have_diagnosis": true,
+      "floor_necessity_for_blocked_sources": true,
+      "uniform_positive_transfer_not_overclaimed": true,
+      "nonnegative_domain_boundary_recorded": true,
+      "validation_blockers_mapped": true,
+      "next_actions_recorded": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 13,
+    "total": 13,
+    "verdict": "stage43_ba_tail_adapter_source_blocker_audit_pass",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "goal_complete": false
+  }
+}

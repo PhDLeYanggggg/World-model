@@ -293,8 +293,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_az_tail_adapter_reviewer_replay",
-  "current_verdict": "stage43_az_tail_adapter_reviewer_replay_pass",
+  "current_stage": "stage43_ba_tail_adapter_source_blocker_audit",
+  "current_verdict": "stage43_ba_tail_adapter_source_blocker_audit_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41300,6 +41300,63 @@
       "mean_selected_ade": 0.09750422090291977
     },
     "report": "outputs/stage43_latent_state/stage43_tail_adapter_reviewer_replay.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_ba_tail_adapter_source_blocker_audit": {
+    "source": "fresh_stage43_ba_tail_adapter_source_blocker_audit",
+    "result_source": "fresh_source_family_blocker_audit_from_stage43_p_and_az",
+    "updated_at": "2026-06-01T13:05:34.127786+00:00",
+    "verdict": "stage43_ba_tail_adapter_source_blocker_audit_pass",
+    "gate": "13 / 13",
+    "summary": {
+      "test_source_count": 4,
+      "positive_switched_source_count": 2,
+      "safe_floor_blocked_source_count": 2,
+      "catastrophic_ungated_blocked_source_count": 2,
+      "domain_count": 3,
+      "positive_domain_count": 2,
+      "nonnegative_domain_count": 3,
+      "uniform_positive_transfer_claim_allowed": false,
+      "uniform_nonnegative_transfer_supported": true,
+      "floor_necessity_supported_for_blocked_sources": true
+    },
+    "blocked_sources": [
+      {
+        "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+        "family": "TrajNet_biwi",
+        "rows": 7685,
+        "selected_improvement": 0.0,
+        "endpoint_improvement": 0.0,
+        "ungated_improvement": -10.127500515707629,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "status": "safe_floor_blocked",
+        "validation_allowed_horizons": [],
+        "validation_block_reasons": {
+          "blocked_insufficient_validation_support": 3
+        },
+        "h100_blocked_by_validation": false,
+        "diagnosis": "floor_required_ungated_catastrophic_negative_transfer"
+      },
+      {
+        "source_file": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+        "family": "TrajNet_mot",
+        "rows": 1926,
+        "selected_improvement": 0.0,
+        "endpoint_improvement": 0.0,
+        "ungated_improvement": -5.065788921924493,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0,
+        "status": "safe_floor_blocked",
+        "validation_allowed_horizons": [],
+        "validation_block_reasons": {},
+        "h100_blocked_by_validation": false,
+        "diagnosis": "floor_required_ungated_catastrophic_negative_transfer"
+      }
+    ],
+    "report": "outputs/stage43_latent_state/stage43_tail_adapter_source_blocker_audit.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false

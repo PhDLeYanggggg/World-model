@@ -4597,3 +4597,18 @@ replayed_all_t50_t100_hard_easy = `50.25%` / `51.23%` / `0.00%` / `47.88%` / `0.
 
 Stage43-AZ recomputes the Stage43-P tail-horizon full-waypoint adapter from the artifact-selected config and allowed rules. It performs no validation reselection and no test threshold tuning. This strengthens Stage43-P from a performance leader into an exact recompute replay artifact while preserving the claim boundary: dataset-local/raw-frame 2.5D only; t100 diagnostic only; no Stage5C; no SMC.
 <!-- STAGE43_AZ_TAIL_ADAPTER_REVIEWER_REPLAY:END -->
+
+<!-- STAGE43_BA_TAIL_ADAPTER_SOURCE_BLOCKER_AUDIT:START -->
+## STAGE43_BA_TAIL_ADAPTER_SOURCE_BLOCKER_AUDIT
+
+source = `fresh_stage43_ba_tail_adapter_source_blocker_audit`
+result_source = `fresh_source_family_blocker_audit_from_stage43_p_and_az`
+verdict = `stage43_ba_tail_adapter_source_blocker_audit_pass`
+gate = `13 / 13`
+positive_sources = `2 / 4`
+safe_floor_blocked_sources = `2`
+catastrophic_ungated_blocked_sources = `2`
+uniform_positive_transfer_claim_allowed = `False`
+
+Stage43-BA audits why the replayed Stage43-P tail adapter cannot be claimed as uniform positive source transfer. The source-level blocker is not hidden: TrajNet_biwi and TrajNet_mot remain floor-only because ungated full-waypoint transfer is catastrophically negative. The safety floor is therefore necessary for these slices.
+<!-- STAGE43_BA_TAIL_ADAPTER_SOURCE_BLOCKER_AUDIT:END -->

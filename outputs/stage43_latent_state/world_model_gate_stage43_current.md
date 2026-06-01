@@ -1,29 +1,29 @@
 # Stage43 Current World-Model Gate
 
-- source: `fresh_stage43_az_tail_adapter_reviewer_replay`
-- verdict: `stage43_az_tail_adapter_reviewer_replay_pass`
-- passed: `12 / 12`
-- current performance leader replayed: `True`
+- source: `fresh_stage43_ba_tail_adapter_source_blocker_audit`
+- verdict: `stage43_ba_tail_adapter_source_blocker_audit_pass`
+- passed: `13 / 13`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
 
-## Candidate Roles
+## Current Boundary
 
-- Performance leader and replayed candidate: `Stage43-P / Stage43-AZ tail adapter replay`.
-- Source-horizon replay leader remains: `Stage43-AX exact replay of source-horizon expert policy`.
-- Frozen bounded-residual artifact remains: `Stage43-AO`.
+- Stage43-P / AZ remains the performance leader and exact replay artifact.
+- Stage43-BA explains why uniform positive source transfer is still blocked.
+- Safe floor remains necessary for blocked TrajNet_biwi and TrajNet_mot sources.
 
 | gate | passed |
 | --- | --- |
-| stage43_p_artifact_present | `True` |
-| stage43_p_artifact_passed | `True` |
-| model_hash_exact | `True` |
-| feature_standardization_hashes_match | `True` |
-| split_hashes_recorded | `True` |
-| switch_hash_recorded | `True` |
-| replay_metrics_exact | `True` |
-| replayed_policy_safe | `True` |
+| stage43_p_and_az_passed | `True` |
+| source_rows_audited | `True` |
+| positive_and_blocked_sources_separated | `True` |
+| blocked_sources_have_diagnosis | `True` |
+| floor_necessity_for_blocked_sources | `True` |
+| uniform_positive_transfer_not_overclaimed | `True` |
+| nonnegative_domain_boundary_recorded | `True` |
+| validation_blockers_mapped | `True` |
+| next_actions_recorded | `True` |
 | no_future_or_test_leakage | `True` |
 | claim_boundary_not_overstated | `True` |
 | stage5c_and_smc_false | `True` |
