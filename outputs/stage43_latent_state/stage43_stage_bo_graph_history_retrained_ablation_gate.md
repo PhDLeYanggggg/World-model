@@ -1,22 +1,13 @@
-# Stage43 Current World-Model Gate
+# Stage43-BO Graph-History Retrained Ablation Gate
 
-- source: `fresh_stage43_bo_graph_history_retrained_ablation`
 - verdict: `stage43_bo_graph_history_retrained_ablation_pass_contribution_supported`
 - passed: `14 / 14`
-- protected multimodal latent state candidate: `True`
-- graph-history retrained ablation executed: `True`
+- graph-history ablation executed: `True`
 - graph-history contribution supported: `True`
 - deployable policy changed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BO executes a fresh retrained graph-history ablation under the protected full-waypoint latent protocol.
-- It compares full_graph against no_graph, current_graph_only, and history_graph_only.
-- It does not use raw scene/SDF and does not change the deployable protected policy.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |

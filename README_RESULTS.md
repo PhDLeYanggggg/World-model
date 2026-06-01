@@ -7875,3 +7875,21 @@ This makes graph-history retraining feasible next, but no retrained graph ablati
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future labels are not cached as inputs; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BN_ALL_AGENT_HISTORY_GRAPH_CACHE:END -->
+
+<!-- STAGE43_BO_GRAPH_HISTORY_RETRAINED_ABLATION:START -->
+## STAGE43_BO_GRAPH_HISTORY_RETRAINED_ABLATION
+
+source = `fresh_stage43_bo_graph_history_retrained_ablation`
+result_source = `fresh_retrained_graph_history_ablation`
+verdict = `stage43_bo_graph_history_retrained_ablation_pass_contribution_supported`
+gate = `14 / 14`
+graph_history_retrained_ablation_executed = `True`
+graph_history_contribution_supported = `True`
+deployable_policy_changed = `False`
+
+Stage43-BO fresh-trains graph-history ablation variants. Full_graph minus no_graph: all `7.73%`, t50 `15.37%`, hard/failure `6.49%`.
+
+This is retrained contribution evidence, not a deployment policy update. Raw-scene/SDF remains outside this ablation.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BO_GRAPH_HISTORY_RETRAINED_ABLATION:END -->
