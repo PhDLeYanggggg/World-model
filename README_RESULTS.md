@@ -1,74 +1,12 @@
-# Physical World Model 2.5D Results
+# M3W Results Ledger
 
-## GitHub README human project introduction refresh（2026-06-01）
+This file is the long-form experiment ledger for M3W. The root `README.md` is the public project introduction; this file keeps the detailed route history, evidence notes, gate summaries, and claim boundaries.
 
-The root `README.md` was rewritten again as the public GitHub front page in a more natural project-owner voice. The goal is that visitors read it as the project author introducing M3W: the problem, the motivation, what currently works, what failed, what is not claimed, and where the evidence lives.
+I keep the public README concise on purpose. Stage numbers, provenance labels, long metric tables, and replay details belong here, in `research_state.json`, and in the `outputs/` reports. The project boundary is unchanged: M3W is a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate, not a true 3D model, not a foundation model, and not a metric or seconds-level benchmark. Stage5C has not been executed and SMC is not enabled.
 
-Going forward, the GitHub README should not look like an assistant-written task report, stage transcript, or experiment ledger. Stage numbers, gate counts, cached/fresh provenance, and long metric tables belong in this file, `research_state.json`, and `outputs/`. The public README should stay concise, human, and project-facing.
+## Public README cleanup（2026-06-01）
 
-This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation. The technical boundary is unchanged: M3W remains a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate; it is not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
-
-## GitHub README project-owner cleanup（2026-06-01）
-
-The root `README.md` was rewritten as the public GitHub entry page in a more natural project-owner voice. It now reads like an introduction to M3W for other researchers and builders: the research question, current state, evidence that has held up, failures that still matter, and the exact claim boundary.
-
-Going forward, the GitHub front page should not read like an assistant progress log or stage transcript. Detailed stage gates, cached/fresh provenance, long metric tables, and operational ledgers belong here, in `research_state.json`, and in `outputs/`. The public README should stay concise, human, and project-facing.
-
-This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation. The technical boundary is unchanged: M3W remains a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate; it is not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
-
-## GitHub README project-owner voice refresh（2026-05-31）
-
-The root `README.md` was refreshed again as a public GitHub entry page. The goal is that the page reads like the project owner introducing M3W to other researchers, not like an AI-generated stage transcript or assistant progress log.
-
-This update keeps the public README focused on:
-
-- the research question;
-- where the project stands today;
-- what has worked;
-- what has failed;
-- the claim boundary;
-- where detailed evidence lives.
-
-Detailed stage ledgers, gate counts, cached/fresh provenance, and long metric tables should remain in `README_RESULTS.md`, `research_state.json`, and the `outputs/` reports. This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation. The technical boundary is unchanged: M3W remains a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate; it is not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
-
-## GitHub README human voice follow-up（2026-05-31）
-
-The root `README.md` has been tightened again so the GitHub front page reads like the project owner introducing M3W, not like an AI-generated task transcript. The page now leads with the research question, current state, what has worked, what failed, and the exact claim boundary.
-
-Going forward:
-
-- the public GitHub README should stay concise, human, and project-facing;
-- detailed stage numbers, gate counts, provenance labels, and long metric tables should stay in `README_RESULTS.md`, `research_state.json`, and `outputs/`;
-- public wording should avoid agent/task-log phrasing and should not sound like an assistant reporting completed instructions;
-- claim boundaries must remain explicit: M3W is still a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level; latent generative execution has not been enabled and SMC is not enabled.
-
-This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation.
-
-## Public GitHub README voice rule（2026-05-31）
-
-The root `README.md` has been refreshed as the public-facing project introduction. Going forward, the GitHub front page should read like the project owner explaining M3W to researchers and builders, not like an autogenerated agent log or stage-by-stage task transcript.
-
-Public README style rule:
-
-- lead with the research problem, current evidence, and claim boundary;
-- keep detailed stage numbers, gate counts, provenance labels, and long metric tables in `README_RESULTS.md`, `research_state.json`, and `outputs/`;
-- write in a first-person project-owner voice where appropriate;
-- do not make the page sound like it was written by an AI assistant;
-- do not exaggerate the state of the work.
-
-This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation. The technical boundary remains unchanged: M3W is still a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate; it is not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
-
-## Public README voice refresh（2026-05-29）
-
-The root `README.md` has been refreshed again to read less like an autogenerated stage ledger and more like the project owner introducing M3W to other researchers. The public GitHub entry now leads with the research question, what currently works, what failed, and what is not being claimed.
-
-This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation. Detailed gates, cached/fresh provenance, stage numbers, and long metric tables remain in `README_RESULTS.md`, `research_state.json`, and the `outputs/` reports. The claim boundary is unchanged: M3W remains a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
-
-## Public README update（2026-05-28）
-
-The root `README.md` has been rewritten as a public project introduction rather than an internal stage ledger. The GitHub front page now reads like the project owner explaining M3W to other researchers: what problem I am working on, what currently works, what failed, what I do not claim, and how to read the repository.
-
-Detailed stage numbers, cached/fresh provenance, gate counts, and long evidence tables stay here in `README_RESULTS.md`, in `research_state.json`, and in the `outputs/` reports. The public README should stay concise, human, and project-facing. The claim boundary is unchanged: M3W is currently a protected raw-frame / dataset-local 2.5D multi-agent world-state candidate, not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
+The GitHub front page has been rewritten as a project-owner introduction: what M3W is, why it exists, what has worked, what has failed, and what is not being claimed. This is a documentation/style update only. It adds no new training, conversion, download, or evaluation.
 
 ## M3W 当前权威总总结（2026-05-27）
 
