@@ -4218,3 +4218,23 @@ Stage43-AB retrains the full-waypoint latent dynamics head with the Stage43-AA t
 
 Boundary unchanged: scene proxy is not raw image/SDF, future labels are loss/eval only, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AB_SCENE_PROXY_AUGMENTED_LATENT_DYNAMICS:END -->
+
+<!-- STAGE43_AC_SCENE_PROXY_GUARDED_LATENT_POLICY:START -->
+## STAGE43_AC_SCENE_PROXY_GUARDED_LATENT_POLICY
+
+source = `fresh_stage43_ac_scene_proxy_guarded_latent_policy`
+verdict = `stage43_ac_guarded_scene_proxy_latent_candidate`
+gate = `11 / 11`
+deploy_guarded_scene_proxy_latent = `True`
+
+full_waypoint_ade_vs_floor = `41.17%`; delta_vs_stage43_m = `11.40%`
+t50_full_waypoint_ade_vs_floor = `35.42%`; delta_vs_stage43_m = `18.97%`
+hard_failure_vs_floor = `42.34%`; delta_vs_stage43_m = `13.58%`
+t100_raw_frame_diagnostic = `-17.79%`; delta_vs_stage43_m = `0.00%`
+easy_degradation = `0.00%`
+scene_proxy_override_rate = `80.12%`
+
+Stage43-AC is the guarded deployment version of Stage43-AB. It keeps the scene-proxy latent head where validation says it helps, but falls back to Stage43-M on risky slices, especially raw-frame t100.
+
+Boundary unchanged: scene proxy is not raw image/SDF, future labels are loss/eval only, t100 is raw-frame diagnostic, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AC_SCENE_PROXY_GUARDED_LATENT_POLICY:END -->
