@@ -7707,3 +7707,19 @@ source_horizon_replay_leader = `Stage43-AX`, all/t50/t100_raw/hard/easy = `23.40
 
 Stage43-AY reconciles the current evidence stack: Stage43-P is the aggregate performance leader, Stage43-AX is the source/horizon exact-replay leader, and Stage43-AO remains the frozen reviewer-replayable artifact. These are protected dataset-local/raw-frame 2.5D results, not true 3D, metric, seconds-level, foundation, Stage5C, or SMC claims.
 <!-- STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION:END -->
+
+<!-- STAGE43_AZ_TAIL_ADAPTER_REVIEWER_REPLAY:START -->
+## STAGE43_AZ_TAIL_ADAPTER_REVIEWER_REPLAY
+
+source = `fresh_stage43_az_tail_adapter_reviewer_replay`
+result_source = `fresh_exact_recompute_replay_from_stage43_p_artifact`
+verdict = `stage43_az_tail_adapter_reviewer_replay_pass`
+gate = `12 / 12`
+policy_hash = `9155067aacf42bc8d8e67745c1cf5e05b729f95a88cf65d33d88b9a06c21484b`
+model_hash_match = `True`
+replay_max_metric_diff = `0.0000000000`
+
+replayed_all_t50_t100_hard_easy = `50.25%` / `51.23%` / `0.00%` / `47.88%` / `0.00%`
+
+Stage43-AZ recomputes the Stage43-P tail-horizon full-waypoint adapter from the artifact-selected config and allowed rules. It performs no validation reselection and no test threshold tuning. This strengthens Stage43-P from a performance leader into an exact recompute replay artifact while preserving the claim boundary: dataset-local/raw-frame 2.5D only; t100 diagnostic only; no Stage5C; no SMC.
+<!-- STAGE43_AZ_TAIL_ADAPTER_REVIEWER_REPLAY:END -->

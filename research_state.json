@@ -267,8 +267,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_ay_current_candidate_reconciliation",
-  "current_verdict": "stage43_ay_current_candidate_reconciliation_pass",
+  "current_stage": "stage43_az_tail_adapter_reviewer_replay",
+  "current_verdict": "stage43_az_tail_adapter_reviewer_replay_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41194,6 +41194,86 @@
       ]
     },
     "report": "outputs/stage43_latent_state/stage43_current_candidate_reconciliation.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_az_tail_adapter_reviewer_replay": {
+    "source": "fresh_stage43_az_tail_adapter_reviewer_replay",
+    "result_source": "fresh_exact_recompute_replay_from_stage43_p_artifact",
+    "updated_at": "2026-06-01T12:28:30.304870+00:00",
+    "verdict": "stage43_az_tail_adapter_reviewer_replay_pass",
+    "gate": "12 / 12",
+    "policy_hash": "9155067aacf42bc8d8e67745c1cf5e05b729f95a88cf65d33d88b9a06c21484b",
+    "model_hash_match": true,
+    "metric_diff": {
+      "max_abs_diff": 0.0,
+      "by_metric": {
+        "full_waypoint_ade_improvement_vs_floor": {
+          "expected": 0.5025366202187915,
+          "replayed": 0.5025366202187915,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "endpoint_fde_improvement_vs_floor": {
+          "expected": 0.5115467028112946,
+          "replayed": 0.5115467028112946,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "t50_full_waypoint_ade_improvement_vs_floor": {
+          "expected": 0.5123378909285481,
+          "replayed": 0.5123378909285481,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "t50_endpoint_fde_improvement_vs_floor": {
+          "expected": 0.5512817551451819,
+          "replayed": 0.5512817551451819,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": {
+          "expected": 0.0,
+          "replayed": 0.0,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": {
+          "expected": 0.4787683745310771,
+          "replayed": 0.4787683745310771,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "easy_degradation_vs_floor": {
+          "expected": 0.0,
+          "replayed": 0.0,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        },
+        "switch_rate": {
+          "expected": 0.7044552910760453,
+          "replayed": 0.7044552910760453,
+          "signed_diff": 0.0,
+          "abs_diff": 0.0
+        }
+      }
+    },
+    "metrics": {
+      "rows": 89736,
+      "full_waypoint_ade_improvement_vs_floor": 0.5025366202187915,
+      "endpoint_fde_improvement_vs_floor": 0.5115467028112946,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.5123378909285481,
+      "t50_endpoint_fde_improvement_vs_floor": 0.5512817551451819,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4787683745310771,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.7044552910760453,
+      "harm_over_floor_ade": -0.09849859774112701,
+      "mean_floor_ade": 0.1960028111934662,
+      "mean_selected_ade": 0.09750422090291977
+    },
+    "report": "outputs/stage43_latent_state/stage43_tail_adapter_reviewer_replay.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
