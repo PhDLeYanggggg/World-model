@@ -1,0 +1,344 @@
+{
+  "source": "fresh_stage43_bl_raw_scene_graph_ablation_readiness",
+  "result_source": "fresh_readiness_audit_from_stage43_proxy_ablation_and_cache_schema",
+  "generated_at_utc": "2026-06-01T20:41:02.033584+00:00",
+  "git_commit": "72e2e22",
+  "input_artifacts": {
+    "stage43_aa_scene_proxy_tokens": "outputs/stage43_latent_state/stage43_scene_raster_proxy_tokens.json",
+    "stage43_ag_scene_proxy_retrained_ablation": "outputs/stage43_latent_state/stage43_scene_proxy_retrained_ablation.json",
+    "stage43_ah_feature_family_retrained_ablation": "outputs/stage43_latent_state/stage43_feature_family_retrained_ablation.json",
+    "stage43_ai_feature_family_multiseed": "outputs/stage43_latent_state/stage43_feature_family_multiseed_confirmation.json",
+    "stage43_x_interaction_proxy": "outputs/stage43_latent_state/stage43_interaction_validity_proxy.json",
+    "stage43_y_multimodal_head_suite": "outputs/stage43_latent_state/stage43_multimodal_latent_head_suite.json",
+    "stage43_bk_t100_reconciliation": "outputs/stage43_latent_state/stage43_t100_family_limited_reconciliation.json"
+  },
+  "input_hash": "8f4b1ab1b7df7e67a16b7db46fce3f7c203d868fc48172842c8bccecf2fd022a",
+  "input_verdicts": {
+    "stage43_aa": "stage43_aa_scene_raster_proxy_tokens_pass",
+    "stage43_ag": "stage43_ag_scene_proxy_retrained_ablation_pass",
+    "stage43_ah": "stage43_ah_feature_family_retrained_ablation_pass",
+    "stage43_ai": "stage43_ai_feature_family_multiseed_confirmation_pass",
+    "stage43_x": "stage43_x_interaction_proxy_signal_validity_proxy_diagnostic",
+    "stage43_y": "stage43_y_protected_multimodal_latent_head_suite_candidate",
+    "stage43_bk": "stage43_bk_t100_family_limited_reconciliation_pass"
+  },
+  "cache_schema": {
+    "full_waypoint_cache": {
+      "train": {
+        "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+        "exists": true,
+        "keys": [
+          "old_split",
+          "local_row",
+          "dataset",
+          "scene_id",
+          "source_file",
+          "agent_id",
+          "frame_id",
+          "horizon",
+          "current_xy",
+          "future_xy",
+          "waypoint_xy",
+          "waypoint_valid",
+          "missing_track",
+          "scale",
+          "hard",
+          "failure",
+          "easy",
+          "valid_mask",
+          "dt_frame_step",
+          "track_length"
+        ],
+        "rows": 146809,
+        "has_row_geometry": true,
+        "has_future_labels": true,
+        "has_raw_scene_keys": false,
+        "has_graph_rich_keys": false,
+        "present_raw_scene_like_keys": [],
+        "present_graph_like_keys": []
+      },
+      "val": {
+        "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+        "exists": true,
+        "keys": [
+          "old_split",
+          "local_row",
+          "dataset",
+          "scene_id",
+          "source_file",
+          "agent_id",
+          "frame_id",
+          "horizon",
+          "current_xy",
+          "future_xy",
+          "waypoint_xy",
+          "waypoint_valid",
+          "missing_track",
+          "scale",
+          "hard",
+          "failure",
+          "easy",
+          "valid_mask",
+          "dt_frame_step",
+          "track_length"
+        ],
+        "rows": 101446,
+        "has_row_geometry": true,
+        "has_future_labels": true,
+        "has_raw_scene_keys": false,
+        "has_graph_rich_keys": false,
+        "present_raw_scene_like_keys": [],
+        "present_graph_like_keys": []
+      },
+      "test": {
+        "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz",
+        "exists": true,
+        "keys": [
+          "old_split",
+          "local_row",
+          "dataset",
+          "scene_id",
+          "source_file",
+          "agent_id",
+          "frame_id",
+          "horizon",
+          "current_xy",
+          "future_xy",
+          "waypoint_xy",
+          "waypoint_valid",
+          "missing_track",
+          "scale",
+          "hard",
+          "failure",
+          "easy",
+          "valid_mask",
+          "dt_frame_step",
+          "track_length"
+        ],
+        "rows": 89736,
+        "has_row_geometry": true,
+        "has_future_labels": true,
+        "has_raw_scene_keys": false,
+        "has_graph_rich_keys": false,
+        "present_raw_scene_like_keys": [],
+        "present_graph_like_keys": []
+      }
+    },
+    "scene_proxy_cache": {
+      "train": {
+        "path": "data/stage43_scene_proxy_tokens/stage43_scene_proxy_features_train.npz",
+        "exists": true,
+        "keys": [
+          "features",
+          "feature_names",
+          "proxy_level",
+          "dataset",
+          "source_file",
+          "row_hash",
+          "feature_hash"
+        ],
+        "rows": 146809,
+        "feature_names": [
+          "scene_proxy_source_available",
+          "scene_proxy_domain_available",
+          "scene_proxy_level_source",
+          "scene_proxy_rel_x",
+          "scene_proxy_rel_y",
+          "scene_proxy_boundary_sdf",
+          "scene_proxy_route_occupancy",
+          "scene_proxy_route_density_log",
+          "scene_proxy_goal_dx_rel",
+          "scene_proxy_goal_dy_rel",
+          "scene_proxy_goal_alignment",
+          "scene_proxy_entropy_mean",
+          "scene_proxy_ambiguity_mean",
+          "scene_proxy_rows_log"
+        ],
+        "has_raw_scene_keys": false,
+        "has_graph_rich_keys": false
+      },
+      "val": {
+        "path": "data/stage43_scene_proxy_tokens/stage43_scene_proxy_features_val.npz",
+        "exists": true,
+        "keys": [
+          "features",
+          "feature_names",
+          "proxy_level",
+          "dataset",
+          "source_file",
+          "row_hash",
+          "feature_hash"
+        ],
+        "rows": 101446,
+        "feature_names": [
+          "scene_proxy_source_available",
+          "scene_proxy_domain_available",
+          "scene_proxy_level_source",
+          "scene_proxy_rel_x",
+          "scene_proxy_rel_y",
+          "scene_proxy_boundary_sdf",
+          "scene_proxy_route_occupancy",
+          "scene_proxy_route_density_log",
+          "scene_proxy_goal_dx_rel",
+          "scene_proxy_goal_dy_rel",
+          "scene_proxy_goal_alignment",
+          "scene_proxy_entropy_mean",
+          "scene_proxy_ambiguity_mean",
+          "scene_proxy_rows_log"
+        ],
+        "has_raw_scene_keys": false,
+        "has_graph_rich_keys": false
+      },
+      "test": {
+        "path": "data/stage43_scene_proxy_tokens/stage43_scene_proxy_features_test.npz",
+        "exists": true,
+        "keys": [
+          "features",
+          "feature_names",
+          "proxy_level",
+          "dataset",
+          "source_file",
+          "row_hash",
+          "feature_hash"
+        ],
+        "rows": 89736,
+        "feature_names": [
+          "scene_proxy_source_available",
+          "scene_proxy_domain_available",
+          "scene_proxy_level_source",
+          "scene_proxy_rel_x",
+          "scene_proxy_rel_y",
+          "scene_proxy_boundary_sdf",
+          "scene_proxy_route_occupancy",
+          "scene_proxy_route_density_log",
+          "scene_proxy_goal_dx_rel",
+          "scene_proxy_goal_dy_rel",
+          "scene_proxy_goal_alignment",
+          "scene_proxy_entropy_mean",
+          "scene_proxy_ambiguity_mean",
+          "scene_proxy_rows_log"
+        ],
+        "has_raw_scene_keys": false,
+        "has_graph_rich_keys": false
+      }
+    },
+    "raw_scene_tensor_ready": false,
+    "graph_rich_tensor_ready": false
+  },
+  "current_proxy_evidence": {
+    "scene_proxy_only": true,
+    "interaction_proxy_only": true,
+    "scene_proxy_delta": {
+      "full_scene_minus_no_scene_t50": 0.05791745137708437,
+      "full_scene_minus_no_scene_hard": 0.00970509279517584,
+      "full_scene_easy_degradation": 0.0958593682894453,
+      "no_scene_easy_degradation": 0.07862886616192877
+    },
+    "feature_family_delta": {
+      "full_minus_no_goal_t50": 0.09702491138532066,
+      "full_minus_no_neighbor_interaction_t50": 0.14071166115446188,
+      "full_minus_no_neighbor_interaction_hard": 0.0008959509811089506,
+      "full_features_easy_degradation": 0.0
+    },
+    "stable_positive_t50_variants": [
+      "no_neighbor_interaction",
+      "no_baseline_floor",
+      "no_domain"
+    ],
+    "interaction_head_signal": true,
+    "multimodal_head_suite_candidate": true
+  },
+  "readiness_decision": {
+    "raw_scene_retrained_ablation_ready_now": false,
+    "graph_rich_retrained_ablation_ready_now": false,
+    "proxy_retrained_ablation_available": true,
+    "raw_scene_or_graph_rich_main_claim_allowed": false,
+    "reason": "Current scene/goal/interaction evidence is useful proxy evidence, but the cache lacks raw-scene/SDF tensors and graph-rich all-agent edge tensors needed for the requested retrained raw-scene/graph-rich ablation."
+  },
+  "blocker_matrix": [
+    {
+      "blocker": "raw_scene_or_verified_sdf_tensor_missing",
+      "status": "open",
+      "evidence": "Stage43 full-waypoint cache has row geometry and future labels, but no raw scene image patch, scene_raster, scene_sdf, walkable_sdf, or homography tensor.",
+      "required_next_artifact": "stage43_raw_scene_patch_or_sdf_cache with train-only construction and row alignment hash"
+    },
+    {
+      "blocker": "graph_rich_all_agent_tensor_missing",
+      "status": "open",
+      "evidence": "Current model features include scalar neighbor/density/TTC summaries; cache lacks edge_index/edge_attr/all-agent history tensors.",
+      "required_next_artifact": "stage43_all_agent_graph_cache with past/current-only edges, masks, and no future inputs"
+    },
+    {
+      "blocker": "scene_goal_contribution_proxy_only",
+      "status": "partially_supported",
+      "evidence": "Stage43-AG fresh retrained scene proxy variants show t50/hard signal, but claim boundary says not raw image/SDF.",
+      "required_next_artifact": "retrained raw-scene/SDF ablation: full_raw_scene vs no_scene with bootstrap or multiseed"
+    },
+    {
+      "blocker": "interaction_contribution_not_graph_rich",
+      "status": "partially_supported",
+      "evidence": "Stage43-AH no_neighbor_interaction shows feature-family contribution, Stage43-X has interaction proxy labels, but neither is graph-rich all-agent dynamics.",
+      "required_next_artifact": "retrained graph-rich ablation: full_graph vs no_graph under same protected policy"
+    }
+  ],
+  "next_executable_steps": [
+    "build stage43_all_agent_graph_cache from current/past rows only",
+    "build stage43_raw_scene_patch_or_sdf_cache if legal scene images or verified SDF proxies are available",
+    "train full_graph vs no_graph and full_raw_scene vs no_scene variants with validation-selected policy",
+    "bootstrap or multiseed any promoted raw-scene/graph-rich contribution"
+  ],
+  "no_leakage_and_execution": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "new_training_executed": false,
+    "new_conversion_executed": false,
+    "fresh_readiness_audit_only": true
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "raw_scene_main_claim": false,
+    "graph_rich_interaction_main_claim": false,
+    "proxy_scene_goal_interaction_evidence_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "stage43_bl_gate": {
+    "source": "fresh_stage43_bl_raw_scene_graph_ablation_readiness",
+    "gates": {
+      "bk_precondition_passed": true,
+      "scene_proxy_tokens_passed_and_proxy_only": true,
+      "scene_proxy_retrained_ablation_exists": true,
+      "feature_family_retrained_ablation_exists": true,
+      "multiseed_feature_family_confirmation_exists": true,
+      "interaction_proxy_diagnostic_exists": true,
+      "full_waypoint_cache_has_row_geometry_and_labels": true,
+      "raw_scene_tensor_missing_not_overclaimed": true,
+      "graph_rich_tensor_missing_not_overclaimed": true,
+      "blocker_matrix_records_required_next_artifacts": true,
+      "no_new_training_or_conversion": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented",
+    "raw_scene_retrained_ablation_ready_now": false,
+    "graph_rich_retrained_ablation_ready_now": false,
+    "proxy_evidence_available": true,
+    "raw_scene_or_graph_rich_main_claim_allowed": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

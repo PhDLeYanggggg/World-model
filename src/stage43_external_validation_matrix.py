@@ -320,6 +320,7 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
             "stage43_bi_locked_candidate_paper_package_refresh_pass",
             "stage43_bj_long_objective_evidence_audit_pass_keep_goal_active",
             "stage43_bk_t100_family_limited_reconciliation_pass",
+            "stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented",
         },
         "latest_tail_adapter_candidate_present": by_role["latest_full_test_tail_adapter_candidate"]["deployable"] is True
         and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["all"] > by_role["current_best_integrated_candidate"]["metrics"]["all"]

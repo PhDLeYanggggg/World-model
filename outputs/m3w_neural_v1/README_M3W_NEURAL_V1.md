@@ -4763,3 +4763,21 @@ The blocker remains: h100 endpoint FDE is `-0.55%`, so this is not endpoint succ
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BK_T100_FAMILY_LIMITED_RECONCILIATION:END -->
+
+<!-- STAGE43_BL_RAW_SCENE_GRAPH_ABLATION_READINESS:START -->
+## STAGE43_BL_RAW_SCENE_GRAPH_ABLATION_READINESS
+
+source = `fresh_stage43_bl_raw_scene_graph_ablation_readiness`
+result_source = `fresh_readiness_audit_from_stage43_proxy_ablation_and_cache_schema`
+verdict = `stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented`
+gate = `15 / 15`
+raw_scene_retrained_ablation_ready_now = `False`
+graph_rich_retrained_ablation_ready_now = `False`
+raw_scene_or_graph_rich_main_claim_allowed = `False`
+
+Stage43-BL audits the scene/goal/interaction evidence after BK. Existing proxy evidence is real: full-scene proxy minus no-scene t50 is `5.79%`, and full minus no-neighbor/interaction t50 is `14.07%`. But the cache still lacks raw scene/SDF tensors and graph-rich all-agent edge tensors, so raw-scene or graph-rich interaction main claims remain blocked.
+
+Next executable artifacts are `stage43_all_agent_graph_cache` and `stage43_raw_scene_patch_or_sdf_cache`, followed by retrained full_graph/no_graph and full_raw_scene/no_scene ablations.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future labels are supervision/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BL_RAW_SCENE_GRAPH_ABLATION_READINESS:END -->

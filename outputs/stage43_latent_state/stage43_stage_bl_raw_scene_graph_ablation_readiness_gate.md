@@ -1,22 +1,13 @@
-# Stage43 Current World-Model Gate
+# Stage43-BL Raw-Scene / Graph-Rich Ablation Readiness Gate
 
-- source: `fresh_stage43_bl_raw_scene_graph_ablation_readiness`
 - verdict: `stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented`
 - passed: `15 / 15`
-- protected multimodal latent state candidate: `True`
 - raw scene retrained ablation ready now: `False`
 - graph-rich retrained ablation ready now: `False`
 - raw scene / graph-rich main claim allowed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BL documents that current scene/goal/interaction evidence remains proxy-heavy.
-- Raw-scene/SDF retrained ablation and graph-rich all-agent retrained ablation are not ready until their caches exist.
-- Existing proxy evidence is useful but cannot be the raw-scene or graph-rich main claim.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
