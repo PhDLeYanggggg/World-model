@@ -2677,3 +2677,20 @@ latest_candidate_hard_failure = `47.88%`
 
 I locked the current Stage43 evidence stack into a single protected multimodal latent-state candidate record. The model family has real protected latent/head/full-waypoint evidence, but it still needs the safety floor, still uses dataset-local/raw-frame units, and still has source/terms blockers for additional support data. This is not a true-3D, foundation, metric, seconds-level, Stage5C, or SMC claim.
 <!-- STAGE43_BH_PROTECTED_MULTIMODAL_LATENT_CANDIDATE_LOCK:END -->
+
+<!-- STAGE43_BI_LOCKED_CANDIDATE_PAPER_PACKAGE_REFRESH:START -->
+## STAGE43_BI_LOCKED_CANDIDATE_PAPER_PACKAGE_REFRESH
+
+source = `fresh_stage43_bi_locked_candidate_paper_package_refresh`
+result_source = `fresh_package_refresh_from_stage43_bh_candidate_lock`
+verdict = `stage43_bi_locked_candidate_paper_package_refresh_pass`
+gate = `14 / 14`
+paper_package_refreshed = `True`
+protected_multimodal_latent_state_candidate = `True`
+standalone_world_model_deployable = `False`
+latest_all_t50_hard_easy = `50.25%` / `51.23%` / `47.88%` / `0.00%`
+
+I refreshed the paper-facing package from the BH evidence lock. The current claim is now easy to state: M3W has protected multimodal latent-state candidate evidence, but it remains safety-floor protected, dataset-local/raw-frame, not true 3D/foundation, and source terms for extra data are still blocked.
+
+Boundary unchanged: no Stage5C execution, no SMC, no metric/seconds claim, and no standalone ungated deployment claim.
+<!-- STAGE43_BI_LOCKED_CANDIDATE_PAPER_PACKAGE_REFRESH:END -->

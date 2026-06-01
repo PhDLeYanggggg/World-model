@@ -1,20 +1,10 @@
-# Stage43 Current World-Model Gate
+# Stage43-BI Locked Candidate Paper Package Gate
 
-- source: `fresh_stage43_bi_locked_candidate_paper_package_refresh`
 - verdict: `stage43_bi_locked_candidate_paper_package_refresh_pass`
 - passed: `14 / 14`
-- protected multimodal latent state candidate: `True`
-- standalone world model deployable: `False`
-- long objective complete: `False`
+- paper package refreshed: `True`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BI refreshes the paper package from the BH protected candidate lock.
-- The safety floor remains required; ungated deployment is still not allowed.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, or foundation claim.
-- Source support remains blocked until source/terms/identity gates clear.
 
 | gate | passed |
 | --- | --- |
