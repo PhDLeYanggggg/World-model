@@ -2633,3 +2633,17 @@ repair_training_allowed_now = `0`
 
 I checked the local source-support options for the blocked biwi/mot families. The useful takeaway is not a new model win: biwi still needs an independent held-out source before repair training, while PETS/Town-Center/Wild-Track are technical MOT-like support candidates but still need terms/source-identity/calibration closure before guarded conversion. I am keeping these sources floor-only until those support gates clear.
 <!-- STAGE43_BE_BLOCKED_SOURCE_SUPPORT_ACQUISITION_PREFLIGHT:END -->
+
+<!-- STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET:START -->
+## STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET
+
+source = `fresh_stage43_bf_blocked_source_terms_identity_packet`
+result_source = `fresh_terms_identity_packet_from_stage43_be_local_candidates`
+verdict = `stage43_bf_blocked_source_terms_identity_packet_pass`
+gate = `15 / 15`
+dataset_packets = `3`
+conversion_ready_now = `0`
+training_allowed_now = `0`
+
+I turned the BE local support candidates into a concrete source/terms/identity packet. This is not permission and not a conversion: PETS, Town-Center, and Wild-Track still need official source and terms confirmation before guarded conversion; biwi still needs an independent held-out source. Blocked source families remain floor-only.
+<!-- STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET:END -->

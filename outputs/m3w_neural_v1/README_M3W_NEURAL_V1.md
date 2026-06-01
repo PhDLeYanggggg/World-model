@@ -3268,7 +3268,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `6d04618eb1ab7c6c4d03d4f5a3c0fcdaac23c545abd2aed1cf679e0dff48f0b2`
+- policy hash: `bddfdb645b436489829a6c6ec566567d9b6fa506c1e8f470ff32976350bd019f`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -3282,7 +3282,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `6d04618eb1ab7c6c4d03d4f5a3c0fcdaac23c545abd2aed1cf679e0dff48f0b2`
+- policy hash: `bddfdb645b436489829a6c6ec566567d9b6fa506c1e8f470ff32976350bd019f`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -4669,3 +4669,17 @@ repair_training_allowed_now = `0`
 
 I checked the local source-support options for the blocked biwi/mot families. The useful takeaway is not a new model win: biwi still needs an independent held-out source before repair training, while PETS/Town-Center/Wild-Track are technical MOT-like support candidates but still need terms/source-identity/calibration closure before guarded conversion. I am keeping these sources floor-only until those support gates clear.
 <!-- STAGE43_BE_BLOCKED_SOURCE_SUPPORT_ACQUISITION_PREFLIGHT:END -->
+
+<!-- STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET:START -->
+## STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET
+
+source = `fresh_stage43_bf_blocked_source_terms_identity_packet`
+result_source = `fresh_terms_identity_packet_from_stage43_be_local_candidates`
+verdict = `stage43_bf_blocked_source_terms_identity_packet_pass`
+gate = `15 / 15`
+dataset_packets = `3`
+conversion_ready_now = `0`
+training_allowed_now = `0`
+
+I turned the BE local support candidates into a concrete source/terms/identity packet. This is not permission and not a conversion: PETS, Town-Center, and Wild-Track still need official source and terms confirmation before guarded conversion; biwi still needs an independent held-out source. Blocked source families remain floor-only.
+<!-- STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET:END -->
