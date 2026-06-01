@@ -2590,3 +2590,17 @@ floor_only_now = `2`
 
 I checked the blocked tail-adapter sources before attempting another repair. The result is deliberately conservative: TrajNet_biwi and TrajNet_mot stay floor-only because ungated transfer is strongly negative and validation support is not strong enough to justify a source-specific switch policy.
 <!-- STAGE43_BB_BLOCKED_SOURCE_REPAIR_FEASIBILITY:END -->
+
+<!-- STAGE43_BC_BLOCKED_FAMILY_SUPPORT_SCAN:START -->
+## STAGE43_BC_BLOCKED_FAMILY_SUPPORT_SCAN
+
+source = `fresh_stage43_bc_blocked_family_support_scan`
+result_source = `fresh_raw_external_scan_for_blocked_source_family_support`
+verdict = `stage43_bc_blocked_family_support_scan_pass`
+gate = `12 / 12`
+raw_files_scanned = `59`
+blocked_families = `2`
+repair_training_allowed_now = `0`
+
+I scanned the raw TrajNet/OpenTraj files behind the blocked source families. The result is useful but conservative: biwi has possible raw support to convert, while mot lacks an independent support file. I am not training a repair from this scan; it only defines what support must be rebuilt before any safe source-specific repair can be tested.
+<!-- STAGE43_BC_BLOCKED_FAMILY_SUPPORT_SCAN:END -->

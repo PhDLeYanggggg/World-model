@@ -1,0 +1,802 @@
+{
+  "source": "fresh_stage43_bc_blocked_family_support_scan",
+  "result_source": "fresh_raw_external_scan_for_blocked_source_family_support",
+  "generated_at_utc": "2026-06-01T15:47:20.785356+00:00",
+  "git_commit": "0802b3f",
+  "input_artifacts": {
+    "stage43_bb": "outputs/stage43_latent_state/stage43_blocked_source_repair_feasibility.json",
+    "stage43_p": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json"
+  },
+  "input_verdicts": {
+    "stage43_bb": "stage43_bb_blocked_source_repair_feasibility_pass",
+    "stage43_p": "stage43_p_tail_horizon_adapter_pass_t100_still_fallback"
+  },
+  "scan_protocol": {
+    "roots": [
+      "external_data/OpenTraj/datasets/TrajNet",
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet",
+      "/Users/yangyue/Downloads/OpenTraj/datasets/TrajNet"
+    ],
+    "parsed_format": "TrajNet txt columns frame agent x y",
+    "horizon_window_counts_are_diagnostic": true,
+    "horizon_window_count_method": "same_agent_raw_frame_id_plus_horizon_exists",
+    "raw_scan_does_not_build_feature_store": true,
+    "raw_scan_does_not_train_model": true,
+    "test_threshold_tuning_allowed": false,
+    "min_validation_rows_for_future_repair": 1000
+  },
+  "raw_family_summary": {
+    "TrajNet_biwi": {
+      "file_count": 2,
+      "parseable_file_count": 1,
+      "raw_role_counts": {
+        "raw_test_dir": 1,
+        "raw_train_dir": 1
+      },
+      "rows": 2900,
+      "tracks": 145,
+      "horizon_window_counts": {
+        "10": 2755,
+        "25": 0,
+        "50": 2175,
+        "100": 1450
+      },
+      "files": [
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 2900,
+          "tracks": 145,
+          "horizon_window_counts": {
+            "10": 2755,
+            "25": 0,
+            "50": 2175,
+            "100": 1450
+          }
+        }
+      ]
+    },
+    "TrajNet_crowds": {
+      "file_count": 8,
+      "parseable_file_count": 5,
+      "raw_role_counts": {
+        "raw_test_dir": 3,
+        "raw_train_dir": 5
+      },
+      "rows": 44220,
+      "tracks": 2211,
+      "horizon_window_counts": {
+        "10": 42009,
+        "25": 0,
+        "50": 33165,
+        "100": 22110
+      },
+      "files": [
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 1200,
+          "tracks": 60,
+          "horizon_window_counts": {
+            "10": 1140,
+            "25": 0,
+            "50": 900,
+            "100": 600
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 7580,
+          "tracks": 379,
+          "horizon_window_counts": {
+            "10": 7201,
+            "25": 0,
+            "50": 5685,
+            "100": 3790
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 3600,
+          "tracks": 180,
+          "horizon_window_counts": {
+            "10": 3420,
+            "25": 0,
+            "50": 2700,
+            "100": 1800
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 17820,
+          "tracks": 891,
+          "horizon_window_counts": {
+            "10": 16929,
+            "25": 0,
+            "50": 13365,
+            "100": 8910
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 14020,
+          "tracks": 701,
+          "horizon_window_counts": {
+            "10": 13319,
+            "25": 0,
+            "50": 10515,
+            "100": 7010
+          }
+        }
+      ]
+    },
+    "TrajNet_mot": {
+      "file_count": 1,
+      "parseable_file_count": 1,
+      "raw_role_counts": {
+        "raw_train_dir": 1
+      },
+      "rows": 2140,
+      "tracks": 107,
+      "horizon_window_counts": {
+        "10": 1605,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "files": [
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 2140,
+          "tracks": 107,
+          "horizon_window_counts": {
+            "10": 1605,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        }
+      ]
+    },
+    "other": {
+      "file_count": 48,
+      "parseable_file_count": 31,
+      "raw_role_counts": {
+        "raw_test_dir": 17,
+        "raw_train_dir": 31
+      },
+      "rows": 179700,
+      "tracks": 8985,
+      "horizon_window_counts": {
+        "10": 0,
+        "25": 0,
+        "50": 0,
+        "100": 0
+      },
+      "files": [
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_0.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/coupa_1.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/gates_2.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_0.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_1.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_3.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/hyang_8.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_0.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_1.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_2.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/little_3.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_5.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/nexus_6.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_0.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_1.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_2.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Test/stanford/quad_3.txt",
+          "raw_role": "raw_test_dir",
+          "rows": 0,
+          "tracks": 0,
+          "horizon_window_counts": {}
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/bookstore_0.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 16100,
+          "tracks": 805,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/bookstore_1.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 10880,
+          "tracks": 544,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/bookstore_2.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 8460,
+          "tracks": 423,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/bookstore_3.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 8460,
+          "tracks": 423,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/coupa_3.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 12780,
+          "tracks": 639,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_0.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 12960,
+          "tracks": 648,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_1.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 15660,
+          "tracks": 783,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_2.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 320,
+          "tracks": 16,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_3.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 8860,
+          "tracks": 443,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/deathCircle_4.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 120,
+          "tracks": 6,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_0.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 2180,
+          "tracks": 109,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_1.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 5360,
+          "tracks": 268,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_3.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 6440,
+          "tracks": 322,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_4.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 1460,
+          "tracks": 73,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_5.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 680,
+          "tracks": 34,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_6.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 400,
+          "tracks": 20,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_7.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 480,
+          "tracks": 24,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/gates_8.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 1860,
+          "tracks": 93,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/hyang_4.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 1520,
+          "tracks": 76,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/hyang_5.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 7960,
+          "tracks": 398,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/hyang_6.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 6540,
+          "tracks": 327,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/hyang_7.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 900,
+          "tracks": 45,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/hyang_9.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 20,
+          "tracks": 1,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_0.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 2620,
+          "tracks": 131,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_1.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 13500,
+          "tracks": 675,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_2.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 9820,
+          "tracks": 491,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_3.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 1500,
+          "tracks": 75,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_4.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 1260,
+          "tracks": 63,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_7.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 6880,
+          "tracks": 344,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_8.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 7200,
+          "tracks": 360,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        },
+        {
+          "path": "external_data/OpenTraj/datasets/TrajNet/Train/stanford/nexus_9.txt",
+          "raw_role": "raw_train_dir",
+          "rows": 6520,
+          "tracks": 326,
+          "horizon_window_counts": {
+            "10": 0,
+            "25": 0,
+            "50": 0,
+            "100": 0
+          }
+        }
+      ]
+    }
+  },
+  "blocked_family_actions": [
+    {
+      "family": "TrajNet_biwi",
+      "raw_file_count": 2,
+      "raw_train_dir_files": 1,
+      "raw_test_dir_files": 1,
+      "raw_t50_candidate_windows": 2175,
+      "raw_t100_candidate_windows": 1450,
+      "current_train_family_rows": 0,
+      "current_val_family_rows": 459,
+      "current_test_family_rows": 7685,
+      "support_candidate_exists_in_raw_scan": true,
+      "repair_training_allowed_now": false,
+      "blockers": [
+        "current_feature_store_has_no_train_family_rows",
+        "current_validation_support_below_threshold",
+        "existing_ungated_transfer_catastrophic_negative"
+      ],
+      "recommendation": "rebuild_source_family_split_with_raw_candidate_support_before_any_repair_training"
+    },
+    {
+      "family": "TrajNet_mot",
+      "raw_file_count": 1,
+      "raw_train_dir_files": 1,
+      "raw_test_dir_files": 0,
+      "raw_t50_candidate_windows": 0,
+      "raw_t100_candidate_windows": 0,
+      "current_train_family_rows": 0,
+      "current_val_family_rows": 0,
+      "current_test_family_rows": 1926,
+      "support_candidate_exists_in_raw_scan": false,
+      "repair_training_allowed_now": false,
+      "blockers": [
+        "current_feature_store_has_no_train_family_rows",
+        "current_validation_support_below_threshold",
+        "raw_scan_has_no_t50_candidate_windows",
+        "existing_ungated_transfer_catastrophic_negative",
+        "single_source_family_no_independent_support_file"
+      ],
+      "recommendation": "acquire_additional_source_family_data_before_repair_training"
+    }
+  ],
+  "summary": {
+    "raw_file_count": 59,
+    "parseable_raw_file_count": 38,
+    "blocked_family_count": 2,
+    "blocked_family_with_raw_support_candidate_count": 1,
+    "repair_training_allowed_now_count": 0
+  },
+  "next_required_actions": [
+    "For TrajNet_biwi, rebuild a legal source-family support split using raw biwi candidates before repair training.",
+    "For TrajNet_mot, acquire or locate another independent MOT-like source; the current scan finds no independent validation support.",
+    "After any support conversion, rerun no-leakage and validation-only support gates before evaluating test.",
+    "Keep Stage43-P/AZ floor-only behavior on blocked sources until support gates clear."
+  ],
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "uniform_positive_external_transfer_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "input_hash": "4e34168e45c471d908574524ac1e218b55a9c9732348d2a603bdb291e079bde5",
+  "stage43_bc_gate": {
+    "source": "fresh_stage43_bc_blocked_family_support_scan",
+    "gates": {
+      "stage43_bb_precondition_passed": true,
+      "raw_external_sources_scanned": true,
+      "raw_parseability_reported": true,
+      "blocked_families_have_actions": true,
+      "support_candidates_separated_from_training_permission": true,
+      "mot_blocker_recorded": true,
+      "biwi_support_candidate_recorded": true,
+      "next_actions_recorded": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_bc_blocked_family_support_scan_pass",
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "goal_complete": false
+  }
+}

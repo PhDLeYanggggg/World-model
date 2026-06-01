@@ -293,8 +293,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_bb_blocked_source_repair_feasibility",
-  "current_verdict": "stage43_bb_blocked_source_repair_feasibility_pass",
+  "current_stage": "stage43_bc_blocked_family_support_scan",
+  "current_verdict": "stage43_bc_blocked_family_support_scan_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41512,6 +41512,66 @@
       }
     ],
     "report": "outputs/stage43_latent_state/stage43_blocked_source_repair_feasibility.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bc_blocked_family_support_scan": {
+    "source": "fresh_stage43_bc_blocked_family_support_scan",
+    "result_source": "fresh_raw_external_scan_for_blocked_source_family_support",
+    "updated_at": "2026-06-01T15:47:20.785356+00:00",
+    "verdict": "stage43_bc_blocked_family_support_scan_pass",
+    "gate": "12 / 12",
+    "summary": {
+      "raw_file_count": 59,
+      "parseable_raw_file_count": 38,
+      "blocked_family_count": 2,
+      "blocked_family_with_raw_support_candidate_count": 1,
+      "repair_training_allowed_now_count": 0
+    },
+    "blocked_family_actions": [
+      {
+        "family": "TrajNet_biwi",
+        "raw_file_count": 2,
+        "raw_train_dir_files": 1,
+        "raw_test_dir_files": 1,
+        "raw_t50_candidate_windows": 2175,
+        "raw_t100_candidate_windows": 1450,
+        "current_train_family_rows": 0,
+        "current_val_family_rows": 459,
+        "current_test_family_rows": 7685,
+        "support_candidate_exists_in_raw_scan": true,
+        "repair_training_allowed_now": false,
+        "blockers": [
+          "current_feature_store_has_no_train_family_rows",
+          "current_validation_support_below_threshold",
+          "existing_ungated_transfer_catastrophic_negative"
+        ],
+        "recommendation": "rebuild_source_family_split_with_raw_candidate_support_before_any_repair_training"
+      },
+      {
+        "family": "TrajNet_mot",
+        "raw_file_count": 1,
+        "raw_train_dir_files": 1,
+        "raw_test_dir_files": 0,
+        "raw_t50_candidate_windows": 0,
+        "raw_t100_candidate_windows": 0,
+        "current_train_family_rows": 0,
+        "current_val_family_rows": 0,
+        "current_test_family_rows": 1926,
+        "support_candidate_exists_in_raw_scan": false,
+        "repair_training_allowed_now": false,
+        "blockers": [
+          "current_feature_store_has_no_train_family_rows",
+          "current_validation_support_below_threshold",
+          "raw_scan_has_no_t50_candidate_windows",
+          "existing_ungated_transfer_catastrophic_negative",
+          "single_source_family_no_independent_support_file"
+        ],
+        "recommendation": "acquire_additional_source_family_data_before_repair_training"
+      }
+    ],
+    "report": "outputs/stage43_latent_state/stage43_blocked_family_support_scan.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
