@@ -98,3 +98,37 @@ def test_gate_blocks_easy_harm_deployment(monkeypatch) -> None:
     gate = m._gate(_payload(metrics, deploy=True))
     assert gate["gates"]["easy_preserved"] is False
     assert gate["deploy_neural_full_waypoint"] is False
+
+
+def test_search_policy_rejects_degenerate_all_switch() -> None:
+    ds = m.WaypointSplit(
+        split="val",
+        x=np.zeros((4, 3), dtype=np.float32),
+        waypoint_delta=np.zeros((4, 4, 2), dtype=np.float32),
+        waypoint_valid=np.ones((4, 4), dtype=bool),
+        floor_waypoint_delta=np.ones((4, 4, 2), dtype=np.float32),
+        floor_ade=np.ones(4, dtype=np.float32),
+        floor_fde=np.ones(4, dtype=np.float32),
+        y_failure=np.zeros(4, dtype=np.float32),
+        y_gain=np.zeros(4, dtype=np.float32),
+        y_harm=np.zeros(4, dtype=np.float32),
+        y_density=np.zeros(4, dtype=np.float32),
+        horizon=np.asarray([50, 50, 100, 100]),
+        domain=np.asarray(["UCY", "UCY", "TrajNet", "TrajNet"]),
+        source_file=np.asarray(["a", "b", "c", "d"]),
+        scene_id=np.asarray(["s", "s", "t", "t"]),
+        hard=np.asarray([True, True, False, False]),
+        failure=np.asarray([False, False, False, False]),
+        easy=np.asarray([False, False, True, True]),
+        scale=np.ones(4, dtype=np.float32),
+        feature_names=["a", "b", "c"],
+    )
+    pred = {
+        "waypoint": np.zeros((4, 4, 2), dtype=np.float32),
+        "gain": np.ones(4, dtype=np.float32),
+        "harm": np.zeros(4, dtype=np.float32),
+        "failure": np.asarray([0.25, 0.25, 0.05, 0.05], dtype=np.float32),
+    }
+    selected = m._search_policy(ds, pred)
+    assert selected["metrics"]["switch_rate"] <= 0.90
+    assert selected["policy"] != {"gain_threshold": 0.0, "harm_threshold": 1.0, "failure_threshold": 0.0}

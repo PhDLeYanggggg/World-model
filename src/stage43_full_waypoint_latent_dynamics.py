@@ -534,23 +534,49 @@ def _select_with_policy(ds: WaypointSplit, pred: Mapping[str, np.ndarray], polic
 
 def _search_policy(val: WaypointSplit, pred: Mapping[str, np.ndarray]) -> dict[str, Any]:
     best: dict[str, Any] | None = None
+    # A deployable protected policy must actually use the floor.  The previous
+    # objective could select an all-switch policy when validation easy rows
+    # happened not to degrade, which is too brittle for Stage43 safety claims.
+    max_switch_rate = 0.90
     for gain in [0.0, 0.25, 0.45, 0.55, 0.65, 0.75, 0.85]:
         for harm in [0.15, 0.25, 0.35, 0.50, 0.75, 1.00]:
             for failure in [0.0, 0.10, 0.20, 0.35, 0.50]:
                 policy = {"gain_threshold": gain, "harm_threshold": harm, "failure_threshold": failure}
                 selected_ade, selected_fde, switched = _select_with_policy(val, pred, policy)
                 metrics = _metrics(val, selected_ade, selected_fde, switched)
+                degenerate_all_switch = (
+                    gain <= 0.0
+                    and harm >= 1.0
+                    and failure <= 0.0
+                    and metrics["switch_rate"] >= max_switch_rate
+                )
+                if metrics["easy_degradation_vs_floor"] > 0.02:
+                    continue
+                if metrics["switch_rate"] > max_switch_rate:
+                    continue
+                if degenerate_all_switch:
+                    continue
                 objective = (
                     metrics["full_waypoint_ade_improvement_vs_floor"]
                     + 1.2 * metrics["t50_full_waypoint_ade_improvement_vs_floor"]
                     + 0.8 * metrics["hard_failure_full_waypoint_ade_improvement_vs_floor"]
-                    - 20.0 * max(0.0, metrics["easy_degradation_vs_floor"] - 0.02)
-                    - 0.05 * metrics["switch_rate"]
+                    - 0.15 * metrics["switch_rate"]
                 )
                 row = {"policy": policy, "metrics": metrics, "objective": float(objective)}
                 if best is None or row["objective"] > best["objective"]:
                     best = row
-    assert best is not None
+    if best is None:
+        # Honest diagnostic fallback: if no validation-safe switching policy
+        # exists, keep the floor rather than deploying an unsafe neural head.
+        selected_ade = val.floor_ade.copy()
+        selected_fde = val.floor_fde.copy()
+        switched = np.zeros(len(val.x), dtype=bool)
+        return {
+            "policy": {"gain_threshold": 1.01, "harm_threshold": -0.01, "failure_threshold": 1.01},
+            "metrics": _metrics(val, selected_ade, selected_fde, switched),
+            "objective": 0.0,
+            "diagnostic": "no_validation_safe_switching_policy_found_keep_floor",
+        }
     return best
 
 

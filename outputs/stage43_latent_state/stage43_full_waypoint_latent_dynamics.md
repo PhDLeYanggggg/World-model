@@ -20,29 +20,29 @@
 ## Protected Test Metrics vs Full-Waypoint Floor
 
 - rows: `16000`
-- full-waypoint ADE improvement: `29.77%`
-- endpoint FDE improvement: `39.59%`
-- t50 full-waypoint ADE improvement: `16.45%`
-- t50 endpoint FDE improvement: `28.82%`
-- t100 raw-frame diagnostic: `-17.79%`
-- hard/failure full-waypoint ADE improvement: `28.75%`
+- full-waypoint ADE improvement: `37.23%`
+- endpoint FDE improvement: `45.29%`
+- t50 full-waypoint ADE improvement: `32.94%`
+- t50 endpoint FDE improvement: `47.25%`
+- t100 raw-frame diagnostic: `-27.90%`
+- hard/failure full-waypoint ADE improvement: `38.77%`
 - easy degradation: `0.00%`
-- switch rate: `68.91%`
+- switch rate: `89.76%`
 
 ## Bootstrap CI
 
 - bootstrap n: `1000`
-- full-waypoint ADE improvement CI: `[28.90%, 30.69%]`
-- t50 full-waypoint ADE improvement CI: `[14.88%, 17.87%]`
-- hard/failure ADE improvement CI: `[27.79%, 29.71%]`
-- easy degradation CI: `[0.00%, 0.00%]`
+- full-waypoint ADE improvement CI: `[36.31%, 38.21%]`
+- t50 full-waypoint ADE improvement CI: `[31.46%, 34.39%]`
+- hard/failure ADE improvement CI: `[37.74%, 39.82%]`
+- easy degradation CI: `[0.00%, 1.13%]`
 
 ## Ungated Neural Diagnostic
 
-- full-waypoint ADE improvement: `16.29%`
-- t50 full-waypoint ADE improvement: `16.25%`
-- hard/failure full-waypoint ADE improvement: `18.13%`
-- easy degradation: `55.72%`
+- full-waypoint ADE improvement: `36.01%`
+- t50 full-waypoint ADE improvement: `30.30%`
+- hard/failure full-waypoint ADE improvement: `36.97%`
+- easy degradation: `7.86%`
 
 ## No-Leakage Boundary
 

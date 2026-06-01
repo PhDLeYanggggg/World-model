@@ -7077,11 +7077,11 @@ Result source: `fresh_run`. A torch latent dynamics head was trained on the froz
 - gate: `11 / 11`
 - verdict: `stage43_m_protected_full_waypoint_latent_candidate_pass`
 - deploy neural full-waypoint head: `True`
-- full-waypoint ADE improvement vs floor: `29.77%`
-- t50 full-waypoint ADE improvement vs floor: `16.45%`
-- hard/failure full-waypoint ADE improvement vs floor: `28.75%`
+- full-waypoint ADE improvement vs floor: `37.23%`
+- t50 full-waypoint ADE improvement vs floor: `32.94%`
+- hard/failure full-waypoint ADE improvement vs floor: `38.77%`
 - easy degradation: `0.00%`
-- t50 bootstrap CI: `[14.88%, 17.87%]`
+- t50 bootstrap CI: `[31.46%, 34.39%]`
 
 Claim boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds-level claim; Stage5C not executed; SMC not enabled.
 <!-- STAGE43_M_FULL_WAYPOINT_LATENT_DYNAMICS:END -->
