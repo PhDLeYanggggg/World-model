@@ -4359,3 +4359,20 @@ Stage43-AJ consolidates current Stage43 floor evidence: protected-vs-ungated neu
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AJ_SAFETY_FLOOR_NECESSITY_AUDIT:END -->
+
+<!-- STAGE43_AK_SELF_GATE_CONFORMAL_AUDIT:START -->
+## STAGE43_AK_SELF_GATE_CONFORMAL_AUDIT
+
+source = `fresh_stage43_ak_self_gate_conformal_audit`
+result_source = `fresh_replay_and_audit_over_frozen_stage43_m_checkpoint`
+verdict = `stage43_ak_self_gate_conformal_audit_pass`
+gate = `12 / 12`
+stored_policy_replay_max_abs_diff = `0.00000000`
+stored_self_gate_all_t50_easy = `29.77%` / `16.45%` / `0.00%`
+ungated_easy_t100 = `55.72%` / `-72.12%`
+conformal_style_all_t50_t100_easy = `32.41%` / `16.45%` / `0.00%` / `0.00%`
+
+Stage43-AK replayed the frozen Stage43-M checkpoint and policy, then compared stored self-gate, fresh self-gate search, ungated neural deployment, and a validation-calibrated conformal-style h100/easy guard. The audit keeps the global safety floor: ungated neural remains unsafe, while guarded policies preserve easy cases.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AK_SELF_GATE_CONFORMAL_AUDIT:END -->
