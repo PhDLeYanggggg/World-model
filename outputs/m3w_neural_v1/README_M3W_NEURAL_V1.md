@@ -3268,7 +3268,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `25e04b1eb656434d33de3202c6e9e87f52936cdd13d2882b844f8247bb0eae74`
+- policy hash: `6d04618eb1ab7c6c4d03d4f5a3c0fcdaac23c545abd2aed1cf679e0dff48f0b2`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -3282,7 +3282,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `25e04b1eb656434d33de3202c6e9e87f52936cdd13d2882b844f8247bb0eae74`
+- policy hash: `6d04618eb1ab7c6c4d03d4f5a3c0fcdaac23c545abd2aed1cf679e0dff48f0b2`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -4565,3 +4565,19 @@ Replay max metric diff vs AW artifact: `0.0000000000`. Policy hash `824b4be3be96
 
 Decision: reviewer replay passed = `True`; candidate for deployment update = `True`. This remains dataset-local/raw-frame 2.5D evidence; Stage5C and SMC remain disabled.
 <!-- STAGE43_AX_SOURCE_HORIZON_EXPERT_REPLAY:END -->
+
+<!-- STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION:START -->
+## STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION
+
+source = `fresh_stage43_ay_current_candidate_reconciliation`
+result_source = `fresh_reconciliation_from_stage43_p_ap_ao_ax_aq`
+verdict = `stage43_ay_current_candidate_reconciliation_pass`
+gate = `12 / 12`
+current_candidate_supported = `True`
+long_objective_complete = `False`
+
+performance_leader = `Stage43-P`, all/t50/t100_raw/hard/easy = `50.25%` / `51.23%` / `0.00%` / `47.88%` / `0.00%`
+source_horizon_replay_leader = `Stage43-AX`, all/t50/t100_raw/hard/easy = `23.40%` / `12.80%` / `1.35%` / `24.73%` / `0.00%`
+
+Stage43-AY reconciles the current evidence stack: Stage43-P is the aggregate performance leader, Stage43-AX is the source/horizon exact-replay leader, and Stage43-AO remains the frozen reviewer-replayable artifact. These are protected dataset-local/raw-frame 2.5D results, not true 3D, metric, seconds-level, foundation, Stage5C, or SMC claims.
+<!-- STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION:END -->

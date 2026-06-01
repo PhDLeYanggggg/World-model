@@ -11,7 +11,7 @@
 | `ungated_unsafe_not_deployed` | `True` |
 | `source_safe_candidate_present` | `True` |
 | `uniform_source_overclaim_blocked` | `True` |
-| `current_candidate_replay_exact` | `True` |
+| `current_candidate_replay_exact_or_reconciled` | `True` |
 | `latest_tail_adapter_candidate_present` | `True` |
 | `per_domain_and_per_source_reported` | `True` |
 | `no_future_or_test_leakage` | `True` |

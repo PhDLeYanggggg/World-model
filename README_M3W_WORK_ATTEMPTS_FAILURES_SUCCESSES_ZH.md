@@ -2529,3 +2529,19 @@ Replay max metric diff vs AW artifact: `0.0000000000`. Policy hash `824b4be3be96
 
 Decision: reviewer replay passed = `True`; candidate for deployment update = `True`. This remains dataset-local/raw-frame 2.5D evidence; Stage5C and SMC remain disabled.
 <!-- STAGE43_AX_SOURCE_HORIZON_EXPERT_REPLAY:END -->
+
+<!-- STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION:START -->
+## STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION
+
+source = `fresh_stage43_ay_current_candidate_reconciliation`
+result_source = `fresh_reconciliation_from_stage43_p_ap_ao_ax_aq`
+verdict = `stage43_ay_current_candidate_reconciliation_pass`
+gate = `12 / 12`
+current_candidate_supported = `True`
+long_objective_complete = `False`
+
+performance_leader = `Stage43-P`, all/t50/t100_raw/hard/easy = `50.25%` / `51.23%` / `0.00%` / `47.88%` / `0.00%`
+source_horizon_replay_leader = `Stage43-AX`, all/t50/t100_raw/hard/easy = `23.40%` / `12.80%` / `1.35%` / `24.73%` / `0.00%`
+
+Stage43-AY reconciles the current evidence stack: Stage43-P is the aggregate performance leader, Stage43-AX is the source/horizon exact-replay leader, and Stage43-AO remains the frozen reviewer-replayable artifact. These are protected dataset-local/raw-frame 2.5D results, not true 3D, metric, seconds-level, foundation, Stage5C, or SMC claims.
+<!-- STAGE43_AY_CURRENT_CANDIDATE_RECONCILIATION:END -->

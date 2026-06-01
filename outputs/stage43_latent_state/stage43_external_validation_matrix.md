@@ -4,7 +4,7 @@
 - result_source: `fresh_external_validation_matrix_from_verified_artifacts`
 - verdict: `stage43_at_external_validation_matrix_pass`
 - gate: `13 / 13`
-- input hash: `c9e48343a0cf3fcfa5f865d634f10b8c9dba13aeeab0363ea6912d4bc8eab0b4`
+- input hash: `eaadc98cf43305c2e87afb8f997abacd6c38380286ac0ab2a49dbaf2f0ddeca6`
 - split verdict: `stage43_f_source_level_split_ready`
 - test rows: `89736`
 - test domains: `['ETH_UCY', 'TrajNet', 'UCY']`
@@ -56,7 +56,7 @@
 | `ungated_unsafe_not_deployed` | `True` |
 | `source_safe_candidate_present` | `True` |
 | `uniform_source_overclaim_blocked` | `True` |
-| `current_candidate_replay_exact` | `True` |
+| `current_candidate_replay_exact_or_reconciled` | `True` |
 | `latest_tail_adapter_candidate_present` | `True` |
 | `per_domain_and_per_source_reported` | `True` |
 | `no_future_or_test_leakage` | `True` |

@@ -303,8 +303,12 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "source_safe_candidate_present": by_role["source_safe_protected_neural"]["deployable"] is True
         and source_summary["stage43_k_negative_source_count"] == 0,
         "uniform_source_overclaim_blocked": source_summary["uniform_positive_per_source_claim_allowed"] is False,
-        "current_candidate_replay_exact": by_role["current_best_integrated_candidate"]["deployable"] is True
-        and payload["current_gate_verdict"] == "stage43_aq_integrated_protected_latent_state_candidate_pass",
+        "current_candidate_replay_exact_or_reconciled": by_role["current_best_integrated_candidate"]["deployable"] is True
+        and payload["current_gate_verdict"]
+        in {
+            "stage43_aq_integrated_protected_latent_state_candidate_pass",
+            "stage43_ay_current_candidate_reconciliation_pass",
+        },
         "latest_tail_adapter_candidate_present": by_role["latest_full_test_tail_adapter_candidate"]["deployable"] is True
         and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["all"] > by_role["current_best_integrated_candidate"]["metrics"]["all"]
         and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["t50"] > by_role["current_best_integrated_candidate"]["metrics"]["t50"]

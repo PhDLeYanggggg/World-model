@@ -267,8 +267,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_ap_paper_evidence_refresh",
-  "current_verdict": "stage43_ap_paper_evidence_refresh_pass",
+  "current_stage": "stage43_ay_current_candidate_reconciliation",
+  "current_verdict": "stage43_ay_current_candidate_reconciliation_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -18702,7 +18702,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "11b438b713971fa34db9a4470c859b035acda77902f93c107cbb76d53dafff19",
+      "policy_hash": "6d04618eb1ab7c6c4d03d4f5a3c0fcdaac23c545abd2aed1cf679e0dff48f0b2",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -36377,7 +36377,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "7fdb2f0d96701ee9d8946873d309a9348d2112b3af7f8f8afb8b69c8c83011aa",
+      "package_hash": "7d6248f9e756bc15fe000509ff4fe5a6325953a13f4d9ef7b94e3be4f7540c0c",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -36458,8 +36458,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "11b438b713971fa34db9a4470c859b035acda77902f93c107cbb76d53dafff19",
-        "policy_artifact_sha256": "c7fec40c49e4be4267e10ef0711299abdccd32cd98c6414686481c2a826a85a5",
+        "policy_hash": "6d04618eb1ab7c6c4d03d4f5a3c0fcdaac23c545abd2aed1cf679e0dff48f0b2",
+        "policy_artifact_sha256": "a2b610f6a0264ab01b5739cd43bb883046e0fce685d64b58cab13026ceb69eff",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -40973,5 +40973,229 @@
       "stage5c_executed": false,
       "smc_enabled": false
     }
+  },
+  "stage43_ay_current_candidate_reconciliation": {
+    "source": "fresh_stage43_ay_current_candidate_reconciliation",
+    "result_source": "fresh_reconciliation_from_stage43_p_ap_ao_ax_aq",
+    "updated_at": "2026-06-01T11:58:06.059565+00:00",
+    "verdict": "stage43_ay_current_candidate_reconciliation_pass",
+    "gate": "12 / 12",
+    "current_candidate_supported": true,
+    "goal_complete": false,
+    "performance_leader": {
+      "name": "Stage43-P protected tail-horizon full-waypoint adapter",
+      "artifact": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json",
+      "policy_hash": "03497313f878a1ec69fd7d2824842fee0acfa79c38dc9d667c6d6ac53ef4c331",
+      "role": "best aggregate protected full-waypoint performance evidence",
+      "metrics": {
+        "all": 0.5025366202187915,
+        "endpoint": 0.5115467028112946,
+        "t50": 0.5123378909285481,
+        "t50_endpoint": 0.5512817551451819,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": 0.4787683745310771,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.7044552910760453
+      },
+      "bootstrap_ci": {
+        "all": {
+          "low": 0.49955394016048166,
+          "mean": 0.5024743525983716,
+          "high": 0.5052649865966246,
+          "rows": 89736
+        },
+        "t50": {
+          "low": 0.5075613281849501,
+          "mean": 0.5123592169732774,
+          "high": 0.5173551680868302,
+          "rows": 21754
+        },
+        "hard_failure": {
+          "low": 0.4751867865091124,
+          "mean": 0.4787843200692615,
+          "high": 0.4822067418814998,
+          "rows": 70119
+        },
+        "easy_degradation": {
+          "low": 0.0,
+          "mean": 0.0,
+          "high": 0.0,
+          "rows": 26927
+        }
+      },
+      "source_status": {
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "positive_all_domains": 2,
+        "nonnegative_all_domains": 3,
+        "uniform_positive_transfer": false,
+        "domain_metrics": {
+          "ETH_UCY": {
+            "rows": 70585,
+            "full_waypoint_ade_improvement_vs_floor": 0.5400917294600311,
+            "endpoint_fde_improvement_vs_floor": 0.5526539856062076,
+            "ungated_full_waypoint_ade_improvement_vs_floor": 0.534512256889234,
+            "easy_degradation_vs_floor": 0.0,
+            "switch_rate": 0.7808316214493164,
+            "mean_floor_ade": 0.1912616640329361,
+            "mean_selected_ade": 0.08796282112598419,
+            "mean_ungated_ade": 0.089029960334301
+          },
+          "TrajNet": {
+            "rows": 9611,
+            "full_waypoint_ade_improvement_vs_floor": 0.0,
+            "endpoint_fde_improvement_vs_floor": 0.0,
+            "ungated_full_waypoint_ade_improvement_vs_floor": -9.07911608424036,
+            "easy_degradation_vs_floor": 0.0,
+            "switch_rate": 0.0,
+            "mean_floor_ade": 0.1691557615995407,
+            "mean_selected_ade": 0.1691557615995407,
+            "mean_ungated_ade": 1.7049405574798584
+          },
+          "UCY": {
+            "rows": 9540,
+            "full_waypoint_ade_improvement_vs_floor": 0.6284225556159515,
+            "endpoint_fde_improvement_vs_floor": 0.6348703044126154,
+            "ungated_full_waypoint_ade_improvement_vs_floor": 0.6191705486572323,
+            "easy_degradation_vs_floor": 0.0,
+            "switch_rate": 0.8490566037735849,
+            "mean_floor_ade": 0.2581287622451782,
+            "mean_selected_ade": 0.095914825797081,
+            "mean_ungated_ade": 0.09830303490161896
+          }
+        }
+      },
+      "deployment_boundary": [
+        "Strongest aggregate evidence, but it is still floor-protected.",
+        "TrajNet is safely floored rather than positively improved under this role.",
+        "h100/t100 remains raw-frame diagnostic and guarded."
+      ]
+    },
+    "source_horizon_replay_leader": {
+      "name": "Stage43-AX exact replay of source-horizon expert policy",
+      "artifact": "outputs/stage43_latent_state/stage43_source_horizon_expert_replay.json",
+      "policy_hash": "824b4be3be967cc96872fa8c627eb141e9859f2a01eb15d92697507441e38f22",
+      "row_hash": "9d27e3a5fba7583152ed8fb175f21685e989a7be93f23d12c2e4aba36bd1212c",
+      "switch_hash": "57fbceb1da086de79e55905f9e9b537e91162b743b76776e5e50dea6651975c9",
+      "role": "best exact-replayed source/horizon safety evidence",
+      "metrics": {
+        "all": 0.23399099872584705,
+        "t50": 0.12802952405017165,
+        "t100_raw_frame_diagnostic": 0.013512996394212884,
+        "hard_failure": 0.24727774089214272,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.193690380672194
+      },
+      "bootstrap_ci": {
+        "all": {
+          "rows": 89736,
+          "mean": 0.23399099872584705,
+          "ci_low": 0.2304691428969851,
+          "ci_high": 0.23755351906392716,
+          "bootstrap_n": 1000
+        },
+        "t50": {
+          "rows": 21754,
+          "mean": 0.12802952405017165,
+          "ci_low": 0.12155913952593575,
+          "ci_high": 0.13514516543448954,
+          "bootstrap_n": 1000
+        },
+        "hard_failure": {
+          "rows": 70119,
+          "mean": 0.24727774089214272,
+          "ci_low": 0.24342313671407317,
+          "ci_high": 0.25123922762575396,
+          "bootstrap_n": 1000
+        },
+        "easy_degradation": {
+          "rows": 26927,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "bootstrap_n": 1000
+        }
+      },
+      "source_status": {
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "positive_all_domains": 3,
+        "nonnegative_all_domains": 3,
+        "domain_metrics": {
+          "ETH_UCY": {
+            "rows": 70585,
+            "all_improvement_vs_floor": 0.19432523888087305,
+            "t50_improvement_vs_floor": 0.011452695097466714,
+            "t100_raw_frame_diagnostic_vs_floor": -0.007173465733374185,
+            "hard_failure_improvement_vs_floor": 0.20614898850797303,
+            "easy_degradation_vs_floor": 0.012104977377890291,
+            "switch_rate": 0.1576963944180775,
+            "harm_over_floor": -0.19205334782600403,
+            "mean_floor_err": 0.9883086681365967,
+            "mean_selected_err": 0.796255350112915
+          },
+          "TrajNet": {
+            "rows": 9611,
+            "all_improvement_vs_floor": 0.08087182509361601,
+            "t50_improvement_vs_floor": 0.11242389344451031,
+            "t100_raw_frame_diagnostic_vs_floor": 0.0,
+            "hard_failure_improvement_vs_floor": 0.0909830596174025,
+            "easy_degradation_vs_floor": 0.0,
+            "switch_rate": 0.12215170117573614,
+            "harm_over_floor": -0.0824156329035759,
+            "mean_floor_err": 1.0190911293029785,
+            "mean_selected_err": 0.9366753697395325
+          },
+          "UCY": {
+            "rows": 9540,
+            "all_improvement_vs_floor": 0.5357152565021417,
+            "t50_improvement_vs_floor": 0.4752917313288888,
+            "t100_raw_frame_diagnostic_vs_floor": 0.15696385056906836,
+            "hard_failure_improvement_vs_floor": 0.5478754646785036,
+            "easy_degradation_vs_floor": 0.0,
+            "switch_rate": 0.5320754716981132,
+            "harm_over_floor": -0.7941059470176697,
+            "mean_floor_err": 1.4823284149169922,
+            "mean_selected_err": 0.6882224678993225
+          }
+        }
+      },
+      "deployment_boundary": [
+        "Exact replay passed with zero metric diff.",
+        "Aggregate lift is lower than Stage43-P, but every source is nonnegative on all-test.",
+        "ETH_UCY t100 remains negative in raw-frame diagnostic and must not be overclaimed."
+      ]
+    },
+    "frozen_reviewer_replay_artifact": {
+      "name": "Stage43-AO frozen bounded-residual reviewer replay",
+      "artifact": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json",
+      "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+      "role": "frozen reviewer-replayable safety artifact",
+      "metrics": {
+        "all": 0.37999220149702595,
+        "endpoint": 0.4420681380425501,
+        "t50": 0.269646290665144,
+        "t50_endpoint": 0.355881862474431,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": 0.3771314228696524,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.6308125
+      },
+      "replay_diff": 0.0,
+      "deployment_boundary": [
+        "Exact replayable from frozen policy artifact.",
+        "Lower than Stage43-P on aggregate/t50, but remains the clean frozen safety artifact."
+      ]
+    },
+    "report": "outputs/stage43_latent_state/stage43_current_candidate_reconciliation.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
