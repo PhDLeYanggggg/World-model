@@ -4,6 +4,8 @@ M3W-Neural v1 is a Stage41-protected neural world-dynamics candidate. It combine
 
 It is not true 3D, not metric, not seconds-level, not a foundation model, and not Stage5C/SMC.
 
+Public GitHub README note, 2026-06-01: the root `README.md` should stay in a human project-owner voice. This neural report can remain technical; the GitHub front page should introduce M3W clearly without sounding like an AI task log or internal stage ledger.
+
 Current user-facing master summary:
 
 `/Users/yangyue/Downloads/World/README_M3W_CURRENT_MASTER_SUMMARY_ZH.md`

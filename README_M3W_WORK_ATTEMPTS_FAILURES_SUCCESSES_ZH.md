@@ -5,6 +5,8 @@
 结果来源：`cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-ES 到 Stage42-GY 结果。
 本文件用途：把“在 M3W 这个长期目标里做了什么、试过哪些路线、哪些失败、为什么失败、哪些成功、当前大概是什么质量”集中写到一个 README。它不是新训练结果；不会把 cached 结果写成 fresh；不会把 diagnostic 结果写成 deployable success。
 
+最新公开 GitHub README 规则（2026-06-01）：根目录 `README.md` 应保持项目作者对外介绍 M3W 的语气，不写成 AI 助手任务日志、stage transcript 或内部实验流水账。详细 gate、provenance、长表格和阶段账本继续放在 `README_RESULTS.md`、`research_state.json` 和 `outputs/`。
+
 当前更便于阅读的单文件总账已同步到：`README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`。该文件是本轮面向用户的主 summary；本文件保留为更长的历史总账。
 
 ## 本次交付版摘要
