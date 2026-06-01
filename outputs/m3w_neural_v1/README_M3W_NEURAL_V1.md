@@ -4445,3 +4445,20 @@ Stage43-AO independently replays the frozen bounded-residual policy artifact and
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AO_BOUNDED_RESIDUAL_REVIEWER_REPLAY:END -->
+
+<!-- STAGE43_AP_PAPER_EVIDENCE_REFRESH:START -->
+## STAGE43_AP_PAPER_EVIDENCE_REFRESH
+
+source = `fresh_stage43_ap_paper_evidence_refresh`
+result_source = `fresh_paper_evidence_refresh_from_stage43_aj_to_ao`
+verdict = `stage43_ap_paper_evidence_refresh_pass`
+gate = `8 / 8`
+paper_evidence_refreshed = `True`
+policy_hash = `4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493`
+current_all_t50_t100_hard_easy = `38.00%` / `26.96%` / `0.00%` / `37.71%` / `0.00%`
+t50_delta_ci = `[9.86%, 11.21%]`
+
+Stage43-AP consolidates AJ-AO evidence into paper-facing claim boundaries, evidence table, and A-journal gap refresh. The strongest allowed claim is a reviewer-replayable, floor-protected bounded-residual latent waypoint policy in dataset-local/raw-frame 2.5D space.
+
+Boundary unchanged: not true 3D; not foundation; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AP_PAPER_EVIDENCE_REFRESH:END -->

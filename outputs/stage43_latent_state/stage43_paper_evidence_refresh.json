@@ -1,0 +1,133 @@
+{
+  "source": "fresh_stage43_ap_paper_evidence_refresh",
+  "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao",
+  "generated_at_utc": "2026-06-01T06:21:36.562371+00:00",
+  "git_commit": "bce02ac",
+  "evidence_rows": [
+    {
+      "claim_name": "Reviewer-replayable protected bounded residual policy",
+      "status": "supported",
+      "evidence": "AO gate 11/11, replay diff 0.00000000, policy hash match True",
+      "allowed_claim": "Stage43 bounded residual policy is frozen, hashable, and exact-replayable from the policy artifact.",
+      "caveat": "Requires local checkpoint/cache not committed to git; dataset-local/raw-frame only."
+    },
+    {
+      "claim_name": "Protected full-waypoint latent dynamics lift",
+      "status": "supported",
+      "evidence": "AN frozen all 38.00%, t50 26.96%, hard 37.71%, easy 0.00%",
+      "allowed_claim": "Protected bounded residual latent waypoint policy improves full-waypoint metrics under safety floor.",
+      "caveat": "This is protected residual dynamics, not ungated generative rollout."
+    },
+    {
+      "claim_name": "Bootstrap-supported delta over stored hard switch",
+      "status": "supported",
+      "evidence": "AM all delta CI [7.78%, 8.68%], t50 [9.86%, 11.21%], hard [8.47%, 9.45%]",
+      "allowed_claim": "Bounded residual has positive bootstrap delta over stored Stage43-M hard switch on all/t50/hard slices.",
+      "caveat": "Bootstrap over frozen rows; not a new external dataset acquisition claim."
+    },
+    {
+      "claim_name": "Per-domain external support",
+      "status": "partially_supported",
+      "evidence": "domain:ETH_UCY delta 8.21%; domain:TrajNet delta 15.02%; domain:UCY delta 3.78%",
+      "allowed_claim": "Positive dataset-local/raw-frame deltas are observed across ETH_UCY, TrajNet, and UCY slices.",
+      "caveat": "Domain labels are from existing external conversion; metric/seconds calibration remains unverified."
+    },
+    {
+      "claim_name": "Global floor removal",
+      "status": "not_supported",
+      "evidence": "AJ verdict stage43_aj_safety_floor_necessity_confirmed; AK ungated easy 55.72%",
+      "allowed_claim": "Do not remove the safety floor globally.",
+      "caveat": "The floor is currently part of the method, not a disposable crutch."
+    },
+    {
+      "claim_name": "h100 / t100 raw-frame behavior",
+      "status": "guarded_only",
+      "evidence": "AN t100 diagnostic 0.00%; h100 guard True",
+      "allowed_claim": "Report t100 only as raw-frame diagnostic with h100 floor guard.",
+      "caveat": "No seconds-level long-horizon claim."
+    },
+    {
+      "claim_name": "A-journal readiness",
+      "status": "not_yet",
+      "evidence": "Stage43 has replayable protected bounded residual evidence, but metric/time calibration, true 3D evidence, and broader raw-data multimodal validation remain incomplete.",
+      "allowed_claim": "The current package is a stronger candidate evidence block, not a complete A-journal submission claim.",
+      "caveat": "Need source-level calibration, more multimodal scene evidence, full paper package coherence, and broader external verification."
+    }
+  ],
+  "answers": {
+    "still_2_5d": true,
+    "metric_time_subset_available": false,
+    "full_waypoint_dynamics_available": true,
+    "cross_domain_external_evidence": "positive dataset-local/raw-frame slices for ETH_UCY, TrajNet, UCY in Stage43-AM",
+    "exceeds_stored_stage43_m_hard_switch": true,
+    "exceeds_stage37_floor": "not directly re-benchmarked in AP; bounded residual is compared to stored Stage43-M hard-switch/floor lineage",
+    "scene_goal_interaction_effective": "partially supported by earlier Stage43 ablations; bounded residual evidence itself is policy-level/full-waypoint",
+    "a_journal_candidate": false,
+    "why_not_a_journal_yet": [
+      "Still not true 3D and not metric/seconds-level.",
+      "Stage43 policy is protected and h100-guarded; global floor removal is not supported.",
+      "Multimodal scene/raster evidence is still mostly proxy-level rather than raw image/video foundation-scale evidence.",
+      "Need final integrated paper package, broader source calibration, and full test-suite replay."
+    ]
+  },
+  "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+  "frozen_policy": "outputs/stage43_latent_state/frozen_stage43_bounded_residual_policy.json",
+  "key_metrics": {
+    "all": 0.37999220149702595,
+    "t50": 0.269646290665144,
+    "t100": 0.0,
+    "hard_failure": 0.3771314228696524,
+    "easy": 0.0,
+    "t50_delta_ci": {
+      "low": 0.09860902265137161,
+      "mean": 0.10522010418320703,
+      "high": 0.11214061038498835,
+      "rows": 3856
+    },
+    "ao_replay_diff": 0.0
+  },
+  "evidence_sources": {
+    "stage43_aj": "outputs/stage43_latent_state/stage43_safety_floor_necessity_audit.json",
+    "stage43_ak": "outputs/stage43_latent_state/stage43_self_gate_conformal_audit.json",
+    "stage43_al": "outputs/stage43_latent_state/stage43_bounded_residual_safety_audit.json",
+    "stage43_am": "outputs/stage43_latent_state/stage43_bounded_residual_statistical_confirmation.json",
+    "stage43_an": "outputs/stage43_latent_state/stage43_bounded_residual_policy_freeze.json",
+    "stage43_ao": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json"
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "input_hash": "9d48332510f533656e4c21e3ee37e34c1752c71b59a70a246d844ad391cf7368",
+  "stage43_ap_gate": {
+    "source": "fresh_stage43_ap_paper_evidence_refresh",
+    "gates": {
+      "replayable_policy_claim_supported": true,
+      "full_waypoint_claim_supported": true,
+      "bootstrap_delta_claim_supported": true,
+      "global_floor_not_overclaimed": true,
+      "a_journal_not_overclaimed": true,
+      "claim_boundary_answers_present": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true
+    },
+    "passed": 8,
+    "total": 8,
+    "verdict": "stage43_ap_paper_evidence_refresh_pass",
+    "paper_evidence_refreshed": true,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

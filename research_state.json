@@ -223,8 +223,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_ao_bounded_residual_reviewer_replay",
-  "current_verdict": "stage43_ao_bounded_residual_reviewer_replay_pass",
+  "current_stage": "stage43_ap_paper_evidence_refresh",
+  "current_verdict": "stage43_ap_paper_evidence_refresh_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -40363,6 +40363,51 @@
     },
     "report": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.md",
     "gate_report": "outputs/stage43_latent_state/stage43_stage_ao_bounded_residual_reviewer_replay_gate.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_ap_paper_evidence_refresh": {
+    "source": "fresh_stage43_ap_paper_evidence_refresh",
+    "result_source": "fresh_paper_evidence_refresh_from_stage43_aj_to_ao",
+    "updated_at": "2026-06-01T06:21:36.562371+00:00",
+    "verdict": "stage43_ap_paper_evidence_refresh_pass",
+    "gate": "8 / 8",
+    "paper_evidence_refreshed": true,
+    "policy_hash": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+    "key_metrics": {
+      "all": 0.37999220149702595,
+      "t50": 0.269646290665144,
+      "t100": 0.0,
+      "hard_failure": 0.3771314228696524,
+      "easy": 0.0,
+      "t50_delta_ci": {
+        "low": 0.09860902265137161,
+        "mean": 0.10522010418320703,
+        "high": 0.11214061038498835,
+        "rows": 3856
+      },
+      "ao_replay_diff": 0.0
+    },
+    "answers": {
+      "still_2_5d": true,
+      "metric_time_subset_available": false,
+      "full_waypoint_dynamics_available": true,
+      "cross_domain_external_evidence": "positive dataset-local/raw-frame slices for ETH_UCY, TrajNet, UCY in Stage43-AM",
+      "exceeds_stored_stage43_m_hard_switch": true,
+      "exceeds_stage37_floor": "not directly re-benchmarked in AP; bounded residual is compared to stored Stage43-M hard-switch/floor lineage",
+      "scene_goal_interaction_effective": "partially supported by earlier Stage43 ablations; bounded residual evidence itself is policy-level/full-waypoint",
+      "a_journal_candidate": false,
+      "why_not_a_journal_yet": [
+        "Still not true 3D and not metric/seconds-level.",
+        "Stage43 policy is protected and h100-guarded; global floor removal is not supported.",
+        "Multimodal scene/raster evidence is still mostly proxy-level rather than raw image/video foundation-scale evidence.",
+        "Need final integrated paper package, broader source calibration, and full test-suite replay."
+      ]
+    },
+    "report": "outputs/stage43_latent_state/stage43_paper_evidence_refresh.md",
+    "claim_boundary": "outputs/stage43_latent_state/stage43_claim_boundary_refresh.md",
+    "gap_report": "outputs/stage43_latent_state/stage43_a_journal_gap_refresh.md",
+    "evidence_csv": "outputs/stage43_latent_state/stage43_paper_evidence_refresh.csv",
     "stage5c_executed": false,
     "smc_enabled": false
   }
