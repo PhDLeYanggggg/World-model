@@ -1,0 +1,235 @@
+{
+  "source": "fresh_stage43_bj_long_objective_evidence_audit",
+  "result_source": "fresh_requirement_audit_from_stage43_bi_locked_candidate_evidence",
+  "generated_at_utc": "2026-06-01T19:38:21.138950+00:00",
+  "git_commit": "80eba06",
+  "input_artifacts": {
+    "safety_floor_replay": "outputs/stage43_latent_state/stage43_safety_floor_replay.json",
+    "latent_dataset_contract": "outputs/stage43_latent_state/stage43_latent_state_dataset_contract.json",
+    "protected_latent_eval": "outputs/stage43_latent_state/stage43_protected_latent_eval.json",
+    "data_calibration": "outputs/stage43_latent_state/data_calibration_stage43.json",
+    "external_validation_matrix": "outputs/stage43_latent_state/stage43_external_validation_matrix.json",
+    "full_waypoint_latent_dynamics": "outputs/stage43_latent_state/stage43_full_waypoint_latent_dynamics.json",
+    "multimodal_head_suite": "outputs/stage43_latent_state/stage43_multimodal_latent_head_suite.json",
+    "feature_family_multiseed": "outputs/stage43_latent_state/stage43_feature_family_multiseed_confirmation.json",
+    "safety_floor_necessity": "outputs/stage43_latent_state/stage43_safety_floor_necessity_audit.json",
+    "blocked_source_terms_validation": "outputs/stage43_latent_state/stage43_blocked_source_terms_validation.json",
+    "locked_candidate_package": "outputs/stage43_latent_state/stage43_locked_candidate_paper_package_refresh.json"
+  },
+  "input_hash": "9b3fa648e21c9d49ac127d6b7ff5c9795c8df67d312bd7a2b0775f5a4fc83ed2",
+  "input_verdicts": {
+    "safety_floor_replay": "stage43_a_safety_floor_replay_pass",
+    "latent_dataset_contract": "stage43_b_latent_state_dataset_contract_pass",
+    "protected_latent_eval": "stage43_c_protected_latent_state_candidate_pass",
+    "data_calibration": "stage43_as_data_calibration_refresh_pass",
+    "external_validation_matrix": "stage43_at_external_validation_matrix_pass",
+    "full_waypoint_latent_dynamics": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+    "multimodal_head_suite": "stage43_y_protected_multimodal_latent_head_suite_candidate",
+    "feature_family_multiseed": "stage43_ai_feature_family_multiseed_confirmation_pass",
+    "safety_floor_necessity": "stage43_aj_safety_floor_necessity_confirmed",
+    "blocked_source_terms_validation": "stage43_bg_blocked_source_terms_validation_pass",
+    "locked_candidate_package": "stage43_bi_locked_candidate_paper_package_refresh_pass"
+  },
+  "current_candidate": {
+    "label": "protected_multimodal_latent_state_world_model_candidate",
+    "metrics": {
+      "rows": 89736,
+      "all": 0.5025366202187915,
+      "t50": 0.5123378909285481,
+      "t100_raw_frame_diagnostic": 0.0,
+      "hard_failure": 0.4787683745310771,
+      "easy_degradation": 0.0,
+      "switch_rate": 0.7044552910760453
+    },
+    "external_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "deployable_proxy_heads": [
+      "failure_risk",
+      "gain_opportunity",
+      "harm_guard",
+      "causal_history_density",
+      "future_interaction_risk"
+    ],
+    "stable_positive_t50_ablation_variants": [
+      "no_neighbor_interaction",
+      "no_baseline_floor",
+      "no_domain"
+    ]
+  },
+  "phases": [
+    {
+      "phase": "A data and calibration",
+      "status": "partial_blocked",
+      "evidence": "Stage43-AS data calibration gate passed; datasets audited=7; blocked source ready rows=0; training_allowed_now=0.",
+      "proved": [
+        "calibration/status audit exists",
+        "raw-frame/dataset-local boundary is preserved",
+        "blocked source terms validation prevents unconfirmed conversion/training"
+      ],
+      "missing": [
+        "verified source terms/identity for PETS/Town-Center/Wild-Track",
+        "verified metric/time calibration broad enough for metric or seconds-level claims",
+        "new guarded conversion of blocked sources"
+      ],
+      "next_action": "Fill/validate source terms identity packet, then rerun guarded conversion preflight.",
+      "pass_for_current_audit": true,
+      "complete_for_long_objective": false
+    },
+    {
+      "phase": "B external validation",
+      "status": "pass_with_boundary",
+      "evidence": "Stage43-AT matrix passed across domains ['ETH_UCY', 'TrajNet', 'UCY']; latest protected candidate all=50.25%, t50=51.23%, hard=47.88%, easy=0.00%.",
+      "proved": [
+        "fresh external validation matrix compares floor, prior protected neural, ungated diagnostic, source-safe, full-waypoint, and latest protected candidate",
+        "latest candidate is positive on all/t50/hard and easy-safe",
+        "uniform positive external transfer remains explicitly blocked"
+      ],
+      "missing": [
+        "uniform positive transfer across every source",
+        "additional legal external top-down sources",
+        "t100 positive source-stable evidence"
+      ],
+      "next_action": "Prioritize source support closure and t100 source-stability repair before broader transfer claims.",
+      "pass_for_current_audit": true,
+      "complete_for_long_objective": false
+    },
+    {
+      "phase": "C full-waypoint / latent dynamics",
+      "status": "protected_candidate_pass",
+      "evidence": "Stage43-M and Stage43-BI pass; latent/full-waypoint candidate metrics all=50.25%, t50=51.23%, t100raw=0.00%.",
+      "proved": [
+        "latent-state dataset and protected latent eval exist",
+        "protected full-waypoint latent dynamics exists",
+        "multimodal proxy heads are packaged under a safety floor"
+      ],
+      "missing": [
+        "standalone ungated neural dynamics",
+        "t100 positive dynamics rather than floor-guarded diagnostic",
+        "raw image/video multimodal evidence beyond proxy tokens"
+      ],
+      "next_action": "Keep protected deployment; do not execute Stage5C or replace floor with ungated dynamics.",
+      "pass_for_current_audit": true,
+      "complete_for_long_objective": false
+    },
+    {
+      "phase": "D causal ablation / module evidence",
+      "status": "partial_supported",
+      "evidence": "Stage43-AI passes with stable positive t50 ablation variants ['no_neighbor_interaction', 'no_baseline_floor', 'no_domain'].",
+      "proved": [
+        "at least two stable t50 ablation variants are recorded",
+        "claim package avoids writing JEPA/Transformer/scene/goal/interaction as standalone main claims"
+      ],
+      "missing": [
+        "full retrained proof for every requested no_history/no_neighbor/no_scene/no_goal/no_interaction/no_JEPA/no_Transformer/no_floor/no_switch ablation",
+        "independent JEPA or Transformer downstream lift strong enough to be a main contribution"
+      ],
+      "next_action": "Use future trials to replace proxy-heavy ablations with retrained raw-scene/graph-rich ablations.",
+      "pass_for_current_audit": true,
+      "complete_for_long_objective": false
+    },
+    {
+      "phase": "E safety floor study",
+      "status": "floor_required",
+      "evidence": "Stage43-AJ passes; package says safety_floor_required=True and standalone_deployable=False.",
+      "proved": [
+        "safety floor necessity is explicitly audited",
+        "ungated/standalone deployment is not claimed",
+        "bounded/self/conformal variants are treated as protected safety research"
+      ],
+      "missing": [
+        "safe global floor removal",
+        "floor-free neural dynamics that preserves easy cases"
+      ],
+      "next_action": "If floor relaxation is revisited, keep it slice-specific and validation-selected.",
+      "pass_for_current_audit": true,
+      "complete_for_long_objective": false
+    },
+    {
+      "phase": "F paper package",
+      "status": "pass_with_a_journal_gap",
+      "evidence": "Stage43-BI paper package refresh passes and writes claim boundary/model card/data card/repro/gap artifacts.",
+      "proved": [
+        "paper-facing package exists",
+        "claim boundary is explicit",
+        "A-journal gap is written as not-yet rather than overclaimed"
+      ],
+      "missing": [
+        "A-journal candidate evidence threshold",
+        "true 3D or metric/time subset",
+        "broader legally cleared external source support"
+      ],
+      "next_action": "Keep the paper package as protected candidate evidence; do not claim final A-journal readiness.",
+      "pass_for_current_audit": true,
+      "complete_for_long_objective": false
+    }
+  ],
+  "remaining_blockers": [
+    "source_terms_identity_not_confirmed_for_blocked_sources",
+    "metric_time_calibration_unverified",
+    "true_3d_absent",
+    "foundation_scale_absent",
+    "safety_floor_required",
+    "standalone_ungated_deployment_not_supported",
+    "uniform_positive_external_transfer_not_supported",
+    "t100_raw_frame_diagnostic_not_solved",
+    "raw_scene_video_multimodal_evidence_proxy_heavy"
+  ],
+  "next_priority_order": [
+    "close blocked source terms/identity and guarded conversion preflight",
+    "repair t100 source-stable evidence or keep t100 diagnostic only",
+    "replace proxy-heavy scene/interaction ablations with retrained raw-scene/graph-rich ablations",
+    "try slice-specific floor relaxation only after validation safety gates"
+  ],
+  "no_leakage_and_execution": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_or_loss_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false,
+    "new_training_executed": false,
+    "new_conversion_executed": false
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "standalone_ungated_deployable": false,
+    "a_journal_candidate_now": false,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bj_gate": {
+    "source": "fresh_stage43_bj_long_objective_evidence_audit",
+    "gates": {
+      "safety_floor_replay_passed": true,
+      "latent_dataset_and_eval_passed": true,
+      "data_calibration_audited_with_blockers": true,
+      "external_validation_audited": true,
+      "full_waypoint_latent_audited": true,
+      "causal_ablation_partial_not_overclaimed": true,
+      "safety_floor_necessity_recorded": true,
+      "paper_package_current": true,
+      "blocked_sources_not_converted_or_trained": true,
+      "no_future_or_test_leakage": true,
+      "no_new_training_or_conversion": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_bj_long_objective_evidence_audit_pass_keep_goal_active",
+    "long_objective_complete": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "standalone_world_model_deployable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

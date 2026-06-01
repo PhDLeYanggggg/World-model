@@ -2694,3 +2694,18 @@ I refreshed the paper-facing package from the BH evidence lock. The current clai
 
 Boundary unchanged: no Stage5C execution, no SMC, no metric/seconds claim, and no standalone ungated deployment claim.
 <!-- STAGE43_BI_LOCKED_CANDIDATE_PAPER_PACKAGE_REFRESH:END -->
+
+<!-- STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT:START -->
+## STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT
+
+source = `fresh_stage43_bj_long_objective_evidence_audit`
+result_source = `fresh_requirement_audit_from_stage43_bi_locked_candidate_evidence`
+verdict = `stage43_bj_long_objective_evidence_audit_pass_keep_goal_active`
+gate = `14 / 14`
+long_objective_complete = `False`
+candidate_all_t50_hard_easy = `50.25%` / `51.23%` / `47.88%` / `0.00%`
+
+I audited the Stage43 long objective against the current BH/BI evidence stack. The protected multimodal latent-state candidate is real enough to keep as current evidence, but the full long objective is still active: source terms, metric/time calibration, t100, raw multimodal evidence, and ungated/floor-free deployment remain open blockers.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT:END -->

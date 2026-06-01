@@ -1,0 +1,10 @@
+# Stage43 Long Objective Gap Matrix
+
+| phase | status | complete | key missing | next action |
+| --- | --- | --- | --- | --- |
+| A data and calibration | `partial_blocked` | `False` | verified source terms/identity for PETS/Town-Center/Wild-Track<br>verified metric/time calibration broad enough for metric or seconds-level claims<br>new guarded conversion of blocked sources | Fill/validate source terms identity packet, then rerun guarded conversion preflight. |
+| B external validation | `pass_with_boundary` | `False` | uniform positive transfer across every source<br>additional legal external top-down sources<br>t100 positive source-stable evidence | Prioritize source support closure and t100 source-stability repair before broader transfer claims. |
+| C full-waypoint / latent dynamics | `protected_candidate_pass` | `False` | standalone ungated neural dynamics<br>t100 positive dynamics rather than floor-guarded diagnostic<br>raw image/video multimodal evidence beyond proxy tokens | Keep protected deployment; do not execute Stage5C or replace floor with ungated dynamics. |
+| D causal ablation / module evidence | `partial_supported` | `False` | full retrained proof for every requested no_history/no_neighbor/no_scene/no_goal/no_interaction/no_JEPA/no_Transformer/no_floor/no_switch ablation<br>independent JEPA or Transformer downstream lift strong enough to be a main contribution | Use future trials to replace proxy-heavy ablations with retrained raw-scene/graph-rich ablations. |
+| E safety floor study | `floor_required` | `False` | safe global floor removal<br>floor-free neural dynamics that preserves easy cases | If floor relaxation is revisited, keep it slice-specific and validation-selected. |
+| F paper package | `pass_with_a_journal_gap` | `False` | A-journal candidate evidence threshold<br>true 3D or metric/time subset<br>broader legally cleared external source support | Keep the paper package as protected candidate evidence; do not claim final A-journal readiness. |

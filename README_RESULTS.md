@@ -6324,7 +6324,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `5cae013eba5a41ae97f8faf6e581dd4c2ee8d26eae82ed23b8a177454f9f0d2e`
+- policy hash: `b963b17a26c5dc3078e9f84b44bf6199f03a7b13d8285df45c5ec8114bc54b34`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6338,7 +6338,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `5cae013eba5a41ae97f8faf6e581dd4c2ee8d26eae82ed23b8a177454f9f0d2e`
+- policy hash: `b963b17a26c5dc3078e9f84b44bf6199f03a7b13d8285df45c5ec8114bc54b34`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -7786,3 +7786,18 @@ I refreshed the paper-facing package from the BH evidence lock. The current clai
 
 Boundary unchanged: no Stage5C execution, no SMC, no metric/seconds claim, and no standalone ungated deployment claim.
 <!-- STAGE43_BI_LOCKED_CANDIDATE_PAPER_PACKAGE_REFRESH:END -->
+
+<!-- STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT:START -->
+## STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT
+
+source = `fresh_stage43_bj_long_objective_evidence_audit`
+result_source = `fresh_requirement_audit_from_stage43_bi_locked_candidate_evidence`
+verdict = `stage43_bj_long_objective_evidence_audit_pass_keep_goal_active`
+gate = `14 / 14`
+long_objective_complete = `False`
+candidate_all_t50_hard_easy = `50.25%` / `51.23%` / `47.88%` / `0.00%`
+
+I audited the Stage43 long objective against the current BH/BI evidence stack. The protected multimodal latent-state candidate is real enough to keep as current evidence, but the full long objective is still active: source terms, metric/time calibration, t100, raw multimodal evidence, and ungated/floor-free deployment remain open blockers.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no true 3D, no foundation, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_BJ_LONG_OBJECTIVE_EVIDENCE_AUDIT:END -->

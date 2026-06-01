@@ -1,20 +1,10 @@
-# Stage43 Current World-Model Gate
+# Stage43-BJ Long Objective Evidence Audit Gate
 
-- source: `fresh_stage43_bj_long_objective_evidence_audit`
 - verdict: `stage43_bj_long_objective_evidence_audit_pass_keep_goal_active`
 - passed: `14 / 14`
-- protected multimodal latent state candidate: `True`
-- standalone world model deployable: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BJ audits the full Stage43 long objective against current evidence.
-- The protected multimodal latent-state candidate remains supported, but the long objective is not complete.
-- Source support, metric/time calibration, t100, raw multimodal evidence, and ungated/floor-free deployment remain open blockers.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
