@@ -246,8 +246,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_ar_full_suite_replay_audit",
-  "current_verdict": "stage43_ar_full_suite_replay_pass",
+  "current_stage": "stage43_as_data_calibration_refresh",
+  "current_verdict": "stage43_as_data_calibration_refresh_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -40533,6 +40533,63 @@
     "elapsed_wall_seconds": 3750.935178041458,
     "report": "outputs/stage43_latent_state/stage43_full_suite_replay_audit.md",
     "goal_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_as_data_calibration_refresh": {
+    "source": "fresh_stage43_as_data_calibration_refresh",
+    "result_source": "fresh_local_path_audit_plus_cached_verified_stage42_time_geometry",
+    "updated_at": "2026-06-01T07:45:01.965841+00:00",
+    "verdict": "stage43_as_data_calibration_refresh_pass",
+    "gate": "10 / 10",
+    "data_calibration_ready": true,
+    "summary": {
+      "datasets_audited": 7,
+      "raw_paths_found": 7,
+      "converted_paths_found": 7,
+      "external_domains_ready_from_existing_state": [
+        "opentraj",
+        "eth_ucy",
+        "trajnet",
+        "ucy"
+      ],
+      "metric_claim_ready_datasets": [
+        "tgsim"
+      ],
+      "seconds_claim_ready_datasets": [],
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "stage43_external_validation_ready": true,
+      "stage43_full_waypoint_prereq_ready": true
+    },
+    "source_specific_calibration": {
+      "source": "cached_verified_from_stage42_bn",
+      "supported_source_count": 6,
+      "supported_source_ids": [
+        "ETH_seq_eth",
+        "ETH_seq_hotel",
+        "UCY_zara01",
+        "UCY_zara02",
+        "UCY_zara03",
+        "UCY_students03"
+      ],
+      "supported_by_domain": {
+        "ETH_UCY": 2,
+        "UCY": 4
+      },
+      "global_metric_claim_allowed": false,
+      "global_seconds_claim_allowed": false,
+      "m3w_official_metric_seconds_claim_allowed": false
+    },
+    "sdd_status": {
+      "source": "cached_verified",
+      "coordinate_unit": "pixel",
+      "metric_claim_allowed": false,
+      "seconds_claim_allowed": false,
+      "effective_seconds_status": "unknown_or_not_globally_verified",
+      "conclusion": "pixel raw-frame only"
+    },
+    "report": "outputs/stage43_latent_state/data_calibration_stage43.md",
     "stage5c_executed": false,
     "smc_enabled": false
   }

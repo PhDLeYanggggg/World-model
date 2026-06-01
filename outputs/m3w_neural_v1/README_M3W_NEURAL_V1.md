@@ -4495,3 +4495,19 @@ wall_seconds = `3750.94`
 
 Stage43-AR records a fresh full test-suite replay using the active arm64 Python runtime. It is a reproducibility/software health audit only; it does not change model claims, execute Stage5C, enable SMC, or create metric/seconds/true-3D/foundation evidence.
 <!-- STAGE43_AR_FULL_SUITE_REPLAY_AUDIT:END -->
+
+<!-- STAGE43_AS_DATA_CALIBRATION_REFRESH:START -->
+## STAGE43_AS_DATA_CALIBRATION_REFRESH
+
+source = `fresh_stage43_as_data_calibration_refresh`
+result_source = `fresh_local_path_audit_plus_cached_verified_stage42_time_geometry`
+verdict = `stage43_as_data_calibration_refresh_pass`
+gate = `10 / 10`
+external_domains_ready = `opentraj, eth_ucy, trajnet, ucy`
+global_metric_claim_allowed = `False`
+global_seconds_claim_allowed = `False`
+
+Stage43-AS refreshes the data/calibration state by rerunning local path audits for SDD, OpenTraj, ETH/UCY, TrajNet, UCY, TGSIM, and AerialMPT, then reconciling with Stage42-BN source time/geometry evidence. The result keeps global M3W in raw-frame/dataset-local 2.5D language while preserving source-specific ETH/UCY calibration candidates for separately gated future work.
+
+No training, no auto-download, no Stage5C, no SMC, and no metric/seconds/true-3D/foundation claim.
+<!-- STAGE43_AS_DATA_CALIBRATION_REFRESH:END -->
