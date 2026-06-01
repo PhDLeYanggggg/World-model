@@ -2,95 +2,101 @@
 
 **Real-World Multimodal Agent-Scene World Model**
 
-M3W is my long-running research project on real-world multi-agent world modeling. The question I keep coming back to is simple: if a model only sees past motion, scene context, and nearby agents, can it make better future predictions than strong causal baselines without cheating with future information?
+M3W 是我长期推进的一个真实世界多智能体世界模型项目。它从一个很朴素的问题开始：只看过去轨迹、局部场景、邻近智能体和强因果基线，一个模型能不能在不偷看未来的情况下，更可靠地预测真实场景里的多智能体运动？
 
-This repo is not meant to read like a polished product page. It is a research notebook with working code: I build a model, compare it against conservative baselines, find where it fails, and tighten the next experiment around that failure mode.
+我不想把这个仓库写成产品宣传页。它更像一份持续更新的研究记录：我会把一个想法做出来，和强基线比较，找它在哪些场景失败，再围绕失败点继续修。正结果会保留，负结果也会保留，因为很多路线看起来合理，但一到 easy case、跨域迁移或无泄露评估就会露出问题。
 
-## What I Am Building
+## 现在做到哪一步
 
-M3W studies top-down multi-agent motion in real scenes. The current system combines:
+目前最可靠的结果不是一个无保护的端到端大模型，而是一套带安全回退的多智能体预测策略。它会先估计强因果基线是否会失败、切换是否可能带来收益、以及切换会不会伤害 easy case；只有验证集证据足够时，才允许学习组件覆盖物理基线。
 
-- causal history features from agent trajectories;
-- local interaction and density cues;
-- train-only goal and route prototypes when they are available;
-- strong physical baselines such as constant velocity and damped velocity;
-- safety policies that only let learned components override a baseline when validation evidence says the switch is worth it;
-- neural and latent-state experiments that are evaluated under the same safety rules.
+这个方向已经在 SDD 和外部 top-down pedestrian 数据上给出了一些稳定证据，尤其是 raw-frame `t+50` 和 hard/failure 场景。后续的 latent-state、full-waypoint、group-consistency、neural dynamics 方向也在推进，但我不会把它们写成可部署主模型，除非它们在同一套安全门槛下超过当前 protected policy。
 
-The long-term goal is a stronger multimodal agent-scene world model. The current system is not there yet. Today it is best described as a protected, dataset-local 2.5D multi-agent world-state model.
+一句话说，M3W 现在是：
 
-## Current Best Evidence
+```text
+protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
+```
 
-The most reliable deployable direction so far is not a large end-to-end neural model. It is a protected policy stack that estimates failure risk, possible gain, and possible harm before deciding whether to switch away from a causal baseline.
+它还不是 true 3D world model，也不是 large-scale foundation world model。
 
-That line of work has produced the strongest external transfer result so far:
+## 我在做什么
 
-- positive external all-test improvement;
-- positive raw-frame `t+50` improvement;
-- improved hard/failure cases;
-- very small easy-case degradation;
-- strict fallback to the strongest baseline when the learned policy is not confident.
+M3W 主要研究 top-down 多智能体运动预测和 agent-scene world modeling。当前系统里比较核心的东西包括：
 
-Newer latent-state and neural dynamics experiments are promising in some slices, but I do not treat them as replacements unless they beat the protected policy while preserving easy cases. Negative results stay in the repo because they are useful: they show which ideas look good in isolation but do not survive deployment rules.
+- 只使用过去信息的轨迹历史特征；
+- 局部密度、邻近智能体和相对运动特征；
+- train-only 的 goal / route prototype；
+- constant velocity、damped velocity 等强因果基线；
+- cost-aware / regret-aware 的安全选择器；
+- 在 Stage37 这类 safety floor 保护下测试 neural dynamics 和 latent-state 模型；
+- 严格的 no-leakage、easy preservation、hard/failure 和 bootstrap/replay 审计。
 
-I keep the detailed numbers, confidence intervals, and stage-by-stage reports in [`README_RESULTS.md`](README_RESULTS.md) so this front page can stay readable.
+我更关心一个模型能不能在真实评估里安全地带来增益，而不是它在单个 demo 上看起来多复杂。
 
-## What Has Worked
+## 已经比较明确的结论
 
-- Cost-aware selection works better than hard oracle-label classification.
-- Conservative fallback is necessary; learned policies without a safety floor hurt easy cases.
-- External transfer became useful only after adding causal history windows, scene-agnostic goal prototypes, and horizon-specific safety rules.
-- Raw-frame `t+50` is where the strongest deployable transfer evidence currently appears.
-- Protected latent-state policies are a useful research direction, but they still need to pass the same safety and ablation checks.
+几个方向是有用的：
 
-## What Has Not Worked Yet
+- hard classification 形式的“选哪个 baseline”不稳，cost-aware expected-FDE / gain-harm 选择更可靠；
+- conservative fallback 很关键，没有安全 floor 的学习模型很容易伤害 easy case；
+- external transfer 必须有 past-only history window、scene-agnostic goal prototypes 和 horizon-specific safety rule；
+- raw-frame `t+50` 是当前最有实际证据的外部长时程切片；
+- protected full-waypoint / group-consistency 路线有研究价值，但仍要放在安全策略下评估。
 
-- JEPA-style representation learning has avoided collapse, but downstream lift is not yet stable enough to be a main claim.
-- Latent distribution alignment can reduce domain distance without improving prediction.
-- Unbounded residual correction is unsafe.
-- Neural dynamics has not yet replaced the protected policy as the best deployable model.
-- Raw-frame `t+100` remains mostly diagnostic.
-- Broader ETH/TrajNet-style held-out validation still needs stronger coverage before I would call this broadly cross-domain.
+也有一些路线目前不能作为主 claim：
 
-## How To Read The Claims
+- JEPA 表征没有稳定证明 downstream lift；
+- latent distribution alignment 缩小距离，不等于预测变好；
+- unbounded residual correction 不安全；
+- 无保护 Transformer / Hybrid neural dynamics 还没有替代 protected policy；
+- raw-frame `t+100` 仍主要是 diagnostic；
+- ETH / TrajNet 等外部 held-out 覆盖还需要继续补齐。
 
-I keep the claim boundaries explicit because they matter for this project.
+## 不能夸大的地方
 
-SDD results are pixel-space unless source-specific calibration proves otherwise. External top-down results are dataset-local/raw-frame unless timing, homography, and scale are verified. Raw-frame `t+50` and `t+100` should not be read as seconds-level horizons. Self-audited or inferred scene labels are not human gold labels.
+这个项目里我一直保留这些边界：
 
-Latent-generative Stage5C has not been executed, and SMC is not enabled.
+- SDD 结果是 pixel-space，除非另有逐源 calibration 证据；
+- external top-down 结果是 dataset-local / raw-frame，不能直接写成 metric 或 seconds-level；
+- `t+50` / `t+100` 是 raw annotation-frame horizon；
+- self-audited 或 inferred scene labels 不是 human gold；
+- Stage5C latent generative 没有执行；
+- SMC 没有启用。
 
-## Repository Map
+我希望这个项目最终走向更强的真实世界多模态多智能体 world model，但现在的证据还不能支持 true 3D、foundation 或 metric-world-model 这类说法。
 
-| Path | Purpose |
+## 结果和代码怎么读
+
+| 路径 | 内容 |
 | --- | --- |
-| [`README_RESULTS.md`](README_RESULTS.md) | Main results ledger and experiment summary |
-| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | Chinese summary of attempts, failures, and successes |
-| `outputs/m3w_neural_v1/` | Neural model reports and model cards |
-| `outputs/stage42_long_research/` | Long-run audits, ablations, replay reports, and source/domain analysis |
-| `outputs/stage43_latent_state/` | Protected latent-state and bounded-residual evidence |
-| [`research_state.json`](research_state.json) | Machine-readable project state |
+| [`README_RESULTS.md`](README_RESULTS.md) | 长期实验总账、关键结果、失败路线和 claim 边界 |
+| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | 中文长版路线复盘 |
+| `outputs/m3w_neural_v1/` | neural candidate、model card 和相关报告 |
+| `outputs/stage42_long_research/` | 长期 ablation、source/domain、replay 和安全审计 |
+| `outputs/stage43_latent_state/` | protected latent-state / bounded-residual / tail-adapter 证据 |
+| [`research_state.json`](research_state.json) | 机器可读的当前研究状态 |
 
-Large datasets, generated caches, checkpoints, videos, third-party raw data, and local virtual environments are intentionally left out of Git. The repository should stay reviewable; the heavy artifacts live locally.
+大数据、raw dataset、fast cache、feature store、checkpoint、视频、图像和本地环境都不会提交到 Git。这个仓库只放代码、配置、轻量结果和可审计报告。
 
-## Running Locally
+## 本地运行
 
-On Apple Silicon I use the arm64 PyTorch environment:
+Apple Silicon 上我使用 arm64 PyTorch 环境：
 
 ```bash
 .venv-pytorch/bin/python
 ```
 
-The training path is designed for long local runs with single-process loading, checkpoints, heartbeat logs, resume support, and CPU/MPS-safe execution.
+训练路径默认使用单进程 DataLoader、checkpoint、heartbeat、resume，以及 CPU/MPS-safe runtime。
 
-Basic test command:
+基本测试：
 
 ```bash
 .venv-pytorch/bin/python -m pytest tests
 ```
 
-## Next Milestone
+## 下一步
 
-The next milestone is to make neural world dynamics carry more of the result instead of relying so heavily on protected selection and fallback. That means improving weak source and horizon slices, auditing timing and geometry source by source, and proving through ablations that scene, goal, interaction, and latent-state signals add value under the same no-leakage rules.
+下一步我会继续把 neural world dynamics 做实，而不是只依赖 selector-level policy。重点是修弱 source / weak horizon，补 source-level geometry 和合法可用数据，做更严格的 ablation，并证明 scene、goal、interaction、latent-state 至少有一部分能在安全门槛下贡献真实增益。
 
-M3W is not a finished claim. It is a research path toward a stronger real-world multi-agent world model, with the evidence kept visible as the project moves.
+如果做不到，我会把失败原因写清楚，而不是把它包装成成功。

@@ -1,108 +1,38 @@
 # M3W Results Ledger
 
-This file is the long-form experiment ledger for M3W. The root `README.md` is the public project introduction; this file keeps the detailed route history, evidence notes, gate summaries, and claim boundaries.
+这是 M3W 的长期实验总账。根目录的 [`README.md`](README.md) 负责对外介绍项目；这里保留更细的路线、失败原因、gate、replay、bootstrap、source/domain 审计和 claim 边界。
 
-I keep the public README concise on purpose. Stage numbers, provenance labels, long metric tables, and replay details belong here, in `research_state.json`, and in the `outputs/` reports. The project boundary is unchanged: M3W is a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate, not a true 3D model, not a foundation model, and not a metric or seconds-level benchmark. Stage5C has not been executed and SMC is not enabled.
+我把这份文件当作研究日志，而不是宣传材料。它会比较啰嗦，因为 M3W 的价值不只在正结果，也在那些被安全门槛、跨域迁移、easy-case 保护或 no-leakage 审计挡下来的路线。旧记录会保留，方便回看为什么某条路线没有继续 promoted。
 
-## Public README cleanup（2026-06-01）
+当前总边界不变：
 
-The GitHub front page has been rewritten as a project-owner introduction: what M3W is, why it exists, what has worked, what has failed, and what is not being claimed. This is a documentation/style update only. It adds no new training, conversion, download, or evaluation.
+```text
+M3W = protected dataset-local / raw-frame 2.5D multi-agent world-state candidate
+not true 3D
+not foundation
+not metric / seconds-level
+Stage5C not executed
+SMC not enabled
+```
 
-## M3W 当前权威总总结（2026-05-27）
+## GitHub 展示口径（2026-06-01）
 
-按用户要求，已把“这个目标内做了什么、尝试了什么路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的单文件 README：
+公开 GitHub 首页只写成项目作者视角的介绍：为什么做 M3W、现在做到什么程度、哪些路线有效、哪些路线失败、哪些结论不能夸大。阶段号、长表格、provenance、gate 细节和 replay 证据继续放在这份总账、`research_state.json` 和 `outputs/` 里。
 
-`/Users/yangyue/Downloads/World/README_M3W_MASTER_SUMMARY_2026_05_27_ZH.md`
+这次只是文档口径整理，没有新训练、下载、转换或评估。
 
-这是 `cached_verified_summary`，汇总已有 Stage18 到 Stage42-IB 报告、gate、README、model/data card 与 `research_state.json`；本次不是新训练、下载、转换或评估。该文件详细列出 Stage26 SDD cost-aware selector、Stage37 external t50 repair、M3W-Neural v1 protected candidate、Stage42 protected full-waypoint/group-consistency family，以及 JEPA、hard-class selector、zero-shot external、latent-only alignment、ordinary residual、unprotected Transformer/Hybrid、metric/time/source legal blockers 等失败路线和原因。当前严格结论保持：M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
+## 当前读者入口
 
-## M3W 当前主总账（2026-05-27）
+| 文件 | 适合什么时候读 |
+| --- | --- |
+| [`README.md`](README.md) | 第一次了解 M3W。 |
+| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | 想看中文长版路线复盘、失败原因和当前 best deployable。 |
+| `outputs/m3w_neural_v1/` | 想看 neural candidate、model card 和相关报告。 |
+| `outputs/stage42_long_research/` | 想查 source/domain、group-consistency、full-waypoint、proximity safety、horizon blocker 等细账。 |
+| `outputs/stage43_latent_state/` | 想查 protected latent-state、tail adapter、bounded residual、reviewer replay 等最新证据。 |
+| [`research_state.json`](research_state.json) | 想用机器可读方式查当前研究状态。 |
 
-最新单文件总账已刷新：
-
-`/Users/yangyue/Downloads/World/README_M3W_RESEARCH_ROUTES_FAILURES_SUCCESSES_2026_05_27_ZH.md`
-
-这是 `cached_verified_summary`，汇总 Stage18 到 Stage42-HV 的已有报告/gate/model card/data card/README/research_state；本次不是新训练、下载、转换或评估。它详细总结了长期目标内尝试过的路线、失败原因、成功证据、当前 best deployable 分层，以及严格 claim boundary。最新补入 Stage42-HR/HS/HT/HU/HV：validation-only t100 easy guard 修复 HQ 的 t100 easy harm，HR/HV replay 后 all/t50/t100raw/hard 为 `+27.72% / +26.99% / +6.79% / +25.93%`，t100 easy degradation `-0.31%`，HS 冻结复放 exact、gate `27 / 27`，HT runtime policy gate `19 / 19`，HU gate `17 / 17` 定位 row-level blocker，HV 重建本地 row-level replay cache 并对 `47,458` test rows 完成 exact batch replay、gate `28 / 28`。t100 仍是 raw-frame diagnostic，不能写成 seconds-level；Stage5C 未执行，SMC 未启用。
-
-按用户要求，已把“在这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理到新的当前主 README：
-
-`/Users/yangyue/Downloads/World/README_M3W_CURRENT_MASTER_SUMMARY_ZH.md`
-
-该文件是 `cached_verified` 总结，不是新训练、下载、转换或评估。它把 Stage26 SDD cost-aware selector、Stage37 external t50 修复、Stage41/M3W-Neural v1 protected candidate、Stage42 protected full-waypoint / group-consistency family，以及 JEPA、zero-shot external、latent-only alignment、ordinary residual、unprotected neural dynamics 等失败路线集中整理到一个文件里。当前严格结论保持：M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate；不是 true 3D，不是 foundation，不是 metric/seconds-level；Stage5C 未执行，SMC 未启用。
-
-## M3W 目标内路线/失败/成功总账（2026-05-27 最新权威入口）
-
-本轮按用户要求，把“在这个 M3W 长期目标内做了什么、尝试了什么路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的单文件 README：
-
-`/Users/yangyue/Downloads/World/README_M3W_RESEARCH_ROUTES_FAILURES_SUCCESSES_2026_05_27_ZH.md`
-
-该文件是 `cached_verified_summary`：只汇总已有 Stage18 到 Stage42-HN 的报告、gate、model/data card、README 和 `research_state.json`，不包含新训练、下载、转换或评估。它明确写清：
-
-- 当前 M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
-- 当前不是 true 3D，不是 foundation，不是 global metric / seconds-level，不是 ungated neural dynamics；Stage5C 未执行，SMC 未启用。
-- 成功主线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42 protected full-waypoint / group-consistency family。
-- 失败或 blocked 主线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、restricted metric/time conversion readiness。
-- 当前 best deployable 分层：SDD 用 Stage26，external t50 用 Stage37，protected neural/world-state 用 M3W-Neural v1 + Stage42 protected full-waypoint/group-consistency；metric/time、Stage5C、SMC 均不 ready。
-
-## M3W 当前详细总结（2026-05-27 用户请求版）
-
-本轮按用户要求，把“这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成新的单文件 README：
-
-`/Users/yangyue/Downloads/World/README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md`
-
-该文件是 `cached_verified` 总结，不是新训练、转换、下载或评估。它纳入 Stage26、Stage37、M3W-Neural v1、Stage38-40、Stage42-FH/FI、Stage42-HE/HF/HG/HI 等关键证据，并明确写清：
-
-- 当前 M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
-- 当前不是 true 3D、不是 foundation、不是 global metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
-- 成功路线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42 source/domain protected full-waypoint family、Stage42 teacherless proximity-guarded switch gate with causal floor fallback。
-- 失败/blocked 路线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim、global floor removal、metric/seconds claim。
-- 当前最新边界：teacher gate 可以在 repaired proximity-guard switch gate 中不用，但 causal floor fallback 仍必须存在；ETH/UCY restricted metric/time 只有 after-terms 技术候选，ready now = 0，不能写成当前 metric/time result。
-
-## M3W 长期目标完整总结 README（当前用户主文件）
-
-本轮按用户要求，把“这个目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”集中写到一个新的单文件 README：
-
-`/Users/yangyue/Downloads/World/README_M3W_GOAL_FULL_SUMMARY_ZH.md`
-
-该文件是 summary-only，不包含新训练、下载、转换或评估；结果来源为 `cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-HC floor-alternative gate stress 与 Stage42-HD floor-free proximity-guard repair。它明确写清：
-
-- 当前 M3W 是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
-- 当前不是 true 3D、不是 foundation、不是 metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
-- 成功路线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42-FH/FI source/domain frozen protected policy、Stage42-DL/DM runtime replay、Stage42-HD teacherless proximity-guard repaired gate。
-- 失败或 blocked 路线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim、global floor removal。
-- 最新 Stage42-HD 结论：teacher gate 可以不使用，但 causal floor fallback 仍必须存在；best repaired family `harm_predictor_gate` 的 all/t50/t100raw/hard 为 `+20.74% / +13.82% / +13.68% / +19.99%`，easy degradation `0.00%`，collision delta@0.05 `-0.47%`，gate `13 / 13`。
-
-## M3W 用户版详细总账（当前最新主入口）
-
-本轮按用户要求，把“这个目标内做了什么、尝试过什么路线、哪些失败、失败原因、哪些成功、当前大概是什么质量”整理成一个新的主 README：
-
-`/Users/yangyue/Downloads/World/README_M3W_USER_DETAILED_SUMMARY_ZH.md`
-
-该文件是当前最清晰的用户版总账，结果来源为 `cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 Stage42-GZ full-waypoint claim guard、Stage42-HA overclaim linter、Stage42-GT floor-relaxation safety stress 等关键边界。它明确写清：
-
-- 当前 M3W 的真实定位是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
-- 当前不是 true 3D、不是 foundation、不是 metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
-- 成功路线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42-FH/FI source/domain frozen protected policy、Stage42-DL/DM runtime replay、Stage42-GZ/HA claim guards。
-- 失败或 blocked 路线包括 hard-class selector、JEPA downstream 主线、SDD->external zero-shot、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim。
-- 当前 best deployable 是分层的：SDD 用 Stage26，external t50 用 Stage37，source/domain protected world-state 用 Stage42-FH/FI，neural/full-waypoint 只能在 Stage37/teacher floor 保护下报告。
-
-本次是 summary/readme 更新，不包含新训练、下载、转换或评估；不会把 cached 结果写成 fresh，也不会把 legal prefill 写成 permission。
-
-## M3W 长期目标路线/失败/成功总账 README（当前主入口）
-
-本轮按用户要求，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”集中刷新到一个主 README：
-
-`/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
-
-该文件是当前中文总账入口，结果来源为 `cached_verified` 汇总既有 Stage18-Stage42 报告、gate、README、`research_state.json`，并纳入最近 `fresh_run` 的 Stage42-GW/GX/GY h100 blocker closure、UCY h100 candidate integrity manifest、UCY h100 terms prefill。它明确写清：
-
-- 当前 M3W 的真实定位是 protected dataset-local / raw-frame 2.5D multi-agent world-state candidate。
-- 当前不是 true 3D、不是 foundation、不是 metric/seconds-level、不是 ungated neural dynamics deployable；Stage5C 未执行，SMC 未启用。
-- 成功主线包括 Stage26 SDD cost-aware selector、Stage37 external t50 safe selector、M3W-Neural v1 protected candidate、Stage42-FH/FI source/domain protected policy、Stage42-DL/DM runtime replay、Stage42-FU/GJ module claim lock。
-- 失败/blocked 主线包括 hard-class selector、JEPA downstream、zero-shot external transfer、latent-only alignment、ordinary residual/correction、unprotected Transformer/Hybrid、scene/goal 或 neighbor/interaction 独立主 claim、uniform h100/horizon claim。
-- 最新 h100/source 结论：TrajNet|100 仍是 missing official long raw source hard blocker；UCY|100 有候选文件与 t100 windows，但 legal acceptance/allowed use/local path/source identity 仍需用户确认；conversion/evaluation 仍为 `not_run`。
-
-本次 summary-only 更新不包含新训练、下载、转换或评估；不会把 cached 结果写成 fresh，也不会把 legal prefill 写成 permission。
+下面开始是历史实验记录。
 
 ## Stage42-GT Floor-Relaxation Safety Stress Test
 
@@ -116,7 +46,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## 当前长期目标总账 README
 
-本轮按用户要求，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的当前版中文总账：
+这一版，把“这个 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”整理成一个新的当前版中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_CURRENT_GOAL_CONSOLIDATED_SUMMARY_ZH.md`
 
@@ -124,9 +54,9 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 本次 summary-only 更新后校验：`research_state.json` JSON load passed；`.venv-pytorch/bin/python -m pytest tests` = `927 passed in 31.80s`。
 
-## 最新用户请求总结文件
+## 最新项目复盘总结文件
 
-本轮按用户要求，把“在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”统一刷新到一个单文件总账：
+这一版，把“在 M3W 长期目标内做了什么、尝试了哪些路线、哪些失败了、失败原因是什么、哪些成功了、当前大概是什么质量”统一刷新到一个单文件总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
 
@@ -142,7 +72,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## M3W 单文件详细总结
 
-本轮按用户要求刷新了更明确的单文件中文总结：
+这一版刷新了更明确的单文件中文总结：
 
 `/Users/yangyue/Downloads/World/README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`
 
@@ -150,7 +80,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## M3W 当前工作路线/失败/成功总账
 
-本轮按用户要求刷新了一个单文件中文总账：
+这一版刷新了一个单文件中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`
 
@@ -158,7 +88,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## M3W 长期目标详细总账
 
-本轮按用户要求新增单文件详细中文总账：
+这一版新增单文件详细中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_DETAILED_LEDGER_ZH.md`
 
@@ -166,7 +96,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## M3W 当前长期目标工作总结
 
-本轮按用户要求新增详细中文总账：
+这一版新增详细中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_TARGET_WORK_SUMMARY_ZH.md`
 
@@ -174,7 +104,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## M3W 长期目标结果总账 README
 
-本轮按用户要求新增详细中文总账：
+这一版新增详细中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_GOAL_RESULTS_SUMMARY_ZH.md`
 
@@ -182,7 +112,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## 当前目标总账 README
 
-最新按用户要求汇总的单文件中文总账：
+最新按项目复盘口径汇总的单文件中文总账：
 
 `/Users/yangyue/Downloads/World/README_M3W_CURRENT_GOAL_SUMMARY_ZH.md`
 
@@ -190,7 +120,7 @@ The GitHub front page has been rewritten as a project-owner introduction: what M
 
 ## 当前完整复盘 README
 
-本轮按用户要求新增详细中文复盘：
+这一版新增详细中文复盘：
 
 `/Users/yangyue/Downloads/World/README_M3W_CURRENT_FULL_RETROSPECTIVE_ZH.md`
 
@@ -916,7 +846,7 @@ Previous long-form research ledger:
 
 `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md`
 
-Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA/BB/BC/BD/BE evidence refreshes and a user-requested detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, t100 data/source-support blocker, local t100 source inventory/readiness, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
+Latest update: this canonical Chinese summary now explicitly includes Stage42-W/X/Y/Z/AA/AB/AC plus Stage42-AD/AE/AF/AG/AH/AI/AJ/AK/AL/AM/AN/AO/AP/AQ/AR/AS/AT/AU/AV/AW/AX/AY/AZ/BA/BB/BC/BD/BE evidence refreshes and a project-review detailed route review: what was attempted, what failed, why it failed, what worked, current best deployable status, full-waypoint auxiliary-head mixed evidence, weak-slice/source/easy-safety repairs, t100 data/source-support blocker, local t100 source inventory/readiness, and the no-true-3D/no-metric/no-seconds/no-Stage5C/no-SMC claim constraints.
 
 Latest direct user-facing summary refresh: `/Users/yangyue/Downloads/World/README_M3W_RESEARCH_SUMMARY_ZH.md` now starts with a compact but detailed “本次交付版总摘要”. It summarizes the routes tried, main failure modes, successful stages, current best deployable model, claim boundaries, and next shortest path. This is a documentation-only refresh based on cached verified reports and does not re-label any `not_run` or failed branch as successful.
 
@@ -5455,7 +5385,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 ## M3W Goal Evidence Ledger Refresh
 
 - source: `cached_verified_summary_from_stage18_to_stage42_fo_reports`
-- role: user-requested single-file Chinese summary of what was attempted under the M3W long-term goal, which routes failed and why, which routes succeeded, current model quality, current best deployable policies, claim boundaries, and next actions.
+- role: project-review single-file Chinese summary of what was attempted under the M3W long-term goal, which routes failed and why, which routes succeeded, current model quality, current best deployable policies, claim boundaries, and next actions.
 - canonical README: `README_M3W_GOAL_EVIDENCE_LEDGER_ZH.md`.
 - current positioning: protected dataset-local/raw-frame 2.5D multi-agent world-state candidate.
 - current best deployable families: Stage26 for SDD pixel raw-frame; Stage37 for external t50 selective transfer; Stage42-FH/FI family for frozen source/domain robust protected policy.

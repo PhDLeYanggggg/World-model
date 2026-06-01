@@ -7,7 +7,7 @@
 
 公开 GitHub README 规则（2026-06-01）：根目录 `README.md` 只做项目介绍，像我向研究者和开发者解释 M3W 一样写；内部阶段账本、gate、provenance 和长表格继续放在 `README_RESULTS.md`、`research_state.json` 和 `outputs/`。
 
-当前更便于阅读的单文件总账已同步到：`README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`。该文件是本轮面向用户的主 summary；本文件保留为更长的历史总账。
+当前更便于阅读的单文件总账已同步到：`README_M3W_ONE_FILE_DETAILED_SUMMARY_ZH.md`。它是给读者快速理解项目路线的整理版；本文件保留为更长的历史总账。
 
 ## 本次交付版摘要
 
