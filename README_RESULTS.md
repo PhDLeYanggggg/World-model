@@ -6324,7 +6324,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `bddfdb645b436489829a6c6ec566567d9b6fa506c1e8f470ff32976350bd019f`
+- policy hash: `dd7c9fe69b489ba96ca26b2429f19141560416ecb4edfc44bc023a0dc887fcad`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6338,7 +6338,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `bddfdb645b436489829a6c6ec566567d9b6fa506c1e8f470ff32976350bd019f`
+- policy hash: `dd7c9fe69b489ba96ca26b2429f19141560416ecb4edfc44bc023a0dc887fcad`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -7739,3 +7739,17 @@ training_allowed_now = `0`
 
 I turned the BE local support candidates into a concrete source/terms/identity packet. This is not permission and not a conversion: PETS, Town-Center, and Wild-Track still need official source and terms confirmation before guarded conversion; biwi still needs an independent held-out source. Blocked source families remain floor-only.
 <!-- STAGE43_BF_BLOCKED_SOURCE_TERMS_IDENTITY_PACKET:END -->
+
+<!-- STAGE43_BG_BLOCKED_SOURCE_TERMS_VALIDATOR:START -->
+## STAGE43_BG_BLOCKED_SOURCE_TERMS_VALIDATOR
+
+source = `fresh_stage43_bg_blocked_source_terms_validator`
+result_source = `fresh_validation_of_stage43_bf_terms_identity_template`
+verdict = `stage43_bg_blocked_source_terms_validation_pass`
+gate = `13 / 13`
+datasets_validated = `3`
+ready_for_guarded_conversion_preflight_rows = `0`
+training_allowed_now = `0`
+
+I validated the Stage43-BF terms/source template as-is. The result is intentionally blocked: no candidate source has user-confirmed terms, source identity, calibration scope, conversion scope, or Stage43 support permission yet. The manifest is useful for the next guarded conversion step, but it is not permission and it does not convert or train anything.
+<!-- STAGE43_BG_BLOCKED_SOURCE_TERMS_VALIDATOR:END -->
