@@ -7452,8 +7452,8 @@ source = `fresh_stage43_ah_feature_family_retrained_ablation`
 verdict = `stage43_ah_feature_family_retrained_ablation_pass`
 gate = `12 / 12`
 feature_family_retrained_ablation_supports_modules = `True`
-positive_t50_contribution_variants = `['no_baseline_floor']`
-positive_hard_or_all_contribution_variants = `['no_goal', 'no_baseline_floor']`
+positive_t50_contribution_variants = `['no_goal', 'no_neighbor_interaction', 'no_baseline_floor', 'no_domain']`
+positive_hard_or_all_contribution_variants = `['no_goal', 'no_neighbor_interaction', 'no_baseline_floor', 'no_domain']`
 
 Stage43-AH fresh-trains full_features plus no_history, no_goal, no_neighbor_interaction, no_baseline_floor, and no_domain variants. This moves Stage43 causal ablation evidence beyond inference masking, while still remaining a focused single-seed/small retrained ablation rather than a complete factorial study. It is contribution evidence, not a deployment policy: positive contribution can coexist with unsafe easy harm, and some removed-family variants outperform full_features in this small run.
 

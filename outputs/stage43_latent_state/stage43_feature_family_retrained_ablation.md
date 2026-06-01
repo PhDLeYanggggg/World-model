@@ -5,19 +5,19 @@
 - mode: `small`
 - gate: `12 / 12`
 - verdict: `stage43_ah_feature_family_retrained_ablation_pass`
-- positive t50 contribution variants: `['no_baseline_floor']`
-- positive hard/all contribution variants: `['no_goal', 'no_baseline_floor']`
+- positive t50 contribution variants: `['no_goal', 'no_neighbor_interaction', 'no_baseline_floor', 'no_domain']`
+- positive hard/all contribution variants: `['no_goal', 'no_neighbor_interaction', 'no_baseline_floor', 'no_domain']`
 
 ## Variants
 
 | variant | features | all | t50 | hard | easy | full-minus-variant all | full-minus-variant t50 | full-minus-variant hard | t50 CI mean | latent var |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `full_features` | `162` | `36.01%` | `30.31%` | `36.98%` | `7.84%` | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `0.4222` |
-| `no_history` | `54` | `37.49%` | `33.35%` | `40.28%` | `0.00%` | `-1.48%` | `-3.04%` | `-3.31%` | `-3.07%` | `0.3144` |
-| `no_goal` | `135` | `27.29%` | `34.22%` | `32.13%` | `29.37%` | `8.72%` | `-3.91%` | `4.85%` | `-3.93%` | `0.3512` |
-| `no_neighbor_interaction` | `157` | `39.58%` | `38.81%` | `40.20%` | `0.00%` | `-3.57%` | `-8.50%` | `-3.22%` | `-8.54%` | `0.2834` |
-| `no_baseline_floor` | `144` | `29.11%` | `11.40%` | `32.31%` | `35.13%` | `6.91%` | `18.91%` | `4.67%` | `18.89%` | `0.3472` |
-| `no_domain` | `159` | `39.79%` | `40.68%` | `41.71%` | `8.13%` | `-3.78%` | `-10.37%` | `-4.74%` | `-10.34%` | `0.3018` |
+| `full_features` | `162` | `37.24%` | `32.94%` | `38.77%` | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `0.00%` | `0.4222` |
+| `no_history` | `54` | `37.49%` | `33.35%` | `40.28%` | `0.00%` | `-0.25%` | `-0.41%` | `-1.51%` | `-0.45%` | `0.3144` |
+| `no_goal` | `135` | `28.60%` | `23.24%` | `33.95%` | `32.45%` | `8.64%` | `9.70%` | `4.82%` | `9.66%` | `0.3512` |
+| `no_neighbor_interaction` | `157` | `37.42%` | `18.87%` | `38.68%` | `0.00%` | `-0.18%` | `14.07%` | `0.09%` | `14.04%` | `0.2834` |
+| `no_baseline_floor` | `144` | `29.11%` | `11.40%` | `32.31%` | `35.13%` | `8.13%` | `21.54%` | `6.47%` | `21.55%` | `0.3472` |
+| `no_domain` | `159` | `32.88%` | `27.89%` | `35.31%` | `27.97%` | `4.36%` | `5.05%` | `3.46%` | `5.04%` | `0.3640` |
 
 ## Interpretation
 
