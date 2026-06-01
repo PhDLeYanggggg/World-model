@@ -1,0 +1,334 @@
+{
+  "source": "fresh_stage43_at_external_validation_matrix",
+  "result_source": "fresh_external_validation_matrix_from_verified_artifacts",
+  "generated_at_utc": "2026-06-01T07:55:17.865206+00:00",
+  "git_commit": "562883e",
+  "input_hash": "f01b949a6635949c04c53df580643d0109818545fd028000befcef864ea67851",
+  "split": {
+    "artifact": "outputs/stage43_latent_state/stage43_source_level_heldout_split.json",
+    "verdict": "stage43_f_source_level_split_ready",
+    "row_hash": "9c8b4d51e0f7a1618dce410c7dd23fbf7f21da5de587d4ae021257775164c3c5",
+    "test_rows": 89736,
+    "test_domains": [
+      "ETH_UCY",
+      "TrajNet",
+      "UCY"
+    ],
+    "test_source_count": 4,
+    "horizon_counts": {
+      "10": 26132,
+      "25": 23780,
+      "50": 21754,
+      "100": 18070
+    }
+  },
+  "comparison_rows": [
+    {
+      "name": "external strongest / Stage37 floor reference",
+      "role": "safety_floor_reference",
+      "result_source": "cached_verified_floor_reference",
+      "deployable": true,
+      "row_scope": "source_file_level_test",
+      "policy_hash": null,
+      "metrics": {
+        "rows": 89736,
+        "all": 0.0,
+        "t50": 0.0,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": 0.0,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.0
+      },
+      "caveat": "Reference floor. Improvements are reported relative to this floor where applicable.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_source_level_heldout_split.json"
+    },
+    {
+      "name": "M3W-Neural v1 composite-tail safe-switch",
+      "role": "previous_best_protected_neural",
+      "result_source": "cached_verified",
+      "deployable": true,
+      "row_scope": "Stage41 external package rows",
+      "policy_hash": null,
+      "metrics": {
+        "rows": 55528,
+        "all": 0.2102513255185352,
+        "t50": 0.13652231450154184,
+        "t100_raw_frame_diagnostic": 0.14694086716388166,
+        "hard_failure": 0.20384916307933942,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.3410171445036738
+      },
+      "caveat": "Earlier protected neural candidate under Stage37/teacher floor; not a new Stage43 source-level replay.",
+      "evidence_path": "outputs/m3w_neural_v1/evidence_matrix_m3w_neural_v1.json"
+    },
+    {
+      "name": "Stage43-G source-level latent, ungated/full-switch diagnostic",
+      "role": "ungated_neural_diagnostic",
+      "result_source": "fresh_run_unit_consistency_and_safety_audit",
+      "deployable": false,
+      "row_scope": "source_file_level_test",
+      "policy_hash": null,
+      "metrics": {
+        "rows": 89736,
+        "all": 0.35141047362868716,
+        "t50": 0.15805879713904114,
+        "t100_raw_frame_diagnostic": 0.004465702584407372,
+        "hard_failure": 0.3774023713328153,
+        "easy_degradation": 1.597488871365405,
+        "switch_rate": 1.0
+      },
+      "caveat": "Unit-consistent audit found easy degradation unsafe; keep floor.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_source_level_latent_robustness_audit.json"
+    },
+    {
+      "name": "Stage43-I domain-capped protected latent safe-switch",
+      "role": "protected_domain_level_neural",
+      "result_source": "fresh_run_unit_consistent_safe_switch_repair",
+      "deployable": true,
+      "row_scope": "source_file_level_test",
+      "policy_hash": "3f8118f6ba5fbc74c9f724deb6237d090bb014569b3c79247701ed64be29f1e2",
+      "metrics": {
+        "rows": 89736,
+        "all": 0.23107089359681054,
+        "t50": 0.11364813506531013,
+        "t100_raw_frame_diagnostic": 0.013512996394212884,
+        "hard_failure": 0.24405762495546435,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.1852545243826335
+      },
+      "caveat": "Domain-level positive and easy-safe, but one source slice remained slightly negative.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_unit_consistent_safe_switch.json"
+    },
+    {
+      "name": "Stage43-K validation source-family guarded repair",
+      "role": "source_safe_protected_neural",
+      "result_source": "fresh_run_source_slice_repair_without_test_threshold_tuning",
+      "deployable": true,
+      "row_scope": "source_file_level_test",
+      "policy_hash": "e3ba25ea629c538b9e2c704a47acde68b432fcfc4f2e8c68358f4579fcf01732",
+      "metrics": {
+        "rows": 89736,
+        "all": 0.23109641090748,
+        "t50": 0.11364813506531013,
+        "t100_raw_frame_diagnostic": 0.013512996394212884,
+        "hard_failure": 0.24405762495546435,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.18519880538468397
+      },
+      "caveat": "Repairs negative source harm with validation-only source-family guard; does not claim every source has positive transfer.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_source_slice_repair.json"
+    },
+    {
+      "name": "Stage43-M protected full-waypoint latent dynamics",
+      "role": "protected_full_waypoint_neural",
+      "result_source": "fresh_run",
+      "deployable": true,
+      "row_scope": "full_waypoint_supervision_test_sample",
+      "policy_hash": null,
+      "metrics": {
+        "rows": 16000,
+        "all": 0.2976556598917486,
+        "t50": 0.16448889263357025,
+        "t100_raw_frame_diagnostic": -0.17794905441649167,
+        "hard_failure": 0.2875229202597176,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.689125
+      },
+      "caveat": "Protected full-waypoint signal on 16k-row supervision cache; t100 remains guarded/diagnostic and not source-level official.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_full_waypoint_latent_dynamics.json"
+    },
+    {
+      "name": "Stage43-AO frozen bounded-residual replay",
+      "role": "current_best_integrated_candidate",
+      "result_source": "fresh_replay_from_frozen_policy_artifact",
+      "deployable": true,
+      "row_scope": "frozen_bounded_residual_test_rows",
+      "policy_hash": {
+        "expected": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+        "recomputed": "4dc482d146af2940b4968385e3f4bdf6951036b27b0353f1759a2130265ed493",
+        "match": true
+      },
+      "metrics": {
+        "rows": 16000,
+        "all": 0.37999220149702595,
+        "t50": 0.269646290665144,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": 0.3771314228696524,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.6308125
+      },
+      "caveat": "Exact reviewer replay of frozen bounded-residual policy; protected and h100 guarded, not a global floor removal.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json"
+    }
+  ],
+  "per_domain_external_validation": {
+    "ETH_UCY": {
+      "rows": 70585,
+      "all_improvement_vs_floor": 0.1924742121556947,
+      "t50_improvement_vs_floor": 0.0016180587258077805,
+      "t100_raw_frame_diagnostic_vs_floor": -0.007173465733374185,
+      "hard_failure_improvement_vs_floor": 0.20408126998368104,
+      "easy_degradation_vs_floor": 0.009491428258890044,
+      "switch_rate": 0.1499893745129985,
+      "harm_over_floor": -0.19022394716739655,
+      "mean_floor_err": 0.9883086681365967,
+      "mean_selected_err": 0.7980847358703613
+    },
+    "TrajNet": {
+      "rows": 9611,
+      "all_improvement_vs_floor": 0.06612155031679467,
+      "t50_improvement_vs_floor": 0.0,
+      "t100_raw_frame_diagnostic_vs_floor": 0.0,
+      "hard_failure_improvement_vs_floor": 0.074662965714689,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.09998959525543648,
+      "harm_over_floor": -0.06738372892141342,
+      "mean_floor_err": 1.0190911293029785,
+      "mean_selected_err": 0.9517072439193726
+    },
+    "UCY": {
+      "rows": 9540,
+      "all_improvement_vs_floor": 0.5357152565021417,
+      "t50_improvement_vs_floor": 0.4752917313288888,
+      "t100_raw_frame_diagnostic_vs_floor": 0.15696385056906836,
+      "hard_failure_improvement_vs_floor": 0.5478754646785036,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.5320754716981132,
+      "harm_over_floor": -0.7941059470176697,
+      "mean_floor_err": 1.4823284149169922,
+      "mean_selected_err": 0.6882224678993225
+    }
+  },
+  "per_source_source_safe_repair": {
+    "603561046c16aa3a": {
+      "source_id": "603561046c16aa3a",
+      "domains": [
+        "TrajNet"
+      ],
+      "scenes": [
+        "TrajNet_biwi"
+      ],
+      "metrics": {
+        "rows": 7685,
+        "all_improvement_vs_floor": 0.08685516396731208,
+        "t50_improvement_vs_floor": 0.0,
+        "t100_raw_frame_diagnostic_vs_floor": 0.0,
+        "hard_failure_improvement_vs_floor": 0.08685516396731208,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.12439817826935588,
+        "harm_over_floor": -0.08458220958709717,
+        "mean_floor_err": 0.97383052110672,
+        "mean_selected_err": 0.8892483115196228
+      }
+    },
+    "7c5c7053cb97abc4": {
+      "source_id": "7c5c7053cb97abc4",
+      "domains": [
+        "UCY"
+      ],
+      "scenes": [
+        "UCY_crowds"
+      ],
+      "metrics": {
+        "rows": 9540,
+        "all_improvement_vs_floor": 0.5357152565021417,
+        "t50_improvement_vs_floor": 0.4752917313288888,
+        "t100_raw_frame_diagnostic_vs_floor": 0.15696385056906836,
+        "hard_failure_improvement_vs_floor": 0.5478754646785036,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.5320754716981132,
+        "harm_over_floor": -0.7941059470176697,
+        "mean_floor_err": 1.4823284149169922,
+        "mean_selected_err": 0.6882224678993225
+      }
+    },
+    "83b0417df499ccae": {
+      "source_id": "83b0417df499ccae",
+      "domains": [
+        "TrajNet"
+      ],
+      "scenes": [
+        "TrajNet_mot"
+      ],
+      "metrics": {
+        "rows": 1926,
+        "all_improvement_vs_floor": 0.0,
+        "t50_improvement_vs_floor": 0.0,
+        "t100_raw_frame_diagnostic_vs_floor": 0.0,
+        "hard_failure_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0,
+        "harm_over_floor": 0.0,
+        "mean_floor_err": 1.1996864080429077,
+        "mean_selected_err": 1.1996864080429077
+      }
+    },
+    "d9c8e12e56a017c8": {
+      "source_id": "d9c8e12e56a017c8",
+      "domains": [
+        "ETH_UCY"
+      ],
+      "scenes": [
+        "ETH_UCY_students03"
+      ],
+      "metrics": {
+        "rows": 70585,
+        "all_improvement_vs_floor": 0.1924742121556947,
+        "t50_improvement_vs_floor": 0.0016180587258077805,
+        "t100_raw_frame_diagnostic_vs_floor": -0.007173465733374185,
+        "hard_failure_improvement_vs_floor": 0.20408126998368104,
+        "easy_degradation_vs_floor": 0.009491428258890044,
+        "switch_rate": 0.1499893745129985,
+        "harm_over_floor": -0.19022394716739655,
+        "mean_floor_err": 0.9883086681365967,
+        "mean_selected_err": 0.7980847358703613
+      }
+    }
+  },
+  "source_repair_summary": {
+    "stage43_i_negative_source_count": 1,
+    "stage43_k_negative_source_count": 0,
+    "min_source_all_improvement": 0.0,
+    "uniform_positive_per_source_claim_allowed": false,
+    "reason_uniform_positive_still_blocked": "Unsupported or low-support source families may be safely floored to zero; that repairs harm but is not positive transfer."
+  },
+  "current_gate_verdict": "stage43_aq_integrated_protected_latent_state_candidate_pass",
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "metric_or_seconds_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "global_floor_removed": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false
+  },
+  "stage43_at_gate": {
+    "source": "fresh_stage43_at_external_validation_matrix",
+    "gates": {
+      "source_level_split_ready": true,
+      "external_domains_present": true,
+      "required_model_families_compared": true,
+      "ungated_unsafe_not_deployed": true,
+      "source_safe_candidate_present": true,
+      "uniform_source_overclaim_blocked": true,
+      "current_candidate_replay_exact": true,
+      "per_domain_and_per_source_reported": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "global_floor_not_removed": true,
+      "long_objective_not_marked_complete": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_at_external_validation_matrix_pass",
+    "stage_b_external_validation_matrix_ready": true
+  }
+}
