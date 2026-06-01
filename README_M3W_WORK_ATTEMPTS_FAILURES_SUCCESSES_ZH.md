@@ -2280,3 +2280,18 @@ Stage43-AG fresh-trains no-scene, geometry/route, goal-only, and full-scene prox
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; scene proxy is not raw image/SDF; future labels are supervision/eval only; no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AG_SCENE_PROXY_RETRAINED_ABLATION:END -->
+
+<!-- STAGE43_AH_FEATURE_FAMILY_RETRAINED_ABLATION:START -->
+## STAGE43_AH_FEATURE_FAMILY_RETRAINED_ABLATION
+
+source = `fresh_stage43_ah_feature_family_retrained_ablation`
+verdict = `stage43_ah_feature_family_retrained_ablation_pass`
+gate = `12 / 12`
+feature_family_retrained_ablation_supports_modules = `True`
+positive_t50_contribution_variants = `['no_baseline_floor']`
+positive_hard_or_all_contribution_variants = `['no_goal', 'no_baseline_floor']`
+
+Stage43-AH fresh-trains full_features plus no_history, no_goal, no_neighbor_interaction, no_baseline_floor, and no_domain variants. This moves Stage43 causal ablation evidence beyond inference masking, while still remaining a focused single-seed/small retrained ablation rather than a complete factorial study. It is contribution evidence, not a deployment policy: positive contribution can coexist with unsafe easy harm, and some removed-family variants outperform full_features in this small run.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are supervision/eval only; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AH_FEATURE_FAMILY_RETRAINED_ABLATION:END -->
