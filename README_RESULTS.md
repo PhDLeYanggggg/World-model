@@ -6456,7 +6456,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `f98adc6f207eb0c1fbb91d80561742dc200493442ab99e2f7e2d098b409ae2e3`
+- policy hash: `25e04b1eb656434d33de3202c6e9e87f52936cdd13d2882b844f8247bb0eae74`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -6470,7 +6470,7 @@ Verification: `.venv-pytorch/bin/python run_stage42_context_contribution_forensi
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `f98adc6f207eb0c1fbb91d80561742dc200493442ab99e2f7e2d098b409ae2e3`
+- policy hash: `25e04b1eb656434d33de3202c6e9e87f52936cdd13d2882b844f8247bb0eae74`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -7669,3 +7669,17 @@ Stage43-AQ integrates AJ-AO/AP into one current candidate manifest and world-mod
 
 Boundary unchanged: Stage5C is not executed; SMC is not enabled; global floor removal is not supported; the long Stage43 objective remains active.
 <!-- STAGE43_AQ_INTEGRATED_CANDIDATE_GATE:END -->
+
+<!-- STAGE43_AR_FULL_SUITE_REPLAY_AUDIT:START -->
+## STAGE43_AR_FULL_SUITE_REPLAY_AUDIT
+
+source = `fresh_stage43_ar_full_suite_replay_audit`
+result_source = `fresh_full_test_suite_replay_reparsed_from_existing_capture`
+verdict = `stage43_ar_full_suite_replay_pass`
+gate = `9 / 9`
+full_suite_replay_passed = `True`
+pytest_summary = `1360 passed in 3750.05s`
+wall_seconds = `3750.94`
+
+Stage43-AR records a fresh full test-suite replay using the active arm64 Python runtime. It is a reproducibility/software health audit only; it does not change model claims, execute Stage5C, enable SMC, or create metric/seconds/true-3D/foundation evidence.
+<!-- STAGE43_AR_FULL_SUITE_REPLAY_AUDIT:END -->

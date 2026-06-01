@@ -2445,3 +2445,17 @@ Stage43-AQ integrates AJ-AO/AP into one current candidate manifest and world-mod
 
 Boundary unchanged: Stage5C is not executed; SMC is not enabled; global floor removal is not supported; the long Stage43 objective remains active.
 <!-- STAGE43_AQ_INTEGRATED_CANDIDATE_GATE:END -->
+
+<!-- STAGE43_AR_FULL_SUITE_REPLAY_AUDIT:START -->
+## STAGE43_AR_FULL_SUITE_REPLAY_AUDIT
+
+source = `fresh_stage43_ar_full_suite_replay_audit`
+result_source = `fresh_full_test_suite_replay_reparsed_from_existing_capture`
+verdict = `stage43_ar_full_suite_replay_pass`
+gate = `9 / 9`
+full_suite_replay_passed = `True`
+pytest_summary = `1360 passed in 3750.05s`
+wall_seconds = `3750.94`
+
+Stage43-AR records a fresh full test-suite replay using the active arm64 Python runtime. It is a reproducibility/software health audit only; it does not change model claims, execute Stage5C, enable SMC, or create metric/seconds/true-3D/foundation evidence.
+<!-- STAGE43_AR_FULL_SUITE_REPLAY_AUDIT:END -->
