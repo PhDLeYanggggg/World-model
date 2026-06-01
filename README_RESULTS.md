@@ -1,5 +1,13 @@
 # Physical World Model 2.5D Results
 
+## GitHub README project-owner cleanup（2026-06-01）
+
+The root `README.md` was rewritten as the public GitHub entry page in a more natural project-owner voice. It now reads like an introduction to M3W for other researchers and builders: the research question, current state, evidence that has held up, failures that still matter, and the exact claim boundary.
+
+Going forward, the GitHub front page should not read like an assistant progress log or stage transcript. Detailed stage gates, cached/fresh provenance, long metric tables, and operational ledgers belong here, in `research_state.json`, and in `outputs/`. The public README should stay concise, human, and project-facing.
+
+This is a documentation/style update only: no new training, no new conversion, no new download, and no new evaluation. The technical boundary is unchanged: M3W remains a protected dataset-local / raw-frame 2.5D multi-agent world-state candidate; it is not true 3D, not foundation-scale, not metric/seconds-level; Stage5C has not been executed and SMC is not enabled.
+
 ## GitHub README project-owner voice refresh（2026-05-31）
 
 The root `README.md` was refreshed again as a public GitHub entry page. The goal is that the page reads like the project owner introducing M3W to other researchers, not like an AI-generated stage transcript or assistant progress log.

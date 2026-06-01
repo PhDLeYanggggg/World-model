@@ -1,66 +1,75 @@
 # M3W: Real-World Multimodal Agent-Scene World Model
 
-This repository is where I am building M3W, a research project on real-world multi-agent world modeling from top-down pedestrian and agent-scene data.
+M3W is my research project on real-world multi-agent world modeling from top-down pedestrian and agent-scene data.
 
-The question I keep coming back to is simple:
+The core problem is not just forecasting a trajectory. I am trying to build a model that understands enough about motion history, scene structure, goals, and interaction to make useful future-state predictions while staying honest about what it knows.
 
-> Can a model look at only past motion, scene context, and agent interactions, then predict what happens next without cheating on the future or damaging easy cases?
+In practice, that means every learned component has to compete with strong causal baselines, survive no-leakage audits, and avoid breaking easy cases just to improve hard ones.
 
-The important part is the "without". A result only counts here if it survives strong causal baselines, no-leakage checks, conservative fallback, and slice-level audits. A model that improves a difficult slice while quietly breaking normal motion is not a useful world model.
+## The Research Question
 
-## Where It Stands
+Can a model use only past motion, scene context, and agent interactions to predict future multi-agent behavior better than a carefully protected causal baseline?
 
-M3W is currently a protected 2.5D / pseudo-3D multi-agent world-state model. It is not a true 3D world model, and it is not a large-scale foundation model.
+That question sounds narrow, but it is the part I care about. A world model that needs future endpoints, central velocities, test-set goals, or optimistic metric assumptions is not useful here. I would rather keep a smaller claim that survives audit than a bigger claim that depends on hidden leakage.
 
-The strongest version today is safety-first. Learned heads estimate failure risk, expected gain, switch harm, long-horizon drift, interaction context, and latent world-state signals. They are allowed to act only when validation-selected safety rules say the switch is worth it. Otherwise the system falls back to a strong causal baseline.
+## Current State
 
-That fallback is part of the design, not a backup excuse. The practical goal is to improve hard motion cases while knowing when to leave easy cases alone.
+M3W is currently a protected 2.5D / pseudo-3D multi-agent world-state model.
 
-## What Has Worked
+It is not a true 3D world model. It is not a large-scale foundation world model. SDD results are pixel-space benchmark results, and external pedestrian results are dataset-local raw-frame results unless timing and geometry have been verified for that source.
 
-The strongest evidence so far is in protected, raw-frame settings:
+The strongest deployed path today is safety-first:
 
-- On SDD, cost-aware selection improved the pixel-space benchmark while keeping easy-case degradation under control.
-- On external top-down pedestrian data, causal history windows and scene-agnostic goal prototypes repaired the earlier `t+50` transfer failure.
-- Source-aware and horizon-aware policies produced deployable external raw-frame gains under conservative fallback.
-- Full-waypoint latent dynamics improved external full-trajectory prediction under safety guards, with strong `t+50` gains.
+- a strong causal baseline is always available;
+- learned policies estimate failure risk, expected gain, switch harm, long-horizon drift, interaction context, and latent world-state signals;
+- the learned model is allowed to act only when validation-selected safety rules support the switch;
+- otherwise the system falls back to the causal baseline.
 
-The honest summary: M3W has useful protected world-state behavior, but it still has source-level and horizon-level caveats. I do not claim uniform cross-source success.
+That fallback is not an excuse. It is part of the model design. The goal is to improve difficult cases without quietly damaging normal motion.
 
-## What Has Not Worked Yet
+## What Has Worked So Far
 
-The negative results matter just as much:
+The clearest progress is in protected raw-frame settings.
 
-- A hard "best baseline" classifier switched too often and damaged easy cases.
+On SDD, cost-aware selection improved the pixel-space benchmark while keeping easy-case degradation controlled. On external top-down pedestrian data, causal history windows and scene-agnostic goal prototypes repaired an earlier `t+50` transfer failure. Later source-aware and horizon-aware policies made the external transfer safer, and full-waypoint latent dynamics improved full-trajectory prediction under guards.
+
+The current best results are useful, but they are still conditional. They are strongest when the safety floor is active, source and horizon caveats are respected, and the claim stays in raw-frame / dataset-local space.
+
+## What Has Failed
+
+I keep the failures visible because they define the real boundary of the project.
+
+- A hard classifier for "best baseline" switched too aggressively and damaged easy cases.
 - JEPA-style representation learning avoided collapse, but has not yet become a reliable standalone downstream driver.
 - Direct SDD-to-external transfer failed before coordinate, horizon, and goal-context repair.
 - Latent alignment sometimes reduced distribution distance without improving prediction.
 - Ordinary residual correction was not safe enough to deploy.
 - Ungated Transformer and Hybrid dynamics did not beat the protected floor.
-- Raw-frame `t+100` remains the hardest open horizon and is not yet a reliable positive result.
+- Raw-frame `t+100` remains the hardest open horizon.
 
-These failures are kept visible because they mark the real boundary of the current system.
+Those failures are not side notes. They are the reason the current system is conservative.
 
-## Claim Boundary
+## What I Do Not Claim
 
-I am deliberately strict about the language in this repository:
+The wording in this repository is intentionally strict.
 
-- SDD results are pixel-space benchmark results.
-- External results are dataset-local raw-frame results unless timing and geometry are verified for that source.
-- `t+50` and `t+100` are raw-frame horizons, not seconds-level claims.
-- Inferred scene, goal, and visual-prior labels are not human gold labels.
-- Latent generative execution is not enabled.
-- SMC is not enabled.
+- I do not claim true 3D prediction.
+- I do not claim foundation-model scale.
+- I do not treat SDD pixel coordinates as metric coordinates.
+- I do not describe raw-frame `t+50` or `t+100` as seconds-level horizons unless timing has been audited.
+- I do not treat inferred scene or goal labels as human gold labels.
+- I have not enabled latent generative execution.
+- I have not enabled SMC.
 
-In short: this is a serious world-modeling track, but it is not yet a true 3D or foundation world model.
+M3W is a serious world-modeling track, but it is still a protected 2.5D multi-agent world-state candidate.
 
-## How To Read This Repository
+## How To Read The Repository
 
-This front page is the plain-language entry point. The detailed evidence lives in the result ledgers:
+This README is the public entry point. The detailed evidence is kept in the result ledgers and stage reports.
 
-| Path | What it contains |
+| Path | Purpose |
 | --- | --- |
-| `README_RESULTS.md` | Main running evidence ledger |
+| `README_RESULTS.md` | Main evidence ledger |
 | `README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md` | Chinese summary of routes tried, failures, and successes |
 | `outputs/m3w_neural_v1/` | Neural model reports and model cards |
 | `outputs/stage42_long_research/` | Long-run audits, ablations, gates, and source/domain reports |
@@ -71,13 +80,13 @@ Large datasets, derived caches, checkpoints, videos, third-party raw data, and l
 
 ## Local Setup
 
-On Apple Silicon, training should use the arm64 PyTorch environment:
+On Apple Silicon, I use the arm64 PyTorch environment:
 
 ```bash
 .venv-pytorch/bin/python
 ```
 
-The training path is intentionally conservative:
+The training path is deliberately conservative:
 
 - `num_workers = 0`;
 - checkpoint and heartbeat support for long runs;
@@ -91,12 +100,14 @@ Basic verification:
 .venv-pytorch/bin/python -m pytest tests
 ```
 
-## Next Research Steps
+## Next Steps
 
-- repair weak source slices without test-threshold tuning;
+The next useful work is not to make the README sound bigger. It is to make the evidence stronger:
+
+- repair weak source and horizon slices without test-threshold tuning;
 - audit timing, geometry, and scale source by source;
 - improve raw-frame `t+100` without calling it seconds-level prediction;
 - train neural dynamics that beat the protected selector under the same safety rules;
-- keep ablations clean for scene, goal, interaction, and latent-state contributions.
+- keep ablations clean for scene, goal, interaction, latent-state, and fallback contributions.
 
-If M3W becomes a stronger world model, it should be because the experiments survive those checks, not because the README makes it sound finished.
+If M3W becomes a stronger world model, it should be because the experiments survive those checks.
