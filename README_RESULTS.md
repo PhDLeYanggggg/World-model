@@ -7412,3 +7412,23 @@ Stage43-AC is the guarded deployment version of Stage43-AB. It keeps the scene-p
 
 Boundary unchanged: scene proxy is not raw image/SDF, future labels are loss/eval only, t100 is raw-frame diagnostic, no metric/seconds claim, no Stage5C, no SMC.
 <!-- STAGE43_AC_SCENE_PROXY_GUARDED_LATENT_POLICY:END -->
+
+<!-- STAGE43_AD_SCENE_PROXY_GUARDED_ROBUSTNESS_AUDIT:START -->
+## STAGE43_AD_SCENE_PROXY_GUARDED_ROBUSTNESS_AUDIT
+
+source = `fresh_stage43_ad_scene_proxy_guarded_robustness_audit`
+verdict = `stage43_ad_guarded_scene_proxy_caveated_audit_pass`
+gate = `12 / 12`
+all_powered_domains_positive = `False`
+
+full_waypoint_ade_vs_floor = `41.17%`; delta_vs_stage43_m = `11.40%`
+t50_full_waypoint_ade_vs_floor = `35.42%`; delta_vs_stage43_m = `18.97%`
+hard_failure_vs_floor = `42.34%`; delta_vs_stage43_m = `13.58%`
+t100_raw_frame_diagnostic = `-17.79%`; delta_vs_stage43_m = `0.00%`
+easy_degradation = `0.00%`
+caveat_slice_count = `9`
+
+Stage43-AD audits the guarded Stage43-AC policy by domain, source, horizon, hard/failure, and easy slices. It records caveats instead of turning the average gain into a uniform success claim.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 remains raw-frame diagnostic; no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE43_AD_SCENE_PROXY_GUARDED_ROBUSTNESS_AUDIT:END -->
