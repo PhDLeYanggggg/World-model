@@ -2356,3 +2356,22 @@ Stage43-AL tested bounded residual relaxation over the frozen Stage43-M latent w
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
 <!-- STAGE43_AL_BOUNDED_RESIDUAL_SAFETY_AUDIT:END -->
+
+<!-- STAGE43_AM_BOUNDED_RESIDUAL_STATISTICAL_CONFIRMATION:START -->
+## STAGE43_AM_BOUNDED_RESIDUAL_STATISTICAL_CONFIRMATION
+
+source = `fresh_stage43_am_bounded_residual_statistical_confirmation`
+result_source = `fresh_bootstrap_confirmation_over_frozen_stage43_al_candidate`
+verdict = `stage43_am_bounded_residual_statistically_confirmed`
+gate = `12 / 12`
+bounded_residual_statistically_confirmed = `True`
+bootstrap_n = `2000`
+all_delta_ci = `[7.78%, 8.68%]`
+t50_delta_ci = `[9.86%, 11.21%]`
+hard_failure_delta_ci = `[8.47%, 9.45%]`
+easy_degradation_bounded_ci = `[0.00%, 0.00%]`
+
+Stage43-AM bootstrap-confirms the Stage43-AL bounded residual candidate against the stored Stage43-M hard-switch policy on frozen rows. The candidate remains floor-protected and h100-guarded; this is not global floor removal.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim; no Stage5C; no SMC.
+<!-- STAGE43_AM_BOUNDED_RESIDUAL_STATISTICAL_CONFIRMATION:END -->

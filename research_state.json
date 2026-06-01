@@ -223,8 +223,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_al_bounded_residual_safety_audit",
-  "current_verdict": "stage43_al_bounded_residual_candidate_pass",
+  "current_stage": "stage43_am_bounded_residual_statistical_confirmation",
+  "current_verdict": "stage43_am_bounded_residual_statistically_confirmed",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -40159,6 +40159,66 @@
       "safe_minus_stored_t100": 0.17794905441649167,
       "safe_minus_stored_hard_failure": 0.0896085026099348,
       "safe_minus_stored_easy": 0.0
+    },
+    "global_floor_removable": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_am_bounded_residual_statistical_confirmation": {
+    "source": "fresh_stage43_am_bounded_residual_statistical_confirmation",
+    "result_source": "fresh_bootstrap_confirmation_over_frozen_stage43_al_candidate",
+    "updated_at": "2026-06-01T06:06:48.470445+00:00",
+    "verdict": "stage43_am_bounded_residual_statistically_confirmed",
+    "gate": "12 / 12",
+    "bounded_residual_statistically_confirmed": true,
+    "report": "outputs/stage43_latent_state/stage43_bounded_residual_statistical_confirmation.md",
+    "gate_report": "outputs/stage43_latent_state/stage43_stage_am_bounded_residual_statistical_gate.md",
+    "bootstrap_delta_ci": {
+      "n": 2000,
+      "seed": 2131,
+      "metrics": {
+        "all_delta_improvement": {
+          "low": 0.07776789805238205,
+          "mean": 0.08230197212941977,
+          "high": 0.08677068051786171,
+          "rows": 16000
+        },
+        "t50_delta_improvement": {
+          "low": 0.09860902265137161,
+          "mean": 0.10522010418320703,
+          "high": 0.11214061038498835,
+          "rows": 3856
+        },
+        "t100_delta_improvement": {
+          "low": 0.1607170192558832,
+          "mean": 0.17800756888017757,
+          "high": 0.19580710267752158,
+          "rows": 3180
+        },
+        "hard_failure_delta_improvement": {
+          "low": 0.08469543811391197,
+          "mean": 0.08968090298936754,
+          "high": 0.09453327908132154,
+          "rows": 12510
+        },
+        "easy_degradation_bounded": {
+          "low": 0.0,
+          "mean": 0.0,
+          "high": 0.0,
+          "rows": 4771
+        },
+        "easy_degradation_delta": {
+          "low": 0.0,
+          "mean": 0.0,
+          "high": 0.0,
+          "rows": 4771
+        }
+      }
+    },
+    "slice_summary": {
+      "domain_count": 3,
+      "positive_domain_delta_count": 3,
+      "positive_horizon_delta_count": 4
     },
     "global_floor_removable": false,
     "stage5c_executed": false,
