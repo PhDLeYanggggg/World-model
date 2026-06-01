@@ -16,39 +16,39 @@ Stage43-O does not retrain the latent model and does not tune on test. It uses v
 
 ## Full-Test Metrics
 
-- full-waypoint ADE improvement: `31.34%`
-- endpoint FDE improvement: `39.25%`
-- t50 full-waypoint ADE improvement: `15.13%`
+- full-waypoint ADE improvement: `39.22%`
+- endpoint FDE improvement: `43.87%`
+- t50 full-waypoint ADE improvement: `30.06%`
 - t100 raw-frame diagnostic: `0.00%`
-- hard/failure full-waypoint ADE improvement: `29.18%`
+- hard/failure full-waypoint ADE improvement: `39.85%`
 - easy degradation: `0.00%`
-- switch rate: `55.50%`
+- switch rate: `64.57%`
 
 ## Delta vs Stage43-N
 
-- all ADE improvement delta: `1.92%`
-- t50 delta: `-1.47%`
-- t100 delta: `16.57%`
-- hard/failure delta: `0.52%`
-- easy degradation delta: `0.00%`
+- all ADE improvement delta: `2.48%`
+- t50 delta: `-3.24%`
+- t100 delta: `27.88%`
+- hard/failure delta: `1.40%`
+- easy degradation delta: `-0.47%`
 
 ## Horizon Breakdown
 
 | horizon | rows | ADE lift | easy degradation | switch |
 | --- | ---: | ---: | ---: | ---: |
-| 10 | 26132 | 50.19% | 0.00% | 73.81% |
+| 10 | 26132 | 59.02% | 12.09% | 84.05% |
 | 100 | 18070 | 0.00% | 0.00% | 0.00% |
-| 25 | 23780 | 39.48% | 0.00% | 74.08% |
-| 50 | 21754 | 15.13% | 0.00% | 59.28% |
+| 25 | 23780 | 44.98% | 0.00% | 83.81% |
+| 50 | 21754 | 30.06% | 0.00% | 73.76% |
 
 ## Source-Family Breakdown
 
 | source family | rows | ADE lift | easy degradation | switch |
 | --- | ---: | ---: | ---: | ---: |
 | TrajNet_biwi | 7685 | 0.00% | 0.00% | 0.00% |
-| TrajNet_crowds | 9540 | 48.40% | 0.00% | 78.63% |
+| TrajNet_crowds | 9540 | 58.52% | 0.00% | 77.04% |
 | TrajNet_mot | 1926 | 0.00% | 0.00% | 0.00% |
-| UCY | 70585 | 32.00% | 0.00% | 59.93% |
+| UCY | 70585 | 40.42% | 1.18% | 71.67% |
 
 ## Interpretation
 

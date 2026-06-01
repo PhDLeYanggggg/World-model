@@ -8,53 +8,53 @@
 
 ## Full-Test Protected Metrics
 
-- full-waypoint ADE improvement: `29.42%`
-- endpoint FDE improvement: `39.28%`
-- t50 full-waypoint ADE improvement: `16.60%`
-- t100 raw-frame diagnostic: `-16.57%`
-- hard/failure full-waypoint ADE improvement: `28.66%`
-- easy degradation: `0.00%`
-- switch rate: `68.31%`
+- full-waypoint ADE improvement: `36.74%`
+- endpoint FDE improvement: `44.96%`
+- t50 full-waypoint ADE improvement: `33.30%`
+- t100 raw-frame diagnostic: `-27.88%`
+- hard/failure full-waypoint ADE improvement: `38.45%`
+- easy degradation: `0.47%`
+- switch rate: `89.53%`
 
 ## Domain Breakdown
 
 | domain | rows | ADE lift | easy degradation | switch |
 | --- | ---: | ---: | ---: | ---: |
-| ETH_UCY | 70585 | 29.40% | 0.00% | 66.34% |
-| TrajNet | 9611 | 6.35% | 19.81% | 66.47% |
-| UCY | 9540 | 44.75% | 0.00% | 84.74% |
+| ETH_UCY | 70585 | 37.10% | 3.42% | 89.43% |
+| TrajNet | 9611 | 9.84% | 46.10% | 89.87% |
+| UCY | 9540 | 52.55% | 0.00% | 89.96% |
 
 ## Horizon Breakdown
 
 | horizon | rows | ADE lift | ungated ADE lift | easy degradation | switch |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| 10 | 26132 | 50.20% | 39.14% | 0.00% | 86.17% |
-| 100 | 18070 | -16.57% | -72.28% | 12.58% | 28.57% |
-| 25 | 23780 | 40.40% | 33.81% | 0.00% | 82.91% |
-| 50 | 21754 | 16.60% | 15.81% | 0.00% | 63.89% |
+| 10 | 26132 | 60.19% | 60.30% | 31.23% | 98.42% |
+| 100 | 18070 | -27.88% | -34.17% | 17.11% | 81.11% |
+| 25 | 23780 | 47.19% | 47.91% | 0.00% | 94.58% |
+| 50 | 21754 | 33.30% | 30.46% | 0.00% | 80.33% |
 
 ## Source Caveat
 
 - source count: `4`
 - negative source count: `1`
-- domains with easy harm >2%: `1`
+- domains with easy harm >2%: `2`
 - uniform source success: `False`
 
 Worst source slices:
 
 | source | rows | ADE lift | easy degradation | switch |
 | --- | ---: | ---: | ---: | ---: |
-| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt | 1926 | -115.33% | 164.01% | 96.31% |
-| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt | 70585 | 29.40% | 0.00% | 66.34% |
-| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt | 7685 | 38.13% | 0.00% | 58.99% |
-| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt | 9540 | 44.75% | 0.00% | 84.74% |
+| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt | 1926 | -98.72% | 155.95% | 97.82% |
+| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt | 70585 | 37.10% | 3.42% | 89.43% |
+| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt | 7685 | 38.20% | 23.82% | 87.87% |
+| /Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt | 9540 | 52.55% | 0.00% | 89.96% |
 
 ## t100 Failure Attribution
 
 - rows: `18070`
-- protected t100 improvement: `-16.57%`
-- ungated t100 improvement: `-72.28%`
-- switch rate: `28.57%`
+- protected t100 improvement: `-27.88%`
+- ungated t100 improvement: `-34.17%`
+- switch rate: `81.11%`
 - diagnosis: t100 remains negative because the neural waypoint shape is worse than the floor on long raw-frame rows; fallback gate still switches too often for t100.
 
 ## Boundary

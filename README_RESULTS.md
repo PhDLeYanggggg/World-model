@@ -7094,11 +7094,11 @@ Result source: `fresh_full_test_replay_from_stage43_m_checkpoint`. The Stage43-M
 - gate: `12 / 12`
 - verdict: `stage43_n_full_test_positive_with_source_t100_blockers`
 - full-test rows: `89736`
-- full-waypoint ADE improvement vs floor: `29.42%`
-- t50 full-waypoint ADE improvement vs floor: `16.60%`
-- t100 raw-frame diagnostic: `-16.57%`
-- hard/failure ADE improvement vs floor: `28.66%`
-- easy degradation: `0.00%`
+- full-waypoint ADE improvement vs floor: `36.74%`
+- t50 full-waypoint ADE improvement vs floor: `33.30%`
+- t100 raw-frame diagnostic: `-27.88%`
+- hard/failure ADE improvement vs floor: `38.45%`
+- easy degradation: `0.47%`
 - negative source count: `1`
 
 Boundary: this supports a protected full-test latent dynamics candidate with t100 and source-level caveats; it is still dataset-local/raw-frame 2.5D only, with no metric/seconds-level claim, no Stage5C, and no SMC.
@@ -7112,10 +7112,10 @@ Result source: `fresh_validation_only_safe_repair_from_stage43_m_checkpoint`. Th
 - gate: `12 / 12`
 - verdict: `stage43_o_safe_repair_pass_t100_fallback_not_positive`
 - full-test rows: `89736`
-- full-waypoint ADE improvement vs floor: `31.34%`
-- t50 full-waypoint ADE improvement vs floor: `15.13%`
+- full-waypoint ADE improvement vs floor: `39.22%`
+- t50 full-waypoint ADE improvement vs floor: `30.06%`
 - t100 raw-frame diagnostic: `0.00%`
-- hard/failure ADE improvement vs floor: `29.18%`
+- hard/failure ADE improvement vs floor: `39.85%`
 - easy degradation: `0.00%`
 - negative source count after repair: `0`
 
