@@ -3,8 +3,8 @@
 - source: `fresh_stage43_at_external_validation_matrix`
 - result_source: `fresh_external_validation_matrix_from_verified_artifacts`
 - verdict: `stage43_at_external_validation_matrix_pass`
-- gate: `12 / 12`
-- input hash: `f01b949a6635949c04c53df580643d0109818545fd028000befcef864ea67851`
+- gate: `13 / 13`
+- input hash: `c9e48343a0cf3fcfa5f865d634f10b8c9dba13aeeab0363ea6912d4bc8eab0b4`
 - split verdict: `stage43_f_source_level_split_ready`
 - test rows: `89736`
 - test domains: `['ETH_UCY', 'TrajNet', 'UCY']`
@@ -19,8 +19,9 @@
 | `Stage43-G source-level latent, ungated/full-switch diagnostic` | `ungated_neural_diagnostic` | `fresh_run_unit_consistency_and_safety_audit` | `False` | 89736 | `35.14%` | `15.81%` | `0.45%` | `37.74%` | `159.75%` | `100.00%` | Unit-consistent audit found easy degradation unsafe; keep floor. |
 | `Stage43-I domain-capped protected latent safe-switch` | `protected_domain_level_neural` | `fresh_run_unit_consistent_safe_switch_repair` | `True` | 89736 | `23.11%` | `11.36%` | `1.35%` | `24.41%` | `0.00%` | `18.53%` | Domain-level positive and easy-safe, but one source slice remained slightly negative. |
 | `Stage43-K validation source-family guarded repair` | `source_safe_protected_neural` | `fresh_run_source_slice_repair_without_test_threshold_tuning` | `True` | 89736 | `23.11%` | `11.36%` | `1.35%` | `24.41%` | `0.00%` | `18.52%` | Repairs negative source harm with validation-only source-family guard; does not claim every source has positive transfer. |
-| `Stage43-M protected full-waypoint latent dynamics` | `protected_full_waypoint_neural` | `fresh_run` | `True` | 16000 | `29.77%` | `16.45%` | `-17.79%` | `28.75%` | `0.00%` | `68.91%` | Protected full-waypoint signal on 16k-row supervision cache; t100 remains guarded/diagnostic and not source-level official. |
+| `Stage43-M protected full-waypoint latent dynamics` | `protected_full_waypoint_neural` | `fresh_run` | `True` | 16000 | `37.23%` | `32.94%` | `-27.90%` | `38.77%` | `0.00%` | `89.76%` | Protected full-waypoint signal on 16k-row supervision cache; t100 remains guarded/diagnostic and not source-level official. |
 | `Stage43-AO frozen bounded-residual replay` | `current_best_integrated_candidate` | `fresh_replay_from_frozen_policy_artifact` | `True` | 16000 | `38.00%` | `26.96%` | `0.00%` | `37.71%` | `0.00%` | `63.08%` | Exact reviewer replay of frozen bounded-residual policy; protected and h100 guarded, not a global floor removal. |
+| `Stage43-P tail-horizon full-waypoint adapter` | `latest_full_test_tail_adapter_candidate` | `fresh_train_val_selected_tail_horizon_adapter` | `True` | 89736 | `50.25%` | `51.23%` | `0.00%` | `47.88%` | `0.00%` | `70.45%` | Latest full-test protected tail-horizon adapter; materially stronger on all/t50/hard, but h100 remains validation-blocked and falls back to the floor. |
 
 ## Per-Domain Protected External Validation
 
@@ -56,6 +57,7 @@
 | `source_safe_candidate_present` | `True` |
 | `uniform_source_overclaim_blocked` | `True` |
 | `current_candidate_replay_exact` | `True` |
+| `latest_tail_adapter_candidate_present` | `True` |
 | `per_domain_and_per_source_reported` | `True` |
 | `no_future_or_test_leakage` | `True` |
 | `no_metric_seconds_stage5c_smc_claim` | `True` |

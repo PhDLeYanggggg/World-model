@@ -7642,11 +7642,12 @@ No training, no auto-download, no Stage5C, no SMC, and no metric/seconds/true-3D
 <!-- STAGE43_AS_DATA_CALIBRATION_REFRESH:END -->
 
 <!-- STAGE43_AT_EXTERNAL_VALIDATION_MATRIX:START -->
-Stage43-AT builds a fresh external validation matrix from verified Stage43 artifacts. Gate: `12 / 12` with verdict `stage43_at_external_validation_matrix_pass`.
+Stage43-AT builds a fresh external validation matrix from verified Stage43 artifacts. Gate: `13 / 13` with verdict `stage43_at_external_validation_matrix_pass`.
 
-It compares the safety floor, M3W-Neural v1, ungated source-level neural dynamics, domain-capped protected neural, source-family guarded repair, protected full-waypoint dynamics, and the current frozen bounded-residual replay. The practical boundary is unchanged: ungated neural is still not deployable, source-family repair is safe but not uniformly positive per source, and the current best integrated candidate remains protected by the floor.
+It compares the safety floor, M3W-Neural v1, ungated source-level neural dynamics, domain-capped protected neural, source-family guarded repair, protected full-waypoint dynamics, frozen bounded-residual replay, and the latest tail-horizon full-waypoint adapter. The practical boundary is unchanged: ungated neural is still not deployable, source-family repair is safe but not uniformly positive per source, and every deployable learned candidate remains protected by the floor.
 
-Current integrated candidate: all `38.00%`, t50 `26.96%`, t100 raw-frame diagnostic `0.00%`, hard/failure `37.71%`, easy degradation `0.00%`.
+Frozen integrated candidate: all `38.00%`, t50 `26.96%`, t100 raw-frame diagnostic `0.00%`, hard/failure `37.71%`, easy degradation `0.00%`.
+Latest protected tail adapter: all `50.25%`, t50 `51.23%`, t100 raw-frame diagnostic `0.00%`, hard/failure `47.88%`, easy degradation `0.00%`.
 Source-safe protected neural repair: all `23.11%`, t50 `11.36%`, hard/failure `24.41%`, easy degradation `0.00%`.
 
 This is still dataset-local/raw-frame 2.5D evidence. It is not true 3D, not foundation-scale, not metric/seconds-level, and it does not execute Stage5C or SMC.

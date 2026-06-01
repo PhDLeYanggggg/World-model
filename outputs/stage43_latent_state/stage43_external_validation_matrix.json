@@ -1,9 +1,9 @@
 {
   "source": "fresh_stage43_at_external_validation_matrix",
   "result_source": "fresh_external_validation_matrix_from_verified_artifacts",
-  "generated_at_utc": "2026-06-01T07:55:17.865206+00:00",
-  "git_commit": "562883e",
-  "input_hash": "f01b949a6635949c04c53df580643d0109818545fd028000befcef864ea67851",
+  "generated_at_utc": "2026-06-01T09:31:31.972144+00:00",
+  "git_commit": "3b9c779",
+  "input_hash": "c9e48343a0cf3fcfa5f865d634f10b8c9dba13aeeab0363ea6912d4bc8eab0b4",
   "split": {
     "artifact": "outputs/stage43_latent_state/stage43_source_level_heldout_split.json",
     "verdict": "stage43_f_source_level_split_ready",
@@ -127,12 +127,12 @@
       "policy_hash": null,
       "metrics": {
         "rows": 16000,
-        "all": 0.2976556598917486,
-        "t50": 0.16448889263357025,
-        "t100_raw_frame_diagnostic": -0.17794905441649167,
-        "hard_failure": 0.2875229202597176,
+        "all": 0.37232757031002817,
+        "t50": 0.32936456461801455,
+        "t100_raw_frame_diagnostic": -0.27898648756508826,
+        "hard_failure": 0.38768628311162145,
         "easy_degradation": 0.0,
-        "switch_rate": 0.689125
+        "switch_rate": 0.897625
       },
       "caveat": "Protected full-waypoint signal on 16k-row supervision cache; t100 remains guarded/diagnostic and not source-level official.",
       "evidence_path": "outputs/stage43_latent_state/stage43_full_waypoint_latent_dynamics.json"
@@ -159,6 +159,25 @@
       },
       "caveat": "Exact reviewer replay of frozen bounded-residual policy; protected and h100 guarded, not a global floor removal.",
       "evidence_path": "outputs/stage43_latent_state/stage43_bounded_residual_reviewer_replay.json"
+    },
+    {
+      "name": "Stage43-P tail-horizon full-waypoint adapter",
+      "role": "latest_full_test_tail_adapter_candidate",
+      "result_source": "fresh_train_val_selected_tail_horizon_adapter",
+      "deployable": true,
+      "row_scope": "full_external_test_rows",
+      "policy_hash": "03497313f878a1ec69fd7d2824842fee0acfa79c38dc9d667c6d6ac53ef4c331",
+      "metrics": {
+        "rows": 89736,
+        "all": 0.5025366202187915,
+        "t50": 0.5123378909285481,
+        "t100_raw_frame_diagnostic": 0.0,
+        "hard_failure": 0.4787683745310771,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.7044552910760453
+      },
+      "caveat": "Latest full-test protected tail-horizon adapter; materially stronger on all/t50/hard, but h100 remains validation-blocked and falls back to the floor.",
+      "evidence_path": "outputs/stage43_latent_state/stage43_tail_horizon_waypoint_adapter.json"
     }
   ],
   "per_domain_external_validation": {
@@ -320,14 +339,15 @@
       "source_safe_candidate_present": true,
       "uniform_source_overclaim_blocked": true,
       "current_candidate_replay_exact": true,
+      "latest_tail_adapter_candidate_present": true,
       "per_domain_and_per_source_reported": true,
       "no_future_or_test_leakage": true,
       "no_metric_seconds_stage5c_smc_claim": true,
       "global_floor_not_removed": true,
       "long_objective_not_marked_complete": true
     },
-    "passed": 12,
-    "total": 12,
+    "passed": 13,
+    "total": 13,
     "verdict": "stage43_at_external_validation_matrix_pass",
     "stage_b_external_validation_matrix_ready": true
   }

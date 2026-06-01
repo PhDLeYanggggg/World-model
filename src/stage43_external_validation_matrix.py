@@ -32,6 +32,7 @@ SAFE_SWITCH_I = OUT_DIR / "stage43_unit_consistent_safe_switch.json"
 SOURCE_REPAIR_K = OUT_DIR / "stage43_source_slice_repair.json"
 FULL_WAYPOINT_M = OUT_DIR / "stage43_full_waypoint_latent_dynamics.json"
 REVIEWER_REPLAY_AO = OUT_DIR / "stage43_bounded_residual_reviewer_replay.json"
+TAIL_ADAPTER_P = OUT_DIR / "stage43_tail_horizon_waypoint_adapter.json"
 CURRENT_GATE_AQ = OUT_DIR / "world_model_gate_stage43_current.json"
 
 
@@ -108,6 +109,7 @@ def build_external_validation_matrix() -> dict[str, Any]:
     repair_k = _load(SOURCE_REPAIR_K)
     waypoint_m = _load(FULL_WAYPOINT_M)
     replay_ao = _load(REVIEWER_REPLAY_AO)
+    tail_p = _load(TAIL_ADAPTER_P)
     current_gate = _load(CURRENT_GATE_AQ)
 
     rows: list[dict[str, Any]] = []
@@ -198,13 +200,41 @@ def build_external_validation_matrix() -> dict[str, Any]:
             policy_hash=replay_ao.get("policy_hash"),
         )
     )
+    rows.append(
+        _metric_record(
+            name="Stage43-P tail-horizon full-waypoint adapter",
+            role="latest_full_test_tail_adapter_candidate",
+            result_source=str(tail_p.get("result_source", "cached_verified")),
+            deployable=bool(tail_p["stage43_p_gate"].get("deploy_tail_horizon_adapter", False)),
+            metrics=_full_waypoint_metrics(tail_p["overall_full_test_metrics"]),
+            caveat=(
+                "Latest full-test protected tail-horizon adapter; materially stronger on all/t50/hard, "
+                "but h100 remains validation-blocked and falls back to the floor."
+            ),
+            evidence_path=TAIL_ADAPTER_P,
+            row_scope="full_external_test_rows",
+            policy_hash=tail_p.get("selected_model", {}).get("model_hash"),
+        )
+    )
 
     domains = split["split_summary"]["test"]["domains"]
     test_summary = split["split_summary"]["test"]
     source_count = test_summary.get("source_count", test_summary.get("sources", 0))
     per_domain_i = safe_i["deployment_policy"]["domain_metrics"]
     per_source_k = repair_k["deployment_policy"]["source_metrics"]
-    matrix_hash = _combined_hash([SPLIT, M3W_V1, ROBUSTNESS_H, SAFE_SWITCH_I, SOURCE_REPAIR_K, FULL_WAYPOINT_M, REVIEWER_REPLAY_AO, CURRENT_GATE_AQ])
+    matrix_hash = _combined_hash(
+        [
+            SPLIT,
+            M3W_V1,
+            ROBUSTNESS_H,
+            SAFE_SWITCH_I,
+            SOURCE_REPAIR_K,
+            FULL_WAYPOINT_M,
+            REVIEWER_REPLAY_AO,
+            TAIL_ADAPTER_P,
+            CURRENT_GATE_AQ,
+        ]
+    )
     claim_boundary = {
         "true_3d_world_model": False,
         "foundation_world_model": False,
@@ -266,6 +296,7 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
             "source_safe_protected_neural",
             "protected_full_waypoint_neural",
             "current_best_integrated_candidate",
+            "latest_full_test_tail_adapter_candidate",
         }.issubset(set(by_role)),
         "ungated_unsafe_not_deployed": by_role["ungated_neural_diagnostic"]["deployable"] is False
         and by_role["ungated_neural_diagnostic"]["metrics"]["easy_degradation"] > 0.02,
@@ -274,6 +305,11 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "uniform_source_overclaim_blocked": source_summary["uniform_positive_per_source_claim_allowed"] is False,
         "current_candidate_replay_exact": by_role["current_best_integrated_candidate"]["deployable"] is True
         and payload["current_gate_verdict"] == "stage43_aq_integrated_protected_latent_state_candidate_pass",
+        "latest_tail_adapter_candidate_present": by_role["latest_full_test_tail_adapter_candidate"]["deployable"] is True
+        and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["all"] > by_role["current_best_integrated_candidate"]["metrics"]["all"]
+        and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["t50"] > by_role["current_best_integrated_candidate"]["metrics"]["t50"]
+        and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["easy_degradation"] <= 0.02
+        and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["t100_raw_frame_diagnostic"] >= 0.0,
         "per_domain_and_per_source_reported": bool(payload["per_domain_external_validation"]) and bool(payload["per_source_source_safe_repair"]),
         "no_future_or_test_leakage": no_leakage["future_endpoint_input"] is False
         and no_leakage["future_waypoint_input"] is False
@@ -389,13 +425,15 @@ def _render_md(payload: Mapping[str, Any]) -> str:
 
 def _update_project_summaries(payload: Mapping[str, Any]) -> None:
     matrix_row = next(row for row in payload["comparison_rows"] if row["role"] == "current_best_integrated_candidate")
+    latest_tail = next(row for row in payload["comparison_rows"] if row["role"] == "latest_full_test_tail_adapter_candidate")
     source_safe = next(row for row in payload["comparison_rows"] if row["role"] == "source_safe_protected_neural")
     body = [
         f"Stage43-AT builds a fresh external validation matrix from verified Stage43 artifacts. Gate: `{payload['stage43_at_gate']['passed']} / {payload['stage43_at_gate']['total']}` with verdict `{payload['stage43_at_gate']['verdict']}`.",
         "",
-        "It compares the safety floor, M3W-Neural v1, ungated source-level neural dynamics, domain-capped protected neural, source-family guarded repair, protected full-waypoint dynamics, and the current frozen bounded-residual replay. The practical boundary is unchanged: ungated neural is still not deployable, source-family repair is safe but not uniformly positive per source, and the current best integrated candidate remains protected by the floor.",
+        "It compares the safety floor, M3W-Neural v1, ungated source-level neural dynamics, domain-capped protected neural, source-family guarded repair, protected full-waypoint dynamics, frozen bounded-residual replay, and the latest tail-horizon full-waypoint adapter. The practical boundary is unchanged: ungated neural is still not deployable, source-family repair is safe but not uniformly positive per source, and every deployable learned candidate remains protected by the floor.",
         "",
-        f"Current integrated candidate: all `{_pct(matrix_row['metrics']['all'])}`, t50 `{_pct(matrix_row['metrics']['t50'])}`, t100 raw-frame diagnostic `{_pct(matrix_row['metrics']['t100_raw_frame_diagnostic'])}`, hard/failure `{_pct(matrix_row['metrics']['hard_failure'])}`, easy degradation `{_pct(matrix_row['metrics']['easy_degradation'])}`.",
+        f"Frozen integrated candidate: all `{_pct(matrix_row['metrics']['all'])}`, t50 `{_pct(matrix_row['metrics']['t50'])}`, t100 raw-frame diagnostic `{_pct(matrix_row['metrics']['t100_raw_frame_diagnostic'])}`, hard/failure `{_pct(matrix_row['metrics']['hard_failure'])}`, easy degradation `{_pct(matrix_row['metrics']['easy_degradation'])}`.",
+        f"Latest protected tail adapter: all `{_pct(latest_tail['metrics']['all'])}`, t50 `{_pct(latest_tail['metrics']['t50'])}`, t100 raw-frame diagnostic `{_pct(latest_tail['metrics']['t100_raw_frame_diagnostic'])}`, hard/failure `{_pct(latest_tail['metrics']['hard_failure'])}`, easy degradation `{_pct(latest_tail['metrics']['easy_degradation'])}`.",
         f"Source-safe protected neural repair: all `{_pct(source_safe['metrics']['all'])}`, t50 `{_pct(source_safe['metrics']['t50'])}`, hard/failure `{_pct(source_safe['metrics']['hard_failure'])}`, easy degradation `{_pct(source_safe['metrics']['easy_degradation'])}`.",
         "",
         "This is still dataset-local/raw-frame 2.5D evidence. It is not true 3D, not foundation-scale, not metric/seconds-level, and it does not execute Stage5C or SMC.",
@@ -410,11 +448,19 @@ def _update_project_summaries(payload: Mapping[str, Any]) -> None:
         "gate": f"{payload['stage43_at_gate']['passed']}/{payload['stage43_at_gate']['total']}",
         "current_candidate_all": matrix_row["metrics"]["all"],
         "current_candidate_t50": matrix_row["metrics"]["t50"],
+        "latest_tail_adapter_all": latest_tail["metrics"]["all"],
+        "latest_tail_adapter_t50": latest_tail["metrics"]["t50"],
+        "latest_tail_adapter_t100": latest_tail["metrics"]["t100_raw_frame_diagnostic"],
+        "latest_tail_adapter_easy": latest_tail["metrics"]["easy_degradation"],
         "source_safe_all": source_safe["metrics"]["all"],
         "source_safe_t50": source_safe["metrics"]["t50"],
         "claim_boundary": payload["claim_boundary"],
         "result_source": payload["result_source"],
     }
+    state["current_stage"] = "stage43_at_external_validation_matrix"
+    state["current_verdict"] = payload["stage43_at_gate"]["verdict"]
+    state["stage5c_executed"] = False
+    state["smc_enabled"] = False
     write_json(RESEARCH_STATE, state)
 
 

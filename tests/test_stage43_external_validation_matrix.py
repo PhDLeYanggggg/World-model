@@ -16,6 +16,13 @@ def test_stage43_external_validation_matrix_blocks_ungated_deployment() -> None:
     assert rows["ungated_neural_diagnostic"]["deployable"] is False
     assert rows["ungated_neural_diagnostic"]["metrics"]["easy_degradation"] > 0.02
     assert rows["source_safe_protected_neural"]["deployable"] is True
+    assert rows["latest_full_test_tail_adapter_candidate"]["deployable"] is True
+    assert rows["latest_full_test_tail_adapter_candidate"]["metrics"]["easy_degradation"] <= 0.02
+    assert rows["latest_full_test_tail_adapter_candidate"]["metrics"]["t100_raw_frame_diagnostic"] == 0.0
+    assert (
+        rows["latest_full_test_tail_adapter_candidate"]["metrics"]["t50"]
+        > rows["current_best_integrated_candidate"]["metrics"]["t50"]
+    )
     assert payload["source_repair_summary"]["uniform_positive_per_source_claim_allowed"] is False
 
 
