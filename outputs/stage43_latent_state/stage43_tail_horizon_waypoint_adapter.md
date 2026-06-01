@@ -27,10 +27,10 @@
 
 ## Delta vs Stage43-O
 
-- all ADE improvement delta: `18.92%`
-- t50 delta: `36.10%`
+- all ADE improvement delta: `11.03%`
+- t50 delta: `21.17%`
 - t100 delta: `0.00%`
-- hard/failure delta: `18.70%`
+- hard/failure delta: `8.03%`
 - easy degradation delta: `0.00%`
 
 ## Bootstrap CI
