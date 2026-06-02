@@ -5011,3 +5011,20 @@ Source overlap audit: `{'val_source_count': 4, 'test_source_count': 4, 'overlap_
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BW_CONTEXT_HAZARD_ATTRIBUTION_GUARD:END -->
+
+<!-- STAGE43_BX_LATENT_RISK_HEAD_ROBUSTNESS_AUDIT:START -->
+## STAGE43_BX_LATENT_RISK_HEAD_ROBUSTNESS_AUDIT
+
+source = `fresh_stage43_bx_latent_risk_head_robustness_audit`
+result_source = `fresh_checkpoint_replay_latent_risk_head_robustness`
+verdict = `stage43_bx_latent_risk_head_robustness_pass_horizon_caveat`
+gate = `12 / 12`
+deployable_policy_changed = `False`
+
+Stage43-BX fresh-replays the latent checkpoint and audits failure/gain/harm risk heads across domain and horizon slices with row-subsampled bootstrap CIs.
+Global AUROC: failure `0.8709`, gain `0.8845`, harm `0.9050`.
+Bootstrap AUROC low: failure `0.8626`, gain `0.8769`, harm `0.8981`.
+Weak horizon slices: `5`; minimum horizon AUROC `0.6147`.
+
+Boundary unchanged: protected dataset-local/raw-frame 2.5D only; no ungated deployment, no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BX_LATENT_RISK_HEAD_ROBUSTNESS_AUDIT:END -->

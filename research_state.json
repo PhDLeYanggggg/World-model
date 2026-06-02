@@ -43510,5 +43510,174 @@
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_bx_latent_risk_head_robustness_audit": {
+    "source": "fresh_stage43_bx_latent_risk_head_robustness_audit",
+    "result_source": "fresh_checkpoint_replay_latent_risk_head_robustness",
+    "updated_at": "2026-06-02T06:29:02.739717+00:00",
+    "verdict": "stage43_bx_latent_risk_head_robustness_pass_horizon_caveat",
+    "gate": "12 / 12",
+    "global_head_metrics": {
+      "failure": {
+        "rows": 89736,
+        "positives": 33797,
+        "negatives": 55939,
+        "positive_rate": 0.3766269947401266,
+        "brier": 0.13873783633620002,
+        "baseline_brier": 0.23477910157314724,
+        "auroc": 0.8709221781985358,
+        "auprc": 0.8102779551913002,
+        "average_precision": 0.8102779551913002,
+        "defined": true,
+        "f1_at_0_5": 0.7478043434639666,
+        "ece": 0.03865699770088964,
+        "brier_improvement_vs_prevalence": 0.4090707588257161
+      },
+      "gain": {
+        "rows": 89736,
+        "positives": 53921,
+        "negatives": 35815,
+        "positive_rate": 0.6008848176874387,
+        "brier": 0.1331668275510895,
+        "baseline_brier": 0.23982225356017225,
+        "auroc": 0.8844834124953145,
+        "auprc": 0.9298158033210049,
+        "average_precision": 0.9298158033210049,
+        "defined": true,
+        "f1_at_0_5": 0.8418943149456808,
+        "ece": 0.03371575432477939,
+        "brier_improvement_vs_prevalence": 0.4447269776919286
+      },
+      "harm": {
+        "rows": 89736,
+        "positives": 47812,
+        "negatives": 41924,
+        "positive_rate": 0.5328073459926896,
+        "brier": 0.11657280242970039,
+        "baseline_brier": 0.24892367804891594,
+        "auroc": 0.9049870952739211,
+        "auprc": 0.8840712204133349,
+        "average_precision": 0.8840712204133349,
+        "defined": true,
+        "f1_at_0_5": 0.855222655448389,
+        "ece": 0.03832955591689791,
+        "brier_improvement_vs_prevalence": 0.5316925921093264
+      }
+    },
+    "bootstrap": {
+      "failure": {
+        "n": 1000,
+        "sample_rows": 8000,
+        "auroc": {
+          "low": 0.8625852208201444,
+          "mean": 0.8706035302888374,
+          "high": 0.8785709350662162
+        },
+        "auprc": {
+          "low": 0.7950226405163172,
+          "mean": 0.809891571674455,
+          "high": 0.8240321225499458
+        },
+        "brier": {
+          "low": 0.13445451825400717,
+          "mean": 0.13884163064496066,
+          "high": 0.14335697772784797
+        },
+        "defined_replicates": 1000
+      },
+      "gain": {
+        "n": 1000,
+        "sample_rows": 8000,
+        "auroc": {
+          "low": 0.8768515781315939,
+          "mean": 0.8844599146163142,
+          "high": 0.8911537486192525
+        },
+        "auprc": {
+          "low": 0.9242174441871751,
+          "mean": 0.9297566358049802,
+          "high": 0.9346878787474894
+        },
+        "brier": {
+          "low": 0.12915495334454374,
+          "mean": 0.13319659488572697,
+          "high": 0.1375812033416169
+        },
+        "defined_replicates": 1000
+      },
+      "harm": {
+        "n": 1000,
+        "sample_rows": 8000,
+        "auroc": {
+          "low": 0.8981202651420109,
+          "mean": 0.9049674352755488,
+          "high": 0.9116189056138841
+        },
+        "auprc": {
+          "low": 0.8732643149934222,
+          "mean": 0.8841088051952758,
+          "high": 0.8957601218384512
+        },
+        "brier": {
+          "low": 0.1123285031386373,
+          "mean": 0.11656555313819678,
+          "high": 0.12097939546153827
+        },
+        "defined_replicates": 1000
+      }
+    },
+    "weak_horizon_slices": [
+      {
+        "head": "failure",
+        "horizon": "100",
+        "rows": 18070,
+        "auroc": 0.6564896137106738,
+        "auprc": 0.2901356314339096,
+        "positive_rate": 0.22119535141117874
+      },
+      {
+        "head": "gain",
+        "horizon": "100",
+        "rows": 18070,
+        "auroc": 0.6916359639901749,
+        "auprc": 0.41467954898137,
+        "positive_rate": 0.2255672385168788
+      },
+      {
+        "head": "gain",
+        "horizon": "50",
+        "rows": 21754,
+        "auroc": 0.6923427296612462,
+        "auprc": 0.6259489156824456,
+        "positive_rate": 0.4434586742668015
+      },
+      {
+        "head": "harm",
+        "horizon": "100",
+        "rows": 18070,
+        "auroc": 0.6147438866289507,
+        "auprc": 0.9016023862302684,
+        "positive_rate": 0.8792473713337022
+      },
+      {
+        "head": "harm",
+        "horizon": "50",
+        "rows": 21754,
+        "auroc": 0.7446037967091609,
+        "auprc": 0.8478763201284446,
+        "positive_rate": 0.6807943366737151
+      }
+    ],
+    "latent_stats": {
+      "rows": 89736,
+      "dim": 32,
+      "mean_variance": 0.4220241904258728,
+      "min_variance": 0.07967337965965271,
+      "noncollapse_threshold": 0.01
+    },
+    "report": "outputs/stage43_latent_state/stage43_latent_risk_head_robustness_audit.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

@@ -4,7 +4,7 @@
 - result_source: `fresh_external_validation_matrix_from_verified_artifacts`
 - verdict: `stage43_at_external_validation_matrix_pass`
 - gate: `13 / 13`
-- input hash: `7731b47349023f919da9d8005668f6a1966d09d673b3adfea7bc252de6bece06`
+- input hash: `321bd80d340091c13f8f6f941fe1bcbfe9116c927176ab879fce666b97ebe923`
 - split verdict: `stage43_f_source_level_split_ready`
 - test rows: `89736`
 - test domains: `['ETH_UCY', 'TrajNet', 'UCY']`

@@ -1,20 +1,12 @@
-# Stage43 Current World-Model Gate
+# Stage43-BX Latent Risk Head Robustness Gate
 
-- source: `fresh_stage43_bx_latent_risk_head_robustness_audit`
 - verdict: `stage43_bx_latent_risk_head_robustness_pass_horizon_caveat`
 - passed: `12 / 12`
-- protected multimodal latent state candidate: `True`
+- horizon min AUROC: `0.6147`
 - weak horizon slices: `5`
 - deployable policy changed: `False`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BX is a robustness audit for latent risk heads, not an ungated deployment policy.
-- Horizon 50/100 weakness remains a documented caveat.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |

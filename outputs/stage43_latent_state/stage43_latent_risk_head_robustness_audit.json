@@ -1,0 +1,437 @@
+{
+  "source": "fresh_stage43_bx_latent_risk_head_robustness_audit",
+  "result_source": "fresh_checkpoint_replay_latent_risk_head_robustness",
+  "generated_at_utc": "2026-06-02T06:29:02.739717+00:00",
+  "git_commit": "0b32942",
+  "stage43_m_precondition": {
+    "verdict": "stage43_m_protected_full_waypoint_latent_candidate_pass",
+    "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_full_waypoint_latent_dynamics.pt",
+    "checkpoint_sha256": "67f0a49b7546b086ec36d1ff8654f695e04da43ab2cab3a4390028986b7788b4",
+    "checkpoint_sha256_matches_stage43_m": true
+  },
+  "stage43_y_precondition": {
+    "verdict": "stage43_y_protected_multimodal_latent_head_suite_candidate",
+    "protected_multimodal_latent_state_candidate": true
+  },
+  "evaluation_protocol": {
+    "split": "test",
+    "rows": 89736,
+    "batch_size": 4096,
+    "bootstrap": 1000,
+    "bootstrap_rows": 8000,
+    "future_labels_eval_only": true,
+    "test_threshold_tuning": false,
+    "num_workers": 0
+  },
+  "head_metrics": {
+    "failure": {
+      "rows": 89736,
+      "positives": 33797,
+      "negatives": 55939,
+      "positive_rate": 0.3766269947401266,
+      "brier": 0.13873783633620002,
+      "baseline_brier": 0.23477910157314724,
+      "auroc": 0.8709221781985358,
+      "auprc": 0.8102779551913002,
+      "average_precision": 0.8102779551913002,
+      "defined": true,
+      "f1_at_0_5": 0.7478043434639666,
+      "ece": 0.03865699770088964,
+      "brier_improvement_vs_prevalence": 0.4090707588257161
+    },
+    "gain": {
+      "rows": 89736,
+      "positives": 53921,
+      "negatives": 35815,
+      "positive_rate": 0.6008848176874387,
+      "brier": 0.1331668275510895,
+      "baseline_brier": 0.23982225356017225,
+      "auroc": 0.8844834124953145,
+      "auprc": 0.9298158033210049,
+      "average_precision": 0.9298158033210049,
+      "defined": true,
+      "f1_at_0_5": 0.8418943149456808,
+      "ece": 0.03371575432477939,
+      "brier_improvement_vs_prevalence": 0.4447269776919286
+    },
+    "harm": {
+      "rows": 89736,
+      "positives": 47812,
+      "negatives": 41924,
+      "positive_rate": 0.5328073459926896,
+      "brier": 0.11657280242970039,
+      "baseline_brier": 0.24892367804891594,
+      "auroc": 0.9049870952739211,
+      "auprc": 0.8840712204133349,
+      "average_precision": 0.8840712204133349,
+      "defined": true,
+      "f1_at_0_5": 0.855222655448389,
+      "ece": 0.03832955591689791,
+      "brier_improvement_vs_prevalence": 0.5316925921093264
+    }
+  },
+  "by_domain": {
+    "failure": {
+      "ETH_UCY": {
+        "rows": 70585,
+        "positive_rate": 0.3716228660480272,
+        "auroc": 0.8721797332181183,
+        "auprc": 0.8154320282056621,
+        "brier": 0.13802258651726132,
+        "ece": 0.03759789329415096,
+        "defined": true
+      },
+      "TrajNet": {
+        "rows": 9611,
+        "positive_rate": 0.3396108625533243,
+        "auroc": 0.826707272734996,
+        "auprc": 0.7022094099041847,
+        "brier": 0.16617712816410252,
+        "ece": 0.08690784407070061,
+        "defined": true
+      },
+      "UCY": {
+        "rows": 9540,
+        "positive_rate": 0.4509433962264151,
+        "auroc": 0.9150552483736043,
+        "auprc": 0.9133141951770148,
+        "brier": 0.1163863556980258,
+        "ece": 0.08655318608214646,
+        "defined": true
+      }
+    },
+    "gain": {
+      "ETH_UCY": {
+        "rows": 70585,
+        "positive_rate": 0.6101863002054261,
+        "auroc": 0.8778801663410815,
+        "auprc": 0.9299581060665345,
+        "brier": 0.1371666507746161,
+        "ece": 0.037548272155360954,
+        "defined": true
+      },
+      "TrajNet": {
+        "rows": 9611,
+        "positive_rate": 0.5326188742066382,
+        "auroc": 0.8463979592031989,
+        "auprc": 0.8804097610309536,
+        "brier": 0.16168472303409742,
+        "ece": 0.07111795242957597,
+        "defined": true
+      },
+      "UCY": {
+        "rows": 9540,
+        "positive_rate": 0.6008385744234801,
+        "auroc": 0.9697588211837421,
+        "auprc": 0.9817275358759484,
+        "brier": 0.07484261206683225,
+        "ece": 0.09405789648883621,
+        "defined": true
+      }
+    },
+    "harm": {
+      "ETH_UCY": {
+        "rows": 70585,
+        "positive_rate": 0.5266133031097259,
+        "auroc": 0.8932533908226185,
+        "auprc": 0.8634762756620223,
+        "brier": 0.12459335909112534,
+        "ece": 0.03552054312712683,
+        "defined": true
+      },
+      "TrajNet": {
+        "rows": 9611,
+        "positive_rate": 0.6304234731037353,
+        "auroc": 0.9386751931829502,
+        "auprc": 0.9577973757726943,
+        "brier": 0.10384371950502802,
+        "ece": 0.11050921119303796,
+        "defined": true
+      },
+      "UCY": {
+        "rows": 9540,
+        "positive_rate": 0.48029350104821805,
+        "auroc": 0.9701000406909969,
+        "auprc": 0.9610610163701887,
+        "brier": 0.07005374834608892,
+        "ece": 0.0861173496923294,
+        "defined": true
+      }
+    }
+  },
+  "by_horizon": {
+    "failure": {
+      "10": {
+        "rows": 26132,
+        "positive_rate": 0.6077223327720802,
+        "auroc": 0.9097908229772365,
+        "auprc": 0.9193930702555291,
+        "brier": 0.11462829234390691,
+        "ece": 0.1023490728265008,
+        "defined": true
+      },
+      "100": {
+        "rows": 18070,
+        "positive_rate": 0.22119535141117874,
+        "auroc": 0.6564896137106738,
+        "auprc": 0.2901356314339096,
+        "brier": 0.17431978229404996,
+        "ece": 0.10375811871477233,
+        "defined": true
+      },
+      "25": {
+        "rows": 23780,
+        "positive_rate": 0.45084104289318755,
+        "auroc": 0.8432739257551803,
+        "auprc": 0.7454177775507282,
+        "brier": 0.15658652027392075,
+        "ece": 0.0532387889871535,
+        "defined": true
+      },
+      "50": {
+        "rows": 21754,
+        "positive_rate": 0.1470074469063161,
+        "auroc": 0.7561241946862403,
+        "auprc": 0.33511764715887793,
+        "brier": 0.11863225281635342,
+        "ece": 0.07053036205152044,
+        "defined": true
+      }
+    },
+    "gain": {
+      "10": {
+        "rows": 26132,
+        "positive_rate": 0.85431654676259,
+        "auroc": 0.9370483734948087,
+        "auprc": 0.9873427608277594,
+        "brier": 0.06592833611952528,
+        "ece": 0.0718932321790384,
+        "defined": true
+      },
+      "100": {
+        "rows": 18070,
+        "positive_rate": 0.2255672385168788,
+        "auroc": 0.6916359639901749,
+        "auprc": 0.41467954898137,
+        "brier": 0.1614356560244603,
+        "ece": 0.049282473772681745,
+        "defined": true
+      },
+      "25": {
+        "rows": 23780,
+        "positive_rate": 0.7515979814970564,
+        "auroc": 0.9210609615871196,
+        "auprc": 0.9732537589966228,
+        "brier": 0.10008627466866507,
+        "ece": 0.086620090691932,
+        "defined": true
+      },
+      "50": {
+        "rows": 21754,
+        "positive_rate": 0.4434586742668015,
+        "auroc": 0.6923427296612462,
+        "auprc": 0.6259489156824456,
+        "brier": 0.22661695511934715,
+        "ece": 0.07011938792407385,
+        "defined": true
+      }
+    },
+    "harm": {
+      "10": {
+        "rows": 26132,
+        "positive_rate": 0.2955380376549824,
+        "auroc": 0.9431886388714538,
+        "auprc": 0.9047047618616973,
+        "brier": 0.08176994200477297,
+        "ece": 0.0782210439943677,
+        "defined": true
+      },
+      "100": {
+        "rows": 18070,
+        "positive_rate": 0.8792473713337022,
+        "auroc": 0.6147438866289507,
+        "auprc": 0.9016023862302684,
+        "brier": 0.10678570584723038,
+        "ece": 0.05195748951671594,
+        "defined": true
+      },
+      "25": {
+        "rows": 23780,
+        "positive_rate": 0.39491169049621533,
+        "auroc": 0.9319291684046291,
+        "auprc": 0.9026382244349305,
+        "brier": 0.09778603046442572,
+        "ece": 0.07356683665759631,
+        "defined": true
+      },
+      "50": {
+        "rows": 21754,
+        "positive_rate": 0.6807943366737151,
+        "auroc": 0.7446037967091609,
+        "auprc": 0.8478763201284446,
+        "brier": 0.18704584744228056,
+        "ece": 0.05220829180388797,
+        "defined": true
+      }
+    }
+  },
+  "bootstrap": {
+    "failure": {
+      "n": 1000,
+      "sample_rows": 8000,
+      "auroc": {
+        "low": 0.8625852208201444,
+        "mean": 0.8706035302888374,
+        "high": 0.8785709350662162
+      },
+      "auprc": {
+        "low": 0.7950226405163172,
+        "mean": 0.809891571674455,
+        "high": 0.8240321225499458
+      },
+      "brier": {
+        "low": 0.13445451825400717,
+        "mean": 0.13884163064496066,
+        "high": 0.14335697772784797
+      },
+      "defined_replicates": 1000
+    },
+    "gain": {
+      "n": 1000,
+      "sample_rows": 8000,
+      "auroc": {
+        "low": 0.8768515781315939,
+        "mean": 0.8844599146163142,
+        "high": 0.8911537486192525
+      },
+      "auprc": {
+        "low": 0.9242174441871751,
+        "mean": 0.9297566358049802,
+        "high": 0.9346878787474894
+      },
+      "brier": {
+        "low": 0.12915495334454374,
+        "mean": 0.13319659488572697,
+        "high": 0.1375812033416169
+      },
+      "defined_replicates": 1000
+    },
+    "harm": {
+      "n": 1000,
+      "sample_rows": 8000,
+      "auroc": {
+        "low": 0.8981202651420109,
+        "mean": 0.9049674352755488,
+        "high": 0.9116189056138841
+      },
+      "auprc": {
+        "low": 0.8732643149934222,
+        "mean": 0.8841088051952758,
+        "high": 0.8957601218384512
+      },
+      "brier": {
+        "low": 0.1123285031386373,
+        "mean": 0.11656555313819678,
+        "high": 0.12097939546153827
+      },
+      "defined_replicates": 1000
+    }
+  },
+  "weak_horizon_slices": [
+    {
+      "head": "failure",
+      "horizon": "100",
+      "rows": 18070,
+      "auroc": 0.6564896137106738,
+      "auprc": 0.2901356314339096,
+      "positive_rate": 0.22119535141117874
+    },
+    {
+      "head": "gain",
+      "horizon": "100",
+      "rows": 18070,
+      "auroc": 0.6916359639901749,
+      "auprc": 0.41467954898137,
+      "positive_rate": 0.2255672385168788
+    },
+    {
+      "head": "gain",
+      "horizon": "50",
+      "rows": 21754,
+      "auroc": 0.6923427296612462,
+      "auprc": 0.6259489156824456,
+      "positive_rate": 0.4434586742668015
+    },
+    {
+      "head": "harm",
+      "horizon": "100",
+      "rows": 18070,
+      "auroc": 0.6147438866289507,
+      "auprc": 0.9016023862302684,
+      "positive_rate": 0.8792473713337022
+    },
+    {
+      "head": "harm",
+      "horizon": "50",
+      "rows": 21754,
+      "auroc": 0.7446037967091609,
+      "auprc": 0.8478763201284446,
+      "positive_rate": 0.6807943366737151
+    }
+  ],
+  "latent_stats": {
+    "rows": 89736,
+    "dim": 32,
+    "mean_variance": 0.4220241904258728,
+    "min_variance": 0.07967337965965271,
+    "noncollapse_threshold": 0.01
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_labels_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "test_threshold_tuning": false
+  },
+  "claim_boundary": {
+    "true_3d": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "standalone_ungated_policy": false,
+    "long_objective_complete": false
+  },
+  "input_hash": "60a1888071ab5c256346123a306516ccf969c3ed4e686aa606a9a8d85aa10b8c",
+  "stage43_bx_gate": {
+    "source": "fresh_stage43_bx_latent_risk_head_robustness_audit",
+    "gates": {
+      "stage43_m_checkpoint_replayed": true,
+      "stage43_y_precondition_seen": true,
+      "fresh_test_predictions_completed": true,
+      "latent_noncollapse": true,
+      "global_failure_gain_harm_heads_strong": true,
+      "per_domain_heads_robust": true,
+      "per_horizon_heads_supported": true,
+      "bootstrap_ci_completed": true,
+      "weak_horizon_caveats_reported": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_bx_latent_risk_head_robustness_pass_horizon_caveat",
+    "horizon_min_auroc": 0.6147438866289507,
+    "weak_horizon_slice_count": 5,
+    "deployable_policy_changed": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "standalone_ungated_policy": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  }
+}
