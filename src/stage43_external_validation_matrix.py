@@ -373,6 +373,8 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
             "stage43_cd_source_family_coverage_guard_pass",
             "stage43_cd_source_family_coverage_guard_partial_safe_lift",
             "stage43_cd_source_family_coverage_guard_diagnostic_incomplete",
+            "stage43_ce_source_family_coverage_split_repair_ready",
+            "stage43_ce_source_family_coverage_split_repair_partial",
         },
         "latest_tail_adapter_candidate_present": by_role["latest_full_test_tail_adapter_candidate"]["deployable"] is True
         and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["all"] > by_role["current_best_integrated_candidate"]["metrics"]["all"]

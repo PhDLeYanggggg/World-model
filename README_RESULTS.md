@@ -8209,3 +8209,23 @@ Shadow all / hard / easy: `0.1321` / `0.1690` / `0.0010`.
 
 Interpretation: the guard restores easy safety and keeps small all-row lift, but hard/failure lift drops and t50 remains negative. It is evidence for source-coverage safety, not a deployment replacement.
 <!-- STAGE43_CD_SOURCE_FAMILY_COVERAGE_GUARD:END -->
+
+<!-- STAGE43_CE_SOURCE_FAMILY_COVERAGE_SPLIT_REPAIR:START -->
+## STAGE43_CE_SOURCE_FAMILY_COVERAGE_SPLIT_REPAIR
+
+source = `fresh_stage43_ce_source_family_coverage_split_repair`
+result_source = `fresh_metadata_only_source_family_coverage_split_repair`
+verdict = `stage43_ce_source_family_coverage_split_repair_ready`
+gate = `14 / 14`
+deployable_policy_changed = `False`
+new_model_training_run = `False`
+
+Stage43-CE builds a metadata-only coverage-aware source split so validation covers every test source family/domain-family where feasible. This directly addresses the Stage43-CD over-conservative fallback caused by validation support gaps.
+
+Split rows train/val/test = `192531` / `62796` / `82664`.
+Test families without validation support = `[]`.
+Test domain-families without validation support = `[]`.
+Tradeoff: the repaired test split is intentionally coverage-aware and narrower than the broad external stress split; singleton/unsupported source families remain blockers, not successes.
+
+Interpretation: this is split-protocol repair readiness, not a new model result. The next step is to rebuild the full-waypoint supervision cache and retrain/evaluate latent dynamics on the repaired split.
+<!-- STAGE43_CE_SOURCE_FAMILY_COVERAGE_SPLIT_REPAIR:END -->

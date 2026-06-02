@@ -44202,5 +44202,235 @@
     "deployable_policy_changed": false,
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_ce_source_family_coverage_split_repair": {
+    "source": "fresh_stage43_ce_source_family_coverage_split_repair",
+    "result_source": "fresh_metadata_only_source_family_coverage_split_repair",
+    "updated_at": "2026-06-02T09:34:41.631871+00:00",
+    "verdict": "stage43_ce_source_family_coverage_split_repair_ready",
+    "gate": "14 / 14",
+    "assignment_hash": "4df1b5fd2309b0b5fffdd86aabd1445c3359c254c3c2f80a871b671f4f4b2c82",
+    "split_summary": {
+      "train": {
+        "rows": 192531,
+        "source_count": 12,
+        "source_ids": [
+          "0707bfbb8ee14ad9",
+          "12b324ed892df46b",
+          "d2c1bb36b138e813",
+          "c91ec4d4c2c05a29",
+          "7f003983eabd111b",
+          "66f867bd19e9794b",
+          "603561046c16aa3a",
+          "f39e86fd7efe1907",
+          "92012cfde1f19158",
+          "83b0417df499ccae",
+          "e39391d53f68771a",
+          "d9c8e12e56a017c8"
+        ],
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "domain_counts": {
+          "ETH_UCY": 3,
+          "TrajNet": 8,
+          "UCY": 1
+        },
+        "families": [
+          "biwi",
+          "crowds",
+          "hotel",
+          "obsmat",
+          "pets",
+          "students",
+          "zara"
+        ],
+        "domain_families": [
+          "ETH_UCY|hotel",
+          "ETH_UCY|obsmat",
+          "ETH_UCY|students",
+          "TrajNet|biwi",
+          "TrajNet|crowds",
+          "TrajNet|pets",
+          "TrajNet|students",
+          "TrajNet|zara",
+          "UCY|students"
+        ],
+        "horizon_counts": {
+          "10": 60567,
+          "25": 53344,
+          "50": 46176,
+          "100": 32444
+        },
+        "hard_rows": 147294,
+        "failure_rows": 70447,
+        "easy_rows": 59081
+      },
+      "val": {
+        "rows": 62796,
+        "source_count": 3,
+        "source_ids": [
+          "bcca94a8f7fc4be3",
+          "7ab91f9389661560",
+          "e869f8a217f3b3bd"
+        ],
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "domain_counts": {
+          "TrajNet": 1,
+          "ETH_UCY": 1,
+          "UCY": 1
+        },
+        "families": [
+          "students",
+          "zara"
+        ],
+        "domain_families": [
+          "ETH_UCY|zara",
+          "TrajNet|students",
+          "UCY|zara"
+        ],
+        "horizon_counts": {
+          "10": 19557,
+          "25": 17499,
+          "50": 15441,
+          "100": 10299
+        },
+        "hard_rows": 48498,
+        "failure_rows": 26435,
+        "easy_rows": 12396
+      },
+      "test": {
+        "rows": 82664,
+        "source_count": 3,
+        "source_ids": [
+          "7c5c7053cb97abc4",
+          "9d741345f4a44fd1",
+          "483b8f0476235d5a"
+        ],
+        "domains": [
+          "ETH_UCY",
+          "TrajNet",
+          "UCY"
+        ],
+        "domain_counts": {
+          "UCY": 1,
+          "TrajNet": 1,
+          "ETH_UCY": 1
+        },
+        "families": [
+          "students",
+          "zara"
+        ],
+        "domain_families": [
+          "ETH_UCY|zara",
+          "TrajNet|students",
+          "UCY|zara"
+        ],
+        "horizon_counts": {
+          "10": 25430,
+          "25": 22888,
+          "50": 20345,
+          "100": 14001
+        },
+        "hard_rows": 59841,
+        "failure_rows": 29605,
+        "easy_rows": 25024
+      }
+    },
+    "coverage_summary": {
+      "families_by_split": {
+        "train": [
+          "biwi",
+          "crowds",
+          "hotel",
+          "obsmat",
+          "pets",
+          "students",
+          "zara"
+        ],
+        "val": [
+          "students",
+          "zara"
+        ],
+        "test": [
+          "students",
+          "zara"
+        ]
+      },
+      "domain_families_by_split": {
+        "train": [
+          "ETH_UCY|hotel",
+          "ETH_UCY|obsmat",
+          "ETH_UCY|students",
+          "TrajNet|biwi",
+          "TrajNet|crowds",
+          "TrajNet|pets",
+          "TrajNet|students",
+          "TrajNet|zara",
+          "UCY|students"
+        ],
+        "val": [
+          "ETH_UCY|zara",
+          "TrajNet|students",
+          "UCY|zara"
+        ],
+        "test": [
+          "ETH_UCY|zara",
+          "TrajNet|students",
+          "UCY|zara"
+        ]
+      },
+      "test_families_without_validation_support": [],
+      "test_domain_families_without_validation_support": [],
+      "global_family_coverage_pass": true,
+      "domain_family_coverage_pass": true
+    },
+    "no_leakage": {
+      "source_file_disjoint": true,
+      "source_overlap_counts": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "basename_overlap_counts": {
+        "train_val": 1,
+        "train_test": 1,
+        "val_test": 2
+      },
+      "basename_overlap_examples": {
+        "train_val": [
+          "obsmat.txt"
+        ],
+        "train_test": [
+          "obsmat.txt"
+        ],
+        "val_test": [
+          "crowds_zara03.txt",
+          "obsmat.txt"
+        ]
+      },
+      "scene_overlap_counts": {
+        "train_val": 1,
+        "train_test": 1,
+        "val_test": 1
+      },
+      "scene_overlap_allowed_for_source_level_split": true,
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "central_velocity_input": false,
+      "test_endpoint_goal_construction": false,
+      "test_statistics_normalization": false
+    },
+    "report": "outputs/stage43_latent_state/stage43_source_family_coverage_split_repair.md",
+    "deployable_policy_changed": false,
+    "new_model_training_run": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
