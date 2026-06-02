@@ -1,9 +1,7 @@
-# Stage43 Current World-Model Gate
+# Stage43-BT Context Admissibility Gate
 
-- source: `fresh_stage43_bt_context_admissibility_model`
 - verdict: `stage43_bt_context_admissibility_pass_safe_lift_diagnostic`
 - passed: `14 / 14`
-- protected multimodal latent state candidate: `True`
 - row-level admissibility trained: `True`
 - beats graph-history on any core metric: `True`
 - easy safe: `True`
@@ -11,12 +9,6 @@
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BT is a row-level context admissibility diagnostic.
-- It does not update deployment unless it beats the graph-history floor safely.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |

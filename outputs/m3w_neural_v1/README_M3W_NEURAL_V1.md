@@ -4923,3 +4923,25 @@ This is a diagnostic context-routing experiment, not a deployment policy update.
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BS_SCENE_GRAPH_CONTEXT_ROUTER:END -->
+
+<!-- STAGE43_BT_CONTEXT_ADMISSIBILITY_MODEL:START -->
+## STAGE43_BT_CONTEXT_ADMISSIBILITY_MODEL
+
+source = `fresh_stage43_bt_context_admissibility_model`
+result_source = `fresh_row_level_harm_aware_context_admissibility`
+verdict = `stage43_bt_context_admissibility_pass_safe_lift_diagnostic`
+gate = `14 / 14`
+row_level_admissibility_trained = `True`
+beats_graph_history_on_any_core_metric = `True`
+easy_safe = `True`
+deployable_policy_changed = `False`
+
+Stage43-BT trains a row-level harm-aware context admissibility model over the Stage43-BP scene/graph variants. It uses graph-history causal features as input and future variant error only as train/eval labels.
+Validation selected policy: `{'gain_threshold': 0.5, 'harm_threshold': 0.5, 'predicted_gain_threshold': 0.0}`; safe validation candidates: `125 / 125`.
+
+Test metrics: all `39.06%`, t50 `16.02%`, t100 raw-frame diagnostic `-3.21%`, hard/failure `39.66%`, easy degradation `0.00%`.
+Delta vs graph-history-only: all `2.15%`, t50 `0.40%`, hard/failure `2.02%`, easy degradation `0.00%`.
+Test context counts: `{'graph_history_only': 10322, 'scene_graph_full': 531, 'scene_proxy_only': 1147}`.
+
+Interpretation: this is a context-admissibility diagnostic, not a deployment update unless it safely beats graph-history on core metrics. Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BT_CONTEXT_ADMISSIBILITY_MODEL:END -->
