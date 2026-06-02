@@ -2909,3 +2909,27 @@ Test context counts: `{'graph_history_only': 10322, 'scene_graph_full': 531, 'sc
 
 Interpretation: this is a context-admissibility diagnostic, not a deployment update unless it safely beats graph-history on core metrics. Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BT_CONTEXT_ADMISSIBILITY_MODEL:END -->
+
+<!-- STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT:START -->
+## STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT
+
+source = `fresh_stage43_bu_context_admissibility_robustness_audit`
+result_source = `fresh_replay_bootstrap_slice_audit_from_stage43_bt`
+verdict = `stage43_bu_context_admissibility_partial_robust_lift_pass`
+gate = `12 / 12`
+robust_all_hard_lift = `True`
+t50_bootstrap_robust = `True`
+t100_bootstrap_robust = `False`
+t100_ci_crosses_zero = `True`
+slice_easy_safe = `False`
+easy_safe_ci = `True`
+deployable_policy_changed = `False`
+
+Stage43-BU exact-replays Stage43-BT and adds bootstrap plus source/domain/horizon slice evidence. It is a robustness audit, not a deployment update.
+Replay diff max: `0.00000000`.
+Delta vs graph-history-only: all `2.15%`, t50 `0.40%`, t100 raw-frame diagnostic `0.05%`, hard/failure `2.02%`, easy degradation `0.00%`.
+Bootstrap CI low vs graph-history-only: all `1.91%`, t50 `0.00%`, hard/failure `1.78%`, easy high `0.00%`.
+Slice audit: `31` positive slices, `2` negative slices, easy hazard slices `7`, core weak slices `[]`.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT:END -->

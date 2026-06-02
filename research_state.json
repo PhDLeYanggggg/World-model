@@ -43334,5 +43334,69 @@
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_bu_context_admissibility_robustness_audit": {
+    "source": "fresh_stage43_bu_context_admissibility_robustness_audit",
+    "result_source": "fresh_replay_bootstrap_slice_audit_from_stage43_bt",
+    "updated_at": "2026-06-02T04:43:47.358615+00:00",
+    "verdict": "stage43_bu_context_admissibility_partial_robust_lift_pass",
+    "gate": "12 / 12",
+    "robust_all_hard_lift": true,
+    "t50_bootstrap_robust": true,
+    "t100_bootstrap_robust": false,
+    "t100_ci_crosses_zero": true,
+    "slice_easy_safe": false,
+    "easy_safe_ci": true,
+    "deployable_policy_changed": false,
+    "delta_vs_graph_history_only": {
+      "all": 0.02149725408642389,
+      "t50": 0.003973593275277021,
+      "t100_raw_frame_diagnostic": 0.00047387620491279314,
+      "hard_failure": 0.020218839869348137,
+      "easy_degradation": 0.0
+    },
+    "bootstrap_summary": {
+      "all_delta_vs_graph": {
+        "low": 0.019090233443498774,
+        "mean": 0.021478351619978832,
+        "high": 0.023864775631190372,
+        "rows": 12000
+      },
+      "t50_delta_vs_graph": {
+        "low": 2.713690921525295e-05,
+        "mean": 0.003957364953075166,
+        "high": 0.007886432178994053,
+        "rows": 2888
+      },
+      "t100_raw_frame_delta_vs_graph": {
+        "low": -0.001064543694523784,
+        "mean": 0.00045994745042976526,
+        "high": 0.0021044151078239755,
+        "rows": 2406
+      },
+      "hard_failure_delta_vs_graph": {
+        "low": 0.017842752579591625,
+        "mean": 0.02021844331487982,
+        "high": 0.02250182796767738,
+        "rows": 9371
+      },
+      "easy_degradation_delta_vs_graph": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 3607
+      }
+    },
+    "slice_summary": {
+      "slice_count": 39,
+      "positive_slice_count": 31,
+      "negative_slice_count": 2,
+      "easy_hazard_slice_count": 7,
+      "core_weak_slices": []
+    },
+    "report": "outputs/stage43_latent_state/stage43_context_admissibility_robustness_audit.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

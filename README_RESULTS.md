@@ -17,7 +17,7 @@ SMC not enabled
 
 ## GitHub README 公开写法（2026-06-02）
 
-根目录 [`README.md`](README.md) 已再次按项目作者口吻重写。首页现在只负责向读者介绍 M3W：我为什么做这个项目、当前最可靠的 deployable 结果是什么、仓库里该从哪里读起、以及哪些 claim 仍然不能写。
+根目录 [`README.md`](README.md) 已再次按项目作者口吻重写。首页现在只负责向读者介绍 M3W：我在研究什么问题、当前最可靠的 deployable 结果是什么、仓库里该从哪里读起、以及哪些 claim 仍然不能写。它不再承担阶段流水账职责。
 
 后续规则固定如下：
 
@@ -25,6 +25,7 @@ SMC not enabled
 - 阶段号、gate 计数、provenance、长表格和失败流水账继续放在 `README_RESULTS.md`、`research_state.json` 和 `outputs/`。
 - 首页可以讲关键结果，但必须用自然项目介绍口吻，并保留 claim boundary。
 - 不能把 M3W 写成 true 3D、foundation、metric/seconds-level，不能暗示 Stage5C 或 SMC 已启用。
+- 以后所有 GitHub-facing README 更新都先按“项目作者介绍项目”的标准写；只有证据总账文件才写成实验 ledger。
 
 ## GitHub 首页写法（2026-06-01）
 
@@ -8014,3 +8015,27 @@ Test context counts: `{'graph_history_only': 10322, 'scene_graph_full': 531, 'sc
 
 Interpretation: this is a context-admissibility diagnostic, not a deployment update unless it safely beats graph-history on core metrics. Boundary unchanged: dataset-local/raw-frame 2.5D only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BT_CONTEXT_ADMISSIBILITY_MODEL:END -->
+
+<!-- STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT:START -->
+## STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT
+
+source = `fresh_stage43_bu_context_admissibility_robustness_audit`
+result_source = `fresh_replay_bootstrap_slice_audit_from_stage43_bt`
+verdict = `stage43_bu_context_admissibility_partial_robust_lift_pass`
+gate = `12 / 12`
+robust_all_hard_lift = `True`
+t50_bootstrap_robust = `True`
+t100_bootstrap_robust = `False`
+t100_ci_crosses_zero = `True`
+slice_easy_safe = `False`
+easy_safe_ci = `True`
+deployable_policy_changed = `False`
+
+Stage43-BU exact-replays Stage43-BT and adds bootstrap plus source/domain/horizon slice evidence. It is a robustness audit, not a deployment update.
+Replay diff max: `0.00000000`.
+Delta vs graph-history-only: all `2.15%`, t50 `0.40%`, t100 raw-frame diagnostic `0.05%`, hard/failure `2.02%`, easy degradation `0.00%`.
+Bootstrap CI low vs graph-history-only: all `1.91%`, t50 `0.00%`, hard/failure `1.78%`, easy high `0.00%`.
+Slice audit: `31` positive slices, `2` negative slices, easy hazard slices `7`, core weak slices `[]`.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT:END -->

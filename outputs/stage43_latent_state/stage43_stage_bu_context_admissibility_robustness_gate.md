@@ -1,9 +1,7 @@
-# Stage43 Current World-Model Gate
+# Stage43-BU Context Admissibility Robustness Gate
 
-- source: `fresh_stage43_bu_context_admissibility_robustness_audit`
 - verdict: `stage43_bu_context_admissibility_partial_robust_lift_pass`
 - passed: `12 / 12`
-- protected multimodal latent state candidate: `False`
 - robust all/hard lift: `True`
 - t50 bootstrap robust: `True`
 - t100 bootstrap robust: `False`
@@ -11,15 +9,8 @@
 - slice easy safe: `False`
 - easy-safe CI: `True`
 - deployable policy changed: `False`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BU is a robustness audit for Stage43-BT context admissibility.
-- It does not claim deployment update by itself.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
