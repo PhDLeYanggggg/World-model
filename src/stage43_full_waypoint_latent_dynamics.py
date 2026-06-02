@@ -45,6 +45,7 @@ from src.stage43_protected_latent_state_model import _jsonable
 OUT_DIR = Path("outputs/stage43_latent_state")
 CKPT_DIR = OUT_DIR / "checkpoints"
 CACHE_DIR = Path("data/stage43_full_waypoint_supervision_cache")
+CACHE_FILE_PREFIX = "stage43_full_waypoint_supervision"
 DATA35 = Path("data/stage35_selective_transfer")
 DATA36 = Path("data/stage36_t50_repair")
 DATA37 = Path("data/stage37_t50_history")
@@ -54,6 +55,11 @@ REPORT_MD = OUT_DIR / "stage43_full_waypoint_latent_dynamics.md"
 GATE_MD = OUT_DIR / "stage43_stage_m_full_waypoint_latent_gate.md"
 LEDGER_JSONL = OUT_DIR / "run_ledger.jsonl"
 HEARTBEAT_JSON = OUT_DIR / "stage43_full_waypoint_latent_heartbeat.json"
+CHECKPOINT_NAME = "stage43_full_waypoint_latent_dynamics.pt"
+PRECONDITION_JSON = OUT_DIR / "stage43_full_waypoint_supervision_cache.json"
+PRECONDITION_GATE_NAME = "stage43_l_gate"
+PRECONDITION_READY_FIELD = "full_waypoint_supervised_training_ready"
+PRECONDITION_READY_VERDICT: str | None = None
 
 README_RESULTS = Path("README_RESULTS.md")
 M3W_README = Path("outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md")
@@ -173,7 +179,21 @@ def _configure_runtime(seed: int) -> dict[str, Any]:
 
 
 def _cache_path(split: str) -> Path:
-    return CACHE_DIR / f"stage43_full_waypoint_supervision_{split}.npz"
+    return CACHE_DIR / f"{CACHE_FILE_PREFIX}_{split}.npz"
+
+
+def _precondition_summary() -> dict[str, Any]:
+    precondition = read_json(PRECONDITION_JSON, {})
+    gate = precondition.get(PRECONDITION_GATE_NAME, {})
+    verdict = gate.get("verdict")
+    ready = bool(gate.get(PRECONDITION_READY_FIELD, False))
+    if PRECONDITION_READY_VERDICT is not None:
+        ready = ready or verdict == PRECONDITION_READY_VERDICT
+    return {
+        "verdict": verdict,
+        "full_waypoint_supervised_training_ready": ready,
+        "report": str(PRECONDITION_JSON),
+    }
 
 
 def _npz(path: Path) -> Mapping[str, np.ndarray]:
@@ -619,7 +639,7 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-def _train_eval(args: argparse.Namespace) -> dict[str, Any]:
+def _train_eval(args: argparse.Namespace, *, write_outputs_enabled: bool = True) -> dict[str, Any]:
     ensure_dir(OUT_DIR)
     ensure_dir(CKPT_DIR)
     seed = int(args.seed)
@@ -637,7 +657,7 @@ def _train_eval(args: argparse.Namespace) -> dict[str, Any]:
     model.to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=float(args.lr), weight_decay=1e-4)
     best_val = float("inf")
-    best_path = CKPT_DIR / "stage43_full_waypoint_latent_dynamics.pt"
+    best_path = CKPT_DIR / CHECKPOINT_NAME
     history: list[dict[str, Any]] = []
     start = time.time()
     for epoch in range(int(args.epochs)):
@@ -720,7 +740,7 @@ def _train_eval(args: argparse.Namespace) -> dict[str, Any]:
         )
         and protected_metrics["easy_degradation_vs_floor"] <= 0.02
     )
-    stage43_l = read_json(OUT_DIR / "stage43_full_waypoint_supervision_cache.json", {})
+    precondition = _precondition_summary()
     payload: dict[str, Any] = {
         "source": SOURCE,
         "result_source": "fresh_run",
@@ -731,12 +751,7 @@ def _train_eval(args: argparse.Namespace) -> dict[str, Any]:
         "checkpoint_sha256": _sha256(best_path),
         "checkpoint_committed": False,
         "runtime": runtime,
-        "stage43_l_precondition": {
-            "verdict": stage43_l.get("stage43_l_gate", {}).get("verdict"),
-            "full_waypoint_supervised_training_ready": bool(
-                stage43_l.get("stage43_l_gate", {}).get("full_waypoint_supervised_training_ready")
-            ),
-        },
+        "stage43_l_precondition": precondition,
         "cache_row_hashes": {split: _row_hash(_npz(_cache_path(split))) for split in SPLITS},
         "data_rows": {"train": len(train.x), "val": len(val.x), "test": len(test.x)},
         "feature_count": int(train.x.shape[1]),
@@ -771,13 +786,14 @@ def _train_eval(args: argparse.Namespace) -> dict[str, Any]:
                 DATA37 / "history_windows_train.npz",
                 DATA37 / "goal_prototypes_train.npz",
                 DATA37 / "t50_baseline_family_train.npz",
-                OUT_DIR / "stage43_full_waypoint_supervision_cache.json",
+                PRECONDITION_JSON,
                 OUT_DIR / "stage43_source_slice_repair.json",
             ]
         ),
     }
     payload["stage43_m_gate"] = _gate(payload)
-    _write_outputs(payload)
+    if write_outputs_enabled:
+        _write_outputs(payload)
     return payload
 
 

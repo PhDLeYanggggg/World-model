@@ -3142,3 +3142,24 @@ Cache dir = `data/stage43_ce_full_waypoint_supervision_cache`.
 
 Interpretation: this closes the repaired-split cache blocker. It is not a model result; the next step is training/evaluating latent dynamics on this repaired cache.
 <!-- STAGE43_CF_COVERAGE_AWARE_FULL_WAYPOINT_CACHE:END -->
+
+<!-- STAGE43_CG_COVERAGE_AWARE_LATENT_DYNAMICS:START -->
+## STAGE43_CG_COVERAGE_AWARE_LATENT_DYNAMICS
+
+source = `fresh_stage43_cg_coverage_aware_latent_dynamics`
+result_source = `fresh_run`
+mode = `small`
+verdict = `stage43_cg_coverage_aware_latent_dynamics_candidate_pass`
+gate = `15 / 15`
+deploy_coverage_aware_latent_dynamics = `True`
+
+I retrained the full-waypoint latent dynamics head on the CE coverage-aware source split. This is the first model run using the repaired split cache, not just another cache audit.
+
+- all full-waypoint ADE improvement vs floor: `51.04%`
+- t50 full-waypoint ADE improvement vs floor: `31.40%`
+- hard/failure full-waypoint ADE improvement vs floor: `49.25%`
+- easy degradation: `0.00%`
+- switch rate: `70.59%`
+
+Boundary: dataset-local/raw-frame 2.5D only; no metric/seconds-level claim; Stage5C not executed; SMC not enabled.
+<!-- STAGE43_CG_COVERAGE_AWARE_LATENT_DYNAMICS:END -->

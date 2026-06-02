@@ -44590,5 +44590,80 @@
     "new_model_training_run": false,
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_cg_coverage_aware_latent_dynamics": {
+    "source": "fresh_stage43_cg_coverage_aware_latent_dynamics",
+    "result_source": "fresh_run",
+    "updated_at": "2026-06-02T11:15:23.013206+00:00",
+    "mode": "small",
+    "report": "outputs/stage43_latent_state/stage43_coverage_aware_latent_dynamics.json",
+    "gate": "15 / 15",
+    "verdict": "stage43_cg_coverage_aware_latent_dynamics_candidate_pass",
+    "deploy_coverage_aware_latent_dynamics": true,
+    "metrics": {
+      "rows": 16000,
+      "full_waypoint_ade_improvement_vs_floor": 0.5104057666719912,
+      "endpoint_fde_improvement_vs_floor": 0.5467034809799833,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.31396041521482765,
+      "t50_endpoint_fde_improvement_vs_floor": 0.4145450130385766,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0774964474974853,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4925470718910734,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.7059375,
+      "harm_over_floor_ade": -0.10684532672166824,
+      "mean_floor_ade": 0.20933407545089722,
+      "mean_selected_ade": 0.10248875617980957
+    },
+    "bootstrap_ci": {
+      "n": 1000,
+      "seed": 1431,
+      "metrics": {
+        "full_waypoint_ade_improvement_vs_floor": {
+          "low": 0.5035705078035388,
+          "mean": 0.5104023096285333,
+          "high": 0.5174108410842228,
+          "rows": 16000
+        },
+        "endpoint_fde_improvement_vs_floor": {
+          "low": 0.5394986422798012,
+          "mean": 0.5467337004983785,
+          "high": 0.5535177254609579,
+          "rows": 16000
+        },
+        "t50_full_waypoint_ade_improvement_vs_floor": {
+          "low": 0.30254467502285615,
+          "mean": 0.3139146756166243,
+          "high": 0.3256097127097648,
+          "rows": 3887
+        },
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": {
+          "low": -0.0947089185209639,
+          "mean": -0.07754494184970062,
+          "high": -0.06121612838477443,
+          "rows": 2701
+        },
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": {
+          "low": 0.484360964301338,
+          "mean": 0.4923688992867315,
+          "high": 0.5002508199334921,
+          "rows": 11549
+        },
+        "easy_degradation_vs_floor": {
+          "low": 0.0,
+          "mean": 0.0,
+          "high": 0.0,
+          "rows": 4873
+        }
+      }
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
+    "checkpoint_committed": false
   }
 }
