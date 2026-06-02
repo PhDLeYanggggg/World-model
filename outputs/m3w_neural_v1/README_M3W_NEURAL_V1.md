@@ -5104,3 +5104,20 @@ Validation-test easy degradation gap: `0.0526`.
 
 Interpretation: downstream latent heads still show all/hard signal, but easy-safety does not reliably transfer from validation to test. Deployment remains unchanged.
 <!-- STAGE43_CB_DOWNSTREAM_EASY_GUARD_AUDIT:END -->
+
+<!-- STAGE43_CC_SHADOW_EASY_GUARD_REPAIR:START -->
+## STAGE43_CC_SHADOW_EASY_GUARD_REPAIR
+
+source = `fresh_stage43_cc_shadow_easy_guard_repair`
+result_source = `fresh_shadow_validation_easy_guard_repair`
+verdict = `stage43_cc_shadow_easy_guard_shadow_safe_test_mismatch`
+gate = `12 / 13`
+deployable_policy_changed = `False`
+
+Stage43-CC repairs the Stage43-CB validation/test easy mismatch with a validation-only shadow holdout and source-family support guard.
+Selected shadow policy: `base_threshold_only`.
+Shadow all / hard / easy: `0.1321` / `0.1690` / `0.0010`.
+Test all / t50 / hard / easy: `0.0321` / `-0.0083` / `0.0655` / `0.0527`.
+
+Interpretation: this is a safety protocol repair for latent downstream heads. Deployment remains unchanged unless test easy safety and lift both hold.
+<!-- STAGE43_CC_SHADOW_EASY_GUARD_REPAIR:END -->
