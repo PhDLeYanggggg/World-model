@@ -1,0 +1,3945 @@
+{
+  "source": "fresh_stage43_bs_scene_graph_context_router",
+  "result_source": "fresh_validation_selected_scene_graph_context_router",
+  "generated_at_utc": "2026-06-02T01:37:02.768187+00:00",
+  "git_commit": "40c2022",
+  "rows": {
+    "val": 12000,
+    "test": 12000
+  },
+  "precondition": {
+    "bp_verdict": "stage43_bp_scene_graph_multimodal_ablation_pass_negative_unsafe_diagnostic",
+    "bp_full_multimodal_unsafe": true,
+    "bq_verdict": "stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic",
+    "br_verdict": "stage43_br_scene_graph_slice_forensics_pass_targeted_scene_signal"
+  },
+  "unsafe_full_context_blocked_by_bp_prior": true,
+  "variant_replay": {
+    "val": {
+      "no_context": {
+        "variant": "no_context",
+        "split": "val",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_no_context.pt",
+        "checkpoint_sha256": "709bc9dfb1ce3744a2061817b3dbb11c972f90a725063110ca7aea979781c48c",
+        "policy": {
+          "gain_threshold": 0.45,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.0
+        },
+        "context": {
+          "split": "val",
+          "rows": 12000,
+          "include_scene": false,
+          "include_graph": false,
+          "scene": {
+            "split": "val",
+            "rows": 12000
+          },
+          "graph": {
+            "split": "val",
+            "rows": 12000
+          },
+          "context_feature_count": 0
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4137517941559895,
+          "endpoint_fde_improvement_vs_floor": 0.44307039635287027,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.12183515782633902,
+          "t50_endpoint_fde_improvement_vs_floor": 0.17851499095465884,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0037442204820459235,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3948501627576203,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6535833333333333,
+          "harm_over_floor_ade": -0.09364106506109238,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.1326807588338852
+        }
+      },
+      "scene_proxy_only": {
+        "variant": "scene_proxy_only",
+        "split": "val",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_scene_proxy_only.pt",
+        "checkpoint_sha256": "fd6d5358d29fd507f13dbe1e445adf68099f7cd63ef463d712e4c836cc18f612",
+        "policy": {
+          "gain_threshold": 0.0,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.35
+        },
+        "context": {
+          "split": "val",
+          "rows": 12000,
+          "include_scene": true,
+          "include_graph": false,
+          "scene": {
+            "split": "val",
+            "rows": 12000,
+            "scene_feature_count": 14,
+            "scene_feature_hash": "ed14f45e3a7b642d892d46df4e014b18f52ca3b9d052dd1a5ff9c3f62e929600",
+            "source_level_rows": 0,
+            "domain_level_rows": 12000,
+            "missing_rows": 0
+          },
+          "graph": {
+            "split": "val",
+            "rows": 12000
+          },
+          "context_feature_count": 14
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.37378530701465607,
+          "endpoint_fde_improvement_vs_floor": 0.38831409592690336,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.04939300533537205,
+          "t50_endpoint_fde_improvement_vs_floor": 0.09187767131108338,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.008695497062629842,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.38616752028584334,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.5325,
+          "harm_over_floor_ade": -0.08459577709436417,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.1417260468006134
+        }
+      },
+      "graph_history_only": {
+        "variant": "graph_history_only",
+        "split": "val",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_graph_history_only.pt",
+        "checkpoint_sha256": "1517c22fc0ea905bbeaf5a3efe12bc6c0cae4eb09b8717f7d3c915cf28da112d",
+        "policy": {
+          "gain_threshold": 0.45,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.0
+        },
+        "context": {
+          "split": "val",
+          "rows": 12000,
+          "include_scene": false,
+          "include_graph": true,
+          "scene": {
+            "split": "val",
+            "rows": 12000
+          },
+          "graph": {
+            "split": "val",
+            "rows": 12000,
+            "current_graph_degree_mean": 7.379000186920166,
+            "current_graph_rows_with_neighbors": 11908,
+            "history_graph_rows_with_neighbor_history": 11908,
+            "history_graph_rows_with_full_target_history": 1739,
+            "graph_feature_count": 17
+          },
+          "context_feature_count": 17
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.44675326898513323,
+          "endpoint_fde_improvement_vs_floor": 0.4763534515873268,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45472064831855985,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6423333333333333,
+          "harm_over_floor_ade": -0.10111000388860703,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.12521180510520935
+        }
+      },
+      "scene_graph_full": {
+        "variant": "scene_graph_full",
+        "split": "val",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_scene_graph_full.pt",
+        "checkpoint_sha256": "3568570c156063a99002f5dc8fbec460a244b0662e8f3b3a60424d8cea7cd266",
+        "policy": {
+          "gain_threshold": 0.0,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.0
+        },
+        "context": {
+          "split": "val",
+          "rows": 12000,
+          "include_scene": true,
+          "include_graph": true,
+          "scene": {
+            "split": "val",
+            "rows": 12000,
+            "scene_feature_count": 14,
+            "scene_feature_hash": "ed14f45e3a7b642d892d46df4e014b18f52ca3b9d052dd1a5ff9c3f62e929600",
+            "source_level_rows": 0,
+            "domain_level_rows": 12000,
+            "missing_rows": 0
+          },
+          "graph": {
+            "split": "val",
+            "rows": 12000,
+            "current_graph_degree_mean": 7.379000186920166,
+            "current_graph_rows_with_neighbors": 11908,
+            "history_graph_rows_with_neighbor_history": 11908,
+            "history_graph_rows_with_full_target_history": 1739,
+            "graph_feature_count": 17
+          },
+          "context_feature_count": 31
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.40793063035777777,
+          "endpoint_fde_improvement_vs_floor": 0.4457417844528324,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.07574358536537307,
+          "t50_endpoint_fde_improvement_vs_floor": 0.1628962064513021,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.01147084850778235,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4199697585588834,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6379166666666667,
+          "harm_over_floor_ade": -0.09232360869646072,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.13399821519851685
+        }
+      }
+    },
+    "test": {
+      "no_context": {
+        "variant": "no_context",
+        "split": "test",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_no_context.pt",
+        "checkpoint_sha256": "709bc9dfb1ce3744a2061817b3dbb11c972f90a725063110ca7aea979781c48c",
+        "policy": {
+          "gain_threshold": 0.45,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.0
+        },
+        "context": {
+          "split": "test",
+          "rows": 12000,
+          "include_scene": false,
+          "include_graph": false,
+          "scene": {
+            "split": "test",
+            "rows": 12000
+          },
+          "graph": {
+            "split": "test",
+            "rows": 12000
+          },
+          "context_feature_count": 0
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.32726259866460794,
+          "endpoint_fde_improvement_vs_floor": 0.36800705382108556,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.06126996862660972,
+          "t50_endpoint_fde_improvement_vs_floor": 0.17623449380334144,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.029405681950154694,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3296126346641609,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.5691666666666667,
+          "harm_over_floor_ade": -0.06402640044689178,
+          "mean_floor_ade": 0.19564223289489746,
+          "mean_selected_ade": 0.13161584734916687
+        }
+      },
+      "scene_proxy_only": {
+        "variant": "scene_proxy_only",
+        "split": "test",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_scene_proxy_only.pt",
+        "checkpoint_sha256": "fd6d5358d29fd507f13dbe1e445adf68099f7cd63ef463d712e4c836cc18f612",
+        "policy": {
+          "gain_threshold": 0.0,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.35
+        },
+        "context": {
+          "split": "test",
+          "rows": 12000,
+          "include_scene": true,
+          "include_graph": false,
+          "scene": {
+            "split": "test",
+            "rows": 12000,
+            "scene_feature_count": 14,
+            "scene_feature_hash": "0f5ac09955b9799cd878198f46f0116a8ebcc18cf29a03f09c3bc1fbc35a23b7",
+            "source_level_rows": 0,
+            "domain_level_rows": 12000,
+            "missing_rows": 0
+          },
+          "graph": {
+            "split": "test",
+            "rows": 12000
+          },
+          "context_feature_count": 14
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.33671479606572396,
+          "endpoint_fde_improvement_vs_floor": 0.35100077584719336,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.036337692179539416,
+          "t50_endpoint_fde_improvement_vs_floor": 0.10198458947045763,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.01587617144135156,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3485401558490304,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.46166666666666667,
+          "harm_over_floor_ade": -0.06587562710046768,
+          "mean_floor_ade": 0.19564223289489746,
+          "mean_selected_ade": 0.12976659834384918
+        }
+      },
+      "graph_history_only": {
+        "variant": "graph_history_only",
+        "split": "test",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_graph_history_only.pt",
+        "checkpoint_sha256": "1517c22fc0ea905bbeaf5a3efe12bc6c0cae4eb09b8717f7d3c915cf28da112d",
+        "policy": {
+          "gain_threshold": 0.45,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.0
+        },
+        "context": {
+          "split": "test",
+          "rows": 12000,
+          "include_scene": false,
+          "include_graph": true,
+          "scene": {
+            "split": "test",
+            "rows": 12000
+          },
+          "graph": {
+            "split": "test",
+            "rows": 12000,
+            "current_graph_degree_mean": 7.039999961853027,
+            "current_graph_rows_with_neighbors": 11784,
+            "history_graph_rows_with_neighbor_history": 11784,
+            "history_graph_rows_with_full_target_history": 6962,
+            "graph_feature_count": 17
+          },
+          "context_feature_count": 17
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.3691430361096928,
+          "endpoint_fde_improvement_vs_floor": 0.39650082657839814,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.1561883303246655,
+          "t50_endpoint_fde_improvement_vs_floor": 0.21002421626927836,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.032566614751932565,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.37640208164824085,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.5850833333333333,
+          "harm_over_floor_ade": -0.07221996784210205,
+          "mean_floor_ade": 0.19564223289489746,
+          "mean_selected_ade": 0.12342226505279541
+        }
+      },
+      "scene_graph_full": {
+        "variant": "scene_graph_full",
+        "split": "test",
+        "checkpoint": "outputs/stage43_latent_state/checkpoints/stage43_scene_graph_multimodal_ablation_scene_graph_full.pt",
+        "checkpoint_sha256": "3568570c156063a99002f5dc8fbec460a244b0662e8f3b3a60424d8cea7cd266",
+        "policy": {
+          "gain_threshold": 0.0,
+          "harm_threshold": 0.75,
+          "failure_threshold": 0.0
+        },
+        "context": {
+          "split": "test",
+          "rows": 12000,
+          "include_scene": true,
+          "include_graph": true,
+          "scene": {
+            "split": "test",
+            "rows": 12000,
+            "scene_feature_count": 14,
+            "scene_feature_hash": "0f5ac09955b9799cd878198f46f0116a8ebcc18cf29a03f09c3bc1fbc35a23b7",
+            "source_level_rows": 0,
+            "domain_level_rows": 12000,
+            "missing_rows": 0
+          },
+          "graph": {
+            "split": "test",
+            "rows": 12000,
+            "current_graph_degree_mean": 7.039999961853027,
+            "current_graph_rows_with_neighbors": 11784,
+            "history_graph_rows_with_neighbor_history": 11784,
+            "history_graph_rows_with_full_target_history": 6962,
+            "graph_feature_count": 17
+          },
+          "context_feature_count": 31
+        },
+        "metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.31695872020258764,
+          "endpoint_fde_improvement_vs_floor": 0.3807670436281252,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.043181609970367574,
+          "t50_endpoint_fde_improvement_vs_floor": 0.1811204280454759,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.02735874366005464,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.34149507280932934,
+          "easy_degradation_vs_floor": 0.13443065964753442,
+          "switch_rate": 0.6019166666666667,
+          "harm_over_floor_ade": -0.062010519206523895,
+          "mean_floor_ade": 0.19564223289489746,
+          "mean_selected_ade": 0.13363172113895416
+        }
+      }
+    }
+  },
+  "validation_candidates": [
+    {
+      "candidate": {
+        "min_gain": 0.0,
+        "min_rows": 100,
+        "allow_full": false
+      },
+      "routes": {
+        "horizon::100::*": "no_context",
+        "domain_horizon::ETH_UCY::100": "no_context",
+        "domain_horizon::TrajNet::100": "scene_proxy_only",
+        "domain_horizon::UCY::25": "no_context",
+        "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100": "no_context",
+        "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::100": "scene_proxy_only",
+        "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25": "no_context"
+      },
+      "route_rows": [
+        {
+          "route_key": [
+            "domain",
+            "ETH_UCY",
+            "*"
+          ],
+          "route": "domain::ETH_UCY::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "domain",
+            "TrajNet",
+            "*"
+          ],
+          "route": "domain::TrajNet::*",
+          "accepted": false,
+          "rows": 4433,
+          "improvements": {
+            "no_context": 0.43569677685716923,
+            "scene_proxy_only": 0.37010485931035786,
+            "graph_history_only": 0.4583611839292693,
+            "scene_graph_full": 0.4081186119724175
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4583611839292693
+        },
+        {
+          "route_key": [
+            "domain",
+            "UCY",
+            "*"
+          ],
+          "route": "domain::UCY::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "horizon",
+            "10",
+            "*"
+          ],
+          "route": "horizon::10::*",
+          "accepted": false,
+          "rows": 3961,
+          "improvements": {
+            "no_context": 0.5926386406177813,
+            "scene_proxy_only": 0.6141684418042865,
+            "graph_history_only": 0.6144936710390907,
+            "scene_graph_full": 0.69827657862529
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.08378290758619933,
+          "default_improvement": 0.6144936710390907
+        },
+        {
+          "route_key": [
+            "horizon",
+            "25",
+            "*"
+          ],
+          "route": "horizon::25::*",
+          "accepted": false,
+          "rows": 3390,
+          "improvements": {
+            "no_context": 0.5236440868948744,
+            "scene_proxy_only": 0.41937094176803935,
+            "graph_history_only": 0.5530896555285855,
+            "scene_graph_full": 0.4111582305521778
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5530896555285855
+        },
+        {
+          "route_key": [
+            "horizon",
+            "50",
+            "*"
+          ],
+          "route": "horizon::50::*",
+          "accepted": false,
+          "rows": 2824,
+          "improvements": {
+            "no_context": 0.12183515782633902,
+            "scene_proxy_only": 0.04939300533537205,
+            "graph_history_only": 0.1989988306298489,
+            "scene_graph_full": 0.07574358536537307
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.1989988306298489
+        },
+        {
+          "route_key": [
+            "horizon",
+            "100",
+            "*"
+          ],
+          "route": "horizon::100::*",
+          "accepted": true,
+          "rows": 1825,
+          "improvements": {
+            "no_context": -0.0037442204820459235,
+            "scene_proxy_only": -0.008695497062629842,
+            "graph_history_only": -0.004286127048807042,
+            "scene_graph_full": -0.01147084850778235
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.0005419065667611189,
+          "default_improvement": -0.004286127048807042
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "10"
+          ],
+          "route": "domain_horizon::ETH_UCY::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "25"
+          ],
+          "route": "domain_horizon::ETH_UCY::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "50"
+          ],
+          "route": "domain_horizon::ETH_UCY::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "100"
+          ],
+          "route": "domain_horizon::ETH_UCY::100",
+          "accepted": true,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "10"
+          ],
+          "route": "domain_horizon::TrajNet::10",
+          "accepted": false,
+          "rows": 1449,
+          "improvements": {
+            "no_context": 0.6442063938871108,
+            "scene_proxy_only": 0.6281002124667625,
+            "graph_history_only": 0.6199638871966375,
+            "scene_graph_full": 0.7139417402062969
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09397785300965933,
+          "default_improvement": 0.6199638871966375
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "25"
+          ],
+          "route": "domain_horizon::TrajNet::25",
+          "accepted": false,
+          "rows": 1312,
+          "improvements": {
+            "no_context": 0.5290941829662522,
+            "scene_proxy_only": 0.39680233201750215,
+            "graph_history_only": 0.5781432030723017,
+            "scene_graph_full": 0.40309674026563613
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5781432030723017
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "50"
+          ],
+          "route": "domain_horizon::TrajNet::50",
+          "accepted": false,
+          "rows": 1008,
+          "improvements": {
+            "no_context": 0.12346377367984807,
+            "scene_proxy_only": 0.037971918338373545,
+            "graph_history_only": 0.20455939102088216,
+            "scene_graph_full": 0.060391988737926616
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.20455939102088216
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "100"
+          ],
+          "route": "domain_horizon::TrajNet::100",
+          "accepted": true,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "10"
+          ],
+          "route": "domain_horizon::UCY::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "25"
+          ],
+          "route": "domain_horizon::UCY::25",
+          "accepted": true,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "50"
+          ],
+          "route": "domain_horizon::UCY::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "100"
+          ],
+          "route": "domain_horizon::UCY::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100",
+          "accepted": true,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::*",
+          "accepted": false,
+          "rows": 4373,
+          "improvements": {
+            "no_context": 0.4391067001602189,
+            "scene_proxy_only": 0.373340417603628,
+            "graph_history_only": 0.45573296924572504,
+            "scene_graph_full": 0.40986721695146766
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.45573296924572504
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::10",
+          "accepted": false,
+          "rows": 1417,
+          "improvements": {
+            "no_context": 0.6469344119609355,
+            "scene_proxy_only": 0.6338259174606863,
+            "graph_history_only": 0.6184834298321622,
+            "scene_graph_full": 0.7146739060715085
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09619047623934629,
+          "default_improvement": 0.6184834298321622
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::25",
+          "accepted": false,
+          "rows": 1290,
+          "improvements": {
+            "no_context": 0.5426011163007035,
+            "scene_proxy_only": 0.4057900023902272,
+            "graph_history_only": 0.5771683775094694,
+            "scene_graph_full": 0.413098068222683
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5771683775094694
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::50",
+          "accepted": false,
+          "rows": 1002,
+          "improvements": {
+            "no_context": 0.1252321236268913,
+            "scene_proxy_only": 0.038515880405616376,
+            "graph_history_only": 0.2074892963879349,
+            "scene_graph_full": 0.06125698158827442
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2074892963879349
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::100",
+          "accepted": true,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25",
+          "accepted": true,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        }
+      ],
+      "route_count": 7,
+      "route_variant_counts": {
+        "graph_history_only": 8677,
+        "no_context": 2659,
+        "scene_proxy_only": 664
+      },
+      "validation_metrics": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.4475892469153685,
+        "endpoint_fde_improvement_vs_floor": 0.4758620987902227,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+        "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0031879101322218606,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45289804692809443,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6615,
+        "harm_over_floor_ade": -0.1012992113828659,
+        "mean_floor_ade": 0.22632181644439697,
+        "mean_selected_ade": 0.12502260506153107
+      },
+      "validation_safe": true,
+      "selection_score": 1.0944059304026175
+    },
+    {
+      "candidate": {
+        "min_gain": 0.005,
+        "min_rows": 100,
+        "allow_full": false
+      },
+      "routes": {
+        "domain_horizon::ETH_UCY::100": "no_context",
+        "domain_horizon::UCY::25": "no_context",
+        "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100": "no_context",
+        "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25": "no_context"
+      },
+      "route_rows": [
+        {
+          "route_key": [
+            "domain",
+            "ETH_UCY",
+            "*"
+          ],
+          "route": "domain::ETH_UCY::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "domain",
+            "TrajNet",
+            "*"
+          ],
+          "route": "domain::TrajNet::*",
+          "accepted": false,
+          "rows": 4433,
+          "improvements": {
+            "no_context": 0.43569677685716923,
+            "scene_proxy_only": 0.37010485931035786,
+            "graph_history_only": 0.4583611839292693,
+            "scene_graph_full": 0.4081186119724175
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4583611839292693
+        },
+        {
+          "route_key": [
+            "domain",
+            "UCY",
+            "*"
+          ],
+          "route": "domain::UCY::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "horizon",
+            "10",
+            "*"
+          ],
+          "route": "horizon::10::*",
+          "accepted": false,
+          "rows": 3961,
+          "improvements": {
+            "no_context": 0.5926386406177813,
+            "scene_proxy_only": 0.6141684418042865,
+            "graph_history_only": 0.6144936710390907,
+            "scene_graph_full": 0.69827657862529
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.08378290758619933,
+          "default_improvement": 0.6144936710390907
+        },
+        {
+          "route_key": [
+            "horizon",
+            "25",
+            "*"
+          ],
+          "route": "horizon::25::*",
+          "accepted": false,
+          "rows": 3390,
+          "improvements": {
+            "no_context": 0.5236440868948744,
+            "scene_proxy_only": 0.41937094176803935,
+            "graph_history_only": 0.5530896555285855,
+            "scene_graph_full": 0.4111582305521778
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5530896555285855
+        },
+        {
+          "route_key": [
+            "horizon",
+            "50",
+            "*"
+          ],
+          "route": "horizon::50::*",
+          "accepted": false,
+          "rows": 2824,
+          "improvements": {
+            "no_context": 0.12183515782633902,
+            "scene_proxy_only": 0.04939300533537205,
+            "graph_history_only": 0.1989988306298489,
+            "scene_graph_full": 0.07574358536537307
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.1989988306298489
+        },
+        {
+          "route_key": [
+            "horizon",
+            "100",
+            "*"
+          ],
+          "route": "horizon::100::*",
+          "accepted": false,
+          "rows": 1825,
+          "improvements": {
+            "no_context": -0.0037442204820459235,
+            "scene_proxy_only": -0.008695497062629842,
+            "graph_history_only": -0.004286127048807042,
+            "scene_graph_full": -0.01147084850778235
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.0005419065667611189,
+          "default_improvement": -0.004286127048807042
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "10"
+          ],
+          "route": "domain_horizon::ETH_UCY::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "25"
+          ],
+          "route": "domain_horizon::ETH_UCY::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "50"
+          ],
+          "route": "domain_horizon::ETH_UCY::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "100"
+          ],
+          "route": "domain_horizon::ETH_UCY::100",
+          "accepted": true,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "10"
+          ],
+          "route": "domain_horizon::TrajNet::10",
+          "accepted": false,
+          "rows": 1449,
+          "improvements": {
+            "no_context": 0.6442063938871108,
+            "scene_proxy_only": 0.6281002124667625,
+            "graph_history_only": 0.6199638871966375,
+            "scene_graph_full": 0.7139417402062969
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09397785300965933,
+          "default_improvement": 0.6199638871966375
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "25"
+          ],
+          "route": "domain_horizon::TrajNet::25",
+          "accepted": false,
+          "rows": 1312,
+          "improvements": {
+            "no_context": 0.5290941829662522,
+            "scene_proxy_only": 0.39680233201750215,
+            "graph_history_only": 0.5781432030723017,
+            "scene_graph_full": 0.40309674026563613
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5781432030723017
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "50"
+          ],
+          "route": "domain_horizon::TrajNet::50",
+          "accepted": false,
+          "rows": 1008,
+          "improvements": {
+            "no_context": 0.12346377367984807,
+            "scene_proxy_only": 0.037971918338373545,
+            "graph_history_only": 0.20455939102088216,
+            "scene_graph_full": 0.060391988737926616
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.20455939102088216
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "100"
+          ],
+          "route": "domain_horizon::TrajNet::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "10"
+          ],
+          "route": "domain_horizon::UCY::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "25"
+          ],
+          "route": "domain_horizon::UCY::25",
+          "accepted": true,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "50"
+          ],
+          "route": "domain_horizon::UCY::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "100"
+          ],
+          "route": "domain_horizon::UCY::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100",
+          "accepted": true,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::*",
+          "accepted": false,
+          "rows": 4373,
+          "improvements": {
+            "no_context": 0.4391067001602189,
+            "scene_proxy_only": 0.373340417603628,
+            "graph_history_only": 0.45573296924572504,
+            "scene_graph_full": 0.40986721695146766
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.45573296924572504
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::10",
+          "accepted": false,
+          "rows": 1417,
+          "improvements": {
+            "no_context": 0.6469344119609355,
+            "scene_proxy_only": 0.6338259174606863,
+            "graph_history_only": 0.6184834298321622,
+            "scene_graph_full": 0.7146739060715085
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09619047623934629,
+          "default_improvement": 0.6184834298321622
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::25",
+          "accepted": false,
+          "rows": 1290,
+          "improvements": {
+            "no_context": 0.5426011163007035,
+            "scene_proxy_only": 0.4057900023902272,
+            "graph_history_only": 0.5771683775094694,
+            "scene_graph_full": 0.413098068222683
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5771683775094694
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::50",
+          "accepted": false,
+          "rows": 1002,
+          "improvements": {
+            "no_context": 0.1252321236268913,
+            "scene_proxy_only": 0.038515880405616376,
+            "graph_history_only": 0.2074892963879349,
+            "scene_graph_full": 0.06125698158827442
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2074892963879349
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25",
+          "accepted": true,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        }
+      ],
+      "route_count": 4,
+      "route_variant_counts": {
+        "graph_history_only": 10201,
+        "no_context": 1799
+      },
+      "validation_metrics": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.44753354577896,
+        "endpoint_fde_improvement_vs_floor": 0.4756731546695324,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+        "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0037184653732578177,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45282204278935323,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6626666666666666,
+        "harm_over_floor_ade": -0.10128661245107651,
+        "mean_floor_ade": 0.22632181644439697,
+        "mean_selected_ade": 0.12503521144390106
+      },
+      "validation_safe": true,
+      "selection_score": 1.100289425955216
+    },
+    {
+      "candidate": {
+        "min_gain": 0.01,
+        "min_rows": 100,
+        "allow_full": false
+      },
+      "routes": {},
+      "route_rows": [
+        {
+          "route_key": [
+            "domain",
+            "ETH_UCY",
+            "*"
+          ],
+          "route": "domain::ETH_UCY::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "domain",
+            "TrajNet",
+            "*"
+          ],
+          "route": "domain::TrajNet::*",
+          "accepted": false,
+          "rows": 4433,
+          "improvements": {
+            "no_context": 0.43569677685716923,
+            "scene_proxy_only": 0.37010485931035786,
+            "graph_history_only": 0.4583611839292693,
+            "scene_graph_full": 0.4081186119724175
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4583611839292693
+        },
+        {
+          "route_key": [
+            "domain",
+            "UCY",
+            "*"
+          ],
+          "route": "domain::UCY::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "horizon",
+            "10",
+            "*"
+          ],
+          "route": "horizon::10::*",
+          "accepted": false,
+          "rows": 3961,
+          "improvements": {
+            "no_context": 0.5926386406177813,
+            "scene_proxy_only": 0.6141684418042865,
+            "graph_history_only": 0.6144936710390907,
+            "scene_graph_full": 0.69827657862529
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.08378290758619933,
+          "default_improvement": 0.6144936710390907
+        },
+        {
+          "route_key": [
+            "horizon",
+            "25",
+            "*"
+          ],
+          "route": "horizon::25::*",
+          "accepted": false,
+          "rows": 3390,
+          "improvements": {
+            "no_context": 0.5236440868948744,
+            "scene_proxy_only": 0.41937094176803935,
+            "graph_history_only": 0.5530896555285855,
+            "scene_graph_full": 0.4111582305521778
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5530896555285855
+        },
+        {
+          "route_key": [
+            "horizon",
+            "50",
+            "*"
+          ],
+          "route": "horizon::50::*",
+          "accepted": false,
+          "rows": 2824,
+          "improvements": {
+            "no_context": 0.12183515782633902,
+            "scene_proxy_only": 0.04939300533537205,
+            "graph_history_only": 0.1989988306298489,
+            "scene_graph_full": 0.07574358536537307
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.1989988306298489
+        },
+        {
+          "route_key": [
+            "horizon",
+            "100",
+            "*"
+          ],
+          "route": "horizon::100::*",
+          "accepted": false,
+          "rows": 1825,
+          "improvements": {
+            "no_context": -0.0037442204820459235,
+            "scene_proxy_only": -0.008695497062629842,
+            "graph_history_only": -0.004286127048807042,
+            "scene_graph_full": -0.01147084850778235
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.0005419065667611189,
+          "default_improvement": -0.004286127048807042
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "10"
+          ],
+          "route": "domain_horizon::ETH_UCY::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "25"
+          ],
+          "route": "domain_horizon::ETH_UCY::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "50"
+          ],
+          "route": "domain_horizon::ETH_UCY::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "100"
+          ],
+          "route": "domain_horizon::ETH_UCY::100",
+          "accepted": false,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "10"
+          ],
+          "route": "domain_horizon::TrajNet::10",
+          "accepted": false,
+          "rows": 1449,
+          "improvements": {
+            "no_context": 0.6442063938871108,
+            "scene_proxy_only": 0.6281002124667625,
+            "graph_history_only": 0.6199638871966375,
+            "scene_graph_full": 0.7139417402062969
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09397785300965933,
+          "default_improvement": 0.6199638871966375
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "25"
+          ],
+          "route": "domain_horizon::TrajNet::25",
+          "accepted": false,
+          "rows": 1312,
+          "improvements": {
+            "no_context": 0.5290941829662522,
+            "scene_proxy_only": 0.39680233201750215,
+            "graph_history_only": 0.5781432030723017,
+            "scene_graph_full": 0.40309674026563613
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5781432030723017
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "50"
+          ],
+          "route": "domain_horizon::TrajNet::50",
+          "accepted": false,
+          "rows": 1008,
+          "improvements": {
+            "no_context": 0.12346377367984807,
+            "scene_proxy_only": 0.037971918338373545,
+            "graph_history_only": 0.20455939102088216,
+            "scene_graph_full": 0.060391988737926616
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.20455939102088216
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "100"
+          ],
+          "route": "domain_horizon::TrajNet::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "10"
+          ],
+          "route": "domain_horizon::UCY::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "25"
+          ],
+          "route": "domain_horizon::UCY::25",
+          "accepted": false,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "50"
+          ],
+          "route": "domain_horizon::UCY::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "100"
+          ],
+          "route": "domain_horizon::UCY::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100",
+          "accepted": false,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::*",
+          "accepted": false,
+          "rows": 4373,
+          "improvements": {
+            "no_context": 0.4391067001602189,
+            "scene_proxy_only": 0.373340417603628,
+            "graph_history_only": 0.45573296924572504,
+            "scene_graph_full": 0.40986721695146766
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.45573296924572504
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::10",
+          "accepted": false,
+          "rows": 1417,
+          "improvements": {
+            "no_context": 0.6469344119609355,
+            "scene_proxy_only": 0.6338259174606863,
+            "graph_history_only": 0.6184834298321622,
+            "scene_graph_full": 0.7146739060715085
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09619047623934629,
+          "default_improvement": 0.6184834298321622
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::25",
+          "accepted": false,
+          "rows": 1290,
+          "improvements": {
+            "no_context": 0.5426011163007035,
+            "scene_proxy_only": 0.4057900023902272,
+            "graph_history_only": 0.5771683775094694,
+            "scene_graph_full": 0.413098068222683
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5771683775094694
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::50",
+          "accepted": false,
+          "rows": 1002,
+          "improvements": {
+            "no_context": 0.1252321236268913,
+            "scene_proxy_only": 0.038515880405616376,
+            "graph_history_only": 0.2074892963879349,
+            "scene_graph_full": 0.06125698158827442
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2074892963879349
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25",
+          "accepted": false,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        }
+      ],
+      "route_count": 0,
+      "route_variant_counts": {
+        "graph_history_only": 12000
+      },
+      "validation_metrics": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.44675326898513323,
+        "endpoint_fde_improvement_vs_floor": 0.4763534515873268,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+        "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45472064831855985,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6423333333333333,
+        "harm_over_floor_ade": -0.10111000388860703,
+        "mean_floor_ade": 0.22632181644439697,
+        "mean_selected_ade": 0.12521180510520935
+      },
+      "validation_safe": true,
+      "selection_score": 1.1090280335847544
+    },
+    {
+      "candidate": {
+        "min_gain": 0.02,
+        "min_rows": 100,
+        "allow_full": false
+      },
+      "routes": {},
+      "route_rows": [
+        {
+          "route_key": [
+            "domain",
+            "ETH_UCY",
+            "*"
+          ],
+          "route": "domain::ETH_UCY::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "domain",
+            "TrajNet",
+            "*"
+          ],
+          "route": "domain::TrajNet::*",
+          "accepted": false,
+          "rows": 4433,
+          "improvements": {
+            "no_context": 0.43569677685716923,
+            "scene_proxy_only": 0.37010485931035786,
+            "graph_history_only": 0.4583611839292693,
+            "scene_graph_full": 0.4081186119724175
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4583611839292693
+        },
+        {
+          "route_key": [
+            "domain",
+            "UCY",
+            "*"
+          ],
+          "route": "domain::UCY::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "horizon",
+            "10",
+            "*"
+          ],
+          "route": "horizon::10::*",
+          "accepted": false,
+          "rows": 3961,
+          "improvements": {
+            "no_context": 0.5926386406177813,
+            "scene_proxy_only": 0.6141684418042865,
+            "graph_history_only": 0.6144936710390907,
+            "scene_graph_full": 0.69827657862529
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.08378290758619933,
+          "default_improvement": 0.6144936710390907
+        },
+        {
+          "route_key": [
+            "horizon",
+            "25",
+            "*"
+          ],
+          "route": "horizon::25::*",
+          "accepted": false,
+          "rows": 3390,
+          "improvements": {
+            "no_context": 0.5236440868948744,
+            "scene_proxy_only": 0.41937094176803935,
+            "graph_history_only": 0.5530896555285855,
+            "scene_graph_full": 0.4111582305521778
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5530896555285855
+        },
+        {
+          "route_key": [
+            "horizon",
+            "50",
+            "*"
+          ],
+          "route": "horizon::50::*",
+          "accepted": false,
+          "rows": 2824,
+          "improvements": {
+            "no_context": 0.12183515782633902,
+            "scene_proxy_only": 0.04939300533537205,
+            "graph_history_only": 0.1989988306298489,
+            "scene_graph_full": 0.07574358536537307
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.1989988306298489
+        },
+        {
+          "route_key": [
+            "horizon",
+            "100",
+            "*"
+          ],
+          "route": "horizon::100::*",
+          "accepted": false,
+          "rows": 1825,
+          "improvements": {
+            "no_context": -0.0037442204820459235,
+            "scene_proxy_only": -0.008695497062629842,
+            "graph_history_only": -0.004286127048807042,
+            "scene_graph_full": -0.01147084850778235
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.0005419065667611189,
+          "default_improvement": -0.004286127048807042
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "10"
+          ],
+          "route": "domain_horizon::ETH_UCY::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "25"
+          ],
+          "route": "domain_horizon::ETH_UCY::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "50"
+          ],
+          "route": "domain_horizon::ETH_UCY::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "100"
+          ],
+          "route": "domain_horizon::ETH_UCY::100",
+          "accepted": false,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "10"
+          ],
+          "route": "domain_horizon::TrajNet::10",
+          "accepted": false,
+          "rows": 1449,
+          "improvements": {
+            "no_context": 0.6442063938871108,
+            "scene_proxy_only": 0.6281002124667625,
+            "graph_history_only": 0.6199638871966375,
+            "scene_graph_full": 0.7139417402062969
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09397785300965933,
+          "default_improvement": 0.6199638871966375
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "25"
+          ],
+          "route": "domain_horizon::TrajNet::25",
+          "accepted": false,
+          "rows": 1312,
+          "improvements": {
+            "no_context": 0.5290941829662522,
+            "scene_proxy_only": 0.39680233201750215,
+            "graph_history_only": 0.5781432030723017,
+            "scene_graph_full": 0.40309674026563613
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5781432030723017
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "50"
+          ],
+          "route": "domain_horizon::TrajNet::50",
+          "accepted": false,
+          "rows": 1008,
+          "improvements": {
+            "no_context": 0.12346377367984807,
+            "scene_proxy_only": 0.037971918338373545,
+            "graph_history_only": 0.20455939102088216,
+            "scene_graph_full": 0.060391988737926616
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.20455939102088216
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "100"
+          ],
+          "route": "domain_horizon::TrajNet::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "10"
+          ],
+          "route": "domain_horizon::UCY::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "25"
+          ],
+          "route": "domain_horizon::UCY::25",
+          "accepted": false,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "50"
+          ],
+          "route": "domain_horizon::UCY::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "100"
+          ],
+          "route": "domain_horizon::UCY::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100",
+          "accepted": false,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::*",
+          "accepted": false,
+          "rows": 4373,
+          "improvements": {
+            "no_context": 0.4391067001602189,
+            "scene_proxy_only": 0.373340417603628,
+            "graph_history_only": 0.45573296924572504,
+            "scene_graph_full": 0.40986721695146766
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.45573296924572504
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::10",
+          "accepted": false,
+          "rows": 1417,
+          "improvements": {
+            "no_context": 0.6469344119609355,
+            "scene_proxy_only": 0.6338259174606863,
+            "graph_history_only": 0.6184834298321622,
+            "scene_graph_full": 0.7146739060715085
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09619047623934629,
+          "default_improvement": 0.6184834298321622
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::25",
+          "accepted": false,
+          "rows": 1290,
+          "improvements": {
+            "no_context": 0.5426011163007035,
+            "scene_proxy_only": 0.4057900023902272,
+            "graph_history_only": 0.5771683775094694,
+            "scene_graph_full": 0.413098068222683
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5771683775094694
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::50",
+          "accepted": false,
+          "rows": 1002,
+          "improvements": {
+            "no_context": 0.1252321236268913,
+            "scene_proxy_only": 0.038515880405616376,
+            "graph_history_only": 0.2074892963879349,
+            "scene_graph_full": 0.06125698158827442
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2074892963879349
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25",
+          "accepted": false,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        }
+      ],
+      "route_count": 0,
+      "route_variant_counts": {
+        "graph_history_only": 12000
+      },
+      "validation_metrics": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.44675326898513323,
+        "endpoint_fde_improvement_vs_floor": 0.4763534515873268,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+        "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45472064831855985,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6423333333333333,
+        "harm_over_floor_ade": -0.10111000388860703,
+        "mean_floor_ade": 0.22632181644439697,
+        "mean_selected_ade": 0.12521180510520935
+      },
+      "validation_safe": true,
+      "selection_score": 1.1090280335847544
+    },
+    {
+      "candidate": {
+        "min_gain": 0.05,
+        "min_rows": 100,
+        "allow_full": false
+      },
+      "routes": {},
+      "route_rows": [
+        {
+          "route_key": [
+            "domain",
+            "ETH_UCY",
+            "*"
+          ],
+          "route": "domain::ETH_UCY::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "domain",
+            "TrajNet",
+            "*"
+          ],
+          "route": "domain::TrajNet::*",
+          "accepted": false,
+          "rows": 4433,
+          "improvements": {
+            "no_context": 0.43569677685716923,
+            "scene_proxy_only": 0.37010485931035786,
+            "graph_history_only": 0.4583611839292693,
+            "scene_graph_full": 0.4081186119724175
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4583611839292693
+        },
+        {
+          "route_key": [
+            "domain",
+            "UCY",
+            "*"
+          ],
+          "route": "domain::UCY::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "horizon",
+            "10",
+            "*"
+          ],
+          "route": "horizon::10::*",
+          "accepted": false,
+          "rows": 3961,
+          "improvements": {
+            "no_context": 0.5926386406177813,
+            "scene_proxy_only": 0.6141684418042865,
+            "graph_history_only": 0.6144936710390907,
+            "scene_graph_full": 0.69827657862529
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.08378290758619933,
+          "default_improvement": 0.6144936710390907
+        },
+        {
+          "route_key": [
+            "horizon",
+            "25",
+            "*"
+          ],
+          "route": "horizon::25::*",
+          "accepted": false,
+          "rows": 3390,
+          "improvements": {
+            "no_context": 0.5236440868948744,
+            "scene_proxy_only": 0.41937094176803935,
+            "graph_history_only": 0.5530896555285855,
+            "scene_graph_full": 0.4111582305521778
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5530896555285855
+        },
+        {
+          "route_key": [
+            "horizon",
+            "50",
+            "*"
+          ],
+          "route": "horizon::50::*",
+          "accepted": false,
+          "rows": 2824,
+          "improvements": {
+            "no_context": 0.12183515782633902,
+            "scene_proxy_only": 0.04939300533537205,
+            "graph_history_only": 0.1989988306298489,
+            "scene_graph_full": 0.07574358536537307
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.1989988306298489
+        },
+        {
+          "route_key": [
+            "horizon",
+            "100",
+            "*"
+          ],
+          "route": "horizon::100::*",
+          "accepted": false,
+          "rows": 1825,
+          "improvements": {
+            "no_context": -0.0037442204820459235,
+            "scene_proxy_only": -0.008695497062629842,
+            "graph_history_only": -0.004286127048807042,
+            "scene_graph_full": -0.01147084850778235
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.0005419065667611189,
+          "default_improvement": -0.004286127048807042
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "10"
+          ],
+          "route": "domain_horizon::ETH_UCY::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "25"
+          ],
+          "route": "domain_horizon::ETH_UCY::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "50"
+          ],
+          "route": "domain_horizon::ETH_UCY::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "ETH_UCY",
+            "100"
+          ],
+          "route": "domain_horizon::ETH_UCY::100",
+          "accepted": false,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "10"
+          ],
+          "route": "domain_horizon::TrajNet::10",
+          "accepted": false,
+          "rows": 1449,
+          "improvements": {
+            "no_context": 0.6442063938871108,
+            "scene_proxy_only": 0.6281002124667625,
+            "graph_history_only": 0.6199638871966375,
+            "scene_graph_full": 0.7139417402062969
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09397785300965933,
+          "default_improvement": 0.6199638871966375
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "25"
+          ],
+          "route": "domain_horizon::TrajNet::25",
+          "accepted": false,
+          "rows": 1312,
+          "improvements": {
+            "no_context": 0.5290941829662522,
+            "scene_proxy_only": 0.39680233201750215,
+            "graph_history_only": 0.5781432030723017,
+            "scene_graph_full": 0.40309674026563613
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5781432030723017
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "50"
+          ],
+          "route": "domain_horizon::TrajNet::50",
+          "accepted": false,
+          "rows": 1008,
+          "improvements": {
+            "no_context": 0.12346377367984807,
+            "scene_proxy_only": 0.037971918338373545,
+            "graph_history_only": 0.20455939102088216,
+            "scene_graph_full": 0.060391988737926616
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.20455939102088216
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "TrajNet",
+            "100"
+          ],
+          "route": "domain_horizon::TrajNet::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "10"
+          ],
+          "route": "domain_horizon::UCY::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "25"
+          ],
+          "route": "domain_horizon::UCY::25",
+          "accepted": false,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "50"
+          ],
+          "route": "domain_horizon::UCY::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "domain_horizon",
+            "UCY",
+            "100"
+          ],
+          "route": "domain_horizon::UCY::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::*",
+          "accepted": false,
+          "rows": 2033,
+          "improvements": {
+            "no_context": 0.425556063703627,
+            "scene_proxy_only": 0.35105850852006315,
+            "graph_history_only": 0.49501091981920853,
+            "scene_graph_full": 0.3956854059191155
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.49501091981920853
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::10",
+          "accepted": false,
+          "rows": 678,
+          "improvements": {
+            "no_context": 0.603430578635893,
+            "scene_proxy_only": 0.5885303241793198,
+            "graph_history_only": 0.6946228498127607,
+            "scene_graph_full": 0.6505743852181088
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.6946228498127607
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::25",
+          "accepted": false,
+          "rows": 580,
+          "improvements": {
+            "no_context": 0.4993126987478833,
+            "scene_proxy_only": 0.3685890512321719,
+            "graph_history_only": 0.5601733804865326,
+            "scene_graph_full": 0.4253082031765487
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5601733804865326
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::50",
+          "accepted": false,
+          "rows": 474,
+          "improvements": {
+            "no_context": 0.11120557390439445,
+            "scene_proxy_only": 0.00688202057713605,
+            "graph_history_only": 0.17984075142889966,
+            "scene_graph_full": 0.013170364574326743
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.17984075142889966
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt::100",
+          "accepted": false,
+          "rows": 301,
+          "improvements": {
+            "no_context": 0.0,
+            "scene_proxy_only": 0.0,
+            "graph_history_only": -0.006277668761774935,
+            "scene_graph_full": 0.0
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.006277668761774935,
+          "default_improvement": -0.006277668761774935
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::*",
+          "accepted": false,
+          "rows": 4373,
+          "improvements": {
+            "no_context": 0.4391067001602189,
+            "scene_proxy_only": 0.373340417603628,
+            "graph_history_only": 0.45573296924572504,
+            "scene_graph_full": 0.40986721695146766
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.45573296924572504
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::10",
+          "accepted": false,
+          "rows": 1417,
+          "improvements": {
+            "no_context": 0.6469344119609355,
+            "scene_proxy_only": 0.6338259174606863,
+            "graph_history_only": 0.6184834298321622,
+            "scene_graph_full": 0.7146739060715085
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.09619047623934629,
+          "default_improvement": 0.6184834298321622
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::25",
+          "accepted": false,
+          "rows": 1290,
+          "improvements": {
+            "no_context": 0.5426011163007035,
+            "scene_proxy_only": 0.4057900023902272,
+            "graph_history_only": 0.5771683775094694,
+            "scene_graph_full": 0.413098068222683
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.5771683775094694
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::50",
+          "accepted": false,
+          "rows": 1002,
+          "improvements": {
+            "no_context": 0.1252321236268913,
+            "scene_proxy_only": 0.038515880405616376,
+            "graph_history_only": 0.2074892963879349,
+            "scene_graph_full": 0.06125698158827442
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2074892963879349
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt::100",
+          "accepted": false,
+          "rows": 664,
+          "improvements": {
+            "no_context": -0.0025040623045964328,
+            "scene_proxy_only": -0.0012146294764778798,
+            "graph_history_only": -0.003009829482140347,
+            "scene_graph_full": -0.0038003319981874117
+          },
+          "best_variant": "scene_proxy_only",
+          "best_minus_default": 0.0017952000056624673,
+          "default_improvement": -0.003009829482140347
+        },
+        {
+          "route_key": [
+            "source",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "*"
+          ],
+          "route": "source::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::*",
+          "accepted": false,
+          "rows": 5534,
+          "improvements": {
+            "no_context": 0.3881603554434998,
+            "scene_proxy_only": 0.38544982421560736,
+            "graph_history_only": 0.4182866855722923,
+            "scene_graph_full": 0.4120986404959748
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.4182866855722923
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "10"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::10",
+          "accepted": false,
+          "rows": 1834,
+          "improvements": {
+            "no_context": 0.5407141484007317,
+            "scene_proxy_only": 0.6097814851321455,
+            "graph_history_only": 0.5823164929889743,
+            "scene_graph_full": 0.699716659628409
+          },
+          "best_variant": "scene_graph_full",
+          "best_minus_default": 0.11740016663943476,
+          "default_improvement": 0.5823164929889743
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "25"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::25",
+          "accepted": false,
+          "rows": 1498,
+          "improvements": {
+            "no_context": 0.5284108634415685,
+            "scene_proxy_only": 0.46632755323989583,
+            "graph_history_only": 0.5226564937232157,
+            "scene_graph_full": 0.4137195618515671
+          },
+          "best_variant": "no_context",
+          "best_minus_default": 0.005754369718352859,
+          "default_improvement": 0.5226564937232157
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "50"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::50",
+          "accepted": false,
+          "rows": 1342,
+          "improvements": {
+            "no_context": 0.12418588438644651,
+            "scene_proxy_only": 0.07538880917473634,
+            "graph_history_only": 0.2008069934277621,
+            "scene_graph_full": 0.11265689076831142
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": 0.2008069934277621
+        },
+        {
+          "route_key": [
+            "source_horizon",
+            "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "100"
+          ],
+          "route": "source_horizon::/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt::100",
+          "accepted": false,
+          "rows": 860,
+          "improvements": {
+            "no_context": -0.00557171392185718,
+            "scene_proxy_only": -0.017091503467689284,
+            "graph_history_only": -0.005061467867050196,
+            "scene_graph_full": -0.020563282686374418
+          },
+          "best_variant": "graph_history_only",
+          "best_minus_default": 0.0,
+          "default_improvement": -0.005061467867050196
+        }
+      ],
+      "route_count": 0,
+      "route_variant_counts": {
+        "graph_history_only": 12000
+      },
+      "validation_metrics": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.44675326898513323,
+        "endpoint_fde_improvement_vs_floor": 0.4763534515873268,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+        "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45472064831855985,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6423333333333333,
+        "harm_over_floor_ade": -0.10111000388860703,
+        "mean_floor_ade": 0.22632181644439697,
+        "mean_selected_ade": 0.12521180510520935
+      },
+      "validation_safe": true,
+      "selection_score": 1.1090280335847544
+    }
+  ],
+  "safe_validation_candidate_count": 5,
+  "selected_candidate": {
+    "candidate": {
+      "min_gain": 0.01,
+      "min_rows": 100,
+      "allow_full": false
+    },
+    "route_count": 0,
+    "routes": {},
+    "route_variant_counts_val": {
+      "graph_history_only": 12000
+    },
+    "validation_metrics": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.44675326898513323,
+      "endpoint_fde_improvement_vs_floor": 0.4763534515873268,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+      "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45472064831855985,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.6423333333333333,
+      "harm_over_floor_ade": -0.10111000388860703,
+      "mean_floor_ade": 0.22632181644439697,
+      "mean_selected_ade": 0.12521180510520935
+    },
+    "validation_safe": true,
+    "selection_score": 1.1090280335847544,
+    "selection_rule": "validation-only source/domain/horizon route table; fallback graph_history_only; test evaluated once",
+    "test_tuned": false
+  },
+  "test_metrics": {
+    "rows": 12000,
+    "full_waypoint_ade_improvement_vs_floor": 0.3691430361096928,
+    "endpoint_fde_improvement_vs_floor": 0.39650082657839814,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.1561883303246655,
+    "t50_endpoint_fde_improvement_vs_floor": 0.21002421626927836,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.032566614751932565,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.37640208164824085,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.5850833333333333,
+    "harm_over_floor_ade": -0.07221996784210205,
+    "mean_floor_ade": 0.19564223289489746,
+    "mean_selected_ade": 0.12342226505279541
+  },
+  "test_route_variant_counts": {
+    "graph_history_only": 12000
+  },
+  "test_reference_metrics": {
+    "no_context": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.32726259866460794,
+      "endpoint_fde_improvement_vs_floor": 0.36800705382108556,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.06126996862660972,
+      "t50_endpoint_fde_improvement_vs_floor": 0.17623449380334144,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.029405681950154694,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3296126346641609,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.5691666666666667,
+      "harm_over_floor_ade": -0.06402640044689178,
+      "mean_floor_ade": 0.19564223289489746,
+      "mean_selected_ade": 0.13161584734916687
+    },
+    "scene_proxy_only": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.33671479606572396,
+      "endpoint_fde_improvement_vs_floor": 0.35100077584719336,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.036337692179539416,
+      "t50_endpoint_fde_improvement_vs_floor": 0.10198458947045763,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.01587617144135156,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3485401558490304,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.46166666666666667,
+      "harm_over_floor_ade": -0.06587562710046768,
+      "mean_floor_ade": 0.19564223289489746,
+      "mean_selected_ade": 0.12976659834384918
+    },
+    "graph_history_only": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.3691430361096928,
+      "endpoint_fde_improvement_vs_floor": 0.39650082657839814,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.1561883303246655,
+      "t50_endpoint_fde_improvement_vs_floor": 0.21002421626927836,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.032566614751932565,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.37640208164824085,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.5850833333333333,
+      "harm_over_floor_ade": -0.07221996784210205,
+      "mean_floor_ade": 0.19564223289489746,
+      "mean_selected_ade": 0.12342226505279541
+    },
+    "scene_graph_full": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.31695872020258764,
+      "endpoint_fde_improvement_vs_floor": 0.3807670436281252,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.043181609970367574,
+      "t50_endpoint_fde_improvement_vs_floor": 0.1811204280454759,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.02735874366005464,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.34149507280932934,
+      "easy_degradation_vs_floor": 0.13443065964753442,
+      "switch_rate": 0.6019166666666667,
+      "harm_over_floor_ade": -0.062010519206523895,
+      "mean_floor_ade": 0.19564223289489746,
+      "mean_selected_ade": 0.13363172113895416
+    }
+  },
+  "delta_vs_graph_history_only": {
+    "all": 0.0,
+    "t50": 0.0,
+    "hard_failure": 0.0,
+    "easy_degradation": 0.0
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "raw_scene_or_verified_sdf_claim": false,
+    "deployment_policy_changed": false,
+    "test_threshold_tuning": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "scene_proxy_train_only": true,
+    "graph_inputs_past_or_current_only": true,
+    "test_route_selection": false
+  },
+  "input_hash": "e15b231e1e41a04d0d1eaa9cbdd06312544a07b9fa2e43cb29779b0c7b60c0c0",
+  "stage43_bs_gate": {
+    "source": "fresh_stage43_bs_scene_graph_context_router",
+    "gates": {
+      "bp_precondition_passed": true,
+      "bq_precondition_passed": true,
+      "br_precondition_passed": true,
+      "validation_candidates_evaluated": true,
+      "validation_only_route_selection": true,
+      "route_table_nonempty_or_fallback_explicit": true,
+      "test_eval_completed": true,
+      "graph_history_reference_present": true,
+      "easy_safety_measured": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_bs_scene_graph_context_router_pass_safe_no_lift_diagnostic",
+    "validation_selected_router": true,
+    "beats_graph_history_on_any_core_metric": false,
+    "easy_safe": true,
+    "deployable_policy_changed": false,
+    "protected_multimodal_latent_state_candidate": true,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}

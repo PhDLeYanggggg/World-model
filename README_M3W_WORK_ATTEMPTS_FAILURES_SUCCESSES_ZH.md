@@ -2864,3 +2864,26 @@ This is slice forensics only, not a deployment policy update. Scene remains trai
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BR_SCENE_GRAPH_SLICE_FORENSICS:END -->
+
+<!-- STAGE43_BS_SCENE_GRAPH_CONTEXT_ROUTER:START -->
+## STAGE43_BS_SCENE_GRAPH_CONTEXT_ROUTER
+
+source = `fresh_stage43_bs_scene_graph_context_router`
+result_source = `fresh_validation_selected_scene_graph_context_router`
+verdict = `stage43_bs_scene_graph_context_router_pass_safe_no_lift_diagnostic`
+gate = `12 / 12`
+validation_selected_router = `True`
+beats_graph_history_on_any_core_metric = `False`
+easy_safe = `True`
+deployable_policy_changed = `False`
+
+Stage43-BS builds a validation-only source/domain/horizon route table from Stage43-BP context variants after Stage43-BR found targeted scene signal. Selected routes: `0`; validation-safe candidates: `5`.
+Unsafe full scene+graph context blocked by BP prior: `True`.
+
+Test metrics: all `36.91%`, t50 `15.62%`, t100 raw-frame diagnostic `-3.26%`, hard/failure `37.64%`, easy degradation `0.00%`.
+Delta vs graph-history-only: all `0.00%`, t50 `0.00%`, hard/failure `0.00%`, easy degradation `0.00%`.
+
+This is a diagnostic context-routing experiment, not a deployment policy update.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BS_SCENE_GRAPH_CONTEXT_ROUTER:END -->

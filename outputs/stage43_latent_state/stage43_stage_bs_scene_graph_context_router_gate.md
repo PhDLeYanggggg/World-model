@@ -1,9 +1,7 @@
-# Stage43 Current World-Model Gate
+# Stage43-BS Scene-Graph Context Router Gate
 
-- source: `fresh_stage43_bs_scene_graph_context_router`
 - verdict: `stage43_bs_scene_graph_context_router_pass_safe_no_lift_diagnostic`
 - passed: `12 / 12`
-- protected multimodal latent state candidate: `True`
 - validation-selected router: `True`
 - beats graph-history on any core metric: `False`
 - easy safe: `True`
@@ -11,12 +9,6 @@
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BS is a validation-selected source/domain/horizon context-router diagnostic.
-- It does not update deployment and does not claim raw scene/SDF evidence.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
