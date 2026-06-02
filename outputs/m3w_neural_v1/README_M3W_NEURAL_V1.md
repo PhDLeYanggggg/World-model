@@ -3268,7 +3268,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_im_t50_source_specialist_policy_freeze_pass`
 - gates: `22 / 22`
 - policy artifact: `outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json`
-- policy hash: `b905c8612c01d9f9abaf4ae823aa9c487f6e21f67d4ee2925e86a507ad9779d0`
+- policy hash: `1a1695dc8b99f259bd34bd63aecc034d928e8803c1566ade9d871f6b1fdd43e4`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - FDE t50: `0.263687`
 - easy degradation: `0.000000`
@@ -3282,7 +3282,7 @@ The context contribution map is now explicit: baseline-family rollout context is
 - verdict: `stage42_in_t50_source_specialist_reviewer_replay_pass`
 - gates: `25 / 25`
 - commands file: `outputs/stage42_long_research/t50_source_specialist_replay_commands_stage42.sh`
-- policy hash: `b905c8612c01d9f9abaf4ae823aa9c487f6e21f67d4ee2925e86a507ad9779d0`
+- policy hash: `1a1695dc8b99f259bd34bd63aecc034d928e8803c1566ade9d871f6b1fdd43e4`
 - ADE all / t50 / hard: `0.158819` / `0.104522` / `0.163730`
 - UCY t50 before -> after: `0.000000` -> `0.122892`
 - boundary: reviewer replay package for source-specialist t50 evidence only; no metric/seconds, no true 3D, no foundation, no Stage5C, no SMC.
@@ -4991,3 +4991,23 @@ Slice audit: positive `28`, negative `2`, easy hazards `10`, core weak `['horizo
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BV_CONTEXT_ADMISSIBILITY_SLICE_SAFE_REPAIR:END -->
+
+<!-- STAGE43_BW_CONTEXT_HAZARD_ATTRIBUTION_GUARD:START -->
+## STAGE43_BW_CONTEXT_HAZARD_ATTRIBUTION_GUARD
+
+source = `fresh_stage43_bw_context_hazard_attribution_guard`
+result_source = `fresh_validation_selected_context_hazard_attribution_guard`
+verdict = `stage43_bw_context_hazard_attribution_pass_floor_inherent_risk`
+gate = `13 / 13`
+selected_guard = `guard_domain_horizon_rate_0.20_plus_block_t100`
+deployable_policy_changed = `False`
+
+Stage43-BW distinguishes graph-history floor-inherent absolute easy risk from context-induced easy harm. This matters because BV's remaining easy-hazard slices can be inherited from the floor rather than caused by scene/graph context.
+Absolute easy hazard slices: graph-history `11`, BT unrepaired `7`, selected guard `10`.
+Context-induced hazard slices: BT unrepaired `12`, selected guard `9`.
+Delta vs graph-history-only: all `1.86%`, t50 `-0.02%`, t100 raw-frame diagnostic `0.00%`, hard/failure `1.77%`, easy degradation `0.00%`.
+Bootstrap CI low vs graph-history-only: all `1.65%`, t50 `-0.33%`, t100 raw `0.00%`, hard/failure `1.56%`, easy high `0.00%`.
+Source overlap audit: `{'val_source_count': 4, 'test_source_count': 4, 'overlap_count': 0, 'overlap_examples': [], 'held_out_source_level': True}`.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BW_CONTEXT_HAZARD_ATTRIBUTION_GUARD:END -->

@@ -1,23 +1,14 @@
-# Stage43 Current World-Model Gate
+# Stage43-BW Context Hazard Attribution Gate
 
-- source: `fresh_stage43_bw_context_hazard_attribution_guard`
 - verdict: `stage43_bw_context_hazard_attribution_pass_floor_inherent_risk`
 - passed: `13 / 13`
-- protected multimodal latent state candidate: `False`
 - easy safe: `True`
+- core lift vs graph-history: `True`
 - floor-inherent risk visible: `True`
 - context hazard not worse than BT: `True`
 - deployable policy changed: `False`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BW is a hazard-attribution guard for Stage43-BT/BV context admissibility.
-- It separates graph-history floor risk from context-induced harm.
-- It is not a deployment update and does not complete the Stage43 long objective.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
