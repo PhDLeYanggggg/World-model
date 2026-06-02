@@ -1,12 +1,12 @@
 # Stage43 Current World-Model Gate
 
-- source: `fresh_stage43_by_latent_transition_consistency_audit`
-- verdict: `stage43_by_latent_transition_consistency_pass_with_readout_caveat`
-- passed: `13 / 13`
+- source: `fresh_stage43_bz_latent_transition_adapter_repair`
+- verdict: `stage43_bz_latent_transition_adapter_repair_pass`
+- passed: `15 / 15`
 - protected multimodal latent state candidate: `True`
-- global transition gain vs identity: `0.7450`
-- calibrated readout gain vs train centroid: `0.3097`
-- weak transition slices: `4`
+- adapter raw gain vs identity: `0.8404`
+- adapter calibrated gain vs identity: `0.2014`
+- adapter calibrated CI low vs identity: `0.1884`
 - deployable policy changed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
@@ -14,23 +14,24 @@
 
 ## Current Boundary
 
-- Stage43-BY is a latent transition consistency audit, not an ungated deployment policy.
-- Raw dynamics beats raw identity, and train-only calibrated dynamics beats the train target-centroid baseline; calibrated identity remains a caveat.
+- Stage43-BZ is a latent transition repair experiment, not an ungated deployment policy.
 - Safety floors remain required for deployment.
 - Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
 | `stage43_m_checkpoint_replayed` | `True` |
-| `stage43_bx_precondition_seen` | `True` |
-| `fresh_transition_predictions_completed` | `True` |
+| `stage43_by_precondition_seen` | `True` |
+| `train_only_adapter_completed` | `True` |
 | `future_target_latent_label_eval_only` | `True` |
+| `no_test_statistics_normalization` | `True` |
 | `latent_noncollapse` | `True` |
-| `raw_transition_lift_vs_identity` | `True` |
-| `calibrated_readout_lift_vs_train_centroid` | `True` |
-| `bootstrap_transition_lift_supported` | `True` |
+| `raw_adapter_beats_identity` | `True` |
+| `raw_adapter_beats_stage43_m_transition` | `True` |
+| `raw_adapter_beats_train_centroid` | `True` |
+| `calibrated_adapter_beats_identity` | `True` |
+| `calibrated_bootstrap_supports_identity_lift` | `True` |
 | `domain_and_horizon_breakdowns_reported` | `True` |
-| `raw_centroid_and_identity_readout_caveats_reported` | `True` |
-| `no_future_or_test_leakage` | `True` |
+| `weak_slice_caveats_reported` | `True` |
 | `no_metric_seconds_stage5c_smc_claim` | `True` |
 | `long_objective_kept_active` | `True` |

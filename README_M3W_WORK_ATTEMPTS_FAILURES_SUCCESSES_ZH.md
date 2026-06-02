@@ -3012,3 +3012,22 @@ Weak transition slices: `4` raw, `5` calibrated.
 
 Interpretation: raw dynamics clearly moves away from identity toward the future latent, and a train-only calibrated readout beats the centroid baseline; however calibrated identity remains slightly stronger, so this is partial latent-dynamics evidence, not proof of an independent ungated dynamics advantage. Future target latents are label/eval only, not inference input. Boundary unchanged: protected dataset-local/raw-frame 2.5D only; no ungated deployment, no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BY_LATENT_TRANSITION_CONSISTENCY_AUDIT:END -->
+
+<!-- STAGE43_BZ_LATENT_TRANSITION_ADAPTER_REPAIR:START -->
+## STAGE43_BZ_LATENT_TRANSITION_ADAPTER_REPAIR
+
+source = `fresh_stage43_bz_latent_transition_adapter_repair`
+result_source = `fresh_train_only_latent_transition_adapter_repair`
+verdict = `stage43_bz_latent_transition_adapter_repair_pass`
+gate = `15 / 15`
+deployable_policy_changed = `False`
+
+Stage43-BZ trains a train-only, past-only latent transition adapter with frozen Stage43-M encoders to repair the Stage43-BY calibrated readout caveat.
+Adapter raw gain vs identity: `0.8404`.
+Adapter raw gain vs train centroid: `0.3516`.
+Adapter calibrated gain vs identity: `0.2014`.
+Adapter calibrated gain vs train centroid: `0.4583`.
+Calibrated gain-vs-identity CI low: `0.1884`.
+
+Interpretation: this is a targeted latent transition repair experiment. It does not change deployment, does not remove the safety floor, and does not enable Stage5C or SMC.
+<!-- STAGE43_BZ_LATENT_TRANSITION_ADAPTER_REPAIR:END -->

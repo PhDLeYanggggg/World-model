@@ -43840,5 +43840,61 @@
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_bz_latent_transition_adapter_repair": {
+    "source": "fresh_stage43_bz_latent_transition_adapter_repair",
+    "result_source": "fresh_train_only_latent_transition_adapter_repair",
+    "updated_at": "2026-06-02T07:21:41.354295+00:00",
+    "verdict": "stage43_bz_latent_transition_adapter_repair_pass",
+    "gate": "15 / 15",
+    "adapter_overall": {
+      "rows": 89736,
+      "mse_next_to_target": 0.3166601521320901,
+      "mse_identity_to_target": 1.9838874683029533,
+      "mse_train_centroid_to_target": 0.4883906177083988,
+      "transition_gain_vs_identity": 0.8403840151261373,
+      "transition_gain_vs_train_centroid": 0.3516252346985974,
+      "mean_cosine_next_target": 0.8316466659514867,
+      "mean_cosine_identity_target": 0.014845367738885128,
+      "target_latent_mean_variance": 0.469051453960737,
+      "z_next_mean_variance": 0.34019509445386964,
+      "r2_vs_target_variance": 0.3248925049519261
+    },
+    "adapter_calibrated_readout_overall": {
+      "rows": 89736,
+      "mse_next_to_target": 0.26456173391468407,
+      "mse_identity_to_target": 0.33127022276197493,
+      "mse_train_centroid_to_target": 0.4883906177083988,
+      "transition_gain_vs_identity": 0.20137182355572725,
+      "transition_gain_vs_train_centroid": 0.45829890189937117,
+      "mean_cosine_next_target": 0.8570301999517249,
+      "mean_cosine_identity_target": 0.8163067867988233,
+      "target_latent_mean_variance": 0.469051453960737,
+      "z_next_mean_variance": 0.3191103474127602,
+      "r2_vs_target_variance": 0.43596436663677884
+    },
+    "adapter_calibrated_readout_bootstrap": {
+      "n": 1000,
+      "sample_rows": 8000,
+      "transition_gain_vs_identity": {
+        "low": 0.18844637451213458,
+        "mean": 0.2014584205458005,
+        "high": 0.21379751960344334
+      },
+      "transition_gain_vs_train_centroid": {
+        "low": 0.4482189362135782,
+        "mean": 0.4586305016612373,
+        "high": 0.46945954145470636
+      },
+      "mean_cosine_next_target": {
+        "low": 0.8541367161835587,
+        "mean": 0.8571287370550575,
+        "high": 0.8599450398188783
+      }
+    },
+    "report": "outputs/stage43_latent_state/stage43_latent_transition_adapter_repair.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

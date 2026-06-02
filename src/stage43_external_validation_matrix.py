@@ -357,6 +357,9 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
             "stage43_by_latent_transition_consistency_pass_with_slice_caveat",
             "stage43_by_latent_transition_consistency_pass_with_readout_caveat",
             "stage43_by_latent_transition_consistency_diagnostic_incomplete",
+            "stage43_bz_latent_transition_adapter_repair_pass",
+            "stage43_bz_latent_transition_adapter_repair_pass_with_readout_caveat",
+            "stage43_bz_latent_transition_adapter_repair_diagnostic_incomplete",
         },
         "latest_tail_adapter_candidate_present": by_role["latest_full_test_tail_adapter_candidate"]["deployable"] is True
         and by_role["latest_full_test_tail_adapter_candidate"]["metrics"]["all"] > by_role["current_best_integrated_candidate"]["metrics"]["all"]
