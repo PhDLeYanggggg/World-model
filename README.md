@@ -1,20 +1,20 @@
 # M3W: Real-World Multimodal Agent-Scene World Model
 
-M3W is my long-running research project on real-world top-down multi-agent world modeling.
+M3W is my research project on top-down multi-agent world modeling.
 
-The question I am working on is:
+The question behind the project is simple:
 
-> Given a scene, a set of moving agents, their recent histories, local interactions, and only information that would be available at inference time, can a model predict future motion more reliably than strong causal baselines?
+> If I can see a scene, the agents in it, their recent motion, and their local interactions, can I predict what happens next more reliably than strong causal motion baselines?
 
-This repository is not a polished product demo. It is the research record behind that question: the models that worked, the ones that failed, the leakage audits, the safety gates, and the evidence I use to decide whether a result is actually deployable.
+I started this repo to answer that question carefully, not just to collect a nice-looking demo. The work here includes the models that improved results, the ones that failed, the leakage checks, the safety rules, and the notes that keep me honest about what the evidence does and does not prove.
 
-## Where The Project Stands
+## Current Best Result
 
-The strongest deployable result right now is not an unconstrained neural world model. It is a protected policy that starts from strong causal baselines and only switches away from them when past-only evidence suggests the switch is safe.
+The strongest deployable model in this repo is currently a protected selector-style policy. It does not blindly replace the causal baseline. It starts from strong physical baselines, studies past-only evidence, and switches only when the expected gain is large enough and the easy-case risk is low enough.
 
-On the current external top-down pedestrian evaluation, the frozen Stage37 policy is the best deployment floor:
+On the current external top-down pedestrian evaluation, the frozen policy gives:
 
-| Evaluation slice | Result |
+| Slice | Result |
 | --- | ---: |
 | Overall improvement | +13.48% |
 | Raw-frame `t+50` improvement | +8.46% |
@@ -22,51 +22,46 @@ On the current external top-down pedestrian evaluation, the frozen Stage37 polic
 | Easy-case degradation | 0.041% |
 | `t+50` bootstrap CI | [+7.69%, +9.15%] |
 
-That is the result I trust most today. Later neural dynamics experiments are kept in the repo, but I do not treat them as deployable unless they beat this floor under the same no-leakage and easy-preservation rules.
+This is the result I trust most today. The neural world-model branch is still active, but I only count it as deployable when it beats this protected policy under the same no-leakage and easy-preservation rules.
 
-## What M3W Uses
+## What The System Looks At
 
-The current system works on dataset-local top-down trajectory data. It uses:
+The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:
 
 - recent agent history;
-- velocity, acceleration, heading, curvature, and stop/go signals;
-- neighbor density and interaction proxies;
-- train-only scene or goal context where it is legally available;
+- speed, acceleration, heading, curvature, and stop/go behavior;
+- neighbor density and interaction signals;
+- train-only scene or goal context when that context is legally available;
 - causal baseline rollouts;
-- horizon, dataset, scene, and domain metadata;
-- failure, gain, harm, and fallback heads for safe selection.
+- dataset, scene, horizon, and domain metadata;
+- risk heads for failure, gain, harm, and fallback decisions.
 
-The neural track explores Transformer dynamics, JEPA-style representation learning, hybrid heads, waypoint prediction, and protected residual policies. So far, the reliable gains come from guarded selection, causal history, full-waypoint structure, domain-aware routing, and safety floors. JEPA and unprotected neural dynamics remain research evidence, not final claims.
+I also maintain a neural track with Transformer dynamics, JEPA-style representation learning, hybrid heads, waypoint prediction, and protected residual policies. So far, the most reliable gains come from guarded selection, causal history windows, full-waypoint structure, domain-aware routing, and safety floors. The neural pieces are useful research evidence, but they still have to earn deployment.
 
-## How To Read This Repo
+## What This Repo Is For
 
-I keep the public README short on purpose. The detailed evidence is split into ledgers and reports:
+This repository is a research record. The most important rule in the project is that a result has to survive the boring checks: no future leakage, no test endpoint goals, no central-velocity shortcuts, no easy-case damage hidden inside aggregate gains, and no metric claims without calibration.
 
-| File or directory | What it contains |
+For a quick orientation:
+
+| File or directory | What to read it for |
 | --- | --- |
-| [`README_RESULTS.md`](README_RESULTS.md) | Main results ledger, current claim boundaries, and stage-by-stage evidence. |
-| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | Detailed Chinese summary of attempted routes, failures, causes, and successes. |
+| [`README_RESULTS.md`](README_RESULTS.md) | Detailed results ledger and current evidence boundaries. |
+| [`README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md`](README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md) | Chinese long-form summary of routes tried, failures, causes, and successes. |
 | [`research_state.json`](research_state.json) | Machine-readable snapshot of the current project state. |
 | `outputs/m3w_neural_v1/` | Neural world-model reports and model-card style summaries. |
 | `outputs/stage42_long_research/` | Cross-domain safety, replay, full-waypoint, and paper-claim evidence. |
 | `outputs/stage43_latent_state/` | Latent-state, graph/history/context, and reviewer-style validation reports. |
 
-Large datasets, caches, checkpoints, videos, images, third-party data, and local virtual environments are intentionally not committed.
+Large datasets, caches, checkpoints, videos, images, third-party data, and local virtual environments are intentionally kept out of git.
 
 ## What I Am Not Claiming
 
-These boundaries are important:
+M3W is not a true 3D world model yet. It is not a foundation world model. SDD results are pixel-space unless calibration is verified. External results are dataset-local unless their geometry is verified. `t+50` and `t+100` are raw annotation-frame horizons, not seconds. Self-audited or inferred labels are not human gold labels.
 
-- M3W is not a true 3D world model yet.
-- M3W is not a large-scale foundation world model.
-- Current SDD results are pixel-space, not metric.
-- External results are dataset-local unless calibration is verified.
-- `t+50` and `t+100` are raw annotation-frame horizons, not seconds.
-- Self-audited or inferred labels are not human gold labels.
-- Stage5C latent generative execution has not been enabled.
-- SMC has not been enabled.
+Stage5C latent generative execution has not been enabled. SMC has not been enabled.
 
-The current claim is narrower: M3W is a protected 2.5D multi-agent world-state modeling project with strong leakage discipline, a reliable selector-style deployment floor, and an active neural dynamics track that still has to earn deployment.
+The current claim is narrower and stronger: this repo contains a protected 2.5D multi-agent world-state modeling system with strict leakage discipline, a reliable selector-style deployment floor, and an active neural dynamics track that is still being tested against that floor.
 
 ## Running Locally
 
@@ -82,17 +77,17 @@ Basic test command:
 .venv-pytorch/bin/python -m pytest tests
 ```
 
-Training scripts are designed around checkpointing, heartbeat logs, resume support, CPU/MPS-safe execution, and single-process dataloading.
+Training scripts are written around checkpointing, heartbeat logs, resume support, CPU/MPS-safe execution, and single-process dataloading.
 
-## Next Research Step
+## Next Step
 
-The next step is to make the neural world-model branch contribute something the protected policy does not already provide.
+The next research step is to make the neural branch contribute something the protected policy does not already provide.
 
-In practical terms, that means:
+That means:
 
-1. keep Stage37 as the safety floor;
-2. only promote neural dynamics if they improve all, `t+50`, or hard/failure slices without damaging easy cases;
+1. keep the protected selector as the safety floor;
+2. promote neural dynamics only if they improve overall, `t+50`, or hard/failure slices without damaging easy cases;
 3. keep testing whether scene, goal, graph, and latent context add measurable lift;
 4. keep raw-frame and dataset-local claims separate from metric or physical-world claims.
 
-If a route fails, it stays in the record. If a route works, the repo should make clear exactly where it works, why it is allowed, and what it still does not prove.
+When a route fails, I leave it in the record. When a route works, I want the repo to show exactly where it works, why it is allowed, and what it still does not prove.
