@@ -1,0 +1,197 @@
+{
+  "source": "fresh_stage43_cf_coverage_aware_full_waypoint_cache",
+  "result_source": "fresh_cache_rebuild_from_stage43_ce_assignment",
+  "generated_at_utc": "2026-06-02T10:02:43.697716+00:00",
+  "git_commit": "5fc5d65",
+  "python": "3.11.1",
+  "machine": "arm64",
+  "stage43_ce_precondition": {
+    "verdict": "stage43_ce_source_family_coverage_split_repair_ready",
+    "assignment_hash": "4df1b5fd2309b0b5fffdd86aabd1445c3359c254c3c2f80a871b671f4f4b2c82",
+    "split_rows": {
+      "train": 192531,
+      "val": 62796,
+      "test": 82664
+    },
+    "report": "outputs/stage43_latent_state/stage43_source_family_coverage_split_repair.json"
+  },
+  "coverage_summary": {
+    "families_by_split": {
+      "train": [
+        "biwi",
+        "crowds",
+        "hotel",
+        "obsmat",
+        "pets",
+        "students",
+        "zara"
+      ],
+      "val": [
+        "students",
+        "zara"
+      ],
+      "test": [
+        "students",
+        "zara"
+      ]
+    },
+    "domain_families_by_split": {
+      "train": [
+        "ETH_UCY|hotel",
+        "ETH_UCY|obsmat",
+        "ETH_UCY|students",
+        "TrajNet|biwi",
+        "TrajNet|crowds",
+        "TrajNet|pets",
+        "TrajNet|students",
+        "TrajNet|zara",
+        "UCY|students"
+      ],
+      "val": [
+        "ETH_UCY|zara",
+        "TrajNet|students",
+        "UCY|zara"
+      ],
+      "test": [
+        "ETH_UCY|zara",
+        "TrajNet|students",
+        "UCY|zara"
+      ]
+    },
+    "test_families_without_validation_support": [],
+    "test_domain_families_without_validation_support": [],
+    "global_family_coverage_pass": true,
+    "domain_family_coverage_pass": true
+  },
+  "cache_dir": "data/stage43_ce_full_waypoint_supervision_cache",
+  "cache_committed": false,
+  "split_summaries": {
+    "train": {
+      "split": "train",
+      "cache_path": "data/stage43_ce_full_waypoint_supervision_cache/stage43_ce_full_waypoint_supervision_train.npz",
+      "cache_sha256": "9c893895f5fdf26adb3a70540d6dc7c19272aa11f2d4193d3b3d68b43e67b8e1",
+      "row_hash": "cdcbbe5e1829d3f5c354d73e89f37bb902a76e29d7d4047ea0d6c14ad3f7221c",
+      "rows": 192531,
+      "domains": {
+        "ETH_UCY": 108794,
+        "TrajNet": 36514,
+        "UCY": 47223
+      },
+      "scene_count": 7,
+      "source_count": 12,
+      "horizon_counts": {
+        "10": 60567,
+        "25": 53344,
+        "50": 46176,
+        "100": 32444
+      },
+      "full_waypoint_rows": 192531,
+      "all_waypoints_valid_rows": 133352,
+      "missing_track_rows": 0,
+      "max_endpoint_diff_last_waypoint": 0.0,
+      "hard_rows": 147294,
+      "failure_rows": 70447,
+      "easy_rows": 59081
+    },
+    "val": {
+      "split": "val",
+      "cache_path": "data/stage43_ce_full_waypoint_supervision_cache/stage43_ce_full_waypoint_supervision_val.npz",
+      "cache_sha256": "e234ff7da873d37b32e490b0f2fdba7983624af80a6066cf2fa95ad90f73e869",
+      "row_hash": "d7f83753a5c09a8130c06fb74949af7476157bac67ead57f2b17e48f9fe9291e",
+      "rows": 62796,
+      "domains": {
+        "ETH_UCY": 16103,
+        "TrajNet": 37153,
+        "UCY": 9540
+      },
+      "scene_count": 3,
+      "source_count": 3,
+      "horizon_counts": {
+        "10": 19557,
+        "25": 17499,
+        "50": 15441,
+        "100": 10299
+      },
+      "full_waypoint_rows": 62796,
+      "all_waypoints_valid_rows": 43239,
+      "missing_track_rows": 0,
+      "max_endpoint_diff_last_waypoint": 0.0,
+      "hard_rows": 48498,
+      "failure_rows": 26435,
+      "easy_rows": 12396
+    },
+    "test": {
+      "split": "test",
+      "cache_path": "data/stage43_ce_full_waypoint_supervision_cache/stage43_ce_full_waypoint_supervision_test.npz",
+      "cache_sha256": "9922c10f91aea58ae297303a0ecc386a465e16b6f0c7551be529cefa3c9cc2b1",
+      "row_hash": "218f04e13ca83e3ee60a22d6917f66caa8b62981ed973e90d6d516c6a838a52f",
+      "rows": 82664,
+      "domains": {
+        "ETH_UCY": 25901,
+        "TrajNet": 47223,
+        "UCY": 9540
+      },
+      "scene_count": 3,
+      "source_count": 3,
+      "horizon_counts": {
+        "10": 25430,
+        "25": 22888,
+        "50": 20345,
+        "100": 14001
+      },
+      "full_waypoint_rows": 82664,
+      "all_waypoints_valid_rows": 57234,
+      "missing_track_rows": 0,
+      "max_endpoint_diff_last_waypoint": 0.0,
+      "hard_rows": 59841,
+      "failure_rows": 29605,
+      "easy_rows": 25024
+    }
+  },
+  "source_overlap_counts": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "source_level_split_disjoint": true
+  },
+  "claim_boundary": {
+    "new_training_or_evaluation_not_run": true,
+    "true_3d_claim": false,
+    "foundation_claim": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "long_objective_complete": false,
+  "stage43_cf_gate": {
+    "source": "fresh_stage43_cf_coverage_aware_full_waypoint_cache",
+    "gates": {
+      "stage43_ce_precondition_ready": true,
+      "cache_files_written": true,
+      "cache_rows_match_ce_assignment": true,
+      "train_val_test_rows_present": true,
+      "full_waypoint_labels_present": true,
+      "endpoint_alignment_pass": true,
+      "source_splits_disjoint": true,
+      "validation_covers_test_source_families": true,
+      "no_future_waypoint_input": true,
+      "no_test_goal_or_stat_leakage": true,
+      "cache_not_committed_boundary": true,
+      "not_a_model_result_boundary_recorded": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_cf_coverage_aware_full_waypoint_cache_ready"
+  }
+}

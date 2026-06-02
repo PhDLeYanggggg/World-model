@@ -3123,3 +3123,22 @@ Tradeoff: the repaired test split is intentionally coverage-aware and narrower t
 
 Interpretation: this is split-protocol repair readiness, not a new model result. The next step is to rebuild the full-waypoint supervision cache and retrain/evaluate latent dynamics on the repaired split.
 <!-- STAGE43_CE_SOURCE_FAMILY_COVERAGE_SPLIT_REPAIR:END -->
+
+<!-- STAGE43_CF_COVERAGE_AWARE_FULL_WAYPOINT_CACHE:START -->
+## STAGE43_CF_COVERAGE_AWARE_FULL_WAYPOINT_CACHE
+
+source = `fresh_stage43_cf_coverage_aware_full_waypoint_cache`
+result_source = `fresh_cache_rebuild_from_stage43_ce_assignment`
+verdict = `stage43_cf_coverage_aware_full_waypoint_cache_ready`
+gate = `14 / 14`
+deployable_policy_changed = `False`
+new_model_training_run = `False`
+cache_committed = `False`
+
+Stage43-CF materializes the CE coverage-aware source split into a local full-waypoint supervision cache. Future endpoints and waypoints are labels/eval targets only, not inference inputs.
+
+Cache rows train/val/test = `192531` / `62796` / `82664`.
+Cache dir = `data/stage43_ce_full_waypoint_supervision_cache`.
+
+Interpretation: this closes the repaired-split cache blocker. It is not a model result; the next step is training/evaluating latent dynamics on this repaired cache.
+<!-- STAGE43_CF_COVERAGE_AWARE_FULL_WAYPOINT_CACHE:END -->
