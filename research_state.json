@@ -44594,65 +44594,65 @@
   "stage43_cg_coverage_aware_latent_dynamics": {
     "source": "fresh_stage43_cg_coverage_aware_latent_dynamics",
     "result_source": "fresh_run",
-    "updated_at": "2026-06-02T11:15:23.013206+00:00",
-    "mode": "small",
+    "updated_at": "2026-06-02T11:44:22.765257+00:00",
+    "mode": "medium",
     "report": "outputs/stage43_latent_state/stage43_coverage_aware_latent_dynamics.json",
     "gate": "15 / 15",
     "verdict": "stage43_cg_coverage_aware_latent_dynamics_candidate_pass",
     "deploy_coverage_aware_latent_dynamics": true,
     "metrics": {
-      "rows": 16000,
-      "full_waypoint_ade_improvement_vs_floor": 0.5104057666719912,
-      "endpoint_fde_improvement_vs_floor": 0.5467034809799833,
-      "t50_full_waypoint_ade_improvement_vs_floor": 0.31396041521482765,
-      "t50_endpoint_fde_improvement_vs_floor": 0.4145450130385766,
-      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0774964474974853,
-      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4925470718910734,
+      "rows": 50000,
+      "full_waypoint_ade_improvement_vs_floor": 0.5147390961424908,
+      "endpoint_fde_improvement_vs_floor": 0.5494639899140273,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.31134080465952274,
+      "t50_endpoint_fde_improvement_vs_floor": 0.41493903945467026,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.05512550762045776,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.4972459256758939,
       "easy_degradation_vs_floor": 0.0,
-      "switch_rate": 0.7059375,
-      "harm_over_floor_ade": -0.10684532672166824,
-      "mean_floor_ade": 0.20933407545089722,
-      "mean_selected_ade": 0.10248875617980957
+      "switch_rate": 0.71252,
+      "harm_over_floor_ade": -0.1081792488694191,
+      "mean_floor_ade": 0.21016323566436768,
+      "mean_selected_ade": 0.10198400169610977
     },
     "bootstrap_ci": {
-      "n": 1000,
+      "n": 2000,
       "seed": 1431,
       "metrics": {
         "full_waypoint_ade_improvement_vs_floor": {
-          "low": 0.5035705078035388,
-          "mean": 0.5104023096285333,
-          "high": 0.5174108410842228,
-          "rows": 16000
+          "low": 0.510761781765705,
+          "mean": 0.5147446501624701,
+          "high": 0.518531440289974,
+          "rows": 50000
         },
         "endpoint_fde_improvement_vs_floor": {
-          "low": 0.5394986422798012,
-          "mean": 0.5467337004983785,
-          "high": 0.5535177254609579,
-          "rows": 16000
+          "low": 0.5451656409125474,
+          "mean": 0.5494180611436689,
+          "high": 0.5533523785044235,
+          "rows": 50000
         },
         "t50_full_waypoint_ade_improvement_vs_floor": {
-          "low": 0.30254467502285615,
-          "mean": 0.3139146756166243,
-          "high": 0.3256097127097648,
-          "rows": 3887
+          "low": 0.30465682852462667,
+          "mean": 0.3112490294334407,
+          "high": 0.3177716648872091,
+          "rows": 12259
         },
         "t100_raw_frame_full_waypoint_diagnostic_vs_floor": {
-          "low": -0.0947089185209639,
-          "mean": -0.07754494184970062,
-          "high": -0.06121612838477443,
-          "rows": 2701
+          "low": -0.06198625165067865,
+          "mean": -0.05520816314434073,
+          "high": -0.048496757136242435,
+          "rows": 8443
         },
         "hard_failure_full_waypoint_ade_improvement_vs_floor": {
-          "low": 0.484360964301338,
-          "mean": 0.4923688992867315,
-          "high": 0.5002508199334921,
-          "rows": 11549
+          "low": 0.4925704850955925,
+          "mean": 0.4971838349546165,
+          "high": 0.5015951405224474,
+          "rows": 36158
         },
         "easy_degradation_vs_floor": {
           "low": 0.0,
           "mean": 0.0,
           "high": 0.0,
-          "rows": 4873
+          "rows": 15195
         }
       }
     },
@@ -44665,5 +44665,76 @@
       "smc_enabled": false
     },
     "checkpoint_committed": false
+  },
+  "stage43_ch_coverage_aware_t100_failure_audit": {
+    "source": "fresh_stage43_ch_coverage_aware_t100_failure_audit",
+    "result_source": "fresh_replay_audit_from_stage43_cg_medium_checkpoint",
+    "updated_at": "2026-06-02T11:47:18.779658+00:00",
+    "report": "outputs/stage43_latent_state/stage43_coverage_aware_t100_failure_audit.json",
+    "gate": "11 / 11",
+    "verdict": "stage43_ch_t100_failure_audit_pass_blocker_confirmed",
+    "t100_deployable": false,
+    "horizon_slices": {
+      "10": {
+        "rows": 15385,
+        "full_waypoint_ade_improvement_vs_floor": 0.7183380464674833,
+        "endpoint_fde_improvement_vs_floor": 0.7495922050400576,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.9770555736106598,
+        "mean_floor_ade": 0.24517345428466797,
+        "mean_selected_ade": 0.06905603408813477,
+        "harm_over_floor_ade": -0.1761174499988556
+      },
+      "25": {
+        "rows": 13913,
+        "full_waypoint_ade_improvement_vs_floor": 0.6096460822328751,
+        "endpoint_fde_improvement_vs_floor": 0.6843169730132608,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.8706245957018616,
+        "mean_floor_ade": 0.23854723572731018,
+        "mean_selected_ade": 0.0931178480386734,
+        "harm_over_floor_ade": -0.14542941749095917
+      },
+      "50": {
+        "rows": 12259,
+        "full_waypoint_ade_improvement_vs_floor": 0.31134080465952274,
+        "endpoint_fde_improvement_vs_floor": 0.41493903945467026,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.6038012888490089,
+        "mean_floor_ade": 0.19241224229335785,
+        "mean_selected_ade": 0.13250645995140076,
+        "harm_over_floor_ade": -0.05990580841898918
+      },
+      "100": {
+        "rows": 8443,
+        "full_waypoint_ade_improvement_vs_floor": -0.05512550762045776,
+        "endpoint_fde_improvement_vs_floor": -0.0251514100100505,
+        "easy_degradation_vs_floor": 0.06999429190156703,
+        "switch_rate": 0.12779817600379012,
+        "mean_floor_ade": 0.12536755204200745,
+        "mean_selected_ade": 0.13227850198745728,
+        "harm_over_floor_ade": 0.006910949945449829
+      }
+    },
+    "t100_bootstrap_ci": {
+      "n": 2000,
+      "rows": 8443,
+      "low": -0.06184412600976692,
+      "mean": -0.05507084652003933,
+      "high": -0.04849964470902645
+    },
+    "interpretation": {
+      "t100_deployable": false,
+      "reason": "t100 raw-frame full-waypoint ADE improvement remains negative after CE medium replay; keep t100 floor and train a dedicated long-horizon repair before any t100 deployment claim.",
+      "recommended_next_step": "Train a t100-specific coverage-aware long-horizon head or per-horizon policy with validation-selected t100 safety constraints; do not change all/t50 deployment claims based on t100."
+    },
+    "claim_boundary": {
+      "true_3d": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    }
   }
 }

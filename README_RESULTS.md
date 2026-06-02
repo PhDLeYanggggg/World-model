@@ -8254,18 +8254,37 @@ Interpretation: this closes the repaired-split cache blocker. It is not a model 
 
 source = `fresh_stage43_cg_coverage_aware_latent_dynamics`
 result_source = `fresh_run`
-mode = `small`
+mode = `medium`
 verdict = `stage43_cg_coverage_aware_latent_dynamics_candidate_pass`
 gate = `15 / 15`
 deploy_coverage_aware_latent_dynamics = `True`
 
 I retrained the full-waypoint latent dynamics head on the CE coverage-aware source split. This is the first model run using the repaired split cache, not just another cache audit.
 
-- all full-waypoint ADE improvement vs floor: `51.04%`
-- t50 full-waypoint ADE improvement vs floor: `31.40%`
-- hard/failure full-waypoint ADE improvement vs floor: `49.25%`
+- all full-waypoint ADE improvement vs floor: `51.47%`
+- t50 full-waypoint ADE improvement vs floor: `31.13%`
+- hard/failure full-waypoint ADE improvement vs floor: `49.72%`
 - easy degradation: `0.00%`
-- switch rate: `70.59%`
+- switch rate: `71.25%`
 
 Boundary: dataset-local/raw-frame 2.5D only; no metric/seconds-level claim; Stage5C not executed; SMC not enabled.
 <!-- STAGE43_CG_COVERAGE_AWARE_LATENT_DYNAMICS:END -->
+
+<!-- STAGE43_CH_COVERAGE_AWARE_T100_FAILURE_AUDIT:START -->
+## STAGE43_CH_COVERAGE_AWARE_T100_FAILURE_AUDIT
+
+source = `fresh_stage43_ch_coverage_aware_t100_failure_audit`
+result_source = `fresh_replay_audit_from_stage43_cg_medium_checkpoint`
+verdict = `stage43_ch_t100_failure_audit_pass_blocker_confirmed`
+gate = `11 / 11`
+
+I replayed the Stage43-CG medium checkpoint on the CE test subset and isolated the long-horizon t100 failure. This is an audit, not a new t100 deployment.
+
+- t100 rows: `8443`
+- t100 full-waypoint ADE improvement: `-5.51%`
+- t100 bootstrap CI: `[-6.18%, -4.85%]`
+- t100 switch rate: `12.78%`
+- all/t50 CG remains positive, but t100 remains diagnostic-only.
+
+Boundary: no metric/seconds-level claim; no Stage5C; no SMC; future waypoints remain labels/eval only.
+<!-- STAGE43_CH_COVERAGE_AWARE_T100_FAILURE_AUDIT:END -->

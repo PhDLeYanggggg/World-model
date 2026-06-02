@@ -2,7 +2,7 @@
 
 - source: `fresh_stage43_cg_coverage_aware_latent_dynamics`
 - result_source: `fresh_run`
-- mode: `small`
+- mode: `medium`
 - gate: `15 / 15`
 - verdict: `stage43_cg_coverage_aware_latent_dynamics_candidate_pass`
 - deploy coverage-aware latent dynamics: `True`
@@ -25,28 +25,28 @@
 
 ## Protected Test Metrics vs CE Floor
 
-- rows: `16000`
-- full-waypoint ADE improvement: `51.04%`
-- endpoint FDE improvement: `54.67%`
-- t50 full-waypoint ADE improvement: `31.40%`
-- t100 raw-frame diagnostic: `-7.75%`
-- hard/failure improvement: `49.25%`
+- rows: `50000`
+- full-waypoint ADE improvement: `51.47%`
+- endpoint FDE improvement: `54.95%`
+- t50 full-waypoint ADE improvement: `31.13%`
+- t100 raw-frame diagnostic: `-5.51%`
+- hard/failure improvement: `49.72%`
 - easy degradation: `0.00%`
-- switch rate: `70.59%`
+- switch rate: `71.25%`
 
 ## Bootstrap CI
 
-- bootstrap n: `1000`
-- all full-waypoint ADE CI: `[50.36%, 51.74%]`
-- t50 full-waypoint ADE CI: `[30.25%, 32.56%]`
-- hard/failure CI: `[48.44%, 50.03%]`
+- bootstrap n: `2000`
+- all full-waypoint ADE CI: `[51.08%, 51.85%]`
+- t50 full-waypoint ADE CI: `[30.47%, 31.78%]`
+- hard/failure CI: `[49.26%, 50.16%]`
 - easy degradation CI: `[0.00%, 0.00%]`
 
 ## Ungated Neural Diagnostic
 
-- full-waypoint ADE improvement: `47.46%`
-- t50 full-waypoint ADE improvement: `44.09%`
-- hard/failure improvement: `44.52%`
+- full-waypoint ADE improvement: `47.85%`
+- t50 full-waypoint ADE improvement: `44.08%`
+- hard/failure improvement: `44.89%`
 - easy degradation: `0.00%`
 
 ## Interpretation
