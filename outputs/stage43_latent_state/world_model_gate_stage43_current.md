@@ -1,12 +1,14 @@
 # Stage43 Current World-Model Gate
 
-- source: `fresh_stage43_bz_latent_transition_adapter_repair`
-- verdict: `stage43_bz_latent_transition_adapter_repair_pass`
-- passed: `15 / 15`
+- source: `fresh_stage43_ca_latent_adapter_downstream_heads`
+- verdict: `stage43_ca_latent_adapter_downstream_heads_partial_lift`
+- passed: `13 / 16`
 - protected multimodal latent state candidate: `True`
-- adapter raw gain vs identity: `0.8404`
-- adapter calibrated gain vs identity: `0.2014`
-- adapter calibrated CI low vs identity: `0.1884`
+- selected adapter variant: `identity_stage43m_adapter_z`
+- adapter downstream mean ADE: `0.2961`
+- adapter risk mean AUROC: `0.8910`
+- protected all improvement: `0.0324`
+- protected t50 improvement: `-0.0022`
 - deployable policy changed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
@@ -14,24 +16,25 @@
 
 ## Current Boundary
 
-- Stage43-BZ is a latent transition repair experiment, not an ungated deployment policy.
+- Stage43-CA is a train-only downstream head audit, not an ungated deployment policy.
 - Safety floors remain required for deployment.
 - Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
-| `stage43_m_checkpoint_replayed` | `True` |
-| `stage43_by_precondition_seen` | `True` |
-| `train_only_adapter_completed` | `True` |
-| `future_target_latent_label_eval_only` | `True` |
-| `no_test_statistics_normalization` | `True` |
-| `latent_noncollapse` | `True` |
-| `raw_adapter_beats_identity` | `True` |
-| `raw_adapter_beats_stage43_m_transition` | `True` |
-| `raw_adapter_beats_train_centroid` | `True` |
-| `calibrated_adapter_beats_identity` | `True` |
-| `calibrated_bootstrap_supports_identity_lift` | `True` |
+| `stage43_bz_precondition_passed` | `True` |
+| `train_only_downstream_heads_fit` | `True` |
+| `future_labels_eval_only` | `True` |
+| `no_test_threshold_tuning` | `True` |
+| `selected_variant_contains_adapter` | `True` |
+| `adapter_variant_validation_selected` | `True` |
+| `adapter_waypoint_ungated_beats_identity` | `True` |
+| `adapter_waypoint_ungated_beats_stage43_m` | `False` |
+| `adapter_risk_auc_beats_identity` | `False` |
+| `adapter_risk_auc_beats_stage43_m` | `True` |
+| `protected_eval_completed` | `True` |
+| `protected_easy_preserved` | `False` |
+| `protected_adapter_lift_vs_floor` | `True` |
 | `domain_and_horizon_breakdowns_reported` | `True` |
-| `weak_slice_caveats_reported` | `True` |
 | `no_metric_seconds_stage5c_smc_claim` | `True` |
 | `long_objective_kept_active` | `True` |

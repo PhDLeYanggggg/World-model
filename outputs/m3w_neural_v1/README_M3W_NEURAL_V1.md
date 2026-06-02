@@ -5067,3 +5067,23 @@ Calibrated gain-vs-identity CI low: `0.1884`.
 
 Interpretation: this is a targeted latent transition repair experiment. It does not change deployment, does not remove the safety floor, and does not enable Stage5C or SMC.
 <!-- STAGE43_BZ_LATENT_TRANSITION_ADAPTER_REPAIR:END -->
+
+<!-- STAGE43_CA_LATENT_ADAPTER_DOWNSTREAM_HEADS:START -->
+## STAGE43_CA_LATENT_ADAPTER_DOWNSTREAM_HEADS
+
+source = `fresh_stage43_ca_latent_adapter_downstream_heads`
+result_source = `fresh_train_only_downstream_head_audit`
+verdict = `stage43_ca_latent_adapter_downstream_heads_partial_lift`
+gate = `13 / 16`
+deployable_policy_changed = `False`
+
+Stage43-CA fits train-only downstream heads on identity, Stage43-M transition, Stage43-BZ adapter, and current+future-latent concatenations.
+Selected adapter variant by validation objective: `identity_stage43m_adapter_z`.
+Adapter downstream mean ADE: `0.2961`.
+Adapter risk mean AUROC: `0.8910`.
+Protected all improvement vs floor: `0.0324`.
+Protected t50 improvement vs floor: `-0.0022`.
+Protected easy degradation: `0.0427`.
+
+Interpretation: downstream readouts test whether the repaired latent transition supports future waypoint/risk/density heads. This does not change deployment, remove the safety floor, or enable Stage5C/SMC.
+<!-- STAGE43_CA_LATENT_ADAPTER_DOWNSTREAM_HEADS:END -->

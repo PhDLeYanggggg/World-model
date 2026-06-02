@@ -43896,5 +43896,105 @@
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_ca_latent_adapter_downstream_heads": {
+    "source": "fresh_stage43_ca_latent_adapter_downstream_heads",
+    "result_source": "fresh_train_only_downstream_head_audit",
+    "updated_at": "2026-06-02T07:35:16.841191+00:00",
+    "verdict": "stage43_ca_latent_adapter_downstream_heads_partial_lift",
+    "gate": "13 / 16",
+    "adapter_eval": {
+      "ungated": {
+        "rows": 89736,
+        "full_waypoint_ade_improvement_vs_floor": -0.5107074711373969,
+        "endpoint_fde_improvement_vs_floor": 0.4773282794540499,
+        "t50_full_waypoint_ade_improvement_vs_floor": -0.6230835046093468,
+        "t50_endpoint_fde_improvement_vs_floor": 0.46983625733695755,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -1.1038596815065538,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": -0.3262494163621017,
+        "easy_degradation_vs_floor": 3.112342478109345,
+        "switch_rate": 1.0,
+        "harm_over_floor_ade": 0.1001000851392746,
+        "mean_floor_ade": 0.1960028111934662,
+        "mean_selected_ade": 0.296102911233902
+      },
+      "mean_ade": 0.296102911233902,
+      "mean_fde": 0.15392684936523438,
+      "density": {
+        "rows": 89736,
+        "mse": 0.05005307039028398,
+        "mae": 0.1652940627185384,
+        "rmse": 0.22372543527789587,
+        "baseline_mse": 0.10807723344076706,
+        "r2": 0.5368768352336097,
+        "corr": 0.8215689719459583
+      },
+      "risk": {
+        "failure": {
+          "rows": 89736,
+          "positives": 33797,
+          "negatives": 55939,
+          "positive_rate": 0.3766269947401266,
+          "brier": 0.1340289131789145,
+          "baseline_brier": 0.23477910157314724,
+          "auroc": 0.8757928037953401,
+          "auprc": 0.8089544237363187,
+          "average_precision": 0.8089544237363187,
+          "defined": true,
+          "f1_at_0_5": 0.7509114886354821,
+          "ece": 0.03426701684882201,
+          "brier_improvement_vs_prevalence": 0.4291275829882297
+        },
+        "gain": {
+          "rows": 89736,
+          "positives": 53921,
+          "negatives": 35815,
+          "positive_rate": 0.6008848176874387,
+          "brier": 0.1290921229038506,
+          "baseline_brier": 0.23982225356017225,
+          "auroc": 0.8902577470725078,
+          "auprc": 0.9274026238881862,
+          "average_precision": 0.9274026238881862,
+          "defined": true,
+          "f1_at_0_5": 0.8504935857694692,
+          "ece": 0.03341094153300638,
+          "brier_improvement_vs_prevalence": 0.4617174970734693
+        },
+        "harm": {
+          "rows": 89736,
+          "positives": 47812,
+          "negatives": 41924,
+          "positive_rate": 0.5328073459926896,
+          "brier": 0.11536319437948211,
+          "baseline_brier": 0.24892367804891594,
+          "auroc": 0.9069042212213624,
+          "auprc": 0.8887130243435564,
+          "average_precision": 0.8887130243435564,
+          "defined": true,
+          "f1_at_0_5": 0.8567468895117336,
+          "ece": 0.03725497731441207,
+          "brier_improvement_vs_prevalence": 0.5365519452239007
+        },
+        "mean_defined_auroc": 0.8909849240297367
+      }
+    },
+    "adapter_protected": {
+      "rows": 89736,
+      "full_waypoint_ade_improvement_vs_floor": 0.03242012826066565,
+      "endpoint_fde_improvement_vs_floor": 0.10650781407644894,
+      "t50_full_waypoint_ade_improvement_vs_floor": -0.0021635545106848397,
+      "t50_endpoint_fde_improvement_vs_floor": -8.421392222635049e-05,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0003556316198143339,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.05871684764233287,
+      "easy_degradation_vs_floor": 0.04265854926167978,
+      "switch_rate": 0.11658643130961933,
+      "harm_over_floor_ade": -0.006354441400617361,
+      "mean_floor_ade": 0.1960028111934662,
+      "mean_selected_ade": 0.18964837491512299
+    },
+    "report": "outputs/stage43_latent_state/stage43_latent_adapter_downstream_heads.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
