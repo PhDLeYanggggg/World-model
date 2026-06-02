@@ -1,23 +1,15 @@
-# Stage43 Current World-Model Gate
+# Stage43-BV Context Admissibility Slice-Safe Gate
 
-- source: `fresh_stage43_bv_context_admissibility_slice_safe_repair`
 - verdict: `stage43_bv_context_admissibility_slice_repair_diagnostic_remaining_risk`
 - passed: `12 / 12`
-- protected multimodal latent state candidate: `False`
 - easy safe: `True`
 - slice easy safe: `False`
 - core lift vs graph-history: `True`
 - t100 bootstrap robust: `False`
+- t100 CI crosses zero: `True`
 - deployable policy changed: `False`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BV is a validation-only slice-safety repair for Stage43-BT context admissibility.
-- It is not a deployment update unless it safely improves the graph-history floor.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |

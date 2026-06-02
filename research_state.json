@@ -18805,7 +18805,7 @@
       "report": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.md",
       "json": "outputs/stage42_long_research/t50_source_specialist_policy_freeze_stage42.json",
       "policy": "outputs/stage42_long_research/frozen_t50_source_specialist_policy_stage42.json",
-      "policy_hash": "1b5024eca40572beaaf916046d5e6a37b607baa026d5fd76253b6569453c6613",
+      "policy_hash": "b905c8612c01d9f9abaf4ae823aa9c487f6e21f67d4ee2925e86a507ad9779d0",
       "gate": "outputs/stage42_long_research/stage42_stage_im_gate.md",
       "verdict": "stage42_im_t50_source_specialist_policy_freeze_pass",
       "gates": "22/22",
@@ -36480,7 +36480,7 @@
       "gate": "outputs/stage42_long_research/stage42_stage_in_gate.md",
       "verdict": "stage42_in_t50_source_specialist_reviewer_replay_pass",
       "gates": "25/25",
-      "package_hash": "eea8d49210e402bc1508c8da0806b7cd1b144a30871cb9d6a7aa7375b79cd60f",
+      "package_hash": "da7db5eff2a0aea00d42928e4ef6f4112f8ad9642c6f590c31defb4895a5a7b3",
       "metric": {
         "source": "compact_review_replay_from_stage42_ik_il_im",
         "rows": 55528,
@@ -36561,8 +36561,8 @@
             "easy_degradation": 0.0
           }
         },
-        "policy_hash": "1b5024eca40572beaaf916046d5e6a37b607baa026d5fd76253b6569453c6613",
-        "policy_artifact_sha256": "6d2448b50bfd954a9cc283dd1c1328ce9ca2a839e1a24aa3fd4efb5268fcf2a6",
+        "policy_hash": "b905c8612c01d9f9abaf4ae823aa9c487f6e21f67d4ee2925e86a507ad9779d0",
+        "policy_artifact_sha256": "adfc0ecd9558dd5c13e3207b2600d9f21eed6f66b5db28d8f4a8f57b6f0085e0",
         "supported_claims": [
           {
             "claim": "Stage42-IK repairs the Stage42-II/IJ UCY fallback-only t50 weak source under a row-aligned source specialist.",
@@ -42069,7 +42069,7 @@
   "stage43_bl_raw_scene_graph_ablation_readiness": {
     "source": "fresh_stage43_bl_raw_scene_graph_ablation_readiness",
     "result_source": "fresh_readiness_audit_from_stage43_proxy_ablation_and_cache_schema",
-    "updated_at": "2026-06-01T20:41:02.033584+00:00",
+    "updated_at": "2026-06-02T05:17:25.146333+00:00",
     "verdict": "stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented",
     "gate": "15 / 15",
     "raw_scene_retrained_ablation_ready_now": false,
@@ -42134,7 +42134,7 @@
   "stage43_bm_all_agent_current_graph_cache": {
     "source": "fresh_stage43_bm_all_agent_current_graph_cache",
     "result_source": "fresh_build_current_frame_all_agent_knn_graph_cache_from_stage43_full_waypoint_rows",
-    "updated_at": "2026-06-01T21:10:05.616353+00:00",
+    "updated_at": "2026-06-02T05:15:41.022657+00:00",
     "verdict": "stage43_bm_all_agent_current_graph_cache_pass_partial_history_blocker",
     "gate": "14 / 14",
     "all_agent_current_graph_cache_ready": true,
@@ -42288,7 +42288,7 @@
   "stage43_bn_all_agent_history_graph_cache": {
     "source": "fresh_stage43_bn_all_agent_history_graph_cache",
     "result_source": "fresh_build_past_only_all_agent_history_graph_cache_from_stage37_history_and_stage43_current_graph",
-    "updated_at": "2026-06-01T21:40:51.192041+00:00",
+    "updated_at": "2026-06-02T05:16:53.504059+00:00",
     "verdict": "stage43_bn_all_agent_history_graph_cache_pass_raw_scene_blocker",
     "gate": "13 / 13",
     "all_agent_history_graph_cache_ready": true,
@@ -43395,6 +43395,82 @@
       "core_weak_slices": []
     },
     "report": "outputs/stage43_latent_state/stage43_context_admissibility_robustness_audit.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_bv_context_admissibility_slice_safe_repair": {
+    "source": "fresh_stage43_bv_context_admissibility_slice_safe_repair",
+    "result_source": "fresh_validation_selected_slice_safe_context_repair",
+    "updated_at": "2026-06-02T05:19:28.361774+00:00",
+    "verdict": "stage43_bv_context_admissibility_slice_repair_diagnostic_remaining_risk",
+    "gate": "12 / 12",
+    "selected_repair_mode": "block_t100",
+    "easy_safe": true,
+    "slice_easy_safe": false,
+    "core_lift_vs_graph_history": true,
+    "t100_bootstrap_robust": false,
+    "deployable_policy_changed": false,
+    "delta_vs_graph_history_only": {
+      "all": 0.02142592522633291,
+      "t50": 0.003973593275277021,
+      "t100_raw_frame_diagnostic": 0.0,
+      "hard_failure": 0.020132391605805156,
+      "easy_degradation": 0.0
+    },
+    "bootstrap_summary": {
+      "all_delta_vs_graph": {
+        "low": 0.019124101740622193,
+        "mean": 0.02139823993081003,
+        "high": 0.023779933557788905,
+        "rows": 12000
+      },
+      "t50_delta_vs_graph": {
+        "low": -0.00021244097215072366,
+        "mean": 0.0038727089174962525,
+        "high": 0.007705195155855515,
+        "rows": 2888
+      },
+      "t100_raw_frame_delta_vs_graph": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 2406
+      },
+      "hard_failure_delta_vs_graph": {
+        "low": 0.01792118765177035,
+        "mean": 0.0201081170396858,
+        "high": 0.0222879161114624,
+        "rows": 9371
+      },
+      "easy_degradation_delta_vs_graph": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 3607
+      }
+    },
+    "slice_summary": {
+      "slice_count": 39,
+      "positive_slice_count": 28,
+      "negative_slice_count": 2,
+      "easy_hazard_slice_count": 10,
+      "core_weak_slices": [
+        {
+          "slice": "horizon_100",
+          "rows": 2406,
+          "selected_improvement": -0.032566614751932565,
+          "graph_history_improvement": -0.032566614751932565,
+          "delta_vs_graph": 0.0,
+          "easy_rows": 655,
+          "easy_degradation": 0.021491887359271766,
+          "context_rate": 0.0,
+          "scene_proxy_rows": 0,
+          "scene_graph_full_rows": 0
+        }
+      ]
+    },
+    "report": "outputs/stage43_latent_state/stage43_context_admissibility_slice_safe_repair.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false

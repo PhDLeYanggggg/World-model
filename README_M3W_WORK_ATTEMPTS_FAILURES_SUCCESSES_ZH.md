@@ -2933,3 +2933,25 @@ Slice audit: `31` positive slices, `2` negative slices, easy hazard slices `7`, 
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BU_CONTEXT_ADMISSIBILITY_ROBUSTNESS_AUDIT:END -->
+
+<!-- STAGE43_BV_CONTEXT_ADMISSIBILITY_SLICE_SAFE_REPAIR:START -->
+## STAGE43_BV_CONTEXT_ADMISSIBILITY_SLICE_SAFE_REPAIR
+
+source = `fresh_stage43_bv_context_admissibility_slice_safe_repair`
+result_source = `fresh_validation_selected_slice_safe_context_repair`
+verdict = `stage43_bv_context_admissibility_slice_repair_diagnostic_remaining_risk`
+gate = `12 / 12`
+selected_repair_mode = `block_t100`
+easy_safe = `True`
+slice_easy_safe = `False`
+core_lift_vs_graph_history = `True`
+t100_bootstrap_robust = `False`
+deployable_policy_changed = `False`
+
+Stage43-BV applies a validation-only slice-safety repair to Stage43-BT context admissibility. It blocks context on validation-identified unsafe source/domain/horizon slices and evaluates test once.
+Delta vs graph-history-only: all `2.14%`, t50 `0.40%`, t100 raw-frame diagnostic `0.00%`, hard/failure `2.01%`, easy degradation `0.00%`.
+Bootstrap CI low vs graph-history-only: all `1.91%`, t50 `-0.02%`, t100 raw `0.00%`, hard/failure `1.79%`, easy high `0.00%`.
+Slice audit: positive `28`, negative `2`, easy hazards `10`, core weak `['horizon_100']`.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; t100 is diagnostic; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BV_CONTEXT_ADMISSIBILITY_SLICE_SAFE_REPAIR:END -->

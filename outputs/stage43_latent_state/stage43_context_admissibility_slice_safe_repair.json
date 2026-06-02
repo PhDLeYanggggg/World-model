@@ -1,0 +1,1900 @@
+{
+  "source": "fresh_stage43_bv_context_admissibility_slice_safe_repair",
+  "result_source": "fresh_validation_selected_slice_safe_context_repair",
+  "generated_at_utc": "2026-06-02T05:19:28.361774+00:00",
+  "git_commit": "ce3b554",
+  "precondition": {
+    "bt_verdict": "stage43_bt_context_admissibility_pass_safe_lift_diagnostic",
+    "bu_verdict": "stage43_bu_context_admissibility_partial_robust_lift_pass",
+    "bu_gate": {
+      "passed": 12,
+      "total": 12
+    }
+  },
+  "rows": {
+    "val": 12000,
+    "test": 12000
+  },
+  "bt_policy": {
+    "gain_threshold": 0.5,
+    "harm_threshold": 0.5,
+    "predicted_gain_threshold": 0.0
+  },
+  "checkpoint": {
+    "path": "outputs/stage43_latent_state/checkpoints/stage43_context_admissibility_model.pt",
+    "sha256": "ba8b4d75575f4cc5353fec47e0db172ce7d8f893ba838f55acba8c2d2393d91f",
+    "committed": false
+  },
+  "validation_slice_table": {
+    "min_rows": 100,
+    "min_delta": 0.0,
+    "easy_limit": 0.02,
+    "families": {
+      "horizon": {
+        "horizon:10": {
+          "key": "horizon:10",
+          "family": "horizon",
+          "rows": 3961,
+          "easy_rows": 1056,
+          "selected_improvement": 0.6948548792616687,
+          "graph_history_improvement": 0.6144936710390907,
+          "delta_vs_graph": 0.08036120822257797,
+          "easy_degradation": 0.0,
+          "context_rate": 0.42388285786417573,
+          "safe": true,
+          "unsafe": false
+        },
+        "horizon:100": {
+          "key": "horizon:100",
+          "family": "horizon",
+          "rows": 1825,
+          "easy_rows": 441,
+          "selected_improvement": -0.0044021204276454284,
+          "graph_history_improvement": -0.004286127048807042,
+          "delta_vs_graph": -0.00011599337883838601,
+          "easy_degradation": 0.0168803706615821,
+          "context_rate": 0.001095890410958904,
+          "safe": false,
+          "unsafe": true
+        },
+        "horizon:25": {
+          "key": "horizon:25",
+          "family": "horizon",
+          "rows": 3390,
+          "easy_rows": 1221,
+          "selected_improvement": 0.5680951075856953,
+          "graph_history_improvement": 0.5530896555285855,
+          "delta_vs_graph": 0.015005452057109792,
+          "easy_degradation": 0.0,
+          "context_rate": 0.20176991150442478,
+          "safe": true,
+          "unsafe": false
+        },
+        "horizon:50": {
+          "key": "horizon:50",
+          "family": "horizon",
+          "rows": 2824,
+          "easy_rows": 1075,
+          "selected_improvement": 0.20179411590864926,
+          "graph_history_improvement": 0.1989988306298489,
+          "delta_vs_graph": 0.0027952852788003524,
+          "easy_degradation": 0.0,
+          "context_rate": 0.032577903682719546,
+          "safe": true,
+          "unsafe": false
+        }
+      },
+      "domain": {
+        "domain:ETH_UCY": {
+          "key": "domain:ETH_UCY",
+          "family": "domain",
+          "rows": 2033,
+          "easy_rows": 712,
+          "selected_improvement": 0.5138482663031408,
+          "graph_history_improvement": 0.49501091981920853,
+          "delta_vs_graph": 0.018837346483932316,
+          "easy_degradation": 0.0,
+          "context_rate": 0.12247909493359567,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain:TrajNet": {
+          "key": "domain:TrajNet",
+          "family": "domain",
+          "rows": 4433,
+          "easy_rows": 1095,
+          "selected_improvement": 0.5071006085023368,
+          "graph_history_improvement": 0.4583611839292693,
+          "delta_vs_graph": 0.04873942457306757,
+          "easy_degradation": 0.0,
+          "context_rate": 0.27656214752988945,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain:UCY": {
+          "key": "domain:UCY",
+          "family": "domain",
+          "rows": 5534,
+          "easy_rows": 1986,
+          "selected_improvement": 0.4471362915981669,
+          "graph_history_improvement": 0.4182866855722923,
+          "delta_vs_graph": 0.028849606025874608,
+          "easy_degradation": 0.0,
+          "context_rate": 0.17744850018070113,
+          "safe": true,
+          "unsafe": false
+        }
+      },
+      "domain_horizon": {
+        "domain_horizon:ETH_UCY|h:10": {
+          "key": "domain_horizon:ETH_UCY|h:10",
+          "family": "domain_horizon",
+          "rows": 678,
+          "easy_rows": 190,
+          "selected_improvement": 0.7405048741425992,
+          "graph_history_improvement": 0.6946228498127607,
+          "delta_vs_graph": 0.04588202432983857,
+          "easy_degradation": 0.10124269432949329,
+          "context_rate": 0.3274336283185841,
+          "safe": false,
+          "unsafe": true
+        },
+        "domain_horizon:ETH_UCY|h:100": {
+          "key": "domain_horizon:ETH_UCY|h:100",
+          "family": "domain_horizon",
+          "rows": 301,
+          "easy_rows": 126,
+          "selected_improvement": -0.006277668761774935,
+          "graph_history_improvement": -0.006277668761774935,
+          "delta_vs_graph": 0.0,
+          "easy_degradation": 0.025694174934312697,
+          "context_rate": 0.0033222591362126247,
+          "safe": false,
+          "unsafe": true
+        },
+        "domain_horizon:ETH_UCY|h:25": {
+          "key": "domain_horizon:ETH_UCY|h:25",
+          "family": "domain_horizon",
+          "rows": 580,
+          "easy_rows": 206,
+          "selected_improvement": 0.5641950684028114,
+          "graph_history_improvement": 0.5601733804865326,
+          "delta_vs_graph": 0.004021687916278771,
+          "easy_degradation": 0.0,
+          "context_rate": 0.03620689655172414,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:ETH_UCY|h:50": {
+          "key": "domain_horizon:ETH_UCY|h:50",
+          "family": "domain_horizon",
+          "rows": 474,
+          "easy_rows": 190,
+          "selected_improvement": 0.18230915742649667,
+          "graph_history_improvement": 0.17984075142889966,
+          "delta_vs_graph": 0.002468405997597012,
+          "easy_degradation": 0.0,
+          "context_rate": 0.010548523206751054,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:TrajNet|h:10": {
+          "key": "domain_horizon:TrajNet|h:10",
+          "family": "domain_horizon",
+          "rows": 1449,
+          "easy_rows": 294,
+          "selected_improvement": 0.7292918551952889,
+          "graph_history_improvement": 0.6199638871966375,
+          "delta_vs_graph": 0.10932796799865141,
+          "easy_degradation": 0.0,
+          "context_rate": 0.5845410628019324,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:TrajNet|h:100": {
+          "key": "domain_horizon:TrajNet|h:100",
+          "family": "domain_horizon",
+          "rows": 664,
+          "easy_rows": 96,
+          "selected_improvement": -0.003009829482140347,
+          "graph_history_improvement": -0.003009829482140347,
+          "delta_vs_graph": 0.0,
+          "easy_degradation": 0.007872540670610828,
+          "context_rate": 0.0,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:TrajNet|h:25": {
+          "key": "domain_horizon:TrajNet|h:25",
+          "family": "domain_horizon",
+          "rows": 1312,
+          "easy_rows": 386,
+          "selected_improvement": 0.5996444019118174,
+          "graph_history_improvement": 0.5781432030723017,
+          "delta_vs_graph": 0.021501198839515734,
+          "easy_degradation": 0.0,
+          "context_rate": 0.2545731707317073,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:TrajNet|h:50": {
+          "key": "domain_horizon:TrajNet|h:50",
+          "family": "domain_horizon",
+          "rows": 1008,
+          "easy_rows": 319,
+          "selected_improvement": 0.21024253410564464,
+          "graph_history_improvement": 0.20455939102088216,
+          "delta_vs_graph": 0.005683143084762476,
+          "easy_degradation": 0.0,
+          "context_rate": 0.044642857142857144,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:UCY|h:10": {
+          "key": "domain_horizon:UCY|h:10",
+          "family": "domain_horizon",
+          "rows": 1834,
+          "easy_rows": 572,
+          "selected_improvement": 0.6471993593327052,
+          "graph_history_improvement": 0.5823164929889743,
+          "delta_vs_graph": 0.06488286634373097,
+          "easy_degradation": 0.0,
+          "context_rate": 0.3326063249727372,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:UCY|h:100": {
+          "key": "domain_horizon:UCY|h:100",
+          "family": "domain_horizon",
+          "rows": 860,
+          "easy_rows": 219,
+          "selected_improvement": -0.005304133256299748,
+          "graph_history_improvement": -0.005061467867050196,
+          "delta_vs_graph": -0.00024266538924955228,
+          "easy_degradation": 0.01795493475369847,
+          "context_rate": 0.0011627906976744186,
+          "safe": false,
+          "unsafe": true
+        },
+        "domain_horizon:UCY|h:25": {
+          "key": "domain_horizon:UCY|h:25",
+          "family": "domain_horizon",
+          "rows": 1498,
+          "easy_rows": 629,
+          "selected_improvement": 0.5354140803501366,
+          "graph_history_improvement": 0.5226564937232157,
+          "delta_vs_graph": 0.012757586626920947,
+          "easy_degradation": 0.0,
+          "context_rate": 0.21962616822429906,
+          "safe": true,
+          "unsafe": false
+        },
+        "domain_horizon:UCY|h:50": {
+          "key": "domain_horizon:UCY|h:50",
+          "family": "domain_horizon",
+          "rows": 1342,
+          "easy_rows": 566,
+          "selected_improvement": 0.20104895031457337,
+          "graph_history_improvement": 0.2008069934277621,
+          "delta_vs_graph": 0.0002419568868112787,
+          "easy_degradation": 0.0,
+          "context_rate": 0.03129657228017884,
+          "safe": true,
+          "unsafe": false
+        }
+      },
+      "source": {
+        "source:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt": {
+          "key": "source:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+          "family": "source",
+          "rows": 2033,
+          "easy_rows": 712,
+          "selected_improvement": 0.5138482663031408,
+          "graph_history_improvement": 0.49501091981920853,
+          "delta_vs_graph": 0.018837346483932316,
+          "easy_degradation": 0.0,
+          "context_rate": 0.12247909493359567,
+          "safe": true,
+          "unsafe": false
+        },
+        "source:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt": {
+          "key": "source:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+          "family": "source",
+          "rows": 4373,
+          "easy_rows": 1083,
+          "selected_improvement": 0.5051312372826965,
+          "graph_history_improvement": 0.45573296924572504,
+          "delta_vs_graph": 0.04939826803697145,
+          "easy_degradation": 0.0,
+          "context_rate": 0.276469243082552,
+          "safe": true,
+          "unsafe": false
+        },
+        "source:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt": {
+          "key": "source:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+          "family": "source",
+          "rows": 5534,
+          "easy_rows": 1986,
+          "selected_improvement": 0.4471362915981669,
+          "graph_history_improvement": 0.4182866855722923,
+          "delta_vs_graph": 0.028849606025874608,
+          "easy_degradation": 0.0,
+          "context_rate": 0.17744850018070113,
+          "safe": true,
+          "unsafe": false
+        }
+      },
+      "source_horizon": {
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:10": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:10",
+          "family": "source_horizon",
+          "rows": 678,
+          "easy_rows": 190,
+          "selected_improvement": 0.7405048741425992,
+          "graph_history_improvement": 0.6946228498127607,
+          "delta_vs_graph": 0.04588202432983857,
+          "easy_degradation": 0.10124269432949329,
+          "context_rate": 0.3274336283185841,
+          "safe": false,
+          "unsafe": true
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:100": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:100",
+          "family": "source_horizon",
+          "rows": 301,
+          "easy_rows": 126,
+          "selected_improvement": -0.006277668761774935,
+          "graph_history_improvement": -0.006277668761774935,
+          "delta_vs_graph": 0.0,
+          "easy_degradation": 0.025694174934312697,
+          "context_rate": 0.0033222591362126247,
+          "safe": false,
+          "unsafe": true
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:25": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:25",
+          "family": "source_horizon",
+          "rows": 580,
+          "easy_rows": 206,
+          "selected_improvement": 0.5641950684028114,
+          "graph_history_improvement": 0.5601733804865326,
+          "delta_vs_graph": 0.004021687916278771,
+          "easy_degradation": 0.0,
+          "context_rate": 0.03620689655172414,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:50": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt|h:50",
+          "family": "source_horizon",
+          "rows": 474,
+          "easy_rows": 190,
+          "selected_improvement": 0.18230915742649667,
+          "graph_history_improvement": 0.17984075142889966,
+          "delta_vs_graph": 0.002468405997597012,
+          "easy_degradation": 0.0,
+          "context_rate": 0.010548523206751054,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:10": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:10",
+          "family": "source_horizon",
+          "rows": 1417,
+          "easy_rows": 290,
+          "selected_improvement": 0.729114606782624,
+          "graph_history_improvement": 0.6184834298321622,
+          "delta_vs_graph": 0.11063117695046176,
+          "easy_degradation": 0.0,
+          "context_rate": 0.5864502470007057,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:100": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:100",
+          "family": "source_horizon",
+          "rows": 664,
+          "easy_rows": 96,
+          "selected_improvement": -0.003009829482140347,
+          "graph_history_improvement": -0.003009829482140347,
+          "delta_vs_graph": 0.0,
+          "easy_degradation": 0.007872540670610828,
+          "context_rate": 0.0,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:25": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:25",
+          "family": "source_horizon",
+          "rows": 1290,
+          "easy_rows": 378,
+          "selected_improvement": 0.5995521284865555,
+          "graph_history_improvement": 0.5771683775094694,
+          "delta_vs_graph": 0.022383750977086114,
+          "easy_degradation": 0.0,
+          "context_rate": 0.25813953488372093,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:50": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|h:50",
+          "family": "source_horizon",
+          "rows": 1002,
+          "easy_rows": 319,
+          "selected_improvement": 0.21325391182121634,
+          "graph_history_improvement": 0.2074892963879349,
+          "delta_vs_graph": 0.005764615433281439,
+          "easy_degradation": 0.0,
+          "context_rate": 0.04491017964071856,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:10": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:10",
+          "family": "source_horizon",
+          "rows": 1834,
+          "easy_rows": 572,
+          "selected_improvement": 0.6471993593327052,
+          "graph_history_improvement": 0.5823164929889743,
+          "delta_vs_graph": 0.06488286634373097,
+          "easy_degradation": 0.0,
+          "context_rate": 0.3326063249727372,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:100": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:100",
+          "family": "source_horizon",
+          "rows": 860,
+          "easy_rows": 219,
+          "selected_improvement": -0.005304133256299748,
+          "graph_history_improvement": -0.005061467867050196,
+          "delta_vs_graph": -0.00024266538924955228,
+          "easy_degradation": 0.01795493475369847,
+          "context_rate": 0.0011627906976744186,
+          "safe": false,
+          "unsafe": true
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:25": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:25",
+          "family": "source_horizon",
+          "rows": 1498,
+          "easy_rows": 629,
+          "selected_improvement": 0.5354140803501366,
+          "graph_history_improvement": 0.5226564937232157,
+          "delta_vs_graph": 0.012757586626920947,
+          "easy_degradation": 0.0,
+          "context_rate": 0.21962616822429906,
+          "safe": true,
+          "unsafe": false
+        },
+        "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:50": {
+          "key": "source_horizon:/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt|h:50",
+          "family": "source_horizon",
+          "rows": 1342,
+          "easy_rows": 566,
+          "selected_improvement": 0.20104895031457337,
+          "graph_history_improvement": 0.2008069934277621,
+          "delta_vs_graph": 0.0002419568868112787,
+          "easy_degradation": 0.0,
+          "context_rate": 0.03129657228017884,
+          "safe": true,
+          "unsafe": false
+        }
+      }
+    },
+    "summary": {
+      "horizon": {
+        "keys": 4,
+        "safe_keys": 3,
+        "unsafe_keys": 1
+      },
+      "domain": {
+        "keys": 3,
+        "safe_keys": 3,
+        "unsafe_keys": 0
+      },
+      "domain_horizon": {
+        "keys": 12,
+        "safe_keys": 9,
+        "unsafe_keys": 3
+      },
+      "source": {
+        "keys": 3,
+        "safe_keys": 3,
+        "unsafe_keys": 0
+      },
+      "source_horizon": {
+        "keys": 12,
+        "safe_keys": 9,
+        "unsafe_keys": 3
+      }
+    }
+  },
+  "validation_selection": {
+    "selected_mode": "block_t100",
+    "selected_validation_metrics": {
+      "rows": 12000,
+      "full_waypoint_ade_improvement_vs_floor": 0.4824099959178836,
+      "endpoint_fde_improvement_vs_floor": 0.49991814501991805,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+      "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.48235173477981297,
+      "easy_degradation_vs_floor": 0.0,
+      "switch_rate": 0.6190833333333333,
+      "harm_over_floor_ade": -0.10917992144823074,
+      "mean_floor_ade": 0.22632181644439697,
+      "mean_selected_ade": 0.11714190989732742
+    },
+    "selected_delta_vs_graph_history_only": {
+      "all": 0.03565672693275035,
+      "t50": 0.0027952852788003524,
+      "t100_raw_frame_diagnostic": 0.0,
+      "hard_failure": 0.027631086461253118,
+      "easy_degradation": 0.0
+    },
+    "selected_context_variant_counts": {
+      "graph_history_only": 9545,
+      "scene_graph_full": 711,
+      "scene_proxy_only": 1744
+    },
+    "safe_candidate_count": 0,
+    "candidate_count": 10,
+    "blocked_context_rows_on_validation": 2,
+    "slice_easy_hazard_count_on_validation": 4,
+    "test_tuned": false,
+    "selection_rule": "Build validation slice safety table from BT predictions; choose a repair mode on validation only; evaluate test once.",
+    "all_candidates": [
+      {
+        "mode": "bt_unrepaired",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.48239788124991767,
+          "endpoint_fde_improvement_vs_floor": 0.49990441335659275,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.0044021204276454284,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.48233512719165617,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6190833333333333,
+          "harm_over_floor_ade": -0.10917716473340988,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11714465171098709
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03564461226478444,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": -0.00011599337883838601,
+          "hard_failure": 0.027614478873096315,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9543,
+          "scene_graph_full": 712,
+          "scene_proxy_only": 1745
+        },
+        "context_rate": 0.20475,
+        "blocked_context_rows": 0,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.02450793678302198
+      },
+      {
+        "mode": "all_fallback",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.44675326898513323,
+          "endpoint_fde_improvement_vs_floor": 0.4763534515873268,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.1989988306298489,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24942579866015302,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.45472064831855985,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6423333333333333,
+          "harm_over_floor_ade": -0.10111000388860703,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.12521180510520935
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.0,
+          "t50": 0.0,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.0,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 12000
+        },
+        "context_rate": 0.0,
+        "blocked_context_rows": 2457,
+        "slice_easy_hazard_count": 6,
+        "safe": false,
+        "selection_score": -0.06
+      },
+      {
+        "mode": "block_t100",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4824099959178836,
+          "endpoint_fde_improvement_vs_floor": 0.49991814501991805,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.48235173477981297,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6190833333333333,
+          "harm_over_floor_ade": -0.10917992144823074,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11714190989732742
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03565672693275035,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.027631086461253118,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9545,
+          "scene_graph_full": 711,
+          "scene_proxy_only": 1744
+        },
+        "context_rate": 0.20458333333333334,
+        "blocked_context_rows": 2,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.024596322395230553
+      },
+      {
+        "mode": "block_unsafe_horizon",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4824099959178836,
+          "endpoint_fde_improvement_vs_floor": 0.49991814501991805,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.48235173477981297,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6190833333333333,
+          "harm_over_floor_ade": -0.10917992144823074,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11714190989732742
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03565672693275035,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.027631086461253118,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9545,
+          "scene_graph_full": 711,
+          "scene_proxy_only": 1744
+        },
+        "context_rate": 0.20458333333333334,
+        "blocked_context_rows": 2,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.024596322395230553
+      },
+      {
+        "mode": "block_unsafe_domain_horizon",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4798377687941955,
+          "endpoint_fde_improvement_vs_floor": 0.49820659126972944,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.47946172136544074,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6206666666666667,
+          "harm_over_floor_ade": -0.1085977554321289,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11772406101226807
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03308449980906225,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.02474107304688089,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9767,
+          "scene_graph_full": 672,
+          "scene_proxy_only": 1561
+        },
+        "context_rate": 0.18608333333333332,
+        "blocked_context_rows": 224,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.019319081857170232
+      },
+      {
+        "mode": "block_unsafe_source_horizon",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4798377687941955,
+          "endpoint_fde_improvement_vs_floor": 0.49820659126972944,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.47946172136544074,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6206666666666667,
+          "harm_over_floor_ade": -0.1085977554321289,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11772406101226807
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03308449980906225,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.02474107304688089,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9767,
+          "scene_graph_full": 672,
+          "scene_proxy_only": 1561
+        },
+        "context_rate": 0.18608333333333332,
+        "blocked_context_rows": 224,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.019319081857170232
+      },
+      {
+        "mode": "hierarchical_any_unsafe",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4798377687941955,
+          "endpoint_fde_improvement_vs_floor": 0.49820659126972944,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.47946172136544074,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6206666666666667,
+          "harm_over_floor_ade": -0.1085977554321289,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11772406101226807
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03308449980906225,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.02474107304688089,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9767,
+          "scene_graph_full": 672,
+          "scene_proxy_only": 1561
+        },
+        "context_rate": 0.18608333333333332,
+        "blocked_context_rows": 224,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.019319081857170232
+      },
+      {
+        "mode": "require_domain_or_source_safe",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4824099959178836,
+          "endpoint_fde_improvement_vs_floor": 0.49991814501991805,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.48235173477981297,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6190833333333333,
+          "harm_over_floor_ade": -0.10917992144823074,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11714190989732742
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03565672693275035,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.027631086461253118,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9545,
+          "scene_graph_full": 711,
+          "scene_proxy_only": 1744
+        },
+        "context_rate": 0.20458333333333334,
+        "blocked_context_rows": 2,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.024596322395230553
+      },
+      {
+        "mode": "source_or_domain_safe_and_horizon_safe",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4798377687941955,
+          "endpoint_fde_improvement_vs_floor": 0.49820659126972944,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.47946172136544074,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6206666666666667,
+          "harm_over_floor_ade": -0.1085977554321289,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11772406101226807
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03308449980906225,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.02474107304688089,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9767,
+          "scene_graph_full": 672,
+          "scene_proxy_only": 1561
+        },
+        "context_rate": 0.18608333333333332,
+        "blocked_context_rows": 224,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.019319081857170232
+      },
+      {
+        "mode": "strict_safe_no_t100",
+        "validation_metrics": {
+          "rows": 12000,
+          "full_waypoint_ade_improvement_vs_floor": 0.4798377687941955,
+          "endpoint_fde_improvement_vs_floor": 0.49820659126972944,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.20179411590864926,
+          "t50_endpoint_fde_improvement_vs_floor": 0.24888542091225663,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.004286127048807042,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.47946172136544074,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.6206666666666667,
+          "harm_over_floor_ade": -0.1085977554321289,
+          "mean_floor_ade": 0.22632181644439697,
+          "mean_selected_ade": 0.11772406101226807
+        },
+        "delta_vs_graph_history_only": {
+          "all": 0.03308449980906225,
+          "t50": 0.0027952852788003524,
+          "t100_raw_frame_diagnostic": 0.0,
+          "hard_failure": 0.02474107304688089,
+          "easy_degradation": 0.0
+        },
+        "context_variant_counts": {
+          "graph_history_only": 9767,
+          "scene_graph_full": 672,
+          "scene_proxy_only": 1561
+        },
+        "context_rate": 0.18608333333333332,
+        "blocked_context_rows": 224,
+        "slice_easy_hazard_count": 4,
+        "safe": false,
+        "selection_score": 0.019319081857170232
+      }
+    ]
+  },
+  "test_metrics": {
+    "rows": 12000,
+    "full_waypoint_ade_improvement_vs_floor": 0.3905689613360257,
+    "endpoint_fde_improvement_vs_floor": 0.4102325297016223,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.16016192359994252,
+    "t50_endpoint_fde_improvement_vs_floor": 0.21312470384419335,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.032566614751932565,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.396534473254046,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.5750833333333333,
+    "harm_over_floor_ade": -0.07641179114580154,
+    "mean_floor_ade": 0.19564223289489746,
+    "mean_selected_ade": 0.11923044919967651
+  },
+  "graph_history_metrics": {
+    "rows": 12000,
+    "full_waypoint_ade_improvement_vs_floor": 0.3691430361096928,
+    "endpoint_fde_improvement_vs_floor": 0.39650082657839814,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.1561883303246655,
+    "t50_endpoint_fde_improvement_vs_floor": 0.21002421626927836,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.032566614751932565,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.37640208164824085,
+    "easy_degradation_vs_floor": 0.0,
+    "switch_rate": 0.5850833333333333,
+    "harm_over_floor_ade": -0.07221996784210205,
+    "mean_floor_ade": 0.19564223289489746,
+    "mean_selected_ade": 0.12342226505279541
+  },
+  "delta_vs_graph_history_only": {
+    "all": 0.02142592522633291,
+    "t50": 0.003973593275277021,
+    "t100_raw_frame_diagnostic": 0.0,
+    "hard_failure": 0.020132391605805156,
+    "easy_degradation": 0.0
+  },
+  "test_context_variant_counts": {
+    "graph_history_only": 10344,
+    "scene_graph_full": 527,
+    "scene_proxy_only": 1129
+  },
+  "blocked_context_rows_on_test": 22,
+  "bootstrap": {
+    "n": 2000,
+    "seed": 467,
+    "metrics": {
+      "all_delta_vs_graph": {
+        "low": 0.019124101740622193,
+        "mean": 0.02139823993081003,
+        "high": 0.023779933557788905,
+        "rows": 12000
+      },
+      "t50_delta_vs_graph": {
+        "low": -0.00021244097215072366,
+        "mean": 0.0038727089174962525,
+        "high": 0.007705195155855515,
+        "rows": 2888
+      },
+      "t100_raw_frame_delta_vs_graph": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 2406
+      },
+      "hard_failure_delta_vs_graph": {
+        "low": 0.01792118765177035,
+        "mean": 0.0201081170396858,
+        "high": 0.0222879161114624,
+        "rows": 9371
+      },
+      "easy_degradation_delta_vs_graph": {
+        "low": 0.0,
+        "mean": 0.0,
+        "high": 0.0,
+        "rows": 3607
+      }
+    }
+  },
+  "slice_audit": {
+    "min_rows": 100,
+    "slice_count": 39,
+    "positive_slice_count": 28,
+    "negative_slice_count": 2,
+    "core_weak_slices": [
+      {
+        "slice": "horizon_100",
+        "rows": 2406,
+        "selected_improvement": -0.032566614751932565,
+        "graph_history_improvement": -0.032566614751932565,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 655,
+        "easy_degradation": 0.021491887359271766,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      }
+    ],
+    "easy_hazard_slice_count": 10,
+    "top_easy_hazard_slices": [
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt_horizon_10",
+        "rows": 178,
+        "selected_improvement": -1.3679467773783132,
+        "graph_history_improvement": -1.3959438811513625,
+        "delta_vs_graph": 0.027997103773049314,
+        "easy_rows": 45,
+        "easy_degradation": 1.223400458694603,
+        "context_rate": 0.601123595505618,
+        "scene_proxy_rows": 27,
+        "scene_graph_full_rows": 80
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+        "rows": 247,
+        "selected_improvement": -0.8641007776063345,
+        "graph_history_improvement": -0.9019174822019802,
+        "delta_vs_graph": 0.03781670459564568,
+        "easy_rows": 48,
+        "easy_degradation": 1.1169143733328646,
+        "context_rate": 0.5020242914979757,
+        "scene_proxy_rows": 39,
+        "scene_graph_full_rows": 85
+      },
+      {
+        "slice": "domain_TrajNet_horizon_10",
+        "rows": 516,
+        "selected_improvement": 0.14735285820350752,
+        "graph_history_improvement": 0.06265073981699953,
+        "delta_vs_graph": 0.08470211838650799,
+        "easy_rows": 174,
+        "easy_degradation": 0.8188436672048165,
+        "context_rate": 0.42829457364341084,
+        "scene_proxy_rows": 99,
+        "scene_graph_full_rows": 122
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_10",
+        "rows": 338,
+        "selected_improvement": 0.6404043068349362,
+        "graph_history_improvement": 0.5372514168999987,
+        "delta_vs_graph": 0.10315288993493754,
+        "easy_rows": 129,
+        "easy_degradation": 0.4576158920015443,
+        "context_rate": 0.33727810650887574,
+        "scene_proxy_rows": 72,
+        "scene_graph_full_rows": 42
+      },
+      {
+        "slice": "domain_TrajNet",
+        "rows": 1255,
+        "selected_improvement": 0.18469583206923568,
+        "graph_history_improvement": 0.14861702861775927,
+        "delta_vs_graph": 0.036078803451476404,
+        "easy_rows": 461,
+        "easy_degradation": 0.18195947861742257,
+        "context_rate": 0.1944223107569721,
+        "scene_proxy_rows": 116,
+        "scene_graph_full_rows": 128
+      },
+      {
+        "slice": "domain_TrajNet_horizon_50",
+        "rows": 249,
+        "selected_improvement": 0.17441948048646605,
+        "graph_history_improvement": 0.17441948048646605,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 117,
+        "easy_degradation": 0.02444023751527169,
+        "context_rate": 0.004016064257028112,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 1
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_50",
+        "rows": 249,
+        "selected_improvement": 0.17441948048646605,
+        "graph_history_improvement": 0.17441948048646605,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 117,
+        "easy_degradation": 0.02444023751527169,
+        "context_rate": 0.004016064257028112,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 1
+      },
+      {
+        "slice": "domain_ETH_UCY_horizon_100",
+        "rows": 2052,
+        "selected_improvement": -0.03687133804471743,
+        "graph_history_improvement": -0.03687133804471743,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 570,
+        "easy_degradation": 0.023819718054679306,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_100",
+        "rows": 2052,
+        "selected_improvement": -0.03687133804471743,
+        "graph_history_improvement": -0.03687133804471743,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 570,
+        "easy_degradation": 0.023819718054679306,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "horizon_100",
+        "rows": 2406,
+        "selected_improvement": -0.032566614751932565,
+        "graph_history_improvement": -0.032566614751932565,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 655,
+        "easy_degradation": 0.021491887359271766,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      }
+    ],
+    "top_positive_slices": [
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_10",
+        "rows": 338,
+        "selected_improvement": 0.6404043068349362,
+        "graph_history_improvement": 0.5372514168999987,
+        "delta_vs_graph": 0.10315288993493754,
+        "easy_rows": 129,
+        "easy_degradation": 0.4576158920015443,
+        "context_rate": 0.33727810650887574,
+        "scene_proxy_rows": 72,
+        "scene_graph_full_rows": 42
+      },
+      {
+        "slice": "domain_TrajNet_horizon_10",
+        "rows": 516,
+        "selected_improvement": 0.14735285820350752,
+        "graph_history_improvement": 0.06265073981699953,
+        "delta_vs_graph": 0.08470211838650799,
+        "easy_rows": 174,
+        "easy_degradation": 0.8188436672048165,
+        "context_rate": 0.42829457364341084,
+        "scene_proxy_rows": 99,
+        "scene_graph_full_rows": 122
+      },
+      {
+        "slice": "domain_UCY_horizon_10",
+        "rows": 388,
+        "selected_improvement": 0.7595839122892343,
+        "graph_history_improvement": 0.6948942733438153,
+        "delta_vs_graph": 0.06468963894541901,
+        "easy_rows": 74,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3711340206185567,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 102
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_10",
+        "rows": 388,
+        "selected_improvement": 0.7595839122892343,
+        "graph_history_improvement": 0.6948942733438153,
+        "delta_vs_graph": 0.06468963894541901,
+        "easy_rows": 74,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3711340206185567,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 102
+      },
+      {
+        "slice": "horizon_10",
+        "rows": 3544,
+        "selected_improvement": 0.6469429350549151,
+        "graph_history_improvement": 0.5953859467522482,
+        "delta_vs_graph": 0.05155698830266686,
+        "easy_rows": 945,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3400112866817156,
+        "scene_proxy_rows": 729,
+        "scene_graph_full_rows": 476
+      },
+      {
+        "slice": "domain_ETH_UCY_horizon_10",
+        "rows": 2640,
+        "selected_improvement": 0.6896913907588595,
+        "graph_history_improvement": 0.6447531638822883,
+        "delta_vs_graph": 0.04493822687657123,
+        "easy_rows": 697,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3181818181818182,
+        "scene_proxy_rows": 588,
+        "scene_graph_full_rows": 252
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_10",
+        "rows": 2640,
+        "selected_improvement": 0.6896913907588595,
+        "graph_history_improvement": 0.6447531638822883,
+        "delta_vs_graph": 0.04493822687657123,
+        "easy_rows": 697,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3181818181818182,
+        "scene_proxy_rows": 588,
+        "scene_graph_full_rows": 252
+      },
+      {
+        "slice": "domain_UCY",
+        "rows": 1271,
+        "selected_improvement": 0.5237230972928187,
+        "graph_history_improvement": 0.48270684706091127,
+        "delta_vs_graph": 0.04101625023190747,
+        "easy_rows": 258,
+        "easy_degradation": 0.0,
+        "context_rate": 0.25334382376081827,
+        "scene_proxy_rows": 205,
+        "scene_graph_full_rows": 117
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+        "rows": 1271,
+        "selected_improvement": 0.5237230972928187,
+        "graph_history_improvement": 0.48270684706091127,
+        "delta_vs_graph": 0.04101625023190747,
+        "easy_rows": 258,
+        "easy_degradation": 0.0,
+        "context_rate": 0.25334382376081827,
+        "scene_proxy_rows": 205,
+        "scene_graph_full_rows": 117
+      },
+      {
+        "slice": "domain_UCY_horizon_25",
+        "rows": 366,
+        "selected_improvement": 0.613501625385223,
+        "graph_history_improvement": 0.5740077743470156,
+        "delta_vs_graph": 0.03949385103820746,
+        "easy_rows": 84,
+        "easy_degradation": 0.0,
+        "context_rate": 0.366120218579235,
+        "scene_proxy_rows": 121,
+        "scene_graph_full_rows": 13
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_25",
+        "rows": 366,
+        "selected_improvement": 0.613501625385223,
+        "graph_history_improvement": 0.5740077743470156,
+        "delta_vs_graph": 0.03949385103820746,
+        "easy_rows": 84,
+        "easy_degradation": 0.0,
+        "context_rate": 0.366120218579235,
+        "scene_proxy_rows": 121,
+        "scene_graph_full_rows": 13
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+        "rows": 247,
+        "selected_improvement": -0.8641007776063345,
+        "graph_history_improvement": -0.9019174822019802,
+        "delta_vs_graph": 0.03781670459564568,
+        "easy_rows": 48,
+        "easy_degradation": 1.1169143733328646,
+        "context_rate": 0.5020242914979757,
+        "scene_proxy_rows": 39,
+        "scene_graph_full_rows": 85
+      },
+      {
+        "slice": "domain_TrajNet",
+        "rows": 1255,
+        "selected_improvement": 0.18469583206923568,
+        "graph_history_improvement": 0.14861702861775927,
+        "delta_vs_graph": 0.036078803451476404,
+        "easy_rows": 461,
+        "easy_degradation": 0.18195947861742257,
+        "context_rate": 0.1944223107569721,
+        "scene_proxy_rows": 116,
+        "scene_graph_full_rows": 128
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+        "rows": 1008,
+        "selected_improvement": 0.45825117132799953,
+        "graph_history_improvement": 0.42262564240962475,
+        "delta_vs_graph": 0.03562552891837478,
+        "easy_rows": 413,
+        "easy_degradation": 0.010214908552107715,
+        "context_rate": 0.11904761904761904,
+        "scene_proxy_rows": 77,
+        "scene_graph_full_rows": 43
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt_horizon_10",
+        "rows": 178,
+        "selected_improvement": -1.3679467773783132,
+        "graph_history_improvement": -1.3959438811513625,
+        "delta_vs_graph": 0.027997103773049314,
+        "easy_rows": 45,
+        "easy_degradation": 1.223400458694603,
+        "context_rate": 0.601123595505618,
+        "scene_proxy_rows": 27,
+        "scene_graph_full_rows": 80
+      },
+      {
+        "slice": "domain_UCY_horizon_50",
+        "rows": 306,
+        "selected_improvement": 0.2710469116036801,
+        "graph_history_improvement": 0.24499032626761885,
+        "delta_vs_graph": 0.026056585336061255,
+        "easy_rows": 70,
+        "easy_degradation": 0.0,
+        "context_rate": 0.1437908496732026,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 2
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_50",
+        "rows": 306,
+        "selected_improvement": 0.2710469116036801,
+        "graph_history_improvement": 0.24499032626761885,
+        "delta_vs_graph": 0.026056585336061255,
+        "easy_rows": 70,
+        "easy_degradation": 0.0,
+        "context_rate": 0.1437908496732026,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 2
+      },
+      {
+        "slice": "easy",
+        "rows": 3607,
+        "selected_improvement": 0.1154664936225499,
+        "graph_history_improvement": 0.08961798536141719,
+        "delta_vs_graph": 0.02584850826113272,
+        "easy_rows": 3607,
+        "easy_degradation": 0.0,
+        "context_rate": 0.06210146936512337,
+        "scene_proxy_rows": 178,
+        "scene_graph_full_rows": 46
+      },
+      {
+        "slice": "all",
+        "rows": 12000,
+        "selected_improvement": 0.3905689613360257,
+        "graph_history_improvement": 0.3691430361096928,
+        "delta_vs_graph": 0.02142592522633291,
+        "easy_rows": 3607,
+        "easy_degradation": 0.0,
+        "context_rate": 0.138,
+        "scene_proxy_rows": 1129,
+        "scene_graph_full_rows": 527
+      },
+      {
+        "slice": "hard_failure",
+        "rows": 9371,
+        "selected_improvement": 0.396534473254046,
+        "graph_history_improvement": 0.37640208164824085,
+        "delta_vs_graph": 0.020132391605805156,
+        "easy_rows": 1971,
+        "easy_degradation": 0.0,
+        "context_rate": 0.1327499733219507,
+        "scene_proxy_rows": 853,
+        "scene_graph_full_rows": 391
+      }
+    ],
+    "top_negative_slices": [
+      {
+        "slice": "domain_ETH_UCY_horizon_50",
+        "rows": 2333,
+        "selected_improvement": 0.1358786279977835,
+        "graph_history_improvement": 0.13607821911499152,
+        "delta_vs_graph": -0.00019959111720802003,
+        "easy_rows": 803,
+        "easy_degradation": 0.0,
+        "context_rate": 0.03386198028289756,
+        "scene_proxy_rows": 63,
+        "scene_graph_full_rows": 16
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_50",
+        "rows": 2333,
+        "selected_improvement": 0.1358786279977835,
+        "graph_history_improvement": 0.13607821911499152,
+        "delta_vs_graph": -0.00019959111720802003,
+        "easy_rows": 803,
+        "easy_degradation": 0.0,
+        "context_rate": 0.03386198028289756,
+        "scene_proxy_rows": 63,
+        "scene_graph_full_rows": 16
+      }
+    ],
+    "slice_rows": [
+      {
+        "slice": "all",
+        "rows": 12000,
+        "selected_improvement": 0.3905689613360257,
+        "graph_history_improvement": 0.3691430361096928,
+        "delta_vs_graph": 0.02142592522633291,
+        "easy_rows": 3607,
+        "easy_degradation": 0.0,
+        "context_rate": 0.138,
+        "scene_proxy_rows": 1129,
+        "scene_graph_full_rows": 527
+      },
+      {
+        "slice": "hard_failure",
+        "rows": 9371,
+        "selected_improvement": 0.396534473254046,
+        "graph_history_improvement": 0.37640208164824085,
+        "delta_vs_graph": 0.020132391605805156,
+        "easy_rows": 1971,
+        "easy_degradation": 0.0,
+        "context_rate": 0.1327499733219507,
+        "scene_proxy_rows": 853,
+        "scene_graph_full_rows": 391
+      },
+      {
+        "slice": "easy",
+        "rows": 3607,
+        "selected_improvement": 0.1154664936225499,
+        "graph_history_improvement": 0.08961798536141719,
+        "delta_vs_graph": 0.02584850826113272,
+        "easy_rows": 3607,
+        "easy_degradation": 0.0,
+        "context_rate": 0.06210146936512337,
+        "scene_proxy_rows": 178,
+        "scene_graph_full_rows": 46
+      },
+      {
+        "slice": "horizon_10",
+        "rows": 3544,
+        "selected_improvement": 0.6469429350549151,
+        "graph_history_improvement": 0.5953859467522482,
+        "delta_vs_graph": 0.05155698830266686,
+        "easy_rows": 945,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3400112866817156,
+        "scene_proxy_rows": 729,
+        "scene_graph_full_rows": 476
+      },
+      {
+        "slice": "horizon_25",
+        "rows": 3162,
+        "selected_improvement": 0.49783562101466605,
+        "graph_history_improvement": 0.48529210140419043,
+        "delta_vs_graph": 0.012543519610475617,
+        "easy_rows": 1017,
+        "easy_degradation": 0.0,
+        "context_rate": 0.10341555977229601,
+        "scene_proxy_rows": 295,
+        "scene_graph_full_rows": 32
+      },
+      {
+        "slice": "horizon_50",
+        "rows": 2888,
+        "selected_improvement": 0.16016192359994252,
+        "graph_history_improvement": 0.1561883303246655,
+        "delta_vs_graph": 0.003973593275277021,
+        "easy_rows": 990,
+        "easy_degradation": 0.0,
+        "context_rate": 0.04293628808864266,
+        "scene_proxy_rows": 105,
+        "scene_graph_full_rows": 19
+      },
+      {
+        "slice": "horizon_100",
+        "rows": 2406,
+        "selected_improvement": -0.032566614751932565,
+        "graph_history_improvement": -0.032566614751932565,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 655,
+        "easy_degradation": 0.021491887359271766,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "domain_ETH_UCY",
+        "rows": 9474,
+        "selected_improvement": 0.3904913976544071,
+        "graph_history_improvement": 0.3743473809223594,
+        "delta_vs_graph": 0.016144016732047684,
+        "easy_rows": 2888,
+        "easy_degradation": 0.0,
+        "context_rate": 0.11505172049820561,
+        "scene_proxy_rows": 808,
+        "scene_graph_full_rows": 282
+      },
+      {
+        "slice": "domain_ETH_UCY_horizon_10",
+        "rows": 2640,
+        "selected_improvement": 0.6896913907588595,
+        "graph_history_improvement": 0.6447531638822883,
+        "delta_vs_graph": 0.04493822687657123,
+        "easy_rows": 697,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3181818181818182,
+        "scene_proxy_rows": 588,
+        "scene_graph_full_rows": 252
+      },
+      {
+        "slice": "domain_ETH_UCY_horizon_25",
+        "rows": 2449,
+        "selected_improvement": 0.5159089360963456,
+        "graph_history_improvement": 0.5098559880842686,
+        "delta_vs_graph": 0.0060529480120770085,
+        "easy_rows": 818,
+        "easy_degradation": 0.0,
+        "context_rate": 0.06982441812984892,
+        "scene_proxy_rows": 157,
+        "scene_graph_full_rows": 14
+      },
+      {
+        "slice": "domain_ETH_UCY_horizon_50",
+        "rows": 2333,
+        "selected_improvement": 0.1358786279977835,
+        "graph_history_improvement": 0.13607821911499152,
+        "delta_vs_graph": -0.00019959111720802003,
+        "easy_rows": 803,
+        "easy_degradation": 0.0,
+        "context_rate": 0.03386198028289756,
+        "scene_proxy_rows": 63,
+        "scene_graph_full_rows": 16
+      },
+      {
+        "slice": "domain_ETH_UCY_horizon_100",
+        "rows": 2052,
+        "selected_improvement": -0.03687133804471743,
+        "graph_history_improvement": -0.03687133804471743,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 570,
+        "easy_degradation": 0.023819718054679306,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "domain_TrajNet",
+        "rows": 1255,
+        "selected_improvement": 0.18469583206923568,
+        "graph_history_improvement": 0.14861702861775927,
+        "delta_vs_graph": 0.036078803451476404,
+        "easy_rows": 461,
+        "easy_degradation": 0.18195947861742257,
+        "context_rate": 0.1944223107569721,
+        "scene_proxy_rows": 116,
+        "scene_graph_full_rows": 128
+      },
+      {
+        "slice": "domain_TrajNet_horizon_10",
+        "rows": 516,
+        "selected_improvement": 0.14735285820350752,
+        "graph_history_improvement": 0.06265073981699953,
+        "delta_vs_graph": 0.08470211838650799,
+        "easy_rows": 174,
+        "easy_degradation": 0.8188436672048165,
+        "context_rate": 0.42829457364341084,
+        "scene_proxy_rows": 99,
+        "scene_graph_full_rows": 122
+      },
+      {
+        "slice": "domain_TrajNet_horizon_25",
+        "rows": 347,
+        "selected_improvement": 0.2459106103480856,
+        "graph_history_improvement": 0.23011180238112094,
+        "delta_vs_graph": 0.015798807966964645,
+        "easy_rows": 115,
+        "easy_degradation": 0.0,
+        "context_rate": 0.06340057636887608,
+        "scene_proxy_rows": 17,
+        "scene_graph_full_rows": 5
+      },
+      {
+        "slice": "domain_TrajNet_horizon_50",
+        "rows": 249,
+        "selected_improvement": 0.17441948048646605,
+        "graph_history_improvement": 0.17441948048646605,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 117,
+        "easy_degradation": 0.02444023751527169,
+        "context_rate": 0.004016064257028112,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 1
+      },
+      {
+        "slice": "domain_TrajNet_horizon_100",
+        "rows": 143,
+        "selected_improvement": -0.004758593289890367,
+        "graph_history_improvement": -0.004758593289890367,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 55,
+        "easy_degradation": 0.0,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "domain_UCY",
+        "rows": 1271,
+        "selected_improvement": 0.5237230972928187,
+        "graph_history_improvement": 0.48270684706091127,
+        "delta_vs_graph": 0.04101625023190747,
+        "easy_rows": 258,
+        "easy_degradation": 0.0,
+        "context_rate": 0.25334382376081827,
+        "scene_proxy_rows": 205,
+        "scene_graph_full_rows": 117
+      },
+      {
+        "slice": "domain_UCY_horizon_10",
+        "rows": 388,
+        "selected_improvement": 0.7595839122892343,
+        "graph_history_improvement": 0.6948942733438153,
+        "delta_vs_graph": 0.06468963894541901,
+        "easy_rows": 74,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3711340206185567,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 102
+      },
+      {
+        "slice": "domain_UCY_horizon_25",
+        "rows": 366,
+        "selected_improvement": 0.613501625385223,
+        "graph_history_improvement": 0.5740077743470156,
+        "delta_vs_graph": 0.03949385103820746,
+        "easy_rows": 84,
+        "easy_degradation": 0.0,
+        "context_rate": 0.366120218579235,
+        "scene_proxy_rows": 121,
+        "scene_graph_full_rows": 13
+      },
+      {
+        "slice": "domain_UCY_horizon_50",
+        "rows": 306,
+        "selected_improvement": 0.2710469116036801,
+        "graph_history_improvement": 0.24499032626761885,
+        "delta_vs_graph": 0.026056585336061255,
+        "easy_rows": 70,
+        "easy_degradation": 0.0,
+        "context_rate": 0.1437908496732026,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 2
+      },
+      {
+        "slice": "domain_UCY_horizon_100",
+        "rows": 211,
+        "selected_improvement": 0.005657951572453079,
+        "graph_history_improvement": 0.005657951572453079,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 30,
+        "easy_degradation": 0.0,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+        "rows": 1008,
+        "selected_improvement": 0.45825117132799953,
+        "graph_history_improvement": 0.42262564240962475,
+        "delta_vs_graph": 0.03562552891837478,
+        "easy_rows": 413,
+        "easy_degradation": 0.010214908552107715,
+        "context_rate": 0.11904761904761904,
+        "scene_proxy_rows": 77,
+        "scene_graph_full_rows": 43
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_10",
+        "rows": 338,
+        "selected_improvement": 0.6404043068349362,
+        "graph_history_improvement": 0.5372514168999987,
+        "delta_vs_graph": 0.10315288993493754,
+        "easy_rows": 129,
+        "easy_degradation": 0.4576158920015443,
+        "context_rate": 0.33727810650887574,
+        "scene_proxy_rows": 72,
+        "scene_graph_full_rows": 42
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_25",
+        "rows": 278,
+        "selected_improvement": 0.5607311656031454,
+        "graph_history_improvement": 0.5570403361914771,
+        "delta_vs_graph": 0.003690829411668317,
+        "easy_rows": 112,
+        "easy_degradation": 0.0,
+        "context_rate": 0.017985611510791366,
+        "scene_proxy_rows": 5,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_50",
+        "rows": 249,
+        "selected_improvement": 0.17441948048646605,
+        "graph_history_improvement": 0.17441948048646605,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 117,
+        "easy_degradation": 0.02444023751527169,
+        "context_rate": 0.004016064257028112,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 1
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt_horizon_100",
+        "rows": 143,
+        "selected_improvement": -0.004758593289890367,
+        "graph_history_improvement": -0.004758593289890367,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 55,
+        "easy_degradation": 0.0,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+        "rows": 1271,
+        "selected_improvement": 0.5237230972928187,
+        "graph_history_improvement": 0.48270684706091127,
+        "delta_vs_graph": 0.04101625023190747,
+        "easy_rows": 258,
+        "easy_degradation": 0.0,
+        "context_rate": 0.25334382376081827,
+        "scene_proxy_rows": 205,
+        "scene_graph_full_rows": 117
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_10",
+        "rows": 388,
+        "selected_improvement": 0.7595839122892343,
+        "graph_history_improvement": 0.6948942733438153,
+        "delta_vs_graph": 0.06468963894541901,
+        "easy_rows": 74,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3711340206185567,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 102
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_25",
+        "rows": 366,
+        "selected_improvement": 0.613501625385223,
+        "graph_history_improvement": 0.5740077743470156,
+        "delta_vs_graph": 0.03949385103820746,
+        "easy_rows": 84,
+        "easy_degradation": 0.0,
+        "context_rate": 0.366120218579235,
+        "scene_proxy_rows": 121,
+        "scene_graph_full_rows": 13
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_50",
+        "rows": 306,
+        "selected_improvement": 0.2710469116036801,
+        "graph_history_improvement": 0.24499032626761885,
+        "delta_vs_graph": 0.026056585336061255,
+        "easy_rows": 70,
+        "easy_degradation": 0.0,
+        "context_rate": 0.1437908496732026,
+        "scene_proxy_rows": 42,
+        "scene_graph_full_rows": 2
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt_horizon_100",
+        "rows": 211,
+        "selected_improvement": 0.005657951572453079,
+        "graph_history_improvement": 0.005657951572453079,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 30,
+        "easy_degradation": 0.0,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt",
+        "rows": 247,
+        "selected_improvement": -0.8641007776063345,
+        "graph_history_improvement": -0.9019174822019802,
+        "delta_vs_graph": 0.03781670459564568,
+        "easy_rows": 48,
+        "easy_degradation": 1.1169143733328646,
+        "context_rate": 0.5020242914979757,
+        "scene_proxy_rows": 39,
+        "scene_graph_full_rows": 85
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt_horizon_10",
+        "rows": 178,
+        "selected_improvement": -1.3679467773783132,
+        "graph_history_improvement": -1.3959438811513625,
+        "delta_vs_graph": 0.027997103773049314,
+        "easy_rows": 45,
+        "easy_degradation": 1.223400458694603,
+        "context_rate": 0.601123595505618,
+        "scene_proxy_rows": 27,
+        "scene_graph_full_rows": 80
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+        "rows": 9474,
+        "selected_improvement": 0.3904913976544071,
+        "graph_history_improvement": 0.3743473809223594,
+        "delta_vs_graph": 0.016144016732047684,
+        "easy_rows": 2888,
+        "easy_degradation": 0.0,
+        "context_rate": 0.11505172049820561,
+        "scene_proxy_rows": 808,
+        "scene_graph_full_rows": 282
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_10",
+        "rows": 2640,
+        "selected_improvement": 0.6896913907588595,
+        "graph_history_improvement": 0.6447531638822883,
+        "delta_vs_graph": 0.04493822687657123,
+        "easy_rows": 697,
+        "easy_degradation": 0.0,
+        "context_rate": 0.3181818181818182,
+        "scene_proxy_rows": 588,
+        "scene_graph_full_rows": 252
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_25",
+        "rows": 2449,
+        "selected_improvement": 0.5159089360963456,
+        "graph_history_improvement": 0.5098559880842686,
+        "delta_vs_graph": 0.0060529480120770085,
+        "easy_rows": 818,
+        "easy_degradation": 0.0,
+        "context_rate": 0.06982441812984892,
+        "scene_proxy_rows": 157,
+        "scene_graph_full_rows": 14
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_50",
+        "rows": 2333,
+        "selected_improvement": 0.1358786279977835,
+        "graph_history_improvement": 0.13607821911499152,
+        "delta_vs_graph": -0.00019959111720802003,
+        "easy_rows": 803,
+        "easy_degradation": 0.0,
+        "context_rate": 0.03386198028289756,
+        "scene_proxy_rows": 63,
+        "scene_graph_full_rows": 16
+      },
+      {
+        "slice": "source_/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt_horizon_100",
+        "rows": 2052,
+        "selected_improvement": -0.03687133804471743,
+        "graph_history_improvement": -0.03687133804471743,
+        "delta_vs_graph": 0.0,
+        "easy_rows": 570,
+        "easy_degradation": 0.023819718054679306,
+        "context_rate": 0.0,
+        "scene_proxy_rows": 0,
+        "scene_graph_full_rows": 0
+      }
+    ]
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "raw_scene_or_verified_sdf_claim": false,
+    "deployment_policy_changed": false,
+    "stage5c_executed": false,
+    "smc_enabled": false,
+    "long_objective_complete": false
+  },
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_variant_error_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "scene_proxy_train_only": true,
+    "graph_inputs_past_or_current_only": true,
+    "test_threshold_selection": false
+  },
+  "input_hash": "f50322d37147288c97c30e970c5bdf91282e406723c543108e93918adf9e2fd1",
+  "stage43_bv_gate": {
+    "source": "fresh_stage43_bv_context_admissibility_slice_safe_repair",
+    "gates": {
+      "bt_precondition_passed": true,
+      "bu_precondition_passed": true,
+      "validation_slice_table_built": true,
+      "validation_only_repair_selected": true,
+      "test_eval_completed": true,
+      "bootstrap_completed": true,
+      "slice_audit_completed": true,
+      "t50_t100_reported": true,
+      "easy_safety_measured": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 12,
+    "total": 12,
+    "verdict": "stage43_bv_context_admissibility_slice_repair_diagnostic_remaining_risk",
+    "easy_safe": true,
+    "slice_easy_safe": false,
+    "core_lift_vs_graph_history": true,
+    "t100_bootstrap_robust": false,
+    "t100_ci_crosses_zero": true,
+    "deployable_policy_changed": false,
+    "protected_multimodal_latent_state_candidate": false,
+    "long_objective_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
