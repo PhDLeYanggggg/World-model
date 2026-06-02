@@ -5240,3 +5240,24 @@ I repaired the Stage43-CG t100 blocker with a validation-selected t100 safe-swit
 
 Boundary: this is still dataset-local/raw-frame 2.5D evidence. No metric/seconds-level claim, no Stage5C execution, and no SMC.
 <!-- STAGE43_CI_COVERAGE_AWARE_T100_SAFE_SWITCH:END -->
+
+<!-- STAGE43_CJ_COVERAGE_AWARE_T100_LONG_HORIZON_SPECIALIST:START -->
+## STAGE43_CJ_COVERAGE_AWARE_T100_LONG_HORIZON_SPECIALIST
+
+source = `fresh_stage43_cj_coverage_aware_t100_long_horizon_specialist`
+result_source = `fresh_stage43_cj_coverage_aware_t100_long_horizon_specialist`
+verdict = `stage43_cj_t100_long_horizon_specialist_pass_keep_ci_floor`
+gate = `15 / 15`
+deploy_t100_specialist = `False`
+
+I trained a t100-only long-horizon neural specialist on the coverage-aware split. It uses causal features and Stage43-CG latent outputs, with future waypoints only as labels. Deployment remains protected by the Stage43-CI floor if the specialist is not t100-positive and easy-safe.
+
+- all full-waypoint ADE improvement: `52.03%`
+- t50 full-waypoint ADE improvement: `31.13%`
+- t100 raw-frame diagnostic: `0.00%`
+- hard/failure improvement: `50.48%`
+- easy degradation: `0.00%`
+- t100 delta vs Stage43-CI floor: `0.00%`
+
+Boundary: dataset-local/raw-frame 2.5D only; no metric/seconds-level claim; Stage5C not executed; SMC not enabled.
+<!-- STAGE43_CJ_COVERAGE_AWARE_T100_LONG_HORIZON_SPECIALIST:END -->

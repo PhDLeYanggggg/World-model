@@ -1,10 +1,7 @@
-# Stage43 Current World-Model Gate
+# Stage43-CJ Gate
 
-- source: `fresh_stage43_cj_coverage_aware_t100_long_horizon_specialist`
 - verdict: `stage43_cj_t100_long_horizon_specialist_pass_keep_ci_floor`
 - passed: `15 / 15`
 - deploy t100 specialist: `False`
-- t100 positive success: `False`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
