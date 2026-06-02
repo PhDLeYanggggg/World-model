@@ -15,6 +15,17 @@ Stage5C not executed
 SMC not enabled
 ```
 
+## GitHub README 公开写法（2026-06-02）
+
+根目录 [`README.md`](README.md) 已再次按项目作者口吻重写。首页现在只负责向读者介绍 M3W：我为什么做这个项目、当前最可靠的 deployable 结果是什么、仓库里该从哪里读起、以及哪些 claim 仍然不能写。
+
+后续规则固定如下：
+
+- GitHub 首页要像我在向别人介绍自己的研究项目，不写成内部任务日志。
+- 阶段号、gate 计数、provenance、长表格和失败流水账继续放在 `README_RESULTS.md`、`research_state.json` 和 `outputs/`。
+- 首页可以讲关键结果，但必须用自然项目介绍口吻，并保留 claim boundary。
+- 不能把 M3W 写成 true 3D、foundation、metric/seconds-level，不能暗示 Stage5C 或 SMC 已启用。
+
 ## GitHub 首页写法（2026-06-01）
 
 公开首页按项目作者视角写：为什么做 M3W、目前做到什么程度、哪些路线有效、哪些路线失败、哪些边界不能越过。阶段号、长表格、provenance、gate 细节和 replay 证据继续留在这份总账、`research_state.json` 和 `outputs/` 里。
