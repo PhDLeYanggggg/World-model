@@ -43679,5 +43679,166 @@
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false
+  },
+  "stage43_by_latent_transition_consistency_audit": {
+    "source": "fresh_stage43_by_latent_transition_consistency_audit",
+    "result_source": "fresh_checkpoint_replay_latent_transition_consistency",
+    "updated_at": "2026-06-02T07:10:44.680195+00:00",
+    "verdict": "stage43_by_latent_transition_consistency_pass_with_readout_caveat",
+    "gate": "13 / 13",
+    "overall": {
+      "rows": 89736,
+      "mse_next_to_target": 0.5058153485184192,
+      "mse_identity_to_target": 1.9838874683029533,
+      "mse_train_centroid_to_target": 0.4883906177083988,
+      "transition_gain_vs_identity": 0.7450382863947917,
+      "transition_gain_vs_train_centroid": -0.03567785739165075,
+      "mean_cosine_next_target": 0.7456321099768475,
+      "mean_cosine_identity_target": 0.014845367738885128,
+      "target_latent_mean_variance": 0.469051453960737,
+      "z_next_mean_variance": 0.4220286061924546,
+      "r2_vs_target_variance": -0.07837923589670748
+    },
+    "calibrated_readout_overall": {
+      "rows": 89736,
+      "mse_next_to_target": 0.3371329387423881,
+      "mse_identity_to_target": 0.33127022276197493,
+      "mse_train_centroid_to_target": 0.4883906177083988,
+      "transition_gain_vs_identity": -0.01769768478293221,
+      "transition_gain_vs_train_centroid": 0.3097063569233459,
+      "mean_cosine_next_target": 0.8132643218181441,
+      "mean_cosine_identity_target": 0.8163067867988233,
+      "target_latent_mean_variance": 0.469051453960737,
+      "z_next_mean_variance": 0.2583835472667776,
+      "r2_vs_target_variance": 0.28124529644756513
+    },
+    "bootstrap": {
+      "n": 1000,
+      "sample_rows": 8000,
+      "transition_gain_vs_identity": {
+        "low": 0.7417308965638111,
+        "mean": 0.744984734665348,
+        "high": 0.7483230458722433
+      },
+      "transition_gain_vs_train_centroid": {
+        "low": -0.04641716965362037,
+        "mean": -0.03590605088018245,
+        "high": -0.02608413027065396
+      },
+      "mean_cosine_next_target": {
+        "low": 0.7422518654917886,
+        "mean": 0.7455669108494751,
+        "high": 0.7489635826119266
+      }
+    },
+    "calibrated_readout_bootstrap": {
+      "n": 1000,
+      "sample_rows": 8000,
+      "transition_gain_vs_identity": {
+        "low": -0.024105820247403424,
+        "mean": -0.01770593273901382,
+        "high": -0.011363275354025232
+      },
+      "transition_gain_vs_train_centroid": {
+        "low": 0.29937030270762266,
+        "mean": 0.30946854330455903,
+        "high": 0.3200057369583602
+      },
+      "mean_cosine_next_target": {
+        "low": 0.8095742749317494,
+        "mean": 0.813205550929396,
+        "high": 0.8172100073980111
+      }
+    },
+    "weak_transition_slices": [
+      {
+        "axis": "domain",
+        "slice": "ETH_UCY",
+        "rows": 70585,
+        "transition_gain_vs_identity": 0.7374443527310827,
+        "transition_gain_vs_train_centroid": -0.07420474908238184,
+        "mean_cosine_next_target": 0.7444257711076099
+      },
+      {
+        "axis": "domain",
+        "slice": "TrajNet",
+        "rows": 9611,
+        "transition_gain_vs_identity": 0.7385930707353059,
+        "transition_gain_vs_train_centroid": -0.08939628884970685,
+        "mean_cosine_next_target": 0.7056346228455553
+      },
+      {
+        "axis": "horizon",
+        "slice": "10",
+        "rows": 26132,
+        "transition_gain_vs_identity": 0.5913609982279731,
+        "transition_gain_vs_train_centroid": -0.1839152058231297,
+        "mean_cosine_next_target": 0.6229725420177956
+      },
+      {
+        "axis": "horizon",
+        "slice": "50",
+        "rows": 21754,
+        "transition_gain_vs_identity": 0.803959253950853,
+        "transition_gain_vs_train_centroid": -0.013883577850547502,
+        "mean_cosine_next_target": 0.7944501849278622
+      }
+    ],
+    "calibrated_readout_weak_transition_slices": [
+      {
+        "axis": "domain",
+        "slice": "ETH_UCY",
+        "rows": 70585,
+        "transition_gain_vs_identity": -0.022997885890285952,
+        "transition_gain_vs_train_centroid": 0.2580207734342601,
+        "mean_cosine_next_target": 0.8055298209162787
+      },
+      {
+        "axis": "domain",
+        "slice": "TrajNet",
+        "rows": 9611,
+        "transition_gain_vs_identity": -0.008809920241506841,
+        "transition_gain_vs_train_centroid": 0.27289812429723714,
+        "mean_cosine_next_target": 0.77556016496893
+      },
+      {
+        "axis": "horizon",
+        "slice": "10",
+        "rows": 26132,
+        "transition_gain_vs_identity": -0.025513245495262682,
+        "transition_gain_vs_train_centroid": 0.14470658656122393,
+        "mean_cosine_next_target": 0.6827793144901693
+      },
+      {
+        "axis": "horizon",
+        "slice": "25",
+        "rows": 23780,
+        "transition_gain_vs_identity": -0.016953409501606398,
+        "transition_gain_vs_train_centroid": 0.47873173889754106,
+        "mean_cosine_next_target": 0.9007866169483096
+      },
+      {
+        "axis": "horizon",
+        "slice": "50",
+        "rows": 21754,
+        "transition_gain_vs_identity": -0.0319670292362606,
+        "transition_gain_vs_train_centroid": 0.2592575481274838,
+        "mean_cosine_next_target": 0.8398561432412627
+      }
+    ],
+    "latent_stats": {
+      "rows": 89736,
+      "dim": 32,
+      "z_t_min_variance": 0.2301606386899948,
+      "z_next_min_variance": 0.07967337965965271,
+      "target_min_variance": 0.1829226166009903,
+      "z_next_mean_variance": 0.4220241904258728,
+      "target_mean_variance": 0.46904414892196655,
+      "noncollapse_threshold": 0.01
+    },
+    "report": "outputs/stage43_latent_state/stage43_latent_transition_consistency_audit.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }

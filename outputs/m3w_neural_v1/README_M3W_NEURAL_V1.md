@@ -5028,3 +5028,23 @@ Weak horizon slices: `5`; minimum horizon AUROC `0.6147`.
 
 Boundary unchanged: protected dataset-local/raw-frame 2.5D only; no ungated deployment, no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BX_LATENT_RISK_HEAD_ROBUSTNESS_AUDIT:END -->
+
+<!-- STAGE43_BY_LATENT_TRANSITION_CONSISTENCY_AUDIT:START -->
+## STAGE43_BY_LATENT_TRANSITION_CONSISTENCY_AUDIT
+
+source = `fresh_stage43_by_latent_transition_consistency_audit`
+result_source = `fresh_checkpoint_replay_latent_transition_consistency`
+verdict = `stage43_by_latent_transition_consistency_pass_with_readout_caveat`
+gate = `13 / 13`
+deployable_policy_changed = `False`
+
+Stage43-BY fresh-replays the Stage43-M latent checkpoint and audits the latent transition `z_t -> z_next` against future target latent labels.
+Raw global transition gain vs identity: `0.7450`.
+Raw global transition gain vs train target-centroid: `-0.0357`.
+Train-only calibrated readout gain vs identity: `-0.0177`.
+Train-only calibrated readout gain vs train target-centroid: `0.3097`.
+Bootstrap gain-vs-identity CI low: `0.7417`.
+Weak transition slices: `4` raw, `5` calibrated.
+
+Interpretation: raw dynamics clearly moves away from identity toward the future latent, and a train-only calibrated readout beats the centroid baseline; however calibrated identity remains slightly stronger, so this is partial latent-dynamics evidence, not proof of an independent ungated dynamics advantage. Future target latents are label/eval only, not inference input. Boundary unchanged: protected dataset-local/raw-frame 2.5D only; no ungated deployment, no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BY_LATENT_TRANSITION_CONSISTENCY_AUDIT:END -->

@@ -1,23 +1,16 @@
-# Stage43 Current World-Model Gate
+# Stage43-BY Latent Transition Consistency Gate
 
-- source: `fresh_stage43_by_latent_transition_consistency_audit`
 - verdict: `stage43_by_latent_transition_consistency_pass_with_readout_caveat`
 - passed: `13 / 13`
-- protected multimodal latent state candidate: `True`
 - global transition gain vs identity: `0.7450`
+- global transition gain vs train centroid: `-0.0357`
+- calibrated readout gain vs identity: `-0.0177`
 - calibrated readout gain vs train centroid: `0.3097`
 - weak transition slices: `4`
+- calibrated weak transition slices: `5`
 - deployable policy changed: `False`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BY is a latent transition consistency audit, not an ungated deployment policy.
-- Raw dynamics beats raw identity, and train-only calibrated dynamics beats the train target-centroid baseline; calibrated identity remains a caveat.
-- Safety floors remain required for deployment.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
