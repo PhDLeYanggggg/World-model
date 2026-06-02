@@ -3085,3 +3085,21 @@ Test all / t50 / hard / easy: `0.0321` / `-0.0083` / `0.0655` / `0.0527`.
 
 Interpretation: this is a safety protocol repair for latent downstream heads. Deployment remains unchanged unless test easy safety and lift both hold.
 <!-- STAGE43_CC_SHADOW_EASY_GUARD_REPAIR:END -->
+
+<!-- STAGE43_CD_SOURCE_FAMILY_COVERAGE_GUARD:START -->
+## STAGE43_CD_SOURCE_FAMILY_COVERAGE_GUARD
+
+source = `fresh_stage43_cd_source_family_coverage_guard`
+result_source = `fresh_validation_source_family_coverage_guard`
+verdict = `stage43_cd_source_family_coverage_guard_pass`
+gate = `14 / 14`
+deployable_policy_changed = `False`
+
+Stage43-CD promotes the validation source-family support gap from Stage43-CC into an explicit coverage guard: source families absent from validation fall back to the floor.
+Selected policy: `domain_source_family_coverage_guard`.
+Unsupported test families: `{'pets': 1926, 'zara': 9540}`.
+Test all / t50 / hard / easy: `0.0111` / `-0.0000` / `0.0135` / `0.0000`.
+Shadow all / hard / easy: `0.1321` / `0.1690` / `0.0010`.
+
+Interpretation: the guard restores easy safety and keeps small all-row lift, but hard/failure lift drops and t50 remains negative. It is evidence for source-coverage safety, not a deployment replacement.
+<!-- STAGE43_CD_SOURCE_FAMILY_COVERAGE_GUARD:END -->
