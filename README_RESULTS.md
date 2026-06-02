@@ -8288,3 +8288,25 @@ I replayed the Stage43-CG medium checkpoint on the CE test subset and isolated t
 
 Boundary: no metric/seconds-level claim; no Stage5C; no SMC; future waypoints remain labels/eval only.
 <!-- STAGE43_CH_COVERAGE_AWARE_T100_FAILURE_AUDIT:END -->
+
+<!-- STAGE43_CI_COVERAGE_AWARE_T100_SAFE_SWITCH:START -->
+## STAGE43_CI_COVERAGE_AWARE_T100_SAFE_SWITCH
+
+source = `fresh_stage43_ci_coverage_aware_t100_safe_switch`
+result_source = `fresh_stage43_ci_coverage_aware_t100_safe_switch`
+verdict = `stage43_ci_t100_safe_switch_pass_floor_repair`
+gate = `15 / 15`
+deploy_t100_latent_switch = `False`
+deploy_t100_safe_floor_repair = `True`
+
+I repaired the Stage43-CG t100 blocker with a validation-selected t100 safe-switch rule. The key point is conservative: if t100 latent switching is not demonstrably safe, t100 rows fall back to the CE floor instead of carrying the negative switch found in Stage43-CH.
+
+- all full-waypoint ADE improvement: `52.03%`
+- t50 full-waypoint ADE improvement: `31.13%`
+- t100 raw-frame diagnostic: `0.00%`
+- hard/failure improvement: `50.48%`
+- easy degradation: `0.00%`
+- t100 delta vs Stage43-CG unsafe base: `5.51%`
+
+Boundary: this is still dataset-local/raw-frame 2.5D evidence. No metric/seconds-level claim, no Stage5C execution, and no SMC.
+<!-- STAGE43_CI_COVERAGE_AWARE_T100_SAFE_SWITCH:END -->

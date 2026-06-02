@@ -1,11 +1,8 @@
-# Stage43 Current World-Model Gate
+# Stage43-CI Gate
 
-- source: `fresh_stage43_ci_coverage_aware_t100_safe_switch`
 - verdict: `stage43_ci_t100_safe_switch_pass_floor_repair`
 - passed: `15 / 15`
-- t100 positive success: `False`
 - deploy t100 latent switch: `False`
 - deploy t100 safe floor repair: `True`
-- long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
