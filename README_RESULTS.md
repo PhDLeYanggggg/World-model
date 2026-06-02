@@ -8157,3 +8157,20 @@ Protected easy degradation: `0.0427`.
 
 Interpretation: downstream readouts test whether the repaired latent transition supports future waypoint/risk/density heads. This does not change deployment, remove the safety floor, or enable Stage5C/SMC.
 <!-- STAGE43_CA_LATENT_ADAPTER_DOWNSTREAM_HEADS:END -->
+
+<!-- STAGE43_CB_DOWNSTREAM_EASY_GUARD_AUDIT:START -->
+## STAGE43_CB_DOWNSTREAM_EASY_GUARD_AUDIT
+
+source = `fresh_stage43_cb_downstream_easy_guard_audit`
+result_source = `fresh_validation_only_easy_guard_replay`
+verdict = `stage43_cb_downstream_easy_guard_val_safe_test_easy_mismatch`
+gate = `12 / 13`
+deployable_policy_changed = `False`
+
+Stage43-CB reruns the Stage43-CA selected latent downstream heads with a validation-only easy guard using predicted risk and model-vs-floor disagreement.
+Validation all / hard / easy: `0.1313` / `0.1688` / `0.0002`.
+Test all / t50 / hard / easy: `0.0321` / `-0.0083` / `0.0656` / `0.0528`.
+Validation-test easy degradation gap: `0.0526`.
+
+Interpretation: downstream latent heads still show all/hard signal, but easy-safety does not reliably transfer from validation to test. Deployment remains unchanged.
+<!-- STAGE43_CB_DOWNSTREAM_EASY_GUARD_AUDIT:END -->
