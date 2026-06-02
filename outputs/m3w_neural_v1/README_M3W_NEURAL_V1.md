@@ -4879,3 +4879,24 @@ This is gated multimodal latent-fusion evidence, not a deployment policy update.
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_BQ_GATED_SCENE_GRAPH_FUSION:END -->
+
+<!-- STAGE43_BR_SCENE_GRAPH_SLICE_FORENSICS:START -->
+## STAGE43_BR_SCENE_GRAPH_SLICE_FORENSICS
+
+source = `fresh_stage43_br_scene_graph_slice_forensics`
+result_source = `fresh_slice_forensics_from_stage43_bp_bq_checkpoints`
+verdict = `stage43_br_scene_graph_slice_forensics_pass_targeted_scene_signal`
+gate = `11 / 11`
+slice_forensics_executed = `True`
+targeted_scene_signal = `True`
+weak_scene_signal = `True`
+deployable_policy_changed = `False`
+
+Stage43-BR replays Stage43-BP checkpoints at row level and audits scene/graph utility by source, horizon, hard/failure, and easy slices. Eligible scene-over-graph slices: `8`; scene-over-no-context slices: `18`; full-over-graph slices: `5`.
+
+Best variant counts across eligible slices: `{'no_context': 2, 'scene_proxy_only': 7, 'graph_history_only': 17, 'scene_graph_full': 1}`.
+
+This is slice forensics only, not a deployment policy update. Scene remains train-only proxy scene/goal/raster evidence, not raw image/SDF evidence.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_BR_SCENE_GRAPH_SLICE_FORENSICS:END -->

@@ -1,9 +1,7 @@
-# Stage43 Current World-Model Gate
+# Stage43-BR Scene-Graph Slice Forensics Gate
 
-- source: `fresh_stage43_br_scene_graph_slice_forensics`
 - verdict: `stage43_br_scene_graph_slice_forensics_pass_targeted_scene_signal`
 - passed: `11 / 11`
-- protected multimodal latent state candidate: `True`
 - slice forensics executed: `True`
 - targeted scene signal: `True`
 - weak scene signal: `True`
@@ -11,12 +9,6 @@
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-BR is a row-level slice forensic report over retrained Stage43-BP variants.
-- It does not update deployment and does not claim raw scene/SDF evidence.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
