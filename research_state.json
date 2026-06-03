@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_cn_t100_validation_shift_forensics",
-  "current_verdict": "stage43_cn_t100_validation_shift_forensics_pass_ucy_shift_blocker",
+  "current_stage": "stage43_co_t100_source_scene_support_gate",
+  "current_verdict": "stage43_co_t100_source_scene_support_gate_pass_floor_required",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41327,6 +41327,50 @@
         "low_val_test_source_file_overlap",
         "validation_allowed_family_failed_current_test"
       ],
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "t100_deployment_claim": false,
+        "long_objective_complete": false
+      }
+    },
+    "t100_source_scene_support_gate": {
+      "source": "fresh_stage43_co_t100_source_scene_support_gate",
+      "result_source": "fresh_source_scene_supported_t100_gate_on_current_matrix",
+      "updated_at": "2026-06-03T06:44:00.372366+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_source_scene_support_gate.json",
+      "gate": "14 / 14",
+      "verdict": "stage43_co_t100_source_scene_support_gate_pass_floor_required",
+      "switch_support": {
+        "h100_rows": 18070,
+        "source_supported_h100_rows": 0,
+        "scene_supported_h100_rows": 0,
+        "switched_h100_rows": 0,
+        "blocked_h100_rows": 18070,
+        "blocked_h100_ratio": 1.0
+      },
+      "source_scene_supported_test_metrics": {
+        "rows": 89736,
+        "full_waypoint_ade_improvement_vs_floor": 0.0,
+        "endpoint_fde_improvement_vs_floor": 0.0,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0,
+        "harm_over_floor_ade": 0.0,
+        "mean_floor_ade": 0.1960028111934662,
+        "mean_selected_ade": 0.1960028111934662
+      },
+      "deployment_decision": {
+        "deploy_source_scene_supported_t100_gate": false,
+        "reason": "keep_floor_no_current_test_source_scene_support_for_safe_t100_switch"
+      },
       "claim_boundary": {
         "true_3d_world_model": false,
         "foundation_world_model": false,

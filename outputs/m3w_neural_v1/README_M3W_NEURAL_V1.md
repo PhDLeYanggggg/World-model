@@ -5331,3 +5331,20 @@ I replayed the Stage43-CM selected model and audited why the validation-allowed 
 
 Interpretation: t100 remains floor-only. The current blocker is validation/test source-scene shift inside the validation-allowed UCY t100 rule, not a lack of current-matrix t100 rows. Future t100 work needs source-file or scene-level validation support before switching.
 <!-- STAGE43_CN_T100_VALIDATION_SHIFT_FORENSICS:END -->
+
+<!-- STAGE43_CO_T100_SOURCE_SCENE_SUPPORT_GATE:START -->
+## Stage43-CO: t100 source/scene support gate
+
+I added a stricter t100 safety rule after the Stage43-CN shift audit: the model can only switch at t100 when the exact source file or scene has validation-positive, easy-safe support.
+
+- gate: `14 / 14`
+- verdict: `stage43_co_t100_source_scene_support_gate_pass_floor_required`
+- current t100 rows: `18070`
+- switched t100 rows: `0`
+- blocked t100 rows: `18070`
+- raw family-rule t100 lift: `-3.86%`
+- source/scene-supported t100 lift: `0.00%`
+- source/scene-supported easy degradation: `0.00%`
+
+What this means: t100 is still floor-only. The gate blocks every current t100 switch because validation and test do not share source-file or scene support. That is not a t100 improvement, but it does prevent the unsafe UCY family-level switch from being deployed.
+<!-- STAGE43_CO_T100_SOURCE_SCENE_SUPPORT_GATE:END -->
