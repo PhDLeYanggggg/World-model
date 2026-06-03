@@ -8384,3 +8384,20 @@ I rebuilt the t100 source-family check on the current Stage43 full-waypoint matr
 
 Interpretation: this is a current-matrix compatibility audit for t100. If the validation-selected rule is not positive and easy-safe on the current matrix, the deployed policy remains the floor; no t100 success, metric, seconds-level, Stage5C, or SMC claim is made.
 <!-- STAGE43_CM_CURRENT_MATRIX_T100_SOURCE_FAMILY_GATE:END -->
+
+<!-- STAGE43_CN_T100_VALIDATION_SHIFT_FORENSICS:START -->
+## STAGE43_CN_T100_VALIDATION_SHIFT_FORENSICS
+
+I replayed the Stage43-CM selected model and audited why the validation-allowed t100 source-family rule failed on the current matrix test split.
+
+- gate: `11 / 11`
+- verdict: `stage43_cn_t100_validation_shift_forensics_pass_ucy_shift_blocker`
+- raw validation-allowed t100 lift: `-3.86%`
+- raw easy degradation: `2.26%`
+- UCY validation lift: `1.54%`
+- UCY test lift: `-4.32%`
+- UCY test easy degradation: `21.00%`
+- root causes: `UCY_test_easy_harm, UCY_test_lift_nonpositive, low_val_test_scene_overlap, low_val_test_source_file_overlap, validation_allowed_family_failed_current_test`
+
+Interpretation: t100 remains floor-only. The current blocker is validation/test source-scene shift inside the validation-allowed UCY t100 rule, not a lack of current-matrix t100 rows. Future t100 work needs source-file or scene-level validation support before switching.
+<!-- STAGE43_CN_T100_VALIDATION_SHIFT_FORENSICS:END -->
