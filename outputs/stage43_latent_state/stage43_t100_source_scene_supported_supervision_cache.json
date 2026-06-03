@@ -1,0 +1,286 @@
+{
+  "source": "fresh_stage43_cq_t100_source_scene_supported_supervision_cache",
+  "result_source": "fresh_t100_only_source_scene_supported_full_waypoint_supervision_cache",
+  "generated_at_utc": "2026-06-03T07:48:40.881459+00:00",
+  "git_commit": "3f04c44",
+  "stage43_cp_precondition": {
+    "report": "outputs/stage43_latent_state/stage43_t100_source_scene_support_split_repair.json",
+    "verdict": "stage43_cp_t100_source_scene_support_split_ready",
+    "assignment_hash": "a6b33fa427f68e5765fc92cfc6666dfde8252e414d23c95c46a4d661700c97d2"
+  },
+  "cp_assignment_hash": "a6b33fa427f68e5765fc92cfc6666dfde8252e414d23c95c46a4d661700c97d2",
+  "cache_dir": "data/stage43_cp_t100_source_scene_support_cache",
+  "cache_committed": false,
+  "split_summaries": {
+    "train": {
+      "split": "train",
+      "cache_path": "data/stage43_cp_t100_source_scene_support_cache/stage43_cp_t100_supervision_train.npz",
+      "cache_sha256": "f22aa542d9127525ef84ee48d8593675f147fcb2eb049c4a7ebf066e547bf5a7",
+      "row_hash": "33df49999eaeae10e6ca95ebcdce7871f859623df5d3f84f7a74f61e8449affd",
+      "rows": 33480,
+      "domains": {
+        "ETH_UCY": 17024,
+        "TrajNet": 10448,
+        "UCY": 6008
+      },
+      "source_count": 13,
+      "scene_count": 10,
+      "source_agent_count": 2804,
+      "horizon_counts": {
+        "100": 33480
+      },
+      "full_waypoint_rows": 33480,
+      "all_waypoints_valid_rows": 33480,
+      "missing_track_rows": 0,
+      "max_endpoint_diff_last_waypoint": 0.0,
+      "hard_rows": 33480,
+      "failure_rows": 8891,
+      "easy_rows": 7211
+    },
+    "val": {
+      "split": "val",
+      "cache_path": "data/stage43_cp_t100_source_scene_support_cache/stage43_cp_t100_supervision_val.npz",
+      "cache_sha256": "3414970ec241ad030d3bfec8156e9d1b11494ab9754e3b5d4d5c4d09cdefdb70",
+      "row_hash": "bd9e89486967af0601a5604fdb9c25470c849dfacdc856d01b7f904f8a2a0995",
+      "rows": 11444,
+      "domains": {
+        "ETH_UCY": 5964,
+        "TrajNet": 3480,
+        "UCY": 2000
+      },
+      "source_count": 13,
+      "scene_count": 10,
+      "source_agent_count": 938,
+      "horizon_counts": {
+        "100": 11444
+      },
+      "full_waypoint_rows": 11444,
+      "all_waypoints_valid_rows": 11444,
+      "missing_track_rows": 0,
+      "max_endpoint_diff_last_waypoint": 0.0,
+      "hard_rows": 11444,
+      "failure_rows": 2868,
+      "easy_rows": 2553
+    },
+    "test": {
+      "split": "test",
+      "cache_path": "data/stage43_cp_t100_source_scene_support_cache/stage43_cp_t100_supervision_test.npz",
+      "cache_sha256": "742bbce40c513e9c99eb1a41e0ef41fd4553998830f9cb58d336c09d0683c8de",
+      "row_hash": "e3c0153b44fe98aaeac30c567707001860bf7537535d7a382deb7288b2ed36e9",
+      "rows": 11820,
+      "domains": {
+        "ETH_UCY": 6340,
+        "TrajNet": 3480,
+        "UCY": 2000
+      },
+      "source_count": 13,
+      "scene_count": 10,
+      "source_agent_count": 954,
+      "horizon_counts": {
+        "100": 11820
+      },
+      "full_waypoint_rows": 11820,
+      "all_waypoints_valid_rows": 11820,
+      "missing_track_rows": 0,
+      "max_endpoint_diff_last_waypoint": 0.0,
+      "hard_rows": 11820,
+      "failure_rows": 2930,
+      "easy_rows": 3085
+    }
+  },
+  "support_summary": {
+    "min_support_rows": 200,
+    "test_t100_rows": 11820,
+    "source_supported_test_t100_rows": 11724,
+    "scene_supported_test_t100_rows": 11820,
+    "source_or_scene_supported_test_t100_rows": 11820,
+    "exact_source_scene_supported_test_t100_rows": 11724,
+    "unsupported_test_t100_rows": 0,
+    "source_or_scene_supported_ratio": 1.0,
+    "exact_source_scene_supported_ratio": 0.9918781725888325,
+    "by_source": {
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt": {
+        "test_t100_rows": 545,
+        "validation_t100_rows": 439,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt": {
+        "test_t100_rows": 597,
+        "validation_t100_rows": 562,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt": {
+        "test_t100_rows": 232,
+        "validation_t100_rows": 232,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt": {
+        "test_t100_rows": 96,
+        "validation_t100_rows": 96,
+        "supported": false
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt": {
+        "test_t100_rows": 608,
+        "validation_t100_rows": 608,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt": {
+        "test_t100_rows": 288,
+        "validation_t100_rows": 288,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt": {
+        "test_t100_rows": 1424,
+        "validation_t100_rows": 1424,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt": {
+        "test_t100_rows": 1120,
+        "validation_t100_rows": 1120,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt": {
+        "test_t100_rows": 1424,
+        "validation_t100_rows": 1424,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt": {
+        "test_t100_rows": 3159,
+        "validation_t100_rows": 3172,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt": {
+        "test_t100_rows": 523,
+        "validation_t100_rows": 846,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt": {
+        "test_t100_rows": 1516,
+        "validation_t100_rows": 945,
+        "supported": true
+      },
+      "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt": {
+        "test_t100_rows": 288,
+        "validation_t100_rows": 288,
+        "supported": true
+      }
+    },
+    "by_scene": {
+      "ETH_UCY_seq_eth": {
+        "test_t100_rows": 545,
+        "validation_t100_rows": 439,
+        "supported": true
+      },
+      "ETH_UCY_seq_hotel": {
+        "test_t100_rows": 597,
+        "validation_t100_rows": 562,
+        "supported": true
+      },
+      "ETH_UCY_students03": {
+        "test_t100_rows": 3159,
+        "validation_t100_rows": 3172,
+        "supported": true
+      },
+      "ETH_UCY_zara01": {
+        "test_t100_rows": 523,
+        "validation_t100_rows": 846,
+        "supported": true
+      },
+      "ETH_UCY_zara02": {
+        "test_t100_rows": 1516,
+        "validation_t100_rows": 945,
+        "supported": true
+      },
+      "TrajNet_biwi": {
+        "test_t100_rows": 232,
+        "validation_t100_rows": 232,
+        "supported": true
+      },
+      "TrajNet_crowds": {
+        "test_t100_rows": 3248,
+        "validation_t100_rows": 3248,
+        "supported": true
+      },
+      "UCY_crowds": {
+        "test_t100_rows": 288,
+        "validation_t100_rows": 288,
+        "supported": true
+      },
+      "UCY_students01": {
+        "test_t100_rows": 1424,
+        "validation_t100_rows": 1424,
+        "supported": true
+      },
+      "UCY_zara03": {
+        "test_t100_rows": 288,
+        "validation_t100_rows": 288,
+        "supported": true
+      }
+    }
+  },
+  "no_leakage": {
+    "row_overlap_counts": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_agent_overlap_counts": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "source_file_overlap_counts": {
+      "train_val": 13,
+      "train_test": 13,
+      "val_test": 13
+    },
+    "scene_overlap_counts": {
+      "train_val": 10,
+      "train_test": 10,
+      "val_test": 10
+    },
+    "row_disjoint": true,
+    "source_agent_disjoint": true,
+    "source_scene_overlap_intentional_for_support_protocol": true,
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false
+  },
+  "claim_boundary": {
+    "new_model_training_or_evaluation_not_run": true,
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "long_objective_complete": false,
+  "stage43_cq_gate": {
+    "source": "fresh_stage43_cq_t100_source_scene_supported_supervision_cache",
+    "gates": {
+      "stage43_cp_precondition_passed": true,
+      "cache_files_written": true,
+      "t100_only_cache": true,
+      "train_val_test_rows_present": true,
+      "full_waypoint_labels_present": true,
+      "endpoint_alignment_pass": true,
+      "source_or_scene_support_preserved": true,
+      "source_agent_disjoint": true,
+      "row_disjoint": true,
+      "source_scene_overlap_reported_as_protocol": true,
+      "no_future_waypoint_input": true,
+      "no_test_goal_or_stat_leakage": true,
+      "cache_not_committed_boundary": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 15,
+    "total": 15,
+    "verdict": "stage43_cq_t100_source_scene_supported_supervision_cache_pass",
+    "t100_supported_supervised_training_ready": true
+  }
+}

@@ -3328,3 +3328,18 @@ I built a separate agent-disjoint split protocol for t100 work where validation 
 
 This is not a new model result and not cross-source generalization. It is the protocol I need before trying another t100 learner: current heldout t100 stays floor-only, while this supported split can test whether t100 learning is possible when validation actually covers the source/scene.
 <!-- STAGE43_CP_T100_SOURCE_SCENE_SUPPORT_SPLIT_REPAIR:END -->
+
+<!-- STAGE43_CQ_T100_SOURCE_SCENE_SUPPORTED_SUPERVISION_CACHE:START -->
+## Stage43-CQ: t100 supported supervision cache
+
+I froze a t100-only supervised cache for the Stage43-CP source/scene-supported protocol. This is the data artifact needed before training another t100 learner; it is not a new model result.
+
+- gate: `15 / 15`
+- verdict: `stage43_cq_t100_source_scene_supported_supervision_cache_pass`
+- train / val / test t100 rows: `33480 / 11444 / 11820`
+- row disjoint: `True`
+- source-agent disjoint: `True`
+- cache committed: `False`
+
+The cache keeps future waypoints and endpoints as labels only. The current heldout t100 policy is still floor-only; this cache just makes the next t100 training attempt legitimate.
+<!-- STAGE43_CQ_T100_SOURCE_SCENE_SUPPORTED_SUPERVISION_CACHE:END -->
