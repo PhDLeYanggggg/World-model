@@ -8744,3 +8744,21 @@ DG showed that the DF head had safe t100 candidates, but the old validation obje
 
 My read: this confirms the DF failure was a validation-selection problem, not a dead model. It is still diagnostic because the older DE bounded policy keeps a stronger mean t100 profile; the next serious fix is to train the head with this group-risk objective baked into validation/support splits.
 <!-- STAGE43_DH_T100_BOUNDED_ALPHA_HEAD_SUPPORT_AWARE_SELECTION:END -->
+
+<!-- STAGE43_DI_T100_SUPPORT_AWARE_BOUNDED_ALPHA_DISTILLED_HEAD:START -->
+## Stage43-DI: support-aware bounded-alpha t100 head training
+
+DH fixed DF by reranking candidates with a support-aware validation objective. Here I trained a new head from that support-aware teacher, so the repair is part of the model training loop rather than only a post-hoc selector.
+
+- gate: `15 / 15`
+- verdict: `stage43_di_t100_support_aware_distilled_head_safe_but_no_lift_diagnostic`
+- mean t100 improvement: `0.1570%`
+- mean min-without-group t100: `0.0824%`
+- all min-without-group positive: `True`
+- max easy degradation: `0.0000%`
+- beats DH t100 mean: `False`
+- beats DE t100 mean: `False`
+- deploy on current heldout t100: `False`
+
+My read: this is a real training check for the support-aware idea. If it does not beat DE while preserving group safety, I keep the stronger bounded policy as the deployable reference and use this head as diagnostic evidence for the next training objective.
+<!-- STAGE43_DI_T100_SUPPORT_AWARE_BOUNDED_ALPHA_DISTILLED_HEAD:END -->
