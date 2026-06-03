@@ -57,24 +57,24 @@
 
 - all: `52.03%`
 - t50: `31.13%`
-- t100 raw-frame diagnostic: `0.00%`
+- t100 raw-frame diagnostic: `-0.01%`
 - hard/failure: `50.48%`
 - easy degradation: `0.00%`
 
 ## Raw Causal Candidate T100 Diagnostic
 
 - rows: `8443`
-- t100 full-waypoint ADE improvement: `-3.84%`
-- t100 endpoint FDE improvement: `-2.83%`
-- t100 easy degradation: `22.49%`
+- t100 full-waypoint ADE improvement: `-9.05%`
+- t100 endpoint FDE improvement: `-3.77%`
+- t100 easy degradation: `67.49%`
 
 ## Bootstrap CI For Deployed Policy
 
-- bootstrap n: `2000`
+- bootstrap n: `3000`
 - all CI: `[51.64%, 52.40%]`
-- t50 CI: `[30.47%, 31.80%]`
+- t50 CI: `[30.50%, 31.79%]`
 - t100 CI: `[0.00%, 0.00%]`
-- hard/failure CI: `[50.04%, 50.92%]`
+- hard/failure CI: `[50.06%, 50.91%]`
 
 ## Interpretation
 

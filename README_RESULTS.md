@@ -8346,8 +8346,8 @@ I reran the t100 specialist as a causal-only repair after auditing Stage43-CJ. C
 - deployed t100 raw-frame diagnostic: `0.00%`
 - deployed hard/failure improvement: `50.48%`
 - easy degradation: `0.00%`
-- validation-selected causal specialist t100 diagnostic: `0.00%`
-- raw causal candidate t100 diagnostic: `-3.84%`
+- validation-selected causal specialist t100 diagnostic: `-0.01%`
+- raw causal candidate t100 diagnostic: `-9.05%`
 
 Current interpretation: the deployed policy remains the Stage43-CI t100 floor unless CK is t100-positive and easy-safe. No future endpoint, future waypoint, central velocity, test endpoint goal, or label-derived true-error feature is used as inference input in CK.
 <!-- STAGE43_CK_COVERAGE_AWARE_T100_CAUSAL_FEATURE_REPAIR:END -->
