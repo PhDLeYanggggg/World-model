@@ -5415,3 +5415,21 @@ After the direct latent waypoint head failed, I retrained the t100 supported pil
 
 This is still a supported-protocol diagnostic. The current heldout t100 policy remains floor-only until a residual policy clears the stricter heldout gates.
 <!-- STAGE43_CS_T100_BOUNDED_RESIDUAL_LATENT_REPAIR:END -->
+
+<!-- STAGE43_CT_T100_RESIDUAL_ADMISSIBILITY_HEAD:START -->
+## Stage43-CT: t100 residual admissibility head
+
+I trained a second-stage admissibility head to decide when the bounded t100 residual from Stage43-CS should be accepted. The head is trained on train labels, thresholded on validation, and evaluated once on test.
+
+- gate: `14 / 14`
+- verdict: `stage43_ct_t100_residual_admissibility_positive_diagnostic`
+- protected t100 improvement: `0.08%`
+- protected hard/failure improvement: `0.08%`
+- protected easy degradation: `0.00%`
+- switch rate: `6.70%`
+- ungated alpha=1 t100 improvement: `-2.13%`
+- ungated alpha=1 easy degradation: `20.23%`
+- deploy on current heldout t100: `False`
+
+This is still a supported-protocol diagnostic. The positive lift is small, so I am not treating it as a heldout deployment change. If the admissibility head cannot clear stricter heldout gates, the current heldout t100 policy stays floor-only.
+<!-- STAGE43_CT_T100_RESIDUAL_ADMISSIBILITY_HEAD:END -->
