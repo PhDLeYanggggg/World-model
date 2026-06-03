@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_at_external_validation_matrix",
-  "current_verdict": "stage43_at_external_validation_matrix_pass",
+  "current_stage": "stage43_cl_t100_source_stable_compatibility_audit",
+  "current_verdict": "stage43_cl_t100_source_stable_compatibility_pass_local_only",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41137,6 +41137,50 @@
         "t100_positive_success": false
       },
       "checkpoint_committed": false
+    },
+    "t100_source_stable_compatibility_audit": {
+      "source": "fresh_stage43_cl_t100_source_stable_compatibility_audit",
+      "result_source": "fresh_reconciliation_of_stage43_t_local_t100_and_stage43_ck_global_floor",
+      "updated_at": "2026-06-03T02:12:19.449550+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_source_stable_compatibility_audit.json",
+      "gate": "12 / 12",
+      "verdict": "stage43_cl_t100_source_stable_compatibility_pass_local_only",
+      "compatibility": {
+        "stage43_t_positive_local_signal": true,
+        "stage43_t_deployable_under_own_source_split": true,
+        "stage43_t_test_rows": 1440,
+        "stage43_at_matrix_rows": 89736,
+        "stage43_t_row_ratio_vs_current_matrix": 0.016047071409467772,
+        "same_split_scope_as_current_matrix": false,
+        "stage43_t_family": "TrajNet_crowds",
+        "stage43_t_test_sources": [
+          "OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt"
+        ],
+        "stage43_t_h100_ade_lift": 0.025918246955633606,
+        "stage43_t_h100_endpoint_lift": -0.005459442217583321,
+        "stage43_t_easy_degradation": 0.0,
+        "stage43_ck_global_t100_success": false,
+        "stage43_ck_deploy_t100": false,
+        "stage43_ck_global_t100_diagnostic": 0.0,
+        "can_integrate_as_global_t100_deployment": false,
+        "compatibility_reason": "local_source_level_positive_signal_not_current_full_matrix_deployment"
+      },
+      "claim_decision": {
+        "local_t100_positive_signal_allowed": true,
+        "global_t100_deployment_allowed": false,
+        "uniform_t100_success_allowed": false,
+        "current_deployable_t100_policy": "Stage43-CI/CK floor",
+        "reason": "Stage43-T is a small source-level TrajNet_crowds h100 split, while CK is the current global causal-only full-matrix audit and keeps the t100 floor."
+      },
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "long_objective_complete": false
+      }
     }
   },
   "stage43_ay_current_candidate_reconciliation": {

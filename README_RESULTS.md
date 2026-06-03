@@ -8351,3 +8351,18 @@ I reran the t100 specialist as a causal-only repair after auditing Stage43-CJ. C
 
 Current interpretation: the deployed policy remains the Stage43-CI t100 floor unless CK is t100-positive and easy-safe. No future endpoint, future waypoint, central velocity, test endpoint goal, or label-derived true-error feature is used as inference input in CK.
 <!-- STAGE43_CK_COVERAGE_AWARE_T100_CAUSAL_FEATURE_REPAIR:END -->
+
+<!-- STAGE43_CL_T100_SOURCE_STABLE_COMPATIBILITY_AUDIT:START -->
+## STAGE43_CL_T100_SOURCE_STABLE_COMPATIBILITY_AUDIT
+
+I reconciled the earlier Stage43-T source-stable h100 result with the current CK global t100 floor. The result is deliberately conservative: Stage43-T remains useful as local source-level evidence, but it is not a global t100 deployment result.
+
+- gate: `12 / 12`
+- verdict: `stage43_cl_t100_source_stable_compatibility_pass_local_only`
+- Stage43-T local h100 ADE lift: `2.59%` on `1440` rows
+- Stage43-T local easy degradation: `0.00%`
+- current CK global t100 diagnostic: `0.00%`
+- global t100 deployment allowed: `False`
+
+Current interpretation: t100 has a small local source-stable positive signal, but current deployable t100 remains the floor. Future t100 work needs current-matrix-compatible source-family gates with persisted feature names and stronger source support.
+<!-- STAGE43_CL_T100_SOURCE_STABLE_COMPATIBILITY_AUDIT:END -->
