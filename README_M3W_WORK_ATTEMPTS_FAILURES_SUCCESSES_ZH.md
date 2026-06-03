@@ -3361,3 +3361,21 @@ I trained a small torch latent-dynamics pilot on the Stage43-CQ t100-supported c
 
 The useful question here is whether t100 learning is possible when validation actually covers the source/scene. In this run, the latent did not collapse, but the direct neural waypoint head was unsafe without the floor. The stricter heldout t100 policy is still floor-only.
 <!-- STAGE43_CR_T100_SUPPORTED_LATENT_DYNAMICS:END -->
+
+<!-- STAGE43_CS_T100_BOUNDED_RESIDUAL_LATENT_REPAIR:START -->
+## Stage43-CS: t100 bounded residual latent repair
+
+After the direct latent waypoint head failed, I retrained the t100 supported pilot as a bounded residual around the safety floor. This keeps the experiment focused on safe world-dynamics lift instead of letting a neural head freely replace the floor.
+
+- gate: `16 / 16`
+- verdict: `stage43_cs_t100_bounded_residual_latent_keep_floor`
+- protected t100 improvement: `0.00%`
+- protected hard/failure improvement: `0.00%`
+- protected easy degradation: `0.00%`
+- switch rate: `0.00%`
+- ungated bounded t100 improvement: `-2.25%`
+- ungated bounded easy degradation: `21.29%`
+- deploy on current heldout t100: `False`
+
+This is still a supported-protocol diagnostic. The current heldout t100 policy remains floor-only until a residual policy clears the stricter heldout gates.
+<!-- STAGE43_CS_T100_BOUNDED_RESIDUAL_LATENT_REPAIR:END -->
