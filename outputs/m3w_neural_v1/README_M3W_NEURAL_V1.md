@@ -5379,3 +5379,21 @@ I froze a t100-only supervised cache for the Stage43-CP source/scene-supported p
 
 The cache keeps future waypoints and endpoints as labels only. The current heldout t100 policy is still floor-only; this cache just makes the next t100 training attempt legitimate.
 <!-- STAGE43_CQ_T100_SOURCE_SCENE_SUPPORTED_SUPERVISION_CACHE:END -->
+
+<!-- STAGE43_CR_T100_SUPPORTED_LATENT_DYNAMICS:START -->
+## Stage43-CR: t100 supported latent dynamics pilot
+
+I trained a small torch latent-dynamics pilot on the Stage43-CQ t100-supported cache. This is a supported-protocol diagnostic, not a deployment change for the current heldout t100 split.
+
+- gate: `14 / 14`
+- verdict: `stage43_cr_t100_supported_latent_dynamics_keep_floor`
+- protected t100 improvement: `0.00%`
+- protected hard/failure improvement: `0.00%`
+- protected easy degradation: `0.00%`
+- switch rate: `0.00%`
+- ungated neural t100 improvement: `-19.38%`
+- ungated easy degradation: `76.97%`
+- deploy on current heldout t100: `False`
+
+The useful question here is whether t100 learning is possible when validation actually covers the source/scene. In this run, the latent did not collapse, but the direct neural waypoint head was unsafe without the floor. The stricter heldout t100 policy is still floor-only.
+<!-- STAGE43_CR_T100_SUPPORTED_LATENT_DYNAMICS:END -->
