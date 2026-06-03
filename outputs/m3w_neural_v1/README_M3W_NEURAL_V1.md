@@ -5486,3 +5486,19 @@ I stress-tested the tiny Stage43-CU/CV t100 signal by removing one source or sce
 
 This is still diagnostic evidence. It supports source-slice expansion work, not a heldout t100 deployment change.
 <!-- STAGE43_CW_T100_RESIDUAL_ADMISSIBILITY_SOURCE_STRESS:END -->
+
+<!-- STAGE43_CX_T100_RESIDUAL_ADMISSIBILITY_GROUP_STRESS:START -->
+## Stage43-CX: t100 residual admissibility group stress
+
+I ran a stricter stress test on the tiny t100 residual-admissibility signal by removing grouped high-gain sources/scenes and domain pairs. This checks whether the signal survives harsher heldout-like exclusions than the single-source test.
+
+- gate: `10 / 10`
+- verdict: `stage43_cx_t100_group_stress_fragile_keep_diagnostic`
+- group stress verdict: `multi_source_group_stress_fragile_keep_diagnostic`
+- all replay exact: `True`
+- all group exclusions positive: `False`
+- min without any group t100 mean: `0.0413%`
+- deploy on current heldout t100: `False`
+
+This remains diagnostic evidence. Grouped scene stress exposed fragility, so I keep current heldout t100 on the safety floor.
+<!-- STAGE43_CX_T100_RESIDUAL_ADMISSIBILITY_GROUP_STRESS:END -->

@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_cw_t100_residual_admissibility_source_stress",
-  "current_verdict": "stage43_cw_t100_source_stress_survives_single_exclusion_diagnostic",
+  "current_stage": "stage43_cx_t100_residual_admissibility_group_stress",
+  "current_verdict": "stage43_cx_t100_group_stress_fragile_keep_diagnostic",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -45942,6 +45942,77 @@
         "all_single_scene_exclusions_positive": true,
         "all_single_domain_exclusions_positive": true,
         "stress_verdict": "source_scene_stress_survives_single_exclusion"
+      },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_residual_admissibility_group_stress": {
+      "source": "fresh_stage43_cx_t100_residual_admissibility_group_stress",
+      "updated_at": "2026-06-03T11:31:05.217621+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_residual_admissibility_group_stress.json",
+      "gate": "10 / 10",
+      "verdict": "stage43_cx_t100_group_stress_fragile_keep_diagnostic",
+      "aggregate": {
+        "min_without_any_group_t100": {
+          "mean": 0.00041304460373499846,
+          "min": -5.625231080985671e-05,
+          "max": 0.0008480155942311995,
+          "values": [
+            -5.625231080985671e-05,
+            0.0004473705277836526,
+            0.0008480155942311995
+          ]
+        },
+        "source_group_flip_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "scene_group_flip_count": {
+          "mean": 0.3333333333333333,
+          "min": 0.0,
+          "max": 1.0,
+          "values": [
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        "domain_pair_flip_count": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "group_count": {
+          "mean": 10.666666666666666,
+          "min": 10.0,
+          "max": 12.0,
+          "values": [
+            12.0,
+            10.0,
+            10.0
+          ]
+        },
+        "all_replay_exact": true,
+        "all_group_exclusions_positive": false,
+        "group_stress_verdict": "multi_source_group_stress_fragile_keep_diagnostic"
       },
       "deploy_on_current_heldout": false,
       "claim_boundary": {
