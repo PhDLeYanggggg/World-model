@@ -41075,6 +41075,68 @@
       "result_source": "fresh_exact_replay_from_stage43_aw_artifact",
       "stage5c_executed": false,
       "smc_enabled": false
+    },
+    "coverage_aware_t100_causal_feature_repair": {
+      "source": "fresh_stage43_ck_coverage_aware_t100_causal_feature_repair",
+      "result_source": "fresh_stage43_ck_coverage_aware_t100_causal_feature_repair",
+      "updated_at": "2026-06-02T13:56:26.190027+00:00",
+      "report": "outputs/stage43_latent_state/stage43_coverage_aware_t100_causal_feature_repair.json",
+      "gate": "18 / 18",
+      "verdict": "stage43_ck_t100_causal_feature_repair_pass_keep_ci_floor",
+      "deploy_t100_causal_specialist": false,
+      "prior_cj_audit": {
+        "prior_report": "outputs/stage43_latent_state/stage43_coverage_aware_t100_long_horizon_specialist.json",
+        "prior_stage43_cj_exists": true,
+        "prior_stage43_cj_verdict": "stage43_cj_t100_long_horizon_specialist_pass_keep_ci_floor",
+        "prior_stage43_cj_deployed_t100_specialist": false,
+        "prior_stage43_cj_label_derived_features_in_specialist_input": true,
+        "label_derived_features_identified": [
+          "cg_candidate_ade",
+          "cg_candidate_fde",
+          "floor_ade",
+          "floor_fde"
+        ],
+        "deployment_contamination": false,
+        "interpretation": "Stage43-CJ did not deploy the t100 specialist, so the deployable CI floor remains uncontaminated. However, CJ's specialist diagnostic feature set included true-error features derived from future waypoints; CJ must not be cited as a clean no-leakage t100 specialist trial."
+      },
+      "metrics": {
+        "rows": 50000,
+        "full_waypoint_ade_improvement_vs_floor": 0.5202918841255444,
+        "endpoint_fde_improvement_vs_floor": 0.5524172836074167,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.31134080465952274,
+        "t50_endpoint_fde_improvement_vs_floor": 0.41493903945467026,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.5048172617415467,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.69094,
+        "harm_over_floor_ade": -0.10934623330831528,
+        "mean_floor_ade": 0.21016323566436768,
+        "mean_selected_ade": 0.100817009806633
+      },
+      "trial_candidate_metrics": {
+        "rows": 50000,
+        "full_waypoint_ade_improvement_vs_floor": 0.5202918841255444,
+        "endpoint_fde_improvement_vs_floor": 0.5524172836074167,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.31134080465952274,
+        "t50_endpoint_fde_improvement_vs_floor": 0.41493903945467026,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.5048172617415467,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.69094,
+        "harm_over_floor_ade": -0.10934623330831528,
+        "mean_floor_ade": 0.21016323566436768,
+        "mean_selected_ade": 0.100817009806633
+      },
+      "claim_boundary": {
+        "true_3d": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "t100_positive_success": false
+      },
+      "checkpoint_committed": false
     }
   },
   "stage43_ay_current_candidate_reconciliation": {

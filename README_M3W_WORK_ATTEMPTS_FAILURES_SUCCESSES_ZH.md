@@ -3225,3 +3225,23 @@ I trained a t100-only long-horizon neural specialist on the coverage-aware split
 
 Boundary: dataset-local/raw-frame 2.5D only; no metric/seconds-level claim; Stage5C not executed; SMC not enabled.
 <!-- STAGE43_CJ_COVERAGE_AWARE_T100_LONG_HORIZON_SPECIALIST:END -->
+
+<!-- STAGE43_CK_COVERAGE_AWARE_T100_CAUSAL_FEATURE_REPAIR:START -->
+## STAGE43_CK_COVERAGE_AWARE_T100_CAUSAL_FEATURE_REPAIR
+
+I reran the t100 specialist as a causal-only repair after auditing Stage43-CJ. CJ never deployed its t100 specialist, but its diagnostic feature set included true-error values derived from future waypoints, so it should not be cited as clean no-leakage specialist evidence.
+
+- result source: `fresh_stage43_ck_coverage_aware_t100_causal_feature_repair`
+- gate: `18 / 18`
+- verdict: `stage43_ck_t100_causal_feature_repair_pass_keep_ci_floor`
+- deploy t100 causal specialist: `False`
+- deployed all improvement: `52.03%`
+- deployed t50 improvement: `31.13%`
+- deployed t100 raw-frame diagnostic: `0.00%`
+- deployed hard/failure improvement: `50.48%`
+- easy degradation: `0.00%`
+- validation-selected causal specialist t100 diagnostic: `0.00%`
+- raw causal candidate t100 diagnostic: `-3.84%`
+
+Current interpretation: the deployed policy remains the Stage43-CI t100 floor unless CK is t100-positive and easy-safe. No future endpoint, future waypoint, central velocity, test endpoint goal, or label-derived true-error feature is used as inference input in CK.
+<!-- STAGE43_CK_COVERAGE_AWARE_T100_CAUSAL_FEATURE_REPAIR:END -->
