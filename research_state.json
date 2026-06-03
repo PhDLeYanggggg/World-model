@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_da_t100_group_robust_admissibility_head",
-  "current_verdict": "stage43_da_t100_group_robust_head_positive_but_not_policy_best",
+  "current_stage": "stage43_db_t100_group_robust_head_failure_forensics",
+  "current_verdict": "stage43_db_t100_head_failure_forensics_complete_policy_distill_next",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -46364,6 +46364,142 @@
         "beats_cz_t100_mean": false,
         "beats_cz_min_without_group_mean": false
       },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_group_robust_head_failure_forensics": {
+      "source": "fresh_stage43_db_t100_group_robust_head_failure_forensics",
+      "updated_at": "2026-06-03T14:13:08.881004+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_group_robust_head_failure_forensics.json",
+      "gate": "12 / 12",
+      "verdict": "stage43_db_t100_head_failure_forensics_complete_policy_distill_next",
+      "aggregate": {
+        "seed_count": 3,
+        "delta_t100_da_minus_cz": {
+          "mean": -0.00046291358256844717,
+          "std": 0.00022476486756815977,
+          "min": -0.0007585489554287062,
+          "max": -0.0002139590419518722,
+          "values": [
+            -0.00041623275032476315,
+            -0.0007585489554287062,
+            -0.0002139590419518722
+          ]
+        },
+        "delta_min_without_group_da_minus_cz": {
+          "mean": -0.001299867143134385,
+          "std": 0.0002686003278053736,
+          "min": -0.0016660086298972976,
+          "max": -0.001029192102489529,
+          "values": [
+            -0.001029192102489529,
+            -0.001204400697016328,
+            -0.0016660086298972976
+          ]
+        },
+        "delta_switch_rate_da_minus_cz": {
+          "mean": -0.042066666666666676,
+          "std": 0.02223290854166909,
+          "min": -0.07,
+          "max": -0.015600000000000003,
+          "values": [
+            -0.015600000000000003,
+            -0.07,
+            -0.04060000000000001
+          ]
+        },
+        "da_t100": {
+          "mean": 0.0013785029982500419,
+          "std": 0.00022978062327611874,
+          "min": 0.0012034030001293328,
+          "max": 0.0017031261827264998,
+          "values": [
+            0.001228979811894293,
+            0.0012034030001293328,
+            0.0017031261827264998
+          ]
+        },
+        "da_min_without_group_t100": {
+          "mean": -0.0003046467342847266,
+          "std": 0.00015394680460159425,
+          "min": -0.0005203806622189333,
+          "max": -0.00017141084791005845,
+          "values": [
+            -0.0002221486927251881,
+            -0.00017141084791005845,
+            -0.0005203806622189333
+          ]
+        },
+        "da_val_to_test_min_without_group_gap": {
+          "mean": -0.001246820788008307,
+          "std": 0.00017199269958831888,
+          "min": -0.0014592811174426457,
+          "max": -0.0010380348366186842,
+          "values": [
+            -0.0010380348366186842,
+            -0.0012431464099635914,
+            -0.0014592811174426457
+          ]
+        },
+        "da_safe_candidates": {
+          "mean": 1122.3333333333333,
+          "std": 115.01980505789234,
+          "min": 968.0,
+          "max": 1244.0,
+          "values": [
+            1244.0,
+            1155.0,
+            968.0
+          ]
+        },
+        "root_causes": {
+          "trained_head_underperforms_policy_only": true,
+          "group_worst_case_not_preserved": true,
+          "group_worst_case_gap_vs_cz": true,
+          "under_switching_relative_to_cz": true,
+          "validation_to_test_group_gap": true,
+          "not_an_easy_safety_failure": true,
+          "not_a_no_signal_failure": true
+        },
+        "root_cause_count": 7
+      },
+      "repair_hypotheses": [
+        {
+          "hypothesis": "DA optimizes gain/harm/delta labels but not the actual CZ deployment policy.",
+          "evidence": "DA is positive but below CZ in every aligned seed.",
+          "next_test": "Train a policy-distilled admissibility head using CZ leave-group-out selected switches as teacher labels.",
+          "priority": "high",
+          "triggered": true
+        },
+        {
+          "hypothesis": "The support penalty is too indirect to protect worst-case source/scene/domain groups.",
+          "evidence": "DA min-without-group t100 is negative while CZ remains positive.",
+          "next_test": "Add explicit worst-group validation loss or group DRO style batch objective, then select by min-without-group.",
+          "priority": "high",
+          "triggered": true
+        },
+        {
+          "hypothesis": "The trained head is more conservative than CZ and misses useful t100 switches.",
+          "evidence": "DA switch rate drops relative to CZ.",
+          "next_test": "Distill high-confidence CZ switches while keeping harm/easy conformal guard.",
+          "priority": "medium",
+          "triggered": true
+        },
+        {
+          "hypothesis": "Validation group support does not transfer cleanly to test groups.",
+          "evidence": "DA validation min-without-group is stronger than DA test min-without-group.",
+          "next_test": "Use nested leave-one-source/scene validation and choose checkpoints by heldout-group transfer.",
+          "priority": "medium",
+          "triggered": true
+        }
+      ],
       "deploy_on_current_heldout": false,
       "claim_boundary": {
         "true_3d_world_model": false,

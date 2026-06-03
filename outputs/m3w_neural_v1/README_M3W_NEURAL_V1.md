@@ -5555,3 +5555,19 @@ After Stage43-CZ showed that leave-group-out policy selection helps, I trained a
 
 This is still diagnostic. It tells me whether the leave-group-out idea survives once it is trained into the head, instead of only being applied as a post-hoc policy search.
 <!-- STAGE43_DA_T100_GROUP_ROBUST_ADMISSIBILITY_HEAD:END -->
+
+<!-- STAGE43_DB_T100_GROUP_ROBUST_HEAD_FAILURE_FORENSICS:START -->
+## Stage43-DB: why the trained t100 head did not beat CZ
+
+I compared the Stage43-CZ policy-only repair against the Stage43-DA trained head seed by seed. The trained head has real positive signal, but it loses the exact thing CZ fixed: worst-group robustness.
+
+- gate: `12 / 12`
+- verdict: `stage43_db_t100_head_failure_forensics_complete_policy_distill_next`
+- DA minus CZ t100 mean: `-0.0463%`
+- DA minus CZ min-without-group mean: `-0.1300%`
+- DA minus CZ switch-rate mean: `-4.2067%`
+- root causes identified: `7`
+- deploy on current heldout t100: `False`
+
+My read is that DA trained generic gain/harm/delta labels, while CZ's win came from the deployment policy and leave-group-out objective. The next useful training step is policy distillation from the CZ robust decisions plus an explicit worst-group transfer loss.
+<!-- STAGE43_DB_T100_GROUP_ROBUST_HEAD_FAILURE_FORENSICS:END -->
