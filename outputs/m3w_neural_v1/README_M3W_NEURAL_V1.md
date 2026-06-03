@@ -5537,3 +5537,21 @@ The Stage43-CY whitelist did not reduce grouped fragility, so I moved the robust
 
 This remains diagnostic. The robust validation objective reduced grouped fragility and improved the tiny t100 signal, but it is still policy selection over an existing head; the next step is to train the admissibility head with this leave-group-out objective and confirm it with stronger heldout/bootstrap evidence.
 <!-- STAGE43_CZ_T100_RESIDUAL_ADMISSIBILITY_LEAVE_GROUP_OUT_POLICY:END -->
+
+<!-- STAGE43_DA_T100_GROUP_ROBUST_ADMISSIBILITY_HEAD:START -->
+## Stage43-DA: t100 group-robust admissibility-head training
+
+After Stage43-CZ showed that leave-group-out policy selection helps, I trained a fresh admissibility head with source/scene/domain-balanced loss and selected checkpoints using the same leave-group-out validation objective.
+
+- gate: `14 / 14`
+- verdict: `stage43_da_t100_group_robust_head_positive_but_not_policy_best`
+- seeds: `[4323, 4331, 4337]`
+- mean t100 improvement: `0.1379%`
+- mean min-without-group t100: `-0.0305%`
+- max easy degradation: `0.0000%`
+- all bootstrap lows positive: `True`
+- beats CZ t100 mean: `False`
+- deploy on current heldout t100: `False`
+
+This is still diagnostic. It tells me whether the leave-group-out idea survives once it is trained into the head, instead of only being applied as a post-hoc policy search.
+<!-- STAGE43_DA_T100_GROUP_ROBUST_ADMISSIBILITY_HEAD:END -->
