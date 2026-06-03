@@ -1,0 +1,2659 @@
+{
+  "source": "fresh_stage43_cw_t100_residual_admissibility_source_stress",
+  "result_source": "fresh_t100_source_scene_single_exclusion_stress",
+  "generated_at_utc": "2026-06-03T10:59:35.296269+00:00",
+  "git_commit": "715f601",
+  "mode": "small",
+  "stage43_cv_precondition": {
+    "report": "outputs/stage43_latent_state/stage43_t100_residual_admissibility_slice_attribution.json",
+    "verdict": "stage43_cv_t100_slice_attribution_broad_supported_diagnostic"
+  },
+  "seed_stress": [
+    {
+      "seed": 4323,
+      "rows": 10000,
+      "policy": {
+        "alpha": 0.75,
+        "alpha_index": 5,
+        "gain_threshold": 0.8,
+        "harm_threshold": 0.5,
+        "delta_threshold": -0.01,
+        "force_easy_floor": false
+      },
+      "metrics": {
+        "rows": 10000,
+        "full_waypoint_ade_improvement_vs_floor": 0.0008407411149786714,
+        "endpoint_fde_improvement_vs_floor": 0.0004922669421416614,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0008407411149786714,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0008407411149786714,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.067,
+        "harm_over_floor_ade": -0.0001226234744535759,
+        "mean_floor_ade": 0.14584948122501373,
+        "mean_selected_ade": 0.14572685956954956
+      },
+      "metric_replay_diff": {
+        "full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0
+      },
+      "max_metric_replay_diff": 0.0,
+      "stress_tables": {
+        "domain": [
+          {
+            "label": "TrajNet",
+            "slice": {
+              "rows": 2967,
+              "t100_improvement": 0.0009012364565111897,
+              "endpoint_fde_improvement": 0.00042080466468585875,
+              "hard_failure_improvement": 0.0009012364565111897,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05965621840242669,
+              "mean_delta_ade_selected_minus_floor": -0.00013326862244866788
+            },
+            "without_label": {
+              "rows": 7033,
+              "t100_improvement": 0.0008147377090270691,
+              "endpoint_fde_improvement": 0.0005252150427340618,
+              "hard_failure_improvement": 0.0008147377090270691,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07009810891511446,
+              "mean_delta_ade_selected_minus_floor": -0.000118132600618992
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY",
+            "slice": {
+              "rows": 5333,
+              "t100_improvement": 0.0008450233787025141,
+              "endpoint_fde_improvement": 0.0005857460926259606,
+              "hard_failure_improvement": 0.0008450233787025141,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0759422463903994,
+              "mean_delta_ade_selected_minus_floor": -0.00012095283454982564
+            },
+            "without_label": {
+              "rows": 4667,
+              "t100_improvement": 0.0008360274830780945,
+              "endpoint_fde_improvement": 0.0003986191180721521,
+              "hard_failure_improvement": 0.0008360274830780945,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05678165845296765,
+              "mean_delta_ade_selected_minus_floor": -0.00012453249655663967
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY",
+            "slice": {
+              "rows": 1700,
+              "t100_improvement": 0.0007242127099824636,
+              "endpoint_fde_improvement": 0.00036058903398195064,
+              "hard_failure_improvement": 0.0007242127099824636,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05176470588235294,
+              "mean_delta_ade_selected_minus_floor": -0.00010928536357823759
+            },
+            "without_label": {
+              "rows": 8300,
+              "t100_improvement": 0.0008655794788103854,
+              "endpoint_fde_improvement": 0.0005219420571378475,
+              "hard_failure_improvement": 0.0008655794788103854,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07012048192771084,
+              "mean_delta_ade_selected_minus_floor": -0.00012535536370705813
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "source_file": [
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+            "slice": {
+              "rows": 2638,
+              "t100_improvement": 0.0014507285061321484,
+              "endpoint_fde_improvement": 0.0003775278933693116,
+              "hard_failure_improvement": 0.0014507285061321484,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07202426080363912,
+              "mean_delta_ade_selected_minus_floor": -0.000213636172702536
+            },
+            "without_label": {
+              "rows": 7362,
+              "t100_improvement": 0.000619347467564979,
+              "endpoint_fde_improvement": 0.0005330344554661526,
+              "hard_failure_improvement": 0.000619347467564979,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06519967400162999,
+              "mean_delta_ade_selected_minus_floor": -9.001119178719819e-05
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+            "slice": {
+              "rows": 463,
+              "t100_improvement": 0.0012317479775549867,
+              "endpoint_fde_improvement": 0.0012535638568887952,
+              "hard_failure_improvement": 0.0012317479775549867,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.22462203023758098,
+              "mean_delta_ade_selected_minus_floor": -0.0005423554102890193
+            },
+            "without_label": {
+              "rows": 9537,
+              "t100_improvement": 0.0007773785228539776,
+              "endpoint_fde_improvement": 0.00038670553871211766,
+              "hard_failure_improvement": 0.0007773785228539776,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05934780329243997,
+              "mean_delta_ade_selected_minus_floor": -0.00010224641300737858
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+            "slice": {
+              "rows": 506,
+              "t100_improvement": 0.0019335738465554586,
+              "endpoint_fde_improvement": 0.0019967077703360037,
+              "hard_failure_improvement": 0.0019335738465554586,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.09486166007905138,
+              "mean_delta_ade_selected_minus_floor": -0.0001821879850467667
+            },
+            "without_label": {
+              "rows": 9494,
+              "t100_improvement": 0.0008037139103374003,
+              "endpoint_fde_improvement": 0.0004370962407210799,
+              "hard_failure_improvement": 0.0008037139103374003,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06551506214451232,
+              "mean_delta_ade_selected_minus_floor": -0.00011944886500714347
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+            "slice": {
+              "rows": 245,
+              "t100_improvement": 0.0016303363263825421,
+              "endpoint_fde_improvement": 0.001617442791304824,
+              "hard_failure_improvement": 0.0016303363263825421,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07755102040816327,
+              "mean_delta_ade_selected_minus_floor": -0.0002459342940710485
+            },
+            "without_label": {
+              "rows": 9755,
+              "t100_improvement": 0.0008202993305183037,
+              "endpoint_fde_improvement": 0.0004623684816343898,
+              "hard_failure_improvement": 0.0008202993305183037,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06673500768836495,
+              "mean_delta_ade_selected_minus_floor": -0.00011952647037105635
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+            "slice": {
+              "rows": 203,
+              "t100_improvement": 0.0025358096270734487,
+              "endpoint_fde_improvement": 0.0006836406345320789,
+              "hard_failure_improvement": 0.0025358096270734487,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.024630541871921183,
+              "mean_delta_ade_selected_minus_floor": -0.0001745923946145922
+            },
+            "without_label": {
+              "rows": 9797,
+              "t100_improvement": 0.0008243673988312938,
+              "endpoint_fde_improvement": 0.0004904816413208168,
+              "hard_failure_improvement": 0.0008243673988312938,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06787792181279984,
+              "mean_delta_ade_selected_minus_floor": -0.00012154662545071915
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+            "slice": {
+              "rows": 242,
+              "t100_improvement": 0.0011854018194102922,
+              "endpoint_fde_improvement": 0.0004089584677057223,
+              "hard_failure_improvement": 0.0011854018194102922,
+              "easy_degradation": 0.0011445008885362373,
+              "switch_rate": 0.05785123966942149,
+              "mean_delta_ade_selected_minus_floor": -0.0001732721138978377
+            },
+            "without_label": {
+              "rows": 9758,
+              "t100_improvement": 0.0008322043996179529,
+              "endpoint_fde_improvement": 0.0004941508556332019,
+              "hard_failure_improvement": 0.0008322043996179529,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06722689075630252,
+              "mean_delta_ade_selected_minus_floor": -0.00012136736768297851
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+            "slice": {
+              "rows": 76,
+              "t100_improvement": 0.0,
+              "endpoint_fde_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0,
+              "mean_delta_ade_selected_minus_floor": 2.6714253031911994e-09
+            },
+            "without_label": {
+              "rows": 9924,
+              "t100_improvement": 0.0008464454802138421,
+              "endpoint_fde_improvement": 0.0004954521512484655,
+              "hard_failure_improvement": 0.0008464454802138421,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06751309955663039,
+              "mean_delta_ade_selected_minus_floor": -0.0001235625531990081
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "slice": {
+              "rows": 963,
+              "t100_improvement": 0.000739978444950995,
+              "endpoint_fde_improvement": 0.00026574248609367856,
+              "hard_failure_improvement": 0.000739978444950995,
+              "easy_degradation": 6.734273674391389e-05,
+              "switch_rate": 0.0695742471443406,
+              "mean_delta_ade_selected_minus_floor": -0.00014186617045197636
+            },
+            "without_label": {
+              "rows": 9037,
+              "t100_improvement": 0.0008553116321747822,
+              "endpoint_fde_improvement": 0.0005268656521716375,
+              "hard_failure_improvement": 0.0008553116321747822,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06672568330198074,
+              "mean_delta_ade_selected_minus_floor": -0.00012057292042300105
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+            "slice": {
+              "rows": 1219,
+              "t100_improvement": 0.0007184368278955189,
+              "endpoint_fde_improvement": 0.00016144515811600257,
+              "hard_failure_improvement": 0.0007184368278955189,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04675963904840033,
+              "mean_delta_ade_selected_minus_floor": -0.00010759781434899196
+            },
+            "without_label": {
+              "rows": 8781,
+              "t100_improvement": 0.0008581629365088661,
+              "endpoint_fde_improvement": 0.000542875300250989,
+              "hard_failure_improvement": 0.0008581629365088661,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06980981664958433,
+              "mean_delta_ade_selected_minus_floor": -0.00012470937508624047
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "slice": {
+              "rows": 509,
+              "t100_improvement": -0.000151115765693266,
+              "endpoint_fde_improvement": 0.0008755030141991416,
+              "hard_failure_improvement": -0.000151115765693266,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05697445972495088,
+              "mean_delta_ade_selected_minus_floor": 1.1546286259545013e-05
+            },
+            "without_label": {
+              "rows": 9491,
+              "t100_improvement": 0.0008679305922520975,
+              "endpoint_fde_improvement": 0.0004829151770775475,
+              "hard_failure_improvement": 0.0008679305922520975,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06753766726372352,
+              "mean_delta_ade_selected_minus_floor": -0.00012981895997654647
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": true
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+            "slice": {
+              "rows": 448,
+              "t100_improvement": -0.0005380939774703997,
+              "endpoint_fde_improvement": 0.0013120935153306812,
+              "hard_failure_improvement": -0.0005380939774703997,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.08035714285714286,
+              "mean_delta_ade_selected_minus_floor": 4.365353743196465e-05
+            },
+            "without_label": {
+              "rows": 9552,
+              "t100_improvement": 0.0008760474436789734,
+              "endpoint_fde_improvement": 0.00047192767883796893,
+              "hard_failure_improvement": 0.0008760474436789734,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06637353433835846,
+              "mean_delta_ade_selected_minus_floor": -0.0001304220495512709
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": true
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "slice": {
+              "rows": 1213,
+              "t100_improvement": 0.00045383849237301543,
+              "endpoint_fde_improvement": 0.00010867781880186111,
+              "hard_failure_improvement": 0.00045383849237301543,
+              "easy_degradation": 0.00017036989143992542,
+              "switch_rate": 0.04534212695795548,
+              "mean_delta_ade_selected_minus_floor": -6.891951488796622e-05
+            },
+            "without_label": {
+              "rows": 8787,
+              "t100_improvement": 0.0008966155793070918,
+              "endpoint_fde_improvement": 0.00055124597241063,
+              "hard_failure_improvement": 0.0008966155793070918,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699897575964493,
+              "mean_delta_ade_selected_minus_floor": -0.00013003700587432832
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+            "slice": {
+              "rows": 1275,
+              "t100_improvement": -0.001507731780862498,
+              "endpoint_fde_improvement": -0.00016643123248050173,
+              "hard_failure_improvement": -0.001507731780862498,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.03607843137254902,
+              "mean_delta_ade_selected_minus_floor": 0.00011310386616969481
+            },
+            "without_label": {
+              "rows": 8725,
+              "t100_improvement": 0.0010055886919972945,
+              "endpoint_fde_improvement": 0.0005402007035008038,
+              "hard_failure_improvement": 0.0010055886919972945,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07151862464183381,
+              "mean_delta_ade_selected_minus_floor": -0.00015707073907833546
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": true
+          }
+        ],
+        "scene_id": [
+          {
+            "label": "ETH_UCY_students03",
+            "slice": {
+              "rows": 2638,
+              "t100_improvement": 0.0014507285061321484,
+              "endpoint_fde_improvement": 0.0003775278933693116,
+              "hard_failure_improvement": 0.0014507285061321484,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07202426080363912,
+              "mean_delta_ade_selected_minus_floor": -0.000213636172702536
+            },
+            "without_label": {
+              "rows": 7362,
+              "t100_improvement": 0.000619347467564979,
+              "endpoint_fde_improvement": 0.0005330344554661526,
+              "hard_failure_improvement": 0.000619347467564979,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06519967400162999,
+              "mean_delta_ade_selected_minus_floor": -9.001119178719819e-05
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_seq_eth",
+            "slice": {
+              "rows": 463,
+              "t100_improvement": 0.0012317479775549867,
+              "endpoint_fde_improvement": 0.0012535638568887952,
+              "hard_failure_improvement": 0.0012317479775549867,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.22462203023758098,
+              "mean_delta_ade_selected_minus_floor": -0.0005423554102890193
+            },
+            "without_label": {
+              "rows": 9537,
+              "t100_improvement": 0.0007773785228539776,
+              "endpoint_fde_improvement": 0.00038670553871211766,
+              "hard_failure_improvement": 0.0007773785228539776,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05934780329243997,
+              "mean_delta_ade_selected_minus_floor": -0.00010224641300737858
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_zara03",
+            "slice": {
+              "rows": 245,
+              "t100_improvement": 0.0016303363263825421,
+              "endpoint_fde_improvement": 0.001617442791304824,
+              "hard_failure_improvement": 0.0016303363263825421,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07755102040816327,
+              "mean_delta_ade_selected_minus_floor": -0.0002459342940710485
+            },
+            "without_label": {
+              "rows": 9755,
+              "t100_improvement": 0.0008202993305183037,
+              "endpoint_fde_improvement": 0.0004623684816343898,
+              "hard_failure_improvement": 0.0008202993305183037,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06673500768836495,
+              "mean_delta_ade_selected_minus_floor": -0.00011952647037105635
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet_biwi",
+            "slice": {
+              "rows": 203,
+              "t100_improvement": 0.0025358096270734487,
+              "endpoint_fde_improvement": 0.0006836406345320789,
+              "hard_failure_improvement": 0.0025358096270734487,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.024630541871921183,
+              "mean_delta_ade_selected_minus_floor": -0.0001745923946145922
+            },
+            "without_label": {
+              "rows": 9797,
+              "t100_improvement": 0.0008243673988312938,
+              "endpoint_fde_improvement": 0.0004904816413208168,
+              "hard_failure_improvement": 0.0008243673988312938,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06787792181279984,
+              "mean_delta_ade_selected_minus_floor": -0.00012154662545071915
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_crowds",
+            "slice": {
+              "rows": 242,
+              "t100_improvement": 0.0011854018194102922,
+              "endpoint_fde_improvement": 0.0004089584677057223,
+              "hard_failure_improvement": 0.0011854018194102922,
+              "easy_degradation": 0.0011445008885362373,
+              "switch_rate": 0.05785123966942149,
+              "mean_delta_ade_selected_minus_floor": -0.0001732721138978377
+            },
+            "without_label": {
+              "rows": 9758,
+              "t100_improvement": 0.0008322043996179529,
+              "endpoint_fde_improvement": 0.0004941508556332019,
+              "hard_failure_improvement": 0.0008322043996179529,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06722689075630252,
+              "mean_delta_ade_selected_minus_floor": -0.00012136736768297851
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet_crowds",
+            "slice": {
+              "rows": 2764,
+              "t100_improvement": 0.0008475178635722891,
+              "endpoint_fde_improvement": 0.0004135544123112789,
+              "hard_failure_improvement": 0.0008475178635722891,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06222865412445731,
+              "mean_delta_ade_selected_minus_floor": -0.000130233631352894
+            },
+            "without_label": {
+              "rows": 7236,
+              "t100_improvement": 0.0008379766774631037,
+              "endpoint_fde_improvement": 0.0005271802792644609,
+              "hard_failure_improvement": 0.0008379766774631037,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06882255389718077,
+              "mean_delta_ade_selected_minus_floor": -0.00011971653293585405
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_seq_hotel",
+            "slice": {
+              "rows": 509,
+              "t100_improvement": -0.000151115765693266,
+              "endpoint_fde_improvement": 0.0008755030141991416,
+              "hard_failure_improvement": -0.000151115765693266,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05697445972495088,
+              "mean_delta_ade_selected_minus_floor": 1.1546286259545013e-05
+            },
+            "without_label": {
+              "rows": 9491,
+              "t100_improvement": 0.0008679305922520975,
+              "endpoint_fde_improvement": 0.0004829151770775475,
+              "hard_failure_improvement": 0.0008679305922520975,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06753766726372352,
+              "mean_delta_ade_selected_minus_floor": -0.00012981895997654647
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": true
+          },
+          {
+            "label": "ETH_UCY_zara01",
+            "slice": {
+              "rows": 448,
+              "t100_improvement": -0.0005380939774703997,
+              "endpoint_fde_improvement": 0.0013120935153306812,
+              "hard_failure_improvement": -0.0005380939774703997,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.08035714285714286,
+              "mean_delta_ade_selected_minus_floor": 4.365353743196465e-05
+            },
+            "without_label": {
+              "rows": 9552,
+              "t100_improvement": 0.0008760474436789734,
+              "endpoint_fde_improvement": 0.00047192767883796893,
+              "hard_failure_improvement": 0.0008760474436789734,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06637353433835846,
+              "mean_delta_ade_selected_minus_floor": -0.0001304220495512709
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": true
+          },
+          {
+            "label": "UCY_students01",
+            "slice": {
+              "rows": 1213,
+              "t100_improvement": 0.00045383849237301543,
+              "endpoint_fde_improvement": 0.00010867781880186111,
+              "hard_failure_improvement": 0.00045383849237301543,
+              "easy_degradation": 0.00017036989143992542,
+              "switch_rate": 0.04534212695795548,
+              "mean_delta_ade_selected_minus_floor": -6.891951488796622e-05
+            },
+            "without_label": {
+              "rows": 8787,
+              "t100_improvement": 0.0008966155793070918,
+              "endpoint_fde_improvement": 0.00055124597241063,
+              "hard_failure_improvement": 0.0008966155793070918,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699897575964493,
+              "mean_delta_ade_selected_minus_floor": -0.00013003700587432832
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_zara02",
+            "slice": {
+              "rows": 1275,
+              "t100_improvement": -0.001507731780862498,
+              "endpoint_fde_improvement": -0.00016643123248050173,
+              "hard_failure_improvement": -0.001507731780862498,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.03607843137254902,
+              "mean_delta_ade_selected_minus_floor": 0.00011310386616969481
+            },
+            "without_label": {
+              "rows": 8725,
+              "t100_improvement": 0.0010055886919972945,
+              "endpoint_fde_improvement": 0.0005402007035008038,
+              "hard_failure_improvement": 0.0010055886919972945,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07151862464183381,
+              "mean_delta_ade_selected_minus_floor": -0.00015707073907833546
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": true
+          }
+        ],
+        "row_source_instance": [
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt|5852",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.19947693302810887,
+              "endpoint_fde_improvement": 0.055267229452342304,
+              "hard_failure_improvement": 0.19947693302810887,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.0228024423122406
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008252958595750259,
+              "endpoint_fde_improvement": 0.0004858322231837686,
+              "hard_failure_improvement": 0.0008252958595750259,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012035524559905753
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt|9989",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.09549267720097832,
+              "endpoint_fde_improvement": 0.02929959438125307,
+              "hard_failure_improvement": 0.09549267720097832,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.020792707800865173
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.000826682630193365,
+              "endpoint_fde_improvement": 0.00048630117961312447,
+              "hard_failure_improvement": 0.000826682630193365,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012055625120410696
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2235",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.07135639094744961,
+              "endpoint_fde_improvement": 0.035116729950658176,
+              "hard_failure_improvement": 0.07135639094744961,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.019617527723312378
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008274303902982005,
+              "endpoint_fde_improvement": 0.00048598372136865464,
+              "hard_failure_improvement": 0.0008274303902982005,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012067377974744886
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2245",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.06500476189416349,
+              "endpoint_fde_improvement": 0.02322794674402162,
+              "hard_failure_improvement": 0.06500476189416349,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.019149601459503174
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008278501797575055,
+              "endpoint_fde_improvement": 0.00048799465679583154,
+              "hard_failure_improvement": 0.0008278501797575055,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012072057143086568
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|1480",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.06344626089993377,
+              "endpoint_fde_improvement": 0.00849463069282741,
+              "hard_failure_improvement": 0.06344626089993377,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.017845183610916138
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008286600719902282,
+              "endpoint_fde_improvement": 0.0004907902823645394,
+              "hard_failure_improvement": 0.0008286600719902282,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012085102207493037
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|3324",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.05641784291850427,
+              "endpoint_fde_improvement": 0.01701058706203895,
+              "hard_failure_improvement": 0.05641784291850427,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.017154008150100708
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008291839225988973,
+              "endpoint_fde_improvement": 0.0004889113935622191,
+              "hard_failure_improvement": 0.0008291839225988973,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012092015094822273
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2881",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.0512742585239071,
+              "endpoint_fde_improvement": 0.0032590394993583516,
+              "hard_failure_improvement": 0.0512742585239071,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.016984522342681885
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008293015239591028,
+              "endpoint_fde_improvement": 0.0004915934361822138,
+              "hard_failure_improvement": 0.0008293015239591028,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012093710392946377
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2240",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.17070512249973846,
+              "endpoint_fde_improvement": 0.026346007430377627,
+              "hard_failure_improvement": 0.17070512249973846,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.016761958599090576
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0008293733429518557,
+              "endpoint_fde_improvement": 0.0004902480027726419,
+              "hard_failure_improvement": 0.0008293733429518557,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0669066906690669,
+              "mean_delta_ade_selected_minus_floor": -0.00012095936108380556
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ]
+      },
+      "summary": {
+        "min_without_source_t100": 0.000619347467564979,
+        "min_without_scene_t100": 0.000619347467564979,
+        "min_without_domain_t100": 0.0008147377090270691,
+        "source_removal_flip_count": 0,
+        "scene_removal_flip_count": 0,
+        "domain_removal_flip_count": 0,
+        "negative_source_slice_count": 3,
+        "negative_scene_slice_count": 3,
+        "negative_domain_slice_count": 0
+      }
+    },
+    {
+      "seed": 4331,
+      "rows": 10000,
+      "policy": {
+        "alpha": 1.0,
+        "alpha_index": 6,
+        "gain_threshold": 0.8,
+        "harm_threshold": 0.2,
+        "delta_threshold": 0.002,
+        "force_easy_floor": false
+      },
+      "metrics": {
+        "rows": 10000,
+        "full_waypoint_ade_improvement_vs_floor": 0.00117981691661595,
+        "endpoint_fde_improvement_vs_floor": 0.00034779117476690935,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.00117981691661595,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.00117981691661595,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0616,
+        "harm_over_floor_ade": -0.00017145046149380505,
+        "mean_floor_ade": 0.14530886709690094,
+        "mean_selected_ade": 0.14513742923736572
+      },
+      "metric_replay_diff": {
+        "full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0
+      },
+      "max_metric_replay_diff": 0.0,
+      "stress_tables": {
+        "domain": [
+          {
+            "label": "ETH_UCY",
+            "slice": {
+              "rows": 5368,
+              "t100_improvement": 0.0014916019945891978,
+              "endpoint_fde_improvement": 0.00035649797846326603,
+              "hard_failure_improvement": 0.0014916019945891978,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06650521609538003,
+              "mean_delta_ade_selected_minus_floor": -0.00021200843912083656
+            },
+            "without_label": {
+              "rows": 4632,
+              "t100_improvement": 0.0008353236996867519,
+              "endpoint_fde_improvement": 0.00033907265845933843,
+              "hard_failure_improvement": 0.0008353236996867519,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0559153713298791,
+              "mean_delta_ade_selected_minus_floor": -0.00012444803724065423
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY",
+            "slice": {
+              "rows": 1702,
+              "t100_improvement": 0.0011276014452250571,
+              "endpoint_fde_improvement": 0.0005449703036504161,
+              "hard_failure_improvement": 0.0011276014452250571,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07285546415981199,
+              "mean_delta_ade_selected_minus_floor": -0.00016950802819337696
+            },
+            "without_label": {
+              "rows": 8298,
+              "t100_improvement": 0.001191135342120675,
+              "endpoint_fde_improvement": 0.00030343113746134076,
+              "hard_failure_improvement": 0.001191135342120675,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05929139551699204,
+              "mean_delta_ade_selected_minus_floor": -0.00017184884927701205
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet",
+            "slice": {
+              "rows": 2930,
+              "t100_improvement": 0.0006631967915554648,
+              "endpoint_fde_improvement": 0.0002187751986220121,
+              "hard_failure_improvement": 0.0006631967915554648,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04607508532423208,
+              "mean_delta_ade_selected_minus_floor": -9.82732672127895e-05
+            },
+            "without_label": {
+              "rows": 7070,
+              "t100_improvement": 0.0014000736587013174,
+              "endpoint_fde_improvement": 0.00040686453891580765,
+              "hard_failure_improvement": 0.0014000736587013174,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06803394625176803,
+              "mean_delta_ade_selected_minus_floor": -0.00020177706028334796
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "source_file": [
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+            "slice": {
+              "rows": 2694,
+              "t100_improvement": 0.0025788641936206336,
+              "endpoint_fde_improvement": 0.0008705110009303851,
+              "hard_failure_improvement": 0.0025788641936206336,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07906458797327394,
+              "mean_delta_ade_selected_minus_floor": -0.00038147068698890507
+            },
+            "without_label": {
+              "rows": 7306,
+              "t100_improvement": 0.0006514914881310396,
+              "endpoint_fde_improvement": 0.00015449931095878888,
+              "hard_failure_improvement": 0.0006514914881310396,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05516014234875445,
+              "mean_delta_ade_selected_minus_floor": -9.400801354786381e-05
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+            "slice": {
+              "rows": 236,
+              "t100_improvement": 0.003328503965277063,
+              "endpoint_fde_improvement": 0.0028392681810452958,
+              "hard_failure_improvement": 0.003328503965277063,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.1652542372881356,
+              "mean_delta_ade_selected_minus_floor": -0.0004906925023533404
+            },
+            "without_label": {
+              "rows": 9764,
+              "t100_improvement": 0.0011271965612092982,
+              "endpoint_fde_improvement": 0.00028529520869746694,
+              "hard_failure_improvement": 0.0011271965612092982,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05909463334698894,
+              "mean_delta_ade_selected_minus_floor": -0.00016373425023630261
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+            "slice": {
+              "rows": 253,
+              "t100_improvement": 0.002197229182338112,
+              "endpoint_fde_improvement": 0.001002517758469934,
+              "hard_failure_improvement": 0.002197229182338112,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.11067193675889328,
+              "mean_delta_ade_selected_minus_floor": -0.0003116999287158251
+            },
+            "without_label": {
+              "rows": 9747,
+              "t100_improvement": 0.0011541855367085407,
+              "endpoint_fde_improvement": 0.0003309917398018891,
+              "hard_failure_improvement": 0.0011541855367085407,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.060326254232071407,
+              "mean_delta_ade_selected_minus_floor": -0.0001678100525168702
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+            "slice": {
+              "rows": 202,
+              "t100_improvement": 0.0006358975141658174,
+              "endpoint_fde_improvement": 0.0005948428800703898,
+              "hard_failure_improvement": 0.0006358975141658174,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0049504950495049506,
+              "mean_delta_ade_selected_minus_floor": -4.718755735666491e-05
+            },
+            "without_label": {
+              "rows": 9798,
+              "t100_improvement": 0.0011854951114697032,
+              "endpoint_fde_improvement": 0.0003453674389922723,
+              "hard_failure_improvement": 0.0011854951114697032,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06276791181873852,
+              "mean_delta_ade_selected_minus_floor": -0.00017401232616975904
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+            "slice": {
+              "rows": 86,
+              "t100_improvement": 0.0,
+              "endpoint_fde_improvement": 0.0,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0,
+              "mean_delta_ade_selected_minus_floor": 3.833583672729901e-09
+            },
+            "without_label": {
+              "rows": 9914,
+              "t100_improvement": 0.0011887063677114007,
+              "endpoint_fde_improvement": 0.0003504069522496378,
+              "hard_failure_improvement": 0.0011887063677114007,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.062134355456929594,
+              "mean_delta_ade_selected_minus_floor": -0.0001729377545416355
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+            "slice": {
+              "rows": 431,
+              "t100_improvement": 0.0006977725086393383,
+              "endpoint_fde_improvement": -0.00018595273130750378,
+              "hard_failure_improvement": 0.0006977725086393383,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.03944315545243619,
+              "mean_delta_ade_selected_minus_floor": -5.459774183691479e-05
+            },
+            "without_label": {
+              "rows": 9569,
+              "t100_improvement": 0.0011913499494788926,
+              "endpoint_fde_improvement": 0.00035963747442802063,
+              "hard_failure_improvement": 0.0011913499494788926,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0625979726199185,
+              "mean_delta_ade_selected_minus_floor": -0.0001767136564012617
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+            "slice": {
+              "rows": 513,
+              "t100_improvement": 0.0006125763466339196,
+              "endpoint_fde_improvement": 8.537758537763285e-05,
+              "hard_failure_improvement": 0.0006125763466339196,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.10136452241715399,
+              "mean_delta_ade_selected_minus_floor": -5.94728444411885e-05
+            },
+            "without_label": {
+              "rows": 9487,
+              "t100_improvement": 0.0011999225505451294,
+              "endpoint_fde_improvement": 0.00035778293679755713,
+              "hard_failure_improvement": 0.0011999225505451294,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05944977337409086,
+              "mean_delta_ade_selected_minus_floor": -0.00017750552797224373
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "slice": {
+              "rows": 955,
+              "t100_improvement": 0.0010099622690454835,
+              "endpoint_fde_improvement": 0.00034553988978691663,
+              "hard_failure_improvement": 0.0010099622690454835,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0712041884816754,
+              "mean_delta_ade_selected_minus_floor": -0.00019678316311910748
+            },
+            "without_label": {
+              "rows": 9045,
+              "t100_improvement": 0.0012048255571945887,
+              "endpoint_fde_improvement": 0.0003481228302960604,
+              "hard_failure_improvement": 0.0012048255571945887,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06058595909342178,
+              "mean_delta_ade_selected_minus_floor": -0.0001687757612671703
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "slice": {
+              "rows": 504,
+              "t100_improvement": 0.00019803624579917134,
+              "endpoint_fde_improvement": 1.5877370808992097e-05,
+              "hard_failure_improvement": 0.00019803624579917134,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.00992063492063492,
+              "mean_delta_ade_selected_minus_floor": -1.5425917808897793e-05
+            },
+            "without_label": {
+              "rows": 9496,
+              "t100_improvement": 0.0012072034274889232,
+              "endpoint_fde_improvement": 0.00035612463625045443,
+              "hard_failure_improvement": 0.0012072034274889232,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06434288121314237,
+              "mean_delta_ade_selected_minus_floor": -0.00017973144713323563
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+            "slice": {
+              "rows": 1280,
+              "t100_improvement": 0.0003539879728629014,
+              "endpoint_fde_improvement": -0.0003137379303983501,
+              "hard_failure_improvement": 0.0003539879728629014,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07265625,
+              "mean_delta_ade_selected_minus_floor": -2.682630110939499e-05
+            },
+            "without_label": {
+              "rows": 8720,
+              "t100_improvement": 0.001238943649623292,
+              "endpoint_fde_improvement": 0.0003972080703885661,
+              "hard_failure_improvement": 0.001238943649623292,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.059977064220183486,
+              "mean_delta_ade_selected_minus_floor": -0.00019267969764769077
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "slice": {
+              "rows": 1213,
+              "t100_improvement": 0.000506672093553262,
+              "endpoint_fde_improvement": 4.197717811293966e-05,
+              "hard_failure_improvement": 0.000506672093553262,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04699093157460841,
+              "mean_delta_ade_selected_minus_floor": -7.736120460322127e-05
+            },
+            "without_label": {
+              "rows": 8787,
+              "t100_improvement": 0.00127817335942626,
+              "endpoint_fde_improvement": 0.0003951178977124048,
+              "hard_failure_improvement": 0.00127817335942626,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06361670649823603,
+              "mean_delta_ade_selected_minus_floor": -0.00018443900626152754
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+            "slice": {
+              "rows": 1174,
+              "t100_improvement": 0.00034759108934179217,
+              "endpoint_fde_improvement": 0.00010746616657864028,
+              "hard_failure_improvement": 0.00034759108934179217,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.01192504258943782,
+              "mean_delta_ade_selected_minus_floor": -5.10831487190444e-05
+            },
+            "without_label": {
+              "rows": 8826,
+              "t100_improvement": 0.0012920570740022619,
+              "endpoint_fde_improvement": 0.00038247886304265677,
+              "hard_failure_improvement": 0.0012920570740022619,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06820756854747337,
+              "mean_delta_ade_selected_minus_floor": -0.00018746123532764614
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+            "slice": {
+              "rows": 459,
+              "t100_improvement": 0.00022974243609230616,
+              "endpoint_fde_improvement": -0.00026044078377784885,
+              "hard_failure_improvement": 0.00022974243609230616,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06318082788671024,
+              "mean_delta_ade_selected_minus_floor": -9.746249270392582e-05
+            },
+            "without_label": {
+              "rows": 9541,
+              "t100_improvement": 0.0013268189479008763,
+              "endpoint_fde_improvement": 0.0004281542854759346,
+              "hard_failure_improvement": 0.0013268189479008763,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06152394927156483,
+              "mean_delta_ade_selected_minus_floor": -0.00017500988906249404
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "scene_id": [
+          {
+            "label": "ETH_UCY_students03",
+            "slice": {
+              "rows": 2694,
+              "t100_improvement": 0.0025788641936206336,
+              "endpoint_fde_improvement": 0.0008705110009303851,
+              "hard_failure_improvement": 0.0025788641936206336,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07906458797327394,
+              "mean_delta_ade_selected_minus_floor": -0.00038147068698890507
+            },
+            "without_label": {
+              "rows": 7306,
+              "t100_improvement": 0.0006514914881310396,
+              "endpoint_fde_improvement": 0.00015449931095878888,
+              "hard_failure_improvement": 0.0006514914881310396,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05516014234875445,
+              "mean_delta_ade_selected_minus_floor": -9.400801354786381e-05
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_crowds",
+            "slice": {
+              "rows": 236,
+              "t100_improvement": 0.003328503965277063,
+              "endpoint_fde_improvement": 0.0028392681810452958,
+              "hard_failure_improvement": 0.003328503965277063,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.1652542372881356,
+              "mean_delta_ade_selected_minus_floor": -0.0004906925023533404
+            },
+            "without_label": {
+              "rows": 9764,
+              "t100_improvement": 0.0011271965612092982,
+              "endpoint_fde_improvement": 0.00028529520869746694,
+              "hard_failure_improvement": 0.0011271965612092982,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05909463334698894,
+              "mean_delta_ade_selected_minus_floor": -0.00016373425023630261
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_zara03",
+            "slice": {
+              "rows": 253,
+              "t100_improvement": 0.002197229182338112,
+              "endpoint_fde_improvement": 0.001002517758469934,
+              "hard_failure_improvement": 0.002197229182338112,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.11067193675889328,
+              "mean_delta_ade_selected_minus_floor": -0.0003116999287158251
+            },
+            "without_label": {
+              "rows": 9747,
+              "t100_improvement": 0.0011541855367085407,
+              "endpoint_fde_improvement": 0.0003309917398018891,
+              "hard_failure_improvement": 0.0011541855367085407,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.060326254232071407,
+              "mean_delta_ade_selected_minus_floor": -0.0001678100525168702
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet_biwi",
+            "slice": {
+              "rows": 202,
+              "t100_improvement": 0.0006358975141658174,
+              "endpoint_fde_improvement": 0.0005948428800703898,
+              "hard_failure_improvement": 0.0006358975141658174,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0049504950495049506,
+              "mean_delta_ade_selected_minus_floor": -4.718755735666491e-05
+            },
+            "without_label": {
+              "rows": 9798,
+              "t100_improvement": 0.0011854951114697032,
+              "endpoint_fde_improvement": 0.0003453674389922723,
+              "hard_failure_improvement": 0.0011854951114697032,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06276791181873852,
+              "mean_delta_ade_selected_minus_floor": -0.00017401232616975904
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_zara01",
+            "slice": {
+              "rows": 431,
+              "t100_improvement": 0.0006977725086393383,
+              "endpoint_fde_improvement": -0.00018595273130750378,
+              "hard_failure_improvement": 0.0006977725086393383,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.03944315545243619,
+              "mean_delta_ade_selected_minus_floor": -5.459774183691479e-05
+            },
+            "without_label": {
+              "rows": 9569,
+              "t100_improvement": 0.0011913499494788926,
+              "endpoint_fde_improvement": 0.00035963747442802063,
+              "hard_failure_improvement": 0.0011913499494788926,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0625979726199185,
+              "mean_delta_ade_selected_minus_floor": -0.0001767136564012617
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_seq_hotel",
+            "slice": {
+              "rows": 504,
+              "t100_improvement": 0.00019803624579917134,
+              "endpoint_fde_improvement": 1.5877370808992097e-05,
+              "hard_failure_improvement": 0.00019803624579917134,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.00992063492063492,
+              "mean_delta_ade_selected_minus_floor": -1.5425917808897793e-05
+            },
+            "without_label": {
+              "rows": 9496,
+              "t100_improvement": 0.0012072034274889232,
+              "endpoint_fde_improvement": 0.00035612463625045443,
+              "hard_failure_improvement": 0.0012072034274889232,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06434288121314237,
+              "mean_delta_ade_selected_minus_floor": -0.00017973144713323563
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_zara02",
+            "slice": {
+              "rows": 1280,
+              "t100_improvement": 0.0003539879728629014,
+              "endpoint_fde_improvement": -0.0003137379303983501,
+              "hard_failure_improvement": 0.0003539879728629014,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07265625,
+              "mean_delta_ade_selected_minus_floor": -2.682630110939499e-05
+            },
+            "without_label": {
+              "rows": 8720,
+              "t100_improvement": 0.001238943649623292,
+              "endpoint_fde_improvement": 0.0003972080703885661,
+              "hard_failure_improvement": 0.001238943649623292,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.059977064220183486,
+              "mean_delta_ade_selected_minus_floor": -0.00019267969764769077
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_students01",
+            "slice": {
+              "rows": 1213,
+              "t100_improvement": 0.000506672093553262,
+              "endpoint_fde_improvement": 4.197717811293966e-05,
+              "hard_failure_improvement": 0.000506672093553262,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04699093157460841,
+              "mean_delta_ade_selected_minus_floor": -7.736120460322127e-05
+            },
+            "without_label": {
+              "rows": 8787,
+              "t100_improvement": 0.00127817335942626,
+              "endpoint_fde_improvement": 0.0003951178977124048,
+              "hard_failure_improvement": 0.00127817335942626,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06361670649823603,
+              "mean_delta_ade_selected_minus_floor": -0.00018443900626152754
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_seq_eth",
+            "slice": {
+              "rows": 459,
+              "t100_improvement": 0.00022974243609230616,
+              "endpoint_fde_improvement": -0.00026044078377784885,
+              "hard_failure_improvement": 0.00022974243609230616,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06318082788671024,
+              "mean_delta_ade_selected_minus_floor": -9.746249270392582e-05
+            },
+            "without_label": {
+              "rows": 9541,
+              "t100_improvement": 0.0013268189479008763,
+              "endpoint_fde_improvement": 0.0004281542854759346,
+              "hard_failure_improvement": 0.0013268189479008763,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06152394927156483,
+              "mean_delta_ade_selected_minus_floor": -0.00017500988906249404
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet_crowds",
+            "slice": {
+              "rows": 2728,
+              "t100_improvement": 0.0006640886038496996,
+              "endpoint_fde_improvement": 0.000207090707042501,
+              "hard_failure_improvement": 0.0006640886038496996,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04912023460410557,
+              "mean_delta_ade_selected_minus_floor": -0.00010205598664470017
+            },
+            "without_label": {
+              "rows": 7272,
+              "t100_improvement": 0.0013890142212291678,
+              "endpoint_fde_improvement": 0.0004094190664184483,
+              "hard_failure_improvement": 0.0013890142212291678,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06628162816281628,
+              "mean_delta_ade_selected_minus_floor": -0.00019748292106669396
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "row_source_instance": [
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2242",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.09475731531599507,
+              "endpoint_fde_improvement": 0.04648141603787648,
+              "hard_failure_improvement": 0.09475731531599507,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.026050984859466553
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011621797659908673,
+              "endpoint_fde_improvement": 0.00033957021212871474,
+              "hard_failure_improvement": 0.0011621797659908673,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.00016886225785128772
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2254",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.08655569676112285,
+              "endpoint_fde_improvement": 0.030837055850110873,
+              "hard_failure_improvement": 0.08655569676112285,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.025498241186141968
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011626057342020157,
+              "endpoint_fde_improvement": 0.00034207883734982403,
+              "hard_failure_improvement": 0.0011626057342020157,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.00016891752602532506
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|1483",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.08438956132402142,
+              "endpoint_fde_improvement": 0.01118261493340611,
+              "hard_failure_improvement": 0.08438956132402142,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.023735791444778442
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011637232580559154,
+              "endpoint_fde_improvement": 0.0003455612697665922,
+              "hard_failure_improvement": 0.0011637232580559154,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.00016909377882257104
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|3350",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.07513740499466692,
+              "endpoint_fde_improvement": 0.02264623312585934,
+              "hard_failure_improvement": 0.07513740499466692,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.022845745086669922
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011644593151002303,
+              "endpoint_fde_improvement": 0.0003433654494076066,
+              "hard_failure_improvement": 0.0011644593151002303,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.00016918279288802296
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2897",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.06799566274182944,
+              "endpoint_fde_improvement": 0.004339920677690734,
+              "hard_failure_improvement": 0.06799566274182944,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.022523462772369385
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011646862931418145,
+              "endpoint_fde_improvement": 0.00034691458942037734,
+              "hard_failure_improvement": 0.0011646862931418145,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.0001692150253802538
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|1304",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.03617464667969117,
+              "endpoint_fde_improvement": 0.002073718301722649,
+              "hard_failure_improvement": 0.03617464667969117,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.021847963333129883
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011652127921264466,
+              "endpoint_fde_improvement": 0.0003471149370890547,
+              "hard_failure_improvement": 0.0011652127921264466,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.00016928260447457433
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|1469",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.08352471172370879,
+              "endpoint_fde_improvement": 0.024519687450266003,
+              "hard_failure_improvement": 0.08352471172370879,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.02131497859954834
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011655482599538525,
+              "endpoint_fde_improvement": 0.0003439024639093624,
+              "hard_failure_improvement": 0.0011655482599538525,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.0001693358935881406
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2944",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.08982082262722202,
+              "endpoint_fde_improvement": 0.0327539260429196,
+              "hard_failure_improvement": 0.08982082262722202,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.02011662721633911
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0011662411540988016,
+              "endpoint_fde_improvement": 0.00034358664132205785,
+              "hard_failure_improvement": 0.0011662411540988016,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.061506150615061504,
+              "mean_delta_ade_selected_minus_floor": -0.00016945574316196144
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ]
+      },
+      "summary": {
+        "min_without_source_t100": 0.0006514914881310396,
+        "min_without_scene_t100": 0.0006514914881310396,
+        "min_without_domain_t100": 0.0008353236996867519,
+        "source_removal_flip_count": 0,
+        "scene_removal_flip_count": 0,
+        "domain_removal_flip_count": 0,
+        "negative_source_slice_count": 0,
+        "negative_scene_slice_count": 0,
+        "negative_domain_slice_count": 0
+      }
+    },
+    {
+      "seed": 4337,
+      "rows": 10000,
+      "policy": {
+        "alpha": 0.75,
+        "alpha_index": 5,
+        "gain_threshold": 0.8,
+        "harm_threshold": 0.2,
+        "delta_threshold": 0.002,
+        "force_easy_floor": false
+      },
+      "metrics": {
+        "rows": 10000,
+        "full_waypoint_ade_improvement_vs_floor": 0.001500867231038372,
+        "endpoint_fde_improvement_vs_floor": 0.0006008852130054976,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.001500867231038372,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.001500867231038372,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.07,
+        "harm_over_floor_ade": -0.0002198266302002594,
+        "mean_floor_ade": 0.1464632749557495,
+        "mean_selected_ade": 0.14624345302581787
+      },
+      "metric_replay_diff": {
+        "full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0
+      },
+      "max_metric_replay_diff": 0.0,
+      "stress_tables": {
+        "domain": [
+          {
+            "label": "ETH_UCY",
+            "slice": {
+              "rows": 5345,
+              "t100_improvement": 0.0016283505626295547,
+              "endpoint_fde_improvement": 0.0005905530887263533,
+              "hard_failure_improvement": 0.0016283505626295547,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.05275958840037418,
+              "mean_delta_ade_selected_minus_floor": -0.00023389357374981046
+            },
+            "without_label": {
+              "rows": 4655,
+              "t100_improvement": 0.001360519706783081,
+              "endpoint_fde_improvement": 0.0006115140324178814,
+              "hard_failure_improvement": 0.001360519706783081,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.08979591836734693,
+              "mean_delta_ade_selected_minus_floor": -0.00020367454271763563
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY",
+            "slice": {
+              "rows": 1685,
+              "t100_improvement": 0.0014876298316449654,
+              "endpoint_fde_improvement": 0.0008115334321400214,
+              "hard_failure_improvement": 0.0014876298316449654,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.10682492581602374,
+              "mean_delta_ade_selected_minus_floor": -0.0002268217212986201
+            },
+            "without_label": {
+              "rows": 8315,
+              "t100_improvement": 0.001503584606847408,
+              "endpoint_fde_improvement": 0.0005537566818781814,
+              "hard_failure_improvement": 0.001503584606847408,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06253758268190018,
+              "mean_delta_ade_selected_minus_floor": -0.0002184090844821185
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet",
+            "slice": {
+              "rows": 2970,
+              "t100_improvement": 0.0012861541636864926,
+              "endpoint_fde_improvement": 0.00049531669524705,
+              "hard_failure_improvement": 0.0012861541636864926,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.08013468013468013,
+              "mean_delta_ade_selected_minus_floor": -0.0001905422395793721
+            },
+            "without_label": {
+              "rows": 7030,
+              "t100_improvement": 0.0015931550460985822,
+              "endpoint_fde_improvement": 0.0006498005068281687,
+              "hard_failure_improvement": 0.0015931550460985822,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06571834992887625,
+              "mean_delta_ade_selected_minus_floor": -0.00023219853756017983
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "source_file": [
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt",
+            "slice": {
+              "rows": 2662,
+              "t100_improvement": 0.0024012665108289477,
+              "endpoint_fde_improvement": 0.0007249081170206395,
+              "hard_failure_improvement": 0.0024012665108289477,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07212622088655146,
+              "mean_delta_ade_selected_minus_floor": -0.0003583652141969651
+            },
+            "without_label": {
+              "rows": 7338,
+              "t100_improvement": 0.0011657253989836303,
+              "endpoint_fde_improvement": 0.0005558277230968134,
+              "hard_failure_improvement": 0.0011657253989836303,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06922867266285092,
+              "mean_delta_ade_selected_minus_floor": -0.00016956908802967519
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt",
+            "slice": {
+              "rows": 518,
+              "t100_improvement": 0.0032318202531445017,
+              "endpoint_fde_improvement": 0.0008542150077386346,
+              "hard_failure_improvement": 0.0032318202531445017,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.14478764478764478,
+              "mean_delta_ade_selected_minus_floor": -0.00030976085690781474
+            },
+            "without_label": {
+              "rows": 9482,
+              "t100_improvement": 0.001440202776716526,
+              "endpoint_fde_improvement": 0.0005913590811204017,
+              "hard_failure_improvement": 0.001440202776716526,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06591436405821556,
+              "mean_delta_ade_selected_minus_floor": -0.0002149135252693668
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt",
+            "slice": {
+              "rows": 247,
+              "t100_improvement": 0.0035660501813601364,
+              "endpoint_fde_improvement": 0.0025339102238799427,
+              "hard_failure_improvement": 0.0035660501813601364,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.18218623481781376,
+              "mean_delta_ade_selected_minus_floor": -0.0005204925546422601
+            },
+            "without_label": {
+              "rows": 9753,
+              "t100_improvement": 0.001448751816026328,
+              "endpoint_fde_improvement": 0.0005512346972869064,
+              "hard_failure_improvement": 0.001448751816026328,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06715882292627909,
+              "mean_delta_ade_selected_minus_floor": -0.00021221209317445755
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt",
+            "slice": {
+              "rows": 246,
+              "t100_improvement": 0.0024041605150922907,
+              "endpoint_fde_improvement": 0.001826431958115493,
+              "hard_failure_improvement": 0.0024041605150922907,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.16666666666666666,
+              "mean_delta_ade_selected_minus_floor": -0.00037092025741003454
+            },
+            "without_label": {
+              "rows": 9754,
+              "t100_improvement": 0.001476810378912452,
+              "endpoint_fde_improvement": 0.0005675090054750864,
+              "hard_failure_improvement": 0.001476810378912452,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06756202583555465,
+              "mean_delta_ade_selected_minus_floor": -0.00021601596381515265
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt",
+            "slice": {
+              "rows": 206,
+              "t100_improvement": 0.0012814180489464366,
+              "endpoint_fde_improvement": 0.0007477584315380703,
+              "hard_failure_improvement": 0.0012814180489464366,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.038834951456310676,
+              "mean_delta_ade_selected_minus_floor": -9.482654422754422e-05
+            },
+            "without_label": {
+              "rows": 9794,
+              "t100_improvement": 0.0015032330738261601,
+              "endpoint_fde_improvement": 0.0005995420568847276,
+              "hard_failure_improvement": 0.0015032330738261601,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07065550336940984,
+              "mean_delta_ade_selected_minus_floor": -0.00022245578293222934
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt",
+            "slice": {
+              "rows": 955,
+              "t100_improvement": 0.0014790850641398512,
+              "endpoint_fde_improvement": 0.0006947633766224426,
+              "hard_failure_improvement": 0.0014790850641398512,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.11099476439790576,
+              "mean_delta_ade_selected_minus_floor": -0.0002835899649653584
+            },
+            "without_label": {
+              "rows": 9045,
+              "t100_improvement": 0.001504062578090104,
+              "endpoint_fde_improvement": 0.0005868648136675425,
+              "hard_failure_improvement": 0.001504062578090104,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06567164179104477,
+              "mean_delta_ade_selected_minus_floor": -0.00021309428848326206
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt",
+            "slice": {
+              "rows": 429,
+              "t100_improvement": 0.0011539189227333102,
+              "endpoint_fde_improvement": 0.00037838881599594476,
+              "hard_failure_improvement": 0.0011539189227333102,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.02097902097902098,
+              "mean_delta_ade_selected_minus_floor": -9.22872859518975e-05
+            },
+            "without_label": {
+              "rows": 9571,
+              "t100_improvement": 0.0015091285074524396,
+              "endpoint_fde_improvement": 0.0006060022789383668,
+              "hard_failure_improvement": 0.0015091285074524396,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0721972625639954,
+              "mean_delta_ade_selected_minus_floor": -0.00022554327733814716
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt",
+            "slice": {
+              "rows": 79,
+              "t100_improvement": 0.0,
+              "endpoint_fde_improvement": -1.2517895120467415e-07,
+              "hard_failure_improvement": 0.0,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0,
+              "mean_delta_ade_selected_minus_floor": 1.8390673428569926e-09
+            },
+            "without_label": {
+              "rows": 9921,
+              "t100_improvement": 0.0015123992017819221,
+              "endpoint_fde_improvement": 0.0006055699117329949,
+              "hard_failure_improvement": 0.0015123992017819221,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07055740348755166,
+              "mean_delta_ade_selected_minus_floor": -0.00022157708008307964
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt",
+            "slice": {
+              "rows": 512,
+              "t100_improvement": 0.0009338209364245786,
+              "endpoint_fde_improvement": 0.0003149379204554492,
+              "hard_failure_improvement": 0.0009338209364245786,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.017578125,
+              "mean_delta_ade_selected_minus_floor": -7.343677862081677e-05
+            },
+            "without_label": {
+              "rows": 9488,
+              "t100_improvement": 0.001516882689938659,
+              "endpoint_fde_improvement": 0.0006080858099413167,
+              "hard_failure_improvement": 0.001516882689938659,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07282883642495784,
+              "mean_delta_ade_selected_minus_floor": -0.0002277262246934697
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt",
+            "slice": {
+              "rows": 1286,
+              "t100_improvement": 0.0007926065894965362,
+              "endpoint_fde_improvement": 0.00012102960234350313,
+              "hard_failure_improvement": 0.0007926065894965362,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.038880248833592534,
+              "mean_delta_ade_selected_minus_floor": -5.9647001762641594e-05
+            },
+            "without_label": {
+              "rows": 8714,
+              "t100_improvement": 0.0015510298699741298,
+              "endpoint_fde_improvement": 0.0006363931709054693,
+              "hard_failure_improvement": 0.0015510298699741298,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07459260959375717,
+              "mean_delta_ade_selected_minus_floor": -0.00024346569261979312
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt",
+            "slice": {
+              "rows": 1192,
+              "t100_improvement": 0.0008878319245403388,
+              "endpoint_fde_improvement": 0.00027864605847316426,
+              "hard_failure_improvement": 0.0008878319245403388,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07885906040268456,
+              "mean_delta_ade_selected_minus_floor": -0.00013623031554743648
+            },
+            "without_label": {
+              "rows": 8808,
+              "t100_improvement": 0.0015883228218263046,
+              "endpoint_fde_improvement": 0.0006498261675086381,
+              "hard_failure_improvement": 0.0015883228218263046,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06880108991825613,
+              "mean_delta_ade_selected_minus_floor": -0.00023113982751965523
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt",
+            "slice": {
+              "rows": 1212,
+              "t100_improvement": 0.0006366296290006845,
+              "endpoint_fde_improvement": 0.000207894404826936,
+              "hard_failure_improvement": 0.0006366296290006845,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.040429042904290426,
+              "mean_delta_ade_selected_minus_floor": -9.496019629295915e-05
+            },
+            "without_label": {
+              "rows": 8788,
+              "t100_improvement": 0.0016227137906804634,
+              "endpoint_fde_improvement": 0.0006605126617043044,
+              "hard_failure_improvement": 0.0016227137906804634,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07407828857533,
+              "mean_delta_ade_selected_minus_floor": -0.00023704758496023715
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt",
+            "slice": {
+              "rows": 456,
+              "t100_improvement": 0.0007146345971603685,
+              "endpoint_fde_improvement": 0.0006569460665191151,
+              "hard_failure_improvement": 0.0007146345971603685,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04824561403508772,
+              "mean_delta_ade_selected_minus_floor": -0.0003120526089332998
+            },
+            "without_label": {
+              "rows": 9544,
+              "t100_improvement": 0.001624524658533466,
+              "endpoint_fde_improvement": 0.000593593463315778,
+              "hard_failure_improvement": 0.001624524658533466,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07103939647946354,
+              "mean_delta_ade_selected_minus_floor": -0.00021542017930187285
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "scene_id": [
+          {
+            "label": "ETH_UCY_students03",
+            "slice": {
+              "rows": 2662,
+              "t100_improvement": 0.0024012665108289477,
+              "endpoint_fde_improvement": 0.0007249081170206395,
+              "hard_failure_improvement": 0.0024012665108289477,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07212622088655146,
+              "mean_delta_ade_selected_minus_floor": -0.0003583652141969651
+            },
+            "without_label": {
+              "rows": 7338,
+              "t100_improvement": 0.0011657253989836303,
+              "endpoint_fde_improvement": 0.0005558277230968134,
+              "hard_failure_improvement": 0.0011657253989836303,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06922867266285092,
+              "mean_delta_ade_selected_minus_floor": -0.00016956908802967519
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_crowds",
+            "slice": {
+              "rows": 247,
+              "t100_improvement": 0.0035660501813601364,
+              "endpoint_fde_improvement": 0.0025339102238799427,
+              "hard_failure_improvement": 0.0035660501813601364,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.18218623481781376,
+              "mean_delta_ade_selected_minus_floor": -0.0005204925546422601
+            },
+            "without_label": {
+              "rows": 9753,
+              "t100_improvement": 0.001448751816026328,
+              "endpoint_fde_improvement": 0.0005512346972869064,
+              "hard_failure_improvement": 0.001448751816026328,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06715882292627909,
+              "mean_delta_ade_selected_minus_floor": -0.00021221209317445755
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_zara03",
+            "slice": {
+              "rows": 246,
+              "t100_improvement": 0.0024041605150922907,
+              "endpoint_fde_improvement": 0.001826431958115493,
+              "hard_failure_improvement": 0.0024041605150922907,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.16666666666666666,
+              "mean_delta_ade_selected_minus_floor": -0.00037092025741003454
+            },
+            "without_label": {
+              "rows": 9754,
+              "t100_improvement": 0.001476810378912452,
+              "endpoint_fde_improvement": 0.0005675090054750864,
+              "hard_failure_improvement": 0.001476810378912452,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06756202583555465,
+              "mean_delta_ade_selected_minus_floor": -0.00021601596381515265
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet_biwi",
+            "slice": {
+              "rows": 206,
+              "t100_improvement": 0.0012814180489464366,
+              "endpoint_fde_improvement": 0.0007477584315380703,
+              "hard_failure_improvement": 0.0012814180489464366,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.038834951456310676,
+              "mean_delta_ade_selected_minus_floor": -9.482654422754422e-05
+            },
+            "without_label": {
+              "rows": 9794,
+              "t100_improvement": 0.0015032330738261601,
+              "endpoint_fde_improvement": 0.0005995420568847276,
+              "hard_failure_improvement": 0.0015032330738261601,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07065550336940984,
+              "mean_delta_ade_selected_minus_floor": -0.00022245578293222934
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_zara01",
+            "slice": {
+              "rows": 429,
+              "t100_improvement": 0.0011539189227333102,
+              "endpoint_fde_improvement": 0.00037838881599594476,
+              "hard_failure_improvement": 0.0011539189227333102,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.02097902097902098,
+              "mean_delta_ade_selected_minus_floor": -9.22872859518975e-05
+            },
+            "without_label": {
+              "rows": 9571,
+              "t100_improvement": 0.0015091285074524396,
+              "endpoint_fde_improvement": 0.0006060022789383668,
+              "hard_failure_improvement": 0.0015091285074524396,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0721972625639954,
+              "mean_delta_ade_selected_minus_floor": -0.00022554327733814716
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_seq_hotel",
+            "slice": {
+              "rows": 512,
+              "t100_improvement": 0.0009338209364245786,
+              "endpoint_fde_improvement": 0.0003149379204554492,
+              "hard_failure_improvement": 0.0009338209364245786,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.017578125,
+              "mean_delta_ade_selected_minus_floor": -7.343677862081677e-05
+            },
+            "without_label": {
+              "rows": 9488,
+              "t100_improvement": 0.001516882689938659,
+              "endpoint_fde_improvement": 0.0006080858099413167,
+              "hard_failure_improvement": 0.001516882689938659,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07282883642495784,
+              "mean_delta_ade_selected_minus_floor": -0.0002277262246934697
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_zara02",
+            "slice": {
+              "rows": 1286,
+              "t100_improvement": 0.0007926065894965362,
+              "endpoint_fde_improvement": 0.00012102960234350313,
+              "hard_failure_improvement": 0.0007926065894965362,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.038880248833592534,
+              "mean_delta_ade_selected_minus_floor": -5.9647001762641594e-05
+            },
+            "without_label": {
+              "rows": 8714,
+              "t100_improvement": 0.0015510298699741298,
+              "endpoint_fde_improvement": 0.0006363931709054693,
+              "hard_failure_improvement": 0.0015510298699741298,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07459260959375717,
+              "mean_delta_ade_selected_minus_floor": -0.00024346569261979312
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "UCY_students01",
+            "slice": {
+              "rows": 1192,
+              "t100_improvement": 0.0008878319245403388,
+              "endpoint_fde_improvement": 0.00027864605847316426,
+              "hard_failure_improvement": 0.0008878319245403388,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07885906040268456,
+              "mean_delta_ade_selected_minus_floor": -0.00013623031554743648
+            },
+            "without_label": {
+              "rows": 8808,
+              "t100_improvement": 0.0015883228218263046,
+              "endpoint_fde_improvement": 0.0006498261675086381,
+              "hard_failure_improvement": 0.0015883228218263046,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06880108991825613,
+              "mean_delta_ade_selected_minus_floor": -0.00023113982751965523
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "TrajNet_crowds",
+            "slice": {
+              "rows": 2764,
+              "t100_improvement": 0.001286256007901554,
+              "endpoint_fde_improvement": 0.00048756496360791157,
+              "hard_failure_improvement": 0.001286256007901554,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.08321273516642547,
+              "mean_delta_ade_selected_minus_floor": -0.00019767586491070688
+            },
+            "without_label": {
+              "rows": 7236,
+              "t100_improvement": 0.0015885282544946255,
+              "endpoint_fde_improvement": 0.0006511186357101018,
+              "hard_failure_improvement": 0.0015885282544946255,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.06495301271420674,
+              "mean_delta_ade_selected_minus_floor": -0.0002282877394463867
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "ETH_UCY_seq_eth",
+            "slice": {
+              "rows": 456,
+              "t100_improvement": 0.0007146345971603685,
+              "endpoint_fde_improvement": 0.0006569460665191151,
+              "hard_failure_improvement": 0.0007146345971603685,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.04824561403508772,
+              "mean_delta_ade_selected_minus_floor": -0.0003120526089332998
+            },
+            "without_label": {
+              "rows": 9544,
+              "t100_improvement": 0.001624524658533466,
+              "endpoint_fde_improvement": 0.000593593463315778,
+              "hard_failure_improvement": 0.001624524658533466,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.07103939647946354,
+              "mean_delta_ade_selected_minus_floor": -0.00021542017930187285
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ],
+        "row_source_instance": [
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt|9988",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.09687376151614879,
+              "endpoint_fde_improvement": 0.028034709183525464,
+              "hard_failure_improvement": 0.09687376151614879,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.020867228507995605
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014867954191684074,
+              "endpoint_fde_improvement": 0.0005958519093082204,
+              "hard_failure_improvement": 0.0014867954191684074,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.00021776166977360845
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2236",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.07135639094744961,
+              "endpoint_fde_improvement": 0.035116729950658176,
+              "hard_failure_improvement": 0.07135639094744961,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.019617527723312378
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014877715193197805,
+              "endpoint_fde_improvement": 0.0005947556404314325,
+              "hard_failure_improvement": 0.0014877715193197805,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.00021788664162158966
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2246",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.06500476189416349,
+              "endpoint_fde_improvement": 0.02322794674402162,
+              "hard_failure_improvement": 0.06500476189416349,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.019149601459503174
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014880967522351574,
+              "endpoint_fde_improvement": 0.0005966388075796525,
+              "hard_failure_improvement": 0.0014880967522351574,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.0002179334405809641
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|1477",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.06344626089993377,
+              "endpoint_fde_improvement": 0.00849463069282741,
+              "hard_failure_improvement": 0.06344626089993377,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.017845183610916138
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014888972707687298,
+              "endpoint_fde_improvement": 0.0005993630042641085,
+              "hard_failure_improvement": 0.0014888972707687298,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.0002180638985009864
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|3337",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.05641784291850427,
+              "endpoint_fde_improvement": 0.01701058706203895,
+              "hard_failure_improvement": 0.05641784291850427,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.017154008150100708
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014894292040863455,
+              "endpoint_fde_improvement": 0.0005976741684098341,
+              "hard_failure_improvement": 0.0014894292040863455,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.0002181330492021516
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|2887",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.0512742585239071,
+              "endpoint_fde_improvement": 0.0032590394993583516,
+              "hard_failure_improvement": 0.0512742585239071,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.016984522342681885
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014896602923315516,
+              "endpoint_fde_improvement": 0.0006004080255972433,
+              "hard_failure_improvement": 0.0014896602923315516,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.0002181499730795622
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt|8077",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.11972916666899003,
+              "endpoint_fde_improvement": 0.02390517963874439,
+              "hard_failure_improvement": 0.11972916666899003,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.015997909009456635
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014899681750123461,
+              "endpoint_fde_improvement": 0.0005982316388986053,
+              "hard_failure_improvement": 0.0014899681750123461,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.00021824863506481051
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          },
+          {
+            "label": "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt|1463",
+            "slice": {
+              "rows": 1,
+              "t100_improvement": 0.06301945875913928,
+              "endpoint_fde_improvement": 0.01841592446376572,
+              "hard_failure_improvement": 0.06301945875913928,
+              "easy_degradation": 0.0,
+              "switch_rate": 1.0,
+              "mean_delta_ade_selected_minus_floor": -0.016082167625427246
+            },
+            "without_label": {
+              "rows": 9999,
+              "t100_improvement": 0.0014900917294160543,
+              "endpoint_fde_improvement": 0.0005979547610324154,
+              "hard_failure_improvement": 0.0014900917294160543,
+              "easy_degradation": 0.0,
+              "switch_rate": 0.0699069906990699,
+              "mean_delta_ade_selected_minus_floor": -0.00021824022405780852
+            },
+            "removal_flips_t100_nonpositive": false,
+            "slice_negative": false
+          }
+        ]
+      },
+      "summary": {
+        "min_without_source_t100": 0.0011657253989836303,
+        "min_without_scene_t100": 0.0011657253989836303,
+        "min_without_domain_t100": 0.001360519706783081,
+        "source_removal_flip_count": 0,
+        "scene_removal_flip_count": 0,
+        "domain_removal_flip_count": 0,
+        "negative_source_slice_count": 0,
+        "negative_scene_slice_count": 0,
+        "negative_domain_slice_count": 0
+      }
+    }
+  ],
+  "aggregate": {
+    "min_without_source_t100": {
+      "mean": 0.0008121881182265497,
+      "min": 0.000619347467564979,
+      "max": 0.0011657253989836303,
+      "values": [
+        0.000619347467564979,
+        0.0006514914881310396,
+        0.0011657253989836303
+      ]
+    },
+    "min_without_scene_t100": {
+      "mean": 0.0008121881182265497,
+      "min": 0.000619347467564979,
+      "max": 0.0011657253989836303,
+      "values": [
+        0.000619347467564979,
+        0.0006514914881310396,
+        0.0011657253989836303
+      ]
+    },
+    "min_without_domain_t100": {
+      "mean": 0.0010035270384989674,
+      "min": 0.0008147377090270691,
+      "max": 0.001360519706783081,
+      "values": [
+        0.0008147377090270691,
+        0.0008353236996867519,
+        0.001360519706783081
+      ]
+    },
+    "source_removal_flip_count": {
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "scene_removal_flip_count": {
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "domain_removal_flip_count": {
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "negative_source_slice_count": {
+      "mean": 1.0,
+      "min": 0.0,
+      "max": 3.0,
+      "values": [
+        3.0,
+        0.0,
+        0.0
+      ]
+    },
+    "negative_scene_slice_count": {
+      "mean": 1.0,
+      "min": 0.0,
+      "max": 3.0,
+      "values": [
+        3.0,
+        0.0,
+        0.0
+      ]
+    },
+    "negative_domain_slice_count": {
+      "mean": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "values": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "all_replay_exact": true,
+    "all_single_source_exclusions_positive": true,
+    "all_single_scene_exclusions_positive": true,
+    "all_single_domain_exclusions_positive": true,
+    "stress_verdict": "source_scene_stress_survives_single_exclusion"
+  },
+  "deploy_on_current_heldout": false,
+  "no_leakage": {
+    "future_endpoint_input": false,
+    "future_waypoint_input": false,
+    "future_waypoint_label_eval_only": true,
+    "central_velocity_input": false,
+    "test_endpoint_goal_construction": false,
+    "test_statistics_normalization": false,
+    "feature_standardization_train_only": true,
+    "validation_policy_selection_only": true
+  },
+  "claim_boundary": {
+    "true_3d_world_model": false,
+    "foundation_world_model": false,
+    "dataset_local_raw_frame_only": true,
+    "metric_or_seconds_claim": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "long_objective_complete": false,
+  "stage43_cw_gate": {
+    "source": "fresh_stage43_cw_t100_residual_admissibility_source_stress",
+    "gates": {
+      "stage43_cv_precondition_present": true,
+      "fresh_source_scene_stress": true,
+      "three_seed_replay": true,
+      "replay_diff_zero": true,
+      "source_scene_domain_exclusion_tables_present": true,
+      "single_source_exclusion_positive_or_fragility_reported": true,
+      "diagnostic_not_deployed": true,
+      "no_future_or_test_leakage": true,
+      "no_metric_seconds_stage5c_smc_claim": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 10,
+    "total": 10,
+    "verdict": "stage43_cw_t100_source_stress_survives_single_exclusion_diagnostic"
+  }
+}

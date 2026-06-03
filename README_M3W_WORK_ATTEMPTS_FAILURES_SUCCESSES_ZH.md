@@ -3432,3 +3432,21 @@ I traced the tiny Stage43-CU t100 residual-admissibility gain back to domain/sou
 
 This keeps the t100 signal in the diagnostic lane. If the gain is concentrated, the next work should be source-slice expansion and stress testing before any wider claim.
 <!-- STAGE43_CV_T100_RESIDUAL_ADMISSIBILITY_SLICE_ATTRIBUTION:END -->
+
+<!-- STAGE43_CW_T100_RESIDUAL_ADMISSIBILITY_SOURCE_STRESS:START -->
+## Stage43-CW: t100 residual admissibility source stress
+
+I stress-tested the tiny Stage43-CU/CV t100 signal by removing one source or scene at a time and replaying the residual-admissibility policy. The point is to check whether the signal survives simple source/scene exclusions before trying to expand it.
+
+- gate: `10 / 10`
+- verdict: `stage43_cw_t100_source_stress_survives_single_exclusion_diagnostic`
+- stress verdict: `source_scene_stress_survives_single_exclusion`
+- all replay exact: `True`
+- all single-source exclusions positive: `True`
+- all single-scene exclusions positive: `True`
+- min without-source t100 mean: `0.0812%`
+- min without-scene t100 mean: `0.0812%`
+- deploy on current heldout t100: `False`
+
+This is still diagnostic evidence. It supports source-slice expansion work, not a heldout t100 deployment change.
+<!-- STAGE43_CW_T100_RESIDUAL_ADMISSIBILITY_SOURCE_STRESS:END -->
