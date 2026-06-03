@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_cl_t100_source_stable_compatibility_audit",
-  "current_verdict": "stage43_cl_t100_source_stable_compatibility_pass_local_only",
+  "current_stage": "stage43_cm_current_matrix_t100_source_family_gate",
+  "current_verdict": "stage43_cm_current_matrix_t100_source_family_gate_pass_keep_floor",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -41179,6 +41179,123 @@
         "metric_or_seconds_claim": false,
         "stage5c_executed": false,
         "smc_enabled": false,
+        "long_objective_complete": false
+      }
+    },
+    "current_matrix_t100_source_family_gate": {
+      "source": "fresh_stage43_cm_current_matrix_t100_source_family_gate",
+      "result_source": "fresh_current_matrix_train_val_selected_t100_source_family_gate",
+      "updated_at": "2026-06-03T05:42:35.597377+00:00",
+      "report": "outputs/stage43_latent_state/stage43_current_matrix_t100_source_family_gate.json",
+      "gate": "13 / 13",
+      "verdict": "stage43_cm_current_matrix_t100_source_family_gate_pass_keep_floor",
+      "deploy_current_matrix_t100_source_family_gate": false,
+      "current_matrix_scope": {
+        "train_rows": 146809,
+        "val_rows": 101446,
+        "test_rows": 89736,
+        "test_t100_rows": 18070,
+        "stage43_at_matrix_test_rows": 89736,
+        "stage43_cl_local_t100_rows": 1440,
+        "train_scope_hash": "322cc83ebeb51fa812f32fad57a1a31a21279493063a8904655b564291fdc961",
+        "val_scope_hash": "5b694bd6006129491c377ab18bc98d9843c68d8caad378842db3bc373597ba28",
+        "test_scope_hash": "d38474300a744e15504528d520eeec36d075eacf50b169b247cf04bff7701e8c"
+      },
+      "feature_contract": {
+        "feature_names_persisted": true,
+        "feature_dim": 170,
+        "feature_name_hash": "7931ac5f58f0fecff8d0552a9078e6065507dac3bc59367a14c96cb5c67f1e01",
+        "denied_feature_name_hits": [],
+        "causal_floor_waypoint_rollout_feature_count": 8,
+        "future_waypoints_label_only": true,
+        "baseline_rollout_computed_without_future": true,
+        "feature_mean_hash": "361e4adde8506df4413071e2c932f4d904aebf3a69a95cc215037e3846544613",
+        "feature_std_hash": "05a83732609b20d2ba179982e6034fa0639a515d5a0dd74cfe87351e57bde5c9"
+      },
+      "selected_model": {
+        "target": "residual",
+        "train_filter": "t50t100",
+        "l2": 10000.0,
+        "train_rows": 58845,
+        "model_hash": "f2577d3c8ecdb53941a897e61e3a08d6cbfc6efe164d60bf369c17fbc52fc205",
+        "validation_metrics": {
+          "rows": 101446,
+          "full_waypoint_ade_improvement_vs_floor": 0.0007622672397711305,
+          "endpoint_fde_improvement_vs_floor": 0.0020224723888359053,
+          "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+          "t50_endpoint_fde_improvement_vs_floor": 0.0,
+          "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.007302334654963771,
+          "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0010479478535722064,
+          "easy_degradation_vs_floor": 0.0,
+          "switch_rate": 0.07026398280858782,
+          "harm_over_floor_ade": -0.00017300025501754135,
+          "mean_floor_ade": 0.22693823277950287,
+          "mean_selected_ade": 0.2267652451992035
+        },
+        "validation_allowed_families": [
+          "UCY"
+        ],
+        "validation_source_family_t100_table": {
+          "ETH_UCY": {
+            "rows": 2560,
+            "t100_full_waypoint_ade_improvement_vs_floor": -19.05049371444503,
+            "easy_degradation_vs_floor": 110.27245429706957,
+            "allowed": false,
+            "reason": "blocked_validation_nonpositive"
+          },
+          "TrajNet_crowds": {
+            "rows": 5608,
+            "t100_full_waypoint_ade_improvement_vs_floor": 0.024017143804580532,
+            "easy_degradation_vs_floor": 0.03326485058342721,
+            "allowed": false,
+            "reason": "blocked_validation_easy_harm"
+          },
+          "UCY": {
+            "rows": 7128,
+            "t100_full_waypoint_ade_improvement_vs_floor": 0.01538267036499208,
+            "easy_degradation_vs_floor": 0.0,
+            "allowed": true,
+            "reason": "allowed_by_validation"
+          }
+        }
+      },
+      "raw_validation_rule_test_metrics": {
+        "rows": 89736,
+        "full_waypoint_ade_improvement_vs_floor": -0.005897125987358809,
+        "endpoint_fde_improvement_vs_floor": -0.0023712322332145597,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.038643764458506924,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": -0.007135188937675618,
+        "easy_degradation_vs_floor": 0.022637640109190782,
+        "switch_rate": 0.17239457965587948,
+        "harm_over_floor_ade": 0.0011558622354641557,
+        "mean_floor_ade": 0.1960028111934662,
+        "mean_selected_ade": 0.19715866446495056
+      },
+      "deployed_test_metrics": {
+        "rows": 89736,
+        "full_waypoint_ade_improvement_vs_floor": 0.0,
+        "endpoint_fde_improvement_vs_floor": 0.0,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "t50_endpoint_fde_improvement_vs_floor": 0.0,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": 0.0,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.0,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.0,
+        "harm_over_floor_ade": 0.0,
+        "mean_floor_ade": 0.1960028111934662,
+        "mean_selected_ade": 0.1960028111934662
+      },
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "global_t100_success_claim": false,
+        "uniform_t100_success_claim": false,
         "long_objective_complete": false
       }
     }

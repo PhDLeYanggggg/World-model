@@ -5296,3 +5296,21 @@ I reconciled the earlier Stage43-T source-stable h100 result with the current CK
 
 Current interpretation: t100 has a small local source-stable positive signal, but current deployable t100 remains the floor. Future t100 work needs current-matrix-compatible source-family gates with persisted feature names and stronger source support.
 <!-- STAGE43_CL_T100_SOURCE_STABLE_COMPATIBILITY_AUDIT:END -->
+
+<!-- STAGE43_CM_CURRENT_MATRIX_T100_SOURCE_FAMILY_GATE:START -->
+## STAGE43_CM_CURRENT_MATRIX_T100_SOURCE_FAMILY_GATE
+
+I rebuilt the t100 source-family check on the current Stage43 full-waypoint matrix rather than relying on the earlier small Stage43-T local split. The run persists causal feature names, feature hashes, and source/split hashes so the evidence can be audited later.
+
+- gate: `13 / 13`
+- verdict: `stage43_cm_current_matrix_t100_source_family_gate_pass_keep_floor`
+- current test rows: `89736`
+- current t100 rows: `18070`
+- raw validation-rule t100 lift: `-3.86%`
+- raw easy degradation: `2.26%`
+- deployed t100 lift: `0.00%`
+- deployed easy degradation: `0.00%`
+- deploy t100 source-family gate: `False`
+
+Interpretation: this is a current-matrix compatibility audit for t100. If the validation-selected rule is not positive and easy-safe on the current matrix, the deployed policy remains the floor; no t100 success, metric, seconds-level, Stage5C, or SMC claim is made.
+<!-- STAGE43_CM_CURRENT_MATRIX_T100_SOURCE_FAMILY_GATE:END -->
