@@ -8590,3 +8590,20 @@ After the grouped scene stress exposed fragility, I tested a stricter validation
 
 This is still diagnostic. The validation-positive source guard preserved easy cases, but it did not reduce grouped fragility, so the next t100 repair needs a training objective that is explicitly leave-group-out or source/scene robust rather than another deployment whitelist.
 <!-- STAGE43_CY_T100_RESIDUAL_ADMISSIBILITY_GROUP_SUPPORT_GUARD:END -->
+
+<!-- STAGE43_CZ_T100_RESIDUAL_ADMISSIBILITY_LEAVE_GROUP_OUT_POLICY:START -->
+## Stage43-CZ: t100 leave-group-out robust policy search
+
+The Stage43-CY whitelist did not reduce grouped fragility, so I moved the robustness requirement into validation policy selection itself. This search rewards t100 lift only when the candidate also survives source/scene/domain leave-group-out stress on validation.
+
+- gate: `13 / 13`
+- verdict: `stage43_cz_t100_leave_group_out_policy_reduces_fragility_diagnostic`
+- original t100 mean: `0.1174%`
+- robust t100 mean: `0.1841%`
+- original min without group t100 mean: `0.0413%`
+- robust min without group t100 mean: `0.0995%`
+- group fragility reduced: `True`
+- deploy on current heldout t100: `False`
+
+This remains diagnostic. The robust validation objective reduced grouped fragility and improved the tiny t100 signal, but it is still policy selection over an existing head; the next step is to train the admissibility head with this leave-group-out objective and confirm it with stronger heldout/bootstrap evidence.
+<!-- STAGE43_CZ_T100_RESIDUAL_ADMISSIBILITY_LEAVE_GROUP_OUT_POLICY:END -->

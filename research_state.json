@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_cy_t100_residual_admissibility_group_support_guard",
-  "current_verdict": "stage43_cy_t100_group_support_guard_no_repair_keep_diagnostic",
+  "current_stage": "stage43_cz_t100_residual_admissibility_leave_group_out_policy",
+  "current_verdict": "stage43_cz_t100_leave_group_out_policy_reduces_fragility_diagnostic",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -46121,6 +46121,133 @@
         "group_fragility_reduced": false,
         "guarded_t100_positive_all_seeds": true,
         "deploy_on_current_heldout": false
+      },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_residual_admissibility_leave_group_out_policy": {
+      "source": "fresh_stage43_cz_t100_residual_admissibility_leave_group_out_policy",
+      "updated_at": "2026-06-03T12:38:26.237348+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_residual_admissibility_leave_group_out_policy.json",
+      "gate": "13 / 13",
+      "verdict": "stage43_cz_t100_leave_group_out_policy_reduces_fragility_diagnostic",
+      "aggregate": {
+        "all_replay_exact": true,
+        "safe_candidate_count": {
+          "mean": 1051.6666666666667,
+          "min": 849.0,
+          "max": 1230.0,
+          "values": [
+            1230.0,
+            1076.0,
+            849.0
+          ]
+        },
+        "selected_modes": [
+          "leave_group_out_robust",
+          "leave_group_out_robust",
+          "leave_group_out_robust"
+        ],
+        "original_t100": {
+          "mean": 0.0011738084208776645,
+          "min": 0.0008407411149786714,
+          "max": 0.001500867231038372,
+          "values": [
+            0.0008407411149786714,
+            0.00117981691661595,
+            0.001500867231038372
+          ]
+        },
+        "robust_t100": {
+          "mean": 0.001841416580818489,
+          "min": 0.001645212562219056,
+          "max": 0.001961951955558039,
+          "values": [
+            0.001645212562219056,
+            0.001961951955558039,
+            0.001917085224678372
+          ]
+        },
+        "original_min_without_group_t100": {
+          "mean": 0.00041304460373499846,
+          "min": -5.625231080985671e-05,
+          "max": 0.0008480155942311995,
+          "values": [
+            -5.625231080985671e-05,
+            0.0004473705277836526,
+            0.0008480155942311995
+          ]
+        },
+        "robust_min_without_group_t100": {
+          "mean": 0.0009952204088496581,
+          "min": 0.0008070434097643409,
+          "max": 0.0011456279676783643,
+          "values": [
+            0.0008070434097643409,
+            0.0010329898491062695,
+            0.0011456279676783643
+          ]
+        },
+        "robust_easy_degradation": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "robust_switch_rate": {
+          "mean": 0.11113333333333335,
+          "min": 0.0976,
+          "max": 0.1203,
+          "values": [
+            0.0976,
+            0.1203,
+            0.1155
+          ]
+        },
+        "delta_t100_vs_original": {
+          "mean": 0.0006676081599408246,
+          "min": 0.0004162179936400001,
+          "max": 0.0008044714472403847,
+          "values": [
+            0.0008044714472403847,
+            0.0007821350389420889,
+            0.0004162179936400001
+          ]
+        },
+        "delta_min_without_group_t100_vs_original": {
+          "mean": 0.0005821758051146597,
+          "min": 0.00029761237344716474,
+          "max": 0.0008632957205741976,
+          "values": [
+            0.0008632957205741976,
+            0.0005856193213226168,
+            0.00029761237344716474
+          ]
+        },
+        "delta_scene_group_flip_count_vs_original": {
+          "mean": -0.3333333333333333,
+          "min": -1.0,
+          "max": 0.0,
+          "values": [
+            -1.0,
+            0.0,
+            0.0
+          ]
+        },
+        "robust_preserves_easy": true,
+        "robust_t100_positive_all_seeds": true,
+        "group_fragility_reduced": true
       },
       "deploy_on_current_heldout": false,
       "claim_boundary": {
