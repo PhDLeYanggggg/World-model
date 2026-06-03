@@ -3415,3 +3415,20 @@ I reran the Stage43-CT residual-admissibility head across multiple seeds and boo
 
 This is useful evidence, but the lift is still tiny and only on the supported t100 protocol. I am not treating it as a heldout deployment change.
 <!-- STAGE43_CU_T100_RESIDUAL_ADMISSIBILITY_STATISTICAL_CONFIRMATION:END -->
+
+<!-- STAGE43_CV_T100_RESIDUAL_ADMISSIBILITY_SLICE_ATTRIBUTION:START -->
+## Stage43-CV: t100 residual admissibility slice attribution
+
+I traced the tiny Stage43-CU t100 residual-admissibility gain back to domain/source/scene/source-agent slices. The aim was to see whether the signal is broad enough to expand or too concentrated to treat as deployment evidence.
+
+- gate: `10 / 10`
+- verdict: `stage43_cv_t100_slice_attribution_broad_supported_diagnostic`
+- scope verdict: `broad_enough_to_expand`
+- all replay exact: `True`
+- mean max source gain share: `43.86%`
+- mean max scene gain share: `43.86%`
+- mean positive sources: `12.00`
+- deploy on current heldout t100: `False`
+
+This keeps the t100 signal in the diagnostic lane. If the gain is concentrated, the next work should be source-slice expansion and stress testing before any wider claim.
+<!-- STAGE43_CV_T100_RESIDUAL_ADMISSIBILITY_SLICE_ATTRIBUTION:END -->
