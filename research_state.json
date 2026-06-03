@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_dc_t100_policy_distilled_admissibility_head",
-  "current_verdict": "stage43_dc_t100_policy_distilled_head_beats_cz_diagnostic",
+  "current_stage": "stage43_dd_t100_policy_distilled_group_stability_guard",
+  "current_verdict": "stage43_dd_t100_policy_distilled_group_guard_mean_improves_dc_seed_fragile",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -46603,6 +46603,127 @@
         "beats_cz_t100_mean": true,
         "beats_da_min_without_group_mean": true,
         "beats_cz_min_without_group_mean": false
+      },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_policy_distilled_group_stability_guard": {
+      "source": "fresh_stage43_dd_t100_policy_distilled_group_stability_guard",
+      "updated_at": "2026-06-03T15:41:46.830219+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_policy_distilled_group_stability_guard.json",
+      "gate": "12 / 12",
+      "verdict": "stage43_dd_t100_policy_distilled_group_guard_mean_improves_dc_seed_fragile",
+      "aggregate": {
+        "all_replay_exact": true,
+        "selected_variants": [
+          "scene_val_positive",
+          "scene_val_positive",
+          "source_val_positive"
+        ],
+        "base_t100": {
+          "mean": 0.002166506928250045,
+          "min": 0.0016664998132055464,
+          "max": 0.0025560409787988014,
+          "values": [
+            0.0025560409787988014,
+            0.0022769799927457868,
+            0.0016664998132055464
+          ]
+        },
+        "guarded_t100": {
+          "mean": 0.0021761806407634885,
+          "min": 0.0016664998132055464,
+          "max": 0.0025560409787988014,
+          "values": [
+            0.0025560409787988014,
+            0.002306001130286117,
+            0.0016664998132055464
+          ]
+        },
+        "base_min_without_group_t100": {
+          "mean": 5.803192745875337e-05,
+          "min": -0.0004908333960413902,
+          "max": 0.0005213615360419865,
+          "values": [
+            -0.0004908333960413902,
+            0.00014356764237566377,
+            0.0005213615360419865
+          ]
+        },
+        "guarded_min_without_group_t100": {
+          "mean": 9.265916030964938e-05,
+          "min": -0.0004908333960413902,
+          "max": 0.0005213615360419865,
+          "values": [
+            -0.0004908333960413902,
+            0.0002474493409283518,
+            0.0005213615360419865
+          ]
+        },
+        "guarded_easy_degradation": {
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "guarded_switch_rate": {
+          "mean": 0.10186666666666666,
+          "min": 0.0902,
+          "max": 0.1212,
+          "values": [
+            0.1212,
+            0.0902,
+            0.0942
+          ]
+        },
+        "delta_t100_vs_base": {
+          "mean": 9.673712513443474e-06,
+          "min": 0.0,
+          "max": 2.9021137540330422e-05,
+          "values": [
+            0.0,
+            2.9021137540330422e-05,
+            0.0
+          ]
+        },
+        "delta_min_without_group_t100_vs_base": {
+          "mean": 3.462723285089601e-05,
+          "min": 0.0,
+          "max": 0.00010388169855268803,
+          "values": [
+            0.0,
+            0.00010388169855268803,
+            0.0
+          ]
+        },
+        "cz_reference": {
+          "robust_t100_mean": 0.001841416580818489,
+          "robust_min_without_group_t100_mean": 0.0009952204088496581
+        },
+        "dc_reference": {
+          "t100_mean": 0.002166506928250045,
+          "min_without_group_t100_mean": 5.803192745875337e-05
+        },
+        "guard_preserves_easy": true,
+        "guarded_t100_positive_all_seeds": true,
+        "all_guarded_min_without_group_positive": false,
+        "group_fragility_reduced": true,
+        "beats_dc_t100_mean": true,
+        "beats_cz_t100_mean": true,
+        "beats_dc_min_without_group_mean": true,
+        "beats_cz_min_without_group_mean": false,
+        "deploy_on_current_heldout": false
       },
       "deploy_on_current_heldout": false,
       "claim_boundary": {

@@ -3552,3 +3552,21 @@ After DB showed that DA missed CZ's deployment behavior, I trained a new head to
 
 This tests whether CZ's robust policy can be learned by the head itself. I still do not deploy t100 unless the learned head beats the stronger CZ policy and preserves worst-group/easy behavior.
 <!-- STAGE43_DC_T100_POLICY_DISTILLED_ADMISSIBILITY_HEAD:END -->
+
+<!-- STAGE43_DD_T100_POLICY_DISTILLED_GROUP_STABILITY_GUARD:START -->
+## Stage43-DD: group-stability guard for the policy-distilled t100 head
+
+DC beat CZ on mean t100, but it still had a weak worst-group slice. Here I tested whether a validation-only source/scene/domain support guard can keep the DC gain while stabilizing that weak group behavior.
+
+- gate: `12 / 12`
+- verdict: `stage43_dd_t100_policy_distilled_group_guard_mean_improves_dc_seed_fragile`
+- guarded t100 mean: `0.2176%`
+- guarded min-without-group mean: `0.0093%`
+- guarded easy degradation max: `0.0000%`
+- group fragility reduced: `True`
+- all guarded min-without-group positive: `False`
+- beats DC t100 mean: `True`
+- deploy on current heldout t100: `False`
+
+This is still diagnostic and validation-only. I will not promote the t100 head until the mean gain and every seed's worst-group behavior are both stronger than the current robust policy family.
+<!-- STAGE43_DD_T100_POLICY_DISTILLED_GROUP_STABILITY_GUARD:END -->
