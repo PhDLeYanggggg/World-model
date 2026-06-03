@@ -3622,3 +3622,19 @@ DF trained a bounded-alpha t100 head, but it still failed the worst-group gate. 
 
 My read: DF did not fail because the head has no signal. It failed because the validation objective can still select a candidate that looks strong on validation but is brittle on heldout group slices. The next useful fix is a validation group-risk/support objective or a better source/scene support split, not another blind threshold sweep.
 <!-- STAGE43_DG_T100_BOUNDED_ALPHA_HEAD_FAILURE_FORENSICS:END -->
+
+<!-- STAGE43_DH_T100_BOUNDED_ALPHA_HEAD_SUPPORT_AWARE_SELECTION:START -->
+## Stage43-DH: support-aware validation selection for the bounded-alpha t100 head
+
+DG showed that the DF head had safe t100 candidates, but the old validation objective could still pick a heldout-fragile one. I changed the selection rule rather than retraining the head: validation now gives priority to t100 lift and min-without-group safety, then uses support coverage and concentration as a guardrail.
+
+- gate: `14 / 14`
+- verdict: `stage43_dh_t100_support_aware_selection_repairs_df_group_fragility_diagnostic`
+- selected t100 mean: `0.1640%`
+- selected min-without-group t100 mean: `0.0264%`
+- all min-without-group positive: `True`
+- max easy degradation: `0.0000%`
+- deploy on current heldout t100: `False`
+
+My read: this confirms the DF failure was a validation-selection problem, not a dead model. It is still diagnostic because the older DE bounded policy keeps a stronger mean t100 profile; the next serious fix is to train the head with this group-risk objective baked into validation/support splits.
+<!-- STAGE43_DH_T100_BOUNDED_ALPHA_HEAD_SUPPORT_AWARE_SELECTION:END -->
