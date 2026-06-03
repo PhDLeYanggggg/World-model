@@ -8418,3 +8418,19 @@ I added a stricter t100 safety rule after the Stage43-CN shift audit: the model 
 
 What this means: t100 is still floor-only. The gate blocks every current t100 switch because validation and test do not share source-file or scene support. That is not a t100 improvement, but it does prevent the unsafe UCY family-level switch from being deployed.
 <!-- STAGE43_CO_T100_SOURCE_SCENE_SUPPORT_GATE:END -->
+
+<!-- STAGE43_CP_T100_SOURCE_SCENE_SUPPORT_SPLIT_REPAIR:START -->
+## Stage43-CP: t100 source/scene-supported split
+
+I built a separate agent-disjoint split protocol for t100 work where validation and test share source/scene support without sharing rows or source-agent tracks.
+
+- gate: `13 / 13`
+- verdict: `stage43_cp_t100_source_scene_support_split_ready`
+- test t100 rows: `11820`
+- source-or-scene-supported t100 ratio: `100.00%`
+- exact source-scene-supported t100 ratio: `99.19%`
+- row disjoint: `True`
+- source-agent disjoint: `True`
+
+This is not a new model result and not cross-source generalization. It is the protocol I need before trying another t100 learner: current heldout t100 stays floor-only, while this supported split can test whether t100 learning is possible when validation actually covers the source/scene.
+<!-- STAGE43_CP_T100_SOURCE_SCENE_SUPPORT_SPLIT_REPAIR:END -->
