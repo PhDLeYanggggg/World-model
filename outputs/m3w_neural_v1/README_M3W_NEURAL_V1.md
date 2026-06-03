@@ -5606,3 +5606,21 @@ DC beat CZ on mean t100, but it still had a weak worst-group slice. Here I teste
 
 This is still diagnostic and validation-only. I will not promote the t100 head until the mean gain and every seed's worst-group behavior are both stronger than the current robust policy family.
 <!-- STAGE43_DD_T100_POLICY_DISTILLED_GROUP_STABILITY_GUARD:END -->
+
+<!-- STAGE43_DE_T100_POLICY_DISTILLED_ALPHA_STABILITY_POLICY:START -->
+## Stage43-DE: alpha-stability policy for the policy-distilled t100 head
+
+DD improved the policy-distilled head on average, but one seed still had a negative worst-group t100 slice. I tested a bounded-intervention variant: keep the same DC head, but let validation choose only safe policies with `alpha <= 0.75` instead of full `alpha=1.0` intervention.
+
+- gate: `15 / 15`
+- verdict: `stage43_de_t100_alpha_stability_policy_repairs_group_fragility_diagnostic`
+- bounded t100 mean: `0.1860%`
+- bounded min-without-group mean: `0.0920%`
+- all bounded min-without-group positive: `True`
+- easy degradation max: `0.0000%`
+- selected alphas: `[0.75, 0.75, 0.75]`
+- repairs DD seed fragility: `True`
+- deploy on current heldout t100: `False`
+
+My read: the t100 head has usable signal, but full residual intervention is too brittle. Bounded intervention repairs the seed-level group issue while giving up some mean t100 lift, so this remains diagnostic until a trained head can get both mean and worst-group behavior right.
+<!-- STAGE43_DE_T100_POLICY_DISTILLED_ALPHA_STABILITY_POLICY:END -->
