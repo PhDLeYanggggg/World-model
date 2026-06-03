@@ -3535,3 +3535,20 @@ I compared the Stage43-CZ policy-only repair against the Stage43-DA trained head
 
 My read is that DA trained generic gain/harm/delta labels, while CZ's win came from the deployment policy and leave-group-out objective. The next useful training step is policy distillation from the CZ robust decisions plus an explicit worst-group transfer loss.
 <!-- STAGE43_DB_T100_GROUP_ROBUST_HEAD_FAILURE_FORENSICS:END -->
+
+<!-- STAGE43_DC_T100_POLICY_DISTILLED_ADMISSIBILITY_HEAD:START -->
+## Stage43-DC: policy-distilled t100 admissibility head
+
+After DB showed that DA missed CZ's deployment behavior, I trained a new head to imitate the CZ leave-group-out switch decisions on train rows, while keeping harm/easy and group weighting in the loss.
+
+- gate: `13 / 13`
+- verdict: `stage43_dc_t100_policy_distilled_head_beats_cz_diagnostic`
+- mean t100 improvement: `0.2167%`
+- mean min-without-group t100: `0.0058%`
+- max easy degradation: `0.0000%`
+- beats DA t100 mean: `True`
+- beats CZ t100 mean: `True`
+- deploy on current heldout t100: `False`
+
+This tests whether CZ's robust policy can be learned by the head itself. I still do not deploy t100 unless the learned head beats the stronger CZ policy and preserves worst-group/easy behavior.
+<!-- STAGE43_DC_T100_POLICY_DISTILLED_ADMISSIBILITY_HEAD:END -->
