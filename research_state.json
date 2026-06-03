@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_ct_t100_residual_admissibility_head",
-  "current_verdict": "stage43_ct_t100_residual_admissibility_positive_diagnostic",
+  "current_stage": "stage43_cu_t100_residual_admissibility_statistical_confirmation",
+  "current_verdict": "stage43_cu_t100_admissibility_multiseed_confirmed_tiny_positive",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -45661,6 +45661,92 @@
         "harm_over_floor_ade": 0.0031087594106793404,
         "mean_floor_ade": 0.14584948122501373,
         "mean_selected_ade": 0.148958221077919
+      },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_residual_admissibility_statistical_confirmation": {
+      "source": "fresh_stage43_cu_t100_residual_admissibility_statistical_confirmation",
+      "updated_at": "2026-06-03T09:55:22.408402+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_residual_admissibility_statistical_confirmation.json",
+      "gate": "12 / 12",
+      "verdict": "stage43_cu_t100_admissibility_multiseed_confirmed_tiny_positive",
+      "seeds": [
+        4323,
+        4331,
+        4337
+      ],
+      "aggregate": {
+        "full_waypoint_ade_improvement_vs_floor": {
+          "mean": 0.0011738084208776645,
+          "std": 0.0002695288466834846,
+          "min": 0.0008407411149786714,
+          "max": 0.001500867231038372,
+          "values": [
+            0.0008407411149786714,
+            0.00117981691661595,
+            0.001500867231038372
+          ]
+        },
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": {
+          "mean": 0.0011738084208776645,
+          "std": 0.0002695288466834846,
+          "min": 0.0008407411149786714,
+          "max": 0.001500867231038372,
+          "values": [
+            0.0008407411149786714,
+            0.00117981691661595,
+            0.001500867231038372
+          ]
+        },
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": {
+          "mean": 0.0011738084208776645,
+          "std": 0.0002695288466834846,
+          "min": 0.0008407411149786714,
+          "max": 0.001500867231038372,
+          "values": [
+            0.0008407411149786714,
+            0.00117981691661595,
+            0.001500867231038372
+          ]
+        },
+        "easy_degradation_vs_floor": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "switch_rate": {
+          "mean": 0.0662,
+          "std": 0.003475629439396555,
+          "min": 0.0616,
+          "max": 0.07,
+          "values": [
+            0.067,
+            0.0616,
+            0.07
+          ]
+        },
+        "all_seed_t100_positive": true,
+        "all_seed_easy_safe": true,
+        "all_seed_bootstrap_low_positive": true,
+        "bootstrap_t100_low_values": [
+          0.0005753974960810065,
+          0.0009896399000950018,
+          0.001299230786374006
+        ]
       },
       "deploy_on_current_heldout": false,
       "claim_boundary": {

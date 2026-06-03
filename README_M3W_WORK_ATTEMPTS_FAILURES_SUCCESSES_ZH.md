@@ -3397,3 +3397,21 @@ I trained a second-stage admissibility head to decide when the bounded t100 resi
 
 This is still a supported-protocol diagnostic. The positive lift is small, so I am not treating it as a heldout deployment change. If the admissibility head cannot clear stricter heldout gates, the current heldout t100 policy stays floor-only.
 <!-- STAGE43_CT_T100_RESIDUAL_ADMISSIBILITY_HEAD:END -->
+
+<!-- STAGE43_CU_T100_RESIDUAL_ADMISSIBILITY_STATISTICAL_CONFIRMATION:START -->
+## Stage43-CU: t100 residual admissibility statistical confirmation
+
+I reran the Stage43-CT residual-admissibility head across multiple seeds and bootstrapped the t100 diagnostic. The goal was to check whether the tiny positive CT signal is real enough to keep pursuing.
+
+- gate: `12 / 12`
+- verdict: `stage43_cu_t100_admissibility_multiseed_confirmed_tiny_positive`
+- seeds: `[4323, 4331, 4337]`
+- mean t100 improvement: `0.12%`
+- min t100 improvement: `0.08%`
+- mean hard/failure improvement: `0.12%`
+- max easy degradation: `0.00%`
+- all bootstrap lows positive: `True`
+- deploy on current heldout t100: `False`
+
+This is useful evidence, but the lift is still tiny and only on the supported t100 protocol. I am not treating it as a heldout deployment change.
+<!-- STAGE43_CU_T100_RESIDUAL_ADMISSIBILITY_STATISTICAL_CONFIRMATION:END -->
