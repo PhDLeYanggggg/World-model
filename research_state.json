@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_df_t100_bounded_alpha_distilled_admissibility_head",
-  "current_verdict": "stage43_df_t100_bounded_alpha_distilled_head_incomplete",
+  "current_stage": "stage43_dg_t100_bounded_alpha_head_failure_forensics",
+  "current_verdict": "stage43_dg_t100_bounded_alpha_head_forensics_selection_gap_identified",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -46958,6 +46958,89 @@
         "beats_de_t100_mean": false,
         "beats_de_min_without_group_mean": false,
         "beats_dc_min_without_group_mean": true
+      },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_bounded_alpha_head_failure_forensics": {
+      "source": "fresh_stage43_dg_t100_bounded_alpha_head_failure_forensics",
+      "updated_at": "2026-06-03T18:18:42.405541+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_bounded_alpha_head_failure_forensics.json",
+      "gate": "13 / 13",
+      "verdict": "stage43_dg_t100_bounded_alpha_head_forensics_selection_gap_identified",
+      "aggregate": {
+        "all_replay_exact": true,
+        "selected_t100": {
+          "mean": 0.0014724246178616414,
+          "min": 0.0012976447859937013,
+          "max": 0.0015727753948209244,
+          "values": [
+            0.0015727753948209244,
+            0.0012976447859937013,
+            0.0015468536727702986
+          ]
+        },
+        "selected_min_without_group_t100": {
+          "mean": 0.0002050442059436941,
+          "min": -0.00023201051418775265,
+          "max": 0.000800570835629344,
+          "values": [
+            -0.00023201051418775265,
+            4.657229638949101e-05,
+            0.000800570835629344
+          ]
+        },
+        "candidate_count": {
+          "mean": 277.0,
+          "min": 276.0,
+          "max": 278.0,
+          "values": [
+            278.0,
+            277.0,
+            276.0
+          ]
+        },
+        "positive_group_candidate_count": {
+          "mean": 197.33333333333334,
+          "min": 164.0,
+          "max": 253.0,
+          "values": [
+            164.0,
+            253.0,
+            175.0
+          ]
+        },
+        "oracle_min_gap": {
+          "mean": 0.0005145375254549759,
+          "min": 0.0,
+          "max": 0.0009759351126142901,
+          "values": [
+            0.0009759351126142901,
+            0.0005676774637506377,
+            0.0
+          ]
+        },
+        "oracle_t100_gap": {
+          "mean": 0.00018012594061263729,
+          "min": 2.0304541459403858e-05,
+          "max": 0.00028627495493616095,
+          "values": [
+            0.00028627495493616095,
+            2.0304541459403858e-05,
+            0.00023379832544234702
+          ]
+        },
+        "positive_candidate_exists_all_seeds": true,
+        "selected_group_positive_all_seeds": false,
+        "selection_misses_safe_candidate": true,
+        "failure_root": "validation_group_risk_selection_gap"
       },
       "deploy_on_current_heldout": false,
       "claim_boundary": {

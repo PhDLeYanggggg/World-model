@@ -8711,3 +8711,20 @@ DE showed that bounded intervention can repair the policy-distilled t100 head's 
 
 My read: this is the right direction if it can retain DE's group safety while recovering mean t100. I still keep it diagnostic unless the trained head beats the bounded policy and keeps every seed/slice safe.
 <!-- STAGE43_DF_T100_BOUNDED_ALPHA_DISTILLED_ADMISSIBILITY_HEAD:END -->
+
+<!-- STAGE43_DG_T100_BOUNDED_ALPHA_HEAD_FAILURE_FORENSICS:START -->
+## Stage43-DG: bounded-alpha t100 head failure forensics
+
+DF trained a bounded-alpha t100 head, but it still failed the worst-group gate. I audited whether the head had no safe candidates or whether validation picked the wrong candidate.
+
+- gate: `13 / 13`
+- verdict: `stage43_dg_t100_bounded_alpha_head_forensics_selection_gap_identified`
+- failure root: `validation_group_risk_selection_gap`
+- selected t100 mean: `0.1472%`
+- selected min-without-group mean: `0.0205%`
+- positive candidate exists all seeds: `True`
+- selection misses safe candidate: `True`
+- deploy on current heldout t100: `False`
+
+My read: DF did not fail because the head has no signal. It failed because the validation objective can still select a candidate that looks strong on validation but is brittle on heldout group slices. The next useful fix is a validation group-risk/support objective or a better source/scene support split, not another blind threshold sweep.
+<!-- STAGE43_DG_T100_BOUNDED_ALPHA_HEAD_FAILURE_FORENSICS:END -->
