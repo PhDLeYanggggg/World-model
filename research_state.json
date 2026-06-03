@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_de_t100_policy_distilled_alpha_stability_policy",
-  "current_verdict": "stage43_de_t100_alpha_stability_policy_repairs_group_fragility_diagnostic",
+  "current_stage": "stage43_df_t100_bounded_alpha_distilled_admissibility_head",
+  "current_verdict": "stage43_df_t100_bounded_alpha_distilled_head_incomplete",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -46854,6 +46854,110 @@
         "beats_dd_min_without_group_mean": true,
         "mean_t100_tradeoff_vs_dd": -0.00031648582885146514,
         "deploy_on_current_heldout": false
+      },
+      "deploy_on_current_heldout": false,
+      "claim_boundary": {
+        "true_3d_world_model": false,
+        "foundation_world_model": false,
+        "dataset_local_raw_frame_only": true,
+        "metric_or_seconds_claim": false,
+        "stage5c_executed": false,
+        "smc_enabled": false
+      }
+    },
+    "t100_bounded_alpha_distilled_admissibility_head": {
+      "source": "fresh_stage43_df_t100_bounded_alpha_distilled_admissibility_head",
+      "updated_at": "2026-06-03T17:46:52.080215+00:00",
+      "report": "outputs/stage43_latent_state/stage43_t100_bounded_alpha_distilled_admissibility_head.json",
+      "gate": "14 / 15",
+      "verdict": "stage43_df_t100_bounded_alpha_distilled_head_incomplete",
+      "aggregate": {
+        "t100": {
+          "mean": 0.0014724246178616414,
+          "std": 0.00012404025190600174,
+          "min": 0.0012976447859937013,
+          "max": 0.0015727753948209244,
+          "values": [
+            0.0015727753948209244,
+            0.0012976447859937013,
+            0.0015468536727702986
+          ]
+        },
+        "hard_failure": {
+          "mean": 0.0014724246178616414,
+          "std": 0.00012404025190600174,
+          "min": 0.0012976447859937013,
+          "max": 0.0015727753948209244,
+          "values": [
+            0.0015727753948209244,
+            0.0012976447859937013,
+            0.0015468536727702986
+          ]
+        },
+        "easy_degradation": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "values": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "switch_rate": {
+          "mean": 0.10056666666666668,
+          "std": 0.02489569351425173,
+          "min": 0.0793,
+          "max": 0.1355,
+          "values": [
+            0.0869,
+            0.1355,
+            0.0793
+          ]
+        },
+        "min_without_group_t100": {
+          "mean": 0.0002050442059436941,
+          "std": 0.0004361888509853203,
+          "min": -0.00023201051418775265,
+          "max": 0.000800570835629344,
+          "values": [
+            -0.00023201051418775265,
+            4.657229638949101e-05,
+            0.000800570835629344
+          ]
+        },
+        "teacher_switch_rate_train": {
+          "mean": 0.0200912697861592,
+          "std": 0.003998370695832101,
+          "min": 0.014803571626543999,
+          "max": 0.024470238015055656,
+          "values": [
+            0.020999999716877937,
+            0.024470238015055656,
+            0.014803571626543999
+          ]
+        },
+        "bootstrap_t100_low_values": [
+          0.001319340599569002,
+          0.0010230927683757246,
+          0.0013104792871220434
+        ],
+        "all_seed_t100_positive": true,
+        "all_seed_easy_safe": true,
+        "all_seed_bootstrap_low_positive": true,
+        "all_min_without_group_positive": false,
+        "de_reference": {
+          "bounded_t100_mean": 0.0018596948119120234,
+          "bounded_min_without_group_t100_mean": 0.0009195504731569123
+        },
+        "dc_reference": {
+          "t100_mean": 0.002166506928250045,
+          "min_without_group_t100_mean": 5.803192745875337e-05
+        },
+        "beats_de_t100_mean": false,
+        "beats_de_min_without_group_mean": false,
+        "beats_dc_min_without_group_mean": true
       },
       "deploy_on_current_heldout": false,
       "claim_boundary": {

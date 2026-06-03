@@ -8694,3 +8694,20 @@ DD improved the policy-distilled head on average, but one seed still had a negat
 
 My read: the t100 head has usable signal, but full residual intervention is too brittle. Bounded intervention repairs the seed-level group issue while giving up some mean t100 lift, so this remains diagnostic until a trained head can get both mean and worst-group behavior right.
 <!-- STAGE43_DE_T100_POLICY_DISTILLED_ALPHA_STABILITY_POLICY:END -->
+
+<!-- STAGE43_DF_T100_BOUNDED_ALPHA_DISTILLED_ADMISSIBILITY_HEAD:START -->
+## Stage43-DF: bounded-alpha distilled t100 admissibility head
+
+DE showed that bounded intervention can repair the policy-distilled t100 head's seed-level group fragility. I trained a new head to imitate that bounded-alpha policy on train rows, rather than relying only on an outer deployment cap.
+
+- gate: `14 / 15`
+- verdict: `stage43_df_t100_bounded_alpha_distilled_head_incomplete`
+- mean t100 improvement: `0.1472%`
+- mean min-without-group t100: `0.0205%`
+- all min-without-group positive: `False`
+- max easy degradation: `0.0000%`
+- beats DE t100 mean: `False`
+- deploy on current heldout t100: `False`
+
+My read: this is the right direction if it can retain DE's group safety while recovering mean t100. I still keep it diagnostic unless the trained head beats the bounded policy and keeps every seed/slice safe.
+<!-- STAGE43_DF_T100_BOUNDED_ALPHA_DISTILLED_ADMISSIBILITY_HEAD:END -->
