@@ -3466,3 +3466,21 @@ I ran a stricter stress test on the tiny t100 residual-admissibility signal by r
 
 This remains diagnostic evidence. Grouped scene stress exposed fragility, so I keep current heldout t100 on the safety floor.
 <!-- STAGE43_CX_T100_RESIDUAL_ADMISSIBILITY_GROUP_STRESS:END -->
+
+<!-- STAGE43_CY_T100_RESIDUAL_ADMISSIBILITY_GROUP_SUPPORT_GUARD:START -->
+## Stage43-CY: t100 group-support safety envelope
+
+After the grouped scene stress exposed fragility, I tested a stricter validation-selected group-support guard. The point was to see whether t100 residual switches become safer if I only allow them in source/scene/domain groups that were positive on validation.
+
+- gate: `12 / 12`
+- verdict: `stage43_cy_t100_group_support_guard_no_repair_keep_diagnostic`
+- selected variants: `['source_val_positive', 'source_val_positive', 'source_val_positive']`
+- base t100 mean: `0.1174%`
+- guarded t100 mean: `0.1156%`
+- base min without group t100 mean: `0.0413%`
+- guarded min without group t100 mean: `0.0355%`
+- group fragility reduced: `False`
+- deploy on current heldout t100: `False`
+
+This is still diagnostic. The validation-positive source guard preserved easy cases, but it did not reduce grouped fragility, so the next t100 repair needs a training objective that is explicitly leave-group-out or source/scene robust rather than another deployment whitelist.
+<!-- STAGE43_CY_T100_RESIDUAL_ADMISSIBILITY_GROUP_SUPPORT_GUARD:END -->
