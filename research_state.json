@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_di_t100_support_aware_bounded_alpha_distilled_head",
-  "current_verdict": "stage43_di_t100_support_aware_distilled_head_safe_but_no_lift_diagnostic",
+  "current_stage": "stage43_dj_latent_world_state_current_reconciliation",
+  "current_verdict": "stage43_dj_latent_world_state_current_reconciliation_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -47300,5 +47300,79 @@
         "smc_enabled": false
       }
     }
+  },
+  "stage43_dj_latent_world_state_current_reconciliation": {
+    "source": "fresh_stage43_dj_latent_world_state_current_reconciliation",
+    "result_source": "fresh_reconciliation_from_stage43_c_y_bh_di",
+    "updated_at": "2026-06-04T00:08:14.610697+00:00",
+    "verdict": "stage43_dj_latent_world_state_current_reconciliation_pass",
+    "gate": "13 / 13",
+    "protected_multimodal_latent_state_candidate": true,
+    "standalone_world_model_deployable": false,
+    "summary": {
+      "current_read": "M3W currently has a protected dataset-local/raw-frame multimodal latent-state candidate. The strongest honest claim is protected world-state evidence with useful proxy heads, not a standalone ungated true-3D or foundation model.",
+      "protected_latent_metrics": {
+        "all": 0.17766455770318457,
+        "t50": 0.13751452592291835,
+        "t100_raw_frame_diagnostic": 0.01823382989958844,
+        "hard_failure": 0.18157231430054366,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.1765
+      },
+      "ungated_diagnostic_metrics": {
+        "all": 0.5986094772059208,
+        "t50": 0.6335179370021695,
+        "t100_raw_frame_diagnostic": 0.47559050087541677,
+        "hard_failure": 0.6383894718784499,
+        "easy_degradation": 0.014066343810585025
+      },
+      "latent_state": {
+        "rows": 89736,
+        "dim": 32,
+        "mean_variance": 0.48265281319618225,
+        "min_variance": 0.10856052488088608,
+        "max_variance": 1.3244973421096802,
+        "noncollapse_threshold": 0.01
+      },
+      "proxy_heads": {
+        "failure_risk_auroc": 0.864830017016087,
+        "gain_opportunity_auroc": 0.8737429101109737,
+        "harm_guard_auroc": 0.9046972304136244,
+        "causal_history_density_r2": 0.8177894439596907,
+        "future_interaction_risk_auroc": 0.7694167124859295
+      },
+      "diagnostic_heads": [
+        "waypoint_label_availability",
+        "smoothness_validity_proxy"
+      ],
+      "deployable_proxy_heads": [
+        "failure_risk",
+        "gain_opportunity",
+        "harm_guard",
+        "causal_history_density",
+        "future_interaction_risk"
+      ],
+      "t100_support_head_diagnostic": {
+        "mean_t100": 0.0015704551682658903,
+        "mean_min_without_group_t100": 0.000824458654733499,
+        "all_min_without_group_positive": true,
+        "max_easy_degradation": 0.0,
+        "beats_dh_t100_mean": false,
+        "beats_de_t100_mean": false,
+        "deploy_on_current_heldout": false
+      },
+      "current_deployment_boundary": {
+        "safety_floor_required": true,
+        "standalone_ungated_world_model": false,
+        "t100_support_head_deployed": false,
+        "stage5c_executed": false,
+        "smc_enabled": false,
+        "long_objective_complete": false
+      }
+    },
+    "report": "outputs/stage43_latent_state/stage43_latent_world_state_current_reconciliation.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
   }
 }
