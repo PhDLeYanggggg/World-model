@@ -8817,3 +8817,25 @@ My read: this is the right architecture family to test after the scene/graph fai
 
 Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
 <!-- STAGE43_DL_GRAPH_FIRST_SCENE_RESIDUAL_MOE:END -->
+
+<!-- STAGE44_WORLDCORE:START -->
+## Stage44: M3W-WorldCore Latent State Architecture
+
+source = `fresh_stage44_worldcore_latent_state_architecture`
+result_source = `fresh_stage44_worldcore_training_eval`
+verdict = `stage44_worldcore_latent_state_candidate_pass`
+gate = `16 / 16`
+best_variant = `hybrid_no_scene`
+worldcore_lift_measured = `True`
+deployable_policy_changed = `False`
+
+Protected metrics: all `37.49%`, t50 `20.32%`, hard/failure `38.82%`, easy degradation `1.06%`, t100 raw diagnostic `-9.99%`.
+
+What changed: I added WorldCore as a latent-state architecture with explicit agent, scene, graph/interaction, goal-route, occupancy, uncertainty, and optional baseline-rollout tokens. It trains no-baseline, baseline-aware, hybrid JEPA+Transformer, and retrained ablations instead of only tuning a selector.
+
+My current read: this stage is only a real world-model step if the latent dynamics or ablations show lift beyond the protected floor. If the best protected result is mostly floor-driven, the project remains a protected world-state system and the next repair should target longer history, better future-world latent targets, and dynamic interaction tokens.
+
+Important negative result: the best Stage44 variant is `hybrid_no_scene`, and the ablation table does not yet support JEPA, scene proxy, or static interaction tokens as main contributions. I should not present those as solved until retrained ablations flip positive.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; no true 3D, no foundation claim, no metric/seconds claim, no Stage5C, no SMC.
+<!-- STAGE44_WORLDCORE:END -->

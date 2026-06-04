@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_dl_graph_first_scene_residual_moe",
-  "current_verdict": "stage43_dl_graph_first_scene_residual_moe_pass_safe_bq_lift_diagnostic",
+  "current_stage": "stage44_worldcore",
+  "current_verdict": "stage44_worldcore_latent_state_candidate_pass",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -47476,6 +47476,63 @@
     },
     "report": "outputs/stage43_latent_state/stage43_graph_first_scene_residual_moe.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage44_worldcore": {
+    "source": "fresh_stage44_worldcore_latent_state_architecture",
+    "result_source": "fresh_stage44_worldcore_training_eval",
+    "updated_at": "2026-06-04T06:14:32.083873+00:00",
+    "verdict": "stage44_worldcore_latent_state_candidate_pass",
+    "gate": "16 / 16",
+    "best_variant": "hybrid_no_scene",
+    "worldcore_lift_measured": true,
+    "metrics": {
+      "rows": 8000,
+      "full_waypoint_ade_improvement_vs_floor": 0.3749355760141777,
+      "endpoint_fde_improvement_vs_floor": 0.4048951350368487,
+      "t50_full_waypoint_ade_improvement_vs_floor": 0.20318668425061504,
+      "t50_endpoint_fde_improvement_vs_floor": 0.26422203452851367,
+      "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.09987823712010746,
+      "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3881777868132166,
+      "easy_degradation_vs_floor": 0.01058629063354366,
+      "switch_rate": 0.6555,
+      "harm_over_floor_ade": -0.07296571135520935,
+      "mean_floor_ade": 0.1946086436510086,
+      "mean_selected_ade": 0.12164293974637985
+    },
+    "failure_analysis": {
+      "best_variant": "hybrid_no_scene",
+      "best_protected_metrics": {
+        "rows": 8000,
+        "full_waypoint_ade_improvement_vs_floor": 0.3749355760141777,
+        "endpoint_fde_improvement_vs_floor": 0.4048951350368487,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.20318668425061504,
+        "t50_endpoint_fde_improvement_vs_floor": 0.26422203452851367,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.09987823712010746,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3881777868132166,
+        "easy_degradation_vs_floor": 0.01058629063354366,
+        "switch_rate": 0.6555,
+        "harm_over_floor_ade": -0.07296571135520935,
+        "mean_floor_ade": 0.1946086436510086,
+        "mean_selected_ade": 0.12164293974637985
+      },
+      "no_baseline_collapse": false,
+      "jepa_downstream_lift": false,
+      "scene_lift": false,
+      "interaction_lift": false,
+      "transformer_lift": true,
+      "t100_still_negative": true,
+      "easy_safe": true,
+      "repair_actions_executed": false,
+      "next_repairs": [
+        "replace JEPA target with multi-component future world-state latent and stronger masked trajectory/interaction targets",
+        "audit scene proxy sparsity and require nonzero scene-token intervention in validation",
+        "upgrade static graph features to dynamic graph tokens with interaction-risk auxiliary supervision",
+        "train horizon-specific latent dynamics with K=64/128 history before making any t100 claim"
+      ]
+    },
+    "report": "outputs/stage44_worldcore/report_stage44_worldcore_final.md",
     "stage5c_executed": false,
     "smc_enabled": false
   }
