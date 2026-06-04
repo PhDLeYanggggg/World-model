@@ -370,8 +370,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage43_dj_latent_world_state_current_reconciliation",
-  "current_verdict": "stage43_dj_latent_world_state_current_reconciliation_pass",
+  "current_stage": "stage43_dk_scene_graph_failure_taxonomy",
+  "current_verdict": "stage43_dk_scene_graph_failure_taxonomy_pass_next_graph_first_moe",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -47371,6 +47371,54 @@
       }
     },
     "report": "outputs/stage43_latent_state/stage43_latent_world_state_current_reconciliation.md",
+    "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
+    "stage5c_executed": false,
+    "smc_enabled": false
+  },
+  "stage43_dk_scene_graph_failure_taxonomy": {
+    "source": "fresh_stage43_dk_scene_graph_failure_taxonomy",
+    "result_source": "fresh_taxonomy_from_stage43_bl_ag_bo_bp_bq_dj",
+    "updated_at": "2026-06-04T01:22:36.262762+00:00",
+    "verdict": "stage43_dk_scene_graph_failure_taxonomy_pass_next_graph_first_moe",
+    "gate": "14 / 14",
+    "decision": {
+      "deployable_policy_changed": false,
+      "keep_current_protected_latent_state_candidate": true,
+      "generic_scene_graph_concat_rejected": true,
+      "graph_first_scene_residual_moe_is_next": true,
+      "raw_scene_sdf_still_blocked": true,
+      "t100_raw_frame_still_diagnostic": true
+    },
+    "next_training_contract": {
+      "name": "stage43_next_graph_first_scene_residual_moe",
+      "train_next": true,
+      "do_not_repeat": [
+        "generic_scene_graph_full_concat",
+        "gated_fusion_without_graph_expert_preservation",
+        "raw_scene_claim_without_raw_scene_or_sdf_cache"
+      ],
+      "required_experts": [
+        "no_context_floor_compatible_expert",
+        "full_graph_or_graph_history_expert",
+        "geometry_route_scene_proxy_expert"
+      ],
+      "required_losses": [
+        "full_waypoint_ade_loss",
+        "failure_gain_harm_multitask_loss",
+        "graph_expert_preservation_pairwise_loss",
+        "easy_harm_penalty",
+        "t50_hard_failure_weighting",
+        "t100_guarded_diagnostic_reporting"
+      ],
+      "deployment_rule": "Default to the protected floor or graph expert; allow scene proxy residual only when gain is high, harm is low, and validation support says the source/horizon slice is covered.",
+      "success_gate": {
+        "beats_best_single_graph_t50_or_hard": true,
+        "easy_degradation_max": 0.02,
+        "no_test_threshold_tuning": true,
+        "raw_scene_claim_allowed": false
+      }
+    },
+    "report": "outputs/stage43_latent_state/stage43_scene_graph_failure_taxonomy.md",
     "world_gate": "outputs/stage43_latent_state/world_model_gate_stage43_current.md",
     "stage5c_executed": false,
     "smc_enabled": false

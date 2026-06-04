@@ -3672,3 +3672,20 @@ t100_support_head_mean = `0.16%`; deployed = `False`; beats_de = `False`
 
 My current read: M3W has a protected multimodal latent-state candidate with useful failure/gain/harm/density/interaction proxy heads. It is still guarded by the Stage37-style safety floor and remains dataset-local/raw-frame 2.5D evidence, not a true-3D, metric, seconds-level, foundation, Stage5C, or SMC result.
 <!-- STAGE43_DJ_LATENT_WORLD_STATE_CURRENT_RECONCILIATION:END -->
+
+<!-- STAGE43_DK_SCENE_GRAPH_FAILURE_TAXONOMY:START -->
+## Stage43-DK: Scene/Graph Failure Taxonomy
+
+source = `fresh_stage43_dk_scene_graph_failure_taxonomy`
+result_source = `fresh_taxonomy_from_stage43_bl_ag_bo_bp_bq_dj`
+verdict = `stage43_dk_scene_graph_failure_taxonomy_pass_next_graph_first_moe`
+gate = `14 / 14`
+deployable_policy_changed = `False`
+next_training_contract = `stage43_next_graph_first_scene_residual_moe`
+
+full_graph_t50_hard_easy = `30.65%` / `36.93%` / `0.00%`
+geometry_route_scene_t50_easy = `35.32%` / `0.00%`
+scene_graph_full_minus_graph_only_t50_easy = `-11.30%` / `13.44%`
+
+My read: graph history is the part worth protecting and building around. Scene/goal proxy is not useless, but generic scene+graph fusion damaged the graph expert and hurt easy cases. The next neural step should be a graph-first scene-residual MoE with expert-preservation and harm-aware routing, not another raw concat.
+<!-- STAGE43_DK_SCENE_GRAPH_FAILURE_TAXONOMY:END -->

@@ -1,44 +1,45 @@
 # Stage43 Current World-Model Gate
 
-- source: `fresh_stage43_dj_latent_world_state_current_reconciliation`
-- verdict: `stage43_dj_latent_world_state_current_reconciliation_pass`
-- passed: `13 / 13`
+- source: `fresh_stage43_dk_scene_graph_failure_taxonomy`
+- verdict: `stage43_dk_scene_graph_failure_taxonomy_pass_next_graph_first_moe`
+- passed: `14 / 14`
 - protected multimodal latent-state candidate: `True`
-- standalone world model deployable: `False`
-- t100 support-aware head deployed: `False`
+- deployable policy changed: `False`
+- next training contract: `stage43_next_graph_first_scene_residual_moe`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
 
-## Current Public Claim
+## Current Decision
 
-M3W currently has a protected dataset-local/raw-frame multimodal latent-state candidate. The strongest honest claim is protected world-state evidence with useful proxy heads, not a standalone ungated true-3D or foundation model.
+Graph history has real signal, scene proxy has narrower signal, but naive scene+graph fusion and the current learned gate do not safely beat the graph expert. The next model should be graph-first with a scene residual expert and explicit expert-preservation loss.
 
 ## Key Evidence
 
-- Protected latent-state all/t50/t100-raw/hard/easy: `17.77%` / `13.75%` / `1.82%` / `18.16%` / `0.00%`
-- Proxy heads: failure AUROC `0.8648`, gain AUROC `0.8737`, harm AUROC `0.9047`, density R2 `0.8178`, interaction AUROC `0.7694`.
-- Stage43-DI t100 support-aware head is safe but diagnostic; it does not replace the stronger bounded policy.
+- full_graph t50/hard/easy: `30.65%` / `36.93%` / `0.00%`
+- geometry_route scene t50/easy: `35.32%` / `0.00%`
+- scene_graph_full minus graph_history_only t50/easy: `-11.30%` / `13.44%`
+- gated fusion minus best single t50: `-14.44%`
 
 ## Boundaries
 
-- Not true 3D.
-- Not a foundation world model.
-- Dataset-local/raw-frame only; no metric or seconds-level claim.
-- Safety floor is still required.
-- Stage5C and SMC are still off.
+- This does not change the deployable policy.
+- Raw scene/SDF remains blocked.
+- t100 remains raw-frame diagnostic.
+- No metric/seconds, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
-| `protected_latent_eval_passed` | `True` |
-| `protected_latent_metrics_positive_easy_safe` | `True` |
-| `multimodal_head_suite_passed` | `True` |
-| `latent_noncollapse` | `True` |
-| `proxy_heads_strong_enough` | `True` |
-| `protected_candidate_lock_passed` | `True` |
-| `safety_floor_required_not_hidden` | `True` |
-| `t100_support_head_passed_but_diagnostic` | `True` |
-| `t100_support_head_safe_no_deployment_lift` | `True` |
+| `preconditions_passed` | `True` |
+| `graph_signal_positive_and_easy_safe` | `True` |
+| `scene_proxy_signal_present_but_guarded` | `True` |
+| `naive_fusion_failure_identified` | `True` |
+| `gated_fusion_safe_no_lift_identified` | `True` |
+| `bootstrap_confirms_negative_gated_t50` | `True` |
+| `next_training_contract_recorded` | `True` |
+| `deployable_policy_not_changed` | `True` |
+| `raw_scene_sdf_not_overclaimed` | `True` |
+| `t100_remains_diagnostic` | `True` |
 | `no_future_or_test_leakage` | `True` |
 | `claim_boundary_not_overstated` | `True` |
 | `stage5c_and_smc_false` | `True` |

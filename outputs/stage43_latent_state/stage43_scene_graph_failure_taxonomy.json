@@ -1,0 +1,424 @@
+{
+  "source": "fresh_stage43_dk_scene_graph_failure_taxonomy",
+  "result_source": "fresh_taxonomy_from_stage43_bl_ag_bo_bp_bq_dj",
+  "generated_at_utc": "2026-06-04T01:22:36.262762+00:00",
+  "git_commit": "c1d608c",
+  "input_artifacts": {
+    "raw_scene_graph_readiness": "outputs/stage43_latent_state/stage43_raw_scene_graph_ablation_readiness.json",
+    "scene_proxy_retrained_ablation": "outputs/stage43_latent_state/stage43_scene_proxy_retrained_ablation.json",
+    "graph_history_retrained_ablation": "outputs/stage43_latent_state/stage43_graph_history_retrained_ablation.json",
+    "scene_graph_multimodal_ablation": "outputs/stage43_latent_state/stage43_scene_graph_multimodal_ablation.json",
+    "gated_scene_graph_fusion": "outputs/stage43_latent_state/stage43_gated_scene_graph_fusion.json",
+    "latent_world_state_current_reconciliation": "outputs/stage43_latent_state/stage43_latent_world_state_current_reconciliation.json"
+  },
+  "input_hash": "042396067e9b95fb2b2659db71042862c18a26fe0b26f15ea6fd5f89430273dd",
+  "input_verdicts": {
+    "stage43_bl": "stage43_bl_raw_scene_graph_ablation_readiness_pass_blocker_documented",
+    "stage43_ag": "stage43_ag_scene_proxy_retrained_ablation_pass",
+    "stage43_bo": "stage43_bo_graph_history_retrained_ablation_pass_contribution_supported",
+    "stage43_bp": "stage43_bp_scene_graph_multimodal_ablation_pass_negative_unsafe_diagnostic",
+    "stage43_bq": "stage43_bq_gated_scene_graph_fusion_pass_safe_no_lift_diagnostic",
+    "stage43_dj": "stage43_dj_latent_world_state_current_reconciliation_pass"
+  },
+  "signals": {
+    "graph": {
+      "no_graph": {
+        "all": 0.3015155078767169,
+        "t50": 0.15279082330779148,
+        "t100_raw_frame_diagnostic": -0.30124519290017404,
+        "hard_failure": 0.3044660996323625,
+        "easy_degradation": 0.1393879196737804,
+        "switch_rate": 0.8595833333333334
+      },
+      "current_graph_only": {
+        "all": 0.37184884862347867,
+        "t50": 0.22076402991736244,
+        "t100_raw_frame_diagnostic": -0.096822077843701,
+        "hard_failure": 0.38009885299478186,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5789166666666666
+      },
+      "history_graph_only": {
+        "all": 0.303884250587692,
+        "t50": 0.20062456618292157,
+        "t100_raw_frame_diagnostic": -0.5014219836161764,
+        "hard_failure": 0.2980878105353876,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.8680833333333333
+      },
+      "full_graph": {
+        "all": 0.37879364427486306,
+        "t50": 0.30653738904145045,
+        "t100_raw_frame_diagnostic": -0.2838879554605054,
+        "hard_failure": 0.36934244041826403,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.7779166666666667
+      },
+      "deltas": {
+        "full_graph_minus_no_graph": {
+          "all": 0.07727813639814618,
+          "t50": 0.15374656573365897,
+          "t100_raw_frame_diagnostic": 0.01735723743966866,
+          "hard_failure": 0.06487634078590154,
+          "easy_degradation": -0.1393879196737804,
+          "switch_rate": -0.08166666666666667
+        },
+        "full_graph_minus_current_graph": {
+          "all": 0.0069447956513843945,
+          "t50": 0.08577335912408801,
+          "t100_raw_frame_diagnostic": -0.18706587761680438,
+          "hard_failure": -0.010756412576517826,
+          "easy_degradation": 0.0,
+          "switch_rate": 0.19900000000000007
+        },
+        "full_graph_minus_history_graph": {
+          "all": 0.07490939368717109,
+          "t50": 0.10591282285852888,
+          "t100_raw_frame_diagnostic": 0.21753402815567102,
+          "hard_failure": 0.07125462988287645,
+          "easy_degradation": 0.0,
+          "switch_rate": -0.09016666666666662
+        }
+      }
+    },
+    "scene_proxy": {
+      "no_scene": {
+        "all": 0.36010009838633583,
+        "t50": 0.30301742511054597,
+        "t100_raw_frame_diagnostic": -0.3404698749143489,
+        "hard_failure": 0.3697213871291004,
+        "easy_degradation": 0.07862886616192877,
+        "switch_rate": 1.0
+      },
+      "geometry_route": {
+        "all": 0.364419683015172,
+        "t50": 0.3532359203907205,
+        "t100_raw_frame_diagnostic": -0.36242837374722936,
+        "hard_failure": 0.3719656217866132,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.9998125
+      },
+      "goal_only": {
+        "all": 0.27867604394087664,
+        "t50": 0.26801372201170526,
+        "t100_raw_frame_diagnostic": -0.41065077375770476,
+        "hard_failure": 0.2891511062240124,
+        "easy_degradation": 0.06783294490751746,
+        "switch_rate": 0.8101875
+      },
+      "full_scene": {
+        "all": 0.3706386933315001,
+        "t50": 0.36093487648763034,
+        "t100_raw_frame_diagnostic": -0.35911736430025054,
+        "hard_failure": 0.37942647992427625,
+        "easy_degradation": 0.0958593682894453,
+        "switch_rate": 1.0
+      },
+      "deltas": {
+        "geometry_route_minus_no_scene": {
+          "all": 0.004319584628836193,
+          "t50": 0.050218495280174524,
+          "t100_raw_frame_diagnostic": -0.02195849883288048,
+          "hard_failure": 0.002244234657512778,
+          "easy_degradation": -0.07862886616192877,
+          "switch_rate": -0.0001875000000000071
+        },
+        "full_scene_minus_no_scene": {
+          "all": 0.010538594945164292,
+          "t50": 0.05791745137708437,
+          "t100_raw_frame_diagnostic": -0.01864748938590166,
+          "hard_failure": 0.00970509279517584,
+          "easy_degradation": 0.017230502127516534,
+          "switch_rate": 0.0
+        },
+        "goal_only_minus_no_scene": {
+          "all": -0.08142405444545919,
+          "t50": -0.03500370309884071,
+          "t100_raw_frame_diagnostic": -0.07018089884335588,
+          "hard_failure": -0.080570280905088,
+          "easy_degradation": -0.010795921254411311,
+          "switch_rate": -0.18981250000000005
+        }
+      }
+    },
+    "fusion": {
+      "no_context": {
+        "all": 0.32726259866460794,
+        "t50": 0.06126996862660972,
+        "t100_raw_frame_diagnostic": -0.029405681950154694,
+        "hard_failure": 0.3296126346641609,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5691666666666667
+      },
+      "scene_proxy_only": {
+        "all": 0.33671479606572396,
+        "t50": 0.036337692179539416,
+        "t100_raw_frame_diagnostic": -0.01587617144135156,
+        "hard_failure": 0.3485401558490304,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.46166666666666667
+      },
+      "graph_history_only": {
+        "all": 0.3691430361096928,
+        "t50": 0.1561883303246655,
+        "t100_raw_frame_diagnostic": -0.032566614751932565,
+        "hard_failure": 0.37640208164824085,
+        "easy_degradation": 0.0,
+        "switch_rate": 0.5850833333333333
+      },
+      "scene_graph_full": {
+        "all": 0.31695872020258764,
+        "t50": 0.043181609970367574,
+        "t100_raw_frame_diagnostic": -0.02735874366005464,
+        "hard_failure": 0.34149507280932934,
+        "easy_degradation": 0.13443065964753442,
+        "switch_rate": 0.6019166666666667
+      },
+      "deltas": {
+        "scene_graph_full_minus_graph_only": {
+          "all": -0.05218431590710515,
+          "t50": -0.11300672035429793,
+          "t100_raw_frame_diagnostic": 0.005207871091877925,
+          "hard_failure": -0.03490700883891151,
+          "easy_degradation": 0.13443065964753442,
+          "switch_rate": 0.016833333333333367
+        },
+        "scene_graph_full_minus_no_context": {
+          "all": -0.0103038784620203,
+          "t50": -0.018088358656242143,
+          "t100_raw_frame_diagnostic": 0.0020469382901000532,
+          "hard_failure": 0.011882438145168428,
+          "easy_degradation": 0.13443065964753442,
+          "switch_rate": 0.032749999999999946
+        },
+        "gated_fusion_minus_best_single": {
+          "all": -0.06948747872090233,
+          "t50": -0.1443725424994552,
+          "t100_raw_frame_diagnostic": 0.029942589752420368,
+          "hard_failure": -0.060381445396160416,
+          "easy_degradation": 0.0049513221364752,
+          "switch_rate": -0.15933333333333327
+        }
+      },
+      "bq_best_single": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.3691430361096928,
+        "endpoint_fde_improvement_vs_floor": 0.39650082657839814,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.1561883303246655,
+        "t50_endpoint_fde_improvement_vs_floor": 0.21002421626927836,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.032566614751932565,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.37640208164824085,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.5850833333333333,
+        "harm_over_floor_ade": -0.07221996784210205,
+        "mean_floor_ade": 0.19564223289489746,
+        "mean_selected_ade": 0.12342226505279541
+      },
+      "bq_no_context": {
+        "rows": 12000,
+        "full_waypoint_ade_improvement_vs_floor": 0.32726259866460794,
+        "endpoint_fde_improvement_vs_floor": 0.36800705382108556,
+        "t50_full_waypoint_ade_improvement_vs_floor": 0.06126996862660972,
+        "t50_endpoint_fde_improvement_vs_floor": 0.17623449380334144,
+        "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.029405681950154694,
+        "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3296126346641609,
+        "easy_degradation_vs_floor": 0.0,
+        "switch_rate": 0.5691666666666667,
+        "harm_over_floor_ade": -0.06402640044689178,
+        "mean_floor_ade": 0.19564223289489746,
+        "mean_selected_ade": 0.13161584734916687
+      },
+      "bq_t50_contribution_ci": {
+        "rows": 2910,
+        "mean": -0.31814411877095755,
+        "low": -0.3367621087079192,
+        "high": -0.2989693395594379
+      }
+    }
+  },
+  "taxonomy": [
+    {
+      "failure": "naive_scene_graph_fusion_suppresses_graph_signal",
+      "evidence": "BP scene_graph_full t50 is 4.32%, while graph_history_only is 15.62%; delta -11.30%.",
+      "interpretation": "The strongest graph signal is real, but concatenating scene proxy and graph history changes the learned decision surface in a harmful way.",
+      "repair_target": "Train graph-first mixture/routing where graph_history/full_graph is the default neural expert and scene proxy can only add residual context under a harm guard."
+    },
+    {
+      "failure": "scene_proxy_is_useful_but_not_raw_scene_or_sdf",
+      "evidence": "AG geometry_route improves t50 by 5.02% over no_scene with easy 0.00%, but full_scene easy is 9.59%.",
+      "interpretation": "Scene/goal proxy has signal, but broad scene proxy use can over-switch easy cases and still cannot support a raw-scene/SDF claim.",
+      "repair_target": "Use a narrow geometry-route scene expert until raw scene/SDF tensors exist; keep raw-scene claims blocked."
+    },
+    {
+      "failure": "learned_gated_fusion_is_safe_but_too_conservative_or_misweighted",
+      "evidence": "BQ gated fusion loses 14.44% t50 versus the best single expert; bootstrap t50 contribution CI is [-33.68%, -29.90%].",
+      "interpretation": "The gate prevents the catastrophic easy damage of full fusion, but it also fails to preserve the graph expert's t50/hard lift.",
+      "repair_target": "Add expert-preservation distillation: the fused model must not underperform graph_history_only on validation t50/hard before it can switch."
+    },
+    {
+      "failure": "t100_raw_frame_remains_diagnostic",
+      "evidence": "Full_graph t100 raw-frame diagnostic is -28.39%; BQ t100 delta versus best single is 2.99%.",
+      "interpretation": "The current scene/graph path is not a reliable long-horizon t100 solution.",
+      "repair_target": "Keep t100 guarded and diagnostic; do not use it as deployment evidence until source/group support is stable."
+    }
+  ],
+  "next_training_contract": {
+    "name": "stage43_next_graph_first_scene_residual_moe",
+    "train_next": true,
+    "do_not_repeat": [
+      "generic_scene_graph_full_concat",
+      "gated_fusion_without_graph_expert_preservation",
+      "raw_scene_claim_without_raw_scene_or_sdf_cache"
+    ],
+    "required_experts": [
+      "no_context_floor_compatible_expert",
+      "full_graph_or_graph_history_expert",
+      "geometry_route_scene_proxy_expert"
+    ],
+    "required_losses": [
+      "full_waypoint_ade_loss",
+      "failure_gain_harm_multitask_loss",
+      "graph_expert_preservation_pairwise_loss",
+      "easy_harm_penalty",
+      "t50_hard_failure_weighting",
+      "t100_guarded_diagnostic_reporting"
+    ],
+    "deployment_rule": "Default to the protected floor or graph expert; allow scene proxy residual only when gain is high, harm is low, and validation support says the source/horizon slice is covered.",
+    "success_gate": {
+      "beats_best_single_graph_t50_or_hard": true,
+      "easy_degradation_max": 0.02,
+      "no_test_threshold_tuning": true,
+      "raw_scene_claim_allowed": false
+    }
+  },
+  "decision": {
+    "deployable_policy_changed": false,
+    "keep_current_protected_latent_state_candidate": true,
+    "generic_scene_graph_concat_rejected": true,
+    "graph_first_scene_residual_moe_is_next": true,
+    "raw_scene_sdf_still_blocked": true,
+    "t100_raw_frame_still_diagnostic": true
+  },
+  "no_leakage": {
+    "bp": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "future_waypoint_label_eval_only": true,
+      "central_velocity_input": false,
+      "test_endpoint_goal_construction": false,
+      "test_statistics_normalization": false,
+      "scene_proxy_train_only": true,
+      "graph_inputs_past_or_current_only": true
+    },
+    "bq": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "future_waypoint_label_eval_only": true,
+      "central_velocity_input": false,
+      "test_endpoint_goal_construction": false,
+      "test_statistics_normalization": false,
+      "scene_proxy_train_only": true,
+      "graph_inputs_past_or_current_only": true
+    },
+    "dj": {
+      "future_endpoint_input": false,
+      "future_waypoint_input": false,
+      "central_velocity_input": false,
+      "test_endpoint_goal_construction": false,
+      "test_statistics_normalization": false
+    }
+  },
+  "claim_boundary": {
+    "bl": {
+      "true_3d_world_model": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "dataset_local_raw_frame_only": true,
+      "raw_scene_main_claim": false,
+      "graph_rich_interaction_main_claim": false,
+      "proxy_scene_goal_interaction_evidence_only": true,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "long_objective_complete": false
+    },
+    "bp": {
+      "true_3d_world_model": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "raw_scene_or_verified_sdf_claim": false,
+      "deployable_policy_changed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "long_objective_complete": false
+    },
+    "bq": {
+      "true_3d_world_model": false,
+      "foundation_world_model": false,
+      "dataset_local_raw_frame_only": true,
+      "metric_or_seconds_claim": false,
+      "raw_scene_or_verified_sdf_claim": false,
+      "deployable_policy_changed": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "long_objective_complete": false
+    },
+    "dj": {
+      "true_3d_world_model": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "dataset_local_raw_frame_only": true,
+      "standalone_ungated_world_model": false,
+      "t100_seconds_level_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "long_objective_complete": false
+    },
+    "current": {
+      "true_3d_world_model": false,
+      "foundation_world_model": false,
+      "metric_or_seconds_claim": false,
+      "dataset_local_raw_frame_only": true,
+      "raw_scene_or_verified_sdf_claim": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "long_objective_complete": false
+    }
+  },
+  "preconditions": {
+    "stage43_bl": true,
+    "stage43_ag": true,
+    "stage43_bo": true,
+    "stage43_bp": true,
+    "stage43_bq": true,
+    "stage43_dj": true
+  },
+  "stage43_dk_gate": {
+    "source": "fresh_stage43_dk_scene_graph_failure_taxonomy",
+    "gates": {
+      "preconditions_passed": true,
+      "graph_signal_positive_and_easy_safe": true,
+      "scene_proxy_signal_present_but_guarded": true,
+      "naive_fusion_failure_identified": true,
+      "gated_fusion_safe_no_lift_identified": true,
+      "bootstrap_confirms_negative_gated_t50": true,
+      "next_training_contract_recorded": true,
+      "deployable_policy_not_changed": true,
+      "raw_scene_sdf_not_overclaimed": true,
+      "t100_remains_diagnostic": true,
+      "no_future_or_test_leakage": true,
+      "claim_boundary_not_overstated": true,
+      "stage5c_and_smc_false": true,
+      "long_objective_kept_active": true
+    },
+    "passed": 14,
+    "total": 14,
+    "verdict": "stage43_dk_scene_graph_failure_taxonomy_pass_next_graph_first_moe",
+    "protected_multimodal_latent_state_candidate": true,
+    "deployable_policy_changed": false,
+    "next_training_contract": "stage43_next_graph_first_scene_residual_moe",
+    "goal_complete": false,
+    "stage5c_executed": false,
+    "smc_enabled": false
+  }
+}
