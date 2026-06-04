@@ -5725,3 +5725,25 @@ scene_graph_full_minus_graph_only_t50_easy = `-11.30%` / `13.44%`
 
 My read: graph history is the part worth protecting and building around. Scene/goal proxy is not useless, but generic scene+graph fusion damaged the graph expert and hurt easy cases. The next neural step should be a graph-first scene-residual MoE with expert-preservation and harm-aware routing, not another raw concat.
 <!-- STAGE43_DK_SCENE_GRAPH_FAILURE_TAXONOMY:END -->
+
+<!-- STAGE43_DL_GRAPH_FIRST_SCENE_RESIDUAL_MOE:START -->
+## Stage43-DL: Graph-First Scene-Residual MoE
+
+source = `fresh_stage43_dl_graph_first_scene_residual_moe`
+result_source = `fresh_graph_first_scene_residual_moe`
+verdict = `stage43_dl_graph_first_scene_residual_moe_pass_safe_bq_lift_diagnostic`
+gate = `15 / 15`
+graph_first_moe_executed = `True`
+beats_best_single = `False`
+beats_bq_gated_fusion = `True`
+safe_easy = `True`
+deployable_policy_changed = `False`
+
+Protected metrics: all `30.34%`, t50 `7.78%`, hard/failure `32.24%`, easy degradation `0.00%`.
+
+Against `graph_history_only`, the graph-first scene-residual MoE delta is all `-6.58%`, t50 `-7.84%`, hard/failure `-5.40%`.
+
+My read: this is the right architecture family to test after the scene/graph failure taxonomy: protect the graph expert, let scene proxy act only as a residual, and keep the floor unless validation-safe switching earns its way in.
+
+Boundary unchanged: dataset-local/raw-frame 2.5D only; future waypoints are labels/eval only; no metric/seconds claim, no true 3D/foundation, no Stage5C, no SMC.
+<!-- STAGE43_DL_GRAPH_FIRST_SCENE_RESIDUAL_MOE:END -->

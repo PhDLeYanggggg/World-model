@@ -1,23 +1,15 @@
-# Stage43 Current World-Model Gate
+# Stage43-DL Graph-First Scene-Residual MoE Gate
 
-- source: `fresh_stage43_dl_graph_first_scene_residual_moe`
 - verdict: `stage43_dl_graph_first_scene_residual_moe_pass_safe_bq_lift_diagnostic`
 - passed: `15 / 15`
-- protected multimodal latent state candidate: `True`
 - graph-first MoE executed: `True`
 - beats best single: `False`
 - beats BQ gated fusion: `True`
+- safe easy: `True`
 - deployable policy changed: `False`
 - long objective complete: `False`
 - Stage5C executed: `False`
 - SMC enabled: `False`
-
-## Current Boundary
-
-- Stage43-DL executes a fresh graph-first scene-residual MoE after Stage43-DK identified why generic scene+graph fusion failed.
-- The deployment floor is unchanged; this is protected latent-world-state evidence, not a new deployed policy.
-- Scene evidence remains proxy-based, not raw image/SDF evidence.
-- Dataset-local/raw-frame 2.5D only; no metric, seconds-level, true-3D, foundation, Stage5C, or SMC claim.
 
 | gate | passed |
 | --- | --- |
