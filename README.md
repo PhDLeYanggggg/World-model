@@ -23,9 +23,11 @@ An [execution-only optimization](outputs/publication_readiness_2026_09/public_pr
 skips unused output heads while preserving selected outputs and gradients in
 CPU/MPS tests. This remains a K=1 adaptation, not published best-of-20 EqMotion.
 The replacement full fit matches the preserved model's parameters and complete
-loss sequence exactly; the remaining crossfit and seed runs are in progress.
-That replay checks the source repair, not accuracy. No completed comparison or
-new deployment is claimed for the current run.
+loss sequence exactly. Three EqMotion fits have finished, but the next fold
+encountered float32 overflow. I reproduced it separately and am continuing that
+fold on CPU at the unchanged budget; this is a mitigation, not a proven numerical
+fix. The [failure record](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/nonfinite_fit_diagnosis.md)
+keeps the evidence visible. No completed comparison or new deployment is claimed.
 
 My primary task is now **eight observed steps to twelve predicted steps**, with
 raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused

@@ -2,6 +2,17 @@
 
 ## Current v5 Run Supersedes the Snapshots Below
 
+Latest interruption: v5 EqMotion seed17 full/hold0/hold1 each completed 10,000.
+hold2 failed at MPS step89 with float32 nonfinite output; outer pair runner exited.
+The root runner heartbeat is therefore stale, not proof of an active process.
+An explicit direct CPU resume of seed17_hold2 is now running with unchanged
+budget/settings; inspect that child's heartbeat and actual process before any
+restart. Its isolated CPU replay passed the first100 updates. See
+`8to12_public_predictors_v5/nonfinite_fit_diagnosis.md`. The MPS pre-failure
+weights/batch are preserved locally. This is not the old OpenMP hang or a claim
+of a root-cause fix. Do not skip the fold. Once the full CPU fit finishes, resume
+the original pair runner; completed fits are hash-verified, not retrained.
+
 Current source snapshot: `5e0f7be9`. Active command:
 `scripts/run_m3w_continuous_predictor_pair.py` in arm64 `.venv-pytorch`.
 Read `data/stage_cvpr2027_experiments/8to12_eqmotion_v5/runner_heartbeat.json`
