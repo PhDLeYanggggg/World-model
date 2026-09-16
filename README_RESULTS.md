@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## External Evidence Correction (2026-09-16)
+
+Fresh 内容审计发现：Stage35/37 val/test 有 47,223 个相同几何窗口，源文件也逐字节相同；test 内另有 zara03 的两份重复包装。Stage43/44 重划分后，train/val 重复 47,223 个窗口、train/test 重复 9,540 个窗口。新 val/test 中分别有 17,070 / 78,270 行原本属于旧 teacher train。复用旧 teacher 输出并不能使它们成为独立评价样本。Stage37 最终 selector 排名读取 test，bootstrap CI 不消除该选择偏差。
+
+上述外部历史提升保留记录，但独立部署/跨域证明资格待重新验证；本轮未重算预测，不把发现等同于所有 SDD 结果失效。Stage44 选择与 repair 现仅使用 val，负收益 policy 会回退，并在读取 test predictions 前锁定选择。训练入口新增内容/teacher 来源检查，当前旧缓存被明确拒绝。模型权重没有替换，Stage5C/SMC 没有执行。另已确认所有 legacy t25 行的实际 endpoint 帧差不等于 25，后续协议不能忽略这个偏差。
+
+证据：[新 split 审计](outputs/publication_readiness_2026_09/recording_lineage_audit.md)、[原 split 审计](outputs/publication_readiness_2026_09/stage35_recording_lineage_audit.md)、[修复与验证](outputs/publication_readiness_2026_09/protocol_repair.md)。历史 `pass`/`deployable` 字段须结合本条更正阅读，不能单独作为最新结论。
+
 ## CVPR 2027 Research Audit (2026-09-16)
 
 目标已确定为 CVPR 2027 主会长文，暂不安排 AAMAS。官方 registration / full paper / supplementary 截止分别为 2026-11-10 / 11-16 / 11-23 AoE。内部目标：10-25 锁定主实验、10-31 完整初稿、11-09 可提交正文。详见 [创新点与投稿路线](README_M3W_INNOVATION_AND_CVPR2027_ZH.md)。

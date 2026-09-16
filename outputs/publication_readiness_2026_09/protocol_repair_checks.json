@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-16",
+  "result_source": "fresh_run",
+  "scope": "targeted_regression_source_and_content_audit",
+  "tests": {
+    "command": ".venv-pytorch/bin/python -m pytest tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py tests/test_stage43_full_waypoint_latent_dynamics.py tests/test_stage43_full_waypoint_supervision_cache.py -q",
+    "passed": 23,
+    "failed": 0,
+    "elapsed_seconds": 14.61,
+    "full_repository_suite": "not_run"
+  },
+  "negative_training_preflight": {
+    "command": ".venv-pytorch/bin/python run_stage44_worldcore.py --quick",
+    "exit_code": 1,
+    "expected_failure": true,
+    "reason": "recording duplicates and inherited teacher exposure",
+    "training_started": false
+  },
+  "historical_audit_replay": {
+    "source_revision": "0376ed6b",
+    "output_directory": "/tmp/m3w_historical_evidence_replay",
+    "exit_code": 0,
+    "input_hash_matches": true,
+    "checkpoint_hashes_match": "7/7",
+    "real_data_predictions_recomputed": false
+  },
+  "new_neural_training": "not_run",
+  "new_performance_claim": false,
+  "submission_ready": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

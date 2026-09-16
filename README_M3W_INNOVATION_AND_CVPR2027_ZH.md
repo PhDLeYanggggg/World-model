@@ -2,6 +2,8 @@
 
 更新日期：2026-09-16。目标会议已确定为 **CVPR 2027 主会长文**，暂不安排 AAMAS。
 
+**同日后续审计更正：** 已确认不是仅有潜在风险。Stage35/37 val 与 test 有 47,223 个逐行几何相同的窗口；Stage43/44 train 与 val 重复 47,223 个窗口、train 与 test 重复 9,540 个窗口，源文件字节哈希也相同。新 test 的 78,270 行来自旧 teacher train。Stage37 最终 variant 选择同样读取 test。这些外部结果降为探索性，不再作为独立部署或泛化证明。已修复 Stage44 后续选择流程并阻断旧缓存训练；尚未重新训练。详见 [数据来源审计](outputs/publication_readiness_2026_09/recording_lineage_audit.md)、[协议修复记录](outputs/publication_readiness_2026_09/protocol_repair.md)。
+
 我希望这篇论文回答一个具体问题：**当强运动基线已经能处理大部分简单样本时，如何让神经预测只在有证据支持的情况下介入，并避免逐个 agent 的改进破坏整个场景的一致性？**
 
 M3W 已经积累了实现基础和初步正结果，但现有证据尚不足以支持一篇完成的 CVPR 论文。最值得发展的贡献是相对基线的风险控制、场景级联合选择和支持不足时的回退。JEPA、Transformer、目标原型、坐标规范化本身都有充分先例，不能把它们的组合或名称当成创新。
@@ -10,11 +12,11 @@ M3W 已经积累了实现基础和初步正结果，但现有证据尚不足以�
 
 本次没有重新训练或重新计算真实数据预测。完成的是当前源码审查、历史报告读取、缓存与 checkpoint 哈希核对，以及两个合成输入诊断。历史真实数据指标仍是旧实验结果。
 
-- 当前 HEAD：`a48b1b7`；Stage44 实现提交：`9e6fa30`。
+- 首次审计时 HEAD：`a48b1b7`；Stage44 实现提交：`9e6fa30`。下面的源码缺陷描述指修复前版本，不代表修复后的选择实现。
 - Stage44 记录时间：2026-06-04；实际为 small，训练/验证/测试分别为 12,000 / 5,000 / 8,000 rows，七个模型各 3 epochs。
 - 当前十二个直接输入缓存的组合哈希与 Stage44 记录一致；七个 checkpoint 的 SHA256 全部与记录一致。这验证了文件身份，**不等于已复现预测或完成端到端无泄露审计**。
 - 底层 full-waypoint cache 有 146,809 / 101,446 / 89,736 rows，不能据此把上述 small 结果称为全量结果。
-- 源文件 ID 在 split 间没有交集；train/val、val/test 各有一个 scene ID 重叠。仍需检查 ETH/UCY/TrajNet/OpenTraj 中同一原始录像的重复包装。
+- 源文件 ID 在 split 间没有交集，但后续内容审计已确认不同 ID 下的字节相同录像跨 split 重复；不能把路径互斥当作独立录像互斥。
 - 合成反向传播检查证实：Stage44 future target encoder 没有梯度，optimizer step 后参数不变。
 - 合成模型排序检查证实：保持 validation 内容不变、只改变 test metrics，`_best_variant` 的选择会变化。
 

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+from copy import deepcopy
+
 import numpy as np
+import pytest
 import torch
 
 from src import stage44_worldcore as wc
@@ -120,10 +123,15 @@ def test_gate_passes_when_worldcore_has_safe_lift() -> None:
         },
         "claim_boundary": {"metric_or_seconds_claim": False, "stage5c_executed": False, "smc_enabled": False},
     }
+    payload["lineage_preflight"] = {"training_allowed_with_unchanged_legacy_caches": True}
+    payload["selection"] = {"protocol": "validation_only_before_test_prediction"}
     gate = wc._gate(payload)
     assert gate["passed"] == gate["total"]
     assert gate["worldcore_lift_measured"] is True
     assert gate["verdict"] == "stage44_worldcore_latent_state_candidate_pass"
+    assert gate["submission_ready"] is False
+    del payload["lineage_preflight"]
+    assert not wc._gate(payload)["gates"]["recording_teacher_boundary_audited"]
 
 
 def test_gate_diagnostic_when_easy_is_not_safe() -> None:
@@ -153,3 +161,103 @@ def test_gate_diagnostic_when_easy_is_not_safe() -> None:
     gate = wc._gate(payload)
     assert gate["gates"]["easy_preservation_safe"] is False
     assert gate["verdict"] == "stage44_worldcore_diagnostic_not_yet_independent_world_model"
+
+
+def _validation_row(score: float, easy: float = 0.0) -> dict:
+    row = _row(score, score, score, easy)
+    row["validation_policy"] = {"policy": {}, "metrics": _metric(score, score, score, easy),
+                                "objective": score}
+    return row
+
+
+def test_variant_selection_and_repair_ignore_test_metrics() -> None:
+    rows = {"hybrid_jepa_transformer": _validation_row(0.1), "other": _validation_row(0.2)}
+    before = wc._best_variant(rows)[0], wc._needs_repair(rows)
+    changed = deepcopy(rows)
+    changed["hybrid_jepa_transformer"]["test_eval"]["protected"] = _metric(1e6, 1e6, 1e6, 0)
+    changed["other"]["test_eval"]["protected"] = _metric(-1e6, -1e6, -1e6, 100)
+    assert (wc._best_variant(changed)[0], wc._needs_repair(changed)) == before
+    assert before == ("other", False)
+
+
+def test_selection_works_before_any_test_evaluation() -> None:
+    rows = {"hybrid_jepa_transformer": _validation_row(0.1)}
+    del rows["hybrid_jepa_transformer"]["test_eval"]
+    assert wc._best_variant(rows)[0] == "hybrid_jepa_transformer"
+    assert not wc._needs_repair(rows)
+
+
+def test_missing_validation_never_falls_back_to_test() -> None:
+    with pytest.raises(ValueError, match="validation"):
+        wc._best_variant({"test_only": _row(1, 1, 1)})
+
+
+def test_unsafe_validation_or_nonfinite_objective_is_not_selected() -> None:
+    rows = {"safe": _validation_row(0.01), "unsafe": _validation_row(5.0, 0.03),
+            "nan": _validation_row(float("nan"))}
+    assert wc._best_variant(rows)[0] == "safe"
+
+
+def test_no_safe_predicted_gain_keeps_validation_floor(monkeypatch) -> None:
+    from types import SimpleNamespace
+    base = SimpleNamespace(x=np.zeros((2, 1)), floor_ade=np.ones(2), floor_fde=np.ones(2))
+    val = SimpleNamespace(base=base)
+    monkeypatch.setattr(wc.m, "_select_with_policy", lambda *_: (np.ones(2) * 2, np.ones(2) * 2, np.ones(2, bool)))
+    def metrics(_base, ade, _fde, switched):
+        return {**_metric(1 - float(ade.mean()), -1 if switched.any() else 0,
+                          -1 if switched.any() else 0, 0), "switch_rate": float(switched.mean())}
+    monkeypatch.setattr(wc.m, "_metrics", metrics)
+    result = wc._search_policy(val, {})
+    assert result["objective"] == 0.0
+    assert result["metrics"]["switch_rate"] == 0
+
+
+def test_lineage_preflight_blocks_before_training_or_output(monkeypatch) -> None:
+    from types import SimpleNamespace
+    def blocked():
+        raise RuntimeError("lineage preflight failed")
+    def forbidden(*_args, **_kwargs):
+        pytest.fail("A blocked run must not train or touch old artifacts")
+    monkeypatch.setattr(wc, "assert_legacy_cache_safe", blocked)
+    monkeypatch.setattr(wc, "ensure_dir", forbidden)
+    monkeypatch.setattr(wc, "_train_variant", forbidden)
+    with pytest.raises(RuntimeError, match="lineage"):
+        wc._run(SimpleNamespace())
+
+
+def test_training_and_selection_finish_before_test_is_loaded(monkeypatch):
+    from types import SimpleNamespace
+    events = []
+    monkeypatch.setattr(wc, "assert_legacy_cache_safe", lambda: {"training_allowed_with_unchanged_legacy_caches": True})
+    monkeypatch.setattr(wc, "ensure_dir", lambda *_: None)
+    monkeypatch.setattr(wc.m, "_configure_runtime", lambda *_: None)
+    monkeypatch.setattr(wc, "_build_worldcore_development_splits",
+                        lambda *_: (object(), object(), {"token_schema": {}}, (np.zeros(1), np.ones(1))))
+    def train(cfg, *_args, **_kwargs):
+        assert "test_loaded" not in events
+        events.append("trained_" + cfg.name)
+        row = _validation_row(0.1)
+        del row["test_eval"]
+        row["checkpoint_sha256"] = "synthetic"
+        return row
+    monkeypatch.setattr(wc, "_train_variant", train)
+    def write(path, payload):
+        if path.name == "validation_selection_lock.json":
+            assert payload["protocol"] == "validation_only_before_test_prediction"
+            events.append("locked")
+    monkeypatch.setattr(wc, "write_json", write)
+    def test_split(*_):
+        assert events[-1] == "locked"
+        assert sum(e.startswith("trained_") for e in events) == 7
+        events.append("test_loaded")
+        return object(), {}
+    monkeypatch.setattr(wc, "_build_worldcore_test_split", test_split)
+    monkeypatch.setattr(wc, "_evaluate_frozen_variants", lambda *_: events.append("test_evaluated"))
+    monkeypatch.setattr(wc, "_ablation_table", lambda *_: {})
+    monkeypatch.setattr(wc, "_failure_analysis", lambda *_: {})
+    monkeypatch.setattr(wc, "_gate", lambda *_: {})
+    monkeypatch.setattr(wc, "_write_outputs", lambda *_: None)
+    monkeypatch.setattr(wc, "_combined_hash", lambda *_: "synthetic")
+    result = wc._run(SimpleNamespace(quick=True, medium=False, seed=1, batch_size=2))
+    assert events[-2:] == ["test_loaded", "test_evaluated"]
+    assert result["selection"]["confirmatory_evidence"] is False

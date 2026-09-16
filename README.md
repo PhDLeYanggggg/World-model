@@ -8,11 +8,13 @@ The question behind the project is simple:
 
 I started this repo to answer that question carefully, not just to collect a nice-looking demo. The work here includes the models that improved results, the ones that failed, the leakage checks, the safety rules, and the notes that keep me honest about what the evidence does and does not prove.
 
-## Current Best Result
+## Current Evidence Status
 
-The strongest deployable model in this repo is currently a protected selector-style policy. It does not blindly replace the causal baseline. It starts from strong physical baselines, studies past-only evidence, and switches only when the expected gain is large enough and the easy-case risk is low enough.
+The protected selector remains the historical reference implementation. It starts from causal motion baselines and switches only when the expected gain is large enough and the estimated easy-case risk is low enough. I am not currently treating its external results as independently validated deployment evidence.
 
-On the current external top-down pedestrian evaluation, the frozen policy gives:
+During the September 2026 publication audit, I found byte-identical recordings under different dataset paths. The Stage35/37 validation and test sets share 47,223 cached windows, and the later Stage43/44 split has train/test duplication as well as inherited teacher-training exposure. Stage37 and the original Stage44 code also used test metrics to rank model variants. These issues mean the external claims need a clean rerun. The [recording audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md) and [original split audit](outputs/publication_readiness_2026_09/stage35_recording_lineage_audit.md) document the evidence.
+
+For traceability, these are the **historically reported Stage37 numbers, not corrected confirmatory results**:
 
 | Slice | Result |
 | --- | ---: |
@@ -22,7 +24,7 @@ On the current external top-down pedestrian evaluation, the frozen policy gives:
 | Easy-case degradation | 0.041% |
 | `t+50` bootstrap CI | [+7.69%, +9.15%] |
 
-This is the result I trust most today. The neural world-model branch is still active, but I only count it as deployable when it beats this protected policy under the same no-leakage and easy-preservation rules.
+The table is retained so that older reports remain interpretable. Its bootstrap interval does not account for duplicate recordings or test-based model selection. I have repaired the WorldCore selection path to use validation only and added a training preflight that rejects the unchanged legacy caches. This is a protocol repair, not a new model improvement; the historical weights have not been replaced.
 
 ## What The System Looks At
 
@@ -61,7 +63,7 @@ M3W is not a true 3D world model yet. It is not a foundation world model. SDD re
 
 Stage5C latent generative execution has not been enabled. SMC has not been enabled.
 
-The current claim is narrower and stronger: this repo contains a protected 2.5D multi-agent world-state modeling system with strict leakage discipline, a reliable selector-style deployment floor, and an active neural dynamics track that is still being tested against that floor.
+The current claim is narrower: this repo contains a protected 2.5D multi-agent world-state research system and an active neural dynamics track. Its historical external evaluation has identified independence failures that I am repairing before making new generalization or deployment claims. This external audit does not establish the status of every SDD experiment.
 
 ## Running Locally
 
@@ -87,7 +89,7 @@ The next research step is to make the neural branch contribute something the pro
 
 That means:
 
-1. keep the protected selector as the safety floor;
+1. rebuild recording-disjoint evaluation and refit the protected selector within each training fold;
 2. promote neural dynamics only if they improve overall, `t+50`, or hard/failure slices without damaging easy cases;
 3. keep testing whether scene, goal, graph, and latent context add measurable lift;
 4. keep raw-frame and dataset-local claims separate from metric or physical-world claims.

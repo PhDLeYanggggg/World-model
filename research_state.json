@@ -1,5 +1,16 @@
 {
   "cvpr2027_research_track": {
+    "external_evidence_status": "historical_external_claims_require_recording_disjoint_revalidation",
+    "external_lineage_audit": "outputs/publication_readiness_2026_09/recording_lineage_audit.json",
+    "original_external_split_audit": "outputs/publication_readiness_2026_09/stage35_recording_lineage_audit.json",
+    "protocol_repair": "outputs/publication_readiness_2026_09/protocol_repair.md",
+    "new_test_rows_previously_in_teacher_train": 78270,
+    "new_val_rows_previously_in_teacher_train": 17070,
+    "stage43_train_test_identical_cached_windows": 9540,
+    "stage35_val_test_identical_cached_windows": 47223,
+    "legacy_cache_training_blocked": true,
+    "stage44_selection_repaired_to_validation_only": true,
+    "historical_model_artifacts_replaced": false,
     "updated_at": "2026-09-16",
     "target": "CVPR 2027 main conference full paper",
     "target_selected_by_user": true,
@@ -23,7 +34,10 @@
     "stage44_checkpoint_hashes_match": "7/7",
     "full_no_leakage_reaudit": "not_run",
     "publication_blockers": [
-      "Stage44 architecture ranking and repair trigger read test metrics",
+      "Historical Stage37/44 architecture selection used test metrics; Stage44 future path repaired but confirmation remains missing",
+      "Byte-identical recordings cross legacy split boundaries",
+      "Repartitioned evaluation rows reuse old teacher training exposure",
+      "Legacy requested t25 does not match actual endpoint frame delta",
       "Stage44 detached random target encoder lacks an update path",
       "Head labels do not establish future interaction, occupancy or physical validity",
       "Cross-format source deduplication and teacher split lineage need audit",
@@ -412,8 +426,8 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "stage44_worldcore",
-  "current_verdict": "stage44_worldcore_latent_state_candidate_pass",
+  "current_stage": "cvpr2027_recording_lineage_protocol_repair",
+  "current_verdict": "historical_external_evidence_under_revalidation",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
     "path": "README_M3W_CURRENT_DETAILED_SUMMARY_2026_05_27_ZH.md",
@@ -13298,7 +13312,7 @@
       "caveat": "This is a pure-UCY source-heldout frozen-policy check, not a strict pure-UCY-only train/val/test retraining protocol. Coordinates remain dataset-local raw-frame 2.5D."
     }
   },
-  "current_best_deployable": "M3W-Neural v1 composite-tail safe-switch bounded neural dynamics under Stage37/teacher floor",
+  "current_best_deployable": "Historical M3W-Neural v1 / Stage37 artifacts retained; external deployability and generalization claims require independent revalidation. SDD not reaudited in this turn.",
   "last_updated": "2026-05-27",
   "stage5c_ready": false,
   "true_3d_world_model": false,

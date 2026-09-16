@@ -10,13 +10,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
+# This module applies the arm64 guard and thread settings before importing torch.
+from src import stage43_full_waypoint_latent_dynamics as m
 import numpy as np
 import torch
 from torch import nn
 
-from src import stage43_full_waypoint_latent_dynamics as m
 from src import stage43_graph_history_retrained_ablation as graph43
 from src import stage43_scene_graph_multimodal_ablation as scene43
+from src.evaluation.m3w_recording_lineage import assert_legacy_cache_safe
 from src.stage14_pipeline import ensure_dir, read_json, write_json, write_md
 from src.stage30_m3w_verified import _combined_hash
 from src.stage42_current_module_claim_refresh import _replace_section
@@ -344,29 +346,41 @@ def _tokens_from_split(ds: m.WaypointSplit, groups: Mapping[str, list[int]]) -> 
     return tokens
 
 
-def _build_worldcore_splits(rows: Mapping[str, int | None], seed: int) -> tuple[WorldCoreSplit, WorldCoreSplit, WorldCoreSplit, dict[str, Any]]:
+def _build_worldcore_development_splits(rows: Mapping[str, int | None], seed: int) -> tuple[WorldCoreSplit, WorldCoreSplit, dict[str, Any], tuple[np.ndarray, np.ndarray]]:
     train, train_ctx = _build_context_split("train", max_rows=rows["train"], row_seed=seed)
     val, val_ctx = _build_context_split("val", max_rows=rows["val"], row_seed=seed)
-    test, test_ctx = _build_context_split("test", max_rows=rows["test"], row_seed=seed)
-    mean, std = _standardize(train, val, test)
+    mean = train.x.mean(axis=0).astype(np.float32)
+    raw_std = train.x.std(axis=0).astype(np.float32)
+    std = np.where(raw_std < 1e-3, 1.0, raw_std).astype(np.float32)
+    for ds in (train, val):
+        ds.x = ((ds.x - mean) / std).astype(np.float32)
     groups = _token_feature_groups(train.feature_names)
     schema = _schema_from_groups(train.feature_names, groups)
     token_dims = {token: len(ids) for token, ids in groups.items()}
     splits = [
         WorldCoreSplit("train", train, _tokens_from_split(train, groups), token_dims, schema),
         WorldCoreSplit("val", val, _tokens_from_split(val, groups), token_dims, schema),
-        WorldCoreSplit("test", test, _tokens_from_split(test, groups), token_dims, schema),
     ]
     context = {
         "train": train_ctx,
         "val": val_ctx,
-        "test": test_ctx,
         "feature_mean_sha256": _array_sha256(mean),
         "feature_std_sha256": _array_sha256(std),
         "token_dims": token_dims,
         "token_schema": schema,
     }
-    return splits[0], splits[1], splits[2], context
+    return splits[0], splits[1], context, (mean, std)
+
+
+def _build_worldcore_test_split(rows: Mapping[str, int | None], seed: int,
+                               train: WorldCoreSplit, normalizer: tuple[np.ndarray, np.ndarray]) -> tuple[WorldCoreSplit, dict]:
+    test, context = _build_context_split("test", max_rows=rows["test"], row_seed=seed)
+    if test.feature_names != train.base.feature_names:
+        raise ValueError("Test feature schema differs from the frozen training schema")
+    mean, std = normalizer
+    test.x = ((test.x - mean) / std).astype(np.float32)
+    groups = _token_feature_groups(train.base.feature_names)
+    return WorldCoreSplit("test", test, _tokens_from_split(test, groups), train.token_dims, train.token_schema), context
 
 
 def _claim_boundary() -> dict[str, bool]:
@@ -491,7 +505,13 @@ def _predict(model: WorldCoreModel, split: WorldCoreSplit, device: torch.device,
 
 
 def _search_policy(val: WorldCoreSplit, pred: Mapping[str, np.ndarray], *, max_easy: float = 0.02) -> dict[str, Any]:
-    best: dict[str, Any] | None = None
+    switched = np.zeros(len(val.base.x), dtype=bool)
+    best = {
+        "policy": {"gain_threshold": 1.01, "harm_threshold": -0.01, "failure_threshold": 1.01},
+        "metrics": m._metrics(val.base, val.base.floor_ade.copy(), val.base.floor_fde.copy(), switched),
+        "objective": 0.0,
+        "diagnostic": "no_positive_safe_policy_found_keep_floor",
+    }
     for gain in [0.0, 0.20, 0.35, 0.50, 0.65, 0.80]:
         for harm in [0.05, 0.10, 0.20, 0.35, 0.55, 0.80]:
             for failure in [0.0, 0.10, 0.25, 0.40, 0.60]:
@@ -507,16 +527,8 @@ def _search_policy(val: WorldCoreSplit, pred: Mapping[str, np.ndarray], *, max_e
                     - 0.20 * metrics["switch_rate"]
                 )
                 row = {"policy": policy, "metrics": metrics, "objective": float(objective)}
-                if best is None or row["objective"] > best["objective"]:
+                if row["objective"] > best["objective"]:
                     best = row
-    if best is None:
-        switched = np.zeros(len(val.base.x), dtype=bool)
-        return {
-            "policy": {"gain_threshold": 1.01, "harm_threshold": -0.01, "failure_threshold": 1.01},
-            "metrics": m._metrics(val.base, val.base.floor_ade.copy(), val.base.floor_fde.copy(), switched),
-            "objective": 0.0,
-            "diagnostic": "no_safe_policy_found_keep_floor",
-        }
     return best
 
 
@@ -552,9 +564,9 @@ def _train_variant(
     cfg: WorldCoreConfig,
     train: WorldCoreSplit,
     val: WorldCoreSplit,
-    test: WorldCoreSplit,
     *,
     args: argparse.Namespace,
+    normalizer: tuple[np.ndarray, np.ndarray],
 ) -> dict[str, Any]:
     device = torch.device("cpu")
     model = WorldCoreModel(
@@ -611,14 +623,18 @@ def _train_variant(
         model.load_state_dict(best_state)
     val_pred = _predict(model, val, device, int(args.batch_size))
     policy = _search_policy(val, val_pred, max_easy=float(cfg.max_val_easy))
-    test_pred = _predict(model, test, device, int(args.batch_size))
-    evals = _eval_predictions(test, test_pred, policy["policy"])
     ckpt_path = CKPT_DIR / f"stage44_worldcore_{cfg.name}.pt"
     torch.save(
         {
             "model_state": model.state_dict(),
             "config": cfg.__dict__,
             "token_schema": train.token_schema,
+            "token_dims": train.token_dims,
+            "hidden_dim": int(args.hidden_dim),
+            "latent_dim": int(args.latent_dim),
+            "feature_mean": torch.from_numpy(normalizer[0]),
+            "feature_std": torch.from_numpy(normalizer[1]),
+            "selection_split": "val",
             "checkpoint_committed": False,
             "claim_boundary": _claim_boundary(),
         },
@@ -628,7 +644,6 @@ def _train_variant(
         "config": cfg.__dict__,
         "training_history": history,
         "validation_policy": policy,
-        "test_eval": evals,
         "checkpoint": str(ckpt_path),
         "checkpoint_sha256": m._sha256(ckpt_path),
         "checkpoint_committed": False,
@@ -648,7 +663,7 @@ def _variant_configs() -> list[WorldCoreConfig]:
 
 
 def _needs_repair(results: Mapping[str, Any]) -> bool:
-    hybrid = results.get("hybrid_jepa_transformer", {}).get("test_eval", {}).get("protected", {})
+    hybrid = results.get("hybrid_jepa_transformer", {}).get("validation_policy", {}).get("metrics", {})
     if not hybrid:
         return True
     hybrid_has_lift = (
@@ -657,25 +672,43 @@ def _needs_repair(results: Mapping[str, Any]) -> bool:
         or hybrid["hard_failure_full_waypoint_ade_improvement_vs_floor"] > 0.0
     )
     _, best = _best_variant(results)
-    best_easy_unsafe = bool(best.get("test_eval", {}).get("protected", {}).get("easy_degradation_vs_floor", 1.0) > 0.02)
+    best_easy_unsafe = bool(best["validation_policy"]["metrics"]["easy_degradation_vs_floor"] > 0.02)
     return (not hybrid_has_lift) or best_easy_unsafe
 
 
 def _best_variant(results: Mapping[str, Any]) -> tuple[str, dict[str, Any]]:
     best_name = ""
     best_row: dict[str, Any] = {}
-    best_score = -1e9
-    for name, row in results.items():
-        metrics = row["test_eval"]["protected"]
-        score = (
-            metrics["full_waypoint_ade_improvement_vs_floor"]
-            + metrics["t50_full_waypoint_ade_improvement_vs_floor"]
-            + metrics["hard_failure_full_waypoint_ade_improvement_vs_floor"]
-            - metrics["easy_degradation_vs_floor"]
-        )
+    best_score = -math.inf
+    for name, row in sorted(results.items()):
+        validation = row.get("validation_policy", {})
+        if "metrics" not in validation or "objective" not in validation:
+            raise ValueError(f"Missing validation selection evidence for {name}")
+        easy = float(validation["metrics"]["easy_degradation_vs_floor"])
+        score = float(validation["objective"])
+        if not math.isfinite(score) or not math.isfinite(easy) or easy > 0.02:
+            continue
         if score > best_score:
             best_name, best_row, best_score = name, row, float(score)
+    if not best_name:
+        raise ValueError("No safe finite validation-selected variant; do not inspect test to choose one")
     return best_name, best_row
+
+
+def _evaluate_frozen_variants(results: dict[str, Any], test: WorldCoreSplit, batch_size: int) -> None:
+    for row in results.values():
+        path = Path(row["checkpoint"])
+        if m._sha256(path) != row["checkpoint_sha256"]:
+            raise ValueError("Checkpoint changed after validation selection")
+        checkpoint = torch.load(path, map_location="cpu", weights_only=True)
+        cfg = row["config"]
+        model = WorldCoreModel(
+            checkpoint["token_dims"], hidden_dim=checkpoint["hidden_dim"], latent_dim=checkpoint["latent_dim"],
+            **{k: cfg[k] for k in ("include_baseline", "include_scene", "include_interaction", "use_jepa", "use_transformer")},
+        )
+        model.load_state_dict(checkpoint["model_state"])
+        pred = _predict(model, test, torch.device("cpu"), batch_size)
+        row["test_eval"] = _eval_predictions(test, pred, row["validation_policy"]["policy"])
 
 
 def _delta_metric(a: Mapping[str, float], b: Mapping[str, float], key: str) -> float:
@@ -776,10 +809,12 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "easy_preservation_safe": best_metrics["easy_degradation_vs_floor"] <= 0.02,
         "worldcore_lift_measured": worldcore_lift,
         "failure_analysis_and_repair_executed": bool(failure["next_repairs"]) or failure["repair_actions_executed"] or worldcore_lift,
-        "no_future_or_test_leakage": payload["no_leakage"]["future_endpoint_input"] is False
+        "input_exclusion_declarations": payload["no_leakage"]["future_endpoint_input"] is False
         and payload["no_leakage"]["central_velocity_input"] is False
         and payload["no_leakage"]["test_endpoint_goal_construction"] is False
         and payload["no_leakage"]["test_statistics_normalization"] is False,
+        "recording_teacher_boundary_audited": payload.get("lineage_preflight", {}).get("training_allowed_with_unchanged_legacy_caches") is True,
+        "validation_only_selection": payload.get("selection", {}).get("protocol") == "validation_only_before_test_prediction",
         "no_metric_seconds_stage5c_smc_claim": payload["claim_boundary"]["metric_or_seconds_claim"] is False
         and payload["claim_boundary"]["stage5c_executed"] is False
         and payload["claim_boundary"]["smc_enabled"] is False,
@@ -800,12 +835,16 @@ def _gate(payload: Mapping[str, Any]) -> dict[str, Any]:
         "best_variant": best_name,
         "worldcore_lift_measured": worldcore_lift,
         "deployable_policy_changed": False,
+        "confirmatory_evidence": False,
+        "submission_ready": False,
         "stage5c_executed": False,
         "smc_enabled": False,
     }
 
 
 def _run(args: argparse.Namespace) -> dict[str, Any]:
+    # Fail before training or touching historical reports if the cached split is unsafe.
+    lineage = assert_legacy_cache_safe()
     ensure_dir(OUT_DIR)
     ensure_dir(CKPT_DIR)
     m._configure_runtime(int(args.seed))
@@ -815,12 +854,12 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
         rows = {"train": 50000, "val": 15000, "test": 20000}
     else:
         rows = {"train": 12000, "val": 5000, "test": 8000}
-    train, val, test, context = _build_worldcore_splits(rows, int(args.seed))
+    train, val, context, normalizer = _build_worldcore_development_splits(rows, int(args.seed))
     write_json(SCHEMA_JSON, m._jsonable(context["token_schema"]))
     configs = _variant_configs()
     results: dict[str, Any] = {}
     for cfg in configs:
-        results[cfg.name] = _train_variant(cfg, train, val, test, args=args)
+        results[cfg.name] = _train_variant(cfg, train, val, args=args, normalizer=normalizer)
     if _needs_repair(results):
         repair = WorldCoreConfig(
             "hybrid_t50_hard_repair",
@@ -835,7 +874,7 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
             jepa_weight=0.55,
             max_val_easy=0.01,
         )
-        results[repair.name] = _train_variant(repair, train, val, test, args=args)
+        results[repair.name] = _train_variant(repair, train, val, args=args, normalizer=normalizer)
         safe_repair = WorldCoreConfig(
             "hybrid_easy_safe_repair",
             include_baseline=True,
@@ -849,10 +888,21 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
             jepa_weight=0.30,
             max_val_easy=0.0025,
         )
-        results[safe_repair.name] = _train_variant(safe_repair, train, val, test, args=args)
+        results[safe_repair.name] = _train_variant(safe_repair, train, val, args=args, normalizer=normalizer)
+    best_name, _ = _best_variant(results)
+    selection = {
+        "protocol": "validation_only_before_test_prediction",
+        "best_variant": best_name,
+        "variants": {name: {"checkpoint_sha256": r["checkpoint_sha256"],
+                            "validation_policy": r["validation_policy"]} for name, r in results.items()},
+        "historical_test_exposure": True,
+        "confirmatory_evidence": False,
+    }
+    write_json(OUT_DIR / "validation_selection_lock.json", m._jsonable(selection))
+    test, context["test"] = _build_worldcore_test_split(rows, int(args.seed), train, normalizer)
+    _evaluate_frozen_variants(results, test, int(args.batch_size))
     ablations = _ablation_table(results)
     failure = _failure_analysis(results, ablations)
-    best_name, _ = _best_variant(results)
     payload: dict[str, Any] = {
         "source": SOURCE,
         "result_source": "fresh_stage44_worldcore_training_eval",
@@ -864,6 +914,8 @@ def _run(args: argparse.Namespace) -> dict[str, Any]:
         "token_schema": context["token_schema"],
         "variants": results,
         "best_variant": best_name,
+        "selection": selection,
+        "lineage_preflight": lineage,
         "ablation_table": ablations,
         "failure_analysis": failure,
         "no_leakage": {

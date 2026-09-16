@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import ast
+import argparse
 import hashlib
 import json
 import platform
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -142,7 +144,13 @@ def cache_inventory() -> dict[str, Any]:
 
 
 def main() -> None:
-    text = SOURCE.read_text()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source-ref", default="0376ed6b",
+                        help="Historical code revision audited; never silently substitute repaired code")
+    parser.add_argument("--output-dir", type=Path, default=OUT)
+    args = parser.parse_args()
+    revision = subprocess.check_output(["git", "rev-parse", "--verify", f"{args.source_ref}^{{commit}}"], cwd=ROOT, text=True).strip()
+    text = subprocess.check_output(["git", "show", f"{revision}:src/stage44_worldcore.py"], cwd=ROOT, text=True)
     tree = ast.parse(text)
     report = json.loads(REPORT.read_text())
     inventory = cache_inventory()
@@ -174,7 +182,8 @@ def main() -> None:
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "status": "fresh_run", "scope": "source_artifact_and_synthetic_audit_only",
         "training_status": "not_run", "real_data_prediction_reproduction": "not_run",
-        "source_sha256": sha256(SOURCE), "historical_metrics_sha256": sha256(REPORT),
+        "source_revision": revision,
+        "source_sha256": hashlib.sha256(text.encode()).hexdigest(), "historical_metrics_sha256": sha256(REPORT),
         "historical_run_date": report["generated_at_utc"], "historical_mode": report["mode"],
         "historical_rows": report["rows"], "historical_epochs": {k: len(v["training_history"]) for k, v in report["variants"].items()},
         "historical_best_variant": historical_best, "retrospective_validation_best": validation_best,
@@ -189,11 +198,12 @@ def main() -> None:
         "claim_status": "exploratory_evidence_not_submission_ready",
         "stage5c_executed": False, "smc_enabled": False,
     }
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "evidence_audit.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    (args.output_dir / "evidence_audit.json").write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
     lines = [
         "# M3W Submission Evidence Audit", "",
         "Fresh source/artifact audit and synthetic diagnostics. No model retraining or real-data prediction replay.", "",
+        f"- Audited historical source revision: `{revision}`; this does not audit later source repairs.",
         f"- Historical run: {payload['historical_run_date']}; mode: {payload['historical_mode']}; rows: {payload['historical_rows']}",
         f"- Recorded input hash matches present caches: {payload['input_hash_matches_current_cache']}",
         f"- Checkpoints matching recorded SHA256: {sum(x['matches_recorded'] for x in checkpoints)}/{len(checkpoints)}",
@@ -204,7 +214,7 @@ def main() -> None:
     ]
     lines += [f"- {f['id']}: {f['finding']}" for f in findings]
     lines += ["", "## Synthetic Checks", "", "```json", json.dumps(payload["synthetic_checks"], indent=2), "```", "", "## Scope", "", "No training, new benchmark gain, complete no-leakage certification, or deployment promotion is claimed.", "Current caches must not be called cached_verified replay unless input identities and complete lineage match.", "Dataset-local/raw-frame only; no metric, seconds-level, true-3D or foundation claims. Stage5C and SMC remain disabled."]
-    (OUT / "evidence_audit.md").write_text("\n".join(lines) + "\n")
+    (args.output_dir / "evidence_audit.md").write_text("\n".join(lines) + "\n")
     print(json.dumps({k: payload[k] for k in ["claim_status", "input_hash_matches_current_cache", "validation_best_coincides_with_historical_best", "synthetic_checks"]}, indent=2))
 
 
