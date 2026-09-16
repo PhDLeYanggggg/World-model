@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## Experiment Role and Provenance Contract (2026-09-16)
+
+本轮把训练/选模/风险校准/最终确认的边界实现为 hash-bound 协议入口，而不是开始未经批准的新实验。检查物理场景跨用途、同 fold 暴露、递归 teacher/preprocessor/goal 依赖、模型与缓存内容变化；校准前固定候选集合，最终测试只允许相同身份恢复，不允许换模型后继续作为同一次测试。
+
+`fresh_run` preflight 核对当前 9 个 canonical recordings 的原始源与缓存身份；9/9 都有历史使用记录，仍是开发材料，不能因重新命名成为 untouched confirmation。生成的草案保持 `draft`、全部 `unassigned`；主时域、指标聚合、风险预算未选择。直接运行入口按预期返回 exit 2，拒绝未批准协议。没有重训、没有新 test 指标、没有新部署模型。
+
+新增 25 项协议检查通过，合并相关回归 **73 passed in 2.68 s**。该接口只约束实际调用它的新路径，尚不代表旧脚本全仓库迁移；hash 与申报不能证明真实授权或 IID。旧全套 1,870 pass / 1 fail 的状态未变。详见 [实现和限制](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md)、[真实资产快照](outputs/publication_readiness_2026_09/experiment_contract/preflight.md)。下一优先项是补独立来源资格和确认科学协议，而非复用受污染的旧 teacher 继续调参。
+
 ## Joint Intervention Prototype and Evidence Limits (2026-09-16)
 
 本轮实现 baseline-relative 场景联合介入模块：保持预测器不变，对比 baseline floor、无控制介入、独立 agent 选择、整场景统一选择、联合选择。输入只含预测 gain/harm、因果 support/graph 和候选轨迹；监督标签单独生成，不进入决策接口。加入预测 harm 的一致性约束，并在求解未达到最优时回退。距离比较前，先把 agent-centric 轨迹还原到共同的 dataset-local 坐标。

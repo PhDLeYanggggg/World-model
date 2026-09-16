@@ -24,6 +24,17 @@ Apple Silicon 上使用仓库的 `.venv-pytorch/bin/python`，不要使用默认
 
 这里的 8 观测/12 预测是可用性检查视图，尚未成为经批准的主实验协议。raw-frame t25 没有精确窗口，不能用邻近帧补成“t25”。所有视图可能重叠，不是独立统计样本。
 
+## 正式实验入口与拒绝行为
+
+```bash
+.venv-pytorch/bin/python scripts/check_m3w_experiment_contract.py --report-dir outputs/publication_readiness_2026_09/experiment_contract/unapproved_rejection
+.venv-pytorch/bin/python -m pytest tests/test_m3w_experiment_contract.py -q
+```
+
+当前第一条应返回 exit 2，因为协议仍未批准；这是安全拒绝，不是运行时卡死。第二条是 25 项合成/临时目录测试，不代表真实实验获批。不要通过把草案 `status` 改成 approved 或清空历史暴露来绕过：源数据、主评价规则、独立 calibration/confirmation 和用户决策仍须核实。
+
+后续新训练代码需实际通过 `ExperimentContract` 打开对应用途的 recording；OOF gain/harm 使用的所有父模型也必须通过整 fold 来源检查。校准和最终测试前分别登记固定候选集合及 hash，恢复时身份必须相同；完成后不再作为 fresh confirmation 重跑。当前旧训练器尚未全部接入，不能宣称全仓库防泄露已经完成。详见 [实现与限制](experiment_contract/implementation_and_limits.md)。
+
 ## 联合介入工程验证
 
 ```bash

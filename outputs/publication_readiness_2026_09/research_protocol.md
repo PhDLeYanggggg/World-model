@@ -1,6 +1,8 @@
 # CVPR 2027 Research Protocol Draft
 
-Status: proposed protocol, awaiting completion of source/teacher lineage audit before confirmatory experiments. Target venue selected by the project owner on 2026-09-16: CVPR 2027. This is not a preregistration or a completed experiment.
+Status: proposed protocol, not approved. The source/teacher audit found historical contamination; scientific choices and independent calibration/confirmation assets remain unresolved. Target venue selected by the project owner on 2026-09-16: CVPR 2027. This is not a preregistration or a completed experiment.
+
+The [executable contract](experiment_contract/implementation_and_limits.md) now checks declared data roles, recursive artifact exposure, exact horizon availability and frozen calibration/confirmation identity. The local draft contains no split assignments or new risk settings. All nine current canonical recordings retain their historical development-use status. Passing a contract check would not establish untouched data, IID, accuracy or a calibrated risk guarantee; formal training must integrate the interface and preserve the underlying source/decision evidence.
 
 ## Question
 
