@@ -1,5 +1,11 @@
 # M3W Results Ledger
 
+## Statistical Assumptions and Method Claim (2026-09-16)
+
+`fresh_run` 文献/推导审计，不是新训练：核对 HCP v4、GHCP v1、CAFHT v2 与 L4DC 2023 adaptive CP 的原文假设、定理和评价对象，保留版本与 publisher PDF 获取失败记录。具体对照见 [统计假设与可证伪主张](outputs/publication_readiness_2026_09/joint_intervention/statistical_assumptions_and_claims.md)。场景分组、预测带覆盖、平均时间覆盖、相对基线 harm 和 easy degradation 不能互相替代；这不是一项新安全定理。
+
+新增三个构造性检查：AR(1) 的置换协方差反例；HCP 六组时有限质量 6/7，90%/95% 分位仍为无穷；完全覆盖的预测区间也可配上比基线更差的点预测。它们不是数据集实测或普适样本量下界。英文稿标题去掉尚未证明的“Risk-Controlled Improvement”，加入同预测器、同 OOF 输入、同实际介入数量的可证伪比较。没有新增协议批准、真实模型结果、校准保证或部署。未重跑未修改的训练测试；仅验证本轮文档/引用、JSON、数值示例和协议不变。CVPR 2027 路线保持，AAMAS 不在当前范围，Stage5C/SMC 关闭。
+
 ## Neural Gain/Harm Head Connected (2026-09-16)
 
 `fresh_run`：补齐此前仅有网络定义的 neural gain/harm head 训练与评价入口。直接复用 ridge 的完整 fit OOF 缓存，验证相同 rows/features/producer 身份；目标保持连续 benefit/harm 大小，不改成 winner 分类。只在 fit OOF 上标准化，配置和 seed 显式绑定协议，校验上游整 fold 暴露、baseline、架构和数据角色。真实草案未增加配置或批准，preflight 仍 exit 2。
