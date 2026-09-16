@@ -2,6 +2,15 @@
 
 Status: proposed protocol, not approved. The source/teacher audit found historical contamination; scientific choices and independent calibration/confirmation assets remain unresolved. Target venue selected by the project owner on 2026-09-16: CVPR 2027. This is not a preregistration or a completed experiment.
 
+This document retains the **independent-confirmation draft**, not the current
+development run. The user subsequently selected obs8/pred12 with raw-frame
+t+50 supplemental and delegated the research route. Development is approved
+under `configs/m3w_8to12_continuous_context_v5.json` and is running. Its primary
+past-normalized ADE, equal-physical-scene aggregation, fit/development roles,
+three seeds and policy settings are frozen. Independent calibration and
+confirmation remain unresolved; none of these development results clears that
+requirement. See [the current decision](continuous_context_v5_decision.md).
+
 The [executable contract](experiment_contract/implementation_and_limits.md) now checks declared data roles, recursive artifact exposure, exact horizon availability and frozen calibration/confirmation identity. The local draft contains no split assignments or new risk settings. All nine current canonical recordings retain their historical development-use status. Passing a contract check would not establish untouched data, IID, accuracy or a calibrated risk guarantee; formal training must integrate the interface and preserve the underlying source/decision evidence.
 
 ## Question

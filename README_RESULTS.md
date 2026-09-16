@@ -2,6 +2,12 @@
 
 ## Continuous-Identity Source Repair, v5 Running (2026-09-16)
 
+仅检查 11,966 个 fit 窗口的过去输入发现：ego normalized history 范数均 <=1，
+但完整对齐邻居最高约 16,447；Zara02 的 5,741 行中 2,033 行邻居范数 >100。
+这是 ego 尺度压缩使相邻 agent 数值范围扩大的一项机制假设，不是已测梯度归因或
+预测提升。没有读取开发标签、修改运行中输入/目标/指标；4 项针对性测试通过。
+见 [fit-only context audit](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/fit_context_scale.md)。
+
 v5 seed17 full EqMotion 已完成 10,000 updates。与保留的 v4 full checkpoint
 逐项比较，模型参数、全部 10,000 个 minibatch loss、采样顺序/游标/RNG 完全相同。
 这是同机真实训练与恢复的一致性证据，不是预测精度或跨设备可复现证明。

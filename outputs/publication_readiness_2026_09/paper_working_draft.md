@@ -2,6 +2,8 @@
 
 Working draft, 2026-09-16. Method proposal with two completed three-seed
 development experiments; neither supports deployment or a contribution claim.
+A matched public-core study is running under the repaired v5 source protocol.
+The older results below retain their original, conditional observation population.
 
 ## Abstract
 
@@ -20,6 +22,12 @@ without treating a favorable alternative metric as confirmation. The method's
 claimed advantage remains unestablished. Strong public predictors, matched-count
 and deferral controls, broader independent scenes and confirmatory evaluation
 are required before a positive submission claim.
+
+An upstream source audit additionally identifies identity fragmentation and
+future-availability-conditioned observation retention in one packaged development
+recording. We retain the earlier results as conditional-window evidence and
+rebuild full-scene context from the continuous source before the next comparison.
+This repair does not make previously explored data an untouched test set.
 
 ## 1. Introduction
 
@@ -89,6 +97,51 @@ matched comparisons and independent evaluation. See the
 
 An additional [exact-count control](matched_coverage/method_and_limits.md) sets the joint intervention count to the independent policy's count on each observed query, before labels are read. It retains the same forecasts, support and predicted-harm cap. This isolates a change in selected identities from a change in coverage, conditional on the reference rule; it does not match realized risk. Forced-count outputs may be worse than the baseline and are diagnostic, not deployment policies. Solver failures remain unmatched in the ledger, and zero-count matches do not count as coupling evidence. This branch is opt-in and has not been registered as a new formal policy or evaluated for real predictive gain.
 
+### 3.1 Explicit Costs and Joint Decision
+
+For agent i, let s_i be the frozen past-derived scale and let L_i be mean
+Euclidean error over the twelve requested future annotation steps divided by
+s_i. The current implementation uses
+s_i = max(observed path length, final causal speed times requested raw horizon,
+0.001 dataset-local units). The numerical floor is not a verified physical
+length. This transform can amplify errors after almost-stationary histories;
+the primary metric remains fixed and native errors are reported separately.
+
+Define b_i = max(L_i(B_i) - L_i(N_i), 0) and
+h_i = max(L_i(N_i) - L_i(B_i), 0). Estimated net gain is
+g_hat_i = b_hat_i - h_hat_i. OOF targets use held-physical-fold predictions,
+whereas inference features contain only observed histories and frozen rollouts.
+The estimated harm is constrained to be at least max(-g_hat_i, 0); that algebraic
+coherence is not probability calibration or a realized-risk certificate.
+
+For binary interventions a_i, the joint objective is
+
+```text
+min_a  -(1/n) sum_i a_i g_hat_i
+       + lambda/|E| sum_(i,j in E) P_ij(a_i, a_j)
+
+s.t.   a_i <= supported_i,
+       sum_i a_i <= intervention_cap,
+       (1/n) sum_i a_i h_hat_i <= predicted_harm_budget.
+```
+
+The pair term is zero when the graph has no edges. P is the nonnegative excess
+of a normalized proximity proxy over the all-baseline pair; it is computed from
+the two causal forecasts in a shared coordinate frame, not the future target.
+The harm budget averages over all observed eligible agents, not only switched
+agents. A policy cannot meet it merely by removing agents whose future labels
+later prove incomplete. Pair penalties have no physical collision interpretation
+without verified geometry and object extents.
+
+The independent control sets the pair term to zero while retaining the same
+support and budgets. Scene-uniform selection is deliberately restrictive under
+a subunit intervention cap; if it cannot switch the entire scene, it reports
+floor rather than changing the cap. Exact-count joint selection is a distinct
+diagnostic conditioned on the independent count. Ordinary equal caps alone do
+not isolate coordination. The all-baseline vector is feasible; failed or
+unverified optimizer solutions return it. Estimated feasibility does not imply
+that a learned intervention improves the realized trajectory.
+
 ## 4. Experiments To Complete
 
 ### 4.1 Completed Development Evidence
@@ -131,15 +184,60 @@ not translate into consistent gains against a stronger damped-velocity baseline.
 The [paired table](8to12_robust_v2/robust_loss_comparison.md) retains that comparison
 and all negative seeds. No metric or easy threshold was changed after evaluation.
 
-### 4.2 Remaining Mechanism and Confirmation Tests
+### 4.2 Continuous-Context Repair and Matched Public-Core Study
+
+The original Students01 package uses fixed twenty-point trajectory chunks.
+Every one of its 17,820 rows maps uniquely to the continuous source at the same
+frame and rounded position, but 415 source identities become 891 chunk identities
+and 3,993 short/tail points are discarded. In particular, all 63 source tracks
+shorter than twenty points disappear. Exact retention is the largest multiple
+of twenty not exceeding each source track length. This is not timestamp drift
+or a future-coordinate feature; it conditions the available observation
+population on later track availability. That distinction matters for full-scene
+intervention, even when a packaged-window benchmark has different intended scope.
+
+The v5 development source restores continuous identities and keeps short and
+tail histories when they are past-supported. Complete Students01 8-to-12 windows
+increase from 891 to 14,295, without adding a physical scene. Fit recordings,
+targets, selection rules and physical folds are unchanged. A real 10,000-update
+full EqMotion fit is exactly reproduced after the source-only amendment,
+including every recorded training loss and model parameter. This checks
+unchanged fitting on this machine, not independent prediction quality.
+
+The registered v5 study compares fixed-head EqMotion and a local Transformer,
+both using complete aligned past neighbors, Smooth-L1 loss, batch32, learning
+rate 0.0003, and 10,000 updates per full/held-fold predictor. Seeds are 17/29/43;
+each has a full model, three physical-fold producers, an OOF ridge cost head,
+and a 1,000-update neural cost head. EqMotion runs on MPS and the local model on
+CPU. Update/sample budgets are matched, not parameter counts, FLOPs or devices.
+Unused EqMotion output heads are skipped only after bitwise output and
+trainable-gradient equivalence checks on CPU/MPS. The selected head and parameter
+initialization are unchanged. This is a K=1 adaptation, not the author's
+published minADE20/minFDE20 training/evaluation protocol.
+
+The full comparison is **running**, not an accuracy result. Its paired analysis
+requires complete budgets and identical row support across models. Since v5
+changes context support as well as the earlier training budget, v2-to-v5 is not
+a single-factor architecture ablation. Upstream annotation construction,
+independent confirmation, physical scale and effective time remain unverified.
+
+A separate fit-only input audit finds ego-history norms at most one but aligned
+neighbor norms up to 16,447. In Zara02, 2,033 of 5,741 supervised fit windows
+have a neighbor norm above 100. This is an input-conditioning hypothesis,
+not measured per-example gradients or proof of a neighbor-induced error.
+No development labels were accessed and the current transform, metric and
+training budget were not changed. Any input-conditioning repair must be a
+separate ablation that preserves the evaluated error scale.
+
+### 4.3 Remaining Mechanism and Confirmation Tests
 
 The primary mechanism test holds candidate forecasts and training examples fixed while varying cost supervision and joint selection. At matched actual intervention counts, improved forecast composition would support a narrower contribution than a new predictor architecture. A gain that disappears after matching counts, or a lower proximity penalty accompanied by worse forecasting, would not support that claim. Real accuracy, independent-scene risk calibration and physical safety remain separate questions; none is established by the analytical examples in the assumption audit.
 
 The [deferral control](deferral_control/method_and_limits.md) fits linear or small neural routing on the same causal rollout features and held-fold predictions as the relative-cost head. It preserves continuous error weights and makes its bounded-cost transform explicit in the protocol. Clipped training risk, unclipped forecasting error and calibrated safety are distinct quantities. Its [development comparison](deferral_development/implementation_and_limits.md) now verifies identical OOF training inputs and runs all controls on identical forecasts before labels are read. The unconstrained deferral arm is not claimed to share M3W's budget or coverage. Paired scene-level error differences are descriptive; synthetic integration and recovery do not establish a real accuracy advantage. The real protocol and frozen confirmation family have not been changed.
 
-An [EqMotion-core adapter](public_baselines/compatibility_and_limits.md) now provides an externally sourced predictor for this implementation path. The source is pinned and checked before loading; past-only context replaces the release's future-availability-dependent preprocessing. The current adapter trains one fixed output head with the local MSE objective. It is an adapted K=1 control, not a reproduction of published best-of-20 results or evidence of comparative accuracy. Synthetic CPU/MPS training and real-input integrity checks are complete; real fitting and matched-context, matched-budget comparisons are not. AgentFormer's author-reported normalization correction must also be respected when constructing the eventual public-baseline table.
+An [EqMotion-core adapter](public_baselines/compatibility_and_limits.md) provides an externally sourced predictor for this implementation path. The source is pinned and checked before loading; past-only context replaces the release's future-availability-dependent preprocessing. The registered v5 run trains one fixed output head with Smooth-L1, as specified above. It is an adapted K=1 control, not a reproduction of published best-of-20 results. Real full fitting has completed for the first seed; the complete matched-context, matched-budget study is still running. AgentFormer's author-reported normalization correction must also be respected when constructing the eventual public-baseline table.
 
-Compare the same predictor with no gate, independent confidence gating, expected-error gating, scene-uniform gating and joint intervention selection. Include simple regressors and modern published predictors so that benefits cannot be attributed only to replacing a weak baseline. Separate K=1 from best-of-K evaluation. Deduplicate underlying recordings across dataset distributions, freeze development and calibration choices, and use a final confirmation set with no prior model-selection exposure. Report per-domain raw ADE/FDE, normalized supplemental errors, easy/hard slices, joint errors, proximity proxies, coverage, latency, three seeds and scene-level confidence intervals.
+Compare the same predictor with no gate, independent confidence gating, expected-error gating, scene-uniform gating and joint intervention selection. Include simple regressors and modern published predictors so that benefits cannot be attributed only to replacing a weak baseline. Separate K=1 from best-of-K evaluation. Deduplicate underlying recordings across dataset distributions, freeze development and calibration choices, and use a final confirmation set with no prior model-selection exposure. The current development primary is past-normalized ADE; native-coordinate ADE/FDE, easy/hard slices, proximity proxies, coverage and latency are complementary, not post hoc replacement metrics. Report all three seeds and only use scene-level intervals when independent scene support exists.
 
 The [frozen final-family evaluator](confirmation_evaluation/implementation_and_limits.md) now checks actual predictor and out-of-fold producer seeds, consumes completed calibration decisions, and reports all prespecified controls without final-set model selection. Seed-mean errors are distinguished from ensemble predictions; positive harm is computed within each seed before averaging, and easy-case preservation remains visible per seed. Paired bootstrap draws share physical-scene blocks across arms and seeds, conditional on the fixed models. They are descriptive, not multiplicity-adjusted guarantees. Synthetic three-seed training and final-evaluation recovery have been exercised; the real comparison remains unrun under the still-unapproved protocol.
 
