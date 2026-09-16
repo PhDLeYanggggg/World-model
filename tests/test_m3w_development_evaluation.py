@@ -205,7 +205,7 @@ def test_unapproved_cli_refuses_before_evaluation():
     assert json.loads(result.stdout)['development_evaluated'] is False
 
 
-def fitted_fixture(tmp_path):
+def fitted_fixture(tmp_path, protocol_updates=None, *, baseline='constant_velocity_causal_fd', steps=None):
     from src.world_model.m3w_supervised_intervention import (
         ContractForecastDataset, train_forecaster, load_verified_forecaster,
         make_oof_cost_rows, fit_linear_gain_harm,
@@ -220,10 +220,13 @@ def fitted_fixture(tmp_path):
     }
     protocol['risk']['easy_definition'] = {'kind': 'baseline_error_at_most', 'metric': 'ade',
                                          'error_unit': 'past_normalized', 'threshold': .2}
+    if protocol_updates is not None:
+        protocol_updates(protocol)
     approve(protocol)
     contract = ExperimentContract(protocol, tmp_path)
     architecture, settings = training_config()
-    baseline = 'constant_velocity_causal_fd'
+    if steps is not None:
+        settings['steps'] = steps
     artifacts = []
     for name, recordings in (('fit_a', ['a']), ('fit_b', ['b']), ('fit_ab', ['a', 'b'])):
         data = ContractForecastDataset(contract, recordings, purpose='fit', baseline_name=baseline)

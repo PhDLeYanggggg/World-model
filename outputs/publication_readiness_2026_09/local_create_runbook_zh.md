@@ -111,6 +111,25 @@ MPS 检查需主机 Metal 访问权限。若沙箱返回 macOS 版本不支持�
 
 两种设备真实输入 probe 各检查 27 queries / 330 agents，使用随机权重，未来标签调用 0，不是预测准确性或长训练稳定性结果。报告位于 [public_baselines](public_baselines/compatibility_and_limits.md)。技术配置的 10,000 steps 尚未运行；不能把测试的 8-step 合成训练写成完整公开基线训练。
 
+## 冻结策略的场景级风险校准
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_risk_support.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_risk_calibration.py -q
+.venv-pytorch/bin/python scripts/calibrate_m3w_intervention.py --preflight-only
+.venv-pytorch/bin/python scripts/calibrate_m3w_intervention.py --help
+```
+
+第一条仅核验现有 metadata/array 身份、计算示例统计界与合成相关性诊断，不读真实未来标签。当前真实 draft 的 preflight 应返回 exit 2，不修改 approval 使其通过。新增 21 项用例与相关回归共 157 passed；没有真实校准或独立确认结果。
+
+正式入口需要批准的 `calibration_evaluation`：error unit、标签规则、采样步长、各录像局部几何、场景内聚合方式，以及 `policy_priority`。风险必须显式定义为有界 clipped positive excess 或 harm event，指定 clipping scale/margin、tolerance、delta。不能把示例值当用户选择，也不能把 0.02 的 clipped risk 写成 2% easy relative error 保证。
+
+传入 `--protocol`、全部上游 `--artifacts`、冻结顺序的 `--policy-ids`、新的 `--output-dir`，以及显式 `--device cpu|mps`、`--threads 4`。只接受实际 development export 的选中策略；report、plan、实现、模型、cost 和递归来源都要一致。读取校准标签前先锁定候选，后续只能筛选不能重拟合或调阈值。缺失标签的介入按最坏有界损失处理；没有介入只保证相对 baseline 零差异，不保证其预测准确。
+
+每完成一组 policy/recording 写原子 rows cache 和 hash receipt，逐场景写 PID/progress 心跳。中断后原参数加 `--resume`；已完成部分复用，未完成 recording 重算。完成后的同一任务只做 identity verification，返回 `cached_verified`。身份或缓存变化拒绝继续；不能删 claim 然后把新模型当同一次校准。结果、calibrator artifact、completion receipt 保留在输出目录，实际大缓存不提交。该接口不打开 confirmation role，也不意味着确认评估已实现或完成。
+
+当前仅六个物理场景组且均有开发暴露，没有批准的独立校准用途。实现中的 Hoeffding/union bound 需要独立同分布场景假设，分组命名本身不证明该假设。详见 [校准实现和限制](risk_calibration/implementation_and_limits.md) 与 [支持审计](risk_calibration/support_audit.md)。下一步不能以扩充重叠窗口替代独立场景。
+
 ## 联合介入工程验证
 
 ```bash

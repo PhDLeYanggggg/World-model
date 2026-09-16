@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Frozen-Policy Calibration and Statistical Support (2026-09-16)
+
+本轮接通冻结的 development export 到 calibration：读取标签前检查 policy/plan/源码/父产物身份与递归暴露；不在校准集重训或改阈值。决策先于标签，缺失未来标签的切换按最坏有界损失计入，未切换的相对基线损失为零。按物理场景统计，不把重叠窗口当独立样本。支持逐 recording 恢复、心跳、完成收据、缓存篡改拒绝；确认集没有打开。
+
+`fresh_run`：新增 21 项用例，相关回归 **157 passed in 37.97 s**。合成实际训练/OOF/开发选模/冻结校准链通过，包括非 floor learned policy；这不是新的真实预测增益。真实 metadata/array 身份 `cached_verified`，协议仍未批准，真实校准 preflight 返回 exit 2；正式 calibration/confirmation 均 `not_run`。历史 full-suite 1,870 pass / 1 fail 未重跑或改写。
+
+统计支持审计：9 recordings 合并为 **6 physical-scene groups**，均有历史开发暴露，0 个已批准 calibration scene。即使假设六组全为独立校准数据且观测损失为零，单策略/单风险、示例 delta=0.05 的 Hoeffding 上界仍为 **0.4996**。该界下的样本需求不是所有校准方法的信息论下界；截断 harm 的 0.02 容忍度也不等于 easy relative ADE/FDE degradation <=2%。20,000 次合成相关窗口实验中，错误把复制窗口当独立样本的接受率为 26.675%，不是 M3W 的实测失败率。
+
+结论：实现与恢复路径已核验，当前没有有效的正式风险保证、独立确认或新部署。论文可优先验证严格实证改善，但是否调整主贡献仍待用户决定；不自动批准主时域、用途、风险预算。详见 [实现与限制](outputs/publication_readiness_2026_09/risk_calibration/implementation_and_limits.md)、[支持审计](outputs/publication_readiness_2026_09/risk_calibration/support_audit.md)。Stage5C/SMC 继续关闭。
+
 ## Pinned Public Predictor and Recovery Repair (2026-09-16)
 
 本轮接入 EqMotion 作者版本 `5aec2e0` 的模型核心，8 个代码/文档文件共 67,758 bytes，按作者 Git blob 和本地 SHA256 校验；第三方代码留在忽略目录，不下载数据或预训练权重。原始 entry 按 test FDE 留最佳 checkpoint，20 候选最小误差也不等于 K=1，因此没有执行它的训练/预处理流程。新适配使用过去支持选择邻居、固定单头、共享 fit-only/OOF 训练链，明确是 **EqMotion-core K=1 adaptation，不是论文结果复现**。AgentFormer 的官方 normalization 修正已核对，但未运行其模型。
