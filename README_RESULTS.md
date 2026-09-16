@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Fixed-Head Compute Repair and Complete-Budget Run (2026-09-16)
+
+v3 只完成 200/10,000 步成本试跑，**不是完成的模型结果**。CPU 100 步 111.55 秒，
+MPS 接续 100 步 30.19 秒。固定用 head0 却计算 20 个头造成不必要的计算；
+v4 只跳过未使用的头，不改选中头运算、模型容量、数据或训练目标。CPU 的
+20 passed/1 optional-MPS skipped，以及显式 Metal 的 4 passed 检查包括输出与
+所有可训练梯度逐值一致；不是精度证据。第三方原始文件未修改或提交。
+
+v4 真实 MPS 100 步 15.72 秒，已恢复完整三种子 full/fold 训练，随后运行匹配
+Transformer。协议 `67f2f0da54dabf558320ec46921918a688fee4c5998cd70c202b0239426a1a78`。
+中间 checkpoint/heartbeat 保留本机；训练未完成前不写成功，不改 test 阈值。
+初期 loss 高且波动，继续记录，不把不同 minibatch loss 下降写成泛化提升。
+见 [执行优化决定](outputs/publication_readiness_2026_09/public_predictor_v4_execution_decision.md)。
+
 ## Matched Public-Core Training Started (2026-09-16)
 
 新 v3 开发协议已冻结：EqMotion 固定单头 K=1 与本地 Transformer，过去完整对齐

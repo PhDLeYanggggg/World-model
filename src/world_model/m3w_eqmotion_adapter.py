@@ -50,9 +50,15 @@ def verified_source(source_directory=None):
                       'adapter_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
 
 
-def load_author_core(source_directory=None):
+def load_author_core(source_directory=None, fixed_head_only=None):
     contents, identity = verified_source(source_directory)
     namespace = '_m3w_eqmotion_' + identity['manifest_sha256']
+    if fixed_head_only is not None:
+        if type(fixed_head_only) is not int or not 0 <= fixed_head_only < 20:
+            raise ValueError('Invalid fixed-head execution index')
+        namespace += f'_head_{fixed_head_only}'
+        identity['execution_optimization'] = {'only_head': fixed_head_only,
+                                              'selected_head_arithmetic_unchanged': True}
     if namespace + '.model_t' not in sys.modules:
         package = types.ModuleType(namespace)
         package.__path__ = []
@@ -68,6 +74,20 @@ def load_author_core(source_directory=None):
                         raise ValueError('Unexpected official core import layout')
                     # Isolate the official module name; model arithmetic is unchanged.
                     imports[0].module = namespace + '.gcl_t'
+                    if fixed_head_only is not None:
+                        classes = [n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'EqMotion']
+                        forwards = [n for n in classes[0].body if isinstance(n, ast.FunctionDef) and n.name == 'forward']
+                        loops = [n for n in forwards[0].body if isinstance(n, ast.For)
+                                 and isinstance(n.iter, ast.Call) and ast.unparse(n.iter) == 'range(20)']
+                        views = [n for n in ast.walk(forwards[0]) if isinstance(n, ast.Call)
+                                 and isinstance(n.func, ast.Attribute) and n.func.attr == 'view'
+                                 and len(n.args) == 5 and isinstance(n.args[2], ast.Constant)
+                                 and n.args[2].value == 20]
+                        if len(classes) != 1 or len(forwards) != 1 or len(loops) != 1 or len(views) != 1:
+                            raise ValueError('Unexpected pinned author head execution layout')
+                        loops[0].iter = ast.Tuple(elts=[ast.Constant(fixed_head_only)], ctx=ast.Load())
+                        views[0].args[2] = ast.Constant(1)
+                        ast.fix_missing_locations(tree)
                 module = types.ModuleType(namespace + '.' + name)
                 module.__package__ = namespace
                 module.__file__ = relative
@@ -83,14 +103,17 @@ def load_author_core(source_directory=None):
 class EqMotionFixedHead(nn.Module):
     """One head fixed before fitting/evaluation; never choose it using labels."""
     def __init__(self, *, history_steps, prediction_steps, hidden_nf, channels,
-                 layers, fixed_head, source_directory=None):
+                 layers, fixed_head, source_directory=None, prune_unused_heads=False):
         super().__init__()
         dims = (history_steps, prediction_steps, hidden_nf, channels, layers, fixed_head)
         if any(type(x) is not int for x in dims) or min(dims[:-1]) < 1 or history_steps < 2:
             raise ValueError('Positive integer EqMotion dimensions required')
         if hidden_nf % 2 or not 0 <= fixed_head < 20:
             raise ValueError('Even hidden width and a fixed head in [0, 19] required')
-        core, self.source_identity = load_author_core(source_directory)
+        if type(prune_unused_heads) is not bool:
+            raise ValueError('Explicit boolean head execution option required')
+        core, self.source_identity = load_author_core(source_directory, fixed_head if prune_unused_heads else None)
+        self.prune_unused_heads = prune_unused_heads
         self.history_steps, self.prediction_steps, self.fixed_head = history_steps, prediction_steps, fixed_head
         self.core = core(history_steps, 0, hidden_nf, history_steps, channels, prediction_steps,
                          device='cpu', n_layers=layers, recurrent=True)
@@ -146,4 +169,4 @@ class EqMotionFixedHead(nn.Module):
     def forward(self, inputs):
         context = self.prepare_context(inputs)
         forecasts, _ = self.core(context['speed'], context['x'], context['velocity'], context['num_valid'])
-        return forecasts[:, 0, self.fixed_head]
+        return forecasts[:, 0, 0 if self.prune_unused_heads else self.fixed_head]

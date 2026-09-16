@@ -15,6 +15,10 @@ EqMotion adaptation and my Transformer, both with complete past-neighbor support
 and the same 10,000-update training budget. The
 [frozen protocol](outputs/publication_readiness_2026_09/public_predictor_v3_decision.md)
 separates this development experiment from published best-of-20 EqMotion results.
+An [execution-only optimization](outputs/publication_readiness_2026_09/public_predictor_v4_execution_decision.md)
+skips unused output heads; CPU and MPS tests preserve the selected prediction
+and trainable gradients exactly. The real MPS pilot took 15.72 s per 100 updates
+and has resumed toward the complete budget, with checkpoints and heartbeats.
 It is in progress, not yet new evidence of improvement or deployment readiness.
 
 My primary task is now **eight observed steps to twelve predicted steps**, with
