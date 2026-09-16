@@ -74,6 +74,7 @@ def main():
     identity = {'protocol_sha256': contract.digest, 'fold_models': mapping, 'baseline': args.baseline,
                 'seed': args.seed, 'device': args.device, 'batch_size': args.batch_size,
                 'source_sha256': file_digest(ROOT / 'src/world_model/m3w_cost_sensitive_deferral.py'),
+                'oof_identity_source_sha256': file_digest(ROOT / 'src/world_model/m3w_oof_identity.py'),
                 'feature_backend_sha256': file_digest(ROOT / 'src/world_model/m3w_supervised_intervention.py'),
                 'script_sha256': file_digest(Path(__file__)),
                 'predictor_sha256': {p: contract.artifacts[p]['sha256'] for p in mapping.values()}}

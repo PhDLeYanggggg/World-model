@@ -85,7 +85,7 @@ def _validate_policy(policy):
 
 
 def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device, solver_seconds,
-                 include_matched_coverage=False):
+                 include_matched_coverage=False, deferral_head=None):
     """Pure inference boundary: no reader, label array or future-validity mask."""
     _validate_policy(policy)
     if not isinstance(include_matched_coverage, bool):
@@ -100,7 +100,8 @@ def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device,
             raise ValueError('Candidate forecast schema mismatch')
         finite_forecast = torch.isfinite(candidate).all(dim=(1, 2))
         candidate = torch.where(finite_forecast[:, None, None], candidate, inputs['baseline'])
-        scores = predict_linear_gain_harm(head, risk_features(inputs, candidate).cpu().numpy())
+        features = risk_features(inputs, candidate)
+        scores = predict_linear_gain_harm(head, features.cpu().numpy())
     b, c = inputs['baseline'].cpu().numpy(), candidate.cpu().numpy()
     ids = [a['agent_id'] for a in agents]
     common_b = restore_scene_rollouts(scene, dict(zip(ids, b)))['xy_dataset_local']
@@ -126,6 +127,22 @@ def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device,
         else:
             decision = select_interventions(problem, mode=mode, time_limit_seconds=solver_seconds)
         arms[mode] = {**decision, 'prediction': np.where(decision['switch'][:, None, None], c, b)}
+    if deferral_head is not None:
+        from src.world_model.m3w_cost_sensitive_deferral import deferral_decision
+        decision = deferral_decision(deferral_head, features, support=finite_forecast)
+        switch = decision['use_candidate'].cpu().numpy()
+        pair = pairs[np.arange(len(edges)), switch[edges[:, 0]].astype(int), switch[edges[:, 1]].astype(int)]
+        # Audit reference constraints after routing; do not impose the M3W risk head on the comparator.
+        within = (not np.any(switch & ~supported) and switch.sum() <= problem.max_interventions
+                  and np.mean(switch * np.maximum(scores['harm'], -scores['gain'])) <= policy['max_mean_predicted_harm'] + 1e-10)
+        arms['cost_sensitive_deferral'] = {
+            'switch': switch, 'prediction': np.where(switch[:, None, None], c, b),
+            'reason': 'fixed_cost_sensitive_argmax_past_supported',
+            'mean_pair_proxy': float(pair.mean()) if len(pair) else 0.,
+            'predicted_constraints_satisfied': bool(within), 'constraints_enforced': False,
+            'calibrated_risk': False, 'deployment_approved': False,
+            'logit_margin': decision['logit_margin'].cpu().numpy(),
+        }
     result = {'agent_ids': ids, 'baseline': b, 'candidate': c, 'arms': arms,
             'predicted_gain': scores['gain'], 'predicted_harm': scores['harm'],
             'supported': supported, 'common_coordinate_graph_edges': len(edges),
@@ -174,6 +191,9 @@ def score_scene(scene, decisions, labels, *, label_policy):
             row['arms'][arm] = {**errors(choice['prediction'][i]), 'switch': bool(choice['switch'][i]),
                                 'pair_proxy': choice['mean_pair_proxy'], 'reason': choice['reason'],
                                 'constraints_satisfied': choice['predicted_constraints_satisfied']}
+            if 'constraints_enforced' in choice:
+                row['arms'][arm]['constraints_enforced'] = choice['constraints_enforced']
+                row['arms'][arm]['logit_margin_not_probability'] = float(choice['logit_margin'][i])
         rows.append(row)
     return rows
 
@@ -229,6 +249,28 @@ def _slice_metrics(rows, arm, *, metric, aggregation, n_bootstrap, seed):
             'worst_physical_scene_mean_error': float(max(scene_means)), 'bootstrap': ci}
 
 
+def paired_control_errors(rows, left, right, *, metric, aggregation, n_bootstrap, seed):
+    """Scene-paired left-minus-right error; descriptive, not a calibrated bound."""
+    eligible = [r for r in rows if r[f'baseline_{metric}'] is not None]
+    if not eligible:
+        return {'status': 'not_run_no_eligible_labels', 'count': 0}
+    values = np.array([[r['arms'][left][metric], r['arms'][right][metric]] for r in eligible])
+    scenes, sums, weights = _cluster_contributions(eligible, values, aggregation)
+    means = sums.sum(0) / weights.sum()
+    result = {'status': 'computed', 'left': left, 'right': right, 'count': len(eligible),
+              'left_minus_right_error': float(means[0] - means[1]), 'negative_favors_left': True,
+              'physical_scene_count': len(scenes), 'resampling_unit': 'physical_scene',
+              'independence_verified': False, 'multiple_comparisons_adjusted': False,
+              'coverage_matched': False, 'risk_matched': False, 'ci95': None,
+              'uncertainty_status': 'not_run_insufficient_physical_scenes'}
+    if len(scenes) >= 2:
+        draw = np.random.default_rng(seed).integers(len(scenes), size=(n_bootstrap, len(scenes)))
+        sampled = sums[draw].sum(1) / weights[draw].sum(1)[:, None]
+        result.update(ci95=np.quantile(sampled[:, 0] - sampled[:, 1], [.025, .975]).tolist(),
+                      resamples=n_bootstrap, uncertainty_status='development_descriptive_not_confirmation')
+    return result
+
+
 def summarize_rows(rows, *, metric, aggregation, error_unit, easy_threshold, hard_threshold,
                    bootstrap_resamples, bootstrap_seed):
     if error_unit != 'past_normalized':
@@ -277,6 +319,12 @@ def summarize_rows(rows, *, metric, aggregation, error_unit, easy_threshold, har
                                   mean_query_excess_proximity_proxy=float(np.mean(list(pair_by_query.values()))),
                                   decisions=Counter(r['arms'][arm]['reason'] for r in rows),
                                   budget_violation_agent_queries=sum(not r['arms'][arm]['constraints_satisfied'] for r in rows))
+        if arm == 'cost_sensitive_deferral':
+            if any(r['arms'][arm].get('constraints_enforced') is not False for r in rows):
+                raise ValueError('Deferral comparator must explicitly declare unconstrained routing')
+            result['arms'][arm].update(control_constraints_enforced=False,
+                                      budget_violations='posthoc_reference_budget_audit_not_enforced',
+                                      development_selection_eligible=False, calibrated_risk=False)
     raw = {}
     for recording in sorted({r['recording_id'] for r in rows}):
         part = [r for r in rows if r['recording_id'] == recording]
@@ -288,6 +336,13 @@ def summarize_rows(rows, *, metric, aggregation, error_unit, easy_threshold, har
                 raw[recording]['arms'].setdefault(arm, {})[m] = float(np.mean([r['arms'][arm][m] * r['scale'] for r in eligible])) if eligible else None
     result['dataset_local_metrics'] = {'status': 'per_recording_only_no_cross_domain_raw_pool', 'recordings': raw}
     result['matched_comparison'] = 'identical_forecasts_queries_and_budget_caps; actual_coverage_reported_not_assumed_equal'
+    if 'cost_sensitive_deferral' in arms:
+        result['matched_comparison'] = ('identical_forecasts_queries; ordinary_controls_share_budget_caps; '
+                                        'deferral_unconstrained; actual_coverage_not_assumed_equal')
+        result['paired_deferral_comparisons'] = {
+            arm: {name: paired_control_errors(part, arm, 'cost_sensitive_deferral', **fixed)
+                  for name, part in slices.items()}
+            for arm in sorted(arms - {'cost_sensitive_deferral'})}
     result['confirmation_result'] = False
     return result
 
@@ -334,8 +389,11 @@ def validate_plan(contract, plan):
         raise ValueError('Explicit approved development_evaluation rules required')
     required = {'error_unit', 'label_policy', 'query_stride', 'geometry_by_recording', 'easy_threshold', 'hard_threshold',
                 'eligible_arms', 'solver_seconds', 'bootstrap_seed', 'policies'}
-    if set(rules) != required or rules['error_unit'] != 'past_normalized':
+    if set(rules) - {'diagnostic_controls'} != required or rules['error_unit'] != 'past_normalized':
         raise ValueError('Complete explicit normalized development evaluation rules required')
+    diagnostics = rules.get('diagnostic_controls', [])
+    if diagnostics not in ([], ['cost_sensitive_deferral']):
+        raise ValueError('Only explicit cost_sensitive_deferral diagnostic control is supported')
     if rules['label_policy'] not in {'complete_requested_path', 'available_steps'} or type(rules['query_stride']) is not int or rules['query_stride'] < 1:
         raise ValueError('Explicit valid query and label-coverage rules required')
     if not np.isfinite([rules['easy_threshold'], rules['hard_threshold'], rules['solver_seconds']]).all() or not 0 <= rules['easy_threshold'] < rules['hard_threshold'] or rules['solver_seconds'] <= 0:
@@ -371,6 +429,15 @@ def validate_plan(contract, plan):
         path = contract._path(c['risk_report_path'])
         if file_digest(path) != c['risk_report_sha256']:
             raise ValueError('Cost-head report identity changed')
+        deferral_fields = {'deferral_head_id', 'deferral_report_path', 'deferral_report_sha256'}
+        if diagnostics:
+            if not deferral_fields <= set(c):
+                raise ValueError('Every candidate requires a matched deferral artifact and report')
+            contract.assert_prediction_use(c['deferral_head_id'], recordings, purpose='development')
+            if file_digest(contract._path(c['deferral_report_path'])) != c['deferral_report_sha256']:
+                raise ValueError('Deferral report identity changed')
+        elif deferral_fields & set(c):
+            raise ValueError('Deferral comparison requires explicit protocol diagnostic_controls')
     return rules, recordings
 
 
@@ -394,14 +461,55 @@ def _load_cost_head(contract, candidate):
     return head
 
 
+def _load_deferral_head(contract, candidate, *, device):
+    from src.world_model.m3w_cost_sensitive_deferral import load_verified_deferral
+    model = load_verified_deferral(contract, candidate['deferral_head_id'], device=device)
+    fitted = model.fitted_identity
+    report = json.loads(contract._path(candidate['deferral_report_path']).read_text())
+    artifact = contract.artifacts[candidate['deferral_head_id']]
+    risk_report = json.loads(contract._path(candidate['risk_report_path']).read_text())
+    risk_artifact = contract.artifacts[candidate['risk_head_id']]
+    if (report.get('checkpoint_sha256') != artifact['sha256'] or report.get('protocol_sha256') != contract.digest
+            or not report.get('training_complete') or report.get('normalization_source') != 'fit_OOF_rows_only'
+            or any(report.get(k) != fitted[k] for k in ('seed', 'spec', 'parents', 'fit_recordings',
+                                                       'baseline_name', 'metric', 'group_sha256'))
+            or report.get('oof_feature_identity') != fitted['oof_feature_identity']
+            or risk_report.get('oof_feature_identity') != fitted['oof_feature_identity']
+            or sorted(risk_artifact['parents']) != fitted['parents']
+            or sorted(risk_artifact['fit_recordings']) != fitted['fit_recordings']
+            or fitted['baseline_name'] != candidate['baseline']
+            or fitted['metric'] != contract.protocol['task']['primary_metric']):
+        raise ValueError('Deferral comparison OOF input/provenance mismatch')
+    final = torch.load(contract._path(contract.artifacts[candidate['forecaster_id']]['path']),
+                       map_location='cpu', weights_only=True)['identity']
+    if final['settings']['seed'] != fitted['seed']:
+        raise ValueError('Deferral and comparison forecaster seed mismatch')
+    for parent in fitted['parents']:
+        checkpoint = torch.load(contract._path(contract.artifacts[parent]['path']),
+                                map_location='cpu', weights_only=True)['identity']
+        if checkpoint['settings']['seed'] != fitted['seed'] or checkpoint['architecture'] != final['architecture']:
+            raise ValueError('OOF/comparison forecaster seed or architecture mismatch')
+    return model
+
+
 def evaluate_development(contract, plan, *, device='cpu', on_recording=None, cached_rows=None, progress=None):
     rules, recordings = validate_plan(contract, plan)
     summaries, all_rows = {}, {}
+    # Validate the whole learned family before opening any development labels.
+    # Keep only one candidate in memory; policy grids often reuse the same model.
     for candidate in plan['candidates']:
-        model = load_verified_forecaster(contract, candidate['forecaster_id'], device=device)
+        model = load_verified_forecaster(contract, candidate['forecaster_id'], device='cpu')
         if model._fitted_baseline_name != candidate['baseline']:
             raise ValueError('Forecast baseline feature identity mismatch')
+        _load_cost_head(contract, candidate)
+        if rules.get('diagnostic_controls'):
+            _load_deferral_head(contract, candidate, device='cpu')
+        del model
+    for candidate in plan['candidates']:
+        model = load_verified_forecaster(contract, candidate['forecaster_id'], device=device)
         head = _load_cost_head(contract, candidate)
+        deferral = (_load_deferral_head(contract, candidate, device=device)
+                    if rules.get('diagnostic_controls') else None)
         rows = []
         for recording in recordings:
             reader, _ = contract.open_recording(recording, purpose='development')
@@ -413,7 +521,7 @@ def evaluate_development(contract, plan, *, device='cpu', on_recording=None, cac
                     decision = decide_scene(scene, model, head, baseline=candidate['baseline'],
                                             policy=rules['policies'][candidate['policy_id']],
                                             geometry=rules['geometry_by_recording'][recording],
-                                            device=device, solver_seconds=rules['solver_seconds'])
+                                            device=device, solver_seconds=rules['solver_seconds'], deferral_head=deferral)
                     labels = reader.get_scene_labels(scene)
                     part.extend(score_scene(scene, decision, labels, label_policy=rules['label_policy']))
                     if progress:
@@ -431,5 +539,6 @@ def evaluate_development(contract, plan, *, device='cpu', on_recording=None, cac
     selection = choose_development(summaries, eligible_arms=rules['eligible_arms'],
                                    easy_degradation_max=contract.protocol['risk']['easy_degradation_max'])
     return {'summaries': summaries, 'selection': selection, 'evaluation_role': 'development',
+            'diagnostic_controls': rules.get('diagnostic_controls', []),
             'protocol_sha256': contract.digest, 'plan_sha256': content_digest(plan),
             'calibration_or_confirmation_opened': False, 'strongest_floor_claim': False}, all_rows

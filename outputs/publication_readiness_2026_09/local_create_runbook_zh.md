@@ -136,6 +136,19 @@ OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manif
 
 这个对照保留两个预测的连续误差，不是 oracle winner 分类。输出 logit margin 不是 gain 或 harm probability，不能直接接进安全阈值冒充校准。正式 development/calibration/confirmation arms 尚未改变；需批准后按同预测器、同数据用途和匹配覆盖率规则接入。详见 [方法与局限](deferral_control/method_and_limits.md)。
 
+## Deferral 的统一开发评价
+
+```bash
+.venv-pytorch/bin/python -m pytest tests/test_m3w_deferral_development.py -q
+.venv-pytorch/bin/python scripts/evaluate_m3w_development.py --preflight-only
+```
+
+第一条覆盖真实生产 CLI 的合成训练/比较/恢复，不读取真实最终测试。第二条当前应 exit 2，未获批准不能启动。完整合成链是 3 个 forecasters 各 8 updates、64 条匹配 OOF 输入、ridge 和 8-update deferral、27 agent queries / 16 scene queries；单物理场景不生成 CI。这个短训练中 deferral 比 floor 差，不能当文献方法的正式实验结果。
+
+批准协议可显式增加 `development_evaluation.diagnostic_controls: ["cost_sensitive_deferral"]`；每个 plan candidate 同时提供 deferral_head_id/deferral_report_path/deferral_report_sha256。不能只传一个新权重然后默认参与评价。两种 cost-head CLI 都须导出相同 `oof_feature_identity`；旧报告缺少摘要时会拒绝，不准手工伪造摘要恢复成“已匹配”。head seed、OOF/final predictor seed 和 architecture 必须一致。整组产物校验完成后才读开发标签。
+
+六臂共享一次 forecast，但 deferral 不强加 M3W risk budget。结果单列 unconstrained 和事后 reference-budget 检查，配对差值/CI 不意味着已匹配实际 coverage 或 risk。仍只允许原有 guarded arms 进入自动选择；calibration/confirmation 的新 arm 尚未注册。恢复命令与既有 development CLI 一致；source/plan/产物/缓存改变会拒绝。相关回归 258 passed，15 个新用例，详见 [接入与边界](deferral_development/implementation_and_limits.md)。
+
 ## EqMotion 官方核心适配检查
 
 ```bash

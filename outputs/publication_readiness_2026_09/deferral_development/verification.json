@@ -1,0 +1,71 @@
+{
+  "date": "2026-09-16",
+  "result_source": "fresh_run_synthetic_pipeline_and_regression_checks",
+  "previous_goal_turn_classification": "progress_cost_sensitive_deferral_training_control",
+  "scope": "matched_development_comparator_engineering_not_real_forecasting_evidence",
+  "initial_regression": {
+    "tests": 2,
+    "failed": 2,
+    "reason": "new deferral comparison interface and OOF identity helper absent; expected pre-implementation failures"
+  },
+  "intermediate_checks": [
+    {
+      "passed": 38,
+      "seconds": 13.03
+    },
+    {
+      "passed": 14,
+      "seconds": 5.47
+    }
+  ],
+  "final_regression": {
+    "passed": 258,
+    "failed": 0,
+    "new_tests": 15,
+    "seconds": 85.11,
+    "command": ".venv-pytorch/bin/python -m pytest tests/test_m3w_deferral_development.py tests/test_m3w_cost_sensitive_deferral.py tests/test_m3w_matched_coverage.py tests/test_m3w_citr_recordings.py tests/test_m3w_confirmation_evaluation.py tests/test_m3w_risk_calibration.py tests/test_m3w_eqmotion_adapter.py tests/test_m3w_development_evaluation.py tests/test_m3w_supervised_intervention.py tests/test_m3w_external_source_audit.py tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py -q"
+  },
+  "synthetic_integration": "synthetic_integration.json",
+  "new_behavior_verified": [
+    "matched query/feature/producer fingerprint",
+    "same predictions and labels across six arms",
+    "explicit comparator opt-in, not default scientific change",
+    "same actual predictor/head seeds and architecture",
+    "whole-family rejection before any development labels",
+    "missing future labels retained in coverage",
+    "future-coordinate mutation invariance",
+    "nonfinite candidate fallback",
+    "paired physical-scene differences, no single-scene CI",
+    "production training and evaluation CLI execution",
+    "completed resume does not rewrite result bytes",
+    "tampered recording-evaluation cache rejected"
+  ],
+  "source_sha256": {
+    "src/world_model/m3w_oof_identity.py": "2e8506a8901d4786452a1a090dec7961e15aeffc9b8a7bc655435b19eecc64c8",
+    "src/world_model/m3w_cost_sensitive_deferral.py": "d94748acc6ac70c08760738a8ee32b02a92e5be09c8b3175c6ec749208c8a72d",
+    "src/evaluation/m3w_development_evaluation.py": "f5579643e69269798f14087074d197590852ccb766b4ae7e37c252cc956ecf3e",
+    "scripts/train_m3w_oof_cost_head.py": "817033e3955ae240251d116598b6c661d2f211d2070cd293afc893a34b71090a",
+    "scripts/train_m3w_deferral_control.py": "81572b5a3767b9536d6eda4c972cac3c2acf1416d3ab09754d35fb4ff950af7f",
+    "scripts/evaluate_m3w_development.py": "ab6bea6902d61ade7436b6a7e673d798f47922a08889a71d82147dbb103f4690",
+    "tests/test_m3w_deferral_development.py": "639c40e7ea996127105c2173e7c0bdc10b0981d3128028c7aa983e40c45b6148",
+    "configs/m3w_independent_experiment.draft.json": "1e6f401a5f75b22d031d6c1a2be80c3faece4ef16019d8a9778bf1cd6d2989d8"
+  },
+  "real_preflight": {
+    "command": ".venv-pytorch/bin/python scripts/evaluate_m3w_development.py --preflight-only",
+    "exit_code": 2,
+    "reason": "Explicit protocol approval required",
+    "development_evaluated": false
+  },
+  "real_training": "not_run_pending_scientific_protocol",
+  "real_development_comparison": "not_run_pending_scientific_protocol",
+  "independent_confirmation": "not_run",
+  "new_deployment": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "create_job_submitted": false,
+  "formal_protocol_changed": false,
+  "calibration_or_confirmation_arms_changed": false,
+  "new_MPS_verification": "not_run",
+  "historical_full_suite": "not rerun; prior 1870 pass / 1 unrelated failure retained",
+  "unrelated_staged_index_sha256": "c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323"
+}

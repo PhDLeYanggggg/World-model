@@ -34,7 +34,7 @@ The [constructed-cost run](constructed_cost_check.json) trains a linear gate for
 
 ## Remaining Evidence
 
-The new gate is not yet registered into the formal development/calibration/confirmation family. Registration must follow the approved protocol, including predictor capacity, seeds, fitting budgets, clipping sensitivity, labeling and matched coverage/risk comparisons. A caller must verify prediction use for its target role before opening labels; the pure feature-level routing function cannot infer whether its caller obeyed that boundary.
+Follow-up: an [opt-in development comparison](../deferral_development/implementation_and_limits.md) now enforces matched OOF input identity and shared forecasts. The original verification files above retain their original source hashes; the follow-up provides current-version regression evidence. The real development protocol, calibration and confirmation families are still unchanged. Registration must follow approval of capacity, seeds, fitting budgets, clipping sensitivity, labeling and matched coverage/risk rules. The pure feature-level routing function cannot infer whether its caller obeyed data-role boundaries.
 
 This control uses a trajectory-loss adaptation, zero additional deferral charge and finite neural/linear hypotheses. We do not transfer consistency theorems, exchangeability assumptions or a risk certificate to it, much less to constrained multi-agent selection. A larger gain than a threshold baseline will not establish novelty until comparison against this and other appropriate learned controls is completed.
 

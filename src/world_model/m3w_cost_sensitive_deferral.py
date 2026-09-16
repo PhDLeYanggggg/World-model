@@ -21,6 +21,7 @@ import torch
 from torch import nn
 
 from src.evaluation.m3w_experiment_contract import file_digest
+from src.world_model.m3w_oof_identity import oof_feature_identity
 from src.world_model.m3w_supervised_intervention import (
     collate_forecasts, cost_targets, parameter_digest, risk_features,
 )
@@ -208,7 +209,9 @@ def train_deferral(contract, groups, *, seed, output_dir, device='cpu', resume=F
     if resume and not checkpoint.exists():
         raise ValueError('Cannot resume missing checkpoint')
     identity = {'protocol_sha256': contract.digest, **provenance, 'spec': spec, 'seed': seed,
+                'oof_feature_identity': oof_feature_identity(groups),
                 'source_sha256': file_digest(Path(__file__)),
+                'oof_identity_source_sha256': file_digest(Path(__file__).with_name('m3w_oof_identity.py')),
                 'feature_backend_sha256': file_digest(Path(__file__).with_name('m3w_supervised_intervention.py'))}
     runtime = {'device': str(device), 'architecture': platform.machine(), 'torch_version': str(torch.__version__),
                'compute_threads': torch.get_num_threads(), 'interop_threads': torch.get_num_interop_threads(),
@@ -270,6 +273,7 @@ def train_deferral(contract, groups, *, seed, output_dir, device='cpu', resume=F
     report = {'result_source': 'cached_verified' if resumed_from == settings['steps'] else 'fresh_run',
               'scope': 'fit_only_cost_sensitive_deferral_not_forecasting_evaluation',
               **provenance, 'protocol_sha256': contract.digest, 'seed': seed, 'spec': spec, 'runtime': runtime,
+              'oof_feature_identity': identity['oof_feature_identity'],
               'steps_completed': step, 'resumed_from_step': resumed_from, 'training_complete': step == settings['steps'],
               'losses': losses, 'training_rows': len(x), 'feature_dimension': x.shape[1],
               'normalization_source': 'fit_OOF_rows_only',
@@ -292,6 +296,7 @@ def load_verified_deferral(contract, artifact_id, *, device='cpu'):
     identity = state['identity']
     if (identity['protocol_sha256'] != contract.digest or identity['spec'] != comparator_spec(contract)
             or identity['source_sha256'] != file_digest(Path(__file__))
+            or identity['oof_identity_source_sha256'] != file_digest(Path(__file__).with_name('m3w_oof_identity.py'))
             or identity['feature_backend_sha256'] != file_digest(Path(__file__).with_name('m3w_supervised_intervention.py'))):
         raise ValueError('Deferral protocol or source identity changed')
     if (sorted(record['parents']) != identity['parents'] or sorted(record['fit_recordings']) != identity['fit_recordings']
@@ -301,4 +306,5 @@ def load_verified_deferral(contract, artifact_id, *, device='cpu'):
         raise ValueError('Deferral fixed-budget checkpoint incomplete')
     model = DeferralHead(state['model']['mean'], state['model']['scale'], width=identity['spec']['width']).to(device)
     model.load_state_dict(state['model'])
+    model.fitted_identity = identity
     return model.eval()

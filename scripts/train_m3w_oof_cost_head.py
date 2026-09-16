@@ -61,6 +61,7 @@ def main():
     run_identity = {'protocol_sha256': contract.digest, 'fold_models': mapping, 'baseline': args.baseline,
                     'alpha': args.alpha, 'device': args.device, 'batch_size': args.batch_size,
                     'code_sha256': file_digest(ROOT / 'src/world_model/m3w_supervised_intervention.py'),
+                    'oof_identity_source_sha256': file_digest(ROOT / 'src/world_model/m3w_oof_identity.py'),
                     'script_sha256': file_digest(Path(__file__)),
                     'predictor_sha256': {p: contract.artifacts[p]['sha256'] for p in mapping.values()}}
     identity_path = output / 'run_identity.json'
@@ -132,12 +133,14 @@ def main():
             print(json.dumps({'status': 'interrupted_after_complete_fold', 'cost_head_trained': False}))
             return 0
     head = fit_linear_gain_harm(contract, groups, alpha=args.alpha)
+    from src.world_model.m3w_oof_identity import oof_feature_identity
     checkpoint = output / 'linear_cost_head.npz'
     temporary = checkpoint.with_suffix('.tmp.npz')
     np.savez(temporary, **{k: head[k] for k in ('mean', 'scale', 'coef', 'intercept')})
     os.replace(temporary, checkpoint)
     report = {k: v for k, v in head.items() if k not in {'mean', 'scale', 'coef', 'intercept'}}
     report.update(result_source='fresh_run', scope='fit_only_OOF_cost_regression_not_policy_evaluation',
+                  oof_feature_identity=oof_feature_identity(groups),
                   training_rows=sum(len(g['targets']) for g in groups),
                   oof_folds_reused_cached_verified=reused, oof_total_folds=len(groups),
                   feature_dimension=len(head['mean']), calibrated_policy=False, test_evaluated=False,

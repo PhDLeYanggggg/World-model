@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Matched Deferral Development Comparison (2026-09-16)
+
+把上轮文献 deferral control 接入统一开发评价，不再只有训练入口。两个 cost heads 必须核对逐 query/feature/producer 的 OOF 摘要，以及实际 seed/architecture/normalization 来源；六臂共享同一次 forecast，所有决策先于标签。新增 comparator 需协议显式 opt-in，真实 draft 未修改，原五臂选模与 calibration/confirmation 不变。
+
+`fresh_run` 合成生产 CLI 链：3 个 forecasters 各 8 updates，ridge + 8-update deferral，**64 条相同 OOF 输入 / 306 features**；开发 27 agent queries / 16 scene queries，15 条完整标签。单物理场景不生成 CI。短训练 deferral 的 normalized ADE **0.17265**，floor **0.14323**，负结果保留；不是公开论文复现，也不构成 M3W 真实优越性。总过去支持集切换 55.56%，完整标签子集 26.67%，两种分母不混用。deferral 不强加 M3W 风险预算，结果明确 unconstrained，并报告参考约束的事后检查及按场景配对差值。
+
+最终相关回归 **258 passed in 85.11 s**，15 个新用例。跨进程训练/评价/完成恢复、缓存篡改拒绝、错误 OOF/seed/normalization 在读取开发标签前拒绝均已执行。初始两个回归用例在未实现接口上按预期失败，后续通过。真实 preflight 仍 **exit 2**；没有真实新增训练/精度、没有 test 选模、没有新 CREATE 作业或部署，Stage5C/SMC 关闭。历史非隔离 full-suite 1,870 pass / 1 fail 保留。
+
+详见 [接入与边界](outputs/publication_readiness_2026_09/deferral_development/implementation_and_limits.md)、[合成证据](outputs/publication_readiness_2026_09/deferral_development/synthetic_integration.json)、[验证](outputs/publication_readiness_2026_09/deferral_development/verification.json)。主科学规则、独立场景与正式实证仍缺，投稿未就绪。
+
 ## Cost-Sensitive Deferral Comparator (2026-09-16)
 
 本轮实现 Mao/Mohri/Zhong ICML 2024 regression-deferral 的 two-action adapted control，补齐“不能只与简单阈值比较”的方法对照。使用与 M3W gain/harm head 相同的 OOF forecaster 和 past-only rollout features，连续误差加权，不学 one-hot oracle class。协议必须显式绑定 cost clipping 和训练设置；保留 raw targets、报告 clipping fraction，softmax/logit 不是校准 harm probability。正式五控制、旧训练 backend 和真实 draft 未修改。
