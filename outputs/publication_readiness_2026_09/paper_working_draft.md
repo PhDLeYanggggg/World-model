@@ -243,6 +243,14 @@ comparison rather than being merged with v6 results.
 
 ### 4.3 Remaining Mechanism and Confirmation Tests
 
+A [source clock and matrix audit](annotation_clock_geometry/audit.md) finds that
+ETH's six-frame annotation spacing conflicts with a naive combination of the
+25-fps video header and the documented 0.4-second annotation interval. Students03
+pixel rows reproduce the stored coordinates under H-old, not the currently named
+H matrix; thirteen additional source rows remain explicitly unmatched. These
+observations do not establish physical calibration. No experiment is relabeled
+as seconds-level or metric, and the running data and policy are not changed.
+
 The [v6 forecast supplement](forecast_supplement_v6_decision.md) is fixed before
 v6 development results. It applies exact-count routing and exact raw-frame t+50
 prefix scoring to every frozen seed/head/policy, without selecting a new model.

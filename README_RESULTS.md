@@ -1,5 +1,20 @@
 # M3W Results Ledger
 
+## Source Clock and Matrix-Version Audit
+
+Fresh source checks found two reasons not to relabel the current benchmark as
+seconds-level or metric. ETH annotations advance by six frame IDs, while the
+local video header says 25 fps and the annotation note says 0.4 seconds. That
+mapping remains unresolved. Students03 stored coordinates match `H-old.txt`
+(maximum replay difference 7.04e-7), not `H.txt` (up to 21.81 stored units).
+The pixel source also contains 13 unmatched final-frame rows, retained in the
+audit ledger. Physical calibration is not proved by a numerical matrix match.
+
+Five targeted tests pass. These checks do not change the running v6 data,
+features, units or thresholds. The reader ignores supplied forward-velocity
+columns and computes causal differences from observed positions. See the
+[source evidence](outputs/publication_readiness_2026_09/annotation_clock_geometry/audit.md).
+
 ## Fixed-Forecast Supplement Ready, Real Evaluation Pending
 
 The v6 primary study is still running. I have fixed the supplementary analysis
