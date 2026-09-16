@@ -10,6 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+My primary task is now **eight observed steps to twelve predicted steps**, with
+raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused
+paper on baseline-relative joint intervention: when a neural forecast is worth
+using, and whether interacting agents should switch together. The
+[research route](outputs/publication_readiness_2026_09/research_route_decision.md)
+sets out the contribution, falsifiable controls and publication boundaries.
+
+I have frozen a new **development-only** ETH/UCY protocol and started real
+three-seed training. It uses 11,966 fit windows, three physical-scene crossfit
+folds and UCY University for development. The historical data exposure remains
+explicit; this is not an independent test set or a calibrated safety guarantee.
+Training runs have checkpoints and heartbeats, and the first full-fit model has
+completed its 1,000-update budget. Evaluation is still running; no improvement
+is claimed from training loss alone.
+
 The protected selector remains the historical reference implementation. It starts from causal motion baselines and switches only when the expected gain is large enough and the estimated easy-case risk is low enough. I am not currently treating its external results as independently validated deployment evidence.
 
 During the September 2026 publication audit, I found byte-identical recordings under different dataset paths. The Stage35/37 validation and test sets share 47,223 cached windows, and the later Stage43/44 split has train/test duplication as well as inherited teacher-training exposure. Stage37 and the original Stage44 code also used test metrics to rank model variants. These issues mean the external claims need a clean rerun. The [recording audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md) and [original split audit](outputs/publication_readiness_2026_09/stage35_recording_lineage_audit.md) document the evidence.
@@ -26,7 +41,7 @@ For traceability, these are the **historically reported Stage37 numbers, not cor
 
 The table is retained so that older reports remain interpretable. Its bootstrap interval does not account for duplicate recordings or test-based model selection. I have repaired the WorldCore selection path to use validation only and added a training preflight that rejects the unchanged legacy caches. This is a protocol repair, not a new model improvement; the historical weights have not been replaced.
 
-I have also rebuilt a recording-centric reader directly from the original positions, without inherited teacher outputs. It keeps past inputs separate from future labels, groups duplicate dataset packaging, and requires exact target timestamps. The [rebuild and causal-access checks](outputs/publication_readiness_2026_09/causal_recording_checks.md) are engineering evidence, not a new benchmark result. The formal evaluation protocol still needs to be frozen before retraining.
+I have also rebuilt a recording-centric reader directly from the original positions, without inherited teacher outputs. It keeps past inputs separate from future labels, groups duplicate dataset packaging, and requires exact target timestamps. The [rebuild and causal-access checks](outputs/publication_readiness_2026_09/causal_recording_checks.md) are engineering evidence, not a new benchmark result. The new development protocol is frozen; an independent confirmation protocol remains pending.
 
 The next method asks a more specific question: when several agents may switch away from a baseline, should those decisions be made together? I have implemented a [joint intervention prototype](outputs/publication_readiness_2026_09/joint_intervention/method_and_checks.md) with explicit predicted-risk and intervention budgets. Its optimizer and coordinate handling pass targeted checks, but it has not yet demonstrated better prediction or calibrated real-world risk. Joint trajectory modeling already has substantial prior work; the contribution will need to come from the matched experiments, not the presence of a joint optimizer.
 
@@ -36,7 +51,7 @@ I now also have a [cost-sensitive deferral control](outputs/publication_readines
 
 The control is connected to the [development comparison](outputs/publication_readiness_2026_09/deferral_development/implementation_and_limits.md). Both heads must use identical training queries and causal features, and every arm sees the same candidate forecasts before labels are opened. I report actual intervention rates separately: an unconstrained deferral gate does not share M3W's risk budget just because it shares its predictions. Synthetic integration keeps negative results visible; a clean real-data comparison is still needed.
 
-For the clean rerun, I now keep data roles and learned-artifact provenance in a [hash-bound experiment contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md). It checks upstream teacher exposure and freezes the evaluated model family before calibration or confirmation. The current protocol is deliberately unapproved: previously explored recordings remain development material, and the remaining scientific choices are not filled in just to make training start.
+For the clean rerun, I keep data roles and learned-artifact provenance in a [hash-bound experiment contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md). It checks upstream teacher exposure and freezes the evaluated model family before calibration or confirmation. The original independent-study draft remains unapproved. A separate versioned development protocol now permits fitting without inventing calibration or confirmation roles for previously explored data.
 
 I am also checking what the other local datasets can genuinely add. The [external source review](outputs/publication_readiness_2026_09/external_source_audit/source_review.md) distinguishes synchronized scenes from isolated tracks, repeated controlled trials and duplicate representations. More trajectory points do not automatically mean more independent evidence; none of these sources has been promoted to a new confirmation set or used to claim a fresh gain.
 

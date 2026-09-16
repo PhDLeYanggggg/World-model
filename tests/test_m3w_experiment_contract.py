@@ -45,6 +45,48 @@ def approve(protocol):
                             'protocol_sha256': protocol_digest(protocol)}
 
 
+def development_only_protocol(tmp_path):
+    p = fixture_contract(tmp_path)
+    p.update(scope='exploratory', study_design='development_only')
+    p['assignments'].update(c='excluded', t='excluded')
+    p['risk'].update(delta=None, risks=[])
+    approve(p)
+    return p
+
+
+def test_development_only_can_fit_without_invented_confirmation(tmp_path):
+    p = development_only_protocol(tmp_path)
+    contract = ExperimentContract(p, tmp_path)
+    assert not contract.confirmation_eligible_by_declaration
+    assert len(contract.open_recording('a', purpose='fit')[1]) == 6
+    assert len(contract.open_recording('d', purpose='development')[1]) == 6
+    for stage, claim in [('calibration', claim_calibration), ('confirmation', claim_confirmation)]:
+        with pytest.raises(ContractError, match='Development-only'):
+            claim(tmp_path / f'{stage}.json', contract, ['model'])
+        assert not (tmp_path / f'{stage}.json').exists()
+
+
+@pytest.mark.parametrize('change', ['scope', 'reserved_role', 'missing_fit',
+                                    'missing_development', 'formal_risk', 'unknown_design'])
+def test_development_only_cannot_silently_become_confirmatory(tmp_path, change):
+    p = development_only_protocol(tmp_path)
+    if change == 'scope':
+        p['scope'] = 'confirmatory'
+    elif change == 'reserved_role':
+        p['assignments']['c'] = 'calibration'
+    elif change == 'missing_fit':
+        p['assignments'].update(a='excluded', b='excluded')
+    elif change == 'missing_development':
+        p['assignments']['d'] = 'excluded'
+    elif change == 'formal_risk':
+        p['risk']['delta'] = .05
+    else:
+        p['study_design'] = 'arbitrary'
+    approve(p)
+    with pytest.raises(ContractError):
+        ExperimentContract(p, tmp_path)
+
+
 def artifact(tmp_path, protocol, name, *, kind='forecaster', fit=('a',), selected=(), calibrated=(), parents=()):
     path = tmp_path / f'{name}.bin'
     path.write_bytes(name.encode())

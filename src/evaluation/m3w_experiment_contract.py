@@ -74,6 +74,11 @@ class ExperimentContract:
             path = self._path(relative)
             _require(path.is_file() and file_digest(path) == digest, f'Changed protocol binding: {relative}')
         _require(p.get('scope') in {'exploratory', 'confirmatory'}, 'Explicit evidence scope required')
+        design = p.get('study_design', 'four_role')
+        _require(design in {'four_role', 'development_only'}, 'Unknown study design')
+        development_only = design == 'development_only'
+        if development_only:
+            _require(p['scope'] == 'exploratory', 'Development-only study cannot be confirmatory')
         for stage in ('calibration', 'confirmation'):
             _require(p.get(f'{stage}_receipt'), f'Explicit protocol-bound {stage} receipt required')
             self._path(p[f'{stage}_receipt'])
@@ -82,7 +87,12 @@ class ExperimentContract:
         records, roles = p['records'], p['assignments']
         _require(records and set(records) == set(roles), 'Complete recording role assignments required')
         _require(set(roles.values()) <= ROLES, 'Unknown recording role')
-        _require(ROLES - {'excluded'} <= set(roles.values()), 'All four data roles must be nonempty')
+        if development_only:
+            _require(set(roles.values()) <= {'fit', 'development', 'excluded'} and
+                     {'fit', 'development'} <= set(roles.values()),
+                     'Development-only study requires fit/development and forbids reserved roles')
+        else:
+            _require(ROLES - {'excluded'} <= set(roles.values()), 'All four data roles must be nonempty')
         scenes = {}
         for name, record in records.items():
             _require(isinstance(record.get('physical_scene'), str) and record['physical_scene'],
@@ -115,8 +125,12 @@ class ExperimentContract:
                  task.get('aggregation') in {'equal_physical_scene', 'equal_recording', 'agent_window'},
                  'Explicit metric and aggregation required')
         risk = p['risk']
-        _require(0 < risk['delta'] < 1 and risk.get('risks') and risk.get('easy_definition'),
-                 'Explicit risks and easy definition required')
+        if development_only:
+            _require(risk.get('delta') is None and risk.get('risks') == [] and risk.get('easy_definition'),
+                     'Development-only study must not declare a formal risk guarantee')
+        else:
+            _require(0 < risk['delta'] < 1 and risk.get('risks') and risk.get('easy_definition'),
+                     'Explicit risks and easy definition required')
         _require(np.isfinite(risk['easy_degradation_max']) and risk['easy_degradation_max'] >= 0,
                  'Explicit easy risk tolerance required')
         for spec in risk['risks']:
@@ -261,6 +275,8 @@ class ExperimentContract:
 
 def _claim_identity(contract, artifact_ids, stage):
     contract._assert_frozen()
+    _require(contract.protocol.get('study_design') != 'development_only',
+             'Development-only study cannot claim calibration or confirmation')
     _require(artifact_ids and len(set(artifact_ids)) == len(artifact_ids), 'Fixed nonempty evaluation family required')
     targets = [r for r, role in contract.protocol['assignments'].items() if role == stage]
     closure = set()

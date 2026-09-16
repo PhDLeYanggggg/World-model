@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Real 8-to-12 Development Study Started (2026-09-16)
+
+用户明确选定 obs8/pred12 为主、raw-frame t+50 为补充，并授权研究路线判断。
+我据此冻结了独立版本的 exploratory development-only 协议，没有把旧数据改称独立测试。
+训练集 11,966 个完整窗口，ETH/Hotel/Zara 三个物理场景交叉拟合，UCY University 做开发。
+种子预先固定为 17/29/43；单场景开发结果不能制造跨场景 bootstrap CI。
+第一份真实 Transformer 完成 1,000 updates，arm64 Torch CPU、4 threads、workers=0；
+50-step checkpoint 已恢复到完整预算。全流程训练/评价仍在运行，暂不报告预测改善。
+
+开发模式禁止 calibration/confirmation claim；默认四角色正式协议限制未放宽。
+相关回归 101 passed / 18.19 s，其中 contract/source-admission 子集先验 67 passed。
+研究路线见 [决策记录](outputs/publication_readiness_2026_09/research_route_decision.md)。
+不是 full、不是独立确认，不启用 Stage5C/SMC。下方阻塞记录是本次用户决定前的历史快照。
+
 ## Real-Experiment Decision Blocker (2026-09-16)
 
 本轮是阻塞复核，不计作新增研究结果。`fresh_run`：真实 neural-cost preflight 仍 exit 2，理由为 `Explicit protocol approval required`；正式 draft 哈希未变，9 recordings / 6 physical scenes，全部历史开发暴露且角色未分配，主时域/指标/聚合等仍为空。旧草案的两项代码绑定已随修复过期，需在新协议批准时审查更新，不能只改 status。授权的只读进程检查未发现匹配的本地训练任务；CREATE 状态仍未知，未重复失败连接、未提交任务。

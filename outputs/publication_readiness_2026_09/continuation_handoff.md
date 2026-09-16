@@ -1,5 +1,12 @@
 # Real-Experiment Continuation Handoff
 
+Superseded for development on 2026-09-16: the user selected obs8/pred12 with
+raw-frame t+50 supplemental and delegated the remaining research route. See
+[the new decision](research_route_decision.md) and
+`configs/m3w_8to12_development_v1.json`. Real training has started under an
+explicitly exploratory protocol. Independent source/confirmation requirements
+remain open. The checks below are preserved as a historical snapshot.
+
 Checked 2026-09-16. This is an execution blocker record, not research progress, a new gate or a completed experiment. The full CVPR research objective remains unfinished.
 
 ## Fresh Checks
