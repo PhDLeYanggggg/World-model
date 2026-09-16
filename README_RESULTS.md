@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Matched Public-Core Training Started (2026-09-16)
+
+新 v3 开发协议已冻结：EqMotion 固定单头 K=1 与本地 Transformer，过去完整对齐
+邻居规则相同，均 10,000 updates / batch32 / Smooth-L1 / lr0.0003；seed17/29/43。
+38 项模型、过去信息边界和恢复相关回归通过。真实 EqMotion fit-only 100 步成本
+试跑已启动，随后按同一身份恢复完整预算。尚无完成的 v3 精度结果，不宣称提升。
+v2 与 v3 改变不止一项，不能当单因子消融；两个 v3 模型之间才是匹配比较。
+见 [冻结决策](outputs/publication_readiness_2026_09/public_predictor_v3_decision.md)。
+旧协议和 checkpoint 留存原 source snapshot；没有改旧 hash 绕过验证。
+
 ## Completed Three-Seed Robust-Loss Ablation (2026-09-16)
 
 `fresh_run`：在相同 8→12 数据、fold、模型、1000-update 预算、seed 和评价下，

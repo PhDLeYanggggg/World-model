@@ -118,11 +118,16 @@ def collate_forecasts(rows):
 
 class PastContextForecaster(nn.Module):
     """Past-context Transformer with deterministic future queries; no rollout."""
-    def __init__(self, *, width, heads, layers):
+    def __init__(self, *, width, heads, layers, neighbor_policy='observed_tokens'):
         super().__init__()
         if width % heads or min(width, heads, layers) <= 0:
             raise ValueError('Invalid Transformer dimensions')
         self.architecture = {'width': width, 'heads': heads, 'layers': layers}
+        if neighbor_policy not in {'observed_tokens', 'complete_aligned_history'}:
+            raise ValueError('Unknown past-neighbor support policy')
+        self.neighbor_policy = neighbor_policy
+        if neighbor_policy != 'observed_tokens':
+            self.architecture['neighbor_policy'] = neighbor_policy
         self.embed = nn.Linear(3, width)
         self.modality = nn.Embedding(2, width)
         layer = nn.TransformerEncoderLayer(width, heads, 2 * width, dropout=0., batch_first=True)
@@ -142,6 +147,12 @@ class PastContextForecaster(nn.Module):
             raise ValueError('At least one finite observed history token required')
         if (values[..., 2][mask] > 0).any():
             raise ValueError('Context contains a post-current timestamp')
+        if self.neighbor_policy == 'complete_aligned_history':
+            aligned = torch.isclose(inputs['neighbors'][..., 2], history[:, None, :, 2],
+                                    atol=1e-6, rtol=1e-6).all(-1)
+            eligible = inputs['neighbor_mask'].all(-1) & aligned
+            nmask = (inputs['neighbor_mask'] & eligible[..., None]).flatten(1, 2)
+            mask = torch.cat((hmask, nmask), 1)
         values = torch.where(mask[..., None], values, 0.)
         token = self.embed(values)
         token[:, :history.shape[1]] = token[:, :history.shape[1]] + self.modality.weight[0]

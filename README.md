@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am now running a matched public-core comparison: a deterministic fixed-head
+EqMotion adaptation and my Transformer, both with complete past-neighbor support
+and the same 10,000-update training budget. The
+[frozen protocol](outputs/publication_readiness_2026_09/public_predictor_v3_decision.md)
+separates this development experiment from published best-of-20 EqMotion results.
+It is in progress, not yet new evidence of improvement or deployment readiness.
+
 My primary task is now **eight observed steps to twelve predicted steps**, with
 raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused
 paper on baseline-relative joint intervention: when a neural forecast is worth
