@@ -66,6 +66,15 @@ GC 的 raw stride=20，因此不能用插值补出 raw t50 来冒充真实标签
 
 ## 正式实验入口与拒绝行为
 
+诊断来源现在有额外准入层，详见 [实现与边界](intake_admission/implementation_and_limits.md)。带 `source_conditions_review` 的缓存不能仅靠协议 `approved` 字段进入 fit/development/calibration/confirmation：需要 hash-bound `intake_screen`，以及另行审查的 `source_use_decision`（reviewer、decision reference、允许用途、证据文件哈希）。screen 中摘要写“无问题”不能覆盖底层 audit 的 quarantine。原始数据不得静默去重，登记 excluded 不代表获准训练。
+
+```bash
+.venv-pytorch/bin/python -m pytest tests/test_m3w_intake_admission.py tests/test_m3w_experiment_contract.py -q
+.venv-pytorch/bin/python scripts/build_m3w_dut_admission_screen.py --output outputs/publication_readiness_2026_09/intake_admission/new_screen.json --report outputs/publication_readiness_2026_09/intake_admission/new_refusals.json
+```
+
+第二条只验证旧源/缓存并生成准入证据，不签发 permission、不分配真实角色、不调用 future label API；已有输出不覆盖。DUT 28 段 × 4 种用途的检查全部拒绝：4 项质量隔离，108 项 source-use 未批准。正式草案未改；后续科学决定明确后，要连同新 checker 版本审查绑定，不能改旧 approval hash 来绕过。旧 canonical declarations 和绕过 `ExperimentContract` 的 legacy 脚本没有被这一补丁升级为全局授权系统。
+
 ```bash
 .venv-pytorch/bin/python scripts/check_m3w_experiment_contract.py --report-dir outputs/publication_readiness_2026_09/experiment_contract/unapproved_rejection
 .venv-pytorch/bin/python -m pytest tests/test_m3w_experiment_contract.py -q

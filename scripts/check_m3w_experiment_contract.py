@@ -54,6 +54,7 @@ def snapshot_draft(root: Path):
     bindings = [config_path, audit_path, manifest_path,
                 root / 'src/data_unification/m3w_causal_recordings.py',
                 root / 'src/evaluation/m3w_experiment_contract.py',
+                root / 'src/evaluation/m3w_intake_admission.py',
                 root / 'src/world_model/m3w_joint_intervention.py']
     protocol = {
         'schema_version': 1, 'status': 'draft', 'scope': 'confirmatory',

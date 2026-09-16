@@ -13,6 +13,7 @@ import numpy as np
 
 from src.data_unification.m3w_causal_recordings import RecordingWindows, PROTOCOL_RAW, PROTOCOL_STEPS
 from src.evaluation.m3w_recording_lineage import sha256 as file_digest
+from src.evaluation.m3w_intake_admission import validate_admission
 
 
 ROLES = {'fit', 'development', 'calibration', 'confirmation', 'excluded'}
@@ -46,6 +47,7 @@ class ExperimentContract:
         self.protocol = json.loads(json.dumps(protocol, allow_nan=False))
         self.root = Path(root).resolve()
         self.digest = protocol_digest(self.protocol)
+        self._intake_bindings = {}
         self._validate_protocol()
         self.artifacts = {}
         for record in artifacts or []:
@@ -138,6 +140,14 @@ class ExperimentContract:
                      'Reviewed physical scene disagrees with cache identity')
             if roles[name] == 'excluded':
                 continue
+            try:
+                bindings = validate_admission(self.root, name, record, content, roles[name])
+                for path, digest in bindings.items():
+                    _require(path not in self._intake_bindings or self._intake_bindings[path] == digest,
+                             'Conflicting intake evidence across recordings')
+                self._intake_bindings.update(bindings)
+            except (ValueError, TypeError, KeyError, OSError) as exc:
+                raise ContractError(f'Intake admission refused: {exc}') from exc
             digests = [content['artifacts']['points.npy']['sha256']]
             digests += [entry['sha256'] for entry in content.get('files', [])]
             for digest in digests:
@@ -191,6 +201,9 @@ class ExperimentContract:
         for relative, digest in self.protocol.get('bindings', {}).items():
             path = self._path(relative)
             _require(path.is_file() and file_digest(path) == digest, f'Changed protocol binding: {relative}')
+        for relative, digest in self._intake_bindings.items():
+            path = self._path(relative)
+            _require(path.is_file() and file_digest(path) == digest, f'Changed intake evidence: {relative}')
 
     def _closure(self, name, stack=()):
         _require(name in self.artifacts, 'Unknown artifact')

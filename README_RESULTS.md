@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Diagnostic Source Admission Repair (2026-09-16)
+
+把上轮重复标注发现转化为准入检查，而不只留在报告。复现了一个潜在缺口：合成协议只要标 approved，原入口会接受仍写 source conditions pending 的缓存；真实协议始终未批准，未发生真实误用。现在带来源待审标记的 active recording 必须绑定 intake screen、底层 source/conversion/quality audit，以及另行声明的 source-use 决定和证据。科学角色批准不能覆盖质量 quarantine，修改 screen 摘要也不能隐去底层重复标注。新草案会绑定 checker 源码，真实草案未改。
+
+`fresh_run` 真实 DUT 元数据检查：28 clips × 4 种用途，**112 次拒绝**；其中 `intersection_04` 4 次质量隔离，其余 108 次 source-use 待审。未分配真实角色、未调用 future label API、未修改 raw/cache、未训练。已登记 excluded 的资料可保留目录中，但不能被读作训练或评价数据。机器检查是声明/哈希一致性，不是授权身份、版权条件或独立性的认证；不宣称 legacy 全仓库都受保护。
+
+新增 35 项回归，最终相关检查 **322 passed in 75.04 s**。合成合法数据路径实际完成 Torch CPU **2 + resume + 2 updates**，参数更新、4 条心跳、完成恢复和证据漂移拒绝均核验；合成隔离数据走生产 training CLI，在训练/建 checkpoint 前 exit 2。直接 backend 单测为 arm64、compute threads=2、继承 interop=16、workers=0；生产 CLI 仍显式 interop=1，未新增 MPS/长时稳定性声明。初次真实 metadata 检查中的 pending 字符串类型错误已修复并回归。
+
+真实 training/development preflight 均 exit 2，仍待 scientific protocol/source-use 决定，无新的真实预测精度或部署。历史非隔离 full-suite 1,870 pass / 1 fail 未重写，CREATE 无新增任务，Stage5C/SMC 关闭，投稿未就绪。详见 [修复与边界](outputs/publication_readiness_2026_09/intake_admission/implementation_and_limits.md)、[112 次真实元数据检查](outputs/publication_readiness_2026_09/intake_admission/dut_refusals.json)、[验证](outputs/publication_readiness_2026_09/intake_admission/verification.json)。
+
 ## DUT Raw Intake and Annotation Quarantine (2026-09-16)
 
 `fresh_run`：从作者固定版本获取 56 raw CSV、28 ratio 文本、README 和只读 provenance 代码，共 24.31 MB；逐文件 Git blob 校验，无视频/图片/filtered states，无第三方代码执行。DUT 新接入因果 recording reader：**28 clips / 2 physical sites / 457,686 点 / 1,793 行人轨迹 / 69 车辆轨迹**。精确 raw10/25/50/100 窗口 **426,290 / 399,364 / 356,454 / 278,407**；obs8/pred12 **422,656**，均为含两类 agent 的重叠可用性计数，不是独立样本或批准 split。转换约 11.50 s；`cached_verified` 完成恢复复用 28 clips、约 2.02 s。缓存约 97.69 MB，仅留本地忽略目录。

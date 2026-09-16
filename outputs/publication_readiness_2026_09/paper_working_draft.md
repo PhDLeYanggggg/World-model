@@ -64,6 +64,8 @@ A separate [CITR diagnostic conversion](citr_causal_intake/implementation_and_li
 
 The subsequent [DUT diagnostic intake](dut_causal_intake/implementation_and_limits.md) adds 28 natural-campus clips at two source-described locations, not 28 independent scenes. Exact source-row checks identified two simultaneous pedestrian IDs with identical 145-frame trajectories in one clip; that recording is flagged for quality quarantine before formal use. Raw-coordinate semantics also require care because the author preprocessing divides raw positions by a scale despite a general meter statement in the README. Source terms, scientific roles, annotation resolution and prior-use eligibility remain open. This acquisition supplies neither a confirmatory performance result nor enough independent scenes to establish the proposed risk guarantee.
 
+A separate [admission check](intake_admission/implementation_and_limits.md) now prevents a scientific-role declaration from clearing pending source review or a bound annotation quarantine. It follows the source, conversion and quality evidence and checks role-specific review declarations before opening new-source data through the experiment contract. These engineering controls do not authenticate permission or establish independent sampling, and they are not offered as a methodological contribution or evidence of forecasting improvement.
+
 ## 6. Reproducibility
 
 The next experimental package must store canonical recording IDs, immutable splits, past-only schemas, train normalization, out-of-fold teacher provenance, fixed calibration policies, complete hyperparameters, seeds, checkpoints and runtime logs. Historical cached hashes have been checked separately; no fresh real-data replay is claimed in this draft.
