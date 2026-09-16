@@ -2,6 +2,12 @@
 
 ## Continuous-Identity Source Repair, v5 Running (2026-09-16)
 
+v5 seed17 full EqMotion 已完成 10,000 updates。与保留的 v4 full checkpoint
+逐项比较，模型参数、全部 10,000 个 minibatch loss、采样顺序/游标/RNG 完全相同。
+这是同机真实训练与恢复的一致性证据，不是预测精度或跨设备可复现证明。
+新旧 protocol/checkpoint 文件 hash 仍各自保留，没有重标旧模型；三种子/留出训练
+继续执行。见 [完整训练复核](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/unchanged_fit_replay.json)。
+
 `fresh_run` 上游审计：Students01 的 17,820 行全部可唯一映射回连续文件的相同
 frame 和三位小数坐标，**不是时间错位**。但 415 个原始身份被切成 891 个 20 点
 片段，丢掉 63 条短轨迹、共 3,993 行，恰好等于每条轨迹长度除 20 后的余数。

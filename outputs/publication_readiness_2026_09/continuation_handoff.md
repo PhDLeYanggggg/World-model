@@ -1,5 +1,57 @@
 # Real-Experiment Continuation Handoff
 
+## Current v5 Run Supersedes the Snapshots Below
+
+Current source snapshot: `5e0f7be9`. Active command:
+`scripts/run_m3w_continuous_predictor_pair.py` in arm64 `.venv-pytorch`.
+Read `data/stage_cvpr2027_experiments/8to12_eqmotion_v5/runner_heartbeat.json`
+and its indicated child log/checkpoint before any restart. It then runs the
+matched Transformer at `8to12_transformer_v5`. Both register seeds 17/29/43,
+full + three physical-fold predictors with 10,000 updates each, then OOF ridge
+and 1,000-update neural gain/harm heads. Do not edit bound code while running.
+
+v3 is an incomplete 200-update compute pilot. v4 completed seed17 full EqMotion
+at 10,000 updates (1,151.87 s cumulative), then was deliberately halted before
+development scoring after a source-context issue was established. Neither is
+a completed three-seed comparison or accuracy result. v4 checkpoint preserved:
+`data/stage_cvpr2027_experiments/8to12_eqmotion_v4/seed17_full/latest.pt`,
+SHA256 `8525f739cb082a5475d8acbc933ae07abd5063bb4f397fe3d799954a6021f88d`.
+
+The [Students01 row audit](students01_packaging_audit/audit.md) establishes exact
+20-point prefix truncation and identity fragmentation, not a clock reset. All
+17,820 packaged rows map to original timestamps/rounded coordinates; 3,993
+short/tail rows and all 63 short tracks are absent. Their retention depended on
+later availability, so past-only reader checks alone were insufficient for the
+desired full-scene causal observation population. v5 uses the continuous local
+source, keeping 415 original identities and 14,295 complete 8-to-12 windows.
+Fit recordings, scientific choices and budgets remain unchanged. Historical
+exposure is not cleared; annotation-generation causality is still unverified.
+
+Protocol: `configs/m3w_8to12_continuous_context_v5.json`, digest
+`24c0fb195ef76430f5d73ff06f1736afdef213d507c4ebd1d9cccdeba86d28e9`.
+New fits restart rather than relabel old checkpoint identities. The completed
+v4/v5 seed17 full fits were compared: all parameters, all 10,000 losses and
+sampler order/cursor/RNG match exactly. See
+`8to12_public_predictors_v5/unchanged_fit_replay.json`. This is one same-hardware
+replay, not accuracy evidence; protocol identities/development populations differ.
+
+EqMotion is the pinned public core, fixed K=1, not published best-of-20.
+Unused-head execution was pruned with exact output/trainable-gradient matches
+in CPU/MPS tests, without reducing selected-head model capacity or budget.
+Runtime fallback cannot be silent. Current sequence is healthy local MPS/CPU,
+not a new CREATE job; remote access conditions have not changed.
+
+After both v5 summaries complete, run `scripts/compare_m3w_public_predictors.py`
+with the two v5 metrics paths; retain every negative seed, easy error and native
+strong-causal comparison. One University development scene cannot support a
+scene CI. Source packaging changed, so v2-to-v5 aggregate changes are not a pure
+model ablation. Update the run status/README/state with actual outputs, commit
+only scoped light artifacts; unrelated staged fingerprint remains
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+
+Goal still active: no submission readiness, no new deployment, no Stage5C/SMC.
+Do not stop a healthy run because it is slow or replace it with status-only work.
+
 Superseded for development on 2026-09-16: the user selected obs8/pred12 with
 raw-frame t+50 supplemental and delegated the remaining research route. See
 [the new decision](research_route_decision.md) and

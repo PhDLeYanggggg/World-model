@@ -2,6 +2,48 @@
 
 日期：2026-09-16。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前 v5：连续身份上下文修复后的匹配训练
+
+当前源码快照 `5e0f7be9`，协议 `configs/m3w_8to12_continuous_context_v5.json`。
+它保留既有 fit/fold/seed/metric，只把 Students01 的 20 点片段包装替换为本地连续
+轨迹源，保留原始身份、精度、短轨迹和尾段。历史暴露不改变，仍是 development-only。
+v4 第一个 full forecaster 已完成 10,000 updates；runner 因上游 context 可用性问题
+主动停止在开发评价前，不是卡死。不要把该单个完成的 fit 写成完整三种子实验。
+
+```bash
+.venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --protocol configs/m3w_8to12_continuous_context_v5.json --preflight-only
+.venv-pytorch/bin/python scripts/run_m3w_continuous_predictor_pair.py
+```
+
+第二条顺序执行 EqMotion K=1 的三种子 full/fold/OOF/开发评价，再执行匹配 Transformer。
+EqMotion 使用显式 MPS，Transformer 使用 CPU4，interop1、workers0。不存在静默设备回退；
+已完成文件核验复用，未完成检查点恢复。不要重复启动同一 runner。
+两者都使用完整对齐的过去邻居、batch32、Smooth-L1、lr0.0003、10,000 updates。
+输出位于 `data/stage_cvpr2027_experiments/8to12_eqmotion_v5` 和
+`8to12_transformer_v5`；逐子任务 `.log`、`heartbeat.jsonl`、`latest.pt` 与根目录
+`runner_heartbeat.json` 保留 PID/step/时间。当前正在运行，尚无完整 v5 精度结果。
+
+如果 MPS 确实运行失败，可停止同一任务后用显式 CPU 命令恢复，不改模型/预算：
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_8to12_development.py --protocol configs/m3w_8to12_continuous_context_v5.json --config configs/m3w_eqmotion_8to12_pruned_v4.json --study-dir data/stage_cvpr2027_experiments/8to12_eqmotion_v5 --device cpu --threads 4
+```
+
+跨设备恢复须报告 runtime history；不能冒充始终在 MPS 运行。优先在相同设备恢复。
+全部种子完成后才能汇总并配对比较；不能缺 seed、截短预算或换支持集合：
+
+```bash
+.venv-pytorch/bin/python scripts/compare_m3w_public_predictors.py --transformer outputs/publication_readiness_2026_09/8to12_transformer_v5/metrics.json --eqmotion outputs/publication_readiness_2026_09/8to12_eqmotion_v5/metrics.json --output-dir outputs/publication_readiness_2026_09/8to12_public_predictors_v5
+```
+
+源审计和新缓存准备脚本是首次构建工具；已有版本拒绝覆盖。不要在训练中改其绑定文件。
+Git 不含原始数据、作者核心源码、缓存或权重，独立机器还需核验合法来源及相同 hash。
+当前开发协议不是已验证的完整匿名复现包。原始连续注释是否有未来依赖的插值仍未完全
+审计；修复包装可用性不等于证明 sensor-as-of 因果性、米或秒。
+
+固定完整窗口 benchmark 与完整场景因果介入的目标不同。本项目发现的是后者要求下的
+上下文选择问题，不据此宣称所有使用完整窗口的公开基准无效或作者有不当行为。
+
 ## 已完成的真实 8→12 开发实验与稳健损失对照
 
 用户已选定观察 8 步、预测 12 步为主任务，raw-frame t+50 为补充；其余路线按研究授权确定。
@@ -38,7 +80,8 @@ v1 已完成全部 15 个神经 fit，每个 1,000 updates；三种子均选择 
 旧草案默认 preflight 仍会拒绝，这是预期行为；必须显式传入新的开发协议。
 本地数据、OOF 缓存和 checkpoint 不提交 Git。CREATE 连接条件未改善，本轮不提交远程作业。
 
-稳健损失 v2 只改 forecaster MSE 为 Smooth-L1(beta=1)，不覆盖 v1。当前代码运行：
+稳健损失 v2 只改 forecaster MSE 为 Smooth-L1(beta=1)，不覆盖 v1。下面须在其源码
+快照 `9e592089` 及匹配本地缓存下运行，不是当前 v5 源码；不能改 hash 强行兼容：
 
 ```bash
 .venv-pytorch/bin/python scripts/run_m3w_8to12_development.py --protocol configs/m3w_8to12_robust_v2.json --config configs/m3w_intervention_robust_backend.json --study-dir data/stage_cvpr2027_experiments/8to12_robust_v2 --device cpu --threads 4
@@ -48,7 +91,7 @@ v1 已完成全部 15 个神经 fit，每个 1,000 updates；三种子均选择 
 重新运行相同 runner 会核验并恢复，不能同时开两个。prepare 脚本只用于首次登记新版本，
 已有版本拒绝覆盖。不同损失的训练 loss 数值不能互相比较；只比较不变的开发评价。
 v2 现已三种子全部完成，均选择 floor；完整对照在
-[paired report](8to12_robust_v2/robust_loss_comparison.md)。没有训练任务等待恢复。
+[paired report](8to12_robust_v2/robust_loss_comparison.md)。v2 自身已完成；当前 v5 另在运行。
 
 ## 已验证的环境
 
