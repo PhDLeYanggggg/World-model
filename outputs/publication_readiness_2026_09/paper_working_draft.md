@@ -62,6 +62,8 @@ The new [support audit](risk_calibration/support_audit.md) makes this limitation
 
 A separate [CITR diagnostic conversion](citr_causal_intake/implementation_and_limits.md) now retains synchronized pedestrian and vehicle raw positions with row-level provenance. Its 38 controlled clips cover only one physical site, so the conversion cannot be counted as 38 independent calibration scenes. No data-use role, independent-test eligibility, typed neural training or predictive result has been established for this cache. It may support future controlled mechanism checks after review, not a current external-generalization claim.
 
+The subsequent [DUT diagnostic intake](dut_causal_intake/implementation_and_limits.md) adds 28 natural-campus clips at two source-described locations, not 28 independent scenes. Exact source-row checks identified two simultaneous pedestrian IDs with identical 145-frame trajectories in one clip; that recording is flagged for quality quarantine before formal use. Raw-coordinate semantics also require care because the author preprocessing divides raw positions by a scale despite a general meter statement in the README. Source terms, scientific roles, annotation resolution and prior-use eligibility remain open. This acquisition supplies neither a confirmatory performance result nor enough independent scenes to establish the proposed risk guarantee.
+
 ## 6. Reproducibility
 
 The next experimental package must store canonical recording IDs, immutable splits, past-only schemas, train normalization, out-of-fold teacher provenance, fixed calibration policies, complete hyperparameters, seeds, checkpoints and runtime logs. Historical cached hashes have been checked separately; no fresh real-data replay is claimed in this draft.

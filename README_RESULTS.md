@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## DUT Raw Intake and Annotation Quarantine (2026-09-16)
+
+`fresh_run`：从作者固定版本获取 56 raw CSV、28 ratio 文本、README 和只读 provenance 代码，共 24.31 MB；逐文件 Git blob 校验，无视频/图片/filtered states，无第三方代码执行。DUT 新接入因果 recording reader：**28 clips / 2 physical sites / 457,686 点 / 1,793 行人轨迹 / 69 车辆轨迹**。精确 raw10/25/50/100 窗口 **426,290 / 399,364 / 356,454 / 278,407**；obs8/pred12 **422,656**，均为含两类 agent 的重叠可用性计数，不是独立样本或批准 split。转换约 11.50 s；`cached_verified` 完成恢复复用 28 clips、约 2.02 s。缓存约 97.69 MB，仅留本地忽略目录。
+
+独立 CSV 读取逐值复核全部行，另用 uniform-gap runs 重数窗口。发现 **intersection_04 原始行人 ID 10/11 在同样 145 帧上完全重合**，会影响 agent 数量和 interaction/density，整段标为质量隔离待审；不静默合并、不按模型分数取舍。与原有 47 recordings 的 3,112 条完整轨迹做有限精确匹配，没有跨源命中，但不能据此证明无部分/变换重复或无历史预测暴露。
+
+另一个重要边界：README 泛称 meters，但作者 filtering code 对 raw 坐标除以 ratio，且初始速度使用后续帧。这里只读 raw、不执行滤波、不换单位、不声称 metric/seconds。28 clips 仍只覆盖两个地点；source-use 条件、标注疑点、历史暴露和独立用途未批准。没有训练或预测精度结果。
+
+28 clips / **844 agent queries** 未来坐标破坏不改变因果输入，label API 调用 0。最终相关回归 **117 passed in 1.49 s**，29 个新 DUT 用例；独立审计保存时的路径类型错误已修复并回归。正式 preflight 仍 exit 2，protocol 未修改。历史非隔离 full-suite 1,870 pass / 1 fail 保留。CREATE 未新增连接/任务，Stage5C/SMC 关闭，投稿未就绪。详见 [报告](outputs/publication_readiness_2026_09/dut_causal_intake/implementation_and_limits.md)、[重复标注与重数证据](outputs/publication_readiness_2026_09/dut_causal_intake/independent_recount.json)、[验证](outputs/publication_readiness_2026_09/dut_causal_intake/verification.json)。
+
 ## Matched Deferral Development Comparison (2026-09-16)
 
 把上轮文献 deferral control 接入统一开发评价，不再只有训练入口。两个 cost heads 必须核对逐 query/feature/producer 的 OOF 摘要，以及实际 seed/architecture/normalization 来源；六臂共享同一次 forecast，所有决策先于标签。新增 comparator 需协议显式 opt-in，真实 draft 未修改，原五臂选模与 calibration/confirmation 不变。

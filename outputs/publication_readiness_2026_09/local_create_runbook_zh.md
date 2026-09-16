@@ -50,6 +50,20 @@ GC 的 raw stride=20，因此不能用插值补出 raw t50 来冒充真实标签
 
 全体 clip 属于同一物理地点，全部 `diagnostic_only`，未进入正式协议。来源条件、历史暴露和独立确认资格尚未解决；没有新增预测训练/精度/metric/seconds 声明。详见 [接入与边界](citr_causal_intake/implementation_and_limits.md)。
 
+## DUT 原始标注诊断接入
+
+```bash
+.venv-pytorch/bin/python scripts/fetch_m3w_dut_annotations.py --download
+.venv-pytorch/bin/python scripts/build_m3w_dut_recordings.py
+.venv-pytorch/bin/python scripts/build_m3w_dut_recordings.py --resume --report outputs/publication_readiness_2026_09/dut_causal_intake/resume_report.json
+.venv-pytorch/bin/python scripts/audit_m3w_dut_intake.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_dut_recordings.py -q
+```
+
+下载器固定作者 commit，白名单只含 raw CSV、比例尺及只读说明/审计代码，检查普通文件/Git blob/TLS/总大小，已有内容不符就拒绝覆盖。默认没有 `--download` 只读远程目录。不要运行下载的第三方 filter script；其初始速度使用未来帧。原始文件写到忽略目录 `external_data/DUT_author_raw/`，缓存写到 `data/stage_cvpr2027_causal/dut_diagnostic/`。首次转换需新目录，后续显式 `--resume`，逐 clip 记录 PID 心跳；另取 `--report` 保留 fresh / cached_verified 历史。
+
+实际 28 clips / 457,686 原始行，独立重数与逐行来源一致；全体只属于两个物理地点。`dut_intersection_04` 两个行人 ID 在相同 145 帧上坐标完全相同，报告标为质量隔离待审，缓存保留原样，不能直接纳入正式实验。README 的 meter 概括与作者对 raw 除比例尺的代码存在语义冲突，因此不应用比例尺、不新增 metric/seconds 声明。全部 diagnostic_only，未获 source-use 或正式 split 批准，无训练/预测精度。详见 [报告](dut_causal_intake/implementation_and_limits.md)。
+
 ## 正式实验入口与拒绝行为
 
 ```bash

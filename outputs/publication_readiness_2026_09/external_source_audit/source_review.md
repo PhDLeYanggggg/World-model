@@ -56,6 +56,8 @@ Measurement IDs and local timestamps are not a verified shared video clock. Cons
 
 Only a reference image was found in the inspected local DUT directory. The [author repository](https://github.com/dongfang-steven-yang/vci-dataset-dut) describes a separate natural campus collection; it was not downloaded or audited here. It remains an acquisition/eligibility option, not an available benchmark or a completed experiment.
 
+Later 2026-09-16 update: the separate [DUT raw intake](../dut_causal_intake/implementation_and_limits.md) acquired and verified the author's pinned unfiltered annotations and converted them for diagnostic access. It found 457,686 points, two physical-site groups and a duplicated pair of agent trajectories requiring quality quarantine. The earlier metadata-only snapshot is preserved here; it is no longer the latest local availability status. Formal source conditions, roles and independent-test eligibility remain unapproved, and no prediction result has been produced.
+
 ## Exposure and Eligibility Boundaries
 
 The bounded source search covered `src/`, `configs/`, the current recording catalog and relevant Stage42/43 source-intake files. GC/VRU also occur in general dataset discovery/catalog context. This does not exhaust historical caches, remote CREATE use or every experiment log. For all five sources, **prior predictive use remains unknown**, except that Wild-Track diagnostic parsing is explicitly known. Absence of a filename match is not proof of an untouched test source.
