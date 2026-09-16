@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## CVPR 2027 Research Audit (2026-09-16)
+
+目标已确定为 CVPR 2027 主会长文，暂不安排 AAMAS。官方 registration / full paper / supplementary 截止分别为 2026-11-10 / 11-16 / 11-23 AoE。内部目标：10-25 锁定主实验、10-31 完整初稿、11-09 可提交正文。详见 [创新点与投稿路线](README_M3W_INNOVATION_AND_CVPR2027_ZH.md)。
+
+本轮完成 fresh 源码/文件身份审计及合成诊断，没有重新训练或复算真实数据预测。Stage44 十二个直接输入缓存组合哈希相符，七个 checkpoint 哈希相符。该身份检查不构成完整无泄露证明。源码中的最终 variant 排序与 repair 触发读取 test；回顾性 val 最优与历史最优恰好相同，但仍需独立确认。target encoder 在 synthetic backward/optimizer step 中没有梯度且不更新；interaction / density / physical-validity 实际标签分别为 hard-or-failure / 历史密度 / waypoint 完整度。
+
+Stage44 +37.49% all / +20.32% t50 指逐行归一化四 waypoint ADE 相对 endpoint-interpolated floor 的改善，不能与 Stage37 FDE 直接比较或当作公开 benchmark SOTA。现有 Stage44 small 仅 12k/5k/8k rows、每个 variant 3 epochs，没有本轮新增的预测增益。
+
+推荐验证：realized excess-risk supervision、scene-level joint intervention、独立场景 calibration。它们是待验证贡献，不是已确立的新方法或已达到 CVPR 水平的结论。可执行审计：`.venv-pytorch/bin/python scripts/audit_m3w_submission_evidence.py`；[证据](outputs/publication_readiness_2026_09/evidence_audit.md)、[实验协议草案](outputs/publication_readiness_2026_09/research_protocol.md)、[英文 working draft](outputs/publication_readiness_2026_09/paper_working_draft.md)。Stage5C 与 SMC 继续关闭。
+
 这份文件是 M3W 的实验总账。根目录的 [`README.md`](README.md) 负责介绍项目；这里记录更细的研究证据：哪些路线试过、为什么失败、哪些结果可以复现、哪些结论还不能写得太满。
 
 我保留这份长账，是因为 M3W 不是靠单次漂亮结果推进的。很多路线在小切片上能赢，但会伤 easy case；有些模型能缩小 latent distance，却不带来预测收益；有些外部迁移看起来正向，换一个 source 就会退回 safety floor。这些失败记录和正结果一样重要。

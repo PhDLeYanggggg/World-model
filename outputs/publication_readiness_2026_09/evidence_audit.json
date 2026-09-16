@@ -1,0 +1,331 @@
+{
+  "generated_at_utc": "2026-09-16T09:46:18.255947+00:00",
+  "status": "fresh_run",
+  "scope": "source_artifact_and_synthetic_audit_only",
+  "training_status": "not_run",
+  "real_data_prediction_reproduction": "not_run",
+  "source_sha256": "aef5228a35da2607b534e744eb354339991a7decac5f5516234cbe0a123e6268",
+  "historical_metrics_sha256": "7b68d1c8996c46bc10ae332eb7acd9f008a5eaed3a1b265ee61b3a1d17d6982d",
+  "historical_run_date": "2026-06-04T06:14:32.083873+00:00",
+  "historical_mode": "small",
+  "historical_rows": {
+    "train": 12000,
+    "val": 5000,
+    "test": 8000
+  },
+  "historical_epochs": {
+    "no_baseline_latent": 3,
+    "baseline_aware_protected": 3,
+    "hybrid_jepa_transformer": 3,
+    "hybrid_no_scene": 3,
+    "hybrid_no_interaction": 3,
+    "hybrid_no_jepa": 3,
+    "hybrid_no_transformer_ssm": 3
+  },
+  "historical_best_variant": "hybrid_no_scene",
+  "retrospective_validation_best": "hybrid_no_scene",
+  "validation_best_coincides_with_historical_best": true,
+  "selection_caveat": "Coinciding rankings do not undo test access or restore an untouched holdout.",
+  "historical_selected_metrics": {
+    "rows": 8000,
+    "full_waypoint_ade_improvement_vs_floor": 0.3749355760141777,
+    "endpoint_fde_improvement_vs_floor": 0.4048951350368487,
+    "t50_full_waypoint_ade_improvement_vs_floor": 0.20318668425061504,
+    "t50_endpoint_fde_improvement_vs_floor": 0.26422203452851367,
+    "t100_raw_frame_full_waypoint_diagnostic_vs_floor": -0.09987823712010746,
+    "hard_failure_full_waypoint_ade_improvement_vs_floor": 0.3881777868132166,
+    "easy_degradation_vs_floor": 0.01058629063354366,
+    "switch_rate": 0.6555,
+    "harm_over_floor_ade": -0.07296571135520935,
+    "mean_floor_ade": 0.1946086436510086,
+    "mean_selected_ade": 0.12164293974637985
+  },
+  "recorded_input_hash": "2124f1607d6eb847a6511cec7aca9058fa448159a5124ce4518be20e09f1a69a",
+  "input_hash_matches_current_cache": true,
+  "checkpoints": [
+    {
+      "variant": "no_baseline_latent",
+      "exists": true,
+      "sha256": "d95a54b16d86504010641f0ad7198f20d2979c5d38402b3dc1523b17f58f447a",
+      "matches_recorded": true
+    },
+    {
+      "variant": "baseline_aware_protected",
+      "exists": true,
+      "sha256": "81ba81ed153321a0386fb678cc95ab17f6f4abbbcf28e8c7e07d58c1e783cd20",
+      "matches_recorded": true
+    },
+    {
+      "variant": "hybrid_jepa_transformer",
+      "exists": true,
+      "sha256": "4a94472c7ffac300ab480b4251f706e229dc48b9f5c9e4d57dfdb32daa3729fc",
+      "matches_recorded": true
+    },
+    {
+      "variant": "hybrid_no_scene",
+      "exists": true,
+      "sha256": "1a6f3a0f7c07d0ed3ded6387d37582bd6038b75b854234a773bff6974ebe15de",
+      "matches_recorded": true
+    },
+    {
+      "variant": "hybrid_no_interaction",
+      "exists": true,
+      "sha256": "0840c211d3785778ab0ae0be54f0091aa973fcbb9af12a60bc519d4ca79aa1c1",
+      "matches_recorded": true
+    },
+    {
+      "variant": "hybrid_no_jepa",
+      "exists": true,
+      "sha256": "47bd943f1ec9759e69001431ebcefa71bfe369e83b3ccda7fb671033e1fc0097",
+      "matches_recorded": true
+    },
+    {
+      "variant": "hybrid_no_transformer_ssm",
+      "exists": true,
+      "sha256": "8248f1222efca6fa70b184fea0ac40f6cde20199f1862ed1353e9991fc446d5b",
+      "matches_recorded": true
+    }
+  ],
+  "cache_inventory": {
+    "status": "fresh_run",
+    "files": [
+      {
+        "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_train.npz",
+        "exists": true,
+        "bytes": 2881920,
+        "sha256": "7cb12a873447bc9f59d135ced4db4dd4aeeea43257982c397596fb29e90b63e8"
+      },
+      {
+        "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_val.npz",
+        "exists": true,
+        "bytes": 1951023,
+        "sha256": "ec68b9f3fda0166f918f18bda124262cf974829e752f89770a489f14f099df5d"
+      },
+      {
+        "path": "data/stage43_full_waypoint_supervision_cache/stage43_full_waypoint_supervision_test.npz",
+        "exists": true,
+        "bytes": 1585297,
+        "sha256": "62f4a079bfa7e3eba5ca5ebdadf864d7a1342b4dc4431412ecaed910520ab22f"
+      },
+      {
+        "path": "data/stage43_scene_proxy_tokens/stage43_scene_proxy_features_train.npz",
+        "exists": true,
+        "bytes": 1451244,
+        "sha256": "21bc12ddf0cbc8c11b4466ef8b34cd7bdff52212786ffa84167868d9b67ff22d"
+      },
+      {
+        "path": "data/stage43_scene_proxy_tokens/stage43_scene_proxy_features_val.npz",
+        "exists": true,
+        "bytes": 1001357,
+        "sha256": "cfeb096e5a4b854a38716fc41e3e483b3a641bbd214215df6ef240e23d772056"
+      },
+      {
+        "path": "data/stage43_scene_proxy_tokens/stage43_scene_proxy_features_test.npz",
+        "exists": true,
+        "bytes": 809403,
+        "sha256": "e3bc593c272cab3e097e610e3e2bf38e5794dc836666e4407b8e690a8a19d6b9"
+      },
+      {
+        "path": "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_train.npz",
+        "exists": true,
+        "bytes": 24638328,
+        "sha256": "5b0c42592757a6ae89f076e5c0267fdb78aee582ab0af649170966c89a194c4e"
+      },
+      {
+        "path": "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_val.npz",
+        "exists": true,
+        "bytes": 22330804,
+        "sha256": "70b9109f469c999320aaca6439757d823b452f82806517534bb8fcf230558691"
+      },
+      {
+        "path": "data/stage43_all_agent_current_graph_cache/stage43_all_agent_current_graph_test.npz",
+        "exists": true,
+        "bytes": 14471505,
+        "sha256": "b90114f0afa73d619d5f16e993c77471b65b7da48460c936da7713ba0d538ff1"
+      },
+      {
+        "path": "data/stage43_all_agent_history_graph_cache/stage43_all_agent_history_graph_train.npz",
+        "exists": true,
+        "bytes": 33122753,
+        "sha256": "00fb7fa0d088b0549f39b70dc896618a8a6c148bec1fe14efca22f30ca9570fc"
+      },
+      {
+        "path": "data/stage43_all_agent_history_graph_cache/stage43_all_agent_history_graph_val.npz",
+        "exists": true,
+        "bytes": 30384904,
+        "sha256": "0084597421fb7d59c157e768cb567db0c32b085042f656be45ca20a4a721e410"
+      },
+      {
+        "path": "data/stage43_all_agent_history_graph_cache/stage43_all_agent_history_graph_test.npz",
+        "exists": true,
+        "bytes": 20190917,
+        "sha256": "881450156deee4038af190f7efd8d98384ef946bead9255c94dc56f0b55098e0"
+      }
+    ],
+    "current_cache_rows": {
+      "train": {
+        "rows": 146809,
+        "horizons": {
+          "10": 46716,
+          "25": 41248,
+          "50": 35467,
+          "100": 23378
+        },
+        "datasets": {
+          "ETH_UCY": 63602,
+          "TrajNet": 73667,
+          "UCY": 9540
+        },
+        "sources": {
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt": 21598,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/crowds_zara01.txt": 1647,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/students002.txt": 765,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/crowds/uni_examples.txt": 765,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/arxiepiskopi1.txt": 3180,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara02.txt": 20087,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students001.txt": 47223,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara01/obsmat.txt": 16103,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara02/obsmat.txt": 25901,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/zara03/crowds_zara03.txt": 9540
+        },
+        "scenes": {
+          "ETH_UCY_seq_eth": 21598,
+          "ETH_UCY_zara01": 16103,
+          "ETH_UCY_zara02": 25901,
+          "TrajNet_crowds": 73667,
+          "UCY_zara03": 9540
+        }
+      },
+      "val": {
+        "rows": 101446,
+        "horizons": {
+          "10": 32706,
+          "25": 28703,
+          "50": 24741,
+          "100": 15296
+        },
+        "datasets": {
+          "ETH_UCY": 16611,
+          "TrajNet": 37612,
+          "UCY": 47223
+        },
+        "sources": {
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt": 16611,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Test/biwi/biwi_eth.txt": 459,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/students003.txt": 37153,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students01/students001-trajnet.txt": 47223
+        },
+        "scenes": {
+          "ETH_UCY_seq_hotel": 16611,
+          "TrajNet_biwi": 459,
+          "TrajNet_crowds": 37153,
+          "UCY_students01": 47223
+        }
+      },
+      "test": {
+        "rows": 89736,
+        "horizons": {
+          "10": 26132,
+          "25": 23780,
+          "50": 21754,
+          "100": 18070
+        },
+        "datasets": {
+          "ETH_UCY": 70585,
+          "TrajNet": 9611,
+          "UCY": 9540
+        },
+        "sources": {
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/biwi/biwi_hotel.txt": 7685,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/crowds/crowds_zara03.txt": 9540,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/TrajNet/Train/mot/PETS09-S2L1.txt": 1926,
+          "/Users/yangyue/Downloads/World/external_data/OpenTraj/datasets/UCY/students03/obsmat.txt": 70585
+        },
+        "scenes": {
+          "ETH_UCY_students03": 70585,
+          "TrajNet_biwi": 7685,
+          "TrajNet_mot": 1926,
+          "UCY_crowds": 9540
+        }
+      }
+    },
+    "source_and_scene_overlap": {
+      "train_val": {
+        "source_overlap": [],
+        "scene_overlap": [
+          "TrajNet_crowds"
+        ]
+      },
+      "train_test": {
+        "source_overlap": [],
+        "scene_overlap": []
+      },
+      "val_test": {
+        "source_overlap": [],
+        "scene_overlap": [
+          "TrajNet_biwi"
+        ]
+      }
+    },
+    "current_combined_hash": "2124f1607d6eb847a6511cec7aca9058fa448159a5124ce4518be20e09f1a69a",
+    "not_proven": [
+      "cross_format_duplicate_recordings",
+      "teacher_training_lineage",
+      "complete_feature_causality"
+    ]
+  },
+  "synthetic_checks": {
+    "status": "fresh_run",
+    "data": "synthetic_only_not_prediction_evidence",
+    "runtime": {
+      "machine": "arm64",
+      "torch": "2.12.0",
+      "threads": 4
+    },
+    "target_encoder_parameters_with_gradient": 0,
+    "context_encoder_parameters_with_gradient": 48,
+    "target_encoder_unchanged_after_optimizer_step": true,
+    "best_variant_changes_when_only_test_metrics_change": true
+  },
+  "findings": [
+    {
+      "id": "test_selected_variant",
+      "line": 664,
+      "finding": "Final architecture ranking reads test_eval; it is not confirmatory model selection."
+    },
+    {
+      "id": "test_driven_repair",
+      "line": 650,
+      "finding": "Repair trigger reads test_eval; the current recorded run contains seven base variants and no repair variants."
+    },
+    {
+      "id": "proxy_semantics",
+      "line": 397,
+      "finding": "Interaction label is hard OR failure; validity label is waypoint completeness; density label is historical density."
+    },
+    {
+      "id": "gain_harm_target_mismatch",
+      "source": "src/stage43_full_waypoint_latent_dynamics.py:304",
+      "finding": "Gain uses candidate oracle vs strongest; harm uses easy OR small oracle margin, not realized neural-vs-floor harm."
+    },
+    {
+      "id": "nonstandard_comparator",
+      "source": "src/stage43_full_waypoint_latent_dynamics.py:296",
+      "finding": "Floor waypoints are linear interpolation of a selected endpoint; errors are per-row scale-normalized over four waypoints."
+    },
+    {
+      "id": "asserted_leakage_gate",
+      "line": 808,
+      "finding": "The Stage44 no-leakage gate reads declared flags, not a complete data-lineage or test-selection audit."
+    },
+    {
+      "id": "target_encoder_not_updated",
+      "source": "src/stage44_worldcore.py:217",
+      "finding": "The randomly initialized future target encoder is detached and has no EMA update in this module."
+    }
+  ],
+  "stage44_bootstrap_recorded": false,
+  "claim_status": "exploratory_evidence_not_submission_ready",
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

@@ -1,0 +1,52 @@
+# When to Trust Neural Motion Forecasts: Scene-Level Risk-Controlled Improvement over Strong Baselines
+
+Working draft, 2026-09-16. Research question and method proposal only. Empirical claims below are explicitly provisional; this is not submission-ready.
+
+## Abstract
+
+Multi-agent motion predictors are commonly evaluated by average trajectory error, yet an improved average can conceal degradation on agents whose motion is already well predicted by a simple baseline. Combining baseline and neural predictions independently also creates a scene-level problem: individually plausible choices need not form a coherent joint forecast. We study baseline-relative selective intervention for multi-agent forecasting. The proposed method learns the expected benefit and harm of replacing baseline trajectories using out-of-fold training predictions, selects interventions jointly over an observed interaction graph, and calibrates a finite family of policies using independent scene-level data. The intended evaluation measures prediction error, easy-case degradation, intervention coverage and joint consistency under matched forecasting protocols. Existing M3W experiments motivate this problem but are exploratory: their strongest WorldCore variant was ranked using test metrics, and its reported gains use scale-normalized four-waypoint error. Confirmatory experiments and comparisons to published forecasting and risk-control methods remain to be completed.
+
+## 1. Introduction
+
+Strong causal predictors can be difficult to improve consistently. A neural predictor may capture turns or interactions while performing worse on straight, low-variance motion. Replacing the baseline everywhere therefore asks a different question from deciding where the neural model has useful information. The latter question is especially relevant under scene shift, where a global average provides limited guidance about the risk of a local intervention.
+
+Multi-agent prediction introduces another difficulty. Per-agent decisions can combine incompatible futures even if each predictor produces a coherent scene when used alone. We propose to treat the intervention vector itself as a structured prediction and to evaluate its excess error relative to a fixed baseline.
+
+The candidate contributions are (i) supervision based on realized neural-versus-baseline excess loss, (ii) joint intervention selection under candidate-trajectory consistency constraints, and (iii) a scene-level calibration and evaluation protocol that respects dependence among overlapping trajectory windows. These are hypotheses for the experiments, not established novelty claims.
+
+## 2. Related Work
+
+AgentFormer jointly models social and temporal structure with agent-aware attention (Yuan et al., ICCV 2021). EqMotion introduces equivariant motion prediction and invariant interaction reasoning (Xu et al., CVPR 2023). SingularTrajectory studies a unified representation across trajectory-prediction tasks (Bae et al., CVPR 2024). These works preclude claiming that temporal attention, relative geometry or a common motion representation are novel by themselves.
+
+Joint Metrics Matter studies joint forecasting errors and collisions (Weng et al., 2023). The present proposal must demonstrate a benefit beyond adding a joint metric or training penalty: it concerns which predictions from competing predictors can be selected together.
+
+Conformal Risk Control and Learn then Test provide established tools for controlling losses or selecting risk-constrained policies. SODA-MPC combines conformalized OOD monitoring with reachability fallback in control. We target excess forecasting loss relative to a fixed predictor; we do not claim formal physical safety from low ADE. Hierarchical and generalized hierarchical conformal methods also require direct comparison before making any statistical novelty claim.
+
+## 3. Method
+
+Use the observed agent histories, legal past-only context and candidate rollouts to estimate gain and harm. Train these heads using cross-fitted predictions within training recordings. Freeze both the floor and candidate predictor before training/calibrating the deployment gate. The gate minimizes estimated excess loss over agents plus an interaction penalty on the mixed forecast, subject to supported risk budgets. A full mathematical specification, optimization algorithm, complexity analysis and assumptions are required before implementation is treated as a final method.
+
+## 4. Experiments To Complete
+
+Compare the same predictor with no gate, independent confidence gating, expected-error gating, scene-uniform gating and joint intervention selection. Include simple regressors and modern published predictors so that benefits cannot be attributed only to replacing a weak baseline. Separate K=1 from best-of-K evaluation. Deduplicate underlying recordings across dataset distributions, freeze development and calibration choices, and use a final confirmation set with no prior model-selection exposure. Report per-domain raw ADE/FDE, normalized supplemental errors, easy/hard slices, joint errors, proximity proxies, coverage, latency, three seeds and scene-level confidence intervals.
+
+No confirmatory results are available for the proposed method. The historical Stage44 no-scene result (+37.49% all, +20.32% t50 normalized four-waypoint ADE vs an interpolated floor) is motivation only and must not appear as a final main-table result without a corrected independent evaluation.
+
+## 5. Limitations
+
+The current datasets are represented in pixel or dataset-local coordinates with unverified cross-source scale and effective time. Physical collision risk cannot be inferred from a normalized proximity threshold alone. Scene proxies are not verified semantic maps. Most historical observations overlap in time, and some named dataset collections may contain the same underlying recordings. Calibration assumptions may fail under arbitrary shift, and a small number of independent scenes may make safety bounds uninformative. A selective predictor is not an action-conditioned simulator or a foundation world model.
+
+## 6. Reproducibility
+
+The next experimental package must store canonical recording IDs, immutable splits, past-only schemas, train normalization, out-of-fold teacher provenance, fixed calibration policies, complete hyperparameters, seeds, checkpoints and runtime logs. Historical cached hashes have been checked separately; no fresh real-data replay is claimed in this draft.
+
+## Verified References
+
+- AgentFormer: https://ye-yuan.com/agentformer/
+- EqMotion: https://openaccess.thecvf.com/content/CVPR2023/html/Xu_EqMotion_Equivariant_Multi-Agent_Motion_Prediction_With_Invariant_Interaction_Reasoning_CVPR_2023_paper.html
+- SingularTrajectory: https://arxiv.org/abs/2403.18452
+- Joint Metrics Matter: https://arxiv.org/abs/2305.06292
+- Conformal Risk Control: https://arxiv.org/abs/2208.02814
+- Learn then Test: https://arxiv.org/abs/2110.01052
+- SODA-MPC: https://proceedings.mlr.press/v283/contreras25a.html
+- Generalized HCP: https://arxiv.org/abs/2608.15500
