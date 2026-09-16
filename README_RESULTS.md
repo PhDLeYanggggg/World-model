@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Frozen Confirmation and Three-Seed Reporting (2026-09-16)
+
+本轮补齐最终评价入口：从批准协议固定比较族与全部 seeds，核对实际预测器和 OOF producer 的训练 seed，读取真实完成的 calibration export，再比较相同预测的五种控制。确认标签不参与选模或阈值搜索；完成收据锁定代码/产物/运行身份，支持逐 recording 恢复与篡改拒绝。主指标、easy/hard、原始录像局部误差、尾部、最差场景、介入率和联合 proximity proxy 分开报告。
+
+`fresh_run` 工程验证：新增 20 项用例，相关回归 **177 passed in 62.45 s**。合成链实际训练 3 seeds x 3 forecasters，各 8 updates，并拟合各自 OOF ridge 风险头。最终 27 agent queries / 16 scene queries / 1 physical scene，15 条完整标签；三个 seed 不把独立样本数扩大三倍，单场景明确无 CI，冻结校准策略仍为 floor。这里没有真实数据三 seed 改善，也没有部署升级。
+
+修复并检验两个统计汇总风险：positive harm 必须先逐 seed 截断再平均，不能以好 seed 抵消坏 seed；equal-recording 的最差场景不能偷换为窗口加权。报告逐 seed easy guard，配对 scene-bootstrap 条件于固定模型，不伪称同时覆盖训练随机性或多重检验。测试发现的 NumPy Boolean JSON 保存错误已修复并复验。
+
+真实 protocol preflight 仍 exit 2，formal confirmation `not_run`；未替用户批准科学规则，未访问新的真实确认标签。历史 full-suite 1,870 pass / 1 fail 没有改写。详见 [实现及限制](outputs/publication_readiness_2026_09/confirmation_evaluation/implementation_and_limits.md)。当前最高优先级仍是批准任务/用途与落实独立场景后执行 clean real comparison；Stage5C/SMC 关闭，投稿就绪未达成。
+
 ## Frozen-Policy Calibration and Statistical Support (2026-09-16)
 
 本轮接通冻结的 development export 到 calibration：读取标签前检查 policy/plan/源码/父产物身份与递归暴露；不在校准集重训或改阈值。决策先于标签，缺失未来标签的切换按最坏有界损失计入，未切换的相对基线损失为零。按物理场景统计，不把重叠窗口当独立样本。支持逐 recording 恢复、心跳、完成收据、缓存篡改拒绝；确认集没有打开。

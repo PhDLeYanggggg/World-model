@@ -130,6 +130,22 @@ MPS 检查需主机 Metal 访问权限。若沙箱返回 macOS 版本不支持�
 
 当前仅六个物理场景组且均有开发暴露，没有批准的独立校准用途。实现中的 Hoeffding/union bound 需要独立同分布场景假设，分组命名本身不证明该假设。详见 [校准实现和限制](risk_calibration/implementation_and_limits.md) 与 [支持审计](risk_calibration/support_audit.md)。下一步不能以扩充重叠窗口替代独立场景。
 
+## 冻结最终比较与三个训练种子
+
+```bash
+.venv-pytorch/bin/python -m pytest tests/test_m3w_confirmation_evaluation.py -q
+.venv-pytorch/bin/python scripts/evaluate_m3w_confirmation.py --preflight-only
+.venv-pytorch/bin/python scripts/evaluate_m3w_confirmation.py --help
+```
+
+当前真实草案预检仍应返回 exit 2，不得手动补 approval 来启动。新增 20 项用例及相关回归 177 passed，验证的是合成真实 Torch 训练/OOF/开发/校准/最终评价链，不是新的真实 benchmark。CLI 合成结果只有 1 个物理场景，程序不生成其 CI。
+
+科学协议须明确 `confirmation_evaluation`，包括每个 family 的全部 training seeds、forecaster/risk artifact IDs、cost report、development policy ID、calibrator ID、baseline、采样/几何/标签/归一化/切片规则。每个比较族必须完整覆盖 protocol seeds；实际 checkpoint 与 OOF producer seed 必须相符。所有父产物以及已完成 calibration claim/report/completion 要同时提供，不能以旧 teacher 或手工结果表替代。
+
+运行时传入 `--protocol`、`--artifacts`、新的 `--output-dir`，显式选择 `--device cpu|mps` 和 `--threads`。启动前锁定最终比较族和实现，之后无选择/调参。每个 candidate/recording 完成后保存带 hash 的缓存，逐场景写 PID 心跳；中断同参数加 `--resume`。已完成 recording 不重新预测；完成任务只核验旧产物，篡改缓存或 calibration 拒绝继续。结果生成后不能因不理想删除 claim 换模型重做“同一次确认”。
+
+报告分开列每个 seed、固定 seed 平均误差、样本标准差、whole-scene paired bootstrap 和单个 calibration-selected policy。三个 seeds 不等于三倍独立场景，也不是 ensemble prediction。positive harm 先逐 seed 计算再平均，easy guard 逐 seed 保留；配对区间是未做多重检验调整的描述性结果，不是正式风险界。原始 dataset-local 指标仅按录像单列。详情见 [最终评价实现](confirmation_evaluation/implementation_and_limits.md)。
+
 ## 联合介入工程验证
 
 ```bash
