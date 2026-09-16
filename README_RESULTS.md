@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## External Source Availability and Identity Audit (2026-09-16)
+
+本轮 `fresh_run` 读取 GC、HERMES、Wild-Track、CITR、VRU 原始标注，合计解析 24,745 条轨迹、3,807,482 个有效 agent-frame/measurement 点。只做身份、时序、精确窗口与来源审计，没有新转换缓存、训练、正式 split 或 test 指标。每个来源都记录原文件内容摘要；不插值、不复用旧 loader 的人工尺度。轨迹和重叠窗口不能当独立场景。
+
+关键发现：GC 原生 stride=20，精确 raw t50 为 0，而不是数据加载器插值后的“可用”；HERMES 是 51 次受控走廊试验，不是 51 个独立自然场景；Wild-Track 七相机属于同一场景；CITR 有 38 clips、318 pedestrian / 26 vehicle tracks。后续 fresh 核对作者 Git tree：本地 344 个原始 CSV 哈希全部一致，零缺失/多余/内容差异；README 的 340-pedestrian 数字与其自身 raw 文件清单不一致，不是本地下载不完整。VRU 有 1,562 实际轨迹文件，其中两条时间不递增被隔离，剩余 1,560 条多数各自从时间零点开始，不能伪造同步邻居。VRU global raw-frame mapping 未验证，其 raw horizons 标 `not_run`。
+
+15 项新增审计测试与相关回归共 **85 passed in 2.69 s**，独立简化重计数与解析结果一致。旧 full-suite 1,870 pass / 1 fail 未重写为全绿。使用条件、历史预测暴露和独立场景分组仍须确认；没有新增 untouched confirmation。主科学协议仍待用户决定，CREATE 仍待访问修复。详见 [来源结论和下一步](outputs/publication_readiness_2026_09/external_source_audit/source_review.md)、[实测可用性](outputs/publication_readiness_2026_09/external_source_audit/availability.md)。Stage5C/SMC 继续关闭，CVPR 路线不等于投稿就绪。
+
 ## Experiment Role and Provenance Contract (2026-09-16)
 
 本轮把训练/选模/风险校准/最终确认的边界实现为 hash-bound 协议入口，而不是开始未经批准的新实验。检查物理场景跨用途、同 fold 暴露、递归 teacher/preprocessor/goal 依赖、模型与缓存内容变化；校准前固定候选集合，最终测试只允许相同身份恢复，不允许换模型后继续作为同一次测试。

@@ -32,6 +32,8 @@ The next method asks a more specific question: when several agents may switch aw
 
 For the clean rerun, I now keep data roles and learned-artifact provenance in a [hash-bound experiment contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md). It checks upstream teacher exposure and freezes the evaluated model family before calibration or confirmation. The current protocol is deliberately unapproved: previously explored recordings remain development material, and the remaining scientific choices are not filled in just to make training start.
 
+I am also checking what the other local datasets can genuinely add. The [external source review](outputs/publication_readiness_2026_09/external_source_audit/source_review.md) distinguishes synchronized scenes from isolated tracks, repeated controlled trials and duplicate representations. More trajectory points do not automatically mean more independent evidence; none of these sources has been promoted to a new confirmation set or used to claim a fresh gain.
+
 ## What The System Looks At
 
 The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:

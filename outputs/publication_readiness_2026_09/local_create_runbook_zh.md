@@ -24,6 +24,18 @@ Apple Silicon 上使用仓库的 `.venv-pytorch/bin/python`，不要使用默认
 
 这里的 8 观测/12 预测是可用性检查视图，尚未成为经批准的主实验协议。raw-frame t25 没有精确窗口，不能用邻近帧补成“t25”。所有视图可能重叠，不是独立统计样本。
 
+## 外部原始来源审计
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_external_sources.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_external_source_audit.py -q
+.venv-pytorch/bin/python scripts/check_m3w_citr_source_manifest.py --report outputs/publication_readiness_2026_09/external_source_audit/citr_upstream_identity_system_tls.json
+```
+
+第一条只读取本地 OpenTraj 中 GC/HERMES/Wild-Track/CITR/VRU 原始标注，重算来源 hash、轨迹长度、断帧和精确标签可用性，报告写到 `external_source_audit/`。它不训练、不插值、不生成大缓存，也不设定正式 split。报告会覆盖同名审计快照；需要保留旧快照时指定新的 `--report-dir`。第三条读取 CITR 作者公开仓库的 commit/tree 元数据并核对本地 raw CSV 的 Git blob hash，不下载轨迹。本轮 344/344 匹配；其 README 的 340 行人数与 raw 实际 318 的差异仍需解释。脚本使用系统 curl 的正常 TLS 校验，未禁用证书验证。
+
+GC 的 raw stride=20，因此不能用插值补出 raw t50 来冒充真实标签。VRU 的 measurement ID 不等于已验证的全局视频 frame；两条异常时钟轨迹被隔离，不能把每个对象的时间零点拼成同场邻居。`obs8/pred12` 只是逐源观测步可用性，不自动代表相同物理时长或正式批准的主协议。十五项测试验证这些边界，来源权限、历史暴露及独立场景资格仍须另行核实。
+
 ## 正式实验入口与拒绝行为
 
 ```bash
