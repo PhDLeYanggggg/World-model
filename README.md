@@ -34,6 +34,8 @@ For the clean rerun, I now keep data roles and learned-artifact provenance in a 
 
 I am also checking what the other local datasets can genuinely add. The [external source review](outputs/publication_readiness_2026_09/external_source_audit/source_review.md) distinguishes synchronized scenes from isolated tracks, repeated controlled trials and duplicate representations. More trajectory points do not automatically mean more independent evidence; none of these sources has been promoted to a new confirmation set or used to claim a fresh gain.
 
+The rebuilt reader now connects to a [resumable forecasting and cost-learning backend](outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md). It learns baseline-relative benefit and harm from predictions made outside each producer's training fold. I have checked the training/recovery path on synthetic examples and the input boundary on real trajectories. Those checks establish an implementation, not predictive improvement: clean real-data fitting, development selection and independent confirmation are still pending.
+
 ## What The System Looks At
 
 The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:
@@ -84,7 +86,7 @@ On Apple Silicon, training should use the arm64 PyTorch environment:
 Focused checks for the new data and evaluation path:
 
 ```bash
-.venv-pytorch/bin/python -m pytest tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_supervised_intervention.py tests/test_m3w_external_source_audit.py tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py
 ```
 
 The legacy full suite (`python -m pytest tests`) includes integration training and can rewrite reports in the working directory. It is not yet an isolated, read-only smoke test; preserve existing experiment outputs before running it. The [local/CREATE runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md) records the verified environment and recovery checks.

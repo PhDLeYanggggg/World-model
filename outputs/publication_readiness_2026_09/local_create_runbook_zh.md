@@ -47,6 +47,34 @@ GC 的 raw stride=20，因此不能用插值补出 raw t50 来冒充真实标签
 
 后续新训练代码需实际通过 `ExperimentContract` 打开对应用途的 recording；OOF gain/harm 使用的所有父模型也必须通过整 fold 来源检查。校准和最终测试前分别登记固定候选集合及 hash，恢复时身份必须相同；完成后不再作为 fresh confirmation 重跑。当前旧训练器尚未全部接入，不能宣称全仓库防泄露已经完成。详见 [实现与限制](experiment_contract/implementation_and_limits.md)。
 
+## 新预测训练与 OOF 代价入口
+
+新入口从同一份 hash-bound 协议打开因果 recording，不读取旧 teacher cache。当前可直接复现的是工程检查：
+
+```bash
+.venv-pytorch/bin/python scripts/check_m3w_supervised_inputs.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_supervised_intervention.py -q
+.venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --preflight-only
+.venv-pytorch/bin/python scripts/train_m3w_oof_cost_head.py --preflight-only
+```
+
+第一条使用随机权重检查真实输入，**不计算预测准确性**；本轮 24 queries / 345 agents、未来标签调用 0 次，另 3 个 ETH-eth 查询无 raw50 过去网格支持。第二条 17 项测试只在临时合成 fixture 上训练；与来源、协议、joint/reader 相关检查合计 102 passed。最后两条对当前真实草案返回 exit 2 是预期结果，不要改写批准字段来绕过它。
+
+正式开跑前要有经过确认的主时域、角色/分组、指标和风险预算；`configs/m3w_intervention_backend.json` 只有模型和训练技术参数，不批准任何科学规则。查看实际必需参数：
+
+```bash
+.venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --help
+.venv-pytorch/bin/python scripts/train_m3w_oof_cost_head.py --help
+```
+
+预测训练要求显式传入协议、fit recordings、baseline、seed 和新的 output directory。`--device cpu` 或 `--device mps` 显式选择设备，`--threads` 默认 4，interop=1，workers=0；不会把 CPU fallback 伪装成 MPS。当前是固定预算 fit-only，不是 validation-selected best。loss 为 masked normalized coordinate MSE，不等于论文 ADE/FDE。
+
+恢复使用相同参数、相同 output directory 加 `--resume`。`latest.pt` 含参数、optimizer、采样顺序/游标、采样 RNG、Torch RNG、loss 和 runtime 段；身份或训练设置变化会拒绝恢复。中断从最后完整 checkpoint 恢复，不保存半次 optimizer update。已完成的相同运行返回 `cached_verified`，不继续偷偷更新权重。保存和心跳频率由技术 config 控制；测试用 `--stop-after` 可模拟分段训练。CPU/MPS 合成恢复数值一致不代表任意设备相同或已证明 12 小时稳定性。
+
+OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manifests。它会检查整个 held-out fit fold 对所有父模型的暴露，再读取监督；不允许只检查当前单个 recording。完整 fold 输出有哈希与 run identity，`--resume` 复用已核验 fold，未完成 fold 重算，篡改缓存会拒绝。每 batch 写进度心跳。线性 cost control 的 mean/scale 仅在 fit OOF 特征上拟合；验证、校准、最终测试还没有执行。大缓存、模型、optimizer 文件不进入 Git。
+
+更完整的实现和边界见 [supervised backend](supervised_backend/implementation_and_limits.md)。旧的 runtime probe 与下面的 joint checks 仍是独立工程证据，不应与新真实预测实验混为一谈。
+
 ## 联合介入工程验证
 
 ```bash

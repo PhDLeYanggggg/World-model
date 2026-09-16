@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## Causal Forecasting and Out-of-Fold Cost Training (2026-09-16)
+
+本轮把新因果 reader、来源协议和 gain/harm 监督接到可恢复的真实 Torch 训练入口，不再依赖旧 teacher cache。新增 past-context Transformer、独立 input/label collator、固定预算训练、完整 optimizer/sampler/RNG checkpoint，以及先验证整 fold 暴露再构建 realized benefit/harm 的 OOF 数据路径。简单 ridge cost head 的归一化只在 fit OOF 数据上学习；MLP cost 接口已实现，但没有新的真实数据对比训练。这里的固定预算模型**不是 validation-selected best**。
+
+`fresh_run` 工程证据：17 项新增测试及相关回归共 **102 passed in 11.65 s**。CPU 和 MPS 的合成训练恢复检查通过；MPS 跨进程 3+5 updates 与连续 8 updates 的参数、优化器状态、loss 最大差异均为 0。真实数据另检查 24 个 scene queries / 345 agents，替换所有未来位置后 inputs、预测和风险特征不变，future-label API 调用 0 次；另 3 个 ETH-eth 查询没有精确 raw50 过去网格支持，明确跳过。真实输入检查使用随机权重，不是准确性评价。
+
+真实 forecasting / cost-head training、development 选模、校准和最终确认仍为 **not_run**：科学协议尚未批准，两个真实入口均在导入 Torch/读取监督前返回 exit 2。合成 fixture 的测试标记不构成真实实验授权。当前没有新预测增益、部署升级或风险保证。旧 full-suite 1,870 pass / 1 fail 没有重跑或改写为全绿。详见 [实现与限制](outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md)、[验证记录](outputs/publication_readiness_2026_09/supervised_backend/verification.json)。下一步是批准科学规则后进行 clean fit/OOF，并补 development-only selection 与 matched policy 对照，不是把工程测试当论文结果。Stage5C/SMC 继续关闭。
+
 ## External Source Availability and Identity Audit (2026-09-16)
 
 本轮 `fresh_run` 读取 GC、HERMES、Wild-Track、CITR、VRU 原始标注，合计解析 24,745 条轨迹、3,807,482 个有效 agent-frame/measurement 点。只做身份、时序、精确窗口与来源审计，没有新转换缓存、训练、正式 split 或 test 指标。每个来源都记录原文件内容摘要；不插值、不复用旧 loader 的人工尺度。轨迹和重叠窗口不能当独立场景。
