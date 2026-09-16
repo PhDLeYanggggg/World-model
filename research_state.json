@@ -1,5 +1,37 @@
 {
   "cvpr2027_research_track": {
+    "joint_intervention_prototype": {
+      "result_source": "fresh_run_engineering_checks; cached_verified_raw_position_cache",
+      "updated_at": "2026-09-16",
+      "module": "src/world_model/m3w_joint_intervention.py",
+      "report": "outputs/publication_readiness_2026_09/joint_intervention/method_and_checks.md",
+      "checks": "outputs/publication_readiness_2026_09/joint_intervention/mechanism_checks.json",
+      "causal_checks": "outputs/publication_readiness_2026_09/joint_intervention/causal_recording_checks.json",
+      "related_work": "outputs/publication_readiness_2026_09/joint_intervention/related_work_constraints.md",
+      "control_arms": [
+        "floor",
+        "uncontrolled",
+        "independent_budget_constrained",
+        "scene_uniform",
+        "joint"
+      ],
+      "synthetic_exhaustive_cases": 80,
+      "synthetic_maximum_objective_difference": 0.0,
+      "real_scene_coordinate_queries": 36,
+      "real_agent_coordinate_queries": 497,
+      "maximum_coordinate_error_dataset_local": 2.5221876143177724e-06,
+      "focused_tests_passed": 48,
+      "focused_tests_seconds": 2.37,
+      "runtime_input_identity_rechecked": true,
+      "runtime_input_sha256": "32425db4160f0b141f6a13927a8badd63dc16a40233628fbfa9d5e9c5356d849",
+      "new_forecaster_trained": false,
+      "new_real_predictive_lift": "not_run_protocol_pending",
+      "joint_mechanism_novelty_proven": false,
+      "realized_risk_certified": false,
+      "physical_safety_certified": false,
+      "independent_calibration_support_established": false,
+      "new_deployment_promotion": false
+    },
     "causal_recording_rebuild": {
       "result_source": "fresh_run",
       "report": "outputs/publication_readiness_2026_09/causal_recording_rebuild.json",
@@ -93,6 +125,9 @@
     "stage44_checkpoint_hashes_match": "7/7",
     "full_no_leakage_reaudit": "not_run",
     "publication_blockers": [
+      "Primary temporal protocol, split/calibration roles and risk budget need user approval",
+      "Six current physical-scene groups limit independent risk calibration; overlapping windows do not increase independent support",
+      "Joint energy and geometric postprocessing are established prior art; baseline-relative intervention hypothesis needs matched experiments",
       "Historical Stage37/44 architecture selection used test metrics; Stage44 future path repaired but confirmation remains missing",
       "Byte-identical recordings cross legacy split boundaries",
       "Repartitioned evaluation rows reuse old teacher training exposure",
@@ -485,7 +520,7 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "cvpr2027_causal_recording_rebuild_protocol_pending",
+  "current_stage": "cvpr2027_joint_intervention_prototype_protocol_pending",
   "current_verdict": "historical_external_evidence_under_revalidation",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",

@@ -24,6 +24,18 @@ Apple Silicon 上使用仓库的 `.venv-pytorch/bin/python`，不要使用默认
 
 这里的 8 观测/12 预测是可用性检查视图，尚未成为经批准的主实验协议。raw-frame t25 没有精确窗口，不能用邻近帧补成“t25”。所有视图可能重叠，不是独立统计样本。
 
+## 联合介入工程验证
+
+```bash
+.venv-pytorch/bin/python scripts/check_m3w_joint_intervention.py
+.venv-pytorch/bin/python scripts/audit_m3w_causal_recordings.py --report-dir outputs/publication_readiness_2026_09/joint_intervention
+.venv-pytorch/bin/python -m pytest tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py tests/test_stage42_source_level_ucy_full_waypoint_integration.py -q
+```
+
+第一条检查小规模合成决策与穷举的一致性，以及真实轨迹的共同坐标还原，不读取 future labels 或计算预测准确性。第二条审计包括新的坐标转换元数据，确认它也不受未来位置变化影响。第三条是隔离后的针对性回归测试，本轮 48 passed；不等于全套旧测试通过。
+
+`select_interventions` 接受外部提供的 predicted gain/harm 和 explicit budgets；不会自行选择正式风险预算。求解失败/未最优时返回 baseline。风险筛选接口不验证 IID 或策略是否预先冻结，不能把接口接受误称为获得物理安全证书。详见 [方法与验证边界](joint_intervention/method_and_checks.md)。正式训练仍待主协议和独立校准用途确认。
+
 ## 真实训练与恢复探针
 
 ```bash

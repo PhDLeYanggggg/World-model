@@ -24,7 +24,9 @@ Conformal Risk Control and Learn then Test provide established tools for control
 
 ## 3. Method
 
-Use the observed agent histories, legal past-only context and candidate rollouts to estimate gain and harm. Train these heads using cross-fitted predictions within training recordings. Freeze both the floor and candidate predictor before training/calibrating the deployment gate. The gate minimizes estimated excess loss over agents plus an interaction penalty on the mixed forecast, subject to supported risk budgets. A full mathematical specification, optimization algorithm, complexity analysis and assumptions are required before implementation is treated as a final method.
+Use the observed agent histories, legal past-only context and candidate rollouts to estimate gain and harm. Train these heads using cross-fitted predictions within training recordings. Freeze both the floor and candidate predictor before training/calibrating the deployment gate. The gate minimizes estimated excess loss over agents plus an interaction penalty on the mixed forecast, subject to supported risk budgets.
+
+A binary engineering prototype now solves this decision with MILP, using past-only coordinate restoration, baseline-relative pair costs and explicit predicted-harm/intervention budgets. It has only synthetic optimization and real-coordinate integrity checks, not learned predictive results. The [implementation specification](joint_intervention/method_and_checks.md) separates this mechanism from the statistical assumptions. JFP already studies unary/pairwise forecast compatibility and heuristic overlap penalties; this is not a novelty claim for joint optimization. Its proposed value still depends on gain/harm supervision, matched comparisons and independent evaluation. See the [focused related-work audit](joint_intervention/related_work_constraints.md).
 
 ## 4. Experiments To Complete
 

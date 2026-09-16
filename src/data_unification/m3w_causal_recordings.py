@@ -148,6 +148,41 @@ def causal_baselines(history_xy: np.ndarray, history_frames: np.ndarray, offsets
     return np.asarray(predictions)
 
 
+def causal_coordinate_transform(history_xy: np.ndarray, frames: np.ndarray, horizon_raw: int) -> dict:
+    """A reversible per-agent frame computed exclusively from observed positions."""
+    xy, time = np.asarray(history_xy), np.asarray(frames)
+    if xy.shape != (len(time), 2) or len(time) < 3 or not np.isfinite(xy).all():
+        raise ValueError("At least three finite past positions required")
+    if not np.isfinite(time).all() or np.any(np.diff(time) <= 0) or horizon_raw <= 0:
+        raise ValueError("Increasing past frame IDs and a positive raw horizon required")
+    v = (xy[-1]-xy[-2]) / (time[-1]-time[-2])
+    heading = np.arctan2(v[1], v[0]) if np.linalg.norm(v) > 1e-8 else 0.
+    c, s = np.cos(heading), np.sin(heading)
+    path = np.linalg.norm(np.diff(xy, axis=0), axis=1).sum()
+    return {"origin_xy": xy[-1].copy(), "rotation": np.array([[c, -s], [s, c]]),
+            "scale": max(float(path), float(np.linalg.norm(v)*horizon_raw), 1e-3)}
+
+
+def restore_scene_rollouts(scene_inputs: Mapping, normalized_by_agent: Mapping[int, np.ndarray]) -> dict:
+    """Restore predictions to a shared frame; never align agents using future labels."""
+    agents = scene_inputs["agents"]
+    if not agents or set(normalized_by_agent) != {agent["agent_id"] for agent in agents}:
+        raise ValueError("Exactly one prediction for every observed scene agent required")
+    times = agents[0]["inputs"]["prediction_frame_offsets"]
+    restored = []
+    for agent in agents:
+        if not np.array_equal(times, agent["inputs"]["prediction_frame_offsets"]):
+            raise ValueError("Different forecast grids cannot be silently interpolated")
+        local = np.asarray(normalized_by_agent[agent["agent_id"]])
+        if local.shape != (len(times), 2) or not np.isfinite(local).all():
+            raise ValueError("Finite aligned [future-step, xy] predictions required")
+        transform = agent["coordinate_transform"]
+        restored.append(local * transform["scale"] @ transform["rotation"].T + transform["origin_xy"])
+    return {"agent_ids": np.asarray([a["agent_id"] for a in agents]),
+            "frame_offsets": times.copy(), "xy_dataset_local": np.asarray(restored),
+            "coordinate_claim": "dataset_local_unverified"}
+
+
 class RecordingWindows:
     """Inputs and labels have separate APIs; neither contains inherited selector outputs."""
 
@@ -184,12 +219,11 @@ class RecordingWindows:
         dt = np.diff(history[:, 0])
         velocity = np.diff(xy, axis=0) / dt[:, None]
         v = velocity[-1]
-        heading = np.arctan2(v[1], v[0]) if np.linalg.norm(v) > 1e-8 else 0.0
-        c, s = np.cos(heading), np.sin(heading)
-        rotate = np.array([[c, -s], [s, c]])
+        transform = causal_coordinate_transform(xy, history[:, 0], int(row["horizon_raw"]))
+        rotate = transform["rotation"]
         path_length = np.linalg.norm(np.diff(xy, axis=0), axis=1).sum()
         horizon = int(row["horizon_raw"])
-        scale = max(float(path_length), float(np.linalg.norm(v) * horizon), 1e-3)
+        scale = transform["scale"]
         center = np.array([px, py])
         offsets = np.arange(1, int(row["future_steps"]) + 1, dtype=np.float64) * dt[-1]
         rollouts = causal_baselines(xy, history[:, 0], offsets)
@@ -261,7 +295,9 @@ class RecordingWindows:
                 continue
             inputs = self._inputs_for_row({"history_start": begin, "current_row": current,
                                            "horizon_raw": horizon_raw, "future_steps": horizon_raw // step})
-            agents.append({"agent_id": agent_id, "inputs": inputs})
+            history = self.points[begin:current + 1]
+            transform = causal_coordinate_transform(history[:, 2:4], history[:, 0], horizon_raw)
+            agents.append({"agent_id": agent_id, "inputs": inputs, "coordinate_transform": transform})
         return {"recording_id": self.metadata["id"], "physical_scene": self.metadata["physical_scene"],
                 "frame_id": int(frame_id), "horizon_raw": int(horizon_raw), "agents": agents,
                 "excluded_past_support": excluded, "data_role": "diagnostic_only"}

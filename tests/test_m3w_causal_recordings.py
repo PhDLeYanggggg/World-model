@@ -8,6 +8,7 @@ from src.data_unification.m3w_causal_recordings import (
     BASELINES, FEATURE_NAMES, PROTOCOL_RAW, PROTOCOL_STEPS, RecordingWindows,
     build_window_index, causal_baselines, clean_points, validate_catalog,
     validate_split_groups, write_recording,
+    restore_scene_rollouts,
 )
 from src.evaluation.m3w_recording_lineage import sha256
 
@@ -163,6 +164,44 @@ def test_scene_membership_and_features_ignore_hidden_future(tmp_path):
     for a, b in zip(before["agents"], after["agents"]):
         for name in a["inputs"]:
             np.testing.assert_array_equal(a["inputs"][name], b["inputs"][name])
+        for name in a["coordinate_transform"]:
+            np.testing.assert_array_equal(a["coordinate_transform"][name], b["coordinate_transform"][name])
     assert all(not row["future_label_mask"].any() for row in ds.get_scene_labels(after))
     early = ds.get_scene_inputs(frame_id=40, horizon_raw=50)
     assert not early["agents"] and len(early["excluded_past_support"]) == 3
+
+
+def test_scene_rollouts_return_to_common_frame_without_future_labels(tmp_path):
+    ds = store(tmp_path)
+    scene = ds.get_scene_inputs(70, 50)
+    # Permuted mappings are aligned by explicit agent identity, not insertion order.
+    predictions = {a["agent_id"]: a["inputs"]["baseline_rollouts"][1] for a in reversed(scene["agents"])}
+    result = restore_scene_rollouts(scene, predictions)
+    expected = np.array([[[f*.01+agent, agent*.2] for f in (80, 90, 100, 110, 120)] for agent in (1, 2, 3)])
+    np.testing.assert_allclose(result["xy_dataset_local"], expected, atol=1e-6)
+    predictions.pop(2)
+    with pytest.raises(ValueError, match="every observed"):
+        restore_scene_rollouts(scene, predictions)
+
+
+def test_different_agent_forecast_grids_fail_closed(tmp_path):
+    ds = store(tmp_path)
+    scene = ds.get_scene_inputs(70, 50)
+    predictions = {a["agent_id"]: a["inputs"]["baseline_rollouts"][1] for a in scene["agents"]}
+    scene["agents"][1]["inputs"]["prediction_frame_offsets"][0] += 1
+    with pytest.raises(ValueError, match="Different forecast grids"):
+        restore_scene_rollouts(scene, predictions)
+
+
+def test_inverse_transform_supports_different_agent_headings_and_scales(tmp_path):
+    p = points()
+    transforms = [np.eye(2), np.array([[0., -2.], [2., 0.]]), np.array([[-.6, .8], [-.8, -.6]])]
+    for agent, transform in zip((1, 2, 3), transforms):
+        mask = p[:, 1] == agent
+        p[mask, 2:] = p[mask, 2:] @ transform + agent*17
+    write_recording(tmp_path, p, {"id": "fixture", "physical_scene": "fixture_scene"})
+    ds = RecordingWindows(tmp_path)
+    scene = ds.get_scene_inputs(70, 50)
+    predicted = restore_scene_rollouts(scene, {a["agent_id"]: a["inputs"]["baseline_rollouts"][1] for a in scene["agents"]})
+    expected = np.array([p[(p[:, 1] == agent) & (p[:, 0] > 70) & (p[:, 0] <= 120), 2:] for agent in (1, 2, 3)])
+    np.testing.assert_allclose(predicted["xy_dataset_local"], expected, atol=1e-6)

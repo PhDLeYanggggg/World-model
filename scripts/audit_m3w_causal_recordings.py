@@ -64,6 +64,9 @@ def audit_recording(directory: Path, source_path: Path, sample_count: int = 16) 
             same &= all(np.array_equal(a["inputs"][key], b["inputs"][key])
                         for a, b in zip(scene_before["agents"], scene_after["agents"])
                         for key in a["inputs"])
+            same &= all(np.array_equal(a["coordinate_transform"][key], b["coordinate_transform"][key])
+                        for a, b in zip(scene_before["agents"], scene_after["agents"])
+                        for key in a["coordinate_transform"])
             checks["sampled_scene_inputs_and_membership_future_invariant"] &= same
         ds.points = original
     checks = {k: bool(v) for k, v in checks.items()}

@@ -1,5 +1,17 @@
 # M3W Results Ledger
 
+## Joint Intervention Prototype and Evidence Limits (2026-09-16)
+
+本轮实现 baseline-relative 场景联合介入模块：保持预测器不变，对比 baseline floor、无控制介入、独立 agent 选择、整场景统一选择、联合选择。输入只含预测 gain/harm、因果 support/graph 和候选轨迹；监督标签单独生成，不进入决策接口。加入预测 harm 的一致性约束，并在求解未达到最优时回退。距离比较前，先把 agent-centric 轨迹还原到共同的 dataset-local 坐标。
+
+`fresh_run`：80 个七-agent 合成问题与穷举结果完全一致；36 个真实场景查询、497 个 agent 的七类因果 baseline 坐标还原最大误差 2.53e-6。更新后的因果检查覆盖 142,402 个索引视图、144 个窗口和 36 个场景未来破坏检查，全部通过；针对性测试 **48 passed**。上轮 runtime 的 1,024 个输入窗口重新计算哈希后相同，复用既有 CPU/MPS 运行证据，没有新增预测训练或 real-world lift。
+
+同介入数量的合成例子显示联合决策能减少构造的组合冲突，但也牺牲了部分预测单点收益；不能据此宣称 ADE/FDE 更好。另实现固定策略族的 Hoeffding/union 风险筛选接口，明确独立性与策略冻结仍需外部证据。当前只有 6 个物理场景组，重叠窗口不能充当独立校准场景。该保守界的示例不是实际校准结论，也不是 easy degradation <=2% 的保证。
+
+文献复核确认联合能量与轨迹兼容性不是新的概念；实现不能替代创新或实验贡献。正式时域、split/calibration 分工和风险预算尚未批准，因而未训练新 teacher、未评估新 test、未升级部署模型。历史全套测试仍是 1,870 pass / 1 个无关数据湖 fixture failure，本轮没有把它改写成全绿。
+
+详见 [实现与验证](outputs/publication_readiness_2026_09/joint_intervention/method_and_checks.md)、[相关工作边界](outputs/publication_readiness_2026_09/joint_intervention/related_work_constraints.md)。Stage5C/SMC 均关闭，仍非投稿就绪。
+
 ## Causal Data Rebuild and Runtime Verification (2026-09-16)
 
 本轮 `fresh_run` 从 raw positions 重建 9 个 canonical recordings，按 6 个 physical-scene groups 管理。共 76,619 个点、142,402 个重叠索引视图；精确 raw t10/t25/t50/t100 分别为 48,286 / 0 / 38,733 / 28,330，另有 27,053 个 8-observation/12-step 视图。后者尚未定为主实验协议；不能把这些视图当作独立统计样本。全量索引检查、144 个窗口及 36 个场景的未来位置破坏反事实检查通过；场景输入不按未来是否完整筛选 agent。未使用旧 teacher，也未建立新的正式 train/val/calibration/test 划分。
