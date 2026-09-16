@@ -4,14 +4,15 @@
 
 Latest interruption: v5 EqMotion seed17 full/hold0/hold1 each completed 10,000.
 hold2 failed at MPS step89 with float32 nonfinite output; outer pair runner exited.
-The root runner heartbeat is therefore stale, not proof of an active process.
-An explicit direct CPU resume of seed17_hold2 is now running with unchanged
-budget/settings; inspect that child's heartbeat and actual process before any
-restart. Its isolated CPU replay passed the first100 updates. See
+The outer runner initially stopped. The explicit direct CPU resume of
+seed17_hold2 subsequently completed all 10,000 updates in 2,093.36 seconds.
+The original pair runner has now resumed, reusing all four completed predictors
+and continuing OOF extraction. Its refreshed root heartbeat identifies the
+current child. See
 `8to12_public_predictors_v5/nonfinite_fit_diagnosis.md`. The MPS pre-failure
 weights/batch are preserved locally. This is not the old OpenMP hang or a claim
-of a root-cause fix. Do not skip the fold. Once the full CPU fit finishes, resume
-the original pair runner; completed fits are hash-verified, not retrained.
+of a root-cause fix. Do not skip folds; completed fits are hash-verified, not
+retrained. Check actual current heartbeat/child before any additional restart.
 
 Current source snapshot: `5e0f7be9`. Active command:
 `scripts/run_m3w_continuous_predictor_pair.py` in arm64 `.venv-pytorch`.

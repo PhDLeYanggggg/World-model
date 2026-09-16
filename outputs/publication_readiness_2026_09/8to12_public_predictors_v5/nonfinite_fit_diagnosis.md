@@ -38,13 +38,15 @@ found this input-range mismatch. The exact role of input scaling versus the
 optimization trajectory still needs a controlled repair experiment; no gradient
 or performance attribution is claimed solely from these magnitudes.
 
-An explicit CPU float32 continuation of hold2 is now running at the unchanged
-10,000-update budget, with the same data, seed, architecture, loss and sampler.
-This is a runtime mitigation, not a claimed root-cause repair. Its checkpoints
-retain runtime history. If it fails again, preserve the failed version and test
-a separately versioned past-only input-conditioning change, without changing
-the evaluation error scale or silently dropping the failing fold. Do not skip
-this OOF producer or lower its budget to make the comparison complete.
+The explicit CPU float32 continuation of hold2 completed all 10,000 updates in
+2,093.36 seconds, with the same data, seed, architecture, loss and sampler.
+This is a successful runtime mitigation for this fit, not a claimed root-cause
+repair. The checkpoint retains both MPS/CPU runtime entries. The original
+three-seed pipeline has resumed, verifying completed fits before OOF extraction.
+If a later fit fails again, preserve it and test a separately versioned past-only
+input-conditioning change if CPU mitigation is insufficient, without changing
+the evaluation error scale or silently dropping a fold. Do not skip an OOF
+producer or lower its budget to make the comparison complete.
 
 No accuracy result, independent confirmation, metric/seconds claim, Stage5C,
 SMC or deployment upgrade follows from these checks.

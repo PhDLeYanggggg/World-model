@@ -5,7 +5,8 @@
 v5 seed17 的 full/hold0/hold1 均完成 10,000 updates；hold2 在 MPS 第 89 步出现
 nonfinite loss，完整 paired study 尚未完成。隔离复现确认输入/标签有限，head 内部
 溢出；相同坏点权重在 CPU float32 也有 NaN，float64 虽有限但输出约 3.90e24。
-CPU 从同一初始状态前 100 步未失败，当前显式 CPU 恢复完整 hold2 预算。
+CPU 从同一初始状态已完成 hold2 全部 10,000 步，累计 2,093.36 秒；原三种子流程
+已恢复，已完成 fits 只核验复用，继续 OOF 预测和 cost-head 训练。
 这是 runtime mitigation，不是已修复数值根因或精度提升，不丢弃失败 fold。
 见 [失败复现](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/nonfinite_fit_diagnosis.md)。
 
