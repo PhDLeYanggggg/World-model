@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## Pinned Public Predictor and Recovery Repair (2026-09-16)
+
+本轮接入 EqMotion 作者版本 `5aec2e0` 的模型核心，8 个代码/文档文件共 67,758 bytes，按作者 Git blob 和本地 SHA256 校验；第三方代码留在忽略目录，不下载数据或预训练权重。原始 entry 按 test FDE 留最佳 checkpoint，20 候选最小误差也不等于 K=1，因此没有执行它的训练/预处理流程。新适配使用过去支持选择邻居、固定单头、共享 fit-only/OOF 训练链，明确是 **EqMotion-core K=1 adaptation，不是论文结果复现**。AgentFormer 的官方 normalization 修正已核对，但未运行其模型。
+
+`fresh_run`：17 项适配测试，合并回归 **136 passed in 24.30 s**。直接作者代码与适配核心同权重输出逐值相同；CPU 与 MPS 合成训练支持跨进程 3+5 对照连续 8 updates。MPS 严格检查发现旧恢复循环错误搬移 AdamW step counter，已改由 PyTorch 原生规则放置状态；复验 **1 passed in 11.66 s**。另加入 checkpoint 输出头与冻结训练身份的一致性检查。沙箱内 Metal 初始化错误与旧 x86/OpenMP 卡死不同，沙箱外实际运行成功，无隐式 CPU fallback。
+
+CPU/MPS 随机权重真实输入检查各 27 queries / 330 agents，未来标签调用 0；2,445 个可见邻居槽中 2,128 满足完整同步过去，317 个仅因过去支持不足未进入该模型。已有 Transformer 与五控制输入检查随 backend 修改刷新，未产生真实预测指标。正式训练/选模/校准/独立确认仍 `not_run`，无新增提升或部署。历史 full-suite 1,870 pass / 1 fail 未重跑或写成全绿。下一步需要批准科学协议后完成 matched real fitting、三 seed 和 scene-level 统计，不能把这个工程对接当强基线比较完成。详见 [来源、适配和限制](outputs/publication_readiness_2026_09/public_baselines/compatibility_and_limits.md)。Stage5C/SMC 均关闭。
+
 ## Development-Only Selection and Matched Controls (2026-09-16)
 
 本轮补上新训练链路后的开发集比较：冻结预测器/OOF cost head 后，对同一批预测运行 floor、uncontrolled、预算约束的 unary-only、scene-uniform、joint 五种控制。所有过去支持足够的 agent 先参与决策，随后才读取标签；缺失未来不成为 inference 过滤条件，缺失 endpoint 不冒充 FDE。不同原生采样网格分开比较，不插值。相同预算上限不等于相同实际介入率，报告保留实际率与 predicted-risk 的局限。

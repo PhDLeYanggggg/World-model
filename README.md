@@ -36,6 +36,8 @@ I am also checking what the other local datasets can genuinely add. The [externa
 
 The rebuilt reader now connects to a [resumable forecasting and cost-learning backend](outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md). It learns baseline-relative benefit and harm from predictions made outside each producer's training fold. A [development evaluator](outputs/publication_readiness_2026_09/development_evaluation/implementation_and_limits.md) compares five intervention controls using the same predictions, retains agents with missing future labels in the decisions, and reports uncertainty by physical scene. I have checked this connection on synthetic examples and the input boundary on real trajectories. Those checks establish an implementation, not predictive improvement: clean real-data fitting, development selection and independent confirmation are still pending.
 
+To avoid comparing only against my own networks, I have also connected a [version-pinned EqMotion core](outputs/publication_readiness_2026_09/public_baselines/compatibility_and_limits.md) to the causal reader and training path. The current adapter emits one fixed head and is explicitly a K=1 adaptation, not a reproduction of the paper's best-of-20 result. Source integrity, CPU/MPS training recovery and past-only input behavior are checked; its real forecasting comparison is still pending. The published model's preprocessing, sampling budget and checkpoint selection need the same scrutiny as my own code.
+
 ## What The System Looks At
 
 The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:
@@ -86,7 +88,7 @@ On Apple Silicon, training should use the arm64 PyTorch environment:
 Focused checks for the new data and evaluation path:
 
 ```bash
-.venv-pytorch/bin/python -m pytest tests/test_m3w_development_evaluation.py tests/test_m3w_supervised_intervention.py tests/test_m3w_external_source_audit.py tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_eqmotion_adapter.py tests/test_m3w_development_evaluation.py tests/test_m3w_supervised_intervention.py tests/test_m3w_external_source_audit.py tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py
 ```
 
 The legacy full suite (`python -m pytest tests`) includes integration training and can rewrite reports in the working directory. It is not yet an isolated, read-only smoke test; preserve existing experiment outputs before running it. The [local/CREATE runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md) records the verified environment and recovery checks.

@@ -308,7 +308,11 @@ def load_verified_forecaster(contract, artifact_id, *, device):
         raise ValueError('Checkpoint fit provenance differs from artifact declaration')
     if state['identity']['source_code_sha256'] != file_digest(Path(__file__)):
         raise ValueError('Checkpoint training code identity changed')
-    model = PastContextForecaster(**state['architecture']).to(device)
+    if state['architecture'] != state['identity']['architecture']:
+        raise ValueError('Checkpoint architecture differs from its frozen training identity')
+    model = build_forecaster(state['architecture']).to(device)
+    if state['identity'].get('model_dependencies') != model_dependencies(model):
+        raise ValueError('Checkpoint model dependency identity changed')
     model.load_state_dict(state['model'])
     model._verified_artifact_sha256 = record['sha256']
     model._verified_parameter_digest = parameter_digest(model)
@@ -325,11 +329,26 @@ def forecast_mse(prediction, target, valid):
     return error
 
 
+def build_forecaster(architecture):
+    options = dict(architecture)
+    family = options.pop('family', 'past_context_transformer')
+    if family == 'past_context_transformer':
+        return PastContextForecaster(**options)
+    if family == 'eqmotion_fixed_head':
+        from src.world_model.m3w_eqmotion_adapter import EqMotionFixedHead
+        return EqMotionFixedHead(**options)
+    raise ValueError('Unrecognized forecaster family')
+
+
+def model_dependencies(model):
+    return getattr(model, 'source_identity', {})
+
+
 def train_forecaster(dataset, *, architecture, settings, output_dir, device='cpu', resume=False, stop_after=None):
     """Fixed-budget fitting only. Development selection is a separate caller step.
 
     Checkpoints include optimizer, sampler position, CPU RNG and complete identity.
-    No dropout or stochastic accelerator operation is used by this architecture.
+    No dropout or stochastic accelerator operation is used by the supported cores.
     """
     if dataset.purpose != 'fit':
         raise ValueError('Gradient updates may only read fit recordings')
@@ -358,7 +377,8 @@ def train_forecaster(dataset, *, architecture, settings, output_dir, device='cpu
     if resume and not checkpoint.exists():
         raise ValueError('Cannot resume a missing checkpoint')
     torch.manual_seed(settings['seed'])
-    model = PastContextForecaster(**architecture).to(device)
+    model = build_forecaster(architecture).to(device)
+    identity['model_dependencies'] = model_dependencies(model)
     optimizer = torch.optim.AdamW(model.parameters(), lr=settings['learning_rate'])
     generator = torch.Generator().manual_seed(settings['seed'])
     step, cursor, elapsed, losses = 0, 0, 0., []
@@ -369,11 +389,9 @@ def train_forecaster(dataset, *, architecture, settings, output_dir, device='cpu
         if state['identity'] != identity:
             raise ValueError('Resume protocol/data/model/config/code identity changed')
         model.load_state_dict(state['model'])
+        # AdamW restores moments to the parameter device while keeping its
+        # non-capturable step counter on CPU. Do not override that policy.
         optimizer.load_state_dict(state['optimizer'])
-        for values in optimizer.state.values():
-            for key, value in values.items():
-                if torch.is_tensor(value):
-                    values[key] = value.to(device)
         torch.set_rng_state(state['torch_rng'])
         generator.set_state(state['sampler_rng'])
         step, cursor, order, losses, elapsed = state['step'], state['cursor'], state['order'], state['losses'], state['elapsed_seconds']

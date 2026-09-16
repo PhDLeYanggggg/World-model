@@ -92,6 +92,25 @@ OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manif
 
 选模结果写入 `selected_policy.json` 并记录 development 暴露与父产物；没有合格候选就保留 floor，且 `deployment_approved=false`。这里的 matched 指同预测和同预算上限，不是自动相同介入率或已校准风险。汇总选择目前只支持明确批准的 past-normalized error，dataset-local 原始 ADE/FDE 按 recording 单列；不同未验证坐标不能直接池化。独立风险校准和最终确认还未执行。详见 [实现与限制](development_evaluation/implementation_and_limits.md)。
 
+## EqMotion 官方核心适配检查
+
+```bash
+.venv-pytorch/bin/python scripts/fetch_m3w_eqmotion_source.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_eqmotion_adapter.py -q
+.venv-pytorch/bin/python scripts/check_m3w_eqmotion_inputs.py --device cpu
+.venv-pytorch/bin/python scripts/check_m3w_eqmotion_inputs.py --device mps
+M3W_EQMOTION_TEST_DEVICE=mps .venv-pytorch/bin/python -m pytest tests/test_m3w_eqmotion_adapter.py::test_cross_process_checkpoint_resume -q
+.venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --config configs/m3w_eqmotion_fixed_head.json --preflight-only
+```
+
+下载器只获取固定作者 commit 的 8 个代码/文档文件并逐字节核对 Git blob；不下载数据和预训练权重，不执行作者 trainer/preprocessor。保留 MIT 文件；第三方内容在 `data/stage_cvpr2027_causal/third_party/`，不进入 Git。源码缺失时 pytest 明确 skip 可选集成项，不应称为验证成功；先执行下载器再检查。正式训练前仍须批准科学协议，最后一条当前应返回 exit 2。
+
+这里是固定单头 K=1 适配，不是论文的 minADE20/minFDE20。8/12 只用于适配工程与提案，不替用户确认正式时域。不同固定网格需不同模型，不自动插值。邻居只按过去完整度/时间对齐纳入；请报告这一支持差异，正式比较增加相同邻居支持的控制组。未来标签不参与输入或选择哪一个头。
+
+MPS 检查需主机 Metal 访问权限。若沙箱返回 macOS 版本不支持，先核对真实系统和权限，不改用 x86 Conda；本次 macOS 15.3.1 沙箱外成功。MPS 合成跨进程恢复 3+5 对连续 8 updates 的参数、loss、optimizer 完全一致。恢复修复：AdamW 的非 capturable step 保持 CPU，其余状态由 `load_state_dict` 按参数设备处理；不再手工把所有 state 搬到 MPS。代码 hash 变化后，旧 checkpoint 按旧版本保留，不能改元数据绕过恢复身份检查。
+
+两种设备真实输入 probe 各检查 27 queries / 330 agents，使用随机权重，未来标签调用 0，不是预测准确性或长训练稳定性结果。报告位于 [public_baselines](public_baselines/compatibility_and_limits.md)。技术配置的 10,000 steps 尚未运行；不能把测试的 8-step 合成训练写成完整公开基线训练。
+
 ## 联合介入工程验证
 
 ```bash

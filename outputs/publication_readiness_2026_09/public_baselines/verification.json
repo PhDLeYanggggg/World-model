@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-16",
+  "result_source": "fresh_run",
+  "scope": "official_core_adapter_engineering_not_real_forecasting_or_paper_reproduction",
+  "platform": "macOS-15.3.1-arm64-arm-64bit",
+  "architecture": "arm64",
+  "code_sha256": {
+    "src/world_model/m3w_eqmotion_adapter.py": "ed6533340678ed734792ad7e3bc3b9875d19722072aba0740d0448039d16a47e",
+    "src/world_model/m3w_supervised_intervention.py": "79a6bd28a666dffda7179ab9a14617dc8e4fed2adb720bcccd4e4439d76eb306",
+    "scripts/fetch_m3w_eqmotion_source.py": "eab7cdfcd223ce5270eaa7db20147f79c02f66f4be7cf8fdcad6d932a26f84c1",
+    "scripts/check_m3w_eqmotion_inputs.py": "701c944f806989f55846d4db3a29cf84648ef410cf9540b04e8890caddbea8fb",
+    "tests/test_m3w_eqmotion_adapter.py": "17489bdad16f430159a50e3fcfb65f17d193b21b8e38877c7561683abe1c52c6",
+    "configs/m3w_eqmotion_source.json": "3fba102cb4cfddb7a05f2137376119da0d93578f6b7ccc7f7d08178f11c67814",
+    "configs/m3w_eqmotion_fixed_head.json": "9ee4bc649ed010dac1956ecb1bca1b8a4a32191e1bf2b90fbf57d6b026e26c86"
+  },
+  "source_snapshot": {
+    "repository": "https://github.com/MediaBrain-SJTU/EqMotion",
+    "commit": "5aec2e0b61c511fa93a24138dd90da59a089084b",
+    "files_verified": 8,
+    "bytes": 67758,
+    "license": "MIT",
+    "datasets_downloaded": false,
+    "pretrained_weights_downloaded": false,
+    "upstream_trainer_executed": false
+  },
+  "targeted_tests": {
+    "command": ".venv-pytorch/bin/python -m pytest tests/test_m3w_eqmotion_adapter.py tests/test_m3w_development_evaluation.py tests/test_m3w_supervised_intervention.py tests/test_m3w_external_source_audit.py tests/test_m3w_experiment_contract.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py -q",
+    "passed": 136,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 24.3,
+    "new_adapter_tests": 17
+  },
+  "mps_synthetic_resume": {
+    "command": "M3W_EQMOTION_TEST_DEVICE=mps .venv-pytorch/bin/python -m pytest tests/test_m3w_eqmotion_adapter.py::test_cross_process_checkpoint_resume -q",
+    "host_execution_outside_sandbox": true,
+    "passed": 1,
+    "seconds": 11.66,
+    "continuous_updates": 8,
+    "resumed_updates": [
+      3,
+      5
+    ],
+    "parameter_loss_optimizer_exact": true,
+    "implicit_cpu_fallback": false,
+    "real_labels_used": false,
+    "initial_failures": [
+      "Sandbox Metal initialization refused despite macOS 15.3.1",
+      "Strict optimizer-device check caught manual step-counter relocation on resume"
+    ],
+    "repair": "Removed manual optimizer-state device loop; native AdamW restoration preserves CPU non-capturable step."
+  },
+  "inference_integrity": {
+    "cpu_report": "eqmotion_real_input_checks_cpu.json",
+    "mps_report": "eqmotion_real_input_checks_mps.json",
+    "queries_per_device": 27,
+    "agents_per_device": 330,
+    "available_neighbor_slots": 2445,
+    "eligible_past_complete_aligned_neighbor_slots": 2128,
+    "future_label_calls": 0,
+    "random_weights": true,
+    "accuracy_computed": false
+  },
+  "true_protocol_preflight": {
+    "command": ".venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --config configs/m3w_eqmotion_fixed_head.json --preflight-only",
+    "exit_code": 2,
+    "reason": "Explicit protocol approval required",
+    "torch_training_started": false
+  },
+  "real_forecasting_fit": "not_run_scientific_protocol_unapproved",
+  "real_development_comparison": "not_run_scientific_protocol_unapproved",
+  "independent_calibration": "not_run",
+  "independent_confirmation": "not_run",
+  "full_legacy_suite": {
+    "result_source": "historical_not_rerun",
+    "passed": 1870,
+    "failed": 1,
+    "unresolved_failure": "data_lake_manual_handoff_fixture"
+  },
+  "deployment_promoted": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
