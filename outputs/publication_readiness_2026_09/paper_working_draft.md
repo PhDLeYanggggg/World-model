@@ -12,13 +12,17 @@ Strong causal predictors can be difficult to improve consistently. A neural pred
 
 Multi-agent prediction introduces another difficulty. Per-agent decisions can combine incompatible futures even if each predictor produces a coherent scene when used alone. We propose to treat the intervention vector itself as a structured prediction and to evaluate its excess error relative to a fixed baseline.
 
-The candidate contributions are (i) supervision based on realized neural-versus-baseline excess loss, (ii) joint intervention selection under candidate-trajectory consistency constraints, and (iii) a scene-level calibration and evaluation protocol that respects dependence among overlapping trajectory windows. These are hypotheses for the experiments, not established novelty claims.
+The study tests whether baseline-relative loss supervision and joint intervention improve mixed forecasts beyond cost-aware routing alone, and whether that effect survives dependence-aware evaluation. Regression deferral and joint compatibility already have substantial prior work. The contribution cannot be established by renaming those components; it requires matched controls, a defensible methodological distinction and new independent results.
 
 ## 2. Related Work
 
 AgentFormer jointly models social and temporal structure with agent-aware attention (Yuan et al., ICCV 2021). EqMotion introduces equivariant motion prediction and invariant interaction reasoning (Xu et al., CVPR 2023). SingularTrajectory studies a unified representation across trajectory-prediction tasks (Bae et al., CVPR 2024). These works preclude claiming that temporal attention, relative geometry or a common motion representation are novel by themselves.
 
 Joint Metrics Matter studies joint forecasting errors and collisions (Weng et al., 2023). The present proposal must demonstrate a benefit beyond adding a joint metric or training penalty: it concerns which predictions from competing predictors can be selected together.
+
+Cost-sensitive expert deferral predates this proposal ([Mozannar and Sontag, ICML 2020](https://proceedings.mlr.press/v119/mozannar20b.html)). [Mao, Mohri and Zhong (ICML 2024)](https://proceedings.mlr.press/v235/mao24d.html) explicitly study regression deferral with a fixed predictor. Our cost heads therefore require comparison to established deferral objectives, not only confidence thresholds. Such a learned comparison is pending.
+
+Selective-regression work also shows that reduced coverage need not protect every subgroup ([Shah et al., ICML 2022](https://proceedings.mlr.press/v162/shah22a.html)). Our easy-error slice is a different construct, but the warning motivates reporting slice-specific damage rather than treating reduced intervention as a guarantee. The [source-scoped review](joint_intervention/deferral_and_coverage_prior_work.md) distinguishes these established results from our remaining hypotheses.
 
 Conformal Risk Control and Learn then Test provide established tools for controlling losses or selecting risk-constrained policies. SODA-MPC combines conformalized OOD monitoring with reachability fallback in control. We target excess forecasting loss relative to a fixed predictor; we do not claim formal physical safety from low ADE. Hierarchical and generalized hierarchical conformal methods also require direct comparison before making any statistical novelty claim.
 
@@ -35,6 +39,8 @@ The [development evaluation interface](development_evaluation/implementation_and
 A [frozen-policy calibration interface](risk_calibration/implementation_and_limits.md) now consumes those exports without refitting. It requires a prespecified family, order, risk functional and scene aggregation. Missing-label interventions receive the worst bounded loss instead of being excluded. For bounded [0,1] scene losses, its current reference screen adds sqrt(log(M*K/delta)/(2*n)) to the empirical mean for M policies and K risks, using n physical-scene clusters. An unchanged baseline has analytically zero excess risk; a learned policy that happens not to intervene on the observed sample still requires a sampling bound. These are conditional statistical statements, not evidence that the actual scenes are IID, a novel risk theorem, a 2% relative easy-error guarantee, or physical safety. Only synthetic integration has been executed; no real calibration result is available.
 
 A binary engineering prototype now solves this decision with MILP, using past-only coordinate restoration, baseline-relative pair costs and explicit predicted-harm/intervention budgets. It has only synthetic optimization and real-coordinate integrity checks, not learned predictive results. The [implementation specification](joint_intervention/method_and_checks.md) separates this mechanism from the statistical assumptions. JFP already studies unary/pairwise forecast compatibility and heuristic overlap penalties; this is not a novelty claim for joint optimization. Its proposed value still depends on gain/harm supervision, matched comparisons and independent evaluation. See the [focused related-work audit](joint_intervention/related_work_constraints.md).
+
+An additional [exact-count control](matched_coverage/method_and_limits.md) sets the joint intervention count to the independent policy's count on each observed query, before labels are read. It retains the same forecasts, support and predicted-harm cap. This isolates a change in selected identities from a change in coverage, conditional on the reference rule; it does not match realized risk. Forced-count outputs may be worse than the baseline and are diagnostic, not deployment policies. Solver failures remain unmatched in the ledger, and zero-count matches do not count as coupling evidence. This branch is opt-in and has not been registered as a new formal policy or evaluated for real predictive gain.
 
 ## 4. Experiments To Complete
 
@@ -68,3 +74,6 @@ The next experimental package must store canonical recording IDs, immutable spli
 - Learn then Test: https://arxiv.org/abs/2110.01052
 - SODA-MPC: https://proceedings.mlr.press/v283/contreras25a.html
 - Generalized HCP: https://arxiv.org/abs/2608.15500
+- Consistent Estimators for Learning to Defer to an Expert: https://proceedings.mlr.press/v119/mozannar20b.html
+- Regression with Multi-Expert Deferral: https://proceedings.mlr.press/v235/mao24d.html
+- Selective Regression under Fairness Criteria: https://proceedings.mlr.press/v162/shah22a.html

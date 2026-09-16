@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Exact-Coverage Mechanism Control (2026-09-16)
+
+本轮补齐一个影响因果解释的实验对照：相同 intervention cap 不等于相同实际切换数。现在先用 past-only independent policy 确定每个场景查询的 k，再让 joint 保持相同 k、相同候选预测/support 和 predicted-harm cap。强制数量可能产生比 floor 更差的预计目标，因此只作为 diagnostic control，不替换 deployment policy；求解失败明确 unmatched，0 对 0 不算 interaction 贡献。默认五控制与正式协议未增加新 arm。
+
+`fresh_run`：80 个七-agent 合成问题中，旧 cap-only 比较有 **53 次数量不同**；新控制 **80/80 非零精确匹配**，穷举目标误差 0。真实轨迹输入检查 **61 queries / 618 agents**，61 匹配、55 非零匹配、4 个查询无精确 raw50 过去支持；未来坐标破坏不改变输出，label API 调用 0。使用随机 Torch 权重和常数合成风险分数，**不是真实预测精度或 learned lift**。
+
+最终固定版本相关回归 **224 passed in 62.72 s**，20 项新增用例。第一轮 222 pass / 1 fail 是测试运行中求解器被修改，resume 正确拒绝 `Calibration implementation changed`；源码固定后重跑全套相关检查，未放宽 provenance。历史非隔离 full-suite 1,870 pass / 1 fail 没有改写。
+
+原始文献补充核对表明 cost-sensitive regression deferral 已有直接先例，不能把 expected-error routing 单独写成创新。论文改为检验 structured composition 是否在相同覆盖率下带来额外价值；公开 deferral loss 的学习对照仍待实现和真实评价。详见 [方法与验证](outputs/publication_readiness_2026_09/matched_coverage/method_and_limits.md)、[文献边界](outputs/publication_readiness_2026_09/joint_intervention/deferral_and_coverage_prior_work.md)。科学规则和独立场景仍待确认，real comparison `not_run`，Stage5C/SMC 关闭，未达到投稿就绪。
+
 ## CITR Causal Diagnostic Intake (2026-09-16)
 
 `fresh_run`：把本地已核对作者 Git blob 的 CITR raw CSV 接入因果 recording reader。38 clips、95,648 个原始位置点逐行对应源 CSV，318 条行人轨迹、26 条车辆轨迹使用不冲突的 clip 内 ID。精确 raw10/25/50/100 窗口为 **89,800 / 84,640 / 76,040 / 58,840**，obs8/pred12 为 **89,112**；所有计数含两类 agent，重叠窗口不是独立样本。转换约 2.415 秒，缓存约 20.86 MB，未提交原始数据或缓存。

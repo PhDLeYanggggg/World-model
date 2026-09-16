@@ -19,6 +19,7 @@ from src.world_model.m3w_supervised_intervention import (
 )
 from src.world_model.m3w_joint_intervention import (
     InterventionProblem, past_proximity_edges, proximity_cost_table, select_interventions,
+    compare_at_independent_coverage,
 )
 import torch
 
@@ -83,9 +84,12 @@ def _validate_policy(policy):
         raise ValueError('Explicit finite policy weights, support rule and budgets required')
 
 
-def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device, solver_seconds):
+def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device, solver_seconds,
+                 include_matched_coverage=False):
     """Pure inference boundary: no reader, label array or future-validity mask."""
     _validate_policy(policy)
+    if not isinstance(include_matched_coverage, bool):
+        raise ValueError('Matched-coverage diagnostic requires an explicit Boolean option')
     agents = scene['agents']
     inputs = collate_inputs([pack_inputs(a['inputs'], baseline) for a in agents])
     inputs = {k: v.to(device) for k, v in inputs.items()}
@@ -122,12 +126,19 @@ def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device,
         else:
             decision = select_interventions(problem, mode=mode, time_limit_seconds=solver_seconds)
         arms[mode] = {**decision, 'prediction': np.where(decision['switch'][:, None, None], c, b)}
-    return {'agent_ids': ids, 'baseline': b, 'candidate': c, 'arms': arms,
+    result = {'agent_ids': ids, 'baseline': b, 'candidate': c, 'arms': arms,
             'predicted_gain': scores['gain'], 'predicted_harm': scores['harm'],
             'supported': supported, 'common_coordinate_graph_edges': len(edges),
             'nonfinite_candidate_or_scores_floor_count': int((~available).sum()),
             'matching': 'same_predictor_and_budget_caps_not_equal_realized_coverage',
             'calibrated_risk': False}
+    if include_matched_coverage:
+        comparison = compare_at_independent_coverage(problem, time_limit_seconds=solver_seconds)
+        for name in ('reference', 'joint_exact'):
+            choice = comparison[name]
+            choice['prediction'] = np.where(choice['switch'][:, None, None], c, b)
+        result['coverage_match'] = comparison
+    return result
 
 
 def score_scene(scene, decisions, labels, *, label_policy):

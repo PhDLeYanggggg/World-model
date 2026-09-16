@@ -84,13 +84,18 @@ def proximity_cost_table(baseline: np.ndarray, candidate: np.ndarray, edges: np.
 
 
 def select_interventions(problem: InterventionProblem, *, mode: str,
-                         time_limit_seconds: float = 30.) -> dict:
-    """Binary control arms with fixed forecasts; caps do not imply matched realized coverage."""
+                         time_limit_seconds: float = 30., exact_interventions: int | None = None) -> dict:
+    """Exact counts are diagnostic controls, not positive-gain deployment policies."""
     problem.validate()
     if mode not in {"floor", "uncontrolled", "independent", "scene_uniform", "joint"}:
         raise ValueError("Unknown intervention control arm")
     if not np.isfinite(time_limit_seconds) or time_limit_seconds <= 0:
         raise ValueError("Positive solver time limit required")
+    if exact_interventions is not None and (mode not in {'independent', 'joint'}
+            or isinstance(exact_interventions, (bool, np.bool_))
+            or not isinstance(exact_interventions, (int, np.integer))
+            or not 0 <= exact_interventions <= problem.max_interventions):
+        raise ValueError('Exact intervention count requires an integer within the cap and an optimization arm')
     p, n = problem, len(problem.expected_gain)
     # E[max(-gain, 0)] >= max(-E[gain], 0); reconcile separately predicted heads.
     coherent_harm = np.maximum(p.expected_harm, -p.expected_gain)
@@ -107,6 +112,9 @@ def select_interventions(problem: InterventionProblem, *, mode: str,
     def feasible(bits):
         return (not np.any(bits & ~p.supported) and bits.sum() <= p.max_interventions and
                 np.mean(bits * coherent_harm) <= p.max_mean_predicted_harm + 1e-10)
+
+    def count_matches(bits):
+        return exact_interventions is None or bits.sum() == exact_interventions
 
     if mode == "uncontrolled":
         x, reason = p.supported.copy(), "uncontrolled_supported_candidates"
@@ -137,9 +145,12 @@ def select_interventions(problem: InterventionProblem, *, mode: str,
                     rows.append(row); cols.append(column); values.append(value)
                 upper.append(cap)
         matrix = csc_matrix((values, (rows, cols)), shape=(len(upper), n+m))
+        lower = np.full(len(upper), -np.inf)
+        if exact_interventions is not None:
+            lower[1] = upper[1] = float(exact_interventions)
         result = milp(c=objective, integrality=np.r_[np.ones(n), np.zeros(m)],
                       bounds=Bounds(np.zeros(n+m), np.r_[p.supported.astype(float), np.ones(m)]),
-                      constraints=LinearConstraint(matrix, np.full(len(upper), -np.inf), np.array(upper)),
+                      constraints=LinearConstraint(matrix, lower, np.array(upper)),
                       options={"time_limit": time_limit_seconds, "mip_rel_gap": 0.})
         if not result.success:
             reason = "solver_not_optimal_floor"
@@ -147,8 +158,12 @@ def select_interventions(problem: InterventionProblem, *, mode: str,
             optimal = True
             bits = result.x[:n] > .5
             selection_value = describe(bits)[-1] if mode == "joint" else -describe(bits)[0]
-            if (np.allclose(result.x[:n], bits, atol=1e-7, rtol=0) and feasible(bits) and selection_value < 0):
-                x, reason = bits, "selected"
+            valid_solution = (np.allclose(result.x[:n], bits, atol=1e-7, rtol=0)
+                              and feasible(bits) and count_matches(bits))
+            if not valid_solution:
+                optimal, reason = False, 'solver_solution_invalid_floor'
+            elif exact_interventions is not None or selection_value < 0:
+                x, reason = bits, 'matched_count_control' if exact_interventions is not None else 'selected'
             else:
                 reason = "no_feasible_positive_gain_floor"
     gain, harm, pair, objective = describe(x)
@@ -157,7 +172,29 @@ def select_interventions(problem: InterventionProblem, *, mode: str,
             "mean_raw_predicted_harm": float(np.mean(x*p.expected_harm)),
             "mean_pair_proxy": pair, "objective": objective, "switch_rate": float(x.mean()),
             "predicted_constraints_satisfied": bool(feasible(x)),
+            "exact_interventions_requested": None if exact_interventions is None else int(exact_interventions),
+            "exact_count_satisfied": None if exact_interventions is None else bool(count_matches(x)),
+            "diagnostic_count_control": exact_interventions is not None,
             "realized_risk_certified": False, "physical_safety_certified": False}
+
+
+def compare_at_independent_coverage(problem: InterventionProblem, *, time_limit_seconds: float = 30.) -> dict:
+    """Choose reference cardinality without labels; never infer matching from equal caps."""
+    reference = select_interventions(problem, mode='independent', time_limit_seconds=time_limit_seconds)
+    k = int(reference['switch'].sum())
+    joint = select_interventions(problem, mode='joint', time_limit_seconds=time_limit_seconds,
+                                 exact_interventions=k)
+    matched = (reference['solver_optimal'] and joint['solver_optimal']
+               and reference['predicted_constraints_satisfied'] and joint['predicted_constraints_satisfied']
+               and joint['exact_count_satisfied'])
+    return {'reference': reference, 'joint_exact': joint,
+            'reference_count': k, 'joint_count': int(joint['switch'].sum()), 'agents': len(reference['switch']),
+            'matched': bool(matched), 'nonzero_matched': bool(matched and k > 0),
+            'status': ('matched_nonzero' if k else 'matched_zero_not_evidence_of_coupling') if matched
+                      else 'not_matched_solver_or_feasibility_failure',
+            'cardinality_source': 'past_only_independent_decision_before_labels',
+            'same_predicted_harm_cap': True, 'equal_realized_harm_claim': False,
+            'deployment_policy': False, 'realized_risk_certified': False}
 
 
 def realized_relative_costs(baseline, candidate, targets, valid_mask, past_scales) -> dict:

@@ -106,6 +106,19 @@ OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manif
 
 选模结果写入 `selected_policy.json` 并记录 development 暴露与父产物；没有合格候选就保留 floor，且 `deployment_approved=false`。这里的 matched 指同预测和同预算上限，不是自动相同介入率或已校准风险。汇总选择目前只支持明确批准的 past-normalized error，dataset-local 原始 ADE/FDE 按 recording 单列；不同未验证坐标不能直接池化。独立风险校准和最终确认还未执行。详见 [实现与限制](development_evaluation/implementation_and_limits.md)。
 
+## 相同实际介入数量的诊断对照
+
+```bash
+.venv-pytorch/bin/python scripts/check_m3w_matched_coverage.py --report-dir outputs/publication_readiness_2026_09/matched_coverage/final_version
+.venv-pytorch/bin/python -m pytest tests/test_m3w_matched_coverage.py tests/test_m3w_joint_intervention.py -q
+```
+
+第一条会覆盖所指定目录的 `checks.json`，保存新轮次时使用新的 report directory。脚本执行合成 MILP/穷举对照，以及 canonical/CITR 真实过去输入检查；使用随机模型和常数风险分数，不读取真实未来标签，不训练、不计算 accuracy、不批准正式协议。
+
+`compare_at_independent_coverage` 先确定 independent 的实际数量 k，再在同一支持集和 predicted-harm cap 内固定 joint 的数量。`decide_scene(..., include_matched_coverage=True)` 显式启用额外诊断分支，默认五控制不变。matched branch 可能在正数量约束下选择预计收益较差的组合，**不得作为部署替代**。求解失败须保留 unmatched，0-count 须单列；完整标签子集的切换率也须另报，不能从全体 agent 数量一致推断它一致。
+
+最终版 80 个合成问题全部与穷举一致；真实输入 61 queries / 618 agents 的未来破坏不改变决策。新增 20 项测试，合并相关回归 224 passed。一次在测试中修改代码导致恢复身份校验拒绝，已固定源码完整重跑；运行实际训练/恢复期间不要修改其绑定模块。这里没有新增真实预测改善或部署。详见 [方法与边界](matched_coverage/method_and_limits.md)。
+
 ## EqMotion 官方核心适配检查
 
 ```bash
