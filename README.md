@@ -22,7 +22,10 @@ is now training; it does not rename historical data as independent confirmation.
 An [execution-only optimization](outputs/publication_readiness_2026_09/public_predictor_v4_execution_decision.md)
 skips unused output heads while preserving selected outputs and gradients in
 CPU/MPS tests. This remains a K=1 adaptation, not published best-of-20 EqMotion.
-No completed accuracy result or new deployment is claimed for the current run.
+The replacement full fit matches the preserved model's parameters and complete
+loss sequence exactly; the remaining crossfit and seed runs are in progress.
+That replay checks the source repair, not accuracy. No completed comparison or
+new deployment is claimed for the current run.
 
 My primary task is now **eight observed steps to twelve predicted steps**, with
 raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused
@@ -161,14 +164,19 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 I am developing this work toward a CVPR 2027 submission on when neural motion predictions can safely improve a strong baseline. The next study focuses on baseline-relative risk and joint intervention across agents. My [research direction and evidence audit](README_M3W_INNOVATION_AND_CVPR2027_ZH.md) explains the proposed contributions, the limitations of the current experiments, and the remaining comparisons. In particular, the latest WorldCore architecture ranking used test metrics, so those results remain exploratory until independently confirmed.
 
-The next real-data experiment is currently paused at protocol approval, not waiting on a slow training job. I still need to settle the primary forecasting task, data roles and the scope of the statistical claim. The [continuation record](outputs/publication_readiness_2026_09/continuation_handoff.md) preserves the verified starting point and the work to run once those choices are fixed.
+The eight-observation/twelve-prediction development task is frozen and real
+training is running locally. Independent calibration and confirmation are still
+unresolved; the development runs cannot supply those claims. The
+[continuation record](outputs/publication_readiness_2026_09/continuation_handoff.md)
+and [runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)
+record the active protocol, checkpoint paths and recovery commands.
 
 The next research step is to make the neural branch contribute something the protected policy does not already provide.
 
 That means:
 
 1. rebuild recording-disjoint evaluation and refit the protected selector within each training fold;
-2. promote neural dynamics only if they improve overall, `t+50`, or hard/failure slices without damaging easy cases;
+2. promote neural dynamics only if they improve the frozen 8-to-12 task without damaging easy cases; keep raw-frame `t+50` as a separate supplement;
 3. keep testing whether scene, goal, graph, and latent context add measurable lift;
 4. keep raw-frame and dataset-local claims separate from metric or physical-world claims.
 
