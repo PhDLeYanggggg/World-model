@@ -237,9 +237,18 @@ largest observed ego/aligned-neighbor radial norm, lower-bounded by one, and
 multiplies their outputs back before the original loss and evaluation. No target,
 future-valid mask, sample membership, parameter count, policy or error scale is
 changed. The formerly failing seed29 completed a real MPS 100-step pilot in
-13.01 seconds; all complete-budget three-seed fits are now running. Finite early
+13.01 seconds before the complete-budget experiment below. Finite early
 training is not evidence of downstream lift. v5 remains visible as a failed
 comparison rather than being merged with v6 results.
+
+The EqMotion v6 study has now completed all three seeds, all twelve 10,000-update
+forecasters and both OOF cost learners per seed. Its primary uncontrolled gains
+are -14.119%, -8.473%, and -14.081%; each development selection is the CV floor.
+Oracle candidate/floor gains are only 0.455%, 0.604%, and 0.576%. Native-coordinate
+Students03 gains over CV do not override these failed primary/easy outcomes;
+Students01 remains negative. Numerical stability is improved at the registered
+budget, but predictor and intervention contributions remain unsupported. The
+matched Transformer and supplementary comparisons are still running/pending.
 
 ### 4.3 Remaining Mechanism and Confirmation Tests
 

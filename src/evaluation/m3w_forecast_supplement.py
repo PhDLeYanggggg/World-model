@@ -57,6 +57,11 @@ def summarize_supplement(full_rows, prefix_rows, query_counts, contract):
         selected = [r for r in full_rows if (r['recording_id'], r['frame_id'], r['horizon_raw']) in ids]
         comparison[name] = {m: paired_control_errors(selected, 'joint_exact_count', 'independent_count_reference',
                                                      metric=m, **fixed) for m in ('ade', 'fde')}
+        for metric in comparison[name].values():
+            metric.pop('coverage_matched', None)
+            metric.update(past_supported_query_intervention_count_matched=True,
+                          scored_agent_intervention_coverage_matched=None,
+                          matching_scope='before_label_availability_filter_not_only_scored_agents')
     prefix = {'status': 'not_run_raw_horizon_not_on_native_prediction_grid'}
     if prefix_rows:
         # Easy/hard membership is inherited from the registered full-path baseline,

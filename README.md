@@ -10,13 +10,18 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am running a matched public-core comparison: a deterministic fixed-head
-EqMotion adaptation and my Transformer, both with complete past-neighbor support
-and the same 10,000-update training budget. The current v6 run separates
-past-only input conditioning from the unchanged evaluation scale, after the
-preceding run overflowed on both CPU and MPS. The previously failing seed passed
-a real 100-update MPS pilot with this change; full three-seed training is now
-running. This is a numerical repair under evaluation, not an accuracy claim.
+I have completed the EqMotion side of the v6 matched public-core study: twelve
+10,000-update forecasting fits, three neural cost heads and three ridge controls
+across three seeds. Past-only input conditioning resolves the previously observed
+training overflows at this budget, but it does not establish forecasting success.
+Uncontrolled primary normalized-ADE gains versus CV are -14.12%, -8.47% and
+-14.08%; all three development choices remain the CV floor. The future-label
+oracle has only 0.46--0.60% headroom on this primary metric. I retain the
+[complete negative results](outputs/publication_readiness_2026_09/8to12_eqmotion_v6/results.md),
+including easy-case damage and the more favorable recording-local diagnostics.
+The matched Transformer study is still running under the same input support,
+loss, sample/update budget and frozen evaluation. No completed paired comparison
+or new deployment is claimed yet.
 The [frozen decision](outputs/publication_readiness_2026_09/conditioned_context_v6_decision.md)
 specifies what changed and what stayed fixed.
 
@@ -36,7 +41,8 @@ encountered float32 overflow. I reproduced it separately and completed that fold
 on CPU at the unchanged 10,000-update budget. A later seed failed on both devices,
 so v5 remains an incomplete comparison rather than a selectively reported success. The
 [failure record](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/nonfinite_fit_diagnosis.md)
-keeps the evidence visible. No completed comparison or new deployment is claimed.
+keeps the evidence visible. That v5 failure is separate from the completed v6
+EqMotion experiment above, not silently overwritten by the numerical repair.
 
 My primary task is now **eight observed steps to twelve predicted steps**, with
 raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused

@@ -60,6 +60,9 @@ def test_prefix_slice_does_not_reclassify_missing_full_target_as_easy():
     assert result['raw50_prefix']['unknown_full_path_slice_agent_queries'] == 1
     assert result['raw50_prefix']['arms']['floor']['full_path_defined_easy']['ade']['count'] == 0
     assert result['matched_control_comparisons']['matched_nonzero_only']['ade']['count'] == 0
+    match = result['matched_control_comparisons']['matched_nonzero_only']['ade']
+    assert match['past_supported_query_intervention_count_matched'] is True
+    assert match['scored_agent_intervention_coverage_matched'] is None
     assert result['zero_count_matches_are_not_coupling_evidence']
 
 
@@ -82,3 +85,24 @@ def test_primary_completion_requires_unchanged_outputs_and_identity(tmp_path):
     (tmp_path / 'selected_policy.json').write_text('{"changed": true}')
     with pytest.raises(ValueError, match='result changed'):
         verify_completed_evaluation(tmp_path, digest)
+
+
+def test_supplement_tables_do_not_allow_cherry_picking_one_seed():
+    from scripts.summarize_m3w_forecast_supplement import tables
+    report = {'identity': {'eligible_for_selection': False}, 'scope': 'development_diagnostic_only', 'seeds': {'17': {}}}
+    with pytest.raises(ValueError, match='three registered seeds'):
+        tables(report)
+
+
+def test_supplement_summary_retains_all_candidate_seed_statuses():
+    from scripts.summarize_m3w_forecast_supplement import tables
+    entry = {'raw50_prefix': {'status': 'not_run_raw_horizon_not_on_native_prediction_grid'},
+             'matched_control_comparisons': {'matched_nonzero_only': {'ade': {'count': 0}}},
+             'exact_count_status_counts_scene_queries': {'matched_zero_not_evidence_of_coupling': 1}}
+    report = {'identity': {'eligible_for_selection': False}, 'scope': 'development_diagnostic_only',
+              'seeds': {str(seed): {f'seed{seed}_{h}_{p}': deepcopy(entry) for h in ('ridge', 'neural_cost')
+                                    for p in ('conservative', 'moderate')} for seed in (17, 29, 43)}}
+    result = tables(report)
+    assert len(result['raw50_rows']) == 12
+    assert result['seed_descriptive_statistics'] == []
+    assert result['no_deployment_selected']

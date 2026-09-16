@@ -1,5 +1,28 @@
 # M3W Results Ledger
 
+## EqMotion v6 Complete, Negative; Matched Transformer Running (2026-09-17)
+
+`fresh_run`: all three EqMotion seeds completed full and three held-fold fits,
+each 10,000 updates, plus 1,000-update neural cost heads and matched OOF ridge
+controls. The input-conditioning change survives the complete fit budget. Total
+neural fitting time is 12,373.56 seconds, excluding OOF extraction and development
+evaluation. This is not the end-to-end runtime.
+
+Primary normalized-ADE gains against CV: **-14.119%, -8.473%, -14.081%**.
+Mean -12.224%; training-seed SD 3.249 percentage points, not a scene CI. Every
+selection is the floor. Candidate/floor oracle headroom is only 0.455%, 0.604%,
+0.576%. Learned interventions damage easy cases; near-zero easy baseline error
+is shown alongside absolute excess rather than hidden behind percentages.
+
+Students03 native-coordinate gains versus CV are +9.74%, +9.94%, +8.67%, while
+Students01 remains negative. These do not replace the primary metric or prove
+improvement over the strongest causal alternative. Development is still one
+physical site, not independent confirmation. The Transformer comparison and
+fixed raw50/matched-count supplements remain pending.
+
+[All 60 controls and denominators](outputs/publication_readiness_2026_09/8to12_eqmotion_v6/results.md).
+Supplementary export checks now total 36 passed. No deployment, Stage5C or SMC.
+
 ## Source Clock and Matrix-Version Audit
 
 Fresh source checks found two reasons not to relabel the current benchmark as
