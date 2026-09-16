@@ -1,5 +1,62 @@
 {
   "cvpr2027_research_track": {
+    "causal_recording_rebuild": {
+      "result_source": "fresh_run",
+      "report": "outputs/publication_readiness_2026_09/causal_recording_rebuild.json",
+      "checks": "outputs/publication_readiness_2026_09/causal_recording_checks.json",
+      "canonical_recordings": 9,
+      "physical_scene_groups": 6,
+      "raw_points": 76619,
+      "indexed_views_not_independent_samples": 142402,
+      "exact_raw_horizon_counts": {
+        "10": 48286,
+        "25": 0,
+        "50": 38733,
+        "100": 28330
+      },
+      "observation8_prediction12_view_count": 27053,
+      "future_corruption_checks": 144,
+      "scene_membership_future_corruption_checks": 36,
+      "reader_checks_pass": true,
+      "legacy_teachers_used": false,
+      "formal_protocol_approved": false,
+      "official_split_selected": false
+    },
+    "local_runtime_probe": {
+      "result_source": "fresh_run",
+      "scope": "engineering_masked_past_reconstruction_not_forecasting",
+      "backends_verified": [
+        "arm64_cpu_4_threads",
+        "arm64_cpu_8_threads",
+        "arm64_mps_4_threads"
+      ],
+      "steps_each": 4000,
+      "dataloader_workers": 0,
+      "resume_step_equivalence_pass": true,
+      "future_labels_read": false,
+      "new_predictive_lift_claim": false,
+      "artifacts": [
+        "outputs/publication_readiness_2026_09/runtime_cpu4.json",
+        "outputs/publication_readiness_2026_09/runtime_cpu8.json",
+        "outputs/publication_readiness_2026_09/runtime_mps4.json"
+      ]
+    },
+    "asset_runtime_inventory": "outputs/publication_readiness_2026_09/asset_runtime_inventory.md",
+    "engineering_verification": {
+      "report": "outputs/publication_readiness_2026_09/verification_record.json",
+      "full_suite_passed": 1870,
+      "full_suite_failed": 1,
+      "focused_tests_passed": 32,
+      "legacy_test_side_effects_quarantined": true,
+      "legacy_suite_fully_hermetic": false,
+      "new_confirmatory_result": false
+    },
+    "local_create_runbook": "outputs/publication_readiness_2026_09/local_create_runbook_zh.md",
+    "create_inspection": {
+      "status": "not_run",
+      "reason": "ssh_publickey_denied_portal_mfa_notice_project_path_pending",
+      "new_jobs_submitted": false
+    },
     "external_evidence_status": "historical_external_claims_require_recording_disjoint_revalidation",
     "external_lineage_audit": "outputs/publication_readiness_2026_09/recording_lineage_audit.json",
     "original_external_split_audit": "outputs/publication_readiness_2026_09/stage35_recording_lineage_audit.json",
@@ -28,7 +85,9 @@
       "submission_ready_draft": "2026-11-09"
     },
     "audit_result_source": "fresh_run_source_hash_and_synthetic_checks",
-    "new_training": false,
+    "new_training": true,
+    "new_training_scope": "engineering_masked_past_runtime_probe_only; legacy integration replay is nonconfirmatory",
+    "formal_clean_forecasting_training": "not_run_protocol_pending",
     "real_data_prediction_reproduction": "not_run",
     "stage44_direct_input_hash_matches": true,
     "stage44_checkpoint_hashes_match": "7/7",
@@ -426,7 +485,7 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "cvpr2027_recording_lineage_protocol_repair",
+  "current_stage": "cvpr2027_causal_recording_rebuild_protocol_pending",
   "current_verdict": "historical_external_evidence_under_revalidation",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",

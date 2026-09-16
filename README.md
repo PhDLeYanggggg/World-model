@@ -26,6 +26,8 @@ For traceability, these are the **historically reported Stage37 numbers, not cor
 
 The table is retained so that older reports remain interpretable. Its bootstrap interval does not account for duplicate recordings or test-based model selection. I have repaired the WorldCore selection path to use validation only and added a training preflight that rejects the unchanged legacy caches. This is a protocol repair, not a new model improvement; the historical weights have not been replaced.
 
+I have also rebuilt a recording-centric reader directly from the original positions, without inherited teacher outputs. It keeps past inputs separate from future labels, groups duplicate dataset packaging, and requires exact target timestamps. The [rebuild and causal-access checks](outputs/publication_readiness_2026_09/causal_recording_checks.md) are engineering evidence, not a new benchmark result. The formal evaluation protocol still needs to be frozen before retraining.
+
 ## What The System Looks At
 
 The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:
@@ -38,7 +40,7 @@ The current M3W pipeline works with dataset-local top-down trajectories. It uses
 - dataset, scene, horizon, and domain metadata;
 - risk heads for failure, gain, harm, and fallback decisions.
 
-I also maintain a neural track with Transformer dynamics, JEPA-style representation learning, hybrid heads, waypoint prediction, and protected residual policies. So far, the most reliable gains come from guarded selection, causal history windows, full-waypoint structure, domain-aware routing, and safety floors. The neural pieces are useful research evidence, but they still have to earn deployment.
+I also maintain a neural track with Transformer dynamics, JEPA-style representation learning, hybrid heads, waypoint prediction, and protected residual policies. Guarded selection, causal history windows, full-waypoint structure, domain-aware routing, and safety floors are the most promising routes in the historical experiments. Their external gains remain exploratory until the clean evaluation is complete; neither the selector nor the neural branch has earned a new deployment claim from this audit.
 
 ## What This Repo Is For
 
@@ -73,11 +75,13 @@ On Apple Silicon, training should use the arm64 PyTorch environment:
 .venv-pytorch/bin/python
 ```
 
-Basic test command:
+Focused checks for the new data and evaluation path:
 
 ```bash
-.venv-pytorch/bin/python -m pytest tests
+.venv-pytorch/bin/python -m pytest tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py
 ```
+
+The legacy full suite (`python -m pytest tests`) includes integration training and can rewrite reports in the working directory. It is not yet an isolated, read-only smoke test; preserve existing experiment outputs before running it. The [local/CREATE runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md) records the verified environment and recovery checks.
 
 Training scripts are written around checkpointing, heartbeat logs, resume support, CPU/MPS-safe execution, and single-process dataloading.
 

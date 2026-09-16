@@ -1,3 +1,6 @@
+from pathlib import Path
+import shutil
+
 from src import stage42_source_level_ucy_full_waypoint_integration as iu
 
 
@@ -62,7 +65,19 @@ def test_stage42_iu_extracts_stage42v_ucy_only():
     assert abs(item["fde_t50"]["mean"] - 0.8) < 1e-12
 
 
-def test_stage42_iu_run_outputs_policy_package_boundaries():
+def test_stage42_iu_run_outputs_policy_package_boundaries(tmp_path, monkeypatch):
+    root = Path(__file__).resolve().parents[1]
+    original_state = (root / "research_state.json").read_bytes()
+    for source in (iu.STAGE42_IT_JSON, iu.STAGE42_V_JSON):
+        destination = tmp_path / source
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(root / source, destination)
+    for document in ("README_RESULTS.md", "outputs/m3w_neural_v1/README_M3W_NEURAL_V1.md",
+                     "README_M3W_WORK_ATTEMPTS_FAILURES_SUCCESSES_ZH.md"):
+        destination = tmp_path / document
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("# Test-only report\n")
+    monkeypatch.chdir(tmp_path)
     result = iu.run_stage42_source_level_ucy_full_waypoint_integration()
     gate = result["stage42_iu_gate"]
     assert gate["gates"]["stage42_it_passed"]
@@ -72,3 +87,5 @@ def test_stage42_iu_run_outputs_policy_package_boundaries():
     assert result["claim_boundary"]["metric_or_seconds_claim"] is False
     assert result["claim_boundary"]["stage5c_executed"] is False
     assert result["claim_boundary"]["smc_enabled"] is False
+    assert (tmp_path / "research_state.json").exists()
+    assert (root / "research_state.json").read_bytes() == original_state

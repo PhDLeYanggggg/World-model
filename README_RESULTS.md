@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Causal Data Rebuild and Runtime Verification (2026-09-16)
+
+本轮 `fresh_run` 从 raw positions 重建 9 个 canonical recordings，按 6 个 physical-scene groups 管理。共 76,619 个点、142,402 个重叠索引视图；精确 raw t10/t25/t50/t100 分别为 48,286 / 0 / 38,733 / 28,330，另有 27,053 个 8-observation/12-step 视图。后者尚未定为主实验协议；不能把这些视图当作独立统计样本。全量索引检查、144 个窗口及 36 个场景的未来位置破坏反事实检查通过；场景输入不按未来是否完整筛选 agent。未使用旧 teacher，也未建立新的正式 train/val/calibration/test 划分。
+
+实际 arm64 Torch 工程训练完成：CPU4、CPU8、MPS 各 4,000 个 optimizer steps，workers=0；CPU4/MPS 还从 step240 跨进程恢复，所有路径的恢复后下一步参数差异为 0。CPU4 当前小模型吞吐约 17,178 rows/s，CPU8 14,210，MPS 6,777；这不是大型模型或长时间稳定性结论。目标仅为 masked past reconstruction，不读取 future labels，不构成预测增益或新的 deployable 模型。
+
+GitHub 主分支已只读核对；CREATE 入口认证失败，因此远程 M3W 文件、任务、分区限制仍 `not_run`，没有提交作业。后续优先落实经批准的主评价协议，再进行 clean teacher 和 matched joint-intervention 最小实验。详见 [资产与运行证据](outputs/publication_readiness_2026_09/asset_runtime_inventory.md)、[中文操作记录](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)。历史外部结论仍需重新验证。
+
+工程验证：全套 `1,870 passed / 1 failed`，耗时约 73 分钟；最终相关测试 `32 passed`。遗留失败来自数据湖测试缺少覆盖 31 个 blocked datasets 的人工交接清单，单独复现仍失败，未放宽安全规则。旧测试产生的报告/状态改写已归档并恢复，未升级为新科研结果；其余原有暂存工作保留。详见 [验证与隔离记录](outputs/publication_readiness_2026_09/verification_record.md)。
+
 ## External Evidence Correction (2026-09-16)
 
 Fresh 内容审计发现：Stage35/37 val/test 有 47,223 个相同几何窗口，源文件也逐字节相同；test 内另有 zara03 的两份重复包装。Stage43/44 重划分后，train/val 重复 47,223 个窗口、train/test 重复 9,540 个窗口。新 val/test 中分别有 17,070 / 78,270 行原本属于旧 teacher train。复用旧 teacher 输出并不能使它们成为独立评价样本。Stage37 最终 selector 排名读取 test，bootstrap CI 不消除该选择偏差。

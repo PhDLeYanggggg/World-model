@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "development_rebuild_not_official_benchmark",
+  "source_root": "external_data/OpenTraj/datasets",
+  "source_identity_audit": "outputs/publication_readiness_2026_09/recording_lineage_audit.json",
+  "coordinate_claim": "dataset_local_unverified",
+  "time_claim": "raw_frame_or_observation_step_only",
+  "grouping_rule": "Byte-equal copies are verified aliases. Other named aliases are conservatively co-grouped, not coordinate-converted or claimed numerically identical.",
+  "physical_scene_evidence": [
+    "external_data/OpenTraj/datasets/UCY/README.md",
+    "external_data/OpenTraj/datasets/ETH/README.md"
+  ],
+  "recordings": [
+    {
+      "id": "eth_eth", "physical_scene": "eth_eth", "family": "ETH",
+      "canonical": "ETH/seq_eth/obsmat.txt",
+      "aliases": ["TrajNet/Test/biwi/biwi_eth.txt"],
+      "alias_evidence": "conservative_name_based_recording_group",
+      "enabled": true
+    },
+    {
+      "id": "eth_hotel", "physical_scene": "eth_hotel", "family": "ETH",
+      "canonical": "ETH/seq_hotel/obsmat.txt",
+      "aliases": ["TrajNet/Train/biwi/biwi_hotel.txt"],
+      "alias_evidence": "conservative_name_based_recording_group",
+      "enabled": true
+    },
+    {
+      "id": "ucy_zara01", "physical_scene": "ucy_zara", "family": "UCY",
+      "canonical": "UCY/zara01/obsmat.txt",
+      "aliases": ["TrajNet/Test/crowds/crowds_zara01.txt"],
+      "alias_evidence": "conservative_name_based_recording_group",
+      "enabled": true
+    },
+    {
+      "id": "ucy_zara02", "physical_scene": "ucy_zara", "family": "UCY",
+      "canonical": "UCY/zara02/obsmat.txt",
+      "aliases": ["TrajNet/Train/crowds/crowds_zara02.txt"],
+      "alias_evidence": "conservative_name_based_recording_group",
+      "enabled": true
+    },
+    {
+      "id": "ucy_zara03", "physical_scene": "ucy_zara", "family": "UCY",
+      "canonical": "UCY/zara03/crowds_zara03.txt",
+      "aliases": ["TrajNet/Train/crowds/crowds_zara03.txt"],
+      "alias_evidence": "byte_identical",
+      "enabled": true
+    },
+    {
+      "id": "ucy_students01", "physical_scene": "ucy_university", "family": "UCY",
+      "canonical": "UCY/students01/students001-trajnet.txt",
+      "aliases": ["TrajNet/Train/crowds/students001.txt"],
+      "alias_evidence": "byte_identical",
+      "enabled": true
+    },
+    {
+      "id": "ucy_students03", "physical_scene": "ucy_university", "family": "UCY",
+      "canonical": "UCY/students03/obsmat.txt",
+      "aliases": ["TrajNet/Train/crowds/students003.txt"],
+      "alias_evidence": "conservative_name_based_recording_group",
+      "enabled": true
+    },
+    {
+      "id": "ucy_university_examples", "physical_scene": "ucy_university", "family": "UCY",
+      "canonical": "TrajNet/Test/crowds/students002.txt",
+      "aliases": ["TrajNet/Test/crowds/uni_examples.txt"],
+      "alias_evidence": "byte_identical",
+      "enabled": false,
+      "quarantine_reason": "Challenge input excerpts with missing future values; not an independent labelled evaluation domain."
+    },
+    {
+      "id": "ucy_arxiepiskopi1", "physical_scene": "ucy_arxiepiskopi", "family": "UCY",
+      "canonical": "TrajNet/Train/crowds/arxiepiskopi1.txt",
+      "aliases": [], "alias_evidence": "single_source",
+      "enabled": true,
+      "view_note": "Oblique scene, not a verified top-down image benchmark."
+    },
+    {
+      "id": "pets09_s2l1", "physical_scene": "pets09_s2l1", "family": "PETS",
+      "canonical": "TrajNet/Train/mot/PETS09-S2L1.txt",
+      "aliases": [], "alias_evidence": "single_source",
+      "enabled": true,
+      "view_note": "Repackaged trajectories, no metric/time calibration claim."
+    }
+  ]
+}

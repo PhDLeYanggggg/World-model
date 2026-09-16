@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-16",
+  "result_source": "fresh_run",
+  "scope": "engineering_verification_not_confirmatory_forecasting",
+  "full_suite": {
+    "command": ".venv-pytorch/bin/python -m pytest tests -q --maxfail=3",
+    "passed": 1870,
+    "failed": 1,
+    "duration_seconds": 4393.92,
+    "exit_code": 1,
+    "all_green": false,
+    "collected_before_two_added_scene_tests": true,
+    "failure": "tests/test_worldcore_data_lake.py::test_goal_completion_audit_keeps_active_ingest_not_complete",
+    "standalone_failure_reproduced": true,
+    "failure_reason": "manual_handoff_missing_blocked_not_uploaded_dataset_ids",
+    "fixture_blocked_dataset_count": 31,
+    "fixture_manual_handoff_count": 0,
+    "unrelated_staged_data_lake_code_changed": false
+  },
+  "final_focused_suite": {
+    "command": ".venv-pytorch/bin/python -m pytest tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py tests/test_stage42_source_level_ucy_full_waypoint_integration.py -q",
+    "passed": 32,
+    "failed": 0,
+    "duration_seconds": 1.86,
+    "exit_code": 0,
+    "includes_latest_scene_api_and_test_isolation_fix": true
+  },
+  "test_side_effects": {
+    "legacy_suite_fully_hermetic": false,
+    "stage42_integration_test_isolated": true,
+    "report_files_quarantined_and_recovered": 94,
+    "legacy_root_state_changes_recovered": true,
+    "replayed_training_promoted_as_new_evidence": false,
+    "quarantine_committed": false,
+    "stage43_preexisting_workspace_changes_preserved": true,
+    "worldcore_data_lake_matches_pretest_snapshot": true
+  },
+  "identity_checks": {
+    "stage44_checkpoints_matching_earlier_audit": "7/7",
+    "stage44_direct_caches_matching_earlier_audit": "12/12",
+    "unrelated_staged_raw_diff_sha256": "c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323"
+  },
+  "new_prediction_lift": "not_run",
+  "formal_protocol": "pending_user_decision",
+  "submission_ready": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
