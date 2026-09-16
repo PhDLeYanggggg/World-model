@@ -12,21 +12,29 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 I am running a matched public-core comparison: a deterministic fixed-head
 EqMotion adaptation and my Transformer, both with complete past-neighbor support
-and the same 10,000-update training budget. During the run I traced an upstream
+and the same 10,000-update training budget. The current v6 run separates
+past-only input conditioning from the unchanged evaluation scale, after the
+preceding run overflowed on both CPU and MPS. The previously failing seed passed
+a real 100-update MPS pilot with this change; full three-seed training is now
+running. This is a numerical repair under evaluation, not an accuracy claim.
+The [frozen decision](outputs/publication_readiness_2026_09/conditioned_context_v6_decision.md)
+specifies what changed and what stayed fixed.
+
+During the preceding run I also traced an upstream
 Students01 packaging issue: 20-point fragments preserve timestamps and positions
 but change identities and remove short/tail tracks using later availability.
 I preserved the completed 10,000-update fit, stopped before scoring that context,
 and rebuilt the development source with continuous identities. The
 [new protocol](outputs/publication_readiness_2026_09/continuous_context_v5_decision.md)
-is now training; it does not rename historical data as independent confirmation.
+preserves that repair; it does not rename historical data as independent confirmation.
 An [execution-only optimization](outputs/publication_readiness_2026_09/public_predictor_v4_execution_decision.md)
 skips unused output heads while preserving selected outputs and gradients in
 CPU/MPS tests. This remains a K=1 adaptation, not published best-of-20 EqMotion.
 The replacement full fit matches the preserved model's parameters and complete
 loss sequence exactly. Three EqMotion fits have finished, but the next fold
 encountered float32 overflow. I reproduced it separately and completed that fold
-on CPU at the unchanged 10,000-update budget; the three-seed pipeline has resumed.
-This is a mitigation, not a proven numerical fix. The
+on CPU at the unchanged 10,000-update budget. A later seed failed on both devices,
+so v5 remains an incomplete comparison rather than a selectively reported success. The
 [failure record](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/nonfinite_fit_diagnosis.md)
 keeps the evidence visible. No completed comparison or new deployment is claimed.
 

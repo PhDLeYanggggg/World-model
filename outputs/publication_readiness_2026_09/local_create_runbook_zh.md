@@ -2,7 +2,34 @@
 
 日期：2026-09-16。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前 v5：连续身份上下文修复后的匹配训练
+## 当前 v6：输入数值范围修复后的完整匹配训练
+
+v5 seed29 在 CPU/MPS 都出现 nonfinite loss，不能跳过种子写完整研究。
+v6 保留数据、目标和评价尺度，只在网络内部按 past-only 共同尺度变换再还原。
+配置已冻结；不要在运行中改绑定代码、配置或决定文件。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_conditioned_predictor_pair.py
+```
+
+此命令完整执行两个模型、三种子、每种子 full + 三个物理场景留出模型，各 10,000
+updates，再做 OOF 风险头和开发评价。输出目录为 `8to12_eqmotion_v6` 与
+`8to12_transformer_v6`，位于忽略的 `data/stage_cvpr2027_experiments` 下。
+启动前先检查 runner heartbeat 对应的进程是否仍运行，禁止重复启动。
+已完成文件按 hash 核验复用，未完成从同一 checkpoint 恢复；不会自动降为 quick。
+seed29 的 100 步数值试跑会继续到完整预算，不是另一个准确率结果。
+
+全部完成后：
+
+```bash
+.venv-pytorch/bin/python scripts/compare_m3w_public_predictors.py --transformer outputs/publication_readiness_2026_09/8to12_transformer_v6/metrics.json --eqmotion outputs/publication_readiness_2026_09/8to12_eqmotion_v6/metrics.json --output-dir outputs/publication_readiness_2026_09/8to12_public_predictors_v6
+```
+
+仍是 development-only，不是独立确认或公开 best-of-20 复现。出现 nonfinite 时保存
+错误日志/权重身份，不丢弃失败 fold，不静默换设备。以下旧命令保留用于各自源码版本
+追溯，不能在 v6 目录/新源码上修改旧 hash 强行恢复。
+
+## 历史 v5：连续身份上下文修复后的匹配训练
 
 当前源码快照 `5e0f7be9`，协议 `configs/m3w_8to12_continuous_context_v5.json`。
 它保留既有 fit/fold/seed/metric，只把 Students01 的 20 点片段包装替换为本地连续

@@ -73,7 +73,7 @@ def main():
     lines = ['# Matched Public-Core vs Local Predictor', '',
         'Fresh real training and evaluation on historically exposed development data.',
         'Same obs8/pred12 task, rows, complete-aligned past neighbors, seeds, updates and loss.',
-        'Equal update/sample budgets do not mean equal model capacity or compute. EqMotion uses MPS; Transformer uses CPU.',
+        'Equal update/sample budgets do not mean equal model capacity or compute. Per-fit device and elapsed time are retained in the input metrics; explicit CPU recovery is not hidden as MPS-only execution.',
         'EqMotion is a fixed K=1 author-core adaptation, not published best-of-20 performance.', '',
         '| Seed | Transformer gain vs CV % | EqMotion-K1 gain vs CV % | EqMotion gain vs Transformer % | Local oracle % | Public oracle % | Local selection | Public selection |',
         '| --- | ---: | ---: | ---: | ---: | ---: | --- | --- |']

@@ -2,7 +2,8 @@
 
 Working draft, 2026-09-16. Method proposal with two completed three-seed
 development experiments; neither supports deployment or a contribution claim.
-A matched public-core study is running under the repaired v5 source protocol.
+A matched public-core study is running under the v6 input-conditioning protocol,
+which retains the repaired v5 source population.
 The older results below retain their original, conditional observation population.
 
 ## Abstract
@@ -215,7 +216,9 @@ trainable-gradient equivalence checks on CPU/MPS. The selected head and paramete
 initialization are unchanged. This is a K=1 adaptation, not the author's
 published minADE20/minFDE20 training/evaluation protocol.
 
-The full comparison is **running**, not an accuracy result. Its paired analysis
+The v5 comparison is **incomplete**, not a three-seed accuracy result. Seed17
+completed all fitting and development evaluation after one CPU recovery; seed29
+then failed with nonfinite loss on both MPS and CPU. Its paired analysis
 requires complete budgets and identical row support across models. Since v5
 changes context support as well as the earlier training budget, v2-to-v5 is not
 a single-factor architecture ablation. Upstream annotation construction,
@@ -228,6 +231,15 @@ not measured per-example gradients or proof of a neighbor-induced error.
 No development labels were accessed and the current transform, metric and
 training budget were not changed. Any input-conditioning repair must be a
 separate ablation that preserves the evaluated error scale.
+
+The v6 numerical repair divides the two predictors' coordinate inputs by the
+largest observed ego/aligned-neighbor radial norm, lower-bounded by one, and
+multiplies their outputs back before the original loss and evaluation. No target,
+future-valid mask, sample membership, parameter count, policy or error scale is
+changed. The formerly failing seed29 completed a real MPS 100-step pilot in
+13.01 seconds; all complete-budget three-seed fits are now running. Finite early
+training is not evidence of downstream lift. v5 remains visible as a failed
+comparison rather than being merged with v6 results.
 
 ### 4.3 Remaining Mechanism and Confirmation Tests
 

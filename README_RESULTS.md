@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Past-Only Input Conditioning, v6 Running (2026-09-16)
+
+v5 seed17 完成完整 full/folds、OOF heads 和开发评价；seed29 在 CPU 与 MPS 都出现
+nonfinite loss，故 v5 不是完整三种子对照，不跳过失败种子。保留旧产物与源码版本。
+新 v6 只把网络输入按过去 ego/完整对齐邻居的联合半径缩放，输出先还原，再计算
+原 loss/cost/评价；没有改标签、主指标尺度、样本、预算、策略阈值或独立性声明。
+
+针对性检查 **48 passed / 1 optional MPS skipped**。此前失败的 seed29 真实 MPS
+试跑 100 步完成，13.01 秒；这是 100/10,000，不是完成模型。该 checkpoint 留存，
+完整三种子 EqMotion/Transformer 匹配研究已启动。协议 digest
+`53be3aafbda47ddf8d60891e779896f6685fcd59222a1fe4ea867e689f8914de`。
+见 [冻结决定](outputs/publication_readiness_2026_09/conditioned_context_v6_decision.md) 和
+[真实试跑证据](outputs/publication_readiness_2026_09/conditioned_context_v6_pilot.json)。
+
 ## Continuous-Identity Source Repair, v5 Running (2026-09-16)
 
 v5 seed17 的 full/hold0/hold1 均完成 10,000 updates；hold2 在 MPS 第 89 步出现

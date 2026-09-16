@@ -1,6 +1,34 @@
 # Real-Experiment Continuation Handoff
 
-## Current v5 Run Supersedes the Snapshots Below
+## Current v6 Run
+
+The v5 seed29 full fit failed with nonfinite loss on both MPS and CPU, after
+seed17 completed its four predictors, OOF heads and development evaluation.
+v5 is incomplete, not a three-seed result; preserve its artifacts and the
+`73b30e6a` source snapshot. Do not alter old protocol hashes to run new code.
+
+Current runner: `scripts/run_m3w_conditioned_predictor_pair.py`, arm64 environment.
+Protocol `configs/m3w_8to12_conditioned_context_v6.json`, digest
+`53be3aafbda47ddf8d60891e779896f6685fcd59222a1fe4ea867e689f8914de`.
+The only model factor is past-only common input conditioning, with predictions
+restored before the unchanged loss/cost/evaluation scale. Decisions, source
+caches, rows, seeds and 10,000-update budgets stay fixed. See the frozen v6
+decision and pilot report. A real seed29 MPS 100-step pilot passed (13.01s),
+and is reused/resumed when the runner reaches that seed; it is not a full fit.
+48 tests passed; one optional MPS test skipped, separate real MPS run completed.
+
+Active data directories: `8to12_eqmotion_v6` then `8to12_transformer_v6` under
+`data/stage_cvpr2027_experiments`. Read their runner heartbeat and actual child
+before resuming. Full/fold fits, OOF ridge, 1,000-update neural cost and development
+evaluation run sequentially for seeds17/29/43. No bound-source edits during this
+run. The summary and comparison helpers retain failed/negative seeds, all easy
+metrics and actual runtimes. No v6 accuracy result yet; don't stop for slowness.
+
+After both summaries, compare v6 metrics with `scripts/compare_m3w_public_predictors.py`.
+One development site is not enough for a scene CI. EqMotion K=1 is not published
+best-of-20. No independent confirmation, deployment, Stage5C or SMC claim.
+
+## Historical v5 Run
 
 Latest interruption: v5 EqMotion seed17 full/hold0/hold1 each completed 10,000.
 hold2 failed at MPS step89 with float32 nonfinite output; outer pair runner exited.

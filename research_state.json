@@ -1,7 +1,27 @@
 {
   "cvpr2027_research_track": {
+    "development_8to12_conditioned_context_v6": {
+      "status": "full_matched_three_seed_training_running_not_complete",
+      "protocol": "configs/m3w_8to12_conditioned_context_v6.json",
+      "protocol_sha256": "53be3aafbda47ddf8d60891e779896f6685fcd59222a1fe4ea867e689f8914de",
+      "reason": "v5_EqMotion_seed29_nonfinite_on_CPU_and_MPS_after_seed17_required_CPU_mitigation",
+      "factor": "past_only_joint_context_input_conditioning_then_restore_before_original_loss",
+      "target_or_evaluation_scale_changed": false,
+      "decision": "outputs/publication_readiness_2026_09/conditioned_context_v6_decision.md",
+      "pilot": "outputs/publication_readiness_2026_09/conditioned_context_v6_pilot.json",
+      "real_mps_pilot_steps": 100,
+      "registered_steps_per_forecaster": 10000,
+      "seeds": [17, 29, 43],
+      "tests": "48 passed / 1 optional MPS skipped; separate real MPS pilot passed",
+      "result_source": "fresh_run_fit_only_pilot_and_complete_budget_training_in_progress",
+      "accuracy_evidence": false,
+      "independent_confirmation": false,
+      "new_deployment": false,
+      "stage5c_executed": false,
+      "smc_enabled": false
+    },
     "development_8to12_continuous_context_v5": {
-      "status": "seed17_four_forecasters_complete_after_explicit_cpu_hold2_recovery_pipeline_resumed",
+      "status": "seed17_complete_seed29_nonfinite_CPU_and_MPS_incomplete_paired_study_preserved",
       "protocol": "configs/m3w_8to12_continuous_context_v5.json",
       "protocol_sha256": "24c0fb195ef76430f5d73ff06f1736afdef213d507c4ebd1d9cccdeba86d28e9",
       "reason": "upstream_20_point_packaging_conditioned_observation_availability_on_future_track_length",

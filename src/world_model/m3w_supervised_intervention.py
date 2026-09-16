@@ -352,6 +352,12 @@ def forecast_smooth_l1(prediction, target, valid):
 def build_forecaster(architecture):
     options = dict(architecture)
     family = options.pop('family', 'past_context_transformer')
+    conditioning = options.pop('input_conditioning', None)
+    if conditioning not in {None, 'observed_joint_max_norm'}:
+        raise ValueError('Unknown predictor input conditioning')
+    if conditioning is not None:
+        from src.world_model.m3w_context_conditioning import ObservedContextConditioner
+        return ObservedContextConditioner(build_forecaster({'family': family, **options}))
     if family == 'past_context_transformer':
         return PastContextForecaster(**options)
     if family == 'eqmotion_fixed_head':
