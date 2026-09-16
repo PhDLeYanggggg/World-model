@@ -1,5 +1,11 @@
 # M3W Results Ledger
 
+## Real-Experiment Decision Blocker (2026-09-16)
+
+本轮是阻塞复核，不计作新增研究结果。`fresh_run`：真实 neural-cost preflight 仍 exit 2，理由为 `Explicit protocol approval required`；正式 draft 哈希未变，9 recordings / 6 physical scenes，全部历史开发暴露且角色未分配，主时域/指标/聚合等仍为空。旧草案的两项代码绑定已随修复过期，需在新协议批准时审查更新，不能只改 status。授权的只读进程检查未发现匹配的本地训练任务；CREATE 状态仍未知，未重复失败连接、未提交任务。
+
+连续多轮的必要科学决定尚未得到答复；不再用新增模块、合成短测或重复文档冒充核心实验推进。已保存 [接续记录](outputs/publication_readiness_2026_09/continuation_handoff.md)，目标等待协议决定，不是完成或因慢停止。没有新训练/预测精度/部署；旧测试证据保留，未重跑未修改的训练代码。Stage5C/SMC 关闭。
+
 ## Statistical Assumptions and Method Claim (2026-09-16)
 
 `fresh_run` 文献/推导审计，不是新训练：核对 HCP v4、GHCP v1、CAFHT v2 与 L4DC 2023 adaptive CP 的原文假设、定理和评价对象，保留版本与 publisher PDF 获取失败记录。具体对照见 [统计假设与可证伪主张](outputs/publication_readiness_2026_09/joint_intervention/statistical_assumptions_and_claims.md)。场景分组、预测带覆盖、平均时间覆盖、相对基线 harm 和 easy degradation 不能互相替代；这不是一项新安全定理。

@@ -118,6 +118,8 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 I am developing this work toward a CVPR 2027 submission on when neural motion predictions can safely improve a strong baseline. The next study focuses on baseline-relative risk and joint intervention across agents. My [research direction and evidence audit](README_M3W_INNOVATION_AND_CVPR2027_ZH.md) explains the proposed contributions, the limitations of the current experiments, and the remaining comparisons. In particular, the latest WorldCore architecture ranking used test metrics, so those results remain exploratory until independently confirmed.
 
+The next real-data experiment is currently paused at protocol approval, not waiting on a slow training job. I still need to settle the primary forecasting task, data roles and the scope of the statistical claim. The [continuation record](outputs/publication_readiness_2026_09/continuation_handoff.md) preserves the verified starting point and the work to run once those choices are fixed.
+
 The next research step is to make the neural branch contribute something the protected policy does not already provide.
 
 That means:
