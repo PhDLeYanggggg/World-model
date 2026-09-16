@@ -1,14 +1,28 @@
 {
   "cvpr2027_research_track": {
     "development_8to12_robust_v2": {
-      "status": "real_three_seed_training_in_progress",
+      "status": "completed_negative_all_seeds_select_floor",
       "protocol": "configs/m3w_8to12_robust_v2.json",
       "protocol_sha256": "8d64cda5937f152870822ecdacdbf4e2004f08da894ad7fb3df8dcdf7a70014f",
       "changed_factor": "forecaster_mse_to_smooth_l1_beta_1_only",
       "parent_code_commit": "707d401733e042ba68e7105db2d5d7c460440c5a",
       "decision": "outputs/publication_readiness_2026_09/robust_loss_ablation_decision.md",
-      "result_source": "fresh_run_training_in_progress",
+      "result_source": "fresh_run_real_training_and_paired_development_evaluation",
       "seeds_registered": [17, 29, 43],
+      "completed_forecaster_fits": 12,
+      "completed_neural_cost_fits": 3,
+      "steps_per_neural_fit": 1000,
+      "fit_compute_seconds_excluding_oof_and_evaluation": 983.2431303327903,
+      "uncontrolled_all_gain_pct_by_seed": [-0.2309705730449782, -0.3286935714855285, -0.18124728066869536],
+      "uncontrolled_all_gain_mean_pct": -0.24697047506640069,
+      "uncontrolled_all_gain_seed_sd_pct": 0.07501399747668347,
+      "oracle_gain_pct_diagnostic_by_seed": [0.3197024252269286, 0.35099030961690736, 0.23148601359560922],
+      "selected_by_all_seeds": "constant_velocity_floor",
+      "joint_downstream_lift": false,
+      "easy_preservation_for_learned_interventions_passed": false,
+      "comparison": "outputs/publication_readiness_2026_09/8to12_robust_v2/robust_loss_comparison.json",
+      "current_publication_route": "outputs/publication_readiness_2026_09/publication_route_zh.md",
+      "next_priority": "causal_scale_and_stronger_public_forecaster_development_then_matched_deferral_controls",
       "checkpoint_and_heartbeat": true,
       "independent_confirmation": false,
       "new_deployment": false,
@@ -601,7 +615,7 @@
     "target": "CVPR 2027 main conference full paper",
     "target_selected_by_user": true,
     "aamas_not_current_target": true,
-    "status": "real_8to12_v1_negative_robust_loss_ablation_running_not_submission_ready",
+    "status": "two_real_three_seed_studies_completed_no_safe_gain_not_submission_ready",
     "official_deadlines_aoe": {
       "registration": "2026-11-10",
       "paper": "2026-11-16",
@@ -1017,7 +1031,7 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "cvpr2027_8to12_robust_loss_ablation_running",
+  "current_stage": "cvpr2027_8to12_two_studies_complete_predictor_headroom_insufficient",
   "current_verdict": "historical_external_evidence_under_revalidation",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",

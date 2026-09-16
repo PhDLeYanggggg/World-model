@@ -28,9 +28,14 @@ These are real training results on historically exposed development data, not
 independent confirmation or a calibrated safety guarantee.
 
 A fit-only audit found highly concentrated squared target energy after
-past-based normalization. I am testing that explanation with a one-factor
-robust-loss ablation, keeping the data, network, budget and evaluation fixed.
-I will not change the primary metric after observing which one looks better.
+past-based normalization. I completed a second three-seed experiment changing
+only the forecasting loss to Smooth-L1. Average degradation versus CV fell from
+7.41% to 0.25%, but all seeds still selected the floor. Joint selection added no
+measured benefit. The [paired loss ablation](outputs/publication_readiness_2026_09/8to12_robust_v2/robust_loss_comparison.md)
+also shows why gains over CV alone are insufficient: the better damped-velocity
+baseline explains most of the favorable native-coordinate result. This is a
+useful training repair, not a successful intervention method or deployment upgrade.
+I have not changed the primary metric after observing which one looks better.
 The [Chinese research roadmap](outputs/publication_readiness_2026_09/publication_route_zh.md)
 explains the experiment order and what would justify a later journal extension.
 
@@ -70,7 +75,7 @@ I have also brought in the author's unfiltered [DUT campus annotations](outputs/
 
 I now enforce that distinction in the [data-admission path](outputs/publication_readiness_2026_09/intake_admission/implementation_and_limits.md): approving an experiment cannot silently clear an annotation quarantine or pending source-use review. The checks follow the underlying audit and keep unresolved data out of fitting and evaluation. They preserve the evidence needed to investigate a defect; they do not substitute for permission, independent data or a scientific result.
 
-The rebuilt reader now connects to a [resumable forecasting and cost-learning backend](outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md). It learns baseline-relative benefit and harm from predictions made outside each producer's training fold. A [development evaluator](outputs/publication_readiness_2026_09/development_evaluation/implementation_and_limits.md) compares five intervention controls using the same predictions, retains agents with missing future labels in the decisions, and reports uncertainty by physical scene. I have checked this connection on synthetic examples and the input boundary on real trajectories. Those checks establish an implementation, not predictive improvement: clean real-data fitting, development selection and independent confirmation are still pending.
+The rebuilt reader connects to a [resumable forecasting and cost-learning backend](outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md). It learns benefit and harm from predictions made outside each producer's training fold. The [development evaluator](outputs/publication_readiness_2026_09/development_evaluation/implementation_and_limits.md) compares five controls on the same predictions and keeps agents with missing future labels in the decisions. The first real three-seed comparison is now complete and negative. Independent confirmation and a useful scene-level risk guarantee remain open.
 
 To avoid comparing only against my own networks, I have also connected a [version-pinned EqMotion core](outputs/publication_readiness_2026_09/public_baselines/compatibility_and_limits.md) to the causal reader and training path. The current adapter emits one fixed head and is explicitly a K=1 adaptation, not a reproduction of the paper's best-of-20 result. Source integrity, CPU/MPS training recovery and past-only input behavior are checked; its real forecasting comparison is still pending. The published model's preprocessing, sampling budget and checkpoint selection need the same scrutiny as my own code.
 
@@ -78,7 +83,7 @@ I now have a [frozen-policy risk-screening path](outputs/publication_readiness_2
 
 The [final comparison path](outputs/publication_readiness_2026_09/confirmation_evaluation/implementation_and_limits.md) keeps every training seed visible and freezes the compared policies before final labels are read. It reports scene-level uncertainty, per-seed easy-case damage and matched joint-control comparisons without choosing a winner on the final set. The complete connection has been exercised on synthetic data; it does not replace the still-pending real independent experiment.
 
-The [neural benefit/harm head](outputs/publication_readiness_2026_09/neural_cost_head/implementation_and_limits.md) now trains on the same held-fold inputs as the ridge control. This lets me test whether neural capacity adds anything without changing the training examples or candidate forecasts. CPU/MPS recovery and the comparison path are checked, but the synthetic example still selects the baseline. I have not established a real-data advantage for this head.
+The [neural benefit/harm head](outputs/publication_readiness_2026_09/neural_cost_head/implementation_and_limits.md) trains on the same held-fold inputs as the ridge control, so neural capacity is not confounded with different examples or candidate forecasts. CPU/MPS recovery is checked. Both the synthetic example and the completed real MSE experiment select the baseline; I have not established a real-data advantage for this head.
 
 ## What The System Looks At
 

@@ -1,5 +1,34 @@
 # M3W Results Ledger
 
+## Completed Three-Seed Robust-Loss Ablation (2026-09-16)
+
+`fresh_run`：在相同 8→12 数据、fold、模型、1000-update 预算、seed 和评价下，
+仅把 forecaster MSE 改为 Smooth-L1(beta=1)。v1/v2 合计 **24 个 forecaster、
+6 个 neural cost head、6 个 ridge control**；30 个神经 fit 共 30,000 updates。
+两个实验都已全部运行完毕，不是只 import Torch 或合成 demo。
+
+| Seed | MSE 相对 CV 主指标改善 | Smooth-L1 相对 CV 主指标改善 | v2 选择 |
+| --- | ---: | ---: | --- |
+| 17 | -7.093% | -0.231% | floor |
+| 29 | -7.900% | -0.329% | floor |
+| 43 | -7.249% | -0.181% | floor |
+
+平均退化由 7.414% 降至 0.247%；种子标准差由 0.428 降至 0.075 个百分点，
+这是训练随机性描述，不是跨场景 CI。v2 两候选 oracle 上限仅 0.232%–0.351%，
+不能靠继续调阈值产生 5% 的主指标改善。easy 仍失败；联合与独立选择相同；
+所有种子回退，不升级部署，也不算已证明新的方法贡献。
+
+Students03 原坐标上相对 CV 有正信号，但相对更强阻尼基线三种子为 -1.662%、
++0.414%、-3.962%，不能挑最好 seed 宣布成功。Students01 三种子也未超过该阻尼基线。
+两源同属一个物理场景，历史暴露未清零，raw-frame t+50 补充尚未运行。
+完整 [结果](outputs/publication_readiness_2026_09/8to12_robust_v2/results.md)、
+[配对对照](outputs/publication_readiness_2026_09/8to12_robust_v2/robust_loss_comparison.md)、
+[失败结论](outputs/publication_readiness_2026_09/8to12_robust_v2/conclusions.md)。
+
+相关检查分三批为 91 passed/1 optional MPS skipped、44 passed、6 passed；不是
+legacy full suite 全绿。训练用 arm64 CPU4/interop1/workers0，checkpoint 和 heartbeat
+留在本地，Git 只存代码/协议/轻量结果。Stage5C/SMC 关闭，投稿目标尚未达成。
+
 ## Real 8-to-12 Development Study Completed, Negative Result (2026-09-16)
 
 用户明确选定 obs8/pred12 为主、raw-frame t+50 为补充，并授权研究路线判断。
@@ -22,8 +51,8 @@ joint 与 independent 在本轮相同，尚无交互选择贡献；cost-sensitiv
 
 fit-only 尺度审计发现 ETH 约 1% 的窗口占平方标签能量 96.32%，Zara02 为 99.74%。
 这不是实测梯度占比，也不是已证明的因果解释。下一轮只改变 forecaster 损失，
-MSE 改 Smooth-L1，不改数据、指标、阈值或 safety budget。v2 已登记新协议并启动，
-仍须等三种子完整结果。新损失、恢复和原有训练/评价回归 91 passed / 1 MPS skipped；
+MSE 改 Smooth-L1，不改数据、指标、阈值或 safety budget。v2 随后完成，结果见顶部。
+新损失、恢复和原有训练/评价回归 91 passed / 1 MPS skipped；
 public predictor adapter、deferral 对照、尺度诊断等补充回归 44 passed，
 没有重新宣称 legacy full suite 全绿。
 

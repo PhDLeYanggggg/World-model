@@ -11,6 +11,9 @@
 v1 MSE 实验的可复现代码版本为 `707d4017`。下面四条 v1 命令须使用该版本；
 新实现的 source hash 不同会被正确拒绝，不能修改旧协议 hash 绕过检查。
 请在独立工作目录检出该版本，不回退或覆盖当前有未提交工作的目录。
+该目录还需有按原相对路径放置、hash 一致且获准使用的本地数据与缓存；
+Git 不包含这些文件。跨 workspace 的数据软链接会被路径边界拒绝。
+这里验证的是本机训练与 checkpoint 恢复，尚未完成独立机器的匿名复现打包。
 
 ```bash
 .venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --protocol configs/m3w_8to12_development_v1.json --preflight-only
@@ -44,6 +47,8 @@ v1 已完成全部 15 个神经 fit，每个 1,000 updates；三种子均选择 
 
 重新运行相同 runner 会核验并恢复，不能同时开两个。prepare 脚本只用于首次登记新版本，
 已有版本拒绝覆盖。不同损失的训练 loss 数值不能互相比较；只比较不变的开发评价。
+v2 现已三种子全部完成，均选择 floor；完整对照在
+[paired report](8to12_robust_v2/robust_loss_comparison.md)。没有训练任务等待恢复。
 
 ## 已验证的环境
 

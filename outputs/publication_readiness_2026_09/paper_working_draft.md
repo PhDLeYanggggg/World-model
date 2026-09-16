@@ -1,7 +1,7 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, 2026-09-16. Method proposal with a completed, negative three-seed
-development experiment. No independent confirmation or submission-ready claim.
+Working draft, 2026-09-16. Method proposal with two completed three-seed
+development experiments; neither supports deployment or a contribution claim.
 
 ## Abstract
 
@@ -12,9 +12,10 @@ learning benefit and harm from out-of-fold predictions and selecting neural
 replacements over an observed interaction graph. An initial eight-observed,
 twelve-predicted-step development study uses three training seeds and physically
 grouped crossfit folds. All seeds select the causal constant-velocity floor;
-uncontrolled neural forecasts worsen the prespecified normalized ADE by
-7.09--7.90%. Joint and independent controls do not differ at the evaluated
-policies. We identify strong sensitivity to small past normalization scales,
+uncontrolled MSE-trained forecasts worsen the prespecified normalized ADE by
+7.09--7.90%. A single-factor Smooth-L1 retraining reduces this degradation to
+0.18--0.33% but still selects the floor in every seed. Joint and independent
+controls do not differ at the evaluated policies. We identify strong sensitivity to small past normalization scales,
 without treating a favorable alternative metric as confirmation. The method's
 claimed advantage remains unestablished. Strong public predictors, matched-count
 and deferral controls, broader independent scenes and confirmatory evaluation
@@ -116,8 +117,19 @@ Fit-only audits show approximately 1% of ETH and Zara02 windows account for
 error is also highly concentrated: the top approximately 1% of Students03 rows
 accounts for 62.49% of CV normalized error but 1.09% of native-coordinate error.
 This motivates a separately versioned one-factor Smooth-L1 loss ablation, not
-post hoc replacement of the primary metric. Details and all failed controls are
-in [the result package](8to12_development_v1/conclusions.md).
+post hoc replacement of the primary metric. Details and all failed MSE controls
+are in [the v1 result package](8to12_development_v1/conclusions.md).
+
+That ablation is now complete for the same three seeds. Primary gains versus CV
+are -0.231%, -0.329%, and -0.181%, with every development choice still the floor.
+Mean gain changes from -7.414% to -0.247%; seed SD is 0.428 versus 0.075 percentage
+points. This is a repeatable objective repair on development data, not independent
+statistical evidence for the method. The two-candidate oracle upper bound falls
+to 0.231--0.351%, so further gating of these frozen candidates cannot produce
+a 5% primary improvement. In native coordinates, Students03 gains versus CV do
+not translate into consistent gains against a stronger damped-velocity baseline.
+The [paired table](8to12_robust_v2/robust_loss_comparison.md) retains that comparison
+and all negative seeds. No metric or easy threshold was changed after evaluation.
 
 ### 4.2 Remaining Mechanism and Confirmation Tests
 

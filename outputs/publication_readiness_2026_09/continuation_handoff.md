@@ -3,9 +3,40 @@
 Superseded for development on 2026-09-16: the user selected obs8/pred12 with
 raw-frame t+50 supplemental and delegated the remaining research route. See
 [the new decision](research_route_decision.md) and
-`configs/m3w_8to12_development_v1.json`. Real training has started under an
-explicitly exploratory protocol. Independent source/confirmation requirements
-remain open. The checks below are preserved as a historical snapshot.
+`configs/m3w_8to12_development_v1.json`. Independent source/confirmation
+requirements remain open. The earlier blocker is preserved below as history,
+not a reason to ask the answered horizon question again.
+
+## Current Executed State
+
+Two real three-seed studies are complete: v1 coordinate MSE and v2 Smooth-L1.
+Thirty neural fits completed 1,000 updates each; no active study child remains
+after the runner completed all requested seeds. Checkpoints and per-fit heartbeats
+are in the ignored `data/stage_cvpr2027_experiments/8to12_v1` and
+`8to12_robust_v2` directories. Current main task is native obs8/pred12; raw t+50
+supplement remains separate and not run.
+
+Both studies select the CV floor in every seed. Mean uncontrolled primary gain
+improves from -7.414% to -0.247%, but easy protection and joint-selection
+contribution still fail. The robust candidate/floor oracle upper bound is only
+0.231--0.351%; further threshold search cannot produce a 5% primary gain with
+these fixed candidates. See [paired results](8to12_robust_v2/robust_loss_comparison.md)
+and [failure conclusions](8to12_robust_v2/conclusions.md).
+
+Next substantive work: investigate causal scale handling and a genuinely useful
+public predictor, then run real deferral and realized-count-matched controls.
+Do not build more status-only modules or repeat the same runtime probe. Preserve
+all negative seeds. Native-coordinate improvements over CV alone do not beat
+the stronger damped baseline consistently. Independent confirmation is still
+missing, and no submission-ready or deployment claim is established.
+
+MSE source snapshot: `707d4017`; robust source snapshot: `9e592089`.
+Do not edit old protocol hashes to load changed implementations. Current code
+runs v2 using the explicit command in the [runbook](local_create_runbook_zh.md).
+CREATE access has not changed; no new remote job or absent-job claim. Stage5C and
+SMC stay disabled. The research goal remains active, not completed.
+
+## Historical Blocker Snapshot
 
 Checked 2026-09-16. This is an execution blocker record, not research progress, a new gate or a completed experiment. The full CVPR research objective remains unfinished.
 

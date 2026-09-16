@@ -2,6 +2,14 @@
 
 Date: 2026-09-16. Status: implementation verified; real forecasting comparison **not_run**. This is not an EqMotion paper reproduction, a new predictive gain, or a completed strong-baseline study.
 
+Update after the user's 8/12 decision: the local Transformer now has a completed,
+negative three-seed [real development experiment](../8to12_development_v1/results.md),
+and a separate robust-loss ablation is also complete without safe positive gain. The unapproved-protocol references
+below describe this source audit's earlier snapshot. They no longer block the
+versioned development study; independent confirmation is still unapproved.
+EqMotion itself has not yet been fitted on these real labels. Its K=1 adaptation
+and incomplete-neighbor exclusions still require explicit matched controls.
+
 ## Source Identity
 
 The [official EqMotion repository](https://github.com/MediaBrain-SJTU/EqMotion) is pinned to `5aec2e0b61c511fa93a24138dd90da59a089084b`. Eight code/documentation files, 67,758 bytes, were fetched without datasets or pretrained weights. Their author Git-blob identities and local SHA256 values are recorded in `eqmotion_source_identity.json`; the MIT license is retained beside the ignored source. The adapter verifies every pinned file before loading code. Only the two model modules execute, under a private namespace; the import binding is isolated without changing their model arithmetic. Third-party code is not committed into this project.
