@@ -329,6 +329,15 @@ def forecast_mse(prediction, target, valid):
     return error
 
 
+def forecast_smooth_l1(prediction, target, valid):
+    if prediction.shape != target.shape or valid.shape != target.shape[:2] or not valid.any():
+        raise ValueError('Aligned supervised targets and at least one valid label required')
+    error = nn.functional.smooth_l1_loss(prediction[valid], target[valid], beta=1., reduction='mean')
+    if not torch.isfinite(error):
+        raise ValueError('Nonfinite supervised loss')
+    return error
+
+
 def build_forecaster(architecture):
     options = dict(architecture)
     family = options.pop('family', 'past_context_transformer')
@@ -355,8 +364,12 @@ def train_forecaster(dataset, *, architecture, settings, output_dir, device='cpu
     contract = dataset.contract
     contract._assert_frozen()
     required = {'seed', 'steps', 'batch_size', 'learning_rate', 'checkpoint_every', 'heartbeat_every'}
-    if set(settings) != required or settings['seed'] not in contract.protocol['seeds']:
+    if set(settings) - {'objective'} != required or settings['seed'] not in contract.protocol['seeds']:
         raise ValueError('Explicit settings and protocol-listed seed required')
+    objective = settings.get('objective', 'mse')
+    if objective not in {'mse', 'smooth_l1'}:
+        raise ValueError('Forecaster objective must be mse or smooth_l1')
+    loss_fn = forecast_mse if objective == 'mse' else forecast_smooth_l1
     if any(type(settings[k]) is not int or settings[k] <= 0 for k in required - {'seed', 'learning_rate'}):
         raise ValueError('Positive integer iteration settings required')
     if not np.isfinite(settings['learning_rate']) or settings['learning_rate'] <= 0:
@@ -431,7 +444,7 @@ def train_forecaster(dataset, *, architecture, settings, output_dir, device='cpu
             batch = collate_forecasts([dataset[i] for i in ids])
             inputs = {k: value.to(device) for k, value in batch['inputs'].items()}
             optimizer.zero_grad(set_to_none=True)
-            loss = forecast_mse(model(inputs), batch['target'].to(device), batch['target_mask'].to(device))
+            loss = loss_fn(model(inputs), batch['target'].to(device), batch['target_mask'].to(device))
             loss.backward()
             nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
             optimizer.step()

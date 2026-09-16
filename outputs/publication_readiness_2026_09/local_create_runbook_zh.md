@@ -2,11 +2,15 @@
 
 日期：2026-09-16。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 已启动的真实 8→12 开发实验
+## 已完成的真实 8→12 开发实验与稳健损失对照
 
 用户已选定观察 8 步、预测 12 步为主任务，raw-frame t+50 为补充；其余路线按研究授权确定。
 使用新协议 `configs/m3w_8to12_development_v1.json`，不修改下文保留的旧独立实验草案。
 这是 development-only：既有历史暴露不清零，没有 calibration/confirmation 角色或安全保证。
+
+v1 MSE 实验的可复现代码版本为 `707d4017`。下面四条 v1 命令须使用该版本；
+新实现的 source hash 不同会被正确拒绝，不能修改旧协议 hash 绕过检查。
+请在独立工作目录检出该版本，不回退或覆盖当前有未提交工作的目录。
 
 ```bash
 .venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --protocol configs/m3w_8to12_development_v1.json --preflight-only
@@ -25,10 +29,21 @@ ridge/神经 gain-harm head 和开发评价。已完成模型核验后复用，�
 记录父/子 PID、当前命令、耗时；有进度而慢不是卡死。训练中断从最后完整 checkpoint 恢复。
 汇总脚本必须等全部登记种子评价完成再运行，只导出轻量 JSON/Markdown。
 
-第一份完整模型已由 50-step checkpoint 恢复到 1,000 updates。三个种子不是三个独立地点；
+v1 已完成全部 15 个神经 fit，每个 1,000 updates；三种子均选择 CV floor，不是成功提升。
+首个完整模型曾由 50-step checkpoint 恢复到 1,000 updates。三个种子不是三个独立地点；
 当前开发侧只有 University 一个物理场景，不能据此给出跨场景 bootstrap CI。
 旧草案默认 preflight 仍会拒绝，这是预期行为；必须显式传入新的开发协议。
 本地数据、OOF 缓存和 checkpoint 不提交 Git。CREATE 连接条件未改善，本轮不提交远程作业。
+
+稳健损失 v2 只改 forecaster MSE 为 Smooth-L1(beta=1)，不覆盖 v1。当前代码运行：
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_8to12_development.py --protocol configs/m3w_8to12_robust_v2.json --config configs/m3w_intervention_robust_backend.json --study-dir data/stage_cvpr2027_experiments/8to12_robust_v2 --device cpu --threads 4
+.venv-pytorch/bin/python scripts/summarize_m3w_8to12_development.py --protocol configs/m3w_8to12_robust_v2.json --study-dir data/stage_cvpr2027_experiments/8to12_robust_v2 --report-dir outputs/publication_readiness_2026_09/8to12_robust_v2
+```
+
+重新运行相同 runner 会核验并恢复，不能同时开两个。prepare 脚本只用于首次登记新版本，
+已有版本拒绝覆盖。不同损失的训练 loss 数值不能互相比较；只比较不变的开发评价。
 
 ## 已验证的环境
 
@@ -50,7 +65,7 @@ Apple Silicon 上使用仓库的 `.venv-pytorch/bin/python`，不要使用默认
 
 `RecordingWindows.get_scene_inputs(frame_id, horizon_raw)` 根据当前可见性和过去历史选择 agents，不看未来是否完整；`get_scene_labels(...)` 另行返回未来标签与 loss mask。新接口可支持后续联合介入策略，不等于已完成联合策略训练。
 
-这里的 8 观测/12 预测是可用性检查视图，尚未成为经批准的主实验协议。raw-frame t25 没有精确窗口，不能用邻近帧补成“t25”。所有视图可能重叠，不是独立统计样本。
+最初的 8 观测/12 预测只是可用性视图；现已成为顶部版本化开发协议的主任务，仍不等于独立正式测试。raw-frame t25 没有精确窗口，不能用邻近帧补成“t25”。所有视图可能重叠，不是独立统计样本。
 
 ## 外部原始来源审计
 

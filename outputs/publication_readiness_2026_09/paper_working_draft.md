@@ -1,10 +1,24 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, 2026-09-16. Research question and method proposal only. Empirical claims below are explicitly provisional; this is not submission-ready.
+Working draft, 2026-09-16. Method proposal with a completed, negative three-seed
+development experiment. No independent confirmation or submission-ready claim.
 
 ## Abstract
 
-Multi-agent motion predictors are commonly evaluated by average trajectory error, yet an improved average can conceal degradation on agents whose motion is already well predicted by a simple baseline. Combining baseline and neural predictions independently also creates a scene-level problem: individually plausible choices need not form a coherent joint forecast. We study baseline-relative selective intervention for multi-agent forecasting. The proposed method learns the expected benefit and harm of replacing baseline trajectories using out-of-fold training predictions, selects interventions jointly over an observed interaction graph, and calibrates a finite family of policies using independent scene-level data. The intended evaluation measures prediction error, easy-case degradation, intervention coverage and joint consistency under matched forecasting protocols. Existing M3W experiments motivate this problem but are exploratory: their strongest WorldCore variant was ranked using test metrics, and its reported gains use scale-normalized four-waypoint error. Confirmatory experiments and comparisons to published forecasting and risk-control methods remain to be completed.
+Multi-agent motion predictors are commonly evaluated by average trajectory error,
+yet an improved average can conceal degradation on motion already well predicted
+by a simple baseline. We investigate baseline-relative selective intervention:
+learning benefit and harm from out-of-fold predictions and selecting neural
+replacements over an observed interaction graph. An initial eight-observed,
+twelve-predicted-step development study uses three training seeds and physically
+grouped crossfit folds. All seeds select the causal constant-velocity floor;
+uncontrolled neural forecasts worsen the prespecified normalized ADE by
+7.09--7.90%. Joint and independent controls do not differ at the evaluated
+policies. We identify strong sensitivity to small past normalization scales,
+without treating a favorable alternative metric as confirmation. The method's
+claimed advantage remains unestablished. Strong public predictors, matched-count
+and deferral controls, broader independent scenes and confirmatory evaluation
+are required before a positive submission claim.
 
 ## 1. Introduction
 
@@ -32,21 +46,80 @@ Conformal Risk Control and Learn then Test provide established tools for control
 
 Use the observed agent histories, legal past-only context and candidate rollouts to estimate gain and harm. Train these heads using cross-fitted predictions within training recordings. Freeze both the floor and candidate predictor before training/calibrating the deployment gate. The gate minimizes estimated excess loss over agents plus an interaction penalty on the mixed forecast, subject to supported risk budgets.
 
-A causal supervised backend now implements this connection, but has not been fitted or evaluated on real forecasting labels. A past-context Transformer encodes observed history and neighbor tokens; queries contain requested prediction times and baseline rollouts, never ground-truth future coordinates or validity masks. Training uses masked normalized coordinate MSE with a fixed budget. For approved error functional L, baseline B, frozen candidate N and target Y, define g = L(B,Y) - L(N,Y), benefit = max(g,0) and harm = max(-g,0). The paths are normalized using only observed context. Two nonnegative predicted costs give estimated gain = predicted benefit - predicted harm, enforcing internal coherence rather than calibrated safety. Held-out-fold predictions supply cost targets; producer provenance must exclude every recording in that fold, including upstream fitted dependencies. A ridge control fits preprocessing only on these training-fold examples. The neural cost interface is also implemented; neither approach has yet established a real predictive advantage.
+A past-context Transformer encodes observed history and neighbor tokens; queries
+contain requested prediction times and baseline rollouts, never ground-truth
+future coordinates or validity masks. The completed v1 experiment uses normalized
+coordinate MSE and a fixed update budget. For error functional L, baseline B,
+candidate N and target Y, define g = L(B,Y) - L(N,Y), benefit = max(g,0), and
+harm = max(-g,0). Paths are normalized using observed context only. Separate
+nonnegative costs imply predicted gain = benefit - harm, an internally coherent
+prediction, not calibrated safety. Scene-held-fold predictions supply cost
+targets; every producer and fitted ancestor must exclude the whole held fold.
+Ridge and neural heads use the same 11,966 OOF examples and fit-only preprocessing.
+Neither has established a predictive advantage in the first real experiment.
 
-The [backend checks](supervised_backend/implementation_and_limits.md) verify synthetic CPU/MPS recovery and real-input invariance under future corruption. They do not supply a results table. Development-only model selection, baseline-floor selection, matched intervention controls and independent calibration remain to be executed under the approved protocol.
+The [backend checks](supervised_backend/implementation_and_limits.md) verify
+synthetic CPU/MPS recovery and real-input invariance under future corruption.
+The [new real experiment](8to12_development_v1/results.md) supplies separate
+development evidence. Matched realized-count intervention, public forecaster
+comparison and independent risk calibration remain pending.
 
 The [neural cost-head path](neural_cost_head/implementation_and_limits.md) now also fits nonnegative benefit/harm regression on the same verified OOF inputs as the ridge control, with fit-only normalization and unchanged candidate forecasts. This enables a capacity-controlled comparison rather than attributing gains to an untrained interface. Synthetic CPU/MPS recovery is verified; its development fixture selects the floor, and apparent intervention occurs only on queries lacking complete labels. Neither a real neural advantage nor calibrated safety follows from this implementation.
 
-The [development evaluation interface](development_evaluation/implementation_and_limits.md) now compares floor, uncontrolled, budget-constrained unary, scene-uniform and pairwise-joint controls on identical candidate forecasts. Scene membership depends on observed history, not future-label completeness. Raw errors remain recording-local; approved normalized summaries can use equal-scene, equal-recording or agent-window weights, with uncertainty resampled in physical-scene blocks. Common budget caps do not establish equal coverage, and development intervals do not establish confirmatory significance. This implementation has synthetic end-to-end and real-input integrity checks only; its first real model-selection and matched-control study is still pending.
+The [development evaluator](development_evaluation/implementation_and_limits.md)
+compares floor, uncontrolled, budget-constrained unary, scene-uniform and
+pairwise-joint controls on identical candidate forecasts. Scene membership uses
+past observations, not future-label completeness. Raw errors remain recording-local;
+the current normalized summary equally weights physical scenes. Common budget
+caps do not establish equal realized coverage. The first real comparison is now
+complete and negative; matched-count mechanism evidence is still pending.
 
 A [frozen-policy calibration interface](risk_calibration/implementation_and_limits.md) now consumes those exports without refitting. It requires a prespecified family, order, risk functional and scene aggregation. Missing-label interventions receive the worst bounded loss instead of being excluded. For bounded [0,1] scene losses, its current reference screen adds sqrt(log(M*K/delta)/(2*n)) to the empirical mean for M policies and K risks, using n physical-scene clusters. An unchanged baseline has analytically zero excess risk; a learned policy that happens not to intervene on the observed sample still requires a sampling bound. These are conditional statistical statements, not evidence that the actual scenes are IID, a novel risk theorem, a 2% relative easy-error guarantee, or physical safety. Only synthetic integration has been executed; no real calibration result is available.
 
-A binary engineering prototype now solves this decision with MILP, using past-only coordinate restoration, baseline-relative pair costs and explicit predicted-harm/intervention budgets. It has only synthetic optimization and real-coordinate integrity checks, not learned predictive results. The [implementation specification](joint_intervention/method_and_checks.md) separates this mechanism from the statistical assumptions. JFP already studies unary/pairwise forecast compatibility and heuristic overlap penalties; this is not a novelty claim for joint optimization. Its proposed value still depends on gain/harm supervision, matched comparisons and independent evaluation. See the [focused related-work audit](joint_intervention/related_work_constraints.md).
+A binary optimizer solves this decision with MILP, using past-only coordinate
+restoration, baseline-relative pair costs and explicit predicted-harm/intervention
+budgets. Its real v1 development comparison shows no gain over independent
+selection. The [implementation specification](joint_intervention/method_and_checks.md)
+separates this mechanism from the statistical assumptions. JFP already studies
+unary/pairwise forecast compatibility and heuristic overlap penalties; joint
+optimization alone is not a novelty claim. Its proposed value still depends on
+matched comparisons and independent evaluation. See the
+[focused related-work audit](joint_intervention/related_work_constraints.md).
 
 An additional [exact-count control](matched_coverage/method_and_limits.md) sets the joint intervention count to the independent policy's count on each observed query, before labels are read. It retains the same forecasts, support and predicted-harm cap. This isolates a change in selected identities from a change in coverage, conditional on the reference rule; it does not match realized risk. Forced-count outputs may be worse than the baseline and are diagnostic, not deployment policies. Solver failures remain unmatched in the ledger, and zero-count matches do not count as coupling evidence. This branch is opt-in and has not been registered as a new formal policy or evaluated for real predictive gain.
 
 ## 4. Experiments To Complete
+
+### 4.1 Completed Development Evidence
+
+The frozen v1 protocol fits ETH, Hotel and Zara01/02/03, with all Zara recordings
+kept in one producer fold. Development uses Students01/03, one University site.
+These historically exposed data are explicitly not independent confirmation.
+The task uses native annotation steps, not verified metric/time calibration.
+
+| Seed | Neural normalized ADE gain vs CV (%) | Candidate/floor oracle gain (%) | Selected policy |
+| --- | ---: | ---: | --- |
+| 17 | -7.093 | 0.722 | CV floor |
+| 29 | -7.900 | 0.704 | CV floor |
+| 43 | -7.249 | 0.441 | CV floor |
+
+The oracle uses future labels for diagnosis only. There are 14,920 complete
+development paths, 14,931 valid endpoints and 30,438 past-supported queries;
+these are distinct denominators. Fifteen neural fits complete 1,000 updates each.
+One development site cannot provide a meaningful site-bootstrap interval;
+seed variability is not new-site uncertainty. Easy baseline error is near zero,
+so absolute excess accompanies relative degradation. No successful intervention,
+coupling gain or safety guarantee follows from selecting the unchanged floor.
+
+Fit-only audits show approximately 1% of ETH and Zara02 windows account for
+96.32% and 99.74% of squared normalized target energy. Development normalized
+error is also highly concentrated: the top approximately 1% of Students03 rows
+accounts for 62.49% of CV normalized error but 1.09% of native-coordinate error.
+This motivates a separately versioned one-factor Smooth-L1 loss ablation, not
+post hoc replacement of the primary metric. Details and all failed controls are
+in [the result package](8to12_development_v1/conclusions.md).
+
+### 4.2 Remaining Mechanism and Confirmation Tests
 
 The primary mechanism test holds candidate forecasts and training examples fixed while varying cost supervision and joint selection. At matched actual intervention counts, improved forecast composition would support a narrower contribution than a new predictor architecture. A gain that disappears after matching counts, or a lower proximity penalty accompanied by worse forecasting, would not support that claim. Real accuracy, independent-scene risk calibration and physical safety remain separate questions; none is established by the analytical examples in the assumption audit.
 
@@ -74,7 +147,13 @@ A separate [admission check](intake_admission/implementation_and_limits.md) now 
 
 ## 6. Reproducibility
 
-The next experimental package must store canonical recording IDs, immutable splits, past-only schemas, train normalization, out-of-fold teacher provenance, fixed calibration policies, complete hyperparameters, seeds, checkpoints and runtime logs. Historical cached hashes have been checked separately; no fresh real-data replay is claimed in this draft.
+The completed v1 package stores canonical recording IDs, hash-bound protocol,
+past-only schemas, train-only preprocessing, full held-fold producer lineage,
+fixed development policies, seeds, atomic checkpoints and heartbeat logs.
+Commit `707d4017` preserves its exact training implementation. Fresh real fitting
+is established, but independent calibration and confirmation are not. Source
+identity is checked on resume; old model hashes must not be edited to bypass a
+newer implementation mismatch. Subsequent ablations use new protocol versions.
 
 ## Verified References
 

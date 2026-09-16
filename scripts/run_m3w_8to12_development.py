@@ -27,13 +27,22 @@ def main():
     parser.add_argument('--seeds', type=int, nargs='+', default=[17, 29, 43])
     parser.add_argument('--device', choices=['cpu', 'mps'], default='cpu')
     parser.add_argument('--threads', type=int, default=4)
+    parser.add_argument('--protocol', type=Path, default=ROOT / 'configs/m3w_8to12_development_v1.json')
+    parser.add_argument('--config', type=Path, default=ROOT / 'configs/m3w_intervention_backend.json')
+    parser.add_argument('--study-dir', type=Path, default=ROOT / 'data/stage_cvpr2027_experiments/8to12_v1')
     args = parser.parse_args()
-    protocol = ROOT / 'configs/m3w_8to12_development_v1.json'
+    protocol = args.protocol.resolve()
     contract = ExperimentContract(json.loads(protocol.read_text()), ROOT)
+    config = args.config.resolve()
+    relative_config = str(config.relative_to(ROOT))
+    if contract.protocol['bindings'].get(relative_config) != file_digest(config):
+        raise SystemExit('The training configuration must be bound to the protocol')
     if (not args.seeds or len(set(args.seeds)) != len(args.seeds)
             or not set(args.seeds) <= set(contract.protocol['seeds']) or args.threads < 1):
         raise SystemExit('Explicit distinct protocol-listed seeds and positive threads required')
-    output = ROOT / 'data/stage_cvpr2027_experiments/8to12_v1'
+    output = args.study_dir.resolve()
+    if not output.is_relative_to(ROOT / 'data/stage_cvpr2027_experiments'):
+        raise SystemExit('Study outputs must remain in the ignored experiment store')
     output.mkdir(parents=True, exist_ok=True)
     common = ['--protocol', str(protocol), '--device', args.device, '--threads', str(args.threads)]
     baseline = 'constant_velocity_causal_fd'
@@ -72,7 +81,7 @@ def main():
                                    for fold in folds]
         for name, recordings in specs:
             directory = output / f'seed{seed}_{name}'
-            options = ['--config', str(ROOT / 'configs/m3w_intervention_backend.json'),
+            options = ['--config', str(config),
                        '--fit-recordings', *recordings, '--baseline', baseline, '--seed', str(seed),
                        '--output-dir', str(directory)]
             if (directory / 'latest.pt').exists():

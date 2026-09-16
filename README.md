@@ -31,6 +31,8 @@ A fit-only audit found highly concentrated squared target energy after
 past-based normalization. I am testing that explanation with a one-factor
 robust-loss ablation, keeping the data, network, budget and evaluation fixed.
 I will not change the primary metric after observing which one looks better.
+The [Chinese research roadmap](outputs/publication_readiness_2026_09/publication_route_zh.md)
+explains the experiment order and what would justify a later journal extension.
 
 The protected selector remains the historical reference implementation. It starts from causal motion baselines and switches only when the expected gain is large enough and the estimated easy-case risk is low enough. I am not currently treating its external results as independently validated deployment evidence.
 

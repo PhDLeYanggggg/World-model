@@ -1,6 +1,7 @@
 """Export light, explicitly exploratory results from the fixed development study."""
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -15,10 +16,17 @@ from src.evaluation.m3w_experiment_contract import ExperimentContract, file_dige
 
 
 def main():
-    protocol = ROOT / 'configs/m3w_8to12_development_v1.json'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--protocol', type=Path, default=ROOT / 'configs/m3w_8to12_development_v1.json')
+    parser.add_argument('--study-dir', type=Path, default=ROOT / 'data/stage_cvpr2027_experiments/8to12_v1')
+    parser.add_argument('--report-dir', type=Path, default=ROOT / 'outputs/publication_readiness_2026_09/8to12_development_v1')
+    args = parser.parse_args()
+    protocol = args.protocol.resolve()
     contract = ExperimentContract(json.loads(protocol.read_text()), ROOT)
-    data = ROOT / 'data/stage_cvpr2027_experiments/8to12_v1'
-    output = ROOT / 'outputs/publication_readiness_2026_09/8to12_development_v1'
+    data = args.study_dir.resolve()
+    output = args.report_dir.resolve()
+    if not data.is_relative_to(ROOT) or not output.is_relative_to(ROOT):
+        raise SystemExit('Data and reports must remain inside the workspace')
     output.mkdir(parents=True, exist_ok=True)
     fits, rows, selections, manifests, local_metrics, oracle = [], [], {}, {}, {}, {}
     for seed in contract.protocol['seeds']:

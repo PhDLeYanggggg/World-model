@@ -22,7 +22,10 @@ joint 与 independent 在本轮相同，尚无交互选择贡献；cost-sensitiv
 
 fit-only 尺度审计发现 ETH 约 1% 的窗口占平方标签能量 96.32%，Zara02 为 99.74%。
 这不是实测梯度占比，也不是已证明的因果解释。下一轮只改变 forecaster 损失，
-MSE 改 Smooth-L1，不改数据、指标、阈值或 safety budget。
+MSE 改 Smooth-L1，不改数据、指标、阈值或 safety budget。v2 已登记新协议并启动，
+仍须等三种子完整结果。新损失、恢复和原有训练/评价回归 91 passed / 1 MPS skipped；
+public predictor adapter、deferral 对照、尺度诊断等补充回归 44 passed，
+没有重新宣称 legacy full suite 全绿。
 
 开发模式禁止 calibration/confirmation claim；默认四角色正式协议限制未放宽。
 相关回归 101 passed / 18.19 s，其中 contract/source-admission 子集先验 67 passed。
