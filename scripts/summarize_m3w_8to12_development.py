@@ -150,7 +150,8 @@ def main():
                   'Secondary FDE uses valid endpoint labels; ADE requires the complete path. Their denominators are explicitly separate.',
                   'The JSON also reports absolute easy-slice error and excess; a near-zero baseline makes percentages highly sensitive.',
                   'One physical development scene supports no meaningful scene-bootstrap interval. Three seeds measure training variability, not new sites.',
-                  'The raw-frame t+50 supplement, matched realized-count control, public forecaster comparison and independent confirmation remain separate pending work.', '',
+                  'The raw-frame t+50 supplement, matched realized-count control and independent confirmation remain separate pending work.',
+                  'A public fixed-head adaptation, when used, is not a published best-of-20 reproduction. See the paired-study report for its comparison.', '',
                   '## Candidate Headroom', '',
                   '| Seed | Candidate wins % | Label-oracle gain % | Mean benefit | Mean harm |',
                   '| --- | ---: | ---: | ---: | ---: |'])

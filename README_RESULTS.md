@@ -1,5 +1,22 @@
 # M3W Results Ledger
 
+## Continuous-Identity Source Repair, v5 Running (2026-09-16)
+
+`fresh_run` 上游审计：Students01 的 17,820 行全部可唯一映射回连续文件的相同
+frame 和三位小数坐标，**不是时间错位**。但 415 个原始身份被切成 891 个 20 点
+片段，丢掉 63 条短轨迹、共 3,993 行，恰好等于每条轨迹长度除 20 后的余数。
+因此 source context 的保留依赖后续可用性，仅验证 reader 不读未来不够。
+详见 [逐行审计](outputs/publication_readiness_2026_09/students01_packaging_audit/audit.md)。
+
+v4 full EqMotion 已真实完成 10,000 updates，累计约 1,151.9 秒，权重/heartbeat 留存。
+随后主动停止该 runner，**未运行开发评价，也不是 runtime 卡死或因慢降级**。
+v5 从连续本地源重建新缓存，保留原始身份、精度和短轨迹；完整 8→12 窗口由
+891 变为 14,295，past-supported queries 由 11,583 变为 18,920，不是新增独立场景。
+4 项针对性测试通过，包括删去所有未来点仍保留相同的过去输入和短轨迹 agent。
+v5 完整三种子匹配训练已启动，不改旧 checkpoint/protocol 身份，不报告未完成精度。
+源注释生成过程和物理标定仍未完全验证；此修复不是完整 sensor-as-of 因果性证明。
+见 [新冻结决定](outputs/publication_readiness_2026_09/continuous_context_v5_decision.md)。
+
 ## Fixed-Head Compute Repair and Complete-Budget Run (2026-09-16)
 
 v3 只完成 200/10,000 步成本试跑，**不是完成的模型结果**。CPU 100 步 111.55 秒，

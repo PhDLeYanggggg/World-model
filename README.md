@@ -10,16 +10,19 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am now running a matched public-core comparison: a deterministic fixed-head
+I am running a matched public-core comparison: a deterministic fixed-head
 EqMotion adaptation and my Transformer, both with complete past-neighbor support
-and the same 10,000-update training budget. The
-[frozen protocol](outputs/publication_readiness_2026_09/public_predictor_v3_decision.md)
-separates this development experiment from published best-of-20 EqMotion results.
+and the same 10,000-update training budget. During the run I traced an upstream
+Students01 packaging issue: 20-point fragments preserve timestamps and positions
+but change identities and remove short/tail tracks using later availability.
+I preserved the completed 10,000-update fit, stopped before scoring that context,
+and rebuilt the development source with continuous identities. The
+[new protocol](outputs/publication_readiness_2026_09/continuous_context_v5_decision.md)
+is now training; it does not rename historical data as independent confirmation.
 An [execution-only optimization](outputs/publication_readiness_2026_09/public_predictor_v4_execution_decision.md)
-skips unused output heads; CPU and MPS tests preserve the selected prediction
-and trainable gradients exactly. The real MPS pilot took 15.72 s per 100 updates
-and has resumed toward the complete budget, with checkpoints and heartbeats.
-It is in progress, not yet new evidence of improvement or deployment readiness.
+skips unused output heads while preserving selected outputs and gradients in
+CPU/MPS tests. This remains a K=1 adaptation, not published best-of-20 EqMotion.
+No completed accuracy result or new deployment is claimed for the current run.
 
 My primary task is now **eight observed steps to twelve predicted steps**, with
 raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused
