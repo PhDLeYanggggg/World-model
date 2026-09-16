@@ -17,13 +17,20 @@ using, and whether interacting agents should switch together. The
 [research route](outputs/publication_readiness_2026_09/research_route_decision.md)
 sets out the contribution, falsifiable controls and publication boundaries.
 
-I have frozen a new **development-only** ETH/UCY protocol and started real
-three-seed training. It uses 11,966 fit windows, three physical-scene crossfit
-folds and UCY University for development. The historical data exposure remains
-explicit; this is not an independent test set or a calibrated safety guarantee.
-Training runs have checkpoints and heartbeats, and the first full-fit model has
-completed its 1,000-update budget. Evaluation is still running; no improvement
-is claimed from training loss alone.
+My first **development-only** ETH/UCY experiment is complete: three seeds,
+12 forecasting fits and three neural cost-head fits, each with 1,000 updates.
+It uses 11,966 fit windows, three physical-scene crossfit folds and UCY University
+for development. All three seeds selected the constant-velocity floor. Without
+fallback, the neural model worsened the primary normalized ADE by 7.09%, 7.90%
+and 7.25%. The [complete results](outputs/publication_readiness_2026_09/8to12_development_v1/results.md)
+retain native-coordinate errors, easy-case damage and the negative controls.
+These are real training results on historically exposed development data, not
+independent confirmation or a calibrated safety guarantee.
+
+A fit-only audit found highly concentrated squared target energy after
+past-based normalization. I am testing that explanation with a one-factor
+robust-loss ablation, keeping the data, network, budget and evaluation fixed.
+I will not change the primary metric after observing which one looks better.
 
 The protected selector remains the historical reference implementation. It starts from causal motion baselines and switches only when the expected gain is large enough and the estimated easy-case risk is low enough. I am not currently treating its external results as independently validated deployment evidence.
 

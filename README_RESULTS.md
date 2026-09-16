@@ -1,13 +1,28 @@
 # M3W Results Ledger
 
-## Real 8-to-12 Development Study Started (2026-09-16)
+## Real 8-to-12 Development Study Completed, Negative Result (2026-09-16)
 
 用户明确选定 obs8/pred12 为主、raw-frame t+50 为补充，并授权研究路线判断。
 我据此冻结了独立版本的 exploratory development-only 协议，没有把旧数据改称独立测试。
 训练集 11,966 个完整窗口，ETH/Hotel/Zara 三个物理场景交叉拟合，UCY University 做开发。
 种子预先固定为 17/29/43；单场景开发结果不能制造跨场景 bootstrap CI。
-第一份真实 Transformer 完成 1,000 updates，arm64 Torch CPU、4 threads、workers=0；
-50-step checkpoint 已恢复到完整预算。全流程训练/评价仍在运行，暂不报告预测改善。
+三种子均完成：12 个 forecaster、3 个 neural cost head，每个 1,000 updates，
+另有 3 个相同行 OOF ridge control。arm64 Torch CPU、4 threads、workers=0，
+检查点、损失、heartbeat 和 hash 均保留。15 个神经训练累计约 880.61 秒，
+不含数据准备、OOF 和开发评价时间，不能当作全流程耗时。
+
+`fresh_run`：主指标相对 CV，uncontrolled neural 在 seed 17/29/43 分别为
+-7.093% / -7.900% / -7.249%；三个开发选择全部为 floor，没有可部署改善。
+候选与 CV 二选一的未来标签 oracle headroom 仅 0.722% / 0.704% / 0.441%，
+这是诊断上界，不是模型成绩。easy 分母接近零，完整 JSON 同时保留绝对误差。
+native-coordinate 敏感性、各 baseline、60 个比较见
+[完整结果](outputs/publication_readiness_2026_09/8to12_development_v1/results.md)。
+joint 与 independent 在本轮相同，尚无交互选择贡献；cost-sensitive deferral、
+实际介入数量匹配和 public forecaster 正式比较仍未运行。
+
+fit-only 尺度审计发现 ETH 约 1% 的窗口占平方标签能量 96.32%，Zara02 为 99.74%。
+这不是实测梯度占比，也不是已证明的因果解释。下一轮只改变 forecaster 损失，
+MSE 改 Smooth-L1，不改数据、指标、阈值或 safety budget。
 
 开发模式禁止 calibration/confirmation claim；默认四角色正式协议限制未放宽。
 相关回归 101 passed / 18.19 s，其中 contract/source-admission 子集先验 67 passed。

@@ -2,6 +2,34 @@
 
 日期：2026-09-16。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 已启动的真实 8→12 开发实验
+
+用户已选定观察 8 步、预测 12 步为主任务，raw-frame t+50 为补充；其余路线按研究授权确定。
+使用新协议 `configs/m3w_8to12_development_v1.json`，不修改下文保留的旧独立实验草案。
+这是 development-only：既有历史暴露不清零，没有 calibration/confirmation 角色或安全保证。
+
+```bash
+.venv-pytorch/bin/python scripts/train_m3w_causal_forecaster.py --protocol configs/m3w_8to12_development_v1.json --preflight-only
+.venv-pytorch/bin/python scripts/run_m3w_8to12_development.py --device cpu --threads 4
+.venv-pytorch/bin/python scripts/summarize_m3w_8to12_development.py
+.venv-pytorch/bin/python scripts/audit_m3w_8to12_training_scale.py
+```
+
+第二条依次执行 17/29/43 三个种子，各自完整预测器、三个场景留出预测器、相同 OOF 数据上的
+ridge/神经 gain-harm head 和开发评价。已完成模型核验后复用，未完成 checkpoint 原样恢复；
+逐 recording 评价也支持恢复。不要同时启动两个相同 runner，不要运行中修改协议绑定源码。
+只运行特定登记种子可显式加 `--seeds 17`，但不能写成三种子完成。
+
+输出位于本地忽略目录 `data/stage_cvpr2027_experiments/8to12_v1/`，包含每个子任务的
+`.log`、checkpoint、artifact manifest 和 `heartbeat.jsonl`。根目录 `runner_heartbeat.json`
+记录父/子 PID、当前命令、耗时；有进度而慢不是卡死。训练中断从最后完整 checkpoint 恢复。
+汇总脚本必须等全部登记种子评价完成再运行，只导出轻量 JSON/Markdown。
+
+第一份完整模型已由 50-step checkpoint 恢复到 1,000 updates。三个种子不是三个独立地点；
+当前开发侧只有 University 一个物理场景，不能据此给出跨场景 bootstrap CI。
+旧草案默认 preflight 仍会拒绝，这是预期行为；必须显式传入新的开发协议。
+本地数据、OOF 缓存和 checkpoint 不提交 Git。CREATE 连接条件未改善，本轮不提交远程作业。
+
 ## 已验证的环境
 
 Apple Silicon 上使用仓库的 `.venv-pytorch/bin/python`，不要使用默认 x86_64 Conda。新的运行探针会在导入 Torch 前拒绝 macOS x86_64；历史问题是架构/运行库组合，不是“PyTorch 不能多线程”。
