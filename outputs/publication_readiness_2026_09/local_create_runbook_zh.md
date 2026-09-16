@@ -36,6 +36,20 @@ Apple Silicon 上使用仓库的 `.venv-pytorch/bin/python`，不要使用默认
 
 GC 的 raw stride=20，因此不能用插值补出 raw t50 来冒充真实标签。VRU 的 measurement ID 不等于已验证的全局视频 frame；两条异常时钟轨迹被隔离，不能把每个对象的时间零点拼成同场邻居。`obs8/pred12` 只是逐源观测步可用性，不自动代表相同物理时长或正式批准的主协议。十五项测试验证这些边界，来源权限、历史暴露及独立场景资格仍须另行核实。
 
+## CITR 诊断缓存接入
+
+```bash
+.venv-pytorch/bin/python scripts/build_m3w_citr_recordings.py
+.venv-pytorch/bin/python scripts/build_m3w_citr_recordings.py --resume --report outputs/publication_readiness_2026_09/citr_causal_intake/resume_report.json
+.venv-pytorch/bin/python -m pytest tests/test_m3w_citr_recordings.py tests/test_m3w_causal_recordings.py -q
+```
+
+第一条仅在新输出目录执行；已有缓存不覆盖。缓存位于忽略目录 `data/stage_cvpr2027_causal/citr_diagnostic/`。中断后加 `--resume`：已完成 clip 核验后复用，带本次 ownership 标记的未完成 clip 重建；原始 CSV/代码/缓存身份改变即拒绝。报告应另取文件名保留 fresh 与 cached_verified 的区分；逐 clip 写 PID 心跳。
+
+实际转换 38 clips / 95,648 点 / 318 行人轨迹 / 26 车辆轨迹，逐行映射回原 CSV。raw10/25/50/100 视图分别 89,800 / 84,640 / 76,040 / 58,840；obs8/pred12 为 89,112，均含两类 agent 且可能重叠。`CITRRecordingWindows` 提供因果场景输入与独立标签 API，不读取 filtered 速度。agent type 目前为元数据，不等于已训练类型 embedding。
+
+全体 clip 属于同一物理地点，全部 `diagnostic_only`，未进入正式协议。来源条件、历史暴露和独立确认资格尚未解决；没有新增预测训练/精度/metric/seconds 声明。详见 [接入与边界](citr_causal_intake/implementation_and_limits.md)。
+
 ## 正式实验入口与拒绝行为
 
 ```bash

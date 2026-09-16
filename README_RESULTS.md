@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## CITR Causal Diagnostic Intake (2026-09-16)
+
+`fresh_run`：把本地已核对作者 Git blob 的 CITR raw CSV 接入因果 recording reader。38 clips、95,648 个原始位置点逐行对应源 CSV，318 条行人轨迹、26 条车辆轨迹使用不冲突的 clip 内 ID。精确 raw10/25/50/100 窗口为 **89,800 / 84,640 / 76,040 / 58,840**，obs8/pred12 为 **89,112**；所有计数含两类 agent，重叠窗口不是独立样本。转换约 2.415 秒，缓存约 20.86 MB，未提交原始数据或缓存。
+
+`cached_verified`：再次启动核验并复用全部 38 个 clip；95,648 行另用独立 CSV 字段读取逐值复核。38 个场景 / 344 agent 的未来位置破坏检查不改变输入、坐标变换或可见 agent，future-label API 调用 0 次。新增 27 项用例，相关回归 **204 passed in 60.12 s**；测试名整理后新用例再跑 **27 passed**。中断续跑、ID/类型、缺帧、源码/源数据/缓存漂移拒绝均覆盖。初次收集的缩进错误已在真实转换前修复；历史 full-suite 1,870 pass / 1 fail 未重写。
+
+关键限制：CITR 是同一停车场的受控实验，38 clips 只计 **1 physical site**，不能补成 38 个独立校准场景。全部 `diagnostic_only`，正式协议未修改，使用条件/历史预测暴露/独立确认资格仍待核实。当前只保留 agent 类型元数据，没有新增 typed neural 训练、预测精度、baseline 改善或部署。DUT 仅复核作者元数据，未下载 raw 或转换。详见 [接入和边界](outputs/publication_readiness_2026_09/citr_causal_intake/implementation_and_limits.md)。下一步仍是批准科学用途和落实独立场景；Stage5C/SMC 关闭，投稿就绪未达成。
+
 ## Frozen Confirmation and Three-Seed Reporting (2026-09-16)
 
 本轮补齐最终评价入口：从批准协议固定比较族与全部 seeds，核对实际预测器和 OOF producer 的训练 seed，读取真实完成的 calibration export，再比较相同预测的五种控制。确认标签不参与选模或阈值搜索；完成收据锁定代码/产物/运行身份，支持逐 recording 恢复与篡改拒绝。主指标、easy/hard、原始录像局部误差、尾部、最差场景、介入率和联合 proximity proxy 分开报告。

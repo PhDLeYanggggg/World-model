@@ -52,6 +52,8 @@ The current datasets are represented in pixel or dataset-local coordinates with 
 
 The new [support audit](risk_calibration/support_audit.md) makes this limitation concrete: nine current canonical recordings correspond to six physical-scene groups, all historically development-exposed. With six hypothetical independent calibration scenes and zero observed [0,1] loss, even one policy/one risk gives an upper bound of 0.4996 at illustrative delta=0.05 under the current Hoeffding screen. This is a sensitivity calculation, not an actual calibration or universal sample-complexity lower bound. Repeated windows cannot improve independent-scene support. Until data roles and independent confirmation are resolved, useful formal risk control must remain an unestablished part of the proposed contribution rather than a result.
 
+A separate [CITR diagnostic conversion](citr_causal_intake/implementation_and_limits.md) now retains synchronized pedestrian and vehicle raw positions with row-level provenance. Its 38 controlled clips cover only one physical site, so the conversion cannot be counted as 38 independent calibration scenes. No data-use role, independent-test eligibility, typed neural training or predictive result has been established for this cache. It may support future controlled mechanism checks after review, not a current external-generalization claim.
+
 ## 6. Reproducibility
 
 The next experimental package must store canonical recording IDs, immutable splits, past-only schemas, train normalization, out-of-fold teacher provenance, fixed calibration policies, complete hyperparameters, seeds, checkpoints and runtime logs. Historical cached hashes have been checked separately; no fresh real-data replay is claimed in this draft.
