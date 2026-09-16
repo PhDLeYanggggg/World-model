@@ -22,7 +22,7 @@ Minimum comparisons before claiming the hypothesis is supported:
 
 1. Identical forecasts and observed agent membership for independent and joint decisions.
 2. Ordinary same-budget policies plus the new reference-conditional exact-count control. Report prediction error, positive harm, proximity proxy and both overall and labeled-subset intervention rates.
-3. A cost-sensitive regression-deferral control using the same training-fold predictions, with the exact adapted objective disclosed. That learned comparator has **not** been implemented or evaluated by this literature pass.
+3. A cost-sensitive regression-deferral control using the same training-fold predictions, with the exact adapted objective disclosed. Following this literature pass, a [two-action control](../deferral_control/method_and_limits.md) has been implemented and verified on synthetic fixtures. Real fitting/comparison remains **not_run**; no theorem or published benchmark reproduction is claimed.
 4. Explicit negative/zero-count and solver-failure accounting; no exclusion based on realized improvement.
 5. Unexposed confirmation, approved physical-scene grouping and paired uncertainty. None is supplied by a literature citation or a successful optimizer test.
 

@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## Cost-Sensitive Deferral Comparator (2026-09-16)
+
+本轮实现 Mao/Mohri/Zhong ICML 2024 regression-deferral 的 two-action adapted control，补齐“不能只与简单阈值比较”的方法对照。使用与 M3W gain/harm head 相同的 OOF forecaster 和 past-only rollout features，连续误差加权，不学 one-hot oracle class。协议必须显式绑定 cost clipping 和训练设置；保留 raw targets、报告 clipping fraction，softmax/logit 不是校准 harm probability。正式五控制、旧训练 backend 和真实 draft 未修改。
+
+`fresh_run`：线性/小 MLP 合成训练、折缓存恢复、optimizer/RNG 恢复、实际产物加载、数据/权重/协议漂移拒绝通过。最终相关回归 **243 passed in 64.07 s**，19 项新增。构造代价实验实际训练 300 updates：candidate 90% 小赢、10% 大输，expected constructed cost 0.109，高于 floor 0.02；cost-sensitive gate 正确回退，而多数 winner 和逐行归一化权重都会选错。这里只验证 objective 实现，不是外部轨迹改善、论文复现或新理论。
+
+真实入口 preflight **exit 2: Explicit protocol approval required**。真实拟合、独立确认和超过该公开方法的结论均 `not_run`。CPU arm64 / 4 threads / workers=0；本轮未新增 MPS 或 12 小时稳定性结果。历史非隔离 full-suite 1,870 pass / 1 fail 不变，CREATE 没有新连接条件或作业。详见 [方法与边界](outputs/publication_readiness_2026_09/deferral_control/method_and_limits.md)、[验证](outputs/publication_readiness_2026_09/deferral_control/verification.json)。Stage5C/SMC 关闭，独立场景和科学协议仍是正式实证阻塞，投稿未就绪。
+
 ## Exact-Coverage Mechanism Control (2026-09-16)
 
 本轮补齐一个影响因果解释的实验对照：相同 intervention cap 不等于相同实际切换数。现在先用 past-only independent policy 确定每个场景查询的 k，再让 joint 保持相同 k、相同候选预测/support 和 predicted-harm cap。强制数量可能产生比 floor 更差的预计目标，因此只作为 diagnostic control，不替换 deployment policy；求解失败明确 unmatched，0 对 0 不算 interaction 贡献。默认五控制与正式协议未增加新 arm。

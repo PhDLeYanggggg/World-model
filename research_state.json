@@ -1,5 +1,33 @@
 {
   "cvpr2027_research_track": {
+    "cost_sensitive_deferral_control": {
+      "result_source": "fresh_run_synthetic_training_and_regression_checks",
+      "entry": "scripts/train_m3w_deferral_control.py",
+      "report": "outputs/publication_readiness_2026_09/deferral_control/method_and_limits.md",
+      "verification": "outputs/publication_readiness_2026_09/deferral_control/verification.json",
+      "prior_work": "Mao_Mohri_Zhong_ICML2024_Eq3_single_expert_adaptation_not_published_experiment_reproduction",
+      "same_OOF_features_as_gain_harm": true,
+      "continuous_cost_weighted_not_one_hot": true,
+      "protocol_bound_cost_clipping": true,
+      "calibrated_harm_probability": false,
+      "synthetic_checkpoint_resume_verified": true,
+      "new_tests_passed": 19,
+      "combined_focused_tests_passed": 243,
+      "combined_focused_tests_seconds": 64.07,
+      "constructed_cost_rows": 100,
+      "constructed_cost_optimizer_steps": 300,
+      "constructed_rare_harm_policy": "baseline",
+      "real_preflight_exit_code": 2,
+      "real_training": "not_run_pending_approved_protocol",
+      "real_comparison": "not_run_pending_protocol_and_independent_support",
+      "formal_arms_changed": false,
+      "new_predictive_gain": false,
+      "new_deployment": false,
+      "create_job_submitted": false,
+      "stage5c_executed": false,
+      "smc_enabled": false,
+      "next_action": "Resolve existing scientific-role and temporal-protocol decisions; register the adapted deferral comparator and exact-coverage diagnostic in a frozen matched study; obtain independent scene support"
+    },
     "exact_coverage_mechanism_control": {
       "result_source": "fresh_run_synthetic_solver_and_real_input_checks",
       "entry": "scripts/check_m3w_matched_coverage.py",
@@ -767,7 +795,7 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "cvpr2027_exact_coverage_control_verified_real_protocol_and_independent_support_pending",
+  "current_stage": "cvpr2027_deferral_control_verified_real_protocol_and_independent_support_pending",
   "current_verdict": "historical_external_evidence_under_revalidation",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",

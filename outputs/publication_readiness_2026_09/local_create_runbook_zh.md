@@ -119,6 +119,23 @@ OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manif
 
 最终版 80 个合成问题全部与穷举一致；真实输入 61 queries / 618 agents 的未来破坏不改变决策。新增 20 项测试，合并相关回归 224 passed。一次在测试中修改代码导致恢复身份校验拒绝，已固定源码完整重跑；运行实际训练/恢复期间不要修改其绑定模块。这里没有新增真实预测改善或部署。详见 [方法与边界](matched_coverage/method_and_limits.md)。
 
+## Cost-sensitive deferral 文献对照
+
+```bash
+.venv-pytorch/bin/python scripts/train_m3w_deferral_control.py --preflight-only
+.venv-pytorch/bin/python scripts/train_m3w_deferral_control.py --help
+.venv-pytorch/bin/python scripts/check_m3w_deferral_control.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_cost_sensitive_deferral.py -q
+```
+
+真实草案的 preflight 应返回 exit 2，不启动训练。第三条只训练构造代价的线性 gate，不能当真实轨迹效果；会写指定目录的检查报告，保留旧轮次时用新的 `--report-dir`。本轮验证 CPU，不新增 MPS 或长时稳定性声明。
+
+正式入口需明确 `--protocol`、`--workspace-root`、`--artifacts`、`--fold-models`、`--baseline`、`--seed`、`--output-dir`。批准协议中还必须绑定 `comparators.cost_sensitive_deferral` 的 `cost_bound`、`width`、`fit_settings`，不从 test 估计范围。`width=0` 是 linear；其他为小 MLP。fit_settings 包含 steps/batch_size/learning_rate/checkpoint_every/heartbeat_every。CLI 的 `--batch-size` 仅用于折外特征提取。当前没有替用户选择真实 bound 或训练设置。
+
+恢复加 `--resume`；`--stop-after-folds` 和 `--stop-after` 分别可用于折完成/optimizer step 中断演练。折缓存 hash、模型身份、上游暴露和 fit-only 标准化受检查。`head/latest.pt` 保存参数/optimizer/RNG/cursor，心跳带 PID；只从完整 checkpoint 恢复。完整产物保存 `artifact.json`，部分 checkpoint 不能当完成模型加载。缓存、checkpoint 不提交 Git。
+
+这个对照保留两个预测的连续误差，不是 oracle winner 分类。输出 logit margin 不是 gain 或 harm probability，不能直接接进安全阈值冒充校准。正式 development/calibration/confirmation arms 尚未改变；需批准后按同预测器、同数据用途和匹配覆盖率规则接入。详见 [方法与局限](deferral_control/method_and_limits.md)。
+
 ## EqMotion 官方核心适配检查
 
 ```bash
