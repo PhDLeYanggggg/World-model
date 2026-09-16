@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## Development-Only Selection and Matched Controls (2026-09-16)
+
+本轮补上新训练链路后的开发集比较：冻结预测器/OOF cost head 后，对同一批预测运行 floor、uncontrolled、预算约束的 unary-only、scene-uniform、joint 五种控制。所有过去支持足够的 agent 先参与决策，随后才读取标签；缺失未来不成为 inference 过滤条件，缺失 endpoint 不冒充 FDE。不同原生采样网格分开比较，不插值。相同预算上限不等于相同实际介入率，报告保留实际率与 predicted-risk 的局限。
+
+新增 17 项针对性测试，合并 **119 passed in 16.80 s**。临时合成 fixture 跑通三个 8-step forecasters、两折 OOF cost 和 ridge head，再比较五种策略：16 scene queries / 27 agents，仅 15 有完整标签；最终选 floor，不宣称正提升。单物理场景明确不生成 CI；多场景构造表验证 whole-scene bootstrap，不能把重叠窗口当独立样本。
+
+`fresh_run` 真实输入检查另覆盖 **23 queries / 274 agents**，五种策略在破坏全部未来位置后保持不变，future-label calls=0；4 个请求无过去网格支持，明确跳过。使用随机预测权重和常数合成 gain/harm，不是训练出的风险头，也没有计算真实 accuracy。真实训练/开发评价仍 `not_run`，未批准协议的入口按预期返回 exit 2。没有新部署、校准或独立确认；旧 full-suite 1,870 pass / 1 fail 状态不变。详见 [实现、证据和边界](outputs/publication_readiness_2026_09/development_evaluation/implementation_and_limits.md)。当前优先项仍是确认科学协议后执行真实 clean fit/OOF/开发对照；Stage5C/SMC 继续关闭。
+
 ## Causal Forecasting and Out-of-Fold Cost Training (2026-09-16)
 
 本轮把新因果 reader、来源协议和 gain/harm 监督接到可恢复的真实 Torch 训练入口，不再依赖旧 teacher cache。新增 past-context Transformer、独立 input/label collator、固定预算训练、完整 optimizer/sampler/RNG checkpoint，以及先验证整 fold 暴露再构建 realized benefit/harm 的 OOF 数据路径。简单 ridge cost head 的归一化只在 fit OOF 数据上学习；MLP cost 接口已实现，但没有新的真实数据对比训练。这里的固定预算模型**不是 validation-selected best**。

@@ -75,6 +75,23 @@ OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manif
 
 更完整的实现和边界见 [supervised backend](supervised_backend/implementation_and_limits.md)。旧的 runtime probe 与下面的 joint checks 仍是独立工程证据，不应与新真实预测实验混为一谈。
 
+## 开发集选模与五种控制策略
+
+```bash
+.venv-pytorch/bin/python -m pytest tests/test_m3w_development_evaluation.py -q
+.venv-pytorch/bin/python scripts/check_m3w_development_inputs.py
+.venv-pytorch/bin/python scripts/evaluate_m3w_development.py --preflight-only
+.venv-pytorch/bin/python scripts/evaluate_m3w_development.py --help
+```
+
+17 项新检查包括临时合成端到端训练/OOF/开发比较、不同采样网格、缺失未来标签、easy guard、按物理场景 bootstrap 和缓存篡改拒绝。与先前相关检查合计 119 passed。真实输入 probe 使用随机神经权重和常数合成代价，不读真实标签；23 queries / 274 agents 的五种控制在未来位置破坏后保持不变。不要把它当作外部准确性结果。当前真实 draft 的 preflight 仍返回 exit 2。
+
+正式评价需要已批准协议中的 `development_evaluation` 规则，以及显式 `--plan` 和完整 `--artifacts`。规则包括 error unit、label coverage、query stride、每个 recording 的图/距离代理、easy/hard 定义、可选 arms、bootstrap seed 和 policy grid。easy 定义必须与协议风险定义相同。候选 plan 引用实际 forecaster/risk artifact、baseline 和有哈希的 cost report；不能以旧 test-exposed teacher 充数。
+
+入口只打开 development role。先把整个 candidate family、代码、配置、产物身份写入 `run_identity.json`，再读开发标签；每完成一个 candidate/recording 原子写缓存和 receipt。`--resume` 复用已核验结果，未完成的 recording 重算。已完成的相同运行返回 `cached_verified`，换权重/阈值/缓存拒绝。`heartbeat.jsonl` 记录 PID 和场景处理进度。使用新输出目录开始独立开发实验，不覆盖旧研究结果。
+
+选模结果写入 `selected_policy.json` 并记录 development 暴露与父产物；没有合格候选就保留 floor，且 `deployment_approved=false`。这里的 matched 指同预测和同预算上限，不是自动相同介入率或已校准风险。汇总选择目前只支持明确批准的 past-normalized error，dataset-local 原始 ADE/FDE 按 recording 单列；不同未验证坐标不能直接池化。独立风险校准和最终确认还未执行。详见 [实现与限制](development_evaluation/implementation_and_limits.md)。
+
 ## 联合介入工程验证
 
 ```bash

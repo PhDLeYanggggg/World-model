@@ -1,5 +1,32 @@
 {
   "cvpr2027_research_track": {
+    "development_intervention_evaluator": {
+      "result_source": "fresh_run_synthetic_pipeline_and_real_input_checks; cached_verified_raw_positions",
+      "module": "src/evaluation/m3w_development_evaluation.py",
+      "entry": "scripts/evaluate_m3w_development.py",
+      "report": "outputs/publication_readiness_2026_09/development_evaluation/implementation_and_limits.md",
+      "verification": "outputs/publication_readiness_2026_09/development_evaluation/verification.json",
+      "new_tests_passed": 17,
+      "combined_focused_tests_passed": 119,
+      "combined_focused_tests_seconds": 16.80,
+      "controls": ["floor", "uncontrolled", "independent", "scene_uniform", "joint"],
+      "all_past_supported_agents_decide_before_labels": true,
+      "incompatible_native_request_grids_separated": true,
+      "missing_endpoints_not_replaced_by_last_valid": true,
+      "actual_coverage_reported_not_assumed_matched": true,
+      "raw_errors_per_recording_not_pooled": true,
+      "bootstrap_unit": "physical_scene",
+      "synthetic_completed_resume_verified": true,
+      "synthetic_cache_tampering_refused": true,
+      "real_input_queries": 23,
+      "real_input_agents": 274,
+      "real_input_unsupported_queries": 4,
+      "real_future_label_calls": 0,
+      "real_development_evaluation": "not_run_scientific_protocol_unapproved",
+      "independent_calibration_or_confirmation": false,
+      "new_deployment": false,
+      "next_action": "Approve scientific roles and evaluation rules, then run clean forecast/OOF/development controls; follow with independent risk calibration and matched strong baselines"
+    },
     "supervised_intervention_backend": {
       "result_source": "fresh_run_engineering; cached_verified_real_raw_position_inputs",
       "report": "outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md",
@@ -25,7 +52,7 @@
       "independent_calibration_or_confirmation": false,
       "real_protocol_preflight_exit_code": 2,
       "new_deployment_promotion": false,
-      "next_action": "Resolve pending scientific choices; fit clean predictors and OOF realized costs under approved roles; implement development-only selection and matched-control evaluation"
+      "next_action": "Resolve pending scientific choices; fit clean predictors and OOF realized costs under approved roles; execute the now-implemented development evaluator and matched-control comparison"
     },
     "external_source_availability_audit": {
       "result_source": "fresh_run",
@@ -603,7 +630,7 @@
       "smc_enabled": false
     }
   },
-  "current_stage": "cvpr2027_causal_supervised_backend_verified_real_protocol_pending",
+  "current_stage": "cvpr2027_development_selection_backend_verified_real_protocol_pending",
   "current_verdict": "historical_external_evidence_under_revalidation",
   "m3w_current_detailed_summary_2026_05_27": {
     "source": "cached_verified_summary_from_stage18_to_stage42_hi_plus_current_user_request",
