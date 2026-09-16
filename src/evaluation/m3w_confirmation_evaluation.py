@@ -24,6 +24,7 @@ CODE_PATHS = (
     'src/evaluation/m3w_development_evaluation.py', 'src/evaluation/m3w_experiment_contract.py',
     'src/data_unification/m3w_causal_recordings.py', 'src/world_model/m3w_supervised_intervention.py',
     'src/world_model/m3w_joint_intervention.py',
+    'src/world_model/m3w_neural_gain_harm.py',
 )
 
 
@@ -147,7 +148,7 @@ def load_family(contract, *, device):
         if model._fitted_baseline_name != rules['baseline']:
             raise ValueError('Predictor and evaluation baseline disagree')
         candidate = {**c, 'baseline': rules['baseline']}
-        head = _load_cost_head(contract, candidate)
+        head = _load_cost_head(contract, candidate, device=device)
         loaded.append({**candidate, 'model': model, 'head': head,
                        'settings': contract.protocol['development_evaluation']['policies'][c['policy_id']]})
     reference = None

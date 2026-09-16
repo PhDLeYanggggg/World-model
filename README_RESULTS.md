@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Neural Gain/Harm Head Connected (2026-09-16)
+
+`fresh_run`：补齐此前仅有网络定义的 neural gain/harm head 训练与评价入口。直接复用 ridge 的完整 fit OOF 缓存，验证相同 rows/features/producer 身份；目标保持连续 benefit/harm 大小，不改成 winner 分类。只在 fit OOF 上标准化，配置和 seed 显式绑定协议，校验上游整 fold 暴露、baseline、架构和数据角色。真实草案未增加配置或批准，preflight 仍 exit 2。
+
+合成实际训练：64 rows / 306 features / 12 updates，CPU 独立进程连续 12 步与 5+7 恢复的参数/loss 完全一致，完成恢复为 `cached_verified`。显式 MPS 同样参数/loss 差为 0；首轮受限环境初始化失败，获准访问 Metal 后原样通过，不是 CPU fallback。CLI 为 arm64 Torch 2.12.0、compute=2、interop=1、workers=0。短测不等于 12 小时稳定性。
+
+配对开发检查有 27 past-supported queries、15 完整标签、1 个合成场景。神经 guarded controls 切换 5/27，但全部在标签不完整的查询上；完整标签子集切换率和改善都是 0。ridge 不切换，最终仍选择 floor。没有把 loss 下降（0.5114 到 0.3016，不同 minibatch）或切换率当预测提升，没有为单场景制造 CI，未进行神经 calibration/confirmation 研究。
+
+最终评价链路 **95 passed / 1 显式 MPS case skipped / 63.94 s**；底层回归 **178 passed / 26.43 s**；最终单独 MPS **1 passed / 2.57 s**。完成 checkpoint 被改动后曾可重新登记的回归先失败，现已加入 receipt hash 检查并通过。前一版 94-pass 与 MPS 3.63 s 记录保留；为留存临时产物额外复跑的一次 CLI 单测不计作独立实验。旧非隔离 full suite 1,870 pass / 1 fail 保留。无真实新训练/精度/部署、无 CREATE 新作业，Stage5C/SMC 关闭，投稿未就绪。详见 [实现与边界](outputs/publication_readiness_2026_09/neural_cost_head/implementation_and_limits.md)、[合成产物](outputs/publication_readiness_2026_09/neural_cost_head/synthetic_integration.json)、[验证](outputs/publication_readiness_2026_09/neural_cost_head/verification.json)。
+
 ## Diagnostic Source Admission Repair (2026-09-16)
 
 把上轮重复标注发现转化为准入检查，而不只留在报告。复现了一个潜在缺口：合成协议只要标 approved，原入口会接受仍写 source conditions pending 的缓存；真实协议始终未批准，未发生真实误用。现在带来源待审标记的 active recording 必须绑定 intake screen、底层 source/conversion/quality audit，以及另行声明的 source-use 决定和证据。科学角色批准不能覆盖质量 quarantine，修改 screen 摘要也不能隐去底层重复标注。新草案会绑定 checker 源码，真实草案未改。

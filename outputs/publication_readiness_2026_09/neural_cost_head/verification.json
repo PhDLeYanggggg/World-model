@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-16",
+  "result_source": "fresh_run_synthetic_training_and_regressions_only",
+  "preimplementation_tests": "2 failed because new trainable neural cost module did not exist",
+  "evaluation_chain": {
+    "passed": 95,
+    "seconds": 63.94,
+    "command": "env OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 .venv-pytorch/bin/python -m pytest tests/test_m3w_neural_gain_harm.py tests/test_m3w_development_evaluation.py tests/test_m3w_deferral_development.py tests/test_m3w_risk_calibration.py tests/test_m3w_confirmation_evaluation.py -q",
+    "note": "Final completed-checkpoint guard included; one opt-in MPS case skipped here and executed separately.",
+    "skipped": 1
+  },
+  "backend_regression": {
+    "passed": 178,
+    "seconds": 26.43,
+    "command": "env OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 .venv-pytorch/bin/python -m pytest tests/test_m3w_intake_admission.py tests/test_m3w_experiment_contract.py tests/test_m3w_supervised_intervention.py tests/test_m3w_cost_sensitive_deferral.py tests/test_m3w_matched_coverage.py tests/test_m3w_eqmotion_adapter.py tests/test_m3w_joint_intervention.py tests/test_m3w_causal_recordings.py tests/test_m3w_recording_lineage.py tests/test_stage44_worldcore.py -q",
+    "scope_note": "Unchanged tested backend paths; final subsequent edit only affects completed neural-head resume, covered by the final 95-case chain."
+  },
+  "explicit_mps": {
+    "passed": 1,
+    "seconds": 2.57,
+    "initial_restricted_environment": "failed before MPS model allocation; current macOS 15.3.1",
+    "authorized_metal_execution": "passed same test without code change or CPU fallback",
+    "command": "env OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 PYTORCH_ENABLE_MPS_FALLBACK=0 M3W_TEST_MPS=1 .venv-pytorch/bin/python -m pytest tests/test_m3w_neural_gain_harm.py::test_mps_neural_cost_resume_and_shared_scene_inference -q",
+    "parameter_max_diff": 0,
+    "loss_max_diff": 0,
+    "earlier_pass_seconds": 3.63
+  },
+  "cpu_cli_evidence_replay": {
+    "passed": 1,
+    "seconds": 12.49,
+    "reason": "Original pytest temporary artifact rotated; repeated only integration case to preserve light evidence.",
+    "independent_experiment": false
+  },
+  "new_test_cases": 23,
+  "checked_behaviors": [
+    "continuous relative-cost magnitude loss",
+    "nonnegative coherent outputs",
+    "full OOF fold coverage and fit-only normalization",
+    "producer seed and architecture identity",
+    "CPU separate-process resume",
+    "MPS resume and past-scene inference",
+    "no future-input dependence",
+    "all inference decisions before development labels",
+    "matched ridge/neural forecasts and OOF features",
+    "incomplete models and changed cache rejected",
+    "completed evaluation cached_verified"
+  ],
+  "real_neural_cost_preflight": {
+    "exit_code": 2,
+    "reason": "Explicit protocol approval required",
+    "training_started": false
+  },
+  "real_protocol_sha256_unchanged": "1e6f401a5f75b22d031d6c1a2be80c3faece4ef16019d8a9778bf1cd6d2989d8",
+  "code_sha256": {
+    "src/world_model/m3w_neural_gain_harm.py": "cc128da55fd6f0fc7dbe6fb05c0357feb76a26bf91554d256e3af27abca169b2",
+    "scripts/train_m3w_neural_cost_head.py": "da8292dd37d2c2f36f4cbe5d519236972fc480efc7dd76b06ef94197f07c15c7",
+    "src/evaluation/m3w_development_evaluation.py": "e1c2a0ba12a200957b4bd28aa1624e1fe206871262470f7eae9a572800f145b3",
+    "src/evaluation/m3w_risk_calibration.py": "1267678224b29904e9fe9923a3dddaa24ef925cc4070b347015fe0a5f4e5d162",
+    "src/evaluation/m3w_confirmation_evaluation.py": "69b59a38690da7ced96b9bf6663ae0d1e1c1faa3a650d05c005b02512c90799d",
+    "scripts/evaluate_m3w_development.py": "da77c82dbfbf5eff0c0ac648f3ce6c0d5efcdd1b92e06977ea8ee1702586da83",
+    "scripts/calibrate_m3w_intervention.py": "d3adc88c8aa4c83223bdc40558f70349a5fd69288f2fa2a27ee2d24075c65e29",
+    "tests/test_m3w_neural_gain_harm.py": "369953da018a32ac088a30ae6c1f93357543242889732f6164ddd70551000036"
+  },
+  "neural_three_seed_confirmation": "not_run",
+  "real_model_selection": "not_run",
+  "real_predictive_advantage": "not_established",
+  "former_full_suite": {
+    "rerun": false,
+    "passed": 1870,
+    "failed": 1
+  },
+  "new_CREATE_job": false,
+  "formal_protocol_changed": false,
+  "checkpoint_committed": false,
+  "deployment_approved": false,
+  "submission_ready": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "earlier_evaluation_chain": {
+    "passed": 94,
+    "seconds": 62.8
+  },
+  "completed_checkpoint_regression": {
+    "initial": "failed DID NOT RAISE after bytes appended to completed checkpoint",
+    "final": "passed; completion receipt hash enforced before resume"
+  }
+}

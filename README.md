@@ -54,6 +54,8 @@ I now have a [frozen-policy risk-screening path](outputs/publication_readiness_2
 
 The [final comparison path](outputs/publication_readiness_2026_09/confirmation_evaluation/implementation_and_limits.md) keeps every training seed visible and freezes the compared policies before final labels are read. It reports scene-level uncertainty, per-seed easy-case damage and matched joint-control comparisons without choosing a winner on the final set. The complete connection has been exercised on synthetic data; it does not replace the still-pending real independent experiment.
 
+The [neural benefit/harm head](outputs/publication_readiness_2026_09/neural_cost_head/implementation_and_limits.md) now trains on the same held-fold inputs as the ridge control. This lets me test whether neural capacity adds anything without changing the training examples or candidate forecasts. CPU/MPS recovery and the comparison path are checked, but the synthetic example still selects the baseline. I have not established a real-data advantage for this head.
+
 ## What The System Looks At
 
 The current M3W pipeline works with dataset-local top-down trajectories. It uses information that would be available at inference time:

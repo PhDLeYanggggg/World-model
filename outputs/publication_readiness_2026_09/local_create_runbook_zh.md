@@ -112,6 +112,18 @@ OOF cost 入口还需要显式 `--fold-models` 映射和 producer artifact manif
 
 更完整的实现和边界见 [supervised backend](supervised_backend/implementation_and_limits.md)。旧的 runtime probe 与下面的 joint checks 仍是独立工程证据，不应与新真实预测实验混为一谈。
 
+## 神经 Gain/Harm Head
+
+新入口 `scripts/train_m3w_neural_cost_head.py` 从上一节 ridge OOF 运行目录读取完整折缓存，核验 hash/身份后训练小型连续代价回归 head，不重抽数据、不训练预测器本身。需显式 `--protocol`、`--artifacts`、`--oof-cache-dir`、`--seed`、`--output-dir`；协议中须绑定 `gain_harm_training` 的 width、loss=`squared_benefit_harm` 和 fit_settings（steps/batch_size/learning_rate/checkpoint_every/heartbeat_every）。未替真实实验选择这些值。
+
+```bash
+.venv-pytorch/bin/python scripts/train_m3w_neural_cost_head.py --preflight-only
+.venv-pytorch/bin/python scripts/train_m3w_neural_cost_head.py --help
+env OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 VECLIB_MAXIMUM_THREADS=2 .venv-pytorch/bin/python -m pytest tests/test_m3w_neural_gain_harm.py -q
+```
+
+第一条当前应 exit 2，不导入 Torch 训练。恢复用 `--resume`，可用 `--stop-after` 演练中断；只有完整预算结束才产生 `artifact.json`。产物可作为 development plan 的 risk head，与 ridge 共用 forecaster、baseline、policy grid；输入 fingerprint 相同是配对前提，不应只比较模型名称。输出是 expected benefit/harm，不是安全概率。显式 MPS 测试及权限边界、未标注样本切换的负结果见 [说明](neural_cost_head/implementation_and_limits.md)。运行中不要修改绑定源码；旧实验不靠改 hash 强行恢复。
+
 ## 开发集选模与五种控制策略
 
 ```bash

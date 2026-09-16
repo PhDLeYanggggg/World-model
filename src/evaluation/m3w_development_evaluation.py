@@ -101,7 +101,14 @@ def decide_scene(scene, forecaster, head, *, baseline, policy, geometry, device,
         finite_forecast = torch.isfinite(candidate).all(dim=(1, 2))
         candidate = torch.where(finite_forecast[:, None, None], candidate, inputs['baseline'])
         features = risk_features(inputs, candidate)
-        scores = predict_linear_gain_harm(head, features.cpu().numpy())
+        if isinstance(head, dict):
+            scores = predict_linear_gain_harm(head, features.cpu().numpy())
+        else:
+            from src.world_model.m3w_neural_gain_harm import NeuralGainHarm
+            if not isinstance(head, NeuralGainHarm):
+                raise ValueError('Unsupported gain/harm head')
+            head.eval()
+            scores = {k: v.cpu().numpy() for k, v in head(features.to(head.mean.device)).items()}
     b, c = inputs['baseline'].cpu().numpy(), candidate.cpu().numpy()
     ids = [a['agent_id'] for a in agents]
     common_b = restore_scene_rollouts(scene, dict(zip(ids, b)))['xy_dataset_local']
@@ -441,7 +448,7 @@ def validate_plan(contract, plan):
     return rules, recordings
 
 
-def _load_cost_head(contract, candidate):
+def _load_cost_head(contract, candidate, *, device='cpu'):
     artifact = contract.artifacts[candidate['risk_head_id']]
     if artifact['kind'] != 'risk_head':
         raise ValueError('Expected risk-head artifact')
@@ -454,6 +461,23 @@ def _load_cost_head(contract, candidate):
             or report['metric'] != contract.protocol['task']['primary_metric']
             or report['code_sha256'] != file_digest(Path(__file__).parents[1] / 'world_model/m3w_supervised_intervention.py')):
         raise ValueError('Cost-head supervision/lineage mismatch')
+    if artifact.get('family') == 'neural_gain_harm':
+        from src.world_model.m3w_neural_gain_harm import load_verified_neural_gain_harm
+        model = load_verified_neural_gain_harm(contract, candidate['risk_head_id'], device=device)
+        identity = model.fitted_identity
+        if (not report.get('training_complete') or report.get('family') != 'neural_gain_harm'
+                or any(report.get(k) != identity[k] for k in
+                       ('seed', 'spec', 'group_sha256', 'oof_feature_identity', 'source_identity', 'producer_architecture'))):
+            raise ValueError('Neural cost report/checkpoint identity mismatch')
+        for parent in [candidate['forecaster_id'], *identity['parents']]:
+            state = torch.load(contract._path(contract.artifacts[parent]['path']), map_location='cpu', weights_only=True)
+            if state['identity']['settings']['seed'] != identity['seed']:
+                raise ValueError('Neural cost and comparison producer seed mismatch')
+            if state['architecture'] != identity['producer_architecture']:
+                raise ValueError('Neural cost and comparison producer architecture mismatch')
+        return model
+    if artifact.get('family') not in (None, 'linear_gain_harm'):
+        raise ValueError('Unsupported risk-head family')
     with np.load(contract._path(artifact['path']), allow_pickle=False) as arrays:
         head = {k: arrays[k].copy() for k in ('mean', 'scale', 'coef', 'intercept')}
     if any(not np.isfinite(v).all() for v in head.values()) or np.any(head['scale'] <= 0):
@@ -507,7 +531,7 @@ def evaluate_development(contract, plan, *, device='cpu', on_recording=None, cac
         del model
     for candidate in plan['candidates']:
         model = load_verified_forecaster(contract, candidate['forecaster_id'], device=device)
-        head = _load_cost_head(contract, candidate)
+        head = _load_cost_head(contract, candidate, device=device)
         deferral = (_load_deferral_head(contract, candidate, device=device)
                     if rules.get('diagnostic_controls') else None)
         rows = []

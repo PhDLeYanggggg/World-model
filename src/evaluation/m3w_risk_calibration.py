@@ -92,6 +92,7 @@ def load_frozen_policy(contract, artifact_id, *, device):
         raise ValueError('Development run identity changed')
     root = Path(__file__).resolve().parents[2]
     dependencies = ('src/evaluation/m3w_development_evaluation.py', 'src/world_model/m3w_supervised_intervention.py',
+                    'src/world_model/m3w_neural_gain_harm.py',
                     'src/world_model/m3w_joint_intervention.py', 'scripts/evaluate_m3w_development.py')
     if any(identity.get('code_sha256', {}).get(name) != file_digest(root / name) for name in dependencies):
         raise ValueError('Development policy implementation changed; re-evaluate development before calibration')
@@ -130,7 +131,7 @@ def load_frozen_policy(contract, artifact_id, *, device):
     if model._fitted_baseline_name != candidate['baseline']:
         raise ValueError('Predictor baseline differs from policy baseline')
     return {'id': artifact_id, 'arm': arm, 'baseline': body['baseline_name'], 'model': model,
-            'head': _load_cost_head(contract, candidate),
+            'head': _load_cost_head(contract, candidate, device=device),
             'settings': contract.protocol['development_evaluation']['policies'][candidate['policy_id']]}
 
 

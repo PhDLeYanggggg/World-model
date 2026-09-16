@@ -72,6 +72,7 @@ def main():
                 'code_sha256': {p: file_digest(ROOT / p) for p in
                     ('src/evaluation/m3w_risk_calibration.py', 'src/evaluation/m3w_experiment_contract.py',
                      'src/evaluation/m3w_development_evaluation.py', 'src/world_model/m3w_supervised_intervention.py',
+                     'src/world_model/m3w_neural_gain_harm.py',
                      'src/world_model/m3w_joint_intervention.py', 'src/data_unification/m3w_causal_recordings.py',
                      'scripts/calibrate_m3w_intervention.py')}, 'device': args.device, 'threads': args.threads}
     identity_path = output / 'run_identity.json'
