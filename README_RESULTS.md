@@ -1,5 +1,18 @@
 # M3W Results Ledger
 
+## Fixed-Forecast Supplement Ready, Real Evaluation Pending
+
+The v6 primary study is still running. I have fixed the supplementary analysis
+before its development results: exact raw-frame t+50 prefixes of the same 12-step
+forecasts, and joint versus independent routing at the same actual intervention
+count. All seeds, cost heads and frozen policies will be reported. Neither
+supplement can select a new policy or retune the main result.
+
+34 targeted checks pass. The entry point refuses an unfinished primary study;
+real supplementary accuracy is **not_run**, pending all registered fits. Zero
+switches and failed count-matching are not evidence for joint coordination.
+See the [frozen supplement](outputs/publication_readiness_2026_09/forecast_supplement_v6_decision.md).
+
 ## Past-Only Input Conditioning, v6 Running (2026-09-16)
 
 v5 seed17 完成完整 full/folds、OOF heads 和开发评价；seed29 在 CPU 与 MPS 都出现

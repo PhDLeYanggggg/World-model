@@ -243,6 +243,14 @@ comparison rather than being merged with v6 results.
 
 ### 4.3 Remaining Mechanism and Confirmation Tests
 
+The [v6 forecast supplement](forecast_supplement_v6_decision.md) is fixed before
+v6 development results. It applies exact-count routing and exact raw-frame t+50
+prefix scoring to every frozen seed/head/policy, without selecting a new model.
+The prefix uses the same original 12-step prediction and past normalization;
+it is not a separately horizon-conditioned t+50 model. Implementation checks
+pass, but real supplementary scoring waits for complete primary fits. It cannot
+repair the lack of independent confirmation sites.
+
 The primary mechanism test holds candidate forecasts and training examples fixed while varying cost supervision and joint selection. At matched actual intervention counts, improved forecast composition would support a narrower contribution than a new predictor architecture. A gain that disappears after matching counts, or a lower proximity penalty accompanied by worse forecasting, would not support that claim. Real accuracy, independent-scene risk calibration and physical safety remain separate questions; none is established by the analytical examples in the assumption audit.
 
 The [deferral control](deferral_control/method_and_limits.md) fits linear or small neural routing on the same causal rollout features and held-fold predictions as the relative-cost head. It preserves continuous error weights and makes its bounded-cost transform explicit in the protocol. Clipped training risk, unclipped forecasting error and calibrated safety are distinct quantities. Its [development comparison](deferral_development/implementation_and_limits.md) now verifies identical OOF training inputs and runs all controls on identical forecasts before labels are read. The unconstrained deferral arm is not claimed to share M3W's budget or coverage. Paired scene-level error differences are descriptive; synthetic integration and recovery do not establish a real accuracy advantage. The real protocol and frozen confirmation family have not been changed.
