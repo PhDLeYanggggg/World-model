@@ -162,6 +162,21 @@ that a learned intervention improves the realized trajectory.
 
 ## 4. Experiments To Complete
 
+### Auxiliary Video Integrity, Not Forecast Evidence
+
+Before prospective auxiliary training, a full local SDD source audit decodes
+522,497frames and checks10,616,256annotation rows.54of60reference/video pairs
+have unequal image dimensions. Nexus video naming also follows a lexical
+reindexing pattern rather than annotation identity; a fixed source-link repair
+changes10media paths and resolves three frame-range mismatches. No raw file or
+trajectory label is changed, and no model is fitted in this audit.
+
+The resulting diagnostic source map is not a training registration, independent
+confirmation or metric/time calibration. Missing/padded image support and
+offline interpolation provenance remain material. These defects concern local
+SDD media, not a post-hoc explanation of the existing ETH/UCY negative forecasts.
+[Source audit and repair](sdd_media_alignment/conclusions.md).
+
 ### Native Detail and Spatial Pooling Control
 
 A registered input repair retains the original96x96 observed crops and compares

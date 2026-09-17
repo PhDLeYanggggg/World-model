@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I found and repaired two problems in the local SDD video input path before
+expanding training: compressed video pixels do not share the annotation image
+size, and ten Nexus clips are paired with the wrong annotation names. The
+[full source audit](outputs/publication_readiness_2026_09/sdd_media_alignment/conclusions.md)
+decodes all 522,497 frames and preserves an explicit, hashed correspondence map.
+This fixes diagnostic image access, not forecasting performance. Black borders,
+partial observations and a new auxiliary-training protocol still need attention.
+The existing ETH/UCY results and sealed evaluation roles are unchanged.
+
 I have completed the [native-resolution motion study](outputs/publication_readiness_2026_09/spatial_motion/conclusions.md):
 36 matched neural fits test whether original image detail and localized motion
 grids improve forecasting. None beats the training-selected constant-velocity
@@ -20,9 +29,9 @@ promote these models or count clearer inputs as better predictions.
 The most useful next step is broader independent evidence of starting, stopping
 and turning, not another threshold sweep on the same few people. I have also
 [inventoried 60 local SDD videos](outputs/publication_readiness_2026_09/sdd_media_inventory/report.md).
-Their headers are readable, but completeness and annotation alignment still
-need checking before a separately registered training expansion. No new SDD
-training or change to the primary metric follows from that inventory.
+The follow-up above goes beyond readable headers and exposes real correspondence
+defects. Full semantic alignment and a separately registered training expansion
+remain outstanding. No new SDD training or primary-metric change follows.
 
 I have completed the [past image-motion comparison](outputs/publication_readiness_2026_09/observed_motion_v2/conclusions.md):
 54 real neural fits test quality controls, motion magnitude and motion direction

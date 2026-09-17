@@ -1,5 +1,28 @@
 # M3W Results Ledger
 
+## SDD Video Correspondence Repaired Diagnostically (2026-09-17)
+
+`fresh_run`: 60 videos fully decoded, 522,497 frames, 10,616,256 annotation rows,
+346.84 seconds summed per-video audit. Header/decode counts match 60/60; all 60
+annotations match the local OpenTraj mirror hash. This is not source-publisher
+checksum certification or new independent data. All 35 focused tests pass.
+
+Two defects: 54 reference/video size mismatches; 10 Nexus video names mispaired under
+same-name lookup. Three same-name clips lack frame coverage for 300,646 annotation
+rows, including 198,128 visible rows. A fixed lexical-reindex link hypothesis
+restores all 12 Nexus range checks and raises median first-reference correlation
+over the 10 changed links from 0.1344 to 0.9743. Raw files remain unchanged. Resize mapping
+reduces nominal visible box extent violations from 3,217,812 to 148; extent is not
+semantic alignment. Six five-frame contact sheets self-audited, not human gold.
+
+`cached_verified`: 60 source-hash receipts, no new decoding on completed resume.
+Independent sampled replay of 84 resize frames and 60 Nexus samples is exact, with overlap.
+Black/warped border support remains a reader issue. New training admission and
+sampling require separate registration; no forecast model fitted. Does not
+explain the prior ETH/UCY failures or validate historical Stage26/37 results.
+No metric/seconds claim, sealed-role access, Stage5C or SMC.
+[Full evidence and limits](outputs/publication_readiness_2026_09/sdd_media_alignment/conclusions.md).
+
 ## Native-Resolution Spatial Motion Complete, Negative (2026-09-17)
 
 `fresh_run`:36 actual neural fits,4,000updates each,144,000total;174.57seconds

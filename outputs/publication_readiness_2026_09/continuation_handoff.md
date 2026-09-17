@@ -1,5 +1,55 @@
 # Real-Experiment Continuation Handoff
 
+## SDD Full Media Audit and Diagnostic Repair (2026-09-17)
+
+Previous turn was progress:36newnegative neuralfits/replay/docs pushedc705a33c.
+This turn also changes authoritative state:full60video decode, new image-coordinate
+helper and fixed Nexus media-link repair, rather than more loss/gate searches.
+Goal active, not submission-ready. No new model trained. Newsourceadmission
+question remains unanswered; do not repeat it or silently add SDD to fit.
+
+Full audit `scripts/audit_m3w_sdd_media_alignment.py`:522,497decodedframes,
+10,616,256annotationrows,346.84s summed per-video time.60header counts match,
+no PTS anomalies,60annotationhashes match localOpenTrajmirror.54ref/videodimension
+mismatches; same-name framecoverage only57/60. Nexus2/6/7 mismatch causes300,646
+uncoveredrows(198,128visible). Alloriginalreceipts preserved; no raw edits.
+
+`m3w_sdd_image_coordinates.py`: reference-box-edge resizeonly, statecoordinates
+unchanged,past/current frameguard,noimplicitclipping. Structuraloutsidecount
+3,217,812->148, maxroundtrip2.28e-13. Notpersonidentityorvisibilitycertificate.
+`m3w_sdd_source_links.py`: fixedlexicographic reorder explainsNexus10changedlinks:
+annotation2->media4,3->5,4->6,5->7,6->8,7->9,8->10,9->11,10->2,11->3;0/1same.
+All12Nexus coveragepass;10changed medianfirst-referencecorr.1344->.9743.
+Actualcompressionhistory notinspected, keep inferencewording.
+
+Public evidence `sdd_media_alignment/`:audit.json,resize_mapping.json,
+nexus_identity.json,diagnostic_media_links.json,verification.json,
+link_verification.json,conclusions.md,visual_review.md. Allsource/image-derived
+figures remain private data; no publishedrawmedia. Diagnosticlinks explicitly
+disallow training/evaladmission, preserveannotationskeys/splits andrawpaths.
+35focusedtests pass;fulllegacysuitenotrerun.6five-framecontactsheetsselfaudited,
+notgold; rawJSONnot_revieweddescribesgenerationtime, reviewnoteis separate.
+
+Pilot30691/PID11233, full9878/PID11282, cachedverify83960/PID12218,
+resize71610,Nexus40974,manifest57885allterminal0. No active decode/train.
+Full completedresume verified60hashreceipts,0newdecodes. Resize84sampleframes
+exact,Nexus60samples exact (overlap,not144independentframes). NoOpenCV/Torch in
+decoderprocess. Localfree disk77GiB duringrun; CREATE notrequeried/nonewjob.
+
+Next independent safe action:diagnose and implement past-only partial/black-padded
+image support under diagnosticrole. RawNexus3->media5frame0hasmassivewarpedblack
+border; boundsmask alone would treat missing image as observed. Do not erase rows,
+pretendsemanticallframespass, resampletime silently or registertraining without
+source-role decision. Existingoffline annotation mode still required (98.388%
+SDDrowsgenerated). OpenTrajestimated_scales.yaml exists butREADME sayssomeguesses;
+notverifiedmetric. This discovery doesNOTexplain ETH/UCYnegativefits.
+
+CurrentfitETH/Hotel/groupedZara, primarypastnormalizedADE,8obs12future remain.
+NoStudentsdevelopment/calibration/confirmation, Stage5C/SMC, physicalseconds/meters
+or deployment. OldStage26/37scoresexploratory. Unrelatedstagedhash remains
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`;
+explicit-pathcommitonly, do nottouch3,019otherstagedentries.
+
 ## Native Spatial Motion Complete, Negative (2026-09-17)
 
 This is a concrete progress turn, not a repeated status/blocked turn: registered

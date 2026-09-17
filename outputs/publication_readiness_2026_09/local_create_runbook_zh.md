@@ -2,7 +2,34 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：原始分辨率与局部运动网格对照完成，结果为负
+## 当前：SDD 视频输入对应关系已诊断修复，未新增训练
+
+完整解码60视频、522,497帧，核对10,616,256标注行，累计单视频审计346.84秒。
+54视频需参考图到视频的像素尺寸映射。Nexus的10个同名视频与标注不对应；
+固定字符串排序重编号假设修复后12个Nexus标注帧范围全部有视频覆盖。
+不重命名/改写原文件，输出显式路径和hash。仅诊断用途，不自动加入训练。
+完整[证据与限制](sdd_media_alignment/conclusions.md)。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_sdd_media_alignment.py
+.venv-pytorch/bin/python scripts/audit_m3w_sdd_media_alignment.py --verify-only
+.venv-pytorch/bin/python scripts/audit_m3w_sdd_resize_mapping.py
+.venv-pytorch/bin/python scripts/audit_m3w_sdd_nexus_identity.py
+.venv-pytorch/bin/python scripts/build_m3w_sdd_diagnostic_media_links.py
+.venv-pytorch/bin/python scripts/verify_m3w_sdd_media_links.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_sdd_source_links.py tests/test_m3w_sdd_image_coordinates.py tests/test_m3w_sdd_media_audit.py tests/test_m3w_masked_history_images.py -q
+```
+
+第一条逐视频保存完成记录和心跳，可恢复；完成后验证hash，不重复全量解码。
+完整解码过程不加载OpenCV或Torch，避免不必要的运行库混合。
+35针对性测试通过；全量旧测试未重跑。只检查当前源文件与诊断对应关系，
+不是第二次全量解码或模型复现。源视频和视觉检查图不进Git。
+
+黑色边缘、遮挡和局部可见性仍需显式past-only输入mask；图内框不等于可用图像。
+坐标映射不等于米制标定，容器PTS不等于验证过的物理时间。新辅助训练角色、
+采样间隔与来源支持需要另行登记；当前8到12主要任务和封存评价边界不变。
+
+## 历史：原始分辨率与局部运动网格对照完成，结果为负
 
 36个真实Torch模型全部完成，每个4,000更新，共144,000更新，合计拟合174.57秒。
 原始96像素裁剪构建133.13秒，30,013条降采样逐一匹配旧32像素缓存。

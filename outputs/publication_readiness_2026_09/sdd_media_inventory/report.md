@@ -1,5 +1,10 @@
 # Local SDD Media Inventory, Not Training Admission
 
+Follow-up: the [completed full decoder/correspondence audit](../sdd_media_alignment/conclusions.md)
+supersedes the header-only readiness assessment below. It finds video resizing
+and misnumbered Nexus media; explicit diagnostic links are now available. The
+original header inventory is preserved unchanged and is not training admission.
+
 `fresh_run`: read local video headers and SHA-256 hashes for 60 files under
 `external_data/StanfordDroneDataset/video`, covering eight folder-level scenes.
 All 60 headers are readable; total size is 1,195,953,035 bytes. The inventory
