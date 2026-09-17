@@ -69,6 +69,17 @@ Conformal Risk Control and Learn then Test provide established tools for control
 
 ## 3. Method
 
+An additional [SDD past-image input check](sdd_past_images/conclusions.md) follows
+the source correspondence repair. It retains geometric image support separately
+from an inferred current-frame black-border mask, without erasing partial or
+short histories. All 60 fixed 64-frame prefixes are processed; 180 independently
+decoded frames produce 2,074 exact crop replays. The 302 non-lost crops affected
+by suspect borders illustrate why image extent alone is inadequate. Original
+observed pixels remain available because dark border regions can be real image
+content. These masks are not human labels or person-visibility segmentation.
+This diagnostic admits no new training/evaluation role and proves no forecasting
+benefit; offline interpolation and unknown physical timing remain limitations.
+
 Use the observed agent histories, legal past-only context and candidate rollouts to estimate gain and harm. Train these heads using cross-fitted predictions within training recordings. Freeze both the floor and candidate predictor before training/calibrating the deployment gate. The gate minimizes estimated excess loss over agents plus an interaction penalty on the mixed forecast, subject to supported risk budgets.
 
 A past-context Transformer encodes observed history and neighbor tokens; queries

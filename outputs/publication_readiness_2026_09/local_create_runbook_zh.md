@@ -2,7 +2,34 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：SDD 视频输入对应关系已诊断修复，未新增训练
+## 当前：SDD 过去图像读取器已验证，未新增训练
+
+已经实现带明确缺失支持的诊断读取器，固定检查所有 60 个视频的前 64 帧。
+总计 3,840 帧、79,680 标注行；部分越界 4,231 条，疑似黑边 302 条。
+原始观测 RGB、去疑似黑边 RGB、两种覆盖计数和遮挡标记分别保留。
+黑边推断不是人工标签，也不证明人体可见。短历史保留 mask，不用后续帧补齐。
+[结果与限制](sdd_past_images/conclusions.md)。
+
+```bash
+.venv-pytorch/bin/python scripts/build_m3w_sdd_past_images.py
+.venv-pytorch/bin/python scripts/build_m3w_sdd_past_images.py --verify
+.venv-pytorch/bin/python -m pytest tests/test_m3w_sdd_past_images.py tests/test_m3w_sdd_source_links.py tests/test_m3w_sdd_image_coordinates.py tests/test_m3w_sdd_media_audit.py tests/test_m3w_masked_history_images.py -q
+```
+
+第一条逐视频保存完成记录和心跳，已完成部分核对 hash 后复用。修改绑定源码、
+配置或输入后会拒绝旧记录，不要跳过检查。第二条独立重解码每个视频的
+0/31/63 帧，并进行未来行扰动检查；不是第二次全量视频解码。
+54 针对性测试通过；180 重解码帧、2,074 裁剪逐像素一致，172 个有可见 agent
+的未来行扰动检查通过。恢复验证 60 条记录，零新增解码/数组写入。
+全量旧测试未重跑。全部进程已结束，不需要重启或提交重复作业。
+
+缓存约 659 MB，在忽略目录 `data/stage_cvpr2027_experiments/sdd_past_images`。
+示例 API：`SDDPastImageStore(path, observation_mode='offline_annotated').inputs(query_frame=31, agent_id=known_id, length=8)`。
+角色仅 `diagnostic_only`；这不是数据源训练许可。8/16/32/64 是诊断历史长度，
+不能把相邻 SDD raw frames 解释成已批准的跨数据集物理时间采样。
+辅助训练的数据角色和采样方案待登记，既有主任务、指标和封存角色不变。
+
+## 历史：SDD 视频输入对应关系已诊断修复，未新增训练
 
 完整解码60视频、522,497帧，核对10,616,256标注行，累计单视频审计346.84秒。
 54视频需参考图到视频的像素尺寸映射。Nexus的10个同名视频与标注不对应；
@@ -25,7 +52,8 @@
 35针对性测试通过；全量旧测试未重跑。只检查当前源文件与诊断对应关系，
 不是第二次全量解码或模型复现。源视频和视觉检查图不进Git。
 
-黑色边缘、遮挡和局部可见性仍需显式past-only输入mask；图内框不等于可用图像。
+本次源审计指出黑边、遮挡和局部可见性需要明确 mask，上方读取器完成了后续实现；
+图内框仍不等于有效的人体观测，也未认证所有帧的语义对应。
 坐标映射不等于米制标定，容器PTS不等于验证过的物理时间。新辅助训练角色、
 采样间隔与来源支持需要另行登记；当前8到12主要任务和封存评价边界不变。
 

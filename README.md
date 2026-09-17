@@ -10,13 +10,22 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have connected the repaired SDD video paths to a
+[past-image reader with explicit missing support](outputs/publication_readiness_2026_09/sdd_past_images/conclusions.md).
+It keeps partial observations and short histories, distinguishes image extent
+from suspected black padding, and preserves occlusion flags. The fixed-prefix
+check covers all 60 recordings; 2,074 sampled crops replay exactly. These are
+input checks, not better forecasting scores. The padding mask is inferred, and
+SDD has not been silently admitted to the current training protocol.
+
 I found and repaired two problems in the local SDD video input path before
 expanding training: compressed video pixels do not share the annotation image
 size, and ten Nexus clips are paired with the wrong annotation names. The
 [full source audit](outputs/publication_readiness_2026_09/sdd_media_alignment/conclusions.md)
 decodes all 522,497 frames and preserves an explicit, hashed correspondence map.
-This fixes diagnostic image access, not forecasting performance. Black borders,
-partial observations and a new auxiliary-training protocol still need attention.
+This fixes diagnostic image access, not forecasting performance. The reader above
+now handles partial support; semantic alignment and an auxiliary-training protocol
+still need attention.
 The existing ETH/UCY results and sealed evaluation roles are unchanged.
 
 I have completed the [native-resolution motion study](outputs/publication_readiness_2026_09/spatial_motion/conclusions.md):

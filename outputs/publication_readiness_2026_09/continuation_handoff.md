@@ -1,5 +1,48 @@
 # Real-Experiment Continuation Handoff
 
+## SDD Past-Image Reader Verified (2026-09-17)
+
+This turn is progress: new reader, fixed-prefix real extraction, independent
+decode/replay and future-row mutation checks. Goal active, not submission-ready.
+Previous repair pushed as `1399bdc8`. No new forecasting model or source role.
+
+Code: `m3w_sdd_past_images.py`; builder and independent verifier share
+`scripts/build_m3w_sdd_past_images.py` (`--verify` selects replay). Config
+`configs/m3w_sdd_past_image_audit.json` SHA256
+`12f259eac78a091c4423c3381c3df6aa91155ac286748abb7c568a7cd9f972bc`.
+Data under ignored `data/stage_cvpr2027_experiments/sdd_past_images`;
+public evidence `outputs/publication_readiness_2026_09/sdd_past_images`.
+
+All 60 first-64-frame prefixes complete: 3,840 frames, 79,680 annotation rows,
+44,332 non-lost, 35,348 lost, 4,231 partial crops, 302 suspect-border crops.
+Build sums 81.67 s and 659,413,440 array bytes. No rows dropped for missing
+history. Two Nexus prefixes have no non-lost tracks. A query population requires
+a non-lost observation at/before query, not eventual track appearance.
+
+Both original observed RGB and border-masked RGB retained. Near-black threshold
+8 with current-image four-connected edge components is inferred-only; dark
+boundary objects may be flagged, interior black retained. Occlusion is a source
+flag, not a body segmentation. Offline interpolation provenance remains a limit.
+
+54 focused tests pass. Independent 180-frame decode yields 2,074 bit-exact crops,
+172 eligible future mutation checks pass. Completed resume verifies 60 receipts,
+180 source hashes and unchanged 121 metadata/receipt/public-report files, with
+no new decode/array writes. Four private sheets (12 displayed frames) self-audited,
+not human gold. Full legacy suite not rerun. No model contribution established.
+
+Pilot session72045, full76957/PID15477, replay62249 and resume-check23682
+are all observed terminal exit0. No active process from this diagnostic remains.
+No new CREATE query/job; unchanged access condition was not re-polled.
+
+Next: source-role and sampling registration before auxiliary training. Pending
+user question remains unanswered; do not repeat or silently admit SDD. Current
+ETH/Hotel/grouped-Zara fit, primary past-normalized ADE, 8-to-12 task, sealed
+Students/development/calibration/confirmation and raw t+50 supplement unchanged.
+The first-64-frame check is not a representative forecasting cohort or a new
+independent test. Do not confuse masks with dynamics lift or previous failures.
+Stage5C and SMC disabled. Use explicit Git paths, preserving unrelated staged
+fingerprint `c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+
 ## SDD Full Media Audit and Diagnostic Repair (2026-09-17)
 
 Previous turn was progress:36newnegative neuralfits/replay/docs pushedc705a33c.

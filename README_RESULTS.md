@@ -1,5 +1,25 @@
 # M3W Results Ledger
 
+## SDD Past-Image Support Implemented (2026-09-17)
+
+`fresh_run`: fixed first-64-frame diagnostics over 60 recordings, 3,840 frames,
+79,680 annotation rows; 81.67 seconds total per-record build time. The pilot is
+hash-verified and reused by the full invocation. Partial bounds affect 4,231
+non-lost rows; inferred black-border support affects 302. Lost rows remain with
+zero crop support, and short histories are masked rather than removed.
+
+Independent decode/replay: 180 frames, 2,074 exact crop replays; 172 eligible
+future-row mutation checks preserve past inputs and agent populations. Completed
+resume verifies all 60 receipts without new decoding or cache-array writes.
+54 focused tests pass; the full legacy suite was not rerun.
+
+The mask is inferred-only, not person visibility or human gold. No forecast
+targets, new model, scientific-role admission, sealed-role access, physical
+seconds/metric claim, Stage5C or SMC. Original observed pixels are retained
+alongside the conservative masked view. This does not explain the earlier
+ETH/UCY negative fits or establish a forecasting gain.
+[Evidence and reader contract](outputs/publication_readiness_2026_09/sdd_past_images/conclusions.md).
+
 ## SDD Video Correspondence Repaired Diagnostically (2026-09-17)
 
 `fresh_run`: 60 videos fully decoded, 522,497 frames, 10,616,256 annotation rows,
