@@ -1,5 +1,17 @@
 # M3W Results Ledger
 
+## Full Fit-Cohort Visual Experiment Running (2026-09-17)
+
+New explicit offline-annotation decision, preserving the approved 8-to-12 task,
+past-normalized ADE and physical-scene folds. All 11,966 fit rows retained;
+Zara03 has an explicit missing-image mask. Four arms x three seeds x three fit
+scenes, 2,000 updates per fit, final checkpoint only. No threshold search or new
+development/calibration/confirmation access. Inputs total157,241,442 bytes.
+Real 100-update past-RGB pilot:4.87s; resumed within the same full experiment.
+13 focused tests passed, including exact optimizer/RNG recovery and masked-input
+invariance. Full experiment is running, not completed or claimed positive.
+See [decision](outputs/publication_readiness_2026_09/offline_visual_forecast_decision.md).
+
 ## Masked Past-Image Store Completed (2026-09-17)
 
 `fresh_run`: fixed-position, coverage-aware image inputs for all14,561 Zara

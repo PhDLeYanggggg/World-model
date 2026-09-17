@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_exploratory",
+  "observation_mode": "offline_annotated",
+  "parent_protocol": "configs/m3w_8to12_residual_parameterization_v7.json",
+  "parent_protocol_sha256": "f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a",
+  "recordings": [
+    "eth_eth",
+    "eth_hotel",
+    "ucy_zara01",
+    "ucy_zara02",
+    "ucy_zara03"
+  ],
+  "scene_folds": {
+    "eth_eth": 0,
+    "eth_hotel": 1,
+    "ucy_zara": 2
+  },
+  "expected_rows": 11966,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "bootstrap_resamples": 2000,
+  "easy_threshold": 0.02349376610737637,
+  "decoder_path": "data/stage_cvpr2027_experiments/media_decode_runtime",
+  "decoder_version": "18.1.0",
+  "zara_cache": "data/stage_cvpr2027_experiments/zara_masked_images",
+  "output": "data/stage_cvpr2027_experiments/offline_visual_forecast",
+  "reports": "outputs/publication_readiness_2026_09/offline_visual_forecast",
+  "training": {
+    "updates": 2000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "bindings": {
+    "configs/m3w_8to12_residual_parameterization_v7.json": "5e047d8d1741375d359ea34aba4a0fa05218798883c5840c123b00de0fc03f8c",
+    "src/world_model/m3w_offline_visual_forecast.py": "7ced3cbd5c2f6f316d0ea11cedd041c98cadbd78cb7da4db531055b33ad17208",
+    "src/world_model/m3w_offline_visual_data.py": "ffe757e3f25215e4b7437aac0bee3ad25e5700a6484af2faa7ea2ebfaae55a45",
+    "scripts/run_m3w_offline_visual_forecast.py": "b3110f90312299ae99872360c39ef0f9d982da703258b5979c27bb874db108b7",
+    "scripts/analyze_m3w_offline_visual_forecast.py": "b79e4c221989c0272205e13ad23bbbcd3ffbe3ae37726e2be5c75a28fd6aaa02",
+    "tests/test_m3w_offline_visual_forecast.py": "037b00e186a9ebc8efb7c0e2ecf88b98d920ed4e19f22f0afe76733478ac7ed7",
+    "outputs/publication_readiness_2026_09/offline_visual_forecast_decision.md": "f39f345068fb0516cebe742accc889f7ec13b8ef57ea3a95d462a0144fdd48a0",
+    "src/world_model/m3w_masked_history_images.py": "c2fa002b9fec38dff33e172a7b681e0d225c6d99546edaf5ca3ac9bf3b59f582",
+    "src/evaluation/m3w_past_video_alignment.py": "eb987464cc4cc75bd3d6f127cc6b09f3035ca62627b55465c1d4b4fcddedc198",
+    "configs/m3w_zara_masked_images.json": "a02986783d6e6f1872d23cc3427febad22e86421556f519fd8130ef9c202eea3",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/video.avi": "7dead1bf721ed0fa24c9d6a9e8c39e1c80b83ab76c9b0dc492e8adc725f7434b",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt": "b6b116c0e1ff9d2b26019d7a43341d6f2518163f6c74545f55a10fd66d523020",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/video.avi": "3681e9fe98e6fe4c6317349b05d1307d2bf729ef78da191ba99f600431bd00bb",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt": "b62940ea5f69c89990673f91f88724937ed41387a39d8d68ad5bbc6d5ee5c8b7",
+    "data/stage_cvpr2027_experiments/zara_masked_images/ucy_zara01/metadata.json": "932ef923f97f8b4a279e8b89c52ddc0c293882d7be76acaab3c5078f765997f8",
+    "data/stage_cvpr2027_experiments/zara_masked_images/ucy_zara02/metadata.json": "989996729e412429da86ab990538e5c008f5c46546f6d97469ee4ad318c60625"
+  }
+}

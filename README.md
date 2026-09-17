@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am now running a [broader matched visual forecasting study](outputs/publication_readiness_2026_09/offline_visual_forecast_decision.md)
+on all 11,966 approved fit windows. I use the standard offline annotated-history
+definition, with interpolation provenance disclosed; I do not claim strict
+real-time sensor causality. The comparison includes geometry, coverage-mask-only,
+current RGB and past RGB across three seeds and three physical-scene folds.
+Zara recordings stay in one scene group, and missing images do not remove rows.
+The primary eight-to-twelve task and past-normalized ADE are unchanged.
+Inputs and a real checkpointed training pilot are complete; forecasting results
+are still pending. The separate development and confirmation data stay closed.
+
 I have now [built masked past-image inputs](outputs/publication_readiness_2026_09/zara_masked_images/conclusions.md)
 after repairing the Zara video-coordinate mapping. The reader retains12,098
 eight-step histories, including1,935 with partial edge crops. It keeps the real
@@ -22,7 +32,7 @@ were interpolated using later annotation controls. An offline trajectory
 benchmark and strictly real-time sensor observations are therefore different
 claims. I have not changed the approved eight-to-twelve protocol, discarded
 those rows, or called the source mapping physical calibration. That observation
-definition needs to be settled before the next visual training comparison.
+definition is now explicitly offline annotated forecasting for the new comparison.
 
 I have followed the appearance failure with a
 [fixed-model support control](outputs/publication_readiness_2026_09/appearance_support_control/conclusions.md)

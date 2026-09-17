@@ -1,5 +1,26 @@
 # Real-Experiment Continuation Handoff
 
+## Full Fit-Cohort Offline Visual Experiment Running (2026-09-17)
+
+Observation decision resolved by user delegation: standard offline annotations,
+not strict sensor-as-of. Existing bound protocols/reports remain immutable.
+Primary still past-normalized 8-to-12 ADE. New decision/registration:
+`offline_visual_forecast_decision.md`, `configs/m3w_offline_visual_forecast.json`.
+Previous turn was verified input-repair progress; this turn builds full inputs
+and launches actual broader neural training, not another audit-only loop.
+
+11,966 complete fit windows, 3 physical-scene folds, 3 seeds, 4 arms including
+mask-only control. Zara videos grouped; Zara03 kept with zero imagery. Inputs
+157,241,442 bytes. CPU4/interop1/workers0. 100-update past-RGB pilot4.87s, exact
+recovery regression test passed. Full process PID92582, exec session98981,
+checkpoint+heartbeat under `data/stage_cvpr2027_experiments/offline_visual_forecast`.
+Do not start a duplicate; check that handle first. Fixed2,000 updates/final fit,
+no held-fold checkpoint/threshold selection. Final report still pending.
+After completion run registered paired analysis and exact checkpoint replay.
+Students development/calibration/confirmation closed. No submission/deployment claim.
+
+The pending-observation wording below is historical and superseded by this entry.
+
 ## Masked Past-Image Store Complete: No Live Job (2026-09-17)
 
 Latest `zara_masked_images/conclusions.md`. Previous turn sourceadapter repair
