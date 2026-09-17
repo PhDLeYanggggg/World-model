@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am testing a more specific observation repair: whether native image detail
+and spatial flow grids retain movement lost by the previous pooled summaries.
+The [registered comparison](outputs/publication_readiness_2026_09/spatial_motion_decision.md)
+keeps the same fit population and protocol. A synthetic sparse-motion test
+supports the mechanism, but it is not yet a forecasting result.
+
 I have completed the [past image-motion comparison](outputs/publication_readiness_2026_09/observed_motion_v2/conclusions.md):
 54 real neural fits test quality controls, motion magnitude and motion direction
 on all 11,966 fit windows. Correcting moving crops and adding direction reduces

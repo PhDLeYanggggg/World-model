@@ -1,5 +1,13 @@
 # M3W Results Ledger
 
+## Native-Resolution Spatial Motion Registered (2026-09-17)
+
+Fit-only controlled repair: quality, lowpass pooling, lowpass grid and native grid;
+three seeds, three physical-scene folds, 4,000 updates per model. Thirty-six fits
+planned, no new held outcome yet. All 11,966 rows and the original primary remain.
+Synthetic sparse-foreground pooling and native/lowpass replay tests pass.
+Registration: `configs/m3w_spatial_motion.json`. No new source role or deployment.
+
 ## Observed-Motion Comparison Completed, Negative (2026-09-17)
 
 `fresh_run`:16,106 observed image pairs, all11,966fit windows retained;54real
