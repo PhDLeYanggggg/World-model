@@ -405,6 +405,25 @@ H matrix; thirteen additional source rows remain explicitly unmatched. These
 observations do not establish physical calibration. No experiment is relabeled
 as seconds-level or metric, and the registered data and policy are not changed.
 
+A [controlled point-decision experiment](conditional_ade_probe_refined/conclusions.md)
+reconstructs the conditional training distribution from each frozen ExtraTrees
+forest and compares its mean with per-step geometric medians, holding all trees,
+features, fit folds and gates fixed. All18 mean forecasts replay within1e-12.
+All nine ETH median settings predict zero, equaling CV without improvement.
+Hotel seed-mean gain changes from -346.70/-213.07/-252.23% to
+-90.38/-21.37/-21.25% for pooled/static/directional-neighbor features. No median
+or fixed-gated median improves the full stationary subset. Optimizing a more
+appropriate point decision reduces false movement but cannot correct a poor
+cross-scene conditional distribution. This is not a new forecasting architecture.
+
+Of39,420 repeated waypoint computations,23 initially missed the strict numerical
+gap tolerance; training-only refinement certifies22 of those. One remains
+approximate with gap bound2.293e-9, explicitly retained. No held result selects
+the solver or threshold. The all-setting signs remain unchanged. Percentage
+easy degradation is undefined on zero-error still rows, so absolute harm is
+reported. These fit-only comparisons do not supply independent confirmation
+or a physical safety guarantee; future labels never enter query features.
+
 The [v6 forecast supplement](forecast_supplement_v6_decision.md) is fixed before
 v6 development results. It applies exact-count routing and exact raw-frame t+50
 prefix scoring to every frozen seed/head/policy, without selecting a new model.

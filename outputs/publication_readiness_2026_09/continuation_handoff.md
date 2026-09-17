@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Conditional ADE Decision Complete: No Live Job (2026-09-17)
+
+Latest: `conditional_ade_probe_refined/conclusions.md`. New one-factor predictor
+decision experiment, not new neural/tree training:18 frozen ExtraTrees settings,
+same365 stationary rows, opposite fit scene, three seeds/feature arms. Conditional
+mean replay <=7.64e-17 normalized; replace mean with weighted per-step geometric
+median using only original training labels. No held labels in weights/decisions.
+Parent8/12 task/primary/gate0.9 unchanged; no development/calibration/final labels.
+
+All9 ETH medians are exact zero/CV. All9 Hotel medians negative; no guarded median
+positive. Median Hotel mean gains -90.38/-21.37/-21.25% versus original
+-346.70/-213.07/-252.23% (pooled/scene/scene_neighbor). Damage reduction is not
+positive transfer. Still native harm positive on Hotel; ratio undefined because
+CV floor zero. Conditional optimality on train does not ensure held-scene gain.
+
+Original23/39420 numerical waypoints missed tolerance. Source/registration/results
+preserved. Separate registered training-only refinement certifies22, leaves1
+approximate:fold1_seed29_scene_neighbor, query172,step9, gap2.293e-9. Never write
+all solves certified. Refinement maximum native change3.122e-5, no sign changes.
+18 original receipt checks on resume all cached_verified, zero recompute/refits.
+Do not overwrite original metrics or bound code; replay reports use new dirs.
+
+Main process46566 exited0; tests27470 exited0:23 passed1.16s. Numerical follow-up
+and18-trial resume terminal. No live job from this work. Total point-compute
+about16.1seconds; do not report it as long training. Source models/weights/row
+outputs local under data/stage_cvpr2027_experiments/conditional_ade_probe*.
+
+The conditional mean hypothesis explains some drift but not useful direction.
+Next needs verified past directional context/independent support, not another
+point-estimator or threshold sweep on these same exposed folds. Scientific
+native-ADE/FDE-primary decision still pending; don't silently change the parent
+or call old scenes untouched. No new deployment or submission readiness.
+Goal active and incomplete; this is meaningful experimental progress. CREATE
+access/project blocker unchanged; no repeated login attempts. Stage5C/SMC off.
+
+Below are historical snapshots, superseded by this section.
+
 ## Precision and Conditional-CV Audits Complete: No Live Job (2026-09-17)
 
 Latest: `stationary_label_resolution/conclusions.md`. Two fresh fit-only audits,

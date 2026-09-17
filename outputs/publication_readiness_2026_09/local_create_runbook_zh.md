@@ -2,6 +2,24 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前：条件均值与几何中位数对照已完成
+
+不是新神经网络训练。18个固定树模型设置保持原特征、标签、划分和0.9门限，只改
+条件点预测。ETH全部归零，Hotel伤害降低但仍为负。没有任何设置超过CV，不能部署。
+原始23个未达数值容差的点单独修复22个，剩余1个明确保留approximate标记。
+23项定向测试通过；全部18个原始计算记录hash恢复核验通过。当前无活动进程。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_conditional_ade_probe.py --registration configs/m3w_conditional_ade_probe.json --output data/stage_cvpr2027_experiments/conditional_ade_probe --report-dir data/stage_cvpr2027_experiments/conditional_ade_probe_resume_reports --resume
+.venv-pytorch/bin/python scripts/refine_m3w_conditional_ade_probe.py --registration configs/m3w_conditional_ade_refinement.json --output data/stage_cvpr2027_experiments/conditional_ade_refinement_recheck --report-dir data/stage_cvpr2027_experiments/conditional_ade_refinement_recheck_reports
+.venv-pytorch/bin/python -m pytest tests/test_m3w_conditional_geometric_median.py tests/test_m3w_geometric_median_refinement.py tests/test_m3w_stationary_scene_context.py tests/test_m3w_stationary_start_probe.py -q
+```
+
+首次运行需新目录并去掉resume。复算目录存在时再用新名字，不能覆盖被后续登记
+绑定的报告。resume只核验复用，不是重新训练。剩余近收敛点不能改为已认证；数值
+修复也不能选择正结果。所有权重、轨迹支持、逐行输出仍仅留本地。公开结论见
+`conditional_ade_probe_refined/conclusions.md`。原主指标不变，历史暴露状态不变。
+
 ## 当前：标签精度与隐藏匀速假说检验已完成
 
 本轮没有重新训练神经网络。365行fit-only诊断显示，文本取整和指定半像素区间内的

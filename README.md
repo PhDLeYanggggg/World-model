@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have completed a [controlled point-forecast comparison](outputs/publication_readiness_2026_09/conditional_ade_probe_refined/conclusions.md):
+keep the same trees and features, but replace their average trajectory with a
+conditional geometric median matched to the distance error. This removes false
+movement on ETH and reduces Hotel damage substantially, yet none of the18 fixed
+settings beats CV. The ETH result is an exact fallback, not a learned gain.
+One tiny numerical convergence gap is retained explicitly. Better point decisions
+help, but the current context still does not support useful cross-scene motion.
+
 I have now tested whether the stationary-start failure is mainly a coordinate
 precision issue. The [source and quantization checks](outputs/publication_readiness_2026_09/stationary_label_resolution/conclusions.md)
 rule out printed rounding, and a hidden constant-velocity path inside half-pixel

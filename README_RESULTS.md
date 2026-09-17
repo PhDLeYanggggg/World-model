@@ -1,5 +1,28 @@
 # M3W Results Ledger
 
+## Conditional ADE Point-Decision Comparison (2026-09-17)
+
+`fresh_run`:18 fixed point-decision settings on365 stationary fit rows under
+cached_verified forests, not18 new models or a new neural training run. Same
+feature arms, splits, targets, primary metric and0.9 gate; mean replay error
+<=7.64e-17 in the normalized scene frame. Query labels never enter leaf weights
+or the conditional geometric median. No development/calibration/confirmation
+labels or model/threshold selection.
+
+All9 ETH medians equal zero/CV. Hotel three-seed mean gains change from
+-346.70/-213.07/-252.23% to -90.38/-21.37/-21.25% for pooled/static/neighbor arms.
+No setting has positive median or guarded-median gain. Fixed-gate means are
+0%ETH and -65.13/-0.20/-0.36%Hotel. Reduced damage is not positive transfer.
+Hotel native still-row harm remains positive; percentage easy ratios undefined.
+
+Original23/39,420 solver steps missed strict tolerance. A registered numerical
+refinement certifies22, leaves1 explicitly approximate (gap bound2.293e-9), and
+does not change any result sign. No hidden failed solve or selective promotion.
+All18 receipts verified on resume with zero recomputation/fits.23 focused tests
+pass; no full legacy-suite rerun. Parent protocol and historical negatives stay.
+[Complete interpretation](outputs/publication_readiness_2026_09/conditional_ade_probe_refined/conclusions.md),
+[every setting](outputs/publication_readiness_2026_09/conditional_ade_probe_refined/results.md).
+
 ## Stationary Label Resolution and Hidden-CV Checks (2026-09-17)
 
 `fresh_run`: original-text precision, supplied-H projection, fixed-slice replay
