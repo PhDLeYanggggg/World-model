@@ -29,6 +29,27 @@ seed29 的 100 步数值试跑会继续到完整预算，不是另一个准确�
 .venv-pytorch/bin/python scripts/compare_m3w_public_predictors.py --transformer outputs/publication_readiness_2026_09/8to12_transformer_v6/metrics.json --eqmotion outputs/publication_readiness_2026_09/8to12_eqmotion_v6/metrics.json --output-dir outputs/publication_readiness_2026_09/8to12_public_predictors_v6
 ```
 
+### 已完成的固定预测补充
+
+两模型的 raw-frame t+50 和同实际切换人数对照都已完成。补充目录的最后一条周期
+heartbeat 仍写 running，最终状态应核对 `completion.json` 的报告 hash 及 PID
+是否已退出，不能只看旧 heartbeat。所有原始预测误差和普通策略决策与主评价逐行
+相同。结果为负或无稳定收益，不因此修改主指标或模型选择。
+
+相同源码/协议/设备下恢复或核验已有 EqMotion 补充：
+
+```bash
+.venv-pytorch/bin/python scripts/evaluate_m3w_forecast_supplement.py --protocol configs/m3w_8to12_conditioned_context_v6.json --study-dir data/stage_cvpr2027_experiments/8to12_eqmotion_v6 --output-dir data/stage_cvpr2027_experiments/8to12_eqmotion_v6_supplement --device mps --threads 4 --resume
+.venv-pytorch/bin/python scripts/summarize_m3w_forecast_supplement.py --cache-dir data/stage_cvpr2027_experiments/8to12_eqmotion_v6_supplement --report-dir outputs/publication_readiness_2026_09/8to12_eqmotion_v6_supplement
+.venv-pytorch/bin/python scripts/audit_m3w_supplement_replay.py --study-dir data/stage_cvpr2027_experiments/8to12_eqmotion_v6 --supplement-dir data/stage_cvpr2027_experiments/8to12_eqmotion_v6_supplement --report-dir outputs/publication_readiness_2026_09/8to12_eqmotion_v6_supplement
+```
+
+Transformer 使用相同命令结构，将目录中的 `eqmotion` 换成 `transformer`，设备改为
+`--device cpu`。首次在新目录构建不加 `--resume`；已完成目录不要删除或强行覆盖。
+恢复核验旧缓存是 cached_verified，不是新的训练结果。row cache、checkpoint 不进 Git。
+raw50 是同一 12 步预测的原生精确 5 步前缀，不是重新训练/重新条件化的 t50 模型。
+一个物理开发场景不能给出有效跨场景 CI，三种子标准差也不能替代它。
+
 仍是 development-only，不是独立确认或公开 best-of-20 复现。出现 nonfinite 时保存
 错误日志/权重身份，不丢弃失败 fold，不静默换设备。以下旧命令保留用于各自源码版本
 追溯，不能在 v6 目录/新源码上修改旧 hash 强行恢复。

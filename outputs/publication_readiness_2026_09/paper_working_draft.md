@@ -25,9 +25,10 @@ claimed advantage remains unestablished. A subsequent matched-context,
 fixed-head K=1 EqMotion. Their uncontrolled normalized-ADE changes versus CV
 are respectively -5.74 to -7.69% and -8.47 to -14.12%; all six selections retain
 CV. Numerical input conditioning resolves the observed fit failures, not the
-prediction or easy-preservation problem. Matched-count and deferral controls,
-broader independent scenes and confirmatory evaluation are required before a
-positive submission claim.
+prediction or easy-preservation problem. Completed actual-count-matched controls
+find no stable joint advantage, and all joint raw50 ADE gains are negative.
+Real deferral comparisons, broader independent scenes and confirmatory evaluation
+remain necessary before a positive submission claim.
 
 An upstream source audit additionally identifies identity fragmentation and
 future-availability-conditioned observation retention in one packaged development
@@ -76,8 +77,9 @@ Neither has established a predictive advantage in the first real experiment.
 The [backend checks](supervised_backend/implementation_and_limits.md) verify
 synthetic CPU/MPS recovery and real-input invariance under future corruption.
 The [new real experiment](8to12_development_v1/results.md) supplies separate
-development evidence. Matched realized-count intervention, public forecaster
-comparison and independent risk calibration remain pending.
+development evidence. The public-core and matched realized-count comparisons
+are now complete in v6, without establishing a contribution. Independent risk
+calibration remains pending.
 
 The [neural cost-head path](neural_cost_head/implementation_and_limits.md) now also fits nonnegative benefit/harm regression on the same verified OOF inputs as the ridge control, with fit-only normalization and unchanged candidate forecasts. This enables a capacity-controlled comparison rather than attributing gains to an untrained interface. Synthetic CPU/MPS recovery is verified; its development fixture selects the floor, and apparent intervention occurs only on queries lacking complete labels. Neither a real neural advantage nor calibrated safety follows from this implementation.
 
@@ -87,7 +89,8 @@ pairwise-joint controls on identical candidate forecasts. Scene membership uses
 past observations, not future-label completeness. Raw errors remain recording-local;
 the current normalized summary equally weights physical scenes. Common budget
 caps do not establish equal realized coverage. The first real comparison is now
-complete and negative; matched-count mechanism evidence is still pending.
+complete and negative; the subsequent v6 matched-count mechanism test also fails
+to show stable improvement.
 
 A [frozen-policy calibration interface](risk_calibration/implementation_and_limits.md) now consumes those exports without refitting. It requires a prespecified family, order, risk functional and scene aggregation. Missing-label interventions receive the worst bounded loss instead of being excluded. For bounded [0,1] scene losses, its current reference screen adds sqrt(log(M*K/delta)/(2*n)) to the empirical mean for M policies and K risks, using n physical-scene clusters. An unchanged baseline has analytically zero excess risk; a learned policy that happens not to intervene on the observed sample still requires a sampling bound. These are conditional statistical statements, not evidence that the actual scenes are IID, a novel risk theorem, a 2% relative easy-error guarantee, or physical safety. Only synthetic integration has been executed; no real calibration result is available.
 
@@ -101,7 +104,7 @@ optimization alone is not a novelty claim. Its proposed value still depends on
 matched comparisons and independent evaluation. See the
 [focused related-work audit](joint_intervention/related_work_constraints.md).
 
-An additional [exact-count control](matched_coverage/method_and_limits.md) sets the joint intervention count to the independent policy's count on each observed query, before labels are read. It retains the same forecasts, support and predicted-harm cap. This isolates a change in selected identities from a change in coverage, conditional on the reference rule; it does not match realized risk. Forced-count outputs may be worse than the baseline and are diagnostic, not deployment policies. Solver failures remain unmatched in the ledger, and zero-count matches do not count as coupling evidence. This branch is opt-in and has not been registered as a new formal policy or evaluated for real predictive gain.
+An additional [exact-count control](matched_coverage/method_and_limits.md) sets the joint intervention count to the independent policy's count on each observed query, before labels are read. It retains the same forecasts, support and predicted-harm cap. This isolates a change in selected identities from a change in coverage, conditional on the reference rule; it does not match realized risk. Forced-count outputs may be worse than the baseline and are diagnostic, not deployment policies. Solver failures remain unmatched in the ledger, and zero-count matches do not count as coupling evidence. The completed v6 supplement evaluates this branch for every frozen seed, head and policy without selecting a deployment.
 
 ### 3.1 Explicit Costs and Joint Decision
 
@@ -280,15 +283,28 @@ ETH's six-frame annotation spacing conflicts with a naive combination of the
 pixel rows reproduce the stored coordinates under H-old, not the currently named
 H matrix; thirteen additional source rows remain explicitly unmatched. These
 observations do not establish physical calibration. No experiment is relabeled
-as seconds-level or metric, and the running data and policy are not changed.
+as seconds-level or metric, and the registered data and policy are not changed.
 
 The [v6 forecast supplement](forecast_supplement_v6_decision.md) is fixed before
 v6 development results. It applies exact-count routing and exact raw-frame t+50
 prefix scoring to every frozen seed/head/policy, without selecting a new model.
 The prefix uses the same original 12-step prediction and past normalization;
 it is not a separately horizon-conditioned t+50 model. Implementation checks
-pass, but real supplementary scoring waits for complete primary fits. It cannot
-repair the lack of independent confirmation sites.
+pass and real supplementary scoring is complete. All joint raw50 ADE gains
+are negative. The prefix has 33,686 complete paths and 33,690 valid endpoints;
+full-path-defined easy labels are not redefined using the prefix. The supplement
+cannot repair the lack of independent confirmation sites.
+
+Transformer's twelve matched-count comparisons have identical switch identities
+and zero ADE/FDE differences, including nonzero-intervention queries. EqMotion
+has ten zero comparisons and two seed29 ridge differences: joint-minus-independent
+ADE +0.00000904878 for conservative and -0.0000124400 for moderate. Only 76
+agent-query switch records differ across twelve repeated exports. There is no
+stable joint advantage. Full primary errors and ordinary control decisions
+replay identically for both families. This compares exported errors/decisions,
+not every intermediate tensor; matching occurs before future-label filtering,
+so scored-only coverage and realized risk need not be matched. See the
+[complete supplement](8to12_public_predictors_v6/supplement_conclusions.md).
 
 The primary mechanism test holds candidate forecasts and training examples fixed while varying cost supervision and joint selection. At matched actual intervention counts, improved forecast composition would support a narrower contribution than a new predictor architecture. A gain that disappears after matching counts, or a lower proximity penalty accompanied by worse forecasting, would not support that claim. Real accuracy, independent-scene risk calibration and physical safety remain separate questions; none is established by the analytical examples in the assumption audit.
 

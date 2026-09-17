@@ -39,6 +39,13 @@ override the failed primary result or establish cross-scene generalization.
 The [frozen decision](outputs/publication_readiness_2026_09/conditioned_context_v6_decision.md)
 specifies what changed and what stayed fixed.
 
+The [completed raw50 and same-count supplements](outputs/publication_readiness_2026_09/8to12_public_predictors_v6/supplement_conclusions.md)
+do not reverse that conclusion. Transformer's joint and independent policies
+choose the same agents; EqMotion changes a small number of decisions without a
+stable gain. All joint policies have negative raw50 ADE improvement. I report
+these controls to test the proposed mechanism, not to replace a failed primary
+result with a favorable secondary number.
+
 During the preceding run I also traced an upstream
 Students01 packaging issue: 20-point fragments preserve timestamps and positions
 but change identities and remove short/tail tracks using later availability.
@@ -107,7 +114,7 @@ I have also rebuilt a recording-centric reader directly from the original positi
 
 The next method asks a more specific question: when several agents may switch away from a baseline, should those decisions be made together? I have implemented a [joint intervention prototype](outputs/publication_readiness_2026_09/joint_intervention/method_and_checks.md) with explicit predicted-risk and intervention budgets. Its optimizer and coordinate handling pass targeted checks, but it has not yet demonstrated better prediction or calibrated real-world risk. Joint trajectory modeling already has substantial prior work; the contribution will need to come from the matched experiments, not the presence of a joint optimizer.
 
-I have added an [exact-coverage control](outputs/publication_readiness_2026_09/matched_coverage/method_and_limits.md) to test that distinction: independent and joint policies must switch the same number of agents in each scene query. It prevents a policy that simply switches less from being credited with better coordination. The control is diagnostic, not deployable, and its real accuracy comparison is pending. [Regression-deferral prior work](outputs/publication_readiness_2026_09/joint_intervention/deferral_and_coverage_prior_work.md) also makes clear that learning when to use another predictor is not a novelty claim by itself.
+I have added an [exact-coverage control](outputs/publication_readiness_2026_09/matched_coverage/method_and_limits.md) to test that distinction: independent and joint policies must switch the same number of agents in each scene query. It prevents a policy that simply switches less from being credited with better coordination. The completed v6 diagnostic finds no stable joint gain; this is not a deployable policy or a risk guarantee. [Regression-deferral prior work](outputs/publication_readiness_2026_09/joint_intervention/deferral_and_coverage_prior_work.md) also makes clear that learning when to use another predictor is not a novelty claim by itself.
 
 I now also have a [cost-sensitive deferral control](outputs/publication_readiness_2026_09/deferral_control/method_and_limits.md) derived from that prior work. It learns from the same out-of-fold predictions as my gain/harm head and retains the size of each forecasting error instead of learning only which predictor wins. Its fitting, recovery and leakage checks work on synthetic examples. The real comparison is still pending; I have not treated implementing a stronger baseline as evidence that M3W beats it.
 
@@ -196,12 +203,14 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 I am developing this work toward a CVPR 2027 submission on when neural motion predictions can safely improve a strong baseline. The next study focuses on baseline-relative risk and joint intervention across agents. My [research direction and evidence audit](README_M3W_INNOVATION_AND_CVPR2027_ZH.md) explains the proposed contributions, the limitations of the current experiments, and the remaining comparisons. In particular, the latest WorldCore architecture ranking used test metrics, so those results remain exploratory until independently confirmed.
 
 The eight-observation/twelve-prediction development task is frozen and the
-matched three-seed v6 training is complete. Fixed-forecast supplements are being
-finished without changing the selected floor. Independent calibration and
+matched three-seed v6 training and fixed-forecast supplements are complete,
+without changing the selected floor. Independent calibration and
 confirmation remain unresolved; the development runs cannot supply those claims. The
 [continuation record](outputs/publication_readiness_2026_09/continuation_handoff.md)
 and [runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)
-record the active protocol, checkpoint paths and recovery commands.
+record the completed protocol, checkpoint paths and recovery commands. The next
+prospective test should address near-stationary motion and scale handling, not
+retune these frozen policies until one secondary metric looks favorable.
 
 The next research step is to make the neural branch contribute something the protected policy does not already provide.
 

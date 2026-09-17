@@ -30,8 +30,20 @@ this is not a new claim that the legacy full suite is green.
 [Paired results](outputs/publication_readiness_2026_09/8to12_public_predictors_v6/paired_predictor_comparison.md),
 [Transformer error diagnosis](outputs/publication_readiness_2026_09/8to12_transformer_v6/error_scale.md),
 [EqMotion error diagnosis](outputs/publication_readiness_2026_09/8to12_eqmotion_v6/error_scale.md).
-Raw50 and matched-count supplementary evaluations are running on the frozen
-forecasts; no new threshold or model selection is permitted from them.
+Raw50 and matched-count supplementary evaluations are now complete on all frozen
+forecasts, with no new threshold or model selection. Every joint raw50 ADE gain
+is negative. Transformer exact-count controls choose identical agents and yield
+zero ADE/FDE difference; EqMotion has ten zero combinations and two tiny,
+oppositely signed seed29 ridge effects. No stable joint advantage is established.
+
+All original forecast errors and ordinary decisions replay exactly in both
+families. This is an exported-error/decision check, not full-tensor bitwise
+equivalence. Prefix ADE has 33,686 complete paths and FDE 33,690 endpoints;
+the normalization and original full-path easy definitions remain unchanged.
+Two recordings still equal one physical site, so no scene CI is manufactured.
+Targeted checks now total 52 passed in two focused invocations. Full
+[supplementary conclusions](outputs/publication_readiness_2026_09/8to12_public_predictors_v6/supplement_conclusions.md)
+include absolute easy damage, all seeds and exact matching limits.
 
 Earlier entries below are dated progress snapshots, not the current run status.
 

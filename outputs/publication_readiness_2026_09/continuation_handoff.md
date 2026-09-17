@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Current State: v6 Primary Complete, Supplement Running (2026-09-17)
+## Current State: v6 Primary and Supplements Complete (2026-09-17)
 
 Both v6 families completed all registered seeds and fits: 24 forecasters at
 10,000 updates, six neural cost heads at 1,000 updates and six ridge controls.
@@ -15,18 +15,19 @@ metric. Native Students03 EqMotion results beat the development-best causal
 alternative by 0.94--2.32%, but Students01 and the primary result remain negative.
 See `8to12_public_predictors_v6/conclusions.md` for the next falsifiable direction.
 
-The frozen supplementary runner now operates on completed forecasts. Transformer
-completed all three seeds and twelve candidates; its real exact-count comparison
-shows zero ADE/FDE difference between joint and independent controls, including
-nonzero-intervention queries. Raw50 does not rescue the negative primary result.
-Its row replay matches every original fixed-forecast error and ordinary decision.
-The EqMotion supplementary process is still running. Read its local heartbeat
-under `data/stage_cvpr2027_experiments/8to12_eqmotion_v6_supplement` before doing
-anything; never launch a duplicate or edit its bound source/decision files.
+Both supplementary families completed all three seeds and twelve candidates.
+Transformer has identical matched-count switch identities and zero ADE/FDE
+difference. EqMotion changes only 76 repeated agent-query decisions, with tiny,
+oppositely signed effects in seed29's two ridge policies and ten zero results.
+Raw50 joint ADE gains are all negative. Both row replay audits match every
+original fixed-forecast error and ordinary decision. No study process remains
+active at the completion check. The last periodic heartbeat says running;
+verified `completion.json` and the exited PID establish final completion.
 
-After completion: run `summarize_m3w_forecast_supplement.py` and
-`audit_m3w_supplement_replay.py` on that family; retain all arms and seeds, not the
-best supplementary number. Main protocol digest remains
+Summary and replay reports are under each `8to12_<family>_v6_supplement` directory
+in the publication output tree; large caches stay under ignored data. There is
+no pending supplementary rerun. Next work must be a new prospective hypothesis,
+not another status poll or threshold sweep. Main protocol digest remains
 `53be3aafbda47ddf8d60891e779896f6685fcd59222a1fe4ea867e689f8914de`.
 No independent-scene CI, deployment or submission-readiness claim. Stage5C/SMC
 remain disabled; the research goal is active. The earlier snapshots below are

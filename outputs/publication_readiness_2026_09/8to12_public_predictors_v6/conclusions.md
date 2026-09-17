@@ -71,6 +71,12 @@ much larger neighbor geometry. These remain hypotheses, not established causes.
 
 ## Implications for the Publication Route
 
+The [fixed supplementary comparison](supplement_conclusions.md) is also complete.
+Raw50 ADE gains remain negative for every joint policy. Exact-count matching
+finds no stable joint advantage: Transformer decisions are identical and
+EqMotion's two nonzero differences are tiny and oppositely signed. Thus this
+version does not support coordination as the principal contribution either.
+
 The immediate target stays one rigorous mechanism paper, not multiple lightly
 different architecture papers. This study does not yet justify that submission:
 the intervention advantage is unproved, the primary candidate headroom is low,
