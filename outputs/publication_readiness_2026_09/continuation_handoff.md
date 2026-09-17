@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Zara Source Repair Complete: Observation Decision Pending (2026-09-17)
+
+Latest `zara_past_media/conclusions.md`; no live job. Fresh source lineage audit
+and actual coordinate-adapter implementation, not new neural training. Original
+audit `zara_media_lineage/audit.json` retained, including failed direct Zara02 H.
+Zara01 all5024 rows match H.txt/image rowcol/storedframe-1. Zara02 all9537 rows
+match same plus one-first-exact-control origin[-1.297826082,-15.6530874004].
+Maxnativeerrors5.012e-6/5.397e-6, inversepixel .000232/.000250. NoH/lag/scale fit.
+
+Stored agents148/204; completepast8 agents148/202, windows3988/8110, full8+12
+labels2234/5741. BOTH VIDEOS ONE PHYSICAL SCENE. Neither adds stationarypast
+windows. Most stored pasts use a later interpolation control:3877/3988 and
+7924/8110. Only111/186 allcontrols<=query; nofilter applied, notstrictsensorproof.
+This is distinct from train/test leakage and standard offline annotation tasks.
+
+Async question sent this turn: keep standard offline annotated forecasting with
+explicit non-online limitation(recommended), or require strict source-as-of
+observations/new protocol? Unanswered. Earlier prospective native-primary-metric
+question also pending. Do not silently change current parent primary/split/rows.
+Independent work can continue on mask-aware input support, not formal cohort
+admission until necessary scientific decisions arrive. Do not repeat questions.
+
+192requests/80indexedframes,159validcrops,33missing,24first-historyIDs,6local
+contact sheets inspected. Some points near feet, others head/body, occlusion;
+no manual gold pose/identity proof. Zara02 first12 windows all have some missing
+crop support. Complete-image rejection would bias entering agents; implement
+explicit partialmask for next admitted experiment. Nofuture-survivalfilter.
+
+10focusedtests passed. Separate actual replay matches allnumericfields and
+privatecache/contact hashes. Sessions65200 exit0(original), replayexit0;
+sourceauditPID69160/mediaPID69827 are historical, heartbeatscomplete. NoHPCrequest.
+RegSHA43d8a468...lineage and522964e9...pastmedia; boundfiles immutable. Raw/caches
+underignoreddata only. Formaltrained/confirmatory/metric/secondsresult not_run.
+Goalactive,incomplete;this turnmade concreteprogress,notrepeatedhardblockturn.
+Need larger moving-context fit comparison after semantics approval; retain all
+negative forecasts. Stage5C/SMC off. CREATE blocker unchanged, no repeatedlogin.
+
+Below are historical snapshots, superseded by this section.
+
 ## Camera/Support Repair Complete: No Live Job (2026-09-17)
 
 Latest: `appearance_support_control/conclusions.md` and

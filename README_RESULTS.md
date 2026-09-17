@@ -1,5 +1,27 @@
 # M3W Results Ledger
 
+## Zara Source-Origin and Past-Media Repair (2026-09-17)
+
+`fresh_run`: all 14,561 Zara01/02 rows traced to supplied spline controls. Zara01
+replays directly under H.txt, row/column image coordinates and stored frame minus
+one. Zara02 requires a translation defined by one exact first source control;
+the remaining rows replay within 0.0000054 native units. No new matrix, time lag
+or physical scale fitted. These recordings share one physical scene.
+
+3,988/8,110 complete past windows are available, with 2,234/5,741 complete8+12
+labels. Only111/186 have all interpolation controls at or before their query;
+97.22%/97.71% need a later control. This limits strict online causality, not
+automatically conventional offline annotation benchmarking. No rows filtered,
+no parent metric/protocol changed, observation semantics pending user decision.
+
+192 past image requests decoded (80 unique frames),159 valid centered crops,
+33 explicitly missing crops, six private contact sheets inspected. No forecasting
+training/result or media-training admission. `cached_verified`: independent
+replay matches every numeric field and all private manifests/contact-sheet hashes.
+10 focused tests pass; unrelated full legacy suite not rerun. No live job,
+Stage5C/SMC, new deployment or metric/seconds claim.
+[Repair and limits](outputs/publication_readiness_2026_09/zara_past_media/conclusions.md).
+
 ## Appearance Camera/Support Repair Tested (2026-09-17)
 
 `fresh_run`:72 fixed predictor/treatment evaluations, plus6 matched real neural

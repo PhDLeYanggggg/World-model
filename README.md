@@ -10,6 +10,19 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have now [repaired the Zara video-coordinate mapping](outputs/publication_readiness_2026_09/zara_past_media/conclusions.md)
+before expanding visual training. All 14,561 source rows can be reconstructed;
+Zara02 needed a fixed origin offset, not a new learned homography. Past images
+are readable, and missing edge crops remain explicit. This is an input repair,
+not a new forecasting result.
+
+The same audit exposed an important limit: most stored Zara past trajectories
+were interpolated using later annotation controls. An offline trajectory
+benchmark and strictly real-time sensor observations are therefore different
+claims. I have not changed the approved eight-to-twelve protocol, discarded
+those rows, or called the source mapping physical calibration. That observation
+definition needs to be settled before the next visual training comparison.
+
 I have followed the appearance failure with a
 [fixed-model support control](outputs/publication_readiness_2026_09/appearance_support_control/conclusions.md)
 and [six matched neural refits](outputs/publication_readiness_2026_09/appearance_no_camera/conclusions.md).

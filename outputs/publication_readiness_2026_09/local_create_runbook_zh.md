@@ -2,7 +2,30 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：相机/支持范围修复已实测，仍不部署
+## 当前：Zara 坐标对应已修复，观测定义待确认
+
+已逐行追溯Zara01/02共14,561行。Zara02仅用第一条精确源控制点确定原点偏移，
+其余行均在0.0000054原生单位误差内还原；不是新拟合homography或米制标定。
+192次过去图像请求全部解码，159个完整中心裁剪、33个边缘缺失。6张本地联系表
+已检查，不能据此声称人体定位gold或独立真实时钟认证。此次没有新训练。
+
+关键限制：97.22%/97.71%的完整过去窗口依赖查询之后的插值控制点。
+“输入不直接读未来标签”与“严格实时可获得”不等价。是否保留标准离线标注任务
+或另建严格source-as-of任务，已发出问题待确认；原8/12协议与主要指标不改。
+
+以下仅在确实需要独立重跑时使用，输出目录必须不存在；已完成结果不覆盖：
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_zara_media_lineage.py --registration configs/m3w_zara_media_lineage.json --output data/stage_cvpr2027_experiments/zara_lineage_recheck --report-dir data/stage_cvpr2027_experiments/zara_lineage_recheck_report
+.venv-pytorch/bin/python scripts/audit_m3w_zara_past_media.py --registration configs/m3w_zara_past_media.json --output data/stage_cvpr2027_experiments/zara_media_recheck --report-dir data/stage_cvpr2027_experiments/zara_media_recheck_report
+.venv-pytorch/bin/python -m pytest tests/test_m3w_zara_media_lineage.py tests/test_m3w_zara_past_media.py -q
+```
+
+10项针对性测试通过；另一次真实解码复核已确认数字、私有manifest和联系表hash一致。
+不重跑无关旧全套测试。进程均已退出，无等待任务。下一次训练应处理部分裁剪mask，
+不要以完整图像要求静默删除入场行人。两段Zara录像仍是一个物理场景。
+
+## 历史：相机/支持范围修复已实测，仍不部署
 
 已完成72个固定模型处理对照，以及6个去除相机学习输入的真实重训模型。
 重训每个1,000步，共6,000次更新，累计109.87秒；不是medium/full。

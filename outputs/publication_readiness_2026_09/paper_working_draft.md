@@ -513,6 +513,18 @@ No confirmatory results are available for the proposed method. The historical St
 
 ## 5. Limitations
 
+The [Zara source trace and repaired media adapter](zara_past_media/conclusions.md)
+also distinguish annotation-timestamp forecasting from strict sensor-as-of
+forecasting. Both recordings numerically reconstruct from sparse VSP controls;
+Zara02 needs a fixed origin translation derived from one exact source anchor.
+This does not establish physical calibration. Of3,988/8,110 complete eight-step
+pasts,3,877/7,924 depend on an interpolating control later than the query.
+An input API that excludes explicit future labels therefore does not establish
+online observation availability. Existing results retain their offline supplied
+annotation meaning; no retrospective row filter or new performance claim is
+introduced. A stricter source-as-of task would need a separately approved
+observation protocol. The two videos represent one physical scene.
+
 The current datasets are represented in pixel or dataset-local coordinates with unverified cross-source scale and effective time. Physical collision risk cannot be inferred from a normalized proximity threshold alone. Scene proxies are not verified semantic maps. Most historical observations overlap in time, and some named dataset collections may contain the same underlying recordings. Calibration assumptions may fail under arbitrary shift, and a small number of independent scenes may make safety bounds uninformative. A selective predictor is not an action-conditioned simulator or a foundation world model.
 
 The new [support audit](risk_calibration/support_audit.md) makes this limitation concrete: nine current canonical recordings correspond to six physical-scene groups, all historically development-exposed. With six hypothetical independent calibration scenes and zero observed [0,1] loss, even one policy/one risk gives an upper bound of 0.4996 at illustrative delta=0.05 under the current Hoeffding screen. This is a sensitivity calculation, not an actual calibration or universal sample-complexity lower bound. Repeated windows cannot improve independent-scene support. Until data roles and independent confirmation are resolved, useful formal risk control must remain an unestablished part of the proposed contribution rather than a result.
