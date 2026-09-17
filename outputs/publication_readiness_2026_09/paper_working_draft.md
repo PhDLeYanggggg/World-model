@@ -9,7 +9,8 @@ The completed v6 input-conditioning protocol retains the repaired v5 source popu
 The older results below retain their original, conditional observation population.
 The latest fixed-candidate diagnostic limits recoverable gain from selection and
 whole-path scaling. It does not supply a positive learned method result. This is
-an evidence-bearing working manuscript, not a submission-ready paper.
+an evidence-bearing working manuscript, not a submission-ready paper. A subsequent
+readout/loss factorization improves fitting but worsens held-scene forecasting.
 
 ## Abstract
 
@@ -34,6 +35,9 @@ These are oracle diagnostics, not learned performance. Under the fixed metric,
 365 static-history windows contribute 89.37% of baseline error, while current
 candidates barely correct subsequent movement. This identifies a restricted
 action-class limitation without asserting that new predictors cannot improve.
+A further matched 2x2 readout/loss comparison completes 54 new fits: transformed
+residual supervision improves fit-cohort error but damages held-scene prediction,
+so output-range repair alone is not sufficient.
 Previously explored data remain exploratory; independent confirmation and a
 positive contribution are still missing. We make no physical-time, metric-safety
 or general world-model success claim.
@@ -227,6 +231,24 @@ larger, but those rows cannot replace the registered complete-cohort primary.
 The numerical scale floor amplifies static errors; this finding does not alone
 explain the earlier negative native-coordinate diagnostics. No oracle is treated
 as an inference result. [Restricted ceiling and limitations](candidate_headroom/conclusions.md).
+
+### Output Range Versus Supervision
+
+We next separate linear versus numerically capped sinh residual readouts from
+log1p-ADE versus asinh-residual SmoothL1 supervision. The same features, seeds,
+row sampler and update budget yield 54 fresh fits and 18 exactly replayed linear
+controls. This training surrogate does not change the primary evaluation metric.
+Directed-feature held gains are -0.97244%, -0.90994%, -15.79533% and -171.03448%
+for linear/log, sinh/log, linear/asinh and sinh/asinh respectively. All new fits
+fail positive complete-cohort gain plus easy preservation.
+
+Transformed supervision raises the mean overlapping fit-cohort gain diagnostic
+from 1.17% to 11.69% (linear) or 19.68% (sinh), but held static-stay errors become
+large despite a zero CV floor. Native-coordinate per-recording diagnostics also
+remain negative. Better in-sample fitting therefore does not identify transferable
+onset/direction cues. The numerical cap is not a physical safety constraint.
+All 72 checkpoint inferences replay exactly; a completed resume leaves 145
+artifact hashes unchanged. [Design, complete results and failure slices](residual_range/conclusions.md).
 
 ### Auxiliary Video Integrity, Not Forecast Evidence
 

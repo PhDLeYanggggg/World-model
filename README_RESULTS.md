@@ -1,14 +1,21 @@
 # M3W Results Ledger
 
-## Residual Range Experiment Registered (2026-09-17)
+## Residual Range Experiment Complete, Negative (2026-09-17)
 
-A matched 2x2 comparison will separate output parameterization from supervision:
-linear versus numerically capped sinh readout, and log1p ADE versus asinh-residual
-SmoothL1 loss. All evaluation remains on the original past-normalized ADE.
-The matrix has 54 fresh fits and 18 frozen controls; results are not yet run.
-Twenty-two focused tests pass, including exact control training and resume.
-No new inputs, source admission, held-role access or threshold search.
-[Registered decision](outputs/publication_readiness_2026_09/residual_range_decision.md).
+`fresh_run`: 54 real Torch fits / 216,000 updates / 196.26 seconds summed fitting;
+`cached_verified`: 18 controls, feature/source lineage and original predictions.
+The fixed 2x2 comparison separates readout (linear/sinh) and supervision
+(log1p ADE/asinh-residual SmoothL1). The primary metric is unchanged.
+
+Directed-feature gains vs CV: linear/log -0.97244%, sinh/log -0.90994%,
+linear/asinh -15.79533%, sinh/asinh -171.03448%. Mean fit-cohort diagnostics
+improve with transformed supervision, but all 54 fresh held fits remain negative
+and fail easy preservation. Output range is not a sufficient generalization fix.
+
+All 72 checkpoints replay exactly; completed resume preserves 145 artifact
+hashes with zero updates. Twenty-two focused tests pass; legacy suite not rerun.
+No new deployment, source admission, sealed-role access, Stage5C or SMC.
+[Results, failures and reproduction](outputs/publication_readiness_2026_09/residual_range/conclusions.md).
 
 ## Candidate Ceiling Diagnostic Complete (2026-09-17)
 

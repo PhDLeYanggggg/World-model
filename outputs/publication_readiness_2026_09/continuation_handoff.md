@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Residual Range Training Complete, Negative (2026-09-17)
+
+This turn is progress: a matched 2x2 neural experiment distinguishes poor fit
+from failed transfer. Registration/code/tests pushed before fitting as `a68c9342`.
+Goal active, not submission-ready. No unchanged HPC/runtime probing.
+
+`configs/m3w_residual_range.json` fixes linear/sinh readouts crossed with
+log1p-ADE/asinh-residual SmoothL1. Same two feature variants, three seeds and
+three fit-scene folds, 4,000 row-uniform updates, fixed final checkpoints.
+54 new fits =216,000 updates; 18 original linear/log controls are reused with
+exact replay. Actual summed fit time 196.2571 seconds, not a long/full training.
+Pilot400 resumed without held evaluation. CPU4/interop1/workers0 remains stable.
+
+Directed held primary gains: -0.97244/-0.90994/-15.79533/-171.03448 percent.
+Transformed loss improves training diagnostics but not transfer. All54 fresh
+fits are negative and easy fails. Sinh/asinh quality hits11 training coordinate
+caps and1 held; directed has0 training,7 held. These numerical guards are not
+physical constraints. Native diagnostics per recording remain negative.
+Do not claim mere output-range optimization solves the startup bottleneck.
+
+Public `residual_range/` includes metrics, losses, per-recording/slice diagnostics,
+exact replay, resume check, aggregate SVG and conclusions. No arrays/weights.
+All72 checkpoint predictions exact on replay; completed resume changes zero
+of145 checkpoint/prediction/report hashes and performs zero updates. Twenty-two
+focused tests pass; full legacy suite not rerun. Plot visually inspected.
+Training10898/PID25333, pilot54105, replay24395, analysis34995 and resume35453
+all observed terminal exit0; no active process remains.
+Registration SHA256 `19f6bf3a6f1232ae59465f87ee7711b26925e83b95d4dca28eb58816fd030ab1`;
+report SHA256 `d4c4e83b4dcc8c5c8cd66977150fe9dd498de50845d7d066af8479315fa2fbc7`.
+
+Next: independently supported state-change information, not another output-range
+or threshold grid on the same exposed folds. The current data are insufficient
+to claim what new cue will succeed. Pending SDD auxiliary-role admission remains
+unanswered; do not repeat the question or silently train it. 8/12 task, approved
+primary, all11,966fitrows and closed Students/development/calibration/confirmation
+remain. No new CREATE job, deployment, metric/seconds, Stage5C or SMC.
+
 ## Frozen Candidate Ceiling Complete (2026-09-17)
 
 This turn is progress: a numerical action-class diagnostic changes the next

@@ -10,8 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I tested whether the forecasting failures were mainly an output-range problem.
+A [matched residual-range experiment](outputs/publication_readiness_2026_09/residual_range/conclusions.md)
+completed 54 new neural fits and 18 replayed controls. Transforming the targets
+improves training errors but worsens held-scene prediction and easy-case harm.
+None of the new fits improves the primary endpoint. The result narrows the
+problem: making large corrections easier to fit does not make them transferable.
+No model is promoted, and independent confirmation is still missing.
+
 I have checked the [remaining room for routing and correction scaling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md)
-before fitting another selector. Even an oracle that knows the future and chooses
+in the earlier frozen sampling-study pool. Even an oracle that knows the future and chooses
 among eight frozen candidates gains only 1.63% on the current primary metric;
 perfect whole-path scaling raises this to 1.73%. These are diagnostic ceilings,
 not learned results. They limit this specific candidate pool, not future models.
