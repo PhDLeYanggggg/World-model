@@ -1,5 +1,25 @@
 # M3W Results Ledger
 
+## Appearance Camera/Support Repair Tested (2026-09-17)
+
+`fresh_run`:72 fixed predictor/treatment evaluations, plus6 matched real neural
+refits (1,000updates each;6,000total,109.87s summed fit). No new test selection.
+All365 stationary fit rows retained; parent task/metric/source roles unchanged.
+
+Past-RGB guarded gain vsCV, ETH/Hotel: original -14.98/-172.63%; training-box
+clipping -16.15/-82.86%; no-camera refit -19.64/-86.28%. Every setting/refit
+remains nonpositive. A strict support fallback rejects all queries, yielding0%
+gain and0%intervention, not generalization. Same-mask decomposition shows some
+apparent gains are fewer interventions rather than better predictions. Easy
+percentage remains undefined atzeroCVfloor; absolute harm is not hidden.
+
+`cached_verified`:18 original controls and6 new checkpoints replay exactly;
+resume0new evaluations/refits,18/6 cached receipts.15 focused tests pass across
+two invocations; unchanged full legacy suite not rerun. No active job from
+this work, new deployment, Stage5C or SMC. Code/light metrics only in Git.
+[Support result](outputs/publication_readiness_2026_09/appearance_support_control/conclusions.md),
+[matched retraining](outputs/publication_readiness_2026_09/appearance_no_camera/conclusions.md).
+
 ## Past-Appearance Neural Forecast Probe (2026-09-17)
 
 `fresh_run`: 18 real CPU neural fits, three seeds, two fit-scene directions,

@@ -10,6 +10,20 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have followed the appearance failure with a
+[fixed-model support control](outputs/publication_readiness_2026_09/appearance_support_control/conclusions.md)
+and [six matched neural refits](outputs/publication_readiness_2026_09/appearance_no_camera/conclusions.md).
+Clipping camera/context features reduces some Hotel damage, but no treatment
+beats CV. Removing the learned camera inputs and retraining has the same tradeoff:
+Hotel improves relative to the damaged model, while ETH gets worse. Exact
+checkpoint replay confirms the results. Simply fixing a feature range is not
+enough to recover useful cross-scene motion.
+
+The strict support rule rejects every cross-scene query and returns CV. I do not
+count that as learning or generalization. My next priority is broader verified
+past-context support within the approved fit recordings, rather than more
+threshold or camera-normalization sweeps on these same few agents.
+
 I have completed the [past-appearance prediction experiment](outputs/publication_readiness_2026_09/past_appearance_probe/conclusions.md):
 18 real neural fits compare geometry, one current image and eight observed images
 across three seeds and two held fit scenes. None improves on CV after the fixed

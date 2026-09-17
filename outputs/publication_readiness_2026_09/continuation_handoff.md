@@ -1,5 +1,45 @@
 # Real-Experiment Continuation Handoff
 
+## Camera/Support Repair Complete: No Live Job (2026-09-17)
+
+Latest: `appearance_support_control/conclusions.md` and
+`appearance_no_camera/conclusions.md`. Previous turn was progress; this turn
+also produces new inference controls, real retraining and verified negative
+evidence. The overall submission/research goal remains active and incomplete.
+
+72 settings =18 frozen predictors x original/camera-box/all-box/support-fallback.
+No setting positive. Every held row outside at least one marginal train feature
+range, so support fallback rejects all365 rows: exactCV, not successful transfer.
+Past-RGB guarded means ETH -14.98 -> -16.15%, Hotel -172.63 -> -82.86% (all-box).
+Same-mask decomposition shows some apparent harm reduction is fewer switches;
+geometry-only Hotel camera-box fixed-mask prediction is worse than original.
+
+Then6 real matched refits remove camera input columns28:32 after normalization,
+keeping deterministic outputH and every other setting. Seeds17/29/43,2folds,
+1,000updates each,6,000total;109.87s summed fit. New guarded ETH -19.6355%, Hotel
+-86.2760%, all6 negative. Original images/masks/28context features/loss/budget
+retained. Easy ratio undefined atzeroCVfloor; absolute harms in reports.
+
+Registrations `configs/m3w_appearance_support_control.json` (9e2f1ea84743...) and
+`configs/m3w_appearance_no_camera.json` (59e0e101e1da...). Do not change bound
+sources/decisions/reports/checkpoints. Both original18 and new6 models replay
+exactly, resume0newfits/evals with18/6cached receipts.15 focused tests pass across
+13+2 invocations; full legacy suite not rerun. Control session29594 exit0;
+training1153 exit0 historicalPID67849. No live job or new HPC request.
+
+Next useful work is broader verified fit-context support, not more box/threshold
+sweeps. Current approved fit roster ETH/Hotel/Zara01/02/03; localZara01/02 video,
+reference andH files exist. This is file availability only, not mapping/source
+admission. Zara03 lacks video in inspected local directory and retains packaged
+population limitation. Zara recordings are one physical scene, not independent
+sites. Inspect coordinate/image mapping and causal history population before
+planning broader multimodal fitting; don't reopen developmentStudents to tune.
+New prospective native-ADE/FDE primary still pending; preserve current8/12parent
+andraw50supplement. No new deployment, final-test claim, Stage5C/SMC or paper
+readiness. CREATE access/project blocker unchanged; no repeat login needed.
+
+Below are historical snapshots, superseded by this section.
+
 ## Past-Appearance Neural Probe Complete: No Live Job (2026-09-17)
 
 Latest: `past_appearance_probe/conclusions.md`. 18 real CNN/fusion fits, 3 seeds,

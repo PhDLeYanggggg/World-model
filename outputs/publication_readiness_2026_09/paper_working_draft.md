@@ -440,6 +440,25 @@ risk control; exact-zero still-row CV error makes percentage easy degradation
 undefined, so absolute harm is reported. No independent scene CI, final-test
 success, primary-metric revision or new deployment is claimed.
 
+A [frozen input-support control](appearance_support_control/conclusions.md)
+evaluates all18 predictors under four registered treatments without refitting.
+Training-range projection reduces some Hotel harm but no guarded setting beats
+CV; strict support abstention rejects every held query. A same-original-mask
+decomposition distinguishes trajectory changes from fewer interventions. For
+geometry-only Hotel, camera clipping changes guarded gain from -132.04% to
+-98.12%, yet the fixed-mask result is -135.32%. Thus that apparent improvement
+does not demonstrate better dynamics. Marginal training support is neither
+joint-distribution support nor a statistical safety certificate.
+
+[Six matched retrains](appearance_no_camera/conclusions.md) then remove only
+the four learned camera-Jacobian inputs, preserving output coordinate mapping,
+all other features, initialization, sampler, loss and1,000-update budget. Past-RGB
+guarded seed-mean gain changes from -14.98/-172.63% to -19.64/-86.28% onETH/Hotel.
+All six remain negative and replay exactly. This rejects a simple camera-input
+repair, not visual conditioning in general. The31-agent/two-site diagnostic has
+insufficient independent support for a generalization or risk-control claim;
+additional threshold sweeps would not establish the proposed contribution.
+
 A [controlled point-decision experiment](conditional_ade_probe_refined/conclusions.md)
 reconstructs the conditional training distribution from each frozen ExtraTrees
 forest and compares its mean with per-step geometric medians, holding all trees,

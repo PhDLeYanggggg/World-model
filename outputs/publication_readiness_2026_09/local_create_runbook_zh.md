@@ -2,7 +2,31 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：过去图像神经预测对照已完成，结果为负
+## 当前：相机/支持范围修复已实测，仍不部署
+
+已完成72个固定模型处理对照，以及6个去除相机学习输入的真实重训模型。
+重训每个1,000步，共6,000次更新，累计109.87秒；不是medium/full。
+Hotel伤害有所减少，但ETH更差，所有结果仍未超过CV。严格训练范围回退
+拒绝所有跨场景样本，0%改善不能算成功。15项针对性测试通过。
+
+两套实验均已退出：控制session29594，训练session1153/PID67849是历史编号。
+18个原模型与6个新模型预测均精确回放；再次resume只有hash验证，不重跑。
+原图、缓存、逐行结果与权重保持在被忽略的本地data目录。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_appearance_support_control.py --registration configs/m3w_appearance_support_control.json --output data/stage_cvpr2027_experiments/appearance_support_control --report-dir outputs/publication_readiness_2026_09/appearance_support_control --resume
+.venv-pytorch/bin/python scripts/run_m3w_appearance_no_camera.py --registration configs/m3w_appearance_no_camera.json --output data/stage_cvpr2027_experiments/appearance_no_camera --report-dir outputs/publication_readiness_2026_09/appearance_no_camera --resume
+```
+
+以上复用完成目录，仅校验；重新训练必须使用新的输出/报告目录，不能覆盖。
+`appearance_support_control/decomposition.json`将预测变化和门控变化分开，
+不是新的阈值搜索或因果证明。完整结论见`appearance_no_camera/conclusions.md`。
+
+下一步核验已批准fit角色的Zara01/02视频与坐标对应，补训练上下文支持；
+文件存在还不等于模态准入，两段录像也不是两个独立物理场景。不要继续
+在这31名静止行人上反复换截断规则。原主要指标保留，新方案仍待确认。
+
+## 历史：过去图像神经预测对照已完成，结果为负
 
 已完成18个真实神经网络训练：2个留出训练场景、3个种子、纯几何/当前图像/
 8帧过去图像，每个1,000步。合计18,000次更新，累计拟合约135.13秒，不是
