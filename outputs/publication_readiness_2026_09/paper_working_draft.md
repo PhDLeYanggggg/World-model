@@ -7,43 +7,36 @@ tiny guarded development gains. None supports a new deployment or the proposed
 joint-intervention contribution claim.
 The completed v6 input-conditioning protocol retains the repaired v5 source population.
 The older results below retain their original, conditional observation population.
+The latest fixed-candidate diagnostic limits recoverable gain from selection and
+whole-path scaling. It does not supply a positive learned method result. This is
+an evidence-bearing working manuscript, not a submission-ready paper.
 
 ## Abstract
 
-Multi-agent motion predictors are commonly evaluated by average trajectory error,
-yet an improved average can conceal degradation on motion already well predicted
-by a simple baseline. We investigate baseline-relative selective intervention:
-learning benefit and harm from out-of-fold predictions and selecting neural
-replacements over an observed interaction graph. An initial eight-observed,
-twelve-predicted-step development study uses three training seeds and physically
-grouped crossfit folds. All seeds select the causal constant-velocity floor;
-uncontrolled MSE-trained forecasts worsen the prespecified normalized ADE by
-7.09--7.90%. A single-factor Smooth-L1 retraining reduces this degradation to
-0.18--0.33% but still selects the floor in every seed. Joint and independent
-controls do not differ at the evaluated policies. We identify strong sensitivity to small past normalization scales,
-without treating a favorable alternative metric as confirmation. The method's
-claimed advantage remains unestablished. A subsequent matched-context,
-10,000-update-per-fit comparison completes three seeds for a Transformer and
-fixed-head K=1 EqMotion. Their uncontrolled normalized-ADE changes versus CV
-are respectively -5.74 to -7.69% and -8.47 to -14.12%; all six selections retain
-CV. Numerical input conditioning resolves the observed fit failures, not the
-prediction or easy-preservation problem. Completed actual-count-matched controls
-find no stable joint advantage, and all joint raw50 ADE gains are negative.
-A paired output ablation then changes mean uncontrolled primary gain from
--0.599% for a CV-initialized residual to +0.062% with an observed-motion bound.
-Easy degradation still fails without selection; guarded gains are below 0.008%.
-A real fixed-predictor deferral comparison completes 24 routing heads on the same
-three seeds and OOF inputs. Bounded deferrers have small average gains
-(+0.020--0.084%), but easy degradation is 14.40--96.96%; none meets the 2% ceiling.
-Their lack of the guarded controls' budgets prevents attributing the difference
-solely to the objective. Broader independent scenes and a positive contribution
-remain necessary before a submission claim.
+Average forecasting gains can conceal degradation on trajectories already well
+predicted by a simple motion baseline. We study baseline-relative selective
+intervention: estimating benefit and harm from cross-fitted forecasts and
+selecting replacements over an observed interaction graph. The task observes
+eight annotation steps and predicts twelve, with past-normalized mean trajectory
+error and equal physical-scene aggregation. Completed three-seed development
+comparisons with causal baselines, a Transformer and fixed-head EqMotion do not
+establish a joint-selection advantage. Baseline-relative output bounds reduce
+drift, but ordinary regression deferral still fails the 2% easy-degradation limit.
 
-An upstream source audit additionally identifies identity fragmentation and
-future-availability-conditioned observation retention in one packaged development
-recording. We retain the earlier results as conditional-window evidence and
-rebuild full-scene context from the continuous source before the next comparison.
-This repair does not make previously explored data an untouched test set.
+Controlled visual-input, objective and sampling experiments investigate the
+remaining failure. In the latest matched comparison, 54 fresh fits and 18 verified
+controls retain identical model, loss and update budgets; neither track nor event
+balancing improves the complete-cohort primary endpoint. To distinguish routing
+failure from limited candidate predictions, we compute future-informed diagnostic
+ceilings over the frozen forecasts. Perfect choice among eight candidates per
+seed gains 1.627%; perfect whole-path correction scaling increases this to 1.726%.
+These are oracle diagnostics, not learned performance. Under the fixed metric,
+365 static-history windows contribute 89.37% of baseline error, while current
+candidates barely correct subsequent movement. This identifies a restricted
+action-class limitation without asserting that new predictors cannot improve.
+Previously explored data remain exploratory; independent confirmation and a
+positive contribution are still missing. We make no physical-time, metric-safety
+or general world-model success claim.
 
 ## 1. Introduction
 
@@ -182,7 +175,58 @@ not isolate coordination. The all-baseline vector is feasible; failed or
 unverified optimizer solutions return it. Estimated feasibility does not imply
 that a learned intervention improves the realized trajectory.
 
-## 4. Experiments To Complete
+### 3.2 Restricted Action-Class Diagnostic
+
+Before learning another gate, consider the finite pool of frozen forecasts N_k
+and actions B + alpha*(N_k-B), with one alpha in [0,1] for each whole agent path.
+For nonnegative fixed scene weights w_i, define the label-side diagnostic
+
+```text
+ell_i_star = min over k, alpha of L_i(B_i + alpha*(N_ki-B_i), Y_i)
+oracle_gain = 1 - sum_i w_i*ell_i_star / sum_i w_i*L_i(B_i,Y_i).
+```
+
+Any joint policy confined to these actions has labeled-set loss at least
+sum_i w_i*ell_i_star. This follows directly from the rowwise minimum; adding
+compatibility constraints cannot enlarge its feasible action set. It is an
+elementary diagnostic, not a new statistical theorem. The target enters only
+this evaluator and is never available to a causal policy.
+
+For fixed k, mean Euclidean error is convex in alpha. Subgradient bisection and
+a mean-correction-norm Lipschitz envelope numerically bracket the minimum.
+The implementation includes baseline/candidate endpoints and separately checks
+its solutions with a scalar optimizer. This does not bound arbitrary mixtures
+of several candidate vectors, per-waypoint scaling or newly trained predictors.
+It also gives no guarantee about population risk under scene shift.
+
+## 4. Experiments and Remaining Evidence
+
+### Training Exposure and Candidate Ceiling
+
+A matched sampling study retains all 11,966 approved fit windows, three seeds,
+three physical-scene folds, the same MLP and 4,000 updates. Fifty-four new fits
+compare scene, track and event/track balance against eighteen exactly replayed
+row-uniform controls. Directed image-motion primary gains versus CV are -0.9724%,
+-1.2393%, -1.1877% and -10.4303% respectively. No fresh fit meets both primary
+improvement and easy preservation. Raising the frequency of scarce supervised
+events does not add independent observations or transferable onset direction.
+[All conditions and failures](track_event_sampling/conclusions.md).
+
+The subsequent diagnostic uses all frozen forecasts, without retraining or
+opening development/calibration/confirmation roles. The pool's perfect binary
+oracle is 1.62653%; its whole-path scaling oracle is 1.72618%. Seed gains for the
+latter are 1.57542%, 2.14971% and 1.45339%. A 2,000-draw descriptive resampling
+interval over only three exposed fit scenes is [0.73625%, 3.06827%]; it is not a
+confidence interval for a learned policy. All 72 oracle computations reproduce
+exactly, and 864 sampled independent scalar optimizations agree to 1.777e-15.
+
+Exactly-static histories are 365/11,966 rows and contribute 89.3667% of equal-scene
+normalized CV error. For the 188 static-to-movement rows, the pooled oracle gain
+is only 0.19903--0.43404% across seeds. Conditional moving-history headroom is
+larger, but those rows cannot replace the registered complete-cohort primary.
+The numerical scale floor amplifies static errors; this finding does not alone
+explain the earlier negative native-coordinate diagnostics. No oracle is treated
+as an inference result. [Restricted ceiling and limitations](candidate_headroom/conclusions.md).
 
 ### Auxiliary Video Integrity, Not Forecast Evidence
 

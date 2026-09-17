@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have checked the [remaining room for routing and correction scaling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md)
+before fitting another selector. Even an oracle that knows the future and chooses
+among eight frozen candidates gains only 1.63% on the current primary metric;
+perfect whole-path scaling raises this to 1.73%. These are diagnostic ceilings,
+not learned results. They limit this specific candidate pool, not future models.
+The next useful change needs better predictions of state changes, not another
+threshold sweep over the same trajectories. No model is promoted.
+
 I tested whether [balancing tracks and state-change events](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md)
 could fix the forecasting failures without changing the model or adding data.
 The comparison contains 54 new neural fits and 18 exactly replayed controls.

@@ -22,10 +22,15 @@ Minimum comparisons before claiming the hypothesis is supported:
 
 1. Identical forecasts and observed agent membership for independent and joint decisions.
 2. Ordinary same-budget policies plus the new reference-conditional exact-count control. Report prediction error, positive harm, proximity proxy and both overall and labeled-subset intervention rates.
-3. A cost-sensitive regression-deferral control using the same training-fold predictions, with the exact adapted objective disclosed. Following this literature pass, a [two-action control](../deferral_control/method_and_limits.md) has been implemented and verified on synthetic fixtures. Real fitting/comparison remains **not_run**; no theorem or published benchmark reproduction is claimed.
+3. A cost-sensitive regression-deferral control using the same training-fold predictions, with the exact adapted objective disclosed. The [two-action control](../deferral_control/method_and_limits.md) was subsequently [fitted and evaluated in 24 real settings](../8to12_deferral_v7/conclusions.md). None passes positive gain plus easy preservation. This is a task-specific control, not reproduction of the cited paper's benchmark or theorem.
 4. Explicit negative/zero-count and solver-failure accounting; no exclusion based on realized improvement.
 5. Unexposed confirmation, approved physical-scene grouping and paired uncertainty. None is supplied by a literature citation or a successful optimizer test.
 
 ## Claim Decision
+
+Update, 2026-09-17: the original Section 4 and PMLR publication page were reopened;
+fixed-predictor regression deferral remains direct prior art. The [new candidate
+ceiling analysis](../candidate_headroom/conclusions.md) limits selection/scaling
+of the latest forecasts, rather than establishing a new deferral algorithm.
 
 Do not claim first cost-aware selector, first regression deferral, first joint forecast optimizer, formal physical safety or a new risk theorem. The current proposed contribution is a testable combination of baseline-relative supervision and structured intervention under a dependency-aware evaluation protocol. Whether that combination earns a substantive methodological contribution remains an empirical and theoretical question. No new predictor comparison was run in this review.

@@ -1,5 +1,49 @@
 # Real-Experiment Continuation Handoff
 
+## Frozen Candidate Ceiling Complete (2026-09-17)
+
+This turn is progress: a numerical action-class diagnostic changes the next
+experiment priority. The goal remains active, not submission-ready. Registration
+and tested implementation pushed as `46b664ce`; no model is trained this turn.
+
+The preceding sampling study completed 54 real fits plus 18 exactly replayed
+controls (`3eb16790`). All fresh fits failed positive complete-cohort primary
+gain plus easy preservation. The current diagnostic evaluates those frozen
+forecasts: 72 oracle computations, exact full recomputation, and completed resume
+with zero new oracle minimizations/model updates. All inputs/checkpoints retain
+their original hashes and exposure roles. Public evidence is in
+`candidate_headroom/`; per-row labels and oracle alphas remain private.
+
+Perfect binary selection over eight candidates per seed gains 1.62653%; perfect
+whole-path scalar correction gains 1.72618%. Future labels supply these choices:
+neither is a learned result. This limits the union of baseline-to-candidate
+segments, not arbitrary mixtures, waypoint corrections or new predictors.
+Independent SciPy minimization of 864 real paths agrees within 1.777e-15;
+25 focused tests pass. The full legacy suite is not rerun. The registered
+primary remains past-normalized ADE with equal physical-scene aggregation.
+
+Exactly-static histories are 365/11,966 fit windows but contribute 89.3667% of
+equal-scene normalized CV error. The 188 static-to-movement rows have only
+0.19903--0.43404% conditional scalar-oracle gain across seeds. Improving candidate
+onset/direction information is more useful than another router over this pool.
+Do not silently switch the primary to favorable moving histories.
+
+No process remains active. Registration digest is
+`2507b85fb683796ffd80457450534392fbab56c8b0432ef89a91b76aa79de75b`;
+main report digest is
+`a393fbd6f58c3e2246b3ebd0b6b643c69bd9f9e8a12783b985c1972a01417862`.
+Use `run_m3w_candidate_headroom.py`, its `--verify` mode, the independent
+`verify_m3w_candidate_headroom.py`, and `plot_m3w_candidate_headroom.py` in scripts.
+
+README/results, working manuscript and deferral prior-work status are updated.
+Official CVPR dates reconfirmed: registration Nov 10, paper Nov 16, supplement
+Nov 23, 2026, AoE. The 2027 AuthorGuidelines endpoint still returns 404; CFP says
+LLM details remain under finalization. Do not import prior-year rules as current.
+Pending auxiliary SDD source-role admission is still unanswered: do not repeat
+the question or silently train on SDD. Students/development/calibration/
+confirmation remain closed. No new CREATE query/job, deployment, Stage5C or SMC.
+Preserve all unrelated staged files using explicit-path commits only.
+
 ## SDD Event Support Census Complete (2026-09-17)
 
 This turn is progress: full source-level count changes the auxiliary-data

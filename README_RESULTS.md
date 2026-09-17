@@ -1,16 +1,22 @@
 # M3W Results Ledger
 
-## Candidate Ceiling Diagnostic Registered (2026-09-17)
+## Candidate Ceiling Diagnostic Complete (2026-09-17)
 
-Before fitting another routing head, the next diagnostic measures how much gain
-is available from the frozen sampling-study forecasts. It compares perfect binary
-selection with perfect whole-path scaling and their eight-candidate pool. All
-oracles use labels; none is an inference model or a new accuracy result.
+`fresh_run`: 72 fixed-forecast oracle computations and exact full recomputation;
+`cached_verified`: original predictions/checkpoints and fit-only source lineage.
+No new model is trained. Perfect selection over eight candidates per seed gains
+1.62653%; perfect whole-path scaling increases the diagnostic to 1.72618%.
+Neither is an inference result or an independent confirmation.
 
-Seven synthetic checks pass, including an explicit counterexample showing that
-a union-of-segments ceiling does not bound arbitrary mixtures or new forecasts.
-No new data role, model training or sealed evaluation is involved.
-[Diagnostic scope](outputs/publication_readiness_2026_09/candidate_headroom_decision.md).
+The union-of-segments ceiling does not cover arbitrary mixtures, per-waypoint
+corrections or new predictors. Static histories comprise 365/11,966 windows but
+89.3667% of equal-scene normalized CV error; current candidates barely correct
+static-to-movement labels. The primary is not changed to select an easier slice.
+
+864 independent SciPy path checks agree to 1.777e-15 maximum difference; 25
+focused tests pass. Completed resume adds no oracle minimizations/model updates.
+No source admission, sealed-role access, deployment or Stage5C/SMC.
+[Findings, limits and reproduction](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md).
 
 ## Track/Event Sampling Complete, Negative (2026-09-17)
 
