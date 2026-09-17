@@ -1,9 +1,9 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, 2026-09-16. Method proposal with two completed three-seed
-development experiments; neither supports deployment or a contribution claim.
-A matched public-core study is running under the v6 input-conditioning protocol,
-which retains the repaired v5 source population.
+Working draft, 2026-09-17. Method proposal with completed three-seed development
+experiments, including a matched Transformer/EqMotion study. None supports a
+new deployment or the proposed joint-intervention contribution claim.
+The completed v6 input-conditioning protocol retains the repaired v5 source population.
 The older results below retain their original, conditional observation population.
 
 ## Abstract
@@ -20,9 +20,14 @@ uncontrolled MSE-trained forecasts worsen the prespecified normalized ADE by
 0.18--0.33% but still selects the floor in every seed. Joint and independent
 controls do not differ at the evaluated policies. We identify strong sensitivity to small past normalization scales,
 without treating a favorable alternative metric as confirmation. The method's
-claimed advantage remains unestablished. Strong public predictors, matched-count
-and deferral controls, broader independent scenes and confirmatory evaluation
-are required before a positive submission claim.
+claimed advantage remains unestablished. A subsequent matched-context,
+10,000-update-per-fit comparison completes three seeds for a Transformer and
+fixed-head K=1 EqMotion. Their uncontrolled normalized-ADE changes versus CV
+are respectively -5.74 to -7.69% and -8.47 to -14.12%; all six selections retain
+CV. Numerical input conditioning resolves the observed fit failures, not the
+prediction or easy-preservation problem. Matched-count and deferral controls,
+broader independent scenes and confirmatory evaluation are required before a
+positive submission claim.
 
 An upstream source audit additionally identifies identity fragmentation and
 future-availability-conditioned observation retention in one packaged development
@@ -241,14 +246,31 @@ changed. The formerly failing seed29 completed a real MPS 100-step pilot in
 training is not evidence of downstream lift. v5 remains visible as a failed
 comparison rather than being merged with v6 results.
 
-The EqMotion v6 study has now completed all three seeds, all twelve 10,000-update
-forecasters and both OOF cost learners per seed. Its primary uncontrolled gains
-are -14.119%, -8.473%, and -14.081%; each development selection is the CV floor.
-Oracle candidate/floor gains are only 0.455%, 0.604%, and 0.576%. Native-coordinate
-Students03 gains over CV do not override these failed primary/easy outcomes;
-Students01 remains negative. Numerical stability is improved at the registered
-budget, but predictor and intervention contributions remain unsupported. The
-matched Transformer and supplementary comparisons are still running/pending.
+Both v6 families now complete all three seeds, with 24 forecasting fits at
+10,000 updates, six neural cost heads at 1,000 updates and six OOF ridge controls.
+
+| Seed | Transformer normalized-ADE gain vs CV (%) | EqMotion-K1 gain vs CV (%) | Both selected |
+| --- | ---: | ---: | --- |
+| 17 | -5.736 | -14.119 | CV |
+| 29 | -7.686 | -8.473 | CV |
+| 43 | -6.700 | -14.081 | CV |
+
+Every diagnostic candidate/CV oracle gain is below 0.61%. Native-coordinate
+EqMotion gains over the development-best causal alternative on Students03 are
+2.103%, 2.318%, and 0.940%, but Students01 remains negative. This is not a change
+of primary metric or new-site evidence. Numerical stability improves at the
+registered budget, while predictor and intervention claims remain unsupported.
+The paired table preserves 28,324 complete ADE paths, 28,335 valid endpoints and
+37,775 past-supported agent queries as distinct denominators.
+
+A post-run decomposition keeps the fixed metric and every row. The 3,082
+complete queries at its numerical scale floor constitute 10.88% of the scored
+population but contribute 88.88--91.58% of Transformer positive harm and
+93.08--96.97% of EqMotion positive harm. These are descriptive error shares,
+not causal attribution. Net excess error is also positive above the floor;
+removing low-motion rows cannot be presented as a successful method. This
+motivates a prospective motion-state/scale hypothesis, not retrospective
+replacement of evaluation or selection rules.
 
 ### 4.3 Remaining Mechanism and Confirmation Tests
 
@@ -272,7 +294,7 @@ The primary mechanism test holds candidate forecasts and training examples fixed
 
 The [deferral control](deferral_control/method_and_limits.md) fits linear or small neural routing on the same causal rollout features and held-fold predictions as the relative-cost head. It preserves continuous error weights and makes its bounded-cost transform explicit in the protocol. Clipped training risk, unclipped forecasting error and calibrated safety are distinct quantities. Its [development comparison](deferral_development/implementation_and_limits.md) now verifies identical OOF training inputs and runs all controls on identical forecasts before labels are read. The unconstrained deferral arm is not claimed to share M3W's budget or coverage. Paired scene-level error differences are descriptive; synthetic integration and recovery do not establish a real accuracy advantage. The real protocol and frozen confirmation family have not been changed.
 
-An [EqMotion-core adapter](public_baselines/compatibility_and_limits.md) provides an externally sourced predictor for this implementation path. The source is pinned and checked before loading; past-only context replaces the release's future-availability-dependent preprocessing. The registered v5 run trains one fixed output head with Smooth-L1, as specified above. It is an adapted K=1 control, not a reproduction of published best-of-20 results. Real full fitting has completed for the first seed; the complete matched-context, matched-budget study is still running. AgentFormer's author-reported normalization correction must also be respected when constructing the eventual public-baseline table.
+An [EqMotion-core adapter](public_baselines/compatibility_and_limits.md) provides an externally sourced predictor for this implementation path. The source is pinned and checked before loading; past-only context replaces the release's future-availability-dependent preprocessing. The complete v6 run trains one fixed output head with Smooth-L1, as specified above. It is an adapted K=1 control, not a reproduction of published best-of-20 results. All three seeds complete the matched-context, matched-budget study reported above. AgentFormer's author-reported normalization correction must also be respected when constructing the eventual public-baseline table.
 
 Compare the same predictor with no gate, independent confidence gating, expected-error gating, scene-uniform gating and joint intervention selection. Include simple regressors and modern published predictors so that benefits cannot be attributed only to replacing a weak baseline. Separate K=1 from best-of-K evaluation. Deduplicate underlying recordings across dataset distributions, freeze development and calibration choices, and use a final confirmation set with no prior model-selection exposure. The current development primary is past-normalized ADE; native-coordinate ADE/FDE, easy/hard slices, proximity proxies, coverage and latency are complementary, not post hoc replacement metrics. Report all three seeds and only use scene-level intervals when independent scene support exists.
 

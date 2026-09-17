@@ -1,5 +1,40 @@
 # M3W Results Ledger
 
+## Complete Matched Three-Seed Study: No Selected Neural Gain (2026-09-17)
+
+Both v6 model families completed all registered training and primary evaluation.
+Across the two families: 24 forecasting fits at 10,000 updates, six neural cost
+heads at 1,000 updates, six OOF ridge controls, 120 reported arm comparisons.
+All six development selections are CV. This is a completed negative study,
+not an interrupted run, a quick proxy, or independent confirmation.
+
+| Seed | Transformer primary normalized-ADE gain vs CV | EqMotion fixed-K1 gain vs CV |
+| --- | ---: | ---: |
+| 17 | -5.736% | -14.119% |
+| 29 | -7.686% | -8.473% |
+| 43 | -6.700% | -14.081% |
+
+Oracle candidate/CV headroom is below 0.61% in every run. Native-coordinate
+Students03 EqMotion gains versus the development-best causal alternative are
++2.103%, +2.318%, +0.940%; Students01 remains negative. These are explicitly
+recording-local sensitivity results, not replacement primary outcomes.
+
+The fixed-scale error decomposition attributes 88.88--91.58% of Transformer
+positive harm and 93.08--96.97% of EqMotion positive harm to the 10.88% of
+complete queries at the numerical normalization floor. Net harm remains positive
+above the floor too; discarding stationary rows would not establish success.
+Labels are used only in this post-run diagnosis, never as inference features.
+The completed comparison and error-scale tests have 45 targeted checks passing;
+this is not a new claim that the legacy full suite is green.
+
+[Paired results](outputs/publication_readiness_2026_09/8to12_public_predictors_v6/paired_predictor_comparison.md),
+[Transformer error diagnosis](outputs/publication_readiness_2026_09/8to12_transformer_v6/error_scale.md),
+[EqMotion error diagnosis](outputs/publication_readiness_2026_09/8to12_eqmotion_v6/error_scale.md).
+Raw50 and matched-count supplementary evaluations are running on the frozen
+forecasts; no new threshold or model selection is permitted from them.
+
+Earlier entries below are dated progress snapshots, not the current run status.
+
 ## EqMotion v6 Complete, Negative; Matched Transformer Running (2026-09-17)
 
 `fresh_run`: all three EqMotion seeds completed full and three held-fold fits,

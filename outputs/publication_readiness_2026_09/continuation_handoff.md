@@ -1,6 +1,38 @@
 # Real-Experiment Continuation Handoff
 
-## Current v6 Run
+## Current State: v6 Primary Complete, Supplement Running (2026-09-17)
+
+Both v6 families completed all registered seeds and fits: 24 forecasters at
+10,000 updates, six neural cost heads at 1,000 updates and six ridge controls.
+All six development choices are CV. Transformer primary gains are -5.736%,
+-7.686%, -6.700%; EqMotion-K1 gains are -14.119%, -8.473%, -14.081%.
+The complete pair is in `8to12_public_predictors_v6/paired_predictor_comparison.md`.
+Do not restart the completed training or repeat its runtime pilot.
+
+New error decompositions in each family's `error_scale.json` locate most positive
+harm at the numerical past-scale floor, without removing rows or changing the
+metric. Native Students03 EqMotion results beat the development-best causal
+alternative by 0.94--2.32%, but Students01 and the primary result remain negative.
+See `8to12_public_predictors_v6/conclusions.md` for the next falsifiable direction.
+
+The frozen supplementary runner now operates on completed forecasts. Transformer
+completed all three seeds and twelve candidates; its real exact-count comparison
+shows zero ADE/FDE difference between joint and independent controls, including
+nonzero-intervention queries. Raw50 does not rescue the negative primary result.
+Its row replay matches every original fixed-forecast error and ordinary decision.
+The EqMotion supplementary process is still running. Read its local heartbeat
+under `data/stage_cvpr2027_experiments/8to12_eqmotion_v6_supplement` before doing
+anything; never launch a duplicate or edit its bound source/decision files.
+
+After completion: run `summarize_m3w_forecast_supplement.py` and
+`audit_m3w_supplement_replay.py` on that family; retain all arms and seeds, not the
+best supplementary number. Main protocol digest remains
+`53be3aafbda47ddf8d60891e779896f6685fcd59222a1fe4ea867e689f8914de`.
+No independent-scene CI, deployment or submission-readiness claim. Stage5C/SMC
+remain disabled; the research goal is active. The earlier snapshots below are
+historical only, including resolved protocol-choice blockers and old run states.
+
+## Historical v6 Launch Snapshot
 
 The v5 seed29 full fit failed with nonfinite loss on both MPS and CPU, after
 seed17 completed its four predictors, OOF heads and development evaluation.

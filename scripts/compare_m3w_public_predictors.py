@@ -91,7 +91,7 @@ def main():
         lines.append(f"| {r['model']} | {r['seed']} | {r['recording']} | {r['candidate_ade']:.6f} | {r['candidate_gain_pct']:.3f} | "
                      f"{r['best_development_causal_ade']:.6f} | {r['gain_vs_best_development_causal_pct']:.3f} |")
     lines += ['', 'The development-best causal baseline is descriptive context, not a changed floor or a test-selected deployment rule.',
-        'Raw-frame t+50, actual-count-matched control, real deferral control, independent calibration/confirmation and visual-scene contribution remain open.', '']
+        'This table does not evaluate raw-frame t+50 or actual-count-matched controls; consult their separate supplementary reports. Real deferral, independent calibration/confirmation and visual-scene contribution remain unestablished.', '']
     (args.output_dir / 'paired_predictor_comparison.md').write_text('\n'.join(lines))
     print(json.dumps(result['seed_descriptive_statistics']))
 

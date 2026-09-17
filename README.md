@@ -10,18 +10,32 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I have completed the EqMotion side of the v6 matched public-core study: twelve
-10,000-update forecasting fits, three neural cost heads and three ridge controls
-across three seeds. Past-only input conditioning resolves the previously observed
-training overflows at this budget, but it does not establish forecasting success.
-Uncontrolled primary normalized-ADE gains versus CV are -14.12%, -8.47% and
--14.08%; all three development choices remain the CV floor. The future-label
-oracle has only 0.46--0.60% headroom on this primary metric. I retain the
-[complete negative results](outputs/publication_readiness_2026_09/8to12_eqmotion_v6/results.md),
-including easy-case damage and the more favorable recording-local diagnostics.
-The matched Transformer study is still running under the same input support,
-loss, sample/update budget and frozen evaluation. No completed paired comparison
-or new deployment is claimed yet.
+The complete three-seed comparison now covers both a local Transformer and the
+EqMotion author core, adapted to one fixed prediction head. It includes 24
+10,000-update forecasting fits, six 1,000-update neural cost heads and six ridge
+controls. Both models use the same observed support, loss and sample/update
+budget, but not the same parameter count or compute cost.
+
+| Model | Seed 17: primary ADE gain vs CV | Seed 29 | Seed 43 | Development selection |
+| --- | ---: | ---: | ---: | --- |
+| Transformer | -5.74% | -7.69% | -6.70% | CV in all seeds |
+| EqMotion, fixed K=1 | -14.12% | -8.47% | -14.08% | CV in all seeds |
+
+These are negative development results, not a new deployment. Past-only input
+conditioning allows the full EqMotion budget to finish without the earlier
+overflows, but numerical stability is not forecasting success. The
+[paired results](outputs/publication_readiness_2026_09/8to12_public_predictors_v6/paired_predictor_comparison.md)
+keep all seeds, easy-case damage and stronger causal alternatives visible.
+The diagnostic candidate/CV oracle has less than 0.61% headroom on the fixed
+primary metric, so additional threshold search cannot yield a 5% improvement
+from these unchanged forecasts.
+
+An [error decomposition](outputs/publication_readiness_2026_09/8to12_eqmotion_v6/error_scale.md)
+locates most damage in the 10.9% of complete queries whose past-motion scale is
+at the numerical floor. I retain those cases and the original metric. EqMotion
+does beat the stronger causal alternative on Students03 in native coordinates
+by 0.94--2.32%, but not on Students01. This recording-specific signal does not
+override the failed primary result or establish cross-scene generalization.
 The [frozen decision](outputs/publication_readiness_2026_09/conditioned_context_v6_decision.md)
 specifies what changed and what stayed fixed.
 
@@ -36,13 +50,13 @@ An [execution-only optimization](outputs/publication_readiness_2026_09/public_pr
 skips unused output heads while preserving selected outputs and gradients in
 CPU/MPS tests. This remains a K=1 adaptation, not published best-of-20 EqMotion.
 The replacement full fit matches the preserved model's parameters and complete
-loss sequence exactly. Three EqMotion fits have finished, but the next fold
+loss sequence exactly. Three v5 EqMotion fits finished, but the next fold
 encountered float32 overflow. I reproduced it separately and completed that fold
 on CPU at the unchanged 10,000-update budget. A later seed failed on both devices,
 so v5 remains an incomplete comparison rather than a selectively reported success. The
 [failure record](outputs/publication_readiness_2026_09/8to12_public_predictors_v5/nonfinite_fit_diagnosis.md)
 keeps the evidence visible. That v5 failure is separate from the completed v6
-EqMotion experiment above, not silently overwritten by the numerical repair.
+paired experiment above, not silently overwritten by the numerical repair.
 
 My primary task is now **eight observed steps to twelve predicted steps**, with
 raw-frame `t+50` retained as a separate supplement. I am prioritizing a focused
@@ -111,7 +125,7 @@ I now enforce that distinction in the [data-admission path](outputs/publication_
 
 The rebuilt reader connects to a [resumable forecasting and cost-learning backend](outputs/publication_readiness_2026_09/supervised_backend/implementation_and_limits.md). It learns benefit and harm from predictions made outside each producer's training fold. The [development evaluator](outputs/publication_readiness_2026_09/development_evaluation/implementation_and_limits.md) compares five controls on the same predictions and keeps agents with missing future labels in the decisions. The first real three-seed comparison is now complete and negative. Independent confirmation and a useful scene-level risk guarantee remain open.
 
-To avoid comparing only against my own networks, I have also connected a [version-pinned EqMotion core](outputs/publication_readiness_2026_09/public_baselines/compatibility_and_limits.md) to the causal reader and training path. The current adapter emits one fixed head and is explicitly a K=1 adaptation, not a reproduction of the paper's best-of-20 result. Source integrity, CPU/MPS training recovery and past-only input behavior are checked; its real forecasting comparison is still pending. The published model's preprocessing, sampling budget and checkpoint selection need the same scrutiny as my own code.
+To avoid comparing only against my own networks, I have connected a [version-pinned EqMotion core](outputs/publication_readiness_2026_09/public_baselines/compatibility_and_limits.md) to the causal reader and training path. The current adapter emits one fixed head and is explicitly a K=1 adaptation, not a reproduction of the paper's best-of-20 result. Its complete real comparison is reported above. The published model's preprocessing, sampling budget and checkpoint selection need the same scrutiny as my own code.
 
 I now have a [frozen-policy risk-screening path](outputs/publication_readiness_2026_09/risk_calibration/implementation_and_limits.md), but implementation is not a safety guarantee. The current rebuilt collection contains only six physical-scene groups, all previously used during development. Even an optimistic calculation shows that the present conservative bound would be too wide for a useful small-risk claim. My [statistical assumption review](outputs/publication_readiness_2026_09/joint_intervention/statistical_assumptions_and_claims.md) checks why existing uncertainty methods do not automatically remove that limitation. I keep prediction-set coverage, improvement over a baseline and physical safety separate; duplicating windows cannot close the evidence gap.
 
@@ -181,9 +195,10 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 I am developing this work toward a CVPR 2027 submission on when neural motion predictions can safely improve a strong baseline. The next study focuses on baseline-relative risk and joint intervention across agents. My [research direction and evidence audit](README_M3W_INNOVATION_AND_CVPR2027_ZH.md) explains the proposed contributions, the limitations of the current experiments, and the remaining comparisons. In particular, the latest WorldCore architecture ranking used test metrics, so those results remain exploratory until independently confirmed.
 
-The eight-observation/twelve-prediction development task is frozen and real
-training is running locally. Independent calibration and confirmation are still
-unresolved; the development runs cannot supply those claims. The
+The eight-observation/twelve-prediction development task is frozen and the
+matched three-seed v6 training is complete. Fixed-forecast supplements are being
+finished without changing the selected floor. Independent calibration and
+confirmation remain unresolved; the development runs cannot supply those claims. The
 [continuation record](outputs/publication_readiness_2026_09/continuation_handoff.md)
 and [runbook](outputs/publication_readiness_2026_09/local_create_runbook_zh.md)
 record the active protocol, checkpoint paths and recovery commands.
