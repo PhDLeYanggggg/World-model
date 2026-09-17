@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## SDD Geometry Bridge Complete, Training Contract Pending (2026-09-17)
+
+Meaningful independent progress, not a new classifier sweep or model result.
+Checked whether SDD admission was an artificial permission blocker: prior SDD use
+is authorized, but the new auxiliary sampling/source-role experiment is not
+specified by the frozen main contract. Sent one focused async question this turn:
+separate stride12 auxiliary training (recommended), stride1 auxiliary only, or
+no auxiliary arm. No reply observed; do not repeat it or infer an answer.
+
+Pre-execution commit `eeb0628e` fixes bridge code/registration/check contract.
+`SDDStepAdapter` reuses the 476-column geometry/8-to-12 interface, index from past
+support only, separate masked labels, no old cached velocities/time/teacher.
+Original 40 train videos / 8,005,367 raw rows in five scenes. Stride1 indexes
+3,045,974 queries, stride12 229,333; not independent observations. Neighbor types
+can be mixed. Offline generated/occluded provenance retained, no sensor-as-of.
+
+5,074 untrained geometry Torch forwards exact CV; 320 real mutation/truncation
+checks pass. Separate contiguous-run verifier checks all 3,275,307 index rows.
+Index total 118.72 MiB, 17.36s summed conversion/checking. No optimizer updates,
+no new forecasts/accuracy results/full image access. Sample missing labels are
+reported separately, not full-population availability. Main primary unchanged.
+Completed resume: zero new records, all 121 index/receipt/report hashes unchanged.
+Test commands16 and25 pass with5 shared; full legacy suite not rerun.
+
+Private `data/stage_cvpr2027_experiments/sdd_step_bridge/`; public reports under
+`outputs/publication_readiness_2026_09/sdd_step_bridge/`. Pilot7471, full39302,
+tests75959/31832, resume17280e(command chunk, no session), verifier99556 all
+terminal exit0. Last resume heartbeat PID35456, complete. No process live.
+Registration SHA cf5f6834cc5973612c2764d8de58fca7bfade6957e8a4d1d6831a24fd1f1369e;
+report SHA1970c2a7feacf3f6bfa41ebed507374e05edf145ab9c47dc4cb4c51c1f22faa8.
+
+Next: once the scientific choice arrives, register a matched auxiliary/control
+study, fixed sources/updates/seeds, no sealed role access. If image cues are used,
+connect verified per-query image support rather than claiming the geometry-only
+bridge is multimodal. Do not redefine the complete-label primary using partial
+auxiliary labels. Do not manufacture another axis/loss/classifier grid while the
+choice is pending. CREATE blocker unchanged, no remote query/job. Goal remains
+active, not submission-ready. No deployment, Stage5C, SMC or metric/seconds claim.
+
 ## Motion-to-Start Information Complete, One Direction Only (2026-09-17)
 
 Progress: direct probability supervision distinguishes localized information from

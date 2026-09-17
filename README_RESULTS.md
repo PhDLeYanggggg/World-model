@@ -1,14 +1,23 @@
 # M3W Results Ledger
 
-## SDD Step-Window Bridge Registered, Not Training (2026-09-17)
+## SDD Step-Window Bridge Complete, Not Training (2026-09-17)
 
-The next prerequisite is a reusable past-only SDD interface, not another small
-classifier sweep. Original train videos only; eight sampled past states and twelve
-masked future labels, diagnostic raw-frame strides 1/12. The new source-role and
-training sampling choice remains separate from the unchanged ETH/UCY primary.
-Sixteen targeted tests pass. Full recording-level checks are not yet run.
-No new model training, auxiliary admission, sealed-label access or deployment.
-[Frozen check contract](outputs/publication_readiness_2026_09/sdd_step_bridge_decision.md).
+`fresh_run`: original 40 train videos / 8,005,367 source rows converted to past-only
+lazy indices. Diagnostic stride1: 3,045,974 windows; stride12: 229,333 windows.
+Overlapping windows, not independent samples. Eight observed/twelve requested
+future states; masked future support does not determine input membership.
+
+5,074 geometry-only interface forwards, 320 real future mutation/truncation
+checks, and independent verification of all 3,275,307 index rows pass. Untrained
+zero-initialized Torch forward equals CV; no optimizer updates or gain claim.
+Private indices 118.72 MiB; 17.36 seconds summed conversion/check time.
+`cached_verified`: original source hashes, split and corrected media manifest.
+Completed resume preserves 121 artifact hashes, zero new recordings/updates.
+Focused test commands pass 16 and 25 tests with five overlapping; legacy suite
+not rerun. `not_run`: new auxiliary training, full image training and predictive
+evaluation. Source-role/sampling choice pending, not a runtime blocker.
+No primary change, sealed-label access, deployment, Stage5C or SMC.
+[Counts, limits and reproduction](outputs/publication_readiness_2026_09/sdd_step_bridge/conclusions.md).
 
 ## Motion-to-Start Information Probe Complete, One Direction Only (2026-09-17)
 

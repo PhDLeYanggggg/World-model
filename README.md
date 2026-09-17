@@ -33,6 +33,15 @@ The latest probe suggests that observed motion is not wholly uninformative, but
 the signal is one-directional and supported by few agents. I am not using its
 best score to justify another deployment or a world-model success claim.
 
+I have now built a [past-only SDD data bridge](outputs/publication_readiness_2026_09/sdd_step_bridge/conclusions.md)
+for the eight-observed/twelve-predicted model interface. It covers the original
+40 training videos, keeps future labels separate, and preserves inputs even when
+future labels are incomplete. At a diagnostic stride of 12 raw frames it indexes
+229,333 overlapping windows; this is not an independent sample count or a model
+score. Full-index verification and resume checks pass. A separate auxiliary
+training experiment still needs its sampling/source-role contract; the main
+ETH/UCY evaluation remains unchanged.
+
 I have now [counted the state-change support in all local SDD annotations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
 Large window counts conceal a much smaller set of relevant trajectories: at a
 diagnostic stride of 12 raw frames, nearly 250,000 complete pedestrian windows
