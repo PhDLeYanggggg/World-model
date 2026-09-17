@@ -405,6 +405,15 @@ H matrix; thirteen additional source rows remain explicitly unmatched. These
 observations do not establish physical calibration. No experiment is relabeled
 as seconds-level or metric, and the registered data and policy are not changed.
 
+A [past-video admission audit](past_video_alignment_v2/conclusions.md) retrieves
+62 first-past/current image requests for 31 fit agents (48 distinct frames).
+The upstream plotting convention swaps inverse-H axes; applying it changes Hotel
+in-frame coverage from 82.78% to 99.83%, without changing any trajectory forecast.
+Fixed inspection rectangles are not verified body boxes, and occlusion, identity
+registration and ETH source-clock ambiguity remain. Thus this is a corrected
+media-access diagnostic, not a visual-feature ablation or new multimodal result.
+No image-based model was trained and no physical-time claim follows.
+
 A [controlled point-decision experiment](conditional_ade_probe_refined/conclusions.md)
 reconstructs the conditional training distribution from each frozen ExtraTrees
 forest and compares its mean with per-step geometric medians, holding all trees,

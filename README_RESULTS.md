@@ -1,5 +1,23 @@
 # M3W Results Ledger
 
+## Past-Video Input Audit (2026-09-17)
+
+`fresh_run`: local prefix decoding retrieved 62 first-past/current image requests
+for all 31 stationary fit agents, representing 48 distinct frames. This is not
+full eight-frame visual feature extraction or new training. Following upstream
+row/column plotting changes Hotel in-frame coverage from 5,417/6,544 to
+6,533/6,544; ETH remains 8,908/8,908. Earlier bound reports and native-coordinate
+forecasts are preserved unchanged.
+
+All six contact sheets were inspected. Of 62 rectangles, 58 are unclipped, but
+that does not establish full body coverage, identity or causal video alignment.
+ETH source-clock versus encoded-rate conflict remains. Visual model training is
+not run, and no new metric/seconds, human-gold or deployment claim is supported.
+The initial JSON serialization failure is preserved; registered v2 completes.
+18 relevant tests passed. No full legacy-suite rerun. Raw media/rows/runtime stay
+local. [Interpretation](outputs/publication_readiness_2026_09/past_video_alignment_v2/conclusions.md),
+[aggregate decode results](outputs/publication_readiness_2026_09/past_video_alignment_v2/results.md).
+
 ## Conditional ADE Point-Decision Comparison (2026-09-17)
 
 `fresh_run`:18 fixed point-decision settings on365 stationary fit rows under

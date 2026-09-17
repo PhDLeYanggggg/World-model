@@ -2,6 +2,29 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前：过去视频读取与投影轴检查已完成
+
+真实解码成功，不是新模型训练。31个fit行人的62次首个过去帧/当前帧请求全部取得，
+共48个不同帧；58个矩形未被画面边缘裁剪，但不代表人体完整覆盖。Hotel按上游
+行列约定投影后画面内比例为99.83%，旧xy解释为82.78%。原预测和旧报告不改写。
+ETH时间冲突、人物定位及过去帧对应仍未独立认证，不能直接开放正式视觉训练。
+
+原执行因NumPy整数不能序列化而失败，保留原目录及source snapshot。成功版本是v2。
+PyAV18.1.0仅安装于被忽略的media_decode_runtime，未改PyTorch环境。已有18项相关
+测试通过，未重跑完整旧测试集。当前本步骤无活动进程。
+
+以下仅用于需要重新解码时的独立复核；目录必须不存在，禁止覆盖绑定的原始产物：
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_past_video_alignment.py --registration configs/m3w_past_video_alignment_v2.json --output data/stage_cvpr2027_experiments/past_video_alignment_recheck --report-dir data/stage_cvpr2027_experiments/past_video_alignment_recheck_reports
+.venv-pytorch/bin/python scripts/render_m3w_video_audit_contacts.py --source data/stage_cvpr2027_experiments/past_video_alignment_recheck
+.venv-pytorch/bin/python -m pytest tests/test_m3w_past_video_alignment.py tests/test_m3w_stationary_scene_context.py tests/test_m3w_stationary_label_resolution.py -q
+```
+
+渲染图及逐行记录只留本地。原v1登记绑定修复前代码，不应改hash来伪装成功。
+先核对标注点语义、时序对应和遮挡，再登记过去RGB方向预测对照；不能把读取成功
+当成视觉贡献或将原生步数换算为已验证秒数。八观察/十二预测及待确认的主指标决定不变。
+
 ## 当前：条件均值与几何中位数对照已完成
 
 不是新神经网络训练。18个固定树模型设置保持原特征、标签、划分和0.9门限，只改

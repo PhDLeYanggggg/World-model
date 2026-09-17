@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have checked the [past video input path](outputs/publication_readiness_2026_09/past_video_alignment_v2/conclusions.md)
+before trying a visual model. Both local ETH videos decode, and following the
+upstream row/column convention raises Hotel's in-frame annotation coverage from
+82.78% to 99.83%. That repairs a data interpretation, not a forecasting result.
+The inspected crops still have occlusion and uncertain body coverage, and ETH's
+annotation/video clocks need reconciliation. I have not trained on these images
+or changed the earlier trajectory scores. A useful visual contribution still
+needs to be demonstrated under a verified past-only input protocol.
+
 I have completed a [controlled point-forecast comparison](outputs/publication_readiness_2026_09/conditional_ade_probe_refined/conclusions.md):
 keep the same trees and features, but replace their average trajectory with a
 conditional geometric median matched to the distance error. This removes false

@@ -1,5 +1,40 @@
 # Real-Experiment Continuation Handoff
 
+## Past-Video Audit Complete: No Live Job (2026-09-17)
+
+Latest: `past_video_alignment_v2/conclusions.md`. Fresh fit-only decoding, not
+new model training. 31 first-stationary-query agents, first/last of eight observed
+indices, 62 image requests / 48 distinct frames. All retrieved; 58 unclipped
+inspection rectangles, four clipped. Six local contact sheets inspected. This
+does NOT verify full body coverage, identity, capture clock or modality admission.
+
+Upstream plotting reverses inverse-H output to image xy. Hotel inside count
+5,417 -> 6,533 of 6,544; ETH 8,908 unchanged. Preserve original availability
+reports and model scores. World-coordinate XML features/forecasts not modified.
+Encoded videos both rate25; ETH helper assumes15. Direct native-index requests
+follow playback convention, not an independently certified as-of mapping.
+Fixed crop extends80above/16below; bodies often at bottom, branches/poles and
+nearby people present. Do not reuse these as verified body/pose boxes or labels.
+
+Initial session32795 failed JSON serialization after decoding; original source
+snapshot and partial images retained locally. Python-int rectangle repair gets
+new registration `configs/m3w_past_video_alignment_v2.json`, successful
+session80612 exit0, heartbeat historicalPID62549 complete. Decode~3.28s.
+Completion hashes bind aggregate report/local row records. Do not overwrite.
+18 focused tests passed0.14s; unchanged legacy suite not rerun. No live local or
+HPC process from this work. PyAV18.1.0 isolated under ignored data, no Torch change.
+
+Next: verify annotation-point semantics and past frame correspondence before a
+registered trajectory-versus-past-RGB directional probe. Fix crop/missingness
+design only from past/source evidence, never held outcome. Source-use admission,
+independent sites and prospective primary-metric decision remain unresolved.
+Do not silently approve native-ADE/FDE primary or relabel old scenes untouched.
+Do not repeat completed forecasters/threshold sweeps or unchanged HPC logins.
+No visual training, seconds/metric claim, new deployment, Stage5C or SMC.
+Goal active, incomplete; useful source-input repair is not forecasting success.
+
+Below are historical snapshots, superseded by this section.
+
 ## Conditional ADE Decision Complete: No Live Job (2026-09-17)
 
 Latest: `conditional_ade_probe_refined/conclusions.md`. New one-factor predictor
