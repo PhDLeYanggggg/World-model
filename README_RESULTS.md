@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Registered Deferral Control Started (2026-09-17)
+
+The added v7 diagnostic keeps the completed parent protocol/source bytes and
+predictor checkpoints unchanged. A first real linear deferrer completed 1,000
+updates on 11,966 OOF rows, 306 causal rollout features, whose fingerprint
+exactly matches both existing cost heads. Resume continues the full registered
+24-head grid: two frozen predictor families, three seeds, linear/width64 heads,
+cost bounds 1/10. All versions will be reported; none enters parent selection.
+
+42 focused registration, resume, future-perturbation and existing comparator
+checks pass. Evaluation is running, not complete. The no-budget deferrer is not
+assumed to match M3W's realized coverage or risk. Development remains one exposed
+physical site, not an independent test. [Fixed decision](outputs/publication_readiness_2026_09/deferral_v7_decision.md).
+
 ## Complete v7: Drift Reduced, Joint Contribution Not Supported (2026-09-17)
 
 `fresh_run`: both residual parameterizations completed seeds17/29/43, 24 full/fold

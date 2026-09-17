@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "parent_protocol": "configs/m3w_8to12_residual_parameterization_v7.json",
+  "parent_protocol_sha256": "f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a",
+  "scope": "development_diagnostic_only",
+  "eligible_for_selection": false,
+  "families": {
+    "skip": "data/stage_cvpr2027_experiments/8to12_residual_skip_v7",
+    "bounded": "data/stage_cvpr2027_experiments/8to12_motion_bounded_v7"
+  },
+  "bindings": {
+    "src/evaluation/m3w_registered_deferral.py": "bda5792da7148b505cbeeb31d3a2122fffe48a45fc6d452d78817e15ff819611",
+    "scripts/run_m3w_registered_deferral.py": "7d28a2b08979f73af7141e56365beedd823b6bc7ad140121374cd2363ff9d810",
+    "src/world_model/m3w_cost_sensitive_deferral.py": "d94748acc6ac70c08760738a8ee32b02a92e5be09c8b3175c6ec749208c8a72d",
+    "outputs/publication_readiness_2026_09/deferral_v7_decision.md": "0abdb28d155e0fa46856fa2f3204aebcc57d058e697105b519e2bd05090bdb75"
+  },
+  "variants": {
+    "linear_bound1": {
+      "width": 0,
+      "cost_bound": 1,
+      "fit_settings": {
+        "steps": 1000,
+        "batch_size": 128,
+        "learning_rate": 0.0003,
+        "checkpoint_every": 100,
+        "heartbeat_every": 20
+      }
+    },
+    "linear_bound10": {
+      "width": 0,
+      "cost_bound": 10,
+      "fit_settings": {
+        "steps": 1000,
+        "batch_size": 128,
+        "learning_rate": 0.0003,
+        "checkpoint_every": 100,
+        "heartbeat_every": 20
+      }
+    },
+    "mlp_bound1": {
+      "width": 64,
+      "cost_bound": 1,
+      "fit_settings": {
+        "steps": 1000,
+        "batch_size": 128,
+        "learning_rate": 0.0003,
+        "checkpoint_every": 100,
+        "heartbeat_every": 20
+      }
+    },
+    "mlp_bound10": {
+      "width": 64,
+      "cost_bound": 10,
+      "fit_settings": {
+        "steps": 1000,
+        "batch_size": 128,
+        "learning_rate": 0.0003,
+        "checkpoint_every": 100,
+        "heartbeat_every": 20
+      }
+    }
+  }
+}

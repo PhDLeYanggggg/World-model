@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am completing a [cost-sensitive deferral control](outputs/publication_readiness_2026_09/deferral_v7_decision.md)
+on the frozen v7 predictors. It uses exactly the same out-of-fold feature rows
+as my gain/harm heads, with no new forecast training or retrospective threshold
+selection. The first real 1,000-update head and 42 focused checks are complete;
+the full three-seed, two-family comparison is still running. This is a missing
+method comparator, not evidence of a new forecasting improvement.
+
 My latest [paired study](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/conclusions.md)
 is complete: learn corrections from an exact CV initialization, with and without
 a past-motion amplitude bound. Both versions retain the v6 data, primary metric,
