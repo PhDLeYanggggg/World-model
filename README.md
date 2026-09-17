@@ -10,6 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have now [counted the state-change support in all local SDD annotations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
+Large window counts conceal a much smaller set of relevant trajectories: at a
+diagnostic stride of 12 raw frames, nearly 250,000 complete pedestrian windows
+contain only 78 recording-local tracks matching the fixed static-to-movement
+proxy. Turns and stops have broader support. This points toward controlled
+event/track sampling, not simply multiplying overlapping windows. No auxiliary
+training role or sampling interval has been selected, and no forecasting gain
+is claimed from the census.
+
 I have connected the repaired SDD video paths to a
 [past-image reader with explicit missing support](outputs/publication_readiness_2026_09/sdd_past_images/conclusions.md).
 It keeps partial observations and short histories, distinguishes image extent

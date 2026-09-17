@@ -1,5 +1,26 @@
 # M3W Results Ledger
 
+## SDD State-Change Support Counted (2026-09-17)
+
+`fresh_run`: all 60 annotation files, 10,616,256 rows and 10,300 local track IDs,
+four fixed raw-frame stride diagnostics (1/6/12/30), 35.85 seconds summed source
+computation. Second full computation reproduces all 60 receipts. 57 focused
+tests pass; 635 real future-mutation/truncation checks preserve past inputs.
+
+At stride 12, pedestrian complete labels = 249,384; exact-static-to-movement
+proxy = 328 overlapping windows / 78 recording-local tracks / 84 disjoint spans.
+Stop and turn proxies involve 798 and 1,612 pedestrian track IDs respectively.
+Disjoint spans are not certified independent events. No stride is selected.
+
+98.388% of source rows are marked generated. Nearest-control linear reconstruction
+is within two pixels for only 69.81%; true interpolation lineage is not fully
+established. Sampled controls and controls inside the observation interval are
+reported separately to avoid an aliasing-based claim of absent supervision.
+
+No model training, new role, primary change, sealed-role access or metric/time
+claim. This is source support, not evidence of neural prediction lift or new
+independent testing. [Counts and limitations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
+
 ## SDD Past-Image Support Implemented (2026-09-17)
 
 `fresh_run`: fixed first-64-frame diagnostics over 60 recordings, 3,840 frames,

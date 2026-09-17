@@ -1,5 +1,58 @@
 # Real-Experiment Continuation Handoff
 
+## SDD Event Support Census Complete (2026-09-17)
+
+This turn is progress: full source-level count changes the auxiliary-data
+recommendation; it is not another status-only wait or a forecasting improvement.
+Prior input-reader work pushed as `5d614580`. Goal active, not submission-ready.
+
+New `m3w_sdd_state_support.py` separates eight-step past eligibility/features
+from twelve-step future event labels. Fixed raw-frame strides 1/6/12/30 are
+diagnostics, not selected training intervals or physical time. All 60 source
+files reprocessed: 10,616,256 rows, 10,300 local track IDs, 5,232 pedestrians.
+35.85 s summed source computation, including one pilot reused by the full run.
+Full repeat computes all 60 receipts exactly; no counts selected by performance.
+
+At stride 12, 249,384 complete pedestrian labels include only 328 exact-start
+windows / 78 local tracks / 84 disjoint spans under the fixed proxy. Stop and
+turn proxies cover 798 and 1,612 pedestrian tracks. This is not directly
+comparable to the older 31 ETH/Hotel stationary IDs: event definitions differ.
+Disjoint is not IID, tracks may recur across videos, and eight scene folders
+are not sixty independent calibration scenes. Do not oversell sample size.
+
+98.388% generated rows; all bracketed by source ungenerated controls, but only
+69.81% within 2px under nearest-control linear reconstruction. Do not present
+bracketing as proven interpolation ancestry. Post-query-control counts are
+potential provenance diagnostics. All access remains offline annotated.
+Separate `control_span_coverage.json` avoids conflating directly sampled controls
+with controls somewhere inside the observation span (pedestrian stride12:
+5,802 vs112,175 histories with at least two, 1.90% vs36.79%).
+
+57 focused tests pass, 635 real future mutation/truncation checks. Original
+receipts are preserved; full legacy tests not rerun. Aggregate SVG rendered and
+inspected. Plot font-cache warning used temporary cache and finished, not a
+training/runtime failure. One ad hoc json.load(Path) inspection error corrected;
+it did not change scientific outputs.
+
+Pilot55003, full40042/PID17718, exact repeat33687, coverage/plot51106 and
+tests13945 all observed terminal exit0. No active process or new CREATE job.
+Public `sdd_state_support/` contains aggregate reports, hashes and original SVG;
+raw data and per-video cache stay ignored. Do not touch the 3,019 unrelated
+staged entries (fingerprint unchanged).
+
+Config `configs/m3w_sdd_state_support_audit.json` digest
+`9339593706eeec61c2e0affbc64bc593c1875c1d1d80953392def071a90bec0c`.
+Commands `scripts/audit_m3w_sdd_state_support.py` and `--verify`, followed by
+`scripts/analyze_m3w_sdd_state_support.py`. Source-control-span analysis rereads
+source labels without fitting anything. No new sampling choice or role admitted.
+
+Next substantive dependency: pending user auxiliary-source admission/sampling
+decision, not another threshold scan. Do not repeat the unanswered question,
+silently pool SDD, replace primary, open sealed roles or call this contribution
+evidence. Current 8-to-12 / past-normalized ADE / ETH-Hotel-grouped-Zara unchanged.
+Any admitted source experiment must compare matched event/track sampling and
+report scarce exact starts separately. Stage5C and SMC remain disabled.
+
 ## SDD Past-Image Reader Verified (2026-09-17)
 
 This turn is progress: new reader, fixed-prefix real extraction, independent

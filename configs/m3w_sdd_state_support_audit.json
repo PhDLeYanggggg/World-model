@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "role": "source_support_diagnostic_only",
+  "training_admitted": false,
+  "primary_or_split_changed": false,
+  "source_manifest": "outputs/publication_readiness_2026_09/sdd_media_alignment/diagnostic_media_links.json",
+  "source_manifest_sha256": "e1ece86c223328191c53abeaa576cb1aefc68fe90796d8023ff65c4887de26df",
+  "observed_steps": 8,
+  "label_steps": 12,
+  "raw_annotation_frame_strides": [1, 6, 12, 30],
+  "sampling_origin": "global_video_frame_zero",
+  "histories_require_nonlost_states_only": true,
+  "future_completeness_used_for_input_eligibility": false,
+  "observation_mode": "offline_annotated",
+  "scale": "median_past_box_diagonal_not_physical_unit",
+  "event_rules": {
+    "exact_static_to_movement": "all_eight_past_centers_equal_and_max_future_displacement_at_least_0.5_scale",
+    "near_static_to_movement": "past_path_at_most_0.1_scale_and_max_future_displacement_at_least_0.5_scale",
+    "moving_to_stop": "past_path_at_least_0.5_scale_and_last_four_future_points_path_at_most_0.05_scale",
+    "turn_45_to_135": "past_and_future_paths_at_least_0.5_scale_and_last_three_increment_direction_angle_in_45_135",
+    "reverse_at_least_135": "same_path_requirements_with_direction_angle_at_least_135"
+  },
+  "event_quality": "annotation_derived_proxy_not_human_behavior_gold",
+  "disjoint_span": "query_minus_7_stride_through_query_plus_12_stride_inclusive",
+  "disjoint_is_not_independent": true,
+  "physical_seconds_verified": false,
+  "data_role_decision_pending": true,
+  "new_models_or_threshold_selection_allowed": false,
+  "output": "data/stage_cvpr2027_experiments/sdd_state_support",
+  "reports": "outputs/publication_readiness_2026_09/sdd_state_support"
+}

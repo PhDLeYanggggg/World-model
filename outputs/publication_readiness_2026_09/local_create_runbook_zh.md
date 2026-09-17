@@ -2,7 +2,31 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：SDD 过去图像读取器已验证，未新增训练
+## 当前：SDD 状态变化支持量已全量计算，未新增训练
+
+60 个源文件、10,616,256 行、10,300 个视频内轨迹 ID 已重新统计，并逐文件
+全量重算验证。步长 1/6/12/30 仅是 raw-frame 诊断，不是正式采样选择。
+步长 12 的行人完整标签有 249,384 个窗口，但固定“静止后明显移动”代理条件
+只涉及 78 条轨迹、84 个不重叠片段；不重叠仍不等于统计独立。
+[完整报告](sdd_state_support/conclusions.md)。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_sdd_state_support.py
+.venv-pytorch/bin/python scripts/audit_m3w_sdd_state_support.py --verify
+MPLCONFIGDIR=/tmp/m3w-mpl XDG_CACHE_HOME=/tmp/m3w-font-cache .venv-pytorch/bin/python scripts/analyze_m3w_sdd_state_support.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_sdd_state_support.py tests/test_m3w_sdd_past_images.py tests/test_m3w_sdd_media_audit.py tests/test_m3w_sdd_image_coordinates.py tests/test_m3w_sdd_source_links.py -q
+```
+
+第一条逐视频保存收据并支持复用；第二条真的重新计算所有源统计，不覆盖原收据。
+第三条区分“八个采样点中的控制点”和“过去时间范围内的全部控制点”，并输出
+只含聚合计数的图。首次绘图遇到字体缓存目录不可写，使用临时缓存正常完成；
+上面的可写缓存环境变量供后续运行使用，不影响科学计算。
+
+57 项针对性测试通过；635 个真实轨迹的未来修改/截断检查不改变过去输入。
+全部进程结束；全量旧测试未重跑。没有模型训练或新部署。辅助数据角色、
+采样策略待登记，不自动更改主指标、封存角色或时间单位。
+
+## 历史：SDD 过去图像读取器已验证，未新增训练
 
 已经实现带明确缺失支持的诊断读取器，固定检查所有 60 个视频的前 64 帧。
 总计 3,840 帧、79,680 标注行；部分越界 4,231 条，疑似黑边 302 条。

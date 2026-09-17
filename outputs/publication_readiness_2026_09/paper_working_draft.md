@@ -69,6 +69,17 @@ Conformal Risk Control and Learn then Test provide established tools for control
 
 ## 3. Method
 
+A [full SDD support census](sdd_state_support/conclusions.md) further separates
+row count from state-change support. At diagnostic stride 12, 249,384 complete
+pedestrian windows contain 328 fixed static-to-movement proxy windows from 78
+recording-local track IDs and 84 disjoint spans. Stops and turns have broader
+support. The intervals define different raw-frame tasks and are not compared as
+prediction scores. Neither track IDs nor disjoint spans certify independence.
+We also distinguish directly sampled source controls from unsampled controls
+inside an observation interval, avoiding an aliasing-based claim of missing
+annotation support. This source diagnostic admits no auxiliary training role
+and does not establish that additional data improve forecasting.
+
 An additional [SDD past-image input check](sdd_past_images/conclusions.md) follows
 the source correspondence repair. It retains geometric image support separately
 from an inferred current-frame black-border mask, without erasing partial or
