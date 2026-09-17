@@ -1,4 +1,4 @@
-"""Exact raw50 prefixes and count-matched controls for a completed v6 study."""
+"""Exact raw50 prefixes and count-matched controls for a completed frozen study."""
 from __future__ import annotations
 
 import argparse
@@ -42,6 +42,7 @@ def main():
     parser.add_argument('--device', choices=('cpu', 'mps'), required=True)
     parser.add_argument('--threads', type=int, default=4)
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--decision', type=Path, default=ROOT/'outputs/publication_readiness_2026_09/forecast_supplement_v6_decision.md')
     args = parser.parse_args()
     if platform.system() == 'Darwin' and platform.machine() != 'arm64':
         raise SystemExit('Refusing Rosetta before Torch import')
@@ -89,7 +90,9 @@ def main():
             _load_cost_head(contract, candidate)
             del model
         families.append((seed, contract, plan, rules, recordings))
-    decision_path = ROOT / 'outputs/publication_readiness_2026_09/forecast_supplement_v6_decision.md'
+    decision_path = args.decision.resolve()
+    if not decision_path.is_relative_to(ROOT) or not decision_path.is_file():
+        raise ValueError('An existing workspace-local frozen supplementary decision is required')
     identity = {'parent_protocol_sha256': contract.digest, 'family_artifacts': [c.artifacts for _, c, _, _, _ in families],
         'plans': [p for _, _, p, _, _ in families], 'device': args.device, 'threads': args.threads,
         'decision_sha256': file_digest(decision_path), 'raw_horizon': 50,

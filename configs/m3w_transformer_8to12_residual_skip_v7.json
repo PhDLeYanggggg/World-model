@@ -1,0 +1,12 @@
+{
+  "scope": "development_only_fixed_baseline_relative_parameterization",
+  "architecture": {
+    "family": "past_context_transformer", "width": 64, "heads": 4, "layers": 2,
+    "neighbor_policy": "complete_aligned_history", "input_conditioning": "observed_joint_max_norm",
+    "output_parameterization": "baseline_skip"
+  },
+  "fit_settings": {
+    "steps": 10000, "batch_size": 32, "learning_rate": 0.0003,
+    "checkpoint_every": 100, "heartbeat_every": 50, "objective": "smooth_l1"
+  }
+}

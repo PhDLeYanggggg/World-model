@@ -2,6 +2,27 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前 v7：固定数据下的残差参数化对照
+
+新协议仅比较 CV 初始化残差与相同残差的过去运动量幅度约束，保留 v6 数据和评价。
+两种结构均完成真实 100 步 CPU4 试跑，现从同一检查点继续完整三种子预算：
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_residual_parameterization_pair.py
+```
+
+运行前先检查 `8to12_residual_skip_v7` / `8to12_motion_bounded_v7` 的实际 child PID；
+健康任务不要重复启动。训练中不要编辑冻结源码和协议。完整预算结束后运行：
+
+```bash
+.venv-pytorch/bin/python scripts/compare_m3w_residual_parameterizations.py --skip outputs/publication_readiness_2026_09/8to12_residual_skip_v7/metrics.json --bounded outputs/publication_readiness_2026_09/8to12_motion_bounded_v7/metrics.json --reference-v6 outputs/publication_readiness_2026_09/8to12_transformer_v6/metrics.json --output-dir outputs/publication_readiness_2026_09/8to12_residual_pair_v7
+```
+
+v7 下方的 v6 复现命令应使用原源码快照 `052bcc64`，不能在新工厂实现上改旧协议
+hash 强行加载。新 v7 协议摘要为 `f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a`。
+新补充评价要显式传入 `--decision outputs/publication_readiness_2026_09/forecast_supplement_v7_decision.md`，
+不能误用默认的 v6 决定。所有新输出仍为 development-only，幅度限制不等于安全保证。
+
 ## 当前 v6：输入数值范围修复后的完整匹配训练
 
 当前两个模型族已经完成三种子、24 个 forecaster 和 6 个 neural cost head 的全部

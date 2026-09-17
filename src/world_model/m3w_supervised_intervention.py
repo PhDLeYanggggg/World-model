@@ -352,6 +352,14 @@ def forecast_smooth_l1(prediction, target, valid):
 def build_forecaster(architecture):
     options = dict(architecture)
     family = options.pop('family', 'past_context_transformer')
+    output_mode = options.pop('output_parameterization', None)
+    if output_mode is not None:
+        from src.world_model.m3w_baseline_relative_forecaster import BaselineRelativeForecaster, MODES
+        if output_mode not in MODES:
+            raise ValueError('Unknown output parameterization')
+        if family != 'past_context_transformer':
+            raise ValueError('Residual parameterizations are registered only for the Transformer')
+        return BaselineRelativeForecaster(build_forecaster({'family': family, **options}), mode=output_mode)
     conditioning = options.pop('input_conditioning', None)
     if conditioning not in {None, 'observed_joint_max_norm'}:
         raise ValueError('Unknown predictor input conditioning')

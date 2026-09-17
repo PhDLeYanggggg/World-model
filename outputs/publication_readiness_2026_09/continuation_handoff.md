@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Current v7 Paired Training (2026-09-17)
+
+The previous goal turn completed v6 and its supplements, giving actionable
+negative evidence. This turn tests the frozen output-parameterization hypothesis
+in `residual_parameterization_v7_decision.md`: exact-CV-initialized residual and
+the same model with a past-motion amplitude bound. No row, label, metric, loss,
+fold, seed, budget or policy threshold changes between these two arms.
+
+Protocol `configs/m3w_8to12_residual_parameterization_v7.json`, digest
+`f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a`.
+Active runner: `.venv-pytorch/bin/python scripts/run_m3w_residual_parameterization_pair.py`.
+Read the actual child and heartbeat under `data/stage_cvpr2027_experiments/8to12_residual_skip_v7`
+or `8to12_motion_bounded_v7`; never restart a live child from a stale periodic snapshot.
+CPU4/interop1/workers0. Both real 100-step pilots passed and were copied under
+`residual_parameterization_v7/pilots` before resuming their full fits.
+
+All seeds 17/29/43, four predictors per seed at 10,000 updates, both OOF heads
+and development evaluation are required. Tests: 81 core checks, 22 gain/harm
+checks plus one optional-device skip, seven comparison checks, thirteen
+supplement/replay checks. These are engineering results, not a predictive gain.
+Old v6 is reproduced from `052bcc64`, not by changing its saved identity.
+
+When both family summaries complete, run `compare_m3w_residual_parameterizations.py`
+with `--skip`, `--bounded`, cached `--reference-v6` Transformer metrics and a new
+report directory. The v7 fixed supplement decision is already written before
+development: pass `--decision outputs/publication_readiness_2026_09/forecast_supplement_v7_decision.md`
+to the supplementary evaluator with each completed family, CPU4. Preserve all
+negative seeds, absolute easy error and missing-label denominators. Do not
+retune the bound from these results or relabel development as independent test.
+
 ## Current State: v6 Primary and Supplements Complete (2026-09-17)
 
 Both v6 families completed all registered seeds and fits: 24 forecasters at

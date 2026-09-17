@@ -1,5 +1,26 @@
 # M3W Results Ledger
 
+## v7 Baseline-Relative Parameterizations Started (2026-09-17)
+
+New frozen paired ablation: CV-initialized residual versus the same residual
+with an ego-history/CV-motion amplitude bound. Zero initialization, core network,
+parameter count, labels, normalizer, loss, sample budget and frozen policies are
+matched between the two new arms. The old v6 comparison also differs in skip
+initialization; it is not an amplitude-only contrast.
+
+81 targeted regression checks pass; gain/harm recovery adds 22 passed and one
+optional-device skip. Seven comparison checks pass. Real arm64 CPU4 pilots each
+complete 100 updates in 1.98s and 2.07s, then resume into the complete 10,000-step
+full/fold fits. Both pilots are archived locally before continuation. These are
+runtime checks, not forecasting results. No development outcome has been read
+for this version. The complete three-seed paired runner is active, not quick.
+
+Protocol digest `f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a`.
+The [frozen decision](outputs/publication_readiness_2026_09/residual_parameterization_v7_decision.md)
+retains stopped-to-moving future labels and makes no statistical/physical safety
+guarantee. Source snapshot `052bcc64` preserves v6 replay; old protocol/code
+hashes are not overwritten. Stage5C and SMC remain disabled.
+
 ## Complete Matched Three-Seed Study: No Selected Neural Gain (2026-09-17)
 
 Both v6 model families completed all registered training and primary evaluation.
