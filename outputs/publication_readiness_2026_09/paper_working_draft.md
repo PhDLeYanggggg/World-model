@@ -250,6 +250,28 @@ onset/direction cues. The numerical cap is not a physical safety constraint.
 All 72 checkpoint inferences replay exactly; a completed resume leaves 145
 artifact hashes unchanged. [Design, complete results and failure slices](residual_range/conclusions.md).
 
+### Past-Only Coordinate Conditioning
+
+A further matched experiment separates past-only frame conditioning from a
+no-anchor CV guard. Thirty-six new fits and eighteen replayed controls keep the
+features, dimensions, objective, seeds, folds and 4,000-update budget fixed.
+The frame uses past ego velocity, supported neighbor motion or relative neighbor
+position; it reads no future labels. Eight anchorless rows retain exact CV.
+
+Past-frame primary gains versus CV remain negative: -0.86256% with quality
+controls and -0.88781% with directed motion. All new fits fail positive primary
+gain and easy preservation. Measured prediction disagreement under quarter-turn
+rotations vanishes on static histories, but this does not improve forecasting
+enough to beat CV. Original moving source inputs were already heading-aligned;
+stress-testing rotated, already-aligned features is not a source-pipeline
+equivariance test. The static-history result is the relevant narrower diagnostic.
+
+All 54 checkpoints replay exactly; completed resume preserves 109 hashes without
+updates, and 24 focused tests pass. These are exploratory fit-scene comparisons,
+not independent confirmation. Coordinate consistency does not supply missing
+launch intent or justify an architectural novelty claim.
+[Design, scope and failures](past_frame/conclusions.md).
+
 ### Auxiliary Video Integrity, Not Forecast Evidence
 
 Before prospective auxiliary training, a full local SDD source audit decodes

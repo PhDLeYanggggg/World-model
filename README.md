@@ -10,31 +10,23 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I tested whether the forecasting failures were mainly an output-range problem.
-A [matched residual-range experiment](outputs/publication_readiness_2026_09/residual_range/conclusions.md)
-completed 54 new neural fits and 18 replayed controls. Transforming the targets
-improves training errors but worsens held-scene prediction and easy-case harm.
-None of the new fits improves the primary endpoint. The result narrows the
-problem: making large corrections easier to fit does not make them transferable.
-No model is promoted, and independent confirmation is still missing.
+I am testing why better-fitting neural forecasts still lose to a strong motion
+baseline across scenes. The current task observes eight annotation steps and
+predicts twelve. I keep the primary metric, fit cohort and sealed evaluation
+roles fixed while changing one factor at a time.
 
-I have checked the [remaining room for routing and correction scaling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md)
-in the earlier frozen sampling-study pool. Even an oracle that knows the future and chooses
-among eight frozen candidates gains only 1.63% on the current primary metric;
-perfect whole-path scaling raises this to 1.73%. These are diagnostic ceilings,
-not learned results. They limit this specific candidate pool, not future models.
-The next useful change needs better predictions of state changes, not another
-threshold sweep over the same trajectories. No model is promoted.
+| Question | Evidence | Outcome |
+| --- | --- | --- |
+| Does balancing tracks and state changes help? | [54 new fits, 18 replayed controls](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md) | No safe forecasting gain; repeating rare starts does not add independent information. |
+| Could better routing rescue the existing predictions? | [Frozen-candidate ceiling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md) | Perfect future-informed selection gains 1.63%, or 1.73% with whole-path scaling. These are oracle diagnostics, not model results. |
+| Are corrections difficult to fit because of their range? | [54 new fits, 18 controls](outputs/publication_readiness_2026_09/residual_range/conclusions.md) | Transformed targets improve training fit but worsen held-scene accuracy and easy-case harm. |
+| Does a past-only coordinate frame improve transfer? | [36 new fits, 18 controls](outputs/publication_readiness_2026_09/past_frame/conclusions.md) | Static-input rotation consistency improves, but primary gains remain -0.86% and -0.89% versus CV; easy preservation fails. |
 
-I tested whether [balancing tracks and state-change events](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md)
-could fix the forecasting failures without changing the model or adding data.
-The comparison contains 54 new neural fits and 18 exactly replayed controls.
-It does not work: directed-motion primary gains are -0.97% for row sampling,
--1.19% for track balancing and -10.43% for event/track balancing. Easy cases
-also worsen. Repeating scarce movement onsets changes training exposure but
-does not add the information needed to predict them in another scene.
-All 72 checkpoints replay exactly. I keep these negative results and do not
-promote a model or open the sealed evaluation data.
+These studies reuse some controls and the same exposed fit scenes; they are not
+independent confirmations. No new model is promoted. The next useful evidence
+needs transferable cues for starting, stopping and turning, rather than another
+threshold sweep over the same weak predictions. The detailed reports retain
+negative seeds, absolute harm, runtime and reproducibility checks.
 
 I have now [counted the state-change support in all local SDD annotations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
 Large window counts conceal a much smaller set of relevant trajectories: at a

@@ -1,14 +1,23 @@
 # M3W Results Ledger
 
-## Past-Frame Conditioning Registered (2026-09-17)
+## Past-Frame Conditioning Complete, Forecasting Negative (2026-09-17)
 
-The next fixed comparison tests a past-only ego/neighbor coordinate frame.
-It separates frame conditioning from no-anchor CV fallback using a guard-only
-training control. Same inputs, loss, model size, seeds, folds and update budget;
-36 planned new fits and 18 reused controls. No prediction result yet.
-Twenty-two focused checks pass, including typed-vector layout, rotations,
-control training and exact resume. All11,966 queries and the primary remain.
-[Decision and limits](outputs/publication_readiness_2026_09/past_frame_decision.md).
+`fresh_run`: 36 real Torch fits / 144,000 updates / 114.58 seconds summed fitting;
+`cached_verified`: 18 controls and unchanged source, feature and checkpoint lineage.
+A matched guard-only arm isolates coordinate conditioning from no-anchor fallback.
+All 11,966 fit queries and the primary remain unchanged.
+
+Past-frame primary gains vs CV: quality control -0.86256%, directed motion
+-0.88781%. All 36 new held fits remain negative and fail easy preservation.
+Static-input prediction disagreement under the tested quarter turns falls to zero;
+this is coordinate consistency, not better forecasting. Moving source inputs were
+already heading-aligned, so rotated-feature stress is not evidence of a defect
+in the original moving-input pipeline.
+
+All 54 checkpoints replay exactly; completed resume preserves 109 artifact
+hashes with zero updates. Twenty-four focused tests pass; legacy suite not rerun.
+No new deployment, source admission, sealed-role access, Stage5C or SMC.
+[Results, limits and reproduction](outputs/publication_readiness_2026_09/past_frame/conclusions.md).
 
 ## Residual Range Experiment Complete, Negative (2026-09-17)
 

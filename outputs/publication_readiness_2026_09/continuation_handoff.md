@@ -1,5 +1,39 @@
 # Real-Experiment Continuation Handoff
 
+## Past-Frame Controls Complete, Forecasting Negative (2026-09-17)
+
+Progress: matched causal-coordinate training isolates static direction ambiguity
+from no-anchor fallback. Registration/code pushed before training as `a91f886a`.
+36 fresh fits plus 18 cached-verified controls; 144,000 new optimizer updates,
+114.5830 summed fitting seconds. This is a controlled small experiment, not full
+training. CPU4/interop1/workers0; pilot400 resumed into the fixed 4,000-step fit.
+
+Past-frame primary gains: quality -0.86256%, directed -0.88781%; all 36 new fits
+remain negative and easy preservation fails. Quarter-turn prediction gaps become
+zero in the tested static histories. This is coordinate consistency, not accuracy.
+Moving source inputs were already heading-aligned: arbitrary rotated-feature
+stress cannot establish an original moving-source pipeline bug. Scope tests added.
+Anchor counts: ego 11,601 / neighbor motion 354 / neighbor position 3 / none 8.
+No-anchor CV guard is shared with a separately trained guard-only control.
+
+54 checkpoints replay bit-exact; completed resume preserves 109 hashes with zero
+updates. Twenty-four focused tests pass; full legacy suite not rerun. Analysis SVG
+visually checked. Public `past_frame/` contains aggregate reports, replay, resume,
+coordinate diagnostics and conclusions; arrays and weights remain private.
+Pilot87380/PID28725, train11155/PID28809, replay23363/PID29243, tests87228,
+analysis40827 and resume99190/PID29485 all observed terminal exit0.
+No active process remains. A locale-only shasum failure was resolved with LC_ALL=C;
+it was not a Torch/runtime failure.
+
+Registration SHA256 `5e60a26479af017f583c476beea461785c765daeb11b57043c3120c167d2ec2d`;
+report SHA256 `d4fd80d1d23ad11f1de672225e8bb278482f714d7491b9e9be8b9a8dabf64f94`.
+Next: independent state-change cues/support, not more axes or thresholds on the
+same exposed folds. SDD auxiliary-role decision remains unanswered: do not repeat
+the question or silently admit it. All 11,966 fit rows, approved 8/12 primary and
+closed Students/development/calibration/confirmation remain unchanged. CREATE
+access blocker unchanged; no new probe/job. No deployment, Stage5C or SMC.
+Goal active, not submission-ready.
+
 ## Residual Range Training Complete, Negative (2026-09-17)
 
 This turn is progress: a matched 2x2 neural experiment distinguishes poor fit
