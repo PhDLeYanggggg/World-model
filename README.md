@@ -10,11 +10,19 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am testing a more specific observation repair: whether native image detail
-and spatial flow grids retain movement lost by the previous pooled summaries.
-The [registered comparison](outputs/publication_readiness_2026_09/spatial_motion_decision.md)
-keeps the same fit population and protocol. A synthetic sparse-motion test
-supports the mechanism, but it is not yet a forecasting result.
+I have completed the [native-resolution motion study](outputs/publication_readiness_2026_09/spatial_motion/conclusions.md):
+36 matched neural fits test whether original image detail and localized motion
+grids improve forecasting. None beats the training-selected constant-velocity
+baseline; native detail is slightly worse overall than the lowpass grid. All
+checkpoints replay exactly, and easy-case errors remain unacceptable. I do not
+promote these models or count clearer inputs as better predictions.
+
+The most useful next step is broader independent evidence of starting, stopping
+and turning, not another threshold sweep on the same few people. I have also
+[inventoried 60 local SDD videos](outputs/publication_readiness_2026_09/sdd_media_inventory/report.md).
+Their headers are readable, but completeness and annotation alignment still
+need checking before a separately registered training expansion. No new SDD
+training or change to the primary metric follows from that inventory.
 
 I have completed the [past image-motion comparison](outputs/publication_readiness_2026_09/observed_motion_v2/conclusions.md):
 54 real neural fits test quality controls, motion magnitude and motion direction

@@ -2,7 +2,36 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：过去图像运动对照完成，未修复跨场景预测
+## 当前：原始分辨率与局部运动网格对照完成，结果为负
+
+36个真实Torch模型全部完成，每个4,000更新，共144,000更新，合计拟合174.57秒。
+原始96像素裁剪构建133.13秒，30,013条降采样逐一匹配旧32像素缓存。
+使用全部11,966fit窗口；三种子、三个物理场景折；8观察/12预测及主要指标不变。
+quality/低清池化/低清网格/原始网格相对CV改善为-1.026/-1.036/-1.081/-1.139%。
+0/36通过预测改善或easy门槛。没有新部署；[完整诊断](spatial_motion/conclusions.md)。
+
+```bash
+.venv-pytorch/bin/python scripts/build_m3w_spatial_motion.py --registration configs/m3w_spatial_motion.json
+.venv-pytorch/bin/python scripts/run_m3w_spatial_motion.py --registration configs/m3w_spatial_motion.json
+.venv-pytorch/bin/python scripts/run_m3w_spatial_motion.py --registration configs/m3w_spatial_motion.json --replay
+.venv-pytorch/bin/python scripts/audit_m3w_spatial_motion.py --registration configs/m3w_spatial_motion.json
+.venv-pytorch/bin/python scripts/diagnose_m3w_spatial_motion.py --registration configs/m3w_spatial_motion.json
+.venv-pytorch/bin/python scripts/verify_m3w_spatial_motion.py
+.venv-pytorch/bin/python scripts/plot_m3w_spatial_motion.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_spatial_motion.py tests/test_m3w_observed_motion.py tests/test_m3w_motion_heartbeat.py tests/test_m3w_objective_alignment.py -q
+```
+
+无需安装新全局依赖；复用已登记arm64venv和隔离OpenCV/PyAV。
+训练入口自动恢复未完成检查点；完成后复用已验证产物，权重与主报告不变。
+36检查点逐位重放一致。独立32原始裁剪/64运动对复核一致；不是第二次全量解码。
+首次构建的重复AVFoundation类警告已披露，二次解码采用不加载OpenCV的独立进程。
+17针对性测试通过，全量旧测试未重跑。所有本轮进程已结束，不要重复开任务。
+
+SDD仅做文件哈希/视频头盘点，可运行`scripts/inventory_m3w_sdd_video_headers.py`。
+60文件可读不等于标注对齐或原始完整性通过；未纳入本轮训练，未验证秒/米单位。
+新增辅助训练角色等待单独决定，当前协议及封存角色不变。
+
+## 历史：过去图像运动对照完成，未修复跨场景预测
 
 54模型全部训练完成，每个4,000更新，共216,000更新；拟合耗时合计196.69秒。
 使用缓存运动特征的小MLP，不每批解码或跑CNN，速度不是删减数据所得。

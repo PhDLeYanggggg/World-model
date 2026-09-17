@@ -162,6 +162,28 @@ that a learned intervention improves the realized trajectory.
 
 ## 4. Experiments To Complete
 
+### Native Detail and Spatial Pooling Control
+
+A registered input repair retains the original96x96 observed crops and compares
+them with their exact32x32 block averages upsampled to96x96. Both use an identical
+fixed flow estimator; grid-based inputs separate locality from native detail.
+Shared coverage/consistency controls, network size, three seeds, three held fit
+scenes and4,000updates are fixed. All36models complete on all11,966fit queries.
+
+Quality control, lowpass central pooling, lowpass grid and native grid yield
+-1.0260%,-1.0365%,-1.0810%and-1.1385%primary gains versus CV. None preserves easy
+cases. Native detail versus lowpass grid is-0.05693%, with exploratory paired
+scene interval[-0.99781%,0.07018%]. Exact checkpoint replay supports reproducibility,
+not a positive visual contribution. Native-coordinate per-recording diagnostics
+also fail. There is no new deployment or independent confirmation result.
+
+Stationary-history native motion features exceed the fixed training-support
+range in100%of ETH and90.14%of Hotel rows. These samples still represent only31
+source IDs; increasing input resolution adds no independent state-change examples.
+This falsifies the fixed resolution/pooling repair, not all visual forecasting.
+The next source-support decision must preserve the registered evaluation roles
+and keep prior SDD exposure explicit. [Complete evidence](spatial_motion/conclusions.md).
+
 ### Explicit Past Image-Motion Control
 
 A further registered fit-only comparison tests whether explicit observed motion

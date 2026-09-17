@@ -1,5 +1,54 @@
 # Real-Experiment Continuation Handoff
 
+## Native Spatial Motion Complete, Negative (2026-09-17)
+
+This is a concrete progress turn, not a repeated status/blocked turn: registered
+source repair, full native-crop extraction,36real neural fits,144,000updates,
+independent replay/diagnosis and a new metadata-only source inventory. Overall
+goal remains active and not submission-ready. Latest conclusions:
+`spatial_motion/conclusions.md`. Registration committed `b0a540ca` before outcomes,
+config `configs/m3w_spatial_motion.json`, SHA
+`5ce0947c84a02748cf8fa3d6f9cdaca07c054a5dc4b91c5e45a69df711875414`.
+
+4arms quality_control/lowpass_pool/lowpass_grid/native_grid; row_log only,
+3seeds17/29/43,3physicalfitfolds,4,000updates.11,966rows unchanged. Native96crops
+vs32blockmeans upsampled96 use identical fixed flow estimator; matching1,260D.
+Common quality contains both views' consistency, not pure geometry. Crop build
+133.13s; all30,013source downsamplings exact;16,106pairs;1,177,292,552localarraybytes.
+Train174.57s small cached-featureMLP. No full M3W/end-to-end video training claim.
+GainsvsCV-1.0260/-1.0365/-1.0810/-1.1385%;0/36positiveheld,0/36easy. Native-grid
+vslowpassgrid-0.05693%,exploratory3sceneCI[-0.99781,0.07018]. Traininggainmax2.236%.
+Binaryfixedcandidate/CVoracle.325--.345%only. Allnativeperrecordingseedmeansnegative.
+
+StationarynativefeatureclippingETH100%,Hotel90.14%, but this any-column support
+diagnostic is not proof clipping causes all failure. CurrentrowlogHotelstatic
+positiveharmshare22.20--61.66%, NOT previousADEarm99.9%; do not conflate them.
+Same31staticIDs/365overlappingrows. Fullresolutiondidnotaddindependentsupport.
+All36checkpoints/predictionsreplayexact; completedresume0updates andbyte-identical
+weights/report. Native32sampledcropsredecoded exactly in separate no-OpenCVprocess,
+64flowpairsexact; initialbuildduplicateAVFoundationwarning retained.17focusedtests
+pass;fulllegacysuitenotrerun. Plotaggregateonly, rendered and inspected.
+
+Build5277/PID8661,pilot39255/PID9024,training59874/PID9098,replay91280/PID9603,
+verification39598,independentdecode/flow66689,metadata64401,plot28958allterminal0.
+No live training/process from this study. Do not launch duplicate resume.
+
+Pending async question, do not repeat: admit local SDD as separately registered
+auxiliary training/pretraining, keeping current protocol/roles unchanged? No
+answer received at handoff. Metadata-only `sdd_media_inventory/headers.json`:
+60readablefiles/8folders,1,195,953,035bytes,allheaders2997/100butnotverifiedtime;
+9filesunder1,000headerframes. No annotations/fulldecode/trainingadmissionyet.
+New source admission must be explicit; header availability is not complete or
+aligned source proof. Keep old SDD exposures, scores exploratory, no metric/time.
+Continue independent source-integrity/inference-path work; do not invent approval
+or wait idle while safe work exists. Do not silently replace primarypastnormalized
+ADE or openStudentsdevelopment/calibration/confirmation. NoStage5C/SMC.
+
+Unrelated staged inventory still hash
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+Use explicit-path commits only; do not disturb 3,019 unrelated staged entries.
+CREATE prior SSH access blocker unchanged, not queried/no new remote job.
+
 ## Observed-Motion Study Complete, Negative (2026-09-17)
 
 This goal turn made concrete progress: new causal-input implementation,54real

@@ -1,12 +1,34 @@
 # M3W Results Ledger
 
-## Native-Resolution Spatial Motion Registered (2026-09-17)
+## Native-Resolution Spatial Motion Complete, Negative (2026-09-17)
 
-Fit-only controlled repair: quality, lowpass pooling, lowpass grid and native grid;
-three seeds, three physical-scene folds, 4,000 updates per model. Thirty-six fits
-planned, no new held outcome yet. All 11,966 rows and the original primary remain.
-Synthetic sparse-foreground pooling and native/lowpass replay tests pass.
-Registration: `configs/m3w_spatial_motion.json`. No new source role or deployment.
+`fresh_run`:36 actual neural fits,4,000updates each,144,000total;174.57seconds
+summed fitting,133.13seconds full input extraction. All11,966fit windows retained.
+Original96pixel crops reduce exactly to all30,013registered32pixel source crops.
+
+| Features | Equal-scene/seed primary gain vs CV (%) |
+| --- | ---: |
+| Quality control | -1.0260 |
+| Lowpass central pool | -1.0365 |
+| Lowpass spatial grid | -1.0810 |
+| Native spatial grid | -1.1385 |
+
+0/36positive held fits,0/36easy passes. Native versus lowpass grid-0.05693%,
+exploratory3scene interval[-0.99781%,0.07018%]. Training gain reaches2.236%.
+All native-coordinate per-recording seed means also fail. Perfect binary
+CV/candidate oracle only0.325--0.345%; no learned selector claim.
+
+`cached_verified`:36exact checkpoint replays, completed resume zero new updates,
+unchanged weights/report. Independent sampled native decode32rows and flow64pairs
+exact;17focusedtests pass. Full legacy suite not rerun. Initial PyAV/OpenCV
+duplicate AVFoundation warning disclosed and decoder isolated for second pass.
+No sealed-role access, new deployment, Stage5C/SMC or metric/seconds claim.
+[Complete findings](outputs/publication_readiness_2026_09/spatial_motion/conclusions.md).
+
+Metadata-only SDD inventory finds60readablelocalvideoheaders,8scene folders,
+1,195,953,035bytes. Source completeness and annotation alignment are unverified;
+new auxiliary source admission pending. No new SDD model was trained.
+[Inventory](outputs/publication_readiness_2026_09/sdd_media_inventory/report.md).
 
 ## Observed-Motion Comparison Completed, Negative (2026-09-17)
 
