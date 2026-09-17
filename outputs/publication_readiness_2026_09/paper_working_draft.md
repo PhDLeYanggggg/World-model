@@ -272,6 +272,26 @@ not independent confirmation. Coordinate consistency does not supply missing
 launch intent or justify an architectural novelty claim.
 [Design, scope and failures](past_frame/conclusions.md).
 
+### Start Information Versus Displacement Prediction
+
+A separate fit-only probe tests whether the observed motion summaries can predict
+any recorded future coordinate change after a static history. Four nested inputs,
+two fixed classifiers, three seeds and two supported scene folds give 48 fits.
+No trajectory model is trained. All 365 stationary windows remain; they represent
+only 31 local IDs and 45 runs, not independent samples or new confirmation sites.
+
+With ExtraTrees, magnitude/directed inputs give Hotel-to-ETH AUROC 0.8105/0.8215
+and absolute Brier lift 0.08030/0.07870 over the training-only prior. Reverse
+transfer gives AUROC 0.5004/0.5118 and negative mean Brier lift. Every logistic
+variant is worse than the prior. For the tree models, added motion versus
+quality-only has uncertain agent-balanced lift, with intervals crossing zero. These conditional held-agent
+intervals do not establish new-scene generalization.
+
+The localized signal argues against declaring motion wholly uninformative, but
+neither bidirectional probability transfer nor departure trajectory accuracy is
+established. No residual or switching policy is promoted. All 48 classifier
+predictions replay exactly. [Full outcomes and limitations](motion_start_information/conclusions.md).
+
 ### Auxiliary Video Integrity, Not Forecast Evidence
 
 Before prospective auxiliary training, a full local SDD source audit decodes

@@ -1,5 +1,41 @@
 # Real-Experiment Continuation Handoff
 
+## Motion-to-Start Information Complete, One Direction Only (2026-09-17)
+
+Progress: direct probability supervision distinguishes localized information from
+bidirectional forecasting failure. Registration/code committed before fits as
+`82c15be0`. Four nested past inputs (13/48/76/118 cols), logistic and ExtraTrees,
+three seeds, ETH/Hotel held sites: 48 fresh sklearn fits, 2.55867 summed fit seconds.
+No Torch/trajectory training. No warnings. No new primary or role admission.
+
+ExtraTrees magnitude/directed Hotel->ETH AUROC .81048/.82152, Brier lift versus
+training prior +.08030/+.07870. ETH->Hotel AUROC .50038/.51181, Brier lift
+-.00484/-.00101. No setting has positive mean Brier in both directions; logistic
+all fails. Tree added-motion versus quality conditional held-agent CI crosses zero.
+Five ETH and 26 Hotel IDs; 365 overlapping rows, 45 runs. Zara static support=0,
+not_run. No fresh confirmation or trajectory contribution follows.
+
+48 exact classifier prediction replays; completed resume zero fits and 97 hashes
+unchanged. 18 focused tests pass in 1.67s; full legacy suite not rerun. Aggregate
+plot viewed; no visual issues. Fits72928, replay20887, tests14860, resume10223 and
+analysis20990 all observed exit0. Resume heartbeat PID32297 state complete;
+no live process remains. Private models/predictions under ignored data, not Git.
+
+Registration SHA256 `0496ef32db42a9db1856061c2a8476cba2acf58cfc536dd64a2b2478e37d1849`;
+report SHA256 `c1d377b37aa85931078e8439ddf6ccfcc0875a52a0beb0d27ff80dbb74d335b6`.
+Public `motion_start_information/`: all outcomes, conditional group intervals,
+replay/resume, aggregate SVG and conclusions. No full-study success claim.
+
+Do not fit a residual or threshold from the favorable direction. Next useful
+work needs independently supported observable state changes, not repeated loss/
+axis/probability grids on the same exposed sites. Pending SDD auxiliary-role
+decision remains unanswered; do not repeat the question or silently admit it.
+If no source is admitted, record the support blocker rather than manufacture
+progress by another two-site sweep. CREATE access blocker unchanged, no new
+remote/runtime probe. 8/12 task, all 11,966 forecasting fit rows, approved primary
+and closed Students/development/calibration/confirmation unchanged. Goal active;
+no deployment, Stage5C or SMC.
+
 ## Past-Frame Controls Complete, Forecasting Negative (2026-09-17)
 
 Progress: matched causal-coordinate training isolates static direction ambiguity

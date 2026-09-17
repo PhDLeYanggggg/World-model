@@ -1,13 +1,23 @@
 # M3W Results Ledger
 
-## Motion-to-Start Information Probe Registered (2026-09-17)
+## Motion-to-Start Information Probe Complete, One Direction Only (2026-09-17)
 
-The next fixed diagnostic isolates probability prediction from trajectory loss.
-Four nested causal inputs (neighbors, image quality, magnitudes, directed motion),
-two fixed classifiers, three seeds and two held fit sites give 48 planned fits.
-All 365 previously audited stationary rows remain. No threshold search, new source
-admission or sealed evaluation. Five focused feature/join/group checks pass; no
-classifier result yet. [Decision](outputs/publication_readiness_2026_09/motion_start_information_decision.md).
+`fresh_run`: 48 fixed sklearn classifier fits, 2.56 seconds summed fitting, no
+fit warnings. No neural/trajectory training or forecasting endpoint change.
+All 365 stationary fit windows, 31 local IDs and two supported sites retained.
+
+ExtraTrees motion magnitude/direction: Hotel -> ETH AUROC 0.8105/0.8215, absolute
+Brier lift versus training prior +0.08030/+0.07870. Reverse ETH -> Hotel AUROC
+0.5004/0.5118 and Brier lift -0.00484/-0.00101. No input/model setting improves
+mean Brier in both directions. All logistic variants fail against the prior.
+For the tree models, conditional agent-bootstrap intervals for added motion
+versus quality cross zero.
+No independent-scene, trajectory-improvement or deployment claim.
+
+`cached_verified`: input hashes, full row/fold/label alignment, 48 exact classifier
+replays. Completed resume preserves 97 hashes with zero fits. Eighteen focused
+tests pass; full legacy suite not rerun. No sealed roles, new source admission,
+Stage5C or SMC. [Results and limitations](outputs/publication_readiness_2026_09/motion_start_information/conclusions.md).
 
 ## Past-Frame Conditioning Complete, Forecasting Negative (2026-09-17)
 

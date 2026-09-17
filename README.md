@@ -21,12 +21,17 @@ roles fixed while changing one factor at a time.
 | Could better routing rescue the existing predictions? | [Frozen-candidate ceiling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md) | Perfect future-informed selection gains 1.63%, or 1.73% with whole-path scaling. These are oracle diagnostics, not model results. |
 | Are corrections difficult to fit because of their range? | [54 new fits, 18 controls](outputs/publication_readiness_2026_09/residual_range/conclusions.md) | Transformed targets improve training fit but worsen held-scene accuracy and easy-case harm. |
 | Does a past-only coordinate frame improve transfer? | [36 new fits, 18 controls](outputs/publication_readiness_2026_09/past_frame/conclusions.md) | Static-input rotation consistency improves, but primary gains remain -0.86% and -0.89% versus CV; easy preservation fails. |
+| Do past motion features predict a recorded start at all? | [48 fixed classifier fits](outputs/publication_readiness_2026_09/motion_start_information/conclusions.md) | Tree models show a Hotel-to-ETH signal (AUROC 0.81-0.82), but reverse transfer stays near chance. This is not a trajectory gain. |
 
 These studies reuse some controls and the same exposed fit scenes; they are not
 independent confirmations. No new model is promoted. The next useful evidence
 needs transferable cues for starting, stopping and turning, rather than another
 threshold sweep over the same weak predictions. The detailed reports retain
 negative seeds, absolute harm, runtime and reproducibility checks.
+
+The latest probe suggests that observed motion is not wholly uninformative, but
+the signal is one-directional and supported by few agents. I am not using its
+best score to justify another deployment or a world-model success claim.
 
 I have now [counted the state-change support in all local SDD annotations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
 Large window counts conceal a much smaller set of relevant trajectories: at a
