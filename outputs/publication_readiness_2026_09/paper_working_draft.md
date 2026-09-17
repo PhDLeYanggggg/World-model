@@ -1,6 +1,6 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, 2026-09-17. Method proposal with completed three-seed development
+Working draft, evidence reconciled 2026-09-18. Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
 tiny guarded development gains. None supports a new deployment or the proposed
@@ -11,6 +11,9 @@ The latest fixed-candidate diagnostic limits recoverable gain from selection and
 whole-path scaling. It does not supply a positive learned method result. This is
 an evidence-bearing working manuscript, not a submission-ready paper. A subsequent
 readout/loss factorization improves fitting but worsens held-scene forecasting.
+The motion-to-start probe finds only one-direction probability transfer. The
+subsequent SDD geometry/image bridge is an input prerequisite, not an auxiliary
+training or forecasting result. No experiment was rerun for this revision.
 
 ## Abstract
 
@@ -25,7 +28,7 @@ establish a joint-selection advantage. Baseline-relative output bounds reduce
 drift, but ordinary regression deferral still fails the 2% easy-degradation limit.
 
 Controlled visual-input, objective and sampling experiments investigate the
-remaining failure. In the latest matched comparison, 54 fresh fits and 18 verified
+remaining failure. In the sampling comparison, 54 fresh fits and 18 verified
 controls retain identical model, loss and update budgets; neither track nor event
 balancing improves the complete-cohort primary endpoint. To distinguish routing
 failure from limited candidate predictions, we compute future-informed diagnostic
@@ -38,6 +41,11 @@ action-class limitation without asserting that new predictors cannot improve.
 A further matched 2x2 readout/loss comparison completes 54 new fits: transformed
 residual supervision improves fit-cohort error but damages held-scene prediction,
 so output-range repair alone is not sufficient.
+Past-only coordinate conditioning also fails to produce safe forecasting gains.
+A separate probability probe finds a Hotel-to-ETH start signal (AUROC 0.81-0.82),
+but reverse transfer remains near chance; neither establishes better trajectories.
+Additional SDD image/geometry inputs are verified but have not been used in new
+auxiliary training.
 Previously explored data remain exploratory; independent confirmation and a
 positive contribution are still missing. We make no physical-time, metric-safety
 or general world-model success claim.
@@ -65,6 +73,25 @@ Conformal Risk Control and Learn then Test provide established tools for control
 [HCP](https://arxiv.org/html/2306.06342v4) requires both across-group and within-group exchangeability. [GHCP](https://arxiv.org/html/2608.15500v1) uses initial target-group labels under additional sampling assumptions; it is not a general repair for serially dependent windows. [CAFHT](https://arxiv.org/html/2402.09623v2) permits dependence within trajectories but requires exchangeability across trajectories for simultaneous path coverage. [Adaptive CP for motion planning](https://proceedings.mlr.press/v211/dixit23a/dixit23a.pdf) studies online coverage and feasible control. None of these guarantees alone orders a selected point forecast against our baseline. The [assumption audit and falsifiable claim matrix](joint_intervention/statistical_assumptions_and_claims.md) separate these tasks and specify which comparisons remain missing.
 
 ## 3. Method
+
+### Evidence Roles and Observation Contract
+
+The approved task is offline annotated-history forecasting with eight observed
+and twelve predicted native annotation steps. Supplied historical positions may
+have been interpolated using later annotation controls. Past-indexed input access
+therefore does not establish strict sensor-as-of observation availability.
+Explicit future targets are confined to supervised losses and evaluation; they
+do not enter query features, neighbor membership or goal construction.
+
+Development experiments have already run under approved versioned contracts.
+Later repair studies use only the 11,966-window fit cohort with ETH, Hotel and
+grouped Zara physical-site folds. Students/development, independent calibration
+and confirmation labels remain closed for those repairs. A held fit fold is not
+a previously untouched test site after repeated exploratory comparisons. The
+independent-confirmation protocol remains unresolved; this is distinct from
+the approved and completed development work. The SDD bridge described below
+has diagnostic-only status and has not been admitted as an auxiliary training
+arm. No decision is inferred from its successful execution.
 
 A [full SDD support census](sdd_state_support/conclusions.md) further separates
 row count from state-change support. At diagnostic stride 12, 249,384 complete
@@ -306,6 +333,51 @@ confirmation or metric/time calibration. Missing/padded image support and
 offline interpolation provenance remain material. These defects concern local
 SDD media, not a post-hoc explanation of the existing ETH/UCY negative forecasts.
 [Source audit and repair](sdd_media_alignment/conclusions.md).
+
+### SDD Geometry-Image Join and Its Limits
+
+The [past-only geometry bridge](sdd_step_bridge/conclusions.md) uses the original
+40 SDD train recordings, comprising 8,005,367 annotation rows in five scene
+folders. It indexes 3,045,974 eight-point histories at raw stride 1 and 229,333
+at raw stride 12. These are overlapping input windows, not independent samples.
+Twelve requested forecast points correspond to offsets 1,...,12 or
+12,24,...,144 raw frames respectively. Neither is asserted to match ETH/UCY
+elapsed time, and neither is the supplementary raw-frame t+50 task.
+Index membership depends on past support only; incomplete future labels remain
+separately masked rather than removing an input or becoming a zero-error result.
+
+The [multimodal join](sdd_multimodal_bridge/conclusions.md) connects a fixed
+input-selected subset of 5,074 geometry queries to 39,144 unique frame/agent
+image crops. Of these, 38,449 occur after frame 63, beyond the old prefix-only
+image cache. Some retained pixels exist at every step of each sampled history,
+but 3,721 crops are geometrically partial and 84 intersect inferred dark-border
+support. An independent sampled decode reproduces 143 crops from 120 frames;
+it does not certify all crops, actor visibility or semantic identity.
+
+The projected short side of 15,145 annotation boxes (38.69% of crop requests)
+is below eight pixels after pooling. This descriptive property is not a
+visible-body measure, an exclusion rule or proof that resolution caused the
+earlier ETH/UCY failures. The image cache serves the registered diagnostic
+queries, not all 229,333 stride-12 histories. There are zero optimizer updates
+and no predictive evaluation in this bridge. Any auxiliary benefit still
+requires a separately registered matched training comparison; no such result
+can be inferred from successful joins, source replay or an untrained forward.
+
+### What the Current Evidence Can Establish
+
+| Question | Observed result | Supported conclusion |
+| --- | --- | --- |
+| Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
+| Does repairing coordinates suffice? | Past-frame gains -0.86256% / -0.88781% versus CV | Tested consistency repair is insufficient for useful forecasting |
+| Do motion features transfer start information? | Hotel-to-ETH positive Brier lift; reverse negative; added-motion intervals cross zero | Localized probability signal, no stable bidirectional or trajectory contribution |
+| Are additional SDD past modalities available? | 5,074 registered image/geometry joins, zero updates | Input prerequisite completed, auxiliary predictive benefit not_run |
+| Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
+
+These rows summarize different experiments and estimands; their scores must not
+be pooled into a single success rate. In particular, probability ranking,
+coordinate consistency and correct data plumbing cannot replace forecast gains
+with easy-case preservation. Reusing controls also means fit counts across
+reports cannot simply be summed as independent experiments.
 
 ### Native Detail and Spatial Pooling Control
 
@@ -754,7 +826,7 @@ An [EqMotion-core adapter](public_baselines/compatibility_and_limits.md) provide
 
 Compare the same predictor with no gate, independent confidence gating, expected-error gating, scene-uniform gating and joint intervention selection. Include simple regressors and modern published predictors so that benefits cannot be attributed only to replacing a weak baseline. Separate K=1 from best-of-K evaluation. Deduplicate underlying recordings across dataset distributions, freeze development and calibration choices, and use a final confirmation set with no prior model-selection exposure. The current development primary is past-normalized ADE; native-coordinate ADE/FDE, easy/hard slices, proximity proxies, coverage and latency are complementary, not post hoc replacement metrics. Report all three seeds and only use scene-level intervals when independent scene support exists.
 
-The [frozen final-family evaluator](confirmation_evaluation/implementation_and_limits.md) now checks actual predictor and out-of-fold producer seeds, consumes completed calibration decisions, and reports all prespecified controls without final-set model selection. Seed-mean errors are distinguished from ensemble predictions; positive harm is computed within each seed before averaging, and easy-case preservation remains visible per seed. Paired bootstrap draws share physical-scene blocks across arms and seeds, conditional on the fixed models. They are descriptive, not multiplicity-adjusted guarantees. Synthetic three-seed training and final-evaluation recovery have been exercised; the real comparison remains unrun under the still-unapproved protocol.
+The [frozen final-family evaluator](confirmation_evaluation/implementation_and_limits.md) now checks actual predictor and out-of-fold producer seeds, consumes completed calibration decisions, and reports all prespecified controls without final-set model selection. Seed-mean errors are distinguished from ensemble predictions; positive harm is computed within each seed before averaging, and easy-case preservation remains visible per seed. Paired bootstrap draws share physical-scene blocks across arms and seeds, conditional on the fixed models. They are descriptive, not multiplicity-adjusted guarantees. Synthetic three-seed training and final-evaluation recovery have been exercised. Real independent confirmation remains unrun because its protocol and eligible independent support are unresolved; this does not negate the approved development and fit-only experiments reported above.
 
 No confirmatory results are available for the proposed method. The historical Stage44 no-scene result (+37.49% all, +20.32% t50 normalized four-waypoint ADE vs an interpolated floor) is motivation only and must not appear as a final main-table result without a corrected independent evaluation.
 
@@ -790,6 +862,15 @@ The subsequent [DUT diagnostic intake](dut_causal_intake/implementation_and_limi
 A separate [admission check](intake_admission/implementation_and_limits.md) now prevents a scientific-role declaration from clearing pending source review or a bound annotation quarantine. It follows the source, conversion and quality evidence and checks role-specific review declarations before opening new-source data through the experiment contract. These engineering controls do not authenticate permission or establish independent sampling, and they are not offered as a methodological contribution or evidence of forecasting improvement.
 
 ## 6. Reproducibility
+
+This revision reuses the stored reports; it performs no new fitting, image
+extraction, inference replay or bootstrap. The motion-information report is
+hash-verified as `c1d377b37aa85931078e8439ddf6ccfcc0875a52a0beb0d27ff80dbb74d335b6`;
+the SDD multimodal report as
+`0baf077c4c1b67ffa7d645fa8cdb4757c44d86a797457473625e310216c7f7d8`.
+Their linked experiment records distinguish original fresh runs, cached
+verification and work not run. No sealed labels, training role, thresholds,
+primary metric or deployment policy are changed by this manuscript revision.
 
 The completed v1 package stores canonical recording IDs, hash-bound protocol,
 past-only schemas, train-only preprocessing, full held-fold producer lineage,

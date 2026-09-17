@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Resumed Goal: Manuscript Evidence Repair (2026-09-18)
+
+Current goal remains active. The preceding resumed interaction was clarification,
+not new experiment progress or a verified process wait. The user asked what the
+scientific choice meant; the answer recommended original SDD train-40, raw stride
+12, obs8/pred12 as a separate auxiliary arm. That question is not acceptance.
+No new approval was found. Do not repeat the optional question or infer a reply.
+
+This pass makes a scoped manuscript repair rather than starting unauthorized
+training or repeating unchanged runtime checks. The motion-start result was
+already in the body; its abstract lagged. The SDD geometry/image bridge was
+missing from the manuscript, and the independent-protocol page still described
+an old development process as running. Both are corrected. A claim table and
+explicit role/observation paragraph separate pipeline evidence, probability
+signal, forecasting gains and independent confirmation. No main rules change.
+
+Four aggregate hashes and per-record totals were verified; 54 local links resolve.
+See `manuscript_evidence_reconciliation.md`. No fresh model fitting, replay,
+bootstrap, raw-data recheck, full tests, external-paper review or CREATE query.
+No process was launched. Last SDD extraction/check handles remain terminal; do
+not poll them. No new deployment or submission-readiness claim.
+
+Next consequential step is still a matched auxiliary/control experiment after
+the source-role/sampling decision. The geometry index and sampled image cache
+have different coverage; do not claim the latter serves all229,333stride12rows.
+The repeated-blocker audit restarted when the goal was resumed; the old blocked
+snapshot below cannot alone justify immediately blocking this resumed goal.
+Do not manufacture another same-site fit grid or repeated document updates while
+waiting. Stage5C/SMC remain disabled. Full goal is not achieved.
+
 ## SDD Multimodal Join Complete, Repeated Scientific Decision Blocker (2026-09-17)
 
 Previous goal turn was progress (geometry bridge); this turn also completes a

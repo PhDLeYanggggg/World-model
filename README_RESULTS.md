@@ -1,5 +1,18 @@
 # M3W Results Ledger
 
+## Manuscript Evidence Reconciled (2026-09-18)
+
+Writing/consistency repair only, zero new fits. The working draft now includes
+the SDD geometry/image join and distinguishes approved completed development
+from unresolved independent confirmation. Its abstract includes the asymmetric
+start-probability result already present in the body. Aggregate hashes and
+per-record totals agree; 54 local manuscript/protocol links resolve.
+
+No research gate, primary metric, training role or deployment changes. SDD
+auxiliary training remains `not_run` pending the existing source-role/sampling
+choice. No model tests or external-paper review were rerun for these prose edits.
+[Scope, sources and remaining gaps](outputs/publication_readiness_2026_09/manuscript_evidence_reconciliation.md).
+
 ## SDD Multimodal Join Complete, Not Training (2026-09-17)
 
 `fresh_run`: 40 original train videos, 5,074 fixed past-only geometry/image joins,

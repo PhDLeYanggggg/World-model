@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+The [working manuscript](outputs/publication_readiness_2026_09/paper_working_draft.md)
+now separates what the models learned from what the data pipeline can support.
+The one-direction start signal is not a trajectory gain, and the completed SDD
+image/geometry bridge is not an auxiliary-training result. I keep the negative
+comparisons visible; independent confirmation and a positive method contribution
+are still missing.
+
 I am testing why better-fitting neural forecasts still lose to a strong motion
 baseline across scenes. The current task observes eight annotation steps and
 predicts twelve. I keep the primary metric, fit cohort and sealed evaluation

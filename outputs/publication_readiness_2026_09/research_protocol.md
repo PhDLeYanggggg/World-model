@@ -4,12 +4,19 @@ Status: proposed protocol, not approved. The source/teacher audit found historic
 
 This document retains the **independent-confirmation draft**, not the current
 development run. The user subsequently selected obs8/pred12 with raw-frame
-t+50 supplemental and delegated the research route. Development is approved
-under `configs/m3w_8to12_continuous_context_v5.json` and is running. Its primary
+t+50 supplemental and delegated the research route. Development was approved
+under `configs/m3w_8to12_continuous_context_v5.json` and the subsequent versioned
+experiments have completed. Its primary
 past-normalized ADE, equal-physical-scene aggregation, fit/development roles,
 three seeds and policy settings are frozen. Independent calibration and
 confirmation remain unresolved; none of these development results clears that
-requirement. See [the current decision](continuous_context_v5_decision.md).
+requirement. See [the continuous-context decision](continuous_context_v5_decision.md)
+and the [current evidence in the working manuscript](paper_working_draft.md).
+The later fit-only repairs preserve the 11,966-window cohort and keep Students,
+development, calibration and confirmation roles closed. SDD auxiliary source-role
+and sampling remain a separate unresolved choice; the completed diagnostic
+image/geometry bridge is not training admission. This draft does not supersede
+those executed registrations or describe a currently running training process.
 
 The [executable contract](experiment_contract/implementation_and_limits.md) now checks declared data roles, recursive artifact exposure, exact horizon availability and frozen calibration/confirmation identity. The local draft contains no split assignments or new risk settings. All nine current canonical recordings retain their historical development-use status. Passing a contract check would not establish untouched data, IID, accuracy or a calibrated risk guarantee; formal training must integrate the interface and preserve the underlying source/decision evidence.
 
