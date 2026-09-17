@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Track/Event Sampling Registered (2026-09-17)
+
+The next matched experiment tests whether overlapping long tracks and sparse
+motion changes distort training exposure. It keeps the approved ETH/Hotel/Zara
+fit cohort, 8/12-step protocol, model, loss, optimizer and update budget fixed.
+Four sampling schemes and two feature variants are registered at three seeds
+and three physical-scene fit folds: 54 new fits plus 18 old row controls subject
+to exact replay. No real fit in this experiment has run at registration time.
+
+Six focused tests pass, including train-only event labels, hierarchical sampling,
+old/new row-training equivalence and exact synthetic checkpoint resume. Sealed
+roles remain closed; SDD auxiliary training is still not admitted.
+[Fixed comparison](outputs/publication_readiness_2026_09/track_event_sampling_decision.md).
+
 ## SDD State-Change Support Counted (2026-09-17)
 
 `fresh_run`: all 60 annotation files, 10,616,256 rows and 10,300 local track IDs,

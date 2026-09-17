@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_exploratory",
+  "control_registration": "configs/m3w_observed_motion_v2.json",
+  "variants": ["quality_control", "directed"],
+  "modes": ["row_uniform", "scene_uniform", "scene_track", "scene_event_track"],
+  "seeds": [17, 29, 43],
+  "bootstrap_resamples": 2000,
+  "output": "data/stage_cvpr2027_experiments/track_event_sampling",
+  "reports": "outputs/publication_readiness_2026_09/track_event_sampling",
+  "training": {
+    "updates": 4000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 400
+  },
+  "bindings": {
+    "configs/m3w_observed_motion_v2.json": "85192b3a5f28236fa1af978cae5d0b0af4af5808831f445b3e381e1a67ef0d70",
+    "src/world_model/m3w_track_event_sampling.py": "61a6cf4dea1f4c21cb4d1751e2754b1454cb129a74ba35d0b1362aecc574e253",
+    "scripts/run_m3w_track_event_sampling.py": "c24c92e0805ef88c1434286daf6f174cc9cf53210b6886c6940cfcc2bcf1add8",
+    "tests/test_m3w_track_event_sampling.py": "a7c53176acdc947a014b4c0b923a222a70c0df6153d39c7140685d9e5973826b",
+    "outputs/publication_readiness_2026_09/track_event_sampling_decision.md": "cc2687d30e635af3cd211200c9c1de7d1f62f0a128a338cc327095e77267fea8",
+    "data/stage_cvpr2027_experiments/observed_motion_v2/inputs/manifest.json": "501c01a1b54abf0c668396f96628ccf2be52ab522c6ff68ceaa093efe78267e8",
+    "outputs/publication_readiness_2026_09/observed_motion_v2/report.json": "55041bb67826d56cec6616fffb2dd6b905312ee7e8ce9034fe4e7b25122c7985"
+  }
+}
