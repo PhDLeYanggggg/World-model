@@ -2,7 +2,32 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：训练目标对齐实验完成，未修复跨场景预测
+## 当前：过去图像运动对照完成，未修复跨场景预测
+
+54模型全部训练完成，每个4,000更新，共216,000更新；拟合耗时合计196.69秒。
+使用缓存运动特征的小MLP，不每批解码或跑CNN，速度不是删减数据所得。
+全部11,966窗口保留，0/54模型超过CV，0/54通过easy门槛，不部署。
+完整[结果、失败原因与边界](observed_motion_v2/conclusions.md)。
+
+```bash
+.venv-pytorch/bin/python -m pip install --only-binary=:all: --no-deps --target data/stage_cvpr2027_experiments/optical_flow_runtime opencv-python-headless==4.13.0.92
+.venv-pytorch/bin/python scripts/build_m3w_observed_motion.py --registration configs/m3w_observed_motion_v2.json
+.venv-pytorch/bin/python scripts/run_m3w_observed_motion_v2.py --registration configs/m3w_observed_motion_v2.json
+.venv-pytorch/bin/python scripts/run_m3w_observed_motion_v2.py --registration configs/m3w_observed_motion_v2.json --replay
+.venv-pytorch/bin/python scripts/diagnose_m3w_observed_motion.py --registration configs/m3w_observed_motion_v2.json
+.venv-pytorch/bin/python scripts/verify_m3w_observed_motion.py
+.venv-pytorch/bin/python scripts/plot_m3w_observed_motion.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_observed_motion.py tests/test_m3w_motion_heartbeat.py tests/test_m3w_objective_alignment.py -q
+```
+
+依赖只在缺失时安装，不覆盖已有版本。注册绑定本机arm64库哈希，换平台必须
+登记新运行环境，不能跳过检查。源码图像、特征和权重均留在本地忽略目录。
+v1因心跳日志重复pid字段失败，未得到留出预测；v2只修该问题并重新登记。
+54权重重放逐位一致，完成后恢复0新增更新，权重和报告字节不变。
+13针对性测试通过；全量旧测试未重跑。所有本轮任务均已退出，无等待训练。
+两次独立特征提取哈希一致，仍不等于人物运动或预测准确性获得认证。
+
+## 历史：训练目标对齐实验完成，未修复跨场景预测
 
 同一几何网络、11,966窗口、三种子、三个物理场景；五组固定设置均完成4,000更新，
 累计180,000更新，记录拟合时间174.57秒。速度来自跳过纯轨迹分支无用RGB读取，

@@ -1,0 +1,2322 @@
+{
+  "result_source": "fresh_run_diagnosis_hash_verified_fixed_predictions",
+  "code_sha256": "83d8a7deea8cabdd2d2f92601443466c47cb6280618ce1b8d2b508f5c5774068",
+  "report_sha256": "55041bb67826d56cec6616fffb2dd6b905312ee7e8ce9034fe4e7b25122c7985",
+  "adaptive_fit_only_diagnostic": true,
+  "domains": {
+    "eth_eth": {
+      "rows": 2614,
+      "stationary_rows": 81,
+      "stationary_agents": 5,
+      "image_pair_available_fraction": 1.0,
+      "center_consistency_mean": 0.9935341477394104,
+      "ring_consistency_mean": 0.9714586138725281,
+      "static_future_movement_rows": 59,
+      "stationary_motion_magnitude_quantiles": [
+        2.187807083129883,
+        13.67392349243164,
+        26.3084774017334,
+        44.98863983154297,
+        78.56269836425781,
+        323.96307373046875
+      ],
+      "motion_magnitude_departure_AUROC_descriptive": 0.6741140215716487,
+      "high_flow_consistency_is_not_identity_or_future_direction_confidence": true
+    },
+    "eth_hotel": {
+      "rows": 1197,
+      "stationary_rows": 284,
+      "stationary_agents": 26,
+      "image_pair_available_fraction": 1.0,
+      "center_consistency_mean": 0.997793972492218,
+      "ring_consistency_mean": 0.9885980486869812,
+      "static_future_movement_rows": 129,
+      "stationary_motion_magnitude_quantiles": [
+        0.2695416510105133,
+        4.790199398994446,
+        8.67524528503418,
+        17.23101806640625,
+        51.2406562805175,
+        97.22212219238281
+      ],
+      "motion_magnitude_departure_AUROC_descriptive": 0.5861465366341585,
+      "high_flow_consistency_is_not_identity_or_future_direction_confidence": true
+    },
+    "ucy_zara01": {
+      "rows": 2234,
+      "stationary_rows": 0,
+      "stationary_agents": 0,
+      "image_pair_available_fraction": 1.0,
+      "center_consistency_mean": 0.9856858849525452,
+      "ring_consistency_mean": 0.9488237500190735,
+      "static_future_movement_rows": 0,
+      "stationary_motion_magnitude_quantiles": null,
+      "motion_magnitude_departure_AUROC_descriptive": null,
+      "high_flow_consistency_is_not_identity_or_future_direction_confidence": true
+    },
+    "ucy_zara02": {
+      "rows": 5741,
+      "stationary_rows": 0,
+      "stationary_agents": 0,
+      "image_pair_available_fraction": 1.0,
+      "center_consistency_mean": 0.9884379506111145,
+      "ring_consistency_mean": 0.9525667428970337,
+      "static_future_movement_rows": 0,
+      "stationary_motion_magnitude_quantiles": null,
+      "motion_magnitude_departure_AUROC_descriptive": null,
+      "high_flow_consistency_is_not_identity_or_future_direction_confidence": true
+    },
+    "ucy_zara03": {
+      "rows": 180,
+      "stationary_rows": 0,
+      "stationary_agents": 0,
+      "image_pair_available_fraction": 0.0,
+      "center_consistency_mean": 0.0,
+      "ring_consistency_mean": 0.0,
+      "static_future_movement_rows": 0,
+      "stationary_motion_magnitude_quantiles": null,
+      "motion_magnitude_departure_AUROC_descriptive": null,
+      "high_flow_consistency_is_not_identity_or_future_direction_confidence": true
+    }
+  },
+  "support": {
+    "0": {
+      "held_rows": 2614,
+      "any_motion_column_clipped_fraction": 0.02754399387911247,
+      "stationary_motion_clipped_fraction": 0.8888888888888888,
+      "constant_motion_columns": 0
+    },
+    "1": {
+      "held_rows": 1197,
+      "any_motion_column_clipped_fraction": 0.17042606516290726,
+      "stationary_motion_clipped_fraction": 0.7183098591549296,
+      "constant_motion_columns": 0
+    },
+    "2": {
+      "held_rows": 8155,
+      "any_motion_column_clipped_fraction": 0.0,
+      "stationary_motion_clipped_fraction": null,
+      "constant_motion_columns": 0
+    }
+  },
+  "trials": [
+    {
+      "trial": "quality_control_row_log_seed17_fold0",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": -0.0016059643228310892,
+          "positive_harm_share": 0.0030741820291199707
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.02320003499306222,
+          "positive_harm_share": 0.9969258179708802
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.009125149412327423,
+          "positive_harm_share": 0.001894020688036693
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": -0.005607396563059686,
+          "positive_harm_share": 0.001180161341083278
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8659414514112806,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -27.691893854600824,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed29_fold0",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.0039022951526551074,
+          "positive_harm_share": 0.006237216749383392
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.007983074814984989,
+          "positive_harm_share": 0.9937627832506166
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.013378490513771813,
+          "positive_harm_share": 0.0038553660038129277
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 0.00036879857732345433,
+          "positive_harm_share": 0.002381850745570464
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7700819434835559,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -13.556432281174358,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed43_fold0",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.003118536956122118,
+          "positive_harm_share": 0.0043792758385985805
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.016029379620798423,
+          "positive_harm_share": 0.9956207241614013
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.01322552326562798,
+          "positive_harm_share": 0.0031795571330174104
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": -0.0006501698033546444,
+          "positive_harm_share": 0.0011997187055811703
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8227268185695471,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -21.319455740223823,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed17_fold0",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 11.345245901664846,
+          "positive_harm_share": 0.8949482092260023
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.023466119303423367,
+          "positive_harm_share": 0.10505179077399766
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 26.040910208550347,
+          "positive_harm_share": 0.5189981388356247
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 5.865506668588896,
+          "positive_harm_share": 0.3759500703903776
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8266340285894742,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -21.895613685220038,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed29_fold0",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 14.02824655263823,
+          "positive_harm_share": 0.9122158622866176
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.025828529929664074,
+          "positive_harm_share": 0.08778413771338224
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 33.8360324964344,
+          "positive_harm_share": 0.5647023090552887
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 6.6422924719006735,
+          "positive_harm_share": 0.347513553231329
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7837309376854966,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -15.56911560522105,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed43_fold0",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 12.357921349098541,
+          "positive_harm_share": 0.9191914774348079
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.01263133224391467,
+          "positive_harm_share": 0.08080852256519216
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 27.09471436509945,
+          "positive_harm_share": 0.5083425424240806
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 6.862845987199896,
+          "positive_harm_share": 0.41084893501072717
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7382568741883956,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -8.863501409543396,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed17_fold0",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.002393329744325407,
+          "positive_harm_share": 0.0031683440958029723
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.007667986770175233,
+          "positive_harm_share": 0.9968316559041972
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.005672293103251315,
+          "positive_harm_share": 0.0017147404610911808
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 0.0011706654409971023,
+          "positive_harm_share": 0.0014536036347117913
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7606922960816326,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -12.171833059801518,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed29_fold0",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.002125681022030023,
+          "positive_harm_share": 0.002578352141398925
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.009578920464437238,
+          "positive_harm_share": 0.9974216478586011
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.004874084868082777,
+          "positive_harm_share": 0.0013737233582281046
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 0.0011008524692645901,
+          "positive_harm_share": 0.0012046287831708209
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7729938104503428,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -13.985816747105261,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed43_fold0",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.0011739277171157836,
+          "positive_harm_share": 0.0023215619586132745
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.01581464917035086,
+          "positive_harm_share": 0.9976784380413868
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.005743430020339489,
+          "positive_harm_share": 0.0014093047576910892
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": -0.000529954497645598,
+          "positive_harm_share": 0.0009122572009221852
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8135801035020352,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -19.97067936785417,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed17_fold0",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 10.689492601335155,
+          "positive_harm_share": 0.9017141129699439
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.01953617938778279,
+          "positive_harm_share": 0.09828588703005649
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 32.4895391183287,
+          "positive_harm_share": 0.6661034858028857
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 2.5606616966934963,
+          "positive_harm_share": 0.23561062716705816
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7676126100453206,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -13.19230389492736,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed29_fold0",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 8.370316825437232,
+          "positive_harm_share": 0.8915147870836455
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.013541546801912116,
+          "positive_harm_share": 0.10848521291635455
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 23.709696164794995,
+          "positive_harm_share": 0.5966941613324127
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 2.6505482582190814,
+          "positive_harm_share": 0.2948206257512328
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7479103256532583,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -10.28700122904369,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed43_fold0",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 9.548827894774698,
+          "positive_harm_share": 0.8936890255659908
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.013926161003497773,
+          "positive_harm_share": 0.10631097443400944
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 22.633512644645133,
+          "positive_harm_share": 0.5212474379248478
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 4.669792903297587,
+          "positive_harm_share": 0.372441587641143
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7377315725883121,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -8.78604033402819,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed17_fold0",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.002487087877834951,
+          "positive_harm_share": 0.002778280774751501
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.011963751373428576,
+          "positive_harm_share": 0.9972217192252485
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.005267282000425004,
+          "positive_harm_share": 0.001420902300806674
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 0.0014504053236488292,
+          "positive_harm_share": 0.0013573784739448265
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7841702653108713,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -15.633898941802649,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed29_fold0",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.003369847201781868,
+          "positive_harm_share": 0.003219293713073153
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.013581421690679028,
+          "positive_harm_share": 0.9967807062869267
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.005286784841602629,
+          "positive_harm_share": 0.0012975028554203568
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 0.0026550568954080258,
+          "positive_harm_share": 0.0019217908576527963
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8026837112487495,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -18.363895259370832,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed43_fold0",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 0.0010530199348582775,
+          "positive_harm_share": 0.0023006707260106373
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.021667095950018395,
+          "positive_harm_share": 0.9976993292739893
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 0.007201180542275051,
+          "positive_harm_share": 0.0015618560601333726
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": -0.001239514528924248,
+          "positive_harm_share": 0.0007388146658772646
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8551470449454248,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -26.100148590050786,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed17_fold0",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 11.009807309683515,
+          "positive_harm_share": 0.8710283918939183
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.036327520206427245,
+          "positive_harm_share": 0.12897160810608158
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 24.429225003345916,
+          "positive_harm_share": 0.4547027174115716
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 6.005956644250077,
+          "positive_harm_share": 0.41632567448234675
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8323029951108512,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -22.731560584555076,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed29_fold0",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 14.002094915638759,
+          "positive_harm_share": 0.8964963931031852
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.03421538049552976,
+          "positive_harm_share": 0.10350360689681462
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 27.869004622469944,
+          "positive_harm_share": 0.44644839940606773
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 8.831382821566116,
+          "positive_harm_share": 0.4500479936971176
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.7988348078143861,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -17.796335214755388,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed43_fold0",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 0,
+      "slices": {
+        "stationary_history": {
+          "rows": 81,
+          "mean_harm": 10.229850249827768,
+          "positive_harm_share": 0.8729729645219141
+        },
+        "moving_history": {
+          "rows": 2533,
+          "mean_harm": 0.03258910191194148,
+          "positive_harm_share": 0.12702703547808614
+        },
+        "stationary_past_and_future": {
+          "rows": 22,
+          "mean_harm": 25.340319423806513,
+          "positive_harm_share": 0.4974524681947773
+        },
+        "stationary_past_future_movement": {
+          "rows": 59,
+          "mean_harm": 4.595438015462812,
+          "positive_harm_share": 0.3755204963271366
+        }
+      },
+      "native_by_recording": {
+        "eth_eth": {
+          "model_ADE": 0.8317518513125536,
+          "CV_ADE": 0.678149117591837,
+          "gain_percent": -22.650288813494647,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed17_fold1",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.04449368160050032,
+          "positive_harm_share": 0.3121945032346325
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.01753105422125695,
+          "positive_harm_share": 0.6878054967653674
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.06629138823985602,
+          "positive_harm_share": 0.24312732266472253
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.01830263873925899,
+          "positive_harm_share": 0.06906718056990996
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3856762121402604,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -12.028700786113,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed29_fold1",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.03816066197235915,
+          "positive_harm_share": 0.33396612899157896
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.004783638394751652,
+          "positive_harm_share": 0.666033871008421
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.055961972213441735,
+          "positive_harm_share": 0.2497783249147207
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.016771490752453714,
+          "positive_harm_share": 0.08418780407685823
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.36641965340365623,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -6.4351816916849325,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed43_fold1",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.05971262844331909,
+          "positive_harm_share": 0.40233922487914753
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.011886385136938888,
+          "positive_harm_share": 0.5976607751208525
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.08785782094007752,
+          "positive_harm_share": 0.2951578632149626
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.025894761489849663,
+          "positive_harm_share": 0.10718136166418496
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3733548620808584,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -8.449675698136595,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed17_fold1",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 142.97961457426476,
+          "positive_harm_share": 0.999249191412943
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.00777660248870352,
+          "positive_harm_share": 0.0007508085870569059
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 146.4829254989379,
+          "positive_harm_share": 0.5581323595693249
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 138.77020997485124,
+          "positive_harm_share": 0.441116831843618
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.37628499843755564,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -9.300802521191919,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed29_fold1",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 135.51918512298067,
+          "positive_harm_share": 0.9994506393633076
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.006221583926417684,
+          "positive_harm_share": 0.000549360636692491
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 135.42355973307426,
+          "positive_harm_share": 0.5439727707968202
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 135.63408384728686,
+          "positive_harm_share": 0.4554778685664874
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3786726493931083,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -9.994351736988527,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed43_fold1",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 118.32498876502078,
+          "positive_harm_share": 0.9992770242721742
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.002568847773587844,
+          "positive_harm_share": 0.0007229757278259037
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 124.31192781706336,
+          "positive_harm_share": 0.5713507168309324
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 111.13137982651993,
+          "positive_harm_share": 0.4279263074412416
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3725499712151361,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -8.215876269696132,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed17_fold1",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.036646166021629185,
+          "positive_harm_share": 0.2603195290872342
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.01683756808726715,
+          "positive_harm_share": 0.7396804709127658
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.052603562495491155,
+          "positive_harm_share": 0.19606767212847165
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.017472550103422958,
+          "positive_harm_share": 0.06425185695876261
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.38667441255960067,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -12.318651507943311,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed29_fold1",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.03859803360711825,
+          "positive_harm_share": 0.2982255863474883
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.011781993608346562,
+          "positive_harm_share": 0.7017744136525118
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.04743581067193263,
+          "positive_harm_share": 0.19391538050271778
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.027978999149395545,
+          "positive_harm_share": 0.10431020584477053
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.374530601029836,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -8.791196649575749,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed43_fold1",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.05204455482336771,
+          "positive_harm_share": 0.35731210270637553
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.010565954665180207,
+          "positive_harm_share": 0.6426878972936244
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.06757182691798723,
+          "positive_harm_share": 0.2456485894219282
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.03338775501975511,
+          "positive_harm_share": 0.11166351328444737
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3736000163708847,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -8.520886511091286,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed17_fold1",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 121.23675874646834,
+          "positive_harm_share": 0.9991765944600872
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.004648812619056674,
+          "positive_harm_share": 0.0008234055399127187
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 118.89246897310426,
+          "positive_harm_share": 0.5333590241302344
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 124.05354103229334,
+          "positive_harm_share": 0.465817570329853
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.37283924123512036,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -8.299901531029663,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed29_fold1",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 102.45312756411376,
+          "positive_harm_share": 0.9991328282936018
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.004677725013863657,
+          "positive_harm_share": 0.0008671717063980917
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 104.52055597695227,
+          "positive_harm_share": 0.5542756932759075
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 99.96900815333882,
+          "positive_harm_share": 0.44485713501769436
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3670608766335621,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -6.6214400169303245,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed43_fold1",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 127.52471563997148,
+          "positive_harm_share": 0.998742672862849
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.029894952692870076,
+          "positive_harm_share": 0.0012573271371508707
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 129.24741537360123,
+          "positive_harm_share": 0.5504701301287741
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 125.45480510731561,
+          "positive_harm_share": 0.44827254273407496
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3835893015773333,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -11.422508670389476,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed17_fold1",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.03169386245397445,
+          "positive_harm_share": 0.265674732258582
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.009804209587689097,
+          "positive_harm_share": 0.7343252677414179
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.04451706176942645,
+          "positive_harm_share": 0.19431540464082575
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.016286142346260798,
+          "positive_harm_share": 0.07135932761775618
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3749578981895998,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -8.91531513070345,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed29_fold1",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.02598354556882679,
+          "positive_harm_share": 0.24175675093625126
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.008730423143590299,
+          "positive_harm_share": 0.7582432490637488
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.03382147833122014,
+          "positive_harm_share": 0.1628845399526358
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.016565874420214635,
+          "positive_harm_share": 0.07887221098361547
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3679533689603704,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -6.88068534419346,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed43_fold1",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 0.03780301296148362,
+          "positive_harm_share": 0.300211048770146
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.008231048464091995,
+          "positive_harm_share": 0.699788951229854
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 0.04333202608843536,
+          "positive_harm_share": 0.17921761458925053
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 0.031159625095766422,
+          "positive_harm_share": 0.1209934341808955
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.36990236983046454,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -7.4468183553428435,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed17_fold1",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 117.9802935510446,
+          "positive_harm_share": 0.999229207786584
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.00542532488236381,
+          "positive_harm_share": 0.0007707922134163133
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 111.94836526962573,
+          "positive_harm_share": 0.5166370738562159
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 125.22795931554009,
+          "positive_harm_share": 0.4825921339303679
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3696726901573495,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -7.380102507784425,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed29_fold1",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 103.54076970517879,
+          "positive_harm_share": 0.9988832832555882
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.017892648963254626,
+          "positive_harm_share": 0.001116716744411946
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 103.4929138307473,
+          "positive_harm_share": 0.5438886014585422
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 103.59827094965071,
+          "positive_harm_share": 0.4549946817970458
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.3843770389613082,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -11.651325467768903,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed43_fold1",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 1,
+      "slices": {
+        "stationary_history": {
+          "rows": 284,
+          "mean_harm": 102.57614452424063,
+          "positive_harm_share": 0.9974794408943247
+        },
+        "moving_history": {
+          "rows": 913,
+          "mean_harm": 0.056470164810968566,
+          "positive_harm_share": 0.0025205591056752736
+        },
+        "stationary_past_and_future": {
+          "rows": 155,
+          "mean_harm": 100.71332482999885,
+          "positive_harm_share": 0.533334854836515
+        },
+        "stationary_past_future_movement": {
+          "rows": 129,
+          "mean_harm": 104.81441624987994,
+          "positive_harm_share": 0.4641445860578097
+        }
+      },
+      "native_by_recording": {
+        "eth_hotel": {
+          "model_ADE": 0.38101928311086714,
+          "CV_ADE": 0.3442655403784425,
+          "gain_percent": -10.67598653412194,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed17_fold2",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.10736960140579585,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5960422773483866,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -32.78927003324763,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.41881757047567053,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -24.728687319804997,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.167759740691831,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -348.4310843710265,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed29_fold2",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.10318441624107087,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5976167598670105,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -33.140041098109485,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.424136486067233,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -26.312721530563987,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.4450294950829328,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -405.78816794949006,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_row_log_seed43_fold2",
+      "variant": "quality_control",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.11047956858352458,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5911271527012799,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -31.694254060697368,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.41668773464823655,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -24.094397725266692,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 1.7069030755740413,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -253.09650914156396,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed17_fold2",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.3897656112286301,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5982543676689313,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -33.2820905429261,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4435571418187755,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -32.09641607811744,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 13.355258089191263,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -2662.7198506231257,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed29_fold2",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.5816508961897761,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.6291711176858052,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -40.16987824282692,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4420007057466973,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -31.632891522671926,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 46.588956592206465,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -9537.570037023686,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "quality_control_scene_ade_harm_seed43_fold2",
+      "variant": "quality_control",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.8181216773465927,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.6142679880608285,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -36.849684727502144,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4556776131675453,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -35.70603178576881,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 75.12473157687963,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -15440.58976727327,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed17_fold2",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.09140756171017819,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5933014338308722,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -32.17865125032302,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4234018661635237,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -26.093943277864142,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.047208821388062,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -323.4934593886284,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed29_fold2",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.08888968261770964,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.6018519404750133,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -34.08357574786211,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.42323821084001767,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -26.045204841101288,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.1503980455318032,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -344.8395775997799,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_row_log_seed43_fold2",
+      "variant": "magnitude",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.0887434703148061,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5833229341950492,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -29.955591355037292,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.42416939376185875,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -26.32252182033867,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.2764388863169263,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -370.9128687710009,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed17_fold2",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.4944140071304673,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5793806648024566,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -29.077312926121767,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.41829782330274745,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -24.57390063656424,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 15.020996681631578,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -3007.300917087754,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed29_fold2",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.7023627666146827,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5871675348328027,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -30.812110651835845,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.40027827685124007,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -19.20747254606625,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 4.972333429342283,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -928.5959415699132,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "magnitude_scene_ade_harm_seed43_fold2",
+      "variant": "magnitude",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.8163509781558574,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.6118605078269173,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -36.313334278834745,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.43566324336183454,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -29.745522367397914,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 31.484248804182002,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -6412.952319780912,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed17_fold2",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 17,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.10819506959365426,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5915441752312754,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -31.78716041893739,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.42009600356449117,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -25.109419390844167,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.0842461906161,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -331.1551514725854,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed29_fold2",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 29,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.11522572425344499,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5985415256019317,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -33.34606501882573,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4275957669520522,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -27.34293514682644,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.352765349991869,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -386.7020534437621,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_row_log_seed43_fold2",
+      "variant": "directed",
+      "objective": "row_log",
+      "seed": 43,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.10434304542681355,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5643530900777537,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -25.729394911076287,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.409583194609234,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -21.978584026072177,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 2.376234388328567,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -391.55694862098863,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed17_fold2",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 17,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 0.8033193987179174,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.6092968883986112,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -35.742198362029896,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4073816684466878,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -21.32294422556733,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 8.189443894804112,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -1594.0997367958591,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed29_fold2",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 29,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 1.0037269955406873,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.5839646199820223,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -30.09854931369409,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4109876780680512,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -22.3968553464031,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 4.975514301846299,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -929.2539490416112,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    },
+    {
+      "trial": "directed_scene_ade_harm_seed43_fold2",
+      "variant": "directed",
+      "objective": "scene_ade_harm",
+      "seed": 43,
+      "fold": 2,
+      "slices": {
+        "stationary_history": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "moving_history": {
+          "rows": 8155,
+          "mean_harm": 1.0497128480934024,
+          "positive_harm_share": 1.0
+        },
+        "stationary_past_and_future": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        },
+        "stationary_past_future_movement": {
+          "rows": 0,
+          "mean_harm": null,
+          "positive_harm_share": 0.0
+        }
+      },
+      "native_by_recording": {
+        "ucy_zara01": {
+          "model_ADE": 0.6021928677542244,
+          "CV_ADE": 0.44886328330530784,
+          "gain_percent": -34.159529226770125,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara02": {
+          "model_ADE": 0.4194063390565282,
+          "CV_ADE": 0.33578287359171843,
+          "gain_percent": -24.90402937181613,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        },
+        "ucy_zara03": {
+          "model_ADE": 15.108289143988925,
+          "CV_ADE": 0.48340978496893244,
+          "gain_percent": -3025.358570257302,
+          "unit": "dataset_local_unverified_diagnostic_not_pooled"
+        }
+      }
+    }
+  ],
+  "diagnosis_labels_not_inputs": true,
+  "thresholds_or_models_selected": false,
+  "overlapping_window_AUROC_not_independent_evidence": true,
+  "development_calibration_confirmation_opened": false
+}

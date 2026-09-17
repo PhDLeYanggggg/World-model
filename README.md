@@ -10,11 +10,17 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-My next registered comparison tests explicit past image motion. I correct for
-the moving crop center before comparing observation-quality controls, unsigned
-motion and directional motion. The full fit cohort and approved evaluation
-protocol stay fixed. Synthetic checks pass; forecasting gains are not yet known.
-[Registered question and controls](outputs/publication_readiness_2026_09/observed_motion_decision.md).
+I have completed the [past image-motion comparison](outputs/publication_readiness_2026_09/observed_motion_v2/conclusions.md):
+54 real neural fits test quality controls, motion magnitude and motion direction
+on all 11,966 fit windows. Correcting moving crops and adding direction reduces
+some damage from an ADE-trained network, but none of the models beats CV or
+preserves easy cases. Every checkpoint replays exactly; no model is promoted.
+
+The main remaining issue is transferable state-change information. Past image
+motion is not the same as knowing whether or where a stationary person will
+start moving, and the independent training support is still small. I am keeping
+the eight-observed/twelve-predicted task and sealed evaluation roles unchanged,
+and retaining negative evidence instead of selecting a favorable scene.
 
 I have completed the [training-objective comparison](outputs/publication_readiness_2026_09/objective_alignment/conclusions.md):
 45 matched neural fits separate scene sampling, mean-ADE training and a

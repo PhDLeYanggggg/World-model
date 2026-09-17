@@ -1,5 +1,41 @@
 # Real-Experiment Continuation Handoff
 
+## Observed-Motion Study Complete, Negative (2026-09-17)
+
+This goal turn made concrete progress: new causal-input implementation,54real
+matched neural fits,216,000updates,diagnosis,exact replay and reports. Not a
+status-only/blocked turn. Overall goal remains active, not submission-ready.
+
+Latest `observed_motion_v2/conclusions.md`. Fixed OpenCV4.13.0.92 arm64 headless
+isolated underignored `data/stage_cvpr2027_experiments/optical_flow_runtime`.
+16,106 unique past image pairs; crop96/32 and integer-center correction followed
+by supplied row/column H. No physical-motion claim. Full11,966fit rows retained,
+Zara03missing images masked. 2independent builds(7.93/7.92s)matcharrayhashes.
+
+Register85edc742beforemodeloutcomes; v1runtimeheartbeat duplicatepid atpilot100
+andresume400, noheldeval. v2adb333f9preservesfailedsource/checkpoint andchanges
+loggingonly. `configs/m3w_observed_motion_v2.json`, train/eval script
+`scripts/run_m3w_observed_motion_v2.py`. v2trainedall54,196.69sfit, CPU4/interop1,
+workers0. Input build73244, pilot38872, training5198/PID5576,replay87637,
+diagnosis69733,plot24402,verification69199allterminal0. No live study process.
+
+Quality/magnitude/direction rowloggains-0.996/-0.843/-0.972%; ADE+harm
+-226.739/-201.360/-188.996%.0/54heldpositive,0/54easy. Traininggainmax52.59%.
+DirectionvsADEcontrol+11.55%butexploratory3sceneCI[-21.23,15.64],notCVgain.
+Nativeperrecordingseedmeansallnegative. Hotelstationary99.75--99.95%positive
+ADEharm. ETH/Hotelstationarymotionfeatureclipping88.89/71.83%,only5/26IDs.
+Motionmagnitude departureAUC.674/.586descriptiveoverlappingrows,notnewclassifier.
+54predictionsbitexact; completedresume55weights/reportfilesunchanged,0updates.
+13focusedtests pass; fulllegacy suite notrerun. PlotSVGaggregateonlyQAchecked.
+
+Next: actual person-motion/state observation and independent start/stop support.
+Do notrepeatloss/gatinggrids or callconsistencyconfidence. Before anotherrepair,
+separate full-resolution actor/background/crop motion and inspect available
+authorized fitting assets for independent statechanges. Broader sourceadmission
+or primarychange requires explicitprotocoldecision, notquiet test reuse.
+NoStudentsdevelopment/calibration/confirmationaccess, Stage5C/SMC, deployment
+or metric/seconds claim. PriorhistoricalStage26/37scoresremainexploratory.
+
 ## Objective-Alignment Study Complete, Loss-Only Repair Failed (2026-09-17)
 
 Previous turn is progress:36realvisualfits/diagnostics/negativeevidence, pushed

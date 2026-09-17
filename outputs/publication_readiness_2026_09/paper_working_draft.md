@@ -162,6 +162,29 @@ that a learned intervention improves the realized trajectory.
 
 ## 4. Experiments To Complete
 
+### Explicit Past Image-Motion Control
+
+A further registered fit-only comparison tests whether explicit observed motion
+supplies missing directional information. Fixed Farneback features restore crop
+scale and recentering before the supplied dataset-local coordinate transform.
+Matched quality-only, magnitude and directional variants use the same full cohort,
+three seeds/folds and two fixed objectives. All54fits complete4,000updates each.
+
+Under row/log training, gains versus CV are-0.996%,-0.843%and-0.972%. Under
+scene/ADE+harm, they are-226.739%,-201.360%and-188.996%. None passes easy preservation.
+Directional input reduces the ADE-trained quality control's error11.55%, but
+the exploratory three-scene interval[-21.23%,15.64%]crosses zero and all candidates
+remain below CV. This is damage reduction, not a positive forecasting result.
+
+Stationary-history motion features exceed the fixed training-standardization
+range in88.89%of ETH and71.83%of Hotel held stationary rows. Hotel stationary
+histories account for99.75--99.95%of ADE-arm positive harm. High image-flow
+consistency does not establish departure intent or direction. All54predictions
+replay exactly; no sealed role, target definition or main metric changed.
+The result argues against this compact motion-summary repair, not against all
+visual forecasting. Independent state-change support and candidate quality
+remain unresolved.[Full comparison](observed_motion_v2/conclusions.md).
+
 ### Matched Training-Objective Study
 
 A registered fit-only follow-up holds the geometry predictor and input cohort

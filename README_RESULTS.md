@@ -1,13 +1,30 @@
 # M3W Results Ledger
 
-## Observed-Motion Comparison Registered (2026-09-17)
+## Observed-Motion Comparison Completed, Negative (2026-09-17)
 
-Fresh code and12focused tests pass. Fixed crop-motion/coordinate restoration,
-quality/magnitude/direction controls,2objectives,3seeds,3fit folds,4,000updates:
-54planned fits. No new forecasting outcome yet. Same11,966fit rows, eight-to-twelve
-task, primary and sealed roles. Registration:`configs/m3w_observed_motion.json`.
-Private OpenCV4.13.0.92 headless arm64 dependency is isolated from the main runtime.
-No new deployment, Stage5C/SMC or calibration claim.
+`fresh_run`:16,106 observed image pairs, all11,966fit windows retained;54real
+neural fits,216,000updates,196.69seconds summed fitting. Three variants,2fixed
+objectives,3seeds,3physical-scene folds. Current8-to-12primary/roles unchanged.
+
+| Features | Row/log gain vs CV (%) | Scene/ADE+harm gain vs CV (%) |
+| --- | ---: | ---: |
+| Quality control | -0.996 | -226.739 |
+| Motion magnitude | -0.843 | -201.360 |
+| Motion direction | -0.972 | -188.996 |
+
+0/54positive held results;0/54easy gates. Direction reduces ADE-arm control error
+11.55%, but its three-scene interval crosses zero and all variants remain below
+CV. Training primary gains reach52.59%; no transfer claim. Hotel stationary
+histories account for99.75--99.95%of ADE-arm positive harm.88.89%/71.83%of held
+stationary ETH/Hotel rows exceed at least one training-normalized motion bound.
+All per-recording native-coordinate seed-mean contrasts also remain negative.
+
+`cached_verified`:54exact checkpoint replays, completed resume0newupdates and
+unchanged weights/report, independent input extraction hashes match.13focused
+tests pass; unrelated full legacy suite not rerun. Registrationv2 repairs only
+a pre-evaluation heartbeat error; original failed partial fit is preserved.
+No new deployment, Stage5C/SMC, metric/seconds claim or sealed-role access.
+[Complete result and limitations](outputs/publication_readiness_2026_09/observed_motion_v2/conclusions.md).
 
 ## Objective-Alignment Comparison Complete, Failed (2026-09-17)
 
