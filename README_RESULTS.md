@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Residual Range Experiment Registered (2026-09-17)
+
+A matched 2x2 comparison will separate output parameterization from supervision:
+linear versus numerically capped sinh readout, and log1p ADE versus asinh-residual
+SmoothL1 loss. All evaluation remains on the original past-normalized ADE.
+The matrix has 54 fresh fits and 18 frozen controls; results are not yet run.
+Twenty-two focused tests pass, including exact control training and resume.
+No new inputs, source admission, held-role access or threshold search.
+[Registered decision](outputs/publication_readiness_2026_09/residual_range_decision.md).
+
 ## Candidate Ceiling Diagnostic Complete (2026-09-17)
 
 `fresh_run`: 72 fixed-forecast oracle computations and exact full recomputation;

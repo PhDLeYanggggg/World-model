@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_exploratory",
+  "control_registration": "configs/m3w_observed_motion_v2.json",
+  "variants": [
+    "quality_control",
+    "directed"
+  ],
+  "arms": [
+    "linear_log",
+    "sinh_log",
+    "linear_asinh",
+    "sinh_asinh"
+  ],
+  "cap": 12.0,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "bootstrap_resamples": 2000,
+  "output": "data/stage_cvpr2027_experiments/residual_range",
+  "reports": "outputs/publication_readiness_2026_09/residual_range",
+  "training": {
+    "updates": 4000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 400
+  },
+  "bindings": {
+    "configs/m3w_observed_motion_v2.json": "85192b3a5f28236fa1af978cae5d0b0af4af5808831f445b3e381e1a67ef0d70",
+    "src/world_model/m3w_residual_range.py": "6baaf15d05ff8cbdcdafbbf0c744f7b8fcb263fa9f297f245902d46f3830acbe",
+    "scripts/run_m3w_residual_range.py": "30626811dcaf99f3347be3533d56a6ff0aef3e0e87eb018edb608316c208282b",
+    "tests/test_m3w_residual_range.py": "2e7c2984a0f3baea55a17614dbe900433f844e1247d63a49d6facafdcce07ede",
+    "outputs/publication_readiness_2026_09/residual_range_decision.md": "749014392e5151bb748c254e10522c1456a60f4bc2f98e271a7b07c573e5f571",
+    "data/stage_cvpr2027_experiments/observed_motion_v2/inputs/manifest.json": "501c01a1b54abf0c668396f96628ccf2be52ab522c6ff68ceaa093efe78267e8",
+    "outputs/publication_readiness_2026_09/observed_motion_v2/report.json": "55041bb67826d56cec6616fffb2dd6b905312ee7e8ce9034fe4e7b25122c7985"
+  }
+}
