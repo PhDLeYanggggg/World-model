@@ -1,18 +1,28 @@
 # M3W Results Ledger
 
-## Track/Event Sampling Registered (2026-09-17)
+## Track/Event Sampling Complete, Negative (2026-09-17)
 
-The next matched experiment tests whether overlapping long tracks and sparse
-motion changes distort training exposure. It keeps the approved ETH/Hotel/Zara
-fit cohort, 8/12-step protocol, model, loss, optimizer and update budget fixed.
-Four sampling schemes and two feature variants are registered at three seeds
-and three physical-scene fit folds: 54 new fits plus 18 old row controls subject
-to exact replay. No real fit in this experiment has run at registration time.
+`fresh_run`: 54 new Torch fits, 216,000 updates, 185.52 seconds summed fitting.
+`cached_verified`: 18 old row controls and the unchanged 11,966-window fit inputs.
+All 72 checkpoints replay exactly; completed resume adds zero updates and preserves
+weights and report. 23 focused tests pass; full legacy suite not rerun.
 
-Six focused tests pass, including train-only event labels, hierarchical sampling,
-old/new row-training equivalence and exact synthetic checkpoint resume. Sealed
-roles remain closed; SDD auxiliary training is still not admitted.
-[Fixed comparison](outputs/publication_readiness_2026_09/track_event_sampling_decision.md).
+| Sampling | Quality-control gain vs CV (%) | Directed-motion gain vs CV (%) |
+| --- | ---: | ---: |
+| Row uniform, old control | -0.9958 | -0.9724 |
+| Scene uniform | -1.3725 | -1.2393 |
+| Scene/track | -1.1993 | -1.1877 |
+| Scene/event/track | -16.0531 | -10.4303 |
+
+None of the 54 new fits beats CV or passes easy preservation. Rare-event amplification
+worsens false movement: directed static-stays normalized ADE rises from 0.02324
+to 3.90919, against zero CV error. This is not a metric displacement claim.
+Event balancing repeats scarce support rather than adding independent events.
+
+Three seeds and 2,000 scene bootstrap draws on three historically exposed fit
+scenes remain exploratory. No sealed roles, new source admission, primary change,
+deployment, Stage5C/SMC or metric/seconds claim.
+[Findings and reproduction](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md).
 
 ## SDD State-Change Support Counted (2026-09-17)
 

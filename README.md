@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I tested whether [balancing tracks and state-change events](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md)
+could fix the forecasting failures without changing the model or adding data.
+The comparison contains 54 new neural fits and 18 exactly replayed controls.
+It does not work: directed-motion primary gains are -0.97% for row sampling,
+-1.19% for track balancing and -10.43% for event/track balancing. Easy cases
+also worsen. Repeating scarce movement onsets changes training exposure but
+does not add the information needed to predict them in another scene.
+All 72 checkpoints replay exactly. I keep these negative results and do not
+promote a model or open the sealed evaluation data.
+
 I have now [counted the state-change support in all local SDD annotations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
 Large window counts conceal a much smaller set of relevant trajectories: at a
 diagnostic stride of 12 raw frames, nearly 250,000 complete pedestrian windows
