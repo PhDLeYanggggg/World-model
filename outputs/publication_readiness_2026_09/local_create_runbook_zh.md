@@ -2,7 +2,36 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：移动行人的过去图像对应检查已完成
+## 当前：过去图像神经预测对照已完成，结果为负
+
+已完成18个真实神经网络训练：2个留出训练场景、3个种子、纯几何/当前图像/
+8帧过去图像，每个1,000步。合计18,000次更新，累计拟合约135.13秒，不是
+medium或full。所有18个固定门控结果均未超过CV；不升级部署模型。
+
+365个静止窗口仅对应31名行人，ETH方向训练只有5名。32个图像不完整窗口
+保留并带mask。过去图像缓存不含未来标签；标签单独用于损失和评价。
+ETH训练统计下78.52%的Hotel样本至少一个特征超过固定标准分数截断范围。
+该现象支持分布偏移诊断，不等于已证明截断是唯一原因。
+
+完成回放的18个检查点与保存预测完全一致。再次resume只验证18个现有模型，
+不新增更新/评价，不覆盖原完成凭据。主训练进程已退出，无等待中的本轮任务。
+4项针对性测试通过，未重跑不相关的旧全套测试。
+
+复现需要本地原始视频、既有stationary cache与注册文件绑定的源版本。不要
+覆盖现有输出；下面的报告目录必须是新目录，resume是验证/续接而非重新训练：
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_past_appearance_probe.py --registration configs/m3w_past_appearance_probe.json --cache data/stage_cvpr2027_experiments/past_appearance_inputs --output data/stage_cvpr2027_experiments/past_appearance_probe --report-dir data/stage_cvpr2027_experiments/past_appearance_resume_check_2 --resume
+.venv-pytorch/bin/python -m pytest tests/test_m3w_past_appearance_probe.py
+```
+
+结论见 `past_appearance_probe/conclusions.md`。零CV误差的easy样本只能报告
+绝对伤害，不能把未定义的百分比当0%。后续应先检验场景/相机支持修复，
+不要继续挑本轮阈值。新主要指标仍需用户确认；原8观察/12预测协议不变。
+
+以下为各轮历史操作记录。
+
+## 历史：移动行人的过去图像对应检查已完成
 
 这不是神经训练或未来预测。24个fit行人，各取完整8张过去/当前图像，192次请求、
 187个不同帧。固定24像素搜索范围对Hotel过小，56/84对真实观察位移在范围外。

@@ -1,5 +1,32 @@
 # M3W Results Ledger
 
+## Past-Appearance Neural Forecast Probe (2026-09-17)
+
+`fresh_run`: 18 real CPU neural fits, three seeds, two fit-scene directions,
+geometry/current-RGB/eight-past-RGB, 1,000 updates each (18,000 total; summed fit
+time 135.13 seconds). This is a small stationary diagnostic, not medium/full.
+All365 rows retained, 31 agents/45 runs; 333 complete eight-image windows and32
+explicitly masked incomplete windows. No future input, threshold selection or
+primary-protocol change. New final-test results: not_run.
+
+Three-seed guarded gains vs CV: ETH -0.01/-8.09/-14.98%; Hotel
+-132.04/-167.73/-172.63% (geometry/current/past). No setting positive, no
+deployment. Easy percentage degradation is undefined at the exact-zero CV
+floor; absolute harm is retained. All held start Brier lifts negative.
+
+Post-fit diagnosis finds large train-to-held gaps: ETH-trained models gain
+65.09--68.95% in-sample but fail Hotel.78.52%of Hotel rows trigger a feature
+clamp under ETH-only statistics, including camera Jacobian and unseen geometry.
+These measurements support distribution-shift/overfitting hypotheses; they do
+not prove that input clipping alone explains failure or that all video is useless.
+
+`cached_verified`:18/18 checkpoints reproduce predictions exactly. Resume
+validates18 cached models with zero new updates/evaluations. Four focused tests
+passed; no full legacy-suite claim. Raw media, row caches and weights remain
+local. [Interpretation](outputs/publication_readiness_2026_09/past_appearance_probe/conclusions.md),
+[all settings](outputs/publication_readiness_2026_09/past_appearance_probe/results.md),
+[diagnosis](outputs/publication_readiness_2026_09/past_appearance_probe/diagnosis.json).
+
 ## Moving Past-Frame Correspondence (2026-09-17)
 
 `fresh_run`: two fixed/adaptive image-matching diagnostics, not forecast training.

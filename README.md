@@ -10,15 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I have now tested the [past video correspondence on moving agents](outputs/publication_readiness_2026_09/past_motion_comparison/conclusions.md),
-following the earlier projection-axis repair. ETH's local image matches are
-usually close to the annotations. Hotel's initial large errors largely reflect
-an undersized search area, but enlarging it introduces distractors at ETH. These
-checks support the native-index input path without certifying pose, timing or
-physical scale. I have not trained a visual predictor yet. The next useful test
-is whether point-centered past appearance adds predictive information, with
-explicit missingness and the same trajectory comparator, not another threshold
-sweep on the failed forecasts.
+I have completed the [past-appearance prediction experiment](outputs/publication_readiness_2026_09/past_appearance_probe/conclusions.md):
+18 real neural fits compare geometry, one current image and eight observed images
+across three seeds and two held fit scenes. None improves on CV after the fixed
+confidence gate. The networks fit one scene but transfer poorly, and image inputs
+can make them more confident without making their trajectories better. All final
+checkpoints replay exactly; this is a negative predictive result, not a runtime
+failure or a new deployment.
+
+The small stationary subset contains only five ETH and 26 Hotel agents. On the
+ETH-to-Hotel direction, 78.52% of held rows exceed the fixed +/-10 standard-score
+range under ETH-only normalization. I am separating this camera/context
+shift from actual visual information before scaling up. A start probability is
+not enough to justify replacing a strong motion baseline.
+
+The preceding [moving-image correspondence checks](outputs/publication_readiness_2026_09/past_motion_comparison/conclusions.md)
+support the native-index input path, but do not certify pose, physical timing or
+scale. All 32 incomplete image-window rows remain visible in the new experiment;
+none is silently dropped to improve the score.
 
 I have completed a [controlled point-forecast comparison](outputs/publication_readiness_2026_09/conditional_ade_probe_refined/conclusions.md):
 keep the same trees and features, but replace their average trajectory with a

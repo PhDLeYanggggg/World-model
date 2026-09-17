@@ -1,0 +1,51 @@
+{
+  "scope": "past-only appearance diagnostic; not independent confirmation",
+  "training": {
+    "result_source": "fresh_run",
+    "completed_models": 18,
+    "optimizer_updates_total": 18000,
+    "full_training_session": 99386,
+    "full_training_exit_code": 0,
+    "historical_pid": 65787,
+    "pilot_updates_resumed": 100,
+    "active_process": false
+  },
+  "checkpoint_replay": {
+    "result_source": "cached_verified",
+    "checkpoints": 18,
+    "max_absolute_prediction_difference": 0.0,
+    "registration_sha256": "e190e0b0f87343c356de3aabd979859223d5aee507add9f1519bb9f181b1fd5b",
+    "public_metrics_sha256": "27b09ac75c2156a3f95930cf62065b92efc205e612cccd41839b155ee06a9136",
+    "original_completion_receipt_preserved": true,
+    "resume_cached_models": 18,
+    "resume_new_evaluations": 0,
+    "resume_exit_code": 0
+  },
+  "post_fit_diagnosis": {
+    "result_source": "fresh_run",
+    "new_training": false,
+    "model_or_threshold_selection": false,
+    "report_sha256": "df972eab2eff85d078463ab12912a898d39af34dc33246ae2b6192a9b06df90a"
+  },
+  "focused_tests": {
+    "command": ".venv-pytorch/bin/python -m pytest tests/test_m3w_past_appearance_probe.py",
+    "result": "4 passed in 1.07s",
+    "exit_code": 0,
+    "checks": [
+      "zero displacement and supplied projection axes/gradients",
+      "current-only and geometry modality isolation",
+      "missing patch masking",
+      "real optimizer/RNG exact checkpoint resume"
+    ]
+  },
+  "unchanged_legacy_suite": {
+    "result_source": "not_run",
+    "reason": "No legacy pipeline behavior changed; focused new-model tests and full real-checkpoint replay used"
+  },
+  "json_parse_and_tracked_diff_whitespace": "pass",
+  "negative_results_preserved": true,
+  "new_deployment": false,
+  "metric_or_seconds_claim": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

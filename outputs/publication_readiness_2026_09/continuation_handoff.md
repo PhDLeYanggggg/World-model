@@ -1,5 +1,48 @@
 # Real-Experiment Continuation Handoff
 
+## Past-Appearance Neural Probe Complete: No Live Job (2026-09-17)
+
+Latest: `past_appearance_probe/conclusions.md`. 18 real CNN/fusion fits, 3 seeds,
+2 held fit scenes, geometry/current-RGB/eight-past-RGB. 1,000 updates each, 18,000
+total; 135.13s summed fit CPU4/interop1/workers0. Small diagnostic, not medium/full.
+Registration `configs/m3w_past_appearance_probe.json` SHA
+`e190e0b0f87343c356de3aabd979859223d5aee507add9f1519bb9f181b1fd5b`.
+Do not edit bound code/decision/sources or overwrite old outputs.
+
+365 stationary rows, 31 agents, 45 runs; ETH 81 rows/5 agents, Hotel 284/26.
+2,920 requested patches, 458 unique indices, 2,664 valid; 333 full windows,
+32 masked rows retained. Input cache has only whitelisted past metadata; targets separately
+loaded for loss/eval. Source index convention remains an assumption, not clock
+verification; H provides coordinate mapping, not metric calibration.
+
+None of 18 guarded settings positive. Mean guarded ETH geometry/current/past
+gains -0.0133/-8.0940/-14.9761%; Hotel -132.0355/-167.7268/-172.6322%.
+Easy ratio undefined at zero CV floor, absolute harm preserved. All held Brier
+lifts negative. Training on ETH fits trajectories (65.09--68.95%gain), fails
+Hotel. 78.52% of Hotel rows have features beyond the ETH standard-score clamp;
+Jacobian 67.61%, unseen circle/radius 40.14%. This is measured support shift,
+not proof that clipping alone causes failure. Hotel train forecasts already
+worse than CV.
+
+All 18 checkpoint outputs replay exactly. Resume 0 new fits/evals, 18 cached_verified,
+original completion preserved. Four focused tests passed, including exact
+optimizer resume; full legacy suite not rerun. Full training session99386 exit0,
+historical PID65787; pilot44728 exit0, 100 updates resumed; replay46110 exit0;
+diagnosis67155 exit0. No live process/HPC job from this work. Full row predictions,
+checkpoints and input cache stay ignored. Public metrics omit training row
+indices/normalizers. New training is not a NumPy fallback.
+
+Next: predeclare a camera/support treatment on frozen predictors to test the
+measured mismatch, before larger training. Do not retune 0.9 or select winning
+seeds from these held outcomes. Need utility/harm, not start confidence alone.
+Broader independent sites remain critical; further capacity on five agents is
+not a paper contribution. Pending NEW native-ADE/FDE primary decision still
+unanswered; parent 8/12 primary unchanged. No independent confirmation,
+deployment, Stage5C/SMC or submission readiness. Goal active, incomplete; this
+turn progress. CREATE blocker unchanged, no repeated login.
+
+Below are historical snapshots, superseded by this section.
+
 ## Moving Past-Image Controls Complete: No Live Job (2026-09-17)
 
 Latest: `past_motion_comparison/conclusions.md`. Fresh radius24 and registered

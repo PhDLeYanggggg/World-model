@@ -422,7 +422,23 @@ outside the fixed search square. Increasing the radius improves Hotel error on
 identical support but worsens ETH through distractors and loses boundary support.
 This supports native-index plausibility, not a calibrated pose estimator, physical
 time mapping or image-based forecasting gain. Centered appearance with explicit
-visibility masks remains an untested predictive modality, not a contribution yet.
+visibility masks was subsequently tested as described below, not validated by
+the correspondence audit alone.
+
+The [subsequent appearance forecast ablation](past_appearance_probe/conclusions.md)
+fits18 small neural models: geometry/current-RGB/eight-past-RGB, three seeds and
+two held fit-scene directions, each at1,000 updates. All365 stationary rows remain,
+including32 incomplete image histories with explicit masks. No guarded setting
+has positive ADE gain versus CV. ETH guarded seed means are -0.01/-8.09/-14.98%;
+Hotel means are -132.04/-167.73/-172.63%. All18 saved predictions replay exactly.
+Train-to-held gaps and asymmetric covariate support are substantial: ETH has
+only five stationary training agents, and78.52%of Hotel rows exceed at least one
+ETH-standardized feature clamp. Start probabilities are worse than the training
+prior on both held scenes. This small diagnostic rejects the current appearance
+predictor, not visual conditioning in general. Its0.9 gate is not calibrated
+risk control; exact-zero still-row CV error makes percentage easy degradation
+undefined, so absolute harm is reported. No independent scene CI, final-test
+success, primary-metric revision or new deployment is claimed.
 
 A [controlled point-decision experiment](conditional_ade_probe_refined/conclusions.md)
 reconstructs the conditional training distribution from each frozen ExtraTrees

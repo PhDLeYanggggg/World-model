@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_past_RGB_forecast_probe",
+  "parent_protocol": "configs/m3w_8to12_residual_parameterization_v7.json",
+  "parent_protocol_sha256": "f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a",
+  "source_cache": "data/stage_cvpr2027_experiments/stationary_scene_probe_v2/scene_rows.npz",
+  "source_cache_sha256": "a4140e72915d71d1deccd6245fd08747b0815ff155e06a0e4e217dbc3f0255b0",
+  "decoder_path": "data/stage_cvpr2027_experiments/media_decode_runtime",
+  "decoder_version": "18.1.0",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "arms": [
+    "geometry",
+    "current_rgb",
+    "past_rgb"
+  ],
+  "diagnostic_probability_gate": 0.9,
+  "training": {
+    "updates": 1000,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "distance_epsilon": 0.001,
+    "loss_numeric_scale": 0.001,
+    "start_loss_weight": 0.1,
+    "gradient_clip": 1.0,
+    "checkpoint_every": 100
+  },
+  "bindings": {
+    "external_data/OpenTraj/opentraj/toolkit/ui/ui_trajlets.py": "e23983f1fc63de3540c2e883f862ada090cd93974210390bd5666a80c2864d15",
+    "external_data/OpenTraj/opentraj/toolkit/ui/ui_projectpoint.py": "8e132238dd6a0dc6985c133eb8a637b3eea5539f33f03b37c53819e01fbbb979",
+    "external_data/OpenTraj/opentraj/toolkit/ui/play.py": "ed841669ccf8be566704803d10fac7a59fb75ff5e6a066e897a24d9077c93d6c",
+    "external_data/OpenTraj/opentraj/toolkit/loaders/loader_eth.py": "6ef52c75219e0a69aa0fee3be5a81e519a725ecebe39587a124477f7031c4731",
+    "external_data/OpenTraj/datasets/ETH/README.md": "60cdcaafd858d5e8f3f51b64df9c2fff949c0b2acb5c4a4a8e3617e59f08bf74",
+    "data/stage_cvpr2027_experiments/media_decode_runtime/av-18.1.0.dist-info/WHEEL": "ea1b58a7f6f99a615d9f5a186358b8eedb8c6df305ee5eff25f7d56b1d803ef7",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/video.avi": "7dead1bf721ed0fa24c9d6a9e8c39e1c80b83ab76c9b0dc492e8adc725f7434b",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/obsmat.txt": "d452ae2185ecb1164c2fdf31e75f6236f4c2ffc02c751a6b2ae921740cbc60d1",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt": "b6b116c0e1ff9d2b26019d7a43341d6f2518163f6c74545f55a10fd66d523020",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/info.txt": "34010c1c84cd2b1990529b1d7f1f556bc5cfed598216cd9e73ef06fdfa02971a",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/video.avi": "3681e9fe98e6fe4c6317349b05d1307d2bf729ef78da191ba99f600431bd00bb",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/obsmat.txt": "2b8577595204a6b780b80258fd50da35adb7293e3e06ad6f8e1b60965e7dde6e",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt": "b62940ea5f69c89990673f91f88724937ed41387a39d8d68ad5bbc6d5ee5c8b7",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/info.txt": "50e8394c4320629ff659a2ed5e8a107df18021479ebb0b4193b08bf24d45da43",
+    "src/world_model/m3w_past_appearance_probe.py": "2454a56238e34ae7ae81605e448b3e3437ff3d45914c118fbed12c8e7e636d42",
+    "scripts/build_m3w_past_appearance_cache.py": "3138aa6e9c58d16495a3e4d692808cba151b5dc4b5f4714374ebddd4fb2c1623",
+    "scripts/run_m3w_past_appearance_probe.py": "ab5ab4434d02f7a92cbe49af641d9bf3c142d49cfd9b01de6d0b7f188da32756",
+    "tests/test_m3w_past_appearance_probe.py": "57fa74ae5f2733fe3d59e015cd2eb7286c066485a7cee7f119a902f524842f92",
+    "src/evaluation/m3w_past_video_alignment.py": "eb987464cc4cc75bd3d6f127cc6b09f3035ca62627b55465c1d4b4fcddedc198",
+    "src/evaluation/m3w_past_motion_correspondence.py": "dc7b419ed28670e519a7348afdab6fdda7e888f58749822157fa602704f11519",
+    "src/evaluation/m3w_stationary_scene_context.py": "da7713932fdc0cc4715066349c5294637a4e4f7e50405aa657ff62f09458b21b",
+    "src/evaluation/m3w_stationary_start_probe.py": "40113c5cac123a7419486d65ad810eb71c056223ce17854a9cf05187110346fa",
+    "scripts/run_m3w_stationary_start_probe.py": "5f4fc460d10b3091e10af1b57bbd60a8215ae0d4becfa8e5939f8a0cf384cea7",
+    "scripts/summarize_m3w_stationary_probe.py": "2c6124eaea7af71858c4c8f0f6cb5d024069c595e68d256cf635fa58f4d836e3",
+    "outputs/publication_readiness_2026_09/stationary_scene_probe_v2/metrics.json": "0ce80fc656aafb5a43d979f9dad7315bc0c269ef7c3a8954f7a22b42c232bdb7",
+    "outputs/publication_readiness_2026_09/past_motion_comparison/comparison.json": "6c848d1c0d4832dfb5b6e92cea8600375fdc9eafc5360fbbcfce151a84ba9d4c",
+    "outputs/publication_readiness_2026_09/past_appearance_probe_decision.md": "50cb1d506125acfee28ba4e81e9192096b69163f4b1bb605b765380fd2ea94d2"
+  }
+}
