@@ -2,6 +2,26 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前：标签精度与隐藏匀速假说检验已完成
+
+本轮没有重新训练神经网络。365行fit-only诊断显示，文本取整和指定半像素区间内的
+隐藏匀速运动都不能解释大部分静止历史预测误差。ETH/Hotel无法由后者解释的行占
+相应误差98.30%/97.21%。这不等于证明人体真实启动或标注无误。原失败模型仍失败。
+72个已保存修正版模型核验回放，24项定向测试通过，当前无活动任务。
+
+以下复算使用新目录，不覆盖被后续登记绑定的原始报告。它们只是只读来源的标签侧
+诊断，不产生可部署特征；所有未来标签、可行性标记只用于检查，不得进入推理。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_stationary_label_resolution.py --registration configs/m3w_stationary_label_resolution.json --source data/stage_cvpr2027_experiments/stationary_scene_probe_v2 --output data/stage_cvpr2027_experiments/stationary_label_resolution_recheck --report-dir data/stage_cvpr2027_experiments/stationary_label_resolution_recheck_reports
+.venv-pytorch/bin/python scripts/audit_m3w_quantized_cv_feasibility.py --registration configs/m3w_quantized_cv_feasibility.json --output data/stage_cvpr2027_experiments/quantized_cv_feasibility_recheck --report-dir data/stage_cvpr2027_experiments/quantized_cv_feasibility_recheck_reports
+.venv-pytorch/bin/python -m pytest tests/test_m3w_quantized_motion_feasibility.py tests/test_m3w_stationary_label_resolution.py tests/test_m3w_stationary_scene_context.py tests/test_m3w_stationary_start_probe.py -q
+```
+
+已存在复算目录时不要删除旧证据，改用新的目录名。新主指标协议仍待用户决定。
+结论在 `stationary_label_resolution/conclusions.md`。原始数据、逐行结果、模型
+不能提交Git。下方保留历史实验的复现方式，不代表这些实验仍在运行。
+
 ## 当前：静态场景与起步方向实验已完成
 
 原始和角点修正版各72个分类/轨迹回归模型均已完成，不是新Transformer训练。

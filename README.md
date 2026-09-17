@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have now tested whether the stationary-start failure is mainly a coordinate
+precision issue. The [source and quantization checks](outputs/publication_readiness_2026_09/stationary_label_resolution/conclusions.md)
+rule out printed rounding, and a hidden constant-velocity path inside half-pixel
+rounding cells cannot explain 98.30% of ETH or 97.21% of Hotel error on this subset.
+These are fit-only diagnostics, not new training or proof of physical movement.
+The forecasts also remain weak on larger changes. My next modeling step needs
+useful directional information, not just another threshold or precision fix.
+
 I have followed the stationary-start study with a
 [static-scene and direction experiment](outputs/publication_readiness_2026_09/stationary_scene_probe_v2/conclusions.md).
 Supplied obstacle context helps some start-probability scores, but it does not

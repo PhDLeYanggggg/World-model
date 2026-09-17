@@ -377,6 +377,26 @@ More reliable scene semantics, directional evidence and independent site support
 remain gaps. This diagnostic does not establish a scene-aware dynamics contribution
 or change the primary benchmark, policies, calibration or confirmation status.
 
+A [label-resolution follow-up](stationary_label_resolution/conclusions.md)
+checks the same fit-only windows without fitting another predictor. None of
+188 changed windows is compatible with a constant value under printed decimal
+intervals. Supplied-H projections reveal integer-pixel lineage, but changes
+above five inferred pixels still account for 94.26% of ETH and 81.29% of Hotel
+stationary-subset CV error. Unrestricted regressors remain negative on this
+fixed slice; a small guarded Hotel slice gain does not survive full-subset
+evaluation or protect still cases.
+
+We also test a specific conditional explanation: a constant-velocity path in
+native coordinates whose projections lie within +/-0.501 pixels of every
+recorded location over eight observed and twelve future steps. Four-variable
+linear feasibility programs reject that model for 46/59 changed ETH windows
+and 115/129 changed Hotel windows, accounting for 98.30% and 97.21% of their CV
+error. All 177 unchanged windows are feasible; no solver case is inconclusive.
+This label-side oracle rejects only hidden CV plus the specified rounding model,
+not arbitrary annotation error. It supplies no input feature, physical-motion
+proof, causal start predictor or new deployment. These overlapping fit windows
+are not independent confirmation, and no target or metric is changed.
+
 A [source clock and matrix audit](annotation_clock_geometry/audit.md) finds that
 ETH's six-frame annotation spacing conflicts with a naive combination of the
 25-fps video header and the documented 0.4-second annotation interval. Students03

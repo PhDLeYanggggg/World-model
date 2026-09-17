@@ -1,5 +1,37 @@
 # Real-Experiment Continuation Handoff
 
+## Precision and Conditional-CV Audits Complete: No Live Job (2026-09-17)
+
+Latest: `stationary_label_resolution/conclusions.md`. Two fresh fit-only audits,
+no new training or model selection. All 365 rows/31 agents/45 runs retained.
+No changed window is explained by printed precision. Inferred integer-pixel
+lineage holds for all 15,452 ETH/Hotel source rows; it is not calibration proof.
+Conditional +/-0.501-pixel CV LPs reject 46/59 ETH and 115/129 Hotel changed
+windows, representing 98.30%/97.21% of stationary CV error. All177 unchanged
+windows feasible;27 changed feasible; zero inconclusive. All37 Hotel return
+windows incompatible. Do not export feasibility or future-derived slice labels
+as features. No physical start, annotation-accuracy or metric/seconds claim.
+
+Every unrestricted frozen regressor is negative on the >5-pixel seed-mean slice.
+One guarded Hotel scene-neighbor tree has +0.1444% local slice mean, but still
+harm and full-subset failure remain. Original 72 corrected model artifacts were
+hash-verified/replayed within1e-12; no refits. Reports bind original source/model
+identities. Do not overwrite `audit.json` during rerun: use new output/report dirs.
+
+Precision run8529 and conditional feasibility run completed exit0. Focused tests
+42200 terminal:24 passed in1.07s. No current local/HPC job from this work. Legacy
+suite not rerun. Aggregate reports/code/configs only are public; row statuses,
+caches and model files stay local. CREATE access/project blocker unchanged.
+
+Pending user choice remains NEW prospective native-per-dataset ADE/FDE-primary
+protocol; no answer at this snapshot, not approved/run. No current metric or old
+exposure changed. Next useful work needs verified past directional information
+and independent support, not another precision-only fix or threshold sweep.
+Do not repeat these completed audits for status. No deployment/submission claim,
+Stage5C or SMC. Goal remains active and incomplete; this turn made progress.
+
+Below are historical snapshots, superseded by this section.
+
 ## Static-Scene Probe Complete: No Live Job (2026-09-17)
 
 Latest: `stationary_scene_probe_v2/conclusions.md`. Initial72 plus repaired72

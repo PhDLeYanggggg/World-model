@@ -1,5 +1,30 @@
 # M3W Results Ledger
 
+## Stationary Label Resolution and Hidden-CV Checks (2026-09-17)
+
+`fresh_run`: original-text precision, supplied-H projection, fixed-slice replay
+and 365 conditional linear programs. No model refit or inference feature/label
+change; development/calibration/confirmation remain unopened by these audits.
+Cached corrected models are hash-verified, with 72 replayed within1e-12.
+
+None of the188changed windows are explained by printed precision. All15,452
+ETH/Hotel source positions agree with an inferred integer-pixel lattice within
+0.001. Under a fixed +/-0.501-pixel box assumption, hidden native-coordinate CV
+is infeasible for46/59ETH and115/129Hotel changed windows, representing98.30%
+and97.21%of their stationary CV error. All177unchanged windows are feasible;
+27changed windows are feasible, zero solver cases inconclusive. The37Hotel
+return-to-origin changes are all incompatible with that conditional model.
+
+This does not prove physical motion or annotation accuracy. Above-five-pixel
+changes retain94.26%/81.29%of ETH/Hotel error; unrestricted predictors still fail.
+A guarded Hotel tree has+0.1444%mean gain on that label-defined slice, but damages
+still cases and remains negative on the full stationary subset in every seed.
+No exclusion, primary-metric change, calibration or deployment follows.
+24 focused tests pass; the unchanged full legacy suite was not rerun.
+[Interpretation and next experiment](outputs/publication_readiness_2026_09/stationary_label_resolution/conclusions.md),
+[all fixed forecast slices](outputs/publication_readiness_2026_09/stationary_label_resolution/results.md),
+[conditional solver evidence](outputs/publication_readiness_2026_09/quantized_cv_feasibility/results.md).
+
 ## Static-Scene Start and Trajectory Probes Complete (2026-09-17)
 
 `fresh_run`: 72 initial and 72 geometry-repaired classifier/regressor fits;
