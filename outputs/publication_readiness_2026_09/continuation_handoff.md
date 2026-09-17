@@ -1,6 +1,42 @@
 # Real-Experiment Continuation Handoff
 
-## Current v7 Paired Training (2026-09-17)
+## v7 Complete: No Running Experiment (2026-09-17)
+
+Both registered families finished all three seeds, 24 forecasters, six neural
+cost heads, six ridge controls, primary evaluation and both frozen supplements.
+Main exec21687 and supplementary exec83736/89872 have exited successfully. All
+summary/replay/diagnostic jobs are terminal too. Do not restart training just to
+refresh status. Periodic supplementary heartbeats may remain running; verified
+completion receipts and terminal process results establish completion.
+
+`8to12_residual_pair_v7/conclusions.md` and `supplement_conclusions.md` hold the
+current evidence. CV-skip mean uncontrolled gain -0.59857%; bounded +0.06151%.
+Bounded uncontrolled easy degradation 62.58--398.57%, so it is not deployable.
+Selected development gains are only +0.002495%, +0.007710%, +0.000519% with easy
+1.189%, 1.883%, 0.251%. All selected bounded arms are independent, not joint.
+Candidate/CV oracle headroom <=0.33702% rules out a 5% gain through further
+routing of these same predictions under the unchanged primary metric.
+
+All fixed primary forecast errors/ordinary decisions replay exactly in both
+supplements. CV-skip count control has zero identity differences. Bounded has
+196 differing repeated exports; nine zero comparisons and three moderate-ridge
+ADE changes, all positive (joint worse). Raw50 uncontrolled bounded gains are
++0.04217%, -0.04695%, +0.00559%. No stable joint benefit or new deployment.
+24 final targeted comparison/supplement/error/headroom/replay checks pass.
+The earlier verified model/resume suite remains valid; no full legacy suite rerun.
+
+The goal remains active, not blocked or complete. This turn produced real paired
+training/evaluation rather than another plan. Next work must address candidate
+quality and the absence of useful joint-choice disagreement prospectively, not
+retune current thresholds or change the primary metric after seeing results.
+Consider the stationary-start capacity tradeoff and source/normalization audit
+before another architecture. Independent source-eligible sites, compatible
+benchmark geometry/time and a real deferral comparison remain missing. No
+source-use roles are silently approved, and no repeated unchanged CREATE probe
+is needed. Training code is preserved by `a26d2996`; fit diagnostic by `56d037bd`.
+Below are historical launch/continuation snapshots, not live state.
+
+## Historical v7 Paired Training Launch (2026-09-17)
 
 The previous goal turn completed v6 and its supplements, giving actionable
 negative evidence. This turn tests the frozen output-parameterization hypothesis

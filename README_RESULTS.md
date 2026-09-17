@@ -1,5 +1,39 @@
 # M3W Results Ledger
 
+## Complete v7: Drift Reduced, Joint Contribution Not Supported (2026-09-17)
+
+`fresh_run`: both residual parameterizations completed seeds17/29/43, 24 full/fold
+forecasters at 10,000 updates, six neural cost heads at 1,000 updates and six OOF
+ridge controls. There are 120 primary arm comparisons; all registered budgets
+finished. Neural fit time totals 4,693.94s, excluding extraction/evaluation.
+
+| Seed | CV-skip uncontrolled gain | Motion-bounded uncontrolled gain | Bounded selected gain | Bounded selected easy degradation |
+| --- | ---: | ---: | ---: | ---: |
+| 17 | -0.562987% | +0.075900% | +0.002495% | 1.18890% |
+| 29 | -0.679793% | +0.056063% | +0.007710% | 1.88251% |
+| 43 | -0.552938% | +0.052557% | +0.000519% | 0.25144% |
+
+The mean uncontrolled gain changes from -0.59857% to +0.06151%, but uncontrolled
+bounded easy degradation still ranges 62.58--398.57%. Candidate/CV oracle
+headroom is below 0.338%; further routing of these fixed predictions cannot
+produce a 5% primary gain. The selected tiny positives are development-only,
+with different policies by seed, not a deployment upgrade or independent test.
+
+Both raw50/count-matched supplements are complete and replay primary forecast
+errors and ordinary decisions exactly. CV-skip has identical count-matched
+identities throughout. Bounded routing changes 196 repeated agent-query records:
+nine zero comparisons and three tiny ADE differences, all favoring independent
+routing. Raw50 uncontrolled gains are not consistently positive. All negatives,
+absolute easy error, missing-label denominators and stronger causal alternatives
+remain in the tables. The contribution hypothesis remains unsupported.
+
+24 focused summary/replay/diagnostic checks passed; prior model/resume checks
+are reused unchanged. No full-suite success is claimed. One physical development
+site cannot support a scene CI. [Primary conclusions](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/conclusions.md),
+[supplementary conclusions](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/supplement_conclusions.md).
+
+The entries below are historical snapshots; v7 is no longer running.
+
 ## Fit-Only Bound Capacity Check (2026-09-17)
 
 The running v7 study is unchanged. A fresh fit-only geometric diagnostic examines

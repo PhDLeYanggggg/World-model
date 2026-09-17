@@ -1,8 +1,10 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
 Working draft, 2026-09-17. Method proposal with completed three-seed development
-experiments, including a matched Transformer/EqMotion study. None supports a
-new deployment or the proposed joint-intervention contribution claim.
+experiments, including a matched Transformer/EqMotion study and a completed
+baseline-relative output ablation. The latter reduces drift but yields only
+tiny guarded development gains. None supports a new deployment or the proposed
+joint-intervention contribution claim.
 The completed v6 input-conditioning protocol retains the repaired v5 source population.
 The older results below retain their original, conditional observation population.
 
@@ -27,6 +29,9 @@ are respectively -5.74 to -7.69% and -8.47 to -14.12%; all six selections retain
 CV. Numerical input conditioning resolves the observed fit failures, not the
 prediction or easy-preservation problem. Completed actual-count-matched controls
 find no stable joint advantage, and all joint raw50 ADE gains are negative.
+A paired output ablation then changes mean uncontrolled primary gain from
+-0.599% for a CV-initialized residual to +0.062% with an observed-motion bound.
+Easy degradation still fails without selection; guarded gains are below 0.008%.
 Real deferral comparisons, broader independent scenes and confirmatory evaluation
 remain necessary before a positive submission claim.
 
@@ -275,7 +280,47 @@ removing low-motion rows cannot be presented as a successful method. This
 motivates a prospective motion-state/scale hypothesis, not retrospective
 replacement of evaluation or selection rules.
 
-### 4.3 Remaining Mechanism and Confirmation Tests
+### 4.3 Baseline-Relative Output Ablation
+
+The prospective v7 comparison retains v6 data, primary metric, loss, folds,
+seeds, update budget and policy thresholds. Both new arms initialize the last
+output layer to zero and add the network output to the declared causal CV path.
+The bounded arm alone maps each restored residual d to
+A*u*d/sqrt(1+||d||^2), with A=max(observed ego path length, maximum requested
+CV displacement) and u=requested time / maximum requested time. These quantities
+use only the observed past and requested forecast. Neighbor distances and target
+easy labels do not set the radius. Numerical rescaling evaluates the same map
+without overflow; no new trainable parameter is introduced.
+
+Both arms complete three seeds, four forecasters per seed at 10,000 updates,
+and the unchanged OOF ridge/neural cost heads. Mean primary gain is -0.5986%
+for the unbounded CV-skip and +0.06151% for the bounded arm. The latter has
+positive gain in every seed but easy degradation of 62.58%, 398.57% and 308.07%
+without selection. Under the unchanged development rule, selected gains are
+only +0.002495%, +0.007710% and +0.000519%, with easy degradation 1.189%, 1.883%
+and 0.251%. These policies are selected and assessed on development data, differ
+by seed, and do not constitute an independently confirmed policy.
+
+The bound gives zero extra error on the existing numerical-floor slice, while
+missing starts after a stationary past by construction. A fit-only per-step
+ball oracle quantifies this capacity tradeoff: 365 zero-budget rows contain
+73.253% of pooled fit CV error; optimistic fit-window headroom is 4.089%.
+This label-aware diagnostic is not a learned or test result. Bounded predictor/CV
+oracle headroom on development is at most 0.337%, so further gating of these
+unchanged candidates cannot produce a 5% primary gain. The
+[complete results](8to12_residual_pair_v7/conclusions.md) retain native-coordinate
+causal comparisons and all negative controls. A bound on output magnitude is
+not a bound on realized excess loss, a novel safety theorem or a physical claim.
+
+The fixed v7 raw50/count-matched supplement is also complete. CV-skip has
+identical matched identities throughout. The bounded arm has nine zero
+comparisons and three small ADE increases favoring independent selection;
+196 repeated agent-query switch records differ. Uncontrolled bounded raw50
+ADE gains are +0.04217%, -0.04695% and +0.00559%. Full primary error exports and
+ordinary decisions replay exactly. Thus the output repair does not establish
+the proposed joint mechanism, and the supplement does not select another model.
+
+### 4.4 Remaining Mechanism and Confirmation Tests
 
 A [source clock and matrix audit](annotation_clock_geometry/audit.md) finds that
 ETH's six-frame annotation spacing conflicts with a naive combination of the

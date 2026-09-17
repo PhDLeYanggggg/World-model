@@ -10,13 +10,20 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am now testing a specific repair in a new, frozen v7 study: learn corrections
-from an exact CV initialization, with and without a past-motion amplitude bound.
-Both versions retain the v6 data, primary metric, loss, budgets and policy rules.
-The [decision](outputs/publication_readiness_2026_09/residual_parameterization_v7_decision.md)
-also states the cost of that bias: a stationary observed agent may start moving,
-and those misses remain in evaluation. Two real 100-step pilots passed; the
-complete three-seed paired training is running. No v7 accuracy gain is claimed.
+My latest [paired study](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/conclusions.md)
+is complete: learn corrections from an exact CV initialization, with and without
+a past-motion amplitude bound. Both versions retain the v6 data, primary metric,
+loss, budgets and policy rules. All three seeds, 24 forecasting fits, six neural
+cost heads and six ridge controls finished; the training was not shortened.
+
+The repair changes mean uncontrolled normalized-ADE gain from -0.599% for the
+CV-skip to +0.062% for the bounded version. That small positive average comes
+with unacceptable easy-case damage without selection. The guarded development
+gains are only +0.002495%, +0.007710% and +0.000519%. I treat this as evidence
+of reduced drift, not a new deployable model or a submission-quality advantage.
+The [completed raw50 and same-count controls](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/supplement_conclusions.md)
+show no extra benefit from joint routing: all CV-skip differences are zero,
+and the bounded arm's three nonzero ADE differences favor independent routing.
 
 A [fit-only geometric check](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/fit_bound_headroom.md)
 quantifies this constraint before interpreting its results. Exactly stationary
@@ -25,7 +32,7 @@ bound cannot correct those starts; even a label-aware per-step oracle has only
 4.09% average fit-window headroom. That is an optimistic capacity diagnostic,
 not a learned result, a development estimate, or a reason to drop difficult rows.
 
-The complete three-seed comparison now covers both a local Transformer and the
+The preceding complete three-seed comparison covers both a local Transformer and the
 EqMotion author core, adapted to one fixed prediction head. It includes 24
 10,000-update forecasting fits, six 1,000-update neural cost heads and six ridge
 controls. Both models use the same observed support, loss and sample/update

@@ -4,8 +4,17 @@
 
 ## 当前 v7：固定数据下的残差参数化对照
 
+两版本的三种子完整训练、主评价与 raw50/同人数补充均已结束。主 runner 和补充
+进程均正常退出，不需要重新启动。轻量结论在 `8to12_residual_pair_v7/conclusions.md`
+及 `supplement_conclusions.md`。幅度约束减少漂移，但安全选择后改善极小，联合
+选择仍无额外收益，不能写成新部署或投稿达标。24 项最终报告/回放检查通过。
+
+以下命令保留作同源码版本的复现入口；已有完整任务会按身份核验复用。数据缓存、
+权重、完整逐行导出均留本地。核验完成应看 completion receipt 与报告 hash，
+不能仅凭最后一条周期 heartbeat 判定任务仍运行。
+
 新协议仅比较 CV 初始化残差与相同残差的过去运动量幅度约束，保留 v6 数据和评价。
-两种结构均完成真实 100 步 CPU4 试跑，现从同一检查点继续完整三种子预算：
+两种结构先完成真实 100 步 CPU4 试跑，再从同一检查点继续完成三种子预算：
 
 ```bash
 .venv-pytorch/bin/python scripts/run_m3w_residual_parameterization_pair.py
@@ -22,6 +31,16 @@ v7 下方的 v6 复现命令应使用原源码快照 `052bcc64`，不能在新�
 hash 强行加载。新 v7 协议摘要为 `f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a`。
 新补充评价要显式传入 `--decision outputs/publication_readiness_2026_09/forecast_supplement_v7_decision.md`，
 不能误用默认的 v6 决定。所有新输出仍为 development-only，幅度限制不等于安全保证。
+
+完整补充入口示例（第二版本将 `residual_skip` 换成 `motion_bounded`）：
+
+```bash
+.venv-pytorch/bin/python scripts/evaluate_m3w_forecast_supplement.py --protocol configs/m3w_8to12_residual_parameterization_v7.json --study-dir data/stage_cvpr2027_experiments/8to12_residual_skip_v7 --output-dir data/stage_cvpr2027_experiments/8to12_residual_skip_v7_supplement --device cpu --threads 4 --decision outputs/publication_readiness_2026_09/forecast_supplement_v7_decision.md --resume
+.venv-pytorch/bin/python scripts/summarize_m3w_forecast_supplement.py --cache-dir data/stage_cvpr2027_experiments/8to12_residual_skip_v7_supplement --report-dir outputs/publication_readiness_2026_09/8to12_residual_skip_v7_supplement
+.venv-pytorch/bin/python scripts/audit_m3w_supplement_replay.py --study-dir data/stage_cvpr2027_experiments/8to12_residual_skip_v7 --supplement-dir data/stage_cvpr2027_experiments/8to12_residual_skip_v7_supplement --report-dir outputs/publication_readiness_2026_09/8to12_residual_skip_v7_supplement
+```
+
+两版本已完成逐行误差/决策回放核验，不要把 completed resume 记作一次 fresh 训练。
 
 ## 当前 v6：输入数值范围修复后的完整匹配训练
 
