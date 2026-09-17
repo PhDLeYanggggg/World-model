@@ -1,5 +1,18 @@
 # Real-Experiment Continuation Handoff
 
+## Objective-Alignment Study Registered, Pilot Complete (2026-09-17)
+
+Previous turn is progress:36realvisualfits/diagnostics/negativeevidence, pushed
+through28cb70f1. Newhypothesis isolates logloss and row-vs-scene sampling mismatch.
+Samegeometrynetwork, same11,966fitrows, fivearms,3seeds,3folds,4,000updates each.
+Decision`objective_alignment_decision.md`, config`configs/m3w_objective_alignment.json`.
+Registration SHA277c1296ed4ed1919687721f13a28a17a36839c7f202df75577bfcb577b95610.
+12focusedtestspass; real100step pilot0.121s saved/noheldeval. Geometry-only fast
+forward exactly matches oldnetwork; constanttrainingdimensionszeroed inallarms.
+Arm64venv/Torch2.12.0CPU4/interop1/workers0verified. No role/primary change.
+Fullrun ready to resume pilot under`data/stage_cvpr2027_experiments/objective_alignment`.
+Do not claim results until45fitscomplete. Goalactive; no deployment/Stage5C/SMC.
+
 ## Full Fit-Cohort Offline Visual Experiment Complete, Negative (2026-09-17)
 
 Observation decision resolved by user delegation: standard offline annotations,

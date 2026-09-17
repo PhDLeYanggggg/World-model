@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am testing a [training-objective explanation](outputs/publication_readiness_2026_09/objective_alignment_decision.md)
+for the latest negative result: the optimizer averages log errors over windows,
+while evaluation averages untransformed errors equally over physical scenes.
+The new registered comparison holds the geometry network and inputs fixed and
+separates scene sampling, mean-ADE training and a baseline-relative harm penalty.
+The real training pilot and recovery tests pass; the 45-model results are pending.
+This does not change the approved task, primary metric or sealed evaluation roles.
+
 I have completed a [broader matched visual forecasting study](outputs/publication_readiness_2026_09/offline_visual_forecast/conclusions.md)
 on all 11,966 approved fit windows: 36 neural fits, three seeds, three physical
 scenes and 72,000 optimizer updates. Geometry, coverage masks, current RGB and

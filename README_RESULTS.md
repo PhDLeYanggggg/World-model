@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Objective-Alignment Comparison Registered (2026-09-17)
+
+Five fixed training arms, three seeds, three physical fit-scene folds;4,000
+updates each. Same geometry predictor and all11,966fit rows, unchanged primary.
+Train-only constant-feature support treatment is common to every arm. No test
+or development threshold/checkpoint selection.100-update real pilot completed
+in0.12s and saved full optimizer/RNG state without held evaluation.12focused
+tests pass, including exact geometry-forward equivalence and resume. Results
+pending; no deployment claim. [Decision](outputs/publication_readiness_2026_09/objective_alignment_decision.md).
+
 ## Full Fit-Cohort Visual Experiment Completed, Negative (2026-09-17)
 
 `fresh_run`: 36 real neural fits, 72,000 optimizer updates, 32.48 minutes summed
