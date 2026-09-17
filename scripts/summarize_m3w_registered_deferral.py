@@ -129,7 +129,7 @@ def main():
                'independent_confirmation': False, 'eligible_for_selection': False, 'deployment_approved': False}
     (out / 'metrics.json').write_text(json.dumps(metrics, indent=2, allow_nan=False) + '\n')
     with (out / 'metrics.csv').open('w') as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
         writer.writeheader()
         writer.writerows(rows)
     lines = ['# v7 Cost-Sensitive Deferral: Complete Registered Control', '',
