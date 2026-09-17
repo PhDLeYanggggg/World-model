@@ -354,6 +354,29 @@ non-collapse alone are not evidence for useful world dynamics.
 
 ### 4.5 Remaining Mechanism and Confirmation Tests
 
+A further [fit-only static-scene experiment](stationary_scene_probe_v2/conclusions.md)
+adds supplied obstacle geometry, but not image pixels or original destination/group
+labels. We retain the 365 stationary windows and physical folds. Each version fits
+36 start classifiers and 36 multi-output trajectory regressors. A versioned repair
+removes a shared-corner ambiguity error affecting 35 Hotel reference frames; all
+144 saved models across both versions replay their predictions. The original
+version's two small positive guarded results disappear after the correction.
+
+Corrected static-map trees improve average Brier versus the training-only prior
+by 0.00617 in ETH (AUC0.8048) and 0.02894 in Hotel (AUC0.5387). However, all36
+corrected regressors worsen stationary-subset ADE versus CV, and the fixed0.9
+probability gate has no positive trajectory result. Start probability and useful
+direction/displacement are distinct tasks. All easy rows in this subset have
+zero CV error, making percentage degradation undefined; absolute excess remains
+visible. All rows share the same past-scale floor, so these negative percentage
+gains also hold in native coordinates. They are not explained away by units.
+
+The maps are unverified static proxies. Reference images contain people and have
+unknown capture times, and no image/annotation synchronization was established.
+More reliable scene semantics, directional evidence and independent site support
+remain gaps. This diagnostic does not establish a scene-aware dynamics contribution
+or change the primary benchmark, policies, calibration or confirmation status.
+
 A [source clock and matrix audit](annotation_clock_geometry/audit.md) finds that
 ETH's six-frame annotation spacing conflicts with a naive combination of the
 25-fps video header and the documented 0.4-second annotation interval. Students03

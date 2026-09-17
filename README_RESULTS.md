@@ -1,5 +1,31 @@
 # M3W Results Ledger
 
+## Static-Scene Start and Trajectory Probes Complete (2026-09-17)
+
+`fresh_run`: 72 initial and 72 geometry-repaired classifier/regressor fits;
+all144 saved models replay predictions within1e-12. These are small fit-only
+models, not new Transformer training or a final evaluation. Parent eight/twelve
+steps, primary metric, native labels, fit folds and development rules are unchanged.
+
+The static XML provides limited start-probability signal: corrected scene-tree
+AUC0.8048/Brier lift+0.00617 on ETH, AUC0.5387/Brier lift+0.02894 on Hotel (seed
+means; absolute Brier differences). All36 unrestricted regressors are worse than
+CV, including native-coordinate error. The fixed0.9 gate has no positive corrected
+trajectory result. Easy CV error is exactly zero on this subset, so easy ratios
+are undefined; absolute harm is reported and never silently counted as a pass.
+
+An initial nearest-surface bug falsely masked35Hotel reference frames when two
+segments shared one closest corner. Versioned repair removes those false masks,
+while preserving original sources/checkpoints/metrics. The original two tiny
+guarded positives disappear. Reference images, destinations/groups and video
+frames were not input; the XML is an unverified static proxy, not physical truth.
+
+14focused tests pass. No deployment, independent confirmation, new primary
+protocol or broader-suite pass is claimed. A separate prospective native-ADE/FDE
+primary protocol has been proposed to the user, not silently substituted.
+[Full conclusions](outputs/publication_readiness_2026_09/stationary_scene_probe_v2/conclusions.md),
+[all corrected settings and harm](outputs/publication_readiness_2026_09/stationary_scene_probe_v2/results.md).
+
 ## Stationary-Start Context Study Complete (2026-09-17)
 
 `fresh_run`: canonical source replay, 48 fixed classifiers and saved-model replay.

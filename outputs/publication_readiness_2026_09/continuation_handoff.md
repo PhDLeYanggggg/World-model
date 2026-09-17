@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Static-Scene Probe Complete: No Live Job (2026-09-17)
+
+Latest: `stationary_scene_probe_v2/conclusions.md`. Initial72 plus repaired72
+fit-only classifier/regressor fits, no new forecast network/deployment or final
+labels. 365same rows/31agents/45runs, frozen parent eight/twelve-step task. Static
+obstacle proxy only; image pixels, destinations/groups and videos excluded.
+
+Initial corner logic falsely marked35Hotel frames undefined. Source snapshots
+and original registration/metrics remain preserved. New v2 fixes identical shared
+corners; zero undefined frames. Corrected scene-tree AUC0.8048ETH/0.5387Hotel,
+mean Brier lifts+0.00617/+0.02894. All36 corrected trajectory regressors worsen
+CV, and no fixed0.9gated regressor improves. Two tiny original gated positives
+disappear after fixing the bug. Easy CV error zero: ratios undefined, retain
+absolute harm. Native-coordinate signs agree; changing units cannot fix this.
+
+Jobs26005 and39330 exited0; saved-model replay32278 exited0. All144models match
+predictions within1e-12 (max2.22e-16).14focused tests pass. No live job from this
+turn. Data/checkpoints local under `data/stage_cvpr2027_experiments/stationary_scene_probe*`.
+Resume74834 also exited0:36cached_verified pairs, zero new fits, separate local
+resume_check report.24registration bindings checked unchanged. Console72model
+count is inventory, not new training; no cached result is relabeled fresh.
+Do not overwrite original metrics bound by the v2registration on resume; use
+separate report dirs. Code/model/cache identity checks must remain intact.
+
+Next scientific choice: an async question asks whether to create a NEW prospective
+native-per-dataset ADE/FDE-primary protocol, with past-normalized ADE supplementary.
+It has NOT been approved/run as of this handoff; preserve current primary results
+and historical exposure. This is motivated by benchmark interpretability, not a
+license to relabel a failed study. If answered, follow the actual latest answer.
+Old scenes cannot become independent tests. Continue independent data/context
+validity work while needed approval is pending, without requerying unchanged
+CREATE access. Current signal does not justify a larger stationary-start network.
+
+Core goal remains active, not achieved. Scene-body orientation, temporal/source
+validity, predictive candidate quality, independent sites and joint-mechanism lift
+remain gaps. No Stage5C/SMC, metric/seconds or submission-readiness claim.
+
+Below are historical snapshots, superseded by this section.
+
 ## Stationary-Start Diagnostic Complete: No Live Job (2026-09-17)
 
 Latest work is `stationary_start_probe/conclusions.md`. Only frozen fit data

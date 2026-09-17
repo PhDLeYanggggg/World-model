@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have followed the stationary-start study with a
+[static-scene and direction experiment](outputs/publication_readiness_2026_09/stationary_scene_probe_v2/conclusions.md).
+Supplied obstacle context helps some start-probability scores, but it does not
+recover useful trajectories: all 36 corrected trajectory regressors remain worse
+than CV, and a fixed confidence gate gives zero or negative gain. I also found
+and repaired a shared-corner geometry bug; the two small positive results from
+the original version disappear after that repair. Both versions are retained.
+These are small fit-only classifier/regressor experiments, not a new neural
+world model. The missing evidence is useful motion prediction, not just start AUC.
+
 I have now traced the stationary-start failure back to the original annotations
 and completed a [fit-only context study](outputs/publication_readiness_2026_09/stationary_start_probe/conclusions.md).
 The 365 stationary windows are just 31 agents and 45 runs at two sites, not

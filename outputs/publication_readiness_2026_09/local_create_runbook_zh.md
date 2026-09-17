@@ -2,6 +2,26 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前：静态场景与起步方向实验已完成
+
+原始和角点修正版各72个分类/轨迹回归模型均已完成，不是新Transformer训练。
+局部起步概率改善没有变成轨迹改善；修正后36个轨迹回归器及固定保护门全部没有
+正收益。已有模型不升级。结果见 `stationary_scene_probe_v2/conclusions.md`。
+14项定向检查通过；144个保存模型回放一致。当前无本轮活动任务。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_stationary_scene_probe.py --registration configs/m3w_stationary_scene_probe_v2.json --source data/stage_cvpr2027_experiments/stationary_start_probe_v2 --output data/stage_cvpr2027_experiments/stationary_scene_probe_v2 --report-dir data/stage_cvpr2027_experiments/stationary_scene_probe_v2/resume_reports --resume
+.venv-pytorch/bin/python scripts/summarize_m3w_stationary_scene_probe.py --original data/stage_cvpr2027_experiments/stationary_scene_probe --repaired data/stage_cvpr2027_experiments/stationary_scene_probe_v2 --report-dir outputs/publication_readiness_2026_09/stationary_scene_probe_v2
+.venv-pytorch/bin/python -m pytest tests/test_m3w_stationary_scene_context.py tests/test_m3w_stationary_start_probe.py -q
+```
+
+resume使用单独报告目录，保留原始fresh训练记录；首次运行去掉resume并指定新的
+输出目录。旧版本代码留在其本地 `source_snapshot`，不能修改旧hash来加载新版。
+两版特征/标签的native来源和全部365行保持一致；仅重复角点的参考方向判定修复。
+14项测试覆盖未来字段拒绝、几何变换、角点处理、零基线easy伤害以及实验表完整性。
+参考图包含人且时间不明，不作为输入；静态XML只作为未经验证的障碍代理使用。
+新主指标协议仍待用户决定，不能把这里的分类分数写成正式预测成功。
+
 ## 当前：静止历史与邻居上下文检验已完成
 
 这一轮只用冻结的 fit 数据，完成原始文件核对、24 个有序特征分类器、24 个低维
