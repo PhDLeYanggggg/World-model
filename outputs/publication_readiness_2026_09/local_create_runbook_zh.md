@@ -2,7 +2,37 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：部分图像读取已实现并全量核验，正式训练待观测定义
+## 当前：完整 fit 数据图像对照已训练，结果为负
+
+用户已授权选择可行路线，本轮采用标准离线标注观测。保留插值来源限制，
+不再将观测定义作为阻塞；不声称严格实时传感器因果性。原8观察/12预测、
+past-normalized ADE和数据角色不变。11,966个完整fit窗口全部保留，
+Zara03没有视频的180个窗口带缺图mask，不删行。3个物理场景、3个种子、
+4种输入对照，每个2,000次更新；不根据留出场景分数选检查点或阈值。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_offline_visual_forecast.py --registration configs/m3w_offline_visual_forecast.json
+.venv-pytorch/bin/python scripts/analyze_m3w_offline_visual_forecast.py --registration configs/m3w_offline_visual_forecast.json
+.venv-pytorch/bin/python scripts/run_m3w_offline_visual_forecast.py --registration configs/m3w_offline_visual_forecast.json --replay
+.venv-pytorch/bin/python scripts/audit_m3w_offline_visual_evidence.py --registration configs/m3w_offline_visual_forecast.json
+.venv-pytorch/bin/python scripts/diagnose_m3w_offline_visual_fit.py --registration configs/m3w_offline_visual_forecast.json
+.venv-pytorch/bin/python scripts/diagnose_m3w_offline_visual_support.py --registration configs/m3w_offline_visual_support_diagnostic.json
+```
+
+第一条自动从完整检查点恢复未完成模型，已完成模型只验hash；不要在原进程
+仍存活时重复启动。检查点保存优化器、抽样和Torch随机状态。主进程PID92582
+及全部诊断进程均已正常退出，没有需等待的任务。36模型累计72,000更新、
+32.48分钟记录拟合时间。36检查点预测逐位重放一致；完成后再次运行第一条，
+0次新增更新，36权重和主报告字节不变。不会开启development/calibration/confirmation。
+私有图像、输入、逐行预测和权重保留于被忽略的offline_visual_forecast数据目录。
+本机CPU4/interop1/workers0运行；100步真实训练4.87秒，非仅import检查。
+
+四组相对CV分别-0.58/-0.57/-0.66/-0.74%，没有升级模型。最后两条是已冻结
+模型的训练集拟合与恒定特征修复诊断，不是新的独立测试或模型选择。
+107项针对性测试加2项新增支持范围测试通过；未重跑无关旧全套测试。
+完整结论见[结果解释](offline_visual_forecast/conclusions.md)。
+
+## 历史：部分图像读取已实现并全量核验，训练当时待观测定义
 
 新增masked reader保留固定裁剪位置和逐像素覆盖率，没有把缺失像素生成出来。
 Zara共14,561行图像数据对应12,098个过去8步窗口，1,935个含边缘部分裁剪，均保留。

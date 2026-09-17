@@ -1,16 +1,37 @@
 # M3W Results Ledger
 
-## Full Fit-Cohort Visual Experiment Running (2026-09-17)
+## Full Fit-Cohort Visual Experiment Completed, Negative (2026-09-17)
 
-New explicit offline-annotation decision, preserving the approved 8-to-12 task,
-past-normalized ADE and physical-scene folds. All 11,966 fit rows retained;
-Zara03 has an explicit missing-image mask. Four arms x three seeds x three fit
-scenes, 2,000 updates per fit, final checkpoint only. No threshold search or new
-development/calibration/confirmation access. Inputs total157,241,442 bytes.
-Real 100-update past-RGB pilot:4.87s; resumed within the same full experiment.
-13 focused tests passed, including exact optimizer/RNG recovery and masked-input
-invariance. Full experiment is running, not completed or claimed positive.
-See [decision](outputs/publication_readiness_2026_09/offline_visual_forecast_decision.md).
+`fresh_run`: 36 real neural fits, 72,000 optimizer updates, 32.48 minutes summed
+fitting time. All 11,966 approved fit rows retained; three physical-scene folds,
+three seeds and four matched arms. Standard offline annotated observations,
+not strict sensor-as-of; original 8-to-12 task and primary metric unchanged.
+
+| Arm | Equal-scene/seed primary ADE gain vs CV (%) | Perfect CV/candidate chooser, diagnostic (%) |
+| --- | ---: | ---: |
+| Geometry | -0.5767 | 0.3083 |
+| Coverage masks | -0.5692 | 0.3086 |
+| Current RGB | -0.6627 | 0.2069 |
+| Past RGB | -0.7401 | 0.1887 |
+
+CV is also training-selected strongest in every fold/seed. All 36 easy subsets
+degrade: 170.84--6,449.88% relative, 0.02270--0.16877 absolute normalized ADE harm.
+Small easy denominators do not excuse that harm. Current/past RGB vs geometry
+gains -0.0855/-0.1625%; exploratory 2,000 scene-bootstrap intervals include zero.
+Only three historically used fit sites; no independent safety certificate.
+
+All models improve training log-loss (3.87--14.91%) but fail cross-scene prediction.
+31 stationary-history source IDs account for 89.37% of equal-scene CV error.
+Frozen constant-feature repair slightly reduces average damage, never beats CV.
+The retrospective binary oracle is not a learned result; tiny headroom limits
+what further gating of these fixed predictions can recover.
+
+`cached_verified`: 36 exact checkpoint prediction replays; completed-run resume
+changes none of 36 weights or the main report. All 11,966 geometry vectors and
+image/history joins replay. 107 focused tests plus two new support tests pass;
+unrelated full legacy suite not rerun. No new development/calibration/confirmation
+access, deployment, metric/seconds claim, Stage5C or SMC. No live experiment
+process remains. [Full evidence](outputs/publication_readiness_2026_09/offline_visual_forecast/conclusions.md).
 
 ## Masked Past-Image Store Completed (2026-09-17)
 

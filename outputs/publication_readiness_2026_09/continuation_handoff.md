@@ -1,23 +1,40 @@
 # Real-Experiment Continuation Handoff
 
-## Full Fit-Cohort Offline Visual Experiment Running (2026-09-17)
+## Full Fit-Cohort Offline Visual Experiment Complete, Negative (2026-09-17)
 
 Observation decision resolved by user delegation: standard offline annotations,
 not strict sensor-as-of. Existing bound protocols/reports remain immutable.
 Primary still past-normalized 8-to-12 ADE. New decision/registration:
 `offline_visual_forecast_decision.md`, `configs/m3w_offline_visual_forecast.json`.
-Previous turn was verified input-repair progress; this turn builds full inputs
-and launches actual broader neural training, not another audit-only loop.
+Previous turn was verified input-repair progress; this turn completed full inputs,
+36 actual neural fits, paired analysis and failure diagnosis, not an audit-only loop.
 
 11,966 complete fit windows, 3 physical-scene folds, 3 seeds, 4 arms including
 mask-only control. Zara videos grouped; Zara03 kept with zero imagery. Inputs
-157,241,442 bytes. CPU4/interop1/workers0. 100-update past-RGB pilot4.87s, exact
-recovery regression test passed. Full process PID92582, exec session98981,
-checkpoint+heartbeat under `data/stage_cvpr2027_experiments/offline_visual_forecast`.
-Do not start a duplicate; check that handle first. Fixed2,000 updates/final fit,
-no held-fold checkpoint/threshold selection. Final report still pending.
-After completion run registered paired analysis and exact checkpoint replay.
+157,241,442 bytes. CPU4/interop1/workers0. Fixed2,000 updates/final fit,
+72,000 total,32.48min summed fit. Training PID92582/session98981 exited0;
+all diagnostic/replay sessions also exited. No live process from this experiment.
+Checkpoint+heartbeat under `data/stage_cvpr2027_experiments/offline_visual_forecast`.
+
+Main gains vsCV: geometry-.5767%,mask-.5692%,currentRGB-.6627%,pastRGB-.7401%.
+All36held/easyfailures; CV was also training-selected strongest everyfold.
+36checkpoint predictions exact. Completed resume changes none of36weights/report.
+107focusedtests+2supporttests pass; not full legacy suite. 2,000pairedscene
+resamples with only3historicalfit sites are exploratory, not independentCI proof.
 Students development/calibration/confirmation closed. No submission/deployment claim.
+
+Completed fixed-model support repair does not turn any result positive.
+Full training loss improves3.87--14.91%, but heldfitnegative.31stationarysourceIDs
+stillaccount89.37%of equal-sceneCVprimaryerror. Perfect CV/candidate binary
+oracle gain is only.1887--.3086%overall, so threshold tuning cannot rescue these
+fixed predictions into a substantial result. Full `offline_visual_forecast/conclusions.md`.
+
+Next: improve directional prediction support, not another fallback sweep. Register
+a compact observed-motion representation/objective repair with fixed CV/geometry
+controls; exclude unsupported metadata by construction. Do not change parent
+primary or open development/calibration/confirmation to choose it. Broader
+independent start/stop scenes remain necessary. Core joint-intervention contribution
+still unproven; historical Stage26/37 results exploratory, not certified deployment.
 
 The pending-observation wording below is historical and superseded by this entry.
 

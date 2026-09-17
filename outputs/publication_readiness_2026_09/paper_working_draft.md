@@ -162,6 +162,40 @@ that a learned intervention improves the realized trajectory.
 
 ## 4. Experiments To Complete
 
+### Registered Offline Visual Information Study
+
+The current visual comparison retains all 11,966 approved fit windows, rather
+than restricting learning to the previous stationary subset. It uses three
+physical-scene folds (ETH, Hotel, grouped Zara), three seeds and four matched
+arms: geometry, spatial coverage masks, one current RGB crop, and eight past
+RGB crops. Missing Zara03 imagery remains explicit. The targets and primary
+past-normalized ADE are unchanged. Each final-update model is evaluated on a
+held fit scene after 2,000 fixed updates; no separate development, calibration
+or confirmation data are opened. All 36 fits completed (72,000 updates).
+Equal-scene/seed gains against training-selected CV are -0.5767%, -0.5692%,
+-0.6627% and -0.7401%, respectively. Every held-scene easy subset degrades.
+All final checkpoint predictions replay exactly; no model is promoted.
+
+Current/past RGB versus geometry yields -0.0855%/-0.1625%, with exploratory
+2,000 scene-bootstrap intervals [-0.2608%, +1.0561%]/[-0.2657%, +0.4194%].
+Only three historically used physical sites and shared training folds limit
+these intervals; they are not independent confirmation. Full training loss
+improves, but held-scene forecasting fails. A fixed-model constant-feature
+diagnostic reduces some damage without producing gain. The 31 stationary-history
+source IDs still account for 89.37% of the equal-scene CV error, while a perfect
+binary CV/neural chooser has only 0.19--0.31% overall headroom. This is evidence
+to improve the predictor before further gating, not a claim of impossibility
+or support for the proposed joint-intervention method.
+See [complete results and caveats](offline_visual_forecast/conclusions.md).
+
+This study adopts offline annotated observations, not strict sensor-as-of
+causality. Retrospective interpolation and unresolved physical video timing
+are disclosed. Its purpose is to test information value, not claim that a CNN
+or a baseline-plus-network architecture is novel. Existing work already examines
+single-trajectory baselines, static errors and hybrid state-change recognition;
+the [positioning note](offline_visual_forecast/literature_positioning.md) separates
+that prior art from the unestablished joint-intervention contribution.
+
 ### 4.1 Completed Development Evidence
 
 The frozen v1 protocol fits ETH, Hotel and Zara01/02/03, with all Zara recordings

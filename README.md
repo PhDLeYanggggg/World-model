@@ -10,15 +10,25 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am now running a [broader matched visual forecasting study](outputs/publication_readiness_2026_09/offline_visual_forecast_decision.md)
-on all 11,966 approved fit windows. I use the standard offline annotated-history
-definition, with interpolation provenance disclosed; I do not claim strict
-real-time sensor causality. The comparison includes geometry, coverage-mask-only,
-current RGB and past RGB across three seeds and three physical-scene folds.
-Zara recordings stay in one scene group, and missing images do not remove rows.
-The primary eight-to-twelve task and past-normalized ADE are unchanged.
-Inputs and a real checkpointed training pilot are complete; forecasting results
-are still pending. The separate development and confirmation data stay closed.
+I have completed a [broader matched visual forecasting study](outputs/publication_readiness_2026_09/offline_visual_forecast/conclusions.md)
+on all 11,966 approved fit windows: 36 neural fits, three seeds, three physical
+scenes and 72,000 optimizer updates. Geometry, coverage masks, current RGB and
+past RGB all remain below the training-selected CV baseline, by 0.58%, 0.57%,
+0.66% and 0.74% respectively. Training loss improves, but cross-scene prediction
+does not. All checkpoints replay exactly; no new model is deployed.
+
+I use standard offline annotated histories with interpolation provenance
+disclosed, not a strict real-time sensor-causality claim. Zara recordings stay
+in one scene group, missing images do not remove rows, and the approved
+eight-to-twelve task and past-normalized ADE are unchanged. Separate development,
+calibration and confirmation roles remain unused in this study.
+
+The new diagnosis narrows the next step: 31 stationary-history source IDs still
+account for 89.37% of the equal-scene baseline error. Even a perfect retrospective
+CV/neural chooser captures only 0.19--0.31% with these fixed predictions. I need
+better supported motion predictions before more fallback tuning, not a larger
+version of the same weak candidate. This is fit-only negative evidence, not proof
+that vision cannot help. [Results and limitations](outputs/publication_readiness_2026_09/offline_visual_forecast/conclusions.md).
 
 I have now [built masked past-image inputs](outputs/publication_readiness_2026_09/zara_masked_images/conclusions.md)
 after repairing the Zara video-coordinate mapping. The reader retains12,098
