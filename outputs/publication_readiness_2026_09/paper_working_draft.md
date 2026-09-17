@@ -162,6 +162,29 @@ that a learned intervention improves the realized trajectory.
 
 ## 4. Experiments To Complete
 
+### Matched Training-Objective Study
+
+A registered fit-only follow-up holds the geometry predictor and input cohort
+fixed while separating row/scene sampling and log1p/mean-ADE losses. A fifth arm
+adds a fixed unit-weight positive-error-increase penalty relative to CV.
+All45models complete4,000updates each across three seeds and three physical-site
+folds. Constant training dimensions are removed from extrapolation in every arm.
+The primary metric and sealed roles are unchanged.
+
+Equal-scene/seed gains versus CV are-1.03% (row/log),-165.67% (row/ADE),-1.47%
+(scene/log),-234.53% (scene/ADE), and-237.24% (scene/ADE+harm). None passes easy
+preservation. In-sample primary gains reach46.40%, but transfer fails. On Hotel,
+stationary-history rows account for about99.85--99.95%of the ADE-based arms'
+positive error increase. All per-recording native-coordinate seed-mean contrasts
+also remain negative; reporting a different unit would not establish success.
+
+All45checkpoints replay exactly. Paired2,000scene-resample intervals are
+exploratory with only three exposed fit sites, not confirmation or formal risk
+coverage. The result falsifies the tested loss-only repair, not every risk-aware
+method. It motivates stronger observed-state/directional support before another
+selector. The oracle remains a label-only diagnostic, not a deployable result.
+[Complete controlled comparison and limitations](objective_alignment/conclusions.md).
+
 ### Registered Offline Visual Information Study
 
 The current visual comparison retains all 11,966 approved fit windows, rather

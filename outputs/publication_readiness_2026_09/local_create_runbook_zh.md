@@ -2,7 +2,28 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：完整 fit 数据图像对照已训练，结果为负
+## 当前：训练目标对齐实验完成，未修复跨场景预测
+
+同一几何网络、11,966窗口、三种子、三个物理场景；五组固定设置均完成4,000更新，
+累计180,000更新，记录拟合时间174.57秒。速度来自跳过纯轨迹分支无用RGB读取，
+没有缩减数据或更新数。45模型均不如CV，easy gate均失败，不部署。
+训练主要指标改善最高46.40%，却不能迁移；不是仅import或空训练。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_objective_alignment.py --registration configs/m3w_objective_alignment.json
+.venv-pytorch/bin/python scripts/run_m3w_objective_alignment.py --registration configs/m3w_objective_alignment.json --replay
+.venv-pytorch/bin/python scripts/diagnose_m3w_objective_alignment.py --registration configs/m3w_objective_alignment.json
+.venv-pytorch/bin/python scripts/plot_m3w_objective_alignment.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_objective_alignment.py tests/test_m3w_offline_visual_forecast.py -q
+```
+
+首条自动恢复未完成模型；完整运行已验证只复用缓存，45权重和报告字节不变。
+45模型重放逐位一致，12针对性测试通过。全量历史测试未重跑。所有本轮进程已退出。
+配置与源代码绑定，不直接修改后继续旧检查点。诊断使用未来标签只做误差分解，
+不输入模型、不调阈值。三场景bootstrap不是独立测试证据。
+完整[结果与边界](objective_alignment/conclusions.md)。
+
+## 历史：完整 fit 数据图像对照已训练，结果为负
 
 用户已授权选择可行路线，本轮采用标准离线标注观测。保留插值来源限制，
 不再将观测定义作为阻塞；不声称严格实时传感器因果性。原8观察/12预测、

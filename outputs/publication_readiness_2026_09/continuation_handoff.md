@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Objective-Alignment Study Registered, Pilot Complete (2026-09-17)
+## Objective-Alignment Study Complete, Loss-Only Repair Failed (2026-09-17)
 
 Previous turn is progress:36realvisualfits/diagnostics/negativeevidence, pushed
 through28cb70f1. Newhypothesis isolates logloss and row-vs-scene sampling mismatch.
@@ -10,8 +10,26 @@ Registration SHA277c1296ed4ed1919687721f13a28a17a36839c7f202df75577bfcb577b95610
 12focusedtestspass; real100step pilot0.121s saved/noheldeval. Geometry-only fast
 forward exactly matches oldnetwork; constanttrainingdimensionszeroed inallarms.
 Arm64venv/Torch2.12.0CPU4/interop1/workers0verified. No role/primary change.
-Fullrun ready to resume pilot under`data/stage_cvpr2027_experiments/objective_alignment`.
-Do not claim results until45fitscomplete. Goalactive; no deployment/Stage5C/SMC.
+Full45fitscomplete,180,000updates,174.57srecordedfit; trainingPID278/session2022
+exited0. Replay84616,diagnosis70239,resume1280,plot95387 allterminal0; no live
+study process. Do not restart. Completed resume preserves45weights/reportexact;
+45savedpredictionsbitwisereplayed. Reportsunder`objective_alignment/`.
+
+Gains rowlog-1.03,rowADE-165.67,scenelog-1.47,sceneADE-234.53,+harm-237.24%.
+Everyheld/easygatefails. Trainingprimarygains upto46.40%; no fittingfailureclaim.
+Hotel99.85--99.95%ofpositiveharmfromstationaryhistory underADEarms. ETH static
+past/future22/81 vsHotel155/284,descriptiveoverlappinglabelsnotindependentpeople.
+Allnative-coordinatearm/recordingseedmeansalsonegative; no primarymetricchange.
+BinaryCV/candidateoracle.32--1.22%only; cannotrescuewiththresholds. 2kpairedscene
+bootstrapexploratory3sites,notindependentconfirmation. Resultsregisteredcd197bbf;
+currentrunnotmedium/fullM3Wclaim. Goalactive,no deployment/Stage5C/SMC.
+
+Nextmostvaluable: better observed state/direction and independent start/stop
+support. Do not rerun generic contextscale conditioning (already testedv6),
+unboundedloss amplification or gate grids. Review past-image/motion correspondence
+and input representation, then register a falsifiable candidate-quality repair.
+External pretrained features require provenance/exposure review first. Do not
+open sealed roles or change primary because these results are negative.
 
 ## Full Fit-Cohort Offline Visual Experiment Complete, Negative (2026-09-17)
 

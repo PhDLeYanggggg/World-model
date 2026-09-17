@@ -1,14 +1,33 @@
 # M3W Results Ledger
 
-## Objective-Alignment Comparison Registered (2026-09-17)
+## Objective-Alignment Comparison Complete, Failed (2026-09-17)
 
-Five fixed training arms, three seeds, three physical fit-scene folds;4,000
-updates each. Same geometry predictor and all11,966fit rows, unchanged primary.
-Train-only constant-feature support treatment is common to every arm. No test
-or development threshold/checkpoint selection.100-update real pilot completed
-in0.12s and saved full optimizer/RNG state without held evaluation.12focused
-tests pass, including exact geometry-forward equivalence and resume. Results
-pending; no deployment claim. [Decision](outputs/publication_readiness_2026_09/objective_alignment_decision.md).
+`fresh_run`:45matched neural fits,4,000updates each,180,000total,174.57seconds
+summed fitting time. Geometry fast path is exactly equivalent to the old model
+and avoids unused RGB I/O. Same11,966fit windows, three physical-scene folds,
+three seeds, unchanged primary. No held checkpoint/threshold/model selection.
+
+| Training arm | Primary gain vs CV (%) | Training primary gain range (%) |
+| --- | ---: | ---: |
+| Row / log | -1.03 | 0.54 to 1.48 |
+| Row / ADE | -165.67 | 9.07 to 39.52 |
+| Scene / log | -1.47 | 0.75 to 2.11 |
+| Scene / ADE | -234.53 | 28.94 to 46.40 |
+| Scene / ADE + harm | -237.24 | 22.73 to 42.72 |
+
+CV is also training-selected strongest in every fold.0/45positive held results,
+0/45easy gates. Largest failures are Hotel; stationary-history rows account for
+about99.85--99.95%of the ADE-based arms' positive error increase there. Native
+coordinate diagnostics also fail in every arm/recording seed mean; units remain
+unverified and are not pooled across datasets. Binary candidate/CV oracle is
+only0.32--1.22%overall, not a learned result.2,000paired scene resamples are
+exploratory with only3historicalfit sites, not independent confirmation.
+
+`cached_verified`:45exact checkpoint replays; completed resume leaves45weights
+and main report byte-identical.12focusedtests pass; full legacy suite not rerun.
+No deployment, new development/calibration/confirmation access, Stage5C/SMC or
+metric/seconds claim. All processes from this study exited successfully.
+[Full diagnosis](outputs/publication_readiness_2026_09/objective_alignment/conclusions.md).
 
 ## Full Fit-Cohort Visual Experiment Completed, Negative (2026-09-17)
 
