@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+My next registered comparison tests explicit past image motion. I correct for
+the moving crop center before comparing observation-quality controls, unsigned
+motion and directional motion. The full fit cohort and approved evaluation
+protocol stay fixed. Synthetic checks pass; forecasting gains are not yet known.
+[Registered question and controls](outputs/publication_readiness_2026_09/observed_motion_decision.md).
+
 I have completed the [training-objective comparison](outputs/publication_readiness_2026_09/objective_alignment/conclusions.md):
 45 matched neural fits separate scene sampling, mean-ADE training and a
 baseline-relative harm penalty. Training performance improves substantially,

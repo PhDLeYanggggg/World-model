@@ -1,5 +1,14 @@
 # M3W Results Ledger
 
+## Observed-Motion Comparison Registered (2026-09-17)
+
+Fresh code and12focused tests pass. Fixed crop-motion/coordinate restoration,
+quality/magnitude/direction controls,2objectives,3seeds,3fit folds,4,000updates:
+54planned fits. No new forecasting outcome yet. Same11,966fit rows, eight-to-twelve
+task, primary and sealed roles. Registration:`configs/m3w_observed_motion.json`.
+Private OpenCV4.13.0.92 headless arm64 dependency is isolated from the main runtime.
+No new deployment, Stage5C/SMC or calibration claim.
+
 ## Objective-Alignment Comparison Complete, Failed (2026-09-17)
 
 `fresh_run`:45matched neural fits,4,000updates each,180,000total,174.57seconds

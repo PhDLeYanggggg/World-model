@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_exploratory",
+  "input_registration": "configs/m3w_offline_visual_forecast.json",
+  "variants": [
+    "quality_control",
+    "magnitude",
+    "directed"
+  ],
+  "objectives": [
+    "row_log",
+    "scene_ade_harm"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "bootstrap_resamples": 2000,
+  "opencv_runtime": "data/stage_cvpr2027_experiments/optical_flow_runtime",
+  "opencv_version": "4.13.0",
+  "output": "data/stage_cvpr2027_experiments/observed_motion",
+  "reports": "outputs/publication_readiness_2026_09/observed_motion",
+  "training": {
+    "updates": 4000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 400
+  },
+  "bindings": {
+    "configs/m3w_offline_visual_forecast.json": "0ab1fb0a6c505e540e6f6d2a6679b0d72df38387deaf618f8413ef8f4ebbaca4",
+    "src/world_model/m3w_offline_visual_data.py": "ffe757e3f25215e4b7437aac0bee3ad25e5700a6484af2faa7ea2ebfaae55a45",
+    "src/world_model/m3w_offline_visual_forecast.py": "7ced3cbd5c2f6f316d0ea11cedd041c98cadbd78cb7da4db531055b33ad17208",
+    "src/world_model/m3w_objective_alignment.py": "8e1278d7366f148cf3ba76c11f2dc8ffe3a2e9172dfe31c2465c44f2d9fc45ed",
+    "src/world_model/m3w_observed_motion.py": "369fd20287648e6263923890784b8d40a2fb729dba05ae177e5590074343c5e8",
+    "src/data_unification/m3w_causal_recordings.py": "18c605a764b0928a9f5a00d7dded93b80acae7b2e9b8010e682084115da500f2",
+    "scripts/build_m3w_observed_motion.py": "98c6dd9654694d3bb298bc973ce207ab28aa0cca59bfc77f2628828701e2e57e",
+    "scripts/run_m3w_observed_motion.py": "01b0dda0ebd71fed6e01158128eb9eb20f3f5ffc94d6595424ee9aa2777deb4b",
+    "scripts/run_m3w_objective_alignment.py": "d45c6d207bc99676e3200ca233c3f00adda0b645f03b0c84a994aeb7e56a332a",
+    "tests/test_m3w_observed_motion.py": "3fc199aebd33739c222c7ad3df1dc499c97034dcb9fdcc40cccbf4493271ff4e",
+    "outputs/publication_readiness_2026_09/observed_motion_decision.md": "db253b8ae9a4b89f2bdff90bc7a2cd4d4cf14c7f86218c544a8c1d840e8c4038",
+    "data/stage_cvpr2027_experiments/offline_visual_forecast/inputs/data_manifest.json": "cb189521c86a40ad303b9cc871a01b563e5bc4c7a70ccdd9f330f2dd3d8a19ac",
+    "data/stage_cvpr2027_experiments/optical_flow_runtime/cv2/cv2.abi3.so": "2a262de6b70d3b6cfa2cc78a76a5d7edd0117eb1fe260dbda3f29d6120c881f0",
+    "external_data/OpenTraj/datasets/ETH/seq_eth/H.txt": "b6b116c0e1ff9d2b26019d7a43341d6f2518163f6c74545f55a10fd66d523020",
+    "external_data/OpenTraj/datasets/ETH/seq_hotel/H.txt": "b62940ea5f69c89990673f91f88724937ed41387a39d8d68ad5bbc6d5ee5c8b7",
+    "external_data/OpenTraj/datasets/UCY/zara01/H.txt": "2172a470ff902891063c6fb914cc86257d61fbe44711359bf33361263581b8be",
+    "external_data/OpenTraj/datasets/UCY/zara02/H.txt": "2172a470ff902891063c6fb914cc86257d61fbe44711359bf33361263581b8be"
+  }
+}
