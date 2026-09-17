@@ -2,7 +2,27 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：Zara 坐标对应已修复，观测定义待确认
+## 当前：部分图像读取已实现并全量核验，正式训练待观测定义
+
+新增masked reader保留固定裁剪位置和逐像素覆盖率，没有把缺失像素生成出来。
+Zara共14,561行图像数据对应12,098个过去8步窗口，1,935个含边缘部分裁剪，均保留。
+约61MB的npy memmap按源行存一份，窗口仅保存索引。所有窗口实际通过输入API读取。
+旧检查的33个缺失裁剪均仍有至少52.08%可见像素；这不是预测精度提升。
+
+完整重建9.74秒，另一次独立重建9.68秒，18个数组逐字节一致。完成缓存恢复只验证，
+0次新增转换；18项针对性测试通过。无当前训练进程，未重新跑旧全套测试。
+
+```bash
+.venv-pytorch/bin/python scripts/build_m3w_zara_masked_images.py --registration configs/m3w_zara_masked_images.json --output data/stage_cvpr2027_experiments/zara_masked_images --report-dir outputs/publication_readiness_2026_09/zara_masked_images --resume
+.venv-pytorch/bin/python -m pytest tests/test_m3w_masked_history_images.py tests/test_m3w_zara_past_media.py tests/test_m3w_zara_media_lineage.py -q
+```
+
+只有需要从源视频重建时，使用新的输出/报告目录并去掉resume，不覆盖现有结果。
+读取必须显式指定`offline_annotation_diagnostic`或`control_as_of_query_diagnostic`。
+严格控制点模式拒绝后续控制点依赖；不会偷偷删除窗口。正式训练/评价角色被拒绝，
+直到观测定义得到确认。masked image修复不能自动解决离线插值的时间来源问题。
+
+## 历史：Zara 坐标对应已修复，观测定义待确认
 
 已逐行追溯Zara01/02共14,561行。Zara02仅用第一条精确源控制点确定原点偏移，
 其余行均在0.0000054原生单位误差内还原；不是新拟合homography或米制标定。

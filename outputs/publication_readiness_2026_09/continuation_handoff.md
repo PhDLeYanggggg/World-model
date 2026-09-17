@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Masked Past-Image Store Complete: No Live Job (2026-09-17)
+
+Latest `zara_masked_images/conclusions.md`. Previous turn sourceadapter repair
+was progress; this turn actual masked input implementation + full source build,
+not just another status audit. All14561 source rows decoded,12098 past8 windows
+retained,1935 have partial crops.1962 source crop rows partial,nonezero/undecoded.
+Fixed96crop/32output, meanvalid pixels per3x3 block, coverage0..9storedseparately.
+No recentering or hallucination, blackpixels distinctfrommissing. Arrays60,977,761B.
+
+Core `src/world_model/m3w_masked_history_images.py` lazyreader explicitoffline
+orcontrol-as-of diagnostic modes; formaltraining/eval rejected pendingdecision.
+Source latestcontrolprovenance notinfeatures. Onlypastindices/nativexy/RGB/masks
+returned, nofuturetargets. ActualstrictAPI accepts111/186 andrejects3877/7924
+without silentlyfilteringcohort. Thisdoesnotcertify onlinehumanidentity/sensors.
+
+Build script `scripts/build_m3w_zara_masked_images.py`, reg
+`configs/m3w_zara_masked_images.json`, SHAa02986783d6e6f1872d23cc3427febad22e86421556f519fd8130ef9c202eea3.
+Sourcesboundimmutable. Build9.74s; independentfullrebuild9.68s exact18arrayhashes
+andnumericfields. Completedcacheresume0newconversions,0.80s,originalreportunchanged.
+18focusedtests pass; nofulllegacysuitererun. Trainingnot_run. Session90520(build)
+and3954(rebuild) bothterminalexit0. NoHPCrequest/processactive.
+
+Verifierusesprior24fixedhistories and192pastindices; old159complete masks exactly
+reproduced,all33oldmissing retain>=52.08%realpixels.6privatecheckerboardinspection
+sheetsgenerated,only2pagesinspected(Zara01page2,Zara02page0),notgoldlabels.
+Wholearraycacheandimagesareignoredlocaldata,lightmetrics/codeonlyGit.
+
+Userhasnotansweredofflineannotationversusstrictsensor-as-ofdecision fromprior
+turn. Earlierprospectivenative-primarymetricdecisionalsoopen. Noformalnewimage
+cohortortrainingadmitted,old8/12parentprimaryunchanged. Donotrepeatquestionor
+inventapproval. Nextscientificworkdepends onobservationdecision; bounded
+independentrepairdonehere. Do not endlessly add audits/manifests or re-run same
+successful inputbuild. Broaderfit-only predictivecomparison thenneeded,plus
+independentconfirmationsupport. Goalactive/incomplete; Stage5C/SMCoff.
+
+Below are historical snapshots, superseded by this section.
+
 ## Zara Source Repair Complete: Observation Decision Pending (2026-09-17)
 
 Latest `zara_past_media/conclusions.md`; no live job. Fresh source lineage audit

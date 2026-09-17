@@ -10,11 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I have now [repaired the Zara video-coordinate mapping](outputs/publication_readiness_2026_09/zara_past_media/conclusions.md)
-before expanding visual training. All 14,561 source rows can be reconstructed;
-Zara02 needed a fixed origin offset, not a new learned homography. Past images
-are readable, and missing edge crops remain explicit. This is an input repair,
-not a new forecasting result.
+I have now [built masked past-image inputs](outputs/publication_readiness_2026_09/zara_masked_images/conclusions.md)
+after repairing the Zara video-coordinate mapping. The reader retains12,098
+eight-step histories, including1,935 with partial edge crops. It keeps the real
+visible pixels and an explicit coverage mask instead of throwing away the whole
+image. An independent rebuild reproduces every cache array exactly. This is
+an input repair, not a new forecasting result.
 
 The same audit exposed an important limit: most stored Zara past trajectories
 were interpolated using later annotation controls. An offline trajectory

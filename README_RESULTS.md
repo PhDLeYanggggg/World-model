@@ -1,5 +1,24 @@
 # M3W Results Ledger
 
+## Masked Past-Image Store Completed (2026-09-17)
+
+`fresh_run`: fixed-position, coverage-aware image inputs for all14,561 Zara
+source rows and12,098 complete past8 histories.1,935 histories contain partial
+crops; none is removed or future-survival filtered. All33 formerly rejected
+crops in the prior24-history inspection retain at least52.08% observed pixels.
+No synthesized pixels, central velocity, future target fields or test goals.
+
+Arrays total60.98MB, stored once per source row with lazy indexed windows.
+Fresh build9.74s; independent rebuild9.68s gives18 byte-identical arrays.
+`cached_verified`: resume0new conversions, all input windows verified, report
+unchanged.18 focused tests pass; unrelated full legacy suite not rerun.
+
+Offline interpolation provenance remains explicit. The control-as-of diagnostic
+rejects3,877/7,924 queries without removing them; formal training/eval roles remain
+closed pending the observation decision. No new model training or forecast gain,
+no extra independent site, deployment, Stage5C/SMC or metric/seconds claim.
+[Implementation and limits](outputs/publication_readiness_2026_09/zara_masked_images/conclusions.md).
+
 ## Zara Source-Origin and Past-Media Repair (2026-09-17)
 
 `fresh_run`: all 14,561 Zara01/02 rows traced to supplied spline controls. Zara01
