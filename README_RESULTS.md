@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## SDD Step-Window Bridge Registered, Not Training (2026-09-17)
+
+The next prerequisite is a reusable past-only SDD interface, not another small
+classifier sweep. Original train videos only; eight sampled past states and twelve
+masked future labels, diagnostic raw-frame strides 1/12. The new source-role and
+training sampling choice remains separate from the unchanged ETH/UCY primary.
+Sixteen targeted tests pass. Full recording-level checks are not yet run.
+No new model training, auxiliary admission, sealed-label access or deployment.
+[Frozen check contract](outputs/publication_readiness_2026_09/sdd_step_bridge_decision.md).
+
 ## Motion-to-Start Information Probe Complete, One Direction Only (2026-09-17)
 
 `fresh_run`: 48 fixed sklearn classifier fits, 2.56 seconds summed fitting, no
