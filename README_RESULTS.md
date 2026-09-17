@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Fit-Only Bound Capacity Check (2026-09-17)
+
+The running v7 study is unchanged. A fresh fit-only geometric diagnostic examines
+all 11,966 registered training rows. There are 365 zero-budget rows; they contain
+73.253% of CV error under the frozen past normalization. The independent-per-step,
+label-aware correction-ball oracle can improve average fit-window ADE by at most
+4.089%. Per-recording headroom ranges from 1.739% to 64.436%, so the restriction
+is not equally consequential across training sources. This pooled diagnostic is
+not the equal-scene primary metric, a learned result, or independent evidence.
+
+Two focused checks pass, including retaining future movement error when the
+observed budget is zero. No development labels, policy thresholds or running
+model configuration were used or changed. [Full table](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/fit_bound_headroom.md).
+
 ## v7 Baseline-Relative Parameterizations Started (2026-09-17)
 
 New frozen paired ablation: CV-initialized residual versus the same residual

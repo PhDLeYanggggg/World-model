@@ -18,6 +18,13 @@ also states the cost of that bias: a stationary observed agent may start moving,
 and those misses remain in evaluation. Two real 100-step pilots passed; the
 complete three-seed paired training is running. No v7 accuracy gain is claimed.
 
+A [fit-only geometric check](outputs/publication_readiness_2026_09/8to12_residual_pair_v7/fit_bound_headroom.md)
+quantifies this constraint before interpreting its results. Exactly stationary
+pasts account for 73.3% of fit CV error under the unchanged normalization. The
+bound cannot correct those starts; even a label-aware per-step oracle has only
+4.09% average fit-window headroom. That is an optimistic capacity diagnostic,
+not a learned result, a development estimate, or a reason to drop difficult rows.
+
 The complete three-seed comparison now covers both a local Transformer and the
 EqMotion author core, adapted to one fixed prediction head. It includes 24
 10,000-update forecasting fits, six 1,000-update neural cost heads and six ridge

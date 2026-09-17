@@ -22,6 +22,12 @@ checks plus one optional-device skip, seven comparison checks, thirteen
 supplement/replay checks. These are engineering results, not a predictive gain.
 Old v6 is reproduced from `052bcc64`, not by changing its saved identity.
 
+Fit-only bound diagnostic is complete: `8to12_residual_pair_v7/fit_bound_headroom.json`.
+11,966 rows, 365 zero-budget rows, 73.253% of pooled fit CV error on those rows;
+optimistic correction-ball headroom 4.089%. This is label-aware geometry, not
+learned/development evidence or the equal-scene primary aggregation. Two tests
+pass. Do not change the running bound or omit stopped-to-moving targets.
+
 When both family summaries complete, run `compare_m3w_residual_parameterizations.py`
 with `--skip`, `--bounded`, cached `--reference-v6` Transformer metrics and a new
 report directory. The v7 fixed supplement decision is already written before
