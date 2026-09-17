@@ -2,6 +2,27 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前：v7 成本敏感对照已完成
+
+24 个新选择头各训练 1,000 次；原预测器不重训。两个预测器家族、三个种子、
+线性/64宽 MLP、成本上限1/10全部完成。当前无活动训练进程。不要把下方历史
+“待运行”的对照说明当成最新状态。结果在 `8to12_deferral_v7/results.md`。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_registered_deferral.py --registration configs/m3w_deferral_v7_supplement.json --output data/stage_cvpr2027_experiments/8to12_deferral_v7 --resume
+.venv-pytorch/bin/python scripts/summarize_m3w_registered_deferral.py --study data/stage_cvpr2027_experiments/8to12_deferral_v7 --report-dir outputs/publication_readiness_2026_09/8to12_deferral_v7
+.venv-pytorch/bin/python -m pytest tests/test_m3w_registered_deferral.py tests/test_m3w_cost_sensitive_deferral.py tests/test_m3w_deferral_development.py tests/test_m3w_deferral_summary.py -q
+```
+
+新的补充登记独立绑定父协议摘要和补充源码，不改旧协议/源码 hash。首次输出目录
+尚不存在时去掉 `--resume`；完成后按当前 receipt 核验复用，不能写成 fresh 训练。
+若源码或缓存身份变更，应保留旧快照并登记新版本，不覆盖旧 hash。checkpoint、
+OOF缓存、逐行结果只留本地；Git仅包含代码、登记、报告和轻量聚合指标。
+
+全部24个设置均未同时满足正改善和 easy<=2%。42项训练/接入回归和8项报告检查
+通过，不代表模型通过研究gate；也未重新运行完整legacy测试套件。该对照没有
+M3W的风险预算，不能假设相同介入率。一个开发物理场景不足以计算独立场景CI。
+
 ## 当前 v7：固定数据下的残差参数化对照
 
 两版本的三种子完整训练、主评价与 raw50/同人数补充均已结束。主 runner 和补充

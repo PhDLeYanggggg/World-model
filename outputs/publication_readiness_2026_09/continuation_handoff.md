@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## v7 Real Deferral Complete: No Live Job (2026-09-17)
+
+This goal turn made substantive progress: registered and completed the missing
+real cost-sensitive deferral control on both frozen v7 families, all three seeds,
+four fixed head/cap settings. 24 heads x1,000 updates, 11,966 identical OOF rows,
+306 features. No predictor retrained and no old protocol/source bytes changed.
+The first real fit smoke job and full resumed exec37123 both exited successfully;
+PID53207 is historical. Completion and heartbeat under
+`data/stage_cvpr2027_experiments/8to12_deferral_v7` establish terminal status.
+
+Code/registration launch snapshot `eca752be` is pushed. Summary and conclusions:
+`8to12_deferral_v7/{metrics.json,metrics.csv,results.md,conclusions.md}`.
+All 12 fresh recording evaluations exactly match parent forecast errors before
+hash-verified ordinary decisions are reused. 480 paired comparisons are not
+independent runs. Deferral routing is unconstrained, not coverage/risk matched.
+
+Skip gains all negative. Bounded gains +0.01997--0.08445%, but easy degradation
+14.40--96.96%; all 24 fail positive gain plus easy<=2%. No new deployment,
+objective-superiority or paper-readiness claim. 42 focused regression checks and
+eight table checks pass. Full legacy tests were not repeated. One exposed site
+still prevents independent scene CI. Loss decreases do not establish convergence.
+
+Next useful experiment: fit-only stationary-to-moving identifiability, separating
+annotation/normalization artifacts from real starts and testing past neighbor or
+scene cues against a fit-only start prior with whole-scene crossfit. Only then
+register a start-aware forecaster if warranted. Do not retune the same routing
+thresholds, alter the primary metric after inspecting outcomes, or disguise old
+development as confirmation. Independent sites and source/time validity remain
+missing. Do not repeat unchanged CREATE login probes. Goal remains active.
+
 ## v7 Complete: No Running Experiment (2026-09-17)
 
 Both registered families finished all three seeds, 24 forecasters, six neural

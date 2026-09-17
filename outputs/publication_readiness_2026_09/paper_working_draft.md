@@ -32,8 +32,12 @@ find no stable joint advantage, and all joint raw50 ADE gains are negative.
 A paired output ablation then changes mean uncontrolled primary gain from
 -0.599% for a CV-initialized residual to +0.062% with an observed-motion bound.
 Easy degradation still fails without selection; guarded gains are below 0.008%.
-Real deferral comparisons, broader independent scenes and confirmatory evaluation
-remain necessary before a positive submission claim.
+A real fixed-predictor deferral comparison completes 24 routing heads on the same
+three seeds and OOF inputs. Bounded deferrers have small average gains
+(+0.020--0.084%), but easy degradation is 14.40--96.96%; none meets the 2% ceiling.
+Their lack of the guarded controls' budgets prevents attributing the difference
+solely to the objective. Broader independent scenes and a positive contribution
+remain necessary before a submission claim.
 
 An upstream source audit additionally identifies identity fragmentation and
 future-availability-conditioned observation retention in one packaged development
@@ -55,7 +59,7 @@ AgentFormer jointly models social and temporal structure with agent-aware attent
 
 Joint Metrics Matter studies joint forecasting errors and collisions (Weng et al., 2023). The present proposal must demonstrate a benefit beyond adding a joint metric or training penalty: it concerns which predictions from competing predictors can be selected together.
 
-Cost-sensitive expert deferral predates this proposal ([Mozannar and Sontag, ICML 2020](https://proceedings.mlr.press/v119/mozannar20b.html)). [Mao, Mohri and Zhong (ICML 2024)](https://proceedings.mlr.press/v235/mao24d.html) explicitly study regression deferral with a fixed predictor. Our cost heads therefore require comparison to established deferral objectives, not only confidence thresholds. A two-action adaptation is now implemented and synthetically tested; its real comparison is pending.
+Cost-sensitive expert deferral predates this proposal ([Mozannar and Sontag, ICML 2020](https://proceedings.mlr.press/v119/mozannar20b.html)). [Mao, Mohri and Zhong (ICML 2024)](https://proceedings.mlr.press/v235/mao24d.html) explicitly study regression deferral with a fixed predictor. Our cost heads therefore require comparison to established deferral objectives, not only confidence thresholds. The [real two-action comparison](8to12_deferral_v7/results.md) is now complete on both frozen v7 predictors, three seeds, linear/width64 heads and two fixed cost bounds. Every result is retained without selecting a new winner. This task-specific control is not a reproduction of Mao et al.'s reported experiments.
 
 Selective-regression work also shows that reduced coverage need not protect every subgroup ([Shah et al., ICML 2022](https://proceedings.mlr.press/v162/shah22a.html)). Our easy-error slice is a different construct, but the warning motivates reporting slice-specific damage rather than treating reduced intervention as a guarantee. The [source-scoped review](joint_intervention/deferral_and_coverage_prior_work.md) distinguishes these established results from our remaining hypotheses.
 
