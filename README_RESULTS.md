@@ -1,5 +1,14 @@
 # M3W Results Ledger
 
+## SDD Multimodal Join Registered, Not Training (2026-09-17)
+
+The next implementation joins the fixed geometry-bridge queries with their eight
+past images across each training recording. The old prefix-only cache cannot
+serve most late queries. Selection uses input support, not future error; sparse
+cache misses fail closed rather than masquerading as absent images. Twenty-nine
+focused tests pass. Full extraction/replay is not yet run. No auxiliary-training
+admission or forecasting claim. [Check contract](outputs/publication_readiness_2026_09/sdd_multimodal_bridge_decision.md).
+
 ## SDD Step-Window Bridge Complete, Not Training (2026-09-17)
 
 `fresh_run`: original 40 train videos / 8,005,367 source rows converted to past-only
