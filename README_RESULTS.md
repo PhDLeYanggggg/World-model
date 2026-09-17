@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Past-Frame Conditioning Registered (2026-09-17)
+
+The next fixed comparison tests a past-only ego/neighbor coordinate frame.
+It separates frame conditioning from no-anchor CV fallback using a guard-only
+training control. Same inputs, loss, model size, seeds, folds and update budget;
+36 planned new fits and 18 reused controls. No prediction result yet.
+Twenty-two focused checks pass, including typed-vector layout, rotations,
+control training and exact resume. All11,966 queries and the primary remain.
+[Decision and limits](outputs/publication_readiness_2026_09/past_frame_decision.md).
+
 ## Residual Range Experiment Complete, Negative (2026-09-17)
 
 `fresh_run`: 54 real Torch fits / 216,000 updates / 196.26 seconds summed fitting;
