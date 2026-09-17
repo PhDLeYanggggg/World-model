@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Stationary-Start Diagnostic Complete: No Live Job (2026-09-17)
+
+Latest work is `stationary_start_probe/conclusions.md`. Only frozen fit data
+were used; no new development/calibration/confirmation labels. 365 stationary
+windows, 31 agents, 45 runs at ETH/Hotel; Zara held stationary comparison not_run.
+All canonical source positions match cache exactly. This is not annotation/clock
+or physical-stillness verification. ETH time conflict remains unresolved.
+
+First extraction exited before fitting on NumPy-bool JSON serialization. Keep
+the original registration and local failed_source_snapshot; fixed v2 registration
+ran all 24 ordered classifiers. Every one worsened window Brier versus train-only
+prior. A single-factor adaptive pooling repair ran 24 more. Pooled geometry trees
+Hotel->ETH improve Brier +0.02513/AUC0.6949, including run/agent balancing;
+ETH->Hotel remains negative -0.01943/AUC0.4895. Positive held support only5agents.
+No bidirectional gain, new trajectory result or deployment. No stationary-start
+neural residual was launched. Do not interpret Brier differences as ADE gains.
+
+Jobs 25466/83206 and replay51992 all exited0. Forty-eight checkpoints replay Brier
+within1e-12; seven new focused tests passed. No local/HPC task from this study is
+still running. Row caches/models remain under ignored data/stage_cvpr2027_experiments.
+Code+configs+aggregate reports are the only new public artifacts.
+
+IMPORTANT: pooled registration binds the ORIGINAL `metrics.json`. Do not overwrite
+it with resume reports whose statuses change to cached_verified. Use the runbook's
+separate replay report path. Neither original failure registration nor its source
+hashes should be rewritten; v2 is the successful source/version identity.
+
+Next: fit-only scene-cue availability and relative start-direction identifiability
+audit without extending the eight-step observation, dropping stationary cases,
+or changing the primary metric. Check eligible image/context alignment before
+another start-aware forecast; no unsupported ETH timestamp mapping. Two-site
+support and direction prediction remain gaps. Do not requery unchanged CREATE
+access or re-run completed predictors just for status. Goal remains active,
+not achieved and not at a hard impasse; no Stage5C/SMC.
+
+Below are historical progress snapshots, superseded by this section.
+
 ## v7 Real Deferral Complete: No Live Job (2026-09-17)
 
 This goal turn made substantive progress: registered and completed the missing

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_diagnostic",
+  "parent_protocol": "configs/m3w_8to12_residual_parameterization_v7.json",
+  "parent_protocol_sha256": "f82ec96eaaea9ecd7ab7218829f99f43e4c91ab1c7af3ef27d38f08fd0f1621a",
+  "bindings": {
+    "scripts/run_m3w_stationary_start_probe.py": "5f4fc460d10b3091e10af1b57bbd60a8215ae0d4becfa8e5939f8a0cf384cea7",
+    "src/evaluation/m3w_stationary_start_probe.py": "d1b9c35baed0b85b1aabb0c990eacc3d47e002482a983b1aac21e2bff5bd229f",
+    "outputs/publication_readiness_2026_09/stationary_start_probe_decision.md": "869116098be872c26507e8cfcf951f2891216500712dab184379b0104d87489b"
+  },
+  "models": {
+    "logistic": {
+      "C": 1.0,
+      "max_iter": 1000
+    },
+    "extra_trees": {
+      "n_estimators": 256,
+      "min_samples_leaf": 10,
+      "max_features": 1.0
+    }
+  },
+  "normalization": "per_query_observed_neighbor_distance_then_train_only_standardization_for_logistic",
+  "selection": "none_all_settings_reported",
+  "label": "exact_future_annotation_change_not_physical_start",
+  "development_allowed": false
+}

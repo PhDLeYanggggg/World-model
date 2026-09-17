@@ -10,6 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have now traced the stationary-start failure back to the original annotations
+and completed a [fit-only context study](outputs/publication_readiness_2026_09/stationary_start_probe/conclusions.md).
+The 365 stationary windows are just 31 agents and 45 runs at two sites, not
+365 independent starts. All 24 initial neighbor-context classifiers were worse
+than a training-only prior. Pooling the context into fewer features recovered
+a signal from Hotel to ETH, but not in the reverse direction. I keep that local
+signal and the failures visible; neither establishes better trajectories or a
+new deployment. The primary task remains eight observed to twelve predicted
+native steps, with raw-frame t+50 as a supplement.
+
 I have completed the [cost-sensitive deferral control](outputs/publication_readiness_2026_09/8to12_deferral_v7/conclusions.md)
 on the frozen v7 predictors: 24 new routing heads, three seeds, identical
 out-of-fold feature rows and no retrospective threshold selection. The bounded
@@ -146,9 +156,9 @@ The next method asks a more specific question: when several agents may switch aw
 
 I have added an [exact-coverage control](outputs/publication_readiness_2026_09/matched_coverage/method_and_limits.md) to test that distinction: independent and joint policies must switch the same number of agents in each scene query. It prevents a policy that simply switches less from being credited with better coordination. The completed v6 diagnostic finds no stable joint gain; this is not a deployable policy or a risk guarantee. [Regression-deferral prior work](outputs/publication_readiness_2026_09/joint_intervention/deferral_and_coverage_prior_work.md) also makes clear that learning when to use another predictor is not a novelty claim by itself.
 
-I now also have a [cost-sensitive deferral control](outputs/publication_readiness_2026_09/deferral_control/method_and_limits.md) derived from that prior work. It learns from the same out-of-fold predictions as my gain/harm head and retains the size of each forecasting error instead of learning only which predictor wins. Its fitting, recovery and leakage checks work on synthetic examples. The real comparison is still pending; I have not treated implementing a stronger baseline as evidence that M3W beats it.
+I also have a [cost-sensitive deferral control](outputs/publication_readiness_2026_09/deferral_control/method_and_limits.md) derived from that prior work. It learns from the same out-of-fold predictions as my gain/harm head and retains the size of each forecasting error instead of learning only which predictor wins. Its fitting, recovery and leakage checks work on synthetic examples. The real v7 comparison is now complete and reported above; no tested setting combines positive gain with the required easy-case preservation.
 
-The control is connected to the [development comparison](outputs/publication_readiness_2026_09/deferral_development/implementation_and_limits.md). Both heads must use identical training queries and causal features, and every arm sees the same candidate forecasts before labels are opened. I report actual intervention rates separately: an unconstrained deferral gate does not share M3W's risk budget just because it shares its predictions. Synthetic integration keeps negative results visible; a clean real-data comparison is still needed.
+The control is connected to the [development comparison](outputs/publication_readiness_2026_09/deferral_development/implementation_and_limits.md). Both heads use identical training queries and causal features, and every arm sees the same candidate forecasts before labels are opened. I report actual intervention rates separately: an unconstrained deferral gate does not share M3W's risk budget just because it shares its predictions. The completed real comparison remains development evidence, not independent confirmation.
 
 For the clean rerun, I keep data roles and learned-artifact provenance in a [hash-bound experiment contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md). It checks upstream teacher exposure and freezes the evaluated model family before calibration or confirmation. The original independent-study draft remains unapproved. A separate versioned development protocol now permits fitting without inventing calibration or confirmation roles for previously explored data.
 

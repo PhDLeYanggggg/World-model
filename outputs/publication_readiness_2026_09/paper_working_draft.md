@@ -324,7 +324,35 @@ ADE gains are +0.04217%, -0.04695% and +0.00559%. Full primary error exports and
 ordinary decisions replay exactly. Thus the output repair does not establish
 the proposed joint mechanism, and the supplement does not select another model.
 
-### 4.4 Remaining Mechanism and Confirmation Tests
+### 4.4 Fit-Only Stationary-Start Identifiability
+
+A source-verified diagnostic follows the zero-budget result without changing the
+forecasting task or primary metric. The 365 stationary fit windows are 31 agents
+and 45 runs in ETH and Hotel; none occur in the three Zara fit recordings. Exact
+source/cache agreement rules out corruption of these cached positions, but does
+not establish physical stillness, annotation causality or clock calibration.
+Labels indicate any coordinate change in the next twelve native steps, not
+verified physical intention. Changed-future prevalence is 72.84% in ETH and
+45.42% in Hotel, so the two directions are materially different learning tasks.
+
+Twenty-four fixed logistic/tree classifiers with past-only ordered neighbor
+features all worsen window-level Brier against the opposite-scene training-only
+prior. One adaptive single-factor repair pools neighbor context, retaining rows,
+folds, labels, models and settings. Pooled geometry ExtraTrees improves Hotel->ETH
+Brier by 0.02513 (mean AUC 0.6949), but worsens ETH->Hotel Brier by 0.01943 (AUC
+0.4895). These are absolute Brier differences, not forecast improvements. The
+positive held direction has only five agents. Adding motion summaries does not
+produce positive Brier in either direction. Every setting is retained in the
+[full diagnostic](stationary_start_probe/results.md).
+
+Run/agent-balanced summaries keep the local positive signal, without establishing
+independence. All 48 fitted models replay their saved scores; seed repetition
+does not create more independent sites. This adaptive fit-only evidence supports
+neither a new stationary-start trajectory head nor a confirmation claim. Scene
+cues and start-direction prediction remain untested. More context, pooling and
+non-collapse alone are not evidence for useful world dynamics.
+
+### 4.5 Remaining Mechanism and Confirmation Tests
 
 A [source clock and matrix audit](annotation_clock_geometry/audit.md) finds that
 ETH's six-frame annotation spacing conflicts with a naive combination of the

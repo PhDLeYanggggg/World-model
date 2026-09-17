@@ -2,7 +2,29 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
-## 当前：v7 成本敏感对照已完成
+## 当前：静止历史与邻居上下文检验已完成
+
+这一轮只用冻结的 fit 数据，完成原始文件核对、24 个有序特征分类器、24 个低维
+汇总特征分类器，以及全部48个保存模型的预测回放。没有训练新轨迹预测器，也未
+打开 development/calibration/confirmation 标签。当前无本轮活动任务。
+
+365个窗口实际是31个agent、45个静止片段。低维几何特征树模型只在 Hotel->ETH
+方向改善概率误差，反向未通过；不能升级部署或写成轨迹改善。结论见
+`stationary_start_probe/conclusions.md`。7项定向检查通过，不是全套测试重跑。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_stationary_start_probe.py --registration configs/m3w_stationary_start_probe_v2.json --output data/stage_cvpr2027_experiments/stationary_start_probe_v2 --report-dir data/stage_cvpr2027_experiments/stationary_probe_resume_reports --resume
+.venv-pytorch/bin/python scripts/run_m3w_stationary_pooled_probe.py --registration configs/m3w_stationary_pooled_probe.json --source data/stage_cvpr2027_experiments/stationary_start_probe_v2 --output data/stage_cvpr2027_experiments/stationary_pooled_probe --report data/stage_cvpr2027_experiments/stationary_pooled_probe/resume_report.json --resume
+.venv-pytorch/bin/python scripts/summarize_m3w_stationary_probe.py --source data/stage_cvpr2027_experiments/stationary_start_probe_v2 --pooled data/stage_cvpr2027_experiments/stationary_pooled_probe --report-dir outputs/publication_readiness_2026_09/stationary_start_probe
+.venv-pytorch/bin/python -m pytest tests/test_m3w_stationary_start_probe.py -q
+```
+
+已有模型核验复用标记 `cached_verified`，不能写成重新训练。上面专门将 resume
+报告写到另一路径，因为后续登记绑定了原始 `metrics.json`，不能覆盖其 fresh_run
+训练记录。首次没有缓存时需去掉 `--resume`，并按登记和原始报告路径依次运行。
+最初序列化失败的登记与源码快照保留作溯源，不应修改旧hash后声称复现成功。
+
+## 已完成：v7 成本敏感对照
 
 24 个新选择头各训练 1,000 次；原预测器不重训。两个预测器家族、三个种子、
 线性/64宽 MLP、成本上限1/10全部完成。当前无活动训练进程。不要把下方历史

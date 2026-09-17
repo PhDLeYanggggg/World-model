@@ -1,5 +1,34 @@
 # M3W Results Ledger
 
+## Stationary-Start Context Study Complete (2026-09-17)
+
+`fresh_run`: canonical source replay, 48 fixed classifiers and saved-model replay.
+All work uses the frozen fit split only. The eight-observed/twelve-predicted-step
+task, main metric, development policies and raw50 supplement are unchanged.
+No new forecast training, deployment or independent confirmation is claimed.
+
+365 stationary windows comprise 31 agents and 45 stationary runs: ETH 81 windows
+(59 changed futures), Hotel 284 (129 changed futures), Zara zero. Source/cache
+coordinates match exactly, with no inspected history gaps. This verifies lineage,
+not physical stillness or sensor/annotation causality. ETH time mapping is still
+unresolved. Zara's empty stationary held fold is explicitly not_run.
+
+All 24 original ordered-context classifiers worsen window-level Brier versus
+the opposite-scene train-only prior. A one-factor adaptive pooling repair fits
+24 more models. Pooled geometry ExtraTrees improves Hotel->ETH Brier by 0.02513
+on average, AUC 0.6949; the reverse direction worsens Brier by 0.01943, AUC 0.4895.
+These are absolute probability-score differences, not trajectory percentages.
+Only that first repaired setting is positive in all three tree seeds; its held
+support is five agents. Adding motion does not repair bidirectional performance.
+
+Equal-run and equal-agent summaries preserve the local positive signal but do
+not establish independence. All 48 saved models replay Brier within 1e-12.
+Seven focused tests pass; the unchanged legacy suite was not rerun. The initial
+JSON serialization failure and separately registered repair are preserved.
+Do not launch a new stationary-start neural residual on this evidence alone.
+[Conclusions and next investigation](outputs/publication_readiness_2026_09/stationary_start_probe/conclusions.md),
+[all settings](outputs/publication_readiness_2026_09/stationary_start_probe/results.md).
+
 ## Registered Deferral Control Complete (2026-09-17)
 
 The added v7 diagnostic keeps the completed parent protocol/source bytes and
