@@ -1,5 +1,45 @@
 # Real-Experiment Continuation Handoff
 
+## SDD Multimodal Join Complete, Repeated Scientific Decision Blocker (2026-09-17)
+
+Previous goal turn was progress (geometry bridge); this turn also completes a
+real prerequisite, not another fit-only sweep. The original 40 train recordings
+now support the fixed sampled geometry queries with eight past ego-image crops.
+The old image store covered only64frames/video. Pre-execution commit74ff40c1.
+5,074joins,39,144unique frame/agent requests,38,449afterframe63;362,417sequential
+decoded frames,30,798requestedRGBframes. All histories have some retained pixels
+at each step, not all pixels/people visible.3,721partial crops,84inferredborder.
+Private arrays323,957,560bytes;755.11s sum build/check durations,not training.
+
+Actual CNN forward interface verified, zero optimizer updates, no predictive
+gain/non-collapse/training claim. Independent decode120frames/143crops exact.
+Completed resume preserves481artifacthashes and performszeroextractions.
+29focusedtests pass;fulllegacy suite notrerun. Limited assistant self-review of
+bookstore0/deathCircle2/hyang7 contact sheets, not human gold. Projected short
+bbox axis<8px in15,145/39,144crops; this is descriptive, not a causal explanation
+of prior ETH/UCY failures or a new exclusion rule. All registered queries kept.
+
+Public sdd_multimodal_bridge/:report,verification,input_quality,resume,visual_review,
+conclusions. Private cache underdata/stage_cvpr2027_experiments/sdd_multimodal_bridge.
+Pilot30612/full53576/verify12040/analysis51034,82883/resume2355/test52107 all
+observed exit0. No process remains live. `ps` was denied; it does not establish
+a Torch failure. Direct tool handles plus advancing receipts/frames were used.
+No new CREATE query/job. Config8bce6b4397b854e31ba40b2500eb3a003d0316cdaea755eec634069904bbf5b9;
+report0baf077c4c1b67ffa7d645fa8cdb4757c44d86a797457473625e310216c7f7d8.
+
+Blocked audit: the same auxiliary source-role/sampling condition is recorded in
+the motion_start_information completion, sdd_step_bridge completion and this
+completion (also earlier preceding repairs). No answer to the focused question
+has arrived. The independent identified data prerequisites are now complete.
+The next comparative training needs that choice; there is no live run to wait
+for, and another two-site threshold/classifier grid would not advance the goal.
+Do not repeat runtime/HPC checks or manufacture further diagnostics solely to
+avoid the decision. Do not infer a preselected option as a reply. Recommendation:
+separate original-train SDD auxiliary arm, stride12rawframes, matched control;
+keep main8/12,primary,11,966fitrows and sealed roles fixed. Goal not achieved.
+Once answered, register actual training roles/budget/seeds and matched comparison.
+Stage5C/SMC remain disabled. No deployment or metric/seconds/true3D claim.
+
 ## SDD Geometry Bridge Complete, Training Contract Pending (2026-09-17)
 
 Meaningful independent progress, not a new classifier sweep or model result.

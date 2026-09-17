@@ -1,13 +1,24 @@
 # M3W Results Ledger
 
-## SDD Multimodal Join Registered, Not Training (2026-09-17)
+## SDD Multimodal Join Complete, Not Training (2026-09-17)
 
-The next implementation joins the fixed geometry-bridge queries with their eight
-past images across each training recording. The old prefix-only cache cannot
-serve most late queries. Selection uses input support, not future error; sparse
-cache misses fail closed rather than masquerading as absent images. Twenty-nine
-focused tests pass. Full extraction/replay is not yet run. No auxiliary-training
-admission or forecasting claim. [Check contract](outputs/publication_readiness_2026_09/sdd_multimodal_bridge_decision.md).
+`fresh_run`: 40 original train videos, 5,074 fixed past-only geometry/image joins,
+39,144 unique frame/agent crops. Sequentially decode 362,417 frames; convert only
+30,798 requested frames. Of the crops, 38,449 are after frame 63, which the old
+prefix store could not serve. All histories have some retained support at every
+step; 3,721 crops are geometrically partial and 84 intersect inferred dark borders.
+No query was silently removed. Zero optimizer updates or predictive-gain claim.
+
+Independent decode: 120 frames / 143 crops replay exactly. Completed resume:
+481 hashes unchanged, zero new extraction. Twenty-nine focused tests pass;
+legacy suite not rerun. Sum build/check time 755.11 seconds; private arrays
+323,957,560 bytes. Small projected boxes remain a cue limitation: 38.69% have a
+short side below 8 pixels, not a cause-of-failure proof or a new exclusion rule.
+`cached_verified`: sources, split, media map and indices.
+`not_run`: new auxiliary fitting and gain evaluation; source-role/sampling choice
+pending. No primary, closed-role or deployment change; no Stage5C, SMC or
+metric/seconds claim.
+[Evidence and reproduction](outputs/publication_readiness_2026_09/sdd_multimodal_bridge/conclusions.md).
 
 ## SDD Step-Window Bridge Complete, Not Training (2026-09-17)
 

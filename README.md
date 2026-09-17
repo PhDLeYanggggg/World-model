@@ -33,6 +33,14 @@ The latest probe suggests that observed motion is not wholly uninformative, but
 the signal is one-directional and supported by few agents. I am not using its
 best score to justify another deployment or a world-model success claim.
 
+The SDD [past-image and trajectory interface is now joined](outputs/publication_readiness_2026_09/sdd_multimodal_bridge/conclusions.md)
+across the original 40 training recordings, including their later frames. All
+5,074 fixed query histories pass identity and past-frame checks; sampled image
+replays and restart checks agree exactly. This fixes a real limitation of the
+old first-64-frame cache. It is not a training result. The input audit also shows
+that 38.7% of sampled annotation boxes have a projected short side below eight
+pixels, so available visual detail remains a limitation to test, not assume away.
+
 I have now built a [past-only SDD data bridge](outputs/publication_readiness_2026_09/sdd_step_bridge/conclusions.md)
 for the eight-observed/twelve-predicted model interface. It covers the original
 40 training videos, keeps future labels separate, and preserves inputs even when
