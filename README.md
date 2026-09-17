@@ -10,14 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I have checked the [past video input path](outputs/publication_readiness_2026_09/past_video_alignment_v2/conclusions.md)
-before trying a visual model. Both local ETH videos decode, and following the
-upstream row/column convention raises Hotel's in-frame annotation coverage from
-82.78% to 99.83%. That repairs a data interpretation, not a forecasting result.
-The inspected crops still have occlusion and uncertain body coverage, and ETH's
-annotation/video clocks need reconciliation. I have not trained on these images
-or changed the earlier trajectory scores. A useful visual contribution still
-needs to be demonstrated under a verified past-only input protocol.
+I have now tested the [past video correspondence on moving agents](outputs/publication_readiness_2026_09/past_motion_comparison/conclusions.md),
+following the earlier projection-axis repair. ETH's local image matches are
+usually close to the annotations. Hotel's initial large errors largely reflect
+an undersized search area, but enlarging it introduces distractors at ETH. These
+checks support the native-index input path without certifying pose, timing or
+physical scale. I have not trained a visual predictor yet. The next useful test
+is whether point-centered past appearance adds predictive information, with
+explicit missingness and the same trajectory comparator, not another threshold
+sweep on the failed forecasts.
 
 I have completed a [controlled point-forecast comparison](outputs/publication_readiness_2026_09/conditional_ade_probe_refined/conclusions.md):
 keep the same trees and features, but replace their average trajectory with a

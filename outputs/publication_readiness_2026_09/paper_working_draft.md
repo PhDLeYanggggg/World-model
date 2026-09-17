@@ -414,6 +414,16 @@ registration and ETH source-clock ambiguity remain. Thus this is a corrected
 media-access diagnostic, not a visual-feature ablation or new multimodal result.
 No image-based model was trained and no physical-time claim follows.
 
+A subsequent [moving-control check](past_motion_comparison/conclusions.md) uses
+all eight observed images for 24 fit agents, without opening future target labels.
+ETH's local correspondence is often within a few pixels. Hotel's initial errors
+are partly an image-search capacity artifact: 56/84 annotated displacements lie
+outside the fixed search square. Increasing the radius improves Hotel error on
+identical support but worsens ETH through distractors and loses boundary support.
+This supports native-index plausibility, not a calibrated pose estimator, physical
+time mapping or image-based forecasting gain. Centered appearance with explicit
+visibility masks remains an untested predictive modality, not a contribution yet.
+
 A [controlled point-decision experiment](conditional_ade_probe_refined/conclusions.md)
 reconstructs the conditional training distribution from each frozen ExtraTrees
 forest and compares its mean with per-step geometric medians, holding all trees,

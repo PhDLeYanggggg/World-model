@@ -2,6 +2,26 @@
 
 日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
 
+## 当前：移动行人的过去图像对应检查已完成
+
+这不是神经训练或未来预测。24个fit行人，各取完整8张过去/当前图像，192次请求、
+187个不同帧。固定24像素搜索范围对Hotel过小，56/84对真实观察位移在范围外。
+登记后只扩大至64像素，Hotel同样本匹配改善，ETH反而受干扰变差。两个版本均保留，
+边缘缺失不当作零误差，未选择最佳范围用于预测。原生帧对应有局部支持，但没有
+证明身体朝向、物理时间或全局标注准确。下一步须登记图像特征对照，不能把匹配当预测。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_past_motion_correspondence.py --registration configs/m3w_past_motion_correspondence.json --output data/stage_cvpr2027_experiments/past_motion_correspondence_recheck --report-dir data/stage_cvpr2027_experiments/past_motion_correspondence_recheck_reports
+.venv-pytorch/bin/python scripts/audit_m3w_past_motion_correspondence.py --registration configs/m3w_past_motion_search_support.json --output data/stage_cvpr2027_experiments/past_motion_search_support_recheck --report-dir data/stage_cvpr2027_experiments/past_motion_search_support_recheck_reports
+.venv-pytorch/bin/python scripts/summarize_m3w_past_motion_correspondence.py --report-dir data/stage_cvpr2027_experiments/past_motion_comparison_recheck
+.venv-pytorch/bin/python -m pytest tests/test_m3w_past_motion_correspondence.py tests/test_m3w_past_motion_summary.py tests/test_m3w_past_video_alignment.py -q
+```
+
+前两条只有需要重解码时才运行，目录必须是新目录。第三条核验并比较原始已完成的
+两次运行，不会自动改读recheck目录，也不是新的模型拟合。原报告被后续登记绑定，
+不能覆盖。14项测试通过，完整旧测试未重跑；本步骤无活动进程。所有原图、联系表
+和逐行记录仅留被忽略的本地data目录。两次处理约6.90/12.59秒，不是长时间训练。
+
 ## 当前：过去视频读取与投影轴检查已完成
 
 真实解码成功，不是新模型训练。31个fit行人的62次首个过去帧/当前帧请求全部取得，

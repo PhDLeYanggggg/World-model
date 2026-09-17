@@ -1,5 +1,24 @@
 # M3W Results Ledger
 
+## Moving Past-Frame Correspondence (2026-09-17)
+
+`fresh_run`: two fixed/adaptive image-matching diagnostics, not forecast training.
+24 moving fit controls at two sites, eight observed images each, 192 requests /
+187 unique frames; four centered Hotel crops lack full support. No future label
+API, time-offset fitting, development/calibration/confirmation or metric change.
+
+ETH's radius24 median correspondence errors are 1.41/1.00 pixels (15/31 templates).
+Hotel has 56/84 annotated pair displacements outside that search. On identical
+support, widening to64 changes Hotel mean errors 22.12 -> 7.66 and 16.71 -> 4.22
+pixels, but worsens ETH 3.07 -> 6.49 and 3.60 -> 7.51. Boundary failures and large
+remaining mismatches stay reported. No search size is promoted to a forecast
+feature or calibrated pose estimator. Six local contact sheets were inspected.
+
+14 relevant tests pass; source and completion hashes verified. No full legacy
+suite rerun. Both processes completed, no new neural model or deployment.
+[Interpretation](outputs/publication_readiness_2026_09/past_motion_comparison/conclusions.md),
+[paired support table](outputs/publication_readiness_2026_09/past_motion_comparison/results.md).
+
 ## Past-Video Input Audit (2026-09-17)
 
 `fresh_run`: local prefix decoding retrieved 62 first-past/current image requests

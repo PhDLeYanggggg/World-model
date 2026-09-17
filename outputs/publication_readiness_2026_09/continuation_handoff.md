@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Moving Past-Image Controls Complete: No Live Job (2026-09-17)
+
+Latest: `past_motion_comparison/conclusions.md`. Fresh radius24 and registered
+adaptive radius64 image-correspondence diagnostics, NOT new forecast training.
+Same24 fit-only moving agents (12ETH/12Hotel), first complete moving8 histories,
+hash-selected without future availability/labels. 192requests/187distinctframes,
+4Hotel centered crops missing. All6 original contact sheets inspected. Markers
+often near head/upper body, no verified pose/body boxes. Centered crop corrects
+the earlier ungrounded above-point body assumption without certifying identity.
+
+ETH original median match errors1.41/1.00px. Hotel56/84displacements outside
+24search; inside28errors2.52/1.78px. Radius64 same-support Hotel errors
+22.12->7.66 and16.71->4.22; ETH worsens3.07->6.49 and3.60->7.51.
+Wider missing ETH4/7,Hotel8/15 by template. Do not choose a per-scene winning
+radius, treat missing as zero, claim future ADE lift or call ZNCC pose confidence.
+Direct native-index plausibility improves; capture clock/identity not certified.
+
+Official ETH CVL dataset page checked live: research-use scope with citation;
+no redistribution authorization inferred. Original paper PDF direct404; don't
+claim its detailed point semantics read. Both streams25, ETH helper15 unresolved
+for seconds. No video timing offset fitted. Source metadata preserved unchanged.
+
+Sessions56815 and71987 exited0; historical PIDs64007/64231 heartbeats complete.
+Fresh processing~6.90/12.59s. Paired summary validates source/completion hashes and
+identical controls.14 focused tests pass0.57s; full legacy suite not rerun.
+No current job, no neural training or HPC request. Rawframes/crops/rows under
+ignored data/stage_cvpr2027_experiments/past_motion*, aggregate reports public.
+
+Next useful work: register a fit-only point-centered past-appearance versus
+trajectory directional/forecast probe under declared native-frame mapping, with
+explicit missingness and trajectory fallback. Keep old parent metric, eight-step
+observation, folds and negatives; pending NEW native-ADE primary still unanswered.
+No further threshold or temporal-offset tuning on exposed results. Moving sample
+checks do not show stationary orientation is inferable. Need actual predictive
+ablation before contribution claim. Independent sites remain a separate blocker.
+No new deployment/submission success, Stage5C/SMC. Goal active; this turn progress.
+
+Below are historical snapshots, superseded by this section.
+
 ## Past-Video Audit Complete: No Live Job (2026-09-17)
 
 Latest: `past_video_alignment_v2/conclusions.md`. Fresh fit-only decoding, not
