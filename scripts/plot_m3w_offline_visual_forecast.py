@@ -1,6 +1,7 @@
 """Plot aggregate evidence only; never source video frames or individual tracks."""
 from __future__ import annotations
 
+import io
 import json
 import os
 from pathlib import Path
@@ -10,6 +11,7 @@ PRIVATE = ROOT / 'data/stage_cvpr2027_experiments/offline_visual_forecast'
 os.environ['MPLCONFIGDIR'] = str(PRIVATE / 'matplotlib_cache')
 import matplotlib
 matplotlib.use('Agg')
+matplotlib.rcParams['svg.hashsalt'] = 'm3w-offline-visual-forecast'
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -34,7 +36,10 @@ def main():
         ax.grid(axis='y', alpha=.15)
     fig.suptitle('Full fit cohort: no neural arm beats CV on a held physical scene', fontsize=13)
     fig.supxlabel('Points: three seeds. Short lines: seed means. Panel scales differ; higher is better.', fontsize=10)
-    fig.savefig(directory / 'scene_seed_results.svg')
+    svg = io.StringIO()
+    fig.savefig(svg, format='svg', metadata={'Date': None})
+    (directory / 'scene_seed_results.svg').write_text(
+        '\n'.join(line.rstrip() for line in svg.getvalue().splitlines()) + '\n')
     fig.savefig(PRIVATE / 'scene_seed_results.png', dpi=150)
     plt.close(fig)
 
