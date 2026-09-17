@@ -1,5 +1,14 @@
 # M3W Results Ledger
 
+## Motion-to-Start Information Probe Registered (2026-09-17)
+
+The next fixed diagnostic isolates probability prediction from trajectory loss.
+Four nested causal inputs (neighbors, image quality, magnitudes, directed motion),
+two fixed classifiers, three seeds and two held fit sites give 48 planned fits.
+All 365 previously audited stationary rows remain. No threshold search, new source
+admission or sealed evaluation. Five focused feature/join/group checks pass; no
+classifier result yet. [Decision](outputs/publication_readiness_2026_09/motion_start_information_decision.md).
+
 ## Past-Frame Conditioning Complete, Forecasting Negative (2026-09-17)
 
 `fresh_run`: 36 real Torch fits / 144,000 updates / 114.58 seconds summed fitting;

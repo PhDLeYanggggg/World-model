@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "role": "fit_only_information_probe",
+  "motion_registration": "configs/m3w_observed_motion_v2.json",
+  "stationary_cache": "data/stage_cvpr2027_experiments/stationary_start_probe_v2",
+  "arms": [
+    "neighbors",
+    "quality",
+    "magnitude",
+    "directed"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "models": {
+    "logistic": {
+      "C": 1.0,
+      "max_iter": 1000
+    },
+    "extra_trees": {
+      "n_estimators": 256,
+      "min_samples_leaf": 10,
+      "max_features": 1.0
+    }
+  },
+  "output": "data/stage_cvpr2027_experiments/motion_start_information",
+  "reports": "outputs/publication_readiness_2026_09/motion_start_information",
+  "bindings": {
+    "configs/m3w_observed_motion_v2.json": "85192b3a5f28236fa1af978cae5d0b0af4af5808831f445b3e381e1a67ef0d70",
+    "configs/m3w_stationary_start_probe_v2.json": "26c704d442cece3f3cae6d79a3a1350fb1d8ee9b06d0be4c728fdc34962787cf",
+    "src/evaluation/m3w_motion_start_probe.py": "7b74f8e3774bd84efc2054c5b144d130f9ef79607743b8b1fd3277fea6b0e544",
+    "src/evaluation/m3w_stationary_pooled_context.py": "0f96acd49aa57ed3d40c741c541ade16ca0f7ddd550a346b1ada183d88aeaf2d",
+    "src/evaluation/m3w_stationary_start_probe.py": "40113c5cac123a7419486d65ad810eb71c056223ce17854a9cf05187110346fa",
+    "scripts/run_m3w_motion_start_probe.py": "f004dd9a50affdd7c6f62aef9a4d42a37a57f73400e684f5a7a445e93800929d",
+    "tests/test_m3w_motion_start_probe.py": "1e2e77a83fc6f7f703c220ba028f7727037a64bb76c62cee00cabcf23b55a7a1",
+    "outputs/publication_readiness_2026_09/motion_start_information_decision.md": "0021ad3dc8ed8e8ff3f0867e370b8c84320da3ee4b35409df752fbf2c8e7dcea",
+    "data/stage_cvpr2027_experiments/stationary_start_probe_v2/fit_rows.receipt.json": "2a7f8cf5272db0fe889a30f304e34eb599923c3e7ad73c52501894e12ebbe51a",
+    "data/stage_cvpr2027_experiments/stationary_start_probe_v2/run_identity.json": "0705cb1aa4b0f318bec71f79ddec9379bee5d6fa8a38ca590b917af43dce12f3",
+    "data/stage_cvpr2027_experiments/observed_motion_v2/inputs/manifest.json": "501c01a1b54abf0c668396f96628ccf2be52ab522c6ff68ceaa093efe78267e8"
+  }
+}
