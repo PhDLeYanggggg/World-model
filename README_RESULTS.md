@@ -1,6 +1,6 @@
 # M3W Results Ledger
 
-## Training-Only Relative-Cost Deferral Registered (2026-09-18)
+## Training-Only Relative-Cost Deferral Running (2026-09-18)
 
 The next fixed repair adds an exact-baseline action to the inherited proposal
 head. Six new continuations compare expected-action cost with a cost-supervised
@@ -10,6 +10,15 @@ matched dense controls are reused after verification. No held/main scoring,
 threshold search or deployment is permitted in this registration. All-baseline
 output does not count as a successful predictor. Twenty-six targeted tests pass.
 [Decision and prior-work boundary](outputs/publication_readiness_2026_09/source_cost_deferral_decision.md).
+
+Pre-fit registration `e91a7a37` is pushed. The real 100-update pilot completed
+in 9.11 seconds including the initial full-training diagnostic; these updates
+belong to the fixed budget. The native arm64 CPU4/workers0 run is active
+(PID 40830, session 34534), with checkpoint and heartbeat every 200 updates.
+The analysis consumer is being frozen during training, not claimed pre-fit.
+It checks all 24 milestone replays, matched sampling against dense controls,
+exact baseline output, immutable completed resume and training-side cost fit.
+No completed-experiment or positive-gain claim is made while branches run.
 
 ## Matched Modality Control Complete: No Held-Source Gain (2026-09-18)
 

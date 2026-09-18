@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Training-Only Cost Deferral Registered (2026-09-18)
+## Training-Only Cost Deferral Running (2026-09-18)
 
 Prior turn is progress: six matched controls and complete fixed source evaluation
 finished negative. This repair permits exact baseline output using an observed
@@ -12,8 +12,16 @@ no selection or deployment. All-baseline collapse is not positive forecast gain.
 26focusedtests pass, including exact dense-engine equivalence, detached target
 gradients and exact resume. Gradient sum check tolerates only float32 rounding;
 the detached auxiliary-cost target is directly verified to have no proposal path.
-Next assetaudit, preregcommit/push,100-updatepilot withinbudget, fullsixbranches,
-24exactreplays, training-side comparison and reports. No new remotejob; CREATE
+Asset audit complete, pre-fit commit e91a7a37 pushed. The 100-update pilot took
+9.112058 seconds including the initial full-training evaluation, within budget.
+Full six-branch run active: PID40830 / session34534. Do not launch a duplicate.
+Native arm64 CPU4, interop1, workers0, checkpoints/heartbeats every200updates.
+First branch completed: candidate training gain +0.183895%, hard output all
+baseline / 0% gain. This is a partial training diagnostic, not success or a
+reason to stop the remaining fixed branches. Consumer
+scripts/verify_analyze_m3w_source_cost_deferral.py is frozen during training
+before joint analysis, not pre-fit. After training:24exactreplays, analysis,
+training-side conclusions and reports. No new remotejob; CREATE
 state unknown beyond historical accessblocker. Local66GiBfree and prior~37min
 matchedbudget make nativearm64CPU4/workers0 appropriate. Preserve frozen prior
 code/outputs and unrelated staged fingerprint. Goal active, no Stage5C/SMC.
