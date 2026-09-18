@@ -31,6 +31,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does longer training help? | Learning-rate decay produces a small source-training gain, but it does not transfer to the excluded source scene. |
 | Does the tested RGB representation help? | The matched source comparison is negative. More input modalities are not automatically more predictive information. |
 | Does cost-aware fallback help? | It reduces neural harm, but the fixed source readout still loses 1.246% to stationary CV. The unprotected control loses 1.744%. |
+| Do scene-excluded candidate forecasts remain useful? | Twelve fresh fits all lose on their excluded site; equal-site gain is -5.016%. Fixed candidate/CV oracle headroom is below 0.53%, so another gate alone is not the next repair. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -42,12 +43,13 @@ site**, not independent confirmation. Exact replay verifies reproducibility,
 not forecasting quality. Complete rejection returns the baseline and is not
 a new prediction success.
 
-I am now testing whether candidate-cost supervision changes when predictions
-are generated outside each producer's training scene. The registered experiment
-uses four internal source-site folds and three seeds, all from random
-initialization. Bookstore and the main evaluation remain excluded. The run is
-in progress; no result or deployment claim is attached to it.
-[Experiment contract](outputs/publication_readiness_2026_09/source_crossfit_decision.md).
+The latest [candidate cross-fit experiment](outputs/publication_readiness_2026_09/source_crossfit_v1/conclusions.md)
+completed all 120,000 updates across four internal site folds and three seeds.
+Equal-site gain is -5.016%, conditional interval [-8.397%, -2.488%]. Most excess
+error comes from predicted movement on stationary targets, but the remaining
+moving-target predictions also lose on average. The experiment isolates producer
+exposure, not the causal reason for the transfer gap. Bookstore and the main
+evaluation remain unscored; no new model is deployed.
 
 ## Evidence and Reproduction
 
@@ -58,7 +60,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest fixed evaluation](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_crossfit_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some
@@ -127,10 +129,12 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 ## Next Step
 
-First, complete the registered training-side cross-fit experiment and inspect
-candidate utility before fitting another risk head. These labels do not
-automatically permit a second-level validation split: every upstream producer
-must also exclude the risk head's validation scene.
+Improve candidate utility before fitting another risk head: distinguish failure
+to detect movement from failure to predict its direction and path, using only
+admitted training material. Current fixed-candidate headroom is too small to
+justify another threshold search. The new OOF labels do not automatically permit
+a second-level validation split: every upstream producer must also exclude the
+risk head's validation scene.
 [Provenance boundary](outputs/publication_readiness_2026_09/source_crossfit_v1/method_and_limits.md).
 
 The larger goal is unchanged: demonstrate useful neural dynamics, compare

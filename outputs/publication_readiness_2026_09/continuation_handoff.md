@@ -1,25 +1,49 @@
 # Real-Experiment Continuation Handoff
 
-## Training-Side Source Cross-Fit Registered (2026-09-18)
+## Training-Side Source Cross-Fit Complete, Negative (2026-09-18)
 
-Previous turn was real progress: fixed deferral inference failed, diagnostics
-and safe Git commit999f448a complete. New next action:12cold-start SourceDynamics
-fits,4inner sites x3seeds,120000updates. Excludebookstore from every fit/inference.
-Existing parents overlap every inner-held row; reuse code/data, NOT oldweights.
-Config configs/m3w_source_crossfit_v1.json; runner scripts/run_m3w_source_crossfit.py;
-analysis scripts/analyze_m3w_source_crossfit.py. Perfoldtrainnormalization/costscale,
-exactonceOOFlabels, no learnedriskhead or outer/main forecasts. Both arms of each
-fit use existing2000constant+8000cosine engines; checkpoints200,CPU4/workers0.
-26focusedtests pass;realauditPID48790exit0,15430rows/4folds,outer/maininferenceand
-innerheldlabelguardschecked. Local65.96GiBfree;GitHub999f448a matchesbeforepatch.
-CurrentCREATEjobs/assetsunknown,nojobsubmitted. Pre-fit commit a89299fd pushed.
-PilotPID48924exit0:100updates/4.7255trainingsecondswithinbudget. Fullrun active
-PID48956/session49270,CPU4/workers0,RSSabout2.6GiB,rough1.5-2hrbudget.
-Do not duplicate or terminate because slow. Need fullcompletion,12exactreplays,analysis,
-readonlycompletedresumeandreport. Do not revise fixed analysis after scores.
-Bootstrap2000on4exploredsitesisconditionalwithsharedfoldtraining,notconfirmation.
-In-samplecomparisonconfoundssmallerfitset/siteshift/normalization,notcausalproof
-ofoptimism. Stage5C/SMC/deploymentoff.Goalactiveunmet.Preserveunrelatedstaging.
+Goal active and unmet. Twelve cold-start SourceDynamics models, 120,000 updates,
+four inner source sites x three seeds. Pre-fit commit a89299fd; training/status
+commit 93b72562; README/provenance commit df1a0ee7. Training PID48956/session49270
+exit0, main log span5784.63657sec; summed fitting5725.36250sec includes pilot100.
+Replay PID57231/session60671 exit0; analysis session6306 exit0; verification
+session35713 exit0; completed-resume child57374 adds0updates; posthoc diagnostic
+session14018 exit0. All required processes terminal; do not launch duplicate fits.
+
+Config configs/m3w_source_crossfit_v1.json unchanged, SHA
+f1ea040f58610ecb7f8f2380f72c92dd7a745767d05855292e572421e0dd0a14.
+Public outputs/publication_readiness_2026_09/source_crossfit_v1/;
+private data/stage_cvpr2027_experiments/source_crossfit_v1/.
+15,430 stationary-history source queries/29recordings/545scopedagents/4sites.
+Bookstore excluded from all fits and inference. No main or sealed-role scoring.
+All12train gains positive; all12inner-held gains negative. Site means coupa
+-2.19317%, deathCircle-2.76435%, gates-7.75892%, hyang-8.81015%.
+Primary equal-site gain-5.01598%, conditional4siteCI[-8.39655,-2.48773];
+window-weighted-5.45692%. Binaryoraclewindow+.52707%, posthoc equal-site+.46765%.
+Primary excess decomposition: zero-target4.32112pp, nonzero-target.69486pp.
+Nonzero-target windowgain-.93253%; easy8566rows/absoluteharm.09190157pixels;
+percentageundefined, not2%pass. Bootstrap2000conditional/sharedtraining/notconfirmation.
+No risk head or deployment. In-samplecomparisonconfoundssize/sites/normalization.
+
+Twelve exact train/held replays;3exactonceOOFarchives;96loadedtargetpoisonchecks;
+55immutableartifacts onzero-update resume;28focusedtests. Fulllegacy notrerun.
+Main report SHA64f38a57ea213f8c416a6d56948e5d7a58d7bd1609bed7f3e80b2848b3b5f785.
+Analysis SHAd7ca8d2e74b41ee05ab30fd638fdc43b4274327ab62be9ec2e5307e8ff758fdb.
+Verifier SHA91af2f9fec199ae323042bf8f2db75b1dc2f6398dd281bbb8b44ffad66908b2b.
+Fresh posthoc attribution scripts/diagnose_m3w_crossfit_costs.py is separately
+labeled; it does not change frozen analysis or select any policy. Figure checked.
+
+README now concise project overview; exact previous detailed Current Evidence
+section preserved in README_RESEARCH_HISTORY_2026_09.md. Keep that separation.
+Next: candidate movement/direction utility diagnosis on admitted training only,
+not another threshold search on this <.53% action-class headroom. New scientific
+comparisons need a fixed bounded plan before computing/selecting them. Do not
+retune bookstore or open sealed roles. New risk-head validation must exclude
+its held site from ALL upstream label producers, not merely its own fit rows.
+See method_and_limits.md. Current CREATEjobs/assetsunknown; none submitted.
+CPU4/workers0 nativearm64 stable; no runtime blocker. Stage5C/SMC/deploymentoff.
+Preserve unrelated3019stagedchanges; staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
 
 ## Frozen Deferral Readout Complete, Negative (2026-09-18)
 

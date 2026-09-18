@@ -5,22 +5,44 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Training-Side Candidate Cross-Fit Registered (2026-09-18)
+## Training-Side Candidate Cross-Fit Complete: Candidate Utility Still Fails (2026-09-18)
 
-Twelve cold-start dense trajectory fits, four inner source sites and three
-seeds, total120,000updates. Bookstore excluded from every fit and inference;
-main/sealed roles unchanged. Existing parents overlap every inner held row,
-so none can supply honest OOF predictions. New per-fold normalizers and cost
-scales use only the other three sites. Audit of15,430training-side rows and
-access guards passes;26focusedtests pass. This is registration, not a result.
-The100-update local pilot is included in the fixed budget. No new risk head,
-policy selection or deployment. [Decision](outputs/publication_readiness_2026_09/source_crossfit_decision.md).
+`fresh_run`: twelve cold-start models, four inner physical sites and three seeds,
+120,000 updates including the 100-update pilot. Main run 96.41 minutes, no budget
+reduction. Pre-fit registration `a89299fd`. Data/code and an in-sample reference
+are `cached_verified`, not reused fitted parents. Bookstore and main roles
+excluded from every fit and forecast; no new risk head or deployment.
 
-Pre-fit registration `a89299fd` is pushed. The real100-update pilot completed
-in4.7255 trainingseconds, including an atomic checkpoint; no inner-held scores.
-Full training resumed atstep100,PID48956/session49270. CPU4/workers0, observed
-RSS about2.6GiB, estimated total1.5-2hours. This is a running experiment, not a
-completed result. Do not launch a duplicate or shorten its fixed budget.
+| Inner held site | Training-complement gain | OOF gain | Conditional recording 95% interval |
+| --- | ---: | ---: | --- |
+| coupa | +0.7951% | -2.1932% | [-3.3252%, -1.7229%] |
+| deathCircle | +1.0821% | -2.7643% | [-3.5426%, -1.3310%] |
+| gates | +0.5440% | -7.7589% | [-13.3678%, -3.1614%] |
+| hyang | +2.5438% | -8.8101% | [-17.5926%, -4.9037%] |
+
+Primary equal-site gain **-5.01598%**, conditional four-site interval
+[-8.39655%, -2.48773%]. All twelve held fits negative. Window-weighted -5.45692%;
+native pixel ADE 1.18919 vs CV 1.12765. Three seeds, 2,000 bootstrap draws,
+15,430 overlapping queries/29 recordings/545 scoped agents/four explored sites.
+Not independent confirmation. Easy absolute harm 0.09190 pixels; percentage
+undefined at zero CV error, not a 2% safety pass.
+
+Fixed binary future-oracle gain +0.52707% window-weighted. Post-hoc equal-site
+oracle +0.46765%; fixed action-class diagnostic, not a deployed policy. Post-hoc
+primary excess attribution: zero-target +4.32112pp, nonzero-target +0.69486pp.
+Nonzero-target gain still -0.93253%, so perfect removal of easy harm alone does
+not fix the candidate. In-sample/OOF comparison confounds fit population, site
+exposure and normalization; do not label the full gap pure training optimism.
+
+Twelve exact train/held replays, three exact-once OOF archives, 96 loaded-target
+poison checks, 55 unchanged artifacts on zero-update resume. Twenty-eight
+focused tests pass; full legacy suite not rerun. All processes terminal.
+No main role or Stage5C/SMC change. Next: causal movement/direction candidate
+diagnosis before another cost head; nested producer exclusions remain required.
+[Conclusions](outputs/publication_readiness_2026_09/source_crossfit_v1/conclusions.md),
+[gates](outputs/publication_readiness_2026_09/source_crossfit_v1/gates.md),
+[reproduction](outputs/publication_readiness_2026_09/source_crossfit_v1/reproducibility.md),
+[Chinese operations](outputs/publication_readiness_2026_09/source_crossfit_v1/operation_zh.md).
 
 ## Frozen Deferral Readout Complete: No Transfer Over CV (2026-09-18)
 

@@ -724,6 +724,29 @@ rule out approximate ambiguity. Optimistic in-sample candidate-cost targets
 and moving-target optimization remain hypotheses requiring training-side
 cross-fitting or frozen-candidate controls, not another held threshold search.
 
+The subsequent [training-side candidate cross-fit experiment](source_crossfit_v1/conclusions.md)
+trains twelve cold-start models, four inner source-site folds and three seeds,
+for 120,000 updates. Each producer and its fitted preprocessing exclude the
+query's site and bookstore. All twelve training-complement gains are positive,
+but all twelve inner-held gains are negative. Primary equal-site gain is
+-5.01598%, conditional four-site interval [-8.39655%, -2.48773%]; the
+window-weighted sensitivity is -5.45692%. These are explored training sites
+with shared fold fits, not independent confirmation. The comparison with the
+cached full-four-site in-sample reference changes training size, site exposure
+and normalization, so it does not isolate training optimism.
+
+Fixed candidate/CV oracle gain is only 0.52707% window-weighted. A separately
+marked post-hoc attribution gives equal-site oracle 0.46765% and partitions the
+5.01598pp primary excess into 4.32112pp on zero-target rows and 0.69486pp on
+nonzero-target rows. The latter subset still loses 0.93253% in the window view.
+Thus invented movement explains most measured harm, while simple perfect
+easy-case rejection would not repair the remaining candidate's average error.
+This is a limitation of the tested fixed action family, not a general
+learnability bound. Twelve exact prediction replays and zero-update resume
+verify implementation, not dynamics utility. No new risk head is trained;
+future risk-head validation must also exclude its validation site from upstream
+training-label producers. No outer/main scores or deployment are added.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -743,6 +766,7 @@ cross-fitting or frozen-candidate controls, not another held threshold search.
 | Does exact-baseline cost deferral repair training? | Six new fits; plain objective all-reject; supervised cost gives +0.2339% training gain vs dense +0.1872% | Small routing tradeoff, weaker hard benefit, no stronger decoder or held evidence |
 | Does that deferral benefit survive the fixed source readout? | All three supervised-cost action seeds lose to CV; mean -1.2456%, versus dense -1.7438%; plain action all-rejects | Reduces neural harm without positive transfer; current candidate decoder and cost transfer remain insufficient |
 | Is large-scale exact observed-input conflict the main supported cause? | 153 duplicate-input training rows, 38 conflicting rows, no sufficient zero-optimal conflicting group | Not supported by this exact-schema diagnostic; approximate ambiguity and feature sufficiency remain open |
+| Does producer-excluded candidate prediction yield useful cost supervision? | Twelve cold-start fits; equal-site OOF gain -5.016%; fixed binary oracle below 0.53% | Provenance-correct costs are available, but tested candidate utility remains insufficient for a large routing gain |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not
