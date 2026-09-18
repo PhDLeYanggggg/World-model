@@ -10,6 +10,14 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am now rebuilding the candidate-cost supervision inside the training scenes.
+Each source scene is excluded from its own predictor, including feature
+normalization and every fitted parent. Existing models cannot be reused here:
+they have already seen those labels. The fixed comparison uses four internal
+scene folds and three seeds, without opening the main evaluation or revisiting
+the excluded bookstore scene. This is a test of whether useful candidate gains
+survive honest cross-fitting, not another threshold search.
+
 I tested whether the small training benefit from cost-aware deferral survives
 outside the fitted scenes. It does not. In the [fixed source-site readout](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/conclusions.md),
 the cost-supervised policy loses 1.246% to the stationary motion baseline,

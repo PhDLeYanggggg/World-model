@@ -1,5 +1,24 @@
 # Real-Experiment Continuation Handoff
 
+## Training-Side Source Cross-Fit Registered (2026-09-18)
+
+Previous turn was real progress: fixed deferral inference failed, diagnostics
+and safe Git commit999f448a complete. New next action:12cold-start SourceDynamics
+fits,4inner sites x3seeds,120000updates. Excludebookstore from every fit/inference.
+Existing parents overlap every inner-held row; reuse code/data, NOT oldweights.
+Config configs/m3w_source_crossfit_v1.json; runner scripts/run_m3w_source_crossfit.py;
+analysis scripts/analyze_m3w_source_crossfit.py. Perfoldtrainnormalization/costscale,
+exactonceOOFlabels, no learnedriskhead or outer/main forecasts. Both arms of each
+fit use existing2000constant+8000cosine engines; checkpoints200,CPU4/workers0.
+26focusedtests pass;realauditPID48790exit0,15430rows/4folds,outer/maininferenceand
+innerheldlabelguardschecked. Local65.96GiBfree;GitHub999f448a matchesbeforepatch.
+CurrentCREATEjobs/assetsunknown,nojobsubmitted. Need pre-fit commit/push,
+100updatecoupa_seed17pilotwithinbudget, thenfullrun,12exactreplays,analysis,
+readonlycompletedresumeandreport. Do not revise fixed analysis after scores.
+Bootstrap2000on4exploredsitesisconditionalwithsharedfoldtraining,notconfirmation.
+In-samplecomparisonconfoundssmallerfitset/siteshift/normalization,notcausalproof
+ofoptimism. Stage5C/SMC/deploymentoff.Goalactiveunmet.Preserveunrelatedstaging.
+
 ## Frozen Deferral Readout Complete, Negative (2026-09-18)
 
 Goal active and unmet. All six fixed neural endpoints plus three cached dense

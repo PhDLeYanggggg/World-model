@@ -1,0 +1,61 @@
+{
+  "registration_path": "configs/m3w_source_crossfit_v1.json",
+  "role": "training_only_nested_source_crossfit",
+  "data_registration": "configs/m3w_source_cost_dynamics_v1.json",
+  "reference_training_report": "outputs/publication_readiness_2026_09/source_transfer_control_v1/training_report.json",
+  "inner_sites": [
+    "coupa",
+    "deathCircle",
+    "gates",
+    "hyang"
+  ],
+  "outer_excluded_site": "bookstore",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "models": 12,
+  "updates": 120000,
+  "arm": "mask_only",
+  "initialization": "random_no_fitted_parent",
+  "initial_training": {
+    "updates": 2000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "continuation": {
+    "start_step": 2000,
+    "updates": 10000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200,
+    "milestones": [
+      2000,
+      10000
+    ]
+  },
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 38113,
+  "outer_scoring": false,
+  "model_selection": false,
+  "new_deployment": false,
+  "output": "data/stage_cvpr2027_experiments/source_crossfit_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_crossfit_v1",
+  "bindings": {
+    "scripts/run_m3w_source_crossfit.py": "5cc5d9512e70880fb2ac8af5e14cd6e7f68856546898015a88d5df9a40eea82d",
+    "scripts/analyze_m3w_source_crossfit.py": "d17ef6bc93945f4c041705ce3a4daace7859bc42ea860a34df79383ef294847f",
+    "src/world_model/m3w_source_crossfit.py": "e8eeae2edb39dece47861b95edaf3fc8d6377fe293dd797ddbaa755582a75637",
+    "tests/test_m3w_source_crossfit.py": "ebac3ca63f0106402e9e5ebff8d2912e2c235cc051da960ac5bf6c70420b5ea0",
+    "src/world_model/m3w_source_modality_continuation.py": "ed90bc4bf608fcf761677957238fa5550d8ca6093591dce06d1f26a298ba2fc3",
+    "src/world_model/m3w_source_continuation.py": "25dd33f56b3ff38ca2e08a9d97469a068d82d5b91790a014bcef7caf098ce7c3",
+    "src/evaluation/m3w_recording_diagnostic.py": "7b1774fa1feb28f9de50efc9aab837ac0d985b27877a44c6155f5e4bb21820f9",
+    "configs/m3w_source_cost_dynamics_v1.json": "857633363c34bb7062c59b6a5e33c769120e7bea9f7c05c7d3c69d714f9a882d",
+    "outputs/publication_readiness_2026_09/source_transfer_control_v1/training_report.json": "3148dd9a41d85d4ce599dfa06ee1bb8372b0d5452f22cb5af569872dcf363682",
+    "outputs/publication_readiness_2026_09/source_crossfit_decision.md": "717c60609d5920ca7cc5fe6104266cb0f4c2e7c1f690a05156dd21a95f738070"
+  }
+}

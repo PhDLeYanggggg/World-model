@@ -1,5 +1,16 @@
 # M3W Results Ledger
 
+## Training-Side Candidate Cross-Fit Registered (2026-09-18)
+
+Twelve cold-start dense trajectory fits, four inner source sites and three
+seeds, total120,000updates. Bookstore excluded from every fit and inference;
+main/sealed roles unchanged. Existing parents overlap every inner held row,
+so none can supply honest OOF predictions. New per-fold normalizers and cost
+scales use only the other three sites. Audit of15,430training-side rows and
+access guards passes;26focusedtests pass. This is registration, not a result.
+The100-update local pilot is included in the fixed budget. No new risk head,
+policy selection or deployment. [Decision](outputs/publication_readiness_2026_09/source_crossfit_decision.md).
+
 ## Frozen Deferral Readout Complete: No Transfer Over CV (2026-09-18)
 
 `fresh_run`: six frozen neural endpoints scored on 6,944 previously explored
