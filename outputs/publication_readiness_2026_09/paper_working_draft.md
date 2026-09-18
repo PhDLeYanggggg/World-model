@@ -844,6 +844,58 @@ all visual dynamics. Source crops remain 32 x 32 before upsampling; offline labe
 interpolation, four explored sites and shared fitting folds limit interpretation.
 [Full experiment, gates and failure analysis](source_pretrained_temporal_v1/conclusions.md).
 
+### Annotation Episodes and Repeated Training Exposure
+
+A fresh audit links the current 15,430 stationary-history source queries to
+1,457 past-defined constant-center episodes and 545 recording-scoped tracks.
+There are 207 half-box-excursion windows, but only 55 episode groups and 47 tracks;
+the gates site contributes just two of these track IDs. The persistent-excursion
+subset has 113 windows, 38 groups and 33 tracks. These overlapping descriptive
+subsets are not additive and their groups are not statistically independent
+physical events. The four physical sites remain the higher-level limitation.
+
+Missing selected-neighbor observations do not explain this subset: all 207
+half-box windows have a current and a full-history neighbor, and 206 have a
+moving neighbor. Their crop coverage averages 99.879%, although annotation boxes
+occupy a median 7.10 by 11.27 output pixels. Availability is not predictive utility.
+Of all queries, 451 are static only on the eight sampled steps, not throughout
+the intervening raw annotation frames. A further 142 sampled-static futures
+contain an intervening raw change. Neither observation changes the approved grid.
+
+Reweighting the five frozen predictors by episode or scoped track leaves all
+aggregate gains negative. For centered appearance, the original -0.7622% becomes
+-0.2480% under episode weighting and -0.4610% under track weighting. These are
+post-hoc sensitivity descriptions, not new primary metrics or model-selection
+results. [Audit and definitions](source_event_support_v1/conclusions.md).
+
+The registered training intervention samples episodes equally within each
+training complement, then rows equally within an episode. It retains every row,
+the original evaluation, normalizers and per-example ADE loss. All 24 fresh heads
+complete 10,000 updates. Geometry and centered-appearance equal-site gains are
+-37.3268% and -54.9917%, with conditional four-site intervals
+[-52.3613,-26.0828] and [-79.7777,-39.1095]. Their uniform controls, reused after
+hash verification, give -0.0704% and -0.7622%. All new held fits are negative;
+centered-minus-geometry is -17.6649 percentage points. Static-target harms rise
+to 0.576017 and 0.765669 annotation pixels, while nonzero-target errors also rise.
+
+Equal episode probability changes the expected loss despite retaining its
+per-example formula. A post-hoc diagnosis measures future-change frequency at
+38.62-47.49% under uniform rows and 61.71-73.54% under the new sampler. Future
+labels are used only for this diagnosis, not group construction or model inputs.
+All new heads improve their reweighted training risk over CV: 4.52-13.29% for
+geometry and 9.23-21.71% for centered appearance. Yet their original unweighted
+training risks worsen by 10.61-14.80% and 14.46-19.73%. This identifies a measured
+objective mismatch, not a unique explanation of held-site failure or proof of
+sufficient past information. More sampled exposure does not add independent
+events. An importance-corrected follow-up has not run.
+
+All 24 predictions replay exactly, weighted sampling streams regenerate, six
+OOF archives recompute and completed resume preserves 84 artifacts with no new
+updates. Engineering reproducibility does not establish neural benefit. The
+same four explored sites/shared training complements remain a limitation; no
+main, outer or independent confirmation score is introduced.
+[Experiment, diagnosis and gates](source_episode_sampler_v1/conclusions.md).
+
 ### Past-Only Temporal Centering Control
 
 A subsequent input audit aligns all 123,440 historical query keys and finds

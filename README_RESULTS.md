@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Event Support Audited; Sampling Repair Registered (2026-09-19)
+## Equal-Episode Training Complete: Objective Shift, No Gain (2026-09-19)
 
 Fresh raw current-cohort audit: 15,430 queries, 545 scoped tracks, 1,457 past-defined
 annotation episode groups. Half-box excursions: 207 windows, 55 groups, 47 tracks;
@@ -15,15 +15,48 @@ replace the primary evaluation. All 1,077 real future-mutation/truncation checks
 pass; a second complete audit exactly reproduces its artifacts. These groups
 are not independent physical events. No new forecast was made by the audit.
 
-Registered next repair: equal training exposure per past-defined episode, with
-geometry and centered inputs. 24 new heads/240,000 updates; same data, loss,
-normalization, architecture and original evaluation. Uniform controls are reused
-after hash verification. Registration was pushed as 662dcbba/dd5c7128 before
-fitting. The included 100-update pilot passed in 0.220s. Full training is live
-(PID 81193), with 200-update atomic checkpoints. Twenty-eight scoped tests pass,
-including exact weighted-sampler resume. No aggregate training result yet.
+Completed repair: equal training exposure per past-defined episode, with geometry
+and centered inputs. All 24 new heads complete 240,000 updates. Same data, per-row
+loss, normalization, architecture and original evaluation; the changed sampling
+probabilities explicitly change the expected training objective. Uniform
+controls are `cached_verified`, not retrained. Registration was pushed as
+662dcbba/dd5c7128 before fitting. No held-driven selection or early stopping.
+
+| Arm | Equal-site ADE gain vs stationary CV | Conditional four-site 95% CI | Absolute static harm, annotation px |
+| --- | ---: | --- | ---: |
+| Geometry, original uniform control | -0.0704% | [-0.1644%, -0.0135%] | 0.001644 |
+| Centered image, original uniform control | -0.7622% | [-1.7428%, -0.1231%] | 0.020320 |
+| Geometry, equal-episode sampling | -37.3268% | [-52.3613%, -26.0828%] | 0.576017 |
+| Centered image, equal-episode sampling | -54.9917% | [-79.7777%, -39.1095%] | 0.765669 |
+
+All 24 fresh held fits are negative. Centered minus geometry is -17.6649pp,
+conditional interval [-31.0197, -6.9387]. Nonzero-target gains are also negative:
+-8.7639%/-14.7767%. Static CV error is zero, so percentage easy degradation is
+undefined, not a 2% pass. All seeds, sites and fixed contrasts remain reported.
+
+Fresh objective-shift diagnosis: training future-change frequency increases
+from 38.62-47.49% under uniform rows to 61.71-73.54% under the new sampler.
+Geometry models gain 4.52-13.29% on reweighted training risk, but lose 10.61-14.80%
+on original unweighted training risk; centered models gain 9.23-21.71% reweighted
+and lose 14.46-19.73% unweighted. Training works, but optimizes a different risk.
+These future-label statistics are diagnostic only, not sampler or input features.
+This does not prove the only cause of held-site failure or input sufficiency.
+
+Training PID 81193 exited normally. Summed fitting: 531.085s, including the
+100-update pilot; main-log span 537.627s. Twenty-four exact forecast replays and
+regenerated weighted streams, twelve paired-arm streams, six recomputed OOF
+archives, 84 artifacts unchanged on zero-update resume. Twenty-eight scoped tests
+pass; full legacy suite not rerun. All required processes are terminal.
+
+Same four explored source sites, three seeds and 2,000 conditional site-bootstrap
+draws; no independent confirmation, main/outer/t+50/external scoring, new
+deployment, Stage5C or SMC. Next unrun check: importance-corrected sampling that
+preserves the original expected risk, before any registered follow-up fitting.
 [Audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md),
-[fixed training design](outputs/publication_readiness_2026_09/source_episode_sampler_decision.md).
+[fixed training design](outputs/publication_readiness_2026_09/source_episode_sampler_decision.md),
+[results](outputs/publication_readiness_2026_09/source_episode_sampler_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/source_episode_sampler_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/source_episode_sampler_v1/gates.md).
 
 ## Temporal Centering Complete: Less Harm, Still Negative (2026-09-18)
 

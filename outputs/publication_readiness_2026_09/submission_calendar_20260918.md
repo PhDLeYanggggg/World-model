@@ -47,10 +47,13 @@ call the paper ready. The user retains the final submission decision.
 ## Current Priority Gaps
 
 1. Candidate dynamics: the 12-model site-crossfit, matched static-loss repair,
-   36-head pretrained comparison and 24-head centering comparison are complete.
-   None yields positive excluded-site forecasts. Centering reduces the failing
-   temporal model's harm but still loses 0.762% to CV. Independent state-change
-   support and predictive past information remain the next development gap.
+   36-head pretrained comparison, 24-head centering comparison and 24-head
+   episode-sampling comparison are complete. None yields positive excluded-site
+   forecasts. Equal-episode sampling worsens geometry/centered gains to
+   -37.327%/-54.992% and changes the expected training risk. Exact importance-
+   correction checks remain unrun. The fresh event audit finds only 55 annotation
+   groups/47 scoped tracks among 207 half-box-excursion windows; independent
+   support and predictive past information remain unresolved.
 2. Conditional gain/harm: lower training jitter must not be mistaken for useful
    movement prediction. A candidate with measurable benefit is required before
    arguing that joint intervention solves a real prediction problem.
@@ -58,7 +61,7 @@ call the paper ready. The user retains the final submission decision.
    joint-versus-independent contrasts, independent calibration/confirmation,
    source/scene uncertainty and anonymous reproduction remain incomplete.
 4. Resources and policy: the latest 240k-update small-head comparison completed
-   locally in 764 summed fitting seconds with exact resume. This does not predict
+   locally in 531 summed fitting seconds with exact resume. This does not predict
    end-to-end encoder cost. CREATE asset and scheduler state remain unverified;
    the prior SSH access failure has not been repaired in this comparison. Final
    2027 formatting/AI-use policy remains unverified. Updating these experiment

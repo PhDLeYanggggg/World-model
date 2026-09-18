@@ -51,7 +51,9 @@ seed, checkpoint, threshold or population selection. Registration commits
 
 Only training row probabilities changed: equal mass per past-defined annotation
 episode within each training complement, then equal mass among its rows.
-All rows keep positive probability. Geometry/coverage, frozen visual features,
+All rows keep positive probability. The per-example loss is unchanged, but the
+expected training objective is reweighted; this is not an unbiased uniform-risk
+sampler. Geometry/coverage, frozen visual features,
 63,960 parameters, seeded initialization, all-target ADE, original normalizer,
 training cost scale, hard cutoff and original evaluation are unchanged.
 The geometry and centered arms share weighted draws; draws intentionally differ
@@ -104,10 +106,10 @@ See [fixed design](../source_episode_sampler_decision.md), [analysis](analysis.j
 and [evidence gates](gates.md).
 """
     (public/'conclusions.md').write_text(text)
-    commands = '\n'.join(f'.venv-pytorch/bin/python scripts/{name}_m3w_source_episode_sampler.py --registration {args.registration}'
-        for name in ('run','analyze','verify','report'))
-    commands = commands.replace('\n.venv-pytorch/bin/python scripts/analyze',
-        f'\n.venv-pytorch/bin/python scripts/run_m3w_source_episode_sampler.py --registration {args.registration} --replay\n.venv-pytorch/bin/python scripts/analyze')
+    entry = lambda name:f'.venv-pytorch/bin/python scripts/{name}_m3w_source_episode_sampler.py --registration {args.registration}'
+    commands = '\n'.join([entry('run'),entry('run')+' --replay',entry('analyze'),
+        '.venv-pytorch/bin/python scripts/diagnose_m3w_source_episode_sampler.py',
+        entry('verify'),entry('report')])
     (public/'reproducibility.md').write_text(f"""# Reproduction
 
 Registration SHA256: `{file_digest(args.registration)}`.

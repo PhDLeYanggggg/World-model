@@ -1,6 +1,48 @@
 # Real-Experiment Continuation Handoff
 
-## Equal-Episode Training Live (2026-09-19)
+## Equal-Episode Experiment Complete, Negative (2026-09-19)
+
+Goal remains active/unmet. All 24 new heads/240,000 updates complete, fresh_run.
+Registration 662dcbba/dd5c7128; live evidence tools committed as 8c010b4f.
+Full PID81193/session49172 exited0; fit531.084606s, main-log537.626669s.
+Included pilot100steps/PID81149 completed0.220421s. No live required processes.
+24 exact train/held replays and regenerated weighted streams (PID82127/session8122),
+12 paired-arm streams, 24 group-mass checks, six OOF recomputations. Zero-update
+resume PID82358 preserves84artifacts. 28 scoped tests pass, no full legacy suite.
+Renderer completes; aggregate figure inspected. No data/cache/checkpoint in Git.
+
+Geometry event gain -37.326769%, CI[-52.361267,-26.082813]; centered event
+-54.991682%, CI[-79.777678,-39.109531]. All24heldfitsnegative. Uniform controls
+-0.070374/-0.762164%, cached_verified not refitted. Static absolute harms
+0.576017/0.765669annotationpx; easy percentage undefined, not2%pass. Nonzero gains
+-8.763934/-14.776693%. Four explored sites/three seeds/shared training folds,
+2000conditionalbootstrap, no independent confirmation or new deployment.
+
+Post-hoc diagnosis: train future-change frequency uniform38.62-47.49% becomes
+episode-weighted61.71-73.54%. All heads improve reweighted training risk but lose
+on original unweighted train risk. Only per-example loss is unchanged; sampler
+changes expected objective. Labels are diagnostic only, never sampling/input.
+This is a measured mismatch, not the sole proven cause or input sufficiency.
+Source support remains207halfboxwindows/55groups/47tracks,206movingneighbors.
+
+Artifacts: source_episode_sampler_v1/{analysis,diagnosis,verification}.json,
+conclusions.md,failure_analysis.md,gates.md,reproducibility.md,comparison.svg.
+Config d9f289f42d522289295ab1d8d584f3fbe49282397f36bf8b9439f187173e6cd5;
+analysis 07caff5827382ecb5392309fee8265e5a21cdd9a23cb290e0df690a567219144;
+diagnosis 44376aa1b57f57ff20fb01c45d6caabcbbfaeaeb9cdbd8685aec2a6e530e5864;
+verification 8463ac57b5f359100e57157e8faf06fa0a64d0412614995a84ab3a830c363222.
+Do not change registered/bound model, trainer, sampler or analysis files/results.
+
+Next safe repair NOT RUN: exact uniform-risk importance factor
+1/(N_train*p_train(row)). Verify expected loss/gradient, nonzero support and exact
+resume, then register matched fitting if sound. No silent clipping/normalization
+or episode-weighted primary evaluation. It cannot create independent events or
+promise lift; a separate past-information/data route may still be needed.
+Main/outer/external scores remain unopened. No Stage5C/SMC, no CREATE job; prior
+SSH denial not retried. Preserve unrelated3019stagedchanges fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+## Historical: Equal-Episode Training Live (2026-09-19)
 
 Registration662dcbba plus pre-fit formatting/hashfixdd5c7128 pushed before fitting.
 100updatepilotPID81149/session96606 completed0.220421sec,countsbudget.

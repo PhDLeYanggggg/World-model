@@ -24,9 +24,10 @@ I also distinguish training windows from genuinely different situations. A recen
 [event-support audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md)
 maps 15,430 stationary-history windows to 1,457 annotation episodes. The 207
 larger-excursion windows come from only 47 scoped tracks. Nearly all already have
-moving neighbors, so adding a missing-neighbor flag is not the answer. The next
-controlled experiment tests episode-balanced training exposure without changing
-the evaluation metric or removing easy cases.
+moving neighbors, so missing neighbor slots do not explain that subset. The
+completed episode-balanced training comparison makes prediction substantially
+worse. It also reveals an important distinction: changing which windows are
+sampled changes the expected training objective, even with the same per-row loss.
 
 ## Current Evidence
 
@@ -44,6 +45,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Do raw annotation checks and past-box features explain the failure? | Small changes are common, but >10px queries contribute 53.25% of baseline error and still lose. Forty-eight fixed probability probes find no stable added-box benefit. |
 | Do pretrained image features repair source transfer? | No. Thirty-six matched trajectory heads complete 360,000 updates. Geometry/current-image/eight-frame gains are -0.070%/-1.908%/-6.102%; all held fits are negative. |
 | Does removing shared appearance repair the temporal model? | It reduces harm, but does not beat the baseline. Twenty-four fresh heads give -0.762% for centered input and -1.756% with RMS normalization; all held fits remain negative. |
+| Does balancing exposure across annotation episodes help? | No. Twenty-four fresh heads complete 240,000 updates, but geometry and centered-image gains fall to -37.327% and -54.992%. The sampler changes the effective training objective and greatly increases static-target harm. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -95,6 +97,17 @@ Both remain worse than geometry alone. These are useful negative controls, not a
 new deployable model. The remaining question is whether the observed histories
 provide enough transferable information about independent state-change events.
 
+The [episode-exposure experiment](outputs/publication_readiness_2026_09/source_episode_sampler_v1/conclusions.md)
+keeps those inputs and all evaluation rows, but samples annotation episodes
+equally during training. All 24 new held-site fits are negative. A
+[post-hoc diagnosis](outputs/publication_readiness_2026_09/source_episode_sampler_v1/failure_analysis.md)
+shows why this is not simply a training-runtime problem: every head improves
+its reweighted training risk while worsening the original unweighted risk.
+The sampled proportion of future-changing labels rises from 38.62-47.49% to
+61.71-73.54%. Future labels are used only to describe this shift, never to build
+the sampling groups or inference inputs. Exact replay confirms the failure;
+it does not rescue the model.
+
 ## Evidence and Reproduction
 
 The detailed record is kept separately so that the project overview remains
@@ -104,7 +117,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_temporal_centered_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_episode_sampler_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some
@@ -173,35 +186,19 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 ## Next Step
 
-Improve candidate utility before fitting another risk head. The loss control
-has separated larger oracle headroom from actual predictive value; it has not
-supplied a safe candidate. The annotation-scale check is now complete: neither
-small changes alone nor the tested past-box features explain or repair the
-transfer failure. Next I will test a different past-information representation,
-after checking reusable visual assets and defining a matched geometry control.
-This is not a reason to repeat failed compact RGB routes unchanged.
-OOF labels do not automatically permit a second-level
-validation split: every upstream producer must also exclude the risk head's
-validation scene.
+Improve candidate utility before fitting another risk head. The next controlled
+check is whether balanced exposure can preserve the original training risk with
+exact importance weighting. I will first verify the expected loss and gradient,
+then register a matched comparison. This follow-up has not run and does not
+promise a gain. More weight on rare windows cannot create new independent
+events or supply missing intention cues.
+
+The loss, annotation, visual-feature, temporal-centering and episode-sampling
+controls remain available, including their negative results. No policy or test
+threshold has been changed to rescue them. OOF labels also do not automatically
+permit a second-level validation split: every upstream producer must exclude
+the risk head's validation scene.
 [Provenance boundary](outputs/publication_readiness_2026_09/source_crossfit_v1/method_and_limits.md).
-
-The [fixed loss-control registration](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md)
-and all negative outcomes remain available. No new policy has been deployed,
-and no test threshold was changed to rescue this result.
-
-The [registered information audit](outputs/publication_readiness_2026_09/source_motion_quality_decision.md)
-is complete: 48 fresh fits, exact replay and 44 focused checks. Its negative
-probability results do not change the main task or justify a new deployment.
-
-The [registered pretrained comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md)
-is complete and negative. A [past-only input audit](outputs/publication_readiness_2026_09/source_temporal_information_v1/conclusions.md)
-finds no repeated-frame or empty-token explanation: all eight frames align and
-vary, but temporal variation is only 2.57% of frozen feature energy on average.
-The next [fixed repair](outputs/publication_readiness_2026_09/source_temporal_centered_decision.md)
-removes shared appearance with two observation-only transforms, keeping the
-training budget and targets unchanged. No repair result is claimed yet. Existing native-detail
-and optical-flow negative controls remain relevant; simply adding resolution or
-more modules is not an established repair.
 
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,

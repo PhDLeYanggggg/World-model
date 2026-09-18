@@ -78,7 +78,7 @@ def main():
                 np.testing.assert_array_equal(a[k],v)
         hashes[item['path']] = item['sha256']
     for p in [*private.joinpath('trials').glob('*.json'),private/'identity.json',
-              *[public/(x+'.json') for x in ('input_checks','report','replay','analysis')]]:
+              *[public/(x+'.json') for x in ('input_checks','report','replay','analysis','diagnosis')]]:
         hashes[str(p.relative_to(ROOT))] = file_digest(p)
     child = subprocess.run([sys.executable,'scripts/run_m3w_source_episode_sampler.py',
         '--registration',str(args.registration)],cwd=ROOT,text=True,capture_output=True,check=True)
