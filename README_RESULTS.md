@@ -21,6 +21,13 @@ prediction result. Prior12models are cached_verified; no new fitted parent reuse
 Local/GitHub80114832verified; local66GiBfree. CurrentCREATEstateunknown,nojobsubmitted.
 [Decision](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md).
 
+Pre-fit registration ee3e8667 pushed. Included100updatepilot PID59254 exits0,
+4.9230trainingseconds; no held scoring. Fullrun PID59275/session59896 resumes
+atstep100, CPU4/workers0, about2.6GiBRSS. Training still in progress, not complete.
+The [objective interpretation](outputs/publication_readiness_2026_09/source_motion_candidate_v1/objective_interpretation.md)
+explains why zero can be ADE-optimal and why better conditional-motion oracle
+utility would not establish a deployable predictor.
+
 ## Training-Side Candidate Cross-Fit Complete: Candidate Utility Still Fails (2026-09-18)
 
 `fresh_run`: twelve cold-start models, four inner physical sites and three seeds,

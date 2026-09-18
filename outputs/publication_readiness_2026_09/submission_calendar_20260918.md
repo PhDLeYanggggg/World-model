@@ -3,7 +3,9 @@
 ## Material Passport
 
 Fresh official-web check on2026-09-18, not acceptance or readiness evidence.
-The experiment remains live; this calendar does not replace missing results.
+Rechecked during the matched motion-loss run; this calendar does not replace
+missing results. The official CFP still lists the dates below, and the direct
+2027 AuthorGuidelines path still returned404. No registration was submitted.
 
 ## Official Dates and Current Policy Availability
 
@@ -44,17 +46,17 @@ call the paper ready. The user retains the final submission decision.
 
 ## Current Priority Gaps
 
-1. Candidate dynamics: the complete60-fit cost study is negative. The12microfits
-   show numerical fitability only; the current fixed full-training continuation
-   separates longer exposure from rate decay without held evaluation.
+1. Candidate dynamics: the completed12-model site-crossfit has -5.016% equal-site
+   gain and only0.468% fixed binary-oracle headroom. Current12-model loss control
+   removes zero-target gradients under identical sampling; no result yet.
 2. Conditional gain/harm: lower training jitter must not be mistaken for useful
    movement prediction. A candidate with measurable benefit is required before
    arguing that joint intervention solves a real prediction problem.
 3. Independent evidence: matched public forecasting/deferral controls, useful
    joint-versus-independent contrasts, independent calibration/confirmation,
    source/scene uncertainty and anonymous reproduction remain incomplete.
-4. Resources and policy: local continuation is reasonable; CREATE current asset
-   and scheduler state remain unknown behind the saved access blocker. Final
+4. Resources and policy: the prior120kupdate local run took96minutes; current
+   CREATE asset and scheduler state remain unknown, not freshly checked. Final
   2027 formatting/AI-use policy is not yet verified by this check.
 
 No metric/seconds/true3D/foundation claim, no Stage5C execution orSMC. Meeting an

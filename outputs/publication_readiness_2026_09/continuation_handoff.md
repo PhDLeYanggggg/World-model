@@ -12,7 +12,9 @@ Entry scripts/run_m3w_source_motion_candidate.py supports --audit-only,
 --trial coupa_seed17 --stop-at100 pilot, default full/resume and --replay.
 Analysis scripts/analyze_m3w_source_motion_candidate.py frozen beforefit.
 Public source_motion_candidate_v1;private data/stage_cvpr2027_experiments/source_motion_candidate_v1.
-Need prefitcommit/push, included100updatepilot, fullmatrix, exactreplay, analysis,
+Prefitcommitee3e8667pushed. PilotPID59254exit0,100updates/4.9230trainingsec inbudget.
+FullmatrixRUNNING PID59275/session59896,fromstep100. Do notduplicate orstopdueslow.
+Need fullcompletion,exactreplay,analysis, verifier scripts/verify_m3w_source_motion_candidate.py,
 producer/drawcount/zero-updateresumechecks. Runtimeestimate96min frompriorfullrun;
 local66GiBfree; currentCREATEassets/jobsunknown, nojobsubmitted. Outerbookstore,
 main/sealedrolesunchangedandunscored. No deployment/Stage5C/SMC. Preserve unrelated
