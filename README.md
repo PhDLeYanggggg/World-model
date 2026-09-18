@@ -137,6 +137,11 @@ a second-level validation split: every upstream producer must also exclude the
 risk head's validation scene.
 [Provenance boundary](outputs/publication_readiness_2026_09/source_crossfit_v1/method_and_limits.md).
 
+The next [registered loss control](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md)
+keeps the same full training sampler and removes only zero-target ADE gradients.
+All evaluation rows remain; it tests conditional candidate utility, not a
+future-informed deployment rule. No result is claimed before the fixed run finishes.
+
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,
 and obtain genuinely independent calibration and confirmation. More overlapping

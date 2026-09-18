@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched Zero-Target Gradient Control Registered (2026-09-18)
+
+Twelve new cold-start fits planned, four source-site folds/three seeds,120,000
+updates. Same full sampler, random initialization seeds, architecture, fold
+preprocessing, loss scale and terminal budget as source_crossfit_v1. Only remove
+zero-target ADE gradients, keeping the original batch denominator. All held rows
+remain evaluated; future labels never gate inference. No new deployment policy.
+
+New engine's unconditional mode exactly matches the old two-phase engine in a
+regression test; sampler, resume and zero-gradient tests pass.32focusedtests.
+Real input audit PID59036 exits0:4folds,32loaded-target poison checks, unchanged
+preprocessing hashes and held/main access guards. This is registration, not a
+prediction result. Prior12models are cached_verified; no new fitted parent reuse.
+Local/GitHub80114832verified; local66GiBfree. CurrentCREATEstateunknown,nojobsubmitted.
+[Decision](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md).
+
 ## Training-Side Candidate Cross-Fit Complete: Candidate Utility Still Fails (2026-09-18)
 
 `fresh_run`: twelve cold-start models, four inner physical sites and three seeds,

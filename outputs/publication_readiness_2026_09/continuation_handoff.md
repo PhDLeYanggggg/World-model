@@ -1,5 +1,23 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Zero-Target Gradient Control Registered (2026-09-18)
+
+Previous goal turn completed120krealupdates and negative OOFutility, not a stall.
+Current next experiment configs/m3w_source_motion_candidate_v1.json:12cold-start
+models/120kupdates, same4folds/3seeds/fullsampler/model/normalizer/scale as control.
+Only zero-targetADE gradients removed; denominator remains fullbatch, all eval
+rows retained. No label-gated inference or new policy. Testengineunconditional
+exactlymatchesoldtwo-phaseengine;32focusedtests;realinputauditPID59036exit0.
+Entry scripts/run_m3w_source_motion_candidate.py supports --audit-only,
+--trial coupa_seed17 --stop-at100 pilot, default full/resume and --replay.
+Analysis scripts/analyze_m3w_source_motion_candidate.py frozen beforefit.
+Public source_motion_candidate_v1;private data/stage_cvpr2027_experiments/source_motion_candidate_v1.
+Need prefitcommit/push, included100updatepilot, fullmatrix, exactreplay, analysis,
+producer/drawcount/zero-updateresumechecks. Runtimeestimate96min frompriorfullrun;
+local66GiBfree; currentCREATEassets/jobsunknown, nojobsubmitted. Outerbookstore,
+main/sealedrolesunchangedandunscored. No deployment/Stage5C/SMC. Preserve unrelated
+stagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Training-Side Source Cross-Fit Complete, Negative (2026-09-18)
 
 Goal active and unmet. Twelve cold-start SourceDynamics models, 120,000 updates,

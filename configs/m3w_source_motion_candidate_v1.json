@@ -1,0 +1,48 @@
+{
+  "registration_path": "configs/m3w_source_motion_candidate_v1.json",
+  "role": "training_only_matched_zero_gradient_intervention",
+  "control_registration": "configs/m3w_source_crossfit_v1.json",
+  "control_report": "outputs/publication_readiness_2026_09/source_crossfit_v1/report.json",
+  "sites": [
+    "coupa",
+    "deathCircle",
+    "gates",
+    "hyang"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "models": 12,
+  "updates": 120000,
+  "training": {
+    "start_step": 2000,
+    "updates": 10000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200,
+    "minimum_lr_ratio": 0.01
+  },
+  "suppress_zero_target_gradients": true,
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 38113,
+  "model_selection": false,
+  "outer_scoring": false,
+  "new_deployment": false,
+  "output": "data/stage_cvpr2027_experiments/source_motion_candidate_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_motion_candidate_v1",
+  "bindings": {
+    "scripts/run_m3w_source_motion_candidate.py": "560300e0c9b3853626f9314ba5dc848fdfb8b7891d96b4d9dab739b1bb2e44e0",
+    "scripts/analyze_m3w_source_motion_candidate.py": "39746f91c669bae7bb28a0713dc3632d4c2b7003af56847d303fa5776d15c0bf",
+    "src/world_model/m3w_source_motion_candidate.py": "500f48876b750c82f69c38a64d9e884faf49e8054f501662b3fd87e77c913b8b",
+    "tests/test_m3w_source_motion_candidate.py": "1650e7c7d2c55c055d9fd3ee55b0fb1165e6c5d16637666e9b29d8ca50ae6afd",
+    "outputs/publication_readiness_2026_09/source_motion_candidate_decision.md": "32ebd310a6d3cd8ee49e97df9b6c5a25f7452c5b0544f2850dae36cec1bcad2c",
+    "configs/m3w_source_crossfit_v1.json": "f1ea040f58610ecb7f8f2380f72c92dd7a745767d05855292e572421e0dd0a14",
+    "scripts/run_m3w_source_crossfit.py": "5cc5d9512e70880fb2ac8af5e14cd6e7f68856546898015a88d5df9a40eea82d",
+    "outputs/publication_readiness_2026_09/source_crossfit_v1/report.json": "64f38a57ea213f8c416a6d56948e5d7a58d7bd1609bed7f3e80b2848b3b5f785",
+    "outputs/publication_readiness_2026_09/source_crossfit_v1/verification.json": "91af2f9fec199ae323042bf8f2db75b1dc2f6398dd281bbb8b44ffad66908b2b",
+    "src/evaluation/m3w_crossfit_cost_diagnostic.py": "c8dbac75cfb3913898205e5e0933087b24e5cde2664e96352a792d1ef4692058"
+  }
+}
