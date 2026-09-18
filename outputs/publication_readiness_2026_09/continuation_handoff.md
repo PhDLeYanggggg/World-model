@@ -1,31 +1,45 @@
 # Real-Experiment Continuation Handoff
 
-## Source-Site Diagnostic Live (2026-09-18)
+## Source-Site Diagnostic Complete (2026-09-18)
 
-Goal active. New source-site information diagnostic running. PID8914,
-session63363,private source_site_probe_v1/run.log andheartbeat. Do notstart
-a second writer or modify frozen training code/config. Registrationpusheda91e5795.
-Config `configs/m3w_source_site_probe_v1.json`, SHA
+Goal active, not complete or blocked. Thirty registered fresh Torch fits and
+60,000 updates complete. Pilot100 + full59,900; full wall49.617min, summed
+fit2758.089sec. Config `configs/m3w_source_site_probe_v1.json`, SHA
 `a2038307eab36cc62ae783eedf3f359747965f2ddcc17cf4f661d83273fab74d`.
-Thirty models,2arms,5physical source sites,3seeds,60kfixedupdates. Same model,
-inputs and label as preceding visual probe;only source internal held-site test.
-Support audit fresh:22,374complete rows/726IDs/36videos/5sites,bothclasses each.
-Original SDD train40 only. No main fitting/evaluation,sealedroles or formal
-protocol changes.42focused tests pass;fulllegacy suite notrerun.
-Pilot100updates/4.49sec completedwithoutheldscore;fullrunresumeswithinbudget.
-After fullwriterexits:exactpredictionreplay,pairedsamplingverificationandzero
-updatecompletedresume,thenconditionalblockanalysis. Newanalysis/verifier are
-unboundpost-fit consumers,nottrainingchanges. Priorvisualmatrixcomplete.
-UnrelatedstagedSHA stays
-`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+Pre-fit registration commit a91e5795. Report SHA
+`4a515cd3b56d1f29bb9e30e7349682bce030f174bec397fda265d4a70aae1142`.
 
-Supplementaryannotationauditcompletedwithoutfilter/trainingchange.10,039positive
-labels;8,583maxtravel<0.1currentboxdiagonal;median2.06annotationpixels;244>=0.5
-currentboxdiagonal. Currentboxdenominator differs fromoldermedianpastboxdefinition.
-All22,374historyjoins exact;99.686%sampledpastannotationrowsgenerated. This is
-offlineannotations,notstrictsensorasof ormotionintentiongold. The one-pixel bin
-uses1e-6roundofftolerance(float32restoration);2,248positives<=1pixel,not165rawfloat
-comparisoncount. No inferenceinputs contain labels.Qualityaudit3targetedtests.
+RGB-minus-mask equal-site Brier lift -0.020046; conditional5site interval
+[-0.027587,-0.011995]. All five site means and14/15paired fits negative.
+RGB-minus-training-prior -0.048785; all30fits acrossbotharms lose to ownprior.
+Equal-agent/site contrast -0.016689; only Hyang has tiny positive agent mean,
+with interval crossingzero. RGB trains better(.202032vs.211919Brier) but holds
+worse(.297592vs.277546). Not only source-to-main domain mismatch: source-internal
+held-site transfer fails too. Do not claim visual information impossible.
+
+Source unchanged22,374complete rows/726localIDs/36videos/5physicalsites,
+originaltrain40only.6,460incomplete stationary queries remain unscored. No main
+training/scoring, sealed roles or formal protocol changed. Audits:85.50% of
+positive labels below0.1currentboxdiagonal,median2.06annotationpixels.244larger
+events are1.091%stationarywindows but26.155%CV ADEerror mass;smallchanges still
+43.406%error mass. Descriptive cost census,not newthresholds/labels. Allpastjoins
+exact;99.686%pastrowsgenerated. Offlineannotations,notstrictsensorasof/intentiongold.
+
+Thirty exact probabilityreplays;15pairedstreams;91immutableartifacts/report
+unchanged oncompletedresume,0addedupdates.46focused tests pass(2.31sec),fulllegacy
+suite notrerun. Figure PNG inspected. All training/replay/verification/analysis/
+quality/test sessions ended exit0; NO LIVE TRAINING. FormertrainerPID8914/session
+63363,replayPID13169/session84655,verification84785,analysis39507 areterminal.
+Do notpolloldhandles orrestartcompletedfits. Privateassetsunder
+data/stage_cvpr2027_experiments/source_site_probe_v1; public matchingreportdir.
+
+Next: controlled supervision-to-forecast-cost and visible-event-support repair,
+not another blind source-to-main alignment,largerCNNorheld-mainthreshold search.
+Keep primarynative8to12/equal-sitepast-normalizedADE andsealedroles unchanged.
+If formalmetric/split/observationcontract changes become necessary,askuser.
+Stage5C/SMCoff; no metricseconds/true3D/foundation/submissionreadiness claim.
+Unrelated staged SHA remains
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
 
 ## Matched Visual Probe Complete (2026-09-18)
 

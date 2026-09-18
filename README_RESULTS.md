@@ -1,28 +1,46 @@
 # M3W Results Ledger
 
-## Source-Site Visual Diagnostic Running (2026-09-18)
+## Source-Site Visual Diagnostic Complete: No Robust Internal Gain (2026-09-18)
 
-Fresh annotation audit: all22,374 source histories have exact past-frame/agent
-joins. Of10,039positive annotation-change labels,8,583(85.50%) have maximum
-future displacement below0.1current-box diagonal;median2.06annotationpixels.
-Allhistories contain generated past annotation rows (99.69%ofsampledframes).
-This is disclosed offline annotation forecasting,not strictsensor-asof or
-human-gold motion intention. No sample or label was changed in the runningfit.
-[Annotation audit](outputs/publication_readiness_2026_09/source_site_probe_v1/annotation_quality_audit.md).
+`fresh_run`: 30 real Torch fits, 60,000 updates, 49.62 minutes full continuation;
+2,758.09 summed fit seconds. The 100-update pilot is included in the budget.
+`cached_verified` inputs: 22,374 complete stationary windows, 726 local IDs,
+36 videos, five physical sites from approved original SDD train40 only.
 
-The next controlled diagnostic holds out each of five physical sites inside
-approved SDD train40, without changing formal main splits or opening sealed
-roles. Fixed RGB-versus-mask arms, three seeds and2,000updates give30fresh fits.
-Inputs/labels reuse verified assets; model and thresholds are not selected on
-held-site scores. Primary diagnostic: equal-site mean of window Brier reduction;
-per-agent sensitivity and training-prior controls remain explicit. This does
-not replace main native8-to12 forecasting or establish deployment.
+| Held site | RGB-minus-mask Brier lift | RGB-minus-training-prior lift |
+| --- | ---: | ---: |
+| bookstore | -0.021543 | -0.047988 |
+| coupa | -0.031010 | -0.039439 |
+| deathCircle | -0.028462 | -0.087600 |
+| gates | -0.008525 | -0.022617 |
+| hyang | -0.010692 | -0.046279 |
 
-Source support:22,374complete stationary queries,726IDs,36videos. Every site and
-its complement contain both labels.42focused tests pass. The100update real
-training-only pilot took4.49seconds and is resumed inside the60kfixedupdates.
-The full matrix is running;final scoring,replay and result interpretation pending.
-[Registered comparison](outputs/publication_readiness_2026_09/source_site_probe_decision.md).
+These are absolute probability-score differences, not ADE/FDE percentages. The
+equal-site RGB-minus-mask contrast is -0.020046, with a conditional 2,000-draw
+site-block interval [-0.027587, -0.011995]. Fourteen of 15 paired fits worsen.
+Equal-agent sensitivity also stays negative in aggregate (-0.016689). No RGB
+or mask fit beats its training prior on a held site. Better RGB training fit
+does not become better held-site prediction. The problem is not only transfer
+from SDD to main; this configuration also fails within the source domain.
+
+Fresh annotation audit: 8,583 of 10,039 positive labels involve less than 0.1
+current-box diagonal of future displacement, with median 2.06 annotation pixels.
+Only 244 larger-motion windows are 1.091% of stationary windows but contribute
+26.155% of stationary CV ADE error mass. Small-change windows still contribute
+43.406%, so silently removing them is not justified. All source histories have
+exact past-frame/agent joins; sampled annotations are mostly generated. This is
+offline annotated-history prediction, not strict sensor-as-of or intention gold.
+
+Verification: 30 exact probability replays, 15 paired sampling/normalization
+checks, 91 unchanged immutable artifacts on completed resume, zero new updates,
+46 focused tests passed. Full legacy suite not rerun. Figure visually checked.
+Five exposed sites and overlapping training folds are not independent confirmation.
+No primary-task change, sealed-role access, new forecast lift, deployment,
+Stage5C or SMC. Research goal remains unmet.
+[Conclusions and next action](outputs/publication_readiness_2026_09/source_site_probe_v1/conclusions.md),
+[full scores](outputs/publication_readiness_2026_09/source_site_probe_v1/results.md),
+[annotation/cost audit](outputs/publication_readiness_2026_09/source_site_probe_v1/annotation_quality_audit.md),
+[reproduction](outputs/publication_readiness_2026_09/source_site_probe_v1/reproducibility.md).
 
 ## Matched Visual Start Complete: Partial Window Gain, No Robust Transfer (2026-09-18)
 

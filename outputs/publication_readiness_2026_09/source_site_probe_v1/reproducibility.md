@@ -54,3 +54,23 @@ Full legacy test suite is not represented as rerun by these focused tests.
 Public artifacts contain aggregates,code,configs and original scientific plots.
 Rawdata,caches,images,per-row predictions andcheckpoints remain local andignored.
 No trajectory lift,deployment,metric/seconds,true3D,foundation,Stage5C orSMC claim.
+
+## Completed Receipts
+
+All 30 fits ended normally. Full continuation wall time:49.62minutes; summed
+fit time:2,758.09seconds. Pilot100 plus continuation59,900 gives60,000updates,
+not60,100. Thirty checkpoint probability replays are exact. The verifier checks
+15 paired streams and preserves91immutable local artifacts plus the report hash
+on completed resume, with zero added updates/fits. See `replay.json` and
+`verification.json` rather than inferring completion from this command list.
+
+Supplementary annotation/forecast-cost audit, without training changes:
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_source_site_quality.py --registration configs/m3w_source_site_probe_v1.json
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_source_site_quality.py
+```
+
+The full focused suite combines those quality tests with the listed tests above:
+46 passed in 2.31 seconds on the final run.
+No live training writer remains from this matrix. Full legacy tests were not run.

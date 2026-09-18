@@ -10,11 +10,20 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am following the visual comparison with a fixed source-internal diagnostic:
-hold out each physical SDD training site, and compare RGB with the same model
-without RGB. This separates failure to learn reusable source information from
-failure to transfer it to other datasets. The [design is fixed before fitting](outputs/publication_readiness_2026_09/source_site_probe_decision.md);
-it does not open the sealed evaluation sets or change the main forecasting task.
+I have now tested whether the visual representation generalizes even between
+SDD training sites. The [five-site, three-seed comparison](outputs/publication_readiness_2026_09/source_site_probe_v1/conclusions.md)
+completed 30 neural fits and 60,000 updates. Adding RGB worsened the average
+Brier score in every held site: the equal-site difference was -0.02005, with
+a conditional site-block interval of [-0.02759, -0.01200]. The models fitted
+their training data better but did not generalize better. This means the current
+failure cannot be explained only by transferring from SDD to another dataset.
+
+The label audit also matters: most positive labels describe very small changes
+in annotated position, not verified walking starts. A small set of larger-motion
+windows contributes a disproportionate share of trajectory error. My next step
+is to align supervision with forecasting cost and visible event support, rather
+than assume that a larger visual model will solve the problem. The main task and
+sealed evaluation sets remain unchanged; this result does not upgrade deployment.
 
 I completed the [matched visual start-information comparison](outputs/publication_readiness_2026_09/source_visual_start_v1/conclusions.md):
 30 small neural classifiers, three seeds and 60,000 updates, with identical

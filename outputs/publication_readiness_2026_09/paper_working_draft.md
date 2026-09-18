@@ -27,6 +27,9 @@ A further45-fit source-supported start-classification study fails bidirectional
 transfer. Its Hotel improvement comes from a mean-probability shift; source and
 mixed models are worse than a constant source prior there and worsen ETH. This
 probability diagnostic does not establish better trajectories or a new policy.
+The subsequent source-internal five-site visual comparison also completes all
+30 fits and is negative. It narrows the diagnosis: failure is not confined to
+source-to-main transfer, and annotation-change frequency is not forecasting cost.
 
 ## Abstract
 
@@ -554,6 +557,30 @@ behavioral label semantics remain unverified. This finite-budget probability
 probe establishes neither trajectory utility nor the absence of visual
 information in general. No forecast or deployment is promoted.
 
+The [source-internal held-site control](source_site_probe_v1/conclusions.md)
+then keeps that architecture, cohort and supervision fixed while fitting on four
+SDD sites and holding the fifth out. All 30 fits complete: two paired RGB/mask
+arms, five physical sites and three seeds. Equal-site RGB-minus-mask Brier lift
+is -0.020046, with a conditional 2,000-resample site interval
+[-0.027587, -0.011995]. All five site means and 14 of 15 seed-site contrasts are
+negative. Both arms lose to their training constant priors in all 30 fits.
+RGB lowers training Brier (0.202032 versus 0.211919) while raising held Brier
+(0.297592 versus 0.277546). Equal-agent weighting remains negative in aggregate.
+Thus cross-dataset mismatch alone is not an adequate explanation for this
+configuration's failure. Five exposed sites and overlapping training folds do
+not provide independent confirmation or a proof that RGB cannot help.
+
+A source annotation audit further limits interpretation of the classifier.
+The median maximum displacement among 10,039 positive annotation-change labels
+is 2.06 pixels; 8,583 are below one tenth of the current box diagonal. The 244
+half-diagonal-or-larger windows constitute 1.091% of stationary windows but
+26.155% of stationary CV ADE error mass. Smaller changes still account for
+43.406% of that mass. Binary event counts therefore cannot replace a
+forecast-cost objective, nor can smaller events simply be discarded. These
+source-only descriptive bins do not change the main endpoint or train labels.
+Offline generated annotation rows are not human intention labels. Thirty exact
+replays and 91 unchanged completed-resume artifacts verify execution, not utility.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -565,6 +592,7 @@ information in general. No forecast or deployment is promoted.
 | Does unit conditioning repair prediction? | 27 fresh geometry fits; input-only -0.68730%, internal-loss -185.77715% vs CV; 0/27 safe | Engineering repair and balanced gradients are insufficient for protected forecasting |
 | Does source supervision transfer start information? | 45 classifiers;no bidirectional gain;Hotel source prior beats every source/mixed arm | Probability-level source benefit remains confounded by prevalence,not demonstrated forecast gain |
 | Does past RGB add robust start information? | 30 matched fits; mixed window gain positive but agent-weighted gain negative and own-prior comparison fails | Fragile partial contrast, not robust transfer or trajectory utility |
+| Does the same RGB representation generalize inside SDD? | 30 matched fits; all five held-site mean contrasts negative; equal-site Brier lift -0.020046 | Failure is not only source-to-main transfer; supervision and visible-event support need controlled repair |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

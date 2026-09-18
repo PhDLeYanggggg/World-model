@@ -20,3 +20,17 @@ The one-pixel bin allows1e-6annotation-pixel roundoff after float32 target resto
 The current-box diagonal differs from the historical median-past-box denominator, even when aggregate counts agree. Do not silently exchange definitions.
 Neighbor presence does not prove interaction intent. Main box labels are not opened or guessed.
 No main protocol change, sealed-role access, new deployment, Stage5C or SMC.
+
+## Label Frequency Versus Trajectory Error Mass
+
+Supplementary source-only diagnosis. Exact stationary histories give a zero-displacement CV rollout.
+The table partitions source CV ADE error mass, not neural prediction performance or the main primary endpoint.
+| Source displacement slice | Windows | Fraction of all stationary windows | Fraction of stationary CV ADE error mass |
+| --- | ---: | ---: | ---: |
+| unchanged | 12335 | 55.131% | 0.000% |
+| positive_below_0.1_box | 8583 | 38.361% | 43.406% |
+| 0.1_to_below_0.5_box | 1212 | 5.417% | 30.439% |
+| at_least_0.5_box | 244 | 1.091% | 26.155% |
+
+Window-pooled source diagnostic only; per-site values are retained in the JSON.
+These descriptive slices are not new training labels, sampling weights, deployment thresholds or a replacement metric.
