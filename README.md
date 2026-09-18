@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+The next [registered diagnostic](outputs/publication_readiness_2026_09/normalization_response_decision.md)
+tests the stationary-scale mismatch directly. I have implemented a separate,
+reversible observed-context frame and checked coordinate-unit rescaling,
+future-label isolation and output restoration. Fourteen focused tests pass.
+Actual parameter-gradient measurements are next; no new forecasting gain is
+claimed from these engineering checks, and the evaluation metric is unchanged.
+
 I have completed the [source-mechanism controls](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.md):
 54 additional neural fits and 270,000 updates, alongside 54 verified previous
 fits. The new controls separate useful SDD supervision from shorter main-task

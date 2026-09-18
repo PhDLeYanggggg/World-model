@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Normalization Response Diagnostic Registered (2026-09-18)
+
+New separate observed-unit frame over the frozen 476-column past schema. It
+reconstructs dimensional summaries, preserves masks, restores predictions to
+the original evaluation coordinates and returns zero delta without a spatial
+anchor. Fourteen focused tests pass, including coordinate rescaling and actual
+autograd chain-rule checks. No optimization or predictive gain from these tests.
+
+Next fixed diagnostic: three seeds, three modalities, initial/frozen-final
+legacy models and two initial internal-frame loss variants; at most32supported
+complete-label windows per supervised event and training domain. Main fold0
+training rows only; no held targets, primary change or sealed-role access.
+[Protocol](outputs/publication_readiness_2026_09/normalization_response_decision.md).
+
 ## Source Mechanism Controls Complete, No Safe Candidate (2026-09-18)
 
 `fresh_run`: 54 fixed Torch fits, 270,000 updates, 8,251.39 summed fit seconds
