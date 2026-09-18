@@ -1,5 +1,19 @@
 # Real-Experiment Continuation Handoff
 
+## Pretrained Temporal Comparison Live (2026-09-18)
+
+Registration pushed as 06f97771 before extraction/fitting. Extraction PID73008
+completed: 25,300 images/215 chunks/361.561 summed seconds; preparation.json.
+Pilot PID74092:100 updates/0.218sec, included in full budget, exit0.
+Training PID74108/session50438 is active; do not duplicate. Private training.log
+and heartbeat.json, atomic checkpoints every200. Fixed36heads/360kupdates, same
+sampler, all-target loss, no selection. CPU4,workers0. Completion then --phase
+replay, analyzer, verifier, report renderer; scripts suffixed source_pretrained_temporal.
+Verification adds three fixed raw-image encoder chunk replays, exact36head
+replays, matched draws, OOF scores and completed-resume immutability. Keep the
+registration/bound files unchanged. No aggregate result or deployment claim yet.
+Source-only subset; no bookstore/main inference, not sensor-as-of. Goal active.
+
 ## Frozen Pretrained Temporal Comparison Registered (2026-09-18)
 
 Previous turn progress, source motion quality completed/committed/pushed d1fd617c,

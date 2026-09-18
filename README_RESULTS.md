@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Pretrained Temporal Comparison Registered (2026-09-18)
+## Frozen Pretrained Temporal Comparison Running (2026-09-18)
 
 Planned actual trajectory experiment: 36 fresh neural heads, four source folds,
 three seeds, geometry/current-image/eight-past-image arms, 360,000 total updates.
@@ -13,7 +13,11 @@ Same full cohort, all-target ADE, zero-initialized bounded output and sampler.
 Frozen official ResNet18 features are cached once from 25,300 existing past crops;
 the small crop resolution remains a limitation. Main/sealed roles are excluded.
 Seventeen focused tests pass, including exact resumed training on a fixture.
-No real fitting or forecasting result yet. Weight download succeeded with the
+Feature extraction completed: 25,300 images, 215 immutable chunks, 361.561 summed
+seconds. The 100-update fitting pilot completed and counts toward the fixed
+budget. Full training is running as PID 74108 with atomic 200-update checkpoints;
+no aggregate result or deployment claim yet. Registration was pushed as 06f97771
+before extraction and fitting. Weight download succeeded with the
 system TLS store after Python certificate verification failed; TLS was not disabled.
 [Fixed protocol](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md).
 

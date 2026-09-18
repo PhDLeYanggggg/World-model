@@ -165,10 +165,11 @@ The [registered information audit](outputs/publication_readiness_2026_09/source_
 is complete: 48 fresh fits, exact replay and 44 focused checks. Its negative
 probability results do not change the main task or justify a new deployment.
 
-The next [registered comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md)
+The running [registered comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md)
 tests frozen pretrained appearance with a temporal trajectory readout against
 matched geometry-only and current-image controls. It keeps all queries and
-static-target penalties. Implementation checks pass; no result is claimed yet.
+static-target penalties. All 25,300 past-image features are extracted and the
+fixed 36-head training matrix is running; no aggregate result is claimed yet.
 
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,
