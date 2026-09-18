@@ -1,5 +1,23 @@
 # Real-Experiment Continuation Handoff
 
+## Training-Only Cost Deferral Registered (2026-09-18)
+
+Prior turn is progress: six matched controls and complete fixed source evaluation
+finished negative. This repair permits exact baseline output using an observed
+score. Register `configs/m3w_source_cost_deferral_v1.json`; runner
+`scripts/run_m3w_source_cost_deferral.py`. Two fixed objectives, three seeds,
+same15430trainingrows and mask-only2kparents,48knewupdates through10k withcosineLR.
+Three matched dense cosine controls reused. Scorethreshold0, no held/main scoring,
+no selection or deployment. All-baseline collapse is not positive forecast gain.
+26focusedtests pass, including exact dense-engine equivalence, detached target
+gradients and exact resume. Gradient sum check tolerates only float32 rounding;
+the detached auxiliary-cost target is directly verified to have no proposal path.
+Next assetaudit, preregcommit/push,100-updatepilot withinbudget, fullsixbranches,
+24exactreplays, training-side comparison and reports. No new remotejob; CREATE
+state unknown beyond historical accessblocker. Local66GiBfree and prior~37min
+matchedbudget make nativearm64CPU4/workers0 appropriate. Preserve frozen prior
+code/outputs and unrelated staged fingerprint. Goal active, no Stage5C/SMC.
+
 ## Matched Modality Follow-Up Complete (2026-09-18)
 
 New entry: `scripts/run_m3w_source_transfer_control.py`, registration

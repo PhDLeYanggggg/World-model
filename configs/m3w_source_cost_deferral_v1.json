@@ -1,0 +1,32 @@
+{
+  "registration_path": "configs/m3w_source_cost_deferral_v1.json",
+  "role": "source_training_only_cost_deferral",
+  "control_registration": "configs/m3w_source_transfer_control_v1.json",
+  "control_report": "outputs/publication_readiness_2026_09/source_transfer_control_v1/training_report.json",
+  "variants": ["expected_cost", "cost_supervised"],
+  "seeds": [17, 29, 43],
+  "excluded_site": "bookstore",
+  "arm": "mask_only",
+  "new_branches": 6,
+  "additional_updates": 48000,
+  "training": {
+    "start_step": 2000, "updates": 10000, "batch_size": 64,
+    "learning_rate": 0.0003, "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001, "checkpoint_every": 200,
+    "milestones": [2000, 4000, 6000, 10000]
+  },
+  "hard_score_threshold": 0,
+  "held_evaluation": false,
+  "new_deployment": false,
+  "main_primary_changed": false,
+  "output": "data/stage_cvpr2027_experiments/source_cost_deferral_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_cost_deferral_v1",
+  "bindings": {
+    "src/world_model/m3w_source_cost_deferral.py": "174a84365f90f9872c5d864a686eefbc5fb0f3c55a8fdde2be086aa370131c91",
+    "scripts/run_m3w_source_cost_deferral.py": "aabe789ac2d34ed72e70c9fbbe0f42339ee8a3e5af8821c06640c758442f99a9",
+    "tests/test_m3w_source_cost_deferral.py": "03f377f31fb6ce610c2e907a3c68b9d6ac24bce77fe2a1df5fe76d7448c43bc1",
+    "outputs/publication_readiness_2026_09/source_cost_deferral_decision.md": "b8023d84e7a1f88ab871f1ee9f5e33e43838890ebb19c79aee914f0087067a46",
+    "configs/m3w_source_transfer_control_v1.json": "d44fc5f3ab47175530555717868000f66adfe8bbdb56594bbd8575ed54069849",
+    "outputs/publication_readiness_2026_09/source_transfer_control_v1/training_report.json": "3148dd9a41d85d4ce599dfa06ee1bb8372b0d5452f22cb5af569872dcf363682"
+  }
+}

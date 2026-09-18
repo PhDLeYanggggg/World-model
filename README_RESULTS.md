@@ -1,5 +1,16 @@
 # M3W Results Ledger
 
+## Training-Only Relative-Cost Deferral Registered (2026-09-18)
+
+The next fixed repair adds an exact-baseline action to the inherited proposal
+head. Six new continuations compare expected-action cost with a cost-supervised
+variant that also keeps proposal training active. All 15,430 training rows,
+three seeds, identical sampled streams and 48,000 new updates are fixed. Three
+matched dense controls are reused after verification. No held/main scoring,
+threshold search or deployment is permitted in this registration. All-baseline
+output does not count as a successful predictor. Twenty-six targeted tests pass.
+[Decision and prior-work boundary](outputs/publication_readiness_2026_09/source_cost_deferral_decision.md).
+
 ## Matched Modality Control Complete: No Held-Source Gain (2026-09-18)
 
 `fresh_run`: six coverage-only continuations, 48,000 new updates, 36.70-minute
