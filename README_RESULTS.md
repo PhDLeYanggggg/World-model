@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Full Auxiliary Inputs Verified, Training Started (2026-09-18)
+
+`fresh_run`:40trainvideos,229,333windows,254,841pastcrops,2.61GBprivate arrays.
+Complete/partial/absent labels188,358/37,360/3,615; no future-based membership
+filter. All229,333image joins verified;120geometry/label and120frame/944crop
+independent replays match.120future-mutation checks pass. `cached_verified`:
+completed preparation resume preserves600array hashes and manifest,0extractions.
+Build/check827.32s; independent replay275.40s. No source val/test raw data access.
+
+Native arm64 real Torch past-RGB pilot:100updates in5.05s, finite loss/gradient,
+checkpoint saved, no held-score inspection. Full54fit/324,000update comparison
+is running unchanged. No completed model comparison or deployment claim yet.
+[Input, runtime and provenance evidence](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/input_evidence.md).
+
 ## SDD Auxiliary Comparison Registered (2026-09-18)
 
 The source-role/sampling decision is now approved: original SDD train-40,

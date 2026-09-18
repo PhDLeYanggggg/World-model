@@ -1,5 +1,18 @@
 # Real-Experiment Continuation Handoff
 
+## Full Auxiliary Training Live (2026-09-18)
+
+Registration17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb.
+Full inputs229,333queries/254,841crops2.61GB complete. Independent120frames,
+944crops,120geometry/label replays exact; allrowjoins verified. Preparation
+completed-resume0extractions. Real100step sourceRGBpilot5.05s, no held eval.
+Full trainer PID61978, toolsession74306 currently live. Do not start duplicate
+fits. Poll that handle; heartbeat/checkpoints under sdd_auxiliary_v1 privateoutput.
+Unchanged budget54fits/324000updates. Keep waiting; under12h cost estimate.
+No claim of completed training or successful transfer. At terminal: replay all
+predictions, verify completed resume0updates, run fixed analysis, update reports
+and safeGit. Prior staged fingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## SDD Auxiliary Admission Approved (2026-09-18)
 
 The user explicitly replied "按这个方案继续". The source-role/sampling blocker

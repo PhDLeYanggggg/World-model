@@ -14,8 +14,10 @@ The next registered comparison tests SDD as an auxiliary training source: the
 original 40 training videos, sampled every 12 raw frames, with eight observed
 and twelve predicted points. I compare matched training budgets with and without
 SDD, using geometry, image masks and past RGB separately. The ETH/UCY task and
-sealed evaluation roles stay unchanged. This is approved and registered, not a
-completed training result. [Design and safeguards](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md).
+sealed evaluation roles stay unchanged. The full229,333window auxiliary cache
+and independent replay are complete; the54fit comparison is now running, not a
+completed training result. [Design](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md)
+and [input evidence](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/input_evidence.md).
 
 The [working manuscript](outputs/publication_readiness_2026_09/paper_working_draft.md)
 now separates what the models learned from what the data pipeline can support.
