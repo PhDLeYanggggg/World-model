@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am checking why the latest trajectory heads fail even on their training data.
+A [fixed training-only diagnostic](outputs/publication_readiness_2026_09/source_microfit_decision.md)
+will compare two output scales on small, explicitly selected training cohorts.
+It is a fitting check before another benchmark, not a smaller replacement for
+the research task or a generalization result.
+
 I completed a [fixed trajectory-cost comparison](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/conclusions.md):
 60 neural fits and 120,000 updates across five SDD training sites and three seeds.
 It tested actual twelve-step forecasts, comparing ADE with log-ADE and RGB with

@@ -1,0 +1,47 @@
+{
+  "registration_path": "configs/m3w_source_microfit_v1.json",
+  "role": "source_training_only_microfit",
+  "parent_registration": "configs/m3w_source_cost_dynamics_v1.json",
+  "excluded_site": "bookstore",
+  "cohorts": [
+    "nonzero_only",
+    "mixed_zero"
+  ],
+  "nonzero_rows": 16,
+  "zero_rows_in_mixed": 16,
+  "selection_seed": 104729,
+  "selection": "one_per_scoped_training_agent_supported_and_all_training_targets_within_0.8_context_radius",
+  "decoders": [
+    "context_radius",
+    "training_cost_scale"
+  ],
+  "input_arm": "past_rgb",
+  "loss": "parent_normalized_ADE_divided_by_full_training_complement_CV_mean",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "training": {
+    "updates": 2000,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "batching": "fixed_full_microcohort_no_sampling",
+  "models": 12,
+  "total_updates": 24000,
+  "held_evaluation": false,
+  "main_primary_changed": false,
+  "new_deployment": false,
+  "output": "data/stage_cvpr2027_experiments/source_microfit_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_microfit_v1",
+  "bindings": {
+    "configs/m3w_source_cost_dynamics_v1.json": "857633363c34bb7062c59b6a5e33c769120e7bea9f7c05c7d3c69d714f9a882d",
+    "src/world_model/m3w_source_microfit.py": "19a8355988bf55d187e88eb8b70a277796b5c084fc6eb5beb683b8a6ca224f3c",
+    "scripts/run_m3w_source_microfit.py": "d74a3d26de54761ee8ef2eb089ad7c5e70741de2108ca0285ffa6dbda99ff924",
+    "tests/test_m3w_source_microfit.py": "bb7d3b1baf0c901301d6b354468a03d1ab5ad5f6323606703a7f773416ea0cd5",
+    "outputs/publication_readiness_2026_09/source_microfit_decision.md": "930110ae761fa60ed5d89efce6ffb0f32e14ec2ca3aecc539893a5a8d7231406",
+    "outputs/publication_readiness_2026_09/source_cost_dynamics_v1/report.json": "6e9abdc5e3e8edaea588a1fa7f37f212578a238dea813f1a33b570bea45a6eb1"
+  }
+}

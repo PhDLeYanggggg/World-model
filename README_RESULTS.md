@@ -1,5 +1,18 @@
 # M3W Results Ledger
 
+## Training-Only Decoder Diagnostic Registered (2026-09-18)
+
+No new fit yet. The complete60-model negative result motivates a microfit check,
+not another held-score policy search. Two output parameterizations, two explicit
+training microcohorts and three seeds give12 models/24000 fixed updates. The
+cohorts contain16 nonzero-label rows and the same16 plus16 zero-label rows, all
+distinct scoped source-training tracks outside bookstore. Selection uses
+training labels and feasibility; it is not an official evaluation filter.
+All inputs/roles verified;64 focused tests pass. Main and held-source forecasts
+remain not_run. No primary change or deployment.
+[Design](outputs/publication_readiness_2026_09/source_microfit_decision.md),
+[interpretation limits](outputs/publication_readiness_2026_09/source_microfit_v1/interpretation_limits.md).
+
 ## Source Trajectory Cost Comparison Complete: No Useful Candidate Gain (2026-09-18)
 
 `fresh_run`: all60 neural models and120000 updates; 5878.56 summed fit seconds;

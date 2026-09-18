@@ -1,5 +1,21 @@
 # Real-Experiment Continuation Handoff
 
+## Training-Only Microfit Registered (2026-09-18)
+
+Goalactive, prior turn substantiveprogress:60fullcostfitscompletednegative.
+Next local diagnostic `configs/m3w_source_microfit_v1.json`, SHA
+facb6e5a1a6810f42f24ed69d9ffd458d964ab0e6cde28fb04518a2f8d0b4161.
+12fits/24kupdates:2decoders(context_radius/training_cost_scale),2cohorts,
+3seeds. All source complementofbookstoreonly;16nonzero +16zeroscopeduniqueIDs.
+Training-label feasibilityselectiondeclared; no held/main scoring. Parent
+features/targets/normalizer/costmetricunchanged. Auditpassed,64focusedtestspass.
+No currenttraining. Needpreregistercommit,100updatepilotthenfixedfullbudget,
+exactreplay/immutable-resume,fullcohortloss/gradientdiagnosticandhonestreport.
+DecoderchangeaffectsJacobianandinductivebias;notpureglobalLRorproofclipcause.
+Local67GiBfree,CPU4/workers0. CREATEsavedaccessblockerunchanged,remotejobsunknown.
+Mainsealedrolesanddeploymentclosed; noStage5C/SMC. PreserveunrelatedstagedSHA
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Source Trajectory Cost Comparison Complete (2026-09-18)
 
 Goal active; lastturn was real progress, not wait/no-progress. New approved-role
