@@ -19,6 +19,14 @@ unboundpost-fit consumers,nottrainingchanges. Priorvisualmatrixcomplete.
 UnrelatedstagedSHA stays
 `c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
 
+Supplementaryannotationauditcompletedwithoutfilter/trainingchange.10,039positive
+labels;8,583maxtravel<0.1currentboxdiagonal;median2.06annotationpixels;244>=0.5
+currentboxdiagonal. Currentboxdenominator differs fromoldermedianpastboxdefinition.
+All22,374historyjoins exact;99.686%sampledpastannotationrowsgenerated. This is
+offlineannotations,notstrictsensorasof ormotionintentiongold. The one-pixel bin
+uses1e-6roundofftolerance(float32restoration);2,248positives<=1pixel,not165rawfloat
+comparisoncount. No inferenceinputs contain labels.Qualityaudit3targetedtests.
+
 ## Matched Visual Probe Complete (2026-09-18)
 
 Goal remains active, not complete or blocked. All30 registered fits/36prediction

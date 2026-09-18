@@ -2,6 +2,14 @@
 
 ## Source-Site Visual Diagnostic Running (2026-09-18)
 
+Fresh annotation audit: all22,374 source histories have exact past-frame/agent
+joins. Of10,039positive annotation-change labels,8,583(85.50%) have maximum
+future displacement below0.1current-box diagonal;median2.06annotationpixels.
+Allhistories contain generated past annotation rows (99.69%ofsampledframes).
+This is disclosed offline annotation forecasting,not strictsensor-asof or
+human-gold motion intention. No sample or label was changed in the runningfit.
+[Annotation audit](outputs/publication_readiness_2026_09/source_site_probe_v1/annotation_quality_audit.md).
+
 The next controlled diagnostic holds out each of five physical sites inside
 approved SDD train40, without changing formal main splits or opening sealed
 roles. Fixed RGB-versus-mask arms, three seeds and2,000updates give30fresh fits.
