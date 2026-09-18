@@ -34,6 +34,11 @@ estimates of these conditional probabilities. We cannot infer that zero is
 optimal everywhere, that the inputs are sufficient, or that the task is
 unlearnable from a class count or this inequality.
 
+"Nonzero" means a change in supplied annotation coordinates. It is not a
+human-verified movement, start-intention or physical event label. Box jitter,
+annotation discretization and interpolation can contribute; this experiment
+does not estimate how much each contributes or remove them by an outcome filter.
+
 ## What the Registered Intervention Tests
 
 Removing zero-target gradients makes the optimized population objective
