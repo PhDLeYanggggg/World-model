@@ -10,6 +10,31 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I tested whether the small training benefit from cost-aware deferral survives
+outside the fitted scenes. It does not. In the [fixed source-site readout](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/conclusions.md),
+the cost-supervised policy loses 1.246% to the stationary motion baseline,
+compared with a 1.744% loss for the unprotected neural predictor. The policy
+reduces damage, but its underlying trajectory predictions are not better.
+The simpler expected-cost policy rejects every prediction; a 0% change is
+fallback behavior, not a new forecasting result.
+
+All three seeds lose on this source scene. The conditional recording interval
+for the cost-supervised policy is [-4.430%, -0.567%], and giving each recording
+or person equal weight does not reverse the result. The scene was excluded
+from these fits but explored previously, so this is a diagnostic rather than
+independent confirmation. All nine predictors replay exactly. No model is
+promoted, and the main evaluation remains sealed.
+
+The next question is whether a risk head trained on a predictor's own training
+errors learns an overly optimistic view of when to intervene. I will test this
+with scene-held-out training predictions before adding another routing model.
+An additional input audit found only 38 training rows with exactly identical
+inputs but conflicting futures, so widespread exact input collisions do not
+currently explain the failure. This does not prove the available inputs are
+sufficient. [Results](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/results.md),
+[failure analysis](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/reproducibility.md).
+
 I completed a [relative-cost deferral experiment](outputs/publication_readiness_2026_09/source_cost_deferral_v1/conclusions.md)
 on the same 15,430 source-training queries: six neural continuations, three seeds
 and 48,000 new updates in about 37 minutes. Giving the model an exact baseline
@@ -20,8 +45,9 @@ query. Adding direct gain supervision recovered a small training benefit:
 That gain comes mainly from reducing damage to easy cases, not from a stronger
 trajectory decoder. Hard-case improvement is lower than the dense control, one
 training site still loses in every seed, and easy harm is not zero. All 24 saved
-outputs replay exactly, but I have not evaluated these new models on held scenes
-or promoted them. This is a limited training repair, not a world-model result.
+outputs replay exactly. That experiment was training-only; the separate fixed
+readout above now shows the gain does not transfer. No model is promoted.
+This is a limited training repair, not a world-model result.
 [Full comparison](outputs/publication_readiness_2026_09/source_cost_deferral_v1/results.md),
 [reproduction guide](outputs/publication_readiness_2026_09/source_cost_deferral_v1/reproducibility.md).
 

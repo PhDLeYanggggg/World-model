@@ -1,14 +1,39 @@
 # M3W Results Ledger
 
-## Frozen Deferral Source Readout Registered (2026-09-18)
+## Frozen Deferral Readout Complete: No Transfer Over CV (2026-09-18)
 
-The next fixed diagnostic evaluates all six final cost-deferral models on the
-previously explored bookstore source site, with their three matched dense
-controls. No new training, selection, calibration or deployment. The action
-threshold remains zero. Report all arms, recording-block intervals and negative
-slices. Eighteen targeted tests pass. Main roles remain closed; this does not
-turn an exposed site into independent confirmation.
-[Pre-score decision](outputs/publication_readiness_2026_09/source_deferral_transfer_decision.md).
+`fresh_run`: six frozen neural endpoints scored on 6,944 previously explored
+bookstore queries; three dense controls `cached_verified` and freshly replayed.
+Zero new updates, no threshold/model selection. Seven recordings and 181 scoped
+agents belong to one physical site, not independent confirmation. Pre-score
+registration `92b96b78`; score threshold remains zero.
+
+| Output | Held-source gain vs CV | Conditional recording 95% CI | Easy absolute pixel harm |
+| --- | ---: | --- | ---: |
+| Dense neural control | -1.743843% | [-5.899569%, -0.810831%] | 0.02243060 |
+| Expected-cost hard action | 0% | [0%, 0%] | 0 |
+| Cost-supervised raw proposal | -1.747853% | [-5.838922%, -0.821269%] | 0.02245889 |
+| Cost-supervised hard action | -1.245558% | [-4.430101%, -0.566922%] | 0.01581748 |
+
+Hard action reduces damage versus dense by +0.498285pp, conditional CI
+[+0.242032, +1.438712], but still loses to CV in every seed. Hard gain is
+-0.036330%, equal-recording -3.354742%, equal-agent -1.460942%, worst recording
+-13.996053%; intervention 62.985%. Expected-cost all-rejection is not a positive
+prediction result. Percentage easy degradation is undefined at zero CV error.
+Intervals use 2,000 paired recording resamples, not independent-scene evidence.
+
+Nine exact replays, 15 recomputed cells/five summaries, 313 unchanged artifacts
+on repeated evaluation. Twenty-two focused tests pass; full legacy not rerun.
+Post-hoc training-only exact-input audit: 153/15,430 rows in duplicate groups,
+38 in conflicting groups; no widespread exact-aliasing explanation established.
+One serialization failure was fixed and regression-tested; retry verified the
+same fingerprints. Main roles sealed, all processes terminal, no deployment.
+No Stage5C or SMC. Next: training-side out-of-site candidate/gain cross-fitting,
+not held threshold search; this follow-up is not yet run.
+[Conclusions](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/conclusions.md),
+[gates](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/gates.md),
+[figure](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/comparison.svg),
+[Chinese operations](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/operation_zh.md).
 
 ## Relative-Cost Deferral Complete: Small Training Signal Only (2026-09-18)
 

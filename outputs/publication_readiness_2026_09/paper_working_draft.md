@@ -697,6 +697,33 @@ a constant-mean target, but the global Huber/mean discrepancy is small and does
 not explain the plain objective's rejection. Independent calibration and useful
 scene-level joint intervention remain unestablished; no model is promoted.
 
+The [separately registered fixed source readout](source_deferral_transfer_v1/conclusions.md)
+now evaluates all six final cost-deferral endpoints and the three matched dense
+controls, without additional training or threshold selection. Cost-supervised
+hard actions yield -1.245558% gain versus CV, conditional recording interval
+[-4.430101%, -0.566922%], compared with dense -1.743843%. The paired advantage
+over dense is +0.498285pp, interval [+0.242032, +1.438712], but every seed still
+loses to CV. The raw proposal does not improve the dense decoder, and the plain
+expected-cost head outputs only CV. Thus the training improvement is not a
+positive forecasting transfer result.
+
+The intervention rate is 62.985%, compared with 61.002% on training data.
+Hard gain is -0.036330%; equal-recording and equal-agent gains remain negative.
+Zero-target absolute harm is 0.01581748 annotation pixels, with undefined
+percentage degradation. All nine predictors replay exactly, and repeated
+scoring preserves 313 artifacts. The 2,000 paired recording resamples remain
+conditional on seven recordings at a single historically explored site; no
+independent confirmation is implied.
+
+An additional post-hoc training-only exact-input audit finds 153 duplicate-input
+rows among 15,430, including 38 rows with conflicting target trajectories.
+The tested sufficient zero-optimum condition covers none of the conflicting
+groups. This does not support widespread exact input aliasing as the main
+failure mechanism, but does not establish sufficient causal information or
+rule out approximate ambiguity. Optimistic in-sample candidate-cost targets
+and moving-target optimization remain hypotheses requiring training-side
+cross-fitting or frozen-candidate controls, not another held threshold search.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -714,6 +741,8 @@ scene-level joint intervention remain unestablished; no model is promoted.
 | Does longer exposure or rate decay improve complete training fit? |6continuation branches/48knewupdates;constant -1.0310%,cosine +0.2533% | Small schedule-dependent training repair; no held gain or easy-preservation proof |
 | Does that repair transfer, and does RGB help? | Six matched mask continuations; cosine held gain mask -1.7438%, RGB -2.0806%; all 18 states negative | Training improvement does not establish held utility; paired RGB contrast negative, no deployment |
 | Does exact-baseline cost deferral repair training? | Six new fits; plain objective all-reject; supervised cost gives +0.2339% training gain vs dense +0.1872% | Small routing tradeoff, weaker hard benefit, no stronger decoder or held evidence |
+| Does that deferral benefit survive the fixed source readout? | All three supervised-cost action seeds lose to CV; mean -1.2456%, versus dense -1.7438%; plain action all-rejects | Reduces neural harm without positive transfer; current candidate decoder and cost transfer remain insufficient |
+| Is large-scale exact observed-input conflict the main supported cause? | 153 duplicate-input training rows, 38 conflicting rows, no sufficient zero-optimal conflicting group | Not supported by this exact-schema diagnostic; approximate ambiguity and feature sufficiency remain open |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

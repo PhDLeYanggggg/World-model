@@ -1,5 +1,53 @@
 # Real-Experiment Continuation Handoff
 
+## Frozen Deferral Readout Complete, Negative (2026-09-18)
+
+Goal active and unmet. All six fixed neural endpoints plus three cached dense
+controls scored/replayed. New updates 0; no policy search or deployment.
+Pre-score registration commit 92b96b78. Config SHA
+9d4b3c7d35eaa4a679da06ce59678ef523654f02078c19a793d5be65075b6ff2.
+Do not modify frozen registration, runner, consumer, checkpoints or readout.
+
+Bookstore: 6944 queries, seven recordings, 181 scoped agents, one historically
+explored physical site. Training complement15430/29recordings/545agents/4sites.
+No independent confirmation or main/sealed-role score. Fixed score threshold0.
+Cost-supervised hard mean gain -1.245558% vs CV, conditional recording95CI
+[-4.430101,-0.566922], seedrange[-1.460677,-0.958473]. Raw -1.747853% vs dense
+-1.743843%; primary hard-minus-dense +.498285pp, CI[+.242032,+1.438712].
+Less neural harm, not positive transfer. Expected-cost hard all reject/0%.
+Cost-hard hard gain-.036330%, equal-recording-3.354742%, equal-agent-1.460942%,
+worstrecording-13.996053%, easy pixel harm.01581748, actual intervention62.985%.
+Easy percentage undefined at zero CV denominator, not a2%pass.
+Binary oracle on seed-mean hard errors .138155%, raw .203865%; not ensemble,
+deployable policy or universal information bound. Bootstrap2000 conditional
+within one site; no seed/site independence or confirmatory claim.
+
+Nine exact replays,15outputcells/fiveseedmeansrecomputed,313immutableartifacts
+after repeated eval. Source evalPID45964exit0/33.8142sec; replayPID46208exit0;
+verifier session99619/repeated-evalPID46454exit0. All processes terminal.
+22focusedtests pass; fulllegacy not rerun. Figure visually checked.
+Evaluation SHA06ac38de9c15db90a60264ac17d79f05f39241c81ac06d7c8141b52a1fc35667.
+Verification SHA3695ca7e955de4f58ddc0c01c4bb96060983d241774dfe7f79a7165c49a507e7.
+Current CREATE assets/jobs unknown; no new remote work. Local CPU4/workers0.
+
+Post-hoc training-only exact-input audit:153duplicate rows/32groups;38conflict
+rows/1group;0certifiedzerooptimalconflictinggroups. Keys are actual geometry,
+coverage and restorationframe/support; no RGB because currentmaskarmzeroesit.
+No near-neighbor claim. Exactaliasing not supported as main cause, not proof
+of feature sufficiency. Initial JSON NumPy-count serialization failed; regression
+test reproduced; boolconversionfixed; retryverifiedsamefingerprints.
+Private failed/retrylogs preserved. No inference result changed.
+
+Next most valuable: training-only inner leave-one-site-out candidate/gain
+cross-fitting among four outer training sites. Exclude bookstore everywhere;
+do not reuse a parent or fitted preprocessing that saw an inner-held site's
+labels. Audit parent lineage before choosing cold-start or reusable lineage.
+Candidate utility first, then cost-head comparison. In-sample optimism and
+moving-target lag remain hypotheses, not established root causes. This follow-up
+is not registered, implemented or run. Do not retune bookstore or open main
+sealed roles. No Stage5C/SMC/newdeployment. All files are local except safe Git
+code/config/report/aggregate updates; preserve unrelated3019stagedchanges.
+
 ## Fixed Deferral Source Readout Registered (2026-09-18)
 
 Previous turn was progress: six fresh training continuations and complete
