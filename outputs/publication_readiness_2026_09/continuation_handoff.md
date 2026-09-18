@@ -1,5 +1,24 @@
 # Real-Experiment Continuation Handoff
 
+## Frozen Pretrained Temporal Comparison Registered (2026-09-18)
+
+Previous turn progress, source motion quality completed/committed/pushed d1fd617c,
+GitHub verified. Next fixed experiment configs/m3w_source_pretrained_temporal_v1.json.
+36 heads x 10k updates, four sites x three seeds x geometry/current/sequence.
+Reuse original 15,430 source rows, no bookstore/main scoring. Same all-target ADE
+and full uniform sampler, geometry/coverage and observation frame. Frozen official
+ResNet18 features from 25,300 unique existing past crops, ~49.4MiB embedding data.
+Weights downloaded to ignored external_data/pretrained, SHA in registration.
+Python TLS chain failed, system curl verified TLS and downloaded successfully.
+Not semantic/video-foundation proof or independent pretraining overlap audit.
+17 focused tests pass, including exact interrupted/resumed neural fixture.
+No actual features/training yet. Entry scripts/run_m3w_source_pretrained_temporal.py
+--registration <config> --phase prepare/train/replay; prepare --stop-chunks2 and
+train --trial coupa_geometry_seed17 --stop-at100 are included budget pilots.
+Then scripts/analyze_m3w_source_pretrained_temporal.py. Keep bindings immutable.
+CPU4/inter-op1/workers0; no new CREATE check after recent publickey denial,
+no remote job. Goal active/unmet. Stage5C/SMCoff. Preserve unrelated staged work.
+
 ## Source Motion Quality Complete, No Probability Repair (2026-09-18)
 
 Goal active/unmet; this turn is progress, not blocked. Raw alignment completed

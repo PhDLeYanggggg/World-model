@@ -1,0 +1,57 @@
+{
+  "registration_path": "configs/m3w_source_pretrained_temporal_v1.json",
+  "role": "training_only_frozen_visual_candidate",
+  "parent_registration": "configs/m3w_source_crossfit_v1.json",
+  "control_report": "outputs/publication_readiness_2026_09/source_crossfit_v1/report.json",
+  "sites": [
+    "coupa",
+    "deathCircle",
+    "gates",
+    "hyang"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "arms": [
+    "geometry",
+    "current",
+    "sequence"
+  ],
+  "models": 36,
+  "updates": 360000,
+  "training": {
+    "start_step": 2000,
+    "updates": 10000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "weight_path": "external_data/pretrained/resnet18-f37072fd.pth",
+  "weight_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "extraction_batch": 128,
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 38113,
+  "selection": false,
+  "new_deployment": false,
+  "main_primary_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "output": "data/stage_cvpr2027_experiments/source_pretrained_temporal_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_pretrained_temporal_v1",
+  "bindings": {
+    "src/world_model/m3w_source_pretrained_temporal.py": "349eefa35a418cdcc41eff92729e505aebfb53dfe1a25077a5fdb8cfab304d48",
+    "scripts/run_m3w_source_pretrained_temporal.py": "3f0625fcd049834a1c71fc6c98ea75944e9769f2acaaa91e7b882410f37992ff",
+    "scripts/analyze_m3w_source_pretrained_temporal.py": "5bbab2a4f484a25358337ef6645d5a21ae1f0545225703d95167435ec23fa434",
+    "tests/test_m3w_source_pretrained_temporal.py": "824723e775ce7b288ce199107f0edea62f616f7269e3e766810621f43d79aa23",
+    "outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md": "53fadee787b4528ce61bb23d5d39ea1bfa2c7eceae6b77696364b87a6f3aaa59",
+    "configs/m3w_source_crossfit_v1.json": "f1ea040f58610ecb7f8f2380f72c92dd7a745767d05855292e572421e0dd0a14",
+    "src/world_model/m3w_source_motion_candidate.py": "500f48876b750c82f69c38a64d9e884faf49e8054f501662b3fd87e77c913b8b",
+    "outputs/publication_readiness_2026_09/source_crossfit_v1/report.json": "64f38a57ea213f8c416a6d56948e5d7a58d7bd1609bed7f3e80b2848b3b5f785",
+    "outputs/publication_readiness_2026_09/source_motion_quality_v1/analysis.json": "680862850ad71683f98c5b0ae56160b38fa2768e1a332c736db9aa1f2b901bb7",
+    "outputs/publication_readiness_2026_09/source_motion_quality_v1/verification.json": "8cbf7ebadf49cab3226eb29275f9c580065dbb3afe634ba70fc61d3e41738214"
+  }
+}
