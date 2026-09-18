@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Full Source-Training Continuation Live (2026-09-18)
+
+Prior turn was substantive progress:12 microfits established selected-row
+fitability, not generalization. Current registered experiment:
+`configs/m3w_source_continuation_v1.json`, SHA
+`0978f88b22f86b5e3d47fef705051dbe5039bef7445ff08772a58cd24660743d`,
+pre-fit commit`db31a217` pushed. All15430 source-training rows outsidebookstore,
+no excluded-site/main scoring. Three verifiedADE/RGB parents atstep2000 fork
+into constant/cosine schedules through10000;48knewupdates,6branches. Same data,
+sampler/model/optimizer/RNG ancestry, decoder and loss; effective AdamW shrinkage
+also follows LR, so not a pure gradient-mechanism proof.
+
+PilotPID29701/session42090exit0,100updates included,9.2389sec including initial
+complete-train evaluation. InitialtrainADE exactly reproduced. Full trainer
+PID29735/session50206 is LIVE, heartbeat/atomicCP every200steps. Do not start
+a second writer or modify registered files. LocalCPU4/inter-op1/workers0,
+67GiBfree. CREATE onlyhistoricalaccessblocker,remotejobsunknown.54focusedtests
+pass;fulllegacy notrerun. Source files/checkpoints private under
+`data/stage_cvpr2027_experiments/source_continuation_v1`; public matchingfolder.
+Current live count comes from process/heartbeat, not this note's age.
+
+After run exit0: `--replay` for all24milestones; run
+`scripts/verify_analyze_m3w_source_continuation.py --registration configs/m3w_source_continuation_v1.json`.
+Consumer is implemented/compiled, NOT YET executed on completedresults. It
+checks three matched streams, unchanged completedresume andparentfiles,
+decomposes zero-target harm versus moving-target gain, and plots fullcurves.
+Do not claim jitter reduction is dynamics lift. All formal roles/gates remain
+unmet/closed. NoStage5C/SMC. UnrelatedstagedSHA unchanged
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+
 ## Training-Only Microfit Complete (2026-09-18)
 
 Goalactive, prior turn substantiveprogress:60fullcostfitscompletednegative.

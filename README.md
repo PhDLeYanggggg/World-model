@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am now running the [full-training learning-curve control](outputs/publication_readiness_2026_09/source_continuation_decision.md):
+three saved source models, each continued with constant and decaying learning
+rates on the same 15,430 rows. The 100-update timing pilot is part of the fixed
+48,000-new-update budget. This checks whether more exposure or a smaller final
+step size repairs training fit; held-source and main test results remain closed.
+
 I completed a [training-only fitting check](outputs/publication_readiness_2026_09/source_microfit_v1/conclusions.md)
 after the latest full-source failure. All 12 models can memorize the selected
 16- or 32-row training cohorts, including the original decoder with gradient

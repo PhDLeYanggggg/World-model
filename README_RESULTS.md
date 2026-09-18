@@ -7,7 +7,9 @@ verified checkpoints into constant-rate and cosine-decay continuations. Six
 branches receive48,000 new updates in total; all four fixed training milestones
 will be reported. No held-source/main predictions, model promotion or threshold
 selection. This tests exposure and optimizer schedule after the small-cohort
-fitability result, not a new benchmark. Training results are pending.
+fitability result, not a new benchmark. Registered at`db31a217`; the100-update
+pilot completed with exact inherited training-score replay. The six-branch run
+is active (PID29735); final results are pending.54 focused tests pass.
 [Design](outputs/publication_readiness_2026_09/source_continuation_decision.md).
 
 ## Training-Only Decoder Diagnostic Complete (2026-09-18)
