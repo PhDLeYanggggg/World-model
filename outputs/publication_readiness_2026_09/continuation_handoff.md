@@ -9,9 +9,14 @@ bookstore6944 excluded from these fits but already historically explored.
 All18 fixed parent/end predictors score only after all controls finish. No
 main/sealed-role forecasts, selection or deployment. Source recording bootstrap
 2000, seed38113 is conditional on this single exposed site, not scene CI.
-Nineteen targeted tests pass. Training/scoring not started at registration.
-Next: asset audit, pre-fit commit/push,100-update pilot within budget, full six
-branches, fixed evaluation,42 exact replays, postfit verification/report.
+Nineteen targeted training tests plus five statistics tests pass. Asset audit
+exit0; pre-fit registration71d0f520pushed. PilotPID35574/session39778exit0,
+100updates withinbudget,9.2871sec includinginitialtrain evaluation. Fulltrainer
+PID35607/session85791active,CPU4/workers0,checkpoint200. Training log private
+source_transfer_control_v1/training.log. Do not duplicate active training.
+ConfigSHA d44fc5f3ab47175530555717868000f66adfe8bbdb56594bbd8575ed54069849.
+Next: finishfullsixbranches,fixed18predictorevaluation,42exactreplays,postfit
+verification/report. Mainsealedrolesclosed;notindependentconfirmation.
 Do not modify the frozen previous continuation or cost experiment code.
 
 ## Full Source-Training Continuation Complete (2026-09-18)

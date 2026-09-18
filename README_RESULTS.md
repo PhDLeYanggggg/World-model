@@ -6,8 +6,11 @@ The next fixed diagnostic adds six coverage-only continuations (48,000 new
 updates) matched to the completed RGB runs. All 18 parent/final predictors will
 be evaluated after fitting on the already-explored bookstore source site.
 This is not independent confirmation or a new deployment decision. No main
-selection/calibration/confirmation roles are opened. Nineteen targeted tests
-pass; new training and scoring have not started at this registration.
+selection/calibration/confirmation roles are opened. Nineteen targeted training
+tests and five recording-statistics tests pass. Pre-fit registration `71d0f520`
+is pushed. The100-update pilot took9.29seconds including initial full-training
+evaluation, and is included in the budget. Full training is active locally;
+held-source scoring has not started. Checkpoints and heartbeats every200steps.
 [Frozen design](outputs/publication_readiness_2026_09/source_transfer_control_decision.md).
 
 ## Full-Training Continuation Complete (2026-09-18)
