@@ -15,8 +15,10 @@ The motion-to-start probe finds only one-direction probability transfer. The
 subsequent SDD geometry/image bridge is an input prerequisite. A separately
 approved matched auxiliary experiment now completes 54 fresh Torch fits: source
 pretraining reduces neural degradation, but no fit beats CV or preserves easy
-cases. This revision reports that completed experiment; it does not turn the
-older diagnostic bridge into a training result.
+cases. A further 54-fit control study separates source supervision from main
+training exposure: correct source pairing has no stable demonstrated advantage
+over source-label permutation. This revision retains both negative studies; it
+does not turn the older diagnostic bridge into a training result.
 
 ## Abstract
 
@@ -50,7 +52,12 @@ but reverse transfer remains near chance; neither establishes better trajectorie
 An additional 54-fit source comparison uses 229,333 eligible windows from the
 original 40 SDD training recordings. SDD pretraining improves on matched neural
 controls by 0.54-0.70%, but all held-scene fits remain worse than CV and fail easy
-preservation. Past RGB does not consistently improve on image-coverage masks.
+preservation. A further 54-fit mechanism study adds a main4k control and source
+label permutation. Reduced main exposure itself improves the neural controls;
+correct versus permuted source gains are +0.118%, -0.015% and +0.058% across
+input variants, with all descriptive site intervals crossing zero. No new
+fit meets the easy-preservation limit. Past RGB does not consistently improve
+on image-coverage masks.
 Previously explored data remain exploratory; independent confirmation and a
 positive contribution are still missing. We make no physical-time, metric-safety
 or general world-model success claim.
@@ -415,6 +422,48 @@ not identified causes. Three repeatedly exposed sites, even with seeds and
 bootstrap, cannot establish independent transfer. [Complete results](sdd_auxiliary_v1/conclusions.md)
 and [failure analysis](sdd_auxiliary_v1/failure_analysis.md) retain these boundaries.
 
+### Source Supervision Versus Main-Task Exposure
+
+The [registered mechanism comparison](sdd_auxiliary_mechanism_v1/report.md)
+adds 54 fresh fits (270,000 updates) and reuses the previous 54 fits only as
+hash-verified controls. A main4k arm starts randomly and matches the main-phase
+sample stream. A permuted-source arm matches source/main draws and compute,
+but replaces source correction labels with donors from the same recording and
+exact future-support stratum. Inputs and population membership are unchanged.
+Singletons and same-agent donors are retained and disclosed; this negative
+control does not remove all recording-level information or dependence.
+
+| Input | Main4k vs CV | Permuted source vs CV | Real vs permuted source |
+| --- | ---: | ---: | ---: |
+| Geometry | -1.03110% | -0.92421% | +0.11789% |
+| Coverage masks | -1.00276% | -0.80078% | -0.01536% |
+| Past RGB | -1.52648% | -1.33240% | +0.05827% |
+
+Main4k outperforms main6k in all seed-averaged input/site comparisons. Thus the
+previous auxiliary advantage partly reflects main-training exposure. Real versus
+permuted source intervals are [-0.12649%, +1.89699%], [-0.15366%, +0.15464%] and
+[-0.17034%, +0.27215%]; correct source pairing has no stable demonstrated benefit
+in this design. This is not an equivalence test. Every schedule/input aggregate
+still loses to CV. Three new individual fits have tiny positive gains but fail
+easy preservation; there are zero safe positive fits across the 108-fit matrix.
+New-fit absolute easy harm is 0.02593-0.29810 normalized ADE. All new checkpoints
+replay exactly and completed resume preserves 166 artifacts without updates.
+
+A train-only audit also identifies a stationary scaling mismatch. The fixed
+0.001 native-unit floor does not preserve normalized stationary targets across
+coordinate units. Broad static-moves target medians are 1,125 in SDD and 24.702
+in main fold-0 training data; analytic scalar log-loss sensitivity differs
+accordingly. These are not neural parameter-gradient measurements, physical
+movement comparisons or identified causes. Broad source static-moves support
+(10,039 windows,342tracks) differs from the earlier half-box proxy (244windows,
+58tracks in train40). Source semantics, unit-invariant internal representation
+and loss response require controlled follow-up, not a new success claim.
+
+The main estimand and roles remain fixed. All site intervals are descriptive
+over three previously exposed sites, and no model is selected from these held
+scores. These controls narrow the source-transfer interpretation without
+establishing deployable forecasting or independent generalization.
+
 ### What the Current Evidence Can Establish
 
 | Question | Observed result | Supported conclusion |
@@ -424,6 +473,7 @@ and [failure analysis](sdd_auxiliary_v1/failure_analysis.md) retain these bounda
 | Do motion features transfer start information? | Hotel-to-ETH positive Brier lift; reverse negative; added-motion intervals cross zero | Localized probability signal, no stable bidirectional or trajectory contribution |
 | Are additional SDD past modalities available? | Full auxiliary cache of 229,333 windows and 254,841 past crops | Input access established; visibility and predictive benefit require separate evidence |
 | Does SDD supervision fix transfer? | 54 matched fresh fits; source helps neural controls, but 0/54 safe positive fits | Tested auxiliary schedule insufficient; no deployment or independent confirmation |
+| Is the advantage specific to correct source pairing? | 54 new controls, 54 cached fits; all real-versus-permuted intervals cross zero | Main exposure accounts for part of the old difference; stable conditional transfer remains unproved |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

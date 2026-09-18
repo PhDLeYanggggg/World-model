@@ -1,5 +1,38 @@
 # M3W Results Ledger
 
+## Source Mechanism Controls Complete, No Safe Candidate (2026-09-18)
+
+`fresh_run`: 54 fixed Torch fits, 270,000 updates, 8,251.39 summed fit seconds
+(2.29 hours), about 2.33 hours trainer wall time. `cached_verified`: 54 previous
+fits reused as controls. New arms are main4k and source-residual permutation;
+three modalities, three seeds and three site folds. Main cohort/primary and
+closed roles unchanged. No held-score selection or new deployment.
+
+| Input | Main4k gain vs CV | Permuted-source gain vs CV | Real vs permuted source |
+| --- | ---: | ---: | ---: |
+| Geometry | -1.03110% | -0.92421% | +0.11789% |
+| Coverage masks | -1.00276% | -0.80078% | -0.01536% |
+| Past RGB | -1.52648% | -1.33240% | +0.05827% |
+
+All real-versus-permuted descriptive site intervals cross zero. Shorter main
+exposure improves all seed-averaged input/site cells relative to main6k.
+Every schedule/input aggregate loses to CV; three new individual fits have tiny
+positive gains but all 54 fail easy preservation. Combined safe positive fits:
+0/108. New easy absolute normalized ADE harm: 0.02593-0.29810; relative
+degradation: 195.12-11,392.47%. Near-zero baselines amplify percentages.
+
+All 54 new predictions replay exactly. Actual phase sample counts/sampler states
+are matched; all 270k checkpoint steps verified. Completed resume preserves 166
+hashes and adds zero updates. Twenty-three focused tests pass; full legacy suite
+not rerun. No independent confirmation, Stage5C, SMC or model promotion.
+The source normalization/loss-sensitivity diagnostic is a next hypothesis,
+not proof of the failure mechanism. Older running entries below are historical.
+
+[Final report](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.md),
+[contrasts](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/contrasts.md),
+[failure analysis](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/failure_analysis.md),
+[reproduction](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/reproducibility.md).
+
 ## Mechanism Inputs Verified, Fixed Training Running (2026-09-18)
 
 Real native arm64 RGB pilot: 100 updates in 4.444 seconds, finite losses,

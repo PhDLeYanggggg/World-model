@@ -1,5 +1,43 @@
 # Real-Experiment Continuation Handoff
 
+## Mechanism Controls Complete (2026-09-18)
+
+Current goal active, not complete or blocked. Previous turn completed the first
+SDD auxiliary matrix; this turn completes the matched mechanism controls.
+Full trainer PID80360/session81910, replay93083/session51950, checkpoint stream
+check/session97527 and resume/session28672 all observed terminal exit0.
+Do not poll old handles or start duplicate fits. No live training remains.
+
+54 fresh fits,270,000steps,8,251.3883summedfitseconds; fullwallabout2.33h.
+54 parent fits cached_verified, not freshly trained. Exact new replays54/54;
+completed resume166immutablehashesunchanged0updates; sample streams match.
+23focusedtests pass; fulllegacysuite notrerun. Main11,966fitrows/primary/closed
+roles unchanged. ReportSHA cdbbcece43a678577b97fa6f1d5d702026323b63d751965f50d0dfcccf7780b4.
+
+Every aggregate losesCV; 3/54newfits tinypositive but 0/54easypass,0/108safepositive.
+Real source vs permutation: geometry+.11789%,mask-.01536%,RGB+.05827%; allsiteCIs
+crosszero. Main4k beatsmain6k inall9input/site seedaverages. Source advantage
+ispartlymainexposure; correct source pairing no stable contribution established.
+Do not conclude labels have zero information or use permutation as fullindependence.
+Source stationaryscale diagnostic and event counts are in source_support.json.
+
+Next justified repair: stationary/near-stationary internal source representation
+andlossresponse. First test syntheticcoordinate-unitrescaling invariance and
+measure actualeventconditionedgradient contributions; analyticdlog1p is not
+parametergradient. Thenregisteronematchedtrainingcontrolkeepingmainprimary,
+cohortandclosedrolesfixed. Do not silentlychangeprimary, repeatthresholdsweep,
+or promotehistoricalcontaminatedStage37results. Independentconfirmation remains
+separateandunresolved. NoStage5C/SMC/deployment/submissionreadiness.
+
+New scripts: analyze_m3w_auxiliary_mechanism.py,
+verify_m3w_auxiliary_mechanism_run.py, verify_m3w_auxiliary_mechanism_resume.py.
+Reports: sdd_auxiliary_mechanism_v1/{report,analysis,contrasts,failure_analysis,
+reproducibility,replay,stream_verification,resume_verification,fit_metrics}.
+Frozen training code/config unchanged; analysis tests separate.
+Unrelated3019stagedentries must stay untouched; stagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Older live/pending entries below are historical and superseded.
+
 ## Source Mechanism Controls Registered (2026-09-18)
 
 Update: registration committed/pushed as bba7fbe1; SHA256

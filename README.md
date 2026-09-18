@@ -10,15 +10,31 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-The next [registered control experiment](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1_decision.md)
-asks why SDD reduces neural degradation: does correct source supervision help,
-or does the benefit come from fewer main-domain updates? I am adding a
-main-only 4,000-update control and a source-label permutation control, retaining
-all three input variants, seeds and scene folds. No evaluation role or primary
-metric changes. The real-training pilot and source checks pass, and the fixed
-54-fit follow-up is running. A [training-source diagnostic](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/input_and_runtime.md)
-also exposes a stationary-target scale mismatch; that is a possible failure
-mechanism, not a new model result. The completed results below remain current.
+I have completed the [source-mechanism controls](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.md):
+54 additional neural fits and 270,000 updates, alongside 54 verified previous
+fits. The new controls separate useful SDD supervision from shorter main-task
+training. All new checkpoints replay exactly; completed resume preserves 166
+artifacts and adds no updates. The full run took about 2.33 hours locally.
+
+The result narrows the interpretation of the earlier SDD improvement. Shorter
+main-task training already reduces error, and shuffled SDD labels also help.
+Correct SDD labels do not show a stable extra benefit over shuffled labels:
+
+| Input | Correct vs shuffled source gain | Descriptive site interval |
+| --- | ---: | --- |
+| Geometry | +0.118% | [-0.126%, +1.897%] |
+| Coverage masks | -0.015% | [-0.154%, +0.155%] |
+| Past RGB | +0.058% | [-0.170%, +0.272%] |
+
+These are comparisons between neural controls, not gains over constant velocity.
+Every schedule/input average still loses to CV. Three new individual fits have
+tiny positive gains, but none preserves easy cases; there is no new deployable
+model. The intervals describe only three already-exposed physical sites.
+A [source audit](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/source_support.md)
+also identifies a stationary normalization mismatch worth testing next. It is
+not yet a demonstrated cause of model failure. I keep the primary task and
+sealed evaluation roles unchanged, and do not treat these results as independent
+confirmation or a successful world-model contribution.
 
 I have completed the [SDD auxiliary-training comparison](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md):
 54 fresh neural fits, three seeds, three physical-site folds and 324,000 optimizer
@@ -60,6 +76,7 @@ roles fixed while changing one factor at a time.
 
 | Question | Evidence | Outcome |
 | --- | --- | --- |
+| Is the source benefit specifically learned motion transfer? | [54 new mechanism controls, 54 verified previous fits](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.md) | Shorter main exposure and shuffled source labels explain part of the apparent benefit; correct pairing has no stable extra gain, and no model is safe. |
 | Does additional SDD supervision improve transfer? | [54 matched fresh fits](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md) | It improves on the neural controls, but all models remain worse than CV and fail easy preservation. |
 | Does balancing tracks and state changes help? | [54 new fits, 18 replayed controls](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md) | No safe forecasting gain; repeating rare starts does not add independent information. |
 | Could better routing rescue the existing predictions? | [Frozen-candidate ceiling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md) | Perfect future-informed selection gains 1.63%, or 1.73% with whole-path scaling. These are oracle diagnostics, not model results. |
