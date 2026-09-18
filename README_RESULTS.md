@@ -1,24 +1,38 @@
 # M3W Results Ledger
 
-## Training-Only Relative-Cost Deferral Running (2026-09-18)
+## Relative-Cost Deferral Complete: Small Training Signal Only (2026-09-18)
 
-The next fixed repair adds an exact-baseline action to the inherited proposal
-head. Six new continuations compare expected-action cost with a cost-supervised
-variant that also keeps proposal training active. All 15,430 training rows,
-three seeds, identical sampled streams and 48,000 new updates are fixed. Three
-matched dense controls are reused after verification. No held/main scoring,
-threshold search or deployment is permitted in this registration. All-baseline
-output does not count as a successful predictor. Twenty-six targeted tests pass.
-[Decision and prior-work boundary](outputs/publication_readiness_2026_09/source_cost_deferral_decision.md).
+`fresh_run`: six real Torch continuations, 48,000 new updates, 15,430 training
+queries and three seeds. Full-run log span 37.0237 minutes, summed continuation
+2227.77 seconds. The 100-step pilot is included. Three dense controls and three
+parents are `cached_verified`, not new training. Native arm64 CPU4/workers0.
 
-Pre-fit registration `e91a7a37` is pushed. The real 100-update pilot completed
-in 9.11 seconds including the initial full-training diagnostic; these updates
-belong to the fixed budget. The native arm64 CPU4/workers0 run is active
-(PID 40830, session 34534), with checkpoint and heartbeat every 200 updates.
-The analysis consumer is being frozen during training, not claimed pre-fit.
-It checks all 24 milestone replays, matched sampling against dense controls,
-exact baseline output, immutable completed resume and training-side cost fit.
-No completed-experiment or positive-gain claim is made while branches run.
+| Final output | Training ADE gain vs CV | Hard gain | Zero-target pixel harm |
+| --- | ---: | ---: | ---: |
+| Cached dense predictor | +0.187244% | +0.325144% | 0.01077451 |
+| Expected-cost hard action | 0.000000% | 0.000000% | 0 |
+| Cost-supervised raw proposal | +0.184359% | +0.325820% | 0.01072987 |
+| Cost-supervised hard action | +0.233917% | +0.276383% | 0.00699713 |
+
+Expected-cost routing rejects all rows in all three seeds, not predictive
+success. Supervised-cost action gains range +0.199395% to +0.294471%; all three
+meet the narrow training-signal condition. The mean advantage over dense is
+only 0.046673pp, or 0.00052631 native annotation pixels. Less easy harm comes
+with lower hard/moving benefit. deathCircle remains negative in every seed.
+The raw proposal is not stronger; no dynamics, calibration or deployment claim.
+Easy percentage is undefined at zero CV error, not a passed 2% gate.
+
+All 24 prediction/score snapshots replay exactly; three matched sampling streams;
+290 artifacts unchanged on zero-update completed resume. Thirty-two focused tests
+pass, full legacy suite not rerun, figure visually checked, all processes terminal.
+Pre-fit registration `e91a7a37`; analysis frozen during training at `ac37cfc6`,
+not pre-fit. Post-hoc training score diagnosis finds the Huber/mean difference
+small here, not the principal supported explanation. Held/main evaluation is
+`not_run`; deployment and sealed roles unchanged. No Stage5C execution or SMC.
+[Conclusions](outputs/publication_readiness_2026_09/source_cost_deferral_v1/conclusions.md),
+[gates](outputs/publication_readiness_2026_09/source_cost_deferral_v1/gates.md),
+[curves](outputs/publication_readiness_2026_09/source_cost_deferral_v1/training_curves.svg),
+[Chinese operations](outputs/publication_readiness_2026_09/source_cost_deferral_v1/operation_zh.md).
 
 ## Matched Modality Control Complete: No Held-Source Gain (2026-09-18)
 

@@ -1,6 +1,43 @@
 # Real-Experiment Continuation Handoff
 
-## Training-Only Cost Deferral Running (2026-09-18)
+## Training-Only Cost Deferral Complete (2026-09-18)
+
+Goal active and unmet. This turn completed six real continuations / 48k new
+updates, all 15,430 rows and three seeds. Training PID40830/session34534 exit0;
+replay PID44179/session83158 exit0; analysis session14326 exit0; extra post-hoc
+score diagnosis session46989 exit0; readonly resume PID44365 exit0. No active
+process. Full-run log span37.0237388min, summed continuation2227.767564sec;
+100-step pilot included, so main invocation added47,900 remaining steps.
+Pre-fit commit e91a7a37; analysis consumer freeze ac37cfc6 DURING training,
+not pre-fit. Config SHA136ac22ca3407c58e3db34ce73f37a9d47b5da86fc16036c04e12badafdb207c.
+
+Expected-cost hard actions all reject in all3seeds:0%gain, not success.
+Cost-supervised hard training gain+.233917% vs cached dense+.187244%; paired
+advantage+.046673pp, native mean pixel reduction .00052631. All3training-signal
+conditions pass, NOT research gates. Cost-supervised proposal+.184359%, so no
+stronger trajectory decoder. Gated hard gain+.276383% vs dense+.325144%,
+moving gain also lower; easy absolute pixel harm.00699713 vs.01077451, positive
+and easy percentage undefined. deathCircle negative in every seed, mean-.175465%.
+No held/main scoring, selection, independent calibration or deployment.
+
+24exactreplays,3three-waymatchedstreams,290immutableartifacts on zero-update
+completed resume. 32focusedtests pass;fulllegacy not rerun. Figure inspected.
+Training report SHA2ec704eb5a50a12dae34cd6d7362a3e862cc26759339c13a5115c09046f215ea;
+analysis SHAff24c6f3d70648f00d72f353a91d44316a5f697eb0ab624d03abc1bc5cc1b5fc.
+Post-hoc score diagnostic: supervised RMSE beats constant-training-mean in all
+seeds, not calibration. Huber target location is positive/close to mean, only
+3-4 extreme labels; this does not support Huber mismatch as main cause.
+Negative early proposal then late positive proposal with negative expected-cost
+scores suggests gate lag, but causal mechanism not isolated. Allupdatesclip.
+
+Next: freeze all6endpoints and separately register a fixed source-site comparison
+against matched controls. Bookstore is historically exposed, never call it
+independent confirmation. NO held forecasts allowed under current registration.
+No new model/threshold search; main roles closed. A frozen-candidate cost-head
+refit could later distinguish moving-target optimization from learnability;
+that follow-up is not registered/run. No Stage5C/SMC/newdeployment.
+
+## Registration and Run History
 
 Prior turn is progress: six matched controls and complete fixed source evaluation
 finished negative. This repair permits exact baseline output using an observed

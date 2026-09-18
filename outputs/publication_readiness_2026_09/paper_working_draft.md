@@ -675,6 +675,28 @@ This is an empirical limit for selecting among those paths, not for new models,
 path blending or other populations. It motivates candidate-quality repair,
 not another retrospective threshold search. No deployment is changed.
 
+The subsequent [training-only cost-deferral repair](source_cost_deferral_v1/conclusions.md)
+adds an exact stationary-baseline action, holding the observed schema, sampled
+streams and cosine update budget fixed. Six fresh continuations add 48,000
+updates; three dense controls are verified and reused. A plain expected-action
+cost collapses to full rejection in all three seeds. A fixed package of
+signed-gain supervision and an additional proposal-loss term gives mean gated
+training gain 0.233917% versus 0.187244% for the dense control. Every seed has
+positive paired aggregate gain; the mean difference is only 0.046673 percentage
+points, or 0.00052631 native annotation pixels.
+
+This is a cost-allocation tradeoff, not improved dynamics. The raw proposal
+gains 0.184359%, slightly below dense control. Gating reduces zero-target harm
+from 0.01077451 to 0.00699713 pixels, but also reduces hard gain from 0.325144%
+to 0.276383%. deathCircle remains negative in every seed. Relative easy damage
+is undefined at zero CV error, not a passed safety gate. All 24 snapshots replay
+exactly and 290 artifacts survive completed resume unchanged. No held-source
+or main evaluation is performed, and seed ranges are not generalization CIs.
+An explicitly post-hoc score diagnosis finds in-sample gain fitting better than
+a constant-mean target, but the global Huber/mean discrepancy is small and does
+not explain the plain objective's rejection. Independent calibration and useful
+scene-level joint intervention remain unestablished; no model is promoted.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -691,6 +713,7 @@ not another retrospective threshold search. No deployment is changed.
 | Is the neural fitting path universally broken? |12training-only microfits learn selected16/32-row cohorts; original decoder also succeeds with100%gradient clipping | Numerical fitting is possible; not a benchmark repair or proof of useful predictive information |
 | Does longer exposure or rate decay improve complete training fit? |6continuation branches/48knewupdates;constant -1.0310%,cosine +0.2533% | Small schedule-dependent training repair; no held gain or easy-preservation proof |
 | Does that repair transfer, and does RGB help? | Six matched mask continuations; cosine held gain mask -1.7438%, RGB -2.0806%; all 18 states negative | Training improvement does not establish held utility; paired RGB contrast negative, no deployment |
+| Does exact-baseline cost deferral repair training? | Six new fits; plain objective all-reject; supervised cost gives +0.2339% training gain vs dense +0.1872% | Small routing tradeoff, weaker hard benefit, no stronger decoder or held evidence |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

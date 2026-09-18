@@ -10,6 +10,21 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I completed a [relative-cost deferral experiment](outputs/publication_readiness_2026_09/source_cost_deferral_v1/conclusions.md)
+on the same 15,430 source-training queries: six neural continuations, three seeds
+and 48,000 new updates in about 37 minutes. Giving the model an exact baseline
+action was not enough. The plain expected-cost objective learned to reject every
+query. Adding direct gain supervision recovered a small training benefit:
+0.234% versus 0.187% for the matched dense predictor.
+
+That gain comes mainly from reducing damage to easy cases, not from a stronger
+trajectory decoder. Hard-case improvement is lower than the dense control, one
+training site still loses in every seed, and easy harm is not zero. All 24 saved
+outputs replay exactly, but I have not evaluated these new models on held scenes
+or promoted them. This is a limited training repair, not a world-model result.
+[Full comparison](outputs/publication_readiness_2026_09/source_cost_deferral_v1/results.md),
+[reproduction guide](outputs/publication_readiness_2026_09/source_cost_deferral_v1/reproducibility.md).
+
 I completed the [matched visual-input follow-up](outputs/publication_readiness_2026_09/source_transfer_control_v1/conclusions.md):
 six new training continuations, 48,000 updates and three seeds, followed by a
 fixed comparison of all 18 parent and final models. Training took about
