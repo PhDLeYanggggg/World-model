@@ -1,5 +1,17 @@
 # M3W Results Ledger
 
+## Matched Visual Start Probe Registered (2026-09-18)
+
+The next fixed contrast compares actual past RGB against geometry+coverage-only
+in the same CNN/MLP,with paired seeds and row draws. Three source schedules and
+three seeds give30fresh models/36prediction cells,2,000updates each. Main/source
+membership,labels,primary forecasting metric and sealed roles are unchanged.
+No threshold selection. Geometry,source/mixed priors and prevalence-shift controls
+remain explicit. All365main and22,374source supervised stationary queries have
+supported past crops;that does not verify body-state visibility.28focused tests
+pass. No real visual fit or new predictive claim yet.
+[Fixed design](outputs/publication_readiness_2026_09/source_visual_start_decision.md).
+
 ## Source-Supported Start Information Complete, No Robust Transfer (2026-09-18)
 
 All45 classifiers completed:15 logistic,15 trees,15 small Torch MLPs;15,000 neural
