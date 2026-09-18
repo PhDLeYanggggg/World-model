@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am testing whether the admitted SDD training data adds transferable information
+about stationary agents starting to move. The [fixed comparison](outputs/publication_readiness_2026_09/source_start_probe_decision.md)
+uses main-only, source-only and mixed training with logistic regression, trees
+and a small neural classifier. It is a probability-scoring diagnostic on exposed
+fit sites, not a change to the forecasting task or deployment policy. Twelve
+focused implementation tests pass; the registered 45 model fits have not run yet.
+
 I have completed the [conditioning comparison](outputs/publication_readiness_2026_09/unit_frame_training_v1/report.md):
 27 new neural fits, three seeds, three exposed physical-site folds and 162,000
 updates, with nine verified previous controls. The main task and evaluation

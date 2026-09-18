@@ -1,5 +1,16 @@
 # M3W Results Ledger
 
+## Source-Supported Start Information Registered (2026-09-18)
+
+The next fixed comparison tests whether SDD supervision adds stationary-start
+probability information beyond the same classifier trained on main fit data.
+Three families, three source schedules and three seeds yield 45 models and 54
+prediction cells; source-only models are shared between two held-site directions.
+Fifteen small MLPs will use 15,000 total updates; 30 classical models are controls.
+This is not forecasting or threshold selection. No sealed roles are opened.
+Twelve focused tests pass, including exact MLP/tree checkpoint extension.
+Training is not yet run. [Design](outputs/publication_readiness_2026_09/source_start_probe_decision.md).
+
 ## Conditioning Comparison Complete, No Safe Candidate (2026-09-18)
 
 `fresh_run`: 27 fixed geometry-branch Torch fits, 162,000 updates, 277.02 summed
