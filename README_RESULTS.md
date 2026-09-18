@@ -1,5 +1,10 @@
 # M3W Results Ledger
 
+The project overview is now concise. Its detailed September history is preserved
+in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
+this ledger remains the current result record. Moving the text changes no score
+or evidence status.
+
 ## Training-Side Candidate Cross-Fit Registered (2026-09-18)
 
 Twelve cold-start dense trajectory fits, four inner source sites and three
