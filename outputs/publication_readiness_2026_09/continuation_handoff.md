@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Source Trajectory Cost Comparison Running (2026-09-18)
+## Source Trajectory Cost Comparison Complete (2026-09-18)
 
 Goal active; lastturn was real progress, not wait/no-progress. New approved-role
 internal source diagnostic moves back from binary labels to actual trajectories.
@@ -14,21 +14,33 @@ frames.51unsupported contexts retained asbaseline;native/pastnormalized errors
 reported separately. Fixed0.9samefoldclassifier gate diagnostic,not riskcalibrated.
 Targets only inloss/eval. Frozen probability ancestors from source_site_probe_v1.
 
-Input audit passed. Nativearm64CPU4/workers0;78GiBfree at launch. Local
-expected ~100min acceptable; CREATEauthentication/projectpath stillunresolved,
-remotejobsunknown,no newremotejobs. Preregistercommit0007bf43 pushed. Pilot100
-updates finished in4.71005fitseconds, noforecast evaluation, finite gradients.
-LIVE fulltrainer resumed PID22076/session51870. Prior PID15300/session39366
-became absent following conversation interruption,43completedfits preserved.
-Trial44log_ade_past_rgb_gates_seed29 resumes verifiedstep600checkpoint,finite
-weights/38400draws/all22bindinghashespass. This remains inside120kbudget. Do not
-start duplicate or modify registered dependencies. Log and heartbeat under
-data/stage_cvpr2027_experiments/source_cost_dynamics_v1. Newanalysis/verifier
-are post-fit consumers only.57focused tests pass(3.33sec); fulllegacy suite notrerun.
-Loss/gradienttrace analysis covers loggedbatchesonly,not a convergenceclaim.
-After trainer exit0: exactreplay,15fourwaymatchedchecks,181immutableartifact
-completedresume,analysis,figureinspection,conclusionsandhonestgates.
-All previous source-siteprobe handles terminal. No main or sealed scoring.
+ALL60fits/120kupdatescomplete; exact summedfit5878.561708sec,
+fullrunlogspan106.617118min includinginterruption. Parametercount44864/model.
+Nativearm64CPU4/workers0; CREATEauthentication/projectpath unresolved,remotejobs
+unknown,no newremotejobs. Preregistercommit0007bf43; pilot100updates included.
+PriorPID15300/session39366becameabsentafterconversationinterruption;43completed
+fits preserved,trial44resumedstep600underPID22076/session51870andfinishedexit0.
+Alltraininghandlesnowterminal;DO NOT RESTART. ReplayPID24944/session96358exit0;
+verifier52640exit0; finalanalysis53306exit0. Publicsource_cost_dynamics_v1report
+SHA6e9abdc5e3e8edaea588a1fa7f37f212578a238dea813f1a33b570bea45a6eb1.
+60exactreplays,15fourwaymatchedchecks,181immutableartifacts/reportunchangedon
+completedresume,0newfits/updates.58focusedtestspass,fulllegacysuitenotrerun.
+Bothplotsvisuallychecked. Sourceonly,nomainorsealedscoring,nodeployment.
+
+All60heldfitsandall60complete-training-setADEworseCV. Equal-siteuncontrolled
+gainADEmask/RGB=-1.665340/-1.698347%;logADEmask/RGB=-1.606832/-1.568712%.
+Fixedguardgains=-.004907/-.017120/-.004134/-.015508%. RGBmatchedcontrastsCIs
+crosszero; noobjectiveorimagewinnerselected. Equal-agentnegativealso.
+Train-gainrange[-2.054110,-1.074482]%; all60initialbatchCVexcessexact0,all60
+finalrecordedbatchexcesspositive. Reconstructedsampler15streamcountsidentical.
+LoggedgradientclippingADE100%,logADE98.41%;notallbatches/provenconvergencecause.
+EasyzeroCVdenominatorpercentageundefined;nativeabsharm.02173-.02392pixels.
+Contextballoracle99.67-100%headroomdoesnotexplainawayentiregap;futureinformed.
+
+Nextmostvaluable: source-training-onlymicrofit/optimizationdiagnostic, separate
+abilitytofitnonzerotargetsfromzero-targetjitter;oneoutputscale/optimizationfactor
+atatime. No newthresholdsearch,biggerblindmatrix,mainmetricchangeorsealedroles.
+Detailedconclusions/gates/reproductioninpublicreportfolder. Goalactiveunmet.
 UnrelatedstagedSHA remains
 `c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
 

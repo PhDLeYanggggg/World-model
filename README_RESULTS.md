@@ -1,23 +1,51 @@
 # M3W Results Ledger
 
-## Source Trajectory Cost Comparison Running (2026-09-18)
+## Source Trajectory Cost Comparison Complete: No Useful Candidate Gain (2026-09-18)
 
-Fixed source-fit diagnostic: direct bounded twelve-step forecasts; linear ADE
-versus log-ADE; RGB versus mask; five physical sites and three seeds. Sixty fresh
-fits and120,000updates planned, with no held-score model or threshold selection.
-Past-only context radius/rotation restores outputs; zero initialization matches
-stationary CV. The51spatially unsupported rows remain baseline fallbacks, not
-removed examples. All22,374complete stationary queries remain. No sealed roles,
-formal metric or deployment change. Inputs are cached_verified; fresh Torch
-training is running (resumed PID22076, session51870). The 100-update pilot completed in
-4.71 fit seconds and is included in the fixed budget. Fifty-seven focused tests
-pass; the full legacy suite has not been rerun. The original process was no
-longer present after a conversation interruption. Forty-three completed models
-were preserved, and model44 resumed from its verified step600 optimizer/RNG
-checkpoint. No final result is claimed yet. Added loss/gradient plots distinguish
-sampled batch diagnostics from a convergence claim.
-[Registered design](outputs/publication_readiness_2026_09/source_cost_dynamics_decision.md).
-[Reproduction and verification](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/reproducibility.md).
+`fresh_run`: all60 neural models and120000 updates; 5878.56 summed fit seconds;
+106.62-minute full log span including interruption/recovery. Each model has44864
+parameters. The 100-update pilot belongs to the fixed budget. `cached_verified`
+inputs retain all22374 complete stationary queries and51 unsupported-context
+fallbacks. No main or sealed-role training/scoring, model selection or deployment.
+
+| Objective/input | Uncontrolled gain vs CV | Fixed-guard gain vs CV |
+| --- | ---: | ---: |
+| ADE / mask | -1.665340% | -0.004907% |
+| ADE / RGB | -1.698347% | -0.017120% |
+| log-ADE / mask | -1.606832% | -0.004134% |
+| log-ADE / RGB | -1.568712% | -0.015508% |
+
+Equal-physical-site mean parent-normalized ADE, averaging seed losses. All60
+held-site fits worsen CV in both modes. All four uncontrolled conditional2000
+site-bootstrap intervals are negative; equal-agent sensitivity stays negative.
+RGB contrasts are -0.032466%/+0.037517% for ADE/log-ADE, both intervals crossing
+zero. This does not establish useful multimodality or a better objective.
+
+Crucially, every final complete-training-set ADE also worsens CV (-2.054110% to
+-1.074482%). Same-batch baseline reconstruction verifies exact sampler counts:
+all60 start with zero excess error, but all60 final logged batches have positive
+excess. Logged clipping fractions are100% for ADE and98.41% for log-ADE, not
+all-batch measurements or proof of cause. Optimization/convergence is unresolved;
+the failure cannot be attributed only to held-site generalization.
+
+Easy CV error is zero: relative degradation is undefined. Absolute uncontrolled
+harm is0.02173-0.02392 annotation pixels, not an invented passing percentage.
+The frozen0.9 guard intervenes only0.264%/0.953% of site-averaged rows and reduces
+harm without positive gain. Guarded RGB/mask contrasts also change classifier
+gates. The containing-ball oracle leaves99.67-100% site headroom but uses future
+labels and is not a causal model. No threshold search can create absent paths.
+
+Verification:60 exact replays,15 matched four-way streams,181 immutable artifacts
+and full report unchanged on completed resume,0 new updates. Real recovery
+preserved43 completed fits and resumed trial44 atstep600.58 focused tests pass;
+full legacy suite not rerun. Both figures visually checked. No active training.
+Five exposed source sites, overlapping folds and offline generated annotations
+are not independent confirmation or human intention gold. Next: training-only
+optimization/memorization checks before another held-site matrix. Goal unmet.
+[Full conclusions](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/conclusions.md),
+[scores and CI](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/results.md),
+[loss trace](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/learning_trace.svg),
+[reproduction](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/reproducibility.md).
 
 ## Source-Site Visual Diagnostic Complete: No Robust Internal Gain (2026-09-18)
 

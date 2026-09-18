@@ -10,17 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-My next fixed comparison tests actual twelve-step forecasts rather than another
-motion-change classifier. It compares linear ADE with log-ADE, with and without
-RGB, while holding source-site folds, seeds and training budgets fixed. The
-[registered design](outputs/publication_readiness_2026_09/source_cost_dynamics_decision.md)
-uses only already approved source training data; it does not change the main
-benchmark or open sealed evaluation sets. The full 60-model comparison is now
-running on native arm64 PyTorch. A real 100-update pilot verified training and
-checkpoint recovery; its updates remain inside the fixed budget. The
-[reproduction guide](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/reproducibility.md)
-documents the paired controls and the limits of this source-only experiment.
-There is no completed research result or deployment change from this run yet.
+I completed a [fixed trajectory-cost comparison](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/conclusions.md):
+60 neural fits and 120,000 updates across five SDD training sites and three seeds.
+It tested actual twelve-step forecasts, comparing ADE with log-ADE and RGB with
+the same geometry/coverage control. The full run took about 107 minutes locally,
+including a checkpoint recovery; all 60 saved forecasts replay exactly.
+
+The result is negative. Uncontrolled forecasts worsen the equal-site stationary
+baseline by 1.57-1.70%. A fixed guard reduces the damage but never produces a
+positive aggregate result. More importantly, all 60 models also lose to the
+baseline on their full training data. The next repair must address optimization
+and useful candidate trajectories before more routing or transfer experiments.
+I am not claiming this means visual prediction is impossible.
+
+The [loss diagnostics](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/learning_trace.svg)
+subtract the baseline on exactly the same sampled batches. They show why a
+fluctuating raw loss curve is not evidence of progress. This is a source-only
+diagnostic: the main benchmark and sealed evaluation sets remain unchanged,
+and no new model is deployed. [Reproduction guide](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/reproducibility.md).
 
 I have now tested whether the visual representation generalizes even between
 SDD training sites. The [five-site, three-seed comparison](outputs/publication_readiness_2026_09/source_site_probe_v1/conclusions.md)

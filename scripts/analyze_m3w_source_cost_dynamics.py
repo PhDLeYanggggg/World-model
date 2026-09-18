@@ -9,6 +9,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from scripts.run_m3w_source_cost_dynamics import DynamicsCorpus, load_config
 import numpy as np
+import torch
 from src.evaluation.m3w_experiment_contract import file_digest
 from src.world_model.m3w_offline_visual_data import json_write
 
@@ -64,9 +65,25 @@ def loss_trace_summary(trace):
         convergence_established=False,all_batch_gradients_observed=False)
 
 
+def sampled_cv_trace(train_cv,weights,normalizer,seed,config,logged_steps):
+    cv=torch.as_tensor(train_cv,dtype=torch.float32)/normalizer
+    w=torch.as_tensor(weights,dtype=torch.float64)
+    if cv.ndim!=1 or cv.shape!=w.shape or not torch.isfinite(cv).all() or normalizer<=0:
+        raise ValueError('Aligned finite training costs and weights required')
+    rng=torch.Generator().manual_seed(seed+7919)
+    counts=np.zeros(len(cv),np.int64);values={};logged=set(logged_steps)
+    for step in range(1,config['updates']+1):
+        idx=torch.multinomial(w,config['batch_size'],replacement=True,generator=rng)
+        np.add.at(counts,idx.numpy(),1)
+        if step in logged:
+            values[step]=dict(ade=float(cv[idx].mean()),log_ade=float(torch.log1p(cv[idx]).mean()))
+    return values,counts
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--registration',type=Path,required=True)
-    args=parser.parse_args();reg=load_config(args.registration);reports=ROOT/reg['reports'];out=ROOT/reg['output']
+    args=parser.parse_args();torch.set_num_threads(1);torch.set_num_interop_threads(1)
+    reg=load_config(args.registration);reports=ROOT/reg['reports'];out=ROOT/reg['output']
     rp=reports/'report.json';report=json.loads(rp.read_text())
     if report['completed_models']!=60 or report['optimizer_updates']!=120000:
         raise ValueError('Full fixed trajectory matrix required')
@@ -74,6 +91,16 @@ def main():
     if report['identity']['source_assignment_sha256']!=data.assignment_hash:
         raise ValueError('Source population changed')
     lookup={(t['objective'],t['arm'],t['site'],t['seed']):t for t in report['trials']}
+    batch_controls={}
+    for site in reg['sites']:
+        train,w,held,_,normalizer=data.dynamics_design(site)
+        train_cv=torch.linalg.vector_norm(torch.from_numpy(data.target[train-data.nmain]),dim=-1).mean(1)
+        for seed in reg['seeds']:
+            t=lookup['ade','mask_only',site,seed]
+            control,counts=sampled_cv_trace(train_cv,w,normalizer,seed,reg['training'],[r['step'] for r in t['fit']['losses']])
+            cp=torch.load(ROOT/t['checkpoint_path'],map_location='cpu',weights_only=False)
+            np.testing.assert_array_equal(cp['draw_counts'],counts)
+            batch_controls[site,seed]=control
     errors={};rows=[];losses=[];site_summaries=[];videos=[];bound_audits=[];training_diagnostics=[]
     for t in report['trials']:
         if file_digest(ROOT/t['prediction_path'])!=t['prediction_sha256']:
@@ -121,9 +148,16 @@ def main():
                     ade=float(ade[m].mean()),cv_ade=float(cv[m].mean()),
                     gain_percent=100*float(1-ade[m].mean()/cv[m].mean()) if cv[m].mean()>0 else None,
                     intervention_rate=float(use[m].mean())))
-        losses.extend(dict(trial=t['trial'],**loss) for loss in t['fit']['losses'])
+        controls=batch_controls[t['site'],t['seed']]
+        excess=[loss['normalized_batch_ade']-controls[loss['step']]['ade'] for loss in t['fit']['losses']]
+        losses.extend(dict(trial=t['trial'],**loss,
+            cv_normalized_batch_ade=controls[loss['step']]['ade'],
+            cv_batch_objective_loss=controls[loss['step']][t['objective']],
+            excess_normalized_batch_ade=loss['normalized_batch_ade']-controls[loss['step']]['ade']) for loss in t['fit']['losses'])
         training_diagnostics.append(dict(trial=t['trial'],objective=t['objective'],arm=t['arm'],
-            site=t['site'],seed=t['seed'],**loss_trace_summary(t['fit']['losses'])))
+            site=t['site'],seed=t['seed'],**loss_trace_summary(t['fit']['losses']),
+            first_logged_excess_ade=excess[0],last_logged_excess_ade=excess[-1],
+            mean_logged_excess_ade=float(np.mean(excess)),cv_control_exact_sampling_counts=True))
     for objective in reg['objectives']:
         for arm in reg['arms']:
             for mode in ('uncontrolled','fixed_probability_gate'):
@@ -212,6 +246,7 @@ def main():
         ss=[s for s in summary if s['mode']==mode]
         ax.barh(range(4),[s['gain_percent'] for s in ss],color=['#357289','#a45351','#357289','#a45351'])
         ax.axvline(0,color='black',lw=.8);ax.set_yticks(range(4),[s['objective']+' / '+s['arm'] for s in ss]);ax.invert_yaxis()
+        ax.xaxis.set_major_locator(plt.MaxNLocator(4))
         ax.set_xlabel('Source equal-site ADE gain over CV (%)');ax.set_title(title);ax.grid(axis='x',alpha=.2);ax.spines[['top','right']].set_visible(False)
     fig.suptitle('Actual trajectory-cost objectives: fixed three-seed source-site comparison')
     fig.text(.5,.01,'All stationary source queries retained. Negative is worse. Not independent confirmation or deployment.',ha='center',fontsize=9)
@@ -220,17 +255,19 @@ def main():
     fig,axes=plt.subplots(1,2,figsize=(10,4.5))
     for ax,objective in zip(axes,reg['objectives']):
         for arm,color in [('mask_only','#357289'),('past_rgb','#a45351')]:
-            traces=[t['fit']['losses'] for t in report['trials'] if t['objective']==objective and t['arm']==arm]
+            selected=[t for t in report['trials'] if t['objective']==objective and t['arm']==arm]
+            traces=[t['fit']['losses'] for t in selected]
             steps=[v['step'] for v in traces[0]]
             if any([v['step'] for v in t]!=steps for t in traces):
                 raise ValueError('Matched logging schedule required')
-            values=np.array([[v['normalized_batch_ade'] for v in t] for t in traces])
+            values=np.array([[v['normalized_batch_ade']-batch_controls[t['site'],t['seed']][v['step']]['ade']
+                for v in t['fit']['losses']] for t in selected])
             ax.plot(steps,np.median(values,axis=0),label=arm,color=color)
             ax.fill_between(steps,*np.quantile(values,[.25,.75],axis=0),color=color,alpha=.12)
-        ax.axhline(1,color='black',lw=.8,linestyle=':');ax.set_title(objective+' objective')
-        ax.set_xlabel('Optimizer updates');ax.set_ylabel('Logged normalized batch ADE')
+        ax.axhline(0,color='black',lw=.8,linestyle=':');ax.set_title(objective+' objective')
+        ax.set_xlabel('Optimizer updates');ax.set_ylabel('Logged normalized ADE minus same-batch CV')
         ax.legend();ax.grid(alpha=.2);ax.spines[['top','right']].set_visible(False)
-    fig.suptitle('Median and IQR across fixed source-site / seed fits')
+    fig.suptitle('Matched-batch training harm: median and IQR across site / seed fits')
     fig.text(.5,.01,'Training minibatches only, not full-loss convergence or held-site model selection.',ha='center',fontsize=9)
     fig.tight_layout(rect=(0,.05,1,.96));fig.savefig(reports/'learning_trace.svg',metadata={'Date':None})
     fig.savefig(cache/'learning_trace.png',dpi=130);plt.close(fig)

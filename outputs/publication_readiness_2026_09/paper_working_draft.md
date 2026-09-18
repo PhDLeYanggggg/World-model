@@ -581,6 +581,37 @@ source-only descriptive bins do not change the main endpoint or train labels.
 Offline generated annotation rows are not human intention labels. Thirty exact
 replays and 91 unchanged completed-resume artifacts verify execution, not utility.
 
+The [source trajectory-cost experiment](source_cost_dynamics_v1/conclusions.md)
+then tests twelve-step bounded forecasts directly rather than another binary
+target. Its fixed two-by-two comparison (ADE/log-ADE and RGB/mask), five source
+sites and three seeds comprises 60 new fits and120,000 updates. Initial outputs
+exactly reproduce stationary CV; no-context rows remain unchanged. Equal-site
+uncontrolled ADE gains are -1.66534%/-1.69835% for ADE mask/RGB and
+-1.60683%/-1.56871% for log-ADE mask/RGB. All four conditional site intervals
+are negative. Both matched RGB contrasts have intervals crossing zero. All60
+held-site fits also fail under the fixed0.9 classifier guard; reducing the
+intervention rate reduces damage without producing positive gain.
+
+The failure differs from the preceding classifier overfit: every complete
+training-set ADE also worsens CV, by1.07-2.05%. Reconstructing exact training
+draws removes minibatch-difficulty confounding in the loss trace. Initial excess
+ADE is zero in all60 models; final logged excess is positive in all60. Logged
+gradients are clipped in100% of ADE and98.41% of log-ADE batches. This motivates
+training-only optimization and output-scale diagnostics, not a claim that
+clipping is the established cause or that no predictive information exists.
+The source containing-ball oracle retains99.67-100% headroom by site, whereas
+actual learned candidates add little useful oracle headroom. The binary and
+geometric oracles use future labels diagnostically and are never inference inputs.
+
+Easy samples have zero CV error and acquire0.02173-0.02392 native-pixel mean
+absolute harm across uncontrolled arms; a percentage easy-degradation gate is
+undefined. Context bounds are not physical-safety certificates, and the frozen
+guard is not independent risk calibration. Sixty exact prediction replays,
+15 matched four-way training streams and181 unchanged completed-resume artifacts
+verify execution. Five repeatedly exposed source sites, overlapping folds and
+offline silver histories still do not supply main-task independent confirmation.
+No predictor, threshold or deployment is selected from this negative matrix.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -593,6 +624,7 @@ replays and 91 unchanged completed-resume artifacts verify execution, not utilit
 | Does source supervision transfer start information? | 45 classifiers;no bidirectional gain;Hotel source prior beats every source/mixed arm | Probability-level source benefit remains confounded by prevalence,not demonstrated forecast gain |
 | Does past RGB add robust start information? | 30 matched fits; mixed window gain positive but agent-weighted gain negative and own-prior comparison fails | Fragile partial contrast, not robust transfer or trajectory utility |
 | Does the same RGB representation generalize inside SDD? | 30 matched fits; all five held-site mean contrasts negative; equal-site Brier lift -0.020046 | Failure is not only source-to-main transfer; supervision and visible-event support need controlled repair |
+| Does direct trajectory-cost training resolve the problem? | 60 fits; uncontrolled ADE gains -1.57% to -1.70%; training ADE also worse in every fit | The tested cost repair is insufficient; optimization and candidate trajectory utility remain unresolved |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

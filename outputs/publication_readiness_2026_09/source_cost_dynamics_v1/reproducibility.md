@@ -60,6 +60,8 @@ The analysis also exports objective loss, normalized batch ADE and logged
 pre-clipping gradient norms. Its learning curves are sampled minibatch traces;
 they do not establish full-loss convergence. Clipping fractions cover logged
 batches only, not every optimizer update.
+The plotted trace subtracts same-batch CV, reconstructed from the exact training
+sampler seed and weights; its draw counts must match each saved checkpoint.
 Public outputs are aggregate CSV/JSON/Markdown and an original scientific SVG;
 images, per-row predictions, caches and checkpoints are not committed.
 
@@ -95,3 +97,15 @@ both absent. Forty-three completed trial receipts remained. The incomplete
 finite weights; all22 registered dependency hashes still matched. The identical
 entry point resumed under PID22076/session51870, skipping completed trials.
 This is real checkpoint recovery, not a new training budget or a result claim.
+
+## Verified Completion
+
+The resumed trainer exited0 with all60 fits and120,000 updates. All60 checkpoint
+forecasts replay exactly. Verification completed15 matched four-way stream
+checks and181 unchanged-artifact completed-resume checks with no further updates.
+The final report SHA256 is
+`6e9abdc5e3e8edaea588a1fa7f37f212578a238dea813f1a33b570bea45a6eb1`.
+Fifty-eight focused tests pass; the full legacy suite is not rerun. Figures were
+visually inspected. No training or verification process from this run remains
+active. Completed numerical execution does not establish forecast utility; see
+[the negative result](conclusions.md) and [evidence gates](gates.md).

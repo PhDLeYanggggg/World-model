@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from scripts.analyze_m3w_source_cost_dynamics import site_ratio_interval, blocked_error_interval, loss_trace_summary
+from scripts.analyze_m3w_source_cost_dynamics import site_ratio_interval, blocked_error_interval, loss_trace_summary, sampled_cv_trace
 
 
 def test_site_primary_is_ratio_of_equal_site_errors_not_mean_percentage():
@@ -37,3 +37,19 @@ def test_loss_trace_does_not_claim_all_batch_gradients_or_convergence():
     assert not result['all_batch_gradients_observed']
     with pytest.raises(ValueError):loss_trace_summary(trace[::-1])
     with pytest.raises(ValueError):loss_trace_summary([])
+
+
+def test_cv_loss_control_replays_training_sampler_not_held_rows():
+    import torch
+    cv=np.array([0.,1.,3.],np.float32);w=np.array([.2,.3,.5]);c=2.
+    values,counts=sampled_cv_trace(cv,w,c,17,dict(updates=4,batch_size=5),[1,4])
+    rng=torch.Generator().manual_seed(17+7919);expected=np.zeros(3,int)
+    for step in range(1,5):
+        idx=torch.multinomial(torch.as_tensor(w,dtype=torch.float64),5,replacement=True,generator=rng)
+        np.add.at(expected,idx.numpy(),1)
+        if step in (1,4):
+            batch=torch.from_numpy(cv)[idx]/c
+            assert values[step]['ade']==float(batch.mean())
+            assert values[step]['log_ade']==float(torch.log1p(batch).mean())
+    np.testing.assert_array_equal(counts,expected)
+    assert counts.sum()==20
