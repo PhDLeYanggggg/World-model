@@ -23,6 +23,10 @@ A subsequent 27-fit observed-unit conditioning experiment measures actual
 gradient response and repairs a unit-dependent rollout feature, but no new fit
 passes easy preservation. Balanced internal-loss gradients correspond to worse
 primary forecasts, not a successful contribution.
+A further45-fit source-supported start-classification study fails bidirectional
+transfer. Its Hotel improvement comes from a mean-probability shift; source and
+mixed models are worse than a constant source prior there and worsen ETH. This
+probability diagnostic does not establish better trajectories or a new policy.
 
 ## Abstract
 
@@ -497,6 +501,34 @@ finite pool, not learned selection or independent evidence. The 27 checkpoints
 replay exactly and completed resume preserves 82 artifacts. No multimodal
 or deployment claim is made by this conditioning experiment.
 
+The [source-supported start probe](source_start_probe_v1/conclusions.md) removes
+trajectory regression and tests a binary annotation-change objective on476
+past-only unit-frame features. It adds22,374 complete-label stationary SDD windows
+from726 local agent IDs, without opening source val/test or the main sealed roles.
+Forty-five fresh logistic/tree/MLP fits produce54 prediction cells; source-only
+models are shared across directions, not fitted twice. MLPs receive15,000 total
+updates. Main remains365 exposed stationary windows from31IDs/two sites.
+
+Source-only Brier lifts versus the main training prior are-0.07197/+0.06887
+(ETH/Hotel) for logistic,-0.11032/+0.06676 for trees,and-0.11919/+0.05899 for MLP.
+Mixed training also worsens ETH in every family. No arm is positive in both
+directions. The source positive fraction44.87% is close to Hotel45.42%,while the
+opposite-main-site reference predicts72.29%. Constant source-prior Hotel
+Brier0.24794 beats every source/mixed family. The exact diagnostic decomposition
+`(q-r)^2-(mean(p)-r)^2+2*Cov(p,y)-Var(p)` attributes the positive Hotel contrast
+to mean-probability shift; the varying-prediction term is negative on average in
+both sites for every source/mixed family. This is not proof of zero information
+or a calibrated inference-time correction. It prevents interpreting the partial
+gain as demonstrated sample-specific switching capability.
+
+The2,000-resample conditional agent intervals are descriptive,with only five
+ETH and26HotelIDs. All Hotel source/mixed intervals versus the prior cross zero
+under agent weighting;row and agent estimands are not interchangeable. Forty-five
+probability replays are exact;completed resume preserves166 artifacts. No model
+is promoted. Main-only overfit,limited target support,annotation semantics and
+unverified physical-time correspondence remain alternatives to an intrinsic
+absence of predictive information.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -506,6 +538,7 @@ or deployment claim is made by this conditioning experiment.
 | Does SDD supervision fix transfer? | 54 matched fresh fits; source helps neural controls, but 0/54 safe positive fits | Tested auxiliary schedule insufficient; no deployment or independent confirmation |
 | Is the advantage specific to correct source pairing? | 54 new controls, 54 cached fits; all real-versus-permuted intervals cross zero | Main exposure accounts for part of the old difference; stable conditional transfer remains unproved |
 | Does unit conditioning repair prediction? | 27 fresh geometry fits; input-only -0.68730%, internal-loss -185.77715% vs CV; 0/27 safe | Engineering repair and balanced gradients are insufficient for protected forecasting |
+| Does source supervision transfer start information? | 45 classifiers;no bidirectional gain;Hotel source prior beats every source/mixed arm | Probability-level source benefit remains confounded by prevalence,not demonstrated forecast gain |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

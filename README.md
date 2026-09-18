@@ -10,12 +10,23 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am testing whether the admitted SDD training data adds transferable information
-about stationary agents starting to move. The [fixed comparison](outputs/publication_readiness_2026_09/source_start_probe_decision.md)
-uses main-only, source-only and mixed training with logistic regression, trees
-and a small neural classifier. It is a probability-scoring diagnostic on exposed
-fit sites, not a change to the forecasting task or deployment policy. Twelve
-focused implementation tests pass; the registered 45 model fits have not run yet.
+I have completed the [source-supported start-information study](outputs/publication_readiness_2026_09/source_start_probe_v1/conclusions.md):
+45 classifier fits, including 15 small neural models and 15,000 updates. SDD adds
+22,374 supervised stationary-history windows, but none of the fixed models shows
+positive probability transfer in both ETH and Hotel.
+
+The important finding is a misleading partial improvement. SDD-trained models
+look better on Hotel against the opposite-scene prior, yet all are worse than
+simply predicting the SDD start rate. Their overall predicted rate is closer to
+Hotel's; their varying per-agent probabilities add error on average. On ETH,
+source-only and mixed training both worsen the matched main-only models. This is
+not evidence for safer switching or better trajectories, so I am not deploying it.
+
+All 45 prediction replays are exact, completed resume preserves 166 artifacts,
+and 17 focused tests pass. The main 8-to-12 forecasting task and sealed roles
+remain unchanged. The next question is whether actual past visual state cues
+add information beyond this prevalence shift, not whether another threshold
+can rescue the same exposed examples.
 
 I have completed the [conditioning comparison](outputs/publication_readiness_2026_09/unit_frame_training_v1/report.md):
 27 new neural fits, three seeds, three exposed physical-site folds and 162,000

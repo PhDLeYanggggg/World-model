@@ -1,5 +1,55 @@
 # Real-Experiment Continuation Handoff
 
+## Source Start-Information Comparison Complete (2026-09-18)
+
+Goal active,not complete or blocked. This turn tested the next hypothesis after
+the failed conditioning study: admitted SDD source plus explicit stationary-start
+classification. All45 fixed models completed(15logistic,15trees,15Torch MLP),
+54prediction cells,15,000Torchupdates. Source-only fits shared across two held
+directions,not54independentfits. No forecast or threshold was changed.
+
+Registration`configs/m3w_source_start_probe_v1.json`;
+SHA`bbe433f82cbbe40f393cff61b15a7ddfd9178fd95c4895eceea4a06fe9de7cd2`.
+Pre-fit pushedcommit`f0d51451`. ReportSHA
+`57a82444602b534601138364153ecd107db6d5036bf2cf3431d591661a04879b`.
+Private`data/stage_cvpr2027_experiments/source_start_probe_v1`;
+public`outputs/publication_readiness_2026_09/source_start_probe_v1`.
+
+Source22,374complete stationary rows,726IDs,36videos,5sites;6,460incomplete
+stationary queries unscored. Main365windows,31IDs(ETH81/5,Hotel284/26),Zara no
+stationary queries. Source labels are any annotation-center change,not intention.
+Source+144rawframes and mainnative horizons not physically equated. Entire main
+11,966forecast cohort and primary equal-site past-normalized ADE unchanged.
+
+Source-only BrierliftETH/Hotel:logistic-.071974/+.068868,trees-.110321/+.066763,
+MLP-.119195/+.058992. Mixed also worsens ETH in allfamilies. No bidirectional
+positive arm. Source/mixed Hotel improvements versus mainprior all lose to the
+constantSDDprior(Brier.247935);exact score decomposition shows positive mean
+shift but negative within-site-varying-probability value. This is descriptive,
+not causal identification or held-label recalibration. Main-only neural fits
+overfit. Every source/mixed Hotel conditional agentCI versus prior crosses0.
+
+No fit warnings;684.696summedfitseconds,11.61minfullwall. 100pilotupdates+14,900
+continuation. 45exact probabilityreplays;166immutableartifacthashes unchanged on
+completedresume,0fits/updates.17focusedtests passed;fulllegacysuite notrerun.
+All current pilot/training/replay/verification/analysis sessions ended exit0.
+No live training to wait for;do not poll oldhandles. Imagepreview visuallychecked.
+
+Next: a fixed source-supported visual-state information probe,comparing matched
+geometry+coverage-mask against actual pastRGB and constantprior controls. Preserve
+source admission and mainroles;do not redo generic geometric thresholds or claim
+the probability gain repairs trajectories. Check annotation label resolution,
+input coverage and source clock caveats. No residual/policy promotion until
+information and trajectoryutility are established. Independent confirmation
+remains unresolved;do not reopen it for this repair.
+
+All raw/cache/modelweights stayprivate;sourceprobeprivate~1.1GB/public~0.5MB.
+Prior tests initially exposed only an exact-float assertion;fixedbeforefit.
+Unrelated staged fingerprint remains
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+Other staged/usergenerateddata-lake changes untouched. Historical notes below
+are not currentpendingtasks. No Stage5C,SMC,metricseconds or modelpromotion.
+
 ## Unit Conditioning Complete (2026-09-18)
 
 Goal active, not complete or blocked. This turn measured actual training-role

@@ -1,5 +1,33 @@
 # M3W Results Ledger
 
+## Source-Supported Start Information Complete, No Robust Transfer (2026-09-18)
+
+All45 classifiers completed:15 logistic,15 trees,15 small Torch MLPs;15,000 neural
+updates and54 prediction cells. Approved SDD contributes22,374 complete-label
+stationary windows from726 local IDs/36videos/5sites;6,460 incomplete stationary
+queries are unscored. Main evidence remains365 windows/31IDs/two exposed sites.
+
+| Model | Source-only Brier lift ETH / Hotel | Mixed Brier lift ETH / Hotel |
+| --- | --- | --- |
+| Logistic | -0.07197 / +0.06887 | -0.01591 / +0.00385 |
+| ExtraTrees | -0.11032 / +0.06676 | -0.05437 / +0.06379 |
+| MLP | -0.11919 / +0.05899 | -0.11276 / +0.02407 |
+
+These are absolute probability-score differences, not percentage trajectory
+gains. No fixed arm is positive in both directions; every source/mixed arm
+worsens ETH versus its main-only control. Hotel improvement is explained by
+mean-probability shift in the exact Brier decomposition;within-site probability
+variation adds error on average. All six source/mixed Hotel arms are worse than
+the constant source-prior diagnostic. No threshold was selected or forecast changed.
+
+Summed fit684.70sec/full wall11.61min;45 exact prediction replays,166 unchanged
+artifacts on completed resume,zero added updates,17 focused tests. Full legacy
+suite not rerun. Independent confirmation remains missing;no model promotion,
+Stage5C,SMC or submission readiness. Primary metric/cohort/sealed roles unchanged.
+[Conclusions](outputs/publication_readiness_2026_09/source_start_probe_v1/conclusions.md),
+[all scores and intervals](outputs/publication_readiness_2026_09/source_start_probe_v1/contrasts.md),
+[reproduction](outputs/publication_readiness_2026_09/source_start_probe_v1/reproducibility.md).
+
 ## Source-Supported Start Information Registered (2026-09-18)
 
 The next fixed comparison tests whether SDD supervision adds stationary-start
