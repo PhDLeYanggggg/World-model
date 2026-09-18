@@ -29,7 +29,8 @@ def main():
     assert sum(len(t['evaluation']) for t in report['trials'])==36
     lookup={(t['arm'],t['schedule'],t['seed'],t['fold']):t for t in report['trials']}
     assert len(lookup)==30
-    checks=[]; steps=0
+    checks=[]; steps=0; exposure=[]
+    nmain=json.loads((reports/'input_checks.json').read_text())['main_rows']
     for schedule in reg['schedules']:
         for seed in reg['seeds']:
             for fold in ([-1] if schedule=='source_only' else [0,1]):
@@ -44,11 +45,19 @@ def main():
                     assert cp['step']==2000 and cp['draw_counts'].sum()==128000
                     assert all(torch.isfinite(v).all() for v in cp['model'].values())
                     assert all(np.isfinite(v['bce']) and np.isfinite(v['gradient_norm']) for v in cp['losses'])
+                    for domain, keep in [('main',cp['train_ids']<nmain),('source',cp['train_ids']>=nmain)]:
+                        counts=cp['draw_counts'][keep]
+                        if len(counts):
+                            exposure.append(dict(trial=t['trial'],domain=domain,eligible_rows=len(counts),
+                                sampled_rows=int((counts>0).sum()),total_draws=int(counts.sum()),
+                                mean_draws_per_row=float(counts.mean()),min_draws=int(counts.min()),
+                                max_draws=int(counts.max()),independent_sample_count=False))
                     states.append(cp); steps+=cp['step']
                 np.testing.assert_array_equal(states[0]['train_ids'],states[1]['train_ids'])
                 np.testing.assert_array_equal(states[0]['draw_counts'],states[1]['draw_counts'])
                 assert torch.equal(states[0]['sampler_rng'],states[1]['sampler_rng'])
                 assert torch.equal(states[0]['torch_rng'],states[1]['torch_rng'])
+                assert states[0]['identity']['training_rows_sha256']==states[1]['identity']['training_rows_sha256']
                 assert states[0]['identity']['normalizer_sha256']==states[1]['identity']['normalizer_sha256']
                 checks.append(dict(schedule=schedule,seed=seed,fold=fold,same_train_rows=True,
                     same_draw_counts=True,same_final_sampler_state=True,same_normalizer=True,finite_training=True))
@@ -63,12 +72,13 @@ def main():
     assert before=={str(p.relative_to(ROOT)):file_digest(p) for p in paths} and file_digest(rp)==rh
     result=dict(result_source='fresh_run_verification_no_training',registration_sha256=file_digest(args.registration),
         report_sha256=rh,verified_fits=30,verified_torch_updates=steps,paired_stream_checks=checks,
+        training_exposure=exposure,
         immutable_artifacts=91,all_hashes_unchanged=True,new_fits=0,new_updates=0,artifacts=before,
         artifact_manifest_sha256=hashlib.sha256(json.dumps(before,sort_keys=True).encode()).hexdigest(),
         completed_resume_event=last,prediction_replay_is_separate=True,independent_confirmation=False,
         excluded_mutable_outputs=['heartbeat.json','input_checks.json'])
     json_write(reports/'verification.json',result)
-    print(json.dumps({k:v for k,v in result.items() if k not in ('artifacts','paired_stream_checks')}))
+    print(json.dumps({k:v for k,v in result.items() if k not in ('artifacts','paired_stream_checks','training_exposure')}))
 
 
 if __name__=='__main__':

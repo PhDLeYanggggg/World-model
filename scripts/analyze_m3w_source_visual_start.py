@@ -29,6 +29,22 @@ def paired_brier_parts(y,p,reference):
         held_label_diagnostic_not_inference_calibration=True)
 
 
+def leave_one_agent_sensitivity(y,p,reference,groups):
+    y,p,reference,groups=map(np.asarray,(y,p,reference,groups))
+    if p.ndim!=2 or p.shape!=reference.shape or p.shape[1]!=len(y) or groups.shape!=y.shape:
+        raise ValueError('Aligned seed-by-row probabilities and groups required')
+    unique=np.unique(groups)
+    if len(unique)<2:
+        return dict(available=False,reason='fewer_than_two_agent_ids')
+    gain=((reference-y)**2-(p-y)**2).mean(0)
+    values=np.array([gain[groups==g].mean() for g in unique])
+    omissions=(values.sum()-values)/(len(values)-1)
+    return dict(available=True,agents=len(values),agent_balanced_lift=float(values.mean()),
+        omission_min=float(omissions.min()),omission_max=float(omissions.max()),
+        positive_omissions=int((omissions>0).sum()),
+        descriptive_sensitivity_not_independent_interval=True,used_for_selection=False)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--registration',type=Path,required=True); args=parser.parse_args()
@@ -87,6 +103,7 @@ def main():
                         ('brier','main_prior_lift','mask_lift','own_prior_lift','source_prior_lift','auroc','auprc','ece','mask_mean_shift','mask_within_site')},
                     positive_mask_seeds=sum(r['mask_lift']>0 for r in selected_rows),
                     mask_interval=paired_agent_interval(y,np.array(ps),np.array(masks),groups),
+                    mask_leave_one_agent=leave_one_agent_sensitivity(y,np.array(ps),np.array(masks),groups),
                     own_prior_interval=paired_agent_interval(y,np.array(ps),np.array(owns),groups),
                     source_prior_interval=paired_agent_interval(y,np.array(ps),np.array(sources),groups),
                     main_prior_interval=paired_agent_interval(y,np.array(ps),np.array(priors),groups))
@@ -112,20 +129,30 @@ def main():
         lines.append(f"| {v['arm']} | {v['schedule']} | {v['site']} | {m['brier']:.6f} | {m['mask_lift']:.6f} | {m['own_prior_lift']:.6f} | {m['source_prior_lift']:.6f} | {m['auroc']:.6f} | {m['ece']:.6f} |")
     lines+=['','## RGB Incremental Uncertainty','',
         'The intervals below are conditional agent-balanced contrasts; row means above have a different estimand.',
-        'Five ETH and26HotelIDs,overlapping windows and two exposed sites do not establish independent scene generalization.','',
+        'Five ETH and 26 Hotel IDs, overlapping windows and two exposed sites do not establish independent scene generalization.','',
         '| Schedule | Held site | Agent-balanced RGB lift [95% interval] | Row-mean bias-shift term | Row-mean varying-prediction term | Positive seeds |',
         '| --- | --- | --- | ---: | ---: | ---: |']
     for v in rgb:
         b=v['mask_interval']; m=v['means']; lo,hi=b['descriptive_ci95']
         lines.append(f"| {v['schedule']} | {v['site']} | {b['agent_balanced_lift']:.6f} [{lo:.6f}, {hi:.6f}] | {m['mask_mean_shift']:.6f} | {m['mask_within_site']:.6f} | {v['positive_mask_seeds']}/3 |")
-    lines+=['','Brier decomposition uses held labels only to explain fixed predictions,never to recalibrate or select.',
-        'No forecast policy,physical-time,metric,true3D,foundation,Stage5C or SMC claim.','']
+    lines+=['','Brier decomposition uses held labels only to explain fixed predictions, never to recalibrate or select.',
+        'No forecast policy, physical-time, metric, true-3D, foundation, Stage5C or SMC claim.','']
+    lines+=['## Descriptive Influence Check','',
+        'Supplementary, not a registered selection rule: omit one local agent ID at a time.',
+        'The range is sensitivity, not a confidence interval; shared scene dependence remains.', '',
+        '| Schedule | Held site | Minimum omitted-agent lift | Maximum omitted-agent lift | Positive omissions |',
+        '| --- | --- | ---: | ---: | ---: |']
+    for v in rgb:
+        s=v['mask_leave_one_agent']
+        lines.append(f"| {v['schedule']} | {v['site']} | {s['omission_min']:.6f} | {s['omission_max']:.6f} | {s['positive_omissions']}/{s['agents']} |")
+    lines.append('')
     (reports/'results.md').write_text('\n'.join(lines))
     cache=out/'plot_runtime'; cache.mkdir(parents=True,exist_ok=True)
     os.environ.setdefault('MPLCONFIGDIR',str(cache/'matplotlib')); os.environ.setdefault('XDG_CACHE_HOME',str(cache/'xdg'))
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
+    from matplotlib.ticker import MultipleLocator
     plt.rcParams['svg.hashsalt']='m3w-source-visual-start-v1'
     fig,axes=plt.subplots(1,2,figsize=(10,4),sharex=True,sharey=True)
     for fold,ax in enumerate(axes):
@@ -136,6 +163,7 @@ def main():
             ax.scatter(values,np.full(3,i),c='black',s=15,zorder=3)
         ax.axvline(0,color='black',lw=.8); ax.set_title(['ETH (5 agent IDs)','Hotel (26 agent IDs)'][fold])
         ax.set_xlabel('RGB Brier lift over matched coverage control')
+        ax.xaxis.set_major_locator(MultipleLocator(.05))
         ax.spines[['top','right']].set_visible(False); ax.grid(axis='x',alpha=.15)
     axes[0].set_yticks(range(3),['Main only','SDD only','Mixed']); axes[0].invert_yaxis()
     fig.suptitle('Past-image contribution: fixed three-seed probability probe')

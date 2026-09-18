@@ -1,5 +1,48 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Visual Probe Complete (2026-09-18)
+
+Goal remains active, not complete or blocked. All30 registered fits/36prediction
+cells/60,000 updates completed; 100 pilot plus59,900 full continuation. Full wall
+47.114min, summed fit2693.539sec. No new forecast, threshold selection or model
+promotion. RegistrationSHA9edee7d4fe9ef0b97d370ad7804f78ec094102580ef5e7ba12e8e0adf5596af9;
+reportSHA91914580ba5bad24c66b87878ad0d8258253356c2e62151c779807b3e2f0bc7a.
+
+Mixed RGB vs mask has positive row BrierliftETH/Hotel .039378/.036045 in allseeds,
+but equal-agent lift -.019117/-.038780 and both conditionalCIs cross0. NoRGB
+schedule beats its own constant training prior in both sites. Source-onlyRGB
+worsensETHallseeds. Primary row contrast stays positive;do not replace its
+estimand or claim a robust contribution from it. ExactBrierdecompositions and
+single-agent-omission sensitivity are in analysis.json/results.md. No held-label
+recalibration was performed. Mainonlyfits overfit; finite source budget not
+claimed converged. Pixels vary;source box median10.9x12.7modelpixels,31.5% axis<8.
+
+Thirty exact probabilityreplays,15matchedstreams,91immutableartifacts unchanged
+oncompletedresume with0newupdates.34focusedtests passed;fulllegacy suite notrerun.
+PNGfigure inspected after tickspacingfix. No rawimages/cache/weights committed.
+Run log and private assets: data/stage_cvpr2027_experiments/source_visual_start_v1.
+Public conclusions/gates/repro and allaggregate metrics under matchingreportdir.
+
+Fulltrainer PID3037/session47028, replay7255/session42040, verification50217,
+analysis44379/2196, audits and tests are all terminal exit0. NO CURRENT LIVE
+TRAINING from this experiment;do notpollthesehandles orrestartcompletedfits.
+Earlier live notes below are historical. Newcodecommitbeforetrainingdb7d30f4;
+intermediate audit/statuspush0c70433e. Finalcompletioncommit comesafterthisnote.
+
+Next useful action: audit class/agent support by the five admitted physicalSDD
+sites,then register a source-site-held-out RGB/mask information test to distinguish
+failure inside source from source-to-main transfer. Only originaltrain40;do not
+openmain development/calibration/confirmation. This remains exposedfitdiagnostic,
+not newindependentconfirmation. Do not repeatmainthresholds,changeprimary or
+promotea residual from classificationgain. Largerbudget/label/visibility repairs
+need controlled comparisons,not a claim that currentpixels carry no information.
+
+Main11966forecastqueries/native8to12/equal-sitepast-normalizedADEunchanged.
+Currentcausalwording is offline supplied annotation histories,not strictsensorasof.
+NoStage5C/SMC/metricseconds/true3D/foundation/submissionreadiness claim.
+Unrelatedstagedfingerprintmustremain
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Matched Visual Probe Live (2026-09-18)
 
 Goal active. Current trainer PID3037 / session47028 is LIVE. Do not start a second

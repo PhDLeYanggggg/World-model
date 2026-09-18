@@ -10,15 +10,26 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am running a [matched visual start-information comparison](outputs/publication_readiness_2026_09/source_visual_start_decision.md)
-to test whether past pixels add value beyond geometry and image-coverage masks.
-The fixed matrix has 30 neural fits and 60,000 updates, with source-only models
-shared across the two held-fit sites. Thirty-two focused tests pass, including
-exact checkpoint continuation and matched sampling between the image arms.
-The input audit finds supported, temporally varying past crops, but does not
-establish that body-state cues are visible at the model's 32 x 32 resolution.
-Training is still in progress; no forecasting or deployment gain is claimed.
-[Reproduction and evidence boundaries](outputs/publication_readiness_2026_09/source_visual_start_v1/reproducibility.md).
+I completed the [matched visual start-information comparison](outputs/publication_readiness_2026_09/source_visual_start_v1/conclusions.md):
+30 small neural classifiers, three seeds and 60,000 updates, with identical
+training streams for the RGB and coverage-only arms. The full run took about
+47 minutes locally. All 30 checkpoint predictions replay exactly, and a
+completed-run resume preserves 91 artifacts without further training.
+
+Mixed training gives a positive window-average RGB contrast: Brier reductions
+of 0.0394 on ETH and 0.0360 on Hotel. But these gains reverse when each person
+receives equal weight, both uncertainty intervals cross zero, and the RGB models
+still lose to their own constant training priors. SDD-only RGB also worsens ETH.
+This is a fragile partial signal, not robust transfer or a trajectory improvement.
+I am not changing the deployed policy on this evidence.
+
+The images are present and vary over time. Their information quality is less
+certain: source annotation boxes occupy a median of roughly 11 x 13 model
+pixels. Thirty-four focused tests pass; sealed evaluation roles remain closed.
+The next check is whether the same cues generalize across admitted SDD training
+sites before trying another external transfer head.
+[Full scores](outputs/publication_readiness_2026_09/source_visual_start_v1/results.md),
+[reproduction](outputs/publication_readiness_2026_09/source_visual_start_v1/reproducibility.md).
 
 I have completed the [source-supported start-information study](outputs/publication_readiness_2026_09/source_start_probe_v1/conclusions.md):
 45 classifier fits, including 15 small neural models and 15,000 updates. SDD adds
@@ -34,9 +45,8 @@ not evidence for safer switching or better trajectories, so I am not deploying i
 
 All 45 prediction replays are exact, completed resume preserves 166 artifacts,
 and 17 focused tests pass. The main 8-to-12 forecasting task and sealed roles
-remain unchanged. The next question is whether actual past visual state cues
-add information beyond this prevalence shift, not whether another threshold
-can rescue the same exposed examples.
+remain unchanged. That finding motivated the matched visual comparison above,
+with explicit constant-prior controls rather than another threshold search.
 
 I have completed the [conditioning comparison](outputs/publication_readiness_2026_09/unit_frame_training_v1/report.md):
 27 new neural fits, three seeds, three exposed physical-site folds and 162,000

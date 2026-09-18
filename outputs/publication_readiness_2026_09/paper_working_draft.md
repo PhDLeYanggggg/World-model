@@ -529,6 +529,31 @@ is promoted. Main-only overfit,limited target support,annotation semantics and
 unverified physical-time correspondence remain alternatives to an intrinsic
 absence of predictive information.
 
+The subsequent [matched visual probe](source_visual_start_v1/conclusions.md)
+adds 30 real Torch fits and 60,000 updates with paired RGB/coverage-only sampling.
+It preserves the same stationary cohort and labels. The mixed schedule gives
+positive window-weighted RGB-minus-mask Brier lifts of 0.039378 on ETH and
+0.036045 on Hotel, positive in all three seeds. This primary contrast is retained.
+However, equal-agent contrasts are -0.019117 and -0.038780, with conditional
+intervals [-0.133658,0.083091] and [-0.149999,0.062546]. Both mixed RGB models are
+also slightly worse than their own constant training priors. SDD-only RGB worsens
+ETH versus mask by 0.090782 Brier. No schedule beats its own prior in both sites.
+
+The score decomposition distinguishes partial improvement over a weak variable
+predictor from useful probability estimation. Mixed ETH's row gain consists of
+0.079563 from mean-probability shift and -0.040185 from the varying-prediction
+term. Mixed Hotel improves the latter term relative to mask, but not enough to
+beat its own constant prior. Its equal-agent contrast remains negative after
+each single-agent omission. These are descriptive diagnostics, not selected
+calibration corrections or independent scene evidence.
+
+All 30 probability replays are exact and completed resume preserves 91 artifacts.
+Past crops exist and change over time, but source annotation boxes occupy a
+median of approximately 11 by 13 model pixels; body-state visibility and shared
+behavioral label semantics remain unverified. This finite-budget probability
+probe establishes neither trajectory utility nor the absence of visual
+information in general. No forecast or deployment is promoted.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -539,6 +564,7 @@ absence of predictive information.
 | Is the advantage specific to correct source pairing? | 54 new controls, 54 cached fits; all real-versus-permuted intervals cross zero | Main exposure accounts for part of the old difference; stable conditional transfer remains unproved |
 | Does unit conditioning repair prediction? | 27 fresh geometry fits; input-only -0.68730%, internal-loss -185.77715% vs CV; 0/27 safe | Engineering repair and balanced gradients are insufficient for protected forecasting |
 | Does source supervision transfer start information? | 45 classifiers;no bidirectional gain;Hotel source prior beats every source/mixed arm | Probability-level source benefit remains confounded by prevalence,not demonstrated forecast gain |
+| Does past RGB add robust start information? | 30 matched fits; mixed window gain positive but agent-weighted gain negative and own-prior comparison fails | Fragile partial contrast, not robust transfer or trajectory utility |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

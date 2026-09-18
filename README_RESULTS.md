@@ -1,5 +1,40 @@
 # M3W Results Ledger
 
+## Matched Visual Start Complete: Partial Window Gain, No Robust Transfer (2026-09-18)
+
+`fresh_run`: 30 real Torch fits, 36 prediction cells, 60,000 updates. Full wall
+47.11 minutes; summed fit 2,693.54 seconds. The original 100-update training-only
+pilot is included, not added to this budget. Source/main inputs are cached_verified.
+
+| Training schedule | RGB-minus-mask Brier lift ETH / Hotel | RGB-minus-own-prior lift ETH / Hotel |
+| --- | --- | --- |
+| Main only | +0.016172 / -0.002236 | +0.058104 / -0.196108 |
+| SDD only | -0.090782 / +0.002252 | -0.258466 / -0.020036 |
+| Mixed | +0.039378 / +0.036045 | -0.002996 / -0.000676 |
+
+These are absolute probability-score differences, not ADE/FDE percentages. The
+registered mixed window contrast is positive in both sites/all three seeds;
+that result is retained. But equal-agent contrasts are -0.019117 on ETH and
+-0.038780 on Hotel, with conditional 95% intervals [-0.133658,+0.083091] and
+[-0.149999,+0.062546]. No RGB schedule beats its own training prior in both sites.
+The source-only ETH negative is present in every seed. No robust visual transfer,
+new forecast gain or deployment is established.
+
+Thirty exact checkpoint replays; 15 matched sampling/normalization checks;
+91 immutable artifacts unchanged on completed resume, zero added fits/updates;
+34 focused tests. Full legacy suite not rerun. Inputs retain 365 main queries/
+31 local IDs and 22,374 complete-label source queries; no row filter or main
+metric change. Source crop box median 10.9 x 12.7 model pixels, not visible-body
+gold. All image-support checks remain separate from predictive claims.
+
+Next: source physical-site support and matched held-source information tests,
+not held-main threshold tuning. Independent confirmation remains unresolved.
+Stage5C/SMC remain disabled; no metric/seconds, true-3D or foundation claim.
+[Conclusions and failure taxonomy](outputs/publication_readiness_2026_09/source_visual_start_v1/conclusions.md),
+[all scores](outputs/publication_readiness_2026_09/source_visual_start_v1/results.md),
+[evidence gates](outputs/publication_readiness_2026_09/source_visual_start_v1/gates.md),
+[reproduction](outputs/publication_readiness_2026_09/source_visual_start_v1/reproducibility.md).
+
 ## Matched Visual Start Training in Progress (2026-09-18)
 
 The registered 30-model / 60,000-update matrix is running on native arm64 CPU4,

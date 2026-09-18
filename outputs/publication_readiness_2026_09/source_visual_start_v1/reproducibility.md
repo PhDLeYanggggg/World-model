@@ -84,3 +84,18 @@ assets but do not replace obtaining lawful local copies or verifying their roles
 The full legacy test suite is not represented as rerun by these focused checks.
 No deployment, independent confirmation, metric/seconds, true-3D, foundation,
 Stage5C or SMC claim follows from this experiment.
+
+## Completed Verification Receipt
+
+The full run ended normally after 47.11 minutes, with 2,693.54 summed fit seconds.
+The pilot contributed 100 updates and the full continuation 59,900: 60,000 total,
+not 60,100. All 30 checkpoint probability replays are exact. The completed-resume
+verifier checked 15 matched streams and preserved 91 immutable artifacts and
+the report hash with zero new fits or optimizer updates. See `replay.json` and
+`verification.json` for actual receipts and `loss_trace.csv` for the recorded
+training BCE and gradient norms.
+
+The final focused rerun passed all 34 tests in 2.22 seconds. The plotting-only
+tick-spacing repair changes neither training nor scoring. This is
+not a full legacy-suite result. Private checkpoints and individual predictions
+remain local. No training process from this matrix remains running.
