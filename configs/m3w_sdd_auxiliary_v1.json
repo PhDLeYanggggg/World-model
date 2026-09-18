@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "registration_path": "configs/m3w_sdd_auxiliary_v1.json",
+  "approval": {
+    "user_reply": "按这个方案继续",
+    "date": "2026-09-18"
+  },
+  "data_role": "supervised_auxiliary_training",
+  "original_split": "train",
+  "original_train_recordings": 40,
+  "raw_frame_stride": 12,
+  "observed_steps": 8,
+  "predicted_steps": 12,
+  "main_role": "fit_only_exploratory",
+  "main_primary_changed": false,
+  "modalities": [
+    "geometry",
+    "mask_only",
+    "past_rgb"
+  ],
+  "schedules": [
+    "no_aux",
+    "sdd_aux"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "bootstrap_resamples": 2000,
+  "main_registration": "configs/m3w_offline_visual_forecast.json",
+  "split_manifest": "data/stage21_sdd_world_state/manifest.json",
+  "source_manifest": "outputs/publication_readiness_2026_09/sdd_media_alignment/diagnostic_media_links.json",
+  "geometry_bridge": "data/stage_cvpr2027_experiments/sdd_step_bridge",
+  "decoder_path": "data/stage_cvpr2027_experiments/media_decode_runtime",
+  "decoder_version": "18.1.0",
+  "output": "data/stage_cvpr2027_experiments/sdd_auxiliary_v1",
+  "reports": "outputs/publication_readiness_2026_09/sdd_auxiliary_v1",
+  "training": {
+    "pretraining_updates": 2000,
+    "main_updates": 4000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "bindings": {
+    "src/world_model/m3w_sdd_auxiliary.py": "9566ec915c6f3a24020affbbf29de4b94fdba57552ea28e6bd0e70e9d9c2032e",
+    "scripts/prepare_m3w_sdd_auxiliary.py": "76784671408831105dd81245c550cba61ab3d8e3fd1529010bc82ffd88b9fcc1",
+    "scripts/run_m3w_sdd_auxiliary.py": "3f7a0e25e6b48d952e23df48e430bbadca72b3489aadd65142b4300db2a5a388",
+    "tests/test_m3w_sdd_auxiliary.py": "6fa67d40118d0696e299b4208f1d41d222c3cda26d31430133946c2c9e4c00ea",
+    "outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md": "1a32fed1e6431395c42770e862bef6c31f438a10fff0aad697c69cc4c7a8fa77",
+    "configs/m3w_offline_visual_forecast.json": "0ab1fb0a6c505e540e6f6d2a6679b0d72df38387deaf618f8413ef8f4ebbaca4",
+    "configs/m3w_sdd_step_bridge.json": "cf5f6834cc5973612c2764d8de58fca7bfade6957e8a4d1d6831a24fd1f1369e",
+    "data/stage21_sdd_world_state/manifest.json": "9dd5b14e361ee56fd3d82f0faeaf3f25e9c23afdb9a7454bc140a1035817f548",
+    "outputs/publication_readiness_2026_09/sdd_media_alignment/diagnostic_media_links.json": "e1ece86c223328191c53abeaa576cb1aefc68fe90796d8023ff65c4887de26df",
+    "src/world_model/m3w_sdd_step_adapter.py": "68060d4233f28bb0c2fb779fd08690a082dcd7caf79aea19365f8585f82ffcd2",
+    "src/world_model/m3w_sdd_image_coordinates.py": "a73b334b13927a7af9dd293faa0445543adc53053ced9a21150d9f3df613ef4d",
+    "src/world_model/m3w_sdd_past_images.py": "cca4af4ab91ecc9b0db6ceb54a8326894e4a2372ec218a41e1dd4cfddf0e4f22",
+    "src/world_model/m3w_offline_visual_forecast.py": "7ced3cbd5c2f6f316d0ea11cedd041c98cadbd78cb7da4db531055b33ad17208",
+    "src/world_model/m3w_offline_visual_data.py": "ffe757e3f25215e4b7437aac0bee3ad25e5700a6484af2faa7ea2ebfaae55a45",
+    "src/world_model/m3w_objective_alignment.py": "8e1278d7366f148cf3ba76c11f2dc8ffe3a2e9172dfe31c2465c44f2d9fc45ed",
+    "src/world_model/m3w_track_event_sampling.py": "61a6cf4dea1f4c21cb4d1751e2754b1454cb129a74ba35d0b1362aecc574e253",
+    "scripts/run_m3w_objective_alignment.py": "d45c6d207bc99676e3200ca233c3f00adda0b645f03b0c84a994aeb7e56a332a",
+    "scripts/audit_m3w_sdd_state_support.py": "063fbc443d790b0c965fd245aedc055d5d829ade21eb7e2d4bd8803a68c708ca"
+  }
+}

@@ -1,5 +1,21 @@
 # M3W Results Ledger
 
+## SDD Auxiliary Comparison Registered (2026-09-18)
+
+The source-role/sampling decision is now approved: original SDD train-40,
+raw stride12, obs8/pred12; separate auxiliary arm, matched no-SDD control.
+Main ETH/UCY primary, 11,966 fit rows and sealed roles remain unchanged.
+Full auxiliary population: 229,333 past-eligible windows, not the earlier
+5,074 diagnostic joins. Six source/modality cells, three seeds, three fit folds:
+54 fresh fits planned, 2,000 pretraining + 4,000 main updates each.
+
+Twenty-seven focused tests pass, including exact phase-boundary resume and
+future-target input isolation. Initial test had a test-only dict-call typo,
+corrected before fitting. Full legacy suite not rerun. Training not started;
+no predictive result, promotion or independent-confirmation claim.
+[Registered experiment](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md).
+Earlier pending-status entries below are historical and superseded by this approval.
+
 ## Manuscript Evidence Reconciled (2026-09-18)
 
 Writing/consistency repair only, zero new fits. The working draft now includes

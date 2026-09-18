@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+The next registered comparison tests SDD as an auxiliary training source: the
+original 40 training videos, sampled every 12 raw frames, with eight observed
+and twelve predicted points. I compare matched training budgets with and without
+SDD, using geometry, image masks and past RGB separately. The ETH/UCY task and
+sealed evaluation roles stay unchanged. This is approved and registered, not a
+completed training result. [Design and safeguards](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md).
+
 The [working manuscript](outputs/publication_readiness_2026_09/paper_working_draft.md)
 now separates what the models learned from what the data pipeline can support.
 The one-direction start signal is not a trajectory gain, and the completed SDD

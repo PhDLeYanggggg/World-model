@@ -1,5 +1,17 @@
 # Real-Experiment Continuation Handoff
 
+## SDD Auxiliary Admission Approved (2026-09-18)
+
+The user explicitly replied "按这个方案继续". The source-role/sampling blocker
+is resolved: original train-40, stride12, obs8/pred12, matched auxiliary/control.
+Do not ask again or treat the older pending sections as current.
+Registration: configs/m3w_sdd_auxiliary_v1.json. 54 new fits, 324,000 updates;
+full229,333pastwindows need a new complete crop cache. Main primary and sealed
+roles unchanged. Twenty-seven targeted tests pass; training not started at this
+registration. Prepare full inputs, run100step training pilot without held scores,
+resume full matrix, then exact replay and completed-resume checks. Goal active,
+not complete. This experiment remains exposed-fit exploratory, no deployment.
+
 ## Resumed Goal: Manuscript Evidence Repair (2026-09-18)
 
 Current goal remains active. The preceding resumed interaction was clarification,
