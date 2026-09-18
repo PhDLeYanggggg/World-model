@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Frozen Deferral Source Readout Registered (2026-09-18)
+
+The next fixed diagnostic evaluates all six final cost-deferral models on the
+previously explored bookstore source site, with their three matched dense
+controls. No new training, selection, calibration or deployment. The action
+threshold remains zero. Report all arms, recording-block intervals and negative
+slices. Eighteen targeted tests pass. Main roles remain closed; this does not
+turn an exposed site into independent confirmation.
+[Pre-score decision](outputs/publication_readiness_2026_09/source_deferral_transfer_decision.md).
+
 ## Relative-Cost Deferral Complete: Small Training Signal Only (2026-09-18)
 
 `fresh_run`: six real Torch continuations, 48,000 new updates, 15,430 training

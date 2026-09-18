@@ -1,5 +1,20 @@
 # Real-Experiment Continuation Handoff
 
+## Fixed Deferral Source Readout Registered (2026-09-18)
+
+Previous turn was progress: six fresh training continuations and complete
+training-only diagnosis. Current next action is a separately registered fixed
+readout of all six final deferral models plus three matched dense controls.
+Config `configs/m3w_source_deferral_transfer_v1.json`; entry
+`scripts/run_m3w_source_deferral_transfer.py`. No training or threshold search.
+Bookstore 6944rows/7recordings/181scopedagents/1site was explored previously,
+not independent confirmation. Score threshold0 and all endpoints retained.
+Recording bootstrap2000/seed38113; main roles closed. Eighteen focused tests
+pass; audit, pre-score commit/push, inference, exact replay and report next.
+Local assets and remote HEAD f2676c4c agree; CREATE current assets/jobs unknown
+beyond historical authentication/project-path blocker. No new remote job.
+No Stage5C/SMC/deployment. Goal active and unmet.
+
 ## Training-Only Cost Deferral Complete (2026-09-18)
 
 Goal active and unmet. This turn completed six real continuations / 48k new
