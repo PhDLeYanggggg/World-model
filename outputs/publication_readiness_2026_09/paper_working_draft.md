@@ -766,6 +766,32 @@ with accurate direction; they do not establish direction irrelevance or
 independent generalization. All twelve models replay exactly. No new risk head,
 independent calibration, main evaluation or deployment is added.
 
+The subsequent [raw annotation and past-box audit](source_motion_quality_v1/conclusions.md)
+retains all 15,430 queries. Among 6,864 nonzero futures, 46.63% stay within two
+annotation pixels and 82.07% within five. Only 207 queries reach half the median
+observed box diagonal. However, 728 queries above ten pixels account for 53.25%
+of summed normalized baseline ADE and both candidate families still lose there.
+Small annotation changes therefore do not explain away the prediction failure.
+No bin is removed or called human-verified motion or noise.
+
+Forty-eight fixed ExtraTrees probes compare geometry against geometry plus
+38 past-box shape features across four held sites and three seeds. Equal-site
+Brier lifts versus training prevalence are -0.001959/-0.023872 for any future
+change and -0.0001240/-0.0001652 for half-box excursion. The added-box contrast
+for any change is -0.021913, conditional four-site interval [-0.041205,-0.002622];
+the half-box contrast interval crosses zero. This tested feature addition does
+not repair probability transfer. Changing feature count also changes forest
+random subspaces, and rare half-box labels limit power; neither result proves
+that all appearance information is useless. Exact replay succeeds for 48 models.
+
+Raw provenance also shows that 15,316 histories include generated annotations
+whose next source control is after the query. The experiment remains an offline
+annotation forecast, not certified sensor-as-of perception. Raw future-box and
+loaded-target mutation checks verify the implemented feature boundary, not how
+the dataset annotations were originally constructed. All intervals are
+conditional on four previously explored sites with shared fitting populations;
+no independent confirmation or new trajectory gain is established.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |

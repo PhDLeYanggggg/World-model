@@ -33,6 +33,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does cost-aware fallback help? | It reduces neural harm, but the fixed source readout still loses 1.246% to stationary CV. The unprotected control loses 1.744%. |
 | Do scene-excluded candidate forecasts remain useful? | Twelve fresh fits all lose on their excluded site; equal-site gain is -5.016%. Fixed candidate/CV oracle headroom is below 0.53%, so another gate alone is not the next repair. |
 | Does removing the static-target loss repair them? | No. Twelve matched new fits increase oracle headroom to 3.760%, but actual gain is -98.719% and static-target harm is much larger. |
+| Do raw annotation checks and past-box features explain the failure? | Small changes are common, but >10px queries contribute 53.25% of baseline error and still lose. Forty-eight fixed probability probes find no stable added-box benefit. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -59,6 +60,13 @@ Rotating its predictions retains most of the oracle headroom, so that headroom
 alone is not evidence of accurate motion direction or usable neural dynamics.
 All twelve models replay exactly; the scientific result is still negative.
 
+The completed [motion-quality diagnostic](outputs/publication_readiness_2026_09/source_motion_quality_v1/conclusions.md)
+aligns all 15,430 source queries to raw annotations. It distinguishes tiny
+coordinate changes from larger excursions without deleting either group.
+Past-box features do not repair cross-site motion probabilities. Interpolation
+controls after the query also occur in 15,316 histories, reinforcing the
+offline-annotation limitation rather than establishing real-time perception.
+
 ## Evidence and Reproduction
 
 The detailed record is kept separately so that the project overview remains
@@ -68,7 +76,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_motion_candidate_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_motion_quality_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some
@@ -139,9 +147,12 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 Improve candidate utility before fitting another risk head. The loss control
 has separated larger oracle headroom from actual predictive value; it has not
-supplied a safe candidate. Next I will check annotation-scale motion and the
-past context needed to predict movement and direction, using admitted training
-material only. The OOF labels do not automatically permit a second-level
+supplied a safe candidate. The annotation-scale check is now complete: neither
+small changes alone nor the tested past-box features explain or repair the
+transfer failure. Next I will test a different past-information representation,
+after checking reusable visual assets and defining a matched geometry control.
+This is not a reason to repeat failed compact RGB routes unchanged.
+OOF labels do not automatically permit a second-level
 validation split: every upstream producer must also exclude the risk head's
 validation scene.
 [Provenance boundary](outputs/publication_readiness_2026_09/source_crossfit_v1/method_and_limits.md).
@@ -150,9 +161,9 @@ The [fixed loss-control registration](outputs/publication_readiness_2026_09/sour
 and all negative outcomes remain available. No new policy has been deployed,
 and no test threshold was changed to rescue this result.
 
-The next [registered information audit](outputs/publication_readiness_2026_09/source_motion_quality_decision.md)
-will align these queries to raw annotations and compare geometry-only motion
-probabilities with past box-shape features. It does not change the main task.
+The [registered information audit](outputs/publication_readiness_2026_09/source_motion_quality_decision.md)
+is complete: 48 fresh fits, exact replay and 44 focused checks. Its negative
+probability results do not change the main task or justify a new deployment.
 
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,

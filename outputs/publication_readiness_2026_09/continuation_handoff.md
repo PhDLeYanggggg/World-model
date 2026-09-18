@@ -1,6 +1,42 @@
 # Real-Experiment Continuation Handoff
 
-## Source Motion Quality Follow-Up Registered (2026-09-18)
+## Source Motion Quality Complete, No Probability Repair (2026-09-18)
+
+Goal active/unmet; this turn is progress, not blocked. Raw alignment completed
+for15,430queries/545agents/29records/four sites.48fresh ExtraTreesfits, all exact
+replays;149immutableartifacts,zero-fitresume,44focusedtests. No new neural fit,
+main/outer forecast, test selection or deployment. Read source_motion_quality_v1/
+conclusions.md, verification.json and reproducibility.md. Pre-compute commit
+bb206551; configSHA6ed141cb921eede270bf7c4aafbe23155710d89255a78f98c321aba395c7d1c5.
+
+PreparationPID69308,probe69366,replay69498,analysis69521,verifiers all exit0.
+Probe64.135summedfitsec/69.538logsec. Completedresume69578/70247adds0fits;
+originalverificationreceiptpreserved. No active required process. No duplicatefits.
+
+Nonzero6864:46.63% <=2px,82.07% <=5px. Half-box207;final-fourpersistent113.
+>10px728rowscontribute53.25%CVerror;controlgain-.0641%,motionloss-1.9531%.
+Therefore no "only jitter" explanation. No labels removed. Geometry/box Brier
+liftsnonzero-.001959/-.023872,halfbox-.0001240/-.0001652. Boxcontrastnonzero
+-.021913 CI[-.041205,-.002622];halfbox-.0000412 CI[-.0001374,.0000446].
+AbsoluteBrierunitsnotpercentage. Four explored-siteconditionalCI,notconfirmation.
+Pastboxfeatureschangingforestsubspaceslimitscausalinterpretationofnegativecontrast.
+
+15316historieshavegeneratedrowswithnextcontrolafterquery;notstrictsensor-as-of.
+Allrawmappingaligned;1077rawfutureboxmutations and48loadedlabelchecks pass.
+No directtargetfeatureleak;offlineinterpolationavailability isseparatelimitation.
+No human motion gold. Bookstore/mainroles unscored,allsamplesremain.
+
+AnalysisSHA680862850ad71683f98c5b0ae56160b38fa2768e1a332c736db9aa1f2b901bb7;
+verificationSHA8cbf7ebadf49cab3226eb29275f9c580065dbb3afe634ba70fc61d3e41738214.
+Nextcandidatehypothesisneedsdifferentpastinformation/representation,notanother
+threshold sweep or row deletion. Inventoryreusablevisualassetsfirst;priorcompact
+RGB/motionroutesfailed. Fixedmatchedtraining-onlyprotocolbeforeanynewfits.
+Allupstreamproducersexcludenewriskheadvalidationsite. No mainprotocolchange.
+CurrentCREATEfreshSSHpublickeydenied/MFAnotice,noinventory/nojob,localnotblocked.
+Stage5C/SMCoff. Preserve3019unrelatedstagedchangesfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+### Registration History
 
 Previous goal turn was progress: 12 fresh fits and verified negative results.
 Next registered diagnostic: configs/m3w_source_motion_quality_v1.json;

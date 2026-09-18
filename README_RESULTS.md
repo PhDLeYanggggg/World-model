@@ -5,16 +5,51 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Source Annotation Quality and Past-Box Probe Registered (2026-09-18)
+## Source Motion Quality Complete: No Past-Box Probability Repair (2026-09-18)
 
-Next fixed training-side diagnostic: raw alignment of the unchanged 15,430-query
-cohort, magnitude/provenance/direction summaries, then 48 ExtraTrees probability
-fits across four sites, three seeds, two labels and two input arms. No threshold
-selection, main-role scoring, row deletion or deployment. Five focused helper
-tests pass; no new probability result exists yet.
-[Registration](outputs/publication_readiness_2026_09/source_motion_quality_decision.md).
+`fresh_run`: 15,430 raw-aligned queries; 48 fixed ExtraTrees probability fits,
+four sites x three seeds x two labels x two input arms. Previous neural outputs
+are `cached_verified`, not retrained. Pre-computation registration `bb206551`.
+All rows remain; no threshold/model selection, main-role score or deployment.
 
-Local/GitHub 414e4350 agree; 65GiB free observed. A fresh read-only CREATE SSH
+Of 6,864 nonzero futures, 46.63% stay within 2 pixels and 82.07% within 5 pixels.
+Only 207 queries reach half the observed box diagonal; 113 persist outside it in
+all final four steps. These are annotation diagnostics, not human gold movement.
+The 728 queries above 10 pixels contribute 53.25% of stationary CV error; both frozen
+neural families still lose there. Small annotation changes alone do not explain
+the prediction failure and do not justify removing any label bin.
+
+| Probability task | Geometry Brier lift | Geometry + past-box Brier lift |
+| --- | ---: | ---: |
+| Any nonzero future change | -0.001959 | -0.023872 |
+| Excursion >= half observed box diagonal | -0.0001240 | -0.0001652 |
+
+Values are absolute Brier units versus training prevalence, not percentage
+trajectory gains. Box-minus-geometry contrasts: -0.021913 CI[-0.041205,-0.002622]
+and -0.0000412 CI[-0.0001374,+0.0000446]. Two thousand conditional four-site
+bootstrap draws; explored/shared-fold evidence, not independent confirmation.
+Past-box addition also changes forest feature competition. No claim that all
+visual information is useless.
+
+15,316 histories include generated annotations whose next control is after the query.
+This confirms the offline-input boundary, not strict sensor-as-of availability.
+No direct future labels enter features; 1,077 raw future-box mutation checks and
+48 loaded-label checks pass. These checks do not undo original interpolation.
+
+All 48 models replay exactly; 149 artifacts remain unchanged; resume adds zero
+fits. All 44 focused tests pass. The full legacy suite was not rerun. Summed
+fitting took 64.135 seconds, with a 69.538-second main log span. All 48 planned
+fits completed; this was not a shortened budget or new Torch training. All
+required processes are terminal. The main 8-to-12 protocol is unchanged and
+no new t+50 score is reported.
+
+[Conclusions](outputs/publication_readiness_2026_09/source_motion_quality_v1/conclusions.md),
+[gates](outputs/publication_readiness_2026_09/source_motion_quality_v1/gates.md),
+[reproduction](outputs/publication_readiness_2026_09/source_motion_quality_v1/reproducibility.md),
+[Chinese operations](outputs/publication_readiness_2026_09/source_motion_quality_v1/operation_zh.md).
+
+Local/GitHub commit 414e4350 matched before registration; 65 GiB free was observed.
+A fresh read-only CREATE SSH
 attempt reached the gateway but failed public-key authentication with a portal
 MFA notice. No scheduler or remote model inventory was retrieved and no job was
 submitted. This does not mean the remote project or jobs are absent. Local work
