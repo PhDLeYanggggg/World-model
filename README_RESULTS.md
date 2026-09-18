@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Event Support Audited; Sampling Repair Registered (2026-09-19)
+
+Fresh raw current-cohort audit: 15,430 queries, 545 scoped tracks, 1,457 past-defined
+annotation episode groups. Half-box excursions: 207 windows, 55 groups, 47 tracks;
+only two relevant tracks at gates. 206/207 have moving neighbors. Episode and
+track reweighting of all five fixed predictors remains negative, and does not
+replace the primary evaluation. All 1,077 real future-mutation/truncation checks
+pass; a second complete audit exactly reproduces its artifacts. These groups
+are not independent physical events. No new forecast was made by the audit.
+
+Registered next repair: equal training exposure per past-defined episode, with
+geometry and centered inputs. 24 new heads/240,000 updates; same data, loss,
+normalization, architecture and original evaluation. Uniform controls are reused
+after hash verification. Training has not started at this registration checkpoint.
+[Audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md),
+[fixed training design](outputs/publication_readiness_2026_09/source_episode_sampler_decision.md).
+
 ## Temporal Centering Complete: Less Harm, Still Negative (2026-09-18)
 
 Fresh past-only audit: 15,430 windows, 123,440 historical keys, all aligned.

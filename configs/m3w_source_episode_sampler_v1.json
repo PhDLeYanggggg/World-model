@@ -1,0 +1,55 @@
+{
+  "registration_path": "configs/m3w_source_episode_sampler_v1.json",
+  "role": "training_only_equal_episode_exposure",
+  "parent_registration": "configs/m3w_source_pretrained_temporal_v1.json",
+  "event_audit": "outputs/publication_readiness_2026_09/source_event_support_v1/audit.json",
+  "centered_control_report": "outputs/publication_readiness_2026_09/source_temporal_centered_v1/report.json",
+  "sites": [
+    "coupa",
+    "deathCircle",
+    "gates",
+    "hyang"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "arms": [
+    "geometry",
+    "centered"
+  ],
+  "models": 24,
+  "updates": 240000,
+  "training": {
+    "start_step": 2000,
+    "updates": 10000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "bootstrap_seed": 38113,
+  "bootstrap_resamples": 2000,
+  "selection": false,
+  "new_deployment": false,
+  "main_primary_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "output": "data/stage_cvpr2027_experiments/source_episode_sampler_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_episode_sampler_v1",
+  "bindings": {
+    "src/world_model/m3w_source_episode_sampler.py": "7833ffe219afed62e16244ed12f0c40b597b2def23cf60b6314a4783ddbe6ff0",
+    "scripts/run_m3w_source_episode_sampler.py": "aa3a66b2809e357e18da5e1b6a347d640a67e62af7cbb5bff574dc5ebad08430",
+    "scripts/analyze_m3w_source_episode_sampler.py": "16e970d91d8738171465a0405a9faf556f20137ec0ab7e66bd99db402d8fab2a",
+    "tests/test_m3w_source_episode_sampler.py": "62fe3d1eadfbb2904d9d406c09a2060cf8e4b07977efca0d491eafad0b5ef2f2",
+    "outputs/publication_readiness_2026_09/source_episode_sampler_decision.md": "f9f0a1a1083854c7da831d26edcf835bb4b496db18fcde4bd25a437fa2ac4852",
+    "outputs/publication_readiness_2026_09/source_event_support_v1/audit.json": "9cda35791fb118cb97e40e6d9fc0d264a3b87c42703e2a8efd5e559adea044fa",
+    "configs/m3w_source_pretrained_temporal_v1.json": "95823a77da228ea82d4ea39efdc1d067d9def86c3d7262c78acd0e7642edc5c6",
+    "outputs/publication_readiness_2026_09/source_temporal_centered_v1/report.json": "7529bdc0279f6ba147c7fbdcd65a935c1a5c6d29423d4668b3bd3bd13164963d",
+    "outputs/publication_readiness_2026_09/source_temporal_centered_v1/analysis.json": "06ed7c45c72287277c751c4f8d727e156c338343c440d161f942dfbc7eeddcad",
+    "outputs/publication_readiness_2026_09/source_temporal_centered_v1/verification.json": "4a61d3ab8865bc096b9b050ca2971f0bd2bb873b2c1a8e565803bde5d4f6e1cc",
+    "src/world_model/m3w_source_temporal_centered.py": "e102b781c37618ee454e4cbdd5c647cb8b577985661eefc56a86635dbc20b425"
+  }
+}

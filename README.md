@@ -20,6 +20,14 @@ support-aware fallback. A Transformer, JEPA encoder or cost head is not novel
 just because it is part of this system. Each component has to earn its place
 through matched comparisons and useful out-of-scene results.
 
+I also distinguish training windows from genuinely different situations. A recent
+[event-support audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md)
+maps 15,430 stationary-history windows to 1,457 annotation episodes. The 207
+larger-excursion windows come from only 47 scoped tracks. Nearly all already have
+moving neighbors, so adding a missing-neighbor flag is not the answer. The next
+controlled experiment tests episode-balanced training exposure without changing
+the evaluation metric or removing easy cases.
+
 ## Current Evidence
 
 The implementation runs, but the clean development experiments have **not yet

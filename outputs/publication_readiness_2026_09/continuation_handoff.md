@@ -1,5 +1,26 @@
 # Real-Experiment Continuation Handoff
 
+## Event Audit Complete; Sampler Repair Registered (2026-09-19)
+
+Fresh current-cohort raw audit: 15430queries,1457past-defined episodes,545tracks.
+Half-box207rows/55groups/47tracks;gates3groups/2tracks;206/207moving-neighbor support.
+1077rawpastmutation+truncationchecks pass. Full rerun preserves immutable output.
+Reweighted frozen forecasts all remain negative. See source_event_support_v1/.
+Groups are annotation runs,not independent physical events. No changed cohort or
+evaluation, no new audit forecasts. Previous all60fullSDDcensus not repeated.
+
+New fixed configs/m3w_source_episode_sampler_v1.json:24heads/240kupdates,
+four sites/three seeds/geometry+centered. Only training row probabilities change:
+equal episode mass computed within training complement. Same all-target ADE,
+normalizer,geometry,features,architecture and original equal-site eval. No test
+selection. No fitting yet at registration. Named100updatepilot countsbudget;
+run scripts/run_m3w_source_episode_sampler.py --registration <config>, then
+--replay, scripts/analyze_m3w_source_episode_sampler.py. Need result verification,
+rendering and final commit. Preserve bound files and all previous results.
+CPU4/inter-op1/workers0,64GiBfree;reasonable local cost. No fresh CREATE check orjob.
+Goal active/unmet; Stage5C/SMCoff. Unrelated staged fingerprint unchanged:
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Centering Comparison Complete, Negative (2026-09-18)
 
 Goal active/unmet. Registration 4b5dadd9; running-status commit 989c057b.
