@@ -10,13 +10,15 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I have registered a [matched visual start-information comparison](outputs/publication_readiness_2026_09/source_visual_start_decision.md)
+I am running a [matched visual start-information comparison](outputs/publication_readiness_2026_09/source_visual_start_decision.md)
 to test whether past pixels add value beyond geometry and image-coverage masks.
-The fixed matrix has30neural fits and60,000updates,with source-only models shared
-across the two held-fit sites. Twenty-eight focused tests pass. The actual cached
-input audit finds some supported pixels in every requested frame;this establishes
-availability,not informative body-state visibility. Training is not yet complete,
-and no forecasting or deployment gain is claimed.
+The fixed matrix has 30 neural fits and 60,000 updates, with source-only models
+shared across the two held-fit sites. Thirty-two focused tests pass, including
+exact checkpoint continuation and matched sampling between the image arms.
+The input audit finds supported, temporally varying past crops, but does not
+establish that body-state cues are visible at the model's 32 x 32 resolution.
+Training is still in progress; no forecasting or deployment gain is claimed.
+[Reproduction and evidence boundaries](outputs/publication_readiness_2026_09/source_visual_start_v1/reproducibility.md).
 
 I have completed the [source-supported start-information study](outputs/publication_readiness_2026_09/source_start_probe_v1/conclusions.md):
 45 classifier fits, including 15 small neural models and 15,000 updates. SDD adds

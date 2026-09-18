@@ -1,5 +1,31 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Visual Probe Live (2026-09-18)
+
+Goal active. Current trainer PID3037 / session47028 is LIVE. Do not start a second
+writer or modify registered code. Registration `m3w_source_visual_start_v1.json`,
+SHA `9edee7d4fe9ef0b97d370ad7804f78ec094102580ef5e7ba12e8e0adf5596af9`,
+pushed before the full run at `db7d30f4`. Thirty models /36 prediction cells /
+60,000 fixed updates; paired mask-only and past-RGB arms, three schedules/seeds.
+Pilot PID2901 ended exit0 at100updates,4.348sec,no held evaluation. Its checkpoint
+is resumed in the full matrix. Current progress/heartbeat and log are under
+`data/stage_cvpr2027_experiments/source_visual_start_v1/`.
+
+Thirty-two focused tests pass. Fresh input pixel audit is complete: all365 main
+and22,374 source histories have temporal pixel change; no absent common adjacent
+pair. This is not visible-intent evidence. Pixel audit does not filter rows or
+change labels, thresholds or training. Existing input hashes/roles preserved.
+
+After training exits, run exact probability replay, the dedicated verifier,
+then fixed analysis. Verifier expects30fits/60ksteps,15matchedstreams and91
+unchanged immutable artifacts on completed resume. See local reproduction guide.
+All post-training checks remain pending at this snapshot. No new deployment,
+forecast lift or independent confirmation. No Stage5C/SMC.
+
+Earlier no-live-training notes below refer to previous completed experiments,
+not this current visual matrix. Unrelated staged fingerprint is still
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+
 ## Source Start-Information Comparison Complete (2026-09-18)
 
 Goal active,not complete or blocked. This turn tested the next hypothesis after

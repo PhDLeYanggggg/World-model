@@ -1,5 +1,21 @@
 # M3W Results Ledger
 
+## Matched Visual Start Training in Progress (2026-09-18)
+
+The registered 30-model / 60,000-update matrix is running on native arm64 CPU4,
+with checkpoints every 200 updates. The training-only 100-update pilot took
+4.35 seconds and is resumed within its fixed budget, not counted as an extra fit.
+No interim result is used to choose a checkpoint, threshold or model.
+
+Fresh past-pixel audit: all 365 main and 22,374 source stationary histories have
+some adjacent-frame change; no history is eight identical crops. All 159,173
+adjacent pairs have common supported pixels. These are input checks, not proof
+of visible intent or forecast gain. Crops are reduced from 96 x 96 to 32 x 32.
+Thirty-two focused tests pass. Final replay, completed-resume verification and
+research conclusions remain pending while training runs.
+[Pixel audit](outputs/publication_readiness_2026_09/source_visual_start_v1/pixel_information_audit.md),
+[reproduction](outputs/publication_readiness_2026_09/source_visual_start_v1/reproducibility.md).
+
 ## Matched Visual Start Probe Registered (2026-09-18)
 
 The next fixed contrast compares actual past RGB against geometry+coverage-only
