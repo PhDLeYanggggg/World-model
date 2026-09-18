@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+The next [registered control experiment](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1_decision.md)
+asks why SDD reduces neural degradation: does correct source supervision help,
+or does the benefit come from fewer main-domain updates? I am adding a
+main-only 4,000-update control and a source-label permutation control, retaining
+all three input variants, seeds and scene folds. No evaluation role or primary
+metric changes; the completed results below remain the current evidence.
+
 I have completed the [SDD auxiliary-training comparison](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md):
 54 fresh neural fits, three seeds, three physical-site folds and 324,000 optimizer
 updates. The original 40 SDD training videos supply 229,333 eligible windows;

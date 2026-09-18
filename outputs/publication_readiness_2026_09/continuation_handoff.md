@@ -1,5 +1,24 @@
 # Real-Experiment Continuation Handoff
 
+## Source Mechanism Controls Registered (2026-09-18)
+
+Prior turn was progress: full 54-fit auxiliary experiment and exact replays,
+not a successful method. Next fixed experiment separates fewer main updates
+from useful source supervision. Config: configs/m3w_sdd_auxiliary_mechanism_v1.json.
+New main4k and sdd_permuted arms, three modalities/seeds/folds, 54 fresh fits,
+270,000 updates; old 54 controls cached_verified only. Source permutation moves
+baseline-relative loss labels within original recording and exact future-support
+stratum, never inference features; singletons/dependencies must be reported.
+No main task, split, admitted source or closed-role changes.
+
+Twenty targeted tests pass, including exact zero-pretraining resume and matched
+main sampler. Previous real CPU cost supports local 2-3 hour estimate; no new
+HPC query or job, no need to transfer 2.61 GB cache. Freeze/commit before pilot,
+run 100 updates of sdd_permuted_past_rgb_seed17_fold0 without held scores, then
+resume the same fit as part of the full matrix. Do not claim completion before
+terminal status, all trials, exact replays and completed-resume checks.
+Goal remains active. Independent confirmation unresolved. No deployment or Stage5C/SMC.
+
 ## Auxiliary Comparison Complete, No Safe Gain (2026-09-18)
 
 Registration SHA256: 17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb.

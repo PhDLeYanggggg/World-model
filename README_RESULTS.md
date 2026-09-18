@@ -1,5 +1,17 @@
 # M3W Results Ledger
 
+## Source Mechanism Controls Registered (2026-09-18)
+
+The previous 54-fit result leaves main-domain exposure confounded with source
+learning. New fixed controls: main4k and source-residual permutation, each with
+geometry/mask/RGB, three seeds and three fit folds. Planned: 54 fresh fits,
+270,000 updates; 54 previous fits reused only as cached_verified controls.
+Same admitted SDD train-40, source stride, main 11,966 rows, primary and closed
+roles. No held-score selection or new deployment. Targeted tests cover label-only
+permutation, recording/support preservation and exact main-only resume/stream.
+This entry is registration, not a completed experiment.
+[Design and interpretation limits](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1_decision.md).
+
 ## SDD Auxiliary Comparison Complete, No Safe CV Gain (2026-09-18)
 
 `fresh_run`: all 54 preregistered real Torch fits, 324,000 updates and three seeds
