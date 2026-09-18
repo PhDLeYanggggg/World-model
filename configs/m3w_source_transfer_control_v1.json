@@ -1,0 +1,39 @@
+{
+  "registration_path": "configs/m3w_source_transfer_control_v1.json",
+  "role": "exposed_source_modality_control",
+  "rgb_registration": "configs/m3w_source_continuation_v1.json",
+  "rgb_report": "outputs/publication_readiness_2026_09/source_continuation_v1/report.json",
+  "parent_report": "outputs/publication_readiness_2026_09/source_cost_dynamics_v1/report.json",
+  "frozen_probability_report": "outputs/publication_readiness_2026_09/source_site_probe_v1/report.json",
+  "held_site": "bookstore",
+  "held_site_is_untouched": false,
+  "seeds": [17, 29, 43],
+  "schedules": ["constant", "cosine"],
+  "new_arm": "mask_only",
+  "new_branches": 6,
+  "new_updates": 48000,
+  "training": {
+    "start_step": 2000, "updates": 10000, "batch_size": 64,
+    "learning_rate": 0.0003, "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001, "checkpoint_every": 200,
+    "milestones": [2000, 4000, 6000, 10000]
+  },
+  "fixed_probability_threshold": 0.9,
+  "bootstrap_resamples": 2000,
+  "bootstrap_seed": 38113,
+  "model_selection": false,
+  "new_deployment": false,
+  "output": "data/stage_cvpr2027_experiments/source_transfer_control_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_transfer_control_v1",
+  "bindings": {
+    "src/world_model/m3w_source_modality_continuation.py": "ed90bc4bf608fcf761677957238fa5550d8ca6093591dce06d1f26a298ba2fc3",
+    "scripts/run_m3w_source_transfer_control.py": "6dff977cdf5fe67785b4c941cf19e1ea96a5b764fa525088f04f990687a39c80",
+    "tests/test_m3w_source_modality_continuation.py": "99f435e31b688f7b631aeab2f45ae29c4d2d2447c7c5421f17f856b2178279e2",
+    "outputs/publication_readiness_2026_09/source_transfer_control_decision.md": "3447a8366dab4398d6089d4510f7a22da2710497d9f358f6db4300bc5052c3f1",
+    "configs/m3w_source_continuation_v1.json": "0978f88b22f86b5e3d47fef705051dbe5039bef7445ff08772a58cd24660743d",
+    "outputs/publication_readiness_2026_09/source_continuation_v1/report.json": "c5397708e74a88153bbfc04dc29334f283f8fdb1f5f31a927598c585d652acd1",
+    "configs/m3w_source_cost_dynamics_v1.json": "857633363c34bb7062c59b6a5e33c769120e7bea9f7c05c7d3c69d714f9a882d",
+    "outputs/publication_readiness_2026_09/source_cost_dynamics_v1/report.json": "6e9abdc5e3e8edaea588a1fa7f37f212578a238dea813f1a33b570bea45a6eb1",
+    "outputs/publication_readiness_2026_09/source_site_probe_v1/report.json": "4a515cd3b56d1f29bb9e30e7349682bce030f174bec397fda265d4a70aae1142"
+  }
+}

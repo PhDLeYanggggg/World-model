@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Matched Modality Control Registered (2026-09-18)
+
+The next fixed diagnostic adds six coverage-only continuations (48,000 new
+updates) matched to the completed RGB runs. All 18 parent/final predictors will
+be evaluated after fitting on the already-explored bookstore source site.
+This is not independent confirmation or a new deployment decision. No main
+selection/calibration/confirmation roles are opened. Nineteen targeted tests
+pass; new training and scoring have not started at this registration.
+[Frozen design](outputs/publication_readiness_2026_09/source_transfer_control_decision.md).
+
 ## Full-Training Continuation Complete (2026-09-18)
 
 `fresh_run`: six continuation branches and 48,000 new updates on all 15,430

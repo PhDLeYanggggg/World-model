@@ -1,5 +1,19 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Modality Follow-Up Registered (2026-09-18)
+
+New entry: `scripts/run_m3w_source_transfer_control.py`, registration
+`configs/m3w_source_transfer_control_v1.json`. Adds six mask-only continuations,
+48k updates, matching the immutable completed RGB branches. Source train15430,
+bookstore6944 excluded from these fits but already historically explored.
+All18 fixed parent/end predictors score only after all controls finish. No
+main/sealed-role forecasts, selection or deployment. Source recording bootstrap
+2000, seed38113 is conditional on this single exposed site, not scene CI.
+Nineteen targeted tests pass. Training/scoring not started at registration.
+Next: asset audit, pre-fit commit/push,100-update pilot within budget, full six
+branches, fixed evaluation,42 exact replays, postfit verification/report.
+Do not modify the frozen previous continuation or cost experiment code.
+
 ## Full Source-Training Continuation Complete (2026-09-18)
 
 Prior turn was substantive progress:12 microfits established selected-row
