@@ -1,0 +1,32 @@
+{
+  "registration_path": "configs/m3w_source_continuation_v1.json",
+  "role": "source_training_only_continuation",
+  "parent_registration": "configs/m3w_source_cost_dynamics_v1.json",
+  "parent_report": "outputs/publication_readiness_2026_09/source_cost_dynamics_v1/report.json",
+  "excluded_site": "bookstore",
+  "schedules": ["constant", "cosine"],
+  "seeds": [17, 29, 43],
+  "training": {
+    "start_step": 2000, "updates": 10000, "batch_size": 64,
+    "learning_rate": 0.0003, "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001, "checkpoint_every": 200,
+    "milestones": [2000, 4000, 6000, 10000]
+  },
+  "branches": 6,
+  "unique_parent_models": 3,
+  "additional_updates": 48000,
+  "held_evaluation": false,
+  "main_primary_changed": false,
+  "new_deployment": false,
+  "output": "data/stage_cvpr2027_experiments/source_continuation_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_continuation_v1",
+  "bindings": {
+    "configs/m3w_source_cost_dynamics_v1.json": "857633363c34bb7062c59b6a5e33c769120e7bea9f7c05c7d3c69d714f9a882d",
+    "src/world_model/m3w_source_continuation.py": "25dd33f56b3ff38ca2e08a9d97469a068d82d5b91790a014bcef7caf098ce7c3",
+    "scripts/run_m3w_source_continuation.py": "3447809693f9d69a4fdc07b3989442025d4c6bdee141eec626e85cf3ecc9fc37",
+    "tests/test_m3w_source_continuation.py": "14107ae43c613915aa3577a929a07f44af2c69fd935457567a780f96eb12ebdf",
+    "outputs/publication_readiness_2026_09/source_continuation_decision.md": "98daee03793f0b182c1cffb7ba2e50e82f35c667b8d09bda48f746647fa0e124",
+    "outputs/publication_readiness_2026_09/source_cost_dynamics_v1/report.json": "6e9abdc5e3e8edaea588a1fa7f37f212578a238dea813f1a33b570bea45a6eb1",
+    "outputs/publication_readiness_2026_09/source_microfit_v1/report.json": "15ccbdfe8e4c2500072f2e6842f3c83b33de412967e4b39f8624eb28405b76b6"
+  }
+}

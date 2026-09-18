@@ -1,5 +1,15 @@
 # M3W Results Ledger
 
+## Full-Training Continuation Registered (2026-09-18)
+
+The next diagnostic keeps all15,430 source-training rows and forks three
+verified checkpoints into constant-rate and cosine-decay continuations. Six
+branches receive48,000 new updates in total; all four fixed training milestones
+will be reported. No held-source/main predictions, model promotion or threshold
+selection. This tests exposure and optimizer schedule after the small-cohort
+fitability result, not a new benchmark. Training results are pending.
+[Design](outputs/publication_readiness_2026_09/source_continuation_decision.md).
+
 ## Training-Only Decoder Diagnostic Complete (2026-09-18)
 
 `fresh_run`:12 real Torch fits,24000 updates,399.41 summed fitseconds and6.685
