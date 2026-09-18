@@ -1,5 +1,25 @@
 # Real-Experiment Continuation Handoff
 
+## Temporal-Centering Repair Registered (2026-09-18)
+
+Previous turn progress:36pretrainedheadnegativefits,committed/pushed37d337b0;
+GitHubverifiedthisturn. Fresh past-only audit of15430queries/123440historykeys:
+no misalignment,all8supported,noall8identical,meanembeddingtemporalenergy2.5715%.
+Rawsourcecrop96->32,medianbox9.34x11.86pixels. Sharedappearance notprovenbackground.
+Fivehelpertests;newcenteringtests+parent15pass. Source input audit is posthoc,
+no labels used,not newforecast orfuture-bin selection.
+
+New fixed configs/m3w_source_temporal_centered_v1.json.24heads x10kupdates,
+centered/centered_unit observation-only transforms;allothertrainingunchanged.
+Parentgeometry/current/sequencecontrols cached_verified,not retrained. No new
+fit yet. Run scripts/run_m3w_source_temporal_centered.py --registration <config>,
+namedpilot --trial coupa_centered_seed17 --stop-at100 countsbudget;thenfull,
+--replay,analyze_m3w_source_temporal_centered.py. Need verify/render results.
+Keepfrozenbindings. CPU4/inter-op1/workers0,64GiBfree,priorCPUcost~20sec/head.
+CREATEpriorpublickeydenialnotretried,no remotejob. Goalactive/unmet. No main/outer
+scoring,Stage5C/SMCoff. Preserveunrelatedstagedfingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Pretrained Temporal Comparison Complete, Negative (2026-09-18)
 
 Goal active/unmet; this turn is progress, not blocked. Registration06f97771,

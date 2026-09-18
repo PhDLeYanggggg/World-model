@@ -1,0 +1,54 @@
+{
+  "registration_path": "configs/m3w_source_temporal_centered_v1.json",
+  "role": "training_only_temporal_centering",
+  "parent_registration": "configs/m3w_source_pretrained_temporal_v1.json",
+  "sites": [
+    "coupa",
+    "deathCircle",
+    "gates",
+    "hyang"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "arms": [
+    "centered",
+    "centered_unit"
+  ],
+  "models": 24,
+  "updates": 240000,
+  "training": {
+    "start_step": 2000,
+    "updates": 10000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "bootstrap_seed": 38113,
+  "bootstrap_resamples": 2000,
+  "selection": false,
+  "new_deployment": false,
+  "main_primary_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "output": "data/stage_cvpr2027_experiments/source_temporal_centered_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_temporal_centered_v1",
+  "bindings": {
+    "src/world_model/m3w_source_temporal_centered.py": "e102b781c37618ee454e4cbdd5c647cb8b577985661eefc56a86635dbc20b425",
+    "scripts/run_m3w_source_temporal_centered.py": "3a72146f7e86f4b1e0f80d62142846d4bc7094c488a04a85598160e89d761558",
+    "scripts/analyze_m3w_source_temporal_centered.py": "f25a61ddf395d41a9e16a921379dbce4be5c6358b146250c993b80512d98caa1",
+    "tests/test_m3w_source_temporal_centered.py": "464e025d75ae29566e79adb0da3d3b0c15a6d57dab7ec68f9ab575cd5f3acd00",
+    "outputs/publication_readiness_2026_09/source_temporal_centered_decision.md": "7dae6a23b0c77f1d225d5103d6ba25963e6edac6bdbe97a9da752cd7a53967ad",
+    "configs/m3w_source_pretrained_temporal_v1.json": "95823a77da228ea82d4ea39efdc1d067d9def86c3d7262c78acd0e7642edc5c6",
+    "outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/analysis.json": "45395dc3ed8f0dd3d95fbad335b5b250d9141d343f37f00097df5418a1ae1873",
+    "outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/verification.json": "e46dad81dc21f99595a99419e1a04067d20bd26e19a18b66ca37450a830bfaf5",
+    "outputs/publication_readiness_2026_09/source_temporal_information_v1/audit.json": "3ad30b5933be3f08c44457b89b7e67fd6ea9f132f714ea3e03a5f310057cdca4",
+    "src/evaluation/m3w_source_temporal_information.py": "897ae82a1bb7ecdbd1715ad48f0c152160744925098dfd24034ab2309347af98",
+    "scripts/audit_m3w_source_temporal_information.py": "b72e1d2ee092177f45644d710cc20c14b85f2e96e60099dbc91843add1268137",
+    "tests/test_m3w_source_temporal_information.py": "f723b3fad730345bfe298549812d94cf1e3a6a93eb38882c4cd00318e2bf5773"
+  }
+}

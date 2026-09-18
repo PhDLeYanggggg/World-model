@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source Temporal Input Audit Complete; Centering Comparison Registered (2026-09-18)
+
+Fresh past-only audit: 15,430 windows, 123,440 historical keys, all aligned.
+Every window has eight supported frames; no eight-frame RGB/embedding sequence
+is exactly constant. Only two adjacent RGB query-frame pairs are identical.
+Mean coverage97.78%; median annotation-box footprint9.34x11.86output pixels.
+Mean within-window frozen-feature energy fraction2.5715%, median2.0464%.
+Shared appearance is not proven background; variation is not motion intent.
+
+Registered two-arm repair: per-window centered embeddings and RMS-normalized
+centered embeddings. Same63,960parameters, data, all-target ADE, sampler, four
+sites and three seeds.24newheads/240,000updates planned, no fits yet. The prior
+three arms remain cached_verified controls.15focused tests pass, including
+exact checkpoint resume for both new arms. No main/outer scoring or deployment.
+[Audit](outputs/publication_readiness_2026_09/source_temporal_information_v1/conclusions.md),
+[fixed design](outputs/publication_readiness_2026_09/source_temporal_centered_decision.md).
+
 ## Frozen Pretrained Temporal Comparison Complete, Negative (2026-09-18)
 
 Completed actual trajectory experiment: 36 fresh neural heads, four source folds,

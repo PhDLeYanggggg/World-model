@@ -174,8 +174,12 @@ is complete: 48 fresh fits, exact replay and 44 focused checks. Its negative
 probability results do not change the main task or justify a new deployment.
 
 The [registered pretrained comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md)
-is complete and negative. The next diagnosis concerns transferable information
-at the source-image boundary, not another threshold sweep. Existing native-detail
+is complete and negative. A [past-only input audit](outputs/publication_readiness_2026_09/source_temporal_information_v1/conclusions.md)
+finds no repeated-frame or empty-token explanation: all eight frames align and
+vary, but temporal variation is only 2.57% of frozen feature energy on average.
+The next [fixed repair](outputs/publication_readiness_2026_09/source_temporal_centered_decision.md)
+removes shared appearance with two observation-only transforms, keeping the
+training budget and targets unchanged. No repair result is claimed yet. Existing native-detail
 and optical-flow negative controls remain relevant; simply adding resolution or
 more modules is not an established repair.
 
