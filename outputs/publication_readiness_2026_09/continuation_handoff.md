@@ -1,5 +1,14 @@
 # Real-Experiment Continuation Handoff
 
+## Centering Comparison Training Live (2026-09-18)
+
+Protocol4b5dadd9 pushed before fitting.100updatepilotPID77124 exited0,0.266sec,
+includedbudget. FullPID77156/session20974active; do not duplicate. Private
+source_temporal_centered_v1/training.log and heartbeat.json;200step atomicresume.
+Afterall24headscomplete: sameentry --replay,analyze,verify,report scripts
+source_temporal_centered. Verification/render helpers added; not run before
+completion. Main/outer still unscored, no aggregateclaimyet. Keepbindingsfixed.
+
 ## Temporal-Centering Repair Registered (2026-09-18)
 
 Previous turn progress:36pretrainedheadnegativefits,committed/pushed37d337b0;

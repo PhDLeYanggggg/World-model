@@ -16,7 +16,9 @@ Shared appearance is not proven background; variation is not motion intent.
 
 Registered two-arm repair: per-window centered embeddings and RMS-normalized
 centered embeddings. Same63,960parameters, data, all-target ADE, sampler, four
-sites and three seeds.24newheads/240,000updates planned, no fits yet. The prior
+sites and three seeds.24newheads/240,000updates registered before fitting as
+commit4b5dadd9. Full training is running,PID77156, after the included100-update
+pilot passed in0.266seconds. No aggregate outcome yet. The prior
 three arms remain cached_verified controls.15focused tests pass, including
 exact checkpoint resume for both new arms. No main/outer scoring or deployment.
 [Audit](outputs/publication_readiness_2026_09/source_temporal_information_v1/conclusions.md),
