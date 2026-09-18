@@ -1,6 +1,6 @@
 # M3W Results Ledger
 
-## Source Trajectory Cost Comparison Registered (2026-09-18)
+## Source Trajectory Cost Comparison Running (2026-09-18)
 
 Fixed source-fit diagnostic: direct bounded twelve-step forecasts; linear ADE
 versus log-ADE; RGB versus mask; five physical sites and three seeds. Sixty fresh
@@ -8,8 +8,12 @@ fits and120,000updates planned, with no held-score model or threshold selection.
 Past-only context radius/rotation restores outputs; zero initialization matches
 stationary CV. The51spatially unsupported rows remain baseline fallbacks, not
 removed examples. All22,374complete stationary queries remain. No sealed roles,
-formal metric or deployment change. Inputs verified; training not_run yet.
+formal metric or deployment change. Inputs are cached_verified; fresh Torch
+training is running (PID15300, session39366). The 100-update pilot completed in
+4.71 fit seconds and is included in the fixed budget. Fifty-six focused tests
+pass; the full legacy suite has not been rerun. No final result is claimed yet.
 [Registered design](outputs/publication_readiness_2026_09/source_cost_dynamics_decision.md).
+[Reproduction and verification](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/reproducibility.md).
 
 ## Source-Site Visual Diagnostic Complete: No Robust Internal Gain (2026-09-18)
 

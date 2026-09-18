@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Source Trajectory Cost Comparison Registered (2026-09-18)
+## Source Trajectory Cost Comparison Running (2026-09-18)
 
 Goal active; lastturn was real progress, not wait/no-progress. New approved-role
 internal source diagnostic moves back from binary labels to actual trajectories.
@@ -14,11 +14,17 @@ frames.51unsupported contexts retained asbaseline;native/pastnormalized errors
 reported separately. Fixed0.9samefoldclassifier gate diagnostic,not riskcalibrated.
 Targets only inloss/eval. Frozen probability ancestors from source_site_probe_v1.
 
-Input audit passed; no training yet. Nativearm64CPU4/workers0;78GiBfree. Local
+Input audit passed. Nativearm64CPU4/workers0;78GiBfree at launch. Local
 expected ~100min acceptable; CREATEauthentication/projectpath stillunresolved,
-remotejobsunknown,no newremotejobs. Next:preregistercommit,100updatepilotthen
-fullmatrix,resume/replay/pairedverification,trajectoryanalysisandhonestgates.
-No current live training. All previous source-siteprobe handles terminal.
+remotejobsunknown,no newremotejobs. Preregistercommit0007bf43 pushed. Pilot100
+updates finished in4.71005fitseconds, noforecast evaluation, finite gradients.
+LIVE fulltrainer PID15300/session39366 resumespilot inside120kbudget. Do not
+start duplicate or modify registered dependencies. Log and heartbeat under
+data/stage_cvpr2027_experiments/source_cost_dynamics_v1. Newanalysis/verifier
+are post-fit consumers only.56focused tests pass; fulllegacy suite notrerun.
+After trainer exit0: exactreplay,15fourwaymatchedchecks,181immutableartifact
+completedresume,analysis,figureinspection,conclusionsandhonestgates.
+All previous source-siteprobe handles terminal. No main or sealed scoring.
 UnrelatedstagedSHA remains
 `c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
 
