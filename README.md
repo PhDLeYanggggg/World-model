@@ -10,6 +10,24 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I completed the [matched visual-input follow-up](outputs/publication_readiness_2026_09/source_transfer_control_v1/conclusions.md):
+six new training continuations, 48,000 updates and three seeds, followed by a
+fixed comparison of all 18 parent and final models. Training took about
+37 minutes locally. Removing RGB still gives a small training improvement
+under learning-rate decay, but neither version improves the excluded source
+scene: coverage-only loses 1.74% to the stationary baseline and RGB loses 2.08%.
+The paired RGB effect is negative, not evidence of a useful visual contribution.
+
+This narrows the problem. Longer training partly repairs fitting, but it does
+not create reliable candidate forecasts outside the training scenes. Even an
+unrealistic selector that sees the answers and chooses among all 18 saved paths
+can gain only 1.28% on this diagnostic population. I need better candidate
+trajectories, not another threshold search. All 42 forecasts replay exactly;
+the 2,000 recording-block bootstrap samples describe uncertainty within one
+previously explored site, not independent confirmation. No model is promoted.
+[Results and limits](outputs/publication_readiness_2026_09/source_transfer_control_v1/results.md),
+[comparison figure](outputs/publication_readiness_2026_09/source_transfer_control_v1/matched_results.svg).
+
 I completed a [full-training learning-curve comparison](outputs/publication_readiness_2026_09/source_continuation_v1/conclusions.md)
 on 15,430 stationary-history source-training rows. Three saved models were each
 continued with constant and decaying learning rates, adding 48,000 updates in
@@ -20,9 +38,9 @@ all three seeds, and all 24 saved forecasts replay exactly.
 That is a partial optimization repair, not a forecasting breakthrough. Decay
 mainly improves the balance between movement benefit and damage to stationary
 cases; it does not preserve zero-error cases perfectly or prove generalization.
-I have not opened new test results or changed deployment. The next check is
-whether the fixed predictors transfer across source scenes, with a matched
-visual-input control before attributing the effect to images.
+I did not open the main confirmation data or change deployment. The separate
+matched source-site follow-up above now tests whether that training gain
+transfers and whether it can be attributed to images.
 
 I completed a [training-only fitting check](outputs/publication_readiness_2026_09/source_microfit_v1/conclusions.md)
 after the latest full-source failure. All 12 models can memorize the selected

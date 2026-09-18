@@ -653,6 +653,28 @@ The next required evidence is conditional forecast utility outside the fitting
 rows, including a matched visual-input control; the method contribution remains
 unproved. The previously reported negative comparisons are not overwritten.
 
+The [matched modality follow-up](source_transfer_control_v1/conclusions.md)
+adds six coverage-only continuations with 48,000 new updates, preserving the
+same training rows, parameter count, optimizer and sampled streams. All six RGB
+endpoints and six parent states are reused after verification. All 18 fixed
+predictor states are scored on the already-explored bookstore source site,
+without model or threshold selection. Coverage-only cosine training also gains
+0.1872%, but its held-source gain is -1.7438%; RGB cosine yields -2.0806%.
+The paired RGB-minus-mask contrast is -0.3368 percentage points, with conditional
+recording-block interval [-1.0851, -0.1669]. Both decay-versus-parent intervals
+cross zero. Thus the small training repair does not establish transferable
+visual utility. All 18 states remain negative with the fixed classifier guard.
+
+All 42 predictions replay exactly and 202 artifacts survive completed resume
+and repeated scoring unchanged. The 2,000 bootstrap draws concern seven
+recordings of one previously explored physical site, not independent scene
+confirmation. Easy percentage degradation is undefined at zero baseline error;
+absolute harm stays positive. A supplementary post-hoc complete-path oracle over
+the 18 forecasts plus CV offers only 1.2752% aggregate gain and 0.5267% hard gain.
+This is an empirical limit for selecting among those paths, not for new models,
+path blending or other populations. It motivates candidate-quality repair,
+not another retrospective threshold search. No deployment is changed.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -668,6 +690,7 @@ unproved. The previously reported negative comparisons are not overwritten.
 | Does direct trajectory-cost training resolve the problem? | 60 fits; uncontrolled ADE gains -1.57% to -1.70%; training ADE also worse in every fit | The tested cost repair is insufficient; optimization and candidate trajectory utility remain unresolved |
 | Is the neural fitting path universally broken? |12training-only microfits learn selected16/32-row cohorts; original decoder also succeeds with100%gradient clipping | Numerical fitting is possible; not a benchmark repair or proof of useful predictive information |
 | Does longer exposure or rate decay improve complete training fit? |6continuation branches/48knewupdates;constant -1.0310%,cosine +0.2533% | Small schedule-dependent training repair; no held gain or easy-preservation proof |
+| Does that repair transfer, and does RGB help? | Six matched mask continuations; cosine held gain mask -1.7438%, RGB -2.0806%; all 18 states negative | Training improvement does not establish held utility; paired RGB contrast negative, no deployment |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Matched Modality Follow-Up Registered (2026-09-18)
+## Matched Modality Follow-Up Complete (2026-09-18)
 
 New entry: `scripts/run_m3w_source_transfer_control.py`, registration
 `configs/m3w_source_transfer_control_v1.json`. Adds six mask-only continuations,
@@ -9,14 +9,27 @@ bookstore6944 excluded from these fits but already historically explored.
 All18 fixed parent/end predictors score only after all controls finish. No
 main/sealed-role forecasts, selection or deployment. Source recording bootstrap
 2000, seed38113 is conditional on this single exposed site, not scene CI.
-Nineteen targeted training tests plus five statistics tests pass. Asset audit
-exit0; pre-fit registration71d0f520pushed. PilotPID35574/session39778exit0,
+Forty-three focused tests pass. Asset auditexit0; pre-fit registration71d0f520
+and pre-score analysisfreezefbb0517a pushed. PilotPID35574/session39778exit0,
 100updates withinbudget,9.2871sec includinginitialtrain evaluation. Fulltrainer
-PID35607/session85791active,CPU4/workers0,checkpoint200. Training log private
-source_transfer_control_v1/training.log. Do not duplicate active training.
+PID35607/session85791exit0,6branches/48knewupdates,36.703605min logspan,
+2208.487027summedcontinuationsec. EvaluatorPID38627/session47405exit0;
+replayPID38689/session77745exit0;analysis/session27106exit0. Noactiveprocess.
+CPU4/workers0,checkpoint200. Do not restart completed fits.
 ConfigSHA d44fc5f3ab47175530555717868000f66adfe8bbdb56594bbd8575ed54069849.
-Next: finishfullsixbranches,fixed18predictorevaluation,42exactreplays,postfit
-verification/report. Mainsealedrolesclosed;notindependentconfirmation.
+All18fixedstatesnegativevsCV,bothuncontrolled/fixedguard. Mask/RGBcosine
+TRAININGgains+.187244/+.253283%,HELDgains-1.743843/-2.080643%.
+PairedRGBcontrast-.336800pp,conditional7recordingCI[-1.085118,-.166939].
+ParentimprovementCIscrosszero;zero-targetharmpositive,easypercentageundefined.
+42exactreplays,3four-waymatchedstreams,202artifactsunchangedoncompletedresume
+andrepeat evaluation,0newupdates. Plotvisuallychecked. AnalysisSHA
+e5fce0b153f3a90fc09bb42a550db7d1122739f235da11e57c4517b6771b42df.
+Post-hoc futureoracle over18completepaths+CV:1.275162%all/.526736%hard,
+notdeployable,notthepreregisteredprimary. Zero-targetrowsproduce75.51-80.75%
+ofpositiveharm. Mainsealedrolesclosed;notindependentconfirmation.
+Next: separate training-only registered comparison of an exact-zero-capable
+baseline-relative candidate head against the same decoder; no heldthreshold
+search or blindlargernetworkgrid. Notyetimplemented/run. Goalactiveunmet.
 Do not modify the frozen previous continuation or cost experiment code.
 
 ## Full Source-Training Continuation Complete (2026-09-18)
