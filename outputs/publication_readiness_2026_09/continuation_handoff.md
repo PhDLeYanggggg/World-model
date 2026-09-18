@@ -1,5 +1,15 @@
 # Real-Experiment Continuation Handoff
 
+## Equal-Episode Training Live (2026-09-19)
+
+Registration662dcbba plus pre-fit formatting/hashfixdd5c7128 pushed before fitting.
+100updatepilotPID81149/session96606 completed0.220421sec,countsbudget.
+FullPID81193/session49172 live,24heads/240kupdates; do not duplicate on timeout.
+Private source_episode_sampler_v1/training.log + heartbeat.json,200stepcheckpoint.
+No held aggregate readout yet.28scopedtests pass. Verification/render helpers
+implemented and compiled; run only after all24complete, following --replay and
+analyze_m3w_source_episode_sampler.py. Keep bound code/config unchanged.
+
 ## Event Audit Complete; Sampler Repair Registered (2026-09-19)
 
 Fresh current-cohort raw audit: 15430queries,1457past-defined episodes,545tracks.

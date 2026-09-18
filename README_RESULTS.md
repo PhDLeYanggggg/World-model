@@ -18,7 +18,10 @@ are not independent physical events. No new forecast was made by the audit.
 Registered next repair: equal training exposure per past-defined episode, with
 geometry and centered inputs. 24 new heads/240,000 updates; same data, loss,
 normalization, architecture and original evaluation. Uniform controls are reused
-after hash verification. Training has not started at this registration checkpoint.
+after hash verification. Registration was pushed as 662dcbba/dd5c7128 before
+fitting. The included 100-update pilot passed in 0.220s. Full training is live
+(PID 81193), with 200-update atomic checkpoints. Twenty-eight scoped tests pass,
+including exact weighted-sampler resume. No aggregate training result yet.
 [Audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md),
 [fixed training design](outputs/publication_readiness_2026_09/source_episode_sampler_decision.md).
 
