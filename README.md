@@ -34,6 +34,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Do scene-excluded candidate forecasts remain useful? | Twelve fresh fits all lose on their excluded site; equal-site gain is -5.016%. Fixed candidate/CV oracle headroom is below 0.53%, so another gate alone is not the next repair. |
 | Does removing the static-target loss repair them? | No. Twelve matched new fits increase oracle headroom to 3.760%, but actual gain is -98.719% and static-target harm is much larger. |
 | Do raw annotation checks and past-box features explain the failure? | Small changes are common, but >10px queries contribute 53.25% of baseline error and still lose. Forty-eight fixed probability probes find no stable added-box benefit. |
+| Do pretrained image features repair source transfer? | No. Thirty-six matched trajectory heads complete 360,000 updates. Geometry/current-image/eight-frame gains are -0.070%/-1.908%/-6.102%; all held fits are negative. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -67,6 +68,13 @@ Past-box features do not repair cross-site motion probabilities. Interpolation
 controls after the query also occur in 15,316 histories, reinforcing the
 offline-annotation limitation rather than establishing real-time perception.
 
+The completed [pretrained temporal comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/conclusions.md)
+adds frozen visual features without changing the cohort, loss or sampling budget.
+Appearance improves training fit slightly but worsens excluded-scene prediction.
+Eight-frame appearance loses another 4.194 percentage points relative to current
+appearance. All 36 heads replay exactly; this confirms the negative result, not
+a deployable visual dynamics contribution.
+
 ## Evidence and Reproduction
 
 The detailed record is kept separately so that the project overview remains
@@ -76,7 +84,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_motion_quality_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some
@@ -165,11 +173,11 @@ The [registered information audit](outputs/publication_readiness_2026_09/source_
 is complete: 48 fresh fits, exact replay and 44 focused checks. Its negative
 probability results do not change the main task or justify a new deployment.
 
-The running [registered comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md)
-tests frozen pretrained appearance with a temporal trajectory readout against
-matched geometry-only and current-image controls. It keeps all queries and
-static-target penalties. All 25,300 past-image features are extracted and the
-fixed 36-head training matrix is running; no aggregate result is claimed yet.
+The [registered pretrained comparison](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md)
+is complete and negative. The next diagnosis concerns transferable information
+at the source-image boundary, not another threshold sweep. Existing native-detail
+and optical-flow negative controls remain relevant; simply adding resolution or
+more modules is not an established repair.
 
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,

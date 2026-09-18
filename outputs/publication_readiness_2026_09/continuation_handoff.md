@@ -1,5 +1,35 @@
 # Real-Experiment Continuation Handoff
 
+## Pretrained Temporal Comparison Complete, Negative (2026-09-18)
+
+Goal active/unmet; this turn is progress, not blocked. Registration06f97771,
+extraction/status commit8cf64f97. All36freshheads/360000updates complete. Training
+PID74108/session50438 exit0; summedfit739.023251sec/mainlog744.713554sec. Pilot
+100updates included. Extraction25300images/215chunks/361.560651sec. Replay75369
+exit0,36exacttrain/heldmatches. Verifier child75408 completes0newupdates and
+preserves339artifacts;3rawencoderchunks290images exact.22focusedtests pass.
+All required processes terminal. Do not duplicate fits or modify frozen bindings.
+
+Geometry/current/sequence primary equal-site gains -.070374/-1.907926/-6.102235%.
+SequenceCI[-9.170780,-3.807340];sequence-minus-current -4.194309pp
+CI[-6.228814,-2.672749]. All36heldfits negative. Sequence trainingfit positive
+but no transfer. Window excess90.9584%from zero targets;nonzero gain-.588281%.
+Sequence static harm .120211978annotationpx,percentageundefined,not2%pass.
+Per-arm binaryoracle .007628/.400328/1.056320%not learned policy. Four explored
+sites/shared fits,conditionalbootstrap2000,not independent confirmation.
+Main/bookstore/outer not forecast; no new deployment. Stage5C/SMCoff.
+
+Public source_pretrained_temporal_v1 has conclusions,failure_analysis,gates,
+reproduction,allarmdata and checked SVG. README/state/paper updated. ConfigSHA
+95823a77da228ea82d4ea39efdc1d067d9def86c3d7262c78acd0e7642edc5c6;
+analysis45395dc3ed8f0dd3d95fbad335b5b250d9141d343f37f00097df5418a1ae1873;
+verificatione46dad81dc21f99595a99419e1a04067d20bd26e19a18b66ca37450a830bfaf5.
+Nextsource-onlydiagnosis: temporal information at image-cache boundary,without
+refitting/changingrows. Reuse existing native96detail and optical-flow negative
+controls on distinct11966main-fitcohort; don't repeat blindly. No new followup
+experiment registered/run. CREATEpriorSSHdenial not retried thisturn,nojobs.
+Preserve3019unrelatedstagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Pretrained Temporal Comparison Live (2026-09-18)
 
 Registration pushed as 06f97771 before extraction/fitting. Extraction PID73008

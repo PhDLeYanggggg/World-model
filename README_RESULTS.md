@@ -5,21 +5,43 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Pretrained Temporal Comparison Running (2026-09-18)
+## Frozen Pretrained Temporal Comparison Complete, Negative (2026-09-18)
 
-Planned actual trajectory experiment: 36 fresh neural heads, four source folds,
+Completed actual trajectory experiment: 36 fresh neural heads, four source folds,
 three seeds, geometry/current-image/eight-past-image arms, 360,000 total updates.
 Same full cohort, all-target ADE, zero-initialized bounded output and sampler.
 Frozen official ResNet18 features are cached once from 25,300 existing past crops;
 the small crop resolution remains a limitation. Main/sealed roles are excluded.
-Seventeen focused tests pass, including exact resumed training on a fixture.
+Twenty-two focused tests pass, including exact resumed training on a fixture.
 Feature extraction completed: 25,300 images, 215 immutable chunks, 361.561 summed
 seconds. The 100-update fitting pilot completed and counts toward the fixed
-budget. Full training is running as PID 74108 with atomic 200-update checkpoints;
-no aggregate result or deployment claim yet. Registration was pushed as 06f97771
+budget. Training PID 74108 completed normally: 739.023 summed fitting seconds,
+744.714 seconds main-log span. Registration was pushed as 06f97771
 before extraction and fitting. Weight download succeeded with the
 system TLS store after Python certificate verification failed; TLS was not disabled.
 [Fixed protocol](outputs/publication_readiness_2026_09/source_pretrained_temporal_decision.md).
+
+| Input arm | Equal-site ADE gain vs stationary CV | Conditional four-site 95% CI |
+| --- | ---: | --- |
+| Geometry + coverage | -0.0704% | [-0.1644%, -0.0135%] |
+| Current pretrained appearance | -1.9079% | [-2.9420%, -1.0195%] |
+| Eight-frame pretrained appearance | -6.1022% | [-9.1708%, -3.8073%] |
+
+All 36 held fits are negative. Sequence-minus-current is -4.1943pp, interval
+[-6.2288,-2.6727]. Sequence training-complement gains +0.188% to +1.499% do not
+transfer. Approximately 90.96% of sequence's window-weighted excess error is on
+zero targets; nonzero targets also lose 0.5883%. Static absolute harm is 0.120212
+annotation pixels; percentage easy degradation is undefined, not a 2% pass.
+Each fixed arm's oracle is diagnostic only (sequence equal-site 1.0563%).
+
+Thirty-six exact head replays, three exact encoder chunk replays (290 images),
+36 matched sample streams, nine OOF archives and 339 immutable artifacts verify.
+Completed resume adds zero updates. Four explored sites/shared training folds,
+not independent confirmation. No main/outer forecast or new deployment.
+No full legacy test rerun. Stage5C and SMC remain off.
+[Results and reproduction](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/failure_analysis.md),
+[evidence gates](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/gates.md).
 
 ## Source Motion Quality Complete: No Past-Box Probability Repair (2026-09-18)
 

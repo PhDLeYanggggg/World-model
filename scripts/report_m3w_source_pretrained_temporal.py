@@ -1,6 +1,7 @@
 """Render verified fixed-arm evidence without choosing a model or a threshold."""
 import argparse
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -162,8 +163,13 @@ step. Do not rerun completed fits under another identity or tune held results.
 Images, image features, weights and checkpoints remain private and excluded from Git.
 See `verification.json` for current artifact hashes and actual resume evidence.
 """)
+    cache = ROOT/reg['output']/'plot_cache'
+    cache.mkdir(exist_ok=True)
+    os.environ.setdefault('MPLCONFIGDIR', str(cache))
+    os.environ.setdefault('XDG_CACHE_HOME', str(cache))
     import matplotlib
     matplotlib.use('Agg')
+    matplotlib.rcParams['svg.hashsalt'] = file_digest(args.registration)
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(1, 2, figsize=(11, 4.5), layout='constrained')
     colors = ['#50555C', '#087F8C', '#B74B29']
@@ -182,7 +188,9 @@ See `verification.json` for current artifact hashes and actual resume evidence.
     ax[1].set_title('Matched batch streams; mean of 12 fits per arm')
     ax[1].legend(fontsize=8)
     for a in ax: a.grid(alpha=.2)
-    fig.savefig(out/'comparison.svg', metadata={'Date':None})
+    svg = out/'comparison.svg'
+    fig.savefig(svg, metadata={'Date':None})
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fig.savefig(ROOT/reg['output']/'comparison.png', dpi=140)
     plt.close(fig)
     print(json.dumps(dict(report=str(out/'conclusions.md'), fit_seconds=fit_seconds,

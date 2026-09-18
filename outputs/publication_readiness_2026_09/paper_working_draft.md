@@ -820,6 +820,30 @@ coordinate consistency and correct data plumbing cannot replace forecast gains
 with easy-case preservation. Reusing controls also means fit counts across
 reports cannot simply be summed as independent experiments.
 
+### Frozen Pretrained Appearance and Temporal Readout
+
+A source-only matched experiment tests frozen ImageNet ResNet18 features with
+geometry-only, current-image and eight-frame appearance controls. All 36 heads
+complete 10,000 updates with the same all-target ADE objective, full-population
+sampling and four-site/three-seed design. No encoder fine-tuning or held-based
+selection occurs. The population is the same 15,430 stationary-history source
+queries, not the complete main benchmark or independent confirmation set.
+
+Equal-site gains versus stationary CV are -0.0704%, -1.9079% and -6.1022%; all
+36 held fits are negative. Sequence-minus-current is -4.1943 percentage points,
+conditional site interval [-6.2288,-2.6727]. Sequence training gains are positive
+but do not transfer. Zero targets account for 90.96% of window-weighted excess
+error, while nonzero-target predictions also lose 0.5883%. Easy percentage
+degradation is undefined against a zero-error floor; absolute pixel harm is
+retained. Each fixed arm's binary oracle is a diagnostic, not a learned policy.
+
+All heads replay exactly. Three encoder batches replay from raw historical crops;
+all 25,300 image rows and 15,430 query mappings align. Completed resume adds zero
+updates. This is negative evidence for the tested pretrained readout, not against
+all visual dynamics. Source crops remain 32 x 32 before upsampling; offline label
+interpolation, four explored sites and shared fitting folds limit interpretation.
+[Full experiment, gates and failure analysis](source_pretrained_temporal_v1/conclusions.md).
+
 ### Native Detail and Spatial Pooling Control
 
 A registered input repair retains the original96x96 observed crops and compares
