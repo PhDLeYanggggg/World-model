@@ -150,6 +150,10 @@ The [fixed loss-control registration](outputs/publication_readiness_2026_09/sour
 and all negative outcomes remain available. No new policy has been deployed,
 and no test threshold was changed to rescue this result.
 
+The next [registered information audit](outputs/publication_readiness_2026_09/source_motion_quality_decision.md)
+will align these queries to raw annotations and compare geometry-only motion
+probabilities with past box-shape features. It does not change the main task.
+
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,
 and obtain genuinely independent calibration and confirmation. More overlapping

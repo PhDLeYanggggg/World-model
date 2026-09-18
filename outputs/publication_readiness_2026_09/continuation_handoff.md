@@ -1,5 +1,19 @@
 # Real-Experiment Continuation Handoff
 
+## Source Motion Quality Follow-Up Registered (2026-09-18)
+
+Previous goal turn was progress: 12 fresh fits and verified negative results.
+Next registered diagnostic: configs/m3w_source_motion_quality_v1.json;
+scripts/run_m3w_source_motion_quality.py --registration <config> --phase
+prepare/probe/replay/analyze. Raw alignment, fixed motion/provenance bins and
+48 fixed ExtraTrees probability fits: four internal sites, three seeds, two
+labels, two causal input arms. No main protocol change or deployment selection.
+Five helper tests pass; no data computation or probe fit yet. Do not call a
+probability lift a trajectory gain. Raw/row caches and forests stay private.
+Fresh CREATE SSH attempt reached gateway but publickey denied/MFA notice;
+no scheduler, remote assets or job submission verified. Local65GiBfree; native
+arm64/four threads appropriate. Existing unrelated staged fingerprint unchanged.
+
 ## Matched Loss Control Complete, Unsafe Candidate (2026-09-18)
 
 Goal active and unmet. This turn completed 12 cold-start models / 120,000 updates,

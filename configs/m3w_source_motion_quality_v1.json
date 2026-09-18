@@ -1,0 +1,30 @@
+{
+  "registration_path": "configs/m3w_source_motion_quality_v1.json",
+  "role": "training_only_motion_quality_probability_probe",
+  "parent_registration": "configs/m3w_source_motion_candidate_v1.json",
+  "source_manifest": "outputs/publication_readiness_2026_09/sdd_media_alignment/diagnostic_media_links.json",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "arms": ["geometry", "geometry_past_box"],
+  "labels": ["nonzero", "half_box_excursion"],
+  "models": 48,
+  "forest": {"n_estimators": 128, "max_depth": 8, "min_samples_leaf": 64, "max_features": 0.5, "class_weight": null, "n_jobs": 4},
+  "bootstrap_seed": 38113,
+  "bootstrap_resamples": 2000,
+  "selection": false,
+  "new_deployment": false,
+  "output": "data/stage_cvpr2027_experiments/source_motion_quality_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_motion_quality_v1",
+  "bindings": {
+    "scripts/run_m3w_source_motion_quality.py": "7f39d7c50e855e6a11d0b0db19189c8ae93c724a50a2c6df64fbd31dc1e5ccc0",
+    "src/evaluation/m3w_source_motion_quality.py": "f61433d3e4a256319dcae183611105a5a5653f3fd3fccbb3ebda00f67057db8d",
+    "tests/test_m3w_source_motion_quality.py": "cd44cd4dde1af11b032b08fa5921a4a90e0cbf273e899abe9e8b487750697caf",
+    "outputs/publication_readiness_2026_09/source_motion_quality_decision.md": "343fb2da29daab9852a3f5a55ec3a0385b9462bf1506ee09d58bad4a0cef4f18",
+    "configs/m3w_source_motion_candidate_v1.json": "e40a9c690a7e00e303c2ac27af36ca06fb6133bf2be24974c4bf381ce250963d",
+    "outputs/publication_readiness_2026_09/source_motion_candidate_v1/report.json": "f9c25953b632c5022fc58ba0de9fbdabb7cbf5440fa0f26f6c37bc016bca381f",
+    "outputs/publication_readiness_2026_09/source_motion_candidate_v1/verification.json": "7010afc9c4114673ba8386956f86afef4346558179ee51aefb927734058ba4dc",
+    "scripts/audit_m3w_sdd_state_support.py": "063fbc443d790b0c965fd245aedc055d5d829ade21eb7e2d4bd8803a68c708ca",
+    "src/world_model/m3w_sdd_state_support.py": "1bdf3b2c22cc5974058dc42f294cc494409c5fce36ff28ceac83c9d1e888efc2",
+    "outputs/publication_readiness_2026_09/sdd_media_alignment/diagnostic_media_links.json": "e1ece86c223328191c53abeaa576cb1aefc68fe90796d8023ff65c4887de26df"
+  }
+}

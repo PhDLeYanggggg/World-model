@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Source Annotation Quality and Past-Box Probe Registered (2026-09-18)
+
+Next fixed training-side diagnostic: raw alignment of the unchanged 15,430-query
+cohort, magnitude/provenance/direction summaries, then 48 ExtraTrees probability
+fits across four sites, three seeds, two labels and two input arms. No threshold
+selection, main-role scoring, row deletion or deployment. Five focused helper
+tests pass; no new probability result exists yet.
+[Registration](outputs/publication_readiness_2026_09/source_motion_quality_decision.md).
+
+Local/GitHub 414e4350 agree; 65GiB free observed. A fresh read-only CREATE SSH
+attempt reached the gateway but failed public-key authentication with a portal
+MFA notice. No scheduler or remote model inventory was retrieved and no job was
+submitted. This does not mean the remote project or jobs are absent. Local work
+continues using native arm64 and four compute threads.
+
 ## Matched Loss Control Complete: More Oracle Headroom, Worse Forecasting (2026-09-18)
 
 `fresh_run`: 12 cold-start models, 120,000 updates, four source-site folds and
