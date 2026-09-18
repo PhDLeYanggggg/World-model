@@ -10,6 +10,13 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+My next fixed comparison tests actual twelve-step forecasts rather than another
+motion-change classifier. It compares linear ADE with log-ADE, with and without
+RGB, while holding source-site folds, seeds and training budgets fixed. The
+[registered design](outputs/publication_readiness_2026_09/source_cost_dynamics_decision.md)
+uses only already approved source training data; it does not change the main
+benchmark or open sealed evaluation sets. Training has not yet started.
+
 I have now tested whether the visual representation generalizes even between
 SDD training sites. The [five-site, three-seed comparison](outputs/publication_readiness_2026_09/source_site_probe_v1/conclusions.md)
 completed 30 neural fits and 60,000 updates. Adding RGB worsened the average

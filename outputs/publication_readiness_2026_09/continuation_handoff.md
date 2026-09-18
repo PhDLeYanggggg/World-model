@@ -1,5 +1,27 @@
 # Real-Experiment Continuation Handoff
 
+## Source Trajectory Cost Comparison Registered (2026-09-18)
+
+Goal active; lastturn was real progress, not wait/no-progress. New approved-role
+internal source diagnostic moves back from binary labels to actual trajectories.
+Config `configs/m3w_source_cost_dynamics_v1.json`; SHA
+`857633363c34bb7062c59b6a5e33c769120e7bea9f7c05c7d3c69d714f9a882d`.
+Sixty fixed fresh Torch fits:2objectives(ade/log_ade),2imagearms,5sites,3seeds,
+2kupdates each,total120k. Same complete stationarysourcecohort22374. No sealed
+main roles or formal metric changes. Newhead predicts12steps,bounded to past
+context radius,zero initialized;fourpastrotation features align image/vector
+frames.51unsupported contexts retained asbaseline;native/pastnormalized errors
+reported separately. Fixed0.9samefoldclassifier gate diagnostic,not riskcalibrated.
+Targets only inloss/eval. Frozen probability ancestors from source_site_probe_v1.
+
+Input audit passed; no training yet. Nativearm64CPU4/workers0;78GiBfree. Local
+expected ~100min acceptable; CREATEauthentication/projectpath stillunresolved,
+remotejobsunknown,no newremotejobs. Next:preregistercommit,100updatepilotthen
+fullmatrix,resume/replay/pairedverification,trajectoryanalysisandhonestgates.
+No current live training. All previous source-siteprobe handles terminal.
+UnrelatedstagedSHA remains
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+
 ## Source-Site Diagnostic Complete (2026-09-18)
 
 Goal active, not complete or blocked. Thirty registered fresh Torch fits and
