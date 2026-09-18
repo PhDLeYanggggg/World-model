@@ -1,0 +1,102 @@
+{
+  "identity": {
+    "registration_sha256": "90f8ece637af299f7b89f004abd77bc548895f0b469096b4fd7ed5a528439461",
+    "data": {
+      "main_manifest_sha256": "cb189521c86a40ad303b9cc871a01b563e5bc4c7a70ccdd9f330f2dd3d8a19ac",
+      "auxiliary_manifest_sha256": "702b669fe4b1db254af2ec143088fa1e9be755f097696f5a69a5044de9f8e138"
+    },
+    "assignment": "0e41239fadc351ce183363d9371dde167de10cd1b6134edc11a4db53ec8b4364",
+    "feature_store_sha256": "95ac21354c3d9633d93bdf8a6def308ae53f6a6c32378e83b251729cba29d2f5",
+    "torch": "2.12.0",
+    "numpy": "2.4.6",
+    "torch_threads": 4,
+    "interop_threads": 1,
+    "num_workers": 0
+  },
+  "folds": [
+    {
+      "site": "coupa",
+      "fold": {
+        "site": "coupa",
+        "training_rows": 11180,
+        "held_rows": 4250,
+        "training_sites": [
+          "deathCircle",
+          "gates",
+          "hyang"
+        ],
+        "training_ids_sha256": "1bdc6a7ef326540b2e9a55406979758df6b705df7d15e1f851e06cb3c8cf5874",
+        "held_ids_sha256": "e11619eeee54696cd9d82f5856ba7e95a67bd37b2449386100d8382533a59581",
+        "normalizer_sha256": "b70d18008d9f11639fb7dd064c02012ff7f1da54985d965a984d24a79be85448",
+        "cost_scale": 1102.240374323458,
+        "outer_rows_excluded": 6944,
+        "fitted_parent": null
+      },
+      "target_poison_rows": 8
+    },
+    {
+      "site": "deathCircle",
+      "fold": {
+        "site": "deathCircle",
+        "training_rows": 12376,
+        "held_rows": 3054,
+        "training_sites": [
+          "coupa",
+          "gates",
+          "hyang"
+        ],
+        "training_ids_sha256": "2b29b1760eb5593f635600bc95c4f499591e894687b7b4e22e9d9e946c849434",
+        "held_ids_sha256": "5db64071257994ff25b9ec66b37a5a765e59e30a1bfced3a46c3235b0494baa5",
+        "normalizer_sha256": "a7edc51c020181abf42d690344ca63dda0622d4cbd1dfd9257bae849175cc14e",
+        "cost_scale": 1092.0442434516003,
+        "outer_rows_excluded": 6944,
+        "fitted_parent": null
+      },
+      "target_poison_rows": 8
+    },
+    {
+      "site": "gates",
+      "fold": {
+        "site": "gates",
+        "training_rows": 13768,
+        "held_rows": 1662,
+        "training_sites": [
+          "coupa",
+          "deathCircle",
+          "hyang"
+        ],
+        "training_ids_sha256": "ed4a276ca14f03525f8ebaeae0f4685de2c4ea2f57dd0c243daba68b1018a998",
+        "held_ids_sha256": "59bbff62a9a1c701d1062fedcb78e7e11bee2c7f113dc72be7ca990a07461724",
+        "normalizer_sha256": "efe6a332c171f232c96d0b449aad64137749d54a47d824c5f75396ea3643cdae",
+        "cost_scale": 1176.1691527142161,
+        "outer_rows_excluded": 6944,
+        "fitted_parent": null
+      },
+      "target_poison_rows": 8
+    },
+    {
+      "site": "hyang",
+      "fold": {
+        "site": "hyang",
+        "training_rows": 8966,
+        "held_rows": 6464,
+        "training_sites": [
+          "coupa",
+          "deathCircle",
+          "gates"
+        ],
+        "training_ids_sha256": "3c5150e16a28298ec1e352fecd252681d85ab74b2edf6074814a8ed7c5bede31",
+        "held_ids_sha256": "4e3507e3538bcbc3baee054e3c1bb99a0c95e33ae4725e1bd43d7aa1a2515c38",
+        "normalizer_sha256": "0ffc626a37ad75ad62191edd5640d7c5210878b42a67d87df472ec32ffe1ec1a",
+        "cost_scale": 1133.989751220853,
+        "outer_rows_excluded": 6944,
+        "fitted_parent": null
+      },
+      "target_poison_rows": 8
+    }
+  ],
+  "main_outer_scored": 0,
+  "sensor_asof_certified": false,
+  "target_in_features": false,
+  "all_rows_retained": true
+}

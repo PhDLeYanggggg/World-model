@@ -46,18 +46,23 @@ call the paper ready. The user retains the final submission decision.
 
 ## Current Priority Gaps
 
-1. Candidate dynamics: the completed12-model site-crossfit has -5.016% equal-site
-   gain and only0.468% fixed binary-oracle headroom. Current12-model loss control
-   removes zero-target gradients under identical sampling; no result yet.
+1. Candidate dynamics: the 12-model site-crossfit, matched static-loss repair,
+   36-head pretrained comparison and 24-head centering comparison are complete.
+   None yields positive excluded-site forecasts. Centering reduces the failing
+   temporal model's harm but still loses 0.762% to CV. Independent state-change
+   support and predictive past information remain the next development gap.
 2. Conditional gain/harm: lower training jitter must not be mistaken for useful
    movement prediction. A candidate with measurable benefit is required before
    arguing that joint intervention solves a real prediction problem.
 3. Independent evidence: matched public forecasting/deferral controls, useful
    joint-versus-independent contrasts, independent calibration/confirmation,
    source/scene uncertainty and anonymous reproduction remain incomplete.
-4. Resources and policy: the prior120kupdate local run took96minutes; current
-   CREATE asset and scheduler state remain unknown, not freshly checked. Final
-  2027 formatting/AI-use policy is not yet verified by this check.
+4. Resources and policy: the latest 240k-update small-head comparison completed
+   locally in 764 summed fitting seconds with exact resume. This does not predict
+   end-to-end encoder cost. CREATE asset and scheduler state remain unverified;
+   the prior SSH access failure has not been repaired in this comparison. Final
+   2027 formatting/AI-use policy remains unverified. Updating these experiment
+   gaps is not a new official-web date or policy check.
 
 No metric/seconds/true3D/foundation claim, no Stage5C execution orSMC. Meeting an
 internal date is not a research gate pass.

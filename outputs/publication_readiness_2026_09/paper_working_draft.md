@@ -844,6 +844,31 @@ all visual dynamics. Source crops remain 32 x 32 before upsampling; offline labe
 interpolation, four explored sites and shared fitting folds limit interpretation.
 [Full experiment, gates and failure analysis](source_pretrained_temporal_v1/conclusions.md).
 
+### Past-Only Temporal Centering Control
+
+A subsequent input audit aligns all 123,440 historical query keys and finds
+non-identical, supported eight-frame sequences. Within-window variation accounts
+for only 2.5715% of frozen feature energy on average. We test two fixed transforms
+on the same 15,430 source queries: per-window mean centering, and centering with
+RMS normalization. The shared component is not proven to be background, and
+observed pixel changes are not verified intention cues.
+
+All 24 new heads complete 10,000 updates; the previous 36 heads are cached matched
+controls. Equal-site ADE gains versus stationary CV are -0.7622% and -1.7564%,
+with conditional four-site intervals [-1.7428,-0.1231] and [-3.4247,-0.5537].
+All 24 held fits are negative. Centering improves the failing sequence control
+by 5.3401 percentage points but remains 0.6918 points below geometry-only.
+RMS normalization further worsens centered prediction by 0.9942 points. Both
+new arms also lose on nonzero targets. All registered contrasts are retained.
+
+The repair reduces harm but does not establish useful visual dynamics. Each
+fixed candidate's future-informed binary oracle is small (0.1630% and 0.3368%),
+and is not a learned deployment rule. Absolute zero-target harms are retained;
+percentage degradation against the zero-error floor is undefined. Twenty-four
+exact replays, matched sampling and immutable completed resume establish local
+reproducibility, not independent validation. No primary/main or outer role was
+scored and no model was deployed. [Complete comparison and limitations](source_temporal_centered_v1/conclusions.md).
+
 ### Native Detail and Spatial Pooling Control
 
 A registered input repair retains the original96x96 observed crops and compares

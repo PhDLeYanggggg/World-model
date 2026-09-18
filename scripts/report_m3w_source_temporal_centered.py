@@ -45,22 +45,22 @@ def main():
 
 {verdict}
 
-All24new heads completed10,000updates each. There was no held-based arm, seed,
-checkpoint, threshold or cohort selection. The36original matched control heads
-are cached_verified and rescored, not newly trained.
+All 24 new heads completed 10,000 updates each. There was no held-based arm, seed,
+checkpoint, threshold or cohort selection. The 36 original matched control heads
+are `cached_verified` and rescored, not newly trained.
 
 ## Scope
 
-Same15,430stationary-history queries,29recordings,four explored source sites,
-seeds17/29/43. Eight observed and twelve future annotation steps at stride12raw
+Same 15,430 stationary-history queries, 29 recordings, four explored source sites,
+seeds 17/29/43. Eight observed and twelve future annotation steps at stride 12 raw
 frames. Not the main benchmark, raw-frame t+50 supplement or a Stage37 rerun.
 Pixel/local annotations only, no metric or seconds equivalence. Supplied
 histories may use later interpolation controls: offline, not sensor-as-of.
 
 Centering removes each observation window's mean frozen appearance. The unit
-variant also divides by observed RMS variation with fixed0.001floor. Both keep
-geometry,coverage,loss,63,960parameters,initialization,sampler and update budget.
-ResNet18 remains frozen; no end-to-end encoder training claim.
+variant also divides by observed RMS variation with a fixed 0.001 floor. Both keep
+geometry, coverage, loss, 63,960 parameters, initialization, sampler and update budget.
+ResNet18 remains frozen; this is not end-to-end encoder training.
 
 ## Actual Forecasts And Paired Comparisons
 
@@ -69,7 +69,7 @@ ResNet18 remains frozen; no end-to-end encoder training claim.
 {chr(10).join(contrast)}
 
 Primary is ratio of equal-site mean normalized errors, not mean site percentages.
-Seeds average errors, not predictions.2,000shared physical-site bootstrap draws
+Seeds average errors, not predictions. The 2,000 shared physical-site bootstrap draws
 are conditional on four explored sites and overlapping fitting populations.
 No independent confirmation or multiplicity-adjusted guarantee is claimed.
 An improved contrast against a failing model is not itself positive forecasting.
@@ -84,30 +84,31 @@ An improved contrast against a failing model is not itself positive forecasting.
 
 Native errors are annotation-pixel descriptions, not cross-dataset metric means.
 Zero-target CV error is zero; percentage easy degradation is undefined, not a
-2%pass. Hard cutoffs use training-complement labels. Future-oracle minima are
+2% pass. Hard cutoffs use training-complement labels. Future-oracle minima are
 label-only diagnostics, not a deployable switch rule.
 
 ## Verification And Compute
 
-Fresh training totals240,000updates and{seconds:.3f}s summed fitting, including
-the100-update pilot. Native arm64,CPU4/inter-op1/workers0. All24train/held forecasts
-replay exactly. All24sample streams match cached controls; all15,430real input
+Fresh training totals 240,000 updates and {seconds:.3f}s summed fitting, including
+the 100-update pilot. Native arm64, CPU 4/inter-op 1/workers 0. All 24 train/held forecasts
+replay exactly. All 24 sample streams match cached controls; all 15,430 real input
 transforms pass shared-offset and batch-composition checks. Six OOF archives
 recompute, and completed resume adds zero updates while preserving
-{check['immutable_artifacts']}artifacts. Frozen image features and upstream
-provenance are checked through the parent manifest. No raw data/checkpoints inGit.
+{check['immutable_artifacts']} artifacts. Frozen image features and upstream
+provenance are checked through the parent manifest. No raw data or checkpoints in Git.
 
-Fresh work: input audit,24heads,analysis,verification. Cached_verified: image
-embeddings and36controlheads. Not_run: main/outer forecasts,new policy,independent
-confirmation,external eval. No new deployment,Stage5C orSMC. Not submission-ready.
-See[registered design](../source_temporal_centered_decision.md),[analysis](analysis.json)
-and[verification](verification.json).
+Fresh work: input audit, 24 heads, analysis and verification. `cached_verified`:
+image embeddings and 36 control heads. `not_run`: main/outer forecasts, new policy,
+independent confirmation and external evaluation. No new deployment, Stage5C or SMC.
+Not submission-ready. See [registered design](../source_temporal_centered_decision.md),
+[analysis](analysis.json), [verification](verification.json),
+[failure analysis](failure_analysis.md) and [evidence gates](gates.md).
 """)
     (out/'reproducibility.md').write_text(f"""# Reproduction
 
-Registration committed as4b5dadd9 before fitting. SHA256`{file_digest(args.registration)}`.
-Requires hash-matching private parent data,feature store,old controls and official
-image encoder weights. Missing assets are prerequisites,not completed reproduction.
+Registration committed as 4b5dadd9 before fitting. SHA256: `{file_digest(args.registration)}`.
+Requires hash-matching private parent data, feature store, old controls and official
+image encoder weights. Missing assets are prerequisites, not completed reproduction.
 
 ```bash
 .venv-pytorch/bin/python scripts/run_m3w_source_temporal_centered.py --registration {args.registration}
@@ -118,11 +119,11 @@ image encoder weights. Missing assets are prerequisites,not completed reproducti
 .venv-pytorch/bin/python -m pytest -q tests/test_m3w_source_temporal_information.py tests/test_m3w_source_temporal_centered.py tests/test_m3w_source_pretrained_temporal.py
 ```
 
-200-update atomic checkpoints contain optimizer,Torch RNG,sampler RNG and draw
+200-update atomic checkpoints contain optimizer, Torch RNG, sampler RNG and draw
 counts. Reuse the same entry after interruption. Complete trials hash-verify and
 skip training. Heartbeat records PID and step. No outcome-dependent restart.
 The full legacy integration/training suite is not rerun for this scoped repair.
-Past-only input audit entry:scripts/audit_m3w_source_temporal_information.py.
+Past-only input audit entry: `scripts/audit_m3w_source_temporal_information.py`.
 No alternative input or target columns are inferred from a filename.
 """)
     cache=ROOT/reg['output']/'plot_cache';cache.mkdir(exist_ok=True)

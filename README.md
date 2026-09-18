@@ -35,6 +35,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does removing the static-target loss repair them? | No. Twelve matched new fits increase oracle headroom to 3.760%, but actual gain is -98.719% and static-target harm is much larger. |
 | Do raw annotation checks and past-box features explain the failure? | Small changes are common, but >10px queries contribute 53.25% of baseline error and still lose. Forty-eight fixed probability probes find no stable added-box benefit. |
 | Do pretrained image features repair source transfer? | No. Thirty-six matched trajectory heads complete 360,000 updates. Geometry/current-image/eight-frame gains are -0.070%/-1.908%/-6.102%; all held fits are negative. |
+| Does removing shared appearance repair the temporal model? | It reduces harm, but does not beat the baseline. Twenty-four fresh heads give -0.762% for centered input and -1.756% with RMS normalization; all held fits remain negative. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -75,6 +76,17 @@ Eight-frame appearance loses another 4.194 percentage points relative to current
 appearance. All 36 heads replay exactly; this confirms the negative result, not
 a deployable visual dynamics contribution.
 
+I then checked whether the temporal model was mostly fitting shared appearance.
+The input audit found correctly aligned, non-identical historical frames, but
+little within-window variation in the frozen features. The
+[registered centering comparison](outputs/publication_readiness_2026_09/source_temporal_centered_v1/conclusions.md)
+completed all 24 heads and 240,000 updates. Centering reduces the sequence model's
+excess forecast error over CV from 6.102% to 0.762%; normalizing the variation
+still increases error by 1.756% over CV.
+Both remain worse than geometry alone. These are useful negative controls, not a
+new deployable model. The remaining question is whether the observed histories
+provide enough transferable information about independent state-change events.
+
 ## Evidence and Reproduction
 
 The detailed record is kept separately so that the project overview remains
@@ -84,7 +96,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_pretrained_temporal_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_temporal_centered_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some

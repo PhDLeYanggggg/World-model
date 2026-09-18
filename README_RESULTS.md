@@ -5,24 +5,49 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Source Temporal Input Audit Complete; Centering Comparison Registered (2026-09-18)
+## Temporal Centering Complete: Less Harm, Still Negative (2026-09-18)
 
 Fresh past-only audit: 15,430 windows, 123,440 historical keys, all aligned.
 Every window has eight supported frames; no eight-frame RGB/embedding sequence
 is exactly constant. Only two adjacent RGB query-frame pairs are identical.
-Mean coverage97.78%; median annotation-box footprint9.34x11.86output pixels.
-Mean within-window frozen-feature energy fraction2.5715%, median2.0464%.
+Mean coverage 97.78%; median annotation-box footprint 9.34 x 11.86 output pixels.
+Mean within-window frozen-feature energy fraction 2.5715%, median 2.0464%.
 Shared appearance is not proven background; variation is not motion intent.
 
-Registered two-arm repair: per-window centered embeddings and RMS-normalized
-centered embeddings. Same63,960parameters, data, all-target ADE, sampler, four
-sites and three seeds.24newheads/240,000updates registered before fitting as
-commit4b5dadd9. Full training is running,PID77156, after the included100-update
-pilot passed in0.266seconds. No aggregate outcome yet. The prior
-three arms remain cached_verified controls.15focused tests pass, including
-exact checkpoint resume for both new arms. No main/outer scoring or deployment.
+Completed two-arm repair: per-window centered embeddings and RMS-normalized
+centered embeddings. Same 63,960 parameters, data, all-target ADE, sampler, four
+sites and three seeds. All 24 new heads complete 240,000 updates, registered
+before fitting as commit 4b5dadd9. The prior three arms are `cached_verified`
+matched controls, not retrained.
+
+| New arm | Equal-site ADE gain vs stationary CV | Conditional four-site 95% CI |
+| --- | ---: | --- |
+| Centered history | -0.7622% | [-1.7428%, -0.1231%] |
+| Centered + RMS normalization | -1.7564% | [-3.4247%, -0.5537%] |
+
+Centering beats the failing sequence control by +5.3401pp, interval
+[+3.6666, +7.5778], but loses to geometry-only by -0.6918pp. All 24 new held fits
+remain negative. RMS amplification is -0.9942pp worse than centering. All five
+registered contrasts and all seeds/sites are retained. Static absolute harms are
+0.020320/0.041864 annotation pixels; percentage easy degradation is undefined
+against a zero-error baseline, not a 2% pass. Binary oracle gains of
+0.1630%/0.3368% are diagnostics, not a learned switch policy.
+
+Training PID 77156 exited normally. Summed fitting: 764.240s, including the
+100-update pilot; main-log span: 772.059s. All 24 train/held predictions replay
+exactly; 24 sampling streams match controls; six OOF archives recompute.
+All 15,430 real transforms pass invariance checks. Completed resume adds zero
+updates and preserves 83 artifacts. Thirty-two scoped tests pass; the full
+legacy suite was not rerun. All required processes are terminal.
+
+Four explored sites/shared fitting folds, 2,000 conditional site-bootstrap draws,
+not independent confirmation. No main/outer scoring, new deployment, Stage5C or
+SMC. The independent-event support investigation remains the next unrun step.
 [Audit](outputs/publication_readiness_2026_09/source_temporal_information_v1/conclusions.md),
-[fixed design](outputs/publication_readiness_2026_09/source_temporal_centered_decision.md).
+[fixed design](outputs/publication_readiness_2026_09/source_temporal_centered_decision.md),
+[results](outputs/publication_readiness_2026_09/source_temporal_centered_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/source_temporal_centered_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/source_temporal_centered_v1/gates.md).
 
 ## Frozen Pretrained Temporal Comparison Complete, Negative (2026-09-18)
 

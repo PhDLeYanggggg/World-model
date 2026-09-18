@@ -1,6 +1,44 @@
 # Real-Experiment Continuation Handoff
 
-## Centering Comparison Training Live (2026-09-18)
+## Centering Comparison Complete, Negative (2026-09-18)
+
+Goal active/unmet. Registration 4b5dadd9; running-status commit 989c057b.
+All 24 new heads/240,000 updates complete. Training PID77156/session20974 exited0;
+summed fitting764.240430s, main-log772.059223s. Pilot100updates included.
+Replay PID78488/session35726 exited0:24exact train/held predictions.
+Verifier session43424 exited0; child78568 adds0updates, preserves83artifacts.
+All24sampling streams match old controls, six OOF archives recompute and15430
+real input transforms pass invariance. Thirty-two scoped tests passed. Renderer
+session30923 exited0 and figure visually inspected. All required processes terminal.
+Do not restart completed training or alter bound registration/model/analysis files.
+
+Centered/centered_unit equal-site gains -0.762164/-1.756393%; CIs
+[-1.742774,-0.123131]/[-3.424700,-0.553710]. All24heldfitsnegative.
+Centering minus old sequence +5.340071pp is harm reduction, not positiveforecast;
+centered-minus-geometry -0.691790pp; RMS amplification worsens centered0.994229pp.
+Static harm .0203198/.0418642annotationpx; percentageundefined,not2%pass.
+Per-arm binaryoracle .163048/.336776% is not a learned policy. Old36controls are
+cached_verified, not newly fitted. Same15430queries/fourexploredsites/sharedfolds,
+2000conditionalbootstrap, no independent confirmation or main/outer forecasts.
+
+Fresh past-only input audit:123440keys align, eight supported/non-identical
+frames per query; temporal embedding energy mean2.5715%, not proven motion intent.
+Report, failure taxonomy, gates, figure and reproduction are in
+source_temporal_centered_v1/. README/state/paper updated. ConfigSHA
+90f8ece637af299f7b89f004abd77bc548895f0b469096b4fd7ed5a528439461;
+analysis06ed7c45c72287277c751c4f8d727e156c338343c440d161f942dfbc7eeddcad;
+verification4a61d3ab8865bc096b9b050ca2971f0bd2bb873b2c1a8e565803bde5d4f6e1cc.
+
+Next safe step, NOT RUN: source/development independent departure-event support
+and observed context audit, reusing existing row-quality/duplication assets.
+Count events/agents/recordings rather than overlapping windows. No outcome-based
+deletion, test selection, repeated unchanged feature fits or another threshold
+sweep. A new candidate needs identifiable past information or independent support.
+No new deployment; Stage5C/SMC off. CREATE prior SSH denial not retried, no job.
+Keep unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323 unchanged.
+
+## Historical: Centering Comparison Training Live (2026-09-18)
 
 Protocol4b5dadd9 pushed before fitting.100updatepilotPID77124 exited0,0.266sec,
 includedbudget. FullPID77156/session20974active; do not duplicate. Private
