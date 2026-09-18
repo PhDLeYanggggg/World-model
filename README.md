@@ -10,11 +10,18 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am checking why the latest trajectory heads fail even on their training data.
-A [fixed training-only diagnostic](outputs/publication_readiness_2026_09/source_microfit_decision.md)
-will compare two output scales on small, explicitly selected training cohorts.
-It is a fitting check before another benchmark, not a smaller replacement for
-the research task or a generalization result.
+I completed a [training-only fitting check](outputs/publication_readiness_2026_09/source_microfit_v1/conclusions.md)
+after the latest full-source failure. All 12 models can memorize the selected
+16- or 32-row training cohorts, including the original decoder with gradient
+clipping at every update. This rules out a completely broken learning path, but
+does not repair the benchmark. Changing output scale gives only a small,
+inconsistent paired benefit, so I am not treating it as the solution.
+
+The next distinction is training exposure versus population-level learnability.
+The small check sees each row 2,000 times; the original full-source run averages
+only about 8.3 draws per row in the matching fold. That difference motivates a
+controlled learning-curve check, not a claim of undertraining already proved.
+There is no new generalization result or deployment change.
 
 I completed a [fixed trajectory-cost comparison](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/conclusions.md):
 60 neural fits and 120,000 updates across five SDD training sites and three seeds.

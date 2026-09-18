@@ -1,0 +1,164 @@
+{
+  "result_source": "fresh_run_verification_and_training_only_analysis",
+  "report_sha256": "15ccbdfe8e4c2500072f2e6842f3c83b33de412967e4b39f8624eb28405b76b6",
+  "exact_replays": 12,
+  "paired_checks": [
+    {
+      "cohort": "nonzero_only",
+      "seed": 17,
+      "same_input_target_identity": true,
+      "same_fullbatch_exposure": true,
+      "same_rng_state": true
+    },
+    {
+      "cohort": "nonzero_only",
+      "seed": 29,
+      "same_input_target_identity": true,
+      "same_fullbatch_exposure": true,
+      "same_rng_state": true
+    },
+    {
+      "cohort": "nonzero_only",
+      "seed": 43,
+      "same_input_target_identity": true,
+      "same_fullbatch_exposure": true,
+      "same_rng_state": true
+    },
+    {
+      "cohort": "mixed_zero",
+      "seed": 17,
+      "same_input_target_identity": true,
+      "same_fullbatch_exposure": true,
+      "same_rng_state": true
+    },
+    {
+      "cohort": "mixed_zero",
+      "seed": 29,
+      "same_input_target_identity": true,
+      "same_fullbatch_exposure": true,
+      "same_rng_state": true
+    },
+    {
+      "cohort": "mixed_zero",
+      "seed": 43,
+      "same_input_target_identity": true,
+      "same_fullbatch_exposure": true,
+      "same_rng_state": true
+    }
+  ],
+  "unchanged_artifacts": 37,
+  "completed_resume": {
+    "pid": 27849,
+    "timestamp_unix": 1789734129.777154,
+    "state": "completed_resume_verified",
+    "new_fits": 0,
+    "new_updates": 0
+  },
+  "summary": [
+    {
+      "cohort": "nonzero_only",
+      "decoder": "context_radius",
+      "mean_ade": 46.47558085123698,
+      "cv_ade": 2552.587890625,
+      "gain_percent_mean": 98.17927678426106,
+      "gain_percent_seed_range": [
+        97.8536605834961,
+        98.43260645866394
+      ],
+      "easy_harm_mean": null,
+      "clipped_update_fraction": 1.0,
+      "positive_training_fits": 3,
+      "rows": 16
+    },
+    {
+      "cohort": "nonzero_only",
+      "decoder": "training_cost_scale",
+      "mean_ade": 39.8267707824707,
+      "cv_ade": 2552.587890625,
+      "gain_percent_mean": 98.43974908192952,
+      "gain_percent_seed_range": [
+        98.31401705741882,
+        98.57629537582397
+      ],
+      "easy_harm_mean": null,
+      "clipped_update_fraction": 0.8718333333333333,
+      "positive_training_fits": 3,
+      "rows": 16
+    },
+    {
+      "cohort": "mixed_zero",
+      "decoder": "context_radius",
+      "mean_ade": 43.33759307861328,
+      "cv_ade": 1276.2939453125,
+      "gain_percent_mean": 96.60441875457764,
+      "gain_percent_seed_range": [
+        96.08404040336609,
+        97.00735211372375
+      ],
+      "easy_harm_mean": 33.88812065124512,
+      "clipped_update_fraction": 1.0,
+      "positive_training_fits": 3,
+      "rows": 32
+    },
+    {
+      "cohort": "mixed_zero",
+      "decoder": "training_cost_scale",
+      "mean_ade": 38.45990880330404,
+      "cv_ade": 1276.2939453125,
+      "gain_percent_mean": 96.98659380276997,
+      "gain_percent_seed_range": [
+        96.2703287601471,
+        97.65787124633789
+      ],
+      "easy_harm_mean": 21.511272430419922,
+      "clipped_update_fraction": 0.7203333333333334,
+      "positive_training_fits": 3,
+      "rows": 32
+    }
+  ],
+  "artifacts": {
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/mixed_zero_context_radius_seed17.pt": "8c55c4aa2decd878203f79f489e30ca4a97c2dbe69fe860b24a5c2f7063092e4",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/mixed_zero_context_radius_seed29.pt": "ea9c4879bfbb022651ab3e6ce2919e49b962fbd5c87ca2cf74c77fab9632e7b4",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/mixed_zero_context_radius_seed43.pt": "ec07773a87c51f717f9b4f69f9f30056747ad46cdeff453db6f01570377c35dd",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/mixed_zero_training_cost_scale_seed17.pt": "402d7ce91775d45f299a9e76548499f1de5466e4472c5dcf548dd47b76f11779",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/mixed_zero_training_cost_scale_seed29.pt": "8e42a5874aa694d47973dd7a92738e91a5c78400c8c2e8e4493699c842bfcc64",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/mixed_zero_training_cost_scale_seed43.pt": "f73aa3393c301f209904fbf1895407e5621785d38910bf9f2778aadbd5b93105",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/nonzero_only_context_radius_seed17.pt": "fb6e102c9bbc9463c22dd5d0545aba7821ecb7a8e50c239533548a0799e82262",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/nonzero_only_context_radius_seed29.pt": "fcd5ec8fc6ad925bfd2aa8aacacb766f7a23d03042d97cab18e0456165af195c",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/nonzero_only_context_radius_seed43.pt": "5bfcb041ff51041e4395f4f673d347f19f6d1cdd87f357fcfd3d50e767118699",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/nonzero_only_training_cost_scale_seed17.pt": "27038b9d619e98b8eed273d36041f4c17aaee2390df8c6be349a000700abd967",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/nonzero_only_training_cost_scale_seed29.pt": "c52c49bf5f9e6edb445507024085c6d2a899dbeee2bbfb5ffc881e147573f649",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/checkpoints/nonzero_only_training_cost_scale_seed43.pt": "2aa78b5ca91d9fa9a9a92cddf5f6b76ca23061b2445542ec1d11aeb6bf25c77d",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/identity.json": "8bc8f544a081c110d419794bec87441cc1e6f2c1a3603b5e6a83a19bd39f0b23",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/mixed_zero_context_radius_seed17.npz": "e9ab2acc1f87a3529514d3a244629e8ad86c7cc01f4f59fcf482a8b79e1aeca9",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/mixed_zero_context_radius_seed29.npz": "17a5570c7c12940fadbb1b13fb9f75e54b1bf401633dabde46a0d03be2bfb657",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/mixed_zero_context_radius_seed43.npz": "b8556f7e0df58a350f95c031563cfa7949136da7add1bc96cf1391662b1bc047",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/mixed_zero_training_cost_scale_seed17.npz": "b1b7dc13d7add12c7b0af3249dcdb66af91c6e7b18dc13f59b717e2262d16555",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/mixed_zero_training_cost_scale_seed29.npz": "c83a26be8fee043729e1cb62f0d8bd6b70488126257cb108122434600d215fbe",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/mixed_zero_training_cost_scale_seed43.npz": "634a1bce336524b27b91b6db4edc7b3ab53571579d862503b58a661a8f73d8dd",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/nonzero_only_context_radius_seed17.npz": "e2989b477c9b1f0005af29bf12509ecf3ed8834e565644530cb333c795f0bf02",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/nonzero_only_context_radius_seed29.npz": "a108f9b1b50c3add85146b5c96d612958057724f3aa5eb109744de119f02e58f",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/nonzero_only_context_radius_seed43.npz": "82dd0c1200e3dcb9f69d50bceac9e917a1a6476abcd0e8b678117df9fdbb1eee",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/nonzero_only_training_cost_scale_seed17.npz": "5eedf8cf4690e848b575396794f8bbc7edf83c912a7abcf4bccdac7262fc95fd",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/nonzero_only_training_cost_scale_seed29.npz": "ffebd5a331de5e12e13288140fbe3f98b2a7bc7bab96329389b756d581c7e7f3",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/predictions/nonzero_only_training_cost_scale_seed43.npz": "a221887cf24ff25e0890666c2670d4617ad54aae7caab5215e40d9785dec654f",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/mixed_zero_context_radius_seed17.json": "10c69ec8c7f0a5682911f2b44de637bd1647cb05f4ef44cc550aecc8f4fe28b6",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/mixed_zero_context_radius_seed29.json": "9731a2652d2a7dd1aad5825b27e0d7546063b1775786159efda11a219ccc4d3c",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/mixed_zero_context_radius_seed43.json": "2e8f610ed6cac091746f566338e9f22a7e0b45569b7ca1e371fe25015b150fe7",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/mixed_zero_training_cost_scale_seed17.json": "1e79315b348bb1876d5ab0769b93ddc5f982894bfb53979fa7f892632386ab8f",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/mixed_zero_training_cost_scale_seed29.json": "9f32d5b28d706501b05fe477ce44ed9cecc48983aebeb219318778f7428a5af7",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/mixed_zero_training_cost_scale_seed43.json": "19b1c336e7bdd4a3b9a3e278fb0268db32983d0a6737338bfb9a4d24561b2cfe",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/nonzero_only_context_radius_seed17.json": "78b7714df7c2ff58b74c78bc33476e7814326762dea87d74ed022e1a2e6adf92",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/nonzero_only_context_radius_seed29.json": "49270af3020dfd6fc427a37b53dd64147cf1d6891d660946b38e55a1ac876045",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/nonzero_only_context_radius_seed43.json": "bb74ae56b00f4df7f44b6e01b2da83a809e427fbb4b504deebc3800a09d69b53",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/nonzero_only_training_cost_scale_seed17.json": "f7d0d2859f152f86e50fa99ac162344e88780bb10b982b8844d5898b10f9b5a0",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/nonzero_only_training_cost_scale_seed29.json": "ae00737a859896e2068f1f465b7a9f147daf8fe3285946b03cec5452cc35375d",
+    "data/stage_cvpr2027_experiments/source_microfit_v1/trials/nonzero_only_training_cost_scale_seed43.json": "c9ba608824b76a0ad240c90fda2326a529aa581d8a3dbdccef9239c1c564090a"
+  },
+  "held_rows_scored": 0,
+  "new_deployment": false,
+  "generalization_established": false,
+  "decoder_also_changes_inductive_bias": true,
+  "selection_uses_training_labels": true,
+  "independent_confirmation": false
+}

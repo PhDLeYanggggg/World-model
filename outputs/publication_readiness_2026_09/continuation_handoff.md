@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Training-Only Microfit Registered (2026-09-18)
+## Training-Only Microfit Complete (2026-09-18)
 
 Goalactive, prior turn substantiveprogress:60fullcostfitscompletednegative.
 Next local diagnostic `configs/m3w_source_microfit_v1.json`, SHA
@@ -8,9 +8,23 @@ facb6e5a1a6810f42f24ed69d9ffd458d964ab0e6cde28fb04518a2f8d0b4161.
 12fits/24kupdates:2decoders(context_radius/training_cost_scale),2cohorts,
 3seeds. All source complementofbookstoreonly;16nonzero +16zeroscopeduniqueIDs.
 Training-label feasibilityselectiondeclared; no held/main scoring. Parent
-features/targets/normalizer/costmetricunchanged. Auditpassed,64focusedtestspass.
-No currenttraining. Needpreregistercommit,100updatepilotthenfixedfullbudget,
-exactreplay/immutable-resume,fullcohortloss/gradientdiagnosticandhonestreport.
+features/targets/normalizer/costmetricunchanged. All12fits/24kupdatescomplete,
+399.411597summedfitsec,6.684729minfullrunlog.Pilot100included.PID27150/session
+43413exit0;replay27655/session74271exit0;verify/analysis30349exit0.Noactivetraining.
+12exactreplays,sixpairedchecks,37immutableartifacts/reportunchangedonresume,
+0newupdates.64focusedtestspass;fulllegacysuitenotrerun.Curvevisuallychecked.
+Preregcommitd87803ca; reportSHA
+15ccbdfe8e4c2500072f2e6842f3c83b33de412967e4b39f8624eb28405b76b6.
+
+Original/rescaledmeanTRAININGgainsnonzero98.1793/98.4397%,mixed96.6044/96.9866%.
+Notgeneralization!Originalclips100%updatesandstillfits;rescaled87.18/72.03%.
+Originalfasterinitially;rescalingnotbetterineveryseed.Numericalpathcanfitthese
+rows;clippingorzerosalonecannotexplainfullfailure.Microfit2000passes/rowversus
+8.2955mean originalfullcomplementdraws/row;differentdiversity/noise/exposure.
+Full-source60negativeunchanged.Nextfixedwhole15430-rowtrainingcomplementcurve:
+reuse3verifiedade_past_rgb_bookstore_seed17/29/43parentCPs;compareconstantLRvs
+predeclaredannealingwithfixedadditionalbudget;noheld/mainforecastorselection.
+ThisfollowupNOTYETregistered/implemented/run.Do notmistakememorizationforrepair.
 DecoderchangeaffectsJacobianandinductivebias;notpureglobalLRorproofclipcause.
 Local67GiBfree,CPU4/workers0. CREATEsavedaccessblockerunchanged,remotejobsunknown.
 Mainsealedrolesanddeploymentclosed; noStage5C/SMC. PreserveunrelatedstagedSHA

@@ -612,6 +612,26 @@ verify execution. Five repeatedly exposed source sites, overlapping folds and
 offline silver histories still do not supply main-task independent confirmation.
 No predictor, threshold or deployment is selected from this negative matrix.
 
+The [training-only microfit control](source_microfit_v1/conclusions.md) narrows
+the implementation diagnosis without adding a benchmark claim. It selects16
+feasible nonzero training targets and adds16zero targets in a second cohort,
+using distinct scoped agents from the source training complement. Two decoder
+laws and three seeds give12fits/24000updates. Both original and rescaled models
+memorize these rows: mean training ADE reductions are98.18%/98.44% on nonzero
+targets and96.60%/96.99% on the mixed cohort. Original gradients are clipped at
+every update, yet fitting succeeds; rescaling is not better in every seed.
+
+This refutes a universally disconnected learning path, not an absence of
+full-corpus optimization problems. Every microfit row receives2000passes, while
+the original matching15430-row training complement receives8.2955draws per row
+on average. Exposure, diversity and gradient noise differ. Training-label
+feasibility selection cannot become a held-set filter; zero-target absolute
+harm also remains positive. Twelve exact replays and37unchanged completed-resume
+artifacts establish reproduction only. A controlled full-training learning
+curve is required before attributing the earlier failure to insufficient
+exposure, step size or conditional-information limits. No held forecast is
+computed or deployment upgraded by the microfit.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -625,6 +645,7 @@ No predictor, threshold or deployment is selected from this negative matrix.
 | Does past RGB add robust start information? | 30 matched fits; mixed window gain positive but agent-weighted gain negative and own-prior comparison fails | Fragile partial contrast, not robust transfer or trajectory utility |
 | Does the same RGB representation generalize inside SDD? | 30 matched fits; all five held-site mean contrasts negative; equal-site Brier lift -0.020046 | Failure is not only source-to-main transfer; supervision and visible-event support need controlled repair |
 | Does direct trajectory-cost training resolve the problem? | 60 fits; uncontrolled ADE gains -1.57% to -1.70%; training ADE also worse in every fit | The tested cost repair is insufficient; optimization and candidate trajectory utility remain unresolved |
+| Is the neural fitting path universally broken? |12training-only microfits learn selected16/32-row cohorts; original decoder also succeeds with100%gradient clipping | Numerical fitting is possible; not a benchmark repair or proof of useful predictive information |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

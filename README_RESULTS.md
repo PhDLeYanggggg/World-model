@@ -1,17 +1,30 @@
 # M3W Results Ledger
 
-## Training-Only Decoder Diagnostic Registered (2026-09-18)
+## Training-Only Decoder Diagnostic Complete (2026-09-18)
 
-No new fit yet. The complete60-model negative result motivates a microfit check,
-not another held-score policy search. Two output parameterizations, two explicit
-training microcohorts and three seeds give12 models/24000 fixed updates. The
-cohorts contain16 nonzero-label rows and the same16 plus16 zero-label rows, all
-distinct scoped source-training tracks outside bookstore. Selection uses
-training labels and feasibility; it is not an official evaluation filter.
-All inputs/roles verified;64 focused tests pass. Main and held-source forecasts
-remain not_run. No primary change or deployment.
-[Design](outputs/publication_readiness_2026_09/source_microfit_decision.md),
-[interpretation limits](outputs/publication_readiness_2026_09/source_microfit_v1/interpretation_limits.md).
+`fresh_run`:12 real Torch fits,24000 updates,399.41 summed fitseconds and6.685
+minutes full-run log. The100-update pilot belongs to this budget. Three seeds,
+two decoder laws and fixed16/32-row source-training microcohorts. No held-source
+or main forecasting; selection uses training labels, never inference targets.
+
+Original/rescaled decoder mean training ADE reductions are98.1793%/98.4397% on
+16nonzero rows and96.6044%/96.9866% on the mixed32rows. These are memorization
+scores, not transfer. The original decoder clips gradients at every update and
+still fits; the rescaled law clips87.18%/72.03%. Its advantage is not consistent
+in every seed. The original learns faster initially. Clipping or zero-target
+presence alone is not a sufficient universal explanation for failure.
+
+All12 exact replays, six matched decoder pairs and37immutable artifacts preserved
+on completed resume,zero added updates.64 focused tests;full legacy suite not
+rerun. Curve visually checked. Full-source negative results remain unchanged.
+Small cohorts receive2000passes per row, versus8.2955mean draws in the original
+matching15430-row training complement. Exposure, diversity and gradient noise
+are not matched across studies. Next: controlled full-training learning curves,
+not another threshold search or blind larger-model matrix. Goal remains unmet.
+[Conclusions](outputs/publication_readiness_2026_09/source_microfit_v1/conclusions.md),
+[scores](outputs/publication_readiness_2026_09/source_microfit_v1/results.md),
+[curve](outputs/publication_readiness_2026_09/source_microfit_v1/training_trace.svg),
+[reproduction](outputs/publication_readiness_2026_09/source_microfit_v1/reproducibility.md).
 
 ## Source Trajectory Cost Comparison Complete: No Useful Candidate Gain (2026-09-18)
 
