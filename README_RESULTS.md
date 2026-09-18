@@ -9,9 +9,12 @@ Full auxiliary population: 229,333 past-eligible windows, not the earlier
 5,074 diagnostic joins. Six source/modality cells, three seeds, three fit folds:
 54 fresh fits planned, 2,000 pretraining + 4,000 main updates each.
 
-Twenty-seven focused tests pass, including exact phase-boundary resume and
+Thirty-four focused tests pass, including exact phase-boundary resume and
 future-target input isolation. Initial test had a test-only dict-call typo,
-corrected before fitting. Full legacy suite not rerun. Training not started;
+corrected before fitting. Full legacy suite not rerun. First full-video pilot:
+15,809 queries / 16,663 crops, 42.41 seconds; 3 independent frames / 36 crops
+and sampled geometry/labels replay exactly. Remaining input construction active.
+Training not started;
 no predictive result, promotion or independent-confirmation claim.
 [Registered experiment](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md).
 Earlier pending-status entries below are historical and superseded by this approval.

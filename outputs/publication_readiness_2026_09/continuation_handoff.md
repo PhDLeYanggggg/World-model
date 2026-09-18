@@ -7,8 +7,10 @@ is resolved: original train-40, stride12, obs8/pred12, matched auxiliary/control
 Do not ask again or treat the older pending sections as current.
 Registration: configs/m3w_sdd_auxiliary_v1.json. 54 new fits, 324,000 updates;
 full229,333pastwindows need a new complete crop cache. Main primary and sealed
-roles unchanged. Twenty-seven targeted tests pass; training not started at this
-registration. Prepare full inputs, run100step training pilot without held scores,
+roles unchanged. Thirty-four targeted tests pass; training not started at this
+registration. Input pilot15,809queries/16,663crops complete42.41seconds; three
+frames/36crops and geometry/labels replay exactly. Full preparation running;
+verify full inputs, run100step training pilot without held scores,
 resume full matrix, then exact replay and completed-resume checks. Goal active,
 not complete. This experiment remains exposed-fit exploratory, no deployment.
 
