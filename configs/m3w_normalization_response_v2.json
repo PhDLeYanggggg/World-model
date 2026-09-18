@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "registration_path": "configs/m3w_normalization_response_v2.json",
+  "parent_registration": "configs/m3w_sdd_auxiliary_v1.json",
+  "parent_report": "outputs/publication_readiness_2026_09/sdd_auxiliary_v1/report.json",
+  "main_role": "fold0_training_only_diagnostic",
+  "main_primary_changed": false,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "modalities": [
+    "geometry",
+    "mask_only",
+    "past_rgb"
+  ],
+  "conditions": [
+    "unit_primary_log",
+    "unit_internal_log"
+  ],
+  "rows_per_event": 32,
+  "sample_seed": 917,
+  "output": "data/stage_cvpr2027_experiments/normalization_response_v2",
+  "reports": "outputs/publication_readiness_2026_09/normalization_response_v2",
+  "bindings": {
+    "src/world_model/m3w_observed_unit_frame.py": "7c9ccd0b4ef43b798b338da8567a43a0e565c44b8c1caf614b0159877bd8d2d9",
+    "scripts/audit_m3w_normalization_response.py": "02d775438491aae3a28d2b5969e349dfd5d64d67b8543f78c34aa923e94d06c8",
+    "tests/test_m3w_observed_unit_frame.py": "19722bf16f1ab4ab4d5695fa0fcda8c70fe50cc8b3a1fb2934f4b08ba53f286b",
+    "tests/test_m3w_normalization_response.py": "484a092ec02e175e5c0b80993fbc967c3a161e5e045d6eaae4cf7101b52e6f6b",
+    "outputs/publication_readiness_2026_09/normalization_response_decision.md": "7c5af3edb89d3302b39e110d164c1331b2965fdb8daf0fa1a1d68740d1ef9ace",
+    "configs/m3w_sdd_auxiliary_v1.json": "17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb",
+    "outputs/publication_readiness_2026_09/sdd_auxiliary_v1/report.json": "e69033db4077f3e4669e43cb612c02b176f1e92559fa6b958bcca7c9ea164337",
+    "outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.json": "cdbbcece43a678577b97fa6f1d5d702026323b63d751965f50d0dfcccf7780b4",
+    "src/world_model/m3w_observed_unit_frame_v2.py": "3b4574a6de7a8545ab6c213f1ae3a6cdfba1a15cd2333d44db593468a39b17ea",
+    "scripts/audit_m3w_normalization_response_v2.py": "b12e78f074bc56871121977593ffe3ed0590b0c080e90eb3208b3bf8998d7743",
+    "tests/test_m3w_observed_unit_frame_v2.py": "5ba10b315826ecf6c483f5b3b73ae62842a6765bf6598c455e7ae2e29301fffa",
+    "configs/m3w_normalization_response.json": "23edc9b5e09be22c983d9fb013cb9f2c919a727e498943902f253051d67180b6",
+    "outputs/publication_readiness_2026_09/normalization_response/report.json": "c0d7fe7cc04d6884f972b8770da40206dc3c4b20daf52a42be874f1574a3cd76"
+  },
+  "repair": "Recompute rollout features in internal coordinates; do not inherit native turn-speed cutoff.",
+  "cached_legacy_conditions": "outputs/publication_readiness_2026_09/normalization_response/report.json"
+}

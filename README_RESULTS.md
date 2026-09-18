@@ -1,5 +1,20 @@
 # M3W Results Ledger
 
+## Gradient Diagnostic Complete; Conditioning Comparison Registered (2026-09-18)
+
+Actual autograd, zero optimizer updates: 432 v1 records and 216 repaired v2
+records. Legacy source static-to-moving gradient norm: 0.003087 versus 1.449280
+for other motion at the frozen final checkpoint. Internal-frame log loss
+balances initial gradients, but no predictive improvement is inferred.
+The v1 inherited turn-speed threshold failed a small-unit curved-history
+check; v2 recomputes rollout features after conditioning and preserves v1.
+[Measurement and limitations](outputs/publication_readiness_2026_09/normalization_response_v2/report.md).
+
+22 focused tests pass. A 100-update real pilot completed, checkpoint saved,
+no held evaluation. The [registered comparison](outputs/publication_readiness_2026_09/unit_frame_training_decision.md)
+will finish 27 geometry-only fits with unchanged primary and all fit populations,
+alongside nine verified prior controls. No deployment or confirmation claim.
+
 ## Normalization Response Diagnostic Registered (2026-09-18)
 
 New separate observed-unit frame over the frozen 476-column past schema. It

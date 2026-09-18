@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "registration_path": "configs/m3w_unit_frame_training_v1.json",
+  "role": "fit_only_exploratory",
+  "parent_registration": "configs/m3w_sdd_auxiliary_v1.json",
+  "parent_report": "outputs/publication_readiness_2026_09/sdd_auxiliary_v1/report.json",
+  "arms": [
+    "unit_inputs_only",
+    "unit_primary_log",
+    "unit_internal_log"
+  ],
+  "modalities": [
+    "geometry"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "bootstrap_resamples": 2000,
+  "training": {
+    "pretraining_updates": 2000,
+    "main_updates": 4000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "output": "data/stage_cvpr2027_experiments/unit_frame_training_v1",
+  "reports": "outputs/publication_readiness_2026_09/unit_frame_training_v1",
+  "main_primary_changed": false,
+  "sealed_roles_opened": false,
+  "bindings": {
+    "src/world_model/m3w_unit_frame_training.py": "1b5ee12a6d5b8f813920a41db895637896d7165d25174185097e7131e0fce07e",
+    "scripts/run_m3w_unit_frame_training.py": "d39627d1ecbd1b33912e09aef6ee83588e150ce150f537935198c7e3bd8ae829",
+    "tests/test_m3w_unit_frame_training.py": "ca70881180ea5a5bc6dc2b33ce90e4172b29719e312016c986628d8b16ee6039",
+    "src/world_model/m3w_observed_unit_frame.py": "7c9ccd0b4ef43b798b338da8567a43a0e565c44b8c1caf614b0159877bd8d2d9",
+    "src/world_model/m3w_observed_unit_frame_v2.py": "3b4574a6de7a8545ab6c213f1ae3a6cdfba1a15cd2333d44db593468a39b17ea",
+    "tests/test_m3w_observed_unit_frame_v2.py": "5ba10b315826ecf6c483f5b3b73ae62842a6765bf6598c455e7ae2e29301fffa",
+    "scripts/run_m3w_auxiliary_mechanism.py": "4553773824d27a10f55fc5f7015efc0fc05fce6e2f060ca657d105b2a14b1fc7",
+    "configs/m3w_normalization_response_v2.json": "cebbc2cd5458bec96db56b6f9600b12cfd14e239711f98d47b4ad5a4a3362972",
+    "outputs/publication_readiness_2026_09/normalization_response_v2/report.json": "49ac7b1cc1b89390471a81bada39f799314cd0d898dad36acb3e592974332dc5",
+    "outputs/publication_readiness_2026_09/unit_frame_training_decision.md": "b6b1257ebe87f3058eb308e45dd12cfeb96b8b72ebe645e6a04e0d6cf9ff7978",
+    "configs/m3w_sdd_auxiliary_v1.json": "17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb",
+    "outputs/publication_readiness_2026_09/sdd_auxiliary_v1/report.json": "e69033db4077f3e4669e43cb612c02b176f1e92559fa6b958bcca7c9ea164337"
+  }
+}

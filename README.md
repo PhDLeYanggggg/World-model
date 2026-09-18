@@ -10,12 +10,16 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-The next [registered diagnostic](outputs/publication_readiness_2026_09/normalization_response_decision.md)
-tests the stationary-scale mismatch directly. I have implemented a separate,
-reversible observed-context frame and checked coordinate-unit rescaling,
-future-label isolation and output restoration. Fourteen focused tests pass.
-Actual parameter-gradient measurements are next; no new forecasting gain is
-claimed from these engineering checks, and the evaluation metric is unchanged.
+The [gradient audit](outputs/publication_readiness_2026_09/normalization_response_v2/report.md)
+now measures actual model-parameter gradients. The trained legacy model has
+weak responses to sampled stationary-to-moving cases. Directly expanding the
+output scale can over-amplify gradients; an internal-coordinate loss balances
+them at initialization, but that is not yet a prediction improvement.
+I also repaired a native-unit threshold in the rollout features. Twenty-two
+focused checks pass, and a 100-update real training pilot saved a resumable
+checkpoint without held evaluation. The next fixed comparison has 27
+geometry-only fits to isolate input conditioning, output scale and loss;
+the primary metric and sealed evaluation roles remain unchanged.
 
 I have completed the [source-mechanism controls](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.md):
 54 additional neural fits and 270,000 updates, alongside 54 verified previous
