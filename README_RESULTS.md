@@ -1,5 +1,19 @@
 # M3W Results Ledger
 
+## Source-Site Visual Diagnostic Registered (2026-09-18)
+
+The next controlled diagnostic holds out each of five physical sites inside
+approved SDD train40, without changing formal main splits or opening sealed
+roles. Fixed RGB-versus-mask arms, three seeds and2,000updates give30fresh fits.
+Inputs/labels reuse verified assets; model and thresholds are not selected on
+held-site scores. Primary diagnostic: equal-site mean of window Brier reduction;
+per-agent sensitivity and training-prior controls remain explicit. This does
+not replace main native8-to12 forecasting or establish deployment.
+
+Source support:22,374complete stationary queries,726IDs,36videos. Every site and
+its complement contain both labels.38focused tests pass; training not yet run.
+[Registered comparison](outputs/publication_readiness_2026_09/source_site_probe_decision.md).
+
 ## Matched Visual Start Complete: Partial Window Gain, No Robust Transfer (2026-09-18)
 
 `fresh_run`: 30 real Torch fits, 36 prediction cells, 60,000 updates. Full wall

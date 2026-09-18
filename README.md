@@ -10,6 +10,12 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I am following the visual comparison with a fixed source-internal diagnostic:
+hold out each physical SDD training site, and compare RGB with the same model
+without RGB. This separates failure to learn reusable source information from
+failure to transfer it to other datasets. The [design is fixed before fitting](outputs/publication_readiness_2026_09/source_site_probe_decision.md);
+it does not open the sealed evaluation sets or change the main forecasting task.
+
 I completed the [matched visual start-information comparison](outputs/publication_readiness_2026_09/source_visual_start_v1/conclusions.md):
 30 small neural classifiers, three seeds and 60,000 updates, with identical
 training streams for the RGB and coverage-only arms. The full run took about

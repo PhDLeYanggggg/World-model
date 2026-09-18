@@ -1,5 +1,20 @@
 # Real-Experiment Continuation Handoff
 
+## Source-Site Diagnostic Registered (2026-09-18)
+
+Goal active. New source-site information diagnostic registered, no fits yet.
+Config `configs/m3w_source_site_probe_v1.json`, SHA
+`a2038307eab36cc62ae783eedf3f359747965f2ddcc17cf4f661d83273fab74d`.
+Thirty models,2arms,5physical source sites,3seeds,60kfixedupdates. Same model,
+inputs and label as preceding visual probe;only source internal held-site test.
+Support audit fresh:22,374complete rows/726IDs/36videos/5sites,bothclasses each.
+Original SDD train40 only. No main fitting/evaluation,sealedroles or formal
+protocol changes.38focused tests pass;fulllegacy suite notrerun.
+Next:commit registration,100update training-onlypilot,fullmatrix exactresume,
+paired sampling verification,exactpredictionreplay,conditionalblockanalysis.
+Current no live training; prior visualmatrix complete. UnrelatedstagedSHA stays
+`c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
+
 ## Matched Visual Probe Complete (2026-09-18)
 
 Goal remains active, not complete or blocked. All30 registered fits/36prediction
