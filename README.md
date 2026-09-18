@@ -10,19 +10,36 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-The next registered comparison tests SDD as an auxiliary training source: the
-original 40 training videos, sampled every 12 raw frames, with eight observed
-and twelve predicted points. I compare matched training budgets with and without
-SDD, using geometry, image masks and past RGB separately. The ETH/UCY task and
-sealed evaluation roles stay unchanged. The full229,333window auxiliary cache
-and independent replay are complete; the54fit comparison is now running, not a
-completed training result. [Design](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md)
-and [input evidence](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/input_evidence.md).
+I have completed the [SDD auxiliary-training comparison](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md):
+54 fresh neural fits, three seeds, three physical-site folds and 324,000 optimizer
+updates. The original 40 SDD training videos supply 229,333 eligible windows;
+the ETH/UCY task, all 11,966 fit windows and sealed evaluation roles stay unchanged.
+Training took about three hours on the local arm64 CPU. All 54 checkpoints replay
+exactly, and a completed-run resume adds no updates.
+
+SDD pretraining reduces the damage from the neural predictors, but does not make
+them better than constant velocity (CV). Positive numbers below mean lower
+past-normalized ADE, with equal physical-scene weighting.
+
+| Input | No-SDD gain vs CV | SDD-pretrained gain vs CV | SDD gain vs matched neural control |
+| --- | ---: | ---: | ---: |
+| Geometry | -1.350% | -0.805% | +0.537% |
+| Geometry + image coverage masks | -1.372% | -0.816% | +0.549% |
+| Geometry + past RGB | -1.983% | -1.273% | +0.696% |
+
+None of the 54 held-scene fits beats CV or meets the 2% easy-degradation limit.
+RGB is also worse than its same-source mask control overall. These are negative
+forecasting results, not evidence of a deployable world model. The
+[failure analysis](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/failure_analysis.md)
+retains absolute easy-case harm, event slices and the limits of the source comparison.
+The [design](outputs/publication_readiness_2026_09/sdd_auxiliary_v1_decision.md) and
+[input evidence](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/input_evidence.md)
+separate training results from data-pipeline checks.
 
 The [working manuscript](outputs/publication_readiness_2026_09/paper_working_draft.md)
 now separates what the models learned from what the data pipeline can support.
-The one-direction start signal is not a trajectory gain, and the completed SDD
-image/geometry bridge is not an auxiliary-training result. I keep the negative
+The one-direction start signal is not a trajectory gain, and the earlier SDD
+image/geometry bridge is distinct from the new auxiliary-training comparison. I keep the negative
 comparisons visible; independent confirmation and a positive method contribution
 are still missing.
 
@@ -33,6 +50,7 @@ roles fixed while changing one factor at a time.
 
 | Question | Evidence | Outcome |
 | --- | --- | --- |
+| Does additional SDD supervision improve transfer? | [54 matched fresh fits](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md) | It improves on the neural controls, but all models remain worse than CV and fail easy preservation. |
 | Does balancing tracks and state changes help? | [54 new fits, 18 replayed controls](outputs/publication_readiness_2026_09/track_event_sampling/conclusions.md) | No safe forecasting gain; repeating rare starts does not add independent information. |
 | Could better routing rescue the existing predictions? | [Frozen-candidate ceiling](outputs/publication_readiness_2026_09/candidate_headroom/conclusions.md) | Perfect future-informed selection gains 1.63%, or 1.73% with whole-path scaling. These are oracle diagnostics, not model results. |
 | Are corrections difficult to fit because of their range? | [54 new fits, 18 controls](outputs/publication_readiness_2026_09/residual_range/conclusions.md) | Transformed targets improve training fit but worsen held-scene accuracy and easy-case harm. |
@@ -62,18 +80,18 @@ for the eight-observed/twelve-predicted model interface. It covers the original
 40 training videos, keeps future labels separate, and preserves inputs even when
 future labels are incomplete. At a diagnostic stride of 12 raw frames it indexes
 229,333 overlapping windows; this is not an independent sample count or a model
-score. Full-index verification and resume checks pass. A separate auxiliary
-training experiment still needs its sampling/source-role contract; the main
-ETH/UCY evaluation remains unchanged.
+score. Full-index verification and resume checks pass. The separately approved
+train-40, stride-12 auxiliary experiment above now uses a complete image cache;
+the earlier bridge itself remains diagnostic. The main ETH/UCY evaluation is unchanged.
 
 I have now [counted the state-change support in all local SDD annotations](outputs/publication_readiness_2026_09/sdd_state_support/conclusions.md).
 Large window counts conceal a much smaller set of relevant trajectories: at a
 diagnostic stride of 12 raw frames, nearly 250,000 complete pedestrian windows
 contain only 78 recording-local tracks matching the fixed static-to-movement
 proxy. Turns and stops have broader support. This points toward controlled
-event/track sampling, not simply multiplying overlapping windows. No auxiliary
-training role or sampling interval has been selected, and no forecasting gain
-is claimed from the census.
+event/track sampling, not simply multiplying overlapping windows. The census
+itself trained nothing. The subsequent train-only auxiliary trial above tests
+one fixed sampling interval; no forecasting gain is claimed from the census.
 
 I have connected the repaired SDD video paths to a
 [past-image reader with explicit missing support](outputs/publication_readiness_2026_09/sdd_past_images/conclusions.md).
@@ -81,7 +99,7 @@ It keeps partial observations and short histories, distinguishes image extent
 from suspected black padding, and preserves occlusion flags. The fixed-prefix
 check covers all 60 recordings; 2,074 sampled crops replay exactly. These are
 input checks, not better forecasting scores. The padding mask is inferred, and
-SDD has not been silently admitted to the current training protocol.
+the later SDD training admission is explicit and separately registered.
 
 I found and repaired two problems in the local SDD video input path before
 expanding training: compressed video pixels do not share the annotation image
@@ -89,8 +107,8 @@ size, and ten Nexus clips are paired with the wrong annotation names. The
 [full source audit](outputs/publication_readiness_2026_09/sdd_media_alignment/conclusions.md)
 decodes all 522,497 frames and preserves an explicit, hashed correspondence map.
 This fixes diagnostic image access, not forecasting performance. The reader above
-now handles partial support; semantic alignment and an auxiliary-training protocol
-still need attention.
+now handles partial support. The auxiliary protocol has since been approved and
+run; actor visibility and full semantic alignment are not certified by pixel replay.
 The existing ETH/UCY results and sealed evaluation roles are unchanged.
 
 I have completed the [native-resolution motion study](outputs/publication_readiness_2026_09/spatial_motion/conclusions.md):
@@ -104,8 +122,8 @@ The most useful next step is broader independent evidence of starting, stopping
 and turning, not another threshold sweep on the same few people. I have also
 [inventoried 60 local SDD videos](outputs/publication_readiness_2026_09/sdd_media_inventory/report.md).
 The follow-up above goes beyond readable headers and exposes real correspondence
-defects. Full semantic alignment and a separately registered training expansion
-remain outstanding. No new SDD training or primary-metric change follows.
+defects. The separately registered SDD trial above is now complete. It neither
+certifies full semantic alignment nor changes the primary metric.
 
 I have completed the [past image-motion comparison](outputs/publication_readiness_2026_09/observed_motion_v2/conclusions.md):
 54 real neural fits test quality controls, motion magnitude and motion direction

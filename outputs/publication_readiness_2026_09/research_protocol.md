@@ -13,10 +13,13 @@ confirmation remain unresolved; none of these development results clears that
 requirement. See [the continuous-context decision](continuous_context_v5_decision.md)
 and the [current evidence in the working manuscript](paper_working_draft.md).
 The later fit-only repairs preserve the 11,966-window cohort and keep Students,
-development, calibration and confirmation roles closed. SDD auxiliary source-role
-and sampling remain a separate unresolved choice; the completed diagnostic
-image/geometry bridge is not training admission. This draft does not supersede
-those executed registrations or describe a currently running training process.
+development, calibration and confirmation roles closed. The user approved a
+separate SDD train-40, stride-12 auxiliary arm on 2026-09-18. Its registered
+54-fit matched comparison is complete: SDD reduces neural degradation but no
+fit beats CV or preserves easy cases. See the [auxiliary results](sdd_auxiliary_v1/conclusions.md).
+The earlier diagnostic bridge is distinct from that explicit training admission.
+This independent-confirmation draft does not supersede executed registrations
+or describe a currently running training process.
 
 The [executable contract](experiment_contract/implementation_and_limits.md) now checks declared data roles, recursive artifact exposure, exact horizon availability and frozen calibration/confirmation identity. The local draft contains no split assignments or new risk settings. All nine current canonical recordings retain their historical development-use status. Passing a contract check would not establish untouched data, IID, accuracy or a calibrated risk guarantee; formal training must integrate the interface and preserve the underlying source/decision evidence.
 

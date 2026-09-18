@@ -1,17 +1,40 @@
 # Real-Experiment Continuation Handoff
 
-## Full Auxiliary Training Live (2026-09-18)
+## Auxiliary Comparison Complete, No Safe Gain (2026-09-18)
 
-Registration17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb.
-Full inputs229,333queries/254,841crops2.61GB complete. Independent120frames,
-944crops,120geometry/label replays exact; allrowjoins verified. Preparation
-completed-resume0extractions. Real100step sourceRGBpilot5.05s, no held eval.
-Full trainer PID61978, toolsession74306 currently live. Do not start duplicate
-fits. Poll that handle; heartbeat/checkpoints under sdd_auxiliary_v1 privateoutput.
-Unchanged budget54fits/324000updates. Keep waiting; under12h cost estimate.
-No claim of completed training or successful transfer. At terminal: replay all
-predictions, verify completed resume0updates, run fixed analysis, update reports
-and safeGit. Prior staged fingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Registration SHA256: 17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb.
+All 54 fixed fits complete, 324,000 real Torch updates, 10,660.60 summed fit
+seconds (about three hours wall time). All 54 checkpoint replays exact.
+Completed resume preserves 163 artifact hashes and adds zero updates.
+Trainer 61978/session74306, replay 78345/session55332 and resume
+78806/session78029 all observed terminal exit 0. No training process remains
+live; do not poll old handles or rerun completed fits as new experiments.
+
+Full source inputs: 229,333 queries, 254,841 crops, 2.61 GB. Independent 120
+frame/944 crop/120 geometry-label replays exact; all query joins verified.
+Each source fit draws 128,000 samples, 97,892-98,207 unique, not a full epoch.
+No original SDD val/test raw inputs used. Main 11,966 rows and closed roles unchanged.
+
+SDD gains vs CV: geometry -0.80523%, mask -0.81626%, RGB -1.27335%.
+SDD versus matched no-SDD neural controls: +0.53728%, +0.54864%, +0.69552%.
+All 54 individual held fits remain negative and fail easy <=2%; train gains
+are positive. RGB does not beat its mask control overall. Three reused physical
+sites/three seeds/2,000 descriptive bootstrap draws are not confirmation.
+No model promotion, Stage5C or SMC. Not submission-ready; full goal still active.
+
+Analysis-only zero-reference division repaired: static-stays gain undefined,
+absolute harm retained. Training bindings unchanged. Thirty-six focused tests;
+full legacy suite not rerun. Reports under sdd_auxiliary_v1 include conclusions,
+failure_analysis, reproducibility, report/analysis/replay and fit_metrics.csv.
+
+Next useful question: distinguish useful source learning from fewer main-domain
+updates/regularization, and measure missing transferable start/direction cues.
+The current source contrast does not isolate these mechanisms. Do not launch
+another threshold sweep over negative predictions or reopen sealed labels.
+Independent-confirmation assets/protocol remain a separate unresolved need.
+Older pending/running entries below are historical, superseded by this completion.
+Prior unrelated staged fingerprint:
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
 
 ## SDD Auxiliary Admission Approved (2026-09-18)
 

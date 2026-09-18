@@ -14,6 +14,13 @@ from src.world_model.m3w_offline_visual_data import json_write
 from src.world_model.m3w_sdd_auxiliary import load_registration
 
 
+def event_error_summary(slices):
+    model = float(np.mean([v['primary_ADE'] for v in slices]))
+    reference = float(np.mean([v['reference_ADE'] for v in slices]))
+    return dict(primary_ADE=model, reference_ADE=reference, absolute_harm=model-reference,
+                gain_percent=100*(1-model/reference) if reference > 1e-12 else None)
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--registration',type=Path,required=True)
@@ -42,8 +49,7 @@ def main():
             if slices:
                 events[event] = dict(rows_per_seed=sum(v['rows'] for v in slices)//3,
                     scene_count=len({t['fold'] for t in rows if t['slices'].get(event,{}).get('rows',0)}),
-                    gain_percent=100*(1-np.mean([v['primary_ADE'] for v in slices])/
-                                         np.mean([v['reference_ADE'] for v in slices])))
+                    **event_error_summary(slices))
         groups[key] = dict(per_recording_native_diagnostic=native,events=events,
             training_gain_range_percent=[min(t['train_equal_scene_gain_percent'] for t in rows),
                                          max(t['train_equal_scene_gain_percent'] for t in rows)],
@@ -67,7 +73,7 @@ def main():
     json_write(reports/'analysis.json',result)
     stream = io.StringIO(); columns = ['trial','schedule','modality','seed','fold','gain_vs_CV',
         'ADE','FDE','easy_degradation','easy_absolute_harm','train_gain','fit_seconds','sampled_auxiliary_rows']
-    writer = csv.DictWriter(stream,fieldnames=columns); writer.writeheader()
+    writer = csv.DictWriter(stream,fieldnames=columns,lineterminator='\n'); writer.writeheader()
     for t in trials:
         m = t['vs_CV']
         writer.writerow(dict(trial=t['trial'],schedule=t['schedule'],modality=t['modality'],seed=t['seed'],fold=t['fold'],
@@ -92,15 +98,15 @@ def main():
         'Easy relative degradation is retained alongside absolute normalized harm and all seed/site failures.',
         'No model is promoted by this fit-only comparison. Stage5C and SMC remain disabled.','',
         '## Source and Sampling','',
-        f"Original train-only videos:40; full eligible auxiliary population:{data['rows']:,}.",
-        f"Complete/partial/absent future labels:{data['complete_labels']:,}/{data['partial_labels']:,}/{data['absent_labels']:,}.",
+        f"Original train-only videos: 40; full eligible auxiliary population: {data['rows']:,}.",
+        f"Complete/partial/absent future labels: {data['complete_labels']:,}/{data['partial_labels']:,}/{data['absent_labels']:,}.",
         'All windows are indexed without future-support selection. Uniform sampling with replacement',
-        'uses128,000auxiliary draws per auxiliary fit, not one full epoch. Unique row counts are inCSV/JSON.',
+        'uses 128,000 auxiliary draws per auxiliary fit, not one full epoch. Unique row counts are in CSV/JSON.',
         'Zero-label rows stay in the population but are excluded from supported-loss averaging.',
-        'SDD uses stride12rawframes,8past/12future points, endpoint+144rawframes; no seconds equivalence.',
+        'SDD uses stride 12 raw frames, 8 past/12 future points, endpoint +144 raw frames; no seconds equivalence.',
         'Main task keeps its original annotation steps, complete labels and physical-scene-equal primary.',
         'Source histories include retrospective annotation interpolation. No strict sensor-as-of claim.',
-        'No metric, true3D, foundation, generalization-success or independent-test claim.','',
+        'No metric, true 3D, foundation, generalization-success or independent-test claim.','',
         '## Remaining Uncertainty','',
         'The source contrast jointly changes dataset, viewing geometry, motion distribution and label support.',
         'It does not identify any one of these as the cause of a gain or failure.',
@@ -113,7 +119,9 @@ def main():
         'verify_m3w_sdd_auxiliary_inputs.py, run_m3w_sdd_auxiliary.py, then its --replay mode.',
         'Rerunning the completed trainer verifies artifacts and adds zero optimizer updates.',
         'Private arrays/checkpoints are not in Git; hashes, registration, code and aggregate results are.',
-        'See fit_metrics.csv for all54fits and analysis.json for event/native-coordinate diagnostics.','']
+        'See [fit metrics](fit_metrics.csv) for all 54 fits and [analysis](analysis.json) for event/native-coordinate diagnostics.',
+        'The [failure analysis](failure_analysis.md) retains easy harm and competing explanations.',
+        'See [reproducibility](reproducibility.md) for exact replays, resume and test scope.','']
     (reports/'conclusions.md').write_text('\n'.join(lines))
     print(json.dumps(dict(total_fits=54,total_fit_seconds=result['total_fit_seconds'],
                           groups={k:v['vs_CV'] for k,v in summary.items()}),indent=2))
@@ -121,4 +129,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

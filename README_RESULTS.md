@@ -1,5 +1,38 @@
 # M3W Results Ledger
 
+## SDD Auxiliary Comparison Complete, No Safe CV Gain (2026-09-18)
+
+`fresh_run`: all 54 preregistered real Torch fits, 324,000 updates and three seeds
+complete. Summed fitting time 10,660.60 seconds (2.96 hours); training-process
+wall time about 3.00 hours. This is the full registered comparison, not a pilot,
+full-population epoch or foundation-scale training.
+
+| Input | No-SDD gain vs CV | SDD gain vs CV | SDD gain vs matched no-SDD model |
+| --- | ---: | ---: | ---: |
+| Geometry | -1.34976% | -0.80523% | +0.53728% |
+| Mask only | -1.37243% | -0.81626% | +0.54864% |
+| Past RGB | -1.98266% | -1.27335% | +0.69552% |
+
+All 54 held fits remain negative and fail easy preservation. Fit-cohort gains
+range +0.56870% to +2.17476%; better fitting does not establish scene transfer.
+SDD RGB vs SDD mask is -0.45339%, with descriptive scene CI [-0.63261%, +0.49055%].
+The 2,000-resample bootstrap uses three previously exposed physical sites,
+not independent windows or confirmation data. No model promotion.
+
+`cached_verified`: all 54 checkpoint prediction replays exact; completed resume
+preserves 163 artifact hashes, adds zero updates. Source population 229,333;
+each auxiliary fit samples 128,000 draws with replacement, covering 97,892-98,207
+unique rows. The full population is available, not visited in every fit.
+Thirty-six targeted tests pass; full legacy suite not rerun. A report-only
+zero-reference-error division was repaired: static-stays percentage gain is
+undefined, with absolute error retained. No training or primary metric change.
+
+[Complete results](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/failure_analysis.md)
+and [reproducibility](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/reproducibility.md).
+Older pending/running entries below are historical checkpoints of this work.
+Main roles remain closed, Stage5C/SMC disabled, independent confirmation unresolved.
+
 ## Full Auxiliary Inputs Verified, Training Started (2026-09-18)
 
 `fresh_run`:40trainvideos,229,333windows,254,841pastcrops,2.61GBprivate arrays.

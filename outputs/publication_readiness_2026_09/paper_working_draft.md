@@ -12,8 +12,11 @@ whole-path scaling. It does not supply a positive learned method result. This is
 an evidence-bearing working manuscript, not a submission-ready paper. A subsequent
 readout/loss factorization improves fitting but worsens held-scene forecasting.
 The motion-to-start probe finds only one-direction probability transfer. The
-subsequent SDD geometry/image bridge is an input prerequisite, not an auxiliary
-training or forecasting result. No experiment was rerun for this revision.
+subsequent SDD geometry/image bridge is an input prerequisite. A separately
+approved matched auxiliary experiment now completes 54 fresh Torch fits: source
+pretraining reduces neural degradation, but no fit beats CV or preserves easy
+cases. This revision reports that completed experiment; it does not turn the
+older diagnostic bridge into a training result.
 
 ## Abstract
 
@@ -44,8 +47,10 @@ so output-range repair alone is not sufficient.
 Past-only coordinate conditioning also fails to produce safe forecasting gains.
 A separate probability probe finds a Hotel-to-ETH start signal (AUROC 0.81-0.82),
 but reverse transfer remains near chance; neither establishes better trajectories.
-Additional SDD image/geometry inputs are verified but have not been used in new
-auxiliary training.
+An additional 54-fit source comparison uses 229,333 eligible windows from the
+original 40 SDD training recordings. SDD pretraining improves on matched neural
+controls by 0.54-0.70%, but all held-scene fits remain worse than CV and fail easy
+preservation. Past RGB does not consistently improve on image-coverage masks.
 Previously explored data remain exploratory; independent confirmation and a
 positive contribution are still missing. We make no physical-time, metric-safety
 or general world-model success claim.
@@ -90,8 +95,9 @@ and confirmation labels remain closed for those repairs. A held fit fold is not
 a previously untouched test site after repeated exploratory comparisons. The
 independent-confirmation protocol remains unresolved; this is distinct from
 the approved and completed development work. The SDD bridge described below
-has diagnostic-only status and has not been admitted as an auxiliary training
-arm. No decision is inferred from its successful execution.
+retains diagnostic-only status. A separate user-approved source contract admits
+the original 40 SDD training recordings at stride 12 into the matched auxiliary
+experiment below. No admission is inferred merely from a successful input check.
 
 A [full SDD support census](sdd_state_support/conclusions.md) further separates
 row count from state-change support. At diagnostic stride 12, 249,384 complete
@@ -359,9 +365,55 @@ is below eight pixels after pooling. This descriptive property is not a
 visible-body measure, an exclusion rule or proof that resolution caused the
 earlier ETH/UCY failures. The image cache serves the registered diagnostic
 queries, not all 229,333 stride-12 histories. There are zero optimizer updates
-and no predictive evaluation in this bridge. Any auxiliary benefit still
-requires a separately registered matched training comparison; no such result
-can be inferred from successful joins, source replay or an untrained forward.
+and no predictive evaluation in this bridge. The subsequent separately registered
+comparison below expands the image cache and supplies actual training evidence;
+that result is not inferred from joins, source replay or an untrained forward.
+
+### Matched SDD Auxiliary Training
+
+Following explicit source approval, the [registered source comparison](sdd_auxiliary_v1_decision.md)
+builds a complete past-image cache for all 229,333 eligible stride-12 windows
+from the original 40 training recordings. It retains 188,358 complete, 37,360
+partial and 3,615 absent future-label windows without future-based membership
+filtering. Masked losses distinguish absent labels from zero error. Original
+SDD validation/test raw inputs remain unused. Each source fit samples 128,000
+draws with replacement, covering 97,892-98,207 unique windows, not a full epoch.
+
+The 2 x 3 source/modality design uses three seeds and three physical-site folds:
+54 fresh fits, 324,000 optimizer updates and 10,660.60 summed fit seconds.
+Both schedules use 2,000 first-phase and 4,000 main-task updates; the first phase
+is either main-fold training or SDD supervision. We retain weights, reset the
+optimizer/main sampling stream at the boundary, and use the same main-train-only
+normalization. Every final checkpoint is evaluated without held-score selection.
+The existing small MLP/CNN architecture is unchanged; this is not new latent
+generative, JEPA or Transformer training.
+
+| Input | No-SDD gain vs CV | SDD gain vs CV | SDD vs matched neural control |
+| --- | ---: | ---: | ---: |
+| Geometry | -1.34976% | -0.80523% | +0.53728% |
+| Coverage masks | -1.37243% | -0.81626% | +0.54864% |
+| Past RGB | -1.98266% | -1.27335% | +0.69552% |
+
+These are gains in the fixed equal-scene past-normalized ADE. All 54 held fits
+remain negative and fail easy preservation, despite positive fit-cohort gains
+of 0.56870-2.17476%. SDD reduces degradation versus neural controls, not versus
+CV. SDD RGB versus its mask control is -0.45339%, with a descriptive 2,000-draw
+scene-bootstrap interval [-0.63261%, +0.49055%]; its relative benefit occurs only
+on Zara. There is no stable pixel contribution or deployable candidate.
+
+Easy relative degradation is retained with absolute normalized harm, because
+near-zero baseline errors amplify ratios. Static-stays CV error is exactly zero,
+so its percentage gain is undefined; absolute model error is reported instead.
+All checkpoints replay exactly and completed resume preserves 163 artifacts with
+zero updates. The analysis-only zero-reference fix changes no training or metric.
+
+The source contrast also changes main-domain exposure: 6,000 main updates versus
+2,000 source plus 4,000 main. It cannot isolate transferable representation from
+regularization or reduced main-domain overfitting. Source feature clipping,
+image detail, supervision support and horizon mismatch remain possible factors,
+not identified causes. Three repeatedly exposed sites, even with seeds and
+bootstrap, cannot establish independent transfer. [Complete results](sdd_auxiliary_v1/conclusions.md)
+and [failure analysis](sdd_auxiliary_v1/failure_analysis.md) retain these boundaries.
 
 ### What the Current Evidence Can Establish
 
@@ -370,7 +422,8 @@ can be inferred from successful joins, source replay or an untrained forward.
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
 | Does repairing coordinates suffice? | Past-frame gains -0.86256% / -0.88781% versus CV | Tested consistency repair is insufficient for useful forecasting |
 | Do motion features transfer start information? | Hotel-to-ETH positive Brier lift; reverse negative; added-motion intervals cross zero | Localized probability signal, no stable bidirectional or trajectory contribution |
-| Are additional SDD past modalities available? | 5,074 registered image/geometry joins, zero updates | Input prerequisite completed, auxiliary predictive benefit not_run |
+| Are additional SDD past modalities available? | Full auxiliary cache of 229,333 windows and 254,841 past crops | Input access established; visibility and predictive benefit require separate evidence |
+| Does SDD supervision fix transfer? | 54 matched fresh fits; source helps neural controls, but 0/54 safe positive fits | Tested auxiliary schedule insufficient; no deployment or independent confirmation |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not
