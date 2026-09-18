@@ -1,6 +1,6 @@
 # M3W Results Ledger
 
-## Source-Site Visual Diagnostic Registered (2026-09-18)
+## Source-Site Visual Diagnostic Running (2026-09-18)
 
 The next controlled diagnostic holds out each of five physical sites inside
 approved SDD train40, without changing formal main splits or opening sealed
@@ -11,7 +11,9 @@ per-agent sensitivity and training-prior controls remain explicit. This does
 not replace main native8-to12 forecasting or establish deployment.
 
 Source support:22,374complete stationary queries,726IDs,36videos. Every site and
-its complement contain both labels.38focused tests pass; training not yet run.
+its complement contain both labels.42focused tests pass. The100update real
+training-only pilot took4.49seconds and is resumed inside the60kfixedupdates.
+The full matrix is running;final scoring,replay and result interpretation pending.
 [Registered comparison](outputs/publication_readiness_2026_09/source_site_probe_decision.md).
 
 ## Matched Visual Start Complete: Partial Window Gain, No Robust Transfer (2026-09-18)
