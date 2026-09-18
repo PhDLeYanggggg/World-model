@@ -5,7 +5,47 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched Zero-Target Gradient Control Registered (2026-09-18)
+## Matched Loss Control Complete: More Oracle Headroom, Worse Forecasting (2026-09-18)
+
+`fresh_run`: 12 cold-start models, 120,000 updates, four source-site folds and
+three seeds; 94.37-minute main run, no shortened budget. Twelve old controls are
+`cached_verified`, not new training. Same full sampler, initialization seeds,
+model, normalization, optimizer and terminal budget. Only zero-target ADE
+gradients were removed; every evaluation row remains.
+
+| Metric | Matched control | New loss intervention |
+| --- | ---: | ---: |
+| Equal-site actual gain vs stationary CV | -5.01598% | -98.71920% |
+| Conditional four-site 95% interval | [-8.39655%, -2.48773%] | [-128.49923%, -66.02162%] |
+| Future binary-oracle gain | +0.46765% | +3.75968% |
+| Nonzero-target window gain | -0.93253% | -32.38720% |
+| Zero-target absolute harm, annotation pixels | 0.09190 | 1.42880 |
+
+All 12 training and all 12 held full-cohort gains are negative. Oracle contrast
++3.29204pp has conditional interval [+3.04645, +3.64157], but actual gain worsens
+93.70322pp. Easy percentage is undefined at zero baseline error, not a safety
+pass. All four training-defined hard slices are negative. No deployment.
+
+Separately registered post-hoc rotations retain oracle gains of 3.49561%,
+3.58218% and 3.31027%. Original-minus-null contrasts are +0.26407, +0.17750 and
++0.44941pp; the -90-degree interval crosses zero. These unadjusted four-site
+diagnostics do not establish stable direction skill or a usable causal gate.
+
+15,430 overlapping stationary-history source queries, 29 recordings, 545 scoped
+agents; eight observed/twelve predicted annotation steps, not the full benchmark
+or raw-frame t+50. Bookstore and main/sealed roles unscored. Three seeds and
+2,000 conditional bootstrap draws; not independent confirmation. Twelve exact
+train/held replays, 12 matched sampler streams, 96 loaded-target poison checks,
+68 unchanged artifacts on zero-update resume; 34 focused tests pass. Full legacy
+suite not rerun. All required processes terminal; no CREATE job submitted.
+No new policy, metric/seconds, Stage5C execution or SMC.
+
+[Conclusions](outputs/publication_readiness_2026_09/source_motion_candidate_v1/conclusions.md),
+[gates](outputs/publication_readiness_2026_09/source_motion_candidate_v1/gates.md),
+[reproduction](outputs/publication_readiness_2026_09/source_motion_candidate_v1/reproducibility.md),
+[Chinese operations](outputs/publication_readiness_2026_09/source_motion_candidate_v1/operation_zh.md).
+
+### Registration History
 
 Twelve new cold-start fits planned, four source-site folds/three seeds,120,000
 updates. Same full sampler, random initialization seeds, architecture, fold
@@ -22,8 +62,8 @@ Local/GitHub80114832verified; local66GiBfree. CurrentCREATEstateunknown,nojobsub
 [Decision](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md).
 
 Pre-fit registration ee3e8667 pushed. Included100updatepilot PID59254 exits0,
-4.9230trainingseconds; no held scoring. Fullrun PID59275/session59896 resumes
-atstep100, CPU4/workers0, about2.6GiBRSS. Training still in progress, not complete.
+4.9230trainingseconds; no held scoring. Full run PID59275/session59896 resumed
+at step100, CPU4/workers0, about2.6GiB observed RSS. It has now completed; see above.
 The [objective interpretation](outputs/publication_readiness_2026_09/source_motion_candidate_v1/objective_interpretation.md)
 explains why zero can be ADE-optimal and why better conditional-motion oracle
 utility would not establish a deployable predictor.

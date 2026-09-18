@@ -747,6 +747,25 @@ verify implementation, not dynamics utility. No new risk head is trained;
 future risk-head validation must also exclude its validation site from upstream
 training-label producers. No outer/main scores or deployment are added.
 
+The [matched static-gradient control](source_motion_candidate_v1/conclusions.md)
+then adds twelve cold-start fits and 120,000 updates, retaining full sampler
+exposure while removing zero-target ADE gradients only. Actual equal-site gain
+drops to -98.71920%, conditional interval [-128.49923%, -66.02162%]. Nonzero-target
+gain is also negative (-32.38720% window-weighted), and zero-target harm grows
+from 0.09190 to 1.42880 annotation pixels. Thus static-target gradients suppress
+large candidate movement, but removing them is not a useful predictive repair.
+The matched future-oracle increase is +3.29204pp, interval [+3.04645, +3.64157],
+reaching 3.75968%; it does not demonstrate causal switchability.
+
+A separately registered post-hoc direction control preserves candidate path
+shape and magnitude while rotating it by +90, -90 or 180 degrees. Its oracle
+gains remain 3.49561%, 3.58218% and 3.31027%. Original-minus-null contrasts are
++0.26407, +0.17750 and +0.44941pp, with the -90 interval including zero. These
+unadjusted explored-site contrasts caution against equating oracle headroom
+with accurate direction; they do not establish direction irrelevance or
+independent generalization. All twelve models replay exactly. No new risk head,
+independent calibration, main evaluation or deployment is added.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |

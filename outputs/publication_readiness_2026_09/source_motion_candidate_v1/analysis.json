@@ -1,0 +1,349 @@
+{
+  "result_source": "fresh_run_fixed_training_only_analysis_with_cached_verified_control",
+  "report_sha256": "f9c25953b632c5022fc58ba0de9fbdabb7cbf5440fa0f26f6c37bc016bca381f",
+  "sources": {
+    "unconditional_control": [
+      {
+        "seed": 17,
+        "rows": 15430,
+        "path": "data/stage_cvpr2027_experiments/source_crossfit_v1/oof/seed17.npz",
+        "sha256": "f39187a718e70faeb2f20476cf925825331883a916be9d34c118dd4520e517fc"
+      },
+      {
+        "seed": 29,
+        "rows": 15430,
+        "path": "data/stage_cvpr2027_experiments/source_crossfit_v1/oof/seed29.npz",
+        "sha256": "e45cbc9f4a7b61888466ce24074521fa2ff0852e3e7bf4f214c5bc48dbaa7e19"
+      },
+      {
+        "seed": 43,
+        "rows": 15430,
+        "path": "data/stage_cvpr2027_experiments/source_crossfit_v1/oof/seed43.npz",
+        "sha256": "ef9597f4ce36cc72e1492382dd6ffddf694bed294f064cb39dfafe9bb6cce4e7"
+      }
+    ],
+    "motion_loss": [
+      {
+        "seed": 17,
+        "path": "data/stage_cvpr2027_experiments/source_motion_candidate_v1/oof/seed17.npz",
+        "sha256": "4b291e4a9ee87c78384348716c4bcb6ee9ebbf6b6ffd7ffa12fce80fc4dbc7bf",
+        "rows": 15430
+      },
+      {
+        "seed": 29,
+        "path": "data/stage_cvpr2027_experiments/source_motion_candidate_v1/oof/seed29.npz",
+        "sha256": "1c0fe219f2d600eb86eb385b94a4e70c392fed7eaeb29da870d583ba42884bf3",
+        "rows": 15430
+      },
+      {
+        "seed": 43,
+        "path": "data/stage_cvpr2027_experiments/source_motion_candidate_v1/oof/seed43.npz",
+        "sha256": "7ec6dfe069032dcd0acf760974d2e9d15cde5c3e75a436373b8e27cd0038377a",
+        "rows": 15430
+      }
+    ]
+  },
+  "models_new": 12,
+  "models_control": 12,
+  "new_updates": 120000,
+  "rows": 15430,
+  "sites": 4,
+  "recordings": 29,
+  "scoped_agents": 545,
+  "summary": {
+    "unconditional_control": {
+      "seed_count": 3,
+      "rows": 15430,
+      "easy_rows": 8566,
+      "equal_site_cv_cost": 1077.764060181301,
+      "equal_site_oracle_gain_percent": 0.4676457318398719,
+      "equal_site_excess_decomposition_pp": {
+        "zero_target": 4.321115241092782,
+        "nonzero_target": 0.6948647404416939
+      },
+      "subsets": {
+        "zero_target": {
+          "rows": 8566,
+          "gain_percent": null,
+          "binary_oracle_gain_percent": null,
+          "native_pixel_mean_excess": 0.09190156626881191,
+          "beneficial_fraction_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "nonzero_target": {
+          "rows": 6864,
+          "gain_percent": -0.9325333431024818,
+          "binary_oracle_gain_percent": 0.5270714709205704,
+          "native_pixel_mean_excess": 0.02363895872640531,
+          "beneficial_fraction_per_seed": [
+            0.4112762237762238,
+            0.41113053613053613,
+            0.41113053613053613
+          ]
+        }
+      },
+      "equal_site_excess_total_pp": 5.015979981534446,
+      "all_gain": {
+        "point_pp": -5.015979981534451,
+        "conditional_site_ci95": [
+          -8.396553368897639,
+          -2.4877265310346948
+        ]
+      },
+      "oracle_gain": {
+        "point_pp": 0.46764573183986646,
+        "conditional_site_ci95": [
+          0.3182961214012637,
+          0.6606186215205887
+        ]
+      },
+      "pooled_seed_gain": [
+        -5.611063116329862,
+        -6.079791600687079,
+        -4.679905975156795
+      ],
+      "native_pixel_ade": 1.1891876930935406,
+      "primary_is_original_equal_site_ADE": true
+    },
+    "motion_loss": {
+      "seed_count": 3,
+      "rows": 15430,
+      "easy_rows": 8566,
+      "equal_site_cv_cost": 1077.764060181301,
+      "equal_site_oracle_gain_percent": 3.7596812038335203,
+      "equal_site_excess_decomposition_pp": {
+        "zero_target": 71.63337171916776,
+        "nonzero_target": 27.08582920944853
+      },
+      "subsets": {
+        "zero_target": {
+          "rows": 8566,
+          "gain_percent": null,
+          "binary_oracle_gain_percent": null,
+          "native_pixel_mean_excess": 1.4287994236080193,
+          "beneficial_fraction_per_seed": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "nonzero_target": {
+          "rows": 6864,
+          "gain_percent": -32.38719978803355,
+          "binary_oracle_gain_percent": 3.830892569067479,
+          "native_pixel_mean_excess": 0.8209890667352175,
+          "beneficial_fraction_per_seed": [
+            0.2689393939393939,
+            0.2542249417249417,
+            0.25903263403263405
+          ]
+        }
+      },
+      "equal_site_excess_total_pp": 98.71920092861627,
+      "all_gain": {
+        "point_pp": -98.71920092861627,
+        "conditional_site_ci95": [
+          -128.49922805885276,
+          -66.02161610972706
+        ]
+      },
+      "oracle_gain": {
+        "point_pp": 3.7596812038335212,
+        "conditional_site_ci95": [
+          3.439330275840781,
+          4.105034744253533
+        ]
+      },
+      "pooled_seed_gain": [
+        -101.81257998896767,
+        -105.05181640626779,
+        -101.31998439695313
+      ],
+      "native_pixel_ade": 2.286068975487587,
+      "primary_is_original_equal_site_ADE": true
+    }
+  },
+  "site_details": [
+    {
+      "arm": "unconditional_control",
+      "site": "coupa",
+      "rows": 4250,
+      "all_gain": -2.1931703114987333,
+      "conditional_recording_ci95": [
+        -3.3252422842239997,
+        -1.7228640456008504
+      ],
+      "nonzero_target_gain": -0.39884563488639113,
+      "oracle_gain": 0.4283465430230282,
+      "hard_gain": -0.012234070733607716,
+      "easy_pixel_harm": 0.05345730741302062,
+      "per_seed_gain": [
+        -2.09879233314223,
+        -2.5944263740414364,
+        -1.8862922273124916
+      ]
+    },
+    {
+      "arm": "unconditional_control",
+      "site": "deathCircle",
+      "rows": 3054,
+      "all_gain": -2.764347070300593,
+      "conditional_recording_ci95": [
+        -3.542617558080906,
+        -1.330960888172004
+      ],
+      "nonzero_target_gain": -0.17104865351591503,
+      "oracle_gain": 0.2838463231891186,
+      "hard_gain": -0.011546229532410912,
+      "easy_pixel_harm": 0.04873618555814402,
+      "per_seed_gain": [
+        -2.5957610873075687,
+        -3.408553204242537,
+        -2.288726919351669
+      ]
+    },
+    {
+      "arm": "unconditional_control",
+      "site": "gates",
+      "rows": 1662,
+      "all_gain": -7.75892459168797,
+      "conditional_recording_ci95": [
+        -13.367769352504393,
+        -3.1613714031021143
+      ],
+      "nonzero_target_gain": -0.3848162491699947,
+      "oracle_gain": 0.4295241518790016,
+      "hard_gain": 0.11048067979537723,
+      "easy_pixel_harm": 0.07161445537620503,
+      "per_seed_gain": [
+        -7.807389725158043,
+        -9.087219508822342,
+        -6.382164541083468
+      ]
+    },
+    {
+      "arm": "unconditional_control",
+      "site": "hyang",
+      "rows": 6464,
+      "all_gain": -8.810146165190314,
+      "conditional_recording_ci95": [
+        -17.592572173707765,
+        -4.903661676789843
+      ],
+      "nonzero_target_gain": -1.8074937144018532,
+      "oracle_gain": 0.7432767871250578,
+      "hard_gain": -0.2006081083531397,
+      "easy_pixel_harm": 0.14254284145818336,
+      "per_seed_gain": [
+        -9.329699580293859,
+        -9.459470221013632,
+        -7.641268694263426
+      ]
+    },
+    {
+      "arm": "motion_loss",
+      "site": "coupa",
+      "rows": 4250,
+      "all_gain": -101.20998616987096,
+      "conditional_recording_ci95": [
+        -124.95873106166795,
+        -84.16476707960412
+      ],
+      "nonzero_target_gain": -41.688367247653346,
+      "oracle_gain": 4.2411496494324075,
+      "hard_gain": -4.133858724088135,
+      "easy_pixel_harm": 1.773294165720881,
+      "per_seed_gain": [
+        -100.35917319919947,
+        -108.38994832170417,
+        -94.88083698870857
+      ]
+    },
+    {
+      "arm": "motion_loss",
+      "site": "deathCircle",
+      "rows": 3054,
+      "all_gain": -53.19262115086467,
+      "conditional_recording_ci95": [
+        -66.54118859381357,
+        -26.960507707720453
+      ],
+      "nonzero_target_gain": -8.058703890114138,
+      "oracle_gain": 3.442977627113064,
+      "hard_gain": -1.3610512705828581,
+      "easy_pixel_harm": 0.8482074227743943,
+      "per_seed_gain": [
+        -54.672375102900325,
+        -55.79914786430986,
+        -49.10634048538369
+      ]
+    },
+    {
+      "arm": "motion_loss",
+      "site": "gates",
+      "rows": 1662,
+      "all_gain": -133.4748254368189,
+      "conditional_recording_ci95": [
+        -202.10738715918475,
+        -75.0972354146941
+      ],
+      "nonzero_target_gain": -13.216990281758733,
+      "oracle_gain": 3.43293784084886,
+      "hard_gain": -1.694478923145315,
+      "easy_pixel_harm": 1.1678970486091802,
+      "per_seed_gain": [
+        -128.62892701029142,
+        -138.21722733313334,
+        -133.5783219670317
+      ]
+    },
+    {
+      "arm": "motion_loss",
+      "site": "hyang",
+      "rows": 6464,
+      "all_gain": -125.27184669475423,
+      "conditional_recording_ci95": [
+        -232.71668728720616,
+        -73.0409119520416
+      ],
+      "nonzero_target_gain": -42.12253908575341,
+      "oracle_gain": 3.817639927414085,
+      "hard_gain": -5.49320705360663,
+      "easy_pixel_harm": 1.692549880943044,
+      "per_seed_gain": [
+        -123.67981588777313,
+        -123.63144458293304,
+        -128.50427961355635
+      ]
+    }
+  ],
+  "motion_minus_control_all": {
+    "point_pp": -93.70322094708183,
+    "conditional_site_ci95": [
+      -120.10267468995515,
+      -62.459141852792435
+    ]
+  },
+  "motion_minus_control_oracle": {
+    "point_pp": 3.2920354719936546,
+    "conditional_site_ci95": [
+      3.0464487759854513,
+      3.6415650767691123
+    ]
+  },
+  "bootstrap_resamples": 2000,
+  "uncertainty_scope": "four_explored_sites_shared_fold_fits_conditional_not_confirmation",
+  "intervention": "only_zero_target_ADE_gradients_removed_fixed_full_batch_denominator",
+  "oracle_is_deployable": false,
+  "new_policy_trained": false,
+  "new_deployment": false,
+  "all_eval_rows_retained": true,
+  "outer_rows_scored": 0,
+  "main_rows_scored": 0,
+  "main_primary_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}

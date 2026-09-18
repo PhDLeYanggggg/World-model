@@ -1,24 +1,50 @@
 # Real-Experiment Continuation Handoff
 
-## Matched Zero-Target Gradient Control Registered (2026-09-18)
+## Matched Loss Control Complete, Unsafe Candidate (2026-09-18)
 
-Previous goal turn completed120krealupdates and negative OOFutility, not a stall.
-Current next experiment configs/m3w_source_motion_candidate_v1.json:12cold-start
-models/120kupdates, same4folds/3seeds/fullsampler/model/normalizer/scale as control.
-Only zero-targetADE gradients removed; denominator remains fullbatch, all eval
-rows retained. No label-gated inference or new policy. Testengineunconditional
-exactlymatchesoldtwo-phaseengine;32focusedtests;realinputauditPID59036exit0.
-Entry scripts/run_m3w_source_motion_candidate.py supports --audit-only,
---trial coupa_seed17 --stop-at100 pilot, default full/resume and --replay.
-Analysis scripts/analyze_m3w_source_motion_candidate.py frozen beforefit.
-Public source_motion_candidate_v1;private data/stage_cvpr2027_experiments/source_motion_candidate_v1.
-Prefitcommitee3e8667pushed. PilotPID59254exit0,100updates/4.9230trainingsec inbudget.
-FullmatrixRUNNING PID59275/session59896,fromstep100. Do notduplicate orstopdueslow.
-Need fullcompletion,exactreplay,analysis, verifier scripts/verify_m3w_source_motion_candidate.py,
-producer/drawcount/zero-updateresumechecks. Runtimeestimate96min frompriorfullrun;
-local66GiBfree; currentCREATEassets/jobsunknown, nojobsubmitted. Outerbookstore,
-main/sealedrolesunchangedandunscored. No deployment/Stage5C/SMC. Preserve unrelated
-stagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Goal active and unmet. This turn completed 12 cold-start models / 120,000 updates,
+same four source folds and three seeds as source_crossfit_v1. Only zero-target
+ADE gradients removed, full batch denominator and all sampler/eval rows retained.
+Pre-fit commit ee3e8667; runtime/math note 0b5182ca; post-hoc direction protocol
+4e21587d. Registration configs/m3w_source_motion_candidate_v1.json SHA
+e40a9c690a7e00e303c2ac27af36ca06fb6133bf2be24974c4bf381ce250963d.
+
+Training PID59275/session59896 exit0; main log span5662.259590sec, summed fit
+5604.923353sec including pilot100. Replay PID67029 exit0; analysis, verifier and
+direction null exit0. Completed-resume child67211 adds0updates, preserves68files.
+All required processes terminal; do not launch duplicate fitting.
+
+Primary equal-site actual gain -98.71920%, conditional four-site CI
+[-128.49923,-66.02162]. All12 training and held gains negative. Oracle +3.75968%
+versus cached control +.46765%, contrast +3.29204pp CI[3.04645,3.64157]. This is
+not a deployed policy. Nonzero-target window gain -32.38720%; easy absolute harm
+1.42879942 annotation pixels, percentage undefined. Four hard slices negative.
+No main/full benchmark or t50 rerun; stationary-history source diagnostic only.
+
+Post-hoc direction null registered during training, not pre-fit: original oracle
+3.75968%, rotations +90=3.49561, -90=3.58218, reverse=3.31027. Original-minus-null
+contrasts .26407/.17750/.44941pp; -90 interval crosses zero. Unadjusted/four explored
+sites; directional contribution not established. No target-selected rotation.
+
+Twelve exact train/held replays,12 matched control sampler streams,96 loaded
+target poison checks (8/model),68 immutable artifacts,34 focused tests pass.
+Full legacy not rerun. Figure checked. Public source_motion_candidate_v1; private
+data/stage_cvpr2027_experiments/source_motion_candidate_v1. Report SHA
+f9c25953b632c5022fc58ba0de9fbdabb7cbf5440fa0f26f6c37bc016bca381f;
+analysis08ff58f211849f7eea416ae9b5a0dc87d7a5ee21d3aa131fd69d9542dd336697;
+verifier7010afc9c4114673ba8386956f86afef4346558179ee51aefb927734058ba4dc.
+
+Next: training-only annotation-scale motion quality and causal direction/context
+audit, not another threshold search on the improved oracle. Check sustained
+displacement versus small annotation change without changing primary cohort.
+No follow-up registered/run yet. A new risk head needs nested exclusions for ALL
+upstream producers; current OOF labels cannot arbitrarily define its validation.
+Pretrained visual assets not found in scoped local module/cache inventory; this
+is not an exhaustive machine search and no weights were downloaded. Current
+CREATE assets/jobs unknown; no job submitted. Native arm64 CPU4/workers0 stable.
+Outer bookstore/main/sealed roles unchanged, Stage5C/SMC/deployment off. Preserve
+unrelated3019 staged changes; fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
 
 ## Training-Side Source Cross-Fit Complete, Negative (2026-09-18)
 

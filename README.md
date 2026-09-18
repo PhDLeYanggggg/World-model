@@ -32,6 +32,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does the tested RGB representation help? | The matched source comparison is negative. More input modalities are not automatically more predictive information. |
 | Does cost-aware fallback help? | It reduces neural harm, but the fixed source readout still loses 1.246% to stationary CV. The unprotected control loses 1.744%. |
 | Do scene-excluded candidate forecasts remain useful? | Twelve fresh fits all lose on their excluded site; equal-site gain is -5.016%. Fixed candidate/CV oracle headroom is below 0.53%, so another gate alone is not the next repair. |
+| Does removing the static-target loss repair them? | No. Twelve matched new fits increase oracle headroom to 3.760%, but actual gain is -98.719% and static-target harm is much larger. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -51,6 +52,13 @@ moving-target predictions also lose on average. The experiment isolates producer
 exposure, not the causal reason for the transfer gap. Bookstore and the main
 evaluation remain unscored; no new model is deployed.
 
+The [matched loss intervention](outputs/publication_readiness_2026_09/source_motion_candidate_v1/conclusions.md)
+has now completed another 120,000 updates. Removing static-target gradients
+makes the forecast less conservative, but it also worsens moving-target error.
+Rotating its predictions retains most of the oracle headroom, so that headroom
+alone is not evidence of accurate motion direction or usable neural dynamics.
+All twelve models replay exactly; the scientific result is still negative.
+
 ## Evidence and Reproduction
 
 The detailed record is kept separately so that the project overview remains
@@ -60,7 +68,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_crossfit_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_motion_candidate_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some
@@ -129,18 +137,18 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 ## Next Step
 
-Improve candidate utility before fitting another risk head: distinguish failure
-to detect movement from failure to predict its direction and path, using only
-admitted training material. Current fixed-candidate headroom is too small to
-justify another threshold search. The new OOF labels do not automatically permit
-a second-level validation split: every upstream producer must also exclude the
-risk head's validation scene.
+Improve candidate utility before fitting another risk head. The loss control
+has separated larger oracle headroom from actual predictive value; it has not
+supplied a safe candidate. Next I will check annotation-scale motion and the
+past context needed to predict movement and direction, using admitted training
+material only. The OOF labels do not automatically permit a second-level
+validation split: every upstream producer must also exclude the risk head's
+validation scene.
 [Provenance boundary](outputs/publication_readiness_2026_09/source_crossfit_v1/method_and_limits.md).
 
-The next [registered loss control](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md)
-keeps the same full training sampler and removes only zero-target ADE gradients.
-All evaluation rows remain; it tests conditional candidate utility, not a
-future-informed deployment rule. No result is claimed before the fixed run finishes.
+The [fixed loss-control registration](outputs/publication_readiness_2026_09/source_motion_candidate_decision.md)
+and all negative outcomes remain available. No new policy has been deployed,
+and no test threshold was changed to rescue this result.
 
 The larger goal is unchanged: demonstrate useful neural dynamics, compare
 independent and joint intervention at matched coverage, preserve easy cases,
