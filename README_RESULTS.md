@@ -1,5 +1,22 @@
 # M3W Results Ledger
 
+## Mechanism Inputs Verified, Fixed Training Running (2026-09-18)
+
+Real native arm64 RGB pilot: 100 updates in 4.444 seconds, finite losses,
+checkpoint saved, no held evaluation. Full trainer continues the fixed 54-fit
+matrix (270,000 updates), retaining 54 hash-verified old controls.
+Twenty focused tests pass; full legacy suite not rerun.
+
+Source permutation preserves all 229,333 recording/support identities; 128 real
+input rows per seed preserve exact predictions in all modalities. Singletons
+and same-track donors are reported rather than hidden. Complete source labels
+contain 10,039 broad static-moves windows, but only 244 meet the earlier half-box
+displacement proxy (58 track IDs). Counts reconcile with the train-only census.
+Stationary target magnitude and analytic log-loss sensitivity differ strongly
+between SDD and main training data under the fixed native-unit floor. This
+diagnostic does not change training, the primary or evaluation roles.
+[Inputs, runtime and limitations](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/input_and_runtime.md).
+
 ## Source Mechanism Controls Registered (2026-09-18)
 
 The previous 54-fit result leaves main-domain exposure confounded with source

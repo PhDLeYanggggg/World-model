@@ -15,7 +15,10 @@ asks why SDD reduces neural degradation: does correct source supervision help,
 or does the benefit come from fewer main-domain updates? I am adding a
 main-only 4,000-update control and a source-label permutation control, retaining
 all three input variants, seeds and scene folds. No evaluation role or primary
-metric changes; the completed results below remain the current evidence.
+metric changes. The real-training pilot and source checks pass, and the fixed
+54-fit follow-up is running. A [training-source diagnostic](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/input_and_runtime.md)
+also exposes a stationary-target scale mismatch; that is a possible failure
+mechanism, not a new model result. The completed results below remain current.
 
 I have completed the [SDD auxiliary-training comparison](outputs/publication_readiness_2026_09/sdd_auxiliary_v1/conclusions.md):
 54 fresh neural fits, three seeds, three physical-site folds and 324,000 optimizer

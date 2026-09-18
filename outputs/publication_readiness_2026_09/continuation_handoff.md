@@ -2,6 +2,18 @@
 
 ## Source Mechanism Controls Registered (2026-09-18)
 
+Update: registration committed/pushed as bba7fbe1; SHA256
+699c9f6fdb346b828dee4411894b2747a05f541e404285325fa0a93f2174837a.
+Pilot PID80309/session85879 observed exit0, 100 real updates / 4.444 seconds,
+no held scores. FULL TRAINER PID80360 / SESSION81910 IS LIVE; poll this handle,
+do not launch duplicate or change registered training. Goal active.
+Source diagnostic runs PID handles99852/89506/97254 terminal exit0.
+New source_support evidence: broad static-to-any-motion10,039windows342tracks;
+stricter half-box244windows58tracks reconciles exactly with train40 old census.
+Static normalized target medianSDD1125 vs mainfold0training24.702; analytic
+dlog1p/dADE median.000888 vs .038907. Native-unit.001floor is not stationary
+scale invariant. These are diagnostics, no training or primary changes.
+
 Prior turn was progress: full 54-fit auxiliary experiment and exact replays,
 not a successful method. Next fixed experiment separates fewer main updates
 from useful source supervision. Config: configs/m3w_sdd_auxiliary_mechanism_v1.json.
