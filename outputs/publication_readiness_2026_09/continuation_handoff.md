@@ -1,6 +1,6 @@
 # Real-Experiment Continuation Handoff
 
-## Full Source-Training Continuation Live (2026-09-18)
+## Full Source-Training Continuation Complete (2026-09-18)
 
 Prior turn was substantive progress:12 microfits established selected-row
 fitability, not generalization. Current registered experiment:
@@ -13,21 +13,32 @@ sampler/model/optimizer/RNG ancestry, decoder and loss; effective AdamW shrinkag
 also follows LR, so not a pure gradient-mechanism proof.
 
 PilotPID29701/session42090exit0,100updates included,9.2389sec including initial
-complete-train evaluation. InitialtrainADE exactly reproduced. Full trainer
-PID29735/session50206 is LIVE, heartbeat/atomicCP every200steps. Do not start
-a second writer or modify registered files. LocalCPU4/inter-op1/workers0,
-67GiBfree. CREATE onlyhistoricalaccessblocker,remotejobsunknown.54focusedtests
-pass;fulllegacy notrerun. Source files/checkpoints private under
+complete-train evaluation. All6branches/48knewupdates finished,initialtrainADE
+exactly reproduced. TrainerPID29735/session50206exit0;replayPID33626/session9498
+exit0;analysis/session23960exit0. Noactiveprocessfromthisexperiment. DO NOT
+restartcompletedfits. Fullrun39.569562min,summedcontinuation2380.270sec including
+fixedtrainingevaluations. LocalCPU4/inter-op1/workers0. CREATE onlyhistorical
+accessblocker,remotejobsunknown.54focusedtestspass;fulllegacy notrerun. Source
+files/checkpoints private under
 `data/stage_cvpr2027_experiments/source_continuation_v1`; public matchingfolder.
-Current live count comes from process/heartbeat, not this note's age.
 
-After run exit0: `--replay` for all24milestones; run
-`scripts/verify_analyze_m3w_source_continuation.py --registration configs/m3w_source_continuation_v1.json`.
-Consumer is implemented/compiled, NOT YET executed on completedresults. It
-checks three matched streams, unchanged completedresume andparentfiles,
-decomposes zero-target harm versus moving-target gain, and plots fullcurves.
-Do not claim jitter reduction is dynamics lift. All formal roles/gates remain
-unmet/closed. NoStage5C/SMC. UnrelatedstagedSHA unchanged
+All24milestonesexactreplayed,3matchedsamplerstreams,88artifactsincluding3parents
+plusreportunchangedoncompletedresume,0newupdates. Analysisexecuted,curvevisually
+checked. ReportSHAc5397708e74a88153bbfc04dc29334f283f8fdb1f5f31a927598c585d652acd1.
+FinalmeanTRAININGgainconstant-1.031000%,cosine+0.253283%;cosineseedsallpositive
+[.203854,.325909]. Movinggains+1.244599/+0.876220;zero-targetpixelharm
+.046223/.012653;easypercentageundefined. Decayreducesharmbutalsomovingbenefit
+versusconstant,notstrongergeneralizablemotionproof.Allnewupdatesclip100%.
+Exposure41.47764mean/row,notconvergence. Smalltrainingrepaironly,nodeployment.
+
+Nextmostvaluable: a SEPARATE preregistered exposed-source held-site diagnostic
+overALLsixfrozenfinalpredictors/threeparents,plusmatched-budgetmaskcontrolbefore
+claimingRGBbenefit. Currentregistrationforbidsheldscoringandhasnone. Follow-up
+notyetregistered/implemented/run. Sourcebookstorehaspreviouslybeenexplored;
+nevercallitsfutureassessmentuntouchedconfirmation. No mainsealedroles,primary
+changesorunboundedarchitecturesearch. Fullgoalactiveunmet.
+OfficialCVPR2027datesrechecked;AuthorGuidelineslink404/LLMdetailsunfinalized,
+see submission_calendar_20260918.md. NoStage5C/SMC. UnrelatedstagedSHA unchanged
 `c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323`.
 
 ## Training-Only Microfit Complete (2026-09-18)

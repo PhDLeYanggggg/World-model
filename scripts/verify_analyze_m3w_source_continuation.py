@@ -89,6 +89,8 @@ def main():
                     zero_harm_contribution=contribution_zero, moving_harm_contribution=contribution_moving,
                     predicted_path_norm_mean=float(np.linalg.norm(pred, axis=-1).mean()),
                     regret_binary_oracle=float((ade-np.minimum(cv, ade)).mean()),
+                    training_binary_oracle_gain_percent=100*float(1-np.minimum(cv, ade).mean()/cv.mean()),
+                    training_rows_helped=int((ade<cv).sum()), training_rows_harmed=int((ade>cv).sum()),
                     tail_ade_95=float(np.quantile(ade, .95)), tail_ade_99=float(np.quantile(ade, .99)),
                     percentage_easy_degradation=None,
                     continuation_clip_fraction=cp['clipped_updates']/8000 if milestone['step'] == 10000 else None)
@@ -146,6 +148,7 @@ def main():
                 mean_easy_pixel_harm=float(np.mean([r['easy_pixel_harm'] for r in cells])),
                 mean_zero_harm_contribution=float(np.mean([r['zero_harm_contribution'] for r in cells])),
                 mean_moving_harm_contribution=float(np.mean([r['moving_harm_contribution'] for r in cells])),
+                mean_training_binary_oracle_gain_percent=float(np.mean([r['training_binary_oracle_gain_percent'] for r in cells])),
                 positive_training_seeds=sum(g > 0 for g in gains)))
     zero_by_step = (np.linalg.norm(target, axis=-1) == 0).sum(0)
     minority_bound = (2*zero_by_step-len(ids))/len(ids)
@@ -159,6 +162,7 @@ def main():
         constant_zero_optimal_ignoring_inputs=bool(np.all(minority_bound>0)),
         constant_prediction_proof='triangle_inequality_sum_norm(y-a)-sum_norm(y)>= (2*n_zero-n)*norm(a) per waypoint',
         proof_not_conditional_predictor_impossibility=True,
+        binary_oracle_uses_future_labels_training_only_not_a_policy=True,
         training_rows=len(ids), generalization_established=False, new_deployment=False,
         held_rows_scored=0, main_rows_scored=0, independent_confirmation=False)
     json_write(public/'analysis.json', evidence)
@@ -187,7 +191,7 @@ def main():
         'A schedule-induced reduction in output jitter is not automatically prediction of future motion.', '',
         '## Constant-Prediction Sanity Bound', '',
         f"Exactly{zero.sum()} of{len(ids)} training targets are entirely zero ({zero.mean():.2%}). At each waypoint the zero fraction exceeds one half. By the triangle inequality, an input-independent offset a increases the summed empirical distance by at least (2*n_zero-n)*norm(a). The smallest per-row coefficient across waypoints is{minority_bound.min():.6f}.",
-        'Thus zero is the optimal input-independent path on this training population. This does not rule out useful conditional information, neural learning or better movement prediction; it makes output collapse versus actual conditional gain an important distinction.', '']
+        'Thus zero is the optimal input-independent path in the stored parent-normalized coordinates on this training population. This is not a constant local decoder code subsequently rotated/rescaled by each observed frame. It does not bound conditional predictors, establish an architectural limitation or rule out useful observed information; it makes output collapse versus actual conditional gain an important distinction.', '']
     (public/'results.md').write_text('\n'.join(lines))
     cache = out/'plot_runtime'
     cache.mkdir(parents=True, exist_ok=True)

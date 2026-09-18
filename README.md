@@ -10,11 +10,19 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
-I am now running the [full-training learning-curve control](outputs/publication_readiness_2026_09/source_continuation_decision.md):
-three saved source models, each continued with constant and decaying learning
-rates on the same 15,430 rows. The 100-update timing pilot is part of the fixed
-48,000-new-update budget. This checks whether more exposure or a smaller final
-step size repairs training fit; held-source and main test results remain closed.
+I completed a [full-training learning-curve comparison](outputs/publication_readiness_2026_09/source_continuation_v1/conclusions.md)
+on 15,430 stationary-history source-training rows. Three saved models were each
+continued with constant and decaying learning rates, adding 48,000 updates in
+about 40 minutes locally. Constant-rate training still loses to the baseline
+by 1.031% on average. Decay gives a small training gain of 0.253%, positive in
+all three seeds, and all 24 saved forecasts replay exactly.
+
+That is a partial optimization repair, not a forecasting breakthrough. Decay
+mainly improves the balance between movement benefit and damage to stationary
+cases; it does not preserve zero-error cases perfectly or prove generalization.
+I have not opened new test results or changed deployment. The next check is
+whether the fixed predictors transfer across source scenes, with a matched
+visual-input control before attributing the effect to images.
 
 I completed a [training-only fitting check](outputs/publication_readiness_2026_09/source_microfit_v1/conclusions.md)
 after the latest full-source failure. All 12 models can memorize the selected
@@ -26,7 +34,7 @@ inconsistent paired benefit, so I am not treating it as the solution.
 The next distinction is training exposure versus population-level learnability.
 The small check sees each row 2,000 times; the original full-source run averages
 only about 8.3 draws per row in the matching fold. That difference motivates a
-controlled learning-curve check, not a claim of undertraining already proved.
+controlled learning-curve check above, not a claim that more training alone is sufficient.
 There is no new generalization result or deployment change.
 
 I completed a [fixed trajectory-cost comparison](outputs/publication_readiness_2026_09/source_cost_dynamics_v1/conclusions.md):

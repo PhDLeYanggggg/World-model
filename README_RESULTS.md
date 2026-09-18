@@ -1,16 +1,28 @@
 # M3W Results Ledger
 
-## Full-Training Continuation Registered (2026-09-18)
+## Full-Training Continuation Complete (2026-09-18)
 
-The next diagnostic keeps all15,430 source-training rows and forks three
-verified checkpoints into constant-rate and cosine-decay continuations. Six
-branches receive48,000 new updates in total; all four fixed training milestones
-will be reported. No held-source/main predictions, model promotion or threshold
-selection. This tests exposure and optimizer schedule after the small-cohort
-fitability result, not a new benchmark. Registered at`db31a217`; the100-update
-pilot completed with exact inherited training-score replay. The six-branch run
-is active (PID29735); final results are pending.54 focused tests pass.
-[Design](outputs/publication_readiness_2026_09/source_continuation_decision.md).
+`fresh_run`: six continuation branches and 48,000 new updates on all 15,430
+stationary-history source-training rows outside bookstore. Three shared parent
+models contribute 6,000 unique inherited updates. The pilot is included in the
+new budget. Full-run log span 39.57 minutes; summed continuation/evaluation work
+2380.27 seconds. No held-source/main scoring, threshold selection or deployment.
+
+| Schedule at step 10,000 | Mean training ADE gain | Three-seed range | Moving-target gain | Zero-target absolute pixel harm |
+| --- | ---: | --- | ---: | ---: |
+| Constant learning rate | -1.0310% | [-1.2130%, -0.8424%] | +1.2446% |0.046223 |
+| Cosine decay | +0.2533% | [+0.2039%, +0.3259%] | +0.8762% |0.012653 |
+
+Decay repairs a small part of training fit, mostly by reducing simple-case
+damage relative to constant continuation. Easy harm is still positive and its
+percentage undefined. No generalization, RGB contribution, joint-intervention
+advantage or submission-readiness claim follows. All 24 predictions replay
+exactly; three schedule pairs are matched; 88 artifacts including parents plus
+the report survive completed resume with zero new updates. Fifty-four focused
+tests pass; full legacy suite not rerun. All processes are terminal.
+[Conclusions](outputs/publication_readiness_2026_09/source_continuation_v1/conclusions.md),
+[curves](outputs/publication_readiness_2026_09/source_continuation_v1/training_curves.svg),
+[Chinese operations](outputs/publication_readiness_2026_09/source_continuation_v1/operation_zh.md).
 
 ## Training-Only Decoder Diagnostic Complete (2026-09-18)
 

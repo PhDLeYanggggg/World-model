@@ -632,6 +632,27 @@ curve is required before attributing the earlier failure to insufficient
 exposure, step size or conditional-information limits. No held forecast is
 computed or deployment upgraded by the microfit.
 
+The [full-training continuation](source_continuation_v1/conclusions.md) then
+keeps all15,430 source-training rows outside bookstore and forks three verified
+step2000 parents into constant-rate and cosine-decay branches. Six branches add
+48,000 updates, with fixed full-training evaluations at2000/4000/6000/10000.
+At the final endpoint, constant continuation still loses to CV by1.0310% on
+average; cosine yields+0.2533% training gain, positive in all three seeds
+(range+0.2039% to+0.3259%). This is not a held-scene result or confidence interval.
+Decay reduces zero-target absolute harm from0.046223 to0.012653 annotation pixels
+relative to the constant schedule, while reducing moving-target benefit from
+1.2446% to0.8762%. It changes the gain/harm balance, not simply movement accuracy.
+
+All24 training predictions replay exactly and three paired sample streams match.
+All new updates still clip gradients; the schedule, including its effect on
+AdamW shrinkage, partially repairs training fit without proving a unique cause.
+Mean exposure is41.48 draws per row, not evidence of convergence. Zero-target
+harm remains positive and relative easy degradation undefined. No held-source
+or main evaluation, model selection or deployment occurs in this diagnostic.
+The next required evidence is conditional forecast utility outside the fitting
+rows, including a matched visual-input control; the method contribution remains
+unproved. The previously reported negative comparisons are not overwritten.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -646,6 +667,7 @@ computed or deployment upgraded by the microfit.
 | Does the same RGB representation generalize inside SDD? | 30 matched fits; all five held-site mean contrasts negative; equal-site Brier lift -0.020046 | Failure is not only source-to-main transfer; supervision and visible-event support need controlled repair |
 | Does direct trajectory-cost training resolve the problem? | 60 fits; uncontrolled ADE gains -1.57% to -1.70%; training ADE also worse in every fit | The tested cost repair is insufficient; optimization and candidate trajectory utility remain unresolved |
 | Is the neural fitting path universally broken? |12training-only microfits learn selected16/32-row cohorts; original decoder also succeeds with100%gradient clipping | Numerical fitting is possible; not a benchmark repair or proof of useful predictive information |
+| Does longer exposure or rate decay improve complete training fit? |6continuation branches/48knewupdates;constant -1.0310%,cosine +0.2533% | Small schedule-dependent training repair; no held gain or easy-preservation proof |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not
