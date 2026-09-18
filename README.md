@@ -10,16 +10,32 @@ I started this repo to answer that question carefully, not just to collect a nic
 
 ## Current Evidence Status
 
+I have completed the [conditioning comparison](outputs/publication_readiness_2026_09/unit_frame_training_v1/report.md):
+27 new neural fits, three seeds, three exposed physical-site folds and 162,000
+updates, with nine verified previous controls. The main task and evaluation
+metric are unchanged: eight observed annotation steps, twelve predicted steps,
+and equal-site past-normalized ADE.
+
+| Geometry model | Gain over constant velocity | Safe positive fits |
+| --- | ---: | ---: |
+| Previous source-trained control | -0.805% | 0/9 |
+| Reconstructed unit-frame inputs | -0.687% | 0/9 |
+| Unit-frame inputs and radius-scaled output | -2.489% | 0/9 |
+| Same output with internal-coordinate loss | -185.777% | 0/9 |
+
 The [gradient audit](outputs/publication_readiness_2026_09/normalization_response_v2/report.md)
-now measures actual model-parameter gradients. The trained legacy model has
-weak responses to sampled stationary-to-moving cases. Directly expanding the
-output scale can over-amplify gradients; an internal-coordinate loss balances
-them at initialization, but that is not yet a prediction improvement.
-I also repaired a native-unit threshold in the rollout features. Twenty-two
-focused checks pass, and a 100-update real training pilot saved a resumable
-checkpoint without held evaluation. The next fixed comparison has 27
-geometry-only fits to isolate input conditioning, output scale and loss;
-the primary metric and sealed evaluation roles remain unchanged.
+identified weak responses to stationary-to-moving examples, and I repaired a
+unit-dependent threshold in the input features. But balancing gradients did
+not produce better forecasts. The internal loss permits large errors after
+mapping predictions back to the evaluation coordinates. Inputs alone show a
+small Hotel improvement, but still harm easy cases and do not generalize across
+the three sites. I am not deploying any of these models.
+
+All 27 prediction replays are exact; completed resume preserves 82 artifacts
+without training updates. Twenty-four focused tests pass. The intervals and
+oracle analyses are exploratory, not independent confirmation. The next step
+is to separate useful causal cues from decoder-induced harm, not to expand this
+failed loss into a larger model or select thresholds on exposed evaluation data.
 
 I have completed the [source-mechanism controls](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/report.md):
 54 additional neural fits and 270,000 updates, alongside 54 verified previous
@@ -42,8 +58,8 @@ Every schedule/input average still loses to CV. Three new individual fits have
 tiny positive gains, but none preserves easy cases; there is no new deployable
 model. The intervals describe only three already-exposed physical sites.
 A [source audit](outputs/publication_readiness_2026_09/sdd_auxiliary_mechanism_v1/source_support.md)
-also identifies a stationary normalization mismatch worth testing next. It is
-not yet a demonstrated cause of model failure. I keep the primary task and
+also identified the stationary normalization mismatch tested above. That repair
+did not suffice for useful forecasting. I keep the primary task and
 sealed evaluation roles unchanged, and do not treat these results as independent
 confirmation or a successful world-model contribution.
 

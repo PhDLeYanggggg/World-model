@@ -1,5 +1,35 @@
 # M3W Results Ledger
 
+## Conditioning Comparison Complete, No Safe Candidate (2026-09-18)
+
+`fresh_run`: 27 fixed geometry-branch Torch fits, 162,000 updates, 277.02 summed
+fit seconds. `cached_verified`: nine previous same-schedule geometry controls.
+Full main/source populations, primary and sealed roles unchanged. No held-score
+selection. This is not a new multimodal or historical raw-frame t+50 result.
+
+| Arm | Equal-site ADE gain vs CV | Safe positive fits |
+| --- | ---: | ---: |
+| Legacy source-trained geometry | -0.80523% | 0/9 |
+| Unit inputs only | -0.68730% | 0/9 |
+| Unit inputs + radius decoder | -2.48928% | 0/9 |
+| Unit decoder + internal loss | -185.77715% | 0/9 |
+
+Unit inputs: three local positive Hotel fits, but all fail easy preservation;
+the overall difference from legacy is +0.11699% with a site interval crossing
+zero. Internal loss produces large absolute easy harm (8.06155-96.84135
+normalized ADE). Logged clipping fractions: radius decoder source100%,
+main99.44%; internal loss0% but very poor prediction. Balanced gradients are
+not sufficient. Post hoc expanded-pool oracle +2.63722% is not a learned result.
+
+27/27 exact replay; 82 unchanged artifacts on completed resume; zero new
+updates; paired main/source sample counts and final sampler match. 24 focused
+tests pass; full legacy suite not rerun. No new deployment or independent claim.
+[Report](outputs/publication_readiness_2026_09/unit_frame_training_v1/report.md),
+[failure taxonomy](outputs/publication_readiness_2026_09/unit_frame_training_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/unit_frame_training_v1/gates.md),
+[reproduction](outputs/publication_readiness_2026_09/unit_frame_training_v1/reproducibility.md),
+[loss traces](outputs/publication_readiness_2026_09/unit_frame_training_v1/loss_trace.csv).
+
 ## Gradient Diagnostic Complete; Conditioning Comparison Registered (2026-09-18)
 
 Actual autograd, zero optimizer updates: 432 v1 records and 216 repaired v2

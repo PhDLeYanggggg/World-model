@@ -19,6 +19,10 @@ cases. A further 54-fit control study separates source supervision from main
 training exposure: correct source pairing has no stable demonstrated advantage
 over source-label permutation. This revision retains both negative studies; it
 does not turn the older diagnostic bridge into a training result.
+A subsequent 27-fit observed-unit conditioning experiment measures actual
+gradient response and repairs a unit-dependent rollout feature, but no new fit
+passes easy preservation. Balanced internal-loss gradients correspond to worse
+primary forecasts, not a successful contribution.
 
 ## Abstract
 
@@ -466,6 +470,33 @@ establishing deployable forecasting or independent generalization.
 
 ### What the Current Evidence Can Establish
 
+The [observed-unit comparison](unit_frame_training_v1/report.md) adds 27 fresh
+geometry fits with nine verified controls, preserving all populations, source
+schedule and the primary metric. Gradient probes use only training roles;
+three exposed site folds evaluate the fixed matrix without model selection.
+
+| Conditioning | Equal-site primary gain vs CV | Safe positive fits |
+| --- | ---: | ---: |
+| Verified old source-trained geometry | -0.80523% | 0/9 |
+| Reconstructed unit inputs | -0.68730% | 0/9 |
+| Unit inputs and radius decoder | -2.48928% | 0/9 |
+| Radius decoder and internal log loss | -185.77715% | 0/9 |
+
+The input-only contrast against legacy is +0.11699%, with a descriptive site
+interval [-2.07626%, +0.59275%]. All three Hotel seeds are positive but unsafe;
+Zara worsens. Under radius decoding and the original objective, every logged
+source batch and 99.44% of logged main batches are gradient-clipped. Internal
+loss removes logged clipping yet strongly increases primary error and easy harm.
+For past radius R and primary error e, its derivative with respect to e is
+1/(R+e): improved numerical conditioning is not equivalent to optimizing primary
+forecast accuracy. The tested repair is insufficient, not a general impossibility.
+
+A future-label oracle over CV plus all four geometry variants reaches only
+2.63722% aggregate gain. This is a post hoc diagnostic upper bound for this
+finite pool, not learned selection or independent evidence. The 27 checkpoints
+replay exactly and completed resume preserves 82 artifacts. No multimodal
+or deployment claim is made by this conditioning experiment.
+
 | Question | Observed result | Supported conclusion |
 | --- | --- | --- |
 | Can routing rescue the frozen candidate family? | Oracle gains 1.62653%, or 1.72618% with whole-path scaling | Limited labeled-set headroom for this action class, not a global impossibility result |
@@ -474,6 +505,7 @@ establishing deployable forecasting or independent generalization.
 | Are additional SDD past modalities available? | Full auxiliary cache of 229,333 windows and 254,841 past crops | Input access established; visibility and predictive benefit require separate evidence |
 | Does SDD supervision fix transfer? | 54 matched fresh fits; source helps neural controls, but 0/54 safe positive fits | Tested auxiliary schedule insufficient; no deployment or independent confirmation |
 | Is the advantage specific to correct source pairing? | 54 new controls, 54 cached fits; all real-versus-permuted intervals cross zero | Main exposure accounts for part of the old difference; stable conditional transfer remains unproved |
+| Does unit conditioning repair prediction? | 27 fresh geometry fits; input-only -0.68730%, internal-loss -185.77715% vs CV; 0/27 safe | Engineering repair and balanced gradients are insufficient for protected forecasting |
 | Is baseline-relative joint intervention validated? | No stable advantage in the matched-count predictor study | Main methodological contribution remains unestablished |
 
 These rows summarize different experiments and estimands; their scores must not

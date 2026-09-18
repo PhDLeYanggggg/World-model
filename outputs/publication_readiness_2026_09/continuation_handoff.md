@@ -1,5 +1,52 @@
 # Real-Experiment Continuation Handoff
 
+## Unit Conditioning Complete (2026-09-18)
+
+Goal active, not complete or blocked. This turn measured actual training-role
+parameter gradients, repaired a native-unit cutoff in rollout features, and
+completed 27 fixed geometry-only fits (162,000 updates) plus nine verified old
+controls. Do not repeat these as fresh work. New multimodal contribution remains
+unproved; main metric/cohort and all sealed roles stay unchanged.
+
+Registrations: normalization_response_v2 and m3w_unit_frame_training_v1.
+Training registration SHA663cb62a13281fb3533e95d28b23814452560292e54cbcb428ca1e0dc6bbda7e.
+Training report SHA f5a0c5a56b3e4c2f131f214745bfe252e94ca74209ec98c1be7becb990d56954.
+Old gradient v1 is immutable and bound by v2; do not overwrite it. v1 frame's
+tiny-curved unit-rescaling failure is repaired in the separate v2 frame module.
+
+Actual gradient audit: 432 v1 records,216 v2 records,zero optimizer updates.
+Main fold0 training only; up to32 complete/anchored windows per event/domain,
+three seeds/modalities. Source legacy final static-start norm0.003087 vs
+other-motion1.449280. These are sampled training gradients, not predictive lift.
+
+New fit gains vsCV: inputs-only -0.68730%, radius decoder -2.48928%, internal
+loss -185.77715%; old control -0.80523%. 3 local Hotel fits positive,0/27 easy
+pass. Internal loss avoids clipping but causes large absolute harm. It changes
+training objective only; primary remains equal-site past-normalized ADE.
+Post hoc future-label expanded-pool oracle2.63722%, NOT a learned selector.
+No-anchor guard-only effect on legacy is tiny (-0.80523 to-0.80027%).
+
+All27 exact prediction replays;82 unchanged artifacts on completed resume,
+zero updates; sample counts/final RNG match parents. 24 focused tests passed.
+Summed fit277.02sec, full invocation about290.1sec; local CPU4 was adequate.
+Pilot PID96284/session96695, trainer96476/session12946,
+replay97023/session23330, verification/session62000 and tests/session75734
+all terminal exit0. No live training remains. Do not poll old handles.
+
+Next action: separate useful causal cues from decoder-induced harm on training
+roles, with a matched registered follow-up only if justified. Do not enlarge
+the failed internal-loss recipe, repeat held-threshold tuning, or reopen sealed
+roles. Main challenge is identifiable start/direction and safe selective benefit,
+not another runtime repair. Independent confirmation remains separate/unresolved.
+No model promotion, restored historical Stage37 claim, Stage5C, SMC or readiness.
+
+Reports: unit_frame_training_v1/{report,contrasts,failure_analysis,gates,
+reproducibility,report.json,analysis.json,verification.json,replay.json,
+oracle_diagnostic.json,fit_metrics.csv,loss_trace.csv}. Raw caches/weights private.
+Unrelated staged fingerprint remains
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Earlier pending and running notes below are historical, not current.
+
 ## Mechanism Controls Complete (2026-09-18)
 
 Current goal active, not complete or blocked. Previous turn completed the first
