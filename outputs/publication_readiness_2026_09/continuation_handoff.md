@@ -18,10 +18,14 @@ Input audit passed. Nativearm64CPU4/workers0;78GiBfree at launch. Local
 expected ~100min acceptable; CREATEauthentication/projectpath stillunresolved,
 remotejobsunknown,no newremotejobs. Preregistercommit0007bf43 pushed. Pilot100
 updates finished in4.71005fitseconds, noforecast evaluation, finite gradients.
-LIVE fulltrainer PID15300/session39366 resumespilot inside120kbudget. Do not
+LIVE fulltrainer resumed PID22076/session51870. Prior PID15300/session39366
+became absent following conversation interruption,43completedfits preserved.
+Trial44log_ade_past_rgb_gates_seed29 resumes verifiedstep600checkpoint,finite
+weights/38400draws/all22bindinghashespass. This remains inside120kbudget. Do not
 start duplicate or modify registered dependencies. Log and heartbeat under
 data/stage_cvpr2027_experiments/source_cost_dynamics_v1. Newanalysis/verifier
-are post-fit consumers only.56focused tests pass; fulllegacy suite notrerun.
+are post-fit consumers only.57focused tests pass(3.33sec); fulllegacy suite notrerun.
+Loss/gradienttrace analysis covers loggedbatchesonly,not a convergenceclaim.
 After trainer exit0: exactreplay,15fourwaymatchedchecks,181immutableartifact
 completedresume,analysis,figureinspection,conclusionsandhonestgates.
 All previous source-siteprobe handles terminal. No main or sealed scoring.

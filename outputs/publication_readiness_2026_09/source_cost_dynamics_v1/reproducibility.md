@@ -56,6 +56,10 @@ After training has exited successfully, run sequentially:
 Replay requires bitwise equality of all saved forecast arrays. Verification
 checks 15 four-way matched training streams and a completed-run resume with
 zero new fits or updates, preserving 181 immutable artifacts and the full report.
+The analysis also exports objective loss, normalized batch ADE and logged
+pre-clipping gradient norms. Its learning curves are sampled minibatch traces;
+they do not establish full-loss convergence. Clipping fractions cover logged
+batches only, not every optimizer update.
 Public outputs are aggregate CSV/JSON/Markdown and an original scientific SVG;
 images, per-row predictions, caches and checkpoints are not committed.
 
@@ -82,3 +86,12 @@ sensitivity. Five repeatedly exposed sites, overlapping training folds and
 annotated/interpolated histories do not provide independent confirmation,
 strict sensor-as-of observations or human intention gold. No model deployment,
 metric/seconds claim, Stage5C execution or SMC follows from this diagnostic.
+
+## Observed Recovery
+
+After a conversation interruption the original PID15300 and session39366 were
+both absent. Forty-three completed trial receipts remained. The incomplete
+`log_ade_past_rgb_gates_seed29` checkpoint had step600,38,400 sampled draws and
+finite weights; all22 registered dependency hashes still matched. The identical
+entry point resumed under PID22076/session51870, skipping completed trials.
+This is real checkpoint recovery, not a new training budget or a result claim.

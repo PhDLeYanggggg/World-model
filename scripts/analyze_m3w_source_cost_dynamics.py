@@ -50,6 +50,20 @@ def blocked_error_interval(model,reference,groups,*,resamples=2000,seed=433):
         bootstrap_zero_reference_draws=int((~positive).sum()),resamples=resamples)
 
 
+def loss_trace_summary(trace):
+    if not trace:
+        raise ValueError('Recorded training trace required')
+    steps=np.array([r['step'] for r in trace])
+    values=np.array([[r[k] for k in ('objective_loss','normalized_batch_ade','gradient_norm')] for r in trace])
+    if not np.isfinite(values).all() or np.any(np.diff(steps)<=0):
+        raise ValueError('Finite chronologically increasing trace required')
+    return dict(logged_batches=len(trace),first_step=int(steps[0]),last_step=int(steps[-1]),
+        first_normalized_batch_ade=float(values[0,1]),last_normalized_batch_ade=float(values[-1,1]),
+        logged_gradient_clipping_fraction=float((values[:,2]>5).mean()),
+        max_logged_preclip_gradient=float(values[:,2].max()),
+        convergence_established=False,all_batch_gradients_observed=False)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--registration',type=Path,required=True)
     args=parser.parse_args();reg=load_config(args.registration);reports=ROOT/reg['reports'];out=ROOT/reg['output']
@@ -60,7 +74,7 @@ def main():
     if report['identity']['source_assignment_sha256']!=data.assignment_hash:
         raise ValueError('Source population changed')
     lookup={(t['objective'],t['arm'],t['site'],t['seed']):t for t in report['trials']}
-    errors={};rows=[];losses=[];site_summaries=[];videos=[];bound_audits=[]
+    errors={};rows=[];losses=[];site_summaries=[];videos=[];bound_audits=[];training_diagnostics=[]
     for t in report['trials']:
         if file_digest(ROOT/t['prediction_path'])!=t['prediction_sha256']:
             raise ValueError('Saved predictions changed')
@@ -108,6 +122,8 @@ def main():
                     gain_percent=100*float(1-ade[m].mean()/cv[m].mean()) if cv[m].mean()>0 else None,
                     intervention_rate=float(use[m].mean())))
         losses.extend(dict(trial=t['trial'],**loss) for loss in t['fit']['losses'])
+        training_diagnostics.append(dict(trial=t['trial'],objective=t['objective'],arm=t['arm'],
+            site=t['site'],seed=t['seed'],**loss_trace_summary(t['fit']['losses'])))
     for objective in reg['objectives']:
         for arm in reg['arms']:
             for mode in ('uncontrolled','fixed_probability_gate'):
@@ -157,6 +173,9 @@ def main():
         gate_is_uncalibrated_diagnostic=True,gated_RGB_comparison_confound='different_same_arm_classifier_gates',
         easy_percentage_undefined_not_passed=True,stage5c_executed=False,smc_enabled=False)
     json_write(reports/'analysis.json',result)
+    json_write(reports/'training_diagnostics.json',dict(result_source='fresh_run_analysis_of_fixed_training_logs',
+        report_sha256=file_digest(rp),trials=training_diagnostics,checkpoint_selected_from_trace=False,
+        objective_losses_not_directly_comparable=True,normalized_batch_ade_comparable_within_fold=True))
     for name,items in [('fit_metrics.csv',rows),('video_metrics.csv',videos),('loss_trace.csv',losses)]:
         with (reports/name).open('w',newline='') as f:
             w=csv.DictWriter(f,fieldnames=list(items[0]),lineterminator='\n');w.writeheader();w.writerows(items)
@@ -198,6 +217,24 @@ def main():
     fig.text(.5,.01,'All stationary source queries retained. Negative is worse. Not independent confirmation or deployment.',ha='center',fontsize=9)
     fig.tight_layout(rect=(0,.05,1,.96));fig.savefig(reports/'trajectory_gain.svg',metadata={'Date':None});fig.savefig(cache/'trajectory_gain.png',dpi=130);plt.close(fig)
     svg=reports/'trajectory_gain.svg';svg.write_text('\n'.join(x.rstrip() for x in svg.read_text().splitlines())+'\n')
+    fig,axes=plt.subplots(1,2,figsize=(10,4.5))
+    for ax,objective in zip(axes,reg['objectives']):
+        for arm,color in [('mask_only','#357289'),('past_rgb','#a45351')]:
+            traces=[t['fit']['losses'] for t in report['trials'] if t['objective']==objective and t['arm']==arm]
+            steps=[v['step'] for v in traces[0]]
+            if any([v['step'] for v in t]!=steps for t in traces):
+                raise ValueError('Matched logging schedule required')
+            values=np.array([[v['normalized_batch_ade'] for v in t] for t in traces])
+            ax.plot(steps,np.median(values,axis=0),label=arm,color=color)
+            ax.fill_between(steps,*np.quantile(values,[.25,.75],axis=0),color=color,alpha=.12)
+        ax.axhline(1,color='black',lw=.8,linestyle=':');ax.set_title(objective+' objective')
+        ax.set_xlabel('Optimizer updates');ax.set_ylabel('Logged normalized batch ADE')
+        ax.legend();ax.grid(alpha=.2);ax.spines[['top','right']].set_visible(False)
+    fig.suptitle('Median and IQR across fixed source-site / seed fits')
+    fig.text(.5,.01,'Training minibatches only, not full-loss convergence or held-site model selection.',ha='center',fontsize=9)
+    fig.tight_layout(rect=(0,.05,1,.96));fig.savefig(reports/'learning_trace.svg',metadata={'Date':None})
+    fig.savefig(cache/'learning_trace.png',dpi=130);plt.close(fig)
+    svg=reports/'learning_trace.svg';svg.write_text('\n'.join(x.rstrip() for x in svg.read_text().splitlines())+'\n')
     print(json.dumps({'summary':summary,'contrasts':contrasts},indent=2))
 
 

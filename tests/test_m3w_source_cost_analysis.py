@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from scripts.analyze_m3w_source_cost_dynamics import site_ratio_interval, blocked_error_interval
+from scripts.analyze_m3w_source_cost_dynamics import site_ratio_interval, blocked_error_interval, loss_trace_summary
 
 
 def test_site_primary_is_ratio_of_equal_site_errors_not_mean_percentage():
@@ -26,3 +26,14 @@ def test_zero_reference_blocks_are_disclosed_not_divided_by_epsilon():
     z=blocked_error_interval(np.ones((1,2)),np.zeros((1,2)),np.array(['a','b']))
     assert z['gain_percent'] is None and z['relative_conditional_ci95'] is None
     with pytest.raises(ValueError):site_ratio_interval([1.,2.],[0.,1.])
+
+
+def test_loss_trace_does_not_claim_all_batch_gradients_or_convergence():
+    trace=[dict(step=s,objective_loss=1.,normalized_batch_ade=2.,gradient_norm=g)
+           for s,g in [(1,5.),(100,6.),(200,4.)]]
+    result=loss_trace_summary(trace)
+    assert result['logged_gradient_clipping_fraction']==pytest.approx(1/3)
+    assert result['last_step']==200 and not result['convergence_established']
+    assert not result['all_batch_gradients_observed']
+    with pytest.raises(ValueError):loss_trace_summary(trace[::-1])
+    with pytest.raises(ValueError):loss_trace_summary([])
