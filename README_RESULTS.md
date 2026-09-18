@@ -11,6 +11,12 @@ access guards passes;26focusedtests pass. This is registration, not a result.
 The100-update local pilot is included in the fixed budget. No new risk head,
 policy selection or deployment. [Decision](outputs/publication_readiness_2026_09/source_crossfit_decision.md).
 
+Pre-fit registration `a89299fd` is pushed. The real100-update pilot completed
+in4.7255 trainingseconds, including an atomic checkpoint; no inner-held scores.
+Full training resumed atstep100,PID48956/session49270. CPU4/workers0, observed
+RSS about2.6GiB, estimated total1.5-2hours. This is a running experiment, not a
+completed result. Do not launch a duplicate or shorten its fixed budget.
+
 ## Frozen Deferral Readout Complete: No Transfer Over CV (2026-09-18)
 
 `fresh_run`: six frozen neural endpoints scored on 6,944 previously explored

@@ -12,8 +12,10 @@ exactonceOOFlabels, no learnedriskhead or outer/main forecasts. Both arms of eac
 fit use existing2000constant+8000cosine engines; checkpoints200,CPU4/workers0.
 26focusedtests pass;realauditPID48790exit0,15430rows/4folds,outer/maininferenceand
 innerheldlabelguardschecked. Local65.96GiBfree;GitHub999f448a matchesbeforepatch.
-CurrentCREATEjobs/assetsunknown,nojobsubmitted. Need pre-fit commit/push,
-100updatecoupa_seed17pilotwithinbudget, thenfullrun,12exactreplays,analysis,
+CurrentCREATEjobs/assetsunknown,nojobsubmitted. Pre-fit commit a89299fd pushed.
+PilotPID48924exit0:100updates/4.7255trainingsecondswithinbudget. Fullrun active
+PID48956/session49270,CPU4/workers0,RSSabout2.6GiB,rough1.5-2hrbudget.
+Do not duplicate or terminate because slow. Need fullcompletion,12exactreplays,analysis,
 readonlycompletedresumeandreport. Do not revise fixed analysis after scores.
 Bootstrap2000on4exploredsitesisconditionalwithsharedfoldtraining,notconfirmation.
 In-samplecomparisonconfoundssmallerfitset/siteshift/normalization,notcausalproof
