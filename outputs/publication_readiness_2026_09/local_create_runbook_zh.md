@@ -3,7 +3,36 @@
 最近更新：2026-09-19。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：梯度诊断与输出尺度对照已完成
+## 当前：过去图像运动对照与概率探针已完成
+
+按固定方案完成了 24 个轨迹头、24 万次更新，以及 16 个逻辑回归概率探针。
+没有缩减样本或训练预算。所有 15,430 个窗口保留，23,890 对过去图像运动重新
+提取并精确回放。51 个缺少局部尺度的窗口沿用原有零输出规则，没有删除。
+
+质量信息对照和运动特征方案均未超过静止基线；运动方案的等场景 ADE 改善为
+-0.000840%，属于接近零的小抖动，不是有用的动力学预测。较大位置变化的
+概率排序略有改善，但 Brier 在每个留出场景都变差。不能把 AUROC 小幅改善
+改写成安全门控或轨迹成功。10 像素阈值处的 11 行数值差异已单独披露。
+
+```bash
+.venv-pytorch/bin/python scripts/build_m3w_source_box_motion.py
+.venv-pytorch/bin/python scripts/run_m3w_source_box_motion.py --registration configs/m3w_source_box_motion_v1.json
+.venv-pytorch/bin/python scripts/run_m3w_source_box_motion.py --registration configs/m3w_source_box_motion_v1.json --replay
+.venv-pytorch/bin/python scripts/analyze_m3w_source_box_motion.py --registration configs/m3w_source_box_motion_v1.json
+.venv-pytorch/bin/python scripts/verify_m3w_source_box_motion.py --registration configs/m3w_source_box_motion_v1.json
+.venv-pytorch/bin/python scripts/report_m3w_source_box_motion.py
+.venv-pytorch/bin/python scripts/probe_m3w_source_box_motion.py --registration configs/m3w_source_box_motion_probe_v1.json
+.venv-pytorch/bin/python scripts/probe_m3w_source_box_motion.py --registration configs/m3w_source_box_motion_probe_v1.json --replay
+.venv-pytorch/bin/python scripts/report_m3w_source_box_motion_probe.py
+```
+
+训练 PID98675 已退出，累计拟合 656.347 秒；概率探针累计 31.422 秒。
+模型、输入与系数回放通过，已完成任务恢复零新增训练。36 项针对性测试通过。
+完整旧集成测试未重跑，避免改写旧阶段产物。所有当前进程已结束，不能重复
+提交同一训练。私有缓存/权重/逐行预测不上传 Git。主评估与外部读数仍封存。
+本轮仍是源域探索，不是确认性论文结果；下一项原始分辨率支持检查尚未运行。
+
+## 历史：梯度诊断与输出尺度对照已完成
 
 对上一轮24个固定模型做了训练集梯度诊断，没有新打分留出集。完整梯度和6144个
 批梯度支持的是输出层集中，而不是明显的平均方向翻转。所有诊断精确重算，

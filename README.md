@@ -31,11 +31,12 @@ sampled changes the expected training objective, even with the same per-row loss
 
 ## Current Evidence
 
-The next registered source experiment compares observed box-motion tokens with
-a matched quality-only control. Past motion extraction is complete and the
-fixed 24-head training matrix is running; aggregate results are pending.
-This is an exploratory representation test, not a new
-deployment or a claim that optical flow is novel.
+The latest source experiment compares observed box-motion tokens with a matched
+quality-only control. All 24 trajectory heads and 16 complementary probability
+probes are complete. Measurable past motion did not become a forecasting gain.
+The larger-excursion probability probe improves ranking slightly, but its
+probability error worsens. I keep both findings rather than promoting one
+favorable metric into a deployment claim.
 
 The implementation runs, but the clean development experiments have **not yet
 established a deployable neural advantage or a submission-ready method**.
@@ -54,6 +55,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does balancing exposure across annotation episodes help? | No. Twenty-four fresh heads complete 240,000 updates, but geometry and centered-image gains fall to -37.327% and -54.992%. The sampler changes the effective training objective and greatly increases static-target harm. |
 | Does exact importance correction fix that objective shift? | It removes most of the added harm, but not the prediction gap. Another 24 heads/240,000 updates give -0.032% for geometry and -0.275% for centered images; all held fits remain negative. |
 | Is gradient clipping sending training in the wrong direction? | The fixed-checkpoint training audit does not support a large direction reversal. Train-scale output conditioning removes logged clipping and most jitter, but 24 new heads still lose to CV: -0.000251%/-0.001342%. |
+| Does explicit observed image motion repair the remaining gap? | No. Another 24 heads complete 240,000 updates; quality-only/motion gains are -0.000535%/-0.000840%. Sixteen probability probes show a weak larger-excursion ranking gain but worse probability error. No new deployment. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 

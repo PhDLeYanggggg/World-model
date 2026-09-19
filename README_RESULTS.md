@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Observed Box-Motion Comparison Running (2026-09-19)
+## Observed Motion: Complete, No Forecasting Gain (2026-09-19)
 
 Fresh extraction covers all 15,430 admitted source windows, 108,010 historical
 pair uses and 23,890 unique pairs. Annotation-box support is 98.874%; surround
@@ -20,8 +20,45 @@ or SMC. [Registered design](outputs/publication_readiness_2026_09/source_box_mot
 Registration 4858403c and the pre-fit zero-radius repair 183469fe were pushed
 before fitting. The first attempted pilot stopped with zero updates; the
 repaired 100-update pilot completed in 0.300s and is included in the budget.
-Training PID 98675 is running with atomic checkpoints and a progress log.
-Aggregate predictive results remain pending. The 51 unsupported rows are kept.
+Training PID 98675 exited successfully. All 24 heads completed 240,000 updates
+in 656.347 seconds of fitting, including the pilot. The 51 unsupported rows
+are retained. No model or threshold was chosen from the held results.
+
+| Arm | Equal-site ADE gain vs CV | Conditional four-site 95% CI | Static harm, annotation px |
+| --- | ---: | --- | ---: |
+| Quality-only | -0.00053454% | [-0.00102980%, -0.00016415%] | 0.00001046 |
+| Quality + motion | -0.00084041% | [-0.00118360%, -0.00030231%] | 0.00001485 |
+
+All 24 held fits remain negative; 18 have tiny positive training gains. Adding
+motion is -0.00030587 percentage points worse than the quality control. These
+near-zero differences are residual jitter, not meaningful physical precision.
+Static percentage degradation is undefined against zero-error CV, not a 2% pass.
+[Complete trajectory results](outputs/publication_readiness_2026_09/source_box_motion_v1/conclusions.md).
+
+A separately registered diagnostic fitted 16 logistic probes without threshold
+selection. For any future annotation change, added motion has no stable benefit.
+For the larger-excursion label, AUROC improves by 0.01241, conditional interval
+[0.00667, 0.02101], but absolute AUROC is only 0.407-0.556. Brier worsens on every
+held site and both arms lose to the train-prevalence constant predictor on Brier.
+Thus the favorable ranking contrast is not a reliable switch signal.
+[Probability results and limits](outputs/publication_readiness_2026_09/source_box_motion_probe_v1/conclusions.md).
+
+The stored float32 future labels produce 739 cases above 10 pixels; exact raw
+geometry gives 728. All 11 differences lie exactly at the raw 10-pixel boundary.
+Frozen-prediction sensitivity results are disclosed, with no relabel/refit or
+replacement of the registered scores. The negative Brier conclusion persists.
+
+Verification: 23,890 exact flow-pair replays, 24 exact trajectory replays,
+16 coefficient replays, matching sampling streams, guarded normalization and
+32 target-poison input checks. Completed resumes add zero updates/fits and keep
+144 trajectory artifacts and 34 probe artifacts unchanged. All required
+processes terminated. 36 scoped tests pass; the legacy integration suite was
+not rerun because it rewrites historical outputs.
+
+Four explored source sites and overlapping windows still do not provide
+independent confirmation. No main/external/t+50 readout or new deployment.
+Next: check native-resolution event-level visual support before proposing
+another representation fit, not another threshold sweep. Goal active and unmet.
 
 ## Output Conditioning Complete: Less Jitter, Still No Dynamics Gain (2026-09-19)
 

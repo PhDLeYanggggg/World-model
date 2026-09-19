@@ -115,10 +115,26 @@ one of these as the sole causal failure. It does not prove all pixels are useles
 
 The prior native96px ETH/Hotel/Zara experiment was negative. Do not simply
 claim that higher resolution will repair SDD or repeat a threshold sweep on
-near-zero candidates. The next targeted check is whether observed box-motion
-features predict future state change in a fixed training/source-held probability
-probe, separately from trajectory direction and the zero-heavy ADE optimum.
-That follow-up is not run by this report; it needs a new fixed registration.
+near-zero candidates. A separately registered probability probe has now fitted
+16 logistic models. The motion features slightly improve larger-excursion
+ranking (AUROC difference +0.01241), but worsen Brier by0.001513 on average and
+on every held site. Absolute motion AUROC is only0.407-0.556. General nonzero
+change prediction does not improve consistently. This does not provide a safe
+gate or prove useful trajectory direction. Full probability results and the
+11-row numerical label-boundary disclosure are in
+[the complementary report](../source_box_motion_probe_v1/conclusions.md).
+
+Eighteen of24 trajectory fits improve training ADE slightly but none transfer;
+the other six do not even improve training ADE. This is evidence of limited
+source predictability/transfer for these readouts, not proof of unlearnability.
+
+The low-pass32px crop's median annotated box is9.34 by11.86pixels, smaller than
+the fixed15px flow aggregation window along both axes. Measurement support
+therefore cannot establish resolved body motion. That scale comparison is a
+post-hoc limitation, not proof it caused the failure. Before a higher-resolution
+training run, inspect whether independently defined past events retain body
+motion at native resolution, with matched regional/quality controls and no
+held-label selection. That native SDD measurement comparison is not_run.
 
 Main/external confirmation and scene-level risk calibration remain unestablished.
 No new model is deployed. Baseline rejection is a fallback, not neural success.
@@ -172,14 +188,20 @@ reports. Scoped tests and real artifact checks are reported separately.
                        ('gates.md',gates),('reproducibility.md',reproducibility)]:
         (folder/name).write_text(text)
     os.environ.setdefault('MPLCONFIGDIR','/private/tmp/m3w_motion_mpl')
+    os.environ.setdefault('XDG_CACHE_HOME','/private/tmp/m3w_motion_xdg')
     import matplotlib; matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     names = ['geometry','centered','quality','motion']
     fig, axes = plt.subplots(1,2,figsize=(10,4),layout='constrained')
     x = list(range(4)); colors=['#707070','#98704b','#327eae','#2b976a']
     axes[0].bar(x,[s[n]['equal_site_gain_percent'] for n in names],color=colors)
+    point = [s[n]['equal_site_gain_percent'] for n in names]
+    axes[0].errorbar(x, point, yerr=[
+        [s[n]['equal_site_gain_percent']-s[n]['conditional_four_site_ci95'][0] for n in names],
+        [s[n]['conditional_four_site_ci95'][1]-s[n]['equal_site_gain_percent'] for n in names]],
+        fmt='none', ecolor='black', capsize=4, linewidth=1)
     axes[0].axhline(0,color='black',linewidth=.8)
-    axes[0].set(ylabel='Equal-site ADE gain vs CV (%)',title='Four explored source sites')
+    axes[0].set(ylabel='Equal-site ADE gain vs CV (%)',title='Four explored sites: conditional 95% CI')
     axes[1].bar(x,[s[n]['static_pixel_harm'] for n in names],color=colors)
     axes[1].set(ylabel='Static absolute error (annotation pixels)',title='Zero-error CV: percentage undefined')
     for ax in axes: ax.set_xticks(x,names,rotation=20)

@@ -1,6 +1,49 @@
 # Real-Experiment Continuation Handoff
 
-## Observed Box Motion Running (2026-09-19)
+## Observed Box Motion And Probes Complete (2026-09-19)
+
+Goal active/unmet. This turn made concrete progress: fresh measured inputs,
+24 Torch trajectory fits/240,000 updates,16 fixed logistic fits, exact replays,
+reports and safe Git sync. No new deployable or submission-ready advantage.
+Registration4858403c, pre-fit repair183469fe, recovery62e3212f and probe design
+4728ac11 pushed before their respective fits. Preserve all negative evidence.
+
+Training PID98675/session69522 exit0, fitting656.347132s incl100-update pilot;
+mainlog661.721708s. Neural replay18011, analysis70073, verifier88093 all exit0.
+24 exact forecast replays,23,890 exact flow-pair replays,24 regenerated/control
+streams,12 paired streams,6 OOF recomputations,32 future-label poisons and24
+illegal training-role checks. Completed resume adds0updates,144 artifacts kept.
+51 unsupported zero-radius rows retained after pre-fit reader repair; zero
+updates/predictions occurred before that amendment. No retrospective deletion.
+
+Quality gain -0.0005345428%, CI[-0.001029797,-0.000164154]; motion gain
+-0.0008404121%, CI[-0.001183596,-0.000302310]. Motion-minus-quality -0.0003058693pp.
+All24held fits negative,18training fits weakly positive. Static absolute harm
+1.0458e-5/1.4852e-5 annotationpx; percentage undefined, not a2%pass. Four explored
+source sites/shared folds/2000conditional bootstrap, not confirmation.
+
+Probe training84001, coefficient replay91235, report19867 exit0.16 logistic
+models,31.422388s fitting, max1462/2000iterations. Larger-excursion AUROC delta
++0.0124106 but Brier worsens0.00151333, allsites; absolute AUROC0.407-0.556.
+Any-change probe no stable benefit.16 exact coefficient replays; resume0newfits,
+34artifacts unchanged.11 rows at raw exactly10px switch label due float32 target
+restoration:739 registered positives vs728 exactraw. Saved-probability raw-label
+sensitivity disclosed; no refit/selection and negative Brier persists.
+
+36 scoped tests pass. Full legacy suite not rerun because integrations rewrite
+oldreports. Aggregate SVG rendered/inspected. All required processes terminal.
+README/state/paper/runbook updated. No main/bookstore/external/t50 readout,
+deployment,Stage5C,SMC. Localnativearm64CPU4/inter-op1/workers0; no newHPCjob/check.
+Analysis2884fc1fe37bccb44d029821744b3ab4e8f9158e185bfcbb2b6a4739644f9cd7;
+verification22bb4f1c0706d5a474c9e46205fda604fec0ab669308736aff1776fdca108095.
+Probe verification6d5bb55fa39a72538df8fc57d81ce325ec35f529f1b4b6d0601b93fc7d0c38e4.
+Next NOT RUN: native-resolution SDD event-level observed body-motion support
+comparison, with regional/quality controls; don't promise higher resolution
+works or repeat threshold tuning. Current15px flow window exceeds typical
+9.34x11.86box footprint at32px; not established causal failure. Main task unchanged.
+Unrelated3019stagedfingerprint must remain c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+## Historical: Observed Box Motion Running (2026-09-19)
 
 Goal active/unmet. Registered paired quality/motion comparison, 24 heads and
 240,000 updates. Source-only 15,430 queries, four explored sites, same draw

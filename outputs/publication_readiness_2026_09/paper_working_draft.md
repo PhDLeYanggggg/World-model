@@ -961,6 +961,52 @@ confirmation. These findings motivate investigating genuinely informative past
 motion observations, not further threshold tuning of near-zero candidates.
 [Full comparison](source_conditioned_readout_v1/conclusions.md).
 
+### Observed Box-Motion Representation And Probability Probes
+
+A fixed comparison replaces frozen appearance tokens with observed regional
+flow summaries while keeping the same source cohort and training objective.
+We restore crop translation and annotation/video axis scaling, require pixel
+coverage and forward/backward consistency, and distinguish annotation-box and
+surrounding-region proxies. All 15,430 queries remain; 23,890 unique observed
+pairs supply 108,010 overlapping pair uses. These are neither independent
+events nor verified body segmentation or camera compensation.
+
+The two matched arms use quality-only or quality-plus-motion tokens with the
+same 63,960-parameter temporal readout. Twenty-four fresh fits complete 240,000
+updates over four explored sites and three seeds. Equal-site ADE gains versus
+stationary CV are -0.000535% and -0.000840%; conditional intervals are
+[-0.001030%, -0.000164%] and [-0.001184%, -0.000302%]. All held fits are negative.
+Eighteen fits improve training ADE slightly, but none transfer positively.
+Motion-minus-quality is -0.000306 percentage points. These tiny differences
+describe forecast jitter, not physically meaningful precision. All predictions
+and all observed-flow pairs replay exactly; no model is deployed.
+
+Sixteen separately registered logistic probes test whether the features contain
+information about future annotation changes, without replacing the trajectory
+endpoint. For any nonzero change, adding motion does not consistently improve
+classification. For maximum excursion above 10 annotation pixels, mean AUROC
+increases by 0.01241 (conditional interval [0.00667, 0.02101]), but absolute
+AUROC remains only 0.407-0.556. Brier and log loss worsen on every excluded site;
+both feature arms lose to a train-prevalence constant predictor on Brier.
+This weak ranking difference cannot justify a reliable safety gate or demonstrate
+trajectory direction. The prespecified probability-error contrast is negative.
+
+The probe's stored float32 target reconstruction produces 739 positives, whereas
+exact raw annotations produce 728. All 11 disagreements occur at exactly 10 raw
+annotation pixels. The original training/results are retained, and a post-hoc
+evaluation of the same frozen probabilities against raw labels is disclosed
+without refitting or selecting a result. The negative Brier finding persists.
+
+The 32px crop's median annotation box is 9.34 by 11.86 pixels, smaller than the
+fixed 15px flow aggregation window. This is a measurement limitation, not proof
+of the failure mechanism or a promise that higher resolution would work. The
+earlier native-resolution ETH/Hotel/Zara experiment was also negative. A native
+SDD event-level support comparison remains not run. Four explored source sites,
+shared training folds and retrospective supplied annotations still do not
+establish independent confirmation or strict sensor-as-of forecasting.
+[Trajectory evidence](source_box_motion_v1/conclusions.md) and
+[probability evidence](source_box_motion_probe_v1/conclusions.md).
+
 ### Past-Only Temporal Centering Control
 
 A subsequent input audit aligns all 123,440 historical query keys and finds
