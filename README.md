@@ -32,8 +32,9 @@ sampled changes the expected training objective, even with the same per-row loss
 ## Current Evidence
 
 The next registered source experiment compares observed box-motion tokens with
-a matched quality-only control. Past motion extraction is complete; predictive
-results are pending. This is an exploratory representation test, not a new
+a matched quality-only control. Past motion extraction is complete and the
+fixed 24-head training matrix is running; aggregate results are pending.
+This is an exploratory representation test, not a new
 deployment or a claim that optical flow is novel.
 
 The implementation runs, but the clean development experiments have **not yet

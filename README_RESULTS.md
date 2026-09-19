@@ -5,18 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Observed Box-Motion Comparison Registered, Training Pending (2026-09-19)
+## Observed Box-Motion Comparison Running (2026-09-19)
 
-Fresh extraction covers all15,430 admitted source windows,108,010 historical
-pair uses and23,890 unique pairs. Annotation-box support is98.874%; surround
-support99.958%. No future targets are accessed by extraction. Support is not
-motion accuracy or predictive lift. The32px crops and offline supplied boxes
+Fresh extraction covers all 15,430 admitted source windows, 108,010 historical
+pair uses and 23,890 unique pairs. Annotation-box support is 98.874%; surround
+support 99.958%. No future targets are accessed by extraction. Support is not
+motion accuracy or predictive lift. The 32px crops and offline supplied boxes
 remain limitations. Earlier ETH/Hotel/Zara flow results were negative.
 
 The fixed follow-up compares quality-only against quality+motion with the same
-63,960-parameter readout, four source folds, three seeds and240,000total updates.
-No main/bookstore/external scoring, held-driven selection, deployment,Stage5C
-orSMC. [Registered design](outputs/publication_readiness_2026_09/source_box_motion_decision.md).
+63,960-parameter readout, four source folds, three seeds and 240,000 total updates.
+No main/bookstore/external scoring, held-driven selection, deployment, Stage5C
+or SMC. [Registered design](outputs/publication_readiness_2026_09/source_box_motion_decision.md).
+Registration 4858403c and the pre-fit zero-radius repair 183469fe were pushed
+before fitting. The first attempted pilot stopped with zero updates; the
+repaired 100-update pilot completed in 0.300s and is included in the budget.
+Training PID 98675 is running with atomic checkpoints and a progress log.
+Aggregate predictive results remain pending. The 51 unsupported rows are kept.
 
 ## Output Conditioning Complete: Less Jitter, Still No Dynamics Gain (2026-09-19)
 

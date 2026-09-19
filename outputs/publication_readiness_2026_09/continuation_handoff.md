@@ -1,5 +1,29 @@
 # Real-Experiment Continuation Handoff
 
+## Observed Box Motion Running (2026-09-19)
+
+Goal active/unmet. Registered paired quality/motion comparison, 24 heads and
+240,000 updates. Source-only 15,430 queries, four explored sites, same draw
+streams and uniform-risk importance loss. No main/bookstore/external readout.
+Source extraction complete: 23,890 pairs, 108,010 uses; support is not prediction.
+Prior ETH/Hotel/Zara native-flow negative results explicitly retained.
+
+Registration 4858403c pushed; pre-fit amendment 183469fe pushed. First pilot
+stopped before optimizer or forecasts because 51 rows have zero radius and
+false support. Reader now retains them with unavailable motion zeroed, keeping
+the old zero-forecast rule. Repaired pilot PID98517/session16483 exit0,
+100 updates/0.300016s included in budget. Full PID98675/session69522 is running.
+Private path data/stage_cvpr2027_experiments/source_box_motion_v1 contains
+training.log, fit_heartbeat.json, checkpoints and immutable trial receipts.
+Do not start duplicate training or edit bound code/configs while running.
+
+After exit0 run the same trainer with --replay, analyze_m3w_source_box_motion,
+verify_m3w_source_box_motion and report_m3w_source_box_motion. All take
+--registration configs/m3w_source_box_motion_v1.json except report renderer.
+Verifier/renderer added and compiled, not run yet. New flow tests pass; full
+scoped suite will be rerun at completion. No aggregate result or deployment.
+Stage5C/SMC off. Unrelated staged fingerprint must remain c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Readout Conditioning Complete, Still No Neural Gain (2026-09-19)
 
 Goal active/unmet. This turn is progress, not a no-progress turn. All24new heads/
