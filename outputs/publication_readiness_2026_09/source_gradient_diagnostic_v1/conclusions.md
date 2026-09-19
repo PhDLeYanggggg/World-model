@@ -44,6 +44,24 @@ and original checkpoints remain private local artifacts. The next comparison
 is fixed in [its decision](../source_conditioned_readout_decision.md), not
 selected from new held scores.
 
+## Why More Movement Alone Cannot Help
+
+The four training complements have fully static future-label fractions of
+61.3775%, 52.5129%, 53.1958% and 55.9112%, respectively. These are loss-audit
+statistics, not inference features. For a single unconditional trajectory z
+used on every row, triangle inequality gives
+
+`mean_ADE(z, y) - mean_ADE(0, y) >= (2*p_static - 1) * mean_t ||z_t||`.
+
+The coefficient is positive in each complement (0.22755, 0.05026, 0.06392,
+0.11822), so unconditional movement cannot improve this uniform training risk.
+The existing positive loss-scale divisor does not change that conclusion.
+This elementary bound is **not** a new theoretical contribution, and does not
+apply to an input-conditioned model as if every row had the same prediction.
+It does not prove that the histories are uninformative. It explains why a
+successful repair must discover conditional motion evidence instead of merely
+increasing average displacement or reweighting future-moving labels.
+
 ## Boundaries
 
 Source development only; four already explored sites and shared training folds.

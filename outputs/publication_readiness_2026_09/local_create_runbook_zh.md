@@ -3,7 +3,34 @@
 最近更新：2026-09-19。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：重要性加权对照实验
+## 当前：梯度诊断与输出尺度对照已完成
+
+对上一轮24个固定模型做了训练集梯度诊断，没有新打分留出集。完整梯度和6144个
+批梯度支持的是输出层集中，而不是明显的平均方向翻转。所有诊断精确重算，
+已完成任务恢复零新计算，75个科学产物/检查点哈希不变。
+
+随后固定方案5aa189b1在训练前推送，重训24个输出尺度调整模型，24万更新全部完成。
+训练PID92355已正常退出；累计拟合676.292秒，包括100更新试跑。最后一层按训练
+分组常数调整，不改预测边界、损失、采样或指标。日志裁剪比例降到0%，但几何/
+图像相对静止基线的改善仍为-0.000251%/-0.001342%，不是预测成功。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_source_gradients.py --registration configs/m3w_source_gradient_diagnostic_v1.json
+.venv-pytorch/bin/python scripts/verify_m3w_source_gradients.py
+.venv-pytorch/bin/python scripts/run_m3w_source_conditioned_readout.py --registration configs/m3w_source_conditioned_readout_v1.json
+.venv-pytorch/bin/python scripts/run_m3w_source_conditioned_readout.py --registration configs/m3w_source_conditioned_readout_v1.json --replay
+.venv-pytorch/bin/python scripts/analyze_m3w_source_conditioned_readout.py --registration configs/m3w_source_conditioned_readout_v1.json
+.venv-pytorch/bin/python scripts/verify_m3w_source_conditioned_readout.py --registration configs/m3w_source_conditioned_readout_v1.json
+.venv-pytorch/bin/python scripts/report_m3w_source_conditioned_readout.py --registration configs/m3w_source_conditioned_readout_v1.json
+```
+
+24个新模型的训练/留出预测精确回放，抽样与对照一致，6份跨折标签重新计算。
+完成后再运行训练入口零新增更新，82个产物不变；33项针对性测试通过，未重跑
+全量旧测试。大缓存、梯度数组和检查点只在本地，不上传Git。原始绑定文件不能
+直接修改后沿用同一实验身份。本轮无需CREATE；既有远程认证问题未重新核验。
+四个源场景结论仍仅限探索性开发，主评估/外部封存、Stage5C/SMC不变。
+
+## 历史：重要性加权对照实验
 
 上一轮“每个标注事件等概率”抽样改变了训练目标，造成显著退化。这轮保留相同
 抽样序列，并给每个样本损失乘以 `1/(训练行数 * 抽样概率)`。不按批内权重和

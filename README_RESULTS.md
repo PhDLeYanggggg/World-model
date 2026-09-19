@@ -5,7 +5,7 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Training-Gradient Diagnosis and Registered Readout Repair (2026-09-19)
+## Output Conditioning Complete: Less Jitter, Still No Dynamics Gain (2026-09-19)
 
 Fresh training-only audit of all 24 fixed importance-corrected heads: 24 full
 population gradients, 6,144 batch probes, all exactly replayed. Clipped mean
@@ -15,12 +15,32 @@ energy lies in the last output layer. This is a conditioning lead, not proof
 that clipping caused the prediction failure. No new held readout or updates.
 [Diagnostic](outputs/publication_readiness_2026_09/source_gradient_diagnostic_v1/conclusions.md).
 
-The next fixed24-head comparison divides the pre-bound readout by a train-only
-scale; function class, output bounds, objective, samples and budget are retained.
-Eleven new focused tests pass. Native-arm64 training is now running after the
-included 100-update pilot; predictive readout and verification are pending.
+The registered24-head comparison is now complete:240,000updates, same objective,
+samples/budget/forecast class and bounds, train-only pre-bound readout scale.
+Both arms remove logged clipping (100% to0%), but still do not beat CV.
+
+| Arm | Equal-site gain vs CV | Conditional four-site95%CI | Static harm (annotation px) |
+| --- | ---: | --- | ---: |
+| Conditioned geometry | -0.00025066% | [-0.00063107%,-0.00002717%] | 0.00000644 |
+| Conditioned centered images | -0.00134153% | [-0.00365502%,-0.00004997%] | 0.00004117 |
+
+All24held fits are negative. Compared with unconditioned controls the improvements
+are+0.031806/+0.273252pp, but they mostly remove tiny static jitter. Both nonzero
+target gains remain negative. Binary candidate/CV oracle gains only0.0000303%/
+0.0003394%; another safety threshold cannot turn these candidates into a strong
+predictor. Easy percentage is undefined against zero error, not a2%pass.
+
+Training PID92355 exited0,676.292s fitting includingpilot.24exact forecasts
+replay.33scopedtests pass, including exact interrupted conditioning-model resume.
+No full legacy-suite rerun. Registeredbeforefit as5aa189b1; no held-driven choice.
 [Registration](outputs/publication_readiness_2026_09/source_conditioned_readout_decision.md).
-No new deployment or independent confirmation; Stage5C/SMC remain off.
+[Results](outputs/publication_readiness_2026_09/source_conditioned_readout_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/source_conditioned_readout_v1/failure_analysis.md).
+
+These are four explored source sites, not independent confirmation or a new
+main/external result. No deployment/Stage5C/SMC. Next: assess genuinely new past
+motion evidence before another predictor experiment, not another clip/threshold
+sweep. Goal remains active and unmet.
 
 ## Importance Correction Complete: Large Harm Repaired, No Neural Gain (2026-09-19)
 
@@ -67,7 +87,8 @@ processes terminal. Figure inspected. CPUarm64/4threads/inter-op1/workers0.
 
 Same four explored sites/shared folds, three seeds,2,000conditionalbootstrap;
 not independent confirmation. No main/t+50/external scoring, new deployment,
-Stage5C or SMC. Next gradient/conditioning audit not_run. Goal remains unmet.
+Stage5C or SMC. The gradient/conditioning follow-up was not yet run at that
+checkpoint; its completed results are now recorded above. Goal remains unmet.
 [Results](outputs/publication_readiness_2026_09/source_importance_sampling_v1/conclusions.md),
 [failure analysis](outputs/publication_readiness_2026_09/source_importance_sampling_v1/failure_analysis.md),
 [gates](outputs/publication_readiness_2026_09/source_importance_sampling_v1/gates.md).

@@ -47,7 +47,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does removing shared appearance repair the temporal model? | It reduces harm, but does not beat the baseline. Twenty-four fresh heads give -0.762% for centered input and -1.756% with RMS normalization; all held fits remain negative. |
 | Does balancing exposure across annotation episodes help? | No. Twenty-four fresh heads complete 240,000 updates, but geometry and centered-image gains fall to -37.327% and -54.992%. The sampler changes the effective training objective and greatly increases static-target harm. |
 | Does exact importance correction fix that objective shift? | It removes most of the added harm, but not the prediction gap. Another 24 heads/240,000 updates give -0.032% for geometry and -0.275% for centered images; all held fits remain negative. |
-| Is gradient clipping sending training in the wrong direction? | The fixed-checkpoint training audit does not support a large direction reversal. Final-layer gradient concentration instead motivates a registered output-conditioning comparison; training results are pending. |
+| Is gradient clipping sending training in the wrong direction? | The fixed-checkpoint training audit does not support a large direction reversal. Train-scale output conditioning removes logged clipping and most jitter, but 24 new heads still lose to CV: -0.000251%/-0.001342%. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -197,13 +197,15 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 ## Next Step
 
 Improve candidate utility before fitting another risk head. Exact importance
-correction is now tested and the large objective-shift failure is repaired, but
-the models still have almost no useful candidate/CV oracle headroom. I will not
-turn that into another threshold sweep. The next training-only check will
-separate full-population gradients, static/moving contributions and clipping
-effects before changing another optimization factor. This diagnostic has not
-run. Better numerical conditioning alone would not establish useful dynamics.
-More weight on rare windows cannot create independent events or missing cues.
+correction and output conditioning are now tested. They repair objective shift
+and reduce numerical jitter, but the models still have almost no useful
+candidate/CV oracle headroom. I will not turn that into another threshold sweep.
+The [completed comparison](outputs/publication_readiness_2026_09/source_conditioned_readout_v1/conclusions.md)
+makes the distinction clear: better optimization does not necessarily produce
+better dynamics. The next question is whether raw past visual motion contains
+predictive cues that frozen image pooling loses, after accounting for crop
+movement and occlusion. That input investigation has not yet run. More weight
+on rare windows cannot create independent events or missing cues.
 
 The loss, annotation, visual-feature, temporal-centering and episode-sampling
 controls remain available, including their negative results. No policy or test

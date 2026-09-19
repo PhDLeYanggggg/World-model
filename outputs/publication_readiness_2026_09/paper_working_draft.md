@@ -1,6 +1,6 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-18. Method proposal with completed three-seed development
+Working draft, evidence reconciled 2026-09-19. Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
 tiny guarded development gains. None supports a new deployment or the proposed
@@ -926,11 +926,40 @@ deployment is claimed.
 
 All logged gradients exceed the unchanged norm cap 5; logging is at update 1 and
 every 100 updates, not every gradient. This motivates a separate training-only
-conditioning diagnosis, which has not run, rather than attributing every failure
-to clipping. All 24 forecasts replay exactly and zero-update resume preserves
+conditioning diagnosis, subsequently completed below, rather than attributing every
+failure to clipping. All 24 forecasts replay exactly and zero-update resume preserves
 84 artifacts. Same explored sites/shared folds, offline annotation and nonmetric
 raw-frame limitations apply. No new main/outer or independent result is read.
 [Complete comparison and limitations](source_importance_sampling_v1/conclusions.md).
+
+### Gradient Diagnosis and Readout Conditioning
+
+At all24frozen final checkpoints, we compute full uniform-training gradients and
+6,144 minibatch-gradient probes, without new held forecasts or optimizer steps.
+Clipped-mean/population cosines are at least0.99858/0.99930 for uniform/corrected
+episode proposals. This does not support a large direction reversal at these
+iterates. At least99.99839% of squared gradient energy is in the final layer;
+training restoration-radius/loss-scale medians are527-627. Nonsmooth static ADE
+can have a large gradient near zero; these values alone do not prove a bug.
+
+A registered single-factor comparison divides the pre-bound readout by the
+training-derived median scale. Multiplying the last affine weights and bias by
+that constant restores the original forecast, preserving the function class and
+bounds. The parameterization changes optimizer geometry, not only clipping.
+All24heads complete240,000updates with matched samples, seeds and objectives.
+Logged clipping falls from100% to0%, and the static forecast jitter falls sharply.
+However, equal-site gains remain-0.000251%/-0.001342%, conditional intervals
+[-0.000631,-0.000027]/[-0.003655,-0.000050]. Every held fit remains negative.
+Nonzero-target gains are negative and candidate/CV oracle gains are only
+0.0000303%/0.0003394%. Improvement against damaged neural controls is not a
+forecasting advantage against the baseline, and micro-pixel differences should
+not be interpreted as meaningful physical precision. No new deployment follows.
+
+Exact replay, guarded roles, future-label poison checks and zero-update resume
+pass. The four explored sites/shared folds cannot provide independent
+confirmation. These findings motivate investigating genuinely informative past
+motion observations, not further threshold tuning of near-zero candidates.
+[Full comparison](source_conditioned_readout_v1/conclusions.md).
 
 ### Past-Only Temporal Centering Control
 

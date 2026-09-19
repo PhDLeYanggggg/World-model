@@ -1,6 +1,42 @@
 # Real-Experiment Continuation Handoff
 
-## Readout Conditioning Live (2026-09-19)
+## Readout Conditioning Complete, Still No Neural Gain (2026-09-19)
+
+Goal active/unmet. This turn is progress, not a no-progress turn. All24new heads/
+240000updates completed. Pre-fit registration5aa189b1, recovery toolsfc9ee9c5
+both pushed. MainPID92355/session48274 exit0, fit676.292414s including100pilot;
+mainlog684.479071s. Replay session19722, analysis29863 exit0. Verifier4829 exit0,
+resumechild94801 adds0updates,82artifacts unchanged. All required processes terminal.
+24exactforecasts/streams/controlmatches,12pairedstreams,6OOFarchives,32futurelabel
+poisons,24rolechecks.33scopedtests pass; no fulllegacy suite. Localarm64CPU4,
+interop1/workers0;noHPCjob. CREATEstatus not refreshed. No cache/checkpointinGit.
+
+Fresh gradientdiagnostic:24fulltrain gradients,6144batchprobes,all24exactreplays.
+Verifier83026 exit0; child93441 resumes0freshprobes,75artifacts unchanged.
+No large final-iterate clipped direction reversal; minimum headenergy99.99839%.
+Static fractions52.5-61.4%; unconditionalmovement trianglebound positive, not
+proofconditionalmodel cannotimprove. No new held forecasts in that audit.
+
+Freshreadoutrepair: train-derived pre-bound scale527-627, unchangedfunctionclass,
+bounds, importance loss, stream andbudget. All logged clipping100%->0%. Gains:
+geometry-0.000250656%,CI[-0.000631070,-0.000027168]; centered-0.001341526%,
+CI[-0.003655022,-0.000049966]. All24heldnegative. Staticpixelharm6.442e-6/4.117e-5,
+easypercentageundefined. Nonzero-target gainsnegative. Candidate/CVoracleonly
+0.00003027%/0.00033943%. Better numerical conditioning, not useful dynamics.
+Conditional4exploredsites/3seeds/2000bootstrap/sharedtraining, notconfirmation.
+
+Configffe3cbe194cc8a86509dafdc96169944df7eabb2c706a01fb98eb13f5d666ed4;
+analysisad2ad3eb0d31fdf46b016cec3b5594e5d7442d6904fd17ca384e2de0e10e1671;
+verificationca0735a510803a695813d73b1856714f421c83e6aa1e2f6d7af2e32aa55aa696.
+Report folder source_conditioned_readout_v1; gradientdiagnostic_v1 verification
+4dfe7bc0aa41babd95a12e6aaf4b2388dc2748ea7348296f0773135287b269bf.
+Next NOT RUN: audit new past visual motion support/information lost by frozen
+pooling, camera/crop movement and occlusion; only then register representation
+comparison. Do not repeat clip/threshold sweeps on unchanged nearzero forecasts.
+Main/outer/bookstore/externalclosed; no deployment/Stage5C/SMC. Preserve unrelated
+3019staged fingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+## Historical: Readout Conditioning Live (2026-09-19)
 
 Previous negative result retained. Fresh 24-model training-gradient diagnostic
 and exact replay completed, 6144 minibatch probes, zero new held predictions.
