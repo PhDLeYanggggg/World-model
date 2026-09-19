@@ -5,6 +5,17 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Motion Measurement Registered (2026-09-19)
+
+The next source-only comparison separates nominal motion-window extent from
+image resolution. It recovers the same past crops at96px, verifies their exact
+reduction to the old32px inputs, and compares four fixed measurements before
+spending another neural forecasting budget.64 probability probes are specified
+in advance, with raw-coordinate supervision, matched quality controls and no
+held-driven threshold search. No new result yet. The full primary benchmark,
+external confirmation and submission evidence remain incomplete.
+[Design and limitations](outputs/publication_readiness_2026_09/source_motion_resolution_decision.md).
+
 ## Observed Motion: Complete, No Forecasting Gain (2026-09-19)
 
 Fresh extraction covers all 15,430 admitted source windows, 108,010 historical
