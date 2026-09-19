@@ -17,7 +17,8 @@ that clipping caused the prediction failure. No new held readout or updates.
 
 The next fixed24-head comparison divides the pre-bound readout by a train-only
 scale; function class, output bounds, objective, samples and budget are retained.
-Eleven new focused tests pass. Training and predictive verification are pending.
+Eleven new focused tests pass. Native-arm64 training is now running after the
+included 100-update pilot; predictive readout and verification are pending.
 [Registration](outputs/publication_readiness_2026_09/source_conditioned_readout_decision.md).
 No new deployment or independent confirmation; Stage5C/SMC remain off.
 

@@ -1,5 +1,24 @@
 # Real-Experiment Continuation Handoff
 
+## Readout Conditioning Live (2026-09-19)
+
+Previous negative result retained. Fresh 24-model training-gradient diagnostic
+and exact replay completed, 6144 minibatch probes, zero new held predictions.
+No large clipped-mean direction reversal at final iterates; final layer holds
+at least99.99839% squared gradient energy. Training static/nonzero contributions
+are positively aligned.21/24heads prefer zero on the fixed training shrink grid.
+
+Single-factor readout repair registered and pushed as5aa189b1 before training.
+Divides pre-bound raw output by train-only median radius/loss_scale; same forecast
+function class/bounds, importance objective, sampler/budget/folds/seeds.
+Pilot100updates PID91933 completed0.289250s, included in240000updates,noforecast.
+FullPID92355/session48274 is live; checkpoint every200, private log/heartbeat:
+data/stage_cvpr2027_experiments/source_conditioned_readout_v1/.
+Do not start another trainer after a tool timeout. After exit0: same entry
+--replay, analyze, verify, report. Verifier/renderer added and compiled, not run.
+32scopedtests pass before the additional resume fixture. No aggregate result yet.
+Keep bound code/configs frozen. Main/outer/Stage5C/SMC closed;goal active/unmet.
+
 ## Importance Correction Complete, No Forecast Gain (2026-09-19)
 
 Goalactive/unmet. Prior turn was progress:a0fa5f1d sampler failure+diagnosis.
