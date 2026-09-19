@@ -11,7 +11,10 @@ New repair: retain the equal-episode exposure and original evaluation, but weigh
 each sampled row by 1/(N_train*p_train). No self-normalization or factor clipping.
 Same geometry/centered arms, four source folds, three seeds, 24 heads/240k updates.
 Old uniform and uncorrected controls are cached_verified, not newly trained.
-Training has not yet run. [Fixed design](outputs/publication_readiness_2026_09/source_importance_sampling_decision.md).
+Registration b2276809 was pushed before fitting. The included 100-update pilot
+completed in0.218seconds, without forecasts. Full training PID84237 is live,
+with200-update atomic checkpoints and heartbeat; no aggregate result yet.
+[Fixed design](outputs/publication_readiness_2026_09/source_importance_sampling_decision.md).
 
 Fresh pre-fit checks: four actual training complements reproduce uniform expected
 loss (max difference2.23e-16) and unclipped gradient (1.09e-19) with a fixed offset

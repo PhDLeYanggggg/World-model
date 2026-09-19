@@ -1,5 +1,15 @@
 # Real-Experiment Continuation Handoff
 
+## Importance-Corrected Training Live (2026-09-19)
+
+Registration b2276809 pushed before fitting. Included100-update pilotPID84223
+exited0,0.217855seconds,no forecasts. FullPID84237/session98393 live with progress,
+not hung. Private source_importance_sampling_v1/training.log andheartbeat.json.
+Do not duplicate process on timeout.24heads/240000fixed updates; checkpointer200.
+Verification and renderer helpers added/compiled, not yet run. After complete:
+same entry --replay, analyze, verify and report scripts. Keep bound code unchanged.
+37scopedtests already pass. No new aggregate score or deployment claim.
+
 ## Importance-Corrected Sampling Registered (2026-09-19)
 
 Previous turn progress:a0fa5f1d pushed and live remote reverified. Fixed new24heads/
