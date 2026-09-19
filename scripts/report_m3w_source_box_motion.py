@@ -206,6 +206,8 @@ reports. Scoped tests and real artifact checks are reported separately.
     axes[1].set(ylabel='Static absolute error (annotation pixels)',title='Zero-error CV: percentage undefined')
     for ax in axes: ax.set_xticks(x,names,rotation=20)
     fig.savefig(folder/'comparison.svg')
+    svg_path = folder/'comparison.svg'
+    svg_path.write_text('\n'.join(line.rstrip() for line in svg_path.read_text().splitlines())+'\n')
     fig.savefig('/private/tmp/m3w_source_box_motion_comparison.png',dpi=160)
     plt.close(fig)
     print(json.dumps(dict(verdict=verdict, fit_seconds=seconds, extraction_seconds=extraction_seconds)))
