@@ -5,6 +5,19 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Observed Box-Motion Comparison Registered, Training Pending (2026-09-19)
+
+Fresh extraction covers all15,430 admitted source windows,108,010 historical
+pair uses and23,890 unique pairs. Annotation-box support is98.874%; surround
+support99.958%. No future targets are accessed by extraction. Support is not
+motion accuracy or predictive lift. The32px crops and offline supplied boxes
+remain limitations. Earlier ETH/Hotel/Zara flow results were negative.
+
+The fixed follow-up compares quality-only against quality+motion with the same
+63,960-parameter readout, four source folds, three seeds and240,000total updates.
+No main/bookstore/external scoring, held-driven selection, deployment,Stage5C
+orSMC. [Registered design](outputs/publication_readiness_2026_09/source_box_motion_decision.md).
+
 ## Output Conditioning Complete: Less Jitter, Still No Dynamics Gain (2026-09-19)
 
 Fresh training-only audit of all 24 fixed importance-corrected heads: 24 full
