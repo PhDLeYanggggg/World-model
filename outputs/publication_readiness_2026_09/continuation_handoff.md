@@ -1,5 +1,25 @@
 # Real-Experiment Continuation Handoff
 
+## Native Motion Resolution Running (2026-09-19)
+
+Goal active/unmet. Prior turn was progress, not a no-progress turn. Fixed 2x2
+resolution/window information test registered and pushed as7afef428 before new
+decode/fit. Same15,430queries, four explored source sites,29recordings; primary
+and outer/external readouts unchanged/closed.64fixed probability probes planned,
+exact raw future labels only for supervision. No new neural forecasting claim.
+
+Native decode pilot PID5164/session88608 completed:1,390crops in35.920147s,
+every lowpass reduction exact. Full continuation PID5484/session58902 is running.
+Do not duplicate it. Per-record receipts and heartbeat under private
+data/stage_cvpr2027_experiments/source_motion_resolution_v1. No runtime fault;
+63GiBfree. Native arm64CPU4,workers0.48scoped tests pass.
+
+After decode exit0, run build_m3w_source_motion_resolution, then fixed probe,
+flow/probe --replay, verifier, report renderer. These helpers are implemented;
+their real verification and outcomes are not yet run. See local runbook.
+No Stage5C/SMC, deployment or submission readiness. Preserve unrelated staged
+fingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Observed Box Motion And Probes Complete (2026-09-19)
 
 Goal active/unmet. This turn made concrete progress: fresh measured inputs,

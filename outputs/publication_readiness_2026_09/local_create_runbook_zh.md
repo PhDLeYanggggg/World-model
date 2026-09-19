@@ -3,7 +3,28 @@
 最近更新：2026-09-19。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：过去图像运动对照与概率探针已完成
+## 当前：原始分辨率运动检查运行中
+
+固定方案 `7afef428` 已在新提取和训练前推送。首段录像实际耗时35.92秒，
+1,390个原生裁剪均精确还原旧32像素RGB和覆盖计数。剩余28段由PID5484继续，
+不要重复启动。每段独立保存校验记录；进程中断后先确认退出，再用相同命令恢复。
+48项针对性测试通过。此时没有新预测结果，更没有新部署模型。
+
+```bash
+.venv-pytorch/bin/python scripts/prepare_m3w_source_native_motion.py
+.venv-pytorch/bin/python scripts/build_m3w_source_motion_resolution.py
+.venv-pytorch/bin/python scripts/probe_m3w_source_motion_resolution.py
+.venv-pytorch/bin/python scripts/build_m3w_source_motion_resolution.py --replay
+.venv-pytorch/bin/python scripts/probe_m3w_source_motion_resolution.py --replay
+.venv-pytorch/bin/python scripts/verify_m3w_source_motion_resolution.py
+.venv-pytorch/bin/python scripts/report_m3w_source_motion_resolution.py
+```
+
+缓存和逐行预测在私有 `data/stage_cvpr2027_experiments/source_motion_resolution_v1`，
+不上传Git。只有29段原有训练录像参与；bookstore、主评价、外部读数仍封存。
+64个固定概率探针不是神经动力学主实验。全部对照需报告，不能挑选好看的AUROC。
+
+## 历史：过去图像运动对照与概率探针已完成
 
 按固定方案完成了 24 个轨迹头、24 万次更新，以及 16 个逻辑回归概率探针。
 没有缩减样本或训练预算。所有 15,430 个窗口保留，23,890 对过去图像运动重新

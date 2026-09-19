@@ -12,7 +12,10 @@ image resolution. It recovers the same past crops at96px, verifies their exact
 reduction to the old32px inputs, and compares four fixed measurements before
 spending another neural forecasting budget.64 probability probes are specified
 in advance, with raw-coordinate supervision, matched quality controls and no
-held-driven threshold search. No new result yet. The full primary benchmark,
+held-driven threshold search. The first real decode takes35.92seconds for1,390
+crops; every reduced RGB/coverage array matches exactly. The remaining28records
+are running locally with record-level recovery.48targeted tests pass; no new
+predictive result yet. The full primary benchmark,
 external confirmation and submission evidence remain incomplete.
 [Design and limitations](outputs/publication_readiness_2026_09/source_motion_resolution_decision.md).
 
