@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 import torch
 
-from src.world_model.m3w_source_box_motion_head import BoxMotionDynamics
+from src.world_model.m3w_source_box_motion_head import BoxMotionDynamics, supported_motion_tokens
 from src.world_model.m3w_source_importance_sampling import fit_importance_candidate
 
 
@@ -40,3 +40,13 @@ def test_same_parameter_count_zero_start_and_exact_resume(tmp_path):
 @pytest.mark.parametrize('gain', [0, -1, float('nan'), float('inf')])
 def test_invalid_gain_rejected(gain):
     with pytest.raises(ValueError): BoxMotionDynamics(gain)
+
+
+def test_unsupported_zero_radius_is_retained_not_divided_or_dropped():
+    raw = np.ones((2, 7, 19), np.float32)
+    rotation = np.broadcast_to(np.eye(2), (2, 2, 2))
+    result = supported_motion_tokens(raw, rotation, np.ones(2), np.array([0., 2.]), np.array([False, True]))
+    assert result.shape == raw.shape and np.isfinite(result).all()
+    assert not result[0, :, :10].any()
+    np.testing.assert_array_equal(result[0, :, 10:], 1)
+    np.testing.assert_allclose(result[1, :, :10], .5)

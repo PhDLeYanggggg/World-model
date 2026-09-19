@@ -64,3 +64,14 @@ matched contrast. Positive flow amplitude alone is not predictive lift.
 No deployment, primary-protocol change, Stage5C, SMC, seconds/metric/true3D or
 foundation claim. A failed comparison does not prove that higher-resolution
 perception or all visual information is useless.
+
+## Pre-Fit Reader Amendment
+
+The first real-data pilot stopped before constructing an optimizer or scoring
+any predictions:51 admitted rows have zero past restoration radius and an
+existing false support mask. These are not missing data to delete. The reader
+now uses a harmless arithmetic denominator for those rows and zeros their
+motion channels, retains their quality channels and preserves the original
+zero-forecast support rule. No training budget, labels, split or endpoint was
+changed. The initial registration is retained in Git4858403c; this amendment
+is committed before the first successful training pilot.

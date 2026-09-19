@@ -6,6 +6,15 @@ from src.world_model.m3w_source_pretrained_temporal import TemporalSourceDynamic
 from src.world_model.m3w_source_box_motion import motion_tokens, fit_motion_normalizer, token_payload
 
 
+def supported_motion_tokens(raw, rotation, native_scale, radius, support):
+    if (support.dtype != bool or support.shape != radius.shape or np.any(radius < 0)
+            or np.any(support & (radius <= 0))):
+        raise ValueError('Supported restoration rows need positive past radius')
+    result = motion_tokens(raw, rotation, native_scale, np.where(support, radius, 1.))
+    result[~support, :, :10] = 0
+    return result
+
+
 class BoxMotionDynamics(TemporalSourceDynamics):
     def __init__(self, gain):
         if not np.isfinite(gain) or gain < 1:
@@ -26,7 +35,8 @@ class BoxMotionCorpus:
         np.testing.assert_array_equal(self.ids, cached.ids)
         self.lookup = np.repeat(np.arange(len(self.ids))[:, None], 8, 1)
         loc = self.ids-data.nmain
-        self.tokens = motion_tokens(raw, data.rotation[loc], data.native_scale[loc], data.radius[loc])
+        self.tokens = supported_motion_tokens(raw, data.rotation[loc], data.native_scale[loc],
+                                             data.radius[loc], data.support[loc])
         self.normalizer = None
 
     def configure(self, train):
