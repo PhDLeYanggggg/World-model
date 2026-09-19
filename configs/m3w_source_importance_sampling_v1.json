@@ -1,0 +1,60 @@
+{
+  "registration_path": "configs/m3w_source_importance_sampling_v1.json",
+  "role": "training_only_uniform_risk_importance_repair",
+  "parent_registration": "configs/m3w_source_pretrained_temporal_v1.json",
+  "event_audit": "outputs/publication_readiness_2026_09/source_event_support_v1/audit.json",
+  "centered_control_report": "outputs/publication_readiness_2026_09/source_temporal_centered_v1/report.json",
+  "episode_control_report": "outputs/publication_readiness_2026_09/source_episode_sampler_v1/report.json",
+  "sites": [
+    "coupa",
+    "deathCircle",
+    "gates",
+    "hyang"
+  ],
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "arms": [
+    "geometry",
+    "centered"
+  ],
+  "models": 24,
+  "updates": 240000,
+  "training": {
+    "start_step": 2000,
+    "updates": 10000,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 200
+  },
+  "objective": "uniform_row_ADE_exact_inverse_probability_no_self_normalization",
+  "bootstrap_seed": 38113,
+  "bootstrap_resamples": 2000,
+  "selection": false,
+  "new_deployment": false,
+  "main_primary_changed": false,
+  "stage5c_executed": false,
+  "smc_enabled": false,
+  "output": "data/stage_cvpr2027_experiments/source_importance_sampling_v1",
+  "reports": "outputs/publication_readiness_2026_09/source_importance_sampling_v1",
+  "bindings": {
+    "src/world_model/m3w_source_importance_sampling.py": "fc3772cba22b8c4a8c0eb88288613603ddb3cb635a40f326db3c2b32c33b73b4",
+    "scripts/run_m3w_source_importance_sampling.py": "80489dd718db3585f7ad009b463e7b5c4dcaaa6972b492571c277cab12ded25d",
+    "scripts/analyze_m3w_source_importance_sampling.py": "fbb83fe620f23a3cd54665b42835aa4e9bb758206eefe68ddd53cab2fc0dcd2d",
+    "tests/test_m3w_source_importance_sampling.py": "bd68dddc326e0c68df876dd8851e2edce5078b037bedcfe90b780ec4b76163bd",
+    "outputs/publication_readiness_2026_09/source_importance_sampling_decision.md": "9df3cb7e6e6b1afd175969ea16f2f5785f62f29b09dc40f407fd81837d7a52da",
+    "configs/m3w_source_episode_sampler_v1.json": "d9f289f42d522289295ab1d8d584f3fbe49282397f36bf8b9439f187173e6cd5",
+    "scripts/run_m3w_source_episode_sampler.py": "6ba4229f124ea41a3ac1229c96f037738869ed84ac211e6e0595e96730df94d2",
+    "outputs/publication_readiness_2026_09/source_episode_sampler_v1/report.json": "eb5b89a116b54b0582c539456759ffaaa015946c2a7d1f38256cf4356abf9269",
+    "outputs/publication_readiness_2026_09/source_episode_sampler_v1/analysis.json": "07caff5827382ecb5392309fee8265e5a21cdd9a23cb290e0df690a567219144",
+    "outputs/publication_readiness_2026_09/source_episode_sampler_v1/verification.json": "8463ac57b5f359100e57157e8faf06fa0a64d0412614995a84ab3a830c363222",
+    "src/world_model/m3w_source_episode_sampler.py": "7833ffe219afed62e16244ed12f0c40b597b2def23cf60b6314a4783ddbe6ff0",
+    "src/world_model/m3w_source_temporal_centered.py": "e102b781c37618ee454e4cbdd5c647cb8b577985661eefc56a86635dbc20b425",
+    "configs/m3w_source_pretrained_temporal_v1.json": "95823a77da228ea82d4ea39efdc1d067d9def86c3d7262c78acd0e7642edc5c6",
+    "outputs/publication_readiness_2026_09/source_event_support_v1/audit.json": "9cda35791fb118cb97e40e6d9fc0d264a3b87c42703e2a8efd5e559adea044fa"
+  }
+}

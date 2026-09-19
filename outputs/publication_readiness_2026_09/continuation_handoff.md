@@ -1,5 +1,23 @@
 # Real-Experiment Continuation Handoff
 
+## Importance-Corrected Sampling Registered (2026-09-19)
+
+Previous turn progress:a0fa5f1d pushed and live remote reverified. Fixed new24heads/
+240kupdates, same sampler, geometry+centered, sites/seeds/budget. Only per-row
+inverse-probability factor changes; same original eval. Fresh actual training-fold
+expected-loss/unclipped-gradient checks pass.37scopedtests pass incl exact resume,
+uniform-trainer equivalence, self-normalization bias sensitivity. No fitting yet.
+Config configs/m3w_source_importance_sampling_v1.json SHA
+4a1974e1ca3890efa9fcdd91fa430d31fc2194cfbade9ecc7e860aad2f1eddca.
+Source registration/decision and checks committed before pilot. Run
+scripts/run_m3w_source_importance_sampling.py --registration <config>
+--trial coupa_geometry_seed17 --stop-at100 (separate flag/value in shell), then
+full same entry.100updatepilot included,no forecast. Replay then analyze afterward.
+Keep bound files unchanged. Objective expectation is not optimizer unbiasedness.
+No main/outer/independent readout. Need exact verification/report after completion.
+Nativearm64CPU4/inter-op1/workers0.64GiBfree. Priorcomparablefit531seconds,
+local feasible. CREATE status historical/unreverified,no job. Goalactive/unmet.
+
 ## Equal-Episode Experiment Complete, Negative (2026-09-19)
 
 Goal remains active/unmet. All 24 new heads/240,000 updates complete, fresh_run.

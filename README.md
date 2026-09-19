@@ -188,8 +188,10 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 Improve candidate utility before fitting another risk head. The next controlled
 check is whether balanced exposure can preserve the original training risk with
-exact importance weighting. I will first verify the expected loss and gradient,
-then register a matched comparison. This follow-up has not run and does not
+exact importance weighting. The expected loss/gradient checks now pass on all
+four training complements, and exact resumed fitting passes on a fixture. A
+[fixed 24-head comparison](outputs/publication_readiness_2026_09/source_importance_sampling_decision.md)
+is registered before fitting. It has no trajectory result yet and does not
 promise a gain. More weight on rare windows cannot create new independent
 events or supply missing intention cues.
 

@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Importance-Corrected Sampling Registered (2026-09-19)
+
+New repair: retain the equal-episode exposure and original evaluation, but weight
+each sampled row by 1/(N_train*p_train). No self-normalization or factor clipping.
+Same geometry/centered arms, four source folds, three seeds, 24 heads/240k updates.
+Old uniform and uncorrected controls are cached_verified, not newly trained.
+Training has not yet run. [Fixed design](outputs/publication_readiness_2026_09/source_importance_sampling_decision.md).
+
+Fresh pre-fit checks: four actual training complements reproduce uniform expected
+loss (max difference2.23e-16) and unclipped gradient (1.09e-19) with a fixed offset
+probe, not a trained model. Factor range0.0883-5.4463; asymptotic importance-weight
+ESS fraction0.503-0.548 is a variance diagnostic, not independent sample count.
+Thirty-seven scoped tests pass, including exhaustive batch expectation, exact
+resume, invalid propensity rejection and exact old-trainer equivalence under
+uniform sampling. This is not a predictive result or an unbiased Adam-update claim.
+
 ## Equal-Episode Training Complete: Objective Shift, No Gain (2026-09-19)
 
 Fresh raw current-cohort audit: 15,430 queries, 545 scoped tracks, 1,457 past-defined
