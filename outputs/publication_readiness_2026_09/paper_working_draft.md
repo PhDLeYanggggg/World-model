@@ -1000,12 +1000,47 @@ without refitting or selecting a result. The negative Brier finding persists.
 The 32px crop's median annotation box is 9.34 by 11.86 pixels, smaller than the
 fixed 15px flow aggregation window. This is a measurement limitation, not proof
 of the failure mechanism or a promise that higher resolution would work. The
-earlier native-resolution ETH/Hotel/Zara experiment was also negative. A native
-SDD event-level support comparison remains not run. Four explored source sites,
+earlier native-resolution ETH/Hotel/Zara experiment was also negative. The native
+SDD follow-up below is now complete and also lacks proper-score benefit. Four explored source sites,
 shared training folds and retrospective supplied annotations still do not
 establish independent confirmation or strict sensor-as-of forecasting.
 [Trajectory evidence](source_box_motion_v1/conclusions.md) and
 [probability evidence](source_box_motion_probe_v1/conclusions.md).
+
+### Native Resolution And Motion-Window Controls
+
+We recover 25,300 native observed crops and verify that every supported reduction
+exactly reproduces the previous RGB and coverage arrays. We compare two image
+resolutions (32 and 96 pixels) and two nominal flow averaging-window extents
+(15 and 45 video pixels), holding the query population and other prescribed
+parameters fixed. Sampling lattice and polynomial support still differ with
+resolution, so this is not a perfect isolation of spatial detail alone.
+
+Sixty-four fixed logistic probes use geometry and quality, with or without the
+regional motion vectors/magnitudes. Quality already includes consistency and
+support proxies. Exact raw annotation coordinates define supervision-only labels,
+avoiding the earlier float32 threshold ambiguity. For larger excursions, adding
+motion worsens equal-site Brier by 0.001492, 0.001269, 0.001478 and 0.001331 for
+lowpass45, lowpass15, native45 and native15. All four conditional intervals exclude
+a favorable Brier difference. All motion and quality variants lose to their
+training-prevalence reference on that label at all four held sites.
+
+Training mean AUROC ranges from 0.7944 to 0.7994; held-site means range from
+0.4826 to 0.4946. The small positive motion-versus-quality ranking contrasts do
+not overcome poor probability error or establish a useful trajectory direction.
+Native coverage/consistency support increases, but is not ground-truth body
+motion. The 728 positive windows cover only 115 scoped tracks in 23 recordings;
+overlap does not create independent events. Four explored sites and shared
+training folds limit the conditional 2,000-resample intervals.
+
+All 95,560 flow measurements and 64 coefficient predictions replay exactly;
+completed resume preserves 486 artifacts with zero new work. This measurement
+repair does not justify another full trajectory budget on the same representation.
+It also does not prove that all image representations lack useful information.
+Broader source support, transferable directional candidates, independent
+calibration and confirmation remain necessary for the proposed intervention
+method. No new neural forecasting model or deployment claim is made.
+[Full native-motion evidence](source_motion_resolution_v1/conclusions.md).
 
 ### Past-Only Temporal Centering Control
 

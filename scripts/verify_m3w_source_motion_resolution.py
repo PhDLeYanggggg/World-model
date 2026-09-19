@@ -43,6 +43,27 @@ def main():
             y,yh=a['train_label'],a['held_label']
             assert probability_metrics(yh,np.full(len(yh),y.mean()))==trial['prior']
             assert not set(a['train_ids']) & set(a['held_ids'])
+    sites=['coupa','deathCircle','gates','hyang']
+    draws=np.random.default_rng(plan['bootstrap_seed']).integers(4,size=(plan['bootstrap_resamples'],4))
+    checks=0
+    for c in probes['contrasts']:
+        label,metric=c['label'],c['metric']
+        if c['name'].endswith('_motion_vs_quality'):
+            v=c['name'].removesuffix('_motion_vs_quality'); a,b=(v,'motion'),(v,'quality')
+        else:
+            a,b={
+                'native_minus_lowpass_w45':(('native_w45','motion'),('lowpass_w45','motion')),
+                'native_minus_lowpass_w15':(('native_w15','motion'),('lowpass_w15','motion')),
+                'w15_minus_w45_lowpass':(('lowpass_w15','motion'),('lowpass_w45','motion')),
+                'w15_minus_w45_native':(('native_w15','motion'),('native_w45','motion'))}[c['name']]
+        def values(pair):
+            return np.array([next(t for t in probes['trials'] if t['site']==s and t['label']==label
+                and t['variant']==pair[0] and t['arm']==pair[1])['held'][metric] for s in sites])
+        delta=values(b)-values(a) if metric in ('brier','log_loss') else values(a)-values(b)
+        assert float(delta.mean())==c['equal_site_difference']
+        np.testing.assert_array_equal(delta,c['site_differences'])
+        np.testing.assert_array_equal(np.quantile(delta[draws].mean(1),[.025,.975]),c['conditional_four_site_ci95'])
+        checks+=1
     paths=[p for p in private.rglob('*') if p.suffix in ('.npy','.npz','.json') and 'heartbeat' not in p.name]
     paths += [public/x for x in ('preparation.json','extraction.json','flow_replay.json','probes.json','probe_replay.json')]
     hashes={str(p.relative_to(ROOT)):file_digest(p) for p in paths}
@@ -59,7 +80,8 @@ def main():
     result=dict(result_source='fresh_run_verification',registration_sha256=file_digest(ROOT/REGISTRATION),
         exact_crop_reductions=25300,exact_old_control_pairs=23890,exact_flow_replays=4*23890,
         exact_coefficient_replays=64,recomputed_train_held_score_sets=scored,label_checks=labels_checked,
-        future_label_poison_queries=128,prohibited_training_role_checks=48,completed_resumes=resumes,
+        paired_contrasts_and_intervals_recomputed=checks,
+        future_label_poison_queries=128,prohibited_training_role_checks=48,completed_resume=resumes,
         immutable_artifacts=len(hashes),artifact_hashes=hashes,main_outer_rows_scored=0,
         new_deployment=False,stage5c_executed=False,smc_enabled=False)
     preserve_verification(public/'verification.json',result)

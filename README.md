@@ -31,12 +31,15 @@ sampled changes the expected training objective, even with the same per-row loss
 
 ## Current Evidence
 
-The latest source experiment compares observed box-motion tokens with a matched
-quality-only control. All 24 trajectory heads and 16 complementary probability
-probes are complete. Measurable past motion did not become a forecasting gain.
-The larger-excursion probability probe improves ranking slightly, but its
-probability error worsens. I keep both findings rather than promoting one
-favorable metric into a deployment claim.
+The latest source experiment asks whether image downsampling hides useful motion.
+I recovered all 25,300 past crops at native resolution, verified their exact
+alignment with the old inputs, and fitted 64 fixed probability probes across
+resolution and motion-window controls. Higher resolution improves measurement
+support, but does not make this readout predict larger future changes reliably.
+Training AUROC is about 0.79-0.80; the held-site average is about 0.48-0.49.
+I retain the small favorable ranking contrasts alongside the worse probability
+errors rather than treating them as a deployment result.
+[Full comparison](outputs/publication_readiness_2026_09/source_motion_resolution_v1/conclusions.md).
 
 The implementation runs, but the clean development experiments have **not yet
 established a deployable neural advantage or a submission-ready method**.
@@ -56,6 +59,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does exact importance correction fix that objective shift? | It removes most of the added harm, but not the prediction gap. Another 24 heads/240,000 updates give -0.032% for geometry and -0.275% for centered images; all held fits remain negative. |
 | Is gradient clipping sending training in the wrong direction? | The fixed-checkpoint training audit does not support a large direction reversal. Train-scale output conditioning removes logged clipping and most jitter, but 24 new heads still lose to CV: -0.000251%/-0.001342%. |
 | Does explicit observed image motion repair the remaining gap? | No. Another 24 heads complete 240,000 updates; quality-only/motion gains are -0.000535%/-0.000840%. Sixteen probability probes show a weak larger-excursion ranking gain but worse probability error. No new deployment. |
+| Does native resolution or a smaller motion window help? | Not with this fixed regional readout. All 64 probability probes complete; larger-excursion Brier worsens when motion is added in all four measurement variants. None beats the training-prevalence reference on that label at any held site. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 

@@ -5,19 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Native Motion Measurement Registered (2026-09-19)
+## Native Motion Complete: No Reliable Probability Lift (2026-09-19)
 
-The next source-only comparison separates nominal motion-window extent from
-image resolution. It recovers the same past crops at96px, verifies their exact
-reduction to the old32px inputs, and compares four fixed measurements before
-spending another neural forecasting budget.64 probability probes are specified
-in advance, with raw-coordinate supervision, matched quality controls and no
-held-driven threshold search. The first real decode takes35.92seconds for1,390
-crops; every reduced RGB/coverage array matches exactly. The remaining28records
-are running locally with record-level recovery.48targeted tests pass; no new
-predictive result yet. The full primary benchmark,
-external confirmation and submission evidence remain incomplete.
-[Design and limitations](outputs/publication_readiness_2026_09/source_motion_resolution_decision.md).
+Fresh decoding recovers all 25,300 native past crops for the same 15,430 source
+queries. Every reduction matches the old input exactly. All 95,560 fixed flow
+measurements and 64 logistic probes complete without a training-budget change.
+Decode/flow/fit time is 354.50/136.66/111.87 seconds. No new neural trajectory
+training was justified by the prespecified information test.
+
+For raw excursion >10 pixels, adding motion worsens equal-site Brier by
+0.001492/0.001269/0.001478/0.001331 across lowpass45/lowpass15/native45/native15.
+All four conditional intervals exclude a favorable Brier difference. Motion
+variants lose to the training-prevalence constant on all four sites for this
+label. Training AUROC is 0.794-0.799, held-site mean 0.483-0.495. Small favorable
+ranking contrasts versus quality controls do not establish reliable risk or
+trajectory prediction. The exact raw label has 728 positives; old 739-positive
+float32 results remain historical rather than being silently replaced.
+
+Verification: 95,560 exact flow replays, 64 exact coefficient replays, 128 score
+sets and 64 intervals independently recomputed, 128 future-label poison queries,
+48 prohibited training-role rejections. Completed resume adds zero work and
+preserves 486 artifacts. All processes terminal; 48 scoped tests pass. Legacy
+report-writing integrations were not rerun. No primary/bookstore/outer/external
+readout, deployment, Stage5C or SMC. This remains a four-site source diagnostic,
+not the full primary benchmark or independent confirmation.
+
+[Conclusions and failure taxonomy](outputs/publication_readiness_2026_09/source_motion_resolution_v1/conclusions.md),
+[all metrics](outputs/publication_readiness_2026_09/source_motion_resolution_v1/complete_results.md),
+[pre-fit design](outputs/publication_readiness_2026_09/source_motion_resolution_decision.md).
 
 ## Observed Motion: Complete, No Forecasting Gain (2026-09-19)
 

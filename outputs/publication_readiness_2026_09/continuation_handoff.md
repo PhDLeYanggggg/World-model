@@ -1,6 +1,50 @@
 # Real-Experiment Continuation Handoff
 
-## Native Motion Resolution Running (2026-09-19)
+## Native Motion Resolution Complete (2026-09-19)
+
+Goal active/unmet; this is concrete progress, not a no-progress turn. Completed
+the registered source diagnostic, not the full primary task. Native decode
+pilot5164/session88608 and continuation5484/session58902 exited0.25,300crops,
+all exact lowpass reductions,354.498352s,932872736bytes. Flow6310/session47956
+exited0:95,560measurements,136.662353s,23,890exact old controls.
+Probe6715/session17168 exited0:64fixed logistic fits,111.871604s,max1462iterations.
+
+No reliable probability lift. Larger-excursion motion-minus-quality Brier
+reductions: lowpass45-.001491654,lowpass15-.001268672,native45-.001477528,
+native15-.001331345; all conditional four-site intervals negative. All motion
+variants lose to train-prevalence Brier on all four sites for this label.
+Training AUROC.7944-.7994 vs held means.4826-.4946. Preserve small favorable
+ranking contrasts and any-change/native15 partial positives without promoting
+them. Exact raw >10px labels728,115scopedtracks,23recordings; not independent
+728events. Old739float32label results retained separately.
+
+Flow replay7128/session46785 exit0:all95,560pairs exact. Coefficient replay7482/
+session72677 exit0:all64exact. Verifier session14069 exit0:128score sets and64
+contrasts/intervals recomputed,128future-label poisons,48illegal roles rejected,
+486artifacts unchanged through zero-work decoder/flow/probe completed resumes.
+48scoped tests pass(session19432), renderer32644 exit0; PNG inspected and
+tick-label overlap fixed in renderer. No full legacy report-writing integration
+rerun. All required processes terminal; no newHPCjob or liveHPCinspection.
+
+Registration7afef428 and pilot/recoverye65808d2 pushed before final results.
+Public report source_motion_resolution_v1/conclusions.md; complete_results.md
+has all variants/sites/contrasts, including unfavorable results. Private
+data/stage_cvpr2027_experiments/source_motion_resolution_v1 has native arrays,
+features, coefficients and logs; do not upload them.
+Probes fa6e112a5890887760e8d940c314a2dca28fe1409c7e7c610be8210aed25da8f;
+verification a5a5bb8d5b3c2279c6de3eee8727429ca62269febeca300f516c21561b740eed.
+
+Follow the preregistered stop for this representation: no further neural budget
+or threshold search on the same four flow measurements. Next substantive work:
+inventory broader approved source moving/turning/stopping support and existing
+full-source predictors; use evidence to restore directional candidate headroom.
+Do not change main protocol or silently open main/bookstore/outer/external
+readouts. This diagnostic subset is not the whole229333-window approved source
+dataset or primary benchmark. Independent calibration/confirmation, core joint
+intervention evidence and final paper remain incomplete. Stage5C/SMC off.
+Unrelated staged fingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323 must stay intact.
+
+## Historical: Native Motion Resolution Running (2026-09-19)
 
 Goal active/unmet. Prior turn was progress, not a no-progress turn. Fixed 2x2
 resolution/window information test registered and pushed as7afef428 before new
