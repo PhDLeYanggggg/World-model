@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Training-Gradient Diagnosis and Registered Readout Repair (2026-09-19)
+
+Fresh training-only audit of all 24 fixed importance-corrected heads: 24 full
+population gradients, 6,144 batch probes, all exactly replayed. Clipped mean
+directions align with population gradients (cosine >=0.99858 for uniform and
+>=0.99930 for corrected episode sampling). At least99.99839% of squared gradient
+energy lies in the last output layer. This is a conditioning lead, not proof
+that clipping caused the prediction failure. No new held readout or updates.
+[Diagnostic](outputs/publication_readiness_2026_09/source_gradient_diagnostic_v1/conclusions.md).
+
+The next fixed24-head comparison divides the pre-bound readout by a train-only
+scale; function class, output bounds, objective, samples and budget are retained.
+Eleven new focused tests pass. Training and predictive verification are pending.
+[Registration](outputs/publication_readiness_2026_09/source_conditioned_readout_decision.md).
+No new deployment or independent confirmation; Stage5C/SMC remain off.
+
 ## Importance Correction Complete: Large Harm Repaired, No Neural Gain (2026-09-19)
 
 New repair: retain the equal-episode exposure and original evaluation, but weight
