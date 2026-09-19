@@ -5,15 +5,14 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Importance-Corrected Sampling Registered (2026-09-19)
+## Importance Correction Complete: Large Harm Repaired, No Neural Gain (2026-09-19)
 
 New repair: retain the equal-episode exposure and original evaluation, but weight
 each sampled row by 1/(N_train*p_train). No self-normalization or factor clipping.
 Same geometry/centered arms, four source folds, three seeds, 24 heads/240k updates.
-Old uniform and uncorrected controls are cached_verified, not newly trained.
-Registration b2276809 was pushed before fitting. The included 100-update pilot
-completed in0.218seconds, without forecasts. Full training PID84237 is live,
-with200-update atomic checkpoints and heartbeat; no aggregate result yet.
+All24fresh heads completed240,000updates. Old uniform and uncorrected controls
+(48heads) are cached_verified, not newly trained. Registration b2276809 was
+pushed before fitting. No held-driven stopping, checkpoint/seed/threshold choice.
 [Fixed design](outputs/publication_readiness_2026_09/source_importance_sampling_decision.md).
 
 Fresh pre-fit checks: four actual training complements reproduce uniform expected
@@ -23,6 +22,38 @@ ESS fraction0.503-0.548 is a variance diagnostic, not independent sample count.
 Thirty-seven scoped tests pass, including exhaustive batch expectation, exact
 resume, invalid propensity rejection and exact old-trainer equivalence under
 uniform sampling. This is not a predictive result or an unbiased Adam-update claim.
+
+| Corrected arm | Equal-site ADE gain vs stationary CV | Conditional four-site95%CI | Static harm, annotation px |
+| --- | ---: | --- | ---: |
+| Geometry | -0.03206% | [-0.05775%,-0.01284%] | 0.000639 |
+| Centered appearance | -0.27459% | [-0.68041%,-0.03179%] | 0.007827 |
+
+Both reduce previous uncorrected sampler harm by37.2947/54.7171percentage points.
+Against original uniform sampling, geometry difference+0.03832pp has interval
+[-0.00078,+0.10872], while centered difference+0.48757pp has interval
+[+0.08462,+1.06884]. Both remain worse than CV and every held fit is negative.
+Centered minus corrected geometry:-0.24254pp, interval[-0.62477,-0.01895].
+Nonzero-target gains remain-0.00715%/-0.01826%. No robust hard-slice benefit.
+Easy percentage undefined against zero-error CV, not a2%pass. Binary oracle
+headroom only0.002304%/0.064806%; it is not a learned switching policy.
+
+Post-fit corrected expected training losses equal original uniform losses.
+All logged gradient norms exceed cap5 (update1/every100, not every update).
+This motivates a training-side conditioning diagnosis, not a claim that clipping
+is the sole cause. No threshold, loss or clip was changed after held readout.
+
+Training PID84237 exited0. Fit673.584s including100-update pilot; main-log681.766s.
+24exactforecastreplays and regenerated streams;24oldcontrol-draw matches;
+12paired-arm matches;6OOF recomputations. Completed resume adds0updates and
+preserves84artifacts.37scopedtests pass; full legacy suite not rerun. All required
+processes terminal. Figure inspected. CPUarm64/4threads/inter-op1/workers0.
+
+Same four explored sites/shared folds, three seeds,2,000conditionalbootstrap;
+not independent confirmation. No main/t+50/external scoring, new deployment,
+Stage5C or SMC. Next gradient/conditioning audit not_run. Goal remains unmet.
+[Results](outputs/publication_readiness_2026_09/source_importance_sampling_v1/conclusions.md),
+[failure analysis](outputs/publication_readiness_2026_09/source_importance_sampling_v1/failure_analysis.md),
+[gates](outputs/publication_readiness_2026_09/source_importance_sampling_v1/gates.md).
 
 ## Equal-Episode Training Complete: Objective Shift, No Gain (2026-09-19)
 

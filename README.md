@@ -46,6 +46,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Do pretrained image features repair source transfer? | No. Thirty-six matched trajectory heads complete 360,000 updates. Geometry/current-image/eight-frame gains are -0.070%/-1.908%/-6.102%; all held fits are negative. |
 | Does removing shared appearance repair the temporal model? | It reduces harm, but does not beat the baseline. Twenty-four fresh heads give -0.762% for centered input and -1.756% with RMS normalization; all held fits remain negative. |
 | Does balancing exposure across annotation episodes help? | No. Twenty-four fresh heads complete 240,000 updates, but geometry and centered-image gains fall to -37.327% and -54.992%. The sampler changes the effective training objective and greatly increases static-target harm. |
+| Does exact importance correction fix that objective shift? | It removes most of the added harm, but not the prediction gap. Another 24 heads/240,000 updates give -0.032% for geometry and -0.275% for centered images; all held fits remain negative. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
 | Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
 
@@ -108,6 +109,14 @@ The sampled proportion of future-changing labels rises from 38.62-47.49% to
 the sampling groups or inference inputs. Exact replay confirms the failure;
 it does not rescue the model.
 
+I then ran a [matched importance-correction experiment](outputs/publication_readiness_2026_09/source_importance_sampling_v1/conclusions.md)
+with the same episode draws and a loss weight that restores the original
+expected risk. Geometry and centered-image excess errors fall to 0.032% and
+0.275% over CV. This identifies and repairs the large sampling-induced harm,
+but it does not create a useful neural candidate: all 24 new held fits still
+lose, and adding these visual features still hurts. The distinction between
+repairing training and demonstrating a prediction contribution matters here.
+
 ## Evidence and Reproduction
 
 The detailed record is kept separately so that the project overview remains
@@ -117,7 +126,7 @@ readable:
 - [September research history](README_RESEARCH_HISTORY_2026_09.md): the detailed routes and diagnoses behind this summary.
 - [Recording and teacher-lineage audit](outputs/publication_readiness_2026_09/recording_lineage_audit.md): why historical external gains cannot be treated as independent evidence.
 - [Working paper](outputs/publication_readiness_2026_09/paper_working_draft.md): the research question, method proposal, results and missing evidence, not a finished submission.
-- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_episode_sampler_v1/reproducibility.md): commands, hashes, replay checks and limitations.
+- [Latest experiment reproduction](outputs/publication_readiness_2026_09/source_importance_sampling_v1/reproducibility.md): commands, hashes, replay checks and limitations.
 - [Data-role contract](outputs/publication_readiness_2026_09/experiment_contract/implementation_and_limits.md): training, selection, calibration and confirmation boundaries.
 
 The current observation contract uses supplied historical annotations. Some
@@ -186,14 +195,14 @@ Training scripts are written around checkpointing, heartbeat logs, resume suppor
 
 ## Next Step
 
-Improve candidate utility before fitting another risk head. The next controlled
-check is whether balanced exposure can preserve the original training risk with
-exact importance weighting. The expected loss/gradient checks now pass on all
-four training complements, and exact resumed fitting passes on a fixture. A
-[fixed 24-head comparison](outputs/publication_readiness_2026_09/source_importance_sampling_decision.md)
-is registered before fitting. It has no trajectory result yet and does not
-promise a gain. More weight on rare windows cannot create new independent
-events or supply missing intention cues.
+Improve candidate utility before fitting another risk head. Exact importance
+correction is now tested and the large objective-shift failure is repaired, but
+the models still have almost no useful candidate/CV oracle headroom. I will not
+turn that into another threshold sweep. The next training-only check will
+separate full-population gradients, static/moving contributions and clipping
+effects before changing another optimization factor. This diagnostic has not
+run. Better numerical conditioning alone would not establish useful dynamics.
+More weight on rare windows cannot create independent events or missing cues.
 
 The loss, annotation, visual-feature, temporal-centering and episode-sampling
 controls remain available, including their negative results. No policy or test

@@ -1,6 +1,44 @@
 # Real-Experiment Continuation Handoff
 
-## Importance-Corrected Training Live (2026-09-19)
+## Importance Correction Complete, No Forecast Gain (2026-09-19)
+
+Goalactive/unmet. Prior turn was progress:a0fa5f1d sampler failure+diagnosis.
+This turn preregistration b2276809 and live recovery a641f087 pushed. All24fresh
+heads/240000updates complete. FullPID84237/session98393 exit0; main new239900 plus
+pilot100. Fit673.584341s; main-log681.766168s. ReplayPID85426/session47872 exit0,
+all24exact. Verifier session33150 exit0; resumechild85499 adds0updates,84artifacts
+unchanged.24draws regenerate and matcholdcontrols,12pairedarms,24factorvectors,
+6OOFarchives recompute.37scopedtests pass. No fulllegacysuite. All sessions terminal.
+
+Geometrycorrected -0.0320566% CI[-0.0577475,-0.0128430]; centeredcorrected
+-0.2745934% CI[-0.6804089,-0.0317917]. All24heldnegative. Versusuncorrected:
++37.294713/+54.717089pp, large harm repair, not positive dynamics. Versusuniform:
+geometry+0.038317pp intervalcrosses0; centered+0.487570pp intervalabove0 butstill
+worsethanCV. Centeredminusgeometry-0.242537pp CI[-0.624769,-0.018949]. Static
+harm0.000639/0.007827annotationpx; percentageundefined. Binaryoracleonly
+0.002304%/0.064806%. Nonzero-target gainsstillnegative. No policy selection.
+
+Fourrealtraincomplements expectedloss/gradientpass;37tests incl exactuniform
+trainer equivalence and weightedresume. Exactcorrection is not unbiasedAdam:
+allLOGGEDgradientnorms>cap5 (step1/every100only). Next safe action NOT RUN:
+training-only frozen gradient direction/static-moving/clipping diagnosis before
+another factor change. Do not repeat threshold sweeps or unchangedfullmatrix.
+Repairing tiny jitter alone cannot satisfy candidateutility/worldmodel goal.
+
+Artifacts source_importance_sampling_v1/{objective_check,analysis,verification}.json
+andconclusions,failure_analysis,gates,reproducibility,comparison.svg. Renderer
+firstfontcachewarningdidnotpreventoutput; addedwritableXDGcacheandrerendered.
+Figureinspected. No data/cache/checkpoint/image committed. README/state/paper/runbook
+updated. Config4a1974e1ca3890efa9fcdd91fa430d31fc2194cfbade9ecc7e860aad2f1eddca;
+analysisf79e1b445809488086884e23d12f0aa3821931d2fcde328467155974c9aa2cf5;
+verificationc3dddc637cd25d50ce42e7bfaf92864aaef6ade70214918d0fc092956295abab.
+Keep boundtraining/model/test/analysisfilesunchanged. Four exploredsites/shared
+folds/2000conditionalbootstrap, not independentconfirmation. Main/outerclosed,
+no t50/externalreadout,no newdeployment,Stage5C/SMCoff. CREATEstatushistorical,
+no newjob. Unrelated3019stagedfingerprintpreserved:
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
+## Historical: Importance-Corrected Training Live (2026-09-19)
 
 Registration b2276809 pushed before fitting. Included100-update pilotPID84223
 exited0,0.217855seconds,no forecasts. FullPID84237/session98393 live with progress,

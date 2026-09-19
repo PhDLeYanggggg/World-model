@@ -55,8 +55,8 @@ self-normalization of weights. Four training-fold fixed-offset probes verify
 expected loss/unclipped-gradient equality. This is not an unbiased Adam-update
 claim: clipping, adaptive optimization and finite-batch variance remain.
 
-Same15,430 source queries, four explored sites, three seeds, offline eight past
-and twelve future annotation steps at stride12 raw frames. Not main/t+50/external
+Same 15,430 source queries, four explored sites, three seeds, offline eight past
+and twelve future annotation steps at stride 12 raw frames. Not main/t+50/external
 evaluation. Past labels can have later interpolation controls; not sensor-as-of.
 No verified metric/seconds scale, independent physical events or human-gold claim.
 
@@ -84,11 +84,12 @@ only for diagnosis and do not demonstrate a learned switching policy.
 
 ## Verification And Cost
 
-All24 predictions replay exactly and draw streams regenerate. All24 match their
+All 24 predictions replay exactly and draw streams regenerate. All 24 match their
 uncorrected controls' draws; twelve paired-arm streams agree. Factors match the
 training-only propensities. Six OOF archives recompute. Zero-update resume
 preserves {check['immutable_artifacts']} immutable artifacts. 37 scoped tests pass;
-no full legacy-suite rerun. Native arm64 CPU4/inter-op1/workers0. Summed fitting
+no full legacy-suite rerun. Native arm64 CPU, four threads, one inter-op thread,
+zero workers. Summed fitting
 {seconds:.3f}s including pilot. Frozen image encoder is not retrained.
 
 Fresh: expectation checks, corrected fits, analysis and verification.
@@ -116,14 +117,16 @@ Missing private assets are not a completed reproduction. Keep bound files frozen
 ```
 
 The included pilot uses `--trial coupa_geometry_seed17 --stop-at 100` before
-the full run. Interrupted runs resume from200-step atomic checkpoints; never
+the full run. Interrupted runs resume from 200-step atomic checkpoints; never
 restart a live process after an observation timeout. PID/heartbeat/training log
-and all24checkpoints remain local. Completed resume performs zero updates.
+and all 24 checkpoints remain local. Completed resume performs zero updates.
 No CUDA/MPS resource probing or multiprocessing. On Darwin reject non-arm64 before
 Torch import. Training cost does not extrapolate to end-to-end encoder fitting.
 The full legacy test suite can rewrite old artifacts and was not rerun here.
 """)
     os.environ.setdefault('MPLCONFIGDIR','/tmp/m3w-importance-mpl')
+    os.environ.setdefault('XDG_CACHE_HOME','/tmp/m3w-importance-cache')
+    Path(os.environ['XDG_CACHE_HOME']).mkdir(parents=True,exist_ok=True)
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -132,15 +135,18 @@ The full legacy test suite can rewrite old artifacts and was not rerun here.
     fig,axes = plt.subplots(2,1,figsize=(11,8),layout='constrained')
     panels = [('Uniform and corrected (zoomed)',[k for k in summary if not k.endswith('_event')]),
               ('All samplers (same units, wider range)',list(summary))]
+    colors = {name:f'C{i}' for i,name in enumerate(summary)}
     for ax,(title,names) in zip(axes,panels):
         for i,name in enumerate(names):
             x = summary[name]; value=x['equal_site_gain_percent']; lo,hi=x['conditional_four_site_ci95']
-            ax.errorbar(value,i,xerr=[[value-lo],[hi-value]],fmt='o',capsize=4)
+            ax.errorbar(value,i,xerr=[[value-lo],[hi-value]],fmt='o',capsize=4,color=colors[name])
         ax.set_yticks(np.arange(len(names)),names); ax.invert_yaxis()
         ax.axvline(0,color='black',lw=.8); ax.grid(alpha=.2); ax.set_title(title)
         ax.set_xlabel('Equal-site ADE gain vs stationary CV (%)')
     fig.suptitle('Importance correction: conditional four-site intervals, not confirmation')
     fig.savefig(public/'comparison.svg',metadata={'Date':None})
+    svg = public/'comparison.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     fig.savefig(private/'comparison.png',dpi=150); plt.close(fig)
     print(json.dumps(dict(verdict=verdict,fit_seconds=seconds,report=str(public/'conclusions.md'))))
 

@@ -896,6 +896,42 @@ same four explored sites/shared training complements remain a limitation; no
 main, outer or independent confirmation score is introduced.
 [Experiment, diagnosis and gates](source_episode_sampler_v1/conclusions.md).
 
+### Restoring The Original Risk Under Balanced Exposure
+
+We retain the preceding episode proposal probabilities p_i, but multiply each
+sampled row's ADE by 1/(N*p_i), where N counts that fold's training rows. No
+self-normalization or factor clipping is applied. The expected loss and
+unclipped gradient equal those of uniform-row training; this identity does not
+extend automatically to clipped gradients or Adam updates. Four real training
+complements and exhaustive small-batch tests verify the identity, without
+using held outcomes to construct weights.
+
+Another 24 fresh heads complete 240,000 updates, with exact draw-stream matching to
+the uncorrected control. Original uniform and uncorrected heads are hash-verified
+cached controls. Geometry and centered-appearance gains become -0.03206% and
+-0.27459%, with conditional four-site intervals [-0.05775,-0.01284] and
+[-0.68041,-0.03179]. Relative to uncorrected episode training, this reduces harm
+by 37.2947 and 54.7171 percentage points, strongly supporting objective mismatch as
+a cause of the earlier large degradation. Neither corrected arm beats CV, and
+all 24 held fits remain negative. The improvement is a training repair, not proof
+of useful neural dynamics.
+
+Against uniform training, corrected geometry's 0.03832pp difference has interval
+[-0.00078,+0.10872]; centered appearance's 0.48757pp has interval [+0.08462,+1.06884].
+Centered appearance still loses to corrected geometry by 0.24254pp. Absolute
+static harms are 0.000639/0.007827 annotation pixels; percentage degradation against
+zero-error CV remains undefined. Nonzero-target gains remain negative, and
+binary candidate/CV oracle gains are only 0.002304%/0.064806%. No learned gate or
+deployment is claimed.
+
+All logged gradients exceed the unchanged norm cap 5; logging is at update 1 and
+every 100 updates, not every gradient. This motivates a separate training-only
+conditioning diagnosis, which has not run, rather than attributing every failure
+to clipping. All 24 forecasts replay exactly and zero-update resume preserves
+84 artifacts. Same explored sites/shared folds, offline annotation and nonmetric
+raw-frame limitations apply. No new main/outer or independent result is read.
+[Complete comparison and limitations](source_importance_sampling_v1/conclusions.md).
+
 ### Past-Only Temporal Centering Control
 
 A subsequent input audit aligns all 123,440 historical query keys and finds

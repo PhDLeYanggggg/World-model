@@ -1,8 +1,46 @@
 # M3W 本地与 CREATE 操作记录
 
-日期：2026-09-17。用途：当前可复现的工程步骤，不是正式预测实验教程的完成版。
+最近更新：2026-09-19。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
+下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：SDD 状态变化支持量已全量计算，未新增训练
+## 当前：重要性加权对照实验
+
+上一轮“每个标注事件等概率”抽样改变了训练目标，造成显著退化。这轮保留相同
+抽样序列，并给每个样本损失乘以 `1/(训练行数 * 抽样概率)`。不按批内权重和
+再次归一化，也不裁剪权重。校正恢复的是期望损失和未裁剪梯度，不保证 Adam
+更新完全相同，更不保证预测改善。所有评价行、指标、随机种子和步数固定。
+
+配置在训练前提交为 `b2276809`，含源码与依赖哈希。真实训练使用 arm64
+`.venv-pytorch`，4 个计算线程、1 个 inter-op 线程、0 个 DataLoader worker。
+当前本地资源足以支持这组小预测头，不能将它的速度外推到端到端图像编码器训练。
+
+```bash
+.venv-pytorch/bin/python scripts/run_m3w_source_importance_sampling.py --registration configs/m3w_source_importance_sampling_v1.json --check-objective
+.venv-pytorch/bin/python scripts/run_m3w_source_importance_sampling.py --registration configs/m3w_source_importance_sampling_v1.json
+.venv-pytorch/bin/python scripts/run_m3w_source_importance_sampling.py --registration configs/m3w_source_importance_sampling_v1.json --replay
+.venv-pytorch/bin/python scripts/analyze_m3w_source_importance_sampling.py --registration configs/m3w_source_importance_sampling_v1.json
+.venv-pytorch/bin/python scripts/verify_m3w_source_importance_sampling.py --registration configs/m3w_source_importance_sampling_v1.json
+.venv-pytorch/bin/python scripts/report_m3w_source_importance_sampling.py --registration configs/m3w_source_importance_sampling_v1.json
+```
+
+首个 100 更新试跑计入总预算，不输出预测。完整入口会恢复既有检查点；必须先
+确认原进程已经终止，不能因观察超时重复启动。每 200 更新原子保存模型、优化器、
+抽样 RNG、Torch RNG、权重和数据身份。已完成任务再次调用应零新增更新。
+本地日志、心跳、权重和逐行预测位于 `data/stage_cvpr2027_experiments/source_importance_sampling_v1/`。
+这些内容不提交 Git；只公开代码、配置、聚合结果和复现记录。
+
+预检已完成：4 个实际训练分组的期望恒等式通过，37 项针对性测试通过，包括
+小批量穷举、精确恢复、概率变化拒绝和均匀抽样下与原训练器的逐参数一致性。
+完整拟合已结束：24 个新模型、24 万次更新，累计拟合 673.584 秒。24 个模型
+预测精确回放，抽样与旧对照一致，恢复完成任务零新增更新、84 个文件不变。
+几何和图像方案相对静止基线的改善仍为 -0.0321%/-0.2746%，是大幅减少退化，
+不是新增预测优势。完整[结果与失败分析](source_importance_sampling_v1/conclusions.md)保留全部种子和场景。
+
+四个反复探索的源场景只能支持开发结论。未来标签只用于损失或评价；供给的历史
+标注可能经后续控制点插值，因此仍是 offline annotated-history，而不是实时感知。
+不会打开 main/outer 结果，不启用 Stage5C/SMC，不做 metric 或 seconds-level 声明。
+
+## 历史：SDD 状态变化支持量已全量计算，未新增训练
 
 60 个源文件、10,616,256 行、10,300 个视频内轨迹 ID 已重新统计，并逐文件
 全量重算验证。步长 1/6/12/30 仅是 raw-frame 诊断，不是正式采样选择。
