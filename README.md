@@ -31,7 +31,18 @@ sampled changes the expected training objective, even with the same per-row loss
 
 ## Current Evidence
 
-The latest source experiment asks whether image downsampling hides useful motion.
+The latest broader source audit changes my diagnosis of the current task. Across
+175,756 past-indexed queries, the old per-query normalization makes 6,864
+static-start windows account for 99.75% of complete-label CV error. The same
+windows account for only 0.67% in annotation pixels. A numerical scale floor is
+therefore making the overall score almost entirely a static-start test.
+Moving-history baseline-oracle headroom is 15.22%, but it falls to 0.038% in the
+full normalized aggregate. This is an evaluation-weighting issue, not a new model
+success. I retain the old metric and results while the proposed evaluation
+amendment is reviewed; no new training or deployment is claimed.
+[Audit, raw checks and implications](outputs/publication_readiness_2026_09/source_population_v1/conclusions.md).
+
+The preceding source experiment asks whether image downsampling hides useful motion.
 I recovered all 25,300 past crops at native resolution, verified their exact
 alignment with the old inputs, and fitted 64 fixed probability probes across
 resolution and motion-window controls. Higher resolution improves measurement
@@ -46,6 +57,7 @@ established a deployable neural advantage or a submission-ready method**.
 
 | Question | What the completed evidence shows |
 | --- | --- |
+| Does the aggregate score represent ordinary motion well? | Not under the present normalization: 4.77% of complete windows contribute 99.75% of CV error. The finding reproduces across four explored source sites; changing the metric requires a new registration, not retrospective success claims. |
 | Do neural trajectory models beat strong motion baselines? | The fixed three-seed Transformer and K=1 EqMotion comparisons did not produce safe positive gains on the primary task. |
 | Does longer training help? | Learning-rate decay produces a small source-training gain, but it does not transfer to the excluded source scene. |
 | Does the tested RGB representation help? | The matched source comparison is negative. More input modalities are not automatically more predictive information. |

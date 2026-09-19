@@ -1007,6 +1007,36 @@ establish independent confirmation or strict sensor-as-of forecasting.
 [Trajectory evidence](source_box_motion_v1/conclusions.md) and
 [probability evidence](source_box_motion_probe_v1/conclusions.md).
 
+### Broader Source Population And Metric Conditioning
+
+An auxiliary-only audit retains all 175,756 past-indexed queries from the four
+already-explored source sites, rather than just the stationary subset. It finds
+143,918 complete, 29,039 partial and 2,799 absent future-label windows. No main,
+bookstore, original validation/test or external readout is opened. Retrospective
+event categories are assigned only to complete labels. These are annotation
+categories, not independently verified behavioral events.
+
+Among complete windows, 6,864 static-start queries (4.77%) contribute 99.7481%
+of equal-site past-normalized CV error but 0.6660% of annotation-pixel CV error.
+The past-normalization scale is floored at .001 pixels for static histories.
+The difference recurs at every source site. This is not future leakage; it is
+a consequential weighting of the prediction task. The seven fixed kinematic
+baselines coincide on these static histories. Their complete-moving diagnostic
+oracle headroom is 15.2165%, versus only .03835% on the complete aggregate.
+Even perfect moving-window prediction with static predictions unchanged could
+improve the latter by at most about .252%. This bounds that restricted repair,
+not all possible neural predictors.
+
+The audit independently rebuilds all raw index keys, reduces 1,230,292 baseline
+cost pairs and exactly replays 256 raw geometry/label queries. Future-array
+poisoning leaves observed features unchanged in 33 checks. No fitting occurs.
+The old primary metric and negative results remain in force; a proposed new
+native-unit/equal-scene evaluation registration awaits explicit decision. A
+different score definition cannot establish a model improvement or restore
+independence to exposed scenes. Pipeline correctness, forecasting accuracy and
+the relevance of the chosen error weighting are separate questions.
+[Complete source diagnostic](source_population_v1/conclusions.md).
+
 ### Native Resolution And Motion-Window Controls
 
 We recover 25,300 native observed crops and verify that every supported reduction

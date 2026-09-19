@@ -1,5 +1,47 @@
 # Real-Experiment Continuation Handoff
 
+## Broader Source Audit Complete; Metric Decision Pending (2026-09-19)
+
+Goal active/unmet. This turn is progress: broadened source audit, raw replay,
+tested diagnostic implementation and reports. No new model fitting. The former
+stationary subset is 15,430 rows/29 recordings; the broader four-site source
+population is 175,756 rows/33 recordings, with 143,918 complete, 29,039 partial,
+2,799 absent future labels. Bookstore/main/original val-test/external closed.
+
+Key finding: 6,864 static-start complete windows contribute 99.7481% of old
+past-normalized CV error but 0.6660% of annotation-pixel error. Scale floor .001
+is causal but changes task weighting dramatically. The seven-baseline complete
+moving-history oracle has 15.2165% headroom; complete all has only .03835%.
+No oracle deployment or new success. A moving-only perfect forecast with static
+predictions unchanged cannot improve this aggregate by more than about .252%.
+Every other-site fixed-baseline selection chooses CV. Full-source 54-fit/324k
+training already existed; do not duplicate it or say it was never run.
+
+Audit session25702, raw verifier96986, exact aggregate replay21781, renderer22272
+and 47-test session9791 all exited0. First audit53496 stopped before outputs due
+incorrect carryover29 count; repaired to manifest33 and fixed float32-floor
+serialization recognition, with regression test. No row deletion/overwrite.
+198 array hashes, 175,756 raw index keys, 1,230,292 independent baseline/query
+costs, 256 exact raw queries and 33 future-array poison checks pass. The aggregate
+SVG was rendered and visually inspected. Full legacy integrations not rerun.
+
+Audit hash753262d73a107ab4b497e86ff07e69db83b1eb51d7a84a6bd9c44dbbdb8809bd;
+private rows6dc0cc61b40b0b3e1b4d694bd14ff8a9fc7c34f65a378ceeddb62d790177c527.
+Public source_population_v1/conclusions.md and complete_results.md. Private
+cost rows remain under data/stage_cvpr2027_experiments/source_population_v1.
+
+A material scientific decision was requested asynchronously: replace the
+per-query-scale primary with per-dataset native ADE/FDE plus prespecified
+equal-scene relative-baseline aggregation, retain old metrics, do not treat a
+metric change as improvement. No answer received at this record's creation.
+See source_population_v1/metric_decision_pending.md. Do not change the primary,
+thresholds, loss or dependent training silently. If approved, register and test
+the paired metric amendment and compare fixed controls/matched predictors before
+new families. If rejected, focus the stated task on static-start prediction.
+Independent implementation/evidence work can continue while awaiting the choice.
+No Stage5C/SMC/deployment/CCF-A claim. No fresh CREATE inspection or job.
+Preserve unrelated staged fingerprint c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Native Motion Resolution Complete (2026-09-19)
 
 Goal active/unmet; this is concrete progress, not a no-progress turn. Completed

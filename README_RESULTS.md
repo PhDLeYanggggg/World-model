@@ -5,6 +5,37 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Broader Source Audit: Metric Conditioning (2026-09-19)
+
+Fresh aggregate/replay audit, no new fits: 175,756 past-indexed queries from 33
+recordings in four already-explored source sites. Complete/partial/absent futures
+are 143,918/29,039/2,799. Bookstore, main, original val/test and external readouts
+remain closed. All queries retained; missing futures are not zero-motion labels.
+
+Of complete windows, 6,864 static-start annotations (4.77%) contribute 99.7481%
+of equal-site normalized CV error but only 0.6660% of native-pixel error. The
+per-query past-scale floor is 0.001 pixels. The discrepancy occurs at all four
+sites. Complete-moving seven-baseline oracle headroom is 15.2165%, while the
+whole complete cohort has only 0.03835%. An oracle is not a causal model. A
+perfect moving-only repair with static predictions unchanged could improve the
+old aggregate by at most about 0.252%.
+
+198 array hashes verified; all 175,756 raw index keys rebuilt; 1,230,292
+baseline/query costs independently reduced; 256 exact raw geometry/label checks
+and 33 future-array poison checks pass. Completed replay exactly matches all
+rows and aggregates. 47 scoped tests pass. No full legacy integration rerun.
+The initial population-count and serialized-floor detection errors were fixed
+before completed output and are disclosed in the report.
+
+The primary metric has not changed. A scientific decision on native-unit
+per-dataset ADE/FDE and an equal-scene relative-baseline summary is pending.
+Old negative results remain negative; no deployment, Stage5C or SMC. This is a
+source diagnostic, not independent confirmation or submission readiness.
+
+[Conclusions](outputs/publication_readiness_2026_09/source_population_v1/conclusions.md),
+[complete tables](outputs/publication_readiness_2026_09/source_population_v1/complete_results.md),
+[proposed decision](outputs/publication_readiness_2026_09/source_population_v1/metric_decision_pending.md).
+
 ## Native Motion Complete: No Reliable Probability Lift (2026-09-19)
 
 Fresh decoding recovers all 25,300 native past crops for the same 15,430 source

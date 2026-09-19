@@ -3,7 +3,35 @@
 最近更新：2026-09-19。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：原始分辨率对照完成，没有可靠概率提升
+## 当前：完整源数据审计定位到评价尺度问题
+
+这次不是新训练。四个已探索源场景共175,756个过去可用窗口，来自33段录像；
+完整/部分/缺失未来标签为143,918/29,039/2,799。没有打开bookstore、主评价、
+原始验证测试或外部读数。缺失未来标签仍为未知，不算成静止负例。
+
+6,864个完整“静止后位置变化”窗口占归一化CV误差99.7481%，但原生像素误差
+只占0.6660%。旧分母对静止历史使用0.001像素，明显改变了任务权重。
+移动历史的七基线oracle空间15.2165%，完整总体只有0.03835%。这不是神经模型
+成功，也不能把oracle当可部署结果。原始数据重放和独立误差重算已验证结论。
+
+```bash
+.venv-pytorch/bin/python scripts/audit_m3w_source_population.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_source_population.py
+.venv-pytorch/bin/python scripts/report_m3w_source_population.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_source_population.py tests/test_m3w_sdd_step_adapter.py tests/test_m3w_sdd_auxiliary.py tests/test_m3w_track_event_sampling.py tests/test_m3w_causal_recordings.py -q
+```
+
+首次运行审计时不加`--verify`；完成后使用该参数精确核验，脚本拒绝覆盖已有
+结果。198个数组哈希、175,756个原始索引、123万基线逐行误差、256个原始
+历史标签重放和33次未来污染检查通过；47项相关测试通过。完整旧集成测试
+不重跑，避免历史报告被改写。当前所需进程全部退出，无新HPC作业。
+
+已请求确认是否另行冻结“各数据集原生单位ADE/FDE + 等场景相对基线改善”
+的主评价，旧指标和负结果完整保留。确认前不改变主指标或启动依赖新指标的
+训练。修改评价不是提升模型；后续仍要固定方案、匹配对照并重新验证。
+详见`source_population_v1/metric_decision_pending.md`。Stage5C/SMC继续关闭。
+
+## 历史：原始分辨率对照完成，没有可靠概率提升
 
 固定方案 `7afef428` 已在新提取和训练前推送。首段录像实际耗时35.92秒，
 1,390个原生裁剪均精确还原旧32像素RGB和覆盖计数。其余28段也已完成：
