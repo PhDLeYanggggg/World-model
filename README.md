@@ -40,6 +40,11 @@ repaired numerical solver failure. This makes the comparison more informative;
 it does not establish a new forecasting gain.
 [Mechanism control and numerical evidence](outputs/publication_readiness_2026_09/interaction_controls_v1/conclusions.md).
 
+The next [fixed comparison](outputs/publication_readiness_2026_09/frozen_interaction_decision.md)
+applies this control to the existing three-seed Transformer and EqMotion
+forecasts, without retraining or changing evaluation rules. These are already
+explored development data, not a new independent test. New results are pending.
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same

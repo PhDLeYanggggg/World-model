@@ -5,6 +5,20 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen Predictor Coupling Comparison Registered (2026-09-20)
+
+The next fixed diagnostic adds the geometry-aware independent control to every
+completed v6 Transformer/EqMotion seed, ridge/neural cost head and frozen policy.
+Only the already opened UCY development recordings are used. No new metric,
+training, threshold selection, external confirmation or model promotion.
+
+Both artifact preflights pass after exact recovery of the original supervised
+backend fromGit5f59acf2 into a private runtime mirror. Its later eight-line
+architecture dispatch addition remains in the current checkout. No hash check
+is waived.64scoped tests pass. Real new control scoring is not_run at registration.
+The128-query pilot will be included in the full checkpointed comparison.
+[Fixed design](outputs/publication_readiness_2026_09/frozen_interaction_decision.md).
+
 ## Interaction Control Repair, No New Forecasting Claim (2026-09-20)
 
 Added an opt-in geometry-aware independent control: retain the additive part of
