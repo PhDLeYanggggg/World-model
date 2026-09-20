@@ -1,6 +1,6 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-19. Method proposal with completed three-seed development
+Working draft, evidence reconciled 2026-09-20. Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
 tiny guarded development gains. None supports a new deployment or the proposed
@@ -229,6 +229,36 @@ diagnostic conditioned on the independent count. Ordinary equal caps alone do
 not isolate coordination. The all-baseline vector is feasible; failed or
 unverified optimizer solutions return it. Estimated feasibility does not imply
 that a learned intervention improves the realized trajectory.
+
+### 3.1.1 Isolating Coupling From Single-Agent Geometry
+
+The risk-only independent comparison does not isolate pairwise composition.
+For binary choices and P(0,0)=0, the same penalty decomposes exactly as
+P(1,0)*a_i + P(0,1)*a_j + d_ij*a_i*a_j, where
+d_ij=P(1,1)-P(1,0)-P(0,1). A geometry-aware independent control retains the first
+two terms and removes only the binary product. The signed d_ij is not clipped.
+All controls use identical predictions and original risk/support constraints;
+unary geometry and joint selection both match the risk-only reference count.
+Geometry is not substituted for the estimated forecast-harm budget.
+
+Writing the full objective as J=U+R, exact minimizers on the same feasible set
+satisfy 0<=J(a_U)-J(a_J)<=R(a_U)-R(a_J)<=lambda*sum|d_ij|/|E|. This elementary
+bound concerns the constructed objective only. It is not a trajectory-risk
+guarantee or new theory. Additive pair penalties can favor the full policy over
+risk-only selection even when R is identically zero. Therefore only comparisons
+against the geometry-aware control can isolate the non-additive term in this
+objective, and real forecast quality must still be evaluated separately.
+
+The opt-in implementation passes160 constructed problems/320 enumerated optima
+and99 past-input scene probes from33 existing source recordings. A legacy MILP
+success flag proved insufficient on one query:6,435 feasible assignments show
+a4.7883e-7 suboptimality. A versioned solver uses global positive objective
+scaling and original-unit primal/dual/product checks. Old experiment-bound code
+and results remain unchanged. The99 future-array poison checks pass, but no
+future prediction errors are evaluated by these engineering probes. Three
+constructed-score proxy gains are not evidence of neural or causal interaction
+lift. See [full derivation and limits](interaction_controls_v1/method_and_limits.md)
+and [completed numerical evidence](interaction_controls_v1/conclusions.md).
 
 ### 3.2 Restricted Action-Class Diagnostic
 

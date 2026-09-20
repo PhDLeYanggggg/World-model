@@ -1,5 +1,43 @@
 # Real-Experiment Continuation Handoff
 
+## Interaction Mechanism Controls Verified (2026-09-20)
+
+Goal active/unmet. This turn is progress: new necessary ablation, numerical
+failure reproduced/repaired, exhaustive and original-source checks completed.
+The primary-metric question from the previous turn remains unanswered; do not
+silently change it or dependent training. No new neural fitting or label readout.
+
+Added src/world_model/m3w_interaction_controls.py and opt-in evaluator adapter.
+Pair objective P decomposes into unary geometry plus signed product. New control
+keeps unary geometry, removes only product, retains original scores/harm/support
+and causal independent count. All3new arms use the same versioned solver;
+historical joint-intervention source hashes and results are unchanged.
+
+First99-query check aborted after78queries due a worse "optimal" joint objective
+at hyang/video3/frame84. Enumeration6435solutions confirms4.7883e-7 excess.
+Forwarding mip_abs_gap=0 alone did not help; global coefficient scaling did.
+New solver checks original-unit primal/dual/product consistency and feasibility.
+Do not attribute this exclusively to a default absolute-gap option. Initial
+read-only replay used the wrong coordinate-restoration argument type, corrected
+without data changes; no failed run was written as completed evidence.
+
+Fresh completed check PID15789 and replay15822 exit0:160constructed problems,
+23808assignments,320optima;33recordings,99queries,784agentqueries.99matches,
+85nonzero,99future poisons,0label API calls.19queries have possible product
+effects,39differ in identity (ties possible),3improve constructed proxy.
+98scoped tests pass(session3784d3), no full historical integration rerun.
+No required process running. SciPy1.17.1,NumPy2.4.6,nativearm64.
+Checks hash da7a31a0347829573a84581c5faf53aae2525ea992024c9e533daef91da9c8c7.
+
+Public interaction_controls_v1/conclusions.md,method_and_limits.md,complete_cases.md
+and checks.json contain no raw trajectories or checkpoints. Scoring real futures
+is not_run; independent calibration not_run. No submission/deployment claim,
+main/bookstore/external readout, Stage5C or SMC. No newCREATEinspection/job.
+Next: once scientific metric decision arrives, preregister same-predictor
+matched risk-only/unary-geometry/full-joint experiment; avoid assuming a proxy
+improvement implies forecast lift. Other independent implementation can proceed.
+Unrelated staged fingerprint remains c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Broader Source Audit Complete; Metric Decision Pending (2026-09-19)
 
 Goal active/unmet. This turn is progress: broadened source audit, raw replay,

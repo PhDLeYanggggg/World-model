@@ -1,9 +1,35 @@
 # M3W 本地与 CREATE 操作记录
 
-最近更新：2026-09-19。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
+最近更新：2026-09-20。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：完整源数据审计定位到评价尺度问题
+## 当前：补齐联合介入对照并修复数值判断
+
+新增对照保留单人几何项，只去掉真正的双人乘积项；否则“联合优于独立”可能
+只是单人分数更好。三组固定相同预测、支持、原始风险约束；后两组精确匹配
+独立组在读取标签之前给出的切换数量。这不是新训练或更改主评价。
+
+```bash
+.venv-pytorch/bin/python scripts/check_m3w_interaction_controls.py --verify
+.venv-pytorch/bin/python scripts/report_m3w_interaction_controls.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_interaction_controls.py tests/test_m3w_joint_intervention.py tests/test_m3w_development_evaluation.py tests/test_m3w_causal_recordings.py tests/test_m3w_sdd_step_adapter.py tests/test_m3w_sdd_auxiliary.py tests/test_m3w_source_population.py -q
+```
+
+新建结果时不加`--verify`，已存在的结果拒绝覆盖。160个构造问题、23,808种
+枚举、320个最优值核验通过；33段录像的99个历史查询全部匹配，99次未来污染
+不改变结果。98项相关测试通过，完成后精确语义重放通过，没有运行旧的报告
+写入型全套集成测试。没有训练进程或新HPC作业。
+
+旧求解器在hyang/video3/frame84返回成功，但比穷举最优差约4.79e-7。
+等比例缩放整个目标并检查原单位原始值/对偶界/乘积关系后修复；单独设置
+绝对gap=0并没有修复这个实例。旧代码与历史结果保留，没有静默换版本。
+当前只有构造分数下的3个几何目标改善，未读未来误差，不能算模型提升。
+
+科学评价变更仍待确认；不改主要指标、loss或阈值，不开启依赖新规则的训练。
+后续需固定同预测器的几何独立/联合配对实验，再评价真实精度和伤害。
+完整说明见`interaction_controls_v1/conclusions.md`。Stage5C/SMC关闭。
+
+## 历史：完整源数据审计定位到评价尺度问题
 
 这次不是新训练。四个已探索源场景共175,756个过去可用窗口，来自33段录像；
 完整/部分/缺失未来标签为143,918/29,039/2,799。没有打开bookstore、主评价、

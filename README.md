@@ -31,6 +31,15 @@ sampled changes the expected training objective, even with the same per-row loss
 
 ## Current Evidence
 
+I have also tightened the test of the proposed interaction mechanism. A joint
+policy can beat a simple selector just because it adds better single-agent
+geometry penalties, even when no true coupling is present. The new matched
+control retains those penalties and removes only the pairwise coupling. Its
+implementation passes exhaustive and real past-input checks, including a
+repaired numerical solver failure. This makes the comparison more informative;
+it does not establish a new forecasting gain.
+[Mechanism control and numerical evidence](outputs/publication_readiness_2026_09/interaction_controls_v1/conclusions.md).
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same
@@ -73,7 +82,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does explicit observed image motion repair the remaining gap? | No. Another 24 heads complete 240,000 updates; quality-only/motion gains are -0.000535%/-0.000840%. Sixteen probability probes show a weak larger-excursion ranking gain but worse probability error. No new deployment. |
 | Does native resolution or a smaller motion window help? | Not with this fixed regional readout. All 64 probability probes complete; larger-excursion Brier worsens when motion is added in all four measurement variants. None beats the training-prevalence reference on that label at any held site. |
 | Are the historical external selector gains independently verified? | No. Recording duplication, teacher exposure and test-based selection make those scores exploratory. |
-| Is scene-level joint intervention validated? | The implementation and matched-count controls exist; a reliable advantage and independent risk calibration remain unproved. |
+| Is scene-level joint intervention validated? | Exact-count and geometry-aware independent controls now isolate the proposed coupling more carefully. Engineering checks pass, but predictive advantage and independent risk calibration remain unproved. |
 
 The latest [fixed deferral readout](outputs/publication_readiness_2026_09/source_deferral_transfer_v1/conclusions.md)
 retains all six trained endpoints and three matched controls. All three

@@ -5,6 +5,36 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Interaction Control Repair, No New Forecasting Claim (2026-09-20)
+
+Added an opt-in geometry-aware independent control: retain the additive part of
+the pair penalty and remove only binary-product coupling. Risk-only reference,
+unary geometry and full joint share forecasts, scores, original harm budget,
+support and a numerically checked solver. The latter two match the reference
+count before labels. Geometry-adjusted scores do not redefine harm constraints.
+
+A real-input query exposed a legacy solver success flag with a4.7883e-7 objective
+gap to a feasible better solution. Enumeration of6,435 exact-count assignments
+confirmed the discrepancy. Global objective scaling plus original-unit
+primal/dual and product checks resolves it. Setting forwarded absolute-gap zero
+alone did not; the cause is reported as scale-sensitive numerical termination,
+not attributed to one unverified default. Frozen legacy code/results unchanged.
+
+Completed:160 constructed problems,23,808 enumerated assignments,320 verified
+optima;33 source recordings,99 past scene queries,784 agent queries. All99
+queries match,85 at nonzero count;99 future-array poison checks,zero label API
+calls. Same-version semantic replay passes.98 scoped tests pass; full historical
+report-writing integrations were not rerun. All required processes terminal.
+
+Only3 constructed-score queries improve the full proxy objective over the new
+unary control. No future accuracy was evaluated. This is not neural improvement,
+realized-risk calibration or a deployment result. Primary-metric decision still
+pending; no training, main/bookstore/external readout, Stage5C or SMC.
+
+[Evidence](outputs/publication_readiness_2026_09/interaction_controls_v1/conclusions.md),
+[derivation](outputs/publication_readiness_2026_09/interaction_controls_v1/method_and_limits.md),
+[all queries](outputs/publication_readiness_2026_09/interaction_controls_v1/complete_cases.md).
+
 ## Broader Source Audit: Metric Conditioning (2026-09-19)
 
 Fresh aggregate/replay audit, no new fits: 175,756 past-indexed queries from 33
