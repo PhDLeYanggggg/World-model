@@ -30,6 +30,10 @@ probability diagnostic does not establish better trajectories or a new policy.
 The subsequent source-internal five-site visual comparison also completes all
 30 fits and is negative. It narrows the diagnosis: failure is not confined to
 source-to-main transfer, and annotation-change frequency is not forecasting cost.
+The latest frozen-predictor comparison completes all 24 coupling controls at the
+same reference intervention count. Joint versus unary-geometry ADE is identical
+in 21 combinations, slightly better in two and slightly worse in one. None passes
+easy preservation. This does not establish the proposed coupling contribution.
 
 ## Abstract
 
@@ -259,6 +263,25 @@ future prediction errors are evaluated by these engineering probes. Three
 constructed-score proxy gains are not evidence of neural or causal interaction
 lift. See [full derivation and limits](interaction_controls_v1/method_and_limits.md)
 and [completed numerical evidence](interaction_controls_v1/conclusions.md).
+
+The [subsequent frozen-forecast study](frozen_interaction_v1/conclusions.md)
+executes every completed v6 Transformer/EqMotion seed, head and fixed policy on
+two already explored UCY development recordings of one physical site. Each of
+24 combinations contains 970 scene queries and 37,775 agent queries, with 28,324
+complete ADE labels. All original floor/candidate errors reproduce exactly;
+these are new selection decisions, not newly trained predictors. Three new arms
+share the checked numerical solver, and all match the reference count.
+
+J-minus-U ADE is exactly zero in 21 combinations. The other contrasts are
+-8.7911e-6 for Transformer seed29/ridge/conservative, and -1.5224e-5/+6.0173e-6
+for EqMotion seed29/ridge/conservative/moderate. Transformer changes only one
+ADE-labeled agent and recovers the risk-only outcome. All neural-cost-head
+coupling contrasts are zero. EqMotion's effects change sign across the two
+fixed policies. All 72 new control cells exceed 2% relative easy degradation.
+The comparison therefore supplies no stable useful coupling effect. One physical
+site cannot support a scene-level confidence interval; seeds and overlapping
+windows are not substituted for independent sites. No parameter or policy is
+selected from these post-hoc development outcomes.
 
 ### 3.2 Restricted Action-Class Diagnostic
 

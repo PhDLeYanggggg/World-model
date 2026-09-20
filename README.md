@@ -40,10 +40,15 @@ repaired numerical solver failure. This makes the comparison more informative;
 it does not establish a new forecasting gain.
 [Mechanism control and numerical evidence](outputs/publication_readiness_2026_09/interaction_controls_v1/conclusions.md).
 
-The next [fixed comparison](outputs/publication_readiness_2026_09/frozen_interaction_decision.md)
-applies this control to the existing three-seed Transformer and EqMotion
-forecasts, without retraining or changing evaluation rules. These are already
-explored development data, not a new independent test. New results are pending.
+I have now completed that comparison for all 24 fixed Transformer/EqMotion
+seed, cost-head and policy combinations, without retraining or changing the
+evaluation rules. Joint versus geometry-aware independent selection gives
+21 identical, two slightly better and one slightly worse ADE results. None of
+the new controls preserves easy cases within 2%. The evidence does not support
+joint selection as an effective main contribution yet. These are already
+explored development recordings from one physical site, not an independent
+generalization test.
+[Complete comparison, including negative results](outputs/publication_readiness_2026_09/frozen_interaction_v1/conclusions.md).
 
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864

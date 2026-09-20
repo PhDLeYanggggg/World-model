@@ -77,3 +77,51 @@ def test_unmatched_queries_remain_in_full_accuracy_summary():
     assert r['full']['arms'][CONTROLS[2]]['all']['count'] == 2
     for pair in r['contrasts']['matched'].values():
         assert pair['ade']['status'] == 'not_run_no_eligible_labels'
+
+
+def test_independent_cost_reduction_rejects_false_choices_or_count_claims():
+    from scripts.analyze_m3w_frozen_interaction import independent_check
+    _,rows,query,protocol = fixture()
+    summary = summarize_controls(rows,[query],protocol)
+    policy = {'pair_weight':1.}
+    result = independent_check(rows,[query],summary,policy)
+    assert result['selected_forecast_error_checks'] == 18
+    changed = deepcopy(rows);changed[0]['arms'][CONTROLS[2]]['ade'] += 1
+    with pytest.raises(ValueError,match='fixed floor/candidate'):
+        independent_check(changed,[query],summary,policy)
+    changed_query = deepcopy(query);changed_query['reference_count'] += 1
+    with pytest.raises(ValueError,match='count match'):
+        independent_check(rows,[changed_query],summary,policy)
+    changed_summary = deepcopy(summary)
+    changed_summary['full']['arms'][CONTROLS[1]]['all']['selected_error'] += 1
+    with pytest.raises(AssertionError):
+        independent_check(rows,[query],changed_summary,policy)
+    with pytest.raises(ValueError,match='Duplicate agent query'):
+        independent_check(rows+rows[:1],[query],summary,policy)
+    with pytest.raises(ValueError,match='membership duplicated or incomplete'):
+        independent_check(rows,[query,query],summary,policy)
+    with pytest.raises(ValueError,match='membership duplicated or incomplete'):
+        independent_check(rows,[],summary,policy)
+    changed_summary = deepcopy(summary)
+    key = CONTROLS[2]+'_minus_'+CONTROLS[1]
+    changed_summary['contrasts']['all'][key]['ade']['left_minus_right_error'] += 1
+    with pytest.raises(AssertionError):
+        independent_check(rows,[query],changed_summary,policy)
+    changed_query=deepcopy(query)
+    changed_query['arms']['joint']['full_objective']+=.001
+    changed_query['arms']['joint']['mean_predicted_gain']-=.001
+    with pytest.raises(ValueError,match='float32 reduction bound'):
+        independent_check(rows,[changed_query],summary,policy)
+
+
+def test_float32_mean_display_is_not_a_float64_solver_certificate():
+    from scripts.analyze_m3w_frozen_interaction import display_roundoff_bound
+    values=np.array([.132317,.614,.782196,.042911,.134593,.029878],dtype=np.float32)
+    display=float(np.mean(values))
+    coefficients=float(np.sum((values/len(values)).astype(np.float64)))
+    assert np.mean(values).dtype==np.dtype('float32')
+    arm=dict(mean_predicted_gain=display,full_objective=-display,
+             unary_objective=-coefficients,product_objective=0.)
+    gap=abs(display-coefficients)
+    assert 1e-12<gap<=display_roundoff_bound(arm,len(values))
+    assert display_roundoff_bound(arm,len(values))<1e-5

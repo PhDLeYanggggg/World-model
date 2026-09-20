@@ -5,19 +5,41 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Frozen Predictor Coupling Comparison Registered (2026-09-20)
+## Frozen Predictor Coupling Comparison Completed (2026-09-20)
 
-The next fixed diagnostic adds the geometry-aware independent control to every
-completed v6 Transformer/EqMotion seed, ridge/neural cost head and frozen policy.
-Only the already opened UCY development recordings are used. No new metric,
-training, threshold selection, external confirmation or model promotion.
+`fresh_run`: all 24 fixed v6 Transformer/EqMotion seed/head/policy comparisons,
+with geometry-aware independent and full-joint controls at the risk-only count.
+`cached_verified`: existing checkpoints, cost heads, plans and source exports.
+No new training, metric change, threshold selection, independent confirmation
+or model promotion. The design was committed before new scoring as `2fa64646`.
 
-Both artifact preflights pass after exact recovery of the original supervised
-backend fromGit5f59acf2 into a private runtime mirror. Its later eight-line
-architecture dispatch addition remains in the current checkout. No hash check
-is waived.64scoped tests pass. Real new control scoring is not_run at registration.
-The128-query pilot will be included in the full checkpointed comparison.
-[Fixed design](outputs/publication_readiness_2026_09/frozen_interaction_decision.md).
+Joint-minus-unary ADE is zero in 21/24 combinations. The three nonzero contrasts
+are -0.00000879113 for Transformer seed29/ridge/conservative; -0.00001522417 and
++0.00000601727 for EqMotion seed29/ridge/conservative and moderate. Differences
+are original past-normalized ADE units, not percentages. Effects are tiny,
+restricted to one seed, and not consistently favorable. All 72 new control
+cells fail easy degradation <=2%. No stable useful coupling gain is established.
+
+Per combination: 970 scene queries, 37,775 agent queries, 28,324 ADE and 28,335 FDE
+labels from two explored UCY recordings of one physical site. No independent
+scene CI is available. All 906,600 repeated row identities and fixed predictor
+errors match the originals. Independent checks verify 5,439,600 selected-error
+entries, 216 ADE summaries, 144 paired contrasts and 288 native recording reductions.
+These repeated verification counts are not independent sample sizes.
+
+Both main runs and their included 128-query pilots complete: Transformer 479.97 +
+5.74 seconds, EqMotion 1462.51 + 27.60 seconds. 107 scoped tests pass; historical
+report-writing integrations were not rerun. The original backend is restored
+by exact hash into a private mirror, never by waiving a binding. An initial
+sandbox MPS failure and a float32-display checking error are explicitly recorded.
+The new risk-only solver changes two EqMotion agent choices versus the old
+solver; all three new controls share the same solver and fixed forecasts.
+
+Primary-metric decision still pending. No deployment, Stage5C or SMC.
+[Conclusions](outputs/publication_readiness_2026_09/frozen_interaction_v1/conclusions.md),
+[all combinations](outputs/publication_readiness_2026_09/frozen_interaction_v1/complete_results.md),
+[execution notes](outputs/publication_readiness_2026_09/frozen_interaction_v1/execution_notes.md),
+[fixed design](outputs/publication_readiness_2026_09/frozen_interaction_decision.md).
 
 ## Interaction Control Repair, No New Forecasting Claim (2026-09-20)
 

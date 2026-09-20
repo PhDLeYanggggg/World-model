@@ -7,6 +7,15 @@ Rechecked during the matched motion-loss run; this calendar does not replace
 missing results. The official CFP still lists the dates below, and the direct
 2027 AuthorGuidelines path still returned404. No registration was submitted.
 
+Rechecked again on2026-09-20 during the frozen-predictor coupling run: the
+[official dates](https://cvpr.thecvf.com/Conferences/2027/Dates) still list
+Nov10/16/23 registration/paper/supplement deadlines. The linked2027 author guide
+again returned404 and LLM-use details remain pending. The
+[CFP](https://cvpr.thecvf.com/Conferences/2027/CallForPapers) also describes work
+appearing after2026-09-15 as generally contemporaneous, but still requires credit
+and discussion; influenced prior work cannot be omitted. No change to the
+internal targets below, and no claim that format compliance is complete.
+
 ## Official Dates and Current Policy Availability
 
 The official dates page lists registration on2026-11-10, full submission

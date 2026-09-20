@@ -1,5 +1,66 @@
 # Real-Experiment Continuation Handoff
 
+## Frozen Neural Coupling Comparison Complete (2026-09-20)
+
+Goal active/unmet. This turn made concrete experimental progress, not a
+no-progress/blocked turn. The primary-metric decision remains pending. This
+fixed diagnostic reused the old primary and already opened development records;
+it did not adopt the pending change or open new evaluation data.
+
+Registered config `configs/m3w_frozen_interaction_v1.json`, committed before
+new scoring as 2fa64646. All 24 Transformer/EqMotion, seed17/29/43, ridge/neural,
+conservative/moderate combinations complete. Per combination: 970 scene queries,
+37,775 agent queries, 28,324 ADE/28,335 FDE labels. Students01/03 are one physical
+university site. No scene CI, no model/threshold selection, no new training.
+
+Joint-minus-unary ADE: 21 zero; Transformer seed29/ridge/conservative -8.79113e-6;
+EqMotion seed29/ridge/conservative -1.52242e-5; EqMotion seed29/ridge/moderate
++6.01727e-6. Transformer changes only one ADE-labeled agent and restores risk-only
+accuracy. EqMotion conservative improves 19 changed agents and worsens 11;
+moderate improves 6/worsens 8. All 72 new control cells fail 2% easy preservation.
+No stable useful coupling contribution or deployment. Do not choose favorable
+seed29 outcomes or sweep pair weights on these development recordings.
+
+Both main runs exit0: Transformer PID19769/session68070, 479.967454s plus included
+pilot5.735017s; EqMotion PID21784/session15037, 1462.508034s plus included
+pilot27.599493s. 108 batches/family. Observer21997/session93103 exits0 on main
+completion. Completed semantic replays99958/52235 both exit0, exact aggregates,
+zero new inference. No CREATE job or new remote inspection was needed.
+
+Independent analyzer verifies 906,600 repeated decision rows, 5,439,600 selected
+errors, 216 ADE aggregates, 144 paired contrasts, 288 native recording reductions.
+All original floor/candidate errors, identities and masks exact; zero changed
+legacy-arm replay rows. The new risk-only solver differs from the old solver
+on two EqMotion seed29/moderate agent choices; all three new arms share the new solver.
+107 scoped tests pass; full report-writing historical integrations not rerun.
+
+Incidents disclosed: original model code binding drifted by eight later dispatch
+lines; recovered exact old bytes from 5f59acf2 to ignored frozen-runtime mirror,
+no hash waiver or checkout overwrite. EqMotion's restricted-sandbox MPS init
+failed before inference despite native arm64/macOS15.3.1; identical elevated
+execution passed exact real-query comparison. This is not the old x86 Conda issue.
+New analysis first demanded float64 equality of a float32 display reduction;
+fixed that checker with a summation/division bound while keeping primal/dual
+certificate tolerance unchanged. Max display gap 7.52043e-8; outputs untouched.
+
+Reports: `outputs/publication_readiness_2026_09/frozen_interaction_v1/` contains
+conclusions, complete_results, analysis.json, all_controls.csv, comparison.svg,
+execution_notes. Inputs/batches/models/preview image remain ignored under
+`data/stage_cvpr2027_experiments/frozen_interaction_v1/`.
+Private Transformer report SHA837170d76a48f67f297c28692f8ff644272d4674867e132892a3134f97d83e7b;
+EqMotion SHA4341e80128964bb7237a0b3ee06f40adc415b140e996822b4e1ccc277158f0ef.
+Public analysis SHAa9e344a1a1854c3a86d4dcf6afb3a058b55c16a4a28761c0fc1f39761320ea0f.
+The plotted comparison was rendered and visually checked; all24 labels and both
+panels are legible. Summary assertions confirm21/2/1 contrasts and0/72 easy passes.
+Final107-test replay session74851 exits0 (7.83s). All required experiment,
+observer, verification and test processes are terminal. No hidden long job.
+
+Next: confirm the material primary-metric decision before dependent new training.
+Keep joint optimization as an unproven control, not an effective main contribution.
+Do not revive historical Stage26/37 scores as independent success. Stage5C/SMC
+disabled. Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Interaction Mechanism Controls Verified (2026-09-20)
 
 Goal active/unmet. This turn is progress: new necessary ablation, numerical

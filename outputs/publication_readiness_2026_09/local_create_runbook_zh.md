@@ -3,7 +3,46 @@
 最近更新：2026-09-20。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：补齐联合介入对照并修复数值判断
+## 当前：固定神经预测器的联合机制对照
+
+本轮沿用旧协议、三个种子、两个成本头、两个固定策略，只读已经打开过的
+UCY development 数据。不是重新训练，也不改变主指标。不把新增联合对照和
+原来的 risk-only 对照直接比较后就声称交互贡献：需要额外的 unary-geometry
+对照，保留单人几何项，只删除双人乘积项。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_frozen_interaction.py --family transformer --resume
+.venv-pytorch/bin/python scripts/run_m3w_frozen_interaction.py --family eqmotion --resume
+.venv-pytorch/bin/python scripts/analyze_m3w_frozen_interaction.py
+```
+
+已有完成标志时，`--resume` 校验输入、批次收据和汇总，增加零个推理查询，
+不重写完成结果。未完成时从最后一个完整的 128-query 批次继续，不能在同一
+目录并行启动第二个 runner。初次新建运行不带 `--resume`；本地已有结果不应删除重建。
+Config、runner 和执行依赖有固定哈希，运行中不得修改；身份不符应诊断而不是跳过检查。
+
+原模型对应的旧 supervised backend 与当前版本相差一个后加的模型分派分支。
+runner 从指定 Git 提交恢复旧字节到 private runtime mirror，并核对原 SHA256，
+不覆盖当前代码、不放宽哈希或数据边界。每一行的尺度、标签可用性和原来的
+floor/candidate 预测误差必须与历史完成导出完全相同，才能进入新增比较。
+
+本机使用 arm64 `.venv-pytorch`，CPU 4 线程、inter-op 1、workers 0。
+Transformer 保留 CPU，EqMotion 保留原实验的 MPS。本轮 sandbox 下 MPS 初始化
+报 macOS 版本错误，但系统实测为 arm64/macOS 15.3.1；同一命令获准在 sandbox
+外执行后真实 128-query 推理通过，且误差逐行一致。这是本轮权限环境现象，
+不能误写为旧的 x86_64 Conda/MKL/OpenMP 卡死，也不能偷偷改成 CPU/NumPy 再称复现。
+
+日志、心跳、批次与完成收据保存在
+`data/stage_cvpr2027_experiments/frozen_interaction_v1/<family>/`。进程存在检查
+返回 permission denied 只说明无法观察，不说明卡死。用主执行会话的退出码、
+最近批次时间、最终完成收据核对；`observe_m3w_frozen_progress.py --family ...
+--pid ...` 仅记录心跳，不会停止或自动重启训练。无需使用 CREATE 提交重复任务。
+
+最后的独立分析要求两个模型族都完成，核验每一行实际选择的误差和三组对比。
+两段 development 录像属于同一物理场景，不能伪造 scene-bootstrap CI；三个
+种子只描述拟合差异。完整 24 组合必须保留，不能选择最好的组合恢复成确认性结果。
+
+## 已完成：补齐联合介入对照并修复数值判断
 
 新增对照保留单人几何项，只去掉真正的双人乘积项；否则“联合优于独立”可能
 只是单人分数更好。三组固定相同预测、支持、原始风险约束；后两组精确匹配
