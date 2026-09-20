@@ -283,6 +283,26 @@ site cannot support a scene-level confidence interval; seeds and overlapping
 windows are not substituted for independent sites. No parameter or policy is
 selected from these post-hoc development outcomes.
 
+The [frozen-risk diagnosis](frozen_risk_forensics_v1/conclusions.md) separates
+predicted-budget feasibility from observed positive harm. Every predicted query
+budget passes, yet 0-529 of 970 queries per fixed cell already exceed the realized
+budget on available labels. The mean observed lower bound exceeds the mean
+predicted harm in 63/72 cells. Missing selected costs remain unknown; depending
+on the cell, 41-785 queries cannot be classified as within or exceeding budget.
+This is descriptive evidence at one explored site, not an independent calibration
+test or identification of the cause of underprediction.
+
+There is also a target mismatch. Let d=L(N,Y)-L(B,Y), a denote intervention and
+w=1{L(B,Y)<=tau} denote the outcome-defined easy group. The relative easy
+requirement is sum(w*a*d)<=rho*sum(w*L(B,Y)), with rho=0.02 and a positive baseline
+denominator. A global mean positive-harm cap constrains a different quantity.
+Even the exactly scored within-budget query subgroups fail the relative easy
+check in all 72 cells. Predicting E[w*max(d,0)|X] would address a joint conditional
+moment that is absent from a purely global harm target, but fitting it would not
+by itself supply a risk certificate. No revised model is trained or selected in
+this diagnosis. Independent calibration support and the pending primary-metric
+decision remain necessary before a new registered evaluation.
+
 ### 3.2 Restricted Action-Class Diagnostic
 
 Before learning another gate, consider the finite pool of frozen forecasts N_k

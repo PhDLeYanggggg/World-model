@@ -5,6 +5,42 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Frozen Risk Forensics Completed (2026-09-20)
+
+`fresh_run`: descriptive risk accounting for all 24 fixed combinations and
+72 controls. `cached_verified`: parent decisions, forecasts, source bindings and
+labels. No training, new inference, metric change, threshold/model selection,
+unopened evaluation or independent calibration. This is explicitly post-hoc.
+
+Every predicted query-harm budget passes, but observed labels prove 0-529 realized
+budget exceedances per 970 queries, depending on the cell. In 63/72 cells, mean
+observed harm lower bound exceeds mean prediction. Missing selected ADE costs
+remain unknown: 45-3,531 agents and 41-785 indeterminate queries per cell.
+
+Cost calibration is not the only issue. Queries whose selected costs are all
+known and whose realized global budget is met still contribute 0.039-57.878% of
+observed easy positive harm. Every one of the 72 known-within subgroups itself
+exceeds 2% relative easy degradation. A global absolute mean-harm cap does not
+imply a conditional relative easy cap; even truthful costs cannot fix that
+mathematical mismatch. These outcome-defined groups are not deployable filters.
+
+All 72 controls still fail easy preservation. One explored UCY physical site,
+not independent confirmation; repeated windows/seeds do not supply a scene CI.
+The analysis does not isolate whether underprediction is caused by fitting,
+distribution shift or target conditioning. No historical score is rehabilitated.
+
+All 24 candidates complete (included pilot 0.99s plus remaining work 23.29s).
+Completed resume is exact with zero new calculations. A separate reducer checks
+72 summaries/69,840 repeated query statuses. 42 scoped tests pass. Full old
+report-writing integrations were not rerun; all required processes are terminal.
+Next: resolve the pending primary-metric choice, then register an aligned easy
+risk target and independent calibration requirements. No deployment/Stage5C/SMC.
+
+[Conclusions](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/complete_results.md),
+[target mismatch](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/method_and_limits.md),
+[reproduction](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/execution_notes.md).
+
 ## Frozen Predictor Coupling Comparison Completed (2026-09-20)
 
 `fresh_run`: all 24 fixed v6 Transformer/EqMotion seed/head/policy comparisons,

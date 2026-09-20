@@ -50,6 +50,17 @@ explored development recordings from one physical site, not an independent
 generalization test.
 [Complete comparison, including negative results](outputs/publication_readiness_2026_09/frozen_interaction_v1/conclusions.md).
 
+I then traced why all of those controls passed their predicted harm budget but
+failed easy preservation. Two problems remain: the cost heads often underpredict
+observed harm, and a small average absolute harm over the whole scene does not
+protect a small relative error on easy agents. In one fixed comparison, observed
+labels already prove that 529 of 970 queries exceed the realized budget. In
+another, queries that really are within budget still contribute 57.88% of easy
+harm. Missing selected outcomes remain unknown, not zero. This diagnosis keeps
+all 72 comparisons and changes no model or threshold; a replacement risk target
+still needs a registered experiment and independent calibration data.
+[Risk forensics and its limits](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/conclusions.md).
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same
@@ -81,6 +92,7 @@ established a deployable neural advantage or a submission-ready method**.
 | Does longer training help? | Learning-rate decay produces a small source-training gain, but it does not transfer to the excluded source scene. |
 | Does the tested RGB representation help? | The matched source comparison is negative. More input modalities are not automatically more predictive information. |
 | Does cost-aware fallback help? | It reduces neural harm, but the fixed source readout still loses 1.246% to stationary CV. The unprotected control loses 1.744%. |
+| Does satisfying a predicted global harm budget protect easy agents? | No. Frozen-risk forensics finds both observed cost underprediction and a mismatch between global absolute harm and conditional relative easy degradation. All 72 controls still fail the easy requirement. |
 | Do scene-excluded candidate forecasts remain useful? | Twelve fresh fits all lose on their excluded site; equal-site gain is -5.016%. Fixed candidate/CV oracle headroom is below 0.53%, so another gate alone is not the next repair. |
 | Does removing the static-target loss repair them? | No. Twelve matched new fits increase oracle headroom to 3.760%, but actual gain is -98.719% and static-target harm is much larger. |
 | Do raw annotation checks and past-box features explain the failure? | Small changes are common, but >10px queries contribute 53.25% of baseline error and still lose. Forty-eight fixed probability probes find no stable added-box benefit. |

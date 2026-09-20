@@ -3,7 +3,30 @@
 最近更新：2026-09-20。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：固定神经预测器的联合机制对照
+## 当前：固定决策的风险取证
+
+本轮没有新训练或推理。读取已冻结的全部24组合、72对照，先核对原完成报告、
+代码、输入和批次收据，再逐查询分析预测风险与真实已知伤害。仍使用旧主指标，
+不进行阈值搜索，不打开新的测试数据，也不把旧development当独立风险校准。
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_frozen_risk.py --resume
+.venv-pytorch/bin/python scripts/report_m3w_frozen_risk.py
+.venv-pytorch/bin/python -m pytest tests/test_m3w_frozen_risk_forensics.py tests/test_m3w_frozen_interaction.py tests/test_m3w_frozen_runtime.py tests/test_m3w_risk_calibration.py -q
+```
+
+本地已完成时，resume精确重放24个组合，增加零次计算。首次新目录可用
+`--pilot-candidates 1`试跑，再resume补齐；不要删除已有结果伪装fresh。
+日志/心跳/逐查询记录位于`data/stage_cvpr2027_experiments/frozen_risk_forensics_v1/`，
+大文件不提交。公开报告为`frozen_risk_forensics_v1/conclusions.md`及完整表格。
+
+全部预测预算通过，但已知标签能证明每组0至529个查询实际超预算。另一方面，
+实际预算内查询仍可贡献大量easy损伤，说明“全体绝对平均伤害”并不等于
+“easy相对退化<=2%”。缺失selected标签保留未知；不能填零或删除后宣称安全。
+42项测试通过，独立重算核对72汇总和69,840次重复查询状态；这些不是独立样本数。
+所有进程已退出，不需要HPC。仍需确认主指标，再登记对应风险目标和独立校准方案。
+
+## 已完成：固定神经预测器的联合机制对照
 
 本轮沿用旧协议、三个种子、两个成本头、两个固定策略，只读已经打开过的
 UCY development 数据。不是重新训练，也不改变主指标。不把新增联合对照和

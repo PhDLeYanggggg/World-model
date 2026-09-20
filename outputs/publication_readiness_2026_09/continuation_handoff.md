@@ -1,5 +1,48 @@
 # Real-Experiment Continuation Handoff
 
+## Frozen Risk Forensics Complete (2026-09-20)
+
+Goal active/unmet. Concrete fresh diagnosis, not a no-progress turn. Do not
+silently change the still-pending primary-metric decision or dependent training.
+All 24 parent combinations/72 controls retained; no new fit, inference,
+threshold selection, unseen label readout or independent calibration.
+
+Predicted query budgets pass everywhere. Observed nonnegative harm proves
+0-529/970 realized-budget exceedances per cell; 41-785 queries are indeterminate
+and 45-3,531 selected costs unavailable. Missing selected ADE is not zero.
+63/72 mean lower bounds exceed mean prediction. However, known-within-budget
+queries also contribute 0.039-57.878% of easy harm, and all 72 such subgroups
+themselves fail relative easy <=2%. Global absolute harm does not imply
+conditional relative easy preservation, even with truthful costs. Outcome-based
+subgroups are not deployable selectors. Underfitting versus shift is unresolved.
+
+New config m3w_frozen_risk_forensics_v1.json, module m3w_frozen_risk_forensics.py,
+runner audit_m3w_frozen_risk.py, read-only reporter report_m3w_frozen_risk.py.
+Bound runner/module/config must not change silently after completion. Public
+frozen_risk_forensics_v1 contains complete results, bins, plot, diagnosis,
+method/limits, execution notes and machine-readable analysis/verification.
+
+Pilot PID29356/session83527 exit0 in0.991906s; full continuation PID29415/session24566
+exit0 in23.294734s, 23 new/1 reused. Completed resume96596 exit0 exact24, new0.
+Tests52612 exit0:42 passed16.68s; historical writing integrations not rerun.
+Reporter94833 exit0, separately verifies72 reductions/69,840 repeated statuses.
+Fontconfig cache warning did not prevent rendering; SVG preview visually checked.
+No required sessions running, no CREATE job or hidden background training.
+
+Risk run SHA f13cb1d7590b503676bb0ca5a1f508eb31436ed2fc7204afd2f5623d509dd72e;
+analysis SHA bc061b2fd239fdb2984890f75b02baad10f3b4ff40451ba9d2030d6edc72444c.
+Parent analysis a9e344a1a1854c3a86d4dcf6afb3a058b55c16a4a28761c0fc1f39761320ea0f
+unchanged. 24 private receipt-bound per-candidate artifacts remain ignored.
+
+Next material step requires the pending scientific metric decision, not another
+same-outcome threshold sweep. Then register a risk target aligned with that
+metric and genuinely independent calibration/confirmation support. Preserve all
+old negatives. Do not train a new conditional easy target from these inspected
+outcomes and call it confirmed. One site/overlapping queries do not supply CI.
+No new deployment, metric/seconds/true3D/foundation claims, Stage5C or SMC.
+Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Frozen Neural Coupling Comparison Complete (2026-09-20)
 
 Goal active/unmet. This turn made concrete experimental progress, not a
