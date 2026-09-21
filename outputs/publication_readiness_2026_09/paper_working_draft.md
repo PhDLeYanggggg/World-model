@@ -63,6 +63,18 @@ design-exposed, and this infrastructure result is not an independent performance
 or calibration claim. Strict zero-reference absolute-harm protection is retained
 without a new pixel tolerance. [Lineage repair and limits](native_nested_v1/conclusions.md).
 
+The subsequent fixed cost-head comparison is complete: 12 ridge and 24 neural
+fits, 72,000 updates, three seeds. At a fixed predicted harm-to-benefit rule,
+neural MSE yields 1.292% source ADE gain and the asymmetric underharm4 objective
+yields 0.340%. Intervention rates differ (2.793% versus 0.842%), so these results
+do not isolate ranking quality. Both fail strict zero-reference protection across
+all seeds; underharm4 still harms one perfectly CV-predicted query in seed43.
+Unknown selected outcomes remain unscored, not zero. Only a zero-intervention
+constant control preserves all observed zero-CV cases, with no gain. Exact
+checkpoint replay and independent arithmetic pass. This is a negative safety
+result on explored sources, not independent calibration or deployment.
+[Full fixed comparison](native_gain_harm_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

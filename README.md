@@ -45,6 +45,21 @@ existing outer-held predictors are retained. This prepares honest cost-learning
 data; it does not yet establish a safer selector or independent calibration.
 [Completed training and limits](outputs/publication_readiness_2026_09/native_nested_v1/conclusions.md).
 
+The first cost-head comparison is now complete: twelve ridge and twenty-four
+small neural fits, using three seeds and clean nested training views. Penalizing
+harm underestimation reduces harmful interventions, but also gives up most of
+the forecast gain. With the fixed conservative rule, ordinary neural regression
+improves ADE by 1.29%; the asymmetric loss improves it by 0.34%. Neither protects
+every path that CV predicts exactly. The latter harms one such query in one
+seed, so I do not promote it or select only the other two seeds.
+
+This narrows the next question: does the cost head rank safe opportunities better,
+or does it merely switch less often? I need a matched-intervention comparison
+before changing the objective again. All 36 heads replay, independent arithmetic
+agrees, and the negative safety result is retained. These are developmental
+results on explored source scenes, not a new deployable model or independent
+calibration. [Full comparison and failure analysis](outputs/publication_readiness_2026_09/native_gain_harm_v1/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict

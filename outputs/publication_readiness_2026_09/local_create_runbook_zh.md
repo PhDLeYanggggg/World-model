@@ -3,6 +3,29 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：原生坐标收益与伤害头
+
+12 个 ridge 和 24 个真实神经成本头全部拟合完成，72,000 次更新。
+这是冻结预测器后的小型成本头实验，不是重新训练整个世界模型。
+训练、评价、重放均已正常退出，不需要重新启动历史 PID。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_gain_harm.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_native_gain_harm.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_gain_harm.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_gain_harm.py
+```
+
+完整产物存在时，resume 只核验，不新增训练。保持冻结代码与配置不变。
+完整重放验证 2,636,340 条重复成本预测；独立算式验证 527,268 条轨迹预测和
+720 个场景指标。67 项相关测试通过，未重跑全部历史测试。
+
+严格规则下，普通成本头 ADE 改善 1.292%，加重低估伤害惩罚后为 0.340%。
+后者切换率降到 0.842%，但仍有一个零 CV 误差样本受损，不可部署。
+不能只选两个通过的种子；未知标签也不能算零风险。下一步先做同切换率对照，
+区分判断更准与仅仅切换更少。独立风险校准仍未运行。
+详见 `native_gain_harm_v1/conclusions.md`。Stage5C/SMC 均关闭。
+
 ## 已完成：双场景排除的成本训练数据
 
 新增18次真实Torch拟合全部完成，72,000次更新、训练约25.42分钟。

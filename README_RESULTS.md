@@ -5,23 +5,41 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Native Gain/Harm Comparison Registered (2026-09-21)
+## Native Gain/Harm Comparison Completed (2026-09-21)
 
-With clean nested cost data available, I am testing whether conditional harm
-underprediction persists in the native-coordinate task. The fixed comparison
-uses 12 ridge heads and 24 small neural heads, with three seeds and four excluded
-source sites. The paired neural objectives differ only in the penalty for
-underestimating harm. That asymmetric output is a conservative score, not a
-calibrated probability or expected mean. All models use 355 causal features.
+`fresh_run`: twelve ridge and 24 real neural cost-head fits, 72,000 updates,
+18,432,000 draws; 355 causal features, four excluded source sites, three seeds.
+`cached_verified`: frozen native forecasters and nested cost-training views.
+Both neural losses use identical batches and initialization. The asymmetric
+underharm4 score is an expectile, not a calibrated probability or expected mean.
 
-The preflight verifies 336 bindings and all twelve training views. 64 scoped
-tests pass. No new head has been fitted at this registration snapshot. The
-72,000-update neural budget, loss arms and two diagnostic intervention rules
-are fixed before fitting; no held-result threshold or best-seed selection.
-Strict zero-reference protection remains; positive-easy quartiles are explicitly
-diagnostic, not a newly certified deployment gate. All source sites remain
-design-exposed. Independent calibration and confirmation are still missing.
+| Fixed Rule | ADE Gain vs CV | Conditional Scene CI | Hard Gain | Positive-Easy Degradation | Switch Rate |
+| --- | ---: | --- | ---: | ---: | ---: |
+| Neural MSE / positive gain | 5.574% | [3.398, 7.807] | 7.762% | 7.111% | 30.246% |
+| Neural MSE / harm <= 0.1 benefit | 1.292% | [0.511, 2.301] | 1.740% | 0.586% | 2.793% |
+| Underharm4 / positive gain | 4.452% | [2.526, 6.028] | 6.235% | 3.833% | 15.811% |
+| Underharm4 / harm <= 0.1 benefit | 0.340% | [0.019, 0.868] | 0.401% | 0.102% | 0.842% |
+
+All fixed controls, including raw/clipped ridge and constant fallback, remain
+in the full report. Positive-easy q25 and hard q75 are training-defined diagnostic
+slices, not new formal gates. **No nonzero-gain rule passes strict zero-CV
+protection in all seeds.** Underharm4/strict harms one deathCircle/seed43 query
+by 0.45034 pixels ADE; two safe seeds cannot be selected after the fact. Its
+48 unknown selected query/seed outcomes remain unknown. The constant strict
+control is safe only by never switching, giving zero gain.
+
+Neural MSE underpredicts mean harm in all twelve strict-rule scene/seed groups;
+underharm4 still underpredicts six. Lower observed harm comes with lower coverage,
+so a matched-coverage contrast is needed before attributing better ranking.
+All 36 endpoints and 2,636,340 repeated cost-score rows replay exactly. Independent
+arithmetic verifies 527,268 forecast rows and 720 scene reductions; 67 scoped tests
+pass. Summed head fitting is 57.01 seconds on cached features, not full-model cost.
+No threshold/best-seed selection, independent calibration, closed-role readout or
+new deployment. Stage5C/SMC off; publication readiness remains unmet.
 [Fixed design](outputs/publication_readiness_2026_09/native_gain_harm_v1/registration.md).
+[All results and limits](outputs/publication_readiness_2026_09/native_gain_harm_v1/conclusions.md).
+[Failure taxonomy](outputs/publication_readiness_2026_09/native_gain_harm_v1/failure_analysis.md).
+[Reproduction](outputs/publication_readiness_2026_09/native_gain_harm_v1/execution_notes.md).
 
 ## Native Nested Producers and Cost Views Completed (2026-09-21)
 

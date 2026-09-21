@@ -1,5 +1,42 @@
 # Real-Experiment Continuation Handoff
 
+## Native Cost Heads Complete, Safety Still Failed (2026-09-21)
+
+Goal active/unmet. All 12 ridge + 24 neural fits completed, 72,000 updates,
+18,432,000 draws, no unknown-label draws. All 36 endpoints replay; 2,636,340
+cost-score rows exactly match. Independent scalar arithmetic verifies 527,268
+forecast rows, 720 scene reductions and 120 policy slices. 67 scoped tests pass.
+Training/eval/replay sessions68689/18604/95432 and verifier16030/test28703 exit0;
+no required process remains live. Fixed head fitting totals57.00823seconds on
+cached features. This is not full-predictor runtime. Registration76849487 preceded
+fitting; bound code/config/tests/registration must remain unchanged.
+
+MSE/strict ADE gain1.29194%, positive-easy diagnostic degradation0.58569%,
+switch2.79270%. Underharm4/strict gain0.34040%, CI[0.01880,0.86756], diagnostic
+easy degradation0.10153%, switch0.84151%. Neither passes strict zero-reference
+safety across all seeds. Underharm4 has one harmed zero-CV query in
+deathCircle/seed43, max0.4503355px. Its past path is1px, not stationary, with8
+neighbor slots supported; do not invent a future-aware veto or tune this row.
+Seeds17/29 empirically safe, seed43not; cannot choose lucky seeds.48unknown
+selected query/seed outcomes stay unknown. Only the zero-switch constant
+control is strictly safe across all seeds, with zero gain, not model success.
+
+Conditional mean harm underprediction: MSE12/12, underharm4 6/12 strict groups.
+Lower harm and lower coverage are confounded. Next meaningful step: register
+a fixed, outcome-blind matched-coverage contrast on frozen scores, then decide
+whether to train a conditional/easy-sensitive objective. Preserve all seeds;
+do not threshold-search held source results. Independent calibration and
+confirmation remain not_run. All four sites design-exposed; original val/test,
+main/external/bookstore closed. Strict risk and metric choices already resolved.
+
+Reports in native_gain_harm_v1/conclusions.md, failure_analysis.md,
+execution_notes.md, results.csv, analysis.json, verification.json,
+independent_verification.json, failure_slices.json. AnalysisSHA
+f265cc1c28b54bf54af45417c268a5dbf3b72fc52a7fd2399ee22574e32d590d.
+All336bindings pass. No deployment/Stage5C/SMC/newCREATEjob. Preserve unrelated
+staging fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Historical snapshots below are not current unfinished jobs.
+
 ## Native Gain/Harm Comparison Registered (2026-09-21)
 
 Goal active/unmet. Previous turn completed real nested producers and12physical
