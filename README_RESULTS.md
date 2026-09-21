@@ -7,6 +7,13 @@ or evidence status.
 
 ## Bounded Cost Study Completed: Accuracy Lift, Primary Protection Failure (2026-09-21)
 
+Next comparator, registered before fitting: twelve EqMotion K=1 native-loss
+fits will use the same source rows, draws and update budget as the frozen native
+Transformer. The old EqMotion result is not a matched native-loss comparison.
+No new data roles or closed outcomes are opened. This registration is not a
+training result or reproduction of the author's best-of-20 benchmark.
+[Fixed design](outputs/publication_readiness_2026_09/native_eqmotion_v1/registration.md).
+
 `fresh_run`: all 36 Torch fits, 108,000 updates, 27,648,000 draws and the fixed readout.
 `cached_verified`: frozen predictors, nested producer lineage and causal inputs.
 `not_run`: independent calibration/confirmation, new deployment, Stage5C or SMC.

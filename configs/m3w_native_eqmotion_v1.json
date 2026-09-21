@@ -1,0 +1,28 @@
+{
+  "scope": "source_only_fixed_K1_public_family_comparator_native_loss",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "architecture": {
+    "family": "eqmotion_fixed_head", "history_steps": 8, "prediction_steps": 12,
+    "hidden_nf": 64, "channels": 64, "layers": 4, "fixed_head": 0,
+    "prune_unused_heads": true, "input_conditioning": "observed_joint_max_norm"
+  },
+  "training": {
+    "steps": 4000, "batch_size": 64, "learning_rate": 0.0003,
+    "minimum_lr_ratio": 0.01, "weight_decay": 0.0001,
+    "gradient_clip": 5.0, "checkpoint_every": 200, "heartbeat_every": 50
+  },
+  "runtime": {"torch_threads": 4, "interop_threads": 1, "num_workers": 0, "device": "cpu"},
+  "bootstrap_resamples": 3000,
+  "registration": "outputs/publication_readiness_2026_09/native_eqmotion_v1/registration.md",
+  "output": "data/stage_cvpr2027_experiments/native_eqmotion_v1",
+  "reports": "outputs/publication_readiness_2026_09/native_eqmotion_v1",
+  "threshold_search": false,
+  "model_selection": false,
+  "independent_confirmation": false,
+  "risk_calibration": false,
+  "closed_role_readout": false,
+  "deployment": false,
+  "stage5c_executed": false,
+  "smc_enabled": false
+}
