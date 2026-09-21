@@ -53,12 +53,21 @@ improves ADE by 1.29%; the asymmetric loss improves it by 0.34%. Neither protect
 every path that CV predicts exactly. The latter harms one such query in one
 seed, so I do not promote it or select only the other two seeds.
 
-This narrows the next question: does the cost head rank safe opportunities better,
-or does it merely switch less often? I need a matched-intervention comparison
-before changing the objective again. All 36 heads replay, independent arithmetic
+This raised the next question: does the cost head rank safe opportunities better,
+or does it merely switch less often? All 36 heads replay, independent arithmetic
 agrees, and the negative safety result is retained. These are developmental
 results on explored source scenes, not a new deployable model or independent
 calibration. [Full comparison and failure analysis](outputs/publication_readiness_2026_09/native_gain_harm_v1/conclusions.md).
+
+The matched-intervention comparison is now complete. At the same 0.84% switching
+rate, asymmetric ratio ranking improves ADE by 0.34%, ordinary MSE ratio ranking
+by 0.43%, and MSE net-gain ranking by 1.19%. The asymmetric loss harms fewer
+exact-zero-CV outcomes, but sacrifices accuracy; every nontrivial control still
+fails strict protection. This separates the value of ranking from simply doing
+less. I will test net-gain allocation with an explicit easy-harm risk target,
+rather than treat a benefit/harm ratio as a safety certificate. These are fixed
+offline controls on explored sources, not online deployment or untouched tests.
+[Matched counts, paired contrasts and limits](outputs/publication_readiness_2026_09/native_matched_coverage_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm

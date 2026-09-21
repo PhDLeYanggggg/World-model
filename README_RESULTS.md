@@ -5,20 +5,37 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Matched-Coverage Control Registered (2026-09-21)
+## Matched-Coverage Control Completed (2026-09-21)
 
-I have fixed the next diagnostic before calculating its new policy outcomes.
-At each of the two existing underharm4 intervention counts, all rankers must
-select exactly the same number of rows per scene/seed. MSE ratio, net gain,
-asymmetric net gain, signed ridge and a fixed query shuffle are compared without
-using outcomes or future support for selection. Uniform-random expected error
-is also reported. The primary contrast is asymmetric versus MSE ratio ranking.
+`fresh_run` source-only arithmetic; `cached_verified` models/predictions. Six fixed
+rankers, two count budgets, four excluded source scenes, three seeds: 144 exact
+count-matched policy/view results. No new training or held threshold search.
 
-The 392-bound-input preflight and 35 scoped tests pass. No new matched result
-exists at this registration snapshot. This reuses cached predictions rather than
-training again. Counts use full source batches, so it is an offline diagnostic,
-not an online policy or independent calibration. No closed test role is opened.
+At mean 0.8415% intervention, ADE gains are 0.3404% (asymmetric ratio), 0.4347%
+(MSE ratio), 1.1900% (MSE net gain), 1.1537% (asymmetric net gain), 0.6941%
+(signed ridge net gain), 0.0605% (fixed query shuffle). The analytic uniform-random
+expected gain is 0.0632%. All use the same frozen candidate and per-view count.
+
+The primary asymmetric-minus-MSE-ratio difference is -0.0943pp, conditional scene
+CI [-0.1592,-0.0294]. At the higher 15.8109% count it is -0.0688pp,
+CI [-0.2313,+0.0352]. The asymmetric loss reduces zero-CV harmful instances at
+matched coverage (low count: 1 versus 15), so it is not merely less active, but
+it does not improve mean ADE ranking. Net-gain ordering retains more accuracy;
+it also fails strict zero-CV protection. No new policy is deployed.
+
+A separate training-only target audit finds 1,999-2,677 harmful zero-CV rows per
+view. Almost all have a zero last observed step, yet that subgroup also contains
+3,943-6,058 beneficial rows. A blanket stop veto is not a validated solution.
+Counts overlap and repeat across seeds; independent event support is not claimed.
+
+392 bindings, 24 parent-anchor replays and all 144 counts pass. Independent cutoff
+selection reproduces all choice hashes and checks 864 scene reductions plus 120
+random expectations. 37 scoped tests pass. These are offline batch allocations on
+four design-exposed scenes, not online policies, independent tests or calibrated
+risk guarantees. Original closed roles remain closed; Stage5C/SMC off.
 [Fixed comparison](outputs/publication_readiness_2026_09/native_matched_coverage_v1/registration.md).
+[Results and next experiment](outputs/publication_readiness_2026_09/native_matched_coverage_v1/conclusions.md).
+[Reproduction](outputs/publication_readiness_2026_09/native_matched_coverage_v1/execution_notes.md).
 
 ## Native Gain/Harm Comparison Completed (2026-09-21)
 

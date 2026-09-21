@@ -1,0 +1,2099 @@
+{
+  "result_source": "fresh_run_training_only_target_feasibility_on_cached_verified_nested_views",
+  "parent_analysis_sha256": "f265cc1c28b54bf54af45417c268a5dbf3b72fc52a7fd2399ee22574e32d590d",
+  "code_sha256": "c1f7d6869409d477ee0489afa3685e8c69d6240e76efec76195ee22c033bc551",
+  "source_bindings": {
+    "configs/m3w_native_forecast_v1.json": "778b0823bf5eea54bb6f0ec505a65d4347c3a40db0ba011cafffb1a9e7fe115f",
+    "outputs/publication_readiness_2026_09/native_forecast_v1/registration.md": "f35cdf7175353530dc25ea127fb6378a6feadf1cc3971c8ac6642d884c1edfe5",
+    "src/world_model/m3w_native_forecast.py": "57c91e68a89774417c8aa31406191468c1168b85bf2193833fccc0d828ee5613",
+    "scripts/run_m3w_native_forecast.py": "b8b02340c0515c7dc2a32c1db724a8edd236a70e8b3d7974d7bc0cfbcff5a443",
+    "tests/test_m3w_native_forecast.py": "6a3471cefbf3b7a4dd5ec586837c36da4fb78137c6cc78104709d1590f03a2eb",
+    "src/world_model/m3w_supervised_intervention.py": "a888ea0fd360713f8ea0cc3dc395399edc9842d6170c85b0ef89a1f967a5dc10",
+    "src/world_model/m3w_context_conditioning.py": "211bbdcd0a6d88ff2cdadd3f0c98b75dadec592198cd51aaeffa1a11782b4c34",
+    "src/world_model/m3w_baseline_relative_forecaster.py": "333fc13769381bb9eca9bc3c8462b90f340b8ccbe9ed30df3d94d425d401c45a",
+    "src/evaluation/m3w_native_metrics.py": "7876c44b092ca21fd4c50f2d2c1dd23906e3b51231e97e3ea591641f22afca38",
+    "outputs/publication_readiness_2026_09/native_metric_v1/analysis.json": "df496c182dfff57c27dee585606d23613341de3e9946fb9786c1c12ce3c32969",
+    "outputs/publication_readiness_2026_09/source_population_v1/audit.json": "753262d73a107ab4b497e86ff07e69db83b1eb51d7a84a6bd9c44dbbdb8809bd",
+    "configs/m3w_source_population_v1.json": "87ed5d46f904e61889e4b687e4151e9624eed3e6b3300394693aead95fc8f20a",
+    "src/evaluation/m3w_source_population.py": "9a35e15219872e7c96908ec7441a378bc20c00b6efe0f75b55b5d450c5770d7c",
+    "scripts/audit_m3w_source_population.py": "b1e7d8195aaa40d56748cf7cd9346b55878257223adb7ec62f9367f105f59820",
+    "tests/test_m3w_source_population.py": "4d12bb2f670731140a0770323d2aff511c70eecff2062902df098ca592e19d85",
+    "outputs/publication_readiness_2026_09/source_population_decision.md": "e8c93cc32098008466a598be374c755c73200391275c02e096bad9a4d515b0a9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/manifest.json": "702b669fe4b1db254af2ec143088fa1e9be755f097696f5a69a5044de9f8e138",
+    "configs/m3w_sdd_auxiliary_v1.json": "17d12a071c73a44a42c42c13341c18f4cc4093188b719a4c6a0b57623e8e5fbb",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video0/geometry.npy": "77b555010575a897bb42c3455bd879b03c65a3181ffc61f7c894bcd12f789118",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video0/baseline.npy": "c2831adb10a22e60fab374ab54a8ad47849f71425238fa97c4053872729abac8",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video0/target.npy": "599c74059a72e1cf73d07ef899dc640babe5998f704b474ce7664940c1710119",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video0/valid.npy": "cda971a2680a907f0db3782da8d5b8ebe3491e64947cf4d69e39ce778ca5c407",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video0/scale.npy": "4f123ae16e25162cc610b0effa37007b92b1a30d5ad2abcf033db336b66f4dde",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video0/query_keys.npy": "b5fa7f0321c766d1493ad23fa044a2c80313e65957d5fb93ad83eff358e52019",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video1/geometry.npy": "22e5298f1486f20ec8191143fc4fad8422214bab7e8a42a293c97520012c347e",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video1/baseline.npy": "644282dfc0e4e4702df97e9065fce17cd35a1b58fdbd8d3ff62623708fcabc60",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video1/target.npy": "fe393e02472d90b73baa977c7a6b932a992881f7d3b2499c69ca39a8d34dac73",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video1/valid.npy": "2deaa51028e02ee3c98ebbe7095940dfe9dcb3282552fc82e37483e2126014bd",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video1/scale.npy": "820e5276ea49dc6adae3efc82f473c7fa5803a50f68b204e7ebc6625fda7bd5f",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video1/query_keys.npy": "596b9916d4b8ffbd1dbedcbb3f23f1cab885eb6bda784f34f97384a211aae2a5",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video2/geometry.npy": "3dcac92dc354e21d3308c262167a714115c85f3f066321f183c26a65da977a41",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video2/baseline.npy": "c2a88aba1cdc615af80238f4856775299fa050ae885669c33c87dda0b8ec2b7f",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video2/target.npy": "9fe7f3d7abc2a7cd45f9b396b6f6059f9e037ec425051d0a0a17927a5ff9934d",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video2/valid.npy": "1dbe92e997a504f0e43d3147ede7f518f883d1945eba08f72829d43f2d06795b",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video2/scale.npy": "5f2b620954ca69e812f038de7bec0787e4fb1130ced53b600279e2263e06f0d7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video2/query_keys.npy": "a41c5923325f82b376bcb184b5cf3c30da931bc15d199b5957e292bdafeb07a1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video3/geometry.npy": "68db07b5d8384a97784fbe486c958ac50eb86284be088ba68601d460cdf48d7f",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video3/baseline.npy": "edb2d9d076640399fbab24148b90f470f8613e6473a0690b8372b4622381b8c9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video3/target.npy": "70c64ae2de33103ac39d1cf52ee6fc1b684959e43dc99987400570802e908e19",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video3/valid.npy": "870bd0c38273bd101ccdb8d10bb0c3b5cea4f3386ed80e4a1520407039c917e3",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video3/scale.npy": "72ae5e6b3eaa479239a14ea402806006de4363efb42bcb2007f0218c61fecba9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/coupa/video3/query_keys.npy": "deb12d58cbc89abcca14ad6b3d808ed84f06753237df9a9c0b2c94bfa925fe56",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video0/geometry.npy": "a3af586d4c200882a940b73c13bd4c5bea3a5582815ac712b7704db1ac01e307",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video0/baseline.npy": "6f126a4935efb3a46282aff9c69fc094d5d26305e7d0a1733339416a924d74a9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video0/target.npy": "896363ad55ecc13d19e6793dcb35e3155f08ae0383945b882c278adffa536e2b",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video0/valid.npy": "80d4376ad5a01d0e5417005596282860ae654459ccfeea8b63423013cf41e2e0",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video0/scale.npy": "66facbbf1e9fc6b29deb5d02c796b648daf1104a0e26f13e23978ebdb6970198",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video0/query_keys.npy": "1f8f645fe6c6119ee2e60c6ed7d3c9ebbc815303d90b8452590c88552ddffba9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video1/geometry.npy": "440cf4cb32b3e6e5faf91ab2c4abb1643dd7a845e7d804a09b111601543e0b65",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video1/baseline.npy": "5f5e1f8c163d7e3992fde7aae18a4d00813da9e25e6eba63923e6b2003ab7b52",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video1/target.npy": "9de792c3afda3fbfa957d0c2a2390222160b8d88cc249c7b1a59f99186cfdf83",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video1/valid.npy": "65bf653ac50e512521548c4881e3907032a153ac187553250a9c8d8664edd0a1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video1/scale.npy": "69bc5108fc9595de8c548e6fb26f16f28751c37b3222e7ba9b8968879a1573eb",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video1/query_keys.npy": "b99e4dbda401fd5a4e7222b2bd5c46c2ed576964fe6ab540a3abdd3390f218e0",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video2/geometry.npy": "e036f993d516882cee1bd0e70680952248db83cfe64d76ceda377859e4ee027f",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video2/baseline.npy": "c1c1a1219494d668d3e5e9940463b5de1205538059e53fbc16265523b3a3a4ff",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video2/target.npy": "21af229181a96594a86e65f0fc2bea170c261907baa06860eaf212bb6f98ced7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video2/valid.npy": "a9049d0591adf62c2fa9b717c754f2274c9e9749fbfeefec97ceabf41499b303",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video2/scale.npy": "0c8562b967134b2534907b01dffc727b19eb4809a87df556715ecd6ec575edac",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video2/query_keys.npy": "6e452826f187381ba93fea5b3403edb97d3a92de346c970945c833e55418445d",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video3/geometry.npy": "d10063b93f07ad1fb1c217f73c9a55d86abae5c86529ee977d0f70939d293937",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video3/baseline.npy": "40d5433f4fd2203f2c0505f9a06049e499829c7e9f73e4a301e912f1b09d6c53",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video3/target.npy": "286f22a647da144f11a2b6a763a2ad4a746daf22c2f4cb80bc23e388aa67e9cf",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video3/valid.npy": "27b465b229773d38c9c2717bae7e46320327b847b3e24842f7e60176246e88b2",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video3/scale.npy": "da964214fd8bd63e58cae7b3c9919ab4d417f39c1ddd61a8fca53c5cd149f8e2",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video3/query_keys.npy": "da9b0453ba23669beeeee174df50c6e280766287de19a4a372a69e688fed861a",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video4/geometry.npy": "c5ef8835863efe4b538e7703fb75a8441d05493e519fb60fa052a233a6fe9755",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video4/baseline.npy": "95a5763a2be4dd8881fddd73a887565ee92bc8f10a4de9f079e819eddd31cd22",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video4/target.npy": "3c3593045c58e66393e9e8758eab7af79a0494f63509e22a0a93c14ee7ae40d1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video4/valid.npy": "4778cb4aaffa3847d8318ea965fcbbd05a2ea3a8a974b6bb150e2caafa733b36",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video4/scale.npy": "09133a5fac43c8016ff54f63bf88a81ef0f3b6227895167035464eb3a0d9e2a1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/deathCircle/video4/query_keys.npy": "0048690002f5fea9d0d32163cb6e18d5658d8f71876e656e09749a0877edacc6",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video0/geometry.npy": "6cf7029ded3a72a174897981672256008ae62cc6b64efb5c5725dadce5e6324c",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video0/baseline.npy": "2a45b043a33a2dab072ddb17425bedfbbd00fe908e332af3d7292db42b7c3e6d",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video0/target.npy": "6f6f20f1e41d135a7a46e21410dc03a6f28213b9201fe1c1d10dad9312545182",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video0/valid.npy": "82ec2c79818dcc0ee41ee45aa18b8d025c1902885f697883468a73843e6a50f1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video0/scale.npy": "b70399c26c924d48d76d98a464e407b9585c997900459a0354d7ddc625c71c17",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video0/query_keys.npy": "11c5f264f81b7b176460c4d2d168672d350139ed0f0be692a6c8ce230bccb7b7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video1/geometry.npy": "c52b3d5ab35fe28a94d5c55ff74b3140838a297bbfc333c4e895a1aae91a14f9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video1/baseline.npy": "3901fdf22496165cce7161006b07a2af681fcd9d57370043128850006d10fb48",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video1/target.npy": "5d2b13bb1de3a4cd12e6f68eab20999cf5c8d6f6a0c53b8048457a6586c6dacd",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video1/valid.npy": "f94796aee7904809ae98b560958568ddfd6736d1761b967fd788faa30fb371f6",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video1/scale.npy": "0469c6332c8bfc51c2e98e872d0641fa39f4934e4322269a432995cb395acdb1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video1/query_keys.npy": "8741c733cb6e4517b479602f359bef4741b3ca761a050ad35cc4f0c5c58ef818",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video2/geometry.npy": "1a3eead448acf48555227a4f7c9c1e07703fbf0c4edb3c5cda3e5efd49542bf6",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video2/baseline.npy": "391df7bfa39f328fc153b472a3985d6a9c4872d9fd42f64527f0ae46759f8cf7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video2/target.npy": "c455495cbc5584c3be1c6930678ea16e04af670eb3f5f5e76d4599d803adc436",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video2/valid.npy": "157504afcab014c8be9e1cd14f467b9a4b1f6e0caf7ede84be780fabcf8dfbbc",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video2/scale.npy": "49e7052709c006f5f712398b1f0724a851639522e95749cba6672d33266151b0",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video2/query_keys.npy": "4f8f7007a1af15f43807f4f84ff804db259d7106414058df9c49f21978b7092a",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video3/geometry.npy": "f37700a7a2ae0017900313b4fb2ae615eb64b2d5962169091ac825e2444d5e2c",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video3/baseline.npy": "80ec35b171d724511db4b3965c822bbc4887abf2e0e78adec29e9d2907fa07f3",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video3/target.npy": "096d605bd5a44ce5ed08702a6351d1409b4bd9afed703ee0ab0e9a92251aec27",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video3/valid.npy": "2e0ca50d4bf63479cd0313c593d3181ed41c90e0a364372af68a9cb176f6de71",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video3/scale.npy": "5024938d768c5019c7ba3af8dc5fb4b802645b7f69408655f35070c0f54a06f8",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video3/query_keys.npy": "426b12d91331f2885835786b32059ffe3f1ea965b957b8965f49f0f834f5e1f2",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video4/geometry.npy": "1eb8c2026a045b48b4ef2bdfb2b75b8c03d0d9980e206d7003e848e1557b7945",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video4/baseline.npy": "8a2a43edbf6d2324c03cfe6d59c35b85772fe349f1511341b6d90575bb37a37a",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video4/target.npy": "c29f3efbb1493935f391118f9e506f3468639334d1f053fa7be118ad598a4061",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video4/valid.npy": "ee6f07dc0c45762a29d8e5991203d3839b6efad15441d51f25a36daa766c2490",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video4/scale.npy": "d43e497d7caa6dbbb213e8cffe0f9ba68bf7fcf860b48a1986ee997ae52a1947",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video4/query_keys.npy": "58667919f091240c61944c600697c8ab80e810613007d8d7d6ed69a550c282a3",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video5/geometry.npy": "37cdd17b212ec7b92776fed6194d32cf4ff86c79559643c06cdc69f323f0c0ab",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video5/baseline.npy": "7ffe8d9218401a85eead69f8c2303936554db9ad08cca9fe76eef78959c99c80",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video5/target.npy": "4bfb5a4bf914dffefa3bb72e8233c5d6e6d926054e1f06647c010fb122dfbbef",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video5/valid.npy": "e7767f8df19f69047ee174d74bd59d56d2e3de8561adfaf4774299286c1450be",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video5/scale.npy": "6ff11fb29f42e366aca128eb44c358d48df0d4716cb1d49a5c46d77924a5b8ec",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video5/query_keys.npy": "cd3f00728fe923c9a83f39d26b41dd5cf29b85b024d0ed1789da45ee779bb588",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video6/geometry.npy": "279a095d37f5821aaf47fe4bfd51cd394cb50225f34a92170c9b2696cc0e5327",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video6/baseline.npy": "77377f00c31782a57089c26f347468ae76e661064896a1120d279f0af372d1ad",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video6/target.npy": "2139c5034aff89dc9b94a7be1f2e70441646d2919444d3b7ba225ed33fbfc4d0",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video6/valid.npy": "fe962631f0dbcaa4a7b40240d6f479e907ac87d04d428eca907da62f3c715433",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video6/scale.npy": "2dc0d84d5ae4c84c0beee3d81b642b9db1dfce008435ac7f6276aaf9beccb509",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video6/query_keys.npy": "b135d5207ecea65b4948a2a912421c26f562f41232e1984838e16b7815c67d6c",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video7/geometry.npy": "9bcfc045f9f8f3268e5b825680c0a2ea9e5fea22646914477a72003fc7b8e05c",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video7/baseline.npy": "6ee885bbde5f4bed24e84fdaf0813524b2dc5b0b824686866c766d9a9fd48daa",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video7/target.npy": "f8050ac815fdb31567e4770ad836d6b250094f1adb4d507c1b165cc10a5a8b14",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video7/valid.npy": "ae3297b14061cffce83a6ceceb98a9b0d681ab718cb45c3460c874670ad34565",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video7/scale.npy": "4a4d3fa869a39a9f1d2900bb4a6fe5e9a034fa07f8bf3ad742fe751b6905f9c0",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video7/query_keys.npy": "f5118059023ea9f1d85831dd56b57d467bd59bffa60438c50bb37269f80b8bb9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video8/geometry.npy": "d9598c0c2a2a286422d0684512aed8bfcaacf25efbc6627b41bbdd264cf6e04b",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video8/baseline.npy": "5ca8e104dfe372b6482d3488180cbaed24a00efa196e6bb3dd606cd78c832463",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video8/target.npy": "21a703890e904af0759765146d05d8e7da26191ad1fc4a04bcc90c044e167887",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video8/valid.npy": "38b2567bc706374bb4c9658b4d6c6134949f664ca779e47dbfcaab6abb2b4825",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video8/scale.npy": "b885af54e0112b669ec7b93416c8bda36927129322a92025b1a62c03ed25330a",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/gates/video8/query_keys.npy": "b9a2f5368ca75b8d0dcf5a7ea9d3323665bde78b9a1fc36d37cc3d62747d3993",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video0/geometry.npy": "5bdf1f0ef773a860acddb3bd5b38e5fa3479366aafd5f1f538b89b2fa577a466",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video0/baseline.npy": "08ad840a4804af3520b1665e200370f9a36bb586a4ac430e8f411f1c19b31e1d",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video0/target.npy": "e68cec1b7fb6907c327553c24478f3844381e8a247151b2b0f65e436ef7adbae",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video0/valid.npy": "e6d279f334f1030b2f63b073c21b73d7bd311be77699b335cf3e272fbf350c03",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video0/scale.npy": "f8f110429be47d1714f03230454a50b28d86ef1ce48284385dba2d7e1c792a3d",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video0/query_keys.npy": "99da5bbb6776c12781f3b623fc34858543ab4db614d1a6e9f67bdddb1ec87386",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video1/geometry.npy": "55b997576f0d6c847f4578dadb11640cf61eb006581010a8d06d847a531fc527",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video1/baseline.npy": "f38bd9f9cc569460fa65cf3b8e15a91879a88df46542eefc7718db97e4685340",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video1/target.npy": "7b621370c4b40ebd58c629297042cbed46157e8f707368afae853a4f52d181c7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video1/valid.npy": "591f35b2c7f301fd28a7ba3ca86a19e7703d23170e47847ede841a59aeebc751",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video1/scale.npy": "69d31e8ceb383dc659d913453591146f96abf1df7882f156adcbb0ead9c961dc",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video1/query_keys.npy": "33bdd6942db7198a26c1cac7548a99f7b6d8c19de66a7273e339aceb12c15ccf",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video10/geometry.npy": "983e11ab0ca648383b02afe93b48fe868e0c8536d8371ac25871ccfd0987f201",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video10/baseline.npy": "a7d8f225d77e680844c5a6ae885c1d3f8154933671d3b4b454c1addb4ef94557",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video10/target.npy": "4ec0faa7d9b75362582a5148724b144c8cbf4a7ebe0e5e7208bf36925c262dff",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video10/valid.npy": "80116470121de64f55ff969119515cd379df1cf6b63cca22cc6c1169cb2741d4",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video10/scale.npy": "c06f6aa2540f79f56c0921adce0a496f91b8b2c0b39b1aa15aef4bab79fd4ecd",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video10/query_keys.npy": "4a594763bb90e2a26d2eaf50969fd15e1c2e7e6cd97ef781f092cce9434033cb",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video11/geometry.npy": "3804bc34e749040228942f9b3ea35df381d3ac18030147d13d197d9ee42f74fa",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video11/baseline.npy": "bc91c8bae67d5b3bd8819c6bb8af1807b51640ef8f9723abea9116fd5a1296cd",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video11/target.npy": "b9da5d49f3fb0e5637b0745df67370b3c974caae1fe304f536a26c96d117e915",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video11/valid.npy": "99bdd79a76eb6a3824bbd99987ded4a6c18c1e4a00a7527344d4e909fa4bdb7a",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video11/scale.npy": "4fee39c53f09c7639dfc54e5877d52789bbb02a20ad1a7be865133223a42e28a",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video11/query_keys.npy": "163027299609b3901c2607bdb31fdb80cb980d8cb6469504caa082aad918fe61",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video12/geometry.npy": "3213a51f1650bc7919a2a9f3af5606a660f0a937433cfee0b155a049ef8225c6",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video12/baseline.npy": "054f529b467c73bc1da869ed74506851ebd94d1c547c79200bfb5935576c0fd4",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video12/target.npy": "066db0129367736c1aaf50ed15195aad1fcbdb09f175990ea7322bbb034da301",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video12/valid.npy": "796040b3e8f8b85500c3e9d04401d8f28d0bb3fdbc4101394338dc256c3711b4",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video12/scale.npy": "eabc3d0d841e63057bdd1e465e9eccd4e574de1df87956a60cd8b1e5c7a6fab2",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video12/query_keys.npy": "5b53d44c9a960c63f72e796ee381b0824874c73d18170d39e89073dfdea1bb66",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video13/geometry.npy": "dd92628153c717ae11770e130c663408999e95762e21f14922df5b2409ddc58c",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video13/baseline.npy": "5c6dff201a78f101eeba5b380eb06bb325a18c688420c29fca740a350e9063c8",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video13/target.npy": "22a28604709d884ce678ef8301c36254ff5a6cf1078297b74219d8391cd568b0",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video13/valid.npy": "e919383c8e08393e6cc629c91401099a304dc667a571cb8884cc6013a6f25245",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video13/scale.npy": "cad67b5808ef687cbaadac4a6d7e8bd03a7a82039306579322dd88a3abe06b5f",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video13/query_keys.npy": "120ced0dd0b345da956c7dcedd2b1d9212f184b107e8c947c32e98ab9d9d90c7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video14/geometry.npy": "66663a432a14c2a359bce2c94eec52fcb0175e7b948322c997f6d9ac3c4b3368",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video14/baseline.npy": "a386170580e429f92d317c4af29e59c0f282cb26b8ff4c24bf1147f31d9b6cac",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video14/target.npy": "833c1a03e6403477ef665852eac5f753f6a84e812d8577a6c19834444a03a0f9",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video14/valid.npy": "f527ef34b2364cfbfed4e085d4ed3f47e986ea40df4cb0f63e72c16fcf435fa2",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video14/scale.npy": "cc0f0449feff6a872cd2e760db30e0d03e933ea3b07ae9a58e8154564cc74bca",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video14/query_keys.npy": "2b88d1d4b352ee6ba62938515d7093d2703a1ea7c047be26d39d37723b52c528",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video2/geometry.npy": "8e8162e33085b9c40966b33d39b75ba5a78a47e2a74e7f5e52869a9d5a1f9171",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video2/baseline.npy": "310dd8164805fbba179eec505e166809b0554e88be465aa724b48ab11f659200",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video2/target.npy": "52a9d29a602f829b0675a43d82d02506dbb919d7879bfcd1494174ba0afc2c08",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video2/valid.npy": "f068a87e52c4e45f562a55f4b0178e0cb60746a46f35a10e0689c423d1328a76",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video2/scale.npy": "16ced7a35d24de51526009bb96c9a7d87bc24f828f07f7c47dd6c6b0093027de",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video2/query_keys.npy": "0e4e9a7a458a03b770fcd1b9466362a9278254f5ebafc1b0b345d35e9173ab67",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video3/geometry.npy": "9bce65214f6f92961aa34ac3b06d40aeaa0abce4aef77ebc6406672bac5115e8",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video3/baseline.npy": "bca01a64126ef4ec83d34839dbbf1e65e5cff035aa0469bcf4a3294b479644b2",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video3/target.npy": "8c8dc96fd6241bb32271000b467bfff7117ea925be233ce6206700046177d28d",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video3/valid.npy": "a09da64d9f20268fa409fa9bb2ba8d091d610e5e2aa5a273a2434a481f84e2ce",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video3/scale.npy": "80c97cded0c2e679ce252ed0b2f533f09cc1ff6d3f223fb5ea846a8c4cd634bf",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video3/query_keys.npy": "c66540a710878cd9fff0ca6709a3d61c761bc382a1196234583dd72a9c7764a1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video4/geometry.npy": "ac768934fc7a63cd8bde3fdfe5af669ceb3754f87e209d47a6510fde1b505926",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video4/baseline.npy": "8bf1be7ce8acbcfe46bdf1329a376709b53e2299cdf26dc592516515cbea4ad3",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video4/target.npy": "ae7ca2e0bbc143e708d607636f19ff4a8923dd438cc71fbe211af6aad1261e8e",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video4/valid.npy": "4137aef76ec53e57fb9ebb8f3451178f2f8479eee494fbe8f8351c8621e10314",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video4/scale.npy": "1e72bfd07e06e3aa99d2d79cca16c0b970aba02eda1e7a0d3ca5586cec7b57a5",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video4/query_keys.npy": "c6c47b69c82e33fd0ed14376376a065d66ed62d200923fe9c1ea1215c0ddeb2b",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video5/geometry.npy": "543930c67c9d58335e95e6588184f0f5604c8c76f6b6669207fb2c0c453137d4",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video5/baseline.npy": "5d5a154326f404c3be8cd7fe17bc5ba9da39b5348e46905dfcebba62b8d0175c",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video5/target.npy": "67069303aa873a9969792e8e97371ee8ab3dfdc430e13c05052bb3cf384afdcc",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video5/valid.npy": "e2fb391bdde6b54255cf1588a2b2674e62d82cc962f3de0d8ff7703351bd0385",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video5/scale.npy": "b9b1a2b8150f9d6baaee16b2a2c3e431d0cd8f65cc28b91080dd117477ebf31e",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video5/query_keys.npy": "95346c03a7be77bd12d37bb71c77175466322b0d7c8e189cfaffe4fa15b6c122",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video6/geometry.npy": "b4af17dec42c64d3310939b67cd9b395ee5867b37f9de8a15a0caa700ad7c892",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video6/baseline.npy": "4e21675a95908214dff95720f746a86cfcd803c3054c3eaaf7c80c3e6122ce43",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video6/target.npy": "7873ca3b5eaeea0bf9bc6b47b2407f356901b6ebbc981433da2c87ee73fd6868",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video6/valid.npy": "ebed1ca0f969ae51e5f1f20caa7c926c64c9d4ef294f06a8668127edcadff5cc",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video6/scale.npy": "b92c11bcaac8dff1b7f7365a07e46a413792a0e72372ca39e0e06612444048cc",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video6/query_keys.npy": "c77bfcbd745ac34f118a7a1e59106f77b7f36ab4f9ad02647ff11eacd5e7c3d5",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video7/geometry.npy": "3613ea382aa7b39aab1ef0853d703b79e74eb407c50f35de28d1ada136b25bbe",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video7/baseline.npy": "3e971f67623c7aa691e6f42debed79848aba2c99be73ac5d67c45cb7f6f25e52",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video7/target.npy": "1941a82038bdf40c5f554f2a71b173b602822b645d9bbcf66b211d5b2d760175",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video7/valid.npy": "908b6894cf4ca7d00734330935625efee7b769c8df15e63586a033caffa82883",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video7/scale.npy": "dc355dc20efe0aaec28c2738f1c9bbf8ef8a9e82b16b321a09b9399288c521dd",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video7/query_keys.npy": "ae1a9b098b89f4abfac5d7cb7d8645dcbd5cee3623de90dc90cf0b7685f80e01",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video8/geometry.npy": "929127eb40d912dd81c166627dbe5b82adc4b3c6d58cb2b9d71681ba2fa7eaa5",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video8/baseline.npy": "8e726486a35b2acb8cd7f5c76dd617439ce76fb0b8bd6e32409bcd89a858f641",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video8/target.npy": "63e1b730c678f25dd19c45691951b056e9d4691a402c8937adb1d19d2add858b",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video8/valid.npy": "24e6c17d26a7d5ab39b3b3ab0f3efde70142c270245b4170519ea9a8174fd292",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video8/scale.npy": "bb4c8a4b40ebc1e23525c03495443e569b83dc1256e1aa9761aaf5778a6af302",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video8/query_keys.npy": "8be83606fb3ce40c0434336e40b82dc1e40f93b671ab0073805d7b2029c54532",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video9/geometry.npy": "0e91525679804f28341b4d49578f88306838dd2078ae7163967bdcd0bda218a4",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video9/baseline.npy": "7f41262b59bf2d6ffeb2c9aabd43421dd0be91bce615ba8c8ff092e7ac9465d7",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video9/target.npy": "87d8261b8ea85b8d44f94d64efd63401a878b0e33f5d1db4864d979311e08ac1",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video9/valid.npy": "ebcc707d5cd4d608146e5fd848d63191ea433809800c8d25a915a0ed45c69f8e",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video9/scale.npy": "82e787f25b0fef737b2945519c95bad2f22e8e13d14a887878c296cc098c2f43",
+    "data/stage_cvpr2027_experiments/sdd_auxiliary_v1/inputs/hyang/video9/query_keys.npy": "a922b63df753493fe7ff6405239d2d1bc025266d9ec9d8b3029c0d0b89e98d07",
+    "data/stage_cvpr2027_experiments/source_population_v1/cost_rows.npz": "6dc0cc61b40b0b3e1b4d694bd14ff8a9fc7c34f65a378ceeddb62d790177c527",
+    "outputs/publication_readiness_2026_09/native_forecast_v1/analysis.json": "e685f0afc94149a5bc2fe231cabacea6ca108a0e52843546a1519dbc6a4198b3",
+    "outputs/publication_readiness_2026_09/native_forecast_v1/verification_with_replay.json": "e68e7fd615f30ec2edf6971a304958c79f7211334b618d42d7112d74140c210f",
+    "configs/m3w_native_nested_v1.json": "cff8493cedd4df776bfe5c1b2d04d826a9a56a9eb42a8a1148469f3b6c7b6d3b",
+    "outputs/publication_readiness_2026_09/native_nested_v1/registration.md": "247551fdb4830c35a965e3879c32c5143c6011f838bda2d9b3af3f03d924beb9",
+    "scripts/run_m3w_native_nested.py": "325d6dedb2945bd974727120cf70cb071595f4b9c000ecb6cd1d2dde4a8cb61f",
+    "src/world_model/m3w_native_nested.py": "464fed3dd573d850ae2916b1ba71aa98228e05193ee7643a04acb20ba16366e0",
+    "tests/test_m3w_native_nested.py": "53042a64a9be12b7a28cd81a2a927fd8919672882e84ed2ca6aea1702544e81c",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/coupa_native_coordinate_seed17/complete.json": "0195b247a337d3befea8e88b8d361ed3fc1a443bba40386b0f3049cd549ef15b",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/coupa_native_coordinate_seed17/checkpoint.pt": "04d6c2434f7c6899e7744feabca056e5845c48267fa90e33c636f084d32dc837",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/coupa_native_coordinate_seed17.npz": "265d652906e16705a457415603b7f71fadd69ae6de9a3c85c528f2818834fada",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/coupa_native_coordinate_seed17.json": "d11a75c23c73fc981f2a742a58ffc14635628267f48f6e6d4a9a5dab6aa116bd",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/coupa_native_coordinate_seed29/complete.json": "5cc1dc1e61c30d6a76cb01f243d25721806fd8aa9832e697d18c2008a6d794b2",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/coupa_native_coordinate_seed29/checkpoint.pt": "e80cca385f071aef40f2854c4fe46e59e9e0d26cceb3dc4a23fe28c1257291e2",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/coupa_native_coordinate_seed29.npz": "c6f3388e86fadafcab63e6925c14422bc439df0184fc2b12585f214f2c86ef28",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/coupa_native_coordinate_seed29.json": "76393b1bc8258162b344e1f354d175fc4428418d9159b2d2e3d179dd704115ef",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/coupa_native_coordinate_seed43/complete.json": "bbc549e6dfa559413279331f01a727dbfa5cc5ae14bfca4ea12bcab38341b875",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/coupa_native_coordinate_seed43/checkpoint.pt": "b114b5cdd959a38ba42ceab6d4e1f068b057fd3fc4a263ba50f866502d314eba",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/coupa_native_coordinate_seed43.npz": "32f7fc2408ecbbef59e2b9f33e17113f990121f3a74e42327af7c6c506402a32",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/coupa_native_coordinate_seed43.json": "271e475c58e00f993fa5962590cfdbe748cbf7e5aa92e0d3cfee4cdecfd7a95e",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/deathCircle_native_coordinate_seed17/complete.json": "b7bbe10b264454c163b405c9d5331a2e3791f8875f6c418b4605db2a688fee0b",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/deathCircle_native_coordinate_seed17/checkpoint.pt": "0bf7ec64484f571ed826e4e30e64de4f488d8fa1828c1a0a98d2674953157255",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/deathCircle_native_coordinate_seed17.npz": "96ea71823c3aa74967cf49c14105840baa4833c97adb2b65db40a9f3c72293ff",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/deathCircle_native_coordinate_seed17.json": "880f33201bbfb4fbde1083071a897066933afe5cdf2be61a32dd4028a1972c2f",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/deathCircle_native_coordinate_seed29/complete.json": "c8b84e24453e52a7e03a684e2bcb250271a9173848e6b3c95b4b1eb440dfcb4e",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/deathCircle_native_coordinate_seed29/checkpoint.pt": "5b78fdacf0e4445d6ced181865b05afc471755266435dd7caec3c39181610513",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/deathCircle_native_coordinate_seed29.npz": "80f17350007d310d7227c40e532aff2b9601c4e62377ebcca6ff733212c15380",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/deathCircle_native_coordinate_seed29.json": "17cfc0493570a3b647f36e40f6b93fb0504cab2b5023b946667d0063ee17498f",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/deathCircle_native_coordinate_seed43/complete.json": "471a4c59e94e1fd0e64c285858f27032a4891f2f773df763f63df5701d5d6793",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/deathCircle_native_coordinate_seed43/checkpoint.pt": "93bbe6b41b1d7b3467dee8ddee535df12604ec995770da1f708c7c270d04eea3",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/deathCircle_native_coordinate_seed43.npz": "de84b6369514d82de71fe060a1c71a8a5ba8d38566b4c2cbe61fbf18c1042caa",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/deathCircle_native_coordinate_seed43.json": "79dd3919bf0d1aa110854b7093d92e1a603e77f2d82000eb3a6908615cf21e1a",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/gates_native_coordinate_seed17/complete.json": "2092621065ffaf8432de5e076207cda0c06435e01bd991a06469e8cab1c9e3a5",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/gates_native_coordinate_seed17/checkpoint.pt": "69c9db4ff65a6fef0ddcfd607c6205f014993882cde1eacedd84931db3afded8",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/gates_native_coordinate_seed17.npz": "f93823b958b51282dd77521f3f7d704e39e7025e4c09e12c22844b2e5f496230",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/gates_native_coordinate_seed17.json": "1542933b6bb810433fc0296eee2f9c0423819c6ef6497a12ea8571b9cea8f98f",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/gates_native_coordinate_seed29/complete.json": "56e34306ede3ba551a6401acb50d7a83abfa4f13e2eb72d697fee4a74271d174",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/gates_native_coordinate_seed29/checkpoint.pt": "e87adeb2c36c455630c6e822cff4facd2ad0f61b4910f3f0aa2209dc1250ff04",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/gates_native_coordinate_seed29.npz": "b83260ad2b07847b2131e5b0a85e3f9551bf6659777c6a8de3ca5589dcf3badf",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/gates_native_coordinate_seed29.json": "8d810c44863685cfe282696cbbd983ff9b4f5bb9b0e1e8359c0cdd1b80afa8f2",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/gates_native_coordinate_seed43/complete.json": "bbad7bd5662f91cdd6f7bb687c0a0f79343fab50434827f623b14241fd89272a",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/gates_native_coordinate_seed43/checkpoint.pt": "5b4da803921f7a49e135c2b50b57425db7b61ec9bfdb4460773509c0fb458359",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/gates_native_coordinate_seed43.npz": "1a3cf54596d71440839ad2ff5f9282891e334d5896455fb037ebb9b628d6eede",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/gates_native_coordinate_seed43.json": "08ebf4b6fb50a61fa754fa2b8b60aadf22c5eb4d9ea19c0006ed84d0920c7b5f",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/hyang_native_coordinate_seed17/complete.json": "d3c0bddb44b6b1c0be4db92d42fbf30a8868e0fee0e5e019f0c78dcae0c2093d",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/hyang_native_coordinate_seed17/checkpoint.pt": "b95d5a9340d3110cb0fc28fa46b6394235bd1703c6e1f1de5302c613d63d67e6",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/hyang_native_coordinate_seed17.npz": "8fe5c9c1306d53e8528c47a736ff05049c997c1fd50a72ec7302cfa24e018405",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/hyang_native_coordinate_seed17.json": "b12ff15d9f7b86776bdb4b640315896010ffe3ffc707a095f43c98cf222ca076",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/hyang_native_coordinate_seed29/complete.json": "1172cbf4712843dcfb31c290d8292c01772e45335385ed73f229fc948d746da7",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/hyang_native_coordinate_seed29/checkpoint.pt": "0fe51f740a77a8b674b15c1e2a3d756eb979221868087f3a55f516f039c3a42a",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/hyang_native_coordinate_seed29.npz": "a42bc76d64b5d753e9a64c56f143543e307ddcb97a5f0f910fcec38426625168",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/hyang_native_coordinate_seed29.json": "e651db80ac9c1be47067552978f637e77f5f0c2bc31d4f8d7ffae35e161ade1d",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/hyang_native_coordinate_seed43/complete.json": "3d11dcd471455d2a49d702a1c97024efa88b49e1d5f098d7fb6f00a1cf30dc19",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/trials/hyang_native_coordinate_seed43/checkpoint.pt": "e7a161062dfd991d91ba9c4186aca9d97fd02b7ddc576e12b1b3208bb377f5d3",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/hyang_native_coordinate_seed43.npz": "b48ef6e790095fe74c32b3580acf3d83705d1b800e164ffa569adb57a455fdde",
+    "data/stage_cvpr2027_experiments/native_forecast_v1/predictions/hyang_native_coordinate_seed43.json": "900d5ad4fa39d636db337d3b6da082d02e2f682fa67c4823e5853ae9a8ccd697",
+    "outputs/publication_readiness_2026_09/native_nested_v1/analysis.json": "e9215760af5fe10b597802c5ada5c86071ce075be0973a413c8e95d815de3a2d",
+    "outputs/publication_readiness_2026_09/native_nested_v1/verification_with_replay.json": "a7a35b3ed22ca0f8642a4beb67626605cf681f24d163447aec465ffe5977bac3",
+    "outputs/publication_readiness_2026_09/native_nested_v1/materialized_views.json": "c1f33ba5365f1f50dbef89017707b2bda936a19cc9c3815bd2123ddc4ff7593a",
+    "configs/m3w_native_gain_harm_v1.json": "5309c81c429fae7e894134e377d2c24140e80cceac508014f3f7117fd75d503f",
+    "outputs/publication_readiness_2026_09/native_gain_harm_v1/registration.md": "b43dcfefdbd45694c783b0cf788d95991fadd0f173efba5588a7dc0cf1652417",
+    "scripts/run_m3w_native_gain_harm.py": "1fcbd8a0e10a3e1c1aa3dc2bc52f280059f450f24e3de3889bb217527800feab",
+    "src/world_model/m3w_native_gain_harm.py": "9a5fda08657a138db385ec73c59d52f5c1dc5844655a87f6e3018adc1d0dc710",
+    "src/evaluation/m3w_native_cost_readout.py": "af624eda6c55c4e7ffe4ce00a8d4fb43286d99de734d4f558fd2615ddd2bfe25",
+    "tests/test_m3w_native_gain_harm.py": "aaf73dbee8babe00a617aea237b3e8cb23eff484261ce17b139d3c22b9bd918c",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__deathCircle_seed17/checkpoint.pt": "f1b05129970da1c08de6ab6d1d9f23385b7494b7223a23c7f592bbec1a7fb2f3",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__deathCircle_seed29/checkpoint.pt": "2eb72e760928e0c78c07fcaec06d986254f7e2b709a9c349d446bc185dab9604",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__deathCircle_seed43/checkpoint.pt": "157d59c16fd4261258ceba985c212a7a2d73cefdb5d1e71d58eda7acaa702e4e",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__gates_seed17/checkpoint.pt": "574d123001fcdf2084751ccc11e78ad625c77f3bde0461c1e65c2730adcca88d",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__gates_seed29/checkpoint.pt": "ae39c24876933e7f4a653074fcc9e95dca87cb629d8cbdb64f40ecf84cea3f58",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__gates_seed43/checkpoint.pt": "3bd8bee5c3d29066ad3d5a3b7906f85b466d68cc23581ac20311b181fe7c1e17",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__hyang_seed17/checkpoint.pt": "7c3185cef322a5fa11d3b6894f51536568a664d703b8e52e4ea40d90361b99d9",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__hyang_seed29/checkpoint.pt": "bff92995f42cb2fab1ad002d455ec78963f26e1d2709076f2f1dc9eba67ea746",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/coupa__hyang_seed43/checkpoint.pt": "2d35040d0469e2a31d588cdff36a5b435aa1f6091acae687782f7266abf19c8f",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/deathCircle__gates_seed17/checkpoint.pt": "1e05f6878e7e5ee9ea763d433ac7d7a76ee1821952a31c32d2c1e283cc787606",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/deathCircle__gates_seed29/checkpoint.pt": "defd8268362fcf687d14bbcdf1ad841de12776451450c591249d819d82955adb",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/deathCircle__gates_seed43/checkpoint.pt": "2f9484f9358b4a47cd544575e951b69e4e583f43d85dd566c3116c167aaddacd",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/deathCircle__hyang_seed17/checkpoint.pt": "2377a1e34515c07535bf72547607fda17e33c97faa9b8b51685e927de2f2797f",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/deathCircle__hyang_seed29/checkpoint.pt": "657fd73cba490ddd51d6640b89d17679510e458e162df596f23d1001a270554d",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/deathCircle__hyang_seed43/checkpoint.pt": "b8063b95d81ed8c0057c10c66d88539b20a3e69aa8489b8a8d33ff9e24162c62",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/gates__hyang_seed17/checkpoint.pt": "492580b1227a518b329fb464b1ee190445f8a2f3196dee1eb99714cef31ac28f",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/gates__hyang_seed29/checkpoint.pt": "4cfb036a388fd089357ce71c913263cfdb1718ee4239bf8736f8ac40e8ba72bc",
+    "data/stage_cvpr2027_experiments/native_nested_v1/trials/gates__hyang_seed43/checkpoint.pt": "50e44e0f89fc30fcd1f75c4c0d4ea9ec4d9fbfcc4b6f54d0f4f5969887d4dba0",
+    "data/stage_cvpr2027_experiments/native_nested_v1/cost_views.json": "2e5903c5a7af36292205b6fc3ca52a5a9c9662b42014230e899820000f3a1a26",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed17/manifest.json": "e3e3fd138f1352c2c3f5babe7441491c2f2234a9c57a9dd9376289fa46ed03ff",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed17/inputs.npz": "5e6ff83c8287f4048c2de362e34eadc15ea6658875eee20bc204bd188a059c1f",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed17/targets.npz": "438a6e9951a1d991fceaa9898d98d0076db62cf14cc2bc9326a6d6faba84e4e3",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed29/manifest.json": "b89584d238f4b207a51d97a750b92158d806c71dadb7b08d7fed09e08c68efcd",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed29/inputs.npz": "d587f8bcd653e0260a8a2c77c5205cdf34f92cdb1db5ccfe9efb49b38daf40e2",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed29/targets.npz": "59f71dc73294813086264707e6808eb0f79f972881de20e7e294b96bebf22b2c",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed43/manifest.json": "8062e06335b56c641518d1d9ca19bc143027a1b02f5ea0affb2dc3e047a40435",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed43/inputs.npz": "dbf1358a486e27cd124f18cd09c133fd4b9f73a2ecf7b7d7ee6b7e934a24a35b",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/coupa_seed43/targets.npz": "46b92f26cbc68edb97638ca331151dd64d3e6a3117321003c7b7ec61afa7775c",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed17/manifest.json": "16bda03802c17c7f36fc0a00866b47361a3fef2620b60d349ead79dfe1abf7ae",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed17/inputs.npz": "785ab77c36b319d630e44b39ae9a29bb1cc70080fddec91dc77615edba258431",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed17/targets.npz": "f0be62b6a1b81ed3561892418bf25dad3816423b6b88a894e49bd9f80da8c781",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed29/manifest.json": "e7c35564d926f2104ddd9cbe53340e1419c58b57f973db8746053060ec39eb88",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed29/inputs.npz": "942a952df2444a3bb374aff31b13a81742e24aa411c328a43442ad8929c6dff9",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed29/targets.npz": "2e93f846bdb156605962438c67692a70e045787c7b7c9f67e7568228b922e077",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed43/manifest.json": "eb81aa0eaa35cae6a16a48e467aadd7e723558c79de332631b137518f60265c7",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed43/inputs.npz": "10dc9a39d300c5aa7aea3e169a42128abb85b0a1659b387a3739506d89de6c94",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/deathCircle_seed43/targets.npz": "306967e633c077b8db9b41daf374990f384f34bf1ce3f6eee2d4a13a5ce1265e",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed17/manifest.json": "b8b7f4cdc7f8923ceb6be6a48dd974a1936b656beb68c06da1caa40a9fccacfa",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed17/inputs.npz": "5371cfbfd045f287e24f06ff81d58eb681485ed9067c58bfc8c70dcd45c9219b",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed17/targets.npz": "b3a4bb30e782fabcee6f6cc2d03104c63ddaef99bc124d8094044269226873cb",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed29/manifest.json": "7e74ca896e2bde72c9b1967e0139389dcce2101e2017032b746df95ad9a370a5",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed29/inputs.npz": "891ceb00eee04ce42009eea4a9ed399f43d8d7f0ebc571af126aabc2c83c6822",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed29/targets.npz": "b430609a30a1cb46e9d88de72f1961024f381207ddb7cc43383b80fdf430a834",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed43/manifest.json": "d78ec45c911702c0dcd97d2c9b9435699ea817bc12af566c7308b28c7a7081ea",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed43/inputs.npz": "5cbf6b47e285997f61d7f1deebf66e547f7e15e38235222d38d5e7467275a925",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/gates_seed43/targets.npz": "60605d2bb9b27f2d9749eeae0f9923d72d3fa32304321cd8cc3b9224a0a9ba05",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed17/manifest.json": "d4a53e7d5f1e7a1d2c6d20ad2c2b62ae57ca3b71ca306c87ec133ad250174785",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed17/inputs.npz": "a28467d06f4b6458c9a8514426a366332abc76192b7d17e8d7dc0e5df3d1a6aa",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed17/targets.npz": "aa272588c90541fff7f249bc5bd96716b7b1c5e8e72b89af4287433d7fd4788a",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed29/manifest.json": "25f47d846f134b6a093b8bf31db47e0da4e59bdef6101ff2ebb4c25dedd26e44",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed29/inputs.npz": "0ac31cee6d55891834aa02ee98f035357d4fa4095c8683a308efecc8c2098144",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed29/targets.npz": "7ff953bda5057c48b139022ac4e400f33031e79b05d4cc84581528d11e63606b",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed43/manifest.json": "30615197682beeab6579520f88500858e55e8953376ee19cac38c5284b520dee",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed43/inputs.npz": "993c5d8f2d2feaaaa02a9844e4321729a0e30bcabfffae1fa1ce1c2551fd2784",
+    "data/stage_cvpr2027_experiments/native_nested_v1/head_training/hyang_seed43/targets.npz": "0443c42967e0309129ee143130a11c146bc4d54c3baedd73631dfd2ad62dfbe8",
+    "configs/m3w_native_matched_coverage_v1.json": "d19ca9a7fba22814f253858ab67206c84b27c13059126523a39075777982b0bc",
+    "outputs/publication_readiness_2026_09/native_matched_coverage_v1/registration.md": "737fe526b9ce1f4f91b49cecb2eb66bd836273b3907e4c4f3cae66fe1cf57d15",
+    "outputs/publication_readiness_2026_09/native_gain_harm_v1/analysis.json": "f265cc1c28b54bf54af45417c268a5dbf3b72fc52a7fd2399ee22574e32d590d",
+    "scripts/run_m3w_native_matched_coverage.py": "f8880ef08d002dc4a1b699b28bb934520e57ccd880e81ee8ded542be79ed9b5e",
+    "src/evaluation/m3w_native_matched_coverage.py": "67ef77f86b6522517d0b15d9d11d94be23564a80c4016416c15349beb37544dc",
+    "tests/test_m3w_native_matched_coverage.py": "83af8c99570f386731ff36d2a3a47087c2a7c76423ce961e85000ab948a6c535",
+    "outputs/publication_readiness_2026_09/native_gain_harm_v1/verification.json": "f98196afefd9922d1f8fc1d506122eac851b1839a51842f2f199461cb30811d6",
+    "outputs/publication_readiness_2026_09/native_gain_harm_v1/independent_verification.json": "c440b50cca3864dec572c625e222f172a2abd3515a411c5202a8a4a2e5576e22",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/coupa_seed17.npz": "3b7eb1aeb45d6c66764029a88b90499bceb385318715349eb215a99c8b541aaa",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/coupa_seed29.npz": "6aa51a84cf8b63b21334b367976915de4411f4666be30587a01c727c368f0912",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/coupa_seed43.npz": "545db550b13bf33b5efe529afd1467ff10efad584a7238d3427dba0dd9d56397",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/deathCircle_seed17.npz": "aeb56e275d299820ccbd46398a071d900f9d4d49f3b6513a7c55c4188a81aaeb",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/deathCircle_seed29.npz": "93a288b70f0d115646aba4665de9ac5e8c8574bf371e00679d2e7040c451c4d9",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/deathCircle_seed43.npz": "4ccf1407d81fb102cdfe7cc62a773fb4c40cc2ac3346719493ca0cae14cd7c71",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/gates_seed17.npz": "05975eb408cbc0b125a0c7ae63b79825ee6c28331197b9ae12904bc28f542819",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/gates_seed29.npz": "a59e1f9949dfef0b36fead181cde2af17df962c1173f78b1e50c94d0775e6192",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/gates_seed43.npz": "eaad222715c50b42aa0da22211cbb121e9bcc1e9cb2a06a963828739d264a510",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/hyang_seed17.npz": "4994d53390fcdc66b4435b6144c97a9eeb1062cfd29dff9e121105cb847916d6",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/hyang_seed29.npz": "fdb3fec014e41c093c140e0d4c89aad9092e6a4191d3c4b5ec17a9e7dc48b480",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/scores/hyang_seed43.npz": "998dd0f557ddaefd0d3d4b80397532e26e7ac5ab2c0b5815eef4896837824f18",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed17/ridge/checkpoint.pt": "c9db428c68bf33c503f52527678e2a844662ff8a759e47be0bcf35371cf6e001",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed17/mse/checkpoint.pt": "35b32bee7fdbd61c1df29486395c9f28607ce39f3687f29d3ce9dc12ef7644a0",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed17/underharm4/checkpoint.pt": "118476064fa67157a0bdc79ca830ef54b8baceebaade68393d96a4185f3af874",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed29/ridge/checkpoint.pt": "5eb17743aafb14f011191cdc7aab9812e442b0e501d987f6742f80d8d4b72cb2",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed29/mse/checkpoint.pt": "1f16a26de899a0268182f773e967dd1b148e2a2bb65b9a77422559a288f83997",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed29/underharm4/checkpoint.pt": "5215f1d3a0e27885a4bf2c5e7877d16c282cad7981014db18aa5eb6b6b0a277a",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed43/ridge/checkpoint.pt": "0ed70e36d417df232bdc9ccfed4eee79b9193bc062084929f8735fde05d6c33f",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed43/mse/checkpoint.pt": "e0639ab055d6980d6e6cb8ebf306a1c3f150d64495b874a9d6c2496d70f7b17f",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/coupa_seed43/underharm4/checkpoint.pt": "ae4824f225ce01c83d3b618249a8786730d48cea4dc84b8f6b4b2b5b36b7315b",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed17/ridge/checkpoint.pt": "a24a2a8cea0fb5673814845072162b3a034b118ae53d45f2f0251707f4429a89",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed17/mse/checkpoint.pt": "c7cc956c994268b05c0ebc95504b1c8cb9fde42bfbcd9ca065e63aabe3eb40e5",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed17/underharm4/checkpoint.pt": "174612c5fa714558a5f2b6d2c9ed051b063382283b239614309c6fa870bc9e8e",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed29/ridge/checkpoint.pt": "296e5e9f056fc0b10ddd737ff6576514182950bdc331cdd48d02cab2ab386c68",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed29/mse/checkpoint.pt": "6f17e6f5170484f92004d4e78ca1a429b6a3673e1a7d75c7921aab2af94c08cd",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed29/underharm4/checkpoint.pt": "9aff453d1a5a7a757b3feac1059a4e0783ec40c324c780852429f7f3169a69c6",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed43/ridge/checkpoint.pt": "d960d69d91a9823971293fcfcc8d6352ed7589f88fb51e6a2a159b1d816a4150",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed43/mse/checkpoint.pt": "53653076ae134003337fed732d6a5d52cc84fcc82cf22f57e16e0438b18af81b",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/deathCircle_seed43/underharm4/checkpoint.pt": "e169c2fd314df934eed7bf3474a0d357c306840aae90e69a2fe81fc8c5b12ce7",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed17/ridge/checkpoint.pt": "e7f38c5ebe4b7d56b1a60e76f4d81d9c99fc901df9c63aa3a45902c78e4e033c",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed17/mse/checkpoint.pt": "c6c6f5d93a83fae800ec5f5c7546b24fb5710818c9ae3a39e3787d886010c891",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed17/underharm4/checkpoint.pt": "503d86c209828a6ced20d4ca611132bd9a7ca84a39d3b9b20d8ecd3071bdb8e9",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed29/ridge/checkpoint.pt": "0262ac20aa020e8c3ad5895c6d30cedb88ca81013804aff65c708904afd15009",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed29/mse/checkpoint.pt": "2d2922361a70d8dd9a002d29cd2ed24ac55df00d90a402d49810b1a2e32fa0df",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed29/underharm4/checkpoint.pt": "6e2a2a436f1716b8f355313e5b043283394b5813d19533018c6b39dc1343c911",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed43/ridge/checkpoint.pt": "a1b2fb60e30b05c4eb8c55d0bc6005e22634d2c4e5cf331fb71c1f7deb3a1071",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed43/mse/checkpoint.pt": "c6b5c5aa75ee6b46c6bda39e1c2ea6574a7f1e1ce4871e5dd9b1c5b668af09b0",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/gates_seed43/underharm4/checkpoint.pt": "08cc9eb1f7c7166e761cd824adac6db75d41d0acfa62bc3c49b5ad806310c550",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed17/ridge/checkpoint.pt": "84e2b0bb6e730bbd4f99f2faefb0a7912a6e97f4f6e3e2ab773c8e75c5af208e",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed17/mse/checkpoint.pt": "220e36e14b7cec0debcb5c2b7a816a4c96043067290241003404783ac9bbafbc",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed17/underharm4/checkpoint.pt": "2158c5921c7cb0da37b835d3b442420e9a9adf39f083823f35e9bf0a9cbe2fb6",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed29/ridge/checkpoint.pt": "af37005e0202ed07aeced5be082f15687102b549cc3744598dfc02a2855bc26a",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed29/mse/checkpoint.pt": "1f39f5c8472b7cc6b2ef180724f232b58a0b27ce8646c7353b659c161a023d6f",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed29/underharm4/checkpoint.pt": "868a7ca13cc9d8fde27aade37e7e41b84746eca8feb59a109ec55196dfc0ecdd",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed43/ridge/checkpoint.pt": "3c51153860cc40e8304fd4c83ed25d4ef15f54f79dd1345a7f39429af3956277",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed43/mse/checkpoint.pt": "d0e3f0468d43b6ef03fbe0fe89a11710e800dd16d663d2a9cbbd6c60d344b973",
+    "data/stage_cvpr2027_experiments/native_gain_harm_v1/trials/hyang_seed43/underharm4/checkpoint.pt": "d070176bee94ab7fe5998484a733a209144bab7a9123b915c410621f9b865c7f"
+  },
+  "views": [
+    {
+      "view": "coupa_seed17",
+      "outer_site": "coupa",
+      "training_sites": [
+        "deathCircle",
+        "gates",
+        "hyang"
+      ],
+      "input_sha256": "5e6ff83c8287f4048c2de362e34eadc15ea6658875eee20bc204bd188a059c1f",
+      "targets_sha256": "438a6e9951a1d991fceaa9898d98d0076db62cf14cc2bc9326a6d6faba84e4e3",
+      "groups": {
+        "all": {
+          "indexed_rows": 147696,
+          "supported_rows": 145179,
+          "unknown_rows": 2517,
+          "beneficial_rows": 76681,
+          "harmful_rows": 53237,
+          "changed_candidate_rows": 131977,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 2.9461146110076575,
+          "mean_harm": 0.9777723028585997,
+          "harm_q50_q90_q99_max": [
+            1.014436126178719,
+            6.420078870072916,
+            24.34618116105754,
+            408.82887488123845
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 12296,
+            "gates": 7332,
+            "hyang": 33609
+          }
+        },
+        "full_future": {
+          "indexed_rows": 119084,
+          "supported_rows": 119084,
+          "unknown_rows": 0,
+          "beneficial_rows": 64469,
+          "harmful_rows": 43435,
+          "changed_candidate_rows": 107904,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 3.212902181508549,
+          "mean_harm": 1.0281843404052293,
+          "harm_q50_q90_q99_max": [
+            1.1162956885661384,
+            6.761217797437066,
+            24.829104887840533,
+            408.82887488123845
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 9317,
+            "gates": 5394,
+            "hyang": 28724
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 9103,
+          "supported_rows": 9103,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2241,
+          "changed_candidate_rows": 2241,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.5071972076662069,
+          "harm_q50_q90_q99_max": [
+            0.9390432985811158,
+            5.197799043654464,
+            15.623105819107343,
+            31.29230192485046
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 917,
+            "gates": 323,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 32685,
+          "supported_rows": 32685,
+          "unknown_rows": 0,
+          "beneficial_rows": 11740,
+          "harmful_rows": 16974,
+          "changed_candidate_rows": 28714,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.29102777480602626,
+          "mean_harm": 0.9207719607355453,
+          "harm_q50_q90_q99_max": [
+            0.6520620907589774,
+            4.383265028665285,
+            15.086450512033183,
+            90.39522199094624
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 2691,
+            "gates": 1859,
+            "hyang": 12424
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 30339,
+          "supported_rows": 29651,
+          "unknown_rows": 688,
+          "beneficial_rows": 4459,
+          "harmful_rows": 9931,
+          "changed_candidate_rows": 14620,
+          "zero_CV_harmful_rows": 2239,
+          "mean_benefit": 0.08411366133929046,
+          "mean_harm": 0.3237204602728373,
+          "harm_q50_q90_q99_max": [
+            0.4537730882835489,
+            1.9528386078106692,
+            10.064379306776916,
+            31.29230192485046
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 2630,
+            "gates": 1371,
+            "hyang": 5930
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 15719,
+          "supported_rows": 15261,
+          "unknown_rows": 458,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 0,
+            "gates": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "coupa_seed29",
+      "outer_site": "coupa",
+      "training_sites": [
+        "deathCircle",
+        "gates",
+        "hyang"
+      ],
+      "input_sha256": "d587f8bcd653e0260a8a2c77c5205cdf34f92cdb1db5ccfe9efb49b38daf40e2",
+      "targets_sha256": "59f71dc73294813086264707e6808eb0f79f972881de20e7e294b96bebf22b2c",
+      "groups": {
+        "all": {
+          "indexed_rows": 147696,
+          "supported_rows": 145179,
+          "unknown_rows": 2517,
+          "beneficial_rows": 75425,
+          "harmful_rows": 54493,
+          "changed_candidate_rows": 131977,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 3.1192263479566242,
+          "mean_harm": 1.1257494647476338,
+          "harm_q50_q90_q99_max": [
+            1.1664549665700328,
+            7.297541629923965,
+            26.07589748160934,
+            416.98774980871156
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 12532,
+            "gates": 7612,
+            "hyang": 34349
+          }
+        },
+        "full_future": {
+          "indexed_rows": 119084,
+          "supported_rows": 119084,
+          "unknown_rows": 0,
+          "beneficial_rows": 63208,
+          "harmful_rows": 44696,
+          "changed_candidate_rows": 107904,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 3.403619101183371,
+          "mean_harm": 1.190091371354758,
+          "harm_q50_q90_q99_max": [
+            1.2885309488270202,
+            7.68739185021111,
+            26.70614150346812,
+            416.98774980871156
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 9647,
+            "gates": 5662,
+            "hyang": 29387
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 9103,
+          "supported_rows": 9103,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2241,
+          "changed_candidate_rows": 2241,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.6672483297486441,
+          "harm_q50_q90_q99_max": [
+            1.07951693437784,
+            7.344096138072484,
+            19.48453643527485,
+            42.3931756133235
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 917,
+            "gates": 323,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 32685,
+          "supported_rows": 32685,
+          "unknown_rows": 0,
+          "beneficial_rows": 11481,
+          "harmful_rows": 17233,
+          "changed_candidate_rows": 28714,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.3078254799952843,
+          "mean_harm": 1.0347729683624995,
+          "harm_q50_q90_q99_max": [
+            0.7428255563934867,
+            4.925952393315268,
+            16.349793254020685,
+            101.74076994210226
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 2680,
+            "gates": 1947,
+            "hyang": 12606
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 30339,
+          "supported_rows": 29651,
+          "unknown_rows": 688,
+          "beneficial_rows": 4480,
+          "harmful_rows": 9910,
+          "changed_candidate_rows": 14620,
+          "zero_CV_harmful_rows": 2239,
+          "mean_benefit": 0.0968446674599783,
+          "mean_harm": 0.40322648422733515,
+          "harm_q50_q90_q99_max": [
+            0.5127572434825349,
+            2.532568442886163,
+            12.733355137616236,
+            42.3931756133235
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 2601,
+            "gates": 1417,
+            "hyang": 5892
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 15719,
+          "supported_rows": 15261,
+          "unknown_rows": 458,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 0,
+            "gates": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "coupa_seed43",
+      "outer_site": "coupa",
+      "training_sites": [
+        "deathCircle",
+        "gates",
+        "hyang"
+      ],
+      "input_sha256": "dbf1358a486e27cd124f18cd09c133fd4b9f73a2ecf7b7d7ee6b7e934a24a35b",
+      "targets_sha256": "46b92f26cbc68edb97638ca331151dd64d3e6a3117321003c7b7ec61afa7775c",
+      "groups": {
+        "all": {
+          "indexed_rows": 147696,
+          "supported_rows": 145179,
+          "unknown_rows": 2517,
+          "beneficial_rows": 72164,
+          "harmful_rows": 57754,
+          "changed_candidate_rows": 131977,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 2.5455454196599865,
+          "mean_harm": 1.0687945370872376,
+          "harm_q50_q90_q99_max": [
+            1.2226287241333385,
+            6.364802400005237,
+            20.638735470937124,
+            430.1086123304183
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 13795,
+            "gates": 7803,
+            "hyang": 36156
+          }
+        },
+        "full_future": {
+          "indexed_rows": 119084,
+          "supported_rows": 119084,
+          "unknown_rows": 0,
+          "beneficial_rows": 60290,
+          "harmful_rows": 47614,
+          "changed_candidate_rows": 107904,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 2.765576352403509,
+          "mean_harm": 1.1353179080576972,
+          "harm_q50_q90_q99_max": [
+            1.3525370121334142,
+            6.653289039506483,
+            20.920787709930345,
+            430.1086123304183
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 10769,
+            "gates": 5807,
+            "hyang": 31038
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 9103,
+          "supported_rows": 9103,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2241,
+          "changed_candidate_rows": 2241,
+          "zero_CV_harmful_rows": 2241,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.3946317951940113,
+          "harm_q50_q90_q99_max": [
+            0.7507562857625792,
+            3.540393411390095,
+            14.109599898199734,
+            25.064234603794983
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 917,
+            "gates": 323,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 32685,
+          "supported_rows": 32685,
+          "unknown_rows": 0,
+          "beneficial_rows": 10713,
+          "harmful_rows": 18001,
+          "changed_candidate_rows": 28714,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.28502053890071855,
+          "mean_harm": 1.1330066690594656,
+          "harm_q50_q90_q99_max": [
+            0.9054290458646967,
+            5.009790380444144,
+            15.189947100396537,
+            97.41500044796904
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 2876,
+            "gates": 2043,
+            "hyang": 13082
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 30339,
+          "supported_rows": 29651,
+          "unknown_rows": 688,
+          "beneficial_rows": 4340,
+          "harmful_rows": 10050,
+          "changed_candidate_rows": 14620,
+          "zero_CV_harmful_rows": 2239,
+          "mean_benefit": 0.07547828357482152,
+          "mean_harm": 0.29243468189689886,
+          "harm_q50_q90_q99_max": [
+            0.4686016203067759,
+            1.6624237678033067,
+            8.687595873022449,
+            25.064234603794983
+          ],
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 2757,
+            "gates": 1427,
+            "hyang": 5866
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 15719,
+          "supported_rows": 15261,
+          "unknown_rows": 458,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "deathCircle": 0,
+            "gates": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "deathCircle_seed17",
+      "outer_site": "deathCircle",
+      "training_sites": [
+        "coupa",
+        "gates",
+        "hyang"
+      ],
+      "input_sha256": "785ab77c36b319d630e44b39ae9a29bb1cc70080fddec91dc77615edba258431",
+      "targets_sha256": "f0be62b6a1b81ed3561892418bf25dad3816423b6b88a894e49bd9f80da8c781",
+      "groups": {
+        "all": {
+          "indexed_rows": 139171,
+          "supported_rows": 137197,
+          "unknown_rows": 1974,
+          "beneficial_rows": 63969,
+          "harmful_rows": 58141,
+          "changed_candidate_rows": 123778,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 1.3438643111640145,
+          "mean_harm": 0.9312019051273861,
+          "harm_q50_q90_q99_max": [
+            1.2211558883881466,
+            5.5053743142643725,
+            11.890219376967373,
+            57.51877390071301
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10059,
+            "gates": 8253,
+            "hyang": 39829
+          }
+        },
+        "full_future": {
+          "indexed_rows": 116524,
+          "supported_rows": 116524,
+          "unknown_rows": 0,
+          "beneficial_rows": 54278,
+          "harmful_rows": 49870,
+          "changed_candidate_rows": 104148,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 1.4287933669746364,
+          "mean_harm": 0.9854306997926858,
+          "harm_q50_q90_q99_max": [
+            1.322278598527996,
+            5.693340298754082,
+            12.07439799255389,
+            57.51877390071301
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 8986,
+            "gates": 6288,
+            "hyang": 34596
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 8582,
+          "supported_rows": 8582,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2083,
+          "changed_candidate_rows": 2083,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.6631971049328806,
+          "harm_q50_q90_q99_max": [
+            1.0726578509198348,
+            8.170591260683075,
+            17.225776592452956,
+            30.717160741471815
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "gates": 323,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 31250,
+          "supported_rows": 31250,
+          "unknown_rows": 0,
+          "beneficial_rows": 9213,
+          "harmful_rows": 16566,
+          "changed_candidate_rows": 25779,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.1763800632933859,
+          "mean_harm": 0.7478926169718825,
+          "harm_q50_q90_q99_max": [
+            0.6217352037304602,
+            3.8664840503871156,
+            9.271049773313939,
+            42.21194175651452
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4529,
+            "gates": 1615,
+            "hyang": 10422
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 33720,
+          "supported_rows": 33225,
+          "unknown_rows": 495,
+          "beneficial_rows": 5553,
+          "harmful_rows": 12585,
+          "changed_candidate_rows": 18327,
+          "zero_CV_harmful_rows": 2076,
+          "mean_benefit": 0.08717917697793855,
+          "mean_harm": 0.4357545743926589,
+          "harm_q50_q90_q99_max": [
+            0.5145468244231798,
+            2.654266130752806,
+            10.966305373981669,
+            30.717160741471815
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4846,
+            "gates": 1476,
+            "hyang": 6263
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 15393,
+          "supported_rows": 15087,
+          "unknown_rows": 306,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "gates": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "deathCircle_seed29",
+      "outer_site": "deathCircle",
+      "training_sites": [
+        "coupa",
+        "gates",
+        "hyang"
+      ],
+      "input_sha256": "942a952df2444a3bb374aff31b13a81742e24aa411c328a43442ad8929c6dff9",
+      "targets_sha256": "2e93f846bdb156605962438c67692a70e045787c7b7c9f67e7568228b922e077",
+      "groups": {
+        "all": {
+          "indexed_rows": 139171,
+          "supported_rows": 137197,
+          "unknown_rows": 1974,
+          "beneficial_rows": 64386,
+          "harmful_rows": 57724,
+          "changed_candidate_rows": 123778,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 1.5532974258882464,
+          "mean_harm": 1.0056054423108178,
+          "harm_q50_q90_q99_max": [
+            1.2994373026237076,
+            5.907479553492215,
+            13.502001048806806,
+            70.7952306858323
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9830,
+            "gates": 7951,
+            "hyang": 39943
+          }
+        },
+        "full_future": {
+          "indexed_rows": 116524,
+          "supported_rows": 116524,
+          "unknown_rows": 0,
+          "beneficial_rows": 54701,
+          "harmful_rows": 49447,
+          "changed_candidate_rows": 104148,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 1.6555670568036431,
+          "mean_harm": 1.0643493290969708,
+          "harm_q50_q90_q99_max": [
+            1.4012458035592417,
+            6.140739412000812,
+            13.861666654364742,
+            70.7952306858323
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 8792,
+            "gates": 5922,
+            "hyang": 34733
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 8582,
+          "supported_rows": 8582,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2083,
+          "changed_candidate_rows": 2083,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.6618108002797823,
+          "harm_q50_q90_q99_max": [
+            1.176386956338254,
+            7.43086643099605,
+            15.435859922264946,
+            25.760456371447614
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "gates": 323,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 31250,
+          "supported_rows": 31250,
+          "unknown_rows": 0,
+          "beneficial_rows": 9054,
+          "harmful_rows": 16725,
+          "changed_candidate_rows": 25779,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.19612068804989627,
+          "mean_harm": 0.789080292129854,
+          "harm_q50_q90_q99_max": [
+            0.7001835320252956,
+            3.9268843735872654,
+            9.42315153089249,
+            57.126356026135106
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4576,
+            "gates": 1672,
+            "hyang": 10477
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 33720,
+          "supported_rows": 33225,
+          "unknown_rows": 495,
+          "beneficial_rows": 5503,
+          "harmful_rows": 12635,
+          "changed_candidate_rows": 18327,
+          "zero_CV_harmful_rows": 2076,
+          "mean_benefit": 0.09995171238145371,
+          "mean_harm": 0.4561088794519629,
+          "harm_q50_q90_q99_max": [
+            0.5562305537944457,
+            2.8963307485909504,
+            9.88083863023919,
+            25.760456371447614
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4878,
+            "gates": 1478,
+            "hyang": 6279
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 15393,
+          "supported_rows": 15087,
+          "unknown_rows": 306,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "gates": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "deathCircle_seed43",
+      "outer_site": "deathCircle",
+      "training_sites": [
+        "coupa",
+        "gates",
+        "hyang"
+      ],
+      "input_sha256": "10dc9a39d300c5aa7aea3e169a42128abb85b0a1659b387a3739506d89de6c94",
+      "targets_sha256": "306967e633c077b8db9b41daf374990f384f34bf1ce3f6eee2d4a13a5ce1265e",
+      "groups": {
+        "all": {
+          "indexed_rows": 139171,
+          "supported_rows": 137197,
+          "unknown_rows": 1974,
+          "beneficial_rows": 62561,
+          "harmful_rows": 59549,
+          "changed_candidate_rows": 123778,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 1.3341754955716647,
+          "mean_harm": 1.0467261025483887,
+          "harm_q50_q90_q99_max": [
+            1.350742783386739,
+            6.0370956239562785,
+            13.152849783178716,
+            58.34668311657727
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10891,
+            "gates": 8286,
+            "hyang": 40372
+          }
+        },
+        "full_future": {
+          "indexed_rows": 116524,
+          "supported_rows": 116524,
+          "unknown_rows": 0,
+          "beneficial_rows": 52866,
+          "harmful_rows": 51282,
+          "changed_candidate_rows": 104148,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 1.4125875162040642,
+          "mean_harm": 1.1084192565920512,
+          "harm_q50_q90_q99_max": [
+            1.4609508715054844,
+            6.235507417180206,
+            13.220141271603717,
+            58.34668311657727
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9838,
+            "gates": 6357,
+            "hyang": 35087
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 8582,
+          "supported_rows": 8582,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2083,
+          "changed_candidate_rows": 2083,
+          "zero_CV_harmful_rows": 2083,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.6929487400568375,
+          "harm_q50_q90_q99_max": [
+            1.0804083971030958,
+            8.624484489453947,
+            18.902199418271664,
+            32.01640370875115
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "gates": 323,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 31250,
+          "supported_rows": 31250,
+          "unknown_rows": 0,
+          "beneficial_rows": 8980,
+          "harmful_rows": 16799,
+          "changed_candidate_rows": 25779,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.17536413537699128,
+          "mean_harm": 0.8397013268840566,
+          "harm_q50_q90_q99_max": [
+            0.6923975850790727,
+            4.276631041311987,
+            10.877901348966205,
+            28.519577198878974
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4605,
+            "gates": 1624,
+            "hyang": 10570
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 33720,
+          "supported_rows": 33225,
+          "unknown_rows": 495,
+          "beneficial_rows": 5413,
+          "harmful_rows": 12725,
+          "changed_candidate_rows": 18327,
+          "zero_CV_harmful_rows": 2076,
+          "mean_benefit": 0.0863693789452589,
+          "mean_harm": 0.4560433309930202,
+          "harm_q50_q90_q99_max": [
+            0.5347965868339485,
+            2.709755046962681,
+            11.132645139086705,
+            32.01640370875115
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4974,
+            "gates": 1470,
+            "hyang": 6281
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 15393,
+          "supported_rows": 15087,
+          "unknown_rows": 306,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "gates": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "gates_seed17",
+      "outer_site": "gates",
+      "training_sites": [
+        "coupa",
+        "deathCircle",
+        "hyang"
+      ],
+      "input_sha256": "5371cfbfd045f287e24f06ff81d58eb681485ed9067c58bfc8c70dcd45c9219b",
+      "targets_sha256": "b3a4bb30e782fabcee6f6cc2d03104c63ddaef99bc124d8094044269226873cb",
+      "groups": {
+        "all": {
+          "indexed_rows": 155034,
+          "supported_rows": 152721,
+          "unknown_rows": 2313,
+          "beneficial_rows": 76244,
+          "harmful_rows": 59103,
+          "changed_candidate_rows": 137264,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 2.2641391487726006,
+          "mean_harm": 0.9565625901830793,
+          "harm_q50_q90_q99_max": [
+            1.172818559948146,
+            5.943605259446162,
+            17.868863052482897,
+            347.50527092912205
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10147,
+            "deathCircle": 13730,
+            "hyang": 35226
+          }
+        },
+        "full_future": {
+          "indexed_rows": 128637,
+          "supported_rows": 128637,
+          "unknown_rows": 0,
+          "beneficial_rows": 65029,
+          "harmful_rows": 49840,
+          "changed_candidate_rows": 114869,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 2.437092023364891,
+          "mean_harm": 1.0104196372848802,
+          "harm_q50_q90_q99_max": [
+            1.2535285039164314,
+            6.283552466650631,
+            18.581026685198754,
+            347.50527092912205
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9007,
+            "deathCircle": 10690,
+            "hyang": 30143
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 10001,
+          "supported_rows": 10001,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2677,
+          "changed_candidate_rows": 2677,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.8079077802502128,
+          "harm_q50_q90_q99_max": [
+            1.6564642100079237,
+            7.318898317821101,
+            15.346126826945186,
+            21.560643759657722
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "deathCircle": 917,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 34513,
+          "supported_rows": 34513,
+          "unknown_rows": 0,
+          "beneficial_rows": 10155,
+          "harmful_rows": 18407,
+          "changed_candidate_rows": 28562,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.22894403335682617,
+          "mean_harm": 0.8614266720265539,
+          "harm_q50_q90_q99_max": [
+            0.718381593826181,
+            4.002185029420852,
+            12.124908647668317,
+            88.92601083191471
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4882,
+            "deathCircle": 2489,
+            "hyang": 11036
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 38256,
+          "supported_rows": 37656,
+          "unknown_rows": 600,
+          "beneficial_rows": 5909,
+          "harmful_rows": 14373,
+          "changed_candidate_rows": 20486,
+          "zero_CV_harmful_rows": 2670,
+          "mean_benefit": 0.12442670846526006,
+          "mean_harm": 0.5355305329281266,
+          "harm_q50_q90_q99_max": [
+            0.6197312510110728,
+            3.741787919651144,
+            10.380519027063263,
+            21.560643759657722
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 5089,
+            "deathCircle": 2989,
+            "hyang": 6295
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 17770,
+          "supported_rows": 17374,
+          "unknown_rows": 396,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "deathCircle": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "gates_seed29",
+      "outer_site": "gates",
+      "training_sites": [
+        "coupa",
+        "deathCircle",
+        "hyang"
+      ],
+      "input_sha256": "891ceb00eee04ce42009eea4a9ed399f43d8d7f0ebc571af126aabc2c83c6822",
+      "targets_sha256": "b430609a30a1cb46e9d88de72f1961024f381207ddb7cc43383b80fdf430a834",
+      "groups": {
+        "all": {
+          "indexed_rows": 155034,
+          "supported_rows": 152721,
+          "unknown_rows": 2313,
+          "beneficial_rows": 76777,
+          "harmful_rows": 58570,
+          "changed_candidate_rows": 137264,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 2.3954736777842314,
+          "mean_harm": 0.9560232938214934,
+          "harm_q50_q90_q99_max": [
+            1.079160082978206,
+            6.057339834502387,
+            19.39994634702289,
+            336.477494116754
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10078,
+            "deathCircle": 13090,
+            "hyang": 35402
+          }
+        },
+        "full_future": {
+          "indexed_rows": 128637,
+          "supported_rows": 128637,
+          "unknown_rows": 0,
+          "beneficial_rows": 65790,
+          "harmful_rows": 49079,
+          "changed_candidate_rows": 114869,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 2.594528852592348,
+          "mean_harm": 1.011784930594532,
+          "harm_q50_q90_q99_max": [
+            1.165108732368009,
+            6.472330673487026,
+            19.829837616782335,
+            336.477494116754
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9024,
+            "deathCircle": 9806,
+            "hyang": 30249
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 10001,
+          "supported_rows": 10001,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2677,
+          "changed_candidate_rows": 2677,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.7329551066924385,
+          "harm_q50_q90_q99_max": [
+            1.527746888523865,
+            6.537117966222549,
+            14.168236915360481,
+            29.449004465510985
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "deathCircle": 917,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 34513,
+          "supported_rows": 34513,
+          "unknown_rows": 0,
+          "beneficial_rows": 10246,
+          "harmful_rows": 18316,
+          "changed_candidate_rows": 28562,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.22781039622493787,
+          "mean_harm": 0.8573533320888873,
+          "harm_q50_q90_q99_max": [
+            0.7281937189249754,
+            3.9643474170973567,
+            12.625263982135001,
+            90.29959232321262
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4735,
+            "deathCircle": 2567,
+            "hyang": 11014
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 38256,
+          "supported_rows": 37656,
+          "unknown_rows": 600,
+          "beneficial_rows": 6058,
+          "harmful_rows": 14224,
+          "changed_candidate_rows": 20486,
+          "zero_CV_harmful_rows": 2670,
+          "mean_benefit": 0.12756428078596158,
+          "mean_harm": 0.5201778154323669,
+          "harm_q50_q90_q99_max": [
+            0.7137142985550237,
+            3.4988536221614495,
+            9.506861982069758,
+            29.449004465510985
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4946,
+            "deathCircle": 2951,
+            "hyang": 6327
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 17770,
+          "supported_rows": 17374,
+          "unknown_rows": 396,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "deathCircle": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "gates_seed43",
+      "outer_site": "gates",
+      "training_sites": [
+        "coupa",
+        "deathCircle",
+        "hyang"
+      ],
+      "input_sha256": "5cbf6b47e285997f61d7f1deebf66e547f7e15e38235222d38d5e7467275a925",
+      "targets_sha256": "60605d2bb9b27f2d9749eeae0f9923d72d3fa32304321cd8cc3b9224a0a9ba05",
+      "groups": {
+        "all": {
+          "indexed_rows": 155034,
+          "supported_rows": 152721,
+          "unknown_rows": 2313,
+          "beneficial_rows": 76797,
+          "harmful_rows": 58550,
+          "changed_candidate_rows": 137264,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 2.331152792022789,
+          "mean_harm": 0.9716011793890397,
+          "harm_q50_q90_q99_max": [
+            1.1870665318581919,
+            6.050558778303442,
+            18.850460495863068,
+            372.9157592399284
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10304,
+            "deathCircle": 13785,
+            "hyang": 34461
+          }
+        },
+        "full_future": {
+          "indexed_rows": 128637,
+          "supported_rows": 128637,
+          "unknown_rows": 0,
+          "beneficial_rows": 65534,
+          "harmful_rows": 49335,
+          "changed_candidate_rows": 114869,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 2.5142038792501697,
+          "mean_harm": 1.0251697998858647,
+          "harm_q50_q90_q99_max": [
+            1.266155662256098,
+            6.367813206527486,
+            19.73478172371346,
+            372.9157592399284
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9201,
+            "deathCircle": 10754,
+            "hyang": 29380
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 10001,
+          "supported_rows": 10001,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 2677,
+          "changed_candidate_rows": 2677,
+          "zero_CV_harmful_rows": 2677,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.8164314399612189,
+          "harm_q50_q90_q99_max": [
+            1.7099316630929664,
+            7.225022865632229,
+            16.50517101816844,
+            26.205158885460616
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "deathCircle": 917,
+            "hyang": 1001
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 34513,
+          "supported_rows": 34513,
+          "unknown_rows": 0,
+          "beneficial_rows": 10062,
+          "harmful_rows": 18500,
+          "changed_candidate_rows": 28562,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.23326109354020486,
+          "mean_harm": 0.895789786454949,
+          "harm_q50_q90_q99_max": [
+            0.762025072316201,
+            4.127904068469735,
+            12.16716510071018,
+            95.86245698877048
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4933,
+            "deathCircle": 2500,
+            "hyang": 11067
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 38256,
+          "supported_rows": 37656,
+          "unknown_rows": 600,
+          "beneficial_rows": 5887,
+          "harmful_rows": 14395,
+          "changed_candidate_rows": 20486,
+          "zero_CV_harmful_rows": 2670,
+          "mean_benefit": 0.12791757314717458,
+          "mean_harm": 0.5477740335710588,
+          "harm_q50_q90_q99_max": [
+            0.710576513912487,
+            3.692721109629819,
+            10.597601250529468,
+            26.205158885460616
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 5126,
+            "deathCircle": 2975,
+            "hyang": 6294
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 17770,
+          "supported_rows": 17374,
+          "unknown_rows": 396,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "deathCircle": 0,
+            "hyang": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "hyang_seed17",
+      "outer_site": "hyang",
+      "training_sites": [
+        "coupa",
+        "deathCircle",
+        "gates"
+      ],
+      "input_sha256": "a28467d06f4b6458c9a8514426a366332abc76192b7d17e8d7dc0e5df3d1a6aa",
+      "targets_sha256": "aa272588c90541fff7f249bc5bd96716b7b1c5e8e72b89af4287433d7fd4788a",
+      "groups": {
+        "all": {
+          "indexed_rows": 85367,
+          "supported_rows": 83774,
+          "unknown_rows": 1593,
+          "beneficial_rows": 39808,
+          "harmful_rows": 32087,
+          "changed_candidate_rows": 73157,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 1.97399591496733,
+          "mean_harm": 0.9676309647016839,
+          "harm_q50_q90_q99_max": [
+            1.253190903466951,
+            6.0908063479609735,
+            17.459914261721547,
+            124.55674087584842
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10343,
+            "deathCircle": 13826,
+            "gates": 7918
+          }
+        },
+        "full_future": {
+          "indexed_rows": 67509,
+          "supported_rows": 67509,
+          "unknown_rows": 0,
+          "beneficial_rows": 32476,
+          "harmful_rows": 26067,
+          "changed_candidate_rows": 58543,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 2.1274089894551427,
+          "mean_harm": 1.0166270041195358,
+          "harm_q50_q90_q99_max": [
+            1.3447007454640412,
+            6.314380253802194,
+            17.656371580500075,
+            124.55674087584842
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9337,
+            "deathCircle": 10837,
+            "gates": 5893
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 7012,
+          "supported_rows": 7012,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 1999,
+          "changed_candidate_rows": 1999,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.9817146692745777,
+          "harm_q50_q90_q99_max": [
+            2.0225533834217053,
+            8.164325659037939,
+            18.06552709214121,
+            29.466716168448386
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "deathCircle": 917,
+            "gates": 323
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 18239,
+          "supported_rows": 18239,
+          "unknown_rows": 0,
+          "beneficial_rows": 5404,
+          "harmful_rows": 9196,
+          "changed_candidate_rows": 14600,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.21449728207662774,
+          "mean_harm": 0.7319795423872135,
+          "harm_q50_q90_q99_max": [
+            0.6731204281155216,
+            3.4361197655398055,
+            11.160258579933359,
+            66.96581684477204
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4892,
+            "deathCircle": 2511,
+            "gates": 1793
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 25812,
+          "supported_rows": 25327,
+          "unknown_rows": 485,
+          "beneficial_rows": 3950,
+          "harmful_rows": 9498,
+          "changed_candidate_rows": 13602,
+          "zero_CV_harmful_rows": 1994,
+          "mean_benefit": 0.11771365321408567,
+          "mean_harm": 0.5770530181365919,
+          "harm_q50_q90_q99_max": [
+            0.703379249442498,
+            3.899496335118546,
+            12.426989729032135,
+            29.466716168448386
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 5062,
+            "deathCircle": 2962,
+            "gates": 1474
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 12210,
+          "supported_rows": 11879,
+          "unknown_rows": 331,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "deathCircle": 0,
+            "gates": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "hyang_seed29",
+      "outer_site": "hyang",
+      "training_sites": [
+        "coupa",
+        "deathCircle",
+        "gates"
+      ],
+      "input_sha256": "0ac31cee6d55891834aa02ee98f035357d4fa4095c8683a308efecc8c2098144",
+      "targets_sha256": "7ff953bda5057c48b139022ac4e400f33031e79b05d4cc84581528d11e63606b",
+      "groups": {
+        "all": {
+          "indexed_rows": 85367,
+          "supported_rows": 83774,
+          "unknown_rows": 1593,
+          "beneficial_rows": 39763,
+          "harmful_rows": 32132,
+          "changed_candidate_rows": 73157,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 1.9436035734756774,
+          "mean_harm": 0.9633193119232715,
+          "harm_q50_q90_q99_max": [
+            1.2282744804400265,
+            6.118326315571763,
+            17.480650230463276,
+            129.74123087183472
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10480,
+            "deathCircle": 13811,
+            "gates": 7841
+          }
+        },
+        "full_future": {
+          "indexed_rows": 67509,
+          "supported_rows": 67509,
+          "unknown_rows": 0,
+          "beneficial_rows": 32388,
+          "harmful_rows": 26155,
+          "changed_candidate_rows": 58543,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 2.1068968096315484,
+          "mean_harm": 1.0187865912308611,
+          "harm_q50_q90_q99_max": [
+            1.3207585100290782,
+            6.365526722193281,
+            17.709188083253526,
+            129.74123087183472
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 9451,
+            "deathCircle": 10828,
+            "gates": 5876
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 7012,
+          "supported_rows": 7012,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 1999,
+          "changed_candidate_rows": 1999,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 0.0,
+          "mean_harm": 1.0056655545423616,
+          "harm_q50_q90_q99_max": [
+            2.1073999798031635,
+            8.302499535287893,
+            18.949003653187376,
+            30.975994163394446
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "deathCircle": 917,
+            "gates": 323
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 18239,
+          "supported_rows": 18239,
+          "unknown_rows": 0,
+          "beneficial_rows": 5422,
+          "harmful_rows": 9178,
+          "changed_candidate_rows": 14600,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.21613276038249252,
+          "mean_harm": 0.7355469311034672,
+          "harm_q50_q90_q99_max": [
+            0.6943158512427137,
+            3.523654523432889,
+            11.98565116057049,
+            48.92959845698799
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 4907,
+            "deathCircle": 2513,
+            "gates": 1758
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 25812,
+          "supported_rows": 25327,
+          "unknown_rows": 485,
+          "beneficial_rows": 3953,
+          "harmful_rows": 9495,
+          "changed_candidate_rows": 13602,
+          "zero_CV_harmful_rows": 1994,
+          "mean_benefit": 0.11988691218097976,
+          "mean_harm": 0.5951918342216796,
+          "harm_q50_q90_q99_max": [
+            0.7395399121634165,
+            3.9670647505205547,
+            12.895878148648137,
+            30.975994163394446
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 5061,
+            "deathCircle": 2953,
+            "gates": 1481
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 12210,
+          "supported_rows": 11879,
+          "unknown_rows": 331,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "deathCircle": 0,
+            "gates": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    },
+    {
+      "view": "hyang_seed43",
+      "outer_site": "hyang",
+      "training_sites": [
+        "coupa",
+        "deathCircle",
+        "gates"
+      ],
+      "input_sha256": "993c5d8f2d2feaaaa02a9844e4321729a0e30bcabfffae1fa1ce1c2551fd2784",
+      "targets_sha256": "0443c42967e0309129ee143130a11c146bc4d54c3baedd73631dfd2ad62dfbe8",
+      "groups": {
+        "all": {
+          "indexed_rows": 85367,
+          "supported_rows": 83774,
+          "unknown_rows": 1593,
+          "beneficial_rows": 38847,
+          "harmful_rows": 33048,
+          "changed_candidate_rows": 73157,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 2.0740316411034843,
+          "mean_harm": 1.115363941761455,
+          "harm_q50_q90_q99_max": [
+            1.4331662773405984,
+            6.880299314518501,
+            18.408339962610814,
+            132.00596845730848
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 11130,
+            "deathCircle": 14010,
+            "gates": 7908
+          }
+        },
+        "full_future": {
+          "indexed_rows": 67509,
+          "supported_rows": 67509,
+          "unknown_rows": 0,
+          "beneficial_rows": 31616,
+          "harmful_rows": 26927,
+          "changed_candidate_rows": 58543,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 2.236109162437294,
+          "mean_harm": 1.182170525842902,
+          "harm_q50_q90_q99_max": [
+            1.5529892219797952,
+            7.150579911182856,
+            18.679390185232048,
+            132.00596845730848
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 10061,
+            "deathCircle": 10972,
+            "gates": 5894
+          }
+        },
+        "zero_CV_complete": {
+          "indexed_rows": 7012,
+          "supported_rows": 7012,
+          "unknown_rows": 0,
+          "beneficial_rows": 0,
+          "harmful_rows": 1999,
+          "changed_candidate_rows": 1999,
+          "zero_CV_harmful_rows": 1999,
+          "mean_benefit": 0.0,
+          "mean_harm": 1.0813187327627063,
+          "harm_q50_q90_q99_max": [
+            2.196630538987388,
+            9.154841369851718,
+            18.240406605461907,
+            28.339346948314255
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 759,
+            "deathCircle": 917,
+            "gates": 323
+          }
+        },
+        "positive_easy_diagnostic": {
+          "indexed_rows": 18239,
+          "supported_rows": 18239,
+          "unknown_rows": 0,
+          "beneficial_rows": 5216,
+          "harmful_rows": 9384,
+          "changed_candidate_rows": 14600,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.2175090521757645,
+          "mean_harm": 0.9005425580667459,
+          "harm_q50_q90_q99_max": [
+            0.7826419297846109,
+            4.41216150178387,
+            13.88661576233009,
+            62.44661556956306
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 5013,
+            "deathCircle": 2567,
+            "gates": 1804
+          }
+        },
+        "current_observed_step_zero": {
+          "indexed_rows": 25812,
+          "supported_rows": 25327,
+          "unknown_rows": 485,
+          "beneficial_rows": 3943,
+          "harmful_rows": 9505,
+          "changed_candidate_rows": 13602,
+          "zero_CV_harmful_rows": 1994,
+          "mean_benefit": 0.1275217130425802,
+          "mean_harm": 0.6441726133838928,
+          "harm_q50_q90_q99_max": [
+            0.7871969164005765,
+            4.538964624546229,
+            13.165955903894895,
+            28.339346948314255
+          ],
+          "harmful_rows_by_training_scene": {
+            "coupa": 5054,
+            "deathCircle": 2974,
+            "gates": 1477
+          }
+        },
+        "stationary_past": {
+          "indexed_rows": 12210,
+          "supported_rows": 11879,
+          "unknown_rows": 331,
+          "beneficial_rows": 0,
+          "harmful_rows": 0,
+          "changed_candidate_rows": 0,
+          "zero_CV_harmful_rows": 0,
+          "mean_benefit": 0.0,
+          "mean_harm": 0.0,
+          "harm_q50_q90_q99_max": null,
+          "harmful_rows_by_training_scene": {
+            "coupa": 0,
+            "deathCircle": 0,
+            "gates": 0
+          }
+        }
+      },
+      "supervised_targets_only_not_inference_inputs": true
+    }
+  ],
+  "outer_training_rows": 0,
+  "new_training": false,
+  "threshold_search": false,
+  "independent_confirmation": false,
+  "rows_are_overlapping_and_repeated_across_seeds": true,
+  "scope": "post_hoc_feasibility_not_new_target_validation_or_deployment"
+}

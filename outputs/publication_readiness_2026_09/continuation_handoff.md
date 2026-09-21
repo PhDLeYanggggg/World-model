@@ -1,5 +1,51 @@
 # Real-Experiment Continuation Handoff
 
+## Matched Coverage Completed (2026-09-21)
+
+Goal active/unmet; previous turn progress, this turn completed new fixed matched
+source-control arithmetic plus training-only risk-target support audit. No new
+head or forecaster fitting. Frozen registration commit1be916ed preceded readout.
+DO NOT MODIFY frozen configs/m3w_native_matched_coverage_v1.json, registration,
+run_m3w_native_matched_coverage.py, m3w_native_matched_coverage.py or its tests.
+
+All144policy/view results:6rankers x2budgets x4sites x3seeds.392bindings pass;
+24asymmetric anchors reproduce prior scores.37scopedtests pass1.21s. Independent
+partition selection checks144choice hashes,864scene reductions,120random expected
+cost reductions. Preflight22078/PID72446, main62638/PID72540, replay43207/PID72554,
+verifier50657, support14957 and tests95567 all exit0. No required process remains
+running. No CREATE job/fresh remote queue claim. Private heartbeat/cache ignored.
+
+Low budget0.8415%: asymmetric ratio gain0.3404%, MSE ratio0.4347%, MSE net1.1900%,
+asym net1.1537%, ridge net0.6941%, hash0.0605%; random expectation0.0632%.
+Primary asym-minus-MSEratio -0.0943pp CI[-0.1592,-0.0294]. High budget15.8109%:
+primary -0.0688pp CI[-0.2313,+0.0352]. All4scene means negative atlowbudget, not
+everyseed. Same-count zero-CV harmed instances low1versus15, high25versus60.
+Thus asym genuinely changes harm ranking but sacrifices ADE; no Pareto or
+strict safety success. Allnontrivial controls fail strictzeroCV; futuremissing
+selected outcomes retained. All4sources designexposed; fullbatch ranks offline,
+not onlinecausal deployment, independent confirmation or risk calibration.
+
+Training-only target audit: eachnestedview has1999-2677harmful completezeroCV
+rows outof7012-10001zeroCVtotal. Only2-7harmfulzeroCVrows perview falloutside
+currentobservedstepzero group, but thatgroup also has3943-6058beneficialrows.
+Completelystationary8stephistories already outputexactCV(benefit/harm0).
+Counts repeated/overlapping, noindependenteventcountclaim. This supports trying
+separatezero-reference/easy-harmtargets, not an ad-hoc heldrowstopveto.
+
+Next: register/train a separate easy/zero-reference harm predictor alongside
+ordinary expectednetgain, with matchedcapacity/coverage controls and simple
+causalstopcontrol. Alltrainingtargets supervisiononly, neverfuturegroupinput.
+Freezebefore readout. Independentcalibration stillmissing. No thresholdsearch,
+luckyseedselection or riskrelaxation. Originalval/test/main/external/bookstore
+closed. Strictmetric/risk choices resolved; don't reask. Stage5C/SMC off.
+
+Reports in native_matched_coverage_v1/conclusions.md, execution_notes.md,
+results.csv, analysis.json, verification.json, independent_verification.json,
+risk_target_support.json. AnalysisSHA
+bc14cefb733bca0b0a461698c1a530d674cb872b7289ebc0b8fa9ed799ac166c.
+Preserve unrelated staging fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Native Cost Heads Complete, Safety Still Failed (2026-09-21)
 
 Goal active/unmet. All 12 ridge + 24 neural fits completed, 72,000 updates,

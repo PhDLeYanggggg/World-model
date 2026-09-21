@@ -3,6 +3,27 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：同切换率对照
+
+这次不重训模型，而是复用冻结预测，对每个场景/种子固定相同切换数量。
+两个已有预算、六种排序、四场景、三种子，共 144 个对照结果全部完成。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_matched_coverage.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_native_matched_coverage.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_matched_coverage.py
+.venv-pytorch/bin/python scripts/audit_m3w_native_risk_target_support.py
+```
+
+392 个来源绑定、24 个原策略重放、144 个同数量检查通过。独立实现重建所有
+选择结果，并检查 864 个场景指标和 120 个随机策略期望；37 项相关测试通过。
+全部进程正常退出。无需新 CREATE 任务；不要重训已完成的成本头。
+
+同样切换 0.842% 时，比例排序改善 0.340%（加重伤害惩罚）或 0.435%（普通 MSE），
+MSE 净收益排序为 1.190%。前者减少零误差样本受损，但所有非平凡对照仍不安全。
+这是整批离线诊断，不是在线策略，也不是独立确认。后续应分别学习收益与受保护组
+风险，而不是继续任意调比例阈值。训练标签支持审计没有使用外层验证行来建标签。
+
 ## 已完成：原生坐标收益与伤害头
 
 12 个 ridge 和 24 个真实神经成本头全部拟合完成，72,000 次更新。

@@ -75,6 +75,18 @@ checkpoint replay and independent arithmetic pass. This is a negative safety
 result on explored sources, not independent calibration or deployment.
 [Full fixed comparison](native_gain_harm_v1/conclusions.md).
 
+A fixed matched-coverage follow-up separates changes in ordering from abstention.
+At 0.8415% mean intervention, underharm4 ratio and MSE ratio give 0.3404% and
+0.4347% ADE gains, respectively. The paired difference is -0.0943 percentage
+points, conditional scene CI [-0.1592,-0.0294]. Underharm4 harms fewer exact-CV
+queries (one versus 15 repeated query/seed instances), but sacrifices accuracy.
+At identical counts, MSE net-gain ordering gives 1.1900% gain, still with a
+zero-reference harm. A training-only audit confirms target support for separating
+gain allocation from protected-group harm prediction. These batch rankings are
+offline diagnostics, not calibrated online policies or independent confirmation.
+No nontrivial policy passes strict protection; this negative result is retained.
+[Fixed count comparison and support](native_matched_coverage_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well
