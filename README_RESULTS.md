@@ -10,6 +10,9 @@ or evidence status.
 Next comparator, registered before fitting: twelve EqMotion K=1 native-loss
 fits will use the same source rows, draws and update budget as the frozen native
 Transformer. The old EqMotion result is not a matched native-loss comparison.
+Update: the real 100-step pilot completed and the full fixed matrix is now
+training from that checkpoint. Estimated local fit time is 5-6 hours; no held-site
+accuracy has been read. [Live execution and recovery](outputs/publication_readiness_2026_09/native_eqmotion_v1/execution_notes.md).
 No new data roles or closed outcomes are opened. This registration is not a
 training result or reproduction of the author's best-of-20 benchmark.
 [Fixed design](outputs/publication_readiness_2026_09/native_eqmotion_v1/registration.md).

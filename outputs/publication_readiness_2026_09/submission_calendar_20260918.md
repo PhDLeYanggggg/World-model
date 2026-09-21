@@ -18,6 +18,12 @@ internal targets below, and no claim that format compliance is complete.
 
 ## Official Dates and Current Policy Availability
 
+2026-09-21 live recheck: the official dates remain Nov10/16/23 (AoE). The
+linked2027 AuthorGuidelines still returns404; LLM-use details remain unfinished.
+This verifies dates and the availability gap, not formatting compliance. Current
+research priorities below are refreshed against the completed native-loss and
+bounded-cost studies rather than the older normalized-loss results.
+
 The official dates page lists registration on2026-11-10, full submission
 on2026-11-16 and supplementary materials on2026-11-23, all Anywhere on Earth.
 Reviews are scheduled for2027-01-25 and decisions for2027-02-25.
@@ -54,6 +60,29 @@ or independent confirmation remain absent, report the shortfall rather than
 call the paper ready. The user retains the final submission decision.
 
 ## Current Priority Gaps
+
+### Latest Status, 2026-09-21
+
+The native-coordinate loss comparison now supplies a useful predictor:
+7.63% source-development ADE gain over CV, but exact-zero protection fails.
+Joint versus unary controls are complete and make identical decisions; coupling
+is no longer presented as a supported main contribution. The bounded-cost
+primary arm improves average accuracy but fails protection. A fixed secondary
+fraction-loss arm gives2.44% source ADE gain and preserves observed complete
+exact-CV cases, with unresolved incomplete outcomes and conditional underharm.
+All four source sites remain design-exposed. These developments supersede the
+older "no candidate gain" diagnosis below, not the historical results themselves.
+
+The current critical path is: matched native-loss public comparator; conditional
+harm reliability; eligible new physical scenes and approved calibration/confirmation
+roles; then a fixed independent readout and complete paper claims. Twelve EqMotion
+K=1 native-loss fits are newly registered and training; they cannot be counted as
+completed evidence here. No default larger-model sweep, closed-label tuning or
+weaker safety criterion is authorized by the calendar. Local pilot cost is about
+39s/100updates; the full registered matrix is estimated at5-6hours. CREATE is not
+needed for this bounded local run; no new remote asset or scheduler state is claimed.
+
+### Historical Priority Snapshot
 
 1. Candidate dynamics: the 12-model site-crossfit, matched static-loss repair,
    36-head pretrained comparison, 24-head centering comparison and 24-head
