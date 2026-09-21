@@ -1,9 +1,35 @@
 # M3W 本地与 CREATE 操作记录
 
-最近更新：2026-09-20。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
+最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：固定决策的风险取证
+## 当前：成本头训练内取证
+
+重放12个已训练成本头，未新训练。每个头11,966条、306维特征；OOF只是轨迹
+预测器没有见过目标折，成本头本身见过这些训练行，所以不能称独立验证。
+全部头的总体伤害MSE优于常数，但24个原始切换资格组中23个实际净收益为负。
+这把故障定位到训练内的条件成本估计，并非只在跨域后才出现。
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_cost_head_fit.py --family transformer --resume
+.venv-pytorch/bin/python scripts/audit_m3w_cost_head_fit.py --family eqmotion --resume
+.venv-pytorch/bin/python scripts/verify_m3w_cost_head_fit.py --family transformer
+.venv-pytorch/bin/python scripts/verify_m3w_cost_head_fit.py --family eqmotion
+.venv-pytorch/bin/python scripts/report_m3w_cost_head_fit.py
+```
+
+已完成resume只核验收据/汇总，没有新增forward。初次新目录用`--pilot`，然后
+resume补齐。Transformer原CPU、EqMotion原MPS，4计算线程/1inter-op/workers0。
+真正MPS推理需要获准的Metal执行环境；不静默切CPU。原批次验证每折固定取
+首中末，54批共5,748条重复核验记录，特征和独立重算标签完全相同；不是全量
+原始行重建。全部12个normalizer一致。45测试通过、1个默认关闭MPS测试跳过；
+实际MPS模型重放单独完成。所有执行会话退出，不需要HPC。
+
+完整报告`cost_head_fit_forensics_v1/conclusions.md`。逐行数组、checkpoint、
+历史数据不上传；Git只保存代码配置和汇总。未改主指标/阈值/部署；待确认主
+评价后，再登记与easy目标一致的成本学习和独立验证，不能靠训练内分数宣布成功。
+
+## 已完成：固定决策的风险取证
 
 本轮没有新训练或推理。读取已冻结的全部24组合、72对照，先核对原完成报告、
 代码、输入和批次收据，再逐查询分析预测风险与真实已知伤害。仍使用旧主指标，

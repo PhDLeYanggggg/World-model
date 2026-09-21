@@ -1,5 +1,51 @@
 # Real-Experiment Continuation Handoff
 
+## Cost-Head Fit Diagnosis Complete (2026-09-21)
+
+Goal active/unmet. Concrete fresh diagnosis and original batch verification,
+not no-progress. Primary-metric question still unanswered; no new training,
+metric/loss/threshold selection or independent test data opened.
+
+All12 frozen cost heads on11,966 fit rows each: all beat mean-label harm MSE;
+9 globally overpredict mean harm; all24 fixed per-agent eligibility subsets
+underpredict harm and23 realize negative mean net gain. EqMotion17 neural
+conservative is the retained tiny positive exception:44rows,+0.000941 versus
+predicted+0.06112. Eligibility is not scene selection. OOF is for producers;
+the head was fitted on these rows, so this is in-sample, not calibration.
+
+Ridge zero projection on10.58-50.75% rows,65.37-74.33% actually harmed there.
+Neural softplus also fails; removing clipping is not a safety repair. Top1%
+harm labels hold56.23-98.72% squared label mass, not final loss contribution.
+No feature/target corruption found in checked original batches. Global fit
+quality does not establish decision-region reliability, even before site shift.
+
+New bound config/module/runner: m3w_cost_head_fit_forensics_v1.json,
+m3w_cost_fit_forensics.py, audit_m3w_cost_head_fit.py. Do not edit bound files
+without a new version. Read-only verifier/reporters are verify_m3w_cost_head_fit.py
+and report_m3w_cost_head_fit.py. Public reports undercost_head_fit_forensics_v1;
+private arrays/receipts underdata/stage_cvpr2027_experiments/cost_head_fit_forensics_v1.
+
+Transformer pilot31942/session13612 exit0(.324855s), main31965/82488 exit0(.460907s).
+EqMotion MPS pilot32091/22498 exit0(.833463s), main32140/51675 exit0(1.217426s).
+Completed replay95231/76599 exit0,3reused/0new each. Exact original device preserved.
+Verifier4772/26625 exit0,27batches/2874rows each; CPU2.038082s/MPS12.467561s.
+48scalar reductions and54source batches/5748repeated rows checked. All12normalizers
+exact. No all-raw-row reconstruction claim.45tests pass1opt-inMPS skipped16.92s
+(session18397); actualMPSreal inference separately completed. No fullhistorical
+report-writing integrations. Allrequiredprocessesterminal; no newCREATEjob.
+
+TF analysis5d7e63098b5705e3c50e9c2e01aa3ac321edc607bfa7f84f24465e1b9429b024;
+Eq analysis2854a2fd50a55ccdd0af7ec2d879deedd3f6212b270f68963bbd536037b0e9a5.
+Pilot heartbeat's intermediate running label is not live-process proof; sessions
+exit0 and later completion manifests establish terminal status. No restart issue.
+
+Next: resolve scientific metric decision, then register matched conditional-risk
+head design with genuinely held-out cost validation and independent calibration
+requirements. Do not select the single favorable fit slice as a winner, refit
+on inspected development labels or treat historical scores as confirmation.
+No deployment/Stage5C/SMC/metric/seconds/true3D/foundation claims. Preserve unrelated
+staged fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Frozen Risk Forensics Complete (2026-09-20)
 
 Goal active/unmet. Concrete fresh diagnosis, not a no-progress turn. Do not

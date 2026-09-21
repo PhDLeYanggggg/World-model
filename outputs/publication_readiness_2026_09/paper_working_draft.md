@@ -303,6 +303,24 @@ by itself supply a risk certificate. No revised model is trained or selected in
 this diagnosis. Independent calibration support and the pending primary-metric
 decision remain necessary before a new registered evaluation.
 
+The subsequent [cost-head fit diagnosis](cost_head_fit_forensics_v1/conclusions.md)
+shows that unreliable conditional costs already occur on the heads' fitting
+rows. All12 fixed heads beat the fit-label mean reference on harm MSE, but all24
+original per-agent eligibility subsets underpredict mean harm, and23 realize
+negative mean net gain. The sole positive exception has44 fitting rows and is
+not promoted. Nine heads overpredict harm globally, ruling out an exclusively
+global mean-underprediction account of the observed failure. These eligibility
+sets are not final scene-solver selections.
+
+Ridge's zero projection affects10.58-50.75% of rows;65.37-74.33% of these still
+incur positive harm. Neural softplus heads also show conditional failure, so
+removing projection is not a remedy. The largest1% of harm labels contributes
+56.23-98.72% of squared label mass, but this statistic does not isolate the cause
+of the fitting error. Exact normalizer checks and54 original-batch replays find
+no checked feature/target-order mismatch. OOF refers to the trajectory producer;
+the cost head is evaluated in-sample. These findings refine the diagnosis, not
+independent calibration, neural predictive utility or deployment safety.
+
 ### 3.2 Restricted Action-Class Diagnostic
 
 Before learning another gate, consider the finite pool of frozen forecasts N_k

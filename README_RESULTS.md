@@ -5,6 +5,41 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Head Fit Diagnosis Completed (2026-09-21)
+
+Fresh fixed-head readout on cached/hash-verified OOF training arrays: two predictor
+families, three seeds, ridge and neural heads, 12 heads total. Each head uses
+11,966 rows and 306 features. OOF excludes the trajectory producer, not the cost
+head being diagnosed; these are in-sample cost-head results, not calibration.
+
+All 12 beat the fit-label mean in harm MSE, but all 24 original eligibility
+subsets underestimate mean harm, and 23 have negative realized mean net gain.
+Nine heads even overpredict harm globally. The sole positive group is EqMotion
+seed17/neural/conservative,44 rows,+0.000941 normalized ADE gain versus predicted
++0.06112; it is retained, not selected as a winner. Per-agent eligibility is not
+the final scene-solver selection or intervention rate.
+
+Ridge projects negative harm outputs to zero on10.58-50.75% of fitting rows;
+65.37-74.33% of those rows actually incur harm. Softplus neural heads also fail
+in the eligible region. Removing projection is not a repair. The largest1%
+of harm labels contributes56.23-98.72% of squared harm-label mass, not necessarily
+that share of final loss. Objective conditioning and conditional reliability need
+separate testing; this audit does not establish a replacement estimator.
+
+All12 normalizers match exactly. Independent raw replay of54 fixed original
+batches/5,748 repeated rows matches features and reconstructed costs exactly.
+48 scalar summaries independently verify. Both original CPU/MPS devices finish;
+completed resumes reuse all seeds with no new head forwards.45 scoped tests pass,
+one opt-in MPS unit case skipped; actual MPS replay executed separately. No full
+historical report-writing integrations. All required processes terminal.
+
+No new training, metric, thresholds, main/test labels or deployment. Primary-metric
+choice remains pending; next experiment must align the easy risk target and
+validate cost estimates in the intervention region with held-out cost support.
+Stage5C/SMC disabled. [Conclusions](outputs/publication_readiness_2026_09/cost_head_fit_forensics_v1/conclusions.md),
+[all results](outputs/publication_readiness_2026_09/cost_head_fit_forensics_v1/complete_results.md),
+[reproduction](outputs/publication_readiness_2026_09/cost_head_fit_forensics_v1/execution_notes.md).
+
 ## Frozen Risk Forensics Completed (2026-09-20)
 
 `fresh_run`: descriptive risk accounting for all 24 fixed combinations and

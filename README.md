@@ -61,6 +61,15 @@ all 72 comparisons and changes no model or threshold; a replacement risk target
 still needs a registered experiment and independent calibration data.
 [Risk forensics and its limits](outputs/publication_readiness_2026_09/frozen_risk_forensics_v1/conclusions.md).
 
+The follow-up now locates that problem before cross-site transfer. I replayed
+all twelve frozen cost heads on their own fitting rows. Every head beats a
+constant on overall harm MSE, yet 23 of 24 fixed eligibility groups have negative
+realized mean gain despite predicting positive gain. Source-batch replay finds
+no ordering or scale mismatch in the checked samples. The current readout fits
+global costs better than it identifies reliable interventions; simply training
+longer or rescaling the overall mean is not an evidence-backed fix.
+[Fit diagnosis, including the favorable exception](outputs/publication_readiness_2026_09/cost_head_fit_forensics_v1/conclusions.md).
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same
