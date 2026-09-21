@@ -5,17 +5,33 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Native Joint Controls Registered (2026-09-21)
+## Native Joint Controls Completed: No Coupling Lift (2026-09-21)
 
-A fixed source-only joint-versus-unary comparison is registered before readout.
-Frozen native forecasters, cost heads and past-stop eligibility remain unchanged.
-Full count is a structural null; half count compares different identities under
-identical cardinality and predicted-harm budgets. Three seeds, four explored
-source sites, all175,756targets. The geometry proxy has no physical-safety claim.
-Independent calibration, new training and deployment remain not_run. At this
-registration point,51synthetic/control tests pass and610source bindings pass;
-these are engineering checks, not a real-data coupling result.
-[Fixed experiment](outputs/publication_readiness_2026_09/native_joint_controls_v1/registration.md).
+`fresh_run`: all 62,796 scene/seed decisions, outcome readout and replay.
+`cached_verified`: fixed native forecasters, nested cost heads and past context.
+`not_run`: new training, independent calibration, confirmation or deployment.
+
+The registered half-count joint and unary controls make identical choices: ADE
+difference 0 pp, paired scene CI [0, 0]. This is an exact experimental identity,
+not population equivalence. Both improve source ADE by 0.54921%, versus 0.54949%
+for matched independent selection. Geometry lowers its own proximity proxy by
+5.93% without forecast benefit. Full-count controls are structural nulls and
+retain the prior 1.29190% gain; neither comparison establishes joint novelty.
+
+Only 88 scene/seed queries have non-additive opportunities. Exhaustive checking
+of all 12,783 subsets (9,967 feasible) confirms both optima. One query is forced;
+in 82 the pair-product range cannot overcome the unary ordering gap. All gated
+arms retain zero observed complete zero-CV harms, but the half control still
+selects 98 unknown-ADE and 891 incomplete-risk instances. No safety certification.
+
+610 bindings, 5,272,680 replayed Boolean choices, 920 independently computed
+scene reductions and 175 scoped tests pass. All required processes exited
+normally. Four source sites remain design-exposed and closed roles stay closed.
+No threshold/weight search, metric change, Stage5C or SMC. Next priority is
+baseline-relative harm reliability and independent support, not another generic
+joint-optimizer sweep. Submission readiness remains unmet.
+[Results and limits](outputs/publication_readiness_2026_09/native_joint_controls_v1/conclusions.md).
+[Reproduction](outputs/publication_readiness_2026_09/native_joint_controls_v1/execution_notes.md).
 
 ## Scene-Query Alignment Repaired (2026-09-21)
 

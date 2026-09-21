@@ -127,6 +127,19 @@ physical safety. The frozen control's7,794unique selected queries still include
 independent risk calibration has been established.
 [Scene assembly, masks and support](native_scene_context_v2/conclusions.md).
 
+The resulting registered native-forecast joint comparison is now complete.
+Across 62,796 scene/seed queries, half-count joint and unary-geometry decisions
+are identical, with zero paired ADE contrast. Only 88 queries admit supported
+non-additive products; separate enumeration of 12,783 candidate subsets confirms
+the real-query optima. In 82 queries, the product-cost range is smaller than the
+unary runner-up gap. Geometry-aware selection reduces its constructed proximity
+proxy by 5.93% relative to risk-only selection, but slightly reduces ADE gain
+(-0.000284 pp, conditional CI [-0.001127, +0.000274]). Neither geometry nor the
+joint products establish the proposed method contribution. The simple full
+control retains 1.292% source ADE gain; unknown future outcomes, independent
+calibration and confirmation remain unresolved. No new training or deployment.
+[Fixed decisions, exhaustive diagnosis and limits](native_joint_controls_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well
@@ -143,6 +156,11 @@ retain their previously frozen past-normalized metric. Completed three-seed deve
 comparisons with causal baselines, a Transformer and fixed-head EqMotion do not
 establish a joint-selection advantage. Baseline-relative output bounds reduce
 drift, but ordinary regression deferral still fails the 2% easy-degradation limit.
+A subsequent native-forecast study retains 1.292% ADE gain with a simple
+conservative control and no observed complete zero-CV harm. Its joint extension
+does not improve on geometry-aware independent selection, and incomplete
+outcomes prevent a prospective safety claim. These are developmental results,
+not a submission-ready contribution or independent confirmation.
 
 Controlled visual-input, objective and sampling experiments investigate the
 remaining failure. In the sampling comparison, 54 fresh fits and 18 verified

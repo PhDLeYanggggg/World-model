@@ -3,6 +3,30 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：冻结预测器的联合选择检验
+
+登记提交 `f4d00832` 先于真实决策和标签评价。全量 62,796 个场景/种子实例已经
+完成，不是试跑结果。先保存所有过去输入驱动的选择，再单独读未来标签计算误差。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_joint_controls.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_native_joint_controls.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_joint_controls.py --evaluate
+.venv-pytorch/bin/python scripts/run_m3w_native_joint_controls.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_joint_controls.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_native_*.py tests/test_m3w_interaction_controls.py tests/test_m3w_joint_intervention.py
+```
+
+联合与单点几何选择完全相同，主对照差为 0；不能把这个结果写成联合建模成功。
+5,272,680 个布尔选择精确重放，920 个场景指标独立核算，88 个有联合作用机会
+的实例全部穷举，共 12,783 种子集。175 项相关测试通过，所有进程正常退出。
+完整决策和重放各约 50 秒，是已有预测上的选择计算，不是神经训练。
+
+核验器首次尝试因 float32 成本先相减、后转 float64 的运算顺序差异而中止；
+已修复核验器以匹配冻结策略的先转换再运算，未修改策略、阈值或放宽容差。
+无需新 CREATE 作业；没有声称检查过新的远程训练。缓存保持本地，Git 只收代码、
+报告和轻量指标。下一步重点是可靠的条件伤害估计和独立支持，不继续事后扫联合权重。
+
 ## 已完成：共同坐标与场景身份修复
 
 只用过去的标注框恢复坐标变换，再用原始 agent ID 连接邻居。不能直接把不同
@@ -25,8 +49,8 @@ mask，不是静止或安全。构建器 v2 只加载 geometry 和 query keys，
 邻居槽位和 1,018 万个历史观测点；没有新 CREATE 作业。重复运行会检查已有
 记录并接续缺失记录；不要删除有效缓存。详见 native_scene_context_v2/reproduction.md。
 
-下一步才是预先固定的联合选择对照。当前还没有证明联合选择有效，没有独立
-校准，不能因为坐标/身份修复通过就宣布 world-model gate 通过。
+上述修复之后的联合选择对照现已完成，结果见本页最上方。仍未证明联合选择有效，
+没有独立校准，不能因为坐标/身份修复通过就宣布 world-model gate 通过。
 
 ## 已完成：几何风险 2×2 对照
 

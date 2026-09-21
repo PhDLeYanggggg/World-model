@@ -102,9 +102,18 @@ past observations. The resulting cache covers 175,756 forecast targets and keeps
 agent has a neural prediction. Some context has too little history even for CV.
 This fixes an experimental prerequisite, not the model's accuracy or safety.
 It also confirms why observed protection is not a guarantee: the frozen control
-still selects incomplete or absent future outcomes. My next comparison will
-separate genuine joint coupling from simple geometry-aware independent decisions.
+still selects incomplete or absent future outcomes.
 [Scene repair, coverage and limits](outputs/publication_readiness_2026_09/native_scene_context_v2/conclusions.md).
+
+That fixed joint comparison is now complete. At matched intervention counts and
+predicted-harm budgets, joint and unary-geometry decisions are identical across
+all three seeds. Only 88 scene/seed queries have a non-additive opportunity;
+exhaustive checking confirms that this is not a solver failure. The geometry
+proxy gets smaller than independent selection, but forecasting does not improve.
+I therefore keep joint selection as a negative control, not a claimed innovation.
+The simpler conservative reference still gives 1.29% developmental ADE gain,
+with unresolved missing outcomes and no independent safety calibration.
+[Full result and reproducible diagnosis](outputs/publication_readiness_2026_09/native_joint_controls_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
