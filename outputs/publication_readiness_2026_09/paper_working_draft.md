@@ -335,6 +335,19 @@ no checked feature/target-order mismatch. OOF refers to the trajectory producer;
 the cost head is evaluated in-sample. These findings refine the diagnosis, not
 independent calibration, neural predictive utility or deployment safety.
 
+The [validation-lineage audit](cost_validation_lineage_v1/conclusions.md) rules
+out a simple reuse shortcut for the next head experiment. All18 original OOF
+producers pass their own scene-exclusion checks, but the12 fitted cost heads
+cannot be validated on those fitting rows. Moreover, all18 hypothetical
+outer-fold head refits using the remaining OOF caches still have indirect
+validation-scene exposure through the training producers. None of36 ordered
+outer/inner exclusion requirements is met by the audited full/single-held-fold
+producer pool. This is declared-lineage evidence, not a new accuracy result.
+Nested upstream exclusion and train-only head preprocessing are needed for the
+proposed held-cost comparison; independent calibration remains a separate data
+requirement. The existing contract already rejects this exposure, and no
+scientific split was changed or additional head trained during this audit.
+
 The [conditional-risk derivation](conditional_decision_v1/risk_identities_and_counterexamples.md)
 clarifies the inference: MSE regression is not intrinsically unsuitable. For a
 true full-information conditional mean mu(X)=E[h|X] and a past-measurable policy

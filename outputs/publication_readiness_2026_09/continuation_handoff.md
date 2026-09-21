@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Cost Validation Lineage Audit Complete (2026-09-21)
+
+Goal active/unmet. Fresh code and verified artifact-pool diagnosis, not a
+no-progress turn. The outstanding primary-metric decision remains unanswered;
+no metric-dependent fitting, thresholds, data roles or split were changed.
+
+New pre-fit module m3w_cost_validation_lineage.py checks direct head training,
+upstream producers/parents, explicit preprocessors and validation forecaster.
+It uses the existing recursive contract, not a replacement or weaker guard.
+The old guard was already present. Do not describe earlier correctly labelled
+in-sample fit diagnosis as a previously claimed independent validation result.
+
+Actual v6 Transformer/EqMotion, seeds17/29/43:18 producer OOF checks pass;
+12 fitted heads/36 fit-fold attempts rejected.18 hypothetical outer head refits
+on remaining OOF caches rejected through indirect producer exposure.18 existing
+outer-held forecasters remain reusable for outer prediction under declarations.
+0/36 outer/inner requirements satisfied by the audited full/single-held pool.
+All six groups share11,966 row IDs over3 physical fit scenes, not independent
+windows. No exhaustive search of other historical model directories was done.
+
+Bound config/script/module and outputs undercost_validation_lineage_v1.142
+source bindings plus implementation hashes. Analysis SHA
+b10544c99c1ff80a0e4a4920bfa26edb96c8401073a4dff9a188f800987cc2a4.
+FreshPID51067/session11726 exit0 4.388s; exact replayPID51103/session14290
+exit0 4.235s. NoTorchimport/checkpointdeserialization/targetarraymemberaccess.
+67 scoped tests pass18.38s/session33905 exit0, no skips. No full historical
+report-writing integration suite; all required sessions terminal. No newHPCjob.
+
+Next: obtain primary-metric decision, register smallest matched conditional-cost
+comparison, then generate clean nested training producers and refit head and
+normalizer within the outer training set. Under identical fixed fitting rules,
+18 pair-excluded fits could cover36 ordered requirements; this is conditional
+asset accounting, not an authorized/launched experiment or runtime estimate.
+Each such producer has just one remaining physical scene, a limitation. Keep
+independent calibration/confirmation requirements separate. No new deployment,
+Stage5C, SMC, metric/seconds/true3D/foundation claim. Do not repeatedly rerun this
+completed audit or treat it as new accuracy evidence. Preserve unrelated staged
+fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Conditional Decision Method Review Complete (2026-09-21)
 
 Goal remains active/unmet. Independent paper/method progress while the explicit

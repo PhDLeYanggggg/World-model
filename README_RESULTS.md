@@ -5,6 +5,30 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Cost-Head Validation Reuse Audit (2026-09-21)
+
+Fresh read-only lineage analysis of cached/hash-verified v6 artifacts: both
+families, three seeds, 11,966 common row identities across three physical fit
+scenes. All 18 original producer OOF checks pass. All 36 fitted-head/fit-fold
+validation checks fail because the 12 heads fit the whole OOF cohort. Dropping
+one fold from a proposed head refit does not solve this: all 18 proposed reuse
+designs still expose that fold through the remaining rows' upstream producers.
+
+The 18 outer-held forecasters remain usable for outer prediction under their
+declared lineage. None of the 36 outer/inner exclusion requirements has a
+suitable producer in the audited full/single-held-fold pool. This is a scoped
+reuse result, not a search of all historical checkpoints. New pre-fit checks
+reuse the existing recursive experiment guard; that guard was not missing.
+
+67 scoped tests pass. Real audit and completed replay finish with identical
+analysis bytes; 142 source bindings checked, no Torch import or target-array
+member access. No new training, inference, metric, split, threshold or deployment.
+The next registered experiment needs nested producer exclusion and train-only
+head preprocessing; independent calibration/confirmation remain unresolved.
+Primary-metric decision pending, Stage5C/SMC off.
+[Findings and repair](outputs/publication_readiness_2026_09/cost_validation_lineage_v1/conclusions.md),
+[execution](outputs/publication_readiness_2026_09/cost_validation_lineage_v1/execution_notes.md).
+
 ## Conditional Decision Reliability: Method Boundary (2026-09-21)
 
 Fresh primary-source review of SPO, decision calibration, multicalibration,

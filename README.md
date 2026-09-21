@@ -79,6 +79,16 @@ risk budget cannot substitute for those checks. They are synthetic explanations,
 not new forecasting gains; the evaluation amendment is still pending.
 [Prior work, derivations and tested examples](outputs/publication_readiness_2026_09/conditional_decision_v1/prior_work_and_method_boundary.md).
 
+Before the next cost-head experiment, I checked whether the old OOF caches could
+supply a genuinely held-out validation fold. They cannot simply be split again:
+the predictors behind the remaining training rows have already seen that fold.
+All 18 reuse attempts fail this recursive check, even though the original OOF
+forecasts themselves are valid. I added a pre-fit check that rejects this
+shortcut and identifies which outer-held predictors remain reusable. The next
+head comparison needs nested producer exclusion, not just new selector weights.
+This is a validation-design finding, not a forecasting gain.
+[Verified reuse boundaries and the concrete repair](outputs/publication_readiness_2026_09/cost_validation_lineage_v1/conclusions.md).
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same
