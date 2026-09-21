@@ -36,12 +36,14 @@ candidate, not a new deployment, and retain all old scores and failed experiment
 The four scenes have already been explored, so this is not independent confirmation.
 [Controlled result, safety failure and reproduction](outputs/publication_readiness_2026_09/native_forecast_v1/conclusions.md).
 
-My next step is to repair the training lineage for the intervention head. Its
-training predictions must exclude both their own scene and the head's validation
-scene. I have registered 18 additional pair-excluded fits while retaining the
-twelve existing outer-held predictors. This prepares honest cost-learning data;
-it does not yet establish a safer selector or independent calibration.
-[Nested producer design](outputs/publication_readiness_2026_09/native_nested_v1/registration.md).
+I have now completed the training-lineage repair for the intervention head:
+18 additional pair-excluded fits, 72,000 updates and twelve physically separated
+cost-training views. Their upstream predictors exclude both the row's own scene
+and the head's validation scene. All 5,484 fixed checkpoint-replay predictions
+match exactly, and all cost entries pass a separate arithmetic check. The twelve
+existing outer-held predictors are retained. This prepares honest cost-learning
+data; it does not yet establish a safer selector or independent calibration.
+[Completed training and limits](outputs/publication_readiness_2026_09/native_nested_v1/conclusions.md).
 
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm

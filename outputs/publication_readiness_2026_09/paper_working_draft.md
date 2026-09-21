@@ -54,6 +54,15 @@ positive absolute harm. This establishes a useful developmental predictor
 contrast, not safe deployment, independent confirmation, joint-policy novelty
 or a submission-ready paper. [Complete comparison](native_forecast_v1/conclusions.md).
 
+A follow-up completes 18 random-initialized, two-site-excluded native predictors
+(three seeds,72,000updates) and physically materializes twelve clean cost-head
+training views. Every row's upstream fit excludes both its own site and the
+proposed outer validation site. Independent cost arithmetic and checkpoint replay
+pass, but no new risk head is fitted yet. All four source sites remain
+design-exposed, and this infrastructure result is not an independent performance
+or calibration claim. Strict zero-reference absolute-harm protection is retained
+without a new pixel tolerance. [Lineage repair and limits](native_nested_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

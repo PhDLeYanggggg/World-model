@@ -3,6 +3,29 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：双场景排除的成本训练数据
+
+新增18次真实Torch拟合全部完成，72,000次更新、训练约25.42分钟。
+每次同时排除样本场景与未来成本头的验证场景，保留12个已有外层模型。
+12份训练输入/标签分区已实际导出并精确核验，不是仅写好了生成脚本。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_nested.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_nested.py --cache
+.venv-pytorch/bin/python scripts/run_m3w_native_nested.py --verify --replay
+.venv-pytorch/bin/python scripts/export_m3w_native_cost_views.py --verify
+```
+
+当前完成状态下，resume只核验，不新增更新；保留现有产物，不要删除后重跑。
+重放检查18模型共5,484条预测，独立计算核验1,581,804条重复成本记录。
+这些记录来自175,756条源查询，不是新增158万个独立样本。64项定向测试通过。
+后续头训练只能使用head_training目录内已排除外层场景的输入/标签文件，不能
+直接用包含两个留出方向的pair缓存。未知未来误差保留NaN，不填零。
+
+用户已委托研究选择：保留零基线误差组的严格绝对伤害保护，不引入方便通过的
+像素容差；其他已定义easy组仍要求退化<=2%。这不是总体零风险保证。
+尚未训练成本头或风险校准，未新增部署。详见native_nested_v1/conclusions.md。
+
 ## 已完成：原生坐标损失的完整人群对照
 
 主指标选择已授权并落实，不需要再次询问。新对照保留完整175,756条源数据索引，

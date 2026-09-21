@@ -1,5 +1,45 @@
 # Real-Experiment Continuation Handoff
 
+## Native Nested Producers and Physical Views Complete (2026-09-21)
+
+Goal active/unmet.18realTorchfits complete,72kupdates,4,608,000draws,25.42fit
+minutes. Twelve prior outer models reused;36ordered exclusions pass. No risk
+head/calibration/threshold selection or new accuracy/deployment claim. All four
+source sites remain design-exposed, not independent confirmation.
+
+Session69788/PID66606 exit0,71900newupdates after100pilot. Cache session76075/
+PID68584 exit0; verification50744/PID68912 exit0. Export5838 and replay90997
+exit0. No required training/eval session remains live.64scopedtests session61167
+pass2.04s.272bindings;1,581,804costentries independently reduced;5,484fixed
+inference rows replay exactly.1,556,613supported costs,25,191unknown. These
+are nine repeated entries per175,756sourcequeries, not independent samples.
+12physically partitioned head-training inputs/targets, outerrows0, replayexact.
+AnalysisSHAe9215760af5fe10b597802c5ada5c86071ce075be0973a413c8e95d815de3a2d.
+See native_nested_v1/conclusions.md and execution_notes.md for commands.
+
+Latest user delegates research choice. research_choice.md retains strict
+zero-reference absolute-harm protection without a new pixel allowance; other
+defined easygroups retain<=2%. Choice and primary metric both resolved; don't
+ask again. This is empirical, not a zero-risk population guarantee. Future
+zero-CV status is evaluation-only, never routing input. Native easy-group
+definition and fixed cost-head comparison still need follow-up registration.
+Do not silently copy old normalized thresholds or relabel explored data.
+
+Next: fit/evaluate matched native gain/harm heads with clean nested producers,
+normalizers excluded from outer sites, and fixed training/model-selection rules.
+Keep independent risk calibration and confirmation distinct; original val/test,
+main/external/bookstore stay closed. Pair caches contain both excluded directions:
+use exported head_training/<outer>_seed<n>/inputs.npz and targets.npz, not whole
+pair archives. Current fitting-exclusion guard is specialized to random-init
+unparented producers, not a universal recursive certification.
+
+Privatecache658,343,931bytes ignored. No new CREATE job/freshremotecheck. Native
+CPU4/interop1/workers0. Registration2926e917 beforefitting; routechoice4af343a5
+pushed. Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Stage5C/SMC off; no metric/seconds/true3D/foundation claim. Historical snapshots
+below describe their own dates/status, not a live process to restart.
+
 ## Native Nested Producer Repair Registered (2026-09-21)
 
 Goal active/unmet. Previous turn completed 24 real fits and verified positive

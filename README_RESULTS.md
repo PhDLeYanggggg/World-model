@@ -5,29 +5,34 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Native Nested Producers Registered (2026-09-21)
+## Native Nested Producers and Cost Views Completed (2026-09-21)
 
-The next source-only experiment repairs upstream fitting exposure for future
+The completed source-only experiment repairs upstream fitting exposure for future
 gain/harm learning: six excluded-scene pairs, three seeds, 18 random-init native
 predictors, 72,000 updates. Every predictor and fitted loss normalizer use only
 the other two physical sites. Twelve existing outer-held models/predictions are
 hash-verified for reuse, not retrained. All 175,756 source rows remain indexed.
 
-Preflight checks 272 source/parent bindings. 54 scoped tests pass, including
-double-holdout poisoning, indirect exposure rejection, label separation and exact
-resume. Following registration commit2926e917, the real100-update pilot completed
-in1.9043fit seconds; the fixed matrix is running locally with checkpoint/resume.
-The separate physical training-view exporter passes ten further tests but has
-not yet exported real rows. This is not a completed cost-learning result. The existing four sites
-are design-exposed, so clean fitting exclusion is not independent confirmation.
+All 18 fits completed: 72,000 updates, 4,608,000 row draws and 25.42 summed fit
+minutes. The 100-update pilot was resumed and counted once. All 272 source/parent
+bindings and 64 scoped tests pass. Independent arithmetic checks 1,581,804 cost
+entries; 5,484 predictions replay exactly from all 18 checkpoints. Twelve training
+views were exported and replayed, with zero outer-site rows in their training files.
+The 1,581,804 entries repeat 175,756 source queries across producers and seeds,
+not independent new samples. Of these, 1,556,613 have supported ADE and 25,191 stay
+unknown. Predictions and future cost labels are separate files. No cost head
+has been fitted yet. The four sites are design-exposed, so clean fitting
+exclusion is not independent confirmation.
 The author has now delegated the risk choice: strict zero-reference protection
 is retained, without a new pixel allowance. That is a prospective empirical
 criterion, not a population guarantee. This job does not set risk thresholds,
-fit a cost head, calibrate or deploy. No closed
-evaluation role, Stage5C or SMC. Unrelated staged files remain untouched.
+fit a cost head, calibrate or deploy. No closed evaluation role was opened.
+Stage5C and SMC remain disabled; unrelated staged files remain untouched.
 [Fixed design](outputs/publication_readiness_2026_09/native_nested_v1/registration.md).
 [Actual launch and scope](outputs/publication_readiness_2026_09/native_nested_v1/runtime_launch.md).
 [Research route and strict-risk choice](outputs/publication_readiness_2026_09/native_nested_v1/research_choice.md).
+[Verified completion and limitations](outputs/publication_readiness_2026_09/native_nested_v1/conclusions.md).
+[Executable reproduction](outputs/publication_readiness_2026_09/native_nested_v1/execution_notes.md).
 
 ## Full-Population Loss Comparison Completed (2026-09-21)
 
