@@ -1727,6 +1727,17 @@ is established, but independent calibration and confirmation are not. Source
 identity is checked on resume; old model hashes must not be edited to bypass a
 newer implementation mismatch. Subsequent ablations use new protocol versions.
 
+A later [completed-resume repair](cost_completion_v2/repair_and_verification.md)
+addresses a narrower integrity gap: the old ridge completion branch did not
+revalidate its OOF caches and full report provenance. The defect is reproduced
+on temporary synthetic training. A versioned entrypoint preserves the frozen
+trainer while binding and rechecking completion dependencies; a separate
+read-only verifier checks all six real v6 ridge heads against earlier snapshots.
+No real corruption is found, and no forecasting score changes. The feature
+identity alone cannot anchor targets because it deliberately excludes them.
+Missing completion receipts are not silently regenerated from current files.
+These are reproducibility controls, not predictive evidence or a new method.
+
 ## Verified References
 
 - AgentFormer: https://ye-yuan.com/agentformer/

@@ -1,5 +1,45 @@
 # Real-Experiment Continuation Handoff
 
+## Completed Cost Resume Repair (2026-09-21)
+
+Goal active/unmet. Concrete compatibility-code repair and synthetic failure
+reproduction, not a no-progress turn. Primary metric still pending; no new real
+training or scoring. Do not repeat the historical integrity check as a new
+model experiment or treat it as an explanation for the cost-head accuracy loss.
+
+Frozen scripts/train_m3w_oof_cost_head.py completed branch skips OOF archive,
+receipt and full report provenance checks. It remains unchanged because old
+protocols and cache identities bind its bytes. New train_m3w_oof_cost_head_v2.py
+uses exact old training for new/incomplete runs, then creates completion_v2.json
+and checks all dependencies on completed resume without Torch/import/rewrites.
+Old orchestrators are NOT automatically migrated. Only new registered jobs use
+the new entrypoint. Missing legacy v2 receipts are refused, not backfilled.
+A crash after fit_report before v2 receipt also fails closed; preserve results
+and recover from independently retained bindings rather than deleting/refitting.
+
+New m3w_cost_completion.py verifies cache/receipt, source code, full producer
+lineage, row identities, feature digest, targets' finite/nonnegative schema,
+report/head manifest, checkpoint structure and exact train-only normalizer.
+Feature identity excludes targets: archived byte bindings must independently
+anchor target history. The helper labels unanchored current receipts honestly.
+No cryptographic guarantee against coordinated rewriting of all anchors.
+
+Read-only verify_m3w_frozen_cost_completions.py anchors real inputs to previous
+fit-forensics snapshots.6 ridge heads (2families x3seeds),11,966rows/306features,
+all normalizers exact,142shared source bindings. No original corruption found,
+no Torch import/deserialization, no real inference. Cached training labels read
+for validation only. Analysis SHA0bb9a0cdccb4349bbf3fb83e8e651f61cdae1cf4f55450d8becf5e77b9e7482e.
+FreshPID53188/session32959 exit0 1.7616s; replayPID53309/session70534 exit0 1.5553s.
+59tests strengthened to change a numeric target, session16135 exit0 6.54s,
+including13new;2additional old cross-process
+tests/session85016 exit0 17.35s. No skips, no full legacy report-writing suite.
+All required sessions terminal. No CREATE job or environment restart needed.
+
+Next: obtain pending metric/target decision, then register minimal matched cost
+reliability training with nested upstream exclusion and independent calibration
+requirements. No new deployment/Stage5C/SMC. Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Cost Validation Lineage Audit Complete (2026-09-21)
 
 Goal active/unmet. Fresh code and verified artifact-pool diagnosis, not a

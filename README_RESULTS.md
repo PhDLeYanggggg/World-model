@@ -5,6 +5,28 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Completed Cost Resume Integrity Repair (2026-09-21)
+
+The frozen ridge entrypoint's completed-resume branch omitted OOF archives,
+receipts and full report provenance. A synthetic Torch-to-OOF-to-ridge run
+reproduces success after cache tampering. The new v2 compatibility entrypoint
+rejects the same change and verifies completed runs without Torch or rewrites.
+New/incomplete fitting still uses the exact old trainer. Old source bytes and
+protocols are preserved; old orchestrators are not silently migrated.
+
+All six real v6 ridge heads pass stronger read-only verification against earlier
+hash-pinned snapshots: 11,966 rows/306 features each, six exact normalizers and
+142 shared source bindings. Targets remain bound to earlier archive bytes, not
+merely to feature identity. No real corruption found, no new forecasting score.
+
+59 scoped tests plus two existing cross-process recovery tests pass, no skips.
+Completed real verification replays exactly. Missing legacy v2 receipts fail
+closed; a crash between training completion and receipt publication requires
+separately anchored recovery, not automatic trust backfilling. No new real
+training/inference, metric/split change or deployment. Main-metric decision and
+independent validation/calibration remain pending. Stage5C/SMC remain off.
+[Repair, reproduction and limitations](outputs/publication_readiness_2026_09/cost_completion_v2/repair_and_verification.md).
+
 ## Cost-Head Validation Reuse Audit (2026-09-21)
 
 Fresh read-only lineage analysis of cached/hash-verified v6 artifacts: both

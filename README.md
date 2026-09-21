@@ -89,6 +89,13 @@ head comparison needs nested producer exclusion, not just new selector weights.
 This is a validation-design finding, not a forecasting gain.
 [Verified reuse boundaries and the concrete repair](outputs/publication_readiness_2026_09/cost_validation_lineage_v1/conclusions.md).
 
+I also repaired a reproducibility gap: a completed ridge run could report a
+verified resume even after its OOF cache changed. The versioned entrypoint now
+checks the entire completion dependency chain. All six real frozen ridge heads
+match their earlier snapshots; the defect was reproduced and blocked using
+temporary synthetic training. Old weights, source hashes and scores stay intact.
+[Recovery behavior, verified assets and remaining limits](outputs/publication_readiness_2026_09/cost_completion_v2/repair_and_verification.md).
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same
