@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Full-Population Loss Comparison Registered (2026-09-21)
+
+The native-metric decision is resolved. The next fixed source-only experiment
+compares old past-normalized and native-coordinate objectives using identical
+bounded causal Transformers: four excluded physical sites, three seeds, 24 fits,
+4,000 updates each. All 175,756 admitted queries stay indexed; missing-label
+sampling uses an explicit importance correction, not fabricated supervision.
+
+36 scoped tests pass, including an exact synthetic uninterrupted/resumed training
+comparison, held-label preprocessing exclusion and the objective expectation.
+No real fit or gain is claimed at this registration checkpoint. Native arm64
+CPU4/inter-op1/workers0 is selected for a measured real pilot. Local free disk is
+about62GiB; no active related local training was found in the process check.
+No CREATE job is submitted or remote-job absence inferred. All final endpoints
+must complete before held-source evaluation; no threshold search or deployment.
+[Design and limitations](outputs/publication_readiness_2026_09/native_forecast_v1/registration.md).
+
 ## Native-Coordinate Amendment Adopted (2026-09-21)
 
 The author delegated the pending choice; option 1 is adopted for its fit to the

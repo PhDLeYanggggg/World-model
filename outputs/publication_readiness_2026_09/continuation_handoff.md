@@ -1,5 +1,25 @@
 # Real-Experiment Continuation Handoff
 
+## Native Full-Population Training Registered (2026-09-21)
+
+Goal active/unmet; previous turn was substantive metric amendment and verified
+readout, not no-progress. Native metric author decision resolved. New registered
+matched old/native loss comparison reuses existing bounded Transformer; no new
+scientific decision needed to run this source-only, no-selection experiment.
+24fits,96000updates,4source-site exclusions,3seeds;175756past-eligible rows.
+Both loss arms share model/seed/batches/budget; training-scene mean CV and exact
+indexed/supported sampling correction define their loss. Static rows not dropped.
+No images, no new selector or threshold. Native easy deployment not certified.
+
+Entry scripts/run_m3w_native_forecast.py; config m3w_native_forecast_v1.json.
+First run --trial coupa_native_coordinate_seed17 --stop-at100 (space before100),
+then --resume to finish all endpoints. --evaluate requires all24complete receipts;
+--verify reproduces metrics from cached predictions. Native CPU4,interop1,workers0.
+Checkpoint identity binds registration/code/data; never edit those mid-run.
+36scopedtests pass incl exact synthetic resume. First real run not started yet.
+Localrelatedprocesscheck empty,62GiBfree;noCREATEjob or remote absence claim.
+Preserve all old results,closedroles,unrelatedstagedwork;Stage5C/SMC remain off.
+
 ## Native Metric Decision Resolved (2026-09-21)
 
 The author explicitly delegated selection between the pending metrics. Option 1

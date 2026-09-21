@@ -3,7 +3,27 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：已完成成本头的恢复完整性检查
+## 当前：原生坐标损失的完整人群对照
+
+主指标选择已授权并落实，不需要再次询问。新对照保留完整175,756条源数据索引，
+以同一因果Transformer比较旧归一化损失与原生坐标损失。四个源场景逐一排除、
+三个种子、共24次拟合，每次4000步。不是独立测试，也不是新部署模型。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --trial coupa_native_coordinate_seed17 --stop-at 100
+.venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --evaluate
+.venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --verify
+```
+
+首条为纳入正式预算的真实训练试跑，不看留出场景成绩。第二条从检查点继续，
+并完成其他固定试验。只有24个完成收据都有效时，第三条才开始留出源场景评价。
+最后一条用缓存预测重算并验证结果，不新增推理。不要同时启动两个执行器。
+日志、PID心跳、检查点均在 `data/stage_cvpr2027_experiments/native_forecast_v1/`。
+CPU计算线程4、inter-op1、workers0；不使用x86Conda，不调用Torch资源探测。
+当前登记检查点尚未运行真实训练；实际状态以心跳结合活进程和完成收据核实。
+
+## 已完成：成本头的恢复完整性检查
 
 旧 ridge 入口的 `--resume` 在训练完成后会跳过 OOF 缓存和完整报告来源检查。
 这一缺口已在临时合成训练中复现，不能再把旧入口的成功提示单独当成完整验证。

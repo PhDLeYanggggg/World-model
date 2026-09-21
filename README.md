@@ -22,6 +22,13 @@ protocol development, not a new independent test. I retain the old normalized
 scores and every negative result. The change does not establish a model gain.
 [Decision and fixed first readout](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
 
+The next registered comparison uses the full admitted source population rather
+than the static-history subset: the same bounded causal Transformer, two loss
+weightings, four excluded source sites and three seeds. I fix all 24 endpoints
+before running and keep the evaluation roles closed. It tests whether the loss
+repair helps the predictor; it is not a new architecture or a deployment claim.
+[Fixed training design](outputs/publication_readiness_2026_09/native_forecast_v1/registration.md).
+
 The first amended readout is complete. Across four already explored SDD source
 sites, causal constant velocity remains the strongest fixed control. A
 future-informed per-query oracle has 28.63% ADE headroom, but the old neural
