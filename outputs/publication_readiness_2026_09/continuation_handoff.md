@@ -1,5 +1,33 @@
 # Real-Experiment Continuation Handoff
 
+## Native Nested Producer Repair Registered (2026-09-21)
+
+Goal active/unmet. Previous turn completed 24 real fits and verified positive
+native forecasting gains, with easy harm still unresolved. Primary metric is
+resolved. A separate async question asks strict zero-CV protection versus an
+explicit absolute tolerance; do not infer an answer or search safety thresholds.
+
+New config/registration/module/runner/tests: native_nested_v1. Six pair-excluded
+source models x three seeds =18 fits,72k updates, two training sites each, random
+init only. Same architecture/native loss/budget as the completed parent. Reuse
+12 outer-held native models/predictions under their exact bindings. No cost head
+or risk calibration yet; their future clean views are the deliverable here.
+All four source sites remain research-design-exposed; fitting exclusion does not
+make them untouched confirmation. Original val/test/main/external/bookstore closed.
+
+Preflight verifies272bindings,175756rows,12parents.54scopedtests pass1.31s;
+sessions94196/32972 exit0. New-training row range48782-126974. Existing related
+local-process check found none;62GiB free. No fresh CREATE queue check/job.
+Start scripts/run_m3w_native_nested.py --trial coupa__deathCircle_seed17 --stop-at 100,
+then --resume. All18endpoints required before --cache. Use --verify --replay to
+check all scalar labels and fixed inference batches. Private data/stage* caches
+are ignored; do not edit frozen dependencies after first persisted identity.
+Checkpoint200/heartbeat50, native CPU4/interop1/workers0. Expected25-40fit minutes.
+
+Unrelated staged fingerprint remains
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Do not commit raw data/cache/weights or existing unrelated staging. Stage5C/SMC off.
+
 ## Native Full-Population Training Complete (2026-09-21)
 
 Goal active/unmet. This turn made substantive real-training progress, not another

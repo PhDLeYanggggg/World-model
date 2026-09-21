@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Nested Producers Registered (2026-09-21)
+
+The next source-only experiment repairs upstream fitting exposure for future
+gain/harm learning: six excluded-scene pairs, three seeds, 18 random-init native
+predictors, 72,000 updates. Every predictor and fitted loss normalizer use only
+the other two physical sites. Twelve existing outer-held models/predictions are
+hash-verified for reuse, not retrained. All 175,756 source rows remain indexed.
+
+Preflight checks 272 source/parent bindings. 54 scoped tests pass, including
+double-holdout poisoning, indirect exposure rejection, label separation and exact
+resume. Training has not yet run at this registration. The existing four sites
+are design-exposed, so clean fitting exclusion is not independent confirmation.
+Zero-reference native-risk tolerance has been requested separately; this job
+does not set risk thresholds, fit a cost head, calibrate or deploy. No closed
+evaluation role, Stage5C or SMC. Unrelated staged files remain untouched.
+[Fixed design](outputs/publication_readiness_2026_09/native_nested_v1/registration.md).
+
 ## Full-Population Loss Comparison Completed (2026-09-21)
 
 The native-metric decision is resolved. The completed fixed source-only experiment

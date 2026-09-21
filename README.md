@@ -36,6 +36,13 @@ candidate, not a new deployment, and retain all old scores and failed experiment
 The four scenes have already been explored, so this is not independent confirmation.
 [Controlled result, safety failure and reproduction](outputs/publication_readiness_2026_09/native_forecast_v1/conclusions.md).
 
+My next step is to repair the training lineage for the intervention head. Its
+training predictions must exclude both their own scene and the head's validation
+scene. I have registered 18 additional pair-excluded fits while retaining the
+twelve existing outer-held predictors. This prepares honest cost-learning data;
+it does not yet establish a safer selector or independent calibration.
+[Nested producer design](outputs/publication_readiness_2026_09/native_nested_v1/registration.md).
+
 In the preceding cache-only readout, across four already explored SDD source
 sites, causal constant velocity remained the strongest fixed control. A
 future-informed per-query oracle has 28.63% ADE headroom, but the old neural
