@@ -5,6 +5,21 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Matched-Coverage Control Registered (2026-09-21)
+
+I have fixed the next diagnostic before calculating its new policy outcomes.
+At each of the two existing underharm4 intervention counts, all rankers must
+select exactly the same number of rows per scene/seed. MSE ratio, net gain,
+asymmetric net gain, signed ridge and a fixed query shuffle are compared without
+using outcomes or future support for selection. Uniform-random expected error
+is also reported. The primary contrast is asymmetric versus MSE ratio ranking.
+
+The 392-bound-input preflight and 35 scoped tests pass. No new matched result
+exists at this registration snapshot. This reuses cached predictions rather than
+training again. Counts use full source batches, so it is an offline diagnostic,
+not an online policy or independent calibration. No closed test role is opened.
+[Fixed comparison](outputs/publication_readiness_2026_09/native_matched_coverage_v1/registration.md).
+
 ## Native Gain/Harm Comparison Completed (2026-09-21)
 
 `fresh_run`: twelve ridge and 24 real neural cost-head fits, 72,000 updates,
