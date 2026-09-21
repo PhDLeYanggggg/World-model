@@ -15,12 +15,16 @@ hash-verified for reuse, not retrained. All 175,756 source rows remain indexed.
 
 Preflight checks 272 source/parent bindings. 54 scoped tests pass, including
 double-holdout poisoning, indirect exposure rejection, label separation and exact
-resume. Training has not yet run at this registration. The existing four sites
+resume. Following registration commit2926e917, the real100-update pilot completed
+in1.9043fit seconds; the fixed matrix is running locally with checkpoint/resume.
+The separate physical training-view exporter passes ten further tests but has
+not yet exported real rows. This is not a completed cost-learning result. The existing four sites
 are design-exposed, so clean fitting exclusion is not independent confirmation.
 Zero-reference native-risk tolerance has been requested separately; this job
 does not set risk thresholds, fit a cost head, calibrate or deploy. No closed
 evaluation role, Stage5C or SMC. Unrelated staged files remain untouched.
 [Fixed design](outputs/publication_readiness_2026_09/native_nested_v1/registration.md).
+[Actual launch and scope](outputs/publication_readiness_2026_09/native_nested_v1/runtime_launch.md).
 
 ## Full-Population Loss Comparison Completed (2026-09-21)
 

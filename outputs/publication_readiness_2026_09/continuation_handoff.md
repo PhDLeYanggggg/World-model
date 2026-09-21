@@ -18,11 +18,19 @@ make them untouched confirmation. Original val/test/main/external/bookstore clos
 Preflight verifies272bindings,175756rows,12parents.54scopedtests pass1.31s;
 sessions94196/32972 exit0. New-training row range48782-126974. Existing related
 local-process check found none;62GiB free. No fresh CREATE queue check/job.
-Start scripts/run_m3w_native_nested.py --trial coupa__deathCircle_seed17 --stop-at 100,
-then --resume. All18endpoints required before --cache. Use --verify --replay to
+Realpilot PID66582/session31479 exit0,100updates1.9043fit seconds. Continuation
+PID66606/session69788 is live at last check and resumed100->150. At1m13s CPU212.8%,
+RSS1.68GiB,stateRs. Later5of18complete, coupa/gates/seed43step1800. Poll the existing
+session/PID, not a stale lock alone; do not restart while live. Command --resume.
+All18endpoints required before --cache. Use --verify --replay to
 check all scalar labels and fixed inference batches. Private data/stage* caches
 are ignored; do not edit frozen dependencies after first persisted identity.
 Checkpoint200/heartbeat50, native CPU4/interop1/workers0. Expected25-40fit minutes.
+New exporter export_m3w_native_cost_views.py physically separates training-only
+inputs and labels per outer/seed after verified cache completion; --verify replays
+exports.10syntheticpartitiontests pass. No real cache/export yet at this snapshot.
+Frozen producer code/tests/config must not change mid-run. Registration2926e917
+already pushed before pilot. No new risk rule/threshold/model selection.
 
 Unrelated staged fingerprint remains
 c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
