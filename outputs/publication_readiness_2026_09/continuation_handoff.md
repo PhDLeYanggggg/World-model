@@ -1,5 +1,44 @@
 # Real-Experiment Continuation Handoff
 
+## Geometric-Risk Factorial Completed (2026-09-21)
+
+Goalactive/unmet. Thisturnprogress: training-onlyconditional/supportaudit, then
+registered91581b9a and trained48newheads/144kupdates/36,864,000draws. Fourarms
+base/kinematic x event/geometricloss,3seeds4sourcefolds,23,233params. Known
+candidate-CVdistance D times P(CV_ADE=0) gives protectedcost. Completefuture
+labels only; no unknown sampled. Base extra4feature slots zero for equalparams.
+Nochanges to bound code/config/tests/registration after training.
+
+Pilot82692/PID77432, full98631/PID77587, eval90557/PID77951, replay60294/PID78069,
+independent42191 all exit0. Supportaudit21135 and preflight13478 exit0.
+123scopedtests96632pass3.04s.48CPs replay2,109,072probabilities;424bindings,
+36pairedsamplers. Independent240choices/1,440scenereductions/6,327,216repeated
+targetrows/96eventmetrics pass. Fit115.896seconds is cachedhead cost only.
+No requiredprocesslive, noCREATEjob/freshremotequeueclaim.
+
+All48improve costMSEvsold directhead, but no practical learnedpolicy lift.
+Each newstrictarm has3zeroCVharmfulinstances, one perseed in deathCircle;
+allthree have currentobservedstepzero. Thus thinmovingCV support1-3trainingtracks
+perview is NOT the solecause. Newnetrules5.572%gain/easy~7.15%/zero22fail.
+Pre-registered simplepaststop+MSEstrict hasADE1.29190%, CI[.51102,2.30072],
+hard1.73956%,positiveeasydegradation.60943%,zeroCVharm0allseeds. However
+unknownADE283/incompleterisk3064selectedinstances remain. Notcalibratedor
+deployable; nohard10%claim. MatchedK4437requested=4437actual, no collapse;
+simpleMSEcontrolADE.951225%, newmatched.951089-.951214%, allzeroobservedharm.
+
+Next: keep simple stop/strict as developmental reference. Audit its conditional
+and missing-outcome support and full scene-query alignment before any new
+joint-versus-independent or calibration comparison. Don't default to more
+similar riskheads/thresholds. All4sourcesdesignexposed, originalval/test/main/
+external/bookstoreclosed. Strictzero empiricalcriterion unchanged, no newrisk
+tolerance. Goal/CCF-A readinessunmet; Stage5C/SMCoff.
+
+Reports:native_conditional_support_v1 and native_geometric_risk_v1.
+AnalysisSHA479d3d68717f545f0f73e00ad26fb5fb73ffc79600a2e6ce5961be34d85a1f60.
+Preserve3019unrelatedstagedfiles with fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+New independent verifier is bound in its receipt; do not rewrite completed reports.
+
 ## Protected-Risk Heads Completed (2026-09-21)
 
 Goal active/unmet. Real24head fits,72kupdates,18,432,000draws complete; no unknown

@@ -3,6 +3,29 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：几何风险 2×2 对照
+
+四种固定设置、四个源场景、三个种子，共 48 个风险头全部训练完成，144,000 次
+更新。原预测器和收益头冻结。训练前登记提交为 `91581b9a`，不改冻结文件。
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_native_conditional_support.py
+.venv-pytorch/bin/python scripts/run_m3w_native_geometric_risk.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_native_geometric_risk.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_native_geometric_risk.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_geometric_risk.py
+```
+
+已完成产物存在时 resume 只核验，不重训。所有进程已正常退出。原生 arm64
+CPU4/inter-op1/workers0，缓存风险头拟合累计 115.896 秒，不是整个模型训练时间。
+424 个来源绑定通过，48 个检查点精确重放 2,109,072 条概率预测；123 项相关测试
+通过。独立核验 240 个切换结果、1,440 个场景指标和训练标签来源。
+
+成本预测 MSE 改善，但新特征/损失没有带来实用切换提升。简单的“旧严格成本规则
+加过去停顿保护”保留 ADE 改善 1.292%，有完整标签的零基线误差样本未受损；
+仍有 283 个未知 ADE 和 3,064 个未来不完整的已切换样本/种子实例，不能宣布安全
+部署或独立验证通过。详细命令和全部负结果见 native_geometric_risk_v1/。
+
 ## 已完成：独立保护风险头
 
 24 个真实神经风险头全部完成，共 72,000 次更新；原轨迹预测器和收益头不变。

@@ -99,6 +99,19 @@ evidence, not a new safe model or independent confirmation. All checkpoints,
 training labels and policy choices pass replay and independent arithmetic.
 [Protected-risk experiment](native_protected_risk_v1/conclusions.md).
 
+A fixed2x2 geometric-risk follow-up completes48new fits and144,000updates.
+For exactly CV-correct futures, protected harm equals known forecast disagreement
+times the zero-CV event. This elementary factorization improves global cost MSE
+in all48comparisons with the prior direct head, but added geometric loss/history
+features do not improve the practical policy frontier. Allnew strict arms harm
+three zero-reference query/seed instances. The registered simpler past-stop plus
+existing strict cost control gives1.29190%sourceADE gain, CI[0.51102,2.30072],
+with no observed complete zero-CV harms across three seeds. Its283unknown-ADE
+and3,064incomplete-risk selected instances remain unresolved. This is a useful
+development control, not independent safety certification or a new contribution.
+The matched comparison retains4,437switches and also favors no new learned arm.
+[Factorial results and limits](native_geometric_risk_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

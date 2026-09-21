@@ -7,13 +7,37 @@ or evidence status.
 
 ## Protected-Risk Training Completed, Safety Not Solved (2026-09-21)
 
-Follow-up registered: a training-only audit verifies that protected harm equals
+Follow-up now completed: a training-only audit verifies that protected harm equals
 known rollout disagreement when CV is exactly correct. It also finds just 1-3
 tracks supporting the moving zero-CV cases per training view. A fixed 2x2
-geometric-risk/causal-history-feature comparison is registered; no new model
-has been fitted at this snapshot. It changes neither the metric nor risk rule.
+geometric-risk/causal-history-feature comparison completed all 48 fits. It changes
+neither the metric nor risk rule. Completion details are recorded below.
 [Support and limits](outputs/publication_readiness_2026_09/native_conditional_support_v1/conclusions.md).
 [Fixed next experiment](outputs/publication_readiness_2026_09/native_geometric_risk_v1/registration.md).
+
+### Geometric-Risk Follow-Up Completed
+
+48 real Torch fits, 144,000 updates and 36,864,000 draws; no unknown-risk labels
+sampled. Every new endpoint improves held-source protected-cost MSE over its
+previous direct-regression counterpart, but the matched feature/loss contrasts
+bring no practical ADE benefit. All new strict rules leave three zero-CV harmful
+query/seed instances. No new risk model is deployed.
+
+The registered simple past-stop-plus-MSE-strict control gives 1.29190% ADE gain,
+conditional scene CI [0.51102, 2.30072], hard gain 1.73956%, positive-easy
+diagnostic degradation 0.60943%, and zero observed complete zero-CV harms in all
+three seeds. It still selects 283 unknown-ADE and 3,064 incomplete-risk instances.
+This is a source-development reference, not independent confirmation or safety
+certification. No claim that the historical hard>=10% target has been met.
+
+The new matched comparison retains all 4,437 requested switches. Even the simple
+MSE control is empirically zero-CV-safe at that count; new risk heads do not
+improve it. 424 bindings, 48 checkpoint replays, 2,109,072 probability rows and
+36 paired samplers pass. Independent verification checks 240 choices, 1,440 scene
+reductions, 6,327,216 repeated target rows and 96 event metrics. 123 related tests
+pass. All required processes exit normally. No deployment, Stage5C or SMC.
+[Complete results](outputs/publication_readiness_2026_09/native_geometric_risk_v1/conclusions.md).
+[Reproduction](outputs/publication_readiness_2026_09/native_geometric_risk_v1/execution_notes.md).
 
 `fresh_run`: all 24 real Torch risk heads, 72,000 updates, 18,432,000 draws.
 `cached_verified`: native predictors/nested training views/gain heads.

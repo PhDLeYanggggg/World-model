@@ -80,6 +80,20 @@ learn reliable harm estimates specifically where intervention is proposed, with
 clean calibration and enough event support. No new policy is deployed.
 [Protected-risk results and reproducible negative evidence](outputs/publication_readiness_2026_09/native_protected_risk_v1/conclusions.md).
 
+I then tested a more structured risk target. When CV is exactly correct, harm
+from replacing it is simply the known distance between the two forecasts. A
+48-fit feature/loss comparison uses that identity instead of asking a network
+to learn every rare harm magnitude from scratch. Cost MSE improves in every
+comparison with the previous direct head, but safe decision-making does not.
+Extra history-consistency features and the geometric loss add no practical
+selection gain. The useful control is simpler: the existing strict cost rule
+plus a past-stop veto retains 1.29% ADE improvement without observed harm to
+complete zero-reference queries across the three seeds. It still has unobserved
+future outcomes and no independent calibration, so I keep it as a research
+reference, not a new deployed model. Better risk regression alone is not the
+contribution I need to establish.
+[Geometric-risk results, simple control and limits](outputs/publication_readiness_2026_09/native_geometric_risk_v1/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict
