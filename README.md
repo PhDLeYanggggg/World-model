@@ -22,6 +22,14 @@ protocol development, not a new independent test. I retain the old normalized
 scores and every negative result. The change does not establish a model gain.
 [Decision and fixed first readout](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
 
+The first amended readout is complete. Across four already explored SDD source
+sites, causal constant velocity remains the strongest fixed control. A
+future-informed per-query oracle has 28.63% ADE headroom, but the old neural
+predictions still lose on their original static-history subset (three-seed mean
+-5.38%). The oracle is not a model result, and that subset is not full-population
+neural coverage. This gives me a clearer next experiment without hiding the
+failed one. [Paired results and limitations](outputs/publication_readiness_2026_09/native_metric_v1/conclusions.md).
+
 The proposed contribution is baseline-relative, scene-level intervention with
 support-aware fallback. A Transformer, JEPA encoder or cost head is not novel
 just because it is part of this system. Each component has to earn its place

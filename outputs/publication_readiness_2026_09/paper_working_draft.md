@@ -35,6 +35,16 @@ same reference intervention count. Joint versus unary-geometry ADE is identical
 in 21 combinations, slightly better in two and slightly worse in one. None passes
 easy preservation. This does not establish the proposed coupling contribution.
 
+Evaluation amendment, 2026-09-21: the author delegated the pending metric choice.
+Native-coordinate ADE/FDE with equal mean of within-scene ADE gains is adopted
+for subsequent comparisons, with the old normalized scores retained. This is
+post-hoc protocol development, not retrospective preregistration. A fixed first
+source readout finds 28.63% future-oracle headroom but no repair of the old neural
+static-history subset (-5.38% mean three-seed gain). Neither is independent
+confirmation or full-population neural success. The historical abstract/results
+below keep their original metric; no favorable replacement of those studies is
+claimed. [Amendment and paired readout](native_metric_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

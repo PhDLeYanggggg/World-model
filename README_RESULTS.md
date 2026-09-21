@@ -18,8 +18,24 @@ do not become independent test data. Fixed first scoring covers the four explore
 SDD source sites and three existing neural seeds on their original static subset;
 no new training, threshold search or closed evaluation readout is authorized here.
 New paired metric tests cover unit separation, zero-reference and missing-scene
-behavior. Results are not yet claimed at this registration checkpoint.
-[Decision](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
+behavior. The rules were committed as d1693296 before scoring.
+
+Fresh readout: 175,756 indexed queries, 172,957 supported masked / 143,918 complete
+futures, 33 recordings, four explored sites. CV remains the strongest fixed
+control and is selected in all source-complement folds. Oracle headroom is
+28.6334% supported / 28.3545% complete; this is future-informed, not deployable.
+The old three-seed neural cache covers only 15,430 static-history queries. Its
+native mean-per-seed-error gain is -5.3816%, with all three seeds negative.
+Zero-CV easy percentage stays undefined; absolute harm is reported.
+
+Exact replay passes. Independent scalar verification checks 62 tables / 248
+scene reductions and 267 dependency hashes; 3,000 scene-resampling intervals
+are conditional on reused source sites. 66 scoped tests pass, no full historical
+suite rerun. No new training/inference, closed labels, model selection or
+deployment. Native-scale loss/risk registration and independent confirmation
+remain next requirements; Stage5C/SMC off.
+[Decision](outputs/publication_readiness_2026_09/native_metric_v1/decision.md),
+[results and boundaries](outputs/publication_readiness_2026_09/native_metric_v1/conclusions.md).
 
 ## Completed Cost Resume Integrity Repair (2026-09-21)
 

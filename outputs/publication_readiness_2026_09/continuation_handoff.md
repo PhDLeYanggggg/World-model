@@ -13,8 +13,18 @@ First readout is fixed: four explored auxiliary source sites, seven baselines,
 complement-selected reference, diagnostic oracle and three old crossfit neural
 seeds on their original static subset. No main/outer/external/test labels opened.
 Full-population neural readout is not substituted with that static subset.
-Next run scripts/rescore_m3w_native_metric.py, then exact --verify. Register native
-training/risk targets separately before further fits; no old-scale safety pass.
+Completed scripts/rescore_m3w_native_metric.py plus exact --verify. 175,756index,
+172,957supported /143,918complete,33recordings,4sites. Native oracle headroom
+28.6334% supported /28.3545% complete, NOT a learned gain. CV fixed strongest;
+all complement folds select CV. Old3seed/static15430 neural readout remains
+negative (-5.3816% mean per-seed errors). No full-population neural claim.
+Independent verify_m3w_native_metric.py checks62tables/248scene reductions,
+267hashes,3000scene resamples.66scopedtests pass, no fullhistoricalsuite.
+Analysis SHA df496c182dfff57c27dee585606d23613341de3e9946fb9786c1c12ce3c32969.
+Frozen amendment commit d1693296 precedes scoring; no oldboundfiles modified.
+Next register native training/risk targets and matched full-population comparison
+before further fits; no old-scale safety pass. Avoid another opaque metric
+question: the user has delegated this decision and it is resolved.
 Stage5C/SMC remain off. Preserve unrelated staging.
 
 ## Completed Cost Resume Repair (2026-09-21)
