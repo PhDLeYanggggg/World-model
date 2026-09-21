@@ -1,0 +1,31 @@
+{
+  "scope": "exploratory_source_nested_native_cost_head_comparison",
+  "registration": "outputs/publication_readiness_2026_09/native_gain_harm_v1/registration.md",
+  "sites": ["coupa", "deathCircle", "gates", "hyang"],
+  "seeds": [17, 29, 43],
+  "arms": ["ridge", "mse", "underharm4"],
+  "feature_dim": 355,
+  "ridge_alpha": 0.01,
+  "training": {
+    "steps": 3000,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "width": 64,
+    "checkpoint_every": 500,
+    "heartbeat_every": 100,
+    "gradient_clip": 5.0
+  },
+  "threshold_search": false,
+  "model_selection": false,
+  "risk_calibration": false,
+  "original_val_test_readout": false,
+  "main_external_readout": false,
+  "deployment": false,
+  "output": "data/stage_cvpr2027_experiments/native_gain_harm_v1",
+  "reports": "outputs/publication_readiness_2026_09/native_gain_harm_v1",
+  "bindings": {
+    "outputs/publication_readiness_2026_09/native_nested_v1/analysis.json": "e9215760af5fe10b597802c5ada5c86071ce075be0973a413c8e95d815de3a2d",
+    "outputs/publication_readiness_2026_09/native_nested_v1/verification_with_replay.json": "a7a35b3ed22ca0f8642a4beb67626605cf681f24d163447aec465ffe5977bac3",
+    "outputs/publication_readiness_2026_09/native_nested_v1/materialized_views.json": "c1f33ba5365f1f50dbef89017707b2bda936a19cc9c3815bd2123ddc4ff7593a"
+  }
+}

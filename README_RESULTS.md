@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Gain/Harm Comparison Registered (2026-09-21)
+
+With clean nested cost data available, I am testing whether conditional harm
+underprediction persists in the native-coordinate task. The fixed comparison
+uses 12 ridge heads and 24 small neural heads, with three seeds and four excluded
+source sites. The paired neural objectives differ only in the penalty for
+underestimating harm. That asymmetric output is a conservative score, not a
+calibrated probability or expected mean. All models use 355 causal features.
+
+The preflight verifies 336 bindings and all twelve training views. 64 scoped
+tests pass. No new head has been fitted at this registration snapshot. The
+72,000-update neural budget, loss arms and two diagnostic intervention rules
+are fixed before fitting; no held-result threshold or best-seed selection.
+Strict zero-reference protection remains; positive-easy quartiles are explicitly
+diagnostic, not a newly certified deployment gate. All source sites remain
+design-exposed. Independent calibration and confirmation are still missing.
+[Fixed design](outputs/publication_readiness_2026_09/native_gain_harm_v1/registration.md).
+
 ## Native Nested Producers and Cost Views Completed (2026-09-21)
 
 The completed source-only experiment repairs upstream fitting exposure for future

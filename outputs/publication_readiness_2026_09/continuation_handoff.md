@@ -1,5 +1,28 @@
 # Real-Experiment Continuation Handoff
 
+## Native Gain/Harm Comparison Registered (2026-09-21)
+
+Goal active/unmet. Previous turn completed real nested producers and12physical
+training views. New cost-head comparison uses those views:12ridge+24width64
+neural heads,3seeds,4outer source sites. Neural MSE versus underharm4 expectile
+loss,3kupdates each,72k total.355causal features:306existing summaries+48full
+causalrollout coordinates+log observedscale. No future/sceneID/costlabel input.
+Signed ridge remains visible; constant/clipped-ridge controls. Fixed positivegain
+and harm<=.1benefit slices, no heldthreshold search/modelselection/calibration.
+
+New code/config/tests undernative_gain_harm_v1. Preflight336bindings/12views/
+175756rows pass(session67362);64scopedtests pass1.38s(session89046). Localrelated
+trainingprocess check found none;61GiBavailable. No freshCREATEcheck/job. No new
+head fitted at this preregistration snapshot. Next real100-updatepilot
+--view coupa_seed17 --arm mse --stop-at100, then full --resume. Do not modify
+bound code after persisted identity. Final --evaluate only afterall36complete;
+--verify replays all cost scores and rebuilds fit-only preprocessing.
+
+Strictzero-CVrisk choice alreadyresolved; positive-CVtrainingq25easy is a
+diagnostic slice, not a silentlyredefinedformalriskgate. All4sites remain
+designexposed. Originalval/test/main/external/bookstore closed. No deployment,
+Stage5C orSMC. Preserve unrelatedstagedfingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Native Nested Producers and Physical Views Complete (2026-09-21)
 
 Goal active/unmet.18realTorchfits complete,72kupdates,4,608,000draws,25.42fit
