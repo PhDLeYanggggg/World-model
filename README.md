@@ -43,6 +43,13 @@ twelve existing outer-held predictors. This prepares honest cost-learning data;
 it does not yet establish a safer selector or independent calibration.
 [Nested producer design](outputs/publication_readiness_2026_09/native_nested_v1/registration.md).
 
+I am prioritizing that focused accuracy-versus-harm question over expanding the
+model's scope. If the reference predicts a group exactly, I report absolute harm
+and do not manufacture a percentage by adding a denominator. I retain strict
+protection there rather than introduce a convenient pixel allowance. This is an
+empirical research criterion, not a guarantee under unseen distribution shift.
+[Research choice and its limits](outputs/publication_readiness_2026_09/native_nested_v1/research_choice.md).
+
 In the preceding cache-only readout, across four already explored SDD source
 sites, causal constant velocity remained the strongest fixed control. A
 future-informed per-query oracle has 28.63% ADE headroom, but the old neural

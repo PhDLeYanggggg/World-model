@@ -4,8 +4,10 @@
 
 Goal active/unmet. Previous turn completed 24 real fits and verified positive
 native forecasting gains, with easy harm still unresolved. Primary metric is
-resolved. A separate async question asks strict zero-CV protection versus an
-explicit absolute tolerance; do not infer an answer or search safety thresholds.
+resolved. The author subsequently delegated the easiest credible research route.
+research_choice.md adopts strict zero-CV absolute-harm protection, without a new
+pixel tolerance. This resolves the pending choice prospectively; no threshold
+search or population zero-risk guarantee. Preserve frozen historical records.
 
 New config/registration/module/runner/tests: native_nested_v1. Six pair-excluded
 source models x three seeds =18 fits,72k updates, two training sites each, random
