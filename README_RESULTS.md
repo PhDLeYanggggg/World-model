@@ -5,6 +5,23 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Bounded Cost Study Registered (2026-09-21)
+
+A full-grid disagreement audit verifies the triangle bound on nested training
+costs and explicitly quantifies missing-outcome uncertainty. The strict control
+still has 289 incomplete query/seed outcomes compatible with zero-CV harm; zero
+observed complete harms are not full-population protection. Bounded cost labels
+reduce training-tail concentration, but that is not a learned improvement.
+
+The next fixed comparison registers 36 fresh heads: direct-native, bounded-native
+and bounded-fraction objectives, four explored source sites and three seeds.
+All use identical complete supervision, features, architecture, draws and budget.
+At this registration snapshot no new real fit or readout has run. No new data
+roles, risk tolerance, deployment, Stage5C or SMC. Independent calibration remains
+unavailable, and source-development gains are not confirmation.
+[Audit and limitations](outputs/publication_readiness_2026_09/native_cost_bounds_v1/conclusions.md).
+[Fixed training design](outputs/publication_readiness_2026_09/bounded_cost_v1/registration.md).
+
 ## Native Joint Controls Completed: No Coupling Lift (2026-09-21)
 
 `fresh_run`: all 62,796 scene/seed decisions, outcome readout and replay.
