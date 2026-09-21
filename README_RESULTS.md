@@ -5,6 +5,18 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native Joint Controls Registered (2026-09-21)
+
+A fixed source-only joint-versus-unary comparison is registered before readout.
+Frozen native forecasters, cost heads and past-stop eligibility remain unchanged.
+Full count is a structural null; half count compares different identities under
+identical cardinality and predicted-harm budgets. Three seeds, four explored
+source sites, all175,756targets. The geometry proxy has no physical-safety claim.
+Independent calibration, new training and deployment remain not_run. At this
+registration point,51synthetic/control tests pass and610source bindings pass;
+these are engineering checks, not a real-data coupling result.
+[Fixed experiment](outputs/publication_readiness_2026_09/native_joint_controls_v1/registration.md).
+
 ## Scene-Query Alignment Repaired (2026-09-21)
 
 `fresh_run`: shared-frame reconstruction, source-ID neighbor repair and control
