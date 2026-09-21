@@ -5,6 +5,31 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Scene-Query Alignment Repaired (2026-09-21)
+
+`fresh_run`: shared-frame reconstruction, source-ID neighbor repair and control
+label-support audit. `cached_verified`: frozen models, policies and past inputs.
+`not_run`: new joint policy, neural training, calibration or confirmation.
+
+175,756 targets,33recordings,20,932recording/frame groups. Position-only matching
+failed:52false unique links and3,036ambiguous slots. The completed raw-ID repair
+retains321,561visible past-context rows, including145,805without neural forecasts
+and5,748without enough history for causal velocity. Unknown forecasts stay masked.
+1,325,792neighbor slots and10,175,375history points verify;297scalar source checks
+and99future-truncation checks pass.139relatedtests pass. No metric/threshold
+change, new deployment or physical-safety claim.
+
+Frozen-control choices remain unchanged:14,576query/seed interventions, with
+2,781partial and283absent outcomes. Their union contains7,794uniquequeries,
+including1,491partial and154absent outcomes. Missingness is not demonstrated
+random and cannot be turned into prospective safety evidence. The scene cache
+is now usable for an explicitly registered joint-versus-independent comparison;
+this engineering result is not a learned-method gain. Four source scenes remain
+design-exposed, all closed roles remain closed, Stage5C/SMC remain off.
+[Input repair](outputs/publication_readiness_2026_09/native_scene_context_v2/conclusions.md).
+[Support audit](outputs/publication_readiness_2026_09/native_scene_alignment_v1/conclusions.md).
+[Reproduction](outputs/publication_readiness_2026_09/native_scene_context_v2/reproduction.md).
+
 ## Protected-Risk Training Completed, Safety Not Solved (2026-09-21)
 
 Follow-up now completed: a training-only audit verifies that protected harm equals

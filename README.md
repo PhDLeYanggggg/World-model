@@ -94,6 +94,18 @@ reference, not a new deployed model. Better risk regression alone is not the
 contribution I need to establish.
 [Geometric-risk results, simple control and limits](outputs/publication_readiness_2026_09/native_geometric_risk_v1/conclusions.md).
 
+Before testing joint decisions, I checked that the agents can actually be placed
+in the same scene. This caught 52 false identity links in a position-only assembly
+probe and 3,036 ambiguous neighbor slots. I rebuilt the links from source IDs and
+past observations. The resulting cache covers 175,756 forecast targets and keeps
+145,805 additional context rows explicit rather than pretending every visible
+agent has a neural prediction. Some context has too little history even for CV.
+This fixes an experimental prerequisite, not the model's accuracy or safety.
+It also confirms why observed protection is not a guarantee: the frozen control
+still selects incomplete or absent future outcomes. My next comparison will
+separate genuine joint coupling from simple geometry-aware independent decisions.
+[Scene repair, coverage and limits](outputs/publication_readiness_2026_09/native_scene_context_v2/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict

@@ -112,6 +112,21 @@ development control, not independent safety certification or a new contribution.
 The matched comparison retains4,437switches and also favors no new learned arm.
 [Factorial results and limits](native_geometric_risk_v1/conclusions.md).
 
+Before another interaction comparison, the source cohort is now reconstructed
+in a shared annotation coordinate system. The new position-only linking probe
+fails52unique neighbor identities and leaves3,036ambiguous slots; source-ID
+reconstruction resolves both without changing the frozen models. The resulting
+20,932recording/frame groups contain175,756eligible pedestrian forecast targets
+and145,805additional current-context rows. The latter cannot be silently treated
+as predicted agents. In5,748context rows even a causal velocity is unsupported.
+Explicit masks preserve that distinction. All1,325,792neighbor slots and
+10,175,375past points verify against the frozen input geometry. This is a repair
+of the scene-comparison prerequisite, not evidence for joint-selection lift or
+physical safety. The frozen control's7,794unique selected queries still include
+1,491partial and154absent future outcomes; no missing-at-random assumption or
+independent risk calibration has been established.
+[Scene assembly, masks and support](native_scene_context_v2/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well

@@ -1,5 +1,43 @@
 # Real-Experiment Continuation Handoff
 
+## Scene Context Repaired (2026-09-21)
+
+Goal active/unmet. Previous turn progress; this turn builds reusable common-frame
+and identity-resolved scene inputs, not only a report.175756targets/33recordings/
+20932recording-framegroups. Past-box provenance verifies transforms; metric
+invariance max9.095e-13px. New position-only probe failed52false unique links and
+3036ambiguous slots; this does not invalidate frozen models that never used it.
+Use native_scene_context_v2, NOT positional target_neighbor_rows from the audit.
+
+V2explicitpastloader rebuilds321561visiblecontextrows:145805without neural
+forecast, including127254nonpedestrian and18551past-ineligiblepedestrian rows.
+5748contextrows lack2pastpoints; CVmaskfalse, not stationary/safe.1325792neighbor
+slots/10175375pastpoints verify;869241slots linktargets.297scalarIDs/99rawfuture
+truncations pass. Cache219663642bytes private. All33recordingcachedreceipts replay.
+
+Audit76630/PID79511 exit0; firstcontext6940/PID79783exit0but superseded because
+parentloader loaded unused target arrays while metadata claimed no read. V2
+20922/PID79877exit0,10.78s; replay40810/PID80081exit0,1.65s. Independent41522exit0
+after correcting scalar-float equality (max4.55e-13px, NOT risk tolerance).
+Tests25494139pass2.67s. No active experiment, no new CREATE job/queue claim.
+V2analysisSHAea58e42239180cd326cac5c22294b3fbf1668c484764d212d504bb400a99c17e.
+AuditSHA8a5879cfc511943bb303e653e7a5aac0b8b3434792eaaee74c48e1bb5fbdee7f.
+
+Frozen stop/strictpolicy hashchoices unchanged.14576repeated interventions:
+11512complete/2781partial/283absent. Uniqueunion7794queries/1365scopedtracks/
+4434groups:6149complete/1491partial/154absent. No safety extrapolation to unknowns.
+Multi-switch groups1074/663/1368byseed17/29/43; mostly partial target coverage.
+
+Next: register and execute fixed source-only joint versus geometry-aware
+independent controls with SAME candidate forecasts/allocation budget, explicit
+context-only CV/unknown masks and common coordinates. Whole-scene/no-control
+comparisons should stay interpretable. Do not call a proximity proxy physical
+safety; first show coupling adds more than unary geometry and reduced coverage.
+All4sourcesdesignexposed, independentcalibration/confirmationnotrun. Closed
+originalval/test/main/external/bookstore remainclosed. No retuning displayed
+outcomes, no newrisk tolerance, no deployment/Stage5C/SMC. Preserve3019unrelated
+staged fingerprintc055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Geometric-Risk Factorial Completed (2026-09-21)
 
 Goalactive/unmet. Thisturnprogress: training-onlyconditional/supportaudit, then

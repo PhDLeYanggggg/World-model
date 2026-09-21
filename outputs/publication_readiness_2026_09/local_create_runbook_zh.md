@@ -3,6 +3,31 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：共同坐标与场景身份修复
+
+只用过去的标注框恢复坐标变换，再用原始 agent ID 连接邻居。不能直接把不同
+agent 的局部归一化坐标拼成场景，也不能只靠当前位置猜 ID。位置匹配探针发现
+52 处错误连接和 3,036 处歧义；正式后续输入使用 `native_scene_context_v2`。
+
+```sh
+.venv-pytorch/bin/python scripts/audit_m3w_native_scene_alignment.py
+.venv-pytorch/bin/python scripts/build_m3w_native_scene_context.py
+.venv-pytorch/bin/python scripts/verify_m3w_native_scene_context.py
+```
+
+175,756 条预测请求属于 20,932 个录像/帧组。完整保留 321,561 条可见上下文记录，
+其中 145,805 条没有神经预测，5,748 条连过去两点速度都不支持。这些行有显式
+mask，不是静止或安全。构建器 v2 只加载 geometry 和 query keys，不读取未来
+目标数组；支持度审计则会读取已有标签做统计，两者不能混为一谈。
+
+33 份缓存已生成并复验；构建约 10.78 秒，缓存复验约 1.65 秒，均是本地工程
+运行，不是神经训练或论文提升。139 项相关测试通过。独立算术核对约 133 万个
+邻居槽位和 1,018 万个历史观测点；没有新 CREATE 作业。重复运行会检查已有
+记录并接续缺失记录；不要删除有效缓存。详见 native_scene_context_v2/reproduction.md。
+
+下一步才是预先固定的联合选择对照。当前还没有证明联合选择有效，没有独立
+校准，不能因为坐标/身份修复通过就宣布 world-model gate 通过。
+
 ## 已完成：几何风险 2×2 对照
 
 四种固定设置、四个源场景、三个种子，共 48 个风险头全部训练完成，144,000 次
