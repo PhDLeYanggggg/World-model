@@ -1,0 +1,24 @@
+{
+  "scope": "source_only_matched_capacity_protected_risk_learning",
+  "registration": "outputs/publication_readiness_2026_09/native_protected_risk_v1/registration.md",
+  "reports": "outputs/publication_readiness_2026_09/native_protected_risk_v1",
+  "output": "data/stage_cvpr2027_experiments/native_protected_risk_v1",
+  "parent_matched_analysis_sha256": "bc14cefb733bca0b0a461698c1a530d674cb872b7289ebc0b8fa9ed799ac166c",
+  "arms": ["all_harm", "zero_reference_harm"],
+  "feature_dim": 357,
+  "risk_score_cut": 0.01,
+  "training": {
+    "steps": 3000,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "width": 64,
+    "gradient_clip": 5.0,
+    "checkpoint_every": 500,
+    "heartbeat_every": 100
+  },
+  "model_selection": false,
+  "threshold_search": false,
+  "risk_calibration": false,
+  "closed_role_readout": false,
+  "deployment": false
+}

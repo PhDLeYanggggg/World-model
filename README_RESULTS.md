@@ -5,6 +5,24 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Separate Protected-Risk Training Registered (2026-09-21)
+
+The next fixed comparison separates expected gain from the risk of damaging an
+exactly CV-predictable query. Two matched heads predict an event and its expected
+cost: general harm versus zero-reference harm. Both use the same 357 causal
+features, complete-future training support, initialization, scene-uniform batches
+and 3,000-update budget. Partial outcomes remain unknown rather than safe labels.
+The trajectory and gain heads stay frozen. Three seeds and four outer source
+scenes require 24 new heads / 72,000 updates.
+
+402 bindings and 52 scoped tests pass; no new risk head has been fitted at this
+registration snapshot. Readout uses one fixed diagnostic event-score cut and
+both row-local and common-count controls, including a simple past-stop veto.
+The score cut is not a calibrated failure allowance. No risk tolerance, data
+role or test threshold is changed. Local arm64 CPU4/workers0 is sufficient for
+the cached-head experiment; independent calibration/confirmation remain missing.
+[Fixed training and scope](outputs/publication_readiness_2026_09/native_protected_risk_v1/registration.md).
+
 ## Matched-Coverage Control Completed (2026-09-21)
 
 `fresh_run` source-only arithmetic; `cached_verified` models/predictions. Six fixed
