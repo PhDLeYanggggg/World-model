@@ -70,6 +70,15 @@ global costs better than it identifies reliable interventions; simply training
 longer or rescaling the overall mean is not an evidence-backed fix.
 [Fit diagnosis, including the favorable exception](outputs/publication_readiness_2026_09/cost_head_fit_forensics_v1/conclusions.md).
 
+I have checked that diagnosis against work on decision-focused learning and
+conditional calibration. Switching to a ranking loss is not, by itself, a new
+method. The unresolved question is whether costs are reliable for the actual
+scene-level intervention and its easy-case constraint. Four executable
+mathematical examples clarify why global fit, score calibration and a pooled
+risk budget cannot substitute for those checks. They are synthetic explanations,
+not new forecasting gains; the evaluation amendment is still pending.
+[Prior work, derivations and tested examples](outputs/publication_readiness_2026_09/conditional_decision_v1/prior_work_and_method_boundary.md).
+
 The latest broader source audit changes my diagnosis of the current task. Across
 175,756 past-indexed queries, the old per-query normalization makes 6,864
 static-start windows account for 99.75% of complete-label CV error. The same

@@ -1,5 +1,32 @@
 # Real-Experiment Continuation Handoff
 
+## Conditional Decision Method Review Complete (2026-09-21)
+
+Goal remains active/unmet. Independent paper/method progress while the explicit
+primary-metric decision remains unanswered; no dependent training was started.
+Five primary papers inspected (SPO, decision calibration, multicalibration,
+decision-ranking, fixed-predictor regression deferral); four new BibTeX entries.
+New review under conditional_decision_v1/prior_work_and_method_boundary.md narrows
+novelty and distinguishes uncertainty, ranking, cost magnitude and easy targets.
+Do not claim that squared loss itself is invalid or replacing it is novel.
+
+Exact Fraction-based script verify_m3w_conditional_risk_identities.py runs four
+synthetic witnesses plus 8 binary rules and 4 full-information conditional-mean
+rules. 20 scoped tests pass (12 new, 8 old), no skips. No datasets/checkpoints read,
+no training/inference/calibration/metric or threshold changes. Source code hash
+434f2455f25dc01852d89be6b4315e6a292127d79e0d62a02aba106dc824b1a7.
+Fit report hashes rechecked exact. Primary-source access limits documented.
+All required processes terminal. No remote job or new deployment.
+
+Next: obtain metric decision, then register the smallest matched cost-reliability
+experiment with genuinely held-out head support. OOF producer rows are not OOF
+for a head fitted on all of them. Conditional calibration plus multi-agent
+composition is a hypothesis, not an established contribution. Independent
+calibration and confirmation data remain unresolved. Do not repeat this review
+as a new experiment, change frozen code, or silently adopt the metric proposal.
+Stage5C/SMC disabled; keep old negative results. Unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+
 ## Cost-Head Fit Diagnosis Complete (2026-09-21)
 
 Goal active/unmet. Concrete fresh diagnosis and original batch verification,

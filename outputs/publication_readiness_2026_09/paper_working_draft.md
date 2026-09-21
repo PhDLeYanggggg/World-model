@@ -1,6 +1,6 @@
 # When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
 
-Working draft, evidence reconciled 2026-09-20. Method proposal with completed three-seed development
+Working draft, evidence reconciled 2026-09-21. Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
 baseline-relative output ablation. The latter reduces drift but yields only
 tiny guarded development gains. None supports a new deployment or the proposed
@@ -94,6 +94,20 @@ Joint Metrics Matter studies joint forecasting errors and collisions (Weng et al
 Cost-sensitive expert deferral predates this proposal ([Mozannar and Sontag, ICML 2020](https://proceedings.mlr.press/v119/mozannar20b.html)). [Mao, Mohri and Zhong (ICML 2024)](https://proceedings.mlr.press/v235/mao24d.html) explicitly study regression deferral with a fixed predictor. Our cost heads therefore require comparison to established deferral objectives, not only confidence thresholds. The [real two-action comparison](8to12_deferral_v7/results.md) is now complete on both frozen v7 predictors, three seeds, linear/width64 heads and two fixed cost bounds. Every result is retained without selecting a new winner. This task-specific control is not a reproduction of Mao et al.'s reported experiments.
 
 Selective-regression work also shows that reduced coverage need not protect every subgroup ([Shah et al., ICML 2022](https://proceedings.mlr.press/v162/shah22a.html)). Our easy-error slice is a different construct, but the warning motivates reporting slice-specific damage rather than treating reduced intervention as a guarantee. The [source-scoped review](joint_intervention/deferral_and_coverage_prior_work.md) distinguishes these established results from our remaining hypotheses.
+
+[SPO](https://arxiv.org/pdf/1710.08005v5) and
+[decision-focused ranking](https://proceedings.mlr.press/v162/mandi22a/mandi22a.pdf)
+already connect cost prediction to downstream decisions. Ranking or regret loss
+alone is therefore not our novelty. The inspected SPO setting has a known
+feasible region; our predicted-harm budget also changes the feasible actions.
+Its consistency statement cannot simply be imported into this selector.
+
+[Decision calibration](https://proceedings.neurips.cc/paper_files/paper/2021/file/bbc92a647199b832ec90d7cf57074e9e-Paper.pdf)
+and [multicalibration](https://proceedings.mlr.press/v80/hebert-johnson18a/hebert-johnson18a.pdf)
+make aggregate fit an insufficient novelty argument for conditional reliability.
+Our extra scene context, continuous costs and outcome-defined easy labels require
+careful qualification. The [focused review](conditional_decision_v1/prior_work_and_method_boundary.md)
+records inspected sections and limits rather than asserting an inherited guarantee.
 
 Conformal Risk Control and Learn then Test provide established tools for controlling losses or selecting risk-constrained policies. SODA-MPC combines conformalized OOD monitoring with reachability fallback in control. We target excess forecasting loss relative to a fixed predictor; we do not claim formal physical safety from low ADE.
 
@@ -320,6 +334,17 @@ of the fitting error. Exact normalizer checks and54 original-batch replays find
 no checked feature/target-order mismatch. OOF refers to the trajectory producer;
 the cost head is evaluated in-sample. These findings refine the diagnosis, not
 independent calibration, neural predictive utility or deployment safety.
+
+The [conditional-risk derivation](conditional_decision_v1/risk_identities_and_counterexamples.md)
+clarifies the inference: MSE regression is not intrinsically unsuitable. For a
+true full-information conditional mean mu(X)=E[h|X] and a past-measurable policy
+a(X), E[a*h]=E[a*mu]. For an approximate head and coverage c>0, selected mean
+error can be as large as the global RMSE bound divided by sqrt(c). Score-only
+calibration does not necessarily survive a policy using additional scene context.
+For the easy constraint, E[w*h|X] also need not equal E[w|X]*E[h|X]. Four executable
+finite examples establish these non-implications, not a learned improvement,
+new theorem or confidence certificate. The aggregation and loss remain pending
+scientific decisions; no replacement target has been fitted.
 
 ### 3.2 Restricted Action-Class Diagnostic
 

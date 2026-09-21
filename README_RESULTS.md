@@ -5,6 +5,32 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Conditional Decision Reliability: Method Boundary (2026-09-21)
+
+Fresh primary-source review of SPO, decision calibration, multicalibration,
+decision-focused ranking and fixed-predictor regression deferral. These are
+direct prior-art constraints, not proof of M3W novelty. The fitting diagnosis
+does not establish that squared regression is intrinsically wrong: a true
+full-information conditional mean gives correct expected selected cost. The
+problem is that our finite heads do not demonstrate that reliability.
+
+Four exact synthetic witnesses now separate global MSE, score-only calibration,
+joint easy-harm moments and scene aggregation. In the aggregation witness,
+pooled easy degradation is 0.9901%, but the equal-scene mean is 50%; neither is
+adopted as a replacement project metric. Exact rational verification also checks
+eight binary policies and four conditional-mean rules. 20 scoped tests pass
+(12 new and 8 existing cost-head tests). These are mathematical/engineering checks,
+not training, real-data improvement, calibration or a new theorem. No full
+historical report-writing integrations were rerun.
+
+Both original fit-analysis hashes remain exact. Models, thresholds, old metrics
+and negative results are unchanged. Primary-metric decision and independent
+calibration/confirmation support remain unresolved. No deployment or submission
+upgrade; Stage5C/SMC disabled.
+[Review and next discriminating comparison](outputs/publication_readiness_2026_09/conditional_decision_v1/prior_work_and_method_boundary.md),
+[derivations](outputs/publication_readiness_2026_09/conditional_decision_v1/risk_identities_and_counterexamples.md),
+[verification](outputs/publication_readiness_2026_09/conditional_decision_v1/verification.json).
+
 ## Cost-Head Fit Diagnosis Completed (2026-09-21)
 
 Fresh fixed-head readout on cached/hash-verified OOF training arrays: two predictor
