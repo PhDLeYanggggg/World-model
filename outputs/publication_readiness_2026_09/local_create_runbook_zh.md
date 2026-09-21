@@ -3,6 +3,37 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
+## 已完成：36 个有界成本头的固定对照
+
+登记提交 `3b6bb0a7` 先于真实训练。直接成本、有界原始成本、有界比例成本三臂，
+四个已用于研究设计的物理场景、三个种子，均完成固定3,000次更新。只使用完整
+未来监督；未来位置和标签有效性不是输入。旧预测器保持冻结，不是重新训练大模型。
+
+```sh
+.venv-pytorch/bin/python scripts/run_m3w_bounded_cost.py --audit-only
+.venv-pytorch/bin/python scripts/run_m3w_bounded_cost.py --resume
+.venv-pytorch/bin/python scripts/run_m3w_bounded_cost.py --evaluate
+.venv-pytorch/bin/python scripts/run_m3w_bounded_cost.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_bounded_cost.py
+.venv-pytorch/bin/python -m pytest -q tests/test_m3w_native_*.py tests/test_m3w_interaction_controls.py tests/test_m3w_joint_intervention.py tests/test_m3w_forecast_cost_bounds.py tests/test_m3w_bounded_cost_head.py
+```
+
+总计108,000次更新、27,648,000次采样，未知标签采样为0；原生arm64环境，CPU4线程，
+interop1，workers0。首次100步真实试跑后从同一检查点续训，所有必需进程正常退出。
+每500步原子保存检查点，每100步更新带PID的心跳；已完成端点只核验，不重训。
+617个来源绑定、36个模型重放、1,581,804条成本分数、108个策略构建、1,152个场景
+指标和191项针对性测试通过。核验器由同一执行者另写，不是独立团队复现。
+
+主对照ADE增益多1.46876个百分点，但7个原本CV完全正确的样本/种子实例被伤害，
+且一个种子easy退化超过2%，所以主安全标准失败。同切换数量的优势只有0.04661
+个百分点。预先登记的比例损失次要臂有2.43683%增益、easy平均改善0.55804%，
+已观测完整zero-CV样本无伤害，但4,960个被选中的样本/种子未来仍不完整，不能
+宣称总体安全或独立验证。详见[结果和限制](bounded_cost_v1/conclusions.md)。
+
+现在优先可靠的基线相对介入方法，不继续堆联合模块。新模型、阈值或校准机制需
+新实验身份；不能重写这轮登记。缓存和检查点不入Git，未运行新的CREATE任务，
+也没有声称远程任务已检查。独立校准/确认、Stage5C和SMC均未执行。
+
 ## 已完成：冻结预测器的联合选择检验
 
 登记提交 `f4d00832` 先于真实决策和标签评价。全量 62,796 个场景/种子实例已经

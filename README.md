@@ -115,6 +115,21 @@ The simpler conservative reference still gives 1.29% developmental ADE gain,
 with unresolved missing outcomes and no independent safety calibration.
 [Full result and reproducible diagnosis](outputs/publication_readiness_2026_09/native_joint_controls_v1/conclusions.md).
 
+I next tested a smaller, explicit hypothesis: constrain predicted benefit and
+harm by the known disagreement between the frozen forecasts. All 36 matched
+cost-head fits are complete. The primary comparison improves source ADE gain by
+1.47 percentage points, but it still harms perfectly CV-predictable paths and
+fails easy preservation in one seed. At the same intervention count, its
+advantage is only 0.047 points. The bound alone is not a safety mechanism.
+
+A predeclared fraction-loss variant gives 2.44% ADE gain with no observed harm
+on complete zero-CV paths and a 0.56% improvement on the positive-easy diagnostic.
+This is a promising development tradeoff, not a new deployed model: incomplete
+selected outcomes remain unknown, conditional harm is still underestimated, and
+all four sites have informed model design. I am keeping the failed primary
+protection result alongside that favorable secondary result.
+[Matched cost heads, uncertainty and limits](outputs/publication_readiness_2026_09/bounded_cost_v1/conclusions.md).
+
 I am prioritizing that focused accuracy-versus-harm question over expanding the
 model's scope. If the reference predicts a group exactly, I report absolute harm
 and do not manufacture a percentage by adding a denominator. I retain strict
@@ -130,10 +145,13 @@ predictions still lose on their original static-history subset (three-seed mean
 neural coverage. This gives me a clearer next experiment without hiding the
 failed one. [Paired results and limitations](outputs/publication_readiness_2026_09/native_metric_v1/conclusions.md).
 
-The proposed contribution is baseline-relative, scene-level intervention with
-support-aware fallback. A Transformer, JEPA encoder or cost head is not novel
-just because it is part of this system. Each component has to earn its place
-through matched comparisons and useful out-of-scene results.
+The current paper direction is reliable baseline-relative intervention with
+support-aware fallback. Scene-level coupling remains a tested negative control,
+not an established contribution. A Transformer, JEPA encoder, cost head or
+triangle-inequality bound is not novel just because it is part of this system.
+Each component has to earn its place through matched comparisons and useful
+independent results. M3W remains the longer-term project, not a reason to make a
+broader claim than these experiments support.
 
 I also distinguish training windows from genuinely different situations. A recent
 [event-support audit](outputs/publication_readiness_2026_09/source_event_support_v1/conclusions.md)

@@ -5,7 +5,36 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Bounded Cost Study Registered (2026-09-21)
+## Bounded Cost Study Completed: Accuracy Lift, Primary Protection Failure (2026-09-21)
+
+`fresh_run`: all 36 Torch fits, 108,000 updates, 27,648,000 draws and the fixed readout.
+`cached_verified`: frozen predictors, nested producer lineage and causal inputs.
+`not_run`: independent calibration/confirmation, new deployment, Stage5C or SMC.
+
+The registered bounded-native versus direct-native strict-policy contrast is
++1.46876 percentage points of ADE gain, conditional scene CI [1.00675, 1.93077].
+However, bounded-native harms 7 complete zero-CV query/seed instances and seed17
+has 2.10895% positive-easy degradation. **The combined primary gate fails.**
+At identical intervention counts, the gain difference is just 0.04661 pp,
+CI [0.02486, 0.06426]; the threshold contrast is not a large ranking lift.
+
+The predeclared fraction-loss secondary arm gives 2.43683% ADE gain,
+CI [1.67924, 3.11136], 2.29181% hard gain and 0.55804% positive-easy improvement,
+with no observed complete zero-CV harms. Every seed and site/seed remains below
+2% easy degradation. But it still selects 387 unknown-ADE and 4,960 incomplete
+query/seed outcomes, underpredicts conditional harm in all 12 views, and loses
+accuracy to bounded-native at matched counts. This is a useful development
+tradeoff, not independent safety evidence, a new primary outcome, or deployment.
+
+617 bindings, 36 checkpoint replays, 1,581,804 score rows, 108 separate policy checks,
+1,152 scene reductions and 191 scoped tests pass; required processes exited normally.
+All four sites remain design-exposed. The next paper focus is reliable
+baseline-relative intervention, not unsupported joint-model novelty or a generic
+world-model claim. Independent support and a distinct contribution remain gaps.
+[Full results and failure taxonomy](outputs/publication_readiness_2026_09/bounded_cost_v1/conclusions.md).
+[Execution and reproduction](outputs/publication_readiness_2026_09/bounded_cost_v1/execution_notes.md).
+
+### Preserved Registration Snapshot
 
 A full-grid disagreement audit verifies the triangle bound on nested training
 costs and explicitly quantifies missing-outcome uncertainty. The strict control
@@ -13,10 +42,10 @@ still has 289 incomplete query/seed outcomes compatible with zero-CV harm; zero
 observed complete harms are not full-population protection. Bounded cost labels
 reduce training-tail concentration, but that is not a learned improvement.
 
-The next fixed comparison registers 36 fresh heads: direct-native, bounded-native
+The pre-run snapshot registered 36 fresh heads: direct-native, bounded-native
 and bounded-fraction objectives, four explored source sites and three seeds.
 All use identical complete supervision, features, architecture, draws and budget.
-At this registration snapshot no new real fit or readout has run. No new data
+At that registration snapshot no new real fit or readout had run. No new data
 roles, risk tolerance, deployment, Stage5C or SMC. Independent calibration remains
 unavailable, and source-development gains are not confirmation.
 [Audit and limitations](outputs/publication_readiness_2026_09/native_cost_bounds_v1/conclusions.md).

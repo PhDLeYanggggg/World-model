@@ -1,4 +1,4 @@
-# When to Trust Neural Motion Forecasts: Baseline-Relative Joint Intervention for Multi-Agent Forecasting
+# When to Trust Neural Motion Forecasts: Baseline-Relative Intervention for Multi-Agent Forecasting
 
 Working draft, evidence reconciled 2026-09-21. Method proposal with completed three-seed development
 experiments, including a matched Transformer/EqMotion study and a completed
@@ -140,6 +140,22 @@ control retains 1.292% source ADE gain; unknown future outcomes, independent
 calibration and confirmation remain unresolved. No new training or deployment.
 [Fixed decisions, exhaustive diagnosis and limits](native_joint_controls_v1/conclusions.md).
 
+The subsequent predeclared cost-parameterization study completes 36 real Torch
+fits, 108,000 updates and 27,648,000 draws on identical complete supervision.
+Bounding expected benefit and harm by the known full-grid disagreement between
+forecasts improves strict-policy ADE gain by 1.46876 pp over direct regression,
+conditional scene CI [1.00675, 1.93077]. However, it harms 7 complete exact-CV
+query/seed instances and violates the positive-easy limit in one seed. The primary
+combined hypothesis fails. Its matched-count advantage is just 0.04661 pp,
+CI [0.02486, 0.06426], limiting a ranking-quality interpretation. A fixed secondary
+fraction-loss arm gives 2.43683% ADE gain and 0.55804% positive-easy improvement with
+zero observed complete exact-CV harms, but conditional harm remains underestimated
+and 4,960 selected query/seed outcomes are incomplete. This is a useful development
+tradeoff, not a new primary outcome, deployment or an independent result. The
+ordinary triangle bound is not new theory. The paper direction is now narrowed
+to reliable baseline-relative intervention; coupling is retained as a negative
+control. [Full readout and remaining gaps](bounded_cost_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well
@@ -161,6 +177,14 @@ conservative control and no observed complete zero-CV harm. Its joint extension
 does not improve on geometry-aware independent selection, and incomplete
 outcomes prevent a prospective safety claim. These are developmental results,
 not a submission-ready contribution or independent confirmation.
+
+A matched complete-supervision experiment subsequently finds that a bounded
+continuous cost head improves the strict-policy accuracy contrast but fails
+exact-zero protection. A fixed fraction-weighted secondary head offers 2.44%
+source ADE gain while preserving observed complete exact-CV paths and improving
+the positive-easy diagnostic. Its incomplete outcomes and conditional harm
+underprediction prevent a safety claim; neither the elementary bound nor this
+exploratory tradeoff establishes a novel, independently validated contribution.
 
 Controlled visual-input, objective and sampling experiments investigate the
 remaining failure. In the sampling comparison, 54 fresh fits and 18 verified
