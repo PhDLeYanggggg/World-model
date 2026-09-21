@@ -3,7 +3,7 @@
 最近更新：2026-09-21。用途：可复现的工程与开发实验步骤，不是完整投稿实验教程。
 下方带日期的历史状态只对应当时的运行；最新结果以 README_RESULTS 和对应实验报告为准。
 
-## 当前：原生坐标损失的完整人群对照
+## 已完成：原生坐标损失的完整人群对照
 
 主指标选择已授权并落实，不需要再次询问。新对照保留完整175,756条源数据索引，
 以同一因果Transformer比较旧归一化损失与原生坐标损失。四个源场景逐一排除、
@@ -14,15 +14,22 @@
 .venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --resume
 .venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --evaluate
 .venv-pytorch/bin/python scripts/run_m3w_native_forecast.py --verify
+.venv-pytorch/bin/python scripts/verify_m3w_native_forecast.py --replay
+.venv-pytorch/bin/python scripts/summarize_m3w_native_forecast_training.py
 ```
 
 首条为纳入正式预算的真实训练试跑，不看留出场景成绩。第二条从检查点继续，
 并完成其他固定试验。只有24个完成收据都有效时，第三条才开始留出源场景评价。
-最后一条用缓存预测重算并验证结果，不新增推理。不要同时启动两个执行器。
+第四条用缓存预测重算并验证结果，不新增推理；第五条重新加载模型，核验固定批次
+预测和独立误差计算；第六条只汇总训练 loss 与抽样覆盖。不要同时启动两个训练执行器。
 日志、PID心跳、检查点均在 `data/stage_cvpr2027_experiments/native_forecast_v1/`。
 CPU计算线程4、inter-op1、workers0；不使用x86Conda，不调用Torch资源探测。
-真实100步试跑已完成，约1.94秒；全部固定拟合已开始继续，启动PID为59969。
-不要把这个启动记录当成当前存活证明；实际状态以心跳结合活进程和完成收据核实。
+全部24次拟合已完成：96,000次更新，训练计算约33.40分钟。训练PID59969已正常退出，
+不是仍在运行。当前完整缓存下，resume只核验，不重训；不要删除产物伪装fresh_run。
+原生损失模型ADE改善7.6331%，旧损失对照2.1833%；均使用同一原生坐标评分。
+但零CV误差样本仍受损，不能宣称easy<=2%已通过，不部署。39项定向测试通过，
+24个模型、7,752条抽样预测精确重放。详见native_forecast_v1/conclusions.md。
+下一步是登记native风险定义、独立校准和嵌套成本训练，不是再问一次主指标选哪个。
 
 ## 已完成：成本头的恢复完整性检查
 

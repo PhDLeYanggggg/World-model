@@ -5,25 +5,44 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
-## Full-Population Loss Comparison Registered (2026-09-21)
+## Full-Population Loss Comparison Completed (2026-09-21)
 
-The native-metric decision is resolved. The next fixed source-only experiment
+The native-metric decision is resolved. The completed fixed source-only experiment
 compares old past-normalized and native-coordinate objectives using identical
 bounded causal Transformers: four excluded physical sites, three seeds, 24 fits,
 4,000 updates each. All 175,756 admitted queries stay indexed; missing-label
 sampling uses an explicit importance correction, not fabricated supervision.
 
-36 scoped tests pass, including an exact synthetic uninterrupted/resumed training
-comparison, held-label preprocessing exclusion and the objective expectation.
-The subsequent real100-update pilot passed in1.94fit seconds and saved its
-checkpoint. The fixed24-fit continuation is running locally; held scores remain
-closed until every endpoint finishes. No gain is claimed from the pilot or
-training loss. Native arm64 CPU4/inter-op1/workers0 is in use. Local free disk is
-about62GiB; no active related local training was found in the process check.
-No CREATE job is submitted or remote-job absence inferred. All final endpoints
-must complete before held-source evaluation; no threshold search or deployment.
+Result source: fresh_run training/inference, cached_verified source inputs.
+All 24 endpoints completed before held-source scoring: 96,000 optimizer updates,
+6,144,000 row draws, 33.40 summed fit minutes. Each 88,514-parameter model saw
+73.35%-93.92% of its eligible training rows. Full-population indexing is not a
+claim that fixed-budget sampling visited every row.
+
+| Loss | Mean Native ADE Gain vs CV | Conditional Scene CI | FDE Gain | Complete-Future ADE Gain |
+| --- | ---: | --- | ---: | ---: |
+| Old normalized | 2.1833% | [1.5862%, 2.7516%] | 2.7966% | 2.1880% |
+| Native coordinate | 7.6331% | [5.9632%, 9.3022%] | 8.6451% | 7.9254% |
+
+Direct native-versus-old reduction is 5.5583% [3.3401%, 7.7766%]. Every site and
+seed is positive; native seed gains are 7.7259%, 7.8749%, 7.2984%. The fixed hard
+diagnostic gains 10.6575% on average, but this is not a new deployment gate.
+On 11,566 zero-CV complete queries, native mean per-scene absolute harm ranges
+from 0.3449 to 1.3613 pixels. Percentage degradation is undefined there. Full
+native easy-risk calibration is not_run; no easy-safety pass or deployment.
+Static-history gains remain zero, and old-metric native scores are slightly
+negative. The positive loss contrast does not erase those limitations.
+
+39 scoped tests pass. Exact metric replay and independent scalar reduction
+verify 1,054,536 query predictions / 188 scene reductions; 7,752 inference rows
+replay exactly from all 24 checkpoints. Twelve paired samplers match; held-site
+training draws are zero. The 3,000-resample intervals are conditional on four
+explored source sites, not independent confirmation. No closed evaluation role
+is opened. Native arm64 CPU4/inter-op1/workers0; no CREATE job. Stage5C/SMC off.
 [Design and limitations](outputs/publication_readiness_2026_09/native_forecast_v1/registration.md).
 [Real launch and measured resource choice](outputs/publication_readiness_2026_09/native_forecast_v1/runtime_launch.md).
+[Full results and remaining safety failure](outputs/publication_readiness_2026_09/native_forecast_v1/conclusions.md).
+[Loss and sampling coverage](outputs/publication_readiness_2026_09/native_forecast_v1/training_diagnostics.md).
 
 ## Native-Coordinate Amendment Adopted (2026-09-21)
 

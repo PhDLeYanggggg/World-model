@@ -22,15 +22,22 @@ protocol development, not a new independent test. I retain the old normalized
 scores and every negative result. The change does not establish a model gain.
 [Decision and fixed first readout](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
 
-The next registered comparison uses the full admitted source population rather
-than the static-history subset: the same bounded causal Transformer, two loss
-weightings, four excluded source sites and three seeds. I fix all 24 endpoints
-before running and keep the evaluation roles closed. It tests whether the loss
-repair helps the predictor; it is not a new architecture or a deployment claim.
-[Fixed training design](outputs/publication_readiness_2026_09/native_forecast_v1/registration.md).
+I have now completed that matched training comparison on the full admitted source
+population: 24 real Torch fits, four excluded source sites and three seeds. With
+the same model, batches and budget, native-loss training improves ADE by **7.63%**
+over causal constant velocity, compared with **2.18%** for the old-loss control.
+The direct improvement over that control is **5.56%**. All four source scenes and
+all three seeds improve; the scene-bootstrap interval against CV is [5.96%, 9.30%].
 
-The first amended readout is complete. Across four already explored SDD source
-sites, causal constant velocity remains the strongest fixed control. A
+This is a useful predictor result, but not yet safe intervention. The new model
+also increases error on some paths that CV predicts exactly. Those zero-reference
+errors cannot be hidden behind an undefined percentage. I keep this as a research
+candidate, not a new deployment, and retain all old scores and failed experiments.
+The four scenes have already been explored, so this is not independent confirmation.
+[Controlled result, safety failure and reproduction](outputs/publication_readiness_2026_09/native_forecast_v1/conclusions.md).
+
+In the preceding cache-only readout, across four already explored SDD source
+sites, causal constant velocity remained the strongest fixed control. A
 future-informed per-query oracle has 28.63% ADE headroom, but the old neural
 predictions still lose on their original static-history subset (three-seed mean
 -5.38%). The oracle is not a model result, and that subset is not full-population
@@ -126,7 +133,7 @@ therefore making the overall score almost entirely a static-start test.
 Moving-history baseline-oracle headroom is 15.22%, but it falls to 0.038% in the
 full normalized aggregate. This is an evaluation-weighting issue, not a new model
 success. I retain the old metric and results alongside the adopted evaluation
-amendment; no new training or deployment is claimed.
+amendment. That audit itself did not train a model or authorize deployment.
 [Audit, raw checks and implications](outputs/publication_readiness_2026_09/source_population_v1/conclusions.md).
 
 The preceding source experiment asks whether image downsampling hides useful motion.

@@ -1,29 +1,48 @@
 # Real-Experiment Continuation Handoff
 
-## Native Full-Population Training Registered (2026-09-21)
+## Native Full-Population Training Complete (2026-09-21)
 
-Goal active/unmet; previous turn was substantive metric amendment and verified
-readout, not no-progress. Native metric author decision resolved. New registered
-matched old/native loss comparison reuses existing bounded Transformer; no new
-scientific decision needed to run this source-only, no-selection experiment.
-24fits,96000updates,4source-site exclusions,3seeds;175756past-eligible rows.
-Both loss arms share model/seed/batches/budget; training-scene mean CV and exact
-indexed/supported sampling correction define their loss. Static rows not dropped.
-No images, no new selector or threshold. Native easy deployment not certified.
+Goal active/unmet. This turn made substantive real-training progress, not another
+status/plan-only turn. The author's metric choice is resolved; do not ask again.
+24 matched real fits complete, 96,000 updates, 33.40 summed fit minutes, three
+seeds and four excluded source scenes. All 175,756 queries remain indexed.
+Sampling visited 73.35%-93.92% of each eligible training complement. No images,
+new selector, threshold search or independent confirmation in this experiment.
 
-Entry scripts/run_m3w_native_forecast.py; config m3w_native_forecast_v1.json.
-First run --trial coupa_native_coordinate_seed17 --stop-at100 (space before100),
-then --resume to finish all endpoints. --evaluate requires all24complete receipts;
---verify reproduces metrics from cached predictions. Native CPU4,interop1,workers0.
-Checkpoint identity binds registration/code/data; never edit those mid-run.
-36scopedtests pass incl exact synthetic resume. Realpilot100updates completes
-1.9383fit seconds,P ID59924/session11705 exit0 (PID has no embedded space:59924).
-Fullcontinuation livePID59969/session12888, --resume. At4m37s:3of24complete,
-nativecoupa seed29step1000,CPU192.2%,RSS1.1GiB. Do not restart based on this stale
-snapshot; pollsession12888 or livePID and completed receipts. Heldscoresclosed.
-Expected30-60min plus eval. Registered c6c25a4d before fitting,pushedGitHub.
-Localrelatedprocesscheck empty,62GiBfree;noCREATEjob or remote absence claim.
-Preserve all old results,closedroles,unrelatedstagedwork;Stage5C/SMC remain off.
+Same native scoring: old-loss mean ADE gain 2.1833%, native-loss 7.6331%, native
+FDE 8.6451%. Native ADE conditional scene CI [5.9632,9.3022]%; direct improvement
+over matched old-loss model 5.5583% [3.3401,7.7766]%. All seeds/sites positive.
+Hard diagnostic mean 10.6575%; complete-future sensitivity 7.9254%. Do NOT turn
+these into a full safety/deployment pass. Native model harms 11,566 zero-CV easy
+queries: scene mean absolute errors 0.3449/0.9181/1.3613/0.5119px; percentage
+undefined. Static-history improvement zero; old normalized scores remain slightly
+negative. Prior negative studies are not invalidated or relabeled successful.
+
+Training PID59969/session12888 exit0; evaluation PID64339/session20931 exit0;
+exact cached scoring PID64583/session34150 exit0; separate verifier session92334
+exit0. 39 scoped tests pass, session98072. No required training/eval session live.
+217 dependency hashes; independent reduction checks1,054,536 query predictions
+and188scene tables;24checkpoint models replay7,752fixed rows exactly.12matched
+samplers equal; held training draws0. Analysis SHA
+e685f0afc94149a5bc2fe231cabacea6ca108a0e52843546a1519dbc6a4198b3.
+Entry scripts/run_m3w_native_forecast.py --resume verifies completed endpoints
+without new updates. --verify replays immutable metrics. Separate verification:
+scripts/verify_m3w_native_forecast.py --replay. Training-only loss CSV/coverage
+report replays exactly via summarize_m3w_native_forecast_training.py.
+
+Registration c6c25a4d before fitting; launch737e37bf before held readout. See
+native_forecast_v1/conclusions.md and execution_notes.md. Do not edit bound source
+or delete artifacts. No CREATE job/fresh remote absence claim. Local native CPU4,
+interop1,workers0 succeeded. Original val/test,main/external/bookstore still closed.
+
+Next: register native easy-risk and zero-reference handling; build clean nested
+gain/harm training against fixed candidates, with genuinely excluded upstream
+producers and independent calibration/confirmation. Re-splitting old OOF caches
+is not sufficient. Do not select a lucky seed, unregistered held threshold, or
+claim that ordinary loss reweighting establishes the joint-intervention novelty.
+Preserve unrelated staged fingerprint
+c055a883338b2eaf7f54d5bf1ce29c846df56ea4bf3e66e529bbdddc3b90c323.
+Stage5C/SMC disabled; no deployment or submission-ready claim.
 
 ## Native Metric Decision Resolved (2026-09-21)
 

@@ -45,14 +45,28 @@ confirmation or full-population neural success. The historical abstract/results
 below keep their original metric; no favorable replacement of those studies is
 claimed. [Amendment and paired readout](native_metric_v1/conclusions.md).
 
+The subsequent registered full-population loss comparison is now complete:
+24 real Torch fits with identical architecture, batches and budgets. Native loss
+improves source-exclusion ADE by 7.63% over CV, versus 2.18% for the old-loss
+control. The direct paired contrast is 5.56% [3.34%, 7.78%]. All three seeds and
+four explored sites are positive, but perfectly CV-predictable paths suffer
+positive absolute harm. This establishes a useful developmental predictor
+contrast, not safe deployment, independent confirmation, joint-policy novelty
+or a submission-ready paper. [Complete comparison](native_forecast_v1/conclusions.md).
+
 ## Abstract
 
 Average forecasting gains can conceal degradation on trajectories already well
 predicted by a simple motion baseline. We study baseline-relative selective
 intervention: estimating benefit and harm from cross-fitted forecasts and
 selecting replacements over an observed interaction graph. The task observes
-eight annotation steps and predicts twelve, with past-normalized mean trajectory
-error and equal physical-scene aggregation. Completed three-seed development
+eight annotation steps and predicts twelve. After diagnosing a past-scale
+weighting problem, we adopt a disclosed native-coordinate ADE amendment with
+equal mean of within-scene relative gains. A matched 24-fit source-exclusion
+study improves ADE by 7.63% over CV with native loss, versus 2.18% with the old
+loss. It does not preserve all zero-CV easy cases. The four sites are explored
+development data, not independent confirmation. The historical studies below
+retain their previously frozen past-normalized metric. Completed three-seed development
 comparisons with causal baselines, a Transformer and fixed-head EqMotion do not
 establish a joint-selection advantage. Baseline-relative output bounds reduce
 drift, but ordinary regression deferral still fails the 2% easy-degradation limit.
