@@ -1,5 +1,22 @@
 # Real-Experiment Continuation Handoff
 
+## Native Metric Decision Resolved (2026-09-21)
+
+The author explicitly delegated selection between the pending metrics. Option 1
+is adopted: native ADE/FDE per dataset and equal mean of within-scene ADE gain.
+This is post-hoc protocol development, not a claim of preregistered confirmation.
+Old scores/negatives and immutable historical pending records remain intact.
+No additional user confirmation is needed for this choice. Goal still unmet.
+
+New decision/config/native metric implementation and tests under native_metric_v1.
+First readout is fixed: four explored auxiliary source sites, seven baselines,
+complement-selected reference, diagnostic oracle and three old crossfit neural
+seeds on their original static subset. No main/outer/external/test labels opened.
+Full-population neural readout is not substituted with that static subset.
+Next run scripts/rescore_m3w_native_metric.py, then exact --verify. Register native
+training/risk targets separately before further fits; no old-scale safety pass.
+Stage5C/SMC remain off. Preserve unrelated staging.
+
 ## Completed Cost Resume Repair (2026-09-21)
 
 Goal active/unmet. Concrete compatibility-code repair and synthetic failure

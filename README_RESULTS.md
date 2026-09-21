@@ -5,6 +5,22 @@ in [README_RESEARCH_HISTORY_2026_09.md](README_RESEARCH_HISTORY_2026_09.md);
 this ledger remains the current result record. Moving the text changes no score
 or evidence status.
 
+## Native-Coordinate Amendment Adopted (2026-09-21)
+
+The author delegated the pending choice; option 1 is adopted for its fit to the
+overall-motion research question, not a promise of publication or larger scores.
+ADE/FDE stay in each dataset's native coordinates. The primary scene summary is
+the equal mean of within-scene ADE gains against a fixed reference, not a pooled
+ratio across unlike units. Old metrics and all negative results remain intact.
+
+This is explicitly post-hoc protocol development. Existing exposed recordings
+do not become independent test data. Fixed first scoring covers the four explored
+SDD source sites and three existing neural seeds on their original static subset;
+no new training, threshold search or closed evaluation readout is authorized here.
+New paired metric tests cover unit separation, zero-reference and missing-scene
+behavior. Results are not yet claimed at this registration checkpoint.
+[Decision](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
+
 ## Completed Cost Resume Integrity Repair (2026-09-21)
 
 The frozen ridge entrypoint's completed-resume branch omitted OOF archives,

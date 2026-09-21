@@ -15,6 +15,13 @@ Raw-frame `t+50` is a separate supplement. I study when a neural forecast adds
 value over a strong causal baseline, how to estimate the harm from switching,
 and whether decisions for interacting agents should be made together.
 
+I have adopted a transparent evaluation amendment: native-coordinate ADE/FDE
+within each dataset, with relative ADE improvement averaged equally over fixed
+physical scenes. This follows a diagnosed weighting problem, so it is post-hoc
+protocol development, not a new independent test. I retain the old normalized
+scores and every negative result. The change does not establish a model gain.
+[Decision and fixed first readout](outputs/publication_readiness_2026_09/native_metric_v1/decision.md).
+
 The proposed contribution is baseline-relative, scene-level intervention with
 support-aware fallback. A Transformer, JEPA encoder or cost head is not novel
 just because it is part of this system. Each component has to earn its place
@@ -76,7 +83,7 @@ method. The unresolved question is whether costs are reliable for the actual
 scene-level intervention and its easy-case constraint. Four executable
 mathematical examples clarify why global fit, score calibration and a pooled
 risk budget cannot substitute for those checks. They are synthetic explanations,
-not new forecasting gains; the evaluation amendment is still pending.
+not new forecasting gains; the subsequent evaluation amendment is documented above.
 [Prior work, derivations and tested examples](outputs/publication_readiness_2026_09/conditional_decision_v1/prior_work_and_method_boundary.md).
 
 Before the next cost-head experiment, I checked whether the old OOF caches could
@@ -103,8 +110,8 @@ windows account for only 0.67% in annotation pixels. A numerical scale floor is
 therefore making the overall score almost entirely a static-start test.
 Moving-history baseline-oracle headroom is 15.22%, but it falls to 0.038% in the
 full normalized aggregate. This is an evaluation-weighting issue, not a new model
-success. I retain the old metric and results while the proposed evaluation
-amendment is reviewed; no new training or deployment is claimed.
+success. I retain the old metric and results alongside the adopted evaluation
+amendment; no new training or deployment is claimed.
 [Audit, raw checks and implications](outputs/publication_readiness_2026_09/source_population_v1/conclusions.md).
 
 The preceding source experiment asks whether image downsampling hides useful motion.
@@ -122,7 +129,7 @@ established a deployable neural advantage or a submission-ready method**.
 
 | Question | What the completed evidence shows |
 | --- | --- |
-| Does the aggregate score represent ordinary motion well? | Not under the present normalization: 4.77% of complete windows contribute 99.75% of CV error. The finding reproduces across four explored source sites; changing the metric requires a new registration, not retrospective success claims. |
+| Does the aggregate score represent ordinary motion well? | Not under the old normalization: 4.77% of complete windows contribute 99.75% of CV error. The new native-coordinate amendment is explicit; it does not turn old results into independent evidence or model success. |
 | Do neural trajectory models beat strong motion baselines? | The fixed three-seed Transformer and K=1 EqMotion comparisons did not produce safe positive gains on the primary task. |
 | Does longer training help? | Learning-rate decay produces a small source-training gain, but it does not transfer to the excluded source scene. |
 | Does the tested RGB representation help? | The matched source comparison is negative. More input modalities are not automatically more predictive information. |
