@@ -7,6 +7,14 @@ or evidence status.
 
 ## Protected-Risk Training Completed, Safety Not Solved (2026-09-21)
 
+Follow-up registered: a training-only audit verifies that protected harm equals
+known rollout disagreement when CV is exactly correct. It also finds just 1-3
+tracks supporting the moving zero-CV cases per training view. A fixed 2x2
+geometric-risk/causal-history-feature comparison is registered; no new model
+has been fitted at this snapshot. It changes neither the metric nor risk rule.
+[Support and limits](outputs/publication_readiness_2026_09/native_conditional_support_v1/conclusions.md).
+[Fixed next experiment](outputs/publication_readiness_2026_09/native_geometric_risk_v1/registration.md).
+
 `fresh_run`: all 24 real Torch risk heads, 72,000 updates, 18,432,000 draws.
 `cached_verified`: native predictors/nested training views/gain heads.
 `not_run`: independent calibration, confirmation, new deployment.
